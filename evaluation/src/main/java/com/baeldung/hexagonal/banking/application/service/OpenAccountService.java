@@ -7,13 +7,13 @@ import com.baeldung.hexagonal.banking.domain.ConsumerAccount;
 import com.baeldung.hexagonal.banking.input.port.OpenAccontUseCasePort;
 import com.baeldung.hexagonal.banking.input.port.OpenCommercialAccountCommand;
 import com.baeldung.hexagonal.banking.input.port.OpenConsumerAccountCommand;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
+import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 public class OpenAccountService implements OpenAccontUseCasePort {
 
-    private final UpdateAccountStatePort createAccountPort;
+    private final AccountStatePort createAccountPort;
 
-    public OpenAccountService(UpdateAccountStatePort createAccountPort) {
+    public OpenAccountService(AccountStatePort createAccountPort) {
         super();
         this.createAccountPort = createAccountPort;
     }

@@ -3,8 +3,9 @@ package com.baeldung.hexagonal.banking.domain;
 import java.util.Objects;
 
 public class Person extends AccountHolder {
-    private final String firstName;
-    private final String lastName;
+
+    private String firstName;
+    private String lastName;
 
     public Person(String firstName, String lastName, int idNumber) {
         super(idNumber, "Consumer");

@@ -8,11 +8,10 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.hexagonal.banking.domain.Account;
-import com.baeldung.hexagonal.banking.output.port.LoadAccountPort;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
+import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 @Component
-public class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort {
+public class AccountPersistenceAdapter implements AccountStatePort {
 
     private final AccountRepository accountRepository;
     private final Supplier<AccountMapperFactory> mapperFactory;

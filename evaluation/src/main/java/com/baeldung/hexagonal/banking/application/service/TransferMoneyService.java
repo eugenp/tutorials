@@ -6,28 +6,25 @@ import org.springframework.stereotype.Component;
 
 import com.baeldung.hexagonal.banking.domain.Account;
 import com.baeldung.hexagonal.banking.input.port.TransferMoneyCommand;
-import com.baeldung.hexagonal.banking.input.port.TransferMoneyUseCasePort;
-import com.baeldung.hexagonal.banking.output.port.LoadAccountPort;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
+import com.baeldung.hexagonal.banking.input.port.TransferMoneyPort;
+import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 @Component
 @Transactional
-public class TransferMoneyService implements TransferMoneyUseCasePort {
+public class TransferMoneyService implements TransferMoneyPort {
 
-    private final LoadAccountPort loadAccountPort;
-    private final UpdateAccountStatePort updateAccountStatePort;
+    private AccountStatePort accountStatePort;
 
-    public TransferMoneyService(LoadAccountPort loadAccountPort, UpdateAccountStatePort updateAccountStatePort) {
+    public TransferMoneyService(AccountStatePort accountStatePort) {
         super();
-        this.loadAccountPort = loadAccountPort;
-        this.updateAccountStatePort = updateAccountStatePort;
+        this.accountStatePort = accountStatePort;
     }
 
     @Override
     public void transferMoney(TransferMoneyCommand command) throws InvalidPinException, NotEnoughBalanceException{
 
 
-        Account sourceAccount = loadAccountPort.loadAccount(command.getSourceAccountNumber())
+        Account sourceAccount = accountStatePort.loadAccount(command.getSourceAccountNumber())
             .get();
 
         if (!sourceAccount.validatePin(command.getAttemptedPin())) {
@@ -38,14 +35,14 @@ public class TransferMoneyService implements TransferMoneyUseCasePort {
             throw new NotEnoughBalanceException();
         }
         
-        Account targetAccount = loadAccountPort.loadAccount(command.getTargetAccountNumber())
+        Account targetAccount = accountStatePort.loadAccount(command.getTargetAccountNumber())
             .get();
 
 
         targetAccount.creditAccount(command.getAmount());
 
-        updateAccountStatePort.createOrUpdateAccount(sourceAccount);
-        updateAccountStatePort.createOrUpdateAccount(targetAccount);
+        accountStatePort.createOrUpdateAccount(sourceAccount);
+        accountStatePort.createOrUpdateAccount(targetAccount);
 
            
     }

@@ -16,23 +16,20 @@ import org.junit.jupiter.api.Test;
 import com.baeldung.hexagonal.banking.domain.Account;
 import com.baeldung.hexagonal.banking.domain.StubAccountFactory;
 import com.baeldung.hexagonal.banking.input.port.TransferMoneyCommand;
-import com.baeldung.hexagonal.banking.output.port.LoadAccountPort;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
+import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 public class TransferMoneyServiceUnitTest {
 
     private TransferMoneyService target;
-    private LoadAccountPort mockLoadAccountPort;
-    private UpdateAccountStatePort mockUpdateAccountStatePort;
+    private AccountStatePort mockAccountStatePort;
     
     private final Long sourceAccountNumber = 10L;
     private final Long targetAccountNumber = 20L;
 
     @BeforeEach
     void setUp() {
-        mockLoadAccountPort = mock(LoadAccountPort.class);
-        mockUpdateAccountStatePort = mock(UpdateAccountStatePort.class);
-        target = new TransferMoneyService(mockLoadAccountPort, mockUpdateAccountStatePort);
+        mockAccountStatePort = mock(AccountStatePort.class);
+        target = new TransferMoneyService(mockAccountStatePort);
     }
 
     @Test
@@ -79,13 +76,13 @@ public class TransferMoneyServiceUnitTest {
 
         target.transferMoney(validCommand);
 
-        verify(mockUpdateAccountStatePort).createOrUpdateAccount(sourceAccount);
-        verify(mockUpdateAccountStatePort).createOrUpdateAccount(targetAccount);
+        verify(mockAccountStatePort).createOrUpdateAccount(sourceAccount);
+        verify(mockAccountStatePort).createOrUpdateAccount(targetAccount);
     }
 
     private TransferMoneyCommand givenTransferCommandWithInvalidAccount() {
         TransferMoneyCommand stubCommand = new TransferMoneyCommand(0L, 1L, BigDecimal.TEN, 1234);
-        when(mockLoadAccountPort.loadAccount(0L)).thenThrow(new EntityNotFoundException());
+        when(mockAccountStatePort.loadAccount(0L)).thenThrow(new EntityNotFoundException());
         return stubCommand;
     }
 
@@ -99,7 +96,7 @@ public class TransferMoneyServiceUnitTest {
         Optional<Account> stubAccount = Optional.of(new StubAccountFactory().withAccountNumber(givenAccountNumber)
             .withBalance(givenBalance)
             .build());
-        when(mockLoadAccountPort.loadAccount(givenAccountNumber)).thenReturn(stubAccount);
+        when(mockAccountStatePort.loadAccount(givenAccountNumber)).thenReturn(stubAccount);
         return stubAccount.get();
     }
 

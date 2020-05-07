@@ -22,16 +22,16 @@ import com.baeldung.hexagonal.banking.domain.Account;
 import com.baeldung.hexagonal.banking.domain.Person;
 import com.baeldung.hexagonal.banking.domain.StubAccountFactory;
 import com.baeldung.hexagonal.banking.input.port.OpenConsumerAccountCommand;
-import com.baeldung.hexagonal.banking.output.port.UpdateAccountStatePort;
+import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 public class OpenAccountServiceUnitTest {
     
     private OpenAccountService target;
-    private UpdateAccountStatePort mockCreateAccountPort;
+    private AccountStatePort mockCreateAccountPort;
     
     @BeforeEach
     void setUp() {
-        mockCreateAccountPort = mock(UpdateAccountStatePort.class);
+        mockCreateAccountPort = mock(AccountStatePort.class);
         target = new OpenAccountService(mockCreateAccountPort);
     }
     

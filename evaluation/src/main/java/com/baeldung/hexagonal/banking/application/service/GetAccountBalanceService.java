@@ -5,21 +5,21 @@ import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
 
 import com.baeldung.hexagonal.banking.input.port.GetAccountBalanceQueryPort;
-import com.baeldung.hexagonal.banking.output.port.LoadAccountPort;
+import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 @Component
 public class GetAccountBalanceService implements GetAccountBalanceQueryPort{
 
-    private final LoadAccountPort loadAccountPort;
+    private final AccountStatePort accountStatePort;
     
-    public GetAccountBalanceService(LoadAccountPort loadAccountPort) {
+    public GetAccountBalanceService(AccountStatePort accountStatePort) {
         super();
-        this.loadAccountPort = loadAccountPort;
+        this.accountStatePort = accountStatePort;
     }
 
     @Override
     public BigDecimal getBalance(Long accountNumber) {
-        return loadAccountPort.loadAccount(accountNumber).get()
+        return accountStatePort.loadAccount(accountNumber).get()
             .getBalance();
     }
 

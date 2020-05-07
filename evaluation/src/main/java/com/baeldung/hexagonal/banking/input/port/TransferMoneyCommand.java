@@ -8,16 +8,16 @@ public class TransferMoneyCommand extends SelfValidating<TransferMoneyCommand>{
     
   
         @NotNull
-        private final Long sourceAccountNumber;
+        private Long sourceAccountNumber;
 
         @NotNull
-        private final Long targetAccountNumber;
+        private Long targetAccountNumber;
 
         @NotNull
-        private final BigDecimal amount;
+        private BigDecimal amount;
         
         @NotNull
-        private final int attemptedPin;
+        private int attemptedPin;
 
         public TransferMoneyCommand(
                         Long sourceAccountId,

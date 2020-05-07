@@ -14,7 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.hexagonal.banking.input.port.TransferMoneyCommand;
-import com.baeldung.hexagonal.banking.input.port.TransferMoneyUseCasePort;
+import com.baeldung.hexagonal.banking.input.port.TransferMoneyPort;
 
 @WebMvcTest(controllers = TransferMoneyController.class)
 class TransferMoneyControllerUnitTest {
@@ -23,7 +23,7 @@ class TransferMoneyControllerUnitTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private TransferMoneyUseCasePort target;
+    private TransferMoneyPort target;
 
     @Test
     void testSendMoney() throws Exception {

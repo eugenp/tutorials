@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.hexagonal.banking.input.port.TransferMoneyCommand;
-import com.baeldung.hexagonal.banking.input.port.TransferMoneyUseCasePort;
+import com.baeldung.hexagonal.banking.input.port.TransferMoneyPort;
 
 @RestController
 public class TransferMoneyController {
     
-    private final TransferMoneyUseCasePort transferMoneyUseCase;
+    private TransferMoneyPort transferMoneyUseCase;
 
-    public TransferMoneyController(TransferMoneyUseCasePort transferMoneyUseCase) {
+    public TransferMoneyController(TransferMoneyPort transferMoneyUseCase) {
         super();
         this.transferMoneyUseCase = transferMoneyUseCase;
     }

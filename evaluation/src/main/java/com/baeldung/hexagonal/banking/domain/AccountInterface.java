@@ -2,14 +2,15 @@ package com.baeldung.hexagonal.banking.domain;
 
 public interface AccountInterface {
 
-	
-	public AccountHolder getAccountHolder();
-	public boolean validatePin(int attemptedPin);
+    public AccountHolder getAccountHolder();
 
-	
-	public double getBalance();
-	public Long getAccountNumber();
+    public boolean validatePin(int attemptedPin);
 
-	public void creditAccount(double amount);
-	public boolean debitAccount(double amount);
+    public double getBalance();
+
+    public Long getAccountNumber();
+
+    public void creditAccount(double amount);
+
+    public boolean debitAccount(double amount);
 }
