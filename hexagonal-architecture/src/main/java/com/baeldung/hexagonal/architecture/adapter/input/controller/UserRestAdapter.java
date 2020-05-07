@@ -11,10 +11,10 @@ import com.baeldung.hexagonal.architecture.core.domain.User;
 
 public interface UserRestAdapter {
 
-	@GetMapping("/users/{id}")
-	User createUser(@RequestBody User user);
+    @GetMapping("/users/{id}")
+    User createUser(@RequestBody User user);
 
-	@PostMapping("/users")
-	Optional<User> findUserById(@PathVariable(name = "id") Long id);
+    @PostMapping("/users")
+    Optional<User> findUserById(@PathVariable(name = "id") Long id);
 
 }

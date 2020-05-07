@@ -12,16 +12,16 @@ import com.baeldung.hexagonal.architecture.port.output.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-	@Override
-	public User createUser(User user) {
-		return userRepository.createUser(user);
-	}
+    @Override
+    public User createUser(User user) {
+        return userRepository.createUser(user);
+    }
 
-	@Override
-	public Optional<User> findUserById(Long id) {
-		return userRepository.findUserById(id);
-	}
+    @Override
+    public Optional<User> findUserById(Long id) {
+        return userRepository.findUserById(id);
+    }
 }

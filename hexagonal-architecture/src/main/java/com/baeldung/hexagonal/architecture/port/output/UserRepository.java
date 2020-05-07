@@ -6,8 +6,8 @@ import com.baeldung.hexagonal.architecture.core.domain.User;
 
 public interface UserRepository {
 
-	User createUser(User user);
+    User createUser(User user);
 
-	Optional<User> findUserById(Long id);
+    Optional<User> findUserById(Long id);
 
 }

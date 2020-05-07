@@ -15,16 +15,16 @@ import com.baeldung.hexagonal.architecture.port.input.UserService;
 @RequestMapping("/api")
 public class UserController implements UserRestAdapter {
 
-	@Autowired
-	UserService userService;
+    @Autowired
+    UserService userService;
 
-	@Override
-	public Optional<User> findUserById(@PathVariable(name = "id") Long id) {
-		return userService.findUserById(id);
-	}
+    @Override
+    public Optional<User> findUserById(@PathVariable(name = "id") Long id) {
+        return userService.findUserById(id);
+    }
 
-	@Override
-	public User createUser(@RequestBody User user) {
-		return userService.createUser(user);
-	}
+    @Override
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
+    }
 }
