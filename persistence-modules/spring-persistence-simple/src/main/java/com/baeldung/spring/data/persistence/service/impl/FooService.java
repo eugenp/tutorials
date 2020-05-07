@@ -2,7 +2,7 @@ package com.baeldung.spring.data.persistence.service.impl;
 
 
 import com.baeldung.spring.data.persistence.model.Foo;
-import com.baeldung.spring.data.persistence.dao.IFooDao;
+import com.baeldung.spring.data.persistence.repository.IFooDao;
 import com.baeldung.spring.data.persistence.service.IFooService;
 import com.baeldung.spring.data.persistence.service.common.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;

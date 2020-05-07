@@ -1,4 +1,5 @@
 ### Relevant Articles: 
+
 - [Spring JPA @Embedded and @EmbeddedId](TBD)
 
 ### Eclipse Config 
@@ -9,3 +10,4 @@ This can be ignored:
 - Project -> Properties -> Java Persistance -> JPA -> Error/Warnings -> Select Ignore on "No persistence xml file found in project"
 Or: 
 - Eclipse -> Preferences - Validation - disable the "Build" execution of the JPA Validator 
+
