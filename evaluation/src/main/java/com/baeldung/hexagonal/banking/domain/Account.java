@@ -3,21 +3,21 @@ package com.baeldung.hexagonal.banking.domain;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public abstract class Account {
+public class Account {
 
     private AccountHolder accountHolder;
     private Long accountNumber;
     private int pin;
     private BigDecimal balance;
 
-    protected Account(AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
+    public Account(AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
         this.accountHolder = accountHolder;
         this.pin = pin;
         this.balance = startingDeposit;
         this.accountNumber = getNextAccountNumber();
     }
     
-    protected Account(Long accountNumber, AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
+    public Account(Long accountNumber, AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
         this.accountHolder = accountHolder;
         this.pin = pin;
         this.balance = startingDeposit;

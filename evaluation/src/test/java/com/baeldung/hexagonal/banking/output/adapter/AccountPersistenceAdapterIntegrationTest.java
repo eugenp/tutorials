@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.baeldung.hexagonal.banking.domain.Account;
-import com.baeldung.hexagonal.banking.domain.CommercialAccount;
-import com.baeldung.hexagonal.banking.domain.Company;
+import com.baeldung.hexagonal.banking.domain.AccountHolder;
 
 @DataJpaTest
 @Import({ AccountPersistenceAdapter.class })
@@ -71,7 +70,7 @@ class AccountPersistenceAdapterIntegrationTest {
     }
 
     private Account givenANewAccount() {
-        Account inexistentAccountStub = new CommercialAccount(new Company("Inexistent S.A", 123456), 1234, BigDecimal.TEN);
+        Account inexistentAccountStub = new Account(new AccountHolder(123456, "John", "Inexistent"), 1234, BigDecimal.TEN);
 
         Assertions.assertThrows(EntityNotFoundException.class, () -> {
             target.loadAccount(inexistentAccountStub.getAccountNumber());

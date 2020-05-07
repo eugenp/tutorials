@@ -4,17 +4,17 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
-import com.baeldung.hexagonal.banking.domain.Person;
+import com.baeldung.hexagonal.banking.domain.AccountHolder;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 @Value
 @EqualsAndHashCode(callSuper = false)
-public class OpenConsumerAccountCommand extends SelfValidating<OpenConsumerAccountCommand> {
+public class OpenAccountCommand {
 
     @NotNull
-    private final Person accountHolder;
+    private final AccountHolder accountHolder;
 
     @NotNull
     private final int pin;
@@ -22,14 +22,13 @@ public class OpenConsumerAccountCommand extends SelfValidating<OpenConsumerAccou
     @NotNull
     private final BigDecimal startingDeposit;
 
-    public OpenConsumerAccountCommand(Person accountHolder, int pin, BigDecimal startingDeposit) {
+    public OpenAccountCommand(AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
         this.accountHolder = accountHolder;
         this.pin = pin;
         this.startingDeposit = startingDeposit;
-        this.validateSelf();
     }
 
-    public Person getAccountHolder() {
+    public AccountHolder getAccountHolder() {
         return accountHolder;
     }
 

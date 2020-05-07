@@ -20,7 +20,7 @@ public class AccountUnitTest {
     }
 
     private static Stream<Arguments> dataToValidatePins() {
-        return Stream.of(Arguments.of(StubAccountFactory.stubDefaultAccount(), 123, true), Arguments.of(StubAccountFactory.stubDefaultAccount(), 999, false));
+        return Stream.of(Arguments.of(StubAccountFactory.stubDefaultAccount(), 1234, true), Arguments.of(StubAccountFactory.stubDefaultAccount(), 999, false));
     }
 
     @ParameterizedTest

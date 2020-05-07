@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
-public class TransferMoneyCommand extends SelfValidating<TransferMoneyCommand>{
+public class TransferMoneyCommand{
     
   
         @NotNull
@@ -28,7 +28,6 @@ public class TransferMoneyCommand extends SelfValidating<TransferMoneyCommand>{
                 this.targetAccountNumber = targetAccountId;
                 this.amount = amount;
                 this.attemptedPin = attemptedPin;
-                this.validateSelf();
         }
 
         public Long getSourceAccountNumber() {

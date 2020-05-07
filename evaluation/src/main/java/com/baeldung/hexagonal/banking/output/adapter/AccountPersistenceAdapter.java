@@ -1,7 +1,6 @@
 package com.baeldung.hexagonal.banking.output.adapter;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -14,12 +13,10 @@ import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 public class AccountPersistenceAdapter implements AccountStatePort {
 
     private AccountRepository accountRepository;
-    private Supplier<AccountMapperFactory> mapperFactory;
 
     public AccountPersistenceAdapter(AccountRepository accountRepository) {
         super();
         this.accountRepository = accountRepository;
-        mapperFactory = AccountMapperFactory::new;
     }
 
     @Override
@@ -27,16 +24,14 @@ public class AccountPersistenceAdapter implements AccountStatePort {
         AccountJpaEntity account = accountRepository.findById(accountNumber)
             .orElseThrow(EntityNotFoundException::new);
 
-        return Optional.of(mapperFactory.get()
-            .getMapper(account.getAccountType())
+        return Optional.of( AccountMapper
             .mapToDomainEntity(account));
     }
 
     @Override
     public Account createOrUpdateAccount(Account account) {
         
-        accountRepository.save(mapperFactory.get()
-            .getMapper(account.getAccountHolder().getHolderType())
+        accountRepository.save(AccountMapper
             .mapToJpaEntity(account));
         
         return account;

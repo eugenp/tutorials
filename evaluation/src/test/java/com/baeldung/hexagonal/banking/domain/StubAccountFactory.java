@@ -8,7 +8,7 @@ public class StubAccountFactory {
     private static BigDecimal balance;
     
     public static Account stubDefaultAccount() {
-        return new CommercialAccount(new Company("TestCo", 1234), 1234, BigDecimal.ONE);
+        return new Account(new AccountHolder(1234, "Mary", "Test"), 1234, BigDecimal.ONE);
     }
     
     public StubAccountFactory withAccountNumber(Long accountNumber) {
@@ -22,7 +22,7 @@ public class StubAccountFactory {
     }
     
     public Account build() {
-        return new CommercialAccount(accountNumber, new Company("TestCo", 1234), 1234, balance);
+        return new Account(accountNumber, new AccountHolder(1234, "Mary", "Test"), 1234, balance);
     }
 
 }
