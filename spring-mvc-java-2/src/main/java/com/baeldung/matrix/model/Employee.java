@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.matrix.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

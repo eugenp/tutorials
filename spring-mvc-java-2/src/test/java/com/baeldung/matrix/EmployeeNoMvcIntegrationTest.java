@@ -1,5 +1,8 @@
-package com.baeldung.web.controller;
+package com.baeldung.matrix;
 
+import com.baeldung.matrix.config.MatrixWebConfig;
+import com.baeldung.matrix.controller.EmployeeController;
+import com.baeldung.matrix.model.Employee;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,12 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.baeldung.model.Employee;
-import com.baeldung.spring.web.config.WebConfig;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = WebConfig.class)
+@ContextConfiguration(classes = { MatrixWebConfig.class, EmployeeController.class })
 public class EmployeeNoMvcIntegrationTest {
 
     @Autowired
