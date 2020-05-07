@@ -20,10 +20,13 @@ public class DynamicAutowireIntegrationTest {
     private CustomMapFromListDynamicAutowireService customMapFromListDynamicAutowireService;
 
     @Test
-    public void testConstructWorkerByJava() {
+    public void givenDynamicallyAutowiredBean_whenCheckingServerInGB_thenServerIsNotActive() {
         assertThat(beanFactoryDynamicAutowireService.isServerActive("GB", 101), is(false));
         assertThat(customMapFromListDynamicAutowireService.isServerActive("GB", 101), is(false));
+    }
 
+    @Test
+    public void givenDynamicallyAutowiredBean_whenCheckingServerInUS_thenServerIsActive() {
         assertThat(beanFactoryDynamicAutowireService.isServerActive("US", 101), is(true));
         assertThat(customMapFromListDynamicAutowireService.isServerActive("US", 101), is(true));
     }
