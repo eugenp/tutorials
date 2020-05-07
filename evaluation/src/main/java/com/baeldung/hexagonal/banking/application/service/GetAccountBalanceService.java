@@ -10,7 +10,7 @@ import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 @Component
 public class GetAccountBalanceService implements GetAccountBalanceQueryPort{
 
-    private final AccountStatePort accountStatePort;
+    private AccountStatePort accountStatePort;
     
     public GetAccountBalanceService(AccountStatePort accountStatePort) {
         super();

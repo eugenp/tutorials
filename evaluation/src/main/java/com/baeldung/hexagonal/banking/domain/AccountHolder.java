@@ -3,8 +3,8 @@ package com.baeldung.hexagonal.banking.domain;
 
 public class AccountHolder {
     
-    private final int idNumber;
-    private final String holderType;
+    private int idNumber;
+    private String holderType;
   
     public AccountHolder(int idNumber, String holderType){
         this.idNumber = idNumber;

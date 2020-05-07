@@ -11,7 +11,7 @@ import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 
 public class OpenAccountService implements OpenAccontUseCasePort {
 
-    private final AccountStatePort createAccountPort;
+    private AccountStatePort createAccountPort;
 
     public OpenAccountService(AccountStatePort createAccountPort) {
         super();

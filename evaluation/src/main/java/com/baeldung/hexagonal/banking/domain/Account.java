@@ -5,8 +5,8 @@ import java.util.UUID;
 
 public abstract class Account {
 
-    private final AccountHolder accountHolder;
-    private final Long accountNumber;
+    private AccountHolder accountHolder;
+    private Long accountNumber;
     private int pin;
     private BigDecimal balance;
 

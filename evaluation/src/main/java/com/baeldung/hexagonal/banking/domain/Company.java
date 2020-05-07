@@ -1,7 +1,8 @@
 package com.baeldung.hexagonal.banking.domain;
 
 public class Company extends AccountHolder {
-    private final String companyName;
+    
+    private String companyName;
 
     public Company(String companyName, int taxId) {
         super(taxId, "Commercial");

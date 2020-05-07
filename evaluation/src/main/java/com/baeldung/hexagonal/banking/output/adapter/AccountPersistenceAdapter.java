@@ -13,8 +13,8 @@ import com.baeldung.hexagonal.banking.output.port.AccountStatePort;
 @Component
 public class AccountPersistenceAdapter implements AccountStatePort {
 
-    private final AccountRepository accountRepository;
-    private final Supplier<AccountMapperFactory> mapperFactory;
+    private AccountRepository accountRepository;
+    private Supplier<AccountMapperFactory> mapperFactory;
 
     public AccountPersistenceAdapter(AccountRepository accountRepository) {
         super();
