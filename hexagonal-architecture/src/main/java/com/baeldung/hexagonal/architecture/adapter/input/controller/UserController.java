@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.hexagonal.architecture.core.domain.User;
-import com.baeldung.hexagonal.architecture.core.service.UserServiceImpl;
+import com.baeldung.hexagonal.architecture.port.input.UserService;
 
 @RestController
 @RequestMapping("/api")
 public class UserController implements UserRestAdapter {
 
 	@Autowired
-	UserServiceImpl userService;
+	UserService userService;
 
 	@Override
 	public Optional<User> findUserById(@PathVariable(name = "id") Long id) {
