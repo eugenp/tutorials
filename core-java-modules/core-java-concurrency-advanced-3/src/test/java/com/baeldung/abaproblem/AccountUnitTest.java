@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,6 +20,7 @@ public class AccountUnitTest {
     @Test
     public void zeroBalanceInitializationTest() {
         assertEquals(0, account.getBalance());
+        assertTrue(account.getTransactionDates().isEmpty());
     }
 
     @Test
@@ -55,7 +57,9 @@ public class AccountUnitTest {
         final int amountToWithdrawByThreadB = 10;
         final int amountToDepositByThreadB = 10;
 
+        assertTrue(account.getTransactionDates().isEmpty());
         account.deposit(defaultBalance);
+        assertEquals(1, account.getTransactionDates().size());
 
         Thread threadA = new Thread(() -> {
             try {
@@ -64,7 +68,7 @@ public class AccountUnitTest {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }, "tread 1");
+        }, "thread1");
 
         Thread threadB = new Thread(() -> {
 
@@ -80,7 +84,7 @@ public class AccountUnitTest {
             // thread 1 didn't finish yet, so the original value will be in place for it
             assertEquals(defaultBalance, account.getBalance());
 
-        }, "thread 2");
+        }, "thread2");
 
         threadA.start();
         threadB.start();
@@ -89,5 +93,11 @@ public class AccountUnitTest {
 
         // compareAndSet operation succeeds for thread 1
         assertEquals(defaultBalance - amountToWithdrawByThreadA, account.getBalance());
+
+        //but there are other transactions
+        assertNotEquals(2, account.getTransactionDates().size());
+
+        // thread 2 did two modifications as well
+        assertEquals(4, account.getTransactionDates().size());
     }
 }
