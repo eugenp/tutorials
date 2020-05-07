@@ -13,9 +13,12 @@ public class MultiplePropertiesXmlConfigIntegrationTest {
 
     @Value("${key.something2}") private String something2;
 
+    @Value("${jdbc.url}") private String jdbcUrl;
+
     @Test
     public void whenReadInjectedValues_thenGetCorrectValues() {
         assertThat(something).isEqualTo("val");
         assertThat(something2).isEqualTo("val2");
+        assertThat(jdbcUrl).isEqualTo("jdbc:postgresql:/localhost:5432");
     }
 }
