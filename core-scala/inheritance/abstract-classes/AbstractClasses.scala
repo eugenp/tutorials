@@ -1,4 +1,4 @@
-package com.baeldung.core_scala.inheritance
+package com.baeldung.core_scala.inheritance.abstract_classes
 
 abstract class Machine(owner: String) {
   val weight: Int

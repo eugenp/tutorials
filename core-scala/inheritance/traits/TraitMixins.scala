@@ -1,4 +1,4 @@
-package com.baeldung.core_scala.inheritance
+package com.baeldung.core_scala.inheritance.traits
 
 trait Heavy {
   def isHeavy(): Boolean = true
