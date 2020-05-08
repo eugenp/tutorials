@@ -18,7 +18,9 @@ public class PDFThymeleafUnitTest {
     @Test
     public void givenThymeleafTemplate_whenParsedAndRenderedToPDF_thenItShouldNotBeEmpty() throws DocumentException, IOException {
         String html = parseThymeleafTemplate();
+
         ByteArrayOutputStream outputStream = generatePdfOutputStreamFromHtml(html);
+
         assertTrue(outputStream.size() > 0);
     }
 
