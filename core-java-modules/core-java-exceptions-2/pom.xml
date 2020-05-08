@@ -23,6 +23,11 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <description> </description>
@@ -30,6 +35,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <commons.lang3.version>3.10</commons.lang3.version>
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
     </properties>

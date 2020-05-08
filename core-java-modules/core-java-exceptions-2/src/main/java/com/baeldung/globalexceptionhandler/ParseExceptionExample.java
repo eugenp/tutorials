@@ -1,4 +1,4 @@
-package com.baeldung.exceptions.globalexceptionhandler;
+package com.baeldung.globalexceptionhandler;
 
 import java.text.DateFormat;
 import java.text.ParseException;

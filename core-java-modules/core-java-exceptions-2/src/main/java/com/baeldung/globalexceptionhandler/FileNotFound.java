@@ -1,4 +1,4 @@
-package com.baeldung.exceptions.globalexceptionhandler;
+package com.baeldung.globalexceptionhandler;
 
 import java.io.BufferedReader;
 import java.io.File;
