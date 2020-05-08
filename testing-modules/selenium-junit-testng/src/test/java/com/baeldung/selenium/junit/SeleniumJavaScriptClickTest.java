@@ -32,7 +32,7 @@ public class SeleniumJavaScriptClickTest {
     }
 
     @Test
-    public void whenSearchForSeleniumArticles_theReturnNotEmptyResults() {
+    public void whenSearchForSeleniumArticles_thenReturnNotEmptyResults() {
         driver.get("https://baeldung.com");
         String title = driver.getTitle();
         assertEquals("Baeldung | Java, Spring and Web Development tutorials", title);
