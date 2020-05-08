@@ -5,20 +5,24 @@ import java.util.UUID;
 
 public class Account {
 
-    private AccountHolder accountHolder;
+   
     private Long accountNumber;
     private int pin;
     private BigDecimal balance;
+    
+    private int idNumber;
+    private String firstName;
+    private String lastName;
 
-    public Account(AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
-        this.accountHolder = accountHolder;
+    public Account(int idNumber, String firstName, String lastName, int pin, BigDecimal startingDeposit) {
+       
         this.pin = pin;
         this.balance = startingDeposit;
         this.accountNumber = getNextAccountNumber();
     }
     
-    public Account(Long accountNumber, AccountHolder accountHolder, int pin, BigDecimal startingDeposit) {
-        this.accountHolder = accountHolder;
+    public Account(Long accountNumber, int idNumber, String firstName, String lastName, int pin, BigDecimal startingDeposit) {
+        
         this.pin = pin;
         this.balance = startingDeposit;
         this.accountNumber = accountNumber;
@@ -28,10 +32,6 @@ public class Account {
         return UUID.randomUUID()
             .getMostSignificantBits();
 
-    }
-
-    public AccountHolder getAccountHolder() {
-        return accountHolder;
     }
     
     public int getPin() {
@@ -56,6 +56,18 @@ public class Account {
 
     public Long getAccountNumber() {
         return accountNumber;
+    }
+    
+    public int getIdNumber() {
+        return idNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void creditAccount(BigDecimal amount) {

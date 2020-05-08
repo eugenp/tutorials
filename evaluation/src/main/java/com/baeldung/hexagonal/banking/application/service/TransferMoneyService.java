@@ -21,18 +21,18 @@ public class TransferMoneyService implements TransferMoneyPort {
     }
 
     @Override
-    public void transferMoney(TransferMoneyCommand command) throws InvalidPinException, NotEnoughBalanceException{
+    public Boolean transferMoney(TransferMoneyCommand command){
 
 
         Account sourceAccount = accountStatePort.loadAccount(command.getSourceAccountNumber())
             .get();
 
         if (!sourceAccount.validatePin(command.getAttemptedPin())) {
-            throw new InvalidPinException();
+            return Boolean.FALSE;
         }
         
         if (!sourceAccount.debitAccount(command.getAmount())) {
-            throw new NotEnoughBalanceException();
+            return Boolean.FALSE;
         }
         
         Account targetAccount = accountStatePort.loadAccount(command.getTargetAccountNumber())
@@ -43,6 +43,8 @@ public class TransferMoneyService implements TransferMoneyPort {
 
         accountStatePort.createOrUpdateAccount(sourceAccount);
         accountStatePort.createOrUpdateAccount(targetAccount);
+        
+        return Boolean.TRUE;
 
            
     }
