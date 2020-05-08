@@ -33,6 +33,7 @@
         <module>selenium-junit-testng</module>
         <module>spring-testing</module>
         <module>test-containers</module>
+        <module>testing-assertions</module>
         <module>testng</module>
         <module>junit-5-basics</module>
         <module>easymock</module>
