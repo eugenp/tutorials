@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SeleniumJavaScriptClickTest {
 
@@ -31,7 +32,7 @@ public class SeleniumJavaScriptClickTest {
     }
 
     @Test
-    public void should_search_for_selenium_articles() {
+    public void whenSearchForSeleniumArticles_theReturnNotEmptyResults() {
         driver.get("https://baeldung.com");
         String title = driver.getTitle();
         assertEquals("Baeldung | Java, Spring and Web Development tutorials", title);
@@ -40,12 +41,16 @@ public class SeleniumJavaScriptClickTest {
         WebElement searchButton = driver.findElement(By.className("menu-search"));
         clickElement(searchButton);
 
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("search")));
         WebElement searchInput = driver.findElement(By.id("search"));
         searchInput.sendKeys("Selenium");
 
         wait.until(ExpectedConditions.elementToBeClickable(By.className("btn-search")));
         WebElement seeSearchResultsButton = driver.findElement(By.className("btn-search"));
         clickElement(seeSearchResultsButton);
+
+        int seleniumPostsCount = driver.findElements(By.className("post")).size();
+        assertTrue(seleniumPostsCount > 0);
     }
 
     private void clickElement(WebElement element) {
