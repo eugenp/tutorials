@@ -57,7 +57,7 @@ public class NonBlockingQueue<T> {
     }
 
     private class Node<T> {
-        private volatile T value;
+        private final T value;
         private volatile Node<T> next;
         private volatile Node<T> previous;
 
