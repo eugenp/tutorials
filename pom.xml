@@ -568,6 +568,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>java-es-cqrs</module>
             </modules>
 
         </profile>
@@ -1083,6 +1084,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>java-es-cqrs</module>
             </modules>
 
         </profile>
