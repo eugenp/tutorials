@@ -132,13 +132,13 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.2.5.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.6.RELEASE</org.springframework.version>
 
         <!-- persistence -->
         <hibernate.version>5.4.13.Final</hibernate.version>
         <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
         <h2.version>1.4.200</h2.version>
-        <spring-data-jpa.version>2.2.6.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>2.2.7.RELEASE</spring-data-jpa.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <querydsl.version>4.2.1</querydsl.version>
