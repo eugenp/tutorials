@@ -652,6 +652,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -810,9 +811,13 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -1010,6 +1015,7 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1157,6 +1163,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1308,10 +1315,44 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
+
+        </profile>
+
+        <profile>
+            <id>live-all</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/SpringContextTest.java</exclude>
+                                <exclude>**/*UnitTest.java</exclude>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
 
         </profile>
 

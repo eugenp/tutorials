@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -43,6 +43,12 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        
     </dependencies>
 
     <dependencyManagement>
@@ -60,7 +66,7 @@
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-        <spring-cloud>2.0.1.RELEASE</spring-cloud>
+        <spring-cloud>2.2.1.RELEASE</spring-cloud>
     </properties>
     
 </project>
