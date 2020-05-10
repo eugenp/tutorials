@@ -6,6 +6,7 @@ import org.apache.commons.collections4.MapUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ConvertListToMapService {
@@ -21,7 +22,7 @@ public class ConvertListToMapService {
     }
 
     public Map<Integer, Animal> convertListAfterJava8(List<Animal> list) {
-        Map<Integer, Animal> map = list.stream().collect(Collectors.toMap(Animal::getId, animal -> animal));
+        Map<Integer, Animal> map = list.stream().collect(Collectors.toMap(Animal::getId, Function.identity()));
         return map;
     }
 
