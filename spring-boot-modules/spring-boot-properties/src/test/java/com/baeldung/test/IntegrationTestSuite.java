@@ -10,6 +10,8 @@ import com.baeldung.properties.basic.PropertiesWithXmlIntegrationTest;
 import com.baeldung.properties.external.ExternalPropertiesWithJavaIntegrationTest;
 import com.baeldung.properties.external.ExternalPropertiesWithMultipleXmlsIntegrationTest;
 import com.baeldung.properties.external.ExternalPropertiesWithXmlManualTest;
+import com.baeldung.properties.multiple.MultiplePropertiesXmlConfigIntegrationTest;
+import com.baeldung.properties.multiple.MultiplePlaceholdersXmlConfigIntegrationTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ //@formatter:off
@@ -17,8 +19,8 @@ import com.baeldung.properties.external.ExternalPropertiesWithXmlManualTest;
     ExternalPropertiesWithJavaIntegrationTest.class,
     ExternalPropertiesWithMultipleXmlsIntegrationTest.class,
     ExternalPropertiesWithXmlManualTest.class,
-    ExtendedPropertiesWithJavaIntegrationTest.class,
-    PropertiesWithMultipleXmlsIntegrationTest.class,
+    ExtendedPropertiesWithJavaIntegrationTest.class, MultiplePropertiesXmlConfigIntegrationTest.class,
+    PropertiesWithMultipleXmlsIntegrationTest.class, MultiplePlaceholdersXmlConfigIntegrationTest.class
 })// @formatter:on
 public final class IntegrationTestSuite {
     //

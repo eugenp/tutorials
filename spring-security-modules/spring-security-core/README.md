@@ -8,6 +8,7 @@ This module contains articles about core Spring Security
 - [Introduction to Spring Method Security](https://www.baeldung.com/spring-security-method-security)
 - [Overview and Need for DelegatingFilterProxy in Spring](https://www.baeldung.com/spring-delegating-filter-proxy)
 - [Deny Access on Missing @PreAuthorize to Spring Controller Methods](https://www.baeldung.com/spring-deny-access)
+- [Spring Security: Check If a User Has a Role in Java](https://www.baeldung.com/spring-security-check-user-role)
 
 ### Build the Project
 
