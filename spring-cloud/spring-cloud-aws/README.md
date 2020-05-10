@@ -23,7 +23,6 @@ Let's say that the RDS instance is called `spring-cloud-test-db` having the mast
 to write the following in `application.properties`:
 
 ```
-cloud.aws.rds.spring-cloud-test-db
 cloud.aws.rds.spring-cloud-test-db.password=se3retpass
 ```
 Multiple application classes are available under this project. To launch InstanceProfileAwsApplication application, replace `start-class` under `pom.xml`:

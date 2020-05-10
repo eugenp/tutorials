@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-cassandra</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-data-cassandra</name>
     <packaging>jar</packaging>
 
@@ -80,7 +79,6 @@
         <cassandra-unit-spring.version>2.1.9.2</cassandra-unit-spring.version>
         <cassandra-unit-shaded.version>2.1.9.2</cassandra-unit-shaded.version>
         <hector-core.version>2.0-0</hector-core.version>
-        <guava.version>19.0</guava.version>
     </properties>
 
 </project>

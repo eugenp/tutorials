@@ -1,13 +1,14 @@
 package com.baeldung.handlebars;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
-import java.io.IOException;
 import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Showcases the built-in template helpers.
@@ -27,7 +28,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
+        assertThat(templateString).contains("<h4>I live in World</h4>");
     }
 
     @Test
@@ -39,7 +40,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
+        assertThat(templateString).contains("<h4>I live in World</h4>");
     }
 
     @Test
@@ -54,8 +55,8 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<span>Java is my friend.</span>\n"
-                                               + "\n<span>Spring is my friend.</span>\n");
+        assertThat(templateString)
+          .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
     }
 
     @Test
@@ -70,8 +71,8 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<span>Java is my friend.</span>\n"
-                                               + "\n<span>Spring is my friend.</span>\n");
+        assertThat(templateString)
+          .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
     }
 
     @Test
@@ -83,7 +84,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
+        assertThat(templateString).contains("<h4>Baeldung is busy.</h4>");
     }
 
     @Test
@@ -95,7 +96,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
+        assertThat(templateString).contains("<h4>Baeldung is busy.</h4>");
     }
 
     private Person getPerson(String name) {

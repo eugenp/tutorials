@@ -12,3 +12,5 @@ This module contains articles about Java 11 core features
 - [An Introduction to Epsilon GC: A No-Op Experimental Garbage Collector](https://www.baeldung.com/jvm-epsilon-gc-garbage-collector)
 - [Guide to jlink](https://www.baeldung.com/jlink)
 - [Negate a Predicate Method Reference with Java 11](https://www.baeldung.com/java-negate-predicate-method-reference)
+- [Benchmark JDK Collections vs Eclipse Collections](https://www.baeldung.com/jdk-collections-vs-eclipse-collections)
+- [Pre-compile Regex Patterns Into Pattern Objects](https://www.baeldung.com/java-regex-pre-compile)

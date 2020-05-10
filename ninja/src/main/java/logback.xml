@@ -1,0 +1,33 @@
+<configuration>
+
+  <!-- Uncomment to enable file-based logging with 
+       daily (or size exceeding) gzip archival.
+       Also uncomment the "ROLLING" reference in <root>.
+  <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>mylog.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <FileNamePattern>mylog.%d{yyyy-MM-dd}.%i.log.gz</FileNamePattern>
+      <MaxHistory>30</MaxHistory>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>10MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender> -->
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="STDOUT" />
+    <!-- <appender-ref ref="ROLLING" /> -->
+  </root>
+</configuration>

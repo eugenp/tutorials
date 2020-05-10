@@ -4,12 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="ship" class="org.baeldung.bean.injection.Ship">
+    <bean id="ship" class="com.baeldung.bean.injection.Ship">
         <constructor-arg>
             <ref bean="helm"/>
         </constructor-arg>
     </bean>
 
-    <bean id="helm" class="org.baeldung.bean.injection.Helm"/>
+    <bean id="helm" class="com.baeldung.bean.injection.Helm"/>
 
 </beans>

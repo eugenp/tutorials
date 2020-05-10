@@ -10,7 +10,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
 
     <modules>
@@ -22,9 +21,12 @@
         <module>flyway</module>
         <module>hbase</module>
         <module>hibernate5</module>
-        <module>hibernate5-2</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
+        <module>hibernate-annotations</module>
+        <module>hibernate-jpa</module>
+        <module>hibernate-queries</module>
+        <module>hibernate-enterprise</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
@@ -42,7 +44,7 @@
         <module>redis</module>
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
-        <module>spring-boot-jdbi</module>
+        <module>spring-boot-persistence-2</module>
         <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
@@ -59,6 +61,7 @@
         <module>spring-data-jpa-2</module>
         <module>spring-data-jpa-3</module>
         <module>spring-data-jpa-4</module>
+        <module>spring-data-jpa-5</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
@@ -70,6 +73,7 @@
         <module>spring-jpa</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
+        <module>spring-persistence-simple-2</module>
     </modules>
 
 </project>

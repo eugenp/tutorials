@@ -135,12 +135,7 @@
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
+            <artifactId>hamcrest</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -174,7 +169,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>${maven.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -201,9 +196,9 @@
     </profiles>
 
     <properties>
-        <start-class>org.baeldung.sample.App</start-class>
+        <start-class>com.baeldung.sample.App</start-class>
         <!-- Spring -->
-        <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.2.RELEASE</org.springframework.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
@@ -214,6 +209,7 @@
         <assertj.version>3.6.1</assertj.version>
         <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
+        <maven.version>3.2.2</maven.version>
     </properties>
 
 </project>

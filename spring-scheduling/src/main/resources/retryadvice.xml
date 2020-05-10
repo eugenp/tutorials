@@ -7,7 +7,7 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <aop:config>
         <aop:pointcut id="transactional"
-            expression="execution(* org.baeldung.springretry..*MyService.defaultXmlRetryService(..))" />
+            expression="execution(* com.baeldung.springretry..*MyService.defaultXmlRetryService(..))" />
         <aop:advisor pointcut-ref="transactional" advice-ref="taskRetryAdvice" order="-1" />
     </aop:config>
 

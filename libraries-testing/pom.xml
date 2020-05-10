@@ -127,7 +127,28 @@
         <dependency>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>1.5.7.1</version>
+            <version>${asciidoctor.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -150,11 +171,22 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
     <properties>
-        <serenity.version>1.9.9</serenity.version>
+        <asciidoctor.version>1.5.7.1</asciidoctor.version>
+		<serenity.version>1.9.9</serenity.version>
         <serenity.jbehave.version>1.9.0</serenity.jbehave.version>
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
@@ -165,6 +197,12 @@
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
         <assertj.version>3.6.2</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
+        <h2.version>1.4.200</h2.version>
+        <dbunit.version>2.7.0</dbunit.version>
+        <assertj-core.version>3.14.0</assertj-core.version>
+        <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
 </project>

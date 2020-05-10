@@ -13,7 +13,7 @@
     <!-- <context:annotation-config/> -->
 
     <!-- the service that you wish to make cacheable. -->
-    <bean id="customerDataService" class="org.baeldung.caching.example.CustomerDataService"/>
+    <bean id="customerDataService" class="com.baeldung.caching.example.CustomerDataService"/>
 
     <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
         <property name="caches">
@@ -34,7 +34,7 @@
 
     <!-- apply the behavior to all the implementations of CustomerDataService  -->
     <aop:config>
-        <aop:advisor advice-ref="cachingBehavior" pointcut="execution(* org.baeldung.caching.example.CustomerDataService.*(..))"/>
+        <aop:advisor advice-ref="cachingBehavior" pointcut="execution(* com.baeldung.caching.example.CustomerDataService.*(..))"/>
     </aop:config>
 
 </beans>

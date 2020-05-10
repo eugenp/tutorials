@@ -1,10 +1,10 @@
 package com.baeldung.orelseoptional;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Optional;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class OrElseOptionalUnitTest {
 
@@ -23,6 +23,28 @@ public class OrElseOptionalUnitTest {
         Optional<String> optionalString = Optional.empty();
         Optional<String> fallbackOptionalString = Optional.ofNullable(missingOptional);
         assertEquals(fallbackOptionalString, OptionalUtils.or(optionalString, fallbackOptionalString));
+    }
+
+    @Test
+    public void givenTwoOptionalMethods_whenFirstEmpty_thenSecondEvaluated() {
+        ItemsProvider itemsProvider = new ItemsProvider();
+
+        Optional<String> item = itemsProvider.getEmptyItem()
+                .map(Optional::of)
+                .orElseGet(itemsProvider::getNail);
+
+        assertEquals(Optional.of("nail"), item);
+    }
+
+    @Test
+    public void givenTwoOptionalMethods_whenFirstNonEmpty_thenSecondNotEvaluated() {
+        ItemsProvider itemsProvider = new ItemsProvider();
+
+        Optional<String> item = itemsProvider.getNail()
+                .map(Optional::of)
+                .orElseGet(itemsProvider::getHammer);
+
+        assertEquals(Optional.of("nail"), item);
     }
 
 //    Uncomment code when code base is compatible with Java 9

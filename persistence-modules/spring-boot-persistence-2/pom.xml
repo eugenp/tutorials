@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.boot.persistence</groupId>
+    <artifactId>spring-boot-persistence-2</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-jdbi</name>
+    <description>Sample SpringBoot JDBI Project</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>persistence-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.dependencies}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-spring4</artifactId>
+                <version>${jdbi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jdbi</groupId>
+                <artifactId>jdbi3-sqlobject</artifactId>
+                <version>${jdbi.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-spring4</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-sqlobject</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Please note that ojdbc8.jar, ucp.jar and ons.jar dependencies 
+                are needed for OracleConfiguration.java, OracleUCPConfiguration.java, SpringOraclePoolingApplicationOracleLiveTest.java 
+                and SpringOraclePoolingApplicationOracleUCPLiveTest.java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>com/baeldung/spring/oracle/pooling/configuration/OracleConfiguration.java</exclude>
+                        <exclude>com/baeldung/spring/oracle/pooling/configuration/OracleUCPConfiguration.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <testExclude>com/baeldung/spring/oracle/pooling/SpringOraclePoolingApplicationOracleLiveTest.java</testExclude>
+                        <testExclude>com/baeldung/spring/oracle/pooling/SpringOraclePoolingApplicationOracleUCPLiveTest.java</testExclude>
+                    </testExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <jdbi.version>3.9.1</jdbi.version>
+        <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
+        <c3p0.version>0.9.5.2</c3p0.version>
+    </properties>
+
+</project>

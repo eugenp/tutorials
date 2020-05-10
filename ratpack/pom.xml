@@ -6,7 +6,6 @@
     <version>1.0-SNAPSHOT</version>
     <name>ratpack</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -85,18 +84,7 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <ratpack.version>1.5.4</ratpack.version>
         <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.6</httpcore.version>

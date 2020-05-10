@@ -1,7 +1,7 @@
-package org.baeldung;
+package com.baeldung;
 
-import org.baeldung.spring.WebFlowConfig;
-import org.baeldung.spring.WebMvcConfig;
+import com.baeldung.spring.WebFlowConfig;
+import com.baeldung.spring.WebMvcConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

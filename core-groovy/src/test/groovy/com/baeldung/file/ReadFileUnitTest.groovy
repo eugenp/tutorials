@@ -1,6 +1,7 @@
 package com.baeldung.file
 
 import spock.lang.Specification
+import spock.lang.Ignore
 
 class ReadFileUnitTest extends Specification {
 

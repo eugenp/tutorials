@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>blade</artifactId>
     <name>blade</name>
@@ -106,7 +107,7 @@
                             <arguments>
                                 <argument>java</argument>
                                 <argument>-jar</argument>
-                                <argument>sample-blade-app.jar</argument>
+                                <argument>blade.jar</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -124,7 +125,7 @@
 
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${assembly.plugin.version}</version>
                 <configuration>
                     <finalName>${project.build.finalName}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
@@ -161,6 +162,7 @@
         <assertj-core.version>3.11.1</assertj-core.version>
         <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
         <process-exec-maven-plugin.version>0.7</process-exec-maven-plugin.version>
+        <assembly.plugin.version>3.1.0</assembly.plugin.version>
     </properties>
 
 </project>
