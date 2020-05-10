@@ -6,10 +6,10 @@
 >
 
     <beans profile="dev">
-        <bean id="devDatasourceConfig" class="org.baeldung.profiles.DevDatasourceConfig"/>
+        <bean id="devDatasourceConfig" class="com.baeldung.profiles.DevDatasourceConfig"/>
     </beans>
 
     <beans profile="production">
-        <bean id="productionDatasourceConfig" class="org.baeldung.profiles.ProductionDatasourceConfig"/>
+        <bean id="productionDatasourceConfig" class="com.baeldung.profiles.ProductionDatasourceConfig"/>
     </beans>
 </beans>

@@ -1,4 +1,4 @@
-package org.baeldung.sessionattrs;
+package com.baeldung.sessionattrs;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

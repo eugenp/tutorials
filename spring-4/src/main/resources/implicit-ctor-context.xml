@@ -3,8 +3,8 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="org.baeldung.spring43.ctor.FooRepository"/>
+    <bean class="com.baeldung.spring43.ctor.FooRepository"/>
 
-    <bean class="org.baeldung.spring43.ctor.FooService"/>
+    <bean class="com.baeldung.spring43.ctor.FooService"/>
 
 </beans>

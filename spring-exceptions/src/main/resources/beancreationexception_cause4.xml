@@ -6,6 +6,6 @@
       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-    <bean id="beanA" class="org.baeldung.ex.beancreationexception.cause4.BeanA" />
+    <bean id="beanA" class="com.baeldung.ex.beancreationexception.cause4.BeanA" />
 
 </beans>

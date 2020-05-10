@@ -232,7 +232,7 @@
         <dependency>
             <groupId>org.zalando</groupId>
             <artifactId>problem-spring-web</artifactId>
-            <version>0.24.0-RC.0</version>
+            <version>${zalando.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
@@ -910,5 +910,6 @@
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
 
         <!-- jhipster-needle-maven-property -->
+        <zalando.version>0.24.0</zalando.version>
     </properties>	
 </project>

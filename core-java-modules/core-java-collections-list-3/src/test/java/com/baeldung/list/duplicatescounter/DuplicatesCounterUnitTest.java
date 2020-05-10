@@ -11,7 +11,6 @@ import static org.assertj.core.data.MapEntry.entry;
 
 class DuplicatesCounterUnitTest {
 
-
     private static List<String> INPUT_LIST = Lists.list(
         "expect1",
         "expect2", "expect2",
@@ -24,10 +23,21 @@ class DuplicatesCounterUnitTest {
         verifyResult(result);
     }
 
+    @Test
+    void givenInput_whenCountByForEachLoopWithGetOrDefault_thenGetResultMap() {
+        Map<String, Long> result = DuplicatesCounter.countByForEachLoopWithGetOrDefault(INPUT_LIST);
+        verifyResult(result);
+    }
 
     @Test
-    void givenInput_whenCountByClassicalLoopWithMapCompute_thenGetResultMap() {
-        Map<String, Long> result = DuplicatesCounter.countByClassicalLoopWithMapCompute(INPUT_LIST);
+    void givenInput_whenCountByForEachLoopWithMapCompute_thenGetResultMap() {
+        Map<String, Long> result = DuplicatesCounter.countByForEachLoopWithMapCompute(INPUT_LIST);
+        verifyResult(result);
+    }
+
+    @Test
+    void givenInput_whenCountByForEachLoopWithMapMerge_thenGetResultMap() {
+        Map<String, Long> result = DuplicatesCounter.countByForEachLoopWithMapMerge(INPUT_LIST);
         verifyResult(result);
     }
 

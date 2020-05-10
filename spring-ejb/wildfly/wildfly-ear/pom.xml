@@ -45,7 +45,7 @@
                 <version>${maven-ear-plugin.version}</version>
                 <configuration>
                     <defaultLibBundleDir>lib/</defaultLibBundleDir>
-                    <version>7</version>
+                    <version>${defaultLibBundleDir.version}</version>
                     <modules>
                         <webModule>
                             <groupId>com.baeldung.wildfly</groupId>
@@ -66,6 +66,7 @@
     <properties>
         <maven-ear-plugin.version>2.10.1</maven-ear-plugin.version>
         <wildfly-maven-plugin.version>1.2.0.Final</wildfly-maven-plugin.version>
+        <defaultLibBundleDir.version>7</defaultLibBundleDir.version>
     </properties>
 
 </project>

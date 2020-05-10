@@ -8,6 +8,12 @@
     <packaging>war</packaging>
     <name>Bookstore</name>
 
+    <parent>
+        <artifactId>jhipster-5</artifactId>
+        <groupId>com.baeldung.jhipster</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <repositories>
         <!-- jhipster-needle-maven-repository -->
     </repositories>
@@ -976,7 +982,7 @@
                                         <pluginExecution>
                                             <pluginExecutionFilter>
                                                 <groupId>com.github.eirslett</groupId>
-                                        <artifactId>frontend-maven-plugin</artifactId>
+                                                <artifactId>frontend-maven-plugin</artifactId>
                                                 <versionRange>${frontend-maven-plugin.version}</versionRange>
                                                 <goals>
                                                     <goal>install-node-and-npm</goal>

@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TernaryOperatorUnitTest {
 
     @Test
-    public void givenACondition_whenUsingTernaryOperator_thenItEvaluatesConditionAndReturnsAValue() {
+    public void whenUsingTernaryOperator_thenConditionIsEvaluatedAndValueReturned() {
         int number = 10;
         String msg = number > 10 ? "Number is greater than 10" : "Number is less than or equal to 10";
 
@@ -14,7 +14,7 @@ public class TernaryOperatorUnitTest {
     }
 
     @Test
-    public void givenATrueCondition_whenUsingTernaryOperator_thenOnlyExpression1IsEvaluated() {
+    public void whenConditionIsTrue_thenOnlyFirstExpressionIsEvaluated() {
         int exp1 = 0, exp2 = 0;
         int result = 12 > 10 ? ++exp1 : ++exp2;
 
@@ -24,7 +24,7 @@ public class TernaryOperatorUnitTest {
     }
 
     @Test
-    public void givenAFalseCondition_whenUsingTernaryOperator_thenOnlyExpression2IsEvaluated() {
+    public void whenConditionIsFalse_thenOnlySecondExpressionIsEvaluated() {
         int exp1 = 0, exp2 = 0;
         int result = 8 > 10 ? ++exp1 : ++exp2;
 

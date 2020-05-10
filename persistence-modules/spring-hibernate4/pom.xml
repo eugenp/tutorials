@@ -136,16 +136,6 @@
 
     </dependencies>
 
-    <build>
-        <finalName>spring-hibernate4</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
@@ -166,15 +156,6 @@
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
-
-        <rest-assured.version>2.9.0</rest-assured.version>
-
-        <!-- maven plugins -->
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->
     </properties>
 
 </project>

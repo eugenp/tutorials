@@ -36,7 +36,7 @@
             <plugin>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-                <version>2.1.1.RELEASE</version>
+                <version>${spring-cloud.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <baseClassForTests>com.baeldung.spring.cloud.springcloudcontractproducer.BaseTestClass
@@ -45,4 +45,8 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-cloud.version>2.1.1.RELEASE</spring-cloud.version>
+    </properties>
 </project>

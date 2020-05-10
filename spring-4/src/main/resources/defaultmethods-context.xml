@@ -3,7 +3,7 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="dateHolder" class="org.baeldung.spring43.defaultmethods.DateHolder">
+    <bean id="dateHolder" class="com.baeldung.spring43.defaultmethods.DateHolder">
         <property name="stringDate" value="15.10.1982"/>
     </bean>
 

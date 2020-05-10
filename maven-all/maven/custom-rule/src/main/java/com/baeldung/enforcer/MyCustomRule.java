@@ -19,8 +19,8 @@ public class MyCustomRule implements EnforcerRule {
 
             String groupId = (String) enforcerRuleHelper.evaluate("${project.groupId}");
 
-            if (groupId == null || !groupId.startsWith("org.baeldung")) {
-                throw new EnforcerRuleException("Project group id does not start with org.baeldung");
+            if (groupId == null || !groupId.startsWith("com.baeldung")) {
+                throw new EnforcerRuleException("Project group id does not start with com.baeldung");
             }
 
         }
