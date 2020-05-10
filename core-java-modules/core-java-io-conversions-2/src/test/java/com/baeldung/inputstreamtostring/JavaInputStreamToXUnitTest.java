@@ -177,6 +177,13 @@ public class JavaInputStreamToXUnitTest {
     }
 
     @Test
+    public void givenUsingPlainJava9_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+
+        byte[] data = is.readAllBytes();
+    }
+
+    @Test
     public final void givenUsingGuava_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
         final InputStream initialStream = ByteSource.wrap(new byte[] { 0, 1, 2 }).openStream();
         final byte[] targetArray = ByteStreams.toByteArray(initialStream);
