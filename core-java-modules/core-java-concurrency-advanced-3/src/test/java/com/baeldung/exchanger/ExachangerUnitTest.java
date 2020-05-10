@@ -18,7 +18,8 @@ public class ExachangerUnitTest {
                 String message = exchanger.exchange("from A");
                 assertEquals("from B", message);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(e);
             }
         };
 
@@ -27,7 +28,8 @@ public class ExachangerUnitTest {
                 String message = exchanger.exchange("from B");
                 assertEquals("from A", message);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(e);
             }
         };
 
@@ -44,7 +46,8 @@ public class ExachangerUnitTest {
                 String message = exchanger.exchange("from runner");
                 assertEquals("to runner", message);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
+                throw new RuntimeException(e);
             }
         };
 
