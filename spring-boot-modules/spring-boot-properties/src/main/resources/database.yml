@@ -1,0 +1,5 @@
+database:
+    url: jdbc:postresql:/localhost:5432/instance
+    username: foo
+    password: bar
+secret: foo
