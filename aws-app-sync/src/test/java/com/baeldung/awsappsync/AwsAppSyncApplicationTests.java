@@ -16,17 +16,17 @@ class AwsAppSyncApplicationTests {
     void givenGraphQuery_whenListEvents_thenReturnAllEvents() {
 
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("query", "query ListEvents {" +
-                "  listEvents {" +
-                "    items {" +
-                "      id" +
-                "      name" +
-                "      where" +
-                "      when" +
-                "      description" +
-                "    }" +
-                "  }" +
-                "}");
+        requestBody.put("query", "query ListEvents {"
+                + "  listEvents {"
+                + "    items {"
+                + "      id"
+                + "      name"
+                + "      where"
+                + "      when"
+                + "      description"
+                + "    }"
+                + "  }"
+                + "}");
         requestBody.put("variables", "");
         requestBody.put("operationName", "ListEvents");
 
@@ -42,18 +42,18 @@ class AwsAppSyncApplicationTests {
     @Test
     void givenGraphAdd_whenMutation_thenReturnIdNameDesc() {
 
-        String queryString = "mutation add {" +
-                "    createEvent(" +
-                "        name:\"My added GraphQL event\"" +
-                "        where:\"Day 2\"" +
-                "        when:\"Saturday night\"" +
-                "        description:\"Studying GraphQL\"" +
-                "    ){" +
-                "        id" +
-                "        name" +
-                "        description" +
-                "    }" +
-                "}";
+        String queryString = "mutation add {"
+                + "    createEvent("
+                + "        name:\"My added GraphQL event\""
+                + "        where:\"Day 2\""
+                + "        when:\"Saturday night\""
+                + "        description:\"Studying GraphQL\""
+                + "    ){"
+                + "        id"
+                + "        name"
+                + "        description"
+                + "    }"
+                + "}";
 
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("query", queryString);
