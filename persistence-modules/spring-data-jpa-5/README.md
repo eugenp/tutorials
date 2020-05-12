@@ -1,6 +1,6 @@
 ### Relevant Articles: 
 
-- [Spring JPA @Embedded and @EmbeddedId](TBD)
+- [Spring JPA @Embedded and @EmbeddedId](https://www.baeldung.com/spring-jpa-embedded-method-parameters)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
