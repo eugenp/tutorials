@@ -1,8 +1,8 @@
-package com.baeldung.determine.datatype
+package com.baeldung.determinedatatype
 
 import org.junit.Assert
 import org.junit.Test
-import com.baeldung.determine.datatype.Person
+import com.baeldung.determinedatatype.Person
 
 public class PersonTest {
     

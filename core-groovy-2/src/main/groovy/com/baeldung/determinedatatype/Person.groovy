@@ -1,4 +1,4 @@
-package com.baeldung.determine.datatype
+package com.baeldung.determinedatatype
 
 class Person {
     
