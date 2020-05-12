@@ -33,14 +33,15 @@ import reactor.core.publisher.Mono;
 public class ClientUnitTest {
 
     private static final String CONTENT = "Hello World!";
-    private static final String URI = "http://localhost:8080";
+    private static final int port = 9080;
+    private static final String URI = "http://localhost:" + port;
     private static HttpClient httpClient;
     private static Server server;
     private final Logger logger = LoggerFactory.getLogger(ClientUnitTest.class);
 
     @BeforeClass
     public static void init() {
-        server = new Server(8080);
+        server = new Server(port);
         server.setHandler(new RequestHandler());
         try {
             server.start();
