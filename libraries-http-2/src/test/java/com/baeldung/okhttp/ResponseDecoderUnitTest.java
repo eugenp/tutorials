@@ -1,9 +1,7 @@
 package com.baeldung.okhttp;
 
-import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -102,12 +100,4 @@ public class ResponseDecoderUnitTest {
         Assert.assertNotNull(entity);
         Assert.assertEquals(sampleResponse.getName(), entity.getName());
     }
-    
-    @After
-    public void cleanup() throws IOException {
-        if (server != null) {
-            server.shutdown();
-        }
-    }
-
 }

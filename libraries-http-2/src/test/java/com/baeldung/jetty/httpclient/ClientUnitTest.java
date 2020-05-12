@@ -58,7 +58,7 @@ public class ClientUnitTest {
     }
 
     // ReactiveStreams
-   // @Test
+    @Test
     public void givenReactiveClient_whenReactiveStreamsRequested_shouldReturn200() throws Exception {
 
         Request request = httpClient.newRequest(URI);
@@ -74,7 +74,7 @@ public class ClientUnitTest {
     }
 
     // ProjectReactor
-   // @Test
+    @Test
     public void givenReactiveClient_whenProjectReactorRequested_shouldReturn200() throws Exception {
 
         Request request = httpClient.newRequest(URI);
@@ -111,7 +111,7 @@ public class ClientUnitTest {
     }
 
     // RxJava2
-   // @Test
+    @Test
     public void givenReactiveClient_whenRequestedWithBody_ShouldReturnBody() throws Exception {// org.junit.ComparisonFailure
         Request request = httpClient.newRequest(URI);
         ReactiveRequest reactiveRequest = ReactiveRequest.newBuilder(request)
@@ -125,7 +125,7 @@ public class ClientUnitTest {
         Assert.assertEquals(CONTENT, responseContent);
     }
 
-   // @Test
+   @Test
     public void givenReactiveClient_whenRequested_ShouldPrintEvents() throws Exception {
         ReactiveRequest request = ReactiveRequest.newBuilder(httpClient, URI)
             .content(ReactiveRequest.Content.fromString(CONTENT, MediaType.TEXT_PLAIN_VALUE, UTF_8))
