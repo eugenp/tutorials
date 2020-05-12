@@ -1,0 +1,41 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: bucket4j-starter-api-rate-limiting-app
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  cache:
+    cache-names:
+    - rate-limiting-buckets
+    caffeine:
+      spec: maximumSize=100000,expireAfterAccess=3600s
+
+bucket4j:
+  enabled: true
+  filters:
+  - cache-name: rate-limiting-buckets
+    url: /api/v1/area.*
+    http-response-body: "{ \"status\": 429, \"error\": \"Too Many Requests\", \"message\": \"You have exhausted your API Request Quota\" }"
+    rate-limits:
+    - expression: "getHeader('X-api-key')"
+      execute-condition: "getHeader('X-api-key').startsWith('PX001-')"
+      bandwidths:
+      - capacity: 100
+        time: 1
+        unit: hours
+    - expression: "getHeader('X-api-key')"
+      execute-condition: "getHeader('X-api-key').startsWith('BX001-')"
+      bandwidths:
+      - capacity: 40
+        time: 1
+        unit: hours
+    - expression: "getHeader('X-api-key')"
+      bandwidths:
+      - capacity: 20
+        time: 1
+        unit: hours
+        
