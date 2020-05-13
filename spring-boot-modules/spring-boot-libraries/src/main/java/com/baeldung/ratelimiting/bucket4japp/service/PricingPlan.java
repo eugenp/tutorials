@@ -11,7 +11,7 @@ enum PricingPlan {
 
         @Override
         Bandwidth getLimit() {
-            return Bandwidth.classic(2, Refill.intervally(2 , Duration.ofHours(1)));
+            return Bandwidth.classic(20, Refill.intervally(20, Duration.ofHours(1)));
         }
     },
 
