@@ -15,6 +15,7 @@ import com.baeldung.spring.data.es.model.Article;
 import com.baeldung.spring.data.es.model.Author;
 import com.baeldung.spring.data.es.repository.ArticleRepository;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * This Manual test requires: * Elasticsearch instance running on localhost:9200.
+ * This Manual test requires: 
+ * Elasticsearch instance running on localhost:9200.
+ * 
  * The following docker command can be used:
  * docker run -d --name es761 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.1
  */
@@ -49,10 +52,6 @@ public class ElasticSearchManualTest {
 
     @Before
     public void before() {
-        elasticsearchTemplate.indexOps(Article.class).delete();
-        elasticsearchTemplate.indexOps(Article.class).create();
-        // don't call putMapping() to test the default mappings
-
         Article article = new Article("Spring Data Elasticsearch");
         article.setAuthors(asList(johnSmith, johnDoe));
         article.setTags("elasticsearch", "spring data");
@@ -74,6 +73,11 @@ public class ElasticSearchManualTest {
         articleRepository.save(article);
     }
 
+    @After
+    public void after() {
+        articleRepository.deleteAll();
+    }
+    
     @Test
     public void givenArticleService_whenSaveArticle_thenIdIsAssigned() {
         final List<Author> authors = asList(new Author("John Smith"), johnDoe);
