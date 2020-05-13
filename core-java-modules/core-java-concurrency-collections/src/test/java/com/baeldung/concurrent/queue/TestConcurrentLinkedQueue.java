@@ -19,7 +19,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 
 @FixMethodOrder
-public class ConcurrentLinkedQueueTest {
+public class TestConcurrentLinkedQueue {
 
     @Test
     public void givenThereIsExistingCollection_WhenAddedIntoQueue_ThenShouldContainElements() {
