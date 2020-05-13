@@ -3,8 +3,14 @@ server:
 
 spring:
   application:
-    name: bucket4j-api-rate-limiting-app
+    name: bucket4j-api-rate-limit-app
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
+  cache:
+    cache-names:
+    - rate-limit-buckets
+    caffeine:
+      spec: maximumSize=100000,expireAfterAccess=3600s
+    

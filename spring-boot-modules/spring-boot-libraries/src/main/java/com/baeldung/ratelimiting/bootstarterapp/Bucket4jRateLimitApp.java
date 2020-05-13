@@ -11,10 +11,10 @@ import org.springframework.cache.annotation.EnableCaching;
     SecurityAutoConfiguration.class,
 })
 @EnableCaching
-public class Bucket4jRateLimitingApp {
+public class Bucket4jRateLimitApp {
 
   public static void main(String[] args) {
-    new SpringApplicationBuilder(Bucket4jRateLimitingApp.class)
+    new SpringApplicationBuilder(Bucket4jRateLimitApp.class)
         .properties("spring.config.location=classpath:ratelimiting/application-bucket4j-starter.yml")
         .run(args);
   }

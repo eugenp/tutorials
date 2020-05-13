@@ -1,38 +1,39 @@
 package com.baeldung.ratelimiting.bucket4japp.interceptor;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import io.github.bucket4j.Bandwidth;
+import com.baeldung.ratelimiting.bucket4japp.service.PricingPlanService;
+
 import io.github.bucket4j.Bucket;
-import io.github.bucket4j.Bucket4j;
 import io.github.bucket4j.ConsumptionProbe;
 
-public class RateLimitingInterceptor implements HandlerInterceptor {
+@Component
+public class RateLimitInterceptor implements HandlerInterceptor {
 
     private static final String HEADER_API_KEY = "X-api-key";
     private static final String HEADER_LIMIT_REMAINING = "X-Rate-Limit-Remaining";
     private static final String HEADER_RETRY_AFTER = "X-Rate-Limit-Retry-After-Milliseconds";
 
-    private final Map<String, Bucket> cache = new ConcurrentHashMap<>();
+    @Autowired
+    private PricingPlanService pricingPlanService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        
+
         String apiKey = request.getHeader(HEADER_API_KEY);
 
         if (apiKey == null || apiKey.isEmpty()) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), "Missing Header: " + HEADER_API_KEY);
             return false;
         }
-        
-        Bucket tokenBucket = cache.computeIfAbsent(apiKey, this::resolveBucket);
+
+        Bucket tokenBucket = pricingPlanService.resolveBucket(apiKey);
 
         ConsumptionProbe probe = tokenBucket.tryConsumeAndReturnRemaining(1);
 
@@ -50,16 +51,5 @@ public class RateLimitingInterceptor implements HandlerInterceptor {
 
             return false;
         }
-    }
-
-    private Bucket resolveBucket(String apiKey) {
-        PricingPlan pricingPlan = PricingPlan.resolvePlanFromApiKey(apiKey);
-        return bucket(pricingPlan.getLimit());
-    }
-    
-    private Bucket bucket(Bandwidth limit) {
-        return Bucket4j.builder()
-            .addLimit(limit)
-            .build();
     }
 }
