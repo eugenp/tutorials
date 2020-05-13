@@ -3,21 +3,21 @@ server:
 
 spring:
   application:
-    name: bucket4j-starter-api-rate-limiting-app
+    name: bucket4j-starter-api-rate-limit-app
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
   cache:
     cache-names:
-    - rate-limiting-buckets
+    - rate-limit-buckets
     caffeine:
       spec: maximumSize=100000,expireAfterAccess=3600s
 
 bucket4j:
   enabled: true
   filters:
-  - cache-name: rate-limiting-buckets
+  - cache-name: rate-limit-buckets
     url: /api/v1/area.*
     http-response-body: "{ \"status\": 429, \"error\": \"Too Many Requests\", \"message\": \"You have exhausted your API Request Quota\" }"
     rate-limits:
@@ -38,4 +38,3 @@ bucket4j:
       - capacity: 20
         time: 1
         unit: hours
-        
