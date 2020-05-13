@@ -35,34 +35,34 @@ class ComparableInterfaceUnitTest {
 
     @Test
     void givenTwoPersonWithEqualsAndWrongComparableAndConsecutiveLastNames_whenCompareTo_thenNegative() {
-        Person.PersonWithEqualsAndWrongComparable richard = new Person.PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndWrongComparable joe = new Person.PersonWithEqualsAndWrongComparable("Joe", "Portman");
+        PersonWithEqualsAndWrongComparable richard = new PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
+        PersonWithEqualsAndWrongComparable joe = new PersonWithEqualsAndWrongComparable("Joe", "Portman");
 
         assertThat(richard.compareTo(joe)).isNegative();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndWrongComparableAndSameLastNames_whenReversedCompareTo_thenZero() {
-        Person.PersonWithEqualsAndWrongComparable richard = new Person.PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndWrongComparable mike = new Person.PersonWithEqualsAndWrongComparable("Mike", "Jefferson");
+        PersonWithEqualsAndWrongComparable richard = new PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
+        PersonWithEqualsAndWrongComparable mike = new PersonWithEqualsAndWrongComparable("Mike", "Jefferson");
 
         assertThat(richard.compareTo(mike)).isZero();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndWrongComparableAndConsecutiveLastNames_whenReversedCompareTo_thenPositive() {
-        Person.PersonWithEqualsAndWrongComparable richard = new Person.PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndWrongComparable joe = new Person.PersonWithEqualsAndWrongComparable("Joe", "Portman");
+        PersonWithEqualsAndWrongComparable richard = new PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
+        PersonWithEqualsAndWrongComparable joe = new PersonWithEqualsAndWrongComparable("Joe", "Portman");
 
         assertThat(joe.compareTo(richard)).isPositive();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndWrongComparableAndSameLastNames_whenSortedSet_thenProblem() {
-        Person.PersonWithEqualsAndWrongComparable richard = new Person.PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndWrongComparable mike = new Person.PersonWithEqualsAndWrongComparable("Mike", "Jefferson");
+        PersonWithEqualsAndWrongComparable richard = new PersonWithEqualsAndWrongComparable("Richard", "Jefferson");
+        PersonWithEqualsAndWrongComparable mike = new PersonWithEqualsAndWrongComparable("Mike", "Jefferson");
 
-        SortedSet<Person.PersonWithEqualsAndWrongComparable> people = new TreeSet<>();
+        SortedSet<PersonWithEqualsAndWrongComparable> people = new TreeSet<>();
         people.add(richard);
         people.add(mike);
 
@@ -71,34 +71,34 @@ class ComparableInterfaceUnitTest {
 
     @Test
     void givenTwoPersonWithEqualsAndComparableAndConsecutiveLastNames_whenCompareTo_thenNegative() {
-        Person.PersonWithEqualsAndComparable richard = new Person.PersonWithEqualsAndComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparable joe = new Person.PersonWithEqualsAndComparable("Joe", "Portman");
+        PersonWithEqualsAndComparable richard = new PersonWithEqualsAndComparable("Richard", "Jefferson");
+        PersonWithEqualsAndComparable joe = new PersonWithEqualsAndComparable("Joe", "Portman");
 
         assertThat(richard.compareTo(joe)).isNegative();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndComparableAndSameLastNames_whenReversedCompareTo_thenZero() {
-        Person.PersonWithEqualsAndComparable richard = new Person.PersonWithEqualsAndComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparable mike = new Person.PersonWithEqualsAndComparable("Mike", "Jefferson");
+        PersonWithEqualsAndComparable richard = new PersonWithEqualsAndComparable("Richard", "Jefferson");
+        PersonWithEqualsAndComparable mike = new PersonWithEqualsAndComparable("Mike", "Jefferson");
 
         assertThat(richard.compareTo(mike)).isPositive();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndComparableAndConsecutiveLastNames_whenReversedCompareTo_thenPositive() {
-        Person.PersonWithEqualsAndComparable richard = new Person.PersonWithEqualsAndComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparable joe = new Person.PersonWithEqualsAndComparable("Joe", "Portman");
+        PersonWithEqualsAndComparable richard = new PersonWithEqualsAndComparable("Richard", "Jefferson");
+        PersonWithEqualsAndComparable joe = new PersonWithEqualsAndComparable("Joe", "Portman");
 
         assertThat(joe.compareTo(richard)).isPositive();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndComparableAndSameLastNames_whenSortedSet_thenProblem() {
-        Person.PersonWithEqualsAndComparable richard = new Person.PersonWithEqualsAndComparable("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparable mike = new Person.PersonWithEqualsAndComparable("Mike", "Jefferson");
+        PersonWithEqualsAndComparable richard = new PersonWithEqualsAndComparable("Richard", "Jefferson");
+        PersonWithEqualsAndComparable mike = new PersonWithEqualsAndComparable("Mike", "Jefferson");
 
-        SortedSet<Person.PersonWithEqualsAndComparable> people = new TreeSet<>();
+        SortedSet<PersonWithEqualsAndComparable> people = new TreeSet<>();
         people.add(richard);
         people.add(mike);
 

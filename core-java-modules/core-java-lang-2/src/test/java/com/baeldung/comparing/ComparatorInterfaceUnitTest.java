@@ -10,16 +10,16 @@ class ComparatorInterfaceUnitTest {
 
     @Test
     void givenListOfTwoPersonWithEqualsAndComparatorByFirstName_whenSort_thenSortedByFirstNames() {
-        Person.PersonWithEquals joe = new Person.PersonWithEquals("Joe", "Portman");
-        Person.PersonWithEquals allan = new Person.PersonWithEquals("Allan", "Dale");
+        PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
+        PersonWithEquals allan = new PersonWithEquals("Allan", "Dale");
 
-        List<Person.PersonWithEquals> people = new ArrayList<>();
+        List<PersonWithEquals> people = new ArrayList<>();
         people.add(joe);
         people.add(allan);
 
-        Comparator<Person.PersonWithEquals> compareByFirstNames = new Comparator<Person.PersonWithEquals>() {
+        Comparator<PersonWithEquals> compareByFirstNames = new Comparator<PersonWithEquals>() {
             @Override
-            public int compare(Person.PersonWithEquals o1, Person.PersonWithEquals o2) {
+            public int compare(PersonWithEquals o1, PersonWithEquals o2) {
                 return o1.firstName().compareTo(o2.firstName());
             }
         };
@@ -30,14 +30,14 @@ class ComparatorInterfaceUnitTest {
 
     @Test
     void givenListOfTwoPersonWithEqualsAndComparatorByFirstNameFunctionalStyle_whenSort_thenSortedByFirstNames() {
-        Person.PersonWithEquals joe = new Person.PersonWithEquals("Joe", "Portman");
-        Person.PersonWithEquals allan = new Person.PersonWithEquals("Allan", "Dale");
+        PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
+        PersonWithEquals allan = new PersonWithEquals("Allan", "Dale");
 
-        List<Person.PersonWithEquals> people = new ArrayList<>();
+        List<PersonWithEquals> people = new ArrayList<>();
         people.add(joe);
         people.add(allan);
 
-        Comparator<Person.PersonWithEquals> compareByFirstNames = Comparator.comparing(Person.PersonWithEquals::firstName);
+        Comparator<PersonWithEquals> compareByFirstNames = Comparator.comparing(PersonWithEquals::firstName);
         people.sort(compareByFirstNames);
 
         assertThat(people).containsExactly(allan, joe);
@@ -45,34 +45,34 @@ class ComparatorInterfaceUnitTest {
 
     @Test
     void givenTwoPersonWithEqualsAndComparableUsingComparatorAndConsecutiveLastNames_whenCompareTo_thenNegative() {
-        Person.PersonWithEqualsAndComparableUsingComparator richard = new Person.PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparableUsingComparator joe = new Person.PersonWithEqualsAndComparableUsingComparator("Joe", "Portman");
+        PersonWithEqualsAndComparableUsingComparator richard = new PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
+        PersonWithEqualsAndComparableUsingComparator joe = new PersonWithEqualsAndComparableUsingComparator("Joe", "Portman");
 
         assertThat(richard.compareTo(joe)).isNegative();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndComparableUsingComparatorAndSameLastNames_whenReversedCompareTo_thenZero() {
-        Person.PersonWithEqualsAndComparableUsingComparator richard = new Person.PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparableUsingComparator mike = new Person.PersonWithEqualsAndComparableUsingComparator("Mike", "Jefferson");
+        PersonWithEqualsAndComparableUsingComparator richard = new PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
+        PersonWithEqualsAndComparableUsingComparator mike = new PersonWithEqualsAndComparableUsingComparator("Mike", "Jefferson");
 
         assertThat(richard.compareTo(mike)).isPositive();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndComparableUsingComparatorAndConsecutiveLastNames_whenReversedCompareTo_thenPositive() {
-        Person.PersonWithEqualsAndComparableUsingComparator richard = new Person.PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparableUsingComparator joe = new Person.PersonWithEqualsAndComparableUsingComparator("Joe", "Portman");
+        PersonWithEqualsAndComparableUsingComparator richard = new PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
+        PersonWithEqualsAndComparableUsingComparator joe = new PersonWithEqualsAndComparableUsingComparator("Joe", "Portman");
 
         assertThat(joe.compareTo(richard)).isPositive();
     }
 
     @Test
     void givenTwoPersonWithEqualsAndComparableUsingComparatorAndSameLastNames_whenSortedSet_thenProblem() {
-        Person.PersonWithEqualsAndComparableUsingComparator richard = new Person.PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
-        Person.PersonWithEqualsAndComparableUsingComparator mike = new Person.PersonWithEqualsAndComparableUsingComparator("Mike", "Jefferson");
+        PersonWithEqualsAndComparableUsingComparator richard = new PersonWithEqualsAndComparableUsingComparator("Richard", "Jefferson");
+        PersonWithEqualsAndComparableUsingComparator mike = new PersonWithEqualsAndComparableUsingComparator("Mike", "Jefferson");
 
-        SortedSet<Person.PersonWithEqualsAndComparableUsingComparator> people = new TreeSet<>();
+        SortedSet<PersonWithEqualsAndComparableUsingComparator> people = new TreeSet<>();
         people.add(richard);
         people.add(mike);
 

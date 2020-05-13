@@ -1,17 +1,10 @@
 package com.baeldung.comparing;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
-import com.google.common.primitives.Booleans;
-import com.google.common.primitives.Bytes;
 import com.google.common.primitives.Ints;
-import com.google.common.primitives.Shorts;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -66,8 +59,8 @@ class GuavaUnitTest {
     class ComparisonChainClass {
         @Test
         void givenTwoPersonWithEquals_whenComparisonChainByLastNameThenFirstName_thenSortedJoeFirstAndNathalieSecond() {
-            Person.PersonWithEquals nathalie = new Person.PersonWithEquals("Nathalie", "Portman");
-            Person.PersonWithEquals joe = new Person.PersonWithEquals("Joe", "Portman");
+            PersonWithEquals nathalie = new PersonWithEquals("Nathalie", "Portman");
+            PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
 
             int comparisonResult = ComparisonChain.start()
               .compare(nathalie.lastName(), joe.lastName())

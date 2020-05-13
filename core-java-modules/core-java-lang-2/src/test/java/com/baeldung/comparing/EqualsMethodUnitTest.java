@@ -49,24 +49,24 @@ class EqualsMethodUnitTest {
 
     @Test
     void givenTwoPersonWithoutEqualsWithSameNames_whenEquals_thenFalse() {
-        Person.PersonWithoutEquals joe = new Person.PersonWithoutEquals("Joe", "Portman");
-        Person.PersonWithoutEquals joeAgain = new Person.PersonWithoutEquals("Joe", "Portman");
+        PersonWithoutEquals joe = new PersonWithoutEquals("Joe", "Portman");
+        PersonWithoutEquals joeAgain = new PersonWithoutEquals("Joe", "Portman");
 
         assertThat(joe.equals(joeAgain)).isFalse();
     }
 
     @Test
     void givenTwoPersonWithEqualsWithSameNames_whenEquals_thenTrue() {
-        Person.PersonWithEquals joe = new Person.PersonWithEquals("Joe", "Portman");
-        Person.PersonWithEquals joeAgain = new Person.PersonWithEquals("Joe", "Portman");
+        PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
+        PersonWithEquals joeAgain = new PersonWithEquals("Joe", "Portman");
 
         assertThat(joe.equals(joeAgain)).isTrue();
     }
 
     @Test
     void givenTwoPersonWittEqualsWithDifferentNames_whenEquals_thenFalse() {
-        Person.PersonWithEquals joe = new Person.PersonWithEquals("Joe", "Portman");
-        Person.PersonWithEquals nathalie = new Person.PersonWithEquals("Nathalie", "Portman");
+        PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
+        PersonWithEquals nathalie = new PersonWithEquals("Nathalie", "Portman");
 
         assertThat(joe.equals(nathalie)).isFalse();
     }
