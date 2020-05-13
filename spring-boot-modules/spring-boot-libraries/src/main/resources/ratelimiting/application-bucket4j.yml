@@ -8,9 +8,3 @@ spring:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
-  cache:
-    cache-names:
-    - rate-limit-buckets
-    caffeine:
-      spec: maximumSize=100000,expireAfterAccess=3600s
-    
