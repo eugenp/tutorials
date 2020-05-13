@@ -134,7 +134,7 @@ public class PersonTest {
         Person person = new Person(name);
 
         assertEquals(name, person.name());
-        assertEquals(Person.UNKWOWN_ADDRESS, person.address());
+        assertEquals(Person.UNKNOWN_ADDRESS, person.address());
     }
 
     @Test
