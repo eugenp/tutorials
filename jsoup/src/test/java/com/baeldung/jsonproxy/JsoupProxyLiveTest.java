@@ -7,7 +7,7 @@ import java.net.Proxy;
 import org.jsoup.Jsoup;
 import org.junit.Test;
 
-public class JsoupProxyIntegrationTest {
+public class JsoupProxyLiveTest {
 
     @Test
     public void whenUsingHostAndPort_thenConnect() throws IOException {
