@@ -1,0 +1,102 @@
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    reactor.netty.http.client: INFO
+    
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  cloud:
+    gateway:
+      routes:
+      - id: request_header_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/get/**
+        filters:
+        - AddRequestHeader=My-Header-Good,Good
+        - AddRequestHeader=My-Header-Remove,Remove
+        - AddRequestParameter=var, good
+        - AddRequestParameter=var2, remove
+        - MapRequestHeader=My-Header-Good, My-Header-Bad
+        - MapRequestHeader=My-Header-Set, My-Header-Bad
+        - SetRequestHeader=My-Header-Set, Set 
+        - RemoveRequestHeader=My-Header-Remove
+        - RemoveRequestParameter=var2
+        - PreserveHostHeader
+        
+      - id: response_header_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/header/post/**
+        filters:
+        - AddResponseHeader=My-Header-Good,Good
+        - AddResponseHeader=My-Header-Set,Good
+        - AddResponseHeader=My-Header-Rewrite, password=12345678
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - AddResponseHeader=My-Header-Remove,Remove
+        - SetResponseHeader=My-Header-Set, Set
+        - RemoveResponseHeader=My-Header-Remove
+        - RewriteResponseHeader=My-Header-Rewrite, password=[^&]+, password=***
+        - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, ,
+        - StripPrefix=1
+        
+      - id: path_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/new/post/**
+        filters:
+        - RewritePath=/new(?<segment>/?.*), $\{segment}
+        - SetPath=/post
+        
+      - id: redirect_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/fake/post/**
+        filters:
+        - RedirectTo=302, https://httpbin.org
+        
+      - id: status_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/delete/**
+        filters:
+        - SetStatus=401
+        
+      - id: size_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/anything
+        filters:
+        - name: RequestSize
+          args:
+            maxSize: 5000000
+ 
+      - id: retry_test
+        uri: https://httpbin.org
+        predicates:
+        - Path=/status/502
+        filters:
+        - name: Retry
+          args:
+            retries: 3
+            statuses: BAD_GATEWAY
+            methods: GET,POST
+            backoff:
+              firstBackoff: 10ms
+              maxBackoff: 50ms
+              factor: 2
+              basedOnPreviousValue: false
+              
+      - id: request_rate_limiter
+        uri: https://httpbin.org
+        predicates:
+        - Path=/redis/get/**
+        filters:
+        - StripPrefix=1
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 5
+            key-resolver: "#{@userKeyResolver}"
