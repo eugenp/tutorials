@@ -2,32 +2,18 @@ package com.baeldung.bsontojson;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.TimeZone;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.bson.Document;
-import org.bson.json.Converter;
 import org.bson.json.JsonMode;
 import org.bson.json.JsonWriterSettings;
-import org.bson.json.StrictJsonWriter;
 import org.bson.types.ObjectId;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.baeldung.morphia.domain.Book;
-import com.baeldung.morphia.domain.Publisher;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
@@ -42,7 +28,7 @@ public class BsonToJsonLiveTest {
     @BeforeClass
     public static void setUp() {
         Morphia morphia = new Morphia();
-        morphia.mapPackage("com.baeldung.morphia");
+        morphia.mapPackage("com.baeldung.bsontojson");
         datastore = morphia.createDatastore(new MongoClient(), DB_NAME);
         datastore.ensureIndexes();
         
@@ -72,7 +58,7 @@ public class BsonToJsonLiveTest {
         }
         
         String expectedJson = "{\"_id\": \"isbn\", " + 
-            "\"className\": \"com.baeldung.morphia.domain.Book\", " + 
+            "\"className\": \"com.baeldung.bsontojson.Book\", " + 
             "\"title\": \"title\", " + 
             "\"author\": \"author\", " + 
             "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " + 
@@ -100,7 +86,7 @@ public class BsonToJsonLiveTest {
         }
         
         String expectedJson = "{\"_id\": \"isbn\", " + 
-            "\"className\": \"com.baeldung.morphia.domain.Book\", " + 
+            "\"className\": \"com.baeldung.bsontojson.Book\", " + 
             "\"title\": \"title\", " + 
             "\"author\": \"author\", " + 
             "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " + 
@@ -127,7 +113,7 @@ public class BsonToJsonLiveTest {
         }
 
         String expectedJson = "{\"_id\": \"isbn\", " + 
-            "\"className\": \"com.baeldung.morphia.domain.Book\", " + 
+            "\"className\": \"com.baeldung.bsontojson.Book\", " + 
             "\"title\": \"title\", " + 
             "\"author\": \"author\", " + 
             "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " + 
