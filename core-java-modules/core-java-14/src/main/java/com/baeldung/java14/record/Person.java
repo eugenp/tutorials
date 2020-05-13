@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public record Person (String name, String address) {
 	
-	public static String UNKWOWN_ADDRESS = "Unknown";
+	public static String UNKNOWN_ADDRESS = "Unknown";
 	public static String UNNAMED = "Unnamed";
 
 	public Person {
@@ -13,7 +13,7 @@ public record Person (String name, String address) {
 	}
 	
 	public Person(String name) {
-		this(name, UNKWOWN_ADDRESS);
+		this(name, UNKNOWN_ADDRESS);
 	}
 	
 	public static Person unnamed(String address) {
