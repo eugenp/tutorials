@@ -26,12 +26,12 @@
 		<dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20190722</version>
+            <version>${json.version}</version>
         </dependency>
 		<dependency>
 		    <groupId>com.auth0</groupId>
 		    <artifactId>mvc-auth-commons</artifactId>
-		    <version>[1.0, 2.0)</version>
+		    <version>${mvc-auth-commons.version}</version>
 		</dependency>
     </dependencies>
 
@@ -61,6 +61,7 @@
     </build>
 
     <properties>
-        <okta.spring.version>1.4.0</okta.spring.version>
+        <json.version>20190722</json.version>
+        <mvc-auth-commons.version>1.2.0</mvc-auth-commons.version>
     </properties>
 </project>

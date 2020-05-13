@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auth0.IdentityVerificationException;
-import com.baeldung.auth0.AppConfig;
+import com.baeldung.auth0.AuthConfig;
 import com.baeldung.auth0.service.ApiService;
 
 @Controller
@@ -25,7 +25,7 @@ public class UserController {
     private ApiService apiService;
 
     @Autowired
-    private AppConfig config;
+    private AuthConfig config;
     
     @RequestMapping(value="/users")
     @ResponseBody
