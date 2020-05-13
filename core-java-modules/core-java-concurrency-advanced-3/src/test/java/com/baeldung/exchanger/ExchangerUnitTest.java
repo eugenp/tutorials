@@ -2,11 +2,15 @@ package com.baeldung.exchanger;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Exchanger;
 
+import java.util.concurrent.ExecutionException;
 import org.junit.Test;
 
-public class ExachangerUnitTest {
+import static java.util.concurrent.CompletableFuture.runAsync;
+
+public class ExchangerUnitTest {
     
     
     @Test
@@ -33,12 +37,11 @@ public class ExachangerUnitTest {
             }
         };
 
-        new Thread(taskA).start();
-        new Thread(taskB).start();
+        CompletableFuture.allOf(runAsync(taskA), runAsync(taskB)).join();
     }
 
     @Test
-    public void givenThread_WhenExchangedMessage_thenCorrect() throws InterruptedException {
+    public void givenThread_WhenExchangedMessage_thenCorrect() throws InterruptedException, ExecutionException {
         Exchanger<String> exchanger = new Exchanger<>();
 
         Runnable runner = () -> {
@@ -51,10 +54,10 @@ public class ExachangerUnitTest {
             }
         };
 
-        Thread producerThread = new Thread(runner);
-        producerThread.start();
+        CompletableFuture<Void> result = CompletableFuture.runAsync(runner);
         String msg = exchanger.exchange("to runner");
         assertEquals("from runner", msg);
+        result.join();
     }
 
 }
