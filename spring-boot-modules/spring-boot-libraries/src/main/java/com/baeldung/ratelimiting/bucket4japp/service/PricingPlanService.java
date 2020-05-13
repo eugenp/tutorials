@@ -14,7 +14,6 @@ public class PricingPlanService {
 
     private final Map<String, Bucket> cache = new ConcurrentHashMap<>();
 
-    // @Cacheable("rate-limit-buckets")
     public Bucket resolveBucket(String apiKey) {
         return cache.computeIfAbsent(apiKey, this::newBucket);
     }
