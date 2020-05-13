@@ -6,7 +6,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringJUnitConfig(locations = "classpath:configForProperties.xml")
+@SpringJUnitConfig(locations = {"classpath:configForProperties.xml", "classpath:configForDbProperties.xml"})
 public class MultiplePropertiesXmlConfigIntegrationTest {
 
     @Value("${key.something}") private String something;
