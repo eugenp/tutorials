@@ -7,41 +7,46 @@ import org.junit.jupiter.api.Test;
 class BikeUnitTest {
 
     @Test
-    void getId() {
+    void whenGetIdIsCalled_thenReturnBikeId() {
         Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
         assertEquals(bike.getId(), new BikeId(1));
     }
 
     @Test
-    void isReserved() {
+    void whenIsReservedIsCalled_thenReturnReservedFlagValue() {
         Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
         assertFalse(bike.isReserved());
     }
 
     @Test
-    void getCategory() {
+    void whenGetCategoryIsCalled_thenReturnCategory() {
         Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
         assertEquals(bike.getCategory(), Category.ELECTRIC);
     }
 
     @Test
-    void getSize() {
+    void whenGetSizeIsCalled_thenReturnSize() {
         Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
         assertEquals(bike.getSize(), Size.FIFTY);
     }
 
     @Test
-    void isMatchingBike() {
+    void whenIsMatchingBikeIsCalled_givenNoMatchingBikes_thenReturnFalse() {
         Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
 
         assertFalse(bike.isMatchingBike(new BikeReservationRequest(Category.ELECTRIC, Size.FIFTYTWO)));
         assertFalse(bike.isMatchingBike(new BikeReservationRequest(Category.TANDEM, Size.FIFTY)));
+    }
+
+    @Test
+    void whenIsMatchingBikeIsCalled_givenMatchingBikes_thenReturnTrue() {
+        Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
 
         assertTrue(bike.isMatchingBike(new BikeReservationRequest(Category.ELECTRIC, Size.FIFTY)));
     }
 
     @Test
-    void reserveBike() {
+    void whenBikeIsReserved_thenUpdateIsReservedFlag() {
         Bike bike = new Bike(new BikeId(1), false, Category.ELECTRIC, Size.FIFTY);
         assertFalse(bike.isReserved());
 

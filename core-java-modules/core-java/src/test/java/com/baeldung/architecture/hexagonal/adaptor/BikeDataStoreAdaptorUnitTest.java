@@ -1,25 +1,26 @@
 package com.baeldung.architecture.hexagonal.adaptor;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.architecture.hexagonal.domain.Bike;
 import com.baeldung.architecture.hexagonal.domain.BikeId;
+import com.baeldung.architecture.hexagonal.domain.Category;
+import com.baeldung.architecture.hexagonal.domain.Size;
 
-public class BikeDataStoreAdaptorUnitTest {
+class BikeDataStoreAdaptorUnitTest {
     @Test
-    public void testGetAllBikes() {
+    void whenGetAllBikesIsCalled_thenGetAllBikes() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
         assertEquals(dataStoreAdaptor.getAllBikes()
             .size(), 6);
     }
 
     @Test
-    public void testUpdateBike() {
+    void whenBikeDoesExist_thenUpdateBikeShouldSucceed() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
 
         List<Bike> bikes = dataStoreAdaptor.getAllBikes();
@@ -37,7 +38,23 @@ public class BikeDataStoreAdaptorUnitTest {
     }
 
     @Test
-    public void testGetBikeWhenBikeExists() {
+    void whenBikeDoesNotExist_thenUpdateBikeShouldFail() {
+        BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
+
+        Bike bikeNotInDataStore = new Bike(new BikeId(144), false, Category.TANDEM, Size.TWELVE);
+
+        try {
+            dataStoreAdaptor.updateBike(bikeNotInDataStore);
+
+            fail("This shouldn't work");
+
+        } catch (Throwable e) {
+            assertEquals("Bike with id BikeId{id=144} was not found in data store.", e.getMessage());
+        }
+    }
+
+    @Test
+    void whenBikeExists_thenGetSingleBike() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
 
         List<Bike> bikes = dataStoreAdaptor.getAllBikes();
@@ -47,7 +64,7 @@ public class BikeDataStoreAdaptorUnitTest {
     }
 
     @Test
-    public void testGetBikeWhenNoBikeMatchesId() {
+    void whenNoBikeExists_thenGetSingleBike() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
         assertNull(dataStoreAdaptor.getBike(new BikeId(23451)));
     }

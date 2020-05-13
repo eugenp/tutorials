@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class BikeReservationImplUnitTest {
 
     @Test
-    void processReservationRequestWhenNoBikeAvailable() {
+    void whenNoBikeAvailable_thenProcessRequestShouldFail() {
         BikeReservationImpl bikeReservation = new BikeReservationImpl();
 
         // Our data store doesn't contain any tiny tandems!
@@ -24,7 +24,7 @@ class BikeReservationImplUnitTest {
     }
 
     @Test
-    void processReservationRequestWhenBikeAvailable() {
+    void whenBikeAvailable_thenRequestProcessesSuccessfully() {
         BikeReservationImpl bikeReservation = new BikeReservationImpl();
         BikeReservationRequest request = new BikeReservationRequest(Category.ELECTRIC, Size.FIFTY);
 
