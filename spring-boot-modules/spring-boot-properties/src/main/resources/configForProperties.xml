@@ -7,7 +7,8 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 >
 
-    <context:property-placeholder location="classpath:foo.properties,classpath:bar.properties, classpath:database.properties"/>
+
+    <context:property-placeholder location="classpath:foo.properties,classpath:bar.properties,classpath:database.properties"/>
 
     <bean id="componentInXmlUsingProperties" class="com.baeldung.properties.core.ComponentInXmlUsingProperties">
         <constructor-arg value="${key.something}"/>

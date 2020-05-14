@@ -461,7 +461,8 @@
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
+		<module>java-numbers-3</module>
+		<module>java-python-interop</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -508,6 +509,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>libraries-testing</module>
@@ -896,6 +898,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
