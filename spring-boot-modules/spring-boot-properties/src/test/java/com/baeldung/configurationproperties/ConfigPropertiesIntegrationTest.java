@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -13,12 +14,16 @@ import com.baeldung.properties.AdditionalProperties;
 import com.baeldung.properties.ConfigPropertiesDemoApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ConfigPropertiesDemoApplication.class)
-@TestPropertySource("classpath:configprops-test.properties")
+@SpringBootTest(classes = {ConfigPropertiesDemoApplication.class, DatabaseConfigPropertiesApp.class})
+@TestPropertySource(locations = {"classpath:configprops-test.properties", "classpath:database-test.properties"})
 public class ConfigPropertiesIntegrationTest {
 
     @Autowired
     private ConfigProperties properties;
+
+    @Autowired
+    @Qualifier("dataSource")
+    private Database databaseProperties;
 
     @Autowired
     private AdditionalProperties additionalProperties;
@@ -52,5 +57,12 @@ public class ConfigPropertiesIntegrationTest {
     public void whenAdditionalPropertyQueriedthenReturnsProperty() {
         Assert.assertTrue(additionalProperties.getUnit().equals("km"));
         Assert.assertTrue(additionalProperties.getMax() == 100);
+    }
+
+    @Test
+    public void whenDatabasePropertyQueriedthenReturnsProperty() {
+        Assert.assertTrue(databaseProperties.getUrl().equals("jdbc:postgresql:/localhost:5432"));
+        Assert.assertTrue(databaseProperties.getUsername().equals("foo"));
+        Assert.assertTrue(databaseProperties.getPassword().equals("bar"));
     }
 }
