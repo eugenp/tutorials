@@ -24,7 +24,7 @@ public class ApplicationUnitTest {
     }
 
     @Test
-    public void testApplication() throws Exception {
+    public void givenCRUDApplication_whenDataCreated_thenDataCanBeFetched() throws Exception {
         UserService service = new UserService(repository);
         String userId = UUID.randomUUID()
             .toString();
