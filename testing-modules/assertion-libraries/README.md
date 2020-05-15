@@ -10,4 +10,4 @@
 - [Custom Assertions with AssertJ](http://www.baeldung.com/assertj-custom-assertion)
 - [Using Conditions with AssertJ Assertions](http://www.baeldung.com/assertj-conditions)
 - [AssertJ Exception Assertions](http://www.baeldung.com/assertj-exception-assertion)
-
+- [Asserting Log Messages With JUnit](https://www.baeldung.com/junit-asserting-logs)
