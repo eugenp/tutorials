@@ -21,6 +21,7 @@
         <module>design-patterns-functional</module>
         <module>design-patterns-structural</module>
         <module>dip</module>
+		<module>cqrs-es</module>
         <module>front-controller</module>
         <module>intercepting-filter</module>
         <module>solid</module>
