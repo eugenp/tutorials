@@ -16,13 +16,16 @@ public class IndexController {
 
 		String deviceType = "browser";
 		String platform = "browser";
+		String viewName = "index";
 
 		if (device.isNormal()) {
 			deviceType = "browser";
 		} else if (device.isMobile()) {
 			deviceType = "mobile";
+			viewName = "mobile/index";
 		} else if (device.isTablet()) {
 			deviceType = "tablet";
+			viewName = "tablet/index";
 		}
 
 		platform = device.getDevicePlatform().name();
@@ -33,7 +36,7 @@ public class IndexController {
 
 		LOGGER.info("Client Device Type: " + deviceType + ", Platform: " + platform);
 
-		return "index";
+		return viewName;
 	}
 
 }
