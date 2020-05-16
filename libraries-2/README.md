@@ -14,11 +14,9 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Guide to Java Parallel Collectors Library](https://www.baeldung.com/java-parallel-collectors)
 - [Templating with Handlebars](https://www.baeldung.com/handlebars)
 - [A Guide to Crawler4j](https://www.baeldung.com/crawler4j)
-- [Decode an OkHttp JSON Response](https://www.baeldung.com/okhttp-json-response)
 - [Key Value Store with Chronicle Map](https://www.baeldung.com/java-chronicle-map)
 - [Guide to MapDB](https://www.baeldung.com/mapdb)
 - [A Guide to Apache Mesos](https://www.baeldung.com/apache-mesos)
-- [JasperReports with Spring](https://www.baeldung.com/spring-jasper)]
-- [Jetty ReactiveStreams HTTP Client](https://www.baeldung.com/jetty-reactivestreams-http-client)
-- More articles [[<-- prev]](/libraries)
+- [JasperReports with Spring](https://www.baeldung.com/spring-jasper)
+- More articles [[<-- prev]](/libraries) [[next -->]](/libraries-3)
 

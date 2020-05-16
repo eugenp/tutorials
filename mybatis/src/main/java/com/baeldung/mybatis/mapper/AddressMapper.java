@@ -14,8 +14,8 @@ public interface AddressMapper {
 	@Results(value = { @Result(property = "addressId", column = "addressId"),
 			@Result(property = "streetAddress", column = "streetAddress"),
 			@Result(property = "person", column = "personId", javaType = Person.class, one = @One(select = "getPerson")) })
-	Address getAddresses(Integer addressID);
+	Address getAddresses(Integer addressId);
 
 	@Select("SELECT personId FROM address WHERE addressId = #{addressId})")
-	Person getPerson(Integer personId);
+	Person getPerson(Integer addressId);
 }

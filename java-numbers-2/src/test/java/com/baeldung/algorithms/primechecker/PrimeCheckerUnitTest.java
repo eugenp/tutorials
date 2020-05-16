@@ -11,22 +11,24 @@ public class PrimeCheckerUnitTest {
 
     @Test
     public void whenCheckIsPrime_thenTrue() {
-        assertTrue(primeChecker.isPrime(13l));
+        assertTrue(primeChecker.isPrime(2L));
+        assertTrue(primeChecker.isPrime(13L));
         assertTrue(primeChecker.isPrime(1009L));
         assertTrue(primeChecker.isPrime(74207281L));
     }
 
     @Test
     public void whenCheckIsPrime_thenFalse() {
-        assertTrue(!primeChecker.isPrime(50L));
-        assertTrue(!primeChecker.isPrime(1001L));
-        assertTrue(!primeChecker.isPrime(74207282L));
+        assertFalse(primeChecker.isPrime(50L));
+        assertFalse(primeChecker.isPrime(1001L));
+        assertFalse(primeChecker.isPrime(74207282L));
     }
 
     private final BruteForcePrimeChecker bfPrimeChecker = new BruteForcePrimeChecker();
 
     @Test
     public void whenBFCheckIsPrime_thenTrue() {
+        assertTrue(bfPrimeChecker.isPrime(2));
         assertTrue(bfPrimeChecker.isPrime(13));
         assertTrue(bfPrimeChecker.isPrime(1009));
     }
@@ -41,6 +43,7 @@ public class PrimeCheckerUnitTest {
 
     @Test
     public void whenOptCheckIsPrime_thenTrue() {
+        assertTrue(optimisedPrimeChecker.isPrime(2));
         assertTrue(optimisedPrimeChecker.isPrime(13));
         assertTrue(optimisedPrimeChecker.isPrime(1009));
     }
@@ -55,6 +58,7 @@ public class PrimeCheckerUnitTest {
 
     @Test
     public void whenPrimesCheckIsPrime_thenTrue() {
+        assertTrue(primesPrimeChecker.isPrime(2));
         assertTrue(primesPrimeChecker.isPrime(13));
         assertTrue(primesPrimeChecker.isPrime(1009));
     }

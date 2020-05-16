@@ -70,7 +70,7 @@ public class CustomerControllerIntegrationTest {
 
         this.mvc.perform(get("/customers/" + DEFAULT_CUSTOMER_ID + "/orders").accept(MediaTypes.HAL_JSON_VALUE))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$._embedded.orderList[0]._links.self.href",
+            .andExpect(jsonPath("$._embedded.orders[0]._links.self.href",
                 is("http://localhost/customers/customer1/order1")))
             .andExpect(jsonPath("$._links.self.href", is("http://localhost/customers/customer1/orders")));
     }
@@ -89,8 +89,8 @@ public class CustomerControllerIntegrationTest {
         this.mvc.perform(get("/customers/").accept(MediaTypes.HAL_JSON_VALUE))
             .andExpect(status().isOk())
             .andExpect(
-                jsonPath("$._embedded.customerList[0]._links.self.href", is("http://localhost/customers/customer1")))
-            .andExpect(jsonPath("$._embedded.customerList[0]._links.allOrders.href",
+                jsonPath("$._embedded.customers[0]._links.self.href", is("http://localhost/customers/customer1")))
+            .andExpect(jsonPath("$._embedded.customers[0]._links.allOrders.href",
                 is("http://localhost/customers/customer1/orders")))
             .andExpect(jsonPath("$._links.self.href", is("http://localhost/customers")));
     }

@@ -232,7 +232,7 @@
         <dependency>
             <groupId>org.zalando</groupId>
             <artifactId>problem-spring-web</artifactId>
-            <version>0.24.0-RC.0</version>
+            <version>${spring.web.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
@@ -543,7 +543,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
+                    <version>${lifecycle.mapping.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
@@ -834,6 +834,8 @@
     </profiles>
 	
     <properties>
+        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
+        <spring.web.version>0.24.0</spring.web.version>
         <!-- Build properties -->
         <maven.version>3.0.0</maven.version>
         <java.version>1.8</java.version>

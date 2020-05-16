@@ -5,7 +5,6 @@
     <artifactId>rabbitmq</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>rabbitmq</name>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>

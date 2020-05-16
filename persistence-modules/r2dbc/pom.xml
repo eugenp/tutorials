@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung.examples.r2dbc</groupId>
+    <groupId>com.baeldung.examples.r2dbc</groupId>
     <artifactId>r2dbc-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>r2dbc-example</name>
+    <name>r2dbc</name>
     <description>Sample R2DBC Project</description>
 
     <parent>
@@ -61,32 +61,10 @@
         </plugins>
     </build>
 
-    <!-- Extra repositories for R2DBC-H2 -->
-    <repositories>
-
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
-    </repositories>
-
     <properties>
         <java.version>1.8</java.version>
-        <r2dbc-h2.version>0.8.0.M8</r2dbc-h2.version>
+        <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
 </project>

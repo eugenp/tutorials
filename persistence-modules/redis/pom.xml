@@ -9,17 +9,31 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+    
+        <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>com.github.kstyrc</groupId>
             <artifactId>embedded-redis</artifactId>
@@ -33,15 +47,12 @@
         <dependency>
             <groupId>io.lettuce</groupId>
             <artifactId>lettuce-core</artifactId>
-            <version>${lettuce-core.version}</version>
-        </dependency>
+            </dependency>
     </dependencies>
 
-    <properties>
-        <jedis.version>2.9.0</jedis.version>
+    <properties>        
         <embedded-redis.version>0.6</embedded-redis.version>
-        <redisson.version>3.3.0</redisson.version>
-        <lettuce-core.version>5.0.1.RELEASE</lettuce-core.version>
+        <redisson.version>3.3.0</redisson.version>        
     </properties>
 
 </project>

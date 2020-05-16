@@ -16,8 +16,7 @@ public class MovieDatabaseNeo4jConfiguration {
 
     @Bean
     public org.neo4j.ogm.config.Configuration getConfiguration() {
-    	org.neo4j.ogm.config.Configuration config = new Builder().uri(URL).build();
-        return config;
+    	return new Builder().uri(URL).build();
     }
 
     @Bean
