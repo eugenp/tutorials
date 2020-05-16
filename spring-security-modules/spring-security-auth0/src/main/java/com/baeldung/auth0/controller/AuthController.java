@@ -58,12 +58,10 @@ public class AuthController {
     }
 
     public String getManagementApiToken() {
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         JSONObject requestBody = new JSONObject();
-
         requestBody.put("client_id", config.getManagementApiClientId());
         requestBody.put("client_secret", config.getManagementApiClientSecret());
         requestBody.put("audience", "https://dev-example.auth0.com/api/v2/");
@@ -72,11 +70,9 @@ public class AuthController {
         HttpEntity<String> request = new HttpEntity<String>(requestBody.toString(), headers);
 
         RestTemplate restTemplate = new RestTemplate();
-
         HashMap<String, String> result = restTemplate.postForObject(AUTH0_TOKEN_URL, request, HashMap.class);
 
         return result.get("access_token");
     }
-
 
 }
