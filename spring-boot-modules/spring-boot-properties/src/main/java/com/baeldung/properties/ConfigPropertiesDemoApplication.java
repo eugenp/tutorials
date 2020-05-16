@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.baeldung.configurationproperties.ConfigProperties;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = { ConfigProperties.class, JsonProperties.class, CustomJsonProperties.class, Database.class })
+@ComponentScan(basePackageClasses = { ConfigProperties.class, JsonProperties.class, CustomJsonProperties.class})
 public class ConfigPropertiesDemoApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder(ConfigPropertiesDemoApplication.class).initializers(new JsonPropertyContextInitializer())
