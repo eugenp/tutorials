@@ -1,19 +1,26 @@
 package com.baeldung.auth0;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import com.auth0.AuthenticationController;
+import com.baeldung.auth0.controller.LogoutController;
 import com.auth0.jwk.JwkProvider;
 import com.auth0.jwk.JwkProviderBuilder;
 
-@Component
 @Configuration
-public class AuthConfig {
+@EnableWebSecurity
+public class AuthConfig extends WebSecurityConfigurerAdapter {
 
     @Value(value = "${com.auth0.domain}")
     private String domain;
@@ -34,11 +41,30 @@ public class AuthConfig {
     private String grantType;
 
     @Bean
-    public AuthenticationController authenticationController() {
+    public LogoutSuccessHandler logoutSuccessHandler() {
+        return new LogoutController();
+    }
+
+    @Bean
+    public AuthenticationController authenticationController() throws UnsupportedEncodingException {
         JwkProvider jwkProvider = new JwkProviderBuilder(domain).build();
         return AuthenticationController.newBuilder(domain, clientId, clientSecret)
             .withJwkProvider(jwkProvider)
             .build();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http
+        .authorizeRequests()
+        .antMatchers("/callback", "/login", "/").permitAll()
+        .anyRequest().authenticated()
+        .and()
+        .formLogin()
+        .loginPage("/login")
+        .and()
+        .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();
     }
 
     public String getDomain() {
