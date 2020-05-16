@@ -16,18 +16,15 @@ public class CustomerService {
     @Autowired CustomerRepository repo;
     @Autowired CustomerMapper mapper;
 
-    public Customer addCustomer(String firstName, String lastName) {
+    public Customer addCustomer(String name) {
         Customer myCustomer = new Customer();
-        myCustomer.firstName = firstName;
-        myCustomer.lastName = lastName;
+        myCustomer.name = name;
         repo.save(myCustomer);
         return myCustomer;
     }
 
-    public Customer updateCustomer(long id, String email, String phone, String address) {
+    public Customer updateCustomer(long id, String phone) {
         Customer myCustomer = repo.findById(id);
-        myCustomer.address = address;
-        myCustomer.email = email;
         myCustomer.phone = phone;
         repo.save(myCustomer);
         return myCustomer;
