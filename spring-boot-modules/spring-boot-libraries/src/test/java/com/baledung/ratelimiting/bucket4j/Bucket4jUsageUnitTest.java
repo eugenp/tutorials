@@ -16,7 +16,7 @@ import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Bucket4j;
 import io.github.bucket4j.Refill;
 
-public class Bucket4jUsageTest {
+public class Bucket4jUsageUnitTest {
 
     @Test
     public void givenBucketLimit_whenExceedLimit_thenConsumeReturnsFalse() {
