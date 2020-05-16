@@ -687,8 +687,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-basics</module>
-                <module>spring-mvc-basics-2</module>
                 <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-basics-4</module>
 
@@ -1199,8 +1197,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-basics</module>
-                <module>spring-mvc-basics-2</module>
                 <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-basics-4</module>
 
