@@ -7,12 +7,11 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>core-java-string-algorithms-3</name>
-
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
