@@ -13,7 +13,7 @@
     <!-- in order to debug some marshalling issues, this needs to be TRACE -->
     <logger name="org.springframework.web.servlet.mvc" level="WARN" />
 
-    <logger name="org.baeldung.performancemonitor.MyPerformanceMonitorInterceptor" level="INFO" />
+    <logger name="com.baeldung.performancemonitor.MyPerformanceMonitorInterceptor" level="INFO" />
     
     <logger name="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" level="TRACE" />
 

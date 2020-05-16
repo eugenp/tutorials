@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>app-auth-form-store-ldap</artifactId>
     <name>app-auth-form-store-ldap</name>
@@ -17,7 +18,7 @@
         <dependency>
             <groupId>com.unboundid</groupId>
             <artifactId>unboundid-ldapsdk</artifactId>
-            <version>4.0.4</version>
+            <version>${unboundid.ldapsdk.version}</version>
         </dependency>
     </dependencies>
 
@@ -47,5 +48,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <unboundid.ldapsdk.version>4.0.4</unboundid.ldapsdk.version>
+    </properties>
 
 </project>

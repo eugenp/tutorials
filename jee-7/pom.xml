@@ -118,7 +118,7 @@
         <dependency>
             <groupId>javax.mvc</groupId>
             <artifactId>javax.mvc-api</artifactId>
-            <version>20160715</version>
+            <version>${mvc.api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.ozark</groupId>
@@ -215,7 +215,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
+                    <version>${lifecycle.mapping.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
@@ -240,6 +240,28 @@
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+                <!-- jax-ws maven plugin-->
+                <plugin> 
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jaxws-maven-plugin</artifactId>
+                    <version>2.6</version>
+                    <executions> 
+                        <execution> 
+                            <id>wsimport-from-jdk</id>
+                            <goals>
+                                <goal>wsimport</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <wsdlUrls>
+                            <wsdlUrl>http://localhost:8888/ws/country?wsdl</wsdlUrl>
+                        </wsdlUrls>
+                        <keep>true</keep> 
+                        <packageName>com.baeldung.soap.ws.client.generated</packageName> 
+                        <sourceDestDir>src/main/java</sourceDestDir>
                     </configuration>
                 </plugin>
             </plugins>
@@ -506,6 +528,8 @@
     </repositories>
 
     <properties>
+        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
+        <mvc.api.version>20160715</mvc.api.version>
         <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
         <javaee_api.version>7.0</javaee_api.version>

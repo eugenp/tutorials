@@ -9,3 +9,5 @@ This module contains articles about searching algorithms.
 - [Breadth-First Search Algorithm in Java](https://www.baeldung.com/java-breadth-first-search)
 - [String Search Algorithms for Large Texts](https://www.baeldung.com/java-full-text-search-algorithms)
 - [Monte Carlo Tree Search for Tic-Tac-Toe Game](https://www.baeldung.com/java-monte-carlo-tree-search)
+- [Range Search Algorithm in Java](https://www.baeldung.com/java-range-search)
+- [Fast Pattern Matching of Strings Using Suffix Tree](https://www.baeldung.com/java-pattern-matching-suffix-tree)

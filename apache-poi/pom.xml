@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-poi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -32,7 +34,7 @@
     </dependencies>
 
     <properties>
-        <poi.version>3.15</poi.version>
+        <poi.version>4.1.1</poi.version>
         <jexcel.version>1.0.6</jexcel.version>
     </properties>
 

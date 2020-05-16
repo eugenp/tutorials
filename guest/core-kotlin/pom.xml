@@ -46,19 +46,19 @@
         <dependency>
             <groupId>org.jetbrains.spek</groupId>
             <artifactId>spek-api</artifactId>
-            <version>1.1.5</version>
+            <version>${spek.api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.spek</groupId>
             <artifactId>spek-subject-extension</artifactId>
-            <version>1.1.5</version>
+            <version>${spek.subject.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.spek</groupId>
             <artifactId>spek-junit-platform-engine</artifactId>
-            <version>1.1.5</version>
+            <version>${spek.junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -195,6 +195,9 @@
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <spek.api.version>1.1.5</spek.api.version>
+        <spek.subject.version>1.1.5</spek.subject.version>
+        <spek.junit.version>1.1.5</spek.junit.version>
     </properties>
 
 </project>

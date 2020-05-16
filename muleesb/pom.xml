@@ -83,7 +83,7 @@
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>mule-munit-support</artifactId>
-            <version>${mule.munit.support.version}</version>
+            <version>${mule.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -106,18 +106,19 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.mule.tools</groupId>
-                <artifactId>muleesb-maven-plugin</artifactId>
-                <version>${muleesb-maven-plugin.version}</version>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>2.2.1</version>
                 <configuration>
+                    <deploymentType>standalone</deploymentType>
                     <muleVersion>${mule.version}</muleVersion>
-                    <applications>/home/abir/AnypointStudio/workspace/variablescopetest</applications>
                 </configuration>
                 <executions>
                     <execution>
                         <id>deploy</id>
+                        <phase>deploy</phase>
                         <goals>
-                            <goal>start</goal>
+                            <goal>deploy</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -210,11 +211,9 @@
     </pluginRepositories>
 
     <properties>
-        <mule.version>3.8.1</mule.version>
+        <mule.version>3.9.0</mule.version>
         <mule.tools.version>1.2</mule.tools.version>
         <munit.version>1.3.6</munit.version>
-        <mule.munit.support.version>3.9.0</mule.munit.support.version>
-        <muleesb-maven-plugin.version>1.0</muleesb-maven-plugin.version>
         <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
     </properties>
 

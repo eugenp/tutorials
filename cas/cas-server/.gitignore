@@ -2,6 +2,8 @@
 !/.project
 .project
 .settings
+.history
+.vscode
 target/
 .idea/
 .DS_Store
@@ -9,6 +11,11 @@ target/
 overlays/
 .gradle/
 build/
+log/
 bin/
+*.war
 *.iml
 *.log
+tmp/
+./apache-tomcat
+apache-tomcat.zip

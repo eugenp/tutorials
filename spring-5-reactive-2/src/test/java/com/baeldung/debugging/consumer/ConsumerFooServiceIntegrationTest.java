@@ -52,14 +52,13 @@ public class ConsumerFooServiceIntegrationTest {
                     .map(Arrays::stream)
                     .orElse(Stream.empty());
             })
-            .map(IThrowableProxy::getMessage)
+            .map(IThrowableProxy::getClassName)
             .collect(Collectors.toList());
         assertThat(allLoggedEntries).anyMatch(entry -> entry.contains("The following error happened on processFoo method!"))
             .anyMatch(entry -> entry.contains("| onSubscribe"))
             .anyMatch(entry -> entry.contains("| cancel()"));
 
-        assertThat(allSuppressedEntries).anyMatch(entry -> entry.contains("Assembly trace from producer"))
-            .anyMatch(entry -> entry.contains("Error has been observed by the following operator(s)"));
+        assertThat(allSuppressedEntries)
+            .anyMatch(entry -> entry.contains("reactor.core.publisher.FluxOnAssembly$OnAssemblyException"));
     }
-
 }
