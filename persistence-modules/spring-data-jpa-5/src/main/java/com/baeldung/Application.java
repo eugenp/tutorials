@@ -34,22 +34,18 @@ public class Application {
     }
 
     private void basicLoadAndSave() {
-        Customer myCustomer = service.addCustomer("John", "Doe");
+        Customer myCustomer = service.addCustomer("John");
         logger.info("Insert -- " + myCustomer.toString());
-        myCustomer = service.updateCustomer(myCustomer.id, "john@doe.com", "+00", "Route 66");
+        myCustomer = service.updateCustomer(myCustomer.id, "+00");
         logger.info("Update -- " + myCustomer.toString());
     }
     
     private void basicLoadAndSaveWithMapper() {
-        CustomerDto dto = new CustomerDto();
-        dto.firstName = "Johnny";
-        dto.lastName = "Doe";
+        CustomerDto dto = new CustomerDto(null);
+        dto.name = "Johnny";
         Customer entity = service.addCustomer(dto);
         logger.info("Insert -- " + entity.toString());
-        CustomerDto dto2 = new CustomerDto();
-        dto2.id = entity.id;
-        dto2.address = "Mountain View";
-        dto2.email = "doe@mail.com";
+        CustomerDto dto2 = new CustomerDto(entity.id);
         dto2.phone = "+44";
         entity = service.updateCustomer(dto2);
         logger.info("Update -- " + entity.toString());
