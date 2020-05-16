@@ -25,95 +25,86 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootTest(classes = {SpringBootJdbiApplication.class, JdbiConfiguration.class})
 @Slf4j
 public class SpringBootJdbiApplicationUnitTest {
-    
-    
+
+
     @Autowired
     private CarMakerDao carMakerDao;
-    
+
     @Autowired
     private CarModelDao carModelDao;
-    
+
     @Autowired
     private CarMakerService carMakerService;
- 
+
     @Test
     public void givenNewCarMaker_whenInsertNewCarMaker_thenSuccess() {
-        
+
         assertNotNull(carMakerDao);
-        
-        CarMaker carMaker = CarMaker.builder()
-          .name("Diamond Motors")
-          .build();
-        
+
+        CarMaker carMaker = new CarMaker();
+        carMaker.setName("Diamond Motors");
+
         Long generatedId = carMakerDao.insert(carMaker);
-        log.info("[I37] generatedId = {}", generatedId);
         assertThat(generatedId).isGreaterThan(0);
     }
 
     @Test
     public void givenNewCarMakers_whenInsertNewCarMakers_thenSuccess() {
-        
-        assertNotNull(carMakerDao);
-        
-        CarMaker carMaker1 = CarMaker.builder()
-          .name("maker1")
-          .build();
 
-        CarMaker carMaker2 = CarMaker.builder()
-            .name("maker2")
-            .build();
-        
+        assertNotNull(carMakerDao);
+
+        CarMaker carMaker1 = new CarMaker();
+        carMaker1.setName("maker1");
+
+        CarMaker carMaker2 = new CarMaker();
+        carMaker2.setName("maker2");
+
         List<CarMaker> makers = new ArrayList<>();
         makers.add(carMaker1);
         makers.add(carMaker2);
-        
+
         List<Long> generatedIds = carMakerDao.bulkInsert(makers);
-        log.info("[I37] generatedIds = {}", generatedIds);
         assertThat(generatedIds).size().isEqualTo(makers.size());
     }
-    
-    
+
+
     @Test
     public void givenExistingCarMaker_whenFindById_thenReturnExistingCarMaker() {
-    
+
         CarMaker maker = carMakerDao.findById(1l);
         assertThat(maker).isNotNull();
         assertThat(maker.getId()).isEqualTo(1);
-        
+
     }
-    
+
     @Test
     public void givenExistingCarMaker_whenBulkInsertFails_thenRollback() {
-        
+
         CarMaker maker = carMakerDao.findById(1l);
-        CarModel m1 = CarModel.builder()
-          .makerId(maker.getId())
-          .name("Model X1")
-          .sku("1-M1")
-          .year(2019)
-          .build();
+        CarModel m1 = new CarModel();
+        m1.setMakerId(maker.getId());
+        m1.setName("Model X1");
+        m1.setSku("1-M1");
+        m1.setYear(2019);
         maker.getModels().add(m1);
 
-        CarModel m2 = CarModel.builder()
-            .makerId(maker.getId())
-            .name("Model X1")
-            .sku("1-M1")
-            .year(2019)
-            .build();
+        CarModel m2 = new CarModel();
+        m1.setMakerId(maker.getId());
+        m1.setName("Model X1");
+        m1.setSku("1-M1");
+        m1.setYear(2019);
         maker.getModels().add(m2);
-        
+
         // This insert fails because we have the same SKU
         try {
             carMakerService.bulkInsert(maker);
             assertTrue("Insert must fail", true);
         }
         catch(Exception ex) {
-            log.info("[I113] Exception: {}", ex.getMessage());
         }
-        
+
         CarModel m = carModelDao.findByMakerIdAndSku(maker.getId(), "1-M1");
         assertThat(m).isNull();
-            
+
     }
-    
 }
