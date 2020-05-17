@@ -88,7 +88,7 @@ public class CollectionToArrayListUnitTest {
         Iterator<Foo> iterA = a.iterator();
         Iterator<Foo> iterB = b.iterator();
         while (iterA.hasNext()) {
-            // use '==' to test instance identity
+            // test instance identity
             assertSame("Foo instances differ!", iterA.next(), iterB.next());
         }
     }
