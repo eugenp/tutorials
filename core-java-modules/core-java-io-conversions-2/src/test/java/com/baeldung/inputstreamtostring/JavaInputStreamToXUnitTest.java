@@ -11,13 +11,26 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
@@ -44,6 +57,18 @@ public class JavaInputStreamToXUnitTest {
             }
         }
         assertEquals(textBuilder.toString(), originalString);
+    }
+
+    @Test
+    public void givenUsingJava8_whenConvertingAnInputStreamToAString_thenCorrect() {
+        final String originalString = randomAlphabetic(DEFAULT_SIZE);
+        final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        final String text = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))
+          .lines()
+          .collect(Collectors.joining("\n"));
+
+        assertThat(text, equalTo(originalString));
     }
 
     @Test
