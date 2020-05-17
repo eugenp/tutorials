@@ -1,43 +1,43 @@
 package com.baeldung.o;
 
 public class Division implements CalculatorOperation {
-    private double number1;
-    private double number2;
-    private double result = 0.0;
+	private double left;
+	private double right;
+	private double result = 0.0;
 
-    public Division(double number1, double number2) {
-        this.number1 = number1;
-        this.number2 = number2;
-    }
+	public Division(double left, double right) {
+		this.left = left;
+		this.right = right;
+	}
 
-    public double getNumber1() {
-        return number1;
-    }
+	public double getLeft() {
+		return left;
+	}
 
-    public void setNumber1(double number1) {
-        this.number1 = number1;
-    }
+	public void setLeft(double left) {
+		this.left = left;
+	}
 
-    public double getNumber2() {
-        return number2;
-    }
+	public double getRight() {
+		return right;
+	}
 
-    public void setNumber2(double number2) {
-        this.number2 = number2;
-    }
+	public void setRight(double right) {
+		this.right = right;
+	}
 
-    public double getResult() {
-        return result;
-    }
+	public double getResult() {
+		return result;
+	}
 
-    public void setResult(double result) {
-        this.result = result;
-    }
+	public void setResult(double result) {
+		this.result = result;
+	}
 
-    @Override
-    public void perform() {
-        if (number2 != 0) {
-            result = number1 / number2;
-        }
-    }
+	@Override
+	public void perform() {
+		if (right != 0) {
+			result = left / right;
+		}
+	}
 }
