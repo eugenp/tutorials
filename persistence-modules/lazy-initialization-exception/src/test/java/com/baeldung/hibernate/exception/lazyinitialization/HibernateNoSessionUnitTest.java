@@ -57,7 +57,7 @@ public class HibernateNoSessionUnitTest {
 		Role admin = new Role("Admin");
 		Role dba = new Role("DBA");
 
-		User user = new User("John", "Lennon");
+		User user = new User("Bob", "Smith");
 
 		user.addRole(admin);
 		user.addRole(dba);
