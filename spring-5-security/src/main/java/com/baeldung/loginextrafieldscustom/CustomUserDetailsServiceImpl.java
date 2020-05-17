@@ -1,30 +1,52 @@
 package com.baeldung.loginextrafieldscustom;
 
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.baeldung.dao.JpaUserRepository;
+import com.baeldung.domain.AuthoritiesEntity;
+import com.baeldung.domain.UserEntity;
+
 @Service("userDetailsService")
 public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
 
-    private UserRepository userRepository;
+    private JpaUserRepository userRepository;
  
-    public CustomUserDetailsServiceImpl(UserRepository userRepository) {
+    public CustomUserDetailsServiceImpl(JpaUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsernameAndDomain(String username, String domain) throws UsernameNotFoundException {
         if (StringUtils.isAnyBlank(username, domain)) {
             throw new UsernameNotFoundException("Username and domain must be provided");
         }
-        User user = userRepository.findUser(username, domain);
-        if (user == null) {
+        Optional<UserEntity> userEntityOptional = userRepository.findByUsernameAndDomain(username, domain);
+        if(userEntityOptional.isPresent()) {
+            final UserEntity userEntity = userEntityOptional.get();
+            
+            final Collection<GrantedAuthority> authorities = userEntity.getAuthorities().stream()
+                .map(AuthoritiesEntity::getAuthority)
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toSet());
+            
+            return new User(userEntity.getUsername(), userEntity.getDomain(), userEntity.getPassword(), userEntity.isEnabled(), 
+                userEntity.isAccountNonExpired(), userEntity.isCredentialsNonExpired(), userEntity.isAccountNonLocked(), authorities);
+        } else {
             throw new UsernameNotFoundException(
                 String.format("Username not found for domain, username=%s, domain=%s", 
                     username, domain));
         }
-        return user;
     }
 }
