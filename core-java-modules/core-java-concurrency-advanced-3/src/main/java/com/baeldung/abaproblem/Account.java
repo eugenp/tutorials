@@ -1,39 +1,53 @@
 package com.baeldung.abaproblem;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Account {
 
-    private AtomicInteger balance = new AtomicInteger(0);
-    private List<Long> transactionDates = new ArrayList<>();
+    private AtomicInteger balance;
+    private AtomicInteger transactionCount;
+    private ThreadLocal<Integer> currentThreadCASFailureCount;
+
+    public Account() {
+        this.balance = new AtomicInteger(0);
+        this.transactionCount = new AtomicInteger(0);
+        this.currentThreadCASFailureCount = new ThreadLocal<>();
+        this.currentThreadCASFailureCount.set(0);
+    }
 
     public int getBalance() {
         return balance.get();
     }
 
-    public List<Long> getTransactionDates() {
-        return transactionDates;
+    public int getTransactionCount() {
+        return transactionCount.get();
     }
 
-    public boolean withdraw(int amount) throws InterruptedException {
+    public int getCurrentThreadCASFailureCount() {
+        return currentThreadCASFailureCount.get();
+    }
+
+    public boolean withdraw(int amount) {
         int current = getBalance();
-        if (current < amount) {
-            throw new RuntimeException("Not sufficient balance");
-        }
-        precessBalance();
+        maybeWait();
         boolean result = balance.compareAndSet(current, current - amount);
         if (result) {
-            transactionDates.add(System.currentTimeMillis());
+            transactionCount.incrementAndGet();
+        } else {
+            int currentCASFailureCount = currentThreadCASFailureCount.get();
+            currentThreadCASFailureCount.set(currentCASFailureCount + 1);
         }
         return result;
     }
 
-    private void precessBalance() throws InterruptedException {
+    private void maybeWait() {
         if ("thread1".equals(Thread.currentThread().getName())) {
-            TimeUnit.SECONDS.sleep(2);
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 
@@ -41,7 +55,10 @@ public class Account {
         int current = balance.get();
         boolean result = balance.compareAndSet(current, current + amount);
         if (result) {
-            transactionDates.add(System.currentTimeMillis());
+            transactionCount.incrementAndGet();
+        } else {
+            int currentCASFailureCount = currentThreadCASFailureCount.get();
+            currentThreadCASFailureCount.set(currentCASFailureCount + 1);
         }
         return result;
     }
