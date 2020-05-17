@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hibernate-types</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hibernate-types</name>
+    <name>hibernate-libraries</name>
     <description>Introduction into hibernate types library</description>
 
     <parent>
@@ -142,8 +142,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.version}</version>
                 <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
