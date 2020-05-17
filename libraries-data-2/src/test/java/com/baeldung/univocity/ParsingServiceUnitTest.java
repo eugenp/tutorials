@@ -102,4 +102,11 @@ public class ParsingServiceUnitTest {
         assertEquals(2, writtenData.size());
         assertEquals(3, writtenData.get(0).length);
     }
+
+    @Test
+    public void givenLargeCsvFile_thenParsedDataShouldBeReturned() {
+        ParsingService parsingService = new ParsingService();
+        List<String[]> productData = parsingService.parseCsvFileInBatches("src/test/resources/largeProductList.csv");
+        assertEquals(36, productData.size());
+    }
 }

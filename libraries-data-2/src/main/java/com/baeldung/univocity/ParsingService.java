@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baeldung.univocity.model.Product;
+import com.univocity.parsers.common.processor.BatchedColumnProcessor;
 import com.univocity.parsers.common.processor.BeanListProcessor;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
@@ -62,6 +63,23 @@ public class ParsingService {
         } catch (IOException e) {
             logger.error("IOException opening file: " + relativePath + " " + e.getMessage());
             return new ArrayList<Product>();
+        }
+    }
+
+    public List<String[]> parseCsvFileInBatches(String relativePath) {
+        try (Reader inputReader = new InputStreamReader(new FileInputStream(new File(relativePath)), "UTF-8")) {
+            CsvParserSettings settings = new CsvParserSettings();
+            settings.setProcessor(new BatchedColumnProcessor(5) {
+                @Override
+                public void batchProcessed(int rowsInThisBatch) {
+                }
+            });
+            CsvParser parser = new CsvParser(settings);
+            List<String[]> parsedRows = parser.parseAll(inputReader);
+            return parsedRows;
+        } catch (IOException e) {
+            logger.error("IOException opening file: " + relativePath + " " + e.getMessage());
+            return new ArrayList<String[]>();
         }
     }
 }
