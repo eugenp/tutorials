@@ -3,19 +3,19 @@ package com.baeldung.architecture.hexagonal.domain;
 import java.util.Objects;
 
 public class Bike {
-    private BikeId id;
+    private int id;
     private boolean isReserved;
     private Category category;
     private Size size;
 
-    public Bike(BikeId id, boolean isReserved, Category category, Size size) {
+    public Bike(int id, boolean isReserved, Category category, Size size) {
         this.id = id;
         this.isReserved = isReserved;
         this.category = category;
         this.size = size;
     }
 
-    public BikeId getId() {
+    public int getId() {
         return id;
     }
 
@@ -26,7 +26,7 @@ public class Bike {
         if (!(o instanceof Bike))
             return false;
         Bike bike = (Bike) o;
-        return isReserved == bike.isReserved && Objects.equals(id, bike.id) && category == bike.category && size == bike.size;
+        return id == bike.id && isReserved == bike.isReserved && category == bike.category && size == bike.size;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Bike {
         return isReserved;
     }
 
-    private boolean isAvailable() {
+    public boolean isAvailable() {
         return !isReserved;
     }
 
@@ -53,13 +53,6 @@ public class Bike {
 
     public Size getSize() {
         return size;
-    }
-
-    boolean isMatchingBike(BikeReservationRequest bikeReservationRequest) {
-        boolean isCorrectCategory = this.getCategory() == bikeReservationRequest.getCategory();
-        boolean isCorrectSize = this.getSize() == bikeReservationRequest.getSize();
-
-        return this.isAvailable() && isCorrectCategory && isCorrectSize;
     }
 
     public void markReserved() {

@@ -2,46 +2,60 @@ package com.baeldung.architecture.hexagonal.adaptor;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.architecture.hexagonal.domain.Bike;
-import com.baeldung.architecture.hexagonal.domain.BikeId;
 import com.baeldung.architecture.hexagonal.domain.Category;
 import com.baeldung.architecture.hexagonal.domain.Size;
 
 class BikeDataStoreAdaptorUnitTest {
     @Test
-    void whenGetAllBikesIsCalled_thenGetAllBikes() {
+    void whenGetAllBikesIsCalled_thenAllBikesShouldBeReturned() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
         assertEquals(dataStoreAdaptor.getAllBikes()
             .size(), 6);
     }
 
     @Test
-    void whenBikeDoesExist_thenUpdateBikeShouldSucceed() {
+    void whenBikeExists_thenUpdateBikeShouldSucceed() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
 
-        List<Bike> bikes = dataStoreAdaptor.getAllBikes();
+        Collection<Bike> bikes = dataStoreAdaptor.getAllBikes();
 
-        // update bike one to be reserved
-        Bike bikeOne = bikes.get(0);
+        // verify bike one is not reserved
+        Bike bikeOne = findBikeWithGivenIdInCollection(bikes, 1);
         assertFalse(bikeOne.isReserved());
 
+        // update bike one to be reserved
         bikeOne.markReserved();
         dataStoreAdaptor.updateBike(bikeOne);
 
-        bikes = dataStoreAdaptor.getAllBikes();
-        assertTrue(bikes.get(0)
-            .isReserved());
+        // verify bike one is reserved
+        bikeOne = findBikeWithGivenIdInCollection(bikes, 1);
+        assertTrue(bikeOne.isReserved());
+    }
+
+    @Test
+    void whenBikeIsNull_thenUpdateBikeShouldFail() {
+        BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
+
+        try {
+            dataStoreAdaptor.updateBike(null);
+
+            fail("This shouldn't work");
+
+        } catch (Throwable e) {
+            assertEquals("Can't update data store with null bike.", e.getMessage());
+        }
     }
 
     @Test
     void whenBikeDoesNotExist_thenUpdateBikeShouldFail() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
 
-        Bike bikeNotInDataStore = new Bike(new BikeId(144), false, Category.TANDEM, Size.TWELVE);
+        Bike bikeNotInDataStore = new Bike(144, false, Category.TANDEM, Size.TWELVE);
 
         try {
             dataStoreAdaptor.updateBike(bikeNotInDataStore);
@@ -49,23 +63,31 @@ class BikeDataStoreAdaptorUnitTest {
             fail("This shouldn't work");
 
         } catch (Throwable e) {
-            assertEquals("Bike with id BikeId{id=144} was not found in data store.", e.getMessage());
+            assertEquals("Bike with id 144 not found in data store.", e.getMessage());
         }
     }
 
     @Test
-    void whenBikeExists_thenGetSingleBike() {
+    void whenBikeExistsWithId_thenGetBikeShouldFindIt() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
+        Collection<Bike> bikes = dataStoreAdaptor.getAllBikes();
 
-        List<Bike> bikes = dataStoreAdaptor.getAllBikes();
-
-        Bike bikeOne = bikes.get(0);
+        Bike bikeOne = findBikeWithGivenIdInCollection(bikes, 1);
         assertEquals(bikeOne, dataStoreAdaptor.getBike(bikeOne.getId()));
     }
 
     @Test
-    void whenNoBikeExists_thenGetSingleBike() {
+    void whenNoBikeExistsWithId_thenGetBikeShouldNotFindOne() {
         BikeDataStoreAdaptor dataStoreAdaptor = new BikeDataStoreAdaptor();
-        assertNull(dataStoreAdaptor.getBike(new BikeId(23451)));
+        assertNull(dataStoreAdaptor.getBike(23451));
+    }
+
+    private static Bike findBikeWithGivenIdInCollection(Collection<Bike> bikes, int id) {
+        for (Bike bike : bikes) {
+            if (bike.getId() == id) {
+                return bike;
+            }
+        }
+        return null;
     }
 }

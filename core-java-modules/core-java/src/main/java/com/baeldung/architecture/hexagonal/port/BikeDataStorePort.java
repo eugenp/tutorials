@@ -1,11 +1,13 @@
 package com.baeldung.architecture.hexagonal.port;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.baeldung.architecture.hexagonal.domain.Bike;
 
 public interface BikeDataStorePort {
-    List<Bike> getAllBikes();
+    Collection<Bike> getAllBikes();
+
+    Bike getBike(int bikeId);
 
     void updateBike(Bike bike);
 }

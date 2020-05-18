@@ -1,41 +1,41 @@
 package com.baeldung.architecture.hexagonal.domain;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.baeldung.architecture.hexagonal.adaptor.BikeDataStoreAdaptor;
 import com.baeldung.architecture.hexagonal.port.BikeReservationPort;
 
 public class BikeReservationImpl implements BikeReservationPort {
-    BikeDataStoreAdaptor dataStore = new BikeDataStoreAdaptor();
+    private BikeDataStoreAdaptor dataStore = new BikeDataStoreAdaptor();
 
-    public Bike processRequest(BikeReservationRequest bikeReservationRequest) throws NoAvailableBikesException {
-        assert bikeReservationRequest != null : "Bike reservation request can not be null";
+    public Bike processReservationRequest(Category category, Size size) {
+        assert (category != null && size != null) : "category and size can not be null";
 
-        List<Bike> allBikes = dataStore.getAllBikes();
-        assert allBikes != null && allBikes.size() > 0 : "Bike data store must contain bikes";
-
-        Bike bike = findMatchingBike(bikeReservationRequest);
-        if (bike == null) {
-            throw new NoAvailableBikesException(bikeReservationRequest);
-        }
-
+        Bike bike = findAvailableBike(category, size);
         reserveBike(bike);
 
         return bike;
     }
 
-    private Bike findMatchingBike(BikeReservationRequest bikeReservationRequest) {
-        for (Bike bike : dataStore.getAllBikes()) {
-            if (bike.isMatchingBike(bikeReservationRequest)) {
-                return bike;
-            }
-        }
-
-        return null;
-    }
-
     private void reserveBike(Bike bike) {
         bike.markReserved();
         dataStore.updateBike(bike);
+    }
+
+    private Bike findAvailableBike(Category category, Size size) {
+        Collection<Bike> allBikes = dataStore.getAllBikes();
+        assert allBikes != null && allBikes.size() > 0 : "Bike data store must contain bikes";
+
+        Bike matchingBike = null;
+        for (Bike bike : allBikes) {
+            if (bike.isAvailable() && bike.getCategory() == category && bike.getSize() == size) {
+                matchingBike = bike;
+                break;
+            }
+        }
+
+        assert matchingBike != null : "No bikes were available in category " + category + " and size " + size;
+
+        return matchingBike;
     }
 }
