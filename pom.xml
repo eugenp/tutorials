@@ -463,7 +463,6 @@
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
 		<module>java-numbers-3</module>
-		<module>java-python-interop</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -497,7 +496,8 @@
                 <module>kotlin-quasar</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>libraries-2</module>
+		<module>language-interop</module>
+		<module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
