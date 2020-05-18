@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AccountUnitTest {
@@ -20,7 +19,8 @@ public class AccountUnitTest {
     @Test
     public void zeroBalanceInitializationTest() {
         assertEquals(0, account.getBalance());
-        assertTrue(account.getTransactionDates().isEmpty());
+        assertEquals(0, account.getTransactionCount());
+        assertEquals(0, account.getCurrentThreadCASFailureCount());
     }
 
     @Test
@@ -45,59 +45,54 @@ public class AccountUnitTest {
     }
 
     @Test
-    public void withdrawWithoutSufficientBalanceTest() {
-        assertThrows(RuntimeException.class, () -> account.withdraw(10));
-    }
-
-    @Test
     public void abaProblemTest() throws InterruptedException {
         final int defaultBalance = 50;
 
-        final int amountToWithdrawByThreadA = 20;
-        final int amountToWithdrawByThreadB = 10;
-        final int amountToDepositByThreadB = 10;
+        final int amountToWithdrawByThread1 = 20;
+        final int amountToWithdrawByThread2 = 10;
+        final int amountToDepositByThread2 = 10;
 
-        assertTrue(account.getTransactionDates().isEmpty());
+        assertEquals(0, account.getTransactionCount());
+        assertEquals(0, account.getCurrentThreadCASFailureCount());
         account.deposit(defaultBalance);
-        assertEquals(1, account.getTransactionDates().size());
+        assertEquals(1, account.getTransactionCount());
 
-        Thread threadA = new Thread(() -> {
-            try {
-                // this will take longer due to the name of the thread
-                assertTrue(account.withdraw(amountToWithdrawByThreadA));
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        Thread thread1 = new Thread(() -> {
+
+            // this will take longer due to the name of the thread
+            assertTrue(account.withdraw(amountToWithdrawByThread1));
+
+            // thread 1 fails to capture ABA problem
+            assertNotEquals(1, account.getCurrentThreadCASFailureCount());
+
         }, "thread1");
 
-        Thread threadB = new Thread(() -> {
+        Thread thread2 = new Thread(() -> {
 
-            assertTrue(account.deposit(amountToDepositByThreadB));
-            assertEquals(defaultBalance + amountToDepositByThreadB, account.getBalance());
-            try {
-                // this will be fast due to the name of the thread
-                assertTrue(account.withdraw(amountToWithdrawByThreadB));
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            assertTrue(account.deposit(amountToDepositByThread2));
+            assertEquals(defaultBalance + amountToDepositByThread2, account.getBalance());
+
+            // this will be fast due to the name of the thread
+            assertTrue(account.withdraw(amountToWithdrawByThread2));
 
             // thread 1 didn't finish yet, so the original value will be in place for it
             assertEquals(defaultBalance, account.getBalance());
 
+            assertEquals(0, account.getCurrentThreadCASFailureCount());
         }, "thread2");
 
-        threadA.start();
-        threadB.start();
-        threadA.join();
-        threadB.join();
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
 
         // compareAndSet operation succeeds for thread 1
-        assertEquals(defaultBalance - amountToWithdrawByThreadA, account.getBalance());
+        assertEquals(defaultBalance - amountToWithdrawByThread1, account.getBalance());
 
         //but there are other transactions
-        assertNotEquals(2, account.getTransactionDates().size());
+        assertNotEquals(2, account.getTransactionCount());
 
         // thread 2 did two modifications as well
-        assertEquals(4, account.getTransactionDates().size());
+        assertEquals(4, account.getTransactionCount());
     }
 }
