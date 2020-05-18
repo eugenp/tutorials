@@ -1,4 +1,4 @@
-package com.baeldung.python.interop;
+package com.baeldung.language.interop.python;
 
 import java.util.List;
 
