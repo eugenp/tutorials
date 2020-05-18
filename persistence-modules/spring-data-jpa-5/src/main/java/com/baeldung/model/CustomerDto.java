@@ -17,6 +17,10 @@ public class CustomerDto {
         this.phone = c.phone;
     }
     
+    public long getId() {
+    	return this.id;
+    }
+    
     public Customer convertToEntity() {
         Customer c = new Customer();
         c.id = id;
