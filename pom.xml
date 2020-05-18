@@ -377,6 +377,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
@@ -898,7 +899,6 @@
                 <module>atomix</module>
 
                 <module>aws</module>
-                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
