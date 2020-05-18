@@ -1,4 +1,4 @@
-package com.baeldung.python.interop;
+package com.baeldung.language.interop.python;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.empty;

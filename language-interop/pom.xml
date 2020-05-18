@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>java-python-interop</artifactId>
+    <artifactId>language-interop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>java-python-interop</name>
+    <name>language-interop</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -33,7 +33,7 @@
     </dependencies>
 
     <build>
-        <finalName>java-python-interop</finalName>
+        <finalName>language-interop</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
