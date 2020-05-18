@@ -38,7 +38,7 @@ public class CustomerService {
     }
 
     public Customer updateCustomer(CustomerDto dto) {
-        Customer myCustomer = repo.findById(dto.id);
+        Customer myCustomer = repo.findById(dto.getId());
         mapper.updateCustomerFromDto(dto, myCustomer);
         repo.save(myCustomer);
         return myCustomer;
