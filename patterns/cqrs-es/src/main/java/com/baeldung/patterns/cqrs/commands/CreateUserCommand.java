@@ -8,7 +8,7 @@ import lombok.Data;
 public class CreateUserCommand {
 
     private String userId;
-    private String firatName;
+    private String firstName;
     private String lastName;
 
 }

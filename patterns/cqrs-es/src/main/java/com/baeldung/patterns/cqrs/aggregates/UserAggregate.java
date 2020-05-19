@@ -14,7 +14,7 @@ public class UserAggregate {
     }
 
     public User handleCreateUserCommand(CreateUserCommand command) {
-        User user = new User(command.getUserId(), command.getFiratName(), command.getLastName());
+        User user = new User(command.getUserId(), command.getFirstName(), command.getLastName());
         writeRepository.addUser(user.getUserid(), user);
         return user;
     }
