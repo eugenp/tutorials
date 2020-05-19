@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="ulink.hyphenate.chars">
+<refmeta>
+<refentrytitle>ulink.hyphenate.chars</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>ulink.hyphenate.chars</refname>
+<refpurpose>List of characters to allow ulink URLs to be automatically
+hyphenated on</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="ulink.hyphenate.chars.frag">
+<xsl:param name="ulink.hyphenate.chars">/</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the <parameter>ulink.hyphenate</parameter> parameter is not
+empty, then hyphenation of ulinks is turned on, and any character
+contained in this parameter is treated as an allowable hyphenation
+point. This and <parameter>ulink.hyphenate</parameter> work together,
+one is pointless without the other being set to a non-empty value</para>
+
+<para>The default value is <quote>/</quote>, but the parameter could
+be customized to contain other URL characters, as for example:</para>
+<programlisting>
+&lt;xsl:param name="ulink.hyphenate.chars"&gt;:/@&amp;?.#&lt;/xsl:param&gt;
+</programlisting>
+
+</refsection>
+</refentry>

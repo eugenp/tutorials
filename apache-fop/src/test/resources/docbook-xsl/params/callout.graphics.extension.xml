@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callout.graphics.extension">
+<refmeta>
+<refentrytitle>callout.graphics.extension</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout.graphics.extension</refname>
+<refpurpose>Filename extension for callout graphics</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callout.graphics.extension.frag">
+<xsl:param condition="html" name="callout.graphics.extension">.png</xsl:param>
+<xsl:param condition="fo" name="callout.graphics.extension">.svg</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>Sets the filename extension to use on callout graphics. </para>
+
+<itemizedlist>
+<para>The Docbook XSL distribution provides callout graphics in the following formats:</para>
+<listitem><para>SVG (extension: <filename class="extension">.svg</filename>)</para></listitem>
+<listitem><para>PNG (extension: <filename class="extension">.png</filename>)</para></listitem>
+<listitem><para>GIF (extension: <filename class="extension">.gif</filename>)</para></listitem>
+</itemizedlist>
+</refsection>
+</refentry>

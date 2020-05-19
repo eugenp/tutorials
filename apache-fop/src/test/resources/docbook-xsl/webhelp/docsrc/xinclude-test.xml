@@ -1,0 +1,13 @@
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+  <chapter>
+    <title>Test section</title>
+    <section>
+      <title>Some search words for testing</title>
+      <para>arsenal, arsenic, buy, say, by, vary, try, sky, nucleus, day, key, currency, currencies, build.xml</para>
+    </section>
+    <section>
+      <title>Some search words for testing (inflected)</title>
+      <para>arsenal, arsenic, buys, says, varies, tries, skies, nuclei, days, keys, currencies, build.xml</para>
+    </section>    
+  </chapter>

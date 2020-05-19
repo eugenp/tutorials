@@ -1,0 +1,52 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.justify">
+<refmeta>
+<refentrytitle>man.justify</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.justify</refname>
+<refpurpose>Justify text to both right and left margins?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.justify.frag">
+<xsl:param name="man.justify">0</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, text is justified to both the right and left
+margins (or, in roff terminology, "adjusted and filled" to both the
+right and left margins). If zero (the default), text is adjusted to
+the left margin only -- producing what is traditionally called
+"ragged-right" text.</para>
+
+<note>
+<para>The default value for this parameter is zero because justified
+text looks good only when it is also hyphenated. Without hyphenation,
+excessive amounts of space often end up getting between words, in
+order to "pad" lines out to align on the right margin.</para>
+
+<para>The problem is that groff is not particularly smart about how it
+does hyphenation; it can end up hyphenating a lot of things that you
+don't want hyphenated. So, disabling both justification and
+hyphenation ensures that hyphens won't get inserted where you don't
+want to them, and you don't end up with lines containing excessive
+amounts of space between words.</para>
+
+<para>However, if do you decide to set a non-zero value for the
+<parameter>man.justify</parameter> parameter (to enable
+justification), then you should probably also set a non-zero value for
+<parameter>man.hyphenate</parameter> (to enable hyphenation).</para>
+
+<para>Yes, these default settings run counter to how most existing man
+pages are formatted. But there are some notable exceptions, such as
+the <literal>perl</literal> man pages.</para>
+</note>
+</refsection>
+</refentry>

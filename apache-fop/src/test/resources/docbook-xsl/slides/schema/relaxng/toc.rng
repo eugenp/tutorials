@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: toc.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <start combine="choice">
+    <choice>
+      <ref name="db.toc"/>
+      <ref name="db.tocdiv"/>
+    </choice>
+  </start>
+  <define name="db.navigation.components" combine="choice">
+    <ref name="db.toc"/>
+  </define>
+  <define name="db.toc.components" combine="choice">
+    <ref name="db.toc"/>
+  </define>
+  <define name="db.toc.pagenum.attribute">
+    <attribute name="pagenum">
+      <db:refpurpose>Indicates the page on which this element occurs in some version of the printed document</db:refpurpose>
+    </attribute>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>toc</db:refname>
+    <db:refpurpose>A table of contents</db:refpurpose>
+    <define name="db.toc.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.toc.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.toc.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.toc.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.toc">
+      <element name="toc">
+        <ref name="db.toc.attlist"/>
+        <ref name="db.toc.info"/>
+        <zeroOrMore>
+          <ref name="db.all.blocks"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <choice>
+            <ref name="db.tocdiv"/>
+            <ref name="db.tocentry"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>tocdiv</db:refname>
+    <db:refpurpose>A division in a table of contents</db:refpurpose>
+    <define name="db.tocdiv.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.tocdiv.pagenum.attribute">
+      <ref name="db.toc.pagenum.attribute"/>
+    </define>
+    <define name="db.tocdiv.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.tocdiv.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <optional>
+          <ref name="db.tocdiv.pagenum.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.linkend.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.tocdiv.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.tocdiv">
+      <element name="tocdiv">
+        <ref name="db.tocdiv.attlist"/>
+        <ref name="db.tocdiv.info"/>
+        <zeroOrMore>
+          <ref name="db.all.blocks"/>
+        </zeroOrMore>
+        <oneOrMore>
+          <choice>
+            <ref name="db.tocdiv"/>
+            <ref name="db.tocentry"/>
+          </choice>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>tocentry</db:refname>
+    <db:refpurpose>A component title in a table of contents</db:refpurpose>
+    <define name="db.tocentry.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.tocentry.pagenum.attribute">
+      <ref name="db.toc.pagenum.attribute"/>
+    </define>
+    <define name="db.tocentry.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.tocentry.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <optional>
+          <ref name="db.tocentry.pagenum.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.linkend.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.tocentry">
+      <element name="tocentry">
+        <ref name="db.tocentry.attlist"/>
+        <zeroOrMore>
+          <ref name="db.all.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+</grammar>

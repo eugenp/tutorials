@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: callouts.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:group name="db.computeroutput.inlines">
+    <xs:choice>
+      <xs:element ref="db:co"/>
+      <xs:element ref="db:db.markup.inlines"/>
+      <xs:choice minOccurs="0">
+        <xs:group ref="db:db.ubiq.inlines"/>
+        <xs:element ref="db:db.os.inlines"/>
+        <xs:element ref="db:db.technical.inlines"/>
+      </xs:choice>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="db.prompt.inlines">
+    <xs:choice>
+      <xs:element ref="db:co"/>
+      <xs:group ref="db:db._text"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="db.systemitem.inlines">
+    <xs:choice>
+      <xs:element ref="db:co"/>
+      <xs:group ref="db:db._text"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="db.userinput.inlines">
+    <xs:choice>
+      <xs:element ref="db:co"/>
+      <xs:element ref="db:db.markup.inlines"/>
+      <xs:group ref="db:db.gui.inlines"/>
+      <xs:group ref="db:db.keyboard.inlines"/>
+      <xs:choice minOccurs="0">
+        <xs:group ref="db:db.ubiq.inlines"/>
+        <xs:element ref="db:db.os.inlines"/>
+        <xs:element ref="db:db.technical.inlines"/>
+      </xs:choice>
+    </xs:choice>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.area.units.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="calspair">
+        <xs:annotation>
+          <xs:documentation>Coordinates expressed as a pair of CALS graphic coordinates.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="linecolumn">
+        <xs:annotation>
+          <xs:documentation>Coordinates expressed as a line and column.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="linecolumnpair">
+        <xs:annotation>
+          <xs:documentation>Coordinates expressed as a pair of lines and columns.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="linerange">
+        <xs:annotation>
+          <xs:documentation>Coordinates expressed as a line range.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.area.units-enum.attribute">
+    <xs:attribute name="units" type="db:db.area.units.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.area.units-other.attributes">
+    <xs:attribute name="units">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="other">
+            <xs:annotation>
+              <xs:documentation>Coordinates expressed in some non-standard units.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="otherunits" use="required" type="xs:NMTOKEN"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.area.units.attribute">
+    <xs:attribute name="units">
+      <xs:simpleType>
+        <xs:union memberTypes="db:db.area.units.enumeration">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="other">
+                <xs:annotation>
+                  <xs:documentation>Coordinates expressed in some non-standard units.</xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="otherunits" type="xs:NMTOKEN"/>
+  </xs:attributeGroup>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.calloutlist.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.calloutlist.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.calloutlist.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.only"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="calloutlist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.calloutlist.info"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+        <xs:element maxOccurs="unbounded" ref="db:callout"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.calloutlist.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.callout.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.callout.arearefs.attribute">
+    <xs:attribute name="arearefs" use="required" type="xs:IDREFS"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.callout.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.callout.arearefs.attribute"/>
+  </xs:attributeGroup>
+  <xs:element name="callout">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="db:db.all.blocks"/>
+      <xs:attributeGroup ref="db:db.callout.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.programlistingco.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.programlistingco.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.programlistingco.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.forbidden"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="programlistingco" substitutionGroup="db:db.verbatim.blocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.programlistingco.info"/>
+        <xs:element ref="db:areaspec"/>
+        <xs:element ref="db:programlisting"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:calloutlist"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.programlistingco.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.areaspec.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.areaspec.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attributeGroup ref="db:db.area.units.attribute"/>
+  </xs:attributeGroup>
+  <xs:element name="areaspec">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:group ref="db:db.area"/>
+        <xs:element ref="db:areaset"/>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.areaspec.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.area.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.area.linkends.attribute">
+    <xs:attribute name="linkends" use="required" type="xs:IDREFS"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.area.label.attribute">
+    <xs:attribute name="label" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.area.coords.attribute">
+    <xs:attribute name="coords" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.area.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="db:db.common.idreq.attributes"/>
+    <xs:attributeGroup ref="db:db.area.units.attribute"/>
+    <xs:attribute name="linkends" type="xs:IDREFS"/>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attributeGroup ref="xlink:type"/>
+    <xs:attribute ref="xlink:role"/>
+    <xs:attribute ref="xlink:arcrole"/>
+    <xs:attribute ref="xlink:title"/>
+    <xs:attribute ref="xlink:show"/>
+    <xs:attribute ref="xlink:actuate"/>
+    <xs:attribute name="label"/>
+    <xs:attributeGroup ref="db:db.area.coords.attribute"/>
+  </xs:attributeGroup>
+  <xs:group name="db.area">
+    <xs:sequence>
+      <xs:element name="area">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="db:alt"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.area.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <!-- The only difference is that xml:id is optional -->
+  <xs:attributeGroup name="db.area.inareaset.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.area.units.attribute"/>
+    <xs:attribute name="linkends" type="xs:IDREFS"/>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attributeGroup ref="xlink:type"/>
+    <xs:attribute ref="xlink:role"/>
+    <xs:attribute ref="xlink:arcrole"/>
+    <xs:attribute ref="xlink:title"/>
+    <xs:attribute ref="xlink:show"/>
+    <xs:attribute ref="xlink:actuate"/>
+    <xs:attribute name="label"/>
+    <xs:attributeGroup ref="db:db.area.coords.attribute"/>
+  </xs:attributeGroup>
+  <xs:group name="db.area.inareaset">
+    <xs:sequence>
+      <xs:element name="area">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="db:alt"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.area.inareaset.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.areaset.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.areaset.linkends.attribute">
+    <xs:attributeGroup ref="db:db.linkends.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.areaset.label.attribute">
+    <xs:attributeGroup ref="db:db.label.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.areaset.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="db:db.common.idreq.attributes"/>
+    <xs:attributeGroup ref="db:db.area.units.attribute"/>
+    <xs:attribute name="linkends" type="xs:IDREFS"/>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attributeGroup ref="xlink:type"/>
+    <xs:attribute ref="xlink:role"/>
+    <xs:attribute ref="xlink:arcrole"/>
+    <xs:attribute ref="xlink:title"/>
+    <xs:attribute ref="xlink:show"/>
+    <xs:attribute ref="xlink:actuate"/>
+    <xs:attribute name="label"/>
+  </xs:attributeGroup>
+  <xs:element name="areaset">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="db:db.area.inareaset"/>
+      <xs:attributeGroup ref="db:db.areaset.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.screenco.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.screenco.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.screenco.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.forbidden"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="screenco" substitutionGroup="db:db.verbatim.blocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.screenco.info"/>
+        <xs:element ref="db:areaspec"/>
+        <xs:element ref="db:screen"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:calloutlist"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.screenco.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.imageobjectco.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.imageobjectco.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.imageobjectco.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.forbidden"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="imageobjectco" substitutionGroup="db:db.mediaobject.content">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.imageobjectco.info"/>
+        <xs:element ref="db:areaspec"/>
+        <xs:element maxOccurs="unbounded" ref="db:imageobject"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:calloutlist"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.imageobjectco.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.co.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.co.linkends.attribute">
+    <xs:attributeGroup ref="db:db.linkends.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.co.label.attribute">
+    <xs:attributeGroup ref="db:db.label.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.co.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="db:db.common.idreq.attributes"/>
+    <xs:attribute name="linkends" type="xs:IDREFS"/>
+    <xs:attribute name="label"/>
+  </xs:attributeGroup>
+  <xs:element name="co">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.co.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.coref.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.coref.label.attribute">
+    <xs:attributeGroup ref="db:db.label.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.coref.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.linkend.attribute"/>
+    <xs:attribute name="label"/>
+  </xs:attributeGroup>
+  <xs:element name="coref">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.coref.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

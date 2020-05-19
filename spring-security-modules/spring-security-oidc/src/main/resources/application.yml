@@ -1,0 +1,7 @@
+server:
+  port: 8081
+  
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+            

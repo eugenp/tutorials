@@ -1,0 +1,46 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.authors.section.enabled">
+<refmeta>
+<refentrytitle>man.authors.section.enabled</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.authors.section.enabled</refname>
+<refpurpose>Display auto-generated AUTHORS section?</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<src:fragment xml:id="man.authors.section.enabled.frag">
+<xsl:param name="man.authors.section.enabled">1</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+
+<para>If the value of
+<parameter>man.authors.section.enabled</parameter> is non-zero
+(the default), then an <literal>AUTHORS</literal> section is
+generated near the end of each man page. The output of the
+<literal>AUTHORS</literal> section is assembled from any
+<tag>author</tag>, <tag>editor</tag>, and <tag>othercredit</tag>
+metadata found in the contents of the child <tag>info</tag> or
+<tag>refentryinfo</tag> (if any) of the <tag>refentry</tag>
+itself, or from any <tag>author</tag>, <tag>editor</tag>, and
+<tag>othercredit</tag> metadata that may appear in <tag>info</tag>
+contents of any ancestors of the <tag>refentry</tag>.</para>
+
+<para>If the value of
+<parameter>man.authors.section.enabled</parameter> is zero, the
+the auto-generated <literal>AUTHORS</literal> section is
+suppressed.</para>
+
+<para>Set the value of
+  <parameter>man.authors.section.enabled</parameter> to zero if
+  you want to have a manually created <literal>AUTHORS</literal>
+  section in your source, and you want it to appear in output
+  instead of the auto-generated <literal>AUTHORS</literal>
+  section.</para>
+</refsection>
+</refentry>

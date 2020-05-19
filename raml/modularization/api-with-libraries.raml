@@ -1,0 +1,50 @@
+#%RAML 1.0
+title: API for REST Services used in the RAML tutorials on Baeldung.com
+documentation:
+  - title: Overview
+  - content: |
+      This document defines the interface for the REST services
+      used in the popular RAML Tutorial series at Baeldung.com.
+  - title: Disclaimer:
+  - content: |
+      All names used in this definition are purely fictional.
+      Any similarities between the names used in this tutorial and those of real persons, whether living or dead, are merely coincidental.
+  - title: Copyright
+  - content: Copyright 2016 by Baeldung.com. All rights reserved.
+uses:
+  mySecuritySchemes: !include libraries/security.raml
+  myDataTypes: !include libraries/dataTypes.raml
+  myResourceTypes: !include libraries/resourceTypes.raml
+  myTraits: !include libraries/traits.raml
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: [ mySecuritySchemes.basicAuth ]
+/foos:
+  type: myResourceTypes.collection
+  typeName: myDataTypes.Foo
+  get:
+    queryParameters:
+      name?: string
+      ownerName?: string
+  /{fooId}:
+    type: myResourceTypes.item
+    typeName: myDataTypes.Foo
+  /name/{name}:
+    get:
+      description: List all foos with a certain name
+      typeName: myDataTypes.Foo
+      is: [ myTraits.hasResponseCollection ]
+/bars:
+  type: myResourceTypes.collection
+  typeName: myDataTypes.Bar
+  /{barId}:
+    type: myResourceTypes.item
+    typeName: myDataTypes.Bar
+  /fooId/{fooId}:
+    get:
+      description: Get all bars for the matching fooId
+      type: myResourceTypes.item
+      typeName: myDataTypes.Bar
+      is: [ myTraits.hasResponseCollection ]

@@ -1,0 +1,26 @@
+<t:templates xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0"
+             xmlns:param="http://nwalsh.com/docbook/xsl/template/1.0/param"
+             xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<t:titlepage t:element="slides" t:wrapper="div" class="slide cover title">
+  <t:titlepage-content t:side="recto">
+    <title/>
+    <subtitle/>
+    <corpauthor/>
+    <authorgroup/>
+    <author/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+</t:templates>

@@ -1,0 +1,9 @@
+<MithraObject objectType="transactional">
+    <PackageName>com.baeldung.libraries.reladomo</PackageName>
+    <ClassName>Employee</ClassName>
+    <DefaultTable>employees</DefaultTable>
+
+    <Attribute name="id" javaType="long" columnName="employee_id"   primaryKey="true"/>
+    <Attribute name="name" javaType="String" columnName="name" maxLength="50" truncate="true"/>
+    <Attribute name="departmentId" javaType="long" columnName="department_id"/>
+</MithraObject>

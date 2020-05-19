@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: msgset.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+  <start combine="choice">
+    <choice>
+      <ref name="db.msg"/>
+      <ref name="db.msgexplan"/>
+      <ref name="db.msgmain"/>
+      <ref name="db.msgrel"/>
+      <ref name="db.msgset"/>
+      <ref name="db.msgsub"/>
+    </choice>
+  </start>
+  <define name="db.technical.blocks" combine="choice">
+    <ref name="db.msgset"/>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgset</db:refname>
+    <db:refpurpose>A detailed set of messages, usually error messages</db:refpurpose>
+    <define name="db.msgset.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgset.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgset.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgset.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.msgset">
+      <element name="msgset">
+        <ref name="db.msgset.attlist"/>
+        <ref name="db.msgset.info"/>
+        <choice>
+          <oneOrMore>
+            <ref name="db.msgentry"/>
+          </oneOrMore>
+          <oneOrMore>
+            <ref name="db.simplemsgentry"/>
+          </oneOrMore>
+        </choice>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgentry</db:refname>
+    <db:refpurpose>A wrapper for an entry in a message set</db:refpurpose>
+    <define name="db.msgentry.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgentry.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgentry.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgentry">
+      <element name="msgentry">
+        <ref name="db.msgentry.attlist"/>
+        <oneOrMore>
+          <ref name="db.msg"/>
+        </oneOrMore>
+        <optional>
+          <ref name="db.msginfo"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="db.msgexplan"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>simplemsgentry</db:refname>
+    <db:refpurpose>A wrapper for a simpler entry in a message set</db:refpurpose>
+    <define name="db.simplemsgentry.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.simplemsgentry.msgaud.attribute">
+      <attribute name="msgaud">
+        <db:refpurpose>The audience to which the message relevant</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.simplemsgentry.msgorig.attribute">
+      <attribute name="msgorig">
+        <db:refpurpose>The origin of the message</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.simplemsgentry.msglevel.attribute">
+      <attribute name="msglevel">
+        <db:refpurpose>The level of importance or severity of a message</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.simplemsgentry.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.simplemsgentry.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.simplemsgentry.msgaud.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.simplemsgentry.msgorig.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.simplemsgentry.msglevel.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.simplemsgentry">
+      <element name="simplemsgentry">
+        <ref name="db.simplemsgentry.attlist"/>
+        <ref name="db.msgtext"/>
+        <oneOrMore>
+          <ref name="db.msgexplan"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msg</db:refname>
+    <db:refpurpose>A message in a message set</db:refpurpose>
+    <define name="db.msg.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msg.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msg.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msg.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.msg">
+      <element name="msg">
+        <ref name="db.msg.attlist"/>
+        <ref name="db.msg.info"/>
+        <ref name="db.msgmain"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="db.msgsub"/>
+            <ref name="db.msgrel"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgmain</db:refname>
+    <db:refpurpose>The primary component of a message in a message set </db:refpurpose>
+    <define name="db.msgmain.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgmain.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgmain.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgmain.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.msgmain">
+      <element name="msgmain">
+        <ref name="db.msgmain.attlist"/>
+        <ref name="db.msgmain.info"/>
+        <ref name="db.msgtext"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgsub</db:refname>
+    <db:refpurpose>A subcomponent of a message in a message set</db:refpurpose>
+    <define name="db.msgsub.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgsub.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgsub.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgsub.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.msgsub">
+      <element name="msgsub">
+        <ref name="db.msgsub.attlist"/>
+        <ref name="db.msgsub.info"/>
+        <ref name="db.msgtext"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgrel</db:refname>
+    <db:refpurpose>A related component of a message in a message set</db:refpurpose>
+    <define name="db.msgrel.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgrel.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgrel.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgrel.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.msgrel">
+      <element name="msgrel">
+        <ref name="db.msgrel.attlist"/>
+        <ref name="db.msgrel.info"/>
+        <ref name="db.msgtext"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgtext</db:refname>
+    <db:refpurpose>The actual text of a message component in a message set</db:refpurpose>
+    <define name="db.msgtext.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgtext.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgtext.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgtext">
+      <element name="msgtext">
+        <ref name="db.msgtext.attlist"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msginfo</db:refname>
+    <db:refpurpose>Information about a message in a message set</db:refpurpose>
+    <define name="db.msginfo.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msginfo.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msginfo.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msginfo">
+      <element name="msginfo">
+        <ref name="db.msginfo.attlist"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="db.msglevel"/>
+            <ref name="db.msgorig"/>
+            <ref name="db.msgaud"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msglevel</db:refname>
+    <db:refpurpose>The level of importance or severity of a message in a message set</db:refpurpose>
+    <define name="db.msglevel.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msglevel.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msglevel.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msglevel">
+      <element name="msglevel">
+        <ref name="db.msglevel.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgorig</db:refname>
+    <db:refpurpose>The origin of a message in a message set</db:refpurpose>
+    <define name="db.msgorig.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgorig.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgorig.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgorig">
+      <element name="msgorig">
+        <ref name="db.msgorig.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgaud</db:refname>
+    <db:refpurpose>The audience to which a message in a message set is relevant</db:refpurpose>
+    <define name="db.msgaud.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgaud.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgaud.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgaud">
+      <element name="msgaud">
+        <ref name="db.msgaud.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>msgexplan</db:refname>
+    <db:refpurpose>Explanatory material relating to a message in a message set</db:refpurpose>
+    <define name="db.msgexplan.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.msgexplan.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.msgexplan.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.msgexplan.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.msgexplan">
+      <element name="msgexplan">
+        <ref name="db.msgexplan.attlist"/>
+        <ref name="db.msgexplan.info"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+</grammar>

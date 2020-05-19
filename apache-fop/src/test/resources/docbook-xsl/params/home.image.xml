@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="home.image">
+<refmeta>
+<refentrytitle>home.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>home.image</refname>
+<refpurpose>Home image</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="home.image.frag">
+<xsl:param name="home.image">active/nav-home.png</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the home navigation icon.</para>
+
+</refsection>
+</refentry>

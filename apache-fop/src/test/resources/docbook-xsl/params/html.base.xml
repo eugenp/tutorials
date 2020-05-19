@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="html.base">
+<refmeta>
+<refentrytitle>html.base</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.base</refname>
+<refpurpose>An HTML base URI</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.base.frag">
+<xsl:param name="html.base"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If html.base is set, it is used for the <tag>base</tag> element
+in the <tag>head</tag> of the html documents.  The parameter specifies
+the base URL for all relative URLs in the document.  This is useful
+for dynamically served html where the base URI needs to be
+shifted.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,12 @@
+{ "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "description": "Error message",
+  "properties": {
+    "message": { "type": "string" },
+    "code": { "type": integer }
+  },
+  "required": [
+    "message",
+    "code"
+  ]
+}

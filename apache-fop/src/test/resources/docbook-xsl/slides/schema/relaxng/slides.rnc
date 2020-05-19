@@ -1,0 +1,206 @@
+namespace db = "http://docbook.org/ns/docbook"
+namespace mml = "http://www.w3.org/1998/Math/MathML"
+namespace svg = "http://www.w3.org/2000/svg"
+default namespace dbs = "http://docbook.org/ns/docbook-slides"
+
+# See http://docbook.org/ns/docbook-slides
+
+# This file is part of DocBook Slides V5.0
+# 
+# Copyright 2012 Gabor Kovesdan
+# 
+# Release: $Id$
+# 
+# Permission to use, copy, modify and distribute the DocBook Slides
+# schema and its accompanying documentation for any purpose and without
+# fee is hereby granted in perpetuity, provided that the above copyright
+# notice and this paragraph appear in all copies. The copyright
+# holders make no representation about the suitability of the schema
+# for any purpose. It is provided "as is" without expressed or implied
+# warranty.
+# 
+# If you modify the DocBook Slides schema in any way, label your schema
+# as a variant of DocBook Slides. See the reference documentation
+# (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+# for more information.
+# 
+# Please direct all questions, bug reports, or suggestions for changes
+# to the docbook@lists.oasis-open.org mailing list. For more
+# information, see http://www.oasis-open.org/docbook/.
+# 
+# ======================================================================
+
+include "../../../../docbook/relaxng/docbook/docbook/docbook.rnc" inherit = db {
+  start = dbs.slides
+  
+  # Avoid ID clashes
+  db._any.attribute = attribute * - (xml:id | linkend) { text }
+
+  db.common.attributes =
+    db.xml.id.attribute?
+    & db.common.base.attributes
+    & db.annotations.attribute?
+    & dbs.style.attributes?
+
+  # Any element and attribute from the SVG namespace
+  db._any.svg =
+    element svg:* { (dbs._any.attribute | text | db._any)* }
+
+  # Any element and attribute from the MathML namespace
+  db._any.mml =
+    element mml:* { (dbs._any.attribute | text | db._any)* }
+}
+
+# Any attribute from any namespace
+dbs._any.attribute = attribute * { text }
+
+dbs.all.content = db.all.blocks? &
+  dbs.speakernotes &
+  dbs.handoutnotes &
+  db._any.svg? &
+  db._any.mml? &
+  dbs.block?
+
+dbs.block =
+  ## Indicates a formatting block that can have its own styling applied
+  element block { dbs.block.attlist,
+  dbs.all.content*
+}
+
+dbs.block.role.attribute =
+  ## Role attribute for the block element
+  attribute role { text }
+
+dbs.block.status.attribute =
+  ## Status attribute for the block element
+  db.status.attribute
+
+dbs.block.attlist = dbs.block.role.attribute?
+  & db.common.attributes
+  & db.common.linking.attributes
+  & db.label.attribute?
+  & dbs.block.status.attribute?
+
+dbs.slides =
+  ## Root element of a slides document
+  element slides { dbs.slides.attlist,
+  db._info.title.req,
+  dbs.speakernotes?,
+  dbs.handoutnotes?,
+  (
+    dbs.foil? &
+    dbs.foilgroup?
+  )*
+}
+
+dbs.slides.role.attribute =
+  ## Role attribute for the slides element
+  attribute role { text }
+
+dbs.slides.status.attribute =
+  ## Status attribute for the slides element
+  db.status.attribute
+
+dbs.slides.attlist = dbs.slides.role.attribute?
+  & db.common.attributes
+  & db.common.linking.attributes
+  & db.label.attribute?
+  & dbs.slides.status.attribute?
+
+dbs.foilgroup = element foilgroup {
+  dbs.foilgroup.attlist,
+  db._info.title.req,
+  dbs.all.content*,
+  dbs.foil+
+}
+
+dbs.foilgroup.role.attribute =
+  ## Role attribute for the foilgroup element
+  attribute role { text }
+
+dbs.foilgroup.status.attribute =
+  ## Status attribute for the foilgroup element
+  db.status.attribute
+
+dbs.foilgroup.attlist = dbs.foilgroup.role.attribute?
+  & db.common.attributes
+  & db.common.linking.attributes
+  & db.label.attribute?
+  & dbs.slides.status.attribute?
+
+dbs.foil =
+  ## Indicates a foil that may have some info and content
+  element foil { dbs.foil.attlist,
+  db._info.title.req,
+  dbs.all.content*,
+  db.navigation.components*
+}
+
+dbs.foil.role.attribute =
+  ## Role attribute for the foil element
+  attribute role { text }
+
+dbs.foil.status.attribute =
+  ## Status attribute for the foil element
+  db.status.attribute
+
+dbs.foil.attlist = dbs.foil.role.attribute?
+  & db.common.attributes
+  & db.common.linking.attributes
+  & db.label.attribute?
+  & dbs.foil.status.attribute?
+
+dbs.speakernotes =
+  ## Indicates notes for the speaker
+  element speakernotes { dbs.speakernotes.attlist,
+  db.all.blocks+
+}
+
+dbs.speakernotes.role.attribute =
+  ## Role attribute for the speakernotes element
+  attribute role { text }
+
+dbs.speakernotes.attlist = dbs.speakernotes.role.attribute?
+  & db.common.attributes
+  & db.common.linking.attributes
+
+dbs.handoutnotes =
+  ## Indicates notes that are meant for printed copies
+  element handoutnotes { dbs.handoutnotes.attlist,
+  db.all.blocks+
+}
+
+## Role attribute for the handoutnotes element
+dbs.handoutnotes.role.attribute =
+  ## Role attribute for the handoutnotes element
+  attribute role { text }
+
+dbs.handoutnotes.attlist = dbs.handoutnotes.role.attribute?
+  & db.common.attributes
+  & db.common.linking.attributes
+
+dbs.style.attributes  = dbs.incremental.attribute?
+  & dbs.collapsible.attribute?
+  & dbs.style.attribute?
+
+dbs.incremental.attribute =
+  ## Attribute indicating an incremental part
+  attribute dbs:incremental {
+  ## disabled
+  "0" | 
+  ## enabled
+  "1" }
+
+dbs.collapsible.attribute =
+  ## Attribute indicating a collapsible part
+  attribute dbs:collapsible {
+  ## disabled
+  "0" |
+  ## enabled
+  "1" |
+  ## enabled and expanded by default
+  "expanded" }
+
+dbs.style.attribute =
+  ## Attribute indicating a formatting style class
+  attribute dbs:style { text }
