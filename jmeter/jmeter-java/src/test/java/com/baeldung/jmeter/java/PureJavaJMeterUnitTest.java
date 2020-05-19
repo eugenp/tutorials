@@ -18,7 +18,8 @@ public class PureJavaJMeterUnitTest {
 
         StandardJMeterEngine standardJMeterEngine = new StandardJMeterEngine();
 
-        URL resource = getClass().getClassLoader().getResource("jmeter.properties");
+        URL resource = getClass().getClassLoader()
+            .getResource("jmeter.properties");
         JMeterUtils.loadJMeterProperties(resource.getPath());
         JMeterUtils.initLocale();
 

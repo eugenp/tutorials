@@ -22,7 +22,8 @@ public class JMeterFromJmxUnitTest {
 
         SaveService.loadProperties();
 
-        URL resource = getClass().getClassLoader().getResource("test_plan.jmx");
+        URL resource = getClass().getClassLoader()
+            .getResource("test_plan.jmx");
         File file = new File(resource.toURI());
         HashTree hashTree = SaveService.loadTree(file);
 
