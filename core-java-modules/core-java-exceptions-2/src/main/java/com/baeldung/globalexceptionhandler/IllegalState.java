@@ -1,4 +1,4 @@
-package com.baeldung.exceptions.globalexceptionhandler;
+package com.baeldung.globalexceptionhandler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
