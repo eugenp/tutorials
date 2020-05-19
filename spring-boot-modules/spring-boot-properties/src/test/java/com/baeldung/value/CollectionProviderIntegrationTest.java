@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CollectionProvider.class)
-public class CollectionProviderTest {
+public class CollectionProviderIntegrationTest {
 
     @Autowired
     private CollectionProvider collectionProvider;
