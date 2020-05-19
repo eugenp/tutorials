@@ -153,11 +153,18 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <properties>
-        <junit.version>4.13</junit.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit.version>4.13</junit.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
     </properties>
 </project>
