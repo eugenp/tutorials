@@ -28,7 +28,7 @@ public class UserAggregate {
     }
 
     public List<Event> handleCreateUserCommand(CreateUserCommand command) {
-        UserCreatedEvent event = new UserCreatedEvent(command.getUserId(), command.getFiratName(), command.getLastName());
+        UserCreatedEvent event = new UserCreatedEvent(command.getUserId(), command.getFirstName(), command.getLastName());
         writeRepository.addEvent(command.getUserId(), event);
         return Arrays.asList(event);
     }
