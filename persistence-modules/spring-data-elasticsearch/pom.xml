@@ -38,6 +38,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
+        
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
@@ -71,6 +77,7 @@
 
     <properties>
         <spring-data-elasticsearch.version>4.0.0.RELEASE</spring-data-elasticsearch.version>
+        <elasticsearch.version>7.6.2</elasticsearch.version>
         <fastjson.version>1.2.47</fastjson.version>
         <spatial4j.version>0.7</spatial4j.version>
         <jts.version>1.15.0</jts.version>
