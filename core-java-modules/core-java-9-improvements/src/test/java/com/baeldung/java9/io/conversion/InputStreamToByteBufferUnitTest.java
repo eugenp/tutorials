@@ -1,4 +1,4 @@
-package com.baeldung.inputstreamtobytes;
+package com.baeldung.java9.io.conversion;
 
 import com.google.common.io.ByteSource;
 import com.google.common.io.ByteStreams;
