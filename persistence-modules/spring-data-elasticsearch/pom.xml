@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.locationtech.jts</groupId>
             <artifactId>jts-core</artifactId>
-            <version>1.15.0</version>
+            <version>${jts.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>xerces</groupId>
@@ -67,29 +67,12 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>${jna.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
-        <spring-data-elasticsearch.version>4.0.0.RC1</spring-data-elasticsearch.version>
-        <jna.version>4.5.2</jna.version>
+        <spring-data-elasticsearch.version>4.0.0.RELEASE</spring-data-elasticsearch.version>
         <fastjson.version>1.2.47</fastjson.version>
         <spatial4j.version>0.7</spatial4j.version>
-        <jts.version>1.13</jts.version>
+        <jts.version>1.15.0</jts.version>
     </properties>
-
-    <repositories>
-        <repository> 
-            <id>repository.spring.milestone</id> 
-            <name>Spring Milestone Repository</name> 
-            <url>https://repo.spring.io/milestone</url> 
-        </repository>
-    </repositories>
-
 </project>
