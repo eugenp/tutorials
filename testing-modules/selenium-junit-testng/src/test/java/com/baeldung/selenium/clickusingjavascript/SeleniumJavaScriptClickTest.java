@@ -1,4 +1,4 @@
-package java.com.baeldung.selenium.junit;
+package java.com.baeldung.selenium.clickusingjavascript;
 
 import org.junit.After;
 import org.junit.Before;
