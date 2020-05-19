@@ -31,11 +31,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * This Manual test requires: 
- * Elasticsearch instance running on localhost:9200.
+ * This Manual test requires: Elasticsearch instance running on localhost:9200.
  * 
- * The following docker command can be used:
- * docker run -d --name es761 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.1
+ * The following docker command can be used: docker run -d --name es761 -p
+ * 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
@@ -77,7 +76,7 @@ public class ElasticSearchManualTest {
     public void after() {
         articleRepository.deleteAll();
     }
-    
+
     @Test
     public void givenArticleService_whenSaveArticle_thenIdIsAssigned() {
         final List<Author> authors = asList(new Author("John Smith"), johnDoe);
@@ -91,81 +90,79 @@ public class ElasticSearchManualTest {
 
     @Test
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
-        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsName(johnSmith.getName(),
-                PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsName(johnSmith.getName(), PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsNameUsingCustomQuery("Smith",
-                PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsNameUsingCustomQuery("Smith", PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByTag_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleRepository.findByFilteredTagQuery("elasticsearch",
-                PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleRepository.findByFilteredTagQuery("elasticsearch", PageRequest.of(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsNameAndFilteredTagQuery("Doe",
-                "elasticsearch", PageRequest.of(0, 10));
+        final Page<Article> articleByAuthorName = articleRepository.findByAuthorsNameAndFilteredTagQuery("Doe", "elasticsearch", PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenPersistedArticles_whenUseRegexQuery_thenRightArticlesFound() {
         final Query searchQuery = new NativeSearchQueryBuilder().withFilter(regexpQuery("title", ".*data.*"))
-                .build();
+            .build();
 
-        final SearchHits<Article> articles = 
-            elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(1, articles.getTotalHits());
     }
 
     @Test
     public void givenSavedDoc_whenTitleUpdated_thenCouldFindByUpdatedTitle() {
-        final Query searchQuery = new NativeSearchQueryBuilder().withQuery(fuzzyQuery("title", "serch")).build();
+        final Query searchQuery = new NativeSearchQueryBuilder().withQuery(fuzzyQuery("title", "serch"))
+            .build();
         final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(1, articles.getTotalHits());
 
-        final Article article = articles.getSearchHit(0).getContent();
+        final Article article = articles.getSearchHit(0)
+            .getContent();
         final String newTitle = "Getting started with Search Engines";
         article.setTitle(newTitle);
         articleRepository.save(article);
 
-        assertEquals(newTitle, articleRepository.findById(article.getId()).get().getTitle());
+        assertEquals(newTitle, articleRepository.findById(article.getId())
+            .get()
+            .getTitle());
     }
 
     @Test
     public void givenSavedDoc_whenDelete_thenRemovedFromIndex() {
         final String articleTitle = "Spring Data Elasticsearch";
 
-        final Query searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
-        final SearchHits<Article> articles = 
-            elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
-        
+        final Query searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%"))
+            .build();
+        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+
         assertEquals(1, articles.getTotalHits());
         final long count = articleRepository.count();
 
-        articleRepository.delete(articles.getSearchHit(0).getContent());
+        articleRepository.delete(articles.getSearchHit(0)
+            .getContent());
 
         assertEquals(count - 1, articleRepository.count());
     }
 
     @Test
     public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
-        final Query searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
-        final SearchHits<Article> articles = 
-            elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final Query searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Search engines").operator(AND))
+            .build();
+        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
         assertEquals(1, articles.getTotalHits());
     }
 }
