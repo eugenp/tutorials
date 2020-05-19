@@ -13,7 +13,7 @@
     </parent>
 
     <dependencies>
-        <dependency>
+        <!--dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
@@ -23,7 +23,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
-        </dependency>
+        </dependency-->
 
         <dependency>
             <groupId>org.springframework</groupId>
