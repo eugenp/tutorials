@@ -1,14 +1,13 @@
-package com.baeldung.properties;
+package com.baeldung.properties.json.factory;
 
-import java.io.IOException;
-import java.util.Map;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.support.EncodedResource;
 import org.springframework.core.io.support.PropertySourceFactory;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.util.Map;
 
 public class JsonPropertySourceFactory implements PropertySourceFactory {
 

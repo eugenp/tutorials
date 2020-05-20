@@ -1,10 +1,4 @@
-package com.baeldung.value;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
+package com.baeldung.properties.value;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +6,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @Configuration
 @PropertySource(name = "myProperties", value = "values.properties")
