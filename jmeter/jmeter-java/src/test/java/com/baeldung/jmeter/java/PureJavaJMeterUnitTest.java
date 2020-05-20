@@ -30,7 +30,7 @@ public class PureJavaJMeterUnitTest {
         httpSampler.setMethod("GET");
 
         LoopController loopController = new LoopController();
-        loopController.setLoops(100);
+        loopController.setLoops(10);
         loopController.addTestElement(httpSampler);
         loopController.setFirst(true);
         loopController.initialize();

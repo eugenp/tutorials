@@ -4,6 +4,7 @@ import org.apache.jmeter.engine.StandardJMeterEngine;
 import org.apache.jmeter.save.SaveService;
 import org.apache.jmeter.util.JMeterUtils;
 import org.apache.jorphan.collections.HashTree;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -12,6 +13,7 @@ import java.net.URL;
 public class JMeterFromJmxUnitTest {
 
     @Test
+    @Disabled("enable after adding link to jmeter installation")
     void startJMeterTest() throws Exception {
 
         StandardJMeterEngine standardJMeterEngine = new StandardJMeterEngine();
