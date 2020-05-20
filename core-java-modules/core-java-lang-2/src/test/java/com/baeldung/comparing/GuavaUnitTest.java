@@ -58,13 +58,13 @@ class GuavaUnitTest {
     @Nested
     class ComparisonChainClass {
         @Test
-        void givenTwoPersonWithEquals_whenComparisonChainByLastNameThenFirstName_thenSortedJoeFirstAndNathalieSecond() {
-            PersonWithEquals nathalie = new PersonWithEquals("Nathalie", "Portman");
+        void givenTwoPersonWithEquals_whenComparisonChainByLastNameThenFirstName_thenSortedJoeFirstAndNatalieSecond() {
+            PersonWithEquals natalie = new PersonWithEquals("Natalie", "Portman");
             PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
 
             int comparisonResult = ComparisonChain.start()
-              .compare(nathalie.lastName(), joe.lastName())
-              .compare(nathalie.firstName(), joe.firstName())
+              .compare(natalie.lastName(), joe.lastName())
+              .compare(natalie.firstName(), joe.firstName())
               .result();
 
             assertThat(comparisonResult).isPositive();
