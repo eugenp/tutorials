@@ -40,15 +40,15 @@ public class ExchangerPipeLineManualTest {
 
         Runnable processor = () -> {
             Queue<String> processorBuffer = new ConcurrentLinkedQueue<>();
-            Queue<String> writterBuffer = new ConcurrentLinkedQueue<>();
+            Queue<String> writerBuffer = new ConcurrentLinkedQueue<>();
             try {
                 processorBuffer = readerExchanger.exchange(processorBuffer);
                 while (true) {
-                    writterBuffer.add(processorBuffer.poll());
+                    writerBuffer.add(processorBuffer.poll());
                     if (processorBuffer.isEmpty()) {
                         try {
                             processorBuffer = readerExchanger.exchange(processorBuffer);
-                            writterBuffer = writerExchanger.exchange(writterBuffer);
+                            writerBuffer = writerExchanger.exchange(writerBuffer);
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                             throw new RuntimeException(e);
@@ -62,13 +62,13 @@ public class ExchangerPipeLineManualTest {
         };
 
         Runnable writer = () -> {
-            Queue<String> writterBuffer = new ConcurrentLinkedQueue<>();
+            Queue<String> writerBuffer = new ConcurrentLinkedQueue<>();
             try {
-                writterBuffer = writerExchanger.exchange(writterBuffer);
+                writerBuffer = writerExchanger.exchange(writerBuffer);
                 while (true) {
-                    System.out.println(writterBuffer.poll());
-                    if (writterBuffer.isEmpty()) {
-                        writterBuffer = writerExchanger.exchange(writterBuffer);
+                    System.out.println(writerBuffer.poll());
+                    if (writerBuffer.isEmpty()) {
+                        writerBuffer = writerExchanger.exchange(writerBuffer);
                     }
                 }
             } catch (InterruptedException e) {
