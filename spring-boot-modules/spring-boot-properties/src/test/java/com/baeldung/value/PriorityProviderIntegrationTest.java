@@ -17,6 +17,6 @@ public class PriorityProviderIntegrationTest {
 
     @Test
     public void givenPropertyFileWhenConstructorInjectionUsedThenValueInjected() {
-        assertThat(priorityProvider.getPriority()).isEqualTo("Properties file");
+        assertThat(priorityProvider.getPriority()).isEqualTo("high");
     }
 }
