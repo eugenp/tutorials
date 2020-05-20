@@ -19,9 +19,9 @@ class ObjectsEqualsStaticMethodUnitTest {
     @Test
     void givenTwoPersonWithEqualsWithDifferentNames_whenObjectsEquals_thenFalse() {
         PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
-        PersonWithEquals nathalie = new PersonWithEquals("Nathalie", "Portman");
+        PersonWithEquals natalie = new PersonWithEquals("Natalie", "Portman");
 
-        assertThat(Objects.equals(joe, nathalie)).isFalse();
+        assertThat(Objects.equals(joe, natalie)).isFalse();
     }
 
     @Test

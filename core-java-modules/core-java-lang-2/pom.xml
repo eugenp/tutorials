@@ -70,7 +70,7 @@
         <jmh-generator.version>1.19</jmh-generator.version>
         <assertj.version>3.12.2</assertj.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-lang3.version>3.10</commons-lang3.version>
         <guava.version>29.0-jre</guava.version>
     </properties>
 

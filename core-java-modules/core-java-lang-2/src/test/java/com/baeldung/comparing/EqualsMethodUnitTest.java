@@ -66,8 +66,8 @@ class EqualsMethodUnitTest {
     @Test
     void givenTwoPersonWittEqualsWithDifferentNames_whenEquals_thenFalse() {
         PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
-        PersonWithEquals nathalie = new PersonWithEquals("Nathalie", "Portman");
+        PersonWithEquals natalie = new PersonWithEquals("Natalie", "Portman");
 
-        assertThat(joe.equals(nathalie)).isFalse();
+        assertThat(joe.equals(natalie)).isFalse();
     }
 }
