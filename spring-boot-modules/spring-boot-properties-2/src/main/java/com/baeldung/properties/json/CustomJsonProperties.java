@@ -1,4 +1,4 @@
-package com.baeldung.properties;
+package com.baeldung.properties.json;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

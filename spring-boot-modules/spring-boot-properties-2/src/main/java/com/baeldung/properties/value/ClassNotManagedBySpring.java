@@ -1,4 +1,4 @@
-package com.baeldung.value;
+package com.baeldung.properties.value;
 
 public class ClassNotManagedBySpring {
 

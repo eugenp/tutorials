@@ -1,6 +1,4 @@
-package com.baeldung.properties;
-
-import java.util.Arrays;
+package com.baeldung.properties.json;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -9,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ConfigPropertiesDemoApplication.class, initializers = JsonPropertyContextInitializer.class)

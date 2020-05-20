@@ -1,10 +1,6 @@
-package com.baeldung.valuewithdefaults;
+package com.baeldung.properties.value.defaults;
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,8 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
 
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Ints;
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Demonstrates setting defaults for @Value annotation.  Note that there are no properties 
@@ -62,14 +59,13 @@ public class ValuesWithDefaultsApp {
     	Assert.isTrue(intWithDefaultValue == 42);
     	
     	// arrays
-    	List<String> stringListValues = Lists.newArrayList("one", "two", "three");
+        List<String> stringListValues = Arrays.asList("one", "two", "three");
     	Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues));
 
-    	List<Integer> intListValues = Lists.newArrayList(1, 2, 3);
-    	Assert.isTrue(Ints.asList(intArrayWithDefaults).containsAll(intListValues));
+        List<Integer> intListValues = Arrays.asList(1, 2, 3);
+    	Assert.isTrue(Arrays.asList(ArrayUtils.toObject(intArrayWithDefaults)).containsAll(intListValues));
 
     	// SpEL
     	Assert.isTrue(spelWithDefaultValue.equals("my default system property value"));
-    	
     }
 }

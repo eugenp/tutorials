@@ -1,11 +1,12 @@
-package com.baeldung.properties;
+package com.baeldung.properties.json;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-
+import com.baeldung.properties.json.factory.JsonPropertySourceFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+
+import java.util.LinkedHashMap;
+import java.util.List;
 
 @Component
 @PropertySource(value = "classpath:configprops.json", factory = JsonPropertySourceFactory.class)

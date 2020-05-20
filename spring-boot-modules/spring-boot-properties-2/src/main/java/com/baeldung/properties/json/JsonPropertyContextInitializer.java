@@ -1,4 +1,11 @@
-package com.baeldung.properties;
+package com.baeldung.properties.json;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.PropertySource;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -9,14 +16,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.env.MapPropertySource;
-import org.springframework.core.env.PropertySource;
-import org.springframework.core.io.Resource;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonPropertyContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
