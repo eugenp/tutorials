@@ -24,6 +24,7 @@
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
+        <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
