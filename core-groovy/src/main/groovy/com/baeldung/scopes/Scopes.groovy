@@ -1,20 +1,32 @@
 package com.baeldung.scopes
 
-x = 2
+x = 200
 
 def getX() {
     return x;
 }
 
 
-def f() {
-    z = 23
+def fGlobal() {
+    z = 234
     println(z)
 }
 
-println(x)
-def scopes = new Scopes();
-print(getX())
+def fLocal() {
+    def q = 333
+    println(q)
+}
 
-f()
+println("- Global variable")
+println(x)
+println("- Access global variable from inside function")
+println(getX())
+println("- function called to create variable")
+fGlobal()
+println("- Variable created inside a function")
 println(z)
+println("- Access local variable from inside function")
+fLocal()
+println("- Local variable doesn't exist outside")
+println(q)
+
