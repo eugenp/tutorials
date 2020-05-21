@@ -22,17 +22,16 @@ class BookRestControllerAdapterIntegrationTest {
     @Test
     void whenSendingABookToDonation_thenThisBookShallDisplayInTheSearchByName() throws Exception {
         String testHost = "http://localhost:" + port + "/books";
-
+     // @formatter:off
         BookDto savedBook = restTemplate.postForEntity(testHost, new BookDto("Baeldung", "Hexagonal Architecture"), BookDto.class)
-            .getBody();
+          .getBody();
         Assertions.assertThat(savedBook)
-            .isEqualToComparingFieldByField(new BookDto(1L, "Baeldung", "Hexagonal Architecture"));
+          .isEqualToComparingFieldByField(new BookDto(1L, "Baeldung", "Hexagonal Architecture"));
 
         BookDto[] foundBook = restTemplate.getForEntity(testHost + "?name=Hexagonal", BookDto[].class)
-            .getBody();
+          .getBody();
         Assertions.assertThat(foundBook[0])
-            .isEqualToComparingFieldByField(savedBook);
-
-    }
+          .isEqualToComparingFieldByField(savedBook);
+    }// @formatter:on
 
 }

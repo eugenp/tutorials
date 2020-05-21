@@ -18,12 +18,12 @@ class BookPersistenceAdapter implements BookPersistencePort {
     }
 
     @Override
-    public List<BookDto> findByNameContaining(String partOfTheName) {
+    public List<BookDto> findByNameContaining(String partOfTheName) {// @formatter:off
         return bookRepository.findByNameContaining(partOfTheName)
-            .stream()
-            .map(this::convertToBookDto)
-            .collect(Collectors.toList());
-    }
+          .stream()
+          .map(this::convertToBookDto)
+          .collect(Collectors.toList());
+    }// @formatter:on
 
     @Override
     public BookDto save(BookDto bootDto) {
@@ -32,10 +32,10 @@ class BookPersistenceAdapter implements BookPersistencePort {
     }
 
     private BookDto convertToBookDto(BookEntity book) {
-        return new BookDto(book.getId(),  book.getAuthor(), book.getName());
+        return new BookDto(book.getId(), book.getAuthor(), book.getName());
     }
- 
+
     private BookEntity convertToBook(BookDto book) {
-        return new BookEntity(book.getId(), book.getAuthor(),book.getName());
+        return new BookEntity(book.getId(), book.getAuthor(), book.getName());
     }
 }

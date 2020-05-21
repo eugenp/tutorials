@@ -13,25 +13,25 @@ import com.baeldung.architecture.hexagonal.business.bordery.dto.BookDto;
 class MemoryBookPersistenceAdapter implements BookPersistencePort {
 
     // @formatter:off
-    Map<Long,BookDto> memoryDb = Stream.of(
-        new BookDto(1L, "Baeldung", "Hexagonal Architecture"),
-        new BookDto(2L, "Baeldung", "Clean Architecture")
-        ).collect(Collectors.toMap(BookDto::getId, Function.identity()));
+    Map<Long, BookDto> memoryDb = Stream.of(
+      new BookDto(1L, "Baeldung", "Hexagonal Architecture"),
+      new BookDto(2L, "Baeldung", "Clean Architecture")
+      ).collect(Collectors.toMap(BookDto::getId, Function.identity()));
     // @formatter:on
 
     @Override
     public List<BookDto> findByNameContaining(String partOfTheName) {// @formatter:off
         return memoryDb.values().stream()
-            .filter(book -> book.getName().contains(partOfTheName))
-            .collect(Collectors.toList());
+          .filter(book -> book.getName().contains(partOfTheName))
+          .collect(Collectors.toList());
     }// @formatter:on
 
     @Override
-    public BookDto save(BookDto book) {
+    public BookDto save(BookDto book) {// @formatter:off
         Long biggestId = memoryDb.keySet()
-            .stream()
-            .max(Comparator.naturalOrder())
-            .get();
+          .stream()
+          .max(Comparator.naturalOrder())
+          .get();// @formatter:on
 
         book.setId(++biggestId);
         memoryDb.put(biggestId, book);
