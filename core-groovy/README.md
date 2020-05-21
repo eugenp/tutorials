@@ -13,4 +13,5 @@ This module contains articles about core Groovy concepts
 - [Converting a String to a Date in Groovy](https://www.baeldung.com/groovy-string-to-date)
 - [Guide to I/O in Groovy](https://www.baeldung.com/groovy-io)
 - [Convert String to Integer in Groovy](https://www.baeldung.com/groovy-convert-string-to-integer)
+- [Secure JCenter with HTTPS](https://jfrog.com/blog/secure-jcenter-with-https/)
 - [[More -->]](/core-groovy-2)
