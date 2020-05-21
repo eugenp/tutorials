@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -44,10 +45,11 @@ public class RateLimitInterceptor implements HandlerInterceptor {
 
         } else {
 
-            long waitForRefill = probe.getNanosToWaitForRefill() % 1_000_000_000;
+            long waitForRefill = probe.getNanosToWaitForRefill() / 1_000_000_000;
 
-            response.sendError(HttpStatus.TOO_MANY_REQUESTS.value(), "You have exhausted your API Request Quota"); // 429
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.addHeader(HEADER_RETRY_AFTER, String.valueOf(waitForRefill));
+            response.sendError(HttpStatus.TOO_MANY_REQUESTS.value(), "You have exhausted your API Request Quota"); // 429
 
             return false;
         }

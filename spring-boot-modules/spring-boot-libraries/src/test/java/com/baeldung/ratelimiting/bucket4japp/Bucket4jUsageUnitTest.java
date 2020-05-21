@@ -1,4 +1,4 @@
-package com.baledung.ratelimiting.bucket4j;
+package com.baeldung.ratelimiting.bucket4japp;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
