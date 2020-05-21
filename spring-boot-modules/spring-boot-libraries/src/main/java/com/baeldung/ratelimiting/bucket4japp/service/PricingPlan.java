@@ -5,34 +5,28 @@ import java.time.Duration;
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Refill;
 
-enum PricingPlan {
+public enum PricingPlan {
 
-    FREE {
+    FREE(20),
 
-        @Override
-        Bandwidth getLimit() {
-            return Bandwidth.classic(20, Refill.intervally(20, Duration.ofHours(1)));
-        }
-    },
+    BASIC(40),
 
-    BASIC {
+    PROFESSIONAL(100);;
 
-        @Override
-        Bandwidth getLimit() {
-            return Bandwidth.classic(40, Refill.intervally(40, Duration.ofHours(1)));
-        }
-    },
-
-    PROFESSIONAL {
-
-        @Override
-        Bandwidth getLimit() {
-            return Bandwidth.classic(100, Refill.intervally(100, Duration.ofHours(1)));
-        }
-    };
-
-    abstract Bandwidth getLimit();
-
+    private int bucketCapacity;
+    
+    private PricingPlan(int bucketCapacity) {
+        this.bucketCapacity = bucketCapacity;
+    }
+    
+    Bandwidth getLimit() {
+        return Bandwidth.classic(bucketCapacity, Refill.intervally(bucketCapacity, Duration.ofHours(1)));
+    }
+    
+    public int bucketCapacity() {
+        return bucketCapacity;
+    }
+    
     static PricingPlan resolvePlanFromApiKey(String apiKey) {
         if (apiKey == null || apiKey.isEmpty()) {
             return FREE;
