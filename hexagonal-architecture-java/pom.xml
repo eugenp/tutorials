@@ -6,13 +6,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.sumanasaha</groupId>
 	<artifactId>hexagonal-architecture-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hexagonal-architecture-java</name>
-	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
