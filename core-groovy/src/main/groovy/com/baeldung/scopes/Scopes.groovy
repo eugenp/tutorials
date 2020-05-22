@@ -2,31 +2,24 @@ package com.baeldung.scopes
 
 x = 200
 
-def getX() {
-    return x;
+def getGlobalResult() {
+    println(x)
+    def test = 1 + x
+    return   test
 }
 
 
-def fGlobal() {
+def getGlobalCreatedLocally() {
     z = 234
     println(z)
-}
-
-def fLocal() {
-    def q = 333
-    println(q)
+    return z
 }
 
 println("- Global variable")
 println(x)
 println("- Access global variable from inside function")
-println(getX())
+println(getGlobalResult())
 println("- function called to create variable")
-fGlobal()
+getGlobalCreatedLocally()
 println("- Variable created inside a function")
 println(z)
-println("- Access local variable from inside function")
-fLocal()
-println("- Local variable doesn't exist outside")
-println(q)
-
