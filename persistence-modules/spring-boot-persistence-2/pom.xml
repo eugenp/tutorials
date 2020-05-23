@@ -120,6 +120,22 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${oracle-database.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.ha</groupId>
+            <artifactId>ons</artifactId>
+            <version>${oracle-database.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ucp</artifactId>
+            <version>${oracle-database.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -128,23 +144,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- Please note that ojdbc8.jar, ucp.jar and ons.jar dependencies 
-                are needed for OracleConfiguration.java, OracleUCPConfiguration.java, SpringOraclePoolingApplicationOracleLiveTest.java 
-                and SpringOraclePoolingApplicationOracleUCPLiveTest.java -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>com/baeldung/spring/oracle/pooling/configuration/OracleConfiguration.java</exclude>
-                        <exclude>com/baeldung/spring/oracle/pooling/configuration/OracleUCPConfiguration.java</exclude>
-                    </excludes>
-                    <testExcludes>
-                        <testExclude>com/baeldung/spring/oracle/pooling/SpringOraclePoolingApplicationOracleLiveTest.java</testExclude>
-                        <testExclude>com/baeldung/spring/oracle/pooling/SpringOraclePoolingApplicationOracleUCPLiveTest.java</testExclude>
-                    </testExcludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -152,6 +151,7 @@
         <jdbi.version>3.9.1</jdbi.version>
         <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
         <c3p0.version>0.9.5.2</c3p0.version>
+        <oracle-database.version>19.6.0.0</oracle-database.version>
     </properties>
 
 </project>
