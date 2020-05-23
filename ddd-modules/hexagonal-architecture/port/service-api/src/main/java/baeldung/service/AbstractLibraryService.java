@@ -3,19 +3,15 @@ package baeldung.service;
 import baeldung.model.Book;
 import baeldung.model.BookStorage;
 import baeldung.model.Library;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class LibraryService {
+public abstract class AbstractLibraryService implements LibraryService {
 
     private final Library library;
     private final BookProviderNotificationService bookProviderNotificationService;
 
-    @Autowired
-    public LibraryService(BookStorage bookStorage, BookProviderNotificationService bookProviderNotificationService) {
+    public AbstractLibraryService(BookStorage bookStorage, BookProviderNotificationService bookProviderNotificationService) {
         this.library = new Library(bookStorage);
         this.bookProviderNotificationService = bookProviderNotificationService;
     }

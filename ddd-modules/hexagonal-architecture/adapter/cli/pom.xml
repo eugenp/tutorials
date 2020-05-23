@@ -2,21 +2,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cli</artifactId>
+
     <parent>
         <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
         <artifactId>adapter</artifactId>
         <version>1.0</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>cli</artifactId>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.9.RELEASE</version>
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -25,34 +26,34 @@
 
     <dependencies>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>1.10.10</version>
+            <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+            <artifactId>service-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
-            <artifactId>service</artifactId>
-            <version>1.0</version>
+            <artifactId>notification-jms-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
             <artifactId>rest-api</artifactId>
-            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
-            <artifactId>persistence</artifactId>
-            <version>1.0</version>
+            <artifactId>jpa-persistence</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.1.9.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.10.10</version>
         </dependency>
     </dependencies>
 
@@ -61,7 +62,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.9.RELEASE</version>
+                <version>${spring.boot.version}</version>
             </plugin>
         </plugins>
     </build>

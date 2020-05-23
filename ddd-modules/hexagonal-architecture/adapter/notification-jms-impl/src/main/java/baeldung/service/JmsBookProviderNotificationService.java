@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class BookProviderNotificationService {
+public class JmsBookProviderNotificationService implements BookProviderNotificationService {
 
     private static final String BOOK_PROVIDER_NOTIFICATION_QUEUE = "book-provider-queue";
     private final JmsTemplate jmsTemplate;
 
     @Autowired
-    public BookProviderNotificationService(ApplicationContext applicationContext) {
+    public JmsBookProviderNotificationService(ApplicationContext applicationContext) {
         this.jmsTemplate = applicationContext.getBean(JmsTemplate.class);
     }
 

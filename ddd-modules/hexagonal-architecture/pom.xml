@@ -2,22 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+    <artifactId>hexagonal-architecture</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
 
     <parent>
         <groupId>com.baeldung.dddmodules</groupId>
         <artifactId>ddd-modules</artifactId>
         <version>1.0</version>
     </parent>
-    
-    <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
-    <artifactId>hexagonal-architecture</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
     </properties>
 
     <modules>
@@ -25,5 +26,67 @@
         <module>port</module>
         <module>adapter</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>notification-api</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>service-impl</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>notification-jms-impl</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>rest-api</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>jpa-persistence</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
+                <artifactId>service-api</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-activemq</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.12</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

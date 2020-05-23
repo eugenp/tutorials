@@ -4,19 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core</artifactId>
+    <artifactId>notification-api</artifactId>
 
     <parent>
+        <artifactId>port</artifactId>
         <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
-        <artifactId>hexagonal-architecture</artifactId>
         <version>1.0</version>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>

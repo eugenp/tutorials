@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rest-api</artifactId>
+    <artifactId>jpa-persistence</artifactId>
 
     <parent>
         <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
@@ -15,12 +15,13 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.dddmodules.hexagonal-architecture</groupId>
-            <artifactId>service-api</artifactId>
+            <artifactId>core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>
