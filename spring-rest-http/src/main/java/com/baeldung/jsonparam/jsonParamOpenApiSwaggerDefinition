@@ -1,5 +1,9 @@
 swagger: '2.0'
-...
+info:
+  title: Sample API to send JSON objects as query parameters using OpenAPI 2
+  description: API description.
+  version: 1.0.0
+
 paths:
   /tickets:
     get:
@@ -10,10 +14,16 @@ paths:
           description: A JSON object with the `type` and `color` properties
           type: string
           example: '{"type":"foo","color":"green"}'
+      responses:
+        '200':
+          description: successful process
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
 
-swagger: '2.0'
-...
-paths:
   /tickets:
     post:
       requestBody:
@@ -26,129 +36,137 @@ paths:
       responses:
         '200':
           description: successful process
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
 
-"/api/tickets": {
-    "get": {
-        "tags": [
-            "account-resource"
-        ],
-        "summary": "testQueryParamApi",
-        "operationId": "testQueryParamApiUsingGET",
-        "produces": [
-            "*/*"
-        ],
-        "parameters": [
-            {
-                "name": "params",
-                "in": "query",
-                "description": "params",
-                "required": true,
-                "type": "string"
-            }
-        ],
-        "responses": {
-            "200": {
-                "description": "OK",
-                "schema": {
-                    "type": "string"
-                }
-            },
-            "401": {
-                "description": "Unauthorized"
-            },
-            "403": {
-                "description": "Forbidden"
-            },
-            "404": {
-                "description": "Not Found"
-            }
-        },
-        "deprecated": false
-    },
-    "post": {
-        "tags": [
-            "account-resource"
-        ],
-        "summary": "testBodyParamApi",
-        "operationId": "testBodyParamApiUsingPOST",
-        "consumes": [
-            "application/json"
-        ],
-        "produces": [
-            "*/*"
-        ],
-        "parameters": [
-            {
-                "in": "body",
-                "name": "params",
-                "description": "params",
-                "required": true,
-                "schema": {
-                    "type": "string"
-                }
-            }
-        ],
-        "responses": {
-            "200": {
-                "description": "OK",
-                "schema": {
-                    "type": "string"
-                }
-            },
-            "201": {
-                "description": "Created"
-            },
-            "401": {
-                "description": "Unauthorized"
-            },
-            "403": {
-                "description": "Forbidden"
-            },
-            "404": {
-                "description": "Not Found"
-            }
-        },
-        "deprecated": false
-    }
-},
-"/api/tickets2": {
-    "get": {
-        "tags": [
-            "account-resource"
-        ],
-        "summary": "testGetBodyParamApi",
-        "operationId": "testGetBodyParamApiUsingGET",
-        "produces": [
-            "*/*"
-        ],
-        "parameters": [
-            {
-                "in": "body",
-                "name": "params",
-                "description": "params",
-                "required": true,
-                "schema": {
-                    "type": "string"
-                }
-            }
-        ],
-        "responses": {
-            "200": {
-                "description": "OK",
-                "schema": {
-                    "type": "string"
-                }
-            },
-            "401": {
-                "description": "Unauthorized"
-            },
-            "403": {
-                "description": "Forbidden"
-            },
-            "404": {
-                "description": "Not Found"
-            }
-        },
-        "deprecated": false
-    }
-}
+  /api/tickets: {
+      get: {
+          tags: [
+              "account-resource"
+          ],
+          summary: "testQueryParamApi",
+          operationId: "testQueryParamApiUsingGET",
+          produces: [
+              "*/*"
+          ],
+          parameters: [
+              {
+                  name: "params",
+                  in: "query",
+                  description: "params",
+                  required: true,
+                  type: "string"
+              }
+          ],
+          responses: {
+              200: {
+                  description: "OK",
+                  schema: {
+                      type: "string"
+                  }
+              },
+              401: {
+                  description: "Unauthorized"
+              },
+              403: {
+                  description: "Forbidden"
+              },
+              404: {
+                  description: "Not Found"
+              }
+          },
+          deprecated: false
+      },
+      post: {
+          tags: [
+              "account-resource"
+          ],
+          summary: "testBodyParamApi",
+          operationId: "testBodyParamApiUsingPOST",
+          consumes: [
+              "application/json"
+          ],
+          produces: [
+              "*/*"
+          ],
+          parameters: [
+              {
+                  in: "body",
+                  name: "params",
+                  description: "params",
+                  required: true,
+                  schema: {
+                      type: "string"
+                  }
+              }
+          ],
+          responses: {
+              200: {
+                  description: "OK",
+                  schema: {
+                      type: "string"
+                  }
+              },
+              201: {
+                  description: "Created"
+              },
+              401: {
+                  description: "Unauthorized"
+              },
+              403: {
+                  description: "Forbidden"
+              },
+              404: {
+                  description: "Not Found"
+              }
+          },
+          deprecated: false
+      }
+  },
+  /api/tickets2: {
+      get: {
+          tags: [
+              "account-resource"
+          ],
+          summary: "testGetBodyParamApi",
+          operationId: "testGetBodyParamApiUsingGET",
+          produces: [
+              "*/*"
+          ],
+          parameters: [
+              {
+                  in: "body",
+                  name: "params",
+                  description: "params",
+                  required: true,
+                  schema: {
+                      type: "string"
+                  }
+              }
+          ],
+          responses: {
+              200: {
+                  description: "OK",
+                  schema: {
+                      type: "string"
+                  }
+              },
+              401: {
+                  description: "Unauthorized"
+              },
+              403: {
+                  description: "Forbidden"
+              },
+              404: {
+                  description: "Not Found"
+              }
+          },
+          deprecated: false
+      }
+  }
