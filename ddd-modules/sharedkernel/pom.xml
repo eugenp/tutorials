@@ -11,7 +11,7 @@
 
     <parent>
         <groupId>com.baeldung.dddmodules</groupId>
-        <artifactId>dddmodules</artifactId>
+        <artifactId>ddd-modules</artifactId>
         <version>1.0</version>
     </parent>
 

@@ -23,6 +23,7 @@
         <module>shippingcontext</module>
         <module>ordercontext</module>
         <module>mainapp</module>
+        <module>hexagonal-architecture</module>
     </modules>
 
     <dependencyManagement>
