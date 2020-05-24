@@ -1,5 +1,5 @@
 package baeldung.port.input;
 
 public interface AnimalInfo {
-    String getClassByAnimalName(String animalName);
+        String getClassByAnimalName(String animalName);
 }
