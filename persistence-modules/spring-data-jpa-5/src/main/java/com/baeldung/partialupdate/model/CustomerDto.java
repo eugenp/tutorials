@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.partialupdate.model;
 
 public class CustomerDto {
     private long id;
