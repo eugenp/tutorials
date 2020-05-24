@@ -14,3 +14,4 @@ This module contains articles specific to use of Hibernate as a JPA implementati
 - [TransactionRequiredException Error](https://www.baeldung.com/jpa-transaction-required-exception)
 - [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
 - [Quick Guide to EntityManager#getReference()](https://www.baeldung.com/jpa-entity-manager-get-reference)
+- [Hibernate Error “No Persistence Provider for EntityManager”](https://www.baeldung.com/hibernate-no-persistence-provider)
