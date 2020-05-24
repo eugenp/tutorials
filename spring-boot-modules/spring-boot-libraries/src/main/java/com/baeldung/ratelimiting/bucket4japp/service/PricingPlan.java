@@ -11,7 +11,7 @@ public enum PricingPlan {
 
     BASIC(40),
 
-    PROFESSIONAL(100);;
+    PROFESSIONAL(100);
 
     private int bucketCapacity;
     
