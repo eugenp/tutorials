@@ -1,7 +1,6 @@
 ## Atomikos
-
 This module contains articles about Atomikos
 
 ### Relevant Articles: 
 
-- [Guide Transactions Using Atomikos]()
+- [A Guide to Atomikos](https://www.baeldung.com/java-atomikos)
