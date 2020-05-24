@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auth0.jwt.JWT;
@@ -17,7 +17,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 @Controller
 public class HomeController {
     
-    @RequestMapping(value = "/")
+    @GetMapping(value = "/")
     @ResponseBody
     public String home(HttpServletRequest request, HttpServletResponse response, final Authentication authentication) throws IOException {
         

@@ -14,8 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
 import com.auth0.AuthenticationController;
@@ -36,7 +35,7 @@ public class AuthController {
 
     private static final String AUTH0_TOKEN_URL = "https://dev-example.auth0.com/oauth/token";
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping(value = "/login")
     protected void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String redirectUri = config.getContextPath(request) + "/callback";
         String authorizeUrl = authenticationController.buildAuthorizeUrl(request, response, redirectUri)
@@ -45,7 +44,7 @@ public class AuthController {
         response.sendRedirect(authorizeUrl);
     }
 
-    @RequestMapping(value="/callback")
+    @GetMapping(value="/callback")
     public void callback(HttpServletRequest request, HttpServletResponse response) throws IOException, IdentityVerificationException {
         Tokens tokens = authenticationController.handle(request, response);
 
