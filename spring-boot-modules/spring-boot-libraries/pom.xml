@@ -87,7 +87,7 @@
             <artifactId>javase</artifactId>
             <version>${zxing.version}</version>
         </dependency>
-		<!-- Bucket4j -->
+        <!-- Bucket4j -->
         <dependency>
             <groupId>com.github.vladimir-bukhtoyarov</groupId>
             <artifactId>bucket4j-core</artifactId>
