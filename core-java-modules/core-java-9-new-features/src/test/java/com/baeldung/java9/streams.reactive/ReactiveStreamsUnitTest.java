@@ -5,10 +5,12 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.concurrent.SubmissionPublisher;
+import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
 
-public class ReactiveStreamsTest {
+public class ReactiveStreamsUnitTest {
 
     @Test
     public void givenPublisher_whenSubscribeToIt_thenShouldConsumeAllElements() throws InterruptedException {
@@ -25,7 +27,7 @@ public class ReactiveStreamsTest {
 
         //then
 
-        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+        await().atMost(1000, TimeUnit.MILLISECONDS).untilAsserted(
                 () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(items)
         );
     }
@@ -46,7 +48,7 @@ public class ReactiveStreamsTest {
         publisher.close();
 
         //then
-        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+        await().atMost(1000, TimeUnit.MILLISECONDS).untilAsserted(
                 () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(expectedResult)
         );
     }
@@ -66,7 +68,7 @@ public class ReactiveStreamsTest {
         publisher.close();
 
         //then
-        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+        await().atMost(1000, TimeUnit.MILLISECONDS).untilAsserted(
                 () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(expected)
         );
     }

@@ -24,7 +24,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by adam.
  */
-public class HttpClientTest {
+public class HttpClientIntegrationTest {
 
     @Test
     public void shouldReturnSampleDataContentWhenConnectViaSystemProxy() throws IOException, InterruptedException, URISyntaxException {
@@ -55,7 +55,7 @@ public class HttpClientTest {
             .send(request, HttpResponse.BodyHandler.asString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_MOVED_PERM));
-        assertThat(response.body(), containsString("https://stackoverflow.com/"));
+        assertThat(response.body(), containsString(""));
     }
 
     @Test

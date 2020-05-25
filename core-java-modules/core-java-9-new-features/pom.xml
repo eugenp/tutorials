@@ -28,8 +28,38 @@
             <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <profiles>
+        <profile>
+            <id>incubator-features</id>
+            <build>
+                <finalName>core-java-9-new-features</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
+                        <configuration>
+                            <source>${maven.compiler.source}</source>
+                            <target>${maven.compiler.target}</target>
+                            <compilerArgument>--add-modules=jdk.incubator.httpclient</compilerArgument>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>--add-modules=jdk.incubator.httpclient</argLine>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>mrjar-generation</id>
             <build>
@@ -122,6 +152,7 @@
         <!-- testing -->
         <assertj.version>3.10.0</assertj.version>
         <junit.platform.version>1.2.0</junit.platform.version>
+        <awaitility.version>4.0.2</awaitility.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
