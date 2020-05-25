@@ -36,22 +36,20 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.vladmihalcea</groupId>
             <artifactId>db-util</artifactId>
             <version>${db-util.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
-        <hibernate.version>5.3.11.Final</hibernate.version>
         <db-util.version>1.0.4</db-util.version>
     </properties>
 
