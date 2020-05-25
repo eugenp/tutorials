@@ -13,14 +13,14 @@ public class FormatNumberTest {
         @Test public void givenDecimalNumber_whenFormatNumberToNDecimalPlaces_thenGetExpectedResult() {
                 double delta = 0.0d;
                 Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormat(value, places), delta);
+                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
                 Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
 
                 places = 3;
                 expected = 2.035d;
 
                 Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormat(value, places), delta);
+                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
                 Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
 
                 value = 256.024d;
@@ -28,7 +28,7 @@ public class FormatNumberTest {
                 expected = 256.02d;
 
                 Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormat(value, places), delta);
+                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
                 Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
 
                 value = 260.773d;
@@ -36,7 +36,7 @@ public class FormatNumberTest {
                 expected = 260.77d;
 
                 Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormat(value, places), delta);
+                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
                 Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
         }
 }
