@@ -19,16 +19,6 @@ class ScopesGlobalTest extends Specification {
         noExceptionThrown()
     }
 
-    def 'Should get x value with function while running the script first'() {
-        given:
-        scopes
-        when:
-        scopes.run()
-        def x = scopes.getGlobalResult()
-        then:
-        assert x == 201
-    }
-
     def 'Should get x value directly while running the script first'() {
         given:
         scopes
@@ -37,6 +27,16 @@ class ScopesGlobalTest extends Specification {
         def x1 = scopes.x
         then:
         assert x1 == 200
+    }
+
+    def 'Should get x value with function while running the script first'() {
+        given:
+        scopes
+        when:
+        scopes.run()
+        def x = scopes.getGlobalResult()
+        then:
+        assert x == 201
     }
 
     def 'Should get x value with function while not running the script first'() {
