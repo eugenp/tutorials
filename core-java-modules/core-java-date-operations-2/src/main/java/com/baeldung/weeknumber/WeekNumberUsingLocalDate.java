@@ -15,7 +15,7 @@ public class WeekNumberUsingLocalDate {
             .weekOfYear());
     }
 
-    public Integer getWeekNumberUsinWeekFieldsFrom(int year, int month, int day, Locale locale) {
+    public Integer getWeekNumberUsingWeekFieldsFrom(int year, int month, int day, Locale locale) {
         LocalDate date = LocalDate.of(year, month, day);
 
         return date.get(WeekFields.of(locale)

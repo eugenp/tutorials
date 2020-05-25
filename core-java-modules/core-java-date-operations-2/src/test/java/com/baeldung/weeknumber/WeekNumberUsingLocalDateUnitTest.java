@@ -8,42 +8,37 @@ import org.junit.Test;
 
 public class WeekNumberUsingLocalDateUnitTest {
     @Test
-    public void givenDateInStringAndDateFormatUsingWeekFieldsWithLocaleItaly_thenGettingWeekNumberUsingLocalDateIsCorrectlyReturned() {
+    public void givenDateFormatAndLocaleItaly_whenGetWeekNumber_thenWeekIsReturnedCorrectly() {
         WeekNumberUsingLocalDate localDate = new WeekNumberUsingLocalDate();
 
-        assertEquals(12, localDate.getWeekNumberUsingWeekFiedsFrom("20200322", "yyyyMMdd", Locale.ITALY)
-            .longValue());
+        assertEquals(Integer.valueOf(12), localDate.getWeekNumberUsingWeekFiedsFrom("20200322", "yyyyMMdd", Locale.ITALY));
     }
 
     @Test
-    public void givenDateInStringAndDateFormatUsingWeekFieldsWithLocaleCanada_thenGettingWeekNumberUsingLocalDateIsCorrectlyReturned() {
+    public void givenDateFormatAndLocaleCanada_whenGetWeekNumber_thenWeekIsReturnedCorrectly() {
         WeekNumberUsingLocalDate localDate = new WeekNumberUsingLocalDate();
 
-        assertEquals(13, localDate.getWeekNumberUsingWeekFiedsFrom("20200322", "yyyyMMdd", Locale.CANADA)
-            .longValue());
+        assertEquals(Integer.valueOf(13), localDate.getWeekNumberUsingWeekFiedsFrom("20200322", "yyyyMMdd", Locale.CANADA));
     }
 
     @Test
-    public void givenDateInStringAndDateFormatUsingChronoFieds_thenGettingWeekNumberUsingLocalDateIsCorrectlyReturned() {
+    public void givenDateUsingChronoFields_whenGetWeekNumber_thenWeekIsReturnedCorrectly() {
         WeekNumberUsingLocalDate localDate = new WeekNumberUsingLocalDate();
 
-        assertEquals(12, localDate.getWeekNumberUsingChronoFieldFrom(2020, 3, 22)
-            .longValue());
+        assertEquals(Integer.valueOf(12), localDate.getWeekNumberUsingChronoFieldFrom(2020, 3, 22));
     }
 
     @Test
-    public void givenDateInYearMonthDayNumbersUsingWeekFieldsWithLocaleItaly_thenGettingWeekNumberUsingLocalDateIsCorrectlyReturned() {
+    public void givenDateUsingFieldsWithLocaleItaly_whenGetWeekNumber_thenWeekIsReturnedCorrectly() {
         WeekNumberUsingLocalDate localDate = new WeekNumberUsingLocalDate();
 
-        assertEquals(12, localDate.getWeekNumberUsinWeekFieldsFrom(2020, 3, 22, Locale.ITALY)
-            .longValue());
+        assertEquals(Integer.valueOf(12), localDate.getWeekNumberUsingWeekFieldsFrom(2020, 3, 22, Locale.ITALY));
     }
 
     @Test
-    public void givenDateInYearMonthDayNumbersUsingWeekFieldsWithLocaleCanada_thenGettingWeekNumberUsingLocalDateIsCorrectlyReturned() {
+    public void givenDateUsingFieldsWithLocaleCanada_whenGetWeekNumber_thenWeekIsReturnedCorrectly() {
         WeekNumberUsingLocalDate localDate = new WeekNumberUsingLocalDate();
 
-        assertEquals(13, localDate.getWeekNumberUsinWeekFieldsFrom(2020, 3, 22, Locale.CANADA)
-            .longValue());
+        assertEquals(Integer.valueOf(13), localDate.getWeekNumberUsingWeekFieldsFrom(2020, 3, 22, Locale.CANADA));
     }
 }

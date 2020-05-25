@@ -8,11 +8,11 @@ import java.util.Locale;
 
 public class WeekNumberUsingCalendar {
 
-    public int getWeekNumberFrom(String day, String dateFormat, Locale locale) throws ParseException {
+    public int getWeekNumberFrom(String dateString, String dateFormat, Locale locale) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-
+        Date date = sdf.parse(dateString);
+        
         Calendar calendar = Calendar.getInstance(locale);
-        Date date = sdf.parse(day);
         calendar.setTime(date);
 
         return calendar.get(Calendar.WEEK_OF_YEAR);
@@ -25,8 +25,8 @@ public class WeekNumberUsingCalendar {
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
-    public int getWeekNumberFrom(int year, int month, int day, int firstDayOfWeek, int minimalDaysInFirstWeek, Locale locale) {
-        Calendar calendar = Calendar.getInstance(locale);
+    public int getWeekNumberFrom(int year, int month, int day, int firstDayOfWeek, int minimalDaysInFirstWeek) {
+        Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(firstDayOfWeek);
         calendar.setMinimalDaysInFirstWeek(minimalDaysInFirstWeek);
         calendar.set(year, month, day);
@@ -34,8 +34,4 @@ public class WeekNumberUsingCalendar {
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
-    public static void main(String[] args) {
-        WeekNumberUsingCalendar calendar = new WeekNumberUsingCalendar();
-        System.out.println(calendar.getWeekNumberFrom(2020, 2, 22, Locale.CANADA));
-    }
 }
