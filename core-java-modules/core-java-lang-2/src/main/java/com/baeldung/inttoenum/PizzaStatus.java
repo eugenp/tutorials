@@ -4,19 +4,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum PizzaStatus {
-        ORDERED,
-        READY,
-        DELIVERED;
+        ORDERED(5),
+        READY(2),
+        DELIVERED(0);
 
-        private static Map<Integer, PizzaStatus> intToEnumValuesMapping = new HashMap<>();
+        private int timeToDelivery;
+
+        PizzaStatus (int timeToDelivery) {
+                this.timeToDelivery = timeToDelivery;
+        }
+
+        public int getTimeToDelivery() {
+                return timeToDelivery;
+        }
+
+        private static Map<Integer, PizzaStatus> timeToDeliveryToEnumValuesMapping = new HashMap<>();
         static {
                 PizzaStatus[] pizzaStatuses = PizzaStatus.values();
                 for(int pizzaStatusIndex = 0; pizzaStatusIndex < pizzaStatuses.length; pizzaStatusIndex++) {
-                        intToEnumValuesMapping.put(pizzaStatusIndex, pizzaStatuses[pizzaStatusIndex]);
+                        timeToDeliveryToEnumValuesMapping.put(
+                                pizzaStatuses[pizzaStatusIndex].getTimeToDelivery(),
+                                pizzaStatuses[pizzaStatusIndex]
+                        );
                 }
         }
 
-        public static PizzaStatus castIntToEnum(int pizzaStatusIndex) {
-                return intToEnumValuesMapping.get(pizzaStatusIndex);
+        public static PizzaStatus castIntToEnum(int timeToDelivery) {
+                return timeToDeliveryToEnumValuesMapping.get(timeToDelivery);
         }
 }

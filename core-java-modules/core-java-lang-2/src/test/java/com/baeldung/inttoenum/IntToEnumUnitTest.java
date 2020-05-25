@@ -7,14 +7,20 @@ public class IntToEnumUnitTest {
 
         @Test
         public void whenIntToEnumUsingValuesMethod_thenReturnEnumObject() {
-                int PIZZA_ORDERED_STATUS_INDEX = 0;
-                PizzaStatus[] pizzaOrderStatuses = PizzaStatus.values();
-                assertEquals(pizzaOrderStatuses[PIZZA_ORDERED_STATUS_INDEX], PizzaStatus.ORDERED);
+                int timeToDeliveryForOrderedPizzaStatus = 5;
+                PizzaStatus[] pizzaStatuses = PizzaStatus.values();
+                PizzaStatus pizzaOrderedStatus = null;
+                for(int pizzaStatusIndex = 0; pizzaStatusIndex < pizzaStatuses.length; pizzaStatusIndex++) {
+                        if(pizzaStatuses[pizzaStatusIndex].getTimeToDelivery() == timeToDeliveryForOrderedPizzaStatus) {
+                                pizzaOrderedStatus = pizzaStatuses[pizzaStatusIndex];
+                        }
+                }
+                assertEquals(pizzaOrderedStatus, PizzaStatus.ORDERED);
         }
 
         @Test
         public void whenIntToEnumUsingMap_thenReturnEnumObject() {
-                int PIZZA_ORDERED_STATUS_INDEX = 0;
-                assertEquals(PizzaStatus.castIntToEnum(PIZZA_ORDERED_STATUS_INDEX), PizzaStatus.ORDERED);
+                int timeToDeliveryForOrderedPizzaStatus = 5;
+                assertEquals(PizzaStatus.castIntToEnum(timeToDeliveryForOrderedPizzaStatus), PizzaStatus.ORDERED);
         }
 }
