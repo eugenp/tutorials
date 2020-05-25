@@ -1,5 +1,0 @@
-<application>
-  <component name="LafManager">
-    <laf class-name="com.intellij.ide.ui.laf.IntelliJLaf" themeId="JetBrainsLightTheme" />
-  </component>
-</application>
