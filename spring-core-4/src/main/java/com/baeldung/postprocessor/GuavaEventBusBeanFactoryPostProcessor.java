@@ -29,7 +29,7 @@ public class GuavaEventBusBeanFactoryPostProcessor implements BeanFactoryPostPro
             Object proxy = this.getTargetObject(beanFactory.getBean(names.next()));
             final Subscriber annotation = AnnotationUtils.getAnnotation(proxy.getClass(), Subscriber.class);
             if (annotation == null)
-                return;
+                continue;
             this.logger.info("{}: processing bean of type {} during initialization", this.getClass().getSimpleName(),
               proxy.getClass().getName());
             final String annotationValue = annotation.value();
