@@ -7,8 +7,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class CreateTaskServiceTest {
-
+public class CreateTaskServiceUnitTest {
     private IPersistToDoPort persistToDoPort;
     private CreateTaskService createTaskService;
 

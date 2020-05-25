@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.adapter;
+package com.baeldung.hexagonal.adapter.persist;
 
 import com.baeldung.hexagonal.core.domain.Todo;
 import com.baeldung.hexagonal.core.port.required.IPersistToDoPort;

@@ -1,5 +1,6 @@
-package com.baeldung.hexagonal.adapter;
+package com.baeldung.hexagonal.adapter.clientapp;
 
+import com.baeldung.hexagonal.adapter.persist.InMemoryToDoAdapter;
 import com.baeldung.hexagonal.core.port.provided.ICreateToDoPort;
 import com.baeldung.hexagonal.core.port.required.IPersistToDoPort;
 import com.baeldung.hexagonal.core.service.CreateTaskService;
@@ -14,19 +15,7 @@ public class JavaClientAdapter {
         this.createToDoPort = new CreateTaskService(persistToDoPort);
     }
 
-    public static class Param {
-        String todoName;
-
-        public String getTodoName() {
-            return todoName;
-        }
-
-        public void setTodoName(String todoName) {
-            this.todoName = todoName;
-        }
-    }
-
-    public void createNewToDoItem(Param param) {
-        createToDoPort.createTask(param.getTodoName());
+    public void createNewToDoItem(String todo) {
+        createToDoPort.createTask(todo);
     }
 }
