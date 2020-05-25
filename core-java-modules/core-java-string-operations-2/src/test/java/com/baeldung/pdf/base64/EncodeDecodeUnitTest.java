@@ -4,8 +4,10 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -37,6 +39,27 @@ public class EncodeDecodeUnitTest {
 
         assertArrayEquals(decoded, inFileBytes);
 
+    }
+
+    @Test
+    public void givenJavaBase64_whenEncodedStream_thenDecodedStreamOK() throws IOException {
+
+        try (OutputStream os = java.util.Base64.getEncoder().wrap(new FileOutputStream(OUT_FILE));
+          FileInputStream fis = new FileInputStream(IN_FILE)) {
+            byte[] bytes = new byte[1024];
+            int read;
+            while ((read = fis.read(bytes)) > -1) {
+                os.write(bytes, 0, read);
+            }
+        }
+
+        byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
+        byte[] encodedOnDisk = Files.readAllBytes(Paths.get(OUT_FILE));
+        assertArrayEquals(encoded, encodedOnDisk);
+
+        byte[] decoded = java.util.Base64.getDecoder().decode(encoded);
+        byte[] decodedOnDisk = java.util.Base64.getDecoder().decode(encodedOnDisk);
+        assertArrayEquals(decoded, decodedOnDisk);
     }
 
     @Test

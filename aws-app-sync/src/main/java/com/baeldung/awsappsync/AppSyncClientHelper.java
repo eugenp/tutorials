@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class AppSyncClientHelper {
 
-    static String apiUrl = "https://m4i3b6icrrb7livfbypfspiifi.appsync-api.us-east-2.amazonaws.com";
-    static String apiKey = "da2-bm4rpatkkrc5jfyhvvq7itjeke";
+    static String apiUrl = "<INSERT API URL HERE>";
+    static String apiKey = "<INSERT API KEY HERE>";
     static String API_KEY_HEADER = "x-api-key";
 
     public static WebClient.ResponseSpec getResponseBodySpec(Map<String, Object> requestBody) {

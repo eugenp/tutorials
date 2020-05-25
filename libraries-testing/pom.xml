@@ -195,7 +195,7 @@
         <hoverfly-java.version>0.8.1</hoverfly-java.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
-        <assertj.version>3.6.2</assertj.version>
+        <assertj.version>3.14.0</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
         <h2.version>1.4.200</h2.version>
         <dbunit.version>2.7.0</dbunit.version>

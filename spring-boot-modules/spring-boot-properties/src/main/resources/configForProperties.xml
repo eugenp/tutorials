@@ -14,8 +14,4 @@
         <constructor-arg value="${key.something}"/>
     </bean>
 
-    <bean id="dataSource" class="com.baeldung.configurationproperties.Database">
-        <property name="url" value="${jdbc.url}" />
-    </bean>
-
 </beans>
