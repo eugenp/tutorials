@@ -1,0 +1,16 @@
+<conversion>
+  <applied-converters>
+    <converter id="kotlin-non-jvm-source-roots" />
+    <converter id="junit-to-android-junit-configurations" />
+    <converter id="android-sdk-library" />
+    <converter id="android-module-to-java-module" />
+    <converter id="android-proguard-options" />
+  </applied-converters>
+  <project-files>
+    <file path="/Users/waldemar/code/stackoverflow-plugin-gradle/.idea/workspace.xml" timestamp="1590418575163" />
+    <file path="/Users/waldemar/code/stackoverflow-plugin-gradle/.idea/compiler.xml" timestamp="1590416824642" />
+    <file path="/Users/waldemar/code/stackoverflow-plugin-gradle/.idea/gradle.xml" timestamp="1590232902420" />
+    <file path="/Users/waldemar/code/stackoverflow-plugin-gradle/.idea/jarRepositories.xml" timestamp="1590230106810" />
+    <file path="/Users/waldemar/code/stackoverflow-plugin-gradle/.idea/misc.xml" timestamp="1590416824632" />
+  </project-files>
+</conversion>

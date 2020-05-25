@@ -1,0 +1,16 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="UITheme.relaunch" value="true" />
+    <property name="build.toolwindow.Sync.selection.state" value="com.intellij.build.BuildTreeConsoleView" />
+    <property name="defaultJdkConfigured" value="true" />
+    <property name="file.gist.reindex.count" value="4" />
+    <property name="ide.memory.adjusted" value="true" />
+    <property name="installed.kotlin.plugin.version" value="1.3.72-release-IJ2020.1-1" />
+    <property name="kotlin-gradle-user-dirs" value="$USER_HOME$/.gradle" />
+    <property name="kotlin.plugin.releaseDate" value="1.3.72-release-IJ2020.1-1:2020-04-14" />
+    <property name="lastSeenTip" value="neue-SecondSmartCompletionToar.html" />
+    <property name="lastTimeTipsWereShown" value="1590416701028" />
+    <property name="seenTips" value="neue-SecondSmartCompletionToar.html" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+  </component>
+</application>

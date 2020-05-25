@@ -1,0 +1,184 @@
+<application>
+  <component name="TextMateSettings">
+    <option name="bundles">
+      <list>
+        <BundleConfigBean>
+          <option name="name" value="mdx" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/mdx" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="razor" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/razor" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="shaderlab" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/shaderlab" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="docker" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/docker" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="go" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/go" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="python" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/python" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="css" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/css" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="clojure" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/clojure" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="less" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/less" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="scss" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/scss" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="perl" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/perl" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="rust" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/rust" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="pug" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/pug" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="fsharp" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/fsharp" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="r" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/r" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="java" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/java" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="html" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/html" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="php" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/php" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="lua" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/lua" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="xml" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/xml" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="vb" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/vb" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="powershell" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/powershell" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="typescript-basics" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/typescript-basics" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="ini" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/ini" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="json" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/json" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="handlebars" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/handlebars" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="cpp" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/cpp" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="swift" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/swift" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="make" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/make" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="shellscript" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/shellscript" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="markdown-basics" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/markdown-basics" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="yaml" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/yaml" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="log" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/log" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="csharp" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/csharp" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="bat" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/bat" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="groovy" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/groovy" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="coffeescript" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/coffeescript" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="javascript" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/javascript" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="hlsl" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/hlsl" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="objective-c" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/objective-c" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="ruby" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/ruby" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="git" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/git" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="search-result" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/search-result" />
+        </BundleConfigBean>
+        <BundleConfigBean>
+          <option name="name" value="sql" />
+          <option name="path" value="$APPLICATION_HOME_DIR$/plugins/textmate/lib/bundles/sql" />
+        </BundleConfigBean>
+      </list>
+    </option>
+  </component>
+</application>

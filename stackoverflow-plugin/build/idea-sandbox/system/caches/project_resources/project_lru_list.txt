@@ -1,0 +1,1 @@
+stackoverflow-plugin-gradle.972ae97a

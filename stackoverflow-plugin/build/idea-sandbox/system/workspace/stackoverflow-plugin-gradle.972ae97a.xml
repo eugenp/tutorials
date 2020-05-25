@@ -1,0 +1,286 @@
+<project version="4">
+  <component name="ExternalSystemProjectTracker">
+    <option name="projectSettingsTrackerStates">
+      <map>
+        <entry>
+          <key>
+            <Id>
+              <option name="externalProjectPath" value="$PROJECT_DIR$" />
+              <option name="systemId" value="GRADLE" />
+            </Id>
+          </key>
+          <value>
+            <Project>
+              <option name="settingsTracker">
+                <State>
+                  <option name="dirty" value="false" />
+                  <option name="settingsFiles">
+                    <map>
+                      <entry key="$PROJECT_DIR$/build.gradle" value="4241835077" />
+                      <entry key="$PROJECT_DIR$/java/build.gradle" value="1097978128" />
+                      <entry key="$PROJECT_DIR$/settings.gradle" value="1056336605" />
+                    </map>
+                  </option>
+                </State>
+              </option>
+            </Project>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="myGradleHomes">
+      <map>
+        <entry key="$PROJECT_DIR$" value="/usr/local/Cellar/gradle/6.4.1/libexec" />
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="6.4.1" />
+      </map>
+    </option>
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="stackoverflow-plugin-gradle" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="stackoverflow-plugin-gradle" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value=":java" />
+                <option name="path" value="$PROJECT_DIR$/java" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <ExternalProjectBuildClasspathPojo>
+              <option name="modulesBuildClasspath">
+                <map>
+                  <entry key="$PROJECT_DIR$">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="path" value="$PROJECT_DIR$" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                  <entry key="$PROJECT_DIR$/java">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="path" value="$PROJECT_DIR$/java" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="name" value="stackoverflow-plugin-gradle" />
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/ide" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/internal-integ-testing" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/platform-native" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/reporting" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/language-groovy" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-option" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/launcher" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/platform-base" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/signing" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/core" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/installation-beacon" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/bootstrap" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/jvm-services" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/native" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/tooling-api" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/platform-play" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/ivy" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/wrapper" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/process-services" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/snapshots" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/security" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/plugins" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/antlr" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/plugin-use" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/language-jvm" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/base-annotations" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/maven" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/testing-base" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/resources" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/version-control" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/testing-junit-platform" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/resources-http" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/internal-testing" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/composite-builds" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/model-groovy" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/normalization-java" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/test-kit" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/instant-execution" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/docs" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/cli" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/hashing" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-init" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/kotlin-dsl-plugins" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/ear" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/jacoco" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/kotlin-dsl-tooling-models" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/persistent-cache" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/kotlin-dsl" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/publish" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/platform-jvm" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/resources-sftp" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/kotlin-dsl-test-fixtures" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/base-services" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/model-core" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/scala" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/kotlin-dsl-tooling-builders" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/execution" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-cache-base" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/diagnostics" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-events" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/dependency-management" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/files" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/ide-play" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/workers" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/code-quality" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/language-java" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-profile" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-cache" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/plugin-development" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/core-api" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/javascript" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/worker-processes" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/resources-gcs" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/testing-native" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/internal-performance-testing" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/ide-native" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/base-services-groovy" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/tooling-native" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/messaging" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/testing-jvm" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/tooling-api-builders" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/logging" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/language-scala" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/language-native" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/resources-s3" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/kotlin-dsl-provider-plugins" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/file-collections" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-cache-packaging" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/internal-android-performance-testing" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/src/build-cache-http" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-normalization-java-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-build-cache-packaging-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/ant-launcher-1.10.7.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-base-services-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-worker-processes-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-bootstrap-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/ant-1.10.7.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-hashing-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-resources-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-api-metadata-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-core-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-build-option-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-cli-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-execution-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-build-events-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-build-cache-base-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-model-core-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-persistent-cache-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-core-api-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-files-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-model-groovy-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-kotlin-dsl-tooling-models-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-messaging-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-build-cache-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-wrapper-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-docs-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-tooling-api-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-process-services-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-base-annotations-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-native-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-jvm-services-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-snapshots-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-file-collections-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/groovy-all-1.3-2.5.10.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-kotlin-dsl-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-launcher-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-base-services-groovy-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-installation-beacon-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-runtime-api-info-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/gradle-logging-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-testing-base-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-version-control-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-build-cache-http-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-kotlin-dsl-provider-plugins-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-resources-http-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-kotlin-dsl-tooling-builders-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-testing-jvm-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-build-init-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-ide-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-platform-native-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-ivy-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-resources-sftp-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-instant-execution-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-platform-base-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-language-java-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-testing-native-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-scala-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-reporting-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-resources-gcs-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-plugin-development-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-diagnostics-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-dependency-management-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-language-groovy-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-antlr-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-test-kit-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-signing-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-build-profile-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-language-scala-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-plugins-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/ivy-2.3.0.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-publish-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-tooling-api-builders-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-tooling-native-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-platform-play-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-language-native-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-maven-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-code-quality-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-ear-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-ide-play-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-resources-s3-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-workers-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-jacoco-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-testing-junit-platform-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-plugin-use-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-language-jvm-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-security-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-composite-builds-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-ide-native-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-javascript-6.4.1.jar" />
+                  <option value="/usr/local/Cellar/gradle/6.4.1/libexec/lib/plugins/gradle-platform-jvm-6.4.1.jar" />
+                </list>
+              </option>
+            </ExternalProjectBuildClasspathPojo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
+  </component>
+</project>
