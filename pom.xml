@@ -767,6 +767,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>hexagonal</module>
             </modules>
 
         </profile>
@@ -1279,6 +1280,7 @@
                 <module>xml</module>
                 <module>xstream</module>
                 <module>libraries-concurrency</module>
+                <module>hexagonal</module>
             </modules>
 
         </profile>
