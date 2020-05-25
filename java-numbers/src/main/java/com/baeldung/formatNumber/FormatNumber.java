@@ -50,8 +50,10 @@ public class FormatNumber {
                 DecimalFormat df3 = new DecimalFormat("#,###,###,##0.000");
                 if (places == 2)
                         return new Double(df2.format(value));
-                if (places == 3)
+                else if (places == 3)
                         return new Double(df3.format(value));
+                else
+                        throw new IllegalArgumentException();
         }
 
         public static double withDecimalFormatLocal(double value) {
