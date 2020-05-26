@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-1-actuator</artifactId>
-    <name>spring-boot-1-actuator</name>
     <packaging>jar</packaging>
     <description>Module for Spring Boot Actuator in Spring Boot version 1.x</description>
 
