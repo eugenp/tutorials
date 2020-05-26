@@ -672,6 +672,8 @@
 
                 <module>spring-groovy</module>
 
+                <module>spring-hexagonal</module>
+
                 <module>spring-integration</module>
 
                 <module>spring-jenkins-pipeline</module>
