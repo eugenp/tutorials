@@ -17,7 +17,7 @@ import org.junit.Test;
 public class JavaBufferedReaderToJSONObjectUnitTest {
 
     @Test
-    public void givenUsingNewVersion_whenConvertBufferedReaderToJSONObject_thenCorrect() {
+    public void givenValidJson_whenUsingBufferedReader_thenJSONTokenerConverts() {
         byte[] b = "{ \"name\" : \"John\", \"age\" : 18 }".getBytes(StandardCharsets.UTF_8);
         InputStream is = new ByteArrayInputStream(b);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
@@ -30,7 +30,7 @@ public class JavaBufferedReaderToJSONObjectUnitTest {
     }
 
     @Test
-    public void givenUsingOldVersion_whenConvertBufferedReaderToJSONObject_thenCorrect() throws IOException {
+    public void givenValidJson_whenUsingString_thenJSONObjectConverts() throws IOException {
         byte[] b = "{ \"name\" : \"John\", \"age\" : 18 }".getBytes(StandardCharsets.UTF_8);
         InputStream is = new ByteArrayInputStream(b);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
