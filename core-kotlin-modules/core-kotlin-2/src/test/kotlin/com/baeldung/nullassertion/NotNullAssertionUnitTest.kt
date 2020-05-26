@@ -3,7 +3,7 @@ package com.baeldung.nullassertion
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class NonNullAssertionUnitTest {
+class NotNullAssertionUnitTest {
 
     @Test
     fun givenNullableValue_WhenNotNull_ShouldExtractTheValue() {
