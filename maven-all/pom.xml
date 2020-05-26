@@ -20,6 +20,7 @@
         <module>maven-war-plugin</module>
         <module>profiles</module>
         <module>versions-maven-plugin</module>
+        <module>version-collision</module>
     </modules>
 
 </project>
