@@ -221,6 +221,7 @@
                             <systemPropertyVariables>
                                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                                 <jboss.home>${project.basedir}/target/wildfly-${wildfly.version}</jboss.home>
+                                <jboss.http.port>8756</jboss.http.port>
                                 <module.path>${project.basedir}/target/wildfly-${wildfly.version}/modules</module.path>
                             </systemPropertyVariables>
                             <redirectTestOutputToFile>false</redirectTestOutputToFile>
