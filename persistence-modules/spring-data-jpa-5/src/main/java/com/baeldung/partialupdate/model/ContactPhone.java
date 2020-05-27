@@ -8,11 +8,11 @@ import javax.persistence.Id;
 
 @Entity
 public class ContactPhone {
-	@Id 
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
     @Column(nullable=false)
-	public long customerId;
+    public long customerId;
     public String phone;
 
     @Override

@@ -25,11 +25,18 @@ public class PartialUpdateUnitTest {
     public void loadAndSave_whenUpdate_thenSuccess() {
         Customer myCustomer = service.addCustomer("John");
         myCustomer = service.updateCustomer(myCustomer.id, "+00");
-
         assertEquals("+00", myCustomer.phone);
     }
 
-	@Test
+    @Test
+    public void customQuery_whenUpdate_thenSuccess() {
+        Customer myCustomer = service.addCustomer("John");
+        service.updateCustomerWithCustomQuery(myCustomer.id, "+88");
+        myCustomer = service.getCustomer(myCustomer.id);
+        assertEquals("+88", myCustomer.phone);
+    }
+
+    @Test
     public void loadAndSaveWithMapper_whenUpdate_thenSuccess() {
         CustomerDto dto = new CustomerDto(new Customer());
         dto.name = "Johnny";
@@ -38,19 +45,19 @@ public class PartialUpdateUnitTest {
         CustomerDto dto2 = new CustomerDto(entity.id);
         dto2.phone = "+44";
         entity = service.updateCustomer(dto2);
-        
+
         assertEquals("Johnny", entity.name);
     }
-	
-	@Test
-	public void loadAndSaveStructuredEntity_whenUpdate_thenSuccess() {
+
+    @Test
+    public void loadAndSaveStructuredEntity_whenUpdate_thenSuccess() {
         CustomerStructured myCustomer = service.addCustomerStructured("John");
         assertEquals(null, myCustomer.contactPhones);
 
         service.addCustomerPhone(myCustomer.id, "+44");
         myCustomer = service.updateCustomerStructured(myCustomer.id, "Mr. John");
- 
+
         assertNotEquals(null, myCustomer.contactPhones);
         assertEquals(1, myCustomer.contactPhones.size());
-	}
+    }
 }

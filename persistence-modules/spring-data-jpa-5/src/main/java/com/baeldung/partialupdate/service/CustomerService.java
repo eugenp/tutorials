@@ -27,6 +27,14 @@ public class CustomerService {
     @Autowired 
     CustomerMapper mapper;
 
+    public Customer getCustomer(long id) {
+        return repo.findById(id);
+    }
+
+    public void updateCustomerWithCustomQuery(long id, String phone) {
+        repo.updatePhone(id, phone);
+    }
+
     public Customer addCustomer(String name) {
         Customer myCustomer = new Customer();
         myCustomer.name = name;
