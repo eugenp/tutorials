@@ -1,21 +1,17 @@
-package com.baeldung.architecture.hexagonal;
+package com.baeldung.architecture.hexagonal.printer.impl;
 
 
 import com.baeldung.architecture.hexagonal.business.InterestCalculatorUseCase;
 import com.baeldung.architecture.hexagonal.factory.InterestRateFactory;
+import com.baeldung.architecture.hexagonal.printer.ConsolePrinter;
 
-public class InterestCalculatorMain {
+public class ConsolePrinterImpl implements ConsolePrinter {
 
     private static InterestCalculatorUseCase app =
             new InterestCalculatorUseCase(InterestRateFactory.getMockRateRepository());
 
-    public static void main(String[] args) {
-        getInterestAmount(1000);
-
-
-    }
-
-    public static double getInterestAmount(double amount) {
-        return app.interest(amount);
+    @Override
+    public void printInterestAmount(double amount) {
+        System.out.println(app.interest(amount));
     }
 }
