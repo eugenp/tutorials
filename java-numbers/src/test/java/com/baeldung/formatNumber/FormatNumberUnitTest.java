@@ -5,7 +5,7 @@ import org.junit.Test;
 import static com.baeldung.formatNumber.FormatNumber.*;
 import static org.assertj.core.api.Assertions.*;
 
-public class FormatNumberTest {
+public class FormatNumberUnitTest {
         private static final double D = 4.2352989244d;
         private static final double F = 8.6994540927d;
 
