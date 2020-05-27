@@ -1,42 +1,37 @@
 package com.baeldung.formatNumber;
 
-import org.apache.commons.math3.util.Precision;
-import org.decimal4j.util.DoubleRounder;
-import org.junit.Assert;
 import org.junit.Test;
 
+import static com.baeldung.formatNumber.FormatNumber.*;
+import static org.assertj.core.api.Assertions.*;
+
 public class FormatNumberTest {
-        private double value = 2.03456d;
-        private int places = 2;
-        private double expected = 2.03d;
+        private static final double D = 4.2352989244d;
+        private static final double F = 8.6994540927d;
 
         @Test public void givenDecimalNumber_whenFormatNumberToNDecimalPlaces_thenGetExpectedResult() {
-                double delta = 0.0d;
-                Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
 
-                places = 3;
-                expected = 2.035d;
+                assertThat(withBigDecimal(D, 2)).isEqualTo(4.24);
+                assertThat(withBigDecimal(D, 3)).isEqualTo(4.235);
+                assertThat(withBigDecimal(F, 2)).isEqualTo(8.7);
+                assertThat(withBigDecimal(F, 3)).isEqualTo(8.699);
 
-                Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
+                assertThat(withMathRound(D, 2)).isEqualTo(4.24);
+                assertThat(withMathRound(D, 3)).isEqualTo(4.235);
+                assertThat(withMathRound(F, 2)).isEqualTo(8.7);
+                assertThat(withMathRound(F, 3)).isEqualTo(8.699);
 
-                value = 256.024d;
-                places = 2;
-                expected = 256.02d;
+                assertThat(withStringFormat(D, 2)).isEqualTo("4.24");
+                assertThat(withStringFormat(D, 3)).isEqualTo("4.235");
+                assertThat(withStringFormat(F, 2)).isEqualTo("8.70");
+                assertThat(withStringFormat(F, 3)).isEqualTo("8.699");
 
-                Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
+                assertThat(withDecimalFormatLocal(D)).isEqualTo(4.235);
+                assertThat(withDecimalFormatLocal(F)).isEqualTo(8.699);
 
-                value = 260.773d;
-                places = 2;
-                expected = 260.77d;
-
-                Assert.assertEquals(expected, FormatNumber.withBigDecimal(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withDecimalFormatPattern(value, places), delta);
-                Assert.assertEquals(expected, FormatNumber.withMathRound(value, places), delta);
+                assertThat(withDecimalFormatPattern(D, 2)).isEqualTo(4.24);
+                assertThat(withDecimalFormatPattern(D, 3)).isEqualTo(4.235);
+                assertThat(withDecimalFormatPattern(F, 2)).isEqualTo(8.7);
+                assertThat(withDecimalFormatPattern(F, 3)).isEqualTo(8.699);
         }
 }
