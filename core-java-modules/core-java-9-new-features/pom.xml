@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -58,6 +63,7 @@
         <junit.platform.version>1.2.0</junit.platform.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
+        <rxjava.version>3.0.0</rxjava.version>
     </properties>
 
 </project>
