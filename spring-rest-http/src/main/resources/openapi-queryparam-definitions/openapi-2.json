@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server."
+  version: "1.0.0"
+  title: "Sample API to send JSON objects as query parameters using OpenAPI 2"
+tags:
+- name: "tickets"
+  description: "Send Tickets as JSON Objects"
+schemes:
+- "https"
+- "http"
+paths:
+  /tickets:
+    get:
+      tags:
+      - "tickets"
+      summary: "Send an JSON Object as a query param"
+      parameters:
+      - name: "params"
+        in: "path"
+        description: "{\"type\":\"foo\",\"color\":\"green\"}"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Successful operation"
+        "401":
+          description: "Unauthorized"
+        "403":
+          description: "Forbidden"
+        "404":
+          description: "Not found"
+    post:
+      tags:
+      - "tickets"
+      summary: "Send an JSON Object in body"
+      parameters:
+      - name: "params"
+        in: "body"
+        description: "Parameter is an JSON object with the `type` and `color` properties that should be serialized as JSON {\"type\":\"foo\",\"color\":\"green\"}"
+        required: true
+        schema:
+            type: string
+      responses:
+        "200":
+          description: "Successful operation"
+        "401":
+          description: "Unauthorized"
+        "403":
+          description: "Forbidden"
+        "404":
+          description: "Not found"
+        "405":
+          description: "Invalid input"
+  /tickets2:
+    get:
+      tags:
+      - "tickets"
+      summary: "Send an JSON Object in body of get reqest"
+      parameters:
+      - name: "params"
+        in: "body"
+        description: "Parameter is an JSON object with the `type` and `color` properties that should be serialized as JSON {\"type\":\"foo\",\"color\":\"green\"}"
+        required: true
+        schema:
+            type: string
+      responses:
+        "200":
+          description: "Successful operation"
+        "401":
+          description: "Unauthorized"
+        "403":
+          description: "Forbidden"
+        "404":
+          description: "Not found"
