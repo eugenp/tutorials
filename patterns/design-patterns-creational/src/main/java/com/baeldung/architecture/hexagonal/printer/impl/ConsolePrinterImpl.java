@@ -3,9 +3,9 @@ package com.baeldung.architecture.hexagonal.printer.impl;
 
 import com.baeldung.architecture.hexagonal.business.InterestCalculatorUseCase;
 import com.baeldung.architecture.hexagonal.factory.InterestRateFactory;
-import com.baeldung.architecture.hexagonal.printer.ConsolePrinter;
+import com.baeldung.architecture.hexagonal.printer.Printer;
 
-public class ConsolePrinterImpl implements ConsolePrinter {
+public class ConsolePrinterImpl implements Printer {
 
     private static InterestCalculatorUseCase app =
             new InterestCalculatorUseCase(InterestRateFactory.getMockRateRepository());

@@ -1,6 +1,6 @@
 package com.baeldung.architecture.hexagonal.factory;
 
-import com.baeldung.architecture.hexagonal.printer.ConsolePrinter;
+import com.baeldung.architecture.hexagonal.printer.Printer;
 import com.baeldung.architecture.hexagonal.printer.impl.ConsolePrinterImpl;
 
 public class PrinterFactory {
@@ -8,7 +8,7 @@ public class PrinterFactory {
         super();
     }
 
-    public static ConsolePrinter getConsolePrinter() {
+    public static Printer getConsolePrinter() {
         return new ConsolePrinterImpl();
     }
 }

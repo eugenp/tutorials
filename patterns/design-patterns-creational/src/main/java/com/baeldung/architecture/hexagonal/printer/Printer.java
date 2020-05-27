@@ -1,5 +1,5 @@
 package com.baeldung.architecture.hexagonal.printer;
 
-public interface ConsolePrinter {
+public interface Printer {
     public void printInterestAmount(double amount);
 }
