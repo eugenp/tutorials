@@ -8,7 +8,7 @@ spring:
 spring:
     profiles: test
 name: test-YAML
-environment: test
+environment: testing
 servers:
     - www.abc.test.com
     - www.xyz.test.com
