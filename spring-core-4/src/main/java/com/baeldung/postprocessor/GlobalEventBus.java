@@ -3,7 +3,7 @@ package com.baeldung.postprocessor;
 import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 
-import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @SuppressWarnings("ALL")
 public final class GlobalEventBus {
@@ -14,18 +14,9 @@ public final class GlobalEventBus {
 
     private static final GlobalEventBus GLOBAL_EVENT_BUS = new GlobalEventBus();
 
-    private final EventBus eventBus = new AsyncEventBus(IDENTIFIER, new DelegatingExecutor());
-
-    private Executor executor;
+    private final EventBus eventBus = new AsyncEventBus(IDENTIFIER, Executors.newCachedThreadPool());
 
     private GlobalEventBus() {
-    }
-
-    public Executor getExecutor() {
-        return this.executor;
-    }
-    public void setExecutor(Executor executor) {
-        this.executor = executor;
     }
 
     public static GlobalEventBus getInstance() {
@@ -44,16 +35,5 @@ public final class GlobalEventBus {
     }
     public static void post(Object event) {
         getEventBus().post(event);
-    }
-
-    private class DelegatingExecutor implements Executor {
-
-        @Override
-        public void execute(Runnable command) {
-            if (GlobalEventBus.this.executor != null)
-                GlobalEventBus.this.executor.execute(command);
-            else
-                command.run();
-        }
     }
 }

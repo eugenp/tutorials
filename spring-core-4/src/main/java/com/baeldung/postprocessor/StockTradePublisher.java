@@ -1,5 +1,6 @@
 package com.baeldung.postprocessor;
 
+import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
 
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class StockTradePublisher {
     }
 
     @Subscribe
+    @AllowConcurrentEvents
     private void handleNewStockTradeEvent(StockTrade trade) {
         // publish to DB, send to PubNub, whatever you want here
         final Set<StockTradeListener> listeners;
