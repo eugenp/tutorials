@@ -8,19 +8,23 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-lang-2</name>
     <packaging>jar</packaging>
-
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -65,6 +69,8 @@
         <jmh-generator.version>1.19</jmh-generator.version>
         <assertj.version>3.12.2</assertj.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
+        <commons-lang3.version>3.10</commons-lang3.version>
+        <guava.version>29.0-jre</guava.version>
     </properties>
 
 </project>
