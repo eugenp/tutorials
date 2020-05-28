@@ -24,12 +24,7 @@ public class StockTradeIntegrationTest {
     @Test
     public void givenValidConfig_whenTradePublished_thenTradeReceived() {
         Date tradeDate = new Date();
-        StockTrade stockTrade = StockTrade.newBuilder()
-          .withTradeDate(tradeDate)
-          .withPrice(2483.52d)
-          .withQuantity(100)
-          .withSymbol("AMZN")
-          .build();
+        StockTrade stockTrade = new StockTrade("AMZN", 100, 2483.52d, tradeDate);
         AtomicBoolean assertionsPassed = new AtomicBoolean(false);
         StockTradeListener listener = trade -> assertionsPassed.set(this.verifyExact(stockTrade, trade));
         this.stockTradePublisher.addStockTradeListener(listener);
