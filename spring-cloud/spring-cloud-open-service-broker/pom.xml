@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-cloud-open-service-broker</artifactId>
-    <name>spring-cloud-open-service-broker</name>
     <packaging>jar</packaging>
 
     <parent>
