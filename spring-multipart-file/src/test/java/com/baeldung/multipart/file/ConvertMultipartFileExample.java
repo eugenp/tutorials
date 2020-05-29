@@ -12,6 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ConvertMultipartFileExample {
 
+    /**
+     * Example of converting a {@link MultipartFile} to a {@link File} using {@link MultipartFile#getBytes()}.
+     * 
+     * @throws IOException
+     */
     @Test
     public void whenGetBytes_thenOK() throws IOException {
         MultipartFile multipartFile = new MockMultipartFile("sourceFile.tmp", "Hello World".getBytes());
@@ -25,6 +30,11 @@ public class ConvertMultipartFileExample {
         os.close();
     }
 
+    /**
+     * Example of converting a {@link MultipartFile} to a {@link File} using {@link MultipartFile#getInputStream()}.
+     * 
+     * @throws IOException
+     */
     @Test
     public void whenGetInputStream_thenOK() throws IOException {
         MultipartFile multipartFile = new MockMultipartFile("sourceFile.tmp", "Hello World".getBytes());
@@ -40,6 +50,11 @@ public class ConvertMultipartFileExample {
         outStream.close();
     }
 
+    /**
+     * Example of converting a {@link MultipartFile} to a {@link File} using {@link MultipartFile#transferTo(File)}.
+     * 
+     * @throws IOException
+     */
     @Test
     public void whenTransferTo_thenOK() throws IllegalStateException, IOException {
         MultipartFile multipartFile = new MockMultipartFile("sourceFile.tmp", "Hello World".getBytes());
