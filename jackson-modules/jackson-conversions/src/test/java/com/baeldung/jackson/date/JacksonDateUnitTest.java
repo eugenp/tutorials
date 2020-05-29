@@ -159,24 +159,23 @@ public class JacksonDateUnitTest {
 
     @Test
     public void whenSerializingJava8DateAndReadingValue_thenCorrect() throws IOException {
-        final String stringDate = "\"2014-12-20\"";
+        String stringDate = "\"2014-12-20\"";
 
-        final ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        final String result2 = mapper.readValue(stringDate, LocalDate.class)
-            .toString();
-        assertThat(result2, containsString("2014-12-20"));
+        LocalDate result = mapper.readValue(stringDate, LocalDate.class);
+        assertThat(result.toString(), containsString("2014-12-20"));
     }
 
     @Test
     public void whenSerializingJava8DateAndReadingFromEntity_thenCorrect() throws IOException {
-        final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014\"}";
+        String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014\"}";
 
-        final ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper();
 
-        final EventWithLocalDate result = mapper.readValue(json, EventWithLocalDate.class);
+        EventWithLocalDate result = mapper.readValue(json, EventWithLocalDate.class);
         assertThat(result.getEventDate().toString(), containsString("2014-12-20"));
     }
 

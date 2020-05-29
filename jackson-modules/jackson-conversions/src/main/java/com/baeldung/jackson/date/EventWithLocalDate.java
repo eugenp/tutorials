@@ -8,7 +8,6 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import java.time.LocalDate;
 
-
 public class EventWithLocalDate {
     public String name;
 
@@ -17,9 +16,7 @@ public class EventWithLocalDate {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     public LocalDate eventDate;
 
-    public EventWithLocalDate() {
-        super();
-    }
+    public EventWithLocalDate() {}
 
     public EventWithLocalDate(final String name, final LocalDate eventDate) {
         this.name = name;
