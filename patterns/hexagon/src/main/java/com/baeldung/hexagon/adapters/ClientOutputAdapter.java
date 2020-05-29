@@ -11,8 +11,8 @@ public class ClientOutputAdapter implements IMessageOutput {
 
     private Map<String, MessageHandler> clients = new HashMap<>();
 
-    public void register(String userName, MessageHandler client) {
-        clients.put(userName, client);
+    public void register(String userName, MessageHandler handler) {
+        clients.put(userName, handler);
     }
 
     @Override

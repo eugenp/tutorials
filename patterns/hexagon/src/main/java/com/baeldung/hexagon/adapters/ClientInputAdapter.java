@@ -1,23 +1,16 @@
 package com.baeldung.hexagon.adapters;
 
-import com.baeldung.hexagon.core.domain.Message;
-import com.baeldung.hexagon.core.ports.IMessageInput;
-import com.baeldung.hexagon.core.services.MessagingService;
+import com.baeldung.hexagon.core.ports.MessageInput;
 
-import java.util.UUID;
+public class ClientInputAdapter {
 
-public class ClientInputAdapter implements IMessageInput {
+    private final MessageInput inputPort;
 
-    private MessagingService service;
-
-    public ClientInputAdapter(MessagingService service) {
-        this.service = service;
+    public ClientInputAdapter(MessageInput inputPort) {
+        this.inputPort = inputPort;
     }
 
-    @Override
-    public void post(PostMessageCommand command) {
-        String id = UUID.randomUUID().toString();
-        Message message = new Message(id, command.getSender(), command.getReceiver(), command.getContent());
-        service.sendMessage(message);
+    public void post(String sender, String receiver, String content) {
+        inputPort.post(new MessageInput.PostMessageCommand(sender, receiver, content));
     }
 }

@@ -1,12 +1,26 @@
 package com.baeldung.hexagon.core.ports;
 
+import com.baeldung.hexagon.core.domain.Message;
+import com.baeldung.hexagon.core.services.MessagingService;
+
 import java.util.Objects;
+import java.util.UUID;
 
-public interface IMessageInput {
+public class MessageInput {
 
-    void post(PostMessageCommand command);
+    private MessagingService service;
 
-    class PostMessageCommand {
+    public MessageInput(MessagingService service) {
+        this.service = service;
+    }
+
+    public void post(PostMessageCommand command){
+        String id = UUID.randomUUID().toString();
+        Message message = new Message(id, command.getSender(), command.getReceiver(), command.getContent());
+        service.sendMessage(message);
+    }
+
+    public static class PostMessageCommand {
         private final String sender;
         private final String receiver;
         private final String content;
