@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 // adapter
 public class CliApi {
@@ -20,7 +21,6 @@ public class CliApi {
     }
 
     public void createBook() {
-        // Get all inputs from scanner
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter id:");
@@ -30,8 +30,7 @@ public class CliApi {
         System.out.println("Enter author:");
         String author = scanner.nextLine();
 
-        // Create a new book
-        Book book = new Book("1", "title", "author");
+        Book book = new Book(UUID.randomUUID(), "1", "title", "author");
         bookService.createBook(book);
         log.info("Created new book");
     }

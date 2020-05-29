@@ -3,6 +3,8 @@ package com.baeldung.hexagonal.architecture.adapter.input;
 import com.baeldung.hexagonal.architecture.domain.Book;
 import com.baeldung.hexagonal.architecture.input.BookService;
 
+import java.util.UUID;
+
 // adapter
 public class WebApi{
 
@@ -13,7 +15,7 @@ public class WebApi{
     }
 
     public void createBook(String id, String title, String author) {
-        Book book = new Book(id, title, author);
+        Book book = new Book(UUID.randomUUID(), id, title, author);
         bookService.createBook(book);
     }
 }

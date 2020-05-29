@@ -4,6 +4,7 @@ import com.baeldung.hexagonal.architecture.input.BookService;
 import com.baeldung.hexagonal.architecture.output.BookRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class BookServiceDomain implements BookService {
 
@@ -14,28 +15,23 @@ public class BookServiceDomain implements BookService {
     }
 
     @Override
-    public String createBook(Book book) {
+    public UUID createBook(Book book) {
         repository.saveBook(book);
         return book.getId();
     }
 
     @Override
     public void updateBook(Book book) {
-        repository.updateBook(book);
+        repository.saveBook(book);
     }
 
     @Override
-    public Book getBookById(String id) {
+    public Book getBookById(UUID id) {
         return repository.getBookById(id);
     }
 
     @Override
     public List<Book> getAllBooks() {
         return repository.getAllBooks();
-    }
-
-    @Override
-    public void deleteBook(String id) {
-        repository.deleteBook(id);
     }
 }

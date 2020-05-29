@@ -3,18 +3,12 @@ package com.baeldung.hexagonal.architecture.output;
 import com.baeldung.hexagonal.architecture.domain.Book;
 
 import java.util.List;
+import java.util.UUID;
 
-// contains all the data methods
-// outbound port
 public interface BookRepository {
-
     public void saveBook(Book book);
 
-    public void updateBook(Book book);
-
-    public void deleteBook(String id);
-
-    public Book getBookById(String id);
+    public Book getBookById(UUID id);
 
     public List<Book> getAllBooks();
 }

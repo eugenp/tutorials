@@ -3,19 +3,14 @@ package com.baeldung.hexagonal.architecture.input;
 import com.baeldung.hexagonal.architecture.domain.Book;
 
 import java.util.List;
+import java.util.UUID;
 
-
-// inbound port
-// contains all the business methods
 public interface BookService {
-
-    public String createBook(Book book);
+    public UUID createBook(Book book);
 
     public void updateBook(Book book);
 
-    public Book getBookById(String id);
+    public Book getBookById(UUID id);
 
     public List<Book> getAllBooks();
-
-    public void deleteBook(String id);
 }
