@@ -1,21 +1,30 @@
 package com.baeldung.hexagonal.architecture;
 
-import com.baeldung.hexagonal.architecture.adapter.input.CliApi;
-import com.baeldung.hexagonal.architecture.adapter.output.InMemoryBookRepositoryImpl;
-import com.baeldung.hexagonal.architecture.domain.BookServiceDomain;
-import com.baeldung.hexagonal.architecture.input.BookService;
-import com.baeldung.hexagonal.architecture.output.BookRepository;
+import com.baeldung.hexagonal.architecture.adapter.in.Command;
+import com.baeldung.hexagonal.architecture.adapter.out.InMemoryBookDatabase;
+import com.baeldung.hexagonal.architecture.adapter.out.MultiLineWriter;
+import com.baeldung.hexagonal.architecture.adapter.out.SingleLineWriter;
+import com.baeldung.hexagonal.architecture.domain.BookBusinessLogic;
+import com.baeldung.hexagonal.architecture.port.in.BookService;
+import com.baeldung.hexagonal.architecture.port.out.BookRepository;
+import com.baeldung.hexagonal.architecture.port.out.BookWriter;
 
 public class Application {
 
     public static void main(String[] args) {
-        BookRepository inMemoryBookRepository = new InMemoryBookRepositoryImpl();
-        BookService bookService = new BookServiceDomain(inMemoryBookRepository);
+        BookRepository inMemoryBookRepository = new InMemoryBookDatabase();
+        BookWriter multiLineWriter = new MultiLineWriter();
+        BookService bookService = new BookBusinessLogic(inMemoryBookRepository, multiLineWriter);
 
-//        WebApi webApi = new WebApi(bookService);
-//        webApi.createBook("1", "A book", "Sample author");
+        Command command = new Command(bookService);
+        command.run();
 
-        CliApi api = new CliApi(bookService);
-        api.createBook();
+
+        BookWriter singleLineWriter = new SingleLineWriter();
+        BookService bookService2 = new BookBusinessLogic(inMemoryBookRepository, singleLineWriter);
+
+        Command command2 = new Command(bookService2);
+        command2.run();
+
     }
 }
