@@ -54,7 +54,9 @@ public class BenchMark {
     @Benchmark
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     @BenchmarkMode(Mode.AverageTime)
-    public void doNothing() {}
+    public void doNothing() {
+
+    }
 
     @Benchmark
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
