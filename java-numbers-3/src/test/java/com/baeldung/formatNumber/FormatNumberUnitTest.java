@@ -9,7 +9,8 @@ public class FormatNumberUnitTest {
         private static final double D = 4.2352989244d;
         private static final double F = 8.6994540927d;
 
-        @Test public void givenDecimalNumber_whenFormatNumberToNDecimalPlaces_thenGetExpectedResult() {
+        @Test
+        public void givenDecimalNumber_whenFormatNumberToNDecimalPlaces_thenGetExpectedResult() {
 
                 assertThat(withBigDecimal(D, 2)).isEqualTo(4.24);
                 assertThat(withBigDecimal(D, 3)).isEqualTo(4.235);

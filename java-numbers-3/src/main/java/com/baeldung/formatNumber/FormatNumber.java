@@ -41,3 +41,4 @@ public class FormatNumber {
                 return String.format("%." + places + "f", value);
         }
 }
+
