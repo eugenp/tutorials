@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// business rules
 public class BookBusinessLogic implements BookService {
     private BookRepository repository;
     private BookWriter writer;

@@ -12,19 +12,18 @@ import com.baeldung.hexagonal.architecture.port.out.BookWriter;
 public class Application {
 
     public static void main(String[] args) {
+        // MultiLineWriter
         BookRepository inMemoryBookRepository = new InMemoryBookDatabase();
         BookWriter multiLineWriter = new MultiLineWriter();
-        BookService bookService = new BookBusinessLogic(inMemoryBookRepository, multiLineWriter);
+        BookService multiLineBookService = new BookBusinessLogic(inMemoryBookRepository, multiLineWriter);
+        Command multiLineCommand = new Command(multiLineBookService);
+        multiLineCommand.run();
 
-        Command command = new Command(bookService);
-        command.run();
-
-
+        // SingleLineWriter
         BookWriter singleLineWriter = new SingleLineWriter();
-        BookService bookService2 = new BookBusinessLogic(inMemoryBookRepository, singleLineWriter);
-
-        Command command2 = new Command(bookService2);
-        command2.run();
+        BookService singleLineBookService = new BookBusinessLogic(inMemoryBookRepository, singleLineWriter);
+        Command singleLineCommand = new Command(singleLineBookService);
+        singleLineCommand.run();
 
     }
 }

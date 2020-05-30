@@ -5,5 +5,5 @@ import com.baeldung.hexagonal.architecture.domain.Book;
 import java.util.List;
 
 public interface BookRepository {
-    public List<Book> getAllBooks();
+    List<Book> getAllBooks();
 }

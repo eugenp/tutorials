@@ -2,8 +2,6 @@ package com.baeldung.hexagonal.architecture.adapter.in;
 
 import com.baeldung.hexagonal.architecture.port.in.BookService;
 
-// adapter
-// Can simulate instead
 public class Command {
     private BookService bookService;
 

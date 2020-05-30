@@ -5,7 +5,6 @@ import com.baeldung.hexagonal.architecture.port.out.BookRepository;
 
 import java.util.*;
 
-// adapter
 public class InMemoryBookDatabase implements BookRepository {
 
     private Map<UUID, Book> database = new HashMap<>();
