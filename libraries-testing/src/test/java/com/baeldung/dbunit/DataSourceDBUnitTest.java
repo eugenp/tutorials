@@ -24,6 +24,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.baeldung.dbunit.ConnectionSettings.JDBC_URL;
+import static com.baeldung.dbunit.ConnectionSettings.PASSWORD;
+import static com.baeldung.dbunit.ConnectionSettings.USER;
 import static java.util.stream.Collectors.joining;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.dbunit.Assertion.assertEqualsIgnoreCols;
@@ -33,12 +35,14 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     private static final Logger logger = LoggerFactory.getLogger(DataSourceDBUnitTest.class);
 
+    private Connection connection;
+
     @Override
     protected DataSource getDataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setURL(JDBC_URL);
-        dataSource.setUser("sa");
-        dataSource.setPassword("");
+        dataSource.setUser(USER);
+        dataSource.setPassword(PASSWORD);
         return dataSource;
     }
 
@@ -62,6 +66,7 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        connection = getConnection().getConnection();
     }
 
     @After
@@ -71,9 +76,7 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Test
     public void givenDataSet_whenSelect_thenFirstTitleIsGreyTShirt() throws SQLException {
-        final Connection connection = getDataSource().getConnection();
-
-        final ResultSet rs = connection.createStatement().executeQuery("select * from ITEMS where id = 1");
+        ResultSet rs = connection.createStatement().executeQuery("select * from ITEMS where id = 1");
 
         assertThat(rs.next()).isTrue();
         assertThat(rs.getString("title")).isEqualTo("Grey T-Shirt");
@@ -81,58 +84,59 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Test
     public void givenDataSetEmptySchema_whenDataSetCreated_thenTablesAreEqual() throws Exception {
-        final IDataSet expectedDataSet = getDataSet();
-        final ITable expectedTable = expectedDataSet.getTable("CLIENTS");
-        final IDataSet databaseDataSet = getConnection().createDataSet();
-        final ITable actualTable = databaseDataSet.getTable("CLIENTS");
+        IDataSet expectedDataSet = getDataSet();
+        ITable expectedTable = expectedDataSet.getTable("CLIENTS");
+        IDataSet databaseDataSet = getConnection().createDataSet();
+        ITable actualTable = databaseDataSet.getTable("CLIENTS");
         Assertion.assertEquals(expectedTable, actualTable);
     }
 
     @Test
     public void givenDataSet_whenInsert_thenTableHasNewClient() throws Exception {
-        try (final InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/expected-user.xml")) {
-            final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
-            final ITable expectedTable = expectedDataSet.getTable("CLIENTS");
-            final Connection conn = getDataSource().getConnection();
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/expected-user.xml")) {
+            // given
+            IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
+            ITable expectedTable = expectedDataSet.getTable("CLIENTS");
+            Connection conn = getDataSource().getConnection();
 
+            // when
             conn.createStatement()
-                .executeUpdate(
-                "INSERT INTO CLIENTS (first_name, last_name) VALUES ('John', 'Jansen')");
-            final ITable actualData = getConnection()
-                .createQueryTable(
-                    "result_name",
-                    "SELECT * FROM CLIENTS WHERE last_name='Jansen'");
+                .executeUpdate("INSERT INTO CLIENTS (first_name, last_name) VALUES ('John', 'Jansen')");
+            ITable actualData = getConnection()
+                .createQueryTable("result_name", "SELECT * FROM CLIENTS WHERE last_name='Jansen'");
 
+            // then
             assertEqualsIgnoreCols(expectedTable, actualData, new String[] { "id" });
         }
     }
 
     @Test
     public void givenDataSet_whenDelete_thenItemIsDeleted() throws Exception {
-        final Connection connection = getConnection().getConnection();
-
-        try (final InputStream is = DataSourceDBUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_delete.xml")) {
+        try (InputStream is = DataSourceDBUnitTest.class.getClassLoader()
+            .getResourceAsStream("dbunit/items_exp_delete.xml")) {
+            // given
             ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("ITEMS");
 
+            // when
             connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
 
-            final IDataSet databaseDataSet = getConnection().createDataSet();
+            // then
+            IDataSet databaseDataSet = getConnection().createDataSet();
             ITable actualTable = databaseDataSet.getTable("ITEMS");
-
             Assertion.assertEquals(expectedTable, actualTable);
         }
     }
 
     @Test
     public void givenDataSet_whenUpdate_thenItemHasNewName() throws Exception {
-        final Connection connection = getConnection().getConnection();
-
-        try (final InputStream is = DataSourceDBUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_rename.xml")) {
+        try (InputStream is = DataSourceDBUnitTest.class.getClassLoader()
+            .getResourceAsStream("dbunit/items_exp_rename.xml")) {
+            // given
             ITable expectedTable = (new FlatXmlDataSetBuilder().build(is)).getTable("ITEMS");
 
             connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
 
-            final IDataSet databaseDataSet = getConnection().createDataSet();
+            IDataSet databaseDataSet = getConnection().createDataSet();
             ITable actualTable = databaseDataSet.getTable("ITEMS");
 
             Assertion.assertEquals(expectedTable, actualTable);
@@ -140,22 +144,24 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
     }
 
     @Test
-    public void givenDataSet_whenInsertUnexpectedData_thenFailOnAllUnexpectedValues() throws Exception {
-        try (final InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/expected-multiple-failures.xml")) {
-            final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
-            final ITable expectedTable = expectedDataSet.getTable("ITEMS");
-            final Connection conn = getDataSource().getConnection();
-            final DiffCollectingFailureHandler collectingHandler = new DiffCollectingFailureHandler();
+    public void givenDataSet_whenInsertUnexpectedData_thenFail() throws Exception {
+        try (InputStream is = getClass().getClassLoader()
+            .getResourceAsStream("dbunit/expected-multiple-failures.xml")) {
 
-            conn.createStatement().executeUpdate(
-                "INSERT INTO ITEMS (title, price) VALUES ('Battery', '1000000')");
-            final ITable actualData = getConnection().createDataSet().getTable("ITEMS");
+            // given
+            IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
+            ITable expectedTable = expectedDataSet.getTable("ITEMS");
+            Connection conn = getDataSource().getConnection();
+            DiffCollectingFailureHandler collectingHandler = new DiffCollectingFailureHandler();
 
+            // when
+            conn.createStatement().executeUpdate("INSERT INTO ITEMS (title, price) VALUES ('Battery', '1000000')");
+            ITable actualData = getConnection().createDataSet().getTable("ITEMS");
+
+            // then
             Assertion.assertEquals(expectedTable, actualData, collectingHandler);
             if (!collectingHandler.getDiffList().isEmpty()) {
-                String message = (String) collectingHandler
-                    .getDiffList()
-                    .stream()
+                String message = (String) collectingHandler.getDiffList().stream()
                     .map(d -> formatDifference((Difference) d)).collect(joining("\n"));
                 logger.error(() -> message);
             }
@@ -163,6 +169,8 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
     }
 
     private static String formatDifference(Difference diff) {
-        return "expected value in " + diff.getExpectedTable().getTableMetaData().getTableName() + "." + diff.getColumnName() + " row " + diff.getRowIndex() + ":" + diff.getExpectedValue() + ", but was: " + diff.getActualValue();
+        return "expected value in " + diff.getExpectedTable().getTableMetaData().getTableName() + "." + diff
+            .getColumnName() + " row " + diff.getRowIndex() + ":" + diff.getExpectedValue() + ", but was: " + diff
+            .getActualValue();
     }
 }
