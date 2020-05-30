@@ -17,7 +17,7 @@ import com.baeldung.multiplecachemanager.repository.OrderDetailRepository;
 
 @SpringBootApplication
 @SpringBootTest
-public class MultipleCacheManagerIntegrationUnitTest {
+public class MultipleCacheManagerIntegrationTest {
 
     @MockBean
     private OrderDetailRepository orderDetailRepository;
