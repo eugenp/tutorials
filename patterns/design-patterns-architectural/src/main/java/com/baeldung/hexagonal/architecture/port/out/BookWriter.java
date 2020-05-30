@@ -5,5 +5,5 @@ import com.baeldung.hexagonal.architecture.domain.Book;
 import java.util.List;
 
 public interface BookWriter {
-    public void writeBooks(List<Book> books);
+    void writeBooks(List<Book> books);
 }
