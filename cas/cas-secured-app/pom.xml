@@ -16,10 +16,6 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
