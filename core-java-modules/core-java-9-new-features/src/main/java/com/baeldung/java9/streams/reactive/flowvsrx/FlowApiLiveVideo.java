@@ -1,4 +1,4 @@
-package com.baeldung.java9.streams.reactive.vsrx;
+package com.baeldung.java9.streams.reactive.flowvsrx;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.Flow;

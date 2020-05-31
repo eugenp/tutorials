@@ -1,4 +1,4 @@
-package com.baeldung.java9.streams.reactive.vsrx;
+package com.baeldung.java9.streams.reactive.flowvsrx;
 
 import io.reactivex.rxjava3.core.BackpressureOverflowStrategy;
 import io.reactivex.rxjava3.core.Flowable;
