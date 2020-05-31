@@ -6,9 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static java.util.Collections.EMPTY_LIST;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -42,7 +42,7 @@ class BookServiceDomainUnitTest {
 
     @Test
     void givenNoBooksPresent_whenInvoke_thenShouldReturnEmptyString() {
-        when(bookRepository.getAllBooks()).thenReturn(EMPTY_LIST);
+        when(bookRepository.getAllBooks()).thenReturn(Collections.emptyList());
 
         bookServiceDomain.invoke();
 
