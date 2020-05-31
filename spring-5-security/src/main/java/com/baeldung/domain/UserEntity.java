@@ -3,6 +3,7 @@ package com.baeldung.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,18 +15,25 @@ import javax.persistence.Table;
 public class UserEntity {
 
     @Id
+    @Column(name = "username")
     private String username;
     
+    @Column(name = "domain")
     private String domain;
     
+    @Column(name = "password")
     private String password;
     
+    @Column(name = "enabled")
     private boolean enabled;
     
+    @Column(name = "accountnonexpired")
     boolean accountNonExpired;
     
+    @Column(name = "credentialsnonexpired")
     boolean credentialsNonExpired; 
     
+    @Column(name = "accountnonlocked")
     boolean accountNonLocked;
     
     @OneToMany

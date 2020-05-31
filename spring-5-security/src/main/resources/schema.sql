@@ -1,3 +1,6 @@
+drop table if exists users;
+drop table if exists authorities;
+
 create table users (
     username varchar(50) not null primary key,
     domain varchar(10) not null,
@@ -9,7 +12,7 @@ create table users (
 );
 
 create table authorities (
-	id int(10) not null primary key,
+	id int not null primary key,
     username varchar(50) not null,
     authority varchar(50) not null
 );

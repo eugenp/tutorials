@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.dao.JpaUserRepository;
@@ -22,9 +23,11 @@ import com.baeldung.domain.UserEntity;
 public class SimpleUserDetailsService implements UserDetailsService {
 
     private JpaUserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
  
-    public SimpleUserDetailsService(JpaUserRepository userRepository) {
+    public SimpleUserDetailsService(JpaUserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class SimpleUserDetailsService implements UserDetailsService {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toSet());
 
-            return new User(userEntity.getUsername(), userEntity.getDomain(), userEntity.getPassword(), userEntity.isEnabled(), 
+            return new User(userEntity.getUsername(), userEntity.getDomain(), passwordEncoder.encode(userEntity.getPassword()), userEntity.isEnabled(), 
                 userEntity.isAccountNonExpired(), userEntity.isCredentialsNonExpired(), userEntity.isAccountNonLocked(), authorities);
         } else {
             throw new UsernameNotFoundException(
