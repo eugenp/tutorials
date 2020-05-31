@@ -1,4 +1,4 @@
-package com.baeldung.postprocessor;
+package com.baeldung.beanpostprocessor;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

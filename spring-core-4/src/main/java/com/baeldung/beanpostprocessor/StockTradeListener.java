@@ -1,4 +1,4 @@
-package com.baeldung.postprocessor;
+package com.baeldung.beanpostprocessor;
 
 @FunctionalInterface
 public interface StockTradeListener {
