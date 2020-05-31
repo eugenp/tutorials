@@ -1,7 +1,14 @@
 spring:
+  profiles:
+    active:
+    - test
+
+---
+
+spring:
     profiles: test
 name: test-YAML
-environment: test
+environment: testing
 servers:
     - www.abc.test.com
     - www.xyz.test.com
@@ -15,3 +22,13 @@ environment: production
 servers:
     - www.abc.com
     - www.xyz.com
+    
+---
+
+spring:
+    profiles: dev
+name: ${DEV_NAME:dev-YAML}
+environment: development
+servers:
+    - www.abc.dev.com
+    - www.xyz.dev.com
