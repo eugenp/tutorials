@@ -1,4 +1,4 @@
-package com.baeldung.java9.streams.reactive.vsrx;
+package com.baeldung.java9.streams.reactive.flowvsrx;
 
 class VideoFrame {
     private long number;
