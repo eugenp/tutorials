@@ -1,6 +1,6 @@
-package com.baeldung.hexagonal.architecture.adapter.in;
+package com.baeldung.hexagonal.architecture.adapter.incoming;
 
-import com.baeldung.hexagonal.architecture.port.in.BookService;
+import com.baeldung.hexagonal.architecture.port.incoming.BookService;
 
 public class Command {
     private BookService bookService;

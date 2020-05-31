@@ -1,8 +1,8 @@
 package com.baeldung.hexagonal.architecture.domain;
 
-import com.baeldung.hexagonal.architecture.port.in.BookService;
-import com.baeldung.hexagonal.architecture.port.out.BookRepository;
-import com.baeldung.hexagonal.architecture.port.out.BookWriter;
+import com.baeldung.hexagonal.architecture.port.incoming.BookService;
+import com.baeldung.hexagonal.architecture.port.outgoing.BookRepository;
+import com.baeldung.hexagonal.architecture.port.outgoing.BookWriter;
 
 import java.util.List;
 
@@ -17,12 +17,10 @@ public class BookServiceDomain implements BookService {
     @Override
     public void invoke() {
         List<Book> books = repository.getAllBooks();
-
         books.forEach(book -> {
             String title = book.getTitle();
             book.setTitle(title.toUpperCase());
         });
-
         writer.writeBooks(books);
     }
 }
