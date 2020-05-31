@@ -10,6 +10,6 @@ public class Command {
     }
 
     public void run() {
-        bookService.getBooks();
+        bookService.invoke();
     }
 }
