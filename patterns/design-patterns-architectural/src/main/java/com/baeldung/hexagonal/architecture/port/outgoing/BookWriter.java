@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.architecture.port.out;
+package com.baeldung.hexagonal.architecture.port.outgoing;
 
 import com.baeldung.hexagonal.architecture.domain.Book;
 

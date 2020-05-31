@@ -1,7 +1,7 @@
-package com.baeldung.hexagonal.architecture.adapter.out;
+package com.baeldung.hexagonal.architecture.adapter.outgoing;
 
 import com.baeldung.hexagonal.architecture.domain.Book;
-import com.baeldung.hexagonal.architecture.port.out.BookWriter;
+import com.baeldung.hexagonal.architecture.port.outgoing.BookWriter;
 
 import java.util.ArrayList;
 import java.util.List;

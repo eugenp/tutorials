@@ -1,7 +1,7 @@
 package com.baeldung.hexagonal.architecture.domain;
 
-import com.baeldung.hexagonal.architecture.adapter.out.BookWriterStub;
-import com.baeldung.hexagonal.architecture.port.out.BookRepository;
+import com.baeldung.hexagonal.architecture.adapter.outgoing.BookWriterStub;
+import com.baeldung.hexagonal.architecture.port.outgoing.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +27,8 @@ class BookServiceDomainUnitTest {
 
     @Test
     void givenListOfBooks_whenInvoke_thenListBooksWithCapitalizedTitleAndAuthor() {
-        Book book1 = new Book("1111", "title1test", "author1test");
-        Book book2 = new Book("2222", "title2test", "author2test");
+        Book book1 = new Book("978-0134685991", "Effective Java 3rd Edition", "Joshua Bloch");
+        Book book2 = new Book("978-1491950357", "Building Microservices: Designing Fine-Grained Systems", "Sam Newman");
         List<Book> books = Arrays.asList(book1, book2);
         when(bookRepository.getAllBooks()).thenReturn(books);
 
@@ -36,8 +36,8 @@ class BookServiceDomainUnitTest {
 
         verify(bookRepository).getAllBooks();
         List<String> lines = writer.getWrittenOutLines();
-        assertThat(lines.get(0)).isEqualTo("TITLE1TEST - author1test");
-        assertThat(lines.get(1)).isEqualTo("TITLE2TEST - author2test");
+        assertThat(lines.get(0)).isEqualTo("EFFECTIVE JAVA 3RD EDITION - Joshua Bloch");
+        assertThat(lines.get(1)).isEqualTo("BUILDING MICROSERVICES: DESIGNING FINE-GRAINED SYSTEMS - Sam Newman");
     }
 
     @Test
