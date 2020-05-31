@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-security-acl</module>
+        <module>spring-security-auth0</module>
         <module>spring-security-angular/server</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-core</module>
