@@ -1,4 +1,4 @@
-package com.baeldung.postprocessor;
+package com.baeldung.beanpostprocessor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
