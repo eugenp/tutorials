@@ -2,30 +2,25 @@ package com.baeldung.hexagonal.adapter;
 
 import com.baeldung.hexagonal.domain.Article;
 import com.baeldung.hexagonal.port.ArticleServicePort;
+import com.baeldung.hexagonal.port.ArticleWebUIPort;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.validation.Valid;
 
-public class ArticleWebAdapter {
+public class ArticleWebAdapter implements ArticleWebUIPort {
 
     @Autowired
     private ArticleServicePort articleServicePort;
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public ResponseEntity createNewArticle(@Valid String name, String text) {
-        articleServicePort.createArticle(name, text);
-        return ResponseEntity.ok(HttpStatus.OK);
+    @Override
+    public void createArticle(@RequestBody Article article) {
+        articleServicePort.createArticle(article);
     }
 
-    @RequestMapping(value = "/article/{name}", method = RequestMethod.GET)
-    public ResponseEntity findArticleByName(@PathVariable String name) {
-        Article article = articleServicePort.findArticleByName(name);
-        return ResponseEntity.ok(article);
+    @Override
+    public Article findArticleByName(@PathVariable String name) {
+        return articleServicePort.findArticleByName(name);
     }
 
 }

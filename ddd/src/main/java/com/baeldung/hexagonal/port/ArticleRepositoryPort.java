@@ -2,7 +2,6 @@ package com.baeldung.hexagonal.port;
 
 import com.baeldung.hexagonal.domain.Article;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface ArticleRepositoryPort {
@@ -11,5 +10,4 @@ public interface ArticleRepositoryPort {
 
     Optional<Article> findByName(String name);
 
-    List<Article> findAll();
 }
