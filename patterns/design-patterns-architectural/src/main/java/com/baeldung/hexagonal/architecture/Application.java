@@ -19,10 +19,10 @@ public class Application {
         Command multiLineCommand = new Command(multiLineBookService);
         multiLineCommand.run();
 
-        // SingleLineWriter
-        BookWriter singleLineWriter = new SingleLineConsoleWriter();
-        BookService singleLineBookService = new BookServiceDomain(inMemoryBookRepository, singleLineWriter);
-        Command singleLineCommand = new Command(singleLineBookService);
-        singleLineCommand.run();
+        // comment out for singleLineConsoleWriter
+        // BookWriter singleLineWriter = new SingleLineConsoleWriter();
+        // BookService singleLineBookService = new BookServiceDomain(inMemoryBookRepository, singleLineWriter);
+        // Command singleLineCommand = new Command(singleLineBookService);
+        // singleLineCommand.run();
     }
 }
