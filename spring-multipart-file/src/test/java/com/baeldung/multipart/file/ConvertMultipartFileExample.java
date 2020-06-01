@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,11 +25,11 @@ public class ConvertMultipartFileExample {
 
         File file = new File("src/main/resources/targetFile.tmp");
 
-        OutputStream os = new FileOutputStream(file);
+        try (OutputStream os = new FileOutputStream(file)) {
+            os.write(multipartFile.getBytes());
+        }
 
-        os.write(multipartFile.getBytes());
-
-        os.close();
+        Assert.assertEquals(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8"), "Hello World");
     }
 
     /**
@@ -44,10 +46,12 @@ public class ConvertMultipartFileExample {
         initialStream.read(buffer);
 
         File targetFile = new File("src/main/resources/targetFile.tmp");
-        OutputStream outStream = new FileOutputStream(targetFile);
-        outStream.write(buffer);
 
-        outStream.close();
+        try (OutputStream outStream = new FileOutputStream(targetFile)) {
+            outStream.write(buffer);
+        }
+
+        Assert.assertEquals(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8"), "Hello World");
     }
 
     /**
@@ -62,5 +66,7 @@ public class ConvertMultipartFileExample {
         File file = new File("src/main/resources/targetFile.tmp");
 
         multipartFile.transferTo(file);
+
+        Assert.assertEquals(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8"), "Hello World");
     }
 }
