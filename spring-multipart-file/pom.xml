@@ -15,11 +15,17 @@
     </parent>
 
     <properties>
+        <commons-io.version>2.6</commons-io.version>
         <junit.version>4.12</junit.version>
         <org.springframework.spring-mock.version>2.0.8</org.springframework.spring-mock.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
