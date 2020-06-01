@@ -27,8 +27,8 @@ class BookServiceDomainUnitTest {
 
     @Test
     void givenListOfBooks_whenInvoke_thenListBooksWithCapitalizedTitleAndAuthor() {
-        Book book1 = new Book("978-0134685991", "Effective Java 3rd Edition", "Joshua Bloch");
-        Book book2 = new Book("978-1491950357", "Building Microservices: Designing Fine-Grained Systems", "Sam Newman");
+        Book book1 = new Book("Effective Java 3rd Edition", "Joshua Bloch");
+        Book book2 = new Book("Building Microservices: Designing Fine-Grained Systems", "Sam Newman");
         List<Book> books = Arrays.asList(book1, book2);
         when(bookRepository.getAllBooks()).thenReturn(books);
 
@@ -41,7 +41,7 @@ class BookServiceDomainUnitTest {
     }
 
     @Test
-    void givenNoBooksPresent_whenInvoke_thenShouldReturnEmptyString() {
+    void givenNoBooksPresent_whenInvoke_thenShouldReturnEmptyListOfString() {
         when(bookRepository.getAllBooks()).thenReturn(Collections.emptyList());
 
         bookServiceDomain.invoke();
