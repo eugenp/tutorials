@@ -7,7 +7,7 @@ import java.lang.invoke.VarHandle;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class VariableHandlesTest {
+public class VariableHandlesUnitTest {
 
     public int publicTestVariable = 1;
     private int privateTestVariable = 1;
@@ -20,22 +20,22 @@ public class VariableHandlesTest {
     public void whenVariableHandleForPublicVariableIsCreated_ThenItIsInitializedProperly() throws NoSuchFieldException, IllegalAccessException {
         VarHandle publicIntHandle = MethodHandles
           .lookup()
-          .in(VariableHandlesTest.class)
-          .findVarHandle(VariableHandlesTest.class, "publicTestVariable", int.class);
+          .in(VariableHandlesUnitTest.class)
+          .findVarHandle(VariableHandlesUnitTest.class, "publicTestVariable", int.class);
 
         assertThat(publicIntHandle.coordinateTypes().size() == 1);
-        assertThat(publicIntHandle.coordinateTypes().get(0) == VariableHandles.class);
+        assertThat(publicIntHandle.coordinateTypes().get(0) == VariableHandlesUnitTest.class);
 
     }
 
     @Test
     public void whenVariableHandleForPrivateVariableIsCreated_ThenItIsInitializedProperly() throws NoSuchFieldException, IllegalAccessException {
         VarHandle privateIntHandle = MethodHandles
-          .privateLookupIn(VariableHandlesTest.class, MethodHandles.lookup())
-          .findVarHandle(VariableHandlesTest.class, "privateTestVariable", int.class);
+          .privateLookupIn(VariableHandlesUnitTest.class, MethodHandles.lookup())
+          .findVarHandle(VariableHandlesUnitTest.class, "privateTestVariable", int.class);
 
         assertThat(privateIntHandle.coordinateTypes().size() == 1);
-        assertThat(privateIntHandle.coordinateTypes().get(0) == VariableHandlesTest.class);
+        assertThat(privateIntHandle.coordinateTypes().get(0) == VariableHandlesUnitTest.class);
 
     }
 
@@ -52,8 +52,8 @@ public class VariableHandlesTest {
     public void givenVarHandle_whenGetIsInvoked_ThenValueOfVariableIsReturned() throws NoSuchFieldException, IllegalAccessException {
         VarHandle publicIntHandle = MethodHandles
           .lookup()
-          .in(VariableHandlesTest.class)
-          .findVarHandle(VariableHandlesTest.class, "publicTestVariable", int.class);
+          .in(VariableHandlesUnitTest.class)
+          .findVarHandle(VariableHandlesUnitTest.class, "publicTestVariable", int.class);
 
         assertThat((int) publicIntHandle.get(this) == 1);
     }
@@ -62,8 +62,8 @@ public class VariableHandlesTest {
     public void givenVarHandle_whenSetIsInvoked_ThenValueOfVariableIsChanged() throws NoSuchFieldException, IllegalAccessException {
         VarHandle publicIntHandle = MethodHandles
           .lookup()
-          .in(VariableHandlesTest.class)
-          .findVarHandle(VariableHandlesTest.class, "variableToSet", int.class);
+          .in(VariableHandlesUnitTest.class)
+          .findVarHandle(VariableHandlesUnitTest.class, "variableToSet", int.class);
         publicIntHandle.set(this, 15);
 
         assertThat((int) publicIntHandle.get(this) == 15);
@@ -73,8 +73,8 @@ public class VariableHandlesTest {
     public void givenVarHandle_whenCompareAndSetIsInvoked_ThenValueOfVariableIsChanged() throws NoSuchFieldException, IllegalAccessException {
         VarHandle publicIntHandle = MethodHandles
           .lookup()
-          .in(VariableHandlesTest.class)
-          .findVarHandle(VariableHandlesTest.class, "variableToCompareAndSet", int.class);
+          .in(VariableHandlesUnitTest.class)
+          .findVarHandle(VariableHandlesUnitTest.class, "variableToCompareAndSet", int.class);
         publicIntHandle.compareAndSet(this, 1, 100);
 
         assertThat((int) publicIntHandle.get(this) == 100);
@@ -84,8 +84,8 @@ public class VariableHandlesTest {
     public void givenVarHandle_whenGetAndAddIsInvoked_ThenValueOfVariableIsChanged() throws NoSuchFieldException, IllegalAccessException {
         VarHandle publicIntHandle = MethodHandles
           .lookup()
-          .in(VariableHandlesTest.class)
-          .findVarHandle(VariableHandlesTest.class, "variableToGetAndAdd", int.class);
+          .in(VariableHandlesUnitTest.class)
+          .findVarHandle(VariableHandlesUnitTest.class, "variableToGetAndAdd", int.class);
         int before = (int) publicIntHandle.getAndAdd(this, 200);
 
         assertThat(before == 0);
@@ -96,8 +96,8 @@ public class VariableHandlesTest {
     public void givenVarHandle_whenGetAndBitwiseOrIsInvoked_ThenValueOfVariableIsChanged() throws NoSuchFieldException, IllegalAccessException {
         VarHandle publicIntHandle = MethodHandles
           .lookup()
-          .in(VariableHandlesTest.class)
-          .findVarHandle(VariableHandlesTest.class, "variableToBitwiseOr", byte.class);
+          .in(VariableHandlesUnitTest.class)
+          .findVarHandle(VariableHandlesUnitTest.class, "variableToBitwiseOr", byte.class);
         byte before = (byte) publicIntHandle.getAndBitwiseOr(this, (byte) 127);
 
         assertThat(before == 0);
