@@ -1,5 +1,9 @@
 package com.baeldung.scopes
 
+import java.util.logging.Logger
+
+logger = Logger.getLogger("ScopesFail.groovy")
+
 y = 2
 
 def fLocal() {
@@ -8,6 +12,6 @@ def fLocal() {
     q
 }
 
-println("- Local variable doesn't exist outside")
-println(q)
+logger.info("- Local variable doesn't exist outside")
+logger.info(q.toString())
 

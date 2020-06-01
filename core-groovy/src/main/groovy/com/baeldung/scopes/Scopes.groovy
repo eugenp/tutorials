@@ -1,25 +1,28 @@
 package com.baeldung.scopes
 
+import java.util.logging.Logger
+
 x = 200
+logger = Logger.getLogger("Scopes.groovy")
 
 def getGlobalResult() {
-    println(x)
+    logger.info(x.toString())
     def test = 1 + x
-    return   test
+    return test
 }
-
 
 def getGlobalCreatedLocally() {
     z = 234
-    println(z)
+    logger = Logger.getLogger("Scopes.groovy")
+    logger.info(z.toString())
     return z
 }
 
-println("- Global variable")
-println(x)
-println("- Access global variable from inside function")
-println(getGlobalResult())
-println("- function called to create variable")
+logger.info("- Global variable")
+logger.info(x.toString())
+logger.info("- Access global variable from inside function")
+logger.info(getGlobalResult().toString())
+logger.info("- function called to create variable")
 getGlobalCreatedLocally()
-println("- Variable created inside a function")
-println(z)
+logger.info("- Variable created inside a function")
+logger.info(z.toString())
