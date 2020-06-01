@@ -22,14 +22,14 @@ public class PartialUpdateUnitTest {
     CustomerService service;
 
 	@Test
-    public void loadAndSave_whenUpdate_thenSuccess() {
+    public void givenCustomer_whenUpdate_thenSuccess() {
         Customer myCustomer = service.addCustomer("John");
         myCustomer = service.updateCustomer(myCustomer.id, "+00");
         assertEquals("+00", myCustomer.phone);
     }
 
     @Test
-    public void customQuery_whenUpdate_thenSuccess() {
+    public void givenCustomer_whenUpdateWithQuery_thenSuccess() {
         Customer myCustomer = service.addCustomer("John");
         service.updateCustomerWithCustomQuery(myCustomer.id, "+88");
         myCustomer = service.getCustomer(myCustomer.id);
@@ -37,7 +37,7 @@ public class PartialUpdateUnitTest {
     }
 
     @Test
-    public void loadAndSaveWithMapper_whenUpdate_thenSuccess() {
+    public void givenCustomerDto_whenUpdateWithMapper_thenSuccess() {
         CustomerDto dto = new CustomerDto(new Customer());
         dto.name = "Johnny";
         Customer entity = service.addCustomer(dto);
@@ -50,7 +50,7 @@ public class PartialUpdateUnitTest {
     }
 
     @Test
-    public void loadAndSaveStructuredEntity_whenUpdate_thenSuccess() {
+    public void givenCustomerStructured_whenUpdateCustomerPhone_thenSuccess() {
         CustomerStructured myCustomer = service.addCustomerStructured("John");
         assertEquals(null, myCustomer.contactPhones);
 
