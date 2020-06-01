@@ -10,8 +10,7 @@ public class SingleLineConsoleWriter implements BookWriter {
     public void writeBooks(List<Book> books) {
       books.forEach(book -> {
           System.out.println("Title: " + book.getTitle() + ", "
-                           + "Author: " + book.getAuthor() + ", "
-                           + "ISBN: " + book.getIsbn());
+                           + "Author: " + book.getAuthor());
       });
     }
 }

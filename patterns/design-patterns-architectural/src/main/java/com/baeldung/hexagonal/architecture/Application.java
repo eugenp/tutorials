@@ -11,10 +11,10 @@ import com.baeldung.hexagonal.architecture.port.outgoing.BookWriter;
 public class Application {
 
     public static void main(String[] args) {
-        BookRepository inMemoryBookRepository = new InMemoryBookDatabase();
-        BookWriter singleLineWriter = new SingleLineConsoleWriter();
-        BookService singleLineBookService = new BookServiceDomain(inMemoryBookRepository, singleLineWriter);
-        Command singleLineCommand = new Command(singleLineBookService);
-        singleLineCommand.run();
+        BookRepository bookRepository = new InMemoryBookDatabase();
+        BookWriter bookWriter = new SingleLineConsoleWriter();
+        BookService bookService = new BookServiceDomain(bookRepository, bookWriter);
+        Command command = new Command(bookService);
+        command.run();
     }
 }

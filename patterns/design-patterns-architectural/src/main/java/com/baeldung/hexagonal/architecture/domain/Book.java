@@ -1,18 +1,12 @@
 package com.baeldung.hexagonal.architecture.domain;
 
 public class Book {
-    private String isbn;
     private String title;
     private String author;
 
-    public Book(String isbn, String title, String author) {
-        this.isbn = isbn;
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
-    }
-
-    public String getIsbn() {
-        return isbn;
     }
 
     public String getTitle() {

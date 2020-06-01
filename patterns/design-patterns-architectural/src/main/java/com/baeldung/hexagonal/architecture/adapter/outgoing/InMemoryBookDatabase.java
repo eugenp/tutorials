@@ -9,9 +9,9 @@ public class InMemoryBookDatabase implements BookRepository {
     private List<Book> database = new ArrayList<>();
 
     public InMemoryBookDatabase() {
-        database.add(new Book("978-0134685991", "Effective Java 3rd Edition", "Joshua Bloch"));
-        database.add(new Book("978-0132350884", "Clean Code", "Robert C. Martin"));
-        database.add(new Book("978-0134757599", "Refactoring 2nd Edition", "Martin Fowler"));
+        database.add(new Book("Effective Java 3rd Edition", "Joshua Bloch"));
+        database.add(new Book("Clean Code", "Robert C. Martin"));
+        database.add(new Book("Refactoring 2nd Edition", "Martin Fowler"));
     }
 
     @Override
