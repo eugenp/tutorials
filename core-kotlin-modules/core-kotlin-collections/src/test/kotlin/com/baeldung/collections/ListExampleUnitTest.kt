@@ -3,6 +3,7 @@ package com.baeldung.collections
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class ListExampleUnitTest {
@@ -11,8 +12,22 @@ class ListExampleUnitTest {
 
     @Test
     fun whenListIsCreated_thenContainsElements() {
-        assertTrue(classUnderTest.createList().contains("two"))
-        assertTrue(classUnderTest.createMutableList().contains("Berlin"))
+        assertTrue(classUnderTest.createList().contains("India"))
+        assertTrue(classUnderTest.createMutableList().contains("Seoul"))
     }
 
+    @Test
+    fun whenRetrieveElementsInList_thenSuccess() {
+        assertEquals("Japan", classUnderTest.retrieveElementsInList())
+    }
+
+    @Test
+    fun whenRetrieveElementsUsingGet_thenSuccess() {
+        assertEquals("Brazil", classUnderTest.retrieveElementsUsingGet())
+    }
+
+    @Test
+    fun whenRetrieveElementsFirstAndLast_thenSuccess() {
+        assertEquals("Australia", classUnderTest.retrieveElementsFirstAndLast())
+    }
 }
