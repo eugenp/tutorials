@@ -18,10 +18,28 @@ public class StringToIntOrIntegerUnitTest {
     }
 
     @Test
+    public void givenBinaryString_whenParsingInt_shouldConvertToInt() {
+        String givenString = "101010";
+
+        int result = Integer.parseInt(givenString, 2);
+
+        assertThat(result).isEqualTo(42);
+    }
+
+    @Test
     public void givenString_whenCallingIntegerValueOf_shouldConvertToInt() {
         String givenString = "42";
 
         Integer result = Integer.valueOf(givenString);
+
+        assertThat(result).isEqualTo(new Integer(42));
+    }
+
+    @Test
+    public void givenBinaryString_whenCallingIntegerValueOf_shouldConvertToInt() {
+        String givenString = "101010";
+
+        Integer result = Integer.valueOf(givenString, 2);
 
         assertThat(result).isEqualTo(new Integer(42));
     }
