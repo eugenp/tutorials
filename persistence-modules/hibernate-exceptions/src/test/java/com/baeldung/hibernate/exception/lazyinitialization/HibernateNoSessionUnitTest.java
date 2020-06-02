@@ -26,25 +26,31 @@ public class HibernateNoSessionUnitTest {
 	}
 
 	@Test
-	public void testFetchUserRolesSuccess() {
+	public void whenAccessUserRolesInsideSession_thenSuccess() {
 
 		User detachedUser = createUserWithRoles();
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
+		
 		User persistentUser = session.find(User.class, detachedUser.getId());
+		
 		Assert.assertEquals(2, persistentUser.getRoles().size());
+		
 		session.getTransaction().commit();
 		session.close();
 	}
 
 	@Test
-	public void testFetchUserRolesFailure() {
+	public void whenAccessUserRolesOutsideSession_thenThrownException() {
+		
 		User detachedUser = createUserWithRoles();
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
+		
 		User persistentUser = session.find(User.class, detachedUser.getId());
+		
 		session.getTransaction().commit();
 		session.close();
 
