@@ -1,5 +1,7 @@
 package com.baeldung.multipart.file;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,7 +9,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +30,7 @@ public class ConvertMultipartFileExample {
             os.write(multipartFile.getBytes());
         }
 
-        Assert.assertEquals(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8"), "Hello World");
+        assertThat(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8")).isEqualTo("Hello World");
     }
 
     /**
@@ -51,7 +52,7 @@ public class ConvertMultipartFileExample {
             outStream.write(buffer);
         }
 
-        Assert.assertEquals(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8"), "Hello World");
+        assertThat(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8")).isEqualTo("Hello World");
     }
 
     /**
@@ -67,6 +68,6 @@ public class ConvertMultipartFileExample {
 
         multipartFile.transferTo(file);
 
-        Assert.assertEquals(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8"), "Hello World");
+        assertThat(FileUtils.readFileToString(new File("src/main/resources/targetFile.tmp"), "UTF-8")).isEqualTo("Hello World");
     }
 }
