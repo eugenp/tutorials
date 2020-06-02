@@ -1,10 +1,8 @@
 package com.baeldung.hexagonal.repository;
 
-import com.baeldung.hexagonal.domain.Documentation;
+import com.baeldung.hexagonal.application.ILoadDocumentation;
+import com.baeldung.hexagonal.application.ISaveDocumentation;
 import org.springframework.stereotype.Repository;
 
-@Repository public interface DocumentationRepository {
-        void create(String content);
-
-        Documentation getDocumentation(Long id);
+@Repository public interface DocumentationRepository extends ILoadDocumentation, ISaveDocumentation {
 }

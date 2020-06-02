@@ -1,29 +1,41 @@
 package com.baeldung.hexagonal.domain;
 
-import java.util.Random;
+import java.util.Set;
 
 public class Documentation {
-        private long id;
-        private String content;
+        private String name;
+        private String description;
+        private Set<ComponentMethod> componentClass;
 
         public Documentation() {
         }
 
-        public Documentation(String content) {
-                this.id = new Random().nextLong();
-                this.content = content;
+        public Documentation(String name, String description) {
+                this.name = name;
+                this.description = description;
         }
 
-        public Documentation(Long id, String content) {
-                super();
-                this.id = id;
-                this.content = content;
-
+        public String getName() {
+                return name;
         }
 
-        public long getId() {
-                return id;
+        public void addMethodToDocumentation(String name, String description) {
+                componentClass.add(new ComponentMethod(name, description));
         }
 
-        //getters and setters
+        public boolean removeMethodFromDocumentation(String name) {
+                if (!hasMethod(name)) {
+                        return false;
+                }
+                componentClass.removeIf(componentMethod -> componentMethod.getName().equals(name));
+                return true;
+        }
+
+        public String getDescription() {
+                return description;
+        }
+
+        private boolean hasMethod(String name) {
+                return componentClass.stream().anyMatch(componentMethod -> componentMethod.getName().equals(name));
+        }
 }

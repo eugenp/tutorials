@@ -1,14 +1,12 @@
 package com.baeldung.hexagonal.framework;
 
-import com.baeldung.hexagonal.application.DocumentationHUDPort;
-import com.baeldung.hexagonal.domain.Documentation;
 import com.baeldung.hexagonal.service.DocumentationService;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController @RequestMapping("/documentation/") public class DocumentationController implements DocumentationHUDPort {
+@RestController @RequestMapping("/documentation/") public class DocumentationController {
 
         private final DocumentationService documentationService;
 
@@ -16,11 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
                 this.documentationService = documentationService;
         }
 
-        @Override public void create(@RequestBody String request) {
-                documentationService.create(request);
+        @PostMapping(value = "add/{className}/{methodName}/{methodDescription}") public void add(@PathVariable String className, @PathVariable String methodName, @PathVariable String methodDescription) {
+                documentationService.add(className, methodName, methodDescription);
         }
 
-        @Override public Documentation view(@PathVariable Long id) {
-                return documentationService.getDocumentation(id);
+        @PostMapping(value = "remove/{className}/{methodName}") public boolean remove(@PathVariable String className, @PathVariable String methodName) {
+                return documentationService.remove(className, methodName);
+
         }
+
 }
