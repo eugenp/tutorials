@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {SpringListPropertiesApplication.class})
-public class ListsPropertiesIntegrationTest {
+public class ListsPropertiesUnitTest {
 
     @Value("${arrayOfStrings}")
     private String[] arrayOfStrings;
@@ -46,39 +46,39 @@ public class ListsPropertiesIntegrationTest {
     private Environment environment;
 
     @Test
-    public void givenContextIsInitialized_ThenInjectedArrayContainsExpectedValues() {
+    public void whenContextIsInitialized_ThenInjectedArrayContainsExpectedValues() {
         assertEquals(arrayOfStrings, new String[] {"Baeldung", "dot", "com"});
     }
 
     @Test
-    public void givenContextIsInitialized_ThenInjectedListContainsUnexpectedValues() {
+    public void whenContextIsInitialized_ThenInjectedListContainsUnexpectedValues() {
         assertEquals(unexpectedListOfStrings, Collections.singletonList("Baeldung,dot,com"));
     }
 
     @Test
-    public void givenContextIsInitialized_ThenInjectedListContainsExpectedValues() {
+    public void whenContextIsInitialized_ThenInjectedListContainsExpectedValues() {
         assertEquals(listOfStrings, Arrays.asList("Baeldung", "dot", "com"));
     }
 
     @Test
-    public void givenContextIsInitialized_ThenInjectedListV2ContainsExpectedValues() {
+    public void whenContextIsInitialized_ThenInjectedListV2ContainsExpectedValues() {
         assertEquals(listOfStringsV2, Arrays.asList("Baeldung", "dot", "com"));
     }
 
     @Test
-    public void givenContextIsInitialized_ThenInjectedListWithCustomDelimiterContainsExpectedValues() {
+    public void whenContextIsInitialized_ThenInjectedListWithCustomDelimiterContainsExpectedValues() {
         assertEquals(listOfStringsWithCustomDelimiter, Arrays.asList("Baeldung", "dot", "com"));
     }
 
     @Test
-    public void givenContextIsInitialized_ThenInjectedListOfBasicTypesContainsExpectedValues() {
+    public void whenContextIsInitialized_ThenInjectedListOfBasicTypesContainsExpectedValues() {
         assertEquals(listOfBooleans, Arrays.asList(false, false, true));
         assertEquals(listOfIntegers, Arrays.asList(1, 2, 3, 4));
         assertEquals(listOfCharacters, Arrays.asList('a', 'b', 'c'));
     }
 
     @Test
-    public void givenContextIsInitialized_WhenReadingFromEnvironment_ThenPropertiesHaveExpectedValues() {
+    public void WhenReadingFromSpringEnvironment_ThenPropertiesHaveExpectedValues() {
         String[] arrayOfStrings = environment.getProperty("arrayOfStrings", String[].class);
         List<String> listOfStrings = (List<String>)environment.getProperty("arrayOfStrings", List.class);
 
