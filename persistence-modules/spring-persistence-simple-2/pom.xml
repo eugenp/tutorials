@@ -33,7 +33,7 @@
             <scope>test</scope>
         </dependency>
 		
-		<!-- simple-jndi -->
+        <!-- simple-jndi -->
         <dependency>
             <groupId>com.github.h-thurow</groupId>
             <artifactId>simple-jndi</artifactId>
@@ -60,7 +60,7 @@
         <org.springframework.version>5.2.4.RELEASE</org.springframework.version>
         <!-- persistence -->
         <h2.version>1.4.200</h2.version>
-		<!-- simple-jndi -->
+        <!-- simple-jndi -->
         <simple-jndi.version>0.23.0</simple-jndi.version>
         <!-- test scoped -->
         <mockito.version>3.3.3</mockito.version>
