@@ -37,19 +37,4 @@ public class ExecutorServiceUnitTest {
         assertThat(((ThreadPoolExecutor) executorService).getQueue()
             .size(), is(equalTo(5)));
     }
-
-    @Test
-    public void givenAnExecutorService() throws Exception {
-
-        while (true) {
-            TimeUnit.SECONDS.sleep(5);
-            new Thread(() -> {
-                try {
-                    TimeUnit.HOURS.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }).start();
-        }
-    }
 }
