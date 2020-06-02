@@ -15,71 +15,71 @@ import com.baeldung.hibernate.exception.lazyinitialization.entity.User;
 
 public class HibernateNoSessionUnitTest {
 
-	private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
-	@Rule
-	public ExpectedException thrown = ExpectedException.none();
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-	@BeforeClass
-	public static void init() {
-		sessionFactory = HibernateUtil.getSessionFactory();
-	}
+    @BeforeClass
+    public static void init() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+    }
 
-	@Test
-	public void whenAccessUserRolesInsideSession_thenSuccess() {
+    @Test
+    public void whenAccessUserRolesInsideSession_thenSuccess() {
 
-		User detachedUser = createUserWithRoles();
+        User detachedUser = createUserWithRoles();
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		User persistentUser = session.find(User.class, detachedUser.getId());
-		
-		Assert.assertEquals(2, persistentUser.getRoles().size());
-		
-		session.getTransaction().commit();
-		session.close();
-	}
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-	@Test
-	public void whenAccessUserRolesOutsideSession_thenThrownException() {
-		
-		User detachedUser = createUserWithRoles();
+        User persistentUser = session.find(User.class, detachedUser.getId());
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		User persistentUser = session.find(User.class, detachedUser.getId());
-		
-		session.getTransaction().commit();
-		session.close();
+        Assert.assertEquals(2, persistentUser.getRoles().size());
 
-		thrown.expect(LazyInitializationException.class);
-		System.out.println(persistentUser.getRoles().size());
-	}
+        session.getTransaction().commit();
+        session.close();
+    }
 
-	private User createUserWithRoles() {
+    @Test
+    public void whenAccessUserRolesOutsideSession_thenThrownException() {
 
-		Role admin = new Role("Admin");
-		Role dba = new Role("DBA");
+        User detachedUser = createUserWithRoles();
 
-		User user = new User("Bob", "Smith");
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		user.addRole(admin);
-		user.addRole(dba);
+        User persistentUser = session.find(User.class, detachedUser.getId());
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		user.getRoles().forEach(role -> session.save(role));
-		session.save(user);
-		session.getTransaction().commit();
-		session.close();
+        session.getTransaction().commit();
+        session.close();
 
-		return user;
-	}
+        thrown.expect(LazyInitializationException.class);
+        System.out.println(persistentUser.getRoles().size());
+    }
 
-	@AfterClass
-	public static void cleanUp() {
-		sessionFactory.close();
-	}
+    private User createUserWithRoles() {
+
+        Role admin = new Role("Admin");
+        Role dba = new Role("DBA");
+
+        User user = new User("Bob", "Smith");
+
+        user.addRole(admin);
+        user.addRole(dba);
+
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        user.getRoles().forEach(role -> session.save(role));
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
+
+        return user;
+    }
+
+    @AfterClass
+    public static void cleanUp() {
+        sessionFactory.close();
+    }
 }
