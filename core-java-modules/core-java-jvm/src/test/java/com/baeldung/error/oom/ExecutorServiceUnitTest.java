@@ -12,12 +12,12 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 
-public class TestExecutorService {
+public class ExecutorServiceUnitTest {
 
     @Test
     public void givenAnExecutorService_WhenMoreTasksSubmitted_ThenAdditionalTasksWait() {
 
-        //Given
+        // Given
         int noOfThreads = 5;
         ExecutorService executorService = Executors.newFixedThreadPool(noOfThreads);
 
@@ -29,11 +29,27 @@ public class TestExecutorService {
             }
         };
 
-        //When
+        // When
         IntStream.rangeClosed(1, 10)
             .forEach(i -> executorService.submit(runnableTask));
-        
-        //Then
-        assertThat(((ThreadPoolExecutor )executorService).getQueue().size(), is(equalTo(5)));
+
+        // Then
+        assertThat(((ThreadPoolExecutor) executorService).getQueue()
+            .size(), is(equalTo(5)));
+    }
+
+    @Test
+    public void givenAnExecutorService() throws Exception {
+
+        while (true) {
+            TimeUnit.SECONDS.sleep(5);
+            new Thread(() -> {
+                try {
+                    TimeUnit.HOURS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
 }
