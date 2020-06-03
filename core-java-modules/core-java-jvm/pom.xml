@@ -52,9 +52,9 @@
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
         <dependency>
-		    <groupId>org.ow2.asm</groupId>
-		    <artifactId>asm</artifactId>
-		    <version>8.0.1</version>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>8.0.1</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.ow2.asm</groupId>
@@ -67,9 +67,9 @@
             <version>6.4.1</version>
         </dependency>
         <dependency>
-		    <groupId>org.javassist</groupId>
-		    <artifactId>javassist</artifactId>
-   		    <version>3.27.0-GA</version>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.27.0-GA</version>
         </dependency>      
     </dependencies>
 
