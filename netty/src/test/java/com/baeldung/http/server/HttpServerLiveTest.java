@@ -73,7 +73,7 @@ public class HttpServerLiveTest {
     }
 
     @Test
-    public void post() throws Exception {
+    public void whenPostSent_thenContentReceivedInUppercase() throws Exception {
         String body = "Hello World!";
 
         DefaultFullHttpRequest request = createRequest(body);
@@ -89,7 +89,7 @@ public class HttpServerLiveTest {
     }
 
     @Test
-    public void get() throws Exception {
+    public void whenGetSent_thenCookieReceivedInResponse() throws Exception {
         DefaultFullHttpRequest request = createRequest(null);
 
         channel.writeAndFlush(request);
