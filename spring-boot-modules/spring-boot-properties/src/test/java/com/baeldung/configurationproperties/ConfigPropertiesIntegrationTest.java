@@ -14,16 +14,12 @@ import com.baeldung.properties.AdditionalProperties;
 import com.baeldung.properties.ConfigPropertiesDemoApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {ConfigPropertiesDemoApplication.class, DatabaseConfigPropertiesApp.class})
-@TestPropertySource(locations = {"classpath:configprops-test.properties", "classpath:database-test.properties"})
+@SpringBootTest(classes = {ConfigPropertiesDemoApplication.class})
+@TestPropertySource(locations = {"classpath:configprops-test.properties"})
 public class ConfigPropertiesIntegrationTest {
 
     @Autowired
     private ConfigProperties properties;
-
-    @Autowired
-    @Qualifier("dataSource")
-    private Database databaseProperties;
 
     @Autowired
     private AdditionalProperties additionalProperties;
@@ -59,10 +55,4 @@ public class ConfigPropertiesIntegrationTest {
         Assert.assertTrue(additionalProperties.getMax() == 100);
     }
 
-    @Test
-    public void whenDatabasePropertyQueriedthenReturnsProperty() {
-        Assert.assertTrue(databaseProperties.getUrl().equals("jdbc:postgresql:/localhost:5432"));
-        Assert.assertTrue(databaseProperties.getUsername().equals("foo"));
-        Assert.assertTrue(databaseProperties.getPassword().equals("bar"));
-    }
 }

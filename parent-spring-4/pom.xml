@@ -53,7 +53,7 @@
     </build>
 
     <properties>
-        <spring.version>4.3.26.RELEASE</spring.version>
+        <spring.version>4.3.27.RELEASE</spring.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 
