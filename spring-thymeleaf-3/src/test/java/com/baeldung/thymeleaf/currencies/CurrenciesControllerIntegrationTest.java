@@ -27,7 +27,7 @@ public class CurrenciesControllerIntegrationTest {
           .header("Accept-Language", "es-ES")
           .param("amount", "10032.5"))
           .andExpect(status().isOk())
-          .andExpect(content().string(containsString("10.032,50 €")));
+          .andExpect(content().string(containsString("10.032,50")));
     }
 
     @Test
@@ -42,10 +42,10 @@ public class CurrenciesControllerIntegrationTest {
     @Test
     public void whenCallCurrencyWithRomanianLocaleWithArrays_ThenReturnLocaleCurrencies() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/currency")
-          .header("Accept-Language", "ro-RO")
+          .header("Accept-Language", "en-GB")
           .param("amountList", "10", "20", "30"))
           .andExpect(status().isOk())
-          .andExpect(content().string(containsString("10,00 RON, 20,00 RON, 30,00 RON")));
+          .andExpect(content().string(containsString("£10.00, £20.00, £30.00")));
     }
 
     @Test
