@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class RestTemplateCustomizerUnitTest {
+public class RestTemplateCustomizerLiveTest {
 
     private static final String PROXY_SERVER_HOST = "127.0.0.1";
     private static final int PROXY_SERVER_PORT = 8080;
