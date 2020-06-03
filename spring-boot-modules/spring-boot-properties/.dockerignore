@@ -1,0 +1,13 @@
+# Logs
+logs
+*.log
+
+# Git
+.git
+.cache
+
+# Classes 
+**/*.class
+
+# Ignore md files
+*.md
