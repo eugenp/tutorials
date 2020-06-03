@@ -2,9 +2,11 @@ package com.baeldung.bytecode;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
 import org.apache.bcel.Repository;
 import org.apache.bcel.classfile.JavaClass;
 import org.junit.Test;
@@ -13,7 +15,6 @@ import org.objectweb.asm.util.TraceClassVisitor;
 import javassist.ClassPool;
 import javassist.NotFoundException;
 import javassist.bytecode.ClassFile;
-import net.sf.cglib.reflect.FastClass;
 
 public class ViewBytecodeUnitTest {
     
@@ -34,14 +35,6 @@ public class ViewBytecodeUnitTest {
         assertEquals(objectClazz.getClassName(), "java.lang.Object");   
         assertEquals(objectClazz.getMethods().length, 14);
         assertTrue(objectClazz.toString().contains("public class java.lang.Object"));
-    }
-    
-    @Test
-    public void whenUsingCglib_thenReadBytecode() {
-        FastClass fastClass = FastClass.create(java.lang.Object.class);
-        Class<?> clazz = fastClass.getJavaClass();
-        
-        assertEquals(clazz.toString(), "class java.lang.Object");
     }
     
     @Test
