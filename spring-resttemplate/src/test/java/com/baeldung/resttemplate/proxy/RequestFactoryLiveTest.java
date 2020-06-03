@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class RequestFactoryUnitTest {
+public class RequestFactoryLiveTest {
 
     private static final String PROXY_SERVER_HOST = "127.0.0.1";
     private static final int PROXY_SERVER_PORT = 8080;
