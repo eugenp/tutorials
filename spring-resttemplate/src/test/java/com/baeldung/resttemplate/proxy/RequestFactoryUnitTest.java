@@ -15,13 +15,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class RequestFactoryLiveTest {
+public class RequestFactoryUnitTest {
+
+    private static final String PROXY_SERVER_HOST = "127.0.0.1";
+    private static final int PROXY_SERVER_PORT = 8080;
 
     RestTemplate restTemplate;
 
     @Before
     public void setUp() {
-        Proxy proxy = new Proxy(Type.HTTP, new InetSocketAddress("201.91.82.155", 3128));
+        Proxy proxy = new Proxy(Type.HTTP, new InetSocketAddress(PROXY_SERVER_HOST, PROXY_SERVER_PORT));
 
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setProxy(proxy);

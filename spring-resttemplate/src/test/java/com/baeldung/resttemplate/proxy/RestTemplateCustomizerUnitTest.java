@@ -20,7 +20,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class RestTemplateCustomizerLiveTest {
+public class RestTemplateCustomizerUnitTest {
+
+    private static final String PROXY_SERVER_HOST = "127.0.0.1";
+    private static final int PROXY_SERVER_PORT = 8080;
 
     RestTemplate restTemplate;
 
@@ -40,7 +43,7 @@ public class RestTemplateCustomizerLiveTest {
 
         @Override
         public void customize(RestTemplate restTemplate) {
-            HttpHost proxy = new HttpHost("201.91.82.155", 3128);
+            HttpHost proxy = new HttpHost(PROXY_SERVER_HOST, PROXY_SERVER_PORT);
             HttpClient httpClient = HttpClientBuilder.create()
                 .setRoutePlanner(new DefaultProxyRoutePlanner(proxy) {
                     @Override
