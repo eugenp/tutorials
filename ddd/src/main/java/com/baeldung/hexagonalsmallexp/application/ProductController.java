@@ -1,29 +1,34 @@
 package com.baeldung.hexagonalsmallexp.application;
 
 import com.baeldung.hexagonalsmallexp.domain.Product;
-import com.baeldung.hexagonalsmallexp.domain.service.ProductAdapter;
+import com.baeldung.hexagonalsmallexp.domain.service.ProductPort;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 import java.util.UUID;
 
-@Component
+@RestController
 public class ProductController {
     private Random random = new Random(1000);
 
     @Autowired
-    private ProductAdapter productAdapter;
+    private ProductPort productPort;
 
+    @PostMapping("/createProduct")
     public UUID createProduct() {
         Product product = new Product();
         product.setId(UUID.randomUUID());
         product.setPrice(random.nextInt(100));
-        productAdapter.save(product);
+        productPort.save(product);
         return product.getId();
     }
 
-    public Product findProduct(UUID productId) {
-        return productAdapter.findByProductId(productId);
+    @GetMapping("/product/{productId}")
+    public Product findProduct(@PathVariable UUID productId) {
+        return productPort.findByProductId(productId);
     }
 }
