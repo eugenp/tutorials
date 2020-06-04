@@ -31,4 +31,15 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <!-- comment section below to cause version collision and compilation error -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>29.0-jre</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
