@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.net.Proxy;
+
 import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
@@ -20,6 +22,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * This class is used to test a request using {@link RestTemplate} with {@link Proxy}
+ * using a {@link RestTemplateCustomizer} as configuration. 
+ * <br />
+ * <br />
+ *
+ * Before running the test we should change the <code>PROXY_SERVER_HOST</code> 
+ * and <code>PROXY_SERVER_PORT</code> constants in our class to match our preferred proxy configuration.
+ */
 public class RestTemplateCustomizerLiveTest {
 
     private static final String PROXY_SERVER_HOST = "127.0.0.1";
