@@ -1,5 +1,7 @@
 package com.baeldung.hexagonal;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
         ConsoleRandomAdder adder = new ConsoleRandomAdder();
@@ -7,7 +9,6 @@ public class Main {
     }
 }
 
-// Convenience class where we inject the secondary adapters
 class AdderConfig {
     RandomAdder production() {
         return new RandomAdder(new MathRandomProvider());
@@ -18,7 +19,6 @@ class AdderConfig {
     }
 }
 
-// Primary Adapter
 class ConsoleRandomAdder {
     RandomAdder randomAdder = new AdderConfig().production();
 
@@ -44,34 +44,32 @@ class ConsoleRandomAdder {
     }
 }
 
-// Primary Port (Domain Business Logic API)
 class RandomAdder {
-    RandomProvider randomProvider;// Domain is only aware of ports
+    RandomProvider randomProvider;
 
     RandomAdder(RandomProvider randomProvider) {
         this.randomProvider = randomProvider;
     }
 
-    Double addRandom(Double number) {// Adding Business Logic
+    Double addRandom(Double number) {
         return number + randomProvider.random();
     }
 }
 
-// Secondary Port
 interface RandomProvider {
     Double random();
 }
 
-// Secondary Adapter for production
 class MathRandomProvider implements RandomProvider {
     public Double random() {
         return Math.random();
     }
 }
 
-// Secondary Adapter for tests
 class TestRandomProvider implements RandomProvider {
+    Random generator = new Random(1);
+
     public Double random() {
-        return 0.5;
+        return generator.nextDouble();
     }
 }
