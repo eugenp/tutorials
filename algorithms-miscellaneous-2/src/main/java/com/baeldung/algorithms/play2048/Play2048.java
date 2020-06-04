@@ -1,12 +1,10 @@
 package com.baeldung.algorithms.play2048;
 
-import java.util.concurrent.TimeUnit;
-
 public class Play2048 {
-    private static final int SIZE = 4;
+    private static final int SIZE = 3;
     private static final int INITIAL_NUMBERS = 2;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         // The board and players
         Board board = new Board(SIZE);
         Computer computer = new Computer();
@@ -21,14 +19,14 @@ public class Play2048 {
 
         printBoard(board);
         do {
+            board = human.makeMove(board);
             System.out.println("Human move");
             System.out.println("==========");
-            board = human.makeMove(board);
             printBoard(board);
 
+            board = computer.makeMove(board);
             System.out.println("Computer move");
             System.out.println("=============");
-            board = computer.makeMove(board);
             printBoard(board);
         } while (!board.emptyCells().isEmpty());
 
