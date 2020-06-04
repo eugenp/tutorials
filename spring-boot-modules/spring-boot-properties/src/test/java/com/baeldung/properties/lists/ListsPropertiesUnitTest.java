@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SpringListPropertiesApplication.class})
+@ContextConfiguration(classes = SpringListPropertiesApplication.class)
 public class ListsPropertiesUnitTest {
 
     @Value("${arrayOfStrings}")
@@ -78,7 +78,7 @@ public class ListsPropertiesUnitTest {
     }
 
     @Test
-    public void WhenReadingFromSpringEnvironment_ThenPropertiesHaveExpectedValues() {
+    public void whenReadingFromSpringEnvironment_ThenPropertiesHaveExpectedValues() {
         String[] arrayOfStrings = environment.getProperty("arrayOfStrings", String[].class);
         List<String> listOfStrings = (List<String>)environment.getProperty("arrayOfStrings", List.class);
 
