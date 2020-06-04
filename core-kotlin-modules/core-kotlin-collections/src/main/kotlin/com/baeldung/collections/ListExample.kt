@@ -84,5 +84,99 @@ class ListExample {
         return countries.firstOrNull { it.length > 8 }
     }
 
-    //5. Retrieve parts of the list
+    fun retrieveSubList(): List<String> {
+        val subList = countries.subList(1, 4)
+        println(subList)
+        return subList
+    }
+
+    fun retrieveListSliceUsingIndices(): List<String> {
+        val sliceList = countries.slice(1..4)
+        println(sliceList)
+        return sliceList
+    }
+
+    fun retrieveListSliceUsingIndicesList(): List<String> {
+        val sliceList = countries.slice(listOf(1, 4))
+        println(sliceList)
+        return sliceList
+    }
+
+    fun countList(): Int {
+        val count = countries.count()
+        println(count)
+        return count
+    }
+
+    fun countListUsingPredicate(): Int {
+        val count = countries.count { it.length > 5 }
+        println(count)
+        return count
+    }
+
+    fun countListUsingProperty(): Int {
+        val size = countries.size
+        println(size)
+        return size
+    }
+
+    fun addToList(): List<String> {
+        cities.add("Barcelona")
+        println(cities)
+        cities.add(3, "London")
+        println(cities)
+        cities.addAll(listOf("Singapore", "Moscow"))
+        println(cities)
+        cities.addAll(2, listOf("Prague", "Amsterdam"))
+        println(cities)
+        return cities
+    }
+
+    fun removeFromList(): List<String> {
+        cities.remove("Seoul")
+        println(cities)
+        cities.removeAt(1)
+        println(cities)
+        return cities
+    }
+
+    fun replaceFromList(): List<String> {
+        cities.set(3, "Prague")
+        println(cities)
+        cities[4] = "Moscow"
+        println(cities)
+        cities.fill("Barcelona")
+        println(cities)
+        return cities
+    }
+
+    fun sortMutableList(): List<String> {
+        cities.sort()
+        println(cities)
+        cities.sortDescending()
+        println(cities)
+        return cities
+    }
+
+    fun sortList(): List<String> {
+        val sortedCountries = countries.sorted()
+        println("countries = $countries")
+        println("sortedCountries = $sortedCountries")
+        val sortedCountriesDescending = countries.sortedDescending()
+        println("countries = $countries")
+        println("sortedCountriesDescending = $sortedCountriesDescending")
+        return sortedCountriesDescending
+    }
+
+    fun checkOneElementInList(): Boolean {
+        return countries.contains("Germany")
+    }
+
+    fun checkOneElementInListUsingOperator(): Boolean {
+        return "Spain" in countries
+    }
+
+    fun checkElementsInList(): Boolean {
+        return cities.containsAll(listOf("Calcutta", "Sao Paulo", "Sydney"))
+    }
 }
