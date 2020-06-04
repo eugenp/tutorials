@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -13,8 +14,8 @@ import com.baeldung.properties.AdditionalProperties;
 import com.baeldung.properties.ConfigPropertiesDemoApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ConfigPropertiesDemoApplication.class)
-@TestPropertySource("classpath:configprops-test.properties")
+@SpringBootTest(classes = {ConfigPropertiesDemoApplication.class})
+@TestPropertySource(locations = {"classpath:configprops-test.properties"})
 public class ConfigPropertiesIntegrationTest {
 
     @Autowired
@@ -53,4 +54,5 @@ public class ConfigPropertiesIntegrationTest {
         Assert.assertTrue(additionalProperties.getUnit().equals("km"));
         Assert.assertTrue(additionalProperties.getMax() == 100);
     }
+
 }

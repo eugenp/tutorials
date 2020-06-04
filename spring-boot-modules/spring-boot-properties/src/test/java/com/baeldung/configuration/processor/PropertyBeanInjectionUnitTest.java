@@ -16,6 +16,11 @@ class PropertyBeanInjectionUnitTest {
     private PropertyBeanInjection propertyBeanInjection;
 
     @Test
+    void checkThatJdbcPropertiesHaveTheCorrectValueFromPropertiesFile() {
+        Assertions.assertEquals("jdbc:postgresql:/localhost:5432", propertyBeanInjection.getJdbcUrl());
+    }
+
+    @Test
     void checkThatCustomPropertiesHaveTheCorrectValueFromPropertiesFile() {
         Assertions.assertEquals("www.abc.test.com", propertyBeanInjection.getUrl());
         Assertions.assertEquals(2000, propertyBeanInjection.getTimeoutInMilliseconds());
