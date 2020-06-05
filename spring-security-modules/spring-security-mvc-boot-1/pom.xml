@@ -106,10 +106,6 @@
             <version>${ehcache-core.version}</version>
             <type>jar</type>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
