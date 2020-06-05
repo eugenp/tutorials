@@ -1,4 +1,4 @@
-package com.baeldung.insertid;
+package com.baeldung.genkeys;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -16,7 +16,7 @@ public class JdbcInsertIdIntegrationTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        connection = DriverManager.getConnection("jdbc:h2:mem:insertid", "sa", "");
+        connection = DriverManager.getConnection("jdbc:h2:mem:generated-keys", "sa", "");
         connection
           .createStatement()
           .execute("create table persons(id bigint auto_increment, name varchar(255))");
