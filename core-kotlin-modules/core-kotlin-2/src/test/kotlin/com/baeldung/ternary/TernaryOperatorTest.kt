@@ -21,4 +21,12 @@ class TernaryOperatorTest {
         }
         assertEquals("yes", result)
     }
+
+    @Test
+    fun `using elvis`() {
+        val a: String? = null
+        val result = a ?: "Default"
+
+        assertEquals("Default", result)
+    }
 }
