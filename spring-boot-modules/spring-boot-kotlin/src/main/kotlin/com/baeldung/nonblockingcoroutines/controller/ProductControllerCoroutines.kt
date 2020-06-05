@@ -2,12 +2,11 @@ package com.baeldung.nonblockingcoroutines.controller
 
 import com.baeldung.nonblockingcoroutines.model.Product
 import com.baeldung.nonblockingcoroutines.repository.ProductRepositoryCoroutines
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType.APPLICATION_JSON
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
-import org.springframework.web.reactive.function.client.awaitExchange
 
 class ProductControllerCoroutines {
     @Autowired
@@ -38,7 +36,7 @@ class ProductControllerCoroutines {
             webClient.get()
               .uri("/stock-service/product/$id/quantity")
               .accept(APPLICATION_JSON)
-              .awaitExchange().awaitBody<Int>()
+              .retrieve().awaitBody<Int>()
         }
         ProductStockView(product.await()!!, quantity.await())
     }
