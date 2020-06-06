@@ -31,13 +31,15 @@ public class OldSchoolDbUnitTest {
 
     private static IDatabaseTester tester = null;
 
+    private Connection connection;
+
     @BeforeClass
     public static void setUp() throws Exception {
         tester = initDatabaseTester();
     }
 
     private static IDatabaseTester initDatabaseTester() throws Exception {
-        final JdbcDatabaseTester tester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
+        JdbcDatabaseTester tester = new JdbcDatabaseTester(JDBC_DRIVER, JDBC_URL, USER, PASSWORD);
         tester.setDataSet(initDataSet());
         tester.setSetUpOperation(DatabaseOperation.REFRESH);
         tester.setTearDownOperation(DatabaseOperation.DELETE_ALL);
@@ -45,7 +47,7 @@ public class OldSchoolDbUnitTest {
     }
 
     private static IDataSet initDataSet() throws Exception {
-        try (final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/data.xml")) {
+        try (InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/data.xml")) {
             return new FlatXmlDataSetBuilder().build(is);
         }
     }
@@ -53,6 +55,7 @@ public class OldSchoolDbUnitTest {
     @Before
     public void setup() throws Exception {
         tester.onSetup();
+        connection = tester.getConnection().getConnection();
     }
 
     @After
@@ -62,94 +65,100 @@ public class OldSchoolDbUnitTest {
 
     @Test
     public void givenDataSet_whenSelect_thenFirstTitleIsGreyTShirt() throws Exception {
-        final Connection connection = tester.getConnection().getConnection();
-
-        final ResultSet rs = connection.createStatement().executeQuery("select * from ITEMS where id = 1");
+        ResultSet rs = connection.createStatement().executeQuery("select * from ITEMS where id = 1");
 
         assertThat(rs.next()).isTrue();
         assertThat(rs.getString("title")).isEqualTo("Grey T-Shirt");
     }
 
     @Test
-    public void givenDataSet_whenInsert_thenGetResultsAreStillEqualIfIgnoringColumnsWithDifferentProduced() throws Exception {
-        final Connection connection = tester.getConnection().getConnection();
-        final String[] excludedColumns = { "id", "produced" };
-        try (final InputStream is = getClass().getClassLoader().getResourceAsStream("dbunit/expected-ignoring-registered_at.xml")) {
-            final IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
-            final ITable expectedTable = DefaultColumnFilter.excludedColumnsTable(
-                expectedDataSet.getTable("ITEMS"), excludedColumns);
+    public void givenDataSet_whenInsert_thenGetResultsAreStillEqualIfIgnoringColumnsWithDifferentProduced()
+        throws Exception {
+        String[] excludedColumns = { "id", "produced" };
+        try (InputStream is = getClass().getClassLoader()
+            .getResourceAsStream("dbunit/expected-ignoring-registered_at.xml")) {
+            // given
+            IDataSet expectedDataSet = new FlatXmlDataSetBuilder().build(is);
+            ITable expectedTable = DefaultColumnFilter
+                .excludedColumnsTable(expectedDataSet.getTable("ITEMS"), excludedColumns);
 
-            connection.createStatement().executeUpdate(
-                "INSERT INTO ITEMS (title, price, produced)  VALUES('Necklace', 199.99, now())");
+            // when
+            connection.createStatement()
+                .executeUpdate("INSERT INTO ITEMS (title, price, produced)  VALUES('Necklace', 199.99, now())");
 
-            final IDataSet databaseDataSet = tester.getConnection().createDataSet();
-            final ITable actualTable = DefaultColumnFilter.excludedColumnsTable(
-                databaseDataSet.getTable("ITEMS"), excludedColumns);
-
+            // then
+            IDataSet databaseDataSet = tester.getConnection().createDataSet();
+            ITable actualTable = DefaultColumnFilter
+                .excludedColumnsTable(databaseDataSet.getTable("ITEMS"), excludedColumns);
             Assertion.assertEquals(expectedTable, actualTable);
         }
     }
 
     @Test
     public void givenDataSet_whenDelete_thenItemIsRemoved() throws Exception {
-        final Connection connection = tester.getConnection().getConnection();
-
-        try (final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_delete.xml")) {
+        try (InputStream is = OldSchoolDbUnitTest.class.getClassLoader()
+            .getResourceAsStream("dbunit/items_exp_delete.xml")) {
+            // given
             ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("ITEMS");
 
+            // when
             connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
 
-            final IDataSet databaseDataSet = tester.getConnection().createDataSet();
+            // then
+            IDataSet databaseDataSet = tester.getConnection().createDataSet();
             ITable actualTable = databaseDataSet.getTable("ITEMS");
-
             assertEquals(expectedTable, actualTable);
         }
     }
 
     @Test
-    public void givenDataSet_whenDelete_thenItemIsRemovedAndResultsEqualIfProducedIsIgnored() throws Exception {
-        final Connection connection = tester.getConnection().getConnection();
+    public void givenDataSet_whenProductIgnoredAndDelete_thenItemIsRemoved() throws Exception {
+        try (InputStream is = OldSchoolDbUnitTest.class.getClassLoader()
+            .getResourceAsStream("dbunit/items_exp_delete_no_produced.xml")) {
+            // given
+            ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("ITEMS");
 
-        try (final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_delete_no_produced.xml")) {
-            final ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("ITEMS");
-
+            // when
             connection.createStatement().executeUpdate("delete from ITEMS where id = 2");
 
-            final IDataSet databaseDataSet = tester.getConnection().createDataSet();
+            // then
+            IDataSet databaseDataSet = tester.getConnection().createDataSet();
             ITable actualTable = databaseDataSet.getTable("ITEMS");
             actualTable = DefaultColumnFilter.excludedColumnsTable(actualTable, new String[] { "produced" });
-
             assertEquals(expectedTable, actualTable);
         }
     }
 
     @Test
     public void givenDataSet_whenUpdate_thenItemHasNewName() throws Exception {
-        final Connection connection = tester.getConnection().getConnection();
+        try (InputStream is = OldSchoolDbUnitTest.class.getClassLoader()
+            .getResourceAsStream("dbunit/items_exp_rename.xml")) {
+            // given
+            ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("ITEMS");
 
-        try (final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_rename.xml")) {
-            final ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("ITEMS");
-
+            // when
             connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
 
-            final IDataSet databaseDataSet = tester.getConnection().createDataSet();
+            // then
+            IDataSet databaseDataSet = tester.getConnection().createDataSet();
             ITable actualTable = databaseDataSet.getTable("ITEMS");
-
             assertEquals(expectedTable, actualTable);
         }
     }
 
     @Test
     public void givenDataSet_whenUpdateWithNoProduced_thenItemHasNewName() throws Exception {
-        final Connection connection = tester.getConnection().getConnection();
-
-        try (final InputStream is = OldSchoolDbUnitTest.class.getClassLoader().getResourceAsStream("dbunit/items_exp_rename_no_produced.xml")) {
+        try (InputStream is = OldSchoolDbUnitTest.class.getClassLoader()
+            .getResourceAsStream("dbunit/items_exp_rename_no_produced.xml")) {
+            // given
             ITable expectedTable = new FlatXmlDataSetBuilder().build(is).getTable("ITEMS");
             expectedTable = DefaultColumnFilter.excludedColumnsTable(expectedTable, new String[] { "produced" });
 
+            // when
             connection.createStatement().executeUpdate("update ITEMS set title='new name' where id = 1");
 
-            final IDataSet databaseDataSet = tester.getConnection().createDataSet();
+            // then
+            IDataSet databaseDataSet = tester.getConnection().createDataSet();
             ITable actualTable = databaseDataSet.getTable("ITEMS");
             actualTable = DefaultColumnFilter.excludedColumnsTable(actualTable, new String[] { "produced" });
             assertEquals(expectedTable, actualTable);

@@ -2,7 +2,6 @@ package com.baeldung.inputstreamtostring;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
-import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 import com.google.common.io.Files;
 import org.apache.commons.io.FileUtils;
@@ -11,13 +10,26 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
@@ -44,6 +56,18 @@ public class JavaInputStreamToXUnitTest {
             }
         }
         assertEquals(textBuilder.toString(), originalString);
+    }
+
+    @Test
+    public void givenUsingJava8_whenConvertingAnInputStreamToAString_thenCorrect() {
+        final String originalString = randomAlphabetic(DEFAULT_SIZE);
+        final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        final String text = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))
+          .lines()
+          .collect(Collectors.joining("\n"));
+
+        assertThat(text, equalTo(originalString));
     }
 
     @Test
@@ -125,42 +149,6 @@ public class JavaInputStreamToXUnitTest {
         String result = new String(java.nio.file.Files.readAllBytes(tempFile));
 
         assertThat(result, equalTo(originalString));
-    }
-
-    // tests - InputStream to byte[]
-
-    @Test
-    public final void givenUsingPlainJavaOnFixedSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-        final byte[] targetArray = new byte[initialStream.available()];
-        initialStream.read(targetArray);
-    }
-
-    @Test
-    public final void givenUsingPlainJavaOnUnknownSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-
-        final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        int nRead;
-        final byte[] data = new byte[1024];
-        while ((nRead = is.read(data, 0, data.length)) != -1) {
-            buffer.write(data, 0, nRead);
-        }
-
-        buffer.flush();
-        final byte[] byteArray = buffer.toByteArray();
-    }
-
-    @Test
-    public final void givenUsingGuava_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = ByteSource.wrap(new byte[] { 0, 1, 2 }).openStream();
-        final byte[] targetArray = ByteStreams.toByteArray(initialStream);
-    }
-
-    @Test
-    public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-        final byte[] targetArray = IOUtils.toByteArray(initialStream);
     }
 
     // tests - InputStream to File
