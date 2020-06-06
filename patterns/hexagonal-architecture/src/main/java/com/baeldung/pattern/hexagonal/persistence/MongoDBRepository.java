@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class MongoDBRepository implements EmployeeRepository{
+public class MongoDBRepository implements EmployeeRepository {
 
     @Autowired
     MongoRepoEx mongoRepository;

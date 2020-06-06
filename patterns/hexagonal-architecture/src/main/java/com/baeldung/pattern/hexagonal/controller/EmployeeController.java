@@ -12,14 +12,14 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Employee addEmployee(@RequestBody Employee employee){
-       return employeeService.addEmployee(employee);
+    public Employee addEmployee(@RequestBody Employee employee) {
+        return employeeService.addEmployee(employee);
     }
 
     @GetMapping(path = "/{employeeId}")
-    public Employee getEmployee(@PathVariable("employeeId") String employeeId){
+    public Employee getEmployee(@PathVariable("employeeId") String employeeId) {
         return employeeService.getEmployee(employeeId);
     }
 }

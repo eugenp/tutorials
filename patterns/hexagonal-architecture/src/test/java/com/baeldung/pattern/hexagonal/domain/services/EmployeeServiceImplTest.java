@@ -19,13 +19,13 @@ class EmployeeServiceImplTest {
 
     @BeforeEach
     void setUp() {
-      employeeRepository = mock(EmployeeRepository.class);
+        employeeRepository = mock(EmployeeRepository.class);
 
-      testService = new EmployeeServiceImpl(employeeRepository);
-      testModel = new Employee();
-      testModel.setEmpId("2000");
-      testModel.setEmpName("Test user 1");
-      testModel.setEmpJobTitle("Software engineer");
+        testService = new EmployeeServiceImpl(employeeRepository);
+        testModel = new Employee();
+        testModel.setEmpId("2000");
+        testModel.setEmpName("Test user 1");
+        testModel.setEmpJobTitle("Software engineer");
     }
 
     @Test
@@ -33,7 +33,7 @@ class EmployeeServiceImplTest {
         when(employeeRepository.add(any(Employee.class))).thenReturn(testModel);
 
         Employee testResponse = testService.addEmployee(testModel);
-        assertEquals(testModel,testResponse);
+        assertEquals(testModel, testResponse);
     }
 
     @Test
@@ -41,6 +41,6 @@ class EmployeeServiceImplTest {
         when(employeeRepository.findById("2000")).thenReturn(Optional.of(testModel));
 
         Employee testResponse = testService.getEmployee("2000");
-        assertEquals(testModel,testResponse);
+        assertEquals(testModel, testResponse);
     }
 }

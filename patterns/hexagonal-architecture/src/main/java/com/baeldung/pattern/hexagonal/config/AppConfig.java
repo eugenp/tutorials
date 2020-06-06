@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
     @Bean
-    public EmployeeService getEmployeeService(EmployeeRepository employeeRepository){
+    public EmployeeService getEmployeeService(EmployeeRepository employeeRepository) {
         return new EmployeeServiceImpl(employeeRepository);
     }
 }

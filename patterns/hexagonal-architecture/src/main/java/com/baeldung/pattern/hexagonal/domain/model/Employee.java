@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
-public class Employee{
+public class Employee {
     @Id
     private String empId;
     private String empName;
@@ -36,8 +36,10 @@ public class Employee{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Employee employee = (Employee) o;
         return empId.equals(employee.empId);
     }

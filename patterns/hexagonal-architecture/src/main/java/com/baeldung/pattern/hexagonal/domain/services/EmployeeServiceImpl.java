@@ -11,7 +11,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository){
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
@@ -24,10 +24,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getEmployee(String employeeId) {
         Optional<Employee> employee = employeeRepository.findById(employeeId);
 
-        if(employee.isPresent()){
+        if (employee.isPresent()) {
             return employee.get();
-        }else{
-            //throw
+        } else {
+            // throw
         }
         return null;
     }
