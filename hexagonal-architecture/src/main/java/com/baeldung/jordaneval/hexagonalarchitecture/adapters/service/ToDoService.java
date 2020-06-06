@@ -1,15 +1,20 @@
-package com.baeldung.jordaneval.hexagonalarchitecture.domain.ports;
+package com.baeldung.jordaneval.hexagonalarchitecture.adapters.service;
 
+import com.baeldung.jordaneval.hexagonalarchitecture.adapters.persistence.H2Repository;
 import com.baeldung.jordaneval.hexagonalarchitecture.domain.ToDoList;
+import com.baeldung.jordaneval.hexagonalarchitecture.ports.InputPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+@Service
 @RequiredArgsConstructor
-public class ToDoService {
-    private final ToDoRepository repository;
+public class ToDoService implements InputPort
+{
+    private final H2Repository repository;
 
     public List<ToDoList> getAllLists() {
         return repository.findAllLists();

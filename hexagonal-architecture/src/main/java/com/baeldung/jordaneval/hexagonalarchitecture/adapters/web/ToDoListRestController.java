@@ -1,7 +1,7 @@
 package com.baeldung.jordaneval.hexagonalarchitecture.adapters.web;
 
+import com.baeldung.jordaneval.hexagonalarchitecture.adapters.service.ToDoService;
 import com.baeldung.jordaneval.hexagonalarchitecture.domain.ToDoList;
-import com.baeldung.jordaneval.hexagonalarchitecture.domain.ports.ToDoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
