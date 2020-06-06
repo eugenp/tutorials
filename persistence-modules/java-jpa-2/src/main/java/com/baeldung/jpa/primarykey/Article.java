@@ -17,11 +17,8 @@ public class Article {
     @SequenceGenerator(name="article_gen", sequenceName="article_seq") 
     private Long id; 
     
-    @Column(name = "title") 
-    private String title; 
-    
-    @Column(name = "content") 
-    private String content;
+    @Column(name = "article_name") 
+    private String name;
 
     public Long getId() {
         return id;
@@ -31,20 +28,12 @@ public class Article {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

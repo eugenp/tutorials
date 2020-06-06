@@ -23,44 +23,49 @@ public class PrimaryKeyUnitTest {
     }
 
     @Test
-    public void givenNewUser_whenSave_thenReturnPrimaryKey() {
+    public void givenIdentityStrategy_whenCommitTransction_thenReturnPrimaryKey() {
         User user = new User();
-        user.setUserName("TestName");
+        user.setName("TestName");
         
+        entityManager.getTransaction().begin();
         entityManager.persist(user);
+        Assert.assertNull(user.getId());
+        entityManager.getTransaction().commit();
 
         Long expectPrimaryKey = 1L;
         Assert.assertEquals(expectPrimaryKey, user.getId());
     }
 
     @Test
-    public void givenNewTask_whenSave_thenReturnPrimaryKey() {
+    public void givenTableStrategy_whenPersist_thenReturnPrimaryKey() {
         Task task = new Task();
         task.setName("Test Task");
 
+        entityManager.getTransaction().begin();
         entityManager.persist(task);
-
         Long expectPrimaryKey = 10000L;
         Assert.assertEquals(expectPrimaryKey, task.getId());
+
+        entityManager.getTransaction().commit();
     }
 
     @Test
-    public void givenNewArticle_whenSave_thenReturnPrimaryKey() {
+    public void givenSequenceStrategy_whenPersist_thenReturnPrimaryKey() {
         Article article = new Article();
-        article.setContent("Test Content");
-        article.setTitle("Test Title");
+        article.setName("Test Name");
 
+        entityManager.getTransaction().begin();
         entityManager.persist(article);
-
         Long expectPrimaryKey = 10L;
         Assert.assertEquals(expectPrimaryKey, article.getId());
+
+        entityManager.getTransaction().commit();
     }
 
     @Test
-    public void givenNewAdmin_whenSave_thenReturnPrimaryKey() {
+    public void givenAutoStrategy_whenPersist_thenReturnPrimaryKey() {
         Admin admin = new Admin();
-        admin.setAdminName("Test Name");
-        admin.setEmail("test@email.com");
+        admin.setName("Test Name");
 
         entityManager.persist(admin);
 

@@ -15,10 +15,7 @@ public class Admin {
     private Long id;
 
     @Column(name = "admin_name")
-    private String adminName;
-
-    @Column(name = "email")
-    private String email;
+    private String name;
 
     public Long getId() {
         return id;
@@ -28,20 +25,12 @@ public class Admin {
         this.id = id;
     }
 
-    public String getAdminName() {
-        return adminName;
+    public String getName() {
+        return name;
     }
 
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
 }

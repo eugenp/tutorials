@@ -186,7 +186,7 @@
     </persistence-unit>
 
 	<persistence-unit name="jpa-h2-primarykey">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.baeldung.jpa.primarykey.Admin</class>
 		<class>com.baeldung.jpa.primarykey.Article</class>
 		<class>com.baeldung.jpa.primarykey.IdGenerator</class>
@@ -200,14 +200,13 @@
                       value="jdbc:h2:mem:test" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="" />
-            <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.H2Dialect" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
-            <property name="show_sql" value="true" />
-            <property name="hibernate.temp.use_jdbc_metadata_defaults"
-                      value="false" />
 			<property name="javax.persistence.sql-load-script-source"
 				value="primary_key_generator.sql" />
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.weaving" value="static" />
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.jdbc.allow-native-sql-queries" value="true" />
         </properties>
     </persistence-unit>
 </persistence>
