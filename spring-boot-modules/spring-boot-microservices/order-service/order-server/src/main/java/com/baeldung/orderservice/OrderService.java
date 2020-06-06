@@ -17,14 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
 public class OrderService {
 
-    @Autowired
-    private PaymentClient paymentClient;
 
     private List<Order> orders = Arrays.asList(
 
@@ -57,19 +54,4 @@ public class OrderService {
         return new OrderResponse(order.getId(), order.getItemId(), "CREATED");
     }
 
-    @PostMapping("/pay/{orderNumber}")
-    public PaymentResponse sendPayment(@PathVariable String orderNumber, @RequestBody Map<String, Object> body) {
-
-        PaymentDTO dto = new PaymentDTO();
-        dto.setFirstName((String) body.get("firstName"));
-        dto.setLastName((String) body.get("lastName"));
-        dto.setCardNumber((String) body.get("cardNumber"));
-        dto.setAmount((Double) body.get("amount"));
-        dto.setCurrency((String) body.get("currency"));
-
-        PaymentResponse paymentResponse = paymentClient.pay(orderNumber, dto);
-
-        return paymentResponse;
-
-    }
 }

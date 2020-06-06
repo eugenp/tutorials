@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentDTO {
+public class CustomerDTO {
 
     private String firstName;
     private String lastName;
+    private String homeAddress;
     private String cardNumber;
-    private double amount;
-    private String currency;
+
 }
