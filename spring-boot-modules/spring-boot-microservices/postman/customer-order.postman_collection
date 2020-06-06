@@ -52,36 +52,8 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Send Order for payment",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n\"firstName\":\"John\",\n\"lastName\":\"Smith\",\n\"cardNumber\":\"4260-6720-3283-7081\",\n\"amount\":150.0,\n\"currency\":\"USD\"\n\t\n\t\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8002/order-service/pay/A152",
-					"host": [
-						"localhost"
-					],
-					"port": "8002",
-					"path": [
-						"order-service",
-						"pay",
-						"A152"
-					]
-				}
-			},
-			"response": []
 		}
+
 	],
 	"protocolProfileBehavior": {}
 }

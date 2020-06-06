@@ -19,6 +19,7 @@
     <properties>
         <java.version>1.8</java.version>
         <commons-lang.version>2.6</commons-lang.version>
+        <structure-maven.version>0.0.2</structure-maven.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,6 +47,11 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.qunix</groupId>
+            <artifactId>structure-maven-plugin</artifactId>
+            <version>${structure-maven.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,6 +104,20 @@
                             </configuration>
                             <goals>
                                 <goal>start</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.qunix</groupId>
+                    <artifactId>structure-maven-plugin</artifactId>
+                    <version>${structure-maven.version}</version>
+                    <inherited>false</inherited>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>modules</goal>
                             </goals>
                         </execution>
                     </executions>

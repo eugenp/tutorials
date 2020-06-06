@@ -24,7 +24,7 @@
 	<modules>
         <module>customer-service</module>
         <module>order-service</module>
-        <module>payment-service</module>
+        <module>shared-dto</module>
     </modules>
      
 	<dependencies>
