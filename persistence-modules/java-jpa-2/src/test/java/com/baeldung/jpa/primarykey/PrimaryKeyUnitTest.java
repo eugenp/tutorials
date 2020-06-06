@@ -56,7 +56,7 @@ public class PrimaryKeyUnitTest {
 
         entityManager.getTransaction().begin();
         entityManager.persist(article);
-        Long expectPrimaryKey = 10L;
+        Long expectPrimaryKey = 51L;
         Assert.assertEquals(expectPrimaryKey, article.getId());
 
         entityManager.getTransaction().commit();
