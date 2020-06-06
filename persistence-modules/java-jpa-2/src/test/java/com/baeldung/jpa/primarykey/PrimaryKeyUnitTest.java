@@ -23,12 +23,48 @@ public class PrimaryKeyUnitTest {
     }
 
     @Test
-    public void givenUser_whenSave_thenReturnPrimaryKey() {
+    public void givenNewUser_whenSave_thenReturnPrimaryKey() {
         User user = new User();
         user.setUserName("TestName");
         
         entityManager.persist(user);
 
-        Assert.assertEquals(Long.valueOf(1), user.getId());
+        Long expectPrimaryKey = 1L;
+        Assert.assertEquals(expectPrimaryKey, user.getId());
+    }
+
+    @Test
+    public void givenNewTask_whenSave_thenReturnPrimaryKey() {
+        Task task = new Task();
+        task.setName("Test Task");
+
+        entityManager.persist(task);
+
+        Long expectPrimaryKey = 10000L;
+        Assert.assertEquals(expectPrimaryKey, task.getId());
+    }
+
+    @Test
+    public void givenNewArticle_whenSave_thenReturnPrimaryKey() {
+        Article article = new Article();
+        article.setContent("Test Content");
+        article.setTitle("Test Title");
+
+        entityManager.persist(article);
+
+        Long expectPrimaryKey = 10L;
+        Assert.assertEquals(expectPrimaryKey, article.getId());
+    }
+
+    @Test
+    public void givenNewAdmin_whenSave_thenReturnPrimaryKey() {
+        Admin admin = new Admin();
+        admin.setAdminName("Test Name");
+        admin.setEmail("test@email.com");
+
+        entityManager.persist(admin);
+
+        Long expectPrimaryKey = 1L;
+        Assert.assertEquals(expectPrimaryKey, admin.getId());
     }
 }
