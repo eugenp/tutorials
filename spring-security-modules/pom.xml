@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-security-acl</module>
+        <module>spring-security-auth0</module>
         <module>spring-security-angular/server</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-core</module>
@@ -31,6 +32,7 @@
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-socket</module>
         <module>spring-security-oidc</module>
+        <module>spring-security-okta</module>
         <module>spring-security-react</module>   
         <module>spring-security-rest</module>
         <module>spring-security-rest-basic-auth</module>
