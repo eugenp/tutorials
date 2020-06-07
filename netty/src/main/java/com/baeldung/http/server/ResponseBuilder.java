@@ -7,8 +7,6 @@ import java.util.Map.Entry;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderResult;
 import io.netty.handler.codec.http.HttpContent;
-import io.netty.handler.codec.http.HttpHeaderNames;
-import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpObject;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.LastHttpContent;
@@ -16,21 +14,6 @@ import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.util.CharsetUtil;
 
 class ResponseBuilder {
-
-    static StringBuilder addRequestAttributes(HttpRequest request) {
-        StringBuilder responseData = new StringBuilder();
-        responseData.append("Version: ")
-            .append(request.protocolVersion())
-            .append("\r\n");
-        responseData.append("Host: ")
-            .append(request.headers()
-                .get(HttpHeaderNames.HOST, "unknown"))
-            .append("\r\n");
-        responseData.append("URI: ")
-            .append(request.uri())
-            .append("\r\n\r\n");
-        return responseData;
-    }
 
     static StringBuilder addParams(HttpRequest request) {
         StringBuilder responseData = new StringBuilder();
@@ -47,23 +30,6 @@ class ResponseBuilder {
                         .append(val)
                         .append("\r\n");
                 }
-            }
-            responseData.append("\r\n");
-        }
-        return responseData;
-    }
-
-    static StringBuilder addHeaders(HttpRequest request) {
-        StringBuilder responseData = new StringBuilder();
-        HttpHeaders headers = request.headers();
-        if (!headers.isEmpty()) {
-            for (Map.Entry<String, String> header : headers) {
-                CharSequence key = header.getKey();
-                CharSequence value = header.getValue();
-                responseData.append(key)
-                    .append(" = ")
-                    .append(value)
-                    .append("\r\n");
             }
             responseData.append("\r\n");
         }
