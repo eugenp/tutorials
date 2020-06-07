@@ -1,5 +1,7 @@
-package com.baeldung.kafka;
+package com.baeldung.kafka.producer;
 
+import com.baeldung.kafka.producer.EvenOddPartitioner;
+import com.baeldung.kafka.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.MockProducer;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.Cluster;

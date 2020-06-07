@@ -1,4 +1,4 @@
-package com.baeldung.kafka;
+package com.baeldung.kafka.producer;
 
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
