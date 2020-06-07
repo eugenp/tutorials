@@ -14,7 +14,6 @@ public class CustomUserRepository implements UserRepository {
     private PasswordEncoder passwordEncoder;
     
     public CustomUserRepository(PasswordEncoder passwordEncoder) {
-        super();
         this.passwordEncoder = passwordEncoder;
     }
 

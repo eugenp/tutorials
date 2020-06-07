@@ -14,7 +14,6 @@ public class SimpleUserRepository implements UserRepository {
     private PasswordEncoder passwordEncoder;
     
     public SimpleUserRepository(PasswordEncoder passwordEncoder) {
-        super();
         this.passwordEncoder = passwordEncoder;
     }
 
