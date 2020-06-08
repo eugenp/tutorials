@@ -1,8 +1,10 @@
 package com.baeldung.l.advanced;
 
 public abstract class Car {
+    protected int limit;
+
     // invariant: speed < limit;
-    protected int speed, limit;
+    protected int speed;
 
     protected abstract void turnOnEngine();
 
