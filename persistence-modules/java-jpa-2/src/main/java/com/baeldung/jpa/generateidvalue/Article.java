@@ -1,4 +1,4 @@
-package com.baeldung.jpa.primarykey;
+package com.baeldung.jpa.generateidvalue;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

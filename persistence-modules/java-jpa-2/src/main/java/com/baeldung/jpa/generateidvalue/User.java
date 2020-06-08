@@ -1,4 +1,4 @@
-package com.baeldung.jpa.primarykey;
+package com.baeldung.jpa.generateidvalue;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,19 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name = "task")
-public class Task {
-    
+@Table(name = "app_user")
+public class User {
+
     @Id
-    @TableGenerator(name = "id_generator", table = "id_gen", pkColumnName = "gen_name", 
-        valueColumnName = "gen_value", pkColumnValue="task_gen", initialValue=10000, allocationSize=10)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "user_name")
     private String name;
 
     public Long getId() {
@@ -36,5 +33,5 @@ public class Task {
     public void setName(String name) {
         this.name = name;
     }
-
+    
 }

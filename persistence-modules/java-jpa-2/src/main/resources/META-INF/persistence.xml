@@ -187,11 +187,11 @@
 
 	<persistence-unit name="jpa-h2-primarykey">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.baeldung.jpa.primarykey.Admin</class>
-		<class>com.baeldung.jpa.primarykey.Article</class>
-		<class>com.baeldung.jpa.primarykey.IdGenerator</class>
-		<class>com.baeldung.jpa.primarykey.Task</class>
-		<class>com.baeldung.jpa.primarykey.User</class>
+        <class>com.baeldung.jpa.generateidvalue.Admin</class>
+		<class>com.baeldung.jpa.generateidvalue.Article</class>
+		<class>com.baeldung.jpa.generateidvalue.IdGenerator</class>
+		<class>com.baeldung.jpa.generateidvalue.Task</class>
+		<class>com.baeldung.jpa.generateidvalue.User</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver"
