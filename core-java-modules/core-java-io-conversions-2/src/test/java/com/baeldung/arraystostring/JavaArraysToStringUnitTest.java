@@ -15,8 +15,7 @@ public class JavaArraysToStringUnitTest {
     @Test
     public void givenInstanceOfArray_whenTryingToConvertToString_thenNameOfClassIsShown() {
         Object[] arrayOfObjects = { "John", 2, true };
-        assertTrue(arrayOfObjects.toString()
-            .startsWith("[Ljava.lang.Object;"));
+        assertTrue(arrayOfObjects.toString().startsWith("[Ljava.lang.Object;"));
     }
 
     @Test
