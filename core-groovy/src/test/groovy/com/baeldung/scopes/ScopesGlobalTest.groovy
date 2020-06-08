@@ -23,7 +23,7 @@ class ScopesGlobalTest extends Specification {
         given:
         scopes
         when:
-        scopes.run()
+         scopes.run()
         def x1 = scopes.x
         then:
         assert x1 == 200
@@ -43,20 +43,10 @@ class ScopesGlobalTest extends Specification {
         given:
         scopes
         when:
-        def x = scopes.getGlobalResult()
+        scopes.getGlobalResult()
         then:
         final MissingPropertyException exception = thrown()
         assert exception != null
-    }
-
-    def 'Should get z value with function while running the script first'() {
-        given:
-        scopes
-        when:
-        scopes.run()
-        def z = scopes.getGlobalCreatedLocally()
-        then:
-        assert z == 234
     }
 
     def 'Should get z value directly while running the script first'() {
@@ -69,7 +59,17 @@ class ScopesGlobalTest extends Specification {
         assert z == 234
     }
 
-    def 'Should get z value directly while not running the script first'() {
+    def 'Should not get x value directly while not running the script first'() {
+        given:
+        scopes
+        when:
+        scopes.x
+        then:
+        final MissingPropertyException exception = thrown()
+        assert exception != null
+    }
+
+    def 'Should not get z value directly while not running the script first'() {
         given:
         scopes
         when:
@@ -79,13 +79,4 @@ class ScopesGlobalTest extends Specification {
         assert exception != null
     }
 
-
-    def 'Should get z value with function while not running the script first'() {
-        given:
-        scopes
-        when:
-        def z = scopes.getGlobalCreatedLocally()
-        then:
-        assert z == 234
-    }
 }
