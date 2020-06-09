@@ -1,4 +1,4 @@
-package com.baeldung.pdf;
+package com.baeldung.pdfthymeleaf;
 
 import com.lowagie.text.DocumentException;
 import org.junit.Test;
