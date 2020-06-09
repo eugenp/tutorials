@@ -70,6 +70,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <version>${mockito.spring.boot.version}</version>
             <scope>test</scope>
@@ -90,7 +95,11 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <!-- Spring -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework</groupId>-->
@@ -129,6 +138,27 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>${aspectj-plugin.version}</version>
+                <configuration>
+                    <complianceLevel>${java.version}</complianceLevel>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-aspects</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -164,6 +194,7 @@
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.12.2</assertj.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
+        <aspectj-plugin.version>1.11</aspectj-plugin.version>
     </properties>
 
 </project>
