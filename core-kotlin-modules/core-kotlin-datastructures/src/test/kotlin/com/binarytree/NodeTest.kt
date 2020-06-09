@@ -1,4 +1,4 @@
-package com.baeldung.binarytree
+package com.binarytree
 
 import org.junit.After
 import org.junit.Assert.assertEquals
