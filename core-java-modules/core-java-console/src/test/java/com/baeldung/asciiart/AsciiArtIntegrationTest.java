@@ -1,10 +1,9 @@
 package com.baeldung.asciiart;
 
-import java.awt.Font;
-
+import com.baeldung.asciiart.AsciiArt.Settings;
 import org.junit.Test;
 
-import com.baeldung.asciiart.AsciiArt.Settings;
+import java.awt.*;
 
 public class AsciiArtIntegrationTest {
 
@@ -16,5 +15,4 @@ public class AsciiArtIntegrationTest {
         
         asciiArt.drawString(text, "*", settings);
     }
-    
 }
