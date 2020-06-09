@@ -6,6 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>shared-dto</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <name>shared-dto</name>
 
     <parent>

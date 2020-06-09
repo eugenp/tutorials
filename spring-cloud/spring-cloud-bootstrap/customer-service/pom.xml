@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.customerservice</groupId>
     <artifactId>customer-service</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <name>customer-service</name>
     <packaging>jar</packaging>
 
@@ -48,11 +49,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -60,7 +56,7 @@
         <dependency>
             <groupId>com.baeldung.orderservice</groupId>
             <artifactId>order-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
