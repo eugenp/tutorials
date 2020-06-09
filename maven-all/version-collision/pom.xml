@@ -27,4 +27,28 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!-- uncomment section below to ban the use of transitive dependencies -->
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-enforcer-plugin</artifactId>-->
+    <!--                <version>3.0.0-M3</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>enforce-banned-dependencies</id>-->
+    <!--                        <goals>-->
+    <!--                            <goal>enforce</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <rules>-->
+    <!--                                <banTransitiveDependencies/>-->
+    <!--                            </rules>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
 </project>
