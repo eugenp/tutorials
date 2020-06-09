@@ -1,4 +1,4 @@
-package com.baeldung.security;
+package com.baeldung.intro.security;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
