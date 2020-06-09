@@ -13,9 +13,9 @@ import io.netty.handler.codec.http.LastHttpContent;
 import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.util.CharsetUtil;
 
-class ResponseBuilder {
+class RequestUtils {
 
-    static StringBuilder addParams(HttpRequest request) {
+    static StringBuilder formatParams(HttpRequest request) {
         StringBuilder responseData = new StringBuilder();
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.uri());
         Map<String, List<String>> params = queryStringDecoder.parameters();
@@ -25,9 +25,9 @@ class ResponseBuilder {
                 List<String> vals = p.getValue();
                 for (String val : vals) {
                     responseData.append("Parameter: ")
-                        .append(key)
+                        .append(key.toUpperCase())
                         .append(" = ")
-                        .append(val)
+                        .append(val.toUpperCase())
                         .append("\r\n");
                 }
             }
@@ -36,7 +36,7 @@ class ResponseBuilder {
         return responseData;
     }
 
-    static StringBuilder addBody(HttpContent httpContent) {
+    static StringBuilder formatBody(HttpContent httpContent) {
         StringBuilder responseData = new StringBuilder();
         ByteBuf content = httpContent.content();
         if (content.isReadable()) {
