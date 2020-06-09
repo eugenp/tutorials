@@ -13,6 +13,7 @@
 - [Transactions with Spring and JPA](https://www.baeldung.com/transaction-configuration-with-jpa-and-spring)
 - [Use Criteria Queries in a Spring Data Application](https://www.baeldung.com/spring-data-criteria-queries)
 - [Many-To-Many Relationship in JPA](https://www.baeldung.com/jpa-many-to-many)
+- [Spring Persistence (Hibernate and JPA) with a JNDI datasource](https://www.baeldung.com/spring-persistence-hibernate-and-jpa-with-a-jndi-datasource-2)
 
 
 ### Eclipse Config 
