@@ -10,4 +10,5 @@ This module contains articles about core features in the Kotlin language.
 - [Initializing Arrays in Kotlin](https://www.baeldung.com/kotlin-initialize-array)
 - [Lazy Initialization in Kotlin](https://www.baeldung.com/kotlin-lazy-initialization)
 - [Comprehensive Guide to Null Safety in Kotlin](https://www.baeldung.com/kotlin-null-safety)
+- [Checking Whether a lateinit var Is Initialized in Kotlin](https://www.baeldung.com/kotlin/checking-lateinit)
 - [[<-- Prev]](/core-kotlin-modules/core-kotlin-lang)
