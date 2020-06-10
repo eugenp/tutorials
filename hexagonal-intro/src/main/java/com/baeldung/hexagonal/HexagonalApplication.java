@@ -32,12 +32,12 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @Import(RepositoryRestMvcConfiguration.class)
 public class HexagonalApplication {
 
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-		MongoDbInit.startMongoDb();
-		ConfigurableApplicationContext ctx = SpringApplication.run(HexagonalApplication.class, args);
-		RepositoryRestConfiguration restConfiguration = ctx.getBean(RepositoryRestConfiguration.class);
-		restConfiguration.exposeIdsFor(Order.class);
+        MongoDbInit.startMongoDb();
+        ConfigurableApplicationContext ctx = SpringApplication.run(HexagonalApplication.class, args);
+        RepositoryRestConfiguration restConfiguration = ctx.getBean(RepositoryRestConfiguration.class);
+        restConfiguration.exposeIdsFor(Order.class);
 
-	}
+    }
 }

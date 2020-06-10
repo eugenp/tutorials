@@ -17,7 +17,8 @@ public class OrderController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/process")
-    @ResponseBody Order processOrder(@RequestBody Order request) {
+    @ResponseBody
+    Order processOrder(@RequestBody Order request) {
         Order order = orderService.applyVAT(request);
         return order;
     }

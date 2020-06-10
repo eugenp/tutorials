@@ -1,4 +1,5 @@
 package com.baeldung.hexagonal;
+
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
 import de.flapdoodle.embed.mongo.MongodStarter;
@@ -6,6 +7,7 @@ import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
+
 import java.io.IOException;
 
 public abstract class MongoDbInit {
@@ -22,7 +24,7 @@ public abstract class MongoDbInit {
         _mongod = _mongodExe.start();
     }
 
-    public static void stopMongoDb(){
+    public static void stopMongoDb() {
         _mongod.stop();
         _mongodExe.stop();
     }

@@ -21,7 +21,7 @@ public class DomainOrderService implements OrderService {
     }
 
     public Order applyVAT(Order order) {
-        if(order.getId() == null) {
+        if (order.getId() == null) {
             order.setId(UUID.randomUUID());
         }
 

@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * Integration test to run the application.
- * 
+ *
  * @author Oliver Gierke
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -50,26 +50,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // Separate profile for web tests to avoid clashing databases
 public class HexagonalApplicationTests {
 
-	@Autowired
-	private WebApplicationContext context;
+    @Autowired
+    private WebApplicationContext context;
 
-	private MockMvc mvc;
+    private MockMvc mvc;
 
-	@Before
-	public void setUp() throws IOException {
-		MongoDbInit.startMongoDb();
-		this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
-	}
+    @Before
+    public void setUp() throws IOException {
+        MongoDbInit.startMongoDb();
+        this.mvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+    }
 
-	@After
-	public void tearDown() throws IOException {
-		MongoDbInit.stopMongoDb();
-	}
+    @After
+    public void tearDown() throws IOException {
+        MongoDbInit.stopMongoDb();
+    }
 
-	@Test
-	public void testHome() throws Exception {
+    @Test
+    public void testHome() throws Exception {
 
-		this.mvc.perform(post("/orders/process").contentType(MediaType.APPLICATION_JSON).content("{\"id\":\"\", \"amount\":100, \"customerType\":\"REGULAR\",\"vat\":0}")).andExpect(status().isOk())
-				.andExpect(content().string(containsString("vat")));
-	}
+        this.mvc.perform(post("/orders/process").contentType(MediaType.APPLICATION_JSON).content("{\"id\":\"\", \"amount\":100, \"customerType\":\"REGULAR\",\"vat\":0}")).andExpect(status().isOk())
+                .andExpect(content().string(containsString("vat")));
+    }
 }
