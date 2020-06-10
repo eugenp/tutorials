@@ -77,7 +77,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mockito.version>2.23.0</mockito.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
     </properties>
 
 </project>

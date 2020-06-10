@@ -200,7 +200,7 @@ public class ReflectionUnitTest {
     @Test
     public void givenClassField_whenSetsAndGetsValue_thenCorrect() throws Exception {
         final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        final Bird bird = (Bird) birdClass.newInstance();
+        final Bird bird = (Bird) birdClass.getConstructor().newInstance();
         final Field field = birdClass.getDeclaredField("walks");
         field.setAccessible(true);
 
@@ -266,7 +266,7 @@ public class ReflectionUnitTest {
     @Test
     public void givenMethod_whenInvokes_thenCorrect() throws Exception {
         final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        final Bird bird = (Bird) birdClass.newInstance();
+        final Bird bird = (Bird) birdClass.getConstructor().newInstance();
         final Method setWalksMethod = birdClass.getDeclaredMethod("setWalks", boolean.class);
         final Method walksMethod = birdClass.getDeclaredMethod("walks");
         final boolean walks = (boolean) walksMethod.invoke(bird);
