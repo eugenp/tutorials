@@ -1,29 +1,29 @@
 package com.baeldung.o;
 
 public class Subtraction implements CalculatorOperation {
-    private double number1;
-    private double number2;
+    private double left;
+    private double right;
     private double result = 0.0;
 
-    public Subtraction(double number1, double number2) {
-        this.number1 = number1;
-        this.number2 = number2;
+    public Subtraction(double left, double right) {
+        this.left = left;
+        this.right = right;
     }
 
-    public double getNumber1() {
-        return number1;
+    public double getLeft() {
+        return left;
     }
 
-    public void setNumber1(double number1) {
-        this.number1 = number1;
+    public void setLeft(double left) {
+        this.left = left;
     }
 
-    public double getNumber2() {
-        return number2;
+    public double getRight() {
+        return right;
     }
 
-    public void setNumber2(double number2) {
-        this.number2 = number2;
+    public void setRight(double right) {
+        this.right = right;
     }
 
     public double getResult() {
@@ -36,6 +36,6 @@ public class Subtraction implements CalculatorOperation {
 
     @Override
     public void perform() {
-        result = number1 - number2;
+        result = left - right;
     }
 }

@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    # fixed-backoff, exponential-backoff, exponential-random-backoff
+    active: fixed-backoff
+  application:
+    name: ribbon-client
+
+weather-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: http://localhost:8081, http://localhost:8082
+    ServerListRefreshInterval: 5000
+    MaxAutoRetries: 3
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+    retryableStatusCodes: 503, 408

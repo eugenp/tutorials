@@ -2,7 +2,6 @@ package com.baeldung.inputstreamtostring;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
-import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 import com.google.common.io.Files;
 import org.apache.commons.io.FileUtils;
@@ -150,42 +149,6 @@ public class JavaInputStreamToXUnitTest {
         String result = new String(java.nio.file.Files.readAllBytes(tempFile));
 
         assertThat(result, equalTo(originalString));
-    }
-
-    // tests - InputStream to byte[]
-
-    @Test
-    public final void givenUsingPlainJavaOnFixedSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-        final byte[] targetArray = new byte[initialStream.available()];
-        initialStream.read(targetArray);
-    }
-
-    @Test
-    public final void givenUsingPlainJavaOnUnknownSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-
-        final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        int nRead;
-        final byte[] data = new byte[1024];
-        while ((nRead = is.read(data, 0, data.length)) != -1) {
-            buffer.write(data, 0, nRead);
-        }
-
-        buffer.flush();
-        final byte[] byteArray = buffer.toByteArray();
-    }
-
-    @Test
-    public final void givenUsingGuava_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = ByteSource.wrap(new byte[] { 0, 1, 2 }).openStream();
-        final byte[] targetArray = ByteStreams.toByteArray(initialStream);
-    }
-
-    @Test
-    public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-        final byte[] targetArray = IOUtils.toByteArray(initialStream);
     }
 
     // tests - InputStream to File
