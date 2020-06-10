@@ -1,6 +1,7 @@
 package com.baeldung.hexagonal.controllers;
 
 import com.baeldung.hexagonal.domain.Order;
+import com.baeldung.hexagonal.service.DomainOrderService;
 import com.baeldung.hexagonal.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
