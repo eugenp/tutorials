@@ -216,5 +216,9 @@
             </plugin>
         </plugins>
     </build>
+    
+    <modules>
+    	<module>apache-bookkeeper</module>
+    </modules>
 
 </project>
