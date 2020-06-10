@@ -10,10 +10,10 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>

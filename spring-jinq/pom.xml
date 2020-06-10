@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -31,7 +31,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
         </dependency>
-
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -61,7 +66,7 @@
     </build>
 
     <properties>
-        <jinq.version>1.8.22</jinq.version>
+        <jinq.version>1.8.29</jinq.version>
     </properties>
 
 </project>
