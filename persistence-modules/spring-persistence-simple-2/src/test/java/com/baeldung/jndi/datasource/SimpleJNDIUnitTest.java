@@ -16,7 +16,12 @@ public class SimpleJNDIUnitTest {
 
     @BeforeEach
     public void setup() throws Exception {
+        System.setProperty("java.naming.factory.initial", "org.osjava.sj.SimpleContextFactory");
         System.setProperty("org.osjava.sj.root", "src/test/resources/jndi");
+        System.setProperty("org.osjava.sj.delimiter", ".");
+        System.setProperty("jndi.syntax.separator", "/");
+        System.setProperty("org.osjava.sj.space", "java:/comp/env");
+        
         this.initContext = new InitialContext();
     }
 
@@ -31,9 +36,13 @@ public class SimpleJNDIUnitTest {
     
     @AfterEach
     public void tearDown() throws Exception {
+        System.clearProperty("java.naming.factory.initial");
         System.clearProperty("org.osjava.sj.root");
+        System.clearProperty("org.osjava.sj.delimiter");
+        System.clearProperty("jndi.syntax.separator");
+        System.clearProperty("org.osjava.sj.space");
         
-        this.initContext.close();
+        this.initContext = null;
     }
 
 }
