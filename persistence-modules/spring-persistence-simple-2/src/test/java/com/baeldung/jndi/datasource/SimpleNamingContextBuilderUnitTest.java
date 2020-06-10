@@ -32,7 +32,10 @@ public class SimpleNamingContextBuilderUnitTest {
     
     @AfterEach
     public void tearDown() throws Exception {
-        this.initContext.close();
+        if (this.initContext != null) {
+            this.initContext.close();
+            this.initContext = null;
+        }
     }
 
 }
