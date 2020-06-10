@@ -64,7 +64,7 @@ public class BookRepositoryCachingIntegrationTest {
     }
 
     @Test
-    void givenCachedBookWhenFindByTitleThenRepositoryShouldNotBeHit() {
+    void givenCachedBook_whenFindByTitle_thenRepositoryShouldNotBeHit() {
         assertEquals(of(DUNE), bookRepository.findFirstByTitle("Dune"));
         verify(mock).findFirstByTitle("Dune");
 
@@ -75,7 +75,7 @@ public class BookRepositoryCachingIntegrationTest {
     }
 
     @Test
-    void givenNotCachedBookWhenFindByTitleThenRepositoryShouldBeHit() {
+    void givenNotCachedBook_whenFindByTitle_thenRepositoryShouldBeHit() {
         assertEquals(of(FOUNDATION), bookRepository.findFirstByTitle("Foundation"));
         assertEquals(of(FOUNDATION), bookRepository.findFirstByTitle("Foundation"));
         assertEquals(of(FOUNDATION), bookRepository.findFirstByTitle("Foundation"));

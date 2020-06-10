@@ -38,14 +38,14 @@ public class BookRepositoryIntegrationTest {
     }
 
     @Test
-    void givenBookThatShouldBeCachedWhenFindByTitleThenResultShouldBePutInCache() {
+    void givenBookThatShouldBeCached_whenFindByTitle_thenResultShouldBePutInCache() {
         Optional<Book> dune = repository.findFirstByTitle("Dune");
 
         assertEquals(dune, getCachedBook("Dune"));
     }
 
     @Test
-    void givenBookThatShouldNotBeCachedWhenFindByTitleThenResultShouldNotBePutInCache() {
+    void givenBookThatShouldNotBeCached_whenFindByTitle_thenResultShouldNotBePutInCache() {
         repository.findFirstByTitle("Foundation");
 
         assertEquals(empty(), getCachedBook("Foundation"));

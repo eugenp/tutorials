@@ -70,7 +70,7 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.10.10</version>
+            <version>1.10.11</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
