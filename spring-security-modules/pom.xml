@@ -15,11 +15,11 @@
 
     <modules>
         <module>spring-security-acl</module>
+        <module>spring-security-auth0</module>
         <module>spring-security-angular/server</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-core</module>
         <module>spring-security-cors</module>
-        <module>spring-security-kerberos</module>
         <module>spring-security-mvc</module>
         <module>spring-security-mvc-boot-1</module>
         <module>spring-security-mvc-boot-2</module>

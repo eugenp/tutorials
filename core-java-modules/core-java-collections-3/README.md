@@ -9,3 +9,4 @@
 - [Differences Between Collection.clear() and Collection.removeAll()](https://www.baeldung.com/java-collection-clear-vs-removeall)
 - [Performance of contains() in a HashSet vs ArrayList](https://www.baeldung.com/java-hashset-arraylist-contains-performance)
 - [Fail-Safe Iterator vs Fail-Fast Iterator](https://www.baeldung.com/java-fail-safe-vs-fail-fast-iterator)
+- [Quick Guide to the Java Stack](https://www.baeldung.com/java-stack)
