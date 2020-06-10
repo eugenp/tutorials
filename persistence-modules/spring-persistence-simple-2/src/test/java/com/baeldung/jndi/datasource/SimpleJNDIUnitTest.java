@@ -17,7 +17,7 @@ public class SimpleJNDIUnitTest {
     @BeforeEach
     public void setup() throws Exception {
         System.setProperty("java.naming.factory.initial", "org.osjava.sj.SimpleContextFactory");
-        System.setProperty("org.osjava.sj.root", "file://src/main/resources/jndi");
+        System.setProperty("org.osjava.sj.root", "./src/main/resources/jndi");
         System.setProperty("org.osjava.sj.delimiter", ".");
         System.setProperty("jndi.syntax.separator", "/");
         System.setProperty("org.osjava.sj.space", "java:/comp/env");
