@@ -13,6 +13,7 @@
 		<groupId>com.baeldung</groupId>
 		<artifactId>parent-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../</relativePath>
 	</parent>
 
 	<dependencies>
@@ -41,29 +42,6 @@
 		<org.apache.bookkeeper.version>4.10.0</org.apache.bookkeeper.version>
 	</properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.2.3</version>
-				<configuration>
-					<transformer
-						implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer" />
-					<mainClass>com.baeldung.tutorials.bookkeeper.Main</mainClass>
-					<minimizeJar>true</minimizeJar>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>
 
