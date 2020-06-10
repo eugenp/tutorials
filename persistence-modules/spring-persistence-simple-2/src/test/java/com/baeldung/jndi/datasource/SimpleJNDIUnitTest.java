@@ -6,6 +6,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,11 @@ public class SimpleJNDIUnitTest {
         DataSource ds = (DataSource) envContext.lookup("datasource/ds");
 
         assertEquals(dsString, ds.toString());
+    }
+    
+    @AfterEach
+    public void tearDown() throws Exception {
+        this.initContext.close();
     }
 
 }

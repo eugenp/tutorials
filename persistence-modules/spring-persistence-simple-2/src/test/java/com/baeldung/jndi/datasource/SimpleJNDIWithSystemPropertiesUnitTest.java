@@ -42,7 +42,7 @@ public class SimpleJNDIWithSystemPropertiesUnitTest {
         System.clearProperty("jndi.syntax.separator");
         System.clearProperty("org.osjava.sj.space");
         
-        this.initContext = null;
+        this.initContext.close();
     }
 
 }
