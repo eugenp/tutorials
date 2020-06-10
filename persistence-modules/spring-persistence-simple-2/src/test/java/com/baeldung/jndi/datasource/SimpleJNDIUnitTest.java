@@ -6,7 +6,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,12 +15,6 @@ public class SimpleJNDIUnitTest {
 
     @BeforeEach
     public void setup() throws Exception {
-        System.setProperty("java.naming.factory.initial", "org.osjava.sj.SimpleContextFactory");
-        System.setProperty("org.osjava.sj.root", "file://src/test/resources");
-        System.setProperty("org.osjava.sj.delimiter", ".");
-        System.setProperty("jndi.syntax.separator", "/");
-        System.setProperty("org.osjava.sj.space", "java:/comp/env");
-        
         this.initContext = new InitialContext();
     }
 
@@ -32,15 +25,6 @@ public class SimpleJNDIUnitTest {
         DataSource ds = (DataSource) envContext.lookup("datasource/ds");
 
         assertEquals(dsString, ds.toString());
-    }
-    
-    @AfterEach
-    public void tearDown() {
-        System.clearProperty("java.naming.factory.initial");
-        System.clearProperty("org.osjava.sj.root");
-        System.clearProperty("org.osjava.sj.delimiter");
-        System.clearProperty("jndi.syntax.separator");
-        System.clearProperty("org.osjava.sj.space");
     }
 
 }
