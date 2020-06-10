@@ -1,36 +1,43 @@
 package com.baeldung.reflection.access.privatefields;
 
+import java.lang.reflect.Field;
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class AccessPrivateFieldsUnitTest {
 
-    private static AccessPrivateProperties accessPrivateProperties;
+    @Test
+    public void whenGetField_thenSuccess() throws NoSuchFieldException, NullPointerException, IllegalArgumentException, IllegalAccessException {
+        Person person = new Person();
+        person.setName("John");
 
-    @BeforeAll
-    public static void beforeAll() {
-        accessPrivateProperties = new AccessPrivateProperties();
+        Field field = person.getClass()
+            .getDeclaredField("name");
+        field.setAccessible(true);
+
+        String name = (String) field.get(person);
+
+        Assertions.assertEquals("John", name);
     }
 
     @Test
-    public void testForNoSuchFieldException() {
-        Assertions.assertThrows(NoSuchFieldException.class, () -> accessPrivateProperties.accessPrivateFields("firstName", "John", true));
+    public void givenInt_whenSetStringField_thenIllegalArgumentException() throws NoSuchFieldException, NullPointerException, IllegalArgumentException, IllegalAccessException {
+        Person person = new Person();
+        Field field = person.getClass()
+            .getDeclaredField("name");
+        field.setAccessible(true);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> field.setInt(person, 25));
     }
 
     @Test
-    public void testForIllegalAccessException() {
-        Assertions.assertThrows(IllegalAccessException.class, () -> accessPrivateProperties.accessPrivateFields("name", "John", false));
-    }
+    public void whenFieldNotSetAccessible_thenIllegalAccessException() throws NoSuchFieldException, NullPointerException, IllegalArgumentException, IllegalAccessException {
+        Person person = new Person();
+        Field field = person.getClass()
+            .getDeclaredField("name");
 
-    @Test
-    public void testForIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> accessPrivateProperties.accessPrivateFields("name", 25, true));
-    }
-
-    @Test
-    public void testForNullPointerException() {
-        Assertions.assertThrows(NullPointerException.class, () -> accessPrivateProperties.accessPrivateFields(null, "John", true));
+        Assertions.assertThrows(IllegalAccessException.class, () -> field.set(person, "John"));
     }
 
 }

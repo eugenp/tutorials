@@ -1,7 +1,7 @@
 package com.baeldung.reflection.access.privatefields;
 
 public class Person {
-    
+
     private String name;
 
     public String getName() {
@@ -12,7 +12,12 @@ public class Person {
         this.name = name;
     }
 
-    private String greet(String number) {
-        return "Hi " + Integer.parseInt(number);
+    private String greet(String name) {
+        return "Hello " + name;
     }
+
+    private int divideByZeroExample() {
+        return 1 / 0;
+    }
+
 }
