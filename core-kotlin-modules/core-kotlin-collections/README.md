@@ -10,3 +10,4 @@ This module contains articles about core Kotlin collections.
 - [Filtering Kotlin Collections](https://www.baeldung.com/kotlin-filter-collection)
 - [Collection Transformations in Kotlin](https://www.baeldung.com/kotlin-collection-transformations)
 - [Difference between fold and reduce in Kotlin](https://www.baeldung.com/kotlin/fold-vs-reduce)
+- [Guide to Sorting in Kotlin](https://www.baeldung.com/kotlin-sort)
