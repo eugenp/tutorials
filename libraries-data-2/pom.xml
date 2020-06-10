@@ -153,6 +153,13 @@
             <artifactId>renjin-script-engine</artifactId>
             <version>${renjin.version}</version>
         </dependency>
+         <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <classifier>test</classifier>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
