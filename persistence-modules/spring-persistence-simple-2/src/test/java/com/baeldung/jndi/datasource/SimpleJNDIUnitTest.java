@@ -16,6 +16,7 @@ public class SimpleJNDIUnitTest {
 
     @BeforeEach
     public void setup() throws Exception {
+        System.setProperty("org.osjava.sj.root", "src/test/resources/jndi");
         this.initContext = new InitialContext();
     }
 
@@ -30,6 +31,8 @@ public class SimpleJNDIUnitTest {
     
     @AfterEach
     public void tearDown() throws Exception {
+        System.clearProperty("org.osjava.sj.root");
+        
         this.initContext.close();
     }
 
