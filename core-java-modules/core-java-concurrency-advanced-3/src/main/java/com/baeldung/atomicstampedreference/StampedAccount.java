@@ -9,13 +9,11 @@ public class StampedAccount {
     private AtomicStampedReference<Integer> account = new AtomicStampedReference<>(0, 0);
 
     public int getBalance() {
-        return this.account.get(new int[1]);
+        return account.getReference();
     }
 
     public int getStamp() {
-        int[] stamps = new int[1];
-        this.account.get(stamps);
-        return stamps[0];
+        return account.getStamp();
     }
 
     public boolean deposit(int funds) {
