@@ -47,7 +47,7 @@ class RequestUtils {
         return responseData;
     }
 
-    static StringBuilder constructDecoderResult(HttpObject o) {
+    static StringBuilder evaluateDecoderResult(HttpObject o) {
         StringBuilder responseData = new StringBuilder();
         DecoderResult result = o.decoderResult();
 
