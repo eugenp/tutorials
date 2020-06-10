@@ -29,10 +29,10 @@ public class SimpleNamingContextBuilderUnitTest {
 
         assertNotNull(ds.getConnection());
     }
-    
+
     @AfterEach
     public void tearDown() throws Exception {
-        if(this.initContext != null){
+        if (this.initContext != null) {
             this.initContext.close();
             this.initContext = null;
         }
