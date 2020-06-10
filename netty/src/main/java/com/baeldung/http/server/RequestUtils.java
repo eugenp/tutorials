@@ -47,7 +47,7 @@ class RequestUtils {
         return responseData;
     }
 
-    static StringBuilder addDecoderResult(HttpObject o) {
+    static StringBuilder constructDecoderResult(HttpObject o) {
         StringBuilder responseData = new StringBuilder();
         DecoderResult result = o.decoderResult();
 
@@ -60,7 +60,7 @@ class RequestUtils {
         return responseData;
     }
 
-    static StringBuilder addLastResponse(HttpRequest request, LastHttpContent trailer) {
+    static StringBuilder prepareLastResponse(HttpRequest request, LastHttpContent trailer) {
         StringBuilder responseData = new StringBuilder();
         responseData.append("Good Bye!\r\n");
 

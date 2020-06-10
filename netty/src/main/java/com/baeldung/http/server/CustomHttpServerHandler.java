@@ -43,17 +43,17 @@ public class CustomHttpServerHandler extends SimpleChannelInboundHandler<Object>
             responseData.append(RequestUtils.formatParams(request));
         }
 
-        responseData.append(RequestUtils.addDecoderResult(request));
+        responseData.append(RequestUtils.constructDecoderResult(request));
 
         if (msg instanceof HttpContent) {
             HttpContent httpContent = (HttpContent) msg;
 
             responseData.append(RequestUtils.formatBody(httpContent));
-            responseData.append(RequestUtils.addDecoderResult(request));
+            responseData.append(RequestUtils.constructDecoderResult(request));
 
             if (msg instanceof LastHttpContent) {
                 LastHttpContent trailer = (LastHttpContent) msg;
-                responseData.append(RequestUtils.addLastResponse(request, trailer));
+                responseData.append(RequestUtils.prepareLastResponse(request, trailer));
                 writeResponse(ctx, trailer, responseData);
             }
         }
