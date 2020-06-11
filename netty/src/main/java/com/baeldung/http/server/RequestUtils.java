@@ -7,32 +7,15 @@ import java.util.Map.Entry;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderResult;
 import io.netty.handler.codec.http.HttpContent;
-import io.netty.handler.codec.http.HttpHeaderNames;
-import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpObject;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.LastHttpContent;
 import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.util.CharsetUtil;
 
-class ResponseBuilder {
+class RequestUtils {
 
-    static StringBuilder addRequestAttributes(HttpRequest request) {
-        StringBuilder responseData = new StringBuilder();
-        responseData.append("Version: ")
-            .append(request.protocolVersion())
-            .append("\r\n");
-        responseData.append("Host: ")
-            .append(request.headers()
-                .get(HttpHeaderNames.HOST, "unknown"))
-            .append("\r\n");
-        responseData.append("URI: ")
-            .append(request.uri())
-            .append("\r\n\r\n");
-        return responseData;
-    }
-
-    static StringBuilder addParams(HttpRequest request) {
+    static StringBuilder formatParams(HttpRequest request) {
         StringBuilder responseData = new StringBuilder();
         QueryStringDecoder queryStringDecoder = new QueryStringDecoder(request.uri());
         Map<String, List<String>> params = queryStringDecoder.parameters();
@@ -42,9 +25,9 @@ class ResponseBuilder {
                 List<String> vals = p.getValue();
                 for (String val : vals) {
                     responseData.append("Parameter: ")
-                        .append(key)
+                        .append(key.toUpperCase())
                         .append(" = ")
-                        .append(val)
+                        .append(val.toUpperCase())
                         .append("\r\n");
                 }
             }
@@ -53,24 +36,7 @@ class ResponseBuilder {
         return responseData;
     }
 
-    static StringBuilder addHeaders(HttpRequest request) {
-        StringBuilder responseData = new StringBuilder();
-        HttpHeaders headers = request.headers();
-        if (!headers.isEmpty()) {
-            for (Map.Entry<String, String> header : headers) {
-                CharSequence key = header.getKey();
-                CharSequence value = header.getValue();
-                responseData.append(key)
-                    .append(" = ")
-                    .append(value)
-                    .append("\r\n");
-            }
-            responseData.append("\r\n");
-        }
-        return responseData;
-    }
-
-    static StringBuilder addBody(HttpContent httpContent) {
+    static StringBuilder formatBody(HttpContent httpContent) {
         StringBuilder responseData = new StringBuilder();
         ByteBuf content = httpContent.content();
         if (content.isReadable()) {
@@ -81,7 +47,7 @@ class ResponseBuilder {
         return responseData;
     }
 
-    static StringBuilder addDecoderResult(HttpObject o) {
+    static StringBuilder evaluateDecoderResult(HttpObject o) {
         StringBuilder responseData = new StringBuilder();
         DecoderResult result = o.decoderResult();
 
@@ -94,7 +60,7 @@ class ResponseBuilder {
         return responseData;
     }
 
-    static StringBuilder addLastResponse(HttpRequest request, LastHttpContent trailer) {
+    static StringBuilder prepareLastResponse(HttpRequest request, LastHttpContent trailer) {
         StringBuilder responseData = new StringBuilder();
         responseData.append("Good Bye!\r\n");
 
