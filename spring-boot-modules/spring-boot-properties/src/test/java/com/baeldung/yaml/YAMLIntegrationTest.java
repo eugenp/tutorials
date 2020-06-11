@@ -20,5 +20,6 @@ class YAMLIntegrationTest {
     void whenProfileTest_thenNameTesting() {
         assertTrue("testing".equalsIgnoreCase(config.getEnvironment()));
         assertTrue("test-YAML".equalsIgnoreCase(config.getName()));
+        assertTrue("myurl".equalsIgnoreCase(config.getComponent().getIdm().getUrl()));
     }
 }
