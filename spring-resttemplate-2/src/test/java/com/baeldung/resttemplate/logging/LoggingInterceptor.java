@@ -18,7 +18,7 @@ public class LoggingInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest req, byte[] reqBody, ClientHttpRequestExecution ex) throws IOException {
-        log.debug("Request body: {}", new String(reqBody, "UTF-8"));
+        log.debug("Request body: {}", new String(reqBody, StandardCharsets.UTF_8));
         ClientHttpResponse response = ex.execute(req, reqBody);
         InputStreamReader isr = new InputStreamReader(response.getBody(), StandardCharsets.UTF_8);
         String body = new BufferedReader(isr).lines()
