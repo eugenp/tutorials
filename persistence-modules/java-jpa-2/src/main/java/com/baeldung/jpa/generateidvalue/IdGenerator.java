@@ -14,7 +14,7 @@ public class IdGenerator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(name = "gen_name")
     private String gen_name;
 

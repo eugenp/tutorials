@@ -26,11 +26,13 @@ public class PrimaryKeyUnitTest {
     public void givenIdentityStrategy_whenCommitTransction_thenReturnPrimaryKey() {
         User user = new User();
         user.setName("TestName");
-        
-        entityManager.getTransaction().begin();
+
+        entityManager.getTransaction()
+            .begin();
         entityManager.persist(user);
         Assert.assertNull(user.getId());
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction()
+            .commit();
 
         Long expectPrimaryKey = 1L;
         Assert.assertEquals(expectPrimaryKey, user.getId());
@@ -41,12 +43,14 @@ public class PrimaryKeyUnitTest {
         Task task = new Task();
         task.setName("Test Task");
 
-        entityManager.getTransaction().begin();
+        entityManager.getTransaction()
+            .begin();
         entityManager.persist(task);
         Long expectPrimaryKey = 10000L;
         Assert.assertEquals(expectPrimaryKey, task.getId());
 
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction()
+            .commit();
     }
 
     @Test
@@ -54,12 +58,14 @@ public class PrimaryKeyUnitTest {
         Article article = new Article();
         article.setName("Test Name");
 
-        entityManager.getTransaction().begin();
+        entityManager.getTransaction()
+            .begin();
         entityManager.persist(article);
         Long expectPrimaryKey = 51L;
         Assert.assertEquals(expectPrimaryKey, article.getId());
 
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction()
+            .commit();
     }
 
     @Test

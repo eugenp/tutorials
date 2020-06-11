@@ -11,10 +11,9 @@ import javax.persistence.TableGenerator;
 @Entity
 @Table(name = "task")
 public class Task {
-    
+
     @Id
-    @TableGenerator(name = "id_generator", table = "id_gen", pkColumnName = "gen_name", 
-        valueColumnName = "gen_value", pkColumnValue="task_gen", initialValue=10000, allocationSize=10)
+    @TableGenerator(name = "id_generator", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_value", pkColumnValue = "task_gen", initialValue = 10000, allocationSize = 10)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "id_generator")
     private Long id;
 
