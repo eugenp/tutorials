@@ -26,9 +26,9 @@ public class BooksRepositoryImpl implements BooksRepository {
             preparedStatement.setString(3, book.getAuthor());
             preparedStatement.setString(4, book.getDescription());
 
-            log.info(preparedStatement.toString());
+            log.debug(preparedStatement.toString());
             preparedStatement.executeUpdate();
-            log.info("Book {} created", book.getId()
+            log.debug("Book {} created in database", book.getId()
                 .toString());
         } catch (SQLException e) {
             log.error("SQL exception during save", e);
@@ -39,7 +39,7 @@ public class BooksRepositoryImpl implements BooksRepository {
     public void delete(UUID id) {
         try (Connection connection = DatabaseUtils.getConnection(); Statement statement = connection.createStatement();) {
             statement.execute(String.format(DELETE_BOOKS_SQL, id));
-            log.info("Book {} deleted", id);
+            log.debug("Book {} deleted from database", id);
         } catch (SQLException e) {
             log.error("SQL exception during delete", e);
         }
