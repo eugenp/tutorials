@@ -20,14 +20,14 @@ public class ConsoleApp {
         while (true) {
             final String command = console.readLine("Enter C to create a book, D to delete a book or E to exit the application: ");
             switch (command) {
-                case "C":
-                    createBookInput();
-                    break;
-                case "D":
-                    deleteBookInput();
-                    break;
-                case "E":
-                    return;
+            case "C":
+                createBookInput();
+                break;
+            case "D":
+                deleteBookInput();
+                break;
+            case "E":
+                return;
             }
         }
     }
@@ -37,17 +37,20 @@ public class ConsoleApp {
         final String author = console.readLine("Enter author name: ");
         final String description = console.readLine("Enter description: ");
         if (StringUtils.isAnyBlank(name, author, description)) {
-            console.writer().println("Book not created, all arguments are required!");
+            console.writer()
+                .println("Book not created, all arguments are required!");
         } else {
             UUID id = booksService.createBook(name, author, description);
-            console.writer().println("Book " + id + " successfully created.");
+            console.writer()
+                .println("Book " + id + " successfully created.");
         }
     }
 
     private void deleteBookInput() {
         final String id = console.readLine("Enter ID: ");
         booksService.deleteBook(UUID.fromString(id));
-        console.writer().println("Book " + id + " successfully deleted.");
+        console.writer()
+            .println("Book " + id + " successfully deleted.");
     }
 
 }

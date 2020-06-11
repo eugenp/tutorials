@@ -4,5 +4,6 @@ module com.baeldung.hexagonal.infrastructure {
     requires lombok;
     requires com.baeldung.hexagonal.application;
     requires com.baeldung.hexagonal.domain;
+
     exports com.baeldung.hexagonal.infrastructure;
 }

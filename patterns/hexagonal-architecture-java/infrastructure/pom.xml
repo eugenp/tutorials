@@ -5,7 +5,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>infrastructure</artifactId>
-    <version>1.0</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -18,7 +17,7 @@
         <dependency>
             <groupId>com.baeldung.hexagonal</groupId>
             <artifactId>application</artifactId>
-            <version>1.0</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -28,12 +27,12 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.3.0.Final</version>
+            <version>${mapstruct.processor.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.20</version>
+            <version>${mysql.connector.version}</version>
         </dependency>
     </dependencies>
 

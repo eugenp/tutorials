@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.domain.services.impl;
+package com.baeldung.hexagonal.domain.services;
 
 import com.baeldung.hexagonal.domain.data.Book;
 import com.baeldung.hexagonal.domain.repo.BooksRepository;

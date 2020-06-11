@@ -1,7 +1,6 @@
 package com.baeldung.hexagonal.domain.services;
 
 import com.baeldung.hexagonal.domain.repo.BooksRepository;
-import com.baeldung.hexagonal.domain.services.impl.BooksServiceImpl;
 
 public class BooksServiceFactory {
 
