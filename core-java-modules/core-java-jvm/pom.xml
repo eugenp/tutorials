@@ -54,31 +54,28 @@
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
-            <version>8.0.1</version>
+            <version>${asm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm-util</artifactId>
-            <version>8.0.1</version>
+            <version>${asm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.bcel</groupId>
             <artifactId>bcel</artifactId>
-            <version>6.4.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.27.0-GA</version>
-        </dependency>      
+            <version>${bcel.version}</version>
+        </dependency>    
     </dependencies>
 
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <!-- instrumentation -->
-        <javaassist.version>3.21.0-GA</javaassist.version>
+        <javaassist.version>3.27.0-GA</javaassist.version>
         <esapi.version>2.1.0.1</esapi.version>
         <sun.tools.version>1.8.0</sun.tools.version>
+        <asm.version>8.0.1</asm.version>
+        <bcel.version>6.5.0</bcel.version>
     </properties>
 
 </project>
