@@ -36,7 +36,7 @@ public class JdbcInsertIdIntegrationTest {
     }
 
     @Test
-    public void givenInsert_whenUsingAutoGenFlag_shouldBeAbleToFetchTheIdAfterward() throws SQLException {
+    public void givenInsert_whenUsingAutoGenFlag_thenBeAbleToFetchTheIdAfterward() throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(QUERY, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, "Foo");
             int affectedRows = statement.executeUpdate();
@@ -50,7 +50,7 @@ public class JdbcInsertIdIntegrationTest {
     }
 
     @Test
-    public void givenInsert_whenUsingAutoGenFlagViaExecute_shouldBeAbleToFetchTheIdAfterward() throws SQLException {
+    public void givenInsert_whenUsingAutoGenFlagViaExecute_thenBeAbleToFetchTheIdAfterward() throws SQLException {
         try (Statement statement = connection.createStatement()) {
             String query = "insert into persons (name) values ('Foo')";
             int affectedRows = statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
@@ -64,7 +64,7 @@ public class JdbcInsertIdIntegrationTest {
     }
 
     @Test
-    public void givenInsert_whenUsingReturningCols_shouldBeAbleToFetchTheIdAfterward() throws SQLException {
+    public void givenInsert_whenUsingReturningCols_thenBeAbleToFetchTheIdAfterward() throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement(QUERY, new String[] { "id" })) {
             statement.setString(1, "Foo");
             int affectedRows = statement.executeUpdate();
@@ -78,7 +78,7 @@ public class JdbcInsertIdIntegrationTest {
     }
 
     @Test
-    public void givenInsert_whenUsingReturningColsViaExecute_shouldBeAbleToFetchTheIdAfterward() throws SQLException {
+    public void givenInsert_whenUsingReturningColsViaExecute_thenBeAbleToFetchTheIdAfterward() throws SQLException {
         try (Statement statement = connection.createStatement()) {
             String query = "insert into persons (name) values ('Foo')";
             int affectedRows = statement.executeUpdate(query, new String[] { "id" });
