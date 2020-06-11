@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.baeldung.quarkus.liquibase</groupId>
-        <artifactId>quarkus-liquibase-parent</artifactId>
+        <artifactId>quarkus-liquibase</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 

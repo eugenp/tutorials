@@ -40,6 +40,7 @@
         <module>spring-cloud-task</module>
         <module>spring-cloud-zuul</module>
         <module>spring-cloud-zuul-fallback</module>
+        <module>spring-cloud-ribbon-retry</module>
     </modules>
 
     <build>
