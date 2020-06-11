@@ -1,0 +1,1 @@
+java -jar infrastructure/target/infrastructure-1.0-jar-with-dependencies.jar
