@@ -58,8 +58,7 @@ public class CountMatchesUnitTest {
     public void givenContainingEmailString_whenStartingInJava9Match_thenCountMacthesFound() {
         // Matcher countEmailMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_EMAIL_ADDRESSES);
 
-        // long count = countEmailMatcher.results()
-        // .count();
+        // long count = countEmailMatcher.results().count();
 
         // assertEquals(3, count);
     }
@@ -68,8 +67,7 @@ public class CountMatchesUnitTest {
     public void givenContainingFiveEmailsString_whenStartingInJava9Match_thenCountMacthesFound() {
         // Matcher countFiveEmailsMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_FIVE_EMAIL_ADDRESSES);
 
-        // long count = countFiveEmailsMatcher.results()
-        // .count();
+        // long count = countFiveEmailsMatcher.results().count();
 
         // assertEquals(5, count);
     }
@@ -78,8 +76,7 @@ public class CountMatchesUnitTest {
     public void givenStringWithoutEmails_whenJava9Match_thenCountMacthesNotFound() {
         // Matcher noEmailMatcher = EMAIL_ADDRESS_PATTERN.matcher("Simple text without emails.");
 
-        // long count = noEmailMatcher.results()
-        // .count();
+        // long count = noEmailMatcher.results().count();
 
         // assertEquals(0, count);
     }

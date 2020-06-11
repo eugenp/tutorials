@@ -43,24 +43,11 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <plugins>
-        <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
     
     <properties>
         <!-- testing -->
         <assertj.version>3.15.0</assertj.version>
-        <maven.compiler.source.version>1.8</maven.compiler.source.version>
-        <maven.compiler.target.version>1.8</maven.compiler.target.version>
     </properties>
 
 </project>
