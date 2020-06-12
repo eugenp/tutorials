@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MyApplication.class)
+@TestPropertySource(properties = {"spring.profiles.active = test"})
 class YAMLIntegrationTest {
 
     @Autowired
@@ -20,5 +21,6 @@ class YAMLIntegrationTest {
     void whenProfileTest_thenNameTesting() {
         assertTrue("testing".equalsIgnoreCase(config.getEnvironment()));
         assertTrue("test-YAML".equalsIgnoreCase(config.getName()));
+        assertTrue("myurl".equalsIgnoreCase(config.getComponent().getIdm().getUrl()));
     }
 }
