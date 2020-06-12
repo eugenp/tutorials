@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-       <groupId>com.baeldung</groupId>
-        <artifactId>parent-kotlin</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../parent-kotlin</relativePath>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <groupId>com.baeldung.spring.security.dsl</groupId>
@@ -83,5 +83,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
