@@ -8,4 +8,5 @@ This module contains articles about date operations in Java.
 - [Converting Java Date to OffsetDateTime](https://www.baeldung.com/java-convert-date-to-offsetdatetime)
 - [How to Set the JVM Time Zone](https://www.baeldung.com/java-jvm-time-zone)
 - [How to determine day of week by passing specific date in Java?](https://www.baeldung.com/java-get-day-of-week)
+- [Finding Leap Years in Java](https://www.baeldung.com/java-leap-year)
 - [[<-- Prev]](/core-java-modules/core-java-date-operations-1)

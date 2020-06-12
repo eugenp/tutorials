@@ -35,18 +35,6 @@ public class RedisConfig {
         template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
         return template;
     }
-    
-    @Bean
-    public LettuceConnectionFactory lettuceConnectionFactory() {
-        return new LettuceConnectionFactory();
-    }
-
-    @Bean(name = "flushRedisTemplate")
-    public RedisTemplate<String, String> flushRedisTemplate() {
-        RedisTemplate<String, String> template = new RedisTemplate<>();
-        template.setConnectionFactory(lettuceConnectionFactory());
-        return template;
-    }
 
     @Bean
     MessageListenerAdapter messageListener() {
