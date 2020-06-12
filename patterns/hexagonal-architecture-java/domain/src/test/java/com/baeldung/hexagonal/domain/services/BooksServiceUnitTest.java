@@ -13,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.UUID;
 
 @ExtendWith(MockitoExtension.class)
-class BooksServiceImplUnitTest {
+class BooksServiceUnitTest {
 
     @Mock
     private BooksRepository booksRepository;

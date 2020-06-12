@@ -2,7 +2,6 @@ package com.baeldung.hexagonal.domain.repo;
 
 import com.baeldung.hexagonal.domain.data.Book;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public interface BooksRepository {

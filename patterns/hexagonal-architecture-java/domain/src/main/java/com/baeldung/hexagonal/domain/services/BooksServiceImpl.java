@@ -2,7 +2,6 @@ package com.baeldung.hexagonal.domain.services;
 
 import com.baeldung.hexagonal.domain.data.Book;
 import com.baeldung.hexagonal.domain.repo.BooksRepository;
-import com.baeldung.hexagonal.domain.services.BooksService;
 
 import java.util.UUID;
 
@@ -25,4 +24,5 @@ public class BooksServiceImpl implements BooksService {
     public void deleteBook(UUID id) {
         booksRepository.delete(id);
     }
+
 }
