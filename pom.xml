@@ -513,6 +513,7 @@
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -1032,6 +1033,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>

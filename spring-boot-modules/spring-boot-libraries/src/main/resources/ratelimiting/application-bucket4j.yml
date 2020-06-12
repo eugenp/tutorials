@@ -1,0 +1,10 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: bucket4j-api-rate-limit-app
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
