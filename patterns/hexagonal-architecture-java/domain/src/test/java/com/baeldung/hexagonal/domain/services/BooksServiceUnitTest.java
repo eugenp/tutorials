@@ -27,7 +27,7 @@ class BooksServiceUnitTest {
     }
 
     @Test
-    void testSavingBook() {
+    void givenValidBookParamsAreProvided_whenCreateBookMethodIsCalled_thenBookIsSavedInTheRepository() {
         UUID bookId = booksService.createBook("Harry Potter and the Philosopher’s Stone", "J.K. Rowling", "A fantasy novel");
         Mockito.verify(booksRepository, Mockito.times(1))
             .save(Mockito.any());
@@ -35,7 +35,7 @@ class BooksServiceUnitTest {
     }
 
     @Test
-    void testDeletingBook() {
+    void givenExistingBookId_whenDeleteBookMethodIsCalled_thenBookIsDeletedFromTheRepository() {
         UUID bookID = UUID.randomUUID();
         booksService.deleteBook(bookID);
         Mockito.verify(booksRepository, Mockito.times(1))
