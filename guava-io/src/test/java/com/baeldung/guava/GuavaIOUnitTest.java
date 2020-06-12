@@ -11,8 +11,11 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Test;
 
 import com.google.common.base.Charsets;
@@ -30,6 +33,21 @@ import com.google.common.io.LittleEndianDataOutputStream;
 import com.google.common.io.Resources;
 
 public class GuavaIOUnitTest {
+
+    @After
+    public void afterEach() throws Exception {
+        deleteProducedFiles();
+    }
+
+    private void deleteProducedFiles() throws IOException {
+        deleteIfExists("test.out");
+        deleteIfExists("test_copy.in");
+        deleteIfExists("test_le.txt");
+    }
+
+    private void deleteIfExists(String fileName) throws IOException {
+        java.nio.file.Files.deleteIfExists(Paths.get("src", "test", "resources", fileName));
+    }
 
     @Test
     public void whenWriteUsingFiles_thenWritten() throws IOException {
@@ -206,5 +224,4 @@ public class GuavaIOUnitTest {
 
         assertEquals(value, result);
     }
-
 }
