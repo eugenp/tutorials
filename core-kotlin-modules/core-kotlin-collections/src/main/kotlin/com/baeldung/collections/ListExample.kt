@@ -17,23 +17,45 @@ class ListExample {
         return cityList
     }
 
-    fun iterateUsingForLoop() {
-        countries.forEach { it -> print("$it ") }
-        println()
+    fun iterateUsingForEachLoop(): List<Int> {
+        val countryLength = mutableListOf<Int>()
+        countries.forEach { it ->
+            print("$it ")
+            println(" Length: ${it.length}")
+            countryLength.add(it.length)
+        }
+        return countryLength
+    }
 
+    fun iterateUsingForLoop(): List<Int> {
+        val countryLength = mutableListOf<Int>()
         for (country in countries) {
             print("$country ")
+            println(" Length: ${country.length}")
+            countryLength.add(country.length)
         }
-        println()
+        return countryLength
+    }
 
+    fun iterateUsingForLoopRange(): List<Int> {
+        val countryLength = mutableListOf<Int>()
         for (i in 0 until countries.size) {
             print("${countries[i]} ")
+            println(" Length: ${countries[i].length}")
+            countryLength.add(countries[i].length)
         }
-        println()
+        return countryLength
+    }
 
+    fun iterateUsingForEachIndexedLoop(): List<Int> {
+        val countryLength = mutableListOf<Int>()
         countries.forEachIndexed { i, e ->
             println("country[$i] = $e")
+            print(" Index: $i")
+            println(" Length: ${e.length}")
+            countryLength.add(e.length)
         }
+        return countryLength
     }
 
     fun iterateUsingListIterator() {

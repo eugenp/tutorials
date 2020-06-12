@@ -18,6 +18,26 @@ class ListExampleUnitTest {
     }
 
     @Test
+    fun whenIterateUsingForEachLoop_thenSuccess() {
+        assertEquals(7, classUnderTest.iterateUsingForEachLoop()[0])
+    }
+
+    @Test
+    fun whenIterateUsingForLoop_thenSuccess() {
+        assertEquals(5, classUnderTest.iterateUsingForLoop()[1])
+    }
+
+    @Test
+    fun whenIterateUsingForLoopRange_thenSuccess() {
+        assertEquals(6, classUnderTest.iterateUsingForLoopRange()[3])
+    }
+
+    @Test
+    fun whenIterateUsingForEachIndexedLoop_thenSuccess() {
+        assertEquals(9, classUnderTest.iterateUsingForEachIndexedLoop()[4])
+    }
+
+    @Test
     fun whenRetrieveElementsInList_thenSuccess() {
         assertEquals("Japan", classUnderTest.retrieveElementsInList())
     }
