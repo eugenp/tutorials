@@ -70,12 +70,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -513,6 +507,7 @@
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -1032,6 +1027,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
