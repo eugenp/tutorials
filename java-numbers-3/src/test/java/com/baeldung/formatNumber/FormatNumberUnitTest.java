@@ -59,9 +59,9 @@ public class FormatNumberUnitTest {
     }
 
     @Test
-    public void givenIntegerNumber_whenFormatNumber_withLongNumbers_thenGetExpectedResult() {
+    public void givenIntegerNumber_whenFormatNumber_withLargeIntegers_thenGetExpectedResult() {
         int value = 123456789;
-        assertThat(withLongNumbers(value)).isEqualTo("123,456,789");
+        assertThat(withLargeIntegers(value)).isEqualTo("123,456,789");
     }
 
     @Test

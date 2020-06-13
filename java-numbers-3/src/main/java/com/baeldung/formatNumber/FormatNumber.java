@@ -50,7 +50,7 @@ public class FormatNumber {
         return new Double(df.format(value));
     }
 
-    public static String withLongNumbers(double value) {
+    public static String withLargeIntegers(double value) {
         DecimalFormat df = new DecimalFormat("###,###,###");
         return df.format(value);
     }
