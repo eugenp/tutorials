@@ -56,4 +56,10 @@ public class ExceptionControllerUnitTest{
             .andExpect(result -> assertTrue(result.getResolvedException() instanceof InternalException))
             .andExpect(result -> assertEquals("internal error", result.getResolvedException().getMessage()));
     }
+
+    @Test(expected = Exception.class)
+    public void whenGetException_thenInternalServerError() throws Exception {
+        mvc.perform(get("/exception/throw")
+            .contentType(MediaType.APPLICATION_JSON));
+    }
 }
