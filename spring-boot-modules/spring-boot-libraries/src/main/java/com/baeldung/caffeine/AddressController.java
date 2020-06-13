@@ -13,14 +13,12 @@ public class AddressController
     private AddressService addressService;
 
     @GetMapping("/address/{id}")
-    public ResponseEntity<String> getAddress(@PathVariable("id") long customerId)
-    {
+    public ResponseEntity<String> getAddress(@PathVariable("id") long customerId) {
         return ResponseEntity.ok(addressService.getAddress(customerId));
     }
 
     @GetMapping("/address2/{id}")
-    public ResponseEntity<String> getAddress2(@PathVariable("id") long customerId)
-    {
+    public ResponseEntity<String> getAddress2(@PathVariable("id") long customerId) {
         return ResponseEntity.ok(addressService.getAddress2(customerId));
     }
 }

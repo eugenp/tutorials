@@ -19,17 +19,14 @@ public class AddressService
     private CacheManager cacheManager;
 
     @Cacheable(cacheNames = "addresses")
-    public String getAddress(long customerId)
-    {
+    public String getAddress(long customerId)  {
         LOG.info("Method getAddress is invoked for customer {}", customerId);
 
         return "123 Main St";
     }
 
-    public String getAddress2(long customerId)
-    {
-        if(cacheManager.getCache("addresses2").get(customerId) != null)
-        {
+    public String getAddress2(long customerId) {
+        if(cacheManager.getCache("addresses2").get(customerId) != null) {
             return cacheManager.getCache("addresses2").get(customerId).get().toString();
         }
 
