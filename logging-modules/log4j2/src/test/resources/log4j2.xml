@@ -50,6 +50,12 @@
             </Policies>
         </RollingFile>
         <MapAppender name="MapAppender"/>
+        <Console name="DockerConsoleLogger" target="SYSTEM_OUT">
+            <PatternLayout pattern="%pid %docker" />
+        </Console>
+        <Kafka2 name="KafkaLogger" ip ="127.0.0.1" port="9010" topic="log" partition="p-1">
+            <PatternLayout pattern="%pid%style{%message}{red}%n" />
+        </Kafka2>
     </Appenders>
     <Loggers>
         <Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE"
@@ -79,6 +85,9 @@
         <Logger name="CONSOLE_JSON_APPENDER" level="TRACE"
             additivity="false">
             <AppenderRef ref="ConsoleJSONAppender" />
+        </Logger>
+        <Logger name="com.baeldung.logging.log4j2.plugins" level="INFO">
+            <AppenderRef ref="KafkaLogger" />
         </Logger>
         <Root level="DEBUG">
             <AppenderRef ref="ConsoleAppender" />

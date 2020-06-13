@@ -1,3 +1,6 @@
+drop table if exists car_maker;
+drop table if exists car_model;
+
 --
 -- Car makers table
 --

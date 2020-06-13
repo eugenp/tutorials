@@ -3,30 +3,57 @@ package com.baeldung.uuid;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.UUID;
 
 public class UUIDGenerator {
 
-    /**
-     * These are predefined UUID for name spaces
-     */
-    private static final String NAMESPACE_DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
-    private static final String NAMESPACE_URL = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
-    private static final String NAMESPACE_OID = "6ba7b812-9dad-11d1-80b4-00c04fd430c8";
-    private static final String NAMESPACE_X500 = "6ba7b814-9dad-11d1-80b4-00c04fd430c8";
-
     private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
-    public static void main(String[] args) {
-        try {
-            System.out.println("Type 3 : " + generateType3UUID(NAMESPACE_DNS, "google.com"));
-            System.out.println("Type 4 : " + generateType4UUID());
-            System.out.println("Type 5 : " + generateType5UUID(NAMESPACE_URL, "google.com"));
-            System.out.println("Unique key  : " + generateUniqueKeysWithUUIDAndMessageDigest());
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+    /**
+     * Type 1 UUID Generation
+     */
+    public static UUID generateType1UUID() {
+
+        long most64SigBits = get64MostSignificantBitsForVersion1();
+        long least64SigBits = get64LeastSignificantBitsForVersion1();
+
+        return new UUID(most64SigBits, least64SigBits);
+    }
+
+    private static long get64LeastSignificantBitsForVersion1() {
+        Random random = new Random();
+        long random63BitLong = random.nextLong() & 0x3FFFFFFFFFFFFFFFL;
+        long variant3BitFlag = 0x8000000000000000L;
+        return random63BitLong + variant3BitFlag;
+    }
+
+    private static long get64MostSignificantBitsForVersion1() {
+        LocalDateTime start = LocalDateTime.of(1582, 10, 15, 0, 0, 0);
+        Duration duration = Duration.between(start, LocalDateTime.now());
+        long seconds = duration.getSeconds();
+        long nanos = duration.getNano();
+        long timeForUuidIn100Nanos = seconds * 10000000 + nanos * 100;
+        long least12SignificatBitOfTime = (timeForUuidIn100Nanos & 0x000000000000FFFFL) >> 4;
+        long version = 1 << 12;
+        return (timeForUuidIn100Nanos & 0xFFFFFFFFFFFF0000L) + version + least12SignificatBitOfTime;
+    }
+
+    /**
+     * Type 3 UUID Generation
+     *
+     * @throws UnsupportedEncodingException
+     */
+    public static UUID generateType3UUID(String namespace, String name) throws UnsupportedEncodingException {
+
+        byte[] nameSpaceBytes = bytesFromUUID(namespace);
+        byte[] nameBytes = name.getBytes("UTF-8");
+        byte[] result = joinBytes(nameSpaceBytes, nameBytes);
+
+        return UUID.nameUUIDFromBytes(result);
     }
 
     /**
@@ -38,27 +65,17 @@ public class UUIDGenerator {
     }
 
     /**
-     * Type 3 UUID Generation
-     * 
-     * @throws UnsupportedEncodingException 
-     */
-    public static UUID generateType3UUID(String namespace, String name) throws UnsupportedEncodingException {
-        String source = namespace + name;
-        byte[] bytes = source.getBytes("UTF-8");
-        UUID uuid = UUID.nameUUIDFromBytes(bytes);
-        return uuid;
-    }
-
-    /**
      * Type 5 UUID Generation
-     * 
-     * @throws UnsupportedEncodingException 
+     *
+     * @throws UnsupportedEncodingException
      */
     public static UUID generateType5UUID(String namespace, String name) throws UnsupportedEncodingException {
-        String source = namespace + name;
-        byte[] bytes = source.getBytes("UTF-8");
-        UUID uuid = type5UUIDFromBytes(bytes);
-        return uuid;
+
+        byte[] nameSpaceBytes = bytesFromUUID(namespace);
+        byte[] nameBytes = name.getBytes("UTF-8");
+        byte[] result = joinBytes(nameSpaceBytes, nameBytes);
+
+        return type5UUIDFromBytes(result);
     }
 
     public static UUID type5UUIDFromBytes(byte[] name) {
@@ -91,20 +108,20 @@ public class UUIDGenerator {
 
     /**
      * Unique Keys Generation Using Message Digest and Type 4 UUID
-     * 
-     * @throws NoSuchAlgorithmException 
-     * @throws UnsupportedEncodingException 
+     *
+     * @throws NoSuchAlgorithmException
+     * @throws UnsupportedEncodingException
      */
     public static String generateUniqueKeysWithUUIDAndMessageDigest() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest salt = MessageDigest.getInstance("SHA-256");
         salt.update(UUID.randomUUID()
-            .toString()
-            .getBytes("UTF-8"));
+                .toString()
+                .getBytes("UTF-8"));
         String digest = bytesToHex(salt.digest());
         return digest;
     }
 
-    public static String bytesToHex(byte[] bytes) {
+    private static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
         for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
@@ -114,4 +131,37 @@ public class UUIDGenerator {
         return new String(hexChars);
     }
 
+    private static byte[] bytesFromUUID(String uuidHexString) {
+        String normalizedUUIDHexString = uuidHexString.replace("-","");
+
+        assert normalizedUUIDHexString.length() == 32;
+
+        byte[] bytes = new byte[16];
+        for (int i = 0; i < 16; i++) {
+            byte b = hexToByte(normalizedUUIDHexString.substring(i*2, i*2+2));
+            bytes[i] = b;
+        }
+        return bytes;
+    }
+
+    public static byte hexToByte(String hexString) {
+        int firstDigit = Character.digit(hexString.charAt(0),16);
+        int secondDigit = Character.digit(hexString.charAt(1),16);
+        return (byte) ((firstDigit << 4) + secondDigit);
+    }
+
+    public static byte[] joinBytes(byte[] byteArray1, byte[] byteArray2) {
+        int finalLength = byteArray1.length + byteArray2.length;
+        byte[] result = new byte[finalLength];
+
+        for(int i = 0; i < byteArray1.length; i++) {
+            result[i] = byteArray1[i];
+        }
+
+        for(int i = 0; i < byteArray2.length; i++) {
+            result[byteArray1.length+i] = byteArray2[i];
+        }
+
+        return result;
+    }
 }
