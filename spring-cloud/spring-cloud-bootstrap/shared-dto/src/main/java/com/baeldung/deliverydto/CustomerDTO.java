@@ -1,4 +1,4 @@
-package com.baeldung.shared;
+package com.baeldung.deliverydto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class CustomerDTO {
     private String firstName;
     private String lastName;
-    private String cardNumber;
+    private String homeAddress;
+    private String contactNumber;
     // constructor, getters, setters
 }
