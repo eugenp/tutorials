@@ -2,6 +2,8 @@ package com.baeldung.formatNumber;
 
 import org.junit.Test;
 
+import java.util.Locale;
+
 import static com.baeldung.formatNumber.FormatNumber.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -43,4 +45,44 @@ public class FormatNumberUnitTest {
         assertThat(withMathRound(F, 2)).isEqualTo(8.7);
         assertThat(withMathRound(F, 3)).isEqualTo(8.699);
     }
+
+    @Test
+    public void givenIntegerNumber_whenFormatNumber_byPaddingOutZeros_thenGetExpectedResult() {
+        int value = 1;
+        assertThat(byPaddingOutZeros(value, 3)).isEqualTo("001");
+    }
+
+    @Test
+    public void givenIntegerNumber_whenFormatNumber_withTwoDecimalPlaces_thenGetExpectedResult() {
+        int value = 12;
+        assertThat(withTwoDecimalPlaces(value)).isEqualTo(12.00);
+    }
+
+    @Test
+    public void givenIntegerNumber_whenFormatNumber_withLongNumbers_thenGetExpectedResult() {
+        int value = 123456789;
+        assertThat(withLongNumbers(value)).isEqualTo("123,456,789");
+    }
+
+    @Test
+    public void givenDecimalNumber_whenFormatNumber_forPercentages_thenGetExpectedResult() {
+        double value = 25f / 100f;
+        assertThat(forPercentages(value, new Locale("en", "US"))).isEqualTo("25%");
+        assertThat(forPercentages(value, new Locale("pl", "PL"))).isEqualTo("25%");
+    }
+
+    @Test
+    public void givenCurrency_whenFormatNumber_currencyWithChosenLocalisation_thenGetExpectedResult() {
+        double value = 23_500;
+        assertThat(currencyWithChosenLocalisation(value, new Locale("en", "US"))).isEqualTo("$23,500.00");
+        assertThat(currencyWithChosenLocalisation(value, new Locale("zh", "CN"))).isEqualTo("￥23,500.00");
+        assertThat(currencyWithChosenLocalisation(value, new Locale("pl", "PL"))).isEqualTo("23 500 zł");
+    }
+
+    @Test
+    public void givenCurrency_whenFormatNumber_currencyWithDefaultLocalisation_thenGetExpectedResult() {
+        double value = 23_500;
+        assertThat(currencyWithDefaultLocalisation(value)).isEqualTo("£23,500.00");
+    }
+
 }
