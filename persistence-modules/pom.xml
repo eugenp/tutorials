@@ -24,6 +24,7 @@
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
+        <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
@@ -61,6 +62,7 @@
         <module>spring-data-jpa-2</module>
         <module>spring-data-jpa-3</module>
         <module>spring-data-jpa-4</module>
+        <module>spring-data-jpa-5</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>

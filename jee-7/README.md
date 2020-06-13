@@ -11,3 +11,4 @@ This module contains articles about JEE 7.
 - [Introduction to Testing with Arquillian](https://www.baeldung.com/arquillian)
 - [Java EE 7 Batch Processing](https://www.baeldung.com/java-ee-7-batch-processing)
 - [The Difference Between CDI and EJB Singleton](https://www.baeldung.com/jee-cdi-vs-ejb-singleton)
+- [Invoking a SOAP Web Service in Java](https://www.baeldung.com/java-soap-web-service)
