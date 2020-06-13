@@ -40,5 +40,34 @@ public class FormatNumber {
     public static String withStringFormat(double value, int places) {
         return String.format("%." + places + "f", value);
     }
+
+    public static String byPaddingOutZeros(int value, int paddingLength) {
+        return String.format("%0" + paddingLength + "d", value);
+    }
+
+    public static double withTwoDecimalPlaces(double value) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return new Double(df.format(value));
+    }
+
+    public static String withLongNumbers(double value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
+    }
+
+    public static String forPercentages(double value, Locale localisation) {
+        NumberFormat nf = NumberFormat.getPercentInstance(localisation);
+        return nf.format(value);
+    }
+
+    public static String currencyWithChosenLocalisation(double value, Locale localisation) {
+        NumberFormat nf = NumberFormat.getCurrencyInstance(localisation);
+        return nf.format(value);
+    }
+
+    public static String currencyWithDefaultLocalisation(double value) {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format(value);
+    }
 }
 
