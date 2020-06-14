@@ -50,8 +50,7 @@
     </build>
 
     <properties>
-        <spring-cloud-task.version>1.2.2.RELEASE</spring-cloud-task.version>
-        <spring-cloud-deployer.version>1.3.0.RELEASE</spring-cloud-deployer.version>
+        <spring-cloud-deployer.version>2.3.1.RELEASE</spring-cloud-deployer.version>
     </properties>
 
 </project>
