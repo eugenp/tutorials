@@ -1,16 +1,15 @@
 package com.baeldung.jpa.dao;
 
-import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
+import java.util.List;
 
 public abstract class AbstractJpaDAO<T extends Serializable> {
 
     private Class<T> clazz;
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "entityManagerFactory")
     private EntityManager entityManager;
 
     public final void setClazz(final Class<T> clazzToSet) {

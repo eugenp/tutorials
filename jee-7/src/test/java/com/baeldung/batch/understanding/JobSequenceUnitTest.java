@@ -1,6 +1,8 @@
 package com.baeldung.batch.understanding;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +15,7 @@ import javax.batch.runtime.JobExecution;
 import javax.batch.runtime.StepExecution;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
 
-@Disabled("Should be fixed in BAEL-3812")
 class JobSequenceUnitTest {
     @Test
     public void givenTwoSteps_thenBatch_CompleteWithSuccess() throws Exception {
