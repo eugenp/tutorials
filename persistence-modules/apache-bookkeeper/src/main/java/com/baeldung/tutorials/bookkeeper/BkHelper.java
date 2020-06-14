@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -23,7 +23,7 @@ import org.apache.zookeeper.AsyncCallback;
 
 public class BkHelper {
 
-    private static final Log log = LogFactory.getLog(BkHelper.class);
+    private static final Log LOG = LogFactory.getLog(BkHelper.class);
 
     public static BookKeeper createBkClient(String zkConnectionString) {
         try {
@@ -57,7 +57,6 @@ public class BkHelper {
      * @throws Exception
      */
     public static Optional<Long> findLedgerByName(BookKeeper bk, String name) throws Exception {
-
         Map<Long, LedgerMetadata> ledgers = new HashMap<Long, LedgerMetadata>();
         final AtomicInteger returnCode = new AtomicInteger(BKException.Code.OK);
         final CountDownLatch processDone = new CountDownLatch(1);
@@ -67,52 +66,51 @@ public class BkHelper {
         // The second callback will be called when there are no more ledgers do process or if an
         // error occurs.
         bk.getLedgerManager()
-          .asyncProcessLedgers((ledgerId, cb) -> collectLedgers(bk, ledgerId, cb, ledgers),
-          (rc, s, obj) -> {
-              returnCode.set(rc);
-              processDone.countDown();
-          }, null, BKException.Code.OK, BKException.Code.ReadException);
-
+          .asyncProcessLedgers(
+            (ledgerId, cb) -> collectLedgers(bk, ledgerId, cb, ledgers),
+            (rc, s, obj) -> {
+                returnCode.set(rc);
+                processDone.countDown();
+            }, 
+            null, 
+            BKException.Code.OK, BKException.Code.ReadException);
         processDone.await(5, TimeUnit.MINUTES);
-
-        log.info("Ledgers collected: total found=" + ledgers.size());
+        LOG.info("Ledgers collected: total found=" + ledgers.size());
 
         byte[] nameBytes = name.getBytes();
-
         Optional<Entry<Long, LedgerMetadata>> entry = ledgers.entrySet()
-            .stream()
-            .filter((e) -> {
-                Map<String, byte[]> meta = e.getValue().getCustomMetadata();
-                if (meta != null) {
-                    log.info("ledger: " + e.getKey() + ", customMeta=" + meta);
-                    byte[] data = meta.get("name");
-                    if (data != null && Arrays.equals(data, nameBytes)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    log.info("ledger: " + e.getKey() + ", no meta");
-                    return false;
-                }
-            })
-            .findFirst();
-
+          .stream()
+          .filter((e) -> {
+              Map<String, byte[]> meta = e.getValue()
+                .getCustomMetadata();
+              if (meta != null) {
+                  LOG.info("ledger: " + e.getKey() + ", customMeta=" + meta);
+                  byte[] data = meta.get("name");
+                  if (data != null && Arrays.equals(data, nameBytes)) {
+                      return true;
+                  } else {
+                      return false;
+                  }
+              } else {
+                  LOG.info("ledger: " + e.getKey() + ", no meta");
+                  return false;
+              }
+          })
+          .findFirst();
         if (entry.isPresent()) {
-            return Optional.of(entry.get().getKey());
+            return Optional.of(entry.get()
+                .getKey());
         } else {
             return Optional.empty();
         }
     }
 
     public static void collectLedgers(BookKeeper bk, long ledgerId, AsyncCallback.VoidCallback cb, Map<Long, LedgerMetadata> ledgers) {
-        log.debug("ledgerId: " + ledgerId);
-
         try {
             bk.getLedgerManager()
               .readLedgerMetadata(ledgerId)
               .thenAccept((v) -> {
-                  log.debug("Got ledger metadata");
+                  LOG.debug("Got ledger metadata");
                   ledgers.put(ledgerId, v.getValue());
               })
               .thenAccept((v) -> {
@@ -122,36 +120,30 @@ public class BkHelper {
             throw new RuntimeException(ex);
         }
     }
-    
+
     /**
      * Return a list with all available Ledgers
      * @param bk
      * @return 
      */
     public static List<Long> listAllLedgers(BookKeeper bk) {
-        
         final List<Long> ledgers = Collections.synchronizedList(new ArrayList<>());
-        final CountDownLatch processDone = new CountDownLatch(1);     
-        
+        final CountDownLatch processDone = new CountDownLatch(1);
+
         bk.getLedgerManager()
-          .asyncProcessLedgers(
-            (ledgerId,cb) -> {
-                ledgers.add(ledgerId);
-                cb.processResult(BKException.Code.OK, null, null);
-            }, 
-            (rc, s, obj) -> {
-                processDone.countDown();
-          },
-          null, BKException.Code.OK, BKException.Code.ReadException);
-        
-       try {
-           processDone.await(1,TimeUnit.MINUTES);
-           return ledgers;
-       }
-       catch(InterruptedException ie) {
-           throw new RuntimeException(ie);
-       }
+          .asyncProcessLedgers((ledgerId, cb) -> {
+              ledgers.add(ledgerId);
+              cb.processResult(BKException.Code.OK, null, null);
+          }, 
+          (rc, s, obj) -> {
+              processDone.countDown();
+          }, null, BKException.Code.OK, BKException.Code.ReadException);
+
+        try {
+            processDone.await(1, TimeUnit.MINUTES);
+            return ledgers;
+        } catch (InterruptedException ie) {
+            throw new RuntimeException(ie);
+        }
     }
-
-
 }
