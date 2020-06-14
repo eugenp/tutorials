@@ -79,10 +79,4 @@ public class FormatNumberUnitTest {
         assertThat(currencyWithChosenLocalisation(value, new Locale("pl", "PL"))).isEqualTo("23 500 zł");
     }
 
-    @Test
-    public void givenCurrency_whenFormatNumber_currencyWithDefaultLocalisation_thenGetExpectedResult() {
-        double value = 23_500;
-        assertThat(currencyWithDefaultLocalisation(value)).isEqualTo("£23,500.00");
-    }
-
 }
