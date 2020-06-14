@@ -11,13 +11,13 @@ import static org.assertj.core.data.Percentage.withPercentage;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class OrderServiceTest {
+public class OrderServiceUnitTest {
 
     private OrderRepository orderRepository;
 
     private DomainOrderService orderService;
 
-    public OrderServiceTest() {
+    public OrderServiceUnitTest() {
         this.orderRepository = mock(OrderRepository.class);
         this.orderService = new DomainOrderService();
         this.orderService.setOrderRepository(this.orderRepository);
