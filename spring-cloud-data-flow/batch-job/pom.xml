@@ -11,9 +11,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>spring-cloud-data-flow</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -21,7 +20,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR5</version>
+                <version>Hoxton.SR4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -31,8 +30,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-task-starter</artifactId>
-            <version>${spring-cloud-task-starter.version}</version>
+            <artifactId>spring-cloud-starter-task</artifactId>
         </dependency>
 
         <dependency>
@@ -48,7 +46,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-task-starter.version>1.0.3.RELEASE</spring-cloud-task-starter.version>
+        <spring-cloud-task-starter.version>2.2.3.RELEASE</spring-cloud-task-starter.version>
     </properties>
 
 </project>

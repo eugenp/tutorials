@@ -43,6 +43,17 @@ public class StringToIntOrIntegerUnitTest {
 
         assertThat(result).isEqualTo(new Integer(42));
     }
+  
+    @Test 
+    public void givenString_whenCallingValueOf_shouldCacheSomeValues() {
+        for (int i = -128; i <= 127; i++) {
+            String value = i + "";
+            Integer first = Integer.valueOf(value);
+            Integer second = Integer.valueOf(value);
+
+            assertThat(first).isSameAs(second);
+        }
+    }
 
     @Test
     public void givenString_whenCallingIntegerConstructor_shouldConvertToInt() {
