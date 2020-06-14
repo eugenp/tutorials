@@ -13,4 +13,4 @@ This module contains articles about server libraries.
 - [MQTT Client in Java](https://www.baeldung.com/java-mqtt-client)
 - [Guide to XMPP Smack Client](https://www.baeldung.com/xmpp-smack-chat-client)
 - [A Guide to NanoHTTPD](https://www.baeldung.com/nanohttpd)
-- [HTTP/2 in Jetty](https://www.baeldung.com/jetty-http-2)
+- More articles: [[more -->]](../libraries-server-2)

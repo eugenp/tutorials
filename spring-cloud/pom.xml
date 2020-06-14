@@ -32,6 +32,7 @@
         <module>spring-cloud-zuul-eureka-integration</module>
         <module>spring-cloud-contract</module>
         <module>spring-cloud-kubernetes</module>
+        <module>spring-cloud-open-service-broker</module>
         <module>spring-cloud-archaius</module>
         <module>spring-cloud-functions</module>
         <module>spring-cloud-vault</module>
@@ -39,6 +40,7 @@
         <module>spring-cloud-task</module>
         <module>spring-cloud-zuul</module>
         <module>spring-cloud-zuul-fallback</module>
+        <module>spring-cloud-ribbon-retry</module>
     </modules>
 
     <build>

@@ -35,11 +35,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-dep</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -56,7 +51,6 @@
     </build>
 
     <properties>
-        <bytebuddy.version>1.10.10</bytebuddy.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
     </properties>
