@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -23,7 +23,9 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

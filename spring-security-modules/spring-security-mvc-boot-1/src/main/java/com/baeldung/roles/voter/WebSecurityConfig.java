@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // @formatter: off
         http
                 // needed so our login could work
-                .csrf().disable().authorizeRequests().anyRequest().authenticated().accessDecisionManager(accessDecisionManager()).antMatchers("/").hasAnyRole("ROLE_ADMIN", "ROLE_USER").and().formLogin().permitAll().and().logout().permitAll()
+                .csrf().disable().authorizeRequests().anyRequest().authenticated().accessDecisionManager(accessDecisionManager()).and().formLogin().permitAll().and().logout().permitAll()
                 .deleteCookies("JSESSIONID").logoutSuccessUrl("/login");
         // @formatter: on
     }

@@ -11,8 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
     </parent>
 
     <modules>
@@ -31,10 +32,14 @@
         <!-- <module>core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 
         <module>core-java-annotations</module>
-        <module>core-java-arrays</module>
-        <module>core-java-arrays-2</module>
-        <module>core-java-arrays-3</module>
 
+        <module>core-java-arrays-sorting</module>
+        <module>core-java-arrays-guides</module>
+        <module>core-java-arrays-multidimensional</module>
+        <module>core-java-arrays-convert</module>
+        <module>core-java-arrays-operations-basic</module>
+        <module>core-java-arrays-operations-advanced</module>
+        
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
@@ -81,10 +86,14 @@
         <module>core-java-lang-2</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
-        <module>core-java-lang-oop</module>
-        <module>core-java-lang-oop-2</module>
-        <module>core-java-lang-oop-3</module>
-        <module>core-java-lang-oop-4</module>
+        <module>core-java-lang-oop-constructors</module>
+        <module>core-java-lang-oop-patterns</module>
+        <module>core-java-lang-oop-generics</module>
+        <module>core-java-lang-oop-modifiers</module>
+        <module>core-java-lang-oop-types</module>
+        <module>core-java-lang-oop-inheritance</module>
+        <module>core-java-lang-oop-methods</module>
+        <module>core-java-lang-oop-others</module>
         <module>core-java-lang-operators</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
@@ -124,4 +133,37 @@
         <module>pre-jpms</module>
     </modules>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+    </properties>
 </project>

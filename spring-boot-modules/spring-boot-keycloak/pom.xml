@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -76,7 +76,7 @@
     </build>
 
     <properties>
-        <keycloak-adapter-bom.version>3.3.0.Final</keycloak-adapter-bom.version>
+        <keycloak-adapter-bom.version>10.0.1</keycloak-adapter-bom.version>
     </properties>
 
 </project>
