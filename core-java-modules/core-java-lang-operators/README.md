@@ -12,3 +12,4 @@ This module contains articles about Java operators
 - [The XOR Operator in Java](https://www.baeldung.com/java-xor-operator)
 - [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
 - [Bitwise & vs Logical && Operators](https://www.baeldung.com/java-bitwise-vs-logical-and)
+- [Finding an Object’s Class in Java](https://www.baeldung.com/java-finding-class)
