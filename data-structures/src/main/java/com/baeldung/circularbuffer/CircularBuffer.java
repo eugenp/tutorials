@@ -1,28 +1,36 @@
 package com.baeldung.circularbuffer;
 
 public class CircularBuffer<E> {
+    
+    private static final int DEFAULT_CAPACITY = 8;
 
-    private int capacity, writeIndex, readIndex;
-    private E[] data;
+    private final int capacity;
+    private final E[] data;
+    private volatile int writeSequence, readSequence;
 
     @SuppressWarnings("unchecked")
     public CircularBuffer(int capacity) {
 
-        this.capacity = capacity;
+        this.capacity = (capacity < 1 ? DEFAULT_CAPACITY : capacity);
         this.data = (E[]) new Object[capacity];
 
-        this.readIndex = 0;
-        this.writeIndex = -1;
+        this.readSequence = 0;
+        this.writeSequence = -1;
     }
 
+    /**
+     * Adds a new element to the buffer, if the buffer is not full
+     * @param element
+     * @return
+     */
     public boolean offer(E element) {
 
         if (!isFull()) {
 
-            writeIndex += 1;
-            int nextWriteIndex = writeIndex % capacity;
-            data[nextWriteIndex] = element;
+            int nextWriteSeq = writeSequence + 1;
+            data[nextWriteSeq % capacity] = element;
 
+            writeSequence += 1;
             return true;
         }
 
@@ -33,20 +41,9 @@ public class CircularBuffer<E> {
 
         if (!isEmpty()) {
 
-            int nextReadIndex = readIndex % capacity;
-            readIndex += 1;
-
-            return data[nextReadIndex];
-        }
-
-        return null;
-    }
-
-    public E peek() {
-
-        if (!isEmpty()) {
-
-            return data[readIndex % capacity];
+            E nextValue = data[readSequence % capacity];
+            readSequence += 1;
+            return nextValue;
         }
 
         return null;
@@ -58,12 +55,12 @@ public class CircularBuffer<E> {
 
     public int size() {
 
-        return (writeIndex - readIndex) + 1;
+        return (writeSequence - readSequence) + 1;
     }
 
     public boolean isEmpty() {
 
-        return writeIndex < readIndex;
+        return writeSequence < readSequence;
     }
 
     public boolean isFull() {
