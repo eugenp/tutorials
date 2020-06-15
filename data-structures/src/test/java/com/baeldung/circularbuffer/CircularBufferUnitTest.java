@@ -2,7 +2,7 @@ package com.baeldung.circularbuffer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CircularBufferUnitTest {
 
@@ -40,5 +40,4 @@ public class CircularBufferUnitTest {
 
         assertEquals(true, buffer.isFull());
     }
-
 }
