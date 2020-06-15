@@ -41,7 +41,7 @@ public class FormatNumber {
         return String.format("%." + places + "f", value);
     }
 
-    public static String byPaddingOutZeros(int value, int paddingLength) {
+    public static String byPaddingZeros(int value, int paddingLength) {
         return String.format("%0" + paddingLength + "d", value);
     }
 

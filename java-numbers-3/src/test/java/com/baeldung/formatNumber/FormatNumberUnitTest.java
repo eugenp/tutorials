@@ -49,7 +49,7 @@ public class FormatNumberUnitTest {
     @Test
     public void givenIntegerNumber_whenFormatNumber_byPaddingOutZeros_thenGetExpectedResult() {
         int value = 1;
-        assertThat(byPaddingOutZeros(value, 3)).isEqualTo("001");
+        assertThat(byPaddingZeros(value, 3)).isEqualTo("001");
     }
 
     @Test
