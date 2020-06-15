@@ -13,4 +13,5 @@ This module contains articles about advanced topics about multithreading with co
 - [Java Thread Deadlock and Livelock](https://www.baeldung.com/java-deadlock-livelock)
 - [Guide to AtomicStampedReference in Java](https://www.baeldung.com/java-atomicstampedreference)
 - [The ABA Problem in Concurrency](https://www.baeldung.com/cs/aba-concurrency)
+- [Introduction to Lock-Free Data Structures](https://www.baeldung.com/lock-free-programming)
 - [[<-- previous]](/core-java-modules/core-java-concurrency-advanced-2)
