@@ -1,7 +1,7 @@
 package com.baeldung.circularbuffer;
 
 public class CircularBuffer<E> {
-    
+
     private static final int DEFAULT_CAPACITY = 8;
 
     private final int capacity;
@@ -18,11 +18,6 @@ public class CircularBuffer<E> {
         this.writeSequence = -1;
     }
 
-    /**
-     * Adds a new element to the buffer, if the buffer is not full
-     * @param element
-     * @return
-     */
     public boolean offer(E element) {
 
         if (!isFull()) {

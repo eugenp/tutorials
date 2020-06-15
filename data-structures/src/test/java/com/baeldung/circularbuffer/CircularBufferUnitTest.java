@@ -1,5 +1,8 @@
 package com.baeldung.circularbuffer;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -9,7 +12,7 @@ public class CircularBufferUnitTest {
     private final String[] shapes = { "Circle", "Triangle", "Rectangle", "Square", "Rhombus", "Trapezoid", "Pentagon", "Pentagram", "Hexagon", "Hexagram" };
 
     @Test
-    public void givenCircularBuffer_WhenAnElementIsAddedAndRemoved_thenBufferIsEmpty() {
+    public void givenCircularBuffer_whenAnElementIsAddedAndRemoved_thenBufferIsEmpty() {
 
         int capacity = 2;
         CircularBuffer<String> buffer = new CircularBuffer<>(capacity);
@@ -18,26 +21,36 @@ public class CircularBufferUnitTest {
 
         buffer.offer("Rectangle");
 
-        assertEquals(false, buffer.isEmpty());
+        assertFalse(buffer.isEmpty());
         assertEquals(1, buffer.size());
 
         buffer.poll();
 
-        assertEquals(true, buffer.isEmpty());
+        assertTrue(buffer.isEmpty());
     }
 
     @Test
-    public void givenCircularBuffer_WhenElementsAreAddedToCapacity_thenBufferIsFull() {
+    public void givenCircularBuffer_whenFilledToCapacity_thenNoMoreElementsCanBeAdded() {
 
         int capacity = shapes.length;
         CircularBuffer<String> buffer = new CircularBuffer<>(capacity);
 
-        assertEquals(true, buffer.isEmpty());
+        assertTrue(buffer.isEmpty());
 
         for (String shape : shapes) {
             buffer.offer(shape);
         }
 
-        assertEquals(true, buffer.isFull());
+        assertTrue(buffer.isFull());
+        assertFalse(buffer.offer("Octagon"));
+    }
+
+    @Test
+    public void givenCircularBuffer_whenBufferIsEmpty_thenReturnsNull() {
+
+        CircularBuffer<String> buffer = new CircularBuffer<>(1);
+
+        assertTrue(buffer.isEmpty());
+        assertNull(buffer.poll());
     }
 }
