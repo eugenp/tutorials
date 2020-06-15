@@ -8,36 +8,58 @@ import org.junit.jupiter.api.Test;
 public class AccessPrivateFieldsUnitTest {
 
     @Test
-    public void whenGetField_thenSuccess() throws NoSuchFieldException, NullPointerException, IllegalArgumentException, IllegalAccessException {
+    public void whenGetFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
         Person person = new Person();
-        person.setName("John");
 
-        Field field = person.getClass()
+        Field fieldName = person.getClass()
             .getDeclaredField("name");
-        field.setAccessible(true);
+        fieldName.setAccessible(true);
 
-        String name = (String) field.get(person);
+        String name = (String) fieldName.get(person);
+
+        Field fieldAge = person.getClass()
+            .getDeclaredField("age");
+        fieldAge.setAccessible(true);
+
+        int age = fieldAge.getInt(person);
 
         Assertions.assertEquals("John", name);
+        Assertions.assertEquals(30, age);
     }
 
     @Test
-    public void givenInt_whenSetStringField_thenIllegalArgumentException() throws NoSuchFieldException, NullPointerException, IllegalArgumentException, IllegalAccessException {
+    public void givenInt_whenSetStringField_thenIllegalArgumentException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
         Person person = new Person();
-        Field field = person.getClass()
+        Field fieldName = person.getClass()
             .getDeclaredField("name");
-        field.setAccessible(true);
+        fieldName.setAccessible(true);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> field.setInt(person, 25));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> fieldName.setInt(person, 25));
     }
 
     @Test
-    public void whenFieldNotSetAccessible_thenIllegalAccessException() throws NoSuchFieldException, NullPointerException, IllegalArgumentException, IllegalAccessException {
+    public void whenFieldNotSetAccessible_thenIllegalAccessException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
         Person person = new Person();
-        Field field = person.getClass()
+        Field fieldName = person.getClass()
             .getDeclaredField("name");
 
-        Assertions.assertThrows(IllegalAccessException.class, () -> field.set(person, "John"));
+        Assertions.assertThrows(IllegalAccessException.class, () -> fieldName.get(person));
+    }
+
+    @Test
+    public void whenAccessingWrongProperty_thenNoSuchFieldException() throws NoSuchFieldException, NullPointerException {
+        Person person = new Person();
+
+        Assertions.assertThrows(NoSuchFieldException.class, () -> person.getClass()
+            .getDeclaredField("genders"));
+    }
+
+    @Test
+    public void whenAccessingNullProperty_thenNullPointerException() throws NoSuchFieldException, NullPointerException {
+        Person person = new Person();
+
+        Assertions.assertThrows(NullPointerException.class, () -> person.getClass()
+            .getDeclaredField(null));
     }
 
 }

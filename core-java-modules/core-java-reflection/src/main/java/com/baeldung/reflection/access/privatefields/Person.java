@@ -2,7 +2,9 @@ package com.baeldung.reflection.access.privatefields;
 
 public class Person {
 
-    private String name;
+    private String name = "John";
+
+    private int age = 30;
 
     public String getName() {
         return name;
@@ -10,6 +12,14 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     private String greet(String name) {
