@@ -46,13 +46,23 @@
             <artifactId>json-patch</artifactId>
             <version>${jsonpatch.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger2.version}</version>
+        </dependency>
 
     </dependencies>
-
 
     <properties>
         <xstream.version>1.4.9</xstream.version>
         <jsonpatch.version>1.12</jsonpatch.version>
+        <swagger2.version>2.9.2</swagger2.version>
     </properties>
 
 </project>
