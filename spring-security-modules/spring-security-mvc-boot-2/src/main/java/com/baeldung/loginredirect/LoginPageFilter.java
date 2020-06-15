@@ -18,20 +18,24 @@ class LoginPageFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if (isAuthenticated() && ((HttpServletRequest) request).getRequestURI().equals("/loginUser")) {
+        HttpServletRequest servletRequest = (HttpServletRequest) request;
+        HttpServletResponse servletResponse = (HttpServletResponse) response;
+
+        if (isAuthenticated() && "/loginUser".equals(servletRequest.getRequestURI())) {
 
             String encodedRedirectURL = ((HttpServletResponse) response).encodeRedirectURL(
-              ((HttpServletRequest) request).getContextPath() + "/userMainPage");
+              servletRequest.getContextPath() + "/userMainPage");
 
-            ((HttpServletResponse) response).setStatus(HttpStatus.SC_TEMPORARY_REDIRECT);
-            ((HttpServletResponse) response).setHeader("Location", encodedRedirectURL);
+            servletResponse.setStatus(HttpStatus.SC_TEMPORARY_REDIRECT);
+            servletResponse.setHeader("Location", encodedRedirectURL);
         }
-        chain.doFilter(request, response);
+
+        chain.doFilter(servletRequest, servletResponse);
     }
 
     private boolean isAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+        if (authentication == null || AnonymousAuthenticationToken.class.isAssignableFrom(authentication.getClass())) {
             return false;
         }
         return authentication.isAuthenticated();

@@ -16,7 +16,7 @@ class LoginPageInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
         UrlPathHelper urlPathHelper = new UrlPathHelper();
-        if (urlPathHelper.getLookupPathForRequest(request).equals("/loginUser") && isAuthenticated()) {
+        if ("/loginUser".equals(urlPathHelper.getLookupPathForRequest(request)) && isAuthenticated()) {
 
             String encodedRedirectURL = response.encodeRedirectURL(
               request.getContextPath() + "/userMainPage");
@@ -31,7 +31,7 @@ class LoginPageInterceptor extends HandlerInterceptorAdapter {
 
     private boolean isAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+        if (authentication == null || AnonymousAuthenticationToken.class.isAssignableFrom(authentication.getClass())) {
             return false;
         }
         return authentication.isAuthenticated();
