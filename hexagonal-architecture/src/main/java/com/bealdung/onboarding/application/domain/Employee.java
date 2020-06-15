@@ -13,6 +13,6 @@ public class Employee {
     private String family;
 
     public String getEmployeeInfo() {
-        return "name : " + getName() + "family : " + getFamily() + "ID : " + getId();
+        return "name : " + getName() + " family : " + getFamily() + " ID : " + getId();
     }
 }

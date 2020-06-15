@@ -16,7 +16,7 @@ public class HexagonalArchitectureController {
     }
 
     @GetMapping(value = "/find")
-    public String findEmployee(@RequestParam Long id) {
-        return employeeService.getNameAndFamily(id);
+    public String findEmployee(@RequestParam String id) {
+        return employeeService.getNameAndFamily(Long.parseLong(id));
     }
 }
