@@ -10,19 +10,22 @@ import com.baeldung.exception.ResourceNotFoundException;
 
 @RestController
 public class ExceptionController {
-    
-    @GetMapping(path="/exception/{exception_id}")
+
+    @GetMapping("/exception/{exception_id}")
     public void getSpecificException(@PathVariable("exception_id") String pException) {
-        if(pException.equals("not_found"))
+        if("not_found".equals(pException)) {
             throw new ResourceNotFoundException("resource not found");
-        else if(pException.equals("bad_arguments"))
+        }
+        else if("bad_arguments".equals(pException)) {
             throw new BadArgumentsException("bad arguments");
-        else
+        }
+        else {
             throw new InternalException("internal error");
+        }
     }
-    
-    @GetMapping(path="/exception/throw")
-    public String getException() throws Exception {
-        throw new Exception();
+
+    @GetMapping("/exception/throw")
+    public void getException() throws Exception {
+        throw new Exception("error");
     }
 }
