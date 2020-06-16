@@ -1,4 +1,4 @@
-package com.baeldung.collections
+package com.baeldung.kotlin.collections
 
 import kotlin.collections.List
 
