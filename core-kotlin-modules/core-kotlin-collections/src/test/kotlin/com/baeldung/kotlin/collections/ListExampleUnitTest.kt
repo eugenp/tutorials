@@ -1,10 +1,8 @@
-package com.baeldung.collections
+package com.baeldung.kotlin.collections
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotEquals
 import kotlin.test.assertFalse
-import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class ListExampleUnitTest {
