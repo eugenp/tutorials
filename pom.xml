@@ -70,12 +70,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -1280,7 +1274,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <module>libraries-concurrency</module>
+<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
