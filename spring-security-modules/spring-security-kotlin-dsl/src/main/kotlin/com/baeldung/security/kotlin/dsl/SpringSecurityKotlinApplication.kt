@@ -1,4 +1,4 @@
-package com.spring.security.kotlin.dsl
+package com.baeldung.security.kotlin.dsl
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>com.baeldung.spring.security.dsl</groupId>
-    <artifactId>kotlin-spring-security-dsl</artifactId>
+    <artifactId>spring-security-kotlin-dsl</artifactId>
     <version>1.0</version>
-    <name>kotlin-spring-security-dsl</name>
+    <name>spring-security-kotlin-dsl</name>
     <description>Spring Security Kotlin DSL</description>
 
     <properties>
