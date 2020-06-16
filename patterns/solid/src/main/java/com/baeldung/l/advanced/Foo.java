@@ -1,7 +1,7 @@
 package com.baeldung.l.advanced;
 
-public class Foo {
- 
+public abstract class Foo {
+
     // precondition: 0 < num <=5
     public void doStuff(int num) {
         if (num <= 0 || num > 5) {
@@ -17,4 +17,6 @@ public class Foo {
         }
         // some logic here...
     }
+
+    public abstract Number generateNumber();
 }

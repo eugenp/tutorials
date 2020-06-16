@@ -4,6 +4,10 @@ public class HybridCar extends Car {
     // invariant: charge >= 0;
     private int charge;
 
+    public HybridCar(int mileage) {
+        super(mileage);
+    }
+
     @Override
     protected void turnOnEngine() {
         // Start HybridCar

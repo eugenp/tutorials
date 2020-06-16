@@ -1,6 +1,11 @@
 package com.baeldung.l.advanced;
 
 public class MotorCar extends Car {
+
+    public MotorCar(int mileage) {
+        super(mileage);
+    }
+
     @Override
     protected void turnOnEngine() {
         // Start MotorCar

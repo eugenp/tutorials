@@ -19,4 +19,9 @@ public class Bar extends Foo {
         }
         // some logic here...
     }
+
+    @Override
+    public Integer generateNumber() {
+        return new Integer(10);
+    }
 }
