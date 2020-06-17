@@ -1,20 +1,16 @@
 package com.bealdung.onboarding.application.service;
-
 import com.bealdung.onboarding.adapters.persistence.EmployeeEntity;
 import com.bealdung.onboarding.adapters.persistence.EmployeeRepository;
 import com.bealdung.onboarding.application.domain.Employee;
-import com.bealdung.onboarding.application.port.input.EmployeeNameAndFamily;
-import com.bealdung.onboarding.application.port.output.FindEmployeeInterface;
+import com.bealdung.onboarding.application.port.input.EmployeeNameAndFamilyPort;
+import com.bealdung.onboarding.application.port.output.FindEmployeePort;
 import org.springframework.stereotype.Service;
-
 @Service
-public class EmployeeService implements EmployeeNameAndFamily, FindEmployeeInterface {
+public class EmployeeServicePort implements EmployeeNameAndFamilyPort, FindEmployeePort {
     private EmployeeRepository employeeRepository;
-
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeServicePort(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
-
     @Override
     public String getNameAndFamily(Long id) {
         Employee employeeProfile = new Employee();
@@ -26,7 +22,6 @@ public class EmployeeService implements EmployeeNameAndFamily, FindEmployeeInter
             return employeeProfile.getEmployeeInfo();
         } else return "";
     }
-
     @Override
     public EmployeeEntity findEmployee(Long id) {
         return employeeRepository.findById(id).get();

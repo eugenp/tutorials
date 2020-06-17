@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 public class OnboardingApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(OnboardingApplication.class, args);
     }
-
 }
