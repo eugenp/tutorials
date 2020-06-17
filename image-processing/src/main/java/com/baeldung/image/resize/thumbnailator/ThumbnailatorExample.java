@@ -25,6 +25,6 @@ public class ThumbnailatorExample {
     public static void main(String[] args) throws Exception {
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
         BufferedImage outputImage = resizeImage(originalImage, 200, 200);
-        ImageIO.write(outputImage, "jpg", new File("src/main/resources/images/sampleImage1.jpg"));
+        ImageIO.write(outputImage, "jpg", new File("src/main/resources/images/sampleImage-resized-thumbnailator.jpg"));
     }
 }

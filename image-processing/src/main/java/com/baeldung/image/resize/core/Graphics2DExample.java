@@ -20,6 +20,6 @@ public class Graphics2DExample {
     public static void main(String[] args) throws IOException {
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
         BufferedImage outputImage = resizeImage(originalImage, 200, 200);
-        ImageIO.write(outputImage, "jpg", new File("src/main/resources/images/sampleImage1.jpg"));
+        ImageIO.write(outputImage, "jpg", new File("src/main/resources/images/sampleImage-resized-graphics2d.jpg"));
     }
 }
