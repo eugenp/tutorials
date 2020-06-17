@@ -16,7 +16,7 @@ public class HybridCar extends Car {
     @Override
     // postcondition: speed < limit
     protected void accelerate() {
-        // Accelerate HybridCar
+        // Accelerate HybridCar speed < limit
     }
 
     @Override
