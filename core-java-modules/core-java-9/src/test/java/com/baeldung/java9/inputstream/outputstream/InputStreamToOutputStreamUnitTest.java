@@ -29,7 +29,7 @@ public class InputStreamToOutputStreamUnitTest {
     }
 
     @Test
-    public final void givenUsingJavaEight_whenConvertingStringToInputStream_thenCorrect() throws IOException {
+    public final void givenUsingJavaEight_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
         final String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
@@ -40,7 +40,7 @@ public class InputStreamToOutputStreamUnitTest {
     }
 
     @Test
-    public final void givenUsingJavaEight_whenConvertingVeryLongStringToInputStream_thenCorrect() throws IOException {
+    public final void givenUsingJavaEight_whenCopyingLongInputStreamToOutputStream_thenCorrect() throws IOException {
         final String initialString = randomAlphabetic(20480);
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
@@ -51,7 +51,7 @@ public class InputStreamToOutputStreamUnitTest {
     }
 
     @Test
-    public final void givenUsingJavaNine_whenConvertingStringToInputStream_thenCorrect() throws IOException {
+    public final void givenUsingJavaNine_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
         final String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
@@ -62,7 +62,7 @@ public class InputStreamToOutputStreamUnitTest {
     }
 
     @Test
-    public final void givenUsingGuava_whenConvertingStringToInputStream_thenCorrect() throws IOException {
+    public final void givenUsingGuava_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
         final String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
@@ -73,7 +73,7 @@ public class InputStreamToOutputStreamUnitTest {
     }
 
     @Test
-    public final void givenUsingCommonsIO_whenConvertingStringToInputStream_thenCorrect() throws IOException {
+    public final void givenUsingCommonsIO_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
         final String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
