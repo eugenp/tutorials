@@ -347,8 +347,7 @@
                 <module>apache-avro</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
+                <module>apache-cxf</module>                
                 <module>apache-geode</module>
                 <module>apache-meecrowave</module>
                 <module>apache-olingo/olingo2</module>
@@ -870,8 +869,7 @@
                 <module>apache-beam</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
+                <module>apache-cxf</module>                
                 <module>apache-geode</module>
                 <module>apache-meecrowave</module>
                 <module>apache-olingo/olingo2</module>
