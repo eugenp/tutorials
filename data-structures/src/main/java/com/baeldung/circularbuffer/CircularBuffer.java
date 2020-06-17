@@ -11,7 +11,7 @@ public class CircularBuffer<E> {
     @SuppressWarnings("unchecked")
     public CircularBuffer(int capacity) {
 
-        this.capacity = (capacity < 1 ? DEFAULT_CAPACITY : capacity);
+        this.capacity = (capacity < 1) ? DEFAULT_CAPACITY : capacity;
         this.data = (E[]) new Object[capacity];
 
         this.readSequence = 0;
@@ -20,7 +20,7 @@ public class CircularBuffer<E> {
 
     public boolean offer(E element) {
 
-        if (!isFull()) {
+        if (isNotFull()) {
 
             int nextWriteSeq = writeSequence + 1;
             data[nextWriteSeq % capacity] = element;
@@ -34,7 +34,7 @@ public class CircularBuffer<E> {
 
     public E poll() {
 
-        if (!isEmpty()) {
+        if (isNotEmpty()) {
 
             E nextValue = data[readSequence % capacity];
             readSequence += 1;
@@ -61,5 +61,15 @@ public class CircularBuffer<E> {
     public boolean isFull() {
 
         return size() >= capacity;
+    }
+    
+    private boolean isNotEmpty() {
+
+        return !isEmpty();
+    }
+
+    private boolean isNotFull() {
+
+        return !isFull();
     }
 }

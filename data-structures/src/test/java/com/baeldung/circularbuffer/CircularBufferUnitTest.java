@@ -10,14 +10,30 @@ import org.junit.jupiter.api.Test;
 public class CircularBufferUnitTest {
 
     private final String[] shapes = { "Circle", "Triangle", "Rectangle", "Square", "Rhombus", "Trapezoid", "Pentagon", "Pentagram", "Hexagon", "Hexagram" };
+    private final int defaultCapacity = shapes.length;
 
     @Test
-    public void givenCircularBuffer_whenAnElementIsAddedAndRemoved_thenBufferIsEmpty() {
+    public void givenCircularBuffer_whenAnElementIsEnqueued_thenSizeIsOne() {
+        CircularBuffer<String> buffer = new CircularBuffer<>(defaultCapacity);
 
-        int capacity = 2;
-        CircularBuffer<String> buffer = new CircularBuffer<>(capacity);
+        assertTrue(buffer.offer("Square"));
+        assertEquals(1, buffer.size());
+    }
 
-        assertEquals(capacity, buffer.capacity());
+    @Test
+    public void givenCircularBuffer_whenAnElementIsDequeued_thenElementMatchesEnqueuedElement() {
+        CircularBuffer<String> buffer = new CircularBuffer<>(defaultCapacity);
+
+        buffer.offer("Triangle");
+
+        String shape = buffer.poll();
+        assertEquals("Triangle", shape);
+    }
+
+    @Test
+    public void givenCircularBuffer_whenAnElementIsEnqueuedAndDeququed_thenBufferIsEmpty() {
+
+        CircularBuffer<String> buffer = new CircularBuffer<>(defaultCapacity);
 
         buffer.offer("Rectangle");
 
@@ -30,7 +46,7 @@ public class CircularBufferUnitTest {
     }
 
     @Test
-    public void givenCircularBuffer_whenFilledToCapacity_thenNoMoreElementsCanBeAdded() {
+    public void givenCircularBuffer_whenFilledToCapacity_thenNoMoreElementsCanBeEnqueued() {
 
         int capacity = shapes.length;
         CircularBuffer<String> buffer = new CircularBuffer<>(capacity);
