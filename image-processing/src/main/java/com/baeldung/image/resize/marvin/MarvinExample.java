@@ -1,22 +1,29 @@
 package com.baeldung.image.resize.marvin;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import org.marvinproject.image.transform.scale.Scale;
 
 import marvin.image.MarvinImage;
-import marvin.io.MarvinImageIO;
 
 public class MarvinExample {
-    static void resizeImage(String originalImagePath, int targetWidth, int targetHeight, String outputImagePath) {
-        MarvinImage image = MarvinImageIO.loadImage(originalImagePath);
+    static BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
+        MarvinImage image = new MarvinImage(originalImage);
         Scale scale = new Scale();
         scale.load();
         scale.setAttribute("newWidth", targetWidth);
         scale.setAttribute("newHeight", targetHeight);
         scale.process(image.clone(), image, null, null, false);
-        MarvinImageIO.saveImage(image, outputImagePath);
+        return image.getBufferedImage();
     }
 
-    public static void main(String args[]) {
-        resizeImage("src/main/resources/images/sampleImage.jpg", 200, 200, "src/main/resources/images/sampleImage1.jpg");
+    public static void main(String args[]) throws IOException {
+        BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
+        BufferedImage outputImage = resizeImage(originalImage, 200, 200);
+        ImageIO.write(outputImage, "jpg", new File("src/main/resources/images/sampleImage-resized-marvin.jpg"));
     }
 }
