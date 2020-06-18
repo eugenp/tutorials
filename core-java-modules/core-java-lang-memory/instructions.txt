@@ -1,0 +1,6 @@
+1. javac RuntimeMemoryTest.java 
+2. java RuntimeMemoryTest
+3. java -Xms32M -Xmx64M RuntimeMemoryTest          
+4. java -Xms64M -Xmx64M RuntimeMemoryTest                                                                                        
+5. java -Xms64M -Xmx32M RuntimeMemoryTest                                                                                        
+
