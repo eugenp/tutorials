@@ -4,13 +4,14 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import net.coobird.thumbnailator.Thumbnails;
 
 public class ThumbnailatorExample {
-    static BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws Exception {
+    static BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         Thumbnails.of(originalImage)
             .size(targetWidth, targetHeight)
