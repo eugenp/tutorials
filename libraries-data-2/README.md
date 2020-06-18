@@ -14,6 +14,7 @@ This module contains articles about libraries for data processing in Java.
 - [Java-R Integration](https://www.baeldung.com/java-r-integration)
 - [Univocity Parsers](https://www.baeldung.com/java-univocity-parsers)
 - [Using Kafka MockConsumer](https://www.baeldung.com/kafka-mockconsumer)
+- [Using Kafka MockProducer](https://www.baeldung.com/kafka-mockproducer)
 - More articles: [[<-- prev]](/../libraries-data)
 
 ##### Building the project
