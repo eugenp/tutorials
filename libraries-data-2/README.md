@@ -13,6 +13,7 @@ This module contains articles about libraries for data processing in Java.
 - [Intro to Derive4J](https://www.baeldung.com/derive4j)
 - [Java-R Integration](https://www.baeldung.com/java-r-integration)
 - [Univocity Parsers](https://www.baeldung.com/java-univocity-parsers)
+- [Using Kafka MockConsumer](https://www.baeldung.com/kafka-mockconsumer)
 - More articles: [[<-- prev]](/../libraries-data)
 
 ##### Building the project
