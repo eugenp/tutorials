@@ -1,0 +1,12 @@
+
+description = "Gradle Unused Dependencies example"
+
+dependencies {
+    implementation('com.google.guava:guava:29.0-jre')
+    testImplementation('junit:junit:4.12')
+}
+
+gradleLint {
+    rules=['all-dependency']
+    reportFormat = 'text'
+}
