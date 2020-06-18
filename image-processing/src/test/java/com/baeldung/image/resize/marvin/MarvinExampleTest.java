@@ -1,9 +1,7 @@
 package com.baeldung.image.resize.marvin;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -16,90 +14,55 @@ import javax.imageio.ImageIO;
 import org.junit.Test;
 
 public class MarvinExampleTest {
-    @Test
+    @Test(expected = Test.None.class)
     public void whenOriginalImageExistsAndTargetSizesAreNotZero_thenImageGeneratedWithoutError() throws IOException {
         int targetWidth = 200;
         int targetHeight = 200;
-        BufferedImage outputImage = null;
-        boolean errorThrown = false;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        try {
-            outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
-        } catch (Exception e) {
-            errorThrown = true;
-        }
+        BufferedImage outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertFalse(errorThrown);
         assertNotNull(outputImage);
     }
 
-    @Test
-    public void whenOriginalImageExistsAndTargetSizesAreNotZero_thenOutputImageSizeIsValid() throws Exception {
+    @Test(expected = Test.None.class)
+    public void whenOriginalImageExistsAndTargetSizesAreNotZero_thenOutputImageSizeIsValid() throws IOException {
         int targetWidth = 200;
         int targetHeight = 200;
-        boolean errorThrown = false;
-        BufferedImage outputImage = null;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
         assertNotEquals(originalImage.getWidth(), targetWidth);
         assertNotEquals(originalImage.getHeight(), targetHeight);
-        try {
-            outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
-        } catch (Exception e) {
-            errorThrown = true;
-        }
+        BufferedImage outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertFalse(errorThrown);
         assertEquals(outputImage.getWidth(), targetWidth);
         assertEquals(outputImage.getHeight(), targetHeight);
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void whenTargetWidthIsZero_thenErrorIsThrown() throws IOException {
         int targetWidth = 0;
         int targetHeight = 200;
-        boolean errorThrown = false;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = null;
-        try {
-            outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
-        } catch (Exception e) {
-            errorThrown = true;
-        }
+        BufferedImage outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertTrue(errorThrown);
         assertNull(outputImage);
     }
 
-    @Test
+    @Test(expected = Exception.class)
     public void whenTargetHeightIsZero_thenErrorIsThrown() throws IOException {
         int targetWidth = 200;
         int targetHeight = 0;
-        boolean errorThrown = false;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = null;
-        try {
-            outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
-        } catch (Exception e) {
-            errorThrown = true;
-        }
+        BufferedImage outputImage = MarvinExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertTrue(errorThrown);
         assertNull(outputImage);
     }
 
-    @Test
-    public void whenOriginalImageDoesNotExist_thenErrorIsThrown() throws IOException {
+    @Test(expected = Exception.class)
+    public void whenOriginalImageDoesNotExist_thenErrorIsThrown() {
         int targetWidth = 200;
         int targetHeight = 200;
-        boolean errorThrown = false;
-        BufferedImage outputImage = null;
-        try {
-            outputImage = MarvinExample.resizeImage(null, targetWidth, targetHeight);
-        } catch (Exception e) {
-            errorThrown = true;
-        }
+        BufferedImage outputImage = MarvinExample.resizeImage(null, targetWidth, targetHeight);
 
-        assertTrue(errorThrown);
         assertNull(outputImage);
     }
 }
