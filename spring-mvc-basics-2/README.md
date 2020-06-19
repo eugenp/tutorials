@@ -12,5 +12,6 @@ This module contains articles about Spring MVC
 - [Using ThymeLeaf and FreeMarker Emails Templates with Spring](https://www.baeldung.com/spring-email-templates)
 - [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
 - [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
+- [Spring @RequestParam vs @PathVariable Annotations](https://www.baeldung.com/spring-requestparam-vs-pathvariable)
 - More articles: [[more -->]](/spring-mvc-basics-3)
 - More articles: [[<-- prev]](/spring-mvc-basics)
