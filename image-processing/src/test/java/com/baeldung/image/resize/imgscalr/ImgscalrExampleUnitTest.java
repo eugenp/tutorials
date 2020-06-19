@@ -1,4 +1,4 @@
-package com.baeldung.image.resize.thumbnailator;
+package com.baeldung.image.resize.imgscalr;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -13,13 +13,14 @@ import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-public class ThumbnailatorExampleTest {
+public class ImgscalrExampleUnitTest {
+
     @Test(expected = Test.None.class)
     public void whenOriginalImageExistsAndTargetSizesAreNotZero_thenImageGeneratedWithoutError() throws IOException {
         int targetWidth = 200;
         int targetHeight = 200;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = ThumbnailatorExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
 
         assertNotNull(outputImage);
     }
@@ -31,37 +32,37 @@ public class ThumbnailatorExampleTest {
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
         assertNotEquals(originalImage.getWidth(), targetWidth);
         assertNotEquals(originalImage.getHeight(), targetHeight);
-        BufferedImage outputImage = ThumbnailatorExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
 
         assertEquals(outputImage.getWidth(), targetWidth);
         assertEquals(outputImage.getHeight(), targetHeight);
     }
 
-    @Test(expected = Exception.class)
-    public void whenTargetWidthIsZero_thenErrorIsThrown() throws IOException {
+    @Test(expected = Test.None.class)
+    public void whenTargetWidthIsZero_thenImageIsCreated() throws IOException {
         int targetWidth = 0;
         int targetHeight = 200;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = ThumbnailatorExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertNull(outputImage);
+        assertNotNull(outputImage);
     }
 
-    @Test(expected = Exception.class)
-    public void whenTargetHeightIsZero_thenErrorIsThrown() throws IOException {
+    @Test(expected = Test.None.class)
+    public void whenTargetHeightIsZero_thenImageIsCreated() throws IOException {
         int targetWidth = 200;
         int targetHeight = 0;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = ThumbnailatorExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertNull(outputImage);
+        assertNotNull(outputImage);
     }
 
     @Test(expected = Exception.class)
-    public void whenOriginalImageDoesNotExist_thenErrorIsThrown() throws IOException {
+    public void whenOriginalImageDoesNotExist_thenErrorIsThrown() {
         int targetWidth = 200;
         int targetHeight = 200;
-        BufferedImage outputImage = ThumbnailatorExample.resizeImage(null, targetWidth, targetHeight);
+        BufferedImage outputImage = ImgscalrExample.resizeImage(null, targetWidth, targetHeight);
 
         assertNull(outputImage);
     }
