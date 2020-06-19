@@ -31,6 +31,17 @@ public class AccessPrivateMethodsUnitTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> method.invoke(person, 25));
     }
+    
+    @Test
+    public void givenMultipleParameters_whenInvokeMethod_thenIllegalArgumentException() throws IllegalArgumentException, IllegalAccessException, NoSuchMethodException, NullPointerException {
+        Person person = new Person();
+
+        Method method = person.getClass()
+            .getDeclaredMethod("greet", String.class);
+        method.setAccessible(true);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> method.invoke(person, "John", "Jane"));
+    }
 
     @Test
     public void whenMethodNotSetAccessible_thenIllegalAccessException() throws IllegalArgumentException, IllegalAccessException, NoSuchMethodException, NullPointerException {

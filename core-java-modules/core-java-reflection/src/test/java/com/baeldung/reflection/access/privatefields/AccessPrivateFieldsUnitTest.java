@@ -28,13 +28,13 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void givenInt_whenSetStringField_thenIllegalArgumentException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void givenInt_whenGetStringField_thenIllegalArgumentException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
         Person person = new Person();
         Field fieldName = person.getClass()
             .getDeclaredField("name");
         fieldName.setAccessible(true);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> fieldName.setInt(person, 25));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> fieldName.getInt(person));
     }
 
     @Test
