@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: INFO
+
+shiro:
+  loginUrl: /login
+  successUrl: /home
+  unauthorizedUrl: /login
+
+spring:
+  freemarker:
+    suffix: .ftl
