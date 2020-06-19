@@ -66,7 +66,7 @@ public class LoginFieldsFullIntegrationTest extends AbstractExtraLoginFieldsInte
 
     private User getUser() {
         Collection<? extends GrantedAuthority> authorities = new ArrayList<>();
-        return new User("myusername", "mydomain", "password", true, true, true, true, authorities);
+        return new User("myusername", "mydomain", "secret", true, true, true, true, authorities);
     }
 
 }
