@@ -25,7 +25,7 @@ public class CircularBuffer<E> {
             int nextWriteSeq = writeSequence + 1;
             data[nextWriteSeq % capacity] = element;
 
-            writeSequence += 1;
+            writeSequence++;
             return true;
         }
 
@@ -37,7 +37,7 @@ public class CircularBuffer<E> {
         if (isNotEmpty()) {
 
             E nextValue = data[readSequence % capacity];
-            readSequence += 1;
+            readSequence++;
             return nextValue;
         }
 
