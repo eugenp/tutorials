@@ -458,6 +458,7 @@
                 <module>java-numbers-2</module>
 		<module>java-numbers-3</module>
                 <module>java-rmi</module>
+                <module>java-security</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -980,6 +981,7 @@
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
                 <module>java-rmi</module>
+                <module>java-security</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
