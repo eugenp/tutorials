@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-concurrency</artifactId>
     <name>libraries-concurrency</name>
-    <packaging>pom</packaging>
 
     <parent>
         <artifactId>parent-modules</artifactId>
@@ -13,8 +12,70 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <modules>
-        <!-- <module>coroutines-with-quasar</module>  --><!-- we haven't upgraded to Java 12 -->
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-core</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-actors</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>co.paralleluniverse</groupId>
+            <artifactId>quasar-reactive-streams</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <id>getClasspathFilenames</id>
+                        <goals>
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>com.baeldung.quasar.App</mainClass>
+                    <workingDirectory>target/classes</workingDirectory>
+                    <executable>java</executable>
+                    <arguments>
+                        <!-- Turn off before production -->
+                        <argument>-Dco.paralleluniverse.fibers.verifyInstrumentation=true</argument>
+
+                        <!-- Quasar Agent -->
+                        <argument>-javaagent:${co.paralleluniverse:quasar-core:jar}</argument>
+
+                        <!-- Classpath -->
+                        <argument>-classpath</argument>
+                        <classpath />
+
+                        <!-- Main class -->
+                        <argument>com.baeldung.quasar.App</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

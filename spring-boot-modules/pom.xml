@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-boot</module>
+        <module>spring-boot-1</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -56,6 +57,7 @@
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
+        <module>spring-boot-actuator</module>
     </modules>
 
 </project>
