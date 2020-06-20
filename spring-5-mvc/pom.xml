@@ -87,7 +87,7 @@
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>0.18</version>
+            <version>${javafaker.version}0.18</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -177,6 +177,7 @@
         <kotlin.version>1.2.71</kotlin.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
         <httpclient.version>4.5.8</httpclient.version>
         <start-class>com.baeldung.Spring5Application</start-class>
+        <javafaker.version>0.18</javafaker.version>
     </properties>
 
 </project>

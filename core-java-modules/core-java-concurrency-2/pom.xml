@@ -19,31 +19,31 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.thread-weaver</groupId>
             <artifactId>threadweaver</artifactId>
-            <version>0.2</version>
+            <version>${threadweaver.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.google.code.tempus-fugit</groupId>
             <artifactId>tempus-fugit</artifactId>
-            <version>1.1</version>
+            <version>${tempus-fugit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.multithreadedtc</groupId>
             <artifactId>multithreadedtc</artifactId>
-            <version>1.01</version>
+            <version>${multithreadedtc.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jcstress</groupId>
             <artifactId>jcstress-core</artifactId>
-            <version>0.5</version>
+            <version>${jcstress-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -63,8 +63,8 @@
                 <version>3.1</version>
                 <configuration>
                     <compilerVersion>${javac.target}</compilerVersion>
-                    <source>${javac.target}</source>
-                    <target>${javac.target}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -99,7 +99,11 @@
     </build>
     
     <properties>
-        <javac.target>1.8</javac.target>
+	    <junit.version>4.13</junit.version>
+        <threadweaver.version>0.2</threadweaver.version>
+        <tempus-fugit.version>1.1</tempus-fugit.version>
+        <multithreadedtc.version>1.01</multithreadedtc.version>
+        <jcstress-core.version>0.5</jcstress-core.version>
     </properties>
 
 </project>
