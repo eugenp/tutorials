@@ -1,15 +1,16 @@
 package com.baeldung.caffeine;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
 
+/**
+ * Because the POM imports Spring Security, we need a simple security
+ * configuration for this example application to allow all HTTP requests.
+ */
 @Configuration
 @EnableWebSecurity
-@Import(SecurityProblemSupport.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
