@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 @SuppressWarnings("deprecation")
-public class SimpleNamingContextBuilderUnitTest {
+public class SimpleNamingContextBuilderManualTest {
 
     private InitialContext initContext;
 
