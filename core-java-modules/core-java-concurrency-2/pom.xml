@@ -99,7 +99,7 @@
     </build>
     
     <properties>
-	    <junit.version>4.13</junit.version>
+        <junit.version>4.13</junit.version>
         <threadweaver.version>0.2</threadweaver.version>
         <tempus-fugit.version>1.1</tempus-fugit.version>
         <multithreadedtc.version>1.01</multithreadedtc.version>
