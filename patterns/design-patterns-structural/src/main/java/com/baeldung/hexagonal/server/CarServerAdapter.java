@@ -6,9 +6,6 @@ import com.baeldung.hexagonal.domain.Car;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This class contains the actual interface to the persistence/back-end.
- */
 public class CarServerAdapter implements CarPortServerSide {
 
     private List<Car> cars = new ArrayList<>();

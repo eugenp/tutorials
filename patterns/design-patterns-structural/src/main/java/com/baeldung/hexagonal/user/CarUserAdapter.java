@@ -6,9 +6,6 @@ import com.baeldung.hexagonal.domain.CarService;
 
 import java.util.List;
 
-/**
-    This class contains the actual interface to the end user. For example an console application or Rest Controllers with Spring boot.
- */
 public class CarUserAdapter implements CarPortUserSide {
 
     private CarService carService;
