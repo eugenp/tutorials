@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.openpnp</groupId>
             <artifactId>opencv</artifactId>
-            <version>3.4.2-0</version>
+            <version>${opencv.version}</version>
         </dependency>
         <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
@@ -68,6 +68,7 @@
         <imageio.version>3.3.2</imageio.version>
         <tess4j.version>4.5.1</tess4j.version>
         <tesseract-platform.version>4.1.0-1.5.2</tesseract-platform.version>
+        <opencv.version>3.4.2-0</opencv.version>
     </properties>
 
 </project>
