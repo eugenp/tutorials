@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>apache-shiro</module>
+        <module>apache-shiro-security</module>
         <module>spring-security</module>
     </modules>
 
