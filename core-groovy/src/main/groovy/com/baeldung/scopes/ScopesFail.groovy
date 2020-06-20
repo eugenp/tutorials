@@ -14,6 +14,8 @@ def fLocal() {
 
 fLocal()
 
+logger.info("- Value of the created variable")
+logger.info(fLocal())
 logger.info("- Local variable doesn't exist outside")
 logger.info(q.toString())
 
