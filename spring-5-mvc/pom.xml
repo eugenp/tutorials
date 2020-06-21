@@ -87,7 +87,7 @@
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>${javafaker.version}0.18</version>
+            <version>${javafaker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
