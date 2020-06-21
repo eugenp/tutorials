@@ -2,15 +2,7 @@
 description = "Gradle Unused Dependencies example"
 
 dependencies {
-    // unused dependency sample
     implementation('com.google.guava:guava:29.0-jre')
-    // indirect dependency sample
     implementation('org.apache.httpcomponents:httpclient:4.5.12')
-    // webjars sample
-    implementation('org.webjars:jquery:3.1.1')
-    // empty jars
-    implementation('org.codehaus.cargo:empty-jar:1.7.13')
-    // family jar
-    implementation('org.apache.openjpa:openjpa:3.1.1')
     testImplementation('junit:junit:4.12')
 }
