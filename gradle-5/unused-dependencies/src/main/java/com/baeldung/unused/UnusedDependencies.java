@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.http.HttpHeaders;
 import org.apache.http.ssl.SSLContextBuilder;
 
 import com.google.common.collect.ImmutableList;
@@ -26,8 +25,6 @@ public class UnusedDependencies {
 
     private static void useHttpCore() {
         SSLContextBuilder.create();
-        // does not trigger the direct dep violation
-        System.out.println(HttpHeaders.ACCEPT);
     }
 
     private static void useHttpClientWithReflection() {
