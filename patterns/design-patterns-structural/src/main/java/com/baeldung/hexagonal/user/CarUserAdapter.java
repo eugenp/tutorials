@@ -1,26 +1,12 @@
 package com.baeldung.hexagonal.user;
 
-import com.baeldung.hexagonal.domain.Car;
 import com.baeldung.hexagonal.domain.CarPortUserSide;
-import com.baeldung.hexagonal.domain.CarService;
 
-import java.util.List;
+public class CarUserAdapter {
 
-public class CarUserAdapter implements CarPortUserSide {
+    private CarPortUserSide carPortUserSide;
 
-    private CarService carService;
-
-    public CarUserAdapter(CarService carService) {
-        this.carService = carService;
-    }
-
-    @Override
-    public void submitCar(Car car) {
-        carService.createCar(car);
-    }
-
-    @Override
-    public List<Car> retrieveCars() {
-        return carService.getCars();
+    public CarUserAdapter(CarPortUserSide carPortUserSide) {
+        this.carPortUserSide = carPortUserSide;
     }
 }

@@ -2,7 +2,7 @@ package com.baeldung.hexagonal.domain;
 
 import java.util.List;
 
-public class CarService {
+public class CarService implements CarPortUserSide {
 
     private CarPortServerSide carPortServerSide;
 
@@ -10,11 +10,13 @@ public class CarService {
         this.carPortServerSide = carPortServerSide;
     }
 
-    public void createCar(Car car) {
+    @Override
+    public void submitCar(Car car) {
         carPortServerSide.saveCar(car);
     }
 
-    public List<Car> getCars() {
+    @Override
+    public List<Car> retrieveCars() {
         return carPortServerSide.getCars();
     }
 }

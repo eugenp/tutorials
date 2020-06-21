@@ -23,7 +23,7 @@ class CarServiceTest {
     void givenValidCar_WhenSubmitting_ThenSavedSuccessfully() {
         Car car = new Car("BL-DN-G", "Bealdung");
 
-        classUnderTest.createCar(car);
+        classUnderTest.submitCar(car);
 
         assertEquals(1, testAdapter.getCars().size());
         assertEquals("BL-DN-G", testAdapter.getCars().get(0).getLicensePlate());
@@ -35,7 +35,7 @@ class CarServiceTest {
         Car car = new Car("BL-DN-G", "Bealdung");
         testAdapter.saveCar(car);
 
-        List<Car> cars = classUnderTest.getCars();
+        List<Car> cars = classUnderTest.retrieveCars();
 
         assertEquals(1, cars.size());
         assertEquals("BL-DN-G", cars.get(0).getLicensePlate());
