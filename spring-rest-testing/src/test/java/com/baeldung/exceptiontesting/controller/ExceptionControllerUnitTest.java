@@ -18,7 +18,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-//@SpringBootTest(classes = Application.class)
 @WebMvcTest(ExceptionController.class)
 public class ExceptionControllerUnitTest{
 
