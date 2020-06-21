@@ -12,10 +12,6 @@ public class MultipartPostRequestController {
 
     @PostMapping(path = "/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<String>(HttpStatus.OK);
-        }
+        return file.isEmpty() ? new ResponseEntity<String>(HttpStatus.NOT_FOUND) : new ResponseEntity<String>(HttpStatus.OK);
     }
 }
