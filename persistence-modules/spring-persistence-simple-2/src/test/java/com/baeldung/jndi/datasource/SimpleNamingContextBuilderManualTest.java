@@ -11,8 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
+// marked as a manual test as the bindings in this test and
+// SimpleJNDIUnitTest conflict depending on the order they are run in
+
 @SuppressWarnings("deprecation")
-public class SimpleNamingContextBuilderUnitTest {
+public class SimpleNamingContextBuilderManualTest {
 
     private InitialContext initContext;
 
