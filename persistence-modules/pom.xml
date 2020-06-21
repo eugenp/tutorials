@@ -14,6 +14,7 @@
 
     <modules>
         <module>activejdbc</module>
+        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
@@ -75,7 +76,6 @@
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
         <module>spring-persistence-simple-2</module>
-        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
     </modules>
 
 </project>
