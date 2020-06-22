@@ -21,7 +21,7 @@ public class MacAddressUnitTest {
 
     @Test
     public void givenNetworkInterface_whenIPSpecified_thenGetMacAddress() throws SocketException, UnknownHostException {
-        InetAddress localIP = InetAddress.getByName("192.168.1.108");
+        InetAddress localIP = InetAddress.getByName("127.0.0.1");
         NetworkInterface ni = NetworkInterface.getByInetAddress(localIP);
         byte[] macAddress = ni.getHardwareAddress();
         assertNotNull(macAddress);
