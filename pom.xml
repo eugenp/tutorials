@@ -70,12 +70,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -353,8 +347,7 @@
                 <module>apache-avro</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
+                <module>apache-cxf</module>                
                 <module>apache-geode</module>
                 <module>apache-meecrowave</module>
                 <module>apache-olingo/olingo2</module>
@@ -377,6 +370,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
@@ -461,7 +455,7 @@
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
+		<module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -495,7 +489,8 @@
                 <module>kotlin-quasar</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>libraries-2</module>
+		<module>language-interop</module>
+		<module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -508,8 +503,10 @@
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -811,6 +808,9 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -869,8 +869,7 @@
                 <module>apache-beam</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
+                <module>apache-cxf</module>                
                 <module>apache-geode</module>
                 <module>apache-meecrowave</module>
                 <module>apache-olingo/olingo2</module>
@@ -1012,6 +1011,7 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1025,6 +1025,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -1271,7 +1272,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <module>libraries-concurrency</module>
+<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
@@ -1311,6 +1312,9 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
