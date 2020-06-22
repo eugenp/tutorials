@@ -11,17 +11,14 @@ import org.junit.Test;
 import com.google.common.io.ByteStreams;
 
 public class InputStreamToOutputStreamUnitTest {
-
-    // buffer size used for reading and writing
-    private static final int BUFFER_SIZE = 8192;
-
+    
     /**
      * Reads all bytes from an input stream and writes them to an output stream.
      * @param source - input stream to copy data from
      * @param target - output stream to copy data too
      */
-    private static void copy(InputStream source, OutputStream target) throws IOException {
-        byte[] buf = new byte[BUFFER_SIZE];
+    void copy(InputStream source, OutputStream target) throws IOException {
+        byte[] buf = new byte[8192];
         int length;
         while ((length = source.read(buf)) > 0) {
             target.write(buf, 0, length);
@@ -29,56 +26,61 @@ public class InputStreamToOutputStreamUnitTest {
     }
 
     @Test
-    public final void givenUsingJavaEight_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
-        final String initialString = "Hello World!";
+    public void givenUsingJavaEight_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
+        String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
              ByteArrayOutputStream targetStream = new ByteArrayOutputStream()) {
             copy(inputStream, targetStream);
+            
             assertEquals(initialString, new String(targetStream.toByteArray()));
         }
     }
 
     @Test
-    public final void givenUsingJavaEight_whenCopyingLongInputStreamToOutputStream_thenCorrect() throws IOException {
-        final String initialString = randomAlphabetic(20480);
+    public void givenUsingJavaEight_whenCopyingLongInputStreamToOutputStream_thenCorrect() throws IOException {
+        String initialString = randomAlphabetic(20480);
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
              ByteArrayOutputStream targetStream = new ByteArrayOutputStream()) {
             copy(inputStream, targetStream);
+            
             assertEquals(initialString, new String(targetStream.toByteArray()));
         }
     }
 
     @Test
-    public final void givenUsingJavaNine_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
-        final String initialString = "Hello World!";
+    public void givenUsingJavaNine_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
+        String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
              ByteArrayOutputStream targetStream = new ByteArrayOutputStream()) {
             inputStream.transferTo(targetStream);
+            
             assertEquals(initialString, new String(targetStream.toByteArray()));
         }
     }
 
     @Test
-    public final void givenUsingGuava_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
-        final String initialString = "Hello World!";
+    public void givenUsingGuava_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
+        String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
              ByteArrayOutputStream targetStream = new ByteArrayOutputStream()) {
             ByteStreams.copy(inputStream, targetStream);
+            
             assertEquals(initialString, new String(targetStream.toByteArray()));
         }
     }
 
     @Test
-    public final void givenUsingCommonsIO_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
-        final String initialString = "Hello World!";
+    public void givenUsingCommonsIO_whenCopyingInputStreamToOutputStream_thenCorrect() throws IOException {
+        String initialString = "Hello World!";
 
         try (InputStream inputStream = new ByteArrayInputStream(initialString.getBytes());
              ByteArrayOutputStream targetStream = new ByteArrayOutputStream()) {
             IOUtils.copy(inputStream, targetStream);
+            
             assertEquals(initialString, new String(targetStream.toByteArray()));
         }
     }
