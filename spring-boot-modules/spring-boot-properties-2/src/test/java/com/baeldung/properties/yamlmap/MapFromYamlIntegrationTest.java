@@ -12,7 +12,7 @@ import com.baeldung.properties.yamlmap.pojo.ServerProperties;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class MapFromYamlApplicationTests {
+class MapFromYamlIntegrationTest {
 
     @Autowired
     private ServerProperties serverProperties;
