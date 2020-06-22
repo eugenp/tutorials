@@ -13,7 +13,7 @@ public class TransferDemo {
 
     public static void main(String[] args) {
 
-        ExecutorService executor = new MdcAwareThreadPoolExecutor(1, 3, 2, MINUTES,
+        ExecutorService executor = new MdcAwareThreadPoolExecutor(3, 3, 0, MINUTES,
           new LinkedBlockingQueue<>(), Thread::new, new AbortPolicy());
 
         TransactionFactory transactionFactory = new TransactionFactory();
