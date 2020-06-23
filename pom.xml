@@ -70,12 +70,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -353,8 +347,7 @@
                 <module>apache-avro</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
+                <module>apache-cxf</module>                
                 <module>apache-geode</module>
                 <module>apache-meecrowave</module>
                 <module>apache-olingo/olingo2</module>
@@ -662,6 +655,7 @@
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
@@ -876,8 +870,7 @@
                 <module>apache-beam</module>
                 <module>apache-bval</module>
                 <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
+                <module>apache-cxf</module>                
                 <module>apache-geode</module>
                 <module>apache-meecrowave</module>
                 <module>apache-olingo/olingo2</module>
@@ -1280,7 +1273,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <module>libraries-concurrency</module>
+<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
