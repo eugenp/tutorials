@@ -1,4 +1,4 @@
-package com.baeldung.networking.macaddress;
+package com.baeldung.macaddress;
 
 import java.net.NetworkInterface;
 import java.net.SocketException;
