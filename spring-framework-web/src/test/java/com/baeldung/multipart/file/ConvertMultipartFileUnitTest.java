@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-public class ConvertMultipartFileExample {
+public class ConvertMultipartFileUnitTest {
 
     /**
      * Example of converting a {@link MultipartFile} to a {@link File} using {@link MultipartFile#getBytes()}.
