@@ -26,7 +26,7 @@ public class OrderConsumer {
     @KafkaListener(topics = "orders", groupId = "shipping")
     public void consume(Order order) throws IOException {
         log.info("Order received to process: {}", order);
-        if (OrderStatus.PREPARE_SHIPPING.equals(order.getOrderStatus()))
+        if (OrderStatus.PREPARE_SHIPPING.equals(order.getOrderStatus())) {
             shippingService.handleOrder(order)
                 .doOnSuccess(o -> {
                     log.info("Order processed succesfully.");
@@ -39,5 +39,6 @@ public class OrderConsumer {
                         .setResponseMessage(e.getMessage()));
                 })
                 .subscribe();
+        }
     }
 }

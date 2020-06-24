@@ -26,7 +26,7 @@ public class OrderConsumer {
     @KafkaListener(topics = "orders", groupId = "orders")
     public void consume(Order order) throws IOException {
         log.info("Order received to process: {}", order);
-        if (OrderStatus.INITIATION_SUCCESS.equals(order.getOrderStatus()))
+        if (OrderStatus.INITIATION_SUCCESS.equals(order.getOrderStatus())) {
             orderRepository.findById(order.getId())
                 .map(o -> {
                     orderProducer.sendMessage(o.setOrderStatus(OrderStatus.RESERVE_INVENTORY));
@@ -35,7 +35,7 @@ public class OrderConsumer {
                 })
                 .flatMap(orderRepository::save)
                 .subscribe();
-        else if (OrderStatus.INVENTORY_SUCCESS.equals(order.getOrderStatus()))
+        } else if (OrderStatus.INVENTORY_SUCCESS.equals(order.getOrderStatus())) {
             orderRepository.findById(order.getId())
                 .map(o -> {
                     orderProducer.sendMessage(o.setOrderStatus(OrderStatus.PREPARE_SHIPPING));
@@ -44,7 +44,7 @@ public class OrderConsumer {
                 })
                 .flatMap(orderRepository::save)
                 .subscribe();
-        else if (OrderStatus.SHIPPING_FAILURE.equals(order.getOrderStatus()))
+        } else if (OrderStatus.SHIPPING_FAILURE.equals(order.getOrderStatus())) {
             orderRepository.findById(order.getId())
                 .map(o -> {
                     orderProducer.sendMessage(o.setOrderStatus(OrderStatus.REVERT_INVENTORY));
@@ -53,7 +53,7 @@ public class OrderConsumer {
                 })
                 .flatMap(orderRepository::save)
                 .subscribe();
-        else
+        } else {
             orderRepository.findById(order.getId())
                 .map(o -> {
                     return o.setOrderStatus(order.getOrderStatus())
@@ -61,5 +61,6 @@ public class OrderConsumer {
                 })
                 .flatMap(orderRepository::save)
                 .subscribe();
+        }
     }
 }

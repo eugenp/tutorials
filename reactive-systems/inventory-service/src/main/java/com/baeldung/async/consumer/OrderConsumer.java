@@ -26,7 +26,7 @@ public class OrderConsumer {
     @KafkaListener(topics = "orders", groupId = "inventory")
     public void consume(Order order) throws IOException {
         log.info("Order received to process: {}", order);
-        if (OrderStatus.RESERVE_INVENTORY.equals(order.getOrderStatus()))
+        if (OrderStatus.RESERVE_INVENTORY.equals(order.getOrderStatus())) {
             productService.handleOrder(order)
                 .doOnSuccess(o -> {
                     log.info("Order processed succesfully.");
@@ -38,7 +38,7 @@ public class OrderConsumer {
                         .setResponseMessage(e.getMessage()));
                 })
                 .subscribe();
-        else if (OrderStatus.REVERT_INVENTORY.equals(order.getOrderStatus()))
+        } else if (OrderStatus.REVERT_INVENTORY.equals(order.getOrderStatus())) {
             productService.revertOrder(order)
                 .doOnSuccess(o -> {
                     log.info("Order reverted succesfully.");
@@ -50,5 +50,6 @@ public class OrderConsumer {
                         .setResponseMessage(e.getMessage()));
                 })
                 .subscribe();
+        }
     }
 }

@@ -32,14 +32,14 @@ public class ProductService {
                     .stream()
                     .filter(l -> l.getProductId()
                         .equals(p.getId()))
-                    .collect(Collectors.toList())
-                    .get(0)
+                    .findAny()
+                    .get()
                     .getQuantity();
                 if (p.getStock() >= q) {
                     p.setStock(p.getStock() - q);
                     return productRepository.save(p);
                 } else {
-                    throw new RuntimeException("Product is out of stock: " + p.getId());
+                    return Mono.error(new RuntimeException("Product is out of stock: " + p.getId()));
                 }
             })
             .then(Mono.just(order.setOrderStatus(OrderStatus.SUCCESS)));

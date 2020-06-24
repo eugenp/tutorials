@@ -33,7 +33,7 @@ public class ShippingService {
                     cal.add(Calendar.DATE, 1);
                     shippingDate = cal.getTime();
                 } else {
-                    throw new RuntimeException("The current time is off the limits to place order.");
+                    return Mono.error(new RuntimeException("The current time is off the limits to place order."));
                 }
                 return shipmentRepository.save(new Shipment().setAddress(order.getShippingAddress())
                     .setShippingDate(shippingDate));

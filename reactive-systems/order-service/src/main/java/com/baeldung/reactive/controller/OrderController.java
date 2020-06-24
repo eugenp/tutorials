@@ -29,11 +29,12 @@ public class OrderController {
     public Mono<Order> create(@RequestBody Order order) {
         log.info("Create order invoked with: {}", order);
         return orderService.createOrder(order)
-            .map(o -> {
-                if (OrderStatus.FAILURE.equals(o.getOrderStatus()))
-                    throw new RuntimeException("Order processing failed, please try again later. " + o.getResponseMessage());
-                else
-                    return o;
+            .flatMap(o -> {
+                if (OrderStatus.FAILURE.equals(o.getOrderStatus())) {
+                    return Mono.error(new RuntimeException("Order processing failed, please try again later. " + o.getResponseMessage()));
+                } else {
+                    return Mono.just(o);
+                }
             });
     }
 
