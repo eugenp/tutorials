@@ -35,7 +35,7 @@ public class BaeldungSychronizedBlockUnitTest {
     }
 
     @Test
-    public void givenHoldingTheLock_whenReentrant_thenCanAcquireItItAgain() {
+    public void givenHoldingTheLock_whenReentrant_thenCanAcquireItAgain() {
         Object lock = new Object();
         synchronized (lock) {
             System.out.println("First time acquiring it");
