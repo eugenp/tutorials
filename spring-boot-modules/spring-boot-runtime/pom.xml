@@ -42,7 +42,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.6</version>
+            <version>${commons-io.version}</version>
         </dependency>
 
         <dependency>
@@ -170,6 +170,7 @@
         <springcloud.version>2.0.2.RELEASE</springcloud.version>
         <httpclient.version>4.5.8</httpclient.version>
         <spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
+        <commons-io.version>2.6</commons-io.version>
     </properties>
 
 </project>
