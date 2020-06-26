@@ -16,17 +16,17 @@
         <dependency>
             <groupId>co.paralleluniverse</groupId>
             <artifactId>quasar-core</artifactId>
-            <version>0.8.0</version>
+            <version>${quasar.version}</version>
         </dependency>
         <dependency>
             <groupId>co.paralleluniverse</groupId>
             <artifactId>quasar-actors</artifactId>
-            <version>0.8.0</version>
+            <version>${quasar.version}</version>
         </dependency>
         <dependency>
             <groupId>co.paralleluniverse</groupId>
             <artifactId>quasar-reactive-streams</artifactId>
-            <version>0.8.0</version>
+            <version>${quasar.version}</version>
         </dependency>
     </dependencies>
 
@@ -78,4 +78,8 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <quasar.version>0.8.0</quasar.version>
+    </properties>
 </project>

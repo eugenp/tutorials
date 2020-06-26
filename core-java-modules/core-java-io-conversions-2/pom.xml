@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20200518</version>
+            <version>${json.version}</version>
         </dependency>
     </dependencies>
 
@@ -37,5 +37,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <json.version>20200518</json.version>
+    </properties>
 
 </project>
