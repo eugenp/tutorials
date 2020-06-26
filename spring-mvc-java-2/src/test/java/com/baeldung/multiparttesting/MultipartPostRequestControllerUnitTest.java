@@ -20,7 +20,7 @@ import com.baeldung.matrix.config.MatrixWebConfig;
 @WebAppConfiguration
 @ContextConfiguration(classes = { MatrixWebConfig.class, MultipartPostRequestController.class })
 @RunWith(SpringJUnit4ClassRunner.class)
-public class MultipartPostRequestUnitTest {
+public class MultipartPostRequestControllerUnitTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
