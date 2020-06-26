@@ -10,7 +10,7 @@ import org.junit.Test;
 /**
  * Unit Test intended to count number of matches of a RegEx using Java 8 and 9.
  * 
- * Java 9 is needed to run the test.
+ * Java 9 is needed to run the commented out tests.
  */
 public class CountMatchesUnitTest {
 
@@ -56,6 +56,7 @@ public class CountMatchesUnitTest {
 
     @Test
     public void givenContainingEmailString_whenStartingInJava9Match_thenCountMacthesFound() {
+        // uncomment to try with Java 9
         // Matcher countEmailMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_EMAIL_ADDRESSES);
 
         // long count = countEmailMatcher.results().count();
@@ -65,6 +66,7 @@ public class CountMatchesUnitTest {
 
     @Test
     public void givenContainingFiveEmailsString_whenStartingInJava9Match_thenCountMacthesFound() {
+        // uncomment to try with Java 9
         // Matcher countFiveEmailsMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_FIVE_EMAIL_ADDRESSES);
 
         // long count = countFiveEmailsMatcher.results().count();
@@ -74,6 +76,7 @@ public class CountMatchesUnitTest {
 
     @Test
     public void givenStringWithoutEmails_whenJava9Match_thenCountMacthesNotFound() {
+        // uncomment to try with Java 9
         // Matcher noEmailMatcher = EMAIL_ADDRESS_PATTERN.matcher("Simple text without emails.");
 
         // long count = noEmailMatcher.results().count();
