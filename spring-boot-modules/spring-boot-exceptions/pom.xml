@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>2.2.3.RELEASE</version>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -92,5 +92,6 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.intro.App</start-class>
+        <spring-boot.version>2.2.3.RELEASE</spring-boot.version>
     </properties>
 </project>

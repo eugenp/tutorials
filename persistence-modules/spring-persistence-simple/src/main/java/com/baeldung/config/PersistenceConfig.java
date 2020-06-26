@@ -11,7 +11,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -26,7 +25,6 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.baeldung.hibernate.dao" }, transactionManagerRef = "jpaTransactionManager")
 @EnableJpaAuditing
 @PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan(basePackages = { "com.baeldung.persistence.dao", "com.baeldung.jpa.dao" })
@@ -97,7 +95,7 @@ public class PersistenceConfig {
         return new FooService();
     }
 
-    private final Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

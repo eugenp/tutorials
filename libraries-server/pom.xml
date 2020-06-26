@@ -5,7 +5,6 @@
     <artifactId>libraries-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>libraries-server</name>
-    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -107,50 +106,11 @@
 
     </dependencies>
     
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty.version}</version>
-                <configuration>
-                    <stopPort>8888</stopPort>
-                    <stopKey>quit</stopKey>
-                    <jvmArgs>
-                        -Xbootclasspath/p:${settings.localRepository}/org/mortbay/jetty/alpn/alpn-boot/${alpn.version}/alpn-boot-${alpn.version}.jar
-                    </jvmArgs>
-                    <jettyXml>${basedir}/src/main/config/jetty.xml</jettyXml>
-                    <webApp>
-                        <contextPath>/</contextPath>
-                    </webApp>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.eclipse.jetty.http2</groupId>
-                        <artifactId>http2-server</artifactId>
-                        <version>${jetty.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-alpn-openjdk8-server</artifactId>
-                        <version>${jetty.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-servlets</artifactId>
-                        <version>${jetty.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <assertj.version>3.6.2</assertj.version>
         <httpclient.version>4.5.3</httpclient.version>
         <jetty.version>9.4.27.v20200227</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
-        <alpn.version>8.1.11.v20170118</alpn.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>
         <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
