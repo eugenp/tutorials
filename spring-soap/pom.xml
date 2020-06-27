@@ -83,8 +83,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
-    </properties>
-
 </project>
