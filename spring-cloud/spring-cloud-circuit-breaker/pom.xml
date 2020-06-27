@@ -18,7 +18,7 @@
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/libs-snapshot</url>
+            <url>https://repo.spring.io/release</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
