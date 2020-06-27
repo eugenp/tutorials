@@ -3,21 +3,13 @@ package com.baeldung.reflection.access.privatefields;
 public class Person {
 
     private String name = "John";
-
     private byte age = 30;
-
     private short uidNumber = 5555;
-
     private int pinCode = 452002;
-
     private long contactNumber = 123456789L;
-
     private float height = 6.1242f;
-
     private double weight = 75.2564;
-
     private char gender = 'M';
-
     private boolean active = true;
 
     public String getName() {
