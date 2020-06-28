@@ -7,6 +7,7 @@ import org.redisson.Redisson;
 import org.redisson.RedissonMultiLock;
 import org.redisson.api.*;
 import org.redisson.client.RedisClient;
+import org.redisson.client.RedisClientConfig;
 import org.redisson.client.RedisConnection;
 import org.redisson.client.codec.StringCodec;
 import org.redisson.client.protocol.RedisCommands;
@@ -103,10 +104,10 @@ public class RedissonIntegrationTest {
     public void givenTopicSubscribedToAChannel_thenReceiveMessageFromChannel() throws ExecutionException, InterruptedException {
         CompletableFuture<String> future = new CompletableFuture<>();
 
-        RTopic<CustomMessage> subscribeTopic = client.getTopic("baeldung");
-        subscribeTopic.addListener((channel, customMessage) -> future.complete(customMessage.getMessage()));
+        RTopic subscribeTopic = client.getTopic("baeldung");
+        subscribeTopic.addListener(CustomMessage.class, (channel, customMessage) -> future.complete(customMessage.getMessage()));
 
-        RTopic<CustomMessage> publishTopic = client.getTopic("baeldung");
+        RTopic publishTopic = client.getTopic("baeldung");
         long clientsReceivedMessage
           = publishTopic.publish(new CustomMessage("This is a message"));
 
@@ -203,10 +204,10 @@ public class RedissonIntegrationTest {
         batch.getMap("ledgerMap").fastPutAsync("1", "2");
         batch.getMap("ledgerMap").putAsync("2", "5");
 
-        List<?> result = batch.execute();
+        BatchResult<?> batchResult = batch.execute();
 
         RMap<String, String> map = client.getMap("ledgerMap");
-        assertTrue(result.size() > 0 && map.get("1").equals("2"));
+        assertTrue(batchResult.getResponses().size() > 0 && map.get("1").equals("2"));
     }
 
     @Test
@@ -220,7 +221,9 @@ public class RedissonIntegrationTest {
 
     @Test
     public void givenLowLevelRedisCommands_thenExecuteLowLevelCommandsOnRedis(){
-        RedisClient client = new RedisClient("localhost", 6379);
+        RedisClientConfig redisClientConfig = new RedisClientConfig();
+        redisClientConfig.setAddress("localhost", 6379);
+        RedisClient client = RedisClient.create(redisClientConfig);
         RedisConnection conn = client.connect();
         conn.sync(StringCodec.INSTANCE, RedisCommands.SET, "test", 0);
 
