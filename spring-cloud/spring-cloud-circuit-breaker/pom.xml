@@ -44,12 +44,16 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
-            <version>1.0.2.RELEASE</version>
+            <version>${circuitbreaker-resilience4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <circuitbreaker-resilience4j.version>1.0.2.RELEASE</circuitbreaker-resilience4j.version>
+    </properties>
 
 </project>
