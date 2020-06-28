@@ -16,6 +16,10 @@ import org.junit.jupiter.api.AfterEach;
 
 public class TooManyOpenFilesExceptionLiveTest {
 
+    //This is not a regular UnitTest due to the fact that it depends on System.gc() to work properly.
+    //As we have to force the JVM to run out of file descriptors, any other tests that uses IO may fail.
+    //This may indirectly affect other tests that are part of the Jenkins Build.
+
     private File tempFile;
 
     @BeforeEach
@@ -25,6 +29,7 @@ public class TooManyOpenFilesExceptionLiveTest {
 
     @AfterEach
     public void tearDown() {
+        //Enforce a GC to clear unreferenced files and release descriptors
         System.gc();
         tempFile.delete();
     }

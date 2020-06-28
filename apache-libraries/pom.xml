@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>apache-miscellaneous-1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>apache-libraries</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- avro -->
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-compiler</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro-maven-plugin</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+
+        <!-- beam -->
+        <dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-sdks-java-core</artifactId>
+            <version>${beam.version}</version>
+        </dependency>
+        <!-- runtime scoped -->
+        <dependency>
+            <groupId>org.apache.beam</groupId>
+            <artifactId>beam-runners-direct-java</artifactId>
+            <version>${beam.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- bval -->
+        <dependency>
+            <groupId>org.apache.bval</groupId>
+            <artifactId>bval-jsr</artifactId>
+            <version>${bval.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${javax.validation.validation-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.bval</groupId>
+            <artifactId>bval-extras</artifactId>
+            <version>${bval.version}</version>
+        </dependency>
+
+        <!-- meecrowave -->
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-core</artifactId>
+            <version>${meecrowave-core.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-jpa -->
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-jpa</artifactId>
+            <version>${meecrowave-jpa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-junit</artifactId>
+            <version>${meecrowave-junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- opennlp -->
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>${opennlp.opennlp-tools.version}</version>
+        </dependency>
+        
+        <!-- pulsar -->
+        <dependency>
+            <groupId>org.apache.pulsar</groupId>
+            <artifactId>pulsar-client</artifactId>
+            <version>${pulsar-client.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- zookeeper -->
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+        </dependency>
+        
+        <!-- curator -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-x-async</artifactId>
+            <version>${curator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.zookeeper</groupId>
+                    <artifactId>zookeeper</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${avaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- geode -->
+        <dependency>
+            <groupId>org.apache.geode</groupId>
+            <artifactId>geode-core</artifactId>
+            <version>${geode.core}</version>
+        </dependency>
+        
+        <!-- solr -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>${solr.solr-solrj.version}</version>
+        </dependency>
+        
+        <!-- common -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+        <!-- avro -->
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>${avro.version}</version>
+                <executions>
+                    <execution>
+                        <id>schemas</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                            <goal>protocol</goal>
+                            <goal>idl-protocol</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/resources/</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- meecrowave -->
+            <plugin>
+                <groupId>org.apache.meecrowave</groupId>
+                <artifactId>meecrowave-maven-plugin</artifactId>
+                <version>${meecrowave-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <avro.version>1.8.2</avro.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <beam.version>2.19.0</beam.version>
+        <assertj.version>3.9.0</assertj.version>
+        <bval.version>1.1.2</bval.version>
+        <javax.validation.validation-api.version>1.1.0.Final</javax.validation.validation-api.version>
+        <meecrowave-junit.version>1.2.0</meecrowave-junit.version>
+        <okhttp.version>3.10.0</okhttp.version>
+        <meecrowave-jpa.version>1.2.1</meecrowave-jpa.version>
+        <meecrowave-core.version>1.2.1</meecrowave-core.version>
+        <meecrowave-maven-plugin.version>1.2.1</meecrowave-maven-plugin.version>
+        <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
+        <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
+        <zookeeper.version>3.4.11</zookeeper.version>
+        <curator.version>4.0.1</curator.version>
+        <avaitility.version>1.7.0</avaitility.version>
+        <geode.core>1.6.0</geode.core>
+        <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
+    </properties>
+
+</project>
