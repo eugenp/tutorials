@@ -28,9 +28,9 @@ public class FindDifferenceBetweenLists {
 
     private static <T> List<T> differenceUsingStream(List<T> listOne, List<T> listTwo) {
         return listOne.stream()
-                .filter(element -> !listTwo.contains(element))
-                .distinct()
-                .collect(Collectors.toList());
+            .filter(element -> !listTwo.contains(element))
+            .distinct()
+            .collect(Collectors.toList());
     }
 
     public static <T> List<T> differenceUsingApacheCommonsCollections(List<T> listOne, List<T> listTwo) {
