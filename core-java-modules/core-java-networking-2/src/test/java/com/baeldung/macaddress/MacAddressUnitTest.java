@@ -7,7 +7,7 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class MacAddressUnitTest {
 
@@ -16,6 +16,6 @@ public class MacAddressUnitTest {
         InetAddress localHost = InetAddress.getLocalHost();
         NetworkInterface ni = NetworkInterface.getByInetAddress(localHost);
         byte[] macAddress = ni.getHardwareAddress();
-        assertNotNull(macAddress);
+        assertEquals(6, macAddress.length);
     }
 }
