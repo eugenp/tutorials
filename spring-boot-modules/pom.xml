@@ -58,6 +58,7 @@
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-xml</module>
+        <module>spring-boot-actuator</module>
     </modules>
 
 </project>

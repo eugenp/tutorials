@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>28.2-jre</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -55,13 +55,13 @@
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
-            <version>4.0.2</version>
+            <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>2.9.1</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -80,6 +80,9 @@
         <maven.surefire.version>2.22.1</maven.surefire.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+        <guava.version>28.2-jre</guava.version>
+        <awaitility.version>4.0.2</awaitility.version>
+        <assertj-core.version>2.9.1</assertj-core.version>
     </properties>
 
 </project>

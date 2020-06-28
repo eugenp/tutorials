@@ -14,4 +14,5 @@ This module contains articles about advanced topics about multithreading with co
 - [Guide to AtomicStampedReference in Java](https://www.baeldung.com/java-atomicstampedreference)
 - [The ABA Problem in Concurrency](https://www.baeldung.com/cs/aba-concurrency)
 - [Introduction to Lock-Free Data Structures](https://www.baeldung.com/lock-free-programming)
+- [Introduction to Exchanger in Java](https://www.baeldung.com/java-exchanger)
 - [[<-- previous]](/core-java-modules/core-java-concurrency-advanced-2)
