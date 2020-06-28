@@ -517,7 +517,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -1036,7 +1036,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
