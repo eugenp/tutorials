@@ -1,5 +1,6 @@
 package com.baeldung.regex.countmatches;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.regex.Matcher;
@@ -17,6 +18,7 @@ public class CountMatchesUnitTest {
     private static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile("([a-z0-9_.-]+)@([a-z0-9_.-]+[a-z])");
     private static final String TEXT_CONTAINING_EMAIL_ADDRESSES = "You can contact me through: writer@baeldung.com, editor@baeldung.com and team@bealdung.com";
     private static final String TEXT_CONTAINING_FIVE_EMAIL_ADDRESSES = "Valid emails are: me@gmail.com, you@baeldung.com, contact@hotmail.com, press@anysite.com and support@bealdung.com";
+    private static final String TEXT_CONTAINING_OVERLAP_EMAIL_ADDRESSES = "Try to contact us at team@baeldung.comeditor@baeldung.com, support@baeldung.com.";
 
     @Test
     public void givenContainingEmailString_whenJava8Match_thenCountMacthesFound() {
@@ -55,6 +57,18 @@ public class CountMatchesUnitTest {
     }
 
     @Test
+    public void givenStringWithOverlappingEmails_whenJava8Match_thenCountWrongMatches() {
+        Matcher countOverlappingEmailsMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_OVERLAP_EMAIL_ADDRESSES);
+
+        int count = 0;
+        while (countOverlappingEmailsMatcher.find()) {
+            count++;
+        }
+
+        assertNotEquals(3, count);
+    }
+
+    @Test
     public void givenContainingEmailString_whenStartingInJava9Match_thenCountMacthesFound() {
         // uncomment to try with Java 9
         // Matcher countEmailMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_EMAIL_ADDRESSES);
@@ -82,5 +96,15 @@ public class CountMatchesUnitTest {
         // long count = noEmailMatcher.results().count();
 
         // assertEquals(0, count);
+    }
+
+    @Test
+    public void givenStringWithOverlappingEmails_whenJava9Match_thenCountWrongMatches() {
+        // uncomment to try with Java 9
+        // Matcher countOverlappingEmailsMatcher = EMAIL_ADDRESS_PATTERN.matcher(TEXT_CONTAINING_OVERLAP_EMAIL_ADDRESSES);
+
+        // long count = countOverlappingEmailsMatcher.results().count();
+
+        // assertNotEquals(3, count);
     }
 }
