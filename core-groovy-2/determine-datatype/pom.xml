@@ -34,7 +34,11 @@
         <dependency>
             <groupId>org.junit</groupId>
             <artifactId>junit5-engine</artifactId>
-            <version>5.0.0-ALPHA</version>
+            <version>${junit5.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <junit5.version>5.0.0-ALPHA</junit5.version>
+    </properties>
 </project>

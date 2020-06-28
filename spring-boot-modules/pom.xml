@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-boot</module>
+        <module>spring-boot-1</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -28,6 +29,7 @@
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
         <module>spring-boot-camel</module>
+        <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
         <module>spring-boot-custom-starter</module>
         <module>spring-boot-crud</module>
@@ -48,12 +50,14 @@
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
         <module>spring-boot-properties</module>
+        <module>spring-boot-properties-2</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
+        <module>spring-boot-actuator</module>
     </modules>
 
 </project>
