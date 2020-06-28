@@ -1,4 +1,4 @@
-package com.baeldung.spring.configuration;
+package com.baeldung.themes.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.baeldung.spring.controller.tiles")
+@ComponentScan(basePackages = "com.baeldung.themes")
 public class TilesApplicationConfiguration implements WebMvcConfigurer {
 
     /**

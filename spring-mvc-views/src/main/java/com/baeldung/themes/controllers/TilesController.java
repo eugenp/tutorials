@@ -1,4 +1,4 @@
-package com.baeldung.spring.controller.tiles;
+package com.baeldung.themes.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
