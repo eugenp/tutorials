@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -84,15 +86,23 @@ public class ListToMapUnitTest {
             return new ArrayList<>();
         };
 
+        Function<String, Integer> keyMapper = (element) -> {
+            return element.length();
+        };
+
+        Function<String, List<String>> valueMapper = (element) -> {
+            List<String> collection = listSupplier.get();
+            collection.add(element);
+            return collection;
+        };
+
+        BinaryOperator<List<String>> mergeFunction = (existing, replacement) -> {
+            existing.addAll(replacement);
+            return existing;
+        };
+
         convertedMap = strings.stream()
-            .collect(Collectors.toMap(String::length, (p) -> {
-                List<String> strs = listSupplier.get();
-                strs.add(p);
-                return strs;
-            }, (existing, replacement) -> {
-                existing.addAll(replacement);
-                return existing;
-            }, mapFactory));
+            .collect(Collectors.toMap(keyMapper, valueMapper, mergeFunction, mapFactory));
 
         assertEquals(2, convertedMap.size());
         assertTrue(convertedMap.get(3)
