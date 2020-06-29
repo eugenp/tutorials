@@ -6,7 +6,6 @@ import com.baeldung.ddd.hexagonal.adapters.AlertServiceImpl;
 import com.baeldung.ddd.hexagonal.adapters.InMemoryAlertRepository;
 import com.baeldung.ddd.hexagonal.domain.Alert;
 import com.baeldung.ddd.hexagonal.domain.Severity;
-import com.baeldung.ddd.hexagonal.ports.AlertRepository;
 import com.baeldung.ddd.hexagonal.ports.AlertService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -14,14 +13,12 @@ import spark.Request;
 import spark.Response;
 
 public class HttpAlertController {
-    private AlertRepository repository;
     private AlertService alertService;
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    public HttpAlertController() {
-        repository = new InMemoryAlertRepository();
-        alertService = new AlertServiceImpl(repository);
+    public HttpAlertController(AlertService alertService) {
+        this.alertService = alertService;
     }
 
     public String create(final Request req, final Response res) throws Exception {
@@ -34,7 +31,7 @@ public class HttpAlertController {
     }
 
     public static void main(String[] args) throws Exception {
-        HttpAlertController app = new HttpAlertController();
+        HttpAlertController app = new HttpAlertController(new AlertServiceImpl(new InMemoryAlertRepository()));
         get("/alert/create", (req, res) -> app.create(req, res));
     }
 
