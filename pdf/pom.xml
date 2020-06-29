@@ -63,12 +63,12 @@
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
-            <version>3.0.11.RELEASE</version>
+            <version>${thymeleaf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.xhtmlrenderer</groupId>
             <artifactId>flying-saucer-pdf</artifactId>
-            <version>9.1.20</version>
+            <version>${flying-saucer-pdf.version}</version>
         </dependency>
     </dependencies>
 
@@ -90,6 +90,8 @@
         <poi-scratchpad.version>3.15</poi-scratchpad.version>
         <batik-transcoder.version>1.8</batik-transcoder.version>
         <poi-ooxml.version>3.15</poi-ooxml.version>
+        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
+        <flying-saucer-pdf.version>9.1.20</flying-saucer-pdf.version>
     </properties>
 
 </project>

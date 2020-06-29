@@ -8,12 +8,11 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-io-2</name>
     <packaging>jar</packaging>
-
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -51,7 +50,7 @@
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
-            <version>2.26.3</version>
+            <version>${wiremock.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -81,6 +80,7 @@
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
+        <wiremock.version>2.26.3</wiremock.version>
     </properties>
 
 </project>

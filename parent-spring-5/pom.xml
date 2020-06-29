@@ -33,6 +33,7 @@
     <properties>
         <spring.version>5.2.5.RELEASE</spring.version>
         <spring-security.version>5.2.3.RELEASE</spring-security.version>
+        <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
     </properties>
 
 </project>

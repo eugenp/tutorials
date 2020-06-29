@@ -122,6 +122,11 @@
             <version>${univocity.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -147,6 +152,19 @@
             <groupId>org.renjin</groupId>
             <artifactId>renjin-script-engine</artifactId>
             <version>${renjin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <classifier>test</classifier>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -184,6 +202,7 @@
         <renjin.version>RELEASE</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
+        <kafka.version>2.5.0</kafka.version>
     </properties>
 
     <build>
@@ -203,5 +222,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
