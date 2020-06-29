@@ -59,7 +59,6 @@
     <properties>
         <testng.version>6.10</testng.version>
         <selenium-java.version>3.4.0</selenium-java.version>
-        <ashot.version>1.5.4</ashot.version>
     </properties>
 
 </project>
