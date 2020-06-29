@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class StringToBooleanUnitTest
-{
+public class StringToBooleanUnitTest {
+    
     @Test
     public void givenStringTrue_whenUsingParseBoolean_thenTrue() {
         assertThat(Boolean.parseBoolean("true")).isTrue();
