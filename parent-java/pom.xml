@@ -42,7 +42,7 @@
     </dependencies>
 
     <properties>
-        <guava.version>23.0</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <commons.io.version>2.6</commons.io.version>
         <jmh.version>1.19</jmh.version>
         <modelmapper.version>2.3.7</modelmapper.version>
