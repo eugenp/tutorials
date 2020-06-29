@@ -54,6 +54,18 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
+    public void whenDoWidening_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+        Person person = new Person();
+
+        Field pinCodeField = person.getClass()
+            .getDeclaredField("pinCode");
+        pinCodeField.setAccessible(true);
+
+        Long pinCode = pinCodeField.getLong(person);
+        Assertions.assertEquals(452002L, pinCode);
+    }
+
+    @Test
     public void whenGetFloatingTypeFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
         Person person = new Person();
 
@@ -119,6 +131,16 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
+    public void givenInt_whenGetLongField_thenIllegalArgumentException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+        Person person = new Person();
+        Field contactNumberField = person.getClass()
+            .getDeclaredField("contactNumber");
+        contactNumberField.setAccessible(true);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> contactNumberField.getInt(person));
+    }
+
+    @Test
     public void whenFieldNotSetAccessible_thenIllegalAccessException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
         Person person = new Person();
         Field nameField = person.getClass()
@@ -132,7 +154,7 @@ public class AccessPrivateFieldsUnitTest {
         Person person = new Person();
 
         Assertions.assertThrows(NoSuchFieldException.class, () -> person.getClass()
-            .getDeclaredField("genders"));
+            .getDeclaredField("firstName"));
     }
 
     @Test
