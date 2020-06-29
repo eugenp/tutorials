@@ -1,9 +1,9 @@
-package test.java.com.baeldung.selenium.junit;
+package com.baeldung.selenium.pages;
 
-import main.java.com.baeldung.selenium.config.SeleniumConfig;
-import main.java.com.baeldung.selenium.models.BaeldungAbout;
-import main.java.com.baeldung.selenium.pages.BaeldungHomePage;
-import main.java.com.baeldung.selenium.pages.StartHerePage;
+import com.baeldung.selenium.config.SeleniumConfig;
+import com.baeldung.selenium.models.BaeldungAbout;
+import com.baeldung.selenium.pages.BaeldungHomePage;
+import com.baeldung.selenium.pages.StartHerePage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

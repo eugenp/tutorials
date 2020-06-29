@@ -1,4 +1,16 @@
-package test.java.com.baeldung.selenium.junit;
+package com.baeldung.selenium.cookies;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
+
+import java.io.File;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,12 +21,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-
 public class SeleniumCookiesJUnitLiveTest {
 
     private WebDriver driver;
@@ -22,11 +28,21 @@ public class SeleniumCookiesJUnitLiveTest {
 
     @Before
     public void setUp() {
+        System.setProperty("webdriver.gecko.driver", findFile("geckodriver.mac"));
+        
         Capabilities capabilities = DesiredCapabilities.firefox();
         driver = new FirefoxDriver(capabilities);
         navUrl = "https://baeldung.com";
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+    }
+    
+    private static String findFile(String filename) {
+        String[] paths = { "", "bin/", "target/classes" }; // if you have chromedriver somewhere else on the path, then put it here.
+        for (String path : paths) {
+            if (new File(path + filename).exists())
+                return path + filename;
+        }
+        return "";
     }
 
     @After
