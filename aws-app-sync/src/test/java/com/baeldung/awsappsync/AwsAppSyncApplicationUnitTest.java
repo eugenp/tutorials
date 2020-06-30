@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Disabled
-class AwsAppSyncApplicationTests {
+class AwsAppSyncApplicationUnitTest {
 
     @Test
     void givenGraphQuery_whenListEvents_thenReturnAllEvents() {
