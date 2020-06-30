@@ -57,6 +57,7 @@
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
+        <module>spring-boot-actuator</module>
     </modules>
 
 </project>
