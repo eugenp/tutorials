@@ -17,12 +17,6 @@ public class ArticleService implements IArticleService {
 
     private final Properties properties;
 
-    @Getter
-    @Setter
-    public static class Properties {
-        private long popularityThreshold;
-    }
-
     @Override
     public List<Article> articles() {
         return repository.findAll();
@@ -47,5 +41,11 @@ public class ArticleService implements IArticleService {
         } else {
             throw new ArticleNotFoundException(String.format("Article with id %d not found", id));
         }
+    }
+
+    @Getter
+    @Setter
+    public static class Properties {
+        private long popularityThreshold;
     }
 }

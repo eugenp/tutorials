@@ -17,7 +17,6 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity(name = "articles")
 public class Article {
-
     @Id
     @GeneratedValue
     private Integer id;

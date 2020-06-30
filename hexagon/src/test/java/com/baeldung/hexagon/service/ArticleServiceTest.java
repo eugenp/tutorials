@@ -34,8 +34,8 @@ public class ArticleServiceTest {
 
     @PostConstruct
     void init() {
-        popularArticle = new Article(1,"Popular Article", new Date(),20000L);
-        notPopularArticle = new Article(1,"Not popular Article", new Date(),9000L);
+        popularArticle = new Article(1, "Popular Article", new Date(), 20000L);
+        notPopularArticle = new Article(1, "Not popular Article", new Date(), 9000L);
 
         when(properties.getPopularityThreshold()).thenReturn(10000L);
     }
