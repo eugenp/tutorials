@@ -1,4 +1,4 @@
-package java.com.baeldung.selenium.clickusingjavascript;
+package com.baeldung.selenium.clickusingjavascript;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,16 +14,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SeleniumJavaScriptClickTest {
+import java.io.File;
+
+public class SeleniumJavaScriptClickLiveTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", new File("src/main/resources/chromedriver.mac").getAbsolutePath());
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 5000);
+        wait = new WebDriverWait(driver, 20);
     }
 
     @After
@@ -37,19 +39,21 @@ public class SeleniumJavaScriptClickTest {
         String title = driver.getTitle();
         assertEquals("Baeldung | Java, Spring and Web Development tutorials", title);
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.className("menu-search")));
-        WebElement searchButton = driver.findElement(By.className("menu-search"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.className("nav--menu_item_anchor")));
+        WebElement searchButton = driver.findElement(By.className("nav--menu_item_anchor"));
         clickElement(searchButton);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.id("search")));
         WebElement searchInput = driver.findElement(By.id("search"));
         searchInput.sendKeys("Selenium");
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.className("btn-search")));
-        WebElement seeSearchResultsButton = driver.findElement(By.className("btn-search"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-search")));
+        WebElement seeSearchResultsButton = driver.findElement(By.cssSelector(".btn-search"));
         clickElement(seeSearchResultsButton);
 
-        int seleniumPostsCount = driver.findElements(By.className("post")).size();
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("post")));
+        int seleniumPostsCount = driver.findElements(By.className("post"))
+            .size();
         assertTrue(seleniumPostsCount > 0);
     }
 

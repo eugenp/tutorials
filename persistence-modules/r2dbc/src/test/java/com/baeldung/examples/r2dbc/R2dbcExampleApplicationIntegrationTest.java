@@ -19,7 +19,7 @@ import reactor.core.publisher.Flux;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class R2dbcExampleApplicationTests {
+public class R2dbcExampleApplicationIntegrationTest {
     
     
     @Autowired
