@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.hexagonalarchitecture.application.response.AddTicketResponse;
-import com.baeldung.hexagonalarchitecture.application.response.CreateConcertResponse;
-import com.baeldung.hexagonalarchitecture.application.response.GetConcertsResponse;
 import com.baeldung.hexagonalarchitecture.business.entities.Concert;
 import com.baeldung.hexagonalarchitecture.business.entities.Ticket;
 import com.baeldung.hexagonalarchitecture.business.service.ConcertService;
@@ -33,16 +30,15 @@ public class ConcertController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    GetConcertsResponse getConcerts() {
-        final List<Concert> allConcerts = concertService.getAllConcerts();
-        return new GetConcertsResponse(allConcerts);
+    List<Concert> getConcerts() {
+        return concertService.getAllConcerts();
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    CreateConcertResponse createConcert(@RequestBody final Concert concert) {
+    UUID createConcert(@RequestBody final Concert concert) {
         final UUID id = concertService.addConcert(concert);
 
-        return new CreateConcertResponse(id);
+        return id;
     }
 
     @DeleteMapping
@@ -51,10 +47,9 @@ public class ConcertController {
     }
 
     @PostMapping(value = "/{concertId}/tickets", consumes = MediaType.APPLICATION_JSON_VALUE)
-    AddTicketResponse addTicket(@PathVariable final UUID concertId, @RequestBody final Ticket ticket) {
+    UUID addTicket(@PathVariable final UUID concertId, @RequestBody final Ticket ticket) {
         final UUID ticketId = concertService.addTicket(concertId, ticket);
-
-        return new AddTicketResponse(ticketId);
+        return ticketId;
     }
 
     @DeleteMapping(value = "/{concertId}/tickets", consumes = MediaType.APPLICATION_JSON_VALUE)

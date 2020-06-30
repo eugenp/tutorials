@@ -8,11 +8,11 @@ import com.baeldung.hexagonalarchitecture.business.entities.Concert;
 
 public interface ConcertRepository {
 
-  UUID save(final Concert concert);
+    UUID save(final Concert concert);
 
-  void delete(final UUID id);
+    void delete(final UUID id);
 
-  Optional<Concert> findById(final UUID id);
+    Optional<Concert> findById(final UUID id);
 
-  List<Concert> findAll();
+    List<Concert> findAll();
 }

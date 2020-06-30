@@ -55,5 +55,4 @@ public class ConcertServiceImpl implements ConcertService {
     public List<Concert> getAllConcerts() {
         return concertRepository.findAll();
     }
-
 }
