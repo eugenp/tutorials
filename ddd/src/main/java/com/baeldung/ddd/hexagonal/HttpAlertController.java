@@ -29,10 +29,4 @@ public class HttpAlertController {
         String output = mapper.writeValueAsString(alert);
         return output;
     }
-
-    public static void main(String[] args) throws Exception {
-        HttpAlertController app = new HttpAlertController(new AlertServiceImpl(new InMemoryAlertRepository()));
-        get("/alert/create", (req, res) -> app.create(req, res));
-    }
-
 }
