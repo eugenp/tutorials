@@ -18,7 +18,7 @@ public class MarvinExample {
         scale.setAttribute("newWidth", targetWidth);
         scale.setAttribute("newHeight", targetHeight);
         scale.process(image.clone(), image, null, null, false);
-        return image.getBufferedImage();
+        return image.getBufferedImageNoAlpha();
     }
 
     public static void main(String args[]) throws IOException {
