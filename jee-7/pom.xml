@@ -351,9 +351,10 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
-                            <environmentVariables>
-                                <JBOSS_HOME>${project.build.directory}/wildfly-${wildfly.version}</JBOSS_HOME>
-                            </environmentVariables>
+                            <systemPropertyVariables>
+                                <jboss.home>${project.basedir}/target/wildfly-${wildfly.version}</jboss.home>
+                                <jboss.http.port>8639</jboss.http.port>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
