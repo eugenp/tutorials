@@ -13,4 +13,5 @@ This module contains articles about the Stream API in Java.
 - [Java Stream Filter with Lambda Expression](https://www.baeldung.com/java-stream-filter-lambda)
 - [Counting Matches on a Stream Filter](https://www.baeldung.com/java-stream-filter-count)
 - [Summing Numbers with Java Streams](https://www.baeldung.com/java-stream-sum)
+- [How to Find all Getters Returning Null](https://www.baeldung.com/java-getters-returning-null)
 - More articles: [[next -->]](/../core-java-streams-2)
