@@ -1,9 +1,8 @@
 package com.baeldung.map.primitives;
 
-import cern.colt.map.AbstractIntDoubleMap;
-import cern.colt.map.OpenIntDoubleHashMap;
-import gnu.trove.map.TDoubleIntMap;
-import gnu.trove.map.hash.TDoubleIntHashMap;
+import com.carrotsearch.hppc.IntLongHashMap;
+import com.carrotsearch.hppc.IntLongScatterMap;
+
 import it.unimi.dsi.fastutil.ints.Int2BooleanMap;
 import it.unimi.dsi.fastutil.ints.Int2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.ints.Int2BooleanSortedMap;
@@ -18,10 +17,25 @@ public class PrimitiveMaps {
 
     public static void main(String[] args) {
 
+        hppcMap();
         eclipseCollectionsMap();
-        troveMap();
-        coltMap();
         fastutilMap();
+    }
+
+    private static void hppcMap() {
+        IntLongHashMap intLongHashMap = new IntLongHashMap();
+        intLongHashMap.put(25,1L);
+        intLongHashMap.put(150,Long.MAX_VALUE);
+        intLongHashMap.put(1,0L);
+        
+        intLongHashMap.get(150);
+
+        IntLongScatterMap intLongScatterMap = new IntLongScatterMap();
+        intLongScatterMap.put(1, 1L);
+        intLongScatterMap.put(2, -2L);
+        intLongScatterMap.put(1000,0L);    
+
+        intLongScatterMap.get(1000);
     }
 
     private static void fastutilMap() {
@@ -33,12 +47,6 @@ public class PrimitiveMaps {
         boolean value = int2BooleanMap.get(1);
 
         Int2BooleanSortedMap int2BooleanSorted = Int2BooleanSortedMaps.EMPTY_MAP;
-    }
-
-    private static void coltMap() {
-        AbstractIntDoubleMap map = new OpenIntDoubleHashMap();
-        map.put(1, 4.5);
-        double value = map.get(1);
     }
 
     private static void eclipseCollectionsMap() {
@@ -53,17 +61,5 @@ public class PrimitiveMaps {
         dObject.addToValue("stability", 0.8);
     }
 
-    private static void troveMap() {
-        double[] doubles = new double[] {1.2, 4.5, 0.3};
-        int[] ints = new int[] {1, 4, 0};
 
-        TDoubleIntMap doubleIntMap = new TDoubleIntHashMap(doubles, ints);
-
-        doubleIntMap.put(1.2, 22);
-        doubleIntMap.put(4.5, 16);
-
-        doubleIntMap.adjustValue(1.2, 1);
-        doubleIntMap.adjustValue(4.5, 4);
-        doubleIntMap.adjustValue(0.3, 7);
-    }
 }
