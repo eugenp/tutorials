@@ -18,7 +18,7 @@ public class Slf4jRunnable implements Runnable {
 
         new Slf4TransferService().transfer(tx.getAmount());
 
-        MDC.clear();
+        // MDC.clear(); We don't need this with MdcAwareThreadPoolExecutor
 
     }
 }
