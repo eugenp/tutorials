@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.quarkus.liquibase</groupId>
-    <artifactId>quarkus-liquibase-parent</artifactId>
-    <name>quarkus-liquibase-parent</name>
+    <artifactId>quarkus-liquibase</artifactId>
+    <name>quarkus-liquibase</name>
     <packaging>pom</packaging>
 
     <parent>

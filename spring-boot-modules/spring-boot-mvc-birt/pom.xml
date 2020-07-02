@@ -75,7 +75,6 @@
     </build>
 
     <properties>
-        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
         <start-class>com.baeldung.birt.engine.ReportEngineApplication</start-class>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

@@ -70,12 +70,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -342,33 +336,25 @@
                 <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
+                <module>algorithms-miscellaneous-6</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-
-                <module>apache-avro</module>
-                <module>apache-bval</module>
-                <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
-                <module>apache-geode</module>
-                <module>apache-meecrowave</module>
-                <module>apache-olingo/olingo2</module>
-                <module>apache-opennlp</module>
-                <module>apache-poi</module>
-                <module>apache-pulsar</module>
+                
+                <module>apache-cxf</module>  
+                <module>apache-libraries</module>              
+                <module>apache-olingo/olingo2</module>                
+                <module>apache-poi</module>                
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
-                <module>apache-solrj</module>
+                <module>apache-shiro</module>             
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>
-                <module>apache-zookeeper</module>
+                <module>apache-velocity</module>             
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -376,6 +362,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
@@ -386,8 +373,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
-                <module>cas</module>
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -453,18 +439,15 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-math</module>
-                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
+		<module>java-numbers-3</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -498,7 +481,8 @@
                 <module>kotlin-quasar</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>libraries-2</module>
+		<module>language-interop</module>
+		<module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -508,10 +492,13 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -537,6 +524,7 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -567,6 +555,8 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+
+				<module>atomikos</module>
             </modules>
 
         </profile>
@@ -651,11 +641,13 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
@@ -731,6 +723,7 @@
                 <module>spring-threads</module>
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -808,9 +801,13 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -853,34 +850,25 @@
                 <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
+                <module>algorithms-miscellaneous-6</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-
-                <module>apache-avro</module>
-                <module>apache-beam</module>
-                <module>apache-bval</module>
-                <module>apache-curator</module>
-                <module>apache-cxf</module>
-                <module>apache-fop</module>
-                <module>apache-geode</module>
-                <module>apache-meecrowave</module>
-                <module>apache-olingo/olingo2</module>
-                <module>apache-opennlp</module>
-                <module>apache-poi</module>
-                <module>apache-pulsar</module>
+              
+                <module>apache-cxf</module> 
+                <module>apache-libraries</module>                             
+                <module>apache-olingo/olingo2</module>                
+                <module>apache-poi</module>                
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
-                <module>apache-solrj</module>
+                <module>apache-shiro</module>                
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>
-                <module>apache-zookeeper</module>
+                <module>apache-velocity</module>                
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -898,8 +886,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
-                <module>cas</module>
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -965,15 +952,12 @@
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-math</module>
-                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
@@ -1011,6 +995,7 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1019,10 +1004,12 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -1048,6 +1035,7 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -1078,6 +1066,8 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+
+				<module>atomikos</module>
             </modules>
 
         </profile>
@@ -1154,6 +1144,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1201,6 +1192,7 @@
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
+                <module>spring-mvc-crash</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1233,6 +1225,7 @@
 
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -1263,6 +1256,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
@@ -1302,10 +1296,44 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
+
+        </profile>
+
+        <profile>
+            <id>live-all</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/SpringContextTest.java</exclude>
+                                <exclude>**/*UnitTest.java</exclude>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
 
         </profile>
 

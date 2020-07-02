@@ -13,3 +13,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring RequestMapping](https://www.baeldung.com/spring-requestmapping)
 - [Guide to DeferredResult in Spring](https://www.baeldung.com/spring-deferred-result)
 - [Using JSON Patch in Spring REST APIs](https://www.baeldung.com/spring-rest-json-patch)
+- [OpenAPI JSON Objects as Query Parameters](https://www.baeldung.com/openapi-json-query-parameters)

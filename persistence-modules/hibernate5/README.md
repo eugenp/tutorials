@@ -4,8 +4,8 @@ This module contains articles about Hibernate 5. Let's not add more articles her
 
 ### Relevant articles:
 
-- [An Overview of Identifiers in Hibernate](http://www.baeldung.com/hibernate-identifiers)
-- [Hibernate Interceptors](http://www.baeldung.com/hibernate-interceptor)
+- [An Overview of Identifiers in Hibernate/JPA](https://www.baeldung.com/hibernate-identifiers)
+- [Hibernate Interceptors](https://www.baeldung.com/hibernate-interceptor)
 - [Hibernate Entity Lifecycle](https://www.baeldung.com/hibernate-entity-lifecycle)
 - [Hibernate 5 Naming Strategy Configuration](https://www.baeldung.com/hibernate-naming-strategy)
 - [Proxy in Hibernate load() Method](https://www.baeldung.com/hibernate-proxy-load-method)
