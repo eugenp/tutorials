@@ -1,13 +1,17 @@
 package com.baeldung.jackson.date;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -15,11 +19,6 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
-import com.baeldung.jackson.date.Event;
-import com.baeldung.jackson.date.EventWithFormat;
-import com.baeldung.jackson.date.EventWithJodaTime;
-import com.baeldung.jackson.date.EventWithLocalDateTime;
-import com.baeldung.jackson.date.EventWithSerializer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -30,7 +29,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 public class JacksonDateUnitTest {
 
     @Test
-    public void whenSerializingDateWithJackson_thenSerializedToNumber() throws JsonProcessingException, ParseException {
+    public void whenSerializingDateWithJackson_thenSerializedToTimestamp() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -54,12 +53,27 @@ public class JacksonDateUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        
+
         // StdDateFormat is ISO8601 since jackson 2.9
         mapper.setDateFormat(new StdDateFormat().withColonInTimeZone(true));
 
         final String result = mapper.writeValueAsString(event);
         assertThat(result, containsString("1970-01-01T02:30:00.000+00:00"));
+    }
+    
+    @Test
+    public void whenDeserialisingZonedDateTimeWithDefaults_thenNotCorrect()
+      throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules();
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
+        String converted = objectMapper.writeValueAsString(now);
+     
+        ZonedDateTime restored = objectMapper.readValue(converted, ZonedDateTime.class);
+        System.out.println("serialized: " + now);
+        System.out.println("restored: " + restored);
+        assertThat(now, is(restored));
     }
 
     @Test
@@ -125,7 +139,7 @@ public class JacksonDateUnitTest {
     }
 
     @Test
-    public void whenDeserializingDateWithJackson_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingDateWithJackson_thenCorrect() throws IOException {
         final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -138,7 +152,7 @@ public class JacksonDateUnitTest {
     }
 
     @Test
-    public void whenDeserializingDateUsingCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingDateUsingCustomDeserializer_thenCorrect() throws IOException {
         final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -159,6 +173,28 @@ public class JacksonDateUnitTest {
 
         final String result = mapper.writeValueAsString(date);
         assertThat(result, containsString("2014-12-20T02:30"));
+    }
+
+    @Test
+    public void whenSerializingJava8DateAndReadingValue_thenCorrect() throws IOException {
+        String stringDate = "\"2014-12-20\"";
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+        LocalDate result = mapper.readValue(stringDate, LocalDate.class);
+        assertThat(result.toString(), containsString("2014-12-20"));
+    }
+
+    @Test
+    public void whenSerializingJava8DateAndReadingFromEntity_thenCorrect() throws IOException {
+        String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014\"}";
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        EventWithLocalDate result = mapper.readValue(json, EventWithLocalDate.class);
+        assertThat(result.getEventDate().toString(), containsString("2014-12-20"));
     }
 
     @Test

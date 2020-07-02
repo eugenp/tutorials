@@ -9,11 +9,27 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>persistence-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+    
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -32,15 +48,19 @@
         <dependency>
             <groupId>io.lettuce</groupId>
             <artifactId>lettuce-core</artifactId>
-            <version>${lettuce-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <version>${epoll.version}</version>
         </dependency>
     </dependencies>
 
-    <properties>
-        <jedis.version>3.2.0</jedis.version>
+    <properties>        
         <embedded-redis.version>0.6</embedded-redis.version>
-        <redisson.version>3.3.0</redisson.version>
-        <lettuce-core.version>5.0.1.RELEASE</lettuce-core.version>
+        <redisson.version>3.13.1</redisson.version>
+        <jedis.version>3.3.0</jedis.version>
+        <epoll.version>4.1.50.Final</epoll.version>
     </properties>
 
 </project>

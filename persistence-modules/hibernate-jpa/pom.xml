@@ -81,11 +81,17 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk-jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <hibernate.version>5.3.7.Final</hibernate.version>
-        <mysql.version>6.0.6</mysql.version>
+        <mysql.version>8.0.13</mysql.version>
+        <postgresql.version>42.2.11</postgresql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <openjdk-jmh.version>1.21</openjdk-jmh.version>

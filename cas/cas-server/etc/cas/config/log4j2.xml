@@ -2,20 +2,26 @@
 <!-- Specify the refresh internal in seconds. -->
 <Configuration monitorInterval="5" packages="org.apereo.cas.logging">
     <Properties>
-        <!-- 
-        Default log directory is the current directory but that can be overridden with -Dcas.log.dir=<logdir>
-        Or you can change this property to a new default
-        -->
-        <Property name="cas.log.dir" >.</Property>
-        <!-- To see more CAS specific logging, adjust this property to info or debug or run server with -Dcas.log.leve=debug -->
-        <Property name="cas.log.level" >warn</Property>
+        <Property name="baseDir">/var/log</Property>
+
+        <Property name="cas.log.level">info</Property>
+        <Property name="spring.webflow.log.level">warn</Property>
+        <Property name="spring.security.log.level">info</Property>
+        <Property name="spring.cloud.log.level">warn</Property>
+        <Property name="spring.boot.admin.log.level">debug</Property>
+        <Property name="spring.web.log.level">warn</Property>
+        <Property name="spring.boot.log.level">warn</Property>
+        <Property name="ldap.log.level">warn</Property>
+        <Property name="pac4j.log.level">warn</Property>
+        <Property name="opensaml.log.level">warn</Property>
+        <Property name="hazelcast.log.level">warn</Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
+            <PatternLayout pattern="%highlight{%d %p [%c] - &lt;%m&gt;}%n"/>
         </Console>
-        <RollingFile name="file" fileName="${sys:cas.log.dir}/cas.log" append="true"
-                     filePattern="${sys:cas.log.dir}/cas-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingFile name="file" fileName="${baseDir}/cas.log" append="true"
+                     filePattern="${baseDir}/cas-%d{yyyy-MM-dd-HH}-%i.log">
             <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy />
@@ -23,19 +29,9 @@
                 <TimeBasedTriggeringPolicy />
             </Policies>
         </RollingFile>
-        <RollingFile name="auditlogfile" fileName="${sys:cas.log.dir}/cas_audit.log" append="true"
-                     filePattern="${sys:cas.log.dir}/cas_audit-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingFile name="auditlogfile" fileName="${baseDir}/cas_audit.log" append="true"
+                     filePattern="${baseDir}/cas_audit-%d{yyyy-MM-dd-HH}-%i.log">
             <PatternLayout pattern="%d %p [%c] - %m%n"/>
-            <Policies>
-                <OnStartupTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="10 MB"/>
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
-
-        <RollingFile name="perfFileAppender" fileName="${sys:cas.log.dir}/perfStats.log" append="true"
-                     filePattern="${sys:cas.log.dir}/perfStats-%d{yyyy-MM-dd-HH}-%i.log">
-            <PatternLayout pattern="%m%n"/>
             <Policies>
                 <OnStartupTriggeringPolicy />
                 <SizeBasedTriggeringPolicy size="10 MB"/>
@@ -52,52 +48,58 @@
         <CasAppender name="casConsole">
             <AppenderRef ref="console" />
         </CasAppender>
-        <CasAppender name="casPerf">
-            <AppenderRef ref="perfFileAppender" />
-        </CasAppender>
     </Appenders>
     <Loggers>
         <!-- If adding a Logger with level set higher than warn, make category as selective as possible -->
         <!-- Loggers inherit appenders from Root Logger unless additivity is false -->
         <AsyncLogger name="org.apereo" level="${sys:cas.log.level}" includeLocation="true"/>
         <AsyncLogger name="org.apereo.services.persondir" level="${sys:cas.log.level}" includeLocation="true"/>
-        <AsyncLogger name="org.apereo.cas.web.flow" level="info" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.cas.web.flow" level="${sys:cas.log.level}" includeLocation="true"/>
+        <AsyncLogger name="org.apereo.spring" level="${sys:cas.log.level}" includeLocation="true"/>
+
         <AsyncLogger name="org.apache" level="warn" />
         <AsyncLogger name="org.apache.http" level="error" />
-        <AsyncLogger name="org.springframework" level="warn" />
-        <AsyncLogger name="org.springframework.cloud.server" level="warn" />
-        <AsyncLogger name="org.springframework.cloud.client" level="warn" />
-        <AsyncLogger name="org.springframework.cloud.bus" level="warn" />
-        <AsyncLogger name="org.springframework.aop" level="warn" />
-        <AsyncLogger name="org.springframework.boot" level="warn" />
-        <AsyncLogger name="org.springframework.boot.actuate.autoconfigure" level="warn" />
-        <AsyncLogger name="org.springframework.webflow" level="warn" />
-        <AsyncLogger name="org.springframework.session" level="warn" />
-        <AsyncLogger name="org.springframework.amqp" level="error" />
-        <AsyncLogger name="org.springframework.integration" level="warn" />
-        <AsyncLogger name="org.springframework.messaging" level="warn" />
-        <AsyncLogger name="org.springframework.web" level="warn" />
-        <AsyncLogger name="org.springframework.orm.jpa" level="warn" />
-        <AsyncLogger name="org.springframework.scheduling" level="warn" />
-        <AsyncLogger name="org.springframework.context.annotation" level="error" />
-        <AsyncLogger name="org.springframework.boot.devtools" level="error" />
-        <AsyncLogger name="org.springframework.web.socket" level="warn" />
-        <AsyncLogger name="org.thymeleaf" level="warn" />
-        <AsyncLogger name="org.pac4j" level="warn" />
-        <AsyncLogger name="org.opensaml" level="warn"/>
-        <AsyncLogger name="net.sf.ehcache" level="warn" />
-        <AsyncLogger name="com.couchbase" level="warn" includeLocation="true"/>
-        <AsyncLogger name="com.ryantenney.metrics" level="warn" />
-        <AsyncLogger name="net.jradius" level="warn" />
-        <AsyncLogger name="org.openid4java" level="warn" />
-        <AsyncLogger name="org.ldaptive" level="warn" />
-        <AsyncLogger name="com.hazelcast" level="warn" />
-        <AsyncLogger name="org.apereo.spring" level="warn" />
 
-        <!-- Log perf stats only to perfStats.log -->
-        <AsyncLogger name="perfStatsLogger" level="info" additivity="false" includeLocation="true">
-            <AppenderRef ref="casPerf"/>
-        </AsyncLogger>
+        <AsyncLogger name="org.springframework.boot" level="${sys:spring.boot.log.level" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.boot.context.embedded" level="info" includeLocation="true" />
+        <AsyncLogger name="org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration"
+        level="${sys:spring.security.log.level}" includeLocation="true" />
+        <AsyncLogger name="org.springframework.boot.autoconfigure.security" level="${sys:spring.security.log.level}" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.boot.devtools" level="off" includeLocation="true"/>
+
+        <AsyncLogger name="org.springframework" level="warn" includeLocation="true" />
+        <AsyncLogger name="org.springframework.webflow" level="${sys:spring.webflow.log.level}" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.aop" level="warn" includeLocation="true" />
+        <AsyncLogger name="org.springframework.web" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.session" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.scheduling" level="info" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.cloud.vault" level="warn" includeLocation="true" />
+        <AsyncLogger name="org.springframework.web.client" level="warn" includeLocation="true" />
+        <AsyncLogger name="org.springframework.security" level="${sys:spring.security.log.level}" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.cloud" level="${sys:spring.cloud.log.level}" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.amqp" level="error" />
+        <AsyncLogger name="org.springframework.integration" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.messaging" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.web" level="${sys:spring.web.log.level}" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.orm.jpa" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.scheduling" level="warn" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.context.annotation" level="off" includeLocation="true"/>
+        <AsyncLogger name="org.springframework.web.socket" level="warn" includeLocation="true"/>
+
+        <AsyncLogger name="org.thymeleaf" level="warn" includeLocation="true"/>
+
+        <AsyncLogger name="org.pac4j" level="${sys:pac4j.log.level}" includeLocation="true"/>
+
+        <AsyncLogger name="org.opensaml" level="${sys:opensaml.log.level}" includeLocation="true"/>
+        <AsyncLogger name="PROTOCOL_MESSAGE" level="${sys:opensaml.log.level}" includeLocation="true" />
+
+        <AsyncLogger name="net.sf.ehcache" level="warn" includeLocation="true"/>
+        <AsyncLogger name="com.couchbase" level="warn" includeLocation="true"/>
+        <AsyncLogger name="de.codecentric" level="${sys:spring.boot.admin.log.level}" includeLocation="true"/>
+        <AsyncLogger name="net.jradius" level="warn" includeLocation="true" />
+        <AsyncLogger name="org.openid4java" level="warn" includeLocation="true" />
+        <AsyncLogger name="org.ldaptive" level="${sys:ldap.log.level}" includeLocation="true"/>
+        <AsyncLogger name="com.hazelcast" level="${sys:hazelcast.log.level}" includeLocation="true"/>
 
         <!-- Log audit to all root appenders, and also to audit log (additivity is not false) -->
         <AsyncLogger name="org.apereo.inspektr.audit.support" level="info" includeLocation="true" >

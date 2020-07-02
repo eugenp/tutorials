@@ -7,14 +7,14 @@
     <version>0.1-SNAPSHOT</version>
     <name>spring-mvc-java-2</name>
     <packaging>war</packaging>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -26,14 +26,32 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.mvc.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
-    
+
+    <build>
+        <finalName>spring-mvc-java-2</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
     <properties>
         <javax.version>4.0.1</javax.version>
         <spring.mvc.version>5.2.2.RELEASE</spring.mvc.version>
     </properties>
 
 
-    
 </project>

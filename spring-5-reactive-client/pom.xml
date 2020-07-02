@@ -60,12 +60,12 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.0.1</version>
+            <version>${okhttp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>mockwebserver</artifactId>
-            <version>4.0.1</version>
+            <version>${okhttp.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -92,8 +92,8 @@
         </dependency>
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
-            <version>2.24.1</version>
+            <artifactId>wiremock-standalone</artifactId>
+            <version>2.26.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -171,6 +171,7 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <jetty-reactive-httpclient.version>1.0.3</jetty-reactive-httpclient.version>
+        <okhttp.version>4.0.1</okhttp.version>
     </properties>
 
 </project>
