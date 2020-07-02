@@ -1,7 +1,7 @@
 package com.baeldung.algorithms.play2048;
 
 public class Play2048 {
-    private static final int SIZE = 3;
+    private static final int SIZE = 4;
     private static final int INITIAL_NUMBERS = 2;
 
     public static void main(String[] args) {
