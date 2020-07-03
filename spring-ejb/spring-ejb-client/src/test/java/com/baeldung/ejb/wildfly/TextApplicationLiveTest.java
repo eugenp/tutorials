@@ -8,7 +8,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.junit.Assert.*;
 
-public class TextApplicationIntegrationTest {
+/**
+ * This Live Test requires:
+ * * run the `spring-ejb-remote` module with the following command: `mvn clean package cargo:run -Pwildfly-standalone`
+ *
+ */
+public class TextApplicationLiveTest {
 
     private static ByteArrayOutputStream outContent;
 
@@ -26,6 +31,6 @@ public class TextApplicationIntegrationTest {
     @Test
     public void givenInputString_whenCompareTtoStringPrintedToConsole_thenSuccessful() throws NamingException {
         TextApplication.main(new String[]{});
-        assertEquals("SAMPLE TEXT", outContent.toString());
+        assertTrue(outContent.toString().contains("SAMPLE TEXT"));
     }
 }
