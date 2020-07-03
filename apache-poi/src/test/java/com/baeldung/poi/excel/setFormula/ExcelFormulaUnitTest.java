@@ -1,26 +1,18 @@
-package com.bealdung.poi.excelformula;
+package com.baeldung.poi.excel.setFormula;
 
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-class ExcelformulaApplicationTests {
-    @Autowired
-    private ExcelFormula excelFormula;
-
+class ExcelFormulaUnitTest {
     @Test
     void givenExcelData_whenSetAndEvaluateFormula() throws IOException {
+        ExcelFormula excelFormula = new ExcelFormula();
         List<Integer> data = Arrays.asList(2, 5, 10, 15, 7, 9);
         XSSFSheet sheet = excelFormula.inserData(data);
         int result = 0;
@@ -34,5 +26,4 @@ class ExcelformulaApplicationTests {
         int resultValue = (int) excelFormula.setFormula(sumFormula);
         Assert.assertEquals("The results are the same!", resultValue , result);
     }
-
 }

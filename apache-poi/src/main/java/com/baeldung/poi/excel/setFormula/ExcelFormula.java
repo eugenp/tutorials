@@ -1,16 +1,14 @@
-package com.bealdung.poi.excelformula;
+package com.baeldung.poi.excel.setFormula;
 
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
 
-@Component
 public class ExcelFormula {
     XSSFWorkbook excel;
     public XSSFSheet inserData(List<Integer> dataList) {
