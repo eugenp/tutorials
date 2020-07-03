@@ -1,0 +1,1 @@
+Premain-Class: com.baeldung.instrumentation.loadedclasslisting.ListLoadedClassesAgent
