@@ -13,7 +13,7 @@ public class JdbcDriverLoadingUnitTest {
 
     @Before
     public void setup() throws SQLException {
-        if(!org.postgresql.Driver.isRegistered()) {
+        if (!org.postgresql.Driver.isRegistered()) {
             org.postgresql.Driver.register();
         }
     }
@@ -58,7 +58,7 @@ public class JdbcDriverLoadingUnitTest {
 
         org.postgresql.Driver.register(); // This is invoked as part of Class.forName() logic
 
-        driver  = getDriver();
+        driver = getDriver();
         assertNotNull("Driver must register as part of class loading", driver);
     }
 
