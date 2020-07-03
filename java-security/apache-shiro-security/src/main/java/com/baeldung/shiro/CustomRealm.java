@@ -19,8 +19,12 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CustomRealm extends JdbcRealm {
+    
+    private Logger logger = LoggerFactory.getLogger(CustomRealm.class);
 
     private Map<String, String> credentials = new HashMap<>();
     private Map<String, Set<String>> roles = new HashMap<>();
@@ -60,7 +64,7 @@ public class CustomRealm extends JdbcRealm {
                 roles.addAll(getRoleNamesForUser(null, (String) user));
                 permissions.addAll(getPermissions(null, null, roles));
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error(e.getMessage());
             }
         }
         SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo(roles);
