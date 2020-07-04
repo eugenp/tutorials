@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class AccessPrivateFieldsUnitTest {
 
     @Test
-    public void whenGetIntegerFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenGetIntegerFields_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field ageField = person.getClass()
@@ -42,7 +42,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenDoAutoboxing_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenDoAutoboxing_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field pinCodeField = person.getClass()
@@ -54,7 +54,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenDoWidening_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenDoWidening_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field pinCodeField = person.getClass()
@@ -66,7 +66,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenGetFloatingTypeFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenGetFloatingTypeFields_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field heightField = person.getClass()
@@ -85,7 +85,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenGetCharacterFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenGetCharacterFields_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field genderField = person.getClass()
@@ -97,7 +97,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenGetBooleanFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenGetBooleanFields_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field activeField = person.getClass()
@@ -109,7 +109,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenGetObjectFields_thenSuccess() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenGetObjectFields_thenSuccess() throws Exception {
         Person person = new Person();
 
         Field nameField = person.getClass()
@@ -121,7 +121,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void givenInt_whenGetStringField_thenIllegalArgumentException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void givenInt_whenGetStringField_thenIllegalArgumentException() throws Exception {
         Person person = new Person();
         Field nameField = person.getClass()
             .getDeclaredField("name");
@@ -131,7 +131,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void givenInt_whenGetLongField_thenIllegalArgumentException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void givenInt_whenGetLongField_thenIllegalArgumentException() throws Exception {
         Person person = new Person();
         Field contactNumberField = person.getClass()
             .getDeclaredField("contactNumber");
@@ -141,7 +141,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenFieldNotSetAccessible_thenIllegalAccessException() throws IllegalAccessException, IllegalArgumentException, NoSuchFieldException, NullPointerException {
+    public void whenFieldNotSetAccessible_thenIllegalAccessException() throws Exception {
         Person person = new Person();
         Field nameField = person.getClass()
             .getDeclaredField("name");
@@ -150,7 +150,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenAccessingWrongProperty_thenNoSuchFieldException() throws NoSuchFieldException, NullPointerException {
+    public void whenAccessingWrongProperty_thenNoSuchFieldException() throws Exception {
         Person person = new Person();
 
         Assertions.assertThrows(NoSuchFieldException.class, () -> person.getClass()
@@ -158,7 +158,7 @@ public class AccessPrivateFieldsUnitTest {
     }
 
     @Test
-    public void whenAccessingNullProperty_thenNullPointerException() throws NoSuchFieldException, NullPointerException {
+    public void whenAccessingNullProperty_thenNullPointerException() throws Exception {
         Person person = new Person();
 
         Assertions.assertThrows(NullPointerException.class, () -> person.getClass()
