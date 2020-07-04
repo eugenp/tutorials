@@ -33,7 +33,7 @@
 		class="com.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler" />
 	<beans:bean id="myFailureHandler"
 		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler" />
-    <bean name="passwordEncoder" 
+    <bean name="encoder" 
           class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> 
 
 	<authentication-manager alias="authenticationManager">
