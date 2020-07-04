@@ -14,7 +14,7 @@ public class PreservingLineBreaksUnitTest {
         Document.OutputSettings outputSettings = new Document.OutputSettings();
         outputSettings.prettyPrint(false);
         String strWithNewLines = Jsoup.clean(strHTML, "", Whitelist.none(), outputSettings);
-        assertEquals(strWithNewLines, "Hello\nworld");
+        assertEquals("Hello\nworld", strWithNewLines);
     }
 
     @Test
@@ -34,6 +34,6 @@ public class PreservingLineBreaksUnitTest {
         String str = jsoupDoc.html().replaceAll("\\\\n", "\n");
         String strWithNewLines =
                 Jsoup.clean(str, "", Whitelist.none(), outputSettings);
-        assertEquals(strWithNewLines, "Hello\nWorld\nParagraph");
+        assertEquals("Hello\nWorld\nParagraph", strWithNewLines);
     }
 }
