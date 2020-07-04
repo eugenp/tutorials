@@ -154,7 +154,7 @@ public class AddText {
 
         FontMetrics metrics = g.getFontMetrics(font);
         int positionX = 0;
-        int positionY =  metrics.getAscent();
+        int positionY = metrics.getAscent();
         
         g.drawString(attributedText.getIterator(), positionX, positionY);
                 
