@@ -6,7 +6,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class EJBSetupIntegrationTest {
+/**
+ * This Live Test requires:
+ * * run the `spring-ejb-remote` module with the following command: `mvn clean package cargo:run -Pwildfly-standalone`
+ *
+ */
+public class EJBSetupLiveTest {
 
     @Test
     public void EJBClientTest() {
