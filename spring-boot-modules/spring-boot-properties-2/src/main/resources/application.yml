@@ -20,3 +20,34 @@ server:
     guest:
       username: guest
       password: guestpass
+---
+application:
+  profiles:
+    - dev
+    - test
+    - prod
+    - 1
+    - 2
+  team: 
+    -
+      - James
+      - Matthew
+      - Olivia
+    -
+      - Natalie
+      - Brittany
+      - Christian
+  users:
+    -
+      username: admin
+      password: admin@10@
+      roles:
+        - READ
+        - WRITE
+        - VIEW
+        - DELETE
+    -
+      username: guest
+      password: guest@01
+      roles:
+        - VIEW
