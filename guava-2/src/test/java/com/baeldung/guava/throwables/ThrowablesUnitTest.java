@@ -1,4 +1,4 @@
-package com.baeldung.guava;
+package com.baeldung.guava.throwables;
 
 import com.google.common.base.Throwables;
 import org.junit.Test;

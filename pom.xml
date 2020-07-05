@@ -416,6 +416,7 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+                <module>guava-2</module>
                 <module>guava-collections</module>
                 <module>guava-collections-map</module>
                 <module>guava-collections-set</module>
