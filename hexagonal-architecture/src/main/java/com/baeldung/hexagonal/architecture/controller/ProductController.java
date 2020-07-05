@@ -23,30 +23,33 @@ import com.baeldung.hexagonal.architecture.service.ProductService;
 @RequestMapping("api/v1/product")
 public class ProductController {
 
-	@Autowired
-	private ProductService productService;
+    @Autowired
+    private ProductService productService;
 
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public List<ProductDto> list() {
-		return productService.findAll().stream().map(p -> new ProductDto(p)).collect(Collectors.toList());
-	}
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<ProductDto> list() {
+        return productService.findAll()
+            .stream()
+            .map(p -> new ProductDto(p))
+            .collect(Collectors.toList());
+    }
 
-	@RequestMapping(value = "/{productId}", method = RequestMethod.GET)
-	public ProductDto get(@PathVariable long productId) {
-		Product p = productService.findById(productId);
-		return p != null ? new ProductDto(p) : null;
-	}
+    @RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+    public ProductDto get(@PathVariable long productId) {
+        Product p = productService.findById(productId);
+        return p != null ? new ProductDto(p) : null;
+    }
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public ProductDto create(@RequestBody ProductDto product) {
-		Product p = new Product();
-		p.setDescription(product.getDescription());
-		p.setName(product.getName());
-		p.setPrice(product.getPrice());
-		p.setQuantity(product.getQuantity());
-		Long id = productService.create(p);
-		product.setId(id);
-		return product;
-	}
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ProductDto create(@RequestBody ProductDto product) {
+        Product p = new Product();
+        p.setDescription(product.getDescription());
+        p.setName(product.getName());
+        p.setPrice(product.getPrice());
+        p.setQuantity(product.getQuantity());
+        Long id = productService.create(p);
+        product.setId(id);
+        return product;
+    }
 
 }

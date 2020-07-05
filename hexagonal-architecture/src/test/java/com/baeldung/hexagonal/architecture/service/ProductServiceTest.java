@@ -25,19 +25,19 @@ import com.baeldung.hexagonal.architecture.service.ProductService;
 @SpringApplicationConfiguration(App.class)
 @ActiveProfiles(value = "test")
 public class ProductServiceTest {
-	
-	@Autowired
-	private ProductService productService;
 
-	@Test
-	public void testCreateProduct() {
-		Product product = new Product();
-		product.setDescription("test product");
-		product.setName("Product1");
-		product.setPrice(10.0);
-		product.setQuantity(100l);
-		Long id = productService.create(product);
-		Assert.assertTrue(id >0);
-	}
-	
+    @Autowired
+    private ProductService productService;
+
+    @Test
+    public void testCreateProduct() {
+        Product product = new Product();
+        product.setDescription("test product");
+        product.setName("Product1");
+        product.setPrice(10.0);
+        product.setQuantity(100l);
+        Long id = productService.create(product);
+        Assert.assertTrue(id > 0);
+    }
+
 }

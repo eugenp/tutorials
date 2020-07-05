@@ -20,29 +20,31 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
  *
  */
 
-@SpringBootApplication(exclude = {EmbeddedServletContainerAutoConfiguration.class,WebMvcAutoConfiguration.class})
+@SpringBootApplication(exclude = { EmbeddedServletContainerAutoConfiguration.class, WebMvcAutoConfiguration.class })
 public class ConsoleApp implements CommandLineRunner {
-	@Autowired
-	private ProductService productService;
+    @Autowired
+    private ProductService productService;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConsoleApp.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConsoleApp.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		String filePath = "";
-		if (args != null && args.length == 2 && "Product".equalsIgnoreCase(args[0])
-				&& (filePath = args[1]).length() > 0) {
-			File sourceFile = new File(filePath);
-			if (sourceFile.exists()) {
-				CsvMapper mapper = new CsvMapper();
-				List<Product> products = mapper.readerFor(Product.class).with(CsvSchema.emptySchema().withHeader())
-						.<Product>readValues(sourceFile).readAll();
-				productService.saveAll(products);
-			}
+    @Override
+    public void run(String... args) throws Exception {
+        String filePath = "";
+        if (args != null && args.length == 2 && "Product".equalsIgnoreCase(args[0]) && (filePath = args[1]).length() > 0) {
+            File sourceFile = new File(filePath);
+            if (sourceFile.exists()) {
+                CsvMapper mapper = new CsvMapper();
+                List<Product> products = mapper.readerFor(Product.class)
+                    .with(CsvSchema.emptySchema()
+                        .withHeader())
+                    .<Product> readValues(sourceFile)
+                    .readAll();
+                productService.saveAll(products);
+            }
 
-		}
+        }
 
-	}
+    }
 }
