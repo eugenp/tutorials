@@ -151,7 +151,6 @@
     </dependencies>
 
     <properties>
-        <junit.version>4.12</junit.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <kodein.version>4.1.0</kodein.version>
         <klaxon.version>3.0.4</klaxon.version>

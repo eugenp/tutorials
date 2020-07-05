@@ -13,3 +13,4 @@ This module contains articles about concurrent Java collections
 - [Guide to the Java TransferQueue](http://www.baeldung.com/java-transfer-queue)
 - [Guide to the ConcurrentSkipListMap](http://www.baeldung.com/java-concurrent-skip-list-map)
 - [Guide to CopyOnWriteArrayList](http://www.baeldung.com/java-copy-on-write-arraylist)
+- [LinkedBlockingQueue vs ConcurrentLinkedQueue](https://www.baeldung.com/java-queue-linkedblocking-concurrentlinked)
