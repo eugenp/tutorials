@@ -1,7 +1,7 @@
 package com.baeldung.reactive.service;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,13 +25,13 @@ public class ShippingService {
         log.info("Handle order invoked with: {}", order);
         return Mono.just(order)
             .flatMap(o -> {
-                Date shippingDate = null;
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(new Date());
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                if (hour <= 24 && hour >= 0) {
-                    cal.add(Calendar.DATE, 1);
-                    shippingDate = cal.getTime();
+                LocalDate shippingDate = null;
+                if (LocalTime.now()
+                    .isAfter(LocalTime.parse("10:00"))
+                    && LocalTime.now()
+                        .isBefore(LocalTime.parse("18:00"))) {
+                    shippingDate = LocalDate.now()
+                        .plusDays(1);
                 } else {
                     return Mono.error(new RuntimeException("The current time is off the limits to place order."));
                 }

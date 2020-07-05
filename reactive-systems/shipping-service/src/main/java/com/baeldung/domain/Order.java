@@ -1,6 +1,6 @@
 package com.baeldung.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -23,11 +23,11 @@ public class Order {
     private Long total;
     private String paymentMode;
     private Address shippingAddress;
-    private Date shippingDate;
+    private LocalDate shippingDate;
     private OrderStatus orderStatus;
     private String responseMessage;
 
-    public Order setShippingDate(Date shippingDate) {
+    public Order setShippingDate(LocalDate shippingDate) {
         this.shippingDate = shippingDate;
         return this;
     }

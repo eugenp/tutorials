@@ -1,6 +1,6 @@
 package com.baeldung.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,10 +12,10 @@ import lombok.Data;
 public class Shipment {
 
     private ObjectId id;
-    private Date shippingDate;
+    private LocalDate shippingDate;
     private Address address;
 
-    public Shipment setShippingDate(Date shippingDate) {
+    public Shipment setShippingDate(LocalDate shippingDate) {
         this.shippingDate = shippingDate;
         return this;
     }
