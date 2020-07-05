@@ -27,14 +27,14 @@ class BookRepositoryAdapter implements BookRepositoryPort {
     @Override
     public Optional<BookDto> find(Long id) {
         return jpaBookRepository.findById(id)
-                .flatMap(bookEntity -> Optional.of(bookEntity.toDto()));
+          .flatMap(bookEntity -> Optional.of(bookEntity.toDto()));
     }
 
     @Override
     public List<BookDto> findAll() {
         return jpaBookRepository.findAll()
-                .stream()
-                .map(BookEntity::toDto)
-                .collect(Collectors.toList());
+          .stream()
+          .map(BookEntity::toDto)
+          .collect(Collectors.toList());
     }
 }

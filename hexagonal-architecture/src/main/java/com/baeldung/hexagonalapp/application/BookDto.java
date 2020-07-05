@@ -40,10 +40,10 @@ public class BookDto {
     @Override
     public String toString() {
         return "BookDto{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", borrower='" + borrower + '\'' +
-                '}';
+          "id=" + id +
+          ", name='" + name + '\'' +
+          ", author='" + author + '\'' +
+          ", borrower='" + borrower + '\'' +
+          '}';
     }
 }

@@ -14,13 +14,17 @@ class ReturnBookHandler implements ReturnBookUseCase {
 
     @Override
     public BookDto handle(ReturnBookCommand command) {
-        BookDto bookDto = bookRepository.find(command.getBookId()).orElseThrow(BookNotFound::new);
-        Book book = new Book(bookDto.getId(), bookDto.getName(), bookDto.getAuthor(), bookDto.getBorrower());
+        BookDto bookDto = bookRepository.find(command.getBookId())
+          .orElseThrow(BookNotFound::new);
+        Book book = new Book(
+          bookDto.getId(),
+          bookDto.getName(),
+          bookDto.getAuthor(),
+          bookDto.getBorrower());
 
         book.giveBack();
 
         return bookRepository.save(
-                new BookDto(book.getId(), book.getName(), book.getAuthor(), book.getBorrower()));
-
+          new BookDto(book.getId(), book.getName(), book.getAuthor(), book.getBorrower()));
     }
 }

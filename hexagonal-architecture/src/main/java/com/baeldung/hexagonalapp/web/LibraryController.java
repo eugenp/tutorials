@@ -17,9 +17,9 @@ class LibraryController {
     private final ReturnBookUseCase returnBookUseCase;
 
     LibraryController(
-            ListBooksUseCase listBooksUseCase,
-            BorrowBookUseCase borrowBookUseCase,
-            ReturnBookUseCase returnBookUseCase) {
+      ListBooksUseCase listBooksUseCase,
+      BorrowBookUseCase borrowBookUseCase,
+      ReturnBookUseCase returnBookUseCase) {
         this.listBooksUseCase = listBooksUseCase;
         this.borrowBookUseCase = borrowBookUseCase;
         this.returnBookUseCase = returnBookUseCase;
@@ -36,7 +36,6 @@ class LibraryController {
         return borrowBookUseCase.handle(command);
     }
 
-
     @PostMapping("/{id}/return")
     public BookDto returnBook(@PathVariable Long id) {
         ReturnBookCommand command = new ReturnBookCommand(id);
@@ -51,8 +50,7 @@ class LibraryController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalStateException.class)
-    public String notFound(IllegalStateException ex) {
+    public String badRequest(IllegalStateException ex) {
         return ex.getMessage();
     }
-
 }

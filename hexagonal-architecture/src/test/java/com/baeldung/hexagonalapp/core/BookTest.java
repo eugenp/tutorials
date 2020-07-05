@@ -21,7 +21,7 @@ class BookTest {
         book.lendOutTo("Jane Doe");
 
         assertThatThrownBy(() -> book.lendOutTo("John Smith"))
-                .isInstanceOf(BookAlreadyLentOut.class);
+          .isInstanceOf(BookAlreadyLentOut.class);
     }
 
     @Test

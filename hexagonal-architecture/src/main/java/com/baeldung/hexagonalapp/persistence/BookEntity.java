@@ -8,7 +8,8 @@ import javax.persistence.*;
 @Table(name = "book")
 class BookEntity {
 
-    protected BookEntity() {}
+    protected BookEntity() {
+    }
 
     public BookEntity(BookDto dto) {
         this.id = dto.getId();
@@ -61,4 +62,3 @@ class BookEntity {
         return new BookDto(id, name, author, borrower);
     }
 }
-
