@@ -11,11 +11,11 @@ import com.baeldung.hexagonal.architecture.model.Product;
 
 public interface ProductService {
 
-	List<Product> findAll();
-	
-	Product findById(long id);
-	
-	Long create(Product product);
-	
-	void saveAll(List<Product> products);
+    List<Product> findAll();
+
+    Product findById(long id);
+
+    Long create(Product product);
+
+    void saveAll(List<Product> products);
 }

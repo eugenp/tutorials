@@ -18,27 +18,27 @@ import com.baeldung.hexagonal.architecture.repository.ProductRepository;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	private Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
-	
-	@Autowired
-	private ProductRepository productRepository;
-	
-	public List<Product> findAll() {
-		return productRepository.findAll();
-	}
+    private Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
-	public Product findById(long id) {
-		return productRepository.findOne(id);
-	}
+    @Autowired
+    private ProductRepository productRepository;
 
-	public Long create(Product product) {
-		product =  productRepository.saveAndFlush(product);
-		return product.getId();
-	}
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
 
-	@Override
-	public void saveAll(List<Product> products) {
-		productRepository.save(products);
-	}
+    public Product findById(long id) {
+        return productRepository.findOne(id);
+    }
+
+    public Long create(Product product) {
+        product = productRepository.saveAndFlush(product);
+        return product.getId();
+    }
+
+    @Override
+    public void saveAll(List<Product> products) {
+        productRepository.save(products);
+    }
 
 }
