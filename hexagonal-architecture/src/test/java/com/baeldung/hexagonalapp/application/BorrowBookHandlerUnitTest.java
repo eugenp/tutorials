@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
-class BorrowBookHandlerTest {
+class BorrowBookHandlerUnitTest {
 
     private BorrowBookHandler handler;
 
@@ -41,7 +41,7 @@ class BorrowBookHandlerTest {
     }
 
     @Test
-    void whenBorrowingThatDoesNotExist_thenAnExceptionIsThrown() {
+    void whenBorrowingABookThatDoesNotExist_thenAnExceptionIsThrown() {
         when(bookRepository.find(anyLong())).thenReturn(Optional.empty());
 
         BorrowBookCommand command = new BorrowBookCommand(1L, "John Doe");
