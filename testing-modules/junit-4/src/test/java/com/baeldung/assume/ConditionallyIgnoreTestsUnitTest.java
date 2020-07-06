@@ -11,7 +11,7 @@ public class ConditionallyIgnoreTestsUnitTest {
 
 
     @Test
-    public void whenAssumeThatCodeVersionIsNot1_thenIgnore() {
+    public void whenAssumeThatCodeVersionIsNot2_thenIgnore() {
         final int codeVersion = 1;
         assumeThat(codeVersion, is(2));
 
