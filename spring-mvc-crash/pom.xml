@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-crash</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-xml</name>
+    <name>spring-mvc-crash</name>
     <packaging>war</packaging>
 
     <parent>

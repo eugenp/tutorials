@@ -15,7 +15,7 @@ public class HessianClient {
     @Bean
     public HessianProxyFactoryBean hessianInvoker() {
         HessianProxyFactoryBean invoker = new HessianProxyFactoryBean();
-        invoker.setServiceUrl("http://localhost:8080/booking");
+        invoker.setServiceUrl("http://localhost:8032/booking");
         invoker.setServiceInterface(CabBookingService.class);
         return invoker;
     }
