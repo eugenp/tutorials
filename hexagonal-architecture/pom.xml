@@ -8,14 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-    <artifactId>hexagonalapp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>hexagonalapp</name>
-    <description>Demo hexagonal Spring Boot application</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <artifactId>hexagonal-architecture</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <description>Demo hexagonal Spring Boot application</description>
 
     <dependencies>
         <dependency>
@@ -58,4 +54,7 @@
         </plugins>
     </build>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 </project>
