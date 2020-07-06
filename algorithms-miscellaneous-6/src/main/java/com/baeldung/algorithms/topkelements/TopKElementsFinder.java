@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.topnelements;
+package com.baeldung.algorithms.topkelements;
 
 import java.util.List;
 

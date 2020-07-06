@@ -1,9 +1,5 @@
 package com.baeldung.algorithms.topkelements;
 
-import com.baeldung.algorithms.topnelements.BruteForceTopKElementsFinder;
-import com.baeldung.algorithms.topnelements.MaxHeapTopKElementsFinder;
-import com.baeldung.algorithms.topnelements.TopKElementsFinder;
-import com.baeldung.algorithms.topnelements.TreeSetTopKElementsFinder;
 import org.junit.Test;
 
 import java.util.Arrays;
