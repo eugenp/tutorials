@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.openpnp</groupId>
             <artifactId>opencv</artifactId>
-            <version>3.4.2-0</version>
+            <version>${opencv.version}</version>
         </dependency>
         <dependency>
             <groupId>com.twelvemonkeys.imageio</groupId>
@@ -93,5 +93,6 @@
         <imgscalr-version>4.2</imgscalr-version>
         <thumbnailator-version>0.4.11</thumbnailator-version>
         <marvin-version>1.5.5</marvin-version>
+        <opencv.version>3.4.2-0</opencv.version>
     </properties>
 </project>
