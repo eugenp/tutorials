@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-circuit-breaker</artifactId>
-    <name>spring-cloud-gateway</name>
+    <name>spring-cloud-circuit-breaker</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -16,14 +16,14 @@
 
     <repositories>
         <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/libs-snapshot</url>
+            <id>spring-release</id>
+            <name>Spring Release</name>
+            <url>https://repo.spring.io/release</url>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
             <releases>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </releases>
         </repository>
     </repositories>
@@ -44,12 +44,16 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
-            <version>1.0.2.RELEASE</version>
+            <version>${circuitbreaker-resilience4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <circuitbreaker-resilience4j.version>1.0.2.RELEASE</circuitbreaker-resilience4j.version>
+    </properties>
 
 </project>
