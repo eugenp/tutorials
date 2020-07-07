@@ -1,7 +1,7 @@
-package com.baeldung.selenium.models;
+package main.java.com.baeldung.selenium.models;
 
-import com.baeldung.selenium.config.SeleniumConfig;
-import com.baeldung.selenium.pages.BaeldungAboutPage;
+import main.java.com.baeldung.selenium.config.SeleniumConfig;
+import main.java.com.baeldung.selenium.pages.BaeldungAboutPage;
 import org.openqa.selenium.support.PageFactory;
 
 public class BaeldungAbout {

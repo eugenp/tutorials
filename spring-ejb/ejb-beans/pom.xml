@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.singletonsession</groupId>
     <artifactId>ejb-beans</artifactId>
-    <name>ejb-beans</name>
+    <name>spring-ejb-beans</name>
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>

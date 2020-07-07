@@ -22,15 +22,15 @@ public class PersonWithEquals {
         this.birthDate = birthDate;
     }
 
-    public String getFirstName() {
+    public String firstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    public String lastName() {
         return lastName;
     }
 
-    public LocalDate getBirthDate() {
+    public LocalDate birthDate() {
         return birthDate;
     }
 

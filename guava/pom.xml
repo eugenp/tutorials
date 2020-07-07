@@ -15,6 +15,25 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
+    <build>
+        <finalName>guava</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -42,25 +61,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>guava</finalName>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
         <!-- testing -->

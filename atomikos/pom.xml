@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>${spring-data-jpa.version}</version>
+			<version>1.11.23.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -64,49 +64,49 @@
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-core</artifactId>
-			<version>${activemq-core.version}</version>
+			<version>5.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
-			<version>${derby.version}</version>
+			<version>10.8.1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- the JTA API -->
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<version>${jta.version}</version>
+			<version>1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jta_1.0.1B_spec</artifactId>
-			<version>${geronimo.version}</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>${validation-api.version}</version>
+			<version>2.0.1.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate-validator.version}</version>
+			<version>6.1.2.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
-			<version>${javax.el-api.version}</version>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>javax.el</artifactId>
-			<version>${javax.el.version}</version>
+			<version>2.2.4</version>
 		</dependency>
 	</dependencies>
 
@@ -114,15 +114,6 @@
 		<atomikos-version>5.0.6</atomikos-version>
 		<spring-version>5.1.6.RELEASE</spring-version>
 		<hibernate.version>5.4.3.Final</hibernate.version>
-		<spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
-		<activemq-core.version>5.7.0</activemq-core.version>
-		<derby.version>10.8.1.2</derby.version>
-		<jta.version>1.1</jta.version>
-		<geronimo.version>1.0</geronimo.version>
-		<validation-api.version>2.0.1.Final</validation-api.version>
-		<hibernate-validator.version>6.1.2.Final</hibernate-validator.version>
-		<javax.el-api.version>3.0.0</javax.el-api.version>
-		<javax.el.version>2.2.4</javax.el.version>
 	</properties>
 
 </project>

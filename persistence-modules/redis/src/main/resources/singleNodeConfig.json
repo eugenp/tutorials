@@ -1,10 +1,13 @@
 {
   "singleServerConfig": {
     "idleConnectionTimeout": 10000,
+    "pingTimeout": 1000,
     "connectTimeout": 10000,
     "timeout": 3000,
     "retryAttempts": 3,
     "retryInterval": 1500,
+    "reconnectionTimeout": 3000,
+    "failedAttempts": 3,
     "password": null,
     "subscriptionsPerConnection": 5,
     "clientName": null,
@@ -14,9 +17,11 @@
     "connectionMinimumIdleSize": 10,
     "connectionPoolSize": 64,
     "database": 0,
+    "dnsMonitoring": false,
     "dnsMonitoringInterval": 5000
   },
   "threads": 0,
   "nettyThreads": 0,
-  "codec": null
+  "codec": null,
+  "useLinuxNativeEpoll": false
 }

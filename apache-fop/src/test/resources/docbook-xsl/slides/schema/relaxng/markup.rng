@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="db.domain.inlines" combine="choice">
+    <ref name="db.markup.inlines"/>
+  </define>
+  <define name="db.userinput.inlines" combine="choice">
+    <ref name="db.markup.inlines"/>
+  </define>
+  <define name="db.computeroutput.inlines" combine="choice">
+    <ref name="db.markup.inlines"/>
+  </define>
+  <define name="db.markup.inlines">
+    <choice>
+      <ref name="db.tag"/>
+      <ref name="db.markup"/>
+      <ref name="db.token"/>
+      <ref name="db.symbol"/>
+      <ref name="db.literal"/>
+      <ref name="db.code"/>
+      <ref name="db.constant"/>
+      <ref name="db.email"/>
+      <ref name="db.uri"/>
+    </choice>
+  </define>
+  <define name="db.initializer.inlines" combine="choice">
+    <ref name="db.markup.inlines"/>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>markup</db:refname>
+    <db:refpurpose>A string of formatting markup in text that is to be represented literally</db:refpurpose>
+    <define name="db.markup.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.markup.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.markup.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.markup">
+      <element name="markup">
+        <ref name="db.markup.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>tag</db:refname>
+    <db:refpurpose>A component of XML (or SGML) markup</db:refpurpose>
+    <define name="db.tag.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.tag.class.enumeration">
+      <choice>
+        <value>attribute</value>
+        <a:documentation>An attribute</a:documentation>
+        <value>attvalue</value>
+        <a:documentation>An attribute value</a:documentation>
+        <value>element</value>
+        <a:documentation>An element</a:documentation>
+        <value>emptytag</value>
+        <a:documentation>An empty element tag</a:documentation>
+        <value>endtag</value>
+        <a:documentation>An end tag</a:documentation>
+        <value>genentity</value>
+        <a:documentation>A general entity</a:documentation>
+        <value>localname</value>
+        <a:documentation>The local name part of a qualified name</a:documentation>
+        <value>namespace</value>
+        <a:documentation>A namespace</a:documentation>
+        <value>numcharref</value>
+        <a:documentation>A numeric character reference</a:documentation>
+        <value>paramentity</value>
+        <a:documentation>A parameter entity</a:documentation>
+        <value>pi</value>
+        <a:documentation>A processing instruction</a:documentation>
+        <value>prefix</value>
+        <a:documentation>The prefix part of a qualified name</a:documentation>
+        <value>comment</value>
+        <a:documentation>An SGML comment</a:documentation>
+        <value>starttag</value>
+        <a:documentation>A start tag</a:documentation>
+        <value>xmlpi</value>
+        <a:documentation>An XML processing instruction</a:documentation>
+      </choice>
+    </define>
+    <define name="db.tag.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Identifies the nature of the tag content</db:refpurpose>
+        <ref name="db.tag.class.enumeration"/>
+      </attribute>
+    </define>
+    <define name="db.tag.namespace.attribute">
+      <attribute name="namespace">
+        <db:refpurpose>Identifies the namespace of the tag content</db:refpurpose>
+        <data type="anyURI"/>
+      </attribute>
+    </define>
+    <define name="db.tag.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.tag.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.tag.class.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.tag.namespace.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.tag">
+      <element name="tag">
+        <ref name="db.tag.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>symbol</db:refname>
+    <db:refpurpose>A name that is replaced by a value before processing</db:refpurpose>
+    <define name="db.symbol.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Identifies the class of symbol</db:refpurpose>
+        <value>limit</value>
+        <a:documentation>The value is a limit of some kind</a:documentation>
+      </attribute>
+    </define>
+    <define name="db.symbol.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.symbol.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.symbol.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.symbol.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.symbol">
+      <element name="symbol">
+        <ref name="db.symbol.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>token</db:refname>
+    <db:refpurpose>A unit of information</db:refpurpose>
+    <define name="db.token.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.token.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.token.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.token">
+      <element name="token">
+        <ref name="db.token.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>literal</db:refname>
+    <db:refpurpose>Inline text that is some literal value</db:refpurpose>
+    <define name="db.literal.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.literal.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.literal.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.literal">
+      <element name="literal">
+        <ref name="db.literal.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>code</db:refname>
+    <db:refpurpose>An inline code fragment</db:refpurpose>
+    <define name="code.language.attribute">
+      <attribute name="language">
+        <db:refpurpose>Identifies the (computer) language of the code fragment</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.code.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.code.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.code.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="code.language.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.code">
+      <element name="code">
+        <ref name="db.code.attlist"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="db.programming.inlines"/>
+            <ref name="db._text"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>constant</db:refname>
+    <db:refpurpose>A programming or system constant</db:refpurpose>
+    <define name="db.constant.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Identifies the class of constant</db:refpurpose>
+        <value>limit</value>
+        <a:documentation>The value is a limit of some kind</a:documentation>
+      </attribute>
+    </define>
+    <define name="db.constant.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.constant.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.constant.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.constant.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.constant">
+      <element name="constant">
+        <ref name="db.constant.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+</grammar>

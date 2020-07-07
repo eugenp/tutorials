@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="tablecolumns.extension">
+<refmeta>
+<refentrytitle>tablecolumns.extension</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>tablecolumns.extension</refname>
+<refpurpose>Enable the table columns extension function</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="tablecolumns.extension.frag">
+<xsl:param name="tablecolumns.extension" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The table columns extension function adjusts the widths of table
+columns in the HTML result to more accurately reflect the specifications
+in the CALS table.
+</para>
+
+</refsection>
+</refentry>

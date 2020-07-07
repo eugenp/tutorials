@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>apache-fop</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>apache-fop</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- new dependencies -->
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>${fop.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.avalon.framework</groupId>
+                    <artifactId>avalon-framework-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.avalon.framework</groupId>
+                    <artifactId>avalon-framework-impl</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>avalon-framework</groupId>
+            <artifactId>avalon-framework-api</artifactId>
+            <version>${avalon-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>avalon-framework</groupId>
+            <artifactId>avalon-framework-impl</artifactId>
+            <version>${avalon-framework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbdoclet</groupId>
+            <artifactId>dbdoclet</artifactId>
+            <version>${dbdoclet.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dbdoclet</groupId>
+            <artifactId>herold</artifactId>
+            <version>${org.dbdoclet.herold.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.jtidy</groupId>
+            <artifactId>jtidy</artifactId>
+            <version>${jtidy.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>apache-fop</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <properties>
+        <fop.version>1.1</fop.version>
+        <avalon-framework.version>4.3</avalon-framework.version>
+        <dbdoclet.version>8.0.2</dbdoclet.version>
+        <jtidy.version>r938</jtidy.version>
+        <org.dbdoclet.herold.version>8.0.4</org.dbdoclet.herold.version>
+    </properties>
+
+</project>

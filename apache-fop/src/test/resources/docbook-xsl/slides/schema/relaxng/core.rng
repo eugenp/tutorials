@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: docbook.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <choice>
+      <ref name="db.set"/>
+      <ref name="db.book"/>
+      <ref name="db.divisions"/>
+      <ref name="db.components"/>
+      <ref name="db.navigation.components"/>
+      <ref name="db.section"/>
+      <ref name="db.para"/>
+    </choice>
+  </start>
+  <include href="pool.rng"/>
+  <include href="hier.rng"/>
+</grammar>

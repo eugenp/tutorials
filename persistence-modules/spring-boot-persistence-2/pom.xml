@@ -6,7 +6,7 @@
     <groupId>com.baeldung.boot.persistence</groupId>
     <artifactId>spring-boot-persistence-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-persistence-2</name>
+    <name>spring-boot-jdbi</name>
     <description>Sample SpringBoot JDBI Project</description>
 
     <parent>

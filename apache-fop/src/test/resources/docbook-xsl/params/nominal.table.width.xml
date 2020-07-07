@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="nominal.table.width">
+<refmeta>
+<refentrytitle>nominal.table.width</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>nominal.table.width</refname>
+<refpurpose>The (absolute) nominal width of tables</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="nominal.table.width.frag">
+<xsl:param name="nominal.table.width">6in</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>In order to convert CALS column widths into HTML column widths, it
+is sometimes necessary to have an absolute table width to use for conversion
+of mixed absolute and relative widths. This value must be an absolute
+length (not a percentage).</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,80 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.charmap.use.subset">
+<refmeta>
+<refentrytitle>man.charmap.use.subset</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.charmap.use.subset</refname>
+<refpurpose>Use subset of character map instead of full map?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.charmap.use.subset.frag">
+<xsl:param name="man.charmap.use.subset" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of the
+<parameter>man.charmap.use.subset</parameter> parameter is non-zero,
+a subset of the roff character map is used instead of the full roff
+character map. The profile of the subset used is determined either
+by the value of the
+<parameter>man.charmap.subset.profile</parameter>
+parameter (if the source is not in English) or the
+<parameter>man.charmap.subset.profile.english</parameter>
+parameter (if the source is in English).</para>
+
+<note>
+  <para>You may want to experiment with setting a non-zero value of
+  <parameter>man.charmap.use.subset</parameter>, so that the full
+  character map is used. Depending on which XSLT engine you run,
+  setting a non-zero value for
+  <parameter>man.charmap.use.subset</parameter> may significantly
+  increase the time needed to process your documents. Or it may
+  not. For example, if you set it and run it with xsltproc, it seems
+  to dramatically increase processing time; on the other hand, if you
+  set it and run it with Saxon, it does not seem to increase
+  processing time nearly as much.</para>
+
+  <para>If processing time is not a important concern and/or you can
+  tolerate the increase in processing time imposed by using the full
+  character map, set <parameter>man.charmap.use.subset</parameter> to
+  zero.</para>
+</note>
+
+<refsection><info><title>Details</title></info>
+
+<para>For converting certain Unicode symbols and special characters in
+UTF-8 or UTF-16 encoded XML source to appropriate groff/roff
+equivalents in man-page output, the DocBook XSL Stylesheets
+distribution includes a <link xlink:href="http://docbook.sourceforge.net/snapshot/xsl/manpages/charmap.groff.xsl">roff character map</link> that is compliant with the <link xlink:href="http://www.w3.org/TR/xslt20/#character-maps">XSLT character
+map</link> format as detailed in the XSLT 2.0 specification. The map
+contains more than 800 character mappings and can be considered the
+standard roff character map for the distribution.</para>
+
+<note>
+<para>You can use the <parameter>man.charmap.uri</parameter>
+parameter to specify a URI for the location for an alternate roff
+character map to use in place of the standard roff character map
+provided in the distribution.</para>
+</note>
+
+<para>Because it is not terrifically efficient to use the standard
+800-character character map in full -- and for most (or all) users,
+never necessary to use it in full -- the DocBook XSL Stylesheets
+support a mechanism for using, within any given character map, a
+subset of character mappings instead of the full set. You can use the
+<parameter>man.charmap.subset.profile</parameter> or
+<parameter>man.charmap.subset.profile.english</parameter>
+parameter to tune the profile of that subset to use.</para>
+
+</refsection>
+</refsection>
+</refentry>

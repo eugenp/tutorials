@@ -22,18 +22,6 @@ public class PersonWithEqualsAndComparable implements Comparable<PersonWithEqual
         this.birthDate = birthDate;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

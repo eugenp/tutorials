@@ -117,7 +117,7 @@ public class GuavaStringUnitTest {
     @Test
     public void whenRemoveSpecialCharacters_thenRemoved() {
         final String input = "H*el.lo,}12";
-        final CharMatcher matcher = CharMatcher.javaLetterOrDigit();
+        final CharMatcher matcher = CharMatcher.JAVA_LETTER_OR_DIGIT;
         final String result = matcher.retainFrom(input);
 
         assertEquals("Hello12", result);
@@ -127,7 +127,7 @@ public class GuavaStringUnitTest {
     public void whenRemoveNonASCIIChars_thenRemoved() {
         final String input = "あhello₤";
 
-        String result = CharMatcher.ascii().retainFrom(input);
+        String result = CharMatcher.ASCII.retainFrom(input);
         assertEquals("hello", result);
 
         result = CharMatcher.inRange('0', 'z').retainFrom(input);
@@ -138,13 +138,13 @@ public class GuavaStringUnitTest {
     public void whenValidateString_thenValid() {
         final String input = "hello";
 
-        boolean result = CharMatcher.javaLowerCase().matchesAllOf(input);
+        boolean result = CharMatcher.JAVA_LOWER_CASE.matchesAllOf(input);
         assertTrue(result);
 
         result = CharMatcher.is('e').matchesAnyOf(input);
         assertTrue(result);
 
-        result = CharMatcher.javaDigit().matchesNoneOf(input);
+        result = CharMatcher.JAVA_DIGIT.matchesNoneOf(input);
         assertTrue(result);
     }
 

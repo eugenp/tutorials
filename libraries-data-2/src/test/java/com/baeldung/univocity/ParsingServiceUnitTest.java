@@ -2,26 +2,15 @@ package com.baeldung.univocity;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Test;
 
 import com.baeldung.univocity.model.Product;
 
 public class ParsingServiceUnitTest {
 
-    @After
-    public void cleanup() {
-        File csvFile = new File("src/test/resources/outputProductList.csv");
-        csvFile.deleteOnExit();
-        
-        File textFile = new File("src/test/resources/outputProductList.txt");
-        textFile.deleteOnExit();
-    }
-    
     @Test
     public void givenCsvFile_thenParsedResultsShouldBeReturned() {
         ParsingService parsingService = new ParsingService();

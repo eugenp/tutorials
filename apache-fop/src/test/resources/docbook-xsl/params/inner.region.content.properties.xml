@@ -1,0 +1,48 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="inner.region.content.properties">
+<refmeta>
+<refentrytitle>inner.region.content.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>inner.region.content.properties</refname>
+<refpurpose>Properties of running inner side content</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="inner.region.content.properties.frag">
+<xsl:attribute-set name="inner.region.content.properties">
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The FO stylesheet supports optional side regions
+similar to the header and footer regions.
+Any attributes declared in this attribute-set 
+are applied to the fo:block in the side region
+on the inner side (binding side) of the page.
+This corresponds to the <literal>start</literal>
+region on odd-numbered pages and the <literal>end</literal>
+region on even-numbered pages.
+For single-sided output, it always corresponds to
+the <literal>start</literal> region.</para>
+
+<para>You can customize the template named 
+<literal>inner.region.content</literal> to specify
+the content of the inner side region.</para>
+
+<para>See also
+<parameter>region.inner.properties</parameter>,
+<parameter>page.margin.inner</parameter>, 
+<parameter>body.margin.inner</parameter>,
+and the corresponding <literal>outer</literal>
+parameters.</para>
+
+</refsection>
+</refentry>

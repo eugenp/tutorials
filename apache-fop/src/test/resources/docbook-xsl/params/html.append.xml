@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="html.append">
+<refmeta>
+<refentrytitle>html.append</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.append</refname>
+<refpurpose>Specifies content to append to HTML output</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.append.frag"><xsl:param name="html.append"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies content to append to the end of HTML files output by
+the <filename>html/docbook.xsl</filename> stylesheet, after the
+closing <code>&lt;html&gt;</code> tag. You probably don’t want to set any
+value for this parameter; but if you do, the only value it should ever
+be set to is a newline character: <code>&amp;#x0a;</code> or
+<code>&amp;#10;</code></para>
+
+</refsection>
+</refentry>

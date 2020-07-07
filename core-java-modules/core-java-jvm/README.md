@@ -13,6 +13,3 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [Runtime.getRuntime().halt() vs System.exit() in Java](https://www.baeldung.com/java-runtime-halt-vs-system-exit)
 - [Adding Shutdown Hooks for JVM Applications](https://www.baeldung.com/jvm-shutdown-hooks)
 - [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)
-- [What Causes java.lang.OutOfMemoryError: unable to create new native thread](https://www.baeldung.com/java-outofmemoryerror-unable-to-create-new-native-thread)
-- [View Bytecode of a Class File in Java](https://www.baeldung.com/java-class-view-bytecode)
-- [boolean and boolean[] Memory Layout in the JVM](https://www.baeldung.com/jvm-boolean-memory-layout)

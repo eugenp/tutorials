@@ -1,0 +1,26 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.funcsynopsis.style">
+<refmeta>
+<refentrytitle>man.funcsynopsis.style</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">ansi</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">kr</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.funcsynopsis.style</refname>
+<refpurpose>What style of <tag>funcsynopsis</tag> should be generated?</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<src:fragment xml:id="man.funcsynopsis.style.frag"><xsl:param name="man.funcsynopsis.style">ansi</xsl:param></src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>If <parameter>man.funcsynopsis.style</parameter> is
+<literal>ansi</literal>, ANSI-style function synopses are
+generated for a <tag>funcsynopsis</tag>, otherwise K&amp;R-style
+function synopses are generated.</para>
+</refsection>
+</refentry>

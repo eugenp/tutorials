@@ -1,8 +1,0 @@
-
-description = "Gradle Unused Dependencies example"
-
-dependencies {
-    implementation('com.google.guava:guava:29.0-jre')
-    implementation('org.apache.httpcomponents:httpclient:4.5.12')
-    testImplementation('junit:junit:4.12')
-}

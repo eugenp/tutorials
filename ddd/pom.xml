@@ -17,6 +17,16 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -94,16 +104,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>

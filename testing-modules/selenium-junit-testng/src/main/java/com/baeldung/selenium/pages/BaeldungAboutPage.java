@@ -1,4 +1,4 @@
-package com.baeldung.selenium.pages;
+package main.java.com.baeldung.selenium.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

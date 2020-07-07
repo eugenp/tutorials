@@ -152,7 +152,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter-test.version}</version>
+            <version>1.5.10.RELEASE</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -185,7 +185,6 @@
         <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <logback-classic.version>1.2.3</logback-classic.version>
-        <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
     </properties>
 
 </project>

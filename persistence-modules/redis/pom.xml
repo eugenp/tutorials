@@ -33,7 +33,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
+            <version>3.3.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.kstyrc</groupId>
@@ -48,19 +48,12 @@
         <dependency>
             <groupId>io.lettuce</groupId>
             <artifactId>lettuce-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-transport-native-epoll</artifactId>
-            <version>${epoll.version}</version>
-        </dependency>
+            </dependency>
     </dependencies>
 
     <properties>        
         <embedded-redis.version>0.6</embedded-redis.version>
-        <redisson.version>3.13.1</redisson.version>
-        <jedis.version>3.3.0</jedis.version>
-        <epoll.version>4.1.50.Final</epoll.version>
+        <redisson.version>3.3.0</redisson.version>        
     </properties>
 
 </project>

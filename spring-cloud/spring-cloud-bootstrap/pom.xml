@@ -20,8 +20,6 @@
         <module>svc-book</module>
         <module>svc-rating</module>
         <module>zipkin</module>
-        <module>customer-service</module>
-        <module>order-service</module>
     </modules>
 
 </project>

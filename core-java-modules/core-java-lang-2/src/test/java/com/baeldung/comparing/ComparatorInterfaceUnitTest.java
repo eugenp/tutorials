@@ -20,7 +20,7 @@ class ComparatorInterfaceUnitTest {
         Comparator<PersonWithEquals> compareByFirstNames = new Comparator<PersonWithEquals>() {
             @Override
             public int compare(PersonWithEquals o1, PersonWithEquals o2) {
-                return o1.getFirstName().compareTo(o2.getFirstName());
+                return o1.firstName().compareTo(o2.firstName());
             }
         };
         people.sort(compareByFirstNames);
@@ -37,7 +37,7 @@ class ComparatorInterfaceUnitTest {
         people.add(joe);
         people.add(allan);
 
-        Comparator<PersonWithEquals> compareByFirstNames = Comparator.comparing(PersonWithEquals::getFirstName);
+        Comparator<PersonWithEquals> compareByFirstNames = Comparator.comparing(PersonWithEquals::firstName);
         people.sort(compareByFirstNames);
 
         assertThat(people).containsExactly(allan, joe);

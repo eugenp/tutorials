@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callout.unicode.start.character">
+<refmeta>
+<refentrytitle>callout.unicode.start.character</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout.unicode.start.character</refname>
+<refpurpose>First Unicode character to use, decimal value.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callout.unicode.start.character.frag">
+<xsl:param name="callout.unicode.start.character">10102</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If <parameter>callout.graphics</parameter> is zero and <parameter>callout.unicode</parameter>
+is non-zero, unicode characters are used to represent
+callout numbers. The value of
+<parameter>callout.unicode.start.character</parameter>
+is the decimal unicode value used for callout number one. Currently, 
+only values 9312 and 10102 are supported in the stylesheets for this parameter. 
+</para>
+
+</refsection>
+</refentry>

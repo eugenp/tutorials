@@ -89,6 +89,11 @@
         </dependency>
     </dependencies>
     
+    <properties>
+        <spring.mvc.version>5.2.2.RELEASE</spring.mvc.version>
+        <javax.version>4.0.1</javax.version>
+    </properties>
+
 
     <build>
         <plugins>
@@ -102,10 +107,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring.mvc.version>5.2.2.RELEASE</spring.mvc.version>
-        <javax.version>4.0.1</javax.version>
-    </properties>
 
 </project>

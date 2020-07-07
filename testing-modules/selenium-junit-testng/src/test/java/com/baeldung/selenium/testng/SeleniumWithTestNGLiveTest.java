@@ -1,19 +1,16 @@
-package com.baeldung.selenium.testng;
+package test.java.com.baeldung.selenium.testng;
 
-import com.baeldung.selenium.SeleniumExample;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
+import main.java.com.baeldung.selenium.SeleniumExample;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.*;
+
 public class SeleniumWithTestNGLiveTest {
 
     private SeleniumExample seleniumExample;
-    private String expectedTitle = "About Baeldung | Baeldung";
+    private String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
 
     @BeforeSuite
     public void setUp() {

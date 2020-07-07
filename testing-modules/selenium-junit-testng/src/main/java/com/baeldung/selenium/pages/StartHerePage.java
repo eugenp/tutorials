@@ -1,6 +1,6 @@
-package com.baeldung.selenium.pages;
+package main.java.com.baeldung.selenium.pages;
 
-import com.baeldung.selenium.config.SeleniumConfig;
+import main.java.com.baeldung.selenium.config.SeleniumConfig;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

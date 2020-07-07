@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>selenium-junit-testng</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -41,30 +40,35 @@
             <artifactId>hamcrest-all</artifactId>
             <version>${hamcrest-all.version}</version>
         </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.ashot</groupId>
-            <artifactId>ashot</artifactId>
-            <version>${ashot.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+        <sourceDirectory>src</sourceDirectory>
     </build>
+
+    <profiles>
+        <profile>
+            <id>live</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <properties>
         <testng.version>6.10</testng.version>
         <selenium-java.version>3.4.0</selenium-java.version>
-        <ashot.version>1.5.4</ashot.version>
     </properties>
 
 </project>

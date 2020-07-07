@@ -21,10 +21,11 @@ public enum PizzaStatus {
     private static Map<Integer, PizzaStatus> timeToDeliveryToEnumValuesMapping = new HashMap<>();
 
     static {
-        for (PizzaStatus pizzaStatus : PizzaStatus.values()) {
+        PizzaStatus[] pizzaStatuses = PizzaStatus.values();
+        for (int pizzaStatusIndex = 0; pizzaStatusIndex < pizzaStatuses.length; pizzaStatusIndex++) {
             timeToDeliveryToEnumValuesMapping.put(
-                    pizzaStatus.getTimeToDelivery(),
-                    pizzaStatus
+                pizzaStatuses[pizzaStatusIndex].getTimeToDelivery(),
+                pizzaStatuses[pizzaStatusIndex]
             );
         }
     }

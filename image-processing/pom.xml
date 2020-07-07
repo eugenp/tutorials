@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>image-processing</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -60,15 +61,38 @@
             <artifactId>tesseract-platform</artifactId>
             <version>${tesseract-platform.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>${imgscalr-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>${thumbnailator-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.downgoon</groupId>
+            <artifactId>marvin</artifactId>
+            <version>${marvin-version}</version>
+            <type>pom</type>
+         </dependency>
+        <dependency>
+            <groupId>com.github.downgoon</groupId>
+            <artifactId>MarvinPlugins</artifactId>
+            <version>${marvin-version}</version>
+        </dependency>
     </dependencies>
-    
+
     <properties>
         <core-image.version>1.3.5</core-image.version>
         <ij.version>1.51h</ij.version>
         <imageio.version>3.3.2</imageio.version>
         <tess4j.version>4.5.1</tess4j.version>
         <tesseract-platform.version>4.1.0-1.5.2</tesseract-platform.version>
+        <imgscalr-version>4.2</imgscalr-version>
+        <thumbnailator-version>0.4.11</thumbnailator-version>
+        <marvin-version>1.5.5</marvin-version>
         <opencv.version>3.4.2-0</opencv.version>
     </properties>
-
 </project>

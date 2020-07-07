@@ -48,7 +48,7 @@ public class RedissonConfigurationIntegrationTest {
     public void givenJavaConfig_thenRedissonConnectToRedis() {
         Config config = new Config();
         config.useSingleServer()
-          .setAddress(String.format("redis://127.0.0.1:%s", port));
+          .setAddress(String.format("127.0.0.1:%s", port));
 
         client = Redisson.create(config);
 

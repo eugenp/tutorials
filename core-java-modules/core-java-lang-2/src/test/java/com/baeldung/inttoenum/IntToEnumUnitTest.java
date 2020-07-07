@@ -1,12 +1,7 @@
 package com.baeldung.inttoenum;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 public class IntToEnumUnitTest {
@@ -14,33 +9,19 @@ public class IntToEnumUnitTest {
     @Test
     public void whenIntToEnumUsingValuesMethod_thenReturnEnumObject() {
         int timeToDeliveryForOrderedPizzaStatus = 5;
-
+        PizzaStatus[] pizzaStatuses = PizzaStatus.values();
         PizzaStatus pizzaOrderedStatus = null;
-
-        for (PizzaStatus pizzaStatus : PizzaStatus.values()) {
-            if (pizzaStatus.getTimeToDelivery() == timeToDeliveryForOrderedPizzaStatus) {
-                pizzaOrderedStatus = pizzaStatus;
+        for (int pizzaStatusIndex = 0; pizzaStatusIndex < pizzaStatuses.length; pizzaStatusIndex++) {
+            if (pizzaStatuses[pizzaStatusIndex].getTimeToDelivery() == timeToDeliveryForOrderedPizzaStatus) {
+                pizzaOrderedStatus = pizzaStatuses[pizzaStatusIndex];
             }
         }
-
-        assertThat(pizzaOrderedStatus).isEqualTo(PizzaStatus.ORDERED);
+        assertEquals(pizzaOrderedStatus, PizzaStatus.ORDERED);
     }
 
     @Test
     public void whenIntToEnumUsingMap_thenReturnEnumObject() {
         int timeToDeliveryForOrderedPizzaStatus = 5;
-
-        assertThat(PizzaStatus.castIntToEnum(timeToDeliveryForOrderedPizzaStatus)).isEqualTo(PizzaStatus.ORDERED);
-    }
-
-    @Test
-    public void whenIntToEnumUsingStream_thenReturnEnumObject() {
-        int timeToDeliveryForOrderedPizzaStatus = 5;
-
-        Optional<PizzaStatus> pizzaStatus = Arrays.stream(PizzaStatus.values())
-          .filter(p -> p.getTimeToDelivery() == timeToDeliveryForOrderedPizzaStatus)
-          .findFirst();
-
-        assertThat(pizzaStatus).hasValue(PizzaStatus.ORDERED);
+        assertEquals(PizzaStatus.castIntToEnum(timeToDeliveryForOrderedPizzaStatus), PizzaStatus.ORDERED);
     }
 }

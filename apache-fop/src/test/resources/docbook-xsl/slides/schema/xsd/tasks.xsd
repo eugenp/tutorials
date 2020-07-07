@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: tasks.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:group name="db.task.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.req"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.task.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.task.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="task">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.task.info"/>
+        <xs:element minOccurs="0" ref="db:tasksummary"/>
+        <xs:element minOccurs="0" ref="db:taskprerequisites"/>
+        <xs:element ref="db:procedure"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:example"/>
+        <xs:element minOccurs="0" ref="db:taskrelated"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.task.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.tasksummary.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.tasksummary.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.tasksummary.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.only"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="tasksummary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.tasksummary.info"/>
+        <xs:group maxOccurs="unbounded" ref="db:db.all.blocks"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.tasksummary.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.taskprerequisites.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.taskprerequisites.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.taskprerequisites.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.only"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="taskprerequisites">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.taskprerequisites.info"/>
+        <xs:group maxOccurs="unbounded" ref="db:db.all.blocks"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.taskprerequisites.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.taskrelated.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.taskrelated.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.taskrelated.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.only"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="taskrelated">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.taskrelated.info"/>
+        <xs:group maxOccurs="unbounded" ref="db:db.all.blocks"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.taskrelated.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

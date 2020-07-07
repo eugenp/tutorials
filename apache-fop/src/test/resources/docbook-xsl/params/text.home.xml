@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="text.home">
+<refmeta>
+<refentrytitle>text.home</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>text.home</refname>
+<refpurpose>Home</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="text.home.frag">
+<xsl:param name="text.home">Home</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>FIXME:</para>
+
+</refsection>
+</refentry>

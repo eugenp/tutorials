@@ -14,21 +14,6 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>guava-collections-map</finalName>
 
@@ -47,6 +32,21 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>

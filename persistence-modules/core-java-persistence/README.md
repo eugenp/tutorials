@@ -9,4 +9,3 @@
 - [A Simple Guide to Connection Pooling in Java](https://www.baeldung.com/java-connection-pooling)
 - [Guide to the JDBC ResultSet Interface](https://www.baeldung.com/jdbc-resultset)
 - [Types of SQL Joins](https://www.baeldung.com/sql-joins)
-- [Returning the Generated Keys in JDBC](https://www.baeldung.com/jdbc-returning-generated-keys)

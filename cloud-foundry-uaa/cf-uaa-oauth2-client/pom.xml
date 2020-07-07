@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>cf-uaa-oauth2-client</artifactId>
-    <name>cf-uaa-oauth2-client</name>
+    <name>uaa-client-webapp</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
