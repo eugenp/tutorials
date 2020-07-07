@@ -23,8 +23,7 @@ class YamlSimpleListIntegrationTest {
             .get(0)).isEqualTo("dev");
         assertThat(applicationProps.getProfiles()
             .get(4)
-            .getClass()
-            .toString()).isEqualTo("class java.lang.Integer");
+            .getClass()).isEqualTo(Integer.class);
         assertThat(applicationProps.getProfiles()
             .size()).isEqualTo(5);
     }

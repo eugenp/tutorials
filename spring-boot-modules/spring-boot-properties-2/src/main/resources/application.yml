@@ -28,15 +28,17 @@ application:
     - prod
     - 1
     - 2
-  team: 
+  props: 
     -
-      - James
-      - Matthew
-      - Olivia
+      name: YamlList
+      url: http://yamllist.dev
+      description: Mapping list in Yaml to list of objects in Spring Boot
     -
-      - Natalie
-      - Brittany
-      - Christian
+      ip: 10.10.10.10
+      port: 8091
+    -
+      email: support@yamllist.dev
+      contact: http://yamllist.dev/contact
   users:
     -
       username: admin
