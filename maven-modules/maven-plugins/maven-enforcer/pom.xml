@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>maven-enforcer</artifactId>
+    <name>maven-enforcer</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>maven-plugins</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <!--<dependencies>-->
+                <!--<dependency>-->
+                <!--<groupId>com.baeldung</groupId>-->
+                <!--<artifactId>custom-rule</artifactId>-->
+                <!--<version>1.0</version>-->
+                <!--</dependency>-->
+                <!--</dependencies>-->
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDuplicatePomDependencyVersions/>
+                                <requireMavenVersion>
+                                    <version>3.0</version>
+                                    <message>Invalid Maven version. It should, at least, be 3.0</message>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>1.8</version>
+                                </requireJavaVersion>
+                                <requireEnvironmentVariable>
+                                    <variableName>ui</variableName>
+                                    <level>WARN</level>
+                                </requireEnvironmentVariable>
+                                <requireEnvironmentVariable>
+                                    <variableName>cook</variableName>
+                                    <level>WARN</level>
+                                </requireEnvironmentVariable>
+                                <requireActiveProfile>
+                                    <profiles>local,base</profiles>
+                                    <message>Missing active profiles</message>
+                                    <level>WARN</level>
+                                </requireActiveProfile>
+                                <!--other rules -->
+                                <!--<myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/>-->
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
