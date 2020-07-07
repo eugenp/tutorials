@@ -32,6 +32,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.openejb</groupId>
+            <artifactId>tomee-embedded</artifactId>
+            <version>${tomee-embedded.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${springframework.version}</version>
