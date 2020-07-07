@@ -22,9 +22,13 @@ class YamlComplexListsIntegrationTest {
         assertThat(applicationProps.getUsers()
             .get(0)
             .getPassword()).isEqualTo("admin@10@");
-        assertThat(applicationProps.getTeam()
+        assertThat(applicationProps.getProps()
             .get(0)
-            .size()).isEqualTo(3);
+            .get("name")).isEqualTo("YamlList");
+        assertThat(applicationProps.getProps()
+            .get(1)
+            .get("port")
+            .getClass()).isEqualTo(Integer.class);
     }
 
 }

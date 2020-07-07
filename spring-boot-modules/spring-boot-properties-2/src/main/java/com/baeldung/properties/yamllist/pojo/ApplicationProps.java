@@ -1,6 +1,7 @@
 package com.baeldung.properties.yamllist.pojo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class ApplicationProps {
 
     private List<Object> profiles;
-    private List<List<String>> team;
+    private List<Map<String, Object>> props;
     private List<User> users;
 
     public List<Object> getProfiles() {
@@ -21,12 +22,12 @@ public class ApplicationProps {
         this.profiles = profiles;
     }
 
-    public List<List<String>> getTeam() {
-        return team;
+    public List<Map<String, Object>> getProps() {
+        return props;
     }
 
-    public void setTeam(List<List<String>> team) {
-        this.team = team;
+    public void setProps(List<Map<String, Object>> props) {
+        this.props = props;
     }
 
     public List<User> getUsers() {
