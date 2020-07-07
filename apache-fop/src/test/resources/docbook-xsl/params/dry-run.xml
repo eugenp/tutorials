@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="dry-run">
+<refmeta>
+<refentrytitle>dry-run</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>dry-run</refname>
+<refpurpose>Indicates that no files should be produced</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+  <src:fragment xml:id="dry-run.frag">
+    <xsl:param name="dry-run" select="0"/>
+  </src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>When using the XSLT processor to manage dependencies and construct
+the website, this parameter can be used to suppress the generation of
+new and updated files. Effectively, this allows you to see what the
+stylesheet would do, without actually making any changes.</para>
+<para>Only applies when XSLT-based chunking is being used.</para>
+</refsection>
+</refentry>

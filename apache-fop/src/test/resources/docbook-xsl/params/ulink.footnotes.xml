@@ -1,0 +1,34 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="ulink.footnotes">
+<refmeta>
+<refentrytitle>ulink.footnotes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>ulink.footnotes</refname>
+<refpurpose>Generate footnotes for <tag>ulink</tag>s?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="ulink.footnotes.frag">
+<xsl:param name="ulink.footnotes" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, and if <parameter>ulink.show</parameter> also is non-zero,
+the URL of each <tag>ulink</tag> will appear as a footnote.</para>
+
+<note><para>DocBook 5 does not have an <tag>ulink</tag> element. When processing 
+DocBoook 5 documents, <parameter>ulink.footnotes</parameter> applies to all inline 
+elements that are marked up with <tag class="attribute">xlink:href</tag> attributes 
+that point to external resources.</para>
+</note>
+
+</refsection>
+</refentry>

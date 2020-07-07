@@ -30,13 +30,11 @@ import freemarker.template.TemplateException;
 @Service("EmailService")
 public class EmailServiceImpl implements EmailService {
 
-    private static final String NOREPLY_ADDRESS = "noreply@baeldung.com";
-
     @Autowired
-    private JavaMailSender emailSender;
-
+    public JavaMailSender emailSender;
+    
     @Autowired
-    private SimpleMailMessage template;
+    public SimpleMailMessage template;
     
     @Autowired
     private SpringTemplateEngine thymeleafTemplateEngine;
@@ -45,12 +43,11 @@ public class EmailServiceImpl implements EmailService {
     private FreeMarkerConfigurer freemarkerConfigurer;
     
     @Value("classpath:/mail-logo.png")
-    private Resource resourceFile;
+    Resource resourceFile;
 
     public void sendSimpleMessage(String to, String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(NOREPLY_ADDRESS);
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);
@@ -79,7 +76,6 @@ public class EmailServiceImpl implements EmailService {
             // pass 'true' to the constructor to create a multipart message
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setFrom(NOREPLY_ADDRESS);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
@@ -122,12 +118,12 @@ public class EmailServiceImpl implements EmailService {
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-        helper.setFrom(NOREPLY_ADDRESS);
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
         helper.addInline("attachment.png", resourceFile);
         emailSender.send(message);
+
     }
    
 }

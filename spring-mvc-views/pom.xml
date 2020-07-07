@@ -74,12 +74,6 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
-        
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
-            <version>${apache-tiles.version}</version>
-        </dependency>
 
     </dependencies>
 
@@ -121,7 +115,6 @@
         <hsqldb.version>2.5.0</hsqldb.version>
         <hibernate.version>5.4.9.Final</hibernate.version>
         <deploy-path>enter-location-of-server</deploy-path>
-        <apache-tiles.version>3.0.8</apache-tiles.version>
     </properties>
 
 </project>

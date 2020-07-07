@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.indent.blurbs">
+<refmeta>
+<refentrytitle>man.indent.blurbs</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.indent.blurbs</refname>
+<refpurpose>Adjust indentation of blurbs?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.indent.blurbs.frag">
+<xsl:param name="man.indent.blurbs" select="1"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of <parameter>man.indent.blurbs</parameter> is
+non-zero, the width of the left margin for
+<tag>authorblurb</tag>, <tag>personblurb</tag>, and
+<tag>contrib</tag> output is set to the value of the
+<parameter>man.indent.width</parameter> parameter
+(<literal>3n</literal> by default). If instead the value of
+<parameter>man.indent.blurbs</parameter> is zero, the built-in roff
+default width (<literal>7.2n</literal>) is used.</para>
+
+</refsection>
+</refentry>

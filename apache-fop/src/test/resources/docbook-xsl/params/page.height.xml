@@ -1,0 +1,37 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="page.height">
+<refmeta>
+<refentrytitle>page.height</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>page.height</refname>
+<refpurpose>The height of the physical page</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="page.height.frag"><xsl:param name="page.height">
+  <xsl:choose>
+    <xsl:when test="$page.orientation = 'portrait'">
+      <xsl:value-of select="$page.height.portrait"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$page.width.portrait"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The page height is generally calculated from the
+<parameter>paper.type</parameter> and
+<parameter>page.orientation</parameter> parameters.
+</para>
+
+</refsection>
+</refentry>

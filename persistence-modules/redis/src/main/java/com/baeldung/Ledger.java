@@ -1,8 +1,6 @@
 package com.baeldung;
 
-import java.io.Serializable;
-
-public class Ledger implements Serializable {
+public class Ledger {
 
     public Ledger() {
     }

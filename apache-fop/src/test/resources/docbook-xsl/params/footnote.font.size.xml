@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="footnote.font.size">
+<refmeta>
+<refentrytitle>footnote.font.size</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>footnote.font.size</refname>
+<refpurpose>The font size for footnotes</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="footnote.font.size.frag"><xsl:param name="footnote.font.size">
+ <xsl:value-of select="$body.font.master * 0.8"/><xsl:text>pt</xsl:text>
+</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The footnote font size is used for...footnotes!
+</para>
+
+</refsection>
+</refentry>

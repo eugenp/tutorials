@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="generate.copyright">
+<refmeta>
+<refentrytitle>generate.copyright</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.copyright</refname>
+<refpurpose>Specifies whether copyright is generated</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="generate.copyright.frag">
+    <xsl:param name="generate.copyright">1</xsl:param>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies whether the copyright info is generated
+  in the footer area.</para>
+
+</refsection>
+</refentry>

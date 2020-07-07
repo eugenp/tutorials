@@ -19,31 +19,31 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.thread-weaver</groupId>
             <artifactId>threadweaver</artifactId>
-            <version>${threadweaver.version}</version>
+            <version>0.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.google.code.tempus-fugit</groupId>
             <artifactId>tempus-fugit</artifactId>
-            <version>${tempus-fugit.version}</version>
+            <version>1.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.googlecode.multithreadedtc</groupId>
             <artifactId>multithreadedtc</artifactId>
-            <version>${multithreadedtc.version}</version>
+            <version>1.01</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jcstress</groupId>
             <artifactId>jcstress-core</artifactId>
-            <version>${jcstress-core.version}</version>
+            <version>0.5</version>
         </dependency>
     </dependencies>
 
@@ -63,8 +63,8 @@
                 <version>3.1</version>
                 <configuration>
                     <compilerVersion>${javac.target}</compilerVersion>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>${javac.target}</source>
+                    <target>${javac.target}</target>
                 </configuration>
             </plugin>
 
@@ -99,11 +99,7 @@
     </build>
     
     <properties>
-        <junit.version>4.13</junit.version>
-        <threadweaver.version>0.2</threadweaver.version>
-        <tempus-fugit.version>1.1</tempus-fugit.version>
-        <multithreadedtc.version>1.01</multithreadedtc.version>
-        <jcstress-core.version>0.5</jcstress-core.version>
+        <javac.target>1.8</javac.target>
     </properties>
 
 </project>

@@ -1,21 +1,19 @@
 package com.baeldung.mdc;
 
-import com.baeldung.mdc.pool.MdcAwareThreadPoolExecutor;
-import com.baeldung.mdc.slf4j.Slf4jRunnable;
-
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
+import java.util.concurrent.Executors;
 
-import static java.util.concurrent.TimeUnit.MINUTES;
+import org.apache.log4j.Logger;
+
+import com.baeldung.mdc.log4j.Log4JRunnable;
+import com.baeldung.mdc.log4j2.Log4J2Runnable;
+import com.baeldung.mdc.slf4j.Slf4jRunnable;
 
 public class TransferDemo {
 
     public static void main(String[] args) {
 
-        ExecutorService executor = new MdcAwareThreadPoolExecutor(3, 3, 0, MINUTES,
-          new LinkedBlockingQueue<>(), Thread::new, new AbortPolicy());
-
+        ExecutorService executor = Executors.newFixedThreadPool(3);
         TransactionFactory transactionFactory = new TransactionFactory();
 
         for (int i = 0; i < 10; i++) {

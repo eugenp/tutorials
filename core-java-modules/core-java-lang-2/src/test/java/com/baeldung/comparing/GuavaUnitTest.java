@@ -63,8 +63,8 @@ class GuavaUnitTest {
             PersonWithEquals joe = new PersonWithEquals("Joe", "Portman");
 
             int comparisonResult = ComparisonChain.start()
-              .compare(natalie.getLastName(), joe.getLastName())
-              .compare(natalie.getFirstName(), joe.getFirstName())
+              .compare(natalie.lastName(), joe.lastName())
+              .compare(natalie.firstName(), joe.firstName())
               .result();
 
             assertThat(comparisonResult).isPositive();

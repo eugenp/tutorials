@@ -144,6 +144,7 @@
         <jdk.version>1.8</jdk.version>
         <annotation.api.version>1.3.2</annotation.api.version>
         <lombok.version>1.2.3</lombok.version>
+        <junit.version>4.12</junit.version>
         <reactor.version>3.1.6.RELEASE</reactor.version>
         <compiler.plugin.version>3.7.0</compiler.plugin.version>
         <exec.plugin.version>1.6.0</exec.plugin.version>

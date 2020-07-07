@@ -6,7 +6,7 @@
     <groupId>io.sirix</groupId>
     <artifactId>sirix</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>sirix</name>
+    <name>core-api-tutorial</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 

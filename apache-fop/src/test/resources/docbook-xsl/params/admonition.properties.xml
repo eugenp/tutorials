@@ -1,0 +1,25 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="admonition.properties">
+<refmeta>
+  <refentrytitle>admonition.properties</refentrytitle>
+  <refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>  
+<refnamediv>
+<refname>admonition.properties</refname>
+<refpurpose>To set the style for admonitions.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="admonition.properties.frag"><xsl:attribute-set name="admonition.properties"/>
+</src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>How do you want admonitions styled? </para>
+<para>Set the font-size, weight, etc. to the style required</para>
+
+</refsection>
+</refentry>

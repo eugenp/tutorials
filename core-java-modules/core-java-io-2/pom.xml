@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
-            <version>${wiremock.version}</version>
+            <version>2.26.3</version>
             <scope>test</scope>
         </dependency>
 
@@ -80,7 +80,6 @@
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <wiremock.version>2.26.3</wiremock.version>
     </properties>
 
 </project>

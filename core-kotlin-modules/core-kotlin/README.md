@@ -9,4 +9,3 @@ This module contains articles about Kotlin core features.
 - [Create a Java and Kotlin Project with Maven](https://www.baeldung.com/kotlin-maven-java-project)
 - [Kotlin Ternary Conditional Operator](https://www.baeldung.com/kotlin-ternary-operator)
 - [Sequences in Kotlin](https://www.baeldung.com/kotlin/sequences)
-- [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)

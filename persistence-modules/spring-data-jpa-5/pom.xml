@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
-            <version>${mapstruct.version}</version>
+            <version>1.3.1.Final</version>
             <scope>provided</scope>
         </dependency>
       
@@ -68,14 +68,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-boot-version>2.1.9.RELEASE</spring-boot-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>com.baeldung.springdatageode.app.ClientCacheApp</start-class>
-        <spring-geode-starter-version>1.1.1.RELEASE</spring-geode-starter-version>
-        <spring.boot.starter.version>2.1.9.RELEASE</spring.boot.starter.version>
-        <mapstruct.version>1.3.1.Final</mapstruct.version>
-    </properties>
-
 </project>

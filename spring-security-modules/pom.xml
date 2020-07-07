@@ -40,7 +40,6 @@
         <module>spring-security-stormpath</module>
         <module>spring-security-thymeleaf</module>
         <module>spring-security-x509</module>
-        <module>spring-security-kotlin-dsl</module>
     </modules>
 
 </project>

@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+
+<reference xml:id="utility">
+  <info>
+    <title>Common » Utility Template Reference</title>
+    <releaseinfo role="meta">
+      $Id: utility.xsl 7101 2007-07-20 15:32:12Z xmldoc $
+    </releaseinfo>
+  </info>
+  
+  <partintro xml:id="partintro">
+    <title>Introduction</title>
+    
+<para>This is technical reference documentation for the
+      miscellaneous utility templates in the DocBook XSL
+      Stylesheets.</para>
+
+    <note>
+      
+<para>These templates are defined in a separate file from the set
+        of “common” templates because some of the common templates
+        reference DocBook XSL stylesheet parameters, requiring the
+        entire set of parameters to be imported/included in any
+        stylesheet that imports/includes the common templates.</para>
+
+      
+<para>The utility templates don’t import or include any DocBook
+        XSL stylesheet parameters, so the utility templates can be used
+        without importing the whole set of parameters.</para>
+
+    </note>
+    
+<para>This is not intended to be user documentation. It is
+      provided for developers writing customization layers for the
+      stylesheets.</para>
+
+  </partintro>
+
+<refentry xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="template.log.message">
+<refnamediv>
+<refname>log.message</refname>
+<refpurpose>Logs/emits formatted notes and warnings</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis>&lt;xsl:template name="log.message"&gt;
+&lt;xsl:param name="level"/&gt;
+&lt;xsl:param name="source"/&gt;
+&lt;xsl:param name="context-desc"/&gt;
+&lt;xsl:param name="context-desc-field-length"&gt;12&lt;/xsl:param&gt;
+&lt;xsl:param name="context-desc-padded"&gt;
+    &lt;xsl:if test="not($context-desc = '')"&gt;
+      &lt;xsl:call-template name="pad-string"&gt;
+        &lt;xsl:with-param name="leftRight"&gt;right&lt;/xsl:with-param&gt;
+        &lt;xsl:with-param name="padVar" select="substring($context-desc, 1, $context-desc-field-length)"/&gt;
+        &lt;xsl:with-param name="length" select="$context-desc-field-length"/&gt;
+      &lt;/xsl:call-template&gt;
+    &lt;/xsl:if&gt;
+  &lt;/xsl:param&gt;
+&lt;xsl:param name="message"/&gt;
+&lt;xsl:param name="message-field-length" select="45"/&gt;
+&lt;xsl:param name="message-padded"&gt;
+    &lt;xsl:variable name="spaces-for-blank-level"&gt;
+      &lt;!-- * if the level field is blank, we'll need to pad out --&gt;
+      &lt;!-- * the message field with spaces to compensate --&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test="$level = ''"&gt;
+          &lt;xsl:value-of select="4 + 2"/&gt;
+          &lt;!-- * 4 = hard-coded length of comment text ("Note" or "Warn") --&gt;
+          &lt;!-- * + 2 = length of colon-plus-space separator ": " --&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:value-of select="0"/&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/xsl:variable&gt;
+    &lt;xsl:variable name="spaces-for-blank-context-desc"&gt;
+      &lt;!-- * if the context-description field is blank, we'll need --&gt;
+      &lt;!-- * to pad out the message field with spaces to compensate --&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test="$context-desc = ''"&gt;
+          &lt;xsl:value-of select="$context-desc-field-length + 2"/&gt;
+          &lt;!-- * + 2 = length of colon-plus-space separator ": " --&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:value-of select="0"/&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/xsl:variable&gt;
+    &lt;xsl:variable name="extra-spaces" select="$spaces-for-blank-level + $spaces-for-blank-context-desc"/&gt;
+    &lt;xsl:call-template name="pad-string"&gt;
+      &lt;xsl:with-param name="leftRight"&gt;right&lt;/xsl:with-param&gt;
+      &lt;xsl:with-param name="padVar" select="substring($message, 1, ($message-field-length + $extra-spaces))"/&gt;
+      &lt;xsl:with-param name="length" select="$message-field-length + $extra-spaces"/&gt;
+    &lt;/xsl:call-template&gt;
+  &lt;/xsl:param&gt;
+  ...
+&lt;/xsl:template&gt;</synopsis>
+</refsynopsisdiv>
+<refsect1><title>Description</title>
+    
+<para>The <function>log.message</function> template is a utility
+    template for logging/emitting formatted messages – that is,
+    notes and warnings, along with a given log “level” and an
+    identifier for the “source” that the message relates to.</para>
+
+  </refsect1><refsect1><title>Parameters</title>
+    
+<variablelist>
+      <varlistentry><term>level</term>
+        <listitem>
+          
+<para>Text to log/emit in the message-level field to
+            indicate the message level
+          (<literal>Note</literal> or
+          <literal>Warning</literal>)</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>source</term>
+        <listitem>
+          
+<para>Text to log/emit in the source field to identify the
+            “source” to which the notification/warning relates.
+            This can be any arbitrary string, but because the
+            message lacks line and column numbers to identify the
+            exact part of the source document to which it
+            relates, the intention is that the value you pass
+            into the <literal>source</literal> parameter should
+            give the user some way to identify the portion of
+            their source document on which to take potentially
+            take action in response to the log message (for
+            example, to edit, change, or add content).</para>
+
+          
+<para>So the <literal>source</literal> value should be,
+            for example, an ID, book/chapter/article title, title
+            of some formal object, or even a string giving an
+            XPath expression.</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>context-desc</term>
+        <listitem>
+          
+<para>Text to log/emit in the context-description field to
+            describe the context for the message.</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>context-desc-field-length</term>
+        <listitem>
+          
+<para>Specifies length of the context-description field
+            (in characters); default is 12</para>
+
+          
+<para>If the text specified by the
+            <literal>context-desc</literal> parameter is longer
+            than the number of characters specified in
+            <literal>context-desc-field-length</literal>, it is
+            truncated to <literal>context-desc-field-length</literal>
+            (12 characters by default).</para>
+
+          
+<para>If the specified text is shorter than
+            <literal>context-desc-field-length</literal>,
+          it is right-padded out to
+          <literal>context-desc-field-length</literal> (12 by
+          default).</para>
+
+        
+<para>If no value has been specified for the
+          <literal>context-desc</literal> parameter, the field is
+          left empty and the text of the log message begins with
+          the value of the <literal>message</literal>
+          parameter.</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>message</term>
+        <listitem>
+          
+<para>Text to log/emit in the actual message field</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>message-field-length</term>
+        <listitem>
+          
+<para>Specifies length of the message
+            field (in characters); default is 45</para>
+
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1><refsect1><title>Returns</title>
+  
+<para>Outputs a message (generally, to standard error).</para>
+</refsect1></refentry>
+
+<refentry xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="template.get.doc.title">
+<refnamediv>
+<refname>get.doc.title</refname>
+<refpurpose>Gets a title from the current document</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis>&lt;xsl:template name="get.doc.title"/&gt;</synopsis>
+</refsynopsisdiv>
+<refsect1><title>Description</title>
+    
+<para>The <function>get.doc.title</function> template is a
+      utility template for returning the first title found in the
+      current document.</para>
+
+  </refsect1><refsect1><title>Returns</title>
+  
+<para>Returns a string containing some identifying title for the
+    current document .</para>
+</refsect1></refentry>
+
+<refentry xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="template.pad-string">
+<refnamediv>
+<refname>pad-string</refname>
+<refpurpose>Right-pads or left-pads a string out to a certain length</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis>&lt;xsl:template name="pad-string"&gt;
+&lt;xsl:param name="padChar" select="' '"/&gt;
+&lt;xsl:param name="leftRight"&gt;left&lt;/xsl:param&gt;
+&lt;xsl:param name="padVar"/&gt;
+&lt;xsl:param name="length"/&gt;
+  ...
+&lt;/xsl:template&gt;</synopsis>
+</refsynopsisdiv>
+<refsect1><title>Description</title>
+    
+<para>This function takes string <parameter>padVar</parameter> and
+      pads it out in the direction <parameter>rightLeft</parameter> to
+      the string-length <parameter>length</parameter>, using string
+      <parameter>padChar</parameter> (a space character by default) as
+      the padding string (note that <parameter>padChar</parameter> can
+      be a string; it is not limited to just being a single
+      character).</para>
+
+    <note>
+      
+<para>This function began as a copy of Nate Austin's
+        <function>prepend-pad</function> function in the <link xlink:href="http://www.dpawson.co.uk/xsl/sect2/padding.html">Padding
+          Content</link> section of Dave Pawson's <link xlink:href="http://www.dpawson.co.uk/xsl/index.html">XSLT
+          FAQ</link>.</para>
+
+    </note>
+  </refsect1><refsect1><title>Returns</title>
+  
+<para>Returns a (padded) string.</para>
+</refsect1></refentry>
+</reference>
+

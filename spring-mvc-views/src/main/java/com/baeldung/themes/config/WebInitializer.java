@@ -14,7 +14,6 @@ public class WebInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(DataSourceConfig.class);
         context.register(ThemeMVCConfig.class);
-        //context.register(TilesApplicationConfiguration.class);
 
 
         servletContext.addListener(new ContextLoaderListener(context));

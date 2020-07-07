@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="figure.properties">
+<refmeta>
+<refentrytitle>figure.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>  
+<refnamediv>
+<refname>figure.properties</refname>
+<refpurpose>Properties associated with a figure</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="figure.properties.frag">
+<xsl:attribute-set name="figure.properties" use-attribute-sets="formal.object.properties"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for figures.</para>
+
+</refsection>
+</refentry>

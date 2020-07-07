@@ -1,0 +1,86 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="qanda.defaultlabel">
+<refmeta>
+<refentrytitle>qanda.defaultlabel</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">number</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">qanda</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">none</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>qanda.defaultlabel</refname>
+<refpurpose>Sets the default for defaultlabel on QandASet.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="qanda.defaultlabel.frag">
+<xsl:param name="qanda.defaultlabel">number</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If no <literal>defaultlabel</literal> attribute is specified on
+a <tag>qandaset</tag>, this value is used. It is generally one of the legal
+values for the defaultlabel attribute (<literal>none</literal>, 
+<literal>number</literal> or
+<literal>qanda</literal>), or one of the additional stylesheet-specific values
+(<literal>qnumber</literal> or <literal>qnumberanda</literal>).
+The default value is 'number'.
+</para>
+<para>The values are rendered as follows:</para>
+<variablelist>
+<varlistentry><term><literal>qanda</literal></term>
+<listitem>
+<para><tag>question</tag>s are labeled "Q:" and
+<tag>answer</tag>s are labeled "A:". </para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>number</literal></term>
+<listitem>
+<para>The questions are enumerated and the answers
+are not labeled. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>qnumber</literal></term>
+<listitem>
+<para>The questions are labeled "Q:" followed by a number, and answers are not 
+labeled. 
+When sections are numbered, adding a label
+to the number distinguishes the question numbers
+from the section numbers.
+This value is not allowed in the
+<tag class="attribute">defaultlabel</tag> attribute
+of a <tag>qandaset</tag> element.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>qnumberanda</literal></term>
+<listitem>
+<para>The questions are labeled "Q:" followed by a number, and
+the answers are labeled "A:". 
+When sections are numbered, adding a label
+to the number distinguishes the question numbers
+from the section numbers.
+This value is not allowed in the
+<tag class="attribute">defaultlabel</tag> attribute
+of a <tag>qandaset</tag> element.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><literal>none</literal></term>
+<listitem>
+<para>No distinguishing label precedes Questions or Answers. 
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>

@@ -243,12 +243,12 @@
                     </configuration>
                 </plugin>
                 <!-- jax-ws maven plugin-->
-                <plugin>
+                <plugin> 
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxws-maven-plugin</artifactId>
                     <version>2.6</version>
-                    <executions>
-                        <execution>
+                    <executions> 
+                        <execution> 
                             <id>wsimport-from-jdk</id>
                             <goals>
                                 <goal>wsimport</goal>
@@ -259,8 +259,8 @@
                         <wsdlUrls>
                             <wsdlUrl>http://localhost:8888/ws/country?wsdl</wsdlUrl>
                         </wsdlUrls>
-                        <keep>true</keep>
-                        <packageName>com.baeldung.soap.ws.client.generated</packageName>
+                        <keep>true</keep> 
+                        <packageName>com.baeldung.soap.ws.client.generated</packageName> 
                         <sourceDestDir>src/main/java</sourceDestDir>
                     </configuration>
                 </plugin>
@@ -274,6 +274,10 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <serverProfile>standalone-full.xml</serverProfile>
+                <serverRoot>${project.build.directory}/wildfly-${version.wildfly}</serverRoot>
+            </properties>
             <dependencies>
                 <dependency>
                     <groupId>io.undertow</groupId>
@@ -314,36 +318,53 @@
             </dependencies>
 
             <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>${maven-dependency-plugin.version}</version>
-                        <configuration>
-                            <skip>${maven.test.skip}</skip>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>org.wildfly</groupId>
-                                            <artifactId>wildfly-dist</artifactId>
-                                            <version>${wildfly.version}</version>
-                                            <type>zip</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-dependency-plugin</artifactId>
+                            <version>${maven-dependency-plugin.version}</version>
+                            <configuration>
+                                <skip>${maven.test.skip}</skip>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>unpack</id>
+                                    <phase>process-test-classes</phase>
+                                    <goals>
+                                        <goal>unpack</goal>
+                                    </goals>
+                                    <configuration>
+                                        <artifactItems>
+                                            <artifactItem>
+                                                <groupId>org.wildfly</groupId>
+                                                <artifactId>wildfly-dist</artifactId>
+                                                <version>${wildfly.version}</version>
+                                                <type>zip</type>
+                                                <overWrite>false</overWrite>
+                                                <outputDirectory>${project.build.directory}</outputDirectory>
+                                                <exclusions>
+                                                    <exclusion>
+                                                        <groupId>sun.jdk</groupId>
+                                                        <artifactId>jconsole</artifactId>
+                                                    </exclusion>
+                                                </exclusions>
+                                            </artifactItem>
+                                        </artifactItems>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${maven-surefire-plugin.version}</version>
+                            <configuration>
+                                <environmentVariables>
+                                    <JBOSS_HOME>${project.build.directory}/wildfly-${wildfly.version}</JBOSS_HOME>
+                                </environmentVariables>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
             </build>
         </profile>
         <profile>

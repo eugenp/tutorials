@@ -2,7 +2,6 @@
 
 - [Spring JPA @Embedded and @EmbeddedId](https://www.baeldung.com/spring-jpa-embedded-method-parameters)
 - [Generate Database Schema with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-generate-db-schema)
-- [Partial Data Update with Spring Data](https://www.baeldung.com/spring-data-partial-update)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

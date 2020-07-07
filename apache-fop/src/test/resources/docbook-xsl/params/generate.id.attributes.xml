@@ -1,0 +1,59 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="generate.id.attributes">
+<refmeta>
+<refentrytitle>generate.id.attributes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.id.attributes</refname>
+<refpurpose>Generate ID attributes on container elements?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="generate.id.attributes.frag">
+<xsl:param name="generate.id.attributes" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, the HTML stylesheet will generate ID attributes on
+containers. For example, the markup:</para>
+
+<screen>&lt;section id="foo"&gt;&lt;title&gt;Some Title&lt;/title&gt;
+&lt;para&gt;Some para.&lt;/para&gt;
+&lt;/section&gt;</screen>
+
+<para>might produce:</para>
+
+<screen>&lt;div class="section" id="foo"&gt;
+&lt;h2&gt;Some Title&lt;/h2&gt;
+&lt;p&gt;Some para.&lt;/p&gt;
+&lt;/div&gt;</screen>
+
+<para>The alternative is to generate anchors:</para>
+
+<screen>&lt;div class="section"&gt;
+&lt;h2&gt;&lt;a name="foo"&gt;&lt;/a&gt;Some Title&lt;/h2&gt;
+&lt;p&gt;Some para.&lt;/p&gt;
+&lt;/div&gt;</screen>
+
+<para>Because the <tag class="attribute">name</tag> attribute of
+the <tag>a</tag> element and the <tag class="attribute">id</tag>
+attribute of other tags are both of type <quote>ID</quote>, producing both
+generates invalid documents.</para>
+
+<para>As of version 1.50, you can use this switch to control which type of
+identifier is generated. For backwards-compatibility, generating
+<tag>a</tag> anchors is preferred.</para>
+
+<para>Note: at present, this switch is incompletely implemented.
+Disabling ID attributes will suppress them, but enabling ID attributes
+will not suppress the anchors.</para>
+
+</refsection>
+</refentry>

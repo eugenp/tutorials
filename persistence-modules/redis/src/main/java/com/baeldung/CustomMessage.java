@@ -1,11 +1,9 @@
 package com.baeldung;
 
-import java.io.Serializable;
-
 /**
  * Created by johnson on 3/9/17.
  */
-public class CustomMessage implements Serializable {
+public class CustomMessage {
     private String message;
 
     public CustomMessage() {

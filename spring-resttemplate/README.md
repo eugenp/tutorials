@@ -20,7 +20,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [HTTP PUT vs HTTP PATCH in a REST API](https://www.baeldung.com/http-put-patch-difference-spring) 
 - [A Custom Media Type for a Spring REST API](https://www.baeldung.com/spring-rest-custom-media-type)
 - [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
-- [Proxies With RestTemplate](https://www.baeldung.com/java-resttemplate-proxy)
 
 ### NOTE:
 

@@ -1,10 +1,8 @@
 package com.baeldung.serenity.spring;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
-@Scope("prototype")
 public class AdderService {
 
     private int num;

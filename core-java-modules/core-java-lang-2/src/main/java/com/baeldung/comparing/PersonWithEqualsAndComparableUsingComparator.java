@@ -23,15 +23,15 @@ public class PersonWithEqualsAndComparableUsingComparator implements Comparable<
         this.birthDate = birthDate;
     }
 
-    public String getFirstName() {
+    public String firstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    public String lastName() {
         return lastName;
     }
 
-    public LocalDate getBirthDate() {
+    public LocalDate birthDate() {
         return birthDate;
     }
 
@@ -52,9 +52,9 @@ public class PersonWithEqualsAndComparableUsingComparator implements Comparable<
 
     @Override
     public int compareTo(PersonWithEqualsAndComparableUsingComparator o) {
-        return Comparator.comparing(PersonWithEqualsAndComparableUsingComparator::getLastName)
-          .thenComparing(PersonWithEqualsAndComparableUsingComparator::getFirstName)
-          .thenComparing(PersonWithEqualsAndComparableUsingComparator::getBirthDate, Comparator.nullsLast(Comparator.naturalOrder()))
+        return Comparator.comparing(PersonWithEqualsAndComparableUsingComparator::lastName)
+          .thenComparing(PersonWithEqualsAndComparableUsingComparator::firstName)
+          .thenComparing(PersonWithEqualsAndComparableUsingComparator::birthDate, Comparator.nullsLast(Comparator.naturalOrder()))
           .compare(this, o);
     }
 }

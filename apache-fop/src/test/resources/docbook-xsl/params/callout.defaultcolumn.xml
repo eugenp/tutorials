@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callout.defaultcolumn">
+<refmeta>
+<refentrytitle>callout.defaultcolumn</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout.defaultcolumn</refname>
+<refpurpose>Indicates what column callouts appear in by default</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callout.defaultcolumn.frag">
+<xsl:param name="callout.defaultcolumn">60</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If a callout does not identify a column (for example, if it uses
+the <literal>linerange</literal> <tag class="attribute">unit</tag>),
+it will appear in the default column.
+</para>
+
+</refsection>
+</refentry>
