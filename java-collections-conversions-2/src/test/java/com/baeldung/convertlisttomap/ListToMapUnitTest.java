@@ -24,13 +24,9 @@ public class ListToMapUnitTest {
 
         Map<Integer, List<String>> convertedMap = new HashMap<>();
 
-        Supplier<List<String>> listSupplier = () -> {
-            return new ArrayList<>();
-        };
+        Supplier<List<String>> listSupplier = ArrayList::new;
 
-        Supplier<Map<Integer, List<String>>> mapFactory = () -> {
-            return new HashMap<>();
-        };
+        Supplier<Map<Integer, List<String>>> mapFactory = HashMap::new;
         convertedMap = strings.stream()
             .collect(Collectors.groupingBy(String::length, mapFactory, Collectors.toCollection(listSupplier)));
 
@@ -45,13 +41,9 @@ public class ListToMapUnitTest {
 
         Map<Integer, List<String>> convertedMap = new HashMap<>();
 
-        Supplier<Map<Integer, List<String>>> mapFactory = () -> {
-            return new HashMap<>();
-        };
+        Supplier<Map<Integer, List<String>>> mapFactory = HashMap::new;
 
-        Supplier<List<String>> listSupplier = () -> {
-            return new ArrayList<>();
-        };
+        Supplier<List<String>> listSupplier = ArrayList::new;
 
         BiConsumer<Map<Integer, List<String>>, String> accumulator = (response, element) -> {
             Integer key = element.length();
@@ -78,17 +70,11 @@ public class ListToMapUnitTest {
 
         Map<Integer, List<String>> convertedMap = new HashMap<>();
 
-        Supplier<Map<Integer, List<String>>> mapFactory = () -> {
-            return new HashMap<>();
-        };
+        Supplier<Map<Integer, List<String>>> mapFactory = HashMap::new;
 
-        Supplier<List<String>> listSupplier = () -> {
-            return new ArrayList<>();
-        };
+        Supplier<List<String>> listSupplier = ArrayList::new;
 
-        Function<String, Integer> keyMapper = (element) -> {
-            return element.length();
-        };
+        Function<String, Integer> keyMapper = String::length;
 
         Function<String, List<String>> valueMapper = (element) -> {
             List<String> collection = listSupplier.get();
