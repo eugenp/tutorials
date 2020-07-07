@@ -15,31 +15,33 @@ public class CreateTempDirectoriesUnitTest {
     @Test
     public void givenJavaEight_whenCreatingTemporaryDirectoryInDefaultLocation_thenTrue() throws IOException {
 
-        Path temporaryDirectoryPath = Files.createTempDirectory("temporary-directory-tutorial-");
+        Path temporaryDirectoryPath = Files.createTempDirectory("temp-dir-tutorial");
         assertNotNull("Temporary directory should have been created", temporaryDirectoryPath);
 
         Path defaultJvmTemporaryDirectory = new File(System.getProperty("java.io.tmpdir")).toPath();
-        assertTrue("Newly created temporary directory is contained within the default JVM temporary directory",
-                temporaryDirectoryPath.startsWith(defaultJvmTemporaryDirectory));
+
+        assertTrue("Temporary directory is in default location",
+          temporaryDirectoryPath.startsWith(defaultJvmTemporaryDirectory));
 
         Files.deleteIfExists(temporaryDirectoryPath);
     }
 
     @Test
     public void givenJavaEight_whenCreatingTemporaryDirectoryInNonDefaultLocation_thenTrue() throws IOException {
+        Path defaultJvmTemporaryDirectory = new File(System.getProperty("java.io.tmpdir")).toPath();
 
         Path nonDefaultDirectoryPath = Paths.get("some-other-location");
         Files.createDirectories(nonDefaultDirectoryPath);
-        assertTrue("Non default directory must exist in order for us to create files in it", Files.exists(nonDefaultDirectoryPath));
+        assertTrue("Directory must exist in order for us to create files in it",
+          Files.exists(nonDefaultDirectoryPath));
 
-        Path temporaryDirectoryPath = Files.createTempDirectory(nonDefaultDirectoryPath, "temporary-directory-tutorial-");
+        Path temporaryDirectoryPath = Files.createTempDirectory(nonDefaultDirectoryPath, "temp-dir-tutorial");
+
         assertNotNull("Temporary directory should have been created", temporaryDirectoryPath);
-
-        Path defaultJvmTemporaryDirectory = new File(System.getProperty("java.io.tmpdir")).toPath();
-        assertTrue("Newly created temporary directory should be contained within non-default directory",
-                temporaryDirectoryPath.startsWith(nonDefaultDirectoryPath));
-        assertFalse("Newly created temporary directory should not be contained within the default JVM temporary directory",
-                temporaryDirectoryPath.startsWith(defaultJvmTemporaryDirectory));
+        assertTrue("Temporary directory is in expected directory",
+          temporaryDirectoryPath.startsWith(nonDefaultDirectoryPath));
+        assertFalse("Temporary directory is not in default location",
+          temporaryDirectoryPath.startsWith(defaultJvmTemporaryDirectory));
 
         Files.deleteIfExists(temporaryDirectoryPath);
         Files.deleteIfExists(nonDefaultDirectoryPath);
@@ -49,12 +51,14 @@ public class CreateTempDirectoriesUnitTest {
     public void givenGuava_whenCreatingTemporaryDirectory_thenTrue() throws IOException {
 
         File temporaryDirectoryFile = com.google.common.io.Files.createTempDir();
-        assertTrue("Temporary directory should have been created",  temporaryDirectoryFile.exists() && temporaryDirectoryFile.isDirectory());
+
+        assertTrue("Temporary directory should have been created",
+ temporaryDirectoryFile.exists() && temporaryDirectoryFile.isDirectory());
 
         Path newTemporaryDirectoryPath = temporaryDirectoryFile.toPath();
         Path defaultJvmTemporaryDirectory = new File(System.getProperty("java.io.tmpdir")).toPath();
-        assertTrue("Newly created temporary directory is contained within the default JVM temporary directory",
-                newTemporaryDirectoryPath.startsWith(defaultJvmTemporaryDirectory));
+        assertTrue("Temporary directory is in default location",
+          newTemporaryDirectoryPath.startsWith(defaultJvmTemporaryDirectory));
 
         Files.deleteIfExists(newTemporaryDirectoryPath);
     }
