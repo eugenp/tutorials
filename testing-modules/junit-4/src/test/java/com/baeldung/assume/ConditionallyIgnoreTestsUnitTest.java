@@ -2,8 +2,7 @@ package com.baeldung.assume;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assume.assumeThat;
-import static org.junit.Assume.assumeTrue;
+import static org.junit.Assume.*;
 
 import org.junit.Test;
 
@@ -22,6 +21,14 @@ public class ConditionallyIgnoreTestsUnitTest {
     public void whenAssumeTrueOnCondition_thenIgnore() {
         final int codeVersion = 1;
         assumeTrue(isCodeVersion2(codeVersion));
+
+        assertEquals("hello", "HELLO".toLowerCase());
+    }
+
+    @Test
+    public void whenAssumeFalseOnCondition_thenIgnore() {
+        final int codeVersion = 2;
+        assumeFalse(isCodeVersion2(codeVersion));
 
         assertEquals("hello", "HELLO".toLowerCase());
     }
