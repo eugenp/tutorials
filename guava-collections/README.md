@@ -14,3 +14,4 @@ This module contains articles about Google Guava collections
 - [Guava – Lists](https://www.baeldung.com/guava-lists)
 - [Guide to Guava MinMaxPriorityQueue and EvictingQueue](https://www.baeldung.com/guava-minmax-priority-queue-and-evicting-queue)
 - [Guide to Guava Table](https://www.baeldung.com/guava-table)
+- [Guava CharMatcher](https://www.baeldung.com/guava-string-charmatcher)

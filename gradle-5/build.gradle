@@ -1,54 +1,21 @@
-plugins {
-    id "application"
-}
-apply plugin :"java"
-
-description = "Java MainClass execution examples"
-group = "com.baeldung"
-version = "0.0.1"
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
-
-ext {
-   javaMainClass = "com.baeldung.gradle.exec.MainClass"
+plugins{
+    id "nebula.lint" version "16.9.0"
 }
 
-jar {
-    manifest {
-        attributes(
-            "Main-Class": javaMainClass
-        )
+description = "Gradle 5 root project"
+allprojects {
+    apply plugin :"java"
+    apply plugin :"nebula.lint"
+    gradleLint {
+        rules=['unused-dependency']
+        reportFormat = 'text'
     }
-}
+    group = "com.baeldung"
+    version = "0.0.1"
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
 
-application {
-    mainClassName = javaMainClass
-}
-
-task runWithJavaExec(type: JavaExec) {
-    group = "Execution"
-    description = "Run the main class with JavaExecTask"
-    classpath = sourceSets.main.runtimeClasspath
-    main = javaMainClass
-}
-
-task runWithExec(type: Exec) {
-    dependsOn build
-    group = "Execution"
-    description = "Run the main class with ExecTask"
-    commandLine "java", "-classpath", sourceSets.main.runtimeClasspath.getAsPath(), javaMainClass
-}
-
-task runWithExecJarExecutable(type: Exec) {
-    dependsOn jar
-    group = "Execution"
-    description = "Run the output executable jar with ExecTask"
-    commandLine "java", "-jar", jar.archiveFile.get()
-}
-
-task runWithExecJarOnClassPath(type: Exec) {
-    dependsOn jar
-    group = "Execution"
-    description = "Run the mainClass from the output jar in classpath with ExecTask"
-    commandLine "java", "-classpath", jar.archiveFile.get() , javaMainClass
+    repositories {
+        jcenter()
+    }
 }
