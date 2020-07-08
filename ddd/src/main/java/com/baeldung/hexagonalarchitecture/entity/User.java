@@ -1,4 +1,4 @@
-package com.baeldung.hexgonalarchitecture.entity;
+package com.baeldung.hexagonalarchitecture.entity;
 
 public class User {
 

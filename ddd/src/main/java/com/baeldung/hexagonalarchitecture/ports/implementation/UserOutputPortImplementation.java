@@ -1,7 +1,7 @@
-package com.baeldung.hexgonalarchitecture.ports.implementation;
+package com.baeldung.hexagonalarchitecture.ports.implementation;
 
-import com.baeldung.hexgonalarchitecture.entity.User;
-import com.baeldung.hexgonalarchitecture.ports.definition.UserOutputPort;
+import com.baeldung.hexagonalarchitecture.entity.User;
+import com.baeldung.hexagonalarchitecture.ports.definition.UserOutputPort;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

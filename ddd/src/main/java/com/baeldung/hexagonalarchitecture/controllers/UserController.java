@@ -1,7 +1,7 @@
-package com.baeldung.hexgonalarchitecture.controllers;
+package com.baeldung.hexagonalarchitecture.controllers;
 
-import com.baeldung.hexgonalarchitecture.entity.User;
-import com.baeldung.hexgonalarchitecture.ports.definition.UserInputPort;
+import com.baeldung.hexagonalarchitecture.entity.User;
+import com.baeldung.hexagonalarchitecture.ports.definition.UserInputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

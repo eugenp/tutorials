@@ -1,8 +1,8 @@
-package com.baeldung.hexgonalarchitecture.ports.implementation;
+package com.baeldung.hexagonalarchitecture.ports.implementation;
 
-import com.baeldung.hexgonalarchitecture.domain.RandomProfessionGenerator;
-import com.baeldung.hexgonalarchitecture.entity.User;
-import com.baeldung.hexgonalarchitecture.ports.definition.UserInputPort;
+import com.baeldung.hexagonalarchitecture.domain.RandomProfessionGenerator;
+import com.baeldung.hexagonalarchitecture.entity.User;
+import com.baeldung.hexagonalarchitecture.ports.definition.UserInputPort;
 import org.springframework.stereotype.Component;
 
 @Component

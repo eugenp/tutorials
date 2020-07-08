@@ -1,7 +1,7 @@
-package com.baeldung.hexgonalarchitecture.domain;
+package com.baeldung.hexagonalarchitecture.domain;
 
-import com.baeldung.hexgonalarchitecture.entity.User;
-import com.baeldung.hexgonalarchitecture.ports.definition.UserOutputPort;
+import com.baeldung.hexagonalarchitecture.entity.User;
+import com.baeldung.hexagonalarchitecture.ports.definition.UserOutputPort;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
