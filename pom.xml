@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
@@ -558,7 +558,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
-				<module>hexagonal-architecture-java</module>
+				<module>hexagonal-architecture</module>
             </modules>
 
         </profile>
