@@ -7,3 +7,5 @@ This module contains articles about Domain-driven Design (DDD)
 - [Persisting DDD Aggregates](https://www.baeldung.com/spring-persisting-ddd-aggregates)
 - [Double Dispatch in DDD](https://www.baeldung.com/ddd-double-dispatch)
 - [Organizing Layers Using Hexagonal Architecture, DDD, and Spring](https://www.baeldung.com/hexagonal-architecture-ddd-spring)
+- [Quick Guide to Hexagonal Architecture in Java
+](http://inprogress.baeldung.com/?p=214085&preview=true)
