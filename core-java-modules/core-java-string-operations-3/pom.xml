@@ -25,59 +25,31 @@
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-artifact</artifactId>
-            <version>3.6.3</version>
+            <version>${maven-artifact.version}</version>
         </dependency>
         <dependency>
             <groupId>org.gradle</groupId>
             <artifactId>gradle-core</artifactId>
-            <version>6.1.1</version>
+            <version>${gradle-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.11.1</version>
+            <version>${jackson-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>semver4j</artifactId>
-            <version>3.1.0</version>
+            <version>${semver4j.version}</version>
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>core-java-string-operations-3</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.openjdk.jmh.Main</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
         <assertj.version>3.6.1</assertj.version>
+        <maven-artifact.version>3.6.3</maven-artifact.version>
+        <gradle-core.version>6.1.1</gradle-core.version>
+        <jackson-core.version>2.11.1</jackson-core.version>
+        <semver4j.version>3.1.0</semver4j.version>
     </properties>
 
 	<repositories>
