@@ -10,6 +10,7 @@ import org.apache.maven.artifact.versioning.ComparableVersion;
 import org.gradle.util.VersionNumber;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class VersionComparisonUnitTest {
