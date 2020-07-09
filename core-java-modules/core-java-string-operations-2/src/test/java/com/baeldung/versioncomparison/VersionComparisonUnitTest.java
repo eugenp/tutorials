@@ -120,7 +120,7 @@ public class VersionComparisonUnitTest {
         assertEquals(version1_1.diff("1.1.1"), VersionDiff.PATCH);
         
         assertTrue(version1_1.isStable());
-        assertEquals(version1_1_alpha.isStable(), false);
+        assertFalse(version1_1_alpha.isStable());
     }
 
     @Test
