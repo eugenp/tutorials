@@ -3,16 +3,19 @@ package com.baeldung.properties.yamllist;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.baeldung.properties.yamllist.pojo.ApplicationProps;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-class YamlComplexListsIntegrationTest {
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(initializers = ConfigFileApplicationContextInitializer.class)
+@EnableConfigurationProperties(value = ApplicationProps.class)
+class YamlComplexListsUnitTest {
 
     @Autowired
     private ApplicationProps applicationProps;
