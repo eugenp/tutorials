@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.intro;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.baeldung.models;
+package com.baeldung.intro.models;
 
 public class UserCredentials {
 
