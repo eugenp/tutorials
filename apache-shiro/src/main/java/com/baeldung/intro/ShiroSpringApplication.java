@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.intro;
 
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
@@ -7,12 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 /**
  * Created by smatt on 21/08/2017.
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class ShiroSpringApplication {
 
     private static final transient Logger log = LoggerFactory.getLogger(ShiroSpringApplication.class);
@@ -29,7 +30,7 @@ public class ShiroSpringApplication {
 
 
     @Bean
-    public ShiroFilterChainDefinition shiroFilterChainDefinition() {
+    public ShiroFilterChainDefinition filterChainDefinition() {
         DefaultShiroFilterChainDefinition filter
           = new DefaultShiroFilterChainDefinition();
 
