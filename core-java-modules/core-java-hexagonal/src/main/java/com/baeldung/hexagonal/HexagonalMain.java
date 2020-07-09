@@ -11,8 +11,8 @@ public class HexagonalMain {
 
     static String inputFileName = "inputfile";
     static String outputFileName = "outputfile";
-    
-    public static void main(String[] args) {    
+
+    public static void main(String[] args) {
         InputService inputService = new FileInputService(inputFileName);
         OutputService outputService = new FileOutputService(outputFileName);
         TextInfoService textInfoService = new TextInfoServiceImpl(inputService, outputService);

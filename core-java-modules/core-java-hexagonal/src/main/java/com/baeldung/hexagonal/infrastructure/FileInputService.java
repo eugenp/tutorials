@@ -10,7 +10,7 @@ import com.baeldung.hexagonal.domain.InputService;
 public class FileInputService implements InputService {
 
     private String fileName;
-    
+
     public FileInputService(String fileName) {
         this.fileName = fileName;
     }
@@ -22,7 +22,7 @@ public class FileInputService implements InputService {
             return new String(encoded, StandardCharsets.US_ASCII);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
-        }        
+        }
     }
-   
+
 }
