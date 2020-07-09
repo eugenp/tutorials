@@ -1,6 +1,5 @@
-package com.baeldung.controllers;
+package com.baeldung.intro.controllers;
 
-import com.baeldung.models.UserCredentials;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.baeldung.intro.models.UserCredentials;
 
 import javax.servlet.http.HttpServletRequest;
 
