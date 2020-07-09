@@ -13,13 +13,13 @@ import com.google.common.reflect.TypeToken;
 
 public class InvokePrivateMethodUnitTest {
 
-    InvokePrivateMethodExample instance;
+    MetadataClass instance;
     Method privateMethod;
 
     @BeforeEach
     public void setup() throws Exception {
-        instance = new InvokePrivateMethodExample();
-        privateMethod = InvokePrivateMethodExample.class.getDeclaredMethod("getSimpleName");
+        instance = new MetadataClass(String.class);
+        privateMethod = MetadataClass.class.getDeclaredMethod("getSimpleName");
     }
 
     @Test
@@ -31,13 +31,13 @@ public class InvokePrivateMethodUnitTest {
     public void givenObject_whenInvokePrivateMethod_thenCorrect() throws Exception {
         privateMethod.setAccessible(true);
 
-        assertEquals("InvokePrivateMethodExample", privateMethod.invoke(instance));
+        assertEquals("String", privateMethod.invoke(instance));
     }
 
     @SuppressWarnings("serial")
     @Test
     public void givenObject_whenInvokePrivateMethodWithGuava_thenFail() {
-        Invokable<InvokePrivateMethodExample, ?> invokable = new TypeToken<InvokePrivateMethodExample>() {
+        Invokable<MetadataClass, ?> invokable = new TypeToken<MetadataClass>() {
         }.method(privateMethod);
 
         assertThrows(IllegalAccessException.class, () -> invokable.invoke(instance));
@@ -46,11 +46,11 @@ public class InvokePrivateMethodUnitTest {
     @SuppressWarnings("serial")
     @Test
     public void givenObject_whenInvokePrivateMethodWithGuava_thenCorrect() throws Exception {
-        Invokable<InvokePrivateMethodExample, ?> invokable = new TypeToken<InvokePrivateMethodExample>() {
+        Invokable<MetadataClass, ?> invokable = new TypeToken<MetadataClass>() {
         }.method(privateMethod);
 
         invokable.setAccessible(true);
 
-        assertEquals("InvokePrivateMethodExample", invokable.invoke(instance));
+        assertEquals("String", invokable.invoke(instance));
     }
 }
