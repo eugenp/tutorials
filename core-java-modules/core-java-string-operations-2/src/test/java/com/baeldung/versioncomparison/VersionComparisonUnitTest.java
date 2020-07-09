@@ -88,7 +88,7 @@ public class VersionComparisonUnitTest {
         Version version1_1_snapshot = new Version(1, 1, 0, "snapshot", null, null);
         assertEquals(version1_1.compareTo(version1_1_snapshot), 0);
         
-        assertEquals(version1_1_snapshot.isSnapshot(), true);
+        assertTrue(version1_1_snapshot.isSnapshot());
     }
     
     @Test
