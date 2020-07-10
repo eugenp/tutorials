@@ -1,4 +1,4 @@
-package com.baeldung.imageprocessing.text;
+package com.baeldung.imageprocessing.addingtext;
 
 import ij.IJ;
 import ij.ImagePlus;
