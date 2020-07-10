@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.singletonsession</groupId>
     <artifactId>ejb-beans</artifactId>
-    <name>spring-ejb-beans</name>
+    <name>ejb-beans</name>
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
@@ -31,7 +31,6 @@
             <artifactId>javaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.openejb/tomee-embedded -->
         <dependency>
             <groupId>org.apache.openejb</groupId>
             <artifactId>tomee-embedded</artifactId>
@@ -82,6 +81,62 @@
 
     <profiles>
         <profile>
+            <id>wildfly-managed-arquillian</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>${wildfly.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven-dependency-plugin.version}</version>
+                        <configuration>
+                            <skip>${maven.test.skip}</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.wildfly</groupId>
+                                            <artifactId>wildfly-dist</artifactId>
+                                            <version>${wildfly.version}</version>
+                                            <type>zip</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <!-- Fork every test because it will launch a separate AS instance -->
+                            <forkMode>always</forkMode>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <id>arquillian-glassfish-embedded</id>
             <dependencies>
                 <dependency>
@@ -117,12 +172,15 @@
         <tomee-embedded.version>1.7.5</tomee-embedded.version>
         <glassfish-embedded-all.version>3.1.2</glassfish-embedded-all.version>
         <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
+        <wildfly.version>8.2.1.Final</wildfly.version>
         <javax.ejb-api.version>3.2</javax.ejb-api.version>
         <springframework.version>5.2.3.RELEASE</springframework.version>
         <activemq.broker.version>5.10.2</activemq.broker.version>
         <activemq.junit.version>5.13.1</activemq.junit.version>
         <mockito.version>2.21.0</mockito.version>
         <byte-buddy.version>1.8.5</byte-buddy.version>
+        <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
+        <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
     </properties>
 
 </project>

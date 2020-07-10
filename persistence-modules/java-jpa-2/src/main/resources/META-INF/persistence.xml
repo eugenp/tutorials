@@ -184,4 +184,29 @@
                       value="false" />
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="jpa-h2-primarykey">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.baeldung.jpa.generateidvalue.Admin</class>
+        <class>com.baeldung.jpa.generateidvalue.Article</class>
+        <class>com.baeldung.jpa.generateidvalue.IdGenerator</class>
+        <class>com.baeldung.jpa.generateidvalue.Task</class>
+        <class>com.baeldung.jpa.generateidvalue.User</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.h2.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:h2:mem:test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="" />
+            <property name="javax.persistence.sql-load-script-source"
+                      value="primary_key_generator.sql" />
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+            <property name="eclipselink.ddl-generation.output-mode" value="database" />
+            <property name="eclipselink.weaving" value="static" />
+            <property name="eclipselink.logging.level" value="FINE" />
+            <property name="eclipselink.jdbc.allow-native-sql-queries" value="true" />
+        </properties>
+    </persistence-unit>
 </persistence>

@@ -14,6 +14,7 @@
 
     <modules>
         <module>activejdbc</module>
+        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>

@@ -34,4 +34,20 @@ public class BaeldungSychronizedBlockUnitTest {
         assertEquals(1000, BaeldungSynchronizedBlocks.getStaticCount());
     }
 
+    @Test
+    public void givenHoldingTheLock_whenReentrant_thenCanAcquireItAgain() {
+        Object lock = new Object();
+        synchronized (lock) {
+            System.out.println("First time acquiring it");
+
+            synchronized (lock) {
+                System.out.println("Entering again");
+
+                synchronized (lock) {
+                    System.out.println("And again");
+                }
+            }
+        }
+    }
+
 }

@@ -80,6 +80,7 @@
         <module>core-java-jndi</module>
         <!-- <module>core-java-jpms</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
         <module>core-java-jvm</module>
+        <module>core-java-jvm-2</module>
 
         <module>core-java-lambdas</module>
         <module>core-java-lang</module>
@@ -134,18 +135,6 @@
         <module>pre-jpms</module>
     </modules>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -162,6 +151,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
