@@ -110,6 +110,7 @@
         <module>core-java-perf</module>
 
         <module>core-java-reflection</module>
+        <module>core-java-reflection-2</module>
 
         <module>core-java-security</module>
         <module>core-java-security-2</module>
