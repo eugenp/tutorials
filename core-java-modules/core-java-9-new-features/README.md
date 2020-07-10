@@ -12,3 +12,4 @@ This module contains articles about core Java features that have been introduced
 - [Introduction to Java 9 StackWalking API](https://www.baeldung.com/java-9-stackwalking-api)
 - [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
 - [Java 9 Reactive Streams](https://www.baeldung.com/java-9-reactive-streams)
+- [Multi-Release JAR Files with Maven](https://www.baeldung.com/maven-multi-release-jars)
