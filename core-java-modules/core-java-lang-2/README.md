@@ -11,4 +11,6 @@ This module contains articles about core features in the Java language
 - [Guide to the Java finally Keyword](https://www.baeldung.com/java-finally-keyword)
 - [The Java Headless Mode](https://www.baeldung.com/java-headless-mode)
 - [Comparing Long Values in Java](https://www.baeldung.com/java-compare-long-values)
+- [Comparing Objects in Java](https://www.baeldung.com/java-comparing-objects)
+- [Casting int to Enum in Java](https://www.baeldung.com/java-cast-int-to-enum)
 - [[<-- Prev]](/core-java-modules/core-java-lang)

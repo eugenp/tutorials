@@ -153,6 +153,19 @@
             <artifactId>renjin-script-engine</artifactId>
             <version>${renjin.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <classifier>test</classifier>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -170,6 +183,24 @@
             <url>https://nexus.bedatadriven.com/content/groups/public/</url>
         </repository>
     </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
+                    <excludes>
+                        <exclude>com/baeldung/r/FastRMean.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
+                    </testExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <flink.version>1.5.0</flink.version>
@@ -191,23 +222,5 @@
         <rserve.version>1.8.1</rserve.version>
         <kafka.version>2.5.0</kafka.version>
     </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
-                    <excludes>
-                        <exclude>com/baeldung/r/FastRMean.java</exclude>
-                    </excludes>
-                    <testExcludes>
-                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
-                    </testExcludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
