@@ -8,3 +8,5 @@
 - [Changing Annotation Parameters At Runtime](http://www.baeldung.com/java-reflection-change-annotation-params)
 - [Dynamic Proxies in Java](http://www.baeldung.com/java-dynamic-proxies)
 - [What Causes java.lang.reflect.InvocationTargetException?](https://www.baeldung.com/java-lang-reflect-invocationtargetexception)
+- [How to Find all Getters Returning Null](http://www.baeldung.com/java-getters-returning-null)
+- [How to Get a Name of a Method Being Executed?](http://www.baeldung.com/java-name-of-executing-method)

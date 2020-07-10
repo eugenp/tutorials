@@ -62,12 +62,6 @@
             <artifactId>h2</artifactId>
         </dependency>
         
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-dep</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
-
         <!-- test -->
 
         <dependency>
@@ -102,7 +96,6 @@
     </build>
     
     <properties>
-        <bytebuddy.version>1.10.9</bytebuddy.version>
         <spring.social.facebook.version>2.0.3.RELEASE</spring.social.facebook.version>
     </properties>
 

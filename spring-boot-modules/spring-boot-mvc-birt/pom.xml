@@ -3,18 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-mvc-birt</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-mvc-birt</name>
-    <packaging>jar</packaging>
-    <description>Module For Spring Boot Integration with BIRT</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
+
+    <artifactId>spring-boot-mvc-birt</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>spring-boot-mvc-birt</name>
+    <description>Module For Spring Boot Integration with BIRT</description>
 
     <dependencies>
         <dependency>
@@ -75,7 +77,6 @@
     </build>
 
     <properties>
-        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
         <start-class>com.baeldung.birt.engine.ReportEngineApplication</start-class>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

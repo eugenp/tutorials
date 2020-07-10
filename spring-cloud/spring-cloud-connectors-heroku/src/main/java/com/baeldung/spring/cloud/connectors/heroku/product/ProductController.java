@@ -1,5 +1,7 @@
 package com.baeldung.spring.cloud.connectors.heroku.product;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public Product findProduct(@PathVariable Long productId) {
+    public Optional<Product> findProduct(@PathVariable Long productId) {
         return productService.findProductById(productId);
     }
 

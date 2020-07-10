@@ -21,6 +21,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,5 +37,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <json.version>20200518</json.version>
+    </properties>
 
 </project>
