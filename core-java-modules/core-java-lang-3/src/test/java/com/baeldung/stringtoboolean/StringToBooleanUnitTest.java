@@ -24,6 +24,7 @@ public class StringToBooleanUnitTest {
     @Test
     public void givenSystemProperty_whenUsingGetBoolean_thenTrue() {
         System.setProperty("CODING_IS_FUN", "true");
+        
         assertThat(Boolean.getBoolean("CODING_IS_FUN")).isTrue();
     }
 }
