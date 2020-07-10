@@ -23,7 +23,7 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-    <dependencies>
+    </dependencies>
 
     <build>
         <finalName>core-java-lang-3</finalName>
