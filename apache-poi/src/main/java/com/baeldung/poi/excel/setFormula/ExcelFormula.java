@@ -1,34 +1,26 @@
 package com.baeldung.poi.excel.setFormula;
 
-import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 public class ExcelFormula {
-    XSSFWorkbook excel;
-    public XSSFSheet inserData(List<Integer> dataList) {
-        excel = new XSSFWorkbook();
-        XSSFSheet sheet = excel.createSheet();
-        int rowNum =0 ;
-        for (Integer data : dataList){
-            sheet.createRow(rowNum++).createCell(0).setCellValue(data);
-        }
-        return sheet;
-    }
-    public double setFormula(String formula) throws IOException {
-        XSSFSheet sheet = excel.getSheetAt(0);
+    public double setFormula(String fileLocation, XSSFWorkbook wb, String formula) throws IOException {
+        XSSFSheet sheet = wb.getSheetAt(0);
         int lastCellNum = sheet.getRow(0).getLastCellNum();
-        XSSFCell formulaCell = sheet.getRow(0).createCell(lastCellNum + 1);
+        XSSFCell formulaCell = sheet.getRow(0).createCell(lastCellNum);
         formulaCell.setCellFormula(formula);
-        XSSFFormulaEvaluator formulaEvaluator = excel.getCreationHelper().createFormulaEvaluator();
-        CellValue evaluate = formulaEvaluator.evaluate(formulaCell);
-        if(excel != null)
-            excel.close();
-        return evaluate.getNumberValue();
+        XSSFFormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
+        formulaEvaluator.evaluateFormulaCell(formulaCell);
+        FileOutputStream fileOut = new FileOutputStream(new File(fileLocation));
+        wb.write(fileOut);
+        wb.close();
+        fileOut.close();
+        return formulaCell.getNumericCellValue();
     }
 }
