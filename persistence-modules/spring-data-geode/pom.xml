@@ -85,7 +85,6 @@
 
     <properties>
         <spring-boot-version>2.1.9.RELEASE</spring-boot-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>com.baeldung.springdatageode.app.ClientCacheApp</start-class>
         <spring-geode-starter-version>1.1.1.RELEASE</spring-geode-starter-version>
         <spring.boot.starter.version>2.1.9.RELEASE</spring.boot.starter.version>

@@ -33,7 +33,6 @@
     <properties>
         <hsqldb.version>2.4.0</hsqldb.version>
         <jaxb.version>2.3.0</jaxb.version>
-        <hibernate.version>5.3.7.Final</hibernate.version>
     </properties>
 
 </project>
