@@ -1,4 +1,4 @@
-package com.baeldung.springsecurity.web;
+package com.baeldung.comparison.springsecurity.web;
 
 import java.util.Collection;
 
