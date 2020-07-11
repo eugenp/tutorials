@@ -1,4 +1,4 @@
-package com.baeldung.shiro;
+package com.baeldung.comparison.shiro;
 
 import java.sql.Connection;
 import java.sql.SQLException;

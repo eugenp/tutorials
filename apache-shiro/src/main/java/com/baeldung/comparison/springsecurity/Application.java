@@ -1,4 +1,4 @@
-package com.baeldung.springsecurity;
+package com.baeldung.comparison.springsecurity;
 
 import org.apache.shiro.spring.boot.autoconfigure.ShiroAnnotationProcessorAutoConfiguration;
 import org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration;
