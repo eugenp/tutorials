@@ -9,28 +9,25 @@ import java.util.stream.Collectors;
 public class FindDifferencesBetweenLists {
 
     public static <T> List<T> differencesUsingPlainJavaCollections(List<T> listOne, List<T> listTwo) {
-        List<T> differences = differencesUsingCollections(listOne, listTwo);
-        differences.addAll(differencesUsingCollections(listTwo, listOne));
-        return differences;
-    }
-
-    private static <T> List<T> differencesUsingCollections(List<T> listOne, List<T> listTwo) {
-        Set<T> differences = new HashSet<>(listOne);
-        differences.removeAll(listTwo);
-        return new ArrayList<>(differences);
+        Set<T> differencesListOne = new HashSet<>(listOne);
+        differencesListOne.removeAll(listTwo);
+        Set<T> differencesListTwo = new HashSet<>(listTwo);
+        differencesListTwo.removeAll(listOne);
+        differencesListOne.addAll(differencesListTwo);
+        return new ArrayList<>(differencesListOne);
     }
 
     public static <T> List<T> differencesUsingPlainJavaStream(List<T> listOne, List<T> listTwo) {
-        List<T> differences = differencesUsingStream(listOne, listTwo);
-        differences.addAll(differencesUsingStream(listTwo, listOne));
-        return differences;
-    }
-
-    private static <T> List<T> differencesUsingStream(List<T> listOne, List<T> listTwo) {
-        return listOne.stream()
-            .filter(element -> !listTwo.contains(element))
-            .distinct()
-            .collect(Collectors.toList());
+        List<T> differencesListOne = listOne.stream()
+                .filter(element -> !listTwo.contains(element))
+                .distinct()
+                .collect(Collectors.toList());
+        List<T> differencesListTwo = listTwo.stream()
+                .filter(element -> !listOne.contains(element))
+                .distinct()
+                .collect(Collectors.toList());
+        differencesListOne.addAll(differencesListTwo);
+        return differencesListOne;
     }
 
     public static <T> List<T> differencesUsingApacheCommonsCollections(List<T> listOne, List<T> listTwo) {
