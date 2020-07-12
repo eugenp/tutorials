@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class JacksonExamplePerson {
+public class Person {
     @JsonProperty("@id")
     public String id;
     @JsonProperty("http://schema.org/name")
@@ -12,7 +12,7 @@ public class JacksonExamplePerson {
     @JsonProperty("http://schema.org/knows")
     public Link knows;
 
-    public class Link {
+    public static class Link {
         @JsonProperty("@id")
         public String id;
     }
