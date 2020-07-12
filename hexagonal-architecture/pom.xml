@@ -3,18 +3,25 @@
   <groupId>hcom.baeldung</groupId>
   <artifactId>hexagonal-architecture</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>${junit-jupiter.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit</groupId>
+      <artifactId>junit-bom</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>2.1.12.RELEASE</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -31,6 +38,7 @@
   </build>
 
   <properties>
+    <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
     <junit-jupiter.version>5.6.2</junit-jupiter.version>
   </properties>
 </project>
