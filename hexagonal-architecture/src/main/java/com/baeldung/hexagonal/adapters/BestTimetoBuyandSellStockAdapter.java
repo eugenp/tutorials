@@ -5,6 +5,8 @@ import com.baeldung.hexagonal.ports.BestTimetoBuyandSellStockPort;
 /**
  * User: raychenon
  * Date: 12/7/2020
+ *
+ * No framework dependencies
  */
 public class BestTimetoBuyandSellStockAdapter implements BestTimetoBuyandSellStockPort {
 
