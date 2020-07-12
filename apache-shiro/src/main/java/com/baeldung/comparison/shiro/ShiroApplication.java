@@ -1,45 +1,33 @@
-package com.baeldung;
+package com.baeldung.comparison.shiro;
 
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
-/**
- * Created by smatt on 21/08/2017.
- */
-@SpringBootApplication
-public class ShiroSpringApplication {
-
-    private static final transient Logger log = LoggerFactory.getLogger(ShiroSpringApplication.class);
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+public class ShiroApplication {
 
     public static void main(String... args) {
-        SpringApplication.run(ShiroSpringApplication.class, args);
+        SpringApplication.run(ShiroApplication.class, args);
     }
-
 
     @Bean
-    public Realm realm() {
-        return new MyCustomRealm();
+    public Realm customRealm() {
+        return new CustomRealm();
     }
-
 
     @Bean
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
-        DefaultShiroFilterChainDefinition filter
-          = new DefaultShiroFilterChainDefinition();
+        DefaultShiroFilterChainDefinition filter = new DefaultShiroFilterChainDefinition();
 
-        filter.addPathDefinition("/secure", "authc");
+        filter.addPathDefinition("/home", "authc");
         filter.addPathDefinition("/**", "anon");
 
         return filter;
     }
-
-
-
 
 }

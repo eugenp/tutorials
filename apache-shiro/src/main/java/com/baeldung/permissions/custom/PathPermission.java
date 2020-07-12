@@ -1,4 +1,4 @@
-package com.baeldung.shiro.permissions.custom;
+package com.baeldung.permissions.custom;
 
 import org.apache.shiro.authz.Permission;
 
