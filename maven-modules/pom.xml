@@ -24,7 +24,7 @@
         <module>maven-profiles</module>
         <module>versions-maven-plugin</module>
         <module>version-collision</module>
-		<module>maven-properties</module>
+        <module>maven-properties</module>
     </modules>
 
 </project>
