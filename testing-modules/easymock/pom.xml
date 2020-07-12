@@ -23,7 +23,6 @@
     </dependencies>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <easymock.version>4.0.2</easymock.version>
     </properties>
 
