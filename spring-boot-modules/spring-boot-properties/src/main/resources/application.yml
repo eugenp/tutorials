@@ -6,22 +6,42 @@ spring:
 ---
 
 spring:
-    profiles: test
+  profiles: test
 name: test-YAML
 environment: testing
 servers:
-    - www.abc.test.com
-    - www.xyz.test.com
-    
+  - www.abc.test.com
+  - www.xyz.test.com
+  
+external: [www.abc.test.com, www.xyz.test.com]
+
+map:
+  firstkey: key1
+  secondkey: key2
+  
+component:
+  idm:
+    url: myurl
+    user: user
+    password: password
+    description: >
+      this should be a long
+      description
+  service:
+    url: myurlservice
+    token: token
+    description: >
+      this should be another long
+      description
 ---
 
 spring:
-    profiles: prod
+  profiles: prod
 name: prod-YAML
 environment: production
 servers:
-    - www.abc.com
-    - www.xyz.com
+  - www.abc.com
+  - www.xyz.com
     
 ---
 

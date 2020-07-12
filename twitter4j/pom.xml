@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>twitter4J</artifactId>
-    <name>twitter4J</name>
+    <artifactId>twitter4j</artifactId>
+    <name>twitter4j</name>
     <packaging>jar</packaging>
 
     <parent>
