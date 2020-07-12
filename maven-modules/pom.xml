@@ -16,6 +16,7 @@
     <modules>
         <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->   
         <module>maven-custom-plugin</module>     
+        <module>maven-exec-plugin</module>     
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
