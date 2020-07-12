@@ -1,12 +1,9 @@
-package com.baeldung.models;
+package com.baeldung.comparison.shiro.models;
 
 public class UserCredentials {
 
     private String username;
     private String password;
-    private boolean rememberMe = false;
-
-    public UserCredentials() {}
 
     public String getUsername() {
         return username;
@@ -24,17 +21,8 @@ public class UserCredentials {
         this.password = password;
     }
 
-    public boolean isRememberMe() {
-        return rememberMe;
-    }
-
-    public void setRememberMe(boolean rememberMe) {
-        this.rememberMe = rememberMe;
-    }
-
     @Override
     public String toString() {
-        return "username = " + getUsername()
-                + "\nrememberMe = " + isRememberMe();
+        return "username = " + getUsername();
     }
 }
