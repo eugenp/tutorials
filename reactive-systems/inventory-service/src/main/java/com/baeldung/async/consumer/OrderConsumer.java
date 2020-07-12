@@ -33,7 +33,8 @@ public class OrderConsumer {
                     orderProducer.sendMessage(order.setOrderStatus(OrderStatus.INVENTORY_SUCCESS));
                 })
                 .doOnError(e -> {
-                    log.error("Order failed to process: " + e);
+                    if (log.isDebugEnabled())
+                        log.error("Order failed to process: " + e);
                     orderProducer.sendMessage(order.setOrderStatus(OrderStatus.INVENTORY_FAILURE)
                         .setResponseMessage(e.getMessage()));
                 })
@@ -45,7 +46,8 @@ public class OrderConsumer {
                     orderProducer.sendMessage(order.setOrderStatus(OrderStatus.INVENTORY_REVERT_SUCCESS));
                 })
                 .doOnError(e -> {
-                    log.error("Order failed to revert: " + e);
+                    if (log.isDebugEnabled())
+                        log.error("Order failed to revert: " + e);
                     orderProducer.sendMessage(order.setOrderStatus(OrderStatus.INVENTORY_REVERT_FAILURE)
                         .setResponseMessage(e.getMessage()));
                 })

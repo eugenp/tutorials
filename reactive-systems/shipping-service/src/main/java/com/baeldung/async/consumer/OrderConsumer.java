@@ -34,7 +34,8 @@ public class OrderConsumer {
                         .setShippingDate(o.getShippingDate()));
                 })
                 .doOnError(e -> {
-                    log.error("Order failed to process: " + e);
+                    if (log.isErrorEnabled())
+                        log.error("Order failed to process: " + e);
                     orderProducer.sendMessage(order.setOrderStatus(OrderStatus.SHIPPING_FAILURE)
                         .setResponseMessage(e.getMessage()));
                 })
