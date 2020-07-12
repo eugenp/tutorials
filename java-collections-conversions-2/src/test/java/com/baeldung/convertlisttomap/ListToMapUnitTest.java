@@ -1,6 +1,5 @@
 package com.baeldung.convertlisttomap;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -8,89 +7,38 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ListToMapUnitTest {
 
+    private ListToMapConverter converter;
+    private List<String> source;
+
+    @Before
+    public void setUp() {
+        converter = new ListToMapConverter();
+        source = Arrays.asList("List", "Map", "Set", "Tree");
+    }
+
     @Test
     public void givenAList_whenConvertWithJava8GroupBy_thenReturnMap() {
-        List<String> strings = Arrays.asList("List", "Map", "Set", "Tree");
-
-        Map<Integer, List<String>> convertedMap = new HashMap<>();
-
-        Supplier<List<String>> listSupplier = ArrayList::new;
-
-        Supplier<Map<Integer, List<String>>> mapFactory = HashMap::new;
-        convertedMap = strings.stream()
-            .collect(Collectors.groupingBy(String::length, mapFactory, Collectors.toCollection(listSupplier)));
-
-        assertEquals(2, convertedMap.size());
+        Map<Integer, List<String>> convertedMap = converter.groupingByStringLength(source, HashMap::new, ArrayList::new);
         assertTrue(convertedMap.get(3)
             .contains("Map"));
     }
 
     @Test
     public void givenAList_whenConvertWithJava8Collect_thenReturnMap() {
-        List<String> strings = Arrays.asList("List", "Map", "Set", "Tree");
-
-        Map<Integer, List<String>> convertedMap = new HashMap<>();
-
-        Supplier<Map<Integer, List<String>>> mapFactory = HashMap::new;
-
-        Supplier<List<String>> listSupplier = ArrayList::new;
-
-        BiConsumer<Map<Integer, List<String>>, String> accumulator = (response, element) -> {
-            Integer key = element.length();
-            List<String> values = response.getOrDefault(key, listSupplier.get());
-            values.add(element);
-            response.put(key, values);
-        };
-
-        BiConsumer<Map<Integer, List<String>>, Map<Integer, List<String>>> combiner = (res1, res2) -> {
-            res1.putAll(res2);
-        };
-
-        convertedMap = strings.stream()
-            .collect(mapFactory, accumulator, combiner);
-
-        assertEquals(2, convertedMap.size());
+        Map<Integer, List<String>> convertedMap = converter.streamCollectByStringLength(source, HashMap::new, ArrayList::new);
         assertTrue(convertedMap.get(3)
             .contains("Map"));
     }
 
     @Test
     public void givenAList_whenConvertWithCollectorToMap_thenReturnMap() {
-        List<String> strings = Arrays.asList("List", "Map", "Set", "Tree");
-
-        Map<Integer, List<String>> convertedMap = new HashMap<>();
-
-        Supplier<Map<Integer, List<String>>> mapFactory = HashMap::new;
-
-        Supplier<List<String>> listSupplier = ArrayList::new;
-
-        Function<String, Integer> keyMapper = String::length;
-
-        Function<String, List<String>> valueMapper = (element) -> {
-            List<String> collection = listSupplier.get();
-            collection.add(element);
-            return collection;
-        };
-
-        BinaryOperator<List<String>> mergeFunction = (existing, replacement) -> {
-            existing.addAll(replacement);
-            return existing;
-        };
-
-        convertedMap = strings.stream()
-            .collect(Collectors.toMap(keyMapper, valueMapper, mergeFunction, mapFactory));
-
-        assertEquals(2, convertedMap.size());
+        Map<Integer, List<String>> convertedMap = converter.collectorToMapByStringLength(source, HashMap::new, ArrayList::new);
         assertTrue(convertedMap.get(3)
             .contains("Map"));
     }
