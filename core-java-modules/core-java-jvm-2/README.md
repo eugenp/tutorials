@@ -8,4 +8,4 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [Measuring Object Sizes in the JVM](https://www.baeldung.com/jvm-measuring-object-sizes)
 - [Adding Shutdown Hooks for JVM Applications](https://www.baeldung.com/jvm-shutdown-hooks)
 - [boolean and boolean[] Memory Layout in the JVM](https://www.baeldung.com/jvm-boolean-memory-layout)
-- More articles: [[prev -->]](/core-java-modules/core-java-jvm)
+- More articles: [[<-- prev]](/core-java-modules/core-java-jvm)
