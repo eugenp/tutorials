@@ -22,10 +22,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -34,5 +30,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
 </project>

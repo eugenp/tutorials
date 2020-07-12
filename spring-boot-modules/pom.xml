@@ -6,8 +6,9 @@
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-boot-modules</name>
     <packaging>pom</packaging>
+
+    <name>spring-boot-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -48,6 +49,7 @@
         <module>spring-boot-kotlin</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
+        <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-nashorn</module>
         <module>spring-boot-parent</module>
@@ -63,6 +65,37 @@
         <module>spring-boot-actuator</module>
     </modules>
 
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -75,5 +108,6 @@
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <commons-io.version>2.6</commons-io.version>
     </properties>
 </project>

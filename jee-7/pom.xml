@@ -274,10 +274,6 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <serverProfile>standalone-full.xml</serverProfile>
-                <serverRoot>${project.build.directory}/wildfly-${wildfly.version}</serverRoot>
-            </properties>
             <dependencies>
                 <dependency>
                     <groupId>io.undertow</groupId>
@@ -346,15 +342,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <environmentVariables>
-                                <JBOSS_HOME>${project.build.directory}/wildfly-${wildfly.version}</JBOSS_HOME>
-                            </environmentVariables>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
