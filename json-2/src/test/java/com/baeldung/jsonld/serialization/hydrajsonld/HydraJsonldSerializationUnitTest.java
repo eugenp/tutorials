@@ -1,8 +1,12 @@
 package com.baeldung.jsonld.serialization.hydrajsonld;
 
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,23 +15,36 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
 import com.fasterxml.jackson.databind.ser.std.BeanSerializerBase;
 
+import de.escalon.hypermedia.hydra.mapping.Expose;
+import de.escalon.hypermedia.hydra.mapping.Vocab;
 import de.escalon.hypermedia.hydra.serialize.JacksonHydraSerializer;
 
-public class HydraJsonldSerializationExample {
-    public static void main(String[] args) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        mapper.registerModule(getJacksonHydraSerializerModule());
+public class HydraJsonldSerializationUnitTest {
+    @Vocab("http://example.com/vocab/")
+    @Expose("person")
+    static class Person {
+        @JsonProperty("@id")
+        public String id;
+        @Expose("fullName")
+        public String name;
+    }
 
-        HydraJsonldExamplePerson person = new HydraJsonldExamplePerson();
+    @Test
+    void givenAHydraJsonldAnnotatedObject_whenJacksonHydraSerializerIsUsed_thenAJsonLdDocumentIsGenerated() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(getJacksonHydraSerializerModule());
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        Person person = new Person();
         person.id = "http://example.com/person/1234";
         person.name = "Example Name";
 
-        System.out.println(mapper.writerWithDefaultPrettyPrinter()
-            .writeValueAsString(person));
+        String personJsonLd = objectMapper.writeValueAsString(person);
+
+        assertEquals("{\"@context\":{\"@vocab\":\"http://example.com/vocab/\",\"name\":\"fullName\"},\"@type\":\"person\",\"name\":\"Example Name\",\"@id\":\"http://example.com/person/1234\"}", personJsonLd);
     }
 
-    public static SimpleModule getJacksonHydraSerializerModule() {
+    static SimpleModule getJacksonHydraSerializerModule() {
         return new SimpleModule() {
 
             @Override
