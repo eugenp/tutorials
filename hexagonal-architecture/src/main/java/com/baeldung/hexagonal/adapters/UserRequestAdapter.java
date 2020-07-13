@@ -18,4 +18,9 @@ public class UserRequestAdapter implements UserRequest {
         sportsApp.fetchAndWrite(sportName);
     }
 
+    @Override
+    public void requestStock(String stockName) {
+        
+    }
+
 }
