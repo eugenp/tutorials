@@ -85,6 +85,7 @@
         <module>core-java-lambdas</module>
         <module>core-java-lang</module>
         <module>core-java-lang-2</module>
+        <module>core-java-lang-3</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop-constructors</module>
@@ -110,6 +111,7 @@
         <module>core-java-perf</module>
 
         <module>core-java-reflection</module>
+        <module>core-java-reflection-2</module>
 
         <module>core-java-security</module>
         <module>core-java-security-2</module>
@@ -134,18 +136,6 @@
         <module>pre-jpms</module>
     </modules>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -162,6 +152,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
