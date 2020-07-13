@@ -9,7 +9,7 @@ import java.util.Random;
 @Component
 public class RandomProfessionGenerator {
 
-    private String[] profession = {"Accountant", "Actress", "Agent", "Airman", "Artist"};
+    private String[] profession = { "Accountant", "Actress", "Agent", "Airman", "Artist" };
 
     private UserOutputPort userOutputPort;
 
