@@ -25,7 +25,7 @@ public class VersionComparisonUnitTest {
         assertTrue(version1_3.compareTo(version1_2) > 0);
         
         ComparableVersion version1_1_0 = new ComparableVersion("1.1.0"); 
-        assertEquals(version1_1.compareTo(version1_1_0), 0);
+        assertEquals(0, version1_1.compareTo(version1_1_0));
 
         ComparableVersion version1_1_alpha = new ComparableVersion("1.1-alpha");
         assertTrue(version1_1.compareTo(version1_1_alpha) > 0);
@@ -58,7 +58,7 @@ public class VersionComparisonUnitTest {
         assertTrue(version1_3.compareTo(version1_2) > 0);
         
         VersionNumber version1_1_0 = VersionNumber.parse("1.1.0");
-        assertEquals(version1_1.compareTo(version1_1_0), 0);
+        assertEquals(0, version1_1.compareTo(version1_1_0));
         
         VersionNumber version1_1_1_1_alpha = VersionNumber.parse("1.1.1.1-alpha");
         assertTrue(version1_1.compareTo(version1_1_1_1_alpha) < 0);
@@ -87,7 +87,7 @@ public class VersionComparisonUnitTest {
         assertTrue(version1_1_maven.compareTo(version1_1_gradle) < 0);
         
         Version version1_1_snapshot = new Version(1, 1, 0, "snapshot", null, null);
-        assertEquals(version1_1.compareTo(version1_1_snapshot), 0);
+        assertEquals(0, version1_1.compareTo(version1_1_snapshot));
         
         assertTrue(version1_1_snapshot.isSnapshot());
     }
@@ -116,9 +116,9 @@ public class VersionComparisonUnitTest {
         
         assertTrue(version1_1.isEqualTo("1.1.0"));
         
-        assertEquals(version1_1.diff("2.1.0"), VersionDiff.MAJOR);
-        assertEquals(version1_1.diff("1.2.3"), VersionDiff.MINOR);
-        assertEquals(version1_1.diff("1.1.1"), VersionDiff.PATCH);
+        assertEquals(VersionDiff.MAJOR, version1_1.diff("2.1.0"));
+        assertEquals(VersionDiff.MINOR, version1_1.diff("1.2.3"));
+        assertEquals(VersionDiff.PATCH, version1_1.diff("1.1.1"));
         
         assertTrue(version1_1.isStable());
         assertFalse(version1_1_alpha.isStable());
@@ -130,7 +130,7 @@ public class VersionComparisonUnitTest {
         assertTrue(VersionCompare.compareVersions("1.0.1", "1.10") < 0);
         assertTrue(VersionCompare.compareVersions("1.1.2", "1.0.1") > 0);
         assertTrue(VersionCompare.compareVersions("1.1.2", "1.2") < 0); 
-        assertEquals(VersionCompare.compareVersions("1.3.0", "1.3"), 0); 
+        assertEquals(0, VersionCompare.compareVersions("1.3.0", "1.3")); 
     }
     
 }
