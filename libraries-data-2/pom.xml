@@ -184,6 +184,24 @@
         </repository>
     </repositories>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
+                    <excludes>
+                        <exclude>com/baeldung/r/FastRMean.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
+                    </testExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <flink.version>1.5.0</flink.version>
         <hll.version>1.6.0</hll.version>
@@ -205,21 +223,4 @@
         <kafka.version>2.5.0</kafka.version>
     </properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
-                    <excludes>
-                        <exclude>com/baeldung/r/FastRMean.java</exclude>
-                    </excludes>
-                    <testExcludes>
-                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>						
-                    </testExcludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
