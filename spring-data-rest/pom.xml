@@ -88,7 +88,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>com.baeldung.books.SpringDataRestApplication</start-class>
         <maven.version>1.0</maven.version>
     </properties>
