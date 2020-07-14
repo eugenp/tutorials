@@ -1,6 +1,6 @@
 package com.baeldung.hexagonal.ports;
 
-public interface UserRequest {
+public interface UserRequestPort {
 
     public String calculateBestProfitForStock(String stockName);
 

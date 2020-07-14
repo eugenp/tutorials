@@ -1,16 +1,20 @@
-package com.baeldung.hexagonal.adapters;
-
-import com.baeldung.hexagonal.ports.BestTimetoBuyandSellStockPort;
+package com.baeldung.hexagonal.core;
 
 /**
  * User: raychenon
- * Date: 12/7/2020
- *
+ * Date: 14/7/2020/
  * No framework dependencies
  */
-public class BestTimetoBuyandSellStockAdapter implements BestTimetoBuyandSellStockPort {
+public class ProfitCalculator {
 
-    @Override
+    /**
+     * Find the best time to buy and sell stock
+     * find the maximum profit by completing at most one transaction
+     * (i.e., buy one and sell one share of the stock)
+     *
+     * @param prices
+     * @return
+     */
     public int maxProfit(int[] prices) {
         int n = prices.length;
         if (n == 0) return 0;

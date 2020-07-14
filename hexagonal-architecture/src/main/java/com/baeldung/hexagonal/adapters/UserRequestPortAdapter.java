@@ -1,13 +1,13 @@
 package com.baeldung.hexagonal.adapters;
 
 import com.baeldung.hexagonal.core.StockPriceCore;
-import com.baeldung.hexagonal.ports.UserRequest;
+import com.baeldung.hexagonal.ports.UserRequestPort;
 
-public class UserRequestAdapter implements UserRequest {
+public class UserRequestPortAdapter implements UserRequestPort {
 
     private StockPriceCore stockPriceCore;
 
-    public UserRequestAdapter() {
+    public UserRequestPortAdapter() {
         stockPriceCore = new StockPriceCore();
     }
 

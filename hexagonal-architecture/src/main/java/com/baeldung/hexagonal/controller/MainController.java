@@ -1,6 +1,6 @@
 package com.baeldung.hexagonal.controller;
 
-import com.baeldung.hexagonal.adapters.UserRequestAdapter;
+import com.baeldung.hexagonal.adapters.UserRequestPortAdapter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 public class MainController {
 
-    private UserRequestAdapter userRequestAdapter = new UserRequestAdapter();
+    private UserRequestPortAdapter userRequestAdapter = new UserRequestPortAdapter();
 
     @GetMapping("/")
     public String index() {
