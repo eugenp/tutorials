@@ -1,20 +1,11 @@
 package com.baeldung.csv;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
-
+import com.opencsv.CSVReader;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.opencsv.CSVReader;
+import java.io.*;
+import java.util.*;
 
 public class ReadCSVInArrayUnitTest {
     public static final String COMMA_DELIMITER = ",";
