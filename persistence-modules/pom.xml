@@ -78,4 +78,8 @@
         <module>spring-persistence-simple-2</module>
     </modules>
 
+    <properties>
+        <!-- persistence -->
+        <hibernate.version>5.2.17.Final</hibernate.version>
+    </properties>
 </project>
