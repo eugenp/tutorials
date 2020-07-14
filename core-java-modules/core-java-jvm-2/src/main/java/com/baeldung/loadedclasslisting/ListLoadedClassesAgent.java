@@ -4,6 +4,10 @@ import java.lang.instrument.Instrumentation;
 
 public class ListLoadedClassesAgent {
 
+    public enum ClassLoaderType {
+        SYSTEM, EXTENSION, BOOTSTRAP, CUSTOM , PLATFORM
+    }
+    
     private static Instrumentation instrumentation;
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
