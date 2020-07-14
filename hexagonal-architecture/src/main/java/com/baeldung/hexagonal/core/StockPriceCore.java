@@ -21,4 +21,8 @@ public class StockPriceCore {
     public int getBestPossibleProfit(String stockName) {
         return adapter.maxProfit(stockRepository.getStock(stockName));
     }
+
+    public int[] getStockPrices(String stockName) {
+        return stockRepository.getStock(stockName);
+    }
 }
