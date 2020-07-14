@@ -29,12 +29,6 @@
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Mime Type Resolution Libraries -->
         <dependency>
             <groupId>org.apache.tika</groupId>
@@ -142,8 +136,6 @@
     </profiles>
 
     <properties>
-        <!-- util -->
-        <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <!-- maven plugins -->
