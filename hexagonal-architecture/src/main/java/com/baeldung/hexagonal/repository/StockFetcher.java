@@ -5,11 +5,11 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * User: raychenon
  * Date: 14/7/2020
- * Mock to fetch stock prices
+ * Mock to fetch stock prices from the last N days
  */
 public class StockFetcher {
 
-    private int SIZE = 30;// last 30 days
+    private int SIZE = 10; // last N days
     private int MAX_PRICE = 100;
 
     /**
