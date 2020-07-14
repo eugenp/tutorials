@@ -10,12 +10,12 @@ import com.baeldung.hexagonal.ports.WriteSportsRevenue;
 public class Main {
 
     public static void main(String[] args) {
-        FetchSportsRevenue sportsRevenue = new InMemorySportsDataAdapter();
-        WriteSportsRevenue writeSportsRevenue = new FileWriterAdapter();
-        UserRequest userReq = new UserRequestAdapter(sportsRevenue, writeSportsRevenue);
-        
-        userReq.processRequest("Football");
-        userReq.processRequest("Cricket");
+//        FetchSportsRevenue sportsRevenue = new InMemorySportsDataAdapter();
+//        WriteSportsRevenue writeSportsRevenue = new FileWriterAdapter();
+//        UserRequest userReq = new UserRequestAdapter(sportsRevenue, writeSportsRevenue);
+//
+//        userReq.processRequest("Football");
+//        userReq.processRequest("Cricket");
     }
 
 }
