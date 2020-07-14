@@ -3,6 +3,7 @@ package com.baeldung.loadedclasslisting;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
+import com.baeldung.loadedclasslisting.ListLoadedClassesAgent.ClassLoaderType;
 import com.baeldung.loadedclasslisting.customLoader.ClassLoaderInfo;
 import com.baeldung.loadedclasslisting.customLoader.CustomClassLoader;
 
@@ -11,13 +12,9 @@ public class Launcher {
     private static ClassLoader customClassLoader;
 
     public static void main(String[] args) {
-        
         printClassesLoadedBy(ClassLoaderType.BOOTSTRAP);
-
         printClassesLoadedBy(ClassLoaderType.SYSTEM);
-
         printClassesLoadedBy(ClassLoaderType.EXTENSION);
-
         printClassesLoadedBy(ClassLoaderType.CUSTOM);
     }
 
