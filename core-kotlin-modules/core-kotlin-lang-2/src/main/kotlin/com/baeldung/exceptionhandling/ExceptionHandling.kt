@@ -28,7 +28,7 @@ class ExceptionHandling {
     fun multipleCatchBlock(): Int? {
         return try {
             val result = 25 / 0
-            return result
+            result
         } catch (exception: NumberFormatException) {
             println("NumberFormatException in the code")
             null
@@ -69,10 +69,10 @@ class ExceptionHandling {
         }
     }
 
-    fun throwKeyword() {
+    fun throwKeyword(): Int {
         val message = "Welcome to Kotlin Tutorials"
         if (message.length > 10) throw IllegalArgumentException("String is invalid")
-        else println("String is valid")
+        else return message.length
     }
 
     @Throws(IOException::class)
