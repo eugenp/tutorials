@@ -443,6 +443,8 @@
                 <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
+                <module>java-designpatterns</module>
+
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
