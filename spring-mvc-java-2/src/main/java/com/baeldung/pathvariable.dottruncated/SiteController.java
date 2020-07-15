@@ -1,4 +1,4 @@
-package com.baeldung.pathvariable;
+package com.baeldung.pathvariable.dottruncated;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
