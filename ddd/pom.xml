@@ -93,6 +93,11 @@
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
             <scope>test</scope>
         </dependency>
+		<dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${model-mapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -111,5 +116,6 @@
         <joda-money.version>1.0.1</joda-money.version>
 
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <model-mapper.version>2.3.5</model-mapper.version>		
     </properties>
 </project>
