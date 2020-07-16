@@ -3,8 +3,6 @@ package com.baeldung.hexagonal.repository;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * User: raychenon
- * Date: 14/7/2020
  * Mock to fetch stock prices from the last N days
  */
 public class StockFetcher {

@@ -4,8 +4,6 @@ import com.baeldung.hexagonal.repository.StockFetcher;
 import com.baeldung.hexagonal.repository.StockRepository;
 
 /**
- * User: raychenon
- * Date: 14/7/2020
  * No framework dependencies
  */
 public class StockPriceCore {

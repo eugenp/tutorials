@@ -3,10 +3,6 @@ package com.baeldung.hexagonal.repository;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * User: raychenon
- * Date: 14/7/2020
- */
 public class StockRepository {
 
     private Map<String, int[]> cache;

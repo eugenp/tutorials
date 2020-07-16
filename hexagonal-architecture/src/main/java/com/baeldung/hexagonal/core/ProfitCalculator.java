@@ -1,8 +1,7 @@
 package com.baeldung.hexagonal.core;
 
+
 /**
- * User: raychenon
- * Date: 14/7/2020/
  * No framework dependencies
  */
 public class ProfitCalculator {
