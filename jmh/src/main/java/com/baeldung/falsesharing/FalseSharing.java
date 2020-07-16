@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.falsesharing;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
