@@ -5,7 +5,7 @@ import com.baeldung.hexagonal.ports.UserRequestPort;
 
 /**
  * No framework dependencies
- * Notice that this class implements the Ports end to end.(from left side to right side)
+ * Notice that this class implements the UserRequestPort (lef-side) and StockPort is injected (righ-side).
  */
 public class StockPriceCore implements UserRequestPort {
 
