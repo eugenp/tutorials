@@ -16,22 +16,27 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import com.baeldung.dddhexagonalspring.domain.Order;
 import com.baeldung.dddhexagonalspring.domain.Product;
 import com.baeldung.dddhexagonalspring.domain.repository.OrderRepository;
-import com.baeldung.dddhexagonalspring.infrastracture.repository.mongo.SpringDataMongoOrderRepository;
+import com.baeldung.dddhexagonalspring.infrastracture.repository.cassandra.SpringDataCassandraOrderRepository;
 
+/*
+ To run this test we need to run the databases first.
+ A dedicated docker-compose.yml file is located under the resources directory.
+ We can run it by simple executing `docker-compose up`.
+ */
 @SpringJUnitConfig
 @SpringBootTest
 @TestPropertySource("classpath:ddd-layers-test.properties")
-class MongoDbOrderRepositoryIntegrationTest {
+class CassandraDbOrderRepositoryLiveTest {
 
     @Autowired
-    private SpringDataMongoOrderRepository mongoOrderRepository;
+    private SpringDataCassandraOrderRepository cassandraOrderRepository;
 
     @Autowired
     private OrderRepository orderRepository;
 
     @AfterEach
     void cleanUp() {
-        mongoOrderRepository.deleteAll();
+        cassandraOrderRepository.deleteAll();
     }
 
     @Test
@@ -40,6 +45,8 @@ class MongoDbOrderRepositoryIntegrationTest {
         // given
         final UUID id = UUID.randomUUID();
         final Order order = createOrder(id);
+        order.addOrder(new Product(UUID.randomUUID(), BigDecimal.TEN, "second"));
+        order.complete();
 
         // when
         orderRepository.save(order);
