@@ -55,8 +55,8 @@ public class JMapperRelationalIntegrationTest {
     public void givenUser_whenUseApi_thenConverted(){
         JMapperAPI jmapperApi = new JMapperAPI() 
         .add(mappedClass(User.class)
-            .add(attribute("id").value("id").targetClasses(UserDto1.class,UserDto2.class))
-            .add(attribute("email").targetAttributes("username","email").targetClasses(UserDto1.class,UserDto2.class)) )
+            .add(attribute("id").value("id").targetClasses(UserDto1.class, UserDto2.class))
+            .add(attribute("email").targetAttributes("username","email").targetClasses(UserDto1.class, UserDto2.class)) )
          ;
         RelationalJMapper<User> relationalMapper = new RelationalJMapper<>(User.class,jmapperApi);
         
