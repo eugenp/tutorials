@@ -14,6 +14,7 @@
 
     <modules>
         <module>activejdbc</module>
+        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
@@ -77,4 +78,8 @@
         <module>spring-persistence-simple-2</module>
     </modules>
 
+    <properties>
+        <!-- persistence -->
+        <hibernate.version>5.2.17.Final</hibernate.version>
+    </properties>
 </project>

@@ -4,9 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-8-datetime</artifactId>
+    <artifactId>core-java-8-datetime-2</artifactId>
     <version>${project.parent.version}</version>
-    <name>core-java-8-datetime</name>
+    <name>core-java-8-datetime-2</name>
     <packaging>jar</packaging>
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -41,7 +41,6 @@
     </dependencies>
 
     <build>
-        <finalName>core-java-datetime-java8</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

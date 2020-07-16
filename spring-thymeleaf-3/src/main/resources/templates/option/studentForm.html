@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Student Form</title>
+</head>
+<body>
+	<h1>Student Form</h1>
+	<form action="#" th:action="@{/saveStudent}" th:object="${student}"
+		method="post">
+		<ul>
+			<li th:errors="*{id}" />
+			<li th:errors="*{name}" />
+			<li th:errors="*{gender}" />
+			<li th:errors="*{percentage}" />
+		</ul>
+		<table border="1">
+			<tr>
+				<td><label th:text="ID" /></td>
+				<td><input type="number" th:field="*{id}" /></td>
+			</tr>
+			<tr>
+				<td><label th:text="Name" /></td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td><label th:text="Gender" /></td>
+				<td><select th:field="*{gender}">
+						<option th:value="'M'" th:text="Male"></option>
+						<option th:value="'F'" th:text="Female"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td><label th:text="Percentage" /></td>
+				<td><select id="percentage" name="percentage">
+						<option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}" th:selected="${i==75}"></option>
+				</select></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
