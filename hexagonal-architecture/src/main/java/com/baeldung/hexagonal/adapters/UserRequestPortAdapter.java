@@ -13,7 +13,7 @@ public class UserRequestPortAdapter implements UserRequestPort {
 
     @Override
     public String calculateBestProfitForStock(String stockName) {
-        String message = String.format("Best possible profit for stock \"%s\" is %d", stockName, stockPriceCore.getBestPossibleProfit(stockName));
+        String message = String.format("Best possible profit for stock \"%s\" is %s", stockName, stockPriceCore.getBestPossibleProfit(stockName));
         return message;
     }
 
