@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * Copy-pasted from {@link java.util.concurrent.atomic.LongAdder}
+ *
  * One or more variables that together maintain an initially zero
  * {@code long} sum.  When updates (method {@link #add}) are contended
  * across threads, the set of variables may grow dynamically to reduce
