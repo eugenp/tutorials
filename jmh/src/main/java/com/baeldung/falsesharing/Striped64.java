@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.falsesharing;
 
 import sun.misc.Unsafe;
 
