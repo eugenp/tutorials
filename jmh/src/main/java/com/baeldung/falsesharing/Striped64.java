@@ -8,6 +8,8 @@ import java.util.function.DoubleBinaryOperator;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * Copy-pasted from {@code java.util.concurrent.atomic.Striped64} class.
+ *
  * A package-local class holding common representation and mechanics
  * for classes supporting dynamic striping on 64bit values. The class
  * extends Number so that concrete subclasses must publicly do so.
