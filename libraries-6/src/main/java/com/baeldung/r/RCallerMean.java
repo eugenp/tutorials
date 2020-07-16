@@ -1,11 +1,11 @@
 package com.baeldung.r;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 import com.github.rcaller.rstuff.RCaller;
 import com.github.rcaller.rstuff.RCallerOptions;
 import com.github.rcaller.rstuff.RCode;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * RCaller showcase.
