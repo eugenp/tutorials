@@ -85,3 +85,5 @@ transaction.log
 *-shell.log
 
 apache-cxf/cxf-aegis/baeldung.xml
+
+libraries-2/*.db
