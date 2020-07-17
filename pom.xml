@@ -558,6 +558,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
             </modules>
 
         </profile>
@@ -1069,6 +1070,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
             </modules>
 
         </profile>

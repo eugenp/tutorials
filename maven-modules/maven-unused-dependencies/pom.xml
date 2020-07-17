@@ -6,13 +6,6 @@
     <artifactId>maven-unused-dependencies</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <properties>
-        <commons-collections.version>3.2.2</commons-collections.version>
-        <slf4j-api.version>1.7.25</slf4j-api.version>
-        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>commons-collections</groupId>
@@ -43,5 +36,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+    </properties>
 
 </project>
