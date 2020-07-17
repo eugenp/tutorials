@@ -1,12 +1,11 @@
 package com.baeldung.r;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import javax.script.ScriptException;
-
 import org.renjin.script.RenjinScriptEngine;
 import org.renjin.sexp.DoubleArrayVector;
+
+import javax.script.ScriptException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * Renjin showcase.

@@ -1,8 +1,5 @@
 package com.baeldung.r;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 /**
  * FastR showcase.
  * 

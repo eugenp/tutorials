@@ -1,13 +1,11 @@
 package com.baeldung.r;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import javax.script.ScriptException;
-
+import org.junit.Assert;
 import org.junit.Test;
 
-import org.junit.Assert;
+import javax.script.ScriptException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * Test for {@link RenjinMean}.
