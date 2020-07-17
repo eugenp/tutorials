@@ -18,7 +18,6 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>${flyway-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,37 +30,23 @@
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <filtering>true</filtering>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>*.properties</include>
-                    <include>db/**/*.sql</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
-
-    <properties>
-        <flyway-core.version>6.5.0</flyway-core.version>
-        <flyway-maven-plugin.version>6.5.0</flyway-maven-plugin.version>
-        <flyway.configFiles>src/main/resources/application-${db.engine}.properties</flyway.configFiles>
-    </properties>
 
     <profiles>
 
         <profile>
             <id>h2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
-                <db.engine>h2</db.engine>
+                <spring-boot.run.profiles>h2</spring-boot.run.profiles>
             </properties>
             <dependencies>
                 <dependency>
@@ -73,23 +58,9 @@
         </profile>
 
         <profile>
-            <id>mysql</id>
-            <properties>
-                <db.engine>mysql</db.engine>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
             <id>postgres</id>
             <properties>
-                <db.engine>postgres</db.engine>
+                <spring-boot.run.profiles>postgres</spring-boot.run.profiles>
             </properties>
             <dependencies>
                 <dependency>
@@ -101,5 +72,9 @@
         </profile>
 
     </profiles>
+
+    <properties>
+        <flyway.configFiles>src/main/resources/application-${spring-boot.run.profiles}.properties</flyway.configFiles>
+    </properties>
 
 </project>

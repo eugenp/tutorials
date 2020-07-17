@@ -1,14 +1,6 @@
 version: '3.0'
 
 services:
-  mysql-test:
-    image: mysql:8.0.17
-    ports:
-      - ${MYSQL_PORT}:3306
-    env_file:
-      - mysql.env
-    networks:
-      - baeldung
 
   postgres-test:
     image: postgres:11.5
