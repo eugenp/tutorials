@@ -7,6 +7,9 @@ import org.junit.Test;
 import java.time.LocalDate;
 
 import static com.googlecode.jmapper.api.JMapperAPI.*;
+import static com.googlecode.jmapper.api.JMapperAPI.attribute;
+import static com.googlecode.jmapper.api.JMapperAPI.global;
+import static com.googlecode.jmapper.api.JMapperAPI.mappedClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
