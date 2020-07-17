@@ -19,6 +19,7 @@
         <module>spring-session-jdbc</module>
         <module>spring-session-redis</module>
         <module>spring-session-mongodb</module>
+        <module>http-session-example</module>
     </modules>
 
 </project>
