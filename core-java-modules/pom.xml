@@ -72,6 +72,7 @@
 
         <module>core-java-io</module>
         <module>core-java-io-2</module>
+        <module>core-java-io-3</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-2</module>
