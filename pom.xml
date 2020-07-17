@@ -416,6 +416,7 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+                <module>guava-2</module>
                 <module>guava-collections</module>
                 <module>guava-collections-map</module>
                 <module>guava-collections-set</module>
@@ -509,7 +510,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -557,6 +558,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
             </modules>
 
         </profile>
@@ -1020,7 +1022,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -1068,6 +1070,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
             </modules>
 
         </profile>

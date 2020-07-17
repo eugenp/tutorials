@@ -9,7 +9,7 @@ weather-service:
   ribbon:
     eureka:
       enabled: false
-    listOfServers: http://localhost:8081, http://localhost:8082
+    listOfServers: http://localhost:8021, http://localhost:8022
     ServerListRefreshInterval: 5000
     MaxAutoRetries: 3
     MaxAutoRetriesNextServer: 1
