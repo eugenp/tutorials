@@ -40,6 +40,11 @@ class ExceptionHandlingUnitTest {
     }
 
     @Test
+    fun givenIllegalArgument_whenElvisExpressionUsed_thenThrowsException(){
+        assertThrows<IllegalArgumentException> { classUnderTest.throwExpression() }
+    }
+
+    @Test
     fun whenAnnotationUsed_thenThrowsException(){
         assertThrows<IOException> { classUnderTest.throwsAnnotation() }
     }
