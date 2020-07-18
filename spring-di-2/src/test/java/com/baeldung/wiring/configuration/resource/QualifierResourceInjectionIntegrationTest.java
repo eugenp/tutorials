@@ -1,12 +1,13 @@
-package com.baeldung.resource;
+package com.baeldung.wiring.configuration.resource;
 
-import com.baeldung.configuration.ApplicationContextTestResourceQualifier;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import com.baeldung.wiring.configuration.ApplicationContextTestResourceQualifier;
 
 import javax.annotation.Resource;
 import java.io.File;

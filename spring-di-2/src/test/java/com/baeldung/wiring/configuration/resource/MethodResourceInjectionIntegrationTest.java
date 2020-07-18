@@ -1,11 +1,12 @@
-package com.baeldung.resource;
+package com.baeldung.wiring.configuration.resource;
 
-import com.baeldung.configuration.ApplicationContextTestResourceNameType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import com.baeldung.wiring.configuration.ApplicationContextTestResourceNameType;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -17,17 +18,17 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestResourceNameType.class)
-public class MethodByTypeResourceIntegrationTest {
+public class MethodResourceInjectionIntegrationTest {
 
     private File defaultFile;
 
-    @Resource
+    @Resource(name = "namedFile")
     protected void setDefaultFile(File defaultFile) {
         this.defaultFile = defaultFile;
     }
 
     @Test
-    public void givenResourceAnnotation_WhenSetter_ThenValidDependency() {
+    public void givenResourceAnnotation_WhenSetter_ThenDependencyValid() {
         assertNotNull(defaultFile);
         assertEquals("namedFile.txt", defaultFile.getName());
     }
