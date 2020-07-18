@@ -560,7 +560,7 @@
 
 				<module>atomikos</module>
 				<module>reactive-systems</module>
-				<module>scala</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -1075,7 +1075,7 @@
 
 				<module>atomikos</module>
 				<module>reactive-systems</module>
-				<module>scala</module>
+				<module>slack</module>
             </modules>
 
         </profile>
