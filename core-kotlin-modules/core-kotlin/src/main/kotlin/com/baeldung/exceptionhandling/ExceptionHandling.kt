@@ -75,6 +75,11 @@ class ExceptionHandling {
         else return message.length
     }
 
+    fun throwExpression(): Int? {
+        val message: String? = null
+        return message?.length ?: throw IllegalArgumentException("String is null")
+    }
+
     @Throws(IOException::class)
     fun throwsAnnotation(): String?{
         val filePath = null
