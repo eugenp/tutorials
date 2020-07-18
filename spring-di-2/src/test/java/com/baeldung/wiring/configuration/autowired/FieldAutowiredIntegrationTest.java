@@ -1,7 +1,8 @@
-package com.baeldung.autowired;
+package com.baeldung.wiring.configuration.autowired;
 
-import com.baeldung.configuration.ApplicationContextTestAutowiredType;
-import com.baeldung.dependency.ArbitraryDependency;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.dependency.ArbitraryDependency;
+import com.baeldung.wiring.configuration.ApplicationContextTestAutowiredType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(

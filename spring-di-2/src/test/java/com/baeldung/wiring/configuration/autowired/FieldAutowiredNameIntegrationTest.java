@@ -1,7 +1,8 @@
-package com.baeldung.autowired;
+package com.baeldung.wiring.configuration.autowired;
 
-import com.baeldung.configuration.ApplicationContextTestAutowiredName;
 import com.baeldung.dependency.ArbitraryDependency;
+import com.baeldung.wiring.configuration.ApplicationContextTestAutowiredName;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

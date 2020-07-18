@@ -1,9 +1,10 @@
-package com.baeldung.configuration;
+package com.baeldung.wiring.configuration;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import com.baeldung.dependency.AnotherArbitraryDependency;
 import com.baeldung.dependency.ArbitraryDependency;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApplicationContextTestInjectQualifier {
