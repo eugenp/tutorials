@@ -9,36 +9,65 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FindDifferencesBetweenListsUnitTest {
 
-    private static final List<String> listOneWithDuplicates = Arrays.asList("Jack", "Tom", "Sam", "James", "Tom");
-    private static final List<String> listTwoWithDuplicates = Arrays.asList("Jack", "Daniel", "Sam", "Alan", "James", "Daniel");
-    private static final List<String> expectedDifferences = Arrays.asList("Tom", "Daniel", "Alan");
+    private static final List<String> listOneWithDuplicates = Arrays.asList("Jack", "Tom", "Sam", "John", "James", "Tom");
+    private static final List<String> listTwoWithDuplicates = Arrays.asList("Jack", "Daniel", "Sam", "Alan", "James", "Daniel", "George");
+    private static final List<String> expectedDifferencesInListOne = Arrays.asList("Tom", "John");
+    private static final List<String> expectedDifferencesInListTwo = Arrays.asList("Daniel", "Alan", "George");
 
     @Test
-    public void givenTwoListsWithDifferentElements_whenUsingPlainJavaListsImpl_thenExpectedDifferencesAreFound() {
+    public void givenTwoListsWithDifferentElements_whenUsingPlainJavaListsImplAndListOneIsFirstParameter_thenExpectedDifferencesInListOneAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingPlainJavaCollections(listOneWithDuplicates, listTwoWithDuplicates);
-        assertEquals(3, differences.size());
-        assertTrue(differences.containsAll(expectedDifferences));
+        assertEquals(expectedDifferencesInListOne.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListOne));
     }
 
     @Test
-    public void givenTwoListsWithDifferentElements_whenUsingPlainJavaStreamsImpl_thenExpectedDifferencesAreFound() {
+    public void givenTwoListsWithDifferentElements_whenUsingPlainJavaListsImplAndListTwoIsFirstParameter_thenExpectedDifferencesInListTwoAreFound() {
+        List<String> differences = FindDifferencesBetweenLists.differencesUsingPlainJavaCollections(listTwoWithDuplicates, listOneWithDuplicates);
+        assertEquals(expectedDifferencesInListTwo.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListTwo));
+    }
+
+    @Test
+    public void givenTwoListsWithDifferentElements_whenUsingPlainJavaStreamsImplAndListOneIsFirstParameter_thenExpectedDifferencesInListOneAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingPlainJavaStream(listOneWithDuplicates, listTwoWithDuplicates);
-        assertEquals(3, differences.size());
-        assertTrue(differences.containsAll(expectedDifferences));
+        assertEquals(expectedDifferencesInListOne.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListOne));
     }
 
     @Test
-    public void givenTwoListsWithDifferentElements_whenUsingGoogleGuavaImpl_thenExpectedDifferencesAreFound() {
+    public void givenTwoListsWithDifferentElements_whenUsingPlainJavaStreamsImplAndListTwoIsFirstParameter_thenExpectedDifferencesInListTwoAreFound() {
+        List<String> differences = FindDifferencesBetweenLists.differencesUsingPlainJavaStream(listTwoWithDuplicates, listOneWithDuplicates);
+        assertEquals(expectedDifferencesInListTwo.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListTwo));
+    }
+
+    @Test
+    public void givenTwoListsWithDifferentElements_whenUsingGoogleGuavaImplAndListOneIsFirstParameter_thenExpectedDifferencesInListOneAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingGoogleGuava(listOneWithDuplicates, listTwoWithDuplicates);
-        assertEquals(3, differences.size());
-        assertTrue(differences.containsAll(expectedDifferences));
+        assertEquals(expectedDifferencesInListOne.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListOne));
     }
 
     @Test
-    public void givenTwoListsWithDifferentElements_whenUsingApacheCommonsCollectionsImpl_thenExpectedDifferencesAreFound() {
+    public void givenTwoListsWithDifferentElements_whenUsingGoogleGuavaImplAndListTwoIsFirstParameter_thenExpectedDifferencesInListTwoAreFound() {
+        List<String> differences = FindDifferencesBetweenLists.differencesUsingGoogleGuava(listTwoWithDuplicates, listOneWithDuplicates);
+        assertEquals(expectedDifferencesInListTwo.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListTwo));
+    }
+
+    @Test
+    public void givenTwoListsWithDifferentElements_whenUsingApacheCommonsCollectionsImplAndListOneIsFirstParameter_thenExpectedDifferencesInListOneAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingApacheCommonsCollections(listOneWithDuplicates, listTwoWithDuplicates);
-        assertEquals(3, differences.size());
-        assertTrue(differences.containsAll(expectedDifferences));
+        assertEquals(expectedDifferencesInListOne.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListOne));
+    }
+
+    @Test
+    public void givenTwoListsWithDifferentElements_whenUsingApacheCommonsCollectionsImplAndListTwoIsFirstParameter_thenExpectedDifferencesInListTwoAreFound() {
+        List<String> differences = FindDifferencesBetweenLists.differencesUsingApacheCommonsCollections(listTwoWithDuplicates, listOneWithDuplicates);
+        assertEquals(expectedDifferencesInListTwo.size(), differences.size());
+        assertTrue(differences.containsAll(expectedDifferencesInListTwo));
     }
 
 }
