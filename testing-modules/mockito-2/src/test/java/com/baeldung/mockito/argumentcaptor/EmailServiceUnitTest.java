@@ -32,7 +32,7 @@ public class EmailServiceUnitTest {
     public void whenDoesNotSupportHtml_expectTextOnlyEmailFormat() {
         String to = "info@baeldung.com";
         String subject = "Using ArgumentCaptor";
-        String body = "Article on using ArgumentCaptor";
+        String body = "Hey, let'use ArgumentCaptor";
 
         emailService.send(to, subject, body, false);
 
@@ -42,10 +42,10 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void send_whenDoesSupportHtml_expectHTMLEmailFormat() {
-        String to = "baeldung@baeldung.com";
-        String subject = "Great New Course!";
-        String body = "<html><body>Try out our new course.</html></body>";
+    public void whenDoesSupportHtml_expectHTMLEmailFormat() {
+        String to = "info@baeldung.com";
+        String subject = "Using ArgumentCaptor";
+        String body = "<html><body>Hey, let'use ArgumentCaptor</body></html>";
 
         emailService.send(to, subject, body, true);
 
@@ -55,7 +55,7 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void getServiceStatus_whenServiceRunning_expectUpResponse() {
+    public void whenServiceRunning_expectUpResponse() {
         when(platform.getServiceStatus()).thenReturn("OK");
 
         ServiceStatus serviceStatus = emailService.checkServiceStatus();
@@ -64,7 +64,7 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void getServiceStatus_whenServiceNotRunning_expectDownResponse() {
+    public void whenServiceNotRunning_expectDownResponse() {
         when(platform.getServiceStatus()).thenReturn("Error");
 
         ServiceStatus serviceStatus = emailService.checkServiceStatus();
@@ -73,7 +73,7 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void usingArgumemtMatcher_whenAuthenticatedWithValidCredentials_expectTrue() {
+    public void usingArgumentMatcher_whenAuthenticatedWithValidCredentials_expectTrue() {
         Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
         when(platform.authenticate(eq(credentials))).thenReturn(AuthenticationStatus.AUTHENTICATED);
 
@@ -90,11 +90,10 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void authenticate_whenNotAuthenticated_expectFalse() {
+    public void whenNotAuthenticated_expectFalse() {
         Credentials credentials = new Credentials("baeldung", "incorrect_password", "incorrect_key");
-        when(platform.authenticate(credentialsCaptor.capture())).thenReturn(AuthenticationStatus.NOT_AUTHENTICATED);
+        when(platform.authenticate(eq(credentials))).thenReturn(AuthenticationStatus.NOT_AUTHENTICATED);
 
         assertFalse(emailService.authenticatedSuccessfully(credentials));
-        assertEquals(credentials, credentialsCaptor.getValue());
     }
 }
