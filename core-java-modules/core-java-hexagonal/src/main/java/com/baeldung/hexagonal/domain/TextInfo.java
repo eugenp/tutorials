@@ -11,7 +11,6 @@ public class TextInfo {
     private Integer numberOfDistinctChars;
 
     public TextInfo(String text, Map<Character, Integer> charFrequency, Integer numberOfDistinctChars) {
-        super();
         this.text = text;
         this.charFrequency = charFrequency;
         this.numberOfDistinctChars = numberOfDistinctChars;

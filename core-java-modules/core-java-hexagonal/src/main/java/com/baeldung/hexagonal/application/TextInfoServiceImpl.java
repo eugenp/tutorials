@@ -35,7 +35,8 @@ public class TextInfoServiceImpl implements TextInfoService {
     public Map<Character, Integer> getCharFrequency(String text) {
         Map<Character, Integer> charFrequency = new HashMap<>();
         for (Character ch : text.toCharArray()) {
-            charFrequency.put(ch, (charFrequency.containsKey(ch) ? charFrequency.get(ch) : 0) + 1);
+            Integer currentFrequency = charFrequency.containsKey(ch) ? charFrequency.get(ch) : 0;
+            charFrequency.put(ch, currentFrequency + 1);
         }
         return Collections.unmodifiableMap(charFrequency);
     }
