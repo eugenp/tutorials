@@ -2,6 +2,8 @@ package com.baeldung.rules.jess;
 
 import com.baeldung.rules.jess.model.Answer;
 import com.baeldung.rules.jess.model.Question;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.rules.*;
 import javax.rules.admin.RuleAdministrator;
@@ -16,23 +18,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+@Log
 public class JessWithJsr94 {
     private static final String RULE_SERVICE_PROVIDER = "jess.jsr94";
-    public static final String RULES_BONUS_FILE = "bonus.clp";
-    public static final String RULES_URI = "rules://com/baeldung/rules/bonus";
+    public static final String RULES_BONUS_FILE = "/bonus.clp";
+    public static final String RULES_URI = "com/baeldung/rules/bonus";
 
-    public static void main(String[] args) {
-        try {
-            RuleServiceProvider ruleServiceProvider = instantiateJessInstance();
+    public static void main(String[] args) throws Exception {
+        RuleServiceProvider ruleServiceProvider = instantiateJessInstance();
 
-            // load our rules and register them with the rules provider
-            registerRules(RULES_BONUS_FILE, RULES_URI, ruleServiceProvider);
+        // load our rules and register them with the rules provider
+        registerRules(RULES_BONUS_FILE, RULES_URI, ruleServiceProvider);
 
-            runRules(RULES_URI, ruleServiceProvider);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        runRules(RULES_URI, ruleServiceProvider);
     }
 
     private static RuleServiceProvider instantiateJessInstance() throws ClassNotFoundException, ConfigurationException {
@@ -77,7 +75,7 @@ public class JessWithJsr94 {
         while (itr.hasNext()) {
             Object obj = itr.next();
             if (obj instanceof Answer) {
-                System.out.println(obj.toString());
+                log.info(obj.toString());
             }
         }
     }
