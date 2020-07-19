@@ -1,4 +1,4 @@
-package com.baeldung.poi.excel.setFormula;
+package com.baeldung.poi.excel.setformula;
 
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 class ExcelFormulaUnitTest {
-    private static String FILE_NAME = "SetFormulaTest.xlsx";
+    private static String FILE_NAME = "com/bealdung/poi/excel/setformula/SetFormulaTest.xlsx";
     private String fileLocation;
     private ExcelFormula excelFormula;
 

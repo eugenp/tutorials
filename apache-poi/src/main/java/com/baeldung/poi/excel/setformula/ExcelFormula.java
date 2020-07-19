@@ -1,4 +1,4 @@
-package com.baeldung.poi.excel.setFormula;
+package com.baeldung.poi.excel.setformula;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
