@@ -1,12 +1,8 @@
-package com.baeldung.resttemplate.postjson;
+package com.baeldung.resttemplate.json;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.IOException;
-import java.net.URI;
-
-import com.baeldung.resttemplate.RestTemplateConfigurationApplication;
-import com.baeldung.resttemplate.web.dto.Person;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.BeforeClass;
@@ -20,12 +16,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.net.URI;
+
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = RestTemplateConfigurationApplication.class)
+@SpringBootTest(classes = PostJsonApp.class)
 public class PersonAPILiveTest {
 
     private static String createPersonUrl;
@@ -41,8 +38,8 @@ public class PersonAPILiveTest {
 
     @BeforeClass
     public static void runBeforeAllTestMethods() throws JSONException {
-        createPersonUrl = "http://localhost:8082/spring-rest/createPerson";
-        updatePersonUrl = "http://localhost:8082/spring-rest/updatePerson";
+        createPersonUrl = "http://localhost:8080/spring-rest/createPerson";
+        updatePersonUrl = "http://localhost:8080/spring-rest/updatePerson";
 
         restTemplate = new RestTemplate();
 

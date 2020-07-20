@@ -1,6 +1,6 @@
-package com.baeldung.resttemplate.web.service;
+package com.baeldung.resttemplate.json.service;
 
-import com.baeldung.resttemplate.web.dto.Person;
+import com.baeldung.resttemplate.json.Person;
 import org.springframework.stereotype.Component;
 
 @Component

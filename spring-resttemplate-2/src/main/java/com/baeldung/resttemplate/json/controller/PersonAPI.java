@@ -1,15 +1,15 @@
-package com.baeldung.resttemplate.web.controller;
+package com.baeldung.resttemplate.json.controller;
 
-import javax.servlet.http.HttpServletResponse;
-
-import com.baeldung.resttemplate.web.service.PersonService;
-import com.baeldung.resttemplate.web.dto.Person;
+import com.baeldung.resttemplate.json.Person;
+import com.baeldung.resttemplate.json.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class PersonAPI {
