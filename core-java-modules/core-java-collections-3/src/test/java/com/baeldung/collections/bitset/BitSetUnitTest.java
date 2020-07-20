@@ -18,7 +18,7 @@ public class BitSetUnitTest {
     }
 
     @Test
-    public void givenBitSet_whenMemoryLayout_thenConsumeObeBitPerFlag() {
+    public void givenBitSet_whenMemoryLayout_thenConsumeOneBitPerFlag() {
         BitSet bitSet = new BitSet(1024);
 
         System.out.println(GraphLayout.parseInstance(bitSet).toPrintable());
@@ -136,7 +136,7 @@ public class BitSetUnitTest {
     }
 
     @Test
-    public void givenBitSet_whenNextOrPrev_thenReturnsTheNextClearOrSetBit() {
+    public void givenBitSet_whenNextOrPrev_thenReturnsTheNextOrPrevClearOrSetBit() {
         BitSet bitSet = new BitSet();
         bitSet.set(15, 25);
 
