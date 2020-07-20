@@ -19,7 +19,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Copy of RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json-test)
 - [HTTP PUT vs HTTP PATCH in a REST API](https://www.baeldung.com/http-put-patch-difference-spring) 
 - [A Custom Media Type for a Spring REST API](https://www.baeldung.com/spring-rest-custom-media-type)
-- [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
 
 ### NOTE:
 
