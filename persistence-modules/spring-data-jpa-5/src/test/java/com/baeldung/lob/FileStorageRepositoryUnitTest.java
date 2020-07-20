@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class FileStorageRepositoryTest {
+class FileStorageRepositoryUnitTest {
     final Logger logger = LoggerFactory.getLogger(getClass());
     static final Path NEW_DIRECTORY = ResourceReader.resourcePath();
     static String EXISTING_FILE = "/lob/wise-cat.jpeg";
