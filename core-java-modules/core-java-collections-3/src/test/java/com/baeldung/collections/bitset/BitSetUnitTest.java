@@ -12,14 +12,14 @@ public class BitSetUnitTest {
 
     @Test
     public void givenBoolArray_whenMemoryLayout_thenConsumeMoreThanOneBit() {
-        boolean[] bits = new boolean[1024];
+        boolean[] bits = new boolean[1024 * 1024];
 
         System.out.println(ClassLayout.parseInstance(bits).toPrintable());
     }
 
     @Test
     public void givenBitSet_whenMemoryLayout_thenConsumeOneBitPerFlag() {
-        BitSet bitSet = new BitSet(1024);
+        BitSet bitSet = new BitSet(1024 * 1024);
 
         System.out.println(GraphLayout.parseInstance(bitSet).toPrintable());
     }
@@ -125,6 +125,13 @@ public class BitSetUnitTest {
         assertThat(first.get(8)).isTrue();
         assertThat(first.get(9)).isTrue();
         assertThat(first.get(10)).isFalse();
+
+        first.clear();
+        first.set(5, 10);
+
+        first.xor(second);
+        for (int i = 5; i < 7; i++) assertThat(first.get(i)).isTrue();
+        for (int i = 10; i < 15; i++) assertThat(first.get(i)).isTrue();
     }
 
     @Test
@@ -133,6 +140,7 @@ public class BitSetUnitTest {
         bitSet.set(15, 25);
 
         bitSet.stream().forEach(System.out::println);
+        assertThat(bitSet.stream().count()).isEqualTo(10);
     }
 
     @Test
