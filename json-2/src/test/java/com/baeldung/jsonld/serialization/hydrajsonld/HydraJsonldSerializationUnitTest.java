@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.BeanDescription;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -15,20 +14,9 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
 import com.fasterxml.jackson.databind.ser.std.BeanSerializerBase;
 
-import de.escalon.hypermedia.hydra.mapping.Expose;
-import de.escalon.hypermedia.hydra.mapping.Vocab;
 import de.escalon.hypermedia.hydra.serialize.JacksonHydraSerializer;
 
 public class HydraJsonldSerializationUnitTest {
-    @Vocab("http://example.com/vocab/")
-    @Expose("person")
-    static class Person {
-        @JsonProperty("@id")
-        public String id;
-        @Expose("fullName")
-        public String name;
-    }
-
     @Test
     void givenAHydraJsonldAnnotatedObject_whenJacksonHydraSerializerIsUsed_thenAJsonLdDocumentIsGenerated() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
