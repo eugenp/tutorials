@@ -5,13 +5,13 @@ import com.baeldung.rules.jess.model.Question;
 import jess.Filter;
 import jess.JessException;
 import jess.Rete;
-import lombok.extern.java.Log;
 
 import java.util.Iterator;
+import java.util.logging.Logger;
 
-@Log
 public class JessWithData {
     public static final String RULES_BONUS_FILE = "bonus.clp";
+    private static final Logger log = Logger.getLogger("JessWithData");
 
     public static void main(String[] args) throws JessException {
         Rete engine = new Rete();

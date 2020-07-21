@@ -2,8 +2,6 @@ package com.baeldung.rules.jess;
 
 import com.baeldung.rules.jess.model.Answer;
 import com.baeldung.rules.jess.model.Question;
-import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.rules.*;
 import javax.rules.admin.RuleAdministrator;
@@ -17,12 +15,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
 
-@Log
 public class JessWithJsr94 {
-    private static final String RULE_SERVICE_PROVIDER = "jess.jsr94";
     public static final String RULES_BONUS_FILE = "/bonus.clp";
     public static final String RULES_URI = "com/baeldung/rules/bonus";
+    private static final String RULE_SERVICE_PROVIDER = "jess.jsr94";
+    private static final Logger log = Logger.getLogger("JessWithData");
 
     public static void main(String[] args) throws Exception {
         RuleServiceProvider ruleServiceProvider = instantiateJessInstance();

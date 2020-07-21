@@ -1,11 +1,31 @@
 package com.baeldung.rules.jess.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-@Data
-@AllArgsConstructor
 public class Answer {
     String answer;
     int newBalance;
+
+    public int getNewBalance() {
+        return newBalance;
+    }
+
+    public void setNewBalance(int newBalance) {
+        this.newBalance = newBalance;
+    }
+
+    public Answer(String answer, int newBalance) {
+        this.answer = answer;
+        this.newBalance = newBalance;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public String toString() {
+        return "Answer(answer=" + answer + ", newBalance=" + newBalance + ")";
+    }
 }
