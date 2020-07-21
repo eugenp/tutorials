@@ -1,8 +1,8 @@
 package com.baeldung.rules.jess.model;
 
 public class Question {
-    String question;
-    int balance;
+    private String question;
+    private int balance;
 
     public Question(String question, int balance) {
         this.question = question;

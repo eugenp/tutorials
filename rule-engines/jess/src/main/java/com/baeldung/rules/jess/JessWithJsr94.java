@@ -21,7 +21,7 @@ public class JessWithJsr94 {
     public static final String RULES_BONUS_FILE = "/bonus.clp";
     public static final String RULES_URI = "com/baeldung/rules/bonus";
     private static final String RULE_SERVICE_PROVIDER = "jess.jsr94";
-    private static final Logger log = Logger.getLogger("JessWithData");
+    private static Logger log = Logger.getLogger("JessWithData");
 
     public static void main(String[] args) throws Exception {
         RuleServiceProvider ruleServiceProvider = instantiateJessInstance();

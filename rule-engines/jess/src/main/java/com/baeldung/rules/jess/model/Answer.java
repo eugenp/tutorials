@@ -1,19 +1,19 @@
 package com.baeldung.rules.jess.model;
 
 public class Answer {
-    String answer;
-    int newBalance;
+    private String answer;
+    private int newBalance;
+
+    public Answer(String answer, int newBalance) {
+        this.answer = answer;
+        this.newBalance = newBalance;
+    }
 
     public int getNewBalance() {
         return newBalance;
     }
 
     public void setNewBalance(int newBalance) {
-        this.newBalance = newBalance;
-    }
-
-    public Answer(String answer, int newBalance) {
-        this.answer = answer;
         this.newBalance = newBalance;
     }
 

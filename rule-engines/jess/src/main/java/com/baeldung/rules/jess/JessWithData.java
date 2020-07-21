@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class JessWithData {
     public static final String RULES_BONUS_FILE = "bonus.clp";
-    private static final Logger log = Logger.getLogger("JessWithData");
+    private static Logger log = Logger.getLogger("JessWithData");
 
     public static void main(String[] args) throws JessException {
         Rete engine = new Rete();
