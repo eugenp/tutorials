@@ -1,0 +1,6 @@
+hexagonal-architecture:
+  products:
+    base-path: "products"
+    file-postfix: "-product"
+    file-extension: "json"
+
