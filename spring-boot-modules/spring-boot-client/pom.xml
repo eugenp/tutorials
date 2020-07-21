@@ -116,7 +116,6 @@
 
     <properties>
         <guava.version>18.0</guava.version>
-		<junit-platform.version>1.2.0</junit-platform.version>
 		<git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
 

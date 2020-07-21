@@ -164,8 +164,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <!--
             JMH version to use with this project.
           -->
@@ -176,7 +174,6 @@
         <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
         <modelmapper.version>1.1.0</modelmapper.version>
         <jmapper.version>1.6.0.1</jmapper.version>
-        <java.version>1.8</java.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
         <jmh-core.version>1.21</jmh-core.version>
         <jmh-generator.version>1.21</jmh-generator.version>
