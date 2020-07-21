@@ -117,7 +117,6 @@
         <structure-maven.version>0.0.2</structure-maven.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <orderservice.mainclass>com.baeldung.orderservice.OrderApplication</orderservice.mainclass>
     </properties>
 </project>

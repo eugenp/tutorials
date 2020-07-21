@@ -49,6 +49,7 @@
         <module>spring-boot-kotlin</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
+        <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-nashorn</module>
         <module>spring-boot-parent</module>
@@ -65,16 +66,33 @@
     </modules>
 
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -90,5 +108,6 @@
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <commons-io.version>2.6</commons-io.version>
     </properties>
 </project>
