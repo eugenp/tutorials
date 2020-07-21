@@ -558,7 +558,6 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
-				<module>hexagonal-architecture-java</module>
             </modules>
 
         </profile>
