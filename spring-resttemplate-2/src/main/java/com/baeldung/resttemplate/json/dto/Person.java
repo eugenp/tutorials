@@ -1,4 +1,4 @@
-package com.baeldung.resttemplate.json;
+package com.baeldung.resttemplate.json.dto;
 
 public class Person {
     private Integer id;

@@ -1,4 +1,4 @@
-package com.baeldung.sampleapp.web.dto;
+package com.baeldung.resttemplate.custom.dto;
 
 
 public class BaeldungItemV2 {

@@ -1,6 +1,6 @@
 package com.baeldung.resttemplate.json.controller;
 
-import com.baeldung.resttemplate.json.Person;
+import com.baeldung.resttemplate.json.dto.Person;
 import com.baeldung.resttemplate.json.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

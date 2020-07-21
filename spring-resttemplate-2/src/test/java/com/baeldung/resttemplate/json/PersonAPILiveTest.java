@@ -1,5 +1,6 @@
 package com.baeldung.resttemplate.json;
 
+import com.baeldung.resttemplate.json.dto.Person;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
