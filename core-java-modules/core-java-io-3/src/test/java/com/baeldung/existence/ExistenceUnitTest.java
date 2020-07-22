@@ -10,7 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ExistenceUnitTest {
 
@@ -18,25 +19,25 @@ public class ExistenceUnitTest {
     public void givenFile_whenDoesNotExist_thenFilesReturnsFalse() {
         Path path = Paths.get("does-not-exist.txt");
 
-        assertThat(Files.exists(path)).isFalse();
-        assertThat(Files.notExists(path)).isTrue();
+        assertFalse(Files.exists(path));
+        assertTrue(Files.notExists(path));
     }
 
     @Test
     public void givenFile_whenExists_thenFilesShouldReturnTrue() throws IOException {
         Path tempFile = Files.createTempFile("baeldung", "exist-nio");
-        assertThat(Files.exists(tempFile)).isTrue();
-        assertThat(Files.notExists(tempFile)).isFalse();
+        assertTrue(Files.exists(tempFile));
+        assertFalse(Files.notExists(tempFile));
 
         Path tempDirectory = Files.createTempDirectory("baeldung-exists");
-        assertThat(Files.exists(tempDirectory)).isTrue();
-        assertThat(Files.notExists(tempDirectory)).isFalse();
+        assertTrue(Files.exists(tempDirectory));
+        assertFalse(Files.notExists(tempDirectory));
 
-        assertThat(Files.isDirectory(tempDirectory)).isTrue();
-        assertThat(Files.isDirectory(tempFile)).isFalse();
-        assertThat(Files.isRegularFile(tempFile)).isTrue();
+        assertTrue(Files.isDirectory(tempDirectory));
+        assertFalse(Files.isDirectory(tempFile));
+        assertTrue(Files.isRegularFile(tempFile));
 
-        assertThat(Files.isReadable(tempFile)).isTrue();
+        assertTrue(Files.isReadable(tempFile));
 
         Files.deleteIfExists(tempFile);
         Files.deleteIfExists(tempDirectory);
@@ -48,21 +49,21 @@ public class ExistenceUnitTest {
         Path symbol = Paths.get("test-link-" + ThreadLocalRandom.current().nextInt());
 
         Path symbolicLink = Files.createSymbolicLink(symbol, target);
-        assertThat(Files.exists(symbolicLink)).isTrue();
-        assertThat(Files.isSymbolicLink(symbolicLink)).isTrue();
-        assertThat(Files.isSymbolicLink(target)).isFalse();
+        assertTrue(Files.exists(symbolicLink));
+        assertTrue(Files.isSymbolicLink(symbolicLink));
+        assertFalse(Files.isSymbolicLink(target));
 
         Files.deleteIfExists(target);
-        assertThat(Files.exists(symbolicLink)).isFalse();
-        assertThat(Files.exists(symbolicLink, LinkOption.NOFOLLOW_LINKS)).isTrue();
+        assertFalse(Files.exists(symbolicLink));
+        assertTrue(Files.exists(symbolicLink, LinkOption.NOFOLLOW_LINKS));
 
         Files.deleteIfExists(symbolicLink);
     }
 
     @Test
     public void givenFile_whenDoesNotExist_thenFileReturnsFalse() {
-        assertThat(new File("invalid").exists()).isFalse();
-        assertThat(new File("invalid").isFile()).isFalse();
+        assertFalse(new File("invalid").exists());
+        assertFalse(new File("invalid").isFile());
     }
 
     @Test
@@ -73,16 +74,16 @@ public class ExistenceUnitTest {
         File tempFile = new File(tempFilePath.toString());
         File tempDirectory = new File(tempDirectoryPath.toString());
 
-        assertThat(tempFile.exists()).isTrue();
-        assertThat(tempDirectory.exists()).isTrue();
+        assertTrue(tempFile.exists());
+        assertTrue(tempDirectory.exists());
 
-        assertThat(tempFile.isFile()).isTrue();
-        assertThat(tempDirectory.isFile()).isFalse();
+        assertTrue(tempFile.isFile());
+        assertFalse(tempDirectory.isFile());
 
-        assertThat(tempDirectory.isDirectory()).isTrue();
-        assertThat(tempFile.isDirectory()).isFalse();
+        assertTrue(tempDirectory.isDirectory());
+        assertFalse(tempFile.isDirectory());
 
-        assertThat(tempFile.canRead()).isTrue();
+        assertTrue(tempFile.canRead());
 
         Files.deleteIfExists(tempFilePath);
         Files.deleteIfExists(tempDirectoryPath);
