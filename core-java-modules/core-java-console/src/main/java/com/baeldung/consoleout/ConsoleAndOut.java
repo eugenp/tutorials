@@ -5,11 +5,9 @@ import java.io.Console;
 public class ConsoleAndOut {
     public static void main(String[] args) {
         Console console = System.console();
-        System.out.println(console);
+        console.writer().print(console);
         
-        if (console != null) {
-            char[] password = console.readPassword("Enter password:");
-            console.printf(String.valueOf(password));
-        }
+        char[] password = console.readPassword("Enter password:");
+        console.printf(String.valueOf(password));
     }
 }
