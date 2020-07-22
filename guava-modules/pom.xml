@@ -17,9 +17,16 @@
     </parent>
 
     <modules>
+        <module>guava-utilities</module>
+        <module>guava-core</module>
         <module>guava-18</module>
         <module>guava-19</module>
         <module>guava-21</module>
+        <module>guava-collections</module>
+        <module>guava-collections-list</module>
+        <module>guava-collections-map</module>
+        <module>guava-collections-set</module>
+        <module>guava-io</module>
     </modules>
 
     <dependencies>
