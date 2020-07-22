@@ -32,14 +32,18 @@ public class BitSetUnitTest {
         assertThat(bitSet.get(10)).isTrue();
 
         bitSet.set(20, 30);
-        for (int i = 20; i <= 29; i++) assertThat(bitSet.get(i)).isTrue();
+        for (int i = 20; i <= 29; i++) {
+            assertThat(bitSet.get(i)).isTrue();
+        }
         assertThat(bitSet.get(30)).isFalse();
 
         bitSet.set(10, false);
         assertThat(bitSet.get(10)).isFalse();
 
         bitSet.set(20, 30, false);
-        for (int i = 20; i <= 30; i++) assertThat(bitSet.get(i)).isFalse();
+        for (int i = 20; i <= 30; i++) {
+            assertThat(bitSet.get(i)).isFalse();
+        }
     }
 
     @Test
@@ -52,14 +56,20 @@ public class BitSetUnitTest {
         assertThat(bitSet.get(42)).isFalse();
 
         bitSet.set(10, 20);
-        for (int i = 10; i < 20; i++) assertThat(bitSet.get(i)).isTrue();
+        for (int i = 10; i < 20; i++) {
+            assertThat(bitSet.get(i)).isTrue();
+        }
 
         bitSet.clear(10, 20);
-        for (int i = 10; i < 20; i++) assertThat(bitSet.get(i)).isFalse();
+        for (int i = 10; i < 20; i++) {
+            assertThat(bitSet.get(i)).isFalse();
+        }
 
         bitSet.set(10, 20);
         bitSet.clear();
-        for (int i = 0; i < 100; i++) assertThat(bitSet.get(i)).isFalse();
+        for (int i = 0; i < 100; i++) {
+            assertThat(bitSet.get(i)).isFalse();
+        }
     }
 
     @Test
@@ -72,7 +82,9 @@ public class BitSetUnitTest {
 
         bitSet.set(10, 20);
         BitSet newBitSet = bitSet.get(10, 20);
-        for (int i = 0; i < 10; i++) assertThat(newBitSet.get(i)).isTrue();
+        for (int i = 0; i < 10; i++) {
+            assertThat(newBitSet.get(i)).isTrue();
+        }
     }
 
     @Test
@@ -86,7 +98,9 @@ public class BitSetUnitTest {
         assertThat(bitSet.get(12)).isTrue();
 
         bitSet.flip(30, 40);
-        for (int i = 30; i < 40; i++) assertThat(bitSet.get(i)).isTrue();
+        for (int i = 30; i < 40; i++) {
+            assertThat(bitSet.get(i)).isTrue();
+        }
     }
 
     @Test
@@ -130,8 +144,12 @@ public class BitSetUnitTest {
         first.set(5, 10);
 
         first.xor(second);
-        for (int i = 5; i < 7; i++) assertThat(first.get(i)).isTrue();
-        for (int i = 10; i < 15; i++) assertThat(first.get(i)).isTrue();
+        for (int i = 5; i < 7; i++) {
+            assertThat(first.get(i)).isTrue();
+        }
+        for (int i = 10; i < 15; i++) {
+            assertThat(first.get(i)).isTrue();
+        }
     }
 
     @Test
