@@ -13,7 +13,7 @@ public class RestApiController {
 
     @GetMapping("/logout")
     public String logout() {
-        return "redirec:login?logout";
+        return "redirect:/login";
     }
 
 }
