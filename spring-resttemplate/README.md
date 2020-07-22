@@ -16,7 +16,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Uploading MultipartFile with Spring RestTemplate](https://www.baeldung.com/spring-rest-template-multipart-upload)
 - [Get and Post Lists of Objects with RestTemplate](https://www.baeldung.com/spring-rest-template-list)
 - [HTTP PUT vs HTTP PATCH in a REST API](https://www.baeldung.com/http-put-patch-difference-spring) 
-- [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
 
 ### NOTE:
 
