@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <artifactId>guava-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -26,6 +26,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jool</artifactId>
+            <version>${jool.version}</version>
         </dependency>
 
         <!-- test scoped -->
@@ -79,6 +84,7 @@
     <properties>
         <!-- util -->
         <commons-collections4.version>4.1</commons-collections4.version>
+        <jool.version>0.9.12</jool.version>
 
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
