@@ -16,11 +16,9 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using the Spring RestTemplate Interceptor](https://www.baeldung.com/spring-rest-template-interceptor)
 - [Uploading MultipartFile with Spring RestTemplate](https://www.baeldung.com/spring-rest-template-multipart-upload)
 - [Get and Post Lists of Objects with RestTemplate](https://www.baeldung.com/spring-rest-template-list)
-- [Copy of RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json-test)
 - [HTTP PUT vs HTTP PATCH in a REST API](https://www.baeldung.com/http-put-patch-difference-spring) 
 - [A Custom Media Type for a Spring REST API](https://www.baeldung.com/spring-rest-custom-media-type)
 - [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
-- [Proxies With RestTemplate](https://www.baeldung.com/java-resttemplate-proxy)
 
 ### NOTE:
 
