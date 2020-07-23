@@ -13,4 +13,5 @@ This module contains articles about numbers in Java.
 - [Guide to the Number Class in Java](https://www.baeldung.com/java-number-class)
 - [Print an Integer in Binary Format in Java](https://www.baeldung.com/java-print-integer-binary)
 - [Number Formatting in Java](https://www.baeldung.com/java-number-formatting)
+- [Division by Zero in Java: Exception, Infinity, or Not a Number](https://www.baeldung.com/java-division-by-zero)
 - More articles: [[<-- prev]](/java-numbers-2)
