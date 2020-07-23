@@ -15,4 +15,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [A Guide to the Reflections Library](https://www.baeldung.com/reflections-library)
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [Introduction to Protonpack](https://www.baeldung.com/java-protonpack)
+- [Java-R Integration](https://www.baeldung.com/java-r-integration)
 - More articles [[<-- prev]](/libraries-5)

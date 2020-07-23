@@ -7,4 +7,5 @@
 - [Efficiently Merge Sorted Java Sequences](https://www.baeldung.com/java-merge-sorted-sequences)
 - [Introduction to Greedy Algorithms with Java](https://www.baeldung.com/java-greedy-algorithms)
 - [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
+- [Implementing a 2048 Solver in Java](https://www.baeldung.com/2048-java-solver)
 - More articles: [[<-- prev]](/../algorithms-miscellaneous-5)

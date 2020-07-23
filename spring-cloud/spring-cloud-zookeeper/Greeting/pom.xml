@@ -31,6 +31,10 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${springframework.version}</version>
@@ -56,7 +60,10 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>${spring-cloud-starter-feign.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -71,7 +78,6 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-starter-feign.version>1.2.5.RELEASE</spring-cloud-starter-feign.version>
         <hamcrest-core.version>1.3</hamcrest-core.version>
     </properties>
 
