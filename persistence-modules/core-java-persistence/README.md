@@ -10,3 +10,4 @@
 - [Guide to the JDBC ResultSet Interface](https://www.baeldung.com/jdbc-resultset)
 - [Types of SQL Joins](https://www.baeldung.com/sql-joins)
 - [Returning the Generated Keys in JDBC](https://www.baeldung.com/jdbc-returning-generated-keys)
+- [Loading JDBC Drivers](https://www.baeldung.com/java-jdbc-loading-drivers)
