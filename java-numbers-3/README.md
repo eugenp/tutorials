@@ -11,4 +11,6 @@ This module contains articles about numbers in Java.
 - [Listing Numbers Within a Range in Java](https://www.baeldung.com/java-listing-numbers-within-a-range)
 - [Fibonacci Series in Java](https://www.baeldung.com/java-fibonacci)
 - [Guide to the Number Class in Java](https://www.baeldung.com/java-number-class)
+- [Print an Integer in Binary Format in Java](https://www.baeldung.com/java-print-integer-binary)
+- [Number Formatting in Java](https://www.baeldung.com/java-number-formatting)
 - More articles: [[<-- prev]](/java-numbers-2)
