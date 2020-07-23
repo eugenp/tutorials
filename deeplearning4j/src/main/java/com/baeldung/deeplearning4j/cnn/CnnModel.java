@@ -1,6 +1,5 @@
-package com.baeldung.deeplearning4j.cnn.domain.network;
+package com.baeldung.deeplearning4j.cnn;
 
-import com.baeldung.deeplearning4j.cnn.service.dataset.IDataSetService;
 import lombok.extern.slf4j.Slf4j;
 import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
@@ -17,15 +16,15 @@ import org.nd4j.linalg.lossfunctions.LossFunctions;
 import java.util.stream.IntStream;
 
 @Slf4j
-public class CnnModel {
+class CnnModel {
 
     private final IDataSetService dataSetService;
 
-    private MultiLayerNetwork network;
+    private final MultiLayerNetwork network;
 
     private final CnnModelProperties properties;
 
-    public CnnModel(IDataSetService dataSetService, CnnModelProperties properties) {
+    CnnModel(IDataSetService dataSetService, CnnModelProperties properties) {
 
         this.dataSetService = dataSetService;
         this.properties = properties;
@@ -52,17 +51,17 @@ public class CnnModel {
         network = new MultiLayerNetwork(configuration);
     }
 
-    public void train() {
+    void train() {
         network.init();
         int epochsNum = properties.getEpochsNum();
         IntStream.range(1, epochsNum + 1).forEach(epoch -> {
-            log.info(String.format("Epoch %d?%d", epoch, epochsNum));
+            log.info("Epoch {} / {}", epoch, epochsNum);
             network.fit(dataSetService.trainIterator());
         });
     }
 
-    public Evaluation evaluate() {
-       return network.evaluate(dataSetService.testIterator());
+    Evaluation evaluate() {
+        return network.evaluate(dataSetService.testIterator());
     }
 
     private ConvolutionLayer conv5x5() {
@@ -84,7 +83,7 @@ public class CnnModel {
     }
 
     private ConvolutionLayer conv3x3Stride1Padding2() {
-        return  new ConvolutionLayer.Builder(3, 3)
+        return new ConvolutionLayer.Builder(3, 3)
                 .nOut(32)
                 .stride(1, 1)
                 .padding(2, 2)
@@ -95,7 +94,7 @@ public class CnnModel {
 
     private SubsamplingLayer pooling2x2Stride1() {
         return new SubsamplingLayer.Builder(SubsamplingLayer.PoolingType.MAX)
-                .kernelSize(2,2)
+                .kernelSize(2, 2)
                 .stride(1, 1)
                 .build();
     }

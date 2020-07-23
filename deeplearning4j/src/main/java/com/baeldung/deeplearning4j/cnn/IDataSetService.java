@@ -1,11 +1,11 @@
-package com.baeldung.deeplearning4j.cnn.service.dataset;
+package com.baeldung.deeplearning4j.cnn;
 
 import org.deeplearning4j.nn.conf.inputs.InputType;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 
 import java.util.List;
 
-public interface IDataSetService {
+interface IDataSetService {
     DataSetIterator trainIterator();
 
     DataSetIterator testIterator();
