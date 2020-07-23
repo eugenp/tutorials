@@ -386,6 +386,7 @@
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
+                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -558,6 +559,8 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -706,6 +709,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
+                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
@@ -900,6 +904,7 @@
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
+                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -1069,6 +1074,8 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -1209,6 +1216,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
+                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
