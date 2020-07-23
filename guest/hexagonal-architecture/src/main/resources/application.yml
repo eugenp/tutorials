@@ -1,0 +1,33 @@
+logging:
+   level:
+      ROOT: INFO
+management:
+   metrics:
+      tags:
+         env: dev
+server:
+   port: 8080
+spring:
+   profiles: local
+   jmx:
+      enabled: false
+   jpa:
+      database: db2
+      generate-ddl: false
+      hibernate:
+         ddl-auto: none
+      show-sql: true
+      properties:
+         hibernate:
+            type: trace
+            default_schema: hexagonal
+   datasource:
+      datasource-url: jdbc:db2://localhost:50000/hexagonal
+      user-name: dbuser
+      password: dbpassword
+      schema: hexagonal
+      jmx-enabled: false
+      driver-class-name: com.ibm.db2.jcc.DB2Driver
+   hibernate:
+      naming:
+         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
