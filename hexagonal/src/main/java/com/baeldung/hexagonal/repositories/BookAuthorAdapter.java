@@ -52,14 +52,20 @@ public class BookAuthorAdapter implements BookAuthorPersistencePort {
     private BookDto mapBookToBookDto(Book book) {
         return BookDto.builder()
                 .name(book.name)
-                .authors(book.authors.stream().map(this::mapAuthorToAuthorDto).collect(Collectors.toList()))
+                .authors(book.authors
+                                    .stream()
+                                    .map(this::mapAuthorToAuthorDto)
+                                    .collect(Collectors.toList()))
                 .build();
     }
 
     private Book mapBookDtoToBook(BookDto bookDto) {
         return Book.builder()
                 .name(bookDto.name)
-                .authors(bookDto.authors.stream().map(this::mapAuthorDtoToAuthor).collect(Collectors.toList()))
+                .authors(bookDto.authors
+                                    .stream()
+                                    .map(this::mapAuthorDtoToAuthor)
+                                    .collect(Collectors.toList()))
                 .build();
     }
 
