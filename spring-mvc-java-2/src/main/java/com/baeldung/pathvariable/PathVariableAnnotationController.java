@@ -66,6 +66,16 @@ public class PathVariableAnnotationController {
 		}
 	}
 
+	@GetMapping(value = { "/api/defaultemployeeswithoptional", "/api/defaultemployeeswithoptional/{id}" })
+	@ResponseBody
+	public String getDefaultEmployeesByIdWithOptional(@PathVariable Optional<String> id) {
+		if (id.isPresent()) {
+			return "ID: " + id.get();
+		} else {
+			return "ID: Default Employee";
+		}
+	}
+
 	@GetMapping(value = { "/api/employeeswithmap/{id}", "/api/employeeswithmap" })
 	@ResponseBody
 	public String getEmployeesByIdWithMap(@PathVariable Map<String, String> pathVarsMap) {
