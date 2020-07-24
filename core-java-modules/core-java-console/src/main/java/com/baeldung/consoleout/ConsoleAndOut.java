@@ -9,5 +9,7 @@ public class ConsoleAndOut {
         
         char[] password = console.readPassword("Enter password:");
         console.printf(String.valueOf(password));
+        
+        System.out.println(System.out);
     }
 }
