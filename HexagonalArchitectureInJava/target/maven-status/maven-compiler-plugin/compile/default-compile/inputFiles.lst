@@ -1,0 +1,12 @@
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\in\port\TONCService.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\domain\Taxi.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\in\adapter\TONCController.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\out\port\DBRepository.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\out\adapter\PaymentsRepositoryImpl.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\domain\TripDetails.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\out\adapter\DBRepositoryImpl.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\out\port\GPSRepository.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\domain\core\TONCServiceImpl.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\out\port\PaymentsRepository.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\HadApplication.java
+D:\nazim_data\projects\hexagonal_architecture\had\src\main\java\app\had\demo\out\adapter\GPSRepositoryImpl.java

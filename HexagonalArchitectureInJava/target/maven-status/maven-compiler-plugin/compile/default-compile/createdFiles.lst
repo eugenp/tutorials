@@ -1,0 +1,12 @@
+app\had\demo\out\port\PaymentsRepository.class
+app\had\demo\out\port\DBRepository.class
+app\had\demo\HadApplication.class
+app\had\demo\domain\core\TONCServiceImpl.class
+app\had\demo\out\port\GPSRepository.class
+app\had\demo\domain\Taxi.class
+app\had\demo\in\adapter\TONCController.class
+app\had\demo\domain\TripDetails.class
+app\had\demo\out\adapter\GPSRepositoryImpl.class
+app\had\demo\out\adapter\PaymentsRepositoryImpl.class
+app\had\demo\in\port\TONCService.class
+app\had\demo\out\adapter\DBRepositoryImpl.class
