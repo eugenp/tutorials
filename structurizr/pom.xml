@@ -42,7 +42,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <structurizr.version>1.0.0-RC5</structurizr.version>
+        <structurizr.version>1.0.0</structurizr.version>
     </properties>
 
 </project>

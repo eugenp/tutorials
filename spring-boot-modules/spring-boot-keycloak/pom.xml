@@ -76,7 +76,7 @@
     </build>
 
     <properties>
-        <keycloak-adapter-bom.version>10.0.1</keycloak-adapter-bom.version>
+        <keycloak-adapter-bom.version>10.0.2</keycloak-adapter-bom.version>
     </properties>
 
 </project>
