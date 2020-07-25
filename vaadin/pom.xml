@@ -126,7 +126,7 @@
     <repositories>
         <repository>
             <id>vaadin-addons</id>
-            <url>http://maven.vaadin.com/vaadin-addons</url>
+            <url>https://maven.vaadin.com/vaadin-addons</url>
         </repository>
     </repositories>
 
@@ -141,7 +141,7 @@
             <repositories>
                 <repository>
                     <id>vaadin-prereleases</id>
-                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
+                    <url>https://maven.vaadin.com/vaadin-prereleases</url>
                 </repository>
                 <repository>
                     <id>vaadin-snapshots</id>
@@ -157,7 +157,7 @@
             <pluginRepositories>
                 <pluginRepository>
                     <id>vaadin-prereleases</id>
-                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
+                    <url>https://maven.vaadin.com/vaadin-prereleases</url>
                 </pluginRepository>
                 <pluginRepository>
                     <id>vaadin-snapshots</id>
@@ -182,7 +182,6 @@
         <vaadin-client-compiled.version>8.8.5</vaadin-client-compiled.version>
         <vaadin-themes.version>8.8.5</vaadin-themes.version>
         <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>

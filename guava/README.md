@@ -3,6 +3,7 @@
 This module contains articles a Google Guava
 
 ### Relevant Articles: 
+
 - [Guava Functional Cookbook](https://www.baeldung.com/guava-functions-predicates)
 - [Guide to Guava’s PreConditions](https://www.baeldung.com/guava-preconditions)
 - [Introduction to Guava CacheLoader](https://www.baeldung.com/guava-cacheloader)
@@ -12,5 +13,5 @@ This module contains articles a Google Guava
 - [Guide to Mathematical Utilities in Guava](https://www.baeldung.com/guava-math)
 - [Bloom Filter in Java using Guava](https://www.baeldung.com/guava-bloom-filter)
 - [Quick Guide to the Guava RateLimiter](https://www.baeldung.com/guava-rate-limiter)
-- [Introduction to Guava Throwables](https://www.baeldung.com/guava-throwables)
 - [Guava Cache](https://www.baeldung.com/guava-cache)
+- [Introduction to Guava Throwables](https://www.baeldung.com/guava-throwables)

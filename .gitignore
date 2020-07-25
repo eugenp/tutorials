@@ -85,7 +85,5 @@ transaction.log
 *-shell.log
 
 apache-cxf/cxf-aegis/baeldung.xml
-apache-fop/src/test/resources/input.xml
-apache-fop/src/test/resources/output_herold.pdf
-apache-fop/src/test/resources/output_html2fo.pdf
-apache-fop/src/test/resources/output_jtidy.pdf
+
+libraries-2/*.db

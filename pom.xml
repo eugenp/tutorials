@@ -343,26 +343,18 @@
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-
-                <module>apache-avro</module>
-                <module>apache-bval</module>
-                <module>apache-curator</module>
-                <module>apache-cxf</module>                
-                <module>apache-geode</module>
-                <module>apache-meecrowave</module>
-                <module>apache-olingo/olingo2</module>
-                <module>apache-opennlp</module>
-                <module>apache-poi</module>
-                <module>apache-pulsar</module>
+                
+                <module>apache-cxf</module>  
+                <module>apache-libraries</module>              
+                <module>apache-olingo/olingo2</module>                
+                <module>apache-poi</module>                
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
-                <module>apache-solrj</module>
+                <module>apache-shiro</module>             
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>
-                <module>apache-zookeeper</module>
+                <module>apache-velocity</module>             
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -394,6 +386,7 @@
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
+                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -424,6 +417,7 @@
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
+                <module>guava-2</module>
                 <module>guava-collections</module>
                 <module>guava-collections-map</module>
                 <module>guava-collections-set</module>
@@ -517,7 +511,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -565,6 +559,8 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -655,6 +651,7 @@
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
@@ -712,6 +709,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
+                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
@@ -864,27 +862,18 @@
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-
-                <module>apache-avro</module>
-                <module>apache-beam</module>
-                <module>apache-bval</module>
-                <module>apache-curator</module>
-                <module>apache-cxf</module>                
-                <module>apache-geode</module>
-                <module>apache-meecrowave</module>
-                <module>apache-olingo/olingo2</module>
-                <module>apache-opennlp</module>
-                <module>apache-poi</module>
-                <module>apache-pulsar</module>
+              
+                <module>apache-cxf</module> 
+                <module>apache-libraries</module>                             
+                <module>apache-olingo/olingo2</module>                
+                <module>apache-poi</module>                
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
-                <module>apache-solrj</module>
+                <module>apache-shiro</module>                
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>
-                <module>apache-zookeeper</module>
+                <module>apache-velocity</module>                
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -915,6 +904,7 @@
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
+                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -1036,7 +1026,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -1084,6 +1074,8 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+				<module>reactive-systems</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -1224,6 +1216,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
+                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
