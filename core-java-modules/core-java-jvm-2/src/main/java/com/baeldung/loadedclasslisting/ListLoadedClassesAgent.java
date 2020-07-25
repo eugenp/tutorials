@@ -4,17 +4,13 @@ import java.lang.instrument.Instrumentation;
 
 public class ListLoadedClassesAgent {
 
-    public enum ClassLoaderType {
-        SYSTEM, EXTENSION, BOOTSTRAP, CUSTOM , PLATFORM
-    }
-    
     private static Instrumentation instrumentation;
 
     public static void premain(String agentArgs, Instrumentation instrumentation) {
         ListLoadedClassesAgent.instrumentation = instrumentation;
     }
 
-    public static Class<?>[] listLoadedClasses(ClassLoaderType classLoaderType) {
+    public static Class<?>[] listLoadedClasses(String classLoaderType) {
         if (instrumentation == null) {
             throw new IllegalStateException(
               "ListLoadedClassesAgent is not initialized.");
@@ -23,24 +19,18 @@ public class ListLoadedClassesAgent {
           getClassLoader(classLoaderType));
     }
 
-    public static Class<?>[] listLoadedClasses(ClassLoader classLoader) {
-        if (instrumentation == null) {
-            throw new IllegalStateException(
-              "ListLoadedClassesAgent is not initialized.");
-        }
-        return instrumentation.getInitiatedClasses(classLoader);
-    }
-
-    private static ClassLoader getClassLoader(ClassLoaderType classLoaderType) {
+    private static ClassLoader getClassLoader(String classLoaderType) {
         ClassLoader classLoader = null;
         switch (classLoaderType) {
-        case SYSTEM:
+        case "SYSTEM":
             classLoader = ClassLoader.getSystemClassLoader();
             break;
-        case EXTENSION:
+        case "EXTENSION":
             classLoader = ClassLoader.getSystemClassLoader().getParent();
             break;
-        case BOOTSTRAP:
+        // passing a null value to the Instrumentation : getInitiatedClasses method
+        // defaults to the bootstrap class loader
+        case "BOOTSTRAP":
             break;
         default:
             break;
