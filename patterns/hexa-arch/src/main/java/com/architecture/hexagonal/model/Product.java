@@ -7,6 +7,14 @@ public class Product {
     private String description;
     private double price;
 
+    public Product(int id, String name, String description, double price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
+
     public int getId() {
         return id;
     }
@@ -23,17 +31,4 @@ public class Product {
         return price;
     }
 
-    public void setId(int id) { this.id = id; }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }

@@ -7,6 +7,7 @@ public interface ProductRetriever {
 
     /**
      * retrieves a product by their id
+     *
      * @param id
      * @return a Product object
      */
