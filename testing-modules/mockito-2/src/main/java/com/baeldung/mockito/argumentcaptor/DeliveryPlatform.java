@@ -2,7 +2,7 @@ package com.baeldung.mockito.argumentcaptor;
 
 public interface DeliveryPlatform {
 
-    void send(Email email);
+    void deliver(Email email);
 
     String getServiceStatus();
 

@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 @RunWith(MockitoJUnitRunner.class)
 public class EmailServiceUnitTest {
 
-    @InjectMocks
-    EmailService emailService;
-
     @Mock
     DeliveryPlatform platform;
+
+    @InjectMocks
+    EmailService emailService;
 
     @Captor
     ArgumentCaptor<Email> emailCaptor;
@@ -30,7 +30,7 @@ public class EmailServiceUnitTest {
 
         emailService.send(to, subject, body, false);
 
-        Mockito.verify(platform).send(emailCaptor.capture());
+        Mockito.verify(platform).deliver(emailCaptor.capture());
         Email emailCaptorValue = emailCaptor.getValue();
         assertEquals(Format.TEXT_ONLY, emailCaptorValue.getFormat());
     }
@@ -43,7 +43,7 @@ public class EmailServiceUnitTest {
 
         emailService.send(to, subject, body, true);
 
-        Mockito.verify(platform).send(emailCaptor.capture());
+        Mockito.verify(platform).deliver(emailCaptor.capture());
         Email value = emailCaptor.getValue();
         assertEquals(Format.HTML, value.getFormat());
     }
@@ -67,7 +67,7 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void usingArgumentMatcher_whenAuthenticatedWithValidCredentials_expectTrue() {
+    public void whenUsingArgumentMatcherForValidCredentials_expectTrue() {
         Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
         Mockito.when(platform.authenticate(Mockito.eq(credentials))).thenReturn(AuthenticationStatus.AUTHENTICATED);
 
@@ -75,7 +75,7 @@ public class EmailServiceUnitTest {
     }
 
     @Test
-    public void usingArgumentCaptor_whenAuthenticatedWithValidCredentials_expectTrue() {
+    public void whenUsingArgumentCaptorForValidCredentials_expectTrue() {
         Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
         Mockito.when(platform.authenticate(credentialsCaptor.capture())).thenReturn(AuthenticationStatus.AUTHENTICATED);
 

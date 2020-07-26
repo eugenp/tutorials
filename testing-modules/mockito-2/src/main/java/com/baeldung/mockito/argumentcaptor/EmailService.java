@@ -15,7 +15,7 @@ public class EmailService {
         }
         Email email = new Email(to, subject, body);
         email.setFormat(format);
-        platform.send(email);
+        platform.deliver(email);
     }
 
     public ServiceStatus checkServiceStatus() {
