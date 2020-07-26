@@ -25,7 +25,7 @@ class ExcelFormulaUnitTest {
     }
 
     @Test
-    void givenExcelData_whenSetAndEvaluateFormula() throws IOException {
+    void givenExcelData_whenSetFormula_thenSuccess() throws IOException {
         FileInputStream inputStream = new FileInputStream(new File(fileLocation));
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheetAt(0);
@@ -43,7 +43,9 @@ class ExcelFormulaUnitTest {
         String startCellB = colNameB + 1;
         String stopCellB = colNameB + (sheet.getLastRowNum() + 1);
         String sumFormulaForColumnB = String.format("SUM(%s:%s)", startCellB, stopCellB);
+
         double resultValue = excelFormula.setFormula(fileLocation, wb, sumFormulaForColumnA + "-" + sumFormulaForColumnB);
-        Assert.assertEquals(resultValue, resultColumnA - resultColumnB, 0d);
+
+        Assert.assertEquals(resultColumnA - resultColumnB, resultValue, 0d);
     }
 }
