@@ -8,11 +8,10 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 class ThreadRunner extends Thread {
     private static final Logger log = LoggerFactory.getLogger(ThreadRunner.class.getName());
-    private String name;
     private int number;
 
     public ThreadRunner(String name, int number) {
-        this.name = name;
+        super(name);
         this.number = number;
     }
 
@@ -32,6 +31,6 @@ class ThreadRunner extends Thread {
 
     @Override
     public String toString() {
-        return "Runner{" + "name='" + name + '\'' + ", number=" + number + '}';
+        return "Runner{" + "name='" + super.getName() + '\'' + ", number=" + number + '}';
     }
 }

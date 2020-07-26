@@ -11,12 +11,11 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 class CyclicBarrierRunner extends Thread {
     private static final Logger log = LoggerFactory.getLogger(CyclicBarrierRunner.class.getName());
-    private String name;
     private int number;
     private CyclicBarrier barrier;
 
     public CyclicBarrierRunner(String name, int number, CyclicBarrier barrier) {
-        this.name = name;
+        super(name);
         this.number = number;
         this.barrier = barrier;
     }
@@ -38,6 +37,6 @@ class CyclicBarrierRunner extends Thread {
 
     @Override
     public String toString() {
-        return "Runner{" + "name='" + name + '\'' + ", number=" + number + '}';
+        return "Runner{" + "name='" + super.getName() + '\'' + ", number=" + number + '}';
     }
 }

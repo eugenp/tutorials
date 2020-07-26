@@ -10,12 +10,11 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 class CountDownLatchRunner extends Thread {
     private static final Logger log = LoggerFactory.getLogger(CountDownLatchRunner.class.getName());
-    private String name;
     private int number;
     private CountDownLatch counter;
 
     public CountDownLatchRunner(String name, int number, CountDownLatch counter) {
-        this.name = name;
+        super(name);
         this.number = number;
         this.counter = counter;
     }
@@ -37,6 +36,6 @@ class CountDownLatchRunner extends Thread {
 
     @Override
     public String toString() {
-        return "Runner{" + "name='" + name + '\'' + ", number=" + number + '}';
+        return "Runner{" + "name='" + super.getName() + '\'' + ", number=" + number + '}';
     }
 }
