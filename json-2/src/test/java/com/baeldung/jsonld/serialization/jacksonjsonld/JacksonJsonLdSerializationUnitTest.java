@@ -18,8 +18,16 @@ public class JacksonJsonLdSerializationUnitTest {
         Person person = new Person();
         String personJsonLd = objectMapper.writeValueAsString(person);
 
-        assertEquals(
-            "{\"@type\":\"s:Person\",\"@context\":{\"s\":\"http://schema.org/\",\"name\":\"s:name\",\"knows\":{\"@id\":\"s:knows\",\"@type\":\"@id\"}},\"name\":\"Example Name\",\"@id\":\"http://example.com/person/1234\",\"knows\":\"http://example.com/person/2345\"}",
-            personJsonLd);
+        assertEquals("{"
+            + "\"@type\":\"s:Person\","
+            + "\"@context\":{"
+            +     "\"s\":\"http://schema.org/\","
+            +     "\"name\":\"s:name\","
+            +     "\"knows\":{\"@id\":\"s:knows\",\"@type\":\"@id\"}"
+            + "},"
+            + "\"name\":\"Example Name\","
+            + "\"@id\":\"http://example.com/person/1234\","
+            + "\"knows\":\"http://example.com/person/2345\""
+            + "}", personJsonLd);
     }
 }
