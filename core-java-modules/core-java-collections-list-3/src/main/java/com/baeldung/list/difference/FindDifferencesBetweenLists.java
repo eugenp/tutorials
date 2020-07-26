@@ -29,4 +29,14 @@ public class FindDifferencesBetweenLists {
         return new ArrayList<>(Sets.difference(Sets.newHashSet(listOne), Sets.newHashSet(listTwo)));
     }
 
+    public static <T> List<T> differencesUsingPlainJavaCollectionsWithDuplicates(List<T> listOne, List<T> listTwo) {
+        List<T> differences = new ArrayList<>(listOne);
+        listTwo.forEach(differences::remove);
+        return differences;
+    }
+
+    public static <T> List<T> differencesUsingApacheCommonsCollectionsWithDuplicates(List<T> listOne, List<T> listTwo) {
+        return new ArrayList<>(CollectionUtils.subtract(listOne, listTwo));
+    }
+
 }
