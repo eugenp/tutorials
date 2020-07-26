@@ -37,6 +37,6 @@ class CyclicBarrierRunner extends Thread {
 
     @Override
     public String toString() {
-        return "Runner{" + "name='" + super.getName() + '\'' + ", number=" + number + '}';
+        return "CyclicBarrierRunner{" + "number=" + number + '}';
     }
 }

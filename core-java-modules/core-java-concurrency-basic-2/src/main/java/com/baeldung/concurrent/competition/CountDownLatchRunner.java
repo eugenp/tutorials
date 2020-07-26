@@ -36,6 +36,6 @@ class CountDownLatchRunner extends Thread {
 
     @Override
     public String toString() {
-        return "Runner{" + "name='" + super.getName() + '\'' + ", number=" + number + '}';
+        return "CountDownLatchRunner{" + "number=" + number + '}';
     }
 }

@@ -31,6 +31,6 @@ class ThreadRunner extends Thread {
 
     @Override
     public String toString() {
-        return "Runner{" + "name='" + super.getName() + '\'' + ", number=" + number + '}';
+        return "ThreadRunner{" + "number=" + number + '}';
     }
 }
