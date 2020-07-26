@@ -29,7 +29,15 @@ public class HydraJsonldSerializationUnitTest {
 
         String personJsonLd = objectMapper.writeValueAsString(person);
 
-        assertEquals("{\"@context\":{\"@vocab\":\"http://example.com/vocab/\",\"name\":\"fullName\"},\"@type\":\"person\",\"name\":\"Example Name\",\"@id\":\"http://example.com/person/1234\"}", personJsonLd);
+        assertEquals("{"
+            + "\"@context\":{"
+            +     "\"@vocab\":\"http://example.com/vocab/\","
+            +     "\"name\":\"fullName\""
+            + "},"
+            + "\"@type\":\"person\","
+            + "\"name\":\"Example Name\","
+            + "\"@id\":\"http://example.com/person/1234\""
+            + "}", personJsonLd);
     }
 
     static SimpleModule getJacksonHydraSerializerModule() {
