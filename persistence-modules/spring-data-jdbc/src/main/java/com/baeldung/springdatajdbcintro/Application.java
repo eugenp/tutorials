@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.springdatajdbcintro;
 
 import java.util.Optional;
 
@@ -8,8 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.baeldung.entity.Person;
-import com.baeldung.repository.PersonRepository;
+import com.baeldung.springdatajdbcintro.entity.Person;
+import com.baeldung.springdatajdbcintro.repository.PersonRepository;
 
 import ch.qos.logback.classic.Logger;
 
@@ -29,7 +29,7 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
-        ;
+
         LOGGER.info("@@ Inserting Data....");
         dbSeeder.insertData();
         LOGGER.info("@@ findAll() call...");

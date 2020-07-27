@@ -1,4 +1,4 @@
-package com.baeldung.repository;
+package com.baeldung.springdatajdbcintro.repository;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.entity.Person;
+import com.baeldung.springdatajdbcintro.entity.Person;
 
 @Repository
-public interface PersonRepository extends CrudRepository<Person, Long> {
+public interface PersonRepository extends CrudRepository<Person,Long> {
 
     @Query("select * from person where first_name=:firstName")
     List<Person> findByFirstName(@Param("firstName") String firstName);

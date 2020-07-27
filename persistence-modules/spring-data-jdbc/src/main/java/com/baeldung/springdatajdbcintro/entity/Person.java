@@ -1,4 +1,4 @@
-package com.baeldung.entity;
+package com.baeldung.springdatajdbcintro.entity;
 
 import org.springframework.data.annotation.Id;
 
