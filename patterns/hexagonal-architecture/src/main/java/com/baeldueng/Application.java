@@ -1,13 +1,11 @@
-package com.baeldung.pattern.hexagonal;
+package com.baeldueng;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HexArchApplicationDemo {
-
+public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(HexArchApplicationDemo.class, args);
+        SpringApplication.run(Application.class, args);
     }
-
 }
