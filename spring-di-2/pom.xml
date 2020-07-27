@@ -26,9 +26,24 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax.inject.version}</version>
         </dependency>
     </dependencies>
 
@@ -61,5 +76,6 @@
     <properties>
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
         <aspectj-plugin.version>1.11</aspectj-plugin.version>
+        <javax.inject.version>1</javax.inject.version>
     </properties>
 </project>
