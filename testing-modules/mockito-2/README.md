@@ -6,3 +6,4 @@
 - [Mockito and Fluent APIs](https://www.baeldung.com/mockito-fluent-apis)
 - [Mocking the ObjectMapper readValue() Method](https://www.baeldung.com/mockito-mock-jackson-read-value)
 - [Introduction to Mockito’s AdditionalAnswers](https://www.baeldung.com/mockito-additionalanswers)
+- [Mockito – Using Spies](https://www.baeldung.com/mockito-spy)
