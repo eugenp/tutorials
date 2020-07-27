@@ -8,3 +8,4 @@ This module contains articles about MapStruct.
 - [Custom Mapper with MapStruct](https://www.baeldung.com/mapstruct-custom-mapper)
 - [Using Multiple Source Objects with MapStruct](https://www.baeldung.com/mapstruct-multiple-source-objects)
 - [Ignoring Unmapped Properties with MapStruct](https://www.baeldung.com/mapstruct-ignore-unmapped-properties)
+- [Mapping Collections with MapStruct](https://www.baeldung.com/java-mapstruct-mapping-collections)

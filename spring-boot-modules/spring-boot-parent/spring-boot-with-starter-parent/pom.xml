@@ -41,7 +41,5 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-boot-starter-data-jpa.version>2.2.5.RELEASE</spring-boot-starter-data-jpa.version>
-        <junit.version>4.11</junit.version>
     </properties>
-
 </project>

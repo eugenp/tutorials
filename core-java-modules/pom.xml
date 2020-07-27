@@ -72,6 +72,7 @@
 
         <module>core-java-io</module>
         <module>core-java-io-2</module>
+        <module>core-java-io-3</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-2</module>
@@ -126,6 +127,7 @@
         <module>core-java-string-conversions-2</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
+        <module>core-java-string-operations-3</module>
         <module>core-java-strings</module>
         <module>core-java-sun</module>
 
