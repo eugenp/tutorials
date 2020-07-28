@@ -10,3 +10,4 @@
 - [Cucumber Data Tables](https://www.baeldung.com/cucumber-data-tables)
 - [Cucumber Background](https://www.baeldung.com/java-cucumber-background)
 - [Cucumber Hooks](https://www.baeldung.com/java-cucumber-hooks)
+- [Unit Testing of System.out.println() with JUnit](https://www.baeldung.com/java-testing-system-out-println)
