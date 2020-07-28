@@ -62,7 +62,6 @@ public class SmurfsArchUnitTest {
           .should()
             .dependOnClassesThat()
               .resideInAPackage("..persistence..");
-          
         
         r1.check(jc);
     }
@@ -81,10 +80,8 @@ public class SmurfsArchUnitTest {
           .whereLayer("Presentation").mayNotBeAccessedByAnyLayer()
           .whereLayer("Service").mayOnlyBeAccessedByLayers("Presentation")
           .whereLayer("Persistence").mayOnlyBeAccessedByLayers("Service");
-          
         
         arch.check(jc);
-        
     }
     
     
