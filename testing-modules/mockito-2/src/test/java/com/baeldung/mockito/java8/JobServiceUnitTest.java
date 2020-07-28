@@ -1,18 +1,19 @@
 package com.baeldung.mockito.java8;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Optional;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-
+@RunWith(MockitoJUnitRunner.class)
 public class JobServiceUnitTest {
     @Mock
     private JobService jobService;
@@ -35,10 +36,5 @@ public class JobServiceUnitTest {
         doCallRealMethod().when(jobService).assignJobPosition(Mockito.any(Person.class), Mockito.any(JobPosition.class));
 
         assertTrue(jobService.assignJobPosition(person, new JobPosition()));
-    }
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
     }
 }

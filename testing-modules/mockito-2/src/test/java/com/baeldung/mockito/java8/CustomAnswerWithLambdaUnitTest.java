@@ -2,9 +2,10 @@ package com.baeldung.mockito.java8;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.stream.Stream;
 
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CustomAnswerWithLambdaUnitTest {
 
     @InjectMocks
@@ -37,8 +39,6 @@ public class CustomAnswerWithLambdaUnitTest {
 
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
-
         when(jobService.listJobs(any(Person.class))).then((i) ->
           Stream.of(new JobPosition("Teacher"))
           .filter(p -> ((Person) i.getArgument(0)).getName().equals("Peter")));
