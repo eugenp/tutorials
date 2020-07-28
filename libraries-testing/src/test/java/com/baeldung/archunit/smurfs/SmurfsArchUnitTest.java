@@ -83,7 +83,4 @@ public class SmurfsArchUnitTest {
         
         arch.check(jc);
     }
-    
-    
-
 }
