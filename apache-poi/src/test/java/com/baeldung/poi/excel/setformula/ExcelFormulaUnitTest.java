@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 class ExcelFormulaUnitTest {
-    private static String FILE_NAME = "com/bealdung/poi/excel/setformula/SetFormulaTest.xlsx";
+    private static String FILE_NAME = "com/baeldung/poi/excel/setformula/SetFormulaTest.xlsx";
     private String fileLocation;
     private ExcelFormula excelFormula;
 
