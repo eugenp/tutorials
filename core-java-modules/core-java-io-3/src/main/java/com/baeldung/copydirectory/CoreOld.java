@@ -1,4 +1,4 @@
-package com.baeldung.copyfolder;
+package com.baeldung.copydirectory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,12 +17,12 @@ public class CoreOld {
         }
     }
 
-    private static void copyDirectory(File sourceFolder, File destinationFolder) throws IOException {
-        if (!destinationFolder.exists()) {
-            destinationFolder.mkdir();
+    private static void copyDirectory(File sourceDirectory, File destinationDirectory) throws IOException {
+        if (!destinationDirectory.exists()) {
+            destinationDirectory.mkdir();
         }
-        for (String f : sourceFolder.list()) {
-            copyDirectoryJavaUnder7(new File(sourceFolder, f), new File(destinationFolder, f));
+        for (String f : sourceDirectory.list()) {
+            copyDirectoryJavaUnder7(new File(sourceDirectory, f), new File(destinationDirectory, f));
         }
     }
 
