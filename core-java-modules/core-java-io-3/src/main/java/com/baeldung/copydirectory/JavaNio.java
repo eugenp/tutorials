@@ -1,4 +1,4 @@
-package com.baeldung.copyfolder;
+package com.baeldung.copydirectory;
 
 import java.io.IOException;
 import java.nio.file.Files;
