@@ -415,13 +415,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>
-                <module>guava</module>
-                <module>guava-2</module>
-                <module>guava-collections</module>
-                <module>guava-collections-map</module>
-                <module>guava-collections-set</module>
-                <module>guava-io</module>
+                <module>gson</module>                
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -933,12 +927,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>
-                <module>guava</module>
-                <module>guava-collections</module>
-                <module>guava-collections-map</module>
-                <module>guava-collections-set</module>
-                <module>guava-io</module>
+                <module>gson</module>                
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
