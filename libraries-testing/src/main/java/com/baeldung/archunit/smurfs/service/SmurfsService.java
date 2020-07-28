@@ -1,16 +1,16 @@
 /**
  * 
  */
-package com.baldung.archunit.smurfs.service;
+package com.baeldung.archunit.smurfs.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.baldung.archunit.smurfs.persistence.SmurfsRepository;
-import com.baldung.archunit.smurfs.persistence.domain.Smurf;
-import com.baldung.archunit.smurfs.service.dto.SmurfDTO;
+import com.baeldung.archunit.smurfs.persistence.SmurfsRepository;
+import com.baeldung.archunit.smurfs.persistence.domain.Smurf;
+import com.baeldung.archunit.smurfs.service.dto.SmurfDTO;
 
 /**
  * @author Philippe
