@@ -9,11 +9,11 @@ public class JavaNio {
 
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation) throws IOException {
         Files.walk(Paths.get(sourceDirectoryLocation))
-            .forEach(a -> {
-                Path b = Paths.get(destinationDirectoryLocation, a.toString()
+            .forEach(source -> {
+                Path destination = Paths.get(destinationDirectoryLocation, source.toString()
                     .substring(sourceDirectoryLocation.length()));
                 try {
-                    Files.copy(a, b);
+                    Files.copy(source, destination);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
