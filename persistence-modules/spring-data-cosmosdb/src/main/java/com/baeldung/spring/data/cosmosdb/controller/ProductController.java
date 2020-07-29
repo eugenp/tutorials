@@ -22,8 +22,12 @@ import java.util.Optional;
 @RequestMapping("/products")
 public class ProductController {
 
-    @Autowired
     private ProductService productService;
+
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -46,8 +50,8 @@ public class ProductController {
         return productService.findProductByName(name);
     }
 
-    @GetMapping(value = "/category/{category}")
-    public List<Product> getByCategory(@PathVariable String category) {
+    @GetMapping(value = "/category")
+    public List<Product> getByCategory(@RequestParam String category) {
         return productService.getProductsOfCategory(category);
     }
 

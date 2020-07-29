@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>spring-data-cosmosdb</artifactId>
-	<name>spring-data-cosmos-db</name>
-	<description>tutorial for spring-data-cosmosdb</description>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>spring-data-cosmosdb</artifactId>
+  <name>spring-data-cosmos-db</name>
+  <description>tutorial for spring-data-cosmosdb</description>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-boot-2</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../parent-boot-2</relativePath>
-	</parent>
+  <parent>
+    <groupId>com.baeldung</groupId>
+	<artifactId>parent-boot-2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<relativePath>../../parent-boot-2</relativePath>
+  </parent>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+  <properties>
+	<java.version>1.8</java.version>
+	<cosmodb.version>2.3.0</cosmodb.version>
+  </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>spring-data-cosmosdb</artifactId>
-			<version>2.3.0</version>
-		</dependency>
+  <dependencies>
+	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+	  <groupId>com.microsoft.azure</groupId>
+	  <artifactId>spring-data-cosmosdb</artifactId>
+	  <version>${cosmodb.version}</version>
+	</dependency>
+    <dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-test</artifactId>
+	  <scope>test</scope>
+	</dependency>
+	<dependency>
+	  <groupId>org.projectlombok</groupId>
+	  <artifactId>lombok</artifactId>
+	</dependency>
+  </dependencies>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+  <build>
+	<plugins>
+	  <plugin>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-maven-plugin</artifactId>
+	  </plugin>
+	</plugins>
+  </build>
 
 </project>

@@ -14,14 +14,14 @@ import java.util.Optional;
 //Uncomment this when configured URI and keys for Azure Cosmos DB in application.properties
 //to run the integration test
 //@SpringBootTest
-public class AzurecosmodbApplicationIntegrationTest {
+public class AzurecosmodbApplicationManualTest {
 
     @Autowired
     ProductRepository productRepository;
 
     // Uncomment this when configured URI and keys for Azure Cosmos DB in application.properties
     // to run the integration test
-    // @Test
+    //@Test
     public void givenProductIsCreated_whenCallFindById_thenProductIsFound() {
         Product product = new Product();
         product.setProductid("1001");
@@ -29,11 +29,9 @@ public class AzurecosmodbApplicationIntegrationTest {
         product.setPrice(110.0);
         product.setProductName("Blue Shirt");
 
-        // Uncomment these lines when configured URI and keys for Azure Cosmos DB in application.properties
-        // to run the integration test
-        // productRepository.save(product);
-        // Optional<Product> retrievedProduct = productRepository.findById("1001", new PartitionKey("Shirt"));
-        // Assert.notNull(retrievedProduct, "Retrieved Product is Null");
+        productRepository.save(product);
+        Optional<Product> retrievedProduct = productRepository.findById("1001", new PartitionKey("Shirt"));
+        Assert.notNull(retrievedProduct, "Retrieved Product is Null");
 
     }
 
