@@ -27,7 +27,7 @@ public class AzurecosmodbApplicationManualTest {
 
         productRepository.save(product);
         Optional<Product> retrievedProduct = productRepository.findById("1001", new PartitionKey("Shirt"));
-        Assert.notNull(retrievedProduct, "Retrieved Product is Null");
+        Assert.notNull(retrievedProduct.get(), "Retrieved Product is Null");
 
     }
 
