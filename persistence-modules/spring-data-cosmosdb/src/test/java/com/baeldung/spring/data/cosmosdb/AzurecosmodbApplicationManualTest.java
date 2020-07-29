@@ -11,17 +11,13 @@ import org.springframework.util.Assert;
 
 import java.util.Optional;
 
-//Uncomment this when configured URI and keys for Azure Cosmos DB in application.properties
-//to run the integration test
-//@SpringBootTest
+@SpringBootTest
 public class AzurecosmodbApplicationManualTest {
 
     @Autowired
     ProductRepository productRepository;
 
-    // Uncomment this when configured URI and keys for Azure Cosmos DB in application.properties
-    // to run the integration test
-    //@Test
+    @Test
     public void givenProductIsCreated_whenCallFindById_thenProductIsFound() {
         Product product = new Product();
         product.setProductid("1001");
