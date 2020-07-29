@@ -13,8 +13,12 @@ import java.util.Optional;
 @Component
 public class ProductService {
 
-    @Autowired
     private ProductRepository repository;
+    
+    @Autowired
+    public ProductService(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Product> findProductByName(String productName) {
         return repository.findByProductName(productName);
