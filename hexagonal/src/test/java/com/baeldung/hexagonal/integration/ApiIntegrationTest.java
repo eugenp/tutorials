@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {Application.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = { Application.class })
 public class ApiIntegrationTest extends Assert {
 
     private MockMvc mockMvc;
@@ -39,27 +39,33 @@ public class ApiIntegrationTest extends Assert {
     @MockBean
     private BookAuthorService bookAuthorService;
 
-
     @Before
     public void setUp() throws Exception {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext)
+            .build();
     }
 
     @Test
     public void should_return_200_ok_when_get_books() throws Exception {
-        List<BookDto> books=new ArrayList<>();
-        List<AuthorDto> authors=new ArrayList<>();
-        authors.add(AuthorDto.builder().name("Meysam").build());
-        books.add(BookDto.builder().name("Book1").authors(authors).build());
+        List<BookDto> books = new ArrayList<>();
+        List<AuthorDto> authors = new ArrayList<>();
+        authors.add(AuthorDto.builder()
+            .name("Meysam")
+            .build());
+        books.add(BookDto.builder()
+            .name("Book1")
+            .authors(authors)
+            .build());
 
         when(bookAuthorService.getAllBook()).thenReturn(books);
 
-        MvcResult mvcResult = mockMvc.perform(get("/books")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andReturn();
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("Meysam"));
+        MvcResult mvcResult = mockMvc.perform(get("/books").contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn();
+        assertTrue(mvcResult.getResponse()
+            .getContentAsString()
+            .contains("Meysam"));
     }
 
 }

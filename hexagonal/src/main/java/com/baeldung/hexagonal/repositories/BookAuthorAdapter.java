@@ -30,9 +30,9 @@ public class BookAuthorAdapter implements BookAuthorPersistencePort {
     @Override
     public List<BookDto> getAllBook() {
         return bookRepository.findAll()
-                .stream()
-                .map(this::mapBookToBookDto)
-                .collect(Collectors.toList());
+            .stream()
+            .map(this::mapBookToBookDto)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -44,41 +44,39 @@ public class BookAuthorAdapter implements BookAuthorPersistencePort {
     @Override
     public List<AuthorDto> getAllAuthor() {
         return authorRepository.findAll()
-                .stream()
-                .map(this::mapAuthorToAuthorDto)
-                .collect(Collectors.toList());
+            .stream()
+            .map(this::mapAuthorToAuthorDto)
+            .collect(Collectors.toList());
     }
 
     private BookDto mapBookToBookDto(Book book) {
         return BookDto.builder()
-                .name(book.name)
-                .authors(book.authors
-                                    .stream()
-                                    .map(this::mapAuthorToAuthorDto)
-                                    .collect(Collectors.toList()))
-                .build();
+            .name(book.name)
+            .authors(book.authors.stream()
+                .map(this::mapAuthorToAuthorDto)
+                .collect(Collectors.toList()))
+            .build();
     }
 
     private Book mapBookDtoToBook(BookDto bookDto) {
         return Book.builder()
-                .name(bookDto.name)
-                .authors(bookDto.authors
-                                    .stream()
-                                    .map(this::mapAuthorDtoToAuthor)
-                                    .collect(Collectors.toList()))
-                .build();
+            .name(bookDto.name)
+            .authors(bookDto.authors.stream()
+                .map(this::mapAuthorDtoToAuthor)
+                .collect(Collectors.toList()))
+            .build();
     }
 
     private AuthorDto mapAuthorToAuthorDto(Author author) {
         return AuthorDto.builder()
-                .name(author.name)
-                .build();
+            .name(author.name)
+            .build();
     }
 
     private Author mapAuthorDtoToAuthor(AuthorDto authorDto) {
         return Author.builder()
-                .name(authorDto.name)
-                .build();
+            .name(authorDto.name)
+            .build();
     }
 
 }

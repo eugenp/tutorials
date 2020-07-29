@@ -14,6 +14,7 @@ import java.util.List;
 public class Book {
 
     public String name;
+
     public List<Author> authors;
 
 }

@@ -26,15 +26,20 @@ class BookAuthorServiceTest {
     @BeforeEach
     void setUp() {
         initMocks(this);
-        bookAuthorService=new BookAuthorServiceImpl(bookAuthorPersistencePort);
+        bookAuthorService = new BookAuthorServiceImpl(bookAuthorPersistencePort);
     }
 
     @Test
     void testGetAllBook() {
         List<BookDto> books = new ArrayList<>();
         List<AuthorDto> authors = new ArrayList<>();
-        authors.add(AuthorDto.builder().name("Meysam").build());
-        books.add(BookDto.builder().name("Book1").authors(authors).build());
+        authors.add(AuthorDto.builder()
+            .name("Meysam")
+            .build());
+        books.add(BookDto.builder()
+            .name("Book1")
+            .authors(authors)
+            .build());
 
         when(bookAuthorPersistencePort.getAllBook()).thenReturn(books);
 
