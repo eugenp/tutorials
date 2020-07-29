@@ -25,8 +25,7 @@ public class ProductService {
     }
 
     public List<Product> getProductsOfCategory(String category) {
-        List<Product> products = repository.findByProductCategory(category);
-        return products;
+        return repository.findByProductCategory(category);
     }
 
     public void saveProduct(Product product) {
