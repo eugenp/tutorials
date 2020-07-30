@@ -11,7 +11,7 @@ public class PrimitiveTypeUtilTest {
     private PrimitiveTypeUtil primitiveTypeUtil;
     private boolean booleanVal = false;
     private Long longWrapper = 1L;
-    private String nonPrimitiveVal = "Test";
+    private String nonPrimitiveVal = "non primitive string";
 
     @Before
     public void setup() {
