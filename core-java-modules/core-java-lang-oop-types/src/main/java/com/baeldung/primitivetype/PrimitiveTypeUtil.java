@@ -23,7 +23,7 @@ public class PrimitiveTypeUtil {
         WRAPPER_TYPE_MAP.put(Void.class, void.class);
     }
 
-    public boolean isPrimitiveTypeByCommansLang(Object source) {
+    public boolean isPrimitiveTypeByCommonsLang(Object source) {
         return ClassUtils.isPrimitiveOrWrapper(source.getClass());
     }
 
