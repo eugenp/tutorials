@@ -17,6 +17,7 @@
     <modules>
         <module>spring-security-sso</module>
         <module>spring-security-stormpath</module>
+        <module>spring-security-okta</module>
     </modules>
 
 </project>
