@@ -6,7 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+import com.baeldung.reactive.cors.global.CorsGlobalConfigApplication;
+
+@SpringBootTest(classes = CorsGlobalConfigApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CorsOnGlobalConfigLiveTest {
 
     private static final String BASE_URL = "http://localhost:8082";
