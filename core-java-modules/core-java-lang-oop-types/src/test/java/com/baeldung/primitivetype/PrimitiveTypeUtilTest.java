@@ -26,7 +26,7 @@ public class PrimitiveTypeUtilTest {
     }
 
     @Test
-    public void givenObjectWhenCheckWithCommansLangShouldValidate() {
+    public void givenObjectWhenCheckWithCommonsLangShouldValidate() {
         assertTrue(primitiveTypeUtil.isPrimitiveTypeByCommansLang(booleanVal));
         assertTrue(primitiveTypeUtil.isPrimitiveTypeByCommansLang(longWrapper));
         assertFalse(primitiveTypeUtil.isPrimitiveTypeByCommansLang(nonPrimitiveVal));
