@@ -8,7 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@SpringBootTest
+import com.baeldung.reactive.serversentevents.server.ServerSSEApplication;
+
+@SpringBootTest(classes = ServerSSEApplication.class)
 @WithMockUser
 public class ServiceSentEventLiveTest {
 
