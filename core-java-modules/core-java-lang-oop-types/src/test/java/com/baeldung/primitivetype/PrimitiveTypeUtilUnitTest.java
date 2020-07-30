@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PrimitiveTypeUtilTest {
+public class PrimitiveTypeUtilUnitTest {
 
     private PrimitiveTypeUtil primitiveTypeUtil;
     private boolean booleanVal = false;
