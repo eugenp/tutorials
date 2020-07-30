@@ -11,10 +11,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class ScreenshotTest {
+public class ScreenshotUnitTest {
 
     @Test
-    public void takeScreenshotOfMainScreen() throws Exception {
+    public void givenMainScreen_whenTakeScreenshot_thenSaveToFile() throws Exception {
         Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         BufferedImage capture = new Robot().createScreenCapture(screenRect);
         File imageFile = File.createTempFile("single-screen", "bmp");
@@ -23,7 +23,7 @@ public class ScreenshotTest {
     }
 
     @Test
-    public void takeScreenshotOfAllScreens() throws Exception {
+    public void givenMultipleScreens_whenTakeScreenshot_thenSaveToFile() throws Exception {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] screens = ge.getScreenDevices();
         Rectangle allScreenBounds = new Rectangle();
@@ -39,7 +39,7 @@ public class ScreenshotTest {
     }
 
     @Test
-    public void makeScreenshot(Component component) throws Exception {
+    public void givenComponent_whenTakeScreenshot_thenSaveToFile(Component component) throws Exception {
         Rectangle componentRect = component.getBounds();
         BufferedImage bufferedImage = new BufferedImage(componentRect.width, componentRect.height, BufferedImage.TYPE_INT_ARGB);
         component.paint(bufferedImage.getGraphics());
