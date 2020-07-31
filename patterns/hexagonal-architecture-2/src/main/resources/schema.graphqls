@@ -1,0 +1,32 @@
+type Game {
+    id: Int!
+    moveHMAC: String!
+}
+
+type Result {
+    outcome: Outcome!
+    playerMove: Move!
+    computerMove: Move!
+    key: String!
+    message: String
+}
+
+enum Outcome {
+    WIN
+    LOSS
+    TIE
+}
+
+enum Move {
+    ROCK
+    PAPER
+    SCISSORS
+}
+
+type Query {
+}
+
+type Mutation {
+    startNewGame: Game!
+    playGame(id: Int!, move: Move!) : Result!
+}
