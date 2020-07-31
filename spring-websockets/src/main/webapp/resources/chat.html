@@ -19,7 +19,7 @@
 	        
 	        function connect() {
 	        	
-	            var socket = new SockJS('/spring-mvc-java/chat');
+	            var socket = new SockJS('/chat');
 	            stompClient = Stomp.over(socket);  
 	            
 	            stompClient.connect({}, function(frame) {
