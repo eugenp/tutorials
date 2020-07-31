@@ -59,7 +59,11 @@ class JacksonUnitTest {
         val aMap: Map<Int,String> =  mapper.readValue(json)
         
         assertEquals(aMap[1], "one")   
-        assertEquals(aMap[2], "two")   
+        assertEquals(aMap[2], "two")
+
+        val sameMap = mapper.readValue<Map<Int,String>>(json)
+        assertEquals(sameMap[1], "one")
+        assertEquals(sameMap[2], "two")
     }
     
     @Test
