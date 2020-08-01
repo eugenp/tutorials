@@ -30,8 +30,8 @@
         </repository>
         <repository>
             <id>spring-milestone</id>
-            <name>Spring Release Repository</name>
-            <url>https://repo.spring.io/release</url>
+            <name>Spring Milestone Repository</name>
+            <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
 
