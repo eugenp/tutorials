@@ -19,8 +19,8 @@ public class VectorOfBitsBenchmark {
     private boolean[] array;
     private BitSet bitSet;
 
-    @Param({"100", "1000", "5000", "50000", "100000", "1000000", "2000000", "3000000",
-             "5000000", "7000000", "10000000", "20000000", "30000000", "50000000", "70000000", "1000000000"})
+    @Param({"100", "1000", "5000", "50000", "100000", "1000000", "2000000", "3000000", "5000000",
+      "7000000", "10000000", "20000000", "30000000", "50000000", "70000000", "1000000000"})
     public int size;
 
     @Setup(Level.Trial)
@@ -62,7 +62,9 @@ public class VectorOfBitsBenchmark {
     public int cardinalityBoolArray() {
         int sum = 0;
         for (boolean b : array) {
-            if (b) sum++;
+            if (b) {
+                sum++;
+            }
         }
 
         return sum;

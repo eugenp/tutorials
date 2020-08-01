@@ -29,7 +29,9 @@ public class Plotter {
 
                 stream.write((i + "," + baSize + "," + bitSetSize + "\n"));
 
-                if (i % 10_000 == 0) stream.flush();
+                if (i % 10_000 == 0) {
+                    stream.flush();
+                }
             }
         }
     }
