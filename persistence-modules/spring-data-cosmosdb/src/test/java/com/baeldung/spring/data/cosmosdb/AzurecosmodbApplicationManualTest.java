@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
-import java.util.Optional;
-
 @SpringBootTest
 public class AzurecosmodbApplicationManualTest {
 
@@ -26,8 +24,9 @@ public class AzurecosmodbApplicationManualTest {
         product.setProductName("Blue Shirt");
 
         productRepository.save(product);
-        Optional<Product> retrievedProduct = productRepository.findById("1001", new PartitionKey("Shirt"));
-        Assert.notNull(retrievedProduct.get(), "Retrieved Product is Null");
+        Product retrievedProduct = productRepository.findById("1001", new PartitionKey("Shirt"))
+            .orElse(null);
+        Assert.notNull(retrievedProduct, "Retrieved Product is Null");
 
     }
 

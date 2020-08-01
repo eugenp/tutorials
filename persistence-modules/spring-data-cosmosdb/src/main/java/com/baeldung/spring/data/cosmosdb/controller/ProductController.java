@@ -50,9 +50,4 @@ public class ProductController {
         return productService.findProductByName(name);
     }
 
-    @GetMapping(value = "/category")
-    public List<Product> getByCategory(@RequestParam String category) {
-        return productService.getProductsOfCategory(category);
-    }
-
 }
