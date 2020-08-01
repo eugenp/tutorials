@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ProductService {
 
     private ProductRepository repository;
-    
+
     @Autowired
     public ProductService(ProductRepository repository) {
         this.repository = repository;
@@ -26,10 +26,6 @@ public class ProductService {
 
     public Optional<Product> findById(String productId, String category) {
         return repository.findById(productId, new PartitionKey(category));
-    }
-
-    public List<Product> getProductsOfCategory(String category) {
-        return repository.findByProductCategory(category);
     }
 
     public void saveProduct(Product product) {
