@@ -18,7 +18,7 @@ import static org.junit.Assert.fail;
 /**
  * This test expects the file target/test-classes/META-INF/BenchmarkList to be present.
  *
- * Before running the test case ensure that the it is present. 
+ * Before running the test ensure that the file is present. 
  * If not, please run mvn install on the module.
  * 
  */
