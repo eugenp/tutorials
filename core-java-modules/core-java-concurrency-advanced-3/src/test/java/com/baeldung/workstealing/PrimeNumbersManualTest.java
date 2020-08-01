@@ -15,7 +15,15 @@ import java.util.logging.Logger;
 
 import static org.junit.Assert.fail;
 
-public class PrimeNumbersUnitManualTest {
+/**
+ * This test expects the file target/test-classes/META-INF/BenchmarkList to be present.
+ *
+ * Before running the test ensure that the file is present. 
+ * If not, please run mvn install on the module.
+ * 
+ */
+
+public class PrimeNumbersManualTest {
 
     private static Logger logger = Logger.getAnonymousLogger();
 
