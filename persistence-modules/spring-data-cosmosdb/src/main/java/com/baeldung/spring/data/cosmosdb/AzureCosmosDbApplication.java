@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableCosmosRepositories(basePackageClasses = ProductRepository.class)
-public class AzurecosmodbApplication extends AbstractCosmosConfiguration {
+public class AzureCosmosDbApplication extends AbstractCosmosConfiguration {
 
     public static void main(String[] args) {
-        SpringApplication.run(AzurecosmodbApplication.class, args);
+        SpringApplication.run(AzureCosmosDbApplication.class, args);
     }
 
     @Value("${azure.cosmosdb.uri}")
