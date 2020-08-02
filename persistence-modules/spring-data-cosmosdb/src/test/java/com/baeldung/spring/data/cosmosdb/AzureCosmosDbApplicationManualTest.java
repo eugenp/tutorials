@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 @SpringBootTest
-public class AzurecosmodbApplicationManualTest {
+public class AzureCosmosDbApplicationManualTest {
 
     @Autowired
     ProductRepository productRepository;
