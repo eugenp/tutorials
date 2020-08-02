@@ -3,6 +3,7 @@ package com.baeldung.exceptions.errorhandling;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 public class BoxService {
@@ -61,6 +62,16 @@ public class BoxService {
             return Collections.emptyList();
         } else {
             return new ArrayList<Box>();
+        }
+    }
+
+    public Optional<Box> findBoxById(int boxId) {
+        boolean found = false;
+
+        if (!found) {
+            return Optional.empty();
+        } else {
+            return Optional.of(new Box());
         }
     }
 }
