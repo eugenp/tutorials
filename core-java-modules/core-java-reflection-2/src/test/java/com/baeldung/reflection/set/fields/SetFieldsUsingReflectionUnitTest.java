@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.reflection.access.privatefields.Person;
+
 public class SetFieldsUsingReflectionUnitTest {
 
     @Test
@@ -66,7 +68,7 @@ public class SetFieldsUsingReflectionUnitTest {
             .getDeclaredField("pinCode");
         pinCodeField.setAccessible(true);
 
-        Short pinCode = 4110;
+        short pinCode = 4110;
         pinCodeField.setInt(person, pinCode);
         Assertions.assertEquals(4110, person.getPinCode());
     }
