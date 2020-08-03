@@ -19,7 +19,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         byte age = 26;
         ageField.setByte(person, age);
-        Assertions.assertEquals(26, person.getAge());
+        Assertions.assertEquals(age, person.getAge());
 
         Field uidNumberField = person.getClass()
             .getDeclaredField("uidNumber");
@@ -27,7 +27,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         short uidNumber = 5555;
         uidNumberField.setShort(person, uidNumber);
-        Assertions.assertEquals(5555, person.getUidNumber());
+        Assertions.assertEquals(uidNumber, person.getUidNumber());
 
         Field pinCodeField = person.getClass()
             .getDeclaredField("pinCode");
@@ -35,7 +35,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         int pinCode = 411057;
         pinCodeField.setInt(person, pinCode);
-        Assertions.assertEquals(411057, person.getPinCode());
+        Assertions.assertEquals(pinCode, person.getPinCode());
 
         Field contactNumberField = person.getClass()
             .getDeclaredField("contactNumber");
@@ -43,7 +43,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         long contactNumber = 123456789L;
         contactNumberField.setLong(person, contactNumber);
-        Assertions.assertEquals(123456789L, person.getContactNumber());
+        Assertions.assertEquals(contactNumber, person.getContactNumber());
 
     }
 
@@ -57,7 +57,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         Integer pinCode = 411057;
         pinCodeField.setInt(person, pinCode);
-        Assertions.assertEquals(411057, person.getPinCode());
+        Assertions.assertEquals(pinCode, person.getPinCode());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         short pinCode = 4110;
         pinCodeField.setInt(person, pinCode);
-        Assertions.assertEquals(4110, person.getPinCode());
+        Assertions.assertEquals(pinCode, person.getPinCode());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         float height = 6.1242f;
         heightField.setFloat(person, height);
-        Assertions.assertEquals(6.1242f, person.getHeight());
+        Assertions.assertEquals(height, person.getHeight());
 
         Field weightField = person.getClass()
             .getDeclaredField("weight");
@@ -91,7 +91,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         double weight = 75.2564;
         weightField.setDouble(person, weight);
-        Assertions.assertEquals(75.2564, person.getWeight());
+        Assertions.assertEquals(weight, person.getWeight());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         char gender = 'M';
         genderField.setChar(person, gender);
-        Assertions.assertEquals('M', person.getGender());
+        Assertions.assertEquals(gender, person.getGender());
     }
 
     @Test
@@ -115,8 +115,7 @@ public class SetFieldsUsingReflectionUnitTest {
             .getDeclaredField("active");
         activeField.setAccessible(true);
 
-        boolean active = true;
-        activeField.setBoolean(person, active);
+        activeField.setBoolean(person, true);
         Assertions.assertTrue(person.isActive());
     }
 
@@ -130,7 +129,7 @@ public class SetFieldsUsingReflectionUnitTest {
 
         String name = "Umang Budhwar";
         nameField.set(person, name);
-        Assertions.assertEquals("Umang Budhwar", person.getName());
+        Assertions.assertEquals(name, person.getName());
     }
 
     @Test
