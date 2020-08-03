@@ -3,10 +3,6 @@ package com.baeldung.primitivetype;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.ClassUtils;
-
-import com.google.common.primitives.Primitives;
-
 public class PrimitiveTypeUtil {
 
     private static final Map<Class<?>, Class<?>> WRAPPER_TYPE_MAP;
@@ -23,16 +19,8 @@ public class PrimitiveTypeUtil {
         WRAPPER_TYPE_MAP.put(Void.class, void.class);
     }
 
-    public boolean isPrimitiveTypeByCommonsLang(Object source) {
-        return ClassUtils.isPrimitiveOrWrapper(source.getClass());
-    }
-
-    public boolean isPrimitiveTypeByGuava(Object source) {
-        return Primitives.isWrapperType(source.getClass());
-    }
-
-    public boolean isPrimitiveType(Object source) {
-        return WRAPPER_TYPE_MAP.containsKey(source.getClass());
+    public boolean isPrimitiveType(Class<?> sourceClass) {
+        return WRAPPER_TYPE_MAP.containsKey(sourceClass);
     }
 
 }
