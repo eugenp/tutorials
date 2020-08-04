@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-@PropertySource("classpath:/manytomany/test.properties")
+@PropertySource("manytomany/test.properties")
 public class ManyToManyTestConfiguration {
 
     @Bean
