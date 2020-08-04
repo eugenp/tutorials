@@ -9,7 +9,7 @@ import java.util.*;
 import static com.baeldung.algorithms.kthsmallest.KthSmallest.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class KthElementTest {
+public class KthSmallestUnitTest {
 
     @Nested
     class Exceptions {
