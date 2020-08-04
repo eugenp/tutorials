@@ -1,14 +1,15 @@
 package com.baeldung.hexagonalarchitecture2.core;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
 import com.baeldung.hexagonalarchitecture2.adapters.InMemoryGameRepositoryAdapter;
 import com.baeldung.hexagonalarchitecture2.core.domain.Game;
 import com.baeldung.hexagonalarchitecture2.core.domain.GameInfo;
 import com.baeldung.hexagonalarchitecture2.core.domain.Move;
 import com.baeldung.hexagonalarchitecture2.core.domain.Result;
 import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class RockPaperScissorsServiceTests {
 
@@ -26,9 +27,8 @@ public class RockPaperScissorsServiceTests {
     }
 
     @Test
-    public void playGame_GameDoesNotExist_throwException() throws Exception {
-        assertThrows(GameRepository.GameNotFoundException.class,
-                () -> rpsService.playGame(1234567890, Move.ROCK));
+    public void playGame_GameDoesNotExist_throwException() {
+        assertThrows(GameRepository.GameNotFoundException.class, () -> rpsService.playGame(1234567890, Move.ROCK));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class RockPaperScissorsServiceTests {
     }
 
     @Test
-    public void getOutcome_verifyRPSLogic(){
+    public void getOutcome_verifyRPSLogic() {
         // Ties
         assertEquals(Result.Outcome.TIE, rpsService.getOutcome(Move.ROCK, Move.ROCK));
         assertEquals(Result.Outcome.TIE, rpsService.getOutcome(Move.PAPER, Move.PAPER));

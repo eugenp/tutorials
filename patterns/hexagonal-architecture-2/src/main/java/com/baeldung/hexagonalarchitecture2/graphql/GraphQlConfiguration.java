@@ -1,8 +1,9 @@
 package com.baeldung.hexagonalarchitecture2.graphql;
 
-import com.baeldung.hexagonalarchitecture2.core.RockPaperScissorsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.baeldung.hexagonalarchitecture2.core.RockPaperScissorsService;
 
 @Configuration
 public class GraphQlConfiguration {

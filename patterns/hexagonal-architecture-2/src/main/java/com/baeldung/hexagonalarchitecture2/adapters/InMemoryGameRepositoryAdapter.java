@@ -1,12 +1,12 @@
 package com.baeldung.hexagonalarchitecture2.adapters;
 
-import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository;
-import com.baeldung.hexagonalarchitecture2.core.domain.GameInfo;
-import com.baeldung.hexagonalarchitecture2.core.domain.Move;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import com.baeldung.hexagonalarchitecture2.core.domain.GameInfo;
+import com.baeldung.hexagonalarchitecture2.core.domain.Move;
+import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository;
 
 public class InMemoryGameRepositoryAdapter implements GameRepository {
 

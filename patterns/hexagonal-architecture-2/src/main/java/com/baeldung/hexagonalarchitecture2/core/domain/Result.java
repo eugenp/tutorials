@@ -13,16 +13,16 @@ public class Result {
         this.computerMove = computerMove;
         this.key = key;
 
-        switch (outcome){
-            case WIN:
-                this.message = "Well played! Double or nothing?";
-                break;
-            case LOSS:
-                this.message = "I win! Check the HMAC if you don't believe me.";
-                break;
-            case TIE:
-                this.message = "Great minds think alike!";
-                break;
+        switch (outcome) {
+        case WIN:
+            this.message = "Well played! Double or nothing?";
+            break;
+        case LOSS:
+            this.message = "I win! Check the HMAC if you don't believe me.";
+            break;
+        case TIE:
+            this.message = "Great minds think alike!";
+            break;
         }
     }
 
@@ -66,9 +66,7 @@ public class Result {
         this.message = message;
     }
 
-    public enum Outcome{
-        WIN,
-        LOSS,
-        TIE;
+    public enum Outcome {
+        WIN, LOSS, TIE
     }
 }

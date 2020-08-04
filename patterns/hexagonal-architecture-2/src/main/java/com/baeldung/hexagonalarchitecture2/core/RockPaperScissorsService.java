@@ -1,15 +1,16 @@
 package com.baeldung.hexagonalarchitecture2.core;
 
-import com.baeldung.hexagonalarchitecture2.core.domain.Result.Outcome;
-import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository;
-import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository.GameNotFoundException;
+import java.util.Random;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
 import com.baeldung.hexagonalarchitecture2.core.domain.Game;
 import com.baeldung.hexagonalarchitecture2.core.domain.GameInfo;
 import com.baeldung.hexagonalarchitecture2.core.domain.Move;
 import com.baeldung.hexagonalarchitecture2.core.domain.Result;
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.util.Random;
+import com.baeldung.hexagonalarchitecture2.core.domain.Result.Outcome;
+import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository;
+import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository.GameNotFoundException;
 
 public class RockPaperScissorsService {
 
@@ -40,27 +41,22 @@ public class RockPaperScissorsService {
             return Outcome.TIE;
         }
 
-        if (playerMove == Move.ROCK){
-            if (computerMove == Move.PAPER){
+        if (playerMove == Move.ROCK) {
+            if (computerMove == Move.PAPER) {
                 return Outcome.LOSS;
-            }
-            else {
+            } else {
                 return Outcome.WIN;
             }
-        }
-        else if (playerMove == Move.PAPER){
-            if (computerMove == Move.SCISSORS){
+        } else if (playerMove == Move.PAPER) {
+            if (computerMove == Move.SCISSORS) {
                 return Outcome.LOSS;
-            }
-            else {
+            } else {
                 return Outcome.WIN;
             }
-        }
-        else { // SCISSORS
-            if (computerMove == Move.ROCK){
+        } else { // SCISSORS
+            if (computerMove == Move.ROCK) {
                 return Outcome.LOSS;
-            }
-            else {
+            } else {
                 return Outcome.WIN;
             }
         }

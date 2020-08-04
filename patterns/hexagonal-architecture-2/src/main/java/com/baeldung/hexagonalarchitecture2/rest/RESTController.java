@@ -1,13 +1,14 @@
 package com.baeldung.hexagonalarchitecture2.rest;
 
-import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository.GameNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 import com.baeldung.hexagonalarchitecture2.core.RockPaperScissorsService;
 import com.baeldung.hexagonalarchitecture2.core.domain.Game;
 import com.baeldung.hexagonalarchitecture2.core.domain.Move;
 import com.baeldung.hexagonalarchitecture2.core.domain.Result;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import com.baeldung.hexagonalarchitecture2.core.ports.GameRepository.GameNotFoundException;
 
 @RestController
 @RequestMapping("/rest")
