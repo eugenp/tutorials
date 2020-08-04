@@ -19,7 +19,7 @@
         <module>core-java-persistence</module>
         <module>deltaspike</module>
         <module>elasticsearch</module>
-        <module>flyway</module>
+        <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
