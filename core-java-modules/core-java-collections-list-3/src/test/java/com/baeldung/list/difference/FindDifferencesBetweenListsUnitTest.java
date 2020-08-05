@@ -52,7 +52,7 @@ public class FindDifferencesBetweenListsUnitTest {
     public void givenListsWithThreeDifferences_whenUsingGoogleGuava_thenDifferencesAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingGoogleGuava(listTwo, listOne);
         assertEquals(3, differences.size());
-        assertThat(differences).containsExactly("George", "Alan", "Daniel");
+        assertThat(differences).containsExactlyInAnyOrder("Daniel", "Alan", "George");
     }
 
     @Test
