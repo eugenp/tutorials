@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>optional-dependencies</artifactId>
+    <packaging>pom</packaging>
     <modules>
         <module>optional-project</module>
         <module>project-with-optionals</module>
