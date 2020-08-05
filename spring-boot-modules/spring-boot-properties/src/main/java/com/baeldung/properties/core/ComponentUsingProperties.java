@@ -21,6 +21,10 @@ public class ComponentUsingProperties implements InitializingBean {
 
     //
 
+    public String getSomeKey(){
+        return env.getProperty("key.something");
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("in afterPropertiesSet via @Value: " + injectedProperty);

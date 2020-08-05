@@ -52,3 +52,26 @@ environment: development
 servers:
     - www.abc.dev.com
     - www.xyz.dev.com
+---
+logging.level:
+  org.springframework: INFO
+spring:
+  profiles: staging
+  datasource:
+    password: ''
+    url: jdbc:h2:staging
+    username: SA
+---
+spring:
+  profiles: integration
+  datasource:
+    password: 'password'
+    url: jdbc:mysql://localhost:3306/db_integration
+    username: user
+  servers:
+    - ip: '127.0.0.1'
+      path: '/path1'
+    - ip: '127.0.0.2'
+      path: '/path2'
+    - ip: '127.0.0.3'
+    - path: '/path3'

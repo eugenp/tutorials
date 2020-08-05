@@ -21,6 +21,9 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class ConfigProperties {
 
+    String name;
+    String description;
+
     @Validated
     public static class Credentials {
 
