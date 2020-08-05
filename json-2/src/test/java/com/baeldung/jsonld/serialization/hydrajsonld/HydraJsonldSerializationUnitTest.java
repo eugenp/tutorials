@@ -23,9 +23,7 @@ public class HydraJsonldSerializationUnitTest {
         objectMapper.registerModule(getJacksonHydraSerializerModule());
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-        Person person = new Person();
-        person.id = "http://example.com/person/1234";
-        person.name = "Example Name";
+        Person person = new Person("http://example.com/person/1234", "Example Name");
 
         String personJsonLd = objectMapper.writeValueAsString(person);
 
