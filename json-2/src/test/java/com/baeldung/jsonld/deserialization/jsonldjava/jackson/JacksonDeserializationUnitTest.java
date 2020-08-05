@@ -42,14 +42,10 @@ public class JacksonDeserializationUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         Person person = objectMapper.readValue(compactContent, Person.class);
 
-        Person expectedPerson = new Person();
-        expectedPerson.id = "http://example.com/person/1234";
-        expectedPerson.name = "Example Name";
-        expectedPerson.knows = new Link();
-        expectedPerson.knows.id = "http://example.com/person/2345";
+        Person expectedPerson = new Person("http://example.com/person/1234", "Example Name", new Link("http://example.com/person/2345"));
 
-        assertEquals(expectedPerson.id, person.id);
-        assertEquals(expectedPerson.name, person.name);
-        assertEquals(expectedPerson.knows.id, person.knows.id);
+        assertEquals(expectedPerson.getId(), person.getId());
+        assertEquals(expectedPerson.getName(), person.getName());
+        assertEquals(expectedPerson.getKnows().getId(), person.getKnows().getId());
     }
 }

@@ -15,7 +15,7 @@ public class JacksonJsonLdSerializationUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JsonldModule());
 
-        Person person = new Person();
+        Person person = new Person("http://example.com/person/1234", "Example Name");
         String personJsonLd = objectMapper.writeValueAsString(person);
 
         assertEquals("{"
