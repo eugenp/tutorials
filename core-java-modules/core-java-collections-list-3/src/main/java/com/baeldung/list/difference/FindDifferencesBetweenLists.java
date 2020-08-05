@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 public class FindDifferencesBetweenLists {
 
     public static <T> List<T> differencesUsingPlainJavaCollections(List<T> listOne, List<T> listTwo) {
-        Set<T> differences = new HashSet<>(listOne);
+        List<T> differences = new ArrayList<>(listOne);
         differences.removeAll(listTwo);
-        return new ArrayList<>(differences);
+        return differences;
     }
 
     public static <T> List<T> differencesUsingPlainJavaStream(List<T> listOne, List<T> listTwo) {
@@ -22,7 +22,7 @@ public class FindDifferencesBetweenLists {
     }
 
     public static <T> List<T> differencesUsingApacheCommonsCollections(List<T> listOne, List<T> listTwo) {
-        return new ArrayList<>(new HashSet<>(CollectionUtils.removeAll(listOne, listTwo)));
+        return new ArrayList<>((CollectionUtils.removeAll(listOne, listTwo)));
     }
 
     public static <T> List<T> differencesUsingGoogleGuava(List<T> listOne, List<T> listTwo) {

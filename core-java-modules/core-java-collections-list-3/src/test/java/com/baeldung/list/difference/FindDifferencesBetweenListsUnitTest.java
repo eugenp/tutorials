@@ -24,7 +24,7 @@ public class FindDifferencesBetweenListsUnitTest {
     public void givenListsWithThreeDifferences_whenUsingPlainJavaImpl_thenDifferencesAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingPlainJavaCollections(listTwo, listOne);
         assertEquals(3, differences.size());
-        assertThat(differences).containsExactly("George", "Alan", "Daniel");
+        assertThat(differences).containsExactly("Daniel", "Alan", "George");
     }
 
     @Test
@@ -66,7 +66,7 @@ public class FindDifferencesBetweenListsUnitTest {
     public void givenListsWithThreeDifferences_whenUsingApacheCommons_thenDifferencesAreFound() {
         List<String> differences = FindDifferencesBetweenLists.differencesUsingApacheCommonsCollections(listTwo, listOne);
         assertEquals(3, differences.size());
-        assertThat(differences).containsExactly("George", "Alan", "Daniel");
+        assertThat(differences).containsExactly("Daniel", "Alan", "George");
     }
 
     @Test
