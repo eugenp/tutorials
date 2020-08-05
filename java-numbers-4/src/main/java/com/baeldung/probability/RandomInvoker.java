@@ -8,12 +8,12 @@ import java.util.function.Supplier;
 public class RandomInvoker {
     private final Lazy<SplittableRandom> random = Lazy.of(SplittableRandom::new);
 
-    public <T> T withProbability(Supplier<T> supplier1, Supplier<T> supplier2, int probability) {
+    public <T> T withProbability(Supplier<T> positiveCase, Supplier<T> negativeCase, int probability) {
         SplittableRandom random = this.random.get();
         if (random.nextInt(1, 101) <= probability) {
-            return supplier1.get();
+            return positiveCase.get();
         } else {
-            return supplier2.get();
+            return negativeCase.get();
         }
     }
 }
