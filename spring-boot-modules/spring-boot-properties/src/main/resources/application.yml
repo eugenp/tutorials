@@ -2,7 +2,8 @@ spring:
   profiles:
     active:
     - test
-
+logging.level:
+  org.springframework: INFO
 ---
 
 spring:
@@ -53,8 +54,6 @@ servers:
     - www.abc.dev.com
     - www.xyz.dev.com
 ---
-logging.level:
-  org.springframework: INFO
 spring:
   profiles: staging
   datasource:
