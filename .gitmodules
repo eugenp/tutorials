@@ -1,0 +1,3 @@
+[submodule "hexa-arch"]
+	path = hexa-arch
+	url = https://github.com/kaushikrk/tutorials.git
