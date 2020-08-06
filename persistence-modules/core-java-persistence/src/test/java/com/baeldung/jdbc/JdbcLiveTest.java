@@ -1,25 +1,17 @@
 package com.baeldung.jdbc;
 
-import static org.junit.Assert.*;
-
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
-
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class JdbcLiveTest {
 
@@ -33,10 +25,11 @@ public class JdbcLiveTest {
 
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myDb?noAccessToProcedureBodies=true", "user1", "pass");
 
-        Statement stmt = con.createStatement();
+        try (Statement stmt = con.createStatement()) {
 
-        String tableSql = "CREATE TABLE IF NOT EXISTS employees (emp_id int PRIMARY KEY AUTO_INCREMENT, name varchar(30), position varchar(30), salary double)";
-        stmt.execute(tableSql);
+            String tableSql = "CREATE TABLE IF NOT EXISTS employees (emp_id int PRIMARY KEY AUTO_INCREMENT, name varchar(30), position varchar(30), salary double)";
+            stmt.execute(tableSql);
+        }
 
     }
 
@@ -101,10 +94,8 @@ public class JdbcLiveTest {
 
     @Test
     public void whenCallProcedure_thenCorrect() {
-
-        try {
-            String preparedSql = "{call insertEmployee(?,?,?,?)}";
-            CallableStatement cstmt = con.prepareCall(preparedSql);
+        String preparedSql = "{call insertEmployee(?,?,?,?)}";
+        try(CallableStatement cstmt = con.prepareCall(preparedSql)) {
             cstmt.setString(2, "ana");
             cstmt.setString(3, "tester");
             cstmt.setDouble(4, 2000);
@@ -121,9 +112,10 @@ public class JdbcLiveTest {
     public void whenReadMetadata_thenCorrect() throws SQLException {
 
         DatabaseMetaData dbmd = con.getMetaData();
-        ResultSet tablesResultSet = dbmd.getTables(null, null, "%", null);
-        while (tablesResultSet.next()) {
-            LOG.info(tablesResultSet.getString("TABLE_NAME"));
+        try (ResultSet tablesResultSet = dbmd.getTables(null, null, "%", null)) {
+            while (tablesResultSet.next()) {
+                LOG.info(tablesResultSet.getString("TABLE_NAME"));
+            }
         }
 
         String selectSql = "SELECT * FROM employees";
