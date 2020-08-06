@@ -19,8 +19,8 @@ public class PrimitiveTypeUtil {
         WRAPPER_TYPE_MAP.put(Void.class, void.class);
     }
 
-    public boolean isPrimitiveType(Class<?> sourceClass) {
-        return WRAPPER_TYPE_MAP.containsKey(sourceClass);
+    public static boolean isPrimitiveType(Object source) {
+        return WRAPPER_TYPE_MAP.containsKey(source.getClass());
     }
 
 }
