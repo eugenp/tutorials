@@ -5,7 +5,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.sql.*;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -95,7 +104,7 @@ public class JdbcLiveTest {
     @Test
     public void whenCallProcedure_thenCorrect() {
         String preparedSql = "{call insertEmployee(?,?,?,?)}";
-        try(CallableStatement cstmt = con.prepareCall(preparedSql)) {
+        try (CallableStatement cstmt = con.prepareCall(preparedSql)) {
             cstmt.setString(2, "ana");
             cstmt.setString(3, "tester");
             cstmt.setDouble(4, 2000);
