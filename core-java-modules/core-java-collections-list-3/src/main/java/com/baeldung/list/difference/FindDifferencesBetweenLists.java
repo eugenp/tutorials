@@ -17,7 +17,6 @@ public class FindDifferencesBetweenLists {
     public static <T> List<T> differencesUsingPlainJavaStream(List<T> listOne, List<T> listTwo) {
         return listOne.stream()
                 .filter(element -> !listTwo.contains(element))
-                .distinct()
                 .collect(Collectors.toList());
     }
 
