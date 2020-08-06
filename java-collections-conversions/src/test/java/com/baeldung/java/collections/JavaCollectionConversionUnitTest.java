@@ -32,7 +32,7 @@ public class JavaCollectionConversionUnitTest {
     @Test
     public final void givenUsingCoreJava_whenListConvertedToArray_thenCorrect() {
         final List<Integer> sourceList = Arrays.asList(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceList.toArray(new Integer[sourceList.size()]);
+        final Integer[] targetArray = sourceList.toArray(new Integer[0]);
     }
 
     @Test
