@@ -13,7 +13,20 @@ import ioinformarics.oss.jackson.module.jsonld.annotation.JsonldType;
 @JsonldLink(rel = "s:knows", name = "knows", href = "http://example.com/person/2345")
 public class Person {
     @JsonldId
-    public String id = "http://example.com/person/1234";
+    private String id;
     @JsonldProperty("s:name")
-    public String name = "Example Name";
+    private String name;
+
+    public Person(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
