@@ -59,12 +59,16 @@
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
         <module>spring-data-geode</module>
+
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-enterprise</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-repo</module>
+
+        <module>spring-data-jdbc</module>
+
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
