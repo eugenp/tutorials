@@ -55,7 +55,7 @@ public class FindDifferencesBetweenListsUnitTest {
     public void givenListsWithTwoDifferences_whenUsingGoogleGuava_thenDifferencesAreFound() {
         List<String> differences = new ArrayList<>(Sets.difference(Sets.newHashSet(listOne), Sets.newHashSet(listTwo)));
         assertEquals(2, differences.size());
-        assertThat(differences).containsExactly("Tom", "John");
+        assertThat(differences).containsExactlyInAnyOrder("Tom", "John");
     }
 
     @Test
