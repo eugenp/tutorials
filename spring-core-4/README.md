@@ -9,7 +9,6 @@ This module contains articles about core Spring functionality
 - [Spring @Import Annotation](https://www.baeldung.com/spring-import-annotation)
 - [Spring BeanPostProcessor](https://www.baeldung.com/spring-beanpostprocessor)
 - [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)
-- [Running Setup Data on Startup in Spring](https://www.baeldung.com/running-setup-logic-on-startup-in-spring)
 - [Constructor Injection in Spring with Lombok](https://www.baeldung.com/spring-injection-lombok)
 - [The Spring ApplicationContext](https://www.baeldung.com/spring-application-context)
 - More articles: [[<-- prev]](/spring-core-3)
