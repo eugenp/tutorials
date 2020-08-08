@@ -11,13 +11,12 @@ public class DatabaseConfig {
 
     private Connection connection;
 
-    public DatabaseConfig(){
+    public DatabaseConfig() {
         try {
             Class.forName("org.h2.Driver");
             String url = "jdbc:h2:mem:testdb";
             connection = DriverManager.getConnection(url, "sa", "");
-        }
-        catch (ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             LOG.error(e);
         }
     }
@@ -26,12 +25,12 @@ public class DatabaseConfig {
         return connection;
     }
 
-    public void init(){
+    public void init() {
         createTables();
         createViews();
     }
 
-    private void createTables(){
+    private void createTables() {
         try {
             connection.createStatement().executeUpdate("create table CUSTOMER (ID int primary key auto_increment, NAME VARCHAR(45))");
             connection.createStatement().executeUpdate("create table CUST_ADDRESS (ID VARCHAR(36), CUST_ID int, ADDRESS VARCHAR(45), FOREIGN KEY (CUST_ID) REFERENCES CUSTOMER(ID))");
@@ -40,7 +39,7 @@ public class DatabaseConfig {
         }
     }
 
-    private void createViews(){
+    private void createViews() {
         try {
             connection.createStatement().executeUpdate("CREATE VIEW CUSTOMER_VIEW AS SELECT * FROM CUSTOMER");
         } catch (SQLException e) {

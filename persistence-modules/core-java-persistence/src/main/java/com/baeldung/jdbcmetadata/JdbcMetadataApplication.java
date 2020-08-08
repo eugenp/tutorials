@@ -23,7 +23,7 @@ public class JdbcMetadataApplication {
             metadataExtractor.extractDatabaseInfo();
             metadataExtractor.extractUserName();
             metadataExtractor.extractSupportedFeatures();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             LOG.error("Error while executing SQL statements", e);
         }
     }
