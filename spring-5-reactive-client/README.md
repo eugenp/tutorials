@@ -10,3 +10,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Simultaneous Spring WebClient Calls](https://www.baeldung.com/spring-webclient-simultaneous-calls)
 - [Logging Spring WebClient Calls](https://www.baeldung.com/spring-log-webclient-calls)
 - [Mocking a WebClient in Spring](https://www.baeldung.com/spring-mocking-webclient)
+- [Spring WebClient Filters](https://www.baeldung.com/spring-webclient-filters)

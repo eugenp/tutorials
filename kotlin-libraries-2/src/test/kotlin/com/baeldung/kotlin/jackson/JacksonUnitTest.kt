@@ -59,7 +59,11 @@ class JacksonUnitTest {
         val aMap: Map<Int,String> =  mapper.readValue(json)
         
         assertEquals(aMap[1], "one")   
-        assertEquals(aMap[2], "two")   
+        assertEquals(aMap[2], "two")
+
+        val sameMap = mapper.readValue<Map<Int,String>>(json)
+        assertEquals(sameMap[1], "one")
+        assertEquals(sameMap[2], "two")
     }
     
     @Test
@@ -81,7 +85,11 @@ class JacksonUnitTest {
         val movie1 =  Movie("Endgame", "Marvel", 9.2f)
         val movie2 =  Movie("Shazam", "Warner Bros", 7.6f)
         assertTrue(movieList.contains(movie1))                    
-        assertTrue(movieList.contains(movie2))                    
+        assertTrue(movieList.contains(movie2))
+
+        val sameList = mapper.readValue<List<Movie>>(json)
+        assertTrue(sameList.contains(movie1))
+        assertTrue(sameList.contains(movie2))
     }
     
     @Test

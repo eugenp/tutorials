@@ -343,18 +343,18 @@
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-                
-                <module>apache-cxf</module>  
-                <module>apache-libraries</module>              
-                <module>apache-olingo/olingo2</module>                
-                <module>apache-poi</module>                
+
+                <module>apache-cxf</module>
+                <module>apache-libraries</module>
+                <module>apache-olingo/olingo2</module>
+                <module>apache-poi</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>             
+                <module>apache-shiro</module>
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>             
+                <module>apache-velocity</module>
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -443,7 +443,8 @@
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
-		<module>java-numbers-3</module>
+                <module>java-numbers-3</module>
+                <module>java-numbers-4</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -856,18 +857,18 @@
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-              
-                <module>apache-cxf</module> 
-                <module>apache-libraries</module>                             
-                <module>apache-olingo/olingo2</module>                
-                <module>apache-poi</module>                
+
+                <module>apache-cxf</module>
+                <module>apache-libraries</module>
+                <module>apache-olingo/olingo2</module>
+                <module>apache-poi</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>                
+                <module>apache-shiro</module>
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>                
+                <module>apache-velocity</module>
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -956,6 +957,7 @@
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
+                <module>java-numbers-4</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
