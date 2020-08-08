@@ -72,7 +72,7 @@ public class JavaCollectionConversionUnitTest {
     @Test
     public final void givenUsingCoreJava_whenSetConvertedToArray_thenCorrect() {
         final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceSet.toArray(new Integer[sourceSet.size()]);
+        final Integer[] targetArray = sourceSet.toArray(new Integer[0]);
     }
 
     @Test
@@ -95,15 +95,9 @@ public class JavaCollectionConversionUnitTest {
     }
 
     @Test
-    public final void givenUsingCommonsCollections_whenSetConvertedToArray_thenCorrect() {
-        final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceSet.toArray(new Integer[sourceSet.size()]);
-    }
-
-    @Test
     public final void givenUsingCommonsCollections_whenSetConvertedToArrayOfPrimitives_thenCorrect() {
         final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceSet.toArray(new Integer[sourceSet.size()]);
+        final Integer[] targetArray = sourceSet.toArray(new Integer[0]);
         final int[] primitiveTargetArray = ArrayUtils.toPrimitive(targetArray);
     }
 
