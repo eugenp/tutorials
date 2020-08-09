@@ -26,8 +26,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
-    </properties>
-
 </project>
