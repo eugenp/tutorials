@@ -31,6 +31,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,6 +83,7 @@
         <!-- plugins -->
         <thin.version>1.0.22.RELEASE</thin.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <aspectjweaver.version>1.9.1</aspectjweaver.version>
     </properties>
 
 </project>
