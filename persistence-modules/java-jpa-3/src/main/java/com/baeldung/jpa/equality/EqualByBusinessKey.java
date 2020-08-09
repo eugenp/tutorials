@@ -37,15 +37,17 @@ public class EqualByBusinessKey {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (obj instanceof EqualByBusinessKey)
-            if (((EqualByBusinessKey) obj).getEmail() == getEmail())
+        }
+        if (obj instanceof EqualByBusinessKey) {
+            if (((EqualByBusinessKey) obj).getEmail() == getEmail()) {
                 return true;
-
+            }
+        }
         return false;
     }
-
 }
