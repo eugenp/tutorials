@@ -65,44 +65,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!--
-            JMH version to use with this project.
-          -->
-        <jmh.version>1.21</jmh.version>
-        <orika.version>1.5.2</orika.version>
-        <dozer.version>5.5.1</dozer.version>
-        <dozer-jdk8-support.version>1.0.2</dozer-jdk8-support.version>
-        <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
-        <modelmapper.version>1.1.0</modelmapper.version>
-        <jmapper.version>1.6.0.1</jmapper.version>
-        <java.version>1.8</java.version>
-        <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
-        <jmh-core.version>1.21</jmh-core.version>
-        <jmh-generator.version>1.21</jmh-generator.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-
-        <!--
-            Java source/target to use for compilation.
-          -->
-        <javac.target>1.8</javac.target>
-
-        <!--
-            Name of the benchmark Uber-JAR to generate.
-          -->
-        <uberjar.name>benchmarks</uberjar.name>
-        <compiler.plugin.version>3.1</compiler.plugin.version>
-        <shade.plugin.version>2.2</shade.plugin.version>
-        <install.version>2.5.1</install.version>
-        <jar.plugin.version>2.4</jar.plugin.version>
-        <javadoc.plugin.version>2.9.1</javadoc.plugin.version>
-        <resources.plugin.version>2.6</resources.plugin.version>
-        <site.plugin.version>3.3</site.plugin.version>
-        <source.plugin.version>2.2.1</source.plugin.version>
-        <surefire.plugin.version>2.17</surefire.plugin.version>
-    </properties>
 
     <build>
         <plugins>
@@ -158,6 +120,18 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.performancetests.MappingFrameworksPerformance</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -200,5 +174,42 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <!--
+            JMH version to use with this project.
+          -->
+        <jmh.version>1.21</jmh.version>
+        <orika.version>1.5.2</orika.version>
+        <dozer.version>5.5.1</dozer.version>
+        <dozer-jdk8-support.version>1.0.2</dozer-jdk8-support.version>
+        <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
+        <modelmapper.version>1.1.0</modelmapper.version>
+        <jmapper.version>1.6.0.1</jmapper.version>
+        <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
+        <jmh-core.version>1.21</jmh-core.version>
+        <jmh-generator.version>1.21</jmh-generator.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+
+        <!--
+            Java source/target to use for compilation.
+          -->
+        <javac.target>1.8</javac.target>
+
+        <!--
+            Name of the benchmark Uber-JAR to generate.
+          -->
+        <uberjar.name>benchmarks</uberjar.name>
+        <compiler.plugin.version>3.1</compiler.plugin.version>
+        <shade.plugin.version>2.2</shade.plugin.version>
+        <install.version>2.5.1</install.version>
+        <jar.plugin.version>2.4</jar.plugin.version>
+        <javadoc.plugin.version>2.9.1</javadoc.plugin.version>
+        <resources.plugin.version>2.6</resources.plugin.version>
+        <site.plugin.version>3.3</site.plugin.version>
+        <source.plugin.version>2.2.1</source.plugin.version>
+        <surefire.plugin.version>2.17</surefire.plugin.version>
+    </properties>
 
 </project>
