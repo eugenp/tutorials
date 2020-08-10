@@ -1,13 +1,13 @@
 package com.baeldung.persistence.dao;
 
-import static com.baeldung.persistence.dao.BookSpecifications.hasAuthor;
-import static com.baeldung.persistence.dao.BookSpecifications.titleContains;
-import static org.springframework.data.jpa.domain.Specifications.where;
+import com.baeldung.persistence.model.Book;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import com.baeldung.persistence.model.Book;
-import org.springframework.stereotype.Service;
+import static com.baeldung.persistence.dao.BookSpecifications.hasAuthor;
+import static com.baeldung.persistence.dao.BookSpecifications.titleContains;
+import static org.springframework.data.jpa.domain.Specification.where;
 
 @Service
 public class BookService {
