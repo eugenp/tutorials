@@ -11,3 +11,4 @@ This module contains articles about searching algorithms.
 - [Monte Carlo Tree Search for Tic-Tac-Toe Game](https://www.baeldung.com/java-monte-carlo-tree-search)
 - [Range Search Algorithm in Java](https://www.baeldung.com/java-range-search)
 - [Fast Pattern Matching of Strings Using Suffix Tree](https://www.baeldung.com/java-pattern-matching-suffix-tree)
+- [Topological Sort of Directed Acyclic Graph](https://www.baeldung.com/cs/dag-topological-sort)
