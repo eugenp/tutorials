@@ -4,4 +4,4 @@ This module contains services for article about reactive systems in Java. Please
 
 ### Relevant Articles
 
-- [Reactive Systems in Java](https://www.baeldung.com/)
+- [Reactive Systems in Java](https://www.baeldung.com/java-reactive-systems)
