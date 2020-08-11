@@ -105,32 +105,22 @@ public class KthSmallest {
 
     public static int getKthElementMerge(int[] list1, int[] list2, int k) {
 
-        int length1 = list1.length, length2 = list2.length;
-        int[] combinedArray = new int[length1 + length2];
+        int i1 = 0, i2 = 0;
 
-        int i1 = 0, i2 = 0, iCombined = 0;
-
-        while(i1 < list1.length && i2 < list2.length && iCombined < k) {
+        while(i1 < list1.length && i2 < list2.length && (i1 + i2) < k) {
             if(list1[i1] < list2[i2]) {
-                combinedArray[iCombined] = list1[i1];
                 i1++;
             } else {
-                combinedArray[iCombined] = list2[i2];
                 i2++;
             }
-            iCombined++;
         }
 
-        for(int i = i1; i < list1.length && iCombined < k; i++) {
-            combinedArray[iCombined] = list1[i];
-            iCombined++;
+        if((i1 + i2) < k) {
+            return i1 < list1.length ? list1[k - i2 - 1] : list2[k - i1 - 1];
+        } else if(i1 > 0 && i2 > 0) {
+            return Math.max(list1[i1-1], list2[i2-1]);
+        } else {
+            return i1 == 0 ? list2[i2-1] : list1[i1-1];
         }
-
-        for(int i = i2; i < list2.length && iCombined < k; i++) {
-            combinedArray[iCombined] = list2[i];
-            iCombined++;
-        }
-
-        return combinedArray[k-1];
     }
 }
