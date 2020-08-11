@@ -37,7 +37,7 @@ public class Human {
 
     public static int compareByNameThenAge(final Human lhs, final Human rhs) {
         if (lhs.name.equals(rhs.name)) {
-            return lhs.age - rhs.age;
+            return Integer.compare(lhs.age, rhs.age);
         } else {
             return lhs.name.compareTo(rhs.name);
         }
