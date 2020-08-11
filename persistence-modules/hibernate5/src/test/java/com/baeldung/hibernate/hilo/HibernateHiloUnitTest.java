@@ -60,7 +60,7 @@ public class HibernateHiloUnitTest {
         Properties properties = getProperties();
 
         return new StandardServiceRegistryBuilder().applySettings(properties)
-                .build();
+          .build();
     }
 
     private static Properties getProperties() throws IOException {
@@ -76,8 +76,8 @@ public class HibernateHiloUnitTest {
 
     private static URL getPropertiesURL() {
         return Thread.currentThread()
-                .getContextClassLoader()
-                .getResource("hibernate-hilo.properties");
+          .getContextClassLoader()
+          .getResource("hibernate-hilo.properties");
     }
 
     @Test
