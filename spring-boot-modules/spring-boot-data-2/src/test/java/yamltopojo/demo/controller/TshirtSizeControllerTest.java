@@ -20,14 +20,14 @@ class TshirtSizeControllerTest {
     private TshirtSizeController tested;
 
     @Test
-    void convertSize() {
+    void givenSizeConverter_whenLabelIsSandCountryCodeIsFr_thenReturnCorrectSize() {
 
         // Given
         String label = "S";
         String countryCode = "fr";
         int result = 36;
 
-        //
+        // When
         when(service.convertSize(label, countryCode)).thenReturn(result);
         int actual = tested.convertSize(label, countryCode);
 
