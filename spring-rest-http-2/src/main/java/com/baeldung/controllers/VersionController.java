@@ -8,33 +8,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VersionController {
 
-	private final Environment environment;
+    private final Environment environment;
 
-	public VersionController(Environment environment) {
-		this.environment = environment;
-	}
+    public VersionController(Environment environment) {
+        this.environment = environment;
+    }
 
-	@ApiOperation(value = "Get the currently deployed API version and active Spring profiles")
-	@GetMapping("/api/version")
-	public Version getVersion() {
-		return new Version("1.0", environment.getActiveProfiles());
-	}
+    @ApiOperation(value = "Get the currently deployed API version and active Spring profiles")
+    @GetMapping("/api/version")
+    public Version getVersion() {
+        return new Version("1.0", environment.getActiveProfiles());
+    }
 
-	private static class Version {
-		private final String version;
-		private String[] activeProfiles;
+    private static class Version {
+        private final String version;
+        private String[] activeProfiles;
 
-		private Version(String version, String[] activeProfiles) {
-			this.version = version;
-			this.activeProfiles = activeProfiles;
-		}
+        private Version(String version, String[] activeProfiles) {
+            this.version = version;
+            this.activeProfiles = activeProfiles;
+        }
 
-		public String getVersion() {
-			return version;
-		}
+        public String getVersion() {
+            return version;
+        }
 
-		public String[] getActiveProfiles() {
-			return activeProfiles;
-		}
-	}
+        public String[] getActiveProfiles() {
+            return activeProfiles;
+        }
+    }
 }
