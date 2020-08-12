@@ -1,14 +1,8 @@
 package com.baeldung.exceptions.nosuchmethoderror;
-
 public class SpecialToday {
-	private static String desert = "Chocolate Cake";
-	private static String starter = "Caesar Salad";
+    private static String desert = "Chocolate Cake";
 
-	public static String getDesert() {
-		return desert;
-	}
-
-	public static String getStarter() {
-		return starter;
-	}
+    public static String getDesert() {
+        return desert;
+    }
 }
