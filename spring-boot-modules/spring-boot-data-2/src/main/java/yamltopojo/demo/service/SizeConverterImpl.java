@@ -7,7 +7,7 @@ import yamltopojo.demo.config.TshirtSizeConfig;
 @Service
 public class SizeConverterImpl implements SizeConverterService {
 
-    private TshirtSizeConfig tshirtSizeConfig;
+    private final TshirtSizeConfig tshirtSizeConfig;
 
     public SizeConverterImpl(TshirtSizeConfig tshirtSizeConfig) {
         this.tshirtSizeConfig = tshirtSizeConfig;
@@ -17,6 +17,6 @@ public class SizeConverterImpl implements SizeConverterService {
         if(countryCode == null) {
             return tshirtSizeConfig.getSimpleMapping().get(label);
         }
-        return tshirtSizeConfig.getComplexMapping().get(label).get(countryCode);
+        return tshirtSizeConfig.getComplexMapping().get(label).get(countryCode.toLowerCase());
     }
 }

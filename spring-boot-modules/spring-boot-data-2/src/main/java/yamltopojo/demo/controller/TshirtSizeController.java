@@ -7,7 +7,7 @@ import yamltopojo.demo.service.SizeConverterService;
 @RequestMapping(value = "/")
 public class TshirtSizeController {
 
-    private SizeConverterService service;
+    private final SizeConverterService service;
 
     public TshirtSizeController(SizeConverterService service) {
         this.service = service;
