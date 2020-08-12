@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class TshirtSizeControllerTest {
+class TshirtSizeControllerUnitTest {
 
     @Mock
     private SizeConverterService service;
@@ -20,7 +20,7 @@ class TshirtSizeControllerTest {
     private TshirtSizeController tested;
 
     @Test
-    void givenSizeConverter_whenLabelIsSandCountryCodeIsFr_thenReturnCorrectSize() {
+    void whenConvertSize_thenOK() {
 
         // Given
         String label = "S";
