@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung.jhipster5</groupId>
-    <artifactId>bookstore</artifactId>
+    <artifactId>bookstore-monolith</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Bookstore</name>
