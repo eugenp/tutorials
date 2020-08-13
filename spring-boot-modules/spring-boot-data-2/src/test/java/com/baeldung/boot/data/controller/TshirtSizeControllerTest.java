@@ -1,11 +1,11 @@
-package yamltopojo.demo.controller;
+package com.baeldung.boot.data.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import yamltopojo.demo.service.SizeConverterService;
+import com.baeldung.boot.data.service.SizeConverterService;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;

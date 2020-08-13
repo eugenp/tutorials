@@ -1,7 +1,7 @@
-package yamltopojo.demo.service;
+package com.baeldung.boot.data.service;
 
 import org.springframework.stereotype.Service;
-import yamltopojo.demo.config.TshirtSizeConfig;
+import com.baeldung.boot.data.config.TshirtSizeConfig;
 
 
 @Service
