@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class MainMenuUnitTest {
 
 	@Test
-	void testgetSpecials() {
+	void whenGetSpecials_thenNotNull() {
 		assertNotNull(MainMenu.getSpecials());
 	} 
  
