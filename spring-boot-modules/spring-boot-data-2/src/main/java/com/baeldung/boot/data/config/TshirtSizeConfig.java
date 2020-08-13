@@ -1,4 +1,4 @@
-package yamltopojo.demo.config;
+package com.baeldung.boot.data.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

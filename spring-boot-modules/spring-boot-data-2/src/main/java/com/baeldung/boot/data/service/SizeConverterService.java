@@ -1,4 +1,4 @@
-package yamltopojo.demo.service;
+package com.baeldung.boot.data.service;
 
 
 public interface SizeConverterService {

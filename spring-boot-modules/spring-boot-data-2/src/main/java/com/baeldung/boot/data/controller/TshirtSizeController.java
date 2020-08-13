@@ -1,7 +1,7 @@
-package yamltopojo.demo.controller;
+package com.baeldung.boot.data.controller;
 
 import org.springframework.web.bind.annotation.*;
-import yamltopojo.demo.service.SizeConverterService;
+import com.baeldung.boot.data.service.SizeConverterService;
 
 @RestController
 @RequestMapping(value = "/")
