@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,7 @@ class SystemOutPrintlnUnitTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    @BeforeEach
+    @AfterEach
     public void tearDown() {
         System.setOut(standardOut);
     }
