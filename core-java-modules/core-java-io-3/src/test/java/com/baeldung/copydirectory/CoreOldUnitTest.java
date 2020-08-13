@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 
 public class CoreOldUnitTest {
 
-    private final String sourceDirectoryLocation = "src/test/resources/sourceDirectory";
+    private final String sourceDirectoryLocation = "src/test/resources/sourceDirectory1";
     private final String subDirectoryName = "/childDirectory";
     private final String fileName = "/file.txt";
-    private final String destinationDirectoryLocation = "src/test/resources/destinationDirectory";
+    private final String destinationDirectoryLocation = "src/test/resources/destinationDirectory1";
 
     @BeforeEach
     public void createDirectoryWithSubdirectoryAndFile() throws IOException {
