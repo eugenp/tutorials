@@ -14,3 +14,4 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [Spring Security: Exploring JDBC Authentication](https://www.baeldung.com/spring-security-jdbc-authentication)
 - [Spring Security Custom Logout Handler](https://www.baeldung.com/spring-security-custom-logout-handler)
 - [Redirecting Logged-in Users with Spring Security](https://www.baeldung.com/spring-security-redirect-logged-in)
+- More articles: [[<-- prev]](/spring-security-modules/spring-security-web-boot-1)
