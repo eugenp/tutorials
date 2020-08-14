@@ -1,6 +1,6 @@
 =========
 
-## Spring JPA Example Project
+## Spring JPA Example Project (2)
 
 
 ### Relevant Articles: 
