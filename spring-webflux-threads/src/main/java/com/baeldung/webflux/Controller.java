@@ -81,7 +81,7 @@ public class Controller {
         return Flux.fromIterable(getThreads());
     }
 
-    @GetMapping("/thareds/reactor-kafka")
+    @GetMapping("/threads/reactor-kafka")
     public Flux<String> getIndexKafka() {
         Map<String, Object> producerProps = new HashMap<>();
         producerProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
