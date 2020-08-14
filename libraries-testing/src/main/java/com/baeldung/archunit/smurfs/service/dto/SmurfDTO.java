@@ -1,14 +1,6 @@
-/**
- * 
- */
+
 package com.baeldung.archunit.smurfs.service.dto;
 
-import com.baeldung.archunit.smurfs.persistence.domain.Smurf;
-
-/**
- * @author Philippe
- *
- */
 public class SmurfDTO {
     private String name;
     private boolean comic;

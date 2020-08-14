@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.baeldung.archunit.smurfs.persistence;
 
 import java.util.Collections;
@@ -13,10 +10,6 @@ import com.baeldung.archunit.smurfs.persistence.domain.Smurf;
 
 import static java.util.stream.Collectors.toList;
 
-/**
- * @author Philippe
- *
- */
 public class SmurfsRepository {
     
     private static Map<String,Smurf> smurfs = Collections.synchronizedMap(new TreeMap<>());
