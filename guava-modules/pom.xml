@@ -4,9 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>guava-modules</artifactId>
     <name>guava-modules</name>
-    <properties>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-    </properties>
     <packaging>pom</packaging>
 
     <parent>
@@ -31,6 +28,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit-jupiter.version}</version>
@@ -53,5 +55,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <guava.version>29.0-jre</guava.version>
+    </properties>
 
 </project>

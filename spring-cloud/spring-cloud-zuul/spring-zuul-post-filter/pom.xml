@@ -18,8 +18,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-    </properties>
-
 </project>
