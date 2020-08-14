@@ -17,10 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * @author Philippe
- *
- */
 public class SmurfsArchUnitTest {
     
     @Test
@@ -29,10 +25,9 @@ public class SmurfsArchUnitTest {
         
         ArchRule r1 = classes()
           .that()
-            .resideInAPackage("..presentation..")
-          .should()
-            .onlyDependOnClassesThat()
-              .resideInAPackage("..service..");
+          .resideInAPackage("..presentation..")
+          .should().onlyDependOnClassesThat()
+          .resideInAPackage("..service..");
     
         assertThrows(AssertionError.class, ()-> r1.check(jc)) ;
     }
@@ -44,10 +39,9 @@ public class SmurfsArchUnitTest {
         
         ArchRule r1 = classes()
           .that()
-            .resideInAPackage("..presentation..")
-          .should()
-            .onlyDependOnClassesThat()
-              .resideInAnyPackage("..service..", "java..", "javax..", "org.springframework..");
+          .resideInAPackage("..presentation..")
+          .should().onlyDependOnClassesThat()
+          .resideInAnyPackage("..service..", "java..", "javax..", "org.springframework..");
 
         r1.check(jc);
     }
@@ -58,10 +52,9 @@ public class SmurfsArchUnitTest {
         
         ArchRule r1 = noClasses()
           .that()
-            .resideInAPackage("..presentation..")
-          .should()
-            .dependOnClassesThat()
-              .resideInAPackage("..persistence..");
+          .resideInAPackage("..presentation..")
+          .should().dependOnClassesThat()
+          .resideInAPackage("..persistence..");
         
         r1.check(jc);
     }

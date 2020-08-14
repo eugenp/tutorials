@@ -1,12 +1,5 @@
-/**
- * 
- */
 package com.baeldung.archunit.smurfs.persistence.domain;
 
-/**
- * @author Philippe
- *
- */
 public class Smurf {
     private String name;
     private boolean comic;
