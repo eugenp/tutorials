@@ -9,10 +9,10 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<artifactId>spring-boot-data-2</artifactId>
+	<artifactId>spring-boot-properties-3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-data-2</name>
-	<description>Spring Boot Data Module</description>
+	<name>spring-boot-properties-3</name>
+	<description>Spring Boot Properties Module</description>
 
 	<properties>
 		<java.version>1.8</java.version>
