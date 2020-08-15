@@ -1,4 +1,4 @@
-package com.baeldung.boot.data.service;
+package com.baeldung.boot.properties.service;
 
 import org.springframework.stereotype.Service;
 import com.baeldung.boot.data.config.TshirtSizeConfig;

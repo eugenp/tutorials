@@ -1,4 +1,4 @@
-package com.baeldung.boot.data.controller;
+package com.baeldung.boot.properties.controller;
 
 import org.springframework.web.bind.annotation.*;
 import com.baeldung.boot.data.service.SizeConverterService;
