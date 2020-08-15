@@ -26,6 +26,7 @@
         <module>maven-properties</module>
         <module>versions-maven-plugin</module>
         <module>version-collision</module>
+        <module>optional-dependencies</module>
     </modules>
 
 </project>
