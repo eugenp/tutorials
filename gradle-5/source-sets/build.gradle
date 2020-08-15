@@ -1,0 +1,35 @@
+
+apply plugin: "eclipse"
+
+description = "Source Sets example"
+
+task printConfigurations(){
+    doLast{
+        configurations.each {
+            println it.name
+        }
+    }
+}
+
+sourceSets{
+    itest {
+        java {
+        }
+    }
+}
+
+dependencies {
+    implementation('org.apache.httpcomponents:httpclient:4.5.12')
+    testImplementation('junit:junit:4.12')
+    itestImplementation('com.google.guava:guava:29.0-jre')
+}
+
+configurations {
+    itestImplementation.extendsFrom(testImplementation)
+}
+
+eclipse {
+    classpath {
+        plusConfigurations+=[configurations.itestCompileClasspath] 
+    } 
+}
