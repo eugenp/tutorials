@@ -1,4 +1,4 @@
-package com.baeldung.boot.data.controller;
+package com.baeldung.boot.properties.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

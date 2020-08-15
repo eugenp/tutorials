@@ -1,10 +1,10 @@
-t-shirt-size:
-  simple-mapping:
-    XS: 6
-    S:  8
-    M:  10
-    L:  12
-    XL: 14
+  t-shirt-size:
+    simple-mapping:
+      XS: 6
+      S:  8
+      M:  10
+      L:  12
+      XL: 14
 
 
   complex-mapping:
