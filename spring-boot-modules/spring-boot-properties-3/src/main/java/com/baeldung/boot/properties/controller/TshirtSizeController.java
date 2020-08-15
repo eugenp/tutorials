@@ -14,8 +14,7 @@ public class TshirtSizeController {
     }
 
     @RequestMapping(value ="convertSize", method = RequestMethod.GET)
-    public int convertSize(@RequestParam(value = "label") final String label,
-                                             @RequestParam(value = "countryCode", required = false) final String countryCode) {
+    public int convertSize(@RequestParam(value = "label") final String label, @RequestParam(value = "countryCode", required = false) final String countryCode) {
         return service.convertSize(label, countryCode);
     }
 
