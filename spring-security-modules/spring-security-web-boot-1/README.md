@@ -13,5 +13,5 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [Granted Authority Versus Role in Spring Security](https://www.baeldung.com/spring-security-granted-authority-vs-role)
 - [Spring Security – Whitelist IP Range](https://www.baeldung.com/spring-security-whitelist-ip-range)
 - [Find the Registered Spring Security Filters](https://www.baeldung.com/spring-security-registered-filters)
-- More articles: [[next -->]](/../spring-security-mvc-boot-2)
+- More articles: [[next -->]](/spring-security-modules/spring-security-web-boot-2)
 
