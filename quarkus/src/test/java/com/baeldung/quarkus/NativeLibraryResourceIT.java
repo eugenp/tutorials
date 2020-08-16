@@ -6,7 +6,5 @@ import io.quarkus.test.junit.NativeImageTest;
 
 @NativeImageTest
 @QuarkusTestResource(H2DatabaseTestResource.class)
-public class NativeHelloResourceIT extends HelloResourceUnitTest {
-
-    // Execute the same tests but in native mode.
+class NativeLibraryResourceIT extends LibraryHttpEndpointIntegrationTest {
 }
