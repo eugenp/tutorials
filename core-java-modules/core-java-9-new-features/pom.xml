@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -144,11 +149,12 @@
     <pluginRepositories>
         <pluginRepository>
             <id>apache.snapshots</id>
-            <url>http://repository.apache.org/snapshots/</url>
+            <url>https://repository.apache.org/snapshots/</url>
         </pluginRepository>
     </pluginRepositories>
 
     <properties>
+        <rxjava.version>3.0.0</rxjava.version>
         <!-- testing -->
         <assertj.version>3.10.0</assertj.version>
         <junit.platform.version>1.2.0</junit.platform.version>

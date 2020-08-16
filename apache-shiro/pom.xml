@@ -39,10 +39,19 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- spring-sec -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
-        <apache-shiro-core-version>1.4.0</apache-shiro-core-version>
+        <apache-shiro-core-version>1.5.3</apache-shiro-core-version>
         <log4j-version>1.2.17</log4j-version>
     </properties>
 

@@ -8,22 +8,13 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <artifactId>guava-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jool</artifactId>
-            <version>${jool.version}</version>
-        </dependency>
-    </dependencies>
 
     <properties>
         <guava.version>21.0</guava.version>
-        <jool.version>0.9.12</jool.version>
     </properties>
 
 </project>
