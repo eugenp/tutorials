@@ -1,35 +1,52 @@
 
 apply plugin: "eclipse"
+apply plugin: "java"
 
 description = "Source Sets example"
 
-task printConfigurations(){
+task printSourceSetInformation(){
     doLast{
-        configurations.each {
-            println it.name
+        sourceSets.each { srcSet ->
+            println "["+srcSet.name+"]"
+            print "-->Source directories: "+srcSet.allJava.srcDirs+"\n"
+            print "-->Output directories: "+srcSet.output.classesDirs.files+"\n"
+            print "-->Compile classpath:\n"
+            srcSet.compileClasspath.files.each { 
+                print "  "+it.path+"\n"
+            }
+            println ""
         }
     }
 }
 
-sourceSets{
-    itest {
-        java {
+task printConfigurationInformation(){
+    doLast{
+        configurations.each { config ->
+            println "["+config.name+"]"
         }
     }
 }
+
+// sourceSets{
+
+//     itest {
+//         java {
+//         }
+//     }
+// }
 
 dependencies {
     implementation('org.apache.httpcomponents:httpclient:4.5.12')
     testImplementation('junit:junit:4.12')
-    itestImplementation('com.google.guava:guava:29.0-jre')
+    // itestImplementation('com.google.guava:guava:29.0-jre')
 }
 
-configurations {
-    itestImplementation.extendsFrom(testImplementation)
-}
+// configurations {
+//     itestImplementation.extendsFrom(testImplementation)
+// }
 
-eclipse {
-    classpath {
-        plusConfigurations+=[configurations.itestCompileClasspath] 
-    } 
-}
+// eclipse {
+//     classpath {
+//         plusConfigurations+=[configurations.itestCompileClasspath] 
+//     } 
+// }
