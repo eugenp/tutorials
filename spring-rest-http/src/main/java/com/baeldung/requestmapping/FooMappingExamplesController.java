@@ -72,7 +72,7 @@ public class FooMappingExamplesController {
 
     @RequestMapping(value = "/foos", produces = { "application/json", "application/xml" })
     @ResponseBody
-    public String getFoosAsJsonFromBrowser() {
+    public String getFoosAsJsonFromREST() {
         return "Get some Foos with Header New";
     }
 

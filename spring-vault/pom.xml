@@ -38,7 +38,6 @@
     </dependencies>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.vault.core.version>2.1.1.RELEASE</spring.vault.core.version>
     </properties>
 

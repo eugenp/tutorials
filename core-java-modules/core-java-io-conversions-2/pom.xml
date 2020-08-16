@@ -24,7 +24,13 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20200518</version>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -37,5 +43,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <json.version>20200518</json.version>
+        <opencsv.version>4.1</opencsv.version>
+    </properties>
 
 </project>

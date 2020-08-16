@@ -51,14 +51,37 @@
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>${asm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-util</artifactId>
+            <version>${asm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.bcel</groupId>
+            <artifactId>bcel</artifactId>
+            <version>${bcel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <!-- instrumentation -->
-        <javaassist.version>3.21.0-GA</javaassist.version>
+        <javaassist.version>3.27.0-GA</javaassist.version>
         <esapi.version>2.1.0.1</esapi.version>
         <sun.tools.version>1.8.0</sun.tools.version>
+        <jol-core.version>0.10</jol-core.version>
+        <asm.version>8.0.1</asm.version>
+        <bcel.version>6.5.0</bcel.version>
     </properties>
 
 </project>

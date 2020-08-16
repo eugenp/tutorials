@@ -32,12 +32,6 @@
             <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
             <version>${pact.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-all</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
@@ -53,10 +47,10 @@
             <scope>test</scope>
 
         </dependency>
-                <dependency>
-                    <groupId>one.util</groupId>
-                    <artifactId>streamex</artifactId>
-                    <version>${streamex.version}</version>
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>streamex</artifactId>
+            <version>${streamex.version}</version>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>

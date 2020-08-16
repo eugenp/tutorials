@@ -3,6 +3,7 @@
 ## Core Java 8 Cookbooks and Examples
 
 ### Relevant Articles: 
+
 - [An Overview of Regular Expressions Performance in Java](https://www.baeldung.com/java-regex-performance)
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
 - [Guide to Escaping Characters in Java RegExps](http://www.baeldung.com/java-regexp-escape-char)
@@ -11,3 +12,4 @@
 - [How to Use Regular Expressions to Replace Tokens in Strings](https://www.baeldung.com/java-regex-token-replacement)
 - [Regular Expressions \s and \s+ in Java](https://www.baeldung.com/java-regex-s-splus)
 - [Validate Phone Numbers With Java Regex](https://www.baeldung.com/java-regex-validate-phone-numbers)
+- [How to Count the Number of Matches for a Regex?](https://www.baeldung.com/java-count-regex-matches)

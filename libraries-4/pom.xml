@@ -91,7 +91,7 @@
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
-            <version>2.2.4</version>
+            <version>${glassfish.web.version}</version>
         </dependency>
     </dependencies>
 
@@ -111,6 +111,7 @@
         <awaitility.version>3.0.0</awaitility.version>
         <streamex.version>0.6.5</streamex.version>
         <javax.el.version>3.0.0</javax.el.version>
+        <glassfish.web.version>2.2.4</glassfish.web.version>
     </properties>
 
 </project>
