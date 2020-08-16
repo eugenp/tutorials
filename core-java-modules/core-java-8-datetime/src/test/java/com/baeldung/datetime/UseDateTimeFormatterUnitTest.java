@@ -31,6 +31,6 @@ public class UseDateTimeFormatterUnitTest {
     public void givenALocalDate_whenFormattingWithStyleAndLocale_thenPass() {
         String result = subject.formatWithStyleAndLocale(localDateTime, FormatStyle.MEDIUM, Locale.UK);
 
-        assertThat(result).isEqualTo("25 Jan 2015, 06:30:00");
+        assertThat(result).isEqualTo("25-Jan-2015 06:30:00");
     }
 }
