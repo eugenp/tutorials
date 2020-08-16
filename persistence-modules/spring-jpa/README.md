@@ -1,7 +1,4 @@
-=========
-
-## Spring JPA Example Project
-
+## Spring JPA (1)
 
 ### Relevant Articles: 
 - [The DAO with JPA and Spring](https://www.baeldung.com/spring-dao-jpa)
