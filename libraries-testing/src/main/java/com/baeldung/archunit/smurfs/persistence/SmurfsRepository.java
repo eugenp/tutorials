@@ -26,11 +26,7 @@ public class SmurfsRepository {
         smurfs.put("Baker", new Smurf("Baker", true, true));
         smurfs.put("Baker", new Smurf("Baker", true, true));
     }
-    
-    public SmurfsRepository() {
-        
-    }
-    
+
     public List<Smurf> findAll() {
        return Collections.unmodifiableList(smurfs.values().stream().collect(toList()));
     }
