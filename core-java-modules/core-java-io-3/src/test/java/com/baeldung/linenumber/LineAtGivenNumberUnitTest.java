@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
-public class LineAtGivenNumberTest {
+public class LineAtGivenNumberUnitTest {
 
     private static final String FILE_PATH = "src/test/resources/linesInput.txt";
 
@@ -29,8 +29,7 @@ public class LineAtGivenNumberTest {
             }
 
             String extractedLine = br.readLine();
-            String expectedLine = "Line 4";
-            assertEquals(expectedLine, extractedLine);
+            assertEquals("Line 4", extractedLine);
         }
     }
 
@@ -42,39 +41,35 @@ public class LineAtGivenNumberTest {
             }
 
             String extractedLine = scanner.nextLine();
-            String expectedLine = "Line 4";
-            assertEquals(expectedLine, extractedLine);
+            assertEquals("Line 4", extractedLine);
         }
     }
 
     @Test
     public void givenSmallFile_whenUsingFilesAPI_thenExtractedLineIsCorrect() throws IOException {
         String extractedLine = Files.readAllLines(Paths.get(FILE_PATH)).get(4);
-        String expectedLine = "Line 5";
 
-        assertEquals(expectedLine, extractedLine);
+        assertEquals("Line 5", extractedLine);
     }
 
     @Test
     public void givenLargeFile_whenUsingFilesAPI_thenExtractedLineIsCorrect() throws IOException {
         try (Stream<String> lines = Files.lines(Paths.get(FILE_PATH))) {
             String extractedLine = lines.skip(4).findFirst().get();
-            String expectedLine = "Line 5";
 
-            assertEquals(expectedLine, extractedLine);
+            assertEquals("Line 5", extractedLine);
         }
     }
 
     @Test
-    public void givenFile_whenUsingFIleUtils_thenExtractedLineIsCorrect() throws IOException {
+    public void givenFile_whenUsingFileUtils_thenExtractedLineIsCorrect() throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("linesInput.txt").getFile());
 
         List<String> lines = FileUtils.readLines(file, "UTF-8");
 
         String extractedLine = lines.get(0);
-        String expectedLine = "Line 1";
-        assertEquals(expectedLine, extractedLine);
+        assertEquals("Line 1", extractedLine);
     }
 
     @Test
@@ -82,7 +77,6 @@ public class LineAtGivenNumberTest {
         String fileContent = IOUtils.toString(new FileInputStream(FILE_PATH), StandardCharsets.UTF_8);
 
         String extractedLine = fileContent.split(System.lineSeparator())[0];
-        String expectedLine = "Line 1";
-        assertEquals(expectedLine, extractedLine);
+        assertEquals("Line 1", extractedLine);
     }
 }
