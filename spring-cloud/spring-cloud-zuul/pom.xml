@@ -72,8 +72,7 @@
     </build>
 
     <properties>
-        <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
     </properties>
 
 </project>

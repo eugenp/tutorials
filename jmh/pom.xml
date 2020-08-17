@@ -26,6 +26,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk.jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -42,12 +47,39 @@
                     </archive>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.BenchmarkRunner</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <jol-core.version>0.10</jol-core.version>
+        <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
     </properties>
 
 </project>

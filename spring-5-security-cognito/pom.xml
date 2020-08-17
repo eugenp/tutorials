@@ -35,11 +35,6 @@
 
         <!-- oauth2 -->
         <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-            <version>${oauth-auto.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-client</artifactId>
         </dependency>
@@ -62,10 +57,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-	
+
     <properties>
-        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
-        <oauth-auto.version>2.1.0.RELEASE</oauth-auto.version>
         <start-class>com.baeldung.cognito.SpringCognitoApplication</start-class>
     </properties>
 
