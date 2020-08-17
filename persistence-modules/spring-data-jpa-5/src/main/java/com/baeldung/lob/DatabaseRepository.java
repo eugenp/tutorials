@@ -4,6 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-interface LobSampleRepository extends JpaRepository<LobSample, Long> {
-
+interface DatabaseRepository extends JpaRepository<LobSample, Long> {
 }
