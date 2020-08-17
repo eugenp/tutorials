@@ -3,17 +3,18 @@ package com.baeldung.test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.List;
-
 import org.junit.Test;
 
-import com.google.common.collect.ImmutableList;
+import com.baeldung.main.SourceSetsObject;
 
 public class SourceSetsTest {
 
     @Test
     public void whenRunThenSuccess() {
-        List<String> someStrings = ImmutableList.of("Baeldung", "is", "cool");
-        assertThat(true, is(true));
+        
+        SourceSetsObject underTest = new SourceSetsObject("lorem","ipsum");
+        
+        assertThat(underTest.getUser(), is("lorem"));
+        assertThat(underTest.getPassword(), is("ipsum"));
     }
 }
