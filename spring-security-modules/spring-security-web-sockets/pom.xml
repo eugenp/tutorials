@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.springsecuredsockets</groupId>
-    <artifactId>spring-security-mvc-socket</artifactId>
+    <artifactId>spring-security-web-sockets</artifactId>
     <version>1.0.0</version>
-    <name>spring-security-mvc-socket</name>
+    <name>spring-security-web-sockets</name>
     <packaging>war</packaging>
 
     <parent>

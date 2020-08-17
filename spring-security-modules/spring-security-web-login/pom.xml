@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-security-mvc-jsonview</artifactId>
+    <artifactId>spring-security-web-login</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-mvc-jsonview</name>
+    <name>spring-security-web-login</name>
     <packaging>war</packaging>
 
     <parent>
@@ -15,21 +15,6 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
 
         <!-- Spring Security -->
 
@@ -134,23 +119,20 @@
             <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${json-path.version}</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>spring-security-mvc-jsonview</finalName>
+        <finalName>spring-security-mvc-login</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
+
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -171,18 +153,9 @@
                 <artifactId>cargo-maven2-plugin</artifactId>
                 <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <deployables>
-                        <deployable>
-                            <location>${project.build.directory}/${project.name}.war</location>
-                            <type>war</type>
-                            <properties>
-                                <context>/</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
+                    <wait>true</wait>
                     <container>
-                        <timeout>2400000</timeout>
-                        <containerId>tomcat8x</containerId>
+                        <containerId>jetty8x</containerId>
                         <type>embedded</type>
                         <systemProperties>
                             <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
@@ -190,17 +163,19 @@
                     </container>
                     <configuration>
                         <properties>
-                            <cargo.servlet.port>8084</cargo.servlet.port>
+                            <cargo.servlet.port>8082</cargo.servlet.port>
                         </properties>
                     </configuration>
                 </configuration>
             </plugin>
+
         </plugins>
+
     </build>
 
     <properties>
+        <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <json-path.version>2.4.0</json-path.version>
     </properties>
 
 </project>

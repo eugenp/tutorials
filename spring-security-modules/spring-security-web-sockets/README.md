@@ -1,4 +1,4 @@
-## Spring Security MVC Socket
+## Spring Security Web Sockets
 
 This module contains articles about WebSockets with Spring Security 
 
