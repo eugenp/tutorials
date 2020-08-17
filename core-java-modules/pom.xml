@@ -67,7 +67,7 @@
 
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
-
+        <module>core-java-exceptions-3</module>
         <module>core-java-function</module>
 
         <module>core-java-io</module>
