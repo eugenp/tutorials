@@ -64,6 +64,7 @@
         <module>core-java-date-operations-2</module>
         <!-- We haven't upgraded to java 9. -->
         <!-- <module>core-java-datetime-computations</module> <module>core-java-datetime-conversion</module> <module>core-java-datetime-java8</module> <module>core-java-datetime-string</module> -->
+        <module>core-java-8-datetime</module>
 
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
