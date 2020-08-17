@@ -48,8 +48,6 @@
     </build>
 
     <properties>
-        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
         <rate.limit.version>2.2.0.RELEASE</rate.limit.version>
     </properties>
 
