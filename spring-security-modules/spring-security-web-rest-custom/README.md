@@ -1,4 +1,4 @@
-## Spring Security REST Custom
+## Spring Security Web - REST Custom
 
 This module contains articles about REST APIs with Spring Security
 
