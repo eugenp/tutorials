@@ -13,12 +13,11 @@ class LibraryHttpEndpointIntegrationTest {
 
     @Test
     void testGetBookEndpoint() {
-        given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get("book")
-                .then()
-                .statusCode(200);
+        given().contentType(ContentType.JSON)
+               .when()
+               .get("book")
+               .then()
+               .statusCode(200);
     }
 
 }
