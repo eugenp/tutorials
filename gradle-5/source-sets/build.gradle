@@ -1,10 +1,12 @@
 
-apply plugin: "eclipse"
+// apply plugin: "eclipse"
 apply plugin: "java"
 
 description = "Source Sets example"
 
 task printSourceSetInformation(){
+    description = "Print source set information"
+
     doLast{
         sourceSets.each { srcSet ->
             println "["+srcSet.name+"]"
@@ -15,14 +17,6 @@ task printSourceSetInformation(){
                 print "  "+it.path+"\n"
             }
             println ""
-        }
-    }
-}
-
-task printConfigurationInformation(){
-    doLast{
-        configurations.each { config ->
-            println "["+config.name+"]"
         }
     }
 }
@@ -42,25 +36,30 @@ test {
     }
 }
 
-    // main {
-    //     java {
-    //         srcDir('src/random')
-    //     }
-    // }
 dependencies {
     implementation('org.apache.httpcomponents:httpclient:4.5.12')
     testImplementation('junit:junit:4.12')
     itestImplementation('com.google.guava:guava:29.0-jre')
 }
 
-configurations {
-    itestImplementation.extendsFrom(testImplementation)
-    itestRuntimeOnly.extendsFrom(t)
+task itest(type: Test) {
+    description = "Run integration tests"
+    group = "verification"
+    testClassesDirs = sourceSets.itest.output.classesDirs
+    classpath = sourceSets.itest.runtimeClasspath
 }
 
-task itest(Type: test) {
-    
+itest {
+    testLogging {
+        events "passed","skipped", "failed"
+    }
 }
+
+configurations {
+    itestImplementation.extendsFrom(testImplementation)
+    itestRuntimeOnly.extendsFrom(testRuntimeOnly)
+}
+
 
 // eclipse {
 //     classpath {
