@@ -20,7 +20,7 @@ public class CustomTestProfile implements QuarkusTestProfile {
 
     @Override
     public String getConfigProfile() {
-        return "test-postgre";
+        return "custom-profile";
     }
 
 }

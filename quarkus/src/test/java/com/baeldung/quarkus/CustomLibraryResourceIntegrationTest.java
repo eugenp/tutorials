@@ -1,8 +1,6 @@
 package com.baeldung.quarkus;
 
 import com.baeldung.quarkus.utils.CustomTestProfile;
-import com.baeldung.quarkus.utils.PostgreSqlContainerResource;
-import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
 import io.restassured.http.ContentType;
@@ -14,7 +12,6 @@ import static org.hamcrest.Matchers.hasItems;
 
 @QuarkusTest
 @TestProfile(CustomTestProfile.class)
-@QuarkusTestResource(PostgreSqlContainerResource.class)
 class CustomLibraryResourceIntegrationTest {
 
     public static final String BOOKSTORE_ENDPOINT = "/custom/library/book";
