@@ -1,4 +1,4 @@
-## Spring Security Thymeleaf
+## Spring Security Web - Thymeleaf
 
 This module contains articles about Spring Security with Thymeleaf.
 

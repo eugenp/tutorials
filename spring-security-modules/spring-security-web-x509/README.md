@@ -1,4 +1,4 @@
-## Spring Security X.509
+## Spring Security Web - X.509
 
 This module contains articles about X.509 authentication with Spring Security 
 
