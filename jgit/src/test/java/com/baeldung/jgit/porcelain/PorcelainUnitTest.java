@@ -11,5 +11,8 @@ public class PorcelainUnitTest {
         CommitAll.main(null);
         
         CreateAndDeleteTag.main(null);
+
+        Log.main(null);
+
     }
 }
