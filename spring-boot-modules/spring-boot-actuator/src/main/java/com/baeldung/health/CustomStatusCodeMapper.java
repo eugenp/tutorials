@@ -21,6 +21,10 @@ public class CustomStatusCodeMapper implements HttpCodeStatusMapper {
             return 500;
         }
 
+        if (status.getCode().equals("WARNING")) {
+            return 500;
+        }
+
         return 200;
     }
 }
