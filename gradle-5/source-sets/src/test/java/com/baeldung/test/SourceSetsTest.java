@@ -10,10 +10,10 @@ import com.baeldung.main.SourceSetsObject;
 public class SourceSetsTest {
 
     @Test
-    public void whenRunThenSuccess() {
-        
-        SourceSetsObject underTest = new SourceSetsObject("lorem","ipsum");
-        
+    public void whenRun_ThenSuccess() {
+
+        SourceSetsObject underTest = new SourceSetsObject("lorem", "ipsum");
+
         assertThat(underTest.getUser(), is("lorem"));
         assertThat(underTest.getPassword(), is("ipsum"));
     }

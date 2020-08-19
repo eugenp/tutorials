@@ -1,5 +1,5 @@
 
-// apply plugin: "eclipse"
+apply plugin: "eclipse"
 apply plugin: "java"
 
 description = "Source Sets example"
@@ -60,9 +60,8 @@ configurations {
     itestRuntimeOnly.extendsFrom(testRuntimeOnly)
 }
 
-
-// eclipse {
-//     classpath {
-//         plusConfigurations+=[configurations.itestCompileClasspath] 
-//     } 
-// }
+eclipse {
+    classpath {
+        plusConfigurations+=[configurations.itestCompileClasspath] 
+    } 
+}
