@@ -1,8 +1,8 @@
 package com.baeldung.persistence.dao;
 
-import java.util.List;
-
 import com.baeldung.persistence.model.Book;
+
+import java.util.List;
 
 public interface BookRepositoryCustom {
 
