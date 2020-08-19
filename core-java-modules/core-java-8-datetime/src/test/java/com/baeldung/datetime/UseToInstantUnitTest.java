@@ -3,6 +3,7 @@ package com.baeldung.datetime;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -24,10 +25,11 @@ public class UseToInstantUnitTest {
 
     @Test
     public void givenADate_whenConvertingToLocalDate_thenAsExpected() {
-        Date givenDate = new Date(1465817690000L);
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Date givenDate = Date.from(currentDateTime.atZone(ZoneId.systemDefault()).toInstant());
 
         LocalDateTime localDateTime = subject.convertDateToLocalDate(givenDate);
 
-        assertThat(localDateTime).isEqualTo("2016-06-13T13:34:50");
+        assertThat(localDateTime).isEqualTo(currentDateTime);
     }
 }
