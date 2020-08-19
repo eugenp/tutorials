@@ -11,7 +11,7 @@ import static org.springframework.boot.WebApplicationType.NONE;
 public class DiscoveryClientApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(DiscoveryClientApplication.class).web(NONE)
+        new SpringApplicationBuilder(DiscoveryClientApplication.class)
             .run(args);
     }
 
