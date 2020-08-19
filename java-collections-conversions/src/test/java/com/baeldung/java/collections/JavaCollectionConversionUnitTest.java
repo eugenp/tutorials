@@ -144,7 +144,7 @@ public class JavaCollectionConversionUnitTest {
         final Map<Integer, String> sourceMap = createMap();
 
         final Collection<String> values = sourceMap.values();
-        final String[] targetArray = values.toArray(new String[values.size()]);
+        final String[] targetArray = values.toArray(new String[0]);
     }
 
     @Test
