@@ -9,7 +9,7 @@ import java.util.List;
 public class ArrayToListConversion {
 
     @Test(expected = UnsupportedOperationException.class)
-    public void givenAnArray_whenConvertingToList_returnUnmodifiableList() {
+    public void givenAnArray_whenConvertingToList_returnUnmodifiableListUnitTest() {
         String[] stringArray = new String[] { "A", "B", "C", "D" };
         List<String> stringList = Arrays.asList(stringArray);
         System.out.println(stringList);
@@ -20,7 +20,7 @@ public class ArrayToListConversion {
     }
 
     @Test
-    public void givenAnArray_whenConvertingToList_returnModifiableList() {
+    public void givenAnArray_whenConvertingToList_returnModifiableListUnitTest() {
         String[] stringArray = new String[] { "A", "B", "C", "D" };
         List<String> stringList = new ArrayList<>(Arrays.asList(stringArray));
         System.out.println(stringList);
