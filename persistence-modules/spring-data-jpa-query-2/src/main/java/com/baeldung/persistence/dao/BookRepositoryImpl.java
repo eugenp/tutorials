@@ -1,7 +1,7 @@
 package com.baeldung.persistence.dao;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.baeldung.persistence.model.Book;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -9,9 +9,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import com.baeldung.persistence.model.Book;
-import org.springframework.stereotype.Repository;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class BookRepositoryImpl implements BookRepositoryCustom {
