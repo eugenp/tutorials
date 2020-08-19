@@ -1,4 +1,4 @@
-package com.baeldung.arrayconvertion;
+package com.baeldung.arrayconversion;
 
 import org.junit.Test;
 
@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ArrayToListConvertion {
+public class ArrayToListConversion {
 
     @Test(expected = UnsupportedOperationException.class)
-    public void givenAnArray_whenConvertToList_returnUnmodifiableList() {
+    public void givenAnArray_whenConvertingToList_returnUnmodifiableList() {
         String[] stringArray = new String[] { "A", "B", "C", "D" };
         List<String> stringList = Arrays.asList(stringArray);
         System.out.println(stringList);
@@ -20,7 +20,7 @@ public class ArrayToListConvertion {
     }
 
     @Test
-    public void givenAnArray_whenConvertToList_returnModifiableList() {
+    public void givenAnArray_whenConvertingToList_returnModifiableList() {
         String[] stringArray = new String[] { "A", "B", "C", "D" };
         List<String> stringList = new ArrayList<>(Arrays.asList(stringArray));
         System.out.println(stringList);
