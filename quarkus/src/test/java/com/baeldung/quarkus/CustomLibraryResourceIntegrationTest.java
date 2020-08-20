@@ -19,10 +19,9 @@ class CustomLibraryResourceIntegrationTest {
     @Test
     void testGetBookEndpoint() {
         given().contentType(ContentType.JSON)
-               .when().get(BOOKSTORE_ENDPOINT)
-               .then()
-               .statusCode(200)
-               .body("size()", is(2))
-               .body("title", hasItems("Foundation", "Dune"));
+          .when().get(BOOKSTORE_ENDPOINT)
+          .then().statusCode(200)
+          .body("size()", is(2))
+          .body("title", hasItems("Foundation", "Dune"));
     }
 }

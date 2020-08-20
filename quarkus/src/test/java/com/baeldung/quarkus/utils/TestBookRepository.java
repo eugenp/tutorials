@@ -16,7 +16,7 @@ public class TestBookRepository extends BookRepository {
     @PostConstruct
     public void init() {
         persist(new Book("Dune", "Frank Herbert"),
-                new Book("Foundation", "Isaac Asimov"));
+          new Book("Foundation", "Isaac Asimov"));
     }
 
 }

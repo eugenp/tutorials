@@ -18,9 +18,8 @@ class LibraryResourceInjectSpyIntegrationTest {
     @Test
     void whenFindByAuthor_thenBookShouldBeFound() {
         given().contentType(ContentType.JSON).param("query", "Asimov")
-               .when().get("/library/book")
-               .then()
-               .statusCode(200);
+          .when().get("/library/book")
+          .then().statusCode(200);
 
         verify(libraryService).find("Asimov");
     }

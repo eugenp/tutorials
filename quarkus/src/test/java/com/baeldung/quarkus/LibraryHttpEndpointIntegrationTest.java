@@ -14,10 +14,8 @@ class LibraryHttpEndpointIntegrationTest {
     @Test
     void testGetBookEndpoint() {
         given().contentType(ContentType.JSON)
-               .when()
-               .get("book")
-               .then()
-               .statusCode(200);
+          .when().get("book")
+          .then().statusCode(200);
     }
 
 }

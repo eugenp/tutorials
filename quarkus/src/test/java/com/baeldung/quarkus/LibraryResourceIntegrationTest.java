@@ -22,12 +22,11 @@ class LibraryResourceIntegrationTest {
     @Test
     void testGetBookEndpoint() {
         given().contentType(ContentType.JSON).param("query", "Dune")
-               .when().get(libraryEndpoint)
-               .then()
-               .statusCode(200)
-               .body("size()", is(1))
-               .body("title", hasItem("Dune"))
-               .body("author", hasItem("Frank Herbert"));
+          .when().get(libraryEndpoint)
+          .then().statusCode(200)
+          .body("size()", is(1))
+          .body("title", hasItem("Dune"))
+          .body("author", hasItem("Frank Herbert"));
     }
 
 }

@@ -25,9 +25,9 @@ class LibraryServiceInjectMockUnitTest {
     @BeforeEach
     void setUp() {
         when(bookRepository.findBy("Frank Herbert"))
-                .thenReturn(Arrays.stream(new Book[] {
-                        new Book("Dune", "Frank Herbert"),
-                        new Book("Children of Dune", "Frank Herbert")}));
+          .thenReturn(Arrays.stream(new Book[] {
+            new Book("Dune", "Frank Herbert"),
+            new Book("Children of Dune", "Frank Herbert")}));
     }
 
     @Test
