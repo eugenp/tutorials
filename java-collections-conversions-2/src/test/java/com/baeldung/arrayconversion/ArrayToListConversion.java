@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ArrayToListConversion {
+public class ArrayToListConversionUnitTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void givenAnArray_whenConvertingToList_returnUnmodifiableListUnitTest() {
