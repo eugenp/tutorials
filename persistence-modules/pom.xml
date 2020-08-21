@@ -55,6 +55,7 @@
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-reactive</module>
+        <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
