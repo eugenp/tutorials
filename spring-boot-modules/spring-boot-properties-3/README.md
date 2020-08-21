@@ -1,6 +1,9 @@
+
 ## Spring Boot Properties
 
-This module contains articles about Properties in Spring Boot.
+
 
 ### Relevant Articles:
-- More articles: [[<-- prev]](../spring-boot-properties)
+
+- [How to Define a Map in YAML for a POJO?](https://www.baeldung.com/yaml-map-pojo)
+
