@@ -27,6 +27,18 @@ public class ListSetConversionUnitTest {
     }
 
     @Test
+    public void givenUsingJava10_whenSetConvertedToList_thenCorrect() {
+        final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
+        final List<Integer> targetList = List.copyOf(sourceSet);
+    }
+
+    @Test
+    public void givenUsingJava10_whenListConvertedToSet_thenCorrect() {
+        final List<Integer> sourceList = Lists.newArrayList(0, 1, 2, 3, 4, 5);
+        final Set<Integer> targetSet = Set.copyOf(sourceList);
+    }
+
+    @Test
     public final void givenUsingGuava_whenSetConvertedToList_thenCorrect() {
         final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
         final List<Integer> targetList = Lists.newArrayList(sourceSet);
