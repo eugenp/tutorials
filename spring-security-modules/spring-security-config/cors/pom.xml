@@ -11,6 +11,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>spring-security-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
     </parent>
 
     <dependencyManagement>
