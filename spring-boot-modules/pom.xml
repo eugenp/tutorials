@@ -56,12 +56,14 @@
         <module>spring-boot-performance</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
+        <module>spring-boot-properties-3</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
+        <module>spring-boot-xml</module>
         <module>spring-boot-actuator</module>
     </modules>
 
