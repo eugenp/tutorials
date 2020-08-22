@@ -1,44 +1,40 @@
 package com.baeldung.spring.data.redis;
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.util.UUID;
-
+import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
+import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.baeldung.spring.data.redis.config.RedisConfig;
-import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
-import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
-
+import org.springframework.test.context.junit4.SpringRunner;
 import redis.embedded.RedisServerBuilder;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = RedisConfig.class)
+import java.util.UUID;
+
+import static org.junit.Assert.assertTrue;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisApplication.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 public class RedisMessageListenerIntegrationTest {
 
     private static redis.embedded.RedisServer redisServer;
-    
+
     @Autowired
     private RedisMessagePublisher redisMessagePublisher;
-    
+
     @BeforeClass
-    public static void startRedisServer() throws IOException {
+    public static void startRedisServer() {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
         redisServer.start();
     }
-    
+
     @AfterClass
-    public static void stopRedisServer() throws IOException {
+    public static void stopRedisServer() {
         redisServer.stop();
     }
 

@@ -32,11 +32,6 @@ public class RedisConfig {
     }
 
     @Bean
-    public ReactiveRedisTemplate<String, String> reactiveRedisTemplateString(ReactiveRedisConnectionFactory connectionFactory) {
-        return new ReactiveRedisTemplate<>(connectionFactory, RedisSerializationContext.string());
-    }
-
-    @Bean
     public ReactiveKeyCommands keyCommands(final ReactiveRedisConnectionFactory reactiveRedisConnectionFactory) {
         return reactiveRedisConnectionFactory.getReactiveConnection()
             .keyCommands();
