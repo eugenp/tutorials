@@ -9,6 +9,8 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Simple snippet which shows how to create a tag
@@ -16,6 +18,8 @@ import org.eclipse.jgit.revwalk.RevWalk;
  * 
  */
 public class CreateAndDeleteTag {
+
+    private static final Logger logger = LoggerFactory.getLogger(CreateAndDeleteTag.class);
 
     public static void main(String[] args) throws IOException, GitAPIException {
         // prepare test-repository
@@ -26,7 +30,7 @@ public class CreateAndDeleteTag {
 
                 // set it on the current HEAD
                 Ref tag = git.tag().setName("tag_for_testing").call();
-                System.out.println("Created/moved tag " + tag + " to repository at " + repository.getDirectory());
+                logger.debug("Created/moved tag " + tag + " to repository at " + repository.getDirectory());
 
                 // remove the tag again
                 git.tagDelete().setTags("tag_for_testing").call();
@@ -36,14 +40,14 @@ public class CreateAndDeleteTag {
                 try (RevWalk walk = new RevWalk(repository)) {
                     RevCommit commit = walk.parseCommit(id);
                     tag = git.tag().setObjectId(commit).setName("tag_for_testing").call();
-                    System.out.println("Created/moved tag " + tag + " to repository at " + repository.getDirectory());
+                    logger.debug("Created/moved tag " + tag + " to repository at " + repository.getDirectory());
 
                     // remove the tag again
                     git.tagDelete().setTags("tag_for_testing").call();
 
                     // create an annotated tag
                     tag = git.tag().setName("tag_for_testing").setAnnotated(true).call();
-                    System.out.println("Created/moved tag " + tag + " to repository at " + repository.getDirectory());
+                    logger.debug("Created/moved tag " + tag + " to repository at " + repository.getDirectory());
 
                     // remove the tag again
                     git.tagDelete().setTags("tag_for_testing").call();
