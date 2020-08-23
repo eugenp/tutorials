@@ -4,27 +4,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 class CountDownLatchRace {
     private static final Logger log = LoggerFactory.getLogger(CountDownLatchRace.class.getName());
 
     public static void main(String[] args) throws InterruptedException {
-        CountDownLatch counter = new CountDownLatch(3);
-        // count from 3 to 0 and then start the race
-        // instantiate three runner threads
-        new CountDownLatchRunner("Eve", 1, counter).start();
-        new CountDownLatchRunner("Joe", 2, counter).start();
-        new CountDownLatchRunner("Max", 3, counter).start();
+        int maxPoolSize = 13000;
+        ExecutorService executor = Executors.newFixedThreadPool(maxPoolSize);
+        CountDownLatch counter = new CountDownLatch(maxPoolSize);
         log.info("Starting the countdown");
-        while (counter.getCount() > 0) {
-            Thread.sleep(1000);
+        for (int i = 1; i <= maxPoolSize; i++) {
+            executor.execute(new CountDownLatchRunner(i, counter));
             log.info("{}", counter.getCount());
             if (counter.getCount() == 1) {
                 // Count down will reach zero
                 log.info("Starting the race");
             }
-            counter.countDown(); // count down by 1 for each second
         }
+        counter.await(); // It waits until the latch has counted down to zero
+        executor.shutdown();
     }
 }

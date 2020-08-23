@@ -5,16 +5,12 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
 
-import static java.util.concurrent.TimeUnit.MICROSECONDS;
-import static java.util.concurrent.TimeUnit.NANOSECONDS;
-
-class CountDownLatchRunner extends Thread {
+class CountDownLatchRunner implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(CountDownLatchRunner.class.getName());
-    private int number;
-    private CountDownLatch counter;
+    private final int number;
+    private final CountDownLatch counter;
 
-    public CountDownLatchRunner(String name, int number, CountDownLatch counter) {
-        super(name);
+    public CountDownLatchRunner(int number, CountDownLatch counter) {
         this.number = number;
         this.counter = counter;
     }
@@ -22,11 +18,11 @@ class CountDownLatchRunner extends Thread {
     @Override
     public void run() {
         try {
-            counter.await();
+            counter.countDown();
             long start = System.nanoTime();
             Thread.sleep(1000);
             long end = System.nanoTime();
-            log.info("{} start race in {}us and finish in {}us}", this, MICROSECONDS.convert(start, NANOSECONDS), MICROSECONDS.convert(end - start, NANOSECONDS));
+            log.info("{} start race in {}ns and lasted {}ns", this, start, end - start);
         } catch (InterruptedException e) {
             Thread
               .currentThread()

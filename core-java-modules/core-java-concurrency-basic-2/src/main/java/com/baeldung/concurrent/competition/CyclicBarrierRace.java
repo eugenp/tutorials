@@ -4,27 +4,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 class CyclicBarrierRace implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(CyclicBarrierRace.class.getName());
 
     public static void main(String[] args) {
-        CyclicBarrier barrier = new CyclicBarrier(3, new CyclicBarrierRace());
-        // The CycleBarrierRace 3 runners; so wait for three runners
-        // (i.e., three threads) to join to start the race
-        new CyclicBarrierRunner("Eve", 1, barrier).start();
-        new CyclicBarrierRunner("Joe", 2, barrier).start();
-        new CyclicBarrierRunner("Max", 3, barrier).start();
-        // raceWithManyRunners();
-    }
-
-    public static void raceWithManyRunners() {
-        int max = 10000;
-        log.info("Starting the race with {} runners", max);
-        CyclicBarrier barrier2 = new CyclicBarrier(max, new CyclicBarrierRace());
-        for (int i = 0; i < max; i++) {
-            new CyclicBarrierRunner("Runner" + i, i, barrier2).start();
+        int maxPoolSize = 2;
+        ExecutorService executor = Executors.newFixedThreadPool(maxPoolSize);
+        CyclicBarrier barrier = new CyclicBarrier(maxPoolSize, new CyclicBarrierRace());
+        log.info("Waiting for runners");
+        // The CycleBarrierRace 13000 runners; so wait for 13000 runners
+        // (i.e., 13000 threads) to join to start the race
+        for (int i = 1; i <= maxPoolSize; i++) {
+            executor.execute(new CyclicBarrierRunner(i, barrier));
         }
+        executor.shutdown();
     }
 
     @Override
