@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 class CountDownLatchRace {
     private static final Logger log = LoggerFactory.getLogger(CountDownLatchRace.class.getName());
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         int maxPoolSize = 13000;
         ExecutorService executor = Executors.newFixedThreadPool(maxPoolSize);
         CountDownLatch counter = new CountDownLatch(maxPoolSize);
@@ -22,8 +22,8 @@ class CountDownLatchRace {
                 // Count down will reach zero
                 log.info("Starting the race");
             }
+            counter.countDown(); // count down by 1 for each runner join to the race
         }
-        counter.await(); // It waits until the latch has counted down to zero
         executor.shutdown();
     }
 }

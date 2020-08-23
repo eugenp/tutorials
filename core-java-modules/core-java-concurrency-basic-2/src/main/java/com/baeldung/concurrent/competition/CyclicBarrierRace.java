@@ -11,7 +11,7 @@ class CyclicBarrierRace implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(CyclicBarrierRace.class.getName());
 
     public static void main(String[] args) {
-        int maxPoolSize = 2;
+        int maxPoolSize = 13000;
         ExecutorService executor = Executors.newFixedThreadPool(maxPoolSize);
         CyclicBarrier barrier = new CyclicBarrier(maxPoolSize, new CyclicBarrierRace());
         log.info("Waiting for runners");

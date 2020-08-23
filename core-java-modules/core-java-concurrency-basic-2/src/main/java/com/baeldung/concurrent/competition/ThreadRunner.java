@@ -14,8 +14,8 @@ class ThreadRunner implements Runnable {
     @Override
     public void run() {
         try {
+            Thread.sleep((long) (1000 * Math.random()));
             long start = System.nanoTime();
-            Thread.sleep(1000);
             long end = System.nanoTime();
             log.info("{} start race in {}ns and lasted {}ns", this, start, end - start);
         } catch (InterruptedException e) {
