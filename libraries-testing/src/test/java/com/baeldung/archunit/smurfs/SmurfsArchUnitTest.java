@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.baeldung.archunit.smurfs;
 
 
