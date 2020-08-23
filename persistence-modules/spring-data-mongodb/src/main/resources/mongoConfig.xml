@@ -12,7 +12,7 @@
 
     <mongo:mongo-client id="mongoClient" host="localhost" />
 
-    <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-ref="mongoClient" />
+    <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-client-ref="mongoClient" />
 
     <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
         <constructor-arg ref="mongoDbFactory" />
