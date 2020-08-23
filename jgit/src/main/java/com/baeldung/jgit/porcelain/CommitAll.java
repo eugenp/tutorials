@@ -7,6 +7,8 @@ import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Simple snippet which shows how to commit all files
@@ -14,6 +16,8 @@ import org.eclipse.jgit.lib.Repository;
  * 
  */
 public class CommitAll {
+
+    private static final Logger logger = LoggerFactory.getLogger(CommitAll.class);
 
     public static void main(String[] args) throws IOException, GitAPIException {
         // prepare a new test-repository
@@ -44,7 +48,7 @@ public class CommitAll {
                         .call();
 
 
-                System.out.println("Committed all changes to repository at " + repository.getDirectory());
+                logger.debug("Committed all changes to repository at " + repository.getDirectory());
             }
         }
     }
