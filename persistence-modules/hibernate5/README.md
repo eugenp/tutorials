@@ -13,3 +13,4 @@ This module contains articles about Hibernate 5. Let's not add more articles her
 - [Guide to the Hibernate EntityManager](https://www.baeldung.com/hibernate-entitymanager)
 - [Using c3p0 with Hibernate](https://www.baeldung.com/hibernate-c3p0)
 - [Persist a JSON Object Using Hibernate](https://www.baeldung.com/hibernate-persist-json-object)
+- [What Is the Hi/Lo Algorithm?](https://www.baeldung.com/hi-lo-algorithm-hibernate)
