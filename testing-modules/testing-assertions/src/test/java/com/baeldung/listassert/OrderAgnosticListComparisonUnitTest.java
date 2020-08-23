@@ -1,13 +1,14 @@
 package com.baeldung.listassert;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -29,12 +30,25 @@ public class OrderAgnosticListComparisonUnitTest {
 
     @Test
     public void whenTestingForOrderAgnosticEquality_ShouldBeEqual() {
-        assertThat(first, Matchers.containsInAnyOrder(second.toArray()));
+        MatcherAssert.assertThat(first, Matchers.containsInAnyOrder(second.toArray()));
     }
 
     @Test
     public void whenTestingForOrderAgnosticEquality_ShouldBeTrueIfEqualOtherwiseFalse() {
         assertTrue(CollectionUtils.isEqualCollection(first, second));
         assertFalse(CollectionUtils.isEqualCollection(first, third));
+    }
+
+    @Test
+    void whenTestingForOrderAgnosticEqualityBothList_ShouldBeEqual() {
+        assertThat(first).hasSameElementsAs(second);
+    }
+
+    @Test
+    void whenTestingForOrderAgnosticEqualityBothList_ShouldNotBeEqual() {
+        List<String> a = Arrays.asList("a", "a", "b", "c");
+        List<String> b = Arrays.asList("a", "b", "c");
+
+        assertThat(a).hasSameElementsAs(b);
     }
 }
