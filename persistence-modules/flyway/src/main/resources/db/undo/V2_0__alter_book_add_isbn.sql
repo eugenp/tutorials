@@ -1,1 +1,0 @@
-alter table book add column isbn boolean;

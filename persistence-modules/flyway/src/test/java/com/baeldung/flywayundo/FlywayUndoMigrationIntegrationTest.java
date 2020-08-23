@@ -1,4 +1,4 @@
-package com.baeldung.flywaycallbacks;
+package com.baeldung.flywayundo;
 
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = FlywayCallbackTestConfig.class)
+@ContextConfiguration(classes = FlywayUndoTestConfig.class)
 @SpringBootTest
 public class FlywayUndoMigrationIntegrationTest {
 
@@ -25,10 +25,10 @@ public class FlywayUndoMigrationIntegrationTest {
     @Test
     public void givenMigrationsExist_whenApplyMigrations_migrationsAreSuccessful() {
         Flyway flyway = Flyway.configure()
-                .dataSource(dataSource)
-                .schemas("undo")
-                .locations("db/undo")
-                .load();
+            .dataSource(dataSource)
+            .schemas("undo")
+            .locations("db/undo")
+            .load();
 
         flyway.migrate();
 
