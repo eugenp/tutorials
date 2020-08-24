@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.*;
 
-class ParkingThreadDemo {
+public class ParkingThreadDemo {
     private static final Logger LOG = LoggerFactory.getLogger(ParkingThreadDemo.class);
 
-    public void parkingThread throws
-
-    InterruptedException {
+    public void parkingThread() throws InterruptedException {
         final ExecutorService executorPool = Executors.newFixedThreadPool(5);
         final LinkedBlockingQueue<Long> queue = new LinkedBlockingQueue<Long>();
         Collection<Future<Long>> collection = new ArrayList<Future<Long>>();

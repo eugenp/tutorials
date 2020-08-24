@@ -5,18 +5,21 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.LockSupport;
 
 class WaitParkComparison {
     private static final Logger LOG = LoggerFactory.getLogger(WaitParkComparison.class);
 
-    public void parkingThread throws InterruptedException {
+    public void parkingThread() throws InterruptedException {
         Object lockObject = new Object();
         Runnable task1 = () -> {
             synchronized (lockObject) {
-                LOG.debug("Thread 1 is blocked") LockSupport.park();
-                LOG.debug("Thread 1 resumed")
+                LOG.debug("Thread 1 is blocked");
+                LockSupport.park();
+                LOG.debug("Thread 1 resumed");
             }
-        }; Thread thread1 = new Thread(task1);
+        };
+        Thread thread1 = new Thread(task1);
         thread1.start();
         Runnable task2 = () -> {
             LOG.debug("Thread 2 running ");
