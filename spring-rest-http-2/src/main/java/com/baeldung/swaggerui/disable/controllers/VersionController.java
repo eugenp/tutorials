@@ -1,4 +1,4 @@
-package com.baeldung.controllers;
+package com.baeldung.swaggerui.disable.controllers;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.core.env.Environment;

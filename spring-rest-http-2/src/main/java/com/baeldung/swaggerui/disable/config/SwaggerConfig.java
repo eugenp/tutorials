@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.swaggerui.disable.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
