@@ -50,82 +50,58 @@ class AggregateOperations {
     }
 
     fun foldList(): Int {
-        println("fold operation")
-        val result = numbers.fold(100) { total, it ->
+        return numbers.fold(100) { total, it ->
             println("total = $total, it = $it")
             total - it
-        }
-        println(result) // ((((100 - 1)-15)-3)-8) = 73
-        return result
+        } // ((((100 - 1)-15)-3)-8) = 73
     }
 
     fun foldRightList(): Int {
-        println("foldRight operation")
-        val result = numbers.foldRight(100) { it, total ->
+        return numbers.foldRight(100) { it, total ->
             println("total = $total, it = $it")
             total - it
-        }
-        println(result) // ((((100-8)-3)-15)-1) = 73
-        return result
+        }  // ((((100-8)-3)-15)-1) = 73
     }
 
     fun foldIndexedList(): Int {
-        println("foldIndexed operation")
-        val result = numbers.foldIndexed(100) { index, total, it ->
+        return numbers.foldIndexed(100) { index, total, it ->
             println("total = $total, it = $it, index = $index")
             if (index.minus(2) >= 0) total - it else total
-        }
-        println(result) // ((100 - 3)-8) = 89
-        return result
+        } // ((100 - 3)-8) = 89
     }
 
     fun foldRightIndexedList(): Int {
-        println("foldRightIndexed operation")
-        val result = numbers.foldRightIndexed(100) { index, it, total ->
+        return numbers.foldRightIndexed(100) { index, it, total ->
             println("total = $total, it = $it, index = $index")
             if (index.minus(2) >= 0) total - it else total
-        }
-        println(result) // ((100 - 8)-3) = 89
-        return result
+        } // ((100 - 8)-3) = 89
     }
 
     fun reduceList(): Int {
-        println("reduce operation")
-        val result = numbers.reduce { total, it ->
+        return numbers.reduce { total, it ->
             println("total = $total, it = $it")
             total - it
-        }
-        println(result) // (((1 - 15)-3)-8) = -25
-        return result
+        } // (((1 - 15)-3)-8) = -25
     }
 
     fun reduceRightList(): Int {
-        println("reduceRight operation")
-        val result = numbers.reduceRight() { it, total ->
+        return numbers.reduceRight() { it, total ->
             println("total = $total, it = $it")
             total - it
-        }
-        println(result) // ((8-3)-15)-1) = -11
-        return result
+        } // ((8-3)-15)-1) = -11
     }
 
     fun reduceIndexedList(): Int {
-        println("reduceIndexed operation")
-        val result = numbers.reduceIndexed { index, total, it ->
+        return numbers.reduceIndexed { index, total, it ->
             println("total = $total, it = $it, index = $index")
             if (index.minus(2) >= 0) total - it else total
-        }
-        println(result) // ((1-3)-8) = -10
-        return result
+        } // ((1-3)-8) = -10
     }
 
     fun reduceRightIndexedList(): Int {
-        println("reduceRightIndexed operation")
-        val result = numbers.reduceRightIndexed { index, it, total ->
+        return numbers.reduceRightIndexed { index, it, total ->
             println("total = $total, it = $it, index = $index")
             if (index.minus(2) >= 0) total - it else total
-        }
-        println(result) // ((8-3) = 5
-        return result
+        } // ((8-3) = 5
     }
 }
