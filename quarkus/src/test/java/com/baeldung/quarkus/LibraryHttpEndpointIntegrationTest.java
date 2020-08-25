@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 class LibraryHttpEndpointIntegrationTest {
 
     @Test
-    void testGetBookEndpoint() {
+    void whenGetBooks_thenShouldReturnSuccessfully() {
         given().contentType(ContentType.JSON)
           .when().get("book")
           .then().statusCode(200);

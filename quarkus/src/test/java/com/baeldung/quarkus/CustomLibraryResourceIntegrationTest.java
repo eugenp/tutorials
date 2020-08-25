@@ -17,7 +17,7 @@ class CustomLibraryResourceIntegrationTest {
     public static final String BOOKSTORE_ENDPOINT = "/custom/library/book";
 
     @Test
-    void testGetBookEndpoint() {
+    void whenGetBooksGivenNoQuery_thenAllBooksShouldBeReturned() {
         given().contentType(ContentType.JSON)
           .when().get(BOOKSTORE_ENDPOINT)
           .then().statusCode(200)

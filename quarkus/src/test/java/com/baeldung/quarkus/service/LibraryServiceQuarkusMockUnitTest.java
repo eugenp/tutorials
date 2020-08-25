@@ -26,7 +26,7 @@ class LibraryServiceQuarkusMockUnitTest {
         Mockito.when(mock.findBy("Asimov"))
           .thenReturn(Arrays.stream(new Book[] {
             new Book("Foundation", "Isaac Asimov"),
-            new Book("I Robot", "Isaac Asimov")}));
+            new Book("I Robot.", "Isaac Asimov")}));
         QuarkusMock.installMockForType(mock, BookRepository.class);
     }
 

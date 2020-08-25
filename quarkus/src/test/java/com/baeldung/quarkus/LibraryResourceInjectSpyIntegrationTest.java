@@ -16,7 +16,7 @@ class LibraryResourceInjectSpyIntegrationTest {
     LibraryService libraryService;
 
     @Test
-    void whenFindByAuthor_thenBookShouldBeFound() {
+    void whenGetBooksByAuthor_thenBookShouldBeFound() {
         given().contentType(ContentType.JSON).param("query", "Asimov")
           .when().get("/library/book")
           .then().statusCode(200);
