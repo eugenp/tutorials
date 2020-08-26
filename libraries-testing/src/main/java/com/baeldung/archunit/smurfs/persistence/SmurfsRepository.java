@@ -24,7 +24,6 @@ public class SmurfsRepository {
         smurfs.put("Architect", new Smurf("Architect", true, true));
         smurfs.put("Baby", new Smurf("Baby", true, true));
         smurfs.put("Baker", new Smurf("Baker", true, true));
-        smurfs.put("Baker", new Smurf("Baker", true, true));
     }
 
     public List<Smurf> findAll() {
