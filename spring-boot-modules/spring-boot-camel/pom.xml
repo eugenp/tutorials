@@ -9,9 +9,9 @@
 	
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -38,12 +38,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -55,7 +53,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-starter.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -68,8 +65,7 @@
     </build>
 
     <properties>
-        <camel.version>2.19.1</camel.version>
-        <spring-boot-starter.version>1.5.4.RELEASE</spring-boot-starter.version>
+        <camel.version>3.0.0-M4</camel.version>
     </properties>
 
 </project>
