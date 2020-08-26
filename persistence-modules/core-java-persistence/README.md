@@ -13,3 +13,4 @@
 - [Returning the Generated Keys in JDBC](https://www.baeldung.com/jdbc-returning-generated-keys)
 - [Loading JDBC Drivers](https://www.baeldung.com/java-jdbc-loading-drivers)
 - [Difference Between Statement and PreparedStatement](https://www.baeldung.com/java-statement-preparedstatement)
+- [Extracting Database Metadata Using JDBC](https://www.baeldung.com/jdbc-database-metadata)

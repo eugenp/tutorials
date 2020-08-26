@@ -19,12 +19,14 @@
         <module>core-java-persistence</module>
         <module>deltaspike</module>
         <module>elasticsearch</module>
+        <module>flyway</module>
         <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
+        <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-queries</module>
@@ -53,6 +55,7 @@
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-reactive</module>
+        <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
