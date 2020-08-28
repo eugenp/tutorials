@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.hasItems;
 
 @QuarkusTest
 @TestProfile(CustomTestProfile.class)
-class CustomLibraryResourceIntegrationTest {
+class CustomLibraryResourceManualTest {
 
     public static final String BOOKSTORE_ENDPOINT = "/custom/library/book";
 

@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @QuarkusTest
-class LibraryResourceHttpResourceUnitTest {
+class LibraryResourceHttpResourceIntegrationTest {
 
     @TestHTTPEndpoint(LibraryResource.class)
     @TestHTTPResource("book")
