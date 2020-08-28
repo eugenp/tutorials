@@ -1,4 +1,4 @@
-package com.baeldung.demo.boottest;
+package com.baeldung.boot.testing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,10 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import com.baeldung.demo.boottest.Employee;
-import com.baeldung.demo.boottest.EmployeeRepository;
-import com.baeldung.demo.boottest.EmployeeService;
-import com.baeldung.demo.boottest.EmployeeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +16,11 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.boot.testing.Employee;
+import com.baeldung.boot.testing.EmployeeRepository;
+import com.baeldung.boot.testing.EmployeeService;
+import com.baeldung.boot.testing.EmployeeServiceImpl;
 
 @RunWith(SpringRunner.class)
 public class EmployeeServiceImplIntegrationTest {
