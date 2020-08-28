@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Please place a new Order!</h2>
+</div>
+<div class="container" *ngIf="response !== null">
+  <h3>Your order {{response.id}} was successfully placed, please check the status of order.</h3>
+</div>
+<div class="container" *ngIf="error !== null">
+  <h3>Your order could not be placed at the moment: {{error.message}}</h3>
+</div>
+<div class="container">
+  <form [formGroup]="form" *ngIf="this.form" (ngSubmit)="createOrder()">
+    <h3 class="container">Product Quantities:</h3>
+    <div class="container" formArrayName="lineItems"
+         *ngFor="let item of form.get('lineItems')['controls']; let i = index;">
+      <li class="form-group input-group-lg" [formGroupName]="i">
+        {{ form.controls.lineItems['controls'][i].controls.name.value }}: <input formControlName='quantity' placeholder='10'>
+        <p>Only {{ form.controls.lineItems['controls'][i].controls.stock.value }} left in the stock!</p>
+      </li>
+    </div>
+    &nbsp;
+    <div class="container">
+      <h3>Payment Mode:
+      <select class="form-group input-group-lg" formControlName="paymentMode">
+        <option *ngFor="let paymentMode of paymentModes">
+          {{paymentMode}}
+        </option>
+      </select>
+      </h3>
+    </div>
+    &nbsp;
+    <div class="container" formGroupName="shippingAddress">
+      <h3>Address:</h3>
+      <input class="form-control" placeholder="Name" formControlName="name">
+      <input class="form-control" placeholder="House" formControlName="house">
+      <input class="form-control" placeholder="Street" formControlName="street">
+      <input class="form-control" placeholder="City" formControlName="city">
+      <input class="form-control" placeholder="Zip" formControlName="zip">
+    </div>
+    &nbsp;
+    <div class="form-group">
+      <button class="btn btn-danger btn-block btn-lg">Place Order</button>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <button class="btn btn-danger btn-block btn-lg" (click)="getOrders()">Get Previous Orders</button>
+</div>
+
+<div class="container">
+  <button class="btn btn-danger btn-block btn-lg" (click)="getOrderStream()">Get Previous Order Stream </button>
+</div>
+<div class="container" *ngIf="previousOrders !== null">
+  <h2>Your orders placed so far:</h2>
+  <ul>
+    <li *ngFor="let order of previousOrders | async">
+      <p>Order ID: {{ order.id }}, Order Status: {{order.orderStatus}}, Order Message: {{order.responseMessage}}</p>
+    </li>
+  </ul>
+</div>

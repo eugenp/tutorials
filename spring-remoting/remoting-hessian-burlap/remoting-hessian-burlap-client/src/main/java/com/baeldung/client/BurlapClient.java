@@ -15,7 +15,7 @@ public class BurlapClient {
     @Bean
     public BurlapProxyFactoryBean burlapInvoker() {
         BurlapProxyFactoryBean invoker = new BurlapProxyFactoryBean();
-        invoker.setServiceUrl("http://localhost:8080/b_booking");
+        invoker.setServiceUrl("http://localhost:8032/b_booking");
         invoker.setServiceInterface(CabBookingService.class);
         return invoker;
     }

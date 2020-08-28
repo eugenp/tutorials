@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Guide to the Problem Spring Web Library](https://www.baeldung.com/problem-spring-web)
 - [Generating Barcodes and QR Codes in Java](https://www.baeldung.com/java-generating-barcodes-qr-codes)
 - [Rate Limiting a Spring API Using Bucket4j](https://www.baeldung.com/spring-bucket4j)
+- [Spring Boot and Caffeine Cache](https://www.baeldung.com/spring-boot-caffeine-cache)

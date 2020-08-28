@@ -1,0 +1,52 @@
+logging:
+  file:
+    name: myapplication.log
+spring:
+  datasource:
+    password: 'password'
+    url: jdbc:h2:dev
+    username: SA
+---
+spring:
+  datasource:
+    password: 'password'
+    url: jdbc:mysql://localhost:3306/db_production
+    username: user
+application:
+  servers:
+    -   ip: '127.0.0.1'
+        path: '/path1'
+    -   ip: '127.0.0.2'
+        path: '/path2'
+    -   ip: '127.0.0.3'
+        path: '/path3'
+  t-shirt-size:
+    simple-mapping:
+      XS: 6
+      S:  8
+      M:  10
+      L:  12
+      XL: 14
+
+
+  complex-mapping:
+    XS:
+      uk: 6
+      fr: 34
+      us: 2
+    S:
+      uk: 8
+      fr: 36
+      us: 4
+    M:
+      uk: 10
+      fr: 38
+      us: 6
+    L:
+      uk: 12
+      fr: 40
+      us: 8
+    XL:
+      uk: 14
+      fr: 42
+      us: 10

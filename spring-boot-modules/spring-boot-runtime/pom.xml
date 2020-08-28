@@ -2,17 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-runtime</artifactId>
-    <name>spring-boot-runtime</name>
-    <packaging>pom</packaging>
-    <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
+
+    <artifactId>spring-boot-runtime</artifactId>
+    <packaging>pom</packaging>
+
+    <name>spring-boot-runtime</name>
+    <description>Demo project for Spring Boot</description>
 
     <modules>
         <module>disabling-console-jul</module>
@@ -170,7 +172,6 @@
         <springcloud.version>2.0.2.RELEASE</springcloud.version>
         <httpclient.version>4.5.8</httpclient.version>
         <spring-boot-admin-starter-client.version>2.1.6</spring-boot-admin-starter-client.version>
-        <commons-io.version>2.6</commons-io.version>
     </properties>
 
 </project>

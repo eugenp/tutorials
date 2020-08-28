@@ -1,14 +1,14 @@
 package com.baeldung.comparator;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class Java8ComparatorUnitTest {
 
@@ -28,7 +28,7 @@ public class Java8ComparatorUnitTest {
     @Test
     public void whenComparing_UsingLambda_thenSorted() {
         System.out.println("************** Java 8 Comaparator **************");
-        Comparator<Player> byRanking = (Player player1, Player player2) -> player1.getRanking() - player2.getRanking();
+        Comparator<Player> byRanking = (Player player1, Player player2) -> Integer.compare(player1.getRanking(), player2.getRanking());
 
         System.out.println("Before Sorting : " + footballTeam);
         Collections.sort(footballTeam, byRanking);

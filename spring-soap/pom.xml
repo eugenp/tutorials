@@ -75,6 +75,7 @@
                     <generateDirectory>${project.basedir}/src/main/java</generateDirectory>
                     <generatePackage>com.baeldung.springsoap.client.gen</generatePackage>
                     <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+                    <noFileHeader>true</noFileHeader>
                     <schemaIncludes>
                         <include>countries.wsdl</include>
                     </schemaIncludes>
