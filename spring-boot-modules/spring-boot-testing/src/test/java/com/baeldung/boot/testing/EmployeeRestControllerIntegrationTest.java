@@ -1,4 +1,4 @@
-package com.baeldung.demo.boottest;
+package com.baeldung.boot.testing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
@@ -14,11 +14,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.IOException;
 import java.util.List;
 
-import com.baeldung.demo.DemoApplication;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,9 +28,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.baeldung.boot.Application;
+import com.baeldung.boot.testing.Employee;
+import com.baeldung.boot.testing.EmployeeRepository;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = DemoApplication.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = Application.class)
 @AutoConfigureMockMvc 
+@EnableAutoConfiguration(exclude=SecurityAutoConfiguration.class)
 // @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @AutoConfigureTestDatabase
 public class EmployeeRestControllerIntegrationTest {
