@@ -74,7 +74,6 @@
     </dependencies>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mockito.version>2.23.0</mockito.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>

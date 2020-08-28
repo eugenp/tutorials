@@ -54,7 +54,7 @@ public class UseZonedDateTimeUnitTest {
     @Test
     public void givenAStringWithTimeZone_whenParsing_thenEqualsExpected() {
         ZonedDateTime resultFromString = zonedDateTime.getZonedDateTimeUsingParseMethod("2015-05-03T10:15:30+01:00[Europe/Paris]");
-        ZonedDateTime resultFromLocalDateTime = ZonedDateTime.of(2015, 5, 3, 11, 15, 30, 0, ZoneId.of("Europe/Paris"));
+        ZonedDateTime resultFromLocalDateTime = ZonedDateTime.of(2015, 5, 3, 10, 15, 30, 0, ZoneId.of("Europe/Paris"));
 
         assertThat(resultFromString.getZone()).isEqualTo(ZoneId.of("Europe/Paris"));
         assertThat(resultFromLocalDateTime.getZone()).isEqualTo(ZoneId.of("Europe/Paris"));

@@ -33,7 +33,6 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons.lang3.version>3.10</commons.lang3.version>
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>

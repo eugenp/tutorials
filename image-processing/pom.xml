@@ -60,6 +60,27 @@
             <artifactId>tesseract-platform</artifactId>
             <version>${tesseract-platform.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>${imgscalr-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>${thumbnailator-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.downgoon</groupId>
+            <artifactId>marvin</artifactId>
+            <version>${marvin-version}</version>
+            <type>pom</type>
+         </dependency>
+        <dependency>
+            <groupId>com.github.downgoon</groupId>
+            <artifactId>MarvinPlugins</artifactId>
+            <version>${marvin-version}</version>
+        </dependency>
     </dependencies>
     
     <properties>
@@ -69,6 +90,9 @@
         <tess4j.version>4.5.1</tess4j.version>
         <tesseract-platform.version>4.1.0-1.5.2</tesseract-platform.version>
         <opencv.version>3.4.2-0</opencv.version>
+        <imgscalr-version>4.2</imgscalr-version>
+        <thumbnailator-version>0.4.11</thumbnailator-version>
+        <marvin-version>1.5.5</marvin-version>
     </properties>
 
 </project>

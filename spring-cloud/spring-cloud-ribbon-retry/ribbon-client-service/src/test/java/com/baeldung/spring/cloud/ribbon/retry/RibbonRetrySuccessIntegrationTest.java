@@ -25,8 +25,8 @@ public class RibbonRetrySuccessIntegrationTest {
 
     @BeforeAll
     public static void setup() {
-        weatherServiceInstance1 = startApp(8081);
-        weatherServiceInstance2 = startApp(8082);
+        weatherServiceInstance1 = startApp(8021);
+        weatherServiceInstance2 = startApp(8022);
     }
 
     private static ConfigurableApplicationContext startApp(int port) {
