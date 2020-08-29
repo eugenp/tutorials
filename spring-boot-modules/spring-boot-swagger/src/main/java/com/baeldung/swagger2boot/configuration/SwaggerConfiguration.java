@@ -22,7 +22,9 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("My REST API", "Some custom description of API.", "API TOS", "Terms of service", new Contact("Umang Budhwar", "www.baeldung.com", "umangbudhwar@gmail.com"), "License of API", "API license URL", Collections.emptyList());
+        return new ApiInfo("My REST API", "Some custom description of API.", "API TOS", "Terms of service",
+          new Contact("Umang Budhwar", "www.baeldung.com", "umangbudhwar@gmail.com"),
+          "License of API", "API license URL", Collections.emptyList());
     }
 
     @Bean
