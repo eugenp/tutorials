@@ -22,6 +22,7 @@
         <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
         <!-- <module>core-java-13</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
+        <!-- <module>core-java-14</module> --> <!-- We haven't upgraded to java 14.-->
         <module>core-java-8</module>
         <module>core-java-8-2</module>
 
@@ -59,15 +60,20 @@
         <module>core-java-concurrency-basic</module>
         <module>core-java-concurrency-basic-2</module>
         <module>core-java-concurrency-collections</module>
+        <module>core-java-concurrency-collections-2</module>
+        <module>core-java-console</module>
 
+        <!--<module>core-java-8-datetime</module>--> <!-- unit test case failure -->
+        <module>core-java-8-datetime-2</module>
         <!-- <module>core-java-date-operations-1</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
         <module>core-java-date-operations-2</module>
         <!-- We haven't upgraded to java 9. -->
         <!-- <module>core-java-datetime-computations</module> <module>core-java-datetime-conversion</module> <module>core-java-datetime-java8</module> <module>core-java-datetime-string</module> -->
+        <module>core-java-8-datetime</module>
 
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
-
+        <module>core-java-exceptions-3</module>
         <module>core-java-function</module>
 
         <module>core-java-io</module>
