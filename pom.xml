@@ -630,6 +630,7 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>java-hexagonal-architecture</module>
 
                 <module>spring-caching</module>
 
@@ -1135,6 +1136,7 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>java-hexagonal-architecture</module>
 
                 <module>spring-caching</module>
 
