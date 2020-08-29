@@ -17,7 +17,7 @@ public class AsynchronousCustomSpringEventsIntegrationTest {
 
     @Test
     public void testCustomSpringEvents() throws InterruptedException {
-        publisher.publishEvent("Hello world!!");
+        publisher.publishCustomEvent("Hello world!!");
         System.out.println("Done publishing asynchronous custom event. ");
     }
 }
