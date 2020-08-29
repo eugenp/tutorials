@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>com.baeldung</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>core-groovy-strings</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>core-groovy-strings</name>
+    <packaging>jar</packaging>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <scriptSourceDirectory>src/main/groovy</scriptSourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-eclipse-compiler</artifactId>
+                <version>${groovy.compiler.version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+                <configuration>
+                    <compilerId>groovy-eclipse-compiler</compilerId>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-eclipse-compiler</artifactId>
+                        <version>${groovy.compiler.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.codehaus.groovy</groupId>
+                        <artifactId>groovy-eclipse-batch</artifactId>
+                        <version>${groovy.version}-01</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <properties>
+        <junit.platform.version>1.0.0</junit.platform.version>
+        <groovy-wslite.version>1.1.3</groovy-wslite.version>
+        <groovy.version>2.5.7</groovy.version>
+        <surefire.plugin.version>2.20.1</surefire.plugin.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <groovy.compiler.version>3.3.0-01</groovy.compiler.version>
+        <java.version>1.8</java.version>
+    </properties>
+    
+</project>
