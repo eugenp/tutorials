@@ -8,7 +8,7 @@ public class PageController {
 
     @GetMapping("/international")
     public String getInternationalPage() {
-        return "international";
+        return "thymeleaf/international";
     }
 
 }
