@@ -10,7 +10,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.ResponseEntity;
 
-import static com.baeldung.spring.cloud.ribbon.retry.TestUtils.setUpServices;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = RibbonClientApp.class)
@@ -25,10 +24,8 @@ public class RibbonRetryFailureIntegrationTest {
 
     @BeforeAll
     public static void setup() {
-        weatherServiceInstance1 = startApp(0);
-        weatherServiceInstance2 = startApp(0);
-
-        setUpServices(weatherServiceInstance1, weatherServiceInstance2);
+        weatherServiceInstance1 = startApp(8021);
+        weatherServiceInstance2 = startApp(8022);
     }
 
     @AfterAll
