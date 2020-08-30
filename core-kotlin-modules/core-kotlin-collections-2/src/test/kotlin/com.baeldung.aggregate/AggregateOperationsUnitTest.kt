@@ -1,4 +1,4 @@
-package com.baeldung.kotlin.collections
+package com.baeldung.aggregate
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals

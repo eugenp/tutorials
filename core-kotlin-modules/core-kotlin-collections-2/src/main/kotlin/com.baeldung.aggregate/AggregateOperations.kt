@@ -1,4 +1,4 @@
-package com.baeldung.kotlin.collections
+package com.baeldung.aggregate
 
 class AggregateOperations {
     private val numbers = listOf(1, 15, 3, 8)
