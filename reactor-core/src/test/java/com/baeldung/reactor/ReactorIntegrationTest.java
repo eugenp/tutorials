@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ReactorIntegrationTest {
 
     @Test
-    public void givenFlux_whenSubscribing_thenStream() throws InterruptedException {
+    public void givenFlux_whenSubscribing_thenStream() {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() throws InterruptedException {
+    public void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -81,7 +81,6 @@ public class ReactorIntegrationTest {
 
                     @Override
                     public void onComplete() {
-                        int ham = 2;
                     }
                 });
 
