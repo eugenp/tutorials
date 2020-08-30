@@ -25,7 +25,7 @@ public class KafkaApplication {
     public static void main(String[] args) throws Exception {
 
         ConfigurableApplicationContext context = SpringApplication.run(KafkaApplication.class, args);
-        
+
         MessageProducer producer = context.getBean(MessageProducer.class);
         MessageListener listener = context.getBean(MessageListener.class);
         /*
@@ -101,15 +101,17 @@ public class KafkaApplication {
         private String greetingTopicName;
 
         public void sendMessage(String message) {
-            
+
             ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topicName, message);
-            
+
             future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
                 @Override
                 public void onSuccess(SendResult<String, String> result) {
-                    System.out.println("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata().offset() + "]");
+                    System.out.println("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata()
+                        .offset() + "]");
                 }
+
                 @Override
                 public void onFailure(Throwable ex) {
                     System.out.println("Unable to send message=[" + message + "] due to : " + ex.getMessage());
@@ -158,7 +160,7 @@ public class KafkaApplication {
             latch.countDown();
         }
 
-        @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = { "0", "3" }))
+        @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = { "0", "3" }), containerFactory = "partitionsKafkaListenerContainerFactory")
         public void listenToParition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
             System.out.println("Received Message: " + message + " from partition: " + partition);
             this.partitionLatch.countDown();

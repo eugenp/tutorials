@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>animal-sniffer-mvn-plugin</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -44,5 +46,5 @@
         <animal-sniffer-maven-plugin.version>1.16</animal-sniffer-maven-plugin.version>
         <org.codehaus.mojo.signature.java16.version>1.0</org.codehaus.mojo.signature.java16.version>
     </properties>
-    
+
 </project>

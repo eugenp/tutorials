@@ -1,8 +1,8 @@
-package org.baeldung.boot.converter;
+package com.baeldung.boot.converter;
 
-import org.baeldung.boot.domain.AbstractEntity;
-import org.baeldung.boot.domain.Bar;
-import org.baeldung.boot.domain.Foo;
+import com.baeldung.boot.domain.AbstractEntity;
+import com.baeldung.boot.domain.Bar;
+import com.baeldung.boot.domain.Foo;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 

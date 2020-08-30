@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-redis</artifactId>
     <version>1.0</version>
-	<name>spring-data-redis</name>
+    <name>spring-data-redis</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -62,7 +62,6 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
             <type>jar</type>
         </dependency>
 
@@ -97,9 +96,7 @@
 
     <properties>
         <cglib.version>3.2.4</cglib.version>
-        <jedis.version>2.9.0</jedis.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
-        <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
         <embedded-redis.version>0.6</embedded-redis.version>
     </properties>
 

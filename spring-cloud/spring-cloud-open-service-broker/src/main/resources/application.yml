@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    openservicebroker:
+      base-path: /broker
+
+mail:
+  system:
+    base-url: http://localhost:8080/mail-system/
+    dashboard:
+      base-url: http://localhost:8080/mail-dashboard/

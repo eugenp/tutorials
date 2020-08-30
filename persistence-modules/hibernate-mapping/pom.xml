@@ -4,14 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hibernate-mapping</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <name>hibernate-mapping</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>persistence-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
 
     <dependencies>
@@ -53,25 +51,28 @@
             <version>${moneta.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+        
     </dependencies>
 
-    <build>
-        <finalName>hibernate-mapping</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <properties>
-        <hibernate.version>5.3.10.Final</hibernate.version>
+        <hibernate.version>5.4.12.Final</hibernate.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
-        <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
+        <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>        
         <money-api.version>1.0.3</money-api.version>
         <moneta.version>1.3</moneta.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-io.version>2.6</commons-io.version>
     </properties>
 
 </project>

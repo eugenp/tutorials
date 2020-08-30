@@ -32,7 +32,7 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
-    
+
     @Bean
     public ProducerFactory<String, Greeting> greetingProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
@@ -41,10 +41,10 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(configProps);
     }
-    
+
     @Bean
     public KafkaTemplate<String, Greeting> greetingKafkaTemplate() {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
-    
+
 }

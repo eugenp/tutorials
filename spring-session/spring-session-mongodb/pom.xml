@@ -25,13 +25,11 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-mongodb</artifactId>
-            <version>${spring-session-data-mongodb.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <version>${spring-boot-starter-data-mongodb.version}</version>
         </dependency>
 
         <dependency>
@@ -55,10 +53,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-session-data-mongodb.version>2.1.3.RELEASE</spring-session-data-mongodb.version>
-        <spring-boot-starter-data-mongodb.version>2.1.5.RELEASE</spring-boot-starter-data-mongodb.version>
-    </properties>
 
 </project>

@@ -41,12 +41,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.java-json-tools</groupId>
+            <artifactId>json-patch</artifactId>
+            <version>${jsonpatch.version}</version>
+        </dependency>
 
     </dependencies>
 
 
     <properties>
         <xstream.version>1.4.9</xstream.version>
+        <jsonpatch.version>1.12</jsonpatch.version>
     </properties>
 
 </project>

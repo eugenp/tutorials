@@ -62,24 +62,6 @@ public class MongoTransactionalLiveTest {
         }
     }
 
-    @Test(expected = MongoCommandException.class)
-    @Transactional
-    public void whenCountDuringMongoTransaction_thenException() {
-        userRepository.save(new User("John", 30));
-        userRepository.save(new User("Ringo", 35));
-        userRepository.count();
-    }
-
-    @Test
-    @Transactional
-    public void whenQueryDuringMongoTransaction_thenSuccess() {
-        userRepository.save(new User("Jane", 20));
-        userRepository.save(new User("Nick", 33));
-        List<User> users = mongoTemplate.find(new Query(), User.class);
-
-        assertTrue(users.size() > 1);
-    }
-
     // ==== Using test instead of before and after due to @transactional doesn't allow list collection
 
     @Test

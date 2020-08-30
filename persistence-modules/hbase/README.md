@@ -1,3 +1,3 @@
 ### Relevant articles
 
-- [HBase with Java](http://www.baeldung.com/hbase)
+- [HBase with Java](https://www.baeldung.com/hbase)

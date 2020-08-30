@@ -1,4 +1,4 @@
-package org.baeldung.boot.web.resolver;
+package com.baeldung.boot.web.resolver;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -3,13 +3,12 @@
 This module contains articles about Spring with Hibernate 4
 
 ### Relevant Articles: 
-- [Guide to Hibernate 4 with Spring](http://www.baeldung.com/hibernate-4-spring)
-- [Hibernate Pagination](http://www.baeldung.com/hibernate-pagination)
-- [Sorting with Hibernate](http://www.baeldung.com/hibernate-sort)
-- [Stored Procedures with Hibernate](http://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
-- [Hibernate: save, persist, update, merge, saveOrUpdate](http://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
-- [Eager/Lazy Loading In Hibernate](http://www.baeldung.com/hibernate-lazy-eager-loading)
-- [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
+- [Guide to Hibernate 4 with Spring](https://www.baeldung.com/hibernate-4-spring)
+- [Hibernate Pagination](https://www.baeldung.com/hibernate-pagination)
+- [Sorting with Hibernate](https://www.baeldung.com/hibernate-sort)
+- [Stored Procedures with Hibernate](https://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
+- [Hibernate: save, persist, update, merge, saveOrUpdate](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
+- [Eager/Lazy Loading In Hibernate](https://www.baeldung.com/hibernate-lazy-eager-loading)
 - [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 
 ### Quick Start

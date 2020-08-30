@@ -4,6 +4,6 @@
 		"http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-       <mapping class="org.baeldung.persistence.model.Event" />
+       <mapping class="com.baeldung.persistence.model.Event" />
     </session-factory>
 </hibernate-configuration>

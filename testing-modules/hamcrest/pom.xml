@@ -18,13 +18,13 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
+            <version>${java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <hamcrest.version>2.0.0.0</hamcrest.version>
+        <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
     </properties>
 
 </project>

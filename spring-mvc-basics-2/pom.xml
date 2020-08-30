@@ -99,12 +99,6 @@
             <version>${jade.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
-            <version>${apache-tiles.version}</version>
-        </dependency>
-
         <!--Testing -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -178,7 +172,6 @@
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
-        <apache-tiles.version>3.0.8</apache-tiles.version>
         <javax.mail.version>1.6.1</javax.mail.version>
     </properties>
 

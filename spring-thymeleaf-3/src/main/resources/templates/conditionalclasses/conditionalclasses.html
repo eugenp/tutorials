@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Conditional CSS Classes in Thymeleaf</title>
+</head>
+<body>
+<h2>The Goal</h2>
+<p>
+   <span class="base condition-true">
+      I have two classes: "base" and either "condition-true" or "condition-false" depending on a server-side condition.
+   </span>
+</p>
+<h2>Using th:if</h2>
+<p>
+   <span th:if="${condition}" class="base condition-true">
+      This HTML is duplicated. We probably want a better solution.
+   </span>
+   <span th:if="${!condition}" class="base condition-false">
+      This HTML is duplicated. We probably want a better solution.
+   </span>
+</p>
+<h2>Using th:attr</h2>
+<p>
+   <span th:attr="class=${condition ? 'base condition-true' : 'base condition-false'}">
+      This HTML is consolidated, which is good, but the Thymeleaf attribute still has some redundancy in it.
+   </span>
+</p>
+<h2>Using th:class</h2>
+<p>
+   <span th:class="'base '+${condition ? 'condition-true' : 'condition-false'}">
+      The base CSS class still has to be appended with String concatenation. We can do a little bit better.
+   </span>
+</p>
+<h2>Using th:classappend</h2>
+<p>
+   <span class="base" th:classappend="${condition ? 'condition-true' : 'condition-false'}">
+      This HTML is consolidated, and the conditional class is appended separately from the static base class.
+   </span>
+</p>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.baeldung.morphia.domain;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,26 +31,11 @@ public class Book {
     private double cost;
     @Reference
     private Set<Book> companionBooks;
+    @Property
+    private LocalDateTime publishDate;
 
     public Book() {
 
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public void addCompanionBooks(Book book) {
-        if (companionBooks != null)
-            this.companionBooks.add(book);
     }
 
     public Book(String isbn, String title, String author, double cost, Publisher publisher) {
@@ -58,6 +45,71 @@ public class Book {
         this.cost = cost;
         this.publisher = publisher;
         this.companionBooks = new HashSet<>();
+    }
+
+    // Getters and setters ...
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public Book setIsbn(String isbn) {
+        this.isbn = isbn;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Book setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public Book setAuthor(String author) {
+        this.author = author;
+        return this;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public Book setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+        return this;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public Book setCost(double cost) {
+        this.cost = cost;
+        return this;
+    }
+
+    public LocalDateTime getPublishDate() {
+        return publishDate;
+    }
+
+    public Book setPublishDate(LocalDateTime publishDate) {
+        this.publishDate = publishDate;
+        return this;
+    }
+
+    public Set<Book> getCompanionBooks() {
+        return companionBooks;
+    }
+
+    public Book addCompanionBooks(Book book) {
+        if (companionBooks != null)
+            this.companionBooks.add(book);
+        return this;
     }
 
     @Override

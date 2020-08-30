@@ -6,9 +6,9 @@
     
 	<!-- Autowired injection -->
 
-    <bean id="item" class="org.baeldung.store.ItemImpl1" />
+    <bean id="item" class="com.baeldung.store.ItemImpl1" />
 	
-    <bean id="xml-store-by-autowire-type" class="org.baeldung.store.Store" autowire="byType">
+    <bean id="xml-store-by-autowire-type" class="com.baeldung.store.Store" autowire="byType">
     </bean>
 
 </beans>

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -23,6 +24,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baeldung.hibernate.audit.AuditorAwareImpl;
 import com.baeldung.persistence.dao.IBarAuditableDao;
 import com.baeldung.persistence.dao.IBarDao;
 import com.baeldung.persistence.dao.IFooAuditableDao;
@@ -46,7 +48,7 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.baeldung.persistence" }, transactionManagerRef = "jpaTransactionManager")
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 @PropertySource({ "classpath:persistence-h2.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
 public class PersistenceConfig {
@@ -58,6 +60,11 @@ public class PersistenceConfig {
         super();
     }
 
+    @Bean("auditorProvider")
+    public AuditorAware<String> auditorProvider() {
+        return new AuditorAwareImpl();
+    }
+    
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();

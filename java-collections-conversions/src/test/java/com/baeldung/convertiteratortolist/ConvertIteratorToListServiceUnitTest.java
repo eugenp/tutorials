@@ -23,7 +23,7 @@ public class ConvertIteratorToListServiceUnitTest {
     Iterator<Integer> iterator;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         iterator = Arrays.asList(1, 2, 3)
             .iterator();
     }
@@ -31,7 +31,7 @@ public class ConvertIteratorToListServiceUnitTest {
     @Test
     public void givenAnIterator_whenConvertIteratorToListUsingWhileLoop_thenReturnAList() {
 
-        List<Integer> actualList = new ArrayList<Integer>();
+        List<Integer> actualList = new ArrayList<>();
 
         // Convert Iterator to List using while loop dsf
         while (iterator.hasNext()) {
@@ -44,7 +44,7 @@ public class ConvertIteratorToListServiceUnitTest {
 
     @Test
     public void givenAnIterator_whenConvertIteratorToListAfterJava8_thenReturnAList() {
-        List<Integer> actualList = new ArrayList<Integer>();
+        List<Integer> actualList = new ArrayList<>();
 
         // Convert Iterator to List using Java 8
         iterator.forEachRemaining(actualList::add);

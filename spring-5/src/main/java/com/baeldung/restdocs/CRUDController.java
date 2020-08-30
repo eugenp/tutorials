@@ -1,6 +1,6 @@
 package com.baeldung.restdocs;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 import java.util.ArrayList;
 import java.util.List;

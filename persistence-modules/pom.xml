@@ -10,21 +10,25 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
 
     <modules>
         <module>activejdbc</module>
+        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
         <module>deltaspike</module>
         <module>elasticsearch</module>
-        <module>flyway</module>
+        <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
-        <module>hibernate5-2</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
+        <module>hibernate-annotations</module>
+        <module>hibernate-libraries</module>
+        <module>hibernate-jpa</module>
+        <module>hibernate-queries</module>
+        <module>hibernate-enterprise</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
@@ -42,7 +46,7 @@
         <module>redis</module>
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
-        <module>spring-boot-jdbi</module>
+        <module>spring-boot-persistence-2</module>
         <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
@@ -55,10 +59,16 @@
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
         <module>spring-data-geode</module>
-        <module>spring-data-jpa</module>
-        <module>spring-data-jpa-2</module>
-        <module>spring-data-jpa-3</module>
-        <module>spring-data-jpa-4</module>
+
+        <module>spring-data-jpa-annotations</module>
+        <module>spring-data-jpa-crud</module>
+        <module>spring-data-jpa-enterprise</module>
+        <module>spring-data-jpa-filtering</module>
+        <module>spring-data-jpa-query</module>
+        <module>spring-data-jpa-repo</module>
+
+        <module>spring-data-jdbc</module>
+
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
@@ -70,6 +80,11 @@
         <module>spring-jpa</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
+        <module>spring-persistence-simple-2</module>
     </modules>
 
+    <properties>
+        <!-- persistence -->
+        <hibernate.version>5.2.17.Final</hibernate.version>
+    </properties>
 </project>

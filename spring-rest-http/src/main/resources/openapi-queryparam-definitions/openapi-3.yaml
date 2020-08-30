@@ -1,0 +1,37 @@
+openapi: 3.0.1
+info:
+  title: Sample API to send JSON objects as query parameters using OpenAPI 3
+  description: This is a sample server.
+  version: 1.0.0
+servers:
+- url: /api
+tags:
+- name: tickets
+  description: Send Tickets as JSON Objects
+paths:
+  /tickets:
+    get:
+      tags:
+      - tickets
+      summary: Send an JSON Object as a query param
+      parameters:
+      - name: params
+        in: query
+        description: '{"type":"foo","color":"green"}'
+        required: true
+        schema:
+          type: object
+          properties:
+            type:
+              type: "string"
+            color:
+              type: "string"
+      responses:
+        200:
+          description: Successful operation
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not found

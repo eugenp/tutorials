@@ -52,4 +52,15 @@
     <!-- End: Mapping by ControllerClassNameHandlerMapping with prefix -->
 
 
+    <bean class="org.crsh.spring.SpringWebBootstrap">
+        <property name="cmdMountPointConfig"
+	      value="war:/WEB-INF/crash/commands/" />
+        <property name="confMountPointConfig"
+          value="war:/WEB-INF/crash/" />
+        <property name="config">
+            <props>
+                <prop key="crash.telnet.port">5000</prop>
+            </props>
+        </property>
+    </bean>
 </beans>

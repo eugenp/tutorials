@@ -1,13 +1,13 @@
 package com.baeldung.web.controller;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.Resources;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +41,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/{customerId}/orders", produces = { "application/hal+json" })
-    public Resources<Order> getOrdersForCustomer(@PathVariable final String customerId) {
+    public CollectionModel<Order> getOrdersForCustomer(@PathVariable final String customerId) {
         final List<Order> orders = orderService.getAllOrdersForCustomer(customerId);
         for (final Order order : orders) {
             final Link selfLink = linkTo(
@@ -50,12 +50,12 @@ public class CustomerController {
         }
 
         Link link = linkTo(methodOn(CustomerController.class).getOrdersForCustomer(customerId)).withSelfRel();
-        Resources<Order> result = new Resources<>(orders, link);
+        CollectionModel<Order> result = new CollectionModel<>(orders, link);
         return result;
     }
 
     @GetMapping(produces = { "application/hal+json" })
-    public Resources<Customer> getAllCustomers() {
+    public CollectionModel<Customer> getAllCustomers() {
         final List<Customer> allCustomers = customerService.allCustomers();
 
         for (final Customer customer : allCustomers) {
@@ -72,7 +72,7 @@ public class CustomerController {
         }
 
         Link link = linkTo(CustomerController.class).withSelfRel();
-        Resources<Customer> result = new Resources<>(allCustomers, link);
+        CollectionModel<Customer> result = new CollectionModel<>(allCustomers, link);
         return result;
     }
 

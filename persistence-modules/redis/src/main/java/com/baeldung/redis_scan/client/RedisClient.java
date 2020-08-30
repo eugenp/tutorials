@@ -145,5 +145,10 @@ public class RedisClient {
             log.error("Exception caught in flushAll", ex);
         }
     }
+    
+    public void destroyInstance() {
+        jedisPool = null;
+        instance = null;
+    }
 
 }

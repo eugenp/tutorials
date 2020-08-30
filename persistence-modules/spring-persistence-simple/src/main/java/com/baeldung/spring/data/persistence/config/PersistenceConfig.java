@@ -1,9 +1,6 @@
 package com.baeldung.spring.data.persistence.config;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,14 +16,15 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.google.common.base.Preconditions;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-${envTarget:h2}.properties" })
 @ComponentScan({ "com.baeldung.spring.data.persistence" })
-// @ImportResource("classpath*:springDataPersistenceConfig.xml")
-@EnableJpaRepositories(basePackages = { "com.baeldung.spring.data.persistence.dao", "com.baeldung.spring.data.persistence.jpaquery" })
+//@ImportResource("classpath*:*springDataJpaRepositoriesConfig.xml")
+@EnableJpaRepositories("com.baeldung.spring.data.persistence.repository")
 public class PersistenceConfig {
 
     @Autowired
@@ -40,10 +38,9 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.spring.data.persistence.model" });
+        em.setPackagesToScan("com.baeldung.spring.data.persistence.model");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        // vendorAdapter.set
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
 
@@ -78,7 +75,7 @@ public class PersistenceConfig {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-        // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
+
         return hibernateProperties;
     }
 

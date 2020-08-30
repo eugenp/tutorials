@@ -21,7 +21,7 @@
         <dependency>
             <groupId>io.reactivex.rxjava2</groupId>
             <artifactId>rxkotlin</artifactId>
-            <version>2.3.0</version>
+            <version>${rxkotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -86,6 +86,7 @@
         <guava.version>27.1-jre</guava.version>
         <mockk.version>1.9.3</mockk.version>
         <kotlinx-collections-immutable.version>0.1</kotlinx-collections-immutable.version>
+        <rxkotlin.version>2.3.0</rxkotlin.version>
     </properties>
 
 </project>

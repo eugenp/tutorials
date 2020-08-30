@@ -1,8 +1,8 @@
-package org.baeldung.boot.controller;
+package com.baeldung.boot.controller;
 
-import org.baeldung.boot.domain.GenericEntity;
-import org.baeldung.boot.domain.Modes;
-import org.baeldung.boot.web.resolver.Version;
+import com.baeldung.boot.domain.GenericEntity;
+import com.baeldung.boot.domain.Modes;
+import com.baeldung.boot.web.resolver.Version;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

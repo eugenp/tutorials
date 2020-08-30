@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +28,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.persistence.service.IFooService;
+import com.baeldung.web.exception.CustomException1;
+import com.baeldung.web.exception.CustomException2;
 import com.baeldung.web.exception.MyResourceNotFoundException;
 import com.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
 import com.baeldung.web.hateoas.event.ResourceCreatedEvent;
@@ -36,6 +41,8 @@ import com.google.common.base.Preconditions;
 @RequestMapping(value = "/foos")
 public class FooController {
 
+    private static final Logger logger = LoggerFactory.getLogger(FooController.class);
+    
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
@@ -136,5 +143,11 @@ public class FooController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") final Long id) {
         service.deleteById(id);
+    }
+    
+    @ExceptionHandler({ CustomException1.class, CustomException2.class })
+    public void handleException(final Exception ex) {
+        final String error = "Application specific error handling";
+        logger.error(error, ex);
     }
 }

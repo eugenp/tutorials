@@ -1,14 +1,13 @@
 package com.baeldung.persistence.model;
 
-import java.util.Map;
-
-import org.springframework.hateoas.ResourceSupport;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import org.springframework.hateoas.RepresentationModel;
+
+import java.util.Map;
 
 @JsonInclude(Include.NON_NULL)
-public class Customer extends ResourceSupport {
+public class Customer extends RepresentationModel<Customer> {
     private String customerId;
     private String customerName;
     private String companyName;

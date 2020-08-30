@@ -1,15 +1,14 @@
 package com.baeldung.handlebars;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
+import org.junit.Test;
+
 import java.io.IOException;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Showcases the built-in template helpers.
@@ -20,7 +19,6 @@ public class BuiltinHelperUnitTest {
 
     private TemplateLoader templateLoader = new ClassPathTemplateLoader("/handlebars", ".html");
 
-    @Ignore
     @Test
     public void whenUsedWith_ThenContextChanges() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -30,10 +28,9 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
+        assertThat(templateString).contains("<h4>I live in World</h4>");
     }
 
-    @Ignore
     @Test
     public void whenUsedWithMustacheStyle_ThenContextChanges() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -43,10 +40,9 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>I live in World</h4>\n");
+        assertThat(templateString).contains("<h4>I live in World</h4>");
     }
 
-    @Ignore
     @Test
     public void whenUsedEach_ThenIterates() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -59,11 +55,10 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<span>Java is my friend.</span>\n"
-                                               + "\n<span>Spring is my friend.</span>\n");
+        assertThat(templateString)
+          .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
     }
 
-    @Ignore
     @Test
     public void whenUsedEachMustacheStyle_ThenIterates() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -76,11 +71,10 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<span>Java is my friend.</span>\n"
-                                               + "\n<span>Spring is my friend.</span>\n");
+        assertThat(templateString)
+          .contains("<span>Java is my friend.</span>", "<span>Spring is my friend.</span>");
     }
 
-    @Ignore
     @Test
     public void whenUsedIf_ThenPutsCondition() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -90,10 +84,9 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
+        assertThat(templateString).contains("<h4>Baeldung is busy.</h4>");
     }
 
-    @Ignore
     @Test
     public void whenUsedIfMustacheStyle_ThenPutsCondition() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -103,7 +96,7 @@ public class BuiltinHelperUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<h4>Baeldung is busy.</h4>\n");
+        assertThat(templateString).contains("<h4>Baeldung is busy.</h4>");
     }
 
     private Person getPerson(String name) {

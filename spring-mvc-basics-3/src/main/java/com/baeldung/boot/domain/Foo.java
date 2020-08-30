@@ -1,4 +1,4 @@
-package org.baeldung.boot.domain;
+package com.baeldung.boot.domain;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 public class Foo extends AbstractEntity {

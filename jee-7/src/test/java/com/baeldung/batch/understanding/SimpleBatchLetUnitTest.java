@@ -1,11 +1,14 @@
 package com.baeldung.batch.understanding;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Properties;
+
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.JobExecution;
+
 import org.junit.jupiter.api.Test;
 
 class SimpleBatchLetUnitTest {

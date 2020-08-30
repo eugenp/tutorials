@@ -1,15 +1,14 @@
 package com.baeldung.handlebars;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
 import com.github.jknack.handlebars.io.TemplateLoader;
+import org.junit.Test;
+
 import java.io.IOException;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Showcases reusing the existing templates.
@@ -20,7 +19,6 @@ public class ReusingTemplatesUnitTest {
 
     private TemplateLoader templateLoader = new ClassPathTemplateLoader("/handlebars", ".html");
 
-    @Ignore
     @Test
     public void whenOtherTemplateIsReferenced_ThenCanReuse() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -30,10 +28,10 @@ public class ReusingTemplatesUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("<h4>Hi Baeldung!</h4>\n<p>This is the page Baeldung</p>");
+        assertThat(templateString)
+          .contains("<h4>Hi Baeldung!</h4>", "<p>This is the page Baeldung</p>");
     }
 
-    @Ignore
     @Test
     public void whenBlockIsDefined_ThenCanOverrideWithPartial() throws IOException {
         Handlebars handlebars = new Handlebars(templateLoader);
@@ -43,11 +41,11 @@ public class ReusingTemplatesUnitTest {
 
         String templateString = template.apply(person);
 
-        assertThat(templateString).isEqualTo("\n<html>\n"
-                                               + "<body>\n"
-                                               + "\n  This is the intro\n\n"
-                                               + "\n  Hi there!\n\n"
-                                               + "</body>\n"
-                                               + "</html>");
+        assertThat(templateString).contains("<html>",
+          "<body>",
+          "This is the intro",
+          "Hi there!",
+          "</body>",
+          "</html>");
     }
 }

@@ -141,6 +141,10 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+        </dependency>
 
         <!-- web -->
 
@@ -177,14 +181,9 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- <dependency> -->
-        <!-- <groupId>org.hamcrest</groupId> -->
-        <!-- <artifactId>hamcrest-core</artifactId> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
+            <artifactId>hamcrest</artifactId>
             <scope>test</scope>
         </dependency>
 

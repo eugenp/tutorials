@@ -59,20 +59,14 @@
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
-            <version>${org.hamcrest.version}</version>
+            <version>${hamcrest-all.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -342,6 +336,7 @@
                 <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
+                <module>algorithms-miscellaneous-6</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
@@ -349,26 +344,17 @@
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-avro</module>
-                <module>apache-bval</module>
-                <module>apache-curator</module>
                 <module>apache-cxf</module>
-                <module>apache-fop</module>
-                <module>apache-geode</module>
-                <module>apache-meecrowave</module>
+                <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
-                <module>apache-opennlp</module>
                 <module>apache-poi</module>
-                <module>apache-pulsar</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
-                <module>apache-solrj</module>
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
-                <module>apache-zookeeper</module>
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -376,6 +362,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
@@ -386,8 +373,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
-                <module>cas</module>
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -408,6 +394,7 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
+                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -428,12 +415,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>
-                <module>guava</module>
-                <module>guava-collections</module>
-                <module>guava-collections-map</module>
-                <module>guava-collections-set</module>
-                <module>guava-io</module>
+                <module>gson</module>                
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -448,22 +430,21 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-math</module>
-                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
+                <module>java-numbers-4</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -497,7 +478,8 @@
                 <module>kotlin-quasar</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>libraries-2</module>
+		<module>language-interop</module>
+		<module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -507,10 +489,13 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -521,7 +506,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -536,7 +521,9 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
+                <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
                 <module>optaplanner</module>
@@ -565,6 +552,10 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+
+				<module>atomikos</module>
+				<module>reactive-systems</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -636,49 +627,8 @@
 
                 <module>spring-batch</module>
                 <module>spring-bom</module>
-
-                <module>spring-boot</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-admin</module>
-                <module>spring-boot-angular</module>
-                <module>spring-boot-artifacts</module>
-                <module>spring-boot-autoconfiguration</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-camel</module>
-                <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
-                <module>spring-boot-client</module>
-                <module>spring-boot-config-jpa-error</module>
-                <module>spring-boot-crud</module>
-                <module>spring-boot-ctx-fluent</module>
-                <module>spring-boot-custom-starter</module>
-                <module>spring-boot-data</module>
-                <module>spring-boot-deployment</module>
-                <module>spring-boot-di</module>
-                <module>spring-boot-environment</module>
-                <module>spring-boot-flowable</module>
-                <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
-                <module>spring-boot-jasypt</module>
-                <module>spring-boot-keycloak</module>
-                <module>spring-boot-kotlin</module>
-                <module>spring-boot-libraries</module>
-                <module>spring-boot-logging-log4j2</module>
-                <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-birt</module>
-                <module>spring-boot-nashorn</module>
-                <module>spring-boot-parent</module>
-                <module>spring-boot-performance</module>
-                <module>spring-boot-properties</module>
-                <module>spring-boot-property-exp</module>
-
                 <module>spring-boot-rest</module>
-                <module>spring-boot-runtime</module>
-                <module>spring-boot-runtime/disabling-console-jul</module>
-                <module>spring-boot-runtime/disabling-console-log4j2</module>
-                <module>spring-boot-runtime/disabling-console-logback</module>
-                <module>spring-boot-security</module>
-                <module>spring-boot-springdoc</module>
-                <module>spring-boot-testing</module>
-                <module>spring-boot-vue</module>
 
                 <module>spring-caching</module>
 
@@ -690,11 +640,13 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
@@ -730,6 +682,7 @@
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
+                <module>spring-mvc-java-2</module>
                 <module>spring-mvc-kotlin</module>
 
                 <module>spring-mvc-velocity</module>
@@ -751,6 +704,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
+                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
@@ -766,8 +720,10 @@
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
 
+                <module>spring-threads</module>
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -845,9 +801,13 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -890,6 +850,7 @@
                 <module>algorithms-miscellaneous-3</module>
                 <module>algorithms-miscellaneous-4</module>
                 <module>algorithms-miscellaneous-5</module>
+                <module>algorithms-miscellaneous-6</module>
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
@@ -897,26 +858,17 @@
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-avro</module>
-                <module>apache-bval</module>
-                <module>apache-curator</module>
                 <module>apache-cxf</module>
-                <module>apache-fop</module>
-                <module>apache-geode</module>
-                <module>apache-meecrowave</module>
+                <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
-                <module>apache-opennlp</module>
                 <module>apache-poi</module>
-                <module>apache-pulsar</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
-                <module>apache-solrj</module>
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
-                <module>apache-zookeeper</module>
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -934,8 +886,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-
-                <module>cas</module>
+                <!-- <module>cas</module> --> <!-- Not a maven project -->
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -956,6 +907,7 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
+                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -976,12 +928,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>
-                <module>guava</module>
-                <module>guava-collections</module>
-                <module>guava-collections-map</module>
-                <module>guava-collections-set</module>
-                <module>guava-io</module>
+                <module>gson</module>                
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -996,22 +943,21 @@
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
+                <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
                 <module>java-collections-conversions</module>
                 <module>java-collections-conversions-2</module>
-                <module>java-collections-maps</module>
-                <module>java-collections-maps-2</module>
+                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-math</module>
-                <module>java-math-2</module> <!-- Added for BAEL-3506 -->
                 <module>java-numbers</module>
                 <module>java-numbers-2</module>
                 <module>java-numbers-3</module>
+                <module>java-numbers-4</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1046,6 +992,7 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1054,10 +1001,12 @@
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-http</module>
+                <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
@@ -1068,7 +1017,7 @@
                 <module>machine-learning</module>
                 <module>mapstruct</module>
 
-                <module>maven-all</module>
+                <module>maven-modules</module>
                 <module>maven-archetype</module>
                 <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
@@ -1083,7 +1032,9 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
+                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
                 <module>ninja</module>
+                <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
                 <module>optaplanner</module>
@@ -1112,6 +1063,10 @@
                 <module>rxjava-libraries</module>
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
+
+				<module>atomikos</module>
+				<module>reactive-systems</module>
+				<module>slack</module>
             </modules>
 
         </profile>
@@ -1175,50 +1130,8 @@
 
                 <module>spring-batch</module>
                 <module>spring-bom</module>
-
-                <module>spring-boot</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-admin</module>
-                <module>spring-boot-angular</module>
-                <module>spring-boot-artifacts</module>
-                <module>spring-boot-autoconfiguration</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-camel</module>
-                <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
-                <module>spring-boot-client</module>
-                <module>spring-boot-config-jpa-error</module>
-                <module>spring-boot-crud</module>
-                <module>spring-boot-ctx-fluent</module>
-                <module>spring-boot-custom-starter</module>
-                <module>spring-boot-data</module>
-                <module>spring-boot-deployment</module>
-                <module>spring-boot-di</module>
-                <module>spring-boot-environment</module>
-                <module>spring-boot-flowable</module>
-                <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
-                <module>spring-boot-jasypt</module>
-                <module>spring-boot-keycloak</module>
-                <module>spring-boot-kotlin</module>
-                <module>spring-boot-libraries</module>
-                <module>spring-boot-logging-log4j2</module>
-                <module>spring-boot-mvc</module>
-                <module>spring-boot-mvc-2</module>
-                <module>spring-boot-mvc-birt</module>
-                <module>spring-boot-nashorn</module>
-                <module>spring-boot-parent</module>
-                <module>spring-boot-performance</module>
-                <module>spring-boot-properties</module>
-                <module>spring-boot-property-exp</module>
-
                 <module>spring-boot-rest</module>
-                <module>spring-boot-runtime</module>
-                <module>spring-boot-runtime/disabling-console-jul</module>
-                <module>spring-boot-runtime/disabling-console-log4j2</module>
-                <module>spring-boot-runtime/disabling-console-logback</module>
-                <module>spring-boot-security</module>
-                <module>spring-boot-springdoc</module>
-                <module>spring-boot-testing</module>
-                <module>spring-boot-vue</module>
 
                 <module>spring-caching</module>
 
@@ -1230,6 +1143,7 @@
                 <module>spring-core</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-core-4</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
@@ -1270,12 +1184,14 @@
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
+				<module>spring-mvc-java-2</module>
                 <module>spring-mvc-kotlin</module>
 
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
+                <module>spring-mvc-crash</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1291,6 +1207,7 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
+                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
@@ -1308,6 +1225,7 @@
 
                 <module>spring-thymeleaf</module>
                 <module>spring-thymeleaf-2</module>
+                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -1338,6 +1256,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
@@ -1377,10 +1296,44 @@
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
+                <module>vavr-2</module>
             </modules>
+
+        </profile>
+
+        <profile>
+            <id>live-all</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/SpringContextTest.java</exclude>
+                                <exclude>**/*UnitTest.java</exclude>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
 
         </profile>
 
@@ -1407,17 +1360,19 @@
         <gib.enabled>false</gib.enabled>
 
         <junit.version>4.12</junit.version>
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <mockito.version>2.21.0</mockito.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <hamcrest-all.version>1.3</hamcrest-all.version>
+        <mockito.version>3.3.0</mockito.version>
+        <byte-buddy.version>1.10.5</byte-buddy.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
+        <org.slf4j.version>1.7.30</org.slf4j.version>
+        <logback.version>1.2.3</logback.version>
 
         <!-- plugins -->
         <!-- can't upgrade the plugin yet; as there is an issue with 2.22 no longer running all the tests-->
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
@@ -1425,7 +1380,6 @@
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator.version>1.19</jmh-generator.version>
-        <hamcrest-all.version>1.3</hamcrest-all.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <commons-io.version>2.5</commons-io.version>
@@ -1443,12 +1397,12 @@
         <junit-platform.version>1.2.0</junit-platform.version>
         <junit-jupiter.version>5.2.0</junit-jupiter.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
-        <maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.8</gitflow-incremental-builder.version>
-        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
-        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <lombok.version>1.16.12</lombok.version>
         <h2.version>1.4.197</h2.version>
     </properties>

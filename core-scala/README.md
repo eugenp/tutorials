@@ -1,7 +1,3 @@
-## Core Scala
+### Relevant Articles:
 
-This module contains articles about Scala's core features
-
-### Relevant Articles: 
-
-- [Introduction to Scala](https://www.baeldung.com/scala-intro)
+- [Pattern Matching in Scala](https://www.baeldung.com/scala/pattern-matching)

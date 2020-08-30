@@ -1,4 +1,4 @@
-package org.baeldung.cachedrequest;
+package com.baeldung.cachedrequest;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

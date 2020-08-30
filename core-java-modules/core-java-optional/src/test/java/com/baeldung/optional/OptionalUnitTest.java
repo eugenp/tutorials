@@ -86,6 +86,15 @@ public class OptionalUnitTest {
         Optional<String> opt = Optional.ofNullable(null);
         String name = opt.get();
     }
+    
+    @Test
+    public void givenAnEmptyOptional_thenIsEmptyBehavesAsExpected() {
+        Optional<String> opt = Optional.of("Baeldung");
+        assertTrue(opt.isPresent());
+     
+        opt = Optional.ofNullable(null);
+        assertFalse(opt.isPresent());
+    }
 
     // Conditional Return With filter()
     @Test

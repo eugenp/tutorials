@@ -1,6 +1,6 @@
-package org.baeldung.boot.converter.controller;
+package com.baeldung.boot.converter.controller;
 
-import org.baeldung.boot.domain.Employee;
+import com.baeldung.boot.domain.Employee;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

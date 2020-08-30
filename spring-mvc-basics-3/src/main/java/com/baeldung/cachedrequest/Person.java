@@ -1,4 +1,4 @@
-package org.baeldung.cachedrequest;
+package com.baeldung.cachedrequest;
 
 public class Person {
     private String firstName;

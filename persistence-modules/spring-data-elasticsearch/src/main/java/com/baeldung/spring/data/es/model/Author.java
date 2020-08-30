@@ -1,7 +1,12 @@
 package com.baeldung.spring.data.es.model;
 
+import static org.springframework.data.elasticsearch.annotations.FieldType.Text;
+
+import org.springframework.data.elasticsearch.annotations.Field;
+
 public class Author {
 
+    @Field(type = Text)
     private String name;
 
     public Author() {

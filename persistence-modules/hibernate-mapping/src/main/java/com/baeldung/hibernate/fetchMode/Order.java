@@ -1,4 +1,4 @@
-package com.baeldung.fetchMode;
+package com.baeldung.hibernate.fetchMode;
 
 import javax.persistence.*;
 

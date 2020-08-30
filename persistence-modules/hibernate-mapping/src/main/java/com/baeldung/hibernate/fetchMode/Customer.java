@@ -1,4 +1,4 @@
-package com.baeldung.fetchMode;
+package com.baeldung.hibernate.fetchMode;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

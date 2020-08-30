@@ -16,7 +16,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.config.parent</param-value>
+        <param-value>com.baeldung.config.parent</param-value>
     </context-param>
 
     <listener>
@@ -29,7 +29,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- <init-param> -->
         <!-- <param-name>contextConfigLocation</param-name> -->
-        <!-- <param-value>org.baeldung.config.child</param-value> -->
+        <!-- <param-value>com.baeldung.config.child</param-value> -->
         <!-- </init-param> -->
         <load-on-startup>1</load-on-startup>
     </servlet>

@@ -4,20 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.quarkus.liquibase</groupId>
-    <artifactId>quarkus-liquibase-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>quarkus-liquibase-parent</name>
+    <artifactId>quarkus-liquibase</artifactId>
+    <name>quarkus-liquibase</name>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>com.baeldung.quarkus.extension</groupId>
+        <artifactId>quarkus-extension</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    
     <modules>
         <module>runtime</module>
         <module>deployment</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <quarkus.version>1.0.0.Final</quarkus.version>
     </properties>
 

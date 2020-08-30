@@ -31,10 +31,10 @@ public class UserServerUnitTest extends JUnitRouteTest {
             .assertStatusCode(404);
 
     appRoute.run(HttpRequest.DELETE("/users/1"))
-            .assertStatusCode(200);
+            .assertStatusCode(405);
 
     appRoute.run(HttpRequest.DELETE("/users/42"))
-            .assertStatusCode(200);
+            .assertStatusCode(405);
 
     appRoute.run(HttpRequest.POST("/users")
             .withEntity(HttpEntities.create(ContentTypes.APPLICATION_JSON, zaphod())))

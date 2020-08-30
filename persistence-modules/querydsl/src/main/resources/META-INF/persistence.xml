@@ -17,7 +17,7 @@
     </persistence-unit>
 
     <!-- PersistenceUnit for Intro to QueryDSL -->
-    <persistence-unit name="org.baeldung.querydsl.intro">
+    <persistence-unit name="com.baeldung.querydsl.intro">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>

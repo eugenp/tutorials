@@ -9,7 +9,7 @@ import com.baeldung.concurrent.threadsafety.callables.ReentranReadWriteLockCount
 import com.baeldung.concurrent.threadsafety.callables.ReentrantLockCounterCallable;
 import com.baeldung.concurrent.threadsafety.services.AtomicCounter;
 import com.baeldung.concurrent.threadsafety.services.Counter;
-import com.baeldung.concurrent.threadsafety.services.ExtrinsicLockCounter;
+import com.baeldung.concurrent.threadsafety.services.ObjectLockCounter;
 import com.baeldung.concurrent.threadsafety.services.MessageService;
 import com.baeldung.concurrent.threadsafety.services.ReentrantLockCounter;
 import com.baeldung.concurrent.threadsafety.services.ReentrantReadWriteLockCounter;
@@ -48,9 +48,9 @@ public class Application {
         System.out.println(future3.get());
         System.out.println(future4.get());
         
-        ExtrinsicLockCounter extrinsicLockCounter = new ExtrinsicLockCounter();
-        Future<Integer> future5 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(extrinsicLockCounter));
-        Future<Integer> future6 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(extrinsicLockCounter));
+        ObjectLockCounter objectLockCounter = new ObjectLockCounter();
+        Future<Integer> future5 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(objectLockCounter));
+        Future<Integer> future6 = (Future<Integer>) executorService.submit(new ExtrinsicLockCounterCallable(objectLockCounter));
         System.out.println(future5.get());
         System.out.println(future6.get());
         

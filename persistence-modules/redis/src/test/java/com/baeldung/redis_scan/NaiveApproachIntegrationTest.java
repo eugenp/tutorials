@@ -25,13 +25,14 @@ public class NaiveApproachIntegrationTest {
         s.close();
 
         redisServer = new RedisServer(port);
-        redisServer.start();
     }
 
     @AfterClass
     public static void destroy() {
-        if (redisServer.isActive())
+        if (redisServer.isActive()) {
             redisServer.stop();
+            redisClient.destroyInstance();
+        }
     }
 
     @Before

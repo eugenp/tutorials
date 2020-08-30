@@ -2,6 +2,9 @@ package com.baeldung.dddhexagonalspring.infrastracture.repository;
 
 import com.baeldung.dddhexagonalspring.domain.Order;
 import com.baeldung.dddhexagonalspring.domain.Product;
+import com.baeldung.dddhexagonalspring.infrastracture.repository.mongo.MongoDbOrderRepository;
+import com.baeldung.dddhexagonalspring.infrastracture.repository.mongo.SpringDataMongoOrderRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +17,12 @@ import static org.mockito.Mockito.*;
 
 class MongoDbOrderRepositoryUnitTest {
 
-    private SpringDataOrderRepository springDataOrderRepository;
+    private SpringDataMongoOrderRepository springDataOrderRepository;
     private MongoDbOrderRepository tested;
 
     @BeforeEach
-    void setUp(){
-        springDataOrderRepository = mock(SpringDataOrderRepository.class);
+    void setUp() {
+        springDataOrderRepository = mock(SpringDataMongoOrderRepository.class);
 
         tested = new MongoDbOrderRepository(springDataOrderRepository);
     }

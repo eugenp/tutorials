@@ -1,4 +1,4 @@
-package org.baeldung.boot.web.resolver;
+package com.baeldung.boot.web.resolver;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
