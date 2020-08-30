@@ -1,13 +1,14 @@
-package com.baeldung.demo.boottest;
+package com.baeldung.boot.testing;
 
-import com.baeldung.demo.boottest.Employee;
-import com.baeldung.demo.boottest.EmployeeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.boot.testing.Employee;
+import com.baeldung.boot.testing.EmployeeRepository;
 
 import java.util.List;
 
