@@ -6,6 +6,8 @@ import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryV2;
 import io.katharsis.resource.list.ResourceList;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +19,8 @@ public class UserResourceRepository implements ResourceRepositoryV2<User, Long> 
 
     @Override
     public User findOne(Long id, QuerySpec querySpec) {
-        return userRepository.findOne(id);
+        Optional<User> user = userRepository.findById(id); 
+        return user.isPresent()? user.get() : null;
     }
 
     @Override
@@ -27,7 +30,7 @@ public class UserResourceRepository implements ResourceRepositoryV2<User, Long> 
 
     @Override
     public ResourceList<User> findAll(Iterable<Long> ids, QuerySpec querySpec) {
-        return querySpec.apply(userRepository.findAll(ids));
+        return querySpec.apply(userRepository.findAllById(ids));
     }
 
     @Override
@@ -37,7 +40,7 @@ public class UserResourceRepository implements ResourceRepositoryV2<User, Long> 
 
     @Override
     public void delete(Long id) {
-        userRepository.delete(id);
+        userRepository.deleteById(id);
     }
 
     @Override
