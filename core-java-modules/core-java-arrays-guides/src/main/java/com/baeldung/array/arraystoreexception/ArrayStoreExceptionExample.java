@@ -7,9 +7,8 @@ public class ArrayStoreExceptionExample {
         try {
             Object array[] = new String[5];
             array[0] = 2;
-            System.out.println(array[0]);
         } catch (ArrayStoreException e) {
-            e.printStackTrace();
+            // handle the exception
         }
 
     }
