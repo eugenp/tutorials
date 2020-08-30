@@ -1,4 +1,4 @@
-package com.baeldung.reactor;
+package com.baeldung.reactor.introduction;
 
 import org.junit.Test;
 import org.reactivestreams.Subscriber;
