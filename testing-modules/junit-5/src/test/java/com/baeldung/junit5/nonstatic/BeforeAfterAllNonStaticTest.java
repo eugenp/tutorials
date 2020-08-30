@@ -1,10 +1,6 @@
 package com.baeldung.junit5.nonstatic;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BeforeAfterAllNonStaticTest {
@@ -19,12 +15,13 @@ public class BeforeAfterAllNonStaticTest {
 
     @AfterAll
     public void teardown() {
-        Assertions.assertEquals(77l, result);
+        input = null;
+        result = null;
     }
 
     @Test
-    public void testConvertStringToLong() {
+    public void whenConvertStringToLong_thenResultShouldBeLong() {
         result = Long.valueOf(input);
-
+        Assertions.assertEquals(77l, result);
     }
 }
