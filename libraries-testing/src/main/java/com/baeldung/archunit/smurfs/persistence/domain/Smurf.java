@@ -5,8 +5,6 @@ public class Smurf {
     private boolean comic;
     private boolean cartoon;
 
-    public Smurf() {}
-
     public Smurf(String name, boolean comic, boolean cartoon) {
         this.name = name;
         this.comic = comic;
