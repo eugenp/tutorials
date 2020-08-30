@@ -28,23 +28,23 @@ public class SshdDemo {
         SshClient client = SshClient.setUpDefaultClient();
         client.start();
         try (ClientSession session = client.connect(username, host, port)
-            .verify(defaultTimeoutSeconds, TimeUnit.SECONDS)
+          .verify(defaultTimeoutSeconds, TimeUnit.SECONDS)
             .getSession()) {
             session.addPasswordIdentity(password);
             session.auth()
-                .verify(5L, TimeUnit.SECONDS);
+              .verify(5L, TimeUnit.SECONDS);
             try (ByteArrayOutputStream out = new ByteArrayOutputStream(); ClientChannel channel = session.createChannel(Channel.CHANNEL_SHELL)) {
                 channel.setOut(out);
                 try {
                     channel.open()
-                        .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
+                      .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
                     try (OutputStream pipedIn = channel.getInvertedIn()) {
                         pipedIn.write(command.getBytes());
                         pipedIn.flush();
                     }
                     channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(defaultTimeoutSeconds));
                     String finalString = new String(out.toByteArray());
-                    System.out.println("out: " + finalString);
+                    System.out.println(finalString);
                 } finally {
                     channel.close(false);
                 }
