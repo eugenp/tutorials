@@ -1,4 +1,4 @@
-package com.baeldung.reactor;
+package com.baeldung.reactor.introduction;
 
 import org.junit.Test;
 import org.reactivestreams.Subscriber;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ReactorIntegrationTest {
 
     @Test
-    public void givenFlux_whenSubscribing_thenStream() throws InterruptedException {
+    public void givenFlux_whenSubscribing_thenStream() {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -48,14 +48,12 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() throws InterruptedException {
+    public void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() {
 
         List<Integer> elements = new ArrayList<>();
 
         Flux.just(1, 2, 3, 4)
                 .log()
-                .map(i -> i * 2)
-                .onBackpressureBuffer()
                 .subscribe(new Subscriber<Integer>() {
                     private Subscription s;
                     int onNextAmount;
@@ -81,11 +79,10 @@ public class ReactorIntegrationTest {
 
                     @Override
                     public void onComplete() {
-                        int ham = 2;
                     }
                 });
 
-        assertThat(elements).containsExactly(2, 4, 6, 8);
+        assertThat(elements).containsExactly(1, 2, 3, 4);
     }
 
     @Test
