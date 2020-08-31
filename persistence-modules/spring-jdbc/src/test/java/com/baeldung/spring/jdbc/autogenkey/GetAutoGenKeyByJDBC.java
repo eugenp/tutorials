@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.spring.jdbc.autogenkey.repository.MessageRepositoryJDBCTemplate;
@@ -35,7 +36,6 @@ public class GetAutoGenKeyByJDBC {
         String loadedMessage = messageRepositoryJDBCTemplate.getMessageById(key);
 
         assertEquals(MESSAGE_CONTENT, loadedMessage);
-
     }
 
     @Test

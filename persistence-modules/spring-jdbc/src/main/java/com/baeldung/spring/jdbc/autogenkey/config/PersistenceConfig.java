@@ -16,7 +16,7 @@ public class PersistenceConfig {
     public DataSource dataSource(Environment env) {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
-                .addScript("autogenkey-schema.sql")
+                .addScript("com/baeldung/spring/jdbc/autogenkey/autogenkey-schema.sql")
                 .build();
     }
     
