@@ -54,8 +54,6 @@ public class ReactorIntegrationTest {
 
         Flux.just(1, 2, 3, 4)
                 .log()
-                .map(i -> i * 2)
-                .onBackpressureBuffer()
                 .subscribe(new Subscriber<Integer>() {
                     private Subscription s;
                     int onNextAmount;
@@ -84,7 +82,7 @@ public class ReactorIntegrationTest {
                     }
                 });
 
-        assertThat(elements).containsExactly(2, 4, 6, 8);
+        assertThat(elements).containsExactly(1, 2, 3, 4);
     }
 
     @Test
