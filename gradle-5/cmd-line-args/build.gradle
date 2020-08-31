@@ -1,0 +1,16 @@
+apply plugin: "java"
+description = "Gradle Command Line Arguments examples"
+
+
+
+task propertyTypes(){
+    doLast{
+        if (project.hasProperty('input')){
+            println "This is my property ["+ project.getProperty('input')+"]"
+        } else {
+            println "No property was passed"
+        }
+        
+    }
+}
+
