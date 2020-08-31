@@ -3,7 +3,6 @@
 This module contains articles about querying data using Spring Data JPA 
 
 ### Relevant Articles: 
-- [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)
 - [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
 - [Customizing the Result of JPA Queries with Aggregation Functions](https://www.baeldung.com/jpa-queries-custom-result-with-aggregation-functions)
 - [Limiting Query Results with JPA and Spring Data JPA](https://www.baeldung.com/jpa-limit-query-results)
