@@ -10,8 +10,7 @@ import java.util.Random;
 public class BlogController {
 
     @GetMapping("/blog/new")
-    public String newBlogPost(Model model)
-    {
+    public String newBlogPost(Model model) {
         // Set a random ID so we can see it in the HTML form
         BlogDTO blog = new BlogDTO();
         blog.setBlogId(Math.abs(new Random().nextLong() % 1000000));
