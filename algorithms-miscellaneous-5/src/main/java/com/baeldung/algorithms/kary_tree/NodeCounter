@@ -1,0 +1,46 @@
+package main.java.com.baeldung.algorithms.kary_tree;
+
+public class NodeCounter {
+
+    public int countTotalNodes(int leaves, int k) throws IllegalArgumentException {
+        validate(leaves, k);
+        int total = 0;
+        boolean finished = false;
+        int count = leaves;
+        while ((count % k == 0 && count >= k) || count == 1) {
+            total += count;
+            if (count != 1) {
+                count = count / k;
+            } else {
+                finished = true;
+                break;
+            }
+        }
+        if (!finished) {
+            throw new IllegalArgumentException("Number of leaves provided for a full k-ary tree is invalid");
+        }
+        return total;
+    }
+
+    private void validate(int leaves, int k) {
+        if (k < 2) {
+            throw new IllegalArgumentException("Order of tree is less than 2");
+        } else if (leaves <= 0) {
+            throw new IllegalArgumentException("Number of leaves is less than 1");
+        }
+    }
+
+    public int height(int leaves, int k) {
+        double h = 1 + (Math.log(leaves) / Math.log(k));
+        if (h % 1 != 0) {
+            throw new IllegalArgumentException("Number of leaves provided for a full k-ary tree is invalid");
+        }
+        return (int) h;
+    }
+
+    public int countTotalNodesUsingFormula(int leaves, int k) throws IllegalArgumentException {
+        int h = height(leaves, k);
+        return (int) ((Math.pow(k, h) - 1) / (k - 1));
+    }
+
+}
