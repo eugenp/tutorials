@@ -77,26 +77,6 @@
             <artifactId>sshd-core</artifactId>
             <version>${apache-mina.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.sshd</groupId>
-            <artifactId>sshd-sftp</artifactId>
-            <version>${apache-mina.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sshd</groupId>
-            <artifactId>sshd-common</artifactId>
-            <version>${apache-mina.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sshd</groupId>
-            <artifactId>sshd-mina</artifactId>
-            <version>${apache-mina.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sshd</groupId>
-            <artifactId>sshd-cli</artifactId>
-            <version>${apache-mina.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
