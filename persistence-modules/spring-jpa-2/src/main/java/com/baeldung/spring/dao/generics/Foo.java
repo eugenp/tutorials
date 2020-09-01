@@ -30,18 +30,6 @@ public class Foo implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToOne(targetEntity = Bar.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "BAR_ID")
-    private Bar bar;
-
-    public Bar getBar() {
-        return bar;
-    }
-
-    public void setBar(final Bar bar) {
-        this.bar = bar;
-    }
-
     public Long getId() {
         return id;
     }
@@ -89,5 +77,4 @@ public class Foo implements Serializable {
         builder.append("Foo [name=").append(name).append("]");
         return builder.toString();
     }
-
 }
