@@ -5,18 +5,19 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import com.baeldung.ssh.jsch.JschDemo;
+import com.baeldung.ssh.apachesshd.SshdDemo;
 
-public class JSchUnitTest {
-    
+public class ApacheMinaSshdLiveTest {
+
     @Test
     public void givenValidCredentials_whenConnectionIsEstablished_thenServerReturnsResponse() throws Exception {
         String username = "demo";
         String password = "password";
         String host = "test.rebex.net";
         int port = 22;
-        String command = "ls";
-        String responseString = JschDemo.listFolderStructure(username, password, host, port, command);
+        long defaultTimeoutSeconds = 10l;
+        String command = "ls\n";
+        String responseString = SshdDemo.listFolderStructure(username, password, host, port, defaultTimeoutSeconds, command);
         
         assertNotNull(responseString);
     }
@@ -27,9 +28,11 @@ public class JSchUnitTest {
         String password = "password";
         String host = "test.rebex.net";
         int port = 22;
-        String command = "ls";
-        String responseString = JschDemo.listFolderStructure(username, password, host, port, command);
+        long defaultTimeoutSeconds = 10l;
+        String command = "ls\n";
+        String responseString = SshdDemo.listFolderStructure(username, password, host, port, defaultTimeoutSeconds, command);
         
         assertNull(responseString);
     }
+
 }
