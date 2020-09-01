@@ -30,10 +30,10 @@ public class SwaggerConfiguration {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
-            .select()
-            .apis(RequestHandlerSelectors.any())
-            .paths(PathSelectors.any())
-            .build();
+          .select()
+          .apis(RequestHandlerSelectors.any())
+          .paths(PathSelectors.any())
+          .build();
     }
 
     /**
@@ -43,21 +43,21 @@ public class SwaggerConfiguration {
     @Bean
     UiConfiguration uiConfig() {
         return UiConfigurationBuilder.builder()
-            .deepLinking(true)
-            .displayOperationId(false)
-            .defaultModelsExpandDepth(1)
-            .defaultModelExpandDepth(1)
-            .defaultModelRendering(ModelRendering.EXAMPLE)
-            .displayRequestDuration(false)
-            .docExpansion(DocExpansion.NONE)
-            .filter(false)
-            .maxDisplayedTags(null)
-            .operationsSorter(OperationsSorter.ALPHA)
-            .showExtensions(false)
-            .tagsSorter(TagsSorter.ALPHA)
-            .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
-            .validatorUrl(null)
-            .build();
+          .deepLinking(true)
+          .displayOperationId(false)
+          .defaultModelsExpandDepth(1)
+          .defaultModelExpandDepth(1)
+          .defaultModelRendering(ModelRendering.EXAMPLE)
+          .displayRequestDuration(false)
+          .docExpansion(DocExpansion.NONE)
+          .filter(false)
+          .maxDisplayedTags(null)
+          .operationsSorter(OperationsSorter.ALPHA)
+          .showExtensions(false)
+          .tagsSorter(TagsSorter.ALPHA)
+          .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
+          .validatorUrl(null)
+          .build();
     }
 
 }
