@@ -49,6 +49,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
@@ -99,24 +103,7 @@
         <!-- Spring Fox 2 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-data-rest</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>${spring.fox.version}</version>
         </dependency>
 
