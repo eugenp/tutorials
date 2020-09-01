@@ -1,0 +1,67 @@
+
+apply plugin: "eclipse"
+apply plugin: "java"
+
+description = "Source Sets example"
+
+task printSourceSetInformation(){
+    description = "Print source set information"
+
+    doLast{
+        sourceSets.each { srcSet ->
+            println "["+srcSet.name+"]"
+            print "-->Source directories: "+srcSet.allJava.srcDirs+"\n"
+            print "-->Output directories: "+srcSet.output.classesDirs.files+"\n"
+            print "-->Compile classpath:\n"
+            srcSet.compileClasspath.files.each { 
+                print "  "+it.path+"\n"
+            }
+            println ""
+        }
+    }
+}
+
+sourceSets{
+    itest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+        java {
+        }
+    }
+}
+
+test {
+    testLogging {
+        events "passed","skipped", "failed"
+    }
+}
+
+dependencies {
+    implementation('org.apache.httpcomponents:httpclient:4.5.12')
+    testImplementation('junit:junit:4.12')
+    itestImplementation('com.google.guava:guava:29.0-jre')
+}
+
+task itest(type: Test) {
+    description = "Run integration tests"
+    group = "verification"
+    testClassesDirs = sourceSets.itest.output.classesDirs
+    classpath = sourceSets.itest.runtimeClasspath
+}
+
+itest {
+    testLogging {
+        events "passed","skipped", "failed"
+    }
+}
+
+configurations {
+    itestImplementation.extendsFrom(testImplementation)
+    itestRuntimeOnly.extendsFrom(testRuntimeOnly)
+}
+
+eclipse {
+    classpath {
+        plusConfigurations+=[configurations.itestCompileClasspath] 
+    } 
+}
