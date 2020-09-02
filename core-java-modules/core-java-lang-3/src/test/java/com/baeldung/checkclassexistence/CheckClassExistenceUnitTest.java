@@ -6,8 +6,9 @@ public class CheckClassExistenceUnitTest {
 
     public static class InitializingClass {
         static {
-            if (true) //enable throwing of an exception in a static initialization block
+            if (true) { //enable throwing of an exception in a static initialization block
                 throw new RuntimeException();
+            }
         }
     }
 
