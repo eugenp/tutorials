@@ -1,6 +1,10 @@
 package com.baeldung.exceptions.illegalmonitorstate;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SynchronizedReceiver implements Runnable {
+    private static Logger log = LoggerFactory.getLogger(SynchronizedReceiver.class);
     private final Data data;
     private String message;
     private boolean illegalMonitorStateExceptionOccurred;
@@ -16,10 +20,10 @@ public class SynchronizedReceiver implements Runnable {
                 data.wait();
                 this.message = data.receive();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.error("thread was interrupted", e);
                 Thread.currentThread().interrupt();
             } catch (IllegalMonitorStateException e) {
-                e.printStackTrace();
+                log.error("illegal monitor state exception occurred", e);
                 illegalMonitorStateExceptionOccurred = true;
             }
         }

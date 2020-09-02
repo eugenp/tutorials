@@ -30,7 +30,7 @@ public class IllegalMonitorStateExceptionUnitTest {
     void whenSyncSenderAndUnSyncReceiverAreUsed_thenIllegalMonitorExceptionShouldNotBeThrown() throws InterruptedException {
         Data data = new Data();
 
-        UnSynchronizedReceiver receiver = new UnSynchronizedReceiver(data);
+        UnsynchronizedReceiver receiver = new UnsynchronizedReceiver(data);
         Thread receiverThread = new Thread(receiver, "receiver-thread");
         receiverThread.start();
 
@@ -55,7 +55,7 @@ public class IllegalMonitorStateExceptionUnitTest {
         Thread receiverThread = new Thread(receiver, "receiver-thread");
         receiverThread.start();
 
-        UnSynchronizedSender sender = new UnSynchronizedSender(data);
+        UnsynchronizedSender sender = new UnsynchronizedSender(data);
         Thread senderThread = new Thread(sender, "sender-thread");
         senderThread.start();
 
