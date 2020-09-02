@@ -26,28 +26,26 @@ public class ClientTlsVersionExmaples{
     }
 
     public static CloseableHttpClient setTlsVersionPerConnection() {
-SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContexts.createDefault()){
+        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(SSLContexts.createDefault()){
 
-    @Override
-    protected void prepareSocket(SSLSocket socket) {
-        String[] enabledProtocols = new String[] {"TLSv1.3"};
+            @Override
+            protected void prepareSocket(SSLSocket socket) {
 
-        SocketAddress remoteAddr = socket.getRemoteSocketAddress();
-        if (remoteAddr instanceof InetSocketAddress){
-            String hostname = ((InetSocketAddress) remoteAddr).getHostName();
-            if (hostname.endsWith("internal.system.com")){
-                enabledProtocols = new String[] { "TLSv1", "TLSv1.1", "TLSv1.2", "TLSv1.3" };
+                String hostname = socket.getInetAddress().getHostName();
+                if (hostname.endsWith("internal.system.com")){
+                    socket.setEnabledProtocols(new String[] { "TLSv1", "TLSv1.1", "TLSv1.2", "TLSv1.3" });
+                }
+                else {
+                    socket.setEnabledProtocols(new String[] {"TLSv1.3"});
+                }
             }
-        }
-        socket.setEnabledProtocols(enabledProtocols);
-    }
-};
+        };
 
-return HttpClients.custom().setSSLSocketFactory(sslsf).build();
+        return HttpClients.custom().setSSLSocketFactory(sslsf).build();
     }
 
-    // To set the TLS versions for the client, set the https.protocols system property during runtime.
-    // For example: java -Dhttps.protocols=TLSv1.1,TLSv1.2,TLSv1.3 -jar webClient.jar
+    //To configure the TLS versions for the client, set the https.protocols system property during runtime.
+    //For example: java -Dhttps.protocols=TLSv1.1,TLSv1.2,TLSv1.3 -jar webClient.jar
     public static CloseableHttpClient setViaSystemProperties(){
         return HttpClients.createSystem();
         //alternatively
