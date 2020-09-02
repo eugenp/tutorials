@@ -1,5 +1,7 @@
 package com.baeldung.springvalidation.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,32 +24,25 @@ public class UserAccountController {
         theModel.addAttribute("useraccount", theUser);
         return "userHome";
     }
-
-  /*  @RequestMapping(value = "/saveBasicInfo", method = RequestMethod.POST)
+    /*
+    @RequestMapping(value = "/saveBasicInfo", method = RequestMethod.POST)
     public String saveBasicInfo(
-     @Valid @ModelAttribute("useraccount") UserAccount useraccount, 
-     BindingResult result, 
-     ModelMap model
-    ) {
-        {
-            if (result.hasErrors()) {
-                return "error";
-            }
-            return "success";
+       @Valid @ModelAttribute("useraccount") UserAccount useraccount, 
+       BindingResult result, 
+       ModelMap model
+       ) {
+        if (result.hasErrors()) {
+            return "error";
         }
+        return "success";
     }*/
 
     @RequestMapping(value = "/saveBasicInfo", method = RequestMethod.POST)
-    public String saveBasicInfo(
-     @Validated(BasicInfo.class) @ModelAttribute("useraccount") UserAccount useraccount, 
-     BindingResult result, ModelMap model
-     )
-     {
-        {
-            if (result.hasErrors()) {
-                return "error";
-            }
-            return "success";
+    public String saveBasicInfo(@Validated(BasicInfo.class) @ModelAttribute("useraccount") UserAccount useraccount, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
         }
+        return "success";
     }
+
 }
