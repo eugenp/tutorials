@@ -18,7 +18,7 @@ import io.restassured.RestAssured
 import io.restassured.response.Response
 
 class TodoAppUnitTest {
-    static API_ROOT = 'http://localhost:8081/todo'
+    static API_ROOT = 'http://localhost:8080/todo'
     static readingTodoId
     static writingTodoId
 
