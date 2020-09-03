@@ -11,6 +11,7 @@ This module contains articles about repositories in Spring Data JPA
 - [Spring Data Composable Repositories](https://www.baeldung.com/spring-data-composable-repositories)
 - [Spring Data JPA Repository Populators](https://www.baeldung.com/spring-data-jpa-repository-populators)
 - [Calling Stored Procedures from Spring Data JPA Repositories](https://www.baeldung.com/spring-data-jpa-stored-procedures)
+- More articles: [[--> next]](/spring-data-jpa-repo-2/)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
