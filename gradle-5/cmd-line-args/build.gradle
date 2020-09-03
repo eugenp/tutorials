@@ -10,21 +10,17 @@ application {
 
 task propertyTypes(){
     doLast{
-        project.getProperties().values().each {
-            println "Project property ["+it+"]"
+        if (project.hasProperty("args")) {
+            println "Our input argument with project property ["+project.getProperty("args")+"]"
         }
-
-        System.getProperties().each {
-            println "System property ["+it+"]"
-        }
+        println "Our input argument with system property ["+System.getProperty("args")+"]"
     }
 }
 
 if (project.hasProperty("args")) {
     ext.cmdargs = project.getProperty("args")
-    ext.cmdargsarray = cmdargs.split()
 } else { 
-    ext.cmdargs = ""
+    ext.cmdargs = "ls"
 }
 
 task cmdLineJavaExec(type: JavaExec) {
@@ -32,15 +28,11 @@ task cmdLineJavaExec(type: JavaExec) {
     description = "Run the main class with JavaExecTask"
     classpath = sourceSets.main.runtimeClasspath
     main = javaMainClass
-    args cmdargsarray
+    args cmdargs.split()
 }
 
-ext.cmdarray = ["java", "-classpath", sourceSets.main.runtimeClasspath.getAsPath(), javaMainClass]
-cmdarray = (cmdarray << cmdargsarray).flatten()
-
 task cmdLineExec(type: Exec) {
-    dependsOn build
     group = "Execution"
-    description = "Run the main class with ExecTask"
-    commandLine cmdarray
+    description = "Run the an external program with ExecTask"
+    commandLine cmdargs.split()
 }
