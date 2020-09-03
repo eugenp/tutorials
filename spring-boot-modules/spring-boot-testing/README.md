@@ -14,3 +14,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Embedded Redis Server with Spring Boot Test](https://www.baeldung.com/spring-embedded-redis)
 - [Testing Spring Boot @ConfigurationProperties](https://www.baeldung.com/spring-boot-testing-configurationproperties)
 - [Prevent ApplicationRunner or CommandLineRunner Beans From Executing During Junit Testing](https://www.baeldung.com/spring-junit-prevent-runner-beans-testing-execution)
+- [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)

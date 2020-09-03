@@ -1,4 +1,0 @@
-INSERT INTO EMPLOYEE VALUES (1, 'James', 'Gosling');
-INSERT INTO EMPLOYEE VALUES (2, 'Donald', 'Knuth');
-INSERT INTO EMPLOYEE VALUES (3, 'Linus', 'Torvalds');
-INSERT INTO EMPLOYEE VALUES (4, 'Dennis', 'Ritchie');
