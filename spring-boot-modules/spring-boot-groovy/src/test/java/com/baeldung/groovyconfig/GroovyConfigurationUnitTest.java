@@ -1,4 +1,4 @@
-package com.baeldug.groovyconfig;
+package com.baeldung.groovyconfig;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,10 +7,13 @@ import java.io.File;
 import org.junit.Test;
 import org.springframework.context.support.GenericGroovyApplicationContext;
 
+import com.baeldung.groovyconfig.BandsBean;
+import com.baeldung.groovyconfig.JavaPersonBean;
+
 public class GroovyConfigurationUnitTest {
     
     private static final String FILE_NAME = "GroovyBeanConfig.groovy";
-    private static final String FILE_PATH = "src/main/java/com/baeldug/groovyconfig/";
+    private static final String FILE_PATH = "src/main/java/com/baeldung/groovyconfig/";
 
     @Test
     public void whenGroovyConfig_thenCorrectPerson() throws Exception {

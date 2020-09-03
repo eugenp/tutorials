@@ -1,4 +1,4 @@
-package com.baeldug.groovyconfig;
+package com.baeldung.groovyconfig;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.baeldug.groovyconfig;
+package com.baeldung.groovyconfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

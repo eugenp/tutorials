@@ -1,4 +1,4 @@
-package com.baeldug.groovyconfig;
+package com.baeldung.groovyconfig;
 
 public class JavaPersonBean {
     

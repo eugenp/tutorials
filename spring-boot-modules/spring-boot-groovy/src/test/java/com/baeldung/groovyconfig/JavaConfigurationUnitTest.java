@@ -1,9 +1,12 @@
-package com.baeldug.groovyconfig;
+package com.baeldung.groovyconfig;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.baeldung.groovyconfig.JavaBeanConfig;
+import com.baeldung.groovyconfig.JavaPersonBean;
 
 public class JavaConfigurationUnitTest {
 

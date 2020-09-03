@@ -1,4 +1,4 @@
-package com.baeldug.spring_groovy;
+package com.baeldung.spring_groovy;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
