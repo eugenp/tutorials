@@ -4,6 +4,7 @@ This module contains articles about querying data using Spring Data JPA
 
 ### Relevant Articles: 
 - [Use Criteria Queries in a Spring Data Application](https://www.baeldung.com/spring-data-criteria-queries)
+- [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)
 - More articles: [[<-- prev]](../spring-data-jpa-query)
 
 ### Eclipse Config 
