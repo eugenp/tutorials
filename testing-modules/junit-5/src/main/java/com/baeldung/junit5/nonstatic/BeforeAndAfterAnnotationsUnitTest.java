@@ -3,7 +3,7 @@ package com.baeldung.junit5.nonstatic;
 import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class BeforeAfterAllNonStaticTest {
+public class BeforeAndAfterAnnotationsUnitTest {
 
     String input;
     Long result;
@@ -15,11 +15,13 @@ public class BeforeAfterAllNonStaticTest {
 
     @AfterAll
     public void teardown() {
-        Assertions.assertEquals(77l, result);
+        input = null;
+        result = null;
     }
 
     @Test
-    public void testConvertStringToLong() {
+    public void whenConvertStringToLong_thenResultShouldBeLong() {
         result = Long.valueOf(input);
+        Assertions.assertEquals(77l, result);
     }
 }
