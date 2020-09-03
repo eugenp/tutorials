@@ -68,7 +68,9 @@
         <module>spring-data-jpa-enterprise</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
+        <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-repo</module>
+        <module>spring-data-jpa-repo-2</module>
 
         <module>spring-data-jdbc</module>
 
@@ -82,9 +84,9 @@
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
+        <module>spring-jdbc</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
-        <module>spring-persistence-simple-2</module>
     </modules>
 
     <properties>
