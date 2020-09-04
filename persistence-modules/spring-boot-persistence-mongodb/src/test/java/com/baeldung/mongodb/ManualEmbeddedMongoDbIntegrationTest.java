@@ -20,6 +20,9 @@ import org.springframework.util.SocketUtils;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ManualEmbeddedMongoDbIntegrationTest {
+
+    private static final String CONNECTION_STRING = "mongodb://%s:%d";
+
     private MongodExecutable mongodExecutable;
     private MongoTemplate mongoTemplate;
 
@@ -32,7 +35,6 @@ class ManualEmbeddedMongoDbIntegrationTest {
     void setup() throws Exception {
         String ip = "localhost";
         int randomPort = SocketUtils.findAvailableTcpPort();
-        String connectionString = ip + ":" + randomPort;
 
         IMongodConfig mongodConfig = new MongodConfigBuilder().version(Version.Main.PRODUCTION)
             .net(new Net(ip, randomPort, Network.localhostIsIPv6()))
@@ -41,7 +43,7 @@ class ManualEmbeddedMongoDbIntegrationTest {
         MongodStarter starter = MongodStarter.getDefaultInstance();
         mongodExecutable = starter.prepare(mongodConfig);
         mongodExecutable.start();
-        mongoTemplate = new MongoTemplate(MongoClients.create(connectionString), "test");
+        mongoTemplate = new MongoTemplate(MongoClients.create(String.format(CONNECTION_STRING, ip, randomPort)),"test");
     }
 
     @DisplayName("Given object When save object using MongoDB template Then object can be found")
