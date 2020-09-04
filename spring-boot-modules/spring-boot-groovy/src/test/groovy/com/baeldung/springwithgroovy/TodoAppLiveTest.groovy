@@ -20,7 +20,7 @@ import io.restassured.response.Response
 // This test requires the com.baeldung.springwithgroovy.SpringBootGroovyApplication to be up
 // For that, run the maven build - spring-boot:run on the module
 
-class TodoAppUnitTest {
+class TodoAppLiveTest {
     static API_ROOT = 'http://localhost:8080/todo'
     static readingTodoId
     static writingTodoId
