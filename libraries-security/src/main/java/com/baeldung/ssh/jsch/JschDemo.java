@@ -42,10 +42,12 @@ public class JschDemo {
                 throw new Exception(errorResponse);
             }
         } finally {
-            if (session != null)
+            if (session != null) {
                 session.disconnect();
-            if (channel != null)
+            }
+            if (channel != null) {
                 channel.disconnect();
+            }
         }
         return response;
     }
