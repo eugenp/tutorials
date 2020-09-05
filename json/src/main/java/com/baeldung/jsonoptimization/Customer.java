@@ -116,7 +116,7 @@ public class Customer {
 
     public static Customer[] fromMockFile() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        InputStream jsonFile = new FileInputStream("src/test/resources/json_optimization_mock_data.json"); 
+        InputStream jsonFile = new FileInputStream("src/test/resources/json_optimization_mock_data.json");
         Customer[] feedback = objectMapper.readValue(jsonFile, Customer[].class);
         return feedback;
     }

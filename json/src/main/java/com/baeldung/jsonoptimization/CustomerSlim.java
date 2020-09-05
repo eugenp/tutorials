@@ -54,21 +54,20 @@ public class CustomerSlim {
     }
 
     public static CustomerSlim[] fromCustomers(Customer[] customers) {
-        CustomerSlim[] feedback = new CustomerSlim[customers.length];   
-            
-        for(int i = 0; i < customers.length; i++) {
+        CustomerSlim[] feedback = new CustomerSlim[customers.length];
+
+        for (int i = 0; i < customers.length; i++) {
             Customer aCustomer = customers[i];
             CustomerSlim newOne = new CustomerSlim();
-            
+
             newOne.setId(aCustomer.getId());
             newOne.setName(aCustomer.getFirstName() + " " + aCustomer.getLastName());
             newOne.setAddress(aCustomer.getStreet() + ", " + aCustomer.getCity() + " " + aCustomer.getState() + " " + aCustomer.getPostalCode());
-            
+
             feedback[i] = newOne;
         }
-        
+
         return feedback;
     }
-
 
 }
