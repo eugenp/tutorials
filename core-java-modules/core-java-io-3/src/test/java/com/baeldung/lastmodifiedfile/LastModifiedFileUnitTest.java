@@ -13,7 +13,7 @@ public class LastModifiedFileUnitTest {
     private final String DIRECTORY = "src/test/resources/lastmodifiedfile";
 
     @Test
-    public void givenDirecory_whenUsingIOApi_thenfindLastModfiedFile() throws IOException {
+    public void givenDirecory_whenUsingIOApi_thenfindLastModifiedFile() {
 
         File lastmodfile = LastModifiedFile.findUsingIOApi(DIRECTORY);
 
@@ -23,7 +23,7 @@ public class LastModifiedFileUnitTest {
     }
 
     @Test
-    public void givenDirecory_whenUsingNIOApi_thenfindLastModfiedFile() throws IOException {
+    public void givenDirecory_whenUsingNIOApi_thenfindLastModifiedFile() throws IOException {
 
         Path lastmodpath = LastModifiedFile.findUsingNIOApi(DIRECTORY);
 
@@ -34,7 +34,7 @@ public class LastModifiedFileUnitTest {
     }
 
     @Test
-    public void givenDirecory_whenUsingCommonsIO_thenfindLastModfiedFile() {
+    public void givenDirecory_whenUsingCommonsIO_thenfindLastModifiedFile() {
 
         File lastmodfile = LastModifiedFile.findUsingCommonsIO(DIRECTORY);
 
