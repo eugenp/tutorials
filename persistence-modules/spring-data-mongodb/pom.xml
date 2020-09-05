@@ -121,7 +121,7 @@
         <mongodb-reactivestreams.version>4.1.0</mongodb-reactivestreams.version>
         <projectreactor.version>3.2.0.RELEASE</projectreactor.version>
         <spring-releasetrain>Lovelace-SR9</spring-releasetrain>
-        <mongodb-driver.version>4.1.0</mongodb-driver.version>
+        <mongodb-driver.version>4.0.5</mongodb-driver.version>
     </properties>
 
 </project>
