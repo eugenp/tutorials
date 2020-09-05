@@ -15,7 +15,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -77,7 +76,7 @@ class JsonOptimizationUnitTest {
         byte[] shorterJson = createPlainJson(TEST_LABEL_SHORTER_ATTRIBUTE_NAMES_NO_NULL, shorterOnesNoNull);
         compressJson(TEST_LABEL_SHORTER_ATTRIBUTE_NAMES_NO_NULL, shorterJson);
     }
-    
+
     @Test
     void testSlim() throws IOException {
         printBanner(TEST_LABEL_SLIM_CUSTOMER);
@@ -89,11 +88,11 @@ class JsonOptimizationUnitTest {
     @Test
     void testCustomSerializer() throws IOException {
         printBanner(TEST_LABEL_CUSTOM_SERIALIZER);
-        
+
         SimpleModule serializer = new SimpleModule("CustomCustomerSerializer", new Version(1, 0, 0, null, null, null));
         serializer.addSerializer(Customer.class, new CustomerSerializer());
         mapper.registerModule(serializer);
-        
+
         SimpleModule deserializer = new SimpleModule("CustomCustomerDeserializer", new Version(1, 0, 0, null, null, null));
         deserializer.addDeserializer(Customer.class, new CustomerDeserializer());
         mapper.registerModule(deserializer);
@@ -135,7 +134,7 @@ class JsonOptimizationUnitTest {
         fos.write(feedback);
         fos.close();
         System.out.println(label + " file:           " + tempFile.toString());
-        
+
         Object[] restoredOnes = mapper.readValue(feedback, customers.getClass());
         assertArrayEquals(TEST_LABEL_DEFAULT_JSON + ": restoring from JSON should work", customers, restoredOnes);
 
