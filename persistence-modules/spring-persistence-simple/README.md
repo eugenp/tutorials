@@ -5,6 +5,7 @@
 
 ### Relevant Articles: 
 - [Transaction Propagation and Isolation in Spring @Transactional](https://www.baeldung.com/spring-transactional-propagation-isolation)
+- [JTA Transaction with Spring](https://www.baeldung.com/spring-vs-jta-transactional)
 - [Mock JNDI Datasource](https://www.baeldung.com/spring-mock-jndi-datasource)
 
 ### Eclipse Config 
