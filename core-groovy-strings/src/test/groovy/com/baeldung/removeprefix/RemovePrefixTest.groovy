@@ -7,7 +7,7 @@ class RemovePrefixTest {
 
 
     @Test
-    public void givenWhenCasePrefixIsRemoved_thenReturnTrue() {
+    public void whenCasePrefixIsRemoved_thenReturnTrue() {
         def trimPrefix = {
             it.startsWith('Groovy') ? it.minus('Groovy') : it
         }
@@ -16,7 +16,7 @@ class RemovePrefixTest {
     }
 
     @Test
-    public void givenWhenPrefixIsRemoved_thenReturnTrue() {
+    public void whenPrefixIsRemovedWithIgnoreCase_thenReturnTrue() {
 
         String prefix = "groovy-"
         String trimPrefix = "Groovy-Tutorials at Baeldung"
@@ -29,7 +29,7 @@ class RemovePrefixTest {
     }
 
     @Test
-    public void givenWhenPrefixIsRemovedUsingRegex_thenReturnTrue() {
+    public void whenPrefixIsRemovedUsingRegex_thenReturnTrue() {
 
         def regex = ~"^([Gg])roovy-"
         String trimPrefix = "Groovy-Tutorials at Baeldung"
@@ -38,7 +38,7 @@ class RemovePrefixTest {
         Assert.assertEquals("Tutorials at Baeldung", result)
     }
 
-    @Test public void givenWhenPrefixIsRemovedUsingReplaceFirst_thenReturnTrue() {
+    @Test public void whenPrefixIsRemovedUsingReplaceFirst_thenReturnTrue() {
         def regex = ~"^groovy" 
         String trimPrefix = "groovyTutorials at Baeldung's groovy page" 
         String result = trimPrefix.replaceFirst(regex, "") 
@@ -47,7 +47,7 @@ class RemovePrefixTest {
     }
 
     @Test
-    public void givenWhenPrefixIsRemovedUsingReplaceAll_thenReturnTrue() {
+    public void whenPrefixIsRemovedUsingReplaceAll_thenReturnTrue() {
 
         String trimPrefix = "groovyTutorials at Baeldung groovy"
         String result = trimPrefix.replaceAll(/^groovy/, "")
