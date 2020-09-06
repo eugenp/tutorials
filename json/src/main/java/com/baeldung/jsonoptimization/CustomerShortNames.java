@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerShortNames {
 
+    @JsonProperty("i")
     private long id;
 
     @JsonProperty("f")
