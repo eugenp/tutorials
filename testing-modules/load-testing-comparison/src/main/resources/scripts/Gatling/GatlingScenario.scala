@@ -24,12 +24,10 @@ class RewardsScenario extends Simulation {
 		.check(jsonPath("$.id").saveAs("txnId"))
 		.check(jsonPath("$.transactionDate").saveAs("txtDate"))
 		.check(jsonPath("$.customerId").saveAs("custId")))
-		.pause(1)
 		
 		.exec(http("get_reward")
 		  .get("/rewards/find/${custId}")
 		  .check(jsonPath("$.id").optional.saveAs("rwdId")))
-		.pause(1)
 		
 		.doIf("${rwdId.isUndefined()}"){
 			exec(http("rewards_add")
@@ -41,7 +39,6 @@ class RewardsScenario extends Simulation {
 		.exec(http("transactions_add")
 		  .post("/transactions/add/")
 		  .body(StringBody("""{ "customerRewardsId":"${rwdId}","customerId":"${custId}","transactionDate":"${txtDate}" }""")).asJson)
-		.pause(1)
 		
 		.exec(http("get_reward")
 		  .get("/transactions/findAll/${rwdId}"))
