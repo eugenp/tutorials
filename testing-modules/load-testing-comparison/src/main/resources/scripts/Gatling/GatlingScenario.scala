@@ -28,7 +28,7 @@ class RewardsScenario extends Simulation {
 		
 		.exec(http("get_reward")
 		  .get("/rewards/find/${custId}")
-		  .check(jsonPath("$.id").saveAs("rwdId")))
+		  .check(jsonPath("$.id").optional.saveAs("rwdId")))
 		.pause(1)
 		
 		.doIf("${rwdId.isUndefined()}"){
