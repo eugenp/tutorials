@@ -20,7 +20,7 @@ class RewardsScenario extends Simulation {
 	.repeat(10){
 		exec(http("transactions_add")
 		  .post("/transactions/add/")
-		  .body(StringBody("""{ "customerRewardsId":null,"customerId":""""+ randCustId() + """","transactionDate":null }""")).asJson
+		  .body(StringBody(_ => s"""{ "customerRewardsId":null,"customerId":"${randCustId()}","transactionDate":null }""")).asJson
 		.check(jsonPath("$.id").saveAs("txnId"))
 		.check(jsonPath("$.transactionDate").saveAs("txtDate"))
 		.check(jsonPath("$.customerId").saveAs("custId")))
