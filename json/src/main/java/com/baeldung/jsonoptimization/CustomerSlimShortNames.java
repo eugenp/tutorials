@@ -5,13 +5,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerSlimShortNames {
-    
+
     @JsonProperty("i")
     private long id;
-    
+
     @JsonProperty("n")
     private String name;
-    
+
     @JsonProperty("a")
     private String address;
 
