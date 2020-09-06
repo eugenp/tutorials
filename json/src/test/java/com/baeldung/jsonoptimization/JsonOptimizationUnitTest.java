@@ -29,7 +29,8 @@ class JsonOptimizationUnitTest {
     private static final String TEST_LABEL_SLIM_CUSTOM_SERIALIZER = "Slim custom serializer";
     private static final String TEST_LABEL_SLIM_CUSTOMER = "Slim customer";
     private static final String TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES = "Slim customer with shorter attribute names";
-    private static DecimalFormat LENGTH_FORMATTER = new DecimalFormat("###,###,###");
+    private static DecimalFormat LENGTH_FORMATTER = new DecimalFormat("###,###");
+    private static DecimalFormat PERCENT_FORMATTER = new DecimalFormat("###");
     private static Customer[] customers;
     private ObjectMapper mapper;
     private static int defaultJsonLength;
@@ -139,8 +140,9 @@ class JsonOptimizationUnitTest {
         gzipStream.write(plainJson);
         gzipStream.close();
         byte[] gzippedJson = outpuStream.toByteArray();
-        int percent = gzippedJson.length * 100 / defaultJsonLength;
-        System.out.println(label + " GZIPped length: " + LENGTH_FORMATTER.format(gzippedJson.length / 1024) + "kB (" + percent + "%)");
+        double percent = Math.round(gzippedJson.length * 100d / defaultJsonLength);
+        System.out.println(label + " GZIPped length: " + LENGTH_FORMATTER.format(gzippedJson.length / 1024) 
+        + "kB (" + PERCENT_FORMATTER.format(percent) + "%)");
         assertTrue(plainJson.length > gzippedJson.length, label + " should be longer than GZIPped data");
     }
 
@@ -150,8 +152,9 @@ class JsonOptimizationUnitTest {
         System.out.println(prettyWritter.writeValueAsString(customers[0]));
 
         byte[] feedback = mapper.writeValueAsBytes(customers);
-        int percent = feedback.length * 100 / defaultJsonLength;
-        System.out.println(label + " length:         " + LENGTH_FORMATTER.format(feedback.length / 1024) + "kB (" + percent + "%)");
+        double percent = Math.round(feedback.length * 100d / defaultJsonLength);
+        System.out.println(label + " length:         " + LENGTH_FORMATTER.format(feedback.length / 1024) 
+        + "kB (" + PERCENT_FORMATTER.format(percent) + "%)");
         assertTrue(feedback.length > 1, label + " should be there");
 
         String prefix = label.replaceAll(" ", "-")
