@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 
 class RewardsScenario extends Simulation {
 
-  def randCustId() = Random.nextInt(100000)
+  def randCustId() = java.util.concurrent.ThreadLocalRandom.current().nextInt(1, 10000)
   
   val httpProtocol = http.baseUrl("http://localhost:8080")
 					    .acceptHeader("text/html,application/json;q=0.9,*/*;q=0.8")
