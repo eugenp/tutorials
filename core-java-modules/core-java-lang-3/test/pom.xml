@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+    <name>test</name>
+    <artifactId>test</artifactId>
+    <groupId>com.example</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <description>An example Java 8 project using Maven and JUnit 5.x</description>
+
+    <url>https://github.com/example/test</url>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://spdx.org/licenses/MIT.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Example Organization</name>
+        <url>http://example.com/</url>
+    </organization>
+
+    <scm>
+        <url>https://github.com/example/test</url>
+        <connection>git@github.com:example/test.git</connection>
+        <developerConnection>git@github.com:example/test.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>Issues</system>
+        <url>https://github.com/example/test/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Pipelines</system>
+        <url>https://github.com/example/test/pipelines</url>
+    </ciManagement>
+
+    <contributors>
+        <contributor>
+            <name>Some Contributor</name>
+            <email>some.contributor@example.com</email>
+            <url>http://example.com/</url>
+            <organization>Example Organization</organization>
+            <organizationUrl>http://example.com/</organizationUrl>
+            <roles>
+                <role>scrum-master</role>
+            </roles>
+            <timezone>Europe/Amsterdam</timezone>
+        </contributor>
+        <contributor>
+            <name>Another Contributor</name>
+            <email>another.contributor@example.com</email>
+            <url>http://example.com/</url>
+            <organization>Example Organization</organization>
+            <organizationUrl>http://example.com/</organizationUrl>
+            <roles>
+                <role>product-owner</role>
+            </roles>
+            <timezone>Europe/Amsterdam</timezone>
+        </contributor>
+    </contributors>
+
+    <developers>
+        <developer>
+            <id>somedev</id>
+            <email>some.developer@example.com</email>
+            <name>Some Developer</name>
+            <organization>Example Organization</organization>
+            <organizationUrl>http://example.com/</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Amsterdam</timezone>
+        </developer>
+        <developer>
+            <id>otherdev</id>
+            <email>other.developer@example.com</email>
+            <name>Other Developer</name>
+            <organization>Example Organization</organization>
+            <organizationUrl>http://example.com/</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Amsterdam</timezone>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <main.class>com.example.test.HelloWorld</main.class>
+        <java.version>8</java.version>
+        <junit.jupiter.version>5.4.2</junit.jupiter.version>
+        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <maven.jar.plugin.version>3.1.1</maven.jar.plugin.version>
+        <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven.jar.plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,9 +1,8 @@
-package com.baeldung.compareTo.comparators;
+package comparators;
 
 import java.util.Comparator;
 
-import com.baeldung.compareTo.model.Person;
-
+import model.Person;
 
 public class PersonIdComparator implements Comparator<Person> {
     public int compare(Person one, Person two) {

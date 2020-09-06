@@ -1,4 +1,4 @@
-package com.baeldung.compareTo.model;
+package model;
 
 public class PersonWithSubtraction implements Comparable<PersonWithSubtraction> {
 
