@@ -43,7 +43,7 @@ public class CustomerDeserializer extends StdDeserializer<Customer> {
         feedback.setPhoneNumber(phoneNumber.isNull() ? null : phoneNumber.asText());
         JsonNode email = node.get(8);
         feedback.setEmail(email.isNull() ? null : email.asText());
-        
+
         return feedback;
     }
 }

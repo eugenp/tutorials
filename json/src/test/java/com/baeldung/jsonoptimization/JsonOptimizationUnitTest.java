@@ -32,10 +32,14 @@ class JsonOptimizationUnitTest {
     private static DecimalFormat LENGTH_FORMATTER = new DecimalFormat("###,###,###");
     private static Customer[] customers;
     private ObjectMapper mapper;
+    private static int defaultJsonLength;
 
     @BeforeAll
     static void setUpOnce() throws Exception {
         customers = Customer.fromMockFile();
+        ObjectMapper oneTimeMapper = new ObjectMapper();
+        byte[] feedback = oneTimeMapper.writeValueAsBytes(customers);
+        defaultJsonLength = feedback.length;
     }
 
     @BeforeEach
@@ -98,16 +102,16 @@ class JsonOptimizationUnitTest {
     @Test
     void testCustomSerializer() throws IOException {
         printBanner(TEST_LABEL_CUSTOM_SERIALIZER);
-        
+
         SimpleModule serializer = new SimpleModule("CustomDeSerializer", new Version(1, 0, 0, null, null, null));
         serializer.addSerializer(Customer.class, new CustomerSerializer());
         serializer.addDeserializer(Customer.class, new CustomerDeserializer());
         mapper.registerModule(serializer);
-        
+
         byte[] plainJson = createPlainJson(TEST_LABEL_CUSTOM_SERIALIZER, customers);
         compressJson(TEST_LABEL_CUSTOM_SERIALIZER, plainJson);
     }
-    
+
     @Test
     void testSlimCustomSerializer() throws IOException {
         printBanner(TEST_LABEL_SLIM_CUSTOM_SERIALIZER);
@@ -135,7 +139,8 @@ class JsonOptimizationUnitTest {
         gzipStream.write(plainJson);
         gzipStream.close();
         byte[] gzippedJson = outpuStream.toByteArray();
-        System.out.println(label + " GZIPped length: " + LENGTH_FORMATTER.format(gzippedJson.length));
+        int percent = gzippedJson.length * 100 / defaultJsonLength;
+        System.out.println(label + " GZIPped length: " + LENGTH_FORMATTER.format(gzippedJson.length / 1024) + "kB (" + percent + "%)");
         assertTrue(plainJson.length > gzippedJson.length, label + " should be longer than GZIPped data");
     }
 
@@ -145,7 +150,8 @@ class JsonOptimizationUnitTest {
         System.out.println(prettyWritter.writeValueAsString(customers[0]));
 
         byte[] feedback = mapper.writeValueAsBytes(customers);
-        System.out.println(label + " length:         " + LENGTH_FORMATTER.format(feedback.length));
+        int percent = feedback.length * 100 / defaultJsonLength;
+        System.out.println(label + " length:         " + LENGTH_FORMATTER.format(feedback.length / 1024) + "kB (" + percent + "%)");
         assertTrue(feedback.length > 1, label + " should be there");
 
         String prefix = label.replaceAll(" ", "-")

@@ -31,7 +31,7 @@ public class CustomerSlimDeserializer extends StdDeserializer<CustomerSlim> {
             .asText());
         feedback.setAddress(node.get(2)
             .asText());
-        
+
         return feedback;
     }
 }
