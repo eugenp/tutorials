@@ -1,4 +1,4 @@
-package com.baeldung.spring.transactional.entity;
+package com.baeldung.spring.transactional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

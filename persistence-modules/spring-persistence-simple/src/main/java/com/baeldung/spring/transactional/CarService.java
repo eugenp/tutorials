@@ -1,7 +1,5 @@
-package com.baeldung.spring.transactional.service;
+package com.baeldung.spring.transactional;
 
-import com.baeldung.spring.transactional.entity.Car;
-import com.baeldung.spring.transactional.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;

@@ -32,7 +32,7 @@ public class SshdDemo {
             .getSession()) {
             session.addPasswordIdentity(password);
             session.auth()
-              .verify(5L, TimeUnit.SECONDS);
+              .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
             try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
                  ByteArrayOutputStream errorResponseStream = new ByteArrayOutputStream();
                  ClientChannel channel = session.createChannel(Channel.CHANNEL_SHELL)) {

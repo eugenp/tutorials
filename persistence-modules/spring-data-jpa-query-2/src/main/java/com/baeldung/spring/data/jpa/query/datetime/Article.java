@@ -1,4 +1,4 @@
-package com.baeldung.boot.domain;
+package com.baeldung.spring.data.jpa.query.datetime;
 
 import javax.persistence.*;
 import java.util.Date;
