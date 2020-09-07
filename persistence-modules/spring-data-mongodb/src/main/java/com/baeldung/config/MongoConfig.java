@@ -81,7 +81,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Bean
     MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
-            return new MongoTransactionManager(dbFactory);
+        return new MongoTransactionManager(dbFactory);
     }
 
 }
