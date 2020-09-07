@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -23,14 +24,14 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 class JsonOptimizationUnitTest {
     private static final String TEST_LABEL_DEFAULT_JSON = "Default JSON";
     private static final String TEST_LABEL_DEFAULT_JSON_NO_NULL = "Default JSON without null";
-    private static final String TEST_LABEL_SHORT_NAMES = "Shorter attribute names";
-    private static final String TEST_LABEL_SHORT_NAMES_NO_NULL = "Shorter attribute names without null";
+    private static final String TEST_LABEL_SHORT_NAMES = "Shorter field names";
+    private static final String TEST_LABEL_SHORT_NAMES_NO_NULL = "Shorter field names without null";
     private static final String TEST_LABEL_CUSTOM_SERIALIZER = "Custom serializer";
     private static final String TEST_LABEL_SLIM_CUSTOM_SERIALIZER = "Slim custom serializer";
     private static final String TEST_LABEL_SLIM_CUSTOMER = "Slim customer";
-    private static final String TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES = "Slim customer with shorter attribute names";
-    private static DecimalFormat LENGTH_FORMATTER = new DecimalFormat("###,###");
-    private static DecimalFormat PERCENT_FORMATTER = new DecimalFormat("###");
+    private static final String TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES = "Slim customer with shorter field names";
+    private static DecimalFormat LENGTH_FORMATTER = new DecimalFormat("###,###.0");
+    private static DecimalFormat PERCENT_FORMATTER = new DecimalFormat("###.0");
     private static Customer[] customers;
     private ObjectMapper mapper;
     private static int defaultJsonLength;
@@ -41,6 +42,9 @@ class JsonOptimizationUnitTest {
         ObjectMapper oneTimeMapper = new ObjectMapper();
         byte[] feedback = oneTimeMapper.writeValueAsBytes(customers);
         defaultJsonLength = feedback.length;
+        System.out.println();        
+        System.out.println("Default JSON length: " + defaultJsonLength);        
+        System.out.println();        
     }
 
     @BeforeEach
@@ -63,8 +67,8 @@ class JsonOptimizationUnitTest {
     @Test
     void testDefaultNoNull() throws IOException {
         printBanner(TEST_LABEL_DEFAULT_JSON_NO_NULL);
-        CustomerNoNull[] defaultNoNull = CustomerNoNull.fromCustomers(customers);
-        byte[] plainJson = createPlainJson(TEST_LABEL_DEFAULT_JSON_NO_NULL, defaultNoNull);
+        mapper.setSerializationInclusion(Include.NON_NULL);
+        byte[] plainJson = createPlainJson(TEST_LABEL_DEFAULT_JSON_NO_NULL, customers);
         compressJson(TEST_LABEL_DEFAULT_JSON_NO_NULL, plainJson);
     }
 
@@ -79,8 +83,9 @@ class JsonOptimizationUnitTest {
     @Test
     void testShortNamesNoNull() throws IOException {
         printBanner(TEST_LABEL_SHORT_NAMES_NO_NULL);
-        CustomerShortNamesNoNull[] shorterOnesNoNull = CustomerShortNamesNoNull.fromCustomers(customers);
-        byte[] shorterJson = createPlainJson(TEST_LABEL_SHORT_NAMES_NO_NULL, shorterOnesNoNull);
+        CustomerShortNames[] shorterOnes = CustomerShortNames.fromCustomers(customers);
+        mapper.setSerializationInclusion(Include.NON_NULL);
+        byte[] shorterJson = createPlainJson(TEST_LABEL_SHORT_NAMES_NO_NULL, shorterOnes);
         compressJson(TEST_LABEL_SHORT_NAMES_NO_NULL, shorterJson);
     }
 
@@ -135,13 +140,15 @@ class JsonOptimizationUnitTest {
     }
 
     void compressJson(String label, byte[] plainJson) throws IOException {
-        ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
-        GZIPOutputStream gzipStream = new GZIPOutputStream(outpuStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        GZIPOutputStream gzipStream = new GZIPOutputStream(outputStream);
         gzipStream.write(plainJson);
         gzipStream.close();
-        byte[] gzippedJson = outpuStream.toByteArray();
-        double percent = Math.round(gzippedJson.length * 100d / defaultJsonLength);
-        System.out.println(label + " GZIPped length: " + LENGTH_FORMATTER.format(gzippedJson.length / 1024) 
+        outputStream.close();
+        byte[] gzippedJson = outputStream.toByteArray();
+        double length = gzippedJson.length / 1024d;
+        double percent = gzippedJson.length * 100d / defaultJsonLength;
+        System.out.println(label + " GZIPped length: " + LENGTH_FORMATTER.format(length) 
         + "kB (" + PERCENT_FORMATTER.format(percent) + "%)");
         assertTrue(plainJson.length > gzippedJson.length, label + " should be longer than GZIPped data");
     }
@@ -152,8 +159,9 @@ class JsonOptimizationUnitTest {
         System.out.println(prettyWritter.writeValueAsString(customers[0]));
 
         byte[] feedback = mapper.writeValueAsBytes(customers);
-        double percent = Math.round(feedback.length * 100d / defaultJsonLength);
-        System.out.println(label + " length:         " + LENGTH_FORMATTER.format(feedback.length / 1024) 
+        double length = feedback.length / 1024d;
+        double percent = feedback.length * 100d / defaultJsonLength;
+        System.out.println(label + " length:         " + LENGTH_FORMATTER.format(length) 
         + "kB (" + PERCENT_FORMATTER.format(percent) + "%)");
         assertTrue(feedback.length > 1, label + " should be there");
 
