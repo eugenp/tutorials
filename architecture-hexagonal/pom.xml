@@ -9,6 +9,7 @@
         <module>hexagonalapp</module>
         <module>domain</module>
         <module>rest</module>
+        <module>notifier</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
