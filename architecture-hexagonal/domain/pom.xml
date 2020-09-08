@@ -8,14 +8,10 @@
         <version>0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>domain</artifactId>
     <groupId>com.baeldung.domain</groupId>
-    <packaging>jar</packaging>
-
+    <packaging>pom</packaging>
     <dependencies>
-
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -33,8 +29,6 @@
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -42,11 +36,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-
-                <!--                <configuration>-->
-                <!--                    <source>1.14</source>-->
-                <!--                    <target>1.14</target>-->
-                <!--                </configuration>-->
             </plugin>
         </plugins>
     </build>

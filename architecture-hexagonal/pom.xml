@@ -33,8 +33,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -46,9 +44,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -60,6 +56,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

@@ -7,5 +7,4 @@ module com.baeldung.domain {
     requires spring.beans;
     exports com.baeldung.boot.architecture.hexagonal.domain;
     exports com.baeldung.boot.architecture.hexagonal.repository;
-
 }
