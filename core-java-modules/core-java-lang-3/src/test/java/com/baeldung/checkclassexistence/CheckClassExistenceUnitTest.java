@@ -28,7 +28,7 @@ public class CheckClassExistenceUnitTest {
     }
 
     @Test
-    public void givenInitializingClass_whenUsingForNameWithoutInitialization_noException() throws ClassNotFoundException {
+    public void givenInitializingClass_whenUsingForNameWithoutInitialization_thenNoException() throws ClassNotFoundException {
         Class.forName("com.baeldung.checkclassexistence.CheckClassExistenceUnitTest$InitializingClass", false, getClass().getClassLoader());
     }
 }
