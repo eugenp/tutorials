@@ -22,7 +22,6 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import java.util.Collections;
 
 @Configuration
-@Import({SpringDataRestConfiguration.class, BeanValidatorPluginsConfiguration.class})
 public class SpringFoxConfig {
 
     private ApiInfo apiInfo() {

@@ -655,9 +655,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
-                <module>spring-groovy</module>
+                <module>spring-freemarker</module>                
 
                 <module>spring-integration</module>
 
@@ -1159,9 +1157,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
-                <module>spring-groovy</module>
+                <module>spring-freemarker</module>                
 
                 <module>spring-integration</module>
 
