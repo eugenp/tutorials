@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.Timestamp;
 import java.time.format.DateTimeFormatter;
 
-public class TimestampToStringConverterTest {
+public class TimestampToStringConverterUnitTest {
 
     @Test
     public void givenDatePattern_whenFormatting_thenResultingStringIsCorrect() {
