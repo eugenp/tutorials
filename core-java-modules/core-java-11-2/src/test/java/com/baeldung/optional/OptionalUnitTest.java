@@ -264,6 +264,12 @@ public class OptionalUnitTest {
             .orElseThrow(IllegalArgumentException::new);
     }
 
+    @Test(expected = NoSuchElementException.class)
+    public void whenNoArgOrElseThrowWorks_thenCorrect() {
+        String nullName = null;
+        String name = Optional.ofNullable(nullName).orElseThrow();
+    }
+
     public String getMyDefault() {
         LOG.debug("Getting default value...");
         return "Default Value";
