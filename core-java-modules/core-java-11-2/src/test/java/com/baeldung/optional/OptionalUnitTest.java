@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class OptionalUnitTest {
 
@@ -260,6 +262,12 @@ public class OptionalUnitTest {
         String nullName = null;
         String name = Optional.ofNullable(nullName)
             .orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenNoArgOrElseThrowWorks_thenCorrect() {
+        String nullName = null;
+        String name = Optional.ofNullable(nullName).orElseThrow();
     }
 
     public String getMyDefault() {
