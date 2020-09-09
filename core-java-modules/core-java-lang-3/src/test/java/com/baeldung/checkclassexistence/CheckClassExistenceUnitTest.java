@@ -13,7 +13,7 @@ public class CheckClassExistenceUnitTest {
     }
 
     @Test(expected = ClassNotFoundException.class) //thrown when class does not exist
-    public void givenNonExistingClass_whenUsingForName_classNotFound() throws ClassNotFoundException {
+    public void givenNonExistingClass_whenUsingForName_thenClassNotFound() throws ClassNotFoundException {
         Class.forName("class.that.does.not.exist");
     }
 
