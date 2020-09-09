@@ -1,4 +1,4 @@
-package com.baeldung.java.reflection;
+package com.baeldung.reflection;
 
 public interface Locomotion {
     String getLocomotion();

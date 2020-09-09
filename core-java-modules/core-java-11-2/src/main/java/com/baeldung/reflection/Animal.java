@@ -1,4 +1,4 @@
-package com.baeldung.java.reflection;
+package com.baeldung.reflection;
 
 public abstract class Animal implements Eating {
 
