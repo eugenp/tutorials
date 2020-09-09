@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class CurrentDirectoryFetcherTest {
+public class CurrentDirectoryFetcherUnitTest {
 
     private static final String CURRENT_DIR = "core-java-os";
 
