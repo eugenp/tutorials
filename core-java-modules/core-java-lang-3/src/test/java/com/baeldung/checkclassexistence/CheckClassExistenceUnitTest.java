@@ -18,7 +18,7 @@ public class CheckClassExistenceUnitTest {
     }
 
     @Test
-    public void givenExistingClass_whenUsingForName_noException() throws ClassNotFoundException {
+    public void givenExistingClass_whenUsingForName_thenNoException() throws ClassNotFoundException {
         Class.forName("java.lang.String");
     }
 
