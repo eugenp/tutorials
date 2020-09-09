@@ -248,19 +248,12 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenMethodName_whenGetsMethod_thenCorrect() throws Exception {
-        final Class<?> birdClass = Class.forName("com.baeldung.reflection.Bird");
-        final Method walksMethod = birdClass.getDeclaredMethod("walks");
-        final Method setWalksMethod = birdClass.getDeclaredMethod("setWalks", boolean.class);
+        final Bird bird = new Bird();
+        final Method walksMethod = bird.getClass().getDeclaredMethod("walks");
+        final Method setWalksMethod = bird.getClass().getDeclaredMethod("setWalks", boolean.class);
 
-        assertFalse(walksMethod.isAccessible());
-        assertFalse(setWalksMethod.isAccessible());
-
-        walksMethod.setAccessible(true);
-        setWalksMethod.setAccessible(true);
-
-        assertTrue(walksMethod.isAccessible());
-        assertTrue(setWalksMethod.isAccessible());
-
+        assertTrue(walksMethod.canAccess(bird));
+        assertTrue(setWalksMethod.canAccess(bird));
     }
 
     @Test
