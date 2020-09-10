@@ -1,4 +1,4 @@
-package com.baeldung.streams.collectors;
+package com.baeldung.collectors;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
