@@ -7,7 +7,7 @@ import restx.tests.RestxSpecTestsRunner;
 
 @RunWith(RestxSpecTestsRunner.class)
 @FindSpecsIn("specs/hello")
-public class HelloResourceSpecUnitTest {
+public class HelloResourceSpecIntegrationTest {
 
     /**
      * Useless, thanks to both @RunWith(RestxSpecTestsRunner.class) & @FindSpecsIn()
