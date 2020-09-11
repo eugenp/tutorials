@@ -655,9 +655,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
-                <module>spring-groovy</module>
+                <module>spring-freemarker</module>                
 
                 <module>spring-integration</module>
 
@@ -701,6 +699,7 @@
                 <module>spring-rest-compress</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-http</module>
+                <module>spring-rest-http-2</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
@@ -1158,9 +1157,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
-                <module>spring-groovy</module>
+                <module>spring-freemarker</module>                
 
                 <module>spring-integration</module>
 
