@@ -1,4 +1,4 @@
-package com.baeldung.spring;
+package com.baeldung.filterresponse.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,12 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Arrays;
-
 @Configuration
 @EnableWebMvc
 @EnableWebSecurity
-@ComponentScan("com.baeldung")
+@ComponentScan("com.baeldung.filterresponse")
 public class AppConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     @Override

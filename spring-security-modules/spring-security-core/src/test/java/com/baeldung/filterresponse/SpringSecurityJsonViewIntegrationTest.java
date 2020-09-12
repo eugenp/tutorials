@@ -1,6 +1,6 @@
-package com.baeldung.security;
+package com.baeldung.filterresponse;
 
-import com.baeldung.spring.AppConfig;
+import com.baeldung.filterresponse.config.AppConfig;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.Before;
