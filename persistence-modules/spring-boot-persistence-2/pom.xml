@@ -13,10 +13,18 @@
         <groupId>com.baeldung</groupId>
         <artifactId>persistence-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -36,7 +44,6 @@
                 <artifactId>jdbi3-sqlobject</artifactId>
                 <version>${jdbi.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
