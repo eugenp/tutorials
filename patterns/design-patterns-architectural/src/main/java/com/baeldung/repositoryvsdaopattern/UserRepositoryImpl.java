@@ -9,7 +9,7 @@ public class UserRepositoryImpl implements UserRepository {
     
     @Override
     public User get(Long id) {
-        User user = userDaoImpl.read(id);
+        UserSocialMedia user = (UserSocialMedia) userDaoImpl.read(id);
         
         List<Tweet> tweets = tweetDaoImpl.fetchTweets(user.getEmail());
         user.setTweets(tweets);
@@ -34,7 +34,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<Tweet> fetchTweets(User user) {
-        return null;
+        return tweetDaoImpl.fetchTweets(user.getEmail());
+        
     }
     
     @Override
