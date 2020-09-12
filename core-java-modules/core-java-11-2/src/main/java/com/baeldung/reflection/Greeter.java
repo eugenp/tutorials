@@ -1,4 +1,4 @@
-package com.baeldung.java.reflection;
+package com.baeldung.reflection;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
