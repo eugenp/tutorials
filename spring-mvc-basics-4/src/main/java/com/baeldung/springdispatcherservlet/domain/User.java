@@ -1,7 +1,7 @@
 package com.baeldung.springdispatcherservlet.domain;
 
-
 public class User {
+
     private long id;
     private String firstName;
     private String lastName;

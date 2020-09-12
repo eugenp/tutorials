@@ -21,7 +21,7 @@ public class MultipartController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ModelAndView FileuploadController(@RequestParam("file") MultipartFile file) {
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("home");
         try {
             InputStream in = file.getInputStream();
             String path = new File(".").getAbsolutePath();

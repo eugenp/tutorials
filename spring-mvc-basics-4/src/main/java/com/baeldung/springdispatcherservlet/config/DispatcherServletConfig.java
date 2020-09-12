@@ -1,4 +1,4 @@
-package com.baeldung.springdispatcherservlet.configuration;
+package com.baeldung.springdispatcherservlet.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,10 +17,10 @@ import java.io.IOException;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.baeldung.springdispatcherservlet")
-public class AppConfig implements WebMvcConfigurer {
+public class DispatcherServletConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/spring-dispatcher").setViewName("home");
     }
 
     /** Multipart file uploading configuratioin */
@@ -35,7 +35,7 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean
     public UrlBasedViewResolver viewResolver() {
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("/WEB-INF/jsp/");
+        resolver.setPrefix("/WEB-INF/view/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         return resolver;

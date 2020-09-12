@@ -14,8 +14,8 @@
 <body>
     <h2>Hello World!</h2>
     <br/>
-    <a href="${ctx}/?theme=example">Switch Theme!</a>
-    <a href="${ctx}/?theme=default">Switch Theme!</a>
+    <a href="${ctx}/spring-dispatcher?theme=example">Switch Theme!</a>
+    <a href="${ctx}/spring-dispatcher?theme=default">Switch Theme!</a>
     <br/>
     <br/>
     <br/>
