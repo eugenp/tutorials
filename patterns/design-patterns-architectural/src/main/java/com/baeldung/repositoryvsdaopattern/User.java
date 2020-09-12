@@ -1,7 +1,5 @@
 package com.baeldung.repositoryvsdaopattern;
 
-import java.util.List;
-
 public class User {
     
     private Long id;
@@ -9,8 +7,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    
-    private List<Tweet> tweets;
     
     public Long getId() {
         return id;
@@ -50,14 +46,6 @@ public class User {
     
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Tweet> getTweets() {
-        return tweets;
-    }
-
-    public void setTweets(List<Tweet> tweets) {
-        this.tweets = tweets;
     }
     
 }
