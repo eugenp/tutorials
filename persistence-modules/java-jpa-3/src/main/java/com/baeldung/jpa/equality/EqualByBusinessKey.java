@@ -44,7 +44,7 @@ public class EqualByBusinessKey {
             return false;
         }
         if (obj instanceof EqualByBusinessKey) {
-            if (((EqualByBusinessKey) obj).getEmail() == getEmail()) {
+            if (((EqualByBusinessKey) obj).getEmail().equals(getEmail())) {
                 return true;
             }
         }

@@ -1,12 +1,6 @@
 package com.baeldung.manytomany.model;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "course_rating")
@@ -16,12 +10,12 @@ public class CourseRating {
     private CourseRatingKey id;
 
     @ManyToOne
-    @MapsId("student_id")
+    @MapsId("studentId")
     @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
-    @MapsId("course_id")
+    @MapsId("courseId")
     @JoinColumn(name = "course_id")
     private Course course;
 
@@ -31,24 +25,36 @@ public class CourseRating {
     public CourseRating() {
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     public CourseRatingKey getId() {
         return id;
+    }
+
+    public void setId(CourseRatingKey id) {
+        this.id = id;
     }
 
     public Student getStudent() {
         return student;
     }
 
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public Course getCourse() {
         return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     @Override

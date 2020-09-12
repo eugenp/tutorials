@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.rule.OutputCapture;
+import org.springframework.boot.test.system.OutputCaptureRule;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
@@ -29,7 +29,7 @@ public class LogbackTestLogLevelIntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Rule
-    public OutputCapture outputCapture = new OutputCapture();
+    public OutputCaptureRule outputCapture = new OutputCaptureRule();
 
     private String baseUrl = "/testLogLevel";
 
