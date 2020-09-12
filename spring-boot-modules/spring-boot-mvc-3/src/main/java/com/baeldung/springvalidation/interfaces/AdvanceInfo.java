@@ -1,6 +1,6 @@
 package com.baeldung.springvalidation.interfaces;
 
-public interface AdvanceInfo{
+public interface AdvanceInfo {
     // validation group marker interface
 
 }
