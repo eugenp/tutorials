@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class UserAccountUnitTest{
+public class UserAccountUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -32,39 +32,26 @@ public class UserAccountUnitTest{
     }
 
     @Test
-    public void givenSaveBasicInfo_whenIncorrectInput_thenError() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/saveBasicInfo")
-            .accept(MediaType.TEXT_HTML))
-            // .param("name", "test123")
-            // .param("password", "pass"))
-            .andExpect(model().errorCount(2))
-            .andExpect(view().name("error"))
+    public void givenSaveBasicInfoStep1_whenCorrectInput_thenSuccess() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/saveBasicInfoStep1")
+            .accept(MediaType.TEXT_HTML)
+            .param("name", "test123")
+            .param("password", "pass"))
+            .andExpect(view().name("success"))
             .andExpect(status().isOk())
             .andDo(print());
     }
 
-    /*  @Test
-    public void givenSaveBasicInfoWithAddress_thenError() throws Exception {
-    
-        UserAccount useraccount = new UserAccount();
-        //useraccount.setName("name");
-        //useraccount.setPassword("pass");
-        UserAddress uadd = new UserAddress();
-        uadd.setCountryCode("UK");
-       // useraccount.setUseraddress(uadd);
-    
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/saveBasicInfo")
-           // .flashAttr("useraccount", useraccount)
+    @Test
+    public void givenSaveBasicInfoStep1_whenIncorrectInput_thenError() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/saveBasicInfoStep1")
             .accept(MediaType.TEXT_HTML))
             // .param("name", "test123")
             // .param("password", "pass"))
-    
             .andExpect(model().errorCount(2))
-            .andExpect(view().name("error"))
-            // .andExpect(model().attribute("message", "Valid form"))
+            // .andExpect(view().name("error"))
             .andExpect(status().isOk())
-            // .andExpect(model().attribute("useraccount", contains(org.hamcrest.object.HasToString.hasToString(uadd.toString()))));
             .andDo(print());
-    }*/
+    }
 
 }
