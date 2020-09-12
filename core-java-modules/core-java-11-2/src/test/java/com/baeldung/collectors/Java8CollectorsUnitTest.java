@@ -1,18 +1,11 @@
-package com.baeldung.streams.collectors;
+package com.baeldung.collectors;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.DoubleSummaryStatistics;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
@@ -20,19 +13,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collector;
 
 import static com.google.common.collect.Sets.newHashSet;
-import static java.util.stream.Collectors.averagingDouble;
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.maxBy;
-import static java.util.stream.Collectors.partitioningBy;
-import static java.util.stream.Collectors.summarizingDouble;
-import static java.util.stream.Collectors.summingDouble;
-import static java.util.stream.Collectors.toCollection;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -49,10 +30,26 @@ public class Java8CollectorsUnitTest {
     }
 
     @Test
+    public void whenCollectingToUnmodifiableList_shouldCollectToUnmodifiableList() {
+        final List<String> result = givenList.stream().collect(toUnmodifiableList());
+
+        assertThatThrownBy(() -> result.add("foo"))
+          .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
     public void whenCollectingToSet_shouldCollectToSet() throws Exception {
         final Set<String> result = givenList.stream().collect(toSet());
 
         assertThat(result).containsAll(givenList);
+    }
+
+    @Test
+    public void whenCollectingToUnmodifiableSet_shouldCollectToUnmodifiableSet() {
+        final Set<String> result = givenList.stream().collect(toUnmodifiableSet());
+
+        assertThatThrownBy(() -> result.add("foo"))
+          .isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
@@ -82,6 +79,15 @@ public class Java8CollectorsUnitTest {
         final Map<String, Integer> result = givenList.stream().collect(toMap(Function.identity(), String::length));
 
         assertThat(result).containsEntry("a", 1).containsEntry("bb", 2).containsEntry("ccc", 3).containsEntry("dd", 2);
+    }
+
+    @Test
+    public void whenCollectingToUnmodifiableMap_shouldCollectToUnmodifiableMap() {
+        final Map<String, Integer> result = givenList.stream()
+          .collect(toUnmodifiableMap(Function.identity(), String::length));
+
+        assertThatThrownBy(() -> result.put("foo", 3))
+                .isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
