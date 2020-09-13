@@ -1,7 +1,9 @@
 package com.baeldung.booker.adapters.api;
 
 import com.baeldung.booker.domain.Book;
-import com.baeldung.booker.services.BookService;
+import com.baeldung.booker.ports.incoming.IBrowseBooks;
+import com.baeldung.booker.ports.incoming.IRentBook;
+import com.baeldung.booker.ports.incoming.IReturnBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,22 +17,28 @@ import java.util.List;
 public class BookerController {
 
   @Autowired
-  BookService bookService;
+  IRentBook iRentBookAdapter;
+
+  @Autowired
+  IReturnBook iReturnBookAdapter;
+
+  @Autowired
+  IBrowseBooks iBrowseBooksAdapter;
 
   @GetMapping({"/",""})
   public List<Book> getBookByCategory() {
-    return bookService.findAll();
+    return iBrowseBooksAdapter.findAll();
   }
 
   @GetMapping({"/return/{id}"})
   public Book returnBook(@PathVariable Long id) {
-    Book book = bookService.returnABook(id);
+    Book book = iReturnBookAdapter.returnABook(id);
     return book;
   }
 
   @GetMapping({"/rent/{id}"})
   public Book rentBook(@PathVariable Long id) {
-    return bookService.rentBook(id);
+    return iRentBookAdapter.rentBook(id);
   }
 
 }
