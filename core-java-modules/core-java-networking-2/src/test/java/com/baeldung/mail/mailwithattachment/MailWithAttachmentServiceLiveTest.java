@@ -16,7 +16,6 @@ public class MailWithAttachmentServiceLiveTest {
 
     @Resource
     private MailWithAttachmentService emailService;
-
     private GreenMail greenMail;
 
     @Before
@@ -37,9 +36,7 @@ public class MailWithAttachmentServiceLiveTest {
         try {
             Session testSession = greenMail.getSmtp()
                 .createSession();
-
             emailService.sendMail(testSession);
-
             assertEquals(1, greenMail.getReceivedMessages().length);
             
         } catch (Exception e) {
