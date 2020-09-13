@@ -1,14 +1,15 @@
-package com.baeldung.config;
+package com.baeldung.halbrowser.config;
 
-import com.baeldung.data.BookRepository;
-import com.baeldung.model.Book;
+import java.util.Random;
+import java.util.stream.IntStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Random;
-import java.util.stream.IntStream;
+import com.baeldung.halbrowser.data.BookRepository;
+import com.baeldung.halbrowser.model.Book;
 
 @Component
 public class DBLoader implements ApplicationRunner {
