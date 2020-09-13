@@ -8,5 +8,5 @@ This module contains articles about reactive Spring 5
 - [Testing Reactive Streams Using StepVerifier and TestPublisher](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher)
 - [Debugging Reactive Streams in Spring 5](https://www.baeldung.com/spring-debugging-reactive-streams)
 - [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
-- [Spring WebClient Filters](https://www.baeldung.com/spring-webclient-filters)
+- [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
 - More articles: [[<-- prev]](/spring-5-reactive)

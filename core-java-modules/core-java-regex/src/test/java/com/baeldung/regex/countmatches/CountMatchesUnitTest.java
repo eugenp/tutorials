@@ -1,12 +1,11 @@
 package com.baeldung.regex.countmatches;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit Test intended to count number of matches of a RegEx using Java 8 and 9.
@@ -65,7 +64,7 @@ public class CountMatchesUnitTest {
             count++;
         }
 
-        assertNotEquals(3, count);
+        assertEquals(2, count);
     }
 
     @Test

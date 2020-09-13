@@ -17,15 +17,6 @@
     <name>spring-boot-mvc</name>
     <description>Module For Spring Boot MVC</description>
 
-    <repositories>
-        <!-- Snapshot repository location -->
-        <repository>
-            <id>jcenter-snapshots</id>
-            <name>jcenter</name>
-            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
 
         <dependency>
@@ -48,6 +39,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
 
         <dependency>
@@ -99,24 +94,7 @@
         <!-- Spring Fox 2 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-data-rest</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>${spring.fox.version}</version>
         </dependency>
 
@@ -148,7 +126,7 @@
     </build>
 
     <properties>
-        <spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
+        <spring.fox.version>3.0.0</spring.fox.version>
         <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
         <javax.faces.version>2.3.7</javax.faces.version>

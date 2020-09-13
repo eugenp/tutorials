@@ -4,9 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>guava-modules</artifactId>
     <name>guava-modules</name>
-    <properties>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-    </properties>
     <packaging>pom</packaging>
 
     <parent>
@@ -17,12 +14,24 @@
     </parent>
 
     <modules>
+        <module>guava-utilities</module>
+        <module>guava-core</module>
         <module>guava-18</module>
         <module>guava-19</module>
         <module>guava-21</module>
+        <module>guava-collections</module>
+        <module>guava-collections-list</module>
+        <module>guava-collections-map</module>
+        <module>guava-collections-set</module>
+        <module>guava-io</module>
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -46,5 +55,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <guava.version>29.0-jre</guava.version>
+    </properties>
 
 </project>
