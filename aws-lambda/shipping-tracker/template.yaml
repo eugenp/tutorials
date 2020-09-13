@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  shipping-tracker
+
+  Sample SAM Template for shipping-tracker
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  ShippingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ShippingFunction
+      Handler: com.baeldung.lambda.shipping.App::handleRequest
+      Runtime: java8
+      MemorySize: 512
+      Environment:
+        Variables:
+          DB_URL: jdbc:postgresql://postgres/postgres
+          DB_USER: postgres
+          DB_PASSWORD: password
+      Events:
+        CreateConsignment:
+          Type: Api
+          Properties:
+            Path: /consignment
+            Method: post
+        AddItem:
+          Type: Api
+          Properties:
+            Path: /consignment/{id}/item
+            Method: post
+        CheckIn:
+          Type: Api
+          Properties:
+            Path: /consignment/{id}/checkin
+            Method: post
+        ViewConsignment:
+          Type: Api
+          Properties:
+            Path: /consignment/{id}
+            Method: get
+
