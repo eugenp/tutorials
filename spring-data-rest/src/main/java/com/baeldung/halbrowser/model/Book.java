@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.halbrowser.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
