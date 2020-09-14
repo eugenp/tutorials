@@ -1,9 +1,10 @@
-package com.baeldung.controller;
+package com.baeldung.filterresponse.controller;
 
-import com.baeldung.spring.AppConfig.Role;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.baeldung.filterresponse.config.AppConfig.Role;
 
 public class View {
 
