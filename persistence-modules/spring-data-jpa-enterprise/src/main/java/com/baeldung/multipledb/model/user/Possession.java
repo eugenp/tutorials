@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class PossessionMultipleDB {
+public class Possession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +12,11 @@ public class PossessionMultipleDB {
 
     private String name;
 
-    public PossessionMultipleDB() {
+    public Possession() {
         super();
     }
 
-    public PossessionMultipleDB(final String name) {
+    public Possession(final String name) {
         super();
 
         this.name = name;
@@ -58,7 +58,7 @@ public class PossessionMultipleDB {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PossessionMultipleDB other = (PossessionMultipleDB) obj;
+        final Possession other = (Possession) obj;
         if (id != other.id) {
             return false;
         }
