@@ -508,7 +508,6 @@
 
                 <module>maven-modules</module>
                 <module>maven-archetype</module>
-                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
@@ -1019,7 +1018,6 @@
 
                 <module>maven-modules</module>
                 <module>maven-archetype</module>
-                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
