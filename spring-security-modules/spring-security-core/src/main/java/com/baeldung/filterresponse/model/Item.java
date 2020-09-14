@@ -1,6 +1,6 @@
-package com.baeldung.model;
+package com.baeldung.filterresponse.model;
 
-import com.baeldung.controller.View;
+import com.baeldung.filterresponse.controller.View;
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class Item {

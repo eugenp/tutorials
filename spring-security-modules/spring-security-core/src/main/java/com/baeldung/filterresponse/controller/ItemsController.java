@@ -1,14 +1,12 @@
-package com.baeldung.controller;
+package com.baeldung.filterresponse.controller;
 
-import com.baeldung.model.Item;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import com.baeldung.filterresponse.model.Item;
 
 @RestController
 public class ItemsController {
