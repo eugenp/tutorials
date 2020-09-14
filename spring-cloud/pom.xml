@@ -43,6 +43,7 @@
         <module>spring-cloud-ribbon-retry</module>
         <module>spring-cloud-circuit-breaker</module>
         <module>spring-cloud-eureka-self-preservation</module>
+        <!--<module>spring-cloud-openfeign</module>--> <!-- Fixing in JAVA-2820 -->
     </modules>
 
     <build>
