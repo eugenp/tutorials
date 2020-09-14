@@ -35,6 +35,17 @@
             <artifactId>async-http-client</artifactId>
             <version>${async-http-client.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -45,6 +56,8 @@
         <httpclient.version>4.5.9</httpclient.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
         <async-http-client.version>2.4.5</async-http-client.version>
+        <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
+        <assertj.version>3.11.1</assertj.version>
     </properties>
 
 </project>
