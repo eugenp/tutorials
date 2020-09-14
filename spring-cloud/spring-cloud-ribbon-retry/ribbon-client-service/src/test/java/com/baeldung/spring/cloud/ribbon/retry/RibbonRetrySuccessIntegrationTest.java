@@ -1,5 +1,6 @@
 package com.baeldung.spring.cloud.ribbon.retry;
 
+import org.apache.catalina.webresources.TomcatURLStreamHandlerFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.ResponseEntity;
 
-import static com.baeldung.spring.cloud.ribbon.retry.TestUtils.setUpServices;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -26,10 +26,9 @@ public class RibbonRetrySuccessIntegrationTest {
 
     @BeforeAll
     public static void setup() {
-        weatherServiceInstance1 = startApp(0);
-        weatherServiceInstance2 = startApp(0);
-
-        setUpServices(weatherServiceInstance1, weatherServiceInstance2);
+        TomcatURLStreamHandlerFactory.disable();
+        weatherServiceInstance1 = startApp(8021);
+        weatherServiceInstance2 = startApp(8022);
     }
 
     private static ConfigurableApplicationContext startApp(int port) {
