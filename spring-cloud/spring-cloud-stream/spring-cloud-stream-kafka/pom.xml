@@ -105,6 +105,11 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <kafka-avro-serializer.version>4.0.0</kafka-avro-serializer.version>
         <avro.version>1.8.2</avro.version>
+
+        <!-- testing -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
