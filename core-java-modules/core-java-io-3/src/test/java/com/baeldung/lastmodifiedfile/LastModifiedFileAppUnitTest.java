@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class LastModifiedFileAppUnitTest {
@@ -30,11 +31,12 @@ public class LastModifiedFileAppUnitTest {
         Files.createFile(file02);
         Path file03 = Paths.get(SOURCEDIRECTORY + "/file03.txt");
         Files.createFile(file03);
-
+    }
+    
+    @BeforeEach
+    public void beforeEach() throws IOException {
         String str = "Hello From Baeldung";
-
-        Files.write(file02, str.getBytes());
-
+        Files.write(Paths.get(SOURCEDIRECTORY + "/file02.txt"), str.getBytes());
     }
 
     @Test
