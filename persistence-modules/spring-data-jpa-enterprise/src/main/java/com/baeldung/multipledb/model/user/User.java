@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class UserMultipleDB {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +18,13 @@ public class UserMultipleDB {
     private Integer status;
     
     @OneToMany
-    List<PossessionMultipleDB> possessionList;
+    List<Possession> possessionList;
   
-    public UserMultipleDB() {
+    public User() {
         super();
     }
 
-    public UserMultipleDB(String name, String email, Integer status) {
+    public User(String name, String email, Integer status) {
         this.name = name;
         this.email = email;
         this.status = status;
@@ -70,11 +70,11 @@ public class UserMultipleDB {
         this.age = age;
     }
 
-    public List<PossessionMultipleDB> getPossessionList() {
+    public List<Possession> getPossessionList() {
         return possessionList;
     }
 
-    public void setPossessionList(List<PossessionMultipleDB> possessionList) {
+    public void setPossessionList(List<Possession> possessionList) {
         this.possessionList = possessionList;
     }
 
