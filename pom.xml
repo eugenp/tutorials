@@ -508,7 +508,6 @@
 
                 <module>maven-modules</module>
                 <module>maven-archetype</module>
-                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
@@ -697,7 +696,6 @@
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
-                <module>spring-rest-hal-browser</module>
                 <module>spring-rest-http</module>
                 <module>spring-rest-http-2</module>
                 <module>spring-rest-query-language</module>
@@ -1019,7 +1017,6 @@
 
                 <module>maven-modules</module>
                 <module>maven-archetype</module>
-                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
@@ -1200,7 +1197,6 @@
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
-                <module>spring-rest-hal-browser</module>
                 <module>spring-rest-http</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
