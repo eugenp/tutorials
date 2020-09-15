@@ -41,6 +41,21 @@
             <version>${jakarta.xml.bind.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.embeded.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.embeded.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -50,6 +65,16 @@
 
     <build>
         <finalName>core-java-networking-2</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
@@ -57,6 +82,9 @@
         <javax.mail.version>1.5.0-b01</javax.mail.version>
         <async-http-client.version>2.4.5</async-http-client.version>
         <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
+        <spring.core.version>5.2.8.RELEASE</spring.core.version>
+        <jetty.embeded.version>9.4.31.v20200723</jetty.embeded.version>
+        <tomcat.embeded.version>10.0.0-M7</tomcat.embeded.version>
         <assertj.version>3.11.1</assertj.version>
     </properties>
 
