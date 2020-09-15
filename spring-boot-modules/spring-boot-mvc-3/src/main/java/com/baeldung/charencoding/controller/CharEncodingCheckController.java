@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CharEncodingCheckController {
-	
-	@GetMapping("/ping")
-	public String ping() {
-		return "path";
-	}
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "path";
+    }
 }
