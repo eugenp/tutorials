@@ -20,18 +20,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
-    
+
     private ObjectMapper objectMapper;
-    
+
     @Autowired
     public void setObjectMapper(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
-    
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Product.class, 
-            new ProductEditor(objectMapper));
+        binder.registerCustomEditor(Product.class, new ProductEditor(objectMapper));
     }
 
     @PostMapping("/create")
