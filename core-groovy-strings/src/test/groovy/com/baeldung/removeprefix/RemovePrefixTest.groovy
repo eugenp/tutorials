@@ -45,7 +45,8 @@ class RemovePrefixTest {
         Assert.assertEquals(expected, actual)
     }
 
-    @Test public void whenPrefixIsRemovedUsingReplaceFirst_thenReturnTrue() {
+    @Test 
+    public void whenPrefixIsRemovedUsingReplaceFirst_thenReturnTrue() {
         def regex = ~"^groovy" 
         String trimPrefix = "groovyTutorials at Baeldung's groovy page" 
         String actual = trimPrefix.replaceFirst(regex, "")
