@@ -19,23 +19,20 @@ public class LastModifiedFileAppUnitTest {
     @BeforeAll
     public static void setUpFiles() throws IOException {
         File srcDir = new File(SOURCEDIRECTORY);
-        if(!srcDir.exists())
+        if (!srcDir.exists())
             srcDir.mkdir();
 
         FileUtils.cleanDirectory(srcDir);
 
-        Path file01 = Paths.get(SOURCEDIRECTORY + "/file01.txt");
-        Files.createFile(file01);
-        Path file02 = Paths.get(SOURCEDIRECTORY + "/file02.txt");
-        Files.createFile(file02);
-        Path file03 = Paths.get(SOURCEDIRECTORY + "/file03.txt");
-        Files.createFile(file03);
     }
 
     @Test
     public void givenDirectory_whenUsingIoApi_thenFindLastModfile() throws IOException {
+        Path file01 = Paths.get(SOURCEDIRECTORY + "/file01.txt");
+        Files.createFile(file01);
+
         String str = "Hello File01";
-        Files.write(Paths.get(SOURCEDIRECTORY + "/file01.txt"), str.getBytes());
+        Files.write(file01, str.getBytes());
         File lastModFile = LastModifiedFileApp.findUsingIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModFile).isNotNull();
@@ -44,19 +41,25 @@ public class LastModifiedFileAppUnitTest {
 
     @Test
     public void givenDirectory_whenUsingNioApi_thenFindLastModfile() throws IOException {
+        Path file02 = Paths.get(SOURCEDIRECTORY + "/file02.txt");
+        Files.createFile(file02);
+
         String str = "Hello File02";
-        Files.write(Paths.get(SOURCEDIRECTORY + "/file02.txt"), str.getBytes());
+        Files.write(file02, str.getBytes());
         Path lastModPath = LastModifiedFileApp.findUsingNIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModPath).isNotNull();
-        assertThat(lastModPath.getFileName()
-            .toString()).isEqualTo("file02.txt");
+        assertThat(lastModPath.toFile()
+            .getName()).isEqualTo("file02.txt");
     }
 
     @Test
     public void givenDirectory_whenUsingApacheCommons_thenFindLastModfile() throws IOException {
+        Path file03 = Paths.get(SOURCEDIRECTORY + "/file03.txt");
+        Files.createFile(file03);
+
         String str = "Hello File03";
-        Files.write(Paths.get(SOURCEDIRECTORY + "/file03.txt"), str.getBytes());
+        Files.write(file03, str.getBytes());
         File lastModFile = LastModifiedFileApp.findUsingCommonsIO(SOURCEDIRECTORY);
 
         assertThat(lastModFile).isNotNull();
