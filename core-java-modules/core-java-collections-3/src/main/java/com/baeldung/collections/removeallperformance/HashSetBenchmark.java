@@ -63,12 +63,12 @@ public class HashSetBenchmark {
     }
 
     @Benchmark
-    public boolean Given_SizeOfHashsetGreaterThanSizeOfCollection_When_RemoveAllFromHashSet_Then_GoodPerformance(MyState state) {
+    public boolean given_SizeOfHashsetGreaterThanSizeOfCollection_When_RemoveAllFromHashSet_Then_GoodPerformance(MyState state) {
         return state.employeeSet1.removeAll(state.employeeList1);
     }
 
     @Benchmark
-    public boolean Given_SizeOfHashsetSmallerThanSizeOfCollection_When_RemoveAllFromHashSet_Then_BadPerformance(MyState state) {
+    public boolean given_SizeOfHashsetSmallerThanSizeOfCollection_When_RemoveAllFromHashSet_Then_BadPerformance(MyState state) {
         return state.employeeSet2.removeAll(state.employeeList2);
     }
 
