@@ -23,16 +23,14 @@ public class LastModifiedFileAppUnitTest {
             srcDir.mkdir();
 
         FileUtils.cleanDirectory(srcDir);
-
-        Path file0 = Paths.get(SOURCEDIRECTORY + "/file0.txt");
-        Files.createFile(file0);
-
-        Files.write(file0, "Hello File Zero".getBytes());
-
     }
 
     @Test
     public void givenDirectory_whenUsingIoApi_thenFindLastModfile() throws IOException {
+        Path file0 = Paths.get(SOURCEDIRECTORY + "/file0.txt");
+        Files.createFile(file0);
+        Files.write(file0, "Hello File Zero".getBytes());
+
         Path file01 = Paths.get(SOURCEDIRECTORY + "/file01.txt");
         Files.createFile(file01);
 
