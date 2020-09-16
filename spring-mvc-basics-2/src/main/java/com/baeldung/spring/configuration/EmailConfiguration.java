@@ -2,9 +2,10 @@ package com.baeldung.spring.configuration;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,11 +13,15 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
-@Configuration
 @ComponentScan(basePackages = { "com.baeldung.spring.mail" })
+@PropertySource(value={"classpath:application.properties"})
 public class EmailConfiguration {
+	
+	@Value("${mail.templates.path}")
+	String mailTemplatesPath;
     
     @Bean
     public JavaMailSender getJavaMailSender() {
@@ -53,9 +58,9 @@ public class EmailConfiguration {
     }
 
     @Bean
-    public SpringResourceTemplateResolver thymeleafTemplateResolver() {
-        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setPrefix("/WEB-INF/views/mail/");
+    public ITemplateResolver thymeleafTemplateResolver() {
+    	ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix(mailTemplatesPath);
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
         templateResolver.setCharacterEncoding("UTF-8");
@@ -64,8 +69,8 @@ public class EmailConfiguration {
     
     @Bean 
     public FreeMarkerConfigurer freemarkerConfig() { 
-        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
-        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/mail");
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("classpath:/"+mailTemplatesPath);
         return freeMarkerConfigurer; 
     }
     
