@@ -57,6 +57,8 @@ public class PhoneNumberType implements UserType {
 
         if (Objects.isNull(value)) {
             st.setNull(index, Types.INTEGER);
+            st.setNull(index+1, Types.INTEGER);
+            st.setNull(index+2, Types.INTEGER);
         } else {
             PhoneNumber employeeNumber = (PhoneNumber) value;
             st.setInt(index,employeeNumber.getCountryCode());

@@ -10,7 +10,7 @@ public class CustomSpringEventPublisher {
     @Autowired
     private ApplicationEventPublisher applicationEventPublisher;
 
-    public void publishEvent(final String message) {
+    public void publishCustomEvent(final String message) {
         System.out.println("Publishing custom event. ");
         final CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, message);
         applicationEventPublisher.publishEvent(customSpringEvent);

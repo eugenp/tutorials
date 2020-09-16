@@ -15,6 +15,11 @@ class PageTest {
     }
 
     @Test
+    fun `Invoke convention should work as expected`() {
+        assertEquals(page(1), "Kotlin")
+    }
+
+    @Test
     fun `In convention should work on a page as expected`() {
         assertTrue("Kotlin" in page)
     }

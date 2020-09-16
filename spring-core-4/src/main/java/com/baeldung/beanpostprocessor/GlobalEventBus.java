@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 @SuppressWarnings("ALL")
 public final class GlobalEventBus {
 
-    public static final String GLOBAL_EVENT_BUS_EXPRESSION = "T(com.baeldung.postprocessor.GlobalEventBus).getEventBus()";
+    public static final String GLOBAL_EVENT_BUS_EXPRESSION = "T(com.baeldung.beanpostprocessor.GlobalEventBus).getEventBus()";
 
     private static final String IDENTIFIER = "global-event-bus";
 

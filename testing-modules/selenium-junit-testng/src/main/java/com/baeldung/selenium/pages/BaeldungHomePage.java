@@ -1,6 +1,6 @@
-package main.java.com.baeldung.selenium.pages;
+package com.baeldung.selenium.pages;
 
-import main.java.com.baeldung.selenium.config.SeleniumConfig;
+import com.baeldung.selenium.config.SeleniumConfig;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BaeldungHomePage {
 
     private SeleniumConfig config;
-    @FindBy(css=".header--menu > a")
+    @FindBy(css = ".nav--logo_mobile")
     private WebElement title;
     @FindBy(css = ".menu-start-here > a")
     private WebElement startHere;

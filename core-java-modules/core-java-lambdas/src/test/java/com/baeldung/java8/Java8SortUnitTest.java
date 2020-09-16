@@ -54,7 +54,7 @@ public class Java8SortUnitTest {
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 12), new Human("Sarah", 10), new Human("Zack", 12));
         humans.sort((lhs, rhs) -> {
             if (lhs.getName().equals(rhs.getName())) {
-                return lhs.getAge() - rhs.getAge();
+                return Integer.compare(lhs.getAge(), rhs.getAge());
             } else {
                 return lhs.getName().compareTo(rhs.getName());
             }
