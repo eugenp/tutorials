@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class LastModifiedFileAppUnitTest {
@@ -23,32 +24,37 @@ public class LastModifiedFileAppUnitTest {
             srcDir.mkdir();
 
         FileUtils.cleanDirectory(srcDir);
+        
+        Path file01 = Paths.get(SOURCEDIRECTORY + "/file01.txt");
+        Files.createFile(file01);
+        Files.write(file01, "Hello File01".getBytes());
+        
+        Path file02 = Paths.get(SOURCEDIRECTORY + "/file02.txt");
+        Files.createFile(file02);
+        Files.write(file02, "Hello File02".getBytes());
+        
+        Path file03 = Paths.get(SOURCEDIRECTORY + "/file03.txt");
+        Files.createFile(file03);
+        Files.write(file03, "Hello File03".getBytes());
+        
+    }
+    
+    @BeforeEach
+    public void modifyFile() throws IOException {
+        Path file02 = Paths.get(SOURCEDIRECTORY + "/file02.txt");
+        Files.write(file02, "Change File02 Content".getBytes());
     }
 
     @Test
     public void givenDirectory_whenUsingIoApi_thenFindLastModfile() throws IOException {
-        Path file0 = Paths.get(SOURCEDIRECTORY + "/file0.txt");
-        Files.createFile(file0);
-        Files.write(file0, "Hello File Zero".getBytes());
-
-        Path file01 = Paths.get(SOURCEDIRECTORY + "/file01.txt");
-        Files.createFile(file01);
-
-        String str = "Hello File01";
-        Files.write(file01, str.getBytes());
         File lastModFile = LastModifiedFileApp.findUsingIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModFile).isNotNull();
-        assertThat(lastModFile.getName()).isEqualTo("file01.txt");
+        assertThat(lastModFile.getName()).isEqualTo("file02.txt");
     }
 
     @Test
     public void givenDirectory_whenUsingNioApi_thenFindLastModfile() throws IOException {
-        Path file02 = Paths.get(SOURCEDIRECTORY + "/file02.txt");
-        Files.createFile(file02);
-
-        String str = "Hello File02";
-        Files.write(file02, str.getBytes());
         Path lastModPath = LastModifiedFileApp.findUsingNIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModPath).isNotNull();
@@ -58,15 +64,10 @@ public class LastModifiedFileAppUnitTest {
 
     @Test
     public void givenDirectory_whenUsingApacheCommons_thenFindLastModfile() throws IOException {
-        Path file03 = Paths.get(SOURCEDIRECTORY + "/file03.txt");
-        Files.createFile(file03);
-
-        String str = "Hello File03";
-        Files.write(file03, str.getBytes());
         File lastModFile = LastModifiedFileApp.findUsingCommonsIO(SOURCEDIRECTORY);
 
         assertThat(lastModFile).isNotNull();
-        assertThat(lastModFile.getName()).isEqualTo("file03.txt");
+        assertThat(lastModFile.getName()).isEqualTo("file02.txt");
     }
 
 }
