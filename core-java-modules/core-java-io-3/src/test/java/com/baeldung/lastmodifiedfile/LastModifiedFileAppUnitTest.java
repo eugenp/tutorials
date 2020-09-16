@@ -24,6 +24,11 @@ public class LastModifiedFileAppUnitTest {
 
         FileUtils.cleanDirectory(srcDir);
 
+        Path file0 = Paths.get(SOURCEDIRECTORY + "/file0.txt");
+        Files.createFile(file0);
+
+        Files.write(file0, "Hello File Zero".getBytes());
+
     }
 
     @Test
