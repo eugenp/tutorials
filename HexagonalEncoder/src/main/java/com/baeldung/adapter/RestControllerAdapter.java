@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import main.java.com.baeldung.core.domain.Message;
 import main.java.com.baeldung.core.service.EncodeServiceImpl;
-import main.java.com.baeldung.port.RestControllerPort;
+import main.java.com.baeldung.port.InputPort;
 
 @RestController
-public class RestControllerAdapter implements RestControllerPort {
+public class RestControllerAdapter implements InputPort {
 
     @Autowired
     private EncodeServiceImpl encodeService;
@@ -19,15 +19,16 @@ public class RestControllerAdapter implements RestControllerPort {
     @RequestMapping(value = "/encode", method = RequestMethod.POST)
     public Message getEncodedMessage(String message) {
         System.out.println("message = " + message);
-        return encodeService.encodeMessage(message);
-
+        Message encodedMessage = encodeService.encodeMessage(message);
+        return encodedMessage;
     }
 
     @Override
     @RequestMapping(value = "/decode", method = RequestMethod.POST)
     public Message getDecodedMessage(String message) {
         System.out.println("message = " + message);
-        return encodeService.decodeMessage(message);
+        Message decodedMessage = encodeService.decodeMessage(message);
+        return decodedMessage;
     }
 
 }

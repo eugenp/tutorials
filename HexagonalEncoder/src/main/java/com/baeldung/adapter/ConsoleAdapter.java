@@ -1,15 +1,11 @@
 package main.java.com.baeldung.adapter;
 
-import java.util.Scanner;
-
 import main.java.com.baeldung.core.domain.Message;
 import main.java.com.baeldung.core.service.EncodeServiceImpl;
-import main.java.com.baeldung.port.ConsolePort;
 import main.java.com.baeldung.port.EncodeService;
+import main.java.com.baeldung.port.InputPort;
 
-public class ConsoleAdapter implements ConsolePort {
-
-    private static ConsoleAdapter consoleAdapter = new ConsoleAdapter();
+public class ConsoleAdapter implements InputPort {
 
     private EncodeService encodeService = new EncodeServiceImpl();
 
@@ -21,23 +17,6 @@ public class ConsoleAdapter implements ConsolePort {
     @Override
     public Message getDecodedMessage(String textToDecode) {
         return encodeService.decodeMessage(textToDecode);
-    }
-
-    public static void main(String[] args) {
-
-        System.out.print("Enter a Message to Encode : ");
-        Scanner scanner = new Scanner(System.in);
-        String inputText = scanner.nextLine();
-
-        Message message = consoleAdapter.getEncodedMessage(inputText);
-        System.out.println("Your encoded Message : "+message);
-
-        System.out.print("Enter a Message to Decode : ");
-        inputText = scanner.nextLine();
-
-        message = consoleAdapter.getDecodedMessage(inputText);
-        System.out.println("Your Decoded Message : "+message);
-
     }
 
 }
