@@ -7,40 +7,40 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class LastModifiedFileAppUnitTest {
 
     private final static String SOURCEDIRECTORY = "src/test/resources/lastmodfiles";
 
-    @BeforeClass
-    public static void setUpFiles() throws IOException {
+    @BeforeAll
+    public static void setUpFiles() throws IOException, InterruptedException {
         File srcDir = new File(SOURCEDIRECTORY);
         if (!srcDir.exists())
             srcDir.mkdir();
 
         FileUtils.cleanDirectory(srcDir);
 
-        Path file01 = Paths.get(SOURCEDIRECTORY + "/file01.txt");
-        Files.createFile(file01);
+        File file01 = new File(SOURCEDIRECTORY + "/file01.txt");
+        file01.createNewFile();
 
-        Path file02 = Paths.get(SOURCEDIRECTORY + "/file02.txt");
-        Files.createFile(file02);
+        Thread.sleep(2000);
 
-        Path file03 = Paths.get(SOURCEDIRECTORY + "/file03.txt");
-        Files.createFile(file03);
-
-    }
-    
-    @Before
-    public void changeFile() {
         File file02 = new File(SOURCEDIRECTORY + "/file02.txt");
-        file02.setLastModified(new Date().getTime());
+        file02.createNewFile();
+
+        Thread.sleep(2000);
+
+        File file03 = new File(SOURCEDIRECTORY + "/file03.txt");
+        file03.createNewFile();
+
+        Thread.sleep(2000);
+
+        Files.write(Paths.get(SOURCEDIRECTORY + "/file02.txt"), "Hello File02".getBytes());
+
     }
 
     @Test
