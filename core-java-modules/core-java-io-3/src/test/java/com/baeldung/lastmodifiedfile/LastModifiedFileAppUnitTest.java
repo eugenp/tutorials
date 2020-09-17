@@ -11,6 +11,7 @@ import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class LastModifiedFileAppUnitTest {
@@ -35,42 +36,36 @@ public class LastModifiedFileAppUnitTest {
         Files.createFile(file03);
 
     }
+    
+    @BeforeEach
+    public void changeFile() {
+        File file02 = new File(SOURCEDIRECTORY + "/file02.txt");
+        file02.setLastModified(new Date().getTime());
+    }
 
     @Test
     public void givenDirectory_whenUsingIoApi_thenFindLastModfile() throws IOException {
-        File file04 = new File(SOURCEDIRECTORY + "/file04.txt");
-        file04.createNewFile();
-        file04.setLastModified(new Date().getTime());
-
         File lastModFile = LastModifiedFileApp.findUsingIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModFile).isNotNull();
-        assertThat(lastModFile.getName()).isEqualTo("file04.txt");
+        assertThat(lastModFile.getName()).isEqualTo("file02.txt");
     }
 
     @Test
     public void givenDirectory_whenUsingNioApi_thenFindLastModfile() throws IOException {
-        File file05 = new File(SOURCEDIRECTORY + "/file05.txt");
-        file05.createNewFile();
-        file05.setLastModified(new Date().getTime());
-
         Path lastModPath = LastModifiedFileApp.findUsingNIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModPath).isNotNull();
         assertThat(lastModPath.toFile()
-            .getName()).isEqualTo("file05.txt");
+            .getName()).isEqualTo("file02.txt");
     }
 
     @Test
     public void givenDirectory_whenUsingApacheCommons_thenFindLastModfile() throws IOException {
-        File file06 = new File(SOURCEDIRECTORY + "/file06.txt");
-        file06.createNewFile();
-        file06.setLastModified(new Date().getTime());
-
         File lastModFile = LastModifiedFileApp.findUsingCommonsIO(SOURCEDIRECTORY);
 
         assertThat(lastModFile).isNotNull();
-        assertThat(lastModFile.getName()).isEqualTo("file06.txt");
+        assertThat(lastModFile.getName()).isEqualTo("file02.txt");
     }
 
 }
