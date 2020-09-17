@@ -21,12 +21,9 @@ public class ConsoleUI {
         return message;
     }
 
-    // ..decode UI code
-
-    public static void main(String[] args) {
-
-        // Test console UI
-        ConsoleUI consoleUI = new ConsoleUI();
-        System.out.println(consoleUI.processEncoding());
+    public Message processDecoding() {
+        Message message = consoleAdapter.getDecodedMessage(getInputMessage());
+        return message;
     }
+
 }
