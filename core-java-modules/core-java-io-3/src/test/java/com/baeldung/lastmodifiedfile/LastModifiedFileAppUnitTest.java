@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 public class LastModifiedFileAppUnitTest {
@@ -39,6 +40,7 @@ public class LastModifiedFileAppUnitTest {
     }
 
     @Test
+    @Order(1)
     public void givenDirectory_whenUsingIoApi_thenFindLastModfile() throws IOException {
         Path file04 = Paths.get(SOURCEDIRECTORY + "/file04.txt");
         Files.createFile(file04);
@@ -51,6 +53,7 @@ public class LastModifiedFileAppUnitTest {
     }
 
     @Test
+    @Order(2)
     public void givenDirectory_whenUsingNioApi_thenFindLastModfile() throws IOException {
         Path file05 = Paths.get(SOURCEDIRECTORY + "/file05.txt");
         Files.createFile(file05);
@@ -64,6 +67,7 @@ public class LastModifiedFileAppUnitTest {
     }
 
     @Test
+    @Order(3)
     public void givenDirectory_whenUsingApacheCommons_thenFindLastModfile() throws IOException {
         Path file06 = Paths.get(SOURCEDIRECTORY + "/file06.txt");
         Files.createFile(file06);
