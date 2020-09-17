@@ -10,15 +10,15 @@ import java.nio.file.Paths;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class LastModifiedFileAppUnitTest {
 
     private final static String SOURCEDIRECTORY = "src/test/resources/lastmodfiles";
 
-    @BeforeAll
+    @BeforeClass
     public static void setUpFiles() throws IOException {
         File srcDir = new File(SOURCEDIRECTORY);
         if (!srcDir.exists())
@@ -37,7 +37,7 @@ public class LastModifiedFileAppUnitTest {
 
     }
     
-    @BeforeEach
+    @Before
     public void changeFile() {
         File file02 = new File(SOURCEDIRECTORY + "/file02.txt");
         file02.setLastModified(new Date().getTime());
