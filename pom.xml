@@ -383,6 +383,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
+                <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
@@ -894,6 +895,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
+                <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
