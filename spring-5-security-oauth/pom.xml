@@ -32,6 +32,10 @@
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
 
         <!-- oauth2 -->
         <dependency>
@@ -63,7 +67,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-	
+
     <properties>
         <start-class>com.baeldung.oauth2.SpringOAuthApplication</start-class>
     </properties>
