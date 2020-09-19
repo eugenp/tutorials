@@ -5,8 +5,7 @@ package com.baeldung.java8.lambda.tips;
 public interface FooExtended extends Baz, Bar {
 
     @Override
-    default String defaultMethod() {
-        return Bar.super.defaultMethod();
+    default String defaultCommon() {
+        return Bar.super.defaultCommon();
     }
-
 }

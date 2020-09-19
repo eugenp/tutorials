@@ -2,6 +2,8 @@ package com.baeldung.structurizr;
 
 import java.io.File;
 import java.io.StringWriter;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.structurizr.Workspace;
 import com.structurizr.analysis.ComponentFinder;
@@ -40,14 +42,30 @@ public class StructurizrSimple {
         addContainers(workspace);
         addComponents(workspace);
         addSpringComponents(workspace);
-        exportToPlantUml(workspace.getViews().getViewWithKey(SOFTWARE_SYSTEM_VIEW));
-        exportToPlantUml(workspace.getViews().getViewWithKey(CONTAINER_VIEW));
-        exportToPlantUml(workspace.getViews().getViewWithKey(COMPONENT_VIEW));
+        exportToPlantUml(findViewWithKey(workspace.getViews(), SOFTWARE_SYSTEM_VIEW));
+        exportToPlantUml(findViewWithKey(workspace.getViews(), CONTAINER_VIEW));
+        exportToPlantUml(findViewWithKey(workspace.getViews(), COMPONENT_VIEW));
 
-        exportToPlantUml(workspace.getViews().getViewWithKey(JVM2_COMPONENT_VIEW));
+        exportToPlantUml(findViewWithKey(workspace.getViews(), JVM2_COMPONENT_VIEW));
 
         addStyles(workspace.getViews());
         //uploadToExternal(workspace);
+    }
+    
+    private static View findViewWithKey(ViewSet viewSet, String key) {
+        if (key == null) {
+            throw new IllegalArgumentException("A key must be specified.");
+        }
+
+        Set<View> views = new HashSet<>();
+        views.addAll(viewSet.getSystemLandscapeViews());
+        views.addAll(viewSet.getSystemContextViews());
+        views.addAll(viewSet.getContainerViews());
+        views.addAll(viewSet.getComponentViews());
+        views.addAll(viewSet.getDynamicViews());
+        views.addAll(viewSet.getDeploymentViews());
+
+        return views.stream().filter(v -> key.equals(v.getKey())).findFirst().orElse(null);
     }
 
     private static void addSpringComponents(Workspace workspace) throws Exception {

@@ -39,9 +39,9 @@ public class Java8FunctionalInteracesLambdasUnitTest {
     @Test
     public void defaultMethodFromExtendedInterface_whenReturnDefiniteString_thenCorrect() {
         final FooExtended fooExtended = string -> string;
-        final String result = fooExtended.defaultMethod();
+        final String result = fooExtended.defaultCommon();
 
-        assertEquals("String from Bar", result);
+        assertEquals("Default Common from Bar", result);
     }
 
     @Test

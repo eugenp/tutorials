@@ -72,7 +72,7 @@ public class JavaFolderSizeUnitTest {
     public void whenGetFolderSizeUsingGuava_thenCorrect() {
         final File folder = new File(path);
 
-        final Iterable<File> files = com.google.common.io.Files.fileTreeTraverser().breadthFirstTraversal(folder);
+        final Iterable<File> files = com.google.common.io.Files.fileTraverser().breadthFirst(folder);
         final long size = StreamSupport.stream(files.spliterator(), false).filter(File::isFile).mapToLong(File::length).sum();
 
         assertEquals(EXPECTED_SIZE, size);
