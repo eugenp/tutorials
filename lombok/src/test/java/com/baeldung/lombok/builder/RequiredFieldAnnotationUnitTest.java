@@ -1,21 +1,21 @@
 package com.baeldung.lombok.builder;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RequiredFieldAnnotationTest {
+public class RequiredFieldAnnotationUnitTest {
     RequiredFieldAnnotation requiredFieldTest;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         requiredFieldTest = RequiredFieldAnnotation.builder("NameField").description("Field Description").build();
     }
 
     @Test
     public void givenBuilderWithRequiredParameter_thenParameterIsPresent() {
-        assertEquals(requiredFieldTest.getName(), "NameField");
+        assertEquals("NameField", requiredFieldTest.getName());
     }
 
 }
