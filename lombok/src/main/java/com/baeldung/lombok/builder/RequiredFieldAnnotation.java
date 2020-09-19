@@ -8,7 +8,8 @@ import lombok.NonNull;
 @Getter
 public class RequiredFieldAnnotation {
 
-    @NonNull String name;
+    @NonNull
+    String name;
     String description;
 
     public static RequiredFieldAnnotationBuilder builder(String name) {
