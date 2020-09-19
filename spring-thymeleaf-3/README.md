@@ -8,3 +8,4 @@ This module contains articles about Spring with Thymeleaf
 - [Formatting Currencies in Spring Using Thymeleaf](https://www.baeldung.com/spring-thymeleaf-currencies)
 - [Working with Select and Option in Thymeleaf](https://www.baeldung.com/thymeleaf-select-option)
 - [Conditional CSS Classes in Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-conditional-css-classes)
+- [Using Hidden Inputs with Spring and Thymeleaf](https://www.baeldung.com/spring-thymeleaf-hidden-inputs)

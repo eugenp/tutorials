@@ -5,7 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
 
-public class StringAPITest {
+public class StringAPIUnitTest {
 
     @Test
     public void whenPositiveArgument_thenReturnIndentedString() {
