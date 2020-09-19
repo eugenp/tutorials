@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class PersonTest {
+public class PersonUnitTest {
 
     @Test
     public void givenSameNameAndAddress_whenEquals_thenPersonsEqual() {
