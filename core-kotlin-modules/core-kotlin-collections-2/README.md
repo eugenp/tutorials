@@ -2,6 +2,6 @@
 
 This module contains articles about core Kotlin collections.
 
-### Relevant articles:
+## Relevant articles:
 
-
+- [Aggregate Operations in Kotlin](https://www.baeldung.com/kotlin/aggregate-operations)
