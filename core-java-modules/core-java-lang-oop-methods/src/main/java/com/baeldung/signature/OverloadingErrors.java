@@ -58,4 +58,15 @@ public class OverloadingErrors<T extends Serializable> {
     }
     */
 
+    public void print(Object... parameter) {
+        System.out.println("Signature is: print(Object...)");
+    }
+
+    /*
+    // Uncommenting this method will lead to a compilation error: java cannot declare both sum(Object...) and sum(Object[])
+    // Even though the signatures appear different, after compilation they both resolve to sum(Object[])
+    public void print(Object[] parameter) {
+        System.out.println("Signature is: print(Object[])");
+    }
+    */
 }

@@ -17,6 +17,15 @@ public class StaticBinding {
         return term1.hashCode() + term2.hashCode();
     }
 
+    public Number sum(Object term1, Object... term2) {
+        System.out.println("Adding variable arguments: " + term2.length);
+        int result = term1.hashCode();
+        for (Object o : term2) {
+            result += o.hashCode();
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         StaticBinding obj = new StaticBinding();
 
@@ -30,5 +39,8 @@ public class StaticBinding {
 
         obj.sum((Object) 2, (Object) 3); // "Adding objects" due to explicit cast to Object
         obj.sum(2, "John"); // "Adding objects" due to polimorphism
+
+        obj.sum(new Object(), new Object(), new Object()); // "Adding variable arguments 2"
+        obj.sum(new Object(), new Object[]{new Object()}); // "Adding variable arguments 1"
     }
 }
