@@ -29,7 +29,7 @@ class UserControllerUnitTest {
     private UserController tested;
 
     @Test
-    void whenFetchAllUsers_thenOK() {
+    void whenGetAllUsers_thenOK() {
         // Given
         List<User> users = List.of(
                 new User(1, "user1", new ArrayList<Address>(
