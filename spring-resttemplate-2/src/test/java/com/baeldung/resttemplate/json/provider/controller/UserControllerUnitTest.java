@@ -20,7 +20,7 @@ import java.util.List;
 
 
 @ExtendWith(MockitoExtension.class)
-class UserControllerTest {
+class UserControllerUnitTest {
 
     @Mock
     private UserService service;

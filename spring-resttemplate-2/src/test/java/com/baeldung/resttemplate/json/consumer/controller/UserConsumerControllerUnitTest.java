@@ -32,10 +32,10 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class UserConsumerControllerTest {
-
+public class UserConsumerControllerUnitTest {
     private MockRestServiceServer mockServer;
     private final RestTemplate restTemplate = new RestTemplate();
+
 
     private UserConsumerController tested = new UserConsumerController(restTemplate);
 
