@@ -48,7 +48,7 @@ public class UserConsumerControllerUnitTest {
     public void whenGetUsersAsObjects_thenOK() {
         String url = "http://localhost :8080/users";
 
-        List<User> expected = List.of(
+        List<User> expected = Arrays.asList(
                 new User(1, "user1", new ArrayList<Address>(
                         Arrays.asList(
                                 new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "address1_postCode"),
