@@ -52,9 +52,9 @@ public class ClientTlsVersionExamples {
 
     public static void main(String[] args) throws IOException {
         // Alternatively:
-        // CloseableHttpClient httpClient = setViaSocketFactory();
+        // CloseableHttpClient httpClient = setTlsVersionPerConnection();
         // CloseableHttpClient httpClient = setViaSystemProperties();
-        try (CloseableHttpClient httpClient = setTlsVersionPerConnection();
+        try (CloseableHttpClient httpClient = setViaSocketFactory();
            CloseableHttpResponse response = httpClient.execute(new HttpGet("https://httpbin.org/"))) {
 
             HttpEntity entity = response.getEntity();
