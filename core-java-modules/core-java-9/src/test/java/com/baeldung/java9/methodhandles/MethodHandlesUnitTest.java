@@ -17,7 +17,7 @@ import org.junit.Test;
 /**
  * Test case for the {@link MethodHandles} API
  */
-public class MethodHandlesTest {
+public class MethodHandlesUnitTest {
 
     @Test
     public void givenConcatMethodHandle_whenInvoked_thenCorrectlyConcatenated() throws Throwable {
