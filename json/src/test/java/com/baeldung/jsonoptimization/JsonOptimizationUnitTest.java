@@ -22,11 +22,11 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 class JsonOptimizationUnitTest {
-    private static final String TEST_LABEL_DEFAULT_JSON = "Default JSON";
+    private static final String TEST_LABEL_JACKSON_DEFAULT_OPTIONS = "Default JSON";
     private static final String TEST_LABEL_DEFAULT_JSON_NO_NULL = "Default JSON without null";
-    private static final String TEST_LABEL_SHORT_NAMES = "Shorter field names";
-    private static final String TEST_LABEL_SHORT_NAMES_NO_NULL = "Shorter field names without null";
-    private static final String TEST_LABEL_CUSTOM_SERIALIZER = "Custom serializer";
+    private static final String TEST_LABEL_SHORTER_FIELD_NAMES = "Shorter field names";
+    private static final String TEST_LABEL_SHORTER_FIELD_NAMES_AND_NO_NULL = "Shorter field names without null";
+    private static final String TEST_LABEL_SERIALIZING_TO_ARRAY = "Custom serializer";
     private static final String TEST_LABEL_SLIM_CUSTOM_SERIALIZER = "Slim custom serializer";
     private static final String TEST_LABEL_SLIM_CUSTOMER = "Slim customer";
     private static final String TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES = "Slim customer with shorter field names";
@@ -53,82 +53,80 @@ class JsonOptimizationUnitTest {
     }
 
     @Test
-    void testSetUp() {
+    void whenSetUp_ThenOneThousandCustomers() {
         assertEquals(1000, customers.length, "There should be a 1000 customers");
     }
 
     @Test
-    void testDefaultJson() throws IOException {
-        printBanner(TEST_LABEL_DEFAULT_JSON);
-        byte[] plainJson = createPlainJson(TEST_LABEL_DEFAULT_JSON, customers);
-        compressJson(TEST_LABEL_DEFAULT_JSON, plainJson);
+    void whenJacksonDefaultOptions_thenValid() throws IOException {
+        printBanner(TEST_LABEL_JACKSON_DEFAULT_OPTIONS);
+        byte[] plainJson = createJsonAndVerify(TEST_LABEL_JACKSON_DEFAULT_OPTIONS, customers);
+        compressJson(TEST_LABEL_JACKSON_DEFAULT_OPTIONS, plainJson);
     }
 
     @Test
-    void testDefaultNoNull() throws IOException {
+    void whenExcludingNull_thenValid() throws IOException {
         printBanner(TEST_LABEL_DEFAULT_JSON_NO_NULL);
         mapper.setSerializationInclusion(Include.NON_NULL);
-        byte[] plainJson = createPlainJson(TEST_LABEL_DEFAULT_JSON_NO_NULL, customers);
+        byte[] plainJson = createJsonAndVerify(TEST_LABEL_DEFAULT_JSON_NO_NULL, customers);
         compressJson(TEST_LABEL_DEFAULT_JSON_NO_NULL, plainJson);
     }
 
     @Test
-    void testShortNames() throws IOException {
-        printBanner(TEST_LABEL_SHORT_NAMES);
+    void whenShorterFieldNames_thenValid() throws IOException {
+        printBanner(TEST_LABEL_SHORTER_FIELD_NAMES);
         CustomerShortNames[] shorterOnes = CustomerShortNames.fromCustomers(customers);
-        byte[] shorterJson = createPlainJson(TEST_LABEL_SHORT_NAMES, shorterOnes);
-        compressJson(TEST_LABEL_SHORT_NAMES, shorterJson);
+        byte[] shorterJson = createJsonAndVerify(TEST_LABEL_SHORTER_FIELD_NAMES, shorterOnes);
+        compressJson(TEST_LABEL_SHORTER_FIELD_NAMES, shorterJson);
     }
 
     @Test
-    void testShortNamesNoNull() throws IOException {
-        printBanner(TEST_LABEL_SHORT_NAMES_NO_NULL);
+    void whenShorterFieldNamesAndExcludingNull_thenValid() throws IOException {
+        printBanner(TEST_LABEL_SHORTER_FIELD_NAMES_AND_NO_NULL);
         CustomerShortNames[] shorterOnes = CustomerShortNames.fromCustomers(customers);
         mapper.setSerializationInclusion(Include.NON_NULL);
-        byte[] shorterJson = createPlainJson(TEST_LABEL_SHORT_NAMES_NO_NULL, shorterOnes);
-        compressJson(TEST_LABEL_SHORT_NAMES_NO_NULL, shorterJson);
+        byte[] shorterJson = createJsonAndVerify(TEST_LABEL_SHORTER_FIELD_NAMES_AND_NO_NULL, shorterOnes);
+        compressJson(TEST_LABEL_SHORTER_FIELD_NAMES_AND_NO_NULL, shorterJson);
     }
 
     @Test
-    void testSlim() throws IOException {
+    void whenSlimCustomer_thenValid() throws IOException {
         printBanner(TEST_LABEL_SLIM_CUSTOMER);
         CustomerSlim[] slimOnes = CustomerSlim.fromCustomers(customers);
-        byte[] slimJson = createPlainJson(TEST_LABEL_SLIM_CUSTOMER, slimOnes);
+        byte[] slimJson = createJsonAndVerify(TEST_LABEL_SLIM_CUSTOMER, slimOnes);
         compressJson(TEST_LABEL_SLIM_CUSTOMER, slimJson);
     }
 
     @Test
-    void testSlimShortNames() throws IOException {
+    void whenSlimCustomerAndShorterFieldNames_thenValid() throws IOException {
         printBanner(TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES);
         CustomerSlimShortNames[] slimOnes = CustomerSlimShortNames.fromCustomers(customers);
-        byte[] slimJson = createPlainJson(TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES, slimOnes);
+        byte[] slimJson = createJsonAndVerify(TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES, slimOnes);
         compressJson(TEST_LABEL_SLIM_CUSTOMER_SHORT_NAMES, slimJson);
     }
 
     @Test
-    void testCustomSerializer() throws IOException {
-        printBanner(TEST_LABEL_CUSTOM_SERIALIZER);
-
+    void whenSerializingToArray_thenValid() throws IOException {
+        printBanner(TEST_LABEL_SERIALIZING_TO_ARRAY);
         SimpleModule serializer = new SimpleModule("CustomDeSerializer", new Version(1, 0, 0, null, null, null));
         serializer.addSerializer(Customer.class, new CustomerSerializer());
         serializer.addDeserializer(Customer.class, new CustomerDeserializer());
         mapper.registerModule(serializer);
 
-        byte[] plainJson = createPlainJson(TEST_LABEL_CUSTOM_SERIALIZER, customers);
-        compressJson(TEST_LABEL_CUSTOM_SERIALIZER, plainJson);
+        byte[] plainJson = createJsonAndVerify(TEST_LABEL_SERIALIZING_TO_ARRAY, customers);
+        compressJson(TEST_LABEL_SERIALIZING_TO_ARRAY, plainJson);
     }
 
     @Test
-    void testSlimCustomSerializer() throws IOException {
+    void whenSerializingToArrayAndSlimCustomer_thenValid() throws IOException {
         printBanner(TEST_LABEL_SLIM_CUSTOM_SERIALIZER);
-
         SimpleModule serializer = new SimpleModule("SlimCustomDeSerializer", new Version(1, 0, 0, null, null, null));
         serializer.addSerializer(CustomerSlim.class, new CustomerSlimSerializer());
         serializer.addDeserializer(CustomerSlim.class, new CustomerSlimDeserializer());
         mapper.registerModule(serializer);
 
         CustomerSlim[] slimOnes = CustomerSlim.fromCustomers(customers);
-        byte[] plainJson = createPlainJson(TEST_LABEL_SLIM_CUSTOM_SERIALIZER, slimOnes);
+        byte[] plainJson = createJsonAndVerify(TEST_LABEL_SLIM_CUSTOM_SERIALIZER, slimOnes);
         compressJson(TEST_LABEL_SLIM_CUSTOM_SERIALIZER, plainJson);
     }
 
@@ -153,7 +151,7 @@ class JsonOptimizationUnitTest {
         assertTrue(plainJson.length > gzippedJson.length, label + " should be longer than GZIPped data");
     }
 
-    private byte[] createPlainJson(String label, Object[] customers) throws IOException {
+    private byte[] createJsonAndVerify(String label, Object[] customers) throws IOException {
         System.out.println(label + " sample: ");
         ObjectWriter prettyWritter = mapper.writerWithDefaultPrettyPrinter();
         System.out.println(prettyWritter.writeValueAsString(customers[0]));
@@ -174,7 +172,7 @@ class JsonOptimizationUnitTest {
         System.out.println(label + " file:           " + tempFile.toString());
 
         Object[] restoredOnes = mapper.readValue(feedback, customers.getClass());
-        assertArrayEquals(TEST_LABEL_DEFAULT_JSON + ": restoring from JSON should work", customers, restoredOnes);
+        assertArrayEquals(TEST_LABEL_JACKSON_DEFAULT_OPTIONS + ": restoring from JSON should work", customers, restoredOnes);
 
         return feedback;
     }
