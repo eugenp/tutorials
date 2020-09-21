@@ -25,10 +25,10 @@ public class AvailableCiphersUnitTest {
     @Test
     public void whenGetServicesWithFilter_thenGetAllCompatibleCipherAlgorithms() {
         List<String> algorithms = Arrays.stream(Security.getProviders())
-                .flatMap(provider -> provider.getServices().stream())
-                .filter(service -> "Cipher".equals(service.getType()))
-                .map(Provider.Service::getAlgorithm)
-                .collect(Collectors.toList());
+          .flatMap(provider -> provider.getServices().stream())
+          .filter(service -> "Cipher".equals(service.getType()))
+          .map(Provider.Service::getAlgorithm)
+          .collect(Collectors.toList());
 
         algorithms.forEach(logger::info);
     }
