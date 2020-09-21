@@ -572,6 +572,7 @@
                 <module>rxjava-operators</module>
 
 				<module>atomikos</module>
+                <module>modelmapper</module>
             </modules>
 
         </profile>
