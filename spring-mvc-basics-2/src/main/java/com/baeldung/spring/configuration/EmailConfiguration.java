@@ -1,5 +1,7 @@
 package com.baeldung.spring.configuration;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -13,30 +15,59 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.AbstractConfigurableTemplateResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.FileTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
+
+import freemarker.cache.ClassTemplateLoader;
+import freemarker.cache.FileTemplateLoader;
+import freemarker.cache.TemplateLoader;
+import freemarker.template.Configuration;
 
 @ComponentScan(basePackages = { "com.baeldung.spring.mail" })
 @PropertySource(value={"classpath:application.properties"})
 public class EmailConfiguration {
 	
-	@Value("${mail.templates.path}")
+
+	@Value("${spring.mail.host}")
+	String mailServerHost;
+
+	@Value("${spring.mail.port}")
+	Integer mailServerPort;
+	
+	@Value("${spring.mail.username}")
+	String mailServerUsername;
+
+	@Value("${spring.mail.password}")
+	String mailServerPassword;
+	
+	@Value("${spring.mail.properties.mail.smtp.auth}")
+	String mailServerAuth;
+
+	@Value("${spring.mail.properties.mail.smtp.starttls.enable}")
+	String mailServerStartTls;
+		
+	@Value("${spring.mail.templates.external}")
+	boolean mailTemplatesExternal;
+
+	@Value("${spring.mail.templates.path}")
 	String mailTemplatesPath;
     
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
+        mailSender.setHost(mailServerHost);
+        mailSender.setPort(mailServerPort);
         
-        mailSender.setUsername("my.gmail@gmail.com");
-        mailSender.setPassword("password");
+        mailSender.setUsername(mailServerUsername);
+        mailSender.setPassword(mailServerPassword);
         
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "false");
+        props.put("mail.smtp.auth", mailServerAuth);
+        props.put("mail.smtp.starttls.enable", mailServerStartTls);
         props.put("mail.debug", "true");
         
         return mailSender;
@@ -59,8 +90,9 @@ public class EmailConfiguration {
 
     @Bean
     public ITemplateResolver thymeleafTemplateResolver() {
-    	ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix(mailTemplatesPath);
+    	AbstractConfigurableTemplateResolver templateResolver;
+    	templateResolver = mailTemplatesExternal ? new FileTemplateResolver() : new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix(mailTemplatesPath + "/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
         templateResolver.setCharacterEncoding("UTF-8");
@@ -68,9 +100,19 @@ public class EmailConfiguration {
     }
     
     @Bean 
-    public FreeMarkerConfigurer freemarkerConfig() { 
+    public FreeMarkerConfigurer freemarkerConfig() throws IOException { 
+                
+        Configuration configuration = new Configuration(Configuration.VERSION_2_3_27);
+        if (mailTemplatesExternal) {
+        	TemplateLoader templateLoader;
+			templateLoader = new FileTemplateLoader(new File(mailTemplatesPath));
+			configuration.setTemplateLoader(templateLoader);
+        } else {
+        	configuration.setTemplateLoader(new ClassTemplateLoader(this.getClass(), "/" + mailTemplatesPath));
+        }
+
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("classpath:/"+mailTemplatesPath);
+        freeMarkerConfigurer.setConfiguration(configuration);
         return freeMarkerConfigurer; 
     }
     
