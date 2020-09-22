@@ -395,6 +395,9 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
+
+                <module>hexagonal-architecture</module>
+
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>disruptor</module>
