@@ -5,37 +5,55 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assume.assumeFalse;
 import static org.junit.Assume.assumeThat;
 import static org.junit.Assume.assumeTrue;
+import static org.junit.Assume.assumeNotNull;
+import static org.junit.Assume.assumeNoException;
+
 
 import org.junit.Test;
 
 public class ConditionallyIgnoreTestsUnitTest {
 
+  @Test public void whenAssumeThatAndOSIsLinux_thenRunTest() {
+    assumeThat(getOsName(), is("Linux"));
+    assertEquals("run", "RUN".toLowerCase());
+  }
 
-    @Test
-    public void whenAssumeThatCodeVersionIsNot2_thenIgnore() {
-        final int codeVersion = 1;
-        assumeThat(codeVersion, is(2));
+  @Test public void whenAssumeTrueAndOSIsLinux_thenRunTest() {
+    final int codeVersion = 1;
+    assumeTrue(isExpectedOS(getOsName()));
+    assertEquals("run", "RUN".toLowerCase());
+  }
 
-        assertEquals("hello", "HELLO".toLowerCase());
+  @Test public void whenAssumeFalseAndOSIsLinux_thenIgnore() {
+    assumeFalse(isExpectedOS(getOsName()));
+    assertEquals("run", "RUN".toLowerCase());
+  }
+
+  @Test public void whenAssumeNotNullAndNotNullOSVersion_thenIgnore() {
+    assumeNotNull(getOsName());
+    assertEquals("run", "RUN".toLowerCase());
+  }
+
+  /**
+   * Let's use a different example here.
+   */
+  @Test public void whenAssumeNoExceptionAndExceptionThrown_thenIgnore() {
+    assertEquals("everything ok", "EVERYTHING OK".toLowerCase());
+    String t = null;
+    try {
+      t.charAt(0);
+    } catch (NullPointerException npe) {
+      assumeNoException(npe);
     }
+    assertEquals("run", "RUN".toLowerCase());
+  }
 
-    @Test
-    public void whenAssumeTrueOnCondition_thenIgnore() {
-        final int codeVersion = 1;
-        assumeTrue(isCodeVersion2(codeVersion));
+  private boolean isExpectedOS(final String osName) {
+    return "Linux".equals(osName);
+  }
 
-        assertEquals("hello", "HELLO".toLowerCase());
-    }
-
-    @Test
-    public void whenAssumeFalseOnCondition_thenIgnore() {
-        final int codeVersion = 2;
-        assumeFalse(isCodeVersion2(codeVersion));
-
-        assertEquals("hello", "HELLO".toLowerCase());
-    }
-
-    private boolean isCodeVersion2(final int codeVersion) {
-        return codeVersion == 2;
-    }
+  // This should use System.getProperty("os.name") in a real test.
+  private String getOsName() {
+    return "Linux";
+  }
 }
