@@ -21,7 +21,7 @@ class DemoApplicationIntegrationTest {
     int randomServerPort;
 
     @Autowired
-    private SavingAccountRepositoryAdapter savingAccountRepositoryAdapter;
+    private SavingAccountRepository savingAccountRepository;
 
     @Test
     void contextLoads() {
@@ -33,10 +33,10 @@ class DemoApplicationIntegrationTest {
         SavingAccount savingAccount = new SavingAccount();
         savingAccount.setAccountNumber("123456");
         savingAccount.setBalance(BigDecimal.valueOf(500));
-        savingAccountRepositoryAdapter.addSavingAccount(savingAccount);
+        savingAccountRepository.addSavingAccount(savingAccount);
 
         // when
-        BigDecimal balance = savingAccountRepositoryAdapter.getBalance("123456");
+        BigDecimal balance = savingAccountRepository.getBalance("123456");
 
         // then
         assertEquals(BigDecimal.valueOf(500), balance);
@@ -48,7 +48,7 @@ class DemoApplicationIntegrationTest {
         SavingAccount savingAccount = new SavingAccount();
         savingAccount.setAccountNumber("123456");
         savingAccount.setBalance(BigDecimal.valueOf(500));
-        savingAccountRepositoryAdapter.addSavingAccount(savingAccount);
+        savingAccountRepository.addSavingAccount(savingAccount);
 
         // when
         RestTemplate restTemplate = new RestTemplate();
