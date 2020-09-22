@@ -28,31 +28,30 @@ import freemarker.template.Configuration;
 @ComponentScan(basePackages = { "com.baeldung.spring.mail" })
 @PropertySource(value={"classpath:application.properties"})
 public class EmailConfiguration {
-	
 
 	@Value("${spring.mail.host}")
-	String mailServerHost;
+	private String mailServerHost;
 
 	@Value("${spring.mail.port}")
-	Integer mailServerPort;
+	private Integer mailServerPort;
 	
 	@Value("${spring.mail.username}")
-	String mailServerUsername;
+	private String mailServerUsername;
 
 	@Value("${spring.mail.password}")
-	String mailServerPassword;
+	private String mailServerPassword;
 	
 	@Value("${spring.mail.properties.mail.smtp.auth}")
-	String mailServerAuth;
+	private String mailServerAuth;
 
 	@Value("${spring.mail.properties.mail.smtp.starttls.enable}")
-	String mailServerStartTls;
+	private String mailServerStartTls;
 		
 	@Value("${spring.mail.templates.external}")
-	boolean mailTemplatesExternal;
+	private boolean mailTemplatesExternal;
 
 	@Value("${spring.mail.templates.path}")
-	String mailTemplatesPath;
+	private String mailTemplatesPath;
     
     @Bean
     public JavaMailSender getJavaMailSender() {
@@ -100,8 +99,7 @@ public class EmailConfiguration {
     }
     
     @Bean 
-    public FreeMarkerConfigurer freemarkerConfig() throws IOException { 
-                
+    public FreeMarkerConfigurer freemarkerConfig() throws IOException {
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_27);
         if (mailTemplatesExternal) {
         	TemplateLoader templateLoader;
@@ -110,7 +108,6 @@ public class EmailConfiguration {
         } else {
         	configuration.setTemplateLoader(new ClassTemplateLoader(this.getClass(), "/" + mailTemplatesPath));
         }
-
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setConfiguration(configuration);
         return freeMarkerConfigurer; 
