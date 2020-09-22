@@ -19,7 +19,7 @@ public class FindAvailablePortUnitTest {
     private static int[] FREE_PORT_RANGE;
 
     @BeforeAll
-    public static void getFreePortAndRange() {
+    public static void getExplicitFreePortNumberAndRange() {
         try (ServerSocket serverSocket = new ServerSocket(0);) {
             FREE_PORT_NUMBER = serverSocket.getLocalPort();
             FREE_PORT_RANGE = new int[] {FREE_PORT_NUMBER, FREE_PORT_NUMBER + 1, FREE_PORT_NUMBER + 2};
@@ -29,7 +29,7 @@ public class FindAvailablePortUnitTest {
     }
 
     @Test
-    public void givenExplicitFreePort_whenCreatingServerSocket_thenPortIsAssigned() {
+    public void givenExplicitFreePort_whenCreatingServerSocket_thenThatPortIsAssigned() {
         try (ServerSocket serverSocket = new ServerSocket(FREE_PORT_NUMBER);) {
             assertThat(serverSocket).isNotNull();
             assertThat(serverSocket.getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
@@ -49,7 +49,7 @@ public class FindAvailablePortUnitTest {
     }
 
     @Test
-    public void givenExplicitPortRange_whenCreatingServerSocket_thenPortIsAssigned() {
+    public void givenExplicitPortRange_whenCreatingServerSocket_thenOnePortIsAssigned() {
         for (int port : FREE_PORT_RANGE) {
             try (ServerSocket serverSocket = new ServerSocket(port)) {
                 assertThat(serverSocket).isNotNull();
@@ -63,7 +63,7 @@ public class FindAvailablePortUnitTest {
     }
 
     @Test
-    public void givenPortZero_whenCreatingServerSocket_thenFreePortIsAllocated() {
+    public void givenPortZero_whenCreatingServerSocket_thenFreePortIsAssigned() {
         try (ServerSocket serverSocket = new ServerSocket(0)) {
             assertThat(serverSocket).isNotNull();
             assertThat(serverSocket.getLocalPort()).isGreaterThan(0);
@@ -73,7 +73,7 @@ public class FindAvailablePortUnitTest {
     }
 
     @Test
-    public void givenAvailableTcpPort_whenCreatingServerSocket_thenPortIsAssigned() {
+    public void givenAvailableTcpPort_whenCreatingServerSocket_thenThatPortIsAssigned() {
         int port = SocketUtils.findAvailableTcpPort();
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             assertThat(serverSocket).isNotNull();
@@ -84,7 +84,7 @@ public class FindAvailablePortUnitTest {
     }
 
     @Test
-    public void givenNoPortDefined_whenCreatingJettyServer_thenFreePortIsAllocated() {
+    public void givenNoPortDefined_whenCreatingJettyServer_thenFreePortIsAssigned() {
         Server jettyServer = new Server();
         ServerConnector serverConnector = new ServerConnector(jettyServer);
         jettyServer.addConnector(serverConnector);
@@ -92,13 +92,14 @@ public class FindAvailablePortUnitTest {
             jettyServer.start();
             assertThat(serverConnector.getLocalPort()).isGreaterThan(0);
             jettyServer.stop();
+            jettyServer.destroy();
         } catch (Exception e) {
             fail("Failed to start Jetty server");
         }
     }
 
     @Test
-    public void givenExplicitFreePort_whenCreatingJettyServer_thenPortIsAssigned() {
+    public void givenExplicitFreePort_whenCreatingJettyServer_thenThatPortIsAssigned() {
         Server jettyServer = new Server();
         ServerConnector serverConnector = new ServerConnector(jettyServer);
         serverConnector.setPort(FREE_PORT_NUMBER);
@@ -107,31 +108,34 @@ public class FindAvailablePortUnitTest {
             jettyServer.start();
             assertThat(serverConnector.getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
             jettyServer.stop();
+            jettyServer.destroy();
         } catch (Exception e) {
             fail("Failed to start Jetty server");
         }
     }
 
     @Test
-    public void givenNoPortDefined_whenCreatingTomcatServer_thenFreePortIsAllocated() {
+    public void givenNoPortDefined_whenCreatingTomcatServer_thenFreePortIsAssigned() {
         Tomcat tomcatServer = new Tomcat();
         try {
             tomcatServer.start();
             assertThat(tomcatServer.getConnector().getLocalPort()).isGreaterThan(0);
             tomcatServer.stop();
+            tomcatServer.destroy();
         } catch (Exception e) {
             fail("Failed to start Tomcat server");
         }
     }
 
     @Test
-    public void givenExplicitFreePort_whenCreatingTomcatServer_thenPortIsAssigned() {
+    public void givenExplicitFreePort_whenCreatingTomcatServer_thenThatPortIsAssigned() {
         Tomcat tomcatServer = new Tomcat();
         tomcatServer.setPort(FREE_PORT_NUMBER);
         try {
             tomcatServer.start();
-            assertThat(tomcatServer.getConnector().getLocalPort()).isGreaterThan(0);
+            assertThat(tomcatServer.getConnector().getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
             tomcatServer.stop();
+            tomcatServer.destroy();
         } catch (Exception e) {
             fail("Failed to start Tomcat server");
         }
