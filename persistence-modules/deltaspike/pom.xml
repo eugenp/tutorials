@@ -188,14 +188,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Needed for running tests (you may also use TestNG) -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Others -->
         <dependency>
             <groupId>org.apache.commons</groupId>
