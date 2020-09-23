@@ -13,6 +13,10 @@ public class EmployeeDAO {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     public int getCountOfEmployees() {
         return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EMPLOYEE", Integer.class);
     }
