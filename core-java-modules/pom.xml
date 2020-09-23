@@ -18,19 +18,8 @@
 
     <modules>
         <module>core-java</module>
-        <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-13</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-14</module> --> <!-- We haven't upgraded to java 14.-->
         <module>core-java-8</module>
         <module>core-java-8-2</module>
-
-        <!-- <module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-9-improvements</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-9-jigsaw</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-9-new-features</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-        <!-- <module>core-java-9-streams</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
 
         <module>core-java-annotations</module>
 
@@ -51,7 +40,6 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
-        <!-- <module>core-java-collections-set</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
 
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
@@ -65,10 +53,7 @@
 
         <!--<module>core-java-8-datetime</module>--> <!-- unit test case failure -->
         <module>core-java-8-datetime-2</module>
-        <!-- <module>core-java-date-operations-1</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
         <module>core-java-date-operations-2</module>
-        <!-- We haven't upgraded to java 9. -->
-        <!-- <module>core-java-datetime-computations</module> <module>core-java-datetime-conversion</module> <module>core-java-datetime-java8</module> <module>core-java-datetime-string</module> -->
         <module>core-java-8-datetime</module>
 
         <module>core-java-exceptions</module>
@@ -85,7 +70,6 @@
 
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
-        <!-- <module>core-java-jpms</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
         <module>core-java-jvm</module>
         <module>core-java-jvm-2</module>
 
@@ -113,7 +97,6 @@
         <module>core-java-nio-2</module>
 
         <module>core-java-optional</module>
-        <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9. -->
 
         <module>core-java-perf</module>
 
@@ -138,9 +121,6 @@
         <module>core-java-sun</module>
 
         <module>core-java-regex</module>
-        <!-- <module>core-java-time-measurements</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-
-        <!-- <module>multimodulemavenproject</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
         <module>pre-jpms</module>
     </modules>
 
