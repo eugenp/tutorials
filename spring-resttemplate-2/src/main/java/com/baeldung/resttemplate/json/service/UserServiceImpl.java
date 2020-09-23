@@ -12,7 +12,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsers() {
-        return List.of(
+        return Arrays.asList(
                 new User(1, "user1", new ArrayList<Address>(
                         Arrays.asList(
                                 new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "address1_postCode"),
