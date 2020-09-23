@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -66,10 +67,16 @@ public class TemporaryDirectoriesUnitTest {
 
     @Test
     public void givenTempDirWithPrefixWithFileAttrs_whenCreatePlainJava_thenAttributesAreSet() throws IOException {
-        final FileAttribute<Set<PosixFilePermission>> attrs = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("r--------"));
+        boolean isPosix = FileSystems.getDefault().supportedFileAttributeViews().contains("posix");
 
-        final Path tmpdir = Files.createTempDirectory(Paths.get("target"), "tmpDirPrefix", attrs);
-        assertThat(tmpdir.toFile().getPath()).startsWith("target");
-        assertThat(tmpdir.toFile().canWrite()).isFalse();
+        if(!isPosix){
+            System.out.println("You must be under a Posix Compliant Filesystem to run this test.");
+        } else {
+            final FileAttribute<Set<PosixFilePermission>> attrs = PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("r--------"));
+
+            final Path tmpdir = Files.createTempDirectory(Paths.get("target"), "tmpDirPrefix", attrs);
+            assertThat(tmpdir.toFile().getPath()).startsWith("target");
+            assertThat(tmpdir.toFile().canWrite()).isFalse();
+        }
     }
 }

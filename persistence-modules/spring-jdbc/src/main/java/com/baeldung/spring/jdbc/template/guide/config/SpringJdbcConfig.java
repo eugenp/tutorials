@@ -10,7 +10,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
-@ComponentScan("com.baeldung.spring.jdbc")
+@ComponentScan("com.baeldung.spring.jdbc.template.guide")
 public class SpringJdbcConfig {
 
     @Bean
