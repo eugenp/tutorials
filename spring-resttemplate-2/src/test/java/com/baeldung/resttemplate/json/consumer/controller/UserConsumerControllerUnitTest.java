@@ -38,14 +38,14 @@ public class UserConsumerControllerUnitTest {
     public void whenGetUsersAsObjects_thenOK() {
         // Given
         String url = "http://localhost :8080/users";
-        Object[] expected = new Object[]{new User(1, "user1", new ArrayList<Address>(
+        Object[] expected = new Object[]{new User(1, "user1",
                 Arrays.asList(
                         new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "user1_address1_postCode"),
-                        new Address("address2_addressLine1", "address2_addressLine2", "address2_town", "user1_address2_postCode")))),
+                        new Address("address2_addressLine1", "address2_addressLine2", "address2_town", "user1_address2_postCode"))),
                 new User(2,
-                        "user2", new ArrayList<Address>(
+                        "user2",
                         Arrays.asList(
-                                new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "user2_address1_postCode"))))};
+                                new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "user2_address1_postCode")))};
 
         String userJson = "[{\"id\":1,\"name\":\"user1\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user1_address1_postCode\"}," +
                                   "{\"addressLine1\":\"address2_addressLine1\",\"addressLine2\":\"address2_addressLine2\",\"town\":\"address2_town\",\"postCode\":\"user1_address2_postCode\"}]}," +
@@ -64,8 +64,8 @@ public class UserConsumerControllerUnitTest {
         // Then
         mockServer.verify();
         assertEquals(actual.length, expected.length);
+        assertThat(actual).contains(expected[0], expected[1]);
 
-        //TODO: do one more assertion
     }
 
     @Test

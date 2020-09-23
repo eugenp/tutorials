@@ -1,7 +1,6 @@
 package com.baeldung.resttemplate.json.consumer.controller;
 
 import com.baeldung.resttemplate.json.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -19,41 +18,37 @@ import java.util.stream.Collectors;
 @RestController
 public class UserConsumerController {
 
-    private static final String BASE_URL="http://localhost:8080/users";
+    private static final String BASE_URL = "http://localhost:8080/users";
     private final RestTemplate restTemplate;
 
     public UserConsumerController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping(value="/usersAsArrayOfObjects")
-    public @ResponseBody
-    Object[] getUsersAsObjects(){
+    @GetMapping(value = "/usersAsArrayOfObjects")
+    @ResponseBody
+    public Object[] getUsersAsObjects() {
 
         ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(BASE_URL, Object[].class);
         Object[] objects = responseEntity.getBody();
-        MediaType contentType = responseEntity.getHeaders().getContentType();
-        HttpStatus statusCode = responseEntity.getStatusCode();
         return objects;
     }
 
-
-    @GetMapping(value="/usersAsArrayOfPOJO")
-    public @ResponseBody
-    List<String> getPostCodesFromUserArray(){
-
+    @GetMapping(value = "/usersAsArrayOfPOJO")
+    @ResponseBody
+    public List<String> getPostCodesFromUserArray() {
         ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(BASE_URL, User[].class);
         User[] userArray = responseEntity.getBody();
         MediaType contentType = responseEntity.getHeaders().getContentType();
         HttpStatus statusCode = responseEntity.getStatusCode();
-        return Arrays.stream(userArray).flatMap(user->user.getAddressList().stream()).map(address->address.getPostCode()).collect(Collectors.toList());
+        return Arrays.stream(userArray).flatMap(user -> user.getAddressList().stream()).map(address -> address.getPostCode()).collect(Collectors.toList());
     }
 
-    @GetMapping(value="/usersAsListOfPojo")
-    public @ResponseBody
-    List<String> getUserNames(){
-        ResponseEntity<List<User>> responseEntity = restTemplate.exchange(BASE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<User>>(){});
+    @GetMapping(value = "/usersAsListOfPojo")
+    @ResponseBody
+    public List<String> getUserNames() {
+        ResponseEntity<List<User>> responseEntity = restTemplate.exchange(BASE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<User>>() {});
         List<User> users = responseEntity.getBody();
-        return users.stream().map(user->user.getName()).collect(Collectors.toList());
+        return users.stream().map(user -> user.getName()).collect(Collectors.toList());
     }
 }
