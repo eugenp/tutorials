@@ -37,7 +37,7 @@ class UserControllerUnitTest {
                 new User(2,
                         "user2",
                         Arrays.asList(
-                                new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "address1_postCode")));
+                                new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "address1_postCode"))));
 
         // When
         when(service.getUsers()).thenReturn(users);
