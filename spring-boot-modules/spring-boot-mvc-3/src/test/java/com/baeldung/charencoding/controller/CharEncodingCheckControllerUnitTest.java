@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-class CharEncodingCheckControllerTest {
+class CharEncodingCheckControllerUnitTest {
 
     @Test
     void whenCharEncodingFilter_thenVerifyEncoding() throws ServletException, IOException {
