@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +23,10 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @SpringBootTest
 public class UserConsumerControllerUnitTest {
+
+    private static String USER_JSON = "[{\"id\":1,\"name\":\"user1\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user1_address1_postCode\"}," +
+                                             "{\"addressLine1\":\"address2_addressLine1\",\"addressLine2\":\"address2_addressLine2\",\"town\":\"address2_town\",\"postCode\":\"user1_address2_postCode\"}]}," +
+                                             "{\"id\":2,\"name\":\"user2\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user2_address1_postCode\"}]}]";
     private MockRestServiceServer mockServer;
     private final RestTemplate restTemplate = new RestTemplate();
     private UserConsumerController tested = new UserConsumerController(restTemplate);
@@ -47,17 +49,13 @@ public class UserConsumerControllerUnitTest {
                         Arrays.asList(
                                 new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "user2_address1_postCode")))};
 
-        String userJson = "[{\"id\":1,\"name\":\"user1\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user1_address1_postCode\"}," +
-                                  "{\"addressLine1\":\"address2_addressLine1\",\"addressLine2\":\"address2_addressLine2\",\"town\":\"address2_town\",\"postCode\":\"user1_address2_postCode\"}]}," +
-                                  "{\"id\":2,\"name\":\"user2\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user2_address1_postCode\"}]}]";
-
         // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo("http://localhost:8080/users"))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                                     .contentType(MediaType.APPLICATION_JSON)
-                                    .body(userJson)
+                                    .body(USER_JSON)
                 );
         Object[] actual = tested.getUsersAsObjects();
 
@@ -74,17 +72,13 @@ public class UserConsumerControllerUnitTest {
         String url = "http://localhost :8080/users";
         List<String> expected = Arrays.asList("user1_address1_postCode", "user1_address2_postCode", "user2_address1_postCode");
 
-        String userJson = "[{\"id\":1,\"name\":\"user1\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user1_address1_postCode\"}," +
-                                  "{\"addressLine1\":\"address2_addressLine1\",\"addressLine2\":\"address2_addressLine2\",\"town\":\"address2_town\",\"postCode\":\"user1_address2_postCode\"}]}," +
-                                  "{\"id\":2,\"name\":\"user2\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user2_address1_postCode\"}]}]";
-
         // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo("http://localhost:8080/users"))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                                     .contentType(MediaType.APPLICATION_JSON)
-                                    .body(userJson)
+                                    .body(USER_JSON)
                 );
         List<String> actual = tested.getPostCodesFromUserArray();
 
@@ -100,17 +94,13 @@ public class UserConsumerControllerUnitTest {
         String url = "http://localhost :8080/users";
         List<String> expected = Arrays.asList("user1", "user2");
 
-        String userJson = "[{\"id\":1,\"name\":\"user1\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user1_address1_postCode\"}," +
-                                  "{\"addressLine1\":\"address2_addressLine1\",\"addressLine2\":\"address2_addressLine2\",\"town\":\"address2_town\",\"postCode\":\"user1_address2_postCode\"}]}," +
-                                  "{\"id\":2,\"name\":\"user2\",\"addressList\":[{\"addressLine1\":\"address1_addressLine1\",\"addressLine2\":\"address1_addressLine2\",\"town\":\"address1_town\",\"postCode\":\"user2_address1_postCode\"}]}]";
-
         // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo("http://localhost:8080/users"))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                                     .contentType(MediaType.APPLICATION_JSON)
-                                    .body(userJson)
+                                    .body(USER_JSON)
                 );
         List<String> actual = tested.getUserNames();
 
