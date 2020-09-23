@@ -62,8 +62,6 @@ public class UserConsumerControllerUnitTest {
         // Then
         mockServer.verify();
         assertEquals(actual.length, expected.length);
-        assertThat(actual).contains(expected[0], expected[1]);
-
     }
 
     @Test
