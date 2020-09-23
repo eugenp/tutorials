@@ -651,7 +651,6 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
-                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
@@ -1152,7 +1151,6 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
-                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
