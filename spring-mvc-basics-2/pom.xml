@@ -84,6 +84,11 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
 
         <!-- groovy template dependency -->
         <dependency>
@@ -173,6 +178,7 @@
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
         <javax.mail.version>1.6.1</javax.mail.version>
+        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
     </properties>
 
 </project>
