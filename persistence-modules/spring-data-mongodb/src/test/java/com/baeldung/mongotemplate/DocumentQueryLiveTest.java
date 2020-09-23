@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -186,7 +187,7 @@ public class DocumentQueryLiveTest {
         mongoTemplate.insert(user);
 
         Query query = new Query();
-        query.with(new Sort(Sort.Direction.ASC, "age"));
+        query.with(Sort.by(Direction.ASC, "age"));
 
         List<User> users = mongoTemplate.find(query, User.class);
 

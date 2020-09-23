@@ -27,6 +27,22 @@ public class MyServiceImpl implements MyService {
     }
 
     @Override
+    public void retryServiceWithCustomization(String sql) throws SQLException {
+        if (StringUtils.isEmpty(sql)) {
+            logger.info("throw SQLException in method retryServiceWithCustomization()");
+            throw new SQLException();
+        }
+    }
+
+    @Override
+    public void retryServiceWithExternalConfiguration(String sql) throws SQLException {
+        if (StringUtils.isEmpty(sql)) {
+            logger.info("throw SQLException in method retryServiceWithExternalConfiguration()");
+            throw new SQLException();
+        }
+    }
+
+    @Override
     public void recover(SQLException e, String sql) {
         logger.info("In recover method");
     }
