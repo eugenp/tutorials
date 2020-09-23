@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class OverloadingErrors<T extends Serializable> {
 
     public void print() {
-        System.out.println("Signature is: method()");
+        System.out.println("Signature is: print()");
     }
 
     /*
