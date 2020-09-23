@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class IterationCounter {
+public class ForLoopIterationCounter {
     private final List<String> colors = Arrays.asList("red", "blue", "yellow", "green");
 
     private void forEachCounter() {
