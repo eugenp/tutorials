@@ -39,8 +39,8 @@ public class CertificatesUnitTest {
 
         Set<TrustAnchor> trustAnchors = params.getTrustAnchors();
         List<Certificate> certificates = trustAnchors.stream()
-                                                     .map(TrustAnchor::getTrustedCert)
-                                                     .collect(Collectors.toList());
+          .map(TrustAnchor::getTrustedCert)
+          .collect(Collectors.toList());
 
         assertFalse(certificates.isEmpty());
     }
@@ -52,11 +52,11 @@ public class CertificatesUnitTest {
 
         List<TrustManager> trustManagers = Arrays.asList(trustManagerFactory.getTrustManagers());
         List<X509Certificate> certificates = trustManagers.stream()
-                                                          .filter(X509TrustManager.class::isInstance)
-                                                          .map(X509TrustManager.class::cast)
-                                                          .map(trustManager -> Arrays.asList(trustManager.getAcceptedIssuers()))
-                                                          .flatMap(Collection::stream)
-                                                          .collect(Collectors.toList());
+          .filter(X509TrustManager.class::isInstance)
+          .map(X509TrustManager.class::cast)
+          .map(trustManager -> Arrays.asList(trustManager.getAcceptedIssuers()))
+          .flatMap(Collection::stream)
+          .collect(Collectors.toList());
 
         assertFalse(certificates.isEmpty());
     }
