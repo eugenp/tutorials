@@ -24,7 +24,7 @@ public class FindAvailablePortUnitTest {
             FREE_PORT_NUMBER = serverSocket.getLocalPort();
             FREE_PORT_RANGE = new int[] {FREE_PORT_NUMBER, FREE_PORT_NUMBER + 1, FREE_PORT_NUMBER + 2};
         } catch (IOException e) {
-            fail("No free port is not available");
+            fail("No free port is available");
         }
     }
 
