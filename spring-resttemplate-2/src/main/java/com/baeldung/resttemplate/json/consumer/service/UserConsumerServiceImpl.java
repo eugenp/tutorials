@@ -1,5 +1,6 @@
 package com.baeldung.resttemplate.json.consumer.service;
 
+import com.baeldung.resttemplate.json.model.Address;
 import com.baeldung.resttemplate.json.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.ParameterizedTypeReference;
@@ -29,7 +30,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         Object[] objects = responseEntity.getBody();
         return Arrays.stream(objects)
                        .map(object -> mapper.convertValue(object, User.class))
-                       .map(user -> user.getName())
+                       .map(User::getName)
                        .collect(Collectors.toList());
     }
 
@@ -38,7 +39,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(BASE_URL, User[].class);
         User[] userArray = responseEntity.getBody();
         return Arrays.stream(userArray)
-                       .map(user -> user.getName())
+                       .map(User::getName)
                        .collect(Collectors.toList());
     }
 
@@ -48,7 +49,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         });
         List<User> users = responseEntity.getBody();
         return users.stream()
-                       .map(user -> user.getName())
+                       .map(User::getName)
                        .collect(Collectors.toList());
     }
 
@@ -62,7 +63,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
 
         return Arrays.stream(userArray)
                        .flatMap(user -> user.getAddressList().stream())
-                       .map(address -> address.getPostCode())
+                       .map(Address::getPostCode)
                        .collect(Collectors.toList());
     }
 
@@ -73,7 +74,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         List<User> userList = responseEntity.getBody();
         return userList.stream()
                        .flatMap(user -> user.getAddressList().stream())
-                       .map(address -> address.getPostCode())
+                       .map(Address::getPostCode)
                        .collect(Collectors.toList());
     }
 }
