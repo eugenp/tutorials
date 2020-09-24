@@ -22,7 +22,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- togglez -->
+        <!-- JobRunr -->
         <dependency>
             <groupId>org.jobrunr</groupId>
             <artifactId>jobrunr-spring-boot-starter</artifactId>
@@ -31,7 +31,7 @@
     </dependencies>
 
     <properties>
-        <jobrunr.version>1.0.0-SNAPSHOT</jobrunr.version>
+        <jobrunr.version>1.0.0</jobrunr.version>
     </properties>
 
 </project>

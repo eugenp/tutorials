@@ -4,4 +4,4 @@ This module contains articles about various Spring Boot libraries
 
 ### Relevant Articles:
 
-- [Guide to JobRunr with Spring](https://www.baeldung.com/java-jobrunr-spring)
+- [Running background jobs in Spring with JobRunr](https://www.baeldung.com/java-jobrunr-spring)
