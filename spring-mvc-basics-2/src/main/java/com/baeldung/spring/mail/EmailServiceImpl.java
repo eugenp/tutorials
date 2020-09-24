@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -30,11 +30,13 @@ import freemarker.template.TemplateException;
 @Service("EmailService")
 public class EmailServiceImpl implements EmailService {
 
+    private static final String NOREPLY_ADDRESS = "noreply@baeldung.com";
+
     @Autowired
-    public JavaMailSender emailSender;
-    
+    private JavaMailSender emailSender;
+
     @Autowired
-    public SimpleMailMessage template;
+    private SimpleMailMessage template;
     
     @Autowired
     private SpringTemplateEngine thymeleafTemplateEngine;
@@ -43,11 +45,12 @@ public class EmailServiceImpl implements EmailService {
     private FreeMarkerConfigurer freemarkerConfigurer;
     
     @Value("classpath:/mail-logo.png")
-    Resource resourceFile;
+    private Resource resourceFile;
 
     public void sendSimpleMessage(String to, String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(NOREPLY_ADDRESS);
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);
@@ -76,6 +79,7 @@ public class EmailServiceImpl implements EmailService {
             // pass 'true' to the constructor to create a multipart message
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
+            helper.setFrom(NOREPLY_ADDRESS);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
@@ -118,12 +122,12 @@ public class EmailServiceImpl implements EmailService {
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+        helper.setFrom(NOREPLY_ADDRESS);
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
         helper.addInline("attachment.png", resourceFile);
         emailSender.send(message);
-
     }
    
 }

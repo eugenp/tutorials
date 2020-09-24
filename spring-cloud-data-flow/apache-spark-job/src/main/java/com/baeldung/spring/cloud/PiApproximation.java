@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 
 public class PiApproximation {
     public static void main(String[] args) {
-        SparkConf conf = new SparkConf().setAppName("BaeldungPIApproximation");
+        SparkConf conf = new SparkConf().setAppName("BaeldungPIApproximation").setMaster("local[2]");
         JavaSparkContext context = new JavaSparkContext(conf);
         int slices = args.length >= 1 ? Integer.valueOf(args[0]) : 2;
         int n = (100000L * slices) > Integer.MAX_VALUE ? Integer.MAX_VALUE : 100000 * slices;

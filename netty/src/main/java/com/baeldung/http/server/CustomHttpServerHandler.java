@@ -5,8 +5,6 @@ import static io.netty.handler.codec.http.HttpResponseStatus.CONTINUE;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
-import java.util.Set;
-
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -20,9 +18,6 @@ import io.netty.handler.codec.http.HttpObject;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.handler.codec.http.LastHttpContent;
-import io.netty.handler.codec.http.cookie.Cookie;
-import io.netty.handler.codec.http.cookie.ServerCookieDecoder;
-import io.netty.handler.codec.http.cookie.ServerCookieEncoder;
 import io.netty.util.CharsetUtil;
 
 public class CustomHttpServerHandler extends SimpleChannelInboundHandler<Object> {
@@ -45,22 +40,20 @@ public class CustomHttpServerHandler extends SimpleChannelInboundHandler<Object>
             }
 
             responseData.setLength(0);
-            responseData.append(ResponseBuilder.addRequestAttributes(request));
-            responseData.append(ResponseBuilder.addHeaders(request));
-            responseData.append(ResponseBuilder.addParams(request));
+            responseData.append(RequestUtils.formatParams(request));
         }
 
-        responseData.append(ResponseBuilder.addDecoderResult(request));
+        responseData.append(RequestUtils.evaluateDecoderResult(request));
 
         if (msg instanceof HttpContent) {
             HttpContent httpContent = (HttpContent) msg;
 
-            responseData.append(ResponseBuilder.addBody(httpContent));
-            responseData.append(ResponseBuilder.addDecoderResult(request));
+            responseData.append(RequestUtils.formatBody(httpContent));
+            responseData.append(RequestUtils.evaluateDecoderResult(request));
 
             if (msg instanceof LastHttpContent) {
                 LastHttpContent trailer = (LastHttpContent) msg;
-                responseData.append(ResponseBuilder.addLastResponse(request, trailer));
+                responseData.append(RequestUtils.prepareLastResponse(request, trailer));
                 writeResponse(ctx, trailer, responseData);
             }
         }
@@ -86,18 +79,6 @@ public class CustomHttpServerHandler extends SimpleChannelInboundHandler<Object>
                     .readableBytes());
             httpResponse.headers()
                 .set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
-        }
-
-        String cookieString = request.headers()
-            .get(HttpHeaderNames.COOKIE);
-        if (cookieString != null) {
-            Set<Cookie> cookies = ServerCookieDecoder.STRICT.decode(cookieString);
-            if (!cookies.isEmpty()) {
-                for (Cookie cookie : cookies) {
-                    httpResponse.headers()
-                        .add(HttpHeaderNames.SET_COOKIE, ServerCookieEncoder.STRICT.encode(cookie));
-                }
-            }
         }
 
         ctx.write(httpResponse);

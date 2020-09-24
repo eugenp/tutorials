@@ -1,8 +1,6 @@
 ### Relevant Articles:
-- TBD
 - [Improved Java Logging with Mapped Diagnostic Context (MDC)](https://www.baeldung.com/mdc-in-log4j-2-logback)
 - [Java Logging with Nested Diagnostic Context (NDC)](https://www.baeldung.com/java-logging-ndc-log4j)
-- [Drools Using Rules from Excel Files](https://www.baeldung.com/drools-excel)
 
 ### References
 

@@ -89,7 +89,7 @@ public class HttpServerLiveTest {
     }
 
     @Test
-    public void whenGetSent_thenCookieReceivedInResponse() throws Exception {
+    public void whenGetSent_thenResponseOK() throws Exception {
         DefaultFullHttpRequest request = createRequest(null);
 
         channel.writeAndFlush(request);
@@ -98,9 +98,6 @@ public class HttpServerLiveTest {
         assertEquals(200, response.getStatus());
         assertEquals("HTTP/1.1", response.getVersion());
 
-        Map<String, String> headers = response.getHeaders();
-        String cookies = headers.get("set-cookie");
-        assertTrue(cookies.contains("my-cookie"));
     }
 
     @After

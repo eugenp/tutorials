@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.5.2</version>
+                <version>${junit-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -108,6 +108,7 @@
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
         <redis.version>0.7.2</redis.version>
+        <junit-bom.version>5.5.2</junit-bom.version>
     </properties>
 
 </project>
