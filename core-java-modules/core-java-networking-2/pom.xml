@@ -41,6 +41,17 @@
             <version>${jakarta.xml.bind.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail</artifactId>
+            <version>${icegreen.greenmail.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${javax.annotation.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.core.version}</version>
@@ -59,12 +70,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.icegreen</groupId>
-            <artifactId>greenmail</artifactId>
-            <version>1.5.8</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -92,6 +97,8 @@
         <jetty.embeded.version>9.4.31.v20200723</jetty.embeded.version>
         <tomcat.embeded.version>10.0.0-M7</tomcat.embeded.version>
         <assertj.version>3.11.1</assertj.version>
+        <javax.annotation.version>1.3.2</javax.annotation.version>
+        <icegreen.greenmail.version>1.5.8</icegreen.greenmail.version>
     </properties>
 
 </project>
