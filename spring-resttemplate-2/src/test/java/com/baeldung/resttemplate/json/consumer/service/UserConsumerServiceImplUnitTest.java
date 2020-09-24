@@ -1,7 +1,5 @@
 package com.baeldung.resttemplate.json.consumer.service;
 
-import com.baeldung.resttemplate.json.model.Address;
-import com.baeldung.resttemplate.json.model.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,17 +35,10 @@ public class UserConsumerServiceImplUnitTest {
     }
 
     @Test
-    public void whenGetUsersAsObjects_thenOK() {
+    public void whenProcessUserDataAsObjects_thenOK() {
         // Given
         String url = "http://localhost :8080/users";
-        Object[] expected = new Object[]{new User(1, "user1",
-                Arrays.asList(
-                        new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "user1_address1_postCode"),
-                        new Address("address2_addressLine1", "address2_addressLine2", "address2_town", "user1_address2_postCode"))),
-                new User(2,
-                        "user2",
-                        Arrays.asList(
-                                new Address("address1_addressLine1", "address1_addressLine2", "address1_town", "user2_address1_postCode")))};
+        List<String> expected = Arrays.asList("user1", "user2");
 
         // When
         mockServer.expect(ExpectedCount.once(),
@@ -57,11 +48,12 @@ public class UserConsumerServiceImplUnitTest {
                                     .contentType(MediaType.APPLICATION_JSON)
                                     .body(USER_JSON)
                 );
-        Object[] actual = tested.getUsersAsObjectArray();
+        List<String> actual = tested.processUserDataFromObjectArray();
 
         // Then
         mockServer.verify();
-        assertEquals(actual.length, expected.length);
+        assertEquals(actual.size(), expected.size());
+        assertThat(actual).containsExactly(expected.get(0), expected.get(1));
     }
 
     @Test

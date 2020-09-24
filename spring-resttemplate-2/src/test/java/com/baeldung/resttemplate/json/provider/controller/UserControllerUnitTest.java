@@ -1,8 +1,5 @@
 package com.baeldung.resttemplate.json.provider.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-
 import com.baeldung.resttemplate.json.model.Address;
 import com.baeldung.resttemplate.json.model.User;
 import com.baeldung.resttemplate.json.service.UserService;
@@ -12,9 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)

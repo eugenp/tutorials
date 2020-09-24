@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UserConsumerService {
 
-    Object[] getUsersAsObjectArray();
+    List<String> processUserDataFromObjectArray();
 
     List<String> processUserDataFromUserArray();
 
