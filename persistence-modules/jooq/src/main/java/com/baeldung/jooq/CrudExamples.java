@@ -1,7 +1,9 @@
-import model.generated.tables.Article;
-import model.generated.tables.Author;
-import model.generated.tables.records.ArticleRecord;
-import model.generated.tables.records.AuthorRecord;
+package com.baeldung.jooq;
+
+import com.baeldung.jooq.model.tables.Article;
+import com.baeldung.jooq.model.tables.Author;
+import com.baeldung.jooq.model.tables.records.ArticleRecord;
+import com.baeldung.jooq.model.tables.records.AuthorRecord;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Record2;
