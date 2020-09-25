@@ -1,5 +1,6 @@
 package com.baeldung.jobrunr.service;
 
+import org.jobrunr.jobs.annotations.Job;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class SampleJobService {
 
     private AtomicInteger count = new AtomicInteger();
 
+    @Job(name = "The sample job with variable %0", retries = 2)
     public void executeSampleJob(String variable) {
 
         logger.info("The sample job has begun. The variable you passed is {}", variable);
