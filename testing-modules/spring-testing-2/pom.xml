@@ -28,6 +28,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
@@ -50,8 +56,6 @@
     </dependencies>
 
     <properties>
-        <spring-boot-version>2.1.9.RELEASE</spring-boot-version>
-        <spring.boot.starter.version>2.1.9.RELEASE</spring.boot.starter.version>
         <testcontainers.version>1.12.2</testcontainers.version>
     </properties>
 </project>

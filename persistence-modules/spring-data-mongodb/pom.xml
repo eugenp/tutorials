@@ -107,6 +107,11 @@
         <mongodb-reactivestreams.version>4.1.0</mongodb-reactivestreams.version>
         <projectreactor.version>3.2.0.RELEASE</projectreactor.version>
         <mongodb-driver.version>4.0.5</mongodb-driver.version>
+
+        <!-- testing -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

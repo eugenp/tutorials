@@ -383,6 +383,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
+                <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
@@ -423,6 +424,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
+                <module>httpclient-2</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -508,7 +510,6 @@
 
                 <module>maven-modules</module>
                 <module>maven-archetype</module>
-                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
@@ -651,7 +652,6 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
-                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
@@ -697,7 +697,6 @@
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
-                <module>spring-rest-hal-browser</module>
                 <module>spring-rest-http</module>
                 <module>spring-rest-http-2</module>
                 <module>spring-rest-query-language</module>
@@ -896,6 +895,7 @@
                 <module>core-groovy</module>
                 <module>core-groovy-2</module>
                 <module>core-groovy-collections</module>
+                <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
                 <module>core-kotlin-modules</module>
@@ -936,6 +936,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
+                <module>httpclient-2</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -1019,7 +1020,6 @@
 
                 <module>maven-modules</module>
                 <module>maven-archetype</module>
-                <!-- <module>maven-java-11</module> --> <!-- we haven't upgraded to Java 11 -->
                 <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
@@ -1153,7 +1153,6 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
-                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
@@ -1200,7 +1199,6 @@
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
                 <module>spring-rest-compress</module>
-                <module>spring-rest-hal-browser</module>
                 <module>spring-rest-http</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
@@ -1336,6 +1334,104 @@
 
         </profile>
 
+        <profile>
+            <id>default-jdk9-and-above</id>
+
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+            <modules>
+                 <module>core-java-modules/core-java-9</module>
+                 <module>core-java-modules/core-java-9-improvements</module>
+                 <!-- <module>core-java-modules/core-java-9-jigsaw</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-9-new-features</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-9-streams</module>
+                 <module>core-java-modules/core-java-10</module>
+                 <!-- <module>core-java-modules/core-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-12</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-collections-set</module>
+                 <!-- <module>core-java-modules/core-java-date-operations-1</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-datetime-conversion</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-datetime-string</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-jpms</module>
+                 <!-- <module>core-java-modules/core-java-os</module>-->  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/multimodulemavenproject</module>
+                 <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+            </modules>
+        </profile>
+
+        <profile>
+            <id>integration-jdk9-and-above</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-9</module>
+                <module>core-java-modules/core-java-9-improvements</module>
+                <!-- <module>core-java-modules/core-java-9-jigsaw</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-9-new-features</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-9-streams</module>
+                <module>core-java-modules/core-java-10</module>
+                <!-- <module>core-java-modules/core-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-12</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-collections-set</module>
+                <!-- <module>core-java-modules/core-java-date-operations-1</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-datetime-conversion</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-datetime-string</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-jpms</module>
+                <!-- <module>core-java-modules/core-java-os</module>-->  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/multimodulemavenproject</module>
+                <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+            </modules>
+        </profile>
     </profiles>
 
     <reporting>
