@@ -47,7 +47,7 @@ public class Author extends TableImpl<AuthorRecord> {
     /**
      * The column <code>public.author.id</code>.
      */
-    public final static TableField<AuthorRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), AUTHOR, "");
+    public final TableField<AuthorRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false), AUTHOR, "");
 
     /**
      * The column <code>public.author.first_name</code>.
