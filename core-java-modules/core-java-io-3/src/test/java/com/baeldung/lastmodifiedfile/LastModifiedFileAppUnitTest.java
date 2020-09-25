@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -57,8 +58,7 @@ public class LastModifiedFileAppUnitTest {
         Path lastModPath = LastModifiedFileApp.findUsingNIOApi(SOURCEDIRECTORY);
 
         assertThat(lastModPath).isNotNull();
-        assertThat(lastModPath.toFile()
-          .getName()).isEqualTo("file02.txt");
+        assertThat(lastModPath.toFile().getName()).isEqualTo("file02.txt");
     }
 
     @Test
@@ -67,6 +67,12 @@ public class LastModifiedFileAppUnitTest {
 
         assertThat(lastModFile).isNotNull();
         assertThat(lastModFile.getName()).isEqualTo("file02.txt");
+    }
+
+    @AfterAll
+    public static void cleanUp() throws IOException {
+        File srcDir = new File(SOURCEDIRECTORY);
+        FileUtils.deleteDirectory(srcDir);
     }
 
 }
