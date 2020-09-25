@@ -39,6 +39,7 @@
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-mongodb</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
+        <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
         <module>orientdb</module>
