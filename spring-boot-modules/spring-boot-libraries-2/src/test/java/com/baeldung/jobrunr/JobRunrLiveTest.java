@@ -32,9 +32,7 @@ public class JobRunrLiveTest {
         String response = enqueueJobViaRest("some-input");
         assertEquals("job enqueued successfully", response);
 
-        await()
-                .atMost(30, TimeUnit.SECONDS)
-                .until(() -> storageProvider.countJobs(StateName.SUCCEEDED) == 1);
+        await().atMost(30, TimeUnit.SECONDS).until(() -> storageProvider.countJobs(StateName.SUCCEEDED) == 1);
     }
 
     private String enqueueJobViaRest(String input) {
