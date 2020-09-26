@@ -9,3 +9,4 @@ This module contains articles about methods in Java
 - [Java equals() and hashCode() Contracts](https://www.baeldung.com/java-equals-hashcode-contracts)
 - [Guide to hashCode() in Java](https://www.baeldung.com/java-hashcode)
 - [The Covariant Return Type in Java](https://www.baeldung.com/java-covariant-return-type)
+- [Does a Method’s Signature Include the Return Type in Java?](https://www.baeldung.com/java-method-signature-return-type)

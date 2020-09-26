@@ -20,9 +20,9 @@
 		<param-value>com.baeldung.spring</param-value>
 	</context-param>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+<!--	<listener>-->
+<!--		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--	</listener>-->
 
 	<!-- Spring child -->
 	<servlet>
@@ -40,17 +40,17 @@
 	</servlet-mapping>
 
 	<!-- Spring Security -->
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<async-supported>true</async-supported>
-	</filter>
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-   	    <dispatcher>ASYNC</dispatcher>
-	</filter-mapping>
+<!--	<filter>-->
+<!--		<filter-name>springSecurityFilterChain</filter-name>-->
+<!--		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+<!--		<async-supported>true</async-supported>-->
+<!--	</filter>-->
+<!--	<filter-mapping>-->
+<!--		<filter-name>springSecurityFilterChain</filter-name>-->
+<!--		<url-pattern>/*</url-pattern>-->
+<!--		<dispatcher>REQUEST</dispatcher>-->
+<!--   	    <dispatcher>ASYNC</dispatcher>-->
+<!--	</filter-mapping>-->
 
 	<!-- <welcome-file-list> -->
 	<!-- <welcome-file>index.html</welcome-file> -->
