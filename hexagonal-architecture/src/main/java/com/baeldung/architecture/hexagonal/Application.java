@@ -1,13 +1,13 @@
-package main.java.com.baeldung.architecture.hexagonal;
+package com.baeldung.architecture.hexagonal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HexagonalApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(HexagonalApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
