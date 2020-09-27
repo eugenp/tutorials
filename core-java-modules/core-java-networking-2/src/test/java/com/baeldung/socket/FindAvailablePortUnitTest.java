@@ -44,7 +44,7 @@ public class FindAvailablePortUnitTest {
             new ServerSocket(FREE_PORT_NUMBER);
             fail("Same port cannot be used twice");
         } catch (IOException e) {
-            assertThat(e).hasMessageContaining("Address already in use: bind");
+            assertThat(e).hasMessageContaining("Address already in use");
         }
     }
 
@@ -56,7 +56,7 @@ public class FindAvailablePortUnitTest {
                 assertThat(serverSocket.getLocalPort()).isGreaterThan(0);
                 return;
             } catch (IOException e) {
-                assertThat(e).hasMessageContaining("Address already in use: bind");
+                assertThat(e).hasMessageContaining("Address already in use");
             }
         }
         fail("No free port in the range found");
