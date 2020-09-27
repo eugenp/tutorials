@@ -28,13 +28,13 @@ public class MultipleOutputsServiceApplicationIntegrationTest {
     @Test
     public void whenSendMessage_thenResponseIsInAOutput() {
         whenSendMessage(1);
-        thenPayloadInChannelIs(pipe.anOutput(), 1);
+        thenPayloadInChannelIs(pipe.anOutput(), "1");
     }
 
     @Test
     public void whenSendMessage_thenResponseIsInAnotherOutput() {
         whenSendMessage(11);
-        thenPayloadInChannelIs(pipe.anotherOutput(), 11);
+        thenPayloadInChannelIs(pipe.anotherOutput(), "11");
     }
 
     private void whenSendMessage(Integer val) {
@@ -43,7 +43,7 @@ public class MultipleOutputsServiceApplicationIntegrationTest {
                 .build());
     }
 
-    private void thenPayloadInChannelIs(MessageChannel channel, Integer expectedValue) {
+    private void thenPayloadInChannelIs(MessageChannel channel, String expectedValue) {
         Object payload = messageCollector.forChannel(channel)
             .poll()
             .getPayload();

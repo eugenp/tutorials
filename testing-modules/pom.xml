@@ -31,7 +31,8 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>selenium-junit-testng</module>
-        <module>spring-testing</module>
+        <module>spring-testing</module>	
+        <module>spring-testing-2</module>
         <module>test-containers</module>
         <module>testing-assertions</module>
         <module>testng</module>
@@ -40,7 +41,8 @@
         <module>junit-5-advanced</module>
         <module>xmlunit-2</module>
         <module>junit-4</module>
-        <module>testing-libraries</module>
+	<module>testing-libraries</module>
+	<module>testing-libraries-2</module>
         <module>powermock</module>
     </modules>
 

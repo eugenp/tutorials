@@ -6,7 +6,7 @@
     <groupId>com.baeldung.boot.persistence</groupId>
     <artifactId>spring-boot-persistence-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-jdbi</name>
+    <name>spring-boot-persistence-2</name>
     <description>Sample SpringBoot JDBI Project</description>
 
     <parent>
@@ -17,6 +17,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -36,7 +43,6 @@
                 <artifactId>jdbi3-sqlobject</artifactId>
                 <version>${jdbi.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
