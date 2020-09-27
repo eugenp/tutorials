@@ -7,7 +7,6 @@ This module contains articles about core features in the Kotlin language.
 - [Infix Functions in Kotlin](https://www.baeldung.com/kotlin-infix-functions)
 - [Lambda Expressions in Kotlin](https://www.baeldung.com/kotlin-lambda-expressions)
 - [Creating Java static final Equivalents in Kotlin](https://www.baeldung.com/kotlin-java-static-final)
-- [Initializing Arrays in Kotlin](https://www.baeldung.com/kotlin-initialize-array)
 - [Lazy Initialization in Kotlin](https://www.baeldung.com/kotlin-lazy-initialization)
 - [Comprehensive Guide to Null Safety in Kotlin](https://www.baeldung.com/kotlin-null-safety)
 - [Kotlin Scope Functions](https://www.baeldung.com/kotlin-scope-functions)

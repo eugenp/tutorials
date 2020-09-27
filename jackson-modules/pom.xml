@@ -23,16 +23,6 @@
         <module>jackson-exceptions</module>
     </modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -59,6 +49,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>

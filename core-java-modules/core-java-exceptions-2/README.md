@@ -12,3 +12,5 @@ This module contains articles about core java exceptions
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Java Global Exception Handler](https://www.baeldung.com/java-global-exception-handler)
 - [How to Find an Exception’s Root Cause in Java](https://www.baeldung.com/java-exception-root-cause)
+- [Java IOException “Too many open files”](https://www.baeldung.com/java-too-many-open-files)
+- [When Does Java Throw the ExceptionInInitializerError?](https://www.baeldung.com/java-exceptionininitializererror)

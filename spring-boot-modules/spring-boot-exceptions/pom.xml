@@ -2,25 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-exceptions</artifactId>
-    <name>spring-boot-exceptions</name>
-    <packaging>jar</packaging>
-	<description>Demo project for working with Spring Boot exceptions</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>
-    </dependencies>
+    <artifactId>spring-boot-exceptions</artifactId>
+    <packaging>jar</packaging>
+
+    <name>spring-boot-exceptions</name>
+    <description>Demo project for working with Spring Boot exceptions</description>
 
     <build>
         <finalName>spring-boot-exceptions</finalName>
@@ -30,68 +24,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <delimiters>
-                        <delimiter>@</delimiter>
-                    </delimiters>
-                    <useDefaultDelimiters>false</useDefaultDelimiters>
-                </configuration>
-            </plugin>
-        </plugins>
-
     </build>
 
-    <profiles>
-        <profile>
-            <id>autoconfiguration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                        <exclude>**/*IntegrationTest.java</exclude>
-                                        <exclude>**/*IntTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/AutoconfigurationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
-    <properties>
-        <!-- The main class to start by executing java -jar -->
-        <start-class>com.baeldung.intro.App</start-class>
-        <spring-boot.version>2.2.3.RELEASE</spring-boot.version>
-    </properties>
 </project>

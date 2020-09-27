@@ -13,7 +13,6 @@ This module contains articles about Spring with Thymeleaf
 - [Conditionals in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-conditionals)
 - [Iteration in Thymeleaf](https://www.baeldung.com/thymeleaf-iteration)
 - [Spring with Thymeleaf Pagination for a List](https://www.baeldung.com/spring-thymeleaf-pagination)
-- [Working with Select and Option in Thymeleaf](https://www.baeldung.com/thymeleaf-select-option)
 - [[next -->]](/spring-thymeleaf-2)
 
 ### Build the Project

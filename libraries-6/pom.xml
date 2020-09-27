@@ -92,7 +92,49 @@
             <version>${commonsio.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.rosuda.REngine</groupId>
+            <artifactId>Rserve</artifactId>
+            <version>${rserve.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jbytecode</groupId>
+            <artifactId>RCaller</artifactId>
+            <version>${rcaller.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.renjin</groupId>
+            <artifactId>renjin-script-engine</artifactId>
+            <version>${renjin.version}</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <!-- Needed for Renjin -->
+        <repository>
+            <id>bedatadriven</id>
+            <name>bedatadriven public repo</name>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Excludes FastR classes from compilations since they require GraalVM -->
+                    <excludes>
+                        <exclude>com/baeldung/r/FastRMean.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>com/baeldung/r/FastRMeanUnitTest.java</exclude>
+                    </testExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <kafka.version>2.0.0</kafka.version>
@@ -105,6 +147,9 @@
         <commons-net.version>3.6</commons-net.version>
         <assertj.version>3.6.2</assertj.version>
         <commonsio.version>2.6</commonsio.version>
+        <renjin.version>RELEASE</renjin.version>
+        <rcaller.version>3.0</rcaller.version>
+        <rserve.version>1.8.1</rserve.version>
     </properties>
 
 

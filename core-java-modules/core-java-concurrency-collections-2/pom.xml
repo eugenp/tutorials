@@ -3,9 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.concurrent.lock</groupId>
     <artifactId>core-java-concurrency-collections-2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>core-java-concurrency-collections-2</name>
+    <packaging>jar</packaging>
+    <parent>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -30,19 +37,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <build>
-        <sourceDirectory>src</sourceDirectory>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
         <jmh.version>1.21</jmh.version>
