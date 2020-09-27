@@ -7,7 +7,6 @@ public class HttpApi implements ApiInterface {
         this.service = service;
     }
 
-    // TODO implement HTTP endpoint
     public Movie get(String name) {
         return service.search(name);
     }

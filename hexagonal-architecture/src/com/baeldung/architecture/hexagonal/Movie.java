@@ -4,5 +4,19 @@ public class Movie {
     private String name;
     private String brief;
 
-    // standard constructor and getters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
 }
