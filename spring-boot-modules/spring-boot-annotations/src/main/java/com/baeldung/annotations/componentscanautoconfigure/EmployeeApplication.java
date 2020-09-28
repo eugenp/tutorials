@@ -3,7 +3,7 @@ package com.baeldung.annotations.componentscanautoconfigure;
 import com.baeldung.annotations.componentscanautoconfigure.teacher.Teacher;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {"com.baeldung.annotations.componentscanautoconfigure.doctor", "com.baeldung.annotations.componentscanautoconfigure.employee"},
         basePackageClasses = Teacher.class)
-@EnableAutoConfiguration(exclude={AopAutoConfiguration.class})
-//@EnableAutoConfiguration(excludeName = {"org.springframework.boot.autoconfigure.aop"})
+@EnableAutoConfiguration(exclude={JdbcTemplateAutoConfiguration.class})
+//@EnableAutoConfiguration(excludeName = {"org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration"})
 public class EmployeeApplication {
 
     public static void main(String[] args) {
