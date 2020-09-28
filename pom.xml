@@ -424,7 +424,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <module>httpclient-2</module>
+                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -936,7 +936,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <module>httpclient-2</module>
+                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
