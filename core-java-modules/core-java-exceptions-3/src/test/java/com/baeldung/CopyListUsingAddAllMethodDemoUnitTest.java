@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.baeldung.CopyListUsingConstructorDemo.copyList;
+import static com.baeldung.CopyListUsingAddAllMethodDemo.copyList;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CopyListUsingConstructorDemoTest {
+class CopyListUsingAddAllMethodDemoUnitTest {
 
     @Test
-    void shouldMakeACopyOfSourceListUsingArrayListConstructor() {
+    void shouldMakeACopyOfSourceList() {
         List<Integer> source = Arrays.asList(11, 22, 33);
 
         assertEquals(source, copyList(source));
