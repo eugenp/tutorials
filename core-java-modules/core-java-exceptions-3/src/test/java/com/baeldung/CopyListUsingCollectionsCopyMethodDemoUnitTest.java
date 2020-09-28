@@ -8,7 +8,7 @@ import java.util.List;
 import static com.baeldung.CopyListUsingCollectionsCopyMethodDemo.copyList;
 import static org.junit.jupiter.api.Assertions.*;
 
-class CopyListUsingCollectionsCopyMethodDemoTest {
+class CopyListUsingCollectionsCopyMethodDemoUnitTest {
 
     @Test
     void shouldCopySourceListElementsInDestinationList() {
