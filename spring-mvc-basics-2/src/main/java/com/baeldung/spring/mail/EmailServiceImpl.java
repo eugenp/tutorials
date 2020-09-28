@@ -112,7 +112,7 @@ public class EmailServiceImpl implements EmailService {
         String to, String subject, Map<String, Object> templateModel)
             throws IOException, TemplateException, MessagingException {
 
-        Template freemarkerTemplate = freemarkerConfigurer.createConfiguration().getTemplate("template-freemarker.ftl");
+        Template freemarkerTemplate = freemarkerConfigurer.getConfiguration().getTemplate("template-freemarker.ftl");
         String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, templateModel);
 
         sendHtmlMessage(to, subject, htmlBody);
