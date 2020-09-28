@@ -22,16 +22,15 @@ public class DateTimeConfig extends WebMvcConfigurationSupport {
 
         conversionService.addFormatterForFieldAnnotation(new NumberFormatAnnotationFormatterFactory());
 
-        DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
-        registrar.setDateFormatter(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        registrar.setDateTimeFormatter(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-        registrar.registerFormatters(conversionService);
+        DateTimeFormatterRegistrar dateTimeRegistrar = new DateTimeFormatterRegistrar();
+        dateTimeRegistrar.setDateFormatter(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        dateTimeRegistrar.setDateTimeFormatter(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+        dateTimeRegistrar.registerFormatters(conversionService);
 
-        DateFormatterRegistrar registrar2 = new DateFormatterRegistrar();
-        registrar2.setFormatter(new DateFormatter("dd.MM.yyyy"));
-        registrar2.registerFormatters(conversionService);
+        DateFormatterRegistrar dateRegistrar = new DateFormatterRegistrar();
+        dateRegistrar.setFormatter(new DateFormatter("dd.MM.yyyy"));
+        dateRegistrar.registerFormatters(conversionService);
 
         return conversionService;
     }
-
 }
