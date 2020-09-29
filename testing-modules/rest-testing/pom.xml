@@ -65,15 +65,15 @@
         </dependency>
 
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
+            <version>6.8.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
+            <version>6.8.0</version>
         </dependency>
 
         <dependency>
@@ -154,7 +154,7 @@
 
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
-        <cucumber.version>1.2.5</cucumber.version>
+        <cucumber.version>6.8.0</cucumber.version>
         <wiremock.version>2.21.0</wiremock.version>
         <karate.version>0.6.1</karate.version>
 
