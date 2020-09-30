@@ -10,14 +10,14 @@ fun main() {
     resizePane(forceResize = true, newSize = 12, noAnimation = true)
 
     // Mixing Named and Positional Arguments
-    // Using a positional argument in the middle of named arguments
-    resizePane(newSize = 20, true, noAnimation = true)
+    // Using a positional argument in the middle of named arguments (supported from Kotlin 1.4.0)
+    // resizePane(newSize = 20, true, noAnimation = true)
 
-    // Only the last argument as a positional argument
-    resizePane(newSize = 30, forceResize = true, true)
+    // Only the last argument as a positional argument (supported from Kotlin 1.4.0)
+    // resizePane(newSize = 30, forceResize = true, true)
 
-    // Use a named argument in the middle of positional arguments
-    resizePane(40, forceResize = true, true)
+    // Use a named argument in the middle of positional arguments (supported from Kotlin 1.4.0)
+    // resizePane(40, forceResize = true, true)
 }
 
 fun resizePane(newSize: Int, forceResize: Boolean, noAnimation: Boolean) {
