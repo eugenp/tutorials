@@ -8,6 +8,7 @@ import io.katharsis.repository.RelationshipRepositoryV2;
 import io.katharsis.resource.list.ResourceList;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import com.baeldung.persistence.model.Role;
@@ -31,7 +32,7 @@ public class UserToRoleRelationshipRepository implements RelationshipRepositoryV
     @Override
     public void setRelations(User user, Iterable<Long> roleIds, String fieldName) {
         final Set<Role> roles = new HashSet<Role>();
-        roles.addAll(roleRepository.findAll(roleIds));
+        roles.addAll(roleRepository.findAllById(roleIds));
         user.setRoles(roles);
         userRepository.save(user);
     }
@@ -39,7 +40,7 @@ public class UserToRoleRelationshipRepository implements RelationshipRepositoryV
     @Override
     public void addRelations(User user, Iterable<Long> roleIds, String fieldName) {
         final Set<Role> roles = user.getRoles();
-        roles.addAll(roleRepository.findAll(roleIds));
+        roles.addAll(roleRepository.findAllById(roleIds));
         user.setRoles(roles);
         userRepository.save(user);
     }
@@ -47,7 +48,7 @@ public class UserToRoleRelationshipRepository implements RelationshipRepositoryV
     @Override
     public void removeRelations(User user, Iterable<Long> roleIds, String fieldName) {
         final Set<Role> roles = user.getRoles();
-        roles.removeAll(roleRepository.findAll(roleIds));
+        roles.removeAll(roleRepository.findAllById(roleIds));
         user.setRoles(roles);
         userRepository.save(user);
     }
@@ -60,7 +61,8 @@ public class UserToRoleRelationshipRepository implements RelationshipRepositoryV
 
     @Override
     public ResourceList<Role> findManyTargets(Long sourceId, String fieldName, QuerySpec querySpec) {
-        final User user = userRepository.findOne(sourceId);
+        final Optional<User> userOptional = userRepository.findById(sourceId);
+        User user = userOptional.isPresent() ? userOptional.get() : new User();
         return  querySpec.apply(user.getRoles());
     }
 

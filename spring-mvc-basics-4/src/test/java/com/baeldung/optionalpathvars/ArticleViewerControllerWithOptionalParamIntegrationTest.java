@@ -1,4 +1,4 @@
-package com.baeldung.controller.optionalpathvars;
+package com.baeldung.optionalpathvars;
 
 import org.junit.Before;
 import org.junit.Test;

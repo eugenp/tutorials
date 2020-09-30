@@ -39,6 +39,7 @@
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-mongodb</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
+        <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
         <module>orientdb</module>
@@ -68,7 +69,9 @@
         <module>spring-data-jpa-enterprise</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
+        <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-repo</module>
+        <module>spring-data-jpa-repo-2</module>
 
         <module>spring-data-jdbc</module>
 
@@ -78,17 +81,21 @@
         <module>spring-data-redis</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module> <!-- long running -->
-        <module>spring-hibernate4</module>
+        <module>spring-hibernate-5</module> <!-- long running -->        
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
+        <module>spring-jdbc</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
-        <module>spring-persistence-simple-2</module>
     </modules>
 
     <properties>
         <!-- persistence -->
         <hibernate.version>5.2.17.Final</hibernate.version>
+
+        <!-- testing -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit.version>4.13</junit.version>
     </properties>
 </project>

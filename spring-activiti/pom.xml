@@ -8,6 +8,7 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
+    <!-- This module uses Activiti version 6.0.0 with support for Spring Boot 1. Upgrade to Boot 2 should be clubbed with upgrade to Activiti 7 -->
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
