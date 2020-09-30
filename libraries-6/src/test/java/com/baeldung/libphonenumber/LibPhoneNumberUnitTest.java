@@ -66,17 +66,14 @@ public class LibPhoneNumberUnitTest {
     public void givenPhoneNumber_whenNumberGeographical_thenValid() throws NumberParseException {
 
         PhoneNumber phone = phoneNumberUtil.parse("+911234567890", "IN");
-
         assertTrue(phoneNumberUtil.isNumberGeographical(phone));
 
         phone = new PhoneNumber().setCountryCode(1)
             .setNationalNumber(2530000L);
-
         assertFalse(phoneNumberUtil.isNumberGeographical(phone));
 
         phone = new PhoneNumber().setCountryCode(800)
             .setNationalNumber(12345678L);
-
         assertFalse(phoneNumberUtil.isNumberGeographical(phone));
     }
 }
