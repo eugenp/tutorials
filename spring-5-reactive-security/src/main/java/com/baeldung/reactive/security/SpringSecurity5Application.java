@@ -28,9 +28,7 @@ public class SpringSecurity5Application {
         HttpHandler handler = WebHttpHandlerBuilder.applicationContext(context)
                 .build();
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(handler);
-        HttpServer httpServer = HttpServer.create();
-        httpServer.host("localhost");
-        httpServer.port(8080);
+        HttpServer httpServer = HttpServer.create().host("localhost").port(8083);
         return httpServer.handle(adapter).bindNow();
     }
 

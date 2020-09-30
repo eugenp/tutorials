@@ -168,7 +168,7 @@
         <crdt.version>0.1.0</crdt.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
-        <jackson.version>2.9.8</jackson.version>
+<!--        <jackson.version>2.9.8</jackson.version>-->
         <spring.version>4.3.8.RELEASE</spring.version>
         <suanshu.version>4.0.0</suanshu.version>
         <derive4j.version>1.1.0</derive4j.version>
