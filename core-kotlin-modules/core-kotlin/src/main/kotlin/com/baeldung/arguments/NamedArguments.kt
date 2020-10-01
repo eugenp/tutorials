@@ -7,7 +7,7 @@ fun main() {
     resizePane(newSize = 11, noAnimation = false, forceResize = true)
 
     // Named arguments can be passed in any order
-    resizePane(forceResize = true, newSize = 12, noAnimation = true)
+    resizePane(forceResize = true, newSize = 12, noAnimation = false)
 
     // Mixing Named and Positional Arguments
     // Kotlin 1.3 would allow us to name only the arguments after the positional ones
