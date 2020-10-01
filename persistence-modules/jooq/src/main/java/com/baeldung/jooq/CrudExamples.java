@@ -60,8 +60,8 @@ public class CrudExamples {
 
     private void readValues(DSLContext context) {
         Result<Record> authors = getAll(
-                context,
-                Author.AUTHOR
+          context,
+          Author.AUTHOR
         );
 
         authors.forEach(author -> {
@@ -73,15 +73,15 @@ public class CrudExamples {
         });
 
         Result<Record> articles = getFields(
-                context,
-                Author.AUTHOR,
-                Article.ARTICLE.ID, Article.ARTICLE.TITLE
+          context,
+          Author.AUTHOR,
+          Article.ARTICLE.ID, Article.ARTICLE.TITLE
         );
 
         AuthorRecord author = getOne(
-                context,
-                Author.AUTHOR,
-                Author.AUTHOR.ID.eq(1)
+          context,
+          Author.AUTHOR,
+          Author.AUTHOR.ID.eq(1)
         );
     }
 
@@ -90,24 +90,22 @@ public class CrudExamples {
         fieldsToUpdate.put(Author.AUTHOR.FIRST_NAME, "David");
         fieldsToUpdate.put(Author.AUTHOR.LAST_NAME, "Brown");
         update(
-                context,
-                Author.AUTHOR,
-                fieldsToUpdate,
-                Author.AUTHOR.ID.eq(1)
+          context,
+          Author.AUTHOR,
+          fieldsToUpdate,
+          Author.AUTHOR.ID.eq(1)
         );
 
         ArticleRecord article = context.fetchOne(Article.ARTICLE, Article.ARTICLE.ID.eq(1));
         article.setTitle("A New Article Title");
-        update(
-                article
-        );
+        update(article);
     }
 
     private void deleteValues(DSLContext context) {
         delete(
-                context,
-                Article.ARTICLE,
-                Article.ARTICLE.ID.eq(1)
+          context,
+          Article.ARTICLE,
+          Article.ARTICLE.ID.eq(1)
         );
 
         AuthorRecord author = context.fetchOne(Author.AUTHOR, Author.AUTHOR.ID.eq(1));
