@@ -8,17 +8,6 @@
     <name>spring-cloud-netflix-feign</name>
     <description>Netflix Feign project for Spring Boot</description>
 
-    <!--
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <version>1.4.7.RELEASE</version>
-        <relativePath/>
-        <relativePath>../../parent-boot-2</relativePath>
-    </parent>
-    -->
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-1</artifactId>
