@@ -10,4 +10,5 @@ This module contains articles about core Java Security
 - [SHA-256 and SHA3-256 Hashing in Java](https://www.baeldung.com/sha-256-hashing-java)
 - [Checksums in Java](https://www.baeldung.com/java-checksums)
 - [How to Read PEM File to Get Public and Private Keys](https://www.baeldung.com/java-read-pem-file-keys)
+- [Listing the Available Cipher Algorithms](https://www.baeldung.com/java-list-cipher-algorithms)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security)
