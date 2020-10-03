@@ -13,7 +13,7 @@ import java.net.ServerSocket;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FindAvailablePortUnitTest {
+public class FindFreePortUnitTest {
 
     private static int FREE_PORT_NUMBER;
     private static int[] FREE_PORT_RANGE;
