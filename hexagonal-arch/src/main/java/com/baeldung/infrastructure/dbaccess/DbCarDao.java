@@ -23,9 +23,4 @@ public class DbCarDao implements CarDao {
     public void save(Car car) {
         carDao.save(car);
     }
-
-    @Override
-    public void deleteById(String vin) {
-        carDao.deleteById(vin);
-    }
 }

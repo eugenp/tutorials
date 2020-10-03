@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Boolean createOrUpdateCar(Car car) {
+    public Boolean saveCar(Car car) {
         // check the VIN format
         // some code ...
 
@@ -42,29 +42,8 @@ public class CarServiceImpl implements CarService {
             return false;
         }
 
-        // check manufacturing date
-        if (car.getManufacturingDate().after(new Date())) {
-            logger.error(
-                    "Manufacutring date ({}) cannot be after the current date",
-                    car.getManufacturingDate()
-            );
-            return false;
-        }
-
         try {
             carDao.save(car);
-            return true;
-        }
-        catch (Exception e) {
-            logger.error("Error:", e);
-            return false;
-        }
-    }
-
-    @Override
-    public Boolean deleteCar(String vin) {
-        try {
-            carDao.deleteById(vin);
             return true;
         }
         catch (Exception e) {

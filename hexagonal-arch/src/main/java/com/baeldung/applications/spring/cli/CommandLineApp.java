@@ -30,15 +30,11 @@ public class CommandLineApp implements ApplicationRunner {
                 cliLogger.info("\nCar not found...");
                 continue;
             }
-            String carDetailsFormat = "\nBrand: %s\nModel: %s\nModel Year:%d\n"
-                + "Manufacturing Date: %tD\nColor: %s\n";
+            String carDetailsFormat = "\nBrand: %s\nModel Year:%d\n";
             String carDetails = String.format(
                     carDetailsFormat,
                     car.getBrand(),
-                    car.getModel(),
-                    car.getModelYear(),
-                    car.getManufacturingDate(),
-                    car.getCarColor().getName()
+                    car.getModelYear()
                     );
             cliLogger.info(carDetails);
         }

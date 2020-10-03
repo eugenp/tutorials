@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SpringJpa extends CrudRepository<Car, String> {
-
 }

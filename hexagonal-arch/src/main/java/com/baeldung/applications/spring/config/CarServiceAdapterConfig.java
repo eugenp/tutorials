@@ -6,6 +6,7 @@ import com.baeldung.domain.services.CarServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
 @Configuration
 public class CarServiceAdapterConfig {
 
