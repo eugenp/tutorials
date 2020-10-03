@@ -1,26 +1,26 @@
 package com.baeldung.java.hexagonal.model;
 
-public class BookCreateResponse {
+public class BookResponse {
 
     private String id;
+
+    private String name;
 
     public String getId() {
         return id;
     }
 
-    private String name;
+    public BookResponse setId(String id) {
+        this.id = id;
+        return this;
+    }
 
     public String getName() {
         return name;
     }
 
-    public BookCreateResponse setName(String name) {
+    public BookResponse setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public BookCreateResponse setId(String id) {
-        this.id = id;
         return this;
     }
 }

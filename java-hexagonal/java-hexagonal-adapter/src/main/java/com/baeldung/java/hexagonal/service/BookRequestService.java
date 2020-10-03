@@ -14,8 +14,10 @@ public class BookRequestService {
     BookService bookService;
 
     public BookCreateResponse createBook(BookCreateRequest bookCreateRequest) {
-        String id = bookService.createBook(bookCreateRequest.getName());
+        String name = bookCreateRequest.getName();
+        String id = bookService.createBook(name);
         return new BookCreateResponse().
-                setId(id);
+                setId(id)
+                .setName(name);
     }
 }
