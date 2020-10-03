@@ -1,4 +1,4 @@
-package com.baeldung.java.hexagonal;
+package com.baeldung.java.hexagonal.service;
 
 import com.baeldung.java.hexagonal.model.Book;
 import com.baeldung.java.hexagonal.ports.inbound.BookRepository;

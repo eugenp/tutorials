@@ -1,7 +1,9 @@
-package com.baeldung.java.hexagonal;
+package com.baeldung.java.hexagonal.service;
 
 
-import com.baeldung.java.hexagonal.domain.ports.BookService;
+import com.baeldung.java.hexagonal.model.BookCreateRequest;
+import com.baeldung.java.hexagonal.model.BookCreateResponse;
+import com.baeldung.java.hexagonal.ports.inbound.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

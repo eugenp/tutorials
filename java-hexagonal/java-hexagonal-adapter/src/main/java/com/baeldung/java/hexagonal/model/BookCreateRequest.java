@@ -1,4 +1,4 @@
-package com.baeldung.java.hexagonal;
+package com.baeldung.java.hexagonal.model;
 
 public class BookCreateRequest {
 
