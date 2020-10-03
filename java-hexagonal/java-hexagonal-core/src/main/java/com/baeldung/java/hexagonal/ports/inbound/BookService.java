@@ -1,6 +1,6 @@
-package com.baeldung.java.hexagonal.domain.ports;
+package com.baeldung.java.hexagonal.ports.inbound;
 
-import com.baeldung.java.hexagonal.domain.model.Book;
+import com.baeldung.java.hexagonal.model.Book;
 
 import java.util.Optional;
 

@@ -3,16 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>java-hexagonal</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>java-hexagonal</artifactId>
+    <artifactId>java-hexagonal-core</artifactId>
 
-    <modules>
-        <module>java-hexagonal-core</module>
-        <module>java-hexagonal-adapter</module>
-    </modules>
+
 </project>

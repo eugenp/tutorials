@@ -1,8 +1,8 @@
-package com.baeldung.java.hexagonal;
+package com.baledung.java.hexagonal;
 
-import com.baeldung.java.hexagonal.domain.ports.BookRepository;
-import com.baeldung.java.hexagonal.domain.ports.BookService;
-import com.baeldung.java.hexagonal.domain.model.Book;
+import com.baeldung.java.hexagonal.model.Book;
+import com.baeldung.java.hexagonal.ports.inbound.BookRepository;
+import com.baeldung.java.hexagonal.ports.inbound.BookService;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

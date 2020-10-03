@@ -1,4 +1,4 @@
-package com.baeldung.java.hexagonal.domain.model;
+package com.baeldung.java.hexagonal.model;
 
 public class Book {
 

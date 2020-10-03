@@ -1,4 +1,4 @@
-package com.baeldung.java.hexagonal.adapters;
+package com.baeldung.java.hexagonal;
 
 public class BookCreateResponse {
 

@@ -1,7 +1,7 @@
-package com.baeldung.java.hexagonal.adapters;
+package com.baeldung.java.hexagonal;
 
-import com.baeldung.java.hexagonal.domain.ports.BookRepository;
-import com.baeldung.java.hexagonal.domain.model.Book;
+import com.baeldung.java.hexagonal.model.Book;
+import com.baeldung.java.hexagonal.ports.inbound.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
