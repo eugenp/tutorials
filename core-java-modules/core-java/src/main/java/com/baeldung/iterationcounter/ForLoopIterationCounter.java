@@ -5,33 +5,33 @@ import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ForLoopIterationCounter {
-    private final List<String> colors = Arrays.asList("red", "blue", "yellow", "green");
+    private static final List<String> COLORS = Arrays.asList("red", "blue", "yellow", "green");
 
     private void forEachCounter() {
         int counter = 0;
-        for (String color : colors) {
+        for (String color : COLORS) {
             counter++;
             System.out.println("Value:" + color + ", iteration: " + counter);
         }
     }
 
     public void listIterator() {
-        for (ListIterator<String> color = colors.listIterator(); color.hasNext(); ) {
+        for (ListIterator<String> color = COLORS.listIterator(); color.hasNext(); ) {
             int i = color.nextIndex();
             System.out.println("Value:" + color.next() + ", iteration: " + (i + 1));
         }
     }
 
     private void forEachLambdaAtomicCounter() {
-        final AtomicInteger indexHolder = new AtomicInteger();
-        colors.forEach(color -> {
-            final int index = indexHolder.incrementAndGet();
+        AtomicInteger indexHolder = new AtomicInteger();
+        COLORS.forEach(color -> {
+            int index = indexHolder.incrementAndGet();
             System.out.println("Value:" + color + ", iteration: " + index);
         });
     }
 
     private void forEachLambda() {
-        forEachWithFunctionalInterface(colors, (color, i) -> System.out.println("Value:" + color + ", iteration: " + (i + 1)));
+        forEachWithFunctionalInterface(COLORS, (color, i) -> System.out.println("Value:" + color + ", iteration: " + (i + 1)));
     }
 
     @FunctionalInterface
