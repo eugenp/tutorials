@@ -14,7 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BookServiceUnitTest {
 
-    public class BookTestRepository implements BookRepository {
+    private BookService bookService = new BookService(new InMemoryTestRepository());
+
+    @Test
+    public void whenBookAlreadyExists_thenExceptionIsThrown() {
+        String bookName = "test";
+        bookService.createBook(bookName);
+        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(bookName));
+    }
+
+    public class InMemoryTestRepository implements BookRepository {
 
         private List<Book> books = new ArrayList<>();
 
@@ -33,15 +42,5 @@ public class BookServiceUnitTest {
                     .filter(book -> Objects.equals(book.getName(), name))
                     .findAny();
         }
-    }
-
-
-    private BookService bookService = new BookService(new BookTestRepository());
-
-    @Test
-    public void whenBookAlreadyExists_thenExceptionIsThrown() {
-        String bookName = "test";
-        bookService.createBook(bookName);
-        assertThrows(IllegalArgumentException.class, () -> bookService.createBook(bookName));
     }
 }
