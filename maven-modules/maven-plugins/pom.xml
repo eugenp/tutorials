@@ -14,6 +14,11 @@
         <relativePath>../..</relativePath>
     </parent>
 
+    <modules>
+        <!--<module>custom-rule</module>--> <!-- Fixing in JAVA-2819 -->
+        <module>maven-enforcer</module>
+    </modules>
+
     <build>
         <plugins>
             <plugin>
