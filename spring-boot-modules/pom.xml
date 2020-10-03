@@ -26,6 +26,7 @@
         <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-basic-customization</module>
+        <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-client</module>
         <module>spring-boot-config-jpa-error</module>
