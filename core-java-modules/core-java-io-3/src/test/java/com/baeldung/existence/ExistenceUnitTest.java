@@ -4,10 +4,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.Assert.assertFalse;
@@ -47,8 +44,18 @@ public class ExistenceUnitTest {
     public void givenSymbolicLink_whenTargetDoesNotExists_thenFollowOrNotBasedOnTheOptions() throws IOException {
         Path target = Files.createTempFile("baeldung", "target");
         Path symbol = Paths.get("test-link-" + ThreadLocalRandom.current().nextInt());
+        Path symbolicLink = null;
 
-        Path symbolicLink = Files.createSymbolicLink(symbol, target);
+        try {
+            symbolicLink = Files.createSymbolicLink(symbol, target);
+        } catch (FileSystemException ex) {
+            System.out.println("Your OS security policy prevents the current user from creating symbolic links.\n" +
+                    "Most probably you're running Windows with UAC.\n" +
+                    "If this is the case, please see - https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/create-symbolic-links\n" +
+                    "You must change your security settings to run this test under Windows.");
+            return;
+        }
+
         assertTrue(Files.exists(symbolicLink));
         assertTrue(Files.isSymbolicLink(symbolicLink));
         assertFalse(Files.isSymbolicLink(target));
