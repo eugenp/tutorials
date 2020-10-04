@@ -119,7 +119,8 @@ public class FindFreePortUnitTest {
         Tomcat tomcatServer = new Tomcat();
         try {
             tomcatServer.start();
-            assertThat(tomcatServer.getConnector().getLocalPort()).isEqualTo(8080);
+            int localPort = tomcatServer.getConnector().getLocalPort();
+            assertThat(localPort).isEqualTo(8080);
             tomcatServer.stop();
             tomcatServer.destroy();
         } catch (Exception e) {
