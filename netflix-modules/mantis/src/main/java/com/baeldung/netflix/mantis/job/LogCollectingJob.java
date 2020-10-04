@@ -9,7 +9,6 @@ import io.mantisrx.runtime.MantisJob;
 import io.mantisrx.runtime.MantisJobProvider;
 import io.mantisrx.runtime.Metadata;
 import io.mantisrx.runtime.ScalarToScalar;
-import io.mantisrx.runtime.sink.Sinks;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,7 +20,6 @@ public class LogCollectingJob extends MantisJobProvider<LogEvent> {
         return MantisJob
           .source(new RandomLogSource())
           .stage(new TransformLogStage(), new ScalarToScalar.Config<>())
-//          .sink(Sinks.eagerSubscribe(Sinks.sse(LogEvent::toJsonString)))
           .sink(new LogSink())
           .metadata(new Metadata.Builder().build())
           .create();
