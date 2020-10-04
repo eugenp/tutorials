@@ -1,5 +1,6 @@
 package com.baeldung.socket;
 
+import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -115,16 +116,16 @@ public class FindFreePortUnitTest {
     }
 
     @Test
-    public void givenNoPortDefined_whenCreatingTomcatServer_thenDefaultPortIsAssigned() {
+    public void givenPortZero_whenCreatingTomcatServer_thenFreePortIsAssigned() {
         Tomcat tomcatServer = new Tomcat();
+        tomcatServer.setPort(0);
         try {
             tomcatServer.start();
-            int localPort = tomcatServer.getConnector().getLocalPort();
-            assertThat(localPort).isEqualTo(8080);
+            assertThat(tomcatServer.getConnector().getLocalPort()).isGreaterThan(0);
             tomcatServer.stop();
             tomcatServer.destroy();
-        } catch (Exception e) {
-            assertThat(e).hasMessageContaining("Address already in use");
+        } catch (LifecycleException e) {
+            fail("Failed to start Tomcat server");
         }
     }
 
@@ -137,7 +138,7 @@ public class FindFreePortUnitTest {
             assertThat(tomcatServer.getConnector().getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
             tomcatServer.stop();
             tomcatServer.destroy();
-        } catch (Exception e) {
+        } catch (LifecycleException e) {
             fail("Failed to start Tomcat server");
         }
     }
