@@ -115,15 +115,15 @@ public class FindFreePortUnitTest {
     }
 
     @Test
-    public void givenNoPortDefined_whenCreatingTomcatServer_thenFreePortIsAssigned() {
+    public void givenNoPortDefined_whenCreatingTomcatServer_thenDefaultPortIsAssigned() {
         Tomcat tomcatServer = new Tomcat();
         try {
             tomcatServer.start();
-            assertThat(tomcatServer.getConnector().getLocalPort()).isGreaterThan(0);
+            assertThat(tomcatServer.getConnector().getLocalPort()).isEqualTo(8080);
             tomcatServer.stop();
             tomcatServer.destroy();
         } catch (Exception e) {
-            fail("Failed to start Tomcat server");
+            assertThat(e).hasMessageContaining("Address already in use");
         }
     }
 
