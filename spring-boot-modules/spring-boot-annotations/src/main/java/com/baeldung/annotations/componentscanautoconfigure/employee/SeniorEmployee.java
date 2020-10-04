@@ -2,6 +2,6 @@ package com.baeldung.annotations.componentscanautoconfigure.employee;
 
 import org.springframework.stereotype.Component;
 
-@Component("seniorEmployee")
+@Component
 public class SeniorEmployee {
 }
