@@ -1,11 +1,11 @@
 package com.baeldung.genericarrays;
 
-public class GenericListUsingObject<T> {
+public class GenericListWithObject<T> {
     private Object[] elements;
     private int size = 0;
     private static final int CAPACITY = 5;
 
-    public GenericListUsingObject() {
+    public GenericListWithObject() {
         this.elements = new Object[CAPACITY];
     }
 

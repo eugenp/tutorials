@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
-public class GenericListTest {
+public class GenericListUnitTest {
 
     @Test
     public void givenAddOneItem_whenGetFirstElement_shouldReturnFirstElement() {
@@ -41,5 +41,15 @@ public class GenericListTest {
         list.add(20);
 
         list.get(2);
+    }
+
+    @Test
+    public void givenCharSequenceList_whenAddArrayOfStrings_shouldAddSuccessfully() {
+        GenericList<CharSequence> list = new GenericList<>();
+        String[] items = {"item1", "item2"};
+        list.addAll(items);
+
+        assertEquals("item1", list.get(0));
+        assertEquals("item2", list.get(1));
     }
 }

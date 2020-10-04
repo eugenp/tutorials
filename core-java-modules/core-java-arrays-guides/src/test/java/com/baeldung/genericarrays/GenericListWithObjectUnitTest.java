@@ -4,11 +4,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class GenericListUsingObjectTest {
+public class GenericListWithObjectUnitTest {
 
     @Test
     public void givenAddOneItem_whenGetFirstElement_shouldReturnFirstElement() {
-        GenericListUsingObject<String> list = new GenericListUsingObject<>();
+        GenericListWithObject<String> list = new GenericListWithObject<>();
         list.add("hello");
 
         assertEquals("hello", list.get(0));
@@ -16,7 +16,7 @@ public class GenericListUsingObjectTest {
 
     @Test
     public void givenAddMultipleItems_whenGetFirstElement_shouldReturnFirstElement() {
-        GenericListUsingObject<String> list = new GenericListUsingObject<>();
+        GenericListWithObject<String> list = new GenericListWithObject<>();
         list.add("hello");
         list.add("from");
         list.add("baeldung");
@@ -26,7 +26,7 @@ public class GenericListUsingObjectTest {
 
     @Test (expected = ListFullException.class)
     public void givenListCapacity_whenAddMoreThanCapacity_shouldThrowException() {
-        GenericListUsingObject<String> list = new GenericListUsingObject<>();
+        GenericListWithObject<String> list = new GenericListWithObject<>();
 
         for (int i = 0; i < 6; i++) {
             list.add("hello " + i);
@@ -35,7 +35,7 @@ public class GenericListUsingObjectTest {
 
     @Test (expected = ListElementDoesNotExistException.class)
     public void givenList_whenGetElementThatDoesNotExist_shouldThrowException() {
-        GenericListUsingObject<Integer> list = new GenericListUsingObject<>();
+        GenericListWithObject<Integer> list = new GenericListWithObject<>();
         list.add(10);
         list.add(20);
 

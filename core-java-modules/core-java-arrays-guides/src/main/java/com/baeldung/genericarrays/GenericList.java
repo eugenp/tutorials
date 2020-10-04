@@ -5,16 +5,22 @@ public class GenericList<T> {
     private int size = 0;
     private static final int CAPACITY = 5;
 
-@SuppressWarnings("unchecked")
-public GenericList() {
-    this.elements = (T[]) new Object[CAPACITY];
-}
+    @SuppressWarnings("unchecked")
+    public GenericList() {
+        this.elements = (T[]) new Object[CAPACITY];
+    }
 
     public void add(T element) {
         if (size == elements.length) {
             throw new ListFullException();
         }
         this.elements[size++] = element;
+    }
+
+    public void addAll(T[] elements) {
+        for (T element : elements) {
+            add(element);
+        }
     }
 
     public T get(int index) {
