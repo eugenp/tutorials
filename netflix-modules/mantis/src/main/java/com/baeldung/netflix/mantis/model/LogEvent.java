@@ -28,7 +28,6 @@ public class LogEvent implements JsonType {
         try {
             return mapper.writeValueAsString(this);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
             return null;
         }
     }
