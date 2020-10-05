@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class AbstractExampleUnitTest {
 
     @Test
-    void whenCheckAbstractClass_ThenSuccess() throws Exception {
+    void givenAbstractClass_whenCheckModifierIsAbstract_thenTrue() throws Exception {
         Class<AbstractExample> clazz = AbstractExample.class;
         Assertions.assertTrue(Modifier.isAbstract(clazz.getModifiers()));
     }
