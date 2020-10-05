@@ -37,7 +37,6 @@ public class IgnoreFieldsWithFilterUnitTest {
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
         assertThat(dtoAsString, containsString("stringValue"));
-        System.out.println(dtoAsString);
     }
 
     @Test
@@ -83,7 +82,6 @@ public class IgnoreFieldsWithFilterUnitTest {
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
         assertThat(dtoAsString, containsString("stringValue"));
-        System.out.println(dtoAsString);
     }
 
 }
