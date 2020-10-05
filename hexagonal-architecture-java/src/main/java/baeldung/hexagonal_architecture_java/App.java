@@ -16,8 +16,7 @@ public class App {
             System.out.println("Please Select an Option" + System.lineSeparator());
             System.out.println("Press 1 to Insert book to bookshelf" + System.lineSeparator());
             System.out.println("Press 2 to get book from bookshelf" + System.lineSeparator());
-            System.out.println("Press 3 return book to bookshelf" + System.lineSeparator());
-            System.out.println("Press 4 to remove books from bookshelf" + System.lineSeparator());
+            System.out.println("Press 3 to remove books from bookshelf" + System.lineSeparator());
 
             Scanner userInput = new Scanner(System.in);
             userInput.useDelimiter("[\\r\\n]");
@@ -40,14 +39,24 @@ public class App {
                 bookshelf.createBookEntry(bookName, isbn, authorName, numberOfCopies);
                 System.out.println("Book has been entered");
             }else if(response == 2){
+            	 System.out.println("Input isbn" + System.lineSeparator());
+            	 userInput.skip("[\r\n]+");
+                 String isbn = userInput.nextLine();
 
+                 System.out.println("Input number of books" + System.lineSeparator());
+                 int numberOfCopies = userInput.nextInt();
+                 
+                 bookshelf.sellBook(isbn, numberOfCopies);
+                 System.out.println("Book has been fetched");
             }else if(response == 3){
-
-            }else if(response == 4){
-
+            	System.out.println("Input isbn" + System.lineSeparator());
+           	 	userInput.skip("[\r\n]+");
+                String isbn = userInput.nextLine();
+                
+                bookshelf.deleteBookEntry(isbn);
+                System.out.println("Books has been deleted");
             }
-
-         
+       
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
