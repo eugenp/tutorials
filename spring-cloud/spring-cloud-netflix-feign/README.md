@@ -1,3 +1,3 @@
 ### Relevant Articles:
 
-- [https://www.baeldung.com/netflix-feign-vs-openfeign](https://www.baeldung.com/netflix-feign-vs-openfeign)
+- [Differences Between Netflix Feign and OpenFeign](https://www.baeldung.com/netflix-feign-vs-openfeign)
