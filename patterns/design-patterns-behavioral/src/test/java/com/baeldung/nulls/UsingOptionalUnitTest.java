@@ -39,4 +39,10 @@ class UsingOptionalUnitTest {
 
         assertThrows(Exception.class, () -> classUnderTest.process(false).orElseThrow(() -> new Exception()));
     }
+
+    @Test()
+    void givenEmptyList_whenProcessMulti_throwIllegalArgument() {
+        assertThrows(IllegalArgumentException.class, () -> classUnderTest.findFirst());
+
+    }
 }
