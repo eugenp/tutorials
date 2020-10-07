@@ -11,4 +11,5 @@ This module contains articles about basic Java concurrency
 - [Life Cycle of a Thread in Java](https://www.baeldung.com/java-thread-lifecycle)
 - [Guide to AtomicMarkableReference](https://www.baeldung.com/java-atomicmarkablereference)
 - [Why are Local Variables Thread-Safe in Java](https://www.baeldung.com/java-local-variables-thread-safe)
+- [How to Stop Execution After a Certain Time in Java](https://www.baeldung.com/java-stop-execution-after-certain-time)
 - [[<-- Prev]](/core-java-modules/core-java-concurrency-basic)
