@@ -1,20 +1,20 @@
 package com.baeldung.java.hexagonal.controller;
 
 import com.baeldung.java.hexagonal.model.BookCreateRequest;
-import com.baeldung.java.hexagonal.model.BookCreateResponse;
-import com.baeldung.java.hexagonal.model.BookResponse;
-import com.baeldung.java.hexagonal.service.BookRequestService;
+import com.baeldung.java.hexagonal.ports.inbound.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BookController {
 
     @Autowired
-    BookRequestService bookRequestService;
+    BookService bookService;
 
     @PostMapping("/books")
-    public BookCreateResponse createBook(@RequestBody BookCreateRequest bookCreateRequest){
-        return bookRequestService.createBook(bookCreateRequest);
+    public String createBook(@RequestBody BookCreateRequest bookCreateRequest) {
+        return bookService.createBook(bookCreateRequest.getName());
     }
 }
