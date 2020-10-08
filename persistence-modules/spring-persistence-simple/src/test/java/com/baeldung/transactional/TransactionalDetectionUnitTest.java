@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 @SpringBootApplication
 @RunWith(SpringJUnit4ClassRunner.class)
-public class TransactionalDetectionTest {
+public class TransactionalDetectionUnitTest {
 
     @Test
     @Transactional
