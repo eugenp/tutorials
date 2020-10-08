@@ -977,7 +977,7 @@
                 <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
-                <module>jni</module>
+                <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json</module>
