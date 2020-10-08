@@ -11,17 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UsingOptionalUnitTest {
 
-    private UsingOptional classUnderTest;
+    private UsingOptional dataObject;
 
     @BeforeEach
     public void setup() {
-        classUnderTest = new UsingOptional();
+        dataObject = new UsingOptional();
     }
 
     @Test
     public void whenArgIsFalse_thenReturnEmptyResponse() {
 
-        Optional<Object> result = classUnderTest.process(false);
+        Optional<Object> result = dataObject.process(false);
 
         assertFalse(result.isPresent());
     }
@@ -29,7 +29,7 @@ class UsingOptionalUnitTest {
     @Test
     public void whenArgIsTrue_thenReturnValidResponse() {
 
-        Optional<Object> result = classUnderTest.process(true);
+        Optional<Object> result = dataObject.process(true);
 
         assertTrue(result.isPresent());
     }
@@ -37,12 +37,19 @@ class UsingOptionalUnitTest {
     @Test
     public void whenArgIsFalse_thenChainResponseAndThrowException() {
 
-        assertThrows(Exception.class, () -> classUnderTest.process(false).orElseThrow(() -> new Exception()));
+        assertThrows(Exception.class, () -> dataObject.process(false).orElseThrow(() -> new Exception()));
     }
 
     @Test()
-    void givenEmptyList_whenProcessMulti_throwIllegalArgument() {
-        assertThrows(IllegalArgumentException.class, () -> classUnderTest.findFirst());
+    void givenEmptyList_whenFindFirst_getDefaultValue() {
+        assertTrue(dataObject.findFirst().equalsIgnoreCase(UsingOptional.DEFAULT_VALUE));
 
     }
+
+    @Test()
+    void givenEmptyList_whenFindOptionalFirst_returnsEmptyOptional() {
+        assertFalse(dataObject.findOptionalFirst().isPresent());
+
+    }
+
 }

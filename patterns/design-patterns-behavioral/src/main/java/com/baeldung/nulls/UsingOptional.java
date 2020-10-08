@@ -1,12 +1,13 @@
 package com.baeldung.nulls;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static java.util.Collections.emptyList;
 
 public class UsingOptional {
+
+    public static final String DEFAULT_VALUE = "Default Value";
 
     public Optional<Object> process(boolean processed) {
 
@@ -15,12 +16,17 @@ public class UsingOptional {
         return Optional.ofNullable(response);
     }
 
-    public String findFirst(){
+    public String findFirst() {
 
-        String firstElement = getList().stream()
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
-        return firstElement;
+        return getList().stream()
+            .findFirst()
+            .orElse(DEFAULT_VALUE);
+    }
+
+    public Optional<String> findOptionalFirst() {
+
+        return getList().stream()
+            .findFirst();
     }
 
     private List<String> getList() {
