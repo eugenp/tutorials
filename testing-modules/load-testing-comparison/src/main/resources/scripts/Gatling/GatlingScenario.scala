@@ -17,7 +17,8 @@ class RewardsScenario extends Simulation {
 						.userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
   
   val scn = scenario("RewardsScenario")
-	.repeat(10){
+	.repeat(100){
+
 		exec(http("transactions_add")
 		  .post("/transactions/add/")
 		  .body(StringBody(_ => s"""{ "customerRewardsId":null,"customerId":"${randCustId()}","transactionDate":null }""")).asJson
@@ -36,11 +37,11 @@ class RewardsScenario extends Simulation {
 			.check(jsonPath("$.id").saveAs("rwdId")))
 		}
 		
-		.exec(http("transactions_add")
+		.exec(http("transactions_update")
 		  .post("/transactions/add/")
 		  .body(StringBody("""{ "customerRewardsId":"${rwdId}","customerId":"${custId}","transactionDate":"${txtDate}" }""")).asJson)
 		
-		.exec(http("get_reward")
+		.exec(http("get_transactions")
 		  .get("/transactions/findAll/${rwdId}"))
 	}
   setUp(
