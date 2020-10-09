@@ -43,6 +43,8 @@ class RewardsScenario extends Simulation {
 		
 		.exec(http("get_transactions")
 		  .get("/transactions/findAll/${rwdId}"))
+
+		.exec(_.removeAll("txnId", "txtDate", "custId", "rwdId"))
 	}
   setUp(
     scn.inject(atOnceUsers(100))
