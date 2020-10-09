@@ -1,4 +1,4 @@
-package com.baeldung.demo.filter;
+package com.baeldung.dispatchservlet.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

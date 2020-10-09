@@ -1,6 +1,6 @@
-package com.baeldung.demo.servlet;
+package com.baeldung.dispatchservlet.servlet;
 
-import com.baeldung.demo.filter.CustomFilter;
+import com.baeldung.dispatchservlet.filter.CustomFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
