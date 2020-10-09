@@ -24,6 +24,7 @@ random=java.util.Random()
 
 class TestRunner:
     def __call__(self):
+
         customerId = str(random.nextInt());
 
         result = request1.POST("http://localhost:8080/transactions/add", "{"'"customerRewardsId"'":null,"'"customerId"'":"+ customerId + ","'"transactionDate"'":null}")
@@ -38,3 +39,4 @@ class TestRunner:
 
         result = request1.POST("http://localhost:8080/transactions/add", "{"'"id"'":" + txnId + ","'"customerRewardsId"'":" + rwdId + ","'"customerId"'":"+ customerId + ","'"transactionDate"'":null}")
         result = request1.GET("http://localhost:8080/transactions/findAll/" + rwdId)
+
