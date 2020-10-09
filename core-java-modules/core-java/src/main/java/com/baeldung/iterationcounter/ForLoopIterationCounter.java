@@ -1,37 +1,35 @@
+package com.baeldung.iterationcounter;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 public class ForLoopIterationCounter {
-    private static final List<String> COLORS = Arrays.asList("red", "blue", "yellow", "green");
+    private final static Logger LOGGER = Logger.getLogger(ForLoopIterationCounter.class.getName());
 
-    private void forEachCounter() {
+    public int forEachCounter(List<String> list) {
         int counter = 0;
-        for (String color : COLORS) {
+        for (String element : list) {
             counter++;
-            System.out.println("Value:" + color + ", iteration: " + counter);
+            LOGGER.info("Value:" + element + ", iteration: " + counter);
         }
+        return counter;
     }
 
-    public void listIterator() {
-        for (ListIterator<String> color = COLORS.listIterator(); color.hasNext(); ) {
-            int i = color.nextIndex();
-            System.out.println("Value:" + color.next() + ", iteration: " + (i + 1));
-        }
-    }
-
-    private void forEachLambdaAtomicCounter() {
-        AtomicInteger indexHolder = new AtomicInteger();
-        COLORS.forEach(color -> {
-            int index = indexHolder.incrementAndGet();
-            System.out.println("Value:" + color + ", iteration: " + index);
+    public int forEachLambdaAtomicCounter(List<String> list) {
+        AtomicInteger counter = new AtomicInteger();
+        list.forEach(element -> {
+            int index = counter.incrementAndGet();
+            LOGGER.info("Value:" + element + ", iteration: " + index);
         });
+        return counter.intValue();
     }
 
-    private void forEachLambda() {
-        forEachWithFunctionalInterface(COLORS, (color, i) -> System.out.println("Value:" + color + ", iteration: " + (i + 1)));
+    public void forEachLambda(List<String> list) {
+        forEachWithFunctionalInterface(list, (element, i) -> LOGGER.info("Value:" + element + ", iteration: " + (i + 1)));
     }
 
     @FunctionalInterface
