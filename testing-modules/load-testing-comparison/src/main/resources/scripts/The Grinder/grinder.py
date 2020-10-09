@@ -21,16 +21,19 @@ request1.setHeaders(headers)
 utilities = HTTPPluginControl.getHTTPUtilities()
 test1.record(request1)
 random=java.util.Random()
+log = grinder.logger.info
 
 class TestRunner:
     def __call__(self):
-        customerId = str(random.nextInt());
+
+	customerId = str(random.nextInt());
 
         result = request1.POST("http://localhost:8080/transactions/add", "{"'"customerRewardsId"'":null,"'"customerId"'":"+ customerId + ","'"transactionDate"'":null}")
         txnId = parseJsonString(result.getText(), "id")
 
         result = request1.GET("http://localhost:8080/rewards/find/"+ customerId)
         rwdId = parseJsonString(result.getText(), "id")
+        log("rwdid %s" % rwdId)
 
         if rwdId == "":
           result = request1.POST("http://localhost:8080/rewards/add", "{"'"customerId"'":"+ customerId + "}")
@@ -38,3 +41,4 @@ class TestRunner:
 
         result = request1.POST("http://localhost:8080/transactions/add", "{"'"id"'":" + txnId + ","'"customerRewardsId"'":" + rwdId + ","'"customerId"'":"+ customerId + ","'"transactionDate"'":null}")
         result = request1.GET("http://localhost:8080/transactions/findAll/" + rwdId)
+
