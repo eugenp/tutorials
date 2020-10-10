@@ -19,6 +19,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Camden.SR4</version>
@@ -75,6 +82,11 @@
     <properties>
         <rest-assured.version>3.0.1</rest-assured.version>
         <embedded-redis.version>0.6</embedded-redis.version>
+
+        <!-- testing -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
