@@ -19,9 +19,16 @@ public class SwaggerConfiguration {
     public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("My REST API", "Some custom description of API.", "1.0", "Terms of service",
-          new Contact("Sallo Szrajbman", "www.baeldung.com", "salloszraj@gmail.com"),
-          "License of API", "API license URL", Collections.emptyList());
+        return new ApiInfo("My REST API",
+		  "Some custom description of API.",
+		  "1.0",
+		  "Terms of service",
+		  new Contact("Sallo Szrajbman",
+		    "www.baeldung.com",
+		    "salloszraj@gmail.com"),
+		  "License of API",
+		  "API license URL",
+		  Collections.emptyList());
     }
 
     @Bean
@@ -33,7 +40,6 @@ public class SwaggerConfiguration {
           .select()
           .apis(RequestHandlerSelectors.any())
           .paths(PathSelectors.any())
-
           .build();
     }
 
@@ -43,13 +49,13 @@ public class SwaggerConfiguration {
 
     private SecurityContext securityContext() {
         return SecurityContext.builder()
-                .securityReferences(defaultAuth())
-                .build();
+          .securityReferences(defaultAuth())
+          .build();
     }
 
     List<SecurityReference> defaultAuth() {
         AuthorizationScope authorizationScope
-                = new AuthorizationScope("global", "accessEverything");
+          = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
         return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
