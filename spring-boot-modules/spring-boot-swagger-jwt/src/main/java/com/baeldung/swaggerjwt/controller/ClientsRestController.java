@@ -19,7 +19,6 @@ public class ClientsRestController {
     @ApiOperation(value = "This method is used to get the clients.")
     @GetMapping
     public List<String> getClients(@RequestHeader HttpHeaders httpHeaders) {
-        System.out.println("JWT TOKEN: " + httpHeaders.getFirst(SwaggerConfiguration.AUTHORIZATION_HEADER));
         return Arrays.asList("Fisrt Client", "Second Client");
     }
 
