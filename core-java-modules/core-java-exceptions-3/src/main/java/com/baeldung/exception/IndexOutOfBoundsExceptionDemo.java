@@ -9,11 +9,9 @@ import java.util.List;
  * As the destination list doesn't have enough space/size to copy elements from source list.
  */
 public class IndexOutOfBoundsExceptionDemo {
-
     static List<Integer> copyList(List<Integer> source) {
         List<Integer> destination = new ArrayList<>(source.size());
         Collections.copy(destination, source);
         return destination;
     }
-
 }

@@ -1,19 +1,18 @@
-package com.baeldung;
+package com.baeldung.indexoutofbounds;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.baeldung.CopyListUsingJava8StreamDemo.copyList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CopyListUsingJava8StreamDemoUnitTest {
 
     @Test
-    void shouldMakeACopyOfSourceListUsingJava8StreamApi() {
+    void whenCopyListUsingStream_thenMakeACopyOfArrayList() {
         List<Integer> source = Arrays.asList(11, 22, 33);
 
-        assertEquals(source, copyList(source));
+        assertEquals(source, CopyListUsingJava8StreamDemo.copyList(source));
     }
 }
