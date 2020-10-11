@@ -1,19 +1,18 @@
-package com.baeldung;
+package com.baeldung.indexoutofbounds;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.baeldung.CopyListUsingAddAllMethodDemo.copyList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CopyListUsingAddAllMethodDemoUnitTest {
 
     @Test
-    void shouldMakeACopyOfSourceList() {
+    void whenPassValidArrayList_thenCopyListUsingAddAllMethod() {
         List<Integer> source = Arrays.asList(11, 22, 33);
 
-        assertEquals(source, copyList(source));
+        assertEquals(source, CopyListUsingAddAllMethodDemo.copyList(source));
     }
 }
