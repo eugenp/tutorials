@@ -1,7 +1,6 @@
 package com.baeldung.resttemplate.json.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -19,28 +18,22 @@ public class User {
 
     public User() { super(); }
 
-    @JsonProperty("id")
     public int getId() {
         return id;
     }
 
-    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("id")
     public void setId(int id) { this.id = id; }
 
-    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @JsonProperty("addressList")
     public List<Address> getAddressList() { return addressList; }
 
-    @JsonProperty("addressList")
     public void setAddressList(List<Address> addressList) {
         this.addressList = addressList;
     }

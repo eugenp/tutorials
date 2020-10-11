@@ -1,7 +1,6 @@
 package com.baeldung.resttemplate.json.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -22,42 +21,34 @@ public class Address {
         super();
     }
 
-    @JsonProperty("addressLine1")
     public String getAddressLine1() {
         return addressLine1;
     }
 
-    @JsonProperty("addressLine1")
     public void setAddressLine1(String addressLine1) {
         this.addressLine1 = addressLine1;
     }
 
-    @JsonProperty("addressLine2")
     public String getAddressLine2() {
         return addressLine2;
     }
     
-    @JsonProperty("addressLine2")
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
     }
 
-    @JsonProperty("town")
     public String getTown() {
         return town;
     }
 
-    @JsonProperty("town")
     public void setTown(String town) {
         this.town = town;
     }
 
-    @JsonProperty("postCode")
     public String getPostCode() {
         return postCode;
     }
 
-    @JsonProperty("postCode")
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
