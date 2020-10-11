@@ -21,7 +21,7 @@ public class FindFreePortUnitTest {
 
     @BeforeAll
     public static void getExplicitFreePortNumberAndRange() {
-        try (ServerSocket serverSocket = new ServerSocket(0);) {
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
             FREE_PORT_NUMBER = serverSocket.getLocalPort();
             FREE_PORT_RANGE = new int[] {FREE_PORT_NUMBER, FREE_PORT_NUMBER + 1, FREE_PORT_NUMBER + 2};
         } catch (IOException e) {
@@ -31,7 +31,7 @@ public class FindFreePortUnitTest {
 
     @Test
     public void givenExplicitFreePort_whenCreatingServerSocket_thenThatPortIsAssigned() {
-        try (ServerSocket serverSocket = new ServerSocket(FREE_PORT_NUMBER);) {
+        try (ServerSocket serverSocket = new ServerSocket(FREE_PORT_NUMBER)) {
             assertThat(serverSocket).isNotNull();
             assertThat(serverSocket.getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class FindFreePortUnitTest {
         for (int port : FREE_PORT_RANGE) {
             try (ServerSocket serverSocket = new ServerSocket(port)) {
                 assertThat(serverSocket).isNotNull();
-                assertThat(serverSocket.getLocalPort()).isGreaterThan(0);
+                assertThat(serverSocket.getLocalPort()).isEqualTo(port);
                 return;
             } catch (IOException e) {
                 assertThat(e).hasMessageContaining("Address already in use");
@@ -78,7 +78,7 @@ public class FindFreePortUnitTest {
         int port = SocketUtils.findAvailableTcpPort();
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             assertThat(serverSocket).isNotNull();
-            assertThat(serverSocket.getLocalPort()).isGreaterThan(0);
+            assertThat(serverSocket.getLocalPort()).isEqualTo(port);
         } catch (IOException e) {
             fail("Port is not available");
         }
