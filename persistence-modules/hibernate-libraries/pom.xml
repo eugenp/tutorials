@@ -170,7 +170,6 @@
         <guava.version>29.0-jre</guava.version>
         <hibernate-types.version>2.9.7</hibernate-types.version>
         <hibernate.version>5.4.14.Final</hibernate.version>
-        <jackson.version>2.10.3</jackson.version>
         <javassist.version>3.27.0-GA</javassist.version>
         <jaxb.version>2.3.1</jaxb.version>
         <log4jdbc.version>2.0.0</log4jdbc.version>
