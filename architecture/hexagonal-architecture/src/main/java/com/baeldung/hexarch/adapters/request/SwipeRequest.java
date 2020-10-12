@@ -1,4 +1,4 @@
-package com.baeldung.hexarch.adapters.model;
+package com.baeldung.hexarch.adapters.request;
 
 import lombok.Getter;
 import lombok.Setter;

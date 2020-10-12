@@ -1,0 +1,11 @@
+## MySQL
+spring :
+  datasource :
+    url : jdbc:mysql://localhost:3306/test
+    username : root
+    password : root
+    driver-class : com.mysql.jdbc.Driver
+    jpa :
+      hibernate :
+        use-new-id-generator-mappings : false
+        ddl-auto : update

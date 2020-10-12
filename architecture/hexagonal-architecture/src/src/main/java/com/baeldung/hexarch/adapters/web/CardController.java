@@ -4,11 +4,12 @@ import com.baeldung.hexarch.adapters.request.SwipeRequest;
 import com.baeldung.hexarch.application.port.incoming.PaymentCase;
 import com.baeldung.hexarch.application.port.incoming.SwipeCase;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/card")
 public class CardController {
