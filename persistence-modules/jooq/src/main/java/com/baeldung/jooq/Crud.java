@@ -19,14 +19,14 @@ public class Crud {
 
     public static Result<Record> getAll(DSLContext context, Table<? extends Record> table) {
         return context.select()
-                .from(table)
-                .fetch();
+          .from(table)
+          .fetch();
     }
 
     public static Result<Record> getFields(DSLContext context, Table<? extends Record> table, SelectFieldOrAsterisk... fields) {
         return context.select(fields)
-                .from(table)
-                .fetch();
+          .from(table)
+          .fetch();
     }
 
     public static <R extends Record> R getOne(DSLContext context, Table<R> table, Condition condition) {
@@ -35,9 +35,9 @@ public class Crud {
 
     public static <T> void update(DSLContext context, Table<? extends Record> table, Map<Field<T>, T> values, Condition condition) {
         context.update(table)
-                .set(values)
-                .where(condition)
-                .execute();
+          .set(values)
+          .where(condition)
+          .execute();
     }
 
     public static <R extends UpdatableRecord<R>> void update(UpdatableRecord<R> record) {
@@ -46,8 +46,8 @@ public class Crud {
 
     public static void delete(DSLContext context, Table<? extends Record> table, Condition condition) {
         context.delete(table)
-                .where(condition)
-                .execute();
+          .where(condition)
+          .execute();
     }
 
     public static <R extends UpdatableRecord<R>> void delete(UpdatableRecord<R> record) {

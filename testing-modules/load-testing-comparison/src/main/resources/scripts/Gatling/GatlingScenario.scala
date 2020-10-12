@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 
 class RewardsScenario extends Simulation {
 
-  def randCustId() = Random.nextInt(99)
+  def randCustId() = java.util.concurrent.ThreadLocalRandom.current().nextInt(1, 10000)
   
   val httpProtocol = http.baseUrl("http://localhost:8080")
 					    .acceptHeader("text/html,application/json;q=0.9,*/*;q=0.8")
@@ -17,19 +17,18 @@ class RewardsScenario extends Simulation {
 						.userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
   
   val scn = scenario("RewardsScenario")
-	.repeat(10){
+	.repeat(100){
+
 		exec(http("transactions_add")
 		  .post("/transactions/add/")
-		  .body(StringBody("""{ "customerRewardsId":null,"customerId":""""+ randCustId() + """","transactionDate":null }""")).asJson
+		  .body(StringBody(_ => s"""{ "customerRewardsId":null,"customerId":"${randCustId()}","transactionDate":null }""")).asJson
 		.check(jsonPath("$.id").saveAs("txnId"))
 		.check(jsonPath("$.transactionDate").saveAs("txtDate"))
 		.check(jsonPath("$.customerId").saveAs("custId")))
-		.pause(1)
 		
 		.exec(http("get_reward")
 		  .get("/rewards/find/${custId}")
-		  .check(jsonPath("$.id").saveAs("rwdId")))
-		.pause(1)
+		  .check(jsonPath("$.id").optional.saveAs("rwdId")))
 		
 		.doIf("${rwdId.isUndefined()}"){
 			exec(http("rewards_add")
@@ -38,13 +37,14 @@ class RewardsScenario extends Simulation {
 			.check(jsonPath("$.id").saveAs("rwdId")))
 		}
 		
-		.exec(http("transactions_add")
+		.exec(http("transactions_update")
 		  .post("/transactions/add/")
 		  .body(StringBody("""{ "customerRewardsId":"${rwdId}","customerId":"${custId}","transactionDate":"${txtDate}" }""")).asJson)
-		.pause(1)
 		
-		.exec(http("get_reward")
+		.exec(http("get_transactions")
 		  .get("/transactions/findAll/${rwdId}"))
+
+		.exec(_.removeAll("txnId", "txtDate", "custId", "rwdId"))
 	}
   setUp(
     scn.inject(atOnceUsers(100))

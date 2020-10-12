@@ -61,13 +61,25 @@
             <version>${byte-buddy.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
         <repository>
-            <id>geodb-repo</id>
-            <name>GeoDB repository</name>
-            <url>http://repo.boundlessgeo.com/main/</url>
+            <id>osgeo</id>
+            <name>OSGeo Release Repository</name>
+            <url>https://repo.osgeo.org/repository/release/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </repository>
     </repositories>
 
@@ -77,6 +89,7 @@
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <geodb.version>0.9</geodb.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
 </project>
