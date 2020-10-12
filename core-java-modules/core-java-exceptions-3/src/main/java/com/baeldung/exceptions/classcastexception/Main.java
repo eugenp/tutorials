@@ -5,16 +5,13 @@ import java.io.Serializable;
 public class Main {
 
     public static void main(String[] args) {
-
         checkedCasts();
         uncheckedConversion();
         genericConversion();
     }
 
     private static void checkedCasts() {
-
         Animal animal = new Frog();
-
         try {
             Mammal mammal = (Mammal) animal;
         } catch (ClassCastException e) {
@@ -28,7 +25,6 @@ public class Main {
         }
 
         Object primitives = new int[1];
-
         try {
             Integer[] integers = (Integer[]) primitives;
         } catch (ClassCastException e) {
@@ -94,4 +90,5 @@ public class Main {
             this.content = content;
         }
     }
+
 }
