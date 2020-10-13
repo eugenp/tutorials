@@ -15,24 +15,20 @@ public class UsingOptional {
 
         return Optional.ofNullable(response);
     }
-
     public String findFirst() {
 
         return getList().stream()
             .findFirst()
             .orElse(DEFAULT_VALUE);
     }
-
     public Optional<String> findOptionalFirst() {
 
         return getList().stream()
             .findFirst();
     }
-
     private List<String> getList() {
         return emptyList();
     }
-
     private String doSomething(boolean processed) {
 
         if (processed) {
@@ -41,5 +37,4 @@ public class UsingOptional {
             return null;
         }
     }
-
 }
