@@ -107,6 +107,12 @@
             <artifactId>renjin-script-engine</artifactId>
             <version>${renjin.version}</version>
         </dependency>
+        <!-- libphonenumber  -->
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>${libphonenumber.version}</version>
+        </dependency>        
     </dependencies>
 
     <repositories>
@@ -150,6 +156,7 @@
         <renjin.version>RELEASE</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
+        <libphonenumber.version>8.12.9</libphonenumber.version>
     </properties>
 
 
