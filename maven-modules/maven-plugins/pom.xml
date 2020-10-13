@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <!--<module>custom-rule</module>--> <!-- Fixing in JAVA-2819 -->
+        <module>custom-rule</module>
         <module>maven-enforcer</module>
     </modules>
 
