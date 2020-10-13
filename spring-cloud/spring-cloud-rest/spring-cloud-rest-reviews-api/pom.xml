@@ -83,10 +83,6 @@
         <rest-assured.version>3.0.1</rest-assured.version>
         <embedded-redis.version>0.6</embedded-redis.version>
 
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

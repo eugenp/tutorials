@@ -87,10 +87,6 @@
         <aws-lambda-java-core.version>1.1.0</aws-lambda-java-core.version>
         <spring-boot-thin.version>1.0.10.RELEASE</spring-boot-thin.version>
 
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
