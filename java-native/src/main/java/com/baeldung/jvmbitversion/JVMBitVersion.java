@@ -1,4 +1,4 @@
-package com.baeldung.jvm;
+package com.baeldung.jvmbitversion;
 
 import com.sun.jna.Platform;
 
