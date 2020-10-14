@@ -24,7 +24,6 @@ public class JVMBitVersionUnitTest {
         } else if (System.getProperty("sun.arch.data.model") == "32") {
             assertEquals("32-bit", jvmVersion.getUsingSystemClass());
         }
-
     }
 
     @Test
