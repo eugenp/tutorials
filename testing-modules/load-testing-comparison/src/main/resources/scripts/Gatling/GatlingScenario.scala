@@ -12,7 +12,7 @@ class RewardsScenario extends Simulation {
   val httpProtocol = http.baseUrl("http://localhost:8080")
   
   val scn = scenario("RewardsScenario")
-	.repeat(100){
+	.repeat(1000){
 
 		exec(http("transactions_add")
 		  .post("/transactions/add/")
