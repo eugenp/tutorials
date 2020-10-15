@@ -16,7 +16,7 @@ class RewardsScenario extends Simulation {
 
 		exec(http("transactions_add")
 		  .post("/transactions/add/")
-		  .body(StringBody(_ => s"""{ "customerRewardsId":null,"customerId":"${randCustId()}","transactionDate":null }""")).asJson
+		  .body(StringBody(_ => s"""{"customerRewardsId":null,"customerId":${randCustId()},"transactionDate":null}""")).asJson
 		.check(jsonPath("$.id").saveAs("txnId"))
 		.check(jsonPath("$.transactionDate").saveAs("txtDate"))
 		.check(jsonPath("$.customerId").saveAs("custId")))
@@ -28,13 +28,13 @@ class RewardsScenario extends Simulation {
 		.doIf("${rwdId.isUndefined()}"){
 			exec(http("rewards_add")
 			  .post("/rewards/add")
-			  .body(StringBody("""{ "customerId": "${custId}" }""")).asJson
+			  .body(StringBody("""{"customerId":${custId}}""")).asJson
 			.check(jsonPath("$.id").saveAs("rwdId")))
 		}
 		
 		.exec(http("transactions_update")
 		  .post("/transactions/add/")
-		  .body(StringBody("""{ "customerRewardsId":"${rwdId}","customerId":"${custId}","transactionDate":"${txtDate}" }""")).asJson)
+		  .body(StringBody("""{"customerRewardsId":${rwdId},"customerId":${custId},"transactionDate":"${txtDate}" }""")).asJson)
 		
 		.exec(http("get_transactions")
 		  .get("/transactions/findAll/${rwdId}"))
