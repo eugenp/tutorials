@@ -11,8 +11,8 @@ class DBConfigurationUnitTest {
     @Test
     void givenConnectionObject_whenExtractMetaData_thenGetDbURL() throws Exception {
         Connection connection = DBConfiguration.getConnection();
-        assertEquals("jdbc:h2:mem:testdb", connection.getMetaData()
-            .getURL());
+        String dbUrl = connection.getMetaData().getURL();
+        assertEquals("jdbc:h2:mem:testdb", dbUrl);
     }
 
 }
