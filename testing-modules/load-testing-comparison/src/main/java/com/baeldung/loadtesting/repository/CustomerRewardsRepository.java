@@ -1,11 +1,28 @@
 package com.baeldung.loadtesting.repository;
 
 import com.baeldung.loadtesting.model.CustomerRewardsAccount;
-import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public interface CustomerRewardsRepository extends JpaRepository<CustomerRewardsAccount, Integer> {
+public class CustomerRewardsRepository {
 
-    Optional<CustomerRewardsAccount> findByCustomerId(Integer customerId);
+  private AtomicInteger accountIds = new AtomicInteger();
+	private final Map<Integer, CustomerRewardsAccount> accountsByCustomerId = new ConcurrentHashMap<>();
+
+    public Optional<CustomerRewardsAccount> findByCustomerId(Integer customerId) {
+    	return Optional.ofNullable(accountsByCustomerId.get(customerId));
+    }
+
+  public CustomerRewardsAccount save(CustomerRewardsAccount account) {
+    if (account.getId() == null) {
+      account.setId(accountIds.getAndIncrement());
+    }
+    if (account.getCustomerId() != null) {
+      accountsByCustomerId.put(account.getCustomerId(), account);
+    }
+    return account;
+  }
 }
