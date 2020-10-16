@@ -24,4 +24,6 @@
         <module>kubernetes-guide/travel-agency-service</module>
     </modules>
 
+    <properties>
+    </properties>
 </project>

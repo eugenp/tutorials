@@ -66,10 +66,6 @@
         <flyway-core.version>5.2.3</flyway-core.version>
         <flyway-maven-plugin.version>5.0.2</flyway-maven-plugin.version>
 
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
