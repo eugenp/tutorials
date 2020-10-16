@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,6 +36,12 @@ public class CreateFileUnitTest {
         File newFile = new File(FILE_NAME);
         boolean success = newFile.createNewFile();
         assertTrue(success);
+    }
+
+    @Test
+    void givenUsingFileOutputStream_whenCreatingFile_thenCorrect() throws IOException {
+        try(FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)){
+        }
     }
 
     @Test
