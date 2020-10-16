@@ -10,27 +10,27 @@ public class UsingOptional {
     public static final String DEFAULT_VALUE = "Default Value";
 
     public Optional<Object> process(boolean processed) {
-
         String response = doSomething(processed);
 
         return Optional.ofNullable(response);
     }
-    public String findFirst() {
 
+    public String findFirst() {
         return getList().stream()
             .findFirst()
             .orElse(DEFAULT_VALUE);
     }
-    public Optional<String> findOptionalFirst() {
 
+    public Optional<String> findOptionalFirst() {
         return getList().stream()
             .findFirst();
     }
+
     private List<String> getList() {
         return emptyList();
     }
-    private String doSomething(boolean processed) {
 
+    private String doSomething(boolean processed) {
         if (processed) {
             return "passed";
         } else {
