@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class ConstantPatternUnitTest {
     @Test
-    public void givenTwoNumbersAndAdd_whenCallingCalculatorOperatOneTwoNumbers_correctAnswerReturned() {
+    public void givenTwoNumbersAndAdd_whenCallingCalculatorOperatOneTwoNumbers_thenCorrectAnswerReturned() {
         Calculator calculator = new Calculator();
         double expected = 4;
         double answer = calculator.operateOnTwoNumbers(2, 2, Calculator.Operation.ADD);
@@ -14,7 +14,7 @@ public class ConstantPatternUnitTest {
     }
     
     @Test
-    public void givenTwoNumbersAndAdd_whenCallingGeometryCalculatorOperatOneTwoNumbers_correctAnswerReturned() {
+    public void givenTwoNumbersAndAdd_whenCallingGeometryCalculatorOperatOneTwoNumbers_thenCorrectAnswerReturned() {
         GeometryCalculator calculator = new GeometryCalculator();
         double expected = 4;
         double answer = calculator.operateOnTwoNumbers(2, 2, GeometryCalculator.Operation.ADD);
