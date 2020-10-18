@@ -60,8 +60,6 @@ public class CustomDeserializationUnitTest {
         String converted = objectMapper.writeValueAsString(now);
         // restore an instance of ZonedDateTime from String
         ZonedDateTime restored = objectMapper.readValue(converted, ZonedDateTime.class);
-        System.out.println("serialized: " + now);
-        System.out.println("restored: " + restored);
         assertThat(now, is(not(restored)));
     }
 
@@ -70,15 +68,14 @@ public class CustomDeserializationUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.enable(SerializationFeature.WRITE_DATES_WITH_ZONE_ID);
         objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
         // construct a new instance of ZonedDateTime
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Europe/Berlin"));
         String converted = objectMapper.writeValueAsString(now);
         // restore an instance of ZonedDateTime from String
         ZonedDateTime restored = objectMapper.readValue(converted, ZonedDateTime.class);
-        System.out.println("serialized: " + now);
-        System.out.println("restored: " + restored);
-        assertThat(now, is(restored));
+        assertThat(restored, is(now));
     }
 
 }

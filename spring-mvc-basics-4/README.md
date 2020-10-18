@@ -8,4 +8,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Model, ModelMap, and ModelView in Spring MVC](https://www.baeldung.com/spring-mvc-model-model-map-model-view)
 - [Spring Web Contexts](https://www.baeldung.com/spring-web-contexts)
 - [Spring Optional Path variables](https://www.baeldung.com/spring-optional-path-variables)
+- [JSON Parameters with Spring MVC](https://www.baeldung.com/spring-mvc-send-json-parameters)
 - More articles: [[<-- prev]](/spring-mvc-basics-3)

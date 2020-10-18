@@ -107,6 +107,7 @@
         <mongodb-reactivestreams.version>4.1.0</mongodb-reactivestreams.version>
         <projectreactor.version>3.2.0.RELEASE</projectreactor.version>
         <mongodb-driver.version>4.0.5</mongodb-driver.version>
+
     </properties>
 
 </project>

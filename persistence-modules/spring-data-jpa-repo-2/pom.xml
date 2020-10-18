@@ -43,5 +43,6 @@
 
     <properties>
         <guava.version>29.0-jre</guava.version>
+
     </properties>
 </project>

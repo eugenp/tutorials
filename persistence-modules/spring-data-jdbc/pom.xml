@@ -26,4 +26,7 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+
+	<properties>
+	</properties>
 </project>
