@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
-class TransientTest {
+class TransientUnitTest {
 
     @Test
     void givenTransient_whenSerDe_thenVerifyValues() {
