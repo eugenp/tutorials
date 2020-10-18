@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class TransientUnitTest {
 
     @Test
-    void givenTransient_whenSerDe_thenVerifyValues() {
+    void givenTransient_whenSerDe_thenVerifyValues() throws Exception {
         Person person = new Person();
         person.setFirstName("John");
         person.setLastName("Connor");
@@ -24,7 +24,7 @@ class TransientUnitTest {
     }
     
     @Test
-    void givenFinalTransient_whenSerDe_thenValuePersisted() {
+    void givenFinalTransient_whenSerDe_thenValuePersisted() throws Exception {
         Person person = new Person();
         
         PersonSerDe.serialize(person);
