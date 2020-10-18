@@ -2,6 +2,7 @@ package com.baeldung.cloud.openfeign.config;
 
 import feign.Logger;
 import feign.RequestInterceptor;
+import feign.auth.BasicAuthRequestInterceptor;
 import feign.codec.ErrorDecoder;
 import feign.okhttp.OkHttpClient;
 import org.apache.http.entity.ContentType;
@@ -33,5 +34,10 @@ public class ClientConfiguration {
             requestTemplate.header("password", "brazof");
             requestTemplate.header("Accept", ContentType.APPLICATION_JSON.getMimeType());
         };
+    }
+
+    // @Bean - uncomment to use this interceptor and remove @Bean from the requestInterceptor()
+    public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
+        return new BasicAuthRequestInterceptor("ajeje", "brazof");
     }
 }
