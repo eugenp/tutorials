@@ -40,13 +40,18 @@ class UsingOptionalUnitTest {
     @Test()
     void givenEmptyList_whenFindFirst_getDefaultValue() {
         assertTrue(dataObject.findFirst().equalsIgnoreCase(UsingOptional.DEFAULT_VALUE));
-
     }
 
     @Test()
     void givenEmptyList_whenFindOptionalFirst_returnsEmptyOptional() {
         assertFalse(dataObject.findOptionalFirst().isPresent());
-
     }
+
+    @Test()
+    void whenOptionalListFirst_returnsEmptyOptional() {
+        assertFalse(dataObject.optionalListFirst().isPresent());
+    }
+
+
 
 }

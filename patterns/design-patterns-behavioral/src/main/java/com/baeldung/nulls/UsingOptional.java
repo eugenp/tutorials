@@ -21,6 +21,7 @@ public class UsingOptional {
             .orElse(DEFAULT_VALUE);
     }
 
+
     public Optional<String> findOptionalFirst() {
         return getList().stream()
             .findFirst();
@@ -28,6 +29,15 @@ public class UsingOptional {
 
     private List<String> getList() {
         return emptyList();
+    }
+
+    public Optional<String> optionalListFirst() {
+        return getOptionalList().flatMap(
+                list -> list.stream().findFirst());
+    }
+
+    private Optional<List> getOptionalList() {
+        return Optional.ofNullable(getList());
     }
 
     private String doSomething(boolean processed) {
