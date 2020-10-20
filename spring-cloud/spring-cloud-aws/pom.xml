@@ -67,6 +67,11 @@
         <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
         <spring-cloud>2.2.1.RELEASE</spring-cloud>
+
+        <!-- testing -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit.version>4.13</junit.version>
     </properties>
     
 </project>
