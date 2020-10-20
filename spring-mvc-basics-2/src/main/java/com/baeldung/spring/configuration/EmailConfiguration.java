@@ -119,7 +119,7 @@ public class EmailConfiguration {
     @Bean
     public ResourceBundleMessageSource emailMessageSource() {
         final ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("/mailMessages");
+        messageSource.setBasename("mailMessages");
         return messageSource;
     }
 
