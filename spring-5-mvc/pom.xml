@@ -173,7 +173,6 @@
 
     <properties>
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
-        <jackson.version>2.9.9</jackson.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
         <kotlin.version>1.2.71</kotlin.version> <!-- Same as spring-boot-dependencies:2.1.7.RELEASE -->
         <httpclient.version>4.5.8</httpclient.version>
         <start-class>com.baeldung.Spring5Application</start-class>

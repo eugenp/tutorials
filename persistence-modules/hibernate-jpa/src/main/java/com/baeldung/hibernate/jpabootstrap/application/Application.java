@@ -8,7 +8,7 @@ public class Application {
     
     public static void main(String[] args) {
         EntityManager entityManager = getJpaEntityManager();
-        User user = entityManager.find(User.class, 1);
+        User user = entityManager.find(User.class, 1l);
         System.out.println(user);
         entityManager.getTransaction().begin();
         user.setName("John");

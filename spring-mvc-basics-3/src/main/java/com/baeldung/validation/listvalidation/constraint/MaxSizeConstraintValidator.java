@@ -11,11 +11,7 @@ public class MaxSizeConstraintValidator implements ConstraintValidator<MaxSizeCo
 
     @Override
     public boolean isValid(List<Movie> values, ConstraintValidatorContext context) {
-        boolean isValid = true;
-        if (values.size() > 4) {
-            isValid = false;
-        }
-        return isValid;
+       return values.size() <= 4;
     }
 
 }

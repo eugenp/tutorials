@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloudfunction.functions.aws;
+package com.baeldung.spring.cloudfunction.aws.functions;
 
 import java.util.function.Function;
 

@@ -75,6 +75,7 @@
 
     <properties>
         <flyway.configFiles>src/main/resources/application-${spring-boot.run.profiles}.properties</flyway.configFiles>
+
     </properties>
 
 </project>

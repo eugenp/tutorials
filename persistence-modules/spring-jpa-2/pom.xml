@@ -66,6 +66,11 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
 
         <!-- test scoped -->
         <dependency>
@@ -85,13 +90,14 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
 
         <!-- persistence -->
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
 
         <!-- utilities -->
         <guava.version>21.0</guava.version>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <byte-buddy.version>1.10.16</byte-buddy.version>
     </properties>
 
 </project>

@@ -68,6 +68,7 @@
     <properties>
         <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
         <h2.version>1.4.200</h2.version>
+
     </properties>
 
 </project>
