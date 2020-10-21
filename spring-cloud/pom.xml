@@ -43,6 +43,7 @@
         <module>spring-cloud-ribbon-retry</module>
         <module>spring-cloud-circuit-breaker</module>
         <module>spring-cloud-eureka-self-preservation</module>
+        <!--<module>spring-cloud-openfeign</module>--> <!-- Fixing in JAVA-2820 -->
     </modules>
 
     <build>
@@ -51,11 +52,29 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <properties>
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
@@ -65,8 +84,7 @@
         <spring-cloud-starter-feign.version>1.4.7.RELEASE</spring-cloud-starter-feign.version>
         <spring-cloud-starter-hystrix.version>1.4.7.RELEASE</spring-cloud-starter-hystrix.version>
         <spring-cloud-stream.version>3.0.6.RELEASE</spring-cloud-stream.version>
-        <spring-boot-starter-web.version>2.3.1.RELEASE</spring-boot-starter-web.version>
-        <spring-boot-maven-plugin.version>2.3.1.RELEASE</spring-boot-maven-plugin.version>
+
     </properties>
 
 </project>

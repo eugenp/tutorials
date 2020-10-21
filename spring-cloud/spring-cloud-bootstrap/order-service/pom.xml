@@ -118,5 +118,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <orderservice.mainclass>com.baeldung.orderservice.OrderApplication</orderservice.mainclass>
+
     </properties>
 </project>

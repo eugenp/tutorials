@@ -34,6 +34,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
+
     </properties>
 
 </project>
