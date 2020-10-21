@@ -206,7 +206,7 @@
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-        <start-class>org.jooq.example.spring.Application</start-class>
+        <h2.version>1.4.198</h2.version>
     </properties>
 
 </project>
