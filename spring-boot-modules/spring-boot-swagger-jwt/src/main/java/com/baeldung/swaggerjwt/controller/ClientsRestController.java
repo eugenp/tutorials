@@ -18,7 +18,7 @@ public class ClientsRestController {
 
     @ApiOperation(value = "This method is used to get the clients.")
     @GetMapping
-    public List<String> getClients(@RequestHeader HttpHeaders httpHeaders) {
+    public List<String> getClients() {
         return Arrays.asList("Fisrt Client", "Second Client");
     }
 
