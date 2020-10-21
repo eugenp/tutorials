@@ -15,7 +15,7 @@
 	<description>Spring Boot Data Snowflake</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 		<snowflake.jdbc.version>3.6.8</snowflake.jdbc.version>
 		<hikaricp.version>2.6.0</hikaricp.version>
 		<springtestdbunit.version>1.2.1</springtestdbunit.version>

@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +28,7 @@ public class UserControllerTest {
     @BeforeEach
     public void setUp() {
         when(userRepository.findByUserId(1L)).thenReturn(getUser_1());
-        when(userRepository.findAllUsers()).thenReturn(List.of(getUser_1(), getUser_2()));
+        when(userRepository.findAllUsers()).thenReturn(Arrays.asList(getUser_1(), getUser_2()));
     }
 
     @Test
