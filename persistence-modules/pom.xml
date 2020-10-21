@@ -88,6 +88,7 @@
         <module>spring-jdbc</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
+        <module>spring-data-snowflake</module>
     </modules>
 
     <properties>
