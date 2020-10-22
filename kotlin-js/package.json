@@ -1,10 +1,10 @@
 {
   "name": "kotlin-node",
   "version": "1.0.0",
-  "description": "kotlin node ex",
+  "description": "Example of using NodeJS in Kotlin",
   "main": "crypto.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node node/crypto.js"
   },
   "author": "",
   "license": "ISC",
