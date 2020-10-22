@@ -22,7 +22,7 @@ public class Number0xffUnitTest {
     @Test
     public void givenColor_whenGetRedColor_thenExtractRedColor() {
         int rgba = 272214023;
-        int expectedValue = 64;
+        int expectedValue = 16;
         assertEquals(Number0xff.getRedColor(rgba), expectedValue);
     }
 
