@@ -92,6 +92,7 @@
         <!-- util -->
         <commons-math3.version>3.6.1</commons-math3.version>
         <joda.version>2.10</joda.version>
+        <lombok.version>1.18.12</lombok.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <asspectj.version>1.8.9</asspectj.version>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress PyInterpreter -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -1343,7 +1344,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <forkCount>3</forkCount>
                             <reuseForks>true</reuseForks>
@@ -1377,11 +1377,11 @@
                  <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/core-java-collections-set</module>
-                 <!-- <module>core-java-modules/core-java-date-operations-1</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-datetime-conversion</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-datetime-string</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-date-operations-1</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-datetime-conversion</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-datetime-string</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/core-java-jpms</module>
-                 <!-- <module>core-java-modules/core-java-os</module>-->  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-os</module>  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/multimodulemavenproject</module>
                  <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
