@@ -50,14 +50,18 @@ public class ElapsedTimeUnitTest {
         
         assertEquals(true, (2000L <= timeElapsed) && (timeElapsed <= 3000L));
     }
-    
-    @Test
+
+    /*
+     The below test depends on the elapsed time, which isn't ideal in a test.
+     Also, it slows down test execution artificially.
+     */
+    /*@Test
     public void givenRunningTask_whenMeasuringTimeWithInstantClass_thenGetElapsedTime() throws InterruptedException {
         Instant start = Instant.now();
         System.out.println("start: " + start);
-        
+
         simulateRunningTask();
-        
+
         Instant finish = Instant.now();
 
         System.out.println("start: " + start);
@@ -66,7 +70,7 @@ public class ElapsedTimeUnitTest {
 
         System.out.println("elapsed: " + timeElapsed);
         assertEquals(true, (2000L <= timeElapsed) && (timeElapsed <= 3000L));
-    }
+    }*/
     
     /**
      * Simulate task running for 2.5 seconds.

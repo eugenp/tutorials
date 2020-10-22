@@ -1368,23 +1368,22 @@
             <modules>
                  <module>core-java-modules/core-java-9</module>
                  <module>core-java-modules/core-java-9-improvements</module>
-                 <!-- <module>core-java-modules/core-java-9-jigsaw</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-9-new-features</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-9-jigsaw</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
-                 <!-- <module>core-java-modules/core-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-12</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-11</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-collections-set</module>
                  <module>core-java-modules/core-java-date-operations-1</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/core-java-datetime-conversion</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/core-java-datetime-string</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-time-measurements</module>  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                  <module>core-java-modules/multimodulemavenproject</module>
-                 <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
             </modules>
         </profile>
 
@@ -1413,23 +1412,22 @@
             <modules>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
-                <!-- <module>core-java-modules/core-java-9-jigsaw</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-9-new-features</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-9-jigsaw</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>core-java-modules/core-java-9-streams</module>
                 <module>core-java-modules/core-java-10</module>
-                <!-- <module>core-java-modules/core-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-12</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-11</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
-                <!-- <module>core-java-modules/core-java-date-operations-1</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-datetime-conversion</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-datetime-string</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-date-operations-1</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-datetime-conversion</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-datetime-string</module> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>core-java-modules/core-java-jpms</module>
-                <!-- <module>core-java-modules/core-java-os</module>-->  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-os</module>  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-time-measurements</module>  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>core-java-modules/multimodulemavenproject</module>
-                <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
             </modules>
         </profile>
     </profiles>
