@@ -15,6 +15,6 @@ public class Number0xff {
     }
 
     public static int getAlfa(int rgba) {
-        return rgba >> rgba & 0xff;
+        return rgba & 0xff;
     }
 }
