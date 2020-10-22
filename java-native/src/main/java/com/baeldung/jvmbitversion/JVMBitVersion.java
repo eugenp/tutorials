@@ -9,7 +9,12 @@ public class JVMBitVersion {
     }
 
     public String getUsingSystemArch() {
-        return System.getProperty("os.arch");
+        if (System.getProperty("os.arch").contains("64")) {
+            return "64-bit";
+        } else if (System.getProperty("os.arch").contains("32")) {
+            return "32-bit";
+        } else
+            return "unknown";
     }
 
     public String getUsingNativeClass() {
