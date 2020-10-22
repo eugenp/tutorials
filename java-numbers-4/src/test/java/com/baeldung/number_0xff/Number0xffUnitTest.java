@@ -16,7 +16,7 @@ public class Number0xffUnitTest {
     public void test0xFFAssignedToByte() {
         byte y = (byte) 0xff;
         int expectedValue = -1;
-        assertEquals(x, expectedValue);
+        assertEquals(y, expectedValue);
     }
 
     @Test
