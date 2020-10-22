@@ -54,13 +54,17 @@ public class ElapsedTimeUnitTest {
     @Test
     public void givenRunningTask_whenMeasuringTimeWithInstantClass_thenGetElapsedTime() throws InterruptedException {
         Instant start = Instant.now();
+        System.out.println("start: " + start);
         
         simulateRunningTask();
         
         Instant finish = Instant.now();
-        
+
+        System.out.println("start: " + start);
+        System.out.println("finish: " + finish);
         long timeElapsed = Duration.between(start, finish).toMillis();
-        
+
+        System.out.println("elapsed: " + timeElapsed);
         assertEquals(true, (2000L <= timeElapsed) && (timeElapsed <= 3000L));
     }
     
