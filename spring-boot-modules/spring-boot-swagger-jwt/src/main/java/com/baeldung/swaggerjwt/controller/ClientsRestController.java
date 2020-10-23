@@ -19,7 +19,7 @@ public class ClientsRestController {
     @ApiOperation(value = "This method is used to get the clients.")
     @GetMapping
     public List<String> getClients() {
-        return Arrays.asList("Fisrt Client", "Second Client");
+        return Arrays.asList("First Client", "Second Client");
     }
 
 }
