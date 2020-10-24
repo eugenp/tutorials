@@ -14,8 +14,8 @@ public class WebConf {
 
     @Bean
     public ServletRegistrationBean customServletBean() {
-        ServletRegistrationBean bean =
-                new ServletRegistrationBean(new CustomServlet(), "/servlet");
+        ServletRegistrationBean bean
+                = new ServletRegistrationBean(new CustomServlet(), "/servlet");
         return bean;
     }
 
