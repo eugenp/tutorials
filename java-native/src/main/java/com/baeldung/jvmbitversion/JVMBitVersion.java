@@ -5,16 +5,7 @@ import com.sun.jna.Platform;
 public class JVMBitVersion {
 
     public String getUsingSystemClass() {
-        return System.getProperty("sun.arch.data.model")+"-bit";
-    }
-
-    public String getUsingSystemArch() {
-        if (System.getProperty("os.arch").contains("64")) {
-            return "64-bit";
-        } else if (System.getProperty("os.arch").contains("32")) {
-            return "32-bit";
-        } else
-            return "unknown";
+        return System.getProperty("sun.arch.data.model") + "-bit";
     }
 
     public String getUsingNativeClass() {

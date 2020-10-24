@@ -27,15 +27,6 @@ public class JVMBitVersionUnitTest {
     }
     
     @Test
-    public void whenUsingSystemArch_thenResultIsAsExpected() {
-        if (System.getProperty("os.arch").contains("64")) {
-            assertEquals("64-bit", jvmVersion.getUsingSystemArch());
-        } else if (System.getProperty("sun.arch.data.model") == "32") {
-            assertEquals("32-bit", jvmVersion.getUsingSystemArch());
-        }
-    }
-
-    @Test
     public void whenUsingNativeClass_thenResultIsAsExpected() {
         if (com.sun.jna.Native.POINTER_SIZE == 8) {
             assertEquals("64-bit", jvmVersion.getUsingNativeClass());
