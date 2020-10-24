@@ -62,14 +62,16 @@ public class SearchController {
 
     private void initTable() {        
         tableView = new TableView<>(FXCollections.observableList(masterData));
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
         TableColumn id = new TableColumn("ID");
         id.setCellValueFactory(new PropertyValueFactory("id"));
         TableColumn name = new TableColumn("NAME");
         name.setCellValueFactory(new PropertyValueFactory("name"));
         TableColumn employed = new TableColumn("EMPLOYED");
         employed.setCellValueFactory(new PropertyValueFactory("isEmployed"));
-
         tableView.getColumns().addAll(id, name, employed);
+        
         dataContainer.getChildren().add(tableView);
     }
 
