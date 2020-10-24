@@ -1,17 +1,15 @@
 {
-  "name": "kotlin-node.js",
+  "name": "kotlin-node",
   "version": "1.0.0",
   "description": "Example of using NodeJS in Kotlin",
   "main": "crypto.js",
-  "dependencies": {
-    "express": "^4.15.2",
-    "fs": "0.0.1-security",
-    "kotlin": "^1.1.0",
-    "node.js": "0.0.0",
-    "request": "^2.85.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "start": "node node/crypto.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "kotlin": "^1.4.10"
   }
 }
