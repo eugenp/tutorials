@@ -16,14 +16,16 @@ public class UsingOptional {
     }
 
     public String findFirst() {
-        return getList().stream()
+        return getList()
+            .stream()
             .findFirst()
             .orElse(DEFAULT_VALUE);
     }
 
 
     public Optional<String> findOptionalFirst() {
-        return getList().stream()
+        return getList()
+            .stream()
             .findFirst();
     }
 
@@ -32,8 +34,8 @@ public class UsingOptional {
     }
 
     public Optional<String> optionalListFirst() {
-        return getOptionalList().flatMap(
-                list -> list.stream().findFirst());
+        return getOptionalList()
+            .flatMap(list -> list.stream().findFirst());
     }
 
     private Optional<List> getOptionalList() {
