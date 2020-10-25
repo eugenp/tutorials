@@ -18,6 +18,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons-lang3.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -63,6 +68,7 @@
 
     <properties>
         <maven.compiler.release>15</maven.compiler.release>
+        <apache-commons-lang3.version>3.11</apache-commons-lang3.version>
         <assertj.version>3.17.2</assertj.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
