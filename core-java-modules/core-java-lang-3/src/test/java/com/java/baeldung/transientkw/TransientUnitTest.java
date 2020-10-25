@@ -9,28 +9,27 @@ class TransientUnitTest {
 
     @Test
     void givenTransient_whenSerDe_thenVerifyValues() throws Exception {
-        Person person = new Person();
-        person.setFirstName("John");
-        person.setLastName("Connor");
-        person.setMiddleName("Will not be saved");
-        person.setAge(25);
+        Book book = new Book();
+        book.setBookName("Java Reference");
+        book.setDescription("will not be saved");
+        book.setCopies(25);
         
-        PersonSerDe.serialize(person);
-        Person person2 = PersonSerDe.deserialize();
+        BookSerDe.serialize(book);
+        Book book2 = BookSerDe.deserialize();
         
-        assertEquals("John", person2.getFirstName());
-        assertNull(person2.getMiddleName());
-        assertEquals(0, person2.getAge());
+        assertEquals("Java Reference", book2.getBookName());
+        assertNull(book2.getDescription());
+        assertEquals(0, book2.getCopies());
     }
     
     @Test
     void givenFinalTransient_whenSerDe_thenValuePersisted() throws Exception {
-        Person person = new Person();
+        Book book = new Book();
         
-        PersonSerDe.serialize(person);
-        Person person2 = PersonSerDe.deserialize();
+        BookSerDe.serialize(book);
+        Book book2 = BookSerDe.deserialize();
         
-        assertEquals("CS", person2.getMajor());
+        assertEquals("Fiction", book2.getBookCategory());
         
     }
 
