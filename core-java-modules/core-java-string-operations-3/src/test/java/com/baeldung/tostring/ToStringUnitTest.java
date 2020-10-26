@@ -89,4 +89,14 @@ public class ToStringUnitTest {
 
         assertEquals(null, StringCastUtils.castToString(obj));
     }
+
+    @Test
+    public void givenIntegerNotNull_whenCastToObject_thenGetToStringReturnsString() {
+        Integer input = 1234;
+
+        Object obj = input;
+
+        assertEquals("1234", StringCastUtils.getToString(obj));
+        assertNotSame("1234", StringCastUtils.getToString(obj));
+    }
 }
