@@ -16,4 +16,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [Introduction to Protonpack](https://www.baeldung.com/java-protonpack)
 - [Java-R Integration](https://www.baeldung.com/java-r-integration)
+- [Using libphonenumber to Validate Phone Numbers](https://www.baeldung.com/java-libphonenumber)
 - More articles [[<-- prev]](/libraries-5)

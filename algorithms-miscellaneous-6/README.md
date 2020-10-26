@@ -9,4 +9,5 @@
 - [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
 - [Implementing a 2048 Solver in Java](https://www.baeldung.com/2048-java-solver)
 - [Finding Top K Elements in an Array](https://www.baeldung.com/java-array-top-elements)
-- More articles: [[<-- prev]](/../algorithms-miscellaneous-5)
+- [Reversing a Linked List in Java](https://www.baeldung.com/java-reverse-linked-list)
+- More articles: [[<-- prev]](/algorithms-miscellaneous-5)

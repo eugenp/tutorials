@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.thymeleaf.context.Context;
-import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -112,7 +112,7 @@ public class EmailServiceImpl implements EmailService {
         String to, String subject, Map<String, Object> templateModel)
             throws IOException, TemplateException, MessagingException {
 
-        Template freemarkerTemplate = freemarkerConfigurer.createConfiguration().getTemplate("template-freemarker.ftl");
+        Template freemarkerTemplate = freemarkerConfigurer.getConfiguration().getTemplate("template-freemarker.ftl");
         String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, templateModel);
 
         sendHtmlMessage(to, subject, htmlBody);

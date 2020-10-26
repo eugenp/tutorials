@@ -24,11 +24,11 @@
         <module>spring-security-web-boot-2</module>
         <module>spring-security-web-mvc-custom</module>
         <module>spring-security-web-digest-auth</module>
-        <module>spring-security-web-jsonview</module>
         <module>spring-security-ldap</module>
         <module>spring-security-web-login</module>
         <module>spring-security-web-persisted-remember-me</module>
         <module>spring-security-web-sockets</module>
+        <module>spring-security-legacy-oidc</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
         <module>spring-security-web-react</module>   
