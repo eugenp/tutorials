@@ -17,7 +17,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
 - [Validating RequestParams and PathVariables in Spring](https://www.baeldung.com/spring-validate-requestparam-pathvariable)
 - [Debugging the Spring MVC 404 “No mapping found for HTTP request” Error](https://www.baeldung.com/spring-mvc-404-error)
-- [Getting Started with CRaSH](https://www.baeldung.com/jvm-crash-shell)
 
 ## Spring MVC with XML Configuration Example Project
 

@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.5.10.RELEASE</version>
+            <version>${spring-boot-starter-test.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -72,6 +72,24 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.tomee.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>8.0.1</version>
+                <configuration>
+                    <tomeeHttpPort>8080</tomeeHttpPort>
+                    <context>spring-mvc-webflow</context>
+                    <reloadOnUpdate>true</reloadOnUpdate>
+                    <tomeeClassifier>plume</tomeeClassifier>
+                    <synchronization>
+                        <extensions>
+                            <extension>.class</extension>
+                        </extensions>
+                    </synchronization>
+                    <args>-Xmx2048m -XX:PermSize=256m -Dtomee.serialization.class.blacklist=- -Dtomee.serialization.class.whitelist=*</args>
+                    <removeDefaultWebapps>true</removeDefaultWebapps>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -96,6 +114,7 @@
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
     </properties>
 
 </project>

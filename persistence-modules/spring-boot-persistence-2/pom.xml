@@ -6,7 +6,7 @@
     <groupId>com.baeldung.boot.persistence</groupId>
     <artifactId>spring-boot-persistence-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-jdbi</name>
+    <name>spring-boot-persistence-2</name>
     <description>Sample SpringBoot JDBI Project</description>
 
     <parent>
@@ -17,6 +17,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -36,14 +43,18 @@
                 <artifactId>jdbi3-sqlobject</artifactId>
                 <version>${jdbi.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <dependency>
@@ -82,6 +93,55 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${oracle-database.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.ha</groupId>
+            <artifactId>ons</artifactId>
+            <version>${oracle-database.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ucp</artifactId>
+            <version>${oracle-database.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -96,6 +156,8 @@
     <properties>
         <jdbi.version>3.9.1</jdbi.version>
         <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
+        <c3p0.version>0.9.5.2</c3p0.version>
+        <oracle-database.version>19.6.0.0</oracle-database.version>
     </properties>
 
 </project>

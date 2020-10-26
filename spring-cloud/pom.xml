@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <modules>
@@ -32,6 +32,7 @@
         <module>spring-cloud-zuul-eureka-integration</module>
         <module>spring-cloud-contract</module>
         <module>spring-cloud-kubernetes</module>
+        <module>spring-cloud-open-service-broker</module>
         <module>spring-cloud-archaius</module>
         <module>spring-cloud-functions</module>
         <module>spring-cloud-vault</module>
@@ -39,6 +40,10 @@
         <module>spring-cloud-task</module>
         <module>spring-cloud-zuul</module>
         <module>spring-cloud-zuul-fallback</module>
+        <module>spring-cloud-ribbon-retry</module>
+        <module>spring-cloud-circuit-breaker</module>
+        <module>spring-cloud-eureka-self-preservation</module>
+        <!--<module>spring-cloud-openfeign</module>--> <!-- Fixing in JAVA-2820 -->
     </modules>
 
     <build>
@@ -47,24 +52,39 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <properties>
-        <spring-session.version>1.2.2.RELEASE</spring-session.version>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-        <spring-cloud-starter-config.version>1.2.2.RELEASE</spring-cloud-starter-config.version>
-        <spring-cloud-config-server.version>1.2.2.RELEASE</spring-cloud-config-server.version>
-        <spring-cloud-starter-eureka.version>2.0.2.RELEASE</spring-cloud-starter-eureka.version>
-        <spring-cloud-starter-feign.version>1.4.6.RELEASE</spring-cloud-starter-feign.version>
-        <spring-cloud-starter-hystrix.version>1.2.3.RELEASE</spring-cloud-starter-hystrix.version>
-        <spring-cloud-stream.version>1.3.0.RELEASE</spring-cloud-stream.version>
-        <spring-boot-starter-web.version>1.4.2.RELEASE</spring-boot-starter-web.version>
-        <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
-        <spring-cloud-starter-zuul.version>1.2.3.RELEASE</spring-cloud-starter-zuul.version>
+        <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
+        <spring-cloud-starter-config.version>2.2.3.RELEASE</spring-cloud-starter-config.version>
+        <spring-cloud-config-server.version>2.2.3.RELEASE</spring-cloud-config-server.version>
+        <spring-cloud-starter-eureka.version>1.4.7.RELEASE</spring-cloud-starter-eureka.version>
+        <spring-cloud-starter-feign.version>1.4.7.RELEASE</spring-cloud-starter-feign.version>
+        <spring-cloud-starter-hystrix.version>1.4.7.RELEASE</spring-cloud-starter-hystrix.version>
+        <spring-cloud-stream.version>3.0.6.RELEASE</spring-cloud-stream.version>
+
     </properties>
 
 </project>

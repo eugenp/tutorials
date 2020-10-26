@@ -5,13 +5,11 @@
     <artifactId>patterns</artifactId>
     <name>patterns</name>
     <packaging>pom</packaging>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <modules>
         <module>design-patterns-architectural</module>
         <module>design-patterns-behavioral</module>
@@ -21,11 +19,12 @@
         <module>design-patterns-functional</module>
         <module>design-patterns-structural</module>
         <module>dip</module>
+        <module>cqrs-es</module>
         <module>front-controller</module>
+        <module>hexagonal-architecture</module>
         <module>intercepting-filter</module>
         <module>solid</module>
     </modules>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,7 +35,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -53,9 +51,7 @@
             </plugins>
         </pluginManagement>
     </build>
-
     <properties>
         <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
     </properties>
-
 </project>

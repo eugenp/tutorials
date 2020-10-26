@@ -6,3 +6,4 @@ This module contains articles about Spring Cloud Gateway
 - [Exploring the new Spring Cloud Gateway](http://www.baeldung.com/spring-cloud-gateway)
 - [Writing Custom Spring Cloud Gateway Filters](https://www.baeldung.com/spring-cloud-custom-gateway-filters)
 - [Spring Cloud Gateway Routing Predicate Factories](https://www.baeldung.com/spring-cloud-gateway-routing-predicate-factories)
+- [Spring Cloud Gateway WebFilter Factories](https://www.baeldung.com/spring-cloud-gateway-webfilter-factories)

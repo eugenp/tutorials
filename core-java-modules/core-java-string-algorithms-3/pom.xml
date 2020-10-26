@@ -7,12 +7,11 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>core-java-string-algorithms-3</name>
-
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -31,8 +30,7 @@
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter-api.version}</version>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -64,7 +62,6 @@
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <assertj.version>3.6.1</assertj.version>
         <guava.version>28.1-jre</guava.version>
-        <junit-jupiter-api.version>5.3.1</junit-jupiter-api.version>
     </properties>
 
 </project>

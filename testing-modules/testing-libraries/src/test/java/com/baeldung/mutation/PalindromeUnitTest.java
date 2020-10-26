@@ -11,13 +11,13 @@ public class PalindromeUnitTest {
     @Test
     public void whenEmptyString_thanAccept() {
         Palindrome palindromeTester = new Palindrome();
-        assertTrue(palindromeTester.isPalindrome("noon"));
+        assertTrue(palindromeTester.isPalindrome(""));
     }
 
     @Test
-	public void whenPalindrom_thanAccept() {
-	    Palindrome palindromeTester = new Palindrome();
-	    assertTrue(palindromeTester.isPalindrome("noon"));
+    public void whenPalindrom_thanAccept() {
+        Palindrome palindromeTester = new Palindrome();
+        assertTrue(palindromeTester.isPalindrome("noon"));
     }
     
     @Test

@@ -5,12 +5,11 @@
     <artifactId>core-java-lang-math-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>core-java-lang-math-2</name>
-
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>

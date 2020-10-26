@@ -1,6 +1,7 @@
 package com.baeldung.loginextrafieldscustom;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -48,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public AuthenticationProvider authProvider() {
         CustomUserDetailsAuthenticationProvider provider 
-            = new CustomUserDetailsAuthenticationProvider(passwordEncoder(), userDetailsService);
+            = new CustomUserDetailsAuthenticationProvider(passwordEncoder, userDetailsService);
         return provider;
     }
 
@@ -56,7 +60,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new SimpleUrlAuthenticationFailureHandler("/login?error=true");
     }
 
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

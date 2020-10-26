@@ -1,5 +1,7 @@
 package com.baeldung.spring.cloud.connectors.heroku.book;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,8 +17,8 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book findBookById(Long bookId) {
-        return bookRepository.findOne(bookId);
+    public Optional<Book> findBookById(Long bookId) {
+        return bookRepository.findById(bookId);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

@@ -1,0 +1,258 @@
+import org.apache.ivy.util.url.*
+import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.api.tasks.Copy
+
+import java.nio.file.*
+import org.gradle.internal.logging.text.StyledTextOutputFactory;
+import static org.gradle.internal.logging.text.StyledTextOutput.Style;
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.apache.ivy:ivy:${project.ivyVersion}"
+    }
+}
+
+apply plugin: "de.undercouch.download"
+
+def tomcatDirectory = "${buildDir}/apache-tomcat-${tomcatVersion}"
+project.ext."tomcatDirectory" = tomcatDirectory
+
+def explodedDir="${buildDir}/cas"
+def explodedResourcesDir="${buildDir}/cas-resources"
+def resourceJarName = "cas-server-webapp-resources"
+
+task copyCasConfiguration(type: Copy, group: "build", description: "Copy the CAS configuration from this project to /etc/cas/config") {
+    from "etc/cas/config"
+    into new File('/etc/cas/config').absolutePath
+    doFirst {
+        new File('/etc/cas/config').mkdirs()
+    }
+}
+
+task explodeWarOnly(type: Copy, group: "build", description: "Explodes the CAS web application archive") {
+    dependsOn 'build'
+    from zipTree("build/libs/${casWebApplicationBinaryName}")
+    into explodedDir
+}
+
+task explodeWar(type: Copy, group: "build", description: "Explodes the CAS archive and resources jar from the CAS web application archive") {
+    dependsOn explodeWarOnly
+    from zipTree("${explodedDir}/WEB-INF/lib/${resourceJarName}-${casServerVersion}.jar")
+    into explodedResourcesDir
+}
+
+task run(group: "build", description: "Run the CAS web application in embedded container mode") {
+    dependsOn 'build'
+    doLast {
+        def casRunArgs = new ArrayList<>(Arrays.asList("-server -noverify -Xmx2048M -XX:+TieredCompilation -XX:TieredStopAtLevel=1".split(" ")))
+        if (project.hasProperty('args')) {
+            casRunArgs.addAll(project.args.split('\\s+'))
+        }
+        javaexec {
+            main = "-jar"
+            jvmArgs = casRunArgs
+            args = ["build/libs/${casWebApplicationBinaryName}"]
+            logger.info "Started ${commandLine}"
+        }
+    }
+}
+
+task setExecutable(group: "build", description: "Configure the project to run in executable mode") {
+    doFirst {
+        project.setProperty("executable", "true")
+        logger.info "Configuring the project as executable"
+    }
+}
+
+task executable(type:Exec, group: "build", description: "Run the CAS web application in standalone executable mode") {
+    dependsOn setExecutable, 'build'
+    doFirst {
+        workingDir "."
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            commandLine "chmod", "+x", bootWar.archivePath
+        }
+        logger.info "Running ${bootWar.archivePath}"
+        commandLine bootWar.archivePath
+    }
+}
+
+task debug(group: "build", description: "Debug the CAS web application in embedded mode on port 5005") {
+    dependsOn 'build'
+    doLast {
+        logger.info "Debugging process is started in a suspended state, listening on port 5005."
+        def casArgs = Arrays.asList("-Xmx2048M".split(" "))
+        javaexec {
+            main = "-jar"
+            jvmArgs = casArgs
+            debug = true
+            args = ["build/libs/${casWebApplicationBinaryName}"]
+            logger.info "Started ${commandLine}"
+        }
+    }
+}
+
+task downloadShell(group: "shell", description: "Download CAS shell jar from snapshot or release maven repo") {
+    doFirst {
+        mkdir "${project.shellDir}"
+    }
+    doLast {
+        def downloadFile
+        if (isRunningCasServerSnapshot(casServerVersion)) {
+            def snapshotDir = "https://oss.sonatype.org/content/repositories/snapshots/org/apereo/cas/cas-server-support-shell/${casServerVersion}/"
+            def files = new ApacheURLLister().listFiles(new URL(snapshotDir))
+            files = files.sort{it.path}
+            files.each {
+                if (it.path.endsWith(".jar")) {
+                    downloadFile = it
+                }
+            }
+        } else {
+            downloadFile = "https://repo1.maven.org/maven2/org/apereo/cas/cas-server-support-shell/${casServerVersion}/cas-server-support-shell-${casServerVersion}.jar"
+        }
+        logger.info "Downloading file: ${downloadFile}"
+        download {
+            src downloadFile
+            dest new File("${project.shellDir}", "cas-server-support-shell-${casServerVersion}.jar")
+            overwrite false
+        }
+    }
+}
+
+task runShell(group: "shell",  description: "Run the CAS shell") {
+    dependsOn downloadShell
+    doLast {
+        println "Run the following command to launch the shell:\n\tjava -jar ${project.shellDir}/cas-server-support-shell-${casServerVersion}.jar"
+    }
+}
+
+task debugShell(group: "shell", description: "Run the CAS shell with debug options, wait for debugger on port 5005") {
+    dependsOn downloadShell
+    doLast {
+        println """
+        Run the following command to launch the shell:\n\t
+        java -Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=y -jar ${project.shellDir}/cas-server-support-shell-${casServerVersion}.jar
+        """
+    }
+}
+
+task showConfiguration(group: "build", description: "Show configurations for each dependency, etc") {
+    doLast() {
+        def cfg = project.hasProperty("configuration") ? project.property("configuration") : "compile"
+        configurations.getByName(cfg).each { println it }
+    }
+}
+
+task allDependenciesInsight(group: "build", type: DependencyInsightReportTask, description: "Produce insight information for all dependencies") {}
+
+task allDependencies(group: "build", type: DependencyReportTask, description: "Display a graph of all project dependencies") {}
+
+task casVersion (group: "build", description: "Display the current CAS version") {
+    doFirst {
+        def verbose = project.hasProperty("verbose") && Boolean.valueOf(project.getProperty("verbose"))
+        if (verbose) {
+            def out = services.get(StyledTextOutputFactory).create("CAS")
+            println "******************************************************************"
+            out.withStyle(Style.Info).println "Apereo CAS $casServerVersion"
+            out.withStyle(Style.Description).println "Enterprise Single SignOn for all earthlings and beyond"
+            out.withStyle(Style.SuccessHeader).println "- GitHub: "
+            out.withStyle(Style.Success).println "https://github.com/apereo/cas"
+            out.withStyle(Style.SuccessHeader).println "- Docs: "
+            out.withStyle(Style.Success).println "https://apereo.github.io/cas"
+            out.withStyle(Style.SuccessHeader).println "- Blog: "
+            out.withStyle(Style.Success).println "https://apereo.github.io"
+            println "******************************************************************"
+        } else {
+            println casServerVersion
+        }
+    }
+}
+
+task createKeystore(group: "build", description: "Create CAS keystore") {
+    doFirst {
+        mkdir "/etc/cas"
+
+        def keystorePath = "/etc/cas/thekeystore"
+
+        def dn = "CN=cas.example.org,OU=Example,OU=Org,C=US"
+        if (project.hasProperty("certificateDn")) {
+            dn = project.getProperty("certificateDn")
+        }
+        def subjectAltName = "dns:example.org,dns:localhost,ip:127.0.0.1"
+        if (project.hasProperty("certificateSubAltName")) {
+            subjectAltName = project.getProperty("certificateSubAltName")
+        }
+        // this will fail if thekeystore exists and has cert with cas alias already (so delete if you want to recreate)
+        logger.info "Generating keystore for CAS with DN ${dn}"
+        exec {
+            workingDir "."
+            commandLine "keytool", "-genkeypair", "-alias", "cas",
+                    "-keyalg", "RSA",
+                    "-keypass", "changeit", "-storepass", "changeit",
+                    "-keystore", keystorePath,
+                    "-dname", dn, "-ext", "SAN=${subjectAltName}"
+        }
+        logger.info "Exporting cert from keystore..."
+        exec {
+            workingDir "."
+            commandLine "keytool", "-exportcert", "-alias", "cas",
+                    "-storepass", "changeit", "-keystore", keystorePath,
+                    "-file", "/etc/cas/cas.cer"
+        }
+        logger.info "Import /etc/cas/cas.cer into your Java truststore (JAVA_HOME/lib/security/cacerts)"
+    }
+}
+
+task listTemplateViews (group: "build", description: "List all CAS views") {
+    dependsOn explodeWar
+
+    doFirst {
+        fileTree(explodedResourcesDir).matching {
+            include "**/*.html"
+        }
+        .collect { it.name }
+        .toSorted()
+        .each { println it }
+    }
+}
+
+task getResource(group: "build", description: "Fetch a CAS resource and move it into the overlay") {
+    dependsOn explodeWar
+
+    doFirst {
+        def resourceName = project.getProperty("resourceName")
+
+        def results = fileTree(explodedResourcesDir).matching {
+            include "**/${resourceName}.*"
+        }
+        if (results.isEmpty()) {
+            println "No resources could be found matching ${resourceName}"
+            return
+        }
+        if (results.size() > 1) {
+            println "Multiple resources found matching ${resourceName}: ${results}"
+            return
+        }
+
+        def fromFile = explodedResourcesDir
+        def resourcesDir = "src/main/resources"
+        mkdir resourcesDir
+
+        def resourceFile = results[0].canonicalPath
+        def toResourceFile = resourceFile.replace(fromFile, resourcesDir)
+
+        def parent = file(toResourceFile).getParent()
+        mkdir parent
+
+        Files.copy(Paths.get(resourceFile), Paths.get(toResourceFile), StandardCopyOption.REPLACE_EXISTING)
+        println "Copied file ${resourceFile} to ${toResourceFile}"
+    }
+}
+
+def isRunningCasServerSnapshot(casServerVersion) {
+    return "${casServerVersion}".contains("-SNAPSHOT")
+}

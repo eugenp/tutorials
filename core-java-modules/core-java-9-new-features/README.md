@@ -12,3 +12,6 @@ This module contains articles about core Java features that have been introduced
 - [Introduction to Java 9 StackWalking API](https://www.baeldung.com/java-9-stackwalking-api)
 - [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
 - [Java 9 Reactive Streams](https://www.baeldung.com/java-9-reactive-streams)
+- [Multi-Release JAR Files with Maven](https://www.baeldung.com/maven-multi-release-jars)
+- [The Difference between RxJava API and the Java 9 Flow API](https://www.baeldung.com/rxjava-vs-java-flow-api)
+- [How to Get a Name of a Method Being Executed?](https://www.baeldung.com/java-name-of-executing-method)

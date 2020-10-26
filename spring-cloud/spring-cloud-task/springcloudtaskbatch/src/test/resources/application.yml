@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:springcloud
+    url: jdbc:h2:mem:springcloud;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
   jpa:

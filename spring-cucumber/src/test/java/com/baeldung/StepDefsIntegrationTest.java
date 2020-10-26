@@ -1,14 +1,14 @@
 package com.baeldung;
 
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.springframework.http.HttpStatus;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import cucumber.api.java.en.Given;
-import org.springframework.http.HttpStatus;
-
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 public class StepDefsIntegrationTest extends SpringIntegrationTest {
 

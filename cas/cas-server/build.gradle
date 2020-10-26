@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "https://repo.spring.io/libs-milestone" }
+        maven { url "https://repo.spring.io/libs-snapshot" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "de.undercouch:gradle-download-task:${project.gradleDownloadTaskVersion}"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.springBootVersion}"
+        classpath "gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:${project.jibVersion}"
+        classpath "io.freefair.gradle:maven-plugin:${project.gradleMavenPluginVersion}"
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    maven { url "https://build.shibboleth.net/nexus/content/repositories/releases/" }
+    maven { url "https://repo.spring.io/milestone/" }
+    maven { url "https://repo.spring.io/snapshot/" }
+    maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local" }
+}
+
+def casServerVersion = project.'cas.version'
+def casWebApplicationBinaryName = "cas.war"
+
+project.ext."casServerVersion" = casServerVersion
+project.ext."casWebApplicationBinaryName" = casWebApplicationBinaryName
+
+apply plugin: "io.freefair.war-overlay"
+apply from: rootProject.file("gradle/tasks.gradle")
+
+apply plugin: "war"
+apply plugin: "eclipse"
+apply plugin: "idea"
+
+apply from: rootProject.file("gradle/springboot.gradle")
+apply from: rootProject.file("gradle/dockerjib.gradle")
+
+dependencies {
+    // Other CAS dependencies/modules may be listed here...
+    compile "org.apereo.cas:cas-server-support-json-service-registry:${casServerVersion}"
+    compile "org.apereo.cas:cas-server-support-jdbc:${casServerVersion}"
+}
+
+tasks.findByName("jibDockerBuild")
+    .dependsOn(copyWebAppIntoJib, copyConfigIntoJib)
+    .finalizedBy(deleteWebAppFromJib)
+
+tasks.findByName("jib")
+    .dependsOn(copyWebAppIntoJib, copyConfigIntoJib)
+    .finalizedBy(deleteWebAppFromJib)
+    
+configurations.all {
+    resolutionStrategy {
+        cacheChangingModulesFor 0, "seconds"
+        cacheDynamicVersionsFor 0, "seconds"
+
+        preferProjectModules()
+
+        def failIfConflict = project.hasProperty("failOnVersionConflict") && Boolean.valueOf(project.getProperty("failOnVersionConflict"))
+        if (failIfConflict) {
+            failOnVersionConflict()
+        }
+    }
+}
+
+eclipse {
+    classpath {
+       downloadSources = true
+       downloadJavadoc = true
+    }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+bootWar {
+    entryCompression = ZipEntryCompression.STORED
+    overlays {
+        // https://docs.freefair.io/gradle-plugins/current/reference/#_io_freefair_war_overlay
+        // Note: The "excludes" property is only for files in the war dependency.
+        // If a jar is excluded from the war, it could be brought back into the final war as a dependency
+        // of non-war dependencies. Those should be excluded via normal gradle dependency exclusions.
+        cas {
+            from "org.apereo.cas:cas-server-webapp${project.appServer}:${casServerVersion}@war"
+            provided = false
+            //excludes = ["WEB-INF/lib/somejar-1.0*"]
+        }
+    }
+}
+
+
+wrapper {
+    distributionType = Wrapper.DistributionType.BIN
+    gradleVersion = "${project.gradleVersion}"
+}

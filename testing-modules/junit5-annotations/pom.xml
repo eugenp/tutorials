@@ -46,12 +46,19 @@
             <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <junit.jupiter.version>5.6.0</junit.jupiter.version>
-        <junit.platform.version>1.6.0</junit.platform.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <junit.platform.version>1.7.0</junit.platform.version>
         <log4j2.version>2.8.2</log4j2.version>
+        <assertj-core.version>3.11.1</assertj-core.version>
     </properties>
 
 </project>

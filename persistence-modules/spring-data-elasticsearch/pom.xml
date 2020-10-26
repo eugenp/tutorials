@@ -15,13 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -36,6 +30,7 @@
             <artifactId>elasticsearch</artifactId>
             <version>${elasticsearch.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -49,8 +44,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.vividsolutions</groupId>
-            <artifactId>jts</artifactId>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
             <version>${jts.version}</version>
             <exclusions>
                 <exclusion>
@@ -61,40 +56,18 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>transport</artifactId>
-            <version>${elasticsearch.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>${jna.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
-        <spring-data-elasticsearch.version>3.0.8.RELEASE</spring-data-elasticsearch.version>
-        <jna.version>4.5.2</jna.version>
-        <elasticsearch.version>5.6.0</elasticsearch.version>
+        <spring-data-elasticsearch.version>4.0.0.RELEASE</spring-data-elasticsearch.version>
+        <elasticsearch.version>7.6.2</elasticsearch.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <spatial4j.version>0.6</spatial4j.version>
-        <jts.version>1.13</jts.version>
-        <log4j.version>2.9.1</log4j.version>
+        <spatial4j.version>0.7</spatial4j.version>
+        <jts.version>1.15.0</jts.version>
     </properties>
-
 </project>

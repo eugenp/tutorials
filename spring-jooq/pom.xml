@@ -30,6 +30,7 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
+            <version>${org.jooq.version}</version>
         </dependency>
 
         <!-- Database Access -->
@@ -73,6 +74,17 @@
 
     <build>
         <plugins>
+
+            <!-- Because we couldn't cope with multiple concurrent H2 instances -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <forkCount>0</forkCount>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
@@ -190,11 +202,11 @@
     </build>
 
     <properties>
-        <org.jooq.version>3.11.7</org.jooq.version>
+        <org.jooq.version>3.12.4</org.jooq.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-        <start-class>org.jooq.example.spring.Application</start-class>
+        <h2.version>1.4.198</h2.version>
     </properties>
 
 </project>

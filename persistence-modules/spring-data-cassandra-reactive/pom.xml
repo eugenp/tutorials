@@ -51,7 +51,9 @@
     </dependencies>
 
     <properties>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <cassandra-unit-spring.version>3.11.2.0</cassandra-unit-spring.version>
+
     </properties>
 
 </project>

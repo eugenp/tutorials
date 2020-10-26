@@ -15,30 +15,30 @@
 
     <modules>
         <module>spring-security-acl</module>
-        <module>spring-security-angular/server</module>
-        <module>spring-security-cache-control</module>
+        <module>spring-security-auth0</module>
+        <module>spring-security-web-angular/server</module>
+        <module>spring-security-config</module>
         <module>spring-security-core</module>
-        <module>spring-security-cors</module>
-        <module>spring-security-kerberos</module>
-        <module>spring-security-mvc</module>
-        <module>spring-security-mvc-boot-1</module>
-        <module>spring-security-mvc-boot-2</module>
-        <module>spring-security-mvc-custom</module>
-        <module>spring-security-mvc-digest-auth</module>
-        <module>spring-security-mvc-jsonview</module>
+        <module>spring-security-web-mvc</module>
+        <module>spring-security-web-boot-1</module>
+        <module>spring-security-web-boot-2</module>
+        <module>spring-security-web-mvc-custom</module>
+        <module>spring-security-web-digest-auth</module>
         <module>spring-security-ldap</module>
-        <module>spring-security-mvc-login</module>
-        <module>spring-security-mvc-persisted-remember-me</module>
-        <module>spring-security-mvc-socket</module>
+        <module>spring-security-web-login</module>
+        <module>spring-security-web-persisted-remember-me</module>
+        <module>spring-security-web-sockets</module>
+        <module>spring-security-legacy-oidc</module>
         <module>spring-security-oidc</module>
-        <module>spring-security-react</module>   
-        <module>spring-security-rest</module>
-        <module>spring-security-rest-basic-auth</module>
-        <module>spring-security-rest-custom</module>
-        <module>spring-security-sso</module>
-        <module>spring-security-stormpath</module>
-        <module>spring-security-thymeleaf</module>
-        <module>spring-security-x509</module>
+        <module>spring-security-okta</module>
+        <module>spring-security-web-react</module>   
+        <module>spring-security-web-rest</module>
+        <module>spring-security-web-rest-basic-auth</module>
+        <module>spring-security-web-rest-custom</module>
+        <module>spring-security-oauth2-sso</module>
+        <module>spring-security-web-thymeleaf</module>
+        <module>spring-security-web-x509</module>
+        <module>spring-security-kotlin-dsl</module>
     </modules>
 
 </project>

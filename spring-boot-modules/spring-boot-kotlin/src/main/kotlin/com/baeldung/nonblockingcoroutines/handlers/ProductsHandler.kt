@@ -12,7 +12,6 @@ import org.springframework.http.MediaType
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
-import org.springframework.web.reactive.function.client.awaitExchange
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.bodyAndAwait
@@ -37,7 +36,7 @@ class ProductsHandler(
             webClient.get()
               .uri("/stock-service/product/$id/quantity")
               .accept(MediaType.APPLICATION_JSON)
-              .awaitExchange().awaitBody<Int>()
+              .retrieve().awaitBody<Int>()
         }
         return ServerResponse.ok().json().bodyAndAwait(ProductStockView(product.await()!!, quantity.await()))
     }

@@ -28,7 +28,7 @@ public class FaviconConfiguration {
     @Bean
     protected ResourceHttpRequestHandler faviconRequestHandler() {
         ResourceHttpRequestHandler requestHandler = new ResourceHttpRequestHandler();
-        ClassPathResource classPathResource = new ClassPathResource("com/baeldung/images");
+        ClassPathResource classPathResource = new ClassPathResource("com/baeldung/images/");
         List<Resource> locations = Arrays.asList(classPathResource);
         requestHandler.setLocations(locations);
         return requestHandler;

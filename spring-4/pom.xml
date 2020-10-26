@@ -8,6 +8,7 @@
     <packaging>jar</packaging>
 
     <parent>
+    <!-- this module uses legacy Spring features, so can't upgrade to boot-2 -->
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>

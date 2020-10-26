@@ -1,6 +1,5 @@
 package com.baeldung.websocket.client;
 
-import org.baeldung.websocket.client.MyStompSessionHandler;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.messaging.simp.stomp.StompHeaders;

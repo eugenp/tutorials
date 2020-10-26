@@ -10,3 +10,5 @@ This module contains articles about data structures in Java
 - [How to Print a Binary Tree Diagram](https://www.baeldung.com/java-print-binary-tree-diagram)
 - [Introduction to Big Queue](https://www.baeldung.com/java-big-queue)
 - [Guide to AVL Trees in Java](https://www.baeldung.com/java-avl-trees)
+- [Graphs in Java](https://www.baeldung.com/java-graphs)
+- [Implementing a Ring Buffer in Java](https://www.baeldung.com/java-ring-buffer)

@@ -105,11 +105,11 @@
         </dependency>
 
     </dependencies>
-
+    
     <properties>
         <assertj.version>3.6.2</assertj.version>
         <httpclient.version>4.5.3</httpclient.version>
-        <jetty.version>9.4.8.v20171121</jetty.version>
+        <jetty.version>9.4.27.v20200227</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>

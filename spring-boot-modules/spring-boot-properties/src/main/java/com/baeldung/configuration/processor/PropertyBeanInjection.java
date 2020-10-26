@@ -6,14 +6,21 @@ import org.springframework.stereotype.*;
 @Component
 public class PropertyBeanInjection {
 
-    private final CustomProperties customProperties;
+    private CustomProperties customProperties;
 
-    PropertyBeanInjection(@Autowired CustomProperties customProperties) {
+    private JdbcProperties jdbcProperties;
+
+    PropertyBeanInjection(@Autowired CustomProperties customProperties, @Autowired JdbcProperties jdbcProperties) {
         this.customProperties = customProperties;
+        this.jdbcProperties = jdbcProperties;
     }
 
     String getUrl() {
         return customProperties.getUrl();
+    }
+
+    String getJdbcUrl() {
+        return jdbcProperties.getJdbcUrl();
     }
 
     int getTimeoutInMilliseconds() {

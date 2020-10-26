@@ -10,6 +10,8 @@ import org.springframework.remoting.caucho.BurlapServiceExporter;
 import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.remoting.support.RemoteExporter;
 
+import java.util.Collections;
+
 @Configuration @ComponentScan @EnableAutoConfiguration public class Server {
 
     @Bean CabBookingService bookingService() {
@@ -31,7 +33,9 @@ import org.springframework.remoting.support.RemoteExporter;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Server.class, args);
+        SpringApplication app = new SpringApplication(Server.class);
+        app.setDefaultProperties(Collections.singletonMap("server.port", "8032"));
+        app.run(args);
     }
 
 }

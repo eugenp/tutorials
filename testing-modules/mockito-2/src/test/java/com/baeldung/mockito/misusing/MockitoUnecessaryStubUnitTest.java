@@ -1,21 +1,22 @@
 package com.baeldung.mockito.misusing;
 
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.exceptions.misusing.UnnecessaryStubbingException;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.quality.Strictness;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.exceptions.misusing.UnnecessaryStubbingException;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.quality.Strictness;
-
+@RunWith(MockitoJUnitRunner.class)
 public class MockitoUnecessaryStubUnitTest {
 
     @Rule
@@ -24,11 +25,6 @@ public class MockitoUnecessaryStubUnitTest {
 
     @Mock
     private ArrayList<String> mockList;
-
-    @Before
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void givenUnusedStub_whenInvokingGetThenThrowUnnecessaryStubbingException() {

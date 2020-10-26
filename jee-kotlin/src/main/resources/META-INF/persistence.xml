@@ -7,7 +7,7 @@
 
     <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 
-    <class>com.enpy.entity.Student</class>
+    <class>com.baeldung.jeekotlin.entity.Student</class>
 
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="create"/>

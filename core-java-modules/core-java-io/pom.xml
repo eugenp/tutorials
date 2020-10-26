@@ -8,12 +8,11 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-io</name>
     <packaging>jar</packaging>
-
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -29,12 +28,6 @@
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-            <scope>test</scope>
         </dependency>
         <!-- Mime Type Resolution Libraries -->
         <dependency>
@@ -143,8 +136,6 @@
     </profiles>
 
     <properties>
-        <!-- util -->
-        <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <!-- maven plugins -->

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ImportResource("classpath:configForPropertiesOne.xml")
-@ComponentScan("org.baeldung.core")
+@ComponentScan("com.baeldung.core")
 public class ExternalPropertiesWithXmlConfigOne {
 
     public ExternalPropertiesWithXmlConfigOne() {
