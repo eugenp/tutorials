@@ -26,7 +26,7 @@ class GitHubDynamicApiService {
 
         repos = repos != null ? repos : Collections.emptyList();
 
-        return repos.stream().flatMap(repo -> getContributors("repos/eugenp/"+repo+"/contributors")).sorted((a, b) -> b.getContributions() - a.getContributions()).map(Contributor::getName).distinct().sorted().collect(Collectors.toList());
+        return repos.stream().flatMap(repo -> getContributors("repos/eugenp/"+repo+"/contributors")).sorted((a, b) -> b.getContributions() - a.getContributions()).map(com.baeldung.retrofit.models.Contributor::getName).distinct().sorted().collect(Collectors.toList());
     }
 
     private Stream<Contributor> getContributors(String fullUrl) {
