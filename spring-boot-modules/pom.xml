@@ -68,6 +68,7 @@
         <module>spring-boot-vue</module>
         <module>spring-boot-xml</module>
         <module>spring-boot-actuator</module>
+        <module>spring-boot-jackson</module>
     </modules>
 
 
