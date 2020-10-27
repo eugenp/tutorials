@@ -18,7 +18,7 @@ public class CoffeeIntegrationTest {
     TestRestTemplate restTemplate;
 
     @Test
-    public void whenQueryCoffeeWithoutParam_thenNullIsNotInserted() {
+    public void whenGetCoffee_thenSerializedWithDateAndNonNull() {
         String formattedDate = DateTimeFormatter.ofPattern(CoffeeConfiguration.dateTimeFormat)
                 .format(LocalDateTime.now());
         String brand = "Lavazza";
@@ -27,6 +27,6 @@ public class CoffeeIntegrationTest {
         String response = restTemplate.getForObject(url, String.class);
 
         assertThat(response).isEqualTo(
-                "{\"date\":\"" + formattedDate + "\",\"body\":{\"brand\":\"" + brand + "\"}}");
+                "{\"brand\":\"" + brand + "\",\"date\":\"" + formattedDate + "\"}");
     }
 }
