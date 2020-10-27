@@ -26,19 +26,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                    <compilerVersion>11</compilerVersion>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <properties>
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
