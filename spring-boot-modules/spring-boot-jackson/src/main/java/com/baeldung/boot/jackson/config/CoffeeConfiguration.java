@@ -1,6 +1,7 @@
 package com.baeldung.boot.jackson.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -39,5 +40,12 @@ public class CoffeeConfiguration {
         return new Jackson2ObjectMapperBuilder()
                 .serializers(localDateTimeSerializer)
                 .serializationInclusion(JsonInclude.Include.NON_NULL);
+    }
+
+    @Bean
+    public Module javaTimeModule() {
+        JavaTimeModule module = new JavaTimeModule();
+        module.addSerializer(localDateTimeSerializer);
+        return module;
     }
 }
