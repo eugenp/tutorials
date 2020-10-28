@@ -13,5 +13,5 @@
 - [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
 - [Debugging with Eclipse](https://www.baeldung.com/eclipse-debugging)
 - [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)
-- [Largest Power of 2 That Is Less Than the Given Number](https://www.baeldung.com/java-largest-power-of-2-less-than-number)
+- [Largest Power of 2 That Is Less Than the Given Number with Java](https://www.baeldung.com/java-largest-power-of-2-less-than-number)
 - More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math)
