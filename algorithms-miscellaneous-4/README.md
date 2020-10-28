@@ -6,7 +6,7 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 
 - [Multi-Swarm Optimization Algorithm in Java](https://www.baeldung.com/java-multi-swarm-algorithm)
 - [Check If a String Contains All The Letters of The Alphabet](https://www.baeldung.com/java-string-contains-all-letters)
-- [Find the Middle Element of a Linked List](https://www.baeldung.com/java-linked-list-middle-element)
+- [Find the Middle Element of a Linked List in Java](https://www.baeldung.com/java-linked-list-middle-element)
 - [Find Substrings That Are Palindromes in Java](https://www.baeldung.com/java-palindrome-substrings)
 - [Find the Longest Substring without Repeating Characters](https://www.baeldung.com/java-longest-substring-without-repeated-characters)
 - [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
