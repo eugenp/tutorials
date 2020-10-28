@@ -8,6 +8,6 @@
 - [Introduction to Greedy Algorithms with Java](https://www.baeldung.com/java-greedy-algorithms)
 - [The Caesar Cipher in Java](https://www.baeldung.com/java-caesar-cipher)
 - [Implementing a 2048 Solver in Java](https://www.baeldung.com/2048-java-solver)
-- [Finding Top K Elements in an Array](https://www.baeldung.com/java-array-top-elements)
+- [Finding Top K Elements in a Java Array](https://www.baeldung.com/java-array-top-elements)
 - [Reversing a Linked List in Java](https://www.baeldung.com/java-reverse-linked-list)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-5)
