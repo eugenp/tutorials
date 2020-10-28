@@ -3,7 +3,7 @@
 This module contains articles about string-related algorithms.
 
 ### Relevant Articles:
-- [Check If a String Is a Palindrome](https://www.baeldung.com/java-palindrome)
+- [Check if a String is a Palindrome in Java](https://www.baeldung.com/java-palindrome)
 - [Count Occurrences of a Char in a String](https://www.baeldung.com/java-count-chars)
 - [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)
 - [Removing Stopwords from a String in Java](https://www.baeldung.com/java-string-remove-stopwords)
