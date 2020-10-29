@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
-public class ElapsedTimeUnitTest {
+public class ElapsedTimeManualTest {
 
     @Test
     public void givenRunningTask_whenMeasuringTimeWithCurrentTimeMillis_thenGetElapsedTime() throws InterruptedException {
@@ -55,7 +55,7 @@ public class ElapsedTimeUnitTest {
      The below test depends on the elapsed time, which isn't ideal in a test.
      Also, it slows down test execution artificially.
      */
-    /*@Test
+    @Test
     public void givenRunningTask_whenMeasuringTimeWithInstantClass_thenGetElapsedTime() throws InterruptedException {
         Instant start = Instant.now();
         System.out.println("start: " + start);
@@ -70,7 +70,7 @@ public class ElapsedTimeUnitTest {
 
         System.out.println("elapsed: " + timeElapsed);
         assertEquals(true, (2000L <= timeElapsed) && (timeElapsed <= 3000L));
-    }*/
+    }
     
     /**
      * Simulate task running for 2.5 seconds.

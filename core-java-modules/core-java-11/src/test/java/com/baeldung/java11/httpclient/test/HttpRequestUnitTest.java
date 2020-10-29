@@ -18,6 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 public class HttpRequestUnitTest {
 
@@ -52,8 +53,8 @@ public class HttpRequestUnitTest {
     * This test will fail as soon as the given URL returns a HTTP 2 response.
     * Therefore, let's leave it commented out.
     * */
-
-   /* @Test
+   @Test
+   @Disabled
     public void shouldFallbackToHttp1_1WhenWebsiteDoesNotUseHttp2() throws IOException, InterruptedException, URISyntaxException, NoSuchAlgorithmException {
         HttpRequest request = HttpRequest.newBuilder()
             .uri(new URI("https://postman-echo.com/get"))
@@ -65,7 +66,7 @@ public class HttpRequestUnitTest {
             .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.version(), equalTo(HttpClient.Version.HTTP_1_1));
-    }*/
+    }
 
     @Test
     public void shouldReturnStatusOKWhenSendGetRequestWithDummyHeaders() throws IOException, InterruptedException, URISyntaxException {

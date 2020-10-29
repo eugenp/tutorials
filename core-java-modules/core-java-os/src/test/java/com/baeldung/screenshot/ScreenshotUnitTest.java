@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import static org.junit.Assert.assertTrue;
 
@@ -40,15 +41,16 @@ public class ScreenshotUnitTest {
         assertTrue(imageFile.exists());
     }
 
-    //    This methods needs a component as a parameter and can only be run from an application with a GUI
-    //    @Test
-    //    public void givenComponent_whenTakeScreenshot_thenSaveToFile(Component component) throws Exception {
-    //        Rectangle componentRect = component.getBounds();
-    //        BufferedImage bufferedImage = new BufferedImage(componentRect.width, componentRect.height, BufferedImage.TYPE_INT_ARGB);
-    //        component.paint(bufferedImage.getGraphics());
-    //        File imageFile = File.createTempFile("component-screenshot", "bmp");
-    //        ImageIO.write(bufferedImage, "bmp", imageFile);
-    //        assertTrue(imageFile.exists());
-    //    }
+    // This methods needs a component as a parameter and can only be run from an application with a GUI
+    @Test
+    @Disabled
+    public void givenComponent_whenTakeScreenshot_thenSaveToFile(Component component) throws Exception {
+        Rectangle componentRect = component.getBounds();
+        BufferedImage bufferedImage = new BufferedImage(componentRect.width, componentRect.height, BufferedImage.TYPE_INT_ARGB);
+        component.paint(bufferedImage.getGraphics());
+        File imageFile = File.createTempFile("component-screenshot", "bmp");
+        ImageIO.write(bufferedImage, "bmp", imageFile);
+        assertTrue(imageFile.exists());
+    }
 
 }
