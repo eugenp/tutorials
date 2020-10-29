@@ -2,7 +2,9 @@ package com.baeldung.tostring;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 
 public class ToStringUnitTest {
     @Test
@@ -96,7 +98,7 @@ public class ToStringUnitTest {
 
         Object obj = input;
 
-        assertEquals("1234", StringCastUtils.getToString(obj));
-        assertNotSame("1234", StringCastUtils.getToString(obj));
+        assertEquals("1234", StringCastUtils.getStringRepresentation(obj));
+        assertNotSame("1234", StringCastUtils.getStringRepresentation(obj));
     }
 }
