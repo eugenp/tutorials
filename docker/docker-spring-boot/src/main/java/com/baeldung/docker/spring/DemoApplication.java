@@ -1,4 +1,4 @@
-package com.baeldung.docker;
+package com.baeldung.docker.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.baeldung.docker;
+package com.baeldung.docker.dto;
 
 public class VariableDto {
 

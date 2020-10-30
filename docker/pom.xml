@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.baeldung.docker</groupId>
-    <artifactId>docker-spring-boot-parent</artifactId>
+    <artifactId>docker</artifactId>
     <version>0.0.1</version>
-    <name>docker-spring-boot-parent</name>
+    <name>docker</name>
     <description>Demo project showing Spring Boot and Docker</description>
     <packaging>pom</packaging>
 

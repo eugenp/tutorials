@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.baeldung.docker</groupId>
-        <artifactId>docker-spring-boot-parent</artifactId>
+        <artifactId>docker</artifactId>
         <version>0.0.1</version>
     </parent>
 
