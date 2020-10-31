@@ -1,6 +1,6 @@
 package com.baeldung.sealed.classes;
 
-public sealed class Vehicle permits Car, Truck {
+public abstract sealed class Vehicle permits Car, Truck {
 
     private String registrationNumber;
 

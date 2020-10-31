@@ -1,6 +1,6 @@
 package com.baeldung.sealed.classes;
 
-public non-sealed class Truck extends Vehicle implements Service {
+public final class Truck extends Vehicle implements Service {
 
     private int loadCapacity;
 
