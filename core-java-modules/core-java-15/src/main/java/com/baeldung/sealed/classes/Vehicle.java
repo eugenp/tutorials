@@ -2,14 +2,14 @@ package com.baeldung.sealed.classes;
 
 public abstract sealed class Vehicle permits Car, Truck {
 
-    private String registrationNumber;
+    protected final String registrationNumber;
+
+    public Vehicle(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
 
     public String getRegistrationNumber() {
         return registrationNumber;
-    }
-
-    public void setRegistrationNumber(String registrationNumber) {
-        this.registrationNumber = registrationNumber;
     }
 
 }
