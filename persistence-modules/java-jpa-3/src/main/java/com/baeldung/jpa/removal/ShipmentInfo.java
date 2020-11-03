@@ -18,5 +18,6 @@ public class ShipmentInfo {
         this.name = name;
     }
 
-    protected ShipmentInfo() {}
+    protected ShipmentInfo() {
+    }
 }

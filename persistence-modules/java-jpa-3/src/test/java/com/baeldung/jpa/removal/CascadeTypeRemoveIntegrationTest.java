@@ -1,6 +1,9 @@
 package com.baeldung.jpa.removal;
 
-import java.util.List;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -8,9 +11,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.util.List;
 
 public class CascadeTypeRemoveIntegrationTest {
 
