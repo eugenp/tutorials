@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.stream.Collectors;
 
@@ -23,14 +22,11 @@ public class SearchController {
     @FXML
     private Button searchButton;
     @FXML
+    private Pagination pagination;
+    @FXML
     private Label searchLabel;
-    @FXML
-    private TableView tableView;
-    @FXML
-    private VBox dataContainer;
-    
+
     private ObservableList<Person> masterData = FXCollections.observableArrayList();
-    private ObservableList<Person> results = FXCollections.observableList(masterData);
 
     public SearchController() {
         masterData.add(new Person(5, "John", true));
@@ -44,7 +40,7 @@ public class SearchController {
         // search panel
         searchButton.setText("Search");
         searchButton.setOnAction(event -> loadData());
-        searchButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+        searchButton.setStyle("-fx-background-color: #457ecd; -fx-text-fill: #ffffff;");
 
         searchField.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
@@ -56,23 +52,22 @@ public class SearchController {
             searchLabel.setText(newValue);
         });
 
-      initTable();
-
+        pagination.setPageFactory(SearchController.this::createPage);
     }
 
-    private void initTable() {        
-        tableView = new TableView<>(FXCollections.observableList(masterData));
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    private Node createPage(Integer pageIndex) {
 
+        VBox dataContainer = new VBox();
+
+        TableView<Person> tableView = new TableView<>(masterData);
         TableColumn id = new TableColumn("ID");
-        id.setCellValueFactory(new PropertyValueFactory("id"));
         TableColumn name = new TableColumn("NAME");
-        name.setCellValueFactory(new PropertyValueFactory("name"));
         TableColumn employed = new TableColumn("EMPLOYED");
-        employed.setCellValueFactory(new PropertyValueFactory("isEmployed"));
+
         tableView.getColumns().addAll(id, name, employed);
-        
         dataContainer.getChildren().add(tableView);
+
+        return dataContainer;
     }
 
     private void loadData() {
@@ -91,10 +86,11 @@ public class SearchController {
         };
 
         task.setOnSucceeded(event -> {
-            results = task.getValue();
-            tableView.setItems(FXCollections.observableList(results));
+            masterData = task.getValue();
+            pagination.setVisible(true);
+            pagination.setPageCount(masterData.size() / PAGE_ITEMS_COUNT);
         });
-        
+
         Thread th = new Thread(task);
         th.setDaemon(true);
         th.start();

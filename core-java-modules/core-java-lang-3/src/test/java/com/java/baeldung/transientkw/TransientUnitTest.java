@@ -29,8 +29,7 @@ class TransientUnitTest {
         BookSerDe.serialize(book);
         Book book2 = BookSerDe.deserialize();
         
-        assertEquals("Fiction", book2.getBookCategory());
-        
+        assertEquals("Fiction", book2.getBookCategory());     
     }
 
 }

@@ -20,13 +20,14 @@
                 <Label fx:id="searchLabel"/>
             </children>
         </HBox>
-        
-        <VBox fx:id="dataContainer"
-              AnchorPane.leftAnchor="10.0"
-              AnchorPane.rightAnchor="10.0"
-              AnchorPane.topAnchor="50.0">
-        
-        </VBox>
+
+        <Pagination fx:id="pagination"
+                    AnchorPane.leftAnchor="10.0"
+                    AnchorPane.rightAnchor="10.0"
+                    AnchorPane.topAnchor="50.0"
+                    visible="false">
+
+        </Pagination>
 
     </children>
 </AnchorPane>

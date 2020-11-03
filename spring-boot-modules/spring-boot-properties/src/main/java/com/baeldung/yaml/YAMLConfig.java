@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 public class YAMLConfig {
     private String name;
     private String environment;
-    private boolean enabled;
     private List<String> servers = new ArrayList<String>();
     private List<String> external = new ArrayList<String>();
     private Map<String, String> map = new HashMap<String, String>();
@@ -44,15 +43,7 @@ public class YAMLConfig {
     public void setEnvironment(String environment) {
         this.environment = environment;
     }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
+    
     public Component getComponent() {
         return component;
     }

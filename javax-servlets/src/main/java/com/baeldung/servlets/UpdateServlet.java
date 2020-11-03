@@ -1,5 +1,6 @@
 package com.baeldung.servlets;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -17,14 +18,10 @@ public class UpdateServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        if (session != null) {
+        session.setAttribute("userName", request.getParameter("userName"));
+        session.setAttribute("age", request.getParameter("age"));
 
-            session.setAttribute("userName", request.getParameter("userName"));
-            session.setAttribute("age", request.getParameter("age"));
-
-            request.setAttribute("sessionData", session);
-        }
-
+        request.setAttribute("sessionData", session);
         RequestDispatcher requestDispather = request.getRequestDispatcher("update.jsp");
 
         requestDispather.forward(request, response);

@@ -1,6 +1,5 @@
 package com.baeldung.yaml;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -23,6 +22,5 @@ class YAMLIntegrationTest {
         assertTrue("testing".equalsIgnoreCase(config.getEnvironment()));
         assertTrue("test-YAML".equalsIgnoreCase(config.getName()));
         assertTrue("myurl".equalsIgnoreCase(config.getComponent().getIdm().getUrl()));
-        assertFalse(config.isEnabled());
     }
 }

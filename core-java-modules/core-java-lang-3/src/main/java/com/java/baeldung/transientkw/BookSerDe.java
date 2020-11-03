@@ -22,7 +22,6 @@ public class BookSerDe {
 
         out.close();
         file.close();
-
     }
 
     /**
@@ -31,7 +30,6 @@ public class BookSerDe {
      * @throws IOException, ClassNotFoundException
      */
     public static Book deserialize() throws Exception {
-
         FileInputStream file = new FileInputStream(fileName);
         ObjectInputStream in = new ObjectInputStream(file);
 
