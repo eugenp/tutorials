@@ -11,5 +11,4 @@ public class FieldErrorExampleUnitTest {
         String dependentMessage = FieldErrorExample.getDependentMessage();
         assertTrue("Hello Baeldung!!".equals(dependentMessage));
     }
-
 }
