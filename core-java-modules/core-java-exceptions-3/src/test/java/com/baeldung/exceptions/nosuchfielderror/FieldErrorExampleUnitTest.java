@@ -4,12 +4,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class NoSuchFieldErrorExampleUnitTest {
+public class FieldErrorExampleUnitTest {
 
     @Test
     public void whenDependentMessage_returnMessage() {
-        String dependentMessage = NoSuchFieldErrorExample.getDependentMessage();
-        assertTrue("Hello Baeldung".equals(dependentMessage));
+        String dependentMessage = FieldErrorExample.getDependentMessage();
+        assertTrue("Hello Baeldung!!".equals(dependentMessage));
     }
 
 }
