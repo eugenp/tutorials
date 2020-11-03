@@ -62,10 +62,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return new StringJoiner(", ", User.class.getSimpleName() + "[", "]").add("id=" + id)
-            .add("email='" + email + "'")
-            .add("password='" + password + "'")
-            .add("currentDevice='" + currentDevice + "'")
-            .toString();
+          .add("email='" + email + "'")
+          .add("password='" + password + "'")
+          .add("currentDevice='" + currentDevice + "'")
+          .toString();
     }
 
     @Override

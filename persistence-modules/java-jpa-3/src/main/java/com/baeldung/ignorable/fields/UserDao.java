@@ -9,13 +9,11 @@ public class UserDao {
 
     public void saveUser(User user) {
         Transaction transaction = null;
-        try (Session session = HibernateConfig.getSessionFactory()
-            .openSession()) {
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
@@ -23,10 +21,8 @@ public class UserDao {
     }
 
     public List<User> getUsers() {
-        try (Session session = HibernateConfig.getSessionFactory()
-            .openSession()) {
-            return session.createQuery("from User", User.class)
-                .list();
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            return session.createQuery("from User", User.class).list();
         }
     }
 }
