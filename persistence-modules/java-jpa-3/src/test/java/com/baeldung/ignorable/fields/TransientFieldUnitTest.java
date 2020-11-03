@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 
-public class TransientFieldTest {
+public class TransientFieldUnitTest {
 
     private final UserDao userDao = new UserDao();
 
@@ -23,7 +23,7 @@ public class TransientFieldTest {
     private final User user = new User("user" + randInt + "@bar.com", "hunter2", "MacOSX");
 
     @Test
-    public void JPA_UserWithTransientAnnotation_FieldNotPersisted() {
+    public void givenFieldWithTransientAnnotation_whenSavingViaJPA_thenFieldIgnored() {
         userDao.saveUser(user);
         List<User> allUsers = userDao.getUsers();
         User savedUser = allUsers.get(allUsers.indexOf(user));
@@ -32,7 +32,7 @@ public class TransientFieldTest {
     }
 
     @Test
-    public void JavaSerialization_UserWithTransientAnnotation_FieldSerialized() throws IOException, ClassNotFoundException {
+    public void givenFieldWithTransientAnnotation_whenSerializingObject_thenFieldSerialized() throws IOException, ClassNotFoundException {
 
         FileOutputStream fout = new FileOutputStream("test.obj");
         ObjectOutputStream out = new ObjectOutputStream(fout);
@@ -49,7 +49,7 @@ public class TransientFieldTest {
     }
 
     @Test
-    public void JSONSerialization_UserWithTransientAnnotation_FieldSerialized() throws JsonProcessingException {
+    public void givenFieldWithTransientAnnotation_whenSerializingToJSON_thenFieldSerialized() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(user);
         User savedUser = objectMapper.readValue(json, User.class);
@@ -58,7 +58,7 @@ public class TransientFieldTest {
     }
 
     @Test
-    public void JSONSerialization_JacksonUsingHibernate5Module_FieldNotSerialized() throws JsonProcessingException {
+    public void givenJacksonHibernate5Module_whenSerializingTransientAnnotation_thenFieldIgnored() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new Hibernate5Module());
         String json = objectMapper.writeValueAsString(user);
@@ -68,7 +68,7 @@ public class TransientFieldTest {
     }
 
     @Test
-    public void JSONSerialization_MapperPropagatesTransientMarker_FieldSerialized() throws JsonProcessingException {
+    public void givenPropagateTransientFieldFlag_whenSerializingTransientAnnotation_thenFieldSerialized() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(MapperFeature.PROPAGATE_TRANSIENT_MARKER, true);
         String json = objectMapper.writeValueAsString(user);
