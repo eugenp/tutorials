@@ -14,4 +14,5 @@ This module contains articles about networking in Java
 - [Handling java.net.ConnectException](https://www.baeldung.com/java-net-connectexception)
 - [Getting MAC addresses in Java](https://www.baeldung.com/java-mac-address)
 - [Sending Emails with Attachments in Java](https://www.baeldung.com/java-send-emails-attachments)
+- [Finding a Free Port in Java](https://www.baeldung.com/java-free-port)
 - [[<-- Prev]](/core-java-modules/core-java-networking)
