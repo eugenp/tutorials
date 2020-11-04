@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 import java.time.format.DateTimeFormatter;
 
@@ -17,6 +18,14 @@ import java.time.format.DateTimeFormatter;
 public class CoffeeConfiguration {
     public static final String dateTimeFormat = "dd-MM-yyyy HH:mm";
     private LocalDateTimeSerializer localDateTimeSerializer = new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat));
+
+    @Bean
+    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
+        Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder()
+                .serializers(localDateTimeSerializer)
+                .serializationInclusion(JsonInclude.Include.NON_NULL);
+        return new MappingJackson2HttpMessageConverter(builder.build());
+    }
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
