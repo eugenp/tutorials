@@ -1,12 +1,13 @@
 package com.baeldung.jpa.removal;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -19,8 +20,8 @@ public class OrphanRemovalIntegrationTest {
     private static EntityManagerFactory factory;
     private static EntityManager entityManager;
 
-    @BeforeClass
-    public static void setup() {
+    @Before
+    public void setup() {
         factory = Persistence.createEntityManagerFactory("jpa-h2-removal");
         entityManager = factory.createEntityManager();
     }
@@ -39,6 +40,18 @@ public class OrphanRemovalIntegrationTest {
 
         Assert.assertEquals(1, findAllOrderRequest().size());
         Assert.assertEquals(2, findAllLineItem().size());
+    }
+
+    @Test(expected = PersistenceException.class)
+    public void whenLineItemsIsReassigned_thenThrowAnException() {
+        createOrderRequestWithLineItems();
+
+        OrderRequest orderRequest = entityManager.find(OrderRequest.class, 1L);
+        orderRequest.setLineItems(new ArrayList<>());
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(orderRequest);
+        entityManager.getTransaction().commit();
     }
 
     private void createOrderRequestWithLineItems() {

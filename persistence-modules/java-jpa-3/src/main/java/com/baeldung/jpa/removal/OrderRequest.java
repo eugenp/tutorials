@@ -34,6 +34,10 @@ public class OrderRequest {
         lineItems.remove(lineItem);
     }
 
+    public void setLineItems(List<LineItem> lineItems) {
+        this.lineItems = lineItems;
+    }
+
     protected OrderRequest() {
     }
 }
