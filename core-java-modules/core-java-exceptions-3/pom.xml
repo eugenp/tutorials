@@ -17,6 +17,14 @@
     </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.191</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- test scoped -->
         <dependency>
             <groupId>org.assertj</groupId>

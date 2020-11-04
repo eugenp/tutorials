@@ -66,6 +66,18 @@
             <artifactId>reactive-streams</artifactId>
             <version>${reactive.stream.version}</version>
         </dependency>
+
+        <!-- Retrofit -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -76,6 +88,7 @@
         <jetty.httpclient.version>1.0.3</jetty.httpclient.version>
         <jetty.server.version>9.4.19.v20190610</jetty.server.version>
         <rxjava2.version>2.2.11</rxjava2.version>
+        <retrofit.version>2.3.0</retrofit.version>
         <spring.webflux.version>5.1.9.RELEASE</spring.webflux.version>
         <reactive.stream.version>1.0.3</reactive.stream.version>
         <reactor.version>3.2.12.RELEASE</reactor.version>
