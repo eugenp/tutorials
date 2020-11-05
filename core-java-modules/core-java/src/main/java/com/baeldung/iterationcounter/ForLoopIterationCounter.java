@@ -3,45 +3,45 @@ package com.baeldung.iterationcounter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 public class ForLoopIterationCounter {
     private final static Logger LOGGER = Logger.getLogger(ForLoopIterationCounter.class.getName());
+    private static final List<String> COLORS = Arrays.asList("red", "blue", "yellow", "green", "orange", "purple", "brown", "black");
 
-    public int forEachCounter(List<String> list) {
-        int counter = 0;
-        for (String element : list) {
-            counter++;
-            LOGGER.info("Value:" + element + ", iteration: " + counter);
+    public void printFirstFive() {
+        for (int i = 0; i <= 5; i++) {
+            LOGGER.info("Value:" + COLORS.get(i) + ", iteration: " + i);
         }
-        return counter;
     }
 
-    public int forEachLambdaAtomicCounter(List<String> list) {
-        AtomicInteger counter = new AtomicInteger();
-        list.forEach(element -> {
-            int index = counter.incrementAndGet();
-            LOGGER.info("Value:" + element + ", iteration: " + index);
-        });
-        return counter.intValue();
-    }
-
-    public void forEachLambda(List<String> list) {
-        forEachWithFunctionalInterface(list, (element, i) -> LOGGER.info("Value:" + element + ", iteration: " + (i + 1)));
+    public void printFirstFiveForEach() {
+        int counter = 0;
+        for (String element : COLORS) {
+            counter++;
+            if (counter <= 5) {
+                LOGGER.info("Value:" + element + ", iteration: " + counter);
+            }
+        }
     }
 
     @FunctionalInterface
-    public interface loopWithIndex<T> {
+    interface LoopWithIndexFunction<T> {
         void accept(T t, int i);
     }
 
-    public static <T> void forEachWithFunctionalInterface(Collection<T> collection,
-                                                          loopWithIndex<T> consumer) {
+    public static <T> void iterate(Collection<T> collection, LoopWithIndexFunction<T> consumer) {
         int index = 0;
         for (T object : collection) {
             consumer.accept(object, index++);
         }
+    }
+
+    public void printFirstFiveElementsUsingLambda(List<String> list) {
+        iterate(list, (element, i) -> {
+            if (i <= 5) {
+                LOGGER.info("Value:" + element + ", iteration: " + (i + 1));
+            }
+        });
     }
 }
