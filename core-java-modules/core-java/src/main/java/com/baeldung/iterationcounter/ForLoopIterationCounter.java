@@ -26,11 +26,11 @@ public class ForLoopIterationCounter {
     }
 
     @FunctionalInterface
-    interface LoopWithIndexFunction<T> {
+    interface ItemAndIndexConsumer<T> {
         void accept(T t, int i);
     }
 
-    public static <T> void iterate(Collection<T> collection, LoopWithIndexFunction<T> consumer) {
+    public static <T> void iterate(Collection<T> collection, ItemAndIndexConsumer<T> consumer) {
         int index = 0;
         for (T object : collection) {
             consumer.accept(object, index++);
