@@ -7,8 +7,10 @@ import java.time.Duration;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
+import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -22,6 +24,7 @@ import reactor.netty.http.server.HttpServer;
 
 public class Spring5ReactiveServerClientIntegrationTest {
     private static DisposableServer disposableServer;
+    private static WebTestClient webTestClient;
 
     @BeforeAll
     public static void setUp() throws Exception {
@@ -37,6 +40,9 @@ public class Spring5ReactiveServerClientIntegrationTest {
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
         disposableServer = server.handle(adapter)
             .bindNow();
+        webTestClient = WebTestClient.bindToServer()
+            .baseUrl("http://localhost:8080")
+            .build();
     }
 
     @AfterAll
@@ -44,49 +50,22 @@ public class Spring5ReactiveServerClientIntegrationTest {
         disposableServer.disposeNow();
     }
 
-    // @Test
-    // public void givenCheckTask_whenServerHandle_thenServerResponseALiveString() throws Exception {
-    // WebClient client = WebClient.create("http://localhost:8080");
-    // Mono<String> result = client
-    // .get()
-    // .uri("/task")
-    // .exchange()
-    // .then(response -> response.bodyToMono(String.class));
-    //
-    // assertThat(result.block()).isInstanceOf(String.class);
-    // }
+    @Test
+    public void givenCheckTask_whenServerHandle_thenServerResponseALiveString() throws Exception {
+        webTestClient.get()
+            .uri("/task")
+            .exchange()
+            .expectBody(String.class);
+    }
 
-    // @Test
-    // public void givenThreeTasks_whenServerHandleTheTasks_thenServerResponseATask() throws Exception {
-    // URI uri = URI.create("http://localhost:8080/task/process");
-    // ExchangeFunction exchange = ExchangeFunctions.create(new ReactorClientHttpConnector());
-    // ClientRequest request = ClientRequest
-    // .method(HttpMethod.POST, uri)
-    // .body(BodyInserters.fromPublisher(getLatLngs(), Task.class))
-    // .build();
-    //
-    // Flux<Task> taskResponse = exchange
-    // .exchange(request)
-    // .flatMap(response -> response.bodyToFlux(Task.class));
-    //
-    // assertThat(taskResponse.blockFirst()).isInstanceOf(Task.class);
-    // }
-
-    // @Test
-    // public void givenCheckTask_whenServerHandle_thenOragicServerResponseALiveString() throws Exception {
-    // URI uri = URI.create("http://localhost:8080/task");
-    // ExchangeFunction exchange = ExchangeFunctions.create(new ReactorClientHttpConnector());
-    // ClientRequest request = ClientRequest
-    // .method(HttpMethod.GET, uri)
-    // .body(BodyInserters.fromPublisher(getLatLngs(), Task.class))
-    // .build();
-    //
-    // Flux<String> taskResponse = exchange
-    // .exchange(request)
-    // .flatMap(response -> response.bodyToFlux(String.class));
-    //
-    // assertThat(taskResponse.blockFirst()).isInstanceOf(String.class);
-    // }
+    @Test
+    public void givenThreeTasks_whenServerHandleTheTasks_thenServerResponseATask() throws Exception {
+        webTestClient.post()
+            .uri("/task/process")
+            .body(getLatLngs(), Task.class)
+            .exchange()
+            .expectBodyList(Task.class);
+    }
 
     private static Flux<Task> getLatLngs() {
         return Flux.range(0, 3)
