@@ -35,8 +35,12 @@ class FileSystemImageIntegrationTest {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         InputStream image = classLoader.getResourceAsStream("baeldung.jpeg");
 
+        MockMultipartFile jpegImage = new MockMultipartFile("image", "baeldung", MediaType.TEXT_PLAIN_VALUE, image);
         MockMultipartHttpServletRequestBuilder multipartRequest = MockMvcRequestBuilders.multipart("/file-system/image")
-            .file(new MockMultipartFile("image", "baeldung", MediaType.TEXT_PLAIN_VALUE, image));
+            .file(jpegImage);
+
+        given(fileLocationService.save(jpegImage.getBytes(), "baeldung"))
+            .willReturn(1L);
 
         MvcResult result = mockMvc.perform(multipartRequest)
             .andExpect(status().isOk())
