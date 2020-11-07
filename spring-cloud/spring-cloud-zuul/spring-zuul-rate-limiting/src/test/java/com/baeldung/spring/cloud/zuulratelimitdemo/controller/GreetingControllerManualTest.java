@@ -26,7 +26,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @AutoConfigureTestDatabase
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GreetingControllerUnitTest {
+public class GreetingControllerManualTest {
 
     private static final String SIMPLE_GREETING = "/greeting/simple";
     private static final String ADVANCED_GREETING = "/greeting/advanced";
