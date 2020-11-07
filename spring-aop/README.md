@@ -11,3 +11,5 @@ This module contains articles about Spring aspect oriented programming (AOP)
 - [Introduction to Pointcut Expressions in Spring](https://www.baeldung.com/spring-aop-pointcut-tutorial)
 - [Introduction to Advice Types in Spring](https://www.baeldung.com/spring-aop-advice-tutorial)
 - [When Does Java Throw UndeclaredThrowableException?](https://www.baeldung.com/java-undeclaredthrowableexception)
+- [Get Advised Method Info in Spring Aop](https://www.baeldung.com/get-advised-method-info-in-spring-aop/)
+
