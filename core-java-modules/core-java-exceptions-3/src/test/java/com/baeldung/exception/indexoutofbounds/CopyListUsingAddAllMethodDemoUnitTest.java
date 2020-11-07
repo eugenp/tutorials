@@ -1,4 +1,4 @@
-package com.baeldung.indexoutofbounds;
+package com.baeldung.exception.indexoutofbounds;
 
 import org.junit.jupiter.api.Test;
 
