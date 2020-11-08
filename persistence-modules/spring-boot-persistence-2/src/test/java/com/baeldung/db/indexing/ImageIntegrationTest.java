@@ -1,6 +1,7 @@
 package com.baeldung.db.indexing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,13 +35,10 @@ class ImageIntegrationTest {
 
     @Test
     void givenBaeldungJpegImage_whenUploadIt_thenReturnItsId() throws Exception {
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        InputStream image = classLoader.getResourceAsStream("baeldung.jpeg");
+        given(imageRepository.save(any()))
+            .willReturn(new Image(1L));
 
-        MockMultipartHttpServletRequestBuilder multipartRequest = MockMvcRequestBuilders.multipart("/image")
-            .file(new MockMultipartFile("image", "baeldung", MediaType.TEXT_PLAIN_VALUE, image));
-
-        MvcResult result = mockMvc.perform(multipartRequest)
+        MvcResult result = mockMvc.perform(createUploadImageRequest())
             .andExpect(status().isOk())
             .andReturn();
 
@@ -58,6 +56,14 @@ class ImageIntegrationTest {
             .get("/image/1")
             .contentType(MediaType.IMAGE_JPEG_VALUE))
             .andExpect(status().isOk());
+    }
+
+    private MockMultipartHttpServletRequestBuilder createUploadImageRequest() throws IOException {
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        InputStream image = classLoader.getResourceAsStream("baeldung.jpeg");
+
+        return MockMvcRequestBuilders.multipart("/image")
+            .file(new MockMultipartFile("multipartImage", "baeldung", MediaType.TEXT_PLAIN_VALUE, image));
     }
 
     private Image baeldungImage() throws IOException {

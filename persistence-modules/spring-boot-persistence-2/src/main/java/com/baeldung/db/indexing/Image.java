@@ -22,6 +22,10 @@ class Image {
     public Image() {
     }
 
+    public Image(Long id) {
+        this.id = id;
+    }
+
     public Image(String name, String location) {
         this.name = name;
         this.location = location;
