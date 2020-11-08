@@ -12,14 +12,14 @@ public class MyStack<E> {
 
     public void push(E item) {
         if (size == elements.length) {
-            throw new MyStackFullException();
+            throw new RuntimeException();
         }
         elements[size++] = item;
     }
 
     public E pop() {
         if (size == 0) {
-            throw new MyStackEmptyException();
+            throw new RuntimeException();
         }
         return elements[--size];
     }

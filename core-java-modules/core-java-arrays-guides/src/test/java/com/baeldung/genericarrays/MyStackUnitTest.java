@@ -15,7 +15,7 @@ public class MyStackUnitTest {
         assertEquals("example", myStack.pop());
     }
 
-    @Test (expected = MyStackFullException.class)
+    @Test (expected = RuntimeException.class)
     public void givenStackWithFixedCapacity_whenExceedCapacity_thenThrowException() {
         MyStack<Integer> myStack = new MyStack<>(Integer.class, 2);
         myStack.push(100);
@@ -23,7 +23,7 @@ public class MyStackUnitTest {
         myStack.push(300);
     }
 
-    @Test(expected = MyStackEmptyException.class)
+    @Test(expected = RuntimeException.class)
     public void givenStack_whenPopOnEmptyStack_thenThrowException() {
         MyStack<Integer> myStack = new MyStack<>(Integer.class, 1);
         myStack.push(100);
@@ -41,5 +41,4 @@ public class MyStackUnitTest {
 
         assertEquals(2, items.length);
     }
-
 }
