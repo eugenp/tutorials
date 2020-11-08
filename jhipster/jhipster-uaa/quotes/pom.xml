@@ -910,6 +910,6 @@
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
 
         <!-- jhipster-needle-maven-property -->
-        <zalando.version>0.24.0-RC.0</zalando.version>
+        <zalando.version>0.24.0</zalando.version>
     </properties>	
 </project>

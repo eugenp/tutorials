@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -127,7 +128,7 @@ public class UserRepositoryLiveTest {
         user.setName("Adam");
         mongoOps.insert(user);
 
-        final List<User> users = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
+        final List<User> users = userRepository.findAll(Sort.by(Direction.ASC, "name"));
 
         assertThat(users.size(), is(2));
         assertThat(users.get(0).getName(), is("Adam"));

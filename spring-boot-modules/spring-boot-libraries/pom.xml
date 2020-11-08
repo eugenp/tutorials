@@ -9,10 +9,10 @@
     <description>This is simple boot application for Spring boot actuator test</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -30,9 +30,43 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <!-- togglez -->
+        <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-boot-starter</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-security</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+        
+        <!-- graphql -->
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-spring-boot-starter</artifactId>
+            <version>${graphql-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-tools</artifactId>
+            <version>${graphql-java-tools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphiql-spring-boot-starter</artifactId>
+            <version>${graphql-spring-boot-starter.version}</version>
+        </dependency>        
 
         <!-- Problem Spring Web -->
         <dependency>
@@ -52,8 +86,74 @@
             <artifactId>shedlock-provider-jdbc-template</artifactId>
             <version>${shedlock.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        <!-- Barcodes -->
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>${barbecue.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.barcode4j</groupId>
+            <artifactId>barcode4j</artifactId>
+            <version>${barcode4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kenglxn.qrgen</groupId>
+            <artifactId>javase</artifactId>
+            <version>${qrgen.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+        <!-- Bucket4j -->
+        <dependency>
+            <groupId>com.github.vladimir-bukhtoyarov</groupId>
+            <artifactId>bucket4j-core</artifactId>
+            <version>${bucket4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.giffing.bucket4j.spring.boot.starter</groupId>
+            <artifactId>bucket4j-spring-boot-starter</artifactId>
+            <version>${bucket4j-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+            </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>jcache</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <build>
         <finalName>spring-boot-libraries</finalName>
@@ -146,13 +246,20 @@
         <rome.version>1.9.0</rome.version>
         <chaos.monkey.version>2.0.0</chaos.monkey.version>
         <graphql-spring-boot-starter.version>5.0.2</graphql-spring-boot-starter.version>
-        <graphiql-spring-boot-starter.version>5.0.2</graphiql-spring-boot-starter.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <modelmapper.version>2.3.2</modelmapper.version>
         <problem-spring-web.version>0.23.0</problem-spring-web.version>
+        <h2.version>1.4.200</h2.version>
         <shedlock.version>2.1.0</shedlock.version>
+        <barbecue.version>1.5-beta1</barbecue.version>
+        <barcode4j.version>2.1</barcode4j.version>
+        <qrgen.version>2.6.0</qrgen.version>
+        <zxing.version>3.3.0</zxing.version>
+        <bucket4j.version>4.10.0</bucket4j.version>
+        <bucket4j-spring-boot-starter.version>0.2.0</bucket4j-spring-boot-starter.version>
+        <caffeine.version>2.8.2</caffeine.version>
     </properties>
 
 </project>

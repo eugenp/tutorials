@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,12 +26,19 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator.Feature;
 
 public class YamlUnitTest {
     private ObjectMapper mapper;
+    private File orderOutput;
 
     @Before
     public void setup() {
         mapper = new ObjectMapper(new YAMLFactory().disable(Feature.WRITE_DOC_START_MARKER));
         mapper.findAndRegisterModules();
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        orderOutput = new File("src/test/resources/yaml/orderOutput.yaml");
+    }
+    
+    @After
+    public void cleanup() {
+        orderOutput.deleteOnExit();
     }
 
     @Test
@@ -53,9 +61,9 @@ public class YamlUnitTest {
             LocalDate.parse("2019-04-18", DateTimeFormatter.ISO_DATE), 
             "Customer, Jane", 
             lines);
-        mapper.writeValue(new File("src/test/resources/yaml/orderOutput.yaml"), order);
+        mapper.writeValue(orderOutput, order);
 
-        File outputYaml = new File("src/test/resources/yaml/orderOutput.yaml");
+        File outputYaml = new File(orderOutput.getAbsolutePath());
         assertTrue(outputYaml.exists());
     }
 }

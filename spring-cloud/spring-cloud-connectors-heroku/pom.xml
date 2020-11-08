@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -36,6 +36,11 @@
             <artifactId>postgresql</artifactId>
         </dependency>
         <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-dep</artifactId>
+            <version>${bytebuddy.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -55,8 +60,11 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-        <postgresql.version>9.4-1201-jdbc4</postgresql.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
+        <postgresql.version>42.2.10</postgresql.version>
+        <bytebuddy.version>1.10.10</bytebuddy.version>
+
     </properties>
     
 </project>

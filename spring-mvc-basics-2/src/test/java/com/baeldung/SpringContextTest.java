@@ -7,10 +7,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.baeldung.spring.configuration.ApplicationConfiguration;
+import com.baeldung.spring.configuration.EmailConfiguration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={ApplicationConfiguration.class})
+@ContextConfiguration(classes={ApplicationConfiguration.class, EmailConfiguration.class})
 @WebAppConfiguration
 public class SpringContextTest {
 

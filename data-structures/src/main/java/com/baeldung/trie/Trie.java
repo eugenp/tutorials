@@ -10,8 +10,8 @@ class Trie {
     void insert(String word) {
         TrieNode current = root;
 
-        for (int i = 0; i < word.length(); i++) {
-            current = current.getChildren().computeIfAbsent(word.charAt(i), c -> new TrieNode());
+        for (char l : word.toCharArray()) {
+            current = current.getChildren().computeIfAbsent(l, c -> new TrieNode());
         }
         current.setEndOfWord(true);
     }

@@ -41,7 +41,7 @@ public class UserControllerUnitTest {
 
         when(mockedBindingResult.hasErrors()).thenReturn(false);
 
-        assertThat(userController.addUser(user, mockedBindingResult, mockedModel)).isEqualTo("index");
+        assertThat(userController.addUser(user, mockedBindingResult, mockedModel)).isEqualTo("redirect:/index");
     }
 
     @Test
@@ -64,7 +64,7 @@ public class UserControllerUnitTest {
 
         when(mockedBindingResult.hasErrors()).thenReturn(false);
 
-        assertThat(userController.updateUser(1l, user, mockedBindingResult, mockedModel)).isEqualTo("index");
+        assertThat(userController.updateUser(1l, user, mockedBindingResult, mockedModel)).isEqualTo("redirect:/index");
     }
 
     @Test

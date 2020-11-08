@@ -8,9 +8,10 @@
     <description>Simple Spring Cloud Stream</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -104,6 +105,7 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <kafka-avro-serializer.version>4.0.0</kafka-avro-serializer.version>
         <avro.version>1.8.2</avro.version>
+
     </properties>
 
 </project>

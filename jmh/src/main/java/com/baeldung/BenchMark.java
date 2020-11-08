@@ -1,13 +1,19 @@
 package com.baeldung;
 
-import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 
 import java.nio.charset.Charset;
+import java.util.concurrent.TimeUnit;
 
 public class BenchMark {
+
+    @State(Scope.Benchmark)
+    public static class Log {
+        public int x = 8;
+    }
 
     @State(Scope.Benchmark)
     public static class ExecutionPlan {
@@ -43,6 +49,46 @@ public class BenchMark {
     @BenchmarkMode(Mode.Throughput)
     public void init() {
         // Do nothing
+    }
+
+    @Benchmark
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    public void doNothing() {
+
+    }
+
+    @Benchmark
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    public void objectCreation() {
+        new Object();
+    }
+
+    @Benchmark
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    public Object pillarsOfCreation() {
+        return new Object();
+    }
+
+    @Benchmark
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    public void blackHole(Blackhole blackhole) {
+        blackhole.consume(new Object());
+    }
+
+    @Benchmark
+    public double foldedLog() {
+        int x = 8;
+
+        return Math.log(x);
+    }
+
+    @Benchmark
+    public double log(Log input) {
+        return Math.log(input.x);
     }
 
 }

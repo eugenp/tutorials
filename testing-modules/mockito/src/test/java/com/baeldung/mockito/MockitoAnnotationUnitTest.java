@@ -75,7 +75,7 @@ public class MockitoAnnotationUnitTest {
         Mockito.doReturn(100).when(spiedList).size();
         assertEquals(100, spiedList.size());
     }
-
+    
     @Test
     public void whenNotUseCaptorAnnotation_thenCorrect() {
         final List<String> mockList = Mockito.mock(List.class);

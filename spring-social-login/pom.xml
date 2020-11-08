@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -42,15 +42,16 @@
 
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
 
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-facebook</artifactId>
+            <version>${spring.social.facebook.version}</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -60,7 +61,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
+        
         <!-- test -->
 
         <dependency>
@@ -93,5 +94,9 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <spring.social.facebook.version>2.0.3.RELEASE</spring.social.facebook.version>
+    </properties>
 
 </project>

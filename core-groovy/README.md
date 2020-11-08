@@ -12,4 +12,6 @@ This module contains articles about core Groovy concepts
 - [Closures in Groovy](https://www.baeldung.com/groovy-closures)
 - [Converting a String to a Date in Groovy](https://www.baeldung.com/groovy-string-to-date)
 - [Guide to I/O in Groovy](https://www.baeldung.com/groovy-io)
+- [Convert String to Integer in Groovy](https://www.baeldung.com/groovy-convert-string-to-integer)
+- [Groovy Variable Scope](https://www.baeldung.com/groovy/variable-scope)
 - [[More -->]](/core-groovy-2)

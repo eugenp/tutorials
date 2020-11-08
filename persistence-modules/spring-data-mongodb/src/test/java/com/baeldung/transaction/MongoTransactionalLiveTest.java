@@ -2,7 +2,6 @@ package com.baeldung.transaction;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -22,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baeldung.config.MongoConfig;
 import com.baeldung.model.User;
 import com.baeldung.repository.UserRepository;
-import com.mongodb.MongoCommandException;
 
 /**
  * 
@@ -60,24 +58,6 @@ public class MongoTransactionalLiveTest {
             mongoTemplate.save(new User("John", 30));
             mongoTemplate.save(new User("Ringo", 35));
         }
-    }
-
-    @Test(expected = MongoCommandException.class)
-    @Transactional
-    public void whenCountDuringMongoTransaction_thenException() {
-        userRepository.save(new User("John", 30));
-        userRepository.save(new User("Ringo", 35));
-        userRepository.count();
-    }
-
-    @Test
-    @Transactional
-    public void whenQueryDuringMongoTransaction_thenSuccess() {
-        userRepository.save(new User("Jane", 20));
-        userRepository.save(new User("Nick", 33));
-        List<User> users = mongoTemplate.find(new Query(), User.class);
-
-        assertTrue(users.size() > 1);
     }
 
     // ==== Using test instead of before and after due to @transactional doesn't allow list collection

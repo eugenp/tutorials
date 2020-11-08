@@ -45,6 +45,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-task-batch</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-dep</artifactId>
+            <version>${bytebuddy.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -63,6 +70,7 @@
 
     <properties>
         <start-class>com.baeldung.TaskDemo</start-class>
+        <bytebuddy.version>1.10.10</bytebuddy.version>
     </properties>
 
 </project>

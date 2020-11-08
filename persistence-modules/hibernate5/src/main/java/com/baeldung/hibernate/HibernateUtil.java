@@ -12,25 +12,13 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.customtypes.LocalDateStringType;
-import com.baeldung.hibernate.customtypes.OfficeEmployee;
 import com.baeldung.hibernate.entities.DeptEmployee;
-import com.baeldung.hibernate.joincolumn.Email;
-import com.baeldung.hibernate.joincolumn.Office;
-import com.baeldung.hibernate.joincolumn.OfficeAddress;
-import com.baeldung.hibernate.optimisticlocking.OptimisticLockingCourse;
-import com.baeldung.hibernate.optimisticlocking.OptimisticLockingStudent;
-import com.baeldung.hibernate.pessimisticlocking.Individual;
-import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingCourse;
-import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingEmployee;
-import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingStudent;
 import com.baeldung.hibernate.pojo.Course;
 import com.baeldung.hibernate.pojo.Employee;
 import com.baeldung.hibernate.pojo.EntityDescription;
 import com.baeldung.hibernate.pojo.OrderEntry;
 import com.baeldung.hibernate.pojo.OrderEntryIdClass;
 import com.baeldung.hibernate.pojo.OrderEntryPK;
-import com.baeldung.hibernate.pojo.Person;
 import com.baeldung.hibernate.pojo.Phone;
 import com.baeldung.hibernate.pojo.PointEntity;
 import com.baeldung.hibernate.pojo.PolygonEntity;
@@ -88,7 +76,6 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(MyEmployee.class);
         metadataSources.addAnnotatedClass(MyProduct.class);
         metadataSources.addAnnotatedClass(Pen.class);
-        metadataSources.addAnnotatedClass(Person.class);
         metadataSources.addAnnotatedClass(Animal.class);
         metadataSources.addAnnotatedClass(Pet.class);
         metadataSources.addAnnotatedClass(Vehicle.class);
@@ -96,26 +83,11 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Bag.class);
         metadataSources.addAnnotatedClass(PointEntity.class);
         metadataSources.addAnnotatedClass(PolygonEntity.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.pojo.Person.class);
-        metadataSources.addAnnotatedClass(Individual.class);
-        metadataSources.addAnnotatedClass(PessimisticLockingEmployee.class);
-        metadataSources.addAnnotatedClass(PessimisticLockingStudent.class);
-        metadataSources.addAnnotatedClass(PessimisticLockingCourse.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Customer.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Address.class);
         metadataSources.addAnnotatedClass(DeptEmployee.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
-        metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
-        metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
-        metadataSources.addAnnotatedClass(OfficeEmployee.class);
         metadataSources.addAnnotatedClass(Post.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.joincolumn.OfficialEmployee.class);
-        metadataSources.addAnnotatedClass(Email.class);
-        metadataSources.addAnnotatedClass(Office.class);
-        metadataSources.addAnnotatedClass(OfficeAddress.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
-                .applyBasicType(LocalDateStringType.INSTANCE)
                 .build();
 
         return metadata.getSessionFactoryBuilder()

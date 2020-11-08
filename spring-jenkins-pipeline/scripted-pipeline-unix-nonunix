@@ -72,7 +72,7 @@ node {
                     if (isUnix()) {
                         sh 'nohup ./mvnw spring-boot:run -Dserver.port=8989 &'
                     } else {
-                        bat 'start ./mvnw.cmd spring-boot:run -Dserver.port=8989'
+                        bat 'start mvnw.cmd spring-boot:run -Dserver.port=8989'
                     }
                 }
             }

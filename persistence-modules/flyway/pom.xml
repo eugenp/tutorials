@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -63,8 +63,9 @@
     </build>
 
     <properties>
-        <flyway-core.version>5.0.2</flyway-core.version>
+        <flyway-core.version>5.2.3</flyway-core.version>
         <flyway-maven-plugin.version>5.0.2</flyway-maven-plugin.version>
+
     </properties>
 
 </project>

@@ -27,25 +27,9 @@
 
         <!-- persistence -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>${jta.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-            <scope>runtime</scope>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${persistence-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -53,39 +37,35 @@
             <version>${spring-data-jpa.version}</version>
         </dependency>
         <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>${transaction-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat-dbcp.version}</version>
-        </dependency>
-
-        <!-- utils -->
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-
-        <!-- test scoped -->
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
             <scope>test</scope>
         </dependency>
 
+        <!-- simple-jndi -->
+        <dependency>
+            <groupId>com.github.h-thurow</groupId>
+            <artifactId>simple-jndi</artifactId>
+            <version>${simple-jndi.version}</version>
+        </dependency>
+
+        <!-- test scoped -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -93,55 +73,31 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-            <version>${querydsl.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <version>${spring-boot-starter.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-            <version>${querydsl.version}</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>${apt-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/generated-sources</outputDirectory>
-                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.1.6.RELEASE</org.springframework.version>
-
+        <org.springframework.version>5.2.4.RELEASE</org.springframework.version>
+        <spring-boot-starter.version>2.3.3.RELEASE</spring-boot-starter.version>
         <!-- persistence -->
-        <hibernate.version>5.4.2.Final</hibernate.version>
-        <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
-        <spring-data-jpa.version>2.1.6.RELEASE</spring-data-jpa.version>
-        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <jta.version>1.1</jta.version>
-        <querydsl.version>4.2.1</querydsl.version>
-
-        <!-- util -->
-        <guava.version>21.0</guava.version>
-        <assertj.version>3.8.0</assertj.version>
-        <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
+        <persistence-api.version>2.2</persistence-api.version>
+        <transaction-api.version>1.3</transaction-api.version>
+        <spring-data-jpa.version>2.2.7.RELEASE</spring-data-jpa.version>
+        <h2.version>1.4.200</h2.version>
+        <!-- simple-jndi -->
+        <simple-jndi.version>0.23.0</simple-jndi.version>
+        <!-- test scoped -->
+        <mockito.version>3.3.3</mockito.version>
     </properties>
-
 </project>

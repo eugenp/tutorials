@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -19,7 +19,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-releasetrain</artifactId>
-                <version>Hopper-SR10</version>
+                <version>Lovelace-SR16</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -174,7 +174,7 @@
         <start-class>com.baeldung.Application</start-class>
         <spring.version>4.3.4.RELEASE</spring.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <spring-data-dynamodb.version>4.4.1</spring-data-dynamodb.version>
+        <spring-data-dynamodb.version>5.1.0</spring-data-dynamodb.version>
         <aws-java-sdk-dynamodb.version>1.11.64</aws-java-sdk-dynamodb.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <sqlite4java.version>1.0.392</sqlite4java.version>

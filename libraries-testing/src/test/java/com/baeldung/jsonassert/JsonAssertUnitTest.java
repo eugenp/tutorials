@@ -78,10 +78,10 @@ public class JsonAssertUnitTest {
 
     @Test
     public void givenArray_whenComparing_thenOrderMustMatchForStrict() throws JSONException {
-        String result = "[Alex, Barbera, Charlie, Xavier]";
-        JSONAssert.assertEquals("[Charlie, Alex, Xavier, Barbera]", result, JSONCompareMode.LENIENT);
-        JSONAssert.assertEquals("[Alex, Barbera, Charlie, Xavier]", result, JSONCompareMode.STRICT);
-        JSONAssert.assertNotEquals("[Charlie, Alex, Xavier, Barbera]", result, JSONCompareMode.STRICT);
+        String result = "[Alex, Barbera, Charlie, Wolf]";
+        JSONAssert.assertEquals("[Charlie, Alex, Wolf, Barbera]", result, JSONCompareMode.LENIENT);
+        JSONAssert.assertEquals("[Alex, Barbera, Charlie, Wolf]", result, JSONCompareMode.STRICT);
+        JSONAssert.assertNotEquals("[Charlie, Alex, Wolf, Barbera]", result, JSONCompareMode.STRICT);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class JsonAssertUnitTest {
 
     @Test
     public void whenComparingSizeOfArray_thenPass() throws JSONException {
-        String names = "{names:[Alex, Barbera, Charlie, Xavier]}";
+        String names = "{names:[Alex, Barbera, Charlie, Wolf]}";
         JSONAssert.assertEquals("{names:[4]}", names, new ArraySizeComparator(JSONCompareMode.LENIENT));
     }
 

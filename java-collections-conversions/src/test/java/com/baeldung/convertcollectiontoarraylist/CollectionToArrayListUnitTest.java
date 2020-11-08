@@ -53,14 +53,14 @@ public class CollectionToArrayListUnitTest {
 
         verifyShallowCopy(srcCollection, newList);
     }
-    
+
     /**
      * Section 5. Deep Copy
      */
     @Test
     public void whenUsingDeepCopy_thenVerifyDeepCopy() {
         ArrayList<Foo> newList = srcCollection.stream()
-          .map(foo -> foo.deepCopy())
+          .map(Foo::deepCopy)
           .collect(toCollection(ArrayList::new));
 
         verifyDeepCopy(srcCollection, newList);
@@ -83,13 +83,13 @@ public class CollectionToArrayListUnitTest {
      * @param a
      * @param b 
      */
-    private void verifyShallowCopy(Collection a, Collection b) {
+    private void verifyShallowCopy(Collection<Foo> a, Collection<Foo> b) {
         assertEquals("Collections have different lengths", a.size(), b.size());
         Iterator<Foo> iterA = a.iterator();
         Iterator<Foo> iterB = b.iterator();
         while (iterA.hasNext()) {
-            // use '==' to test instance identity
-            assertTrue("Foo instances differ!", iterA.next() == iterB.next());
+            // test instance identity
+            assertSame("Foo instances differ!", iterA.next(), iterB.next());
         }
     }
     
@@ -98,7 +98,7 @@ public class CollectionToArrayListUnitTest {
      * @param a
      * @param b 
      */
-    private void verifyDeepCopy(Collection a, Collection b) {
+    private void verifyDeepCopy(Collection<Foo> a, Collection<Foo> b) {
         assertEquals("Collections have different lengths", a.size(), b.size());
         Iterator<Foo> iterA = a.iterator();
         Iterator<Foo> iterB = b.iterator();
@@ -106,7 +106,7 @@ public class CollectionToArrayListUnitTest {
             Foo nextA = iterA.next();
             Foo nextB = iterB.next();
             // should not be same instance
-            assertFalse("Foo instances are the same!", nextA == nextB);
+            assertNotSame("Foo instances are the same!", nextA, nextB);
             // but should have same content
             assertFalse("Foo instances have different content!", fooDiff(nextA, nextB));
         }

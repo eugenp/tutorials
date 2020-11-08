@@ -2,19 +2,19 @@
 <transactionRecord>
 	<transactionRecord>
 		<amount>10000.0</amount>
-		<transactionDate>2015-10-31T00:00:00+05:30</transactionDate>
+		<transactionDate>2015-10-31 00:00:00</transactionDate>
 		<userId>1234</userId>
 		<username>devendra</username>
 	</transactionRecord>
 	<transactionRecord>
 		<amount>12321.0</amount>
-		<transactionDate>2015-12-03T00:00:00+05:30</transactionDate>
+		<transactionDate>2015-12-03 00:00:00</transactionDate>
 		<userId>2134</userId>
 		<username>john</username>
 	</transactionRecord>
 	<transactionRecord>
 		<amount>23411.0</amount>
-		<transactionDate>2015-02-02T00:00:00+05:30</transactionDate>
+		<transactionDate>2015-02-02 00:00:00</transactionDate>
 		<userId>2134</userId>
 		<username>robin</username>
 	</transactionRecord>

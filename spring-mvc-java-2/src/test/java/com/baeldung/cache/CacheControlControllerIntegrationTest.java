@@ -19,7 +19,7 @@ import static org.springframework.http.HttpHeaders.IF_UNMODIFIED_SINCE;
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {WebConfig.class, WebConfig.class})
+@ContextConfiguration(classes = {CacheWebConfig.class, CacheWebConfig.class})
 public class CacheControlControllerIntegrationTest {
 
     @Autowired

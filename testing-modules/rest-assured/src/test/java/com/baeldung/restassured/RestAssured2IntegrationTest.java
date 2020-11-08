@@ -17,8 +17,7 @@ import static io.restassured.RestAssured.with;
 import static org.hamcrest.Matchers.hasItems;
 
 public class RestAssured2IntegrationTest {
-    private static final int PORT = 8084;
-    private static WireMockServer wireMockServer = new WireMockServer(PORT);
+    private static WireMockServer wireMockServer;
 
     private static final String EVENTS_PATH = "/odds";
     private static final String APPLICATION_JSON = "application/json";
@@ -27,9 +26,11 @@ public class RestAssured2IntegrationTest {
     @BeforeClass
     public static void before() throws Exception {
         System.out.println("Setting up!");
+        final int port = Util.getAvailablePort();
+        wireMockServer = new WireMockServer(port);
         wireMockServer.start();
-        configureFor("localhost", PORT);
-        RestAssured.port = PORT;
+        configureFor("localhost", port);
+        RestAssured.port = port;
         stubFor(get(urlEqualTo(EVENTS_PATH)).willReturn(
           aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_JSON)

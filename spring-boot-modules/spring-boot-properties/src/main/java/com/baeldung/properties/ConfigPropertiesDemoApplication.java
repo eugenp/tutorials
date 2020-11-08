@@ -1,17 +1,15 @@
 package com.baeldung.properties;
 
+import com.baeldung.configurationproperties.ConfigProperties;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.baeldung.configurationproperties.ConfigProperties;
-
 @SpringBootApplication
-@ComponentScan(basePackageClasses = { ConfigProperties.class, JsonProperties.class, CustomJsonProperties.class })
+@ComponentScan(basePackageClasses = {ConfigProperties.class, AdditionalProperties.class})
 public class ConfigPropertiesDemoApplication {
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ConfigPropertiesDemoApplication.class).initializers(new JsonPropertyContextInitializer())
-            .run();
+        SpringApplication.run(ConfigPropertiesDemoApplication.class, args);
     }
 
 }

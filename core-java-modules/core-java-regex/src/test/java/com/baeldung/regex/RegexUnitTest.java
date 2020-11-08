@@ -26,7 +26,6 @@ public class RegexUnitTest {
         while (matcher.find())
             matches++;
         assertEquals(matches, 2);
-
     }
 
     @Test
@@ -452,7 +451,6 @@ public class RegexUnitTest {
         Matcher matcher = pattern.matcher("dogs are friendly");
         assertTrue(matcher.lookingAt());
         assertFalse(matcher.matches());
-
     }
 
     @Test
@@ -460,7 +458,6 @@ public class RegexUnitTest {
         Pattern pattern = Pattern.compile("dog");
         Matcher matcher = pattern.matcher("dog");
         assertTrue(matcher.matches());
-
     }
 
     @Test
@@ -469,7 +466,6 @@ public class RegexUnitTest {
         Matcher matcher = pattern.matcher("dogs are domestic animals, dogs are friendly");
         String newStr = matcher.replaceFirst("cat");
         assertEquals("cats are domestic animals, dogs are friendly", newStr);
-
     }
 
     @Test
@@ -478,7 +474,6 @@ public class RegexUnitTest {
         Matcher matcher = pattern.matcher("dogs are domestic animals, dogs are friendly");
         String newStr = matcher.replaceAll("cat");
         assertEquals("cats are domestic animals, cats are friendly", newStr);
-
     }
 
     public synchronized static int runTest(String regex, String text) {
