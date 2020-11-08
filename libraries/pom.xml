@@ -12,18 +12,6 @@
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor_2.12</artifactId>
-            <version>${typesafe-akka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-testkit_2.12</artifactId>
-            <version>${typesafe-akka.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
         <dependency>
             <groupId>org.beykery</groupId>
@@ -62,18 +50,6 @@
             <groupId>org.javers</groupId>
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.nats</groupId>
-            <artifactId>jnats</artifactId>
-            <version>${jnats.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>rome</groupId>
-            <artifactId>rome</artifactId>
-            <version>${rome.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -219,11 +195,6 @@
             <version>${quartz.version}</version>
         </dependency>
         <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>${streamex.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jool</artifactId>
             <version>${jool.version}</version>
@@ -245,28 +216,9 @@
             <version>${java-lsh.version}</version>
         </dependency>
         <dependency>
-            <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
-            <version>${pact.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.codehaus.groovy</groupId>
-                    <artifactId>groovy-all</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${awaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility-proxy</artifactId>
-            <version>${awaitility.version}</version>
-            <scope>test</scope>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commonsio.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -274,89 +226,12 @@
             <version>${org.hamcrest.java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-agent</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.pcollections</groupId>
-            <artifactId>pcollections</artifactId>
-            <version>${pcollections.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.machinezoo.noexception</groupId>
-            <artifactId>noexception</artifactId>
-            <version>${noexception.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections</artifactId>
-            <version>${eclipse-collections.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.haulmont.yarg</groupId>
-            <artifactId>yarg</artifactId>
-            <version>${yarg.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.engio</groupId>
-            <artifactId>mbassador</artifactId>
-            <version>${mbassador.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jdeferred</groupId>
-            <artifactId>jdeferred-core</artifactId>
-            <version>${jdeferred.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.codepoetics</groupId>
             <artifactId>protonpack</artifactId>
             <version>${protonpack.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava-java8</artifactId>
-            <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-            <version>${caffeine.version}</version>
-        </dependency>
-
-        <!--Java Docker API Client -->
-        <dependency>
-            <groupId>com.github.docker-java</groupId>
-            <artifactId>docker-java</artifactId>
-            <version>${docker.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--Java Docker API Client -->
 
         <!-- google api -->
         <dependency>
@@ -365,92 +240,10 @@
             <version>${google-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <classifier>test</classifier>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Atlassian Fugue -->
-        <dependency>
-            <groupId>io.atlassian.fugue</groupId>
-            <artifactId>fugue</artifactId>
-            <version>${fugue.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jctools</groupId>
-            <artifactId>jctools-core</artifactId>
-            <version>${jctools.version}</version>
-        </dependency>
-
-        <!-- resilience4j -->
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-circuitbreaker</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-bulkhead</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-retry</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-timelimiter</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup</groupId>
-            <artifactId>javapoet</artifactId>
-            <version>${javapoet.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>${hamcrest-all.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockftpserver</groupId>
-            <artifactId>MockFtpServer</artifactId>
-            <version>${mockftpserver.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Reflections -->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>${reflections.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.uber.nullaway</groupId>
-            <artifactId>nullaway</artifactId>
-            <version>0.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-compiler-javac-errorprone</artifactId>
-            <version>2.8</version>
-        </dependency>
-        <!-- override plexus-compiler-javac-errorprone's dependency on
-             Error Prone with the latest version -->
-        <dependency>
-            <groupId>com.google.errorprone</groupId>
-            <artifactId>error_prone_core</artifactId>
-            <version>2.1.3</version>
         </dependency>
     </dependencies>
 
@@ -569,46 +362,6 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5</version>
-                <configuration>
-                    <compilerId>javac-with-errorprone</compilerId>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <showWarnings>true</showWarnings>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>com.uber.nullaway</groupId>
-                            <artifactId>nullaway</artifactId>
-                            <version>0.3.0</version>
-                        </path>
-                    </annotationProcessorPaths>
-                    <compilerArgs>
-                        <!-- NullAway will warn by default, uncomment the next line to make the build fail -->
-                        <!-- <arg>-Xep:NullAway:ERROR</arg> -->
-                        <arg>-XepExcludedPaths:(.*)/test/.*|(.*)/streamex/.*</arg>
-                        <arg>-XepOpt:NullAway:AnnotatedPackages=com.baeldung.nullaway</arg>
-                    </compilerArgs>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.plexus</groupId>
-                        <artifactId>plexus-compiler-javac-errorprone</artifactId>
-                        <version>2.8</version>
-                    </dependency>
-                    <!-- override plexus-compiler-javac-errorprone's dependency on
-                         Error Prone with the latest version -->
-                    <dependency>
-                        <groupId>com.google.errorprone</groupId>
-                        <artifactId>error_prone_core</artifactId>
-                        <version>2.1.3</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -619,8 +372,6 @@
         <javatuples.version>1.2</javatuples.version>
         <assertj.version>3.6.2</assertj.version>
         <javers.version>3.1.0</javers.version>
-        <jnats.version>1.0</jnats.version>
-
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
@@ -629,26 +380,10 @@
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
-        <awaitility.version>3.0.0</awaitility.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
-        <bytebuddy.version>1.7.1</bytebuddy.version>
-        <pcollections.version>2.1.2</pcollections.version>
-        <rome.version>1.0</rome.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
-        <streamex.version>0.6.5</streamex.version>
-        <vavr.version>0.9.0</vavr.version>
-
         <protonpack.version>1.15</protonpack.version>
-        <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
-        <kafka.version>2.0.0</kafka.version>
-        <docker.version>3.0.14</docker.version>
-
         <jets3t-version>0.9.4.0006L</jets3t-version>
-        <jctools.version>2.1.2</jctools.version>
-        <typesafe-akka.version>2.5.11</typesafe-akka.version>
-        <resilience4j.version>0.12.1</resilience4j.version>
-        <javapoet.version>1.10.0</javapoet.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
         <datanucleus.version>5.1.1</datanucleus.version>
@@ -661,16 +396,9 @@
         <quartz.version>2.3.0</quartz.version>
         <jool.version>0.9.12</jool.version>
         <jmh.version>1.19</jmh.version>
-        <noexception.version>1.1.0</noexception.version>
-        <yarg.version>2.0.4</yarg.version>
-        <mbassador.version>1.3.1</mbassador.version>
-        <jdeferred.version>1.2.6</jdeferred.version>
-        <functionaljava.version>4.8.1</functionaljava.version>
-        <fugue.version>4.5.1</fugue.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
-        <reflections.version>0.9.11</reflections.version>
+        <commonsio.version>2.6</commonsio.version>
     </properties>
 
 </project>

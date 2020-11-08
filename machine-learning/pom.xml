@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>machine-learning</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Supervised Learning</name>
+    <name>machine-learning</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -12,23 +14,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <kotlin.version>1.3.50</kotlin.version>
-        <dl4j.version>0.9.1</dl4j.version>
-        <clean.plugin.version>3.1.0</clean.plugin.version>
-        <resources.plugin.version>3.0.2</resources.plugin.version>
-        <jar.plugin.version>3.0.2</jar.plugin.version>
-        <compiler.plugin.version>3.8.0</compiler.plugin.version>
-        <surefire.plugin.version>2.22.1</surefire.plugin.version>
-        <install.plugin.version>2.5.2</install.plugin.version>
-        <deploy.plugin.version>2.8.2</deploy.plugin.version>
-        <site.plugin.version>3.7.1</site.plugin.version>
-        <report.plugin.version>3.0.0</report.plugin.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -157,5 +142,22 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <kotlin.version>1.3.50</kotlin.version>
+        <dl4j.version>0.9.1</dl4j.version>
+        <clean.plugin.version>3.1.0</clean.plugin.version>
+        <resources.plugin.version>3.0.2</resources.plugin.version>
+        <jar.plugin.version>3.0.2</jar.plugin.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <surefire.plugin.version>2.22.1</surefire.plugin.version>
+        <install.plugin.version>2.5.2</install.plugin.version>
+        <deploy.plugin.version>2.8.2</deploy.plugin.version>
+        <site.plugin.version>3.7.1</site.plugin.version>
+        <report.plugin.version>3.0.0</report.plugin.version>
+    </properties>
 
 </project>

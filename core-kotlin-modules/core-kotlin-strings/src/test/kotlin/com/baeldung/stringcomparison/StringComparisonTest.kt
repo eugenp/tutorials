@@ -19,9 +19,9 @@ class StringComparisonUnitTest {
     fun `compare using referential equals operator`() {
         val first = "kotlin"
         val second = "kotlin"
-        val copyOfFirst = buildString { "kotlin" }
+        val third = String("kotlin".toCharArray())
         assertTrue { first === second }
-        assertFalse { first === copyOfFirst }
+        assertFalse { first === third }
     }
 
     @Test

@@ -29,12 +29,24 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>db-util</artifactId>
+            <version>${db-util.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <db-util.version>1.0.4</db-util.version>
+
     </properties>
 
 </project>

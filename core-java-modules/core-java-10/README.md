@@ -9,3 +9,4 @@ This module contains articles about Java 10 core features
 - [Copy a List to Another List in Java](http://www.baeldung.com/java-copy-list-to-another)
 - [Deep Dive Into the New Java JIT Compiler – Graal](https://www.baeldung.com/graal-java-jit-compiler)
 - [Copying Sets in Java](https://www.baeldung.com/java-copy-sets)
+- [Converting between a List and a Set in Java](https://www.baeldung.com/convert-list-to-set-and-set-to-list)

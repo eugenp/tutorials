@@ -44,8 +44,8 @@ public class DynamoDBConfig {
         return new BasicAWSCredentials(amazonAWSAccessKey, amazonAWSSecretKey);
     }
 
-    @Bean(name = "mvcHandlerMappingIntrospector")
-	public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
+    @Bean(name = "mvcHandlerMappingIntrospectorCustom")
+	public HandlerMappingIntrospector mvcHandlerMappingIntrospectorCustom() {
 		return new HandlerMappingIntrospector(context);
 	}
 }

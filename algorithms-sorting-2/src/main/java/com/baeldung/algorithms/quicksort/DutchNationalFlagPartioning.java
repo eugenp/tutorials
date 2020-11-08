@@ -5,21 +5,21 @@ import static com.baeldung.algorithms.quicksort.SortingUtils.swap;
 
 public class DutchNationalFlagPartioning {
 
-    public static Partition partition(int[] a, int begin, int end) {
+    public static Partition partition(int[] input, int begin, int end) {
         int lt = begin, current = begin, gt = end;
-        int partitioningValue = a[begin];
+        int partitioningValue = input[begin];
 
         while (current <= gt) {
-            int compareCurrent = compare(a[current], partitioningValue);
+            int compareCurrent = compare(input[current], partitioningValue);
             switch (compareCurrent) {
                 case -1:
-                    swap(a, current++, lt++);
+                    swap(input, current++, lt++);
                     break;
                 case 0:
                     current++;
                     break;
                 case 1:
-                    swap(a, current, gt--);
+                    swap(input, current, gt--);
                     break;
             }
         }

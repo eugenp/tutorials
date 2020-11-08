@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.deeplearning4j</groupId>
     <artifactId>deeplearning4j</artifactId>
@@ -35,6 +37,16 @@
             <artifactId>deeplearning4j-nn</artifactId>
             <version>${dl4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.datavec/datavec-api -->
         <dependency>
             <groupId>org.datavec</groupId>
@@ -51,6 +63,7 @@
     <properties>
         <dl4j.version>0.9.1</dl4j.version> <!-- Latest non beta version -->
         <httpclient.version>4.3.5</httpclient.version>
+        <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
 </project>

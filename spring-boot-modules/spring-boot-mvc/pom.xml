@@ -3,26 +3,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-mvc</artifactId>
-    <name>spring-boot-mvc</name>
-    <packaging>jar</packaging>
-    <description>Module For Spring Boot MVC</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
-    
-    <repositories>
-        <!-- Snapshot repository location -->
-        <repository>
-            <id>jcenter-snapshots</id>
-            <name>jcenter</name>
-            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
-        </repository>
-    </repositories>
+
+    <artifactId>spring-boot-mvc</artifactId>
+    <packaging>jar</packaging>
+
+    <name>spring-boot-mvc</name>
+    <description>Module For Spring Boot MVC</description>
 
     <dependencies>
 
@@ -46,6 +39,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
 
         <dependency>
@@ -97,24 +94,7 @@
         <!-- Spring Fox 2 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-data-rest</artifactId>
-            <version>${spring.fox.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
+            <artifactId>springfox-boot-starter</artifactId>
             <version>${spring.fox.version}</version>
         </dependency>
 
@@ -122,12 +102,12 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.1</version>
+            <version>${aspectjweaver.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.1</version>
+            <version>${aspectjweaver.version}</version>
         </dependency>
 
     </dependencies>
@@ -146,7 +126,7 @@
     </build>
 
     <properties>
-        <spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
+        <spring.fox.version>3.0.0</spring.fox.version>
         <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
         <javax.faces.version>2.3.7</javax.faces.version>

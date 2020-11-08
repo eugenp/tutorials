@@ -21,7 +21,7 @@ apply plugin: 'io.spring.dependency-management'
 //add tasks thinJar and thinResolve for thin JAR deployments
 apply plugin: 'org.springframework.boot.experimental.thin-launcher'
 
-group = 'org.baeldung'
+group = 'com.baeldung'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -35,16 +35,16 @@ dependencies {
 }
 
 springBoot {
-    mainClassName = 'org.baeldung.DemoApplication'
+    mainClassName = 'com.baeldung.DemoApplication'
 }
 
 bootJar {
 //    This is overridden by the mainClassName in springBoot{} and added here for reference purposes.
-    mainClassName = 'org.baeldung.DemoApplication'
+    mainClassName = 'com.baeldung.DemoApplication'
 
 //    This block serves the same purpose as the above thus commented out. Added here for reference purposes
 //    manifest {
-//        attributes 'Start-Class': 'org.baeldung.DemoApplication'
+//        attributes 'Start-Class': 'com.baeldung.DemoApplication'
 //    }
 }
 

@@ -12,4 +12,6 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [Combining JPA And/Or Criteria Predicates](https://www.baeldung.com/jpa-and-or-criteria-predicates)
 - [JPA Annotation for the PostgreSQL TEXT Type](https://www.baeldung.com/jpa-annotation-postgresql-text-type)
 - [Mapping a Single Entity to Multiple Tables in JPA](https://www.baeldung.com/jpa-mapping-single-entity-to-multiple-tables)
+- [Constructing a JPA Query Between Unrelated Entities](https://www.baeldung.com/jpa-query-unrelated-entities)
+- [When Does JPA Set the Primary Key](https://www.baeldung.com/jpa-strategies-when-set-primary-key)
 - More articles: [[<-- prev]](/java-jpa)

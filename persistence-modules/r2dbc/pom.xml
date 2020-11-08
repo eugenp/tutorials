@@ -4,22 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.examples.r2dbc</groupId>
-    <artifactId>r2dbc-example</artifactId>
+    <artifactId>r2dbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>r2dbc-example</name>
+    <name>r2dbc</name>
     <description>Sample R2DBC Project</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
+	</parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <dependency>
@@ -62,9 +66,9 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
         <h2.version>1.4.200</h2.version>
+
     </properties>
 
 </project>

@@ -20,7 +20,7 @@ import com.baeldung.sampleapp.web.dto.Foo;
 import com.baeldung.sampleapp.web.exception.ResourceNotFoundException;
 
 @Controller
-@RequestMapping(value = "/foos")
+@RequestMapping(value = "/foo")
 public class MyFooController {
 
     private final Map<Long, Foo> myfoos;

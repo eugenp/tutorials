@@ -12,6 +12,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
+import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.endpoint.DefaultAuthorizationCodeTokenResponseClient;
 import org.springframework.security.oauth2.client.endpoint.OAuth2AccessTokenResponseClient;
 import org.springframework.security.oauth2.client.endpoint.OAuth2AuthorizationCodeGrantRequest;
@@ -46,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .defaultSuccessUrl("/loginSuccess")
             .failureUrl("/loginFailure");
     }
-
+    
     @Bean
     public AuthorizationRequestRepository<OAuth2AuthorizationRequest> authorizationRequestRepository() {
         return new HttpSessionOAuth2AuthorizationRequestRepository();
@@ -58,11 +60,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return accessTokenResponseClient;
     }
 
-    
     // additional configuration for non-Spring Boot projects
     private static List<String> clients = Arrays.asList("google", "facebook");
 
-    //@Bean
+//    @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         List<ClientRegistration> registrations = clients.stream()
             .map(c -> getRegistration(c))
@@ -70,6 +71,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .collect(Collectors.toList());
 
         return new InMemoryClientRegistrationRepository(registrations);
+    }
+
+//    @Bean
+    public OAuth2AuthorizedClientService authorizedClientService() {
+        return new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository());
     }
 
     private static String CLIENT_PROPERTY_KEY = "spring.security.oauth2.client.registration.";

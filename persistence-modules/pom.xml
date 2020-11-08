@@ -14,16 +14,24 @@
 
     <modules>
         <module>activejdbc</module>
+        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
+        <module>core-java-persistence-2</module>
         <module>deltaspike</module>
         <module>elasticsearch</module>
         <module>flyway</module>
+        <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
-        <module>hibernate5-2</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-ogm</module>
+        <module>hibernate-annotations</module>
+        <module>hibernate-exceptions</module>
+        <module>hibernate-libraries</module>
+        <module>hibernate-jpa</module>
+        <module>hibernate-queries</module>
+        <module>hibernate-enterprise</module>
         <module>influxdb</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
@@ -32,6 +40,7 @@
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-mongodb</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
+        <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
         <module>orientdb</module>
@@ -48,27 +57,46 @@
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-reactive</module>
+        <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
         <module>spring-data-geode</module>
-        <module>spring-data-jpa</module>
-        <module>spring-data-jpa-2</module>
-        <module>spring-data-jpa-3</module>
-        <module>spring-data-jpa-4</module>
+
+        <module>spring-data-jpa-annotations</module>
+        <module>spring-data-jpa-crud</module>
+        <module>spring-data-jpa-enterprise</module>
+        <module>spring-data-jpa-filtering</module>
+        <module>spring-data-jpa-query</module>
+        <module>spring-data-jpa-query-2</module>
+        <module>spring-data-jpa-repo</module>
+        <module>spring-data-jpa-repo-2</module>
+
+        <module>spring-data-jdbc</module>
+
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module> <!-- long running -->
-        <module>spring-hibernate4</module>
+        <module>spring-hibernate-5</module> <!-- long running -->        
         <module>spring-jpa</module>
+        <module>spring-jpa-2</module>
+        <module>spring-jdbc</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
     </modules>
 
+    <properties>
+        <!-- persistence -->
+        <hibernate.version>5.2.17.Final</hibernate.version>
+
+        <!-- testing -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit.version>4.13</junit.version>
+    </properties>
 </project>

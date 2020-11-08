@@ -12,4 +12,5 @@ This module contains articles about Spring MVC
 - [Excluding URLs for a Filter in a Spring Web Application](https://www.baeldung.com/spring-exclude-filter)
 - [Guide to Flash Attributes in a Spring Web Application](https://www.baeldung.com/spring-web-flash-attributes)
 - [Handling URL Encoded Form Data in Spring REST](https://www.baeldung.com/spring-url-encoded-form-data)
+- [Reading HttpServletRequest Multiple Times in Spring](https://www.baeldung.com/spring-reading-httpservletrequest-multiple-times)
 - More articles: [[<-- prev]](/spring-mvc-basics-2)[[more -->]](/spring-mvc-basics-4)
