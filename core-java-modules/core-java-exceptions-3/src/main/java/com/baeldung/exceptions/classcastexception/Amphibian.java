@@ -1,6 +1,6 @@
 package com.baeldung.exceptions.classcastexception;
 
-public class Reptile implements Animal {
+public class Amphibian implements Animal {
 
     @Override
     public String getName() {
