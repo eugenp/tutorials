@@ -4,6 +4,6 @@ public class Amphibian implements Animal {
 
     @Override
     public String getName() {
-        return "Reptile";
+        return "Amphibian";
     }
 }
