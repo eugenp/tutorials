@@ -11,7 +11,7 @@ public class CheckedCastsUnitTest {
         Animal animal = new Frog();
 
         //A checked downcast to Mammal is incompatible from Frog because Frog is not a subtype of Mammal.
-        Mammal mammal = (Mammal) animal;
+        Mammal mammal1 = (Mammal) animal;
     }
 
     @Test(expected = ClassCastException.class)
