@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MethodsServiceTest {
+class MethodsServiceIntegrationTest {
 
   @Autowired
   MethodsService methodsService;
