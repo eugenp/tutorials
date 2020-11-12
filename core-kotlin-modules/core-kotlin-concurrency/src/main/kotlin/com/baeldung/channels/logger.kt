@@ -1,4 +1,4 @@
-package com.baeldung.channles
+package com.baeldung.channels
 
 import java.text.SimpleDateFormat
 import java.util.*

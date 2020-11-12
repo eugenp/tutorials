@@ -1,4 +1,4 @@
-package com.baeldung.channles
+package com.baeldung.channels
 
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.Channel
