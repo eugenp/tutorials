@@ -12,12 +12,7 @@ import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-//@SpringBootTest
 class AESUtilUnitTest implements WithAssertions {
-
-    @Test
-    void contextLoads() {
-    }
 
     @Test
     void givenString_whenEncrypt_thenSuccess() throws NoSuchAlgorithmException {
@@ -41,7 +36,8 @@ class AESUtilUnitTest implements WithAssertions {
         SecretKey key = AESUtil.generateKey(128);
         String algorithm = "AES/CBC/PKCS5Padding";
         IvParameterSpec ivParameterSpec = AESUtil.generateIv();
-        File inputFile = Paths.get("src/test/resources/baeldung.txt").toFile();
+        File inputFile = Paths.get("src/test/resources/baeldung.txt")
+            .toFile();
         File encryptedFile = new File("classpath:baeldung.encrypted");
         File decryptedFile = new File("document.decrypted");
 
@@ -51,6 +47,8 @@ class AESUtilUnitTest implements WithAssertions {
 
         // then
         assertThat(inputFile).hasSameTextualContentAs(decryptedFile);
+        encryptedFile.delete();
+        decryptedFile.delete();
     }
 
     @Test
@@ -66,7 +64,7 @@ class AESUtilUnitTest implements WithAssertions {
         Student object = (Student) AESUtil.decryptObject(algorithm, sealedObject, key, ivParameterSpec);
 
         // then
-        assertThat(student).isEqualToComparingFieldByField(object);
+        assertThat(student).isEqualTo(object);
     }
 
     @Test
@@ -76,7 +74,7 @@ class AESUtilUnitTest implements WithAssertions {
         String password = "baeldung";
         String salt = "12345678";
         IvParameterSpec ivParameterSpec = AESUtil.generateIv();
-        SecretKey key = AESUtil.getKeyFromPassword(password,salt);
+        SecretKey key = AESUtil.getKeyFromPassword(password, salt);
 
         // when
         String cipherText = AESUtil.encryptPasswordBased(plainText, key, ivParameterSpec);
@@ -86,4 +84,3 @@ class AESUtilUnitTest implements WithAssertions {
         Assertions.assertEquals(plainText, decryptedCipherText);
     }
 }
-
