@@ -61,6 +61,7 @@
         <redisson.version>3.13.1</redisson.version>
         <jedis.version>3.3.0</jedis.version>
         <epoll.version>4.1.50.Final</epoll.version>
+
     </properties>
 
 </project>
