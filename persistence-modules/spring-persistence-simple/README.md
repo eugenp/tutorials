@@ -5,7 +5,7 @@
 
 ### Relevant Articles: 
 - [Transaction Propagation and Isolation in Spring @Transactional](https://www.baeldung.com/spring-transactional-propagation-isolation)
-- [JTA Transaction with Spring](https://www.baeldung.com/spring-vs-jta-transactional)
+- [Transactional Annotations: Spring vs. JTA](https://www.baeldung.com/spring-vs-jta-transactional)
 - [Test a Mock JNDI Datasource with Spring](https://www.baeldung.com/spring-mock-jndi-datasource)
 - [Detecting If a Spring Transaction Is Active](https://www.baeldung.com/spring-transaction-active)
 
