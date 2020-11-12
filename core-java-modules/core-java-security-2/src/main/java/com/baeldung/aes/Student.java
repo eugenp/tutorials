@@ -1,6 +1,7 @@
 package com.baeldung.crypto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Student implements Serializable {
     private String name;
@@ -25,5 +26,15 @@ public class Student implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Student student = (Student) o;
+        return age == student.age && Objects.equals(name, student.name);
     }
 }
