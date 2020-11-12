@@ -1,6 +1,6 @@
-package com.baeldung.channles
+package com.baeldung.channels
 
-import com.baeldung.channles.OrderStatus.*
+import com.baeldung.channels.OrderStatus.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce
