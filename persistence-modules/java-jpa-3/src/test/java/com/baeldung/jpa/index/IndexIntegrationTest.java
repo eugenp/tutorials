@@ -10,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.Optional;
 
-public class IndexUnitTest {
+public class IndexIntegrationTest {
     private static EntityManagerFactory factory;
     private static EntityManager entityManager;
 
