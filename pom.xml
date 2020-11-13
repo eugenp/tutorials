@@ -397,6 +397,7 @@
                 <module>ddd</module>
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
+                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
@@ -909,6 +910,7 @@
                 <module>ddd</module>
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
+                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
