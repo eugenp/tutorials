@@ -12,8 +12,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,16 +56,6 @@ public class KafkaTestContainersIntegrationTest {
 
     @Value("${test.topic}")
     private String topic;
-
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        kafka.start();
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        kafka.stop();
-    }
 
     @Test
     public void givenKafkaDockerContainer_whenSendingtoDefaultTemplate_thenMessageReceived() throws Exception {
