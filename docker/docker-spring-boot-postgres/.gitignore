@@ -33,3 +33,6 @@ build/
 .vscode/
 
 
+### Custom exclusions ###
+
+*.jar
