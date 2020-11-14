@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+    app:
+        image: 'docker.io/library/compose-postgres:0.0.1
+        container_name: app
+        depends_on:
+          - db
+        ports:
+          - '8080:8080'
+        environment:
+          - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+          - SPRING_DATASOURCE_USERNAME=compose-postgres
+          - SPRING_DATASOURCE_PASSWORD=compose-postgres
+          - SPRING_DATASOURCE_INITIALIZATION_MODE=always
+          - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+          - SPRING_JPA_SHOW_SQL=true
+          
+    db:
+        image: 'postgres:13.0-alpine'
+        container_name: compose-postgres
+        environment:
+          - POSTGRES_USER=compose-postgres
+          - POSTGRES_PASSWORD=compose-postgres
