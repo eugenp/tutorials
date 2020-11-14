@@ -1,7 +1,8 @@
-version: '3.7'
+version: '2'
 
 services:
     app:
+        image: 'docker-spring-boot-postgres:latest'
         build:
           context: .
         container_name: app
