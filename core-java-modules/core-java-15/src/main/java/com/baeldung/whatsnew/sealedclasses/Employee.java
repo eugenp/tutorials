@@ -1,4 +1,4 @@
-package whatsnew.sealedclasses;
+package com.baeldung.whatsnew.sealedclasses;
 
 import java.util.Date;
 
