@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
     app:
-        image: 'docker.io/library/compose-postgres:0.0.1
+        build:
+          context: .
         container_name: app
         depends_on:
           - db
