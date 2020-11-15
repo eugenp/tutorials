@@ -1,4 +1,4 @@
-package com.baeldung.channles
+package com.baeldung.channels
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
