@@ -1,13 +1,13 @@
-package com.baeldung.spring.rest.compress;
-
-import org.apache.commons.codec.Charsets;
-import org.apache.commons.io.IOUtils;
+package com.baeldung.compress;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
+
+import org.apache.commons.io.IOUtils;
 
 public class GzipUtils {
 
@@ -19,7 +19,7 @@ public class GzipUtils {
      * @throws Exception
      */
     public static byte[] compress(String text) throws Exception {
-        return GzipUtils.compress(text.getBytes(Charsets.UTF_8));
+        return GzipUtils.compress(text.getBytes(StandardCharsets.UTF_8));
     }
 
     /**
@@ -46,7 +46,7 @@ public class GzipUtils {
      */
     public static String decompress(byte[] body) throws IOException {
         try (GZIPInputStream gzipInputStream = new GZIPInputStream(new ByteArrayInputStream(body))) {
-            return IOUtils.toString(gzipInputStream, Charsets.UTF_8);
+            return IOUtils.toString(gzipInputStream, StandardCharsets.UTF_8);
         }
     }
 }

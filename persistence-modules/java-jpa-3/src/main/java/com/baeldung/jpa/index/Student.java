@@ -10,13 +10,13 @@ import java.util.Objects;
 
 @Entity
 @Table(indexes = {
-        @Index(columnList = "firstName"),
-        @Index(name = "fn_index", columnList = "id"),
-        @Index(name = "multiIndex1", columnList = "firstName, lastName"),
-        @Index(name = "multiIndex2", columnList = "lastName, firstName"),
-        @Index(name = "multiSortIndex", columnList = "firstName, lastName DESC"),
-        @Index(name = "uniqueIndex", columnList = "firstName", unique = true),
-        @Index(name = "uniqueMultiIndex", columnList = "firstName, lastName", unique = true)
+  @Index(columnList = "firstName"),
+  @Index(name = "fn_index", columnList = "id"),
+  @Index(name = "multiIndex1", columnList = "firstName, lastName"),
+  @Index(name = "multiIndex2", columnList = "lastName, firstName"),
+  @Index(name = "multiSortIndex", columnList = "firstName, lastName DESC"),
+  @Index(name = "uniqueIndex", columnList = "firstName", unique = true),
+  @Index(name = "uniqueMultiIndex", columnList = "firstName, lastName", unique = true)
 })
 public class Student implements Serializable {
     @Id

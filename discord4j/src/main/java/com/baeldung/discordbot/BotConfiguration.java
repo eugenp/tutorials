@@ -36,8 +36,6 @@ public class BotConfiguration {
                   .onErrorResume(listener::handleError)
                   .subscribe();
             }
-
-            client.onDisconnect().block();
         }
         catch ( Exception exception ) {
             log.error( "Be sure to use a valid bot token!", exception );

@@ -1,4 +1,4 @@
-package com.baeldung.spring.rest.compress;
+package com.baeldung.compress;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

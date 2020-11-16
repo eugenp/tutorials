@@ -1,4 +1,4 @@
-package com.baeldung.spring.rest.compress;
+package com.baeldung.compress;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
