@@ -3,7 +3,6 @@ package com.baeldung.docker;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,14 +11,14 @@ import javax.persistence.Table;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
     
     
-    @Column(name = "first_name", length = 100, nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
     
-    @Column(name = "last_name", length = 100, nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     public Customer() {
