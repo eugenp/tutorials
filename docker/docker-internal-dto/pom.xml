@@ -10,6 +10,6 @@
     </parent>
 
     <artifactId>docker-internal-dto</artifactId>
-	<name>docker-internal-dto</name>
+    <name>docker-internal-dto</name>
 
 </project>
