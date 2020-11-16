@@ -15,6 +15,7 @@ class ListVsMapUnitTest {
         for (String name : list) {
             assertThat(name).isIn(list);
         }
+        assertThat(list).containsExactly("Daniel", "Marko");
     }
 
     @Test
@@ -25,6 +26,7 @@ class ListVsMapUnitTest {
         for (String name : map.values()) {
             assertThat(name).isIn(map.values());
         }
+        assertThat(map.values()).containsExactlyInAnyOrder("Daniel", "Marko");
     }
 
 }
