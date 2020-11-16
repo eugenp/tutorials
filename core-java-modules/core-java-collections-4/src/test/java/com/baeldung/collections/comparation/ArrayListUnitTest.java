@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArrayListUnitTest {
 
     @Test
-    void givenList_whenItemAddedToSpecificIndex_thenItCanBeRetrieved() {
+    void givenArrayList_whenItemAddedToSpecificIndex_thenItCanBeRetrieved() {
         List<String> list = new ArrayList<>();
         list.add("Daniel");
         list.add(1, "Marko");
@@ -20,10 +20,11 @@ public class ArrayListUnitTest {
     }
 
     @Test
-    void givenList_whenItemRemovedViaIndex_thenListSizeIsReduced() {
+    void givenArrayList_whenItemRemovedViaIndex_thenListSizeIsReduced() {
         List<String> list = new ArrayList<>(Arrays.asList("Daniel", "Marko"));
         list.remove(1);
         assertThat(list).hasSize(1);
+        assertThat(list).doesNotContain("Marko");
     }
 
 }
