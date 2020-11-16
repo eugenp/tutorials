@@ -41,18 +41,18 @@
         </properties>
     </persistence-unit>
     <persistence-unit name="jpa-index">
-		    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		    <class>com.baeldung.jpa.index.Student</class>
-		    <exclude-unlisted-classes>true</exclude-unlisted-classes>
-		    <properties>
-		    	<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-		    	<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
-		    	<property name="javax.persistence.jdbc.user" value="sa" />
-		    	<property name="javax.persistence.jdbc.password" value="" />
-   			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-   			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-   			<property name="show_sql" value="true" />
-   			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
-   		</properties>
-   	</persistence-unit>
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+            <class>com.baeldung.jpa.index.Student</class>
+            <exclude-unlisted-classes>true</exclude-unlisted-classes>
+            <properties>
+                <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+                <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
+                <property name="javax.persistence.jdbc.user" value="sa" />
+                <property name="javax.persistence.jdbc.password" value="" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="show_sql" value="true" />
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+        </properties>
+    </persistence-unit>
 </persistence>
