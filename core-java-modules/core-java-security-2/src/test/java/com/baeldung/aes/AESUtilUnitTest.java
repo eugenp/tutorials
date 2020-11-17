@@ -1,4 +1,4 @@
-package com.baeldung.crypto;
+package com.baeldung.aes;
 
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.Assertions;
