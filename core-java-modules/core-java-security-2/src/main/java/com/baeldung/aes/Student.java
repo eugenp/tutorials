@@ -1,4 +1,4 @@
-package com.baeldung.crypto;
+package com.baeldung.aes;
 
 import java.io.Serializable;
 import java.util.Objects;

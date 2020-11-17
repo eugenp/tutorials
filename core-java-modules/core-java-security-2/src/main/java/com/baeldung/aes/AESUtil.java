@@ -1,4 +1,4 @@
-package com.baeldung.crypto;
+package com.baeldung.aes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
