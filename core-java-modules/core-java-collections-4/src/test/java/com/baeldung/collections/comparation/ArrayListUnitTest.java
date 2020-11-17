@@ -14,9 +14,9 @@ public class ArrayListUnitTest {
     void givenArrayList_whenItemAddedToSpecificIndex_thenItCanBeRetrieved() {
         List<String> list = new ArrayList<>();
         list.add("Daniel");
-        list.add(1, "Marko");
+        list.add(0, "Marko");
         assertThat(list).hasSize(2);
-        assertThat(list.get(1)).isEqualTo("Marko");
+        assertThat(list.get(0)).isEqualTo("Marko");
     }
 
     @Test
