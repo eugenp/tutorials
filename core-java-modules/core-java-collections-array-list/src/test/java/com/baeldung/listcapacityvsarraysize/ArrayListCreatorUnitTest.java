@@ -1,6 +1,5 @@
 package com.baeldung.listcapacityvsarraysize;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,27 +7,21 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayListCreatorUnitTest {
-    private ArrayListCreator<Integer> arrayListCreator;
-
-    @BeforeEach
-    void setUp() {
-        arrayListCreator = new ArrayListCreator<>();
-    }
 
     @Test
     void givenValidCapacityOfList_whenCreateListInvoked_thenCreateNewArrayListWithGivenCapacity() {
-        assertNotNull(arrayListCreator.createArrayList(100));
+        ArrayList<Integer> list = new ArrayList<>(100);
+
+        assertNotNull(list);
     }
 
     @Test
     void givenInvalidCapacityOfList_whenCreateListInvoked_thenThrowException() {
-        assertThrows(IllegalArgumentException.class, () -> arrayListCreator.createArrayList(-1));
+        assertThrows(IllegalArgumentException.class, () -> new ArrayList<>(-1));
     }
 
     @Test
     void givenValidCapacityOfList_whenCreateListInvoked_thenCreateNewArrayListWithSizeZero() {
-        ArrayList<Integer> list = arrayListCreator.createArrayList(100);
-
-        assertEquals(0, list.size());
+        assertEquals(0, new ArrayList<Integer>(100).size());
     }
 }
