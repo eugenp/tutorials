@@ -15,7 +15,7 @@ public class LinkedListUnitTest {
     void givenLinkedList_whenItemIsAppended_thenItCanBeRetrieved() {
         LinkedList<String> list = new LinkedList<>();
         list.addLast("Daniel");
-        list.addFirst( "Marko");
+        list.addFirst("Marko");
         assertThat(list).hasSize(2);
         assertThat(list.getLast()).isEqualTo("Daniel");
     }
