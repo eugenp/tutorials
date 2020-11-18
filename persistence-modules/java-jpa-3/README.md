@@ -7,3 +7,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [JPA Entity Equality](https://www.baeldung.com/jpa-entity-equality)
 - [Ignoring Fields With the JPA @Transient Annotation](https://www.baeldung.com/jpa-transient-ignore-field)
 - [Defining Indexes in JPA](https://www.baeldung.com/jpa-indexes)
+- [JPA CascadeType.REMOVE vs orphanRemoval](https://www.baeldung.com/jpa-cascade-remove-vs-orphanremoval)
