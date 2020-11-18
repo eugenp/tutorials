@@ -29,6 +29,11 @@ public class UserControllerUnitTest {
     }
 
     @Test
+    public void whenCalledIndex_thenCorrect() {
+        assertThat(userController.showUserList(mockedModel)).isEqualTo("index");
+    }
+
+    @Test
     public void whenCalledshowSignUpForm_thenCorrect() {
         User user = new User("John", "john@domain.com");
 
