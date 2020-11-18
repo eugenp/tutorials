@@ -78,6 +78,6 @@ public class UserControllerUnitTest {
     
     @Test(expected = IllegalArgumentException.class)
     public void whenCalleddeleteUser_thenIllegalArgumentException() {
-        assertThat(userController.deleteUser(1l, mockedModel)).isEqualTo("index");
+        assertThat(userController.deleteUser(1l, mockedModel)).isEqualTo("redirect:/index");
     }
 }
