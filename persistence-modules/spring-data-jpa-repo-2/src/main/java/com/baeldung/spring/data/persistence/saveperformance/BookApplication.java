@@ -13,7 +13,7 @@ import java.util.List;
 public class BookApplication {
 
     @Autowired
-    private IBookRepository bookRepository;
+    private BookRepository bookRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(BookApplication.class, args);
