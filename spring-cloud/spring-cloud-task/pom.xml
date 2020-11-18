@@ -23,6 +23,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-task-dependencies</artifactId>
                 <version>${spring-cloud-task.version}</version>
@@ -42,6 +49,7 @@
     <properties>
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
         <spring-cloud-task.version>2.2.3.RELEASE</spring-cloud-task.version>
+
     </properties>
 
 </project>

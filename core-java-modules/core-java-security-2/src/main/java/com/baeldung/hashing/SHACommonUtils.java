@@ -3,7 +3,7 @@ package com.baeldung.hashing;
 class SHACommonUtils {
 
     public static String bytesToHex(byte[] hash) {
-        StringBuffer hexString = new StringBuffer();
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
         for (byte h : hash) {
             String hex = Integer.toHexString(0xff & h);
             if (hex.length() == 1)

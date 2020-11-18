@@ -64,6 +64,7 @@
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
         <postgresql.version>42.2.10</postgresql.version>
         <bytebuddy.version>1.10.10</bytebuddy.version>
+
     </properties>
     
 </project>
