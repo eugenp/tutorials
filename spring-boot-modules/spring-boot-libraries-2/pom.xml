@@ -39,7 +39,7 @@
     </dependencies>
 
     <properties>
-        <jobrunr.version>1.0.0</jobrunr.version>
+        <jobrunr.version>1.1.0</jobrunr.version>
         <awaitility.version>4.0.3</awaitility.version>
     </properties>
 

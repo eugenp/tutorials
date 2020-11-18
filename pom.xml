@@ -397,6 +397,7 @@
                 <module>ddd</module>
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
+                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
@@ -424,7 +425,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <module>httpclient-2</module>
+                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -465,7 +466,7 @@
                 <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
-                <module>jni</module>
+                <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json</module>
@@ -696,7 +697,6 @@
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-compress</module>
                 <module>spring-rest-http</module>
                 <module>spring-rest-http-2</module>
                 <module>spring-rest-query-language</module>
@@ -909,6 +909,7 @@
                 <module>ddd</module>
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
+                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
@@ -936,7 +937,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <module>httpclient-2</module>
+                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -977,7 +978,7 @@
                 <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
-                <module>jni</module>
+                <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json</module>
@@ -1198,7 +1199,6 @@
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-compress</module>
                 <module>spring-rest-http</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
@@ -1485,9 +1485,8 @@
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
-        <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.9.8</jackson.version>
+        <jackson.version>2.11.1</jackson.version>
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit-platform.version>1.2.0</junit-platform.version>
         <junit-jupiter.version>5.2.0</junit-jupiter.version>

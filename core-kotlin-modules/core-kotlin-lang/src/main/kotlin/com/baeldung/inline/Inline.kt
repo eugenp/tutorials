@@ -22,30 +22,6 @@ fun main() {
     numbers.each { println(random * it) } // capturing the random variable
 }
 
-fun namedFunction(): Int {
-    return 42
-}
-
-fun anonymous(): () -> Int {
-    return fun(): Int {
-        return 42
-    }
-}
-
-inline fun <T> List<T>.eachIndexed(f: (Int, T) -> Unit) {
-    for (i in indices) {
-        f(i, this[i])
-    }
-}
-
-fun <T> List<T>.indexOf(x: T): Int {
-    eachIndexed { index, value ->
-        if (value == x) return index
-    }
-
-    return -1
-}
-
 /**
  * Generates a random number.
  */
