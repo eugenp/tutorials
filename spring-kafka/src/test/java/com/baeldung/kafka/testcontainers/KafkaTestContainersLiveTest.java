@@ -36,11 +36,18 @@ import com.baeldung.kafka.embedded.KafkaConsumer;
 import com.baeldung.kafka.embedded.KafkaProducer;
 import com.baeldung.kafka.embedded.KafkaProducerConsumerApplication;
 
+/**
+ * This test class uses Testcontainers to instantiate and manage an external Apache 
+ * Kafka broker hosted inside a Docker container.
+ * 
+ * Therefore, one of the prerequisites for using Testcontainers is that Docker is installed on the host running this test
+ *
+ */
 @RunWith(SpringRunner.class)
-@Import(com.baeldung.kafka.testcontainers.KafkaTestContainersIntegrationTest.KafkaTestContainersConfiguration.class)
+@Import(com.baeldung.kafka.testcontainers.KafkaTestContainersLiveTest.KafkaTestContainersConfiguration.class)
 @SpringBootTest(classes = KafkaProducerConsumerApplication.class)
 @DirtiesContext
-public class KafkaTestContainersIntegrationTest {
+public class KafkaTestContainersLiveTest {
 
     @ClassRule
     public static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
