@@ -24,9 +24,9 @@ public class ArticlesController {
               "Introduction to Using Thymeleaf in Spring",
               "https://www.baeldung.com/thymeleaf-in-spring-mvc"
             ),
-            new Article(
-              "Spring Boot CRUD Application with Thymeleaf",
-              "https://www.baeldung.com/spring-boot-crud-thymeleaf"
+          new Article(
+            "Spring Boot CRUD Application with Thymeleaf",
+            "https://www.baeldung.com/spring-boot-crud-thymeleaf"
           ),
           new Article(
             "Spring MVC Data and Thymeleaf",
