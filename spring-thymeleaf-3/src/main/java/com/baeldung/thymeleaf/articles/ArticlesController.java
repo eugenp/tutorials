@@ -21,7 +21,7 @@ public class ArticlesController {
     private List<Article> fetchArticles() {
         return Arrays.asList(
           new Article(
-            "Introduction to Using Thymeleaf in Spring",
+              "Introduction to Using Thymeleaf in Spring",
               "https://www.baeldung.com/thymeleaf-in-spring-mvc"
             ),
             new Article(
