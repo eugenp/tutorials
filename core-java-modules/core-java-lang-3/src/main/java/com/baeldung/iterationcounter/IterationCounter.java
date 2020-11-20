@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class IterationCounter {
     public static final List<String> IMDB_TOP_MOVIES = Arrays.asList("The Shawshank Redemption",
-            "The Godfather", "The Godfather II", "The Dark Knight");
+      "The Godfather", "The Godfather II", "The Dark Knight");
 
     public static List<String> getRankingsWithForLoop(List<String> movies) {
         List<String> rankings = new ArrayList<>();
