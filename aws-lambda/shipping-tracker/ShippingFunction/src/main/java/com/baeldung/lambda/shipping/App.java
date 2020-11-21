@@ -6,10 +6,12 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +24,14 @@ import static org.hibernate.cfg.AvailableSettings.PASS;
  */
 public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private SessionFactory sessionFactory = createSessionFactory();
 
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent input, Context context) {
-        try (SessionFactory sessionFactory = createSessionFactory()) {
+        try {
             ShippingService service = new ShippingService(sessionFactory, new ShippingDao());
             return routeRequest(input, service);
+        } finally {
+            flushConnectionPool();
         }
     }
 
@@ -104,5 +109,13 @@ private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
           .addAnnotatedClass(Checkin.class)
           .buildMetadata()
           .buildSessionFactory();
+    }
+
+    private void flushConnectionPool() {
+        ConnectionProvider connectionProvider = sessionFactory.getSessionFactoryOptions()
+          .getServiceRegistry()
+          .getService(ConnectionProvider.class);
+        HikariDataSource hikariDataSource = connectionProvider.unwrap(HikariDataSource.class);
+        hikariDataSource.getHikariPoolMXBean().softEvictConnections();
     }
 }
