@@ -1,7 +1,5 @@
 package com.baeldung.graphql;
 
-import java.util.Optional;
-
 import com.coxautodev.graphql.tools.GraphQLResolver;
 
 public class PostResolver implements GraphQLResolver<Post> {
@@ -11,7 +9,7 @@ public class PostResolver implements GraphQLResolver<Post> {
         this.authorDao = authorDao;
     }
 
-    public Optional<Author> getAuthor(Post post) {
-        return authorDao.getAuthor(post.getAuthorId());
+    public Author getAuthor(Post post) {
+        return authorDao.getAuthor(post.getAuthorId()).orElseThrow(RuntimeException::new);
     }
 }
