@@ -9,7 +9,7 @@ public class FieldErrorExample {
 
     public static String getDependentMessage() {
 
-        return Dependent.message;
+        return Dependency.message;
     }
 
     public static void fetchAndPrint() {
