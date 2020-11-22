@@ -35,7 +35,7 @@ public class PerfectSquareUtil {
         return x1 == x2 && n % x1 == 0L;
     }
 
-    public static boolean isSquareNumberWithOptimization(long n) {
+    public static boolean isPerfectSquareWithOptimization(long n) {
         if (n < 0)
             return false;
         switch ((int) (n & 0xF)) {
