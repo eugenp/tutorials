@@ -8,4 +8,4 @@ This module contains articles about Spring RestTemplate
 - [Proxies With RestTemplate](https://www.baeldung.com/java-resttemplate-proxy)
 - [A Custom Media Type for a Spring REST API](https://www.baeldung.com/spring-rest-custom-media-type)
 - [RestTemplate Post Request with JSON](https://www.baeldung.com/spring-resttemplate-post-json)
-- [How to compress requests using the Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-compressing-requests)
+- [How to Compress Requests Using the Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-compressing-requests)
