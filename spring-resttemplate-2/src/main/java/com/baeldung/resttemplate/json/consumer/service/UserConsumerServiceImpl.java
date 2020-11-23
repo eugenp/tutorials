@@ -18,6 +18,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
 
     private static final String BASE_URL = "http://localhost:8080/users";
     private final RestTemplate restTemplate;
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     public UserConsumerServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -25,13 +26,12 @@ public class UserConsumerServiceImpl implements UserConsumerService {
 
     @Override
     public List<String> processUserDataFromObjectArray() {
-        ObjectMapper mapper = new ObjectMapper();
         ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(BASE_URL, Object[].class);
         Object[] objects = responseEntity.getBody();
         return Arrays.stream(objects)
-                       .map(object -> mapper.convertValue(object, User.class))
-                       .map(User::getName)
-                       .collect(Collectors.toList());
+          .map(object -> mapper.convertValue(object, User.class))
+          .map(User::getName)
+          .collect(Collectors.toList());
     }
 
     @Override
@@ -39,23 +39,23 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(BASE_URL, User[].class);
         User[] userArray = responseEntity.getBody();
         return Arrays.stream(userArray)
-                       .map(User::getName)
-                       .collect(Collectors.toList());
+          .map(User::getName)
+          .collect(Collectors.toList());
     }
 
     @Override
     public List<String> processUserDataFromUserList() {
-        ResponseEntity<List<User>> responseEntity = restTemplate.exchange(
-                BASE_URL,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<User>>() {
-                }
-        );
+        ResponseEntity<List<User>> responseEntity =
+          restTemplate.exchange(
+            BASE_URL,
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<User>>() {}
+          );
         List<User> users = responseEntity.getBody();
         return users.stream()
-                       .map(User::getName)
-                       .collect(Collectors.toList());
+          .map(User::getName)
+          .collect(Collectors.toList());
     }
 
     @Override
@@ -67,24 +67,24 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         HttpStatus statusCode = responseEntity.getStatusCode();
 
         return Arrays.stream(userArray)
-                       .flatMap(user -> user.getAddressList().stream())
-                       .map(Address::getPostCode)
-                       .collect(Collectors.toList());
+          .flatMap(user -> user.getAddressList().stream())
+          .map(Address::getPostCode)
+          .collect(Collectors.toList());
     }
 
     @Override
     public List<String> processNestedUserDataFromUserList() {
-        ResponseEntity<List<User>> responseEntity = restTemplate.exchange(
-                BASE_URL,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<User>>() {
-                }
-        );
+        ResponseEntity<List<User>> responseEntity =
+          restTemplate.exchange(
+            BASE_URL,
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<User>>() {}
+          );
         List<User> userList = responseEntity.getBody();
         return userList.stream()
-                       .flatMap(user -> user.getAddressList().stream())
-                       .map(Address::getPostCode)
-                       .collect(Collectors.toList());
+          .flatMap(user -> user.getAddressList().stream())
+          .map(Address::getPostCode)
+          .collect(Collectors.toList());
     }
 }
