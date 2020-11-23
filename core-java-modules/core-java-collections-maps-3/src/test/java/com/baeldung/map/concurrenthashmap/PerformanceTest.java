@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ConcurrentHashMapVsSynchronizedMapPerformanceTest {
+public class PerformanceTest {
     
     public final static int THREAD_POOL_SIZE = 5;
     public final static int TEST_ITERATIONS = 5;
