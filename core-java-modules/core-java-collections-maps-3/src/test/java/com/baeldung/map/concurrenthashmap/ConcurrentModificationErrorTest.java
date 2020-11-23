@@ -1,4 +1,4 @@
-package com.baeldung.map.cuncurrenthashmap;
+package com.baeldung.map.concurrenthashmap;
 
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ConcurrentModificationErrorTest {
     
     @Test(expected = ConcurrentModificationException.class)
-    public void whenRemoveAndAddOnHashMap_thenCuncurrentModificationError() {
+    public void whenRemoveAndAddOnHashMap_thenConcurrentModificationError() {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "baeldung");
         map.put(2, "HashMap");
@@ -26,7 +26,7 @@ public class ConcurrentModificationErrorTest {
         }
     }
     
-    public void whenRemoveAndAddOnCuncurrentHashMap_thenNoError() {
+    public void whenRemoveAndAddOnConcurrentHashMap_thenNoError() {
         Map<Integer, String> map = new ConcurrentHashMap<>();
         map.put(1, "baeldung");
         map.put(2, "HashMap");

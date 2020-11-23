@@ -1,4 +1,4 @@
-package com.baeldung.map.cuncurrenthashmap;
+package com.baeldung.map.concurrenthashmap;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,14 +11,14 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ConcurrentHashMapVsSynchronizedMapTest {
+public class ConcurrentHashMapVsSynchronizedMapPerformanceTest {
     
     public final static int THREAD_POOL_SIZE = 5;
     public final static int TEST_ITERATIONS = 5;
     public final static int TEST_NO_ITEMS = 500000;
     
     @Test
-    public void randomReadAndWritePerformaceTest_cuncurrentHashMap_faster()
+    public void randomReadAndWritePerformaceTest_ConcurrentHashMap_faster()
             throws InterruptedException {
         // For synchronizedMap
         Long totalTimeForSynchronizedMap = 0l;
@@ -30,18 +30,18 @@ public class ConcurrentHashMapVsSynchronizedMapTest {
         Long avgTimeForSynchronizedMap = totalTimeForSynchronizedMap / TEST_ITERATIONS;
         
         // For ConcurrentHashMap Object
-        Long totalTimeForCuncurrentHashMap = 0l;
+        Long totalTimeForConcurrentHashMap = 0l;
         Map<String, Integer> fasterMap = new ConcurrentHashMap<>();
         for (int i = 0; i < TEST_ITERATIONS; i++) {
-            totalTimeForCuncurrentHashMap += performReadAndWriteTest(fasterMap);
+            totalTimeForConcurrentHashMap += performReadAndWriteTest(fasterMap);
         }
-        Long avgTimeForCuncurrentHashMap = totalTimeForCuncurrentHashMap / TEST_ITERATIONS;
+        Long avgTimeForConcurrentHashMap = totalTimeForConcurrentHashMap / TEST_ITERATIONS;
         
-        Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForCuncurrentHashMap);
+        Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForConcurrentHashMap);
     }
     
     @Test
-    public void randomWritePerformaceTest_cuncurrentHashMap_faster() throws InterruptedException {
+    public void randomWritePerformaceTest_ConcurrentHashMap_faster() throws InterruptedException {
         // For synchronizedMap
         Long totalTimeForSynchronizedMap = 0l;
         Map<String, Integer> slowerMap = Collections
@@ -52,18 +52,18 @@ public class ConcurrentHashMapVsSynchronizedMapTest {
         Long avgTimeForSynchronizedMap = totalTimeForSynchronizedMap / TEST_ITERATIONS;
         
         // For ConcurrentHashMap Object
-        Long totalTimeForCuncurrentHashMap = 0l;
+        Long totalTimeForConcurrentHashMap = 0l;
         Map<String, Integer> fasterMap = new ConcurrentHashMap<>();
         for (int i = 0; i < TEST_ITERATIONS; i++) {
-            totalTimeForCuncurrentHashMap += performWriteTest(fasterMap);
+            totalTimeForConcurrentHashMap += performWriteTest(fasterMap);
         }
-        Long avgTimeForCuncurrentHashMap = totalTimeForCuncurrentHashMap / TEST_ITERATIONS;
+        Long avgTimeForConcurrentHashMap = totalTimeForConcurrentHashMap / TEST_ITERATIONS;
         
-        Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForCuncurrentHashMap);
+        Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForConcurrentHashMap);
     }
     
     @Test
-    public void randomReadPerformaceTest_cuncurrentHashMap_faster() throws InterruptedException {
+    public void randomReadPerformaceTest_ConcurrentHashMap_faster() throws InterruptedException {
         
         Map<String, Integer> slowerMap = Collections
                 .synchronizedMap(addItems(new HashMap<String, Integer>()));
@@ -74,17 +74,16 @@ public class ConcurrentHashMapVsSynchronizedMapTest {
         }
         Long avgTimeForSynchronizedMap = totalTimeForSynchronizedMap / TEST_ITERATIONS;
         
-        Map<String, Integer> fasterMap = Collections
-                .synchronizedMap(addItems(new ConcurrentHashMap<String, Integer>()));
+        Map<String, Integer> fasterMap = addItems(new ConcurrentHashMap<String, Integer>());
         // For ConcurrentHashMap Object
-        Long totalTimeForCuncurrentHashMap = 0l;
+        Long totalTimeForConcurrentHashMap = 0l;
         new ConcurrentHashMap<>();
         for (int i = 0; i < TEST_ITERATIONS; i++) {
-            totalTimeForCuncurrentHashMap += performReadTest(fasterMap);
+            totalTimeForConcurrentHashMap += performReadTest(fasterMap);
         }
-        Long avgTimeForCuncurrentHashMap = totalTimeForCuncurrentHashMap / TEST_ITERATIONS;
+        Long avgTimeForConcurrentHashMap = totalTimeForConcurrentHashMap / TEST_ITERATIONS;
         
-        Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForCuncurrentHashMap);
+        Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForConcurrentHashMap);
     }
     
     private Map<String, Integer> addItems(Map<String, Integer> map) {
@@ -125,7 +124,7 @@ public class ConcurrentHashMapVsSynchronizedMapTest {
                 public void run() {
                     for (int i = 0; i < TEST_NO_ITEMS; i++) {
                         Integer randNumber = (int) Math.ceil(Math.random() * TEST_NO_ITEMS);
-                        Integer value = map.get(String.valueOf(randNumber));
+                        map.get(String.valueOf(randNumber));
                         map.put(String.valueOf(randNumber), randNumber);
                     }
                 }
@@ -146,7 +145,7 @@ public class ConcurrentHashMapVsSynchronizedMapTest {
                 public void run() {
                     for (int i = 0; i < TEST_NO_ITEMS; i++) {
                         Integer randNumber = (int) Math.ceil(Math.random() * TEST_NO_ITEMS);
-                        Integer value = map.get(String.valueOf(randNumber));
+                        map.get(String.valueOf(randNumber));
                     }
                 }
             });
