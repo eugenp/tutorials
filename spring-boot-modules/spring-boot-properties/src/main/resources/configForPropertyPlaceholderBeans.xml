@@ -3,15 +3,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd"
 >
 
-<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-    <property name="locations">
-        <list>
-            <value>classpath:foo.properties</value>
-        </list>
-    </property>
-    <property name="ignoreUnresolvablePlaceholders" value="true"/>
-</bean>
-
 <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
     <property name="locations">
         <list>
