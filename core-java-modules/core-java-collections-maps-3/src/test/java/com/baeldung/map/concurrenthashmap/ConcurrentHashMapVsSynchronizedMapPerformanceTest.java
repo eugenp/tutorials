@@ -15,7 +15,7 @@ public class ConcurrentHashMapVsSynchronizedMapPerformanceTest {
     
     public final static int THREAD_POOL_SIZE = 5;
     public final static int TEST_ITERATIONS = 5;
-    public final static int TEST_NO_ITEMS = 500000;
+    public final static int TEST_NO_ITEMS = 10000;
     
     @Test
     public void randomReadAndWritePerformaceTest_ConcurrentHashMap_faster()
@@ -40,6 +40,28 @@ public class ConcurrentHashMapVsSynchronizedMapPerformanceTest {
         Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForConcurrentHashMap);
     }
     
+    private long performReadAndWriteTest(final Map<String, Integer> map)
+            throws InterruptedException {
+        long startTime = System.nanoTime();
+        ExecutorService exectures = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+        for (int j = 0; j < THREAD_POOL_SIZE; j++) {
+            exectures.execute(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i < TEST_NO_ITEMS; i++) {
+                        Integer randNumber = (int) Math.ceil(Math.random() * TEST_NO_ITEMS);
+                        map.get(String.valueOf(randNumber));
+                        map.put(String.valueOf(randNumber), randNumber);
+                    }
+                }
+            });
+        }
+        exectures.shutdown();
+        exectures.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
+        long entTime = System.nanoTime();
+        return (entTime - startTime) / 1000000L;
+    }
+    
     @Test
     public void randomWritePerformaceTest_ConcurrentHashMap_faster() throws InterruptedException {
         // For synchronizedMap
@@ -60,6 +82,26 @@ public class ConcurrentHashMapVsSynchronizedMapPerformanceTest {
         Long avgTimeForConcurrentHashMap = totalTimeForConcurrentHashMap / TEST_ITERATIONS;
         
         Assert.assertTrue(avgTimeForSynchronizedMap > avgTimeForConcurrentHashMap);
+    }
+    
+    private long performWriteTest(final Map<String, Integer> map) throws InterruptedException {
+        long startTime = System.nanoTime();
+        ExecutorService exectures = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+        for (int j = 0; j < THREAD_POOL_SIZE; j++) {
+            exectures.execute(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i < TEST_NO_ITEMS; i++) {
+                        Integer randNumber = (int) Math.ceil(Math.random() * TEST_NO_ITEMS);
+                        map.put(String.valueOf(randNumber), randNumber);
+                    }
+                }
+            });
+        }
+        exectures.shutdown();
+        exectures.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
+        long entTime = System.nanoTime();
+        return (entTime - startTime) / 1000000L;
     }
     
     @Test
@@ -92,48 +134,6 @@ public class ConcurrentHashMapVsSynchronizedMapPerformanceTest {
             map.put(String.valueOf(randNumber), randNumber);
         }
         return map;
-    }
-    
-    private long performWriteTest(final Map<String, Integer> map) throws InterruptedException {
-        long startTime = System.nanoTime();
-        ExecutorService exectures = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
-        for (int j = 0; j < THREAD_POOL_SIZE; j++) {
-            exectures.execute(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < TEST_NO_ITEMS; i++) {
-                        Integer randNumber = (int) Math.ceil(Math.random() * TEST_NO_ITEMS);
-                        map.put(String.valueOf(randNumber), randNumber);
-                    }
-                }
-            });
-        }
-        exectures.shutdown();
-        exectures.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
-        long entTime = System.nanoTime();
-        return (entTime - startTime) / 1000000L;
-    }
-    
-    private long performReadAndWriteTest(final Map<String, Integer> map)
-            throws InterruptedException {
-        long startTime = System.nanoTime();
-        ExecutorService exectures = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
-        for (int j = 0; j < THREAD_POOL_SIZE; j++) {
-            exectures.execute(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < TEST_NO_ITEMS; i++) {
-                        Integer randNumber = (int) Math.ceil(Math.random() * TEST_NO_ITEMS);
-                        map.get(String.valueOf(randNumber));
-                        map.put(String.valueOf(randNumber), randNumber);
-                    }
-                }
-            });
-        }
-        exectures.shutdown();
-        exectures.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
-        long entTime = System.nanoTime();
-        return (entTime - startTime) / 1000000L;
     }
     
     private long performReadTest(final Map<String, Integer> map) throws InterruptedException {
