@@ -54,7 +54,7 @@ class RandomStringUnitTest {
         random.nextBytes(bytes)
 
         var randomString = (0..bytes.size - 1).map { i ->
-            charPool.get((bytes[i] and 0xFF.toByte() and (charPool.size-1).toByte()).toInt())
+            charPool[random.nextInt(charPool.size)]
         }.joinToString("")
 
         assert(randomString.matches(Regex(ALPHANUMERIC_REGEX)))
