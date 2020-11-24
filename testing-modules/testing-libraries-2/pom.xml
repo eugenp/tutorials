@@ -14,6 +14,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.16.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-rules</artifactId>
             <version>${system-rules.version}</version>
@@ -78,7 +84,7 @@
     <properties>
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
-        <system-stubs.version>1.0.0</system-stubs.version>
+        <system-stubs.version>1.1.0</system-stubs.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
     </properties>
 </project>
