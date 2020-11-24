@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.baeldung.docker</groupId>
-	<artifactId>spring-boot-docker-postgres</artifactId>
+	<artifactId>docker-spring-boot-postgres</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-docker-postgres</name>
+	<name>docker-spring-boot-postgres</name>
 	<description>Demo project showing Spring Boot, PostgreSQL, and Docker</description>
 
 	<properties>
