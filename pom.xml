@@ -498,7 +498,6 @@
                 <module>lombok-custom</module>
                 <module>lucene</module>
 
-                <module>machine-learning</module>
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -996,7 +995,6 @@
                 <module>lombok-custom</module>
                 <module>lucene</module>
 
-                <module>machine-learning</module>
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
