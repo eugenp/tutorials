@@ -15,7 +15,7 @@ public class SpringStartupXMLConfigIntegrationTest {
     private ApplicationContext ctx;
 
     @Test
-    public void whenPostConstruct_shouldLogEnv() throws Exception {
+    public void whenInitMethod_shouldLogEnv() throws Exception {
         ctx.getBean(InitMethodExampleBean.class);
     }
 
