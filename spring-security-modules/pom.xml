@@ -38,7 +38,6 @@
         <module>spring-security-oauth2-sso</module>
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>
-        <module>spring-security-kotlin-dsl</module>
     </modules>
 
 </project>
