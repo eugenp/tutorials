@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CommandLineAppStartupRunner implements CommandLineRunner {
+
     private static final Logger LOG = LoggerFactory.getLogger(CommandLineAppStartupRunner.class);
     public static int counter;
 
