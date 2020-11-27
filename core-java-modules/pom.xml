@@ -29,7 +29,8 @@
         <module>core-java-arrays-convert</module>
         <module>core-java-arrays-operations-basic</module>
         <module>core-java-arrays-operations-advanced</module>
-        
+
+        <module>core-java-char</module>
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
