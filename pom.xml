@@ -640,7 +640,6 @@
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-                <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1128,7 +1127,6 @@
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
-                <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
