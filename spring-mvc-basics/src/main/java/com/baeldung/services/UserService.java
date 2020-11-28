@@ -1,8 +1,8 @@
-package com.baeldung.springdispatcherservlet.services;
+package com.baeldung.services;
 
 import org.springframework.stereotype.Service;
 
-import com.baeldung.springdispatcherservlet.domain.User;
+import com.baeldung.model.User;
 
 @Service
 public class UserService {

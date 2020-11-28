@@ -1,4 +1,4 @@
-package com.baeldung.springdispatcherservlet.domain;
+package com.baeldung.model;
 
 
 public class User {
