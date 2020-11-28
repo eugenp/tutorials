@@ -385,7 +385,6 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
-                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -884,7 +883,6 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
-                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
