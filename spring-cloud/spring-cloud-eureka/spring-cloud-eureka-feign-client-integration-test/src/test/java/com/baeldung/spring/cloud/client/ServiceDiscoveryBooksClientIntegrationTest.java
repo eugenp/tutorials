@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class, webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(classes = { MockBookServiceConfig.class }, initializers = { EurekaContainerConfig.Initializer.class })
-class EurekaBooksClientIntegrationTest {
+class ServiceDiscoveryBooksClientIntegrationTest {
 
     @Autowired
     private BooksClient booksClient;
