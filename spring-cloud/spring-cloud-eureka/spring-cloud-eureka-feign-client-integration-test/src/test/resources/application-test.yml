@@ -2,20 +2,10 @@
 #  service:
 #    url: http://localhost:9561
 
-#books-client:
-#  ribbon:
-#    listOfServers: http://localhost:9561
-
-spring:
-  application:
-    name: books-client
-
-server:
-  port: 0
+books-service:
+  ribbon:
+    listOfServers: http://localhost:9561
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
+    enabled: false

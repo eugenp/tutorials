@@ -1,7 +1,6 @@
 package com.baeldung.spring.cloud.client;
 
 import org.jetbrains.annotations.NotNull;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -24,7 +23,9 @@ public class EurekaContainerConfig {
             Startables.deepStart(Stream.of(eurekaServer)).join();
 
             TestPropertyValues
-              .of("eureka.client.serviceUrl.defaultZone=http://localhost:" + eurekaServer.getFirstMappedPort().toString() + "/eureka")
+              .of("eureka.client.serviceUrl.defaultZone=http://localhost:"
+                + eurekaServer.getFirstMappedPort().toString()
+                + "/eureka")
               .applyTo(configurableApplicationContext);
 
         }
