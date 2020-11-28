@@ -1,49 +1,53 @@
 package com.baeldung.spring.cloud.client;
 
-import com.baeldung.spring.cloud.Application;
 import com.baeldung.spring.cloud.model.Book;
-import com.netflix.discovery.EurekaClient;
+import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.List;
+import java.io.IOException;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.await;
+import static com.baeldung.spring.cloud.client.BookMocks.setupMockBooksResponse;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest
 @ActiveProfiles("test")
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = Application.class, webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(classes = {MockBookServiceConfig.class}, initializers = {EurekaContainerConfig.Initializer.class})
+@ContextConfiguration(classes = { WireMockConfig.class })
 class BooksClientIntegrationTest {
+
+    @Autowired
+    private WireMockServer mockBooksService;
 
     @Autowired
     private BooksClient booksClient;
 
-    @Autowired
-    @Lazy
-    private EurekaClient eurekaClient;
-
     @BeforeEach
-    void setUp() {
-        await().atMost(60, SECONDS).until(() -> eurekaClient.getApplications().size() > 0);
+    void setUp() throws IOException {
+        setupMockBooksResponse(mockBooksService);
     }
 
     @Test
-    public void whenGetBooks_thenListBooksSizeGreaterThanZero() throws InterruptedException {
-        List<Book> books = booksClient.getBooks();
+    public void whenGetBooks_thenBooksShouldBeReturned() {
+        assertFalse(booksClient.getBooks().isEmpty());
+    }
 
-        assertTrue(books.size() == 1);
+    @Test
+    public void whenGetBooks_thenTheCorrectBooksShouldBeReturned() {
+        assertTrue(booksClient.getBooks()
+          .containsAll(asList(
+            new Book("Dune", "Frank Herbert"),
+            new Book("Foundation", "Isaac Asimov"))));
     }
 
 }
