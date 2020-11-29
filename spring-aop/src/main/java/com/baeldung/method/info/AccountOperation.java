@@ -1,4 +1,4 @@
-package com.baeldung.method.info.v2;
+package com.baeldung.method.info;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

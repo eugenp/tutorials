@@ -1,4 +1,4 @@
-package com.baeldung.method.info.v2;
+package com.baeldung.method.info;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Component
 public class BankAccountAspect {
 
-  @Before(value="@annotation(com.baeldung.method.info.v2.AccountOperation)")
+  @Before(value="@annotation(com.baeldung.method.info.AccountOperation)")
   public void getAccountOperationInfo(JoinPoint joinPoint) {
 
     //Method Information
