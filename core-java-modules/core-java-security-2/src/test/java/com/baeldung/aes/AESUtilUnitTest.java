@@ -7,16 +7,23 @@ import org.junit.jupiter.api.Test;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 class AESUtilUnitTest implements WithAssertions {
 
     @Test
-    void givenString_whenEncrypt_thenSuccess() throws NoSuchAlgorithmException {
+    void givenString_whenEncrypt_thenSuccess()
+        throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
+        BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
         // given
         String input = "baeldung";
         SecretKey key = AESUtil.generateKey(128);
@@ -32,7 +39,9 @@ class AESUtilUnitTest implements WithAssertions {
     }
 
     @Test
-    void givenFile_whenEncrypt_thenSuccess() throws NoSuchAlgorithmException, IOException {
+    void givenFile_whenEncrypt_thenSuccess()
+        throws NoSuchAlgorithmException, IOException, IllegalBlockSizeException, InvalidKeyException,
+        BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
         // given
         SecretKey key = AESUtil.generateKey(128);
         String algorithm = "AES/CBC/PKCS5Padding";
@@ -53,7 +62,10 @@ class AESUtilUnitTest implements WithAssertions {
     }
 
     @Test
-    void givenObject_whenEncrypt_thenSuccess() throws NoSuchAlgorithmException {
+    void givenObject_whenEncrypt_thenSuccess()
+        throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException,
+        InvalidAlgorithmParameterException, NoSuchPaddingException, IOException, BadPaddingException,
+        ClassNotFoundException {
         // given
         Student student = new Student("Baeldung", 20);
         SecretKey key = AESUtil.generateKey(128);
@@ -69,7 +81,9 @@ class AESUtilUnitTest implements WithAssertions {
     }
 
     @Test
-    void givenPassword_whenEncrypt_thenSuccess() throws InvalidKeySpecException, NoSuchAlgorithmException {
+    void givenPassword_whenEncrypt_thenSuccess()
+        throws InvalidKeySpecException, NoSuchAlgorithmException, IllegalBlockSizeException,
+        InvalidKeyException, BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException {
         // given
         String plainText = "www.baeldung.com";
         String password = "baeldung";
