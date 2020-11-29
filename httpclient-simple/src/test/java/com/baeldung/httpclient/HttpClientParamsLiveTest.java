@@ -44,7 +44,7 @@ public class HttpClientParamsLiveTest {
     }
 
     @Test
-    public void whenGetWithStringParams_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    public void givenStringNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
         URI uri = new URIBuilder(httpGet.getURI()).addParameter("param1", "value1")
             .addParameter("param2", "value2")
@@ -58,9 +58,8 @@ public class HttpClientParamsLiveTest {
     }
 
     @Test
-    public void whenPostWithStringParams_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    public void givenStringNameValuePairParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
-
         URI uri = new URIBuilder(httpPost.getURI()).addParameter("param1", "value1")
             .addParameter("param2", "value2")
             .build();
@@ -73,7 +72,7 @@ public class HttpClientParamsLiveTest {
     }
 
     @Test
-    public void whenGetWithNameValuePairParams_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    public void givenNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
         URI uri = new URIBuilder(httpGet.getURI()).addParameters(nameValuePairs)
             .build();
@@ -86,7 +85,7 @@ public class HttpClientParamsLiveTest {
     }
 
     @Test
-    public void whenPostWithNameValuePairsParams_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    public void givenNameValuePairsParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
         URI uri = new URIBuilder(httpPost.getURI()).addParameters(nameValuePairs)
             .build();
@@ -99,7 +98,7 @@ public class HttpClientParamsLiveTest {
     }
 
     @Test
-    public void whenPostWithUrlEncodedEntityParams_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    public void givenUrlEncodedEntityParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
         httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, StandardCharsets.UTF_8));
         response = client.execute(httpPost);
