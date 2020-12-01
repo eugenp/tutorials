@@ -617,7 +617,8 @@
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
 
-                <module>spring-batch</module>
+		<module>spring-batch</module>
+		<module>spring-batch-2</module>	
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
