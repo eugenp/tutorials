@@ -20,7 +20,7 @@ import com.google.common.io.MoreFiles;
 
 public class WriteByteArrayUnitTest {
     private static byte[] dataForWriting;
-    
+
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
@@ -31,7 +31,7 @@ public class WriteByteArrayUnitTest {
 
     @Test
     public void whenUsingFileOutputStream_thenByteArrayIsWritten() throws IOException {
-    	File outputFile = tempFolder.newFile("example-fos.jpg");
+        File outputFile = tempFolder.newFile("example-fos.jpg");
         try (FileOutputStream outputStream = new FileOutputStream(outputFile)) {
             outputStream.write(dataForWriting);
             assertThat(outputFile).hasBinaryContent(dataForWriting);
@@ -40,21 +40,21 @@ public class WriteByteArrayUnitTest {
 
     @Test
     public void whenUsingNioFiles_thenByteArrayIsWritten() throws IOException {
-        File outputFile =  tempFolder.newFile("example-nio-files.jpg");
+        File outputFile = tempFolder.newFile("example-nio-files.jpg");
         Files.write(outputFile.toPath(), dataForWriting);
         assertThat(outputFile).hasBinaryContent(dataForWriting);
     }
 
     @Test
     public void whenUsingGuavaFiles_thenByteArrayIsWritten() throws IOException {
-    	File outputFile = tempFolder.newFile("example-guava-files.jpg");
+        File outputFile = tempFolder.newFile("example-guava-files.jpg");
         com.google.common.io.Files.write(dataForWriting, outputFile);
         assertThat(outputFile).hasBinaryContent(dataForWriting);
     }
 
     @Test
     public void whenUsingGuavaByteSink_thenByteArrayIsWritten() throws IOException {
-    	File outputFile = tempFolder.newFile("example-guava-bs.jpg");
+        File outputFile = tempFolder.newFile("example-guava-bs.jpg");
         ByteSink byteSink = com.google.common.io.Files.asByteSink(outputFile);
         byteSink.write(dataForWriting);
         assertThat(outputFile).hasBinaryContent(dataForWriting);
@@ -62,7 +62,7 @@ public class WriteByteArrayUnitTest {
 
     @Test
     public void whenUsingGuavaByteSinkMoreFiles_thenByteArrayIsWritten() throws IOException {
-    	File outputFile = tempFolder.newFile("example-guava-bs.jpg");
+        File outputFile = tempFolder.newFile("example-guava-bs.jpg");
         ByteSink byteSink = MoreFiles.asByteSink(outputFile.toPath(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         byteSink.write(dataForWriting);
         assertThat(outputFile).hasBinaryContent(dataForWriting);
@@ -70,7 +70,7 @@ public class WriteByteArrayUnitTest {
 
     @Test
     public void whenUserCommonsIo_thenByteArrayIsWritten() throws IOException {
-    	File outputFile = tempFolder.newFile("example-file-utils.jpg");
+        File outputFile = tempFolder.newFile("example-file-utils.jpg");
         FileUtils.writeByteArrayToFile(outputFile, dataForWriting);
         assertThat(outputFile).hasBinaryContent(dataForWriting);
     }
