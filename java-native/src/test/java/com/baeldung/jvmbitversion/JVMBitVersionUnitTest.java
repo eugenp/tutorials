@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.jvmbitversion.JVMBitVersion;
 import com.sun.jna.Platform;
 
 public class JVMBitVersionUnitTest {
@@ -19,9 +18,9 @@ public class JVMBitVersionUnitTest {
 
     @Test
     public void whenUsingSystemClass_thenOutputIsAsExpected() {
-        if (System.getProperty("sun.arch.data.model") == "64") {
+        if ("64".equals(System.getProperty("sun.arch.data.model"))) {
             assertEquals("64-bit", jvmVersion.getUsingSystemClass());
-        } else if (System.getProperty("sun.arch.data.model") == "32") {
+        } else if ("32".equals(System.getProperty("sun.arch.data.model"))) {
             assertEquals("32-bit", jvmVersion.getUsingSystemClass());
         }
     }
