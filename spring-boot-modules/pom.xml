@@ -26,6 +26,7 @@
         <module>spring-boot-artifacts</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-basic-customization</module>
+        <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-client</module>
         <module>spring-boot-config-jpa-error</module>
@@ -48,7 +49,6 @@
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
         <module>spring-boot-logging-log4j2</module>
-        <module>spring-boot-kotlin</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
@@ -64,6 +64,7 @@
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
+        <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-xml</module>

@@ -9,6 +9,7 @@ spring:
   profiles: test
 name: test-YAML
 environment: testing
+enabled: false
 servers:
   - www.abc.test.com
   - www.xyz.test.com
@@ -39,6 +40,7 @@ spring:
   profiles: prod
 name: prod-YAML
 environment: production
+enabled: true
 servers:
   - www.abc.com
   - www.xyz.com
@@ -49,6 +51,7 @@ spring:
     profiles: dev
 name: ${DEV_NAME:dev-YAML}
 environment: development
+enabled: true
 servers:
     - www.abc.dev.com
     - www.xyz.dev.com
