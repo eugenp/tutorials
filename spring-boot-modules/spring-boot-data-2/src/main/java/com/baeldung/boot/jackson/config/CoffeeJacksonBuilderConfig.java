@@ -1,12 +1,13 @@
 package com.baeldung.boot.jackson.config;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import static com.baeldung.boot.jackson.config.CoffeeConstants.localDateTimeSerializer;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
-import static com.baeldung.boot.jackson.config.CoffeeConstants.localDateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Configuration
 public class CoffeeJacksonBuilderConfig {
