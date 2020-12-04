@@ -1,12 +1,13 @@
 package com.baeldung.boot.jackson.config;
 
-import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import static com.baeldung.boot.jackson.config.CoffeeConstants.localDateTimeSerializer;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import static com.baeldung.boot.jackson.config.CoffeeConstants.localDateTimeSerializer;
+import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration
 @PropertySource("classpath:coffee.properties")
