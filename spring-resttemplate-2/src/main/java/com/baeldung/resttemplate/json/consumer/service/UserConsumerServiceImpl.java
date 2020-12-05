@@ -62,7 +62,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
     public List<String> processNestedUserDataFromUserArray() {
         ResponseEntity<User[]> responseEntity = restTemplate.getForEntity(BASE_URL, User[].class);
         User[] userArray = responseEntity.getBody();
-        //just for example on how we can get more info :
+        //we can get more info if we need :
         MediaType contentType = responseEntity.getHeaders().getContentType();
         HttpStatus statusCode = responseEntity.getStatusCode();
 
