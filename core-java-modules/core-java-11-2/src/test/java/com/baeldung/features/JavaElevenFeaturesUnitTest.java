@@ -40,7 +40,7 @@ class JavaElevenFeaturesUnitTest {
     }
 
     @Test
-    void givenSampleList_whenConvertingToUppercaseString_thenStringIsReturned() {
+    void givenSampleList_whenConvertingToUppercaseString_thenUppercaseIsReturned() {
         List<String> sampleList = Arrays.asList("Daniel", "Sanja");
         String resultString = sampleList.stream()
                 .map((@Nonnull var x) -> x.toUpperCase())
@@ -49,7 +49,7 @@ class JavaElevenFeaturesUnitTest {
     }
 
     @Test
-    void given1SampleList_whenConvertingToArray_thenItemsRemainUnchanged() {
+    void givenSampleList_whenExractingEvenNumbers_thenOnlyEvenNumbersAreReturned() {
         List<Integer> allNumbers = Arrays.asList(1, 2, 3, 4, 5);
         Predicate<Integer> isOdd = i -> i % 2 == 0;
         List<Integer> evenNumbers = allNumbers.stream()
