@@ -69,7 +69,7 @@ public class WriteByteArrayUnitTest {
     }
 
     @Test
-    public void whenUserCommonsIo_thenByteArrayIsWritten() throws IOException {
+    public void whenUsingCommonsIo_thenByteArrayIsWritten() throws IOException {
         File outputFile = tempFolder.newFile("example-file-utils.jpg");
         FileUtils.writeByteArrayToFile(outputFile, dataForWriting);
         assertThat(outputFile).hasBinaryContent(dataForWriting);
