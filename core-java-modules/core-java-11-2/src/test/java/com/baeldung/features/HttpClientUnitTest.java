@@ -24,7 +24,7 @@ class HttpClientUnitTest {
         mockServer = startClientAndServer(1080);
         mockServer.when(new org.mockserver.model.HttpRequest().withMethod("GET"))
                 .respond(new org.mockserver.model.HttpResponse().withStatusCode(200)
-                        .withBody("Hello from server!"));
+                        .withBody("Hello from the server!"));
     }
 
     @AfterAll
@@ -43,7 +43,7 @@ class HttpClientUnitTest {
                 .uri(URI.create("http://localhost:1080"))
                 .build();
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        assertThat(httpResponse.body()).isEqualTo("Hello from server!");
+        assertThat(httpResponse.body()).isEqualTo("Hello from the server!");
     }
 
 }

@@ -1,7 +1,5 @@
 package com.baeldung.features;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Nonnull;
@@ -10,7 +8,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class JavaElevenFeaturesUnitTest {
 
@@ -45,6 +46,16 @@ class JavaElevenFeaturesUnitTest {
                 .map((@Nonnull var x) -> x.toUpperCase())
                 .collect(Collectors.joining(", "));
         assertThat(resultString).isEqualTo("DANIEL, SANJA");
+    }
+
+    @Test
+    void given1SampleList_whenConvertingToArray_thenItemsRemainUnchanged() {
+        List<Integer> allNumbers = Arrays.asList(1, 2, 3, 4, 5);
+        Predicate<Integer> isOdd = i -> i % 2 == 0;
+        List<Integer> evenNumbers = allNumbers.stream()
+                .filter(Predicate.not(isOdd))
+                .collect(Collectors.toList());
+        assertThat(evenNumbers).containsExactly(1, 3, 5);
     }
 
 }
