@@ -4,8 +4,10 @@ import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.junit.Assert;
@@ -25,7 +27,34 @@ public class ConcurrentModificationErrorUnitTest {
             iterator.next();
         }
     }
+    
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenRemoveAndAddOnTreeMap_thenConcurrentModificationError() {
+        Map<Integer, String> map = new TreeMap<>();
+        map.put(1, "baeldung");
+        map.put(2, "HashMap");
+        Map<Integer, String> synchronizedMap = Collections.synchronizedMap(map);
+        Iterator<Entry<Integer, String>> iterator = synchronizedMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            synchronizedMap.put(3, "Modification");
+            iterator.next();
+        }
+    }
+    
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenRemoveAndAddOnLinkedHashMap_thenConcurrentModificationError() {
+        Map<Integer, String> map = new LinkedHashMap<>();
+        map.put(1, "baeldung");
+        map.put(2, "HashMap");
+        Map<Integer, String> synchronizedMap = Collections.synchronizedMap(map);
+        Iterator<Entry<Integer, String>> iterator = synchronizedMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            synchronizedMap.put(3, "Modification");
+            iterator.next();
+        }
+    }
 
+    @Test
     public void whenRemoveAndAddOnConcurrentHashMap_thenNoError() {
         Map<Integer, String> map = new ConcurrentHashMap<>();
         map.put(1, "baeldung");
