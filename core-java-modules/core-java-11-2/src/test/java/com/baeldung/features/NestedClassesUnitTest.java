@@ -17,8 +17,13 @@ class NestedClassesUnitTest {
     }
 
     @Test
-    public void giveNestedClass_whenCheckingNestmate_thenMainClassIsReturned() {
-        assertThat(MainClass.NestedClass.class.isNestmateOf(MainClass.class)).isTrue();
+    public void giveNestedClass_whenCheckingNestmate_thenNestedClassIsReturned() {
+        assertThat(MainClass.class.isNestmateOf(MainClass.NestedClass.class)).isTrue();
+    }
+
+    @Test
+    public void giveNestedClass_whenCheckingNestHost_thenMainClassIsReturned() {
+        assertThat(MainClass.NestedClass.class.getNestHost()).isEqualTo(MainClass.class);
     }
 
     @Test
