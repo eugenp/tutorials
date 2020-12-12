@@ -1,39 +1,25 @@
 package com.baeldung.file.separator;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.junit.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 public class FilePathSeparatorUnitTest {
 
     @Test
-    public void whenUsingGetFileSeparator_thenCorrect() throws IOException {
-        if (File.separator == ";")
-            assertEquals(";", FilePathSeparator.getFilePathSeparator());
+    @EnabledOnOs({ OS.WINDOWS })
+    public void whenBuildPathUsingString_thenResultIsAsExpected() throws IOException {
+        String[] pathNames = { "path1", "path2", "path3" };
+        assertEquals("path1;path2;path3", FilePathSeparator.buildPathUsingString(pathNames));
     }
 
     @Test
-    public void whenUsingGetFilePathSeparatorChar_thenOutputIsAsExpected() throws IOException {
-        if (File.separatorChar == ';')
-            assertEquals(';', FilePathSeparator.getFilePathSeparatorChar());
-    }
-
-    @Test
-    public void whenGetSystemProperty_thenResultIsAsExpected() throws IOException {
-        if (System.getProperty("path.separator") == ";")
-            assertEquals(";", FilePathSeparator.getSystemProperty());
-    }
-
-    @Test
-    public void buildFilePath_thenResultIsAsExpected() throws IOException {
-        String path1 = "src" + File.separator + "resources";
-        String path2 = "src" + File.separator + "main" + File.separator + "java";
-        String path3 = "src" + File.separator + "test";
-        String[] pathNames = { path1, path2, path3 };
-        if (System.getProperty("path.separator") == ";")
-            assertEquals("src\\resources;src\\main\\java;src\\test", FilePathSeparator.buildFilePath(pathNames));
+    @EnabledOnOs({ OS.WINDOWS })
+    public void whenbuildPathUsingStringJoiner_thenResultIsAsExpected() throws IOException {
+        assertEquals("path4;path5", FilePathSeparator.buildPathUsingStringJoiner("path4", "path5"));
     }
 }

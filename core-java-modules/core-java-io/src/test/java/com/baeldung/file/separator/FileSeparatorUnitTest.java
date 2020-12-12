@@ -1,36 +1,24 @@
 package com.baeldung.file.separator;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 public class FileSeparatorUnitTest {
 
     @Test
-    public void whenUsingGetFileSeparator_thenCorrect() throws IOException {
-        if (File.separator == "\\")
-            assertEquals("\\", FileSeparator.getFileSeparator());
+    @EnabledOnOs({ OS.WINDOWS })
+    public void whenUsingGetFileSeparator_thenCorrect() {
+        assertEquals("dir1\\dir2", FileSeparator.buildFilePathUsingPathsClass("dir1", "dir2"));
+
     }
 
     @Test
-    public void whenUsingGetFileSeparatorChar_thenOutputIsAsExpected() throws IOException {
-        if (File.separatorChar == '\\')
-            assertEquals('\\', FileSeparator.getFileSeparatorChar());
+    @EnabledOnOs({ OS.WINDOWS })
+    public void whenUsingGetFileSeparatorChar_thenOutputIsAsExpected() {
+        assertEquals("file1\\file2", FileSeparator.buildFilePathUsingFileClass("file1", "file2"));
     }
 
-    @Test
-    public void whenGetSystemProperty_thenResultIsAsExpected() throws IOException {
-        if (System.getProperty("file.separator") == "\\")
-            assertEquals("\\", FileSeparator.getSystemProperty());
-    }
-
-    @Test
-    public void constructPath_thenResultIsAsExpected() throws IOException {
-        String[] fileNames = { "src", "resources", "DataFile.txt" };
-        if (File.separatorChar == '\\')
-            assertEquals("src\\resources\\DataFile.txt", FileSeparator.buildFilePath(fileNames));
-    }
 }
