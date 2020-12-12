@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockserver.integration.ClientAndServer;
+import org.mockserver.model.HttpStatusCode;
+import org.mockserver.socket.PortFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -15,15 +17,18 @@ import java.time.Duration;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 
-class HttpClientUnitTest {
+class HttpClientIntegrationTest {
 
     private static ClientAndServer mockServer;
+    private static int port;
 
     @BeforeAll
     static void startServer() {
-        mockServer = startClientAndServer(1080);
+        port = PortFactory.findFreePort();
+        mockServer = startClientAndServer(port);
         mockServer.when(new org.mockserver.model.HttpRequest().withMethod("GET"))
-                .respond(new org.mockserver.model.HttpResponse().withStatusCode(200)
+                .respond(new org.mockserver.model.HttpResponse()
+                        .withStatusCode(HttpStatusCode.OK_200.code())
                         .withBody("Hello from the server!"));
     }
 
@@ -40,7 +45,7 @@ class HttpClientUnitTest {
                 .build();
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("http://localhost:1080"))
+                .uri(URI.create("http://localhost:" + port))
                 .build();
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         assertThat(httpResponse.body()).isEqualTo("Hello from the server!");

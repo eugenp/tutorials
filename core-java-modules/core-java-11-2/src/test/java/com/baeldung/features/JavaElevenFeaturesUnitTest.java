@@ -1,6 +1,8 @@
 package com.baeldung.features;
 
+import org.assertj.core.api.ListAssert;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -17,39 +19,39 @@ class JavaElevenFeaturesUnitTest {
 
     @Test
     void givenMultilineString_whenExtractingNonBlankStrippedLines_thenLinesAreReturned() {
-        String multilineString = "My name \n \n is \n Daniel.";
+        String multilineString = "Baeldung helps \n \n developers \n explore Java.";
         List<String> lines = multilineString.lines()
                 .filter(line -> !line.isBlank())
                 .map(String::strip)
                 .collect(Collectors.toList());
-        assertThat(lines).containsExactly("My name", "is", "Daniel.");
+        assertThat(lines).containsExactly("Baeldung helps", "developers", "explore Java.");
     }
 
     @Test
-    void givenTemporaryFile_whenReadingStringContent_thenContentIsReturned() throws IOException {
-        Path filePath = Files.writeString(Files.createTempFile("demo", ".txt"), "Sample text");
+    void givenTemporaryFile_whenReadingStringContent_thenContentIsReturned(@TempDir Path tempDir) throws IOException {
+        Path filePath = Files.writeString(Files.createTempFile(tempDir, "demo", ".txt"), "Sample text");
         String fileContent = Files.readString(filePath);
         assertThat(fileContent).isEqualTo("Sample text");
     }
 
     @Test
     void givenSampleList_whenConvertingToArray_thenItemsRemainUnchanged() {
-        List<String> sampleList = Arrays.asList("Daniel", "Sanja");
+        List<String> sampleList = Arrays.asList("Java", "Kotlin");
         String[] sampleArray = sampleList.toArray(String[]::new);
-        assertThat(sampleArray).containsExactly("Daniel", "Sanja");
+        assertThat(sampleArray).containsExactly("Java", "Kotlin");
     }
 
     @Test
     void givenSampleList_whenConvertingToUppercaseString_thenUppercaseIsReturned() {
-        List<String> sampleList = Arrays.asList("Daniel", "Sanja");
+        List<String> sampleList = Arrays.asList("Java", "Kotlin");
         String resultString = sampleList.stream()
                 .map((@Nonnull var x) -> x.toUpperCase())
                 .collect(Collectors.joining(", "));
-        assertThat(resultString).isEqualTo("DANIEL, SANJA");
+        assertThat(resultString).isEqualTo("JAVA, KOTLIN");
     }
 
     @Test
-    void givenSampleList_whenExractingEvenNumbers_thenOnlyEvenNumbersAreReturned() {
+    void givenSampleList_whenExtractingEvenNumbers_thenOnlyEvenNumbersAreReturned() {
         List<Integer> allNumbers = Arrays.asList(1, 2, 3, 4, 5);
         Predicate<Integer> isOdd = i -> i % 2 == 0;
         List<Integer> evenNumbers = allNumbers.stream()
