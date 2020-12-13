@@ -34,6 +34,7 @@
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
         <module>core-java-collections-3</module>
+        <module>core-java-collections-4</module>
         <module>core-java-collections-array-list</module>
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
