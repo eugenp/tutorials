@@ -4,9 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-collections-3</artifactId>
+    <artifactId>core-java-collections-4</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>core-java-collections-3</name>
+    <name>core-java-collections-4</name>
     <packaging>jar</packaging>
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
