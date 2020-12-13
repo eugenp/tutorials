@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
@@ -37,112 +36,92 @@ public class UserConsumerServiceImplUnitTest {
 
     @Test
     public void whenProcessUserDataAsObjects_thenOK() {
-        // Given
         String url = "http://localhost:8080/users";
         List<String> expected = Arrays.asList("user1", "user2");
 
-        // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo(url))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .body(USER_JSON)
+                   .contentType(MediaType.APPLICATION_JSON)
+                   .body(USER_JSON)
                 );
         List<String> actual = tested.processUserDataFromObjectArray();
 
-        // Then
         mockServer.verify();
-        assertEquals(actual.size(), expected.size());
         assertThat(actual).containsExactly(expected.get(0), expected.get(1));
     }
 
     @Test
     public void whenProcessUserDataAsArray_thenOK() {
-        // Given
         String url = "http://localhost:8080/users";
         List<String> expected = Arrays.asList("user1", "user2");
 
-        // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo(url))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .body(USER_JSON)
+                   .contentType(MediaType.APPLICATION_JSON)
+                   .body(USER_JSON)
                 );
         List<String> actual = tested.processUserDataFromUserArray();
 
-        // Then
         mockServer.verify();
-        assertEquals(actual.size(), expected.size());
         assertThat(actual).containsExactly(expected.get(0), expected.get(1));
     }
 
     @Test
     public void whenProcessUserDataAsList_thenOK() {
-        // Given
         String url = "http://localhost:8080/users";
         List<String> expected = Arrays.asList("user1", "user2");
 
-        // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo(url))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .body(USER_JSON)
+                   .contentType(MediaType.APPLICATION_JSON)
+                   .body(USER_JSON)
                 );
         List<String> actual = tested.processUserDataFromUserList();
 
-        // Then
         mockServer.verify();
-        assertEquals(actual.size(), expected.size());
         assertThat(actual).containsExactly(expected.get(0), expected.get(1));
     }
 
 
     @Test
     public void whenProcessNestedUserDataFromArray_thenOK() {
-        // Given
         String url = "http://localhost:8080/users";
         List<String> expected = Arrays.asList("user1_address1_postCode", "user1_address2_postCode", "user2_address1_postCode");
 
-        // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo(url))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .body(USER_JSON)
+                   .contentType(MediaType.APPLICATION_JSON)
+                   .body(USER_JSON)
                 );
         List<String> actual = tested.processNestedUserDataFromUserArray();
 
-        // Then
         mockServer.verify();
-        assertEquals(actual.size(), expected.size());
         assertThat(actual).containsExactly(expected.get(0), expected.get(1), expected.get(2));
     }
 
     @Test
     public void whenProcessNestedUserDataFromList_thenOK() {
-        // Given
         String url = "http://localhost:8080/users";
         List<String> expected = Arrays.asList("user1_address1_postCode", "user1_address2_postCode", "user2_address1_postCode");
 
-        // When
         mockServer.expect(ExpectedCount.once(),
                 requestTo(url))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
-                                    .contentType(MediaType.APPLICATION_JSON)
-                                    .body(USER_JSON)
+                   .contentType(MediaType.APPLICATION_JSON)
+                   .body(USER_JSON)
                 );
         List<String> actual = tested.processNestedUserDataFromUserList();
 
-        // Then
         mockServer.verify();
-        assertEquals(actual.size(), expected.size());
         assertThat(actual).containsExactly(expected.get(0), expected.get(1), expected.get(2));
     }
 }
