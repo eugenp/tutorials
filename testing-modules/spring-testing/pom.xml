@@ -114,7 +114,7 @@
         <awaitility.version>3.1.6</awaitility.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <junit.commons.version>1.7.0</junit.commons.version>
-        <spring.version>5.2.8.RELEASE</spring.version>
+        <spring.version>5.3.0</spring.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
