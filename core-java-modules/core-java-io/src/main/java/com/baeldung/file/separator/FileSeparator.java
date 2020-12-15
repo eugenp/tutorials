@@ -12,5 +12,4 @@ public class FileSeparator {
     public static String buildFilePathUsingFileClass(String file1, String file2) {
         return new File(file1, file2).toString();
     }
-
 }
