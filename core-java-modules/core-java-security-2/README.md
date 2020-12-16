@@ -14,4 +14,5 @@ This module contains articles about core Java Security
 - [Get a List of Trusted Certificates in Java](https://www.baeldung.com/java-list-trusted-certificates)
 - [Security Context Basics: User, Subject and Principal](https://www.baeldung.com/security-context-basics)
 - [Java AES Encryption and Decryption](https://www.baeldung.com/java-aes-encryption-decryption)
+- [InvalidAlgorithmParameterException: Wrong IV Length](https://www.baeldung.com/java-invalidalgorithmparameter-exception)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security)
