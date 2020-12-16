@@ -73,7 +73,7 @@ public class LivelockExample {
 
     public void tryLock(Lock lock, long millis) {
         try {
-            lock.tryLock(10, TimeUnit.MILLISECONDS);
+            lock.tryLock(millis, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

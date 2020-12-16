@@ -28,6 +28,7 @@
         <module>spring-security-web-login</module>
         <module>spring-security-web-persisted-remember-me</module>
         <module>spring-security-web-sockets</module>
+        <module>spring-security-legacy-oidc</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
         <module>spring-security-web-react</module>   
@@ -37,7 +38,6 @@
         <module>spring-security-oauth2-sso</module>
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>
-        <module>spring-security-kotlin-dsl</module>
     </modules>
 
 </project>

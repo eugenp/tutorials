@@ -18,10 +18,6 @@
         <!-- Prod Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
@@ -66,11 +62,6 @@
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
         <guava.version>21.0</guava.version>
         <testcontainers.version>1.12.2</testcontainers.version>
-
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
