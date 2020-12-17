@@ -14,10 +14,10 @@ public class Address {
 
     @JsonCreator
     public Address(
-        @JsonProperty("addressLine1") String addressLine1,
-        @JsonProperty("addressLine2") String addressLine2,
-        @JsonProperty("town") String town,
-        @JsonProperty("postCode") String postCode) {
+      @JsonProperty("addressLine1") String addressLine1,
+      @JsonProperty("addressLine2") String addressLine2,
+      @JsonProperty("town") String town,
+      @JsonProperty("postCode") String postCode) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.town = town;

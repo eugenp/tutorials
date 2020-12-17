@@ -14,9 +14,9 @@ public class User {
 
     @JsonCreator
     public User(
-            @JsonProperty("id") int id,
-            @JsonProperty("name") String name,
-            @JsonProperty("addressList") List<Address> addressList) {
+      @JsonProperty("id") int id,
+      @JsonProperty("name") String name,
+      @JsonProperty("addressList") List<Address> addressList) {
         this.id = id;
         this.name = name;
         this.addressList = addressList;
