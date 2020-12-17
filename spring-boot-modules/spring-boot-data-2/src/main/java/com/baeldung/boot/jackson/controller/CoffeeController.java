@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import static com.baeldung.boot.jackson.config.CoffeeConstants.FIXED_DATE;
 
 @RestController
 public class CoffeeController {
@@ -15,7 +15,7 @@ public class CoffeeController {
             @RequestParam(required = false) String brand,
             @RequestParam(required = false) String name) {
         return new Coffee().setBrand(brand)
-                .setDate(LocalDateTime.now())
+                .setDate(FIXED_DATE)
                 .setName(name);
     }
 }
