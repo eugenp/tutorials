@@ -86,5 +86,6 @@
         <spring-boot-admin-starter-client.version>2.2.2</spring-boot-admin-starter-client.version>
         <spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 </project>
