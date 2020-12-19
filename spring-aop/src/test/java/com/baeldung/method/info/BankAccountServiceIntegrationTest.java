@@ -11,38 +11,39 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class BankAccountServiceIntegrationTest {
 
-  private Account account;
+    private Account account;
 
-  @BeforeEach
-  public void setup() {
-    account = new Account();
-    account.setAccountNumber("12345");
-    account.setBalance(2000.0);
-  }
+    @BeforeEach
+    public void setup() {
+        account = new Account();
+        account.setAccountNumber("12345");
+        account.setBalance(2000.0);
+    }
 
-  @Autowired
-  BankAccountService bankAccountService;
+    @Autowired
+    BankAccountService bankAccountService;
 
-  @Test
-  void withdraw()  {
-    bankAccountService.withdraw(account, 500.0);
-    assertTrue(account.getBalance() == 1500.0);
-  }
+    @Test
+    void withdraw() {
+        bankAccountService.withdraw(account, 500.0);
+        assertTrue(account.getBalance() == 1500.0);
+    }
 
-  @Test
-  void withdrawWhenLimitReached()  {
-    Assertions.assertThatExceptionOfType(WithdrawLimitException.class).isThrownBy(() -> bankAccountService.withdraw(account, 600.0));
-    assertTrue(account.getBalance() == 2000.0);
-  }
+    @Test
+    void withdrawWhenLimitReached() {
+        Assertions.assertThatExceptionOfType(WithdrawLimitException.class)
+          .isThrownBy(() -> bankAccountService.withdraw(account, 600.0));
+        assertTrue(account.getBalance() == 2000.0);
+    }
 
-  @Test
-  void deposit() {
-    bankAccountService.deposit(account, 500.0);
-    assertTrue(account.getBalance() == 2500.0);
-  }
+    @Test
+    void deposit() {
+        bankAccountService.deposit(account, 500.0);
+        assertTrue(account.getBalance() == 2500.0);
+    }
 
-  @Test
-  void getBalance() {
-    bankAccountService.getBalance();
-  }
+    @Test
+    void getBalance() {
+        bankAccountService.getBalance();
+    }
 }
