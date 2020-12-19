@@ -50,16 +50,12 @@ class JavaElevenFeaturesUnitTest {
     }
 
     @Test
-    void givenSampleList_whenExtractingEvenNumbers_thenOnlyEvenNumbersAreReturned() {
-        List<Integer> allNumbers = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> evenNumbers = allNumbers.stream()
-                .filter(Predicate.not(JavaElevenFeaturesUnitTest::isOdd))
+    void givenSampleList_whenExtractingNonBlankValues_thenOnlyNonBlanksAreReturned() {
+        List<String> sampleList = Arrays.asList("Java", "\n \n", "Kotlin", " ");
+        List<String> withoutBlanks = sampleList.stream()
+                .filter(Predicate.not(String::isBlank))
                 .collect(Collectors.toList());
-        assertThat(evenNumbers).containsExactly(1, 3, 5);
-    }
-
-    private static boolean isOdd(int i) {
-        return i % 2 == 0;
+        assertThat(withoutBlanks).containsExactly("Java", "Kotlin");
     }
 
 }
