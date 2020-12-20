@@ -22,32 +22,29 @@ public class SwitchExprUnitTest {
 
         boolean isTodayHoliday;
         switch (day) {
-        case "MONDAY":
-        case "TUESDAY":
-        case "WEDNESDAY":
-        case "THURSDAY":
-        case "FRIDAY":
-            isTodayHoliday = false;
-            break;
-        case "SATURDAY":
-        case "SUNDAY":
-            isTodayHoliday = true;
-            break;
-        default:
-            throw new IllegalArgumentException("What's a " + day);
+            case "MONDAY":
+            case "TUESDAY":
+            case "WEDNESDAY":
+            case "THURSDAY":
+            case "FRIDAY":
+                isTodayHoliday = false;
+                break;
+            case "SATURDAY":
+            case "SUNDAY":
+                isTodayHoliday = true;
+                break;
+            default:
+                throw new IllegalArgumentException("What's a " + day);
         }
-
         return isTodayHoliday;
-
     }
 
     private boolean isTodayHolidayInJava14(String day) {
         return switch (day) {
-        case "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" -> false;
-        case "SATURDAY", "SUNDAY" -> true;
-        default -> throw new IllegalArgumentException("Unexpected value: " + day);
+            case "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" -> false;
+            case "SATURDAY", "SUNDAY" -> true;
+            default -> throw new IllegalArgumentException("Unexpected value: " + day);
         };
-
     }
 
 }
