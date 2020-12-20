@@ -25,7 +25,7 @@ public class RecordUnitTest {
 
         User user2 = user1;
 
-        assertTrue(user1.equals(user2));
+        assertEquals(user1, user2);
     }
 
     @Test
