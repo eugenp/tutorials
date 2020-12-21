@@ -714,6 +714,7 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
+                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
@@ -1199,6 +1200,7 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
+                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
