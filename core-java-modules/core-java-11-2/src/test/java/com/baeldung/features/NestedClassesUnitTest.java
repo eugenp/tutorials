@@ -29,8 +29,8 @@ class NestedClassesUnitTest {
     @Test
     public void giveNestedClass_whenCheckingNestMembers_thenNestMembersAreReturned() {
         Set<String> nestedMembers = Arrays.stream(MainClass.NestedClass.class.getNestMembers())
-                .map(Class::getName)
-                .collect(Collectors.toSet());
+          .map(Class::getName)
+          .collect(Collectors.toSet());
         assertThat(nestedMembers).contains(MainClass.class.getName(), MainClass.NestedClass.class.getName());
     }
 

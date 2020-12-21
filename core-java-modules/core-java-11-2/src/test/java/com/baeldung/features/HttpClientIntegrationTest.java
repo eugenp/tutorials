@@ -27,9 +27,9 @@ class HttpClientIntegrationTest {
         port = PortFactory.findFreePort();
         mockServer = startClientAndServer(port);
         mockServer.when(new org.mockserver.model.HttpRequest().withMethod("GET"))
-                .respond(new org.mockserver.model.HttpResponse()
-                        .withStatusCode(HttpStatusCode.OK_200.code())
-                        .withBody("Hello from the server!"));
+          .respond(new org.mockserver.model.HttpResponse()
+              .withStatusCode(HttpStatusCode.OK_200.code())
+              .withBody("Hello from the server!"));
     }
 
     @AfterAll
@@ -40,13 +40,13 @@ class HttpClientIntegrationTest {
     @Test
     void givenSampleHttpRequest_whenRequestIsSent_thenServerResponseIsReceived() throws IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newBuilder()
-                .version(HttpClient.Version.HTTP_2)
-                .connectTimeout(Duration.ofSeconds(20))
-                .build();
+          .version(HttpClient.Version.HTTP_2)
+          .connectTimeout(Duration.ofSeconds(20))
+          .build();
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create("http://localhost:" + port))
-                .build();
+          .GET()
+          .uri(URI.create("http://localhost:" + port))
+          .build();
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         assertThat(httpResponse.body()).isEqualTo("Hello from the server!");
     }
