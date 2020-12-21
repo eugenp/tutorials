@@ -4,7 +4,7 @@ This module contains articles about the basics of Spring MVC. Articles about mor
 their own module. 
 
 ### The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+The "REST With Spring" Classes: https://bit.ly/restwithspring
 
 ### Relevant Articles: 
 - [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
