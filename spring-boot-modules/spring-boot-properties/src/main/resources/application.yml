@@ -6,7 +6,9 @@ spring:
 ---
 
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: test
 name: test-YAML
 environment: testing
 enabled: false
@@ -37,7 +39,9 @@ component:
 ---
 
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
 name: prod-YAML
 environment: production
 enabled: true
@@ -48,7 +52,9 @@ servers:
 ---
 
 spring:
-    profiles: dev
+  config:
+    activate:
+      on-profile: dev
 name: ${DEV_NAME:dev-YAML}
 environment: development
 enabled: true
