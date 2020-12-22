@@ -14,6 +14,7 @@
     </parent>
 
     <modules>
+        <module>spring-mvc-basics</module>
     </modules>
 
 </project>
