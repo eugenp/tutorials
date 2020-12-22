@@ -9,3 +9,4 @@ This module contains articles about Spring with Thymeleaf
 - [Working with Select and Option in Thymeleaf](https://www.baeldung.com/thymeleaf-select-option)
 - [Conditional CSS Classes in Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-conditional-css-classes)
 - [Using Hidden Inputs with Spring and Thymeleaf](https://www.baeldung.com/spring-thymeleaf-hidden-inputs)
+- [Thymeleaf Variables](https://www.baeldung.com/thymeleaf-variables)
