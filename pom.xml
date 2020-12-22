@@ -662,8 +662,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-basics</module>
+                
                 <module>spring-mvc-basics-2</module>
                 <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-basics-4</module>
@@ -714,6 +713,7 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
+                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
@@ -1148,8 +1148,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-basics</module>
+                
                 <module>spring-mvc-basics-2</module>
                 <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-basics-4</module>
@@ -1199,6 +1198,7 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
+                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
