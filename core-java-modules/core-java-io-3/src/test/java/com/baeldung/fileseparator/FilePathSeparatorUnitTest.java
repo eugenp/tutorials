@@ -45,4 +45,3 @@ public class FilePathSeparatorUnitTest {
         return joiner.toString();
     }
 }
-

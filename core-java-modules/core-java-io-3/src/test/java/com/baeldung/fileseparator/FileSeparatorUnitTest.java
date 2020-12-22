@@ -35,4 +35,3 @@ public class FileSeparatorUnitTest {
         assertEquals("file1/file2", new File("file1", "file2").toString());
     }
 }
-
