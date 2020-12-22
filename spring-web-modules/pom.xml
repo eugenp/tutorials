@@ -15,6 +15,7 @@
 
     <modules>
         <module>spring-mvc-basics</module>
+        <module>spring-mvc-basics-2</module>
     </modules>
 
 </project>
