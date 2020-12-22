@@ -385,6 +385,7 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
+                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -617,8 +618,7 @@
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
 
-		<module>spring-batch</module>
-		<module>spring-batch-2</module>	
+                <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -640,6 +640,7 @@
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -714,7 +715,6 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
-                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
@@ -884,6 +884,7 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
+                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -1127,6 +1128,7 @@
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
+                <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1200,7 +1202,6 @@
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
-                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 

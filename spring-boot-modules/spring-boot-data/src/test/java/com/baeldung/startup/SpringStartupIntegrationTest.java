@@ -38,11 +38,6 @@ public class SpringStartupIntegrationTest {
     }
 
     @Test
-    public void whenInitMethod_shouldLogEnv() throws Exception {
-        ctx.getBean(InitMethodExampleBean.class);
-    }
-
-    @Test
     public void whenApplicationListener_shouldRunOnce() throws Exception {
         Assertions.assertThat(StartupApplicationListenerExample.counter).isEqualTo(1);
     }
