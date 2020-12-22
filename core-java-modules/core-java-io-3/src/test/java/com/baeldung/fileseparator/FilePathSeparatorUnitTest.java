@@ -14,16 +14,32 @@ public class FilePathSeparatorUnitTest {
 
     @Test
     @EnabledOnOs(OS.WINDOWS)
+    public void whenCheckPathSeparator_thenResultIsAsExpectedOnWindows() throws IOException {
+        assertEquals(";", File.pathSeparator);
+        assertEquals(';', File.pathSeparatorChar);
+    }
+    
+    @Test
+    @EnabledOnOs({ OS.LINUX, OS.MAC })
+    public void whenCheckPathSeparator_thenResultIsAsExpected() throws IOException {
+        assertEquals(":", File.pathSeparator);
+        assertEquals(':', File.pathSeparatorChar);
+    }
+    
+    @Test
+    @EnabledOnOs(OS.WINDOWS)
     public void whenBuildPathUsingString_thenResultIsAsExpectedOnWindows() throws IOException {
         String[] pathNames = { "path1", "path2", "path3" };
-        assertEquals("path1;path2;path3", String.join(File.pathSeparator, pathNames));
+        String path = String.join(File.pathSeparator, pathNames);
+        assertEquals("path1;path2;path3",path);
     }
 
     @Test
     @EnabledOnOs({ OS.LINUX, OS.MAC })
     public void whenBuildPathUsingString_thenResultIsAsExpected() throws IOException {
         String[] pathNames = { "path1", "path2", "path3" };
-        assertEquals("path1:path2:path3", String.join(File.pathSeparator, pathNames));
+        String path = String.join(File.pathSeparator, pathNames);
+        assertEquals("path1:path2:path3", path);
     }
 
     @Test
