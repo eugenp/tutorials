@@ -662,8 +662,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                                
-                <module>spring-mvc-basics-3</module>
+                                                
                 <module>spring-mvc-basics-4</module>
 
                 <module>spring-mvc-forms-jsp</module>
@@ -1148,7 +1147,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
                                 
-                <module>spring-mvc-basics-3</module>
                 <module>spring-mvc-basics-4</module>
 
                 <module>spring-mvc-forms-jsp</module>
