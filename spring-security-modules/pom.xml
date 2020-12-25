@@ -14,6 +14,10 @@
     </parent>
 
     <modules>
+        <module>spring-ldap</module>
+        <module>spring-5-security</module>
+        <module>spring-5-security-cognito</module>
+        <module>spring-5-security-oauth</module>
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
         <module>spring-security-web-angular/server</module>
@@ -38,6 +42,8 @@
         <module>spring-security-oauth2-sso</module>
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>
+        <module>spring-session</module>
+        <module>spring-social-login</module>
     </modules>
 
 </project>
