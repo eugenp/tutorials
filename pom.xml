@@ -606,9 +606,6 @@
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
-                <module>spring-5-security</module>
-                <module>spring-5-security-cognito</module>
-                <module>spring-5-security-oauth</module>
                 <module>spring-5-webflux</module>
 
                 <module>spring-activiti</module>
@@ -658,8 +655,6 @@
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
 
-                <module>spring-ldap</module>
-
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
                                                 
@@ -693,11 +688,9 @@
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
-                <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
-                <module>spring-soap</module>
-                <module>spring-social-login</module>
+                <module>spring-soap</module>               
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
@@ -1092,9 +1085,6 @@
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
-                <module>spring-5-security</module>
-                <module>spring-5-security-cognito</module>
-                <module>spring-5-security-oauth</module>
                 <module>spring-5-webflux</module>
 
                 <module>spring-activiti</module>
@@ -1142,8 +1132,6 @@
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
 
-                <module>spring-ldap</module>
-
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
                                 
@@ -1177,11 +1165,9 @@
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
-                <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
                 <module>spring-soap</module>
-                <module>spring-social-login</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
