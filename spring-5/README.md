@@ -2,9 +2,6 @@
 
 This module contains articles about Spring 5
 
-### The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
-
 ### Relevant Articles
 
 - [Concurrent Test Execution in Spring 5](https://www.baeldung.com/spring-5-concurrent-tests)
