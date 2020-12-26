@@ -1,7 +1,7 @@
 ## Spring MVC Basics with Java Configuration Example Project
 
 ### The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+The "REST With Spring" Classes: https://bit.ly/restwithspring
 
 ### Relevant Articles: 
 - [Quick Guide to Spring Controllers](https://www.baeldung.com/spring-controllers)
