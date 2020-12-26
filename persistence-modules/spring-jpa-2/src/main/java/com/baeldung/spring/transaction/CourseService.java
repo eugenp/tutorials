@@ -31,8 +31,4 @@ public class CourseService {
         }
     }
     
-    public Course findById(Long id) {
-        return courseDao.findOne(id);
-    }
-    
 }
