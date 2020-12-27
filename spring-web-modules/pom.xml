@@ -17,7 +17,9 @@
         <module>spring-mvc-basics</module>
         <module>spring-mvc-basics-2</module>
         <module>spring-mvc-basics-3</module>
-        <module>spring-mvc-basics-4</module>
+        <module>spring-mvc-basics-4</module>     
+        <module>spring-mvc-crash</module>
+        <module>spring-mvc-forms-jsp</module>
         <module>spring-thymeleaf</module>
     </modules>
 

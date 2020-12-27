@@ -658,7 +658,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-java-2</module>
@@ -1132,7 +1131,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-java-2</module>
@@ -1141,7 +1139,6 @@
                 <module>spring-mvc-views</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mvc-crash</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
