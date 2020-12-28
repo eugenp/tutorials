@@ -694,7 +694,6 @@
                 <module>spring-swagger-codegen</module>
 
                 <module>spring-threads</module>
-                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -1163,8 +1162,6 @@
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-
-                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
