@@ -21,6 +21,8 @@
         <module>spring-mvc-crash</module>
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
+        <module>spring-mvc-java</module>
+        <module>spring-mvc-java-2</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
     </modules>
