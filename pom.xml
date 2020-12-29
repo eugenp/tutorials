@@ -678,7 +678,6 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
-                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
@@ -1147,7 +1146,6 @@
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
-                <module>spring-resttemplate-2</module>
                 <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
