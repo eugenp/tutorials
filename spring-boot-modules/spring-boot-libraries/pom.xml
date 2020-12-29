@@ -6,7 +6,6 @@
     <artifactId>spring-boot-libraries</artifactId>
     <name>spring-boot-libraries</name>
     <packaging>war</packaging>
-    <description>This is simple boot application for Spring boot actuator test</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
