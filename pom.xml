@@ -658,7 +658,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-java-2</module>
 
@@ -1130,7 +1129,6 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-java-2</module>
 
