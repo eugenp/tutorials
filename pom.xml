@@ -673,7 +673,6 @@
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-http</module>
                 <module>spring-rest-http-2</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
@@ -1144,7 +1143,6 @@
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-http</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>

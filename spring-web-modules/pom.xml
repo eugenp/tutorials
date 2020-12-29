@@ -20,6 +20,7 @@
         <module>spring-mvc-basics-4</module>     
         <module>spring-mvc-crash</module>
         <module>spring-mvc-forms-jsp</module>
+        <module>spring-rest-http</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
         <module>spring-thymeleaf-3</module>
