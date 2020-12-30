@@ -11,7 +11,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>parent-spring-5/pom.xml</relativePath>
     </parent>
 
     <dependencies>
