@@ -21,5 +21,6 @@
     </modules>
 
     <properties>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 </project>
