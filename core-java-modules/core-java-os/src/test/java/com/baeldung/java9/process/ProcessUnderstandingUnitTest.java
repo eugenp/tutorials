@@ -17,28 +17,6 @@ import org.junit.jupiter.api.Test;
 class ProcessUnderstandingUnitTest {
 
     @Test
-    public void givenSourceProgram_whenExecutedFromAnotherProgram_thenSourceProgramOutput3() throws IOException {
-        Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
-        process = Runtime.getRuntime()
-            .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
-        BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
-        assertEquals(3, value);            
-    }
-
-    @Test
-    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
-        Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
-        process = Runtime.getRuntime()
-            .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
-        BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
-        assertEquals(3, value);                   
-    }
-
-    @Test
     public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
@@ -81,14 +59,6 @@ class ProcessUnderstandingUnitTest {
         Thread.sleep(10000);
         process.destroy();
         assertFalse(process.isAlive());
-    }
-
-    @Test
-    public void givenProcessNotCreated_fromWithinJavaApplicationDestroying_thenProcessNotAlive() {
-        Optional<ProcessHandle> optionalProcessHandle = ProcessHandle.of(5232);
-        ProcessHandle processHandle = optionalProcessHandle.get();
-        processHandle.destroy();
-        assertFalse(processHandle.isAlive());
     }
 
     //@Test - windows specific
