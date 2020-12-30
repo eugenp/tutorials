@@ -5,10 +5,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.String;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.lang.Integer;
 
@@ -87,5 +87,22 @@ class ProcessUnderstandingUnitTest {
         assertThat(((int) ProcessHandle.allProcesses()
             .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
             .count()) > 0);
+    }
+
+    @Test
+    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
+
+        Runtime.getRuntime()
+                .exec("javac -cp src src/main/java/com/baeldung/java9/process/OutputStreamExample.java"
+                        .replace("/", File.separator));
+
+        Process process = Runtime.getRuntime()
+                .exec("java -cp src/main/java com.baeldung.java9.process.OutputStreamExample"
+                .replace("/", File.separator));
+
+        BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        int value = Integer.parseInt(output.readLine());
+
+        assertEquals(3, value);
     }
 }
