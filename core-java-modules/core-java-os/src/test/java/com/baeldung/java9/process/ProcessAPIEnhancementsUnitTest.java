@@ -25,7 +25,7 @@ public class ProcessAPIEnhancementsUnitTest {
         ProcessHandle processHandle = ProcessHandle.current();
         ProcessHandle.Info processInfo = processHandle.info();
         assertNotNull(processHandle.pid());
-        assertEquals(false, processInfo.arguments()
+        assertEquals(true, processInfo.arguments()
           .isPresent());
         assertEquals(true, processInfo.command()
           .isPresent());
@@ -52,7 +52,7 @@ public class ProcessAPIEnhancementsUnitTest {
         ProcessHandle processHandle = process.toHandle();
         ProcessHandle.Info processInfo = processHandle.info();
         assertNotNull(processHandle.pid());
-        assertEquals(false, processInfo.arguments()
+        assertEquals(true, processInfo.arguments()
           .isPresent());
         assertEquals(true, processInfo.command()
           .isPresent());
@@ -61,7 +61,7 @@ public class ProcessAPIEnhancementsUnitTest {
           .contains("java"));
         assertEquals(true, processInfo.startInstant()
           .isPresent());
-        assertEquals(true, processInfo.totalCpuDuration()
+        assertEquals(false, processInfo.totalCpuDuration()
           .isPresent());
         assertEquals(true, processInfo.user()
           .isPresent());
@@ -74,13 +74,7 @@ public class ProcessAPIEnhancementsUnitTest {
             .forEach(ph -> {
                 assertNotNull(ph.pid());
                 assertEquals(true, ph.info()
-                  .command()
-                  .isPresent());
-                assertEquals(true, ph.info()
                   .startInstant()
-                  .isPresent());
-                assertEquals(true, ph.info()
-                  .totalCpuDuration()
                   .isPresent());
                 assertEquals(true, ph.info()
                   .user()
