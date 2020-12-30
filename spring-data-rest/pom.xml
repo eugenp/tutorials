@@ -99,6 +99,7 @@
     <properties>
         <start-class>com.baeldung.books.SpringDataRestApplication</start-class>
         <maven.version>1.0</maven.version>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 
 </project>
