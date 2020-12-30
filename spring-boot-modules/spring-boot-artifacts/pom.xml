@@ -87,12 +87,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-context</artifactId>
-            <version>${springcloud.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
@@ -216,7 +210,6 @@
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <guava.version>18.0</guava.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
-        <springcloud.version>2.0.2.RELEASE</springcloud.version>
         <httpclient.version>4.5.8</httpclient.version>
     </properties>
 
