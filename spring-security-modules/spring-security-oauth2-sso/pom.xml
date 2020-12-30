@@ -24,8 +24,8 @@
 
     <properties>
         <rest-assured.version>3.1.0</rest-assured.version>
-        <oauth.version>2.3.3.RELEASE</oauth.version>
-        <oauth-auto.version>2.1.1.RELEASE</oauth-auto.version>
+        <oauth.version>2.4.0.RELEASE</oauth.version>
+        <oauth-auto.version>2.4.0</oauth-auto.version>
         <spring-security-kerberos.version>1.0.1.RELEASE</spring-security-kerberos.version>
         <apacheds-jdbm1.version>2.0.0-M2</apacheds-jdbm1.version>
     </properties>
