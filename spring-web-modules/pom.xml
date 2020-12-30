@@ -24,6 +24,7 @@
         <module>spring-mvc-webflow</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-http</module>
+        <module>spring-rest-shell</module>
         <module>spring-resttemplate-2</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
