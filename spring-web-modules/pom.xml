@@ -22,6 +22,7 @@
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-views</module>
         <module>spring-mvc-webflow</module>
+        <module>spring-mvc-xml</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-http</module>
         <module>spring-resttemplate-2</module>

@@ -664,7 +664,6 @@
                 <module>spring-mvc-java-2</module>
 
                 <module>spring-mvc-velocity</module>
-                <module>spring-mvc-xml</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1130,7 +1129,6 @@
                 <module>spring-mvc-java-2</module>
 
                 <module>spring-mvc-velocity</module>
-                <module>spring-mvc-xml</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>

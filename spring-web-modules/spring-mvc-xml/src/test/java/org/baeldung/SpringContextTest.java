@@ -1,4 +1,4 @@
-package com.baeldung;
+package org.baeldung;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
