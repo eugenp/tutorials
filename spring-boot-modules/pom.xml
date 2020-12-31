@@ -24,6 +24,7 @@
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
         <module>spring-boot-artifacts</module>
+        <module>spring-boot-artifacts-2</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
