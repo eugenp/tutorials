@@ -11,14 +11,15 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.TOO_MANY_REQUESTS;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +81,7 @@ public class GreetingControllerIntegrationTest {
 
         assertEquals(limit, "1");
         assertEquals(remaining, "0");
-        Assert.assertNotEquals(reset, "2000");
+        assertNotEquals(reset, "2000");
 
         assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
 
@@ -101,13 +102,13 @@ public class GreetingControllerIntegrationTest {
 
         if (nullable) {
             if (quotaHeaders) {
-                Assert.assertNull(quota);
-                Assert.assertNull(remainingQuota);
+                assertNull(quota);
+                assertNull(remainingQuota);
             } else {
-                Assert.assertNull(limit);
-                Assert.assertNull(remaining);
+                assertNull(limit);
+                assertNull(remaining);
             }
-            Assert.assertNull(reset);
+            assertNull(reset);
         } else {
             if (quotaHeaders) {
                 assertNotNull(quota);
