@@ -10,6 +10,9 @@ import static org.hamcrest.Matchers.both;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.TOO_MANY_REQUESTS;
 
@@ -47,15 +50,15 @@ public class GreetingControllerIntegrationTest {
         String remaining = headers.getFirst(HEADER_REMAINING + key);
         String reset = headers.getFirst(HEADER_RESET + key);
 
-        Assert.assertEquals("5", limit);
-        Assert.assertEquals(remaining, "4", remaining);
-        Assert.assertNotNull(reset);
-        Assert.assertThat(
+        assertEquals("5", limit);
+        assertEquals(remaining, "4", remaining);
+        assertNotNull(reset);
+        assertThat(
                 parseInt(reset),
                 is(both(greaterThanOrEqualTo(0)).and(lessThanOrEqualTo(60000)))
         );
 
-        Assert.assertEquals(OK, response.getStatusCode());
+        assertEquals(OK, response.getStatusCode());
     }
 
     @Test
@@ -64,7 +67,7 @@ public class GreetingControllerIntegrationTest {
         HttpHeaders headers = response.getHeaders();
         String key = "rate-limit-application_serviceAdvanced_127.0.0.1";
         assertHeaders(headers, key, false, false);
-        Assert.assertEquals(OK, response.getStatusCode());
+        assertEquals(OK, response.getStatusCode());
 
         for (int i = 0; i < 2; i++) {
             response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
@@ -75,18 +78,18 @@ public class GreetingControllerIntegrationTest {
         String remaining = headers.getFirst(HEADER_REMAINING + key);
         String reset = headers.getFirst(HEADER_RESET + key);
 
-        Assert.assertEquals(limit, "1");
-        Assert.assertEquals(remaining, "0");
+        assertEquals(limit, "1");
+        assertEquals(remaining, "0");
         Assert.assertNotEquals(reset, "2000");
 
-        Assert.assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
+        assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
 
         TimeUnit.SECONDS.sleep(2);
 
         response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
         headers = response.getHeaders();
         assertHeaders(headers, key, false, false);
-        Assert.assertEquals(OK, response.getStatusCode());
+        assertEquals(OK, response.getStatusCode());
     }
 
     private void assertHeaders(HttpHeaders headers, String key, boolean nullable, boolean quotaHeaders) {
@@ -107,13 +110,13 @@ public class GreetingControllerIntegrationTest {
             Assert.assertNull(reset);
         } else {
             if (quotaHeaders) {
-                Assert.assertNotNull(quota);
-                Assert.assertNotNull(remainingQuota);
+                assertNotNull(quota);
+                assertNotNull(remainingQuota);
             } else {
-                Assert.assertNotNull(limit);
-                Assert.assertNotNull(remaining);
+                assertNotNull(limit);
+                assertNotNull(remaining);
             }
-            Assert.assertNotNull(reset);
+            assertNotNull(reset);
         }
     }
 }
