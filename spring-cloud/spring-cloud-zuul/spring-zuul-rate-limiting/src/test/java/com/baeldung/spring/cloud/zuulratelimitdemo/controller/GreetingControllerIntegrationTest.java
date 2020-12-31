@@ -5,14 +5,17 @@ import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateL
 import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateLimitConstants.HEADER_REMAINING;
 import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateLimitConstants.HEADER_REMAINING_QUOTA;
 import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateLimitConstants.HEADER_RESET;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static java.lang.Integer.parseInt;
+import static org.hamcrest.Matchers.both;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.TOO_MANY_REQUESTS;
 
 import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @AutoConfigureTestDatabase
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GreetingControllerManualTest {
+public class GreetingControllerIntegrationTest {
 
     private static final String SIMPLE_GREETING = "/greeting/simple";
     private static final String ADVANCED_GREETING = "/greeting/advanced";
@@ -44,11 +47,15 @@ public class GreetingControllerManualTest {
         String remaining = headers.getFirst(HEADER_REMAINING + key);
         String reset = headers.getFirst(HEADER_RESET + key);
 
-        assertEquals(limit, "5");
-        assertEquals(remaining, "4");
-        assertEquals(reset, "60000");
+        Assert.assertEquals("5", limit);
+        Assert.assertEquals(remaining, "4", remaining);
+        Assert.assertNotNull(reset);
+        Assert.assertThat(
+                parseInt(reset),
+                is(both(greaterThanOrEqualTo(0)).and(lessThanOrEqualTo(60000)))
+        );
 
-        assertEquals(OK, response.getStatusCode());
+        Assert.assertEquals(OK, response.getStatusCode());
     }
 
     @Test
@@ -57,7 +64,7 @@ public class GreetingControllerManualTest {
         HttpHeaders headers = response.getHeaders();
         String key = "rate-limit-application_serviceAdvanced_127.0.0.1";
         assertHeaders(headers, key, false, false);
-        assertEquals(OK, response.getStatusCode());
+        Assert.assertEquals(OK, response.getStatusCode());
 
         for (int i = 0; i < 2; i++) {
             response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
@@ -68,18 +75,18 @@ public class GreetingControllerManualTest {
         String remaining = headers.getFirst(HEADER_REMAINING + key);
         String reset = headers.getFirst(HEADER_RESET + key);
 
-        assertEquals(limit, "1");
-        assertEquals(remaining, "0");
-        assertNotEquals(reset, "2000");
+        Assert.assertEquals(limit, "1");
+        Assert.assertEquals(remaining, "0");
+        Assert.assertNotEquals(reset, "2000");
 
-        assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
+        Assert.assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
 
         TimeUnit.SECONDS.sleep(2);
 
         response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
         headers = response.getHeaders();
         assertHeaders(headers, key, false, false);
-        assertEquals(OK, response.getStatusCode());
+        Assert.assertEquals(OK, response.getStatusCode());
     }
 
     private void assertHeaders(HttpHeaders headers, String key, boolean nullable, boolean quotaHeaders) {
@@ -91,22 +98,22 @@ public class GreetingControllerManualTest {
 
         if (nullable) {
             if (quotaHeaders) {
-                assertNull(quota);
-                assertNull(remainingQuota);
+                Assert.assertNull(quota);
+                Assert.assertNull(remainingQuota);
             } else {
-                assertNull(limit);
-                assertNull(remaining);
+                Assert.assertNull(limit);
+                Assert.assertNull(remaining);
             }
-            assertNull(reset);
+            Assert.assertNull(reset);
         } else {
             if (quotaHeaders) {
-                assertNotNull(quota);
-                assertNotNull(remainingQuota);
+                Assert.assertNotNull(quota);
+                Assert.assertNotNull(remainingQuota);
             } else {
-                assertNotNull(limit);
-                assertNotNull(remaining);
+                Assert.assertNotNull(limit);
+                Assert.assertNotNull(remaining);
             }
-            assertNotNull(reset);
+            Assert.assertNotNull(reset);
         }
     }
 }
