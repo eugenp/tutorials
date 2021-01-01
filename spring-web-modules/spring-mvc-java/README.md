@@ -4,7 +4,7 @@ This module contains articles about Spring MVC with Java configuration
 
 ### The Course
 
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+The "REST With Spring" Classes: https://bit.ly/restwithspring
 
 ### Relevant Articles: 
 - [Integration Testing in Spring](https://www.baeldung.com/integration-testing-in-spring)
