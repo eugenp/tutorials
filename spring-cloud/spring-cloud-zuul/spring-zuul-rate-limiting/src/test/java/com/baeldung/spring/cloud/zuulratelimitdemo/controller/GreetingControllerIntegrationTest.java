@@ -5,14 +5,21 @@ import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateL
 import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateLimitConstants.HEADER_REMAINING;
 import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateLimitConstants.HEADER_REMAINING_QUOTA;
 import static com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.support.RateLimitConstants.HEADER_RESET;
+import static java.lang.Integer.parseInt;
+import static org.hamcrest.Matchers.both;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.TOO_MANY_REQUESTS;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +33,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @AutoConfigureTestDatabase
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GreetingControllerManualTest {
+public class GreetingControllerIntegrationTest {
 
     private static final String SIMPLE_GREETING = "/greeting/simple";
     private static final String ADVANCED_GREETING = "/greeting/advanced";
@@ -44,9 +51,13 @@ public class GreetingControllerManualTest {
         String remaining = headers.getFirst(HEADER_REMAINING + key);
         String reset = headers.getFirst(HEADER_RESET + key);
 
-        assertEquals(limit, "5");
-        assertEquals(remaining, "4");
-        assertEquals(reset, "60000");
+        assertEquals("5", limit);
+        assertEquals(remaining, "4", remaining);
+        assertNotNull(reset);
+        assertThat(
+                parseInt(reset),
+                is(both(greaterThanOrEqualTo(0)).and(lessThanOrEqualTo(60000)))
+        );
 
         assertEquals(OK, response.getStatusCode());
     }
