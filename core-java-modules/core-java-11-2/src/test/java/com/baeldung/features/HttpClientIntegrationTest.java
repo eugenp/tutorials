@@ -28,8 +28,8 @@ class HttpClientIntegrationTest {
         mockServer = startClientAndServer(port);
         mockServer.when(new org.mockserver.model.HttpRequest().withMethod("GET"))
           .respond(new org.mockserver.model.HttpResponse()
-              .withStatusCode(HttpStatusCode.OK_200.code())
-              .withBody("Hello from the server!"));
+            .withStatusCode(HttpStatusCode.OK_200.code())
+            .withBody("Hello from the server!"));
     }
 
     @AfterAll
