@@ -23,6 +23,7 @@
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-java-2</module>
+        <module>spring-mvc-velocity</module>
         <module>spring-mvc-views</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
