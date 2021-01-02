@@ -3,7 +3,7 @@ package com.baeldung.functional;
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
-import static org.springframework.web.reactive.function.server.RequestPredicates.path;
+import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
@@ -18,6 +18,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -37,14 +38,14 @@ public class FunctionalWebApplication {
     private RouterFunction<ServerResponse> routingFunction() {
         FormHandler formHandler = new FormHandler();
 
-        RouterFunction<ServerResponse> restfulRouter = route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest.bodyToMono(Actor.class)
+        RouterFunction<ServerResponse> restfulRouter = route(GET("/actor"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/actor"), serverRequest -> serverRequest.bodyToMono(Actor.class)
             .doOnNext(actors::add)
             .then(ok().build()));
 
         return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), formHandler::handleLogin)
             .andRoute(POST("/upload"), formHandler::handleUpload)
             .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
-            .andNest(path("/actor"), restfulRouter)
+            .andNest(accept(MediaType.APPLICATION_JSON), restfulRouter)
             .filter((request, next) -> {
                 System.out.println("Before handler invocation: " + request.path());
                 return next.handle(request);
