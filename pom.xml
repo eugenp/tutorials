@@ -658,9 +658,6 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-velocity</module>
-
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -1117,8 +1114,6 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-velocity</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
