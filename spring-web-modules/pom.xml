@@ -31,6 +31,7 @@
         <module>spring-rest-http</module>
         <module>spring-rest-http-2</module>
         <module>spring-rest-query-language</module>
+        <module>spring-rest-shell</module>
         <module>spring-resttemplate-2</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>

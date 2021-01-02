@@ -663,7 +663,6 @@
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-rest-testing</module>
@@ -1120,7 +1119,6 @@
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-rest-testing</module>
