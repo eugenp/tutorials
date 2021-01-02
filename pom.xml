@@ -658,21 +658,11 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-forms-thymeleaf</module>
-                <module>spring-mvc-java</module>
-                <module>spring-mvc-java-2</module>
-
-                <module>spring-mvc-velocity</module>
-                <module>spring-mvc-xml</module>
-
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-http-2</module>
-                <module>spring-rest-query-language</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-rest-testing</module>
@@ -1124,19 +1114,11 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-forms-thymeleaf</module>
-                <module>spring-mvc-java</module>
-                <module>spring-mvc-java-2</module>
-
-                <module>spring-mvc-velocity</module>
-                <module>spring-mvc-xml</module>
-
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-query-language</module>
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-rest-testing</module>
