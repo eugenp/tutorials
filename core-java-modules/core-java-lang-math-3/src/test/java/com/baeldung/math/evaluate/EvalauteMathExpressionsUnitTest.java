@@ -45,6 +45,16 @@ public class EvalauteMathExpressionsUnitTest {
     }
     
     @Test
+    public void givenMathFunction_whenCallEvaluateMethod_thenSuccess() {
+        String expression = "sin(x)*sin(x)+cos(x)*cos(x)";
+        DoubleEvaluator eval = new DoubleEvaluator();
+        StaticVariableSet<Double> variables = new StaticVariableSet<Double>();
+        variables.set("x", 0.5);
+        Double result = eval.evaluate(expression, variables);
+        Assertions.assertEquals(1, result);
+    }
+    
+    @Test
     public void givenJavaScriptingApi_whenCallEvalMethod_thenSuccess() throws ScriptException {
         ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
         ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
