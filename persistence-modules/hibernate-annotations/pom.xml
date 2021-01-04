@@ -30,7 +30,7 @@
         <dependency>
         	<groupId>org.apache.commons</groupId>
         	<artifactId>commons-lang3</artifactId>
-        	<version>${commons.lang3.version}</version>
+        	<version>${commons-lang3.version}</version>
         </dependency>
         
         <dependency>
@@ -67,7 +67,6 @@
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <hibernate.core.version>5.4.7.Final</hibernate.core.version>
         <h2.version>1.4.200</h2.version>
-        <commons.lang3.version>3.8.1</commons.lang3.version>
         <geodb.version>0.9</geodb.version>
     </properties>
 

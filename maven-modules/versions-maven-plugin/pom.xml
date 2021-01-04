@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>
@@ -74,7 +74,6 @@
         <commons.io.version>2.3</commons.io.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <commons.beanutils.version>1.9.1</commons.beanutils.version>
-        <commons.lang3.version>3.0</commons.lang3.version>
         <commons.collections4.version>4.0</commons.collections4.version>
     </properties>
 
