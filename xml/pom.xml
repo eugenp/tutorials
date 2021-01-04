@@ -379,7 +379,6 @@
         <freemarker.version>2.3.29</freemarker.version>
         <mustache.version>0.9.6</mustache.version>
         <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
         <commons-lang.version>2.4</commons-lang.version>
         <java-version>1.8</java-version>
 
