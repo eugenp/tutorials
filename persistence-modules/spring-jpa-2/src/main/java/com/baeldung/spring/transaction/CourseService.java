@@ -3,6 +3,7 @@ package com.baeldung.spring.transaction;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -15,17 +16,20 @@ public class CourseService {
     
     @Transactional
     public void createCourseDeclarativeWithRuntimeException(Course course) {
-        courseDao.createWithRuntimeException(course);
+        courseDao.create(course);
+        throw new DataIntegrityViolationException("Throwing exception for demoing Rollback!!!");
     }
     
     @Transactional(rollbackFor = { SQLException.class })
     public void createCourseDeclarativeWithCheckedException(Course course) throws SQLException {
-        courseDao.createWithCheckedException(course);
+        courseDao.create(course);
+        throw new SQLException("Throwing exception for demoing Rollback!!!");
     }
     
     public void createCourseDefaultRatingProgramatic(Course course) {
         try {
-            courseDao.createWithRuntimeException(course);
+            courseDao.create(course);
+            throw new DataIntegrityViolationException("Throwing exception for demoing Rollback!!!");
         } catch (Exception e) {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
