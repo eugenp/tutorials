@@ -35,4 +35,10 @@ public class CourseService {
         }
     }
     
+    @Transactional(noRollbackFor = { SQLException.class })
+    public void createCourseDeclarativeWithNoRollBack(Course course) throws SQLException {
+        courseDao.create(course);
+        throw new SQLException("Throwing exception for demoing Rollback!!!");
+    }
+    
 }
