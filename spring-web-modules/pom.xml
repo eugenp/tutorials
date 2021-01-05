@@ -34,6 +34,7 @@
         <module>spring-rest-shell</module>
         <module>spring-rest-simple</module>
         <module>spring-rest-testing</module>
+        <module>spring-resttemplate</module>
         <module>spring-resttemplate-2</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>

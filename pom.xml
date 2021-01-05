@@ -663,7 +663,6 @@
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-resttemplate</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -1117,7 +1116,6 @@
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-resttemplate</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
