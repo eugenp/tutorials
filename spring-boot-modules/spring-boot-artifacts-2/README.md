@@ -4,4 +4,4 @@ This module contains articles about configuring the Spring Boot build process 2.
 
 ### Relevant Articles:			
 
-TBD
+- [Difference Between spring-boot:repackage and Maven package](https://www.baeldung.com/spring-boot-repackage-vs-mvn-package)
