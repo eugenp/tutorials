@@ -71,7 +71,6 @@
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>        
         <money-api.version>1.0.3</money-api.version>
         <moneta.version>1.3</moneta.version>
-        <commons-io.version>2.6</commons-io.version>
     </properties>
 
 </project>
