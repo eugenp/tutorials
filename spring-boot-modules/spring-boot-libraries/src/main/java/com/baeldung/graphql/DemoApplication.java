@@ -1,4 +1,4 @@
-package com.baeldung.demo;
+package com.baeldung.graphql;
 
 import com.baeldung.graphql.GraphqlConfiguration;
 import org.springframework.boot.SpringApplication;
