@@ -94,7 +94,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commonsio.version}</version>
+            <version>${commons-io.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -157,7 +157,6 @@
         <protonpack.version>1.15</protonpack.version>
         <commons-net.version>3.6</commons-net.version>
         <assertj.version>3.6.2</assertj.version>
-        <commonsio.version>2.6</commonsio.version>
         <renjin.version>RELEASE</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
