@@ -44,21 +44,8 @@
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate-core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.opengeo</groupId>
-            <artifactId>geodb</artifactId>
-            <version>${geodb.version}</version>
-        </dependency>
     </dependencies>
     
-    <repositories>
-        <repository>
-            <id>geodb-repo</id>
-            <name>GeoDB repository</name>
-            <url>http://repo.boundlessgeo.com/main/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
         <h2.version>1.4.200</h2.version>
@@ -66,7 +53,6 @@
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <hibernate.core.version>5.4.7.Final</hibernate.core.version>
         <h2.version>1.4.200</h2.version>
-        <geodb.version>0.9</geodb.version>
     </properties>
 
 </project>
