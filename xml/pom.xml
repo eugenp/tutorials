@@ -364,7 +364,6 @@
         <jaxen.version>1.2.0</jaxen.version>
         <jdom2.version>2.0.6</jdom2.version>
         <joox.version>1.6.2</joox.version>
-        <commons-io.version>2.5</commons-io.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <jibx-version>1.2.4.5</jibx-version>
         <jaxb-api.version>2.3.1</jaxb-api.version>

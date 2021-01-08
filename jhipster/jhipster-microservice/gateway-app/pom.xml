@@ -22,7 +22,6 @@
         <awaitility.version>2.0.0</awaitility.version>
         <cassandra-driver.version>3.6.0</cassandra-driver.version>
         <commons-codec.version>1.10</commons-codec.version>
-        <commons-io.version>2.5</commons-io.version>
         <docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
         <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
         <hazelcast-hibernate52.version>1.2</hazelcast-hibernate52.version>
