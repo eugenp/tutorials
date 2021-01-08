@@ -234,8 +234,6 @@
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-fileupload.version>1.3.2</commons-fileupload.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
         <jsonpath.version>2.2.0</jsonpath.version>
 
         <!-- testing -->
