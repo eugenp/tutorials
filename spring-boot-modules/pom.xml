@@ -116,6 +116,5 @@
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <commons-io.version>2.6</commons-io.version>
     </properties>
 </project>
