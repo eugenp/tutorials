@@ -21,29 +21,28 @@ public class EvalauteMathExpressionsUnitTest {
         double result = expression.evaluate();
         Assertions.assertEquals(5, result);
     }
-    
+
     @Test
     public void givenTwoVariables_whenCallEvaluateMethod_thenSuccess() {
-        Expression expression = new ExpressionBuilder("3x+2y")
-          .variables("x", "y")
+        Expression expression = new ExpressionBuilder("3x+2y").variables("x", "y")
           .build()
           .setVariable("x", 2)
           .setVariable("y", 3);
         double result = expression.evaluate();
         Assertions.assertEquals(12, result);
     }
-    
+
     @Test
     public void givenVariables_whenCallEvaluateMethod_thenSuccess() {
-        String expression = "x+y";
+        String expression = "3*x+2*y";
         DoubleEvaluator eval = new DoubleEvaluator();
         StaticVariableSet<Double> variables = new StaticVariableSet<Double>();
-        variables.set("x", 3.0);
-        variables.set("y", 2.0);
+        variables.set("x", 2.0);
+        variables.set("y", 3.0);
         Double result = eval.evaluate(expression, variables);
-        Assertions.assertEquals(5, result);
+        Assertions.assertEquals(12, result);
     }
-    
+
     @Test
     public void givenMathFunction_whenCallEvaluateMethod_thenSuccess() {
         String expression = "sin(x)*sin(x)+cos(x)*cos(x)";
@@ -53,13 +52,13 @@ public class EvalauteMathExpressionsUnitTest {
         Double result = eval.evaluate(expression, variables);
         Assertions.assertEquals(1, result);
     }
-    
+
     @Test
     public void givenJavaScriptingApi_whenCallEvalMethod_thenSuccess() throws ScriptException {
         ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
         ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
-        String expression = "3+2";
-        Integer result = (Integer) scriptEngine.eval(expression);
-        Assertions.assertEquals(5, result);
+        String expression = "x=2; y=3; 3*x+2*y;";
+        Double result = (Double) scriptEngine.eval(expression);
+        Assertions.assertEquals(12, result);
     }
 }
