@@ -650,7 +650,6 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-jms</module>
-                <module>spring-jooq</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
@@ -1101,7 +1100,6 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-jms</module>
-                <module>spring-jooq</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
