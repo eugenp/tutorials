@@ -58,7 +58,7 @@ public class PerfectSquareUtil {
             return false;
         if (n == check * check) {
             return true;
-        } else if (number < check * check) {
+        } else if (n < check * check) {
             high = check - 1L;
             return isPerfectSquareByUsingBinarySearch(low, high, n);
         } else {
