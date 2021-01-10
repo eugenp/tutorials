@@ -1,5 +1,8 @@
 package com.baeldung.perfectsquare;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PerfectSquareUtil {
 
     public static class BinarySearchRange {
