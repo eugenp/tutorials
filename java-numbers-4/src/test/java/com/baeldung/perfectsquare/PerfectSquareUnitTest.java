@@ -11,6 +11,7 @@ public class PerfectSquareUnitTest {
         boolean expectedValue = true;
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingSqrt(n));
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingBinarySearch(1, Integer.MAX_VALUE, n));
+        assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingOptimizedBinarySearch(n));
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingNewtonMethod(n));
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareWithOptimization(n));
 
@@ -18,6 +19,7 @@ public class PerfectSquareUnitTest {
         expectedValue = false;
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingSqrt(n));
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingBinarySearch(1, Integer.MAX_VALUE, n));
+        assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingOptimizedBinarySearch(n));
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareByUsingNewtonMethod(n));
         assertEquals(expectedValue, PerfectSquareUtil.isPerfectSquareWithOptimization(n));
     }
