@@ -30,6 +30,8 @@ public class PerfectSquareUtil {
         }
     }
 
+    private static List<BinarySearchRange> lookupTable = new ArrayList<>();
+
     static {
         initiateOptimizedBinarySearchLookupTable();
     }
