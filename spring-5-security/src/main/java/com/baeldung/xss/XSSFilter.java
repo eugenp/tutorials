@@ -1,6 +1,7 @@
 package com.baeldung.xss;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONObject;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -33,7 +34,7 @@ public class XSSFilter implements Filter {
         XSSRequestWrapper wrappedRequest = new XSSRequestWrapper((HttpServletRequest) request);
 
         String body = IOUtils.toString(wrappedRequest.getReader());
-        if (!"".equals(body)) {
+        if (!StringUtils.isBlank(body)) {
             JSONObject oldJsonObject = new JSONObject(body);
             JSONObject newJsonObject = new JSONObject();
             for (String key : oldJsonObject.keySet()) {
