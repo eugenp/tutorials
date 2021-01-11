@@ -10,6 +10,7 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) {
+        // Ignoring here is only for this example. Normally people would apply their own authentication/authorization policies
         web.ignoring().antMatchers("/**");
     }
 
