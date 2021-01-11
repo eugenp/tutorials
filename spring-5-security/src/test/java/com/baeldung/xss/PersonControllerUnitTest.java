@@ -19,17 +19,16 @@ class PersonControllerUnitTest {
     @LocalServerPort
     int randomServerPort;
 
-    private static String createPersonUrl;
-    private static RestTemplate restTemplate;
-    private static HttpHeaders headers;
-    private static UriComponentsBuilder builder;
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private static JSONObject personJsonObject;
-
     @Test
     public void givenRequestIsSuspicious_whenRequestIsPost_thenResponseIsClean()
         throws IOException, JSONException {
         // given
+        String createPersonUrl;
+        RestTemplate restTemplate;
+        HttpHeaders headers;
+        UriComponentsBuilder builder;
+        ObjectMapper objectMapper = new ObjectMapper();
+        JSONObject personJsonObject;
         createPersonUrl = "http://localhost:" + randomServerPort + "/personService/person";
         restTemplate = new RestTemplate();
         headers = new HttpHeaders();
