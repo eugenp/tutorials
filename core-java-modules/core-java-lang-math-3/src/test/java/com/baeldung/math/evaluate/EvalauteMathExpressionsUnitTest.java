@@ -31,7 +31,24 @@ public class EvalauteMathExpressionsUnitTest {
         double result = expression.evaluate();
         Assertions.assertEquals(12, result);
     }
+    
+    @Test
+    public void givenMathFunctions_whenCallEvaluateMethod_thenSuccess() {
+        Expression expression = new ExpressionBuilder("sin(x)*sin(x)+cos(x)*cos(x)").variables("x")
+          .build()
+          .setVariable("x", 0.5);
+        double result = expression.evaluate();
+        Assertions.assertEquals(1, result);
+    }
 
+    @Test
+    public void givenExpression_whenCallEvaluateMethod_thenSuccess() {
+        String expression = "3+2";
+        DoubleEvaluator eval = new DoubleEvaluator();
+        Double result = eval.evaluate(expression);
+        Assertions.assertEquals(5, result);
+    } 
+    
     @Test
     public void givenVariables_whenCallEvaluateMethod_thenSuccess() {
         String expression = "3*x+2*y";
@@ -54,6 +71,15 @@ public class EvalauteMathExpressionsUnitTest {
     }
 
     @Test
+    public void givenJavaScriptingApiAndSimpleExpression_whenCallEvalMethod_thenSuccess() throws ScriptException {
+        ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+        ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
+        String expression = "3+2";
+        Integer result = (Integer) scriptEngine.eval(expression);
+        Assertions.assertEquals(5, result);
+    }
+    
+    @Test
     public void givenJavaScriptingApi_whenCallEvalMethod_thenSuccess() throws ScriptException {
         ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
         ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("JavaScript");
@@ -61,4 +87,5 @@ public class EvalauteMathExpressionsUnitTest {
         Double result = (Double) scriptEngine.eval(expression);
         Assertions.assertEquals(12, result);
     }
+    
 }
