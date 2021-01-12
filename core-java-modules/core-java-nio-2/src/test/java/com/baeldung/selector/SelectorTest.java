@@ -1,7 +1,6 @@
 package com.baeldung.selector;
 
 import org.junit.Test;
-
 import java.io.IOException;
 import java.nio.channels.Pipe;
 import java.nio.channels.SelectableChannel;
