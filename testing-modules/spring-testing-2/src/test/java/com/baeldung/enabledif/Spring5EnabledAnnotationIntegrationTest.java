@@ -1,4 +1,4 @@
-package com.baeldung.jupiter;
+package com.baeldung.enabledif;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
