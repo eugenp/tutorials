@@ -27,7 +27,7 @@ public class HibernateProxyIntegrationTest {
     @Test
     public void givenPaymentReceipt_whenAccessingPayment_thenVerifyType() {
         PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 3L);
-        Assert.assertEquals(true, paymentReceipt.getPayment() instanceof HibernateProxy);
+        Assert.assertTrue(paymentReceipt.getPayment() instanceof HibernateProxy);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class HibernateProxyIntegrationTest {
         entityManager.persist(payment);
 
         entityManager.getTransaction().commit();
-        Assert.assertEquals(true, webUser instanceof HibernateProxy);
+        Assert.assertTrue(webUser instanceof HibernateProxy);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class HibernateProxyIntegrationTest {
     @Test
     public void givenPaymentReceipt_whenPaymentIsUnproxied_thenReturnRealEntityObject() {
         PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 3L);
-        Assert.assertEquals(true, Hibernate.unproxy(paymentReceipt.getPayment()) instanceof CreditCardPayment);
+        Assert.assertTrue(Hibernate.unproxy(paymentReceipt.getPayment()) instanceof CreditCardPayment);
     }
 
     private static void populateH2DB() {
