@@ -1,12 +1,17 @@
 package com.baeldung.concurrent;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.umd.cs.mtc.MultithreadedTestCase;
 import edu.umd.cs.mtc.TestFramework;
 
-public class MyCounterMultithreadedTCUnitTest extends MultithreadedTestCase {
+/**
+ * This is defined as a manual test because it tries to simulate the race conditions
+ * in a concurrent program that is poorly designed and hence may fail nondeterministically.
+ * This will help the CI jobs to ignore these tests and a developer to run them manually.
+ *
+ */
+public class MyCounterMultithreadedTCManualTest extends MultithreadedTestCase {
 
     private MyCounter counter;
 
@@ -29,9 +34,8 @@ public class MyCounterMultithreadedTCUnitTest extends MultithreadedTestCase {
     	assertEquals(2, counter.getCount());
     }
 
-    @Ignore
     @Test
     public void testCounter() throws Throwable {
-        TestFramework.runManyTimes(new MyCounterMultithreadedTCUnitTest(), 1000);
+        TestFramework.runManyTimes(new MyCounterMultithreadedTCManualTest(), 1000);
     }
 }
