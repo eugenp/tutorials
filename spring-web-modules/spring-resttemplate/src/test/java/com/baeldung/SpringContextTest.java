@@ -8,12 +8,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.baeldung.responseheaders.ResponseHeadersApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { ResponseHeadersApplication.class,
-        com.baeldung.web.upload.app.UploadApplication.class,
-		})
+@SpringBootTest(classes = { ResponseHeadersApplication.class })
 public class SpringContextTest {
 
     @Test
-    public void whenSpringContextIsBootstrapped_thenNoExceptions() {	
+    public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
 }
