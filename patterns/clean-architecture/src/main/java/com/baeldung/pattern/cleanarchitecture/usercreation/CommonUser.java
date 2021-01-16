@@ -15,7 +15,7 @@ class CommonUser implements User {
 
     @Override
     public boolean passwordIsValid() {
-        return password == null || password.length() > 5;
+        return password != null && password.length() > 5;
     }
 
     @Override
