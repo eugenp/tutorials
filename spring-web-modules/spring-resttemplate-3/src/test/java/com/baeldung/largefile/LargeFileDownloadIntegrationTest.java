@@ -1,20 +1,16 @@
-package com.baeldung.resttemplate;
+package com.baeldung.largefile;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LargeFileDownloadIntegrationTest {
 
