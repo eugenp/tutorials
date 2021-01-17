@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-public class AuthApplicationTest {
+public class AuthApplicationUnitTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
 
