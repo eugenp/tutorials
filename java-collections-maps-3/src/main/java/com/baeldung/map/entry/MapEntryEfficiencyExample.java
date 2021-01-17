@@ -14,7 +14,7 @@ public class MapEntryEfficiencyExample {
         System.out.println("Inefficient Method - Iterating Using Map.KeySet");
         mapEntryEfficiencyExample.inefficientMethodUsingKeySet(bookMap);
 
-        System.out.println("More Efficient Method - Iterating Using Map.Entry");
+        System.out.println("More Efficient Method - Using Map.Entry");
         mapEntryEfficiencyExample.efficientMethodUsingMapEntry(bookMap);
 
     }
