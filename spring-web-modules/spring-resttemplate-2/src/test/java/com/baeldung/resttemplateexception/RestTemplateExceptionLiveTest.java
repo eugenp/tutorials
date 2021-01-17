@@ -21,26 +21,21 @@ public class RestTemplateExceptionLiveTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void givenGetUrl_whenJsonIsPassed_thenThrowException() {
-
         String url = "http://localhost:8080/spring-rest/api/get?criterion={\"prop\":\"name\",\"value\":\"ASUS VivoBook\"}";
         Product product = restTemplate.getForObject(url, Product.class);
-
     }
 
     @Test
     public void givenGetUrl_whenJsonIsPassed_thenGetProduct() {
-
         String criterion = "{\"prop\":\"name\",\"value\":\"ASUS VivoBook\"}";
         String url = "http://localhost:8080/spring-rest/api/get?criterion={criterion}";
         Product product = restTemplate.getForObject(url, Product.class, criterion);
 
         assertEquals(product.getPrice(), 650, 0);
-
     }
 
     @Test
     public void givenGetUrl_whenJsonIsPassed_thenReturnProduct() {
-
         String criterion = "{\"prop\":\"name\",\"value\":\"Acer Aspire 5\"}";
         String url = "http://localhost:8080/spring-rest/api/get";
 
@@ -48,6 +43,5 @@ public class RestTemplateExceptionLiveTest {
         Product product = restTemplate.getForObject(builder.build().toUri(), Product.class);
 
         assertEquals(product.getId(), 1, 0);
-
     }
 }

@@ -23,11 +23,8 @@ public class ProductApi {
 
     @GetMapping("/get")
     public Product get(@RequestParam String criterion) throws JsonMappingException, JsonProcessingException {
-
         ObjectMapper objectMapper = new ObjectMapper();
-        Criterion crt;
-
-        crt = objectMapper.readValue(criterion, Criterion.class);
+        Criterion crt = objectMapper.readValue(criterion, Criterion.class);
         if (crt.getProp().equals("name"))
             return findByName(crt.getValue());
 
@@ -46,5 +43,4 @@ public class ProductApi {
     }
 
     // Other methods
-
 }
