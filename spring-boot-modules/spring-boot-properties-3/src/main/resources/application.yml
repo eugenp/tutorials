@@ -2,6 +2,9 @@ bael:
   root-level-property: defaultRootLevelValue
 ---
 spring:
+  profiles:
+    group:
+      multidocument-integration: multidocument-integration-extension
   config:
     activate:
       on-profile: multidocument-staging
