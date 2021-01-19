@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.baeldung.pattern.cleanarchitecture.usercreation.UserResponseFormatter;
 import com.baeldung.pattern.cleanarchitecture.usercreation.UserResponseModel;
 
-class UserResponseFormatterTests {
+class UserResponseFormatterUnitTest {
 
     UserResponseFormatter userResponseFormatter = new UserResponseFormatter();
 
