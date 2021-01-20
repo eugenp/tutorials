@@ -14,16 +14,14 @@
 
     <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-client-ref="mongoClient" />
 
-    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+    <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
         <constructor-arg ref="mongoDbFactory" />
         <constructor-arg ref="mongoConverter" />
     </bean>
 
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
-    <mongo:repositories base-package="com.baeldung.repository" mongo-template-ref="mongoTemplate" />
-
-    <bean class="com.baeldung.event.CascadeSaveMongoEventListener">
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongoDbFactory" />
+        <constructor-arg ref="mongoConverter" />
     </bean>
 
     <mongo:mapping-converter id="mongoConverter" base-package="com.baeldung.converter">
