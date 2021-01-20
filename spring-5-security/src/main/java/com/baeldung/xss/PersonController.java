@@ -1,6 +1,7 @@
 package com.baeldung.xss;
 
-import org.json.JSONObject;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class PersonController {
     @PostMapping(value = "/person")
     private ResponseEntity<String> savePerson(@RequestHeader Map<String, String> headers,
         @RequestParam String param, @RequestBody Person body) {
-        JSONObject response = new JSONObject();
+        ObjectNode response = JsonNodeFactory.instance.objectNode();
         headers.forEach((key, value) -> response.put(key, value));
         response.put("firstName", body.getFirstName());
         response.put("lastName", body.getLastName());

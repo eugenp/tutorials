@@ -2,8 +2,8 @@ package com.baeldung.xss;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -21,18 +21,17 @@ class PersonControllerUnitTest {
 
     @Test
     public void givenRequestIsSuspicious_whenRequestIsPost_thenResponseIsClean()
-        throws IOException, JSONException {
+        throws IOException {
         // given
         String createPersonUrl;
         RestTemplate restTemplate;
         HttpHeaders headers;
         UriComponentsBuilder builder;
         ObjectMapper objectMapper = new ObjectMapper();
-        JSONObject personJsonObject;
+        ObjectNode personJsonObject = JsonNodeFactory.instance.objectNode();
         createPersonUrl = "http://localhost:" + randomServerPort + "/personService/person";
         restTemplate = new RestTemplate();
         headers = new HttpHeaders();
-        personJsonObject = new JSONObject();
 
         // when
         personJsonObject.put("id", 1);
