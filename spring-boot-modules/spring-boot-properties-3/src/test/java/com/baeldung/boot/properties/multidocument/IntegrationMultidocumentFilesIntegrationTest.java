@@ -17,12 +17,16 @@ public class IntegrationMultidocumentFilesIntegrationTest {
     @Value("${bael.property}")
     private String baelCustomProperty;
     
+    @Value("${bael.otherProperty}")
+    private String baelCustomOtherProperty;
+    
     @Value("${bael.root-level-property}")
     private String baelRootProperty;
 
     @Test
     public void givenProductionProfileActive_whenApplicationStarts_thenDefaultPropertiesUser() {
         assertThat(baelCustomProperty).isEqualTo("integrationValue");
+        assertThat(baelCustomOtherProperty).isEqualTo("integrationExtensionOtherValue");
         assertThat(baelRootProperty).isEqualTo("defaultRootLevelValue");
     }
 }
