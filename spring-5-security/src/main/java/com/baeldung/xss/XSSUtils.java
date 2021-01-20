@@ -11,10 +11,9 @@ public class XSSUtils {
             return null;
         }
         value = ESAPI.encoder()
-            .canonicalize(value);
-        value = value.replaceAll("\0", "");
-        value = Jsoup.clean(value, Whitelist.none());
-        return value;
+            .canonicalize(value)
+              .replaceAll("\0", "");
+        return Jsoup.clean(value, Whitelist.none());
     }
 
 }
