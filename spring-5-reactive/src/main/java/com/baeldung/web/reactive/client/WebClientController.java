@@ -13,8 +13,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ReactiveHttpOutputMessage;
+import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,7 +60,7 @@ public class WebClientController {
         map.add("key1", "value1");
         map.add("key2", "value2");
 
-        // BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
+        BodyInserter<MultiValueMap<String, Object>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
         BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromValue("body");
 
         // responses
