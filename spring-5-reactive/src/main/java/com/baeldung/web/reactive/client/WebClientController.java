@@ -38,7 +38,7 @@ public class WebClientController {
 
         // request header specification
         WebClient.RequestHeadersSpec<?> requestSpec1 = uri1.body(BodyInserters.fromPublisher(Mono.just("data"), String.class));
-        WebClient.RequestHeadersSpec<?> requestSpec2 = uri2.body(BodyInserters.fromObject("data"));
+        WebClient.RequestHeadersSpec<?> requestSpec2 = uri2.body(BodyInserters.fromValue("data"));
 
         // inserters
         BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserter1 = BodyInserters
@@ -49,7 +49,7 @@ public class WebClientController {
         map.add("key2", "value2");
 
         // BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
-        BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromObject("body");
+        BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromValue("body");
 
         // responses
         WebClient.ResponseSpec response1 = uri1.body(inserter3)
