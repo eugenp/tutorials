@@ -27,7 +27,6 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
-import reactor.netty.tcp.TcpClient;
 
 @RestController
 public class WebClientController {
@@ -83,15 +82,13 @@ public class WebClientController {
     }
 
     private WebClient createWebClientConfiguringTimeout() {
-        TcpClient tcpClient = TcpClient.create()
+        HttpClient httpClient = HttpClient.create()
             .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
-            .doOnConnected(connection -> {
-                connection.addHandlerLast(new ReadTimeoutHandler(5000, TimeUnit.MILLISECONDS));
-                connection.addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS));
-            });
+            .doOnConnected(conn -> conn.addHandlerLast(new ReadTimeoutHandler(5000, TimeUnit.MILLISECONDS))
+                .addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS)));
 
         return WebClient.builder()
-            .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+            .clientConnector(new ReactorClientHttpConnector(httpClient))
             .build();
     }
 
