@@ -1,8 +1,17 @@
 package com.baeldung.web.reactive.client;
 
+import java.net.URI;
+import java.nio.charset.Charset;
+import java.time.ZonedDateTime;
+import java.util.Collections;
+
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -10,12 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
-import java.net.URI;
-import java.nio.charset.Charset;
-import java.time.ZonedDateTime;
-import java.util.Collections;
+import reactor.core.publisher.Mono;
 
 @RestController
 public class WebClientController {
@@ -41,8 +46,7 @@ public class WebClientController {
         WebClient.RequestHeadersSpec<?> requestSpec2 = uri2.body(BodyInserters.fromValue("data"));
 
         // inserters
-        BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserter1 = BodyInserters
-                .fromPublisher(Subscriber::onComplete, String.class);
+        BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserter1 = BodyInserters.fromPublisher(Subscriber::onComplete, String.class);
 
         LinkedMultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("key1", "value1");
