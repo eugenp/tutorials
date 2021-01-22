@@ -4,6 +4,8 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.time.ZonedDateTime;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.reactivestreams.Publisher;
@@ -35,7 +37,10 @@ public class WebClientController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/resource")
-    public void getResource() {
+    public Map<String, String> getResource() {
+        Map<String, String> response = new HashMap<>();
+        response.put("field", "value");
+        return response;
     }
 
     public void demonstrateWebClient() {
