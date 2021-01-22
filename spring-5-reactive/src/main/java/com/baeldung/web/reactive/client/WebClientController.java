@@ -72,8 +72,12 @@ public class WebClientController {
             .ifNoneMatch("*")
             .ifModifiedSince(ZonedDateTime.now())
             .retrieve();
-        WebClient.ResponseSpec response2 = requestSpec2.retrieve();
-
+        String response2 = uri1.exchangeToMono(response -> response.bodyToMono(String.class))
+            .block();
+        String response3 = uri2.retrieve()
+            .bodyToMono(String.class)
+            .block();
+        WebClient.ResponseSpec response4 = requestSpec2.retrieve();
     }
 
     private WebClient createWebClient() {
