@@ -61,7 +61,8 @@ public class WebClientController {
         map.add("key2", "value2");
 
         BodyInserter<MultiValueMap<String, Object>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
-        BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromValue("body");
+        BodyInserter<Object, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromValue(new Object());
+        BodyInserter<String, ReactiveHttpOutputMessage> inserter4 = BodyInserters.fromValue("body");
 
         // responses
         WebClient.ResponseSpec response1 = uri1.body(inserter3)
