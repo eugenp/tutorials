@@ -33,8 +33,7 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>2020.0.0</spring-cloud-dependencies.version>
     </properties>
 
 </project>

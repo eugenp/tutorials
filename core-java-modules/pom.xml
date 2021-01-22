@@ -47,6 +47,7 @@
         <module>core-java-concurrency-advanced</module>
         <module>core-java-concurrency-advanced-2</module>
         <module>core-java-concurrency-advanced-3</module>
+        <module>core-java-concurrency-advanced-4</module>
         <module>core-java-concurrency-basic</module>
         <module>core-java-concurrency-basic-2</module>
         <module>core-java-concurrency-collections</module>
@@ -67,6 +68,7 @@
         <module>core-java-io</module>
         <module>core-java-io-2</module>
         <module>core-java-io-3</module>
+		<module>core-java-io-4</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-2</module>
@@ -82,6 +84,7 @@
         <module>core-java-lang-3</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
+        <module>core-java-lang-math-3</module>
         <module>core-java-lang-oop-constructors</module>
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>
