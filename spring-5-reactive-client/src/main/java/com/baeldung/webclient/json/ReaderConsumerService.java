@@ -1,14 +1,16 @@
 package com.baeldung.webclient.json;
 
+import com.baeldung.webclient.json.model.Book;
+
 import java.util.List;
 
 public interface ReaderConsumerService {
 
-    List<String> processReaderDataFromObjectArray();
+    List<Book> processReaderDataFromObjectArray();
 
-    List<String> processReaderDataFromReaderArray();
+    List<Book> processReaderDataFromReaderArray();
 
-    List<String> processReaderDataFromReaderList();
+    List<Book> processReaderDataFromReaderList();
 
     List<String> processNestedReaderDataFromReaderArray();
 
