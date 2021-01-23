@@ -17,35 +17,35 @@ public class AuthApplicationUnitTest {
     @Test
     void whenOnlyInterfacesAnnotated_noSuchBeanDefinitionExceptionThrown() {
         contextRunner
-                .withUserConfiguration(InterfacesAnnotatedTestConfiguration.class)
-                .run(context -> {
-                    Assertions.assertThrows(NoSuchBeanDefinitionException.class, () -> {
-                        context.getBean(AuthenticationService.class);
-                    });
-                });
+          .withUserConfiguration(InterfacesAnnotatedTestConfiguration.class)
+          .run(context -> {
+              Assertions.assertThrows(NoSuchBeanDefinitionException.class, () -> {
+                  context.getBean(AuthenticationService.class);
+              });
+          });
     }
 
     @Test
     void whenOnlyAbstractClassesAnnotated_noSuchBeanDefinitionExceptionThrown() {
         contextRunner
-                .withUserConfiguration(AbstractsAnnotatedTestConfiguration.class)
-                .run(context -> {
-                    Assertions.assertThrows(NoSuchBeanDefinitionException.class, () -> {
-                        context.getBean(AbstractAuthenticationService.class);
-                    });
-                });
+          .withUserConfiguration(AbstractsAnnotatedTestConfiguration.class)
+          .run(context -> {
+              Assertions.assertThrows(NoSuchBeanDefinitionException.class, () -> {
+                  context.getBean(AbstractAuthenticationService.class);
+              });
+          });
     }
 
     @Test
     void whenConcreteClassesAnnotated_noExceptionThrown() {
         contextRunner
-                .withUserConfiguration(ConcreteClassesAnnotatedTestConfiguration.class)
-                .run(context -> {
-                    AuthenticationService inMemoryAuthService = context.getBean(AuthenticationService.class);
-                    AbstractAuthenticationService ldapAuthService = context.getBean(AbstractAuthenticationService.class);
+          .withUserConfiguration(ConcreteClassesAnnotatedTestConfiguration.class)
+          .run(context -> {
+              AuthenticationService inMemoryAuthService = context.getBean(AuthenticationService.class);
+              AbstractAuthenticationService ldapAuthService = context.getBean(AbstractAuthenticationService.class);
 
-                    Assertions.assertNotNull(inMemoryAuthService);
-                    Assertions.assertNotNull(ldapAuthService);
-                });
+              Assertions.assertNotNull(inMemoryAuthService);
+              Assertions.assertNotNull(ldapAuthService);
+          });
     }
 }
