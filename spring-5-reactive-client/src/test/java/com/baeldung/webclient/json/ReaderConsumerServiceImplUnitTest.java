@@ -19,9 +19,9 @@ public class ReaderConsumerServiceImplUnitTest {
       "{\"id\":2,\"name\":\"reader2\",\"favouriteBooks\":[{\"author\":\"J.R.R. Tolkien\",\"title\":\"Lord of the Rings\"}, " +
       "{\"author\":\"Douglas Adams\",\"title\":\"The Hitchhiker\'s Guide to the Galaxy\"}]}]";
 
-    private static String BASE_URL = "http://localhost:8080";
+    private static String BASE_URL = "http://localhost:8080/readers";
 
-    WebClient webClientMock = WebClient.builder()
+    WebClient webClientMock = WebClient.builder().baseUrl(BASE_URL)
       .exchangeFunction(clientRequest -> Mono.just(ClientResponse.create(HttpStatus.OK)
         .header("content-type", "application/json")
         .body(READER_JSON)
