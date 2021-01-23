@@ -1,5 +1,6 @@
 package com.baeldung.webclient.json;
 
+import com.baeldung.webclient.json.model.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.ClientResponse;
@@ -10,13 +11,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasProperty;
 
 public class ReaderConsumerServiceImplUnitTest {
 
-    private static String READER_JSON = "[{\"id\":1,\"name\":\"reader1\",\"favouriteBooks\":[{\"author\":\"Milan Kundera\",\"title\":\"The Unbearable Lightness of Being\"}," +
-      "{\"author\":\"Charles Dickens\",\"title\":\"Oliver Twist\"}]}," +
-      "{\"id\":2,\"name\":\"reader2\",\"favouriteBooks\":[{\"author\":\"J.R.R. Tolkien\",\"title\":\"Lord of the Rings\"}, " +
+    private static String READER_JSON = "[{\"id\":1,\"name\":\"reader1\",\"favouriteBook\":{\"author\":\"Milan Kundera\",\"title\":\"The Unbearable Lightness of Being\"}," +
+      "\"booksRead\":[{\"author\":\"Charles Dickens\",\"title\":\"Oliver Twist\"},{\"author\":\"Milan Kundera\",\"title\":\"The Unbearable Lightness of Being\"}]}," +
+      "{\"id\":2,\"name\":\"reader2\",\"favouriteBook\":{\"author\":\"Douglas Adams\",\"title\":\"The Hitchhiker\'s Guide to the Galaxy\"}," +
+      "\"booksRead\":[{\"author\":\"J.R.R. Tolkien\",\"title\":\"Lord of the Rings\"}, " +
       "{\"author\":\"Douglas Adams\",\"title\":\"The Hitchhiker\'s Guide to the Galaxy\"}]}]";
 
     private static String BASE_URL = "http://localhost:8080/readers";
@@ -32,23 +36,30 @@ public class ReaderConsumerServiceImplUnitTest {
 
     @Test
     void when_processReaderDataFromObjectArray_then_OK() {
-        List<String> expected = Arrays.asList("reader1", "reader2");
-        List<String> actual = tested.processReaderDataFromObjectArray();
-        assertThat(actual, contains(expected.get(0), expected.get(1)));
+        String expectedAuthor1 = "Milan Kundera";
+        String expectedAuthor2 = "Douglas Adams";
+        List<Book> actual = tested.processReaderDataFromObjectArray();
+        assertThat(actual, hasItems(hasProperty("author", is(expectedAuthor1)),
+          hasProperty("author", is(expectedAuthor2))));
     }
 
     @Test
     void when_processReaderDataFromReaderArray_then_OK() {
-        List<String> expected = Arrays.asList("reader1", "reader2");
-        List<String> actual = tested.processReaderDataFromReaderArray();
-        assertThat(actual, contains(expected.get(0), expected.get(1)));
+        String expectedAuthor1 = "Milan Kundera";
+        String expectedAuthor2 = "Douglas Adams";
+        List<Book> actual = tested.processReaderDataFromReaderArray();
+        assertThat(actual, hasItems(hasProperty("author", is(expectedAuthor1)),
+          hasProperty("author", is(expectedAuthor2))));
     }
 
     @Test
     void when_processReaderDataFromReaderList_then_OK() {
-        List<String> expected = Arrays.asList("reader1", "reader2");
-        List<String> actual = tested.processReaderDataFromReaderList();
-        assertThat(actual, contains(expected.get(0), expected.get(1)));
+        String expectedAuthor1 = "Milan Kundera";
+        String expectedAuthor2 = "Douglas Adams";
+        List<Book> actual = tested.processReaderDataFromReaderList();
+        assertThat(actual, hasItems(hasProperty("author", is(expectedAuthor1)),
+          hasProperty("author", is(expectedAuthor2))));
+
     }
 
     @Test
@@ -60,7 +71,7 @@ public class ReaderConsumerServiceImplUnitTest {
           "Douglas Adams");
 
         List<String> actual = tested.processNestedReaderDataFromReaderArray();
-        assertThat(actual, contains(expected.get(0), expected.get(1), expected.get(2), expected.get(3)));
+        assertThat(actual, hasItems(expected.get(0), expected.get(1), expected.get(2), expected.get(3)));
     }
 
     @Test
@@ -72,6 +83,6 @@ public class ReaderConsumerServiceImplUnitTest {
           "Douglas Adams");
 
         List<String> actual = tested.processNestedReaderDataFromReaderList();
-        assertThat(actual, contains(expected.get(0), expected.get(1), expected.get(2), expected.get(3)));
+        assertThat(actual, hasItems(expected.get(0), expected.get(1), expected.get(2), expected.get(3)));
     }
 }

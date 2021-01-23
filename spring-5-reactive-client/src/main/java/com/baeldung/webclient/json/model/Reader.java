@@ -10,21 +10,24 @@ import java.util.List;
 public class Reader {
     private final int id;
     private final String name;
-    private final List<Book> favouriteBooks;
+    private final Book favouriteBook;
+    private final List<Book> booksRead;
 
     @JsonCreator
     public Reader(
       @JsonProperty("id") int id,
       @JsonProperty("name") String name,
-      @JsonProperty("favouriteBooks") List<Book> favoriteBooks) {
+      @JsonProperty("favouriteBook") Book favouriteBook,
+      @JsonProperty("booksRead") List<Book> booksRead) {
         this.id = id;
         this.name = name;
-        this.favouriteBooks = favoriteBooks;
+        this.favouriteBook = favouriteBook;
+        this.booksRead =booksRead;
     }
 
-    public String getName() {
-        return name;
+    public Book getFavouriteBook() {
+        return favouriteBook;
     }
 
-    public List<Book> getFavouriteBooks() { return favouriteBooks; }
+    public List<Book> getBooksRead() { return booksRead; }
 }

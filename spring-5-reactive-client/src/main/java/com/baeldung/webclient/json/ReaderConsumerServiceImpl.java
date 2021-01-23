@@ -21,7 +21,7 @@ public class ReaderConsumerServiceImpl implements ReaderConsumerService {
         this.webClient = webClient;
     }
     @Override
-    public List<String> processReaderDataFromObjectArray() {
+    public List<Book> processReaderDataFromObjectArray() {
         Mono<Object[]> response = webClient.get()
           .accept(MediaType.APPLICATION_JSON)
           .retrieve()
@@ -29,12 +29,12 @@ public class ReaderConsumerServiceImpl implements ReaderConsumerService {
         Object[] objects = response.block();
         return Arrays.stream(objects)
           .map(object -> mapper.convertValue(object, Reader.class))
-          .map(Reader::getName)
+          .map(Reader::getFavouriteBook)
           .collect(Collectors.toList());
     }
 
     @Override
-    public List<String> processReaderDataFromReaderArray() {
+    public List<Book> processReaderDataFromReaderArray() {
         Mono<Reader[]> response =
           webClient.get()
           .accept(MediaType.APPLICATION_JSON)
@@ -43,12 +43,12 @@ public class ReaderConsumerServiceImpl implements ReaderConsumerService {
 
         Reader[] readers = response.block();
         return Arrays.stream(readers)
-          .map(Reader::getName)
+          .map(Reader::getFavouriteBook)
           .collect(Collectors.toList());
     }
 
     @Override
-    public List<String> processReaderDataFromReaderList() {
+    public List<Book> processReaderDataFromReaderList() {
         Mono<List<Reader>> response = webClient.get()
           .accept(MediaType.APPLICATION_JSON)
           .retrieve()
@@ -56,7 +56,7 @@ public class ReaderConsumerServiceImpl implements ReaderConsumerService {
         List<Reader> readers = response.block();
 
         return readers.stream()
-          .map(Reader::getName)
+          .map(Reader::getFavouriteBook)
           .collect(Collectors.toList());
     }
 
@@ -69,7 +69,7 @@ public class ReaderConsumerServiceImpl implements ReaderConsumerService {
         Reader[] readers = response.block();
 
         return Arrays.stream(readers)
-          .flatMap(reader -> reader.getFavouriteBooks().stream())
+          .flatMap(reader -> reader.getBooksRead().stream())
           .map(Book::getAuthor)
           .collect(Collectors.toList());
     }
@@ -83,7 +83,7 @@ public class ReaderConsumerServiceImpl implements ReaderConsumerService {
 
         List<Reader> readers = response.block();
         return readers.stream()
-          .flatMap(reader -> reader.getFavouriteBooks().stream())
+          .flatMap(reader -> reader.getBooksRead().stream())
           .map(Book::getAuthor)
           .collect(Collectors.toList());
     }
