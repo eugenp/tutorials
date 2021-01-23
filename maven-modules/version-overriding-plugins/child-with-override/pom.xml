@@ -22,7 +22,7 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
-                    <excludes>
+                    <excludes combine.self="override">
                         <exclude>**/*IT.java</exclude>
                     </excludes>
                 </configuration>
