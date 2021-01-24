@@ -28,8 +28,13 @@ public class WebClientController {
         return "processed-" + bodyString;
     }
 
+    @PostMapping("/resource-foo")
+    public String postResource(@RequestBody Foo bodyFoo) {
+        return "processedFoo-" + bodyFoo.getName();
+    }
+
     @PostMapping(value = "/resource-multipart", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String handleFormUpload(@RequestPart("key1") String value1, @RequestPart("key2") String value2) {
-        return "processed-" + value1 + value2;
+        return "processed-" + value1 + "-" + value2;
     }
 }
