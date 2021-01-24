@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.zoneddatetime.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

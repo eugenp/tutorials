@@ -1,7 +1,5 @@
-package com.baeldung.repository;
+package com.baeldung.zoneddatetime;
 
-import com.baeldung.config.MongoConfig;
-import com.baeldung.model.Action;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.baeldung.zoneddatetime.config.MongoConfig;
+import com.baeldung.zoneddatetime.model.Action;
+import com.baeldung.zoneddatetime.repository.ActionRepository;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
