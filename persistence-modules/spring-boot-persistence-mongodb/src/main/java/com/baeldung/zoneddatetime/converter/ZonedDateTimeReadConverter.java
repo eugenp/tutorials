@@ -1,4 +1,4 @@
-package converter;
+package com.baeldung.zoneddatetime.converter;
 
 import org.springframework.core.convert.converter.Converter;
 
