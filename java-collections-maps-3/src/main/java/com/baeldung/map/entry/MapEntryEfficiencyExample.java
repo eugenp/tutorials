@@ -7,26 +7,27 @@ public class MapEntryEfficiencyExample {
 
     public static void main(String[] args) {
         MapEntryEfficiencyExample mapEntryEfficiencyExample = new MapEntryEfficiencyExample();
-        Map<Integer, String> bookMap = new HashMap<>();
-        bookMap.put(1, "Clean Code");
-        bookMap.put(2, "Effective Java");
+        Map<String, String> map = new HashMap<>();
 
-        System.out.println("Inefficient Method - Iterating Using Map.KeySet");
-        mapEntryEfficiencyExample.inefficientMethodUsingKeySet(bookMap);
+        map.put("Robert C. Martin", "Clean Code");
+        map.put("Joshua Bloch", "Effective Java");
 
-        System.out.println("More Efficient Method - Using Map.Entry");
-        mapEntryEfficiencyExample.efficientMethodUsingMapEntry(bookMap);
+        System.out.println("Iterating Using Map.KeySet - 2 operations");
+        mapEntryEfficiencyExample.usingKeySet(map);
+
+        System.out.println("Iterating Using Map.Entry - 1 operation");
+        mapEntryEfficiencyExample.usingEntrySet(map);
 
     }
 
-    public void inefficientMethodUsingKeySet(Map<Integer, String> bookMap) {
-        for (Integer key : bookMap.keySet()) {
+    public void usingKeySet(Map<String, String> bookMap) {
+        for (String key : bookMap.keySet()) {
             System.out.println("key: " + key + " value: " + bookMap.get(key));
         }
     }
 
-    public void efficientMethodUsingMapEntry(Map<Integer, String> bookMap) {
-        for (Map.Entry<Integer, String> book: bookMap.entrySet()) {
+    public void usingEntrySet(Map<String, String> bookMap) {
+        for (Map.Entry<String, String> book: bookMap.entrySet()) {
             System.out.println("key: " + book.getKey() + " value: " + book.getValue());
         }
     }

@@ -10,25 +10,24 @@ public class MapEntryUnitTest {
 
     @Test
     public void givenSimpleEntryList_whenAddDuplicateKey_thenDoesNotOverwriteExistingKey() {
-        List<Map.Entry<String, String>> entries = new ArrayList<>();
-        entries.add(new AbstractMap.SimpleEntry<>("Joshua Bloch", "Effective Java"));
-        entries.add(new AbstractMap.SimpleEntry<>("Robert C Martin", "Clean Code"));
-        entries.add(new AbstractMap.SimpleEntry<>("Robert C Martin", "Clean Architecture"));
+        List<Map.Entry<String, Book>> orderedTuples = new ArrayList<>();
+        orderedTuples.add(new AbstractMap.SimpleEntry<>("9780134685991", new Book("Effective Java 3d Edition", "Joshua Bloch")));
+        orderedTuples.add(new AbstractMap.SimpleEntry<>("9780132350884", new Book("Clean Code", "Robert C Martin")));
+        orderedTuples.add(new AbstractMap.SimpleEntry<>("9780132350884", new Book("Clean Code", "Robert C Martin")));
 
-        assertEquals(3, entries.size());
-        assertEquals("Joshua Bloch", entries.get(0).getKey());
-        assertEquals("Robert C Martin", entries.get(1).getKey());
-        assertEquals("Robert C Martin", entries.get(2).getKey());
+        assertEquals(3, orderedTuples.size());
+        assertEquals("9780134685991", orderedTuples.get(0).getKey());
+        assertEquals("9780132350884", orderedTuples.get(1).getKey());
+        assertEquals("9780132350884", orderedTuples.get(2).getKey());
     }
 
     @Test
     public void givenRegularMap_whenAddDuplicateKey_thenOverwritesExistingKey() {
-        Map<String, String> entries = new HashMap<>();
-        entries.put("Joshua Bloch", "Effective Java");
-        entries.put("Robert C Martin", "Clean Code");
-        entries.put("Robert C Martin", "Clean Architecture");
+        Map<String, Book> entries = new HashMap<>();
+        entries.put("9780134685991", new Book("Effective Java 3d Edition", "Joshua Bloch"));
+        entries.put("9780132350884", new Book("Clean Code", "Robert C Martin"));
+        entries.put("9780132350884", new Book("Clean Code", "Robert C Martin"));
 
         assertEquals(2, entries.size());
-        assertEquals(entries.get("Robert C Martin"), "Clean Architecture");
     }
 }
