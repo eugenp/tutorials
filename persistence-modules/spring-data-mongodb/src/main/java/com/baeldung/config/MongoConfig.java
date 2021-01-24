@@ -5,16 +5,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.baeldung.converter.UserWriterConverter;
@@ -30,9 +27,6 @@ import com.mongodb.client.MongoClients;
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
     private final List<Converter<?, ?>> converters = new ArrayList<Converter<?, ?>>();
-
-    @Autowired
-    private MappingMongoConverter mongoConverter;
 
     @Override
     protected String getDatabaseName() {
@@ -67,11 +61,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     public MongoCustomConversions customConversions() {
         converters.add(new UserWriterConverter());
         return new MongoCustomConversions(converters);
-    }
-
-    @Bean
-    public GridFsTemplate gridFsTemplate() throws Exception {
-        return new GridFsTemplate(mongoDbFactory(), mongoConverter);
     }
 
     @Bean
