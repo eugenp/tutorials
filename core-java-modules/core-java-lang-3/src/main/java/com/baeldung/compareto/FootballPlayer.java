@@ -10,9 +10,13 @@ public class FootballPlayer implements Comparable<FootballPlayer> {
         this.goalsScored = goalsScored;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public int compareTo(FootballPlayer anotherPlayer) {
-        return this.goalsScored - anotherPlayer.goalsScored;
+        return Integer.compare(this.goalsScored, anotherPlayer.goalsScored);
     }
 
     @Override
