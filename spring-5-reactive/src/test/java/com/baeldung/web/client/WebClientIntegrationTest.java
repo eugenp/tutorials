@@ -46,6 +46,7 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
+import reactor.test.StepVerifier;
 
 @SpringBootTest(classes = WebClientApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class WebClientIntegrationTest {
@@ -107,44 +108,46 @@ public class WebClientIntegrationTest {
 
         // request
         ResponseSpec responseSpecPostString = headerSpecInserterStringWithHeaders.retrieve();
-        String responsePostString = responseSpecPostString.bodyToMono(String.class)
-            .block();
-        String responsePostMultipart = headerSpecInserterMultipart.header(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE)
+        Mono<String> responsePostString = responseSpecPostString.bodyToMono(String.class);
+        Mono<String> responsePostMultipart = headerSpecInserterMultipart.header(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE)
             .retrieve()
-            .bodyToMono(String.class)
-            .block();
-        String responsePostWithBody1 = headerSpecPost1.retrieve()
-            .bodyToMono(String.class)
-            .block();
-        String responsePostWithBody2 = headerSpecPost2.retrieve()
-            .bodyToMono(String.class)
-            .block();
-        String responsePostWithBody3 = headerSpecPost2.retrieve()
-            .bodyToMono(String.class)
-            .block();
-        String responsePostFoo = headerSpecFooPost.retrieve()
-            .bodyToMono(String.class)
-            .block();
+            .bodyToMono(String.class);
+        Mono<String> responsePostWithBody1 = headerSpecPost1.retrieve()
+            .bodyToMono(String.class);
+        Mono<String> responsePostWithBody2 = headerSpecPost2.retrieve()
+            .bodyToMono(String.class);
+        Mono<String> responsePostWithBody3 = headerSpecPost2.retrieve()
+            .bodyToMono(String.class);
+        Mono<String> responsePostFoo = headerSpecFooPost.retrieve()
+            .bodyToMono(String.class);
         ParameterizedTypeReference<Map<String, String>> ref = new ParameterizedTypeReference<Map<String, String>>() {
         };
-        Map<String, String> responseGet = headerSpecGet.retrieve()
-            .bodyToMono(ref)
-            .block();
-        Map<String, String> responsePostWithNoBody = createDefaultPostResourceRequest().exchangeToMono(responseHandler -> {
+        Mono<Map<String, String>> responseGet = headerSpecGet.retrieve()
+            .bodyToMono(ref);
+        Mono<Map<String, String>> responsePostWithNoBody = createDefaultPostResourceRequest().exchangeToMono(responseHandler -> {
             assertThat(responseHandler.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
             return responseHandler.bodyToMono(ref);
-        })
-            .block();
+        });
 
         // response assertions
-        assertThat(responsePostString).isEqualTo("processed-bodyValue");
-        assertThat(responsePostMultipart).isEqualTo("processed-multipartValue1-multipartValue2");
-        assertThat(responsePostWithBody1).isEqualTo("processed-bodyValue");
-        assertThat(responsePostWithBody2).isEqualTo("processed-bodyValue");
-        assertThat(responsePostWithBody3).isEqualTo("processed-bodyValue");
-        assertThat(responseGet).containsEntry("field", "value");
-        assertThat(responsePostFoo).isEqualTo("processedFoo-fooName");
-        assertThat(responsePostWithNoBody).containsEntry("error", "Bad Request");
+        StepVerifier.create(responsePostString)
+            .expectNext("processed-bodyValue");
+        StepVerifier.create(responsePostMultipart)
+            .expectNext("processed-multipartValue1-multipartValue2");
+        StepVerifier.create(responsePostWithBody1)
+            .expectNext("processed-bodyValue");
+        StepVerifier.create(responsePostWithBody2)
+            .expectNext("processed-bodyValue");
+        StepVerifier.create(responsePostWithBody3)
+            .expectNext("processed-bodyValue");
+        StepVerifier.create(responseGet)
+            .expectNextMatches(nextMap -> nextMap.get("field")
+                .equals("value"));
+        StepVerifier.create(responsePostFoo)
+            .expectNext("processedFoo-fooName");
+        StepVerifier.create(responsePostWithNoBody)
+            .expectNextMatches(nextMap -> nextMap.get("error")
+                .equals("Bad Request"));
 
         // assert sending plain `new Object()` as request body
         assertThrows(CodecException.class, () -> {
@@ -152,11 +155,12 @@ public class WebClientIntegrationTest {
                 .block();
         });
         // assert sending request overriding base uri
-        assertThrows(WebClientRequestException.class, () -> {
+        Exception exception = assertThrows(WebClientRequestException.class, () -> {
             bodySpecOverridenBaseUri.retrieve()
                 .bodyToMono(String.class)
                 .block();
         });
+        assertThat(exception.getMessage()).contains("Connection refused");
 
     }
 
