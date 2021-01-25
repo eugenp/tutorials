@@ -81,6 +81,7 @@ public class WebClientIntegrationTest {
         String bodyValue = "bodyValue";
         RequestHeadersSpec<?> headerSpecPost1 = bodySpecPost.body(BodyInserters.fromPublisher(Mono.just(bodyValue), String.class));
         RequestHeadersSpec<?> headerSpecPost2 = createDefaultPostResourceRequest().body(BodyInserters.fromValue(bodyValue));
+        RequestHeadersSpec<?> headerSpecPost3 = createDefaultPostResourceRequest().bodyValue(bodyValue);
         RequestHeadersSpec<?> headerSpecFooPost = fooBodySpecPost.body(Mono.just(new Foo("fooName")), Foo.class);
         RequestHeadersSpec<?> headerSpecGet = requestGet.uri("/resource");
 
@@ -115,6 +116,9 @@ public class WebClientIntegrationTest {
         String responsePostWithBody1 = headerSpecPost1.retrieve()
             .bodyToMono(String.class)
             .block();
+        String responsePostWithBody2 = headerSpecPost2.retrieve()
+            .bodyToMono(String.class)
+            .block();
         String responsePostWithBody3 = headerSpecPost2.retrieve()
             .bodyToMono(String.class)
             .block();
@@ -136,6 +140,7 @@ public class WebClientIntegrationTest {
         assertThat(responsePostString).isEqualTo("processed-bodyValue");
         assertThat(responsePostMultipart).isEqualTo("processed-multipartValue1-multipartValue2");
         assertThat(responsePostWithBody1).isEqualTo("processed-bodyValue");
+        assertThat(responsePostWithBody2).isEqualTo("processed-bodyValue");
         assertThat(responsePostWithBody3).isEqualTo("processed-bodyValue");
         assertThat(responseGet).containsEntry("field", "value");
         assertThat(responsePostFoo).isEqualTo("processedFoo-fooName");
