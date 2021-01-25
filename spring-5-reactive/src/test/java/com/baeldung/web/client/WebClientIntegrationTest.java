@@ -17,8 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.codec.CodecException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.http.client.reactive.ClientHttpRequest;
@@ -72,8 +74,8 @@ public class WebClientIntegrationTest {
         RequestBodySpec bodySpecPost = uriSpecPost1.uri("http://localhost:" + port + "/resource");
         RequestBodySpec bodySpecPostMultipart = uriSpecPost2.uri(uriBuilder -> uriBuilder.pathSegment("resource-multipart")
             .build());
+        RequestBodySpec fooBodySpecPost = createDefaultPostRequest().uri("/resource-foo");
         RequestBodySpec bodySpecOverridenBaseUri = createDefaultPostRequest().uri(URI.create("/resource"));
-        RequestBodySpec fooBodySpecPost = createDefaultPostRequest().uri(URI.create("/resource-foo"));
 
         // request body specifications
         String bodyValue = "bodyValue";
@@ -124,23 +126,27 @@ public class WebClientIntegrationTest {
         Map<String, String> responseGet = headerSpecGet.retrieve()
             .bodyToMono(ref)
             .block();
-        String responsePostWithNoBody = bodySpecPost.retrieve()
-            .bodyToMono(String.class)
+        Map<String, String> responsePostWithNoBody = createDefaultPostResourceRequest().exchangeToMono(responseHandler -> {
+            assertThat(responseHandler.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+            return responseHandler.bodyToMono(ref);
+        })
             .block();
 
         // response assertions
         assertThat(responsePostString).isEqualTo("processed-bodyValue");
         assertThat(responsePostMultipart).isEqualTo("processed-multipartValue1-multipartValue2");
-        assertThat(responsePostWithBody1).isEqualTo("processed-");
-        assertThat(responsePostWithBody3).isEqualTo("processed-");
+        assertThat(responsePostWithBody1).isEqualTo("processed-bodyValue");
+        assertThat(responsePostWithBody3).isEqualTo("processed-bodyValue");
         assertThat(responseGet).containsEntry("field", "value");
-        assertThat(responsePostWithNoBody).isEqualTo("processed-");
-        assertThat(responsePostFoo).isEqualTo("processed-fooName");
+        assertThat(responsePostFoo).isEqualTo("processedFoo-fooName");
+        assertThat(responsePostWithNoBody).containsEntry("error", "Bad Request");
 
-        assertThrows(WebClientRequestException.class, () -> {
-            String responsePostObject = headerSpecInserterObject.exchangeToMono(response -> response.bodyToMono(String.class))
+        // assert sending plain `new Object()` as request body
+        assertThrows(CodecException.class, () -> {
+            headerSpecInserterObject.exchangeToMono(response -> response.bodyToMono(String.class))
                 .block();
         });
+        // assert sending request overriding base uri
         assertThrows(WebClientRequestException.class, () -> {
             bodySpecOverridenBaseUri.retrieve()
                 .bodyToMono(String.class)
