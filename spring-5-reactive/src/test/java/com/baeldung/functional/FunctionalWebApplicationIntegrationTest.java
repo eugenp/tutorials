@@ -5,6 +5,7 @@ import static org.springframework.web.reactive.function.BodyInserters.fromResour
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.core.io.ClassPathResource;

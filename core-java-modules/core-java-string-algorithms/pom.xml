@@ -65,7 +65,6 @@
     </build>
 
     <properties>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
         <guava.version>27.0.1-jre</guava.version>
         <ahocorasick.version>0.4.0</ahocorasick.version>
         <assertj.version>3.6.1</assertj.version>
