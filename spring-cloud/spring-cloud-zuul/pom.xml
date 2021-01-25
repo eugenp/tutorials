@@ -80,7 +80,7 @@
 
     <properties>
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 
 </project>

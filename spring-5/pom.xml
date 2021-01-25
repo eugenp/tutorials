@@ -133,18 +133,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- this surefire configuration allows concurrent execution; 
-                do not remove -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                </configuration>
-            </plugin>
+            </plugin>            
         </plugins>
     </build>
 
