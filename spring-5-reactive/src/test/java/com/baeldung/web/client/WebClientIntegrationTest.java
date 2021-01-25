@@ -81,7 +81,7 @@ public class WebClientIntegrationTest {
         String bodyValue = "bodyValue";
         RequestHeadersSpec<?> headerSpecPost1 = bodySpecPost.body(BodyInserters.fromPublisher(Mono.just(bodyValue), String.class));
         RequestHeadersSpec<?> headerSpecPost2 = createDefaultPostResourceRequest().body(BodyInserters.fromValue(bodyValue));
-        RequestHeadersSpec<?> headerSpecFooPost = fooBodySpecPost.body(BodyInserters.fromValue(new Foo("fooName")));
+        RequestHeadersSpec<?> headerSpecFooPost = fooBodySpecPost.body(Mono.just(new Foo("fooName")), Foo.class);
         RequestHeadersSpec<?> headerSpecGet = requestGet.uri("/resource");
 
         // request body specifications - using inserters
