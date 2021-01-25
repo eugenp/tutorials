@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import reactor.core.publisher.Mono;
+
 @RestController
 public class WebClientController {
 
@@ -24,13 +26,13 @@ public class WebClientController {
     }
 
     @PostMapping("/resource")
-    public String postResource(@RequestBody String bodyString) {
-        return "processed-" + bodyString;
+    public Mono<String> postStringResource(@RequestBody Mono<String> bodyString) {
+        return bodyString.map(body -> "processed-" + body);
     }
 
     @PostMapping("/resource-foo")
-    public String postResource(@RequestBody Foo bodyFoo) {
-        return "processedFoo-" + bodyFoo.getName();
+    public Mono<String> postFooResource(@RequestBody Mono<Foo> bodyFoo) {
+        return bodyFoo.map(foo -> "processedFoo-" + foo.getName());
     }
 
     @PostMapping(value = "/resource-multipart", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

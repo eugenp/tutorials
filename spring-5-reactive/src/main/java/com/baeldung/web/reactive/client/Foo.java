@@ -4,6 +4,10 @@ public class Foo {
 
     private String name;
 
+    public Foo() {
+        super();
+    }
+
     public Foo(String name) {
         super();
         this.name = name;
