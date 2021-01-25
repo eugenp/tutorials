@@ -1,8 +1,8 @@
 package com.baeldung.boot.jersey.controllers;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import javax.ws.rs.core.Response;
 
-import javax.xml.ws.Response;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
