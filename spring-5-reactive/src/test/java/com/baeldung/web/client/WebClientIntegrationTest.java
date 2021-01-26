@@ -1,7 +1,6 @@
 package com.baeldung.web.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
@@ -42,7 +41,6 @@ import com.baeldung.web.reactive.client.Foo;
 import com.baeldung.web.reactive.client.WebClientApplication;
 
 import io.netty.channel.ChannelOption;
-import io.netty.channel.ConnectTimeoutException;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import reactor.core.publisher.Mono;
@@ -129,40 +127,45 @@ public class WebClientIntegrationTest {
             assertThat(responseHandler.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
             return responseHandler.bodyToMono(ref);
         });
+        Mono<String> responsePostOverridenBaseUri = bodySpecOverridenBaseUri.retrieve()
+            .bodyToMono(String.class);
 
         // response assertions
         StepVerifier.create(responsePostString)
-            .expectNext("processed-bodyValue");
+            .expectNext("processed-bodyValue")
+            .verifyComplete();
         StepVerifier.create(responsePostMultipart)
-            .expectNext("processed-multipartValue1-multipartValue2");
+            .expectNext("processed-multipartValue1-multipartValue2")
+            .verifyComplete();
         StepVerifier.create(responsePostWithBody1)
-            .expectNext("processed-bodyValue");
+            .expectNext("processed-bodyValue")
+            .verifyComplete();
         StepVerifier.create(responsePostWithBody2)
-            .expectNext("processed-bodyValue");
+            .expectNext("processed-bodyValue")
+            .verifyComplete();
         StepVerifier.create(responsePostWithBody3)
-            .expectNext("processed-bodyValue");
+            .expectNext("processed-bodyValue")
+            .verifyComplete();
         StepVerifier.create(responseGet)
             .expectNextMatches(nextMap -> nextMap.get("field")
-                .equals("value"));
+                .equals("value"))
+            .verifyComplete();
         StepVerifier.create(responsePostFoo)
-            .expectNext("processedFoo-fooName");
+            .expectNext("processedFoo-fooName")
+            .verifyComplete();
         StepVerifier.create(responsePostWithNoBody)
             .expectNextMatches(nextMap -> nextMap.get("error")
-                .equals("Bad Request"));
-
-        // assert sending plain `new Object()` as request body
-        assertThrows(CodecException.class, () -> {
-            headerSpecInserterObject.exchangeToMono(response -> response.bodyToMono(String.class))
-                .block();
-        });
+                .equals("Bad Request"))
+            .verifyComplete();
         // assert sending request overriding base uri
-        Exception exception = assertThrows(WebClientRequestException.class, () -> {
-            bodySpecOverridenBaseUri.retrieve()
-                .bodyToMono(String.class)
-                .block();
-        });
-        assertThat(exception.getMessage()).contains("Connection refused");
-
+        StepVerifier.create(responsePostOverridenBaseUri)
+            .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
+                .contains("Connection refused"))
+            .verify();
+        // assert error plain `new Object()` as request body
+        StepVerifier.create(headerSpecInserterObject.exchangeToMono(response -> response.bodyToMono(String.class)))
+            .expectError(CodecException.class)
+            .verify();
     }
 
     @Test
@@ -181,12 +184,11 @@ public class WebClientIntegrationTest {
         RequestHeadersSpec<?> headerSpecInserterCompleteSuscriber = timeoutClient.post()
             .uri("/resource")
             .body(inserterCompleteSuscriber);
-        WebClientRequestException exception = assertThrows(WebClientRequestException.class, () -> {
-            headerSpecInserterCompleteSuscriber.retrieve()
-                .bodyToMono(String.class)
-                .block();
-        });
-        assertThat(exception.getCause()).isInstanceOf(ConnectTimeoutException.class);
+
+        StepVerifier.create(headerSpecInserterCompleteSuscriber.retrieve()
+            .bodyToMono(String.class))
+            .expectTimeout(Duration.ofMillis(2000))
+            .verify();
     }
 
     private RequestBodyUriSpec createDefaultPostRequest() {
