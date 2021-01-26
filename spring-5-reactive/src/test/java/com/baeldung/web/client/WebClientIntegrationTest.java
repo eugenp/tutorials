@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Collections;
 import java.util.Map;
@@ -116,7 +117,7 @@ public class WebClientIntegrationTest {
             .bodyToMono(String.class);
         Mono<String> responsePostWithBody2 = headerSpecPost2.retrieve()
             .bodyToMono(String.class);
-        Mono<String> responsePostWithBody3 = headerSpecPost2.retrieve()
+        Mono<String> responsePostWithBody3 = headerSpecPost3.retrieve()
             .bodyToMono(String.class);
         Mono<String> responsePostFoo = headerSpecFooPost.retrieve()
             .bodyToMono(String.class);
@@ -168,6 +169,7 @@ public class WebClientIntegrationTest {
     public void givenWebClientWithTimeoutConfigurations_whenRequestUsingWronglyConfiguredPublisher_thenObtainTimeout() {
         HttpClient httpClient = HttpClient.create()
             .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1000)
+            .responseTimeout(Duration.ofMillis(1000))
             .doOnConnected(conn -> conn.addHandlerLast(new ReadTimeoutHandler(1000, TimeUnit.MILLISECONDS))
                 .addHandlerLast(new WriteTimeoutHandler(1000, TimeUnit.MILLISECONDS)));
 
