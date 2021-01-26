@@ -75,7 +75,8 @@ public class WebClientIntegrationTest {
         RequestBodySpec bodySpecPostMultipart = uriSpecPost2.uri(uriBuilder -> uriBuilder.pathSegment("resource-multipart")
             .build());
         RequestBodySpec fooBodySpecPost = createDefaultPostRequest().uri("/resource-foo");
-        RequestBodySpec bodySpecOverridenBaseUri = createDefaultPostRequest().uri(URI.create("/resource"));
+        RequestBodySpec bodySpecOverridenBaseUri = client3.post()
+            .uri(URI.create("/resource"));
 
         // request body specifications
         String bodyValue = "bodyValue";
