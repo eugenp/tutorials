@@ -66,8 +66,8 @@ public class WebClientIntegrationTest {
             .build();
 
         // request specification
-        UriSpec<WebClient.RequestBodySpec> uriSpecPost1 = client1.method(HttpMethod.POST);
-        UriSpec<WebClient.RequestBodySpec> uriSpecPost2 = client2.post();
+        UriSpec<RequestBodySpec> uriSpecPost1 = client1.method(HttpMethod.POST);
+        UriSpec<RequestBodySpec> uriSpecPost2 = client2.post();
         UriSpec<?> requestGet = client3.get();
 
         // uri specification
