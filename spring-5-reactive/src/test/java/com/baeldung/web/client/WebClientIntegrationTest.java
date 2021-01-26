@@ -79,11 +79,11 @@ public class WebClientIntegrationTest {
 
         // request body specifications
         String bodyValue = "bodyValue";
-        RequestHeadersSpec<?> headerSpecPost1 = bodySpecPost.body(BodyInserters.fromPublisher(Mono.just(bodyValue), String.class));
-        RequestHeadersSpec<?> headerSpecPost2 = createDefaultPostResourceRequest().body(BodyInserters.fromValue(bodyValue));
-        RequestHeadersSpec<?> headerSpecPost3 = createDefaultPostResourceRequest().bodyValue(bodyValue);
-        RequestHeadersSpec<?> headerSpecFooPost = fooBodySpecPost.body(Mono.just(new Foo("fooName")), Foo.class);
-        RequestHeadersSpec<?> headerSpecGet = requestGet.uri("/resource");
+        RequestHeadersSpec<?> headersSpecPost1 = bodySpecPost.body(BodyInserters.fromPublisher(Mono.just(bodyValue), String.class));
+        RequestHeadersSpec<?> headersSpecPost2 = createDefaultPostResourceRequest().body(BodyInserters.fromValue(bodyValue));
+        RequestHeadersSpec<?> headersSpecPost3 = createDefaultPostResourceRequest().bodyValue(bodyValue);
+        RequestHeadersSpec<?> headersSpecFooPost = fooBodySpecPost.body(Mono.just(new Foo("fooName")), Foo.class);
+        RequestHeadersSpec<?> headersSpecGet = requestGet.uri("/resource");
 
         // request body specifications - using inserters
         LinkedMultiValueMap<String, String> map = new LinkedMultiValueMap<>();
@@ -94,28 +94,28 @@ public class WebClientIntegrationTest {
         BodyInserter<Object, ReactiveHttpOutputMessage> inserterObject = BodyInserters.fromValue(new Object());
         BodyInserter<String, ReactiveHttpOutputMessage> inserterString = BodyInserters.fromValue(bodyValue);
 
-        RequestHeadersSpec<?> headerSpecInserterMultipart = bodySpecPostMultipart.body(inserterMultipart);
-        RequestHeadersSpec<?> headerSpecInserterObject = createDefaultPostResourceRequest().body(inserterObject);
-        RequestHeadersSpec<?> headerSpecInserterString = createDefaultPostResourceRequest().body(inserterString);
+        RequestHeadersSpec<?> headersSpecInserterMultipart = bodySpecPostMultipart.body(inserterMultipart);
+        RequestHeadersSpec<?> headersSpecInserterObject = createDefaultPostResourceRequest().body(inserterObject);
+        RequestHeadersSpec<?> headersSpecInserterString = createDefaultPostResourceRequest().body(inserterString);
 
         // request header specification
-        RequestHeadersSpec<?> headerSpecInserterStringWithHeaders = headerSpecInserterString.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+        RequestHeadersSpec<?> headersSpecInserterStringWithHeaders = headersSpecInserterString.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
             .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML)
             .acceptCharset(StandardCharsets.UTF_8)
             .ifNoneMatch("*")
             .ifModifiedSince(ZonedDateTime.now());
 
         // request
-        ResponseSpec responseSpecPostString = headerSpecInserterStringWithHeaders.retrieve();
+        ResponseSpec responseSpecPostString = headersSpecInserterStringWithHeaders.retrieve();
         Mono<String> responsePostString = responseSpecPostString.bodyToMono(String.class);
-        Mono<String> responsePostMultipart = headerSpecInserterMultipart.header(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE)
+        Mono<String> responsePostMultipart = headersSpecInserterMultipart.header(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE)
             .retrieve()
             .bodyToMono(String.class);
-        Mono<String> responsePostWithBody1 = headerSpecPost1.retrieve()
+        Mono<String> responsePostWithBody1 = headersSpecPost1.retrieve()
             .bodyToMono(String.class);
-        Mono<String> responsePostWithBody2 = headerSpecPost2.retrieve()
+        Mono<String> responsePostWithBody2 = headersSpecPost2.retrieve()
             .bodyToMono(String.class);
-        Mono<String> responsePostWithBody3 = headerSpecPost3.exchangeToMono(response -> {
+        Mono<String> responsePostWithBody3 = headersSpecPost3.exchangeToMono(response -> {
             if (response.statusCode()
                 .equals(HttpStatus.OK)) {
                 return response.bodyToMono(String.class);
@@ -127,11 +127,11 @@ public class WebClientIntegrationTest {
                     .flatMap(Mono::error);
             }
         });
-        Mono<String> responsePostFoo = headerSpecFooPost.retrieve()
+        Mono<String> responsePostFoo = headersSpecFooPost.retrieve()
             .bodyToMono(String.class);
         ParameterizedTypeReference<Map<String, String>> ref = new ParameterizedTypeReference<Map<String, String>>() {
         };
-        Mono<Map<String, String>> responseGet = headerSpecGet.retrieve()
+        Mono<Map<String, String>> responseGet = headersSpecGet.retrieve()
             .bodyToMono(ref);
         Mono<Map<String, String>> responsePostWithNoBody = createDefaultPostResourceRequest().exchangeToMono(responseHandler -> {
             assertThat(responseHandler.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
@@ -173,7 +173,7 @@ public class WebClientIntegrationTest {
                 .contains("Connection refused"))
             .verify();
         // assert error plain `new Object()` as request body
-        StepVerifier.create(headerSpecInserterObject.exchangeToMono(response -> response.bodyToMono(String.class)))
+        StepVerifier.create(headersSpecInserterObject.exchangeToMono(response -> response.bodyToMono(String.class)))
             .expectError(CodecException.class)
             .verify();
     }
@@ -191,11 +191,11 @@ public class WebClientIntegrationTest {
             .build();
 
         BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserterCompleteSuscriber = BodyInserters.fromPublisher(Subscriber::onComplete, String.class);
-        RequestHeadersSpec<?> headerSpecInserterCompleteSuscriber = timeoutClient.post()
+        RequestHeadersSpec<?> headersSpecInserterCompleteSuscriber = timeoutClient.post()
             .uri("/resource")
             .body(inserterCompleteSuscriber);
 
-        StepVerifier.create(headerSpecInserterCompleteSuscriber.retrieve()
+        StepVerifier.create(headersSpecInserterCompleteSuscriber.retrieve()
             .bodyToMono(String.class))
             .expectTimeout(Duration.ofMillis(2000))
             .verify();
