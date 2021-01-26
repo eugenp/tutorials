@@ -115,8 +115,18 @@ public class WebClientIntegrationTest {
             .bodyToMono(String.class);
         Mono<String> responsePostWithBody2 = headerSpecPost2.retrieve()
             .bodyToMono(String.class);
-        Mono<String> responsePostWithBody3 = headerSpecPost3.retrieve()
-            .bodyToMono(String.class);
+        Mono<String> responsePostWithBody3 = headerSpecPost3.exchangeToMono(response -> {
+            if (response.statusCode()
+                .equals(HttpStatus.OK)) {
+                return response.bodyToMono(String.class);
+            } else if (response.statusCode()
+                .is4xxClientError()) {
+                return Mono.just("Error response");
+            } else {
+                return response.createException()
+                    .flatMap(Mono::error);
+            }
+        });
         Mono<String> responsePostFoo = headerSpecFooPost.retrieve()
             .bodyToMono(String.class);
         ParameterizedTypeReference<Map<String, String>> ref = new ParameterizedTypeReference<Map<String, String>>() {
