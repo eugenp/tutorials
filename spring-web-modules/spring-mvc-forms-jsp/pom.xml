@@ -54,7 +54,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>${fileupload.version}</version>
+            <version>${commons-fileupload.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -98,7 +98,6 @@
 
     <properties>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
-        <fileupload.version>1.3.3</fileupload.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
     </properties>

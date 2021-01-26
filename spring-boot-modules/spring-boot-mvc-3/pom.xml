@@ -37,8 +37,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <commons-io.version>2.7</commons-io.version>
-    </properties>
-
 </project>

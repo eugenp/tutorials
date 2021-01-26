@@ -601,7 +601,6 @@
 
                 <module>spring-5</module>
                 <module>spring-5-data-reactive</module>
-                <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
                 <module>spring-5-reactive-client</module>
@@ -651,26 +650,17 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-jms</module>
-                <module>spring-jooq</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-velocity</module>
-
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-http-2</module>
-                <module>spring-rest-shell</module>
-                <module>spring-rest-simple</module>
-                <module>spring-resttemplate</module>
-                <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -1063,7 +1053,6 @@
 
                 <module>spring-5</module>
                 <module>spring-5-data-reactive</module>
-                <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
                 <module>spring-5-reactive-client</module>
@@ -1111,7 +1100,6 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-jms</module>
-                <module>spring-jooq</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
@@ -1119,17 +1107,11 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
 
-                <module>spring-mvc-velocity</module>
-
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-shell</module>
-                <module>spring-rest-simple</module>
-                <module>spring-resttemplate</module>
-                <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -1391,9 +1373,9 @@
         <jmh-generator.version>1.19</jmh-generator.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
-        <commons-io.version>2.5</commons-io.version>
+        <commons-io.version>2.8.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
         <commons-cli.version>1.4</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
@@ -1401,7 +1383,7 @@
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.11.1</jackson.version>
-        <commons-fileupload.version>1.3</commons-fileupload.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.2.0</junit-platform.version>
         <junit-jupiter.version>5.2.0</junit-jupiter.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
