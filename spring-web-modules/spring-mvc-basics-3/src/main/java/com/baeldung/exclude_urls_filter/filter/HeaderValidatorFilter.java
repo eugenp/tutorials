@@ -11,20 +11,23 @@ import java.io.IOException;
 
 @Order(1)
 public class HeaderValidatorFilter extends OncePerRequestFilter {
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-	        throws ServletException, IOException {
-	    String path = request.getRequestURI();
-	    if ("/health".equals(path)) {
-	    	filterChain.doFilter(request, response);
-	    	return;
-	    }
-	    String countryCode = request.getHeader("X-Country-Code");
-	    if (!"US".equals(countryCode)) {
-	        response.sendError(HttpStatus.BAD_REQUEST.value(), "Invalid Locale");
-	        return;
-	    }
-	
-	    filterChain.doFilter(request, response);
-	}
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+      HttpServletResponse response,
+      FilterChain filterChain)
+      throws ServletException,
+      IOException {
+        String countryCode = request.getHeader("X-Country-Code");
+        if (!"US".equals(countryCode)) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), "Invalid Locale");
+            return;
+        }
+        filterChain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        String path = request.getRequestURI();
+        return "/health".equals(path);
+    }
 }

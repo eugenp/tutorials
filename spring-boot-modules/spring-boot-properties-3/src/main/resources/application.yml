@@ -1,17 +1,21 @@
-logging:
-  file:
-    name: myapplication.log
+bael:
+  root-level-property: defaultRootLevelValue
 spring:
-  datasource:
-    password: 'password'
-    url: jdbc:h2:dev
-    username: SA
+  profiles:
+    group:
+      multidocument-integration: multidocument-integration-extension
 ---
 spring:
+  config:
+    activate:
+      on-profile: multidocument-staging
   datasource:
     password: 'password'
-    url: jdbc:mysql://localhost:3306/db_production
-    username: user
+    url: jdbc:h2:staging
+    username: SA
+bael:
+  property: stagingValue
+---
 application:
   servers:
     -   ip: '127.0.0.1'
