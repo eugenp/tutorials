@@ -16,8 +16,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>child-with-override</module>
-        <module>child-without-override</module>
+        <module>child-a</module>
+        <module>child-b</module>
     </modules>
 
     <build>
