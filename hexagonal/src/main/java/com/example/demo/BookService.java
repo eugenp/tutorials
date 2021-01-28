@@ -8,5 +8,5 @@ public interface BookService{
     public Book getBook(String title);
     public List<Book> getBooksByMatchingTitle(String title);
     public List<Book> listAllBooks();
-    public void addBook(Book book);
+    public boolean addBook(Book book);
 }

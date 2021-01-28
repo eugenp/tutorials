@@ -8,7 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookRepositoryImpl implements BookRepository{
+public class BookRepositoryMapImpl implements BookRepository{
     
     Map<String, Book> books = new HashMap<>();
     

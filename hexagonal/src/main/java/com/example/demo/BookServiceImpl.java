@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookServiceImpl implements BookService{
-    @Autowired 
     BookRepository bookRepository;
+    
+    public BookServiceImpl(@Autowired BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
     
     public Book getBook(String title) {
         return bookRepository.getBook(title);
@@ -22,7 +25,13 @@ public class BookServiceImpl implements BookService{
         return bookRepository.listAllBooks();
     }
     
-    public void addBook(Book book) {
-        bookRepository.addBook(book);
+    public boolean addBook(Book book) {
+        try{
+            bookRepository.addBook(book);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }
