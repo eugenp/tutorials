@@ -37,6 +37,9 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <jdkToolchain>
+                        <version>[1.8,11)</version>
+                    </jdkToolchain>
                     <excludes combine.children="append">
                         <exclude>**/*Test.java</exclude>
                     </excludes>
