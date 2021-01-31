@@ -14,17 +14,30 @@
     </parent>
 
     <modules>
+        <module>spring-5-mvc</module>
         <module>spring-mvc-basics</module>
         <module>spring-mvc-basics-2</module>
         <module>spring-mvc-basics-3</module>
         <module>spring-mvc-basics-4</module>     
         <module>spring-mvc-crash</module>
         <module>spring-mvc-forms-jsp</module>
+        <module>spring-mvc-forms-thymeleaf</module>
+        <module>spring-mvc-java</module>
+        <module>spring-mvc-java-2</module>
+        <module>spring-mvc-velocity</module>
         <module>spring-mvc-views</module>
         <module>spring-mvc-webflow</module>
+        <module>spring-mvc-xml</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-http</module>
+        <module>spring-rest-http-2</module>
+        <module>spring-rest-query-language</module>
+        <module>spring-rest-shell</module>
+        <module>spring-rest-simple</module>
+        <module>spring-rest-testing</module>
+        <module>spring-resttemplate</module>
         <module>spring-resttemplate-2</module>
+        <module>spring-resttemplate-3</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
         <module>spring-thymeleaf-3</module>
