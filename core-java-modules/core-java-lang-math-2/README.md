@@ -14,4 +14,4 @@
 - [Debugging with Eclipse](https://www.baeldung.com/eclipse-debugging)
 - [Matrix Multiplication in Java](https://www.baeldung.com/java-matrix-multiplication)
 - [Largest Power of 2 That Is Less Than the Given Number with Java](https://www.baeldung.com/java-largest-power-of-2-less-than-number)
-- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math)
+- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math)[[Next -->]](/core-java-modules/core-java-lang-math-3)

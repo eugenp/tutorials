@@ -103,7 +103,6 @@ public class FunctionalWebApplicationIntegrationTest {
             .isEqualTo(String.valueOf(resource.contentLength()));
     }
 
-    @Ignore("We get 404 after Spring Boot 2.4 upgrade. We need to solve it in a new task.")
     @Test
     public void givenActors_whenAddActor_thenAdded() throws Exception {
         client.get()

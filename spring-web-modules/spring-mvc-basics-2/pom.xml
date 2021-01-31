@@ -168,7 +168,6 @@
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
-        <commons-fileupload.version>1.3.2</commons-fileupload.version>
         <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>
         <freemarker.version>2.3.27-incubating</freemarker.version>
