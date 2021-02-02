@@ -188,7 +188,7 @@
                 <artifactId>cargo-maven2-plugin</artifactId>
                 <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <!--<wait>true</wait> caused errors on commit -->
+                    <wait>true</wait>
                     <container>
                         <containerId>tomcat8x</containerId>
                         <type>embedded</type>
@@ -297,7 +297,7 @@
         <guava.version>20.0</guava.version>
 
         <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
 
         <!-- okhttp -->
