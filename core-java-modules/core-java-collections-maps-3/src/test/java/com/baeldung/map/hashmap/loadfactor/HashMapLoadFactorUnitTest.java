@@ -10,8 +10,8 @@ public class HashMapLoadFactorUnitTest {
 
     @Test
     public void whenCreateMapWithDefaultParam_thenSucces() {
-        Map<String, String> mapWithDefaultParams = new HashMap<String, String>();
-        mapWithDefaultParams.put("1", "One");
+        Map<String, String> mapWithDefaultParams = new HashMap<>();
+        mapWithDefaultParams.put("1", "one");
         mapWithDefaultParams.put("2", "two");
         mapWithDefaultParams.put("3", "three");
         mapWithDefaultParams.put("4", "four");
@@ -22,8 +22,8 @@ public class HashMapLoadFactorUnitTest {
 
     @Test
     public void whenCreateMapWithInitialCapacity_thenSucces() {
-        Map<String, String> mapWithInitialCapacity = new HashMap<String, String>(5);
-        mapWithInitialCapacity.put("1", "One");
+        Map<String, String> mapWithInitialCapacity = new HashMap<>(5);
+        mapWithInitialCapacity.put("1", "one");
         mapWithInitialCapacity.put("2", "two");
         mapWithInitialCapacity.put("3", "three");
         
@@ -32,7 +32,7 @@ public class HashMapLoadFactorUnitTest {
 
     @Test
     public void whenCreateMapWithInitialCapacityAndLF_thenSucces() {
-        Map<String, String> mapWithInitialCapacityAndLF = new HashMap<String, String>(5, 0.5f);
+        Map<String, String> mapWithInitialCapacityAndLF = new HashMap<>(5, 0.5f);
         mapWithInitialCapacityAndLF.put("1", "one");
         mapWithInitialCapacityAndLF.put("2", "two");
         mapWithInitialCapacityAndLF.put("3", "three");
