@@ -19,9 +19,10 @@ public class FileController {
         return service.uploadFile(file);
     }
     
-    @PostMapping(value = "/upload-wo-client")
-    public boolean handleFileUploadWithoutClient(@RequestPart(value = "file") MultipartFile file) {
-        return service.uploadFileWithoutClient(file);
+    @PostMapping(value = "/upload-mannual-client")
+    public boolean handleFileUploadWithManualClient(
+            @RequestPart(value = "file") MultipartFile file) {
+        return service.uploadFileWithManualClient(file);
     }
     
 }

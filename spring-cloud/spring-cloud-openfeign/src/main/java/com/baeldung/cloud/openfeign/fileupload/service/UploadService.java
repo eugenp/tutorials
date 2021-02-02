@@ -15,7 +15,7 @@ public class UploadService {
     @Autowired
     private UploadClient client;
     
-    public boolean uploadFileWithoutClient(MultipartFile file) {
+    public boolean uploadFileWithManualClient(MultipartFile file) {
         UploadResource fileUploadResource = Feign.builder().encoder(new SpringFormEncoder())
                 .target(UploadResource.class, HTTP_FILE_UPLOAD_URL);
         Response response = fileUploadResource.uploadFile(file);
