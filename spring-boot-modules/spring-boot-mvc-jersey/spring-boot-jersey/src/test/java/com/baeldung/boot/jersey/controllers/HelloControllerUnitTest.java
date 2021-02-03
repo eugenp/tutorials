@@ -18,7 +18,7 @@ public class HelloControllerUnitTest {
     private HelloController helloController;
 
     @Test
-    public void helloTest() {
+    public void whenHelloIsInvokedWithCaio_thenReturn200AsStatusAndHelloCaioAsBody() {
         Response response = this.helloController.hello("Caio");
         assertThat(response.getStatus()).isEqualTo(200);
         assertThat(response.getEntity()).isEqualTo("Hello, Caio");
