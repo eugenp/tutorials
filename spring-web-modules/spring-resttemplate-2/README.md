@@ -11,3 +11,4 @@ This module contains articles about Spring RestTemplate
 - [How to Compress Requests Using the Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-compressing-requests)
 - [Get list of JSON objects with Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-json-list)
 - [A Guide To Spring Redirects](https://www.baeldung.com/spring-redirect-and-forward)
+- [Spring RestTemplate Exception: “Not enough variables available to expand”](https://www.baeldung.com/spring-not-enough-variables-available)
