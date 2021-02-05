@@ -11,7 +11,7 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.io.IOException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PersonControllerUnitTest {
@@ -53,17 +53,12 @@ class PersonControllerUnitTest {
         JsonNode root = objectMapper.readTree(personResultAsJsonStr.getBody());
 
         // then
-        assertEquals(root.get("lastName")
-            .textValue(), "baeldung click me!");
-        assertEquals(root.get("param")
-            .textValue(), "");
-        assertEquals(root.get("header_1")
-            .textValue(), "");
-        assertEquals(root.get("header_2")
-            .textValue(), "");
-        assertEquals(root.get("header_3")
-                .textValue(), "");
-        assertEquals(root.get("header_4")
-                .textValue(), "Your search for 'flowers '");
+        assertThat(root.get("firstName").textValue()).isEqualTo("baeldung ");
+        assertThat(root.get("lastName").textValue()).isEqualTo("baeldung click me!");
+        assertThat(root.get("param").textValue()).isEmpty();
+        assertThat(root.get("header_1").textValue()).isEmpty();
+        assertThat(root.get("header_2").textValue()).isEmpty();
+        assertThat(root.get("header_3").textValue()).isEmpty();
+        assertThat(root.get("header_4").textValue()).isEqualTo("Your search for 'flowers '");
     }
 }
