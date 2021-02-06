@@ -6,9 +6,9 @@ import com.baeldung.booksapp.core.domain.Book;
 
 public interface BookRepo {
 
-	void createBook(Book book);
-	
-	public Book getBook(String name);
-	
-	public List<Book> getAllBooks();
+    void createBook(Book book);
+
+    public Book getBook(String name);
+
+    public List<Book> getAllBooks();
 }

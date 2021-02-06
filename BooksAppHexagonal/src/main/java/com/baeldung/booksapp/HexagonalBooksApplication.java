@@ -10,8 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HexagonalBooksApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HexagonalBooksApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(HexagonalBooksApplication.class, args);
+    }
 }

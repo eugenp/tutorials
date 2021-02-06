@@ -16,22 +16,22 @@ import com.baeldung.booksapp.web.BookRestUI;
 @RequestMapping("/book")
 public class BookRestController implements BookRestUI {
 
-	@Autowired
-	private BookService bookService;
+    @Autowired
+    private BookService bookService;
 
-	@Override
-	public void createBook(@RequestBody Book book) {
-		bookService.createBook(book);
-	}
+    @Override
+    public void createBook(@RequestBody Book book) {
+        bookService.createBook(book);
+    }
 
-	@Override
-	public Book getBook(@PathVariable String name) {
-		return bookService.getBook(name);
-	}
+    @Override
+    public Book getBook(@PathVariable String name) {
+        return bookService.getBook(name);
+    }
 
-	@Override
-	public List<Book> listBook() {
-		return bookService.listBook();
-	}
+    @Override
+    public List<Book> listBook() {
+        return bookService.listBook();
+    }
 
 }

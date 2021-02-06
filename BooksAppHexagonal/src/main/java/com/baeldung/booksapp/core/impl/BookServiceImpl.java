@@ -12,24 +12,22 @@ import com.baeldung.booksapp.port.BookService;
 @Service
 public class BookServiceImpl implements BookService {
 
-	@Autowired
-	private BookRepo bookRepo;
+    @Autowired
+    private BookRepo bookRepo;
 
-	@Override
-	public void createBook(Book book) {
-		bookRepo.createBook(book);
-	}
+    @Override
+    public void createBook(Book book) {
+        bookRepo.createBook(book);
+    }
 
-	@Override
-	public Book getBook(String name) {
-		return bookRepo.getBook(name);
+    @Override
+    public Book getBook(String name) {
+        return bookRepo.getBook(name);
+    }
 
-	}
-
-	@Override
-	public List<Book> listBook() {
-		return bookRepo.getAllBooks();
-
-	}
+    @Override
+    public List<Book> listBook() {
+        return bookRepo.getAllBooks();
+    }
 
 }

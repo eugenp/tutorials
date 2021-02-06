@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.baeldung.booksapp.core.domain.Book;
 
 public interface BookRestUI {
-	
-	@PostMapping
-	void createBook(@RequestBody Book book);
-	
 
-	@GetMapping("/{name}")
-	public Book getBook(@PathVariable String name);
+    @PostMapping
+    void createBook(@RequestBody Book book);
 
-	@GetMapping
-	public List<Book> listBook() ;
+    @GetMapping("/{name}")
+    public Book getBook(@PathVariable String name);
+
+    @GetMapping
+    public List<Book> listBook() ;
 
 }

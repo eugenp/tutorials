@@ -13,23 +13,21 @@ import com.baeldung.booksapp.port.BookRepo;
 @Repository
 public class BookRepoImpl implements BookRepo {
 
-	private Map<String, Book> library = new HashMap<String, Book>();
+    private Map<String, Book> library = new HashMap<String, Book>();
 
-	@Override
-	public void createBook(Book book) {
-		library.put(book.getName(), book);
-		
-	}
+    @Override
+    public void createBook(Book book) {
+        library.put(book.getName(), book);
+    }
 
-	@Override
-	public Book getBook(String name) {
- 		return library.get(name);
+    @Override
+    public Book getBook(String name) {
+        return library.get(name);
+    }
 
-	}
-
-	@Override
-	public List<Book> getAllBooks() {
-		return library.values().stream().collect(Collectors.toList());
-	}
+    @Override
+    public List<Book> getAllBooks() {
+        return library.values().stream().collect(Collectors.toList());
+    }
 
 }
