@@ -1,4 +1,4 @@
-package org.spring.cloud.sentinel.config;
+package com.baeldung.spring.cloud.sentinel.config;
 
 import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
