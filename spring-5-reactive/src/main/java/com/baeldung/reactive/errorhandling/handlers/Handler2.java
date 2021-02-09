@@ -15,11 +15,11 @@ public Mono<ServerResponse> handleRequest2(ServerRequest request) {
         sayHello(request)
             .flatMap(s -> ServerResponse.ok()
                 .contentType(MediaType.TEXT_PLAIN)
-                .syncBody(s))
+                .bodyValue(s))
             .onErrorResume(e -> sayHelloFallback()
                 .flatMap(s -> ServerResponse.ok()
                     .contentType(MediaType.TEXT_PLAIN)
-                    .syncBody(s)));
+                    .bodyValue(s)));
 }
 
     private Mono<String> sayHello(ServerRequest request) {

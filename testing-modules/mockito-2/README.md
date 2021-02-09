@@ -9,3 +9,4 @@
 - [Mockito – Using Spies](https://www.baeldung.com/mockito-spy)
 - [Using Mockito ArgumentCaptor](https://www.baeldung.com/mockito-argumentcaptor)
 - [Difference Between when() and doXxx() Methods in Mockito](https://www.baeldung.com/java-mockito-when-vs-do)
+- [Overview of Mockito MockSettings](https://www.baeldung.com/mockito-mocksettings)

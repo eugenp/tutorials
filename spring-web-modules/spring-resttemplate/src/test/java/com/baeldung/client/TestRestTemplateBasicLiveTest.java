@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
+// This test needs RestTemplateConfigurationApplication to be up and running
 public class TestRestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
