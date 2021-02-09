@@ -12,3 +12,4 @@ This module contains articles about Spring 5
 - [Difference between \<context:annotation-config> vs \<context:component-scan>](https://www.baeldung.com/spring-contextannotation-contextcomponentscan)
 - [Finding the Spring Version](https://www.baeldung.com/spring-find-version)
 - [Spring 5 Testing with @EnabledIf Annotation](https://www.baeldung.com/spring-5-enabledIf)
+- [Configuring a Hikari Connection Pool with Spring Boot](https://www.baeldung.com/spring-boot-hikari)
