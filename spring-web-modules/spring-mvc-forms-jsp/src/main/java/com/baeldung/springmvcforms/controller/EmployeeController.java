@@ -26,7 +26,7 @@ public class EmployeeController {
         return employeeMap.get(Id);
     }
 
-    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST, params = "submit")
     public String submit(@Valid @ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
         if (result.hasErrors()) {
             return "error";
@@ -36,6 +36,12 @@ public class EmployeeController {
         model.addAttribute("id", employee.getId());
         employeeMap.put(employee.getId(), employee);
         return "employeeView";
+    }
+    
+    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST, params = "cancel")
+    public String cancel(@Valid @ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
+        model.addAttribute("message", "You clicked cancel, please re-enter employee details:");
+        return "employeeHome";
     }
 
 }

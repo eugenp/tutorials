@@ -1,7 +1,8 @@
-package com.baeldung.web.service;
+package com.baeldung.mock;
 
+import com.baeldung.mock.EmployeeService;
 import com.baeldung.resttemplate.web.model.Employee;
-import com.baeldung.resttemplate.web.service.EmployeeService;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

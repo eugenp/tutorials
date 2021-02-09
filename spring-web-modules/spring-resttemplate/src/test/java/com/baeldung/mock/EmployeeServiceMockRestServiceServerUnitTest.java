@@ -1,4 +1,4 @@
-package com.baeldung.web.service;
+package com.baeldung.mock;
 
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
@@ -7,8 +7,9 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import java.net.URI;
 
 import com.baeldung.SpringTestConfig;
+import com.baeldung.mock.EmployeeService;
 import com.baeldung.resttemplate.web.model.Employee;
-import com.baeldung.resttemplate.web.service.EmployeeService;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
