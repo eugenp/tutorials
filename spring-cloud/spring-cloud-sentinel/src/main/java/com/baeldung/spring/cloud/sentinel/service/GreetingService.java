@@ -1,4 +1,4 @@
-package org.spring.cloud.sentinel.service;
+package com.baeldung.spring.cloud.sentinel.service;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.stereotype.Service;

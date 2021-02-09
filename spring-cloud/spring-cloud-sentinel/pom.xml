@@ -1,35 +1,37 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>spring-cloud-sentinel</artifactId>
-  <name>spring-cloud-sentinel</name>
-  <url>http://maven.apache.org</url>
-  <packaging>pom</packaging>
-  <parent>
-    <groupId>com.baeldung.spring.cloud</groupId>
-    <artifactId>spring-cloud</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>spring-cloud-sentinel</artifactId>
+	<name>spring-cloud-sentinel</name>
+	<url>http://maven.apache.org</url>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.baeldung.spring.cloud</groupId>
+		<artifactId>spring-cloud</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.csp</groupId>
-      <artifactId>sentinel-core</artifactId>
-      <version>1.8.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.alibaba.csp</groupId>
-      <artifactId>sentinel-annotation-aspectj</artifactId>
-      <version>1.8.0</version>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-core</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-annotation-aspectj</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+	</dependencies>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
