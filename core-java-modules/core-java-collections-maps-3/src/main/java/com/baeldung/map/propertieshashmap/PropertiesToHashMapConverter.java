@@ -27,9 +27,9 @@ public class PropertiesToHashMapConverter {
     public static HashMap<String, String> streamConvert(Properties prop) {
         return prop.entrySet().stream().collect(
                 Collectors.toMap(
-                        e -> String.valueOf(e.getKey()),
-                        e -> String.valueOf(e.getValue()),
-                        (prev, next) -> next, HashMap::new
+                  e -> String.valueOf(e.getKey()),
+                  e -> String.valueOf(e.getValue()),
+                  (prev, next) -> next, HashMap::new
                 ));
     }
 
