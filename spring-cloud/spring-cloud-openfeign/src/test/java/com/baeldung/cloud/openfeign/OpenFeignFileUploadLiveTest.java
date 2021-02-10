@@ -23,7 +23,7 @@ public class OpenFeignFileUploadLiveTest {
     @Autowired
     private UploadService uploadService;
     
-    private static String FILE_NAME = "fileupload.txt"; // "<Your file Path>";
+    private static String FILE_NAME = "fileupload.txt";
     
     @Test
     public void whenFeignBuilder_thenFileUploadSuccess() throws IOException {
@@ -33,8 +33,7 @@ public class OpenFeignFileUploadLiveTest {
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
                 IOUtils.toByteArray(input));
-        // Please uncomment the code once upload service is up and running
-        // Assert.assertTrue(uploadService.uploadFileWithManualClient(multipartFile));
+        Assert.assertTrue(uploadService.uploadFileWithManualClient(multipartFile));
     }
     
     @Test
@@ -45,10 +44,7 @@ public class OpenFeignFileUploadLiveTest {
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
                 IOUtils.toByteArray(input));
-        /*
-         * Please uncomment the code once upload service is up and running
-         */
-        // String uploadFile = uploadService.uploadFile(multipartFile);
-        // Assert.assertNotNull(uploadFile);
+        String uploadFile = uploadService.uploadFile(multipartFile);
+        Assert.assertNotNull(uploadFile);
     }
 }
