@@ -18,17 +18,17 @@ import com.baeldung.cloud.openfeign.fileupload.service.UploadService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OpenFeignFileUploadUnitTest {
+public class OpenFeignFileUploadLiveTest {
     
     @Autowired
     private UploadService uploadService;
     
-    private static String FILE_PATH = "fileupload.txt"; // "<Your file Path>";
+    private static String FILE_NAME = "fileupload.txt"; // "<Your file Path>";
     
     @Test
     public void whenFeignBuilder_thenFileUploadSuccess() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        File file = new File(classloader.getResource("fileupload.txt").getFile());
+        File file = new File(classloader.getResource(FILE_NAME).getFile());
         Assert.assertTrue(file.exists());
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
@@ -40,7 +40,7 @@ public class OpenFeignFileUploadUnitTest {
     @Test
     public void whenAnnotatedFeignClient_thenFileUploadSuccess() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        File file = new File(classloader.getResource("fileupload.txt").getFile());
+        File file = new File(classloader.getResource(FILE_NAME).getFile());
         Assert.assertTrue(file.exists());
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
