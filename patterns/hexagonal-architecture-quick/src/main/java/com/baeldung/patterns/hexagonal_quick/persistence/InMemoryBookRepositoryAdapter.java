@@ -4,21 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.stereotype.Component;
+
 import com.baeldung.patterns.hexagonal_quick.domain.Book;
 import com.baeldung.patterns.hexagonal_quick.persistence.model.BookData;
 import com.baeldung.patterns.hexagonal_quick.port.BookOutputPort;
 import com.baeldung.patterns.hexagonal_quick.util.Converter;
 
+@Component
 public class InMemoryBookRepositoryAdapter implements BookOutputPort {
 
     private final Map<String, BookData> storedBooks;
     private final Converter<BookData, Book> bookDataToBookConverter;
 
-    public InMemoryBookRepositoryAdapter
-            (Map<String, BookData> initialData, Converter<BookData, Book> bookDataToBookConverter) {
-        this.bookDataToBookConverter = bookDataToBookConverter;
+    public InMemoryBookRepositoryAdapter(Converter<BookData, Book> bookDataToBookConverter) {
         this.storedBooks = new HashMap<>();
-        this.storedBooks.putAll(initialData);
+        this.bookDataToBookConverter = bookDataToBookConverter;
     }
 
     @Override
