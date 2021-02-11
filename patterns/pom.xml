@@ -25,6 +25,7 @@
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>clean-architecture</module>
+		<module>hexagonal-architecture-quick</module>
     </modules>
     <dependencyManagement>
         <dependencies>
