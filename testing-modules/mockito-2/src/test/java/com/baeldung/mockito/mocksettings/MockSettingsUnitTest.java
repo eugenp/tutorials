@@ -47,10 +47,10 @@ public class MockSettingsUnitTest {
 
     @Test
     public void whenMockSetupWithConstructor_thenConstructorIsInvoked() {
-        AbstractCoffee coffeeSpy = mock(AbstractCoffee.class, withSettings().useConstructor("expresso")
+        AbstractCoffee coffeeSpy = mock(AbstractCoffee.class, withSettings().useConstructor("espresso")
             .defaultAnswer(CALLS_REAL_METHODS));
 
-        assertEquals("Coffee name: ", "expresso", coffeeSpy.getName());
+        assertEquals("Coffee name: ", "espresso", coffeeSpy.getName());
     }
 
 }
