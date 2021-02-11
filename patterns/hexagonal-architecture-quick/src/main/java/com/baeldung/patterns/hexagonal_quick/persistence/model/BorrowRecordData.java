@@ -9,15 +9,21 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Document("borrowRecord")
 public class BorrowRecordData {
+    @Id
     private String borrowId;
+    private String username;
     private Collection<BorrowedBookData> borrowedBooks;
 
-    public static BorrowRecordData createForOneBorrow(String borrowId, BorrowedBook borrowedBook) {
-        return new BorrowRecordData(borrowId, Collections.singletonList(BorrowedBookData.createFrom(borrowedBook)));
+    public static BorrowRecordData createForOneBorrow(String borrowId, String username, BorrowedBook borrowedBook) {
+        return new BorrowRecordData(
+                borrowId, username, Collections.singletonList(BorrowedBookData.createFrom(borrowedBook)));
     }
 }

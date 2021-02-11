@@ -28,9 +28,9 @@ public class UserRestController {
     }
 
     @PostMapping("/borrow/{referenceId}/return")
-    public ApiReturnResponse returnBorrowedBook
-            (@PathVariable String referenceId, @RequestBody ApiReturnRequest returnRequest) {
-        final ReturnRecord returnRecord = borrowInputPort.returnBook(referenceId, returnRequest.getIsbn());
+    public ApiReturnResponse returnBorrowedBook(
+            @PathVariable String referenceId, @RequestBody ApiReturnRequest returnRequest) {
+        ReturnRecord returnRecord = borrowInputPort.returnBook(referenceId, returnRequest.getIsbn());
         return ApiReturnResponse.createFrom(returnRecord);
     }
 }

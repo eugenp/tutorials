@@ -30,12 +30,10 @@ public class BorrowService implements BorrowInputPort {
 
     @Override
     public BorrowRecord borrowBook(String isbn, String username) {
-        final Book book = bookOutputPort.findBookByIsbn(isbn)
+        Book book = bookOutputPort.findBookByIsbn(isbn)
             .orElseThrow(() -> new BookNotFoundException(isbn));
 
-        final Date dateInTenDays = Date.from(LocalDateTime.now()
-            .plusDays(10)
-            .toInstant(ZoneOffset.UTC));
+        Date dateInTenDays = Date.from(LocalDateTime.now().plusDays(10).toInstant(ZoneOffset.UTC));
         BorrowedBook borrowedBook = new BorrowedBook(book, dateInTenDays);
         return borrowOutputPort.findBorrowForUser(username)
             .map(existingRecord -> borrowOutputPort.addForExistingBorrow(existingRecord.getBorrowId(), borrowedBook))
@@ -47,19 +45,12 @@ public class BorrowService implements BorrowInputPort {
         BorrowRecord borrowRecord = borrowOutputPort.findBorrowForBorrowId(borrowId)
             .orElseThrow(() -> new BorrowRecordNotFoundException(borrowId));
 
-        Book book = null;
         for (BorrowedBook borrowedBook : borrowRecord.getBorrowedBooks()) {
             if (isbn.equals(borrowedBook.getBook().getIsbn())) {
-                book = borrowedBook.getBook();
-                break;
+                borrowOutputPort.removeBookFromBorrow(borrowId, borrowedBook.getBook());
+                return new ReturnRecord(borrowedBook.getBook(), new Random().nextInt(1000));
             }
         }
-
-        if (book == null) {
-            throw new BookNotBorrowedException(borrowId, isbn);
-        }
-
-        borrowOutputPort.removeBookFromBorrow(borrowId, book);
-        return new ReturnRecord(book, new Random().nextInt(1000));
+        throw new BookNotBorrowedException(borrowId, isbn);
     }
 }
