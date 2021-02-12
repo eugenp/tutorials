@@ -268,10 +268,11 @@ public class WebClientIntegrationTest {
             .clientConnector(new ReactorClientHttpConnector(httpClient))
             .build();
 
-        StepVerifier.create(timeoutClient.post()
+        RequestHeadersSpec<?> neverendingMonoBodyRequest = timeoutClient.post()
             .uri("/resource")
-            .body(Mono.never(), String.class)
-            .retrieve()
+            .body(Mono.never(), String.class);
+
+        StepVerifier.create(neverendingMonoBodyRequest.retrieve()
             .bodyToMono(String.class))
             .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ReadTimeoutException.class.isAssignableFrom(ex.getCause()
                 .getClass()))
