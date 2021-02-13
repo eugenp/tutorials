@@ -51,21 +51,21 @@ public class ValuesWithDefaultsApp {
     @PostConstruct
     public void afterInitialize() {
     	// strings
-    	Assert.isTrue(stringWithDefaultValue.equals("my default value"));
-    	Assert.isTrue(stringWithBlankDefaultValue.equals(""));
+    	Assert.isTrue(stringWithDefaultValue.equals("my default value"), "unexpected value for stringWithDefaultValue");
+    	Assert.isTrue(stringWithBlankDefaultValue.equals(""), "unexpected value for stringWithBlankDefaultValue");
     	
     	// other primitives
-    	Assert.isTrue(booleanWithDefaultValue);
-    	Assert.isTrue(intWithDefaultValue == 42);
+    	Assert.isTrue(booleanWithDefaultValue, "unexpected value for booleanWithDefaultValue");
+    	Assert.isTrue(intWithDefaultValue == 42, "unexpected value for intWithDefaultValue");
     	
     	// arrays
         List<String> stringListValues = Arrays.asList("one", "two", "three");
-    	Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues));
+    	Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues), "unexpected value for stringArrayWithDefaults");
 
         List<Integer> intListValues = Arrays.asList(1, 2, 3);
-    	Assert.isTrue(Arrays.asList(ArrayUtils.toObject(intArrayWithDefaults)).containsAll(intListValues));
+    	Assert.isTrue(Arrays.asList(ArrayUtils.toObject(intArrayWithDefaults)).containsAll(intListValues), "unexpected value for intArrayWithDefaults");
 
     	// SpEL
-    	Assert.isTrue(spelWithDefaultValue.equals("my default system property value"));
+    	Assert.isTrue(spelWithDefaultValue.equals("my default system property value"), "unexpected value for spelWithDefaultValue");
     }
 }

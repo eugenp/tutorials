@@ -28,8 +28,8 @@ public class BeforeEachAndAfterEachAnnotationsUnitTest {
     }
 
     @AfterEach
-    public void finalize() {
-        LOG.info("finalize");
+    public void teardown() {
+        LOG.info("teardown");
         list.clear();
     }
 

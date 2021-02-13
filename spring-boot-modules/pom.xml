@@ -24,8 +24,10 @@
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
         <module>spring-boot-artifacts</module>
+        <module>spring-boot-artifacts-2</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-basic-customization</module>
+        <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-client</module>
         <module>spring-boot-config-jpa-error</module>
@@ -48,7 +50,6 @@
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
         <module>spring-boot-logging-log4j2</module>
-        <module>spring-boot-kotlin</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
@@ -61,6 +62,7 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
+        <module>spring-boot-runtime-2</module>
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
@@ -69,6 +71,7 @@
         <module>spring-boot-vue</module>
         <module>spring-boot-xml</module>
         <module>spring-boot-actuator</module>
+        <module>spring-boot-data-2</module>
     </modules>
 
 
@@ -114,6 +117,5 @@
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <commons-io.version>2.6</commons-io.version>
     </properties>
 </project>

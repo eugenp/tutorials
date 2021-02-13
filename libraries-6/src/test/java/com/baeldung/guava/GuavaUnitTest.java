@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
@@ -21,6 +22,7 @@ public class GuavaUnitTest {
     private final static Multimap<String, String> groceryCart = ArrayListMultimap.create();
     private final static Table<String, String, String> cityCoordinates = HashBasedTable.create();
     private final static Table<String, String, String> movies = HashBasedTable.create();
+    private long start;
 
     static {
         daysOfWeek.put(1, "Monday");
@@ -114,5 +116,28 @@ public class GuavaUnitTest {
 
         assertTrue(movies.containsValue("Speed"));
 
+    }
+    
+    @Test
+    public void givenHashBiMap_whenHundredThousandKeys_thenPerformanceNoted() {
+        BiMap<Integer, Integer> map = HashBiMap.create();
+        start = System.nanoTime();
+        for (int i = 0; i < 100000; i++) {
+            Integer key = new Integer(i);
+            Integer value = new Integer(i + 1);
+            map.put(key, value);
+        }
+        System.out.println("Insertion time:" + TimeUnit.MILLISECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
+
+        start = System.nanoTime();
+        Integer value = map.get(new Integer(500));
+        System.out.println("Value:" + value);
+        System.out.println("Fetch time key:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
+
+        start = System.nanoTime();
+        Integer key = map.inverse()
+            .get(new Integer(501));
+        System.out.println("Key:" + key);
+        System.out.println("Fetch time value:" + TimeUnit.MICROSECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS));
     }
 }
