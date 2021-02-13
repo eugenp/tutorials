@@ -1,6 +1,6 @@
 package com.baeldung.reactive.urlmatch;
 
-import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
@@ -40,7 +40,7 @@ public class FunctionalWebApplication {
             .doOnNext(actors::add)
             .then(ok().build()));
 
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), formHandler::handleLogin)
+        return route(GET("/test"), serverRequest -> ok().body(fromValue("helloworld"))).andRoute(POST("/login"), formHandler::handleLogin)
             .andRoute(POST("/upload"), formHandler::handleUpload)
             .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
             .andNest(path("/actor"), restfulRouter)

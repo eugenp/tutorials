@@ -3,16 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-testing</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-testing</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -32,25 +31,34 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>LATEST</version>
         </dependency>
 
         <!-- test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>LATEST</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>LATEST</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>LATEST</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -65,7 +73,6 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>LATEST</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -116,9 +123,9 @@
         <!-- testing -->
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
         <awaitility.version>3.1.6</awaitility.version>
-        <junit.jupiter.version>5.5.0</junit.jupiter.version>
-        <junit.commons.version>1.5.2</junit.commons.version>
-        <spring.version>5.1.4.RELEASE</spring.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <junit.commons.version>1.7.0</junit.commons.version>
+        <spring.version>5.3.0</spring.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
