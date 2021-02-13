@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.1-SNAPSHOT</version>
+    <artifactId>spring-mvc-forms-jsp</artifactId>
+    <name>spring-mvc-forms-jsp</name>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-spring-5</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-spring-5</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${javax.servlet.jsp-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot-starter-test.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <!-- Local -->
+        <profile>
+            <id>spring-mvc-forms</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-war-plugin</artifactId>
+                            <version>${maven-war-plugin.version}</version>
+                            <configuration>
+                                <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                                <warName>spring-mvc-forms</warName>
+                                <failOnMissingWebXml>false</failOnMissingWebXml>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <finalName>spring-mvc-forms</finalName>
+            </build>
+        </profile>
+    </profiles>
+
+    <properties>
+        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
+        <hibernate.version>5.2.5.Final</hibernate.version>
+        <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
+    </properties>
+
+</project>
+

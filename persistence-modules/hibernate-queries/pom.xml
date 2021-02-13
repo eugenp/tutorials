@@ -36,11 +36,6 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.opengeo</groupId>
-            <artifactId>geodb</artifactId>
-            <version>${geodb.version}</version>
-        </dependency>
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
@@ -62,19 +57,10 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>geodb-repo</id>
-            <name>GeoDB repository</name>
-            <url>http://repo.boundlessgeo.com/main/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <assertj-core.version>3.8.0</assertj-core.version>
-        <geodb.version>0.9</geodb.version>
         <openjdk-jmh.version>1.21</openjdk-jmh.version>
     </properties>
 
