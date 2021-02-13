@@ -120,7 +120,7 @@
         <httpclient.version>4.5.3</httpclient.version>
 <!--        <jackson.version>2.9.8</jackson.version>-->
         <assertj.version>3.6.2</assertj.version>
-        <com.squareup.okhttp3.version>3.14.2</com.squareup.okhttp3.version>
+        <com.squareup.okhttp3.version>4.9.1</com.squareup.okhttp3.version>
         <googleclient.version>1.23.0</googleclient.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <retrofit.version>2.3.0</retrofit.version>

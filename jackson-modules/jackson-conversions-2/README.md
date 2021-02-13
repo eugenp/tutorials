@@ -9,4 +9,5 @@ This module contains articles about Jackson conversions.
 - [Converting JSON to CSV in Java](https://www.baeldung.com/java-converting-json-to-csv)
 - [How to Process YAML with Jackson](https://www.baeldung.com/jackson-yaml)
 - [Jackson Streaming API](https://www.baeldung.com/jackson-streaming-api)
+- [Jackson: java.util.LinkedHashMap cannot be cast to X](https://www.baeldung.com/jackson-linkedhashmap-cannot-be-cast)
 - More articles: [[<-- prev]](../jackson-conversions)

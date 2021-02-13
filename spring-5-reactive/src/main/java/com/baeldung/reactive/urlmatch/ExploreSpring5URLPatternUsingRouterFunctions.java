@@ -1,6 +1,6 @@
 package com.baeldung.reactive.urlmatch;
 
-import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
@@ -24,10 +24,10 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
 
     private RouterFunction<ServerResponse> routingFunction() {
 
-        return route(GET("/p?ths"), serverRequest -> ok().body(fromObject("/p?ths"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("id"))))
-            .andRoute(GET("/*card"), serverRequest -> ok().body(fromObject("/*card path was accessed")))
-            .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
-            .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
+        return route(GET("/p?ths"), serverRequest -> ok().body(fromValue("/p?ths"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromValue(serverRequest.pathVariable("id"))))
+            .andRoute(GET("/*card"), serverRequest -> ok().body(fromValue("/*card path was accessed")))
+            .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromValue(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
+            .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromValue("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
             .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
     }
 

@@ -57,7 +57,6 @@
     </persistence-unit>
     <persistence-unit name="jpa-h2-multiple-bag-fetch-exception">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.baeldung.jpa.multiplebagfetchexception.DummyEntity</class>
         <class>com.baeldung.jpa.multiplebagfetchexception.Album</class>
         <class>com.baeldung.jpa.multiplebagfetchexception.Song</class>
         <class>com.baeldung.jpa.multiplebagfetchexception.User</class>
@@ -75,6 +74,26 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="show_sql" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="jpa-h2-hibernate-unproxy">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.hibernateunproxy.Payment</class>
+        <class>com.baeldung.jpa.hibernateunproxy.CreditCardPayment</class>
+        <class>com.baeldung.jpa.hibernateunproxy.PaymentReceipt</class>
+        <class>com.baeldung.jpa.hibernateunproxy.WebUser</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
         </properties>
     </persistence-unit>

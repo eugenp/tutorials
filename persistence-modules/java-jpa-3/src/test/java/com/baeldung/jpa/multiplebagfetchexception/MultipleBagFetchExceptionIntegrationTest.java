@@ -29,9 +29,9 @@ public class MultipleBagFetchExceptionIntegrationTest {
     public void whenFetchingMoreThanOneBag_thenThrowAnException() {
         IllegalArgumentException exception =
           assertThrows(IllegalArgumentException.class, () -> {
-            String jpql = "SELECT dummy FROM DummyEntity dummy "
-              + "JOIN FETCH dummy.collection1 "
-              + "JOIN FETCH dummy.collection2 ";
+            String jpql = "SELECT artist FROM Artist artist "
+              + "JOIN FETCH artist.songs "
+              + "JOIN FETCH artist.offers ";
 
             entityManager.createQuery(jpql);
         });

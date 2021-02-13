@@ -197,6 +197,7 @@
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <springcloud.version>2.0.2.RELEASE</springcloud.version>
         <httpclient.version>4.5.8</httpclient.version>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 
 </project>
