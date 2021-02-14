@@ -1,0 +1,23 @@
+<!doctype html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}"
+        xmlns="http://www.w3.org/1999/html">
+
+<body>
+<!-- Content starts -->
+<section layout:fragment="content">
+    <h3><Strong>Welcome!</strong><br/>You are successfully logged in!</h3>
+    <p>You are logged as <span class="badge badge-dark" th:text="${username}">null</span>.</p>
+    <small class="d-block text-right mt-3" id="sso-btn">
+        <a th:href="@{/logout}" class="btn btn-spring btn-sm">
+            <i class="far fa-user-circle"></i> Logout
+        </a>
+    </small>
+</section>
+<!-- Content ends -->
+</body>
+
+</html>
