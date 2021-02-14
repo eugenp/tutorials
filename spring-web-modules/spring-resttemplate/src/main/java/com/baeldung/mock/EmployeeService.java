@@ -1,4 +1,4 @@
-package com.baeldung.resttemplate.web.service;
+package com.baeldung.mock;
 
 import com.baeldung.resttemplate.web.model.Employee;
 import org.slf4j.Logger;

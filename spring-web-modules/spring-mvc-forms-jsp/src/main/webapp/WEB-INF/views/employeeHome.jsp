@@ -7,6 +7,7 @@
 </head>
 <body>
 	<h3>Welcome, Enter The Employee Details</h3>
+	<h4>${message}</h4>
 
 	<form:form method="POST" action="${pageContext.request.contextPath}/addEmployee" modelAttribute="employee">
 		<table>
@@ -23,7 +24,8 @@
 				<td><form:input path="contactNumber" /></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="Submit" /></td>
+				<td><input type="submit" name="submit" value="Submit" /></td>
+				<td><input type="submit" name="cancel" value="Cancel" /></td>
 			</tr>
 		</table>
 	</form:form>

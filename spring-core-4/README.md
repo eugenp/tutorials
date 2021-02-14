@@ -11,4 +11,4 @@ This module contains articles about core Spring functionality
 - [Using @Autowired in Abstract Classes](https://www.baeldung.com/spring-autowired-abstract-class)
 - [Constructor Injection in Spring with Lombok](https://www.baeldung.com/spring-injection-lombok)
 - [The Spring ApplicationContext](https://www.baeldung.com/spring-application-context)
-- More articles: [[<-- prev]](/spring-core-3)
+- More articles: [[<-- prev]](/spring-core-3) [[next -->]](/spring-core-5)
