@@ -32,15 +32,22 @@
         </pluginManagement>
         <plugins>
             <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <resources combine.children="append">
+                        <resource>
+                            <directory>parent-resources</directory>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>11</source>
                     <target>11</target>
                     <maxmem>512m</maxmem>
-                    <excludes combine.children="append">
-                        <exclude>**/*Test.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
