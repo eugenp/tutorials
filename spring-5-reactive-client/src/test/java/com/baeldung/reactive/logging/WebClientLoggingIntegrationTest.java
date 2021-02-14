@@ -1,13 +1,13 @@
 package com.baeldung.reactive.logging;
 
-import ch.qos.logback.classic.spi.LoggingEvent;
-import ch.qos.logback.core.Appender;
-import com.baeldung.reactive.logging.filters.LogFilters;
-import com.baeldung.reactive.logging.netty.CustomLogger;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static com.baeldung.reactive.logging.jetty.RequestLogEnhancer.enhance;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.net.URI;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import org.eclipse.jetty.client.api.Request;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,14 +17,17 @@ import org.springframework.http.client.reactive.JettyClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.netty.channel.BootstrapHandlers;
-import reactor.netty.http.client.HttpClient;
 
-import static com.baeldung.reactive.logging.jetty.RequestLogEnhancer.enhance;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.baeldung.reactive.logging.filters.LogFilters;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ch.qos.logback.classic.spi.LoggingEvent;
+import ch.qos.logback.core.Appender;
+import io.netty.handler.logging.LogLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import reactor.netty.http.client.HttpClient;
+import reactor.netty.transport.logging.AdvancedByteBufFormat;
 
 
 public class WebClientLoggingIntegrationTest {
@@ -114,21 +117,17 @@ public class WebClientLoggingIntegrationTest {
 
     @Test
     public void givenNettyHttpClientWithCustomLogger_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
+        reactor.netty.http.client.HttpClient httpClient = HttpClient.create()
+            .wiretap("reactor.netty.http.client.HttpClient", LogLevel.DEBUG, AdvancedByteBufFormat.TEXTUAL);
 
-        reactor.netty.http.client.HttpClient httpClient = HttpClient
-          .create()
-          .tcpConfiguration(
-            tc -> tc.bootstrap(
-              b -> BootstrapHandlers.updateLogSupport(b, new CustomLogger(HttpClient.class))));
-        WebClient
-          .builder()
-          .clientConnector(new ReactorClientHttpConnector(httpClient))
-          .build()
-          .post()
-          .uri(sampleUrl)
-          .body(BodyInserters.fromObject(post))
-          .exchange()
-          .block();
+        WebClient.builder()
+            .clientConnector(new ReactorClientHttpConnector(httpClient))
+            .build()
+            .post()
+            .uri(sampleUrl)
+            .body(BodyInserters.fromObject(post))
+            .exchange()
+            .block();
 
         verify(nettyAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleResponseBody)));
     }
