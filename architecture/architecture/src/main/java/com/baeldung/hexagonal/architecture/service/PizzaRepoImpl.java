@@ -1,0 +1,31 @@
+package com.baeldung.hexagonal.architecture.service;
+
+import com.baeldung.hexagonal.architecture.model.Pizza;
+import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@Repository
+public class PizzaRepoImpl implements PizzaRepo {
+
+    private Map<String, Pizza> pizzaStore = new HashMap<String, Pizza>();
+
+    @Override
+    public void createPizza(String pizza) {
+        pizzaStore.put(pizza, new Pizza(pizza));
+    }
+
+    @Override
+    public Pizza getPizza(String name) {
+        return pizzaStore.get(name);
+    }
+
+    @Override
+    public List<Pizza> getAllPizza() {
+        return pizzaStore.values().stream().collect(Collectors.toList());
+    }
+
+}
