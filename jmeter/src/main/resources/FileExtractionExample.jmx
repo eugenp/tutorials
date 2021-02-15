@@ -57,7 +57,7 @@
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>
             <boolProp name="resetInterpreter">false</boolProp>
-            <stringProp name="script">FileWriter fWriter = new FileWriter(&quot;/Users/liamgarvie/Documents/result.txt&quot;, true); 
+            <stringProp name="script">FileWriter fWriter = new FileWriter(&quot;<path>/result.txt&quot;, true);
 BufferedWriter buff = new BufferedWriter(fWriter);
 
 buff.write(&quot;Response Code : &quot; + ctx.getPreviousResult().getResponseCode());
