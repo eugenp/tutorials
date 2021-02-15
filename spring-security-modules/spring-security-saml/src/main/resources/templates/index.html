@@ -1,21 +1,12 @@
 <!doctype html>
-<html
-        lang="en"
-        xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="~{layout}"
->
+<html>
+<head>
+<title>Baeldung Spring Security SAML</title>
+</head>
 <body>
-<section layout:fragment="content">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Please Log In:</h6>
-    <div class="media text-muted pt-3">
-        <form action="#" th:action="@{/pre-auth}" th:object="${username}" method="post">
-            <p>Username: <input type="text" th:field="*{username}" /></p>
-            <p><input type="submit" value="Submit" /></p>
-        </form>
-        <br/>
-        <p th:text="${error}" style="color: red"></p>
-    </div>
-</section>
-<body>
+    <h3><Strong>Welcome to Baeldung Spring Security SAML</strong></h3>
+    <a th:href="@{/auth}" class="btn btn-spring btn-sm">
+        <i class="far fa-user-circle"></i> Login
+    </a>
+</body>
 </html>
