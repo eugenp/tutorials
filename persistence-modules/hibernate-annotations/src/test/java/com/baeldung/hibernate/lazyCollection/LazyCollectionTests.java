@@ -9,13 +9,16 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.H2Dialect;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.annotation.PostConstruct;
 
-@SpringBootTest
 public class LazyCollectionTests {
 
     private static SessionFactory sessionFactory;
@@ -24,8 +27,8 @@ public class LazyCollectionTests {
 
     Branch branch;
 
-    @PostConstruct
-    public void beforeTests() {
+    @BeforeClass
+    public static void beforeTests() {
         Configuration configuration = new Configuration().addAnnotatedClass(Branch.class).addAnnotatedClass(Employee.class)
                 .setProperty("hibernate.dialect", H2Dialect.class.getName())
                 .setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
@@ -37,10 +40,10 @@ public class LazyCollectionTests {
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
-        setUp();
     }
 
-    private void setUp() {
+    @Before
+    public void setUp() {
         session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -80,16 +83,27 @@ public class LazyCollectionTests {
 
     @Test
     public void testLazyFetching() {
-        Assertions.assertFalse(Hibernate.isInitialized(branch.getMainEmployees()));
+        Assert.assertFalse(Hibernate.isInitialized(branch.getMainEmployees()));
     }
 
     @Test
     public void testEagerFetching() {
-        Assertions.assertTrue(Hibernate.isInitialized(branch.getSubEmployees()));
+        Assert.assertTrue(Hibernate.isInitialized(branch.getSubEmployees()));
     }
 
     @Test
     public void testExtraFetching() {
-        Assertions.assertFalse(Hibernate.isInitialized(branch.getAdditionalEmployees()));
+        Assert.assertFalse(Hibernate.isInitialized(branch.getAdditionalEmployees()));
+    }
+
+    @After
+    public void tearDown() {
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @AfterClass
+    public static void afterTests() {
+        sessionFactory.close();
     }
 }
