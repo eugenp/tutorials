@@ -11,15 +11,14 @@ public class Employee {
 
     private String name;
 
-    private Long rank;
+    private String address;
 
     public Employee() {
 
     }
 
-    public Employee(String name, Long rank, Branch mainBranch, Branch subBranch, Branch additionalBranch) {
+    public Employee(String name, Branch mainBranch, Branch subBranch, Branch additionalBranch) {
         this.name = name;
-        this.rank = rank;
         this.mainBranch = mainBranch;
         this.subBranch = subBranch;
         this.additionalBranch = additionalBranch;
@@ -50,12 +49,12 @@ public class Employee {
         this.name = name;
     }
 
-    public Long getRank() {
-        return rank;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRank(Long rank) {
-        this.rank = rank;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Branch getMainBranch() {

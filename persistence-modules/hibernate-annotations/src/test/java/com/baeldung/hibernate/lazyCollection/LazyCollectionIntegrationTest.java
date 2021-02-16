@@ -51,25 +51,25 @@ public class LazyCollectionIntegrationTest {
 
         session.save(branch);
 
-        Employee mainEmployee1 = new Employee("main employee 1", 1L,  branch, null, null);
-        Employee mainEmployee2 = new Employee("main employee 2", 2L, branch, null, null);
-        Employee mainEmployee3 = new Employee("main employee 3", 3L, branch, null, null);
+        Employee mainEmployee1 = new Employee("main employee 1", branch, null, null);
+        Employee mainEmployee2 = new Employee("main employee 2", branch, null, null);
+        Employee mainEmployee3 = new Employee("main employee 3", branch, null, null);
 
         session.save(mainEmployee1);
         session.save(mainEmployee2);
         session.save(mainEmployee3);
 
-        Employee subEmployee1 = new Employee("sub employee 1", 1L, null, branch, null);
-        Employee subEmployee2 = new Employee("sub employee 2", 2L, null, branch, null);
-        Employee subEmployee3 = new Employee("sub employee 3", 3L, null, branch, null);
+        Employee subEmployee1 = new Employee("sub employee 1", null, branch, null);
+        Employee subEmployee2 = new Employee("sub employee 2", null, branch, null);
+        Employee subEmployee3 = new Employee("sub employee 3", null, branch, null);
 
         session.save(subEmployee1);
         session.save(subEmployee2);
         session.save(subEmployee3);
 
-        Employee additionalEmployee1 = new Employee("additional employee 1", 1L, null, null, branch);
-        Employee additionalEmployee2 = new Employee("additional employee 2", 2L, null, null, branch);
-        Employee additionalEmployee3 = new Employee("additional employee 3", 3L, null, null, branch);
+        Employee additionalEmployee1 = new Employee("additional employee 1", null, null, branch);
+        Employee additionalEmployee2 = new Employee("additional employee 2", null, null, branch);
+        Employee additionalEmployee3 = new Employee("additional employee 3", null, null, branch);
 
         session.save(additionalEmployee1);
         session.save(additionalEmployee2);
