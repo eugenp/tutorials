@@ -32,7 +32,7 @@ public class Branch {
 
     @OneToMany(mappedBy = "additionalBranch")
     @LazyCollection(LazyCollectionOption.EXTRA)
-    @OrderColumn(name = "id")
+    @OrderColumn(name = "order_id")
     private List<Employee> additionalEmployees;
 
     public Long getId() {
