@@ -19,7 +19,7 @@ import org.junit.Test;
 
 import javax.annotation.PostConstruct;
 
-public class LazyCollectionTest {
+public class LazyCollectionIntegrationTest {
 
     private static SessionFactory sessionFactory;
 
