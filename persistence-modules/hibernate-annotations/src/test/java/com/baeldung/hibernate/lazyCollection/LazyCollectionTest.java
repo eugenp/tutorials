@@ -19,7 +19,7 @@ import org.junit.Test;
 
 import javax.annotation.PostConstruct;
 
-public class LazyCollectionTests {
+public class LazyCollectionTest {
 
     private static SessionFactory sessionFactory;
 
@@ -51,7 +51,7 @@ public class LazyCollectionTests {
 
         session.save(branch);
 
-        Employee mainEmployee1 = new Employee("main employee 1",1L,  branch, null, null);
+        Employee mainEmployee1 = new Employee("main employee 1", 1L,  branch, null, null);
         Employee mainEmployee2 = new Employee("main employee 2", 2L, branch, null, null);
         Employee mainEmployee3 = new Employee("main employee 3", 3L, branch, null, null);
 
