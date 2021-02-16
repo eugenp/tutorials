@@ -176,7 +176,6 @@
         <commons-collections4.version>4.1</commons-collections4.version>
         <jetty-reactive-httpclient.version>1.0.3</jetty-reactive-httpclient.version>
         <okhttp.version>4.0.1</okhttp.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 
 </project>
