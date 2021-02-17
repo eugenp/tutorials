@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash(value="librarian", timeToLive = 600)
+@RedisHash(value="librarian", timeToLive = 5)
 public class Librarian implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id private Long id;
@@ -14,9 +14,10 @@ public class Librarian implements Serializable{
     public Librarian() {
     }
 
-    public Librarian(String name, String city) {
+    public Librarian(Long id, String name) {
         super();
         this.name = name;
+        this.id = id;
     }
 
     public Long getId() {

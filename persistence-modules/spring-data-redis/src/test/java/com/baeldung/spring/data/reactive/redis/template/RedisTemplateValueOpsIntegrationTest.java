@@ -44,7 +44,7 @@ public class RedisTemplateValueOpsIntegrationTest {
     
     @AfterClass
     public static void stopRedisServer() throws IOException {
-        redisServer.stop();
+        redisServer.stop(); 
     }
 
     @Before

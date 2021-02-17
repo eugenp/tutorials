@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.baeldung.spring.data.redis_ttl.entity.Gatekeeper;
-import com.baeldung.spring.data.redis_ttl.entity.Subscriber;
 
 @Repository
 public interface GatekeeperRepository extends CrudRepository<Gatekeeper, Long>{
