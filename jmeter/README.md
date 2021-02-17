@@ -52,4 +52,3 @@ Enjoy it :)
 
 - [Intro to Performance Testing using JMeter](https://www.baeldung.com/jmeter)
 - [Configure Jenkins to Run and Show JMeter Tests](https://www.baeldung.com/jenkins-and-jmeter)
-- [Write Extracted Data to a File Using JMeter](https://www.baeldung.com/jmeter-file-extraction)
