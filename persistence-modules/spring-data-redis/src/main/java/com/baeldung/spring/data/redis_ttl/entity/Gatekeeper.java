@@ -1,11 +1,10 @@
 package com.baeldung.spring.data.redis_ttl.entity;
 
 import java.io.Serializable;
-
+import javax.persistence.Entity;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash
+@Entity
 public class Gatekeeper implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id private Long id;

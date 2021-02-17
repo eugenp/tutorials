@@ -22,7 +22,7 @@ import redis.embedded.RedisServerBuilder;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = LibraryApplication.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
-public class TestLibrary {
+public class LibraryIntegrationTest {
     
     private static redis.embedded.RedisServer redisServer;
     

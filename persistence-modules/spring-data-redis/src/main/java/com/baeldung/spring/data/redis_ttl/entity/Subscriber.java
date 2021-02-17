@@ -3,9 +3,9 @@ package com.baeldung.spring.data.redis_ttl.entity;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+import javax.persistence.Entity;
 
-@RedisHash
+@Entity
 public class Subscriber implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id private Long id;
