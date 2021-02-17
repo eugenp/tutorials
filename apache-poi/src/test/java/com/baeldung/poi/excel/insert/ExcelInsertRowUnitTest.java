@@ -1,6 +1,8 @@
 package com.baeldung.poi.excel.insert;
 
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -15,27 +17,34 @@ public class ExcelInsertRowUnitTest {
     private static final String FILE_NAME = "test.xlsx";
     private static final String NEW_FILE_NAME = "new_test.xlsx";
     private String fileLocation;
-    private InsertRowHelper insertRowHelper;
 
     @Before
     public void setup() throws URISyntaxException {
         fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
-        insertRowHelper = new InsertRowHelper();
     }
 
     @Test
     public void givenWorkbook_whenInsertRowBetween_thenRowCreated() throws IOException {
-        Workbook newWorkbook = insertRowHelper.insertRowBetweenRows(fileLocation, 2, 1);
+        int startRow = 2;
+        int rowNumber = 1;
+        Workbook workbook = new XSSFWorkbook(fileLocation);
+        Sheet sheet = workbook.getSheetAt(0);
+        int lastRow = sheet.getLastRowNum();
+        if (lastRow < startRow) {
+            sheet.createRow(startRow);
+        }
+        sheet.shiftRows(startRow, lastRow, rowNumber, true, true);
+        sheet.createRow(startRow);
         FileOutputStream outputStream = new FileOutputStream(NEW_FILE_NAME);
-        newWorkbook.write(outputStream);
+        workbook.write(outputStream);
         File file = new File(NEW_FILE_NAME);
 
         final int expectedRowResult = 5;
-        Assertions.assertEquals(expectedRowResult, newWorkbook.getSheetAt(0).getLastRowNum());
+        Assertions.assertEquals(expectedRowResult, workbook.getSheetAt(0).getLastRowNum());
 
         outputStream.close();
         file.delete();
-        newWorkbook.close();
+        workbook.close();
     }
 
 }
