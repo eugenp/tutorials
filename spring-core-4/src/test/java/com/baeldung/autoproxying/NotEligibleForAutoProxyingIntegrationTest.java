@@ -17,12 +17,12 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {NotEligibleForAutoProxyBar.class, Foo.class})
+@ContextConfiguration(classes = {NotEligibleForAutoProxyRandomIntProcessor.class, User.class, RandomIntGenerator.class})
 public class NotEligibleForAutoProxyingIntegrationTest {
     private static MemoryLogAppender memoryAppender;
 
     @Autowired
-    private NotEligibleForAutoProxyBar bar;
+    private NotEligibleForAutoProxyRandomIntProcessor proxyRandomIntProcessor;
 
     @BeforeClass
     public static void setup() {
@@ -37,10 +37,9 @@ public class NotEligibleForAutoProxyingIntegrationTest {
 
     @Test
     public void givenAutowireInBeanPostProcessor_whenSpringContextInitialize_thenNotEligibleLogShouldShow() {
-        List<ILoggingEvent> notEligibleEvents = memoryAppender.search("Bean 'foo' of type [com.baeldung.autoproxying.Foo] " +
+        List<ILoggingEvent> notEligibleEvents = memoryAppender.search("Bean 'randomIntGenerator' of type [com.baeldung.autoproxying.RandomIntGenerator] " +
           "is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)");
 
         assertEquals(1, notEligibleEvents.size());
-        assertEquals("Hello Ted, nice to meet you", bar.hello("Ted"));
     }
 }
