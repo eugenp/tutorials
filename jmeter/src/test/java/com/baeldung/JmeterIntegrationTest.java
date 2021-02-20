@@ -22,8 +22,8 @@ class JmeterIntegrationTest {
 	}
 
 	@Test
-	void whenCallingTestController_thenWeShouldRecieveRandomizedResponse() throws Exception {
-		MockHttpServletResponse response = mvc.perform(get("/api/test"))
+	void whenCallingUUIDController_thenWeShouldRecieveRandomizedResponse() throws Exception {
+		MockHttpServletResponse response = mvc.perform(get("/api/uuid"))
 		  .andDo(print())
 		  .andExpect(status().isOk())
 		  .andReturn()
