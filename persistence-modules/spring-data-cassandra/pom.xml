@@ -105,10 +105,6 @@
         <cassandra-unit-shaded.version>2.1.9.2</cassandra-unit-shaded.version>
         <hector-core.version>2.0-0</hector-core.version>
 
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

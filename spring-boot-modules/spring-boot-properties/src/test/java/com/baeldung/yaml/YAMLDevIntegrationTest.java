@@ -21,5 +21,6 @@ class YAMLDevIntegrationTest {
     void whenProfileTest_thenNameTesting() {
         assertTrue("development".equalsIgnoreCase(config.getEnvironment()));
         assertTrue("dev-YAML".equalsIgnoreCase(config.getName()));
+        assertTrue(config.isEnabled());
     }
 }

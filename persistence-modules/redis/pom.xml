@@ -62,10 +62,6 @@
         <jedis.version>3.3.0</jedis.version>
         <epoll.version>4.1.50.Final</epoll.version>
 
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
