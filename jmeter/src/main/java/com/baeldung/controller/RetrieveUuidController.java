@@ -11,7 +11,7 @@ import static java.lang.String.format;
 @RestController
 public class RetrieveUuidController {
 
-    @GetMapping("/api/test")
+    @GetMapping("/api/uuid")
     public Response uuid() {
         return new Response(format("Test message... %s.", UUID.randomUUID()));
     }
