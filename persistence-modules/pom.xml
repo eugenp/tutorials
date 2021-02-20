@@ -17,6 +17,7 @@
         <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
         <module>core-java-persistence</module>
+        <module>core-java-persistence-2</module>
         <module>deltaspike</module>
         <module>elasticsearch</module>
         <module>flyway</module>
@@ -81,11 +82,11 @@
         <module>spring-data-redis</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module> <!-- long running -->
-        <module>spring-hibernate4</module>
+        <module>spring-hibernate-5</module> <!-- long running -->        
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
+        <module>spring-jooq</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
     </modules>

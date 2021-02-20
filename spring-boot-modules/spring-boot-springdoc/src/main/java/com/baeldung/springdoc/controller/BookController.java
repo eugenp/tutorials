@@ -5,6 +5,17 @@ import java.util.Collection;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.baeldung.springdoc.exception.BookNotFoundException;
+import com.baeldung.springdoc.model.Book;
+import com.baeldung.springdoc.repository.BookRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springdoc.api.annotations.ParameterObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,17 +31,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.baeldung.springdoc.exception.BookNotFoundException;
-import com.baeldung.springdoc.model.Book;
-import com.baeldung.springdoc.repository.BookRepository;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/api/book")
@@ -58,7 +58,7 @@ public class BookController {
     }
 
     @GetMapping("/filter")
-    public Page<Book> filterBooks(Pageable pageable) {
+    public Page<Book> filterBooks(@ParameterObject Pageable pageable) {
         return repository.getBooks(pageable);
     }
 

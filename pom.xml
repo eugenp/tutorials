@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress PyInterpreter -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -325,7 +326,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-                <module>parent-kotlin</module>
 
                 <module>akka-http</module>
                 <module>akka-streams</module>
@@ -386,8 +386,6 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
-                <module>core-kotlin-modules</module>
-                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -397,6 +395,7 @@
                 <module>ddd</module>
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
+                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
@@ -424,7 +423,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <module>httpclient-2</module>
+                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -456,7 +455,6 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
-                <module>jee-kotlin</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -465,7 +463,7 @@
                 <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
-                <module>jni</module>
+                <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json</module>
@@ -473,11 +471,6 @@
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
-
-                <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
-                <module>kotlin-libraries</module>
-                <module>kotlin-libraries-2</module>
-                <module>kotlin-quasar</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
 		<module>language-interop</module>
@@ -505,7 +498,6 @@
                 <module>lombok-custom</module>
                 <module>lucene</module>
 
-                <module>machine-learning</module>
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -598,7 +590,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-                <module>parent-kotlin</module>
 
                 <module>saas</module>
                 <module>software-security/sql-injection-samples</module>
@@ -610,15 +601,11 @@
 
                 <module>spring-5</module>
                 <module>spring-5-data-reactive</module>
-                <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
-                <module>spring-5-security</module>
-                <module>spring-5-security-cognito</module>
-                <module>spring-5-security-oauth</module>
                 <module>spring-5-webflux</module>
 
                 <module>spring-activiti</module>
@@ -627,7 +614,8 @@
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
 
-                <module>spring-batch</module>
+		<module>spring-batch</module>
+		<module>spring-batch-2</module>	
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -643,13 +631,13 @@
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
+                <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-                <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -663,70 +651,35 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-jms</module>
-                <module>spring-jooq</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
 
-                <module>spring-ldap</module>
-
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-basics</module>
-                <module>spring-mvc-basics-2</module>
-                <module>spring-mvc-basics-3</module>
-                <module>spring-mvc-basics-4</module>
-
-                <module>spring-mvc-forms-jsp</module>
-                <module>spring-mvc-forms-thymeleaf</module>
-                <module>spring-mvc-java</module>
-                <module>spring-mvc-java-2</module>
-                <module>spring-mvc-kotlin</module>
-
-                <module>spring-mvc-velocity</module>
-                <module>spring-mvc-views</module>
-                <module>spring-mvc-webflow</module>
-                <module>spring-mvc-xml</module>
-
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-angular</module>
-                <module>spring-rest-compress</module>
-                <module>spring-rest-http</module>
-                <module>spring-rest-http-2</module>
-                <module>spring-rest-query-language</module>
-                <module>spring-rest-shell</module>
-                <module>spring-rest-simple</module>
-                <module>spring-resttemplate</module>
-                <module>spring-resttemplate-2</module>
-                <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
-                <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
-                <module>spring-soap</module>
-                <module>spring-social-login</module>
+                <module>spring-soap</module>               
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
 
                 <module>spring-threads</module>
-                <module>spring-thymeleaf</module>
-                <module>spring-thymeleaf-2</module>
-                <module>spring-thymeleaf-3</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
+                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
@@ -793,7 +746,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-                <module>parent-kotlin</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
@@ -838,7 +790,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-                <module>parent-kotlin</module>
 
                 <module>akka-http</module>
                 <module>akka-streams</module>
@@ -898,8 +849,6 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
-                <module>core-kotlin-modules</module>
-                <module>core-scala</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -909,6 +858,7 @@
                 <module>ddd</module>
                 <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
+                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
@@ -936,7 +886,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <module>httpclient-2</module>
+                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -968,7 +918,6 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
-                <module>jee-kotlin</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -977,18 +926,13 @@
                 <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
-                <module>jni</module>
+                <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json</module>
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
-
-                <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
-                <module>kotlin-libraries</module>
-                <module>kotlin-libraries-2</module>
-                <module>kotlin-quasar</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
@@ -1015,7 +959,6 @@
                 <module>lombok-custom</module>
                 <module>lucene</module>
 
-                <module>machine-learning</module>
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -1100,7 +1043,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-                <module>parent-kotlin</module>
 
                 <module>saas</module>
                 <module>software-security/sql-injection-samples</module>
@@ -1112,15 +1054,11 @@
 
                 <module>spring-5</module>
                 <module>spring-5-data-reactive</module>
-                <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
-                <module>spring-5-security</module>
-                <module>spring-5-security-cognito</module>
-                <module>spring-5-security-oauth</module>
                 <module>spring-5-webflux</module>
 
                 <module>spring-activiti</module>
@@ -1145,12 +1083,12 @@
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
+                <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
-                <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1164,69 +1102,34 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-jms</module>
-                <module>spring-jooq</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
 
-                <module>spring-ldap</module>
-
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
-                <module>spring-mvc-basics</module>
-                <module>spring-mvc-basics-2</module>
-                <module>spring-mvc-basics-3</module>
-                <module>spring-mvc-basics-4</module>
-
-                <module>spring-mvc-forms-jsp</module>
-                <module>spring-mvc-forms-thymeleaf</module>
-                <module>spring-mvc-java</module>
-				<module>spring-mvc-java-2</module>
-                <module>spring-mvc-kotlin</module>
-
-                <module>spring-mvc-velocity</module>
-                <module>spring-mvc-views</module>
-                <module>spring-mvc-webflow</module>
-                <module>spring-mvc-xml</module>
-                <module>spring-mvc-crash</module>
 
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
                 <module>spring-remoting</module>
-                <module>spring-rest-angular</module>
-                <module>spring-rest-compress</module>
-                <module>spring-rest-http</module>
-                <module>spring-rest-query-language</module>
-                <module>spring-rest-shell</module>
-                <module>spring-rest-simple</module>
-                <module>spring-resttemplate</module>
-                <module>spring-resttemplate-2</module>
-                <module>spring-rest-testing</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
-                <module>spring-session</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
                 <module>spring-soap</module>
-                <module>spring-social-login</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
 
-                <module>spring-thymeleaf</module>
-                <module>spring-thymeleaf-2</module>
-                <module>spring-thymeleaf-3</module>
-
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
+                <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
@@ -1286,7 +1189,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-                <module>parent-kotlin</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
@@ -1343,7 +1245,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <forkCount>3</forkCount>
                             <reuseForks>true</reuseForks>
@@ -1368,23 +1269,22 @@
             <modules>
                  <module>core-java-modules/core-java-9</module>
                  <module>core-java-modules/core-java-9-improvements</module>
-                 <!-- <module>core-java-modules/core-java-9-jigsaw</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-9-new-features</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-9-jigsaw</module>
+                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
-                 <!-- <module>core-java-modules/core-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-12</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-11</module>
+                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-collections-set</module>
-                 <!-- <module>core-java-modules/core-java-date-operations-1</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-datetime-conversion</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-datetime-string</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-date-operations-1</module>
+                 <module>core-java-modules/core-java-datetime-conversion</module>
+                 <module>core-java-modules/core-java-datetime-string</module>
                  <module>core-java-modules/core-java-jpms</module>
-                 <!-- <module>core-java-modules/core-java-os</module>-->  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                 <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                 <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/multimodulemavenproject</module>
-                 <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
             </modules>
         </profile>
 
@@ -1413,23 +1313,22 @@
             <modules>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
-                <!-- <module>core-java-modules/core-java-9-jigsaw</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-9-new-features</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-9-jigsaw</module>
+                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-9-streams</module>
                 <module>core-java-modules/core-java-10</module>
-                <!-- <module>core-java-modules/core-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-12</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-13</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-11</module>
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
-                <!-- <module>core-java-modules/core-java-date-operations-1</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-datetime-conversion</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-datetime-string</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-date-operations-1</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>core-java-modules/core-java-datetime-string</module>
                 <module>core-java-modules/core-java-jpms</module>
-                <!-- <module>core-java-modules/core-java-os</module>-->  <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
-                <!-- <module>core-java-modules/core-java-time-measurements</module>-->   <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
+                <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
-                <!-- <module>maven-java-11</module>--> <!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
             </modules>
         </profile>
     </profiles>
@@ -1471,24 +1370,22 @@
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
-        <moneta.version>1.1</moneta.version>
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator.version>1.19</jmh-generator.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
-        <commons-io.version>2.5</commons-io.version>
+        <commons-io.version>2.8.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
         <commons-cli.version>1.4</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
-        <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.9.8</jackson.version>
-        <commons-fileupload.version>1.3</commons-fileupload.version>
+        <jackson.version>2.11.1</jackson.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.2.0</junit-platform.version>
         <junit-jupiter.version>5.2.0</junit-jupiter.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>

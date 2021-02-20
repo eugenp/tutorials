@@ -73,10 +73,6 @@
         <postgresql.version>42.2.5</postgresql.version>
         <guava.version>21.0</guava.version>
 
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

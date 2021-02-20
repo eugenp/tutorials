@@ -61,7 +61,6 @@
     </build>
 
     <properties>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
         <assertj.version>3.6.1</assertj.version>
         <diff-match-path.version>1.2</diff-match-path.version>
     </properties>
