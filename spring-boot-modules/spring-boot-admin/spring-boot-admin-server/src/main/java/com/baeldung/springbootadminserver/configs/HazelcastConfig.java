@@ -21,7 +21,7 @@ public class HazelcastConfig {
 	public Config hazelcast() {
 		MapConfig eventStoreMap = new MapConfig("spring-boot-admin-event-store")
 				.setInMemoryFormat(InMemoryFormat.OBJECT).setBackupCount(1)
-				.setEvictionConfig(new EvictionConfig().setEvictionPolicy(EvictionPolicy.LRU))
+				.setEvictionConfig(new EvictionConfig().setEvictionPolicy(EvictionPolicy.NONE))
 				.setMergePolicyConfig(new MergePolicyConfig(PutIfAbsentMergePolicy.class.getName(), 100));
 
 		MapConfig sentNotificationsMap = new MapConfig("spring-boot-admin-application-store")
