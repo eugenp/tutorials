@@ -9,10 +9,10 @@ import java.util.UUID;
 import static java.lang.String.format;
 
 @RestController
-public class TestController {
+public class RetrieveUuidController {
 
     @GetMapping("/api/test")
-    public Response test() {
+    public Response uuid() {
         return new Response(format("Test message... %s.", UUID.randomUUID()));
     }
 }
