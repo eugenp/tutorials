@@ -1,6 +1,9 @@
 package com.baeldung.patterns.hexagonal_quick.controller;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.patterns.hexagonal_quick.controller.model.ApiBook;
 import com.baeldung.patterns.hexagonal_quick.domain.Book;
@@ -15,12 +18,6 @@ public class AdminRestController {
         this.adminInputPort = adminInputPort;
     }
 
-    @GetMapping("/book/{isbn}")
-    public ApiBook lookupBook(@PathVariable String isbn) {
-        final Book book = adminInputPort.getBook(isbn);
-        return ApiBook.createFrom(book);
-    }
-
     @PostMapping("/book")
     public ApiBook createBook(@RequestBody ApiBook createBookRequest) {
         final Book book = adminInputPort.addBook(createBookFrom(createBookRequest));
@@ -28,6 +25,6 @@ public class AdminRestController {
     }
 
     private static Book createBookFrom(ApiBook apiBook) {
-        return new Book(apiBook.getIsbnNumber(), apiBook.getBookName(), apiBook.getAuthorNames());
+        return new Book(apiBook.getIsbnNumber(), apiBook.getBookName());
     }
 }

@@ -1,7 +1,5 @@
 package com.baeldung.patterns.hexagonal_quick.domain;
 
-import java.util.Collection;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,5 +8,4 @@ import lombok.Getter;
 public class Book {
     private String isbn;
     private String title;
-    private Collection<String> authors;
 }

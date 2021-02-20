@@ -3,7 +3,6 @@ package com.baeldung.patterns.hexagonal_quick.service;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.patterns.hexagonal_quick.domain.Book;
-import com.baeldung.patterns.hexagonal_quick.exception.BookNotFoundException;
 import com.baeldung.patterns.hexagonal_quick.port.AdminInputPort;
 import com.baeldung.patterns.hexagonal_quick.port.BookOutputPort;
 
@@ -16,14 +15,7 @@ public class AdminService implements AdminInputPort {
     }
 
     @Override
-    public Book getBook(String isbn) {
-        return bookOutputPort.findBookByIsbn(isbn)
-            .orElseThrow(() -> new BookNotFoundException(isbn));
-    }
-
-    @Override
     public Book addBook(Book book) {
-        return bookOutputPort.findBookByIsbn(book.getIsbn())
-            .orElseGet(() -> bookOutputPort.createBook(book));
+        return bookOutputPort.createBook(book);
     }
 }

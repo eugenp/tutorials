@@ -4,8 +4,6 @@ import com.baeldung.patterns.hexagonal_quick.domain.Book;
 
 import lombok.*;
 
-import java.util.Collection;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,9 +11,8 @@ import java.util.Collection;
 public class ApiBook {
     private String isbnNumber;
     private String bookName;
-    private Collection<String> authorNames;
 
     public static ApiBook createFrom(Book book) {
-        return new ApiBook(book.getIsbn(), book.getTitle(), book.getAuthors());
+        return new ApiBook(book.getIsbn(), book.getTitle());
     }
 }
