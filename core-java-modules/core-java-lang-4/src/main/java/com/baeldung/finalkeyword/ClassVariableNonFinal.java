@@ -1,23 +1,19 @@
 package com.baeldung.finalkeyword;
 
+import java.io.Console;
+
 public class ClassVariableNonFinal {
 
-    static String x = "x";
-    static String y = "y";
+    static boolean doX = false;
+    static boolean doY = true;
 
     public static void main(String[] args) {
-        for (int i = 0; i < 1500; i++) {
-            long startTime = System.nanoTime();
-            String result = concatStrings();
-            long totalTime = System.nanoTime() - startTime;
-            if (i >= 500) {
-                System.out.println(totalTime);
-            }
+        Console console = System.console();
+        if (doX) {
+            console.writer().println("x");
+        } else if (doY) {
+            console.writer().println("y");
         }
-    }
-
-    private static String concatStrings() {
-        return x + y;
     }
 
 }
