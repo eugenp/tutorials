@@ -25,7 +25,7 @@
     </dependencies>
 
     <properties>
-        <assertj.version>3.18.0</assertj.version>
+        <assertj.version>3.19.0</assertj.version>
     </properties>
 
 </project>
