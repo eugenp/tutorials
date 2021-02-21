@@ -36,12 +36,12 @@ Or create a new one via a POST:
 $ curl -X POST -H "Content-Type:application/json" -d '{ "firstName" : "Dassi", "lastName" : "Orleando", "phoneNumber": "+237 545454545", "email": "mymail@yahoo.fr" }' localhost:8080/students
 ```
 
-### Available Test API
+### Available UUID API
 
 You can view the test response using curl:
 
 ```bash
-$ curl localhost:8080/api/test
+$ curl localhost:8080/api/uuid
 ```
 
 Now with default configurations it will be available at: [http://localhost:8080](http://localhost:8080)
