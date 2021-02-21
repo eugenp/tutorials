@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(ZeroCodeUnitRunner.class)
 @TargetEnv("rest_api.properties")
-public class UserEndpointIT {
+public class UserEndpointManualTest {
 
     @Test
     @Scenario("rest/user_create_test.json")
