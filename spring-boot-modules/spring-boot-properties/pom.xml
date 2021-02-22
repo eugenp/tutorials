@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -47,12 +48,10 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>${httpcore.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>${configuration-processor.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
@@ -126,15 +125,21 @@
         </profile>
     </profiles>
 
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <spring-cloud.version>2020.0.0-M5</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <guava.version>20.0</guava.version>
-        <httpcore.version>4.4.11</httpcore.version>
         <resource.delimiter>@</resource.delimiter>
-        <configuration-processor.version>2.2.4.RELEASE</configuration-processor.version>
-<!--         <start-class>com.baeldung.buildproperties.Application</start-class>  -->
+        <!-- <start-class>com.baeldung.buildproperties.Application</start-class> -->
         <start-class>com.baeldung.yaml.MyApplication</start-class>
     </properties>
 

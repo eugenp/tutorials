@@ -6,7 +6,6 @@
     <artifactId>spring-boot-libraries</artifactId>
     <name>spring-boot-libraries</name>
     <packaging>war</packaging>
-    <description>This is simple boot application for Spring boot actuator test</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -240,7 +239,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>com.baeldung.intro.App</start-class>
+        <start-class>com.baeldung.graphql.DemoApplication</start-class>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <togglz.version>2.4.1.Final</togglz.version>
         <rome.version>1.9.0</rome.version>
