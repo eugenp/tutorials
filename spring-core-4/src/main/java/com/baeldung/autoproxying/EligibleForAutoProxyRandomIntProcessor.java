@@ -9,9 +9,13 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Field;
 
 public class EligibleForAutoProxyRandomIntProcessor implements BeanPostProcessor {
+    private final RandomIntGenerator randomIntGenerator;
+
     @Lazy
     @Autowired
-    private RandomIntGenerator randomIntGenerator;
+    public EligibleForAutoProxyRandomIntProcessor(RandomIntGenerator randomIntGenerator) {
+        this.randomIntGenerator = randomIntGenerator;
+    }
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {

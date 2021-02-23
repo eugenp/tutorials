@@ -8,8 +8,12 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Field;
 
 public class NotEligibleForAutoProxyRandomIntProcessor implements BeanPostProcessor {
+    private final RandomIntGenerator randomIntGenerator;
+
     @Autowired
-    private RandomIntGenerator randomIntGenerator;
+    public NotEligibleForAutoProxyRandomIntProcessor(RandomIntGenerator randomIntGenerator) {
+        this.randomIntGenerator = randomIntGenerator;
+    }
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
