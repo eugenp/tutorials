@@ -15,22 +15,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 class JmeterIntegrationTest {
 
-	MockMvc mvc;
+    MockMvc mvc;
 
-	public JmeterIntegrationTest(WebApplicationContext wac) {
-		this.mvc = MockMvcBuilders.webAppContextSetup(wac).build();
-	}
+    public JmeterIntegrationTest(WebApplicationContext wac) {
+        this.mvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
 
-	@Test
-	void whenCallingUUIDController_thenWeShouldRecieveRandomizedResponse() throws Exception {
-		MockHttpServletResponse response = mvc.perform(get("/api/uuid"))
-		  .andDo(print())
-		  .andExpect(status().isOk())
-		  .andReturn()
-		  .getResponse();
+    @Test
+    void whenCallingUUIDController_thenWeShouldRecieveRandomizedResponse() throws Exception {
+        MockHttpServletResponse response = mvc.perform(get("/api/uuid"))
+          .andDo(print())
+          .andExpect(status().isOk())
+          .andReturn()
+          .getResponse();
 
-		assertThat(response.getContentAsString())
-		  .contains("Test message...");
-	}
-
+        assertThat(response.getContentAsString())
+          .contains("Test message...");
+    }
 }
