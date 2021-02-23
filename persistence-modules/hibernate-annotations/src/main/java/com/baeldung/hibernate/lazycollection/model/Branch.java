@@ -1,9 +1,14 @@
-package com.baeldung.hibernate.lazyCollection.model;
+package com.baeldung.hibernate.lazycollection.model;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OrderColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

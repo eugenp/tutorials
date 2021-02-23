@@ -1,7 +1,7 @@
-package com.baeldung.hibernate.lazyCollection;
+package com.baeldung.hibernate.lazycollection;
 
-import com.baeldung.hibernate.lazyCollection.model.Branch;
-import com.baeldung.hibernate.lazyCollection.model.Employee;
+import com.baeldung.hibernate.lazycollection.model.Branch;
+import com.baeldung.hibernate.lazycollection.model.Employee;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,14 +29,15 @@ public class LazyCollectionIntegrationTest {
 
     @BeforeClass
     public static void beforeTests() {
-        Configuration configuration = new Configuration().addAnnotatedClass(Branch.class).addAnnotatedClass(Employee.class)
-                .setProperty("hibernate.dialect", H2Dialect.class.getName())
-                .setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
-                .setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
-                .setProperty("hibernate.connection.username", "sa").setProperty("hibernate.connection.password", "")
-                .setProperty("hibernate.hbm2ddl.auto", "update");
+        Configuration configuration = new Configuration().addAnnotatedClass(Branch.class)
+          .addAnnotatedClass(Employee.class).setProperty("hibernate.dialect", H2Dialect.class.getName())
+          .setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
+          .setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
+          .setProperty("hibernate.connection.username", "sa").setProperty("hibernate.connection.password", "")
+          .setProperty("hibernate.hbm2ddl.auto", "update");
+
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .applySettings(configuration.getProperties()).build();
+          .applySettings(configuration.getProperties()).build();
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
