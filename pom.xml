@@ -473,8 +473,8 @@
                 <module>jta</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-		<module>language-interop</module>
-		<module>libraries-2</module>
+    <module>language-interop</module>
+    <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -546,10 +546,11 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
-				<module>spring-webflux-threads</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
+                <module>spring-webflux-threads</module>
+                <module>kubernetes</module>
             </modules>
 
         </profile>
@@ -614,8 +615,8 @@
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
 
-		<module>spring-batch</module>
-		<module>spring-batch-2</module>	
+    <module>spring-batch</module>
+    <module>spring-batch-2</module> 
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -1007,10 +1008,10 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
-				<module>spring-webflux-threads</module>
+        <module>atomikos</module>
+        <module>reactive-systems</module>
+        <module>slack</module>
+        <module>spring-webflux-threads</module>
             </modules>
 
         </profile>
