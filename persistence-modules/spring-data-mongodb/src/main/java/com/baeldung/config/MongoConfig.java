@@ -68,4 +68,8 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         return new MongoTransactionManager(dbFactory);
     }
 
+    @Override
+    protected boolean autoIndexCreation() {
+        return true;
+    }
 }
