@@ -23,14 +23,14 @@
 	</repositories>
 
 	<dependencies>
-		<dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -40,7 +40,7 @@
             <artifactId>spring-security-saml2-core</artifactId>
             <version>${saml2-core.spring.version}</version>
         </dependency>
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<finalName>spring-security-saml</finalName>
