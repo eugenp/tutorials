@@ -129,12 +129,6 @@ public class SamlSecurityConfig {
         samlEntryPoint.setDefaultProfileOptions(defaultWebSSOProfileOptions());
         return samlEntryPoint;
     }
-    
-    @Bean
-    public SAMLDiscovery samlIDPDiscovery() {
-        SAMLDiscovery idpDiscovery = new SAMLDiscovery();
-        return idpDiscovery;
-    }
 
     @Bean
     public ExtendedMetadata extendedMetadata() {

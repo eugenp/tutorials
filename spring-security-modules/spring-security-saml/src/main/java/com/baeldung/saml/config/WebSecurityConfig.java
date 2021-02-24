@@ -53,8 +53,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SAMLLogoutProcessingFilter samlLogoutProcessingFilter;
 
-    @Autowired
-    private SAMLDiscovery samlDiscovery;
+    @Bean
+    public SAMLDiscovery samlDiscovery() {
+        SAMLDiscovery idpDiscovery = new SAMLDiscovery();
+        return idpDiscovery;
+    }
 
     @Autowired
     private SAMLAuthenticationProvider samlAuthenticationProvider;
@@ -89,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         chains.add(new DefaultSecurityFilterChain(new AntPathRequestMatcher("/saml/SSO/**"),
             samlWebSSOProcessingFilter()));
         chains.add(new DefaultSecurityFilterChain(new AntPathRequestMatcher("/saml/discovery/**"),
-            samlDiscovery));
+            samlDiscovery()));
         chains.add(new DefaultSecurityFilterChain(new AntPathRequestMatcher("/saml/login/**"),
             samlEntryPoint));
         chains.add(new DefaultSecurityFilterChain(new AntPathRequestMatcher("/saml/logout/**"),
@@ -115,21 +118,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
         .csrf()
         .disable();
-    
+
         http
         .httpBasic()
         .authenticationEntryPoint(samlEntryPoint);
-    
+
         http
         .addFilterBefore(metadataGeneratorFilter(), ChannelProcessingFilter.class)
         .addFilterAfter(samlFilter(), BasicAuthenticationFilter.class)
         .addFilterBefore(samlFilter(), CsrfFilter.class);
-    
+
         http
         .authorizeRequests()
         .antMatchers("/").permitAll()
         .anyRequest().authenticated();
-    
+
         http
         .logout()
         .addLogoutHandler((request, response, authentication) -> {
