@@ -35,7 +35,7 @@
         <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-hal-browser -->
         <dependency>
             <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-hal-browser</artifactId>
+            <artifactId>spring-data-rest-hal-explorer</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -99,7 +99,6 @@
     <properties>
         <start-class>com.baeldung.books.SpringDataRestApplication</start-class>
         <maven.version>1.0</maven.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 
 </project>
