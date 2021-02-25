@@ -1,22 +1,25 @@
 package com.baeldung.web.controller;
 
 import io.restassured.RestAssured;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.TestPropertySource;
 
-import static io.restassured.RestAssured.DEFAULT_PORT;
 import static io.restassured.RestAssured.given;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(webEnvironment = DEFINED_PORT)
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 @TestPropertySource(properties = {"spring.main.allow-bean-definition-overriding=true", "server.servlet.context-path=/"})
 public class GreetControllerRealIntegrationTest {
 
-    @Before
+    @LocalServerPort
+    private int port;
+
+    @BeforeEach
     public void setUp() {
-        RestAssured.port = DEFAULT_PORT;
+        RestAssured.port = port;
     }
 
     @Test
