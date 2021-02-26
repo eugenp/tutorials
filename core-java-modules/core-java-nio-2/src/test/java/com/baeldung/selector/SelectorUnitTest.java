@@ -29,7 +29,7 @@ public class SelectorUnitTest {
 
         CountDownLatch latch = new CountDownLatch(1);
 
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             invocationStepsTracker.add(">> Count down");
             latch.countDown();
             try {
@@ -39,9 +39,10 @@ public class SelectorUnitTest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }).start();
+        });
 
         invocationStepsTracker.add(">> Start await");
+        thread.start();
         latch.await();
         invocationStepsTracker.add(">> End await");
 
