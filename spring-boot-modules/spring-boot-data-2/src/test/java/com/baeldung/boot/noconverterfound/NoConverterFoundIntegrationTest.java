@@ -22,7 +22,8 @@ public class NoConverterFoundIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
+    /* Remove Getters from Student class to successfully run this test case
+     * @Test
     public void whenGettersNotDefined_thenThrowException() throws Exception {
 
         String url = "/api/student/1";
@@ -35,6 +36,7 @@ public class NoConverterFoundIntegrationTest {
             .contains("No converter found for return value of type"));
 
     }
+    */
 
     @Test
     public void whenGettersAreDefined_thenReturnObject() throws Exception {
