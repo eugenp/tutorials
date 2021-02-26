@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.baeldung.spring.data.redis_ttl.entity.Gatekeeper;
 
 @Repository
-public interface GatekeeperRepository extends CrudRepository<Gatekeeper, Long>{
+public interface GatekeeperRepository extends CrudRepository<Gatekeeper, Long> {
  
 }

@@ -22,10 +22,19 @@ import com.baeldung.spring.data.redis_ttl.repository.SubscriberRepository;
 
 @RestController
 @RequestMapping("/v1/")
-class LibraryApplicationController{
+class LibraryApplicationController {
     
     @Autowired
     private SubscriberRepository subscriberRepository;
+    
+    @Autowired
+    private GatekeeperRepository gatekeeperRepository;
+    
+    @Autowired
+    private BookRepository bookRepository;
+    
+    @Autowired
+    private LibrarianRepository librarianRepository;
 
     @Cacheable(value = "subscribers")
     @GetMapping("subscribers/{id}")
@@ -37,9 +46,6 @@ class LibraryApplicationController{
     public Subscriber addSubscriber(@RequestBody Subscriber subscriber) {
         return subscriberRepository.save(subscriber);
     }
-    
-    @Autowired
-    private GatekeeperRepository gatekeeperRepository;
 
     @Cacheable(value = "gatekeeper")
     @GetMapping("gatekeeper/{id}")
@@ -52,9 +58,6 @@ class LibraryApplicationController{
         return gatekeeperRepository.save(gatekeeper);
     }
     
-    @Autowired
-    private BookRepository bookRepository;
-    
     @GetMapping("/books/{title}")
     public Book getBook(@PathVariable("title") String title) {
         return bookRepository.get(title);
@@ -64,9 +67,6 @@ class LibraryApplicationController{
     public void addBook(@RequestBody Book book) {
         bookRepository.save(book);
     }
-    
-    @Autowired
-    private LibrarianRepository librarianRepository;
 
     @GetMapping("librarians/{id}")
     public Optional<Librarian> getLibrarian(@PathVariable("id") Long id) {

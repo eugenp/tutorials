@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 @Entity
 public class Subscriber implements Serializable{
     private static final long serialVersionUID = 1L;
-    @Id private Long id;
+    
+    @Id 
+    private Long id;
+    
     private String name;
 
     public Subscriber() {

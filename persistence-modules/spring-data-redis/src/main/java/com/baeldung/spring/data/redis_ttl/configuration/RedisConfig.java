@@ -29,7 +29,14 @@ public class RedisConfig {
 
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+    	
+        // code for setting global cache TTL
+        //RedisCacheConfiguration globalCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
+        //		.entryTtl(Duration.ofMinutes(5));
+        //RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory)
+        //		.cacheDefaults(globalCacheConfig).build();
 
+    	// code for setting per cache TTL
         RedisCacheConfiguration shortDurationCache = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(60));
 
@@ -40,11 +47,6 @@ public class RedisConfig {
         Map<String, RedisCacheConfiguration> configurations = new HashMap<>();
         configurations.put("subscriber", shortDurationCache);
         configurations.put("gatekeeper", longDurationCache);
-
-        // RedisCacheManager redisCacheManager =
-        // RedisCacheManager.builder(connectionFactory)
-        // .transactionAware()
-        // .cacheDefaults(config).build();
 
         RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory)
                 .withInitialCacheConfigurations(configurations).build();

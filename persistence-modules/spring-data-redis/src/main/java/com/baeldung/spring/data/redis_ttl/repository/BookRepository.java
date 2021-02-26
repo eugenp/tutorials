@@ -9,11 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.baeldung.spring.data.redis_ttl.entity.Book;
 
 @Repository
-public class BookRepository{
+public class BookRepository {
 
     private RedisTemplate<String, Book> redisTemplate;
     
-    @Autowired
     public BookRepository(RedisTemplate<String, Book> redisTemplate) {
       this.redisTemplate = redisTemplate;
     }
@@ -27,8 +26,9 @@ public class BookRepository{
         redisTemplate.opsForValue().set(book.getTitle(), book);
         
         int ttlValue = 5; //secs 
-        if(book.getLanguage().toLowerCase().equals("english"))
+        if(book.getLanguage().toLowerCase().equals("english")) {
             ttlValue = 10;
+        }
         
         redisTemplate.expire(book.getTitle(), ttlValue, TimeUnit.SECONDS);
     }

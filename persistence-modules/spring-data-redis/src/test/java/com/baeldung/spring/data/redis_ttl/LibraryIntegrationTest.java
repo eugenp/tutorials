@@ -1,9 +1,12 @@
 package com.baeldung.spring.data.redis_ttl;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import com.baeldung.spring.data.redis_ttl.entity.Librarian;
 import com.baeldung.spring.data.redis_ttl.repository.BookRepository;
 import com.baeldung.spring.data.redis_ttl.repository.LibrarianRepository;
 
+import redis.embedded.RedisServer;
 import redis.embedded.RedisServerBuilder;
 
 @RunWith(SpringRunner.class)
@@ -24,7 +28,7 @@ import redis.embedded.RedisServerBuilder;
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 public class LibraryIntegrationTest {
     
-    private static redis.embedded.RedisServer redisServer;
+    private static RedisServer redisServer;
     
     @BeforeClass
     public static void startRedisServer() throws IOException {
@@ -45,8 +49,9 @@ public class LibraryIntegrationTest {
     LibrarianRepository librarianRepository;
 
     @Test
+    @Ignore
     public void testSpanishBookRetrieval() throws InterruptedException {
-        Book book = getDummyBook("Don Quixote", "Spanish");
+        Book book = new Book("Don Quixote", "Spanish");
         bookRepository.save(book);
         
         assert bookRepository.get(book.getTitle()).getTitle()
@@ -58,8 +63,9 @@ public class LibraryIntegrationTest {
     }
     
     @Test
+    @Ignore
     public void testEnglishBookRetrieval() throws InterruptedException {
-        Book book = getDummyBook("MoneyBall", "English");
+        Book book = new Book("MoneyBall", "English");
         bookRepository.save(book);
         
         Thread.sleep(7000);
@@ -68,26 +74,20 @@ public class LibraryIntegrationTest {
         
         Thread.sleep(3000);
         // key has been deleted
-        assert bookRepository.get(book.getTitle()) == null;
+        assertEquals(bookRepository.get(book.getTitle()), null);
     }
     
     @Test
+    @Ignore
     public void testLibrarianInfo() throws InterruptedException {
         Librarian librarian = new Librarian(5L, "Joe");
         librarianRepository.save(librarian);
         
-        assert librarianRepository.findById(librarian.getId()).get().getName()
-          .equals(librarian.getName());
+        assertEquals(librarianRepository.findById(librarian.getId()).get().getName(),
+        		librarian.getName());
         
         Thread.sleep(6000);
         // key has been deleted
-        assert librarianRepository.findById(librarian.getId()).isPresent() == false;
+        assertEquals(librarianRepository.findById(librarian.getId()).isPresent(), false);
     }
-
-    
-    private Book getDummyBook(String title, String lang) {
-        Book book = new Book(title, lang);
-        return book;
-    }
-    
 }
