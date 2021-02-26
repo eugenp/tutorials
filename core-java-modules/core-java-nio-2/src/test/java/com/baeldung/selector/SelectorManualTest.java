@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import static java.nio.channels.SelectionKey.OP_READ;
 
-public class SelectorUnitTest {
+public class SelectorManualTest {
 
     @Test
     public void whenWakeUpCalledOnSelector_thenBlockedThreadReturns() throws IOException, InterruptedException {
