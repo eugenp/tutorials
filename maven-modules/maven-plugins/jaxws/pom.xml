@@ -25,12 +25,18 @@
                 </executions>
                 <configuration>
                     <wsdlDirectory>${project.basedir}/src/main/resources/</wsdlDirectory>
-<!--                    <wsdlUrls>-->
-<!--                        <wsdlUrl>http://localhost:8888/ws/country?wsdl</wsdlUrl>-->
-<!--                    </wsdlUrls>-->
-                    <keep>true</keep>
-                    <packageName>com.baeldung.soap.ws.client.generated</packageName>
-                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <packageName>com.baeldung.soap.ws.client</packageName>
+                    <sourceDestDir>
+                        ${project.build.directory}/generated-sources/
+                    </sourceDestDir>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
                 </configuration>
             </plugin>
         </plugins>
