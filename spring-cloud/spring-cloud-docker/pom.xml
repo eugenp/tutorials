@@ -22,6 +22,7 @@
 
     <modules>
         <module>docker-message-server</module>
+        <module>docker-product-server</module>
     </modules>
 
 </project>
