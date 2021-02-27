@@ -1,0 +1,39 @@
+{
+  "scenarioName": "test user creation endpoint",
+  "steps": [
+    {
+      "name": "test_successful_creation",
+      "url": "/api/users",
+      "method": "POST",
+      "request": {
+        "body": {
+          "firstName": "John",
+          "lastName": "Doe"
+        }
+      },
+      "verify": {
+        "status": 201,
+        "body": {
+          "id": "$NOT.NULL",
+          "firstName": "John",
+          "lastName": "Doe"
+        }
+      }
+    },
+    {
+      "name": "test_firstname_validation",
+      "url": "/api/users",
+      "method": "POST",
+      "request": {
+        "body": {
+          "firstName": "",
+          "lastName": "Doe"
+        }
+      },
+      "assertions": {
+        "status": 400,
+        "rawBody": "firstName can't be empty!"
+      }
+    }
+  ]
+}
