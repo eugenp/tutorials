@@ -1,14 +1,11 @@
 package com.baeldung.soap.ws.client;
 
-import com.baeldung.soap.ws.client.generated.Country;
-import com.baeldung.soap.ws.client.generated.CountryService;
-import com.baeldung.soap.ws.client.generated.Currency;
 import org.junit.jupiter.api.*;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class CountryServiceClientTest {
+class CountryServiceClientUnitTest {
 
     CountryServiceClient countryServiceClient;
     CountryService countryService;

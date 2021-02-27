@@ -1,9 +1,5 @@
 package com.baeldung.soap.ws.client;
 
-import com.baeldung.soap.ws.client.generated.Country;
-import com.baeldung.soap.ws.client.generated.CountryService;
-import com.baeldung.soap.ws.client.generated.Currency;
-
 import java.util.Optional;
 
 public class CountryServiceClient {
