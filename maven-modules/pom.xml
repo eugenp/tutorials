@@ -27,6 +27,7 @@
         <module>versions-maven-plugin</module>
         <module>version-collision</module>
         <module>optional-dependencies</module>
+        <module>version-overriding-plugins</module>
     </modules>
 
 </project>
