@@ -1350,8 +1350,8 @@
         <gib.skipTestsForUpstreamModules>true</gib.skipTestsForUpstreamModules>
         <gib.buildUpstream>false</gib.buildUpstream>
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
-        <gib.failOnError>false</gib.failOnError>
-        <gib.enabled>false</gib.enabled>
+        <gib.failOnError>false</gib.failOnError>        
+	<gib.disable>true</gib.disable>
 
         <junit.version>4.12</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
@@ -1391,7 +1391,7 @@
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
-        <gitflow-incremental-builder.version>3.8</gitflow-incremental-builder.version>
+        <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
