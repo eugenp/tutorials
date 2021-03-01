@@ -11,7 +11,7 @@ public class CountryServiceClient {
     }
     public String getCapitalByCountryName(String countryName) {
         return Optional.of(countryService.findByName(countryName))
-            .map(Country::getCapital).orElseThrow(CountryNotFoundException::new);
+          .map(Country::getCapital).orElseThrow(CountryNotFoundException::new);
     }
 
     public int getPopulationByCountryName(String countryName) {
