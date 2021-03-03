@@ -54,6 +54,7 @@
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-birt</module>
+        <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
@@ -62,6 +63,7 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
+        <module>spring-boot-runtime-2</module>
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
