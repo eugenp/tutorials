@@ -2,6 +2,7 @@ package com.baeldung.filetoinputstream;
 
 import com.google.common.io.ByteSource;
 import com.google.common.io.CharSource;
+import com.google.common.io.CharStreams;
 import com.google.common.io.Files;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -11,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class JavaXToInputStreamUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
@@ -28,7 +31,7 @@ public class JavaXToInputStreamUnitTest {
     @Test
     public final void givenUsingGuava_whenConvertingStringToInputStream_thenCorrect() throws IOException {
         final String initialString = "text";
-        final InputStream targetStream = new ReaderInputStream(CharSource.wrap(initialString).openStream());
+        final InputStream targetStream = CharSource.wrap(initialString).asByteSource(StandardCharsets.UTF_8).openStream();
 
         IOUtils.closeQuietly(targetStream);
     }
