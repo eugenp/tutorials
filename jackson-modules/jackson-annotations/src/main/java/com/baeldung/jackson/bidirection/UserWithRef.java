@@ -3,13 +3,13 @@ package com.baeldung.jackson.bidirection;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class UserWithRef {
     public int id;
     public String name;
 
-    @JsonBackReference
+    @JsonManagedReference
     public List<ItemWithRef> userItems;
 
     public UserWithRef() {
@@ -19,7 +19,7 @@ public class UserWithRef {
     public UserWithRef(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithRef>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithRef item) {
