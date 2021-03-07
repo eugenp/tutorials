@@ -22,25 +22,30 @@ public class CountQueryIntegrationTest {
     
     @Test
     public void givenValidData_whenSimpleSelect_thenSucceed() {
-        int count = dsl.select().from(AUTHOR).execute();
+        int count = dsl.select().from(AUTHOR)
+                .execute();
         Assert.assertEquals(3, count);
     }
     
     @Test
     public void givenValidData_whenSelectCount_thenSucceed() {
-        int count = dsl.selectCount().from(AUTHOR).fetchOne(0, int.class);
+        int count = dsl.selectCount().from(AUTHOR)
+                .where(AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan"))
+                .fetchOne(0, int.class);
         Assert.assertEquals(3, count);
     }
     
     @Test
     public void givenValidData_whenCount_thenSucceed() {
-        int count = dsl.select(DSL.count()).from(AUTHOR).fetchOne(0, int.class);
-        Assert.assertEquals(3, count);
+        int count = dsl.select(DSL.count()).from(AUTHOR)
+                .fetchOne(0, int.class);
+        Assert.assertEquals(1, count);
     }
     
     @Test
     public void givenValidData_whenFetchCount_thenSucceed() {
-        int count = dsl.fetchCount(DSL.selectFrom(AUTHOR));
-        Assert.assertEquals(3, count);
+        int count = dsl.fetchCount(DSL.selectFrom(AUTHOR)
+                .where(AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan")));
+        Assert.assertEquals(1, count);
     }
 }
