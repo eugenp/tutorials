@@ -28,13 +28,14 @@ public class JWTDecoderUtil {
 
         String header = new String(decoder.decode(chunks[0]));
         String payload = new String(decoder.decode(chunks[1]));
+
+        String tokenWithoutSignature = chunks[0] + "." + chunks[1];
         String signature = chunks[2];
 
         SignatureAlgorithm sa = HS256;
         SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), sa.getJcaName());
 
         DefaultJwtSignatureValidator validator = new DefaultJwtSignatureValidator(sa, secretKeySpec);
-        String tokenWithoutSignature = chunks[0] + "." + chunks[1];
 
         if (!validator.isValid(tokenWithoutSignature, signature)) {
             throw new Exception("Could not verify JWT token integrity!");
