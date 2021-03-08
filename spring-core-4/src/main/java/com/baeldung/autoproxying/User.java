@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
     @RandomInt(min = 2, max = 10)
-    private int id;
+    private int group;
 }
