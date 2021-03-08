@@ -27,6 +27,6 @@ class JWTDecoderUtilUnitTest {
     @Test
     void givenSignedToken_whenDecodingWithValidSecret_thenIntegrityIsValidated() throws Exception {
         assertThat(JWTDecoderUtil.decodeJWTToken(SIGNED_TOKEN, "MySecretKey"))
-          .contains(SignatureAlgorithm.HS256.getValue());
+          .contains("Baeldung User");
     }
 }
