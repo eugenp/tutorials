@@ -9,6 +9,7 @@ public class CountryServiceClient {
     public CountryServiceClient(CountryService countryService) {
         this.countryService = countryService;
     }
+
     public String getCapitalByCountryName(String countryName) {
         return Optional.of(countryService.findByName(countryName))
           .map(Country::getCapital).orElseThrow(CountryNotFoundException::new);
@@ -23,6 +24,4 @@ public class CountryServiceClient {
         return Optional.of(countryService.findByName(countryName))
           .map(Country::getCurrency).orElseThrow(CountryNotFoundException::new);
     }
-
-
 }
