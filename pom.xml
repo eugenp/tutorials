@@ -471,7 +471,7 @@
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
-
+                <module>kubernetes</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
 		<module>language-interop</module>
 		<module>libraries-2</module>
