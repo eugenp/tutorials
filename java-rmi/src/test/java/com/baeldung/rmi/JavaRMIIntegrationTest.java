@@ -34,11 +34,9 @@ public class JavaRMIIntegrationTest {
 			
 			String expectedMessage = "Server Message";			
 			assertEquals(responseMessage, expectedMessage);
-		} catch (RemoteException e) {
+		} catch (RemoteException | NotBoundException e) {
 			fail("Exception Occurred: " + e);
-		} catch (NotBoundException nb) {
-			fail("Exception Occurred: " + e);
-		}
+		};
 	}
 	
 }
