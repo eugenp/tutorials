@@ -77,7 +77,7 @@
         <module>core-java-lang</module>
         <module>core-java-lang-2</module>
         <module>core-java-lang-3</module>
-		<module>core-java-lang-4</module>
+        <module>core-java-lang-4</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop-constructors</module>
