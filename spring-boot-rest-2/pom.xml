@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.web</groupId>
     <artifactId>spring-boot-rest-2</artifactId>
-    <name>spring-boot-rest</name>
+    <name>spring-boot-rest-2</name>
     <packaging>war</packaging>
     <description>Spring Boot Rest Module</description>
 
