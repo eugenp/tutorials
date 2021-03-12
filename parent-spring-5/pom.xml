@@ -31,7 +31,7 @@
     </dependencies>
 
     <properties>
-        <spring.version>5.2.8.RELEASE</spring.version>
+        <spring.version>5.3.3</spring.version>
         <spring-security.version>5.2.3.RELEASE</spring-security.version>
         <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
     </properties>
