@@ -22,7 +22,7 @@ public class VehicleSpeedProcessingService implements SpeedDataIncomingPort {
         
         if (speedRecord.aboveSpeedLimit(speedLimit)) {
             OutgoingSpeedDataDTO outgoingSpeedDataDTO = new OutgoingSpeedDataDTO(
-                registrationPlateNo, speed, speedLimit);
+              registrationPlateNo, speed, speedLimit);
             outgoingPortAdapter.addSpeedingOffenseData(outgoingSpeedDataDTO);
         }
     }
