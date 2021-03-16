@@ -11,7 +11,6 @@ import com.baeldung.overrideproperties.resolver.PropertySourceResolver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @EnableWebMvc
 public class TestResourcePropertySourceResolverIntegrationTest {
