@@ -8,7 +8,7 @@ class DatabaseConfig {
     static Connection connect() throws ClassNotFoundException, SQLException {
         Class.forName("org.h2.Driver");
         String url = "jdbc:h2:mem:testdb";
-        return DriverManager.getConnection(url, "sa", "");
+        return DriverManager.getConnection(url, "user", "password");
     }
 
     static void createTables(Connection connection) throws SQLException {
