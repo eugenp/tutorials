@@ -1,14 +1,14 @@
 package com.baeldung.tableexists;
 
-import org.junit.After;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class TableCheckerTest {
+class TableCheckerUnitTest {
 
     @Test
     void givenCreatedTable_shouldFindTable() throws SQLException, ClassNotFoundException {
