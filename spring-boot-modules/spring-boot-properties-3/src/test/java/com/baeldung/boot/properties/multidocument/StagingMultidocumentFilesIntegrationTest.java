@@ -2,6 +2,7 @@ package com.baeldung.boot.properties.multidocument;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ public class StagingMultidocumentFilesIntegrationTest {
     private String baelRootProperty;
 
     @Test
+    @Disabled("Fix and update https://www.baeldung.com/spring-boot-yaml-vs-properties article")
     public void givenProductionProfileActive_whenApplicationStarts_thenDefaultPropertiesUser() {
         assertThat(baelCustomProperty).isEqualTo("stagingValue");
         assertThat(baelRootProperty).isEqualTo("defaultRootLevelValue");
