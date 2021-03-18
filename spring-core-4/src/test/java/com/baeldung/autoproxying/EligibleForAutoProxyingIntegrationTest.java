@@ -15,14 +15,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {EligibleForAutoProxyRandomIntProcessor.class, User.class, RandomIntGenerator.class})
+@ContextConfiguration(classes = {EligibleForAutoProxyRandomIntProcessor.class, DataCache.class, RandomIntGenerator.class})
 public class EligibleForAutoProxyingIntegrationTest {
     private static MemoryLogAppender memoryAppender;
 
-    @Autowired
     private EligibleForAutoProxyRandomIntProcessor randomIntProcessor;
+
+    @Autowired
+    private DataCache dataCache;
 
     @BeforeClass
     public static void setup() {
@@ -36,10 +39,11 @@ public class EligibleForAutoProxyingIntegrationTest {
     }
 
     @Test
-    public void givenAutowireInBeanPostProcessor_whenSpringContextInitialize_thenNotEligibleLogShouldShow() {
+    public void givenAutowireInBeanPostProcessor_whenSpringContextInitialize_thenNotEligibleLogShouldShowAndGroupFieldPopulated() {
         List<ILoggingEvent> notEligibleEvents = memoryAppender.search("Bean 'randomIntGenerator' of type [com.baeldung.autoproxying.RandomIntGenerator] " +
           "is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)");
 
         assertEquals(0, notEligibleEvents.size());
+        assertNotEquals(0, dataCache.getGroup());
     }
 }

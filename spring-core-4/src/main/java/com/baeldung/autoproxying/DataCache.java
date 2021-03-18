@@ -5,7 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-public class User {
+public class DataCache {
     @RandomInt(min = 2, max = 10)
     private int group;
+    private String name;
 }
