@@ -1,16 +1,18 @@
 package com.baeldung.axon.coreapi.queries;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class OrderedProduct {
 
     private final String orderId;
-    private final String product;
+    private final Map<String, Integer> products;
     private OrderStatus orderStatus;
 
-    public OrderedProduct(String orderId, String product) {
+    public OrderedProduct(String orderId) {
         this.orderId = orderId;
-        this.product = product;
+        this.products = new HashMap<>();
         orderStatus = OrderStatus.PLACED;
     }
 
@@ -18,12 +20,29 @@ public class OrderedProduct {
         return orderId;
     }
 
-    public String getProduct() {
-        return product;
+    public Map<String, Integer> getProducts() {
+        return products;
     }
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
+    }
+
+    public void addProduct(String productId) {
+        products.putIfAbsent(productId, 1);
+    }
+
+    public void incrementProductInstance(String productId) {
+        products.computeIfPresent(productId, (id, count) -> ++count);
+    }
+
+    public void decrementProductInstance(String productId) {
+        products.computeIfPresent(productId, (id, count) -> --count);
+    }
+
+
+    public void removeProduct(String productId) {
+        products.remove(productId);
     }
 
     public void setOrderConfirmed() {
@@ -35,29 +54,28 @@ public class OrderedProduct {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(orderId, product, orderStatus);
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OrderedProduct that = (OrderedProduct) o;
+        return Objects.equals(orderId, that.orderId) && Objects.equals(products, that.products)
+                && orderStatus == that.orderStatus;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final OrderedProduct other = (OrderedProduct) obj;
-        return Objects.equals(this.orderId, other.orderId)
-                && Objects.equals(this.product, other.product)
-                && Objects.equals(this.orderStatus, other.orderStatus);
+    public int hashCode() {
+        return Objects.hash(orderId, products, orderStatus);
     }
 
     @Override
     public String toString() {
         return "OrderedProduct{" +
                 "orderId='" + orderId + '\'' +
-                ", product='" + product + '\'' +
+                ", products=" + products +
                 ", orderStatus=" + orderStatus +
                 '}';
     }
