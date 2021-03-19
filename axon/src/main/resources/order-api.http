@@ -1,8 +1,8 @@
-### Place Order, Add Product, Confirm and Ship Order
+### Create Order, Add Product, Confirm and Ship Order
 
 POST http://localhost:8080/ship-order
 
-### Place Order, Add Product and Ship Order
+### Create Order, Add Product and Ship Order
 
 POST http://localhost:8080/ship-unconfirmed-order
 
@@ -10,7 +10,7 @@ POST http://localhost:8080/ship-unconfirmed-order
 
 GET http://localhost:8080/all-orders
 
-### Place Order with id 666a1661-474d-4046-8b12-8b5896312768
+### Create Order with id 666a1661-474d-4046-8b12-8b5896312768
 
 POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768
 

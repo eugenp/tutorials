@@ -2,10 +2,10 @@ package com.baeldung.axon.commandmodel.order;
 
 import com.baeldung.axon.coreapi.commands.AddProductCommand;
 import com.baeldung.axon.coreapi.commands.ConfirmOrderCommand;
-import com.baeldung.axon.coreapi.commands.PlaceOrderCommand;
+import com.baeldung.axon.coreapi.commands.CreateOrderCommand;
 import com.baeldung.axon.coreapi.commands.ShipOrderCommand;
 import com.baeldung.axon.coreapi.events.OrderConfirmedEvent;
-import com.baeldung.axon.coreapi.events.OrderPlacedEvent;
+import com.baeldung.axon.coreapi.events.OrderCreatedEvent;
 import com.baeldung.axon.coreapi.events.OrderShippedEvent;
 import com.baeldung.axon.coreapi.events.ProductAddedEvent;
 import com.baeldung.axon.coreapi.events.ProductRemovedEvent;
@@ -34,8 +34,8 @@ public class OrderAggregate {
     private Map<String, OrderLine> orderLines;
 
     @CommandHandler
-    public OrderAggregate(PlaceOrderCommand command) {
-        apply(new OrderPlacedEvent(command.getOrderId()));
+    public OrderAggregate(CreateOrderCommand command) {
+        apply(new OrderCreatedEvent(command.getOrderId()));
     }
 
     @CommandHandler
@@ -70,7 +70,7 @@ public class OrderAggregate {
     }
 
     @EventSourcingHandler
-    public void on(OrderPlacedEvent event) {
+    public void on(OrderCreatedEvent event) {
         this.orderId = event.getOrderId();
         this.orderConfirmed = false;
         this.orderLines = new HashMap<>();

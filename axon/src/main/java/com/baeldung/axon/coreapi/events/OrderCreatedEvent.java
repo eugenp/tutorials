@@ -2,11 +2,11 @@ package com.baeldung.axon.coreapi.events;
 
 import java.util.Objects;
 
-public class OrderPlacedEvent {
+public class OrderCreatedEvent {
 
     private final String orderId;
 
-    public OrderPlacedEvent(String orderId) {
+    public OrderCreatedEvent(String orderId) {
         this.orderId = orderId;
     }
 
@@ -22,7 +22,7 @@ public class OrderPlacedEvent {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OrderPlacedEvent that = (OrderPlacedEvent) o;
+        OrderCreatedEvent that = (OrderCreatedEvent) o;
         return Objects.equals(orderId, that.orderId);
     }
 
@@ -33,7 +33,7 @@ public class OrderPlacedEvent {
 
     @Override
     public String toString() {
-        return "OrderPlacedEvent{" +
+        return "OrderCreatedEvent{" +
                 "orderId='" + orderId + '\'' +
                 '}';
     }

@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class OrderedProduct {
+public class Order {
 
     private final String orderId;
     private final Map<String, Integer> products;
     private OrderStatus orderStatus;
 
-    public OrderedProduct(String orderId) {
+    public Order(String orderId) {
         this.orderId = orderId;
         this.products = new HashMap<>();
-        orderStatus = OrderStatus.PLACED;
+        orderStatus = OrderStatus.CREATED;
     }
 
     public String getOrderId() {
@@ -61,8 +61,9 @@ public class OrderedProduct {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OrderedProduct that = (OrderedProduct) o;
-        return Objects.equals(orderId, that.orderId) && Objects.equals(products, that.products)
+        Order that = (Order) o;
+        return Objects.equals(orderId, that.orderId)
+                && Objects.equals(products, that.products)
                 && orderStatus == that.orderStatus;
     }
 
@@ -73,7 +74,7 @@ public class OrderedProduct {
 
     @Override
     public String toString() {
-        return "OrderedProduct{" +
+        return "Order{" +
                 "orderId='" + orderId + '\'' +
                 ", products=" + products +
                 ", orderStatus=" + orderStatus +

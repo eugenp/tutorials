@@ -3,12 +3,12 @@ package com.baeldung.axon.commandmodel;
 import com.baeldung.axon.commandmodel.order.OrderAggregate;
 import com.baeldung.axon.coreapi.commands.AddProductCommand;
 import com.baeldung.axon.coreapi.commands.ConfirmOrderCommand;
+import com.baeldung.axon.coreapi.commands.CreateOrderCommand;
 import com.baeldung.axon.coreapi.commands.DecrementProductCountCommand;
 import com.baeldung.axon.coreapi.commands.IncrementProductCountCommand;
-import com.baeldung.axon.coreapi.commands.PlaceOrderCommand;
 import com.baeldung.axon.coreapi.commands.ShipOrderCommand;
 import com.baeldung.axon.coreapi.events.OrderConfirmedEvent;
-import com.baeldung.axon.coreapi.events.OrderPlacedEvent;
+import com.baeldung.axon.coreapi.events.OrderCreatedEvent;
 import com.baeldung.axon.coreapi.events.OrderShippedEvent;
 import com.baeldung.axon.coreapi.events.ProductAddedEvent;
 import com.baeldung.axon.coreapi.events.ProductCountDecrementedEvent;
@@ -37,37 +37,37 @@ class OrderAggregateUnitTest {
     }
 
     @Test
-    void giveNoPriorActivity_whenPlaceOrderCommand_thenShouldPublishOrderPlacedEvent() {
+    void giveNoPriorActivity_whenCreateOrderCommand_thenShouldPublishOrderCreatedEvent() {
         fixture.givenNoPriorActivity()
-               .when(new PlaceOrderCommand(ORDER_ID))
-               .expectEvents(new OrderPlacedEvent(ORDER_ID));
+               .when(new CreateOrderCommand(ORDER_ID))
+               .expectEvents(new OrderCreatedEvent(ORDER_ID));
     }
 
     @Test
-    void givenOrderPlacedEvent_whenAddProductCommand_thenShouldPublishProductAddedEvent() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID))
+    void givenOrderCreatedEvent_whenAddProductCommand_thenShouldPublishProductAddedEvent() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID))
                .when(new AddProductCommand(ORDER_ID, PRODUCT_ID))
                .expectEvents(new ProductAddedEvent(ORDER_ID, PRODUCT_ID));
     }
 
     @Test
-    void givenOrderPlacedEventAndProductAddedEvent_whenAddProductCommandForSameProductId_thenShouldThrowDuplicateOrderLineException() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID), new ProductAddedEvent(ORDER_ID, PRODUCT_ID))
+    void givenOrderCreatedEventAndProductAddedEvent_whenAddProductCommandForSameProductId_thenShouldThrowDuplicateOrderLineException() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID), new ProductAddedEvent(ORDER_ID, PRODUCT_ID))
                .when(new AddProductCommand(ORDER_ID, PRODUCT_ID))
                .expectException(DuplicateOrderLineException.class)
                .expectExceptionMessage(Matchers.predicate(message -> ((String) message).contains(PRODUCT_ID)));
     }
 
     @Test
-    void givenOrderPlacedEventAndProductAddedEvent_whenIncrementProductCountCommand_thenShouldPublishProductCountIncrementedEvent() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID), new ProductAddedEvent(ORDER_ID, PRODUCT_ID))
+    void givenOrderCreatedEventAndProductAddedEvent_whenIncrementProductCountCommand_thenShouldPublishProductCountIncrementedEvent() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID), new ProductAddedEvent(ORDER_ID, PRODUCT_ID))
                .when(new IncrementProductCountCommand(ORDER_ID, PRODUCT_ID))
                .expectEvents(new ProductCountIncrementedEvent(ORDER_ID, PRODUCT_ID));
     }
 
     @Test
-    void givenOrderPlacedEventProductAddedEventAndProductCountIncrementedEvent_whenDecrementProductCountCommand_thenShouldPublishProductCountDecrementedEvent() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID),
+    void givenOrderCreatedEventProductAddedEventAndProductCountIncrementedEvent_whenDecrementProductCountCommand_thenShouldPublishProductCountDecrementedEvent() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID),
                       new ProductAddedEvent(ORDER_ID, PRODUCT_ID),
                       new ProductCountIncrementedEvent(ORDER_ID, PRODUCT_ID))
                .when(new DecrementProductCountCommand(ORDER_ID, PRODUCT_ID))
@@ -75,51 +75,51 @@ class OrderAggregateUnitTest {
     }
 
     @Test
-    void givenOrderPlacedEventAndProductAddedEvent_whenDecrementProductCountCommand_thenShouldPublishProductRemovedEvent() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID), new ProductAddedEvent(ORDER_ID, PRODUCT_ID))
+    void givenOrderCreatedEventAndProductAddedEvent_whenDecrementProductCountCommand_thenShouldPublishProductRemovedEvent() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID), new ProductAddedEvent(ORDER_ID, PRODUCT_ID))
                .when(new DecrementProductCountCommand(ORDER_ID, PRODUCT_ID))
                .expectEvents(new ProductRemovedEvent(ORDER_ID, PRODUCT_ID));
     }
 
     @Test
-    void givenOrderPlacedEvent_whenConfirmOrderCommand_thenShouldPublishOrderConfirmedEvent() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID))
+    void givenOrderCreatedEvent_whenConfirmOrderCommand_thenShouldPublishOrderConfirmedEvent() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID))
                .when(new ConfirmOrderCommand(ORDER_ID))
                .expectEvents(new OrderConfirmedEvent(ORDER_ID));
     }
 
     @Test
-    void givenOrderPlacedEventAndOrderConfirmedEvent_whenConfirmOrderCommand_thenExpectNoEvents() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID), new OrderConfirmedEvent(ORDER_ID))
+    void givenOrderCreatedEventAndOrderConfirmedEvent_whenConfirmOrderCommand_thenExpectNoEvents() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID), new OrderConfirmedEvent(ORDER_ID))
                .when(new ConfirmOrderCommand(ORDER_ID))
                .expectNoEvents();
     }
 
     @Test
-    void givenOrderPlacedEvent_whenShipOrderCommand_thenShouldThrowUnconfirmedOrderException() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID))
+    void givenOrderCreatedEvent_whenShipOrderCommand_thenShouldThrowUnconfirmedOrderException() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID))
                .when(new ShipOrderCommand(ORDER_ID))
                .expectException(UnconfirmedOrderException.class);
     }
 
     @Test
-    void givenOrderPlacedEventAndOrderConfirmedEvent_whenShipOrderCommand_thenShouldPublishOrderShippedEvent() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID), new OrderConfirmedEvent(ORDER_ID))
+    void givenOrderCreatedEventAndOrderConfirmedEvent_whenShipOrderCommand_thenShouldPublishOrderShippedEvent() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID), new OrderConfirmedEvent(ORDER_ID))
                .when(new ShipOrderCommand(ORDER_ID))
                .expectEvents(new OrderShippedEvent(ORDER_ID));
     }
 
     @Test
-    void givenOrderPlacedEventProductAndOrderConfirmedEvent_whenAddProductCommand_thenShouldThrowOrderAlreadyConfirmedException() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID), new OrderConfirmedEvent(ORDER_ID))
+    void givenOrderCreatedEventProductAndOrderConfirmedEvent_whenAddProductCommand_thenShouldThrowOrderAlreadyConfirmedException() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID), new OrderConfirmedEvent(ORDER_ID))
                .when(new AddProductCommand(ORDER_ID, PRODUCT_ID))
                .expectException(OrderAlreadyConfirmedException.class)
                .expectExceptionMessage(Matchers.predicate(message -> ((String) message).contains(ORDER_ID)));
     }
 
     @Test
-    void givenOrderPlacedEventProductAddedEventAndOrderConfirmedEvent_whenIncrementProductCountCommand_thenShouldThrowOrderAlreadyConfirmedException() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID),
+    void givenOrderCreatedEventProductAddedEventAndOrderConfirmedEvent_whenIncrementProductCountCommand_thenShouldThrowOrderAlreadyConfirmedException() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID),
                       new ProductAddedEvent(ORDER_ID, PRODUCT_ID),
                       new OrderConfirmedEvent(ORDER_ID))
                .when(new IncrementProductCountCommand(ORDER_ID, PRODUCT_ID))
@@ -128,8 +128,8 @@ class OrderAggregateUnitTest {
     }
 
     @Test
-    void givenOrderPlacedEventProductAddedEventAndOrderConfirmedEvent_whenDecrementProductCountCommand_thenShouldThrowOrderAlreadyConfirmedException() {
-        fixture.given(new OrderPlacedEvent(ORDER_ID),
+    void givenOrderCreatedEventProductAddedEventAndOrderConfirmedEvent_whenDecrementProductCountCommand_thenShouldThrowOrderAlreadyConfirmedException() {
+        fixture.given(new OrderCreatedEvent(ORDER_ID),
                       new ProductAddedEvent(ORDER_ID, PRODUCT_ID),
                       new OrderConfirmedEvent(ORDER_ID))
                .when(new DecrementProductCountCommand(ORDER_ID, PRODUCT_ID))
