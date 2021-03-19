@@ -4,12 +4,12 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.util.Objects;
 
-public class PlaceOrderCommand {
+public class CreateOrderCommand {
 
     @TargetAggregateIdentifier
     private final String orderId;
 
-    public PlaceOrderCommand(String orderId) {
+    public CreateOrderCommand(String orderId) {
         this.orderId = orderId;
     }
 
@@ -25,7 +25,7 @@ public class PlaceOrderCommand {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlaceOrderCommand that = (PlaceOrderCommand) o;
+        CreateOrderCommand that = (CreateOrderCommand) o;
         return Objects.equals(orderId, that.orderId);
     }
 
@@ -36,7 +36,7 @@ public class PlaceOrderCommand {
 
     @Override
     public String toString() {
-        return "PlaceOrderCommand{" +
+        return "CreateOrderCommand{" +
                 "orderId='" + orderId + '\'' +
                 '}';
     }

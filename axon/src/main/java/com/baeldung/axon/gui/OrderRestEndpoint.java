@@ -2,12 +2,12 @@ package com.baeldung.axon.gui;
 
 import com.baeldung.axon.coreapi.commands.AddProductCommand;
 import com.baeldung.axon.coreapi.commands.ConfirmOrderCommand;
+import com.baeldung.axon.coreapi.commands.CreateOrderCommand;
 import com.baeldung.axon.coreapi.commands.DecrementProductCountCommand;
 import com.baeldung.axon.coreapi.commands.IncrementProductCountCommand;
-import com.baeldung.axon.coreapi.commands.PlaceOrderCommand;
 import com.baeldung.axon.coreapi.commands.ShipOrderCommand;
 import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
-import com.baeldung.axon.coreapi.queries.OrderedProduct;
+import com.baeldung.axon.coreapi.queries.Order;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
@@ -34,7 +34,7 @@ public class OrderRestEndpoint {
     @PostMapping("/ship-order")
     public void shipOrder() {
         String orderId = UUID.randomUUID().toString();
-        commandGateway.send(new PlaceOrderCommand(orderId));
+        commandGateway.send(new CreateOrderCommand(orderId));
         commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair"));
         commandGateway.send(new ConfirmOrderCommand(orderId));
         commandGateway.send(new ShipOrderCommand(orderId));
@@ -43,20 +43,20 @@ public class OrderRestEndpoint {
     @PostMapping("/ship-unconfirmed-order")
     public void shipUnconfirmedOrder() {
         String orderId = UUID.randomUUID().toString();
-        commandGateway.send(new PlaceOrderCommand(orderId));
+        commandGateway.send(new CreateOrderCommand(orderId));
         commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair"));
         // This throws an exception, as an Order cannot be shipped if it has not been confirmed yet.
         commandGateway.send(new ShipOrderCommand(orderId));
     }
 
     @PostMapping("/order")
-    public CompletableFuture<String> placeOrder() {
-        return placeOrder(UUID.randomUUID().toString());
+    public CompletableFuture<String> createOrder() {
+        return createOrder(UUID.randomUUID().toString());
     }
 
     @PostMapping("/order/{order-id}")
-    public CompletableFuture<String> placeOrder(@PathVariable("order-id") String orderId) {
-        return commandGateway.send(new PlaceOrderCommand(orderId));
+    public CompletableFuture<String> createOrder(@PathVariable("order-id") String orderId) {
+        return commandGateway.send(new CreateOrderCommand(orderId));
     }
 
     @PostMapping("/order/{order-id}/product/{product-id}")
@@ -88,9 +88,7 @@ public class OrderRestEndpoint {
     }
 
     @GetMapping("/all-orders")
-    public CompletableFuture<List<OrderedProduct>> findAllOrderedProducts() {
-        return queryGateway.query(
-                new FindAllOrderedProductsQuery(), ResponseTypes.multipleInstancesOf(OrderedProduct.class)
-        );
+    public CompletableFuture<List<Order>> findAllOrders() {
+        return queryGateway.query(new FindAllOrderedProductsQuery(), ResponseTypes.multipleInstancesOf(Order.class));
     }
 }
