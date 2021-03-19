@@ -77,7 +77,6 @@
         <assertj.version>3.6.1</assertj.version>
         <!-- instrumentation -->
         <javaassist.version>3.27.0-GA</javaassist.version>
-        <esapi.version>2.1.0.1</esapi.version>
         <sun.tools.version>1.8.0</sun.tools.version>
         <jol-core.version>0.10</jol-core.version>
         <asm.version>8.0.1</asm.version>
