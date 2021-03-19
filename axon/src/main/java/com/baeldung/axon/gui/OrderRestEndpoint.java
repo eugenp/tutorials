@@ -32,21 +32,21 @@ public class OrderRestEndpoint {
     }
 
     @PostMapping("/ship-order")
-    public void shipOrder() {
+    public CompletableFuture<Void> shipOrder() {
         String orderId = UUID.randomUUID().toString();
-        commandGateway.send(new CreateOrderCommand(orderId));
-        commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair"));
-        commandGateway.send(new ConfirmOrderCommand(orderId));
-        commandGateway.send(new ShipOrderCommand(orderId));
+        return commandGateway.send(new CreateOrderCommand(orderId))
+                             .thenCompose(result -> commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair")))
+                             .thenCompose(result -> commandGateway.send(new ConfirmOrderCommand(orderId)))
+                             .thenCompose(result -> commandGateway.send(new ShipOrderCommand(orderId)));
     }
 
     @PostMapping("/ship-unconfirmed-order")
-    public void shipUnconfirmedOrder() {
+    public CompletableFuture<Void> shipUnconfirmedOrder() {
         String orderId = UUID.randomUUID().toString();
-        commandGateway.send(new CreateOrderCommand(orderId));
-        commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair"));
-        // This throws an exception, as an Order cannot be shipped if it has not been confirmed yet.
-        commandGateway.send(new ShipOrderCommand(orderId));
+        return commandGateway.send(new CreateOrderCommand(orderId))
+                             .thenCompose(result -> commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair")))
+                             // This throws an exception, as an Order cannot be shipped if it has not been confirmed yet.
+                             .thenCompose(result -> commandGateway.send(new ShipOrderCommand(orderId)));
     }
 
     @PostMapping("/order")
