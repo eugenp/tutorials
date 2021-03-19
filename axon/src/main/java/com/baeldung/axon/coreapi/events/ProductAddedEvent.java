@@ -2,16 +2,22 @@ package com.baeldung.axon.coreapi.events;
 
 import java.util.Objects;
 
-public class OrderPlacedEvent {
+public class ProductAddedEvent {
 
     private final String orderId;
+    private final String productId;
 
-    public OrderPlacedEvent(String orderId) {
+    public ProductAddedEvent(String orderId, String productId) {
         this.orderId = orderId;
+        this.productId = productId;
     }
 
     public String getOrderId() {
         return orderId;
+    }
+
+    public String getProductId() {
+        return productId;
     }
 
     @Override
@@ -22,19 +28,20 @@ public class OrderPlacedEvent {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        OrderPlacedEvent that = (OrderPlacedEvent) o;
-        return Objects.equals(orderId, that.orderId);
+        ProductAddedEvent that = (ProductAddedEvent) o;
+        return Objects.equals(orderId, that.orderId) && Objects.equals(productId, that.productId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId);
+        return Objects.hash(orderId, productId);
     }
 
     @Override
     public String toString() {
-        return "OrderPlacedEvent{" +
+        return "ProductAddedEvent{" +
                 "orderId='" + orderId + '\'' +
+                ", productId='" + productId + '\'' +
                 '}';
     }
 }
