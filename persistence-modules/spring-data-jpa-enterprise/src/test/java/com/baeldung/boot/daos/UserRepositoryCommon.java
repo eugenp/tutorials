@@ -3,6 +3,7 @@ package com.baeldung.boot.daos;
 import org.junit.After;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.*;
 
 public class UserRepositoryCommon {
@@ -518,6 +520,22 @@ public class UserRepositoryCommon {
         assertEquals(1, users.size());
         assertEquals(usr01, users.get(0));
         assertEquals(1, deletedUsersCount);
+    }
+
+    @Test
+    @Transactional
+    public void givenTwoUsers_whenDeleteDeactivatedUsersWithNoModifyingAnnotation_ThenException() {
+        User usr01 = new User("usr01", LocalDate.of(2018, 1, 1), "usr01@baeldung.com", 1);
+        usr01.setLastLoginDate(LocalDate.now());
+        User usr02 = new User("usr02", LocalDate.of(2018, 6, 1), "usr02@baeldung.com", 0);
+        usr02.setLastLoginDate(LocalDate.of(2018, 7, 20));
+        usr02.setActive(false);
+
+        userRepository.save(usr01);
+        userRepository.save(usr02);
+
+        assertThatThrownBy(() -> userRepository.deleteDeactivatedUsersWithNoModifyingAnnotation())
+            .isInstanceOf(InvalidDataAccessApiUsageException.class);
     }
 
     @Test
