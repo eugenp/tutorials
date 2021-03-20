@@ -1,34 +1,35 @@
 package com.baeldung.charencoding.controller;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockFilterChain;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.web.filter.CharacterEncodingFilter;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CharEncodingCheckControllerUnitTest {
 
     @Test
     void whenCharEncodingFilter_thenVerifyEncoding() throws ServletException, IOException {
-        HttpServletRequest request = mock(HttpServletRequest.class);
-        HttpServletResponse response = mock(HttpServletResponse.class);
-        FilterChain chain = mock(FilterChain.class);
-        
+        HttpServletRequest request = new MockHttpServletRequest();
+        HttpServletResponse response = new MockHttpServletResponse();
+        FilterChain chain = new MockFilterChain();
+
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
-        
+
         filter.doFilter(request, response, chain);
-        
-        verify(request).setCharacterEncoding("UTF-8");
-        verify(response).setCharacterEncoding("UTF-8");
+
+        assertEquals("UTF-8", request.getCharacterEncoding());
+        assertEquals("UTF-8", response.getCharacterEncoding());
     }
 
 }

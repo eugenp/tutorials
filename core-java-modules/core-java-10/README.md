@@ -11,3 +11,4 @@ This module contains articles about Java 10 core features
 - [Copying Sets in Java](https://www.baeldung.com/java-copy-sets)
 - [Converting between a List and a Set in Java](https://www.baeldung.com/convert-list-to-set-and-set-to-list)
 - [Java IndexOutOfBoundsException “Source Does Not Fit in Dest”](https://www.baeldung.com/java-indexoutofboundsexception)
+- [Collect a Java Stream to an Immutable Collection](https://www.baeldung.com/java-stream-immutable-collection)
