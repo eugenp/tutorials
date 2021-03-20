@@ -35,6 +35,7 @@
         <module>spring-security-legacy-oidc</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
+        <module>spring-security-saml</module>
         <module>spring-security-web-react</module>   
         <module>spring-security-web-rest</module>
         <module>spring-security-web-rest-basic-auth</module>
