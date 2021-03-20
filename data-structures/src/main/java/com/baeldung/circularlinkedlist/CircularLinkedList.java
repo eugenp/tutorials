@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class CircularLinkedList {
 
-    final Logger LOGGER = LoggerFactory.getLogger(CircularLinkedList.class);
+    final Logger logger = LoggerFactory.getLogger(CircularLinkedList.class);
 
     private Node head = null;
     private Node tail = null;
@@ -42,24 +42,29 @@ public class CircularLinkedList {
     }
 
     public void deleteNode(int valueToDelete) {
-
         Node currentNode = head;
-
-        if (head != null) {
-            if (currentNode.value == valueToDelete) {
-                head = head.nextNode;
-                tail.nextNode = head;
-            } else {
-                do {
-                    Node nextNode = currentNode.nextNode;
-                    if (nextNode.value == valueToDelete) {
-                        currentNode.nextNode = nextNode.nextNode;
-                        break;
-                    }
-                    currentNode = currentNode.nextNode;
-                } while (currentNode != head);
-            }
+        if (head == null) {
+            return;
         }
+        do {
+            Node nextNode = currentNode.nextNode;
+            if (nextNode.value == valueToDelete) {
+                if (tail == head) {
+                    head = null;
+                    tail = null;
+                } else {
+                    currentNode.nextNode = nextNode.nextNode;
+                    if (head == nextNode) {
+                        head = head.nextNode;
+                    }
+                    if (tail == nextNode) {
+                        tail = currentNode;
+                    }
+                }
+                break;
+            }
+            currentNode = nextNode;
+        } while (currentNode != head);
     }
 
     public void traverseList() {
@@ -68,7 +73,7 @@ public class CircularLinkedList {
 
         if (head != null) {
             do {
-                LOGGER.info(currentNode.value + " ");
+                logger.info(currentNode.value + " ");
                 currentNode = currentNode.nextNode;
             } while (currentNode != head);
         }
