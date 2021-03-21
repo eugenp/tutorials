@@ -49,6 +49,8 @@
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <jmh-core.version>1.28</jmh-core.version>
+        <jmh-generator.version>1.28</jmh-generator.version>
     </properties>
 
 </project>
