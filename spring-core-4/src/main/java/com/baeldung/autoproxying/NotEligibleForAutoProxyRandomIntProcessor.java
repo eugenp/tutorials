@@ -1,7 +1,6 @@
 package com.baeldung.autoproxying;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 
@@ -10,7 +9,6 @@ import java.lang.reflect.Field;
 public class NotEligibleForAutoProxyRandomIntProcessor implements BeanPostProcessor {
     private final RandomIntGenerator randomIntGenerator;
 
-    @Autowired
     public NotEligibleForAutoProxyRandomIntProcessor(RandomIntGenerator randomIntGenerator) {
         this.randomIntGenerator = randomIntGenerator;
     }
