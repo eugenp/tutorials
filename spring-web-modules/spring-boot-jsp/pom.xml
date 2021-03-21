@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <!--uncomment below if external deployment-->
+            <!--uncomment below if deploying in web container-->
             <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
@@ -50,12 +50,29 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--uncomment below if external deployment-->
+        <!--uncomment below if deploying in web container-->
         <!--<dependency>-->
         <!--    <groupId>org.springframework.boot</groupId>-->
         <!--    <artifactId>spring-boot-starter-tomcat</artifactId>-->
         <!--    <scope>provided</scope>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -80,7 +97,8 @@
 
     <properties>
         <jstl.version>1.2</jstl.version>
-        <spring-boot.version>2.4.0</spring-boot.version>
+        <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <spring-boot.version>2.4.4</spring-boot.version>
     </properties>
 
 </project>
