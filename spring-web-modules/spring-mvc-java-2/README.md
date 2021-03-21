@@ -6,4 +6,4 @@
 - [A Quick Guide to Spring MVC Matrix Variables](https://www.baeldung.com/spring-mvc-matrix-variables)
 - [Converting a Spring MultipartFile to a File](https://www.baeldung.com/spring-multipartfile-to-file)
 - [Testing a Spring Multipart POST Request](https://www.baeldung.com/spring-multipart-post-request-test)
-- [Spring @Pathvariable Annotation](https://www.baeldung.com/spring-pathvariable)
+- [Spring @PathVariable Annotation](https://www.baeldung.com/spring-pathvariable)
