@@ -20,12 +20,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -39,9 +39,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <jmh.version>1.28</jmh.version>
-    </properties>
       
 </project>

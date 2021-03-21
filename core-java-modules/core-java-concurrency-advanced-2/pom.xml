@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator-annprocess.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
 
         <dependency>
@@ -51,8 +51,6 @@
     </build>
 
     <properties>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
 
