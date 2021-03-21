@@ -10,4 +10,4 @@ This module contains articles about Java 14.
 - [Helpful NullPointerExceptions in Java 14](https://www.baeldung.com/java-14-nullpointerexception)
 - [Foreign Memory Access API in Java 14](https://www.baeldung.com/java-foreign-memory-access)
 - [Java 14 Record Keyword](https://www.baeldung.com/java-record-keyword)
-- [Java 14 – New Features](https://www.baeldung.com/java-14-new-features)
+- [New Features in Java 14](https://www.baeldung.com/java-14-new-features)

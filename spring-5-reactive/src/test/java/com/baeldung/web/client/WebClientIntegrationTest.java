@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -41,6 +39,7 @@ import com.baeldung.web.reactive.client.Foo;
 import com.baeldung.web.reactive.client.WebClientApplication;
 
 import io.netty.channel.ChannelOption;
+import io.netty.handler.timeout.ReadTimeoutException;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
 import reactor.core.publisher.Mono;
@@ -265,17 +264,18 @@ public class WebClientIntegrationTest {
                 .addHandlerLast(new WriteTimeoutHandler(1000, TimeUnit.MILLISECONDS)));
 
         WebClient timeoutClient = WebClient.builder()
+            .baseUrl("http://localhost:" + port)
             .clientConnector(new ReactorClientHttpConnector(httpClient))
             .build();
 
-        BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserterCompleteSuscriber = BodyInserters.fromPublisher(Subscriber::onComplete, String.class);
-        RequestHeadersSpec<?> headersSpecInserterCompleteSuscriber = timeoutClient.post()
+        RequestHeadersSpec<?> neverendingMonoBodyRequest = timeoutClient.post()
             .uri("/resource")
-            .body(inserterCompleteSuscriber);
+            .body(Mono.never(), String.class);
 
-        StepVerifier.create(headersSpecInserterCompleteSuscriber.retrieve()
+        StepVerifier.create(neverendingMonoBodyRequest.retrieve()
             .bodyToMono(String.class))
-            .expectTimeout(Duration.ofMillis(2000))
+            .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ReadTimeoutException.class.isAssignableFrom(ex.getCause()
+                .getClass()))
             .verify();
     }
 
