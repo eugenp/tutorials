@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.baeldung.hexagonalPattern.core.domain.Book;
 
 public interface LibraryRestUI {
-	// This is the in bound Adapter
+    // This is the in bound Adapter
 
-	@PostMapping
-	void insertBook(@RequestBody Book book);
+    @PostMapping
+    public int insertBook(@RequestBody Book book);
 
-	@GetMapping("/{name}")
-	public Book searchBook(@PathVariable String name);
+    @GetMapping
+    public Book searchBook(@PathVariable String name);
 
-	@GetMapping
-	public List<Book> listAllBooks();
+    @GetMapping
+    public List<Book> listAllBooks();
 
 }
