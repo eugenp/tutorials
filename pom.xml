@@ -1351,7 +1351,7 @@
         <gib.buildUpstream>false</gib.buildUpstream>
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
         <gib.failOnError>false</gib.failOnError>        
-	<gib.disable>true</gib.disable>
+        <gib.disable>true</gib.disable>
 
         <junit.version>4.12</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
