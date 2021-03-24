@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.jsmart</groupId>
             <artifactId>zerocode-tdd</artifactId>
-            <version>1.3.27</version>
+            <version>${zerocode-tdd.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <configuration>
                     <skip>${skip.it}</skip>
                 </configuration>
@@ -76,7 +76,7 @@
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
-                        <version>3.0.0-M5</version>
+                        <version>${surefire-junit47.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -92,10 +92,13 @@
     </build>
 
     <properties>
+        <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
+        <surefire-junit47.version>3.0.0-M5</surefire-junit47.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring.boot.version>2.4.2</spring.boot.version>
         <skip.it>true</skip.it>
+        <zerocode-tdd.version>1.3.27</zerocode-tdd.version>
     </properties>
 
 </project>
