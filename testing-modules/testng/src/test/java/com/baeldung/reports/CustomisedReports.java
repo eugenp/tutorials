@@ -64,7 +64,7 @@ public class CustomisedReports implements IReporter {
     private List<String> generateReportRows(String testName, String suiteName, Set<ITestResult> allTestResults) {
         return allTestResults.stream()
           .map(testResultToResultRow(testName, suiteName))
-          .collect(toList());
+          .collect(Collectors.toList());
     }
 
     private Function<ITestResult, String> testResultToResultRow(String testName, String suiteName) {
