@@ -47,6 +47,7 @@ public class Outer {
     // Anonymous Inner class extending a class
     public String greet() {
         Outer anonymous = new Outer() {
+        	@Override
             public String greet() {
                 return "Running Anonymous Class...";
             }
@@ -58,6 +59,7 @@ public class Outer {
     public String greet(String name) {
 
         HelloWorld helloWorld = new HelloWorld() {
+        	@Override
             public String greet(String name) {
                 return "Welcome to " + name;
             }
@@ -68,8 +70,9 @@ public class Outer {
 
     // Anonymous inner class implementing nested interface
     public String greetSomeone(String name) {
-
+    	
         HelloSomeone helloSomeOne = new HelloSomeone() {
+        	@Override
             public String greet(String name) {
                 return "Hello " + name;
             }
@@ -94,7 +97,8 @@ interface HelloWorld {
     public String greet(String name);
 
     // Nested class within an interface
-    class InnerClass {
+    class InnerClass implements HelloWorld {
+    	@Override
         public String greet(String name) {
             return "Inner class within an interface";
         }
