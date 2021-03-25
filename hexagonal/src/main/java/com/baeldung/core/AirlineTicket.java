@@ -9,6 +9,29 @@ public class AirlineTicket {
     private String fromCity;
     private String toCity;
 
+    public AirlineTicket(LocalDateTime date, int cost, String fromCity, String toCity) {
+        this.date = date;
+        this.cost = cost;
+        this.fromCity = fromCity;
+        this.toCity = toCity;
+    }
+
+    public String getFromCity() {
+        return fromCity;
+    }
+
+    public void setFromCity(String fromCity) {
+        this.fromCity = fromCity;
+    }
+
+    public String getToCity() {
+        return toCity;
+    }
+
+    public void setToCity(String toCity) {
+        this.toCity = toCity;
+    }
+
     public LocalDateTime getDate() {
         return date;
     }

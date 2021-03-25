@@ -1,6 +1,7 @@
 package com.baeldung.outbound;
 
-import application.core.AirlineTicket;
+
+import com.baeldung.core.AirlineTicket;
 
 import java.time.LocalDate;
 import java.util.List;
