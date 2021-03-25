@@ -13,7 +13,7 @@ public class BinaryTreeUnitTest {
 
         BinaryTree bt = createBinaryTree();
 
-        assertTrue(!bt.isEmpty());
+        assertFalse(bt.isEmpty());
     }
 
     @Test
@@ -72,6 +72,7 @@ public class BinaryTreeUnitTest {
 
     @Test
     public void it_deletes_the_root() {
+
         int value = 12;
         BinaryTree bt = new BinaryTree();
         bt.add(value);
@@ -92,6 +93,14 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
+    public void givenAnEmptyBinaryTree_WhenTraversingInOrderWithoutRecursion_ThenNoException() {
+
+        BinaryTree empty = new BinaryTree();
+
+        empty.traverseInOrderWithoutRecursion();
+    }
+
+    @Test
     public void givenABinaryTree_WhenTraversingPreOrder_ThenPrintValues() {
 
         BinaryTree bt = createBinaryTree();
@@ -102,6 +111,14 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
+    public void givenAnEmptyBinaryTree_WhenTraversingPreOrderWithoutRecursion_ThenNoException() {
+
+        BinaryTree empty = new BinaryTree();
+
+        empty.traversePreOrderWithoutRecursion();
+    }
+
+    @Test
     public void givenABinaryTree_WhenTraversingPostOrder_ThenPrintValues() {
 
         BinaryTree bt = createBinaryTree();
@@ -109,6 +126,14 @@ public class BinaryTreeUnitTest {
         bt.traversePostOrder(bt.root);
         System.out.println();
         bt.traversePostOrderWithoutRecursion();
+    }
+
+    @Test
+    public void givenAnEmptyBinaryTree_WhenTraversingPostOrderWithoutRecursion_ThenNoException() {
+
+        BinaryTree empty = new BinaryTree();
+
+        empty.traversePostOrderWithoutRecursion();
     }
 
     @Test
