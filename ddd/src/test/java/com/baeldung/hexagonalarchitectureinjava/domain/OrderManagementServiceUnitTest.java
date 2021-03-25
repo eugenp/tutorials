@@ -28,7 +28,7 @@ class OrderManagementServiceUnitTest {
     }
 
     @Test
-    void createOrder() {
+    void whenOrderIsPlaced_thenOrderShouldBePersisted() {
         //Given
         OrderEntity orderEntity = new OrderEntity();
         CreateOrderRequest orderRequest = new CreateOrderRequest();
@@ -43,7 +43,7 @@ class OrderManagementServiceUnitTest {
     }
 
     @Test
-    void confirmOrder() {
+    void whenOrderIsConfimed_thenOrderShouldBeFetchedInitially() {
         //Given
         OrderEntity orderEntity = new OrderEntity();
         when(orderRepository.findOrderById(any())).thenReturn(orderEntity);
@@ -59,7 +59,7 @@ class OrderManagementServiceUnitTest {
     }
 
     @Test
-    void cancelOrder() {
+    void whenOrderIsCancelled_thenOrderShouldBeFetchedInitially() {
 
         //Given
         OrderEntity orderEntity = new OrderEntity();
