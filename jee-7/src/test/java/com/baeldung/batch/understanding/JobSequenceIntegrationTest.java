@@ -16,7 +16,7 @@ import javax.batch.runtime.StepExecution;
 
 import org.junit.jupiter.api.Test;
 
-class JobSequenceUnitTest {
+class JobSequenceIntegrationTest {
     @Test
     public void givenTwoSteps_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
