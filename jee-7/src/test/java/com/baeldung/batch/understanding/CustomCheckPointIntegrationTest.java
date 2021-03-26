@@ -12,7 +12,7 @@ import javax.batch.runtime.StepExecution;
 
 import org.junit.jupiter.api.Test;
 
-class CustomCheckPointUnitTest {
+class CustomCheckPointIntegrationTest {
     @Test
     public void givenChunk_whenCustomCheckPoint_thenCommitCountIsThree() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();

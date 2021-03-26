@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import static org.junit.Assert.*;
 
-public class AvroSerealizerDeSerealizerUnitTest {
+public class AvroSerealizerDeSerealizerIntegrationTest {
 
     AvroSerealizer serealizer;
     AvroDeSerealizer deSerealizer;
