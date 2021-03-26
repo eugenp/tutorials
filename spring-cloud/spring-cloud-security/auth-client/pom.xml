@@ -22,6 +22,10 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -37,6 +41,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <version>${spring-cloud-netflix-zuul.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -76,8 +81,9 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <version>${spring-cloud-starter-oauth2.version}</version>
         </dependency>
     </dependencies>
 
@@ -92,9 +98,12 @@
 
     <properties>
         <js-cookie.version>2.2.0</js-cookie.version>
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <spring-cloud.version>2020.0.2</spring-cloud.version>
         <jquery.version>3.4.1</jquery.version>
         <bootstrap.version>4.3.1</bootstrap.version>
+        <spring-cloud-netflix-zuul.version>2.2.7.RELEASE</spring-cloud-netflix-zuul.version>
+        <artifactId>spring-cloud-starter-oauth2</artifactId>
+        <spring-cloud-starter-oauth2.version>2.2.4.RELEASE</spring-cloud-starter-oauth2.version>
     </properties>
 
 </project>

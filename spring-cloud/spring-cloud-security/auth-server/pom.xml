@@ -38,7 +38,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-starter-oauth2.version>2.1.2.RELEASE</spring-cloud-starter-oauth2.version>
+        <spring-cloud-starter-oauth2.version>2.2.4.RELEASE</spring-cloud-starter-oauth2.version>
     </properties>
 
 </project>
