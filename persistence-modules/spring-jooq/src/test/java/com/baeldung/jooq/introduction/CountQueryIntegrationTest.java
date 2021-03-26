@@ -35,30 +35,28 @@ public class CountQueryIntegrationTest {
     @Test
     public void givenValidData_whenSelectCount_thenSucceed() {
         int count = dsl.selectCount().from(AUTHOR)
-                .where(AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan"))
-                .fetchOne(0, int.class);
+          .where(AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan"))
+          .fetchOne(0, int.class);
         Assert.assertEquals(1, count);
     }
     
     @Test
     public void givenValidData_whenCount_thenSucceed() {
         int count = dsl.select(DSL.count())
-                .from(AUTHOR).fetchOne(0, int.class);
+          .from(AUTHOR).fetchOne(0, int.class);
         Assert.assertEquals(3, count);
     }
     
     @Test
     public void givenValidData_whenFetchCount_thenSucceed() {
-        int count = dsl.fetchCount(
-                DSL.selectFrom(AUTHOR)
-                .where(AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan")));
+        int count = dsl.fetchCount(DSL.selectFrom(AUTHOR)
+          .where(AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan")));
         Assert.assertEquals(1, count);
     }
     
     @Test
     public void givenValidData_whenFetchCountWithoutCondition_thenSucceed() {
-        int count = dsl.fetchCount(
-                DSL.selectFrom(AUTHOR));
+        int count = dsl.fetchCount(DSL.selectFrom(AUTHOR));
         Assert.assertEquals(3, count);
     }
     
@@ -90,7 +88,7 @@ public class CountQueryIntegrationTest {
     @Test
     public void givenValidData_whenCountwithGroupBy_thenSucceed() {
         final Result<Record2<String, Integer>> result = dsl.select(AUTHOR.FIRST_NAME, DSL.count())
-                .from(AUTHOR).groupBy(AUTHOR.FIRST_NAME).fetch();
+          .from(AUTHOR).groupBy(AUTHOR.FIRST_NAME).fetch();
         Assert.assertEquals(3, result.size());
         Assert.assertEquals(result.get(0).get(0), "Bert");
         Assert.assertEquals(result.get(0).get(1), 1);
