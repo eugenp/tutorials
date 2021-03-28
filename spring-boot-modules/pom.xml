@@ -73,6 +73,7 @@
         <module>spring-boot-xml</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
+        <module>spring-boot-react</module>
     </modules>
 
 
