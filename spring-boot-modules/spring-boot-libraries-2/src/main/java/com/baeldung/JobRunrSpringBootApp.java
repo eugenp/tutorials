@@ -1,4 +1,4 @@
-package com.baeldung.jobrunr;
+package com.baeldung;
 
 import com.baeldung.jobrunr.service.SampleJobService;
 import org.jobrunr.jobs.mappers.JobMapper;
