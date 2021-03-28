@@ -29,6 +29,10 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
@@ -52,7 +56,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.probes.ProbesApplication</mainClass>
+                    <!-- <mainClass>com.baeldung.probes.ProbesApplication</mainClass> -->
+                    <mainClass>com.baeldung.endpoints.enabling.EndpointEnablingApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
