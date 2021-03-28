@@ -83,7 +83,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons.io.version}</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -159,7 +159,6 @@
         <mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
         <javax.inject.version>1</javax.inject.version>
         <guava.version>20.0</guava.version>
-        <commons.io.version>2.5</commons.io.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.12.2</assertj.version>

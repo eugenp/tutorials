@@ -168,7 +168,6 @@
             <version>${springfox-swagger.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -271,7 +270,6 @@
 
         <!-- util -->
         <guava.version>26.0-jre</guava.version>
-        <commons-fileupload.version>1.3.2</commons-fileupload.version>
 
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
