@@ -75,8 +75,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <source.version>9</source.version>
         <target.version>9</target.version>
 

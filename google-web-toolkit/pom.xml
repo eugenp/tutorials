@@ -113,9 +113,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <!-- Don't let your Mac use a crazy non-standard encoding -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <gwt.version>2.8.2</gwt.version>
         <gwt.plugin.version>1.0-rc-8</gwt.plugin.version>
         <surefire.plugin.version>2.17</surefire.plugin.version>

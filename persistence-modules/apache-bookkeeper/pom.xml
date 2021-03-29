@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
-            <version>1.14.3</version>
+            <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -39,6 +39,7 @@
 
     <properties>
         <org.apache.bookkeeper.version>4.10.0</org.apache.bookkeeper.version>
+        <testcontainers.version>1.14.3</testcontainers.version>
     </properties>
 
 
