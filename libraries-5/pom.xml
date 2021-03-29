@@ -55,12 +55,12 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>${bytebuddy.version}</version>
+            <version>${byte-buddy.version}</version>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy-agent</artifactId>
-            <version>${bytebuddy.version}</version>
+            <version>${byte-buddy.version}</version>
         </dependency>
 
         <!--Java Docker API Client -->
@@ -127,7 +127,6 @@
         <scala.version>2.11</scala.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
         <streamex.version>0.6.5</streamex.version>
-        <bytebuddy.version>1.7.1</bytebuddy.version>
         <docker.version>3.0.14</docker.version>
         <caffeine.version>2.5.5</caffeine.version>
         <findbugs.version>3.0.2</findbugs.version>
