@@ -35,18 +35,8 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <junit-jupiter.version>5.4.2</junit-jupiter.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <junit.vintage.version>5.4.2</junit.vintage.version>
     </properties>
 

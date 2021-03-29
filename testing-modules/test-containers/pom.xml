@@ -81,17 +81,6 @@
         </resources>
         <plugins>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit-platform-surefire-provider.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
@@ -117,7 +106,7 @@
         <postgresql.version>42.2.6</postgresql.version>
         <selenium-remote-driver.version>3.141.59</selenium-remote-driver.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
+        <junit-platform.version>1.3.2</junit-platform.version>
     </properties>
 
 </project>

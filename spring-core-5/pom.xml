@@ -27,20 +27,9 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <spring.version>5.3.3</spring.version>
         <spring-boot-starter.version>2.4.2</spring-boot-starter.version>
-        <maven.surefire.version>2.22.1</maven.surefire.version>
     </properties>
 
 </project>
