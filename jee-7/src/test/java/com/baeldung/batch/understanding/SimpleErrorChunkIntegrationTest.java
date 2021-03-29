@@ -13,7 +13,7 @@ import javax.batch.runtime.StepExecution;
 
 import org.junit.jupiter.api.Test;
 
-class SimpleErrorChunkUnitTest {
+class SimpleErrorChunkIntegrationTest {
 
     @Test
     public void givenChunkError_thenBatch_CompletesWithFailed() throws Exception {
