@@ -16,7 +16,7 @@ import javax.batch.runtime.StepExecution;
 
 import org.junit.jupiter.api.Test;
 
-class SimpleChunkUnitTest {
+class SimpleChunkIntegrationTest {
     @Test
     public void givenChunk_thenBatch_CompletesWithSucess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();

@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SpringBootJdbiApplication.class, JdbiConfiguration.class})
 @Slf4j
-public class SpringBootJdbiApplicationUnitTest {
+public class SpringBootJdbiApplicationIntegrationTest {
     
     
     @Autowired
