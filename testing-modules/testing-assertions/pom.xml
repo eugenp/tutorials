@@ -50,16 +50,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <assertj-core.version>3.16.1</assertj-core.version>
         <commons-collections4.version>4.4</commons-collections4.version>
