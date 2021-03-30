@@ -382,7 +382,6 @@
         <!-- maven plugins -->
         <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
