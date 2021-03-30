@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = HexArchApplicationDemo.class)
 @WebAppConfiguration
-class EmployeeControllerTest {
+class EmployeeControllerIntegrationTest {
 
     @MockBean
     EmployeeRepository repository;
