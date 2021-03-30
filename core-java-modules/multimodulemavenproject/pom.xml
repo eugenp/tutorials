@@ -59,7 +59,6 @@
         <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <source.version>1.9</source.version>
         <target.version>1.9</target.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <assertj-core.version>3.12.2</assertj-core.version>
     </properties>
 

@@ -65,8 +65,6 @@
     </build>
 
     <properties>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator.version>1.19</jmh-generator.version>
         <assertj.version>3.12.2</assertj.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <guava.version>29.0-jre</guava.version>

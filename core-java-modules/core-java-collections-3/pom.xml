@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${openjdk.jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -40,7 +40,6 @@
     </dependencies>
 
     <properties>
-        <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <assertj.version>3.11.1</assertj.version>
         <jol-core.version>0.10</jol-core.version>
     </properties>

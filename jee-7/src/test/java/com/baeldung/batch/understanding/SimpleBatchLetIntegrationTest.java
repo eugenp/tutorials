@@ -11,7 +11,7 @@ import javax.batch.runtime.JobExecution;
 
 import org.junit.jupiter.api.Test;
 
-class SimpleBatchLetUnitTest {
+class SimpleBatchLetIntegrationTest {
     @Test
     public void givenBatchLet_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
