@@ -147,10 +147,6 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${source.plugin.version}</version>
                 </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.plugin.version}</version>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -181,7 +177,6 @@
         <resources.plugin.version>3.1.0</resources.plugin.version>
         <site.plugin.version>3.9.1</site.plugin.version>
         <source.plugin.version>3.2.1</source.plugin.version>
-        <surefire.plugin.version>2.17</surefire.plugin.version>
     </properties>
 
 </project>
