@@ -19,12 +19,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${openjdk.jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${openjdk.jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jol</groupId>
@@ -76,7 +76,6 @@
     </build>
 
     <properties>
-        <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <jol-core.version>0.10</jol-core.version>
         <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>

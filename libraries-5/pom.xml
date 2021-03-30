@@ -115,7 +115,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -134,7 +134,6 @@
         <fugue.version>4.5.1</fugue.version>
         <jnats.version>1.0</jnats.version>
         <jctools.version>2.1.2</jctools.version>
-        <jmh.version>1.19</jmh.version>
     </properties>
 
 </project>

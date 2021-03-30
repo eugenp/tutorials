@@ -28,11 +28,15 @@ public class SaxParserMain {
         private static final String CONTENT = "content";
 
         private Baeldung website;
-        private String elementValue;
+        private StringBuilder elementValue;
 
         @Override
         public void characters(char[] ch, int start, int length) throws SAXException {
-            elementValue = new String(ch, start, length);
+            if (elementValue == null) {
+                elementValue = new StringBuilder();
+            } else {
+                elementValue.append(ch, start, length);
+            }
         }
 
         @Override
@@ -48,6 +52,13 @@ public class SaxParserMain {
                     break;
                 case ARTICLE:
                     website.getArticleList().add(new BaeldungArticle());
+                    break;
+                case TITLE:
+                    elementValue = new StringBuilder();
+                    break;
+                case CONTENT:
+                    elementValue = new StringBuilder();
+                    break;
             }
         }
 
@@ -55,10 +66,10 @@ public class SaxParserMain {
         public void endElement(String uri, String localName, String qName) throws SAXException {
             switch (qName) {
                 case TITLE:
-                    latestArticle().setTitle(elementValue);
+                    latestArticle().setTitle(elementValue.toString());
                     break;
                 case CONTENT:
-                    latestArticle().setContent(elementValue);
+                    latestArticle().setContent(elementValue.toString());
                     break;
             }
         }

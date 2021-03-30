@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CustomerControllerUnitTest {
+public class CustomerControllerIntegrationTest {
 
     private static MediaType MEDIA_TYPE_JSON;
 
