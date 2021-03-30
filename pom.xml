@@ -531,7 +531,7 @@
                 <module>protobuffer</module>
 
                 <module>quarkus</module>
-                <!-- <module>quarkus-extension</module> --> <!-- Module broken, fixing in http://team.baeldung.com/browse/JAVA-4770 -->
+                <module>quarkus-extension</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -992,7 +992,7 @@
                 <module>protobuffer</module>
 
                 <module>quarkus</module>
-                <!-- <module>quarkus-extension</module> --> <!-- Module broken, fixing in http://team.baeldung.com/browse/JAVA-4770 -->
+                <module>quarkus-extension</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
