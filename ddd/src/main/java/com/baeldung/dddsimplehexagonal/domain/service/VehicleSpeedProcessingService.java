@@ -10,7 +10,6 @@ public class VehicleSpeedProcessingService implements SpeedDataIncomingPort {
 
     @Override
     public void addSpeedData(VehicleSpeedData vehicleSpeedData) throws Exception {
-
         if (vehicleSpeedData.aboveSpeedLimit()) {
             outgoingPortAdapter.addSpeedingOffenseData(vehicleSpeedData);
         }
