@@ -19,22 +19,22 @@ class UsingOptionalUnitTest {
     }
 
     @Test
-    public void whenArgIsFalse_thenReturnEmptyResponse() {
+    void whenArgIsFalse_thenReturnEmptyResponse() {
         Optional<Object> result = dataObject.process(false);
 
         assertFalse(result.isPresent());
     }
 
     @Test
-    public void whenArgIsTrue_thenReturnValidResponse() {
+    void whenArgIsTrue_thenReturnValidResponse() {
         Optional<Object> result = dataObject.process(true);
 
         assertTrue(result.isPresent());
     }
 
     @Test
-    public void whenArgIsFalse_thenChainResponseAndThrowException() {
-        assertThrows(Exception.class, () -> dataObject.process(false).orElseThrow(() -> new Exception()));
+    void whenArgIsFalse_thenChainResponseAndThrowException() {
+        assertThrows(Exception.class, () -> dataObject.process(false).orElseThrow(Exception::new));
     }
 
     @Test()
@@ -51,7 +51,4 @@ class UsingOptionalUnitTest {
     void whenOptionalListFirst_returnsEmptyOptional() {
         assertFalse(dataObject.optionalListFirst().isPresent());
     }
-
-
-
 }
