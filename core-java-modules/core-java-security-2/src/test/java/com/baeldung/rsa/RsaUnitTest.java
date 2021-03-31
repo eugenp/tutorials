@@ -13,7 +13,7 @@ import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-public class AvailableCiphersUnitTest {
+public class RsaUnitTest {
 
     @Test
     public void givenRsaKeyPair_whenEncryptAndDecryptString_thenCompareResults() throws Exception {
