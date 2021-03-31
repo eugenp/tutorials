@@ -75,12 +75,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
         <!-- utils -->
         <dependency>
@@ -322,8 +322,8 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
-                            <source>${java-version}</source>
-                            <target>${java-version}</target>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -374,17 +374,14 @@
         <assertj-core.version>3.12.2</assertj-core.version>
         <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
         <junit-jupiter.version>5.5.0</junit-jupiter.version>
-        <jmh.version>1.21</jmh.version>
         <freemarker.version>2.3.29</freemarker.version>
         <mustache.version>0.9.6</mustache.version>
         <!-- util -->
         <commons-lang.version>2.4</commons-lang.version>
-        <java-version>1.8</java-version>
 
         <!-- maven plugins -->
         <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>

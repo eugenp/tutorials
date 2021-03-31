@@ -8,6 +8,7 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -18,12 +19,12 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Thread)
 public class PrimitivesListPerformance {
 
-    private List<Integer> arrayList = new ArrayList<>();
-    private TIntArrayList tList = new TIntArrayList();
-    private cern.colt.list.IntArrayList coltList = new cern.colt.list.IntArrayList();
-    private IntArrayList fastUtilList = new IntArrayList();
+    private List<Integer> arrayList = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+    private TIntArrayList tList = new TIntArrayList(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
+    private cern.colt.list.IntArrayList coltList = new cern.colt.list.IntArrayList(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
+    private IntArrayList fastUtilList = new IntArrayList(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
 
-    private int getValue = 10;
+    private int getValue = 4;
 
     @Benchmark
     public boolean addArrayList() {
