@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.List;
 import java.util.Random;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,6 +23,7 @@ public class TransientFieldUnitTest {
 
     private final User user = new User("user" + randInt + "@bar.com", "hunter2", "MacOSX");
 
+    @Ignore
     @Test
     public void givenFieldWithTransientAnnotation_whenSavingViaJPA_thenFieldIgnored() {
         userDao.saveUser(user);
