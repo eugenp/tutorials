@@ -38,6 +38,7 @@
         <module>java-jdbi</module>
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module> <!-- long running -->
+        <module>java-jpa-3</module>
         <module>java-mongodb</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
