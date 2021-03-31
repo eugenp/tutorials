@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import javax.crypto.Cipher;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,7 +50,7 @@ public class RsaUnitTest {
 
         String originalContent = "some secret message";
         Path tempFile = Files.createTempFile("temp", "txt");
-        Files.writeString(tempFile, originalContent);
+        writeString(tempFile, originalContent);
 
         byte[] fileBytes = Files.readAllBytes(tempFile);
         Cipher encryptCipher = Cipher.getInstance("RSA");
@@ -65,8 +68,25 @@ public class RsaUnitTest {
             stream.write(decryptedFileBytes);
         }
 
-        String fileContent = Files.readString(tempFile);
+        String fileContent = readString(tempFile);
 
         Assertions.assertEquals(originalContent, fileContent);
+    }
+
+    private void writeString(Path path, String content) throws Exception {
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+            writer.write(content);
+        }
+    }
+
+    private String readString(Path path) throws Exception {
+        StringBuilder resultStringBuilder = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                resultStringBuilder.append(line);
+            }
+        }
+        return resultStringBuilder.toString();
     }
 }
