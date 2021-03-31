@@ -1,6 +1,5 @@
 package com.baeldung.dddsimplehexagonal.domain.service;
 
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -9,40 +8,38 @@ import static org.mockito.Mockito.verify;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.dddsimplehexagonal.domain.port.incoming.IncomingSpeedDataDTO;
-import com.baeldung.dddsimplehexagonal.domain.port.outgoing.OutgoingSpeedDataDTO;
+import com.baeldung.dddsimplehexagonal.domain.VehicleSpeedData;
 import com.baeldung.dddsimplehexagonal.domain.port.outgoing.SpeedingOffenceOutgoingPort;
 
 class VehicleSpeedProcessingServiceUnitTest {
     
     private VehicleSpeedProcessingService testedService;
-    private SpeedingOffenceOutgoingPort mockPort;
+    private SpeedingOffenceOutgoingPort mockOutgoingPort;
 
     @BeforeEach
     void setUp() throws Exception {
-        mockPort = mock(SpeedingOffenceOutgoingPort.class);
+        mockOutgoingPort = mock(SpeedingOffenceOutgoingPort.class);
         testedService = new VehicleSpeedProcessingService();
-        testedService.setOutgoingPortAdapter(mockPort);
+        testedService.setOutgoingPortAdapter(mockOutgoingPort);
     }
 
     @Test
-    void givenSpeed62AboveLimit50_whenAddSpeedDataWithService_thenSpeedingOffenseIsSent() {
+    void givenSpeed62AboveLimit50_whenAddSpeedDataWithService_thenSpeedingOffenseIsSent() throws Exception {
         
-        IncomingSpeedDataDTO incomingDTO = new IncomingSpeedDataDTO("V96JCL", 62.0F, 50.0F);
+        VehicleSpeedData speedData = new VehicleSpeedData("V96JCL", 62.0F, 50.0F);
         
-        testedService.addSpeedData(incomingDTO);
+        testedService.addSpeedData(speedData);
         
-        OutgoingSpeedDataDTO outgoingDTO = new OutgoingSpeedDataDTO("V96JCL", 62.0F, 50.0F);
-        verify(mockPort).addSpeedingOffenseData(outgoingDTO);
+        verify(mockOutgoingPort).addSpeedingOffenseData(speedData);
     }
 
     @Test
-    void givenSpeed62BelowLimit70_whenAddSpeedDataWithService_thenSpeedingOffenseNotSent() {
+    void givenSpeed62BelowLimit70_whenAddSpeedDataWithService_thenSpeedingOffenseNotSent() throws Exception {
         
-        IncomingSpeedDataDTO incomingDTO = new IncomingSpeedDataDTO("V96JCL", 62.0F, 70.0F);
+        VehicleSpeedData speedData = new VehicleSpeedData("V96JCL", 62.0F, 70.0F);
         
-        testedService.addSpeedData(incomingDTO);
+        testedService.addSpeedData(speedData);
         
-        verify(mockPort, never()).addSpeedingOffenseData(any(OutgoingSpeedDataDTO.class));
+        verify(mockOutgoingPort, never()).addSpeedingOffenseData(any(VehicleSpeedData.class));
     }
 }

@@ -8,8 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import com.baeldung.dddsimplehexagonal.adapter.driver.exception.DriverAdapterRuntimeException;
-import com.baeldung.dddsimplehexagonal.domain.port.incoming.IncomingSpeedDataDTO;
+import com.baeldung.dddsimplehexagonal.domain.VehicleSpeedData;
 import com.baeldung.dddsimplehexagonal.domain.port.incoming.SpeedDataIncomingPort;
 
 class OnlineSpeedCameraRecordUploadAdapterUnitTest {
@@ -26,23 +25,23 @@ class OnlineSpeedCameraRecordUploadAdapterUnitTest {
     }
 
     @Test
-    void givenValidSpeedCameraRecordJsonStr_whenUploadViaAdapter_thenAddSpeedDataViaPortSuccess() {
+    void givenValidSpeedCameraRecordJsonStr_whenUploadViaAdapter_thenAddSpeedDataViaPortSuccess() throws Exception {
         
         String speedDataJsonStr = "{\"registrationPlateNo\" : \"JK7N87\", \"speed\" : 55.0, \"speedLimit\" : 80.0}";
         
         testedAdapter.uploadSpeedCameraJSONObjectStr(speedDataJsonStr);
         
-        IncomingSpeedDataDTO dataDTO = new IncomingSpeedDataDTO("JK7N87", 55.0F, 80.0F);
-        verify(port).addSpeedData(dataDTO);
+        VehicleSpeedData data = new VehicleSpeedData("JK7N87", 55.0F, 80.0F);
+        verify(port).addSpeedData(data);
     }
     
     @Test
-    void givenInvalidSpeedCameraRecordJsonStr_whenUploadViaAdapter_thenRuntimeExceptionThrown() {
+    void givenInvalidSpeedCameraRecordJsonStr_whenUploadViaAdapter_thenExceptionThrown() {
         
         String invalidSpeedDataJsonStr = "{onPlateNo\" : \"JK7N87\", \"speed\" : 55.0 \"speedLimit\" : 80.0}";
         
         Executable executable = () -> testedAdapter.uploadSpeedCameraJSONObjectStr(invalidSpeedDataJsonStr);
         
-        assertThrows(DriverAdapterRuntimeException.class, executable);
+        assertThrows(Exception.class, executable);
     }
 }
