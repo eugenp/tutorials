@@ -412,6 +412,7 @@
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
+                <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
@@ -614,11 +615,12 @@
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
 
-		<module>spring-batch</module>
-		<module>spring-batch-2</module>	
+                <module>spring-batch</module>
+                <module>spring-batch-2</module>	
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
 
@@ -875,6 +877,7 @@
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
+                <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
@@ -930,6 +933,7 @@
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json</module>
+                <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
@@ -1068,9 +1072,11 @@
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
 
@@ -1089,6 +1095,7 @@
                 <module>spring-data-rest</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1273,7 +1280,7 @@
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
-                 <module>core-java-modules/core-java-11</module>
+                 <module>core-java-modules/core-java-11-2</module>
                  <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1318,6 +1325,7 @@
                 <module>core-java-modules/core-java-9-streams</module>
                 <module>core-java-modules/core-java-10</module>
                 <module>core-java-modules/core-java-11</module>
+                <module>core-java-modules/core-java-11-2</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
