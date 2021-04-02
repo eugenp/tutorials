@@ -6,7 +6,7 @@
     <artifactId>bookstore-monolith</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Bookstore</name>
+    <name>bookstore-monolith</name>
 
     <parent>
         <artifactId>jhipster-5</artifactId>

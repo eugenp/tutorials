@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.baeldung</groupId>
-	<artifactId>discord4j-bot</artifactId>
+	<artifactId>discord4j</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discord4j-bot</name>
+	<name>discord4j</name>
 	<description>Demo Discord bot using Discord4J + Spring Boot</description>
 
 	<properties>
