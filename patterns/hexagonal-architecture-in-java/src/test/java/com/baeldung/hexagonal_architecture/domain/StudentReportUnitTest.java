@@ -12,7 +12,7 @@ import com.baeldung.hexagonal_architecture.utils.Subject;
 class StudentReportUnitTest {
 
     @Test
-    void testStudentReportPublisher() {
+    void givenStudentDetails_whenResultsAnnounced_thenPublishReport() {
 
         Student student = new Student(123456L, "Eugen", "eugen@baeldung.com");
 
