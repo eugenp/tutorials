@@ -1,19 +1,24 @@
 package com.baeldung.ignorable.fields;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
-import java.io.*;
-import java.util.List;
-import java.util.Random;
-
-import org.junit.Ignore;
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TransientFieldUnitTest {
 
@@ -23,7 +28,6 @@ public class TransientFieldUnitTest {
 
     private final User user = new User("user" + randInt + "@bar.com", "hunter2", "MacOSX");
 
-    @Ignore
     @Test
     public void givenFieldWithTransientAnnotation_whenSavingViaJPA_thenFieldIgnored() {
         userDao.saveUser(user);
@@ -36,18 +40,20 @@ public class TransientFieldUnitTest {
     @Test
     public void givenFieldWithTransientAnnotation_whenSerializingObject_thenFieldSerialized() throws IOException, ClassNotFoundException {
 
-        FileOutputStream fout = new FileOutputStream("test.obj");
-        ObjectOutputStream out = new ObjectOutputStream(fout);
-        out.writeObject(user);
-        out.flush();
-        out.close();
+        try (FileOutputStream fout = new FileOutputStream("test.obj")) {
+            ObjectOutputStream out = new ObjectOutputStream(fout);
+            out.writeObject(user);
+            out.flush();
+        }
 
-        FileInputStream fin = new FileInputStream("test.obj");
-        ObjectInputStream in = new ObjectInputStream(fin);
-        User savedUser = (User) in.readObject();
-        in.close();
+        try (FileInputStream fin = new FileInputStream("test.obj")) {
+            ObjectInputStream in = new ObjectInputStream(fin);
+            User savedUser = (User) in.readObject();
 
-        assertEquals(user.getCurrentDevice(), savedUser.getCurrentDevice());
+            assertEquals(user.getCurrentDevice(), savedUser.getCurrentDevice());
+        }
+
+        Files.deleteIfExists(Paths.get("test.obj"));
     }
 
     @Test
