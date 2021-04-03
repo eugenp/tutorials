@@ -35,20 +35,20 @@ class ClientEdit extends Component {
         this.setState({item});
     }
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        const {item} = this.state;
+async handleSubmit(event) {
+    event.preventDefault();
+    const {item} = this.state;
 
-        await fetch('/clients' + (item.id ? '/' + item.id : ''), {
-            method: (item.id) ? 'PUT' : 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(item),
-        });
-        this.props.history.push('/clients');
-    }
+    await fetch('/clients' + (item.id ? '/' + item.id : ''), {
+        method: (item.id) ? 'PUT' : 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(item),
+    });
+    this.props.history.push('/clients');
+}
 
     render() {
         const {item} = this.state;

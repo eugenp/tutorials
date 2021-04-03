@@ -7,16 +7,14 @@ class ClientList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {clients: [], isLoading: true};
+        this.state = {clients: []};
         this.remove = this.remove.bind(this);
     }
 
     componentDidMount() {
-        this.setState({isLoading: true});
-
         fetch('/clients')
             .then(response => response.json())
-            .then(data => this.setState({clients: data, isLoading: false}));
+            .then(data => this.setState({clients: data}));
     }
 
     async remove(id) {
@@ -33,11 +31,7 @@ class ClientList extends Component {
     }
 
     render() {
-        const {clients, isLoading} = this.state;
-
-        if (isLoading) {
-            return <p>Loading...</p>;
-        }
+        const {clients} = this.state;
 
         const clientList = clients.map(client => {
             return <tr key={client.id}>
