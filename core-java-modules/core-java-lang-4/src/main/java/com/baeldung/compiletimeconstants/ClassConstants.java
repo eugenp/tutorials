@@ -16,6 +16,5 @@ public class ClassConstants {
     public static final List<String> contributorGroups = Arrays.asList("contributor", "author");
 
     public static final int MAXIMUM_NUMBER_OF_GUESTS = MAXIMUM_NUMBER_OF_USERS * 10;
-    public static boolean DEFAULT_GROUPS_DEFINED = DEFAULT_GROUPS != null;
 
 }
