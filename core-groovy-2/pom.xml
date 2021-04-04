@@ -115,7 +115,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                     <includes>
@@ -186,7 +185,6 @@
         <logback.version>1.2.3</logback.version>
         <groovy.version>2.5.7</groovy.version>
         <assembly.plugin.version>3.1.0</assembly.plugin.version>
-        <surefire.plugin.version>2.20.1</surefire.plugin.version>
         <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <groovy.compiler.version>3.3.0-01</groovy.compiler.version>
     </properties>

@@ -44,12 +44,13 @@
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-timelimiter</artifactId>
-            <version>1.6.1</version>
+            <version>${resilience4j.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <swagger2.version>2.9.2</swagger2.version>
+        <resilience4j.version>1.6.1</resilience4j.version>
     </properties>
 
 </project>

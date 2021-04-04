@@ -18,12 +18,12 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -49,17 +49,6 @@
         </resources>
         <plugins>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
@@ -79,7 +68,7 @@
 
     <properties>
         <junit.jupiter.version>5.2.0</junit.jupiter.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
+        <junit-platform.version>1.2.0</junit-platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>

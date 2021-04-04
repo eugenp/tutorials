@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
 		<dependency>
             <groupId>org.assertj</groupId>
@@ -39,7 +39,6 @@
     </dependencies>
 
     <properties>
-        <jmh.version>1.21</jmh.version>
         <guava.version>28.2-jre</guava.version>
          <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
