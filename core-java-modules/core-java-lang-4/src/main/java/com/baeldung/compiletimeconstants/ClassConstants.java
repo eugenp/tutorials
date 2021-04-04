@@ -10,7 +10,6 @@ public class ClassConstants {
 
     public static final int MAXIMUM_NUMBER_OF_USERS = 10;
     public static final String DEFAULT_USERNAME = "unknown";
-    public static final List<String> DEFAULT_GROUPS = List.of("all", "reader");
 
     public static final Logger log = LoggerFactory.getLogger(ClassConstants.class);
     public static final List<String> contributorGroups = Arrays.asList("contributor", "author");
