@@ -22,12 +22,6 @@
         <module>spring-security-auth0</module>
         <module>spring-security-config</module>
         <module>spring-security-core</module>
-        <module>spring-security-web-mvc</module>
-        <module>spring-security-web-boot-1</module>
-        <module>spring-security-web-boot-2</module>
-        <module>spring-security-web-boot-3</module>
-        <module>spring-security-web-mvc-custom</module>
-        <module>spring-security-web-digest-auth</module>
         <module>spring-security-ldap</module>
         <module>spring-security-legacy-oidc</module>
         <module>spring-security-oauth2-sso</module>
@@ -37,6 +31,7 @@
         <module>spring-security-web-angular/server</module>
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
+        <module>spring-security-web-boot-3</module>
         <module>spring-security-web-digest-auth</module>
         <module>spring-security-web-login</module>
         <module>spring-security-web-mvc-custom</module>
