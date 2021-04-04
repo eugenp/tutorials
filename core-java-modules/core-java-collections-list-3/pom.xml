@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-core.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
     </dependencies>
 

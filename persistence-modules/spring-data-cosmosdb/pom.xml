@@ -14,9 +14,7 @@
     </parent>
     
     <properties>
-        <java.version>1.8</java.version>
         <cosmodb.version>2.3.0</cosmodb.version>
-
     </properties>
     
     <dependencies>

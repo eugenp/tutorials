@@ -134,7 +134,6 @@
     </repositories>
 
     <properties>
-        <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.0-M5</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <guava.version>20.0</guava.version>
