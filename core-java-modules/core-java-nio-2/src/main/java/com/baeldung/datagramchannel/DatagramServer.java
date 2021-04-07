@@ -24,8 +24,6 @@ public class DatagramServer {
         
         System.out.println("Client at #" + remoteAdd + "  sent: " + message);
         
-        server.close();
-        
         return message;
     }
     

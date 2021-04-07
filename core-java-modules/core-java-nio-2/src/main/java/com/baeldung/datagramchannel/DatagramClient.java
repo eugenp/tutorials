@@ -17,7 +17,6 @@ public class DatagramClient {
     public static void sendMessage(DatagramChannel client, String msg, SocketAddress serverAddress) throws IOException {
         ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
         client.send(buffer, serverAddress);
-        client.close();
     }
 
     public static void main(String[] args) throws IOException {
