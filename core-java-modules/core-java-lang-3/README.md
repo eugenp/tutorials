@@ -12,4 +12,5 @@ This module contains articles about core features in the Java language
 - [How to Access an Iteration Counter in a For Each Loop](https://www.baeldung.com/java-foreach-counter)
 - [Comparing Doubles in Java](https://www.baeldung.com/java-comparing-doubles)
 - [Guide to Implementing the compareTo Method](https://www.baeldung.com/java-compareto)
+- [Why is package-info.java useful?]()
 - [[<-- Prev]](/core-java-modules/core-java-lang-2)
