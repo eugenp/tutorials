@@ -12,13 +12,18 @@ public class DatagramChannelUnitTest {
     @Test
     public void whenClientSendsAndServerReceivesUDPPacket_thenCorrect() throws IOException {
         DatagramChannel server = DatagramServer.startServer();
-        
         DatagramChannel client = DatagramClient.startClient();
-        String msg = "Hello, this is a Baeldung's DatagramChannel based UDP client!";
+        
+        String msg1 = "Hello, this is a Baeldung's DatagramChannel based UDP client!";
+        String msg2 = "Hi again!, Are you there!";
+        
         InetSocketAddress serverAddress = new InetSocketAddress("localhost", 7001);
-        DatagramClient.sendMessage(client, msg, serverAddress);
+        
+        DatagramClient.sendMessage(client, msg1, serverAddress);
+        DatagramClient.sendMessage(client, msg2, serverAddress);
         
         assertEquals("Hello, this is a Baeldung's DatagramChannel based UDP client!", DatagramServer.receiveMessage(server));
+        assertEquals("Hi again!, Are you there!", DatagramServer.receiveMessage(server));
     }
 
 }
