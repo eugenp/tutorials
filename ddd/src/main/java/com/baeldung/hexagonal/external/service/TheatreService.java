@@ -6,9 +6,9 @@ import java.util.Set;
 
 public interface TheatreService {
 
-    ResponseEntity<Reservation> postReservation(String theatreId, String movieShowId, Set<String> seats);
+    ResponseEntity<Reservation> postReservation(String movieShowId, Set<String> seats);
 
-    ResponseEntity<?> deleteReservation(String reservationId);
+    ResponseEntity<Void> deleteReservation(String reservationId);
 
     class Reservation {
         private final String id;

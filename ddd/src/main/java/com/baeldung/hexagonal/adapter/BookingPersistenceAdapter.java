@@ -15,4 +15,8 @@ public class BookingPersistenceAdapter implements BookingPersistencePort {
     public boolean persist(Booking booking) {
         return bookingRepository.save(booking);
     }
+
+    public boolean updateStatus(String bookingId, String status) {
+        return bookingRepository.updateStatus(bookingId, status);
+    }
 }
