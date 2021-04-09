@@ -9,7 +9,6 @@ public interface BookingServicePort {
     class BookingRequest {
         private String movieShowId;
         private String customerId;
-        private String theatreId;
         private Set<String> seats;
         private Double amount;
 
@@ -27,14 +26,6 @@ public interface BookingServicePort {
 
         public void setCustomerId(String customerId) {
             this.customerId = customerId;
-        }
-
-        public String getTheatreId() {
-            return theatreId;
-        }
-
-        public void setTheatreId(String theatreId) {
-            this.theatreId = theatreId;
         }
 
         public Set<String> getSeats() {
@@ -61,6 +52,12 @@ public interface BookingServicePort {
         public static final int UNKNOWN_ERROR = 3;
 
         private final int statusCode;
+        private String bookingId;
+
+        public BookingResponse(String bookingId, int statusCode) {
+            this.bookingId = bookingId;
+            this.statusCode = statusCode;
+        }
 
         public BookingResponse(int statusCode) {
             this.statusCode = statusCode;
@@ -68,6 +65,9 @@ public interface BookingServicePort {
 
         public int getStatusCode() {
             return statusCode;
+        }
+        public String getBookingId() {
+            return bookingId;
         }
     }
 }

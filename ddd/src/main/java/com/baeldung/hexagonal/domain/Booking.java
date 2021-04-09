@@ -1,37 +1,44 @@
 package com.baeldung.hexagonal.domain;
 
+import com.baeldung.hexagonal.port.BookingServicePort;
+
 import java.util.Set;
+import java.util.UUID;
 
 public class Booking {
+
+    public static final String STATUS_INITIAL = "INITIAL";
+    public static final String STATUS_SUCCESS = "SUCCESS";
+    public static final String STATUS_FAILURE = "FAILED";
+
     private String bookingId;
     private String movieShowId;
-    private String theatreId;
     private String customerId;
     private Set<String> seats;
     private Double amount;
-    private Status status;
-
-    public enum Status {
-        INITIAL, SUCCESS, FAILURE
-    }
+    private String status;
 
     public Booking(
-            String bookingId, String movieShowId, String theatreId, String customerId, Set<String> seats, Double amount, Status status) {
+            String bookingId, String movieShowId, String customerId, Set<String> seats, Double amount, String status) {
         this.bookingId = bookingId;
         this.movieShowId = movieShowId;
-        this.theatreId = theatreId;
         this.customerId = customerId;
         this.seats = seats;
         this.amount = amount;
-        this.status = Status.INITIAL;
+        this.status = status;
+    }
+
+    public Booking(BookingServicePort.BookingRequest request) {
+        this.bookingId = UUID.randomUUID().toString();
+        this.movieShowId = request.getMovieShowId();
+        this.customerId = request.getCustomerId();
+        this.seats = request.getSeats();
+        this.amount = request.getAmount();
+        this.status = STATUS_INITIAL;
     }
 
     public String getMovieShowId() {
         return movieShowId;
-    }
-
-    public String getTheatreId() {
-        return theatreId;
     }
 
     public Set<String> getSeats() {
@@ -50,7 +57,7 @@ public class Booking {
         return amount;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -60,10 +67,6 @@ public class Booking {
 
     public void setMovieShowId(String movieShowId) {
         this.movieShowId = movieShowId;
-    }
-
-    public void setTheatreId(String theatreId) {
-        this.theatreId = theatreId;
     }
 
     public void setCustomerId(String customerId) {
@@ -78,7 +81,7 @@ public class Booking {
         this.amount = amount;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

@@ -10,12 +10,12 @@ import java.util.UUID;
 @Service
 public class MockTheatreService implements TheatreService {
 
-    public ResponseEntity<Reservation> postReservation(String theatreId, String movieShowId, Set<String> seats) {
-        return new ResponseEntity<Reservation>(
+    public ResponseEntity<Reservation> postReservation(String movieShowId, Set<String> seats) {
+        return new ResponseEntity<>(
                 new Reservation(UUID.randomUUID().toString()), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> deleteReservation(String reservationId) {
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> deleteReservation(String reservationId) {
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

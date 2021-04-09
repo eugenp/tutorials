@@ -30,7 +30,6 @@ class RestAPIEndpointAdapterUnitTest {
 
     private BookingServicePort.BookingRequest getBookingRequest() {
         BookingServicePort.BookingRequest request = new BookingServicePort.BookingRequest();
-        request.setTheatreId("theatre-id");
         request.setMovieShowId("movie-show-id");
         request.setCustomerId("customer-id");
         request.setSeats(new HashSet<>(Arrays.asList("A1", "A2")));
@@ -47,7 +46,7 @@ class RestAPIEndpointAdapterUnitTest {
 
         verify(bookingServicePort).book(any(BookingRequest.class));
         assertNotNull(response);
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        assertEquals(HttpStatus.FAILED_DEPENDENCY, response.getStatusCode());
     }
 
     @Test
@@ -59,7 +58,7 @@ class RestAPIEndpointAdapterUnitTest {
 
         verify(bookingServicePort).book(any(BookingRequest.class));
         assertNotNull(response);
-        assertEquals(HttpStatus.PRECONDITION_FAILED, response.getStatusCode());
+        assertEquals(HttpStatus.FAILED_DEPENDENCY, response.getStatusCode());
     }
 
     @Test
@@ -71,7 +70,7 @@ class RestAPIEndpointAdapterUnitTest {
 
         verify(bookingServicePort).book(any(BookingRequest.class));
         assertNotNull(response);
-        assertEquals(HttpStatus.PRECONDITION_FAILED, response.getStatusCode());
+        assertEquals(HttpStatus.FAILED_DEPENDENCY, response.getStatusCode());
     }
 
     @Test

@@ -2,7 +2,6 @@ package com.baeldung.hexagonal.adapter;
 
 import com.baeldung.hexagonal.port.BookingServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.baeldung.hexagonal.port.BookingServicePort.BookingRequest;
 import static com.baeldung.hexagonal.port.BookingServicePort.BookingResponse;
-import static com.baeldung.hexagonal.port.BookingServicePort.BookingResponse.*;
+import static com.baeldung.hexagonal.port.BookingServicePort.BookingResponse.SUCCESS;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.FAILED_DEPENDENCY;
 
 @RestController
 public class RestAPIEndpointAdapter {
@@ -25,14 +26,7 @@ public class RestAPIEndpointAdapter {
     @PostMapping(path = "/booking")
     public ResponseEntity<BookingResponse> createBooking(@RequestBody BookingRequest request) {
         BookingResponse response = bookingServicePort.book(request);
-
-        if (response.getStatusCode() == SEAT_NOT_AVAILABLE
-                    || response.getStatusCode() == PAYMENT_FAILED){
-            return new ResponseEntity<BookingResponse>(response, HttpStatus.PRECONDITION_FAILED);
-        } else if (response.getStatusCode() == UNKNOWN_ERROR) {
-            return new ResponseEntity<BookingResponse>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        return new ResponseEntity<BookingResponse>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response,
+                response.getStatusCode() == SUCCESS ? CREATED : FAILED_DEPENDENCY);
     }
 }
