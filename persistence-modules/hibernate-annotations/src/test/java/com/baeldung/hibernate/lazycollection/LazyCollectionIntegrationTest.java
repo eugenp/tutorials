@@ -97,12 +97,6 @@ public class LazyCollectionIntegrationTest {
         Assert.assertFalse(Hibernate.isInitialized(branch.getAdditionalEmployees()));
     }
 
-    @After
-    public void tearDown() {
-        session.getTransaction().commit();
-        session.close();
-    }
-
     @AfterClass
     public static void afterTests() {
         sessionFactory.close();
