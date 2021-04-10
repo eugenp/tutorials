@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 
 public class CompileTimeVariables {
 
-    public String ERROR_MESSAGE = ClassConstants.DEFAULT_USERNAME + " not allowed here.";
-    public final int maximumLoginAttempts = 5 * 5;
+    public final String ERROR_MESSAGE = ClassConstants.DEFAULT_USERNAME + " not allowed here.";
+    public final int maximumLoginAttempts = 5;
 
     public static void main(String[] args) {
         PrintWriter printWriter = System.console().writer();
