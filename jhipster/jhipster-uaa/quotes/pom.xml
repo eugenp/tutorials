@@ -4,7 +4,7 @@
     <groupId>com.baeldung.jhipster.quotes</groupId>
     <artifactId>quotes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Quotes</name>
+    <name>quotes</name>
     <packaging>war</packaging>
 
     <repositories>

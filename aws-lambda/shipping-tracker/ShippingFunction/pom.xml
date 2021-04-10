@@ -5,7 +5,7 @@
     <artifactId>ShippingFunction</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>Shipping Tracker Lambda Function</name>
+    <name>ShippingFunction</name>
 
     <dependencies>
         <dependency>
