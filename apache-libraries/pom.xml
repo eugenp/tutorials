@@ -29,7 +29,6 @@
             <artifactId>avro-maven-plugin</artifactId>
             <version>${avro.version}</version>
         </dependency>
-
         <!-- beam -->
         <dependency>
             <groupId>org.apache.beam</groupId>
@@ -43,7 +42,6 @@
             <version>${beam.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- bval -->
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -60,7 +58,6 @@
             <artifactId>bval-extras</artifactId>
             <version>${bval.version}</version>
         </dependency>
-
         <!-- meecrowave -->
         <dependency>
             <groupId>org.apache.meecrowave</groupId>
@@ -84,14 +81,12 @@
             <version>${meecrowave-junit.version}</version>
             <scope>test</scope>
         </dependency>
-        
         <!-- opennlp -->
         <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp.opennlp-tools.version}</version>
         </dependency>
-        
         <!-- pulsar -->
         <dependency>
             <groupId>org.apache.pulsar</groupId>
@@ -99,14 +94,12 @@
             <version>${pulsar-client.version}</version>
             <scope>compile</scope>
         </dependency>
-        
         <!-- zookeeper -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>${zookeeper.version}</version>
         </dependency>
-        
         <!-- curator -->
         <dependency>
             <groupId>org.apache.curator</groupId>
@@ -145,21 +138,18 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
-        
         <!-- geode -->
         <dependency>
             <groupId>org.apache.geode</groupId>
             <artifactId>geode-core</artifactId>
             <version>${geode.core}</version>
         </dependency>
-        
         <!-- solr -->
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
         </dependency>
-        
         <!-- common -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -171,7 +161,7 @@
 
     <build>
         <plugins>
-        <!-- avro -->
+            <!-- avro -->
             <plugin>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-maven-plugin</artifactId>
@@ -192,7 +182,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
             <!-- meecrowave -->
             <plugin>
                 <groupId>org.apache.meecrowave</groupId>

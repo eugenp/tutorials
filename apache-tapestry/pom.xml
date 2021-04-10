@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
@@ -11,27 +9,24 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, 
-        and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
+        <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, and add a dependency on your JDBC driver. You'll also need to add Hibernate 
+            configuration files, such as hibernate.cfg.xml. -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
             <version>${tapestry-release-version}</version>
         </dependency>
-
         <!-- Include the Log4j implementation for the SLF4J logging framework -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j-release-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-webresources</artifactId>
             <version>${tapestry-release-version}</version>
         </dependency>
-
         <!-- Uncomment this to add support for file uploads: -->
         <!-- <dependency> <groupId>org.apache.tapestry</groupId> <artifactId>tapestry-upload</artifactId> <version>${tapestry-release-version}</version> </dependency> -->
 
@@ -43,14 +38,12 @@
             <version>${testng-release-version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-test</artifactId>
             <version>${tapestry-release-version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Provided by the servlet container, but sometimes referenced in the application code. -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -58,7 +51,6 @@
             <version>${servlet-api-release-version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Provide dependency to the Tapestry javadoc taglet which replaces the Maven component report -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
@@ -81,7 +73,6 @@
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -92,7 +83,6 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
             <!-- Run the application using "mvn jetty:run" -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
