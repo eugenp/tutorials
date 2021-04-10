@@ -5,7 +5,7 @@ import com.baeldung.hexagonal.core.ports.inbound.CreateVaccinationRequest;
 import com.baeldung.hexagonal.core.ports.inbound.CreateVaccinationResponse;
 import com.baeldung.hexagonal.core.ports.inbound.GetVaccinationDetailsResponse;
 import com.baeldung.hexagonal.core.ports.inbound.IVaccinationService;
-import com.baeldung.hexagonal.infrastructure.database.VaccinationRepository;
+import com.baeldung.hexagonal.core.ports.outbound.VaccinationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
