@@ -1,5 +1,7 @@
 package com.baeldung.springbean.naming;
 
+import com.baeldung.springbean.naming.component.Cat;
+import com.baeldung.springbean.naming.component.Dog;
 import com.baeldung.springbean.naming.service.PetShow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,7 +66,7 @@ public class SpringBeanNamingTest {
         assertNotNull(context.getBean("cat"));
         assertNotNull(context.getBean("dog"));
 
-        assertThat(petShow.getCat().name()).isEqualTo("Cat");
-        assertThat(petShow.getDog().name()).isEqualTo("Dog");
+        assertThat(petShow.getCat().getClass()).isEqualTo(Cat.class);
+        assertThat(petShow.getDog().getClass()).isEqualTo(Dog.class);
     }
 }
