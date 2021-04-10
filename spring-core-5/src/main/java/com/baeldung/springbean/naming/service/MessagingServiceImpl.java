@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessagingServiceImpl implements MessagingService{
+public class MessagingServiceImpl implements MessagingService {
 
     @Autowired
     @Qualifier("qualifierComponent")

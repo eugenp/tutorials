@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
-public class SpringBeanNamingTest {
+public class SpringBeanNamingUnitTest {
 
     private AnnotationConfigApplicationContext context;
 
@@ -24,29 +24,29 @@ public class SpringBeanNamingTest {
         context.refresh();
     }
 
-    //    To name a bean spring gets the class name and converts the first letter to lowercase. 
-    //    Default naming strategy of the spring bean which is using class level annotation
+    // To name a bean spring gets the class name and converts the first letter to lowercase.
+    // Default naming strategy of the spring bean which is using class level annotation
 
     @Test
     void givenLoggingServiceBeanIsCreated_whenThereIsNoValueProvided_thenBeanNameShouldBeDefaultName() {
         assertNotNull(context.getBean("loggingService"));
     }
 
-    //    In this case, to name a bean spring gets the class name and converts the first letter to lowercase.
+    // In this case, to name a bean spring gets the class name and converts the first letter to lowercase.
     @Test
     void givenAuditServiceBeanIsCreatedWithMethodLevelAnnotation_whenThereIsNoValueProvided_thenBeanNameShouldBeTheNameOfMethod() {
         assertNotNull(context.getBean("audit"));
     }
 
-    //    To name a bean spring gets the class name and converts the first letter to lowercase.
-    //    Default naming strategy of the spring bean which is using class level annotation
+    // To name a bean spring gets the class name and converts the first letter to lowercase.
+    // Default naming strategy of the spring bean which is using class level annotation
     @Test
     void givenLoggingGatewayBeanIsCreatedWithFieldLevelAnnotation_whenThereIsNoValueProvided_thenBeanNameShouldBeDefaultName() {
         assertNotNull(context.getBean("loggingGateway"));
     }
 
-    //    spring will create the bean of type CustomComponent with the name "myBean".
-    //    As we're explicitly giving the name to the bean, spring will use this name to refer to it.
+    // spring will create the bean of type CustomComponent with the name "myBean".
+    // As we're explicitly giving the name to the bean, spring will use this name to refer to it.
     @Test
     void givenCustomComponentBeanIsCreate_whenThereIsCustomNameGivenToBean_thenBeanShouldBeIdentifiedByThatName() {
         assertNotNull(context.getBean("myBean"));
