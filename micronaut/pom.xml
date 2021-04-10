@@ -102,7 +102,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec.plugin.version}</version>
                 <configuration>
                     <executable>java</executable>
                     <arguments>
@@ -146,7 +145,6 @@
         <lombok.version>1.2.3</lombok.version>
         <reactor.version>3.1.6.RELEASE</reactor.version>
         <compiler.plugin.version>3.7.0</compiler.plugin.version>
-        <exec.plugin.version>1.6.0</exec.plugin.version>
         <shade.plugin.version>3.1.0</shade.plugin.version>
     </properties>
 

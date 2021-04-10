@@ -47,23 +47,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>com.baeldung.TestLauncher</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
     <properties>
@@ -71,7 +54,6 @@
         <junit-platform.version>1.2.0</junit-platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
 </project>

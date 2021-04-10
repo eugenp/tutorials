@@ -49,18 +49,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>${exec-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <properties>
         <tradukisto.version>1.0.1</tradukisto.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
