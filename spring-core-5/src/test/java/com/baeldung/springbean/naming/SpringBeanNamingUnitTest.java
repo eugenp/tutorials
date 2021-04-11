@@ -38,13 +38,6 @@ public class SpringBeanNamingUnitTest {
         assertNotNull(context.getBean("audit"));
     }
 
-    // To name a bean spring gets the class name and converts the first letter to lowercase.
-    // Default naming strategy of the spring bean which is using class level annotation
-    @Test
-    void givenLoggingGatewayBeanIsCreatedWithFieldLevelAnnotation_whenThereIsNoValueProvided_thenBeanNameShouldBeDefaultName() {
-        assertNotNull(context.getBean("loggingGateway"));
-    }
-
     // spring will create the bean of type CustomComponent with the name "myBean".
     // As we're explicitly giving the name to the bean, spring will use this name to refer to it.
     @Test
