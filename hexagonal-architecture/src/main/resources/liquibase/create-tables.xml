@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="1" author="ashish">
+        <createTable tableName="user">
+
+            <column name="id" type="smallint" autoIncrement="true" startWith="1" incrementBy="1">
+                <constraints primaryKey="true" primaryKeyName="user_pk" nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="post">
+
+            <column name="id" type="smallint" autoIncrement="true" startWith="1" incrementBy="1">
+                <constraints primaryKey="true" primaryKeyName="post_pk" nullable="false"/>
+            </column>
+
+            <column name="contents" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="timestamp" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="ref_user" type="smallint">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+
+        <addForeignKeyConstraint baseColumnNames="ref_user"
+                                 baseTableName="post"
+                                 constraintName="fk_post_ref_user"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+
+
+    </changeSet>
+
+</databaseChangeLog>

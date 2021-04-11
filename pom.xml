@@ -416,7 +416,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>                
+                <module>gson</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -474,8 +474,8 @@
                 <module>jta</module>
                 <module>kubernetes</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-		<module>language-interop</module>
-		<module>libraries-2</module>
+                <module>language-interop</module>
+                <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -547,10 +547,10 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
-				<module>spring-webflux-threads</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
+                <module>spring-webflux-threads</module>
             </modules>
 
         </profile>
@@ -616,7 +616,7 @@
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
-                <module>spring-batch-2</module>	
+                <module>spring-batch-2</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -645,7 +645,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>                
+                <module>spring-freemarker</module>
 
                 <module>spring-integration</module>
 
@@ -670,7 +670,7 @@
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
-                <module>spring-soap</module>               
+                <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
@@ -708,6 +708,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>hexagonal-architecture</module>
             </modules>
 
         </profile>
@@ -881,7 +882,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>                
+                <module>gson</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -1011,10 +1012,10 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
-				<module>spring-webflux-threads</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
+                <module>spring-webflux-threads</module>
             </modules>
 
         </profile>
@@ -1101,7 +1102,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>                
+                <module>spring-freemarker</module>
 
                 <module>spring-integration</module>
 
@@ -1163,7 +1164,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
-<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
+                <!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
@@ -1274,24 +1275,24 @@
             </build>
 
             <modules>
-                 <module>core-java-modules/core-java-9</module>
-                 <module>core-java-modules/core-java-9-improvements</module>
-                 <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>core-java-modules/core-java-9</module>
+                <module>core-java-modules/core-java-9-improvements</module>
+                <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-9-streams</module>
-                 <module>core-java-modules/core-java-10</module>
-                 <module>core-java-modules/core-java-11-2</module>
-                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-collections-set</module>
-                 <module>core-java-modules/core-java-date-operations-1</module>
-                 <module>core-java-modules/core-java-datetime-conversion</module>
-                 <module>core-java-modules/core-java-datetime-string</module>
-                 <module>core-java-modules/core-java-jpms</module>
-                 <module>core-java-modules/core-java-os</module>
-                 <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/multimodulemavenproject</module>
+                <module>core-java-modules/core-java-9-streams</module>
+                <module>core-java-modules/core-java-10</module>
+                <module>core-java-modules/core-java-11-2</module>
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
+                <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>core-java-modules/core-java-datetime-string</module>
+                <module>core-java-modules/core-java-jpms</module>
+                <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-time-measurements</module>
+                <module>core-java-modules/multimodulemavenproject</module>
             </modules>
         </profile>
 
@@ -1358,7 +1359,7 @@
         <gib.skipTestsForUpstreamModules>true</gib.skipTestsForUpstreamModules>
         <gib.buildUpstream>false</gib.buildUpstream>
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
-        <gib.failOnError>false</gib.failOnError>        
+        <gib.failOnError>false</gib.failOnError>
         <gib.disable>true</gib.disable>
 
         <junit.version>4.12</junit.version>
