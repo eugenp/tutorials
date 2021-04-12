@@ -708,6 +708,7 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>hexagonal-architecture-1</module>
             </modules>
 
         </profile>
