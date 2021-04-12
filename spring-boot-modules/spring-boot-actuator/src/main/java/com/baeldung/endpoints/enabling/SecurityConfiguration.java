@@ -17,20 +17,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth.inMemoryAuthentication()
-            .withUser("user")
-            .password(encoder.encode("password"))
-            .roles("USER")
-            .and()
-            .withUser("admin")
-            .password(encoder.encode("admin"))
-            .roles("USER", "ADMIN");
+          .withUser("user")
+          .password(encoder.encode("password"))
+          .roles("USER")
+          .and()
+          .withUser("admin")
+          .password(encoder.encode("admin"))
+          .roles("USER", "ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.requestMatcher(EndpointRequest.toAnyEndpoint())
-            .authorizeRequests((requests) -> requests.anyRequest()
-                .hasRole("ADMIN"));
+          .authorizeRequests((requests) -> requests.anyRequest()
+            .hasRole("ADMIN"));
         http.httpBasic();
     }
 }
