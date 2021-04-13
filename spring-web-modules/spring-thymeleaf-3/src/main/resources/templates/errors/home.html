@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Displaying Error Messages with Thymeleaf</title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>Users</h3>
+			<table class="table">
+				<tr>
+					<th>ID</th>
+					<th>Full name</th>
+					<th>Email</th>
+					<th>Age</th>
+					<th>Country</th>
+					<th>Phone Number</th>
+				</tr>
+				<tr th:each="user: ${users}">
+					<td th:text="${user.id}" />
+					<td th:text="${user.fullName}" />
+					<td th:text="${user.email}" />
+					<td th:text="${user.age}" />
+					<td th:text="${user.country}" />
+					<td th:text="${user.phoneNumber}" />
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
