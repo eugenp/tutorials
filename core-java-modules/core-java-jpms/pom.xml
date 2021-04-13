@@ -20,4 +20,26 @@
         <module>decoupling-pattern2</module>
     </modules>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${source.version}</source>
+                        <target>${target.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <properties>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <source.version>11</source.version>
+        <target.version>11</target.version>
+    </properties>
+
 </project>
