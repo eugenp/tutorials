@@ -1,10 +1,11 @@
-package com.baeldung.pattern.hexagonal.user;
+package com.baeldung.pattern.hexagonal.dao;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Profile("test")
@@ -19,11 +20,10 @@ public class UserProviderMock implements UserProvider {
     }
 
     @Override
-    public User getUser(String login) {
+    public Optional<User> getUser(String login) {
         return users.stream()
                 .filter(u -> u.getLogin().equals(login))
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     private User createUser(String name, String surname, String login) {

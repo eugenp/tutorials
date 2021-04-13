@@ -1,5 +1,6 @@
-package com.baeldung.pattern.hexagonal.user;
+package com.baeldung.pattern.hexagonal.service;
 
+import com.baeldung.pattern.hexagonal.dao.User;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,18 +12,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class UserServiceTest {
+public class UserServiceUnitTest {
 
     @Autowired
     private UserService userService;
 
     @Test
-    public void testUser() {
-        User expectedUser = new User.UserBuilder()
+    public void testUserFetchingByLogin() {
+        User expectedUser = User.builder()
                 .name("John")
                 .surname("Snow")
                 .login("jsnow")
                 .build();
-        Assertions.assertThat(userService.getUserByLogin("jsnow")).isEqualTo(expectedUser);
+        Assertions.assertThat(userService.getUserByLogin("jsnow").get()).isEqualTo(expectedUser);
     }
 }
