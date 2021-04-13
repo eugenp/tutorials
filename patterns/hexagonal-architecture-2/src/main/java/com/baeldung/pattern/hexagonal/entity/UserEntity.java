@@ -26,9 +26,4 @@ public class UserEntity {
     private String login;
     private String name;
     private String surname;
-
-
 }
-
-
-
