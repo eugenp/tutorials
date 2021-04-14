@@ -2,7 +2,6 @@ package com.baeldung.kubernetes.intro;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.time.FastDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,52 +19,51 @@ import io.kubernetes.client.util.Watch.Response;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-public class WatchNodesUsingBookmarks {
+public class WatchPodsUsingBookmarks {
 
-    private static Logger log = LoggerFactory.getLogger(WatchNodesUsingBookmarks.class);
+    private static Logger log = LoggerFactory.getLogger(WatchPodsUsingBookmarks.class);
 
     public static void main(String[] args) throws Exception {
 
         ApiClient client = Config.defaultClient();
 
+        // Optional, put helpful during tests: disable client timeout and enable
+        // HTTP wire-level logs
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(message -> log.info(message));
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient newClient = client.getHttpClient()
-            .newBuilder()
-            .addInterceptor(interceptor)
-            .readTimeout(0, TimeUnit.SECONDS)
-            .build();
+          .newBuilder()
+          .addInterceptor(interceptor)
+          .readTimeout(0, TimeUnit.SECONDS)
+          .build();
+        
         client.setHttpClient(newClient);
-
         CoreV1Api api = new CoreV1Api(client);
 
-        // Get the initial pod list. The response includes a 'resourceVersion' field that
-        // we'll later use to create a watch
         String resourceVersion = null;
-
-        // Create the watch object that monitors pod creation/deletion/update events
         while (true) {
-            //V1PodList podList = api.listPodForAllNamespaces(true, null, null, null, null, "false", resourceVersion, null, null, null);
-            //resourceVersion = podList.getMetadata().getResourceVersion();
-            //log.info("[I47] initial resourceVersion={}",
-            //  podList.getMetadata().getResourceVersion());
+            // Get a fresh list only we need to resync
+            if ( resourceVersion == null ) {
+                log.info("[I48] Creating initial POD list...");
+                V1PodList podList = api.listPodForAllNamespaces(true, null, null, null, null, "false", resourceVersion, null, null, null);
+                resourceVersion = podList.getMetadata().getResourceVersion();
+            }
 
             while (true) {
-                log.info("[I36] Creating watch...");
+                log.info("[I54] Creating watch: resourceVersion={}", resourceVersion);
                 try (Watch<V1Pod> watch = Watch.createWatch(
                   client,
                   api.listPodForAllNamespacesCall(true, null, null, null, null, "false", resourceVersion, null, 10, true, null),
                   new TypeToken<Response<V1Pod>>(){}.getType())) {
                     
-                    log.info("[I68] Processing received events");
-                    int eventCount = 0;
+                    log.info("[I60] Receiving events:");
                     for (Response<V1Pod> event : watch) {
                         V1Pod pod = event.object;
                         V1ObjectMeta meta = pod.getMetadata();
                         switch (event.type) {
                         case "BOOKMARK":
-                            log.info("[I67] Bookmark received: resourceVersion={}", resourceVersion);
                             resourceVersion = meta.getResourceVersion();
+                            log.info("[I67] event.type: {}, resourceVersion={}", event.type,resourceVersion);
                             break;
                         case "ADDED":
                         case "MODIFIED":
@@ -78,9 +76,7 @@ public class WatchNodesUsingBookmarks {
                         default:
                             log.warn("[W76] Unknown event type: {}", event.type);
                         }
-                        eventCount++;
                     }
-                    log.info("[I81] {} event(s) processed",eventCount); 
                 } catch (ApiException ex) {
                     log.error("[E80] ApiError", ex);
                     resourceVersion = null;
