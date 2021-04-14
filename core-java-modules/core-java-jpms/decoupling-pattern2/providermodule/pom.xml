@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.servicemodule</groupId>
-            <artifactId>servicemodule2</artifactId>
+            <artifactId>servicemodule</artifactId>
             <version>${servicemodule.version}</version>
         </dependency>
     </dependencies>

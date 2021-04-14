@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-cosmosdb</artifactId>
-    <name>spring-data-cosmos-db</name>
+    <name>spring-data-cosmosdb</name>
     <description>tutorial for spring-data-cosmosdb</description>
     <parent>
         <groupId>com.baeldung</groupId>

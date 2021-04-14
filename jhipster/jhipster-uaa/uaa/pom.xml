@@ -4,7 +4,7 @@
     <groupId>com.baeldung.jhipster.uaa</groupId>
     <artifactId>uaa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Uaa</name>
+    <name>uaa</name>
     <packaging>war</packaging>
 
     <repositories>
