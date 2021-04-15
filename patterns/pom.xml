@@ -25,6 +25,7 @@
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>clean-architecture</module>
+        <module>ports-and-adapters</module>
     </modules>
     <dependencyManagement>
         <dependencies>
