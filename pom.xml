@@ -551,6 +551,7 @@
 				<module>reactive-systems</module>
 				<module>slack</module>
 				<module>spring-webflux-threads</module>
+                <module>hexagonal-architecture-demo</module>
             </modules>
 
         </profile>
