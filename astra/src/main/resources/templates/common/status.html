@@ -1,0 +1,6 @@
+<div class="card-body">
+  <h5 class="card-title" th:text="${data.name}"></h5>
+  <h6 class="card-subtitle"><span th:if="${data.realName}" th:text="${data.realName}"></span>&nbsp;</h6>
+  <p class="card-text"><span th:if="${data.location}">Location: <span th:text="${data.location}"></span></span>&nbsp;</p>
+</div>
+<div class="card-footer">Status: <span th:text="${data.status}"></span></div>
