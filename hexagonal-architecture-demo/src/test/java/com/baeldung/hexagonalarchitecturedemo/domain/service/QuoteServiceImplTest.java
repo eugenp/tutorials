@@ -21,7 +21,7 @@ public class QuoteServiceImplTest {
     }
 
     @Test
-    public void shouldReturnQuote() {
+    public void whenCallGetRandomQuote_shouldReturnAQuote() {
         Quote quote = quoteService.getRandomQuote();
         Assertions.assertEquals("Steve Jobs", quote.getAuthor());
     }
