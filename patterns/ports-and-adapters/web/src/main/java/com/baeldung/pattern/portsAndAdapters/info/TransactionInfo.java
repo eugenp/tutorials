@@ -3,6 +3,8 @@ package com.baeldung.pattern.portsAndAdapters.info;
 
 import com.baeldung.pattern.portsAndAdapters.core.model.Transaction;
 
+import java.util.Date;
+
 public class TransactionInfo {
 
     private String amount;
@@ -33,6 +35,6 @@ public class TransactionInfo {
     }
 
     public static Transaction toDomain(TransactionInfo info) {
-        return new Transaction(info.getDescription(), Double.parseDouble(info.getAmount()));
+        return new Transaction(info.getDescription(), Double.parseDouble(info.getAmount()), new Date());
     }
 }

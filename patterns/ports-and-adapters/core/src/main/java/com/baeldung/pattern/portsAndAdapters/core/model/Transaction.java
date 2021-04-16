@@ -1,6 +1,7 @@
 package com.baeldung.pattern.portsAndAdapters.core.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Transaction {
 
@@ -8,10 +9,10 @@ public class Transaction {
     double amount;
     Date transactionDate;
 
-    public Transaction(String description, double amount) {
+    public Transaction(String description, double amount, Date transactionDate) {
         this.description = description;
         this.amount = amount;
-        this.transactionDate = new Date();
+        this.transactionDate = transactionDate;
     }
 
     public String getDescription() {
@@ -36,5 +37,18 @@ public class Transaction {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return Double.compare(that.amount, amount) == 0 && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, amount);
     }
 }

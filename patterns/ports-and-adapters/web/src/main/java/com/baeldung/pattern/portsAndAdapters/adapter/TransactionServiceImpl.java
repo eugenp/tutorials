@@ -13,8 +13,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void add(Transaction transaction) {
-        processor.processTransaction(transaction);
+    public int add(Transaction transaction) {
+        return processor.processTransaction(transaction);
     }
 
 }
