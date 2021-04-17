@@ -12,6 +12,7 @@ public class RecordSchedulerService implements RecordRequest {
 
     @Autowired
     private AuthorizeRecordRequest authorizeRecordRequest;
+
     @Autowired
     private UpdateRecordSchedule updateRecordSchedule;
 
