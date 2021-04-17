@@ -2,6 +2,7 @@ package baeldung.hexagonal.framework.service;
 
 import baeldung.hexagonal.boundary.ports.*;
 import baeldung.hexagonal.core.AttendeeDto;
+import baeldung.hexagonal.framework.AttendeePersistor;
 
 import java.util.List;
 

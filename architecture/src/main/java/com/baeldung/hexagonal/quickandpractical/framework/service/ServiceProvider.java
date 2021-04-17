@@ -1,6 +1,7 @@
 package baeldung.hexagonal.framework.service;
 
 import baeldung.hexagonal.boundary.adapter.AdapterProvider;
+import baeldung.hexagonal.framework.AttendeePersistor;
 
 public class ServiceProvider {
     private static AttendeePersistor attendeePersistor;
