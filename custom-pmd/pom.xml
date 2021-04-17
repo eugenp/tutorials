@@ -45,7 +45,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <pmdVersion>6.0.1</pmdVersion>
         <maven.compiler.source>1.8</maven.compiler.source>

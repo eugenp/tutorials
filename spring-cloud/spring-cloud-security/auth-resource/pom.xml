@@ -13,18 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,7 +44,6 @@
     </build>
 
     <properties>
-        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <spring-jwt.version>1.0.10.RELEASE</spring-jwt.version>
     </properties>
 

@@ -38,8 +38,6 @@
     </dependencies>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <akka.http.version>10.0.11</akka.http.version>
         <akka.stream.version>2.5.11</akka.stream.version>
     </properties>

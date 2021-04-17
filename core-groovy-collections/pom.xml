@@ -101,7 +101,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                     <includes>
@@ -128,7 +127,6 @@
         <hsqldb.version>2.4.0</hsqldb.version>
         <spock-core.version>1.1-groovy-2.4</spock-core.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
-        <surefire.plugin.version>2.20.1</surefire.plugin.version>
     </properties>
 
 </project>
