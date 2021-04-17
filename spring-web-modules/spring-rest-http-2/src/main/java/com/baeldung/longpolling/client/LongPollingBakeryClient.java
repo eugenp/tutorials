@@ -1,4 +1,4 @@
-package com.baeldung.client;
+package com.baeldung.longpolling.client;
 
 import io.netty.handler.timeout.ReadTimeoutException;
 import org.springframework.boot.web.client.RestTemplateBuilder;

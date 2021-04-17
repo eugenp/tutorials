@@ -1,4 +1,4 @@
-package com.baeldung.web.controller.polling;
+package com.baeldung.longpolling.integration;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

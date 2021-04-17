@@ -1,4 +1,4 @@
-package com.baeldung.web.controller.polling;
+package com.baeldung.longpolling.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
