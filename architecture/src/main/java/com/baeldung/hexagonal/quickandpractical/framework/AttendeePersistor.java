@@ -1,4 +1,4 @@
-package baeldung.hexagonal.framework.service;
+package baeldung.hexagonal.framework;
 
 import baeldung.hexagonal.core.AttendeeDto;
 import baeldung.hexagonal.boundary.ports.AttendeePersistencePort;
