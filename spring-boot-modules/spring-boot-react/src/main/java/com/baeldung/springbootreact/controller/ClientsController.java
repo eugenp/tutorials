@@ -20,7 +20,7 @@ public class ClientsController {
     }
 
     @GetMapping
-    public List getClients() {
+    public List<Client> getClients() {
         return clientRepository.findAll();
     }
 
@@ -35,7 +35,7 @@ public class ClientsController {
         return ResponseEntity.created(new URI("/clients/" + savedClient.getId())).body(savedClient);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity updateClient(@PathVariable Long id, @RequestBody Client client) {
         Client currentClient = clientRepository.findById(id).orElseThrow(RuntimeException::new);
         currentClient.setName(client.getName());
