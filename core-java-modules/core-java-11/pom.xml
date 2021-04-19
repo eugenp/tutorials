@@ -32,12 +32,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -105,7 +105,6 @@
         <guava.version>27.1-jre</guava.version>
         <assertj.version>3.11.1</assertj.version>
         <uberjar.name>benchmarks</uberjar.name>
-        <jmh.version>1.22</jmh.version>
         <eclipse.collections.version>10.0.0</eclipse.collections.version>
         <shade.plugin.version>3.2.4</shade.plugin.version>
     </properties>

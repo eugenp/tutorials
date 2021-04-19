@@ -100,6 +100,7 @@
 
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
+        <module>core-java-networking-3</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
 
@@ -147,18 +148,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
