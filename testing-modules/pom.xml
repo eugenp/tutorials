@@ -42,6 +42,7 @@
         <module>junit-4</module>
         <module>testing-libraries</module>
         <module>powermock</module>
+        <module>spring-junit5-cucumber</module>
     </modules>
 
 </project>
