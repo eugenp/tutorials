@@ -32,4 +32,42 @@ public class ExternalConnector {
                     throw new ServiceException("External Service failed to process after max retries", HttpStatus.SERVICE_UNAVAILABLE.value());
                 }));
     }
+
+    public Mono<String> getDataWithRetry(String stockId) {
+        return webClient.get()
+            .uri(PATH_BY_ID, stockId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(String.class)
+            .retryWhen(Retry.max(3));
+    }
+
+    public Mono<String> getDataWithRetryFixedDelay(String stockId) {
+        return webClient.get()
+            .uri(PATH_BY_ID, stockId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(String.class)
+            .retryWhen(Retry.fixedDelay(3, Duration.ofSeconds(2)));
+    }
+
+    public Mono<String> getDataWithRetryBackoff(String stockId) {
+        return webClient.get()
+            .uri(PATH_BY_ID, stockId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(String.class)
+            .retryWhen(Retry.backoff(3, Duration.ofSeconds(2)));
+    }
+
+    public Mono<String> getDataWithRetryBackoffJitter(String stockId) {
+        return webClient.get()
+            .uri(PATH_BY_ID, stockId)
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(String.class)
+            .retryWhen(Retry.backoff(3, Duration.ofSeconds(2))
+                .jitter(1));
+    }
+
 }
