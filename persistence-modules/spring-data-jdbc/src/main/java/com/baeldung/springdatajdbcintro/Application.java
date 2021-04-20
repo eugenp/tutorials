@@ -50,7 +50,7 @@ public class Application implements CommandLineRunner {
         LOGGER.info("@@ findByFirstName() call...");
         repository.findByFirstName("Franz")
             .forEach(person -> LOGGER.info(person.toString()));
-        LOGGER.info("@@ findByFirstName() call...");
+        LOGGER.info("@@ updateByFirstName() call...");
         repository.updateByFirstName(2L, "Date Inferno");
         repository.findAll()
             .forEach(person -> LOGGER.info(person.toString()));

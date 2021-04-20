@@ -11,7 +11,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>parent-spring-5/pom.xml</relativePath>
+        <relativePath>../../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -111,7 +111,6 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <spring.version>5.2.1.RELEASE</spring.version>

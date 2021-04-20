@@ -74,25 +74,11 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>${exec-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <properties>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-collections4.version>4.3</commons-collections4.version>
         <guava.version>28.0-jre</guava.version>
         <retrofit.version>2.6.0</retrofit.version>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator.version>1.19</jmh-generator.version>
         <commons.lang3.version>3.8.1</commons.lang3.version>
         <JUnitParams.version>1.1.0</JUnitParams.version>
     </properties>
