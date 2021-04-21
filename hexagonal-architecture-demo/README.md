@@ -1,0 +1,1 @@
+# Simple console application for demonstrating basic concepts of Hexagonal Architecture in Java
