@@ -10,3 +10,4 @@ This module contains articles about Spring with Thymeleaf
 - [Conditional CSS Classes in Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-conditional-css-classes)
 - [Using Hidden Inputs with Spring and Thymeleaf](https://www.baeldung.com/spring-thymeleaf-hidden-inputs)
 - [Thymeleaf Variables](https://www.baeldung.com/thymeleaf-variables)
+- [Displaying Error Messages with Thymeleaf in Spring](https://www.baeldung.com/spring-thymeleaf-error-messages)
