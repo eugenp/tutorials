@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 @Trace
 @Component
 public class MyTracedService {
-  private static final Log LOG = LogFactory.getLog(MyTracedService.class);
+    private static final Log LOG = LogFactory.getLog(MyTracedService.class);
 
-  public void performSomeLogic() {
-    LOG.info("Inside performSomeLogic...");
-  }
+    public void performSomeLogic() {
+        LOG.info("Inside performSomeLogic...");
+    }
 
-  public void performSomeAdditionalLogic() {
-    LOG.info("Inside performSomeAdditionalLogic...");
-  }
+    public void performSomeAdditionalLogic() {
+        LOG.info("Inside performSomeAdditionalLogic...");
+    }
 }
