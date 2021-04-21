@@ -15,8 +15,22 @@ public class UpdateController {
 
   @PostMapping("/update/{avenger}")
   public void getStatuses(@PathVariable String avenger, @RequestBody UpdateBody body) throws Exception {
-    statusesService.updateStatus(avenger, body.location(), body.status());
+    statusesService.updateStatus(avenger, lookupLocation(body.lat(), body.lng()), getStatus(body.status()));
   }
 
-  private static record UpdateBody(String location, String status) {}
+  private String lookupLocation(Double lat, Double lng) {
+    return "New York";
+  }
+
+  private String getStatus(Double status) {
+    if (body.status() == 0) {
+      return "DECEASED";
+    } else if (body.status() > 0.9) {
+      return "HEALTHY";
+    } else {
+      return "INJURED";
+    }
+  }
+
+  private static record UpdateBody(Double lat, Double lng, Double status) {}
 }
