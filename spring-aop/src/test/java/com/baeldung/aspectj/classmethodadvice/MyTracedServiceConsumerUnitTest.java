@@ -11,20 +11,22 @@ import static org.mockito.Mockito.verify;
 
 public class MyTracedServiceConsumerUnitTest {
 
-  @Rule
-  public MockitoRule mockitoRule = MockitoJUnit.rule();
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
 
-  @Spy
-  private MyTracedService myTracedService;
+    @Spy
+    private MyTracedService myTracedService;
 
-  @Test
-  public void whenCallingConsumer_thenServiceIsCalled() {
-    doNothing().when(myTracedService).performSomeLogic();
-    doNothing().when(myTracedService).performSomeAdditionalLogic();
+    @Test
+    public void whenCallingConsumer_thenServiceIsCalled() {
+        doNothing().when(myTracedService)
+            .performSomeLogic();
+        doNothing().when(myTracedService)
+            .performSomeAdditionalLogic();
 
-    new MyTracedServiceConsumer(myTracedService);
+        new MyTracedServiceConsumer(myTracedService);
 
-    verify(myTracedService).performSomeLogic();
-    verify(myTracedService).performSomeAdditionalLogic();
-  }
+        verify(myTracedService).performSomeLogic();
+        verify(myTracedService).performSomeAdditionalLogic();
+    }
 }

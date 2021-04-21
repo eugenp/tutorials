@@ -13,28 +13,28 @@ import static org.junit.Assert.assertTrue;
  */
 public class MyTracedServiceUnitTest {
 
-  @Rule
-  public OutputCaptureRule outputCaptureRule = new OutputCaptureRule();
+    @Rule
+    public OutputCaptureRule outputCaptureRule = new OutputCaptureRule();
 
-  @Test
-  public void whenPerformingSomeLogic_thenTraceAndInfoOutputIsWritten() {
-    MyTracedService myTracedService = new MyTracedService();
-    myTracedService.performSomeLogic();
+    @Test
+    public void whenPerformingSomeLogic_thenTraceAndInfoOutputIsWritten() {
+        MyTracedService myTracedService = new MyTracedService();
+        myTracedService.performSomeLogic();
 
-    String output = outputCaptureRule.getOut();
-    assertTrue(output.contains("TracingAspect - Entering MyTracedService.performSomeLogic"));
-    assertTrue(output.contains("MyTracedService - Inside performSomeLogic"));
-    assertTrue(output.contains("TracingAspect - Exiting MyTracedService.performSomeLogic"));
-  }
+        String output = outputCaptureRule.getOut();
+        assertTrue(output.contains("TracingAspect - Entering MyTracedService.performSomeLogic"));
+        assertTrue(output.contains("MyTracedService - Inside performSomeLogic"));
+        assertTrue(output.contains("TracingAspect - Exiting MyTracedService.performSomeLogic"));
+    }
 
-  @Test
-  public void whenPerformingSomeAdditionalLogic_thenTraceAndInfoOutputIsWritten() {
-    MyTracedService myTracedService = new MyTracedService();
-    myTracedService.performSomeAdditionalLogic();
+    @Test
+    public void whenPerformingSomeAdditionalLogic_thenTraceAndInfoOutputIsWritten() {
+        MyTracedService myTracedService = new MyTracedService();
+        myTracedService.performSomeAdditionalLogic();
 
-    String output = outputCaptureRule.getOut();
-    assertTrue(output.contains("TracingAspect - Entering MyTracedService.performSomeAdditionalLogic"));
-    assertTrue(output.contains("MyTracedService - Inside performSomeAdditionalLogic"));
-    assertTrue(output.contains("TracingAspect - Exiting MyTracedService.performSomeAdditionalLogic"));
-  }
+        String output = outputCaptureRule.getOut();
+        assertTrue(output.contains("TracingAspect - Entering MyTracedService.performSomeAdditionalLogic"));
+        assertTrue(output.contains("MyTracedService - Inside performSomeAdditionalLogic"));
+        assertTrue(output.contains("TracingAspect - Exiting MyTracedService.performSomeAdditionalLogic"));
+    }
 }
