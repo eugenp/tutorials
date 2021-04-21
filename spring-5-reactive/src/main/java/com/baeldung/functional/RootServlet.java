@@ -2,7 +2,7 @@ package com.baeldung.functional;
 
 import static org.springframework.web.reactive.function.BodyExtractors.toDataBuffers;
 import static org.springframework.web.reactive.function.BodyExtractors.toFormData;
-import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.path;
@@ -46,7 +46,7 @@ public class RootServlet extends ServletHttpHandlerAdapter {
 
     private static RouterFunction<?> routingFunction() {
 
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), serverRequest -> serverRequest.body(toFormData())
+        return route(GET("/test"), serverRequest -> ok().body(fromValue("helloworld"))).andRoute(POST("/login"), serverRequest -> serverRequest.body(toFormData())
             .map(MultiValueMap::toSingleValueMap)
             .map(formData -> {
                 System.out.println("form data: " + formData.toString());
@@ -65,7 +65,7 @@ public class RootServlet extends ServletHttpHandlerAdapter {
                     dataBuffers.forEach(d -> atomicLong.addAndGet(d.asByteBuffer()
                         .array().length));
                     System.out.println("data length:" + atomicLong.get());
-                    return ok().body(fromObject(atomicLong.toString()))
+                    return ok().body(fromValue(atomicLong.toString()))
                         .block();
                 }))
             .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))

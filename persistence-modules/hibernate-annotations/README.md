@@ -8,3 +8,4 @@ This module contains articles about Annotations used in Hibernate.
 - [Difference Between @JoinColumn and mappedBy](https://www.baeldung.com/jpa-joincolumn-vs-mappedby)
 - [Hibernate One to Many Annotation Tutorial](https://www.baeldung.com/hibernate-one-to-many)
 - [Hibernate @WhereJoinTable Annotation](https://www.baeldung.com/hibernate-wherejointable)
+- [Usage of the Hibernate @LazyCollection Annotation](https://www.baeldung.com/hibernate-lazycollection)

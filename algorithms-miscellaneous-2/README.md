@@ -14,4 +14,4 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Displaying Money Amounts in Words](https://www.baeldung.com/java-money-into-words)
 - [A Collaborative Filtering Recommendation System in Java](https://www.baeldung.com/java-collaborative-filtering-recommendations)
 - [Implementing A* Pathfinding in Java](https://www.baeldung.com/java-a-star-pathfinding)
-- More articles: [[<-- prev]](/../algorithms-miscellaneous-1) [[next -->]](/../algorithms-miscellaneous-3)
+- More articles: [[<-- prev]](/algorithms-miscellaneous-1) [[next -->]](/algorithms-miscellaneous-3)

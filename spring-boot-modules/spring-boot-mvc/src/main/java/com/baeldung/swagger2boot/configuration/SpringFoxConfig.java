@@ -1,13 +1,9 @@
 package com.baeldung.swagger2boot.configuration;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import com.baeldung.swagger2boot.plugin.EmailAnnotationPlugin;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
-import com.baeldung.swagger2boot.plugin.EmailAnnotationPlugin;
-
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,14 +12,16 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger.web.*;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+import springfox.documentation.swagger.web.DocExpansion;
+import springfox.documentation.swagger.web.ModelRendering;
+import springfox.documentation.swagger.web.OperationsSorter;
+import springfox.documentation.swagger.web.TagsSorter;
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
 import java.util.Collections;
 
 @Configuration
-@EnableSwagger2WebMvc
-@Import({SpringDataRestConfiguration.class, BeanValidatorPluginsConfiguration.class})
 public class SpringFoxConfig {
 
     private ApiInfo apiInfo() {
@@ -43,8 +41,8 @@ public class SpringFoxConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                    .apis(RequestHandlerSelectors.any())
-                    .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
                 .build();
     }
 

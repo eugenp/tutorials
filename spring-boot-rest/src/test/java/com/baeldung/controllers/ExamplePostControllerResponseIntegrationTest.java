@@ -34,7 +34,7 @@ public class ExamplePostControllerResponseIntegrationTest {
 
     @Before
     public void preTest() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders
           .standaloneSetup(exampleController)
           .build();

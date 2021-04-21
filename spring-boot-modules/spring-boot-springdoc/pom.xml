@@ -26,6 +26,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
@@ -77,7 +81,7 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jre8</artifactId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
@@ -165,11 +169,10 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <hibernate.version>5.2.10.Final</hibernate.version>
-        <springdoc.version>1.2.32</springdoc.version>
+        <springdoc.version>1.5.2</springdoc.version>
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
-        <kotlin.version>1.2.71</kotlin.version>
+        <kotlin.version>1.4.0</kotlin.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
     </properties>
 
@@ -181,7 +184,7 @@
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
-                        <version>2.2.2.RELEASE</version>
+                        <version>${spring-boot.version}</version>
                         <executions>
                             <execution>
                                 <id>pre-integration-test</id>

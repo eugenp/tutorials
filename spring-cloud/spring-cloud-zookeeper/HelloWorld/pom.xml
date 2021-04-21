@@ -33,12 +33,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
-            <version>${spring-cloud-starter-zookeeper-discovery.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
