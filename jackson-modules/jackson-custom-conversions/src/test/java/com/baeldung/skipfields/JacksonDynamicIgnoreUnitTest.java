@@ -51,8 +51,6 @@ public class JacksonDynamicIgnoreUnitTest {
         assertTrue(result.contains("john"));
         assertTrue(result.contains("address"));
         assertTrue(result.contains("usa"));
-
-        System.out.println("Not Hidden = " + result);
     }
 
     @Test
@@ -65,8 +63,6 @@ public class JacksonDynamicIgnoreUnitTest {
         assertTrue(result.contains("john"));
         assertFalse(result.contains("address"));
         assertFalse(result.contains("usa"));
-
-        System.out.println("Address Hidden = " + result);
     }
 
     @Test
@@ -76,8 +72,6 @@ public class JacksonDynamicIgnoreUnitTest {
         final String result = mapper.writeValueAsString(person);
 
         assertTrue(result.length() == 0);
-
-        System.out.println("All Hidden = " + result);
     }
 
     @Test
@@ -90,7 +84,5 @@ public class JacksonDynamicIgnoreUnitTest {
         final Person p3 = new Person("adam", ad3, false);
 
         final String result = mapper.writeValueAsString(Arrays.asList(p1, p2, p3));
-
-        System.out.println(result);
     }
 }

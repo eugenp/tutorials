@@ -167,7 +167,7 @@
                     <dependency>
                         <groupId>org.springframework.cloud</groupId>
                         <artifactId>spring-cloud-dependencies</artifactId>
-                        <version>Greenwich.RELEASE</version>
+                        <version>${spring-cloud.version}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -177,12 +177,12 @@
                 <dependency>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-gcp-starter</artifactId>
-                    <version>1.0.0.RELEASE</version>
+                    <version>${spring-cloud-gcp.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-                    <version>1.0.0.RELEASE</version>
+                    <version>${spring-cloud-gcp.version}</version>
                 </dependency>
             </dependencies>
             <build>
@@ -215,7 +215,7 @@
                     <dependency>
                         <groupId>org.springframework.cloud</groupId>
                         <artifactId>spring-cloud-dependencies</artifactId>
-                        <version>Greenwich.RELEASE</version>
+                        <version>${spring-cloud.version}</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -332,6 +332,8 @@
 
     <properties>
         <servlet.version>4.0.0</servlet.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-cloud-gcp.version>1.0.0.RELEASE</spring-cloud-gcp.version>
     </properties>
 
 </project>

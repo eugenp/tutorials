@@ -39,6 +39,7 @@
 
     <properties>
         <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
+
     </properties>
 
 </project>

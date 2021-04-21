@@ -24,12 +24,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
 
         <dependency>
@@ -68,11 +68,6 @@
 
     <properties>
         <shade.plugin.version>3.2.0</shade.plugin.version>
-
-        <commons-lang3.version>3.9</commons-lang3.version>
-
-        <jmh.version>1.19</jmh.version>
-
         <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
 </project>

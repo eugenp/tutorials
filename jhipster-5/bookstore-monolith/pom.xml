@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung.jhipster5</groupId>
-    <artifactId>bookstore</artifactId>
+    <artifactId>bookstore-monolith</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Bookstore</name>
+    <name>bookstore-monolith</name>
 
     <parent>
         <artifactId>jhipster-5</artifactId>
@@ -237,6 +237,26 @@
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>set-system-properties</goal>
+                        </goals>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>org.slf4j.simpleLogger.log.com.github.eirslett</name>
+                                    <value>error</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -1008,6 +1028,68 @@
             </build>
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
+        <profile>
+            <id>default-first</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+
+                        <executions>
+                            <execution>
+                                <id>install node and npm</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>npm install</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>webpack build dev</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>webpack build test</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>default-second</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+
+                        <executions>
+                            <execution>
+                                <id>install node and npm</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>npm install</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>webpack build dev</id>
+                                <phase>none</phase>
+                            </execution>
+                            <execution>
+                                <id>webpack build test</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <properties>
@@ -1017,8 +1099,6 @@
         <scala.version>2.12.6</scala.version>
         <node.version>v10.15.0</node.version>
         <npm.version>6.4.1</npm.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <maven.compiler.source>${java.version}</maven.compiler.source>

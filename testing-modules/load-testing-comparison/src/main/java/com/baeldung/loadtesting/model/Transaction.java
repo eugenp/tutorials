@@ -1,16 +1,17 @@
 package com.baeldung.loadtesting.model;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
+
 import java.util.Date;
 import java.util.Calendar;
 
 @Entity
-@Data
+@Table(indexes = {@Index(columnList="customerRewardsId")})
 public class Transaction {
 
     @Id
@@ -27,4 +28,34 @@ public class Transaction {
     public void setTransactionDate(Date transactionDate){
         this.transactionDate = transactionDate;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getCustomerRewardsId() {
+        return customerRewardsId;
+    }
+
+    public void setCustomerRewardsId(Integer customerRewardsId) {
+        this.customerRewardsId = customerRewardsId;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+    
+    
 }

@@ -27,24 +27,22 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons.io.version}</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <guava.version>29.0-jre</guava.version>
-        <commons.io.version>2.6</commons.io.version>
-        <jmh.version>1.19</jmh.version>
         <modelmapper.version>2.3.7</modelmapper.version>
         <hamcrest.version>2.2</hamcrest.version>
     </properties>

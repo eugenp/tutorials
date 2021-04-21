@@ -10,3 +10,5 @@ This module contains articles about Spring Boot with Spring Data
 - [Repositories with Multiple Spring Data Modules](https://www.baeldung.com/spring-multiple-data-modules)
 - [Spring Custom Property Editor](https://www.baeldung.com/spring-mvc-custom-property-editor)
 - [Using @JsonComponent in Spring Boot](https://www.baeldung.com/spring-boot-jsoncomponent)
+- [Guide To Running Logic on Startup in Spring](https://www.baeldung.com/running-setup-logic-on-startup-in-spring)
+- [Using JaVers for Data Model Auditing in Spring Data](https://www.baeldung.com/spring-data-javers-audit)

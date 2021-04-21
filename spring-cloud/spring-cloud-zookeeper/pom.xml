@@ -19,7 +19,6 @@
 
     <properties>
         <springframework.version>5.2.7.RELEASE</springframework.version>
-        <spring-cloud-starter-zookeeper-discovery.version>1.0.3.RELEASE</spring-cloud-starter-zookeeper-discovery.version>
     </properties>
 
 </project>

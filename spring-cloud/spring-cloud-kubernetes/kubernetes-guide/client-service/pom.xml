@@ -17,13 +17,6 @@
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud-dependencies.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-kubernetes-dependencies</artifactId>
                 <version>${spring.cloud.k8s.version}</version>
                 <type>pom</type>
@@ -57,6 +50,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>2.2.7.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -65,6 +59,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <version>2.2.7.RELEASE</version>
         </dependency>
     </dependencies>
 
@@ -89,8 +84,7 @@
     </build>
 
     <properties>
-        <spring-cloud-dependencies.version>Hoxton.SR1</spring-cloud-dependencies.version>
-        <spring.cloud.k8s.version>1.0.0.RELEASE</spring.cloud.k8s.version>
+        <spring.cloud.k8s.version>1.1.8.RELEASE</spring.cloud.k8s.version>
     </properties>
 
 </project>

@@ -49,7 +49,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <greeter.version>0.0.1-SNAPSHOT</greeter.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
     </properties>

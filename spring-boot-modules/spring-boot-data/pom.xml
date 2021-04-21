@@ -168,7 +168,7 @@
     </profiles>
 
     <properties>
-        <javers.version>5.6.3</javers.version>
+        <javers.version>5.14.0</javers.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>

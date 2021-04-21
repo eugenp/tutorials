@@ -5,38 +5,67 @@ import au.com.dius.pact.consumer.PactProviderRuleMk2;
 import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
-
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PactConsumerDrivenContractUnitTest {
 
+    private static int getAvailablePort() {
+        return new Random()
+            .ints(6000, 9000)
+            .filter(PactConsumerDrivenContractUnitTest::isFree)
+            .findFirst()
+            .orElse(8080);
+    }
+
+    private static boolean isFree(int port) {
+        try {
+            new ServerSocket(port).close();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
     @Rule
-    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("test_provider", "localhost", 8080, this);
+    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("test_provider", "localhost", getAvailablePort(), this);
 
     @Pact(consumer = "test_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
-        Map<String, String> headers = new HashMap<String, String>();
+        Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
 
-        return builder.given("test GET").uponReceiving("GET REQUEST").path("/pact").method("GET").willRespondWith().status(200).headers(headers).body("{\"condition\": true, \"name\": \"tom\"}").given("test POST").uponReceiving("POST REQUEST").method("POST")
-                .headers(headers).body("{\"name\": \"Michael\"}").path("/pact").willRespondWith().status(201).toPact();
+        return builder
+          .given("test GET")
+            .uponReceiving("GET REQUEST")
+            .path("/pact")
+            .method("GET")
+          .willRespondWith()
+            .status(200)
+            .headers(headers)
+            .body("{\"condition\": true, \"name\": \"tom\"}")
+          .given("test POST")
+            .uponReceiving("POST REQUEST")
+            .method("POST")
+            .headers(headers)
+            .body("{\"name\": \"Michael\"}")
+            .path("/pact")
+          .willRespondWith()
+            .status(201)
+          .toPact();
     }
 
     @Test
-    @Ignore
     @PactVerification()
     public void givenGet_whenSendRequest_shouldReturn200WithProperHeaderAndBody() {
         // when

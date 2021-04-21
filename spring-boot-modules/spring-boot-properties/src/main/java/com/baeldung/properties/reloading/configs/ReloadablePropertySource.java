@@ -15,7 +15,7 @@ public class ReloadablePropertySource extends PropertySource {
     }
 
     public ReloadablePropertySource(String name, String path) {
-        super(StringUtils.isEmpty(name) ? path : name);
+        super(!StringUtils.hasText(name) ? path : name);
         try {
             this.propertiesConfiguration = new PropertiesConfiguration(path);
             FileChangedReloadingStrategy strategy = new FileChangedReloadingStrategy();
