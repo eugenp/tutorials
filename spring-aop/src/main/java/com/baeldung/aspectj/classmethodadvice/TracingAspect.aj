@@ -11,9 +11,13 @@ public aspect TracingAspect {
     Object around() : traceAnnotatedClasses() {
         String signature = thisJoinPoint.getSignature().toShortString();
         LOG.trace("Entering " + signature);
-        Object returnValue = proceed();
-        LOG.trace("Exiting " + signature);
-
-        return returnValue;
+        try {
+            return proceed();
+        } catch (Exception e) {
+            LOG.trace("Exception thrown from " + signature, e);
+            throw e;
+        } finally {
+            LOG.trace("Exiting " + signature);
+        }
     }
 }
