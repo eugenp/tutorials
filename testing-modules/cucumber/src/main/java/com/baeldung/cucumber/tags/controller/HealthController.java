@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.controller;
+package com.baeldung.cucumber.tags.controller;
 
 
 import org.springframework.http.HttpStatus;

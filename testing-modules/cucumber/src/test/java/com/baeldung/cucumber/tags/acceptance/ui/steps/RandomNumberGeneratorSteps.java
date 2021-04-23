@@ -1,7 +1,7 @@
-package com.baeldung.cucumber_tags.acceptance.ui.steps;
+package com.baeldung.cucumber.tags.acceptance.ui.steps;
 
-import com.baeldung.cucumber_tags.acceptance.commonutil.ScenarioContextUI;
-import com.baeldung.cucumber_tags.acceptance.ui.pages.RandomNumberGeneratorPage;
+import com.baeldung.cucumber.tags.acceptance.commonutil.ScenarioContextUI;
+import com.baeldung.cucumber.tags.acceptance.ui.pages.RandomNumberGeneratorPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.baeldung.cucumber_tags.acceptance.ui.pages.Page.getPage;
+import static com.baeldung.cucumber.tags.acceptance.ui.pages.Page.getPage;
 import static org.junit.Assert.assertTrue;
 
 public class RandomNumberGeneratorSteps {

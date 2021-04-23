@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.acceptance;
+package com.baeldung.cucumber.tags.acceptance;
 
 
 import io.cucumber.junit.platform.engine.Cucumber;

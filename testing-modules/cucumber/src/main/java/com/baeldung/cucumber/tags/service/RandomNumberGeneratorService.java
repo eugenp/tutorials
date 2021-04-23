@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.service;
+package com.baeldung.cucumber.tags.service;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.acceptance.commonutil;
+package com.baeldung.cucumber.tags.acceptance.commonutil;
 
 import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.response.MockMvcResponse;
