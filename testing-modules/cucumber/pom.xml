@@ -18,10 +18,11 @@
     <name>cucumber</name>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <cucumber.version>6.9.1</cucumber.version>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+        <cucumber.version>6.10.3</cucumber.version>
         <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <webjars-locator.version>0.40</webjars-locator.version>
@@ -54,7 +55,6 @@
             <artifactId>bootstrap</artifactId>
             <version>${bootstrap.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -113,69 +113,19 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>net.masterthought</groupId>
-                    <artifactId>maven-cucumber-reporting</artifactId>
-                    <version>${cucumber-reporting.version}</version>
-                    <configuration>
-                        <projectName>randomnumbergenerator</projectName>
-                        <outputDirectory>
-                            ${project.build.directory}
-                        </outputDirectory>
-                        <inputDirectory>
-                            ${project.build.directory}/cucumber
-                        </inputDirectory>
-                        <classificationFiles>**/*.properties</classificationFiles>
-                        <jsonFiles>
-                            <param>**/*.json</param>
-                        </jsonFiles>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <profiles>
-        <profile>
-            <id>acceptance</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${maven-failsafe-plugin.version}</version>
-                        <configuration>
-                            <includes>
-                                <include>**/*IT.java</include>
-                            </includes>
-                        </configuration>
+        <plugins>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <executions>
+                    <execution>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
-                    </plugin>
-                    <plugin>
-                        <groupId>net.masterthought</groupId>
-                        <artifactId>maven-cucumber-reporting</artifactId>
-                        <executions>
-                            <execution>
-                                <id>execution</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-    </profiles>
-
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
