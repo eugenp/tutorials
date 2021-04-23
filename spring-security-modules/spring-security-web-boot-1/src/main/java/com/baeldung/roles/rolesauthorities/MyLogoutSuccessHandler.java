@@ -2,7 +2,6 @@ package com.baeldung.roles.rolesauthorities;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
-    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         final HttpSession session = request.getSession();
         if (session != null) {
             session.removeAttribute("user");

@@ -13,7 +13,7 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-// In order to execute these tests, com.baeldung.custom.Application needs to be running.
+// In order to execute these tests, com.baeldung.roles.custom.Application needs to be running.
 public class ApplicationLiveTest {
     
     @Test
@@ -36,8 +36,6 @@ public class ApplicationLiveTest {
         assertTrue(response.asString().contains("id"));
     }
 
-    //
-
     @Test
     public void givenUserMemberInOrganization_whenGetOrganization_thenOK() {
         final Response response = givenAuth("john", "123").get("http://localhost:8082/organizations/1");
@@ -51,8 +49,6 @@ public class ApplicationLiveTest {
         assertEquals(403, response.getStatusCode());
     }
 
-    //
-
     @Test
     public void givenDisabledSecurityExpression_whenGetFooByName_thenError() {
         final Response response = givenAuth("john", "123").get("http://localhost:8082/foos?name=sample");
@@ -60,7 +56,6 @@ public class ApplicationLiveTest {
         assertTrue(response.asString().contains("method hasAuthority() not allowed"));
     }
 
-    //
     private RequestSpecification givenAuth(String username, String password) {
         return RestAssured.given().log().uri().auth().form(username, password, new FormAuthConfig("/login","username","password"));
     }
