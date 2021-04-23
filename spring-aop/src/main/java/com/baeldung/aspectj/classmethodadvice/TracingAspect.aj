@@ -13,11 +13,12 @@ public aspect TracingAspect {
         LOG.trace("Entering " + signature);
         try {
             return proceed();
-        } catch (Exception e) {
-            LOG.trace("Exception thrown from " + signature, e);
-            throw e;
         } finally {
             LOG.trace("Exiting " + signature);
         }
+    }
+
+    after() throwing (Exception e) : traceAnnotatedClasses() {
+        LOG.trace("Exception thrown from " + thisJoinPoint.getSignature().toShortString(), e);
     }
 }
