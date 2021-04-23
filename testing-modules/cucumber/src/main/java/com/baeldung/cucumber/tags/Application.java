@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags;
+package com.baeldung.cucumber.tags;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

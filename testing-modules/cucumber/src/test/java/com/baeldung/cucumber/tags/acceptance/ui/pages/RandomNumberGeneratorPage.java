@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.acceptance.ui.pages;
+package com.baeldung.cucumber.tags.acceptance.ui.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

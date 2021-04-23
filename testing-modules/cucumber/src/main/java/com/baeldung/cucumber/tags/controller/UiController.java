@@ -1,6 +1,6 @@
-package com.baeldung.cucumber_tags.controller;
+package com.baeldung.cucumber.tags.controller;
 
-import com.baeldung.cucumber_tags.service.RandomNumberGeneratorService;
+import com.baeldung.cucumber.tags.service.RandomNumberGeneratorService;
 import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

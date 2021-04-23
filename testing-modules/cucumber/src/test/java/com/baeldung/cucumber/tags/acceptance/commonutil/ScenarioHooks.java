@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.acceptance.commonutil;
+package com.baeldung.cucumber.tags.acceptance.commonutil;
 
 
 import io.cucumber.java.After;

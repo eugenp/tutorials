@@ -1,7 +1,7 @@
-package com.baeldung.cucumber_tags.acceptance.api.steps;
+package com.baeldung.cucumber.tags.acceptance.api.steps;
 
 
-import com.baeldung.cucumber_tags.acceptance.commonutil.ScenarioContextApi;
+import com.baeldung.cucumber.tags.acceptance.commonutil.ScenarioContextApi;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.Matchers;

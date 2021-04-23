@@ -1,4 +1,4 @@
-package com.baeldung.cucumber_tags.acceptance.commonutil;
+package com.baeldung.cucumber.tags.acceptance.commonutil;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
