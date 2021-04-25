@@ -27,7 +27,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- test scoped -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
@@ -38,6 +37,16 @@
 
     <build>
         <finalName>core-java-streams-3</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -47,9 +56,8 @@
     </build>
 
     <properties>
-        <!-- testing -->
+        <lombok.version>1.18.20</lombok.version>
         <assertj.version>3.6.1</assertj.version>
-        <!-- plugins -->
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
     </properties>
 
