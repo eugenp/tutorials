@@ -24,21 +24,21 @@ public class HexagonalLibraryApplicationTest {
     Book book;
 
     @Test
-    public void testInsertBook() {
+    public void when_InsertBook_then_returnInteger() {
 	Mockito.when(libService.insertBook(bk)).thenReturn(1);
 	int returnVal = libService.insertBook(bk);
 	assertEquals(1, returnVal);
     }
 
     @Test
-    public void testSearchBook() {
+    public void when_SearchBook_then_returnBookObject() {
 	Book returnBook = new Book();
 	Mockito.lenient().when(libService.searchBook("Pride and Prejudice")).thenReturn(returnBook);
 	assertNotNull(returnBook);
     }
 
     @Test
-    public void testGetAllBooks() {
+    public void when_getAllBooks_then_returnListofBookObjects() {
 	List<Book> returnBookList = new ArrayList<Book>();
 	returnBookList = libService.getAllBooks();
 	assertNotNull(returnBookList);
