@@ -10,5 +10,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     void removeUserByUsername(String username);
-
 }

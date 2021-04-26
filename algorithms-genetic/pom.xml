@@ -44,18 +44,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>${exec-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <io.jenetics.version>3.7.0</io.jenetics.version>

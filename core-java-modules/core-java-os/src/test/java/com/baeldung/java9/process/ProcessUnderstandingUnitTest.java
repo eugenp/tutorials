@@ -101,7 +101,8 @@ class ProcessUnderstandingUnitTest {
                 .replace("/", File.separator));
 
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
+        String line = output.readLine();
+        int value = Integer.parseInt(line);
 
         assertEquals(3, value);
     }
