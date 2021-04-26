@@ -15,7 +15,7 @@ import com.baeldung.relationships.models.Tweet;
 
 public class DummyContentUtil {
     
-    public static final List<AppUser> generateDummyUsers() {
+    public static List<AppUser> generateDummyUsers() {
         List<AppUser> appUsers = new ArrayList<>();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         appUsers.add(new AppUser("Lionel Messi", "lionel@messi.com", passwordEncoder.encode("li1234")));
@@ -31,7 +31,7 @@ public class DummyContentUtil {
         return appUsers;
     }
 
-    public static final List<Tweet> generateDummyTweets(List<AppUser> users) {
+    public static List<Tweet> generateDummyTweets(List<AppUser> users) {
         List<Tweet> tweets = new ArrayList<>();
         Random random = new Random();
         IntStream.range(0, 9)
@@ -59,5 +59,4 @@ public class DummyContentUtil {
         grantedAuthorities.add(grantedAuthority);
         return grantedAuthorities;
     }
-
 }
