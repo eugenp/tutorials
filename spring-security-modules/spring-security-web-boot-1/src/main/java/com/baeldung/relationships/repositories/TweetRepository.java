@@ -9,6 +9,6 @@ import com.baeldung.relationships.models.Tweet;
 
 public interface TweetRepository extends PagingAndSortingRepository<Tweet, Long> {
 
-    @Query("select twt from Tweet twt  JOIN twt.likes as lk where lk = ?#{ principal?.username } or twt.owner = ?#{ principal?.username }")
+    @Query("SELECT twt FROM Tweet twt JOIN twt.likes AS lk WHERE lk = ?#{ principal?.username } OR twt.owner = ?#{ principal?.username }")
     Page<Tweet> getMyTweetsAndTheOnesILiked(Pageable pageable);
 }

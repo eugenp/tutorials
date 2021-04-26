@@ -14,22 +14,12 @@
     </parent>
 
     <modules>
+        <module>flogger</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>logback</module>
         <module>log-mdc</module>
-        <module>flogger</module>
     </modules>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
         <junit-jupiter.version>5.6.2</junit-jupiter.version>

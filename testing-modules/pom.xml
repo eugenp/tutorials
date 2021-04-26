@@ -15,36 +15,37 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>cucumber</module>
         <module>easy-random</module>
+        <module>easymock</module>
         <module>gatling</module>
         <module>groovy-spock</module>
+        <module>hamcrest</module>
+        <module>junit-4</module>
+        <module>junit-5-advanced</module>
+        <module>junit-5-basics</module>
         <module>junit-5</module>
         <module>junit5-annotations</module>
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
+        <module>mockito-2</module>
+        <module>mockito-3</module>  
         <module>mockito</module>
-	<module>mockito-2</module>
-	<module>mockito-3</module>	
-        <module>hamcrest</module>
         <module>mocks</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
+        <module>powermock</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>selenium-junit-testng</module>
-        <module>spring-testing</module>
         <module>spring-testing-2</module>
+        <module>spring-testing</module>
         <module>test-containers</module>
         <module>testing-assertions</module>
-        <module>testng</module>
-        <module>junit-5-basics</module>
-        <module>easymock</module>
-        <module>junit-5-advanced</module>
-        <module>xmlunit-2</module>
-        <module>junit-4</module>
-        <module>testing-libraries</module>
         <module>testing-libraries-2</module>
-        <module>powermock</module>
+        <module>testing-libraries</module>
+        <module>testng</module>
+        <module>xmlunit-2</module>
         <module>zerocode</module>
     </modules>
 

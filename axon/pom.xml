@@ -53,7 +53,7 @@
     </dependencies>
 
     <properties>
-        <axon.version>4.1.2</axon.version>
+        <axon.version>4.4.7</axon.version>
     </properties>
 
 </project>

@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 public class MySecurityExpressionRoot implements MethodSecurityExpressionOperations {
+
     protected final Authentication authentication;
     private AuthenticationTrustResolver trustResolver;
     private RoleHierarchy roleHierarchy;
@@ -29,8 +30,6 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
     public final String create = "create";
     public final String delete = "delete";
     public final String admin = "administration";
-
-    //
 
     private Object filterObject;
     private Object returnObject;
@@ -47,13 +46,10 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
         throw new RuntimeException("method hasAuthority() not allowed");
     }
 
-    //
     public boolean isMember(Long OrganizationId) {
         final User user = ((MyUserPrincipal) this.getPrincipal()).getUser();
         return user.getOrganization().getId().longValue() == OrganizationId.longValue();
     }
-
-    //
 
     @Override
     public final boolean hasAnyAuthority(String... authorities) {
@@ -136,7 +132,6 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
 
     private Set<String> getAuthoritySet() {
         if (roles == null) {
-            roles = new HashSet<String>();
             Collection<? extends GrantedAuthority> userAuthorities = authentication.getAuthorities();
 
             if (roleHierarchy != null) {
