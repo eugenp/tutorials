@@ -2,53 +2,53 @@ package com.baeldung.codecoverage.sonarqubeandjacoco.product;
 
 public class Product {
 
-    private int id;
-    private String name;
-    private int units;
-    private double price;
+ private int id;
+ private String name;
+ private int units;
+ private double price;
 
-    public int getId() {
-        return id;
-    }
+ public Product() {
+  super();
+ }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+ public Product(int id, String name, int units, double price) {
+  super();
+  this.id = id;
+  this.name = name;
+  this.units = units;
+  this.price = price;
+ }
 
-    public String getName() {
-        return name;
-    }
+ public int getId() {
+  return id;
+ }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+ public void setId(int id) {
+  this.id = id;
+ }
 
-    public int getUnits() {
-        return units;
-    }
+ public String getName() {
+  return name;
+ }
 
-    public void setUnits(int units) {
-        this.units = units;
-    }
+ public void setName(String name) {
+  this.name = name;
+ }
 
-    public double getPrice() {
-        return price;
-    }
+ public int getUnits() {
+  return units;
+ }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+ public void setUnits(int units) {
+  this.units = units;
+ }
 
-    public Product(int id, String name, int units, double price) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.units = units;
-        this.price = price;
-    }
+ public double getPrice() {
+  return price;
+ }
 
-    public Product() {
-        super();
-    }
+ public void setPrice(double price) {
+  this.price = price;
+ }
 
 }
