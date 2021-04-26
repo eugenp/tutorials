@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baeldung.relationships.models.AppUser;
 
 public interface UserRepository extends CrudRepository<AppUser, Long> {
+
     AppUser findByUsername(String username);
 
     List<AppUser> findByName(String name);
@@ -19,5 +20,5 @@ public interface UserRepository extends CrudRepository<AppUser, Long> {
     @Query("UPDATE AppUser u SET u.lastLogin=:lastLogin WHERE u.username = ?#{ principal?.username }")
     @Modifying
     @Transactional
-    public void updateLastLogin(@Param("lastLogin") Date lastLogin);
+    void updateLastLogin(@Param("lastLogin") Date lastLogin);
 }

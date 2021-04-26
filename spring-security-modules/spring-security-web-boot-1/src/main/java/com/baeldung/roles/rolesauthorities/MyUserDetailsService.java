@@ -24,12 +24,6 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    public MyUserDetailsService() {
-        super();
-    }
-
-    // API
-
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
@@ -38,17 +32,20 @@ public class MyUserDetailsService implements UserDetailsService {
             if (user == null) {
                 throw new UsernameNotFoundException("No user found with username: " + email);
             }
-            org.springframework.security.core.userdetails.User userDetails = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, getAuthorities(user.getRoles()));
-            return userDetails;
+            return new org.springframework.security.core.userdetails.User(user.getEmail(),
+                user.getPassword(),
+                user.isEnabled(),
+                true,
+                true,
+                true,
+                getAuthorities(user.getRoles()));
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    // UTIL
-
-    private final Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
-    	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+    private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
+    	List<GrantedAuthority> authorities = new ArrayList<>();
     	for (Role role: roles) {
     		authorities.add(new SimpleGrantedAuthority(role.getName()));
     		authorities.addAll(role.getPrivileges()

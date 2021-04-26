@@ -22,28 +22,46 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // @formatter: off
-        auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("pass")).roles("USER").and().withUser("admin").password(passwordEncoder().encode("pass")).roles("ADMIN");
-        // @formatter: on
+        auth
+        .inMemoryAuthentication()
+        .withUser("user")
+        .password(passwordEncoder().encode("pass"))
+        .roles("USER")
+        .and()
+        .withUser("admin")
+        .password(passwordEncoder().encode("pass"))
+        .roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // @formatter: off
         http
-                // needed so our login could work
-                .csrf().disable().authorizeRequests().anyRequest().authenticated().accessDecisionManager(accessDecisionManager()).and().formLogin().permitAll().and().logout().permitAll()
-                .deleteCookies("JSESSIONID").logoutSuccessUrl("/login");
-        // @formatter: on
+        .csrf()
+        .disable()
+        .authorizeRequests()
+        .anyRequest()
+        .authenticated()
+        .accessDecisionManager(accessDecisionManager())
+        .and()
+        .formLogin()
+        .permitAll()
+        .and()
+        .logout()
+        .permitAll()
+        .deleteCookies("JSESSIONID").logoutSuccessUrl("/login");
     }
 
     @Bean
     public AccessDecisionManager accessDecisionManager() {
-        // @formatter: off
-        List<AccessDecisionVoter<? extends Object>> decisionVoters = Arrays.asList(new WebExpressionVoter(), new RoleVoter(), new AuthenticatedVoter(), new MinuteBasedVoter());
-        // @formatter: on
+        List<AccessDecisionVoter<?>> decisionVoters = Arrays.asList(
+                new WebExpressionVoter(),
+                new RoleVoter(),
+                new AuthenticatedVoter(),
+                new MinuteBasedVoter());
+
         return new UnanimousBased(decisionVoters);
     }
     

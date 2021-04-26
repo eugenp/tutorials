@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.apache.http.HttpHeaders;
 import com.baeldung.roles.custom.Application;
 import com.baeldung.roles.custom.persistence.model.Foo;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -82,8 +82,7 @@ public class CustomUserDetailsServiceIntegrationTest {
 
     private static String asJsonString(final Object obj) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
-        final String jsonContent = mapper.writeValueAsString(obj);
-        return jsonContent;
+        return mapper.writeValueAsString(obj);
     }
 
 }

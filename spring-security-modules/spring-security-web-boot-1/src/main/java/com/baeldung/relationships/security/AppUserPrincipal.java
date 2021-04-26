@@ -2,7 +2,6 @@ package com.baeldung.relationships.security;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,13 +13,9 @@ public class AppUserPrincipal implements UserDetails {
 
     private final AppUser user;
 
-    //
-
     public AppUserPrincipal(AppUser user) {
         this.user = user;
     }
-
-    //
 
     @Override
     public String getUsername() {
@@ -34,8 +29,7 @@ public class AppUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("User"));
-        return authorities;
+        return Collections.<GrantedAuthority>singletonList(new SimpleGrantedAuthority("User"));
     }
 
     @Override
@@ -58,10 +52,7 @@ public class AppUserPrincipal implements UserDetails {
         return true;
     }
 
-    //
-
     public AppUser getAppUser() {
         return user;
     }
-
 }

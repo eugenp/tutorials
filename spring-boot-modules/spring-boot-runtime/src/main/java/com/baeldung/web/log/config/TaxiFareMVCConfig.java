@@ -14,6 +14,6 @@ public class TaxiFareMVCConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(taxiFareRequestInterceptor).addPathPatterns("/**/taxifare/**/");
+        registry.addInterceptor(taxiFareRequestInterceptor).addPathPatterns("/taxifare/*/");
     }
 }

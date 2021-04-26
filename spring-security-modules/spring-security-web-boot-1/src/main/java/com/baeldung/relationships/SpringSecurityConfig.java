@@ -28,11 +28,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private WebApplicationContext applicationContext;
-    private CustomUserDetailsService userDetailsService;
+
     @Autowired
     private AuthenticationSuccessHandlerImpl successHandler;
+
     @Autowired
     private DataSource dataSource;
+
+    private CustomUserDetailsService userDetailsService;
 
     @PostConstruct
     public void completeSetup() {
@@ -50,7 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring()
             .antMatchers("/resources/**");
     }
