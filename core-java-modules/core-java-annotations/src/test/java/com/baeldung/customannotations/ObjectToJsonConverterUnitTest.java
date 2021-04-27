@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class JsonSerializerUnitTest {
+public class ObjectToJsonConverterUnitTest {
 
     @Test
     public void givenObjectNotSerializedThenExceptionThrown() throws JsonSerializationException {
