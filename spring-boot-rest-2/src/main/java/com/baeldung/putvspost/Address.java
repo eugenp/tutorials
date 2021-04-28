@@ -10,15 +10,15 @@ public class Address {
     private @Id @GeneratedValue Long id;
     private String name;
     private String city;
-    private String pin;
+    private String postalCode;
 
     Address() {
-    };
+    }
 
-    public Address(String name, String city, String pin) {
+    public Address(String name, String city, String postalCode) {
         this.name = name;
         this.city = city;
-        this.pin = pin;
+        this.postalCode = postalCode;
     }
 
     public Long getId() {
@@ -41,17 +41,17 @@ public class Address {
         this.city = city;
     }
 
-    public String getPin() {
-        return pin;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setPin(String pin) {
-        this.pin = pin;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     @Override
     public String toString() {
-        return "Address [id=" + id + ", name=" + name + ", city=" + city + ", pin=" + pin + "]";
+        return "Address [id=" + id + ", name=" + name + ", city=" + city + ", postalCode=" + postalCode + "]";
     }
 
 }

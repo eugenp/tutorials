@@ -41,7 +41,7 @@ public class AddressController {
         return repository.findById(id)
             .map(address -> {
                 address.setCity(newAddress.getCity());
-                address.setPin(newAddress.getPin());
+                address.setPostalCode(newAddress.getPostalCode());
                 return repository.save(address);
             })
             .orElseGet(() -> {
