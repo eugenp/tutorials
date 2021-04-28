@@ -53,6 +53,9 @@
                     <verbose>true</verbose>
                     <Xlint>ignore</Xlint>
                     <encoding>UTF-8</encoding>
+                    <excludes>
+                        <exclude>**/pointcutadvice/**</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
