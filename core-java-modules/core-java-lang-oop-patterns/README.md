@@ -7,3 +7,4 @@ This module contains articles about Object-oriented programming (OOP) patterns i
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](https://www.baeldung.com/java-inheritance-composition)
 - [Immutable Objects in Java](https://www.baeldung.com/java-immutable-object)
 - [How to Make a Deep Copy of an Object in Java](https://www.baeldung.com/java-deep-copy)
+- [Interface vs Abstract Class in Java](https://www.baeldung.com/interface-vs-abstract-class-in-java/)
