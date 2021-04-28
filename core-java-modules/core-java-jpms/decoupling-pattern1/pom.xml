@@ -16,8 +16,8 @@
     </parent>
 
     <modules>
-        <module>servicemodule</module>
-        <module>consumermodule</module>
+        <module>servicemodule1</module>
+        <module>consumermodule1</module>
     </modules>
 
     <build>
