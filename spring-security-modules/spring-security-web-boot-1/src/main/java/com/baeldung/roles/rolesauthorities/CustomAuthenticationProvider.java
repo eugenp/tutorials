@@ -12,11 +12,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
 
     private final UserRepository userRepository;
+
     @SuppressWarnings("unused")
 	private UserDetailsService userDetailsService;
 
     public CustomAuthenticationProvider(UserRepository userRepository, UserDetailsService userDetailsService){
-    	super();
     	this.setUserDetailsService(userDetailsService);
     	this.userRepository = userRepository;
     }

@@ -15,6 +15,7 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>cucumber</module>
         <module>easy-random</module>
         <module>easymock</module>
         <module>gatling</module>
