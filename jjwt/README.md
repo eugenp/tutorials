@@ -8,8 +8,7 @@ This tutorial walks you through the various features supported by the [JJWT](htt
 It's super easy to build and exercise this tutorial.
 
 ```
-mvn clean install
-java -jar target/*.jar
+mvn clean spring-boot:run
 ```
 
 That's it!
