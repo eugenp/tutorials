@@ -13,18 +13,11 @@ public class StatusesService {
   private DocumentClient client;
 
   public List<Status> getStatuses() {
-    var collection = client.getCollection("statuses", Statuses.class);
+    var collection = client.getDocument("statuses", "latest", Statuses.class);
     return new ArrayList<>(collection.data().values());
   }
 
   public void updateStatus(String avenger, String location, String status) throws Exception {
-    var collection = client.getCollection("statuses", Statuses.class);
-    collection.data().entrySet().stream()
-      .filter(entry -> entry.getValue().avenger().equals(avenger))
-      .map(entry -> entry.getKey())
-      .findFirst()
-      .ifPresent(key -> {
-        client.patchDocument("statuses", key, Map.of("location", location, "status", status));
-      });
+    client.patchSubDocument("statuses", "latest", avenger, Map.of("location", location, "status", status));
   }
 }

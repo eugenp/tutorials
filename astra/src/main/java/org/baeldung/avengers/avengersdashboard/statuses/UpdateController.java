@@ -23,9 +23,9 @@ public class UpdateController {
   }
 
   private String getStatus(Double status) {
-    if (body.status() == 0) {
+    if (status == 0) {
       return "DECEASED";
-    } else if (body.status() > 0.9) {
+    } else if (status > 0.9) {
       return "HEALTHY";
     } else {
       return "INJURED";

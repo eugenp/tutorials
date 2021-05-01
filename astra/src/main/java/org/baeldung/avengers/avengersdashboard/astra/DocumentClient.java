@@ -28,10 +28,9 @@ public class DocumentClient {
     this.restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
   }
 
-  public <T> T getCollection(String collection, Class<T> cls) {
+  public <T> T getDocument(String collection, String id, Class<T> cls) {
     var uri = UriComponentsBuilder.fromHttpUrl(baseUrl)
-      .pathSegment("collections", collection)
-      .queryParam("page-size", "20")
+      .pathSegment("collections", collection, id)
       .build()
       .toUri();
     var request = RequestEntity.get(uri)
@@ -43,9 +42,9 @@ public class DocumentClient {
     return response.getBody();
   }
 
-  public void patchDocument(String collection, String key, Map<String, Object> updates) {
+  public void patchSubDocument(String collection, String id, String key, Map<String, Object> updates) {
     var updateUri = UriComponentsBuilder.fromHttpUrl(baseUrl)
-      .pathSegment("collections", collection, key)
+      .pathSegment("collections", collection, id, key)
       .build()
       .toUri();
     var updateRequest = RequestEntity.patch(updateUri)
