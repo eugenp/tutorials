@@ -14,9 +14,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>${hibernate-types.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -65,7 +76,9 @@
     </dependencies>
 
     <properties>
+        <postgresql.version>42.2.20</postgresql.version>
         <hibernate.version>5.4.12.Final</hibernate.version>
+        <hibernate-types.version>2.10.4</hibernate-types.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>        
