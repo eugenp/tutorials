@@ -27,11 +27,7 @@ public class CustomArrayTypeMappingUnitTest {
             bootstrapData();
 
         } catch (HibernateException | IOException e) {
-<<<<<<< HEAD
             System.out.println("Can't connect to a PostgreSQL DB");
-=======
-
->>>>>>> 55e039bd3c7469ff8afa3183fb8d842489eb3634
         }
     }
 
