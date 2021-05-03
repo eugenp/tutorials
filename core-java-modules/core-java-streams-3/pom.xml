@@ -47,6 +47,7 @@
     </build>
 
     <properties>
+        <lombok.version>1.18.20</lombok.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
     </properties>
