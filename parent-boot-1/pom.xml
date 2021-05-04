@@ -48,8 +48,7 @@
                     <version>${spring-boot.version}</version>
                     <configuration>
                         <mainClass>${start-class}</mainClass>
-                        <!-- this is necessary as we're not using the Boot 
-                            parent -->
+                        <!-- this is necessary as we're not using the Boot parent -->
                     </configuration>
                 </plugin>
             </plugins>
