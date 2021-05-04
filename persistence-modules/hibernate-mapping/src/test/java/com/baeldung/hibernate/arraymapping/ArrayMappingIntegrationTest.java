@@ -1,6 +1,5 @@
 package com.baeldung.hibernate.arraymapping;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class CustomArrayTypeMappingUnitTest {
+public class ArrayMappingIntegrationTest {
 
     private Session session;
     private Transaction transaction;
