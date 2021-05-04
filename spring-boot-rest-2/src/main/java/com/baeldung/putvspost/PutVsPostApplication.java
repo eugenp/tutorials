@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PutvspostApplication {
+public class PutVsPostApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PutvspostApplication.class, args);
+        SpringApplication.run(PutVsPostApplication.class, args);
     }
 
 }
