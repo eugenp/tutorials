@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-public class CustomArrayTypeMappingUnitTest {
+public class CustomArrayTypeMappingIntegrationTest {
 
     private Session session;
     private Transaction transaction;
