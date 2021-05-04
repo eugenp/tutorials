@@ -1,8 +1,12 @@
 package com.baeldung.attribute.overwrite.entity;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import java.util.Map;
-
-import javax.persistence.*;
 
 @Entity
 @AttributeOverride(name = "identifier", column = @Column(name = "VIN"))

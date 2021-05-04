@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {Application.class})
+@SpringBootTest(classes = { Application.class })
 public class AttributeOverwriteIntegrationTest {
 
     private static final LocalDate FORD_FOUNDATION_DATE = LocalDate.parse("1903-06-16");
