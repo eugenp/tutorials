@@ -16,7 +16,7 @@ public class VersionUnitTest {
     }
 
     @Test
-    @Disabled("Disabled until Java version is 11")
+    @Disabled("Only valid for Java 8 and lower")
     public void givenJava_whenUsingCommonsLang_thenGetVersion() {
         String expectedVersion = "8";
         String version = SystemUtils.JAVA_SPECIFICATION_VERSION;
@@ -32,7 +32,7 @@ public class VersionUnitTest {
     }
 
     @Test
-    @Disabled("Disabled until Java version is 11")
+    @Disabled("Only valid for Java 8 and lower")
     public void givenJava_whenUsingSystemProp_thenGetVersion() {
         String expectedVersion = "8";
         String version = System.getProperty("java.version");
