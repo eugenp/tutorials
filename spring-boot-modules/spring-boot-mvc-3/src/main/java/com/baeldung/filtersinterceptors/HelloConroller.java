@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HelloConroller {
-	
-	private Logger logger = LoggerFactory.getLogger(HelloConroller.class);
-	
-	@GetMapping("/hello")
-	public String hello() {
-		logger.info("Hello from the controller");
-		return "hello";
-	}
-	
+
+    private Logger logger = LoggerFactory.getLogger(HelloConroller.class);
+
+    @GetMapping("/hello")
+    public String hello() {
+        logger.info("Hello from the controller");
+        return "hello";
+    }
+
 }
