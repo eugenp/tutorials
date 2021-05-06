@@ -10,3 +10,4 @@ This module contains articles about Spring 5 WebFlux
 - [RSocket Using Spring Boot](https://www.baeldung.com/spring-boot-rsocket)
 - [Spring MVC Async vs Spring WebFlux](https://www.baeldung.com/spring-mvc-async-vs-webflux)
 - [Set a Timeout in Spring 5 Webflux WebClient](https://www.baeldung.com/spring-webflux-timeout)
+- [Guide to Retry in Spring WebFlux](https://www.baeldung.com/spring-webflux-retry)
