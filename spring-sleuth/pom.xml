@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-sleuth</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>spring-sleuth</name>
-    <packaging>jar</packaging>
+<Configuration scan="true">
 
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
-    </parent>
+    <appender name="logger-console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <provider
+                        class="net.logstash.logback.composite.loggingevent.ArgumentsJsonProvider"/>
+                <timestamp/>
+                <pattern>
+                    <pattern>
+                        {
+                        "logger":"%logger",
+                        "level": "%level",
+                        "thread":"%thread",
+                        "traceId": "%X{X-B3-TraceId:-}",
+                        "spanId": "%X{X-B3-SpanId:-}",
+                        "message":"%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-sleuth</artifactId>
-                <version>${spring-cloud-sleuth.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <logger name="org.springframework" level="${log-level:-OFF}"/>
+    <logger name="springfox.documentation" level="${log-level:-OFF}"/>
+    <logger name="org.apache" level="${log-level:-OFF}"/>
+    <logger name="org.apache" level="${log-level:-OFF}"/>
+    <logger name="com.zaxxer" level="${log-level:-OFF}"/>
+    <logger name="org.hibernate" level="${log-level:-OFF}"/>
+    <logger name="com.ps.util" level="${log-level:-DEBUG}"/>
+    <logger name="com.ps" level="${log-level:-DEBUG}" />
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <spring-cloud-sleuth.version>2.0.2.RELEASE</spring-cloud-sleuth.version>
-    </properties>
-
-</project>
+<!--    -Dlog-level=INFO-->
+    <root level="${log-level:-INFO}">
+        <appender-ref ref="logger-console"/>
+    </root>
+</Configuration>
