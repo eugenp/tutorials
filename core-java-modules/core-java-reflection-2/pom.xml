@@ -52,5 +52,4 @@
         <target.version>1.8</target.version>
         <spring.version>5.3.4</spring.version>
     </properties>
-    F
 </project>
