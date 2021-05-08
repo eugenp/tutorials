@@ -19,6 +19,7 @@ public class DocumentServiceImplUnitTest {
     void init() {
         documentRepository = mock(DocumentRepository.class);
         documentService = new DocumentServiceImpl(documentRepository);
+
         firstTestDocument = new Document(1L, "firstTestDocument");
         secondTestDocument = new Document(2L, "secondTestDocument");
     }
@@ -26,7 +27,8 @@ public class DocumentServiceImplUnitTest {
     @Test
     void testCreateDocument() {
         doNothing().when(documentRepository).createDocument(firstTestDocument);
-        doNothing().when(documentRepository).createDocument(secondTestDocument);
+
+        Assertions.assertDoesNotThrow(() -> documentService.createDocument(firstTestDocument));
     }
 
     @Test
@@ -42,6 +44,22 @@ public class DocumentServiceImplUnitTest {
 
         Assertions.assertNotEquals(firstDocument, secondTestDocument);
         Assertions.assertNotEquals(secondDocument, firstTestDocument);
+    }
+
+    @Test
+    void testChangeDocumentName() {
+        String newDocumentName = "newName";
+
+        doNothing().when(documentRepository).changeDocumentName(firstTestDocument.getId(), newDocumentName);
+
+        Assertions.assertDoesNotThrow(() -> documentService.changeDocumentName(firstTestDocument.getId(), newDocumentName));
+    }
+
+    @Test
+    void testDeleteDocument() {
+        doNothing().when(documentRepository).deleteDocumentById(firstTestDocument.getId());
+
+        Assertions.assertDoesNotThrow(() -> documentService.deleteDocumentById(firstTestDocument.getId()));
     }
 }
 
