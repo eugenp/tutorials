@@ -11,7 +11,6 @@ class SenderUnitTest {
 
 	@Test
 	void givenImageUploaded_whenButtonClicked_thenSendImage() {
-
 		File imageFile = new File(IMAGE_FILE_PATH);
 
 		Sender sender = new ImageSender();
