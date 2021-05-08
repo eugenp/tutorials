@@ -1,0 +1,34 @@
+## Server properties
+server:
+  port: 8080
+
+## Primary/Target Database Properties
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/customerdb
+    username: root
+    password: root
+  jpa.hibernate.ddl-auto: create-drop
+  jpa.show-sql: true
+
+## Source Database Properties
+customer:
+  datasource:
+    host: localhost
+    port: 3305
+    database: customerdb
+    username: root
+    password: root
+
+ ## Logging properties
+logging:
+  level:
+    root: INFO
+    io:
+      debezium:
+        mysql:
+          BinlogReader: INFO
+    com:
+      baeldung:
+        libraries:
+          debezium: DEBUG

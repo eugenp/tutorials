@@ -36,11 +36,14 @@ import static org.springframework.util.Assert.isTrue;
 @ContextConfiguration
 @DirtiesContext
 public class SpringDataWithSecurityIntegrationTest {
-    AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-    @Autowired
-    private ServletContext servletContext;
+
     private static UserRepository userRepository;
     private static TweetRepository tweetRepository;
+
+    @Autowired
+    private ServletContext servletContext;
+
+    AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 
     @Before
     public void testInit() {

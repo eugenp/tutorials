@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 
@@ -40,10 +41,11 @@ public class Java8CollectionCleanupUnitTest {
 
     @Test
     public void givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect() {
-        final List<Integer> listWithDuplicates = Lists.newArrayList(1, 1, 2, 2, 3, 3);
-        final List<Integer> listWithoutDuplicates = listWithDuplicates.parallelStream().distinct().collect(Collectors.toList());
+        final List<Integer> listWithDuplicates = Lists.newArrayList(5, 0, 3, 1, 2, 3, 0, 0);
+        final List<Integer> listWithoutDuplicates = listWithDuplicates.stream().distinct().collect(Collectors.toList());
 
-        assertThat(listWithoutDuplicates, hasSize(3));
+        assertThat(listWithoutDuplicates, hasSize(5));
+        assertThat(listWithoutDuplicates, containsInAnyOrder(5, 0, 3, 1, 2));
     }
 
 }
