@@ -11,11 +11,11 @@ import java.util.stream.IntStream;
 
 public class MemoryLocalityCosts {
 
-    private static final int[] intArray = new int[100_000];
-    private static final Integer[] integerArray = new Integer[100_000];
+    private static final int[] intArray = new int[1_000_000];
+    private static final Integer[] integerArray = new Integer[1_000_000];
 
     static {
-        IntStream.rangeClosed(1, 100_000).forEach(i -> {
+        IntStream.rangeClosed(1, 1_000_000).forEach(i -> {
             intArray[i-1] = i;
             integerArray[i-1] = i;
         });
