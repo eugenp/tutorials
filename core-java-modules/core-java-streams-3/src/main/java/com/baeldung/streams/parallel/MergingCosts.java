@@ -16,7 +16,7 @@ public class MergingCosts {
     private static final List<Integer> arrayListOfNumbers = new ArrayList<>();
 
     static {
-        IntStream.rangeClosed(1, 100_000).forEach(i -> {
+        IntStream.rangeClosed(1, 1_000_000).forEach(i -> {
             arrayListOfNumbers.add(i);
         });
     }
@@ -39,14 +39,14 @@ public class MergingCosts {
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public static void mergingCostsGroupingSequential() {
-        arrayListOfNumbers.stream().collect(Collectors.groupingBy(i -> i % 2 == 0));
+        arrayListOfNumbers.stream().collect(Collectors.toSet());
     }
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public static void mergingCostsGroupingParallel() {
-        arrayListOfNumbers.stream().parallel().collect(Collectors.groupingBy(i -> i % 2 == 0));
+        arrayListOfNumbers.stream().parallel().collect(Collectors.toSet());
     }
 
 }

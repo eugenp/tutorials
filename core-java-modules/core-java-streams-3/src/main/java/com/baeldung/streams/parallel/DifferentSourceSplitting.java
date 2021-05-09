@@ -17,7 +17,7 @@ public class DifferentSourceSplitting {
     private static final List<Integer> linkedListOfNumbers = new LinkedList<>();
 
     static {
-        IntStream.rangeClosed(1, 100_000).forEach(i -> {
+        IntStream.rangeClosed(1, 1_000_000).forEach(i -> {
             arrayListOfNumbers.add(i);
             linkedListOfNumbers.add(i);
         });
