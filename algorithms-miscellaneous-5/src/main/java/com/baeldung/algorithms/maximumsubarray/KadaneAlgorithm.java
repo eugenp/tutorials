@@ -13,22 +13,22 @@ public class KadaneAlgorithm {
         int start = 0;
         int end = 0;
 
-        int maxSoFar = 0, maxEndingHere = 0;
-
+        int maxSoFar = arr[0], maxEndingHere = arr[0];
         for (int i = 0; i < size; i++) {
 
             if (arr[i] > maxEndingHere + arr[i]) {
                 start = i;
                 maxEndingHere = arr[i];
-            } else
+            } else {
                 maxEndingHere = maxEndingHere + arr[i];
+            }
 
             if (maxSoFar < maxEndingHere) {
                 maxSoFar = maxEndingHere;
                 end = i;
             }
         }
-        logger.info("Found Maximum Subarray between {} and {}", start, end);
+        logger.info("Found Maximum Subarray between {} and {}", Math.min(start, end), end);
         return maxSoFar;
     }
 }

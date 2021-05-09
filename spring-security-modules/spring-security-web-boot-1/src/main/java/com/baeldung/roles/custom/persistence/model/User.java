@@ -35,13 +35,6 @@ public class User {
     @JoinColumn(name = "organization_id", referencedColumnName = "id")
     private Organization organization;
 
-    //
-
-    public User() {
-        super();
-    }
-
-    //
     public Long getId() {
         return id;
     }
@@ -81,8 +74,6 @@ public class User {
     public void setOrganization(Organization organization) {
         this.organization = organization;
     }
-
-    //
 
     @Override
     public String toString() {

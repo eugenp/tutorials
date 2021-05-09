@@ -69,7 +69,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <mainClass>com.baeldung.propertyexpansion.SpringBootPropertyExpansionApp</mainClass>
                 </configuration>
@@ -80,7 +79,6 @@
     <properties>
         <custom.property>Custom Property Value</custom.property>
         <apache-maven.version>2.7</apache-maven.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
 </project>

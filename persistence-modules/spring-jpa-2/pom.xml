@@ -66,11 +66,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-        </dependency>
 
         <!-- test scoped -->
         <dependency>
@@ -97,7 +92,6 @@
 
         <!-- utilities -->
         <guava.version>21.0</guava.version>
-        <byte-buddy.version>1.10.16</byte-buddy.version>
     </properties>
 
 </project>

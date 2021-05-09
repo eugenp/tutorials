@@ -184,7 +184,6 @@
         <activemq.broker.version>5.10.2</activemq.broker.version>
         <activemq.junit.version>5.13.1</activemq.junit.version>
         <mockito.version>2.21.0</mockito.version>
-        <byte-buddy.version>1.8.5</byte-buddy.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
     </properties>

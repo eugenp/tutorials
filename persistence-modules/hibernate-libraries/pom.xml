@@ -175,7 +175,6 @@
         <log4jdbc.version>2.0.0</log4jdbc.version>
         <logback.version>1.2.3</logback.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.version>3.8.1</maven.version>
         <mysql.version>8.0.19</mysql.version>

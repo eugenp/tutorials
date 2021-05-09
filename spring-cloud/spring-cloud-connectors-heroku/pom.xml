@@ -36,11 +36,6 @@
             <artifactId>postgresql</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-dep</artifactId>
-            <version>${bytebuddy.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -63,8 +58,6 @@
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
         <postgresql.version>42.2.10</postgresql.version>
-        <bytebuddy.version>1.10.10</bytebuddy.version>
-
     </properties>
     
 </project>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -82,7 +81,7 @@
         <rest-assured.version>3.3.0</rest-assured.version>
         <!-- plugins -->
         <thin.version>1.0.22.RELEASE</thin.version>
-        <spring-boot.version>2.4.0</spring-boot.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
         <aspectjweaver.version>1.9.1</aspectjweaver.version>
         <!-- this property can be removed once we update Mockito version in the main pom.xml -->
         <mockito.version>3.4.0</mockito.version>

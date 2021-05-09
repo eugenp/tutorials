@@ -11,3 +11,8 @@ An easy way to check that everything is working as expected is issuing any *kube
 $ kubectl get nodes
 ```
 If you get a valid response, then you're good to go.
+
+### Relevant Articles:
+
+- [Paging and Async Calls with the Kubernetes API](https://www.baeldung.com/java-kubernetes-paging-async)
+- [Using Watch with the Kubernetes API](https://www.baeldung.com/java-kubernetes-watch)
