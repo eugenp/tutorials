@@ -30,17 +30,17 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.21</version>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.3</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hibernate5</artifactId>
-            <version>2.9.8</version>
+            <version>${jackson.version}</version>
         </dependency>
         <!--Compile time JPA API -->
         <dependency>
@@ -87,6 +87,7 @@
         <hibernate.version>5.4.14.Final</hibernate.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <postgres.version>42.2.5</postgres.version>
+        <mysql.version>8.0.21</mysql.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <assertj.version>3.11.1</assertj.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>

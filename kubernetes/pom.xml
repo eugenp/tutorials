@@ -5,7 +5,7 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>kubernetes-parent</artifactId>
+    <artifactId>kubernetes</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>k8s-intro</module>

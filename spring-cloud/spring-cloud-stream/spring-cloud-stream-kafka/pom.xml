@@ -101,7 +101,6 @@
     </repositories>
 
     <properties>
-        <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <kafka-avro-serializer.version>4.0.0</kafka-avro-serializer.version>
         <avro.version>1.8.2</avro.version>

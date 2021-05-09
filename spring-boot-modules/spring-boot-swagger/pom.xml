@@ -25,7 +25,7 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
+            <version>${springfox.version}</version>
         </dependency>
     </dependencies>
 
@@ -37,5 +37,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <springfox.version>3.0.0</springfox.version>
+    </properties>
 
 </project>

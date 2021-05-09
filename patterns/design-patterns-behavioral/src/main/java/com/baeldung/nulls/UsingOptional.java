@@ -38,8 +38,8 @@ public class UsingOptional {
             .flatMap(list -> list.stream().findFirst());
     }
 
-    private Optional<List> getOptionalList() {
-        return Optional.ofNullable(getList());
+    private Optional<List<String>> getOptionalList() {
+        return Optional.of(getList());
     }
 
     private String doSomething(boolean processed) {

@@ -9,4 +9,5 @@ This module contains articles about reactive Spring 5
 - [Debugging Reactive Streams in Java](https://www.baeldung.com/spring-debugging-reactive-streams)
 - [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
 - [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
+- [Backpressure Mechanism in Spring WebFlux](https://www.baeldung.com/spring-webflux-backpressure)
 - More articles: [[<-- prev]](/spring-5-reactive)

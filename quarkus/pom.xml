@@ -97,7 +97,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
                 <configuration>
                     <forkCount>1</forkCount>
                     <reuseForks>true</reuseForks>
@@ -136,7 +135,6 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -157,7 +155,6 @@
     </profiles>
 
     <properties>
-        <surefire-plugin.version>2.22.0</surefire-plugin.version>
         <quarkus.version>1.7.0.Final</quarkus.version>
         <junit-jupiter.version>5.6.0</junit-jupiter.version>
     </properties>

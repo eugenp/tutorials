@@ -82,8 +82,7 @@ public class CustomUserDetailsServiceIntegrationTest {
 
     private static String asJsonString(final Object obj) throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
-        final String jsonContent = mapper.writeValueAsString(obj);
-        return jsonContent;
+        return mapper.writeValueAsString(obj);
     }
 
 }

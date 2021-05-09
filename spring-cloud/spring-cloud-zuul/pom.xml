@@ -38,6 +38,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+                <version>${spring-cloud-netflix-zuul.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -45,10 +50,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -79,8 +80,8 @@
     </build>
 
     <properties>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-cloud.version>2020.0.0</spring-cloud.version>
+        <spring-cloud-netflix-zuul.version>2.2.2.RELEASE</spring-cloud-netflix-zuul.version>
     </properties>
 
 </project>
