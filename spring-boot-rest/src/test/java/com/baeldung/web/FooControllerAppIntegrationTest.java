@@ -1,5 +1,11 @@
 package com.baeldung.web;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.baeldung.persistence.dao.IFooDao;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
 /**
- * 
+ *
  *  We'll start the whole context, but not the server. We'll mock the REST calls instead.
  *
  */
@@ -24,6 +26,14 @@ public class FooControllerAppIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private IFooDao fooDao;
+
+    @Before
+    public void setup(){
+        this.fooDao.deleteAll();
+    }
 
     @Test
     public void whenFindPaginatedRequest_thenEmptyResponse() throws Exception {
