@@ -14,16 +14,16 @@ import com.baeldung.shopify.application.ports.oubound.SaveItemRepo;
 @Repository
 public class ItemRepository implements SaveItemRepo, RetrieveItemRepo {
 
-	private Map<String, Item> shoppingCard = new HashMap<>();
+	private Map<String, Item> shoppingCart = new HashMap<>();
 
 	@Override
 	public void saveItem(Item item) {
-		shoppingCard.put(item.getProductId(), item);
+		shoppingCart.put(item.getProductId(), item);
 	}
 
 	@Override
 	public List<Item> retrieveItem() {
-		return shoppingCard.values().stream().collect(Collectors.toList());
+		return shoppingCart.values().stream().collect(Collectors.toList());
 	}
 
 }
