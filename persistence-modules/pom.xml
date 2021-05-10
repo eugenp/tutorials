@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>persistence-modules</artifactId>
     <name>persistence-modules</name>
@@ -65,7 +66,6 @@
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
         <module>spring-data-geode</module>
-
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-enterprise</module>
@@ -74,16 +74,14 @@
         <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
-
         <module>spring-data-jdbc</module>
-
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module> <!-- long running -->        
+        <module>spring-hibernate-5</module> <!-- long running -->
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
@@ -101,4 +99,5 @@
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <junit.version>4.13</junit.version>
     </properties>
+
 </project>
