@@ -623,6 +623,7 @@
                 <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
@@ -1079,6 +1080,7 @@
                 <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
