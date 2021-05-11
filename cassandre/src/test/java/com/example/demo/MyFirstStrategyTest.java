@@ -42,7 +42,7 @@ public class MyFirstStrategyTest {
         logger.info("Cumulated gains:");
         gains.forEach((currency, gain) -> logger.info(currency + " : " + gain.getAmount()));
 
-        System.out.println("Position still opened :");
+        logger.info("Position still opened :");
         strategy.getPositions()
                 .values()
                 .stream()
