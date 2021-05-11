@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tech.cassandre.trading.bot.dto.market.TickerDTO;
 import tech.cassandre.trading.bot.dto.position.PositionDTO;
 import tech.cassandre.trading.bot.dto.position.PositionRulesDTO;
@@ -19,6 +21,8 @@ import tech.cassandre.trading.bot.strategy.CassandreStrategy;
 
 @CassandreStrategy
 public class MyFirstStrategy extends BasicCassandreStrategy {
+
+    private final Logger logger = LoggerFactory.getLogger(MyFirstStrategy.class);
 
     @Override
     public Set<CurrencyPairDTO> getRequestedCurrencyPairs() {
@@ -34,7 +38,7 @@ public class MyFirstStrategy extends BasicCassandreStrategy {
 
     @Override
     public void onTickerUpdate(TickerDTO ticker) {
-        System.out.println("Received a new ticker : " + ticker);
+        logger.info("Received a new ticker : {}", ticker);
         
         if (new BigDecimal("56000").compareTo(ticker.getLast()) == -1) {
 
@@ -52,10 +56,10 @@ public class MyFirstStrategy extends BasicCassandreStrategy {
     @Override
     public void onPositionStatusUpdate(PositionDTO position) {
         if (position.getStatus() == OPENED) {
-            System.out.println("> New position opened : " + position.getPositionId());
+            logger.info("> New position opened : {}", position.getPositionId());
         }
         if (position.getStatus() == CLOSED) {
-            System.out.println("> Position closed : " + position.getDescription());
+            logger.info("> Position closed : {}", position.getDescription());
         }
     }
 

@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -21,6 +23,8 @@ import tech.cassandre.trading.bot.test.mock.TickerFluxMock;
 @Import(TickerFluxMock.class)
 @DisplayName("Simple strategy test")
 public class MyFirstStrategyTest {
+
+    private final Logger logger = LoggerFactory.getLogger(MyFirstStrategyTest.class);
 
     @Autowired
     private MyFirstStrategy strategy;
@@ -35,15 +39,15 @@ public class MyFirstStrategyTest {
 
         final HashMap<CurrencyDTO, GainDTO> gains = strategy.getGains();
 
-        System.out.println("Cumulated gains:");
-        gains.forEach((currency, gain) -> System.out.println(currency + " : " + gain.getAmount()));
+        logger.info("Cumulated gains:");
+        gains.forEach((currency, gain) -> logger.info(currency + " : " + gain.getAmount()));
 
         System.out.println("Position still opened :");
         strategy.getPositions()
                 .values()
                 .stream()
                 .filter(p -> p.getStatus().equals(OPENED))
-                .forEach(p -> System.out.println(" - " + p.getDescription()));
+                .forEach(p -> logger.info(" - {} " + p.getDescription()));
 
         assertTrue(gains.get(USDT).getPercentage() > 0);
     }
