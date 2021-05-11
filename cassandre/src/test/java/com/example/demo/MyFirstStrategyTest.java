@@ -34,7 +34,7 @@ public class MyFirstStrategyTest {
 
     @Test
     @DisplayName("Check gains")
-    public void whenTickersArrives_checkGains() {
+    public void whenTickersArrives_thenCheckGains() {
         await().forever().until(() -> tickerFluxMock.isFluxDone());
 
         final HashMap<CurrencyDTO, GainDTO> gains = strategy.getGains();
