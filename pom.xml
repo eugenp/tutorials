@@ -387,7 +387,6 @@
 
                 <module>core-java-modules</module>
 
-                <module>cassandre</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 

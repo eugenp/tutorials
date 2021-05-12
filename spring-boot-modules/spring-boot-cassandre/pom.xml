@@ -12,7 +12,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>Cassandre trading bot tutorial</name>
 	<description>Cassandre trading bot tutorial</description>
 	<properties>
 		<java.version>11</java.version>
