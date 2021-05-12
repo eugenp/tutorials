@@ -1,10 +1,10 @@
-package com.baeldung.attribute.overwrite;
+package com.baeldung.attribute.override;
 
 import com.baeldung.Application;
-import com.baeldung.attribute.overwrite.entity.Address;
-import com.baeldung.attribute.overwrite.entity.Brand;
-import com.baeldung.attribute.overwrite.entity.Car;
-import com.baeldung.attribute.overwrite.repository.CarRepository;
+import com.baeldung.attribute.override.entity.Address;
+import com.baeldung.attribute.override.entity.Brand;
+import com.baeldung.attribute.override.entity.Car;
+import com.baeldung.attribute.override.repository.CarRepository;
 import org.assertj.core.api.Assertions;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import java.time.LocalDate;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { Application.class })
-public class AttributeOverwriteIntegrationTest {
+public class AttributeOverrideIntegrationTest {
 
     private static final LocalDate FORD_FOUNDATION_DATE = LocalDate.parse("1903-06-16");
     @Autowired
