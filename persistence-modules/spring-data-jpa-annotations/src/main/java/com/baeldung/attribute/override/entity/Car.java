@@ -1,4 +1,4 @@
-package com.baeldung.attribute.overwrite.entity;
+package com.baeldung.attribute.override.entity;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

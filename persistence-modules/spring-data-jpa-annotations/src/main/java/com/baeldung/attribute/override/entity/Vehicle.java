@@ -1,4 +1,4 @@
-package com.baeldung.attribute.overwrite.entity;
+package com.baeldung.attribute.override.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
