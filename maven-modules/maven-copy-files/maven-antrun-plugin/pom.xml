@@ -30,7 +30,7 @@
                 <version>3.0.0</version>
                 <executions>
                     <execution>
-                        <phase>install</phase>
+                        <phase>generate-sources</phase>
                         <configuration>
                             <target>
                                 <mkdir dir="${basedir}/target/destination-folder" />
