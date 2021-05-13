@@ -31,6 +31,7 @@
         <module>version-collision</module>
         <module>version-overriding-plugins</module>
         <module>versions-maven-plugin</module>
+        <module>maven-printing-plugins</module>
     </modules>
 
 </project>
