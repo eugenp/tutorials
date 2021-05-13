@@ -1,4 +1,4 @@
-package com.baeldung.interface_vs_abstract_class;
+package com.baeldung.interfacevsabstractclass;
 
 public abstract class Vehicle {
 

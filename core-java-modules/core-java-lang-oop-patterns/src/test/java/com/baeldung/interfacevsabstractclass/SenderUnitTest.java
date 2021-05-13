@@ -1,7 +1,10 @@
-package com.baeldung.interface_vs_abstract_class;
+package com.baeldung.interfacevsabstractclass;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import com.baeldung.interfacevsabstractclass.ImageSender;
+import com.baeldung.interfacevsabstractclass.Sender;
 
 import java.io.File;
 
