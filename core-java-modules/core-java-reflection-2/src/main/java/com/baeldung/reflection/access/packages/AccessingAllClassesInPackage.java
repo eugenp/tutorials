@@ -9,11 +9,15 @@ import java.util.stream.Collectors;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.reflect.ClassPath;
 
 @SuppressWarnings("rawtypes")
 public class AccessingAllClassesInPackage {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AccessingAllClassesInPackage.class);
 
     public Set<Class> findAllClassesUsingClassLoader(String packageName) {
         InputStream stream = ClassLoader.getSystemClassLoader()
@@ -29,7 +33,7 @@ public class AccessingAllClassesInPackage {
         try {
             return Class.forName(packageName + "." + className.substring(0, className.lastIndexOf('.')));
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOG.error("<<Class not found>>");
         }
         return null;
     }
