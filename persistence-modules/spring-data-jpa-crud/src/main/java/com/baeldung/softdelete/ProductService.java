@@ -25,7 +25,6 @@ public class ProductService {
     }
 
     public Iterable<Product> findAll(boolean isDeleted){
-        //return productRepository.findAll();
         Session session = entityManager.unwrap(Session.class);
         Filter filter = session.enableFilter("deletedProductFilter");
         filter.setParameter("isDeleted", isDeleted);

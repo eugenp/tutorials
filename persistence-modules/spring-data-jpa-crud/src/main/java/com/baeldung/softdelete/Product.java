@@ -17,7 +17,6 @@ import org.hibernate.annotations.SQLDelete;
 @Entity
 @Table(name = "tbl_products")
 @SQLDelete(sql = "UPDATE tbl_products SET deleted = true WHERE id=?")
-// @Where(clause = "deleted=false")
 @FilterDef(name = "deletedProductFilter", parameters = @ParamDef(name = "isDeleted", type = "boolean"))
 @Filter(name = "deletedProductFilter", condition = "deleted = :isDeleted")
 public class Product implements Serializable {
