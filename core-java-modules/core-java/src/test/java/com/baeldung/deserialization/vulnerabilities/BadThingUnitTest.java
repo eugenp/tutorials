@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class BadThingTest {
+public class BadThingUnitTest {
 
     @Test
     @DisplayName("When a BadThing object is deserialized, then code execution in MyCustomAttackObject is run.")
