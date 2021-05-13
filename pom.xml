@@ -1276,6 +1276,7 @@
             </build>
 
             <modules>
+                 <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>core-java-modules/core-java-9</module>
                  <module>core-java-modules/core-java-9-improvements</module>
                  <module>core-java-modules/core-java-9-jigsaw</module>
