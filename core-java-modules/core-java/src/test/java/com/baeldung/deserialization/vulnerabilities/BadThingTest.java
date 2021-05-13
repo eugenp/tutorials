@@ -1,6 +1,7 @@
 package com.baeldung.deserialization.vulnerabilities;
 
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,6 +12,7 @@ import java.io.ObjectOutputStream;
 public class BadThingTest {
 
     @Test
+    @DisplayName("When a BadThing object is deserialized, then code execution in MyCustomAttackObject is run.")
     public void testCodeExecution() throws Exception {
         BadThing bt = new BadThing();
 
