@@ -1,8 +1,11 @@
-package com.baeldung.interface_vs_abstract_class;
+package com.baeldung.interfacevsabstractclass;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import com.baeldung.interfacevsabstractclass.Car;
+import com.baeldung.interfacevsabstractclass.Vehicle;
 
 class VehicleUnitTest {
 
