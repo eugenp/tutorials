@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>gateway</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -42,7 +43,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session</artifactId>
@@ -51,7 +51,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
@@ -60,7 +59,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -77,15 +75,15 @@
                         <configuration>
                             <tasks>
                                 <exec executable="cmd" osfamily="windows"
-                                      dir="${project.basedir}/src/main/angular/ui">
-                                    <arg value="/c"/>
-                                    <arg value="ng"/>
-                                    <arg value="build"/>
+                                    dir="${project.basedir}/src/main/angular/ui">
+                                    <arg value="/c" />
+                                    <arg value="ng" />
+                                    <arg value="build" />
                                 </exec>
                                 <exec executable="/bin/sh" osfamily="mac"
-                                      dir="${project.basedir}/src/main/angular/ui">
-                                    <arg value="-c"/>
-                                    <arg value="ng build"/>
+                                    dir="${project.basedir}/src/main/angular/ui">
+                                    <arg value="-c" />
+                                    <arg value="ng build" />
                                 </exec>
                             </tasks>
                         </configuration>
@@ -100,7 +98,6 @@
 
     <properties>
         <spring-cloud-dependencies.version>Dalston.RELEASE</spring-cloud-dependencies.version>
-
     </properties>
-    
+
 </project>
