@@ -15,6 +15,7 @@ spring:
     username: SA
 bael:
   property: stagingValue
+  stagingProperty: stagingPropertyValue
 ---
 application:
   servers:

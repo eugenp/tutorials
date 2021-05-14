@@ -20,7 +20,8 @@ public class ProcessAPIEnhancementsUnitTest {
 
     Logger log = LoggerFactory.getLogger(ProcessAPIEnhancementsUnitTest.class);
 
-    @Test
+    // @Test
+    // OS / Java version dependent
     public void givenCurrentProcess_whenInvokeGetInfo_thenSuccess() throws IOException {
         ProcessHandle processHandle = ProcessHandle.current();
         ProcessHandle.Info processInfo = processHandle.info();
@@ -41,7 +42,8 @@ public class ProcessAPIEnhancementsUnitTest {
           .isPresent());
     }
 
-    @Test
+    // @Test
+    // OS / Java version dependent
     public void givenSpawnProcess_whenInvokeGetInfo_thenSuccess() throws IOException {
 
         String javaCmd = ProcessUtils.getJavaCmd()
@@ -67,7 +69,8 @@ public class ProcessAPIEnhancementsUnitTest {
           .isPresent());
     }
 
-    @Test
+    // @Test
+    // OS / Java version dependent
     public void givenLiveProcesses_whenInvokeGetInfo_thenSuccess() {
         Stream<ProcessHandle> liveProcesses = ProcessHandle.allProcesses();
         liveProcesses.filter(ProcessHandle::isAlive)
@@ -82,7 +85,8 @@ public class ProcessAPIEnhancementsUnitTest {
             });
     }
 
-    @Test
+    // @Test
+    // OS / Java version dependent
     public void givenProcess_whenGetChildProcess_thenSuccess() throws IOException {
         int childProcessCount = 5;
         for (int i = 0; i < childProcessCount; i++) {
@@ -105,7 +109,8 @@ public class ProcessAPIEnhancementsUnitTest {
             .command()));
     }
 
-    @Test
+    // @Test
+    // OS / Java version dependent
     public void givenProcess_whenAddExitCallback_thenSuccess() throws Exception {
         String javaCmd = ProcessUtils.getJavaCmd()
           .getAbsolutePath();
