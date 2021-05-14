@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring</groupId>
     <artifactId>spring-cloud-functions</artifactId>
@@ -16,15 +16,15 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-function-adapter-aws</artifactId>
             <version>${spring-cloud-function.version}</version>
         </dependency>
-        <!-- We don't need spring-cloud-starter-function-web when deploying to AWS-->
-        <!-- It is used only for local testing-->
+        <!-- We don't need spring-cloud-starter-function-web when deploying to AWS -->
+        <!-- It is used only for local testing -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-function-web</artifactId>
@@ -86,7 +86,6 @@
         <aws-lambda-events.version>2.0.2</aws-lambda-events.version>
         <aws-lambda-java-core.version>1.1.0</aws-lambda-java-core.version>
         <spring-boot-thin.version>1.0.10.RELEASE</spring-boot-thin.version>
-
     </properties>
 
 </project>
