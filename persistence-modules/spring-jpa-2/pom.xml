@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jpa-2</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -25,7 +26,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -42,7 +42,6 @@
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- persistence -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -59,19 +58,12 @@
             <artifactId>tomcat-dbcp</artifactId>
             <version>${tomcat-dbcp.version}</version>
         </dependency>
-
         <!-- utilities -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-        </dependency>
-
         <!-- test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,20 +76,16 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-
         <!-- persistence -->
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-
         <!-- utilities -->
         <guava.version>21.0</guava.version>
-        <byte-buddy.version>1.10.16</byte-buddy.version>
     </properties>
 
 </project>

@@ -131,14 +131,6 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-logger-api</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-            <!-- to get around bug https://github.com/junit-team/junit5/issues/1367 -->
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
 
     <build>
@@ -163,7 +155,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>

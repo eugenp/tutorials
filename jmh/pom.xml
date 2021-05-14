@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jmh</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -19,12 +20,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${openjdk.jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${openjdk.jmh.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jol</groupId>
@@ -47,7 +48,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -76,7 +76,6 @@
     </build>
 
     <properties>
-        <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <jol-core.version>0.10</jol-core.version>
         <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>

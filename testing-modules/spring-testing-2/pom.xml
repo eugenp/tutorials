@@ -73,6 +73,5 @@
 
     <properties>
         <testcontainers.version>1.12.2</testcontainers.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
     </properties>
 </project>

@@ -64,5 +64,11 @@ public class RedirectController {
     public ModelAndView redirectedPostToPost() {
         return new ModelAndView("redirection");
     }
-
+    
+    @RequestMapping(value="/forwardWithParams", method = RequestMethod.GET)
+    public ModelAndView forwardWithParams(HttpServletRequest request) {
+        request.setAttribute("param1", "one");
+        request.setAttribute("param2", "two");
+        return new ModelAndView("forward:/forwardedWithParams");
+    }
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">    
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>libraries-5</artifactId>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <artifactId>libraries-5</artifactId>
-    <modelVersion>4.0.0</modelVersion>
 
     <dependencies>
         <dependency>
@@ -33,7 +33,6 @@
             <version>${pact.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
         <dependency>
             <groupId>com.typesafe.akka</groupId>
@@ -45,7 +44,6 @@
             <artifactId>akka-testkit_${scala.version}</artifactId>
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
-
         </dependency>
         <dependency>
             <groupId>one.util</groupId>
@@ -55,14 +53,13 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>${bytebuddy.version}</version>
+            <version>${byte-buddy.version}</version>
         </dependency>
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy-agent</artifactId>
-            <version>${bytebuddy.version}</version>
+            <version>${byte-buddy.version}</version>
         </dependency>
-
         <!--Java Docker API Client -->
         <dependency>
             <groupId>com.github.docker-java</groupId>
@@ -84,7 +81,6 @@
             </exclusions>
         </dependency>
         <!--Java Docker API Client -->
-
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
@@ -115,7 +111,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -127,14 +123,12 @@
         <scala.version>2.11</scala.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
         <streamex.version>0.6.5</streamex.version>
-        <bytebuddy.version>1.7.1</bytebuddy.version>
         <docker.version>3.0.14</docker.version>
         <caffeine.version>2.5.5</caffeine.version>
         <findbugs.version>3.0.2</findbugs.version>
         <fugue.version>4.5.1</fugue.version>
         <jnats.version>1.0</jnats.version>
         <jctools.version>2.1.2</jctools.version>
-        <jmh.version>1.19</jmh.version>
     </properties>
 
 </project>
