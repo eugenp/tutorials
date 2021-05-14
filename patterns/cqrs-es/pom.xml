@@ -5,13 +5,13 @@
     <artifactId>cqrs-es</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>cqrs-es</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>patterns</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-logging-log4j2</artifactId>
     <name>spring-boot-logging-log4j2</name>
@@ -8,12 +9,11 @@
     <description>Demo project for Spring Boot Logging with Log4J2</description>
 
     <!-- this needs to use the boot parent directly in order to not inherit logback dependencies -->
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.2.RELEASE</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <dependencies>
@@ -41,7 +41,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- for Graylog demo -->
         <dependency>
             <!-- forcing spring boot 1.x sing log4j was dropped in spring boot 1.4 and beyond -->
