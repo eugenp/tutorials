@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>open-liberty</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -29,7 +28,6 @@
             <version>${version.derby}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- For tests -->
         <dependency>
             <groupId>junit</groupId>
@@ -87,7 +85,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${version.maven-war-plugin}</version>
             </plugin>
-
         </plugins>
     </build>
 
@@ -97,7 +94,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-
         <!-- versions -->
         <version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
         <version.microprofile>3.2</version.microprofile>
@@ -109,7 +105,6 @@
         <version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
         <version.javax.json>1.0.4</version.javax.json>
         <version.cxf-rt-rs-mp-client>3.3.1</version.cxf-rt-rs-mp-client>
-
         <!-- Liberty configuration -->
         <liberty.var.app.context.root>openliberty</liberty.var.app.context.root>
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>

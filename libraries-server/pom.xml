@@ -66,32 +66,27 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- tomcat -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-catalina</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-tcp</artifactId>
             <version>${smack.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-extensions</artifactId>
             <version>${smack.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-java7</artifactId>
             <version>${smack.version}</version>
         </dependency>
-
         <!-- NanoHTTPD -->
         <dependency>
             <groupId>org.nanohttpd</groupId>
@@ -103,7 +98,6 @@
             <artifactId>nanohttpd-nanolets</artifactId>
             <version>${nanohttpd.version}</version>
         </dependency>
-
     </dependencies>
     
     <properties>

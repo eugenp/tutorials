@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.16.1</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -86,5 +86,6 @@
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-stubs.version>1.1.0</system-stubs.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <assertj-core.version>3.16.1</assertj-core.version>
     </properties>
 </project>

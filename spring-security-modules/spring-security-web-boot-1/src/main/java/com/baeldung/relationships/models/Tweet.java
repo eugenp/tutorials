@@ -15,14 +15,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Tweet")
 public class Tweet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+
     private String tweet;
+
     private String owner;
+
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "Tweet_Likes")
     private Set<String> likes = new HashSet<>();
+
+    public Tweet() {
+    }
+
+    public Tweet(String tweet, String owner) {
+        this.tweet = tweet;
+        this.owner = owner;
+    }
 
     public long getId() {
         return id;
@@ -30,14 +42,6 @@ public class Tweet {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    private Tweet() {
-    }
-
-    public Tweet(String tweet, String owner) {
-        this.tweet = tweet;
-        this.owner = owner;
     }
 
     public String getTweet() {
@@ -63,5 +67,4 @@ public class Tweet {
     public void setLikes(Set<String> likes) {
         this.likes = likes;
     }
-
 }

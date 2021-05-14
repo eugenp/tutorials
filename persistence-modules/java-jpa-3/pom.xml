@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-jpa-3</artifactId>
     <name>java-jpa-3</name>
@@ -30,17 +31,17 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.21</version>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.3</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-hibernate5</artifactId>
-            <version>2.9.8</version>
+            <version>${jackson.version}</version>
         </dependency>
         <!--Compile time JPA API -->
         <dependency>
@@ -48,7 +49,6 @@
             <artifactId>javax.persistence-api</artifactId>
             <version>${javax.persistence-api.version}</version>
         </dependency>
-
         <!--Runtime JPA implementation -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -87,6 +87,7 @@
         <hibernate.version>5.4.14.Final</hibernate.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <postgres.version>42.2.5</postgres.version>
+        <mysql.version>8.0.21</mysql.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <assertj.version>3.11.1</assertj.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
