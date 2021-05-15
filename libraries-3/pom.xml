@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-3</artifactId>
     <name>libraries-3</name>
@@ -70,7 +70,7 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine-core.version}</version>
         </dependency>
-          <dependency>
+        <dependency>
             <groupId>com.uber.nullaway</groupId>
             <artifactId>nullaway</artifactId>
             <version>${nullaway.version}</version>
@@ -80,8 +80,7 @@
             <artifactId>plexus-compiler-javac-errorprone</artifactId>
             <version>${plexus-compiler.version}</version>
         </dependency>
-        <!-- override plexus-compiler-javac-errorprone's dependency on
-             Error Prone with the latest version -->
+        <!-- override plexus-compiler-javac-errorprone's dependency on Error Prone with the latest version -->
         <dependency>
             <groupId>com.google.errorprone</groupId>
             <artifactId>error_prone_core</artifactId>
@@ -123,7 +122,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
-               <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5</version>
@@ -141,7 +140,8 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <!-- NullAway will warn by default, uncomment the next line to make the build fail -->
+                        <!-- NullAway will warn by default, uncomment the next line to make the build 
+                            fail -->
                         <!-- <arg>-Xep:NullAway:ERROR</arg> -->
                         <arg>-XepExcludedPaths:(.*)/test/.*|(.*)/jcabi/.*</arg>
                         <arg>-XepOpt:NullAway:AnnotatedPackages=com.baeldung.nullaway</arg>
@@ -153,8 +153,8 @@
                         <artifactId>plexus-compiler-javac-errorprone</artifactId>
                         <version>2.8</version>
                     </dependency>
-                    <!-- override plexus-compiler-javac-errorprone's dependency on
-                         Error Prone with the latest version -->
+                    <!-- override plexus-compiler-javac-errorprone's dependency on Error Prone with the 
+                        latest version -->
                     <dependency>
                         <groupId>com.google.errorprone</groupId>
                         <artifactId>error_prone_core</artifactId>
@@ -170,7 +170,7 @@
             </resource>
         </resources>
     </build>
-    
+
     <profiles>
         <profile>
             <id>reload</id>
@@ -210,11 +210,10 @@
             </build>
         </profile>
     </profiles>
-    
+
     <properties>
         <jcommander.version>1.78</jcommander.version>
         <lombok.version>1.18.6</lombok.version>
-
         <cactoos.version>0.43</cactoos.version>
         <airline.version>2.7.2</airline.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
@@ -223,7 +222,6 @@
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.2</aspectjtools.version>
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
-        
         <takes.version>1.19</takes.version>
         <httpcore.version>4.4.13</httpcore.version>
         <httpclient.version>4.5.12</httpclient.version>

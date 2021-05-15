@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -8,6 +7,7 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java</name>
     <packaging>jar</packaging>
+
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
@@ -90,7 +90,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -106,7 +105,6 @@
                     </arguments>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -183,13 +181,10 @@
         <!-- util -->
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
-
         <!-- maven plugins -->
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
-
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
