@@ -623,6 +623,7 @@
                 <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
@@ -1079,6 +1080,7 @@
                 <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
@@ -1274,6 +1276,7 @@
             </build>
 
             <modules>
+                 <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>core-java-modules/core-java-9</module>
                  <module>core-java-modules/core-java-9-improvements</module>
                  <module>core-java-modules/core-java-9-jigsaw</module>

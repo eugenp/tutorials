@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>json-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -11,7 +12,6 @@
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
     <dependencies>
         <dependency>
@@ -19,21 +19,18 @@
             <artifactId>jsoniter</artifactId>
             <version>${jsoniter.version}</version>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.squareup.moshi</groupId>
             <artifactId>moshi</artifactId>
@@ -110,46 +107,50 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no 
+                    influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.apache.maven.plugins
+                                        </groupId>
+                                        <artifactId>
+                                            maven-pmd-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [3.13.0,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>check</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
     <properties>
         <jsoniter.version>0.9.23</jsoniter.version>
         <assertj-core.version>3.11.1</assertj-core.version>
         <moshi.version>1.9.2</moshi.version>
     </properties>
-    <build>
-    	<pluginManagement>
-    		<plugins>
-    			<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-    			<plugin>
-    				<groupId>org.eclipse.m2e</groupId>
-    				<artifactId>lifecycle-mapping</artifactId>
-    				<version>1.0.0</version>
-    				<configuration>
-    					<lifecycleMappingMetadata>
-    						<pluginExecutions>
-    							<pluginExecution>
-    								<pluginExecutionFilter>
-    									<groupId>
-    										org.apache.maven.plugins
-    									</groupId>
-    									<artifactId>
-    										maven-pmd-plugin
-    									</artifactId>
-    									<versionRange>
-    										[3.13.0,)
-    									</versionRange>
-    									<goals>
-    										<goal>check</goal>
-    									</goals>
-    								</pluginExecutionFilter>
-    								<action>
-    									<ignore></ignore>
-    								</action>
-    							</pluginExecution>
-    						</pluginExecutions>
-    					</lifecycleMappingMetadata>
-    				</configuration>
-    			</plugin>
-    		</plugins>
-    	</pluginManagement>
-    </build>
+
 </project>
