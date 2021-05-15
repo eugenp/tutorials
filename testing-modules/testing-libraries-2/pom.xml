@@ -12,6 +12,15 @@
         <relativePath>../</relativePath>
     </parent>
 
+    <properties>
+        <jacoco.version>0.8.6</jacoco.version>
+        <system-rules.version>1.19.0</system-rules.version>
+        <system-lambda.version>1.0.0</system-lambda.version>
+        <system-stubs.version>1.1.0</system-stubs.version>
+        <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <assertj-core.version>3.16.1</assertj-core.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -72,7 +81,7 @@
     </dependencies>
 
     <build>
-		 <plugins>
+        <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
@@ -111,11 +120,5 @@
         </resources>
     </build>
 
-    <properties>
-        <system-rules.version>1.19.0</system-rules.version>
-        <system-lambda.version>1.0.0</system-lambda.version>
-        <system-stubs.version>1.1.0</system-stubs.version>
-        <junit.jupiter.version>5.6.2</junit.jupiter.version>
-        <assertj-core.version>3.16.1</assertj-core.version>
-    </properties>
+
 </project>
