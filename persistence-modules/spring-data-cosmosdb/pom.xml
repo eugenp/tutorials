@@ -4,19 +4,16 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-cosmosdb</artifactId>
-    <name>spring-data-cosmos-db</name>
+    <name>spring-data-cosmosdb</name>
     <description>tutorial for spring-data-cosmosdb</description>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-    
-    <properties>
-        <cosmodb.version>2.3.0</cosmodb.version>
-    </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -37,7 +34,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -46,5 +43,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <cosmodb.version>2.3.0</cosmodb.version>
+    </properties>
 
 </project>

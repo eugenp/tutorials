@@ -40,7 +40,7 @@ public class EligibleForAutoProxyingIntegrationTest {
 
     @Test
     public void givenAutowireInBeanPostProcessor_whenSpringContextInitialize_thenNotEligibleLogShouldShowAndGroupFieldPopulated() {
-        List<ILoggingEvent> notEligibleEvents = memoryAppender.search("Bean 'randomIntGenerator' of type [com.baeldung.autoproxying.RandomIntGenerator] " +
+        List<ILoggingEvent> notEligibleEvents = memoryAppender.search("Bean 'randomIntGenerator' of type [com.baeldung.component.autoproxying.RandomIntGenerator] " +
           "is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)");
 
         assertEquals(0, notEligibleEvents.size());

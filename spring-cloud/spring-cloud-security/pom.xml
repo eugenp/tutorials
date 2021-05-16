@@ -14,6 +14,18 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <modules>
         <module>auth-client</module>
         <module>auth-resource</module>
@@ -21,6 +33,7 @@
     </modules>
 
     <properties>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>2020.0.1</spring-cloud-dependencies.version>
     </properties>
+
 </project>
