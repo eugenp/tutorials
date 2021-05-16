@@ -397,18 +397,6 @@
     </build>
 
     <repositories>
-        <!-- Maven Snapshots Repository -->
-        <repository>
-            <id>maven-snapshot-repository</id>
-            <name>Maven Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
         <!-- Spring Roo repository -->
         <repository>
             <id>spring-roo-repository</id>
