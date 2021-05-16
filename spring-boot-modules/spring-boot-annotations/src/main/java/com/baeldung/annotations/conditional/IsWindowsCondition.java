@@ -1,4 +1,4 @@
-package java.com.baeldung.annotations.conditional;
+package com.baeldung.annotations.conditional;
 
 import org.apache.commons.lang3.SystemUtils;
 
@@ -10,6 +10,6 @@ public class IsWindowsCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-        return SystemUtils.IS_OS_WINDOWS;;
+        return SystemUtils.IS_OS_WINDOWS;
     }
 }

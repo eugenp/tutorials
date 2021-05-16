@@ -1,4 +1,4 @@
-package java.com.baeldung.annotations.conditional;
+package com.baeldung.annotations.conditional;
 
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
