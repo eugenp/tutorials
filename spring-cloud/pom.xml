@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud</artifactId>
@@ -43,7 +44,7 @@
         <module>spring-cloud-ribbon-retry</module>
         <module>spring-cloud-circuit-breaker</module>
         <module>spring-cloud-eureka-self-preservation</module>
-        <!--<module>spring-cloud-openfeign</module>--> <!-- Fixing in JAVA-2820 -->
+        <!--<module>spring-cloud-openfeign</module> --> <!-- Fixing in JAVA-2820 -->
         <module>spring-cloud-sentinel</module>
     </modules>
 
