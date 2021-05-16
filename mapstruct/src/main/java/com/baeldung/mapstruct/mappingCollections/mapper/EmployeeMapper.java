@@ -11,6 +11,8 @@ import java.util.Set;
 @Mapper
 public interface EmployeeMapper {
 
+    EmployeeDTO map(Employee employee);
+
     List<EmployeeDTO> map(List<Employee> employees);
 
     Set<EmployeeDTO> map(Set<Employee> employees);

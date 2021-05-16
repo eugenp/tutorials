@@ -11,3 +11,4 @@ This module contains articles about data structures in Java
 - [Introduction to Big Queue](https://www.baeldung.com/java-big-queue)
 - [Guide to AVL Trees in Java](https://www.baeldung.com/java-avl-trees)
 - [Graphs in Java](https://www.baeldung.com/java-graphs)
+- [Implementing a Ring Buffer in Java](https://www.baeldung.com/java-ring-buffer)

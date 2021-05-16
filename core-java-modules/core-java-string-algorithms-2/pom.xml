@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-core.version}</version>
+            <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -61,7 +61,6 @@
     </build>
 
     <properties>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
         <assertj.version>3.6.1</assertj.version>
         <diff-match-path.version>1.2</diff-match-path.version>
     </properties>

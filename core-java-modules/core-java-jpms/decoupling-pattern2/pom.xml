@@ -9,10 +9,16 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-jpms</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <modules>
-        <module>servicemodule</module>
+        <module>servicemodule2</module>
         <module>providermodule</module>
-        <module>consumermodule</module>
+        <module>consumermodule2</module>
     </modules>
 
     <build>

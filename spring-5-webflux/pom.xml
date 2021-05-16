@@ -53,6 +53,11 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,5 +68,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

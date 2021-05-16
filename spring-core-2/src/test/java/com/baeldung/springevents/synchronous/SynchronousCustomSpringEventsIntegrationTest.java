@@ -22,7 +22,7 @@ public class SynchronousCustomSpringEventsIntegrationTest {
     @Test
     public void testCustomSpringEvents() {
         isTrue(!listener.isHitCustomEventHandler(), "The value should be false");
-        publisher.publishEvent("Hello world!!");
+        publisher.publishCustomEvent("Hello world!!");
         System.out.println("Done publishing synchronous custom event. ");
         isTrue(listener.isHitCustomEventHandler(), "Now the value should be changed to true");
     }

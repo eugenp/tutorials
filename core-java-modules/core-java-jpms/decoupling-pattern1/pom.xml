@@ -6,12 +6,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.decoupling-pattern1</groupId>
     <artifactId>decoupling-pattern1</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-jpms</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <modules>
-        <module>servicemodule</module>
-        <module>consumermodule</module>
+        <module>servicemodule1</module>
+        <module>consumermodule1</module>
     </modules>
 
     <build>

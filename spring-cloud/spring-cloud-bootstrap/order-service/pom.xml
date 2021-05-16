@@ -112,11 +112,11 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <commons-lang.version>2.6</commons-lang.version>
         <structure-maven.version>0.0.2</structure-maven.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <orderservice.mainclass>com.baeldung.orderservice.OrderApplication</orderservice.mainclass>
+
     </properties>
 </project>

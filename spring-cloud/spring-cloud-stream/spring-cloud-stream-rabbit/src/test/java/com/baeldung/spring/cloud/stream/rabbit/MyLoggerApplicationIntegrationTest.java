@@ -35,6 +35,6 @@ public class MyLoggerApplicationIntegrationTest {
             .poll()
             .getPayload();
 
-        assertEquals("[1]: This is my message", payload.toString());
+        assertEquals("{\"message\":\"[1]: This is my message\"}", payload.toString());
     }
 }

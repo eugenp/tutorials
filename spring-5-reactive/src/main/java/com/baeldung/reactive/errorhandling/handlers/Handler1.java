@@ -14,7 +14,7 @@ public class Handler1 {
         return sayHello(request).onErrorReturn("Hello, Stranger")
             .flatMap(s -> ServerResponse.ok()
                 .contentType(MediaType.TEXT_PLAIN)
-                .syncBody(s));
+                .bodyValue(s));
     }
 
     private Mono<String> sayHello(ServerRequest request) {

@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+}
+
+group = 'com.gradle'
+version = '1.0.0'
+sourceCompatibility = '14'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.3.4.RELEASE'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.3.4.RELEASE'
+
+    compileOnly 'org.projectlombok:lombok:1.18.14'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.14'
+
+    runtimeOnly files('libs/sampleOne.jar', 'libs/sampleTwo.jar')
+    
+    runtimeOnly fileTree('libs') { include '*.jar' }
+
+//    implementation gradleApi()
+}
+
+test {
+    useJUnitPlatform()
+}

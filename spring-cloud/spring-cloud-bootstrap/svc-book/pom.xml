@@ -73,6 +73,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>Dalston.RELEASE</spring-cloud-dependencies.version>
+
     </properties>
 
 </project>

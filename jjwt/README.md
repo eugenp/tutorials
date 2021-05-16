@@ -8,8 +8,7 @@ This tutorial walks you through the various features supported by the [JJWT](htt
 It's super easy to build and exercise this tutorial.
 
 ```
-mvn clean install
-java -jar target/*.jar
+mvn clean spring-boot:run
 ```
 
 That's it!
@@ -47,3 +46,4 @@ Available commands (assumes httpie - https://github.com/jkbrzt/httpie):
 ## Relevant articles:
 
 - [Supercharge Java Authentication with JSON Web Tokens (JWTs)](https://www.baeldung.com/java-json-web-tokens-jjwt)
+- [Decode a JWT Token in Java](https://www.baeldung.com/java-jwt-token-decode)

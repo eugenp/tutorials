@@ -5,7 +5,16 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import static org.junit.Assert.assertTrue;
@@ -138,7 +147,7 @@ public class JavaSortingUnitTest {
         HashSet<Integer> descSortedIntegersSet = new LinkedHashSet<>(Arrays.asList(255, 200, 123, 89, 88, 66, 7, 5, 1));
 
         ArrayList<Integer> list = new ArrayList<>(integersSet);
-        list.sort((i1, i2) -> i2 - i1);
+        list.sort(Comparator.reverseOrder());
         integersSet = new LinkedHashSet<>(list);
 
         assertTrue(Arrays.equals(integersSet.toArray(), descSortedIntegersSet.toArray()));

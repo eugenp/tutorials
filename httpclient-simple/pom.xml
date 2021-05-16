@@ -302,7 +302,7 @@
         <!-- testing -->
         <wiremock.version>2.5.1</wiremock.version>
         <httpcore.version>4.4.11</httpcore.version>
-        <httpclient.version>4.5.8</httpclient.version> <!-- 4.3.6 --> <!-- 4.4-beta1 -->
+        <httpclient.version>4.5.8</httpclient.version> 
         <!-- maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>

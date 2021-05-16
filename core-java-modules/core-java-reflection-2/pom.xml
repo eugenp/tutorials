@@ -14,6 +14,15 @@
         <relativePath>../</relativePath>
     </parent>
     
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
     <build>
         <finalName>core-java-reflection-2</finalName>
         <resources>
@@ -40,5 +49,6 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
+        <spring.version>5.3.4</spring.version>
     </properties>
 </project>

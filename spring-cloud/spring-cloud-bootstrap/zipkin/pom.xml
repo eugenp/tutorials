@@ -50,6 +50,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+
     </properties>
 
 </project>

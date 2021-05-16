@@ -18,12 +18,11 @@
             <artifactId>spring-data-mongodb</artifactId>
             <version>${org.springframework.data.version}</version>
         </dependency>
-
+        
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-releasetrain</artifactId>
-            <version>${spring-releasetrain}</version>
-            <type>pom</type>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>${mongodb-driver.version}</version>
         </dependency>
 
         <dependency>
@@ -66,6 +65,12 @@
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-mongodb</artifactId>
             <version>${querydsl.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mongodb</groupId>
+                    <artifactId>mongo-java-driver</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
@@ -96,12 +101,13 @@
     </build>
 
     <properties>
-        <org.springframework.data.version>2.1.9.RELEASE</org.springframework.data.version>
-        <querydsl.version>4.1.4</querydsl.version>
+        <org.springframework.data.version>3.0.3.RELEASE</org.springframework.data.version>
+        <querydsl.version>4.3.1</querydsl.version>
         <mysema.maven.version>1.1.3</mysema.maven.version>
-        <mongodb-reactivestreams.version>1.9.2</mongodb-reactivestreams.version>
+        <mongodb-reactivestreams.version>4.1.0</mongodb-reactivestreams.version>
         <projectreactor.version>3.2.0.RELEASE</projectreactor.version>
-        <spring-releasetrain>Lovelace-SR9</spring-releasetrain>
+        <mongodb-driver.version>4.0.5</mongodb-driver.version>
+
     </properties>
 
 </project>

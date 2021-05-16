@@ -1,6 +1,8 @@
 package com.baeldung.date;
 
-import static org.junit.Assert.assertEquals;
+import org.joda.time.Days;
+import org.joda.time.Minutes;
+import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +18,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class DateDiffUnitTest {
 
@@ -29,18 +31,39 @@ public class DateDiffUnitTest {
         long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
         long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 
-        assertEquals(diff, 6);
+        assertEquals(6, diff);
     }
 
     @Test
-    public void givenTwoDatesInJava8_whenDifferentiating_thenWeGetSix() {
-        LocalDate now = LocalDate.now();
-        LocalDate sixDaysBehind = now.minusDays(6);
+    public void givenTwoDatesInJava8_whenUsingPeriodGetDays_thenWorks() {
+        LocalDate aDate = LocalDate.of(2020, 9, 11);
+        LocalDate sixDaysBehind = aDate.minusDays(6);
 
-        Period period = Period.between(now, sixDaysBehind);
+        Period period = Period.between(aDate, sixDaysBehind);
         int diff = Math.abs(period.getDays());
 
-        assertEquals(diff, 6);
+        assertEquals(6, diff);
+    }
+
+    @Test
+    public void givenTwoDatesInJava8_whenUsingPeriodGetDays_thenDoesNotWork() {
+        LocalDate aDate = LocalDate.of(2020, 9, 11);
+        LocalDate sixtyDaysBehind = aDate.minusDays(60);
+        Period period = Period.between(aDate, sixtyDaysBehind);
+        int diff = Math.abs(period.getDays());
+        //not equals
+        assertNotEquals(60, diff);
+    }
+
+    @Test
+    public void givenTwoDatesInJava8_whenUsingPeriod_thenWeGet0Year1Month29Days() {
+        LocalDate aDate = LocalDate.of(2020, 9, 11);
+        LocalDate sixtyDaysBehind = aDate.minusDays(60);
+        Period period = Period.between(aDate, sixtyDaysBehind);
+        int years = Math.abs(period.getYears());
+        int months = Math.abs(period.getMonths());
+        int days = Math.abs(period.getDays());
+        assertArrayEquals(new int[] { 0, 1, 29 }, new int[] { years, months, days });
     }
 
     @Test
@@ -51,7 +74,7 @@ public class DateDiffUnitTest {
         Duration duration = Duration.between(now, sixMinutesBehind);
         long diff = Math.abs(duration.toMinutes());
 
-        assertEquals(diff, 6);
+        assertEquals(6, diff);
     }
 
     @Test
@@ -61,7 +84,7 @@ public class DateDiffUnitTest {
 
         long diff = ChronoUnit.SECONDS.between(now, tenSecondsLater);
 
-        assertEquals(diff, 10);
+        assertEquals(10, diff);
     }
 
     @Test
@@ -69,9 +92,9 @@ public class DateDiffUnitTest {
         LocalDateTime ldt = LocalDateTime.now();
         ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
         ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore"))
-            .minusDays(6);
+                                         .minusDays(6);
         long diff = ChronoUnit.DAYS.between(sixDaysBehind, now);
-        assertEquals(diff, 6);
+        assertEquals(6, diff);
     }
 
     @Test
@@ -81,7 +104,7 @@ public class DateDiffUnitTest {
 
         long diff = now.until(tenSecondsLater, ChronoUnit.SECONDS);
 
-        assertEquals(diff, 10);
+        assertEquals(10, diff);
     }
 
     @Test
@@ -89,10 +112,9 @@ public class DateDiffUnitTest {
         org.joda.time.LocalDate now = org.joda.time.LocalDate.now();
         org.joda.time.LocalDate sixDaysBehind = now.minusDays(6);
 
-        org.joda.time.Period period = new org.joda.time.Period(now, sixDaysBehind);
-        long diff = Math.abs(period.getDays());
+        long diff = Math.abs(Days.daysBetween(now, sixDaysBehind).getDays());
 
-        assertEquals(diff, 6);
+        assertEquals(6, diff);
     }
 
     @Test
@@ -100,8 +122,9 @@ public class DateDiffUnitTest {
         org.joda.time.LocalDateTime now = org.joda.time.LocalDateTime.now();
         org.joda.time.LocalDateTime sixMinutesBehind = now.minusMinutes(6);
 
-        org.joda.time.Period period = new org.joda.time.Period(now, sixMinutesBehind);
-        long diff = Math.abs(period.getDays());
+        long diff = Math.abs(Minutes.minutesBetween(now, sixMinutesBehind).getMinutes());
+        assertEquals(6, diff);
+
     }
 
     @Test
@@ -111,6 +134,6 @@ public class DateDiffUnitTest {
 
         long diff = Math.abs(now.numDaysFrom(sixDaysBehind));
 
-        assertEquals(diff, 6);
+        assertEquals(6, diff);
     }
 }

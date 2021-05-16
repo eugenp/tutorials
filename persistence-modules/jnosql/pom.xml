@@ -21,7 +21,7 @@
     </modules>
 
     <properties>
-        <jnosql.version>0.0.5</jnosql.version>
+        <jnosql.version>0.0.6</jnosql.version>
     </properties>
 
 </project>

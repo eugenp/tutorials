@@ -12,6 +12,7 @@ This module contains articles about Spring Data REST
 - [Customizing HTTP Endpoints in Spring Data REST](https://www.baeldung.com/spring-data-rest-customize-http-endpoints)
 - [Spring Boot with SQLite](https://www.baeldung.com/spring-boot-sqlite)
 - [Spring Data Web Support](https://www.baeldung.com/spring-data-web-support)
+- [Spring REST and HAL Browser](https://www.baeldung.com/spring-rest-hal)
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring

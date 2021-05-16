@@ -57,9 +57,9 @@
 
     <repositories>
         <repository>
-            <id>apache.snapshots</id>
-            <name>Apache Development Snapshot Repository</name>
-            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+            <id>apache.releases</id>
+            <name>Apache Development Release Repository</name>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -74,8 +74,8 @@
         <commons.io.version>2.3</commons.io.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <commons.beanutils.version>1.9.1</commons.beanutils.version>
-        <commons.lang3.version>3.0</commons.lang3.version>
         <commons.collections4.version>4.0</commons.collections4.version>
+        <commons.lang3.version>3.11</commons.lang3.version>
     </properties>
 
 </project>

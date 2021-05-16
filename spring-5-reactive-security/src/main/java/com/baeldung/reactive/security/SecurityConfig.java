@@ -21,12 +21,12 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain securitygWebFilterChain(ServerHttpSecurity http) {
         return http.authorizeExchange()
-            .pathMatchers("/", "/admin")
+            .pathMatchers("/admin")
             .hasAuthority("ROLE_ADMIN")
             .matchers(EndpointRequest.to(FeaturesEndpoint.class))
             .permitAll()
             .anyExchange()
-            .permitAll()
+            .authenticated()
             .and()
             .formLogin()
             .and()

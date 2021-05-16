@@ -57,10 +57,14 @@
             <artifactId>xchart</artifactId>
             <version>${xchart-version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${common-io.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <commons-lang3.version>3.6</commons-lang3.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-chain.version>1.2</commons-chain.version>
@@ -68,6 +72,7 @@
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <xchart-version>3.5.2</xchart-version>
         <common-math3.version>3.6.1</common-math3.version>
+        <common-io.version>2.5</common-io.version>
     </properties>
 
 </project>

@@ -93,6 +93,37 @@ public class VavrUnitTest {
         assertEquals("JavaVavr 4", transformed);
     }
 
+    @Test
+    public void editTupleValueForNewTupleInstance(){
+        final Tuple2<String, Integer> java9 = Tuple.of("Java", 8);
+        final Tuple2<String, Integer> transformed = java9.update2(9);
+        int num = transformed._2();
+        assertEquals(9,num);
+    }
+
+    @Test
+    public void editTupleValueForSameInstance(){
+        Tuple2<String, Integer> java9 = Tuple.of("Java", 8);
+        java9 = java9.update2(9);
+        final int num = java9._2();
+        assertEquals(9,num);
+    }
+
+    @Test
+    public void getNumberOfElementTuple(){
+        Tuple2<String, Integer> java8 = Tuple.of("Java", 8);
+        Tuple3<String, Integer, Double> java8Triple = Tuple.of("Java", 8, 1.8);
+        Tuple3<String, Integer, Double> java8TripleWnull = Tuple.of("Java", null, 1.8);
+
+        int num = java8.arity();
+        int numTriple = java8Triple.arity();
+        int numTripleWnull = java8TripleWnull.arity();
+        assertEquals(2,num);
+        assertEquals(3,numTriple);
+        assertEquals(3,numTripleWnull);
+    }
+
+
     /*
      * Functions
      */

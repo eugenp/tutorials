@@ -16,14 +16,19 @@
     <modules>
         <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->   
         <module>maven-custom-plugin</module>     
+        <module>maven-exec-plugin</module>     
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
+        <module>maven-profiles</module>
+        <module>maven-properties</module>
+        <!-- <module>maven-proxy</module> --> <!-- Not a maven project -->
         <module>maven-unused-dependencies</module>
         <module>maven-war-plugin</module>
-        <module>maven-profiles</module>
-        <module>versions-maven-plugin</module>
+        <module>optional-dependencies</module>
         <module>version-collision</module>
+        <module>version-overriding-plugins</module>
+        <module>versions-maven-plugin</module>
     </modules>
 
 </project>

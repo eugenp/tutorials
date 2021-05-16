@@ -2,7 +2,6 @@ package com.baeldung.transaction;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -22,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baeldung.config.MongoConfig;
 import com.baeldung.model.User;
 import com.baeldung.repository.UserRepository;
-import com.mongodb.MongoCommandException;
 
 /**
  * 

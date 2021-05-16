@@ -46,6 +46,7 @@
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
         <db-util.version>1.0.4</db-util.version>
+
     </properties>
 
 </project>

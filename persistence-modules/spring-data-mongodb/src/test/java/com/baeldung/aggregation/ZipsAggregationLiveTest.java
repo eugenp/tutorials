@@ -40,7 +40,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.aggregation.model.StatePopulation;
 import com.baeldung.config.MongoConfig;
-import com.mongodb.MongoClient;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -61,7 +64,7 @@ public class ZipsAggregationLiveTest {
 
     @BeforeClass
     public static void setupTests() throws Exception {
-        client = new MongoClient();
+        client = mongoClient();
         MongoDatabase testDB = client.getDatabase("test");
         MongoCollection<Document> zipsCollection = testDB.getCollection("zips");
         zipsCollection.drop();
@@ -75,11 +78,17 @@ public class ZipsAggregationLiveTest {
 
     @AfterClass
     public static void tearDown() throws Exception {
-        client = new MongoClient();
+        client = mongoClient();
         MongoDatabase testDB = client.getDatabase("test");
         MongoCollection<Document> zipsCollection = testDB.getCollection("zips");
         zipsCollection.drop();
         client.close();
+    }
+   
+    private static MongoClient mongoClient() throws Exception {
+        final ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/test");
+        final MongoClientSettings mongoClientSettings = MongoClientSettings.builder().applyConnectionString(connectionString).build();
+        return MongoClients.create(mongoClientSettings);
     }
 
     @Test
@@ -87,7 +96,7 @@ public class ZipsAggregationLiveTest {
 
         GroupOperation groupByStateAndSumPop = group("state").sum("pop").as("statePop");
         MatchOperation filterStates = match(new Criteria("statePop").gt(10000000));
-        SortOperation sortByPopDesc = sort(new Sort(Direction.DESC, "statePop"));
+        SortOperation sortByPopDesc = sort(Sort.by(Direction.DESC, "statePop"));
 
         Aggregation aggregation = newAggregation(groupByStateAndSumPop, filterStates, sortByPopDesc);
         AggregationResults<StatePopulation> result = mongoTemplate.aggregate(aggregation, "zips", StatePopulation.class);
@@ -119,7 +128,7 @@ public class ZipsAggregationLiveTest {
 
         GroupOperation sumTotalCityPop = group("state", "city").sum("pop").as("cityPop");
         GroupOperation averageStatePop = group("_id.state").avg("cityPop").as("avgCityPop");
-        SortOperation sortByAvgPopAsc = sort(new Sort(Direction.ASC, "avgCityPop"));
+        SortOperation sortByAvgPopAsc = sort(Sort.by(Direction.ASC, "avgCityPop"));
         ProjectionOperation projectToMatchModel = project().andExpression("_id").as("state")
           .andExpression("avgCityPop").as("statePop");
         LimitOperation limitToOnlyFirstDoc = limit(1);

@@ -1,7 +1,9 @@
 package com.baeldung.jackson.bidirection;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
@@ -16,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonBidirectionRelationUnitTest {
 
-    @Test(expected = JsonMappingException.class)
+    @Test (expected = JsonMappingException.class)
     public void givenBidirectionRelation_whenSerializing_thenException() throws JsonProcessingException {
         final User user = new User(1, "John");
         final Item item = new Item(2, "book", user);
@@ -26,16 +28,39 @@ public class JacksonBidirectionRelationUnitTest {
     }
 
     @Test
-    public void givenBidirectionRelation_whenUsingJacksonReferenceAnnotation_thenCorrect() throws JsonProcessingException {
+    public void givenBidirectionRelation_whenUsingJacksonReferenceAnnotationWithSerialization_thenCorrect() throws JsonProcessingException {
         final UserWithRef user = new UserWithRef(1, "John");
         final ItemWithRef item = new ItemWithRef(2, "book", user);
         user.addItem(item);
 
-        final String result = new ObjectMapper().writeValueAsString(item);
+        final String itemJson = new ObjectMapper().writeValueAsString(item);
+        final String userJson = new ObjectMapper().writeValueAsString(user);
 
-        assertThat(result, containsString("book"));
-        assertThat(result, containsString("John"));
-        assertThat(result, not(containsString("userItems")));
+        assertThat(itemJson, containsString("book"));
+        assertThat(itemJson, not(containsString("John")));
+
+        assertThat(userJson, containsString("John"));
+        assertThat(userJson, containsString("userItems"));
+        assertThat(userJson, containsString("book"));
+    }
+
+    @Test
+    public void givenBidirectionRelation_whenUsingJacksonReferenceAnnotationWithDeserialization_thenCorrect() throws JsonProcessingException {
+        final UserWithRef user = new UserWithRef(1, "John");
+        final ItemWithRef item = new ItemWithRef(2, "book", user);
+        user.addItem(item);
+
+        final String itemJson = new ObjectMapper().writeValueAsString(item);
+        final String userJson = new ObjectMapper().writeValueAsString(user);
+
+        final ItemWithRef itemRead = new ObjectMapper().readValue(itemJson, ItemWithRef.class);
+        final UserWithRef userRead = new ObjectMapper().readValue(userJson, UserWithRef.class);
+
+        assertThat(itemRead.itemName, is("book"));
+        assertThat(itemRead.owner, nullValue());
+
+        assertThat(userRead.name, is("John"));
+        assertThat(userRead.userItems.get(0).itemName, is("book"));
     }
 
     @Test

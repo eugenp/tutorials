@@ -5,6 +5,7 @@ This module contains articles about Spring with Kafka
 ### Relevant articles
 
 - [Intro to Apache Kafka with Spring](https://www.baeldung.com/spring-kafka)
+- [Testing Kafka and Spring Boot](https://www.baeldung.com/spring-boot-kafka-testing)
 
 ### Intro
 

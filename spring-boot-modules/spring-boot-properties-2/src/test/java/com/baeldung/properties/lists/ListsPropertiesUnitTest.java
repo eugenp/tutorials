@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringListPropertiesApplication.class)
@@ -47,7 +48,7 @@ public class ListsPropertiesUnitTest {
 
     @Test
     public void whenContextIsInitialized_thenInjectedArrayContainsExpectedValues() {
-        assertEquals(new String[] {"Baeldung", "dot", "com"}, arrayOfStrings);
+        assertArrayEquals(new String[] {"Baeldung", "dot", "com"}, arrayOfStrings);
     }
 
     @Test
@@ -82,7 +83,7 @@ public class ListsPropertiesUnitTest {
         String[] arrayOfStrings = environment.getProperty("arrayOfStrings", String[].class);
         List<String> listOfStrings = (List<String>)environment.getProperty("arrayOfStrings", List.class);
 
-        assertEquals(new String[] {"Baeldung", "dot", "com"}, arrayOfStrings);
+        assertArrayEquals(new String[] {"Baeldung", "dot", "com"}, arrayOfStrings);
         assertEquals(Arrays.asList("Baeldung", "dot", "com"), listOfStrings);
     }
 }

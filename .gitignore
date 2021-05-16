@@ -85,5 +85,9 @@ transaction.log
 *-shell.log
 
 apache-cxf/cxf-aegis/baeldung.xml
+testing-modules/report-*.json
 
 libraries-2/*.db
+
+# SDKMan
+.sdkmanrc

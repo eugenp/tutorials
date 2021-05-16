@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<title>Baeldung Spring Security SAML: Home</title>
+</head>
+<body>
+    <h3><Strong>Welcome!</strong><br/>You are successfully logged in!</h3>
+    <p>You are logged as <span class="badge badge-dark" th:text="${username}">null</span>.</p>
+    <small>
+        <a th:href="@{/logout}">Logout</a>
+    </small>
+</body>
+</html>

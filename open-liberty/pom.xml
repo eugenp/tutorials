@@ -27,6 +27,7 @@
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
             <version>${version.derby}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- For tests -->
@@ -70,27 +71,16 @@
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${version.liberty-maven-plugin}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${version.maven-dependency-plugin}</version>
-                <executions>
-                    <execution>
-                        <id>copy-derby-dependency</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeArtifactIds>derby</includeArtifactIds>
-                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>
-                            <systemPropertyVariables>
-                                <liberty.test.port>${testServerHttpPort}</liberty.test.port>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </execution>
-                </executions>
+                <configuration>
+                    <copyDependencies>
+                        <location>${project.build.directory}/liberty/wlp/usr/shared/resources/</location>
+                        <dependency>
+                            <groupId>org.apache.derby</groupId>
+                            <artifactId>derby</artifactId>
+                            <version>${version.derby}</version>
+                        </dependency>
+                    </copyDependencies>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -112,8 +102,7 @@
         <version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
         <version.microprofile>3.2</version.microprofile>
         <version.derby>10.14.2.0</version.derby>
-        <version.liberty-maven-plugin>3.1</version.liberty-maven-plugin>
-        <version.maven-dependency-plugin>2.10</version.maven-dependency-plugin>
+        <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
         <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
         <version.junit>4.12</version.junit>
         <version.yasson>1.0.5</version.yasson>

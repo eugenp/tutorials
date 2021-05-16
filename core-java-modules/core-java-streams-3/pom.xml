@@ -49,8 +49,6 @@
     <properties>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <!-- plugins -->
-        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
     </properties>
 
 </project>

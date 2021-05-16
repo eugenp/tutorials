@@ -27,9 +27,10 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.quarkus.liquibase</groupId>
-            <artifactId>quarkus-liquibase-runtime</artifactId>
+            <artifactId>runtime</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-h2</artifactId>

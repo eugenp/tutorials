@@ -24,7 +24,6 @@ public class CustomSerializationUnitTest {
     public final void whenSerializing_thenNoExceptions() throws JsonGenerationException, JsonMappingException, IOException {
         final Item myItem = new Item(1, "theItem", new User(2, "theUser"));
         final String serialized = new ObjectMapper().writeValueAsString(myItem);
-        System.out.println(serialized);
     }
 
     @Test
@@ -38,7 +37,6 @@ public class CustomSerializationUnitTest {
         mapper.registerModule(simpleModule);
 
         final String serialized = mapper.writeValueAsString(myItem);
-        System.out.println(serialized);
     }
 
     @Test
@@ -46,7 +44,6 @@ public class CustomSerializationUnitTest {
         final ItemWithSerializer myItem = new ItemWithSerializer(1, "theItem", new User(2, "theUser"));
 
         final String serialized = new ObjectMapper().writeValueAsString(myItem);
-        System.out.println(serialized);
     }
 
 }

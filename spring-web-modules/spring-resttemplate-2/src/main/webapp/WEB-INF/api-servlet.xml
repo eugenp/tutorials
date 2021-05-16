@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
+>
+
+    <context:component-scan base-package="com.baeldung.sampleapp.web" />
+
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" >
+        <mvc:message-converters register-defaults="true">
+           <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+<!-- <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         -->      
+  </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+    <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="location">
+            <value>/WEB-INF/spring-views.xml</value>
+        </property>
+        <property name="order" value="0" />
+    </bean>
+
+    
+    <bean id="contentNegotiationManager"
+             class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+       <property name="defaultContentType" value="application/json" />
+  </bean>
+
+
+</beans>
+
+

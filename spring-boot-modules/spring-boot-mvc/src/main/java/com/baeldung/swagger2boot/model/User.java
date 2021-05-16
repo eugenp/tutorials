@@ -20,7 +20,7 @@ public class User {
     @Max(value = 65, message = "Age should not be greater than 65")
     private int age;
 
-    @Email(regexp=".@.\\..*", message = "Email should be valid")
+    @Email(regexp=".*@.*\\..*", message = "Email should be valid")
     private String email;
 
     public Long getId() {

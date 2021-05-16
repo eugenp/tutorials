@@ -25,6 +25,11 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
@@ -90,15 +95,15 @@
 
     <repositories>
         <repository>
-            <id>jcenter-snapshots</id>
+            <id>jcenter-release</id>
             <name>jcenter</name>
-            <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
+            <url>http://oss.jfrog.org/artifactory/oss-release-local/</url>
         </repository>
     </repositories>
 
 
     <properties>
-        <spring.fox.version>3.0.0-SNAPSHOT</spring.fox.version>
+        <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.swagger2boot.SpringBootSwaggerApplication</start-class>
         <!-- <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class> -->
         <xstream.version>1.4.11.1</xstream.version>

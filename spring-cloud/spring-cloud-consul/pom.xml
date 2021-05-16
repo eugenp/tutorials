@@ -12,6 +12,13 @@
         <artifactId>spring-cloud</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+    
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -25,18 +32,32 @@
             <artifactId>spring-cloud-starter-consul-config</artifactId>
             <version>${spring-cloud-starter-consul.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter-test.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kinguinltdhk</groupId>
+            <artifactId>leadership-consul</artifactId>
+            <version>${kinguinltdhk.version}</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>com.ecwid.consul</groupId> 
+                  <artifactId>consul-api</artifactId>
+                </exclusion>
+              </exclusions>
         </dependency>
     </dependencies>
 
     <properties>
-        <spring-cloud-starter-consul.version>1.3.0.RELEASE</spring-cloud-starter-consul.version>
-        <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <spring-cloud-starter-consul.version>2.2.3.RELEASE</spring-cloud-starter-consul.version>
+        <kinguinltdhk.version>0.3.1</kinguinltdhk.version>
+        <start-class>com.baeldung.spring.cloud.consul.discovery.DiscoveryClientApplication</start-class>
     </properties>
 
 </project>

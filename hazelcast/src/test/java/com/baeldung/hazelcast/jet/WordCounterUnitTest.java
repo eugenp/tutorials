@@ -1,11 +1,11 @@
 package com.baeldung.hazelcast.jet;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class WordCounterUnitTest {
 
@@ -15,7 +15,7 @@ public class WordCounterUnitTest {
         sentences.add("The first second was alright, but the second second was tough.");
         WordCounter wordCounter = new WordCounter();
         long countSecond = wordCounter.countWord(sentences, "second");
-        assertTrue(countSecond == 3);
+        assertEquals(3, countSecond);
     }
 
 }

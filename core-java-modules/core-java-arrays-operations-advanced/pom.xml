@@ -29,8 +29,6 @@
     </dependencies>
 
     <properties>
-        <commons-lang3.version>3.9</commons-lang3.version>
-
         <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
 </project>

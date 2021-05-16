@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import springfox.bean.validators.plugins.Validators;
+import springfox.documentation.builders.StringElementFacetBuilder;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.schema.ModelPropertyBuilderPlugin;
 import springfox.documentation.spi.schema.contexts.ModelPropertyContext;
@@ -30,8 +31,9 @@ public class EmailAnnotationPlugin implements ModelPropertyBuilderPlugin {
     public void apply(ModelPropertyContext context) {
         Optional<Email> email = annotationFromBean(context, Email.class);
         if (email.isPresent()) {
-            context.getBuilder().pattern(email.get().regexp());
-            context.getBuilder().example("email@email.com");
+            context.getSpecificationBuilder().facetBuilder(StringElementFacetBuilder.class)
+              .pattern(email.get().regexp());
+            context.getSpecificationBuilder().example("email@email.com");
         }
     }
 
