@@ -4,7 +4,7 @@
     <groupId>com.baeldung.jhipster.gateway</groupId>
     <artifactId>gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Gateway</name>
+    <name>gateway</name>
     <packaging>war</packaging>
 
     <repositories>

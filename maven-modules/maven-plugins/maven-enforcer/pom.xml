@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-enforcer</artifactId>
     <name>maven-enforcer</name>
@@ -18,13 +18,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.0.0-M2</version>
-                <!--<dependencies>-->
-                <!--<dependency>-->
-                <!--<groupId>com.baeldung</groupId>-->
-                <!--<artifactId>custom-rule</artifactId>-->
-                <!--<version>1.0</version>-->
-                <!--</dependency>-->
-                <!--</dependencies>-->
+                <!--<dependencies> -->
+                <!--<dependency> -->
+                <!--<groupId>com.baeldung</groupId> -->
+                <!--<artifactId>custom-rule</artifactId> -->
+                <!--<version>1.0</version> -->
+                <!--</dependency> -->
+                <!--</dependencies> -->
                 <executions>
                     <execution>
                         <id>enforce</id>
@@ -33,7 +33,7 @@
                         </goals>
                         <configuration>
                             <rules>
-                                <banDuplicatePomDependencyVersions/>
+                                <banDuplicatePomDependencyVersions />
                                 <requireMavenVersion>
                                     <version>3.0</version>
                                     <message>Invalid Maven version. It should, at least, be 3.0</message>
@@ -55,7 +55,7 @@
                                     <level>WARN</level>
                                 </requireActiveProfile>
                                 <!--other rules -->
-                                <!--<myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/>-->
+                                <!--<myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/> -->
                             </rules>
                         </configuration>
                     </execution>

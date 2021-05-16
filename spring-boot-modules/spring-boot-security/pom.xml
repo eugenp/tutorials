@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-security</artifactId>
+    <packaging>jar</packaging>
+    <name>spring-boot-security</name>
+    <description>Spring Boot Security Auto-Configuration</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -9,12 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-
-    <artifactId>spring-boot-security</artifactId>
-    <packaging>jar</packaging>
-
-    <name>spring-boot-security</name>
-    <description>Spring Boot Security Auto-Configuration</description>
 
     <dependencies>
         <dependency>
@@ -40,13 +39,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!-- security taglib -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
-
         <!-- JSTL -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -57,7 +54,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

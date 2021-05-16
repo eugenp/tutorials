@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -19,19 +18,16 @@
             <artifactId>blade-mvc</artifactId>
             <version>${blade-mvc.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
             <version>${bootstrap.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
         <!-- PROVIDED -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -39,7 +35,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- TEST -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -111,7 +106,6 @@
                             </arguments>
                         </configuration>
                     </execution>
-
                     <!--Stop all processes in reverse order -->
                     <execution>
                         <id>stop-all</id>
@@ -122,7 +116,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>${assembly.plugin.version}</version>

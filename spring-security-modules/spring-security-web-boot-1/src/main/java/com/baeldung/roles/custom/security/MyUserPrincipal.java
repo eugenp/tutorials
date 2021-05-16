@@ -16,13 +16,9 @@ public class MyUserPrincipal implements UserDetails {
 
     private final User user;
 
-    //
-
     public MyUserPrincipal(User user) {
         this.user = user;
     }
-
-    //
 
     @Override
     public String getUsername() {
@@ -36,7 +32,7 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        final List<GrantedAuthority> authorities = new ArrayList<>();
         for (final Privilege privilege : user.getPrivileges()) {
             authorities.add(new SimpleGrantedAuthority(privilege.getName()));
         }
@@ -63,10 +59,7 @@ public class MyUserPrincipal implements UserDetails {
         return true;
     }
 
-    //
-
     public User getUser() {
         return user;
     }
-
 }

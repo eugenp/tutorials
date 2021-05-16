@@ -18,13 +18,17 @@ public class AppUser {
     private long id;
 
     private String name;
+
     @Column(unique = true)
     private String username;
+
     private String password;
+
     private boolean enabled = true;
+
     private Date lastLogin;
 
-    private AppUser() {
+    public AppUser() {
     }
 
     public AppUser(String name, String email, String password) {

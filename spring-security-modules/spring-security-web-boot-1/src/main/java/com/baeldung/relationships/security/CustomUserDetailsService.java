@@ -17,11 +17,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private WebApplicationContext applicationContext;
-    private UserRepository userRepository;
 
-    public CustomUserDetailsService() {
-        super();
-    }
+    private UserRepository userRepository;
 
     @PostConstruct
     public void completeSetup() {
@@ -36,5 +33,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         return new AppUserPrincipal(appUser);
     }
-
 }
