@@ -9,10 +9,8 @@ public class Java8OrJava9 extends AnyNestedCondition  {
     }
 
     @Conditional(Java8Condition.class)
-    static class Java8 {
-    }
+    static class Java8 { }
 
     @Conditional(Java9Condition.class)
-    static class Java9 {
-    }
+    static class Java9 { }
 }
