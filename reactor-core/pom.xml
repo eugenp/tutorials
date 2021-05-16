@@ -34,7 +34,7 @@
     </dependencies>
 
     <properties>
-        <reactor.version>3.2.6.RELEASE</reactor.version>
+        <reactor.version>3.3.9.RELEASE</reactor.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
 

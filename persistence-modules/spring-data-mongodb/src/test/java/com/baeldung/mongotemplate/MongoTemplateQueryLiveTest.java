@@ -137,7 +137,7 @@ public class MongoTemplateQueryLiveTest {
         mongoTemplate.insert(user);
 
         Query query = new Query();
-        query.with(new Sort(Sort.Direction.ASC, "age"));
+        query.with(Sort.by(Direction.ASC, "age"));
 
         List<User> users = mongoTemplate.find(query, User.class);
         assertThat(users.size(), is(3));

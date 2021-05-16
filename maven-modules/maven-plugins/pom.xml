@@ -14,6 +14,12 @@
         <relativePath>../..</relativePath>
     </parent>
 
+    <modules>
+        <module>custom-rule</module>
+        <module>maven-enforcer</module>
+        <module>jaxws</module>
+    </modules>
+
     <build>
         <plugins>
             <plugin>

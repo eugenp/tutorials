@@ -90,7 +90,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind-version}</version>
+            <version>${jackson-version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
@@ -264,8 +264,8 @@
     <properties>
         <swagger-annotations-version>1.5.22</swagger-annotations-version>
         <spring-web-version>4.3.9.RELEASE</spring-web-version>
-        <jackson-version>2.10.1</jackson-version>
-        <jackson-databind-version>2.10.1</jackson-databind-version>
+        <jackson-version>2.11.1</jackson-version>
+<!--        <jackson-databind-version>2.10.1</jackson-databind-version>-->
         <jackson-databind-nullable-version>0.2.1</jackson-databind-nullable-version>
         <jackson-threetenbp-version>2.9.10</jackson-threetenbp-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>

@@ -59,7 +59,6 @@
     </build>
 
     <properties>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
         <assertj.version>3.6.1</assertj.version>
         <guava.version>28.1-jre</guava.version>
     </properties>

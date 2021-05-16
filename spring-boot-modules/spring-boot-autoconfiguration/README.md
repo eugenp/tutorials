@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to ApplicationContextRunner in Spring Boot](https://www.baeldung.com/spring-boot-context-runner)
 - [A Guide to Spring Boot Configuration Metadata](https://www.baeldung.com/spring-boot-configuration-metadata)
 - [Display Auto-Configuration Report in Spring Boot](https://www.baeldung.com/spring-boot-auto-configuration-report)
+- [The Spring @ConditionalOnProperty Annotation](https://www.baeldung.com/spring-conditionalonproperty)

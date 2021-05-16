@@ -10,3 +10,5 @@ This module contains articles about security libraries.
 - [Introduction to BouncyCastle with Java](https://www.baeldung.com/java-bouncy-castle)
 - [Intro to Jasypt](https://www.baeldung.com/jasypt)
 - [Digital Signatures in Java](https://www.baeldung.com/java-digital-signature)
+- [How to Read PEM File to Get Public and Private Keys](https://www.baeldung.com/java-read-pem-file-keys)
+- [SSH Connection With Java](https://www.baeldung.com/java-ssh-connection)

@@ -29,12 +29,6 @@
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Mime Type Resolution Libraries -->
         <dependency>
             <groupId>org.apache.tika</groupId>
@@ -66,7 +60,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <executable>java</executable>
                     <mainClass>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</mainClass>
@@ -114,7 +107,6 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
-
                         <executions>
                             <execution>
                                 <id>run-benchmarks</id>
@@ -142,8 +134,6 @@
     </profiles>
 
     <properties>
-        <!-- util -->
-        <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <!-- maven plugins -->

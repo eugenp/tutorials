@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,7 +21,7 @@ public class ArticleUnitTest {
 
     @BeforeClass
     public static void setup() {
-        Map properties = new HashMap();
+        Map<String, String> properties = new HashMap<>();
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.format_sql", "true");
         emFactory = Persistence.createEntityManagerFactory("jpa-h2", properties);
@@ -115,4 +117,53 @@ public class ArticleUnitTest {
         assertEquals(Category.MUSIC, persistedArticle.getCategory());
     }
 
+    @Test
+    public void shouldFindArticleByCategory() {
+        // given
+        Article article = new Article();
+        article.setId(5);
+        article.setTitle("static");
+        article.setCategory(Category.SPORT);
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.persist(article);
+        tx.commit();
+
+        String jpql = "select a from Article a where a.category = com.baeldung.jpa.enums.Category.SPORT";
+
+        // when
+        List<Article> articles = em.createQuery(jpql, Article.class).getResultList();
+
+        // then
+        assertEquals(1, articles.size());
+        assertEquals(Category.SPORT, articles.get(0).getCategory());
+        assertEquals("static", articles.get(0).getTitle());
+    }
+
+    @Test
+    public void shouldFindArticleByCategoryParameter() {
+        // given
+        Article article = new Article();
+        article.setId(6);
+        article.setTitle("dynamic");
+        article.setCategory(Category.TECHNOLOGY);
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.persist(article);
+        tx.commit();
+
+        String jpql = "select a from Article a where a.category = :category";
+
+        // when
+        TypedQuery<Article> query = em.createQuery(jpql, Article.class);
+        query.setParameter("category", Category.TECHNOLOGY);
+        List<Article> articles = query.getResultList();
+
+        // then
+        assertEquals(1, articles.size());
+        assertEquals(Category.TECHNOLOGY, articles.get(0).getCategory());
+        assertEquals("dynamic", articles.get(0).getTitle());
+    }
 }

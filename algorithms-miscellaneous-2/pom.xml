@@ -54,18 +54,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>${exec-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <reporting>
         <plugins>
             <plugin>

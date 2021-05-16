@@ -1,5 +1,16 @@
 package com.baeldung.mockito.fluentapi;
 
+import com.baeldung.mockito.fluentapi.Pizza.PizzaBuilder;
+import com.baeldung.mockito.fluentapi.Pizza.PizzaSize;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Answers;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
@@ -8,18 +19,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Answers;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-
-import com.baeldung.mockito.fluentapi.Pizza.PizzaBuilder;
-import com.baeldung.mockito.fluentapi.Pizza.PizzaSize;
-
+@RunWith(MockitoJUnitRunner.class)
 public class PizzaServiceUnitTest {
 
     @Mock
@@ -32,11 +32,6 @@ public class PizzaServiceUnitTest {
     private ArgumentCaptor<String> stringCaptor;
     @Captor
     private ArgumentCaptor<Pizza.PizzaSize> sizeCaptor;
-
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void givenTraditonalMocking_whenServiceInvoked_thenPizzaIsBuilt() {

@@ -32,7 +32,7 @@ public class JavaCollectionConversionUnitTest {
     @Test
     public final void givenUsingCoreJava_whenListConvertedToArray_thenCorrect() {
         final List<Integer> sourceList = Arrays.asList(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceList.toArray(new Integer[sourceList.size()]);
+        final Integer[] targetArray = sourceList.toArray(new Integer[0]);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class JavaCollectionConversionUnitTest {
     @Test
     public final void givenUsingCoreJava_whenSetConvertedToArray_thenCorrect() {
         final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceSet.toArray(new Integer[sourceSet.size()]);
+        final Integer[] targetArray = sourceSet.toArray(new Integer[0]);
     }
 
     @Test
@@ -95,52 +95,10 @@ public class JavaCollectionConversionUnitTest {
     }
 
     @Test
-    public final void givenUsingCommonsCollections_whenSetConvertedToArray_thenCorrect() {
-        final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceSet.toArray(new Integer[sourceSet.size()]);
-    }
-
-    @Test
     public final void givenUsingCommonsCollections_whenSetConvertedToArrayOfPrimitives_thenCorrect() {
         final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final Integer[] targetArray = sourceSet.toArray(new Integer[sourceSet.size()]);
+        final Integer[] targetArray = sourceSet.toArray(new Integer[0]);
         final int[] primitiveTargetArray = ArrayUtils.toPrimitive(targetArray);
-    }
-
-    // Set -> List; List -> Set
-
-    public final void givenUsingCoreJava_whenSetConvertedToList_thenCorrect() {
-        final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final List<Integer> targetList = new ArrayList<>(sourceSet);
-    }
-
-    public final void givenUsingCoreJava_whenListConvertedToSet_thenCorrect() {
-        final List<Integer> sourceList = Lists.newArrayList(0, 1, 2, 3, 4, 5);
-        final Set<Integer> targetSet = new HashSet<>(sourceList);
-    }
-
-    public final void givenUsingGuava_whenSetConvertedToList_thenCorrect() {
-        final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-        final List<Integer> targetList = Lists.newArrayList(sourceSet);
-    }
-
-    public final void givenUsingGuava_whenListConvertedToSet_thenCorrect() {
-        final List<Integer> sourceList = Lists.newArrayList(0, 1, 2, 3, 4, 5);
-        final Set<Integer> targetSet = Sets.newHashSet(sourceList);
-    }
-
-    public final void givenUsingCommonsCollections_whenListConvertedToSet_thenCorrect() {
-        final List<Integer> sourceList = Lists.newArrayList(0, 1, 2, 3, 4, 5);
-
-        final Set<Integer> targetSet = new HashSet<>(6);
-        CollectionUtils.addAll(targetSet, sourceList);
-    }
-
-    public final void givenUsingCommonsCollections_whenSetConvertedToList_thenCorrect() {
-        final Set<Integer> sourceSet = Sets.newHashSet(0, 1, 2, 3, 4, 5);
-
-        final List<Integer> targetList = new ArrayList<>(6);
-        CollectionUtils.addAll(targetList, sourceSet);
     }
 
     // Map (values) -> Array, List, Set
@@ -150,7 +108,7 @@ public class JavaCollectionConversionUnitTest {
         final Map<Integer, String> sourceMap = createMap();
 
         final Collection<String> values = sourceMap.values();
-        final String[] targetArray = values.toArray(new String[values.size()]);
+        final String[] targetArray = values.toArray(new String[0]);
     }
 
     @Test

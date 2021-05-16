@@ -1,12 +1,12 @@
 package com.baeldung.jackson.bidirection;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class ItemWithRef {
     public int id;
     public String itemName;
 
-    @JsonManagedReference
+    @JsonBackReference
     public UserWithRef owner;
 
     public ItemWithRef() {

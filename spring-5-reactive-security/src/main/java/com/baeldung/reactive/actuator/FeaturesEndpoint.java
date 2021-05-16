@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-@Endpoint(id = "features", enableByDefault = true)
+@Endpoint(id = "features")
 public class FeaturesEndpoint {
 
     private Map<String, Feature> features = new ConcurrentHashMap<>();

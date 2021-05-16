@@ -21,27 +21,27 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>${cucumber.java.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.java.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.java.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-spring</artifactId>
-            <version>${cucumber.java.version}</version>
+            <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
@@ -53,7 +53,7 @@
     </dependencies>
 
     <properties>
-        <cucumber.java.version>1.2.5</cucumber.java.version>
+        <cucumber.version>6.8.0</cucumber.version>
         <commons-io.version>1.3.2</commons-io.version>
     </properties>
 

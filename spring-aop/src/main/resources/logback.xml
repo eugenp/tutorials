@@ -17,6 +17,8 @@
     
     <logger name="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" level="TRACE" />
 
+    <logger name="com.baeldung.aspectj.classmethodadvice" level="TRACE" />
+
     <root level="TRACE">
         <appender-ref ref="STDOUT" />
     </root>

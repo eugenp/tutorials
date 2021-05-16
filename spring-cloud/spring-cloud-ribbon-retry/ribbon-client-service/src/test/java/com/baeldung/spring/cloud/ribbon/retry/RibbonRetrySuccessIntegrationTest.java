@@ -1,5 +1,6 @@
 package com.baeldung.spring.cloud.ribbon.retry;
 
+import org.apache.catalina.webresources.TomcatURLStreamHandlerFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,7 @@ public class RibbonRetrySuccessIntegrationTest {
 
     @BeforeAll
     public static void setup() {
+        TomcatURLStreamHandlerFactory.disable();
         weatherServiceInstance1 = startApp(8021);
         weatherServiceInstance2 = startApp(8022);
     }

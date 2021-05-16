@@ -7,12 +7,17 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Simple snippet which shows how to get the commit-ids for a file to provide log information.
  *
  * 
  */
 public class Log {
+
+    private static final Logger logger = LoggerFactory.getLogger(Log.class);
 
     @SuppressWarnings("unused")
     public static void main(String[] args) throws IOException, GitAPIException {
@@ -22,30 +27,30 @@ public class Log {
                         .call();
                 int count = 0;
                 for (RevCommit rev : logs) {
-                    //System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
+                    logger.trace("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits overall on current branch");
+                logger.debug("Had " + count + " commits overall on current branch");
 
                 logs = git.log()
                         .add(repository.resolve(git.getRepository().getFullBranch()))
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
-                    System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
+                    logger.trace("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits overall on "+git.getRepository().getFullBranch());
+                logger.debug("Had " + count + " commits overall on "+git.getRepository().getFullBranch());
 
                 logs = git.log()
                         .all()
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
-                    //System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
+                    logger.trace("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits overall in repository");
+                logger.debug("Had " + count + " commits overall in repository");
 
                 logs = git.log()
                         // for all log.all()
@@ -53,10 +58,10 @@ public class Log {
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
-                    //System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
+                    logger.trace("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits on README.md");
+                logger.debug("Had " + count + " commits on README.md");
 
                 logs = git.log()
                         // for all log.all()
@@ -64,10 +69,10 @@ public class Log {
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
-                    //System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
+                    logger.trace("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits on pom.xml");
+                logger.debug("Had " + count + " commits on pom.xml");
             }
         }
     }

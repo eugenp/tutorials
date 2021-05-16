@@ -12,4 +12,5 @@ This module contains articles about libraries for data processing in Java.
 - [Introduction to Kafka Connectors](https://www.baeldung.com/kafka-connectors-guide)
 - [Kafka Connect Example with MQTT and MongoDB](https://www.baeldung.com/kafka-connect-mqtt-mongodb)
 - [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
+- [Guide to JMapper](https://www.baeldung.com/jmapper)
 More articles: [[next -->]](/../libraries-data-2)

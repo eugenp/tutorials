@@ -51,6 +51,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>Edgware.SR5</spring-cloud-dependencies.version>
+
     </properties>
 
 </project>

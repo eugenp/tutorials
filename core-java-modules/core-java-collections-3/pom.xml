@@ -17,9 +17,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${openjdk.jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -30,13 +35,13 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.10</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <assertj.version>3.11.1</assertj.version>
+        <jol-core.version>0.10</jol-core.version>
     </properties>
 
 </project>

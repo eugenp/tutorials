@@ -30,7 +30,6 @@
 
     <properties>
         <mockito.version>2.21.0</mockito.version>
-        <jackson.version>2.10.3</jackson.version>
     </properties>
 
 </project>

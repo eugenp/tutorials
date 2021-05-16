@@ -13,23 +13,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>com.marcosbarbero.cloud</groupId>
             <artifactId>spring-cloud-zuul-ratelimit</artifactId>
             <version>${rate.limit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,8 +40,6 @@
     </build>
 
     <properties>
-        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
         <rate.limit.version>2.2.0.RELEASE</rate.limit.version>
     </properties>
 

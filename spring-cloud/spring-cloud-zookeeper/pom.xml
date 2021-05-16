@@ -18,9 +18,7 @@
     </modules>
 
     <properties>
-        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
-        <springframework.version>4.3.7.RELEASE</springframework.version>
-        <spring-cloud-starter-zookeeper-discovery.version>1.0.3.RELEASE</spring-cloud-starter-zookeeper-discovery.version>
+        <springframework.version>5.2.7.RELEASE</springframework.version>
     </properties>
 
 </project>

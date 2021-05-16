@@ -18,6 +18,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-parent</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
@@ -36,14 +43,17 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <version>${spring-cloud-starter-hystrix.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+            <version>${spring-cloud-starter-hystrix.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>${spring-cloud-starter-feign.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

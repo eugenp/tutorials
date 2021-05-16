@@ -13,3 +13,4 @@ This module contains articles about JSON.
 - [Get a Value by Key in a JSONArray](https://www.baeldung.com/java-jsonarray-get-value-by-key)
 - [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)
+- [Reducing JSON Data Size](https://www.baeldung.com/json-reduce-data-size)

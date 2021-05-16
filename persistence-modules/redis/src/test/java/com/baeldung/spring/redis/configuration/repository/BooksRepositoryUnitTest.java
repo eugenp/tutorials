@@ -11,16 +11,16 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.spring.redis.configuration.entity.Book;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class BooksRepositoryUnitTest {
 
-    @Spy
     @InjectMocks
     private BooksRepository booksRepository;
 

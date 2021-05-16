@@ -51,4 +51,17 @@
         <plexus-container-default.version>1.0-alpha-9</plexus-container-default.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

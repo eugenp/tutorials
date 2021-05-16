@@ -24,9 +24,20 @@ public class ListFiles {
             .collect(Collectors.toSet());
     }
 
+    public Set<String> listFilesUsingFilesList(String dir) throws IOException {
+        try (Stream<Path> stream = Files.list(Paths.get(dir))) {
+            return stream
+                .filter(file -> !Files.isDirectory(file))
+                .map(Path::getFileName)
+                .map(Path::toString)
+                .collect(Collectors.toSet());
+        }
+    }
+
     public Set<String> listFilesUsingFileWalk(String dir, int depth) throws IOException {
         try (Stream<Path> stream = Files.walk(Paths.get(dir), depth)) {
-            return stream.filter(file -> !Files.isDirectory(file))
+            return stream
+                .filter(file -> !Files.isDirectory(file))
                 .map(Path::getFileName)
                 .map(Path::toString)
                 .collect(Collectors.toSet());

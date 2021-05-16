@@ -8,8 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-spring-5</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -42,15 +43,38 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring-framework.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <drools-version>7.0.0.Final</drools-version>
-        <spring-framework.version>4.3.3.RELEASE</spring-framework.version>
     </properties>
-
 </project>

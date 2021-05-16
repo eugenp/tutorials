@@ -189,7 +189,6 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
-                        <version>${exec-maven-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>start-server</id>
@@ -229,7 +228,6 @@
         <httpcore.version>4.4.13</httpcore.version>
         <httpclient.version>4.5.12</httpclient.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>
         <errorprone.version>2.1.3</errorprone.version>

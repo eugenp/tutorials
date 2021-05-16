@@ -53,7 +53,7 @@
         <commons-codec.version>1.11</commons-codec.version>
 
         <!-- testing -->
-        <assertj-core.version>3.10.0</assertj-core.version>
+        <assertj-core.version>3.18.0</assertj-core.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
