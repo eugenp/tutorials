@@ -5,6 +5,11 @@ public class Student {
     private String name;
     private String group;
 
+    public Student()
+    {
+        super();
+    }
+    
     public Student(Long id, String name, String group) {
         this.id    = id;
         this.name  = name;
