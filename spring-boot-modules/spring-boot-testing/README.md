@@ -15,3 +15,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Testing Spring Boot @ConfigurationProperties](https://www.baeldung.com/spring-boot-testing-configurationproperties)
 - [Prevent ApplicationRunner or CommandLineRunner Beans From Executing During Junit Testing](https://www.baeldung.com/spring-junit-prevent-runner-beans-testing-execution)
 - [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)
+- [Fixing the NoSuchMethodError JUnit Error](https://www.baeldung.com/junit-nosuchmethoderror)

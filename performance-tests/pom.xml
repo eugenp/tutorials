@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>performance-tests</artifactId>
     <version>1.0</version>
@@ -22,13 +23,12 @@
             <groupId>com.github.dozermapper</groupId>
             <artifactId>dozer-core</artifactId>
             <version>${dozer.version}</version>
-        </dependency>       
+        </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
@@ -51,7 +51,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -90,16 +89,14 @@
                         <configuration>
                             <finalName>${uberjar.name}</finalName>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.openjdk.jmh.Main</mainClass>
                                 </transformer>
                             </transformers>
                             <filters>
                                 <filter>
-                                    <!--
-                                        Shading signed JARs will fail without this.
-                                        http://stackoverflow.com/questions/999489/invalid-signature-file-when-attempting-to-run-a-jar
-                                    -->
+                                    <!-- Shading signed JARs will fail without this. http://stackoverflow.com/questions/999489/invalid-signature-file-when-attempting-to-run-a-jar -->
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>META-INF/*.SF</exclude>
@@ -156,16 +153,10 @@
         <dozer.version>6.5.0</dozer.version>
         <mapstruct.version>1.3.1.Final</mapstruct.version>
         <modelmapper.version>2.3.8</modelmapper.version>
-        <jmapper.version>1.6.1.CR2</jmapper.version>             
-        
-        <!--
-            Java source/target to use for compilation.
-          -->
+        <jmapper.version>1.6.1.CR2</jmapper.version>
+        <!-- Java source/target to use for compilation. -->
         <javac.target>1.8</javac.target>
-
-        <!--
-            Name of the benchmark Uber-JAR to generate.
-          -->
+        <!-- Name of the benchmark Uber-JAR to generate. -->
         <uberjar.name>benchmarks</uberjar.name>
         <clean.plugin.version>3.1.0</clean.plugin.version>
         <deploy.plugin.version>3.0.0-M1</deploy.plugin.version>
