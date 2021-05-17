@@ -43,7 +43,6 @@
             <version>${system-stubs.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- System Stubs requires more up to date JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -72,7 +71,7 @@
     </dependencies>
 
     <build>
-        <finalName>testing-libraries</finalName>
+        <finalName>testing-libraries-2</finalName>
         <resources>
             <resource>
                 <directory>src/test/resources</directory>
@@ -88,4 +87,5 @@
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj-core.version>3.16.1</assertj-core.version>
     </properties>
+
 </project>
