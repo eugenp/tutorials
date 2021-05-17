@@ -32,19 +32,8 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
-        <spring-mobile-device.version>2.0.0.M3</spring-mobile-device.version>
+        <spring-mobile-device.version>1.1.5.RELEASE</spring-mobile-device.version>
     </properties>
 
 </project>
