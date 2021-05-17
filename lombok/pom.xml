@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>lombok</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -42,9 +42,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
-
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
@@ -66,8 +64,9 @@
                             <verbose>false</verbose>
                         </configuration>
                     </execution>
-                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> 
-                        <configuration> <verbose>false</verbose> </configuration> </execution> -->
+                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> 
+                        <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> <configuration> <verbose>false</verbose> 
+                        </configuration> </execution> -->
                 </executions>
             </plugin>
         </plugins>
@@ -76,7 +75,6 @@
     <properties>
         <!-- lombok: https://projectlombok.org/changelog.html -->
         <lombok.version>1.18.10</lombok.version>
-
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->

@@ -71,7 +71,6 @@
             <artifactId>reactive-streams</artifactId>
             <version>${reactive.stream.version}</version>
         </dependency>
-
         <!-- Retrofit -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>

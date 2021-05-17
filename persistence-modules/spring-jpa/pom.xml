@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jpa</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -36,9 +37,7 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- persistence -->
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -70,9 +69,7 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-
         <!-- validation -->
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -83,7 +80,6 @@
             <artifactId>javax.el-api</artifactId>
             <version>${javax.el-api.version}</version>
         </dependency>
-
         <!-- web -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -96,9 +92,7 @@
             <scope>provided</scope>
             <version>${javax.servlet.servlet-api.version}</version>
         </dependency>
-
         <!-- utils -->
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -109,41 +103,33 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
         </dependency>
-
         <!-- test scoped -->
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
         <javassist.version>3.21.0-GA</javassist.version>
-
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
         <spring-data-jpa.version>2.1.5.RELEASE</spring-data-jpa.version>
-
         <!-- web -->
         <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
-
         <!-- various -->
         <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
         <xml-apis.version>1.4.01</xml-apis.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
-
         <!-- util -->
         <guava.version>21.0</guava.version>
         <assertj.version>3.8.0</assertj.version>

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>ninja</artifactId>
     <packaging>jar</packaging>
     <groupId>com.baeldung</groupId>
     <version>1.0.0</version>
-
     <url>http://www.ninjaframework.org</url>
 
     <dependencies>
@@ -148,8 +145,10 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>ninja.standalone.NinjaJetty</mainClass>
                                 </transformer>
                             </transformers>

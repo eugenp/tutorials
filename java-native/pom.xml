@@ -12,10 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <jna.version>5.6.0</jna.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>net.java.dev.jna</groupId>
@@ -23,7 +19,7 @@
             <version>${jna.version}</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -36,4 +32,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jna.version>5.6.0</jna.version>
+    </properties>
+
 </project>

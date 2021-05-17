@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>osgi-intro-sample-activator</artifactId>
     <name>osgi-intro-sample-activator</name>
@@ -32,15 +33,12 @@
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Version>${project.version}</Bundle-Version>
-
                         <!-- Qualified name of the class that exposes the activator iface. -->
                         <Bundle-Activator>com.baeldung.osgi.sample.activator.HelloWorld</Bundle-Activator>
-
-                        <!-- One important thing to note: since you are not exporting the package "com.baeldung.osgi.sample.activator", you should at least add it to the Private-Package 
-                            instruction. Otherwise, the classes inside the package will not be copied to your bundle, as the default value of this instruction is empty. -->
-
+                        <!-- One important thing to note: since you are not exporting the package "com.baeldung.osgi.sample.activator", 
+                            you should at least add it to the Private-Package instruction. Otherwise, the classes inside the package 
+                            will not be copied to your bundle, as the default value of this instruction is empty. -->
                         <Private-Package>com.baeldung.osgi.sample.activator</Private-Package>
-
                     </instructions>
                 </configuration>
             </plugin>
