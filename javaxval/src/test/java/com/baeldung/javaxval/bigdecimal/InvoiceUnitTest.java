@@ -1,17 +1,16 @@
 package com.baeldung.javaxval.bigdecimal;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.math.BigDecimal;
-import java.util.Set;
+import com.baeldung.javaxval.LocaleAwareUnitTest;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import java.math.BigDecimal;
+import java.util.Set;
 
-import com.baeldung.javaxval.LocaleAwareUnitTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class InvoiceUnitTest extends LocaleAwareUnitTest {
 
@@ -24,41 +23,67 @@ public class InvoiceUnitTest extends LocaleAwareUnitTest {
     }
 
     @Test
-    public void whenPriceIntegerDigitLessThanThreeWithDecimalValue_thenShouldGiveConstraintViolations() {
-        Invoice invoice = new Invoice(new BigDecimal(10.21), "Book purchased");
+    public void whenLessThanThreeIntegerDigits_thenShouldNotGiveConstraintViolations() {
+        Invoice invoice = new Invoice(new BigDecimal("10.21"), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
-        assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action -> assertThat(action.getMessage()).isEqualTo("numeric value out of bounds (<3 digits>.<2 digits> expected)"));
+        assertThat(violations).isEmpty();
     }
 
     @Test
-    public void whenPriceIntegerDigitLessThanThreeWithIntegerValue_thenShouldNotGiveConstraintViolations() {
-        Invoice invoice = new Invoice(new BigDecimal(10), "Book purchased");
+    public void whenThreeIntegerDigits_thenShouldNotGiveConstraintViolations() {
+        Invoice invoice = new Invoice(new BigDecimal("102.21"), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
-        assertThat(violations.size()).isEqualTo(0);
+        assertThat(violations).isEmpty();
     }
 
     @Test
-    public void whenPriceIntegerDigitGreaterThanThree_thenShouldGiveConstraintViolations() {
-        Invoice invoice = new Invoice(new BigDecimal(1021.21), "Book purchased");
+    public void whenMoreThanThreeIntegerDigits_thenShouldGiveConstraintViolations() {
+        Invoice invoice = new Invoice(new BigDecimal("1021.21"), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
-        assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action -> assertThat(action.getMessage()).isEqualTo("numeric value out of bounds (<3 digits>.<2 digits> expected)"));
+        assertThat(violations).hasSize(1);
+        assertThat(violations)
+            .extracting("message")
+            .containsOnly("numeric value out of bounds (<3 digits>.<2 digits> expected)");
+    }
+
+    @Test
+    public void whenLessThanTwoFractionDigits_thenShouldNotGiveConstraintViolations() {
+        Invoice invoice = new Invoice(new BigDecimal("99.9"), "Book purchased");
+        Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
+        assertThat(violations).isEmpty();
+    }
+
+    @Test
+    public void whenTwoFractionDigits_thenShouldNotGiveConstraintViolations() {
+        Invoice invoice = new Invoice(new BigDecimal("99.99"), "Book purchased");
+        Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
+        assertThat(violations).isEmpty();
+    }
+
+    @Test
+    public void whenMoreThanTwoFractionDigits_thenShouldGiveConstraintViolations() {
+        Invoice invoice = new Invoice(new BigDecimal("99.999"), "Book purchased");
+        Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
+        assertThat(violations).hasSize(1);
+        assertThat(violations)
+            .extracting("message")
+            .containsOnly("numeric value out of bounds (<3 digits>.<2 digits> expected)");
     }
 
     @Test
     public void whenPriceIsZero_thenShouldGiveConstraintViolations() {
-        Invoice invoice = new Invoice(new BigDecimal(000.00), "Book purchased");
+        Invoice invoice = new Invoice(new BigDecimal("0.00"), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
-        assertThat(violations.size()).isEqualTo(1);
-        violations.forEach(action -> assertThat(action.getMessage()).isEqualTo("must be greater than 0.0"));
+        assertThat(violations).hasSize(1);
+        assertThat(violations)
+            .extracting("message")
+            .containsOnly("must be greater than 0.0");
     }
 
     @Test
     public void whenPriceIsGreaterThanZero_thenShouldNotGiveConstraintViolations() {
-        Invoice invoice = new Invoice(new BigDecimal(100.50), "Book purchased");
+        Invoice invoice = new Invoice(new BigDecimal("100.50"), "Book purchased");
         Set<ConstraintViolation<Invoice>> violations = validator.validate(invoice);
-        assertThat(violations.size()).isEqualTo(0);
+        assertThat(violations).isEmpty();
     }
-
 }

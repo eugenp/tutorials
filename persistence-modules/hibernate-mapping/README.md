@@ -13,3 +13,4 @@ This module contains articles about Object-relational Mapping (ORM) with Hiberna
 - [Hibernate – Mapping Date and Time](https://www.baeldung.com/hibernate-date-time)
 - [Mapping LOB Data in Hibernate](https://www.baeldung.com/hibernate-lob)
 - [FetchMode in Hibernate](https://www.baeldung.com/hibernate-fetchmode)
+- [Mapping PostgreSQL Array With Hibernate](https://www.baeldung.com/java-hibernate-map-postgresql-array)

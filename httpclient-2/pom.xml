@@ -26,7 +26,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- rest template -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
