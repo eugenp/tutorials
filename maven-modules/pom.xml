@@ -16,6 +16,7 @@
 
     <modules>
         <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+	<module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
         <module>maven-exec-plugin</module>
         <module>maven-integration-test</module>
@@ -30,6 +31,7 @@
         <module>version-collision</module>
         <module>version-overriding-plugins</module>
         <module>versions-maven-plugin</module>
+        <module>maven-printing-plugins</module>
     </modules>
 
 </project>

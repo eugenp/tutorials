@@ -27,6 +27,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${findbugs.annotations.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -41,6 +46,7 @@
 
     <properties>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
+        <findbugs.annotations.version>3.0.1</findbugs.annotations.version>
         <assertj-core.version>3.9.1</assertj-core.version>
     </properties>
 
