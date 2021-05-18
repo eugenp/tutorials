@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mockito</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -34,15 +35,12 @@
             <artifactId>javax.persistence</artifactId>
             <version>${javax.persistence.version}</version>
         </dependency>
-
         <!-- utils -->
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
         <!-- test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,7 +72,6 @@
         <spring-data.version>2.0.9.RELEASE</spring-data.version>
         <!-- util -->
         <guava.version>19.0</guava.version>
-
         <!-- testing -->
         <powermock.version>2.0.2</powermock.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>

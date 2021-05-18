@@ -12,15 +12,6 @@
         <relativePath>../</relativePath>
     </parent>
 
-    <properties>
-        <jacoco.version>0.8.6</jacoco.version>
-        <system-rules.version>1.19.0</system-rules.version>
-        <system-lambda.version>1.0.0</system-lambda.version>
-        <system-stubs.version>1.1.0</system-stubs.version>
-        <junit.jupiter.version>5.6.2</junit.jupiter.version>
-        <assertj-core.version>3.16.1</assertj-core.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -52,7 +43,6 @@
             <version>${system-stubs.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- System Stubs requires more up to date JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -81,6 +71,7 @@
     </dependencies>
 
     <build>
+        <finalName>testing-libraries-2</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
@@ -111,7 +102,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>testing-libraries</finalName>
         <resources>
             <resource>
                 <directory>src/test/resources</directory>
@@ -120,5 +110,13 @@
         </resources>
     </build>
 
-
+    <properties>
+        <jacoco.version>0.8.6</jacoco.version>
+        <system-rules.version>1.19.0</system-rules.version>
+        <system-lambda.version>1.0.0</system-lambda.version>
+        <system-stubs.version>1.1.0</system-stubs.version>
+        <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <assertj-core.version>3.16.1</assertj-core.version>
+    </properties>
+  
 </project>
