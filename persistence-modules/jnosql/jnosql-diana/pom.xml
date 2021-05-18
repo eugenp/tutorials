@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jnosql-diana</artifactId>
     <name>jnosql-diana</name>
@@ -13,7 +13,7 @@
     </parent>
 
     <dependencies>
-        <!--NoSQL Document oriented-->
+        <!--NoSQL Document oriented -->
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>diana-document</artifactId>
@@ -24,8 +24,7 @@
             <artifactId>mongodb-driver</artifactId>
             <version>${jnosql.version}</version>
         </dependency>
-
-        <!--NoSQL Column oriented-->
+        <!--NoSQL Column oriented -->
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>diana-column</artifactId>
@@ -36,8 +35,7 @@
             <artifactId>cassandra-driver</artifactId>
             <version>${jnosql.version}</version>
         </dependency>
-
-        <!--NoSQL Key Value oriented-->
+        <!--NoSQL Key Value oriented -->
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>diana-key-value</artifactId>

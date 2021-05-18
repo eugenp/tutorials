@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cucumber</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>cucumber</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -11,25 +14,6 @@
         <relativePath>../../parent-boot-2</relativePath>
         <!-- lookup parent from repository -->
     </parent>
-
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>cucumber</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>cucumber</name>
-
-    <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
-        <cucumber.version>6.10.3</cucumber.version>
-        <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-        <selenium.version>3.141.59</selenium.version>
-        <webdrivermanager.version>4.3.1</webdrivermanager.version>
-        <webjars-locator.version>0.40</webjars-locator.version>
-        <jquery.version>3.0.0</jquery.version>
-        <bootstrap.version>4.5.3</bootstrap.version>
-        <spring-cloud-contract-wiremock.version>2.2.5.RELEASE</spring-cloud-contract-wiremock.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -55,7 +39,6 @@
             <artifactId>bootstrap</artifactId>
             <version>${bootstrap.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -136,4 +119,19 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+        <cucumber.version>6.10.3</cucumber.version>
+        <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+        <selenium.version>3.141.59</selenium.version>
+        <webdrivermanager.version>4.3.1</webdrivermanager.version>
+        <webjars-locator.version>0.40</webjars-locator.version>
+        <jquery.version>3.0.0</jquery.version>
+        <bootstrap.version>4.5.3</bootstrap.version>
+        <spring-cloud-contract-wiremock.version>2.2.5.RELEASE</spring-cloud-contract-wiremock.version>
+    </properties>
+
 </project>

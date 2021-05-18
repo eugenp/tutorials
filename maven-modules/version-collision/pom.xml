@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>version-collision</artifactId>
+    <packaging>pom</packaging>
+
     <parent>
         <artifactId>maven-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>version-collision</artifactId>
-    <packaging>pom</packaging>
     <modules>
         <module>project-a</module>
         <module>project-b</module>
         <module>project-collision</module>
     </modules>
 
-    <!--comment section below to provoke version collision in project-collision module-->
+    <!--comment section below to provoke version collision in project-collision module -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -29,26 +30,26 @@
     </dependencyManagement>
 
     <!-- uncomment section below to ban the use of transitive dependencies -->
-    <!--    <build>-->
-    <!--        <plugins>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                <artifactId>maven-enforcer-plugin</artifactId>-->
-    <!--                <version>3.0.0-M3</version>-->
-    <!--                <executions>-->
-    <!--                    <execution>-->
-    <!--                        <id>enforce-banned-dependencies</id>-->
-    <!--                        <goals>-->
-    <!--                            <goal>enforce</goal>-->
-    <!--                        </goals>-->
-    <!--                        <configuration>-->
-    <!--                            <rules>-->
-    <!--                                <banTransitiveDependencies/>-->
-    <!--                            </rules>-->
-    <!--                        </configuration>-->
-    <!--                    </execution>-->
-    <!--                </executions>-->
-    <!--            </plugin>-->
-    <!--        </plugins>-->
-    <!--    </build>-->
+    <!-- <build> -->
+    <!-- <plugins> -->
+    <!-- <plugin> -->
+    <!-- <groupId>org.apache.maven.plugins</groupId> -->
+    <!-- <artifactId>maven-enforcer-plugin</artifactId> -->
+    <!-- <version>3.0.0-M3</version> -->
+    <!-- <executions> -->
+    <!-- <execution> -->
+    <!-- <id>enforce-banned-dependencies</id> -->
+    <!-- <goals> -->
+    <!-- <goal>enforce</goal> -->
+    <!-- </goals> -->
+    <!-- <configuration> -->
+    <!-- <rules> -->
+    <!-- <banTransitiveDependencies/> -->
+    <!-- </rules> -->
+    <!-- </configuration> -->
+    <!-- </execution> -->
+    <!-- </executions> -->
+    <!-- </plugin> -->
+    <!-- </plugins> -->
+    <!-- </build> -->
 </project>
