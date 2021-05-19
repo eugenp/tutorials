@@ -40,7 +40,7 @@ public class DownloadEmailAttachments {
             List<String> attachments = new ArrayList<String>();
             if (message.getContentType()
                 .contains("multipart")) {
-                attachments = downloadEmailMessages(message);
+                attachments = downloadAttachments(message);
             }
 
             System.out.println("Message #" + (i + 1) + ":");
@@ -53,7 +53,7 @@ public class DownloadEmailAttachments {
         store.close();
     }
 
-    public List<String> downloadEmailMessages(Message message) throws IOException, MessagingException {
+    public List<String> downloadAttachments(Message message) throws IOException, MessagingException {
         List<String> downloadedAttachments = new ArrayList<String>();
         Multipart multiPart = (Multipart) message.getContent();
         int numberOfParts = multiPart.getCount();
