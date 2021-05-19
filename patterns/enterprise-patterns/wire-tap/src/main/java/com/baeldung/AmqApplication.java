@@ -23,14 +23,12 @@ public class AmqApplication {
 			context.addRoutes(new RouteBuilder() {
 				public void configure() {
 
-					// load file orders from src/data into the JMS queue
 					from("file:src/data?noop=true").to("jms:incomingOrders");
 
 					from("jms:incomingOrders").wireTap("jms:orderAudit").choice()
 							.when(header("CamelFileName").endsWith(".xml")).to("jms:xmlOrders")
 							.when(header("CamelFileName").regex("^.*(csv|csl)$")).to("jms:csvOrders");
 
-					// test that our route is working
 					from("jms:xmlOrders").log("Received XML order: ${header.CamelFileName}").to("mock:xml");
 
 					from("jms:csvOrders").log("Received CSV order: ${header.CamelFileName}").to("mock:csv");
