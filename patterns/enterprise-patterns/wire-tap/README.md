@@ -20,3 +20,12 @@ For convenience, we are using in-memory activeMq.
 ### How to run the example:
 
     mvn spring-boot:run
+
+    
+The Wire Tap processor, by default, makes a shallow copy of the Camel Exchange instance. The copy of the exchange is sent to the endpoint specified in the wireTap statement. The body of the wire tapped message contains the same object as that in the original message which means any change to the internal state of that object during the wire tap route may also end up changing the main message’s body.
+
+To solve this, we need to create a deep copy of the object before passing it to the wire tap destination. Wire Tap EIP provides us with a mechanism to perform a “deep” copy of the message, by implementing the org.apache.camel.Processor class. This needs to be be called using onPrepare statement right after wireTap.
+For more details, check out the AmqApplicationUnitTest.class.
+
+
+
