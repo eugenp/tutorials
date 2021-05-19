@@ -1,6 +1,6 @@
 # Wire Tap Pattern
 
-The application shows you how to use a Wire Tap to monitor, debug or troubleshoot messages flowing through the system, without permanently consuming them off, or making any changes to the expected message in the output channel.
+The application shows you how to use a Wire Tap to monitor, debug or troubleshoot messages flowing through the system, without permanently consuming them off, or making any changes to the expected message in the output channel. 
 
 This example shows how to implement this with a simple Apache Camel application using Spring Boot and Apache ActiveMq.
 For convenience, we are using in-memory activeMq.
@@ -27,5 +27,8 @@ The Wire Tap processor, by default, makes a shallow copy of the Camel Exchange i
 To solve this, we need to create a deep copy of the object before passing it to the wire tap destination. Wire Tap EIP provides us with a mechanism to perform a “deep” copy of the message, by implementing the org.apache.camel.Processor class. This needs to be be called using onPrepare statement right after wireTap.
 For more details, check out the AmqApplicationUnitTest.class.
 
+### Relevant Articles:
 
+- [Wire tap (Enterprise Integration Pattern)](https://drafts.baeldung.com/?p=103346&preview=true)
+- [Intro to Apache camel](https://www.baeldung.com/apache-camel-intro)
 
