@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>load-testing-comparison</artifactId>
     <name>load-testing-comparison</name>
@@ -57,57 +57,57 @@
     </dependencies>
 
     <build>
-        <!--<testSourceDirectory>src/test/scala</testSourceDirectory>-->
-        <!--<pluginManagement>-->
-        <!--<plugins>-->
-        <!--<plugin>-->
-        <!--<groupId>net.alchim31.maven</groupId>-->
-        <!--<artifactId>scala-maven-plugin</artifactId>-->
-        <!--<version>${scala-maven-plugin.version}</version>-->
-        <!--</plugin>-->
-        <!--</plugins>-->
-        <!--</pluginManagement>-->
+        <!--<testSourceDirectory>src/test/scala</testSourceDirectory> -->
+        <!--<pluginManagement> -->
+        <!--<plugins> -->
+        <!--<plugin> -->
+        <!--<groupId>net.alchim31.maven</groupId> -->
+        <!--<artifactId>scala-maven-plugin</artifactId> -->
+        <!--<version>${scala-maven-plugin.version}</version> -->
+        <!--</plugin> -->
+        <!--</plugins> -->
+        <!--</pluginManagement> -->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>net.alchim31.maven</groupId>-->
-            <!--<artifactId>scala-maven-plugin</artifactId>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<goals>-->
-            <!--<goal>testCompile</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-            <!--<args>-->
-            <!--&lt;!&ndash;<arg>-Ybackend:GenBCode</arg> &ndash;&gt;-->
-            <!--<arg>-Ydelambdafy:method</arg>-->
-            <!--<arg>-target:jvm-1.8</arg>-->
-            <!--<arg>-deprecation</arg>-->
-            <!--<arg>-feature</arg>-->
-            <!--<arg>-unchecked</arg>-->
-            <!--<arg>-language:implicitConversions</arg>-->
-            <!--<arg>-language:postfixOps</arg>-->
-            <!--</args>-->
-            <!--</configuration>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-            <!--<groupId>io.gatling</groupId>-->
-            <!--<artifactId>gatling-maven-plugin</artifactId>-->
-            <!--<version>${gatling-maven-plugin.version}</version>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<phase>test</phase>-->
-            <!--<goals>-->
-            <!--<goal>execute</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
+            <!--<plugin> -->
+            <!--<groupId>net.alchim31.maven</groupId> -->
+            <!--<artifactId>scala-maven-plugin</artifactId> -->
+            <!--<executions> -->
+            <!--<execution> -->
+            <!--<goals> -->
+            <!--<goal>testCompile</goal> -->
+            <!--</goals> -->
+            <!--<configuration> -->
+            <!--<args> -->
+            <!--&lt;!&ndash;<arg>-Ybackend:GenBCode</arg> &ndash;&gt; -->
+            <!--<arg>-Ydelambdafy:method</arg> -->
+            <!--<arg>-target:jvm-1.8</arg> -->
+            <!--<arg>-deprecation</arg> -->
+            <!--<arg>-feature</arg> -->
+            <!--<arg>-unchecked</arg> -->
+            <!--<arg>-language:implicitConversions</arg> -->
+            <!--<arg>-language:postfixOps</arg> -->
+            <!--</args> -->
+            <!--</configuration> -->
+            <!--</execution> -->
+            <!--</executions> -->
+            <!--</plugin> -->
+            <!--<plugin> -->
+            <!--<groupId>io.gatling</groupId> -->
+            <!--<artifactId>gatling-maven-plugin</artifactId> -->
+            <!--<version>${gatling-maven-plugin.version}</version> -->
+            <!--<executions> -->
+            <!--<execution> -->
+            <!--<phase>test</phase> -->
+            <!--<goals> -->
+            <!--<goal>execute</goal> -->
+            <!--</goals> -->
+            <!--</execution> -->
+            <!--</executions> -->
+            <!--</plugin> -->
         </plugins>
     </build>
 
