@@ -15,8 +15,6 @@ public class StringToBigDecimalConversionUnitTest {
 	public void givenValidString_WhenBigDecimalObjectWithStringParameter_ThenResultIsDecimalObject() {
 		BigDecimal bigDecimal = new BigDecimal("123");
 		assertEquals(new BigDecimal(123), bigDecimal);
-		BigDecimal bigDecimal = new BigDecimal(123);
-		assertEquals(bigDecimal, new BigDecimal("123"));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -34,8 +32,6 @@ public class StringToBigDecimalConversionUnitTest {
 	public void givenValidString_WhenValueOfDoubleFromString_ThenResultIsDecimalObject() {
 		BigDecimal bigDecimal = BigDecimal.valueOf(Double.valueOf("123.42"));
 		assertEquals(new BigDecimal(123.42).setScale(2, BigDecimal.ROUND_HALF_UP), bigDecimal);
-		BigDecimal bigDecimal = new BigDecimal(123.42).setScale(2, BigDecimal.ROUND_HALF_UP);
-		assertEquals(bigDecimal, BigDecimal.valueOf(Double.valueOf("123.42")));
 	}
 
 	@Test(expected = NullPointerException.class)
