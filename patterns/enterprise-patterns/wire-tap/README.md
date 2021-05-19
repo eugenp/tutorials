@@ -1,5 +1,4 @@
-#Wire Tap Pattern
-=============
+# Wire Tap Pattern
 
 The application shows you how to use a Wire Tap to monitor, debug or troubleshoot messages flowing through the system, without permanently consuming them off, or making any changes to the expected message in the output channel.
 
@@ -8,7 +7,7 @@ For convenience, we are using in-memory activeMq.
 
  
 
-####Configuring and using the Connection Factory
+#### Configuring and using the Connection Factory
 
 1. Create CamelContext.
 2. Connect to embedded (or remote) ActiveMQ JMS broker.
@@ -18,6 +17,6 @@ For convenience, we are using in-memory activeMq.
 6. Test that the destination route is working.
 7. Audit the received file (order) from the wire tap queue.
 
-####How to run the example:
+#### How to run the example:
 
     mvn spring-boot:run
