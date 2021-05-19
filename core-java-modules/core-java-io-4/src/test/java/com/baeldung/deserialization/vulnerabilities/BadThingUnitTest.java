@@ -13,7 +13,7 @@ public class BadThingUnitTest {
 
     @Test
     @DisplayName("When a BadThing object is deserialized, then code execution in MyCustomAttackObject is run.")
-    public void testCodeExecution() throws Exception {
+    public void givenABadThingObject_whenItsDeserialized_thenExecutionIsRun() throws Exception {
         BadThing bt = new BadThing();
 
         bt.looselyDefinedThing = new MyCustomAttackObject();
