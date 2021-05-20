@@ -2,6 +2,8 @@ package com.baeldung;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -18,30 +20,57 @@ public class AmqApplication {
 			ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 					"vm://localhost?broker.persistent=false");
 
-			context.addComponent("jms", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
+			connectionFactory.setTrustAllPackages(true);
 
-			context.addRoutes(new RouteBuilder() {
-				public void configure() {
+			context.addComponent("direct", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 
-					from("file:src/data?noop=true").to("jms:incomingOrders");
+			System.out.println("************* Traditional Wire Tap *****************");
+			context.addRoutes(traditionalWireTapRoute());
 
-					from("jms:incomingOrders").wireTap("jms:orderAudit").choice()
-							.when(header("CamelFileName").endsWith(".xml")).to("jms:xmlOrders")
-							.when(header("CamelFileName").regex("^.*(csv|csl)$")).to("jms:csvOrders");
+			try (ProducerTemplate template = context.createProducerTemplate()) {
+				context.start();
 
-					from("jms:xmlOrders").log("Received XML order: ${header.CamelFileName}").to("mock:xml");
+				MyPayload payload = new MyPayload("One");
+				// String one = "one";
+				template.sendBody("direct:source", payload);
 
-					from("jms:csvOrders").log("Received CSV order: ${header.CamelFileName}").to("mock:csv");
+				Thread.sleep(10000);
+				System.out.println("Final payload: " + payload.getValue());
+				context.stop();
+			}
 
-					from("jms:orderAudit").log("Wire tap received order: ${header.CamelFileName}").to("mock:wiretap");
-				}
-			});
-
-			context.start();
-
-			Thread.sleep(1000);
-			context.stop();
 		}
+	}
+
+	private static RoutesBuilder traditionalWireTapRoute() {
+		return new RouteBuilder() {
+			public void configure() {
+
+				from("direct:source").log("Main route: Send '${body}' to tap router").wireTap("direct:tap").delay(1000)
+						.log("Main route: Add 'two' to '${body}'").bean(MyBean.class, "addTwo").to("direct:destination")
+						.log("Main route: Output '${body}'");
+
+				from("direct:tap").log("Tap Wire route: received '${body}'")
+						.log("Tap Wire route: Add 'three' to '${body}'").bean(MyBean.class, "addThree")
+						.log("Tap Wire route: Output '${body}'");
+
+				from("direct:destination").log("Output at destination: '${body}'");
+			}
+		};
+	}
+
+	public static RoutesBuilder newExchangeRoute() throws Exception {
+		return new RouteBuilder() {
+			public void configure() throws Exception {
+
+				from("direct:start").wireTap("direct:foo").copy(false).newExchange(exchange -> {
+					exchange.getIn().setBody("Bye World");
+					exchange.getIn().setHeader("foo", "bar");
+				}).to("mock:result");
+
+				from("direct:foo").to("mock:foo");
+			}
+		};
 	}
 
 }
