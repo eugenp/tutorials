@@ -12,4 +12,5 @@ This module contains articles about the Stream API in Java.
 - [Should We Close a Java Stream?](https://www.baeldung.com/java-stream-close)
 - [Returning Stream vs. Collection](https://www.baeldung.com/java-return-stream-collection)
 - [Convert a Java Enumeration Into a Stream](https://www.baeldung.com/java-enumeration-to-stream)
+- [When to Use a Parallel Stream in Java](https://www.baeldung.com/java-when-to-use-parallel-stream)
 - More articles: [[<-- prev>]](/../core-java-streams-2)
