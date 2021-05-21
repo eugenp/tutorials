@@ -1,9 +1,9 @@
-package com.baeldung.downloadAttachments;
+package com.baeldung.downloadattachments;
 
 import static org.junit.Assert.fail;
 import org.junit.Test;
 
-public class DownloadEmailAttachmentsUnitTest {
+public class DownloadEmailAttachmentsLiveTest {
     @Test
     public void when_Run_then_downloadAttachments() {
 
