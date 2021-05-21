@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
   value = "logging.enabled",
   havingValue = "true",
   matchIfMissing = true)
-@ConditionalOnExpression("${logging.enabled:true} and ${logging.level:DEBUG}")
+@ConditionalOnExpression("${logging.enabled:true} and '${logging.level}'.equals('DEBUG')")
 @ConditionalOnJava(JavaVersion.EIGHT)
 public class LoggingService {
 }

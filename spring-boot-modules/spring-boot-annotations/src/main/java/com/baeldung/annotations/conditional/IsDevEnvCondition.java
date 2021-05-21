@@ -8,6 +8,6 @@ public class IsDevEnvCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-        return System.getProperty("env").equals("dev");
+        return "dev".equals(System.getProperty("env"));
     }
 }
