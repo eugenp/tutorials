@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-webflow</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -14,7 +15,6 @@
     </parent>
 
     <dependencies>
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -26,14 +26,12 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- Spring Web Flow -->
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-webflow</artifactId>
             <version>${spring.webflow}</version>
         </dependency>
-
         <!-- web -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -52,7 +50,6 @@
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,7 +57,6 @@
             <version>${spring-boot-starter-test.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -86,7 +82,8 @@
                             <extension>.class</extension>
                         </extensions>
                     </synchronization>
-                    <args>-Xmx2048m -XX:PermSize=256m -Dtomee.serialization.class.blacklist=- -Dtomee.serialization.class.whitelist=*</args>
+                    <args>-Xmx2048m -XX:PermSize=256m -Dtomee.serialization.class.blacklist=-
+                        -Dtomee.serialization.class.whitelist=*</args>
                     <removeDefaultWebapps>true</removeDefaultWebapps>
                 </configuration>
             </plugin>
@@ -104,13 +101,10 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.1.RELEASE</org.springframework.version>
-
         <!-- Spring Web Flow -->
         <spring.webflow>2.5.0.RELEASE</spring.webflow>
-
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
