@@ -35,11 +35,9 @@ public class DownloadEmailAttachments {
             Address[] fromAddress = message.getFrom();
             String from = fromAddress[0].toString();
             String subject = message.getSubject();
-            String sentDate = message.getSentDate()
-                .toString();
+            String sentDate = message.getSentDate().toString();
             List<String> attachments = new ArrayList<String>();
-            if (message.getContentType()
-                .contains("multipart")) {
+            if (message.getContentType().contains("multipart")) {
                 attachments = downloadAttachments(message);
             }
 
