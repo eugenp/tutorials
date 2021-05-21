@@ -11,7 +11,6 @@ public class Java9ConditionUnitTest {
 
     @Test
     public void whenOnJava9_thenJava9ConditionShouldPass() {
-
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
             theMock.when(ConditionalUtils::isJava9)
               .thenReturn(true);

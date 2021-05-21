@@ -11,7 +11,6 @@ public class IsWindowsConditionUnitTest {
 
     @Test
     public void whenOnWindows_thenIsWindowsConditionShouldPass() {
-
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
             theMock.when(ConditionalUtils::isWindows)
               .thenReturn(true);

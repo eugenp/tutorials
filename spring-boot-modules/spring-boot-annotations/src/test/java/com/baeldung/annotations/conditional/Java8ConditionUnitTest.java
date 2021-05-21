@@ -11,7 +11,6 @@ public class Java8ConditionUnitTest {
 
     @Test
     public void whenOnJava8_thenJava8ConditionShouldPass() {
-
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
             theMock.when(ConditionalUtils::isJava8)
               .thenReturn(true);
