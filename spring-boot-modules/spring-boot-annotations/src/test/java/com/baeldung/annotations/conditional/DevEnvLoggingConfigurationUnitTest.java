@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-public class DevEnvLoggingConfigurationTest {
+public class DevEnvLoggingConfigurationUnitTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
 
