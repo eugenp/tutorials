@@ -21,7 +21,9 @@ public class IsDevEnvConditionUnitTest {
 
     @Test
     public void whenDevEnvNotEnabled_thenDevEnvConditionShouldNotPass() {
-        Assertions.assertTrue(
+        System.setProperty("env", "not-dev");
+
+        Assertions.assertFalse(
           new IsDevEnvCondition().matches(
             Mockito.mock(ConditionContext.class), Mockito.mock(AnnotatedTypeMetadata.class)
           )
