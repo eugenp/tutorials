@@ -31,6 +31,8 @@ public class DevEnvLoggingConfigurationUnitTest {
 
     @Test
     public void whenDevEnvNotEnabled_thenDevEnvLoggingConfigurationAndLoggingServiceShouldNotBeCreated() {
+        System.setProperty("env", "not-dev");
+
         contextRunner
           .withUserConfiguration(ConditionalTestConfiguration.class)
           .run(context ->
