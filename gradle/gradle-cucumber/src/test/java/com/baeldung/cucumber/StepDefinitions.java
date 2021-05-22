@@ -12,17 +12,17 @@ public class StepDefinitions {
     private Account account;
 
     @Given("account balance is {double}")
-    public void account_balance_is(Double initialBalance) {
+    public void givenAccountBalance(Double initialBalance) {
         account = new Account(initialBalance);
     }
 
     @When("the account is credited with {double}")
-    public void the_account_is_credited_with(Double amount) {
+    public void whenAccountIsCredited(Double amount) {
         account.credit(amount);
     }
 
     @Then("account should have a balance of {double}")
-    public void account_should_have_a_balance_of(Double expectedBalance) {
+    public void thenAccountShouldHaveBalance(Double expectedBalance) {
         assertEquals(expectedBalance, account.getBalance());
     }
 }
