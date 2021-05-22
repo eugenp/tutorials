@@ -8,7 +8,7 @@ import javax.crypto.SecretKey;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class ConversionClassUtilTest {
+public class ConversionClassUtilUnitTest {
 
 	@Test
 	void givenPasswordAndSalt_whenCreateSecreKeyCheckConversion_thenSuccess()
