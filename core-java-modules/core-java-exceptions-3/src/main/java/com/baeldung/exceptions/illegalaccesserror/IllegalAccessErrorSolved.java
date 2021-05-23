@@ -17,8 +17,4 @@ public class IllegalAccessErrorSolved {
     class MySubClassSolved extends SuperSolved implements BaeldungSolved {
 
     }
-
-    public static void main(String[] args) {
-        new IllegalAccessErrorSolved().new MySubClassSolved().foobar();
-    }
 }

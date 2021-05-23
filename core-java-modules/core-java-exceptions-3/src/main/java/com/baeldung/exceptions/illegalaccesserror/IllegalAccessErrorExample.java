@@ -17,8 +17,4 @@ public class IllegalAccessErrorExample {
     class MySubClass extends Super implements Baeldung {
 
     }
-
-    public static void main(String[] args) {
-        new IllegalAccessErrorExample().new MySubClass().foobar();
-    }
 }

@@ -6,9 +6,5 @@ public class Class2 {
         Class1 c1 = new Class1();
         c1.bar();
     }
-
-    public static void main(String[] args) {
-        new Class2().foo();
-    }
 }
     
