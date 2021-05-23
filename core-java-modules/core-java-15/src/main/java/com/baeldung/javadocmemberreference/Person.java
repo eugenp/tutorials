@@ -33,7 +33,7 @@ public class Person {
     }
 
     /**
-     * Also consider checking {@link com.baeldung.sealed.classes.Vehicle#Vehicle()} constructor to initialize vehicle object.
+     * Also consider checking {@link com.baeldung.sealed.classes.Vehicle#Vehicle() Vehicle} constructor to initialize vehicle object.
      */
     public void goToWork() {
 
