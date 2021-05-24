@@ -86,6 +86,7 @@
         <module>core-java-lang-oop-methods</module>
         <module>core-java-lang-oop-others</module>
         <module>core-java-lang-operators</module>
+        <module>core-java-lang-operators-2</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
         <module>core-java-networking</module>
