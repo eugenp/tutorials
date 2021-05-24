@@ -57,6 +57,7 @@
 
     <properties>
         <!-- lombok: https://projectlombok.org/changelog.html -->
+        <lombok.version>1.14.8</lombok.version>
         <metainf-services.version>1.8</metainf-services.version>
         <eclipse.jdt.core.version>3.3.0-v_771</eclipse.jdt.core.version>
     </properties>
