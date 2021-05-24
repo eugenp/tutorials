@@ -24,25 +24,22 @@ public class AmqApplication {
 
 			context.addComponent("direct", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 
-			System.out.println("************* Traditional Wire Tap *****************");
 			context.addRoutes(traditionalWireTapRoute());
 
 			try (ProducerTemplate template = context.createProducerTemplate()) {
 				context.start();
 
 				MyPayload payload = new MyPayload("One");
-				// String one = "one";
 				template.sendBody("direct:source", payload);
 
 				Thread.sleep(10000);
-				System.out.println("Final payload: " + payload.getValue());
 				context.stop();
 			}
 
 		}
 	}
 
-	private static RoutesBuilder traditionalWireTapRoute() {
+	static RoutesBuilder traditionalWireTapRoute() {
 		return new RouteBuilder() {
 			public void configure() {
 
@@ -59,7 +56,7 @@ public class AmqApplication {
 		};
 	}
 
-	public static RoutesBuilder newExchangeRoute() throws Exception {
+	static RoutesBuilder newExchangeRoute() throws Exception {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 
