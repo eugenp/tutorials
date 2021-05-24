@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 public class IllegalAccessErrorExampleUnitTest {
 
     @Test()
-    public void testThrowsIllegalAccessError() {
+    public void givenInterfaceDefaultMethOverriddenPrivateAccess_whenInvoked_thenIllegalAccessError() {
         Assertions.assertThrows(IllegalAccessError.class, () -> {
             new IllegalAccessErrorExample().new MySubClass().foobar();
         });
     }
 
     @Test()
-    public void testNotThrowsIllegalAccessError() {
+    public void givenClass1Class2_whenSameClassDefintion_thenNoIllegalAccessError() {
         Assertions.assertDoesNotThrow(() -> {
             new Class2().foo();
         });

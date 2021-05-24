@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class IllegalAccessErrorSolvedUnitTest {
 
     @Test()
-    public void testNotThrowsIllegalAccessError() {
+    public void givenInterfaceDefaultMethOverriddenNonPrivateAccess_whenInvoked_thenNoIllegalAccessError() {
         Assertions.assertDoesNotThrow(() -> {
             new IllegalAccessErrorSolved().new MySubClassSolved().foobar();
         });
