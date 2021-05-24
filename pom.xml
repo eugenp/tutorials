@@ -1340,6 +1340,7 @@
                 <module>core-java-modules/core-java-os</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
+                <module>core-java-modules/core-java-strings</module>
             </modules>
         </profile>
     </profiles>
