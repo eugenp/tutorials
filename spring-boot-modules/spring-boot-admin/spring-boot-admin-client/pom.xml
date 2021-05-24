@@ -60,7 +60,7 @@
     </build>
 
     <properties>
-        <spring-boot-admin-starter-client.version>2.4.0</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-starter-client.version>2.4.1</spring-boot-admin-starter-client.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
