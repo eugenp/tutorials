@@ -16,6 +16,7 @@ public class MultiLineStringUnitTest {
         assertEquals(ms.stringJoin(), ms.stringBuilder());
         assertEquals(ms.stringBuilder(), ms.guavaJoiner());
         assertEquals(ms.guavaJoiner(), ms.loadFromFile());
+        assertEquals(ms.loadFromFile(), ms.textBlocks());
     }
     
 }
