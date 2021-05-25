@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ejb-client</artifactId>
     <name>spring-ejb-client</name>
@@ -30,30 +31,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
             <type>pom</type>
         </dependency>
-
         <dependency>
             <groupId>com.baeldung.spring.ejb</groupId>
             <artifactId>spring-ejb-remote</artifactId>
             <type>ejb</type>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-servlet</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
