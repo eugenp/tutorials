@@ -19,24 +19,24 @@ public class AmqApplication {
 		try (CamelContext context = new DefaultCamelContext()) {
 			ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 					"vm://localhost?broker.persistent=false");
-
 			connectionFactory.setTrustAllPackages(true);
-
 			context.addComponent("direct", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
-
-			context.addRoutes(traditionalWireTapRoute());
+			addRoute(context);
 
 			try (ProducerTemplate template = context.createProducerTemplate()) {
 				context.start();
 
 				MyPayload payload = new MyPayload("One");
 				template.sendBody("direct:source", payload);
-
 				Thread.sleep(10000);
+			} finally {
 				context.stop();
 			}
-
 		}
+	}
+
+	private static void addRoute(CamelContext context) throws Exception {
+		context.addRoutes(newExchangeRoute());
 	}
 
 	static RoutesBuilder traditionalWireTapRoute() {
@@ -60,12 +60,9 @@ public class AmqApplication {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 
-				from("direct:start").wireTap("direct:foo").copy(false).newExchange(exchange -> {
-					exchange.getIn().setBody("Bye World");
-					exchange.getIn().setHeader("foo", "bar");
-				}).to("mock:result");
+				from("direct:source").wireTap("direct:tap").onPrepare(new MyPayloadClonePrepare()).end().delay(1000);
 
-				from("direct:foo").to("mock:foo");
+				from("direct:tap").bean(MyBean.class, "addThree");
 			}
 		};
 	}
