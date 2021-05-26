@@ -111,7 +111,6 @@
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
         <module>core-java-string-operations-3</module>
-        <module>core-java-strings</module>
         <module>core-java-sun</module>
         <module>core-java-regex</module>
         <module>pre-jpms</module>
