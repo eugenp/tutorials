@@ -17,7 +17,7 @@ public class Address implements Serializable {
     @GeneratedValue
     private Long Id;
     
-    private String pAddress;
+    private String streetAddress;
 
     public Long getId() {
         return Id;
@@ -28,10 +28,10 @@ public class Address implements Serializable {
     }
 
     public String getpAddress() {
-        return pAddress;
+        return streetAddress;
     }
 
     public void setpAddress(String pAddress) {
-        this.pAddress = pAddress;
+        this.streetAddress = pAddress;
     }
 }
