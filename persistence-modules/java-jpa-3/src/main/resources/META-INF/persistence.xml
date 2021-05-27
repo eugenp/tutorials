@@ -127,7 +127,8 @@
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="show_sql" value="true" />
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
-        <properties>
+        </properties>
+	</persistence-unit>
     <persistence-unit name="jpa-h2-return-multiple-entities">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.returnmultipleentities.Channel</class>
