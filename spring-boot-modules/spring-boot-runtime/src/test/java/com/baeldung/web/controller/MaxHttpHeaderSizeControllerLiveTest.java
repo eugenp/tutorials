@@ -25,29 +25,29 @@ import com.baeldung.sampleapp.config.MaxHTTPHeaderSizeConfig;
 // Start MaxHttpHeaderSizeController Spring Boot App(MainApplication) first
 public class MaxHttpHeaderSizeControllerLiveTest {
 
-	@Test(expected = HttpClientErrorException.class)
-	public void givenTokenWithGreaterThan8KBLegth_whenSendGetRequest_thenThrowsBadRequest() throws Exception {
-		final String url = "http://localhost:8080/request-header-test";
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("token", readRandomStringFromFile());
+    @Test(expected = HttpClientErrorException.class)
+    public void givenTokenWithGreaterThan8KBLegth_whenSendGetRequest_thenThrowsBadRequest() throws Exception {
+        final String url = "http://localhost:8080/request-header-test";
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("token", readRandomStringFromFile());
 
-		HttpEntity entity = new HttpEntity(headers);
-		final ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, entity, String.class);
-	}
+        HttpEntity entity = new HttpEntity(headers);
+        final ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, entity, String.class);
+    }
 
-	static String readRandomStringFromFile() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/randomSringForheader.txt"));
-		StringBuilder stringBuilder = new StringBuilder();
-		String line = null;
-		String ls = System.getProperty("line.separator");
-		while ((line = reader.readLine()) != null) {
-			stringBuilder.append(line);
-			stringBuilder.append(ls);
-		}
-		stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-		reader.close();
-		String content = stringBuilder.toString();
-		return content;
-	}
+    static String readRandomStringFromFile() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/randomSringForheader.txt"));
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+        String ls = System.getProperty("line.separator");
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
+            stringBuilder.append(ls);
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        reader.close();
+        String content = stringBuilder.toString();
+        return content;
+    }
 
 }

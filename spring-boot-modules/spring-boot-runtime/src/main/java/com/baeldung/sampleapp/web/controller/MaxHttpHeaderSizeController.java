@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/request-header-test")
 public class MaxHttpHeaderSizeController {
 
-	@GetMapping
-	public boolean testMaxHTTPHeaderSize(@RequestHeader(value = "token") String token) {
-		return true;
-	}
+    @GetMapping
+    public boolean testMaxHTTPHeaderSize(@RequestHeader(value = "token") String token) {
+        return true;
+    }
 
 }
