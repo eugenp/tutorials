@@ -23,26 +23,26 @@ import com.baeldung.sampleapp.config.WebConfig;
 @WebAppConfiguration
 public class MaxHttpHeaderSizeControllerIntegrationTest {
 
-	private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-	@Autowired
-	private WebApplicationContext webApplicationContext;
+    @Autowired
+    private WebApplicationContext webApplicationContext;
 
-	@Before
-	public void setUp() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-	}
+    @Before
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
 
-	@Test
-	public void givenTokenWithLessThan8KBLegth_whenSendGetRequest_thenReturnsOK() throws Exception {
-		mockMvc.perform(get("/request-header-test").contentType(MediaType.APPLICATION_JSON_VALUE)
-				.with(httpBasic("user", "password")).header("token", "token")).andExpect(status().isOk());
-	}
+    @Test
+    public void givenTokenWithLessThan8KBLegth_whenSendGetRequest_thenReturnsOK() throws Exception {
+        mockMvc.perform(get("/request-header-test").contentType(MediaType.APPLICATION_JSON_VALUE)
+                .with(httpBasic("user", "password")).header("token", "token")).andExpect(status().isOk());
+    }
 
-	@Test
-	public void givenTokenIsMissingInHeade_whenSendGetRequest_thenThrowsBadRequest() throws Exception {
-		mockMvc.perform(get("/request-header-test").contentType(MediaType.APPLICATION_JSON_VALUE)
-				.with(httpBasic("user", "password"))).andExpect(status().isBadRequest());
-	}
+    @Test
+    public void givenTokenIsMissingInHeade_whenSendGetRequest_thenThrowsBadRequest() throws Exception {
+        mockMvc.perform(get("/request-header-test").contentType(MediaType.APPLICATION_JSON_VALUE)
+                .with(httpBasic("user", "password"))).andExpect(status().isBadRequest());
+    }
 
 }
