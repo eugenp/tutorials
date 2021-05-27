@@ -27,11 +27,11 @@ public class Address implements Serializable {
         Id = id;
     }
 
-    public String getpAddress() {
+    public String getStreetAddress() {
         return streetAddress;
     }
 
-    public void setpAddress(String pAddress) {
-        this.streetAddress = pAddress;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 }
