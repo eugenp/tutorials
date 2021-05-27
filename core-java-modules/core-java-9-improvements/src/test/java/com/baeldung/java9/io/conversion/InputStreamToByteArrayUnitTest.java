@@ -15,24 +15,48 @@ public class InputStreamToByteArrayUnitTest {
 
     @Test
     public final void givenUsingPlainJavaOnFixedSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-        final byte[] targetArray = new byte[initialStream.available()];
-        initialStream.read(targetArray);
+        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+        final byte[] targetArray = new byte[is.available()];
+
+        is.read(targetArray);
     }
 
     @Test
     public final void givenUsingPlainJavaOnUnknownSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
-
+        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2, 3, 4, 5, 6 });
         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
         int nRead;
         final byte[] data = new byte[1024];
-        while ((nRead = is.read(data, 0, data.length)) != -1) {
-            buffer.write(data, 0, nRead);
+        int off = 0;
+        final int len = 2;
+
+        while ((nRead = is.read(data, off, len)) != -1) {
+            buffer.write(data, off, nRead);
+            off += len;
         }
 
         buffer.flush();
-        final byte[] byteArray = buffer.toByteArray();
+        final byte[] targetArray = buffer.toByteArray();
+    }
+
+    @Test
+    public final void givenUsingPlainJava9OnUnknownSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2, 3, 4, 5, 6 });
+        final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+        int nRead;
+        final byte[] data = new byte[1024];
+        int off = 0;
+        final int len = 2;
+
+        while ((nRead = is.readNBytes(data, off, len)) != 0) {
+            buffer.write(data, off, nRead);
+            off += len;
+        }
+
+        buffer.flush();
+        final byte[] targetArray = buffer.toByteArray();
     }
 
     @Test
