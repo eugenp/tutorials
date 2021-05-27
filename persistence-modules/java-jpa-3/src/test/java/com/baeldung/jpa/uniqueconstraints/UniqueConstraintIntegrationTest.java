@@ -84,7 +84,7 @@ public class UniqueConstraintIntegrationTest {
     @Test
     public void whenPersistPersonWithSameNumberAndAddress_thenConstraintViolationException() {
         Address address1 = new Address();
-        address1.setpAddress("40 Street");
+        address1.setStreetAddress("40 Street");
 
         Person person1 = new Person();
         person1.setPersonNumber(54321L);

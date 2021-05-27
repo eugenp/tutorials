@@ -89,7 +89,7 @@ public class UniqueColumnIntegrationTest {
         person1.setEmail("chris.beck@gmail.com");
 
         Address address1 = new Address();
-        address1.setpAddress("20 Street");
+        address1.setStreetAddress("20 Street");
         person1.setAddress(address1);
 
         Person person2 = new Person();
