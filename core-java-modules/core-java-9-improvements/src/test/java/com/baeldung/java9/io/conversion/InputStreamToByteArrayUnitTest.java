@@ -27,13 +27,10 @@ public class InputStreamToByteArrayUnitTest {
         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
         int nRead;
-        final byte[] data = new byte[1024];
-        int off = 0;
-        final int len = 2;
+        final byte[] data = new byte[4];
 
-        while ((nRead = is.read(data, off, len)) != -1) {
-            buffer.write(data, off, nRead);
-            off += len;
+        while ((nRead = is.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
         }
 
         buffer.flush();
@@ -46,13 +43,11 @@ public class InputStreamToByteArrayUnitTest {
         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
         int nRead;
-        final byte[] data = new byte[1024];
-        int off = 0;
-        final int len = 2;
+        final byte[] data = new byte[4];
 
-        while ((nRead = is.readNBytes(data, off, len)) != 0) {
-            buffer.write(data, off, nRead);
-            off += len;
+        while ((nRead = is.readNBytes(data, 0, data.length)) != 0) {
+            System.out.println("here " + nRead);
+            buffer.write(data, 0, nRead);
         }
 
         buffer.flush();
