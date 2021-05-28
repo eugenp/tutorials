@@ -4,8 +4,6 @@ import com.baeldung.pattern.hexagonal.domain.model.Employee;
 import com.baeldung.pattern.hexagonal.persistence.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Optional;
-
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -22,13 +20,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployee(String employeeId) {
-        Optional<Employee> employee = employeeRepository.findById(employeeId);
-
-        if (employee.isPresent()) {
-            return employee.get();
-        } else {
-            // throw
-        }
-        return null;
+        return this.employeeRepository.findById(employeeId).orElse(null);
     }
 }
