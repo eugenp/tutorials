@@ -9,7 +9,7 @@ public class ConsoleUIAdapter {
         this.uiActionPort = uiActionPort;
     }
 
-    public String display(){
+    public String display() {
         return uiActionPort.executeSomeAction("Console Adapter");
     }
 }

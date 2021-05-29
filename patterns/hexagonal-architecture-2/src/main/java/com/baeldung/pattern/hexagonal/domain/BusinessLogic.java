@@ -10,7 +10,6 @@ public class BusinessLogic implements UIActionPort {
 
     @Override
     public String executeSomeAction(String context) {
-        return "Called from the " + context + " context. Fetched from "
-          + externalServicePort.fetchSomeDataFromExternalService();
+        return "Called from the " + context + " context. Fetched from " + externalServicePort.fetchSomeDataFromExternalService();
     }
 }

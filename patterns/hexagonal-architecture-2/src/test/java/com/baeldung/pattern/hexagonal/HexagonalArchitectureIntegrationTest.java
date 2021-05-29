@@ -13,10 +13,10 @@ import org.junit.jupiter.api.Test;
 public class HexagonalArchitectureIntegrationTest {
 
     @Test
-    void testConsoleUiAdapterWithFileBasedService(){
+    void testConsoleUiAdapterWithFileBasedService() {
         ExternalServicePort fileAdapter = new FileBasedExternalServiceAdapter();
 
-        UIActionPort businessLogic =  new BusinessLogic(fileAdapter);
+        UIActionPort businessLogic = new BusinessLogic(fileAdapter);
 
         ConsoleUIAdapter uiAdapter = new ConsoleUIAdapter(businessLogic);
 
@@ -24,10 +24,10 @@ public class HexagonalArchitectureIntegrationTest {
     }
 
     @Test
-    void testConsoleUiAdapterWithRestApiService(){
+    void testConsoleUiAdapterWithRestApiService() {
         ExternalServicePort fileAdapter = new RestAPIExternalServiceAdapter();
 
-        UIActionPort businessLogic =  new BusinessLogic(fileAdapter);
+        UIActionPort businessLogic = new BusinessLogic(fileAdapter);
 
         ConsoleUIAdapter uiAdapter = new ConsoleUIAdapter(businessLogic);
 
