@@ -10,7 +10,7 @@ public class BitwiseAndLogicalOROperatorUnitTest {
     public void givenTwoTrueBooleans_whenLogicalOrOperator_thenTrue() {
         boolean condition1 = true;
         boolean condition2 = true;
-        boolean result = 1 || 2;
+        boolean result = condition1 || condition2;
         assertTrue(result);
     }
 
