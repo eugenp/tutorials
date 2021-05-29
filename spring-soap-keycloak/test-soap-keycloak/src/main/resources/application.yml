@@ -1,0 +1,12 @@
+####### resource server configuration properties
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8083/auth/realms/Baeldung
+          jwk-set-uri: http://localhost:8083/auth/realms/Baeldung/protocol/openid-connect/certs
+server:
+  servlet:
+    context-path: /test-soap-keycloak
+          
