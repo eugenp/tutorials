@@ -6,8 +6,10 @@ import java.util.List;
 public interface CircleInterface {
     List<String> allowedColors = Arrays.asList("RED", "GREEN", "BLUE");
 
-    public default boolean isValid(String color) {
-        if (allowedColors.contains(color)) {
+    String getColor();
+    
+    public default boolean isValid() {
+        if (allowedColors.contains(getColor())) {
             return true;
         } else {
             return false;
