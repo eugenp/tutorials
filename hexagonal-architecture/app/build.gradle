@@ -1,0 +1,11 @@
+dependencies {
+    // Internal project dependencies
+    implementation project(":core")
+    implementation project(":database-h2")
+    // Switch the database module to see the magic happens
+    //implementation project(":database-neo4j")
+    implementation project(":rest")
+
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter'
+}

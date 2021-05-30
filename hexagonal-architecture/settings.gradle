@@ -1,3 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
 rootProject.name = 'hexa'
 include 'app'
+include 'core'
+include 'database-h2'
+include 'databse-neo4j'
+include 'rest'
 
