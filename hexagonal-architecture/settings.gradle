@@ -1,1 +1,3 @@
 rootProject.name = 'hexa'
+include 'app'
+
