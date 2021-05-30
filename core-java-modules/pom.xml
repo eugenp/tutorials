@@ -86,6 +86,7 @@
         <module>core-java-lang-oop-methods</module>
         <module>core-java-lang-oop-others</module>
         <module>core-java-lang-operators</module>
+        <module>core-java-lang-operators-2</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
         <module>core-java-networking</module>
@@ -111,7 +112,6 @@
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
         <module>core-java-string-operations-3</module>
-        <module>core-java-strings</module>
         <module>core-java-sun</module>
         <module>core-java-regex</module>
         <module>pre-jpms</module>
