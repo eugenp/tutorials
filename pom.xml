@@ -887,6 +887,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
 
+                <module>hexagonal-architecture</module>
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
