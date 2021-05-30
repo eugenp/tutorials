@@ -16,6 +16,6 @@ public class InterfaceVsAbstractClassUnitTest {
     public void givenInterface_whenValidCircleWithoutStateUsedThenPass() {
         ChidlCircleInterfaceImpl redCircleWithoutState = new ChidlCircleInterfaceImpl();
         redCircleWithoutState.setColor("RED");
-        assertTrue(redCircleWithoutState.isValid(redCircleWithoutState.getColor()));
+        assertTrue(redCircleWithoutState.isValid());
     }
 }
