@@ -15,7 +15,7 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<!-- Added in order to produce ApplicationContextException -->
+	<!-- Added in order to produce ApplicationContextException error -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

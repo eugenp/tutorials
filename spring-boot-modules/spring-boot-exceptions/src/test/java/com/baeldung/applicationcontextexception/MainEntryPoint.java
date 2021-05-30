@@ -3,7 +3,7 @@ package com.baeldung.applicationcontextexception;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//Remove this annotation to produce ApplicationContextException
+//Remove this annotation to produce ApplicationContextException error
 @SpringBootApplication
 public class MainEntryPoint {
 
