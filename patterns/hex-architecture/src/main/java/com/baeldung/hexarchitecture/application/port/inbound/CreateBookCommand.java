@@ -2,6 +2,7 @@ package com.baeldung.hexarchitecture.application.port.inbound;
 
 public class CreateBookCommand {
 
+    // Simple project so avoided lombok
     private String name;
     private String author;
 
