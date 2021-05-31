@@ -1,4 +1,4 @@
-package com.priyan.baeldung;
+package com.baeldung;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
