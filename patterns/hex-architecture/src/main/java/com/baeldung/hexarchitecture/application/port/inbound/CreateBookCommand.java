@@ -1,4 +1,4 @@
-package com.baeldung.hexarchitecture.application.port.in;
+package com.baeldung.hexarchitecture.application.port.inbound;
 
 public class CreateBookCommand {
 

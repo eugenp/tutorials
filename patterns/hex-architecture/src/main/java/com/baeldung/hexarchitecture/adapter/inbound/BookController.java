@@ -1,7 +1,7 @@
-package com.baeldung.hexarchitecture.adapter.in;
+package com.baeldung.hexarchitecture.adapter.inbound;
 
-import com.baeldung.hexarchitecture.application.port.in.CreateBookCommand;
-import com.baeldung.hexarchitecture.application.port.in.BookService;
+import com.baeldung.hexarchitecture.application.port.inbound.CreateBookCommand;
+import com.baeldung.hexarchitecture.application.port.inbound.BookService;
 import com.baeldung.hexarchitecture.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

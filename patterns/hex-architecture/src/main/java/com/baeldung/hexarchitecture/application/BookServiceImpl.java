@@ -1,8 +1,8 @@
 package com.baeldung.hexarchitecture.application;
 
-import com.baeldung.hexarchitecture.application.port.out.BookRepository;
-import com.baeldung.hexarchitecture.application.port.in.CreateBookCommand;
-import com.baeldung.hexarchitecture.application.port.in.BookService;
+import com.baeldung.hexarchitecture.application.port.outbound.BookRepository;
+import com.baeldung.hexarchitecture.application.port.inbound.CreateBookCommand;
+import com.baeldung.hexarchitecture.application.port.inbound.BookService;
 import com.baeldung.hexarchitecture.domain.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

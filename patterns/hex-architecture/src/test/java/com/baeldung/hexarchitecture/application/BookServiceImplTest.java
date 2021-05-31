@@ -1,7 +1,7 @@
 package com.baeldung.hexarchitecture.application;
 
-import com.baeldung.hexarchitecture.application.port.in.CreateBookCommand;
-import com.baeldung.hexarchitecture.application.port.out.BookRepository;
+import com.baeldung.hexarchitecture.application.port.inbound.CreateBookCommand;
+import com.baeldung.hexarchitecture.application.port.outbound.BookRepository;
 import com.baeldung.hexarchitecture.domain.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
