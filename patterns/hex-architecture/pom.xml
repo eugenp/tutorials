@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.baeldung</groupId>
 	<artifactId>hex-architecture</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>hex-architecture</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
