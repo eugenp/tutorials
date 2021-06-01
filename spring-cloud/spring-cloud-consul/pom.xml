@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-cloud-consul</artifactId>
@@ -12,7 +13,7 @@
         <artifactId>spring-cloud</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <repositories>
         <repository>
             <id>jitpack.io</id>
@@ -26,7 +27,6 @@
             <artifactId>spring-cloud-starter-consul-all</artifactId>
             <version>${spring-cloud-starter-consul.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-config</artifactId>
@@ -45,12 +45,12 @@
             <groupId>com.github.kinguinltdhk</groupId>
             <artifactId>leadership-consul</artifactId>
             <version>${kinguinltdhk.version}</version>
-              <exclusions>
+            <exclusions>
                 <exclusion>
-                  <groupId>com.ecwid.consul</groupId> 
-                  <artifactId>consul-api</artifactId>
+                    <groupId>com.ecwid.consul</groupId>
+                    <artifactId>consul-api</artifactId>
                 </exclusion>
-              </exclusions>
+            </exclusions>
         </dependency>
     </dependencies>
 

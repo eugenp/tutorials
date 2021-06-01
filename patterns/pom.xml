@@ -28,6 +28,7 @@
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>clean-architecture</module>
+        <module>enterprise-patterns</module>
     </modules>
 
     <dependencyManagement>
