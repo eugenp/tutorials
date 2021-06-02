@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity(name = "authors")
 @Table(name = "authors")
 public class Author {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
     private String firstName;
     private String lastName;
@@ -21,8 +23,10 @@ public class Author {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Author author = (Author) o;
         return id == author.id;
     }

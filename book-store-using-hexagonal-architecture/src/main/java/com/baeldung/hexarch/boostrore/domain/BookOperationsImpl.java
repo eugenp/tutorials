@@ -22,13 +22,10 @@ public class BookOperationsImpl implements BookOperations {
         // if the book with given isbn already exists then let us
         // throw an error
         if (booksRepository.findByIsbn(isbn).isPresent()) {
-            throw new RuntimeException("A Book with ISBN " + isbn
-                    + " already exists");
+            throw new RuntimeException("A Book with ISBN " + isbn + " already exists");
         }
         //Ask for the Author objects
-        Set<Author> authorSet = authors.stream()
-                .map(this::upsetAuthor)
-                .collect(Collectors.toSet());
+        Set<Author> authorSet = authors.stream().map(this::upsetAuthor).collect(Collectors.toSet());
 
         // create the book object and associate the authors
         Book book = new Book();
@@ -62,8 +59,7 @@ public class BookOperationsImpl implements BookOperations {
         // Check if a author already exists with given email id. if not create the Author
         // else return the author we found
         if (byEmailId.isEmpty()) {
-            throw new RuntimeException("Author not found: email id "
-                    + email);
+            throw new RuntimeException("Author not found: email id " + email);
         }
         return byEmailId.get();
     }
