@@ -8,4 +8,4 @@ This project is an example of a trading bot developed with Cassandre
 * `mvn spring-boot:run` - Run the bot
 
 ## Relevant Articles
-- [Build a Trading Bot with Cassandre Spring Boot Starter](https://www.baeldung.com/build-a-trading-bot-with-cassandre-spring-boot-starter/)
+- [Build a Trading Bot with Cassandre Spring Boot Starter](https://www.baeldung.com/cassandre-spring-boot-trading-bot)

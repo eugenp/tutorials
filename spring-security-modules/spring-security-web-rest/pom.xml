@@ -249,7 +249,7 @@
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
         <!-- swagger -->
-        <springfox-swagger.version>2.9.2</springfox-swagger.version>
+        <springfox-swagger.version>3.0.0</springfox-swagger.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
