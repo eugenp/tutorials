@@ -1,10 +1,10 @@
-package com.HexagonalArchitecture.Model;
+package com.HexagonalArchitecture.BookApplication.Model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Book")
-public class Book{
+@Table(name = "book")
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -15,12 +15,17 @@ public class Book{
     @Column(name = "author")
     private String author;
     
-    public Book(){}
+    @Column(name = "description")
+    private String description;
     
-    public Book(long id, String name, String author) {
+    public Book() {
+    }
+    
+    public Book(long id, String name, String author, String description) {
         this.id = id;
         this.name = name;
         this.author = author;
+        this.description = description;
     }
     
     public long getId() {
@@ -47,7 +52,13 @@ public class Book{
         this.author = author;
     }
     
+    public String getDescription() {
+        return description;
+    }
     
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
     
 }

@@ -1,7 +1,7 @@
-package com.HexagonalArchitecture.Service;
+package com.HexagonalArchitecture.BookApplication.Service;
 
-import com.HexagonalArchitecture.Model.Book;
-import com.HexagonalArchitecture.Repository.BookRepository;
+import com.HexagonalArchitecture.BookApplication.Model.Book;
+import com.HexagonalArchitecture.BookApplication.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,10 @@ public class BookServiceImpl implements BookService{
     BookRepository bookRepository;
     
     @Override
-    public void createBook(Book book) {
-        bookRepository.save(book);
+    public Book createBook(Book book) {
+        
+        Book newBook = bookRepository.save(book);
+        return newBook;
     }
     
     @Override

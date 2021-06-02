@@ -1,7 +1,7 @@
-package com.HexagonalArchitecture.Resource;
+package com.HexagonalArchitecture.BookApplication.Controller;
 
-import com.HexagonalArchitecture.Model.Book;
-import com.HexagonalArchitecture.Service.BookService;
+import com.HexagonalArchitecture.BookApplication.Model.Book;
+import com.HexagonalArchitecture.BookApplication.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class BookController {
     
     @Autowired
     private BookService bookService;
     
     @PostMapping(value = "book", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void createBook(@RequestBody Book book)
-    {
+    public void createBook(@RequestBody Book book) {
         bookService.createBook(book);
     }
     
@@ -30,7 +29,6 @@ public class BookController {
     @GetMapping(value = "book-list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Book> listBook()
     {
-        System.out.println("This is list of books");
         return bookService.listBook();
     }
 }
