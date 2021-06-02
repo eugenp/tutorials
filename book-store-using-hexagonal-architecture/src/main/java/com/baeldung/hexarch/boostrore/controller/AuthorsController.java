@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthorsController {
     private final AuthorsRepository authorsRepository;
 
-    @PutMapping(value = "/api/v1/authors",
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/api/v1/authors", consumes = MediaType.APPLICATION_JSON_VALUE)
     private void createAuthor(@RequestBody final Author author) {
         com.baeldung.hexarch.boostrore.model.Author author1 = new com.baeldung.hexarch.boostrore.model.Author();
         author1.setLastName(author.getLastName());

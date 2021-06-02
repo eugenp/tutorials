@@ -20,21 +20,14 @@ import java.util.stream.Collectors;
 public class BookController {
     private final BookOperations bookOperations;
 
-    @PutMapping(value = "/api/v1/books",
-            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/api/v1/books", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    private BookResponse createBook(
-            @RequestBody final CreateBookRequest createBookRequest) {
-        Set<String> authorEmailSet = createBookRequest.getAuthors()
-                .stream().map(Author::getEmailId)
-                .collect(Collectors.toSet());
+    private BookResponse createBook(@RequestBody final CreateBookRequest createBookRequest) {
+        Set<String> authorEmailSet = createBookRequest.getAuthors().stream().map(Author::getEmailId).collect(Collectors.toSet());
 
-        Book book = bookOperations.create(createBookRequest.getIsbn(),
-                createBookRequest.getTitle(), authorEmailSet);
+        Book book = bookOperations.create(createBookRequest.getIsbn(), createBookRequest.getTitle(), authorEmailSet);
 
-//        book.getAuthors().stream().map()
-        return BookResponse.builder()
-                .isbn(book.getIsbn()).title(book.getName())
-                .build();
+        //        book.getAuthors().stream().map()
+        return BookResponse.builder().isbn(book.getIsbn()).title(book.getName()).build();
     }
 }
