@@ -31,9 +31,16 @@ public class BitwiseAndLogicalOROperatorUnitTest {
     }
 
     @Test
-    public void givenTwoExpressions_OneTrueAndOneFalse_whenLogicalOrOperator_thenShortCircuitTrue() {
+    public void givenTwoExpressions_whenLogicalOrOperator_TrueOrFalse_thenShortCircuitTrue() {
 
-        boolean shortCircuitResult = (2 < 3) || (4 < 5);
+        boolean shortCircuitResult = returnAndLog(true) || returnAndLog(false);
+        assertTrue(shortCircuitResult);
+    }
+
+    @Test
+    public void givenTwoExpressions_whenLogicalOrOperator_FalseOrTrue_thenShortCircuitTrue() {
+
+        boolean shortCircuitResult = returnAndLog(false) || returnAndLog(true);
         assertTrue(shortCircuitResult);
     }
 
@@ -81,5 +88,17 @@ public class BitwiseAndLogicalOROperatorUnitTest {
 
         int result = 1 + 2 | 5 - 1;
         assertEquals(7, result);
+    }
+
+    @Test
+    public void givenExpression_multipleLogicalOr_thenEvaluateByLeftToRightAssociativity() {
+
+        boolean result = true || false || false;
+        assertTrue(result);
+    }
+
+    boolean returnAndLog(boolean value) {
+        System.out.println("Returning " + value);
+        return value;
     }
 }
