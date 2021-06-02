@@ -26,8 +26,6 @@ public class BookController {
         Set<String> authorEmailSet = createBookRequest.getAuthors().stream().map(Author::getEmailId).collect(Collectors.toSet());
 
         Book book = bookOperations.create(createBookRequest.getIsbn(), createBookRequest.getTitle(), authorEmailSet);
-
-        //        book.getAuthors().stream().map()
         return BookResponse.builder().isbn(book.getIsbn()).title(book.getName()).build();
     }
 }
