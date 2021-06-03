@@ -1,4 +1,4 @@
-package com.baeldung.service;
+package com.baeldung.jacocoexclusions.service;
 
 import org.junit.jupiter.api.Test;
 

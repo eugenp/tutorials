@@ -1,4 +1,4 @@
-package com.baeldung.service;
+package com.baeldung.jacocoexclusions.service;
 
 public class ProductService {
     private static final double DISCOUNT = 0.25;

@@ -1,4 +1,4 @@
-package com.baeldung.generated;
+package com.baeldung.jacocoexclusions.generated;
 
 @Generated
 public class Customer {
