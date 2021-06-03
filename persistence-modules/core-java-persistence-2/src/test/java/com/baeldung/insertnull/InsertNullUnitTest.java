@@ -1,11 +1,9 @@
 package com.baeldung.insertnull;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Types;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -16,7 +14,7 @@ public class InsertNullUnitTest {
     private final String SQL = "INSERT INTO Person VALUES(?,?,?,?)";
 
     @Test
-    public void givenNewPerson_whenSetNullIsUsed_thenNewRecordIsCreated() throws Exception {
+    public void givenNewPerson_whenSetNullIsUsed_thenNewRecordIsCreated() throws SQLException {
         Person person = new Person(1, "John", "Doe", null);
 
         try (PreparedStatement preparedStatement = DBConfig.getConnection().prepareStatement(SQL)) {
@@ -30,12 +28,11 @@ public class InsertNullUnitTest {
             int noOfRows = preparedStatement.executeUpdate();
 
             assertThat(noOfRows, equalTo(1));
-        } catch (Exception ignored) {
         }
     }
 
     @Test
-    public void givenNewPerson_whenSetObjectIsUsed_thenNewRecordIsCreated() throws Exception {
+    public void givenNewPerson_whenSetObjectIsUsed_thenNewRecordIsCreated() throws SQLException {
         Person person = new Person(2, "John", "Doe", null);
 
         try (PreparedStatement preparedStatement = DBConfig.getConnection().prepareStatement(SQL)) {
@@ -46,7 +43,6 @@ public class InsertNullUnitTest {
             int noOfRows = preparedStatement.executeUpdate();
 
             assertThat(noOfRows, equalTo(1));
-        } catch (Exception ignored) {
         }
     }
 }
