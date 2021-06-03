@@ -20,36 +20,36 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class BinaryFileWriterUnitTest {
 
-  @Mock
-  private OutputStream outputStream;
+    @Mock
+    private OutputStream outputStream;
 
-  @Test
-  public void givenInputStream_whenWrite_thenExpectWritten() throws Exception {
-    InputStream inputStream = mock(InputStream.class);
-    when(inputStream.read(any(), anyInt(), anyInt())).thenReturn(10, -1);
+    @Test
+    public void givenInputStream_whenWrite_thenExpectWritten() throws Exception {
+        InputStream inputStream = mock(InputStream.class);
+        when(inputStream.read(any(), anyInt(), anyInt())).thenReturn(10, -1);
 
-    try (BinaryFileWriter tested = new BinaryFileWriter(outputStream)) {
-      long result = tested.write(inputStream);
+        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream)) {
+            long result = tested.write(inputStream);
 
-      assertEquals(10, result);
-      verify(outputStream).write(any(), eq(0), eq(10));
-      verify(inputStream).close();
+            assertEquals(10, result);
+            verify(outputStream).write(any(), eq(0), eq(10));
+            verify(inputStream).close();
+        }
+        verify(outputStream).close();
     }
-    verify(outputStream).close();
-  }
 
-  @Test
-  public void givenInputStreamEmpty_whenWrite_thenExpectNotWritten() throws Exception {
-    InputStream inputStream = mock(InputStream.class);
+    @Test
+    public void givenInputStreamEmpty_whenWrite_thenExpectNotWritten() throws Exception {
+        InputStream inputStream = mock(InputStream.class);
 
-    try (BinaryFileWriter tested = new BinaryFileWriter(outputStream)) {
-      long result = tested.write(inputStream);
+        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream)) {
+            long result = tested.write(inputStream);
 
-      assertEquals(0, result);
-      verify(outputStream, times(0)).write(any(), anyInt(), anyInt());
-      verify(inputStream).close();
+            assertEquals(0, result);
+            verify(outputStream, times(0)).write(any(), anyInt(), anyInt());
+            verify(inputStream).close();
+        }
+        verify(outputStream).close();
     }
-    verify(outputStream).close();
-  }
 
 }
