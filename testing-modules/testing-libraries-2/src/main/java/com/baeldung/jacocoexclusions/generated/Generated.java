@@ -1,4 +1,4 @@
-package com.baeldung.generated;
+package com.baeldung.jacocoexclusions.generated;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

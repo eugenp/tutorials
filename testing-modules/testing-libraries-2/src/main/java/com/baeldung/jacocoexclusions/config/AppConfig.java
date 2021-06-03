@@ -1,6 +1,6 @@
-package com.baeldung.config;
+package com.baeldung.jacocoexclusions.config;
 
-import com.baeldung.service.ProductService;
+import com.baeldung.jacocoexclusions.service.ProductService;
 
 public class AppConfig {
 

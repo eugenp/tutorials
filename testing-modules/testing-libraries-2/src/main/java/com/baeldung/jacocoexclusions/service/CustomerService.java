@@ -1,6 +1,6 @@
-package com.baeldung.service;
+package com.baeldung.jacocoexclusions.service;
 
-import com.baeldung.generated.Generated;
+import com.baeldung.jacocoexclusions.generated.Generated;
 
 public class CustomerService {
 
