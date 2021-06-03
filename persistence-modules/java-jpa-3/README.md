@@ -12,3 +12,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [How to Convert a Hibernate Proxy to a Real Entity Object](https://www.baeldung.com/hibernate-proxy-to-real-entity-object)
 - [Returning an Auto-Generated Id with JPA](https://www.baeldung.com/jpa-get-auto-generated-id)
 - [How to Return Multiple Entities In JPA Query](https://www.baeldung.com/jpa-return-multiple-entities)
+- [Defining Unique Constraints in JPA](https://www.baeldung.com/jpa-unique-constraints)
