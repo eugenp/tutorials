@@ -17,6 +17,7 @@
             <artifactId>client-java</artifactId>
             <version>11.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
