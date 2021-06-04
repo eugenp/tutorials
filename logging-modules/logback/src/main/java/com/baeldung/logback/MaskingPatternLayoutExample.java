@@ -22,7 +22,6 @@ public class MaskingPatternLayoutExample {
         user.put("email_id", "spring@baeldung.com");
         JSONObject userDetails = new JSONObject(user);
 
-        logger.info("MaskingPatternExample log from {}" + userDetails,
-                MaskingPatternLayoutExample.class.getSimpleName());
+        logger.info("MaskingPatternExample log from {}" + userDetails, MaskingPatternLayoutExample.class.getSimpleName());
     }
 }
