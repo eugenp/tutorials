@@ -20,7 +20,7 @@ public class ApplicationCLI {
             final String command = scanner.next();
             switch (command) {
                 case "C":
-                    createBookInput();
+                    createEmployee();
                     break;
                 case "D":
                     deleteEmployee();
