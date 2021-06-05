@@ -9,12 +9,14 @@ public class BinaryFileWriter implements AutoCloseable {
 
     private static final int CHUNK_SIZE = 1024;
     private final OutputStream outputStream;
+    private final ProgressCallable progressCallable;
 
-    public BinaryFileWriter(OutputStream outputStream) {
+    public BinaryFileWriter(OutputStream outputStream, ProgressCallable progressCallable) {
         this.outputStream = outputStream;
+        this.progressCallable = progressCallable;
     }
 
-    public long write(InputStream inputStream) throws IOException {
+    public long write(InputStream inputStream, double length) throws IOException {
         try (BufferedInputStream input = new BufferedInputStream(inputStream)) {
             byte[] dataBuffer = new byte[CHUNK_SIZE];
             int readBytes;
@@ -22,6 +24,7 @@ public class BinaryFileWriter implements AutoCloseable {
             while ((readBytes = input.read(dataBuffer)) != -1) {
                 totalBytes += readBytes;
                 outputStream.write(dataBuffer, 0, readBytes);
+                progressCallable.onProgress(totalBytes / length * 100.0);
             }
             return totalBytes;
         }

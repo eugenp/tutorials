@@ -19,6 +19,7 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -42,12 +43,12 @@ public class BinaryFileDownloaderUnitTest {
         ResponseBody body = ResponseBody.create("BODY", MediaType.get("application/text"));
         Response response = createResponse(url, body);
         when(call.execute()).thenReturn(response);
-        when(writer.write(any())).thenReturn(1L);
+        when(writer.write(any(), anyDouble())).thenReturn(1L);
 
         try (BinaryFileDownloader tested = new BinaryFileDownloader(client, writer)) {
             long size = tested.download(url);
             assertEquals(1L, size);
-            verify(writer).write(any(InputStream.class));
+            verify(writer).write(any(InputStream.class), anyDouble());
         }
         verify(writer).close();
     }
@@ -62,7 +63,7 @@ public class BinaryFileDownloaderUnitTest {
 
         assertThrows(IllegalStateException.class, () -> tested.download(url));
 
-        verify(writer, times(0)).write(any(InputStream.class));
+        verify(writer, times(0)).write(any(InputStream.class), anyDouble());
     }
 
     @NotNull
