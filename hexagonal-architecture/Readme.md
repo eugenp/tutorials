@@ -1,0 +1,1 @@
+This module explains the hexagonal architecture implementation.

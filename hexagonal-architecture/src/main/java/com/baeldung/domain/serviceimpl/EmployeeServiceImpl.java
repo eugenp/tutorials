@@ -8,6 +8,10 @@ import com.baeldung.domain.Employee;
 import com.baeldung.inboundports.EmployeeService;
 import com.baeldung.outboundports.EmployeeRepository;
 
+/**
+ * This is the use case for business logic implementation. The use cases and business domain objects are inside of the hexagonal.
+ *
+ **/
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
