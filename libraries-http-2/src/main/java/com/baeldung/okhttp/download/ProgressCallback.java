@@ -1,6 +1,6 @@
 package com.baeldung.okhttp.download;
 
-public interface ProgressCallable {
+public interface ProgressCallback {
 
     void onProgress(double progress);
 
