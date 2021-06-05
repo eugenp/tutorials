@@ -28,8 +28,8 @@ public class BinaryFileWriterUnitTest {
         InputStream inputStream = mock(InputStream.class);
         when(inputStream.read(any(), anyInt(), anyInt())).thenReturn(10, -1);
 
-        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream)) {
-            long result = tested.write(inputStream);
+        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream, progress -> assertEquals(100.0, progress))) {
+            long result = tested.write(inputStream, 10);
 
             assertEquals(10, result);
             verify(outputStream).write(any(), eq(0), eq(10));
@@ -42,8 +42,8 @@ public class BinaryFileWriterUnitTest {
     public void givenInputStreamEmpty_whenWrite_thenExpectNotWritten() throws Exception {
         InputStream inputStream = mock(InputStream.class);
 
-        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream)) {
-            long result = tested.write(inputStream);
+        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream, progress -> assertEquals(100.0, progress))) {
+            long result = tested.write(inputStream, 1);
 
             assertEquals(0, result);
             verify(outputStream, times(0)).write(any(), anyInt(), anyInt());

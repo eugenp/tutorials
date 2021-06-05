@@ -7,6 +7,9 @@ import okhttp3.ResponseBody;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Objects;
+
+import static org.springframework.http.HttpHeaders.CONTENT_LENGTH;
 
 public class BinaryFileDownloader implements AutoCloseable {
 
@@ -22,7 +25,8 @@ public class BinaryFileDownloader implements AutoCloseable {
         Request request = createRequest(url);
         Response response = executeRequest(request);
         ResponseBody responseBody = getResponseBodyOrFail(response);
-        return write(responseBody);
+        double length = getResponseLength(response);
+        return write(responseBody, length);
     }
 
     @NotNull
@@ -43,8 +47,12 @@ public class BinaryFileDownloader implements AutoCloseable {
         return responseBody;
     }
 
-    private long write(ResponseBody responseBody) throws IOException {
-        return writer.write(responseBody.byteStream());
+    private double getResponseLength(Response response) {
+        return Double.parseDouble(Objects.requireNonNull(response.header(CONTENT_LENGTH, "1")));
+    }
+
+    private long write(ResponseBody responseBody, double length) throws IOException {
+        return writer.write(responseBody.byteStream(), length);
     }
 
     @Override
