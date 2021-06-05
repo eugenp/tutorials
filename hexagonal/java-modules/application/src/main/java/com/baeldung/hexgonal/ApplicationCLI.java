@@ -23,7 +23,7 @@ public class ApplicationCLI {
                     createBookInput();
                     break;
                 case "D":
-                    deleteBookInput();
+                    deleteEmployee();
                     break;
                 case "E":
                     return;
@@ -31,7 +31,7 @@ public class ApplicationCLI {
         } while (true);
     }
 
-    private void createBookInput() {
+    private void createEmployee() {
         System.out.println("Enter employee id: ");
         String id = scanner.next();
         System.out.println("Enter employee first name: ");
@@ -44,7 +44,7 @@ public class ApplicationCLI {
         System.out.println("Book " + id + " successfully created.");
     }
 
-    private void deleteBookInput() {
+    private void deleteEmployee() {
         System.out.println("Enter ID: ");
         final String id = scanner.next();
         employeeService.deleteEmployee(Long.valueOf(id));
