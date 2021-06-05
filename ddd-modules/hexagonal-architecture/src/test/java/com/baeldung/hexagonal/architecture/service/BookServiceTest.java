@@ -1,6 +1,5 @@
 package com.baeldung.hexagonal.architecture.service;
 
-
 import com.baeldung.hexagonal.architecture.repository.Book;
 import com.baeldung.hexagonal.architecture.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +17,7 @@ public class BookServiceTest {
     private static final Integer BOOK_SHELF_NO = 5;
 
     private BookRepository bookRepository;
-    private BookService bookService;
+    private BookServicePort bookService;
 
     @BeforeEach
     public void init() {
@@ -27,30 +26,35 @@ public class BookServiceTest {
     }
 
     @Test
-    public void shouldThrowIllegalArgException() {
-        assertThatThrownBy(() ->
-            bookService.findBook(null, null)
-        ).isInstanceOf(IllegalArgumentException.class)
-         .hasMessage("Name and/or shelfNo are null");
+    public void givenNullNameAndShelfNo_whenFindBook_thenThrowIllegalArgumentException() {
+
+        assertThatThrownBy(() -> bookService.findBook(null, null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Name and/or shelfNo are null");
     }
 
     @Test
-    public void shouldThrowRuntimeException() {
+    public void givenNameAndShelfNo_whenFindBookIsEmpty_thenThrowRuntimeException() {
+
         given(bookRepository.findByNameAndShelfNo(BOOK_NAME, BOOK_SHELF_NO))
-            .willReturn(Optional.empty());
-        assertThatThrownBy(() ->
-            bookService.findBook(BOOK_NAME, BOOK_SHELF_NO)
-        ).isInstanceOf(RuntimeException.class)
-         .hasMessage("Book not found");
+                .willReturn(Optional.empty());
+
+        assertThatThrownBy(() -> bookService.findBook(BOOK_NAME, BOOK_SHELF_NO))
+                .isInstanceOf(RuntimeException.class)
+                .hasMessage("Book not found");
     }
 
     @Test
-    public void shouldReturnBook() {
+    public void givenNameAndShelfNo_whenFindBook_thenReturnBook() {
+
         Book entity = new Book(1, BOOK_NAME, BOOK_SHELF_NO);
         BookDTO expected = new BookDTO(entity);
+
         given(bookRepository.findByNameAndShelfNo(BOOK_NAME, BOOK_SHELF_NO))
-            .willReturn(Optional.of(entity));
+                .willReturn(Optional.of(entity));
+
         BookDTO book = bookService.findBook(BOOK_NAME, BOOK_SHELF_NO);
+
         assertEquals(expected, book);
     }
 }

@@ -1,6 +1,5 @@
 package com.baeldung.hexagonal.architecture.repository;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,8 +12,6 @@ public class Book {
     private Integer id;
     private String name;
     private Integer shelfNo;
-
-    public Book() {}
 
     public Book(Integer id, String name, Integer shelfNo) {
         this.id = id;
@@ -36,8 +33,10 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Book book = (Book) o;
         return Objects.equals(id, book.id) && Objects.equals(name, book.name) && Objects.equals(shelfNo, book.shelfNo);
     }

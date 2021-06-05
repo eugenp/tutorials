@@ -7,19 +7,23 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service
-public class BookService {
+class BookService implements BookServicePort {
     private BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public BookDTO findBook(final String name, final Integer shelfNo) {
+    public BookDTO findBook(String name, Integer shelfNo) {
+
         if (Objects.isNull(name) || Objects.isNull(shelfNo)) {
             throw new IllegalArgumentException("Name and/or shelfNo are null");
         }
-        Book book = bookRepository.findByNameAndShelfNo(name, shelfNo)
-            .orElseThrow(() -> new RuntimeException("Book not found"));
+
+        Book book =  bookRepository.findByNameAndShelfNo(name, shelfNo)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+
         return new BookDTO(book);
     }
 }
+

@@ -1,7 +1,7 @@
 package com.baeldung.hexagonal.architecture.controller;
 
 import com.baeldung.hexagonal.architecture.service.BookDTO;
-import com.baeldung.hexagonal.architecture.service.BookService;
+import com.baeldung.hexagonal.architecture.service.BookServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private BookService bookService;
+    private BookServicePort bookService;
 
     @Autowired
-    public BookController(final BookService bookService) {
+    public BookController(final BookServicePort bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping("/filter")
     public ResponseEntity<BookDTO> findByFilters(
-            @RequestParam String name,
-            @RequestParam(name = "shelf_no") Integer shelfNo) {
+      @RequestParam String name, @RequestParam(name = "shelf_no") Integer shelfNo) {
         return ResponseEntity.ok(bookService.findBook(name, shelfNo));
     }
 }

@@ -9,7 +9,8 @@ public class BookDTO {
     private String name;
     private Integer shelfNo;
 
-    public BookDTO() {}
+    public BookDTO() {
+    }
 
     public BookDTO(Book book) {
         this.id = book.getId();
@@ -43,8 +44,10 @@ public class BookDTO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         BookDTO bookDTO = (BookDTO) o;
         return Objects.equals(id, bookDTO.id) && Objects.equals(name, bookDTO.name) && Objects.equals(shelfNo, bookDTO.shelfNo);
     }
