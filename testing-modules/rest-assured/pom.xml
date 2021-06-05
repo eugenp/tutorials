@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>rest-assured</artifactId>
     <version>1.0</version>
@@ -70,41 +71,34 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-util</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>uri-template</artifactId>
             <version>${uri-template.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.googlecode.libphonenumber</groupId>
             <artifactId>libphonenumber</artifactId>
             <version>${libphonenumber.version}</version>
         </dependency>
-
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
-
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${joda-time.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
@@ -113,36 +107,30 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>msg-simple</artifactId>
             <version>${msg-simple.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>jackson-coreutils</artifactId>
             <version>${jackson-coreutils.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>btf</artifactId>
             <version>${btf.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>${groovy.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
@@ -153,8 +141,7 @@
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
-
-        <!-- Rest Assured Dependencies-->
+        <!-- Rest Assured Dependencies -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -185,12 +172,9 @@
         <servlet-api.version>2.5</servlet-api.version>
         <javax.mail.version>1.4.7</javax.mail.version>
         <jetty.version>9.4.0.v20161208</jetty.version>
-
         <commons-collections.version>3.2.2</commons-collections.version>
-
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-
         <uri-template.version>0.9</uri-template.version>
         <libphonenumber.version>8.0.0</libphonenumber.version>
         <joda-time.version>2.9.6</joda-time.version>
@@ -198,7 +182,6 @@
         <btf.version>1.2</btf.version>
         <groovy.version>2.4.7</groovy.version>
         <wiremock.version>2.4.1</wiremock.version>
-
         <scribejava.version>2.5.3</scribejava.version>
     </properties>
 

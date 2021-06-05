@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-archaius</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -63,5 +63,5 @@
         <spring-cloud-dependencies.version>2.0.1.RELEASE</spring-cloud-dependencies.version>
         <junit.platform.version>1.2.0</junit.platform.version>
     </properties>
-    
+
 </project>
