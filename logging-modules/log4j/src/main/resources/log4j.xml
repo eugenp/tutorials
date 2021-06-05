@@ -90,6 +90,8 @@
         <appender-ref ref="roll-by-time-and-size"/>
     </category>
 
+    <logger name="com.baeldung.log4j.NoAppenderExample"/>
+
     <root>
         <level value="DEBUG"/>
         <appender-ref ref="stdout"/>

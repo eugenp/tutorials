@@ -14,6 +14,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
@@ -43,7 +49,6 @@
             <version>${system-stubs.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- System Stubs requires more up to date JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -72,7 +77,44 @@
     </dependencies>
 
     <build>
-        <finalName>testing-libraries</finalName>
+        <finalName>testing-libraries-2</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <!-- Plugins for JACOCO Coverage report -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/baeldung/**/ExcludedPOJO.class</exclude>
+                        <exclude>com/baeldung/**/*DTO.*</exclude>
+                        <exclude>**/config/*</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/test/resources</directory>
@@ -82,10 +124,12 @@
     </build>
 
     <properties>
+        <jacoco.version>0.8.6</jacoco.version>
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-stubs.version>1.1.0</system-stubs.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj-core.version>3.16.1</assertj-core.version>
     </properties>
+  
 </project>

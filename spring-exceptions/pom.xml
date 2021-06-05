@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-exceptions</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -14,9 +15,7 @@
     </parent>
 
     <dependencies>
-
         <!-- Spring -->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -49,9 +48,7 @@
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-
         <!-- persistence -->
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -73,33 +70,26 @@
             <artifactId>tomcat-dbcp</artifactId>
             <version>${tomcat-dbcp.version}</version>
         </dependency>
-
         <!-- validation -->
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-
         <!-- web -->
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- util -->
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -111,22 +101,18 @@
             <version>${commons-lang3.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- test scoped -->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>el-api</artifactId>
             <version>${javax.el.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
@@ -157,9 +143,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -168,40 +152,30 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
 
     <properties>
-
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <javassist.version>3.21.0-GA</javassist.version>
-
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <tomcat-dbcp.version>7.0.73</tomcat-dbcp.version>
         <derby.version>10.13.1.1</derby.version>
-
         <!-- various -->
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <javax.el.version>2.2</javax.el.version>
-
         <!-- util -->
         <guava.version>19.0</guava.version>
-
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-
         <rest-assured.version>2.9.0</rest-assured.version>
-
         <!-- maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-
     </properties>
 
 </project>
