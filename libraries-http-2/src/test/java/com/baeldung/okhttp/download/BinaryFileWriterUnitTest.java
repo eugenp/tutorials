@@ -8,7 +8,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
@@ -28,7 +28,7 @@ public class BinaryFileWriterUnitTest {
         InputStream inputStream = mock(InputStream.class);
         when(inputStream.read(any(), anyInt(), anyInt())).thenReturn(10, -1);
 
-        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream, progress -> assertEquals(100.0, progress))) {
+        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream, progress -> assertEquals(100.0, progress, .0))) {
             long result = tested.write(inputStream, 10);
 
             assertEquals(10, result);
@@ -42,7 +42,7 @@ public class BinaryFileWriterUnitTest {
     public void givenInputStreamEmpty_whenWrite_thenExpectNotWritten() throws Exception {
         InputStream inputStream = mock(InputStream.class);
 
-        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream, progress -> assertEquals(100.0, progress))) {
+        try (BinaryFileWriter tested = new BinaryFileWriter(outputStream, progress -> assertEquals(100.0, progress, .0))) {
             long result = tested.write(inputStream, 1);
 
             assertEquals(0, result);
