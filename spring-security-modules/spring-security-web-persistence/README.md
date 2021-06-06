@@ -1,6 +1,6 @@
-## Spring Security Persisted Remember Me
+## Spring Security Persistence
 
-This module contains articles about 'remember me' with Spring Security
+This module contains articles about persistence with Spring Security
 
 ### The Course
 

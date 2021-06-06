@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-security-web-persisted-remember-me</artifactId>
+    <artifactId>spring-security-web-persistence</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-web-persisted-remember-me</name>
+    <name>spring-security-web-persistence</name>
     <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
+        <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-4</relativePath>
+        <relativePath>../../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -100,7 +100,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
-            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
         </dependency>
         <!-- persistence -->
         <dependency>
@@ -112,6 +116,12 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
         <!-- utils -->
@@ -136,7 +146,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-security-web-persisted-remember-me</finalName>
+        <finalName>spring-security-web-persistence</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
