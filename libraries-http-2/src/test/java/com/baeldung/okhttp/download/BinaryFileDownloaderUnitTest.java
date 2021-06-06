@@ -16,8 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.mock;
@@ -53,7 +52,7 @@ public class BinaryFileDownloaderUnitTest {
         verify(writer).close();
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void givenUrlAndResponseWithNullBody_whenDownload_thenExpectIllegalStateException() throws Exception {
         String url = "http://example.com/file";
         Call call = mock(Call.class);
@@ -61,7 +60,7 @@ public class BinaryFileDownloaderUnitTest {
         Response response = createResponse(url, null);
         when(call.execute()).thenReturn(response);
 
-        assertThrows(IllegalStateException.class, () -> tested.download(url));
+        tested.download(url);
 
         verify(writer, times(0)).write(any(InputStream.class), anyDouble());
     }

@@ -8,10 +8,10 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class BinaryFileDownloaderIntegrationTest {
 
@@ -19,19 +19,21 @@ public class BinaryFileDownloaderIntegrationTest {
     public MockWebServer server = new MockWebServer();
 
     @Test
-    public void givenATextFile_whenDownload_thenExpectFileDownloaded() throws IOException {
+    public void givenATextFile_whenDownload_thenExpectFileDownloaded() {
         String body = "Hello Baeldung Readers!";
         server.enqueue(new MockResponse().setBody(body));
         String fileName = "download.txt";
-        BinaryFileWriter writer = new BinaryFileWriter(new FileOutputStream(fileName), progress -> assertEquals(100.0, progress, .0));
-        BinaryFileDownloader tested = new BinaryFileDownloader(new OkHttpClient(), writer);
 
-        long downloaded = tested.download(server.url("/greetings").toString());
-
-        assertEquals(body.length(), downloaded);
-        File downloadedFile = new File(fileName);
-        assertTrue(downloadedFile.isFile());
-        assertTrue(downloadedFile.delete());
+        ProgressCallback progressCallback = progress -> assertEquals(100.0, progress, .0);
+        try (BinaryFileWriter writer = new BinaryFileWriter(new FileOutputStream(fileName), progressCallback); BinaryFileDownloader tested = new BinaryFileDownloader(new OkHttpClient(), writer)) {
+            long downloaded = tested.download(server.url("/greetings").toString());
+            assertEquals(body.length(), downloaded);
+            File downloadedFile = new File(fileName);
+            assertTrue(downloadedFile.isFile());
+            assertTrue(downloadedFile.delete());
+        } catch (Exception e) {
+            fail("An unexpected exception has occurred: " + e);
+        }
     }
 
 }
