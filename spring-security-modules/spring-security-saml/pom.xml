@@ -14,6 +14,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
+
     <repositories>
         <repository>
             <id>Shibboleth</id>
@@ -70,4 +71,5 @@
     <properties>
         <saml2-core.spring.version>1.0.10.RELEASE</saml2-core.spring.version>
     </properties>
+
 </project>

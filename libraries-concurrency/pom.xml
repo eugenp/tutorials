@@ -54,14 +54,11 @@
                     <arguments>
                         <!-- Turn off before production -->
                         <argument>-Dco.paralleluniverse.fibers.verifyInstrumentation=true</argument>
-
                         <!-- Quasar Agent -->
                         <argument>-javaagent:${co.paralleluniverse:quasar-core:jar}</argument>
-
                         <!-- Classpath -->
                         <argument>-classpath</argument>
                         <classpath />
-
                         <!-- Main class -->
                         <argument>com.baeldung.quasar.App</argument>
                     </arguments>
@@ -81,4 +78,5 @@
     <properties>
         <quasar.version>0.8.0</quasar.version>
     </properties>
+    
 </project>
