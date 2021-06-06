@@ -3,7 +3,7 @@ package com.baeldung.privateconstructors;
 public class StringUtils {
 
     private StringUtils() {
-        System.out.println("This class cannot be instantiated");
+        // this class cannot be instantiated
     }
 
     public static String toUpperCase(String s) {
