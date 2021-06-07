@@ -28,7 +28,7 @@ class EmployeeServiceUnitTest {
     }
 
     @Test
-    void givenValidEmployeeParamsAreProvided_thenEmployeeIsSavedInTheRepository() {
+    void whenEmployeeHasBeenCreated_thenEmployeeIdNotBeNull() {
         Long id = new Random().nextLong();
         Long employeeId = employeeService.createEmployee(id,"David","Brooks","12345");
         Mockito.verify(employeeRepository, Mockito.times(1))
@@ -37,7 +37,7 @@ class EmployeeServiceUnitTest {
     }
 
     @Test
-    void givenExistingEmployeeId_thenEmployeeIsDeletedFromTheRepository() {
+    void whenEmployeeHasBeenDeleted_thenEmployeeIsDeletedFromTheRepository() {
         Long id = new Random().nextLong();
         employeeService.deleteEmployee(id);
         Mockito.verify(employeeRepository, Mockito.times(1))
