@@ -33,17 +33,17 @@ public class SplitStringByNewLineUnitTest {
 
     @Test
     public void givenString_whenSplitByNewLineUsingJava8PatternClass_thenReturnsStream() {
-        Pattern pattern = Pattern.compile(System.lineSeparator());
+        Pattern pattern = Pattern.compile("\\R");
 
         assertThat(pattern.splitAsStream("Line1\nLine2\nLine3")).containsExactly("Line1", "Line2", "Line3");
+
+        assertThat(pattern.splitAsStream("Line1\rLine2\rLine3")).containsExactly("Line1", "Line2", "Line3");
+
+        assertThat(pattern.splitAsStream("Line1\r\nLine2\r\nLine3")).containsExactly("Line1", "Line2", "Line3");
     }
 
     @Test
     public void givenString_whenSplitByNewLineUsingJava11Lines_thenReturnsStream() {
-        assertThat("Line1\nLine2\nLine3".lines()).containsExactly("Line1", "Line2", "Line3");
-
-        assertThat("Line1\rLine2\rLine3".lines()).containsExactly("Line1", "Line2", "Line3");
-
-        assertThat("Line1\r\nLine2\r\nLine3".lines()).containsExactly("Line1", "Line2", "Line3");
+        assertThat("Line1\nLine2\rLine3\r\nLine4".lines()).containsExactly("Line1", "Line2", "Line3", "Line4");
     }
 }
