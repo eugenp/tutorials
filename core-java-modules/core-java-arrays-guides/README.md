@@ -8,3 +8,4 @@ This module contains complete guides about arrays in Java
 - [What is \[Ljava.lang.Object;?](https://www.baeldung.com/java-tostring-array)
 - [Guide to ArrayStoreException](https://www.baeldung.com/java-arraystoreexception)
 - [Creating a Generic Array in Java](https://www.baeldung.com/java-generic-array)
+- [Maximum Size of Java Arrays](https://www.baeldung.com/java-arrays-max-size)

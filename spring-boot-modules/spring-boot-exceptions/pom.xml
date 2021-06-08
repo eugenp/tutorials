@@ -15,6 +15,14 @@
         <relativePath>../</relativePath>
     </parent>
 
+    <!-- Added in order to produce ApplicationContextException error -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>spring-boot-exceptions</finalName>
         <resources>
