@@ -11,12 +11,12 @@ import com.baeldung.spring.servicevalidation.service.UserAccountService;
 @RestController
 public class UserAccountController {
 
-	@Autowired
-	private UserAccountService service;
+    @Autowired
+    private UserAccountService service;
 
-	@PostMapping("/addUserAccount")
-	public Object addUserAccount(@RequestBody UserAccount userAccount) {
-		return service.addUserAccount(userAccount);
-	}
+    @PostMapping("/addUserAccount")
+    public Object addUserAccount(@RequestBody UserAccount userAccount) {
+        return service.addUserAccount(userAccount);
+    }
 
 }
