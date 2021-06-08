@@ -5,21 +5,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.baeldung.spring-service-layer-validation</groupId>
-	<artifactId>spring-service-layer-validation</artifactId>
+	<groupId>com.baeldung</groupId>
+	<artifactId>spring-boot-validation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>12</maven.compiler.source>
-		<maven.compiler.target>12</maven.compiler.target>
-	</properties>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.5</version>
-	</parent>
+	 <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
+    </parent>
 
 	<dependencies>
 		<dependency>
