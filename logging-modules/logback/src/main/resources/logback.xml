@@ -46,17 +46,17 @@
         <subject>BAELDUNG: %logger{20} - %msg</subject>
         <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
     </appender>
-    
+
     <appender name="mask" class="ch.qos.logback.core.ConsoleAppender">
-	    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-		    <layout class="com.baeldung.logback.MaskingPatternLayout">
-			    <maskPattern>\"SSN\"\s*:\s*\"(.*?)\"</maskPattern> <!-- SSN JSON pattern -->
-			    <maskPattern>\"address\"\s*:\s*\"(.*?)\"</maskPattern> <!-- Address JSON pattern -->
-			    <maskPattern>(\d+\.\d+\.\d+\.\d+)</maskPattern> <!-- Ip address IPv4 pattern -->
-			    <maskPattern>(\w+@\w+\.\w+)</maskPattern> <!-- Email pattern -->
-			    <pattern>%-5p [%d{ISO8601,UTC}] [%thread] %c: %m%n%rootException</pattern>
-		    </layout>
-	    </encoder>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="com.baeldung.logback.MaskingPatternLayout">
+                <maskPattern>\"SSN\"\s*:\s*\"(.*?)\"</maskPattern> <!-- SSN JSON pattern -->
+                <maskPattern>\"address\"\s*:\s*\"(.*?)\"</maskPattern> <!-- Address JSON pattern -->
+                <maskPattern>(\d+\.\d+\.\d+\.\d+)</maskPattern> <!-- Ip address IPv4 pattern -->
+                <maskPattern>(\w+@\w+\.\w+)</maskPattern> <!-- Email pattern -->
+                <pattern>%-5p [%d{ISO8601,UTC}] [%thread] %c: %m%n%rootException</pattern>
+            </layout>
+        </encoder>
     </appender>
 
     <root level="info">
