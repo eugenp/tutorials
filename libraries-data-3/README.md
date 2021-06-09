@@ -3,7 +3,7 @@
 This module contains articles about libraries for data processing in Java.
 
 ### Relevant articles
-- [Kafka Streams vs Kafka Consumer]()
+- [Kafka Streams vs Kafka Consumer](https://www.baeldung.com/java-kafka-streams-vs-kafka-consumer)
 - More articles: [[<-- prev]](/../libraries-data-2)
 
 ##### Building the project
