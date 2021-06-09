@@ -21,10 +21,10 @@ public class InsertNullUnitTest {
             preparedStatement.setInt(1, person.getId());
             preparedStatement.setString(2, person.getName());
             preparedStatement.setString(3, person.getLastName());
-            if (person.getAge() == null){
+            if (person.getAge() == null) {
                 preparedStatement.setNull(4, Types.INTEGER);
             }
-            else{
+            else {
                 preparedStatement.setInt(4, person.getAge());
             }
             int noOfRows = preparedStatement.executeUpdate();
