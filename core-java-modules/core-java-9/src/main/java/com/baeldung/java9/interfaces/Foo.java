@@ -13,10 +13,10 @@ public interface Foo {
     }
 
     private void baz() {
-        System.out.println(" world!");
+        System.out.print(" world!");
     }
 
     private static void staticBaz() {
-        System.out.println(" static world!");
+        System.out.print(" static world!");
     }
 }
