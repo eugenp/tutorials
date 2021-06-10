@@ -90,12 +90,12 @@ public class MonoUnitTest {
 
         //Empty list, hence Mono publisher in switchIfEmpty executed after condition evaluation
         Flux<String> emptyListElements = emptyList.flatMapIterable(l -> l)
-                .switchIfEmpty(Mono.defer(() -> sampleMsg("EmptyList")))
-                .log();
+          .switchIfEmpty(Mono.defer(() -> sampleMsg("EmptyList")))
+          .log();
 
         StepVerifier.create(emptyListElements)
-                .expectNext("EmptyList")
-                .verifyComplete();
+          .expectNext("EmptyList")
+          .verifyComplete();
     }
 
     @Test
@@ -105,12 +105,12 @@ public class MonoUnitTest {
 
         //Non empty list, hence Mono publisher in switchIfEmpty won't evaluated.
         Flux<String> listElements = nonEmptyist.flatMapIterable(l -> l)
-                .switchIfEmpty(Mono.defer(() -> sampleMsg("NonEmptyList")))
-                .log();
+          .switchIfEmpty(Mono.defer(() -> sampleMsg("NonEmptyList")))
+          .log();
 
         StepVerifier.create(listElements)
-                .expectNext("one", "two", "three", "four")
-                .verifyComplete();
+          .expectNext("one", "two", "three", "four")
+          .verifyComplete();
     }
 
     private Mono<List<String>> monoOfEmptyList() {
@@ -126,14 +126,14 @@ public class MonoUnitTest {
         log.debug("Intermediate Test Message....");
 
         StepVerifier.create(msg)
-                .expectNext("Eager Publisher")
-                .verifyComplete();
+          .expectNext("Eager Publisher")
+          .verifyComplete();
 
         Thread.sleep(5000);
 
         StepVerifier.create(msg)
-                .expectNext("Eager Publisher")
-                .verifyComplete();
+          .expectNext("Eager Publisher")
+          .verifyComplete();
     }
 
     @Test
@@ -144,14 +144,14 @@ public class MonoUnitTest {
         log.debug("Intermediate Test Message....");
 
         StepVerifier.create(deferMsg)
-                .expectNext("Lazy Publisher")
-                .verifyComplete();
+          .expectNext("Lazy Publisher")
+          .verifyComplete();
 
         Thread.sleep(5000);
 
         StepVerifier.create(deferMsg)
-                .expectNext("Lazy Publisher")
-                .verifyComplete();
+          .expectNext("Lazy Publisher")
+          .verifyComplete();
 
     }
 
