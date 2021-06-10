@@ -82,6 +82,17 @@
             <artifactId>MarvinPlugins</artifactId>
             <version>${marvin-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>${javacv-platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture</artifactId>
+            <version>${webcam-capture.version}</version>
+        </dependency>
+        
     </dependencies>
 
     <properties>
@@ -91,6 +102,8 @@
         <tess4j.version>4.5.1</tess4j.version>
         <tesseract-platform.version>4.1.0-1.5.2</tesseract-platform.version>
         <opencv.version>3.4.2-0</opencv.version>
+        <javacv-platform.version>1.5.5</javacv-platform.version>
+        <webcam-capture.version>0.3.12</webcam-capture.version>
         <imgscalr-version>4.2</imgscalr-version>
         <thumbnailator-version>0.4.11</thumbnailator-version>
         <marvin-version>1.5.5</marvin-version>
