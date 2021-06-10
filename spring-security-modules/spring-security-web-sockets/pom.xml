@@ -155,12 +155,21 @@
         <finalName>spring-security-web-sockets</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
                 <configuration>
-                    <path>/spring-security-mvc-socket</path>
+                    <webApp>
+                        <contextPath>/spring-security-mvc-socket</contextPath>
+                    </webApp>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax.xml.bind</groupId>
+                        <artifactId>jaxb-api</artifactId>
+                        <version>${jaxb-api.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -175,6 +184,8 @@
     </build>
 
     <properties>
+        <jetty-maven-plugin.version>9.4.42.v20210604</jetty-maven-plugin.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <logback-classic.version>1.2.3</logback-classic.version>
