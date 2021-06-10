@@ -4,6 +4,7 @@ import com.baeldung.projection.model.Person;
 import com.baeldung.projection.repository.AddressRepository;
 import com.baeldung.projection.repository.PersonRepository;
 import com.baeldung.projection.view.AddressView;
+import com.baeldung.projection.view.PersonAddressDTO;
 import com.baeldung.projection.view.PersonDto;
 import com.baeldung.projection.view.PersonView;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
+
+import java.util.List;
 
 @DataJpaTest
 @Sql(scripts = "/projection-insert-data.sql")
@@ -56,5 +60,14 @@ public class JpaProjectionIntegrationTest {
         assertThat(person.getFirstName()).isEqualTo("John");
         assertThat(personView.getFirstName()).isEqualTo("John");
         assertThat(personDto.getFirstName()).isEqualTo("John");
+    }
+    
+    @Test
+    public void givenDTOFromTwoTables_whenUsingClassBasedProjections_thenDtoWithRequiredPropertiesIsReturned() {
+        List<PersonAddressDTO> dtos = personRepository.findAllPersonsWithAddress();
+        assertEquals(1, dtos.size());
+        PersonAddressDTO personAddressDTO = dtos.get(0);
+        assertThat(personAddressDTO.getFirstName()).isEqualTo("John");
+        assertThat(personAddressDTO.getCity()).isEqualTo("Los Angeles");
     }
 }
