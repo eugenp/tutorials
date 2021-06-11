@@ -1,8 +1,9 @@
 package com.baeldung.javadocmemberreference;
 
-import com.baeldung.sealed.records.Car;
+import com.baeldung.vehicle.Car;
 
 public class Person {
+
     Person() {
 
     }
@@ -33,7 +34,7 @@ public class Person {
     }
 
     /**
-     * Also consider checking {@link com.baeldung.sealed.classes.Vehicle#Vehicle() Vehicle} constructor to initialize vehicle object.
+     * Also consider checking {@link com.baeldung.vehicle.Vehicle#Vehicle() Vehicle} constructor to initialize vehicle object.
      */
     public void goToWork() {
 
