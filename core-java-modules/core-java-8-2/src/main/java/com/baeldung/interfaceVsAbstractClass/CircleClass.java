@@ -9,11 +9,7 @@ public abstract class CircleClass {
     private List<String> allowedColors = Arrays.asList("RED", "GREEN", "BLUE");
 
     public boolean isValid() {
-        if (allowedColors.contains(getColor())) {
-            return true;
-        } else {
-            return false;
-        }
+        return allowedColors.contains(getColor());
     }
 
     public String getColor() {
