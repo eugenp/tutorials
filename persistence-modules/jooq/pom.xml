@@ -45,7 +45,6 @@
 
     <properties>
         <jooq.version>3.13.4</jooq.version>
-        <postgresql.version>42.2.16</postgresql.version>
         <h2.version>1.4.200</h2.version>
     </properties>
 
