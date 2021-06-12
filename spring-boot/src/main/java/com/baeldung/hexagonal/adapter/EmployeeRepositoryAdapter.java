@@ -1,10 +1,9 @@
-package com.baeldung.adapter;
+package com.baeldung.hexagonal.adapter;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.baeldung.domain.Employee;
-import com.baeldung.port.EmployeeRepositoryPort;
-
+import com.baeldung.hexagonal.domain.Employee;
+import com.baeldung.hexagonal.port.EmployeeRepositoryPort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,13 +16,13 @@ public class EmployeeRepositoryAdapter implements EmployeeRepositoryPort {
     
     @Transactional
     @Override
-    public void create(String name, String role, long salary) {
+    public boolean create(String name, String role, long salary) {
         Employee employee = new Employee();
         employee.setName(name);
         employee.setRole(role);
         employee.setSalary(salary);
-       
         entityManager.persist(employee);
+        return true;
     }
 
     @Override

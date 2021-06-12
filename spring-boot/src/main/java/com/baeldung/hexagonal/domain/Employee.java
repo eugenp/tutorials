@@ -1,26 +1,22 @@
-package com.baeldung.domain;
+package com.baeldung.hexagonal.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "employee")
-public class Employee{
+@Table
+public class Employee {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column
     private Integer id;
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "role", nullable = false)
+    @Column(nullable = false)
     private String role;
  
-    @Column(name = "salary", nullable = false)
+    @Column(nullable = false)
     private long salary;
     
     public Employee(){
