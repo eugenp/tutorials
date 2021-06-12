@@ -21,11 +21,11 @@ public class MarvinExample {
         videoAdapter.connect(0);
         MarvinImage image = videoAdapter.getFrame();
 
-        MarvinImagePanel videoPanel = new MarvinImagePanel();
-        videoPanel.setImage(image);
+        MarvinImagePanel imagePanel = new MarvinImagePanel();
+        imagePanel.setImage(image);
 
-        videoPanel.setSize(800,600);
-        videoPanel.setVisible(true);
+        imagePanel.setSize(800,600);
+        imagePanel.setVisible(true);
     }
 
 }

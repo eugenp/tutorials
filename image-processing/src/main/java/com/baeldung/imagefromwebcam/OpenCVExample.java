@@ -21,7 +21,7 @@ public class OpenCVExample {
         IplImage img = converter.convert(frame);
         cvSaveImage("selfie.jpg", img);
 
-        canvas.showImage(converter.convert(img));
+        canvas.showImage(frame);
 
         Thread.sleep(2000);
 
