@@ -77,6 +77,12 @@ public class BitwiseAndLogicalOROperatorUnitTest {
     }
 
     @Test
+    public void givenFourIntegers_whenBitwiseOrOperator_thenNewInteger() {
+        int result = 1 | 2 | 3 | 4;
+        assertEquals(7, result);
+    }
+
+    @Test
     public void givenExpression_whenLogicalORAndOtherOperators_thenEvaluateByPrecedence() {
 
         boolean result = 2 + 4 == 5 || 3 < 5;
