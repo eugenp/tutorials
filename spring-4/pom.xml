@@ -39,6 +39,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
+            <version>4.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,7 +53,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <!-- Check for the most recent available version: https://projectlombok.org/changelog.html -->
+            <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
