@@ -21,8 +21,6 @@ public class WebcamCaptureExample {
         BufferedImage image = webcam.getImage();
 
         ImageIO.write(image, ImageUtils.FORMAT_JPG, new File("selfie.jpg"));
-
-        //WebcamUtils.capture(webcam, "selfie1.jpg");
     }
 
     public void captureWithPanel() {
