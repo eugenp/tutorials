@@ -113,6 +113,7 @@
         <module>core-java-string-operations-2</module>
         <module>core-java-sun</module>
         <module>core-java-regex</module>
+        <module>core-java-regex-2</module>
         <module>pre-jpms</module>
     </modules>
 
