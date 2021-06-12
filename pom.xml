@@ -1293,6 +1293,7 @@
                  <module>core-java-modules/core-java-datetime-string</module>
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/multimodulemavenproject</module>
             </modules>
@@ -1338,6 +1339,7 @@
                 <module>core-java-modules/core-java-datetime-string</module>
                 <module>core-java-modules/core-java-jpms</module>
                 <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
