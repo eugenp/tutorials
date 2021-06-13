@@ -15,28 +15,28 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.4.4</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.4.4</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <version>${javafaker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.4.4</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -127,6 +127,9 @@
         <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
         <node.version>v10.14.2</node.version>
         <yarn.version>v1.12.1</yarn.version>
+        <spring-boot.version>2.4.4</spring-boot.version>
+        <h2.version>1.4.200</h2.version>
+        <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
 </project>

@@ -14,3 +14,4 @@
 - [Validate Phone Numbers With Java Regex](https://www.baeldung.com/java-regex-validate-phone-numbers)
 - [How to Count the Number of Matches for a Regex?](https://www.baeldung.com/java-count-regex-matches)
 - [Find All Numbers in a String in Java](https://www.baeldung.com/java-find-numbers-in-string)
+- [Understanding the Pattern.quote Method](https://www.baeldung.com/java-pattern-quote)
