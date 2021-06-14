@@ -16,6 +16,10 @@
 		<camel.version>3.7.4</camel.version>
 	</properties>
 
+	<modules>
+		<module>wire-tap</module>
+    </modules>	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
