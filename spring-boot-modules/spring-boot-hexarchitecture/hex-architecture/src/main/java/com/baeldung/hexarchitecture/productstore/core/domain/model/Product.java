@@ -1,4 +1,4 @@
-package com.baeldung.hexarchitecture.productstore.domain.model;
+package com.baeldung.hexarchitecture.productstore.core.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
