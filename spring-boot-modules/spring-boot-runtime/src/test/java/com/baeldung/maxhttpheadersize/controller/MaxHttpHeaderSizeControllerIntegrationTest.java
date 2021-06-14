@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.maxhttpheadersize.controller;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,10 +16,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.sampleapp.config.WebConfig;
+import com.baeldung.maxhttpheadersize.config.MaxHTTPHeaderSizeConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = WebConfig.class)
+@ContextConfiguration(classes = MaxHTTPHeaderSizeConfig.class)
 @WebAppConfiguration
 public class MaxHttpHeaderSizeControllerIntegrationTest {
 
@@ -30,19 +30,23 @@ public class MaxHttpHeaderSizeControllerIntegrationTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+            .build();
     }
 
     @Test
     public void givenTokenWithLessThan8KBLegth_whenSendGetRequest_thenReturnsOK() throws Exception {
         mockMvc.perform(get("/request-header-test").contentType(MediaType.APPLICATION_JSON_VALUE)
-                .with(httpBasic("user", "password")).header("token", "token")).andExpect(status().isOk());
+            .with(httpBasic("user", "password"))
+            .header("token", "token"))
+            .andExpect(status().isOk());
     }
 
     @Test
-    public void givenTokenIsMissingInHeade_whenSendGetRequest_thenThrowsBadRequest() throws Exception {
+    public void givenTokenIsMissingInHeader_whenSendGetRequest_thenThrowsBadRequest() throws Exception {
         mockMvc.perform(get("/request-header-test").contentType(MediaType.APPLICATION_JSON_VALUE)
-                .with(httpBasic("user", "password"))).andExpect(status().isBadRequest());
+            .with(httpBasic("user", "password")))
+            .andExpect(status().isBadRequest());
     }
 
 }
