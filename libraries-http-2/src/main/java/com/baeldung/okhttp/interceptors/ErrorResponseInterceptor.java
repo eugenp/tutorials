@@ -21,7 +21,12 @@ public class ErrorResponseInterceptor implements Interceptor {
             Gson gson = new Gson();
             String body = gson.toJson(new ErrorMessage(response.code(), "The response from the server was not OK"));
             ResponseBody responseBody = ResponseBody.create(body, APPLICATION_JSON);
-            
+
+            ResponseBody originalBody = response.body();
+            if (originalBody != null) {
+                originalBody.close();
+            }
+
             return response.newBuilder()
                 .body(responseBody)
                 .build();
