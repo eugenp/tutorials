@@ -4,6 +4,7 @@ import com.baeldung.dddhexagonalspring.application.request.AddProductRequest;
 import com.baeldung.dddhexagonalspring.application.request.CreateOrderRequest;
 import com.baeldung.dddhexagonalspring.application.response.CreateOrderResponse;
 import com.baeldung.dddhexagonalspring.domain.service.OrderService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @RequestMapping("/orders")
 public class OrderController {
 
+    
     private final OrderService orderService;
 
     @Autowired
