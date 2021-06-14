@@ -37,7 +37,7 @@
         <module>spring-security-web-login</module>
         <module>spring-security-web-mvc-custom</module>
         <module>spring-security-web-mvc</module>
-        <module>spring-security-web-persisted-remember-me</module>
+        <module>spring-security-web-persistent-login</module>
         <module>spring-security-web-react</module>
         <module>spring-security-web-rest-basic-auth</module>
         <module>spring-security-web-rest-custom</module>
