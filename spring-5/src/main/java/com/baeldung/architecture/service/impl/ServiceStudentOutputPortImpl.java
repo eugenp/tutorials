@@ -4,17 +4,17 @@ import com.baeldung.architecture.database.Student;
 import com.baeldung.architecture.database.StudentRepository;
 import com.baeldung.architecture.database.converter.StudentConverter;
 import com.baeldung.architecture.model.StudentDto;
-import com.baeldung.architecture.service.ServicePersistenceStudent;
+import com.baeldung.architecture.service.ServiceStudentOutputPort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ServicePersistenceStudentImpl implements ServicePersistenceStudent {
+public class ServiceStudentOutputPortImpl implements ServiceStudentOutputPort {
     private StudentRepository studentRepository;
 
-    public ServicePersistenceStudentImpl(StudentRepository studentRepository) {
+    public ServiceStudentOutputPortImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 

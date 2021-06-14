@@ -1,7 +1,7 @@
 package com.baeldung.architecture.controller;
 
 import com.baeldung.architecture.model.StudentDto;
-import com.baeldung.architecture.service.ServiceStudent;
+import com.baeldung.architecture.service.ServiceStudentBusiness;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,19 +11,19 @@ import java.util.List;
 
 @RestController("/student")
 public class StudentController {
-    private ServiceStudent serviceStudent;
+    private ServiceStudentBusiness serviceStudentBusiness;
 
-    public StudentController(ServiceStudent serviceStudent) {
-        this.serviceStudent = serviceStudent;
+    public StudentController(ServiceStudentBusiness serviceStudentBusiness) {
+        this.serviceStudentBusiness = serviceStudentBusiness;
     }
 
     @GetMapping("/find-all")
     public List<StudentDto> findAll() {
-        return serviceStudent.findStudents();
+        return serviceStudentBusiness.findStudents();
     }
 
     @PostMapping("/add")
     public StudentDto addStudent(@RequestBody StudentDto studentDto) {
-        return serviceStudent.addStudent(studentDto);
+        return serviceStudentBusiness.addStudent(studentDto);
     }
 }

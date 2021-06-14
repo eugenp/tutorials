@@ -5,7 +5,7 @@ import com.baeldung.architecture.model.StudentDto;
 
 import java.util.List;
 
-public interface ServicePersistenceStudent {
+public interface ServiceStudentOutputPort {
     List<StudentDto> findAllStudents();
 
     StudentDto addStudent(StudentDto studentDto);
