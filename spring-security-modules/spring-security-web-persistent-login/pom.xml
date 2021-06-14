@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-security-web-persisted-remember-me</artifactId>
+    <artifactId>spring-security-web-persistent-login</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-web-persisted-remember-me</name>
+    <name>spring-security-web-persistent-login</name>
     <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
+        <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-4</relativePath>
+        <relativePath>../../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -136,7 +136,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-security-web-persisted-remember-me</finalName>
+        <finalName>spring-security-web-persistence</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
