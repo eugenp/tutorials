@@ -3,7 +3,6 @@ package com.baeldung.dddhexagonalspring.domain.service;
 import com.baeldung.dddhexagonalspring.domain.Order;
 import com.baeldung.dddhexagonalspring.domain.Product;
 import com.baeldung.dddhexagonalspring.domain.repository.OrderRepository;
-
 import java.util.UUID;
 
 public class DomainOrderService implements OrderService {

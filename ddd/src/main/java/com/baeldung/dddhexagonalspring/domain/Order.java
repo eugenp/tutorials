@@ -90,7 +90,6 @@ public class Order {
         Order other = (Order) obj;
         return Objects.equals(id, other.id) && Objects.equals(orderItems, other.orderItems) && Objects.equals(price, other.price) && status == other.status;
     }
-
     
     private Order() {
     }
