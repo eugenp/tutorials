@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.maxhttpheadersize.controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,18 +11,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.baeldung.sampleapp.config.MaxHTTPHeaderSizeConfig;
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { MaxHTTPHeaderSizeConfig.class }, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
-// Start MaxHttpHeaderSizeController Spring Boot App(MainApplication) first
+// Start MaxHttpHeaderSizeController Spring Boot App(MaxHttpHeaderSizeApplication) first
 public class MaxHttpHeaderSizeControllerLiveTest {
 
     @Test(expected = HttpClientErrorException.class)
