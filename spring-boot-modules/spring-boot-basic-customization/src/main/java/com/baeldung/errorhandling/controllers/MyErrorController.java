@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MyErrorController implements ErrorController {
 
-    public MyErrorController() {}
-
     @GetMapping(value = "/error")
     public String handleError(HttpServletRequest request) {
         
@@ -31,10 +29,4 @@ public class MyErrorController implements ErrorController {
         }
         return "error";
     }
-
-    @Override
-    public String getErrorPath() {
-        return null;
-    }
-
 }
