@@ -5,7 +5,7 @@ import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class C3poDataSource {
+public class C3p0DataSource {
 
     private static final ComboPooledDataSource cpds = new ComboPooledDataSource();
 
@@ -24,5 +24,5 @@ public class C3poDataSource {
         return cpds.getConnection();
     }
     
-    private C3poDataSource(){}
+    private C3p0DataSource(){}
 }
