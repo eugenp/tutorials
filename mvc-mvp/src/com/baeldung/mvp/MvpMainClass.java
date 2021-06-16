@@ -6,10 +6,10 @@ public class MvpMainClass {
         
         Product model = retrieveProductFromDatabase();
         ProductView view = new ProductView();
-        ProductController controller = new ProductController(model, view);
-        controller.showProduct();
-        controller.setProductName("SmartPhone");
-        controller.showProduct();
+        ProductPresenter presenter = new ProductPresenter(model, view);
+        presenter.showProduct();
+        presenter.setProductName("SmartPhone");
+        presenter.showProduct();
     }
     
     private static Product retrieveProductFromDatabase() {
