@@ -1,10 +1,10 @@
 package com.baeldung.mvp;
 
-public class ProductController {
+public class ProductPresenter {
     private final Product product;
     private final ProductView productView;
     
-    public ProductController(Product product, ProductView productView) {
+    public ProductPresenter(Product product, ProductView productView) {
         this.product = product;
         this.productView = productView;
     }
