@@ -7,6 +7,7 @@ import services.UserService;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired

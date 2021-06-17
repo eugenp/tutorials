@@ -7,6 +7,7 @@ import services.BookService;
 
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
 
     @Autowired
