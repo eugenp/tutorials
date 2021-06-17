@@ -20,6 +20,5 @@ public class BookController {
     @GetMapping("/{title}")
     public Book getBook(@PathVariable String title) {
         return bookService.getBook(title);
-    }
-    
+    } 
 }
