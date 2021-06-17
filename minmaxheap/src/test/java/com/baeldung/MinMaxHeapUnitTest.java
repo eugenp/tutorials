@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MinMaxHeapTest {
+public class MinMaxHeapUnitTest {
 
     @Test
     public void givenUnOrderedArray_WhenCreateMinMaxHeap_ThenIsEqualWithMinMaxHeapOrdered() {
