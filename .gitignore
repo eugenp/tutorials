@@ -21,7 +21,6 @@ bin/
 .idea/
 *.iml
 *.iws
-out/
 
 # VSCode
 .vscode/
