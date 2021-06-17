@@ -2,7 +2,6 @@ package com.baeldung.hexagonal.adapter;
 
 import com.baeldung.hexagonal.core.domain.Book;
 import com.baeldung.hexagonal.port.BookService;
-import com.baeldung.hexagonal.web.BookUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
