@@ -1,1 +1,1 @@
-An example for Hexagonal Architecture in Java.
+An example for Hexagonal Architecture in Java. 
