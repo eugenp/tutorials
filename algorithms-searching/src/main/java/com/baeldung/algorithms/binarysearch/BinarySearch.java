@@ -12,7 +12,7 @@ public class BinarySearch {
 
         while (low <= high) {
 
-            int mid = (low + high) / 2;
+            int mid = low + ((high - low) / 2);
 
             if (sortedArray[mid] < key) {
                 low = mid + 1;
@@ -28,7 +28,7 @@ public class BinarySearch {
 
     public int runBinarySearchRecursively(int[] sortedArray, int key, int low, int high) {
 
-        int middle = (low + high) / 2;
+        int middle = low + ((high - low) / 2);
         if (high < low) {
             return -1;
         }

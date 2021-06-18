@@ -75,7 +75,6 @@
     </dependencies>
 
     <properties>
-        <postgresql.version>42.2.20</postgresql.version>
         <hibernate.version>5.4.12.Final</hibernate.version>
         <hibernate-types.version>2.10.4</hibernate-types.version>
         <assertj-core.version>3.8.0</assertj-core.version>
