@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -14,20 +15,23 @@
     </parent>
 
     <modules>
-        <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->   
-        <module>maven-custom-plugin</module>     
-        <module>maven-exec-plugin</module>     
+        <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+	<module>maven-copy-files</module>
+        <module>maven-custom-plugin</module>
+        <module>maven-exec-plugin</module>
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
-        <module>maven-unused-dependencies</module>
-        <module>maven-war-plugin</module>
         <module>maven-profiles</module>
         <module>maven-properties</module>
-        <module>versions-maven-plugin</module>
-        <module>version-collision</module>
+        <!-- <module>maven-proxy</module> --> <!-- Not a maven project -->
+        <module>maven-unused-dependencies</module>
+        <module>maven-war-plugin</module>
         <module>optional-dependencies</module>
+        <module>version-collision</module>
         <module>version-overriding-plugins</module>
+        <module>versions-maven-plugin</module>
+        <module>maven-printing-plugins</module>
     </modules>
 
 </project>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries</artifactId>
     <name>libraries</name>
@@ -34,7 +35,6 @@
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
@@ -87,7 +87,6 @@
             <version>${serenity.jira.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- JDO -->
         <dependency>
             <groupId>org.datanucleus</groupId>
@@ -164,14 +163,12 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- JetS3t -->
         <dependency>
             <groupId>org.lucee</groupId>
             <artifactId>jets3t</artifactId>
             <version>${jets3t-version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
@@ -202,7 +199,7 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -226,13 +223,11 @@
             <version>${org.hamcrest.java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.codepoetics</groupId>
             <artifactId>protonpack</artifactId>
             <version>${protonpack.version}</version>
         </dependency>
-
         <!-- google api -->
         <dependency>
             <groupId>com.google.oauth-client</groupId>
@@ -327,7 +322,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
             <!-- Borrowed from the 'jmh-java-benchmark-archetype' pom.xml -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -342,7 +336,8 @@
                         <configuration>
                             <finalName>benchmarks</finalName>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.openjdk.jmh.Main</mainClass>
                                 </transformer>
                             </transformers>
@@ -361,7 +356,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
@@ -395,7 +389,6 @@
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
         <jool.version>0.9.12</jool.version>
-        <jmh.version>1.19</jmh.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <commons-net.version>3.6</commons-net.version>
         <commonsio.version>2.6</commonsio.version>

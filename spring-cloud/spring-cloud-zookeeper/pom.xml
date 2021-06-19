@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-zookeeper</artifactId>
     <name>spring-cloud-zookeeper</name>
@@ -19,8 +20,6 @@
 
     <properties>
         <springframework.version>5.2.7.RELEASE</springframework.version>
-        <spring-cloud-starter-zookeeper-discovery.version>1.0.3.RELEASE</spring-cloud-starter-zookeeper-discovery.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
     </properties>
 
 </project>

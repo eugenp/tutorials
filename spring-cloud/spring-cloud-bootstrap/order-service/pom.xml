@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.orderservice</groupId>
     <artifactId>order-service</artifactId>
@@ -112,7 +112,6 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <commons-lang.version>2.6</commons-lang.version>
         <structure-maven.version>0.0.2</structure-maven.version>
         <maven.compiler.source>1.8</maven.compiler.source>
