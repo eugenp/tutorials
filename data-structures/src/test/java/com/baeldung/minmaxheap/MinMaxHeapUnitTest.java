@@ -13,7 +13,7 @@ public class MinMaxHeapUnitTest {
         List<Integer> list = Arrays.asList(34, 12, 28, 9, 30, 19, 1, 40);
         MinMaxHeap<Integer> minMaxHeap = new MinMaxHeap<>(list);
         minMaxHeap.create();
-        Assert.assertEquals(List.of(1, 40, 34, 9, 30, 19, 28, 12), list);
+        Assert.assertEquals(Arrays.asList(1, 40, 34, 9, 30, 19, 28, 12), list);
     }
 
     @Test
@@ -27,6 +27,6 @@ public class MinMaxHeapUnitTest {
         minMaxHeap.insert(19);
         minMaxHeap.insert(1);
         minMaxHeap.insert(40);
-        Assert.assertEquals(List.of(1, 40, 28, 12, 30, 19, 9, 34), minMaxHeap.getMinMaxHeap());
+        Assert.assertEquals(Arrays.asList(1, 40, 28, 12, 30, 19, 9, 34), minMaxHeap.getMinMaxHeap());
     }
 }
