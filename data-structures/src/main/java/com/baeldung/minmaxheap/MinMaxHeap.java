@@ -1,4 +1,4 @@
-package org.example;
+package com.baeldung.minmaxheap;
 
 
 import java.util.*;
@@ -212,7 +212,7 @@ public class MinMaxHeap<T extends Comparable<T>> {
                 maxIndex = getLeftChildIndex(getRightChildIndex(i));
             }
         } else {
-            return maxIndex; //if no right-left grandchild
+            return maxIndex;
         }
 
         if (getRightChildIndex(getRightChildIndex(i)) < indicator) {

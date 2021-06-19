@@ -1,5 +1,4 @@
-package org.example;
-
+package com.baeldung.minmaxheap;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +7,6 @@ import java.util.List;
 
 
 public class MinMaxHeapUnitTest {
-
 
     @Test
     public void givenUnOrderedArray_WhenCreateMinMaxHeap_ThenIsEqualWithMinMaxHeapOrdered() {
