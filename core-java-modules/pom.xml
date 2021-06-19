@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -20,16 +19,13 @@
         <module>core-java</module>
         <module>core-java-8</module>
         <module>core-java-8-2</module>
-
         <module>core-java-annotations</module>
-
         <module>core-java-arrays-sorting</module>
         <module>core-java-arrays-guides</module>
         <module>core-java-arrays-multidimensional</module>
         <module>core-java-arrays-convert</module>
         <module>core-java-arrays-operations-basic</module>
         <module>core-java-arrays-operations-advanced</module>
-
         <module>core-java-char</module>
         <module>core-java-collections</module>
         <module>core-java-collections-2</module>
@@ -42,7 +38,6 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
-
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
         <module>core-java-concurrency-advanced-2</module>
@@ -53,31 +48,26 @@
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
-
-        <!--<module>core-java-8-datetime</module>--> <!-- unit test case failure -->
+        <!--<module>core-java-8-datetime</module> --> <!-- unit test case failure -->
         <module>core-java-8-datetime-2</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-8-datetime</module>
-
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
         <module>core-java-function</module>
-		<module>core-java-functional</module>
-
+        <module>core-java-functional</module>
         <module>core-java-io</module>
         <module>core-java-io-2</module>
         <module>core-java-io-3</module>
-		<module>core-java-io-4</module>
+        <module>core-java-io-4</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-2</module>
-
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <module>core-java-jvm</module>
         <module>core-java-jvm-2</module>
-
         <module>core-java-lambdas</module>
         <module>core-java-lang</module>
         <module>core-java-lang-2</module>
@@ -91,25 +81,23 @@
         <module>core-java-lang-oop-generics</module>
         <module>core-java-lang-oop-modifiers</module>
         <module>core-java-lang-oop-types</module>
+        <module>core-java-lang-oop-types-2</module>
         <module>core-java-lang-oop-inheritance</module>
         <module>core-java-lang-oop-methods</module>
         <module>core-java-lang-oop-others</module>
         <module>core-java-lang-operators</module>
+        <module>core-java-lang-operators-2</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
-
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
+        <module>core-java-networking-3</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
-
         <module>core-java-optional</module>
-
         <module>core-java-perf</module>
-
         <module>core-java-reflection</module>
         <module>core-java-reflection-2</module>
-
         <module>core-java-security</module>
         <module>core-java-security-2</module>
         <module>core-java-streams</module>
@@ -123,11 +111,9 @@
         <module>core-java-string-conversions-2</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
-        <module>core-java-string-operations-3</module>
-        <module>core-java-strings</module>
         <module>core-java-sun</module>
-
         <module>core-java-regex</module>
+        <module>core-java-regex-2</module>
         <module>pre-jpms</module>
     </modules>
 
@@ -147,18 +133,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-geode</artifactId>
     <name>spring-data-geode</name>
@@ -41,7 +42,6 @@
             <artifactId>spring-geode-starter</artifactId>
             <version>${spring-geode-starter-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -61,7 +61,7 @@
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>maven-apt-plugin</artifactId>
-                <version>1.0</version>
+                <version>${maven-apt-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -88,6 +88,7 @@
         <start-class>com.baeldung.springdatageode.app.ClientCacheApp</start-class>
         <spring-geode-starter-version>1.1.1.RELEASE</spring-geode-starter-version>
         <spring.boot.starter.version>2.1.9.RELEASE</spring.boot.starter.version>
+        <maven-apt-plugin.version>1.0</maven-apt-plugin.version>
     </properties>
 
 </project>

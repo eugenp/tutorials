@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -115,7 +114,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <useFile>false</useFile>
                     <includes>
@@ -186,10 +184,8 @@
         <logback.version>1.2.3</logback.version>
         <groovy.version>2.5.7</groovy.version>
         <assembly.plugin.version>3.1.0</assembly.plugin.version>
-        <surefire.plugin.version>2.20.1</surefire.plugin.version>
         <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <groovy.compiler.version>3.3.0-01</groovy.compiler.version>
     </properties>
 
 </project>
-

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Foo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -15,18 +16,12 @@ public class Foo {
     @Column(nullable = false)
     private String name;
 
-    //
-
     public Foo() {
-        super();
     }
 
     public Foo(String name) {
-        super();
         this.name = name;
     }
-
-    //
 
     public Long getId() {
         return id;
@@ -43,8 +38,6 @@ public class Foo {
     public void setName(String name) {
         this.name = name;
     }
-
-    //
 
     @Override
     public String toString() {

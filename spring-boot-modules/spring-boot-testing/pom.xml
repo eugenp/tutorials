@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-testing</artifactId>
+    <packaging>war</packaging>
+    <name>spring-boot-testing</name>
+    <description>This is simple boot application for demonstrating testing features.</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -10,12 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-
-    <artifactId>spring-boot-testing</artifactId>
-    <packaging>war</packaging>
-
-    <name>spring-boot-testing</name>
-    <description>This is simple boot application for demonstrating testing features.</description>
 
     <dependencies>
         <dependency>
@@ -62,7 +60,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- Embedded Redis Server -->
         <dependency>
             <groupId>it.ozimov</groupId>
@@ -77,20 +74,12 @@
             <version>${spock.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-spring</artifactId>
             <version>${spock.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -101,14 +90,11 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
@@ -134,7 +120,6 @@
                     <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
@@ -157,6 +142,7 @@
         <spock.version>1.2-groovy-2.4</spock.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <redis.version>0.7.2</redis.version>
+        <spring-boot.version>2.5.0</spring-boot.version>
     </properties>
 
 </project>

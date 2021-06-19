@@ -6,18 +6,15 @@ import com.baeldung.projection.repository.PersonRepository;
 import com.baeldung.projection.view.AddressView;
 import com.baeldung.projection.view.PersonDto;
 import com.baeldung.projection.view.PersonView;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @DataJpaTest
-@RunWith(SpringRunner.class)
 @Sql(scripts = "/projection-insert-data.sql")
 @Sql(scripts = "/projection-clean-up-data.sql", executionPhase = AFTER_TEST_METHOD)
 public class JpaProjectionIntegrationTest {

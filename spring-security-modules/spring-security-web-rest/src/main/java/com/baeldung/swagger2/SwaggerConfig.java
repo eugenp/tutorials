@@ -6,12 +6,11 @@ import java.util.Collections;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.HttpMethod;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.builders.ResponseMessageBuilder;
-import springfox.documentation.schema.ModelRef;
+import springfox.documentation.builders.ResponseBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -30,13 +29,12 @@ public class SwaggerConfig {
             .build()
             .apiInfo(apiInfo())
             .useDefaultResponseMessages(false)
-            .globalResponseMessage(RequestMethod.GET, newArrayList(new ResponseMessageBuilder().code(500)
-                .message("500 message")
-                .responseModel(new ModelRef("Error"))
-                .build(),
-                new ResponseMessageBuilder().code(403)
-                    .message("Forbidden!!!!!")
-                    .build()));
+            .globalResponses(HttpMethod.GET, newArrayList(
+                new ResponseBuilder().code("500")
+                    .description("500 message").build(),
+                new ResponseBuilder().code("403")
+                    .description("Forbidden!!!!!").build()
+            ));
     }
 
     private ApiInfo apiInfo() {
