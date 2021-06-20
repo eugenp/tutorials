@@ -1,4 +1,0 @@
-WDS.sampleResult.sampleStart()
-WDS.browser.get('http://baeldung.com')
-WDS.sampleResult.sampleEnd()
-WDS.log.info("successfully navigated to http://baeldung.com/");
