@@ -20,7 +20,6 @@ public class ConverterExtensionsConfig {
         final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter();
 
         final XStreamMarshaller xstreamMarshaller = new XStreamMarshaller();
-        xstreamMarshaller.setAutodetectAnnotations(true);
         xmlConverter.setMarshaller(xstreamMarshaller);
         xmlConverter.setUnmarshaller(xstreamMarshaller);
 

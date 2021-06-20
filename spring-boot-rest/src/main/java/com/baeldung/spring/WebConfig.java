@@ -28,7 +28,6 @@ public class WebConfig implements WebMvcConfigurer {
         final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter();
 
         final XStreamMarshaller xstreamMarshaller = new XStreamMarshaller();
-        xstreamMarshaller.setAutodetectAnnotations(true);
         xmlConverter.setMarshaller(xstreamMarshaller);
         xmlConverter.setUnmarshaller(xstreamMarshaller);
 
