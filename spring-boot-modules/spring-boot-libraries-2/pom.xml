@@ -91,7 +91,7 @@
     </build>
 
     <properties>
-        <jobrunr.version>1.1.0</jobrunr.version>
+        <jobrunr.version>3.1.1</jobrunr.version>
         <awaitility.version>4.0.3</awaitility.version>
         <openapi-generator.version>5.1.0</openapi-generator.version>
         <spring.data.version>2.4.5</spring.data.version>

@@ -33,7 +33,7 @@ public class JobRunrController {
     public ResponseEntity<String> schedule(
             @PathVariable("input") @DefaultValue("default-input") String input,
             @RequestParam("scheduleAt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime scheduleAt) {
-        jobScheduler.schedule(() -> sampleJobService.executeSampleJob(input), scheduleAt);
+        jobScheduler.schedule(scheduleAt, () -> sampleJobService.executeSampleJob(input));
         return okResponse("job scheduled successfully");
     }
 

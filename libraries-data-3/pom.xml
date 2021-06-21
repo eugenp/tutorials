@@ -17,8 +17,6 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
-            <classifier>test</classifier>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -47,6 +45,12 @@
             <version>${testcontainers-kafka.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontainers-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -54,6 +58,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <kafka.version>2.8.0</kafka.version>
         <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
+        <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
     </properties>
 
 </project>
