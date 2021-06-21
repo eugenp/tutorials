@@ -192,9 +192,9 @@
 
     <repositories>
         <repository>
-            <id>Ethereum</id>
-            <name>Ethereum</name>
-            <url>https://dl.bintray.com/ethereum/maven/</url>
+            <id>springio-plugins-release</id>
+            <name>Spring Plugins</name>
+            <url>https://repo.spring.io/plugins-release/</url>
         </repository>
     </repositories>
 
