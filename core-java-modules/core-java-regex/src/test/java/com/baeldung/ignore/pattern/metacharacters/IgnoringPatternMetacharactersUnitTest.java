@@ -12,7 +12,7 @@ public class IgnoringPatternMetacharactersUnitTest {
     private static final String patternStr = "$100.50";
 
     @Test
-    public void givenPatternStringHasMetacharacters_whenPatternMatchedWithoutEscapingMetacharacters_thenNoMatchesFound() {
+    public void whenMetacharactersNotEscaped_thenNoMatchesFound() {
         Pattern pattern = Pattern.compile(patternStr);
         Matcher matcher = pattern.matcher(dollarAmounts);
 
@@ -25,7 +25,7 @@ public class IgnoringPatternMetacharactersUnitTest {
     }
 
     @Test
-    public void givenPatternStringHasMetacharacters_whenPatternCompiledUsingManuallyMetaEscapedPattern_thenMatchingSuccessful() {
+    public void whenMetacharactersManuallyEscaped_thenMatchingSuccessful() {
         String metaEscapedPatternStr = "\\Q" + patternStr + "\\E";
         Pattern pattern = Pattern.compile(metaEscapedPatternStr);
         Matcher matcher = pattern.matcher(dollarAmounts);
@@ -39,7 +39,7 @@ public class IgnoringPatternMetacharactersUnitTest {
     }
 
     @Test
-    public void givenPatternStringHasMetacharacters_whenPatternCompiledUsingLiteralPatternFromQuote_thenMatchingSuccessful() {
+    public void whenMetacharactersEscapedUsingPatternQuote_thenMatchingSuccessful() {
         String literalPatternStr = Pattern.quote(patternStr);
         Pattern pattern = Pattern.compile(literalPatternStr);
         Matcher matcher = pattern.matcher(dollarAmounts);

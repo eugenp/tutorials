@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.servicemodule</groupId>
     <artifactId>servicemodule1</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.decoupling-pattern1</groupId>
         <artifactId>decoupling-pattern1</artifactId>
-        <version>1.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <build>
@@ -18,6 +19,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
