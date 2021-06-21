@@ -39,6 +39,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -113,6 +114,7 @@
         <flips-web.version>1.0.1</flips-web.version>
         <easymock.version>3.6</easymock.version>
         <hsqldb.version>2.4.0</hsqldb.version>
+        <hikaricp.version>4.0.3</hikaricp.version>
     </properties>
 
 </project>
