@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AppointmentBookingRestController {
-    
+
     @Autowired
     private AppointmentBooking appointmentBooking;
 
@@ -25,24 +25,26 @@ public class AppointmentBookingRestController {
     }
 
     /**
-     * Validates and 'adapts' the appointment to be sent to the 'in' port
-     * Note that the validation is non-business validate
+     * Validates and 'adapts' the appointment to be sent to the 'in' port Note that
+     * the validation is non-business validate
      */
-    private AppointmentVO mapAppointment(AppointmentDTO appointmentDto)throws InvalidAppointmentException {
+    private AppointmentVO mapAppointment(AppointmentDTO appointmentDto) throws InvalidAppointmentException {
         LocalDateTime currentTime = LocalDateTime.now();
-        LocalDateTime fromTime = getTime(currentTime, appointmentDto.getDayOfMonth(), appointmentDto.getFromHour(), appointmentDto.getFromMinute());
-        if(fromTime.isBefore(currentTime)) {
+        LocalDateTime fromTime = getTime(currentTime, appointmentDto.getDayOfMonth(), appointmentDto.getFromHour(),
+                appointmentDto.getFromMinute());
+        if (fromTime.isBefore(currentTime)) {
             throw new InvalidAppointmentException("From time cannot be before the current time");
         }
-        LocalDateTime toTime = getTime(currentTime, appointmentDto.getDayOfMonth(), appointmentDto.getToHour(), appointmentDto.getToMinute());
-        if(toTime.isBefore(currentTime) || toTime.isBefore(fromTime)) {
+        LocalDateTime toTime = getTime(currentTime, appointmentDto.getDayOfMonth(), appointmentDto.getToHour(),
+                appointmentDto.getToMinute());
+        if (toTime.isBefore(currentTime) || toTime.isBefore(fromTime)) {
             throw new InvalidAppointmentException("To time cannot be before the current time or before the from time");
         }
         return new AppointmentVO(appointmentDto.getWithUser(), fromTime, toTime);
     }
 
     private LocalDateTime getTime(LocalDateTime currentTime, String dayOfMonth, String hour, String minute) {
-        return LocalDateTime.of(currentTime.getYear(), currentTime.getMonth(), Integer.valueOf(dayOfMonth), 
-                                                    Integer.valueOf(hour), Integer.valueOf(minute));
+        return LocalDateTime.of(currentTime.getYear(), currentTime.getMonth(), Integer.valueOf(dayOfMonth),
+                Integer.valueOf(hour), Integer.valueOf(minute));
     }
 }

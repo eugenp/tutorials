@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AppointmentBookingService implements AppointmentBooking {
-    
+
     private AppointmentQueryPort appointmentQueryPort;
     private AppointmentStorePort appointmentStorePort;
 
@@ -23,10 +23,12 @@ public class AppointmentBookingService implements AppointmentBooking {
     }
 
     private void validateAppointment(AppointmentVO appointment) throws InvalidAppointmentException {
-        Optional<AppointmentVO> existingAppointment = appointmentQueryPort.getAppointmentsBetween(appointment.getWithUserName(), appointment.getFromTime(), appointment.getToTime());
-        if(existingAppointment.isPresent()) {
-            throw new InvalidAppointmentException("The appointment clashes with another appointment for the same user between "+existingAppointment.get().getFromTime() 
-            + "to "+existingAppointment.get().getToTime());
+        Optional<AppointmentVO> existingAppointment = appointmentQueryPort.getAppointmentsBetween(
+                appointment.getWithUserName(), appointment.getFromTime(), appointment.getToTime());
+        if (existingAppointment.isPresent()) {
+            throw new InvalidAppointmentException(
+                    "The appointment clashes with another appointment for the same user between "
+                            + existingAppointment.get().getFromTime() + "to " + existingAppointment.get().getToTime());
         }
     }
 }
