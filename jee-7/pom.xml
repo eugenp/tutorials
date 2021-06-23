@@ -203,7 +203,7 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no 
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no
                     influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
@@ -485,23 +485,9 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>bintray-mvc-spec-maven</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/mvc-spec/maven</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
-        <mvc.api.version>20160715</mvc.api.version>
+        <mvc.api.version>1.0.0</mvc.api.version>
         <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
         <javaee_api.version>7.0</javaee_api.version>
@@ -523,7 +509,7 @@
         <graphene-webdriver.version>2.1.0.Final</graphene-webdriver.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <jsp-api.version>2.2</jsp-api.version>
-        <ozark.version>20160715</ozark.version>
+        <ozark.version>1.0.0-m02</ozark.version>
         <jboss-batch-api.version>1.0.0.Final</jboss-batch-api.version>
         <jberet.version>1.0.2.Final</jberet.version>
         <jboss-transaction-api.version>1.0.0.Final</jboss-transaction-api.version>
