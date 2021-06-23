@@ -19,12 +19,13 @@ public class ApacheThriftSerializationUnitTest {
 
         TMemoryBuffer trans = new TMemoryBuffer(4096);
         TProtocol proto = new TBinaryProtocol(trans);
+        
         proto.writeI32(user.getId());
-
         proto.writeString(user.getName());
+        
         int userId = proto.readI32();
-
         String userName = proto.readString();
+        
         assertEquals(2, userId);
         assertEquals("Greg", userName);
     }

@@ -28,6 +28,7 @@ public class JacksonSerializationUnitTest {
         mapper.writeValue(file, user);
 
         User deserializedUser = mapper.readValue(new File(filePath), User.class);
+        
         assertEquals(1, deserializedUser.getId());
         assertEquals("Mark Jonson", deserializedUser.getName());
     }

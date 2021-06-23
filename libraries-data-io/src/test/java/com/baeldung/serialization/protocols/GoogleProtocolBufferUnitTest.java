@@ -20,6 +20,7 @@ public class GoogleProtocolBufferUnitTest {
         user.writeTo(fos);
 
         UserProtos.User deserializedUser = UserProtos.User.newBuilder().mergeFrom(new FileInputStream(filePath)).build();
+        
         assertEquals(1234, deserializedUser.getId());
         assertEquals("John Doe", deserializedUser.getName());
     }

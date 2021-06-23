@@ -1,6 +1,7 @@
 package com.baeldung.serialization.protocols;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -29,7 +30,9 @@ public class GsonSerializationUnitTest {
         try (Writer writer = new FileWriter(filePath)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(user, writer);
-            Assert.assertTrue(Files.exists(Paths.get(filePath)));
+            
+            assertTrue(Files.exists(Paths.get(filePath)));
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,8 +40,10 @@ public class GsonSerializationUnitTest {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             User deserializedUser = gson.fromJson(new FileReader(filePath), User.class);
+            
             assertEquals(1, deserializedUser.getId());
             assertEquals("Mark", deserializedUser.getName());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
