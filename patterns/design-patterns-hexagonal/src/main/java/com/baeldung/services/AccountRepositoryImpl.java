@@ -12,10 +12,13 @@ import java.util.stream.Collectors;
 public class AccountRepositoryImpl implements IAccountRepository {
 
     private Map<Long, Account> accountDB = new HashMap<Long, Account>();
+    
     @Override
-    public void createAccount(Account account) {
+    public Account createAccount(Account account) {
         accountDB.put(account.getAccountNumber(), account);
+        return account;
     }
+
 
     @Override
     public Account getAccount(Long accountNumber) {
