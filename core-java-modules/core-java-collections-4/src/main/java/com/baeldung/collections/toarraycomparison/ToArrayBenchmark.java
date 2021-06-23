@@ -18,8 +18,6 @@ import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 
-import lombok.Data;
-
 @Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @Fork(value = 3, jvmArgsAppend = { "-XX:+UseParallelGC", "-Xms4g", "-Xmx4g" })
@@ -34,49 +32,35 @@ public class ToArrayBenchmark {
     @Param({ "array-list", "tree-set" })
     private String type;
 
-    private Collection<WrapString> collection;
+    private Collection<String> collection;
 
     @Setup
     public void setup() {
         switch (type) {
         case "array-list":
-            collection = new ArrayList<WrapString>();
+            collection = new ArrayList<String>();
             break;
         case "tree-set":
-            collection = new TreeSet<WrapString>();
+            collection = new TreeSet<String>();
             break;
         default:
             throw new UnsupportedOperationException();
         }
         for (int i = 0; i < size; i++) {
-            collection.add(this.new WrapString(String.valueOf(i)));
+            collection.add(String.valueOf(i));
         }
     }
 
     @Benchmark
-    public WrapString[] zero_sized() {
-        return collection.toArray(new WrapString[0]);
+    public String[] zero_sized() {
+        return collection.toArray(new String[0]);
     }
 
     @Benchmark
-    public WrapString[] pre_sized() {
-        return collection.toArray(new WrapString[collection.size()]);
+    public String[] pre_sized() {
+        return collection.toArray(new String[collection.size()]);
     }
 
-    @Data
-    public class WrapString implements Comparable<WrapString> {
-
-        private String data;
-
-        public WrapString(String data) {
-            this.data = data;
-        }
-
-        @Override
-        public int compareTo(WrapString o) {
-            return this.data.compareTo(o.data);
-        }
-    }
 
     public static void main(String[] args) {
         try {
