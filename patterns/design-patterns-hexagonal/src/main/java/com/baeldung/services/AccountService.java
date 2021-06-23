@@ -11,12 +11,20 @@ import java.util.List;
 @Service
 public class AccountService implements IAccountService {
 
-    @Autowired
-    private AccountRepositoryImpl accountRepository;
+   @Autowired
+    private IAccountRepository accountRepository;
+
+    public AccountService() {
+    }
+
+    public AccountService(AccountRepositoryImpl accountRepository) {
+        this.accountRepository = accountRepository;
+    }
 
     @Override
-    public void createAccount(Account account) {
+    public Account createAccount(Account account) {
         accountRepository.createAccount(account);
+        return account;
     }
 
     @Override
