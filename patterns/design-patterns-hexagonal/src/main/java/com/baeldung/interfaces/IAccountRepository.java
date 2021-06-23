@@ -4,7 +4,7 @@ import com.baeldung.model.Account;
 import java.util.List;
 
 public interface IAccountRepository {
-    void createAccount(Account account);
+    Account createAccount(Account account);
     Account getAccount(Long accountNumber);
     List allAccounts();
 }
