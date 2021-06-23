@@ -30,13 +30,13 @@ public class StringToBigIntegerUnitTest {
 
     @Test(expected = NumberFormatException.class)
     public void whenGetStringWithRadix_thenThrowError() {
-        final String inputString = "Hello Baeldung";
+        final String inputString = "290f98";
         new BigInteger(inputString, 7);
     }
 
     @Test
     public void whenGetStringUsingByte_thenOk() {
-        final String inputString = "Hello Baeldung";
+        final String inputString = "290f98";
         byte[] inputStringBytes = inputString.getBytes();
         BigInteger result = new BigInteger(inputStringBytes);
         assertEquals("Hello Baeldung", new String(result.toByteArray()));
