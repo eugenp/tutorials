@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HexarchApplicationTests {
+class HexarchApplicationUnitTest {
 
     @Autowired
     private TicketController ticketController;
