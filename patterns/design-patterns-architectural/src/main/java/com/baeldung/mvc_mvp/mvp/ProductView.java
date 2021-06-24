@@ -11,6 +11,5 @@ public class ProductView {
         log.info("product Name: " + productName);
         log.info("product Description: " + productDescription);
         log.info("product price: " + productPrice);
-        
     }
 }
