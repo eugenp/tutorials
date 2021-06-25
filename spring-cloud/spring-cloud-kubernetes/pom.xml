@@ -38,6 +38,6 @@
     </modules>
 
     <properties>
-        <spring-cloud-dependencies.version>2020.0.1</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
     </properties>
 </project>
