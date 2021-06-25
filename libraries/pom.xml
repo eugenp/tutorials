@@ -244,14 +244,6 @@
 
     <repositories>
         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-cuba-platform-main</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/cuba-platform/main</url>
-        </repository>
-        <repository>
             <id>nm-repo</id>
             <name>Numerical Method's Maven Repository</name>
             <url>http://repo.numericalmethod.com/maven/</url>
