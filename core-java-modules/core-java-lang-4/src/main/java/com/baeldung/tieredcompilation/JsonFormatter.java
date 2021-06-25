@@ -8,7 +8,7 @@ public class JsonFormatter implements Formatter {
     private static final JsonMapper mapper = new JsonMapper();
 
     @Override
-    public String format(Object object) throws JsonProcessingException {
+    public <T> String format(T object) throws JsonProcessingException {
         return mapper.writeValueAsString(object);
     }
 
