@@ -81,8 +81,8 @@
     </build>
 
     <properties>
-        <spring-cloud.version>2020.0.0</spring-cloud.version>
-        <spring-cloud-netflix-zuul.version>2.2.2.RELEASE</spring-cloud-netflix-zuul.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud-netflix-zuul.version>2.2.7.RELEASE</spring-cloud-netflix-zuul.version>
     </properties>
 
 </project>
