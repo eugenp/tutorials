@@ -183,6 +183,7 @@
         <dynamodblocal.version>1.11.86</dynamodblocal.version>
         <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+        <spring-boot.version>2.4.7</spring-boot.version>
     </properties>
 
 </project>
