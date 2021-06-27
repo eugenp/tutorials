@@ -25,7 +25,7 @@ import redis.embedded.RedisServerBuilder;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
-public class StudentRepositoryIntegrationTest {
+public class StudentRepositoryManualTest {
 
     @Autowired
     private StudentRepository studentRepository;
