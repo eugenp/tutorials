@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisApplication.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
-public class RedisMessageListenerIntegrationTest {
+public class RedisMessageListenerManualTest {
 
     private static redis.embedded.RedisServer redisServer;
 
