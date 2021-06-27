@@ -18,8 +18,8 @@ public class StringToCamelCase {
 
     public static String toCamelCaseByIteration(String text, char delimiter) {
         if (text == null || text.isEmpty()) {
-        	return text;
-		}
+            return text;
+        }
         boolean shouldConvertNextCharToLower = true;
         StringBuilder builder = new StringBuilder();
 
@@ -42,8 +42,8 @@ public class StringToCamelCase {
 
     public static String toCamelCaseBySplitting(String text, String delimiter) {
         if (text == null || text.isEmpty()) {
-        	return text;
-		}
+            return text;
+        }
         String[] words = text.split(delimiter);
 
         StringBuilder builder = new StringBuilder();
@@ -104,8 +104,8 @@ public class StringToCamelCase {
 
     public static String toCamelCaseUsingICU4J(String text, String delimiter) {
         if (text == null || text.isEmpty()) {
-        	return text;
-		}
+            return text;
+        }
 
         text = UCharacter.toTitleCase(text, BreakIterator.getTitleInstance())
                 .replaceAll(delimiter, "");
