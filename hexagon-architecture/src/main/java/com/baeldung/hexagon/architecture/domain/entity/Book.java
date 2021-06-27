@@ -2,16 +2,17 @@ package com.baeldung.hexagon.architecture.domain.entity;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
-@Entity
 @Data
+@Document
 public class Book {
 
 	@Id
+	private Long id;
 	private String title;
 	private String refNumber;
 	private String author;

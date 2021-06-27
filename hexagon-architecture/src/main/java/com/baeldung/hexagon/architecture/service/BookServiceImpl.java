@@ -1,7 +1,6 @@
 package com.baeldung.hexagon.architecture.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,8 +20,8 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Book getBook(String title) {
-		Optional<Book> bookOptional = bookRepository.findById(title);
-		return bookOptional.isPresent() ? bookOptional.get() : null;
+		List<Book> bookList = bookRepository.findByName(title);
+		return bookList.get(0);
 	}
 
 	@Override
