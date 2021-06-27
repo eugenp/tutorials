@@ -35,6 +35,6 @@ public class DigestAuthenticationLiveTest {
             .then()
             .assertThat()
             .statusCode(HttpStatus.OK.value())
-            .content(containsString("This is the body of the sample view"));
+            .body(containsString("This is the body of the sample view"));
     }
 }

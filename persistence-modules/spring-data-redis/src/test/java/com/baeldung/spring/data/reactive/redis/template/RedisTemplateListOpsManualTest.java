@@ -23,7 +23,7 @@ import java.io.IOException;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
-public class RedisTemplateListOpsIntegrationTest {
+public class RedisTemplateListOpsManualTest {
 
     private static final String LIST_NAME = "demo_list";
     private static redis.embedded.RedisServer redisServer;
