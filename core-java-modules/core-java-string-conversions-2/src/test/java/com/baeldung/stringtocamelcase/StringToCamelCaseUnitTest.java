@@ -10,10 +10,6 @@ import static org.junit.Assert.assertEquals;
 
 public class StringToCamelCaseUnitTest {
 
-    private static final String TEXT_WHITESPACE = "THIS STRING SHOULD BE IN CAMEL CASE";
-    private static final String TEXT_UNDERSCORE = "THIS_STRING_SHOULD_BE_IN_CAMEL_CASE";
-    private static final String TEXT_EXPECTED = "ThisStringShouldBeInCamelCase";
-
     @Test
     public void givenStringWithWhiteSpaces_WhenToCamelCaseByIteration_ThenReturnCamelCase() {
         assertThat(toCamelCaseByIteration("THIS STRING SHOULD BE IN CAMEL CASE", ' ')).isEqualTo("thisStringShouldBeInCamelCase");
