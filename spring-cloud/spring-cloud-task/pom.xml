@@ -48,8 +48,8 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
-        <spring-cloud-task.version>2.2.3.RELEASE</spring-cloud-task.version>
+        <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
+        <spring-cloud-task.version>2.3.3</spring-cloud-task.version>
     </properties>
 
 </project>

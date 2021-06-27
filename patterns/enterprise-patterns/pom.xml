@@ -16,6 +16,10 @@
 		<camel.version>3.7.4</camel.version>
 	</properties>
 
+	<modules>
+		<module>wire-tap</module>
+    </modules>	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
@@ -31,6 +35,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<version>2.2.2.RELEASE</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>

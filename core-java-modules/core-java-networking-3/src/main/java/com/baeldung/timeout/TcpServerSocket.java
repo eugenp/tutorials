@@ -3,7 +3,10 @@ package com.baeldung.timeout;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+<<<<<<< HEAD
 //A Java program for a Server
+=======
+>>>>>>> upstream/master
 import java.net.ServerSocket;
 import java.net.Socket;
 
