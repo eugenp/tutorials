@@ -1,5 +1,6 @@
-package com.baeldung.hexagonal.adapter;
+package java.com.baeldung.hexagonal.adapter;
 
+import com.baeldung.hexagonal.adapter.ConsoleAdapter;
 import com.baeldung.hexagonal.adapter.ConsoleAdapter.State;
 import com.baeldung.hexagonal.core.port.WeightTrackerAllService;
 import org.junit.Assert;
@@ -11,6 +12,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.PrintStream;
 
+import static org.mockito.ArgumentMatchers.contains;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)

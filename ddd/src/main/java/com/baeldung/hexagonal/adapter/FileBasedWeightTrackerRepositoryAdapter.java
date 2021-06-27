@@ -1,8 +1,8 @@
 package com.baeldung.hexagonal.adapter;
 
 import com.baeldung.hexagonal.core.exception.RepositoryException;
-import com.baeldung.hexagonal.core.port.WeightTrackerRepository;
 import com.baeldung.hexagonal.core.model.WeightInTime;
+import com.baeldung.hexagonal.core.port.WeightTrackerRepository;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
