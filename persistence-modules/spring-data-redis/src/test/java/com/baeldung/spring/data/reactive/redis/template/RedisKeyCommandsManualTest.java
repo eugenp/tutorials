@@ -26,7 +26,7 @@ import java.nio.ByteBuffer;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
-public class RedisKeyCommandsIntegrationTest {
+public class RedisKeyCommandsManualTest {
     
     private static redis.embedded.RedisServer redisServer;
 
