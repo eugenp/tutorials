@@ -29,6 +29,7 @@
         <module>solid</module>
         <module>clean-architecture</module>
         <module>enterprise-patterns</module>
+        <module>hexagonal-architecture-2</module>
     </modules>
 
     <dependencyManagement>
