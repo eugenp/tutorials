@@ -39,6 +39,6 @@ public class StringToBigIntegerUnitTest {
         final String inputString = "290f98";
         byte[] inputStringBytes = inputString.getBytes();
         BigInteger result = new BigInteger(inputStringBytes);
-        assertEquals("Hello Baeldung", new String(result.toByteArray()));
+        assertEquals("290f98", new String(result.toByteArray()));
     }
 }
