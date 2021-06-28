@@ -1,4 +1,4 @@
-package main.java.com.baeldung.thymeleaf.articles;
+package com.baeldung.thymeleaf.articles;
 
 public class Article {
 
