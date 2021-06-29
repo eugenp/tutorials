@@ -63,11 +63,11 @@ class UUIDGeneratorUnitTest {
     }
 
     @Test
-    public void version_5_UUID_is_correctly_generated_for_domain_baeldung_com_without_namespace() throws UnsupportedEncodingException {
+    public void version_5_UUID_is_correctly_generated_for_domain_baeldung_name() {
 
         UUID uuid = UUIDGenerator.generateType5UUID("baeldung.com");
 
-        assertEquals("a3c27ab0-2b46-55ef-b50e-0e5c57bfea94", uuid.toString());
+        assertEquals("efd5462b-b07a-52a3-94ea-bf575c0e0e75", uuid.toString());
         assertEquals(5, uuid.version());
         assertEquals(2, uuid.variant());
     }
