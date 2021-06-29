@@ -40,7 +40,7 @@ public class FooControllerCustomEtagIntegrationTest {
     private static String createFooJson() throws Exception {
         return serializeFoo(new Foo(randomAlphabetic(6)));
     }
-    
+
     private static Foo deserializeFoo(String fooJson) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(fooJson, Foo.class);
@@ -97,7 +97,8 @@ public class FooControllerCustomEtagIntegrationTest {
             .getResponse()
             .getHeader(HttpHeaders.LOCATION);
         ResultActions findOneResponse = this.mvc
-            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX).contentType(MediaType.APPLICATION_JSON));
+            .perform(get(createdResourceUri + CUSTOM_ETAG_ENDPOINT_SUFFIX)
+              .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
         String etag = findOneResponse.andReturn().getResponse().getHeader(HttpHeaders.ETAG);
         Foo createdFoo = deserializeFoo(findOneResponse.andReturn().getResponse().getContentAsString());
         createdFoo.setName("updated name");
