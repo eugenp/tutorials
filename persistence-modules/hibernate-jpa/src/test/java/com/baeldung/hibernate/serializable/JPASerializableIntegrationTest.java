@@ -37,7 +37,7 @@ public class JPASerializableIntegrationTest {
         entityManager.persist(user);
 
         User userDb = entityManager.find(User.class, userId);
-        assertEquals(userDb.getEmail().getName(), "johndoe");
+        assertEquals("johndoe", userDb.getEmail().getName());
     }
 
 @Test
@@ -65,7 +65,7 @@ public void givenAssociation_whenPersisted_thenMultipleAccountsWillBeFoundByEmai
 
     List userAccounts = entityManager.createQuery("select a from Account a join fetch a.user where a.user.email = :email")
             .setParameter("email", email).getResultList();
-    assertEquals(userAccounts.size(), 2);
+    assertEquals(2, userAccounts.size());
 }
 
     @After
