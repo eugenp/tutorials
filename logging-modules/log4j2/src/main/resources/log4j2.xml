@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%date{DEFAULT}}{yellow} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green} %message"/>
+        </Console>
+        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514"
+                protocol="UDP" appName="baeldung" includeMDC="true"
+                facility="LOCAL0" enterpriseNumber="18060" newLine="true"
+                connectTimeoutMillis="10000" reconnectionDelayMillis="5000"
+                messageId="Audit" id="App" mdcId="mdc"/>
+        <Failover name="FailoverAppender" primary="Syslog">
+            <Failovers>
+                <AppenderRef ref="ConsoleAppender"/>
+            </Failovers>
+        </Failover>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="Syslog"/>
+        </Root>
+    </Loggers>
+</Configuration>
