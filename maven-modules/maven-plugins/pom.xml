@@ -19,7 +19,6 @@
         <module>custom-rule</module>
         <module>maven-enforcer</module>
         <module>jaxws</module>
-        <module>surefire-failsafe-comparison</module>
     </modules>
 
     <build>
