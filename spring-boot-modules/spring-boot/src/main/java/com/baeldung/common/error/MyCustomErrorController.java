@@ -7,18 +7,9 @@ public class MyCustomErrorController implements ErrorController {
 
     private static final String PATH = "/error";
 
-    public MyCustomErrorController() {
-        // TODO Auto-generated constructor stub
-    }
-
     @GetMapping(value = PATH)
     public String error() {
         return "Error haven";
-    }
-
-    @Override
-    public String getErrorPath() {
-        return PATH;
     }
 
 }

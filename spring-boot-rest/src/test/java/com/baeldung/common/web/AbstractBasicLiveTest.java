@@ -24,6 +24,7 @@ import com.google.common.net.HttpHeaders;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.springframework.http.MediaType;
 
 public abstract class AbstractBasicLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
@@ -36,7 +37,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     @Test
     public void whenResourcesAreRetrievedPaged_then200IsReceived() {
         create();
-        
+
         final Response response = RestAssured.get(getURL() + "?page=0&size=10");
 
         assertThat(response.getStatusCode(), is(200));
@@ -54,7 +55,8 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     public void givenResourcesExist_whenFirstPageIsRetrieved_thenPageContainsResources() {
         create();
 
-        final Response response = RestAssured.get(getURL() + "?page=0&size=10");
+        final Response response = RestAssured.given()
+          .accept(MediaType.APPLICATION_JSON_VALUE).get(getURL() + "?page=0&size=10");
 
         assertFalse(response.body().as(List.class).isEmpty());
     }
@@ -64,7 +66,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         create();
         create();
         create();
-        
+
         final Response response = RestAssured.get(getURL() + "?page=0&size=2");
 
         final String uriToNextPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "next");
@@ -95,7 +97,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         create();
         create();
         create();
-        
+
         final Response first = RestAssured.get(getURL() + "?page=0&size=2");
         final String uriToLastPage = extractURIByRel(first.getHeader(HttpHeaders.LINK), "last");
 
@@ -104,7 +106,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         final String uriToNextPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "next");
         assertNull(uriToNextPage);
     }
-    
+
     // etags
 
     @Test

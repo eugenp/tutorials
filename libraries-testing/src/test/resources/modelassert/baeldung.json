@@ -1,0 +1,5 @@
+{
+    "name": "Baeldung",
+    "isOnline": true,
+    "topics": [ "Java", "Spring", "Kotlin", "Scala", "Linux" ]
+}

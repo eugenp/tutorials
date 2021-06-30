@@ -22,7 +22,7 @@
     </dependencies>
 
     <properties>
-        <amqp-client.version>3.6.6</amqp-client.version>
+        <amqp-client.version>5.12.0</amqp-client.version>
     </properties>
 
 </project>

@@ -402,7 +402,7 @@
                 <module>dropwizard</module>
                 <module>dubbo</module>
 
-                <module>ethereum</module>
+                <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
@@ -416,7 +416,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>                
+                <module>gson</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -616,7 +616,7 @@
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
-                <module>spring-batch-2</module>	
+                <module>spring-batch-2</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -646,7 +646,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>                
+                <module>spring-freemarker</module>
 
                 <module>spring-integration</module>
 
@@ -660,6 +660,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
+                <module>spring-native</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -671,7 +672,7 @@
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-sleuth</module>
-                <module>spring-soap</module>               
+                <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
@@ -868,7 +869,7 @@
                 <module>dropwizard</module>
                 <module>dubbo</module>
 
-                <module>ethereum</module>
+                <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
@@ -882,7 +883,7 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
                 <module>grpc</module>
-                <module>gson</module>                
+                <module>gson</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -1103,7 +1104,7 @@
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>                
+                <module>spring-freemarker</module>
 
                 <module>spring-integration</module>
 
@@ -1117,7 +1118,7 @@
 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-
+                <module>spring-native</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -1364,7 +1365,7 @@
         <gib.skipTestsForUpstreamModules>true</gib.skipTestsForUpstreamModules>
         <gib.buildUpstream>false</gib.buildUpstream>
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
-        <gib.failOnError>false</gib.failOnError>        
+        <gib.failOnError>false</gib.failOnError>
         <gib.disable>true</gib.disable>
 
         <junit.version>4.12</junit.version>
