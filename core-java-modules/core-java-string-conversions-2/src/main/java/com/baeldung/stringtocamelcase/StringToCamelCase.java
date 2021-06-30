@@ -11,11 +11,6 @@ import java.util.stream.Collectors;
 
 public class StringToCamelCase {
 
-    public static void main(String[] args) {
-
-    }
-
-
     public static String toCamelCaseByIteration(String text, char delimiter) {
         if (text == null || text.isEmpty()) {
             return text;
@@ -71,17 +66,24 @@ public class StringToCamelCase {
             return text;
         }
 
-        text = Arrays.stream(text.split(delimiter))
-                .map(word -> word.isEmpty() ? word : Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
+        String[] words = text.split(delimiter);
+
+        //Convert the first word to lowercase and then every
+        //other word to Title Case.
+        String firstWord = words[0].toLowerCase();
+
+        String otherWords = Arrays.stream(words, 1, words.length)
+                .filter(word -> !word.isEmpty())
+                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
                 .collect(Collectors.joining(""));
-        StringBuilder builder = new StringBuilder(text);
-        builder.setCharAt(0, Character.toLowerCase(text.charAt(0)));
-        return builder.toString();
+
+
+        return firstWord + otherWords;
     }
 
     public static String toCamelCaseByRegex(String text) {
         StringBuilder builder = new StringBuilder();
-        String[] words = text.trim().split("[\\W+ | _,-,.,]");
+        String[] words = text.split("[\\W+ | _]");
 
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
