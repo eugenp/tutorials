@@ -117,7 +117,9 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <!-- configuration similar to surefire -->
+                            <includes>
+                                <include>**/*IntegrationTest</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
