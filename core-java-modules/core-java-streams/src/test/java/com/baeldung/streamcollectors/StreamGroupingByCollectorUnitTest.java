@@ -51,7 +51,7 @@ public class StreamGroupingByCollectorUnitTest
 
         @Test
         public void
-        test_groupingBy_collector()  {
+        givenListOfStrings_whenGroupingEqualStrings_thenUseCollectorsGroupingByToGroupEqualStringsAndCountOfOccurrences()  {
                 List<String> list = new ArrayList<>(
                     Arrays.asList("Foo", "Bar", "Bar", "Foo", "Bar")
                 );
@@ -65,7 +65,7 @@ public class StreamGroupingByCollectorUnitTest
 
         @Test
         public void
-        test_groupingBy_collector_custom_object_attributes()  {
+        givenListOfEmployees_whenGroupingDepartmentId_thenUseCollectorsGroupingByDepartmentIdAndCountNumberOfEmployeesWithinEveryDepartment()  {
 
                 List<Employee> list = new ArrayList<>(
                     Arrays.asList(new Employee(1, "Joe", 1),
