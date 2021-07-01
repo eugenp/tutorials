@@ -12,7 +12,6 @@ import org.junit.Test;
 
 public class StreamGroupingByCollectorUnitTest
 {
-h
         static class Employee {
 
                 Integer employeeId;
