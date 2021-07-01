@@ -40,33 +40,33 @@ public class JPASerializableIntegrationTest {
         assertEquals("johndoe", userDb.getEmail().getName());
     }
 
-@Test
-public void givenAssociation_whenPersisted_thenMultipleAccountsWillBeFoundByEmail() {
-    UserId userId = new UserId();
-    userId.setName("John");
-    userId.setLastName("Doe");
-    Email email = new Email();
-    email.setId(1);
-    email.setName("johndoe");
-    email.setDomain("gmail.com");
-    User user = new User(userId, email);
-    Account account = new Account();
-    account.setType("test");
-    account.setId(10);
-    account.setUser(user);
-    Account account2 = new Account();
-    account2.setType("main");
-    account2.setId(11);
-    account2.setUser(user);
+    @Test
+    public void givenAssociation_whenPersisted_thenMultipleAccountsWillBeFoundByEmail() {
+        UserId userId = new UserId();
+        userId.setName("John");
+        userId.setLastName("Doe");
+        Email email = new Email();
+        email.setId(1);
+        email.setName("johndoe");
+        email.setDomain("gmail.com");
+        User user = new User(userId, email);
+        Account account = new Account();
+        account.setType("test");
+        account.setId(10);
+        account.setUser(user);
+        Account account2 = new Account();
+        account2.setType("main");
+        account2.setId(11);
+        account2.setUser(user);
 
-    entityManager.persist(user);
-    entityManager.persist(account);
-    entityManager.persist(account2);
+        entityManager.persist(user);
+        entityManager.persist(account);
+        entityManager.persist(account2);
 
-    List userAccounts = entityManager.createQuery("select a from Account a join fetch a.user where a.user.email = :email")
-            .setParameter("email", email).getResultList();
-    assertEquals(2, userAccounts.size());
-}
+        List userAccounts = entityManager.createQuery("select a from Account a join fetch a.user where a.user.email = :email")
+                .setParameter("email", email).getResultList();
+        assertEquals(2, userAccounts.size());
+    }
 
     @After
     public void tearDown() {
