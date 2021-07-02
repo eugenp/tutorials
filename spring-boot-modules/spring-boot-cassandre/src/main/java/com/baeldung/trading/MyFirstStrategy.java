@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.trading;
 
 import static tech.cassandre.trading.bot.dto.position.PositionStatusDTO.CLOSED;
 import static tech.cassandre.trading.bot.dto.position.PositionStatusDTO.OPENED;
