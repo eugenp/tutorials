@@ -10,3 +10,25 @@ CREATE TABLE IF NOT EXISTS order_database.orderentity(
    price decimal,
    primary key(id)
 );
+
+create type IF NOT EXISTS order_database.participant_entity (
+	participantId uuid, 
+	email text, 
+	name text, 
+	contact int,
+	age int
+);
+
+CREATE TABLE IF NOT EXISTS order_database.event_entity (
+    id uuid,
+    event_location text,
+    event_name text,
+    event_status text,
+    event_time timestamp,
+    min_age int,
+    organiser text,
+    participants frozen<set<participant_entity>>,
+    PRIMARY KEY(id)
+);
+	
+
