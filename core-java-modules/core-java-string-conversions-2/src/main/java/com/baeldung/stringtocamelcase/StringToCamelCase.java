@@ -83,14 +83,15 @@ public class StringToCamelCase {
 
     public static String toCamelCaseByRegex(String text) {
         StringBuilder builder = new StringBuilder();
-        String[] words = text.split("[\\W+ | _]");
+        String[] words = text.split("[\\W+ | _]");// This is because "_" is not considered as non-word in java
 
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             if (i == 0) {
                 word = word.isEmpty() ? word : word.toLowerCase();
             } else {
-                word = word.isEmpty() ? word : Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase();
+                word = word.isEmpty() ? word : Character.toUpperCase(word.charAt(0))
+                        + word.substring(1).toLowerCase();
             }
 
             builder.append(word);
