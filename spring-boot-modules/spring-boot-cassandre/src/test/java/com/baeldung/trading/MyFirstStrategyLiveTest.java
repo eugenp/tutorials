@@ -22,9 +22,9 @@ import tech.cassandre.trading.bot.test.mock.TickerFluxMock;
 @SpringBootTest
 @Import(TickerFluxMock.class)
 @DisplayName("Simple strategy test")
-public class MyFirstStrategyUnitTest {
+public class MyFirstStrategyLiveTest {
 
-    private final Logger logger = LoggerFactory.getLogger(MyFirstStrategyUnitTest.class);
+    private final Logger logger = LoggerFactory.getLogger(MyFirstStrategyLiveTest.class);
 
     @Autowired
     private MyFirstStrategy strategy;
