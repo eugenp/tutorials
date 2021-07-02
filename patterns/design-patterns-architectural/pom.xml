@@ -32,6 +32,11 @@
             <version>${mysql-connector.version}</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.3.7</version>
+        </dependency>
     </dependencies>
 
     <properties>
