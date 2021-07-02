@@ -20,7 +20,7 @@ import com.baeldung.hexagonalarchinjava.infrastracture.repository.cassandra.Cass
 
 @SpringJUnitConfig
 @SpringBootTest
-@TestPropertySource("classpath:hex-arch-test.properties.properties")
+@TestPropertySource("classpath:ddd-layers-test.propertiess")
 class CassandraDbEventRepositoryLiveTest {
 
 	@Autowired
