@@ -64,7 +64,8 @@ public class JPASerializableIntegrationTest {
         entityManager.persist(account2);
 
         List userAccounts = entityManager.createQuery("select a from Account a join fetch a.user where a.user.email = :email")
-                .setParameter("email", email).getResultList();
+            .setParameter("email", email)
+            .getResultList();
         assertEquals(2, userAccounts.size());
     }
 
