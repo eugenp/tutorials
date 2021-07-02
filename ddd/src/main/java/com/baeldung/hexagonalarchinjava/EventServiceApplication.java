@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.baeldung.hexagonalarchinjava")
 @PropertySource(value = { "classpath:ddd-layers.properties" })
 public class EventServiceApplication {
 
