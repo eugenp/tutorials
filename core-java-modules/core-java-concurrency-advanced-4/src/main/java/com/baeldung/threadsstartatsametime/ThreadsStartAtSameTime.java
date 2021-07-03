@@ -36,7 +36,6 @@ public class ThreadsStartAtSameTime {
     }
 
     private static void usingCyclicBarrier() throws BrokenBarrierException, InterruptedException {
-
         System.out.println("\n===============================================");
         System.out.println("        >>> Using CyclicBarrier <<<<");
         System.out.println("===============================================");
@@ -55,7 +54,6 @@ public class ThreadsStartAtSameTime {
         System.out.println(" Now open the barrier:");
         System.out.println("-----------------------------------------------");
         barrier.await();
-
     }
 
 }
