@@ -55,51 +55,45 @@
             <artifactId>docx4j</artifactId>
             <version>${docx4j.version}</version>
         </dependency>
-		<!-- gson api -->
-		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		    <version>${gson.version}</version>
-		</dependency>
-		<!-- jackson api -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-annotations</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		<!-- yaml beans api -->
-		<dependency>
-		    <groupId>com.esotericsoftware.yamlbeans</groupId>
-		    <artifactId>yamlbeans</artifactId>
-		    <version>${yamlbeans.version}</version>
-		</dependency>
-		<!-- apache thrift api -->
-		<dependency>
-		    <groupId>org.apache.thrift</groupId>
-		    <artifactId>libthrift</artifactId>
-		    <version>${apache-thrift.version}</version>
-		</dependency>
-		<!-- google protocol buffers api -->
-		<dependency>
-		    <groupId>com.google.protobuf</groupId>
-		    <artifactId>protobuf-java</artifactId>
-		    <version>${google-protobuf.version}</version>
-		</dependency>
-		<dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
+        <!-- gson api -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+        <!-- jackson api -->
+        <dependency>
+           <groupId>com.fasterxml.jackson.core</groupId>
+           <artifactId>jackson-databind</artifactId>
+           <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- yaml beans api -->
+        <dependency>
+            <groupId>com.esotericsoftware.yamlbeans</groupId>
+            <artifactId>yamlbeans</artifactId>
+            <version>${yamlbeans.version}</version>
+        </dependency>
+        <!-- apache thrift api -->
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>${apache-thrift.version}</version>
+        </dependency>
+        <!-- google protocol buffers api -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${google-protobuf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
