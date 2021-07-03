@@ -103,6 +103,7 @@
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
+        <module>core-java-streams-4</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
         <module>core-java-string-algorithms-3</module>
