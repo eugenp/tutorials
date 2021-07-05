@@ -102,8 +102,7 @@ public class StringToCamelCaseUnitTest {
 
     @Test
     public void givenUppercaseWordWithUnderscores_WhenCaseFormatToLowerCamel_ThenReturnCamelCase() {
-        assertThat(CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "THIS_STRING_SHOULD_BE_IN_CAMEL_CASE"))
-                .isEqualTo("thisStringShouldBeInCamelCase");
+        assertThat(CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "THIS_STRING_SHOULD_BE_IN_CAMEL_CASE")).isEqualTo("thisStringShouldBeInCamelCase");
     }
 
 }

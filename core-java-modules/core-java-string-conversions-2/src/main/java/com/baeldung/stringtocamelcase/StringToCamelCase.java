@@ -73,9 +73,9 @@ public class StringToCamelCase {
         String firstWord = words[0].toLowerCase();
 
         String otherWords = Arrays.stream(words, 1, words.length)
-                .filter(word -> !word.isEmpty())
-                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
-                .collect(Collectors.joining(""));
+          .filter(word -> !word.isEmpty())
+          .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
+          .collect(Collectors.joining(""));
 
 
         return firstWord + otherWords;
@@ -90,8 +90,7 @@ public class StringToCamelCase {
             if (i == 0) {
                 word = word.isEmpty() ? word : word.toLowerCase();
             } else {
-                word = word.isEmpty() ? word : Character.toUpperCase(word.charAt(0))
-                        + word.substring(1).toLowerCase();
+                word = word.isEmpty() ? word : Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase();
             }
 
             builder.append(word);
@@ -110,8 +109,7 @@ public class StringToCamelCase {
             return text;
         }
 
-        text = UCharacter.toTitleCase(text, BreakIterator.getTitleInstance())
-                .replaceAll(delimiter, "");
+        text = UCharacter.toTitleCase(text, BreakIterator.getTitleInstance()).replaceAll(delimiter, "");
         StringBuilder builder = new StringBuilder(text);
         builder.setCharAt(0, Character.toLowerCase(text.charAt(0)));
         return builder.toString();
