@@ -1,6 +1,7 @@
 package com.baeldung.stringtocamelcase;
 
 
+import com.google.common.base.CaseFormat;
 import org.junit.Test;
 
 import static com.baeldung.stringtocamelcase.StringToCamelCase.*;
@@ -97,6 +98,12 @@ public class StringToCamelCaseUnitTest {
     @Test
     public void givenRandomStringWithDifferentDelimiters_WhenToCamelCaseByRegex_ThenReturnCamelCase() {
         assertThat(toCamelCaseByRegex("Please Turn this56738 to camel Case This should-be_in;camel-case")).isEqualTo("pleaseTurnThis56738ToCamelCaseThisShouldBe_inCamelCase");
+    }
+
+    @Test
+    public void givenUppercaseWordWithUnderscores_WhenCaseFormatToLowerCamel_ThenReturnCamelCase() {
+        assertThat(CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, "THIS_STRING_SHOULD_BE_IN_CAMEL_CASE"))
+                .isEqualTo("thisStringShouldBeInCamelCase");
     }
 
 }

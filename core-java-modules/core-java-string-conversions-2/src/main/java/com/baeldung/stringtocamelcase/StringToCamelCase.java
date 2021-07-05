@@ -83,7 +83,7 @@ public class StringToCamelCase {
 
     public static String toCamelCaseByRegex(String text) {
         StringBuilder builder = new StringBuilder();
-        String[] words = text.split("[\\W+ | _]");// This is because "_" is not considered as non-word in java
+        String[] words = text.split("[\\W_]+");
 
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
@@ -119,7 +119,7 @@ public class StringToCamelCase {
 
     public static String toCamelCaseUsingGuava(String text, String delimiter) {
         String toUpperUnderscore = text.toUpperCase().replaceAll(delimiter, "_");
-        return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, toUpperUnderscore).replaceAll("_", "");
+        return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, toUpperUnderscore);
     }
 
     public static String toCamelCaseUsingApacheCommons(String text, char delimiter) {
