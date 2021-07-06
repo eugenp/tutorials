@@ -401,6 +401,7 @@
                 <module>drools</module>
                 <module>dropwizard</module>
                 <module>dubbo</module>
+                <module>software-design</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
