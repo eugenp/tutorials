@@ -71,6 +71,16 @@ public class JavaInputStreamToXUnitTest {
     }
 
     @Test
+    public void givenUsingJava9_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+        final String originalString = randomAlphabetic(DEFAULT_SIZE);
+        final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        final String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+
+        assertThat(text, equalTo(originalString));
+    }
+
+    @Test
     public final void givenUsingJava7_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(DEFAULT_SIZE);
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes()); // exampleString.getBytes(StandardCharsets.UTF_8);
