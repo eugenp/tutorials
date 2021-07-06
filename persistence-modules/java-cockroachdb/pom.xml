@@ -21,8 +21,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <postgresql.version>42.1.4</postgresql.version>
-    </properties>
-
 </project>

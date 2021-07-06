@@ -100,4 +100,23 @@
 
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="com.baeldung.hibernate.serializable.h2_persistence_unit">
+        <description>EntityManager serializable persistence unit</description>
+        <class>com.baeldung.hibernate.serializable.Email</class>
+        <class>com.baeldung.hibernate.serializable.Account</class>
+        <class>com.baeldung.hibernate.serializable.User</class>
+        <class>com.baeldung.hibernate.serializable.UserId</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+        </properties>
+    </persistence-unit>
 </persistence> 

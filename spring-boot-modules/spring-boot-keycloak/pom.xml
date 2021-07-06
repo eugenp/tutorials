@@ -76,7 +76,8 @@
     </build>
 
     <properties>
-        <keycloak-adapter-bom.version>11.0.2</keycloak-adapter-bom.version>
+        <keycloak-adapter-bom.version>13.0.1</keycloak-adapter-bom.version>
+        <spring-boot.version>2.4.7</spring-boot.version>
     </properties>
 
 </project>

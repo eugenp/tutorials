@@ -42,6 +42,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <version>${spring-cloud-netflix-zuul.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
