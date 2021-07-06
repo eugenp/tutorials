@@ -32,6 +32,6 @@ public class JobRunrSpringBootApp {
 
     @PostConstruct
     public void scheduleRecurrently() {
-        jobScheduler.<SampleJobService>scheduleRecurrently(x -> x.executeSampleJob("a recurring job"), Cron.every5minutes());
+        jobScheduler.<SampleJobService>scheduleRecurrently(Cron.every5minutes(), x -> x.executeSampleJob("a recurring job"));
     }
 }

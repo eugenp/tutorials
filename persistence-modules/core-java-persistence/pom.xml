@@ -62,7 +62,6 @@
 
     <properties>
         <h2.version>1.4.200</h2.version>
-        <postgresql.version>42.2.5.jre7</postgresql.version>
         <assertj-core.version>3.10.0</assertj-core.version>
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
         <HikariCP.version>3.2.0</HikariCP.version>

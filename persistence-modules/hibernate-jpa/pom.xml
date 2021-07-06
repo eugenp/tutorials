@@ -91,7 +91,6 @@
     <properties>
         <hibernate.version>5.3.7.Final</hibernate.version>
         <mysql.version>8.0.13</mysql.version>
-        <postgresql.version>42.2.11</postgresql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>

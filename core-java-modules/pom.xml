@@ -103,6 +103,7 @@
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
+        <module>core-java-streams-4</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
         <module>core-java-string-algorithms-3</module>
@@ -111,9 +112,9 @@
         <module>core-java-string-conversions-2</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
-        <module>core-java-string-operations-3</module>
         <module>core-java-sun</module>
         <module>core-java-regex</module>
+        <module>core-java-regex-2</module>
         <module>pre-jpms</module>
     </modules>
 
