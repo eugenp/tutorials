@@ -343,6 +343,7 @@
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
+				<module>software-design</module>
 
                 <module>apache-cxf</module>
                 <module>apache-libraries</module>
@@ -599,7 +600,7 @@
                 <module>spf4j</module>
 
                 <module>spring-4</module>
-
+				<module>software-design</module>
                 <module>spring-5</module>
                 <module>spring-5-data-reactive</module>
                 <module>spring-5-reactive</module>
@@ -811,7 +812,7 @@
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
-
+				<module>software-design</module>
                 <module>apache-cxf</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
@@ -1100,6 +1101,7 @@
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-drools</module>
+				<module>software-design</module>
 
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
