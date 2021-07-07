@@ -47,6 +47,26 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.seancfoley/ipaddress -->
+		<dependency>
+			<groupId>com.github.seancfoley</groupId>
+			<artifactId>ipaddress</artifactId>
+			<version>5.3.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.jgonian/commons-ip-math -->
+		<dependency>
+		    <groupId>com.github.jgonian</groupId>
+		    <artifactId>commons-ip-math</artifactId>
+		    <version>1.32</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.googlecode.java-ipv6/java-ipv6 -->
+		<dependency>
+		    <groupId>com.googlecode.java-ipv6</groupId>
+		    <artifactId>java-ipv6</artifactId>
+		    <version>0.17</version>
+		</dependency>
     </dependencies>
 
     <build>
