@@ -63,7 +63,6 @@
         <module>core-java-io-4</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
-        <module>core-java-io-conversions-2</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <module>core-java-jvm</module>
@@ -103,6 +102,7 @@
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
+        <module>core-java-streams-4</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
         <module>core-java-string-algorithms-3</module>
