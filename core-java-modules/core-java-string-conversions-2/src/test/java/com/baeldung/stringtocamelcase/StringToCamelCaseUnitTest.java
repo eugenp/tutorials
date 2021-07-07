@@ -97,7 +97,7 @@ public class StringToCamelCaseUnitTest {
 
     @Test
     public void givenRandomStringWithDifferentDelimiters_WhenToCamelCaseByRegex_ThenReturnCamelCase() {
-        assertThat(toCamelCaseByRegex("Please Turn this56738 to camel Case This should-be_in;camel-case")).isEqualTo("pleaseTurnThis56738ToCamelCaseThisShouldBe_inCamelCase");
+        assertThat(toCamelCaseByRegex("Please Turn this56738 to camel Case This should-be_in;camel-case")).isEqualTo("pleaseTurnThis56738ToCamelCaseThisShouldBeInCamelCase");
     }
 
     @Test
