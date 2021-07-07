@@ -12,8 +12,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-aop</artifactId>
-    <name>spring-aop</name>
+    <artifactId>software-design</artifactId>
+    <name>software-design</name>
     <packaging>war</packaging>
 
     <dependencies>
