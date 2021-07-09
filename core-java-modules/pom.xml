@@ -48,7 +48,6 @@
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
-        <!--<module>core-java-8-datetime</module> --> <!-- unit test case failure -->
         <module>core-java-8-datetime-2</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-8-datetime</module>
