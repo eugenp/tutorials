@@ -45,7 +45,6 @@
 
     <properties>
         <h2.version>1.4.200</h2.version>
-        <postgresql.version>42.2.5.jre7</postgresql.version>
         <mssql.driver.version>8.4.1.jre11</mssql.driver.version>
         <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
         <mysql.driver.version>8.0.22</mysql.driver.version>

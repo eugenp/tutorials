@@ -122,16 +122,8 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-
     <properties>
-        <spring-cloud.version>2020.0.0-M5</spring-cloud.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <guava.version>20.0</guava.version>
         <resource.delimiter>@</resource.delimiter>

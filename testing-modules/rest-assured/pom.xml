@@ -127,11 +127,6 @@
             <artifactId>httpclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
@@ -180,7 +175,6 @@
         <joda-time.version>2.9.6</joda-time.version>
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
-        <groovy.version>2.4.7</groovy.version>
         <wiremock.version>2.4.1</wiremock.version>
         <scribejava.version>2.5.3</scribejava.version>
     </properties>

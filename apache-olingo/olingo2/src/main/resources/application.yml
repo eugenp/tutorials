@@ -6,7 +6,12 @@ spring:
     application-path: /odata
     
   jpa:
+    defer-datasource-initialization: true
     show-sql: true
     open-in-view: false
     hibernate:
       ddl-auto: update
+
+  sql:
+    init:
+      mode: always
