@@ -1,0 +1,13 @@
+!java.util.LinkedHashMap
+User1: !com.baeldung.serialization.protocols.User
+   id: 1
+   name: Mark Jonson
+User2: !com.baeldung.serialization.protocols.User
+   id: 2
+   name: Johny Beth
+User3: !com.baeldung.serialization.protocols.User
+   id: 3
+   name: Eliza Green
+User4: !com.baeldung.serialization.protocols.User
+   id: 4
+   name: Monica Doe

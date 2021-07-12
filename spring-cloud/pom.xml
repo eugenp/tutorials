@@ -79,13 +79,13 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>2020.0.1</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
         <spring-cloud-starter-config.version>2.2.3.RELEASE</spring-cloud-starter-config.version>
         <spring-cloud-config-server.version>2.2.3.RELEASE</spring-cloud-config-server.version>
         <spring-cloud-starter-eureka.version>1.4.7.RELEASE</spring-cloud-starter-eureka.version>
         <spring-cloud-starter-feign.version>1.4.7.RELEASE</spring-cloud-starter-feign.version>
         <spring-cloud-starter-hystrix.version>1.4.7.RELEASE</spring-cloud-starter-hystrix.version>
-        <spring-cloud-stream.version>3.0.6.RELEASE</spring-cloud-stream.version>
+        <spring-cloud-stream.version>3.1.3</spring-cloud-stream.version>
 
     </properties>
 
