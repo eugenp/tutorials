@@ -1,0 +1,1 @@
+Understand Hexagonal Architecture using a Spring Boot project
