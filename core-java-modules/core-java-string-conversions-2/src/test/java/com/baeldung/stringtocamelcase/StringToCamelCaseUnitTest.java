@@ -2,6 +2,7 @@ package com.baeldung.stringtocamelcase;
 
 
 import com.google.common.base.CaseFormat;
+import org.apache.commons.text.CaseUtils;
 import org.junit.Test;
 
 import static com.baeldung.stringtocamelcase.StringToCamelCase.*;
@@ -42,12 +43,14 @@ public class StringToCamelCaseUnitTest {
 
     @Test
     public void givenStringWithWhiteSpaces_WhenToCamelCaseUsingApacheCommonsText_ThenReturnCamelCase() {
-        assertThat(toCamelCaseUsingApacheCommonsText("THIS STRING SHOULD BE IN CAMEL CASE", ' ')).isEqualTo("thisStringShouldBeInCamelCase");
+        assertThat(CaseUtils.toCamelCase("THIS STRING SHOULD BE IN CAMEL CASE", false, ' '))
+          .isEqualTo("thisStringShouldBeInCamelCase");
     }
 
     @Test
     public void givenStringWithUnderscores_WhenToCamelCaseUsingApacheCommonsText_ThenReturnCamelCase() {
-        assertThat(toCamelCaseUsingApacheCommonsText("THIS_STRING_SHOULD_BE_IN_CAMEL_CASE", '_')).isEqualTo("thisStringShouldBeInCamelCase");
+        assertThat(CaseUtils.toCamelCase("THIS_STRING_SHOULD_BE_IN_CAMEL_CASE", false, '_'))
+          .isEqualTo("thisStringShouldBeInCamelCase");
     }
 
     @Test

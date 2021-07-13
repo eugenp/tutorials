@@ -17,10 +17,8 @@ public class StringToCamelCase {
         }
         boolean shouldConvertNextCharToLower = true;
         StringBuilder builder = new StringBuilder();
-
         for (int i = 0; i < text.length(); i++) {
             char currentChar = text.charAt(i);
-
             if (currentChar == delimiter) {
                 shouldConvertNextCharToLower = false;
             } else if (shouldConvertNextCharToLower) {
@@ -29,9 +27,7 @@ public class StringToCamelCase {
                 builder.append(Character.toUpperCase(currentChar));
                 shouldConvertNextCharToLower = true;
             }
-
         }
-
         return builder.toString();
     }
 
@@ -40,12 +36,9 @@ public class StringToCamelCase {
             return text;
         }
         String[] words = text.split(delimiter);
-
         StringBuilder builder = new StringBuilder();
-
         for (int i = 0, wordsLength = words.length; i < wordsLength; i++) {
             String word = words[i];
-
             if (i == 0) {
                 //Make the first word all lowercase
                 word = word.isEmpty() ? word : word.toLowerCase();
@@ -56,8 +49,6 @@ public class StringToCamelCase {
             }
             builder.append(word);
         }
-
-
         return builder.toString();
     }
 
@@ -65,18 +56,14 @@ public class StringToCamelCase {
         if (text == null || text.isEmpty()) {
             return text;
         }
-
         String[] words = text.split(delimiter);
-
         //Convert the first word to lowercase and then every
         //other word to Title Case.
         String firstWord = words[0].toLowerCase();
-
         String otherWords = Arrays.stream(words, 1, words.length)
           .filter(word -> !word.isEmpty())
           .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
           .collect(Collectors.joining(""));
-
 
         return firstWord + otherWords;
     }
@@ -84,7 +71,6 @@ public class StringToCamelCase {
     public static String toCamelCaseByRegex(String text) {
         StringBuilder builder = new StringBuilder();
         String[] words = text.split("[\\W_]+");
-
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             if (i == 0) {
@@ -92,23 +78,16 @@ public class StringToCamelCase {
             } else {
                 word = word.isEmpty() ? word : Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase();
             }
-
             builder.append(word);
         }
-
         return builder.toString();
     }
 
     //Third-Party Libraries
-    public static String toCamelCaseUsingApacheCommonsText(String text, char delimiter) {
-        return CaseUtils.toCamelCase(text, false, delimiter);
-    }
-
     public static String toCamelCaseUsingICU4J(String text, String delimiter) {
         if (text == null || text.isEmpty()) {
             return text;
         }
-
         text = UCharacter.toTitleCase(text, BreakIterator.getTitleInstance()).replaceAll(delimiter, "");
         StringBuilder builder = new StringBuilder(text);
         builder.setCharAt(0, Character.toLowerCase(text.charAt(0)));
