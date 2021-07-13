@@ -29,4 +29,9 @@ public class ApplicationClient {
         out.close();
         clientSocket.close();
     }
+    
+    public static void main(String[] args) {
+        ApplicationClient client = new ApplicationClient();
+        client.connect("192.168.0.1", 5000);  // change the IP address to server IP 
+    }
 }

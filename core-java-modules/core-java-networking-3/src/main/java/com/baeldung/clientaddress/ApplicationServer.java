@@ -15,7 +15,7 @@ public class ApplicationServer {
     private PrintWriter out;
     private BufferedReader in;
 
-    public void startServer(int port) {
+    public void startServer(int port) throws IOException{
         try {
             serverSocket = new ServerSocket(port);
             conncetedSocket = serverSocket.accept();
@@ -40,9 +40,7 @@ public class ApplicationServer {
             }
             closeIO();
             stopServer();
-        } catch (IOException e) {
-
-        }
+        } 
     }
 
     private void closeIO() throws IOException {
@@ -53,5 +51,10 @@ public class ApplicationServer {
     private void stopServer() throws IOException {
         conncetedSocket.close();
         serverSocket.close();
+    }
+    
+    public static void main(String[] args) {
+        ApplicationServer server = new ApplicationServer();
+        server.startServer(5000);
     }
 }
