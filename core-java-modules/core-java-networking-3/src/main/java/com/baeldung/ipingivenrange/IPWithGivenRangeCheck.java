@@ -18,7 +18,7 @@ import com.googlecode.ipv6.IPv6AddressRange;
 public class IPWithGivenRangeCheck {
 
     // using IPAddress library
-    public static boolean checkIPIsInGivenRange(String inputIP, String rangeStartIP, String rangeEndIP) throws AddressStringException {
+    public static boolean checkIPIsInGivenRange (String inputIP, String rangeStartIP, String rangeEndIP) throws AddressStringException {
         IPAddress startIPAddress = new IPAddressString(rangeStartIP).getAddress();
         IPAddress endIPAddress = new IPAddressString(rangeEndIP).getAddress();
         IPAddress inputIPAddress = new IPAddressString(inputIP).toAddress();
@@ -28,7 +28,7 @@ public class IPWithGivenRangeCheck {
     }
 
     // using Commons IP Math library for IPv4
-    public static boolean checkIPv4IsInRange(String inputIP, String rangeStartIP, String rangeEndIP) {
+    public static boolean checkIPv4IsInRange (String inputIP, String rangeStartIP, String rangeEndIP) {
         Ipv4 startIPAddress = Ipv4.of(rangeStartIP);
         Ipv4 endIPAddress = Ipv4.of(rangeEndIP);
         Ipv4 inputIPAddress = Ipv4.of(inputIP);
@@ -39,7 +39,7 @@ public class IPWithGivenRangeCheck {
     }
 
     // using Commons IP Math library for IPv6
-    public static boolean checkIPv6IsInRange(String inputIP, String rangeStartIP, String rangeEndIP) {
+    public static boolean checkIPv6IsInRange (String inputIP, String rangeStartIP, String rangeEndIP) {
         Ipv6 startIPAddress = Ipv6.of(rangeStartIP);
         Ipv6 endIPAddress = Ipv6.of(rangeEndIP);
         Ipv6 inputIPAddress = Ipv6.of(inputIP);
@@ -50,7 +50,7 @@ public class IPWithGivenRangeCheck {
     }
 
     // checking IP is in range by converting it to an integer
-    public static boolean checkIPv4IsInRangeByConvertingToInt(String inputIP, String rangeStartIP, String rangeEndIP) throws UnknownHostException {
+    public static boolean checkIPv4IsInRangeByConvertingToInt (String inputIP, String rangeStartIP, String rangeEndIP) throws UnknownHostException {
         long startIPAddress = ipToLongInt(InetAddress.getByName(rangeStartIP));
         long endIPAddress = ipToLongInt(InetAddress.getByName(rangeEndIP));
         long inputIPAddress = ipToLongInt(InetAddress.getByName(inputIP));
@@ -58,7 +58,7 @@ public class IPWithGivenRangeCheck {
         return (inputIPAddress >= startIPAddress && inputIPAddress <= endIPAddress);
     }
 
-    private static long ipToLongInt(InetAddress ipAddress) {
+    private static long ipToLongInt (InetAddress ipAddress) {
         long resultIP = 0;
         byte[] ipAddressOctets = ipAddress.getAddress();
 
@@ -70,7 +70,7 @@ public class IPWithGivenRangeCheck {
     }
 
     // using Java IPv6 library (which internally uses two long integers to store ip address)
-    public static boolean checkIPv6IsInRangeByIPv6library(String inputIP, String rangeStartIP, String rangeEndIP) {
+    public static boolean checkIPv6IsInRangeByIPv6library (String inputIP, String rangeStartIP, String rangeEndIP) {
         IPv6Address startIPAddress = IPv6Address.fromString(rangeStartIP);
         IPv6Address endIPAddress = IPv6Address.fromString(rangeEndIP);
         IPv6Address inputIPAddress = IPv6Address.fromString(inputIP);
