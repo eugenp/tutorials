@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         return repo.UpdateUser(user);
     }
 
-    public List<User> getAllUsrs() {
+    public List<User> getAllUsers() {
         return repo.findAll();
     }
 

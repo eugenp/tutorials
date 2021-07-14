@@ -10,7 +10,7 @@ public interface UserService {
 
     public User registerUser(User user);
     public User upgradeUser(User user) throws UserNotFoundException;
-    public List<User> getAllUsrs();
+    public List<User> getAllUsers();
     public Optional<User> findUserById(int userId);
 
 }
