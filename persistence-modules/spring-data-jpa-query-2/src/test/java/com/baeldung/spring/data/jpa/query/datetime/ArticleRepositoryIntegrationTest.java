@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.spring.data.jpa.query.datetime.Article;
+import com.baeldung.spring.data.jpa.query.datetime.ArticleRepository;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;

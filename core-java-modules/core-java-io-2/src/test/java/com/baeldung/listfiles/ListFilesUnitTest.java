@@ -25,8 +25,13 @@ public class ListFilesUnitTest {
     };
 
     @Test
-    public void givenDir_whenUsingJAVAIO_thenListAllFiles() throws IOException {
+    public void givenDir_whenUsingJAVAIO_thenListAllFiles() {
         assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingJavaIO(DIRECTORY));
+    }
+
+    @Test
+    public void givenDir_whenUsingFilesList_thenListAllFiles() throws IOException {
+        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFilesList(DIRECTORY));
     }
 
     @Test

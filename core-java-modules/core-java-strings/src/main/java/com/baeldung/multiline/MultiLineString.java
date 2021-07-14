@@ -64,4 +64,11 @@ public class MultiLineString {
         return new String(Files.readAllBytes(Paths.get("src/main/resources/stephenking.txt")));
     }
 
+    public String textBlocks() {
+        return """
+            Get busy living
+            or
+            get busy dying.
+            --Stephen King""";
+    }
 }

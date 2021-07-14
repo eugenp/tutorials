@@ -19,12 +19,12 @@ public class StudentDbService implements StudentService {
     }
 
     public Student update(Student student) {
-        logger.log(Level.INFO, "Updating sutdent in DB...");
+        logger.log(Level.INFO, "Updating student in DB...");
         return student;
     }
 
     public String delete(String registrationId) {
-        logger.log(Level.INFO, "Deleteing sutdent in DB...");
+        logger.log(Level.INFO, "Deleting student in DB...");
         return registrationId;
     }
 }

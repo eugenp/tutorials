@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import lombok.Data;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
 @Entity
-@Data
+@Table(indexes = {@Index(columnList="customerId")})
 public class CustomerRewardsAccount {
 
     @Id
@@ -19,4 +19,18 @@ public class CustomerRewardsAccount {
     public Integer getCustomerId(){
         return this.customerId;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+    
+    
 }

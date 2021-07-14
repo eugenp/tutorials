@@ -3,23 +3,16 @@ package com.baeldung.jetty.httpclient;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 public abstract class AbstractUnitTest {
 
-   protected HttpClient httpClient;
-   protected Server server;
+   protected static HttpClient httpClient;
+   protected static Server server;
    protected static final String CONTENT = "Hello World!";
-   protected final int port = 9080;
-
-    @Before
-    public void init() {
-        startServer(new RequestHandler());
-        startClient();
-    }
     
-    private void startClient() {
+    protected static void startClient() {
         httpClient = new HttpClient();
         try {
             httpClient.start();
@@ -28,7 +21,7 @@ public abstract class AbstractUnitTest {
         }
     }
     
-    private void startServer(Handler handler) {
+    protected static void startServer(Handler handler, int port) {
         server = new Server(port);
         server.setHandler(handler);
         try {
@@ -37,18 +30,9 @@ public abstract class AbstractUnitTest {
             e.printStackTrace();
         }
     }
-
-    @After
-    public void dispose() throws Exception {
-        if (httpClient != null) {
-            httpClient.stop();
-        }
-        if (server != null) {
-            server.stop();
-        }
-    }
-
-    protected String uri() {
+    
+    protected String uri(int port) {
         return "http://localhost:" + port;
     }
+
 }

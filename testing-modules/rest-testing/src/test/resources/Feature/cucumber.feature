@@ -6,5 +6,5 @@ Feature: Testing a REST API
     Then the server should handle it and return a success status
 
   Scenario: Data retrieval from a web service
-    When users want to get information on the Cucumber project
+    When users want to get information on the 'Cucumber' project
     Then the requested data is returned

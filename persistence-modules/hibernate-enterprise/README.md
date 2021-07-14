@@ -10,3 +10,4 @@ This module contains articles about enterprise concerns such as Multitenancy, Er
 - [Common Hibernate Exceptions](https://www.baeldung.com/hibernate-exceptions)
 - [Hibernate Error “Not all named parameters have been set”](https://www.baeldung.com/hibernate-error-named-parameters-not-set)
 - [Various Logging Levels in Hibernate](https://www.baeldung.com/hibernate-logging-levels)
+- [Hibernate: save, persist, update, merge, saveOrUpdate](https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)

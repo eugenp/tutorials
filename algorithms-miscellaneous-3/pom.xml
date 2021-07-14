@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -74,25 +73,11 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>${exec-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <properties>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-collections4.version>4.3</commons-collections4.version>
         <guava.version>28.0-jre</guava.version>
         <retrofit.version>2.6.0</retrofit.version>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator.version>1.19</jmh-generator.version>
         <commons.lang3.version>3.8.1</commons.lang3.version>
         <JUnitParams.version>1.1.0</JUnitParams.version>
     </properties>

@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>${spring-boot.version}</version>
+            <version>${spring-security-oauth2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -88,6 +88,7 @@
         <bouncycastle.version>1.58</bouncycastle.version>
         <jsch.version>0.1.55</jsch.version>
         <apache-mina.version>2.5.1</apache-mina.version>
+        <spring-security-oauth2.version>2.4.0.RELEASE</spring-security-oauth2.version>
     </properties>
 
 </project>

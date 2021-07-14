@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -43,12 +44,12 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     public final String createAsUri() {
         return createAsUri(new Foo(randomAlphabetic(6)));
     }
-    
+
     @Override
     @Test
     public void whenResourcesAreRetrievedPaged_then200IsReceived() {
         this.create();
-        
+
         final Response response = RestAssured.get(getPageableURL() + "?page=0&size=10");
 
         assertThat(response.getStatusCode(), is(200));
@@ -68,13 +69,15 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     public void givenResourcesExist_whenFirstPageIsRetrieved_thenPageContainsResources() {
         create();
 
-        final Response response = RestAssured.get(getPageableURL() + "?page=0&size=10");
+        final Response response = RestAssured.given()
+          .accept(MediaType.APPLICATION_JSON_VALUE)
+          .get(getPageableURL() + "?page=0&size=10");
 
         assertFalse(response.body().as(List.class).isEmpty());
     }
 
     protected String getPageableURL() {
-        return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/foos/pageable";
+        return getURL() + "/pageable";
     }
-    
+
 }

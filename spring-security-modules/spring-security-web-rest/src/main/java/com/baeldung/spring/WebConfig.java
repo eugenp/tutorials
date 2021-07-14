@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("com.baeldung.web")
+@ComponentScan("com.baeldung")
 @EnableWebMvc
 @EnableAsync
 public class WebConfig implements WebMvcConfigurer  {

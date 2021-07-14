@@ -20,8 +20,8 @@ import com.baeldung.multipledb.dao.product.ProductRepository;
 import com.baeldung.multipledb.dao.user.PossessionRepository;
 import com.baeldung.multipledb.dao.user.UserRepository;
 import com.baeldung.multipledb.model.product.Product;
-import com.baeldung.multipledb.model.user.PossessionMultipleDB;
-import com.baeldung.multipledb.model.user.UserMultipleDB;
+import com.baeldung.multipledb.model.user.Possession;
+import com.baeldung.multipledb.model.user.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=MultipleDbApplication.class)
@@ -42,15 +42,15 @@ public class JpaMultipleDBIntegrationTest {
     @Test
     @Transactional("userTransactionManager")
     public void whenCreatingUser_thenCreated() {
-        UserMultipleDB user = new UserMultipleDB();
+        User user = new User();
         user.setName("John");
         user.setEmail("john@test.com");
         user.setAge(20);
-        PossessionMultipleDB p = new PossessionMultipleDB("sample");
+        Possession p = new Possession("sample");
         p = possessionRepository.save(p);
         user.setPossessionList(Collections.singletonList(p));
         user = userRepository.save(user);
-        final Optional<UserMultipleDB> result = userRepository.findById(user.getId());
+        final Optional<User> result = userRepository.findById(user.getId());
         assertTrue(result.isPresent());
         System.out.println(result.get().getPossessionList());
         assertEquals(1, result.get().getPossessionList().size());
@@ -59,14 +59,14 @@ public class JpaMultipleDBIntegrationTest {
     @Test
     @Transactional("userTransactionManager")
     public void whenCreatingUsersWithSameEmail_thenRollback() {
-        UserMultipleDB user1 = new UserMultipleDB();
+        User user1 = new User();
         user1.setName("John");
         user1.setEmail("john@test.com");
         user1.setAge(20);
         user1 = userRepository.save(user1);
         assertTrue(userRepository.findById(user1.getId()).isPresent());
 
-        UserMultipleDB user2 = new UserMultipleDB();
+        User user2 = new User();
         user2.setName("Tom");
         user2.setEmail("john@test.com");
         user2.setAge(10);

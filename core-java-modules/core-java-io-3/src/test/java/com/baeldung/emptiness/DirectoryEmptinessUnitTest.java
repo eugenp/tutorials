@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,8 +21,8 @@ public class DirectoryEmptinessUnitTest {
     }
 
     @Test
-    public void givenPath_whenNotDirectory_thenReturnsFalse() throws IOException {
-        Path aFile = Paths.get(getClass().getResource("/notDir.txt").getPath());
+    public void givenPath_whenNotDirectory_thenReturnsFalse() throws IOException, URISyntaxException {
+        Path aFile = Paths.get(getClass().getResource("/notDir.txt").toURI());
         assertThat(isEmpty(aFile)).isFalse();
     }
 

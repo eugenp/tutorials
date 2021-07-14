@@ -1,5 +1,7 @@
 spring:
-   profiles: test
+   config:
+    activate:
+      on-profile: test
 server:
    address:
       ip: 192.168.0.4
@@ -7,7 +9,9 @@ server:
       imgs: /etc/test/imgs
 ---
 spring:
-   profiles: dev
+   config:
+    activate:
+      on-profile: dev
 server:
    address:
       ip: 192.168.0.5

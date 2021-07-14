@@ -20,6 +20,8 @@ public class IllegalMonitorStateExceptionUnitTest {
 
         senderThread.join(1000);
         receiverThread.join(1000);
+        
+        Thread.sleep(2000);
 
         assertEquals("test", receiver.getMessage());
         assertFalse(sender.hasIllegalMonitorStateExceptionOccurred());

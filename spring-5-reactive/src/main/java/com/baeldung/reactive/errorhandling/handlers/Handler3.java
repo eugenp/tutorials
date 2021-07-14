@@ -15,11 +15,11 @@ public class Handler3 {
             sayHello(request)
               .flatMap(s -> ServerResponse.ok()
                         .contentType(MediaType.TEXT_PLAIN)
-                        .syncBody(s))
+                        .bodyValue(s))
               .onErrorResume(e -> (Mono.just("Hi, I looked around for your name but found: " + 
                     e.getMessage())).flatMap(s -> ServerResponse.ok()
                 .contentType(MediaType.TEXT_PLAIN)
-                .syncBody(s)));
+                .bodyValue(s)));
     }
 
     private Mono<String> sayHello(ServerRequest request) {

@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -29,8 +31,6 @@ import org.apache.http.impl.client.HttpClients;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 public class StepDefinition {
 
@@ -66,7 +66,8 @@ public class StepDefinition {
         wireMockServer.stop();
     }
 
-    @When("^users want to get information on the (.+) project$")
+//    @When("^users want to get information on the '(.+)' project$")
+    @When("users want to get information on the {string} project")
     public void usersGetInformationOnAProject(String projectName) throws IOException {
         wireMockServer.start();
 
@@ -86,11 +87,11 @@ public class StepDefinition {
         wireMockServer.stop();
     }
 
-    @Then("^the server should handle it and return a success status$")
+    @Then("the server should handle it and return a success status")
     public void theServerShouldReturnASuccessStatus() {
     }
 
-    @Then("^the requested data is returned$")
+    @Then("the requested data is returned")
     public void theRequestedDataIsReturned() {
     }
 

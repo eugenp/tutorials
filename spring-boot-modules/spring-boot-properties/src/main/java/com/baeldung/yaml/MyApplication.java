@@ -5,14 +5,12 @@
  */
 package com.baeldung.yaml;
 
-import java.util.Collections;
+import com.baeldung.yaml.YAMLConfig.Idm;
+import com.baeldung.yaml.YAMLConfig.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.baeldung.yaml.YAMLConfig.Idm;
-import com.baeldung.yaml.YAMLConfig.Service;
 
 @SpringBootApplication
 public class MyApplication implements CommandLineRunner {
@@ -28,6 +26,7 @@ public class MyApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("using environment:" + myConfig.getEnvironment());
         System.out.println("name:" + myConfig.getName());
+        System.out.println("enabled:" + myConfig.isEnabled());
         System.out.println("servers:" + myConfig.getServers());
         
         if ("testing".equalsIgnoreCase(myConfig.getEnvironment())) {

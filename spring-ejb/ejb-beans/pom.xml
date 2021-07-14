@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.singletonsession</groupId>
     <artifactId>ejb-beans</artifactId>
@@ -41,7 +42,7 @@
             <artifactId>spring-context</artifactId>
             <version>${springframework.version}</version>
         </dependency>
-         <!-- Dependency for EJB javax -->
+        <!-- Dependency for EJB javax -->
         <dependency>
             <groupId>javax.ejb</groupId>
             <artifactId>javax.ejb-api</artifactId>
@@ -184,7 +185,6 @@
         <activemq.broker.version>5.10.2</activemq.broker.version>
         <activemq.junit.version>5.13.1</activemq.junit.version>
         <mockito.version>2.21.0</mockito.version>
-        <byte-buddy.version>1.8.5</byte-buddy.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
     </properties>

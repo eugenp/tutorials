@@ -15,21 +15,24 @@ import org.junit.Test;
 public class MapFirstPairUnitTest {
 
     private Map.Entry<Integer, String> getFirstPairUsingIterator(Map<Integer, String> map) {
-        if (map == null || map.size() == 0)
+        if (map == null || map.size() == 0) {
             return null;
+        }
 
         Iterator<Map.Entry<Integer, String>> iterator = map.entrySet()
             .iterator();
 
-        if (iterator.hasNext())
+        if (iterator.hasNext()) {
             return iterator.next();
+        }
 
         return null;
     }
 
     private Map.Entry<Integer, String> getFirstPairUsingStream(Map<Integer, String> map) {
-        if (map == null || map.size() == 0)
+        if (map == null || map.size() == 0) {
             return null;
+        }
 
         Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
 

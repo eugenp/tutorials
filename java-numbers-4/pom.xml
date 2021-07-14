@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons.version}</version>
+            <version>${commons-lang3.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -45,7 +45,6 @@
 
     <properties>
         <vavr.version>0.10.2</vavr.version>
-        <commons.version>3.9</commons.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
 

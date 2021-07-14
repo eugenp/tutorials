@@ -2,7 +2,6 @@ package com.baeldung.reactive.authresolver;
 
 import java.util.Collections;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.ReactiveAuthenticationManagerResolver;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @EnableWebFluxSecurity
@@ -38,9 +38,10 @@ public class CustomWebSecurityConfig {
         return new AuthenticationWebFilter(resolver());
     }
 
-    public ReactiveAuthenticationManagerResolver<ServerHttpRequest> resolver() {
-        return request -> {
-            if (request
+    public ReactiveAuthenticationManagerResolver<ServerWebExchange> resolver() {
+        return exchange -> {
+            if (exchange
+              .getRequest()
               .getPath()
               .subPath(0)
               .value()
