@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class LRUCacheUniTest {
+public class LRUCacheUnitTest {
 
     @Test
     public void addSomeDataToCache_WhenGetData_ThenIsEqualWithCacheElement() {

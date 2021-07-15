@@ -4,7 +4,6 @@ package com.baeldung.lrucache;
  * Created by arash on 09.07.21.
  */
 
-
 public class CacheElement<K,V> {
     private K key;
     private V value;

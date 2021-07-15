@@ -135,6 +135,7 @@ public class DoublyLinkedList<T> {
             writeLock.unlock();
         }
     }
+
     public LinkedListNode<T> moveToFront(LinkedListNode<T> node) {
         return node.isEmpty() ? dummyNode : updateAndMoveToFront(node, node.getElement());
     }

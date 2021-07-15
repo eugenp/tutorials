@@ -3,7 +3,6 @@ package com.baeldung.lrucache;
 /**
  * Created by arash on 09.07.21.
  */
-
 public class Node<T> implements LinkedListNode<T> {
     private T value;
     private DoublyLinkedList<T> list;
