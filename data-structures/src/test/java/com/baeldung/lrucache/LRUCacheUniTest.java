@@ -1,7 +1,7 @@
-package com.baeldung.cache.lru;
+package com.baeldung.lrucache;
 
-import com.baeldung.cache.Cache;
-import com.baeldung.cache.LRUCache;
+import com.baeldung.lrucache.Cache;
+import com.baeldung.lrucache.LRUCache;
 import org.hamcrest.core.AllOf;
 import org.junit.Before;
 import org.junit.Test;

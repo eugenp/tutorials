@@ -1,4 +1,4 @@
-package com.baeldung.cache.lru;
+package com.baeldung.lrucache;
 
 import java.util.Hashtable;
 import java.util.Map;
@@ -47,39 +47,10 @@ public class LRUCache<K, V> implements Cache<K, V> {
         }
     }
 
-/*    public boolean put(K key, V value) {
-        writeLock.lock();
-        try {
-            CacheElement<K,V> item = new CacheElement<K,V>(key, value);
-            if (this.nodeMap.containsKey(key)) {
-                LinkedListNode<CacheElement<K,V>> node = this.nodeMap.get(key);
-                LinkedListNode<CacheElement<K,V>> newNode = doublyLinkedList.updateAndMoveToFront(node, item);
-                if (newNode.isEmpty()) {
-                    return false;
-                }
-                this.nodeMap.put(key, newNode);
-                return true;
-            }
-            if (this.size() >= this.size) {
-                this.evict();
-            }
-            LinkedListNode<CacheElement<K,V>> newNode = this.doublyLinkedList.add(item);
-            if (newNode.isEmpty()) {
-                return false;
-            }
-            this.nodeMap.put(key, newNode);
-            return true;
-        } finally {
-            writeLock.unlock();
-        }
-    }*/
-
     @Override
     public Optional<V> get(K key) {
         readLock.lock();
         try {
-
-
             LinkedListNode<CacheElement<K, V>> linkedListNode = this.linkedListNodeMap.get(key);
             if (linkedListNode != null && !linkedListNode.isEmpty()) {
                 linkedListNodeMap.put(key, this.doublyLinkedList.moveToFront(linkedListNode));

@@ -1,4 +1,4 @@
-package com.baeldung.cache.lru;
+package com.baeldung.lrucache;
 
 /**
  * Created by arash on 09.07.21.

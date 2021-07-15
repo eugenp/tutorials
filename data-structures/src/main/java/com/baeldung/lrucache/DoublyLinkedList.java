@@ -1,4 +1,4 @@
-package com.baeldung.cache.lru;
+package com.baeldung.lrucache;
 
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
