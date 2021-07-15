@@ -1,4 +1,4 @@
-package com.baeldung.cache;
+package com.baeldung.cache.lur;
 
 import java.util.Optional;
 

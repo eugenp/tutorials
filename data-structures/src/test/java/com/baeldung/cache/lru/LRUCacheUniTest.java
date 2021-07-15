@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.cache.lru;
 
 import com.baeldung.cache.Cache;
 import com.baeldung.cache.LRUCache;

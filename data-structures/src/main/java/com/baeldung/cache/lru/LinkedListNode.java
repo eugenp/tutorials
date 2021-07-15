@@ -1,4 +1,4 @@
-package com.baeldung.cache;
+package com.baeldung.cache.lru;
 
 public interface LinkedListNode<V> {
     boolean hasElement();

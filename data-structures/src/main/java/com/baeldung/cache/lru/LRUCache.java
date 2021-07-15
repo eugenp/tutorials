@@ -1,4 +1,4 @@
-package com.baeldung.cache;
+package com.baeldung.cache.lru;
 
 import java.util.Hashtable;
 import java.util.Map;
