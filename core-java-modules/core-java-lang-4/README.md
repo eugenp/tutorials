@@ -7,3 +7,4 @@ This module contains articles about core features in the Java language
 - [What are Compile-time Constants in Java?](https://www.baeldung.com/java-compile-time-constants)
 - [Java Objects.hash() vs Objects.hashCode()](https://www.baeldung.com/java-objects-hash-vs-objects-hashcode)
 - [Referencing a Method in Javadoc Comments](https://www.baeldung.com/java-method-in-javadoc)
+- [Tiered Compilation in JVM](https://www.baeldung.com/jvm-tiered-compilation)
