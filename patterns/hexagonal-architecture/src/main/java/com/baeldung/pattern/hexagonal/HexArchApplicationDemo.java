@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HexArchApplicationDemo {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(HexArchApplicationDemo.class, args);
 	}
 
