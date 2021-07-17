@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class BookServiceImplUnitTest {
 
 	@Test
 	void bookEntry() {
-		when(bookRepository.bookEntry(any(Book.class))).thenReturn(book.getName());
+		when(bookRepository.bookEntry(any(Book.class))).thenReturn(book);
 
 		String testBookName = bookService.bookEntry(book);
 		assertEquals(book.getName(), testBookName);
@@ -39,7 +40,7 @@ class BookServiceImplUnitTest {
 
 	@Test
 	void getBook() {
-		when(bookRepository.getBook("Spring for beginners")).thenReturn(book);
+		when(bookRepository.getBook("Spring for beginners")).thenReturn(Optional.of(book));
 
 		Book testBook = bookService.getBook("Spring for beginners");
 		assertEquals(testBook, book);

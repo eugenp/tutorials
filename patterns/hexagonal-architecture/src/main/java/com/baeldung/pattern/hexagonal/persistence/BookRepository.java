@@ -1,10 +1,12 @@
 package com.baeldung.pattern.hexagonal.persistence;
 
+import java.util.Optional;
+
 import com.baeldung.pattern.hexagonal.domain.model.Book;
 
 public interface BookRepository {
-	Book getBook(String name);
+	Optional<Book> getBook(String name);
 
-	String bookEntry(Book book);
+	Book bookEntry(Book book);
 
 }
