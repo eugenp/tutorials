@@ -6,10 +6,10 @@ This module contains articles about annotations used in Spring Data JPA
 
 - [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
 - [JPA @Embedded And @Embeddable](https://www.baeldung.com/jpa-embedded-embeddable)
-- [Spring Data JPA @Modifying Annotation](https://www.baeldung.com/spring-data-jpa-modifying-annotation)
 - [Spring JPA @Embedded and @EmbeddedId](https://www.baeldung.com/spring-jpa-embedded-method-parameters)
 - [Programmatic Transaction Management in Spring](https://www.baeldung.com/spring-programmatic-transaction-management)
 - [JPA Entity Lifecycle Events](https://www.baeldung.com/jpa-entity-lifecycle-events)
+- [Overriding Column Definition With @AttributeOverride](https://www.baeldung.com/jpa-attributeoverride)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

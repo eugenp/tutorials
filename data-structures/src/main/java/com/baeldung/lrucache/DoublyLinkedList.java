@@ -14,6 +14,7 @@ public class DoublyLinkedList<T> {
     private ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
     private ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
 
+ 
     public DoublyLinkedList() {
         this.dummyNode = new DummyNode<T>(this);
         clear();

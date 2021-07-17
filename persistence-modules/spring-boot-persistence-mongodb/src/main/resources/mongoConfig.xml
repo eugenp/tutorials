@@ -24,8 +24,8 @@
         <constructor-arg ref="mongoConverter" />
     </bean>
 
-    <mongo:mapping-converter id="mongoConverter" base-package="com.baeldung.converter">
-        <mongo:custom-converters base-package="com.baeldung.converter" />
+    <mongo:mapping-converter id="mongoConverter" base-package="com.baeldung.zoneddatetime.converter">
+        <mongo:custom-converters base-package="com.baeldung.zoneddatetime.converter" />
     </mongo:mapping-converter>
 
 </beans>

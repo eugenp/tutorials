@@ -190,6 +190,18 @@ public class HibernateCriteriaIntegrationTest {
     }
 
     @Test
+    public void inCriteriaQuery() {
+        final Session session = HibernateUtil.getHibernateSession();
+        final List<Item> expectedInList = session.createQuery("From Item where itemName in ('Skate Board', 'Paint', 'Glue')").list();
+        final String expectedNameInItems[] = new String[expectedInList.size()];
+        for (int i = 0; i < expectedInList.size(); i++) {
+            expectedNameInItems[i] = expectedInList.get(i).getItemName();
+        }
+        session.close();
+        assertArrayEquals(expectedNameInItems, av.inCriteria());
+    }
+
+    @Test
     public void givenNewItemPrice_whenCriteriaUpdate_thenReturnAffectedResult() {
 
         int oldPrice = 10, newPrice = 20;

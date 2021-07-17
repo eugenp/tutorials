@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-2</artifactId>
     <name>libraries-2</name>
@@ -75,7 +75,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-       
         <dependency>
             <groupId>edu.uci.ics</groupId>
             <artifactId>crawler4j</artifactId>
@@ -131,7 +130,7 @@
         <mesos.library.version>0.28.3</mesos.library.version>
         <parallel-collectors.version>1.1.0</parallel-collectors.version>
         <handlebars.version>4.1.2</handlebars.version>
-        <jasperreports.version>6.6.0</jasperreports.version>
+        <jasperreports.version>6.17.0</jasperreports.version>
         <spring.version>5.1.9.RELEASE</spring.version>
         <hsqldb.version>2.5.0</hsqldb.version>
     </properties>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-jpa</artifactId>
     <name>java-jpa</name>
@@ -28,15 +28,13 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-
-        <!--Compile time JPA API-->
+        <!--Compile time JPA API -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
             <version>${javax.persistence-api.version}</version>
         </dependency>
-
-        <!--Runtime JPA implementation-->
+        <!--Runtime JPA implementation -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -46,7 +44,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
+            <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -81,7 +79,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -107,7 +104,6 @@
     <properties>
         <hibernate.version>5.4.0.Final</hibernate.version>
         <eclipselink.version>2.7.4</eclipselink.version>
-        <postgres.version>42.2.5</postgres.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>

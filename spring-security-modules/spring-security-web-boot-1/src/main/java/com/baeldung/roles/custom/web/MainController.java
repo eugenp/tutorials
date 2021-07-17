@@ -39,16 +39,12 @@ public class MainController {
         return foo;
     }
 
-    //
-
     @PreAuthorize("hasAuthority('FOO_READ_PRIVILEGE')")
     @GetMapping("/foos")
     @ResponseBody
     public Foo findFooByName(@RequestParam final String name) {
         return new Foo(name);
     }
-
-    //
 
     @PreAuthorize("isMember(#id)")
     @GetMapping("/organizations/{id}")
@@ -64,5 +60,4 @@ public class MainController {
     public MyUserPrincipal retrieveUserDetails(@AuthenticationPrincipal MyUserPrincipal principal) {
         return principal;
     }
-
 }

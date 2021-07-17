@@ -38,6 +38,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.google.common.base.Charsets;
 
+// This test needs RestTemplateConfigurationApplication to be up and running
 public class RestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;

@@ -1,17 +1,13 @@
 package com.baeldung.web.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-
-import javax.servlet.ServletContext;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.baeldung.spring.web.config.WebConfig;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -20,31 +16,34 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.spring.web.config.WebConfig;
+import javax.servlet.ServletContext;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = {WebConfig.class})
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class, WebConfig.class })
 public class GreetControllerIntegrationTest {
 
     @Autowired
-    private WebApplicationContext wac;
+    private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
 
     private static final String CONTENT_TYPE = "application/json";
 
-    @Before
-    public void setup() throws Exception {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+    @BeforeEach
+    public void setup() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 
     @Test
     public void givenWac_whenServletContext_thenItProvidesGreetController() {
-        final ServletContext servletContext = wac.getServletContext();
-        Assert.assertNotNull(servletContext);
-        Assert.assertTrue(servletContext instanceof MockServletContext);
-        Assert.assertNotNull(wac.getBean("greetController"));
+        final ServletContext servletContext = webApplicationContext.getServletContext();
+        assertNotNull(servletContext);
+        assertTrue(servletContext instanceof MockServletContext);
+        assertNotNull(webApplicationContext.getBean("greetController"));
     }
 
     @Test
@@ -54,8 +53,12 @@ public class GreetControllerIntegrationTest {
 
     @Test
     public void givenGreetURI_whenMockMVC_thenVerifyResponse() throws Exception {
-        final MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/greet")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World!!!")).andReturn();
-        Assert.assertEquals(CONTENT_TYPE, mvcResult.getResponse().getContentType());
+        final MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/greet"))
+                .andDo(print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World!!!"))
+                .andReturn();
+        assertEquals(CONTENT_TYPE, mvcResult.getResponse().getContentType());
     }
 
     @Test

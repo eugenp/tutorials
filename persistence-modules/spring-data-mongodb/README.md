@@ -9,9 +9,8 @@
 - [Custom Cascading in Spring Data MongoDB](http://www.baeldung.com/cascading-with-dbref-and-lifecycle-events-in-spring-data-mongodb)
 - [Introduction to Spring Data MongoDB](http://www.baeldung.com/spring-data-mongodb-tutorial)
 - [Spring Data MongoDB: Projections and Aggregations](http://www.baeldung.com/spring-data-mongodb-projections-aggregations)
-- [Spring Data MongoDB Transactions](https://www.baeldung.com/spring-data-mongodb-transactions )
-- [ZonedDateTime with Spring Data MongoDB](https://www.baeldung.com/spring-data-mongodb-zoneddatetime)
-
+- [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
+- [Spring Data MongoDB Transactions](https://www.baeldung.com/spring-data-mongodb-transactions)
 
 ## Spring Data MongoDB Live Testing
 

@@ -40,11 +40,16 @@
             <version>${testcontainers-kafka.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <spring-kafka.version>2.5.8.RELEASE</spring-kafka.version>
-        <testcontainers-kafka.version>1.15.0</testcontainers-kafka.version>
+        <spring-kafka.version>2.7.2</spring-kafka.version>
+        <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
     </properties>
 
 </project>

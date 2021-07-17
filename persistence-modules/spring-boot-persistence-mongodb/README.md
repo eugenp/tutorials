@@ -4,3 +4,5 @@
 - [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
 - [Upload and Retrieve Files Using MongoDB and Spring Boot](https://www.baeldung.com/spring-boot-mongodb-upload-file)
 - [GridFS in Spring Data MongoDB](http://www.baeldung.com/spring-data-mongodb-gridfs)
+- [ZonedDateTime with Spring Data MongoDB](https://www.baeldung.com/spring-data-mongodb-zoneddatetime)
+

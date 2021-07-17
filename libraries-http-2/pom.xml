@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-http-2</artifactId>
     <name>libraries-http-2</name>
@@ -13,10 +13,15 @@
     </parent>
 
     <dependencies>
-         <!-- Dependencies for response decoder with okhttp -->
+        <!-- Dependencies for response decoder with okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
             <version>${okhttp.version}</version>
         </dependency>
         <dependency>
@@ -66,7 +71,6 @@
             <artifactId>reactive-streams</artifactId>
             <version>${reactive.stream.version}</version>
         </dependency>
-
         <!-- Retrofit -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -81,9 +85,9 @@
     </dependencies>
 
     <properties>
-        <okhttp.version>3.14.2</okhttp.version>
+        <okhttp.version>4.9.1</okhttp.version>
         <gson.version>2.8.5</gson.version>
-        <mockwebserver.version>3.14.2</mockwebserver.version>
+        <mockwebserver.version>4.9.1</mockwebserver.version>
         <jetty.httpclient.version>1.0.3</jetty.httpclient.version>
         <jetty.server.version>9.4.19.v20190610</jetty.server.version>
         <rxjava2.version>2.2.11</rxjava2.version>

@@ -1,4 +1,5 @@
 ### Relevant Articles:
 
 - [Spring Boot: Customize the Jackson ObjectMapper](https://www.baeldung.com/spring-boot-customize-jackson-objectmapper)
-- [Configuring a Hikari Connection Pool with Spring Boot](https://www.baeldung.com/spring-boot-hikari)
+- [“HttpMessageNotWritableException: No converter found for return value of type”](https://www.baeldung.com/spring-no-converter-found)
+- [Creating a Read-Only Repository with Spring Data](https://www.baeldung.com/spring-data-read-only-repository)

@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static org.springframework.web.reactive.function.BodyExtractors.toDataBuffers;
 import static org.springframework.web.reactive.function.BodyExtractors.toFormData;
-import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 public class FormHandler {
@@ -29,7 +29,7 @@ public class FormHandler {
     Mono<ServerResponse> handleUpload(ServerRequest request) {
         return request.body(toDataBuffers())
             .collectList()
-            .flatMap(dataBuffers -> ok().body(fromObject(extractData(dataBuffers).toString())));
+            .flatMap(dataBuffers -> ok().body(fromValue(extractData(dataBuffers).toString())));
     }
 
     private AtomicLong extractData(List<DataBuffer> dataBuffers) {

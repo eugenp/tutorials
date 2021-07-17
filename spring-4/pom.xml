@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>spring-4</groupId>
     <artifactId>spring-4</artifactId>
@@ -8,7 +9,7 @@
     <packaging>jar</packaging>
 
     <parent>
-    <!-- this module uses legacy Spring features, so can't upgrade to boot-2 -->
+        <!-- this module uses legacy Spring features, so can't upgrade to boot-2 -->
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-1</artifactId>
         <version>0.0.1-SNAPSHOT</version>
@@ -38,6 +39,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -83,7 +85,6 @@
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
@@ -113,6 +114,7 @@
         <flips-web.version>1.0.1</flips-web.version>
         <easymock.version>3.6</easymock.version>
         <hsqldb.version>2.4.0</hsqldb.version>
+        <hikaricp.version>4.0.3</hikaricp.version>
     </properties>
 
 </project>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ldap</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -14,7 +15,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.ldap</groupId>
             <artifactId>spring-ldap-core</artifactId>
@@ -26,13 +26,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring-context.version}</version>
         </dependency>
-
         <!-- spring ldap test -->
         <dependency>
             <groupId>org.springframework.ldap</groupId>
@@ -46,7 +44,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- apacheds for test -->
         <dependency>
             <groupId>org.apache.directory.server</groupId>
@@ -84,8 +81,6 @@
             <version>${shared-ldap.version}</version>
             <scope>test</scope>
         </dependency>
-
-
         <!-- Spring Data LDAP -->
         <dependency>
             <groupId>org.springframework.data</groupId>
