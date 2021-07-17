@@ -10,15 +10,12 @@ public class DoublyLinkedList<T> {
     private LinkedListNode<T> head;
     private LinkedListNode<T> tail;
     private AtomicInteger size;
-    private ReentrantReadWriteLock.ReadLock readLock;
-    private ReentrantReadWriteLock.WriteLock writeLock;
-
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
+    private ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
 
     public DoublyLinkedList() {
         this.dummyNode = new DummyNode<T>(this);
-        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-        readLock = lock.readLock();
-        writeLock = lock.writeLock();
         clear();
     }
 
