@@ -12,8 +12,8 @@ public class BillingHandler {
 	}
 
 	public int pay(Order order) throws PaymentException, StripeException {
-		return paymentService.debit(
-				order.getItems().stream().mapToInt(item -> item.getAmount() * item.getQuantity()).sum());
+		return paymentService
+				.debit(order.getItems().stream().mapToInt(item -> item.getAmount() * item.getQuantity()).sum());
 	}
 
 }
