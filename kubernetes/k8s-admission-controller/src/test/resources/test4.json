@@ -1,0 +1,48 @@
+{
+  "kind": "AdmissionReview",
+  "apiVersion": "admission.k8s.io/v1",
+  "request": {
+    "uid": "26beb334-739a-48d2-b04d-25f6e5e7c106",
+    "kind": {
+      "group": "apps",
+      "version": "v1",
+      "kind": "Deployment"
+    },
+    "resource": {},
+    "f:type": {}
+  },
+  "f:template": {
+    "f:metadata": {
+      "f:labels": {
+        ".": {},
+        "f:app": {}
+      }
+    },
+    "f:spec": {
+      "f:containers": {
+        "k:{\"name\":\"nginx\"}": {
+          ".": {},
+          "f:image": {},
+          "f:imagePullPolicy": {},
+          "f:name": {},
+          "f:ports": {
+            ".": {},
+            "k:{\"containerPort\":80,\"protocol\":\"TCP\"}": {
+              ".": {},
+              "f:containerPort": {},
+              "f:protocol": {}
+            }
+          },
+          "f:resources": {},
+          "f:terminationMessagePath": {},
+          "f:terminationMessagePolicy": {}
+        }
+      },
+      "f:dnsPolicy": {},
+      "f:restartPolicy": {},
+      "f:schedulerName": {},
+      "f:securityContext": {},
+      "f:terminationGracePeriodSeconds": {}
+    }
+  }
+}
