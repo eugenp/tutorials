@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-2</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../parent-boot-2</relativePath>
+	</parent>
+
+	<groupId>org.baeldung</groupId>
+	<artifactId>spring-cassandra</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-cassandra</name>
+	<description>Demo project for Spring Data Cassandra</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-cassandra</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-cassandra</artifactId>
+			<version>${org.springframework.data.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>cassandra</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<java.version>11</java.version>
+		<lombok.version>1.18.20</lombok.version>
+		<org.springframework.data.version>3.1.11</org.springframework.data.version>
+		<testcontainers.version>1.15.3</testcontainers.version>
+	</properties>
+
+</project>
