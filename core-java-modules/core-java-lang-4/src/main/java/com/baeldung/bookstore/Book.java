@@ -1,5 +1,5 @@
-//package com.baeldung;
-package com.baeldung;
+//incorrect package com.baeldung declaration;
+package com.baeldung.bookstore;
 
 public class Book {
 

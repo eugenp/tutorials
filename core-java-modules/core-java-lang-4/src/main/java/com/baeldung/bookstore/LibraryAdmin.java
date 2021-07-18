@@ -11,7 +11,4 @@ public class LibraryAdmin {
 		return new Book(title, author, isbn);
 	}
 	
-	public static void main(String[] args) {
-		System.out.println("running the library admin");
-	}
 }
