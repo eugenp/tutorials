@@ -8,7 +8,7 @@ import com.baeldung.hexagonal.service.PaymentService;
 import com.stripe.exception.StripeException;
 
 public class BillingHandlerTest {
-	public void payTest() throws PaymentException, StripeException {
+	public void whenPay_thenSuccess() throws PaymentException, StripeException {
 		PaymentService mockPay = Mockito.mock(PaymentService.class);
 		Mockito.when(mockPay.debit(Mockito.any())).then(x -> 100);
 		BillingHandler billing = new BillingHandler(mockPay);
