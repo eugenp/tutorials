@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="exampleDAO" class="com.baeldung.beaninjection.ExampleDAOBean">
+		<constructor-arg index="0" type="java.lang.String"
+			value="Mandatory DAO Property X" />
+	</bean>
+
+	<bean id="anotherSampleDAO" class="com.baeldung.beaninjection.AnotherSampleDAOBean">
+		<constructor-arg index="0" type="java.lang.String"
+			value="Mandatory DAO Property Y" />
+	</bean>
+
+	<bean id="exampleService" class="com.baeldung.beaninjection.ExampleServiceBean">
+		<constructor-arg index="0" ref="exampleDAO" />
+		<property name="propertyX" value="Some Service Property X"></property>
+		<property name="anotherSampleDAO" ref="anotherSampleDAO"></property>
+	</bean>
+
+</beans>

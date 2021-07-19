@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- Spring IO Platform is the parent of the generated application to be able to use Spring Boot and all its default configuration -->
+    <!-- Spring IO Platform is the parent of the generated application to be able to use Spring Boot
+        and all its default configuration -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>roo</artifactId>
+    <artifactId>spring-roo</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <name>roo</name>
+    <name>spring-roo</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -27,40 +29,33 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
         <!-- Spring Roo annotations -->
         <dependency>
             <groupId>org.springframework.roo</groupId>
             <artifactId>org.springframework.roo.annotations</artifactId>
             <type>pom</type>
         </dependency>
-
         <!-- AspectJ dependencies -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
         </dependency>
-
         <!-- Common Dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-
         <!-- Test utils dependencies -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
         </dependency>
-
         <!-- Dependencies added by Spring Roo -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -235,10 +230,14 @@
             <groupId>org.webjars.bower</groupId>
             <artifactId>ie10-viewport-bug-workaround</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.olap4j</groupId>
+            <artifactId>olap4j</artifactId>
+            <version>${olap4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -368,7 +367,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -398,23 +396,11 @@
     </build>
 
     <repositories>
-        <!-- Maven Snapshots Repository -->
-        <repository>
-            <id>maven-snapshot-repository</id>
-            <name>Maven Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
         <!-- Spring Roo repository -->
         <repository>
             <id>spring-roo-repository</id>
             <name>Spring Roo Repository</name>
-            <url>http://repo.spring.io/spring-roo</url>
+            <url>https://repo.spring.io/spring-roo</url>
         </repository>
     </repositories>
 
@@ -428,7 +414,6 @@
                 <type>pom</type>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>io.springlets</groupId>
                 <artifactId>springlets-data-jpa</artifactId>
@@ -604,14 +589,12 @@
     </dependencyManagement>
 
     <properties>
-        <roo.version>2.0.0.RC1</roo.version>
+        <roo.version>2.0.0.RELEASE</roo.version>
         <java.product.version>8</java.product.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.plugin.version>1.8</aspectj.plugin.version>
         <asciidoclet.version>1.5.4</asciidoclet.version>
-        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
-        <java.version>1.8</java.version>
-        <springlets.version>1.2.0.RC1</springlets.version>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <springlets.version>1.2.0.RELEASE</springlets.version>
         <tracee.version>1.1.2</tracee.version>
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
@@ -641,6 +624,7 @@
         <html5shiv.version>3.7.3</html5shiv.version>
         <bootstrap.ie10-viewport-bug-workaround.version>1.0.3</bootstrap.ie10-viewport-bug-workaround.version>
         <querydsl-processor.version>2.0.0.RELEASE</querydsl-processor.version>
+        <olap4j.version>1.2.0</olap4j.version>
     </properties>
 
 </project>

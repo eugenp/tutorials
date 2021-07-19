@@ -9,7 +9,7 @@
 
     <context:property-placeholder location="classpath:foo.properties"/>
 
-    <bean id="componentInXmlUsingProperties" class="org.baeldung.properties.core.ComponentInXmlUsingProperties">
+    <bean id="componentInXmlUsingProperties" class="com.baeldung.properties.core.ComponentInXmlUsingProperties">
         <constructor-arg value="${key.something}"/>
     </bean>
 

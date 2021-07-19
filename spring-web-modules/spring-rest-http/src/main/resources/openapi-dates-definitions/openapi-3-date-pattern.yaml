@@ -1,0 +1,36 @@
+openapi: 3.0.1
+info:
+  title: API Title
+  description: This is a sample API.
+  version: 1.0.0
+servers:
+  - url: https://host/
+paths:
+  /users:
+    get:
+      summary: Get Users
+      operationId: getUsers
+      responses:
+        200:
+          description: Valid input
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        customDate:
+          type: string
+          pattern: '^\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$'
+          description: Custom date
+          example: "20210130"
+        username:
+          type: string

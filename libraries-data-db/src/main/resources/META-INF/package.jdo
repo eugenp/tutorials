@@ -1,0 +1,29 @@
+<jdo xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdo http://xmlns.jcp.org/xml/ns/jdo/jdo_3_1.xsd"
+    version="3.1">
+    <package name="com.baeldung.libraries.jdo.xml">
+        <class name="Person" detachable="true" schema="/myproduct/people"
+            table="person">
+            <field name="personNum">
+                <extension vendor-name="datanucleus" key="XmlAttribute"
+                    value="true" />
+            </field>
+            <field name="firstName" primary-key="true" /> <!-- PK since JAXB requires String -->
+            <field name="lastName" />
+            <field name="phoneNumbers">
+                <collection element-type="java.lang.String" />
+                <element column="phoneNumber" />
+            </field>
+        </class>
+    </package>
+    <package name="com.baeldung.libraries.jdo.query">
+        <class name="ProductItem" detachable="true" table="product_item">
+ 
+            <query name="PriceBelow10" language="javax.jdo.query.SQL">
+            <![CDATA[SELECT * FROM PRODUCT_ITEM WHERE PRICE < 10
+            ]]></query>
+ 
+        </class>
+    </package>
+
+</jdo>

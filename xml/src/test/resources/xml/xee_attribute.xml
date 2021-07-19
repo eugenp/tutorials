@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE notification [     
+ <!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+<notification id="5">
+	<bad_entry>&xxe;
+	</bad_entry>
+	<to customer="true">john@email.com</to>
+	<from>mary@email.com</from>
+</notification>

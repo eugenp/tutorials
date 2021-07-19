@@ -1,11 +1,12 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>checker-plugin</artifactId>
-    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>checker-plugin</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -42,27 +43,6 @@
     <build>
         <plugins>
             <plugin>
-                <!-- This plugin will set properties values using dependency information -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <!--
-                            Goal that sets a property pointing to the artifact file for each project dependency.
-                            For each dependency (direct and transitive) a project property will be set which
-                            follows the:
-
-                               groupId:artifactId:type:[classifier]
-
-                            form and contains the path to the resolved artifact. -->
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
@@ -87,13 +67,9 @@
 
                         <!-- location of the annotated JDK, which comes from a Maven dependency -->
                         <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
-                        <!--
-                        -->
-
+                        <!-- -->
                         <!-- Uncomment the following line to use the type annotations compiler. -->
-                        <!--
-                        <arg>-J-Xbootclasspath/p:${typeAnnotationsJavac}</arg>
-                        -->
+                        <!-- <arg>-J-Xbootclasspath/p:${typeAnnotationsJavac}</arg> -->
                         <!-- Uncomment the following line to turn type-checking warnings into errors. -->
                         <arg>-Awarns</arg>
                     </compilerArgs>
@@ -106,9 +82,7 @@
         <!-- These properties will be set by the Maven Dependency plugin -->
         <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
         <!-- Uncomment to use the Type Annotations compiler. -->
-        <!--
-        <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac>
-        -->
+        <!-- <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac> -->
         <checker-qual.version>2.3.1</checker-qual.version>
         <checker.version>2.3.1</checker.version>
         <jdk8.version>2.3.1</jdk8.version>

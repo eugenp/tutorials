@@ -1,0 +1,11 @@
+#book:
+#  service:
+#    url: http://localhost:9561
+
+books-service:
+  ribbon:
+    listOfServers: http://localhost:9561
+
+eureka:
+  client:
+    enabled: false

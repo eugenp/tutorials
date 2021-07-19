@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lists Utility Class in Thymeleaf</title>
+</head>
+<body>
+myList contains red: <span th:text="${#lists.contains(myList, 'red')}"/>
+
+myList contains red and green: <span th:text='${#lists.containsAll(myList, {"red", "green"})}'/>
+</body>
+</html>

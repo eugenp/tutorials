@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-5.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="{noop}user" authorities="ROLE_USER"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <security:http pattern="/**" use-expressions="true" auto-config="true">
+        <security:intercept-url pattern="/loginUser" access="permitAll"/>
+        <security:intercept-url pattern="/user*" access="hasRole('ROLE_USER')"/>
+
+        <security:form-login login-page="/loginUser"
+                             login-processing-url="/user_login"
+                             authentication-failure-url="/loginUser?error=loginError"
+                             default-target-url="/userMainPage"/>
+        <security:csrf disabled="true"/>
+        <security:logout logout-url="/user_logout" delete-cookies="JSESSIONID" logout-success-url="/loginUser"/>
+
+
+        <security:custom-filter after="BASIC_AUTH_FILTER" ref="loginPageFilter"/>
+    </security:http>
+
+    <beans:bean id="loginPageFilter" class="com.baeldung.loginredirect.LoginPageFilter"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/loginUser"/>
+            <bean class="com.baeldung.loginredirect.LoginPageInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

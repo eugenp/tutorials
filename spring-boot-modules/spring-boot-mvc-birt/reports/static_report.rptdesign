@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <text-property name="title">Sample Report</text-property>
+    <page-setup>
+        <simple-master-page name="Page Master" id="2"/>
+    </page-setup>
+    <body>
+        <grid id="3">
+            <property name="width">100%</property>
+            <column id="4"/>
+            <column id="5"/>
+            <row id="6">
+                <cell id="7">
+                    <image id="9">
+                        <property name="source">url</property>
+                        <expression name="uri">"https://www.baeldung.com/wp-content/themes/baeldung/favicon/favicon-96x96.png"</expression>
+                    </image>
+                </cell>
+                <cell id="8">
+                    <label id="10">
+                        <text-property name="text">Hello, Baeldung world!</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

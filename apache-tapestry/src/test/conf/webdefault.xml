@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app
+        xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+        version="2.4">
+
+    <description>
+        Default web.xml file.
+        This file is applied to a Web application before it's own WEB_INF/web.xml file
+    </description>
+
+
+    <!-- ==================================================================== -->
+    <!-- Context params to control Session Cookies                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <!-- UNCOMMENT TO ACTIVATE
+    <context-param>
+      <param-name>org.mortbay.jetty.servlet.SessionDomain</param-name>
+      <param-value>127.0.0.1</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>org.mortbay.jetty.servlet.SessionPath</param-name>
+      <param-value>/</param-value>
+    </context-param>
+
+    <context-param>
+      <param-name>org.mortbay.jetty.servlet.MaxAge</param-name>
+      <param-value>-1</param-value>
+    </context-param>
+    -->
+
+
+    <!-- ==================================================================== -->
+    <!-- The default servlet.                                                 -->
+    <!-- This servlet, normally mapped to /, provides the handling for static -->
+    <!-- content, OPTIONS and TRACE methods for the context.                  -->
+    <!-- The following initParameters are supported:                          -->
+    <!--                                                                      -->
+    <!--   acceptRanges     If true, range requests and responses are         -->
+    <!--                    supported                                         -->
+    <!--                                                                      -->
+    <!--   dirAllowed       If true, directory listings are returned if no    -->
+    <!--                    welcome file is found. Else 403 Forbidden.        -->
+    <!--                                                                      -->
+    <!--   putAllowed       If true, the PUT method is allowed                -->
+    <!--                                                                      -->
+    <!--   delAllowed       If true, the DELETE method is allowed             -->
+    <!--                                                                      -->
+    <!--   redirectWelcome  If true, redirect welcome file requests           -->
+    <!--                    else use request dispatcher forwards              -->
+    <!--                                                                      -->
+    <!--   minGzipLength    If set to a positive integer, then static content -->
+    <!--                    larger than this will be served as gzip content   -->
+    <!--                    encoded if a matching resource is found ending    -->
+    <!--                    with ".gz"                                        -->
+    <!--                                                                      -->
+    <!--   resoureBase      Can be set to replace the context resource base   -->
+    <!--                                                                      -->
+    <!--   relativeResourceBase                                               -->
+    <!--                    Set with a pathname relative to the base of the   -->
+    <!--                    servlet context root. Useful for only serving     -->
+    <!--                    static content from only specific subdirectories. -->
+    <!--                                                                      -->
+    <!-- The MOVE method is allowed if PUT and DELETE are allowed             -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.mortbay.jetty.servlet.Default</servlet-class>
+        <init-param>
+            <param-name>acceptRanges</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dirAllowed</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>putAllowed</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>delAllowed</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>redirectWelcome</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>minGzipLength</param-name>
+            <param-value>8192</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- ==================================================================== -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+
+    <!-- ==================================================================== -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+    </welcome-file-list>
+
+    <!-- ==================================================================== -->
+    <locale-encoding-mapping-list>
+        <locale-encoding-mapping>
+            <locale>ar</locale>
+            <encoding>ISO-8859-6</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>be</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>bg</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>ca</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>cs</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>da</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>de</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>el</locale>
+            <encoding>ISO-8859-7</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>en</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>es</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>et</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>fi</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>fr</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>hr</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>hu</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>is</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>it</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>iw</locale>
+            <encoding>ISO-8859-8</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>ja</locale>
+            <encoding>Shift_JIS</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>ko</locale>
+            <encoding>EUC-KR</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>lt</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>lv</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>mk</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>nl</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>no</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>pl</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>pt</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>ro</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>ru</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>sh</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>sk</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>sl</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>sq</locale>
+            <encoding>ISO-8859-2</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>sr</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>sv</locale>
+            <encoding>ISO-8859-1</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>tr</locale>
+            <encoding>ISO-8859-9</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>uk</locale>
+            <encoding>ISO-8859-5</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>zh</locale>
+            <encoding>GB2312</encoding>
+        </locale-encoding-mapping>
+        <locale-encoding-mapping>
+            <locale>zh_TW</locale>
+            <encoding>Big5</encoding>
+        </locale-encoding-mapping>
+    </locale-encoding-mapping-list>
+
+
+</web-app>
+

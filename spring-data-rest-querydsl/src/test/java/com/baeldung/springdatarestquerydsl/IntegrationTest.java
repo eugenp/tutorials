@@ -13,8 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.nio.charset.Charset;
-
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IntegrationTest {
 
     final MediaType contentType =
-            new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+            new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype());
 
     @Autowired private WebApplicationContext webApplicationContext;
 
@@ -36,17 +34,17 @@ public class IntegrationTest {
 
     @Test public void givenRequestHasBeenMade_whenQueryOverNameAttribute_thenGetJohn() throws Exception {
         // Get John
-        mockMvc.perform(get("/personQuery?name=John")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
+        mockMvc.perform(get("/users?name=John")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].name", is("John")))
                 .andExpect(jsonPath("$[0].address.address", is("Fake Street 1")))
-                .andExpect(jsonPath("$[0].address.country", is("Fake Country")));
+                .andExpect(jsonPath("$[0].address.country", is("Spain")));
     }
 
     @Test public void givenRequestHasBeenMade_whenQueryOverNameAttribute_thenGetLisa() throws Exception {
         // Get Lisa
-        mockMvc.perform(get("/personQuery?name=Lisa")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
+        mockMvc.perform(get("/users?name=Lisa")).andExpect(status().isOk()).andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$", hasSize(1))).andExpect(jsonPath("$[0].name", is("Lisa")))
                 .andExpect(jsonPath("$[0].address.address", is("Real Street 1")))
-                .andExpect(jsonPath("$[0].address.country", is("Real Country")));
+                .andExpect(jsonPath("$[0].address.country", is("Germany")));
     }
 }

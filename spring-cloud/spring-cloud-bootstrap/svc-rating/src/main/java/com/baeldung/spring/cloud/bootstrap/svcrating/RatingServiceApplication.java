@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
@@ -52,7 +53,7 @@ public class RatingServiceApplication {
                 InstanceInfo instance = eurekaClient.getNextServerFromEureka("zipkin", false);
                 if (!(baseUrl != null && instance.getHomePageUrl().equals(baseUrl))) {
                     baseUrl = instance.getHomePageUrl();
-                    delegate = new HttpZipkinSpanReporter(baseUrl, zipkinProperties.getFlushInterval(), zipkinProperties.getCompression().isEnabled(), spanMetricReporter);
+                    delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
                     if (!span.name.matches(skipPattern)) delegate.report(span);
                 }
                 if (!span.name.matches(skipPattern)) delegate.report(span);

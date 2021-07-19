@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration xmlns:xi="http://www.w3.org/2001/XInclude"
-    status="WARN">
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" 
+    packages="com.baeldung" status="WARN">
     <Appenders>
         <xi:include
             href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
-            <PatternLayout
-                pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable" />
+            <PatternLayout pattern="%style{%date{DEFAULT}}{yellow} %highlight{%-5level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green} %message"/>
         </Console>
         <Console name="ConsoleRedAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%style{%message}{red}%n" />
@@ -50,6 +49,13 @@
                     size="17 kB" />
             </Policies>
         </RollingFile>
+        <MapAppender name="MapAppender"/>
+        <Console name="DockerConsoleLogger" target="SYSTEM_OUT">
+            <PatternLayout pattern="%pid %docker" />
+        </Console>
+        <Kafka2 name="KafkaLogger" ip ="127.0.0.1" port="9010" topic="log" partition="p-1">
+            <PatternLayout pattern="%pid%style{%message}{red}%n" />
+        </Kafka2>
     </Appenders>
     <Loggers>
         <Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE"
@@ -80,8 +86,12 @@
             additivity="false">
             <AppenderRef ref="ConsoleJSONAppender" />
         </Logger>
+        <Logger name="com.baeldung.logging.log4j2.plugins" level="INFO">
+            <AppenderRef ref="KafkaLogger" />
+        </Logger>
         <Root level="DEBUG">
             <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="MapAppender" />
         </Root>
     </Loggers>
 </Configuration>

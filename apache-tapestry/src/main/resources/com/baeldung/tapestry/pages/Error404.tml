@@ -1,0 +1,11 @@
+<html t:type="layout" title="Not found apache-tapestry"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <div class="row">
+        <div class="span12">
+            <h1>Requested page not found!</h1>
+        </div>
+    </div>
+
+</html>

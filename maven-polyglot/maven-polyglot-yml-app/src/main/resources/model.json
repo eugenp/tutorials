@@ -1,0 +1,109 @@
+{
+  "modules": [],
+  "distributionManagement": null,
+  "properties": {
+    "project.reporting.outputEncoding": "UTF-8",
+    "java.version": "1.8",
+    "maven.compiler.source": "1.8",
+    "project.build.sourceEncoding": "UTF-8",
+    "maven.compiler.target": "1.8"
+  },
+  "dependencyManagement": null,
+  "dependencies": [
+    {
+      "groupId": "org.springframework.boot",
+      "artifactId": "spring-boot-starter-web",
+      "version": null,
+      "type": "jar",
+      "classifier": null,
+      "scope": null,
+      "systemPath": null,
+      "exclusions": [],
+      "optional": null,
+      "managementKey": "org.springframework.boot:spring-boot-starter-web:jar"
+    }
+  ],
+  "repositories": [],
+  "pluginRepositories": [],
+  "reports": null,
+  "reporting": null,
+  "modelVersion": "4.0.0",
+  "parent": {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-parent",
+    "version": "2.0.5.RELEASE",
+    "relativePath": "",
+    "id": "org.springframework.boot:spring-boot-starter-parent:pom:2.0.5.RELEASE"
+  },
+  "groupId": "com.demo.polyglot",
+  "artifactId": "maven-polyglot-app",
+  "version": "1.0.1",
+  "packaging": "jar",
+  "name": "Json Maven Polyglot",
+  "description": null,
+  "url": null,
+  "inceptionYear": null,
+  "organization": null,
+  "licenses": [],
+  "developers": [],
+  "contributors": [],
+  "mailingLists": [],
+  "prerequisites": null,
+  "scm": null,
+  "issueManagement": null,
+  "ciManagement": null,
+  "build": {
+    "plugins": [
+      {
+        "inherited": null,
+        "configuration": null,
+        "inheritanceApplied": true,
+        "groupId": "org.liquibase",
+        "artifactId": "liquibase-maven-plugin",
+        "version": "3.0.5",
+        "extensions": null,
+        "executions": [],
+        "dependencies": [],
+        "goals": null,
+        "key": "org.liquibase:liquibase-maven-plugin",
+        "id": "org.liquibase:liquibase-maven-plugin:3.0.5",
+        "executionsAsMap": {}
+      }
+    ],
+    "pluginManagement": null,
+    "defaultGoal": null,
+    "resources": [],
+    "testResources": [],
+    "directory": null,
+    "finalName": null,
+    "filters": [],
+    "sourceDirectory": null,
+    "scriptSourceDirectory": null,
+    "testSourceDirectory": null,
+    "outputDirectory": null,
+    "testOutputDirectory": null,
+    "extensions": [],
+    "pluginsAsMap": {
+      "org.liquibase:liquibase-maven-plugin": {
+        "inherited": null,
+        "configuration": null,
+        "inheritanceApplied": true,
+        "groupId": "org.liquibase",
+        "artifactId": "liquibase-maven-plugin",
+        "version": "3.0.5",
+        "extensions": null,
+        "executions": [],
+        "dependencies": [],
+        "goals": null,
+        "key": "org.liquibase:liquibase-maven-plugin",
+        "id": "org.liquibase:liquibase-maven-plugin:3.0.5",
+        "executionsAsMap": {}
+      }
+    }
+  },
+  "profiles": [],
+  "modelEncoding": "UTF-8",
+  "pomFile": null,
+  "id": "com.demo.polyglot:maven-polyglot-app:jar:1.0.1",
+  "projectDirectory": null
+}

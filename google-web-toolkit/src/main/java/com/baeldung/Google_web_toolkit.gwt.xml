@@ -22,6 +22,8 @@
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.baeldung.client.Google_web_toolkit'/>
 
+  <set-property name="user.agent" value="gecko1_8"/>
+
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>

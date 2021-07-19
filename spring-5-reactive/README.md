@@ -1,20 +1,17 @@
-## Spring REST Example Project
+## Spring 5 Reactive Project
+
+This module contains articles about reactive Spring 5 
 
 ### The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+The "REST With Spring" Classes: https://bit.ly/restwithspring
 
 ### Relevant Articles
 
-- [Concurrent Test Execution in Spring 5](http://www.baeldung.com/spring-5-concurrent-tests)
-- [Introduction to the Functional Web Framework in Spring 5](http://www.baeldung.com/spring-5-functional-web)
-- [Exploring the Spring 5 MVC URL Matching Improvements](http://www.baeldung.com/spring-5-mvc-url-matching)
-- [Spring 5 WebClient](http://www.baeldung.com/spring-5-webclient)
-- [Spring 5 Functional Bean Registration](http://www.baeldung.com/spring-5-functional-beans)
-- [The SpringJUnitConfig and SpringJUnitWebConfig Annotations in Spring 5](http://www.baeldung.com/spring-5-junit-config)
-- [Spring Security 5 for Reactive Applications](http://www.baeldung.com/spring-security-5-reactive)
-- [Spring 5 Testing with @EnabledIf Annotation](https://github.com/eugenp/tutorials/tree/master/spring-5)
-- [Reactive WebSockets with Spring 5](http://www.baeldung.com/spring-5-reactive-websockets)
-- [Spring Boot Actuator](http://www.baeldung.com/spring-boot-actuators)
-- [Spring Webflux Filters](http://www.baeldung.com/spring-webflux-filters)
-- [Reactive Flow with MongoDB, Kotlin, and Spring WebFlux](http://www.baeldung.com/kotlin-mongodb-spring-webflux)
-- [Spring Data Reactive Repositories with MongoDB](http://www.baeldung.com/spring-data-mongodb-reactive)
+- [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
+- [Exploring the Spring 5 WebFlux URL Matching](https://www.baeldung.com/spring-5-mvc-url-matching)
+- [Reactive WebSockets with Spring 5](https://www.baeldung.com/spring-5-reactive-websockets)
+- [Spring Webflux Filters](https://www.baeldung.com/spring-webflux-filters)
+- [How to Set a Header on a Response with Spring 5](https://www.baeldung.com/spring-response-header)
+- [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
+- [A Guide to Spring Session Reactive Support: WebSession](https://www.baeldung.com/spring-session-reactive)
+- More articles: [[next -->]](/spring-5-reactive-2)

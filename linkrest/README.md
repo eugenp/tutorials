@@ -1,3 +1,7 @@
-## Relevant articles:
+## LinkRest
 
-- [Guide to LinkRest](http://www.baeldung.com/linkrest)
+This module contains articles about LinkRest.
+
+### Relevant articles:
+
+- [Guide to LinkRest](https://www.baeldung.com/linkrest)

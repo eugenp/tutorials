@@ -1,0 +1,52 @@
+apply plugin: "com.google.cloud.tools.jib"
+
+jib {
+    from {
+        image = project.baseDockerImage
+    }
+    to {
+        image = "${project.group}/${project.name}"
+        /**
+         ecr-login: Amazon Elastic Container Registry (ECR)
+         gcr: Google Container Registry (GCR)
+         osxkeychain: Docker Hub
+         */
+        credHelper = "osxkeychain"
+        /**
+        auth {
+            username = "*******"
+            password = "*******"
+        }
+        tags = [casServerVersion]
+        */
+    }
+    container {
+        useCurrentTimestamp = true
+        entrypoint = ['docker/entrypoint.sh']
+        ports = ['80', '443', '8080', '8443']
+        labels = [version:casServerVersion, name:project.name, group:project.group]
+    }
+    extraDirectories {
+        paths = 'src/main/jib'
+        permissions = [
+            '/docker/entrypoint.sh': '755'
+        ]
+    }
+    allowInsecureRegistries = project.allowInsecureRegistries
+}
+
+task copyWebAppIntoJib(type: Copy, group: "Docker", description: "Copy the web application into Docker image") {
+    dependsOn build
+    from "build/libs/${casWebApplicationBinaryName}"
+    into "src/main/jib/docker/cas/war"
+}
+
+task copyConfigIntoJib(type: Copy, group: "Docker", description: "Copy the CAS configuration into Docker image") {
+    dependsOn build
+    from "etc/cas"
+    into "src/main/jib/docker/cas"
+}
+
+task deleteWebAppFromJib(type: Delete, group: "Docker", description: "Explodes the CAS web application archive") {
+    delete "src/main/jib/docker/cas"
+}

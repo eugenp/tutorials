@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" strict="true" name="SLF4JTests">
+
+  <Appenders>
+    <Appender type="Console" name="STDOUT" />
+    <Appender type="List" name="ListAppender" />
+  </Appenders>
+ 
+  <Loggers>
+    <Logger name="com.stackify" level="trace" additivity="false">
+      <AppenderRef ref="ListAppender"/>
+    </Logger>
+ 
+    <Root level="trace">
+      <AppenderRef ref="STDOUT"/>
+    </Root>
+  </Loggers>
+</Configuration>

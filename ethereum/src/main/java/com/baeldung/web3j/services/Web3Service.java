@@ -47,47 +47,47 @@ public class Web3Service {
         return "0x" + binary;
     }
 
-    public CompletableFuture<EthBlockNumber> getBlockNumber() {
+    public EthBlockNumber getBlockNumber() {
         EthBlockNumber result = new EthBlockNumber();
         try {
             result = this.web3j.ethBlockNumber().sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
-        return CompletableFuture.completedFuture(result);
+        return result;
     }
 
-    public CompletableFuture<EthAccounts> getEthAccounts() {
+    public EthAccounts getEthAccounts() {
         EthAccounts result = new EthAccounts();
         try {
              result = this.web3j.ethAccounts().sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
-        return CompletableFuture.completedFuture(result);
+        return result;
     }
 
-    public CompletableFuture<EthGetTransactionCount> getTransactionCount() {
+    public EthGetTransactionCount getTransactionCount() {
         EthGetTransactionCount result = new EthGetTransactionCount();
         try {
              result = this.web3j.ethGetTransactionCount(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
-        return CompletableFuture.completedFuture(result);
+        return result;
     }
 
-    public CompletableFuture<EthGetBalance> getEthBalance() {
+    public EthGetBalance getEthBalance() {
         EthGetBalance result = new EthGetBalance();
         try {
             result = this.web3j.ethGetBalance(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
-        return CompletableFuture.completedFuture(result);
+        return result;
     }
 
-    public CompletableFuture<String> fromScratchContractExample() {
+    public String fromScratchContractExample() {
 
         String contractAddress = "";
 
@@ -108,13 +108,13 @@ public class Web3Service {
 
         } catch (Exception ex) {
             System.out.println(PLEASE_SUPPLY_REAL_DATA);
-            return CompletableFuture.completedFuture(PLEASE_SUPPLY_REAL_DATA);
+            return PLEASE_SUPPLY_REAL_DATA;
         }
-        return CompletableFuture.completedFuture(contractAddress);
+        return contractAddress;
     }
 
     @Async
-    public CompletableFuture<String> sendTx() {
+    public String sendTx() {
         String transactionHash = "";
 
         try {
@@ -135,10 +135,10 @@ public class Web3Service {
 
         } catch (Exception ex) {
             System.out.println(PLEASE_SUPPLY_REAL_DATA);
-            return CompletableFuture.completedFuture(PLEASE_SUPPLY_REAL_DATA);
+            return PLEASE_SUPPLY_REAL_DATA;
         }
 
-        return CompletableFuture.completedFuture(transactionHash);
+        return transactionHash;
     }
 }
 

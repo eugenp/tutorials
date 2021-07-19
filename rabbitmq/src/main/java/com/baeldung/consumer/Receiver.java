@@ -17,7 +17,7 @@ public class Receiver {
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-        Consumer consumer = new DefaultConsumer(channel) {
+        DefaultConsumer consumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag,
                                        Envelope envelope, AMQP.BasicProperties properties,

@@ -1,8 +1,12 @@
 package com.baeldung.metrics.micrometer;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
+import static org.assertj.core.api.Assertions.withinPercentage;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.collection.IsMapContaining.hasEntry;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import io.micrometer.atlas.AtlasMeterRegistry;
@@ -31,8 +35,10 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import org.assertj.core.data.Percentage;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import com.netflix.spectator.atlas.AtlasConfig;
 
@@ -156,7 +162,8 @@ public class MicrometerAtlasIntegrationTest {
         timer.record(30, TimeUnit.MILLISECONDS);
 
         assertTrue(2 == timer.count());
-        assertTrue(50 > timer.totalTime(TimeUnit.MILLISECONDS) && 45 <= timer.totalTime(TimeUnit.MILLISECONDS));
+        
+        assertThat(timer.totalTime(TimeUnit.MILLISECONDS)).isBetween(40.0, 55.0);
     }
 
     @Test
@@ -173,7 +180,7 @@ public class MicrometerAtlasIntegrationTest {
         }
         long timeElapsed = longTaskTimer.stop(currentTaskId);
 
-        assertTrue(timeElapsed / (int) 1e6 == 2);
+        assertEquals(2L, timeElapsed/((int) 1e6),1L);
     }
 
     @Test

@@ -1,0 +1,14 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Upload Files MongoDB</title>
+</head>
+<body>
+	<h1>Home Page</h1>
+	<div th:if="${message != null}" th:text="${message}">Message</div>
+	<br/>
+	<a href="/photos/upload">Upload new Photo</a>
+	<br/><br/>
+	<a href="/videos/upload">Upload new Video</a>	
+</body>
+</html>

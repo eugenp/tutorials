@@ -1,5 +1,7 @@
 package com.baeldung.spring.cloud.connectors.heroku.book;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,7 @@ public class BookController {
     }
 
     @GetMapping("/{bookId}")
-    public Book findBook(@PathVariable Long bookId) {
+    public Optional<Book> findBook(@PathVariable Long bookId) {
         return bookService.findBookById(bookId);
     }
 

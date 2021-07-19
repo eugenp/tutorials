@@ -1,0 +1,180 @@
+{
+    "info": {
+        "_postman_id": "9989b5be-13ba-4d22-8e43-d05dbf628e58",
+        "name": "foo API test",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "add a foo",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "a01534dc-6fc7-4c54-ba1d-6bcf311e5836",
+                        "exec": [
+                            "pm.test(\"success status\", () => pm.response.to.be.success );",
+                            "",
+                            "pm.test(\"name is correct\", () => ",
+                            "    pm.expect(pm.response.json().name).to.equal(\"Transformers\"));",
+                            "",
+                            "pm.test(\"id was assigned\", () => ",
+                            "    pm.expect(pm.response.json().id).to.be.not.null );",
+                            "",
+                            "pm.variables.set(\"id\", pm.response.json().id);"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Transformers\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/spring-boot-rest/foos",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "spring-boot-rest",
+                        "foos"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "get a foo",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "03de440c-b483-4ab8-a11a-d0c99b349963",
+                        "exec": [
+                            "pm.test(\"success status\", () => pm.response.to.be.success );",
+                            "",
+                            "pm.test(\"name is correct\", () => ",
+                            "    pm.expect(pm.response.json().name).to.equal(\"Transformers\"));",
+                            "",
+                            "pm.test(\"id is correct\", () => ",
+                            "    pm.expect(pm.response.json().id).to.equal(pm.variables.get(\"id\")) );"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://localhost:8080/spring-boot-rest/foos/{{id}}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "spring-boot-rest",
+                        "foos",
+                        "{{id}}"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "delete a foo",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "74c1bb0f-c06c-48b1-a545-459233541b14",
+                        "exec": [
+                            "pm.test(\"success status\", () => pm.response.to.be.success );"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://localhost:8080/spring-boot-rest/foos/{{id}}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "spring-boot-rest",
+                        "foos",
+                        "{{id}}"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "verify delete",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "id": "03de440c-b483-4ab8-a11a-d0c99b349963",
+                        "exec": [
+                            "pm.test(\"status is 500\", () => pm.response.to.have.status(500) );",
+                            "",
+                            "pm.test(\"no value present\", () => ",
+                            "    pm.expect(pm.response.json().cause).to.equal(\"No value present\"));"
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "http://localhost:8080/spring-boot-rest/foos/{{id}}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "spring-boot-rest",
+                        "foos",
+                        "{{id}}"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

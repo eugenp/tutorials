@@ -1,5 +1,0 @@
-# text files detection
-* text=auto
-
-# unix end of lines forcing for text files
-* text eol=lf

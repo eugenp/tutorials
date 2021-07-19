@@ -1,4 +1,8 @@
-## Relevant articles:
+## Dubbo
 
-- [Introduction to Dubbo](http://www.baeldung.com/dubbo)
+This module contains articles about Dubbo
+
+### Relevant articles:
+
+- [Introduction to Dubbo](https://www.baeldung.com/dubbo)
 

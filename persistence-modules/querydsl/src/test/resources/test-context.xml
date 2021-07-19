@@ -13,7 +13,7 @@
         >
 
     <tx:annotation-driven />
-    <context:component-scan base-package="org.baeldung" />
+    <context:component-scan base-package="com.baeldung" />
 
     <import resource="test-db.xml" />
 

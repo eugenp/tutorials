@@ -1,3 +1,0 @@
-{id:"1", name="John", isEmployed: "true"}
-{id:"1", name="Anna", isEmployed: "false"}
-{id:"1", name="George", isEmployed: "true"}

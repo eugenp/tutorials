@@ -1,3 +1,7 @@
-## Relevant articles:
+## Atomix
 
-- [Introduction to Atomix](http://www.baeldung.com/atomix)
+This module contains articles about Atomix
+
+### Relevant articles:
+
+- [Introduction to Atomix](https://www.baeldung.com/atomix)

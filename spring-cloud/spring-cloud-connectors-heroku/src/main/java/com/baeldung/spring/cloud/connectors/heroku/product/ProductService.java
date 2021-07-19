@@ -1,5 +1,7 @@
 package com.baeldung.spring.cloud.connectors.heroku.product;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,8 +17,8 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public Product findProductById(Long productId) {
-        return productRepository.findOne(productId);
+    public Optional<Product> findProductById(Long productId) {
+        return productRepository.findById(productId);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

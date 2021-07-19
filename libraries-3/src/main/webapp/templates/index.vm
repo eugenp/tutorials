@@ -1,0 +1,9 @@
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<h1>Takes Web Application</h1>
+<h2>Welcome, ${username}</h2>
+</body>
+</html>

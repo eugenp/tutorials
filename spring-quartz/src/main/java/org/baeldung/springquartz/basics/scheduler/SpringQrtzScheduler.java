@@ -1,6 +1,7 @@
 package org.baeldung.springquartz.basics.scheduler;
 
 import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
 import org.baeldung.springquartz.config.AutoWiringSpringBeanJobFactory;
 import org.quartz.JobDetail;
@@ -9,7 +10,11 @@ import org.quartz.Trigger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +25,7 @@ import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
 @Configuration
+@EnableAutoConfiguration
 @ConditionalOnExpression("'${using.spring.schedulerFactory}'=='true'")
 public class SpringQrtzScheduler {
 
@@ -43,7 +49,7 @@ public class SpringQrtzScheduler {
     }
 
     @Bean
-    public SchedulerFactoryBean scheduler(Trigger trigger, JobDetail job) {
+    public SchedulerFactoryBean scheduler(Trigger trigger, JobDetail job, DataSource quartzDataSource) {
 
         SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
         schedulerFactory.setConfigLocation(new ClassPathResource("quartz.properties"));
@@ -52,6 +58,9 @@ public class SpringQrtzScheduler {
         schedulerFactory.setJobFactory(springBeanJobFactory());
         schedulerFactory.setJobDetails(job);
         schedulerFactory.setTriggers(trigger);
+
+        // Comment the following line to use the default Quartz job store.
+        schedulerFactory.setDataSource(quartzDataSource);
 
         return schedulerFactory;
     }
@@ -81,4 +90,12 @@ public class SpringQrtzScheduler {
         trigger.setName("Qrtz_Trigger");
         return trigger;
     }
+
+    @Bean
+    @QuartzDataSource
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource quartzDataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
 }

@@ -23,6 +23,10 @@ We use [Gulp][] as our build system. Install the Gulp command-line tool globally
 
     yarn global add gulp-cli
 
+Besides that we should download our bower dependencies:
+
+    bower install
+
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
 

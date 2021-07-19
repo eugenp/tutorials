@@ -1,0 +1,21 @@
+plugins{
+    id "nebula.lint" version "16.9.0"
+}
+
+description = "Gradle 5 root project"
+allprojects {
+    apply plugin :"java"
+    apply plugin :"nebula.lint"
+    gradleLint {
+        rules=['unused-dependency']
+        reportFormat = 'text'
+    }
+    group = "com.baeldung"
+    version = "0.0.1"
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+
+    repositories {
+        jcenter()
+    }
+}

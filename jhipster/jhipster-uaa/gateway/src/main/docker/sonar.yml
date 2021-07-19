@@ -1,0 +1,7 @@
+version: '2'
+services:
+    gateway-sonar:
+        image: sonarqube:7.1-alpine
+        ports:
+            - 9001:9000
+            - 9092:9092

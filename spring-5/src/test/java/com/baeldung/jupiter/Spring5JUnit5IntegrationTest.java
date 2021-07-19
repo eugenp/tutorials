@@ -1,6 +1,5 @@
 package com.baeldung.jupiter;
 
-import com.baeldung.web.reactive.Task;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

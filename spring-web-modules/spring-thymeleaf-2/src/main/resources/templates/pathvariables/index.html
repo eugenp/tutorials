@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PathVariables in Thymeleaf</title>
+</head>
+<body>
+    <h3>Items</h3>
+    <div th:each="item : ${items}">
+        <a th:href="@{/pathvars/single/{id}(id = ${item.id})}">
+            <span th:text="${item.name}"></span>
+        </a>
+        <ul>
+            <li th:each="detail : ${item.details}">
+                <a th:href="@{/pathvars/item/{itemId}/detail/{detailId}(itemId = ${item.id}, detailId = ${detail.id})}">
+                    <span th:text="${detail.description}"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

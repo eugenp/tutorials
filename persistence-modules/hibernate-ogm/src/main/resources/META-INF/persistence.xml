@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<!-- MongoDB -->
+	<persistence-unit name="ogm-mongodb" transaction-type="JTA">
+		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+		<properties>
+			<property name="hibernate.ogm.datastore.provider" value="MONGODB" />
+			<property name="hibernate.ogm.datastore.database" value="TestDB" />
+			<property name="hibernate.ogm.datastore.create_database" value="true" />
+		</properties>
+	</persistence-unit>
+	<!-- Neo4j -->
+	<persistence-unit name="ogm-neo4j" transaction-type="JTA">
+		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+		<properties>
+			<property name="hibernate.ogm.datastore.provider" value="NEO4J_EMBEDDED" />
+			<property name="hibernate.ogm.datastore.database" value="TestDB" />
+			<property name="hibernate.ogm.neo4j.database_path" value="target/test_data_dir" />
+		</properties>
+	</persistence-unit>
+</persistence>

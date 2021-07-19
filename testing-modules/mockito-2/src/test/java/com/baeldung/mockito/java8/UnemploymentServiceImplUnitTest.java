@@ -1,19 +1,20 @@
 package com.baeldung.mockito.java8;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Optional;
+import java.util.stream.Stream;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
-import java.util.stream.Stream;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
+@RunWith(MockitoJUnitRunner.class)
 public class UnemploymentServiceImplUnitTest {
     @Mock
     private JobService jobService;
@@ -53,10 +54,5 @@ public class UnemploymentServiceImplUnitTest {
 
         // This will fail when Mockito 1 is used
         assertFalse(unemploymentService.searchJob(person, "").isPresent());
-    }
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
     }
 }

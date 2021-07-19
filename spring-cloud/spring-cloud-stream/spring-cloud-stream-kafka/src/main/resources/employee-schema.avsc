@@ -1,0 +1,29 @@
+{
+	"type": "record",
+	"name": "Employee",
+	"namespace": "com.baeldung.schema",
+	"fields": [
+	{
+		"name": "id",
+		"type": "int"
+	},
+	{
+		"name": "firstName",
+		"type": "string"
+	},
+	{
+		"name": "lastName",
+		"type": "string"
+	},
+	{
+		"name": "department",
+		"type": "string",
+		 "default": "IT "
+	},
+	{
+		"name": "designation",
+		"type": "string",
+		 "default": "Software Engineer"
+	}
+	]
+}

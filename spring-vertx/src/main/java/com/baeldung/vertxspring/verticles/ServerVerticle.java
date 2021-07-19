@@ -1,5 +1,6 @@
 package com.baeldung.vertxspring.verticles;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import io.vertx.core.AbstractVerticle;
@@ -8,6 +9,9 @@ import io.vertx.ext.web.RoutingContext;
 
 @Component
 public class ServerVerticle extends AbstractVerticle {
+
+    @Autowired
+    private Integer defaultPort;
 
     private void getAllArticlesHandler(RoutingContext routingContext) {
         vertx.eventBus()
@@ -36,7 +40,7 @@ public class ServerVerticle extends AbstractVerticle {
 
         vertx.createHttpServer()
             .requestHandler(router::accept)
-            .listen(config().getInteger("http.port", 8080));
+            .listen(config().getInteger("http.port", defaultPort));
     }
 
 }

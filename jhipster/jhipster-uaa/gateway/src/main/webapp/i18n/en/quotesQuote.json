@@ -1,0 +1,28 @@
+
+{
+    "gatewayApp": {
+        "quotesQuote" : {
+            "home": {
+                "title": "Quotes",
+                "createLabel": "Create a new Quote",
+                "createOrEditLabel": "Create or edit a Quote"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Quote {{ id }}?"
+            },
+            "detail": {
+                "title": "Quote"
+            },
+            "symbol": "Symbol",
+            "price": "Price",
+            "lastTrade": "Last Trade"
+        }
+    },
+    "quotesApp": {
+        "quotesQuote" : {
+            "created": "A new Quote is created with identifier {{ param }}",
+            "updated": "A Quote is updated with identifier {{ param }}",
+            "deleted": "A Quote is deleted with identifier {{ param }}"
+        }
+    }
+}

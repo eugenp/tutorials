@@ -1,0 +1,24 @@
+{
+    "register": {
+        "title": "Création de compte utilisateur",
+        "form": {
+            "button": "Enregistrement"
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Votre nom d'utilisateur est obligatoire.",
+                    "minlength": "Votre nom d'utilisateur doit contenir plus d'un caractère.",
+                    "maxlength": "Votre nom d'utilisateur ne peut pas contenir plus de 50 caractères.",
+                    "pattern": "Votre nom d'utilisateur ne peut contenir que des lettres minuscules ou des nombres."
+                }
+            },
+            "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",
+            "error": {
+                "fail": "<strong>Compte non créé !</strong> Merci d'essayer à nouveau plus tard.",
+                "userexists": "<strong>Ce compte utilisateur existe déjà !</strong> Veuillez en choisir un autre.",
+                "emailexists": "<strong>Cet email est déjà utilisé !</strong> Veuillez en choisir un autre."
+            }
+        }
+    }
+}

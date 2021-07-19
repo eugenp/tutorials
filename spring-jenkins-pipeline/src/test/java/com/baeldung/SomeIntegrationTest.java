@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertNotEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {SpringJenkinsPipelineApplication.class, TestMongoConfig.class })
+@SpringBootTest(classes = {SpringJenkinsPipelineApplication.class})
 public class SomeIntegrationTest {
     @Autowired
     private StudentRepository studentRepository;

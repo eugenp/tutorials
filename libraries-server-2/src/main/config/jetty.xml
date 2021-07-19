@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+    <New id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
+        <Set name="keyStorePath">src/main/resources/keystore.jks</Set>
+        <Set name="keyStorePassword">storepwd</Set>
+        <Set name="trustStorePath">src/main/resources/truststore.jks</Set>
+        <Set name="trustStorePassword">storepwd</Set>
+        <Set name="protocol">TLSv1.2</Set>
+    </New>
+    <New id="httpConfig" class="org.eclipse.jetty.server.HttpConfiguration"/>
+
+    <Call name="addConnector">
+        <Arg>
+            <New class="org.eclipse.jetty.server.ServerConnector">
+                <Arg name="server">
+                    <Ref id="Server"/>
+                </Arg>
+                <Arg name="factories">
+                    <Array type="org.eclipse.jetty.server.ConnectionFactory">
+                        <Item>
+                            <New class="org.eclipse.jetty.server.SslConnectionFactory">
+                                <Arg name="sslContextFactory">
+                                    <Ref id="sslContextFactory"/>
+                                </Arg>
+                                <Arg name="next">http/1.1</Arg>
+                            </New>
+                        </Item>
+                        <Item>
+                            <New class="org.eclipse.jetty.server.HttpConnectionFactory">
+                                <Arg name="config">
+                                    <Ref id="httpConfig"/>
+                                </Arg>
+                            </New>
+                        </Item>
+                    </Array>
+                </Arg>
+                <Set name="port">8443</Set>
+            </New>
+        </Arg>
+    </Call>
+
+    <Call name="addConnector">
+        <Arg>
+            <New class="org.eclipse.jetty.server.ServerConnector">
+                <Arg name="server">
+                    <Ref id="Server"/>
+                </Arg>
+                <Arg name="factories">
+                    <Array type="org.eclipse.jetty.server.ConnectionFactory">
+                        <Item>
+                            <New class="org.eclipse.jetty.server.SslConnectionFactory">
+                                <Arg name="sslContextFactory">
+                                    <Ref id="sslContextFactory"/>
+                                </Arg>
+                                <Arg name="next">alpn</Arg>
+                            </New>
+                        </Item>
+                        <Item>
+                            <New class="org.eclipse.jetty.alpn.server.ALPNServerConnectionFactory">
+                                <Arg>h2,h2-17</Arg>
+                            </New>
+                        </Item>
+                        <Item>
+                            <New class="org.eclipse.jetty.http2.server.HTTP2ServerConnectionFactory">
+                                <Arg name="config">
+                                    <Ref id="httpConfig"/>
+                                </Arg>
+                            </New>
+                        </Item>
+                    </Array>
+                </Arg>
+                <Set name="Port">8444</Set>
+            </New>
+        </Arg>
+    </Call>
+</Configure>

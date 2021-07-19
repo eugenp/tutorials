@@ -1,7 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>log-mdc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>log-mdc</name>
@@ -10,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
+        <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-4</relativePath>
+        <relativePath>../../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -29,22 +30,20 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.library}</version>
+            <version>${jackson.version}</version>
         </dependency>
-
         <!--log4j dependencies -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
         <!--log4j2 dependencies -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -56,14 +55,12 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j2.version}</version>
         </dependency>
-
         <!--disruptor for log4j2 async logging -->
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
             <version>${disruptor.version}</version>
         </dependency>
-
         <!-- JBoss Logging (bridge) dependencies -->
         <dependency>
             <groupId>org.jboss.logging</groupId>
@@ -76,10 +73,10 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
+        <finalName>logging-service</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -94,17 +91,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>logging-service</finalName>
     </build>
 
     <properties>
-        <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.7</log4j2.version>
         <disruptor.version>3.3.6</disruptor.version>
         <jbosslogging.version>3.3.0.Final</jbosslogging.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jackson.library>2.8.5</jackson.library>
-        <maven-war-plugin.version>2.4</maven-war-plugin.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
     </properties>
 
 </project>

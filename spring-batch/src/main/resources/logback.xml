@@ -3,17 +3,20 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} [%thread] %level %logger{35} - %msg%n
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
             </Pattern>
         </layout>
     </appender>
 
-    <logger name="org.baeldung.taskletsvschunks" level="debug"
-            additivity="false">
+    <logger name="com.baeldung.taskletsvschunks" level="debug" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
     
-    <logger name="org.baeldung.batchscheduler" level="debug" additivity="false">
+    <logger name="com.baeldung.batchscheduler" level="debug" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    
+    <logger name="com.baeldung.batchtesting" level="debug" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 

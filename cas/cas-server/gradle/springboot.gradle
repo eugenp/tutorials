@@ -1,0 +1,24 @@
+apply plugin: "org.springframework.boot"
+
+bootRun.enabled = false
+bootRun.onlyIf { return false }
+tasks.remove(tasks['bootRun'])
+
+springBoot {
+    mainClassName = "org.apereo.cas.web.CasWebApplication"
+}
+
+bootWar {
+    doFirst {
+        def executable = project.hasProperty("executable") && Boolean.valueOf(project.getProperty("executable"))
+        if (executable) {
+            logger.info "Including launch script for executable WAR artifact"
+            launchScript()
+        } else {
+            logger.info "WAR artifact is not marked as an executable"
+        }
+        archiveName "${casWebApplicationBinaryName}"
+        baseName "cas"
+        excludeDevtools = true
+    }
+}

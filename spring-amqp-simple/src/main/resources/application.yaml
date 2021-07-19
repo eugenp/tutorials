@@ -1,5 +1,0 @@
-spring:
-  rabbitmq:
-    username: guest
-    password: guest
-    host: 10.10.10.105

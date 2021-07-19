@@ -1,6 +1,0 @@
-<MithraRuntime>
-   <ConnectionManager className="com.baeldung.reladomo.ReladomoConnectionManager ">
-           <MithraObjectConfiguration className="com.baeldung.reladomo.Department" cacheType="partial"/>
-           <MithraObjectConfiguration className="com.baeldung.reladomo.Employee " cacheType="partial"/>
-    </ConnectionManager>
-</MithraRuntime>

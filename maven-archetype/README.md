@@ -1,4 +1,7 @@
-### Relevant Articles: 
-================================
+## Maven Archetype
 
-- [Guide to Maven Archetype](http://www.baeldung.com/maven-archetype)
+This module contains articles about the Maven Archetype Plugin.
+
+### Relevant Articles: 
+
+- [Guide to Maven Archetype](https://www.baeldung.com/maven-archetype)
