@@ -29,9 +29,11 @@ public class ApplicationClient {
         out.close();
         clientSocket.close();
     }
-    
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         ApplicationClient client = new ApplicationClient();
-        client.connect("192.168.0.1", 5000);  // change the IP address to server IP 
+        client.connect(args[0], Integer.parseInt(args[1])); // IP address and port number of the server
+        client.sendGreetings(args[2]); // greetings message
+        client.disconnect();
     }
 }
