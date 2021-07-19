@@ -24,6 +24,7 @@
         <module>guava-collections-list</module>
         <module>guava-collections-map</module>
         <module>guava-collections-set</module>
+        <module>guava-concurrency</module>
         <module>guava-io</module>
     </modules>
 
