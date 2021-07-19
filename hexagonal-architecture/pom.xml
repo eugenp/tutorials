@@ -12,7 +12,7 @@
     <artifactId>hexagonal-architecture</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>hexagonal-architecture</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project for Hexagonal Architecture</description>
     <properties>
         <mariadb-version>2.7.3</mariadb-version>
     </properties>
