@@ -3,6 +3,8 @@ package com.baeldung.hexagonalarchitecture.userside.cli;
 import com.baeldung.hexagonalarchitecture.businesslogic.dto.User;
 import com.baeldung.hexagonalarchitecture.businesslogic.service.UserService;
 import com.baeldung.hexagonalarchitecture.userside.request.UserCreateRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +12,9 @@ import java.util.UUID;
 
 @Component
 public class CliUserController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CliUserController.class);
+
     private UserService userService;
 
     @Autowired
@@ -19,10 +24,9 @@ public class CliUserController {
 
     public void createUser() {
         UserCreateRequest userCreateRequest = new UserCreateRequest("user1", 10);
-        UserCreateRequest userCreateRequest2 = new UserCreateRequest("user2", 100);
         UUID userId = userService.createUser(userCreateRequest);
-        System.out.println(userId);
+        LOG.info("saved userId:" + userId);
         User user = userService.activeUser(userId);
-        System.out.println(user.getName());
+        LOG.info(user.toString());
     }
 }
