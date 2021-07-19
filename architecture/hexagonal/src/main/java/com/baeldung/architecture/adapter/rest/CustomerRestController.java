@@ -20,6 +20,7 @@ public class CustomerRestController {
 
     @PostMapping
     void create(@RequestBody Customer customer) {
+        customerService.create(customer);
 
     }
 
