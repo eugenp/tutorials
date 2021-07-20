@@ -1,10 +1,5 @@
 package com.baeldung.kubernetes.admission.dto;
 
-/**
- * Exceção utilizada para reportar erros de validação no manifesto recebido para admissão
- * @author lighthouse.psevestre
- *
- */
 public class AdmissionReviewException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
