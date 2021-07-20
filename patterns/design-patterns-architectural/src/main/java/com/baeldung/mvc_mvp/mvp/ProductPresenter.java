@@ -2,39 +2,39 @@ package com.baeldung.mvc_mvp.mvp;
 
 public class ProductPresenter {
     private final Product product;
-    private final ProductView productView;
+    private final ProductView view;
     
-    public ProductPresenter(Product product, ProductView productView) {
+    public ProductPresenter(Product product, ProductView view) {
         this.product = product;
-        this.productView = productView;
+        this.view = view;
     }
     
-    public String getProductName() {
-        return product.getProductName();
+    public String getName() {
+        return product.getName();
     }
     
-    public void setProductName(String productName) {
-        product.setProductName(productName);
+    public void setName(String name) {
+        product.setName(name);
     }
     
-    public String getProductDescription() {
-        return product.getProductDescription();
+    public String getDescription() {
+        return product.getDescription();
     }
     
-    public void setProductDescription(String productDescription) {
-        product.setProductDescription(productDescription);
+    public void setDescription(String description) {
+        product.setDescription(description);
     }
     
     public Double getProductPrice() {
-        return product.getProductPrice();
+        return product.getPrice();
     }
     
-    public void setProductPrice(Double productPrice) {
-        product.setProductPrice(productPrice);
+    public void setPrice(Double price) {
+        product.setPrice(price);
     }
     
     public void showProduct() {
-        productView.printProductDetails(product.getProductName(), product.getProductDescription(), product.getProductPrice());
+        view.printProductDetails(product.getName(), product.getDescription(), product.getPrice());
     }
     
 }

@@ -1,32 +1,32 @@
 package com.baeldung.mvc_mvp.mvp;
 
 public class Product {
-    private String productName;
-    private String productDescription;
-    private Double productPrice;
+    private String name;
+    private String description;
+    private Double price;
     
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
     
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
     
-    public String getProductDescription() {
-        return productDescription;
+    public String getDescription() {
+        return description;
     }
     
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
     
-    public Double getProductPrice() {
-        return productPrice;
+    public Double getPrice() {
+        return price;
     }
     
-    public void setProductPrice(Double productPrice) {
-        this.productPrice = productPrice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
     
 }

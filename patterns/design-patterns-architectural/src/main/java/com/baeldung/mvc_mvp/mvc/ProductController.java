@@ -7,28 +7,28 @@ public class ProductController {
         this.product = product;
     }
     
-    public String getProductName() {
-        return product.getProductName();
+    public String getName() {
+        return product.getName();
     }
     
-    public void setProductName(String productName) {
-        product.setProductName(productName);
+    public void setName(String name) {
+        product.setName(name);
     }
     
-    public String getProductDescription() {
-        return product.getProductDescription();
+    public String getDescription() {
+        return product.getDescription();
     }
     
-    public void setProductDescription(String productDescription) {
-        product.setProductDescription(productDescription);
+    public void setDescription(String description) {
+        product.setDescription(description);
     }
     
-    public Double getProductPrice() {
-        return product.getProductPrice();
+    public Double getPrice() {
+        return product.getPrice();
     }
     
-    public void setProductPrice(Double productPrice) {
-        product.setProductPrice(productPrice);
+    public void setPrice(Double price) {
+        product.setPrice(price);
     }
     
 }
