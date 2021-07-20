@@ -22,7 +22,7 @@ public class MongoUser {
     public MongoUser() {
     }
 
-    public User toUser(){
+    public User toUser() {
         return new User(this.id, this.name, this.age, this.active);
     }
 

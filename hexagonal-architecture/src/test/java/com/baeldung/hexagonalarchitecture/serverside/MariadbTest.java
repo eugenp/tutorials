@@ -2,7 +2,6 @@ package com.baeldung.hexagonalarchitecture.serverside;
 
 import com.baeldung.hexagonalarchitecture.businesslogic.dto.User;
 import com.baeldung.hexagonalarchitecture.businesslogic.repository.UserRepository;
-import com.baeldung.hexagonalarchitecture.businesslogic.service.UserService;
 import com.baeldung.hexagonalarchitecture.serverside.mariadb.MariadbUserRepository;
 import com.baeldung.hexagonalarchitecture.serverside.mariadb.SpringDataMariadbUserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +25,7 @@ public class MariadbTest {
 
 
     @BeforeEach
-    void setup(){
+    void setup() {
         userRepository = new MariadbUserRepository(springDataMariadbUserRepository);
         userRepository.deleteAll();
     }

@@ -22,7 +22,6 @@ public class UserActiveResponse {
     }
 
 
-
     public boolean isActive() {
         return active;
     }

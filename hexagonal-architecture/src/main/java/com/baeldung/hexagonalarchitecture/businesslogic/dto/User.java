@@ -16,7 +16,7 @@ public class User {
         this.active = active;
     }
 
-    public void active(){
+    public void active() {
         this.active = true;
     }
 

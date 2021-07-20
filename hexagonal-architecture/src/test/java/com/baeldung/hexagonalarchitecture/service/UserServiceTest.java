@@ -4,12 +4,10 @@ import com.baeldung.hexagonalarchitecture.businesslogic.dto.User;
 import com.baeldung.hexagonalarchitecture.businesslogic.repository.UserRepository;
 import com.baeldung.hexagonalarchitecture.businesslogic.service.UserService;
 import com.baeldung.hexagonalarchitecture.businesslogic.service.UserServiceImpl;
-import com.baeldung.hexagonalarchitecture.serverside.mariadb.UserEntity;
 import com.baeldung.hexagonalarchitecture.userside.request.UserCreateRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;

@@ -24,7 +24,7 @@ public class MongodbTest {
     UserRepository userRepository;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         userRepository = new MongoDbUserRepository(springDataMongoUserRepository);
         userRepository.deleteAll();
     }

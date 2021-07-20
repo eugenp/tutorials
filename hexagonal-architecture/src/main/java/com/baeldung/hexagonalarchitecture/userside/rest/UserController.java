@@ -22,19 +22,19 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public UserCreateResponse create(@RequestBody UserCreateRequest userCreateRequest){
+    public UserCreateResponse create(@RequestBody UserCreateRequest userCreateRequest) {
         UUID userId = userService.createUser(userCreateRequest);
         return new UserCreateResponse(userId);
     }
 
     @PutMapping("/active/{id}")
-    public UserActiveResponse active(@PathVariable("id") UUID uuid){
+    public UserActiveResponse active(@PathVariable("id") UUID uuid) {
         User user = userService.activeUser(uuid);
         return new UserActiveResponse(user);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id") UUID uuid){
+    public void delete(@PathVariable("id") UUID uuid) {
         userService.deleteUser(uuid);
     }
 }
