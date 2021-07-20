@@ -7,10 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import lombok.Data;
 
-/**
- * @author lighthouse.psevestre
- *
- */
 @ConfigurationProperties(prefix = "admission-controller")
 @Data
 public class AdmissionControllerProperties {
