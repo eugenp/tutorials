@@ -8,4 +8,8 @@ public interface UserRepository {
     void save(User user);
 
     User findUser(UUID uuid);
+
+    void delete(UUID uuid);
+
+    void deleteAll();
 }

@@ -32,4 +32,9 @@ public class UserController {
         User user = userService.activeUser(uuid);
         return new UserActiveResponse(user);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") UUID uuid){
+        userService.deleteUser(uuid);
+    }
 }

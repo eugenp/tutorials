@@ -9,4 +9,6 @@ public interface UserService {
     UUID createUser(UserCreateRequest userCreateRequest);
 
     User activeUser(UUID uuid);
+
+    void deleteUser(UUID uuid);
 }

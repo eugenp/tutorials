@@ -28,5 +28,7 @@ public class CliUserController {
         LOG.info("saved userId:" + userId);
         User user = userService.activeUser(userId);
         LOG.info(user.toString());
+        LOG.info("Delete user with id " + user.getId());
+        userService.deleteUser(userId);
     }
 }

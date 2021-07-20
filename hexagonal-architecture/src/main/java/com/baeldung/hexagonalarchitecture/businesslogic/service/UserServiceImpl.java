@@ -26,8 +26,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User activeUser(UUID uuid) {
         User user = userRepository.findUser(uuid);
-        user.setActive(true);
+        user.active();
         userRepository.save(user);
         return user;
+    }
+
+    @Override
+    public void deleteUser(UUID uuid) {
+        userRepository.delete(uuid);
     }
 }

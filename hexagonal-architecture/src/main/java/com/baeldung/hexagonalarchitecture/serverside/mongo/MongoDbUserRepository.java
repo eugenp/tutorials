@@ -29,4 +29,14 @@ public class MongoDbUserRepository implements UserRepository {
         Optional<MongoUser> byId = userRepository.findById(uuid);
         return byId.map(MongoUser::toUser).orElse(null);
     }
+
+    @Override
+    public void delete(UUID uuid) {
+        userRepository.deleteById(uuid);
+    }
+
+    @Override
+    public void deleteAll() {
+        userRepository.deleteAll();
+    }
 }

@@ -31,4 +31,14 @@ public class MariadbUserRepository implements UserRepository {
         Optional<UserEntity> byId = userRepository.findById(uuid);
         return byId.map(UserEntity::toUser).orElse(null);
     }
+
+    @Override
+    public void delete(UUID uuid) {
+        userRepository.deleteById(uuid);
+    }
+
+    @Override
+    public void deleteAll() {
+        userRepository.deleteAll();
+    }
 }

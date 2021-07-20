@@ -1,5 +1,6 @@
 package com.baeldung.hexagonalarchitecture.businesslogic.dto;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class User {
@@ -13,6 +14,10 @@ public class User {
         this.name = name;
         this.age = age;
         this.active = active;
+    }
+
+    public void active(){
+        this.active = true;
     }
 
     // getters setters
@@ -57,5 +62,18 @@ public class User {
                 ", age=" + age +
                 ", active=" + active +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return active == user.active && Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(age, user.age);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, active);
     }
 }
