@@ -6,19 +6,19 @@ public class MvcMainClass {
         
         Product model = retrieveProductFromDatabase();
         ProductView view = new ProductView();
-        model.setProductView(view);
+        model.setView(view);
         model.showProduct();
         
         ProductController controller = new ProductController(model);
-        controller.setProductName("SmartPhone");
+        controller.setName("SmartPhone");
         model.showProduct();
     }
     
     private static Product retrieveProductFromDatabase() {
         Product product = new Product();
-        product.setProductName("Mobile");
-        product.setProductDescription("New Brand");
-        product.setProductPrice(1000.0);
+        product.setName("Mobile");
+        product.setDescription("New Brand");
+        product.setPrice(1000.0);
         return product;
     }
 }

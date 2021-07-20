@@ -8,15 +8,15 @@ public class MvpMainClass {
         ProductView view = new ProductView();
         ProductPresenter presenter = new ProductPresenter(model, view);
         presenter.showProduct();
-        presenter.setProductName("SmartPhone");
+        presenter.setName("SmartPhone");
         presenter.showProduct();
     }
     
     private static Product retrieveProductFromDatabase() {
         Product product = new Product();
-        product.setProductName("Mobile");
-        product.setProductDescription("New Brand");
-        product.setProductPrice(1000.0);
+        product.setName("Mobile");
+        product.setDescription("New Brand");
+        product.setPrice(1000.0);
         return product;
     }
 }
