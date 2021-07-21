@@ -33,8 +33,7 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
         </exclusions>
-        </dependency>
-        
+        </dependency>   
     </dependencies>
 
     <properties>
