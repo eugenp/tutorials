@@ -3,6 +3,7 @@ package com.baeldung.threadsstartatsametime;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Phaser;
 
 public class ThreadsStartAtSameTime {
 
@@ -12,6 +13,11 @@ public class ThreadsStartAtSameTime {
         Thread.sleep(30);
 
         usingCyclicBarrier();
+
+        Thread.sleep(30);
+
+        usingPhaser();
+
     }
 
     private static void usingCountDownLatch() throws InterruptedException {
@@ -56,4 +62,25 @@ public class ThreadsStartAtSameTime {
         barrier.await();
     }
 
+    private static void usingPhaser() throws InterruptedException {
+        System.out.println("\n===============================================");
+        System.out.println("        >>> Using Phaser <<<");
+        System.out.println("===============================================");
+
+        Phaser phaser = new Phaser();
+        phaser.register();
+
+        WorkerWithPhaser worker1 = new WorkerWithPhaser("Worker with phaser 1", phaser);
+        WorkerWithPhaser worker2 = new WorkerWithPhaser("Worker with phaser 2", phaser);
+
+        worker1.start();
+        worker2.start();
+
+        Thread.sleep(10);//simulation of some actual work
+
+        System.out.println("-----------------------------------------------");
+        System.out.println(" Now open the phaser barrier:");
+        System.out.println("-----------------------------------------------");
+        phaser.arriveAndAwaitAdvance();
+    }
 }
