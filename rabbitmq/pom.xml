@@ -9,9 +9,22 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -19,10 +32,19 @@
             <artifactId>amqp-client</artifactId>
             <version>${amqp-client.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
         <amqp-client.version>5.12.0</amqp-client.version>
+        <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
     </properties>
 
 </project>

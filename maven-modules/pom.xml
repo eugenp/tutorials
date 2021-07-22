@@ -33,6 +33,7 @@
         <module>versions-maven-plugin</module>
         <module>maven-printing-plugins</module>
 		<module>maven-builder-plugin</module>
+        <module>plugin-management</module>
     </modules>
 
 </project>

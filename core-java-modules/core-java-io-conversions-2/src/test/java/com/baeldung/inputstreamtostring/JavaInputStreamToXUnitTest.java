@@ -21,11 +21,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 import java.util.UUID;
@@ -165,15 +165,13 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void whenConvertingToFile_thenCorrect() throws IOException {
-        final InputStream initialStream = new FileInputStream(new File("src/test/resources/sample.txt"));
-        final byte[] buffer = new byte[initialStream.available()];
-        initialStream.read(buffer);
+        final Path path = Paths.get("src/test/resources/sample.txt");
+        final byte[] buffer = java.nio.file.Files.readAllBytes(path);
 
         final File targetFile = new File("src/test/resources/targetFile.tmp");
         final OutputStream outStream = new FileOutputStream(targetFile);
         outStream.write(buffer);
 
-        IOUtils.closeQuietly(initialStream);
         IOUtils.closeQuietly(outStream);
     }
 
