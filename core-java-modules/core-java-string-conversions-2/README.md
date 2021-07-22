@@ -8,4 +8,5 @@ This module contains articles about string conversions from/to another type.
 - [Convert Character Array to String in Java](https://www.baeldung.com/java-char-array-to-string)
 - [Converting String to BigDecimal in Java](https://www.baeldung.com/java-string-to-bigdecimal)
 - [Converting String to BigInteger in Java](https://www.baeldung.com/java-string-to-biginteger)
+- [Convert a String to Camel Case](https://www.baeldung.com/java-string-to-camel-case)
 - More articles: [[<-- prev]](/core-java-string-conversions)
