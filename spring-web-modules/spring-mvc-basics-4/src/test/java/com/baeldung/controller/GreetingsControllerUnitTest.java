@@ -1,7 +1,7 @@
 package com.baeldung.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.baeldung.controller.controller;
+import com.baeldung.controller.controller.GreetingsController;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class GreetingsControllerUnitTest {
         // Then
         String actualMimeType = this.mockMvc.perform(MockMvcRequestBuilders.get("/greetings-with-response-entity", 1)).andReturn().getResponse().getContentType();
 
-        assertEquals(expectedMimeType, actualMimeType);
+        Assert.assertEquals(expectedMimeType, actualMimeType);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class GreetingsControllerUnitTest {
         // Then
         String actualMimeType = this.mockMvc.perform(MockMvcRequestBuilders.get("/greetings-with-map-return-type", 1)).andReturn().getResponse().getContentType();
 
-        assertEquals(expectedMimeType, actualMimeType);
+        Assert.assertEquals(expectedMimeType, actualMimeType);
 
         
     }
