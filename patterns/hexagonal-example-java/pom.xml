@@ -6,12 +6,12 @@
 	<artifactId>hexagonal-example-java</artifactId>
 	<name>hexagonal-example-java</name>
 
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
-    </parent>
+	<parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-2</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../parent-boot-2</relativePath>
+	</parent>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -29,6 +29,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -75,6 +76,11 @@
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${org.mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.16.12</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
