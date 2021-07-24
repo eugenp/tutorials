@@ -15,25 +15,28 @@ import com.baeldung.spring.servicevalidation.domain.UserAccount;
 @Service
 public class UserAccountService {
 
-	@Autowired
-	private Validator validator;
-	
-	@Autowired
-	private UserAccountDao dao;
-	
-	public String addUserAccount(UserAccount useraccount) {
-		
-		Set<ConstraintViolation<UserAccount>> violations = validator.validate(useraccount);
+    @Autowired
+    private Validator validator;
 
-		if (!violations.isEmpty()) {
-			StringBuilder sb = new StringBuilder();
-			for (ConstraintViolation<UserAccount> constraintViolation : violations) {
-				sb.append(constraintViolation.getMessage());
-			}			
-			throw new ConstraintViolationException("Error occurred: " + sb.toString(), violations);
-		}		
-                dao.addUserAccount(useraccount);
-		return "Account for " + useraccount.getName() + " Added!";
-	}
+    @Autowired
+    private UserAccountDao dao;
+
+    public String addUserAccount(UserAccount useraccount) {
+
+        Set<ConstraintViolation<UserAccount>> violations = validator.validate(useraccount);
+
+        if (!violations.isEmpty()) {
+            StringBuilder sb = new StringBuilder();
+            for (ConstraintViolation<UserAccount> constraintViolation : violations) {
+                sb.append(constraintViolation.getMessage());
+            }
+
+            dao.addUserAccount(useraccount);
+
+            throw new ConstraintViolationException("Error occurred: " + sb.toString(), violations);
+        }
+
+        return "Account for " + useraccount.getName() + " Added!";
+    }
 
 }
