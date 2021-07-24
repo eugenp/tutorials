@@ -30,6 +30,19 @@ public class GreetingsControllerUnitTest {
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
+	
+	@Test
+    public void givenReturnTypeIsString_whenJacksonOnClasspath_thenDefaultContentTypeIsJSON() throws Exception {
+        
+        // Given
+        String expectedMimeType = "application/json";
+        
+        // Then
+        String actualMimeType = this.mockMvc.perform(MockMvcRequestBuilders.get("/greetings-with-response-body", 1)).andReturn().getResponse().getContentType();
+
+        Assert.assertEquals(expectedMimeType, actualMimeType);
+        
+    }
     
     @Test
     public void givenReturnTypeIsResponseEntity_thenDefaultContentTypeIsJSON() throws Exception {
@@ -42,19 +55,4 @@ public class GreetingsControllerUnitTest {
 
         Assert.assertEquals(expectedMimeType, actualMimeType);
     }
-
-    @Test
-    public void givenReturnTypeIsMap_thenDefaultContentTypeIsJSON() throws Exception {
-        
-        // Given
-        String expectedMimeType = "application/json";
-        
-        // Then
-        String actualMimeType = this.mockMvc.perform(MockMvcRequestBuilders.get("/greetings-with-map-return-type", 1)).andReturn().getResponse().getContentType();
-
-        Assert.assertEquals(expectedMimeType, actualMimeType);
-
-        
-    }
-
 }
