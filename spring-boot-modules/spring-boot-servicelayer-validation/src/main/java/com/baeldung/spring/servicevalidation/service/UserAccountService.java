@@ -29,15 +29,10 @@ public class UserAccountService {
 			StringBuilder sb = new StringBuilder();
 			for (ConstraintViolation<UserAccount> constraintViolation : violations) {
 				sb.append(constraintViolation.getMessage());
-			}
-
-			dao.addUserAccount(useraccount);
-			
+			}			
 			throw new ConstraintViolationException("Error occurred: " + sb.toString(), violations);
-		}
-		
-		
-
+		}		
+                dao.addUserAccount(useraccount);
 		return "Account for " + useraccount.getName() + " Added!";
 	}
 
