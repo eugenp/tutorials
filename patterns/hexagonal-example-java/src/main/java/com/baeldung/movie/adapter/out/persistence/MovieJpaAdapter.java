@@ -16,9 +16,7 @@ public class MovieJpaAdapter implements MoviePersistencePort{
     @Override
     public MovieDto addMovie(MovieDto movieDto) {
         Movie movie = MovieMapper.INSTANCE.movieDtoToMovie(movieDto);
-
         Movie movieSaved = movieRepository.save(movie);
-
         return MovieMapper.INSTANCE.movieToMovieDto(movieSaved);
     }
 
@@ -41,12 +39,14 @@ public class MovieJpaAdapter implements MoviePersistencePort{
     @Override
     public MovieDto getMovieById(Long movieId) {
         Optional<Movie> movie = movieRepository.findById(movieId);
-
         if (movie.isPresent()) {
             return MovieMapper.INSTANCE.movieToMovieDto(movie.get());
         }
-        
         return null;
     }
-
+    
+    
+    
+    
+    
 }

@@ -2,8 +2,12 @@ package com.baeldung.movie.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,4 +48,17 @@ public class MovieServiceImplTest {
         assertEquals(movieDto, testResponse);
     }
 
+    @Test
+    void deleteMovieById() {
+        doNothing().when(moviePersistencePort.getMovieById(Long.valueOf(2)));
+        MovieDto testResponse = movieServicePort.getMovieById(Long.valueOf(2));
+        assertEquals(null, testResponse);
+    }
+    
+    @Test
+    void getMovies() {
+        doNothing().when(moviePersistencePort.getMovies());
+        assertEquals(1, moviePersistencePort.getMovies().size());
+    }
+    
 }
