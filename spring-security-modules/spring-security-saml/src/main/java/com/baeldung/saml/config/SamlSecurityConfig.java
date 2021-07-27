@@ -143,7 +143,7 @@ public class SamlSecurityConfig {
     public ExtendedMetadataDelegate oktaExtendedMetadataProvider() throws MetadataProviderException {
         File metadata = null;
         try {
-            metadata = new File("./src/main/resources/saml/metadata/sso.xml");
+            metadata = new ClassPathResource("saml/metadata/sso.xml").getFile();
         } catch (Exception e) {
             e.printStackTrace();
         }
