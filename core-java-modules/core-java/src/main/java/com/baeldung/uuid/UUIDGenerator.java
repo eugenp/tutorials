@@ -176,8 +176,8 @@ public class UUIDGenerator {
 
             byte[] hash = md.digest(bytes);
 
-            long msb = peekLong(hash, 0, ByteOrder.BIG_ENDIAN);
-            long lsb = peekLong(hash, 8, ByteOrder.BIG_ENDIAN);
+            long msb = getLeastAndMostSignificantBitsVersion5(hash, 0);
+            long lsb = getLeastAndMostSignificantBitsVersion5(hash, 8);
             // Set the version field
             msb &= ~(0xfL << 12);
             msb |= ((long) 5) << 12;
@@ -191,18 +191,11 @@ public class UUIDGenerator {
         }
     }
 
-    private static long peekLong(final byte[] src, final int offset, final ByteOrder order) {
+    private static long getLeastAndMostSignificantBitsVersion5(final byte[] src, final int offset) {
         long ans = 0;
-        if (order == ByteOrder.BIG_ENDIAN) {
-            for (int i = offset; i < offset + 8; i += 1) {
-                ans <<= 8;
-                ans |= src[i] & 0xffL;
-            }
-        } else {
-            for (int i = offset + 7; i >= offset; i -= 1) {
-                ans <<= 8;
-                ans |= src[i] & 0xffL;
-            }
+        for (int i = offset + 7; i >= offset; i -= 1) {
+            ans <<= 8;
+            ans |= src[i] & 0xffL;
         }
         return ans;
     }
