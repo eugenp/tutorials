@@ -87,7 +87,7 @@
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
         <module>spring-jooq</module>
-        <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
+        <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
     </modules>
 

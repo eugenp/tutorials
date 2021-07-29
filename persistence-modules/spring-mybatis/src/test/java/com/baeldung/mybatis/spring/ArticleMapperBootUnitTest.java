@@ -8,6 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = PersistenceAutoConfig.class)
-public class ArticleMapperBootIntegrationTest extends ArticleMapperCommonTest {
+public class ArticleMapperBootUnitTest extends ArticleMapperCommonUnitTest {
 
 }

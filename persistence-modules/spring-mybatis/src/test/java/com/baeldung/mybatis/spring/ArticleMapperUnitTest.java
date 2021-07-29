@@ -5,7 +5,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/beans.xml")
-public class ArticleMapperXMLIntegrationTest extends ArticleMapperCommonTest {
+@ContextConfiguration(classes = PersistenceConfig.class)
+public class ArticleMapperUnitTest extends ArticleMapperCommonUnitTest {
 
 }
