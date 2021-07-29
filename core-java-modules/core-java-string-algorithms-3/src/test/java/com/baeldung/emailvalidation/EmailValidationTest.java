@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class EmailValidationTest {
+public class EmailValidationUnitTest {
 
     @Test
     public void testUsingEmailValidator() {
