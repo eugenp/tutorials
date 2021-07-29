@@ -23,8 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataCassandraTest
 @Import(CassandraConfig.class)
-@Ignore
-public class InventoryServiceUnitTest {
+public class InventoryServiceLiveTest {
     @Autowired
     private InventoryRepository repository;
 
