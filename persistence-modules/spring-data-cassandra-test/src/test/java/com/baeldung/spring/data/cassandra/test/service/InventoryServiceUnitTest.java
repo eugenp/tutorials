@@ -5,6 +5,7 @@ import com.baeldung.spring.data.cassandra.test.domain.Vehicle;
 import com.baeldung.spring.data.cassandra.test.repository.InventoryRepository;
 import org.junit.Before;
 import org.junit.ClassRule;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataCassandraTest
 @Import(CassandraConfig.class)
+@Ignore
 public class InventoryServiceUnitTest {
     @Autowired
     private InventoryRepository repository;
