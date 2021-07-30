@@ -428,7 +428,6 @@
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
-                <module>image-processing</module>
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
@@ -751,6 +750,8 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
+                <module>image-processing</module>
+
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
                 <module>jws</module>
@@ -895,7 +896,6 @@
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
-                <module>image-processing</module>
                 <module>immutables</module>
 
                 <module>jackson-modules</module>
@@ -1199,6 +1199,8 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
+
+                <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
