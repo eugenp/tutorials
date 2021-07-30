@@ -39,14 +39,14 @@ public class InventoryServiceLiveTest {
     }
 
     @Test
-    public void test_Get_All_Vehicles() {
+    public void givenVehiclesInDBInitially_whenRetrieved_thenReturnAllVehiclesFromDB() {
         List<Vehicle> vehicles = inventoryService.getVehicles();
         assertThat(vehicles).isNotNull();
         assertThat(vehicles).isNotEmpty();
     }
 
     @Test
-    public void test_Add_Vehicles() {
+    public void whenAddMoreVehiclesToDB_thenRetrievalReturnsAllVehicles() {
         String vin1 = "ABC123";
         String vin2 = "XYZ123";
         List<Vehicle> vehicles = Arrays.asList(
