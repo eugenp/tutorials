@@ -6,7 +6,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>counter-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>counter-maven-plugin Maven Mojo</name>
+    <name>counter-maven-plugin</name>
     <packaging>maven-plugin</packaging>
     <url>http://maven.apache.org</url>
 

@@ -77,6 +77,7 @@
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
+        <module>spring-data-mongodb-reactive</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-solr</module>
@@ -86,7 +87,7 @@
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
         <module>spring-jooq</module>
-        <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
+        <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
     </modules>
 
