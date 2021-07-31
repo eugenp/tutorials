@@ -32,6 +32,9 @@
         <module>version-overriding-plugins</module>
         <module>versions-maven-plugin</module>
         <module>maven-printing-plugins</module>
+		<module>maven-builder-plugin</module>
+        <module>host-maven-repo-example</module>
+        <module>plugin-management</module>
     </modules>
 
 </project>
