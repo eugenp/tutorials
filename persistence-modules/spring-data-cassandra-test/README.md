@@ -1,8 +1,5 @@
 ## Spring @DataCassandraTest
 
-### Relevant Articles:
-- [Testing noSQL Queries with Spring Boot and @DataCassandraTest](https://www.baeldung.com/testing-nosql-queries-with-spring-boot-and-datacassandratest/)
-
 ### Build the Project
 ```
 mvn clean install
