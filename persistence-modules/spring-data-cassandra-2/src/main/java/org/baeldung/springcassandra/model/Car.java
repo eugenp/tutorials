@@ -59,10 +59,12 @@ public class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
+        }
         Car car = (Car) o;
         return year == car.year && Objects.equals(id, car.id) && Objects.equals(make, car.make) && Objects.equals(model, car.model);
     }
