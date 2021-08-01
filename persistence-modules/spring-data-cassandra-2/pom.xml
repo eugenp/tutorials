@@ -26,12 +26,6 @@
 			<version>${org.springframework.data.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -58,7 +52,6 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<lombok.version>1.18.20</lombok.version>
 		<org.springframework.data.version>3.1.11</org.springframework.data.version>
 		<testcontainers.version>1.15.3</testcontainers.version>
 	</properties>
