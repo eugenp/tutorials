@@ -19,9 +19,11 @@ public class WebSecuritySpringBootIntegrationTest {
     private static final String PUBLIC_RESOURCE = "/hello/baeldung.txt";
     private static final String HELLO_FROM_PUBLIC_RESOURCE = "Hello From Baeldung";
 
-    @Autowired private ConfigSecuredController api;
+    @Autowired
+    private ConfigSecuredController api;
 
-    @Autowired private TestRestTemplate template;
+    @Autowired
+    private TestRestTemplate template;
 
     @Test
     public void whenCallPublicDirectly_thenOk() {
