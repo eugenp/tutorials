@@ -25,4 +25,5 @@
         <geode.core>1.6.0</geode.core>
         <rocketmq.version>2.0.4</rocketmq.version>
     </properties>
+
 </project>

@@ -22,8 +22,8 @@
             <version>${spf4j.version}</version>
             <exclusions>
                 <exclusion>
-            	    <groupId>org.apache.avro</groupId>
-            	    <artifactId>avro</artifactId>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -33,8 +33,8 @@
             <version>${spf4j.version}</version>
             <exclusions>
                 <exclusion>
-            	    <groupId>org.apache.avro</groupId>
-            	    <artifactId>avro</artifactId>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -43,11 +43,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-		<dependency>
-		    <groupId>org.apache.avro</groupId>
-		    <artifactId>avro</artifactId>
-		    <version>1.10.2</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.10.2</version>
+        </dependency>
     </dependencies>
 
     <build>
