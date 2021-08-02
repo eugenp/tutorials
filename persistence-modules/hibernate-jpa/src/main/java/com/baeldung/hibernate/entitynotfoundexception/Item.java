@@ -15,7 +15,6 @@ public class Item implements Serializable {
     private String name;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    @NotFound(action = NotFoundAction.IGNORE)
     private Category category;
 
     public long getId() {
