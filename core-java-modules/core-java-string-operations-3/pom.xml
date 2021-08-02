@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-string-operations-3</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-
     <name>core-java-string-operations-3</name>
     <packaging>jar</packaging>
 
@@ -58,6 +57,13 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>gradle-repo</id>
+            <url>https://repo.gradle.org/gradle/libs-releases-local/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -68,10 +74,4 @@
         <semver4j.version>3.1.0</semver4j.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>gradle-repo</id>
-            <url>https://repo.gradle.org/gradle/libs-releases-local/</url>
-        </repository>
-    </repositories>
 </project>

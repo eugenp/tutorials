@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>plugins</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -12,7 +13,7 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>2.33</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <dependencies>
@@ -80,9 +81,9 @@
     </pluginRepositories>
 
     <properties>
-        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
+        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer 
+            to run. -->
         <jenkins.version>2.7.3</jenkins.version>
-
         <structs.version>1.7</structs.version>
         <workflow-step-api.version>2.12</workflow-step-api.version>
         <workflow-cps.version>2.39</workflow-cps.version>
