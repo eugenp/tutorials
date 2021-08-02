@@ -58,6 +58,7 @@
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-cassandra</module>
+        <module>spring-data-cassandra-test</module>
         <module>spring-data-cassandra-reactive</module>
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
@@ -87,7 +88,7 @@
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
         <module>spring-jooq</module>
-        <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
+        <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
     </modules>
 
