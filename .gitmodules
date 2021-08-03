@@ -1,0 +1,3 @@
+[submodule "java-hexagonal"]
+	path = java-hexagonal
+	url = https://github.com/CarlosLoriaSaenz/tutorials.git
