@@ -34,7 +34,7 @@ public class EmployeeServiceImplTest {
     class AddEmployeeTests {
 
         @Test
-        void testDefault() throws RepositoryException, ServiceException {
+        void whenAddingAnEmployee_thenReturnTheEmployeeFromDataAccess() throws RepositoryException, ServiceException {
             Employee incoming = new Employee();
             Employee outgoing = new Employee();
             when(repository.add(incoming)).thenReturn(outgoing);
@@ -45,7 +45,7 @@ public class EmployeeServiceImplTest {
         }
 
         @Test
-        void testRepositoryException() throws RepositoryException {
+        void givenTheDataAccessOccursError_whenAddingAnEmployee_thenThrowServiceException() throws RepositoryException {
             Employee incoming = new Employee();
             RepositoryException ex = new RepositoryException();
             when(repository.add(incoming)).thenThrow(ex);
@@ -61,7 +61,7 @@ public class EmployeeServiceImplTest {
     class GetEmployeeTests {
 
         @Test
-        void testDefault() throws RepositoryException, ServiceException, NotFoundException {
+        void whenSearchingAnEmployee_thenReturnTheEmployeeFromDataAccess() throws RepositoryException, ServiceException, NotFoundException {
             long id = 5L;
             Employee outgoing = new Employee();
             when(repository.findById(id)).thenReturn(Optional.of(outgoing));
@@ -72,7 +72,7 @@ public class EmployeeServiceImplTest {
         }
 
         @Test
-        void testRepositoryException() throws RepositoryException {
+        void givenTheDataAccessOccursError_whenSearchingAnEmployee_thenThrowServiceException() throws RepositoryException {
             long id = 5L;
             RepositoryException ex = new RepositoryException();
             when(repository.findById(id)).thenThrow(ex);
@@ -83,7 +83,7 @@ public class EmployeeServiceImplTest {
         }
 
         @Test
-        void testNotFoundException() throws RepositoryException {
+        void givenTheEmployeeDoesNotExist_whenSearchingAnEmployee_thenThrowNotFoundException() throws RepositoryException {
             long id = 5L;
             when(repository.findById(id)).thenReturn(Optional.empty());
 
