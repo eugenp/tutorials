@@ -55,6 +55,23 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>${jakarta.ws-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>${jaxws-rt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
+            <version>${jaxws-ri.version}</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -68,6 +85,20 @@
                     <target>${maven.compiler.target.version}</target>
                 </configuration>
             </plugin>
+            <!-- jax-ws maven plugin -->
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>${jaxws-maven-plugin.version}</version>
+                <configuration>
+                    <wsdlUrls>
+                        <wsdlUrl>http://localhost:8888/ws/country?wsdl</wsdlUrl>
+                    </wsdlUrls>
+                    <keep>true</keep>
+                    <packageName>com.baeldung.soap.ws.client.generated</packageName>
+                    <sourceDestDir>src/main/java</sourceDestDir>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -79,6 +110,10 @@
         <assertj.version>3.17.2</assertj.version>
         <mockserver.version>5.11.1</mockserver.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
+        <jakarta.ws-api.version>3.0.0</jakarta.ws-api.version>
+        <jaxws-rt.version>3.0.0</jaxws-rt.version>
+        <jaxws-ri.version>2.3.1</jaxws-ri.version>
+        <jaxws-maven-plugin.version>2.3.2</jaxws-maven-plugin.version>
     </properties>
 
 </project>

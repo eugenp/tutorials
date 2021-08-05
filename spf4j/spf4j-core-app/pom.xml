@@ -20,16 +20,39 @@
             <groupId>org.spf4j</groupId>
             <artifactId>spf4j-core</artifactId>
             <version>${spf4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.spf4j</groupId>
             <artifactId>spf4j-ui</artifactId>
             <version>${spf4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.10.2</version>
         </dependency>
     </dependencies>
 
@@ -81,7 +104,7 @@
     </build>
 
     <properties>
-        <spf4j.version>8.6.10</spf4j.version>
+        <spf4j.version>8.9.0</spf4j.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <dependency.plugin.version>3.1.1</dependency.plugin.version>
