@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    web: DEBUG
+    org.springframework.web: DEBUG
+    de.ars.schulung: DEBUG
+
+spring:
+  # Datasource: H2 in local ".local-db" directory
+  datasource:
+    url: jdbc:h2:mem:demodb
+    username: app
+    password: null
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console # http://localhost:8080/h2-console
+  jpa:
+    generate-ddl: true # create the schema automatically
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  jackson:
+    mapper:
+      CAN_OVERRIDE_ACCESS_MODIFIERS: true
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
