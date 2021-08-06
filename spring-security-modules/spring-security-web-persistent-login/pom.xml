@@ -136,7 +136,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-security-web-persistence</finalName>
+        <finalName>spring-security-web-persistent-login</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

@@ -49,7 +49,6 @@
             <artifactId>vavr</artifactId>
             <version>0.10.3</version>
         </dependency>
-
     </dependencies>
 
     <build>
