@@ -60,7 +60,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-dependencies.version>2.0.1.RELEASE</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2.0.3.RELEASE</spring-cloud-dependencies.version>
         <junit.platform.version>1.2.0</junit.platform.version>
     </properties>
 

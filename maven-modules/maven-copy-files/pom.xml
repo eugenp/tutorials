@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>maven-copy-files</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>maven-copy-files</name>
+    <packaging>pom</packaging>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
     <parent>
         <artifactId>maven-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.baeldung</groupId>
-    <artifactId>maven-copy-files</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>maven-copy-files</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
-    </properties>
+
+    <modules>
+        <module>maven-resources-plugin</module>
+        <module>maven-antrun-plugin</module>
+        <module>copy-rename-maven-plugin</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -26,6 +31,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <pluginManagement>
             <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -72,9 +78,11 @@
             </plugins>
         </pluginManagement>
     </build>
-    <modules>
-        <module>maven-resources-plugin</module>
-        <module>maven-antrun-plugin</module>
-        <module>copy-rename-maven-plugin</module>
-    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+
 </project>

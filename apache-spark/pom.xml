@@ -91,7 +91,7 @@
         </plugins>
     </build>
 
-	<repositories>
+    <repositories>
         <repository>
             <id>SparkPackagesRepo</id>
             <url>https://repos.spark-packages.org</url>

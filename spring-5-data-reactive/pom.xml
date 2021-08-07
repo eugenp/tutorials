@@ -84,11 +84,6 @@
             <version>${h2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
@@ -152,6 +147,10 @@
         <h2.version>1.4.200</h2.version>
         <couchbaseMock.version>1.5.23</couchbaseMock.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
+        <!-- 
+        	This spring-boot.version is set manually, 
+        	For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 
+        -->
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
     </properties>
 

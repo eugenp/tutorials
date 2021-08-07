@@ -48,7 +48,6 @@
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
-        <!--<module>core-java-8-datetime</module> --> <!-- unit test case failure -->
         <module>core-java-8-datetime-2</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-8-datetime</module>
@@ -63,7 +62,6 @@
         <module>core-java-io-4</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-conversions</module>
-        <module>core-java-io-conversions-2</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <module>core-java-jvm</module>
@@ -103,6 +101,7 @@
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
+        <module>core-java-streams-4</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
         <module>core-java-string-algorithms-3</module>

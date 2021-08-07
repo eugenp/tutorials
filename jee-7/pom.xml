@@ -203,7 +203,7 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no 
                     influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
@@ -487,7 +487,7 @@
 
     <properties>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
-        <mvc.api.version>1.0.0</mvc.api.version>
+        <mvc.api.version>1.0-edr2</mvc.api.version>
         <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
         <javaee_api.version>7.0</javaee_api.version>
