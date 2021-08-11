@@ -65,9 +65,10 @@ public class KsqlDBApplication {
     public CompletableFuture<Void> subscribeOnAlerts(Subscriber<Row> subscriber) {
         return client.streamQuery(ALERTS_QUERY, PROPERTIES)
           .thenAccept(streamedQueryResult -> streamedQueryResult.subscribe(subscriber))
-          .exceptionally(e -> {
-              log.error("Alerts push query failed", e);
-              return null;
+          .whenComplete((result, ex) -> {
+              if (ex != null) {
+                  log.error("Alerts push query failed", ex);
+              }
           });
     }
 
