@@ -67,6 +67,7 @@
         <module>spring-data-elasticsearch</module>
         <module>spring-data-gemfire</module>
         <module>spring-data-geode</module>
+        <module>spring-data-graphdb</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-enterprise</module>
