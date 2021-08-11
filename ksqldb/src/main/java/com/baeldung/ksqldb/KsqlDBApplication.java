@@ -46,7 +46,7 @@ public class KsqlDBApplication {
 
     private final Client client;
 
-    public CompletableFuture<ExecuteStatementResult> createAlertsStream() {
+    public CompletableFuture<ExecuteStatementResult> createReadingsStream() {
         return client.executeStatement(CREATE_READINGS_STREAM, PROPERTIES);
     }
 

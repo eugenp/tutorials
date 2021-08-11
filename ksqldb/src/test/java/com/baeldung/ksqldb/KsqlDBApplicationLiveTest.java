@@ -108,7 +108,7 @@ class KsqlDBApplicationLiveTest {
     }
 
     private void createAlertsMaterializedView() {
-        ksqlDBApplication.createAlertsStream().join();
+        ksqlDBApplication.createReadingsStream().join();
         ksqlDBApplication.createAlertsTable().join();
     }
 
