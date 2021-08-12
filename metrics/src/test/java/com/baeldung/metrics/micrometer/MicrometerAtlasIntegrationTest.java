@@ -119,9 +119,9 @@ public class MicrometerAtlasIntegrationTest {
           .counter());
 
         assertTrue(counterOptional.isPresent());
-        assertTrue(counterOptional
+        assertEquals(counterOptional
           .get()
-          .count() == 2.0);
+          .count() , 2.0, 0.0);
     }
 
     @Test
@@ -134,10 +134,10 @@ public class MicrometerAtlasIntegrationTest {
           .register(registry);
 
         counter.increment(2.0);
-        assertTrue(counter.count() == 2);
+        assertEquals(counter.count(), 2, 0);
 
         counter.increment(-1);
-        assertTrue(counter.count() == 1);
+        assertEquals(counter.count(), 1, 0);
     }
 
     @Test
@@ -153,7 +153,7 @@ public class MicrometerAtlasIntegrationTest {
 
         timer.record(30, TimeUnit.MILLISECONDS);
 
-        assertTrue(2 == timer.count());
+        assertEquals(2, timer.count(), 0);
 
         assertThat(timer.totalTime(TimeUnit.MILLISECONDS)).isBetween(40.0, 55.0);
     }
@@ -183,10 +183,10 @@ public class MicrometerAtlasIntegrationTest {
           .builder("cache.size", list, List::size)
           .register(registry);
 
-        assertTrue(gauge.value() == 0.0);
+        assertEquals(gauge.value(), 0.0, 0.0);
 
         list.add("1");
-        assertTrue(gauge.value() == 1.0);
+        assertEquals(gauge.value(), 1.0, 0.0);
     }
 
     @Test
@@ -200,8 +200,8 @@ public class MicrometerAtlasIntegrationTest {
         distributionSummary.record(4);
         distributionSummary.record(5);
 
-        assertTrue(3 == distributionSummary.count());
-        assertTrue(12 == distributionSummary.totalAmount());
+        assertEquals(3, distributionSummary.count(), 0);
+        assertEquals(12, distributionSummary.totalAmount(), 0);
     }
 
     @Test
