@@ -23,7 +23,7 @@ public class Article {
     private String htmlContent;
 
     @Relations(edges = ArticleLink.class, lazy = true)
-    private Collection<Article> articles;
+    private Collection<Author> authors;
 
     public Article() {
         super();
