@@ -95,8 +95,7 @@ public class ArticleRepositoryTest {
                 ZonedDateTime.now(),
                 "<html>Some HTML content</html>"
         );
-
-        Article savedArticle = articleRepository.save(newArticle);
+        articleRepository.save(newArticle);
 
         Iterable<Article> articlesByAuthor = articleRepository.findByAuthor(newArticle.getAuthor());
         List<Article> articlesByAuthorList = new ArrayList<>();
