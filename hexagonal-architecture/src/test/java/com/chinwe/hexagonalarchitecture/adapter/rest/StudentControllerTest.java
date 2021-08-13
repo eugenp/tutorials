@@ -44,49 +44,40 @@ class StudentControllerTest {
 
 
     @Test
-    void getStudents() throws Exception {
-
-
+    void givenStudents_whenGetStudents_thenReturnJsonArray
+            () throws Exception {
         Student studentOne = new Student("Tony", 1L, 100L);
         Student  studentTwo = new Student("Chinwe", 2L, 200L);
         Student  studentThree = new Student("Frank", 3L, 300L);
         Status statusOne =new Status(200,"Student added successfully");
         Status statusTwo =new Status(200,"Student was removed successfully");
         List<Student> students = Arrays.asList(studentOne, studentTwo, studentThree);
-
         given(studentService.getStudents()).willReturn(students);
-
         mvc.perform(get("/api/v1/student")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)))
                 .andExpect(jsonPath("$[0].studentName", is(studentOne.getStudentName())))
                 .andExpect(jsonPath("$[1].studentName", is(studentTwo.getStudentName())));
-
         verify(studentService, VerificationModeFactory.times(1)).getStudents();
         reset(studentService);
     }
 
     @Test
-    void getStudentById() throws Exception {
-
+    void givenStudent_whenGetStudentById() throws Exception {
         Student studentOne = new Student("Tony", 1L, 100L);
-
         given(studentService.getStudentById(Mockito.anyLong())).willReturn(studentOne);
-
         mvc.perform(get("/api/v1/student/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-
                 .andExpect(jsonPath("$.studentName", is(studentOne.getStudentName())));
-
         verify(studentService, VerificationModeFactory.times(1)).getStudentById(Mockito.anyLong());
         reset(studentService);
 
     }
 
     @Test
-    void addStudent() throws Exception {
+    void whenPostStudent_thenCreateStudent() throws Exception {
         Status statusOne =new Status(200,"Student added successfully");
         given(studentService.addStudent(Mockito.any())).willReturn(statusOne);
         mvc.perform(post("/api/v1/student")
@@ -100,7 +91,7 @@ class StudentControllerTest {
     }
 
     @Test
-    void removeStudent() throws Exception {
+    void whenDeleteStudent_thenRemoveValidStudent() throws Exception {
         Status statusOne =new Status(200,"Student added successfully");
         given(studentService.removeStudent(Mockito.anyLong())).willReturn(statusOne);
         mvc.perform(delete("/api/v1/student/1")

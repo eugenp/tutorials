@@ -66,7 +66,7 @@ class StudentServiceTest {
 
 
     @Test
-    void getAllStudents() {
+    void givenThreeStudents_whenGetAllStudents_thenThreeStudentsReturned() {
         Student  studentOne = new Student("Tony", 1L, 100L);
         Student  studentTwo = new Student("Chinwe", 2L, 200L);
         Student  studentThree = new Student("Frank", 3L, 300L);
@@ -77,7 +77,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void getStudentById() {
+    void whenValidStudentId_thenStudentShouldBeFound {
         Long id = 1L;
         Student student = studentService.getStudentById(1L);
         assertThat(student.getStudentId()).isEqualTo(id);
@@ -85,7 +85,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void addStudent() {
+    void whenAddStudent_thenStausReturned() {
         Student  studentOne = new Student("Tony", 4L, 400L);
         Status status=new Status(201,"Student added");
         Assertions.assertThat(studentService.addStudent(studentOne)).extracting(Status::getDescription).as(status.getDescription());
@@ -93,7 +93,7 @@ class StudentServiceTest {
 
 
     @Test
-    void removeStudent() {
+    void whenRemoveStudentById_thenStatusReturned() {
         Student  studentOne = new Student("Tony", 2L, 200L);
         Status status=new Status(200,"Student removed");
         assertThat(studentService.removeStudent(studentOne.getStudentId())).extracting(Status::getDescription).as(status.getDescription());
