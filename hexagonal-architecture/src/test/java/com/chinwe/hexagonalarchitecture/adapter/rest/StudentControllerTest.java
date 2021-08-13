@@ -64,12 +64,17 @@ class StudentControllerTest {
 
     @Test
     void givenStudent_whenGetStudentById() throws Exception {
+
         Student studentOne = new Student("Tony", 1L, 100L);
+
         given(studentService.getStudentById(Mockito.anyLong())).willReturn(studentOne);
+
         mvc.perform(get("/api/v1/student/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+
                 .andExpect(jsonPath("$.studentName", is(studentOne.getStudentName())));
+
         verify(studentService, VerificationModeFactory.times(1)).getStudentById(Mockito.anyLong());
         reset(studentService);
 
