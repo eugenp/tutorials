@@ -18,19 +18,19 @@ public class TimeApiUnitTest {
         Date endDate = endCalendar.getTime();
 
         List<Date> dates = TimeApi.getDatesBetweenUsingJava7(startDate, endDate);
-        assertEquals(dates.size(), 2);
+        assertEquals(2, dates.size());
 
         Calendar calendar = Calendar.getInstance();
         Date date1 = calendar.getTime();
-        assertEquals(dates.get(0).getDay(), date1.getDay());
-        assertEquals(dates.get(0).getMonth(), date1.getMonth());
-        assertEquals(dates.get(0).getYear(), date1.getYear());
+        assertEquals(date1.getDay(), dates.get(0).getDay());
+        assertEquals(date1.getMonth(), dates.get(0).getMonth());
+        assertEquals(date1.getYear(), dates.get(0).getYear());
 
         calendar.add(Calendar.DATE, 1);
         Date date2 = calendar.getTime();
-        assertEquals(dates.get(1).getDay(), date2.getDay());
-        assertEquals(dates.get(1).getMonth(), date2.getMonth());
-        assertEquals(dates.get(1).getYear(), date2.getYear());
+        assertEquals(date2.getDay(), dates.get(1).getDay());
+        assertEquals(date2.getMonth(), dates.get(1).getMonth());
+        assertEquals(date2.getYear(), dates.get(1).getYear());
     }
 
     @Test
