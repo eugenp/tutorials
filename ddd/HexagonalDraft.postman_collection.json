@@ -1,0 +1,65 @@
+{
+	"variables": [],
+	"info": {
+		"name": "HexagonalArchitecturePostManProject",
+		"_postman_id": "c25a6945-6430-7eb2-cdd8-a217b96cca80",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/v1/product",
+			"request": {
+				"url": "http://localhost:8080/api/v1/product",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/product copy",
+			"request": {
+				"url": "http://localhost:8080/api/v1/product/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/product copy",
+			"request": {
+				"url": "http://localhost:8080/api/v1/product",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"type\": \"Mobile\",\n\"description\": \"iphone mobile\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
