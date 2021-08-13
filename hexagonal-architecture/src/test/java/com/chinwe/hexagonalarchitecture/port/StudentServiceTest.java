@@ -77,7 +77,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void whenValidStudentId_thenStudentShouldBeFound {
+    void whenValidStudentId_thenStudentShouldBeFound() {
         Long id = 1L;
         Student student = studentService.getStudentById(1L);
         assertThat(student.getStudentId()).isEqualTo(id);
@@ -85,7 +85,7 @@ class StudentServiceTest {
     }
 
     @Test
-    void whenAddStudent_thenStausReturned() {
+    void whenAddStudent_thenStatusReturned() {
         Student  studentOne = new Student("Tony", 4L, 400L);
         Status status=new Status(201,"Student added");
         Assertions.assertThat(studentService.addStudent(studentOne)).extracting(Status::getDescription).as(status.getDescription());

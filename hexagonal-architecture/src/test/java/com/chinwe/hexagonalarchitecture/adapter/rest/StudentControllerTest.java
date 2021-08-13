@@ -44,8 +44,7 @@ class StudentControllerTest {
 
 
     @Test
-    void givenStudents_whenGetStudents_thenReturnJsonArray
-            () throws Exception {
+    void givenStudents_whenGetStudents_thenReturnJsonArray() throws Exception {
         Student studentOne = new Student("Tony", 1L, 100L);
         Student  studentTwo = new Student("Chinwe", 2L, 200L);
         Student  studentThree = new Student("Frank", 3L, 300L);
