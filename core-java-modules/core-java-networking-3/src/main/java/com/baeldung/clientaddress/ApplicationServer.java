@@ -26,17 +26,10 @@ public class ApplicationServer {
 
         out = new PrintWriter(connectedSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(connectedSocket.getInputStream()));
+        String msg = in.readLine();
+        System.out.println("Message received from the client :: " + msg);
+        out.println("Hello Client !!");
 
-        while (in.readLine() != null) {
-            String msg = in.readLine();
-            if (msg.contains("Hello")) {
-                System.out.println(msg);
-                out.println("Hello Client !!");
-            } else {
-                out.println("Not valid message !! ");
-                break;
-            }
-        }
         closeIO();
         stopServer();
     }

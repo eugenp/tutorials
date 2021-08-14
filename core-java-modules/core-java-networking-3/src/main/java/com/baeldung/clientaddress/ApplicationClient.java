@@ -21,7 +21,7 @@ public class ApplicationClient {
     public void sendGreetings(String msg) throws IOException {
         out.println(msg);
         String reply = in.readLine();
-        System.out.println(reply);
+        System.out.println("Reply received from the server :: " + reply);
     }
 
     public void disconnect() throws IOException {
