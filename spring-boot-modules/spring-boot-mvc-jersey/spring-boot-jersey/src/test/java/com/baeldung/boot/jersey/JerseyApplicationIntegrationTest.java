@@ -1,10 +1,10 @@
-package com.baeldung.boot.mvc;
+package com.baeldung.boot.jersey;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MvcApplicationIntegrationTests {
+class JerseyApplicationIntegrationTest {
 
     @Test
     void contextLoads() {
