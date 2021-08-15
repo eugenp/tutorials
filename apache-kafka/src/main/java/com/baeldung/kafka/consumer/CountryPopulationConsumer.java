@@ -19,9 +19,7 @@ public class CountryPopulationConsumer {
     private java.util.function.Consumer<Throwable> exceptionConsumer;
     private java.util.function.Consumer<CountryPopulation> countryPopulationConsumer;
 
-    public CountryPopulationConsumer(
-            Consumer<String, Integer> consumer, java.util.function.Consumer<Throwable> exceptionConsumer,
-            java.util.function.Consumer<CountryPopulation> countryPopulationConsumer) {
+    public CountryPopulationConsumer(Consumer<String, Integer> consumer, java.util.function.Consumer<Throwable> exceptionConsumer, java.util.function.Consumer<CountryPopulation> countryPopulationConsumer) {
         this.consumer = consumer;
         this.exceptionConsumer = exceptionConsumer;
         this.countryPopulationConsumer = countryPopulationConsumer;
