@@ -1,4 +1,4 @@
-package com.baeldung.kafka;
+package com.baeldung.kafka.exactlyonce;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -43,10 +43,11 @@ public class TransactionalWordCount {
                 ConsumerRecords<String, String> records = consumer.poll(ofSeconds(60));
 
                 Map<String, Integer> wordCountMap = records.records(new TopicPartition(INPUT_TOPIC, 0))
-                        .stream()
-                        .flatMap(record -> Stream.of(record.value().split(" ")))
-                        .map(word -> Tuple.of(word, 1))
-                        .collect(Collectors.toMap(tuple -> tuple.getKey(), t1 -> t1.getValue(), (v1, v2) -> v1 + v2));
+                    .stream()
+                    .flatMap(record -> Stream.of(record.value()
+                        .split(" ")))
+                    .map(word -> Tuple.of(word, 1))
+                    .collect(Collectors.toMap(tuple -> tuple.getKey(), t1 -> t1.getValue(), (v1, v2) -> v1 + v2));
 
                 producer.beginTransaction();
 
@@ -56,7 +57,8 @@ public class TransactionalWordCount {
 
                 for (TopicPartition partition : records.partitions()) {
                     List<ConsumerRecord<String, String>> partitionedRecords = records.records(partition);
-                    long offset = partitionedRecords.get(partitionedRecords.size() - 1).offset();
+                    long offset = partitionedRecords.get(partitionedRecords.size() - 1)
+                        .offset();
 
                     offsetsToCommit.put(partition, new OffsetAndMetadata(offset + 1));
                 }
@@ -71,7 +73,6 @@ public class TransactionalWordCount {
             producer.abortTransaction();
 
         }
-
 
     }
 
