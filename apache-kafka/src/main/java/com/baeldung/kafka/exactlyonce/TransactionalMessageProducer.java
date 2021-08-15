@@ -1,4 +1,4 @@
-package com.baeldung.kafka;
+package com.baeldung.kafka.exactlyonce;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -24,16 +24,16 @@ public class TransactionalMessageProducer {
 
         producer.initTransactions();
 
-        try{
+        try {
 
             producer.beginTransaction();
 
-            Stream.of(DATA_MESSAGE_1, DATA_MESSAGE_2).forEach(s -> producer.send(
-                    new ProducerRecord<String, String>("input", null, s)));
+            Stream.of(DATA_MESSAGE_1, DATA_MESSAGE_2)
+                .forEach(s -> producer.send(new ProducerRecord<String, String>("input", null, s)));
 
             producer.commitTransaction();
 
-        }catch (KafkaException e){
+        } catch (KafkaException e) {
 
             producer.abortTransaction();
 

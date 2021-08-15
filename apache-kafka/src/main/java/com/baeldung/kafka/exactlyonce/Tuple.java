@@ -1,4 +1,4 @@
-package com.baeldung.kafka;
+package com.baeldung.kafka.exactlyonce;
 
 public class Tuple {
 
@@ -10,8 +10,8 @@ public class Tuple {
         this.value = value;
     }
 
-    public static Tuple of(String key, Integer value){
-        return new Tuple(key,value);
+    public static Tuple of(String key, Integer value) {
+        return new Tuple(key, value);
     }
 
     public String getKey() {
