@@ -18,6 +18,7 @@ public class InputMessage {
     public String getSender() {
         return sender;
     }
+
     public void setSender(String sender) {
         this.sender = sender;
     }
@@ -55,13 +56,12 @@ public class InputMessage {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         InputMessage message1 = (InputMessage) o;
-        return Objects.equal(sender, message1.sender) &&
-                Objects.equal(recipient, message1.recipient) &&
-                Objects.equal(sentAt, message1.sentAt) &&
-                Objects.equal(message, message1.message);
+        return Objects.equal(sender, message1.sender) && Objects.equal(recipient, message1.recipient) && Objects.equal(sentAt, message1.sentAt) && Objects.equal(message, message1.message);
     }
 
     @Override

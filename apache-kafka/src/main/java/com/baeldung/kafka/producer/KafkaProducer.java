@@ -15,8 +15,7 @@ public class KafkaProducer {
     }
 
     public Future<RecordMetadata> send(String key, String value) {
-        ProducerRecord record = new ProducerRecord("topic_sports_news",
-                key, value);
+        ProducerRecord record = new ProducerRecord("topic_sports_news", key, value);
         return producer.send(record);
     }
 
@@ -35,6 +34,5 @@ public class KafkaProducer {
     public void commitTransaction() {
         producer.commitTransaction();
     }
-
 
 }

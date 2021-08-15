@@ -12,7 +12,9 @@ public class InputMessageTimestampAssigner implements AssignerWithPunctuatedWate
     @Override
     public long extractTimestamp(InputMessage element, long previousElementTimestamp) {
         ZoneId zoneId = ZoneId.systemDefault();
-        return element.getSentAt().atZone(zoneId).toEpochSecond() * 1000;
+        return element.getSentAt()
+            .atZone(zoneId)
+            .toEpochSecond() * 1000;
     }
 
     @Nullable

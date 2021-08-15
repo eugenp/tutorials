@@ -8,11 +8,9 @@ import org.apache.flink.api.common.typeinfo.TypeInformation;
 
 import java.io.IOException;
 
-public class InputMessageDeserializationSchema implements
-      DeserializationSchema<InputMessage> {
+public class InputMessageDeserializationSchema implements DeserializationSchema<InputMessage> {
 
     static ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-
 
     @Override
     public InputMessage deserialize(byte[] bytes) throws IOException {
