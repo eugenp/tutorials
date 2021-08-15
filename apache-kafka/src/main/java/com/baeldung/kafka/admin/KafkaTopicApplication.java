@@ -27,11 +27,11 @@ public class KafkaTopicApplication {
             short replicationFactor = 1;
             NewTopic newTopic = new NewTopic(topicName, partitions, replicationFactor);
 
-            CreateTopicsResult result = admin.createTopics(
-              Collections.singleton(newTopic));
+            CreateTopicsResult result = admin.createTopics(Collections.singleton(newTopic));
 
             // get the async result for the new topic creation
-            KafkaFuture<Void> future = result.values().get(topicName);
+            KafkaFuture<Void> future = result.values()
+                .get(topicName);
 
             // call get() to block until topic creation has completed or failed
             future.get();
@@ -47,15 +47,13 @@ public class KafkaTopicApplication {
             short replicationFactor = 1;
             NewTopic newTopic = new NewTopic(topicName, partitions, replicationFactor);
 
-            CreateTopicsOptions topicOptions = new CreateTopicsOptions()
-              .validateOnly(true)
-              .retryOnQuotaViolation(true);
+            CreateTopicsOptions topicOptions = new CreateTopicsOptions().validateOnly(true)
+                .retryOnQuotaViolation(true);
 
-            CreateTopicsResult result = admin.createTopics(
-              Collections.singleton(newTopic), topicOptions
-            );
+            CreateTopicsResult result = admin.createTopics(Collections.singleton(newTopic), topicOptions);
 
-            KafkaFuture<Void> future = result.values().get(topicName);
+            KafkaFuture<Void> future = result.values()
+                .get(topicName);
             future.get();
         }
     }
@@ -72,14 +70,12 @@ public class KafkaTopicApplication {
             Map<String, String> newTopicConfig = new HashMap<>();
             newTopicConfig.put(TopicConfig.CLEANUP_POLICY_CONFIG, TopicConfig.CLEANUP_POLICY_COMPACT);
             newTopicConfig.put(TopicConfig.COMPRESSION_TYPE_CONFIG, "lz4");
-            NewTopic newTopic = new NewTopic(topicName, partitions, replicationFactor)
-              .configs(newTopicConfig);
+            NewTopic newTopic = new NewTopic(topicName, partitions, replicationFactor).configs(newTopicConfig);
 
-            CreateTopicsResult result = admin.createTopics(
-              Collections.singleton(newTopic)
-            );
+            CreateTopicsResult result = admin.createTopics(Collections.singleton(newTopic));
 
-            KafkaFuture<Void> future = result.values().get(topicName);
+            KafkaFuture<Void> future = result.values()
+                .get(topicName);
             future.get();
         }
     }
