@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 public class ExceptionUnitTest {
     @Test
-    public void givenInputStreamWithAnInvalidElement_whenAPipelineOperatorThrowsAnException_thenAnErrorIsSentDownstream() {
+    public void givenInvalidElement_whenPipelineThrowsException_thenErrorIsSentDownstream() {
         Function<String, Integer> mapper = input -> {
             if (input.matches("\\D")) {
                 throw new NumberFormatException();
@@ -31,7 +31,7 @@ public class ExceptionUnitTest {
     }
 
     @Test
-    public void givenInputStreamWithAnInvalidElement_whenTheHandleOperatorCallsSinkErrorMethod_thenAnErrorIsSentDownstream() {
+    public void givenInvalidElement_whenHandleCallsSinkErrorMethod_thenErrorIsSentDownstream() {
         BiConsumer<String, SynchronousSink<Integer>> handler = (input, sink) -> {
             if (input.matches("\\D")) {
                 sink.error(new NumberFormatException());
@@ -50,7 +50,7 @@ public class ExceptionUnitTest {
     }
 
     @Test
-    public void givenInputStreamWithAnInvalidElement_whenTheFlatMapOperatorCallsMonoErrorMethod_thenAnErrorIsSentDownstream() {
+    public void givenInvalidElement_whenFlatMapCallsMonoErrorMethod_thenErrorIsSentDownstream() {
         Function<String, Publisher<Integer>> mapper = input -> {
             if (input.matches("\\D")) {
                 return Mono.error(new NumberFormatException());
@@ -69,7 +69,7 @@ public class ExceptionUnitTest {
     }
 
     @Test
-    public void givenInputStreamWithANullElement_whenAPipelineOperatorIsCalled_thenAnNpeIsSentDownstream() {
+    public void givenNullElement_whenPipelineOperatorExecutes_thenNpeIsSentDownstream() {
         Function<String, Integer> mapper = input -> {
             if (input == null) {
                 return 0;
