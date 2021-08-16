@@ -1,7 +1,6 @@
 package com.baeldung.emailvalidation;
 
 import static org.junit.Assert.assertTrue;
-
 import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.Test;
 
