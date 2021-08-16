@@ -1,59 +1,72 @@
 package com.baeldung.emailvalidation;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.apache.commons.validator.routines.EmailValidator;
 import org.junit.Test;
 
 public class EmailValidationUnitTest {
 
     private String emailAddress;
+    private String regexPattern;
 
     @Test
     public void testUsingEmailValidator() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidator.getInstance()
-            .isValid(emailAddress), true);
+        assertTrue(EmailValidator.getInstance()
+            .isValid(emailAddress));
     }
 
     @Test
     public void testUsingSimpleRegex() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidation.usingSimpleRegex(emailAddress), true);
+        regexPattern = "^(.+)@(\\S+)$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 
     @Test
     public void testUsingStrictRegex() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidation.usingStrictRegex(emailAddress), true);
+        regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 
     @Test
     public void testUsingUnicodeRegex() {
         emailAddress = "用户名@领域.电脑";
-        assertEquals(EmailValidation.usingUnicodeRegex(emailAddress), true);
+        regexPattern = "^(?=.{1,64}@)[\\p{L}0-9_-]+(\\.[\\p{L}0-9_-]+)*@" 
+            + "[^-][\\p{L}0-9-]+(\\.[\\p{L}0-9-]+)*(\\.[\\p{L}]{2,})$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 
     @Test
     public void testUsingRFC5322Regex() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidation.usingRFC5322Regex(emailAddress), true);
+        regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 
     @Test
     public void testRestrictDots() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidation.restrictDots(emailAddress), true);
+        regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@" 
+            + "[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 
     @Test
     public void testOwaspValidation() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidation.owaspValidation(emailAddress), true);
+        regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 
     @Test
     public void testTopLevelDomain() {
         emailAddress = "username@domain.com";
-        assertEquals(EmailValidation.topLevelDomain(emailAddress), true);
+        regexPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*" 
+            + "@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
     }
 }
