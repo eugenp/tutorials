@@ -1,4 +1,4 @@
-package main.java.com.baeldung.examples.hexagonal;
+package com.baeldung.examples.hexagonal;
 
 import java.util.UUID;
 
@@ -11,12 +11,15 @@ public class Account {
         this.balance = balance;
     }
 
+
     public Double deposit(Double amount) {
+        validateAmount(amount);
         balance = balance + amount;
         return balance;
     }
 
     public Double withdrawal(Double amount) {
+        validateAmountForWithdrawal(amount);
         balance = balance - amount;
         return balance;
     }
@@ -27,5 +30,14 @@ public class Account {
 
     public Double getBalance() {
         return balance;
+    }
+
+    private void validateAmount(Double amount) {
+        if (amount < 0) throw new RuntimeException("Invalid amount");
+    }
+
+    private void validateAmountForWithdrawal(Double amount) {
+        validateAmount(amount);
+        if (amount > balance) throw new RuntimeException("Insufficient balance");
     }
 }

@@ -1,4 +1,4 @@
-package main.java.com.baeldung.examples.hexagonal;
+package com.baeldung.examples.hexagonal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public class InMemoryAccountRepository implements AccountRepository {
 
     @Override
     public Optional<Account> findById(UUID id) {
-        return Optional.of(map.get(id));
+        return Optional.ofNullable(map.get(id));
     }
 
     @Override

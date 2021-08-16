@@ -1,4 +1,4 @@
-package main.java.com.baeldung.examples.hexagonal;
+package com.baeldung.examples.hexagonal;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,13 +14,8 @@ public class CommandLineInterface {
 
     public void start() throws IOException {
         while (true) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String argsString = reader.readLine();
-            String[] args = argsString.split(" ");
-            if (args.length < 1) {
-                System.out.println("Invalid command");
-                return;
-            }
+            String[] args = getArgs();
+            if (args == null) return;
             String firstArg = args[0];
 
             switch (firstArg) {
@@ -42,28 +37,40 @@ public class CommandLineInterface {
         }
     }
 
+    private String[] getArgs() throws IOException {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String argsString = reader.readLine();
+        String[] args = argsString.split(" ");
+        if (args.length < 1) {
+            System.out.println("Invalid command");
+            return null;
+        }
+        return args;
+    }
+
     private void createHandler() {
         UUID account = accountService.createAccount();
         System.out.println(account);
     }
 
     private void balanceHandler(String[] args) {
-        var uuid = UUID.fromString(args[1]);
-        var balance = accountService.getBalance(uuid);
+        UUID uuid = UUID.fromString(args[1]);
+        Double balance = accountService.getBalance(uuid);
         System.out.println(balance);
     }
 
     private void depositHandler(String[] args) {
-        var amount = Double.parseDouble(args[2]);
-        var uuid = UUID.fromString(args[1]);
-        var deposit = accountService.deposit(uuid, amount);
+        Double amount = Double.parseDouble(args[2]);
+        UUID uuid = UUID.fromString(args[1]);
+        Double deposit = accountService.deposit(uuid, amount);
         System.out.println(deposit);
     }
 
     private void withdrawalHandler(String[] args) {
-        var amount = Double.parseDouble(args[2]);
-        var uuid = UUID.fromString(args[1]);
-        var withdrawal = accountService.withdrawal(uuid, amount);
+        Double amount = Double.parseDouble(args[2]);
+        UUID uuid = UUID.fromString(args[1]);
+        Double withdrawal = accountService.withdrawal(uuid, amount);
         System.out.println(withdrawal);
     }
 }

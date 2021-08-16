@@ -1,4 +1,4 @@
-package main.java.com.baeldung.examples.hexagonal;
+package com.baeldung.examples.hexagonal;
 
 import java.io.IOException;
 

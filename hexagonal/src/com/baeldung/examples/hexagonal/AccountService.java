@@ -1,4 +1,4 @@
-package main.java.com.baeldung.examples.hexagonal;
+package com.baeldung.examples.hexagonal;
 
 import java.util.UUID;
 
@@ -11,3 +11,4 @@ public interface AccountService {
 
     Double getBalance(UUID id);
 }
+
