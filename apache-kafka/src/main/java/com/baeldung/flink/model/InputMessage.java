@@ -61,7 +61,10 @@ public class InputMessage {
         if (o == null || getClass() != o.getClass())
             return false;
         InputMessage message1 = (InputMessage) o;
-        return Objects.equal(sender, message1.sender) && Objects.equal(recipient, message1.recipient) && Objects.equal(sentAt, message1.sentAt) && Objects.equal(message, message1.message);
+        return Objects.equal(sender, message1.sender) && 
+                Objects.equal(recipient, message1.recipient) && 
+                Objects.equal(sentAt, message1.sentAt) && 
+                Objects.equal(message, message1.message);
     }
 
     @Override
