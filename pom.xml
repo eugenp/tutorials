@@ -345,6 +345,7 @@
                 <module>antlr</module>
 
                 <module>apache-cxf</module>
+                <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
                 <module>apache-poi</module>
@@ -815,6 +816,7 @@
                 <module>antlr</module>
 
                 <module>apache-cxf</module>
+                <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
                 <module>apache-poi</module>
