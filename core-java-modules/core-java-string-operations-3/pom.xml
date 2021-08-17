@@ -44,13 +44,18 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <assertj.version>3.6.1</assertj.version>
-        <maven-artifact.version>3.6.3</maven-artifact.version>
-        <gradle-core.version>6.1.1</gradle-core.version>
-        <jackson-core.version>2.11.1</jackson-core.version>
-        <semver4j.version>3.1.0</semver4j.version>
-    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <repository>
@@ -58,4 +63,15 @@
             <url>https://repo.gradle.org/gradle/libs-releases-local/</url>
         </repository>
     </repositories>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <assertj.version>3.6.1</assertj.version>
+        <maven-artifact.version>3.6.3</maven-artifact.version>
+        <gradle-core.version>6.1.1</gradle-core.version>
+        <jackson-core.version>2.11.1</jackson-core.version>
+        <semver4j.version>3.1.0</semver4j.version>
+    </properties>
+
 </project>

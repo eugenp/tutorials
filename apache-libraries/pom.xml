@@ -183,7 +183,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- meecrowave -->
             <plugin>
                 <groupId>org.apache.meecrowave</groupId>

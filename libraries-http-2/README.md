@@ -9,5 +9,7 @@ This module contains articles about HTTP libraries.
 - [Retrofit 2 – Dynamic URL](https://www.baeldung.com/retrofit-dynamic-url)
 - [Adding Interceptors in OkHTTP](https://www.baeldung.com/java-okhttp-interceptors)
 - [A Guide to Events in OkHTTP](https://www.baeldung.com/java-okhttp-events)
+- [Download a Binary File Using OkHttp](https://www.baeldung.com/java-okhttp-download-binary-file)
+- [Trusting a Self-Signed Certificate in OkHttp](https://www.baeldung.com/okhttp-self-signed-cert)
 - More articles [[<-- prev]](/libraries-http)
 

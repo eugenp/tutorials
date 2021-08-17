@@ -8,3 +8,4 @@ This module contains articles about image processing.
 - [Optical Character Recognition with Tesseract](https://www.baeldung.com/java-ocr-tesseract)
 - [How Can I Resize an Image Using Java?](https://www.baeldung.com/java-resize-image)
 - [Adding Text to an Image in Java](https://www.baeldung.com/java-add-text-to-image)
+- [Capturing Image From Webcam In Java](https://www.baeldung.com/java-capture-image-from-webcam)

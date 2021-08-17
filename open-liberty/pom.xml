@@ -111,4 +111,5 @@
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <testServerHttpPort>7070</testServerHttpPort>
     </properties>
+
 </project>

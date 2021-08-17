@@ -17,6 +17,11 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-datatype.version}</version>
+        </dependency>
         <!-- JAXB APIs & runtime no longer provided in JDK 11 -->
         <!-- see http://openjdk.java.net/jeps/320 -->
         <dependency>
@@ -91,6 +96,7 @@
         <sqlite.version>3.15.1</sqlite.version>
         <opencsv.version>4.1</opencsv.version>
         <jaxb.version>2.3.1</jaxb.version>
+        <jackson-datatype.version>2.12.3</jackson-datatype.version>
         <awaitility.version>3.1.1</awaitility.version>
     </properties>
 

@@ -10,3 +10,4 @@ This module contains articles about modifiers in Java
 - [A Guide to the Static Keyword in Java](https://www.baeldung.com/java-static)
 - [Static and Default Methods in Interfaces in Java](https://www.baeldung.com/java-static-default-methods)
 - [The strictfp Keyword in Java](https://www.baeldung.com/java-strictfp)
+- [Static Classes Versus the Singleton Pattern in Java](https://www.baeldung.com/java-static-class-vs-singleton)
