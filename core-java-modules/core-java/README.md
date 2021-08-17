@@ -12,3 +12,4 @@
 - [A Guide to the ResourceBundle](http://www.baeldung.com/java-resourcebundle)
 - [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
 - [Deserialization Vulnerabilities in Java](https://www.baeldung.com/java-deserialization-vulnerabilities)
+- [Generating Alphanumeric UUID String in Java](https://www.baeldung.com/java-generate-alphanumeric-uuid)

@@ -96,6 +96,11 @@
             <artifactId>spring-restdocs-restassured</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -139,6 +144,7 @@
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+        <hikaricp.version>4.0.3</hikaricp.version>
     </properties>
 
 </project>

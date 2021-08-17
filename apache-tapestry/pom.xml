@@ -77,7 +77,6 @@
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -88,7 +87,6 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
             <!-- Run the application using "mvn jetty:run" -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -119,7 +117,6 @@
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
-
         <!-- This repository is only needed when the Tapestry version is a preview release, rather than 
             a final release. -->
         <repository>

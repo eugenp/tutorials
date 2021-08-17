@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- Spring IO Platform is the parent of the generated application to be able to use Spring Boot 
+    <!-- Spring IO Platform is the parent of the generated application to be able to use Spring Boot
         and all its default configuration -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
@@ -229,6 +229,11 @@
         <dependency>
             <groupId>org.webjars.bower</groupId>
             <artifactId>ie10-viewport-bug-workaround</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.olap4j</groupId>
+            <artifactId>olap4j</artifactId>
+            <version>${olap4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -619,6 +624,7 @@
         <html5shiv.version>3.7.3</html5shiv.version>
         <bootstrap.ie10-viewport-bug-workaround.version>1.0.3</bootstrap.ie10-viewport-bug-workaround.version>
         <querydsl-processor.version>2.0.0.RELEASE</querydsl-processor.version>
+        <olap4j.version>1.2.0</olap4j.version>
     </properties>
 
 </project>

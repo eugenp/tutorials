@@ -9,7 +9,7 @@ public class VersionUnitTest {
 
     @Test
     public void givenJava_whenUsingRuntime_thenGetVersion() {
-        String expectedVersion = "11";
+        String expectedVersion = "15";
         Runtime.Version runtimeVersion = Runtime.version();
         String version = String.valueOf(runtimeVersion.version().get(0));
         Assertions.assertThat(version).isEqualTo(expectedVersion);

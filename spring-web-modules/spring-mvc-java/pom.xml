@@ -226,7 +226,6 @@
         <!-- testing -->
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <rest-assured.version>3.0.7</rest-assured.version>
         <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
         <!-- maven plugins -->
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>

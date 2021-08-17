@@ -36,6 +36,16 @@
 
     <build>
         <finalName>core-java-io-conversions-2</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -45,6 +55,8 @@
     </build>
 
     <properties>
+        <source.version>11</source.version>
+        <target.version>11</target.version>
         <json.version>20200518</json.version>
         <opencsv.version>4.1</opencsv.version>
     </properties>

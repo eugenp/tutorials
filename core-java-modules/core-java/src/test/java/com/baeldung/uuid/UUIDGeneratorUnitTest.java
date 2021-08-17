@@ -61,4 +61,14 @@ class UUIDGeneratorUnitTest {
         assertEquals(5, uuid.version());
         assertEquals(2, uuid.variant());
     }
+
+    @Test
+    public void version_5_UUID_is_correctly_generated_for_domain_baeldung_name() {
+
+        UUID uuid = UUIDGenerator.generateType5UUID("baeldung.com");
+
+        assertEquals("efd5462b-b07a-52a3-94ea-bf575c0e0e75", uuid.toString());
+        assertEquals(5, uuid.version());
+        assertEquals(2, uuid.variant());
+    }
 }

@@ -39,7 +39,6 @@
             <artifactId>junit-platform-commons</artifactId>
             <version>${junit.platform.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>

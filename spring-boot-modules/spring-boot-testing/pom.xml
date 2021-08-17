@@ -80,11 +80,6 @@
             <version>${spock.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -147,6 +142,7 @@
         <spock.version>1.2-groovy-2.4</spock.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <redis.version>0.7.2</redis.version>
+        <spring-boot.version>2.5.0</spring-boot.version>
     </properties>
 
 </project>
