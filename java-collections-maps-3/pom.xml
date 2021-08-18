@@ -40,4 +40,5 @@
         <assertj.version>3.6.1</assertj.version>
         <spring.version>5.2.5.RELEASE</spring.version>
     </properties>
+
 </project>

@@ -39,4 +39,5 @@
     <properties>
         <spring-boot-starter-data-jpa.version>2.2.5.RELEASE</spring-boot-starter-data-jpa.version>
     </properties>
+
 </project>

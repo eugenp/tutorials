@@ -10,67 +10,62 @@ public class DoublyLinkedList<T> {
     private LinkedListNode<T> head;
     private LinkedListNode<T> tail;
     private AtomicInteger size;
-    private ReentrantReadWriteLock.ReadLock readLock;
-    private ReentrantReadWriteLock.WriteLock writeLock;
-
-
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+ 
     public DoublyLinkedList() {
         this.dummyNode = new DummyNode<T>(this);
-        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-        readLock = lock.readLock();
-        writeLock = lock.writeLock();
         clear();
     }
 
     public void clear() {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             head = dummyNode;
             tail = dummyNode;
             size = new AtomicInteger(0);
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
     public int size() {
-        readLock.lock();
+        this.lock.readLock().lock();
         try {
             return size.get();
         } finally {
-            readLock.unlock();
+            this.lock.readLock().unlock();
         }
     }
 
     public boolean isEmpty() {
-        readLock.lock();
+        this.lock.readLock().lock();
         try {
             return head.isEmpty();
         } finally {
-            readLock.unlock();
+            this.lock.readLock().unlock();
         }
     }
 
     public boolean contains(T value) {
-        readLock.lock();
+        this.lock.readLock().lock();
         try {
             return search(value).hasElement();
         } finally {
-            readLock.unlock();
+            this.lock.readLock().unlock();
         }
     }
 
     public LinkedListNode<T> search(T value) {
-        readLock.lock();
+        this.lock.readLock().lock();
         try {
             return head.search(value);
         } finally {
-            readLock.unlock();
+            this.lock.readLock().unlock();
         }
     }
 
     public LinkedListNode<T> add(T value) {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             head = new Node<T>(value, head, this);
             if (tail.isEmpty()) {
@@ -79,12 +74,12 @@ public class DoublyLinkedList<T> {
             size.incrementAndGet();
             return head;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
     public boolean addAll(Collection<T> values) {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             for (T value : values) {
                 if (add(value).isEmpty()) {
@@ -93,12 +88,12 @@ public class DoublyLinkedList<T> {
             }
             return true;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
     public LinkedListNode<T> remove(T value) {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             LinkedListNode<T> linkedListNode = head.search(value);
             if (!linkedListNode.isEmpty()) {
@@ -113,12 +108,12 @@ public class DoublyLinkedList<T> {
             }
             return linkedListNode;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
     public LinkedListNode<T> removeTail() {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             LinkedListNode<T> oldTail = tail;
             if (oldTail == head) {
@@ -132,7 +127,7 @@ public class DoublyLinkedList<T> {
             }
             return oldTail;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
@@ -141,7 +136,7 @@ public class DoublyLinkedList<T> {
     }
 
     public LinkedListNode<T> updateAndMoveToFront(LinkedListNode<T> node, T newValue) {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             if (node.isEmpty() || (this != (node.getListReference()))) {
                 return dummyNode;
@@ -150,7 +145,7 @@ public class DoublyLinkedList<T> {
             add(newValue);
             return head;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
