@@ -17,6 +17,11 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3-version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -30,4 +35,7 @@
             <artifactId>log4j-core</artifactId>
         </dependency>
     </dependencies>
+    <properties>
+        <commons-lang3-version>3.11</commons-lang3-version>
+    </properties>
 </project>
