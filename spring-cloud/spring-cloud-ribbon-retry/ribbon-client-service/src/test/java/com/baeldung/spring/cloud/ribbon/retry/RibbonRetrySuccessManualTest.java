@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = RibbonClientApp.class)
-public class RibbonRetrySuccessIntegrationTest {
+public class RibbonRetrySuccessManualTest {
 
     private static ConfigurableApplicationContext weatherServiceInstance1;
     private static ConfigurableApplicationContext weatherServiceInstance2;
