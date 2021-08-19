@@ -1,4 +1,4 @@
-package com.baeldung.javafx.listview;
+package com.baeldung.listview;
 
 public class Person {
 
