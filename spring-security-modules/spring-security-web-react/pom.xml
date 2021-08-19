@@ -108,7 +108,10 @@
                     </warSourceExcludes>
                 </configuration>
             </plugin>
-            <plugin>
+	<!-- NPM build is disabled from profile specific configurations because in a multi-threaded run environment like Jenkins this build was not succeeding due to issues totally unrelated to this module
+		This can be enabled manually while running this module on local, or directly npm can be run inside the webapp folder
+	 -->
+<!--             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>${frontend-maven-plugin.version}</version>
@@ -139,7 +142,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -148,7 +151,11 @@
         </plugins>
     </build>
 
-    <profiles>
+
+	<!-- NPM build is disabled from profile specific configurations because in a multi-threaded run environment like Jenkins this build was not succeeding due to issues totally unrelated to this module
+		This can be enabled manually while running this module on local, or directly npm can be run inside the webapp folder
+	 -->
+<!--     <profiles>
         <profile>
             <id>default-first</id>
             <build>
@@ -199,7 +206,7 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles> -->
 
     <properties>
         <!-- util -->
