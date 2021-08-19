@@ -114,7 +114,6 @@
                 <version>${frontend-maven-plugin.version}</version>
                 <configuration>
                     <nodeVersion>${node.version}</nodeVersion>
-                    <npmVersion>${npm.version}</npmVersion>
                     <workingDirectory>src/main/webapp/WEB-INF/view/react</workingDirectory>
                 </configuration>
                 <executions>
@@ -207,7 +206,7 @@
         <guava.version>19.0</guava.version>
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+        <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
         <jetty.version>9.4.11.v20180605</jetty.version>
         <!-- frontend -->
         <node.version>v8.11.3</node.version>
