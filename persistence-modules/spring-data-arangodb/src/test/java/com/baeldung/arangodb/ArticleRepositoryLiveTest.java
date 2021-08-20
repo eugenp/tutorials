@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class ArticleRepositoryIntegrationTest {
+public class ArticleRepositoryLiveTest {
 
     @Autowired
     ArticleRepository articleRepository;
