@@ -50,7 +50,7 @@ public class QueryXmlResourceWithConcurrentAxisIntegrationTest {
 
     @Test
     public void createDatabaseAndXMarkResourceAndCheckQuery() throws IOException {
-        final var pathToXmlFile = XML_DIRECTORY.resolve("10mb.xml");
+        final var pathToXmlFile = XML_DIRECTORY.resolve("regions.xml");
 
         // Create an empty XML database.
         Databases.createXmlDatabase(new DatabaseConfiguration(DATABASE_PATH));
