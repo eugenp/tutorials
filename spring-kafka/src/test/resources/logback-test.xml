@@ -10,4 +10,10 @@
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
+
+    <!-- Reduce the noise as the consumer keeps trying to connect until the Kafka instance is available -->
+    <springProfile name="ssl">
+        <logger name="org.apache.kafka.clients.NetworkClient" level="ERROR" additivity="false"/>
+    </springProfile>
+
 </configuration>
