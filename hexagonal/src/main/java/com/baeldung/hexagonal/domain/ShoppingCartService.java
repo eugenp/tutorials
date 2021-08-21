@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal;
+package com.baeldung.hexagonal.domain;
 
 public interface ShoppingCartService {
 
