@@ -16,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * ArangoDB server should be up and running for this test case to run successfully
+ */
 @SpringBootTest
 public class ArticleRepositoryLiveTest {
 
