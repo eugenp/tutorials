@@ -6,8 +6,8 @@ import lombok.NonNull;
 @Data
 public class CartItem {
 
-  @NonNull
-  private final String name;
-  private final Float price;
+    @NonNull
+    private final String name;
+    private final Float price;
 
 }

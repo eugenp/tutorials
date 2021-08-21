@@ -7,23 +7,22 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
-
 class ShoppingCartTest {
 
-  @Test
-  void givenNonemptyShoppingCart_whenGetTotalCartValueCalled_thenShouldCalculateCorrectly() {
+    @Test
+    void givenNonemptyShoppingCart_whenGetTotalCartValueCalled_thenShouldCalculateCorrectly() {
 
-    // given
-    Map<CartItem, Integer> items = new HashMap<>();
-    items.put(new CartItem("Cheese", 1.5f), 2);
-    items.put(new CartItem("Lemon", 2f), 5);
+        // given
+        Map<CartItem, Integer> items = new HashMap<>();
+        items.put(new CartItem("Cheese", 1.5f), 2);
+        items.put(new CartItem("Lemon", 2f), 5);
 
-    ShoppingCart cart = new ShoppingCart(items);
+        ShoppingCart cart = new ShoppingCart(items);
 
-    // when
-    Float totalCartValue = cart.getTotalCartValue();
+        // when
+        Float totalCartValue = cart.getTotalCartValue();
 
-    // then
-    assertEquals(totalCartValue, 13f, 0);
-  }
+        // then
+        assertEquals(totalCartValue, 13f, 0);
+    }
 }

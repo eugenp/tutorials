@@ -8,5 +8,5 @@ import com.baeldung.hexagonal.domain.ports.ProductRepository;
 @Repository
 public interface ProductCrudRepository extends CrudRepository<Product, Integer>, ProductRepository {
 
-  Product findByName(String name);
+    Product findByName(String name);
 }

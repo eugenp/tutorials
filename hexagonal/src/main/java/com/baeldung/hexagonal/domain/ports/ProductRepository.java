@@ -4,5 +4,5 @@ import com.baeldung.hexagonal.adapter.out.Product;
 
 public interface ProductRepository {
 
-  Product findByName(String name);
+    Product findByName(String name);
 }
