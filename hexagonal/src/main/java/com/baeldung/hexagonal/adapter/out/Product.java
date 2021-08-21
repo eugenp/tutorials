@@ -12,15 +12,15 @@ import lombok.Data;
 @Data
 public class Product {
 
-  @Id
-  public final Integer id;
-  @Column
-  public final String name;
-  @Column
-  public final Float price;
+    @Id
+    public final Integer id;
+    @Column
+    public final String name;
+    @Column
+    public final Float price;
 
-  public CartItem toItem() {
-    return new CartItem(name, price);
-  }
+    public CartItem toItem() {
+        return new CartItem(name, price);
+    }
 
 }
