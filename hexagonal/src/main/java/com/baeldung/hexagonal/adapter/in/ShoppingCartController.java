@@ -3,20 +3,22 @@ package com.baeldung.hexagonal.adapter.in;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.baeldung.hexagonal.ShoppingCartService;
+
 @RestController
 @RequestMapping("/shopping-cart")
 public class ShoppingCartController {
 
-  @Autowired
-  ShoppingCartFacade apiAdapter;
+    @Autowired
+    ShoppingCartService shoppingCartService;
 
-  @GetMapping
-  public Float getTotalCartValue() {
-    return apiAdapter.getTotalCartValue();
-  }
+    @GetMapping
+    public Float getTotalCartValue() {
+        return shoppingCartService.getTotalCartValue();
+    }
 
-  @PostMapping()
-  public void addItem(@RequestBody ItemTransportObject item) {
-    apiAdapter.addItem(item);
-  }
+    @PostMapping()
+    public void addItem(@RequestBody ItemTransportObject item) {
+        shoppingCartService.addItem(item.getName(), item.getQuantity());
+    }
 }
