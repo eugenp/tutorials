@@ -8,9 +8,9 @@
     </Appenders>
     <Loggers>
         <Logger name="org.hibernate" level="info"/>
-    	<Logger name="org.hibernate.SQL" level="debug"/>
-    	<Logger name="org.hibernate.type.descriptor.sql" level="trace"/>
-    	<Logger name="org.hibernate.stat" level="debug" />
+    	<Logger name="org.hibernate.SQL" level="info"/>
+    	<Logger name="org.hibernate.type.descriptor.sql" level="info"/>
+    	<Logger name="org.hibernate.stat" level="info" />
         <Root level="info" additivity="false">
             <AppenderRef ref="console" />
         </Root>
