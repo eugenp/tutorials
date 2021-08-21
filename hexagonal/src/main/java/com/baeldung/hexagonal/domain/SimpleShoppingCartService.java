@@ -5,7 +5,6 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.hexagonal.ShoppingCartService;
 import com.baeldung.hexagonal.adapter.out.Product;
 import com.baeldung.hexagonal.domain.ports.ProductRepository;
 
