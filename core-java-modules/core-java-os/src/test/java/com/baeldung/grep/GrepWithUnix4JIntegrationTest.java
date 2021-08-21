@@ -25,9 +25,9 @@ public class GrepWithUnix4JIntegrationTest {
 
     @Test
     public void whenGrepWithSimpleString_thenCorrect() {
-        int expectedLineCount = 4;
+        int expectedLineCount = 5;
 
-        // grep "NINETEEN" dictionary.txt
+        // grep "NINETEEN" dictionary.in
         List<Line> lines = Unix4j.grep("NINETEEN", fileToGrep).toLineList();
 
         assertEquals(expectedLineCount, lines.size());
@@ -35,9 +35,9 @@ public class GrepWithUnix4JIntegrationTest {
 
     @Test
     public void whenInverseGrepWithSimpleString_thenCorrect() {
-        int expectedLineCount = 178687;
+        int expectedLineCount = 8;
 
-        // grep -v "NINETEEN" dictionary.txt
+        // grep -v "NINETEEN" dictionary.in
         List<Line> lines = grep(Options.v, "NINETEEN", fileToGrep).toLineList();
 
         assertEquals(expectedLineCount, lines.size());
@@ -45,9 +45,9 @@ public class GrepWithUnix4JIntegrationTest {
 
     @Test
     public void whenGrepWithRegex_thenCorrect() {
-        int expectedLineCount = 151;
+        int expectedLineCount = 5;
 
-        // grep -c ".*?NINE.*?" dictionary.txt
+        // grep -c ".*?NINE.*?" dictionary.in
         String patternCount = grep(Options.c, ".*?NINE.*?", fileToGrep).cut(fields, ":", 1).toStringResult();
 
         assertEquals(expectedLineCount, Integer.parseInt(patternCount));
