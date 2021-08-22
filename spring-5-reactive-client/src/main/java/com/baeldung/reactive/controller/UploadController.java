@@ -27,21 +27,4 @@ public class UploadController {
     public Mono<HttpStatus> uploadMultipart(@RequestParam("file") final MultipartFile multipartFile) {
         return uploadService.uploadMultipart(multipartFile);
     }
-
-
-    /**
-     * Fake upload endpoint returning "OK" HttpStatus
-     * @return "OK" HttpStatus
-     */
-    @PostMapping(path = "/external/upload")
-    @ResponseBody
-    public HttpStatus externalUpload() {
-        return HttpStatus.OK;
-    }
-
-    @GetMapping("/trixi")
-    public String returnTrixi() {
-        return "Trixi";
-
-    }
 }
