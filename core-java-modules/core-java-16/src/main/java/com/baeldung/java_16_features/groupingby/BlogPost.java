@@ -1,5 +1,8 @@
 package com.baeldung.java_16_features.groupingby;
 
+import java.util.IntSummaryStatistics;
+
+
 public class BlogPost {
     
     private String title;
@@ -7,7 +10,9 @@ public class BlogPost {
     private BlogPostType type;
     private int likes;
     record AuthPostTypesLikes(String author, BlogPostType type, int likes) {};
-
+    record PostcountTitlesLikesStats(long postCount, String titles, IntSummaryStatistics likesStats){};
+    record TitlesBoundedSumOfLikes(String titles, int boundedSumOfLikes) {};
+    
     public BlogPost(String title, String author, BlogPostType type, int likes) {
         this.title = title;
         this.author = author;
