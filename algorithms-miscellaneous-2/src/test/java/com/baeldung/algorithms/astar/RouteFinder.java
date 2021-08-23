@@ -8,6 +8,9 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class RouteFinder<T extends GraphNode> {
     private final Graph<T> graph;
     private final Scorer<T> nextNodeScorer;
@@ -28,11 +31,11 @@ public class RouteFinder<T extends GraphNode> {
         openSet.add(start);
 
         while (!openSet.isEmpty()) {
-            System.out.println("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
+            log.debug("Open Set contains: " + openSet.stream().map(RouteNode::getCurrent).collect(Collectors.toSet()));
             RouteNode<T> next = openSet.poll();
-            System.out.println("Looking at node: " + next);
+            log.debug("Looking at node: " + next);
             if (next.getCurrent().equals(to)) {
-                System.out.println("Found our destination!");
+                log.debug("Found our destination!");
 
                 List<T> route = new ArrayList<>();
                 RouteNode<T> current = next;
@@ -41,7 +44,7 @@ public class RouteFinder<T extends GraphNode> {
                     current = allNodes.get(current.getPrevious());
                 } while (current != null);
 
-                System.out.println("Route: " + route);
+                log.debug("Route: " + route);
                 return route;
             }
 
@@ -55,7 +58,7 @@ public class RouteFinder<T extends GraphNode> {
                     nextNode.setRouteScore(newScore);
                     nextNode.setEstimatedScore(newScore + targetScorer.computeCost(connection, to));
                     openSet.add(nextNode);
-                    System.out.println("Found a better route to node: " + nextNode);
+                    log.debug("Found a better route to node: " + nextNode);
                 }
             });
         }
