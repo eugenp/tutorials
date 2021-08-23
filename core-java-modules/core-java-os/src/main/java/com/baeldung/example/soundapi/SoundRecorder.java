@@ -47,22 +47,9 @@ public class SoundRecorder implements Runnable {
             int frameSizeInBytes = format.getFrameSize();
             int bufferLengthInFrames = line.getBufferSize() / 8;
             final int bufferLengthInBytes = bufferLengthInFrames * frameSizeInBytes;
-            final byte[] data = new byte[bufferLengthInBytes];
-            int numBytesRead;
-
-            line.start();
-            while (thread != null) {
-                if ((numBytesRead = line.read(data, 0, bufferLengthInBytes)) == -1) {
-                    break;
-                }
-                out.write(data, 0, numBytesRead);
-            }
-            byte audioBytes[] = out.toByteArray();
-            ByteArrayInputStream bais = new ByteArrayInputStream(audioBytes);
-            audioInputStream = new AudioInputStream(bais, format, audioBytes.length / frameSizeInBytes);
-            long milliseconds = (long) ((audioInputStream.getFrameLength() * 1000) / format.getFrameRate());
-            duration = milliseconds / 1000.0;
-            System.out.println("Recorded duration in seconds:" + duration);
+            buildByteOutputStream(out, line, frameSizeInBytes, bufferLengthInBytes);
+            this.audioInputStream = new AudioInputStream(line);
+            setAudioInputStream(convertToAudioIStream(out, frameSizeInBytes));
             audioInputStream.reset();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -72,7 +59,34 @@ public class SoundRecorder implements Runnable {
         }
     }
 
-    private TargetDataLine getTargetDataLineForRecord() {
+    public void buildByteOutputStream(final ByteArrayOutputStream out, final TargetDataLine line, int frameSizeInBytes, final int bufferLengthInBytes) throws IOException {
+        final byte[] data = new byte[bufferLengthInBytes];
+        int numBytesRead;
+
+        line.start();
+        while (thread != null) {
+            if ((numBytesRead = line.read(data, 0, bufferLengthInBytes)) == -1) {
+                break;
+            }
+            out.write(data, 0, numBytesRead);
+        }
+    }
+
+    private void setAudioInputStream(AudioInputStream aStream) {
+        this.audioInputStream = aStream;
+    }
+
+    public AudioInputStream convertToAudioIStream(final ByteArrayOutputStream out, int frameSizeInBytes) {
+        byte audioBytes[] = out.toByteArray();
+        ByteArrayInputStream bais = new ByteArrayInputStream(audioBytes);
+        AudioInputStream audioStream = new AudioInputStream(bais, format, audioBytes.length / frameSizeInBytes);
+        long milliseconds = (long) ((audioInputStream.getFrameLength() * 1000) / format.getFrameRate());
+        duration = milliseconds / 1000.0;
+        System.out.println("Recorded duration in seconds:" + duration);
+        return audioStream;
+    }
+
+    public TargetDataLine getTargetDataLineForRecord() {
         TargetDataLine line;
         DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
         if (!AudioSystem.isLineSupported(info)) {
