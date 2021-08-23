@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class FieldExistenceUnitTest {
+public class FieldExistenceLiveTest {
     private MongoClient mongoClient;
     private MongoDatabase db;
     private MongoCollection<Document> collection;
