@@ -18,7 +18,7 @@ import static springfox.documentation.swagger2.web.Swagger2Controller.DEFAULT_UR
 /**
  * Tests SwaggerBasePathRewritingFilter class.
  */
-public class SwaggerBasePathRewritingFilterTest {
+public class SwaggerBasePathRewritingFilterUnitTest {
 
     private SwaggerBasePathRewritingFilter filter = new SwaggerBasePathRewritingFilter();
 
