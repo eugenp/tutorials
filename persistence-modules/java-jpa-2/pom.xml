@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
+            <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -138,7 +138,6 @@
     <properties>
         <hibernate.version>5.4.14.Final</hibernate.version>
         <eclipselink.version>2.7.4</eclipselink.version>
-        <postgres.version>42.2.5</postgres.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
         <assertj.version>3.11.1</assertj.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>

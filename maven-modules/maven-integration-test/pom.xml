@@ -6,6 +6,7 @@
     <artifactId>maven-integration-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>maven-integration-test</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -116,7 +117,9 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <!-- configuration similar to surefire -->
+                            <includes>
+                                <include>**/*IntegrationTest</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>

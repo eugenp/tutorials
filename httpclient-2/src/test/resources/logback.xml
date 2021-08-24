@@ -1,0 +1,15 @@
+<configuration debug="false">
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date [%level] %logger - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.baeldung.httpclient.readresponsebodystring" level="debug"/>
+    <logger name="org.apache.http" level="debug"/>
+    <logger name="org.apache.hc.client5.http" level="debug"/>
+
+    <root level="WARN">
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>
