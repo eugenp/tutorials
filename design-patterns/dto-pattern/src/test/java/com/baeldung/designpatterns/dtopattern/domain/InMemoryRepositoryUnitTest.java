@@ -1,4 +1,4 @@
-package com.baeldung.dtopattern.domain;
+package com.baeldung.designpatterns.dtopattern.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class InMemoryRepositoryTest {
+class InMemoryRepositoryUnitTest {
 
     @Test
     void getAll_shouldReturnAllUsers() {

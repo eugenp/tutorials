@@ -1,4 +1,4 @@
-package com.baeldung.dtopattern.domain;
+package com.baeldung.designpatterns.dtopattern.domain;
 
 public interface RoleRepository {
     Role getRoleById(String id);

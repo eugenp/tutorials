@@ -1,4 +1,4 @@
-package com.baeldung.dtopattern.api;
+package com.baeldung.designpatterns.dtopattern.api;
 
 public class UserIdDTO {
 

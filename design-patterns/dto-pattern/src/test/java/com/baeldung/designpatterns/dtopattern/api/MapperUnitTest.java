@@ -1,7 +1,7 @@
-package com.baeldung.dtopattern.api;
+package com.baeldung.designpatterns.dtopattern.api;
 
-import com.baeldung.dtopattern.domain.Role;
-import com.baeldung.dtopattern.domain.User;
+import com.baeldung.designpatterns.dtopattern.domain.Role;
+import com.baeldung.designpatterns.dtopattern.domain.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapperTest {
+class MapperUnitTest {
 
     @Test
     void toDto_shouldMapFromDomainToDTO() {
