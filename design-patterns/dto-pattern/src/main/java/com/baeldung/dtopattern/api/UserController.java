@@ -26,9 +26,10 @@ class UserController {
     @GetMapping
     @ResponseBody
     public List<UserDTO> getUsers() {
-        return userService.getAll().stream()
-                .map(mapper::toDto)
-                .collect(toList());
+        return userService.getAll()
+            .stream()
+            .map(mapper::toDto)
+            .collect(toList());
     }
 
 

@@ -8,7 +8,7 @@ public class UserCreationDTO {
     private String password;
     private List<String> roles;
 
-    public UserCreationDTO() {}
+    UserCreationDTO() {}
 
     public String getName() {
         return name;

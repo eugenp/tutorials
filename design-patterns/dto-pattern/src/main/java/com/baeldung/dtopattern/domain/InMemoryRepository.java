@@ -35,13 +35,14 @@ class InMemoryRepository implements UserRepository, RoleRepository {
     @Override
     public Role getRoleByName(String name) {
         return roles.values()
-                .stream()
-                .filter(role -> role.getName().equalsIgnoreCase(name))
-                .findFirst()
-                .orElse(null);
+            .stream()
+            .filter(role -> role.getName().equalsIgnoreCase(name))
+            .findFirst()
+            .orElse(null);
     }
 
-    void deleteAll() {
+    @Override
+    public void deleteAll() {
         users.clear();
         roles.clear();
     }
