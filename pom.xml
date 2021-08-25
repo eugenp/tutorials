@@ -387,6 +387,7 @@
                 <module>core-groovy-strings</module>
 
                 <module>core-java-modules</module>
+                <module>design-patterns</module>
 
                 <module>couchbase</module>
                 <module>custom-pmd</module>
