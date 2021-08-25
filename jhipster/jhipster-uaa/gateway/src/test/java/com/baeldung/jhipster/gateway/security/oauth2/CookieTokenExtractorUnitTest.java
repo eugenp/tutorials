@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
  * Test whether the CookieTokenExtractor can properly extract access tokens from
  * Cookies and Headers.
  */
-public class CookieTokenExtractorTest {
+public class CookieTokenExtractorUnitTest {
     private CookieTokenExtractor cookieTokenExtractor;
 
     @Before
@@ -22,24 +22,24 @@ public class CookieTokenExtractorTest {
 
     @Test
     public void testExtractTokenCookie() {
-        MockHttpServletRequest request = OAuth2AuthenticationServiceTest.createMockHttpServletRequest();
+        MockHttpServletRequest request = OAuth2AuthenticationServiceUnitTest.createMockHttpServletRequest();
         Authentication authentication = cookieTokenExtractor.extract(request);
-        Assert.assertEquals(OAuth2AuthenticationServiceTest.ACCESS_TOKEN_VALUE, authentication.getPrincipal().toString());
+        Assert.assertEquals(OAuth2AuthenticationServiceUnitTest.ACCESS_TOKEN_VALUE, authentication.getPrincipal().toString());
     }
 
     @Test
     public void testExtractTokenHeader() {
         MockHttpServletRequest request = new MockHttpServletRequest(HttpMethod.GET.name(), "http://www.test.com");
-        request.addHeader("Authorization", OAuth2AccessToken.BEARER_TYPE + " " + OAuth2AuthenticationServiceTest.ACCESS_TOKEN_VALUE);
+        request.addHeader("Authorization", OAuth2AccessToken.BEARER_TYPE + " " + OAuth2AuthenticationServiceUnitTest.ACCESS_TOKEN_VALUE);
         Authentication authentication = cookieTokenExtractor.extract(request);
-        Assert.assertEquals(OAuth2AuthenticationServiceTest.ACCESS_TOKEN_VALUE, authentication.getPrincipal().toString());
+        Assert.assertEquals(OAuth2AuthenticationServiceUnitTest.ACCESS_TOKEN_VALUE, authentication.getPrincipal().toString());
     }
 
     @Test
     public void testExtractTokenParam() {
         MockHttpServletRequest request = new MockHttpServletRequest(HttpMethod.GET.name(), "http://www.test.com");
-        request.addParameter(OAuth2AccessToken.ACCESS_TOKEN, OAuth2AuthenticationServiceTest.ACCESS_TOKEN_VALUE);
+        request.addParameter(OAuth2AccessToken.ACCESS_TOKEN, OAuth2AuthenticationServiceUnitTest.ACCESS_TOKEN_VALUE);
         Authentication authentication = cookieTokenExtractor.extract(request);
-        Assert.assertEquals(OAuth2AuthenticationServiceTest.ACCESS_TOKEN_VALUE, authentication.getPrincipal().toString());
+        Assert.assertEquals(OAuth2AuthenticationServiceUnitTest.ACCESS_TOKEN_VALUE, authentication.getPrincipal().toString());
     }
 }
