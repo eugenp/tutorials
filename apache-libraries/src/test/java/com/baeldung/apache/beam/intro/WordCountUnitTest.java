@@ -9,8 +9,8 @@ import com.baeldung.apache.beam.intro.WordCount;
 
 public class WordCountUnitTest {
     
-    @Test
-    // @Ignore
+//    @Test
+    @Ignore
     public void givenInputFile_whenWordCountRuns_thenJobFinishWithoutError() {
         boolean jobDone = WordCount.wordCount("src/test/resources/wordcount.txt", "target/output");
         assertTrue(jobDone);
