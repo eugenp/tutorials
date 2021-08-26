@@ -19,11 +19,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "area",
     "author",
     "id",
-    "salary",
     "topics"
 })
 @Generated("jsonschema2pojo")
-public class SamplePojo {
+public class Input {
 
     @JsonProperty("name")
     private String name;
@@ -33,8 +32,6 @@ public class SamplePojo {
     private String author;
     @JsonProperty("id")
     private Integer id;
-    @JsonProperty("salary")
-    private Integer salary;
     @JsonProperty("topics")
     private List<String> topics = new ArrayList<String>();
     @JsonIgnore
@@ -50,7 +47,7 @@ public class SamplePojo {
         this.name = name;
     }
 
-    public SamplePojo withName(String name) {
+    public Input withName(String name) {
         this.name = name;
         return this;
     }
@@ -65,7 +62,7 @@ public class SamplePojo {
         this.area = area;
     }
 
-    public SamplePojo withArea(String area) {
+    public Input withArea(String area) {
         this.area = area;
         return this;
     }
@@ -80,7 +77,7 @@ public class SamplePojo {
         this.author = author;
     }
 
-    public SamplePojo withAuthor(String author) {
+    public Input withAuthor(String author) {
         this.author = author;
         return this;
     }
@@ -95,23 +92,8 @@ public class SamplePojo {
         this.id = id;
     }
 
-    public SamplePojo withId(Integer id) {
+    public Input withId(Integer id) {
         this.id = id;
-        return this;
-    }
-
-    @JsonProperty("salary")
-    public Integer getSalary() {
-        return salary;
-    }
-
-    @JsonProperty("salary")
-    public void setSalary(Integer salary) {
-        this.salary = salary;
-    }
-
-    public SamplePojo withSalary(Integer salary) {
-        this.salary = salary;
         return this;
     }
 
@@ -125,7 +107,7 @@ public class SamplePojo {
         this.topics = topics;
     }
 
-    public SamplePojo withTopics(List<String> topics) {
+    public Input withTopics(List<String> topics) {
         this.topics = topics;
         return this;
     }
@@ -140,7 +122,7 @@ public class SamplePojo {
         this.additionalProperties.put(name, value);
     }
 
-    public SamplePojo withAdditionalProperty(String name, Object value) {
+    public Input withAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
         return this;
     }
@@ -148,7 +130,7 @@ public class SamplePojo {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(SamplePojo.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Input.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("name");
         sb.append('=');
         sb.append(((this.name == null)?"<null>":this.name));
@@ -164,10 +146,6 @@ public class SamplePojo {
         sb.append("id");
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));
-        sb.append(',');
-        sb.append("salary");
-        sb.append('=');
-        sb.append(((this.salary == null)?"<null>":this.salary));
         sb.append(',');
         sb.append("topics");
         sb.append('=');
@@ -194,7 +172,6 @@ public class SamplePojo {
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
         result = ((result* 31)+((this.id == null)? 0 :this.id.hashCode()));
         result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
-        result = ((result* 31)+((this.salary == null)? 0 :this.salary.hashCode()));
         return result;
     }
 
@@ -203,11 +180,11 @@ public class SamplePojo {
         if (other == this) {
             return true;
         }
-        if ((other instanceof SamplePojo) == false) {
+        if ((other instanceof Input) == false) {
             return false;
         }
-        SamplePojo rhs = ((SamplePojo) other);
-        return ((((((((this.area == rhs.area)||((this.area!= null)&&this.area.equals(rhs.area)))&&((this.author == rhs.author)||((this.author!= null)&&this.author.equals(rhs.author))))&&((this.topics == rhs.topics)||((this.topics!= null)&&this.topics.equals(rhs.topics))))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.salary == rhs.salary)||((this.salary!= null)&&this.salary.equals(rhs.salary))));
+        Input rhs = ((Input) other);
+        return (((((((this.area == rhs.area)||((this.area!= null)&&this.area.equals(rhs.area)))&&((this.author == rhs.author)||((this.author!= null)&&this.author.equals(rhs.author))))&&((this.topics == rhs.topics)||((this.topics!= null)&&this.topics.equals(rhs.topics))))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
     }
 
 }
