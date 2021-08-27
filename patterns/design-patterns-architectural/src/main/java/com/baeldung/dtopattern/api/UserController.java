@@ -1,8 +1,8 @@
-package com.baeldung.designpatterns.dtopattern.api;
+package com.baeldung.dtopattern.api;
 
-import com.baeldung.designpatterns.dtopattern.domain.RoleService;
-import com.baeldung.designpatterns.dtopattern.domain.User;
-import com.baeldung.designpatterns.dtopattern.domain.UserService;
+import com.baeldung.dtopattern.domain.RoleService;
+import com.baeldung.dtopattern.domain.User;
+import com.baeldung.dtopattern.domain.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

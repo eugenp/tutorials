@@ -1,4 +1,4 @@
-package com.baeldung.designpatterns.dtopattern;
+package com.baeldung.dtopattern;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

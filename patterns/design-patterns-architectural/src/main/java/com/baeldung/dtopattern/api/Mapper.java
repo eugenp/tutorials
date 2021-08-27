@@ -1,7 +1,7 @@
-package com.baeldung.designpatterns.dtopattern.api;
+package com.baeldung.dtopattern.api;
 
-import com.baeldung.designpatterns.dtopattern.domain.Role;
-import com.baeldung.designpatterns.dtopattern.domain.User;
+import com.baeldung.dtopattern.domain.Role;
+import com.baeldung.dtopattern.domain.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
