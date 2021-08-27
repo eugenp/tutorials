@@ -13,6 +13,11 @@ public class Game {
   private Player creator;
   private final List<Player> players = new ArrayList<>();
 
+  private GameSettings settings;
+
+  public Game() {
+  }
+
   public Game(Long id, String name) {
     this.id = id;
     this.name = name;
@@ -59,4 +64,11 @@ public class Game {
     return Collections.unmodifiableList(this.players);
   }
 
+  public GameSettings getSettings() {
+    return this.settings;
+  }
+
+  public void setSettings(GameSettings settings) {
+    this.settings = settings;
+  }
 }

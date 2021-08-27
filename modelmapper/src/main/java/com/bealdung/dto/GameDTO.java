@@ -1,5 +1,8 @@
 package com.bealdung.dto;
 
+import com.bealdung.domain.GameMode;
+import java.util.List;
+
 public class GameDTO {
 
   private Long id;
@@ -10,6 +13,10 @@ public class GameDTO {
   private String creator;
 
   private int totalPlayers;
+  private List<PlayerDTO> players;
+
+  private GameMode mode;
+  private int maxPlayers;
 
   public Long getId() {
     return this.id;
@@ -57,5 +64,29 @@ public class GameDTO {
 
   public void setTotalPlayers(int totalPlayers) {
     this.totalPlayers = totalPlayers;
+  }
+
+  public GameMode getMode() {
+    return this.mode;
+  }
+
+  public void setMode(GameMode mode) {
+    this.mode = mode;
+  }
+
+  public int getMaxPlayers() {
+    return this.maxPlayers;
+  }
+
+  public void setMaxPlayers(int maxPlayers) {
+    this.maxPlayers = maxPlayers;
+  }
+
+  public List<PlayerDTO> getPlayers() {
+    return this.players;
+  }
+
+  public void setPlayers(List<PlayerDTO> players) {
+    this.players = players;
   }
 }
