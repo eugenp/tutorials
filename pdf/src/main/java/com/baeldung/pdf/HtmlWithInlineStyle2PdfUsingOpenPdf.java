@@ -1,44 +1,42 @@
 package com.baeldung.pdf;
 
-import com.itextpdf.text.DocumentException;
+import com.lowagie.text.DocumentException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.xhtmlrenderer.layout.SharedContext;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 
-public class HTML2PDFUsingOpenPdfExample {
+public class HtmlWithInlineStyle2PdfUsingOpenPdf {
 
-    private static final String HTML = "src/main/resources/openpdfhtmlexample.html";
-    private static final String PDF = "src/main/resources/openpdfhtmlexample.pdf";
+    private static final String HTML_WITH_INLINE_STYLE = "src/main/resources/openpdfhtmlwithinlinestyle.html";
+    private static final String PDF_WITH_INTERNAL_STYLE = "src/main/resources/openpdfhtmlwithinlinestyle.pdf";
 
     public static void main(String[] args) {
         try {
-            File inputHTML = new File(HTML);
-            generatePDFFromHTMLUsingOpenPdfFlyingSaucer(inputHTML);
-        } catch (IOException | ParserConfigurationException | DocumentException e) {
+            generatePDFFromHtmlWithInlineStyle();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void generatePDFFromHTMLUsingOpenPdfFlyingSaucer(File inputHTML) throws ParserConfigurationException, IOException, DocumentException {
+    private static void generatePDFFromHtmlWithInlineStyle() throws Exception {
+        File inputHTML = new File(HTML_WITH_INLINE_STYLE);
         String inputHtmlStr = createWellFormedHtml(inputHTML);
-        File outputPdf = new File(PDF);
+        File outputPdf = new File(PDF_WITH_INTERNAL_STYLE);
         xhtmlToPdf(inputHtmlStr, outputPdf);
     }
 
-    private static String createWellFormedHtml(File inputHTML) throws IOException {
+    private static String createWellFormedHtml(File inputHTML) throws Exception {
         Document document = Jsoup.parse(inputHTML, "UTF-8");
         document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);
         return document.html();
     }
 
-    private static void xhtmlToPdf(String xhtml, File outputPdf) throws IOException {
+    private static void xhtmlToPdf(String xhtml, File outputPdf) throws Exception{
         OutputStream outputStream = null;
         try {
             ITextRenderer renderer = new ITextRenderer();
@@ -50,7 +48,7 @@ public class HTML2PDFUsingOpenPdfExample {
             renderer.layout();
             outputStream = new FileOutputStream(outputPdf);
             renderer.createPDF(outputStream);
-        } catch (com.lowagie.text.DocumentException e) {
+        } catch (DocumentException e) {
             e.printStackTrace();
         } finally {
             if (outputStream != null)

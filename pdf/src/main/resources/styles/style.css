@@ -1,0 +1,14 @@
+@font-face {
+  font-family: myFont;
+  src: url("src/main/resources/styles/fonts/PRISTINA.TTF");
+}
+.fontclass{
+  font-family: myFont;
+  font-size:20px;
+}
+.styleclass{
+  font-family: "Times New Roman", Times, serif;
+  font-size:30px;
+  font-weight: normal;
+  color: 6600CC;
+}
