@@ -1,4 +1,4 @@
-package com.baeldung.designpatterns.dtopattern.api;
+package com.baeldung.dtopattern.api;
 
 import java.util.List;
 

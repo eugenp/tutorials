@@ -1,9 +1,9 @@
-package com.baeldung.designpatterns.dtopattern.api;
+package com.baeldung.dtopattern.api;
 
-import com.baeldung.designpatterns.dtopattern.domain.Role;
-import com.baeldung.designpatterns.dtopattern.domain.RoleRepository;
-import com.baeldung.designpatterns.dtopattern.domain.User;
-import com.baeldung.designpatterns.dtopattern.domain.UserRepository;
+import com.baeldung.dtopattern.domain.Role;
+import com.baeldung.dtopattern.domain.RoleRepository;
+import com.baeldung.dtopattern.domain.User;
+import com.baeldung.dtopattern.domain.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.baeldung.designpatterns.dtopattern.domain;
+package com.baeldung.dtopattern.domain;
 
 import java.util.Objects;
 
