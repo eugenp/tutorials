@@ -50,7 +50,7 @@ public class ExternalStyledHtml2PdfUsingFlyingSaucer {
             renderer.getFontResolver()
                     .addFont("src/main/resources/fonts/Official.ttf", true);
             String baseUrl = FileSystems.getDefault()
-                    .getPath("src/main/resources/css").toUri().toURL().toString();
+                    .getPath("css").toUri().toURL().toString();
             renderer.setDocumentFromString(xhtml, baseUrl);
             renderer.layout();
             outputStream = new FileOutputStream(outputPdf);
