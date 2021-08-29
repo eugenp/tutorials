@@ -11,8 +11,6 @@ This module contains articles about libraries for data processing in Java.
 - [An Introduction to SuanShu](https://www.baeldung.com/suanshu)
 - [Intro to Derive4J](https://www.baeldung.com/derive4j)
 - [Univocity Parsers](https://www.baeldung.com/java-univocity-parsers)
-- [Using Kafka MockConsumer](https://www.baeldung.com/kafka-mockconsumer)
-- [Using Kafka MockProducer](https://www.baeldung.com/kafka-mockproducer)
 - More articles: [[<-- prev]](/../libraries-data)
 
 ##### Building the project

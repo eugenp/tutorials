@@ -29,6 +29,7 @@
         <jcache.version>1.0.0</jcache.version>
         <jhipster.server.version>1.1.0</jhipster.server.version>
         <jjwt.version>0.7.0</jjwt.version>
+        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
         <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
         <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
         <liquibase.version>3.6.2</liquibase.version>
@@ -57,14 +58,14 @@
 
         <sonar.issue.ignore.multicriteria>S3437,UndocumentedApi,BoldAndItalicTagsCheck</sonar.issue.ignore.multicriteria>
 
-        <!-- Rule https://sonarqube.com/coding_rules#rule_key=Web%3ABoldAndItalicTagsCheck is ignored. Even if we agree that using the "i" tag is an awful practice, this is what is 
+        <!-- Rule https://sonarqube.com/coding_rules#rule_key=Web%3ABoldAndItalicTagsCheck is ignored. Even if we agree that using the "i" tag is an awful practice, this is what is
             recommended by http://fontawesome.io/examples/ -->
         <sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.resourceKey>src/main/webapp/app/**/*.*</sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.resourceKey>
         <sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.ruleKey>Web:BoldAndItalicTagsCheck</sonar.issue.ignore.multicriteria.BoldAndItalicTagsCheck.ruleKey>
         <!-- Rule https://sonarqube.com/coding_rules#rule_key=squid%3AS3437 is ignored, as a JPA-managed field cannot be transient -->
         <sonar.issue.ignore.multicriteria.S3437.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.S3437.resourceKey>
         <sonar.issue.ignore.multicriteria.S3437.ruleKey>squid:S3437</sonar.issue.ignore.multicriteria.S3437.ruleKey>
-        <!-- Rule http://sonarqube.com/coding_rules#rule_key=squid%3AUndocumentedApi is ignored, as we want to follow "clean code" guidelines and classes, methods and arguments names 
+        <!-- Rule http://sonarqube.com/coding_rules#rule_key=squid%3AUndocumentedApi is ignored, as we want to follow "clean code" guidelines and classes, methods and arguments names
             should be self-explanatory -->
         <sonar.issue.ignore.multicriteria.UndocumentedApi.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.UndocumentedApi.resourceKey>
         <sonar.issue.ignore.multicriteria.UndocumentedApi.ruleKey>squid:UndocumentedApi</sonar.issue.ignore.multicriteria.UndocumentedApi.ruleKey>
@@ -90,7 +91,6 @@
         <undertow.version>1.4.10.Final</undertow.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <yarn.version>v0.21.3</yarn.version>
-        <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
     </properties>
 
     <dependencyManagement>
@@ -347,6 +347,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
@@ -358,11 +362,6 @@
                     <groupId>org.springframework.boot</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <!-- Spring Cloud -->
         <dependency>
@@ -421,7 +420,7 @@
         <defaultGoal>spring-boot:run</defaultGoal>
         <pluginManagement>
             <plugins>
-                <!-- This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. Remove when the m2e plugin can correctly 
+                <!-- This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. Remove when the m2e plugin can correctly
                     bind to Maven lifecycle -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
@@ -573,14 +572,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <!-- Force alphabetical order to have a reproducible build -->
-                    <runOrder>alphabetical</runOrder>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -762,8 +753,8 @@
             </dependencies>
         </profile>
         <profile>
-            <!-- Profile for doing "continuous compilation" with the Scala Maven plugin. It allows automatic compilation of Java classes as soon as they are saved. To use it, run in 
-                3 terminals: - './mvnw -Pcc scala:cc' for continous compilation of your classes - './mvnw -Pcc' for hot reload of Spring boot - 'gulp' for hot reload of the HTML/JavaScript assets Everything 
+            <!-- Profile for doing "continuous compilation" with the Scala Maven plugin. It allows automatic compilation of Java classes as soon as they are saved. To use it, run in
+                3 terminals: - './mvnw -Pcc scala:cc' for continous compilation of your classes - './mvnw -Pcc' for hot reload of Spring boot - 'gulp' for hot reload of the HTML/JavaScript assets Everything
                 should hot reload automatically! -->
             <id>cc</id>
             <build>

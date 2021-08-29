@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-printing-plugins</artifactId>
     <name>maven-printing-plugins</name>
@@ -27,11 +27,12 @@
                         </goals>
                         <configuration>
                             <target>
-                                <echo message="Hello, world"/>
-                                <echo message="Embed a line break: ${line.separator}"/>
-                                <echo message="Build dir: ${project.build.directory}" level="info"/>
+                                <echo message="Hello, world" />
+                                <echo message="Embed a line break: ${line.separator}" />
+                                <echo message="Build dir: ${project.build.directory}"
+                                    level="info" />
                                 <echo file="${basedir}/logs/log-ant-run.txt" append="true"
-                                      message="Save to file!"/>
+                                    message="Save to file!" />
                             </target>
                         </configuration>
                     </execution>
@@ -84,4 +85,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

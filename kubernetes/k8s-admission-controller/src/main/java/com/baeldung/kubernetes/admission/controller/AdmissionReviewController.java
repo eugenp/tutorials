@@ -14,9 +14,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
-/**
- *
- */
 @RestController
 @RequiredArgsConstructor
 public class AdmissionReviewController {
