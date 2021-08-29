@@ -1,6 +1,6 @@
 @font-face {
   font-family: myFont;
-  src: url("src/main/resources/styles/fonts/PRISTINA.TTF");
+  src: url("../fonts/Official.ttf");
 }
 .fontclass{
   font-family: myFont;

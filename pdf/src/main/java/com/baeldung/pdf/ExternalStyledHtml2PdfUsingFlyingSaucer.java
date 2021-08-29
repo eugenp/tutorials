@@ -11,46 +11,47 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.nio.file.FileSystems;
 
-public class HtmlWithExternalStyle2PdfUsingOpenPdf {
+public class ExternalStyledHtml2PdfUsingFlyingSaucer {
 
-    private static final String HTML_WITH_EXTERNAL_STYLE = "src/main/resources/openpdfhtmlwithinlinestyle.html";
-    private static final String PDF_WITH_EXTERNAL_STYLE = "src/main/resources/openpdfhtmlwithinlinestyle.pdf";
+    private static final String HTML_WITH_EXTERNAL_STYLE = "src/main/resources/openpdfhtmlwithexternalstyle.html";
+    private static final String PDF_WITH_EXTERNAL_STYLE = "src/main/resources/ExternalStyledHtml2PdfUsingFlyingSaucer.pdf";
 
     public static void main(String[] args) {
         try {
-            generatePDFFromHtmlWithExternalStyle();
+            ExternalStyledHtml2PdfUsingFlyingSaucer htmlToPdf = new ExternalStyledHtml2PdfUsingFlyingSaucer();
+            htmlToPdf.generatePDFFromHtmlWithExternalStyle();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void generatePDFFromHtmlWithExternalStyle() throws Exception {
+    private void generatePDFFromHtmlWithExternalStyle() throws Exception {
         File inputHTML = new File(HTML_WITH_EXTERNAL_STYLE);
         String inputHtmlStr = createWellFormedHtml(inputHTML);
         File outputPdf = new File(PDF_WITH_EXTERNAL_STYLE);
         xhtmlToPdf(inputHtmlStr, outputPdf);
     }
 
-    private static String createWellFormedHtml(File inputHTML) throws Exception {
+    private String createWellFormedHtml(File inputHTML) throws Exception {
         Document document = Jsoup.parse(inputHTML, "UTF-8");
         document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);
         return document.html();
     }
 
-    private static void xhtmlToPdf(String xhtml, File outputPdf) throws Exception {
+    private void xhtmlToPdf(String xhtml, File outputPdf) throws Exception {
         OutputStream outputStream = null;
         try {
             ITextRenderer renderer = new ITextRenderer();
             SharedContext sharedContext = renderer.getSharedContext();
             sharedContext.setPrint(true);
             sharedContext.setInteractive(false);
+            sharedContext.setReplacedElementFactory(new CustomElementFactoryImpl());
             sharedContext.getTextRenderer().setSmoothingThreshold(0);
             renderer.getFontResolver()
-                    .addFont(HtmlWithExternalStyle2PdfUsingOpenPdf.class.getClassLoader()
-                            .getResource("src/resources/styles/fonts/PRISTINA.ttf").toString(), true);
+                    .addFont("src/main/resources/fonts/Official.ttf", true);
             String baseUrl = FileSystems.getDefault()
-                    .getPath("src//resources//styles//").toUri().toURL().toString();
-            renderer.setDocumentFromString(xhtml);
+                    .getPath("src/main/resources/css").toUri().toURL().toString();
+            renderer.setDocumentFromString(xhtml, baseUrl);
             renderer.layout();
             outputStream = new FileOutputStream(outputPdf);
             renderer.createPDF(outputStream);

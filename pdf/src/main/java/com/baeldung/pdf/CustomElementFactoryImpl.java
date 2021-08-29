@@ -11,6 +11,7 @@ import org.xhtmlrenderer.extend.UserAgentCallback;
 import org.xhtmlrenderer.layout.LayoutContext;
 import org.xhtmlrenderer.pdf.ITextFSImage;
 import org.xhtmlrenderer.pdf.ITextImageElement;
+import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.render.BlockBox;
 import org.xhtmlrenderer.simple.extend.FormSubmissionListener;
 
@@ -24,29 +25,26 @@ public class CustomElementFactoryImpl implements ReplacedElementFactory {
     public ReplacedElement createReplacedElement(LayoutContext c, BlockBox box, UserAgentCallback uac, int cssWidth,
                                                  int cssHeight) {
         Element e = box.getElement();
-        if (e != null) {
-            String nodeName = e.getNodeName();
-            if (nodeName.equals("img")) {
-                String imagePath = e.getAttribute("src");
-                try {
-					FSImage fsImage = getImageInstance(imagePath);
-                    if (cssWidth != -1 || cssHeight != -1) {
-                        fsImage.scale(cssWidth, cssHeight);
-                    } else {
-                        fsImage.scale(200, 200);
-                    }
-                    return new ITextImageElement(fsImage);
-                } catch (Exception e1) {
-                   // Log if any errors
+        String nodeName = e.getNodeName();
+        if (nodeName.equals("img")) {
+            String imagePath = e.getAttribute("src");
+            try {
+                FSImage fsImage = getImageInstance(imagePath);
+                if (cssWidth != -1 || cssHeight != -1) {
+                    fsImage.scale(cssWidth, cssHeight);
+                } else {
+                    fsImage.scale(2000, 1000);
                 }
+                return new ITextImageElement(fsImage);
+            } catch (Exception e1) {
+                // Log if any errors
             }
         }
         return null;
     }
 
     private FSImage getImageInstance(String imagePath) throws IOException, BadElementException {
-		InputStream input = new FileInputStream(getClass().getClassLoader().getResource(
-                imagePath.substring(imagePath.indexOf("/") + 1)).getFile());
+		InputStream input = new FileInputStream(imagePath);
         final byte[] bytes = IOUtils.toByteArray(input);
         final Image image = Image.getInstance(bytes);
         FSImage fsImage = new ITextFSImage(image);
