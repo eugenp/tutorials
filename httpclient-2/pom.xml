@@ -43,6 +43,12 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Webclient -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

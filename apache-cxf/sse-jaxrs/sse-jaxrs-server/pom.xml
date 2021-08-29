@@ -14,7 +14,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -33,7 +32,6 @@
             <version>${bind-api.version}</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>

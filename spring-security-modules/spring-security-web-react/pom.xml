@@ -108,13 +108,15 @@
                     </warSourceExcludes>
                 </configuration>
             </plugin>
-            <plugin>
+	<!-- NPM build is disabled from profile specific configurations because in a multi-threaded run environment like Jenkins this build was not succeeding due to issues totally unrelated to this module
+		This can be enabled manually while running this module on local, or directly npm can be run inside the webapp folder
+	 -->
+<!--             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>${frontend-maven-plugin.version}</version>
                 <configuration>
                     <nodeVersion>${node.version}</nodeVersion>
-                    <npmVersion>${npm.version}</npmVersion>
                     <workingDirectory>src/main/webapp/WEB-INF/view/react</workingDirectory>
                 </configuration>
                 <executions>
@@ -140,7 +142,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -149,7 +151,11 @@
         </plugins>
     </build>
 
-    <profiles>
+
+	<!-- NPM build is disabled from profile specific configurations because in a multi-threaded run environment like Jenkins this build was not succeeding due to issues totally unrelated to this module
+		This can be enabled manually while running this module on local, or directly npm can be run inside the webapp folder
+	 -->
+<!--     <profiles>
         <profile>
             <id>default-first</id>
             <build>
@@ -200,14 +206,14 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles> -->
 
     <properties>
         <!-- util -->
         <guava.version>19.0</guava.version>
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+        <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
         <jetty.version>9.4.11.v20180605</jetty.version>
         <!-- frontend -->
         <node.version>v8.11.3</node.version>
