@@ -35,7 +35,7 @@
         <module>maven-builder-plugin</module>
         <module>host-maven-repo-example</module>
         <module>plugin-management</module>
-        <module>maven-surefire-plugin</module>
+        <module>maven-dependency-management</module>
     </modules>
 
 </project>
