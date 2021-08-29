@@ -41,14 +41,14 @@ public class InlineStyledHtml2PdfUsingOpenHtml {
 
     private void xhtmlToPdf(org.w3c.dom.Document doc, String outputPdf) throws IOException {
         String baseUri = FileSystems.getDefault()
-                .getPath( "src/main/resources")
+                .getPath( "src/main/resources/css")
                 .toUri()
                 .toString();
         OutputStream os = new FileOutputStream(outputPdf);
         PdfRendererBuilder builder = new PdfRendererBuilder();
         builder.withUri(outputPdf);
         builder.toStream(os);
-        builder.useFont(new File("src/main/resources/fonts/Official.ttf"), "Official");
+        builder.useFont(new File(getClass().getClassLoader().getResource("fonts/Official.ttf").getFile()), "Official");
         builder.withW3cDocument(doc, baseUri);
         builder.run();
         os.close();
