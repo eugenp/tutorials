@@ -131,5 +131,5 @@
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj-core.version>3.16.1</assertj-core.version>
     </properties>
-  
+
 </project>

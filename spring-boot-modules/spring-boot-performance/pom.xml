@@ -51,4 +51,5 @@
         <start-class>com.baeldung.lazyinitialization.Application</start-class>
         <chaos.monkey.version>2.0.0</chaos.monkey.version>
     </properties>
+
 </project>

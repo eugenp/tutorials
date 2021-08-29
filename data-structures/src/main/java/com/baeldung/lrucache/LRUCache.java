@@ -1,6 +1,5 @@
 package com.baeldung.lrucache;
 
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,21 +9,17 @@ public class LRUCache<K, V> implements Cache<K, V> {
     private int size;
     private Map<K, LinkedListNode<CacheElement<K, V>>> linkedListNodeMap;
     private DoublyLinkedList<CacheElement<K, V>> doublyLinkedList;
-    private ReentrantReadWriteLock.ReadLock readLock;
-    private ReentrantReadWriteLock.WriteLock writeLock;
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     public LRUCache(int size) {
         this.size = size;
-        this.linkedListNodeMap = new Hashtable<>(size);
+        this.linkedListNodeMap = new ConcurrentHashMap<>(size);
         this.doublyLinkedList = new DoublyLinkedList<>();
-        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
-        this.readLock = lock.readLock();
-        this.writeLock = lock.writeLock();
     }
 
     @Override
     public boolean put(K key, V value) {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             CacheElement<K, V> item = new CacheElement<K, V>(key, value);
             LinkedListNode<CacheElement<K, V>> newNode;
@@ -43,13 +38,13 @@ public class LRUCache<K, V> implements Cache<K, V> {
             this.linkedListNodeMap.put(key, newNode);
             return true;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
     @Override
     public Optional<V> get(K key) {
-        readLock.lock();
+        this.lock.readLock().lock();
         try {
             LinkedListNode<CacheElement<K, V>> linkedListNode = this.linkedListNodeMap.get(key);
             if (linkedListNode != null && !linkedListNode.isEmpty()) {
@@ -58,17 +53,17 @@ public class LRUCache<K, V> implements Cache<K, V> {
             }
             return Optional.empty();
         } finally {
-            readLock.unlock();
+            this.lock.readLock().unlock();
         }
     }
 
     @Override
     public int size() {
-        readLock.lock();
+        this.lock.readLock().lock();
         try {
             return doublyLinkedList.size();
         } finally {
-            readLock.unlock();
+            this.lock.readLock().unlock();
         }
     }
 
@@ -79,18 +74,18 @@ public class LRUCache<K, V> implements Cache<K, V> {
 
     @Override
     public void clear() {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             linkedListNodeMap.clear();
             doublyLinkedList.clear();
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 
 
     private boolean evictElement() {
-        writeLock.lock();
+        this.lock.writeLock().lock();
         try {
             LinkedListNode<CacheElement<K, V>> linkedListNode = doublyLinkedList.removeTail();
             if (linkedListNode.isEmpty()) {
@@ -99,7 +94,7 @@ public class LRUCache<K, V> implements Cache<K, V> {
             linkedListNodeMap.remove(linkedListNode.getElement().getKey());
             return true;
         } finally {
-            writeLock.unlock();
+            this.lock.writeLock().unlock();
         }
     }
 }

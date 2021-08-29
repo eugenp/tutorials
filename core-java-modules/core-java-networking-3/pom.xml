@@ -47,6 +47,24 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.seancfoley/ipaddress -->
+        <dependency>
+            <groupId>com.github.seancfoley</groupId>
+            <artifactId>ipaddress</artifactId>
+            <version>${seancfoley.ipaddress.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.jgonian/commons-ip-math -->
+        <dependency>
+            <groupId>com.github.jgonian</groupId>
+            <artifactId>commons-ip-math</artifactId>
+            <version>${jgonian.commons-ip-math.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.java-ipv6/java-ipv6 -->
+        <dependency>
+            <groupId>com.googlecode.java-ipv6</groupId>
+            <artifactId>java-ipv6</artifactId>
+            <version>${googlecode.ipv6.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -66,6 +84,9 @@
         <jetty.embeded.version>9.4.31.v20200723</jetty.embeded.version>
         <tomcat.embeded.version>10.0.0-M7</tomcat.embeded.version>
         <assertj.version>3.11.1</assertj.version>
+        <seancfoley.ipaddress.version>5.3.3</seancfoley.ipaddress.version>
+        <jgonian.commons-ip-math.version>1.32</jgonian.commons-ip-math.version>
+        <googlecode.ipv6.version>0.17</googlecode.ipv6.version>
     </properties>
 
 </project>
