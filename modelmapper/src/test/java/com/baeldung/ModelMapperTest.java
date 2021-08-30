@@ -63,9 +63,9 @@ public class ModelMapperTest {
   @Test
   public void whenMapGameWithDeepMapping_convertsToDTO(){
     // setup
-    final TypeMap<Game, GameDTO> propertyMap = this.mapper.createTypeMap(Game.class, GameDTO.class);
+    final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
     // add deep mapping to flatten source's Player into name in destination
-    propertyMap.addMappings(
+    propertyMapper.addMappings(
         mapper -> mapper.map(src -> src.getCreator().getName(), GameDTO::setCreator)
     );
     // when map between different hierarchies
@@ -81,8 +81,8 @@ public class ModelMapperTest {
   @Test
   public void whenMapGameWithDifferentTypedProperties_convertsToDTO(){
     // setup
-    final TypeMap<Game, GameDTO> propertyMap = this.mapper.createTypeMap(Game.class, GameDTO.class);
-    propertyMap.addMappings(mapper -> mapper.map(src -> src.getCreator().getId(), GameDTO::setCreatorId));
+    final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+    propertyMapper.addMappings(mapper -> mapper.map(src -> src.getCreator().getId(), GameDTO::setCreatorId));
     // when map different typed properties
     final Game game = new Game(1L, "Game 1");
     game.setCreator(new Player(1L, "John"));
@@ -94,10 +94,10 @@ public class ModelMapperTest {
   }
 
   @Test
-  public void whenMapGameWithSkipIdPropery_convertsToDTO(){
+  public void whenMapGameWithSkipIdProperty_convertsToDTO(){
     // setup
-    final TypeMap<Game, GameDTO> propertyMap = this.mapper.createTypeMap(Game.class, GameDTO.class);
-    propertyMap.addMappings(mapper -> mapper.skip(GameDTO::setId));
+    final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+    propertyMapper.addMappings(mapper -> mapper.skip(GameDTO::setId));
     // when id is skipped
     final Game game = new Game(1L, "Game 1");
     final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
@@ -109,9 +109,9 @@ public class ModelMapperTest {
   @Test
   public void whenMapGameWithCustomConverter_convertsToDTO(){
     // setup
-    final TypeMap<Game, GameDTO> propertyMap = this.mapper.createTypeMap(Game.class, GameDTO.class);
+    final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
     final Converter<Collection, Integer> collectionToSize = c -> c.getSource().size();
-    propertyMap.addMappings(
+    propertyMapper.addMappings(
         mapper -> mapper.using(collectionToSize).map(Game::getPlayers, GameDTO::setTotalPlayers)
     );
     // when collection to size converter is provided
@@ -128,10 +128,10 @@ public class ModelMapperTest {
   @Test
   public void whenUsingProvider_mergesGameInstances(){
     // setup
-    final TypeMap<Game, Game> propertyMap = this.mapper.createTypeMap(Game.class, Game.class);
+    final TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
     // a provider to fetch a Game instance from a repository
     final Provider<Game> gameProvider = p -> this.gameRepository.findById(1L);
-    propertyMap.setProvider(gameProvider);
+    propertyMapper.setProvider(gameProvider);
     // when a state for update is given
     final Game update = new Game(1L, "Game Updated!");
     update.setCreator(new Player(1L, "John"));
@@ -145,9 +145,9 @@ public class ModelMapperTest {
   @Test
   public void whenUsingConditionalIsNull_mergesGameInstancesWithoutOverridingId(){
     // setup
-    final TypeMap<Game, Game> propertyMap = this.mapper.createTypeMap(Game.class, Game.class);
-    propertyMap.setProvider(p -> this.gameRepository.findById(2L));
-    propertyMap.addMappings(mapper -> mapper.when(Conditions.isNull()).skip(Game::getId, Game::setId));
+    final TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
+    propertyMapper.setProvider(p -> this.gameRepository.findById(2L));
+    propertyMapper.addMappings(mapper -> mapper.when(Conditions.isNull()).skip(Game::getId, Game::setId));
     // when game has no id
     final Game update = new Game(null, "Not Persisted Game!");
     final Game updatedGame = this.mapper.map(update, Game.class);
