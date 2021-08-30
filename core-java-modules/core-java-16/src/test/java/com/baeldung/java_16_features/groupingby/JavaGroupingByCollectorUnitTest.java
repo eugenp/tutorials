@@ -5,6 +5,8 @@ import static java.util.stream.Collectors.averagingInt;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.groupingByConcurrent;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toMap;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.maxBy;
@@ -13,6 +15,7 @@ import static java.util.stream.Collectors.summingInt;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.offset;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -201,9 +204,9 @@ public class JavaGroupingByCollectorUnitTest {
 
     @Test
     public void givenAListOfPosts_whenGroupedByComplexMapPairKeyType_thenGetAMapBetweenPairAndList() {
-        
+
         Map<Pair<BlogPostType, String>, List<BlogPost>> postsPerTypeAndAuthor = posts.stream()
-          .collect(groupingBy(post -> new ImmutablePair<>(post.getType(), post.getAuthor())));
+            .collect(groupingBy(post -> new ImmutablePair<>(post.getType(), post.getAuthor())));
 
         List<BlogPost> result = postsPerTypeAndAuthor.get(new ImmutablePair<>(BlogPostType.GUIDE, "Author 1"));
 
@@ -218,7 +221,7 @@ public class JavaGroupingByCollectorUnitTest {
 
     @Test
     public void givenAListOfPosts_whenGroupedByComplexMapKeyType_thenGetAMapBetweenTupleAndList() {
-        
+
         Map<Tuple, List<BlogPost>> postsPerTypeAndAuthor = posts.stream()
             .collect(groupingBy(post -> new Tuple(post.getType(), post.getAuthor())));
 
@@ -232,12 +235,12 @@ public class JavaGroupingByCollectorUnitTest {
         assertThat(blogPost.getType()).isEqualTo(BlogPostType.GUIDE);
         assertThat(blogPost.getAuthor()).isEqualTo("Author 1");
     }
-    
+
     @Test
     public void givenAListOfPosts_whenGroupedByRecord_thenGetAMapBetweenRecordAndList() {
-        
+
         Map<BlogPost.AuthPostTypesLikes, List<BlogPost>> postsPerTypeAndAuthor = posts.stream()
-          .collect(groupingBy(post -> new BlogPost.AuthPostTypesLikes(post.getAuthor(), post.getType(), post.getLikes())));
+            .collect(groupingBy(post -> new BlogPost.AuthPostTypesLikes(post.getAuthor(), post.getType(), post.getLikes())));
 
         List<BlogPost> result = postsPerTypeAndAuthor.get(new BlogPost.AuthPostTypesLikes("Author 1", BlogPostType.GUIDE, 20));
 
@@ -250,5 +253,50 @@ public class JavaGroupingByCollectorUnitTest {
         assertThat(blogPost.getAuthor()).isEqualTo("Author 1");
         assertThat(blogPost.getLikes()).isEqualTo(20);
     }
-    
+
+    @Test
+    public void givenListOfPosts_whenGroupedByAuthor_thenGetAMapUsingCollectingAndThen() {
+
+        Map<String, BlogPost.PostcountTitlesLikesStats> postsPerAuthor = posts.stream()
+            .collect(groupingBy(BlogPost::getAuthor, collectingAndThen(toList(), list -> {
+                long count = list.stream()
+                    .map(BlogPost::getTitle)
+                    .collect(counting());
+                String titles = list.stream()
+                    .map(BlogPost::getTitle)
+                    .collect(joining(" : "));
+                IntSummaryStatistics summary = list.stream()
+                    .collect(summarizingInt(BlogPost::getLikes));
+                return new BlogPost.PostcountTitlesLikesStats(count, titles, summary);
+            })));
+
+        BlogPost.PostcountTitlesLikesStats result = postsPerAuthor.get("Author 1");
+        assertThat(result.postCount()).isEqualTo(3L);
+        assertThat(result.titles()).isEqualTo("News item 1 : Programming guide : Tech review 2");
+        assertThat(result.likesStats().getMax()).isEqualTo(20);
+        assertThat(result.likesStats().getMin()).isEqualTo(15);
+        assertThat(result.likesStats().getAverage()).isEqualTo(16.666d, offset(0.001d));
+    }
+
+    @Test
+    public void givenListOfPosts_whenGroupedByAuthor_thenGetAMapUsingToMap() {
+
+        int maxValLikes = 17;
+        Map<String, BlogPost.TitlesBoundedSumOfLikes> postsPerAuthor = posts.stream()
+            .collect(toMap(BlogPost::getAuthor, post -> {
+                int likes = (post.getLikes() > maxValLikes) ? maxValLikes : post.getLikes();
+                return new BlogPost.TitlesBoundedSumOfLikes(post.getTitle(), likes);
+            }, (u1, u2) -> {
+                int likes = (u2.boundedSumOfLikes() > maxValLikes) ? maxValLikes : u2.boundedSumOfLikes();
+                return new BlogPost.TitlesBoundedSumOfLikes(u1.titles()
+                    .toUpperCase() + " : "
+                    + u2.titles()
+                        .toUpperCase(),
+                    u1.boundedSumOfLikes() + likes);
+            }));
+        
+        BlogPost.TitlesBoundedSumOfLikes result = postsPerAuthor.get("Author 1");
+        assertThat(result.titles()).isEqualTo("NEWS ITEM 1 : PROGRAMMING GUIDE : TECH REVIEW 2");
+        assertThat(result.boundedSumOfLikes()).isEqualTo(47);
+    }
 }
