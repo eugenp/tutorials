@@ -345,6 +345,7 @@
                 <module>antlr</module>
 
                 <module>apache-cxf</module>
+                <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
                 <module>apache-poi</module>
@@ -472,6 +473,7 @@
                 <module>jsoup</module>
                 <module>jta</module>
                 <module>kubernetes</module>
+                <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
 		<module>language-interop</module>
 		<module>libraries-2</module>
@@ -814,6 +816,7 @@
                 <module>antlr</module>
 
                 <module>apache-cxf</module>
+                <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo/olingo2</module>
                 <module>apache-poi</module>
@@ -939,6 +942,8 @@
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
+
+                <module>ksqldb</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-2</module>
