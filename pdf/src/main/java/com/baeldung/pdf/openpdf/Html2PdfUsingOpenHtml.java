@@ -1,4 +1,4 @@
-package com.baeldung.pdf;
+package com.baeldung.pdf.openpdf;
 
 import java.io.File;
 import java.io.FileOutputStream;

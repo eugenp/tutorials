@@ -1,4 +1,4 @@
-package com.baeldung.pdf;
+package com.baeldung.pdf.openpdf;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
