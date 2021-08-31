@@ -5,7 +5,7 @@ This module contains articles about WebSockets with Spring Security
 ### Relevant Articles: 
 
 - [Intro to Security and WebSockets](https://www.baeldung.com/spring-security-websockets)
-- [Spring WebSockets: Build an User Chat](https://www.baeldung.com/spring-websockets-send-message-to-user)
+- [Spring WebSockets: Send Messages to a Specific User](https://www.baeldung.com/spring-websockets-send-message-to-user)
 - [REST vs WebSockets](https://www.baeldung.com/rest-vs-websockets)
 
 ### Running This Project:

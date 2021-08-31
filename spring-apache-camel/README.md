@@ -9,6 +9,7 @@ This module contains articles about Spring with Apache Camel
 - [Introduction To Apache Camel](http://www.baeldung.com/apache-camel-intro)
 - [Integration Patterns With Apache Camel](http://www.baeldung.com/camel-integration-patterns)
 - [Using Apache Camel with Spring](http://www.baeldung.com/spring-apache-camel-tutorial)
+- [Unmarshalling a JSON Array Using camel-jackson](https://www.baeldung.com/java-camel-jackson-json-array)
 
 ### Framework Versions:
 

@@ -4,12 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.configurationproperties.ConfigProperties;
 import com.baeldung.properties.AdditionalProperties;
 import com.baeldung.properties.ConfigPropertiesDemoApplication;
 
@@ -19,34 +17,34 @@ import com.baeldung.properties.ConfigPropertiesDemoApplication;
 public class ConfigPropertiesIntegrationTest {
 
     @Autowired
-    private ConfigProperties properties;
+    private ConfigProperties configProperties;
 
     @Autowired
     private AdditionalProperties additionalProperties;
 
     @Test
     public void whenSimplePropertyQueriedthenReturnsProperty() throws Exception {
-        Assert.assertTrue("From address is read as null!", properties.getFrom() != null);
+        Assert.assertTrue("From address is read as null!", configProperties.getFrom() != null);
     }
 
     @Test
     public void whenListPropertyQueriedthenReturnsProperty() throws Exception {
-        Assert.assertTrue("Couldn't bind list property!", properties.getDefaultRecipients().size() == 2);
-        Assert.assertTrue("Incorrectly bound list property. Expected 2 entries!", properties.getDefaultRecipients().size() == 2);
+        Assert.assertTrue("Couldn't bind list property!", configProperties.getDefaultRecipients().size() == 2);
+        Assert.assertTrue("Incorrectly bound list property. Expected 2 entries!", configProperties.getDefaultRecipients().size() == 2);
     }
 
     @Test
     public void whenMapPropertyQueriedthenReturnsProperty() throws Exception {
-        Assert.assertTrue("Couldn't bind map property!", properties.getAdditionalHeaders() != null);
-        Assert.assertTrue("Incorrectly bound map property. Expected 3 Entries!", properties.getAdditionalHeaders().size() == 3);
+        Assert.assertTrue("Couldn't bind map property!", configProperties.getAdditionalHeaders() != null);
+        Assert.assertTrue("Incorrectly bound map property. Expected 3 Entries!", configProperties.getAdditionalHeaders().size() == 3);
     }
 
     @Test
     public void whenObjectPropertyQueriedthenReturnsProperty() throws Exception {
-        Assert.assertTrue("Couldn't bind map property!", properties.getCredentials() != null);
-        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getAuthMethod().equals("SHA1"));
-        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getUsername().equals("john"));
-        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getPassword().equals("password"));
+        Assert.assertTrue("Couldn't bind map property!", configProperties.getCredentials() != null);
+        Assert.assertTrue("Incorrectly bound object property!", configProperties.getCredentials().getAuthMethod().equals("SHA1"));
+        Assert.assertTrue("Incorrectly bound object property!", configProperties.getCredentials().getUsername().equals("john"));
+        Assert.assertTrue("Incorrectly bound object property!", configProperties.getCredentials().getPassword().equals("password"));
     }
 
     @Test

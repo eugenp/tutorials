@@ -46,7 +46,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
 
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        LOG.info("Test Aborted for test {}: ", context.getDisplayName());
+        LOG.info("Test Failed for test {}: ", context.getDisplayName());
 
         testResultsStatus.add(TestResultStatus.FAILED);
     }

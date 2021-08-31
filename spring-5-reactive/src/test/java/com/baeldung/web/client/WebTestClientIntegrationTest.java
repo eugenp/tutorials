@@ -1,11 +1,11 @@
 package com.baeldung.web.client;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -13,17 +13,22 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.WebHandler;
 
-import com.baeldung.reactive.Spring5ReactiveApplication;
+import com.baeldung.web.reactive.client.WebClientApplication;
+import com.baeldung.web.reactive.client.WebClientController;
 
 import reactor.core.publisher.Mono;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Spring5ReactiveApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@WithMockUser
+@SpringBootTest(classes = WebClientApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class WebTestClientIntegrationTest {
 
     @LocalServerPort
     private int port;
+
+    @Autowired
+    private ApplicationContext context;
+
+    @Autowired
+    private WebClientController controller;
 
     private final RouterFunction ROUTER_FUNCTION = RouterFunctions.route(RequestPredicates.GET("/resource"), request -> ServerResponse.ok()
         .build());
@@ -49,6 +54,7 @@ public class WebTestClientIntegrationTest {
     }
 
     @Test
+    @WithMockUser
     public void testWebTestClientWithServerURL() {
         WebTestClient.bindToServer()
             .baseUrl("http://localhost:" + port)
@@ -58,7 +64,39 @@ public class WebTestClientIntegrationTest {
             .exchange()
             .expectStatus()
             .isOk()
-            .expectBody();
+            .expectBody()
+            .jsonPath("field")
+            .isEqualTo("value");
+        ;
+    }
+
+    @Test
+    @WithMockUser
+    public void testWebTestClientWithApplicationContext() {
+        WebTestClient.bindToApplicationContext(context)
+            .build()
+            .get()
+            .uri("/resource")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody()
+            .jsonPath("field")
+            .isEqualTo("value");
+    }
+
+    @Test
+    public void testWebTestClientWithController() {
+        WebTestClient.bindToController(controller)
+            .build()
+            .get()
+            .uri("/resource")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody()
+            .jsonPath("field")
+            .isEqualTo("value");
     }
 
 }

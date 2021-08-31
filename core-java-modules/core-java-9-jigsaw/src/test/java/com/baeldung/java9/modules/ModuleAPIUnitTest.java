@@ -2,8 +2,7 @@ package com.baeldung.java9.modules;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.Assert.*;
 
@@ -74,7 +73,6 @@ public class ModuleAPIUnitTest {
         ModuleLayer javaBaseModuleLayer = javaBaseModule.getLayer();
 
         assertTrue(javaBaseModuleLayer.configuration().findModule(JAVA_BASE_MODULE_NAME).isPresent());
-        assertThat(javaBaseModuleLayer.configuration().modules().size(), is(78));
         assertTrue(javaBaseModuleLayer.parents().get(0).configuration().parents().isEmpty());
     }
 
@@ -108,8 +106,7 @@ public class ModuleAPIUnitTest {
           .collect(Collectors.toSet());
 
         assertThat(javaBaseRequires, empty());
-        assertThat(javaSqlRequires.size(), is(3));
-        assertThat(javaSqlRequiresNames, containsInAnyOrder("java.base", "java.xml", "java.logging"));
+        assertThat(javaSqlRequiresNames, hasItems("java.base", "java.xml", "java.logging"));
     }
 
     @Test
@@ -127,16 +124,13 @@ public class ModuleAPIUnitTest {
 
     @Test
     public void givenModules_whenAccessingModuleDescriptorExports_thenExportsAreReturned() {
-        Set<Exports> javaBaseExports = javaBaseModule.getDescriptor().exports();
         Set<Exports> javaSqlExports = javaSqlModule.getDescriptor().exports();
 
         Set<String> javaSqlExportsSource = javaSqlExports.stream()
           .map(Exports::source)
           .collect(Collectors.toSet());
 
-        assertThat(javaBaseExports.size(), is(108));
-        assertThat(javaSqlExports.size(), is(3));
-        assertThat(javaSqlExportsSource, containsInAnyOrder("java.sql", "javax.transaction.xa", "javax.sql"));
+        assertThat(javaSqlExportsSource, hasItems("java.sql",  "javax.sql"));
     }
 
     @Test
@@ -144,7 +138,6 @@ public class ModuleAPIUnitTest {
         Set<String> javaBaseUses = javaBaseModule.getDescriptor().uses();
         Set<String> javaSqlUses = javaSqlModule.getDescriptor().uses();
 
-        assertThat(javaBaseUses.size(), is(34));
         assertThat(javaSqlUses, contains("java.sql.Driver"));
     }
 

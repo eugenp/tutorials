@@ -1,16 +1,5 @@
 package com.baeldung.classpathfileaccess;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.util.stream.Collectors;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +12,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.util.ResourceUtils;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test class illustrating various methods of accessing a file from the classpath using Resource.
@@ -55,7 +55,7 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenResourceLoader_thenReadSuccessful() throws IOException {
-        final Resource resource = resourceLoader.getResource("classpath:data/employees.dat");
+        final Resource resource = loadEmployeesWithResourceLoader();
         final String employees = new String(Files.readAllBytes(resource.getFile()
             .toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
@@ -63,7 +63,7 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenApplicationContext_thenReadSuccessful() throws IOException {
-        final Resource resource = appContext.getResource("classpath:data/employees.dat");
+        final Resource resource = loadEmployeesWithApplicationContext();
         final String employees = new String(Files.readAllBytes(resource.getFile()
             .toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
@@ -85,7 +85,7 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenResourceAsStream_thenReadSuccessful() throws IOException {
-        final InputStream resource = new ClassPathResource("data/employees.dat").getInputStream();
+        final InputStream resource = loadEmployeesWithClassPathResource().getInputStream();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource))) {
             final String employees = reader.lines()
                 .collect(Collectors.joining("\n"));
@@ -95,7 +95,7 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenResourceAsFile_thenReadSuccessful() throws IOException {
-        final File resource = new ClassPathResource("data/employees.dat").getFile();
+        final File resource = loadEmployeesWithClassPathResource().getFile();
         final String employees = new String(Files.readAllBytes(resource.toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
     }
@@ -114,7 +114,19 @@ public class SpringResourceIntegrationTest {
         assertEquals(EMPLOYEES_EXPECTED, employees);
     }
     
-    public File loadEmployeesWithSpringInternalClass() throws FileNotFoundException {
+    private File loadEmployeesWithSpringInternalClass() throws FileNotFoundException {
         return ResourceUtils.getFile("classpath:data/employees.dat");
+    }
+
+    private Resource loadEmployeesWithClassPathResource(){
+        return new ClassPathResource("data/employees.dat");
+    }
+
+    private Resource loadEmployeesWithResourceLoader(){
+        return resourceLoader.getResource("classpath:data/employees.dat");
+    }
+
+    private Resource loadEmployeesWithApplicationContext(){
+        return appContext.getResource("classpath:data/employees.dat");
     }
 }

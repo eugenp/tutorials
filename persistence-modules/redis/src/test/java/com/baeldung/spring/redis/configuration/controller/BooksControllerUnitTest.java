@@ -10,15 +10,15 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.spring.redis.configuration.entity.Book;
 import com.baeldung.spring.redis.configuration.repository.BooksRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class BooksControllerUnitTest {
 
-    @Spy
     @InjectMocks
     private BooksController booksController;
 

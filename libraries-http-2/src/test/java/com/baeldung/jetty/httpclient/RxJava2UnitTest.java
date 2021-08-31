@@ -10,8 +10,11 @@ import org.eclipse.jetty.http.HttpStatus;
 import org.eclipse.jetty.reactive.client.ReactiveRequest;
 import org.eclipse.jetty.reactive.client.ReactiveRequest.Event.Type;
 import org.eclipse.jetty.reactive.client.ReactiveResponse;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 import org.springframework.http.MediaType;
 
@@ -19,11 +22,19 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class RxJava2UnitTest extends AbstractUnitTest {
+    
+    protected static int port = 9082;
+    
+    @BeforeAll
+    public static void init() {
+        startServer(new RequestHandler(), port);
+        startClient();
+    }
 
     @Test
     public void givenReactiveClient_whenRequestedWithBody_ShouldReturnBody() throws Exception {
 
-        Request request = httpClient.newRequest(uri());
+        Request request = httpClient.newRequest(uri(port));
         ReactiveRequest reactiveRequest = ReactiveRequest.newBuilder(request)
             .content(ReactiveRequest.Content.fromString(CONTENT, MediaType.TEXT_PLAIN_VALUE, UTF_8))
             .build();
@@ -32,12 +43,12 @@ public class RxJava2UnitTest extends AbstractUnitTest {
         String responseContent = Single.fromPublisher(publisher)
             .blockingGet();
 
-        Assert.assertEquals(CONTENT, responseContent);
+        assertEquals(CONTENT, responseContent);
     }
 
     @Test
     public void givenReactiveClient_whenRequested_ShouldPrintEvents() throws Exception {
-        ReactiveRequest request = ReactiveRequest.newBuilder(httpClient, uri())
+        ReactiveRequest request = ReactiveRequest.newBuilder(httpClient, uri(port))
             .content(ReactiveRequest.Content.fromString(CONTENT, MediaType.TEXT_PLAIN_VALUE, UTF_8))
             .build();
         Publisher<ReactiveRequest.Event> requestEvents = request.requestEvents();
@@ -58,10 +69,20 @@ public class RxJava2UnitTest extends AbstractUnitTest {
         int actualStatus = response.blockingGet()
             .getStatus();
 
-        Assert.assertEquals(6, requestEventTypes.size());
-        Assert.assertEquals(5, responseEventTypes.size());
+        assertEquals(6, requestEventTypes.size());
+        assertEquals(5, responseEventTypes.size());
 
-        Assert.assertEquals(actualStatus, HttpStatus.OK_200);
+        assertEquals(actualStatus, HttpStatus.OK_200);
+    }
+    
+    @AfterAll
+    public static void dispose() throws Exception {
+        if (httpClient != null) {
+            httpClient.stop();
+        }
+        if (server != null) {
+            server.stop();
+        }
     }
 
 }

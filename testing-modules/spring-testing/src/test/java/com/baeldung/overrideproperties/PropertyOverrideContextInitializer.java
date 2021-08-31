@@ -12,6 +12,6 @@ public class PropertyOverrideContextInitializer implements ApplicationContextIni
     public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
         TestPropertySourceUtils.addInlinedPropertiesToEnvironment(configurableApplicationContext, "example.firstProperty=" + PROPERTY_FIRST_VALUE);
 
-        TestPropertySourceUtils.addPropertiesFilesToEnvironment(configurableApplicationContext, "context-override-application.properties");
+        TestPropertySourceUtils.addPropertiesFilesToEnvironment(configurableApplicationContext, "classpath:context-override-application.properties");
     }
 }

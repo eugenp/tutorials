@@ -50,7 +50,7 @@ public class CustomerController {
         }
 
         Link link = linkTo(methodOn(CustomerController.class).getOrdersForCustomer(customerId)).withSelfRel();
-        CollectionModel<Order> result = new CollectionModel<>(orders, link);
+        CollectionModel<Order> result = CollectionModel.of(orders, link);
         return result;
     }
 
@@ -72,7 +72,7 @@ public class CustomerController {
         }
 
         Link link = linkTo(CustomerController.class).withSelfRel();
-        CollectionModel<Customer> result = new CollectionModel<>(allCustomers, link);
+        CollectionModel<Customer> result = CollectionModel.of(allCustomers, link);
         return result;
     }
 

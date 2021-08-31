@@ -13,3 +13,5 @@ This module contains articles specific to use of Hibernate as a JPA implementati
 - [Enabling Transaction Locks in Spring Data JPA](https://www.baeldung.com/java-jpa-transaction-locks)
 - [JPA/Hibernate Persistence Context](https://www.baeldung.com/jpa-hibernate-persistence-context)
 - [Quick Guide to EntityManager#getReference()](https://www.baeldung.com/jpa-entity-manager-get-reference)
+- [JPA Entities and the Serializable Interface](https://www.baeldung.com/jpa-entities-serializable)
+- [EntityNotFoundException in Hibernate](https://www.baeldung.com/hibernate-entitynotfoundexception)

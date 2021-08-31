@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -72,7 +71,6 @@
             <version>${okhttp.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- runtime and test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,7 +82,6 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -100,14 +97,12 @@
             <version>2.26.0</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -150,21 +145,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.0.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
     </build>
 
@@ -174,7 +154,7 @@
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
-        <jetty-reactive-httpclient.version>1.0.3</jetty-reactive-httpclient.version>
+        <jetty-reactive-httpclient.version>1.1.6</jetty-reactive-httpclient.version>
         <okhttp.version>4.0.1</okhttp.version>
     </properties>
 

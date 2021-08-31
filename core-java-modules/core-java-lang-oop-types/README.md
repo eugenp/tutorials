@@ -12,3 +12,5 @@ This module contains articles about types in Java
 - [Attaching Values to Java Enum](https://www.baeldung.com/java-enum-values)
 - [A Guide to Java Enums](https://www.baeldung.com/a-guide-to-java-enums)
 - [Determine if an Object is of Primitive Type](https://www.baeldung.com/java-object-primitive-type)
+- [Extending Enums in Java](https://www.baeldung.com/java-extending-enums)
+- [Java Class File Naming Conventions](https://www.baeldung.com/java-class-file-naming)

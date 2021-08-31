@@ -6,9 +6,12 @@ spring:
 ---
 
 spring:
-  profiles: test
+  config:
+    activate:
+      on-profile: test
 name: test-YAML
 environment: testing
+enabled: false
 servers:
   - www.abc.test.com
   - www.xyz.test.com
@@ -36,9 +39,12 @@ component:
 ---
 
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: prod
 name: prod-YAML
 environment: production
+enabled: true
 servers:
   - www.abc.com
   - www.xyz.com
@@ -46,9 +52,12 @@ servers:
 ---
 
 spring:
-    profiles: dev
+  config:
+    activate:
+      on-profile: dev
 name: ${DEV_NAME:dev-YAML}
 environment: development
+enabled: true
 servers:
     - www.abc.dev.com
     - www.xyz.dev.com

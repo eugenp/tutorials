@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.cloud</groupId>
-    <artifactId>spring-cloud-netlix-feign</artifactId>
+    <artifactId>spring-cloud-netflix-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-netflix-feign</name>
     <description>Netflix Feign project for Spring Boot</description>
@@ -32,23 +33,19 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.netflix.feign</groupId>
             <artifactId>feign-okhttp</artifactId>
             <version>${feign-ok.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -59,13 +56,8 @@
     <properties>
         <spring-cloud.version>Camden.SR7</spring-cloud.version>
         <feign-ok.version>8.18.0</feign-ok.version>
-        <!--
-        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        -->
-        <!--
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        -->
+        <!-- <spring-cloud.version>Hoxton.SR8</spring-cloud.version> -->
+        <!-- <maven.compiler.source>8</maven.compiler.source> <maven.compiler.target>8</maven.compiler.target> -->
     </properties>
 
 </project>

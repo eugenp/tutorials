@@ -12,4 +12,6 @@ This module contains articles about basic Java concurrency
 - [Guide to AtomicMarkableReference](https://www.baeldung.com/java-atomicmarkablereference)
 - [Why are Local Variables Thread-Safe in Java](https://www.baeldung.com/java-local-variables-thread-safe)
 - [How to Stop Execution After a Certain Time in Java](https://www.baeldung.com/java-stop-execution-after-certain-time)
+- [How to Handle InterruptedException in Java](https://www.baeldung.com/java-interrupted-exception)
+- [How to Get the Number of Threads in a Java Process](https://www.baeldung.com/java-get-number-of-threads)
 - [[<-- Prev]](/core-java-modules/core-java-concurrency-basic)

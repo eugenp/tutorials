@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <!-- POM file generated with GWT webAppCreator -->
@@ -54,11 +53,10 @@
     </dependencies>
 
     <build>
-        <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
+        <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them 
+            in DevMode -->
         <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-
         <plugins>
-
             <!-- GWT Maven Plugin -->
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
@@ -76,7 +74,8 @@
                     <moduleName>com.baeldung.Google_web_toolkit</moduleName>
                     <moduleShortName>Google_web_toolkit</moduleShortName>
                     <failOnError>true</failOnError>
-                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if you use a different source language for java compilation -->
+                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if you use a different 
+                        source language for java compilation -->
                     <sourceLevel>${maven.compiler.source}</sourceLevel>
                     <!-- Compiler configuration -->
                     <compilerArgs>
@@ -93,32 +92,23 @@
                     </startupUrls>
                 </configuration>
             </plugin>
-
             <!-- Skip normal test execution, we use gwt:test instead -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
     <properties>
-
-        <!-- Setting maven.compiler.source to something different to 1.8 needs that you configure the sourceLevel in gwt-maven-plugin since GWT compiler 2.8 requires 1.8 (see gwt-maven-plugin 
-            block below) -->
+        <!-- Setting maven.compiler.source to something different to 1.8 needs that you configure the 
+            sourceLevel in gwt-maven-plugin since GWT compiler 2.8 requires 1.8 (see gwt-maven-plugin block below) -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
-        <!-- Don't let your Mac use a crazy non-standard encoding -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <gwt.version>2.8.2</gwt.version>
         <gwt.plugin.version>1.0-rc-8</gwt.plugin.version>
-        <surefire.plugin.version>2.17</surefire.plugin.version>
     </properties>
 
 </project>

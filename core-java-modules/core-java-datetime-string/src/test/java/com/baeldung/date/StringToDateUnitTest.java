@@ -58,7 +58,8 @@ public class StringToDateUnitTest {
         LocalDateTime localDateTime = LocalDateTime.of(2015, 05, 05, 10, 15, 30);
         ZonedDateTime expectedZonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of("Europe/Paris"));
 
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2015-05-05T10:15:30+01:00[Europe/Paris]");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2015-05-05 10:15:30 Europe/Paris", formatter);
 
         assertThat(zonedDateTime).isEqualTo(expectedZonedDateTime);
     }

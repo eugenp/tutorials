@@ -1,9 +1,9 @@
 package com.baeldung.hibernate.onetoone.sharedkeybased;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Address {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "street")
@@ -24,6 +24,7 @@ public class Address {
 
     @OneToOne
     @MapsId
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Long getId() {

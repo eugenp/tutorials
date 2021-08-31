@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 public class MinuteBasedVoter implements AccessDecisionVoter {
+
     @Override
     public boolean supports(ConfigAttribute attribute) {
         return true;
@@ -21,6 +22,12 @@ public class MinuteBasedVoter implements AccessDecisionVoter {
 
     @Override
     public int vote(Authentication authentication, Object object, Collection collection) {
-        return authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).filter(r -> "ROLE_USER".equals(r) && LocalDateTime.now().getMinute() % 2 != 0).findAny().map(s -> ACCESS_DENIED).orElseGet(() -> ACCESS_ABSTAIN);
+        return authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .filter(r -> "ROLE_USER".equals(r) && LocalDateTime.now().getMinute() % 2 != 0)
+                .findAny()
+                .map(s -> ACCESS_DENIED)
+                .orElse(ACCESS_ABSTAIN);
     }
 }

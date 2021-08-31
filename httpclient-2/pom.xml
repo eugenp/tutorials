@@ -26,7 +26,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient5.version}</version>
+        </dependency>
         <!-- rest template -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +42,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!-- Webclient -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -64,6 +74,7 @@
 
     <properties>
         <httpclient.version>4.5.8</httpclient.version>
+        <httpclient5.version>5.1</httpclient5.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>

@@ -14,3 +14,4 @@
 - [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
 - [A Guide to BitSet in Java](https://www.baeldung.com/java-bitset)
 - [Get the First Key and Value From a HashMap](https://www.baeldung.com/java-hashmap-get-first-entry)
+- [Performance of removeAll() in a HashSet](https://www.baeldung.com/java-hashset-removeall-performance)
