@@ -33,7 +33,7 @@
     </dependencies>
 
     <properties>
-        <mongo.version>3.10.1</mongo.version>
+        <mongo.version>3.12.1</mongo.version>
         <flapdoodle.version>1.11</flapdoodle.version>
         <morphia.version>1.5.3</morphia.version>
     </properties>
