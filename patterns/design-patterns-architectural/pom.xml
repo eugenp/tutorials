@@ -16,6 +16,21 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
@@ -38,6 +53,9 @@
         <assertj-core.version>3.9.1</assertj-core.version>
         <hibernate-core.version>5.2.16.Final</hibernate-core.version>
         <mysql-connector.version>6.0.6</mysql-connector.version>
+        <spring-boot.version>2.5.3</spring-boot.version>
+        <rest-assured.version>3.3.0</rest-assured.version>
+
     </properties>
 
 </project>
