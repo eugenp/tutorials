@@ -26,24 +26,24 @@ public class Html2PdfUsingFlyingSaucer {
 
 	private void generateHtmlToPdf() throws IOException {
 		File inputHTML = new File(HTML_INPUT);
-		String inputHtmlStr = createWellFormedHtml(inputHTML);
+		Document inputHtml = createWellFormedHtml(inputHTML);
 		File outputPdf = new File(PDF_OUTPUT);
-		xhtmlToPdf(inputHtmlStr, outputPdf);
+		xhtmlToPdf(inputHtml, outputPdf);
 	}
 
-	private String createWellFormedHtml(File inputHTML) throws IOException {
+	private Document createWellFormedHtml(File inputHTML) throws IOException {
 		Document document = Jsoup.parse(inputHTML, "UTF-8");
 		document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);
-		return document.html();
+		return document;
 	}
 
-	private void xhtmlToPdf(String xhtml, File outputPdf) throws IOException {
+	private void xhtmlToPdf(Document xhtml, File outputPdf) throws IOException {
 		try (OutputStream outputStream = new FileOutputStream(outputPdf)) {
 			ITextRenderer renderer = new ITextRenderer();
 			SharedContext sharedContext = renderer.getSharedContext();
 			sharedContext.setPrint(true);
 			sharedContext.setInteractive(false);
-			renderer.setDocumentFromString(xhtml);
+			renderer.setDocumentFromString(xhtml.html());
 			renderer.layout();
 			renderer.createPDF(outputStream);
 		} catch (Exception e) {

@@ -27,22 +27,22 @@ public class Html2PdfUsingOpenHtml {
 
 	private void generateHtmlToPdf() throws IOException {
 		File inputHTML = new File(HTML_INPUT);
-		org.w3c.dom.Document doc = createWellFormedHtml(inputHTML);
+		Document doc = createWellFormedHtml(inputHTML);
 		xhtmlToPdf(doc, PDF_OUTPUT);
 	}
 
-	private org.w3c.dom.Document createWellFormedHtml(File inputHTML) throws IOException {
+	private Document createWellFormedHtml(File inputHTML) throws IOException {
 		Document document = Jsoup.parse(inputHTML, "UTF-8");
 		document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);
-		return new W3CDom().fromJsoup(document);
+		return document;
 	}
 
-	private void xhtmlToPdf(org.w3c.dom.Document doc, String outputPdf) throws IOException {
+	private void xhtmlToPdf(Document doc, String outputPdf) throws IOException {
 		OutputStream os = new FileOutputStream(outputPdf);
 		PdfRendererBuilder builder = new PdfRendererBuilder();
 		builder.withUri(outputPdf);
 		builder.toStream(os);
-		builder.withW3cDocument(doc, "");
+		builder.withW3cDocument(new W3CDom().fromJsoup(doc), "/");
 		builder.run();
 		os.close();
 	}
