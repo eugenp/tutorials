@@ -8,5 +8,9 @@
     "kotlin",
     "cs",
     "linux"
-  ]
+  ],
+  "address": {
+    "city": "Bucharest",
+    "country": "Romania"
+  }
 }

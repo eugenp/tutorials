@@ -19,7 +19,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "area",
     "author",
     "id",
-    "topics"
+    "topics",
+    "address"
 })
 @Generated("jsonschema2pojo")
 public class Input {
@@ -34,6 +35,8 @@ public class Input {
     private Integer id;
     @JsonProperty("topics")
     private List<String> topics = new ArrayList<String>();
+    @JsonProperty("address")
+    private Address address;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -112,6 +115,21 @@ public class Input {
         return this;
     }
 
+    @JsonProperty("address")
+    public Address getAddress() {
+        return address;
+    }
+
+    @JsonProperty("address")
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Input withAddress(Address address) {
+        this.address = address;
+        return this;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -151,6 +169,10 @@ public class Input {
         sb.append('=');
         sb.append(((this.topics == null)?"<null>":this.topics));
         sb.append(',');
+        sb.append("address");
+        sb.append('=');
+        sb.append(((this.address == null)?"<null>":this.address));
+        sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');
         sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
@@ -167,6 +189,7 @@ public class Input {
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.area == null)? 0 :this.area.hashCode()));
+        result = ((result* 31)+((this.address == null)? 0 :this.address.hashCode()));
         result = ((result* 31)+((this.author == null)? 0 :this.author.hashCode()));
         result = ((result* 31)+((this.topics == null)? 0 :this.topics.hashCode()));
         result = ((result* 31)+((this.name == null)? 0 :this.name.hashCode()));
@@ -184,7 +207,7 @@ public class Input {
             return false;
         }
         Input rhs = ((Input) other);
-        return (((((((this.area == rhs.area)||((this.area!= null)&&this.area.equals(rhs.area)))&&((this.author == rhs.author)||((this.author!= null)&&this.author.equals(rhs.author))))&&((this.topics == rhs.topics)||((this.topics!= null)&&this.topics.equals(rhs.topics))))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
+        return ((((((((this.area == rhs.area)||((this.area!= null)&&this.area.equals(rhs.area)))&&((this.address == rhs.address)||((this.address!= null)&&this.address.equals(rhs.address))))&&((this.author == rhs.author)||((this.author!= null)&&this.author.equals(rhs.author))))&&((this.topics == rhs.topics)||((this.topics!= null)&&this.topics.equals(rhs.topics))))&&((this.name == rhs.name)||((this.name!= null)&&this.name.equals(rhs.name))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))));
     }
 
 }
