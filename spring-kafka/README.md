@@ -8,6 +8,7 @@ This module contains articles about Spring with Kafka
 - [Testing Kafka and Spring Boot](https://www.baeldung.com/spring-boot-kafka-testing)
 - [Monitor the Consumer Lag in Apache Kafka](https://www.baeldung.com/java-kafka-consumer-lag)
 - [Send Large Messages With Kafka](https://www.baeldung.com/java-kafka-send-large-message)
+- [Configuring Kafka SSL Using Spring Boot](https://www.baeldung.com/spring-boot-kafka-ssl)
 
 ### Intro
 
