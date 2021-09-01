@@ -24,7 +24,7 @@ public class Html2PdfUsingFlyingSaucer {
 		}
 	}
 
-	private void generateHtmlToPdf() throws IOException {
+	private void generateHtmlToPdf() throws Exception {
 		File inputHTML = new File(HTML_INPUT);
 		Document inputHtml = createWellFormedHtml(inputHTML);
 		File outputPdf = new File(PDF_OUTPUT);
@@ -37,7 +37,7 @@ public class Html2PdfUsingFlyingSaucer {
 		return document;
 	}
 
-	private void xhtmlToPdf(Document xhtml, File outputPdf) throws IOException {
+	private void xhtmlToPdf(Document xhtml, File outputPdf) throws Exception {
 		try (OutputStream outputStream = new FileOutputStream(outputPdf)) {
 			ITextRenderer renderer = new ITextRenderer();
 			SharedContext sharedContext = renderer.getSharedContext();
@@ -46,8 +46,6 @@ public class Html2PdfUsingFlyingSaucer {
 			renderer.setDocumentFromString(xhtml.html());
 			renderer.layout();
 			renderer.createPDF(outputStream);
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 }
