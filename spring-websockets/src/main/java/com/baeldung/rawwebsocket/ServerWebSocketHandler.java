@@ -1,4 +1,4 @@
-package com.baeldung.raw_websocket;
+package com.baeldung.rawwebsocket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

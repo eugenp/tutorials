@@ -1,4 +1,4 @@
-package com.baeldung.raw_websocket;
+package com.baeldung.rawwebsocket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
