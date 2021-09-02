@@ -25,7 +25,7 @@ public class CustomElementFactoryImpl implements ReplacedElementFactory {
         if (nodeName.equals("img")) {
             String imagePath = e.getAttribute("src");
             try {
-                InputStream input = new FileInputStream("src/main/resources/"+imagePath);
+                InputStream input = new FileInputStream("src/main/resources/" + imagePath);
                 byte[] bytes = IOUtils.toByteArray(input);
                 Image image = Image.getInstance(bytes);
                 FSImage fsImage = new ITextFSImage(image);
