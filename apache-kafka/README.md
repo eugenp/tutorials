@@ -12,6 +12,7 @@ This module contains articles about Apache Kafka.
 - [Kafka Connect Example with MQTT and MongoDB](https://www.baeldung.com/kafka-connect-mqtt-mongodb)
 - [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
 - [Exactly Once Processing in Kafka with Java](https://www.baeldung.com/kafka-exactly-once)
+- [Custom Serializers in Apache Kafka](https://www.baeldung.com/kafka-custom-serializer)
 
 
 ##### Building the project
