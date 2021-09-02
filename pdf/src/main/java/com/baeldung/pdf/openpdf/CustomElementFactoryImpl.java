@@ -1,7 +1,8 @@
 package com.baeldung.pdf.openpdf;
 
-import com.lowagie.text.BadElementException;
-import com.lowagie.text.Image;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Element;
 import org.xhtmlrenderer.extend.FSImage;
@@ -11,14 +12,10 @@ import org.xhtmlrenderer.extend.UserAgentCallback;
 import org.xhtmlrenderer.layout.LayoutContext;
 import org.xhtmlrenderer.pdf.ITextFSImage;
 import org.xhtmlrenderer.pdf.ITextImageElement;
-import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.render.BlockBox;
 import org.xhtmlrenderer.simple.extend.FormSubmissionListener;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Logger;
+import com.lowagie.text.Image;
 
 public class CustomElementFactoryImpl implements ReplacedElementFactory {
     @Override
@@ -28,7 +25,7 @@ public class CustomElementFactoryImpl implements ReplacedElementFactory {
         if (nodeName.equals("img")) {
             String imagePath = e.getAttribute("src");
             try {
-                InputStream input = new FileInputStream(imagePath);
+                InputStream input = new FileInputStream("src/main/resources/"+imagePath);
                 byte[] bytes = IOUtils.toByteArray(input);
                 Image image = Image.getInstance(bytes);
                 FSImage fsImage = new ITextFSImage(image);

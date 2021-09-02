@@ -43,6 +43,7 @@ public class Html2PdfUsingFlyingSaucer {
 			SharedContext sharedContext = renderer.getSharedContext();
 			sharedContext.setPrint(true);
 			sharedContext.setInteractive(false);
+			sharedContext.setReplacedElementFactory(new CustomElementFactoryImpl());
 			renderer.setDocumentFromString(xhtml.html());
 			renderer.layout();
 			renderer.createPDF(outputStream);
