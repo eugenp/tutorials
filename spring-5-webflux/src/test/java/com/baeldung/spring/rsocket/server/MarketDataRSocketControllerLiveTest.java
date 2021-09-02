@@ -90,14 +90,6 @@ public class MarketDataRSocketControllerLiveTest {
                     .dataMimeType(MimeTypeUtils.APPLICATION_JSON)
                     .tcp("localhost", 7000)
                     .rsocket();
-//                .connec/t(TcpClientTransport.create(6565));
-
-//            return RSocketFactory.connect()
-//                                 .mimeType(MimeTypeUtils.APPLICATION_JSON_VALUE, MimeTypeUtils.APPLICATION_JSON_VALUE)
-//                                 .frameDecoder(PayloadDecoder.ZERO_COPY)
-//                                 .transport(TcpClientTransport.create(7000))
-//                                 .start()
-//                                 .block();
         }
 
         @Bean
