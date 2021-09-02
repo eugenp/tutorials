@@ -36,7 +36,7 @@ public class CustomElementFactoryImpl implements ReplacedElementFactory {
                 }
                 return new ITextImageElement(fsImage);
             } catch (Exception e1) {
-                // Log if any errors
+                e1.printStackTrace();
             }
         }
         return null;
