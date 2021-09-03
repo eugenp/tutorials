@@ -25,7 +25,6 @@
         <module>cqrs-es</module>
         <module>front-controller</module>
         <module>hexagonal-architecture</module>
-        <module>hexagonal</module>
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>clean-architecture</module>
