@@ -12,7 +12,7 @@ import org.springframework.test.util.ReflectionTestUtils;
  *
  * @see OAuth2CookieHelper
  */
-public class OAuth2CookieHelperTest {
+public class OAuth2CookieHelperUnitTest {
     public static final String GET_COOKIE_DOMAIN_METHOD = "getCookieDomain";
     private OAuth2Properties oAuth2Properties;
     private OAuth2CookieHelper cookieHelper;
