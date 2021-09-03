@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @see CookieCollection
  */
-public class CookieCollectionTest {
+public class CookieCollectionUnitTest {
     public static final String COOKIE_NAME = "chocolate";
     public static final String COOKIE_VALUE = "yummy";
     public static final String BROWNIE_NAME = "brownie";

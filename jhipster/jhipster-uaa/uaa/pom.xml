@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>jhipster-uaa</artifactId>
+        <groupId>com.baeldung.jhipster</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>com.baeldung.jhipster.uaa</groupId>
     <artifactId>uaa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -398,15 +404,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <!-- Force alphabetical order to have a reproducible build -->
-                    <runOrder>alphabetical</runOrder>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -832,7 +829,7 @@
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
     </profiles>
-	
+
     <properties>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
         <spring.web.version>0.24.0</spring.web.version>
@@ -911,5 +908,5 @@
 
         <!-- jhipster-needle-maven-property -->
     </properties>
-	
+
 </project>
