@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>project-a</module>
+        <module>aggregator</module>
     </modules>
 
     <!-- to detect the POM hierarchy, just type "mvn dependency:display-ancestors" -->
