@@ -17,7 +17,7 @@ public class AppTest {
     SoundRecorder soundRecorder = new SoundRecorder();
 
     @Test
-    public void when_run_save_SoundClip() {
+    public void Given_SoundRecorderObject_When_Run_Then_ThrowsNoException() {
 
         soundRecorder.build(af);
         try {
@@ -31,13 +31,13 @@ public class AppTest {
     }
 
     @Test
-    public void when_run_get_targetdataline() {
+    public void Given_AudioFormatObject_When_NotNull_Then_ReturnsTargetDataLine() {
         soundRecorder.setFormat(af);
         Assertions.assertDoesNotThrow(() -> soundRecorder.getTargetDataLineForRecord());
     }
 
     @Test
-    public void when_run_build_byte_ouptstream() {
+    public void Given_TargetLineDataObject_When_Run_Then_GeneratesOutputStream() {
 
         soundRecorder.setFormat(af);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -52,7 +52,7 @@ public class AppTest {
     }
 
     @Test
-    public void when_run_then_save_file() {
+    public void Given_AudioInputStream_When_NotNull_Then_SaveToWavFile() {
         soundRecorder.setFormat(af);
         soundRecorder.build(af);
         try {
