@@ -18,8 +18,8 @@ class ReactiveUploadServiceUnitTest {
 
     final WebClient webClientMock = WebClient.builder().baseUrl(BASE_URL)
             .exchangeFunction(clientRequest -> Mono.just(ClientResponse.create(HttpStatus.OK)
-               .header("content-type", "application/json")
-               .build()))
+                .header("content-type", "application/json")
+                .build()))
             .build();
 
     private final ReactiveUploadService tested = new ReactiveUploadService(webClientMock);
@@ -27,8 +27,10 @@ class ReactiveUploadServiceUnitTest {
     @Test
     void givenAPdf_whenUploadingWithWebClient_thenOK() {
         final Resource file = mock(Resource.class);
+
         final Mono<HttpStatus> result = tested.uploadPdf(file);
         final HttpStatus status = result.block();
+
         assertThat(status).isEqualTo(HttpStatus.OK);
     }
 
@@ -37,8 +39,10 @@ class ReactiveUploadServiceUnitTest {
         final Resource file = mock(Resource.class);
         final MultipartFile multipartFile = mock(MultipartFile.class);
         when(multipartFile.getResource()).thenReturn(file);
+
         final Mono<HttpStatus> result = tested.uploadMultipart(multipartFile);
         final HttpStatus status = result.block();
+
         assertThat(status).isEqualTo(HttpStatus.OK);
     }
 }
