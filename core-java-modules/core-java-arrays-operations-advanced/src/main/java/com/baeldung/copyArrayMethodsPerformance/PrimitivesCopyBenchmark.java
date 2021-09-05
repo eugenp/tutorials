@@ -1,4 +1,4 @@
-package com.baeldung.jmh;
+package com.baeldung.copyArrayMethodsPerformance;
 
 import org.openjdk.jmh.annotations.*;
 
@@ -16,6 +16,7 @@ public class PrimitivesCopyBenchmark {
 
     @Param({ "10", "1000000" })
     public int SIZE;
+
     int[] src;
 
     @Setup

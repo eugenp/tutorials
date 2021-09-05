@@ -1,4 +1,4 @@
-package com.baeldung.jmh;
+package com.baeldung.copyArrayMethodsPerformance;
 
 import org.openjdk.jmh.annotations.*;
 
