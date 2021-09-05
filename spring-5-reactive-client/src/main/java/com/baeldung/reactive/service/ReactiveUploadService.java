@@ -34,11 +34,11 @@ public class ReactiveUploadService {
           .contentType(MediaType.APPLICATION_PDF)
           .body(BodyInserters.fromResource(resource))
           .exchangeToMono(response -> {
-            if (response.statusCode().equals(HttpStatus.OK)) {
-              return response.bodyToMono(HttpStatus.class).thenReturn(response.statusCode());
-            } else {
-              throw new ServiceException("Error uploading file");
-            }
+              if (response.statusCode().equals(HttpStatus.OK)) {
+                  return response.bodyToMono(HttpStatus.class).thenReturn(response.statusCode());
+              } else {
+                  throw new ServiceException("Error uploading file");
+              }
           });
         return httpStatusMono;
     }
@@ -55,11 +55,11 @@ public class ReactiveUploadService {
           .contentType(MediaType.MULTIPART_FORM_DATA)
           .body(BodyInserters.fromMultipartData(builder.build()))
           .exchangeToMono(response -> {
-            if (response.statusCode().equals(HttpStatus.OK)) {
-              return response.bodyToMono(HttpStatus.class).thenReturn(response.statusCode());
-            } else {
-                throw new ServiceException("Error uploading file");
-            }
+              if (response.statusCode().equals(HttpStatus.OK)) {
+                  return response.bodyToMono(HttpStatus.class).thenReturn(response.statusCode());
+              } else {
+                  throw new ServiceException("Error uploading file");
+              }
           });
         return httpStatusMono;
     }
