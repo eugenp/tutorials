@@ -155,11 +155,14 @@
         <finalName>spring-security-web-sockets</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.7.6</version>
                 <configuration>
-                    <path>/spring-security-mvc-socket</path>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
                 </configuration>
             </plugin>
             <plugin>
