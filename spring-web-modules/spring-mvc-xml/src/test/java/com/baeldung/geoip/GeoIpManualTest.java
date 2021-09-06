@@ -1,4 +1,4 @@
-package test.java.com.baeldung.geoip;
+package com.baeldung.geoip;
 
 import java.io.File;
 import java.io.IOException;
