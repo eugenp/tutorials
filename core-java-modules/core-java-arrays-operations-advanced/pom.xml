@@ -55,7 +55,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.baeldung.copyArrayMethodsPerformance.BenchmarkRunner</mainClass>
+                            <mainClass>com.baeldung.copyarraymethodsperformance.BenchmarkRunner</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
