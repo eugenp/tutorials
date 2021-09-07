@@ -1,4 +1,4 @@
-package com.baeldung.copyArrayMethodsPerformance;
+package com.baeldung.copyarraymethodsperformance;
 
 public class BenchmarkRunner {
 
