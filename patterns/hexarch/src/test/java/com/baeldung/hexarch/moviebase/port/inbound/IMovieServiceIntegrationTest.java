@@ -31,6 +31,7 @@ public class IMovieServiceIntegrationTest {
         }
     }
 
+
     @MockBean
     private MovieRepository movieRepository;
 
@@ -40,44 +41,46 @@ public class IMovieServiceIntegrationTest {
     @Before
     public void setUp() {
 
-        Movie movie1 = new Movie(
+        Movie movie1 =
+            new Movie(
                 "abe0e9607-022b-1bd0-a9fa-42b3c90740f0",
                 "Gone with the Wind",
                 "en",
                 1939,
                 "USA",
                 Genre.ROMANCE,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
+                "Love in the age of an American Civil War",
                 14280,
                 8.1,
                 new Person("Victor Fleming"),
-                new Person[]{new Person("Clark Gable"), new Person("Vivien Leigh")});
+                new Person[] {new Person("Clark Gable"), new Person("Vivien Leigh")});
 
-        Movie movie2 = new Movie(
+        Movie movie2 =
+            new Movie(
                 "61782507-9b2b-0c00-a411-aaba10074b1a",
                 "The Avengers",
                 "en",
                 2012,
                 "USA",
                 Genre.ACTION,
-                "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+                "Earth's mightiest heroes fight as a team to save the planet Earth",
                 8580,
                 8.0,
                 new Person("Joss Whedon"),
-                new Person[]{new Person("Chris Evans"), new Person("Scarlett Johansson"), new Person("Chris Hemsworth")});
+                new Person[] {new Person("Chris Evans"), new Person("Scarlett Johansson")});
 
         Movie movie3 = new Movie(
-                "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
-                "Escape Room: Tournament of Champions",
-                "en",
-                2021,
-                "USA",
-                Genre.THRILLER,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
-                8580,
-                6.1,
-                new Person("Adam Robitel"),
-                new Person[]{new Person("Taylor Russell"), new Person("Logan Miller"), new Person("Deborah Woll")});
+            "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
+            "Escape Room: Tournament of Champions",
+            "en",
+            2021,
+            "USA",
+            Genre.THRILLER,
+            "Winners of the last tournament try to find the exit from the new escape room",
+            8580,
+            6.1,
+            new Person("Adam Robitel"),
+            new Person[] {new Person("Taylor Russell"), new Person("Logan Miller")});
 
         List<Movie> movies = new ArrayList<>();
         movies.add(movie1);
@@ -85,7 +88,8 @@ public class IMovieServiceIntegrationTest {
         movies.add(movie3);
 
         Mockito.when(movieRepository.getMovies()).thenReturn(movies);
-        Mockito.when(movieRepository.getMovie("a19925ba-ab0a-90a1-9180-a9a910bbbb1a")).thenReturn(movie3);
+        Mockito.when(movieRepository.getMovie("a19925ba-ab0a-90a1-9180-a9a910bbbb1a"))
+            .thenReturn(movie3);
 
     }
 
@@ -103,44 +107,46 @@ public class IMovieServiceIntegrationTest {
     @Test
     public void givenMovies_whenGetMovies_thenMoviesReturned() {
 
-        Movie movie1 = new Movie(
+        Movie movie1 =
+            new Movie(
                 "abe0e9607-022b-1bd0-a9fa-42b3c90740f0",
                 "Gone with the Wind",
                 "en",
                 1939,
                 "USA",
                 Genre.ROMANCE,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
+                "Love in the age of an American Civil War",
                 14280,
                 8.1,
                 new Person("Victor Fleming"),
-                new Person[]{new Person("Clark Gable"), new Person("Vivien Leigh")});
+                new Person[] {new Person("Clark Gable"), new Person("Vivien Leigh")});
 
-        Movie movie2 = new Movie(
+        Movie movie2 =
+            new Movie(
                 "61782507-9b2b-0c00-a411-aaba10074b1a",
                 "The Avengers",
                 "en",
                 2012,
                 "USA",
                 Genre.ACTION,
-                "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+                "Earth's mightiest heroes fight as a team to save the planet Earth",
                 8580,
                 8.0,
                 new Person("Joss Whedon"),
-                new Person[]{new Person("Chris Evans"), new Person("Scarlett Johansson"), new Person("Chris Hemsworth")});
+                new Person[] {new Person("Chris Evans"), new Person("Scarlett Johansson")});
 
         Movie movie3 = new Movie(
-                "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
-                "Escape Room: Tournament of Champions",
-                "en",
-                2021,
-                "USA",
-                Genre.THRILLER,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
-                8580,
-                6.1,
-                new Person("Adam Robitel"),
-                new Person[]{new Person("Taylor Russell"), new Person("Logan Miller"), new Person("Deborah Woll")});
+            "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
+            "Escape Room: Tournament of Champions",
+            "en",
+            2021,
+            "USA",
+            Genre.THRILLER,
+            "Winners of the last tournament try to find the exit from the new escape room",
+            8580,
+            6.1,
+            new Person("Adam Robitel"),
+            new Person[] {new Person("Taylor Russell"), new Person("Logan Miller")});
 
         List<Movie> movies = new ArrayList<>();
         movies.add(movie1);

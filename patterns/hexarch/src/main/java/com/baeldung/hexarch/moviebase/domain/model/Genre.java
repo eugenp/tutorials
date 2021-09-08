@@ -5,17 +5,6 @@ package com.baeldung.hexarch.moviebase.domain.model;
  */
 public enum Genre {
 
-    COMEDY,
-    DRAMA,
-    SF,
-    ACTION,
-    ADVENTURE,
-    FANTASY,
-    HORROR,
-    ROMANCE,
-    THRILLER,
-    WESTERN,
-    ANIMATION,
-    OTHER;
+    COMEDY, DRAMA, SF, ACTION, ADVENTURE, FANTASY, HORROR, ROMANCE, THRILLER, WESTERN, ANIMATION, OTHER;
 
 }

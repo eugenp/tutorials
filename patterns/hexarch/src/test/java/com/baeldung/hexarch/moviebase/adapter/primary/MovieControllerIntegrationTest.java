@@ -41,46 +41,47 @@ public class MovieControllerIntegrationTest {
     @MockBean
     private IMovieService movieService;
 
-    @Test
-    public void givenMovies_whenGetMovies_thenReturnExpectedArray() throws Exception {
-        Movie movie1 = new Movie(
+    @Test public void givenMovies_whenGetMovies_thenReturnExpectedArray() throws Exception {
+        Movie movie1 =
+            new Movie(
                 "abe0e9607-022b-1bd0-a9fa-42b3c90740f0",
                 "Gone with the Wind",
                 "en",
                 1939,
                 "USA",
                 Genre.ROMANCE,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
+                "Love in the age of an American Civil War",
                 14280,
                 8.1,
                 new Person("Victor Fleming"),
-                new Person[]{new Person("Clark Gable"), new Person("Vivien Leigh")});
+                new Person[] {new Person("Clark Gable"), new Person("Vivien Leigh")});
 
-        Movie movie2 = new Movie(
+        Movie movie2 =
+            new Movie(
                 "61782507-9b2b-0c00-a411-aaba10074b1a",
                 "The Avengers",
                 "en",
                 2012,
                 "USA",
                 Genre.ACTION,
-                "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+                "Earth's mightiest heroes fight as a team to save the planet Earth",
                 8580,
                 8.0,
                 new Person("Joss Whedon"),
-                new Person[]{new Person("Chris Evans"), new Person("Scarlett Johansson"), new Person("Chris Hemsworth")});
+                new Person[] {new Person("Chris Evans"), new Person("Scarlett Johansson")});
 
         Movie movie3 = new Movie(
-                "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
-                "Escape Room: Tournament of Champions",
-                "en",
-                2021,
-                "USA",
-                Genre.THRILLER,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
-                8580,
-                6.1,
-                new Person("Adam Robitel"),
-                new Person[]{new Person("Taylor Russell"), new Person("Logan Miller"), new Person("Deborah Woll")});
+            "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
+            "Escape Room: Tournament of Champions",
+            "en",
+            2021,
+            "USA",
+            Genre.THRILLER,
+            "Winners of the last tournament try to find the exit from the new escape room",
+            8580,
+            6.1,
+            new Person("Adam Robitel"),
+            new Person[] {new Person("Taylor Russell"), new Person("Logan Miller")});
 
         List<Movie> movies = new ArrayList<>();
         movies.add(movie1);
@@ -89,58 +90,57 @@ public class MovieControllerIntegrationTest {
 
         given(movieService.getMovies()).willReturn(movies);
 
-        mvc.perform(get("/movies")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[0].title", is(movie1.getTitle())))
-                .andExpect(jsonPath("$[0].language", is(movie1.getLanguage())));
+        mvc.perform(get("/movies").contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(3)))
+            .andExpect(jsonPath("$[0].title", is(movie1.getTitle())))
+            .andExpect(jsonPath("$[0].language", is(movie1.getLanguage())));
 
         verify(movieService, VerificationModeFactory.times(1)).getMovies();
         reset(movieService);
     }
 
-    @Test
-    public void givenMovies_whenGetMovie_thenReturnExpectedMovie() throws Exception {
+    @Test public void givenMovies_whenGetMovie_thenReturnExpectedMovie() throws Exception {
 
-        Movie movie1 = new Movie(
+        Movie movie1 =
+            new Movie(
                 "abe0e9607-022b-1bd0-a9fa-42b3c90740f0",
                 "Gone with the Wind",
                 "en",
                 1939,
                 "USA",
                 Genre.ROMANCE,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
+                "Love in the age of an American Civil War",
                 14280,
                 8.1,
                 new Person("Victor Fleming"),
-                new Person[]{new Person("Clark Gable"), new Person("Vivien Leigh")});
+                new Person[] {new Person("Clark Gable"), new Person("Vivien Leigh")});
 
-        Movie movie2 = new Movie(
+        Movie movie2 =
+            new Movie(
                 "61782507-9b2b-0c00-a411-aaba10074b1a",
                 "The Avengers",
                 "en",
                 2012,
                 "USA",
                 Genre.ACTION,
-                "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+                "Earth's mightiest heroes fight as a team to save the planet Earth",
                 8580,
                 8.0,
                 new Person("Joss Whedon"),
-                new Person[]{new Person("Chris Evans"), new Person("Scarlett Johansson"), new Person("Chris Hemsworth")});
+                new Person[] {new Person("Chris Evans"), new Person("Scarlett Johansson")});
 
         Movie movie3 = new Movie(
-                "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
-                "Escape Room: Tournament of Champions",
-                "en",
-                2021,
-                "USA",
-                Genre.THRILLER,
-                "A manipulative woman and a roguish man conduct a turbulent romance during the American Civil War and Reconstruction periods.",
-                8580,
-                6.1,
-                new Person("Adam Robitel"),
-                new Person[]{new Person("Taylor Russell"), new Person("Logan Miller"), new Person("Deborah Woll")});
+            "a19925ba-ab0a-90a1-9180-a9a910bbbb1a",
+            "Escape Room: Tournament of Champions",
+            "en",
+            2021,
+            "USA",
+            Genre.THRILLER,
+            "Winners of the last tournament try to find the exit from the new escape room",
+            8580,
+            6.1,
+            new Person("Adam Robitel"),
+            new Person[] {new Person("Taylor Russell"), new Person("Logan Miller")});
 
         List<Movie> movies = new ArrayList<>();
         movies.add(movie1);
@@ -149,25 +149,25 @@ public class MovieControllerIntegrationTest {
 
         given(movieService.getMovie("a19925ba-ab0a-90a1-9180-a9a910bbbb1a")).willReturn(movie3);
 
-        mvc.perform(get("/movies/a19925ba-ab0a-90a1-9180-a9a910bbbb1a")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title", is(movie3.getTitle())));
+        mvc.perform(get("/movies/a19925ba-ab0a-90a1-9180-a9a910bbbb1a").contentType(
+                MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+            .andExpect(jsonPath("$.title", is(movie3.getTitle())));
 
-        verify(movieService, VerificationModeFactory.times(1)).getMovie("a19925ba-ab0a-90a1-9180-a9a910bbbb1a");
+        verify(movieService, VerificationModeFactory.times(1)).getMovie(
+            "a19925ba-ab0a-90a1-9180-a9a910bbbb1a");
         reset(movieService);
     }
 
-    @Test
-    public void givenMovies_whenDeleteMovie_thenMovieDeleted() throws Exception {
+    @Test public void givenMovies_whenDeleteMovie_thenMovieDeleted() throws Exception {
 
-        given(movieService.deleteMovie("61782507-9b2b-0c00-a411-aaba10074b1a")).willReturn(MethodResult.SUCCESS.name());
+        given(movieService.deleteMovie("61782507-9b2b-0c00-a411-aaba10074b1a")).willReturn(
+            MethodResult.SUCCESS.name());
 
-        mvc.perform(delete("/movies/61782507-9b2b-0c00-a411-aaba10074b1a")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+        mvc.perform(delete("/movies/61782507-9b2b-0c00-a411-aaba10074b1a").contentType(
+            MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 
-        verify(movieService, VerificationModeFactory.times(1)).deleteMovie("61782507-9b2b-0c00-a411-aaba10074b1a");
+        verify(movieService, VerificationModeFactory.times(1)).deleteMovie(
+            "61782507-9b2b-0c00-a411-aaba10074b1a");
         reset(movieService);
     }
 

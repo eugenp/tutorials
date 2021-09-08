@@ -13,7 +13,7 @@ public class Person {
 
     private String lastName;
 
-    public Person(String name){
+    public Person(String name) {
         String[] nameParts = name.split(" ");
 
         setFirstName(nameParts[0]);

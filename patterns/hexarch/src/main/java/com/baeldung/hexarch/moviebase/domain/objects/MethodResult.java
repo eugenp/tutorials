@@ -5,7 +5,6 @@ package com.baeldung.hexarch.moviebase.domain.objects;
  */
 public enum MethodResult {
 
-    SUCCESS,
-    FAIL;
+    SUCCESS, FAIL;
 
 }

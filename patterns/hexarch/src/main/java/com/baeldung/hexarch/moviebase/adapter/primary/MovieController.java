@@ -15,7 +15,7 @@ public class MovieController {
     private IMovieService movieService;
 
     @Autowired
-    public MovieController(IMovieService movieService){
+    public MovieController(IMovieService movieService) {
         this.movieService = movieService;
     }
 
