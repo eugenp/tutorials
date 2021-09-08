@@ -1,7 +1,5 @@
 package com.baeldung.runfromjava;
 
-import com.baeldung.ignore.IgnoreClassUnitTest;
-import com.baeldung.ignore.IgnoreMethodUnitTest;
 import junit.extensions.ActiveTestSuite;
 import junit.extensions.RepeatedTest;
 import junit.framework.JUnit4TestAdapter;
@@ -13,13 +11,6 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 public class RunJUnit4TestsFromJava {
-
-    public static void runIgnored() {
-        JUnitCore junit = new JUnitCore();
-        junit.addListener(new TextListener(System.out));
-        resultReport(junit.run(IgnoreClassUnitTest.class));
-        resultReport(junit.run(IgnoreMethodUnitTest.class));
-    }
 
     public static void runOne() {
         JUnitCore junit = new JUnitCore();
@@ -75,7 +66,11 @@ public class RunJUnit4TestsFromJava {
     }
 
     public static void resultReport(Result result) {
-        System.out.println("Finished. Result: Failures: " + result.getFailureCount() + ". Ignored: " + result.getIgnoreCount() + ". Tests run: " + result.getRunCount() + ". Time: " + result.getRunTime() + "ms.");
+        System.out.println("Finished. Result: Failures: " +
+          result.getFailureCount() + ". Ignored: " +
+          result.getIgnoreCount() + ". Tests run: " +
+          result.getRunCount() + ". Time: " +
+          result.getRunTime() + "ms.");
     }
 
     public static void main(String[] args) {
@@ -93,9 +88,6 @@ public class RunJUnit4TestsFromJava {
 
         System.out.println("\nRunning repeated suite tests:");
         runRepeatedSuite();
-
-        System.out.println("\nRunning ignored tests:");
-        runIgnored();
     }
 
 }
