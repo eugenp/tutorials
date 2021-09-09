@@ -2,7 +2,7 @@ package com.baeldung.features.model;
 
 import java.util.Objects;
 
-public class Book {
+public final class Book {
     private final String title;
     private final String author;
     private final String isbn;
