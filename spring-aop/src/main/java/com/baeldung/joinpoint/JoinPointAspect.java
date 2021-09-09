@@ -32,7 +32,10 @@ public class JoinPointAspect {
         );
     }
 
-    @AfterThrowing("articleListPointcut()")
+    @AfterThrowing(
+      pointcut = "articleListPointcut()",
+      throwing = "e"
+    )
     public void logExceptions(JoinPoint jp, Exception e) {
         log.error(e.getMessage(), e);
     }
