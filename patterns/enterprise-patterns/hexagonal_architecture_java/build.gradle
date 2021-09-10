@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    implementation('org.springframework.boot:spring-boot-starter-web:2.5.4')
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.4'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.5.4') {
+        exclude group: 'junit' // excluding junit 4
+    }
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.12.4'
+    testImplementation 'com.tngtech.archunit:archunit:0.21.0'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.7.2'
+    testImplementation 'com.h2database:h2:1.4.200'
+
+    runtimeOnly 'com.h2database:h2:1.4.200'
+
+}
+
+test {
+    useJUnitPlatform()
+}
