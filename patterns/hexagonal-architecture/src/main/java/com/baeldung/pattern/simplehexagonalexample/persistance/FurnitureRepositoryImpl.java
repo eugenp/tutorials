@@ -2,6 +2,7 @@ package com.baeldung.pattern.simplehexagonalexample.persistance;
 
 import com.baeldung.pattern.simplehexagonalexample.domain.model.Furniture;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,6 @@ public class FurnitureRepositoryImpl implements FurnitureRepository {
 
     @Override
     public List<Furniture> listAllFurniture() {
-        return null;
+        return new ArrayList<>(furnitureStore.values());
     }
 }
