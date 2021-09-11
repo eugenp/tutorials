@@ -157,7 +157,7 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.7.6</version>
+                <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
                     <container>
                         <containerId>tomcat9x</containerId>
@@ -182,6 +182,7 @@
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <cargo-maven2-plugin.version>1.7.6</cargo-maven2-plugin.version>
     </properties>
 
 </project>

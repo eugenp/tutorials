@@ -10,7 +10,7 @@ This module contains articles about WebSockets with Spring Security
 
 ### Running This Project:
 
-To build the project, run the command: `mvn clean install`. This will build a war file in the target folder that you can deploye on a server like Tomcat.
+To build the project, run the command: `mvn clean install`. This will build a war file in the target folder that you can deploy on a server like Tomcat.
 
 Alternatively, run the project from an IDE, with the maven goal `org.codehaus.cargo:cargo-maven2-plugin:run`
 
