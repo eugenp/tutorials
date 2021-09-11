@@ -1,4 +1,4 @@
-package com.baeldung.pattern.hexagonal.domain.services;
+package com.baeldung.pattern.simplehexagonalexample.domain.services;
 
 import com.baeldung.pattern.simplehexagonalexample.domain.model.Furniture;
 import com.baeldung.pattern.simplehexagonalexample.domain.services.FurnitureService;

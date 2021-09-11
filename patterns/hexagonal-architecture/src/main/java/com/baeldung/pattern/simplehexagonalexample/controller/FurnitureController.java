@@ -20,8 +20,8 @@ public class FurnitureController {
     private FurnitureService furnitureService;
 
     @PostMapping
-    public void manufactureFurniture(@RequestBody Furniture furniture) {
-        furnitureService.manufactureFurniture(furniture);
+    public Furniture manufactureFurniture(@RequestBody Furniture furniture) {
+        return furnitureService.manufactureFurniture(furniture);
     }
 
     @GetMapping(path = "/{name}")
@@ -30,7 +30,7 @@ public class FurnitureController {
     }
 
     @GetMapping
-    public List<Furniture> listFurniture() {
+    public List<Furniture> listAllFurniture() {
         return furnitureService.listAllFurniture();
     }
 }
