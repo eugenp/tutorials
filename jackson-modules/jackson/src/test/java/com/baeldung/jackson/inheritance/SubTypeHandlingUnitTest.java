@@ -34,9 +34,9 @@ public class SubTypeHandlingUnitTest {
     public void givenSubType_whenNotUsingNoArgsConstructors_thenSucceed() throws IOException {        
         ObjectMapper mapper = new ObjectMapper();
         PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
-                      .allowIfSubType("com.baeldung.jackson.inheritance")
-                      .allowIfSubType("java.util.ArrayList")
-                      .build();
+            .allowIfSubType("com.baeldung.jackson.inheritance")
+            .allowIfSubType("java.util.ArrayList")
+            .build();
         mapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
         
         Car car = new Car("Mercedes-Benz", "S500", 5, 250.0);
