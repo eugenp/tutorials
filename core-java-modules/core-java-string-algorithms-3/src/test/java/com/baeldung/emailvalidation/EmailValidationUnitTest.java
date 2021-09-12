@@ -20,7 +20,7 @@ public class EmailValidationUnitTest {
     public void testUsingSimpleRegex() {
         emailAddress = "username@domain.com";
         regexPattern = "^(.+)@(\\S+)$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class EmailValidationUnitTest {
         emailAddress = "username@domain.com";
         regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
             + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 
     @Test
@@ -36,14 +36,14 @@ public class EmailValidationUnitTest {
         emailAddress = "用户名@领域.电脑";
         regexPattern = "^(?=.{1,64}@)[\\p{L}0-9_-]+(\\.[\\p{L}0-9_-]+)*@" 
             + "[^-][\\p{L}0-9-]+(\\.[\\p{L}0-9-]+)*(\\.[\\p{L}]{2,})$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 
     @Test
     public void testUsingRFC5322Regex() {
         emailAddress = "username@domain.com";
         regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 
     @Test
@@ -51,14 +51,14 @@ public class EmailValidationUnitTest {
         emailAddress = "username@domain.com";
         regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@" 
             + "[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 
     @Test
     public void testOwaspValidation() {
         emailAddress = "username@domain.com";
         regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 
     @Test
@@ -66,6 +66,14 @@ public class EmailValidationUnitTest {
         emailAddress = "username@domain.com";
         regexPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*" 
             + "@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-        assertTrue(EmailValidation.patternMatcher(emailAddress, regexPattern));
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
+    }
+    
+    @Test
+    public void testGmailSpecialCase() {
+        emailAddress = "username+something@domain.com";
+        regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-+]+(\\\\.[A-Za-z0-9_-+]+)*@[^-][A-Za-z0-9-+]+"
+            + "(\\\\.[A-Za-z0-9-+]+)*(\\\\.[A-Za-z]{2,})$\r\n";
+        assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 }
