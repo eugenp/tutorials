@@ -72,8 +72,8 @@ public class EmailValidationUnitTest {
     @Test
     public void testGmailSpecialCase() {
         emailAddress = "username+something@domain.com";
-        regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-+]+(\\\\.[A-Za-z0-9_-+]+)*@[^-][A-Za-z0-9-+]+"
-            + "(\\\\.[A-Za-z0-9-+]+)*(\\\\.[A-Za-z]{2,})$\r\n";
+        regexPattern = "^(?=.{1,64}@)[A-Za-z0-9\\+_-]+(\\.[A-Za-z0-9\\+_-]+)*@" 
+            + "[^-][A-Za-z0-9\\+-]+(\\.[A-Za-z0-9\\+-]+)*(\\.[A-Za-z]{2,})$";
         assertTrue(EmailValidation.patternMatches(emailAddress, regexPattern));
     }
 }
