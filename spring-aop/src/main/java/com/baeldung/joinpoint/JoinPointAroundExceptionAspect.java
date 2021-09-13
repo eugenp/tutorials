@@ -4,13 +4,15 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import java.util.logging.Logger;
 
 @Aspect
+@Component
 public class JoinPointAroundExceptionAspect {
 
-    private static final Logger log = LoggerFactory.getLogger(JoinPointAroundExceptionAspect.class);
+    private static final java.util.logging.Logger log = Logger.getLogger(JoinPointAroundExceptionAspect.class.getName());
 
     @Pointcut("execution(* com.baeldung.joinpoint.ArticleService.getArticleList(..))")
     public void articleListPointcut() { }
@@ -20,7 +22,7 @@ public class JoinPointAroundExceptionAspect {
         try {
             return pjp.proceed(pjp.getArgs());
         } catch (Throwable e) {
-            log.error(e.getMessage(), e);
+            log.severe(e.getMessage());
             log.info("Retrying operation");
             return pjp.proceed(pjp.getArgs());
         }

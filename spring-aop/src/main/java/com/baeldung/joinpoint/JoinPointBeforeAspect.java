@@ -3,26 +3,31 @@ package com.baeldung.joinpoint;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.DeclarePrecedence;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.logging.Logger;
+
+import static java.lang.String.format;
 
 @Aspect
-@DeclarePrecedence("JoinPointAfterThrowingAspect, JoinPointAroundCacheAspect, JoinPointAroundExceptionAspect")
+@Component
 public class JoinPointBeforeAspect {
 
-    private static final Logger log = LoggerFactory.getLogger(JoinPointBeforeAspect.class);
+    private static final Logger log = Logger.getLogger(JoinPointBeforeAspect.class.getName());
 
     @Pointcut("execution(* com.baeldung.joinpoint.ArticleService.getArticleList(..))")
-    public void articleListPointcut() { }
+    public void articleListPointcut() {
+    }
 
     @Before("articleListPointcut()")
     public void beforeAdvice(JoinPoint joinPoint) {
         log.info(
-          "Method {} executed with {} arguments",
-          joinPoint.getStaticPart().getSignature(),
-          joinPoint.getArgs()
+          format("Method %s executed with %s arguments",
+            joinPoint.getStaticPart().getSignature(),
+            Arrays.toString(joinPoint.getArgs())
+          )
         );
     }
 }

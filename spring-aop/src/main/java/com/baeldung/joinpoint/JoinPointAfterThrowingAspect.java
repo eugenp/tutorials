@@ -3,16 +3,16 @@ package com.baeldung.joinpoint;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.DeclarePrecedence;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import java.util.logging.Logger;
 
 @Aspect
-@DeclarePrecedence("JoinPointAroundCacheAspect, JoinPointAroundExceptionAspect")
+@Component
 public class JoinPointAfterThrowingAspect {
 
-    private static final Logger log = LoggerFactory.getLogger(JoinPointAfterThrowingAspect.class);
+    private static final java.util.logging.Logger log = Logger.getLogger(JoinPointAfterThrowingAspect.class.getName());
 
     @Pointcut("execution(* com.baeldung.joinpoint.ArticleService.getArticleList(..))")
     public void articleListPointcut() { }
@@ -22,6 +22,6 @@ public class JoinPointAfterThrowingAspect {
       throwing = "e"
     )
     public void logExceptions(JoinPoint jp, Exception e) {
-        log.error(e.getMessage(), e);
+        log.severe(e.getMessage());
     }
 }
