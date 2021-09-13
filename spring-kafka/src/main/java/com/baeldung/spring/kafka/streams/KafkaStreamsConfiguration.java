@@ -20,73 +20,81 @@ import org.springframework.context.annotation.Bean;
 public class KafkaStreamsConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaStreamsConfiguration.class);
+    private static final String DEBIT = "DEBIT";
+    private static final String CREDIT = "CREDIT";
 
-    //@Bean
+    @Bean
     public Consumer<KStream<String, String>> process() {
-        return inputStream ->
-            inputStream.foreach((country, capital) -> {
-                LOGGER.info("Country: " + country + " Capital: " + country);
-            });
+        return countriesWithCapital ->
+          countriesWithCapital.foreach((country, capital) -> {
+              LOGGER.info("Country: " + country + " Capital: " + country);
+          });
     }
 
-    //@Bean
+    @Bean
     public Function<KStream<String, String>, KStream<String, String>> inputOutput() {
-        return inputStream -> inputStream
-            .map((country, capital) -> {
-                LOGGER.info("Country: " + country + " Country: " + capital);
-                return new KeyValue<>(country, capital.toUpperCase());
-            });
+        return countriesWithCapital -> countriesWithCapital
+          .map((country, capital) -> {
+              LOGGER.info("Country: " + country + " Country: " + capital);
+              return new KeyValue<>(country, capital.toUpperCase());
+          });
     }
 
     @Bean
     public BiFunction<KStream<Long, Long>, KTable<Long, Long>, KStream<Long, Long>> store() {
         return (customerOrderStream, customerShopTable)
-            -> leftJoin(customerOrderStream, customerShopTable)
-            .map((customer, shopWithCustomer)
-                -> new KeyValue<>(shopWithCustomer.getShop(), shopWithCustomer.getCount()))
-            .groupByKey(Grouped.with(Serdes.Long(), Serdes.Long()))
-            .reduce(Long::sum).toStream();
+          -> leftJoin(customerOrderStream, customerShopTable)
+          .map((customer, shopWithCustomer)
+            -> new KeyValue<>(shopWithCustomer.getShop(), shopWithCustomer.getCount()))
+          .groupByKey(Grouped.with(Serdes.Long(), Serdes.Long()))
+          .reduce(Long::sum)
+          .toStream();
     }
 
     private KStream<Long, ShopOrders> leftJoin(KStream<Long, Long> customerOrderStream,
-        KTable<Long, Long> customerShopTable) {
+      KTable<Long, Long> customerShopTable) {
         return customerOrderStream.leftJoin(customerShopTable, (count, shop)
-                -> new ShopOrders(shop == null ? 1L : shop, count),
-            Joined.with(Serdes.Long(), Serdes.Long(), null));
+            -> new ShopOrders(shop == null ? 1L : shop, count),
+          Joined.with(Serdes.Long(), Serdes.Long(), null));
     }
 
-    //@Bean
+    @Bean
     public BiConsumer<KStream<String, Long>, KTable<String, String>> incomingStore() {
         return (customerOrderStream, customerShopTable) -> {
-            customerOrderStream.foreach((key, value) -> LOGGER.info("Key: " + key + " Value: " + value));
-            customerShopTable.toStream().foreach((key, value) -> LOGGER.info("Key: " + key + " Value: " + value));
+            customerOrderStream.foreach((key, value)
+              -> LOGGER.info("Key: " + key + " Value: " + value));
+            customerShopTable.toStream().foreach((key, value)
+              -> LOGGER.info("Key: " + key + " Value: " + value));
         };
     }
 
 
-    //@Bean
+    @Bean
     public Function<KStream<String, Long>, KStream<String, Transaction>[]> transactions() {
-
-        Predicate<String, Transaction> isDebit = (key, value) -> value.getType().equals("DEBIT");
-        Predicate<String, Transaction> isCredit = (key, value) -> value.getType().equals("CREDIT");
-
         return input -> input
-            .map((key, value) ->
-                new KeyValue<>(UUID.randomUUID().toString(), new Transaction(key, value)))
-            .branch(isDebit, isCredit);
+          .map((key, value) ->
+            new KeyValue<>(UUID.randomUUID().toString(), new Transaction(key, value)))
+          .branch(KafkaStreamsConfiguration::isDebit, KafkaStreamsConfiguration::isCredit);
     }
 
-    //@Bean
+    @Bean
     public java.util.function.Consumer<KStream<String, CustomValue>> custom() {
-        return inputStream ->
-            inputStream.foreach((key, value) -> {
-                LOGGER.info("Key: " + key + " Value: " + value.getName());
-            });
+        return customValueKStream ->
+          customValueKStream.foreach((key, value) -> {
+              LOGGER.info("Key: " + key + " Value: " + value.getName());
+          });
     }
 
-    //@Bean
+    @Bean
     public Serde<CustomValue> customValueSerde() {
         return new CustomValueSerde();
     }
 
+    private static boolean isDebit(String key, Transaction transaction) {
+        return transaction.getType().equals(DEBIT);
+    }
+
+    private static boolean isCredit(final String key, final Transaction transaction) {
+        return transaction.getType().equals(CREDIT);
+    }
 }

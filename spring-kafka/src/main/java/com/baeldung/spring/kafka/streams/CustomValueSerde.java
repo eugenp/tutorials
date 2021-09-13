@@ -1,6 +1,5 @@
 package com.baeldung.spring.kafka.streams;
 
-import com.baeldung.spring.kafka.streams.KafkaStreamsConfiguration.CustomValue;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serializer;
