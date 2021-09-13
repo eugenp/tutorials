@@ -18,8 +18,7 @@ public class JoinPointBeforeAspect {
     private static final Logger log = Logger.getLogger(JoinPointBeforeAspect.class.getName());
 
     @Pointcut("execution(* com.baeldung.joinpoint.ArticleService.getArticleList(..))")
-    public void articleListPointcut() {
-    }
+    public void articleListPointcut() { }
 
     @Before("articleListPointcut()")
     public void beforeAdvice(JoinPoint joinPoint) {
