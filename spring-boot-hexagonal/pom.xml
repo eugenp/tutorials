@@ -9,12 +9,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.baeldung.boot.hexagonal</groupId>
-    <artifactId>library</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>library</name>
+    <artifactId>spring-boot-hexagonal</artifactId>
+    <version>1.0</version>
+    <name>spring-boot-hexagonal</name>
     <description>A Spring Boot project demonstrating Hexagonal Architecture (Ports and Adapters Pattern)</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -61,6 +61,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>spring-boot-hexagonal</finalName>
     </build>
 
 </project>
