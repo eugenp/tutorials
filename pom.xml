@@ -619,8 +619,7 @@
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-bom</module>
-                <module>spring-boot-modules</module>
-                <module>spring-boot-hexagonal</module>
+                <module>spring-boot-modules</module>                
                 <module>spring-boot-rest</module>
                 <module>spring-boot-rest-2</module>
 
