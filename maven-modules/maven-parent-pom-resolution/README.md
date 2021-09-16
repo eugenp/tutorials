@@ -1,3 +1,3 @@
 ### Relevant Articles:
 
-- [https://www.baeldung.com/maven-relativepath](https://www.baeldung.com/maven-relativepath)
+- [Understanding Maven’s “relativePath” Tag for a Parent POM](https://www.baeldung.com/maven-relativepath)
