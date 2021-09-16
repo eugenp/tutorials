@@ -18,9 +18,12 @@ public class ZipMultiFile {
 
         File firstFile = new File("aFile.txt");
         File secondFile = new File("bFile.txt");
-
-        firstFile.createNewFile();
-        secondFile.createNewFile();
+        if (!firstFile.exists()) {
+            firstFile.createNewFile();
+        }
+        if (!secondFile.exists()) {
+            secondFile.createNewFile();
+        }
 
         List<File> filesToAdd = Arrays.asList(firstFile, secondFile);
 

@@ -16,7 +16,12 @@ public class ZipSingleFile {
         zipParameters.setCompressionLevel(CompressionLevel.HIGHER);
         zipParameters.setEncryptionMethod(EncryptionMethod.AES);
         ZipFile zipFile = new ZipFile("compressed.zip", "password".toCharArray());
-        zipFile.addFile(new File("aFile.txt"));
+
+        File fileToAdd = new File("aFile.txt");
+        if (!fileToAdd.exists()) {
+            fileToAdd.createNewFile();
+        }
+        zipFile.addFile(fileToAdd);
         zipFile.close();
     }
 }
