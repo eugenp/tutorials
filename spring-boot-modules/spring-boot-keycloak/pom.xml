@@ -77,8 +77,6 @@
 
     <properties>
         <keycloak-adapter-bom.version>13.0.1</keycloak-adapter-bom.version>
-        <!-- explicit version declaration to be removed when parent-boot-2 is upgraded to 2.5.3 or above -->
-        <spring-boot.version>2.5.3</spring-boot.version>
     </properties>
 
 </project>
