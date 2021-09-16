@@ -57,18 +57,14 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-
+                    <classifier>${repackage.classifier}</classifier>
                     <image>
-                        <buildpacks>
-                            <buildpack>gcr.io/paketo-buildpacks/java-native-image:5.3.0</buildpack>
-                        </buildpacks>
                         <builder>paketobuildpacks/builder:tiny</builder>
                         <env>
                             <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
@@ -97,6 +93,7 @@
             </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
             <id>spring-releases</id>
@@ -117,19 +114,19 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
     <profiles>
         <profile>
             <id>native</id>
             <properties>
                 <repackage.classifier>exec</repackage.classifier>
-                <native-buildtools.version>0.10.3</native-buildtools.version>
+                <native-buildtools.version>0.9.3</native-buildtools.version>
             </properties>
             <dependencies>
                 <dependency>
                     <groupId>org.graalvm.buildtools</groupId>
                     <artifactId>junit-platform-native</artifactId>
                     <version>${native-buildtools.version}</version>
-                    <scope>test</scope>
                 </dependency>
             </dependencies>
             <build>
@@ -154,6 +151,13 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>-DspringAot=true -agentlib:native-image-agent=access-filter-file=src/test/resources/access-filter.json,config-merge-dir=target/classes/META-INF/native-image</argLine>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

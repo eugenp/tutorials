@@ -5,9 +5,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - '5432'
+      - '5432:5432'
     environment:
-      - POSTGRES_PASSWORD=example
-      - POSTGRESQL_USERNAME=example
-      - POSTGRESQL_DATABASE=example
+      POSTGRES_PASSWORD: example
 
