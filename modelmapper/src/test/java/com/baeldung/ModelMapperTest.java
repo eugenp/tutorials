@@ -227,11 +227,11 @@ public class ModelMapperTest {
   public void whenConfigurationPreferNestedPropertiesDisabled_convertsCircularReferencedToDTO() {
     // setup
     this.mapper.getConfiguration().setPreferNestedProperties(false);
-    // when game has circular reference
+    // when game has circular reference: Game -> Player -> Game
     final Game game = new Game(1L, "Game 1");
     final Player player = new Player(1L, "John");
     player.setCurrentGame(game);
-    game.addPlayer(player);
+    game.setCreator(player);
     final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
     // then it resolves without any exception
     assertEquals(game.getId(), gameDTO.getId());
