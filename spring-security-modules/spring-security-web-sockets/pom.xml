@@ -103,7 +103,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
+            <version>${logback.version}</version>
         </dependency>
         <!-- Servlet -->
         <dependency>
@@ -155,11 +155,14 @@
         <finalName>spring-security-web-sockets</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <path>/spring-security-mvc-socket</path>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
                 </configuration>
             </plugin>
             <plugin>
@@ -177,8 +180,8 @@
     <properties>
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
-        <logback-classic.version>1.2.3</logback-classic.version>
         <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <cargo-maven2-plugin.version>1.7.6</cargo-maven2-plugin.version>
     </properties>
 
 </project>

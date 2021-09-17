@@ -16,9 +16,10 @@
     </parent>
 
     <dependencies>
-        <dependency>
+		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cloud-connectors</artifactId>
+            <version>${spring-boot-starter-cloud-connectors.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,7 +57,7 @@
     </dependencyManagement>
 
     <properties>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+    	<spring-boot-starter-cloud-connectors.version>2.2.6.RELEASE</spring-boot-starter-cloud-connectors.version>
         <spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>
         <postgresql.version>42.2.10</postgresql.version>
     </properties>

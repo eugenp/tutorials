@@ -99,7 +99,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>io.restx</groupId>
@@ -149,7 +149,6 @@
 
     <properties>
         <restx.version>0.35-rc4</restx.version>
-        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 
 </project>
