@@ -378,6 +378,7 @@
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>clean-architectures</module>
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
@@ -848,6 +849,7 @@
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>clean-architectures</module>
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 

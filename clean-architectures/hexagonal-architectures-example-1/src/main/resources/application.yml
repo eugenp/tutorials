@@ -1,0 +1,10 @@
+user:
+  infra:
+    external:
+      documentvalidator:
+        url: "http://localhost:9999/document-validator"
+shared:
+  infra:
+    external:
+      eventbus:
+      url: "http://localhost:9998/event-bus"
