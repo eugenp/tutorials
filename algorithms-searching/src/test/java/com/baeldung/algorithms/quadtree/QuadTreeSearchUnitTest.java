@@ -37,7 +37,6 @@ public class QuadTreeSearchUnitTest {
         List<Point> result = quadTree.search(searchArea, null, "");
         LOGGER.debug(result.toString());
         LOGGER.debug(quadTree.printSearchTraversePath());
-
         Assert.assertEquals(1, result.size());
         Assert.assertArrayEquals(new float[] { 245, 238 },
             new float[]{result.get(0).getX(), result.get(0).getY() }, 0);
@@ -49,7 +48,6 @@ public class QuadTreeSearchUnitTest {
         List<Point> result = quadTree.search(searchArea, null, "");
         LOGGER.debug(result.toString());
         LOGGER.debug(quadTree.printSearchTraversePath());
-
         Assert.assertEquals(2, result.size());
         Assert.assertArrayEquals(new float[] { 21, 25 },
             new float[]{result.get(0).getX(), result.get(0).getY() }, 0);
