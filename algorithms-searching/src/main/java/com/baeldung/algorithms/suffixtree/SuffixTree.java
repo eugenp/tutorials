@@ -23,7 +23,7 @@ public class SuffixTree {
     }
 
     public List<String> searchText(String pattern) {
-        LOGGER.info("Searching for pattern \"{}\"", pattern);
+        LOGGER.debug("Searching for pattern \"{}\"", pattern);
         List<String> result = new ArrayList<>();
         List<Node> nodes = getAllNodesInTraversePath(pattern, root, false);
 
@@ -41,11 +41,11 @@ public class SuffixTree {
     }
 
     private void addSuffix(String suffix, int position) {
-        LOGGER.info(">>>>>>>>>>>> Adding new suffix {}", suffix);
+        LOGGER.debug(">>>>>>>>>>>> Adding new suffix {}", suffix);
         List<Node> nodes = getAllNodesInTraversePath(suffix, root, true);
         if (nodes.size() == 0) {
             addChildNode(root, suffix, position);
-            LOGGER.info("{}", printTree());
+            LOGGER.debug("{}", printTree());
         } else {
             Node lastNode = nodes.remove(nodes.size() - 1);
             String newText = suffix;
@@ -58,7 +58,7 @@ public class SuffixTree {
                 newText = newText.substring(existingSuffixUptoLastNode.length());
             }
             extendNode(lastNode, newText, position);
-            LOGGER.info("{}", printTree());
+            LOGGER.debug("{}", printTree());
         }
     }
 
