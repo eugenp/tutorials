@@ -14,7 +14,7 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../</relativePath>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -35,7 +35,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
