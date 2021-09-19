@@ -33,5 +33,5 @@
         <commons-collections4.version>4.1</commons-collections4.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
-    
+
 </project>

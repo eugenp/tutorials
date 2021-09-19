@@ -25,6 +25,7 @@
             <version>${commons-codec.version}</version>
         </dependency>
     </dependencies>
+
     <properties>
         <commons-codec.version>1.15</commons-codec.version>
     </properties>
