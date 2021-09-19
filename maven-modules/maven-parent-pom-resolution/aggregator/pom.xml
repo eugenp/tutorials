@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.maven-parent-pom-resolution</groupId>
     <artifactId>aggregator</artifactId>
+    <packaging>pom</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>maven-parent-pom-resolution</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <!-- The parent pom is resolved to ../pom.xml -->
     </parent>
-    <packaging>pom</packaging>
 
     <modules>
         <module>module1</module>
