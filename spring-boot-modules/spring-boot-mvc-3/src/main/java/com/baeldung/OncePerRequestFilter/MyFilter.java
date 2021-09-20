@@ -23,7 +23,7 @@ public class MyFilter extends OncePerRequestFilter {
     }
 
 
-    //This piece of code is commented out.SHould be uncommented if we are using OncePerRequestFilter
+    //This piece of code is commented out.Should be uncommented if we are not using OncePerRequestFilter
    /* @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         logger.info("Inside Filter");
