@@ -36,4 +36,9 @@ public class EmployeeDatabaseServiceImpl implements EmployeeDatabaseService{
         empRepository.deleteById(id);
     }
 
+    @Override
+    public void updateEmployee(Employee e) {
+        empRepository.save(e);
+    }
+
 }

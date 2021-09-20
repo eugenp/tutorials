@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,9 +39,16 @@ public class EmployeeRestController {
     }
     
     @DeleteMapping("/employee/{id}")
-    public void deleteEmployeeById(@PathVariable String id) {
+    public String deleteEmployeeById(@PathVariable String id) {
         LOG.info("going to delete the employee details for id: "+id);
         empService.deleteEmployeeDetailsById(id);
+        return "Employee details deleted with id: "+id;
     }
     
+    @PutMapping("/employee")
+    public String updateEmployee(@RequestBody Employee e) {
+        LOG.info("going to update the employee details for id: "+e.getId());
+        empService.updateEmployeeDetailsById(e);
+        return "Employee details updated successfully !!!";
+    }
 }

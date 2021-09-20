@@ -30,5 +30,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     public void deleteEmployeeDetailsById(String id) {
         empDatabaseSvc.deleteEmployee(id);
     }
+    
+    @Override
+    public void updateEmployeeDetailsById(Employee e) {
+        empDatabaseSvc.updateEmployee(e);
+    }
 
 }
