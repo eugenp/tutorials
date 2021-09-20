@@ -135,6 +135,11 @@
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
                         <version>${native-buildtools.version}</version>
+                        <configuration>
+                            <buildArgs combine.children="append">
+                                <buildArgs>-H:+AllowVMInspection</buildArgs>
+                            </buildArgs>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>test-native</id>
