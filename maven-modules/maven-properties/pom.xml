@@ -18,7 +18,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13</version>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
@@ -46,6 +46,7 @@
     <properties>
         <name>${project.name}</name>
         <my.awesome.property>property-from-pom</my.awesome.property>
+        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

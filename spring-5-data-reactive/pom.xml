@@ -26,10 +26,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
@@ -52,11 +48,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -147,10 +138,7 @@
         <h2.version>1.4.200</h2.version>
         <couchbaseMock.version>1.5.23</couchbaseMock.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
-        <!-- 
-        	This spring-boot.version is set manually, 
-        	For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 
-        -->
+        <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
     </properties>
 

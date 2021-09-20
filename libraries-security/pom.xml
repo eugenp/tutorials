@@ -78,6 +78,29 @@
             <artifactId>sshd-core</artifactId>
             <version>${apache-mina.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.xacml4j</groupId>
+            <artifactId>xacml-core</artifactId>
+            <version>${xacml4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.xacml4j</groupId>
+            <artifactId>xacml-test</artifactId>
+            <version>${xacml4j.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -90,6 +113,7 @@
         <jsch.version>0.1.55</jsch.version>
         <apache-mina.version>2.5.1</apache-mina.version>
         <spring-security-oauth2.version>2.4.0.RELEASE</spring-security-oauth2.version>
+        <xacml4j.version>1.4.0</xacml4j.version>
     </properties>
 
 </project>

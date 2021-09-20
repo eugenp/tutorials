@@ -39,7 +39,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <profiles>
         <profile>
             <id>incubator-features</id>
@@ -131,7 +131,7 @@
             </build>
         </profile>
     </profiles>
-    
+
     <build>
         <finalName>core-java-9-new-features</finalName>
         <plugins>

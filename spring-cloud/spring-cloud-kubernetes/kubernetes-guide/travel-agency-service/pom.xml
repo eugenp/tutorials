@@ -62,8 +62,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <logback.version>1.2.3</logback.version>
-    </properties>
-
 </project>
