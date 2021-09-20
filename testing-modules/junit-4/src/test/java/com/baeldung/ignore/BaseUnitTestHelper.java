@@ -1,6 +1,6 @@
 package com.baeldung.ignore;
 
-public abstract class BaseUnitTest {
+public class BaseUnitTestHelper {
 
     public void helperMethod() {
 
