@@ -24,7 +24,7 @@ import org.modelmapper.Provider;
 import org.modelmapper.TypeMap;
 import org.modelmapper.convention.MatchingStrategies;
 
-public class ModelMapperTest {
+public class ModelMapperUnitTest {
 
     ModelMapper mapper;
     GameRepository gameRepository;
