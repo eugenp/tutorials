@@ -1,11 +1,19 @@
-package com.bealdung.dto;
+package com.baeldung.domain;
 
-public class PlayerDTO {
+public class Player {
 
     private Long id;
     private String name;
 
-    private GameDTO currentGame;
+    private Game currentGame;
+
+    public Player() {
+    }
+
+    public Player(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return this.id;
@@ -23,11 +31,11 @@ public class PlayerDTO {
         this.name = name;
     }
 
-    public GameDTO getCurrentGame() {
+    public Game getCurrentGame() {
         return this.currentGame;
     }
 
-    public void setCurrentGame(GameDTO currentGame) {
+    public void setCurrentGame(Game currentGame) {
         this.currentGame = currentGame;
     }
 }

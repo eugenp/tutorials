@@ -1,6 +1,6 @@
-package com.bealdung.dto;
+package com.baeldung.dto;
 
-import com.bealdung.domain.GameMode;
+import com.baeldung.domain.GameMode;
 import java.util.List;
 
 public class GameDTO {

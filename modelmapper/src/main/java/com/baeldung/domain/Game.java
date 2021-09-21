@@ -1,4 +1,4 @@
-package com.bealdung.domain;
+package com.baeldung.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,6 @@
-package com.bealdung.repository;
+package com.baeldung.repository;
 
-import com.bealdung.domain.Game;
+import com.baeldung.domain.Game;
 import java.util.ArrayList;
 import java.util.List;
 
