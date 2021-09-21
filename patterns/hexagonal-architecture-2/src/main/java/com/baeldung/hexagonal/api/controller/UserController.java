@@ -12,17 +12,16 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RequestMapping("/user")
 @AllArgsConstructor
 public class UserController {
-  // TODO log requests
-  private final UserService userService;
+    private final UserService userService;
 
-  @PostMapping
-  public User addUser(@RequestBody User user) {
-    return userService.addUser(user);
-  }
+    @PostMapping
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
+    }
 
-  @GetMapping("{id}")
-  public User getUser(@PathVariable long id) {
-    // TODO add ControllerAdvice?
-    return userService.getUserById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Unable to find user"));
-  }
+    @GetMapping("{id}")
+    public User getUser(@PathVariable long id) {
+        return userService.getUserById(id)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Unable to find user"));
+    }
 }

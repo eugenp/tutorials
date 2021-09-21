@@ -4,3 +4,11 @@ spring:
   jpa:
     defer-datasource-initialization: true
     open-in-view: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,httptrace
+server:
+  error:
+    include-message: always
