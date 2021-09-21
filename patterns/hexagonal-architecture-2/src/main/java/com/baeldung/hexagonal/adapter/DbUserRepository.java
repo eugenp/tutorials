@@ -1,13 +1,15 @@
 package com.baeldung.hexagonal.adapter;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.baeldung.hexagonal.db.SpringDataUserRepository;
 import com.baeldung.hexagonal.db.entity.UserEntity;
 import com.baeldung.hexagonal.domain.model.User;
 import com.baeldung.hexagonal.domain.port.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +24,8 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findById(long id) {
-        return springDataUserRepository.findById(id).map(this::mapUserEntityToUser);
+        return springDataUserRepository.findById(id)
+            .map(this::mapUserEntityToUser);
     }
 
     private UserEntity mapUserToUserEntity(User user) {
