@@ -36,7 +36,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenMapGameWithExactMatch_convertsToDTO() {
+    public void whenMapGameWithExactMatch_thenConvertsToDTO() {
         // when similar source object is provided
         final Game game = new Game(1L, "Game 1");
         final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
@@ -46,7 +46,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenMapGameWithBasicPropertyMapping_convertsToDTO() {
+    public void whenMapGameWithBasicPropertyMapping_thenConvertsToDTO() {
         // setup
         final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         propertyMapper.addMapping(Game::getTimestamp, GameDTO::setCreationTime);
@@ -61,7 +61,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenMapGameWithDeepMapping_convertsToDTO() {
+    public void whenMapGameWithDeepMapping_thenConvertsToDTO() {
         // setup
         final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         // add deep mapping to flatten source's Player into name in destination
@@ -79,7 +79,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenMapGameWithDifferentTypedProperties_convertsToDTO() {
+    public void whenMapGameWithDifferentTypedProperties_thenConvertsToDTO() {
         // setup
         final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         propertyMapper.addMappings(mapper -> mapper.map(src -> src.getCreator().getId(), GameDTO::setCreatorId));
@@ -94,7 +94,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenMapGameWithSkipIdProperty_convertsToDTO() {
+    public void whenMapGameWithSkipIdProperty_thenConvertsToDTO() {
         // setup
         final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         propertyMapper.addMappings(mapper -> mapper.skip(GameDTO::setId));
@@ -107,7 +107,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenMapGameWithCustomConverter_convertsToDTO() {
+    public void whenMapGameWithCustomConverter_thenConvertsToDTO() {
         // setup
         final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         final Converter<Collection, Integer> collectionToSize = c -> c.getSource().size();
@@ -126,7 +126,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenUsingProvider_mergesGameInstances() {
+    public void whenUsingProvider_thenMergesGameInstances() {
         // setup
         final TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
         // a provider to fetch a Game instance from a repository
@@ -143,7 +143,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenUsingConditionalIsNull_mergesGameInstancesWithoutOverridingId() {
+    public void whenUsingConditionalIsNull_thenMergesGameInstancesWithoutOverridingId() {
         // setup
         final TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
         propertyMapper.setProvider(p -> this.gameRepository.findById(2L));
@@ -157,7 +157,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenUsingCustomConditional_convertsDTOSkipsZeroTimestamp() {
+    public void whenUsingCustomConditional_thenConvertsDTOSkipsZeroTimestamp() {
         // setup
         final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         final Condition<Long, Long> hasTimestamp = ctx -> ctx.getSource() != null && ctx.getSource() > 0;
@@ -182,7 +182,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenUsingLooseMappingStrategy_convertsToDomainAndDTO() {
+    public void whenUsingLooseMappingStrategy_thenConvertsToDomainAndDTO() {
         // setup
         this.mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
         // when dto has flat fields for GameSetting
@@ -209,7 +209,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenConfigurationSkipNullEnabled_convertsToDTO() {
+    public void whenConfigurationSkipNullEnabled_thenConvertsToDTO() {
         // setup
         this.mapper.getConfiguration().setSkipNullEnabled(true);
         final TypeMap<Game, Game> propertyMap = this.mapper.createTypeMap(Game.class, Game.class);
@@ -223,7 +223,7 @@ public class ModelMapperUnitTest {
     }
 
     @Test
-    public void whenConfigurationPreferNestedPropertiesDisabled_convertsCircularReferencedToDTO() {
+    public void whenConfigurationPreferNestedPropertiesDisabled_thenConvertsCircularReferencedToDTO() {
         // setup
         this.mapper.getConfiguration().setPreferNestedProperties(false);
         // when game has circular reference: Game -> Player -> Game
