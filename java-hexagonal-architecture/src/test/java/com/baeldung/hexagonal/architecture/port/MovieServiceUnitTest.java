@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-//import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.internal.verification.VerificationModeFactory;
@@ -20,7 +19,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.baeldung.hexagonal.architecture.model.Movie;
 import com.baeldung.hexagonal.architecture.service.MovieServiceImplementation;
 
-//@RunWith(SpringRunner.class)
 @ExtendWith(SpringExtension.class)
 public class MovieServiceUnitTest {
     
