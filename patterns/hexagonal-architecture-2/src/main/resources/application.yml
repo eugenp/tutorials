@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test_db;DATABASE_TO_UPPER=false
+  jpa:
+    defer-datasource-initialization: true
+    open-in-view: false
