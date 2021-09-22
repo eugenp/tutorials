@@ -5,8 +5,6 @@ import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.e
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.service.IUserService;
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.external.DocumentIDEntity;
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.external.IDocumentIdValidator;
-import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.repository.IUserRepositoryAdapter;
-import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.repository.exceptions.UserRepositoryException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

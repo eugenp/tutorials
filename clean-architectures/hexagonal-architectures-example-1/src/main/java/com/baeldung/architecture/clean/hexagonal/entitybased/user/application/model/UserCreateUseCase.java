@@ -16,7 +16,6 @@ public class UserCreateUseCase {
 
     public User createUser(User user) throws DocumentIDInvalidException {
         User newUser = userService.createNewUser(user);
-        newUser = userService.save(newUser);
         publisher.publishEvent(UserCreatedEvent.of(user));
 
         return newUser;
