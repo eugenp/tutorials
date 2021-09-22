@@ -4,12 +4,6 @@ import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.U
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.exception.DocumentIDInvalidException;
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.repository.exceptions.UserRepositoryException;
 
-public interface UserService {
-    User get(User user);
-
+public interface IUserService {
     User createNewUser(User user) throws DocumentIDInvalidException;
-
-    User save(User user);
-
-    void remove(User user) throws UserRepositoryException;
 }

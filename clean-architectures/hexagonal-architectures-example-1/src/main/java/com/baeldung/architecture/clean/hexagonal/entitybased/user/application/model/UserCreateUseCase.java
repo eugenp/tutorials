@@ -4,14 +4,14 @@ import com.baeldung.architecture.clean.hexagonal.entitybased.shared.application.
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.application.model.events.UserCreatedEvent;
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.User;
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.exception.DocumentIDInvalidException;
-import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.service.UserService;
+import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.model.service.IUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
 public class UserCreateUseCase {
-    private final UserService userService;
+    private final IUserService userService;
     private final EventPulisher publisher;
 
     public User createUser(User user) throws DocumentIDInvalidException {

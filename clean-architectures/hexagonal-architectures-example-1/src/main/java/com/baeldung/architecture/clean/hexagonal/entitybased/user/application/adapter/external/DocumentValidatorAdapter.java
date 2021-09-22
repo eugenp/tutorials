@@ -2,14 +2,14 @@ package com.baeldung.architecture.clean.hexagonal.entitybased.user.application.a
 
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.application.port.external.IDocumentValidatorService;
 import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.external.DocumentIDEntity;
-import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.external.IDocumentIdValidatorAdapter;
+import com.baeldung.architecture.clean.hexagonal.entitybased.user.domain.port.external.IDocumentIdValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class DocumentValidatorAdapter implements IDocumentIdValidatorAdapter {
+public class DocumentValidatorAdapter implements IDocumentIdValidator {
     private final IDocumentValidatorService documentValidatorService;
 
     @Override
