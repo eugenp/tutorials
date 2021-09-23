@@ -11,10 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class OrderApplicationConfiguration {
 
     @Bean
-    public SnapshotTriggerDefinition orderAggregateSnapshotTriggerDefinition(
-            Snapshotter snapshotter,
-            @Value("${axon.aggregate.order.snapshot-threshold:250}") int threshold
-    ) {
+    public SnapshotTriggerDefinition orderAggregateSnapshotTriggerDefinition(Snapshotter snapshotter,
+                                                                             @Value("${axon.aggregate.order.snapshot-threshold:250}") int threshold) {
         return new EventCountSnapshotTriggerDefinition(snapshotter, threshold);
     }
 }
