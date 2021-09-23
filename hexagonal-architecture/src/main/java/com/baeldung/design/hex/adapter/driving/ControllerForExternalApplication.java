@@ -15,28 +15,28 @@ import com.baeldung.design.hex.port.in.IController;
 @RequestMapping("/api/order")
 public class ControllerForExternalApplication implements IController {
 
-	@Autowired
-	IOrderService service;
+    @Autowired
+    IOrderService service;
 
-	@Value("${props.external.validCallers}")
-	List<String> validCallers;
+    @Value("${props.external.validCallers}")
+    List<String> validCallers;
 
-	@Override
-	public String placeOrder(List<Item> items, String caller) {
-		String orderId = null;
-		if (validCallers.contains(caller)) {
-			orderId = service.processOrder(items, caller);
-		}
-		return orderId;
-	}
+    @Override
+    public String placeOrder(List<Item> items, String caller) {
+        String orderId = null;
+        if (validCallers.contains(caller)) {
+            orderId = service.processOrder(items, caller);
+        }
+        return orderId;
+    }
 
-	@Override
-	public List<Item> getOrderedItems(String orderId, String caller) {
-		List<Item> items = null;
-		if (validCallers.contains(caller)) {
-			items = service.getOrderedItems(orderId);
-		}
-		return items;
-	}
+    @Override
+    public List<Item> getOrderedItems(String orderId, String caller) {
+        List<Item> items = null;
+        if (validCallers.contains(caller)) {
+            items = service.getOrderedItems(orderId);
+        }
+        return items;
+    }
 
 }

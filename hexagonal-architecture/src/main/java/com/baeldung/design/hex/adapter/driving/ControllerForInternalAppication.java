@@ -14,17 +14,17 @@ import com.baeldung.design.hex.port.in.IController;
 @RequestMapping("/order")
 public class ControllerForInternalAppication implements IController {
 
-	@Autowired
-	IOrderService service;
+    @Autowired
+    IOrderService service;
 
-	@Override
-	public String placeOrder(List<Item> items, String caller) {
-		return service.processOrder(items, caller);
-	}
+    @Override
+    public String placeOrder(List<Item> items, String caller) {
+        return service.processOrder(items, caller);
+    }
 
-	@Override
-	public List<Item> getOrderedItems(String orderId, String caller) {
-		return service.getOrderedItems(orderId);
-	}
+    @Override
+    public List<Item> getOrderedItems(String orderId, String caller) {
+        return service.getOrderedItems(orderId);
+    }
 
 }

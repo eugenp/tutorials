@@ -14,37 +14,37 @@ import com.baeldung.design.hex.port.out.IPrinter;
 @Service
 public class OrderService implements IOrderService {
 
-	@Autowired
-	IOrderRepository repository;
+    @Autowired
+    IOrderRepository repository;
 
-	@Autowired
-	IPrinter printer;
+    @Autowired
+    IPrinter printer;
 
-	@Autowired
-	@Qualifier("emailSender")
-	IMessageSender emailSender;
+    @Autowired
+    @Qualifier("emailSender")
+    IMessageSender emailSender;
 
-	@Autowired
-	@Qualifier("smsSender")
-	IMessageSender smsSender;
+    @Autowired
+    @Qualifier("smsSender")
+    IMessageSender smsSender;
 
-	@Override
-	public String processOrder(List<Item> items, String caller) {
-		String orderId = repository.placeOrder(items);
+    @Override
+    public String processOrder(List<Item> items, String caller) {
+        String orderId = repository.placeOrder(items);
 
-		if (caller != null && caller.equals("KFC_OUTLET")) {
-			printer.print(orderId, items);
-		} else if (caller != null && caller.equals("KFC_APP")) {
-			emailSender.send(orderId);
-			smsSender.send(orderId);
-		}
+        if (caller != null && caller.equals("KFC_OUTLET")) {
+            printer.print(orderId, items);
+        } else if (caller != null && caller.equals("KFC_APP")) {
+            emailSender.send(orderId);
+            smsSender.send(orderId);
+        }
 
-		return orderId;
-	}
+        return orderId;
+    }
 
-	@Override
-	public List<Item> getOrderedItems(String orderId) {
-		return repository.getOrderedItems(orderId);
-	}
+    @Override
+    public List<Item> getOrderedItems(String orderId) {
+        return repository.getOrderedItems(orderId);
+    }
 
 }

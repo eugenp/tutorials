@@ -9,13 +9,13 @@ import com.baeldung.design.hex.port.out.IMessageSender;
 @Component("emailSender")
 public class EmailSender implements IMessageSender {
 
-	@Autowired
-	EmailSenderAPI emailAPI;
+    @Autowired
+    EmailSenderAPI emailAPI;
 
-	@Override
-	public void send(String orderId) {
-		String message = "Order with orderId " + orderId + "placed successfully. Click here to track status";
-		emailAPI.sendEmail(message);
-	}
+    @Override
+    public void send(String orderId) {
+        String message = "Order with orderId " + orderId + "placed successfully. Click here to track status";
+        emailAPI.sendEmail(message);
+    }
 
 }

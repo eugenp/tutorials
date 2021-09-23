@@ -11,13 +11,13 @@ import com.baeldung.design.hex.port.out.IPrinter;
 
 @Service
 public class InvoicePrinter implements IPrinter {
-	
-	@Autowired
-	PrinterAPI printerAPI;
-	
-	@Override
-	public void print(String orderId, List<Item> items) {
-		printerAPI.printInvoice(orderId, items);
-	}
+
+    @Autowired
+    PrinterAPI printerAPI;
+
+    @Override
+    public void print(String orderId, List<Item> items) {
+        printerAPI.printInvoice(orderId, items);
+    }
 
 }

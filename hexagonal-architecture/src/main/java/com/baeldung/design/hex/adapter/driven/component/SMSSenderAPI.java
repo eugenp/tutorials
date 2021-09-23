@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SMSSenderAPI {
-	public void sendSMS(String message) {
-		System.out.println(message);
-	}
+    public void sendSMS(String message) {
+        System.out.println(message);
+    }
 }

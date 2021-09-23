@@ -12,17 +12,17 @@ import com.baeldung.design.hex.port.out.IOrderRepository;
 @Repository
 public class OrderRepository implements IOrderRepository {
 
-	@Autowired
-	DataSource datasource;
+    @Autowired
+    DataSource datasource;
 
-	@Override
-	public String placeOrder(List<Item> items) {
-		return datasource.placeOrder(items);
-	}
+    @Override
+    public String placeOrder(List<Item> items) {
+        return datasource.placeOrder(items);
+    }
 
-	@Override
-	public List<Item> getOrderedItems(String orderId) {
-		return datasource.getOrderedItems(orderId);
-	}
+    @Override
+    public List<Item> getOrderedItems(String orderId) {
+        return datasource.getOrderedItems(orderId);
+    }
 
 }

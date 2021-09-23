@@ -9,14 +9,13 @@ import com.baeldung.design.hex.port.out.IMessageSender;
 @Component("smsSender")
 public class SMSSender implements IMessageSender {
 
-	@Autowired
-	SMSSenderAPI smsAPI;
+    @Autowired
+    SMSSenderAPI smsAPI;
 
-	@Override
-	public void send(String orderId) {
-		String message = "Order with orderId " + orderId + "placed successfully."
-				+ "SMS ORDER <orderId> to 111 to know status";
-		smsAPI.sendSMS(message);
-	}
+    @Override
+    public void send(String orderId) {
+        String message = "Order with orderId " + orderId + "placed successfully." + "SMS ORDER <orderId> to 111 to know status";
+        smsAPI.sendSMS(message);
+    }
 
 }

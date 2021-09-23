@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmailSenderAPI {
-	public void sendEmail(String message) {
-		System.out.println(message);
-	}
+    public void sendEmail(String message) {
+        System.out.println(message);
+    }
 }

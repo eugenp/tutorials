@@ -13,7 +13,7 @@
 	<artifactId>hexagonal-architecture</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>baeldung-hexagonal-architecture</name>
-	<description>Implementing hexagonal architecture using Java/Spring Boot as a RESTful application</description>
+	<description>Implementing hexagonal architecture using Java/Spring Boot</description>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
