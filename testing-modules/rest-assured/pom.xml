@@ -12,7 +12,6 @@
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
-        <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>

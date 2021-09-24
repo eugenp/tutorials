@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>${jackson-datatype.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- CSV -->
         <dependency>
@@ -52,7 +52,6 @@
 
     <properties>
         <assertj.version>3.11.0</assertj.version>
-        <jackson-datatype.version>2.9.8</jackson-datatype.version>
     </properties>
 
 </project>

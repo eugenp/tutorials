@@ -71,6 +71,26 @@
             <artifactId>flying-saucer-pdf</artifactId>
             <version>${flying-saucer-pdf.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf-openpdf</artifactId>
+            <version>${flying-saucer-pdf-openpdf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-core</artifactId>
+            <version>${open-html-pdf-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.openhtmltopdf</groupId>
+            <artifactId>openhtmltopdf-pdfbox</artifactId>
+            <version>${open-html-pdfbox.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -93,6 +113,10 @@
         <poi-ooxml.version>3.15</poi-ooxml.version>
         <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
         <flying-saucer-pdf.version>9.1.20</flying-saucer-pdf.version>
+        <open-html-pdfbox.version>1.0.6</open-html-pdfbox.version>
+        <open-html-pdf-core.version>1.0.6</open-html-pdf-core.version>
+        <flying-saucer-pdf-openpdf.version>9.1.22</flying-saucer-pdf-openpdf.version>
+        <jsoup.version>1.14.2</jsoup.version>
     </properties>
 
 </project>

@@ -1356,6 +1356,7 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>quarkus-vs-springboot</module>
             </modules>
         </profile>
     </profiles>
@@ -1410,7 +1411,7 @@
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.11.1</jackson.version>
+        <jackson.version>2.12.4</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.2.0</junit-platform.version>
         <junit-jupiter.version>5.2.0</junit-jupiter.version>
