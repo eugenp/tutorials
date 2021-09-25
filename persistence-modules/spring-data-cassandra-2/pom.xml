@@ -26,6 +26,11 @@
 			<version>${org.springframework.data.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>uk.org.webcompere</groupId>
+			<artifactId>system-stubs-core</artifactId>
+			<version>${system.stubs.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -48,12 +53,20 @@
 			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>uk.org.webcompere</groupId>
+			<artifactId>system-stubs-jupiter</artifactId>
+			<version>${system.stubs.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<properties>
 		<java.version>11</java.version>
 		<org.springframework.data.version>3.1.11</org.springframework.data.version>
 		<testcontainers.version>1.15.3</testcontainers.version>
+		<system.stubs.version>1.1.0</system.stubs.version>
+		<junit.jupiter.version>5.6.2</junit.jupiter.version>
 	</properties>
 
 </project>
