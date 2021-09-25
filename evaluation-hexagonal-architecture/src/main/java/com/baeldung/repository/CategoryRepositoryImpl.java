@@ -15,6 +15,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Override
     public List<Category> getAllCategories() {
+        categoryMap.put(1L, new Category(1L, "EyeGlasses"));
+        categoryMap.put(2L, new Category(2L, "SunGlasses"));
         return new ArrayList<>(categoryMap.values());
     }
 
