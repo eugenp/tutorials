@@ -1,3 +1,4 @@
+/*
 package com.baeldung.map.hashing;
 
 import com.google.common.base.Stopwatch;
@@ -74,3 +75,4 @@ public class HashingUnitTest {
         return new Duration[]{elapsedInserting, elapsedGetting};
     }
 }
+*/
