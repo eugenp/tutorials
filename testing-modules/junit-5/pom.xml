@@ -8,14 +8,12 @@
     <version>1.0-SNAPSHOT</version>
     <name>junit-5</name>
     <description>Intro to JUnit 5</description>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../</relativePath>
     </parent>
-
     <dependencies>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -96,7 +94,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <resources>
             <resource>
@@ -127,7 +124,6 @@
             </plugin>
         </plugins>
     </build>
-
     <properties>
         <junit.jupiter.version>5.4.2</junit.jupiter.version>
         <mockito.junit.jupiter.version>2.23.0</mockito.junit.jupiter.version>
