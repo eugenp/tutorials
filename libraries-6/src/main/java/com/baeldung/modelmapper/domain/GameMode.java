@@ -1,4 +1,4 @@
-package com.baeldung.domain;
+package com.baeldung.modelmapper.domain;
 
 public enum GameMode {
     NORMAL, TURBO

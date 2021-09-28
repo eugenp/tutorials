@@ -1,6 +1,6 @@
-package com.baeldung.repository;
+package com.baeldung.modelmapper.repository;
 
-import com.baeldung.domain.Game;
+import com.baeldung.modelmapper.domain.Game;
 import java.util.ArrayList;
 import java.util.List;
 

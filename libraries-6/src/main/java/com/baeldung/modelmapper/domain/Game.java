@@ -1,4 +1,4 @@
-package com.baeldung.domain;
+package com.baeldung.modelmapper.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

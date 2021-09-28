@@ -1,17 +1,17 @@
-package com.baeldung;
+package com.baeldung.modelmapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import com.baeldung.domain.Game;
-import com.baeldung.domain.GameMode;
-import com.baeldung.domain.GameSettings;
-import com.baeldung.domain.Player;
-import com.baeldung.dto.GameDTO;
-import com.baeldung.dto.PlayerDTO;
-import com.baeldung.repository.GameRepository;
+import com.baeldung.modelmapper.domain.Game;
+import com.baeldung.modelmapper.domain.GameMode;
+import com.baeldung.modelmapper.domain.GameSettings;
+import com.baeldung.modelmapper.domain.Player;
+import com.baeldung.modelmapper.dto.GameDTO;
+import com.baeldung.modelmapper.dto.PlayerDTO;
+import com.baeldung.modelmapper.repository.GameRepository;
 import java.time.Instant;
 import java.util.Collection;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,8 +38,9 @@ public class ModelMapperUnitTest {
     @Test
     public void whenMapGameWithExactMatch_thenConvertsToDTO() {
         // when similar source object is provided
-        final Game game = new Game(1L, "Game 1");
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        Game game = new Game(1L, "Game 1");
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+
 
         // then it maps without property mapper
         assertEquals(game.getId(), gameDTO.getId());
@@ -49,13 +50,13 @@ public class ModelMapperUnitTest {
     @Test
     public void whenMapGameWithBasicPropertyMapping_thenConvertsToDTO() {
         // setup
-        final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+        TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         propertyMapper.addMapping(Game::getTimestamp, GameDTO::setCreationTime);
 
         // when field names are different
-        final Game game = new Game(1L, "Game 1");
+        Game game = new Game(1L, "Game 1");
         game.setTimestamp(Instant.now().getEpochSecond());
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
         // then it maps via property mapper
         assertEquals(game.getId(), gameDTO.getId());
@@ -66,16 +67,16 @@ public class ModelMapperUnitTest {
     @Test
     public void whenMapGameWithDeepMapping_thenConvertsToDTO() {
         // setup
-        final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+        TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         // add deep mapping to flatten source's Player into name in destination
         propertyMapper.addMappings(
           mapper -> mapper.map(src -> src.getCreator().getName(), GameDTO::setCreator)
         );
 
         // when map between different hierarchies
-        final Game game = new Game(1L, "Game 1");
+        Game game = new Game(1L, "Game 1");
         game.setCreator(new Player(1L, "John"));
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
         // then
         assertEquals(game.getId(), gameDTO.getId());
@@ -86,13 +87,13 @@ public class ModelMapperUnitTest {
     @Test
     public void whenMapGameWithDifferentTypedProperties_thenConvertsToDTO() {
         // setup
-        final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+        TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         propertyMapper.addMappings(mapper -> mapper.map(src -> src.getCreator().getId(), GameDTO::setCreatorId));
 
         // when map different typed properties
-        final Game game = new Game(1L, "Game 1");
+        Game game = new Game(1L, "Game 1");
         game.setCreator(new Player(1L, "John"));
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
         // then it converts between types
         assertEquals(game.getId(), gameDTO.getId());
@@ -103,12 +104,12 @@ public class ModelMapperUnitTest {
     @Test
     public void whenMapGameWithSkipIdProperty_thenConvertsToDTO() {
         // setup
-        final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+        TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
         propertyMapper.addMappings(mapper -> mapper.skip(GameDTO::setId));
 
         // when id is skipped
-        final Game game = new Game(1L, "Game 1");
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        Game game = new Game(1L, "Game 1");
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
         // then destination id is null
         assertNull(gameDTO.getId());
@@ -118,17 +119,17 @@ public class ModelMapperUnitTest {
     @Test
     public void whenMapGameWithCustomConverter_thenConvertsToDTO() {
         // setup
-        final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
-        final Converter<Collection, Integer> collectionToSize = c -> c.getSource().size();
+        TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+        Converter<Collection, Integer> collectionToSize = c -> c.getSource().size();
         propertyMapper.addMappings(
           mapper -> mapper.using(collectionToSize).map(Game::getPlayers, GameDTO::setTotalPlayers)
         );
 
         // when collection to size converter is provided
-        final Game game = new Game(1L, "Game 1");
+        Game game = new Game(1L, "Game 1");
         game.setCreator(new Player(1L, "John"));
         game.addPlayer(new Player(2L, "Bob"));
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
         // then it maps the size to a custom field
         assertEquals(game.getId(), gameDTO.getId());
@@ -139,15 +140,15 @@ public class ModelMapperUnitTest {
     @Test
     public void whenUsingProvider_thenMergesGameInstances() {
         // setup
-        final TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
+        TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
         // a provider to fetch a Game instance from a repository
-        final Provider<Game> gameProvider = p -> this.gameRepository.findById(1L);
+        Provider<Game> gameProvider = p -> this.gameRepository.findById(1L);
         propertyMapper.setProvider(gameProvider);
 
         // when a state for update is given
-        final Game update = new Game(1L, "Game Updated!");
+        Game update = new Game(1L, "Game Updated!");
         update.setCreator(new Player(1L, "John"));
-        final Game updatedGame = this.mapper.map(update, Game.class);
+        Game updatedGame = this.mapper.map(update, Game.class);
 
         // then it merges the updates over on the provided instance
         assertEquals(1L, updatedGame.getId().longValue());
@@ -158,13 +159,13 @@ public class ModelMapperUnitTest {
     @Test
     public void whenUsingConditionalIsNull_thenMergesGameInstancesWithoutOverridingId() {
         // setup
-        final TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
+        TypeMap<Game, Game> propertyMapper = this.mapper.createTypeMap(Game.class, Game.class);
         propertyMapper.setProvider(p -> this.gameRepository.findById(2L));
         propertyMapper.addMappings(mapper -> mapper.when(Conditions.isNull()).skip(Game::getId, Game::setId));
 
         // when game has no id
-        final Game update = new Game(null, "Not Persisted Game!");
-        final Game updatedGame = this.mapper.map(update, Game.class);
+        Game update = new Game(null, "Not Persisted Game!");
+        Game updatedGame = this.mapper.map(update, Game.class);
 
         // then destination game id is not overwritten
         assertEquals(2L, updatedGame.getId().longValue());
@@ -174,12 +175,12 @@ public class ModelMapperUnitTest {
     @Test
     public void whenUsingCustomConditional_thenConvertsDTOSkipsZeroTimestamp() {
         // setup
-        final TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
-        final Condition<Long, Long> hasTimestamp = ctx -> ctx.getSource() != null && ctx.getSource() > 0;
+        TypeMap<Game, GameDTO> propertyMapper = this.mapper.createTypeMap(Game.class, GameDTO.class);
+        Condition<Long, Long> hasTimestamp = ctx -> ctx.getSource() != null && ctx.getSource() > 0;
         propertyMapper.addMappings(mapper -> mapper.when(hasTimestamp).map(Game::getTimestamp, GameDTO::setCreationTime));
 
         // when game has zero timestamp
-        final Game game = new Game(1L, "Game 1");
+        Game game = new Game(1L, "Game 1");
         game.setTimestamp(0L);
         GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
@@ -235,12 +236,12 @@ public class ModelMapperUnitTest {
     public void whenConfigurationSkipNullEnabled_thenConvertsToDTO() {
         // setup
         this.mapper.getConfiguration().setSkipNullEnabled(true);
-        final TypeMap<Game, Game> propertyMap = this.mapper.createTypeMap(Game.class, Game.class);
+        TypeMap<Game, Game> propertyMap = this.mapper.createTypeMap(Game.class, Game.class);
         propertyMap.setProvider(p -> this.gameRepository.findById(2L));
 
         // when game has no id
-        final Game update = new Game(null, "Not Persisted Game!");
-        final Game updatedGame = this.mapper.map(update, Game.class);
+        Game update = new Game(null, "Not Persisted Game!");
+        Game updatedGame = this.mapper.map(update, Game.class);
 
         // then destination game id is not overwritten
         assertEquals(2L, updatedGame.getId().longValue());
@@ -253,16 +254,16 @@ public class ModelMapperUnitTest {
         this.mapper.getConfiguration().setPreferNestedProperties(false);
 
         // when game has circular reference: Game -> Player -> Game
-        final Game game = new Game(1L, "Game 1");
-        final Player player = new Player(1L, "John");
+        Game game = new Game(1L, "Game 1");
+        Player player = new Player(1L, "John");
         player.setCurrentGame(game);
         game.setCreator(player);
-        final GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
+        GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
         // then it resolves without any exception
         assertEquals(game.getId(), gameDTO.getId());
         assertEquals(game.getName(), gameDTO.getName());
-        final PlayerDTO playerDTO = gameDTO.getPlayers().get(0);
+        PlayerDTO playerDTO = gameDTO.getPlayers().get(0);
         assertEquals(player.getId(), playerDTO.getId());
         assertEquals(player.getCurrentGame().getId(), playerDTO.getCurrentGame().getId());
     }

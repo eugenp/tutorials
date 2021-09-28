@@ -1,4 +1,4 @@
-package com.baeldung.dto;
+package com.baeldung.modelmapper.dto;
 
 public class PlayerDTO {
 
