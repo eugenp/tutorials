@@ -20,7 +20,10 @@ public class MyOncePerRequestFilter extends OncePerRequestFilter {
         logger.info("Inside OncePer Request Filter originated by request {}",request.getRequestURI());
         filterChain.doFilter(request, response);
     }
-    protected boolean shouldNotFilterAsyncDispatch() { return true; }
+    protected boolean shouldNotFilterAsyncDispatch() 
+ { 
+ return true;
+ }
 
 
 }
