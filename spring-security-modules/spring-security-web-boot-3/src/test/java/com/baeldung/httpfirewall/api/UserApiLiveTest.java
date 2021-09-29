@@ -1,6 +1,8 @@
 package com.baeldung.httpfirewall.api;
 
 import com.baeldung.httpfirewall.model.User;
+
+import com.baeldung.httpfirewall.service.UserServiceImpl;
 import com.baeldung.httpfirewall.utility.UserTestUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;

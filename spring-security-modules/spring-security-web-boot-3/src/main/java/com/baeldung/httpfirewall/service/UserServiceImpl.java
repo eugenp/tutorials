@@ -1,6 +1,5 @@
 package com.baeldung.httpfirewall.service;
 
-
 import com.baeldung.httpfirewall.dao.InMemoryUserDao;
 import com.baeldung.httpfirewall.model.User;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl  {
+public class UserServiceImpl {
 
     private final InMemoryUserDao inMemoryUserDao;
 

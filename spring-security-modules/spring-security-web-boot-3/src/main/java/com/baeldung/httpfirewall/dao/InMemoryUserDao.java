@@ -1,6 +1,5 @@
 package com.baeldung.httpfirewall.dao;
 
-
 import com.baeldung.httpfirewall.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -12,14 +11,14 @@ import java.util.Optional;
 
 @Repository
 public class InMemoryUserDao {
-
-    private final Map<String, User> map = new HashMap<>();
+    private Map<String, User> map = new HashMap<>();
 
     /**
      * Persists the user. The user is store in an In-Memory store (a HashMap)
      * The default implementation is an In-Memory persistence
      * @param user The user that should be persisted
      */
+
     public void save(User user) {
         map.put(user.getId(), user);
     }
@@ -39,6 +38,7 @@ public class InMemoryUserDao {
      * Finds all the users from the in-memory data store
      * The default implementation is an In-Memory persistence
      */
+
     public Optional<List<User>> findAll() {
         return Optional.of(new ArrayList<>(map.values()));
     }
@@ -48,6 +48,7 @@ public class InMemoryUserDao {
      * The default implementation is an In-Memory persistence
      * @param userId The user that has to be deleted
      */
+
     public void delete(String userId) {
         map.remove(userId);
     }
@@ -57,6 +58,7 @@ public class InMemoryUserDao {
      * The default implementation is an In-Memory persistence
      * @param userId The user that has to be checked for
      */
+
     public boolean isExists(String userId) {
         return map.containsKey(userId);
     }

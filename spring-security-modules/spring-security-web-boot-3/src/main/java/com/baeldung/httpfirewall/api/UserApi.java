@@ -35,10 +35,8 @@ public class UserApi {
         if (StringUtils.isBlank(user.getId())) {
             user.setId(UUID.randomUUID().toString());
         }
-
         userServiceImpl.saveUser(user);
-        Response response = new Response(HttpStatus.CREATED.value(), "User created successfully",System.currentTimeMillis());
-
+        Response response = new Response(HttpStatus.CREATED.value(), "User created successfully", System.currentTimeMillis());
         URI location = URI.create("/users/" + user.getId());
         return ResponseEntity.created(location).body(response);
     }

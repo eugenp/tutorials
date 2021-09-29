@@ -1,6 +1,7 @@
 package com.baeldung.httpfirewall.service;
 
 import com.baeldung.httpfirewall.dao.InMemoryUserDao;
+
 import com.baeldung.httpfirewall.model.User;
 import com.baeldung.httpfirewall.utility.UserTestUtility;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,9 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -44,6 +48,8 @@ class UserServiceUnitTest {
         userService.saveUser(user);
         verify(userDao, times(1)).save(user);
     }
+
+
 
     @Test
     @DisplayName("Check Get User")
