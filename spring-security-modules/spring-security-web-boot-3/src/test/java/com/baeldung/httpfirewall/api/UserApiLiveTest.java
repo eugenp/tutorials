@@ -1,7 +1,6 @@
 package com.baeldung.httpfirewall.api;
 
 import com.baeldung.httpfirewall.model.User;
-import com.baeldung.httpfirewall.service.UserService;
 import com.baeldung.httpfirewall.utility.UserTestUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,8 +35,6 @@ class UserApiLiveTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
-    @Autowired
-    private UserService userService;
 
     @BeforeEach
     void setup() throws Exception {

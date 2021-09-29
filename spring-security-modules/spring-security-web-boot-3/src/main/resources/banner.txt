@@ -1,8 +1,0 @@
-${AnsiColor.GREEN}
-  ____                   _       _
- | __ )    __ _    ___  | |   __| |  _   _   _ __     __ _
- |  _ \   / _` |  / _ \ | |  / _` | | | | | | '_ \   / _` |
- | |_) | | (_| | |  __/ | | | (_| | | |_| | | | | | | (_| |
- |____/   \__,_|  \___| |_|  \__,_|  \__,_| |_| |_|  \__, |
-                                                     |___/
- ${AnsiColor.DEFAULT}${AnsiColor.MAGENTA}Spring Boot ${spring-boot.formatted-version}${AnsiColor.DEFAULT}

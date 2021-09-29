@@ -1,10 +1,8 @@
 package com.baeldung.httpfirewall.api;
 
-
 import com.baeldung.httpfirewall.model.Response;
 import com.baeldung.httpfirewall.model.User;
-import com.baeldung.httpfirewall.service.UserService;
-import lombok.extern.slf4j.Slf4j;
+import com.baeldung.httpfirewall.service.UserServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,32 +22,22 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/users")
-@Slf4j
 public class UserApi {
 
-    private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
 
-    public UserApi(UserService userService) {
-        this.userService = userService;
+    public UserApi(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     @PostMapping
     public ResponseEntity<Response> createUser(@RequestBody User user) {
-
-        log.info("Create a user");
         if (StringUtils.isBlank(user.getId())) {
-            log.info("No user id provided. So generating a random id");
             user.setId(UUID.randomUUID().toString());
         }
 
-        userService.saveUser(user);
-        log.info("User saved successfully with userId: {}", user.getId());
-        Response response = Response
-          .builder()
-          .code(HttpStatus.CREATED.value())
-          .message("User created successfully")
-          .timestamp(System.currentTimeMillis())
-          .build();
+        userServiceImpl.saveUser(user);
+        Response response = new Response(HttpStatus.CREATED.value(), "User created successfully",System.currentTimeMillis());
 
         URI location = URI.create("/users/" + user.getId());
         return ResponseEntity.created(location).body(response);
@@ -57,20 +45,17 @@ public class UserApi {
 
     @GetMapping("/{userId}")
     public User getUser(@PathVariable("userId") String userId) {
-        log.info("Fetching the user with id {} ", userId);
-        return userService.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No user exists with the given Id"));
+        return userServiceImpl.findById(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No user exists with the given Id"));
     }
 
     @GetMapping()
     public List<User> getAllUsers() {
-        log.info("Fetching all the users in the data store");
-        return userService.findAll().orElse(new ArrayList<>());
+        return userServiceImpl.findAll().orElse(new ArrayList<>());
     }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<Response> deleteUser(@PathVariable("userId") String userId) {
-        log.info("Deleting a user with id {}", userId);
-        userService.deleteUser(userId);
+        userServiceImpl.deleteUser(userId);
         return ResponseEntity.ok(new Response(200, "The user has been deleted successfully", System.currentTimeMillis()));
     }
 }

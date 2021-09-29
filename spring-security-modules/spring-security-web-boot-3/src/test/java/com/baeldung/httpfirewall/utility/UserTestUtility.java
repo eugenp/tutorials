@@ -9,21 +9,16 @@ import java.util.UUID;
 
 public class UserTestUtility {
     public static User createUser() {
-        return User.builder().id(UUID.randomUUID().toString()).username("jhondoe").email("jhondoe@gmail.com").build();
+        return new User(UUID.randomUUID().toString(),"jhondoe", "jhondoe@gmail.com");
     }
 
     public static User createUserWithoutId() {
-        return User.builder().username("jhondoe").email("jhondoe@gmail.com").build();
+        return new User("","jhondoe", "jhondoe@gmail.com");
     }
 
     public static Optional<User> createUserWithId(String id) {
         // @formatter:off
-        return Optional
-          .of(User.builder()
-            .id(id)
-            .username("jhondoe")
-            .email("jhon.doe@gmail.com")
-            .build());
+        return Optional.of(new User(id, "jhondoe", "jhon.doe@gmail.com"));
         // @formatter:on
     }
 

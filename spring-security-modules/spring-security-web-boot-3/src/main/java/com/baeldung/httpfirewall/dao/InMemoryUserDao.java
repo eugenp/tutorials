@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class InMemoryUserDao implements UserDao {
+public class InMemoryUserDao {
 
     private final Map<String, User> map = new HashMap<>();
 
@@ -20,7 +20,6 @@ public class InMemoryUserDao implements UserDao {
      * The default implementation is an In-Memory persistence
      * @param user The user that should be persisted
      */
-    @Override
     public void save(User user) {
         map.put(user.getId(), user);
     }
@@ -40,7 +39,6 @@ public class InMemoryUserDao implements UserDao {
      * Finds all the users from the in-memory data store
      * The default implementation is an In-Memory persistence
      */
-    @Override
     public Optional<List<User>> findAll() {
         return Optional.of(new ArrayList<>(map.values()));
     }
@@ -50,7 +48,6 @@ public class InMemoryUserDao implements UserDao {
      * The default implementation is an In-Memory persistence
      * @param userId The user that has to be deleted
      */
-    @Override
     public void delete(String userId) {
         map.remove(userId);
     }
@@ -60,7 +57,6 @@ public class InMemoryUserDao implements UserDao {
      * The default implementation is an In-Memory persistence
      * @param userId The user that has to be checked for
      */
-    @Override
     public boolean isExists(String userId) {
         return map.containsKey(userId);
     }

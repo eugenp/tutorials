@@ -1,7 +1,7 @@
 package com.baeldung.httpfirewall.api;
 
 import com.baeldung.httpfirewall.model.User;
-import com.baeldung.httpfirewall.service.UserService;
+import com.baeldung.httpfirewall.service.UserServiceImpl;
 import com.baeldung.httpfirewall.utility.UserTestUtility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -35,7 +35,7 @@ class UserApiUnitTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private ObjectMapper objectMapper;

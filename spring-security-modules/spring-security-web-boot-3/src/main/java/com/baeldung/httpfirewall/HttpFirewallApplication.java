@@ -1,6 +1,5 @@
 package com.baeldung.httpfirewall;
 
-import com.baeldung.tls.TLSEnabledApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

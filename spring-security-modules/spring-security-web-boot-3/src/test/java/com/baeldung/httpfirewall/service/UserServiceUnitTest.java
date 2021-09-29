@@ -1,7 +1,6 @@
 package com.baeldung.httpfirewall.service;
 
-import com.baeldung.httpfirewall.dao.UserDao;
-import com.baeldung.httpfirewall.exception.DuplicateUserException;
+import com.baeldung.httpfirewall.dao.InMemoryUserDao;
 import com.baeldung.httpfirewall.model.User;
 import com.baeldung.httpfirewall.utility.UserTestUtility;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +16,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -30,7 +28,7 @@ class UserServiceUnitTest {
     private UserServiceImpl userService;
 
     @Mock
-    private UserDao userDao;
+    private InMemoryUserDao userDao;
 
     @BeforeEach
     void setup() {
@@ -45,18 +43,6 @@ class UserServiceUnitTest {
 
         userService.saveUser(user);
         verify(userDao, times(1)).save(user);
-    }
-
-    @Test
-    @DisplayName("Check Duplicate User")
-    void whenCalledCreateUser_thenVerifyDuplicate() {
-        User user = UserTestUtility.createUser();
-
-        doNothing().when(userDao).save(user);
-        when(userDao.isExists(user.getId())).thenReturn(true);
-
-        assertThrows(DuplicateUserException.class, () -> userService.saveUser(user));
-
     }
 
     @Test
