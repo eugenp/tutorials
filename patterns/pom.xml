@@ -29,7 +29,6 @@
         <module>solid</module>
         <module>clean-architecture</module>
         <module>enterprise-patterns</module>
-        <module>hexarch</module>
     </modules>
 
     <dependencyManagement>

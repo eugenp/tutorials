@@ -11,7 +11,7 @@ import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.TargetDataLine;
 
-public class AppTest {
+public class AppUnitTest {
 
     AudioFormat af = App.buildAudioFormatInstance();
     SoundRecorder soundRecorder = new SoundRecorder();
