@@ -15,10 +15,7 @@ public class HashMapUpdateUnitTest {
     @BeforeAll
     void setup() {
         fruitMap.put("apple", 2.45);
-        fruitMap.put("grapes", 1.22);/*
-        fruitMap.put("Watermelon", 1.42);
-        fruitMap.put("Lemon", 3.21);
-        fruitMap.put("Plum", 4.34);*/
+        fruitMap.put("grapes", 1.22);
     }
 
     @Test
