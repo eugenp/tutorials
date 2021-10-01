@@ -13,7 +13,7 @@ import com.baeldung.ddd.hexagonal.architecture.domain.EmployeeServiceImpl;
 import com.baeldung.ddd.hexagonal.architecture.output.port.EmployeeDatabaseService;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EmployeeServiceImplTest {
+public class EmployeeServiceImplUnitTest {
 
     @Mock
     private EmployeeDatabaseService empDatabaseSvc;
