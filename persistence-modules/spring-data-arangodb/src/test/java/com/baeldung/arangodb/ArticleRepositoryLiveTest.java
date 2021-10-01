@@ -2,6 +2,7 @@ package com.baeldung.arangodb;
 
 import com.baeldung.arangodb.model.Article;
 import com.baeldung.arangodb.repository.ArticleRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +25,11 @@ public class ArticleRepositoryLiveTest {
 
     @Autowired
     ArticleRepository articleRepository;
+
+    @AfterEach
+    public void tearDown(){
+        articleRepository.deleteAll();
+    }
 
     @Test
     public void givenNewArticle_whenSaveInArangoDb_thenDataIsCorrect() {
