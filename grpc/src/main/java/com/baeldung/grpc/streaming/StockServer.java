@@ -3,8 +3,9 @@ package com.baeldung.grpc.streaming;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -12,7 +13,7 @@ import io.grpc.stub.StreamObserver;
 
 public class StockServer {
 
-    private static final Logger logger = Logger.getLogger(StockServer.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(StockClient.class.getName());
     private final int port;
     private final Server server;
 
@@ -102,7 +103,7 @@ public class StockServer {
 
                 @Override
                 public void onError(Throwable t) {
-                    logger.log(Level.WARNING, "error:{0}", t.getMessage());
+                    logger.warn("error:{}", t.getMessage());
                 }
             };
         }
@@ -131,7 +132,7 @@ public class StockServer {
 
                 @Override
                 public void onError(Throwable t) {
-                    logger.log(Level.WARNING, "error:{0}", t.getMessage());
+                    logger.warn("error:{}", t.getMessage());
                 }
             };
         }
