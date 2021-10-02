@@ -3,56 +3,84 @@ package com.baeldung.switchpatterns;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TypePatternsUnitTest {
+class TypePatternsUnitTest {
 
-    @Test
-    public void givenIfImplementation_whenUsingLongAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingIf(10L));
+    static double getDoubleUsingIf(Object o) {
+        double result;
+
+        if (o instanceof Long) {
+            result = ((Long) o).doubleValue();
+        } else if (o instanceof Integer) {
+            result = ((Integer) o).doubleValue();
+        } else if (o instanceof Float) {
+            result = ((Float) o).doubleValue();
+        } else if (o instanceof String) {
+            result = Double.parseDouble(((String) o));
+        } else {
+            result = 0d;
+        }
+
+        return result;
+    }
+
+    static double getDoubleUsingSwitch(Object o) {
+        return switch (o) {
+            case Long l -> l.doubleValue();
+            case Integer i -> i.doubleValue();
+            case Float f -> f.doubleValue();
+            case String s -> Double.parseDouble(s);
+            default -> 0d;
+        };
     }
 
     @Test
-    public void givenIfImplementation_whenUsingIntegerAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingIf(10));
+    void givenIfImplementation_whenUsingLongAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingIf(10L));
     }
 
     @Test
-    public void givenIfImplementation_whenUsingDoubleAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingIf(10.0f));
+    void givenIfImplementation_whenUsingIntegerAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingIf(10));
     }
 
     @Test
-    public void givenIfImplementation_whenUsingStringAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingIf("10"));
+    void givenIfImplementation_whenUsingDoubleAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingIf(10.0f));
     }
 
     @Test
-    public void givenIfImplementation_whenUsingCharAsArgument_thenDoubleIsReturned() {
-        assertEquals(0d, TypePatterns.getDoubleValueUsingIf('c'));
+    void givenIfImplementation_whenUsingStringAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingIf("10"));
     }
 
     @Test
-    public void givenSwitchImplementation_whenUsingLongAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingSwitch(10L));
+    void givenIfImplementation_whenUsingCharAsArgument_thenDoubleIsReturned() {
+        assertEquals(0d, getDoubleUsingIf('c'));
     }
 
     @Test
-    public void givenSwitchImplementation_whenUsingIntegerAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingSwitch(10));
+    void givenSwitchImplementation_whenUsingLongAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingSwitch(10L));
     }
 
     @Test
-    public void givenSwitchImplementation_whenUsingDoubleAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingSwitch(10.0f));
+    void givenSwitchImplementation_whenUsingIntegerAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingSwitch(10));
     }
 
     @Test
-    public void givenSwitchImplementation_whenUsingStringAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, TypePatterns.getDoubleValueUsingSwitch("10"));
+    void givenSwitchImplementation_whenUsingDoubleAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingSwitch(10.0f));
     }
 
     @Test
-    public void givenSwitchImplementation_whenUsingCharAsArgument_thenDoubleIsReturned() {
-        assertEquals(0d, TypePatterns.getDoubleValueUsingSwitch('c'));
+    void givenSwitchImplementation_whenUsingStringAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingSwitch("10"));
+    }
+
+    @Test
+    void givenSwitchImplementation_whenUsingCharAsArgument_thenDoubleIsReturned() {
+        assertEquals(0d, getDoubleUsingSwitch('c'));
     }
 
 }
