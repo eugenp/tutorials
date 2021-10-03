@@ -9,7 +9,7 @@ import static java.lang.Character.*;
 import static java.lang.String.valueOf;
 import static org.junit.Assert.assertEquals;
 
-public class CollatorTest {
+public class CollatorUnitTest {
 
     private final Collator collator = Collator.getInstance();
 
