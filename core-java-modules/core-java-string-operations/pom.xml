@@ -61,7 +61,7 @@
 
     <properties>
         <assertj.version>3.6.1</assertj.version>
-        <commons-codec.version>1.10</commons-codec.version>
+        <commons-codec.version>1.15</commons-codec.version>
     </properties>
 
 </project>
