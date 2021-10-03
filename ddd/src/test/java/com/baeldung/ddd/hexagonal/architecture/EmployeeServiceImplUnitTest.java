@@ -12,12 +12,18 @@ import com.baeldung.ddd.hexagonal.architecture.domain.EmployeeServiceImpl;
 import com.baeldung.ddd.hexagonal.architecture.output.port.EmployeeDatabaseService;
 
 public class EmployeeServiceImplUnitTest {
-
+    
+    private EmployeeDatabaseService empDatabaseSvc;
+    private EmployeeServiceImpl empServiceImpl;
+    
+    @BeforeEach
+    void init() {
+        empDatabaseSvc = mock(EmployeeDatabaseService.class);
+        empServiceImpl = new EmployeeServiceImpl(empDatabaseSvc);
+    }
     
     @Test
     public void givenEmployeeData_whenSaveEmployee_thenSaveEmployeeDetailsAndReturnID() {
-        EmployeeDatabaseService empDatabaseSvc = mock(EmployeeDatabaseService.class);
-        EmployeeServiceImpl empServiceImpl = new EmployeeServiceImpl(empDatabaseSvc);
         Employee e1 = new Employee ("James", "Warner");
         when(empDatabaseSvc.saveEmployee(e1)).thenReturn("1234-4567");
         Assertions.assertEquals("1234-4567", empServiceImpl.saveEmployeeDetails(e1));
@@ -27,11 +33,25 @@ public class EmployeeServiceImplUnitTest {
     public void whenGetEmployee_thenReturnEmployeeDetails() {
         Employee e1 = new Employee("James", "Warner");
         e1.setId("1234-4567");
-        EmployeeDatabaseService empDatabaseSvc = mock(EmployeeDatabaseService.class);
-        EmployeeServiceImpl empServiceImpl = new EmployeeServiceImpl(empDatabaseSvc);
         when(empDatabaseSvc.getEmployee(Mockito.any())).thenReturn(e1);
         Employee e = empServiceImpl.getEmployeeDetailsById("1234-4567");
         Assertions.assertEquals("1234-4567", e1.getId());
+    }
+    
+    @Test
+    public void givenEmployeeDetails_whenUpdateEmployee_thenUpdateTheDetails() {
+        Mockito.doNothing().when(empDatabaseSvc).updateEmployee(Mockito.any());
+        Employee e1 = new Employee("James", "Warner");
+        e1.setId("1234-4567");
+        empServiceImpl.updateEmployeeDetailsById(e1);
+        Mockito.verify(empDatabaseSvc).updateEmployee(Mockito.any());
+    }
+    
+    @Test
+    public void whenDeleteEmployee_thenDeleteEmployeeDetails() {
+        Mockito.doNothing().when(empDatabaseSvc).deleteEmployee(Mockito.any());
+        empServiceImpl.deleteEmployeeDetailsById("1234-4567");
+        Mockito.verify(empDatabaseSvc).deleteEmployee(Mockito.any());
     }
     
 }
