@@ -1,0 +1,6 @@
+controller\ItemController.class
+ports\ItemRepository.class
+ports\ItemService.class
+adapter\ItemRepositoryImplementation.class
+domain\Item.class
+core\usecases\ItemServicesImplementation.class
