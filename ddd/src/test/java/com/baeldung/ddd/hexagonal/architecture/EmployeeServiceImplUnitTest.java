@@ -3,20 +3,14 @@ package com.baeldung.ddd.hexagonal.architecture;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-
 import com.baeldung.ddd.hexagonal.architecture.domain.Employee;
 import com.baeldung.ddd.hexagonal.architecture.domain.EmployeeServiceImpl;
 import com.baeldung.ddd.hexagonal.architecture.output.port.EmployeeDatabaseService;
 
-@RunWith(MockitoJUnitRunner.class)
 public class EmployeeServiceImplUnitTest {
 
     private EmployeeDatabaseService empDatabaseSvc;
