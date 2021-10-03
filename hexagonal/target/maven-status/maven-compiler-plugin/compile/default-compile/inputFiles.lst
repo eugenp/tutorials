@@ -1,0 +1,6 @@
+C:\Users\DELL\Desktop\books and images\hexagonal\src\main\java\com\shahed\hexagonal\ports\outbound\ItemRepository.java
+C:\Users\DELL\Desktop\books and images\hexagonal\src\main\java\com\shahed\hexagonal\adapters\primary\ItemController.java
+C:\Users\DELL\Desktop\books and images\hexagonal\src\main\java\com\shahed\hexagonal\ports\inbound\ItemService.java
+C:\Users\DELL\Desktop\books and images\hexagonal\src\main\java\com\shahed\hexagonal\core\domain\Item.java
+C:\Users\DELL\Desktop\books and images\hexagonal\src\main\java\com\shahed\hexagonal\core\usecase\ItemServicesImplementation.java
+C:\Users\DELL\Desktop\books and images\hexagonal\src\main\java\com\shahed\hexagonal\adapters\secondary\ItemRepositoryImplementation.java
