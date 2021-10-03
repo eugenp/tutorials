@@ -13,17 +13,11 @@ import com.baeldung.ddd.hexagonal.architecture.output.port.EmployeeDatabaseServi
 
 public class EmployeeServiceImplUnitTest {
 
-    private EmployeeDatabaseService empDatabaseSvc;
-    private EmployeeServiceImpl empServiceImpl;
-    
-    @BeforeEach
-    void init() {
-        empDatabaseSvc = mock(EmployeeDatabaseService.class);
-        empServiceImpl = new EmployeeServiceImpl(empDatabaseSvc);
-    }
     
     @Test
     public void givenEmployeeData_whenSaveEmployee_thenSaveEmployeeDetailsAndReturnID() {
+        EmployeeDatabaseService empDatabaseSvc = mock(EmployeeDatabaseService.class);
+        EmployeeServiceImpl empServiceImpl = new EmployeeServiceImpl(empDatabaseSvc);
         Employee e1 = new Employee ("James", "Warner");
         when(empDatabaseSvc.saveEmployee(e1)).thenReturn("1234-4567");
         Assertions.assertEquals("1234-4567", empServiceImpl.saveEmployeeDetails(e1));
@@ -33,6 +27,8 @@ public class EmployeeServiceImplUnitTest {
     public void whenGetEmployee_thenReturnEmployeeDetails() {
         Employee e1 = new Employee("James", "Warner");
         e1.setId("1234-4567");
+        EmployeeDatabaseService empDatabaseSvc = mock(EmployeeDatabaseService.class);
+        EmployeeServiceImpl empServiceImpl = new EmployeeServiceImpl(empDatabaseSvc);
         when(empDatabaseSvc.getEmployee(Mockito.any())).thenReturn(e1);
         Employee e = empServiceImpl.getEmployeeDetailsById("1234-4567");
         Assertions.assertEquals("1234-4567", e1.getId());
