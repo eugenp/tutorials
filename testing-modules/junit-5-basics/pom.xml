@@ -99,7 +99,6 @@
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
-
                         <configuration>
                             <excludes>
                                 **/*IntegrationTest.java
