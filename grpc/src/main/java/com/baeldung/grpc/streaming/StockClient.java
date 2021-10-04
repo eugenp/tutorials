@@ -5,8 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.baeldung.grpc.streaming.StockQuoteProviderGrpc.StockQuoteProviderBlockingStub;
 import com.baeldung.grpc.streaming.StockQuoteProviderGrpc.StockQuoteProviderStub;
@@ -19,7 +20,7 @@ import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 
 public class StockClient {
-    private static final Logger logger = Logger.getLogger(StockClient.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(StockClient.class.getName());
 
     private final StockQuoteProviderBlockingStub blockingStub;
     private final StockQuoteProviderStub nonBlockingStub;
@@ -34,7 +35,7 @@ public class StockClient {
 
     public void serverSideStreamingListOfStockPrices() {
 
-        logInfo("######START EXAMPLE######: ServerSideStreaming - list of Stock prices from a given stock");
+        logger.info("######START EXAMPLE######: ServerSideStreaming - list of Stock prices from a given stock");
         Stock request = Stock.newBuilder()
             .setTickerSymbol("AU")
             .setCompanyName("Austich")
@@ -42,36 +43,36 @@ public class StockClient {
             .build();
         Iterator<StockQuote> stockQuotes;
         try {
-            logInfo("REQUEST - ticker symbol {0}", request.getTickerSymbol());
+            logger.info("REQUEST - ticker symbol {}", request.getTickerSymbol());
             stockQuotes = blockingStub.serverSideStreamingGetListStockQuotes(request);
             for (int i = 1; stockQuotes.hasNext(); i++) {
                 StockQuote stockQuote = stockQuotes.next();
-                logInfo("RESPONSE - Price #" + i + ": {0}", stockQuote.getPrice());
+                logger.info("RESPONSE - Price #" + i + ": {}", stockQuote.getPrice());
             }
         } catch (StatusRuntimeException e) {
-            logInfo("RPC failed: {0}", e.getStatus());
+            logger.info("RPC failed: {}", e.getStatus());
         }
     }
 
     public void clientSideStreamingGetStatisticsOfStocks() throws InterruptedException {
         
-        logInfo("######START EXAMPLE######: ClientSideStreaming - getStatisticsOfStocks from a list of stocks");
+        logger.info("######START EXAMPLE######: ClientSideStreaming - getStatisticsOfStocks from a list of stocks");
         final CountDownLatch finishLatch = new CountDownLatch(1);
         StreamObserver<StockQuote> responseObserver = new StreamObserver<StockQuote>() {
             @Override
             public void onNext(StockQuote summary) {
-                logInfo("RESPONSE, got stock statistics - Average Price: {0}, description: {1}", summary.getPrice(), summary.getDescription());
+                logger.info("RESPONSE, got stock statistics - Average Price: {}, description: {}", summary.getPrice(), summary.getDescription());
             }
 
             @Override
             public void onCompleted() {
-                logInfo("Finished clientSideStreamingGetStatisticsOfStocks");
+                logger.info("Finished clientSideStreamingGetStatisticsOfStocks");
                 finishLatch.countDown();
             }
 
             @Override
             public void onError(Throwable t) {
-                logWarning("Stock Statistics Failed: {0}", Status.fromThrowable(t));
+                logger.warn("Stock Statistics Failed: {}", Status.fromThrowable(t));
                  finishLatch.countDown();
             }
         };
@@ -80,7 +81,7 @@ public class StockClient {
         try {
 
             for (Stock stock : stocks) {
-                logInfo("REQUEST: {0}, {1}", stock.getTickerSymbol(), stock.getCompanyName());
+                logger.info("REQUEST: {}, {}", stock.getTickerSymbol(), stock.getCompanyName());
                 requestObserver.onNext(stock);
                 if (finishLatch.getCount() == 0) {
                     return;
@@ -92,36 +93,36 @@ public class StockClient {
         }
         requestObserver.onCompleted();
         if (!finishLatch.await(1, TimeUnit.MINUTES)) {
-            logWarning("clientSideStreamingGetStatisticsOfStocks can not finish within 1 minutes");
+            logger.warn("clientSideStreamingGetStatisticsOfStocks can not finish within 1 minutes");
         }
     }
 
     public void bidirectionalStreamingGetListsStockQuotes() throws InterruptedException{
         
-        logInfo("#######START EXAMPLE#######: BidirectionalStreaming - getListsStockQuotes from list of stocks");
+        logger.info("#######START EXAMPLE#######: BidirectionalStreaming - getListsStockQuotes from list of stocks");
         final CountDownLatch finishLatch = new CountDownLatch(1);
         StreamObserver<StockQuote> responseObserver = new StreamObserver<StockQuote>() {
             @Override
             public void onNext(StockQuote stockQuote) {
-                logInfo("RESPONSE price#{0} : {1}, description:{2}", stockQuote.getOfferNumber(), stockQuote.getPrice(), stockQuote.getDescription());
+                logger.info("RESPONSE price#{} : {}, description:{}", stockQuote.getOfferNumber(), stockQuote.getPrice(), stockQuote.getDescription());
             }
 
             @Override
             public void onCompleted() {
-                logInfo("Finished bidirectionalStreamingGetListsStockQuotes");
+                logger.info("Finished bidirectionalStreamingGetListsStockQuotes");
                 finishLatch.countDown();
             }
 
             @Override
             public void onError(Throwable t) {
-                logWarning("bidirectionalStreamingGetListsStockQuotes Failed: {0}", Status.fromThrowable(t));
+                logger.warn("bidirectionalStreamingGetListsStockQuotes Failed: {0}", Status.fromThrowable(t));
                 finishLatch.countDown();
             }
         };
         StreamObserver<Stock> requestObserver = nonBlockingStub.bidirectionalStreamingGetListsStockQuotes(responseObserver);
         try {            
             for (Stock stock : stocks) {
-                logInfo("REQUEST: {0}, {1}", stock.getTickerSymbol(), stock.getCompanyName());
+                logger.info("REQUEST: {}, {}", stock.getTickerSymbol(), stock.getCompanyName());
                 requestObserver.onNext(stock);
                 Thread.sleep(200);
                 if (finishLatch.getCount() == 0) {
@@ -135,7 +136,7 @@ public class StockClient {
         requestObserver.onCompleted();
 
         if (!finishLatch.await(1, TimeUnit.MINUTES)) {
-            logWarning("bidirectionalStreamingGetListsStockQuotes can not finish within 1 minute");
+            logger.warn("bidirectionalStreamingGetListsStockQuotes can not finish within 1 minute");
         }
 
     }
@@ -172,12 +173,4 @@ public class StockClient {
             , Stock.newBuilder().setTickerSymbol("DIA").setCompanyName("Dialogic Corp").setDescription("Development Intel").build()
             , Stock.newBuilder().setTickerSymbol("EUS").setCompanyName("Euskaltel Corp").setDescription("English Intel").build());
     }
-    
-    private void logInfo(String msg, Object... params) {
-        logger.log(Level.INFO, msg, params);
-      }
-
-      private void logWarning(String msg, Object... params) {
-        logger.log(Level.WARNING, msg, params);
-      }
 }

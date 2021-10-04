@@ -32,6 +32,11 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${validator.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -59,6 +64,7 @@
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <guava.version>28.1-jre</guava.version>
+        <validator.version>1.7</validator.version>
     </properties>
 
 </project>

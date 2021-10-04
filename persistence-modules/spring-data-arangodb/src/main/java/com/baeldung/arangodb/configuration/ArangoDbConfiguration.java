@@ -13,7 +13,7 @@ public class ArangoDbConfiguration implements ArangoConfiguration {
     public ArangoDB.Builder arango() {
         return new ArangoDB.Builder()
           .host("127.0.0.1", 8529)
-          .user("root")
+          .user("baeldung")
           .password("password");
     }
 

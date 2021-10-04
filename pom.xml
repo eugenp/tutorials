@@ -1356,6 +1356,7 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>quarkus-vs-springboot</module>
             </modules>
         </profile>
     </profiles>
