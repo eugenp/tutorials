@@ -29,47 +29,47 @@ public class CommodityClient {
         nonBlockingStub = CommodityPriceProviderGrpc.newStub(channel);
     }
 
-
     public void getBidirectionalCommodityPriceLists() throws InterruptedException {
 
         logger.info("#######START EXAMPLE#######: BidirectionalStreaming - getCommodityPriceLists from list of commodities");
         final CountDownLatch finishLatch = new CountDownLatch(1);
         StreamObserver<StreamingCommodityQuote> responseObserver = new StreamObserver<StreamingCommodityQuote>() {
             @Override
-public void onNext(StreamingCommodityQuote streamingCommodityQuote) {
+            public void onNext(StreamingCommodityQuote streamingCommodityQuote) {
 
-    switch (streamingCommodityQuote.getMessageCase()) {
-    case COMODITY_QUOTE:
-        CommodityQuote commodityQuote = streamingCommodityQuote.getComodityQuote();
-        logger.info("RESPONSE producer:" + commodityQuote.getCommodityName() + " price:" + commodityQuote.getPrice());
-        break;
-    case STATUS:
-        com.google.rpc.Status status = streamingCommodityQuote.getStatus();
-        logger.info("RESPONSE status error:");
-        logger.info("Status code:" + Code.forNumber(status.getCode()));
-        logger.info("Status message:" + status.getMessage());
-        for (Any any : status.getDetailsList()) {
-            if (any.is(ErrorInfo.class)) {
-                ErrorInfo errorInfo;
-                try {
-                    errorInfo = any.unpack(ErrorInfo.class);
-                    logger.info("Reason:" + errorInfo.getReason());
-                    logger.info("Domain:" + errorInfo.getDomain());
-                    logger.info("Insert Token:" + errorInfo.getMetadataMap().get("insertToken"));
-                } catch (InvalidProtocolBufferException e) {
-                    logger.error(e.getMessage());
+                switch (streamingCommodityQuote.getMessageCase()) {
+                case COMODITY_QUOTE:
+                    CommodityQuote commodityQuote = streamingCommodityQuote.getComodityQuote();
+                    logger.info("RESPONSE producer:" + commodityQuote.getCommodityName() + " price:" + commodityQuote.getPrice());
+                    break;
+                case STATUS:
+                    com.google.rpc.Status status = streamingCommodityQuote.getStatus();
+                    logger.info("RESPONSE status error:");
+                    logger.info("Status code:" + Code.forNumber(status.getCode()));
+                    logger.info("Status message:" + status.getMessage());
+                    for (Any any : status.getDetailsList()) {
+                        if (any.is(ErrorInfo.class)) {
+                            ErrorInfo errorInfo;
+                            try {
+                                errorInfo = any.unpack(ErrorInfo.class);
+                                logger.info("Reason:" + errorInfo.getReason());
+                                logger.info("Domain:" + errorInfo.getDomain());
+                                logger.info("Insert Token:" + errorInfo.getMetadataMap()
+                                    .get("insertToken"));
+                            } catch (InvalidProtocolBufferException e) {
+                                logger.error(e.getMessage());
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    logger.info("Unknow message case");
                 }
             }
-        }
-        break;
-    default:
-        logger.info("Unknow message case");
-    }
-}
 
             @Override
             public void onCompleted() {
-                logger.info("Finished getBidirectionalCommodityPriceListss");
+                logger.info("Finished getBidirectionalCommodityPriceLists");
                 finishLatch.countDown();
             }
 
