@@ -29,7 +29,5 @@ For more details, check out the AmqApplicationUnitTest.class.
 
 ### Relevant Articles:
 
-- [Wire tap (Enterprise Integration Pattern)](https://drafts.baeldung.com/?p=103346&preview=true)
-- [Intro to Apache camel](https://www.baeldung.com/apache-camel-intro)
 - [Wire Tap Enterprise Integration Pattern](https://www.baeldung.com/wiretap-pattern)
 

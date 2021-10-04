@@ -14,3 +14,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [How to Return Multiple Entities In JPA Query](https://www.baeldung.com/jpa-return-multiple-entities)
 - [Defining Unique Constraints in JPA](https://www.baeldung.com/jpa-unique-constraints)
 - [How to Check Field Existence in MongoDB?](https://www.baeldung.com/mongodb-check-field-exists)
+- [Connecting to a Specific Schema in JDBC](https://www.baeldung.com/jdbc-connect-to-schema)

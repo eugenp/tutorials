@@ -55,7 +55,6 @@
         <mysql-connector.version>6.0.6</mysql-connector.version>
         <spring-boot.version>2.5.3</spring-boot.version>
         <rest-assured.version>3.3.0</rest-assured.version>
-
     </properties>
 
 </project>

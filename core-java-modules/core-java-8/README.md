@@ -4,7 +4,6 @@ This module contains articles about Java 8 core features
 
 ### Relevant Articles: 
 - [New Features in Java 8](https://www.baeldung.com/java-8-new-features)
-- [Guide to Java 8 groupingBy Collector](https://www.baeldung.com/java-groupingby-collector)
 - [Strategy Design Pattern in Java 8](https://www.baeldung.com/java-strategy-pattern)
 - [Guide to Java 8 Comparator.comparing()](https://www.baeldung.com/java-8-comparator-comparing)
 - [Guide to the Java 8 forEach](https://www.baeldung.com/foreach-java)

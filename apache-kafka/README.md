@@ -3,7 +3,7 @@
 This module contains articles about Apache Kafka.
 
 ### Relevant articles
-- [Kafka Streams vs Kafka Consumer](https://www.baeldung.com/java-kafka-streams-vs-kafka-consumer)
+- [Kafka Streams vs. Kafka Consumer](https://www.baeldung.com/java-kafka-streams-vs-kafka-consumer)
 - [Kafka Topic Creation Using Java](https://www.baeldung.com/kafka-topic-creation)
 - [Using Kafka MockConsumer](https://www.baeldung.com/kafka-mockconsumer)
 - [Using Kafka MockProducer](https://www.baeldung.com/kafka-mockproducer)
