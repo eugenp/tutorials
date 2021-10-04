@@ -28,7 +28,6 @@ public class HibernateTransientObjectUnitTest {
 
     @Test
     public void whenSaveEntitiesWithOneToOneAssociation_thenSuccess() {
-
         User user = new User("Bob", "Smith");
         Address address = new Address("London", "221b Baker Street");
         user.setAddress(address);
@@ -41,7 +40,6 @@ public class HibernateTransientObjectUnitTest {
 
     @Test
     public void whenSaveEntitiesWithOneToManyAssociation_thenSuccess() {
-
         Department department = new Department();
         department.setName("IT Support");
         Employee employee = new Employee("John Doe");
@@ -55,7 +53,6 @@ public class HibernateTransientObjectUnitTest {
 
     @Test
     public void whenSaveEntitiesWithManyToManyAssociation_thenSuccess_1() {
-
         Book book = new Book("Design Patterns: Elements of Reusable Object-Oriented Software");
         book.addAuthor(new Author("Erich Gamma"));
         book.addAuthor(new Author("John Vlissides"));
@@ -70,7 +67,6 @@ public class HibernateTransientObjectUnitTest {
 
     @Test
     public void whenSaveEntitiesWithManyToManyAssociation_thenSuccess_2() {
-
         Author author = new Author("Erich Gamma");
         author.addBook(new Book("Design Patterns: Elements of Reusable Object-Oriented Software"));
         author.addBook(new Book("Introduction to Object Orient Design in C"));
