@@ -11,19 +11,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @Component
 public class MyOncePerRequestFilter extends OncePerRequestFilter {
     private Logger logger = LoggerFactory.getLogger(MyOncePerRequestFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        logger.info("Inside OncePer Request Filter originated by request {}",request.getRequestURI());
+        logger.info("Inside OncePer Request Filter originated by request {}", request.getRequestURI());
         filterChain.doFilter(request, response);
     }
-    protected boolean shouldNotFilterAsyncDispatch() 
- { 
- return true;
- }
+
+    protected boolean shouldNotFilterAsyncDispatch() {
+        return true;
+    }
 
 
 }
