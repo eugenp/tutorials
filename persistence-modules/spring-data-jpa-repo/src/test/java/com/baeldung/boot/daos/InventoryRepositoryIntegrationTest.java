@@ -3,20 +3,23 @@ package com.baeldung.boot.daos;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.Application;
 import com.baeldung.boot.domain.MerchandiseEntity;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class)
+@SpringBootTest(classes = Application.class)
 public class InventoryRepositoryIntegrationTest {
 
     private static final String ORIGINAL_TITLE = "Pair of Pants";
@@ -52,6 +55,30 @@ public class InventoryRepositoryIntegrationTest {
         pants.setBrand(UPDATED_BRAND);
 
         MerchandiseEntity result = repository.save(pants);
+
+        assertEquals(originalId, result.getId());
+        assertEquals(UPDATED_TITLE, result.getTitle());
+        assertEquals(BigDecimal.TEN, result.getPrice());
+        assertEquals(UPDATED_BRAND, result.getBrand());
+    }
+
+    @Test
+    @Transactional
+    public void shouldUpdateExistingEntryInDBWithoutSave() {
+        MerchandiseEntity pants = new MerchandiseEntity(ORIGINAL_TITLE, BigDecimal.ONE);
+        pants = repository.save(pants);
+
+        Long originalId = pants.getId();
+
+        // Update using setters
+        pants.setTitle(UPDATED_TITLE);
+        pants.setPrice(BigDecimal.TEN);
+        pants.setBrand(UPDATED_BRAND);
+
+        Optional<MerchandiseEntity> resultOp = repository.findById(originalId);
+
+        assertTrue(resultOp.isPresent());
+        MerchandiseEntity result = resultOp.get();
 
         assertEquals(originalId, result.getId());
         assertEquals(UPDATED_TITLE, result.getTitle());

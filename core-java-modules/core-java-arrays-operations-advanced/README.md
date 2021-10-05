@@ -9,3 +9,5 @@ This module contains articles about advanced operations on arrays in Java. They 
 - [Find Sum and Average in a Java Array](https://www.baeldung.com/java-array-sum-average)
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
 - [Comparing Arrays in Java](https://www.baeldung.com/java-comparing-arrays)
+- [Concatenate Two Arrays in Java](https://www.baeldung.com/java-concatenate-arrays)
+- [Performance of System.arraycopy() vs. Arrays.copyOf()](https://www.baeldung.com/java-system-arraycopy-arrays-copyof-performance)

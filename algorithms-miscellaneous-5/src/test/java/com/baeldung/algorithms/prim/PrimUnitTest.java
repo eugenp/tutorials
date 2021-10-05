@@ -1,9 +1,9 @@
 package com.baeldung.algorithms.prim;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
 
 public class PrimUnitTest {
 

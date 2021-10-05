@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-cassandre</artifactId>
+    <packaging>jar</packaging>
+    <name>spring-boot-cassandre</name>
+    <description>Cassandre trading bot tutorial</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
+    </parent>
+
+    <dependencies>
+        <!-- Cassandre dependencies -->
+        <dependency>
+            <groupId>tech.cassandre.trading.bot</groupId>
+            <artifactId>cassandre-trading-bot-spring-boot-starter</artifactId>
+            <version>${cassandre.trading.bot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.knowm.xchange</groupId>
+            <artifactId>xchange-kucoin</artifactId>
+            <version>${xchange-kucoin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.cassandre.trading.bot</groupId>
+            <artifactId>cassandre-trading-bot-spring-boot-starter-test</artifactId>
+            <version>${cassandre.trading.bot.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <java.version>11</java.version>
+        <cassandre.trading.bot.version>4.2.1</cassandre.trading.bot.version>
+        <xchange-kucoin.version>5.0.7</xchange-kucoin.version>
+        <hsqldb.version>2.5.1</hsqldb.version>
+    </properties>
+
+</project>

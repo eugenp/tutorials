@@ -3,6 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-properties</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-properties</name>
+    <description>Spring Boot Properties Module</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -10,13 +15,6 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-
-    <artifactId>spring-boot-properties</artifactId>
-    <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <name>spring-boot-properties</name>
-    <description>Spring Boot Properties Module</description>
 
     <dependencies>
         <dependency>
@@ -76,7 +74,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -125,16 +122,8 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-
     <properties>
-        <spring-cloud.version>2020.0.0-M5</spring-cloud.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <guava.version>20.0</guava.version>
         <resource.delimiter>@</resource.delimiter>
