@@ -2,14 +2,14 @@ package com.baeldung.hexagonal;
 
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "EMAIL" }) })
 public class User {
     @Id
     private UUID id;

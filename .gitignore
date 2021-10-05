@@ -100,3 +100,7 @@ spring-boot-modules/spring-boot-properties-3/*.log
 
 # SDKMan
 .sdkmanrc
+/hexagonal/.mvn/wrapper/maven-wrapper.jar
+/hexagonal/.mvn/wrapper/maven-wrapper.properties
+/hexagonal/.mvn/wrapper/MavenWrapperDownloader.java
+/hexagonal/.mvn/
