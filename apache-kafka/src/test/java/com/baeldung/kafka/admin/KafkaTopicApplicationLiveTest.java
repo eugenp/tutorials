@@ -12,8 +12,10 @@ import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+// This live test needs a running Docker instance so that a kafka container can be created 
+
 @Testcontainers
-class KafkaTopicApplicationIntegrationTest {
+class KafkaTopicApplicationLiveTest {
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
