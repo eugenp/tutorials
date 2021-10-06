@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:${user.home}/.h2/accountdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+    username: account
+    password: account
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: true
