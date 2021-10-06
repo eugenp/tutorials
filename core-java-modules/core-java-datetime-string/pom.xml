@@ -75,7 +75,7 @@
 
     <properties>
         <commons-validator.version>1.6</commons-validator.version>
-        <joda-time.version>2.10</joda-time.version>
+        <joda-time.version>2.10.10</joda-time.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <maven.compiler.source>1.9</maven.compiler.source>

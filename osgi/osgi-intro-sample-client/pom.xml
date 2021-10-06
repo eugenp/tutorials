@@ -37,9 +37,7 @@
                         <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-Activator>com.baeldung.osgi.sample.client.Client</Bundle-Activator>
-
                         <Private-Package>com.baeldung.osgi.sample.client</Private-Package>
-
                     </instructions>
                 </configuration>
             </plugin>

@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-performance</artifactId>
-    <packaging>war</packaging>
     <name>spring-boot-performance</name>
+    <packaging>war</packaging>
     <description>This is a simple Spring Boot application taking advantage of the latest Spring Boot improvements/features. Current version: 2.2</description>
 
     <parent>
