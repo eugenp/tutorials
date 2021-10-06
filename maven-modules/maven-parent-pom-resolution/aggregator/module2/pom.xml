@@ -4,6 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>module2</artifactId>
+    <packaging>pom</packaging>
+
     <parent>
         <groupId>com.baeldung.maven-parent-pom-resolution</groupId>
         <artifactId>module1</artifactId>
@@ -11,7 +13,6 @@
         <relativePath>../module1/pom.xml</relativePath>
         <!-- The parent pom is resolved to project a's pom.xml -->
     </parent>
-    <packaging>pom</packaging>
 
     <modules>
         <module>module3</module>

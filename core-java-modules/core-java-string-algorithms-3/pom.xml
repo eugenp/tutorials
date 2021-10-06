@@ -11,7 +11,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -31,6 +30,11 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${validator.version}</version>
         </dependency>
     </dependencies>
 
@@ -59,6 +63,7 @@
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <guava.version>28.1-jre</guava.version>
+        <validator.version>1.7</validator.version>
     </properties>
 
 </project>

@@ -1,13 +1,11 @@
 package com.baeldung.spring.web.config;
 
-import java.io.IOException;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -17,10 +15,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
+import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.ResourceBundleViewResolver;
-import org.springframework.web.servlet.view.XmlViewResolver;
+
+import java.io.IOException;
 
 //@EnableWebMvc
 //@ComponentScan(basePackages = { "com.baeldung.web.controller" })
@@ -93,19 +92,25 @@ public class WebConfig implements WebMvcConfigurer {
     /** END theme configuration */
 
     @Bean
-    public ViewResolver resourceBundleViewResolver() {
-        final ResourceBundleViewResolver bean = new ResourceBundleViewResolver();
-        bean.setBasename("views");
-        bean.setOrder(0);
-        return bean;
+    public BeanNameViewResolver beanNameViewResolver(){
+        BeanNameViewResolver beanNameViewResolver = new BeanNameViewResolver();
+        beanNameViewResolver.setOrder(1);
+        return beanNameViewResolver;
     }
 
     @Bean
-    public ViewResolver xmlViewResolver() {
-        final XmlViewResolver bean = new XmlViewResolver();
-        bean.setLocation(new ClassPathResource("views.xml"));
-        bean.setOrder(1);
-        return bean;
+    public View sample() {
+        return new JstlView("/WEB-INF/view/sample.jsp");
+    }
+
+    @Bean
+    public View sample2() {
+        return new JstlView("/WEB-INF/view2/sample2.jsp");
+    }
+
+    @Bean
+    public View sample3(){
+        return new JstlView("/WEB-INF/view3/sample3.jsp");
     }
 
     /**

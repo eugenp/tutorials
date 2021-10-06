@@ -4,6 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>module3</artifactId>
+    <packaging>pom</packaging>
+
     <parent>
         <groupId>com.baeldung.maven-parent-pom-resolution</groupId>
         <artifactId>aggregator</artifactId>
@@ -12,6 +14,5 @@
         <!-- it only works in IntelliJ IDEA when project-a is registered as a Maven Project -->
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <packaging>pom</packaging>
 
 </project>

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.jasypt</groupId>
     <artifactId>spring-boot-jasypt</artifactId>
-    <packaging>jar</packaging>
     <name>spring-boot-jasypt</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <parent>
