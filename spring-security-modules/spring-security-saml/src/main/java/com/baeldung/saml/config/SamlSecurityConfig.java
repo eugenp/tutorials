@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 
 import org.opensaml.saml2.metadata.provider.FilesystemMetadataProvider;
 import org.opensaml.saml2.metadata.provider.MetadataProvider;
 import org.opensaml.saml2.metadata.provider.MetadataProviderException;
+import org.opensaml.saml2.metadata.provider.ResourceBackedMetadataProvider;
+import org.opensaml.util.resource.ClasspathResource;
 import org.opensaml.util.resource.ResourceException;
 import org.opensaml.xml.parse.StaticBasicParserPool;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -141,13 +144,19 @@ public class SamlSecurityConfig {
     @Bean
     @Qualifier("okta")
     public ExtendedMetadataDelegate oktaExtendedMetadataProvider() throws MetadataProviderException {
-        File metadata = null;
-        try {
-            metadata = new File("./src/main/resources/saml/metadata/sso.xml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        FilesystemMetadataProvider provider = new FilesystemMetadataProvider(metadata);
+		// Use the Spring Security SAML resource mechanism to load
+    	// metadata from the Java classpath.  This works from Spring Boot 
+    	// self contained JAR file.
+		org.opensaml.util.resource.Resource resource = null;
+
+		try {
+			resource = new ClasspathResource("/saml/metadata/sso.xml");
+		} catch (ResourceException e) {
+			 e.printStackTrace();
+		}
+		
+        Timer timer = new Timer("saml-metadata");
+        ResourceBackedMetadataProvider provider = new ResourceBackedMetadataProvider(timer,resource);
         provider.setParserPool(parserPool());
         return new ExtendedMetadataDelegate(provider, extendedMetadata());
     }
