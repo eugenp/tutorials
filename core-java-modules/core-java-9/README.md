@@ -1,6 +1,6 @@
 ## Core Java 9
 
-This module contains articles about Java 9 core features
+This module contains articles about Java 9 core features 
 
 ### Relevant Articles:
 
