@@ -2,8 +2,6 @@ package com.baeldung.array.conversions;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static com.baeldung.array.conversions.ByteArrayToNumericRepresentation.*;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -35,355 +33,282 @@ public class ByteArrayToNumericRepresentationUnitTest {
     private static final double DOUBLE_VALUE = 0.618D;
 
 
-    private int getIntValue() {
-        return INT_VALUE;
-    }
-
-    private byte[] getIntByteArray() {
-        return Arrays.copyOf(INT_BYTE_ARRAY, INT_BYTE_ARRAY.length);
-    }
-
-    private long getLongValue() {
-        return LONG_VALUE;
-    }
-
-    private byte[] getLongByteArray() {
-        return Arrays.copyOf(LONG_BYTE_ARRAY, LONG_BYTE_ARRAY.length);
-    }
-
-    private float getFloatValue() {
-        return FLOAT_VALUE;
-    }
-
-    private byte[] getFloatByteArray() {
-        return Arrays.copyOf(FLOAT_BYTE_ARRAY, FLOAT_BYTE_ARRAY.length);
-    }
-
-    private double getDoubleValue() {
-        return DOUBLE_VALUE;
-    }
-
-    private byte[] getDoubleByteArray() {
-        return Arrays.copyOf(DOUBLE_BYTE_ARRAY, DOUBLE_BYTE_ARRAY.length);
-    }
-
-
     @Test
     public void givenShiftOperator_whenConvertingByteArrayToInt_thenSuccess() {
-        byte[] bytes = getIntByteArray();
-        int value = convertByteArrayToIntUsingShiftOperator(bytes);
+        int value = convertByteArrayToIntUsingShiftOperator(INT_BYTE_ARRAY);
 
         assertEquals(INT_VALUE, value);
     }
 
     @Test
     public void givenShiftOperator_whenConvertingIntToByteArray_thenSuccess() {
-        int value = getIntValue();
-        byte[] bytes = convertIntToByteArrayUsingShiftOperator(value);
+        byte[] bytes = convertIntToByteArrayUsingShiftOperator(INT_VALUE);
 
         assertArrayEquals(INT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenShiftOperator_whenConvertingByteArrayToLong_thenSuccess() {
-        byte[] bytes = getLongByteArray();
-        long value = convertByteArrayToLongUsingShiftOperator(bytes);
+        long value = convertByteArrayToLongUsingShiftOperator(LONG_BYTE_ARRAY);
 
         assertEquals(LONG_VALUE, value);
     }
 
     @Test
     public void givenShiftOperator_whenConvertingLongToByteArray_thenSuccess() {
-        long value = getLongValue();
-        byte[] bytes = convertLongToByteArrayUsingShiftOperator(value);
+        byte[] bytes = convertLongToByteArrayUsingShiftOperator(LONG_VALUE);
 
         assertArrayEquals(LONG_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenShiftOperator_whenConvertingByteArrayToFloat_thenSuccess() {
-        byte[] bytes = getFloatByteArray();
-        float value = convertByteArrayToFloatUsingShiftOperator(bytes);
+        float value = convertByteArrayToFloatUsingShiftOperator(FLOAT_BYTE_ARRAY);
 
         assertEquals(Float.floatToIntBits(FLOAT_VALUE), Float.floatToIntBits(value));
     }
 
     @Test
     public void givenShiftOperator_whenConvertingFloatToByteArray_thenSuccess() {
-        float value = getFloatValue();
-        byte[] bytes = convertFloatToByteArrayUsingShiftOperator(value);
+        byte[] bytes = convertFloatToByteArrayUsingShiftOperator(FLOAT_VALUE);
 
         assertArrayEquals(FLOAT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenShiftOperator_whenConvertingByteArrayToDouble_thenSuccess() {
-        byte[] bytes = getDoubleByteArray();
-        double value = convertingByteArrayToDoubleUsingShiftOperator(bytes);
+        double value = convertingByteArrayToDoubleUsingShiftOperator(DOUBLE_BYTE_ARRAY);
 
         assertEquals(Double.doubleToLongBits(DOUBLE_VALUE), Double.doubleToLongBits(value));
     }
 
     @Test
     public void givenShiftOperator_whenConvertingDoubleToByteArray_thenSuccess() {
-        double value = getDoubleValue();
-        byte[] bytes = convertDoubleToByteArrayUsingShiftOperator(value);
+        byte[] bytes = convertDoubleToByteArrayUsingShiftOperator(DOUBLE_VALUE);
 
         assertArrayEquals(DOUBLE_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenByteBuffer_whenConvertingByteArrayToInt_thenSuccess() {
-        byte[] bytes = getIntByteArray();
-        int value = convertByteArrayToIntUsingByteBuffer(bytes);
+        int value = convertByteArrayToIntUsingByteBuffer(INT_BYTE_ARRAY);
 
         assertEquals(INT_VALUE, value);
     }
 
     @Test
     public void givenByteBuffer_whenConvertingIntToByteArray_thenSuccess() {
-        int value = getIntValue();
-        byte[] bytes = convertIntToByteArrayUsingByteBuffer(value);
+        byte[] bytes = convertIntToByteArrayUsingByteBuffer(INT_VALUE);
 
         assertArrayEquals(INT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenByteBuffer_whenConvertingByteArrayToLong_thenSuccess() {
-        byte[] bytes = getLongByteArray();
-        long value = convertByteArrayToLongUsingByteBuffer(bytes);
+        long value = convertByteArrayToLongUsingByteBuffer(LONG_BYTE_ARRAY);
 
         assertEquals(LONG_VALUE, value);
     }
 
     @Test
     public void givenByteBuffer_whenConvertingLongToByteArray_thenSuccess() {
-        long value = getLongValue();
-        byte[] bytes = convertLongToByteArrayUsingByteBuffer(value);
+        byte[] bytes = convertLongToByteArrayUsingByteBuffer(LONG_VALUE);
 
         assertArrayEquals(LONG_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenByteBuffer_whenConvertingByteArrayToFloat_thenSuccess() {
-        byte[] bytes = getFloatByteArray();
-        float value = convertByteArrayToFloatUsingByteBuffer(bytes);
+        float value = convertByteArrayToFloatUsingByteBuffer(FLOAT_BYTE_ARRAY);
 
         assertEquals(Float.floatToIntBits(FLOAT_VALUE), Float.floatToIntBits(value));
     }
 
     @Test
     public void givenByteBuffer_whenConvertingFloatToByteArray_thenSuccess() {
-        float value = getFloatValue();
-        byte[] bytes = convertFloatToByteArrayUsingByteBuffer(value);
+        byte[] bytes = convertFloatToByteArrayUsingByteBuffer(FLOAT_VALUE);
 
         assertArrayEquals(FLOAT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenByteBuffer_whenConvertingByteArrayToDouble_thenSuccess() {
-        byte[] bytes = getDoubleByteArray();
-        double value = convertByteArrayToDoubleUsingByteBuffer(bytes);
+        double value = convertByteArrayToDoubleUsingByteBuffer(DOUBLE_BYTE_ARRAY);
 
         assertEquals(Double.doubleToLongBits(DOUBLE_VALUE), Double.doubleToLongBits(value));
     }
 
     @Test
     public void givenByteBuffer_whenConvertingDoubleToByteArray_thenSuccess() {
-        double value = getDoubleValue();
-        byte[] bytes = convertDoubleToByteArrayUsingByteBuffer(value);
+        byte[] bytes = convertDoubleToByteArrayUsingByteBuffer(DOUBLE_VALUE);
 
         assertArrayEquals(DOUBLE_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenBigInteger_whenConvertingByteArrayToInt_thenSuccess() {
-        byte[] bytes = getIntByteArray();
-        int value = convertByteArrayToIntUsingBigInteger(bytes);
+        int value = convertByteArrayToIntUsingBigInteger(INT_BYTE_ARRAY);
 
         assertEquals(INT_VALUE, value);
     }
 
     @Test
     public void givenBigInteger_whenConvertingIntToByteArray_thenSuccess() {
-        int value = getIntValue();
-        byte[] bytes = convertIntToByteArrayUsingBigInteger(value);
+        byte[] bytes = convertIntToByteArrayUsingBigInteger(INT_VALUE);
 
         assertArrayEquals(INT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenBigInteger_whenConvertingByteArrayToLong_thenSuccess() {
-        byte[] bytes = getLongByteArray();
-        long value = convertByteArrayToLongUsingBigInteger(bytes);
+        long value = convertByteArrayToLongUsingBigInteger(LONG_BYTE_ARRAY);
 
         assertEquals(LONG_VALUE, value);
     }
 
     @Test
     public void givenBigInteger_whenConvertingLongToByteArray_thenSuccess() {
-        long value = getLongValue();
-        byte[] bytes = convertLongToByteArrayUsingBigInteger(value);
+        byte[] bytes = convertLongToByteArrayUsingBigInteger(LONG_VALUE);
 
         assertArrayEquals(LONG_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenBigInteger_whenConvertingByteArrayToFloat_thenSuccess() {
-        byte[] bytes = getFloatByteArray();
-        float value = convertByteArrayToFloatUsingBigInteger(bytes);
+        float value = convertByteArrayToFloatUsingBigInteger(FLOAT_BYTE_ARRAY);
 
         assertEquals(Float.floatToIntBits(FLOAT_VALUE), Float.floatToIntBits(value));
     }
 
     @Test
     public void givenBigInteger_whenConvertingFloatToByteArray_thenSuccess() {
-        float value = getFloatValue();
-        byte[] bytes = convertFloatToByteArrayUsingBigInteger(value);
+        byte[] bytes = convertFloatToByteArrayUsingBigInteger(FLOAT_VALUE);
 
         assertArrayEquals(FLOAT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenBigInteger_whenConvertingByteArrayToDouble_thenSuccess() {
-        byte[] bytes = getDoubleByteArray();
-        double value = convertByteArrayToDoubleUsingBigInteger(bytes);
+        double value = convertByteArrayToDoubleUsingBigInteger(DOUBLE_BYTE_ARRAY);
 
         assertEquals(Double.doubleToLongBits(DOUBLE_VALUE), Double.doubleToLongBits(value));
     }
 
     @Test
     public void givenBigInteger_whenConvertingDoubleToByteArray_thenSuccess() {
-        double value = getDoubleValue();
-        byte[] bytes = convertDoubleToByteArrayUsingBigInteger(value);
+        byte[] bytes = convertDoubleToByteArrayUsingBigInteger(DOUBLE_VALUE);
 
         assertArrayEquals(DOUBLE_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenGuava_whenConvertingByteArrayToInt_thenSuccess() {
-        byte[] bytes = getIntByteArray();
-        int value = convertingByteArrayToIntUsingGuava(bytes);
+        int value = convertingByteArrayToIntUsingGuava(INT_BYTE_ARRAY);
 
         assertEquals(INT_VALUE, value);
     }
 
     @Test
     public void givenGuava_whenConvertingIntToByteArray_thenSuccess() {
-        int value = getIntValue();
-        byte[] bytes = convertIntToByteArrayUsingGuava(value);
+        byte[] bytes = convertIntToByteArrayUsingGuava(INT_VALUE);
 
         assertArrayEquals(INT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenGuava_whenConvertingByteArrayToLong_thenSuccess() {
-        byte[] bytes = getLongByteArray();
-        long value = convertByteArrayToLongUsingGuava(bytes);
+        long value = convertByteArrayToLongUsingGuava(LONG_BYTE_ARRAY);
 
         assertEquals(LONG_VALUE, value);
     }
 
     @Test
     public void givenGuava_whenConvertingLongToByteArray_thenSuccess() {
-        long value = getLongValue();
-        byte[] bytes = convertLongToByteArrayUsingGuava(value);
+        byte[] bytes = convertLongToByteArrayUsingGuava(LONG_VALUE);
 
         assertArrayEquals(LONG_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenGuava_whenConvertingByteArrayToFloat_thenSuccess() {
-        byte[] bytes = getFloatByteArray();
-        float value = convertByteArrayToFloatUsingGuava(bytes);
+        float value = convertByteArrayToFloatUsingGuava(FLOAT_BYTE_ARRAY);
 
         assertEquals(Float.floatToIntBits(FLOAT_VALUE), Float.floatToIntBits(value));
     }
 
     @Test
     public void givenGuava_whenConvertingFloatToByteArray_thenSuccess() {
-        float value = getFloatValue();
-        byte[] bytes = convertFloatToByteArrayUsingGuava(value);
+        byte[] bytes = convertFloatToByteArrayUsingGuava(FLOAT_VALUE);
 
         assertArrayEquals(FLOAT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenGuava_whenConvertingByteArrayToDouble_thenSuccess() {
-        byte[] bytes = getDoubleByteArray();
-        double value = convertByteArrayToDoubleUsingGuava(bytes);
+        double value = convertByteArrayToDoubleUsingGuava(DOUBLE_BYTE_ARRAY);
 
         assertEquals(Double.doubleToLongBits(DOUBLE_VALUE), Double.doubleToLongBits(value));
     }
 
     @Test
     public void givenGuava_whenConvertingDoubleToByteArray_thenSuccess() {
-        double value = getDoubleValue();
-        byte[] bytes = convertDoubleToByteArrayUsingGuava(value);
+        byte[] bytes = convertDoubleToByteArrayUsingGuava(DOUBLE_VALUE);
 
         assertArrayEquals(DOUBLE_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenCommonsLang_whenConvertingByteArrayToInt_thenSuccess() {
-        byte[] bytes = getIntByteArray();
-        int value = convertByteArrayToIntUsingCommonsLang(bytes);
+        int value = convertByteArrayToIntUsingCommonsLang(INT_BYTE_ARRAY);
 
         assertEquals(INT_VALUE, value);
     }
 
     @Test
     public void givenCommonsLang_whenConvertingIntToByteArray_thenSuccess() {
-        int value = getIntValue();
-        byte[] bytes = convertIntToByteArrayUsingCommonsLang(value);
+        byte[] bytes = convertIntToByteArrayUsingCommonsLang(INT_VALUE);
 
         assertArrayEquals(INT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenCommonsLang_whenConvertingByteArrayToLong_thenSuccess() {
-        byte[] bytes = getLongByteArray();
-        long value = convertByteArrayToLongUsingCommonsLang(bytes);
+        long value = convertByteArrayToLongUsingCommonsLang(LONG_BYTE_ARRAY);
 
         assertEquals(LONG_VALUE, value);
     }
 
     @Test
     public void givenCommonsLang_whenConvertingLongToByteArray_thenSuccess() {
-        long value = getLongValue();
-        byte[] bytes = convertLongToByteArrayUsingCommonsLang(value);
+        byte[] bytes = convertLongToByteArrayUsingCommonsLang(LONG_VALUE);
 
         assertArrayEquals(LONG_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenCommonsLang_whenConvertingByteArrayToFloat_thenSuccess() {
-        byte[] bytes = getFloatByteArray();
-        float value = convertByteArrayToFloatUsingCommonsLang(bytes);
+        float value = convertByteArrayToFloatUsingCommonsLang(FLOAT_BYTE_ARRAY);
 
         assertEquals(Float.floatToIntBits(FLOAT_VALUE), Float.floatToIntBits(value));
     }
 
     @Test
     public void givenCommonsLang_whenConvertingFloatToByteArray_thenSuccess() {
-        float value = getFloatValue();
-        byte[] bytes = convertFloatToByteArrayUsingCommonsLang(value);
+        byte[] bytes = convertFloatToByteArrayUsingCommonsLang(FLOAT_VALUE);
 
         assertArrayEquals(FLOAT_BYTE_ARRAY, bytes);
     }
 
     @Test
     public void givenCommonsLang_whenConvertingByteArrayToDouble_thenSuccess() {
-        byte[] bytes = getDoubleByteArray();
-        double value = convertByteArrayToDoubleUsingCommonsLang(bytes);
+        double value = convertByteArrayToDoubleUsingCommonsLang(DOUBLE_BYTE_ARRAY);
 
         assertEquals(Double.doubleToLongBits(DOUBLE_VALUE), Double.doubleToLongBits(value));
     }
 
     @Test
     public void givenCommonsLang_whenConvertingDoubleToByteArray_thenSuccess() {
-        double value = getDoubleValue();
-        byte[] bytes = convertDoubleToByteArrayUsingCommonsLang(value);
+        byte[] bytes = convertDoubleToByteArrayUsingCommonsLang(DOUBLE_VALUE);
 
         assertArrayEquals(DOUBLE_BYTE_ARRAY, bytes);
     }
