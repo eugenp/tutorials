@@ -41,7 +41,6 @@ public class ModelMapperUnitTest {
         Game game = new Game(1L, "Game 1");
         GameDTO gameDTO = this.mapper.map(game, GameDTO.class);
 
-
         // then it maps without property mapper
         assertEquals(game.getId(), gameDTO.getId());
         assertEquals(game.getName(), gameDTO.getName());
