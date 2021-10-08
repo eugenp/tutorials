@@ -44,6 +44,8 @@ import static org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS
 import static org.apache.kafka.clients.producer.ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG;
 import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
 
+// This live test needs a Docker instance running so that kafka container can be created
+
 public class KafkaStreamsLiveTest {
     private final String LEFT_TOPIC = "left-stream-topic";
     private final String RIGHT_TOPIC = "right-stream-topic";

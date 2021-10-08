@@ -20,6 +20,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.assertEquals;
 
+// This live test needs a Docker instance running so that kafka container can be created
+
 public class KafkaSerDesLiveTest {
     private static final String CONSUMER_APP_ID = "consumer_id";
     private static final String CONSUMER_GROUP_ID = "group_id";
