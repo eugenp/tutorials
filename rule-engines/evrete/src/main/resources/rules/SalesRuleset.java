@@ -5,7 +5,7 @@ import com.baeldung.evrete.introduction.model.Invoice;
 import org.evrete.dsl.annotation.Rule;
 import org.evrete.dsl.annotation.Where;
 
-public class CustomerRuleset {
+public class SalesRuleset {
 
     @Rule
     public void rule1(Customer $c) {

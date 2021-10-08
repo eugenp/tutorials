@@ -16,16 +16,16 @@ public class IntroductionAJR {
     public static void main(String[] args) throws IOException {
         ClassLoader classLoader = IntroductionAJR.class.getClassLoader();
         KnowledgeService service = new KnowledgeService();
-        URL rulesetUrl = classLoader.getResource("rules/CustomerRuleset.java");
+        URL rulesetUrl = classLoader.getResource("rules/SalesRuleset.java");
         Knowledge knowledge = service.newKnowledge(
-                "JAVA-SOURCE",
-                rulesetUrl
+            "JAVA-SOURCE",
+            rulesetUrl
         );
 
         List<Customer> customers = Arrays.asList(
-                new Customer("Customer A"),
-                new Customer("Customer B"),
-                new Customer("Customer C")
+            new Customer("Customer A"),
+            new Customer("Customer B"),
+            new Customer("Customer C")
         );
 
         Random random = new Random();
@@ -37,9 +37,9 @@ public class IntroductionAJR {
         }
 
         knowledge
-                .newStatelessSession()
-                .insert(sessionData)
-                .fire();
+            .newStatelessSession()
+            .insert(sessionData)
+            .fire();
 
         for (Customer c : customers) {
             System.out.printf("%s:\t$%,.2f%n", c.getName(), c.getTotal());

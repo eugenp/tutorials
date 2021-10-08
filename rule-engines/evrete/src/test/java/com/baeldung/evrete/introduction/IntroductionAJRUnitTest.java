@@ -37,16 +37,16 @@ class IntroductionAJRUnitTest {
         ClassLoader classLoader = IntroductionAJR.class.getClassLoader();
         KnowledgeService service = new KnowledgeService();
         Knowledge knowledge = service
-                .newKnowledge(
-                        "JAVA-SOURCE",
-                        classLoader.getResource("rules/CustomerRuleset.java")
-                );
+            .newKnowledge(
+                "JAVA-SOURCE",
+                classLoader.getResource("rules/SalesRuleset.java")
+            );
 
 
         List<Customer> customers = Arrays.asList(
-                new Customer("Customer A"),
-                new Customer("Customer B"),
-                new Customer("Customer C")
+            new Customer("Customer A"),
+            new Customer("Customer B"),
+            new Customer("Customer C")
         );
         List<Object> sessionData = new LinkedList<>(customers);
 
@@ -67,8 +67,8 @@ class IntroductionAJRUnitTest {
 
         RuleSession<?> session = stateful ? knowledge.newStatefulSession() : knowledge.newStatelessSession();
         session
-                .insert(sessionData)
-                .fire();
+            .insert(sessionData)
+            .fire();
 
         for(Customer c : customers) {
             double d1 = c.getTotal();

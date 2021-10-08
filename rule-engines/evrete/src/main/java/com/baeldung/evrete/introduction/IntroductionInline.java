@@ -13,30 +13,30 @@ public class IntroductionInline {
     public static void main(String[] args) {
         KnowledgeService service = new KnowledgeService();
         Knowledge knowledge = service
-                .newKnowledge()
-                .newRule("Clear total sales")
-                .forEach("$c", Customer.class)
-                .execute(ctx -> {
-                    Customer c = ctx.get("$c");
-                    c.setTotal(0.0);
-                })
-                .newRule("Compute totals")
-                .forEach(
-                        "$c", Customer.class,
-                        "$i", Invoice.class
-                )
-                .where("$i.customer == $c")
-                .execute(ctx -> {
-                    Customer c = ctx.get("$c");
-                    Invoice i = ctx.get("$i");
-                    c.addToTotal(i.getAmount());
-                });
+            .newKnowledge()
+            .newRule("Clear total sales")
+            .forEach("$c", Customer.class)
+            .execute(ctx -> {
+                Customer c = ctx.get("$c");
+                c.setTotal(0.0);
+            })
+            .newRule("Compute totals")
+            .forEach(
+                    "$c", Customer.class,
+                    "$i", Invoice.class
+            )
+            .where("$i.customer == $c")
+            .execute(ctx -> {
+                Customer c = ctx.get("$c");
+                Invoice i = ctx.get("$i");
+                c.addToTotal(i.getAmount());
+            });
 
 
         List<Customer> customers = Arrays.asList(
-                new Customer("Customer A"),
-                new Customer("Customer B"),
-                new Customer("Customer C")
+            new Customer("Customer A"),
+            new Customer("Customer B"),
+            new Customer("Customer C")
         );
 
         Random random = new Random();
@@ -48,9 +48,9 @@ public class IntroductionInline {
         }
 
         knowledge
-                .newStatelessSession()
-                .insert(sessionData)
-                .fire();
+            .newStatelessSession()
+            .insert(sessionData)
+            .fire();
 
         for (Customer c : customers) {
             System.out.printf("%s:\t$%,.2f%n", c.getName(), c.getTotal());

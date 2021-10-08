@@ -18,9 +18,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <build>
-
-    </build>
     <dependencies>
         <!-- Core library -->
         <dependency>
@@ -35,6 +32,4 @@
             <version>${evrete.version}</version>
         </dependency>
     </dependencies>
-
-
 </project>
