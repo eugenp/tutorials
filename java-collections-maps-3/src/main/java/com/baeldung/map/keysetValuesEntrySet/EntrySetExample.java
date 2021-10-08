@@ -36,8 +36,6 @@ public class EntrySetExample {
         Stream.of(hashMap.entrySet().toArray()).forEach(System.out::println);
 
         System.out.println(hashMap.entrySet().toString());
-
-        Stream.of(hashMap.entrySet().toString()).forEach(System.out::println);
     }
 
 }
