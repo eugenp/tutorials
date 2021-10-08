@@ -1307,6 +1307,7 @@
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
+                 <module>quarkus-vs-springboot</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
             </modules>
         </profile>
@@ -1357,8 +1358,8 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
-                <module>quarkus-vs-springboot</module>
                 <module>persistence-modules/sirix</module>
+                <module>quarkus-vs-springboot</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
             </modules>
         </profile>
