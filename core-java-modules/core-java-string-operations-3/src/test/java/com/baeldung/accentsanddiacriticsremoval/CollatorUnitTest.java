@@ -23,42 +23,42 @@ public class CollatorUnitTest {
         Collator collator = Collator.getInstance();
         collator.setDecomposition(2);
         collator.setStrength(0);
-        assertEquals(0, (collator.compare("a", "a")));
-        assertEquals(0, (collator.compare("ä", "a")));
-        assertEquals(0, (collator.compare("A", "a")));
-        assertEquals(1, (collator.compare("b", "a")));
-        assertEquals(0, (collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002)))));
+        assertEquals(0, collator.compare("a", "a"));
+        assertEquals(0, collator.compare("ä", "a"));
+        assertEquals(0, collator.compare("A", "a"));
+        assertEquals(1, collator.compare("b", "a"));
+        assertEquals(0, collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002))));
     }
 
     @Test
     public void givenAccentedStringAndSecondaryCollatorStrength_whenCompareWithASCIIString_thenReturnTrue() {
         collator.setStrength(1);
-        assertEquals(1, (collator.compare("ä", "a")));
-        assertEquals(1, (collator.compare("b", "a")));
-        assertEquals(0, (collator.compare("A", "a")));
-        assertEquals(0, (collator.compare("a", "a")));
-        assertEquals(0, (collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002)))));
+        assertEquals(1, collator.compare("ä", "a"));
+        assertEquals(1, collator.compare("b", "a"));
+        assertEquals(0, collator.compare("A", "a"));
+        assertEquals(0, collator.compare("a", "a"));
+        assertEquals(0, collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002))));
 
     }
 
     @Test
     public void givenAccentedStringAndTeriaryCollatorStrength_whenCompareWithASCIIString_thenReturnTrue() {
         collator.setStrength(2);
-        assertEquals(1, (collator.compare("A", "a")));
-        assertEquals(1, (collator.compare("ä", "a")));
-        assertEquals(1, (collator.compare("b", "a")));
-        assertEquals(0, (collator.compare("a", "a")));
-        assertEquals(0, (collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002)))));
+        assertEquals(1, collator.compare("A", "a"));
+        assertEquals(1, collator.compare("ä", "a"));
+        assertEquals(1, collator.compare("b", "a"));
+        assertEquals(0, collator.compare("a", "a"));
+        assertEquals(0, collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002))));
     }
 
     @Test
     public void givenAccentedStringAndIdenticalCollatorStrength_whenCompareWithASCIIString_thenReturnTrue() {
         collator.setStrength(3);
-        assertEquals(1, (collator.compare("A", "a")));
-        assertEquals(1, (collator.compare("ä", "a")));
-        assertEquals(1, (collator.compare("b", "a")));
-        assertEquals(-1, (collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002)))));
-        assertEquals(0, (collator.compare("a", "a")));
+        assertEquals(1, collator.compare("A", "a"));
+        assertEquals(1, collator.compare("ä", "a"));
+        assertEquals(1, collator.compare("b", "a"));
+        assertEquals(-1, collator.compare(valueOf(toChars(0x0001)), valueOf(toChars(0x0002))));
+        assertEquals(0, collator.compare("a", "a"));
     }
 
     @Test
