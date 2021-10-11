@@ -1,9 +1,8 @@
-package com.baeldung.OncePerRequestFilter;
+package com.baeldung.onceperrequestfilter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -22,10 +21,8 @@ public class MyOncePerRequestFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    @Override
     protected boolean shouldNotFilterAsyncDispatch() {
         return true;
     }
-
-
 }
-

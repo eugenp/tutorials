@@ -1,4 +1,4 @@
-package com.baeldung.OncePerRequestFilter;
+package com.baeldung.onceperrequestfilter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,13 +13,12 @@ import java.util.concurrent.Executors;
 @Controller
 public class HelloController implements AutoCloseable {
 
-    private final ExecutorService executorService = Executors
-            .newCachedThreadPool();
+    private final ExecutorService executorService = Executors.newCachedThreadPool();
 
     private Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @GetMapping(path = "/greeting")
-    public DeferredResult<String> hello1(HttpServletResponse response) throws Exception{
+    public DeferredResult<String> hello1(HttpServletResponse response) throws Exception {
         DeferredResult<String> deferredResult = new DeferredResult<>();
         executorService.submit(() -> perform(deferredResult));
         return deferredResult;

@@ -1,4 +1,4 @@
-package com.baeldung.OncePerRequestFilter;
+package com.baeldung.onceperrequestfilter;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
