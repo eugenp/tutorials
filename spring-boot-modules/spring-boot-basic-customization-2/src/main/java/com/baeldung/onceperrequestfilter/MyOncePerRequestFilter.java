@@ -16,7 +16,8 @@ public class MyOncePerRequestFilter extends OncePerRequestFilter {
     private Logger logger = LoggerFactory.getLogger(MyOncePerRequestFilter.class);
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
         logger.info("Inside Once Per Request Filter originated by request {}", request.getRequestURI());
         filterChain.doFilter(request, response);
     }
