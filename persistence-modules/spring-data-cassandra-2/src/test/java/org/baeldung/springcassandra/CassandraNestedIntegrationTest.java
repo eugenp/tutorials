@@ -30,7 +30,7 @@ class CassandraNestedIntegrationTest {
       .withExposedPorts(9042);
 
     @BeforeAll
-    public static void setupCassandraConnectionProperties() {
+    static void setupCassandraConnectionProperties() {
         System.setProperty("spring.data.cassandra.keyspace-name", KEYSPACE_NAME);
         System.setProperty("spring.data.cassandra.contact-points", cassandra.getContainerIpAddress());
         System.setProperty("spring.data.cassandra.port", String.valueOf(cassandra.getMappedPort(9042)));
@@ -38,7 +38,7 @@ class CassandraNestedIntegrationTest {
         createKeyspace(cassandra.getCluster());
     }
 
-    private static void createKeyspace(Cluster cluster) {
+    static void createKeyspace(Cluster cluster) {
         try(Session session = cluster.connect()) {
             session.execute("CREATE KEYSPACE IF NOT EXISTS " + KEYSPACE_NAME + " WITH replication = \n" +
               "{'class':'SimpleStrategy','replication_factor':'1'};");
