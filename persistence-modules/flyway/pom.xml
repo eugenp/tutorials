@@ -64,7 +64,7 @@
     </build>
 
     <properties>
-        <flyway-core.version>5.2.3</flyway-core.version>
+        <flyway-core.version>8.0.0</flyway-core.version>
         <flyway-maven-plugin.version>8.0.0</flyway-maven-plugin.version>
     </properties>
 
