@@ -48,7 +48,7 @@ class IntroductionAJRUnitTest {
             new Customer("Customer B"),
             new Customer("Customer C")
         );
-        List<Object> sessionData = new LinkedList<>(customers);
+        Collection<Object> sessionData = new LinkedList<>(customers);
 
         HashMap<Customer, Double> actualTotals = new HashMap<>();
         Random random = new Random();

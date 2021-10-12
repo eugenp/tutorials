@@ -7,10 +7,7 @@ import org.evrete.api.Knowledge;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class IntroductionAJR {
     public static void main(String[] args) throws IOException {
@@ -29,7 +26,7 @@ public class IntroductionAJR {
         );
 
         Random random = new Random();
-        List<Object> sessionData = new LinkedList<>(customers);
+        Collection<Object> sessionData = new LinkedList<>(customers);
         for (int i = 0; i < 100_000; i++) {
             Customer randomCustomer = customers.get(random.nextInt(customers.size()));
             Invoice invoice = new Invoice(randomCustomer, 100 * random.nextDouble());

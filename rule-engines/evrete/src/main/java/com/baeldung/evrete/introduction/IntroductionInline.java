@@ -4,10 +4,7 @@ import org.evrete.KnowledgeService;
 import org.evrete.api.Knowledge;
 import com.baeldung.evrete.introduction.model.*;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class IntroductionInline {
     public static void main(String[] args) {
@@ -40,7 +37,7 @@ public class IntroductionInline {
         );
 
         Random random = new Random();
-        List<Object> sessionData = new LinkedList<>(customers);
+        Collection<Object> sessionData = new LinkedList<>(customers);
         for (int i = 0; i < 100_000; i++) {
             Customer randomCustomer = customers.get(random.nextInt(customers.size()));
             Invoice invoice = new Invoice(randomCustomer, 100 * random.nextDouble());
