@@ -17,7 +17,6 @@ public class Account {
             return 0;
           }
         };
-        this.currentThreadCASFailureCount.set(0);
     }
 
     public int getBalance() {
