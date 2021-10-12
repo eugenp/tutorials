@@ -11,17 +11,19 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.jxmpp.stringprep.XmppStringprepException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-public class SmackIntegrationTest {
+/**
+ * Make sure jabb3r.org is available before running this test.
+ */
+public class SmackLiveTest {
 
     private static AbstractXMPPConnection connection;
-    private Logger logger = LoggerFactory.getLogger(SmackIntegrationTest.class);
+    private Logger logger = LoggerFactory.getLogger(SmackLiveTest.class);
 
     @BeforeClass
     public static void setup() throws IOException, InterruptedException, XMPPException, SmackException {
@@ -45,7 +47,7 @@ public class SmackIntegrationTest {
     }
 
     @Test
-    public void whenSendMessageWithChat_thenReceiveMessage() throws XmppStringprepException, InterruptedException {
+    public void whenSendMessageWithChat_thenReceiveMessage() throws InterruptedException {
 
         CountDownLatch latch = new CountDownLatch(1);
         ChatManager chatManager = ChatManager.getInstanceFor(connection);
@@ -64,7 +66,7 @@ public class SmackIntegrationTest {
     }
 
     @Test
-    public void whenSendMessage_thenReceiveMessageWithFilter() throws XmppStringprepException, InterruptedException {
+    public void whenSendMessage_thenReceiveMessageWithFilter() throws InterruptedException {
 
         CountDownLatch latch = new CountDownLatch(1);
         final String[] expected = {null};
