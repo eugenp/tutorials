@@ -12,7 +12,11 @@ public class Account {
     public Account() {
         this.balance = new AtomicInteger(0);
         this.transactionCount = new AtomicInteger(0);
-        this.currentThreadCASFailureCount = new ThreadLocal<>();
+        this.currentThreadCASFailureCount = new ThreadLocal(){
+          @Override public Integer initialValue() {
+            return 0;
+          }
+        };
         this.currentThreadCASFailureCount.set(0);
     }
 
