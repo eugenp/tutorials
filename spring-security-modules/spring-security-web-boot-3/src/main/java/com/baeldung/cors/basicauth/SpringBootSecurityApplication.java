@@ -1,10 +1,10 @@
-package com.baeldung.springbootsecuritycors.basicauth;
+package com.baeldung.cors.basicauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "com.baeldung.springbootsecuritycors")
+@SpringBootApplication(scanBasePackages = "com.baeldung.cors")
 @EnableAutoConfiguration
 public class SpringBootSecurityApplication {
 
