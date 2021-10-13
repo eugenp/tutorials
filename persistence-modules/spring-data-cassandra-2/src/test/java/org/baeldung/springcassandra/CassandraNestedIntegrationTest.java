@@ -21,6 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @Testcontainers
+@SpringBootTest
 class CassandraNestedIntegrationTest {
 
     private static final String KEYSPACE_NAME = "test";
@@ -46,7 +47,6 @@ class CassandraNestedIntegrationTest {
     }
 
     @Nested
-    @SpringBootTest
     class ApplicationContextIntegrationTest {
 
         @Test
@@ -57,7 +57,6 @@ class CassandraNestedIntegrationTest {
     }
 
     @Nested
-    @SpringBootTest
     class CarRepositoryIntegrationTest {
 
         @Autowired
