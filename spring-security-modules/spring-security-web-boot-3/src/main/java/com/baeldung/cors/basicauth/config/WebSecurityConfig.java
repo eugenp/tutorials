@@ -1,4 +1,4 @@
-package com.baeldung.springbootsecuritycors.basicauth.config;
+package com.baeldung.cors.basicauth.config;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
