@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Mocking a WebClient in Spring](https://www.baeldung.com/spring-mocking-webclient)
 - [Spring WebClient Filters](https://www.baeldung.com/spring-webclient-filters)
 - [Get List of JSON Objects with WebClient](https://www.baeldung.com/spring-webclient-json-list)
+- [Upload a File with WebClient](https://www.baeldung.com/spring-webclient-upload-file)

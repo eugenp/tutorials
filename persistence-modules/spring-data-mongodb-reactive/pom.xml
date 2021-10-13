@@ -22,11 +22,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-couchbase-reactive</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,16 +69,6 @@
             <version>${spring-tx.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-r2dbc</artifactId>
-            <version>${spring-data-r2dbc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.r2dbc</groupId>
-            <artifactId>r2dbc-h2</artifactId>
-            <version>${r2dbc-h2.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -87,12 +77,6 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.couchbase.mock</groupId>
-            <artifactId>CouchbaseMock</artifactId>
-            <version>${couchbaseMock.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -141,14 +125,9 @@
 
     <properties>
         <spring-tx.version>5.2.2.RELEASE</spring-tx.version>
-        <spring-data-r2dbc.version>1.0.0.RELEASE</spring-data-r2dbc.version>
-        <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
         <httpclient.version>4.5.2</httpclient.version>
         <h2.version>1.4.200</h2.version>
-        <couchbaseMock.version>1.5.23</couchbaseMock.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
-        <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
     </properties>
 
 </project>
