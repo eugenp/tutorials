@@ -125,7 +125,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
-        <node.version>v10.14.2</node.version>
+        <node.version>v14.18.0</node.version>
         <yarn.version>v1.12.1</yarn.version>
         <spring-boot.version>2.4.4</spring-boot.version>
         <h2.version>1.4.200</h2.version>
