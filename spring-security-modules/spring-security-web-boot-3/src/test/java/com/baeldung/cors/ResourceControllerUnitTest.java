@@ -1,8 +1,6 @@
-package com.baeldung.springbootsecuritycors;
+package com.baeldung.cors;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import com.baeldung.cors.basicauth.SpringBootSecurityApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.springbootsecuritycors.basicauth.SpringBootSecurityApplication;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootSecurityApplication.class })
