@@ -27,8 +27,4 @@ public interface CloudTechController {
 
     @GetMapping("/cloudTech")
     ResponseEntity<List<CloudTechDto>> getCloudTech();
-
-    @GetMapping("/cloudTech/random")
-    ResponseEntity<CloudTechDto> getRandomLyric();
-
 }

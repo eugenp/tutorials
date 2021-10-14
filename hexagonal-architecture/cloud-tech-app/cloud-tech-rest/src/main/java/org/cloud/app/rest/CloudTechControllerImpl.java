@@ -9,15 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Random;
 
 @Slf4j
 @RestController
 public class CloudTechControllerImpl implements CloudTechController {
 
     private final CloudTechService cloudTechService;
-
-    private final Random random = new Random();
 
     public CloudTechControllerImpl(CloudTechService cloudTechService) {
         this.cloudTechService = cloudTechService;
@@ -54,12 +51,5 @@ public class CloudTechControllerImpl implements CloudTechController {
     @Override
     public ResponseEntity<List<CloudTechDto>> getCloudTech() {
         return new ResponseEntity<>(cloudTechService.getAllCloudTech(), HttpStatus.OK);
-    }
-
-    @Override
-    public ResponseEntity<CloudTechDto> getRandomLyric() {
-        final List<CloudTechDto> allCloudTech = cloudTechService.getAllCloudTech();
-        final int size = allCloudTech.size();
-        return new ResponseEntity<>(allCloudTech.get(random.nextInt(size)), HttpStatus.OK);
     }
 }

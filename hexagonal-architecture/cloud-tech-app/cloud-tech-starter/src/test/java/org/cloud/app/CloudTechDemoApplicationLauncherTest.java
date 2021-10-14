@@ -86,25 +86,25 @@ public class CloudTechDemoApplicationLauncherTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(5)))
                 .andExpect(jsonPath("$[0].cloud").exists())
-                .andExpect(jsonPath("$[0].cloud").value("William Orbit"))
+                .andExpect(jsonPath("$[0].cloud").value("AWS"))
                 .andExpect(jsonPath("$[0].cloudTech").exists())
-                .andExpect(jsonPath("$[0].cloudTech").value("Sky fits heaven so fly it"))
+                .andExpect(jsonPath("$[0].cloudTech").value("AWS Ec2"))
                 .andExpect(jsonPath("$[1].cloud").exists())
-                .andExpect(jsonPath("$[1].cloud").value("Ava Max"))
+                .andExpect(jsonPath("$[1].cloud").value("Azure"))
                 .andExpect(jsonPath("$[1].cloudTech").exists())
-                .andExpect(jsonPath("$[1].cloudTech").value("Baby I'm torn"))
+                .andExpect(jsonPath("$[1].cloudTech").value("Azure AI"))
                 .andExpect(jsonPath("$[2].cloud").exists())
-                .andExpect(jsonPath("$[2].cloud").value("Faun"))
+                .andExpect(jsonPath("$[2].cloud").value("GCP"))
                 .andExpect(jsonPath("$[2].cloudTech").exists())
-                .andExpect(jsonPath("$[2].cloudTech").value("Wenn wir uns wiedersehen"))
+                .andExpect(jsonPath("$[2].cloudTech").value("GCP ML"))
                 .andExpect(jsonPath("$[3].cloud").exists())
-                .andExpect(jsonPath("$[3].cloud").value("Abel"))
+                .andExpect(jsonPath("$[3].cloud").value("AWS"))
                 .andExpect(jsonPath("$[3].cloudTech").exists())
-                .andExpect(jsonPath("$[3].cloudTech").value("Het is al lang verleden tijd"))
+                .andExpect(jsonPath("$[3].cloudTech").value("AWS RDS"))
                 .andExpect(jsonPath("$[4].cloud").exists())
-                .andExpect(jsonPath("$[4].cloud").value("Billie Eilish"))
+                .andExpect(jsonPath("$[4].cloud").value("Azure"))
                 .andExpect(jsonPath("$[4].cloudTech").exists())
-                .andExpect(jsonPath("$[4].cloudTech").value("Chest always so puffed guy"));
+                .andExpect(jsonPath("$[4].cloudTech").value("Azure ML"));
     }
 
     @Test
@@ -113,9 +113,9 @@ public class CloudTechDemoApplicationLauncherTest {
                 .accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.cloud").exists())
-                .andExpect(jsonPath("$.cloud").value("William Orbit"))
+                .andExpect(jsonPath("$.cloud").value("AWS"))
                 .andExpect(jsonPath("$.cloudTech").exists())
-                .andExpect(jsonPath("$.cloudTech").value("Sky fits heaven so fly it"));
+                .andExpect(jsonPath("$.cloudTech").value("Compute"));
     }
 
     @Test
