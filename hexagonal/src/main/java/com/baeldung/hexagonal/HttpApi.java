@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
-public class HttpApi implements ApiInterface {
+public class HttpApi {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
-    @Override
     @GetMapping("/{username}")
     public User find(@PathVariable String username) {
         return userService.find(username);
