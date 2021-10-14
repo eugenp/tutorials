@@ -7,7 +7,11 @@ import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 public class SimpleXstreamInitializer {
 
     public XStream getXstreamInstance() {
-        return new XStream();
+        XStream xstream = new XStream();
+        xstream.allowTypesByWildcard(new String[]{
+                "com.baeldung.**"
+        });
+        return xstream;
     }
 
     public XStream getXstreamJettisonMappedInstance() {
