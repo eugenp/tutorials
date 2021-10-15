@@ -1,0 +1,17 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      format_sql: true
+      validator.apply_to_ddl: false
+      ddl-auto: create-drop
