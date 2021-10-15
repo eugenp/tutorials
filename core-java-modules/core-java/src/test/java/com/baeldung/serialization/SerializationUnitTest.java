@@ -68,7 +68,8 @@ public class SerializationUnitTest {
 	}
 
 	@Test
-	public void whenSerializingAndDeserializingUsingCustomSerializationUtils_ThenObjectIsTheSame() throws IOException, ClassNotFoundException {
+	public void whenSerializingAndDeserializingUsingCustomSerializationUtils_ThenObjectIsTheSame()
+			throws IOException, ClassNotFoundException {
 		Person p = new Person();
 		p.setAge(20);
 		p.setName("Joe");
@@ -79,7 +80,7 @@ public class SerializationUnitTest {
 	}
 
 	@Test
-	public void whenSerializingUsingCustomSerializationUtils_ThanOk(){
+	public void whenSerializingUsingCustomSerializationUtils_ThanOk() {
 		assertFalse(com.baeldung.util.SerializationUtils.isSerializable(Address.class));
 		assertTrue(com.baeldung.util.SerializationUtils.isSerializable(Person.class));
 		assertTrue(com.baeldung.util.SerializationUtils.isSerializable(Integer.class));
