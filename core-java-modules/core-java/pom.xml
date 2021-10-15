@@ -61,6 +61,11 @@
             <artifactId>moneta</artifactId>
             <version>${javamoney.moneta.version}</version>
         </dependency>
+        <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.core.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -187,6 +192,7 @@
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
+        <spring.core.version>4.3.20.RELEASE</spring.core.version>
     </properties>
 
 </project>
