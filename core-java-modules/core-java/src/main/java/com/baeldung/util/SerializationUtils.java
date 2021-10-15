@@ -25,5 +25,9 @@ public class SerializationUtils {
 	    Object o = ois.readObject();
 	    return cl.cast(o);
 	}
+	
+   public static boolean isSerializable(Class<?> it) {
+        return it.isPrimitive() || it.isInterface() || Serializable.class.isAssignableFrom(it);
+    }
 }
 

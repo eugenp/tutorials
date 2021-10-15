@@ -1,6 +1,7 @@
 package com.baeldung.serialization;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -75,5 +76,12 @@ public class SerializationUnitTest {
 		Person p2 = com.baeldung.util.SerializationUtils.deserialize(serialize, Person.class);
 		assertTrue(p2.getAge() == p.getAge());
 		assertTrue(p2.getName().equals(p.getName()));
+	}
+
+	@Test
+	public void whenSerializingUsingCustomSerializationUtils_ThanOk(){
+		assertFalse(com.baeldung.util.SerializationUtils.isSerializable(Address.class));
+		assertTrue(com.baeldung.util.SerializationUtils.isSerializable(Person.class));
+		assertTrue(com.baeldung.util.SerializationUtils.isSerializable(Integer.class));
 	}
 }
