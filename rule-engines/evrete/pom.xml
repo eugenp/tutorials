@@ -9,7 +9,7 @@
     <name>evrete</name>
 
     <properties>
-        <evrete.version>2.1.03</evrete.version>
+        <evrete.version>2.1.04</evrete.version>
     </properties>
 
     <parent>
