@@ -93,3 +93,7 @@ docker-compose -f src/main/docker/quarkus.yml up
 ```
 
 Now you have all you need to reproduce the tests with your machine.
+
+### Relevant Articles:
+
+- [Spring Boot vs Quarkus](https://www.baeldung.com/spring-boot-vs-quarkus)
