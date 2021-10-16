@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HandlingNullValuesUnitTest {
 
-     static double getDoubleUsingSwitch(Object o) {
+     static double getDoubleUsingSwitchNullCase(Object o) {
         return switch (o) {
             case String s -> Double.parseDouble(s);
             case null -> 0d;
@@ -14,14 +14,31 @@ class HandlingNullValuesUnitTest {
         };
     }
 
-    @Test
-    void givenSwitchImplementation_whenUsingStringAsArgument_thenDoubleIsReturned() {
-        assertEquals(10d, getDoubleUsingSwitch("10"));
+    static double getDoubleUsingSwitchTotalType(Object o) {
+        return switch (o) {
+            case String s -> Double.parseDouble(s);
+            case Object ob -> 0d;
+        };
     }
 
     @Test
-    void givenSwitchImplementation_whenUsingNullArgument_thenDoubleIsReturned() {
-        assertEquals(0d, getDoubleUsingSwitch(null));
+    void givenNullCaseInSwitch_whenUsingStringAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingSwitchNullCase("10"));
+    }
+
+    @Test
+    void givenTotalTypeInSwitch_whenUsingNullArgument_thenDoubleIsReturned() {
+        assertEquals(0d, getDoubleUsingSwitchNullCase(null));
+    }
+
+    @Test
+    void givenTotalTypeInSwitch_whenUsingStringAsArgument_thenDoubleIsReturned() {
+        assertEquals(10d, getDoubleUsingSwitchTotalType("10"));
+    }
+
+    @Test
+    void givenNullCaseInSwitch_whenUsingNullArgument_thenDoubleIsReturned() {
+        assertEquals(0d, getDoubleUsingSwitchTotalType(null));
     }
 
 }
