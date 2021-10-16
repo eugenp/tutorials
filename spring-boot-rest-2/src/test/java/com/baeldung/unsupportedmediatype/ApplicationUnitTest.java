@@ -1,7 +1,6 @@
-package com.baeldung.unsupportedmedia;
+package com.baeldung.unsupportedmediatype;
 
-import com.baeldung.unsupportedmediatype.UserController;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,12 +13,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(UserController.class)
-public class ApplicationTest {
+public class ApplicationUnitTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void JsonTestCase() throws Exception {
+    public void JsonTestCase() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/user/")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content("{\n" +
@@ -31,7 +30,7 @@ public class ApplicationTest {
     }
 
     @Test
-    void JsonFailTestCase() throws Exception {// Because no content-type added
+    public void JsonFailTestCase() throws Exception {// Because no content-type added
         mockMvc.perform(MockMvcRequestBuilders.post("/user/")
                         .content("{\n" +
                                 "    \"name\": \"Andy\",\n" +
@@ -42,7 +41,7 @@ public class ApplicationTest {
     }
 
     @Test
-    void XmlTestCase() throws Exception {
+    public void XmlTestCase() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/user/")
                         .contentType(MediaType.APPLICATION_XML_VALUE)
                         .content("<user><name>Andy</name><age>1</age><address>Hello world</address></user>"))
@@ -50,7 +49,7 @@ public class ApplicationTest {
     }
 
     @Test
-    void StringTestCase() throws Exception {
+    public void StringFailTestCase() throws Exception { // Because content-type is not supported
         mockMvc.perform(MockMvcRequestBuilders.post("/user/")
                         .contentType(MediaType.TEXT_PLAIN_VALUE)
                         .content("<user><name>Andy</name><age>1</age><address>Hello world</address></user>"))

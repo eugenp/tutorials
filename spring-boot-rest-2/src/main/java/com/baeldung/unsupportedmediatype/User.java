@@ -10,6 +10,10 @@ public class User implements Serializable {
     private Integer age;
     private String address;
 
+    public User(){
+
+    }
+
     public User(Integer id, String name, Integer age, String address){
         this.id = id;
         this.name = name;
