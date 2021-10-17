@@ -1284,7 +1284,6 @@
             </build>
 
             <modules>
-                 <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>core-java-modules/core-java-9</module>
                  <module>core-java-modules/core-java-9-improvements</module>
                  <module>core-java-modules/core-java-9-jigsaw</module>
@@ -1307,6 +1306,9 @@
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/multimodulemavenproject</module>
+                 <module>persistence-modules/sirix</module>
+                 <module>quarkus-vs-springboot</module>
+                 <module>spring-boot-modules/spring-boot-cassandre</module>
             </modules>
         </profile>
 
@@ -1356,7 +1358,9 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>persistence-modules/sirix</module>
                 <module>quarkus-vs-springboot</module>
+                <module>spring-boot-modules/spring-boot-cassandre</module>
             </modules>
         </profile>
     </profiles>
@@ -1402,9 +1406,9 @@
         <jmh-core.version>1.28</jmh-core.version>
         <jmh-generator.version>1.28</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
-        <commons-io.version>2.8.0</commons-io.version>
+        <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.11</commons-lang3.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.4</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
