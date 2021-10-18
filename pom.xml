@@ -472,7 +472,6 @@
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
-                <module>junit5</module>
                 <module>kubernetes</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
