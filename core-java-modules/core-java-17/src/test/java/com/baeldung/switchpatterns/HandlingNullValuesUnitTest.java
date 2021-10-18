@@ -3,23 +3,9 @@ package com.baeldung.switchpatterns;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.baeldung.switchpatterns.HandlingNullValues.*;
 
 class HandlingNullValuesUnitTest {
-
-     static double getDoubleUsingSwitchNullCase(Object o) {
-        return switch (o) {
-            case String s -> Double.parseDouble(s);
-            case null -> 0d;
-            default -> 0d;
-        };
-    }
-
-    static double getDoubleUsingSwitchTotalType(Object o) {
-        return switch (o) {
-            case String s -> Double.parseDouble(s);
-            case Object ob -> 0d;
-        };
-    }
 
     @Test
     void givenNullCaseInSwitch_whenUsingStringAsArgument_thenDoubleIsReturned() {

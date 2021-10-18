@@ -3,28 +3,9 @@ package com.baeldung.switchpatterns;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.baeldung.switchpatterns.GuardedPatterns.*;
 
 class GuardedPatternsUnitTest {
-
-    static double getDoubleValueUsingIf(Object o) {
-        return switch (o) {
-            case String s -> {
-                if (s.length() > 0) {
-                    yield Double.parseDouble(s);
-                } else {
-                    yield 0d;
-                }
-            }
-            default -> 0d;
-        };
-    }
-
-    static double getDoubleValueUsingGuardedPatterns(Object o) {
-        return switch (o) {
-            case String s && s.length() > 0 -> Double.parseDouble(s);
-            default -> 0d;
-        };
-    }
 
     @Test
     void givenIfImplementation_whenUsingEmptyString_thenDoubleIsReturned() {
