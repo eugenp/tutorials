@@ -1,4 +1,4 @@
-package com.baeldung.junit5;
+package com.baeldung.parallel;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.parallel.ResourceLock;
 import java.util.ArrayList;
 import java.util.List;
 
-public class C_UnitTest {
+public class ParallelResourceLockUnitTest {
 
     private List<String> resources;
 
@@ -26,20 +26,20 @@ public class C_UnitTest {
     @Test
     @ResourceLock(value = "resources")
     public void first() throws Exception {
-        System.out.println("Test C first() start => " + Thread.currentThread().getName());
+        System.out.println("ParallelResourceLockUnitTest first() start => " + Thread.currentThread().getName());
         resources.add("first");
         System.out.println(resources);
         Thread.sleep(500);
-        System.out.println("Test C first() end => " + Thread.currentThread().getName());
+        System.out.println("ParallelResourceLockUnitTest first() end => " + Thread.currentThread().getName());
     }
 
     @Test
     @ResourceLock(value = "resources")
     public void second() throws Exception {
-        System.out.println("Test C second() start => " + Thread.currentThread().getName());
+        System.out.println("ParallelResourceLockUnitTest second() start => " + Thread.currentThread().getName());
         resources.add("second");
         System.out.println(resources);
         Thread.sleep(500);
-        System.out.println("Test C second() end => " + Thread.currentThread().getName());
+        System.out.println("ParallelResourceLockUnitTest second() end => " + Thread.currentThread().getName());
     }
 }
