@@ -15,10 +15,18 @@ public class SimpleXstreamInitializer {
     }
 
     public XStream getXstreamJettisonMappedInstance() {
-        return new XStream(new JettisonMappedXmlDriver());
+        XStream xstream = new XStream(new JettisonMappedXmlDriver());
+        xstream.allowTypesByWildcard(new String[]{
+                "com.baeldung.**"
+        });
+        return xstream;
     }
 
     public XStream getXstreamJsonHierarchicalInstance() {
-        return new XStream(new JsonHierarchicalStreamDriver());
+        XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+        xstream.allowTypesByWildcard(new String[]{
+                "com.baeldung.**"
+        });
+        return xstream;
     }
 }
