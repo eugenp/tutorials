@@ -1,17 +1,14 @@
 spring:
   h2:
     console:
-      enabled: true
-      path: /h2-console
+      enabled:true
+      path:/h2-console
+      console.settings.trace:false
+      spring.h2.console.settings.web-allow-others:false
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password:
+    url:jdbc:h2:mem:mydb
+    username:sa
+    password:password
     driverClassName: org.h2.Driver
   jpa:
-    defer-datasource-initialization: true
-    show-sql: true
-    hibernate:
-      format_sql: true
-      validator.apply_to_ddl: false
-      ddl-auto: create-drop
+    spring.jpa.database-platform:org.hibernate.dialect.H2Dialect
