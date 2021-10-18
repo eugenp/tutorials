@@ -7,8 +7,6 @@ option java_package = "com.baeldung.grpc.streaming";
 option java_outer_classname = "StockQuoteProto";
 option objc_class_prefix = "RTG";
 
-//basic setup ...
-
 service StockQuoteProvider {
   
   rpc serverSideStreamingGetListStockQuotes(Stock) returns (stream StockQuote) {}
