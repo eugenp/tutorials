@@ -1,11 +1,11 @@
 package com.baeldung.jackson.snakecase;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-public class User1 {
-    @JsonProperty("first_name")
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+public class UserWithSnakeStrategy {
     private String firstName;
-    @JsonProperty("last_name")
     private String lastName;
 
     public String getFirstName() {
