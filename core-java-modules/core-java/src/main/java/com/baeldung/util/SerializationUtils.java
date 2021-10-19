@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 public class SerializationUtils {
 
@@ -28,11 +29,16 @@ public class SerializationUtils {
 
 	public static boolean isSerializable(Class<?> it) {
 		boolean serializable = it.isPrimitive() || it.isInterface() || Serializable.class.isAssignableFrom(it);
-		if(!serializable) {
+		if (!serializable) {
 			return serializable;
 		}
 		Field[] declaredFields = it.getDeclaredFields();
-		for(Field field: declaredFields) {
+		for (Field field : declaredFields) {
+			if (Modifier.isVolatile(field.getModifiers()) 
+				  || Modifier.isTransient(field.getModifiers()) 
+				  || Modifier.isStatic(field.getModifiers())) {
+				continue;
+			}
 			Class<?> fieldType = field.getType();
 			return isSerializable(fieldType);
 		}
