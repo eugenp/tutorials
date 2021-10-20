@@ -1,36 +1,32 @@
 package com.example.hexagonal.adapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hexagonal.domain.Customer;
-import com.example.hexagonal.domain.CustomerRepository;
 import com.example.hexagonal.domain.Movie;
-import com.example.hexagonal.domain.MovieRepository;
-import com.example.hexagonal.port.MovieHubPort;
+import com.example.hexagonal.port.MovieHubService;
 
-@Service
-public class MovieHubAdapter implements MovieHubPort {
-	
-	@Autowired
-	MovieRepository movieRepo;
-	@Autowired
-	CustomerRepository customerRepo;
-	
-	@Override
-	public Movie getMovieDetails(String movieTitle) {
-		return  movieRepo.findMovieByTitle(movieTitle);
-	}
+@RestController
+public class MovieHubAdapter {
 
-	@Override
-	public String registerNewUser(String userName, String userLocation) {
-		Customer customer = customerRepo.save(new Customer(userName, userLocation));
-		return "User successfully created with id = " + customer.getUserid();
-	}
+    @Autowired
+    MovieHubService movieService;
 
-	@Override
-	public String addMovie(int id, String title, int releaseYear, double imdbRating, int rottenTomatoesScore) {
-		return movieRepo.save(new Movie(id, title, releaseYear, imdbRating, rottenTomatoesScore)).toString();
-	}
+    @GetMapping("/getmovie")
+    public Movie getMovieTitleNumber(@RequestParam(value = "title") String name) {
+        return movieService.getMovieDetails(name);
+    }
 
+    @PostMapping("/adduser")
+    public String registerNewUser(@RequestParam(value = "name") String userName, @RequestParam(value = "location") String userLocation) {
+        return movieService.registerNewUser(userName, userLocation);
+    }
+
+    @PostMapping("/addmovie")
+    public String addMovie(@RequestParam(value = "id") int movieId, @RequestParam(value = "name") String movieName, @RequestParam(value = "year") int releaseYear, @RequestParam(value = "imdb") double imdbScore, @RequestParam(value = "rt") int rtScore) {
+        return movieService.addMovie(movieId, movieName, releaseYear, imdbScore, rtScore);
+    }
 }
