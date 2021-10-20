@@ -534,6 +534,7 @@
 
                 <module>quarkus</module>
                 <module>quarkus-extension</module>
+                <module>quarkus-jandex</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1004,6 +1005,7 @@
 
                 <module>quarkus</module>
                 <module>quarkus-extension</module>
+                <module>quarkus-jandex</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
