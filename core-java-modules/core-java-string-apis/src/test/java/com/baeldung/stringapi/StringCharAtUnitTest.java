@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StringCharAtUnitTest {
     @Test
-    public void whenCallCharAt_thenCorrect() {
+    public void whenCallCharAt_thenSuccess() {
         String sample = "abcdefg";
         assertEquals('d', sample.charAt(3));
     }
 
     @Test
-    public void whenLoopCharAt_thenCorrect() {
+    public void whenLoopCharAt_thenSuccess() {
         String sample = "AbCdEfG";
         int count = 0;
         for (int i = 0; i < sample.length(); i++) {
