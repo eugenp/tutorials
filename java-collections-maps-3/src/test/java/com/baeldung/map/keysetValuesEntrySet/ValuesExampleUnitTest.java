@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class ValuesExampleUnitTest {
 
     @Test
-    public void givenHashMap_whenValuesApplied_thenShouldReturnValues() {
+    public void givenHashMap_whenValuesApplied_thenShouldReturnCollectionOfValues() {
         Map<String, Integer> map = new HashMap<>();
         map.put("one", 1);
         map.put("two", 2);
