@@ -43,7 +43,6 @@
     <properties>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
     </properties>
 
 </project>

@@ -30,13 +30,13 @@
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.vintage.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-migrationsupport</artifactId>
-            <version>${junit.vintage.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -51,9 +51,6 @@
     </build>
 
     <properties>
-        <junit.jupiter.version>5.2.0</junit.jupiter.version>
-        <junit-platform.version>1.2.0</junit-platform.version>
-        <junit.vintage.version>5.2.0</junit.vintage.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
     </properties>
 
