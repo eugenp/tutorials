@@ -4,17 +4,24 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class KeySetExampleUnitTest {
 
-    private final Map<String, String> hashMap = new HashMap<String, String>() {{
-        put("key1", "value1");
-        put("key2", "value2");
-    }};
-
     @Test
-    public void givenHashMap_whenPassed_thenPrintValue() {
-        KeySetExample.printKeySet(hashMap);
+    public void givenHashMap_whenKeySetApplied_thenShouldReturnSetOfKeys() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("one", 1);
+        map.put("two", 2);
+
+        Set<String> actualValues = map.keySet();
+
+        assertEquals(2, actualValues.size());
+        assertTrue(actualValues.contains("one"));
+        assertTrue(actualValues.contains("two"));
     }
 
 }

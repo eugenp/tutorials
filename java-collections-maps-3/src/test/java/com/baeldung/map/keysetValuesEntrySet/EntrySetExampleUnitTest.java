@@ -2,19 +2,29 @@ package com.baeldung.map.keysetValuesEntrySet;
 
 import org.junit.Test;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class EntrySetExampleUnitTest {
 
-    private final Map<String, String> hashMap = new HashMap<String, String>() {{
-        put("key1", "value1");
-        put("key2", "value2");
-    }};
-
     @Test
-    public void givenHashMap_whenPassed_thenPrintValue() {
-        EntrySetExample.printEntrySet(hashMap);
+    public void givenHashMap_whenEntrySetApplied_thenShouldReturnSetOfEntries() {
+
+        Map<String, Integer> map = new HashMap<>();
+        map.put("one", 1);
+        map.put("two", 2);
+
+        Set<Map.Entry<String, Integer>> actualValues = map.entrySet();
+
+        assertEquals(2, actualValues.size());
+        assertTrue(actualValues.contains(new SimpleEntry<>("one", 1)));
+        assertTrue(actualValues.contains(new SimpleEntry<>("two", 2)));
+
     }
 
 }
