@@ -17,6 +17,7 @@
         <module>activejdbc</module>
         <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
+        <module>apache-derby</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
         <module>deltaspike</module>
@@ -88,6 +89,7 @@
         <module>spring-jooq</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
+        <module>apache-derby</module>
     </modules>
 
     <properties>

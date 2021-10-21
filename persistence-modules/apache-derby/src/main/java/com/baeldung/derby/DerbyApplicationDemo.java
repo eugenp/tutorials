@@ -8,13 +8,11 @@ import java.sql.*;
 
 public class DerbyApplicationDemo {
     public static void main(String[] args) {
-     //   runner(        "jdbc:derby://localhost:1527/baeldung");
         runner("jdbc:derby:baeldung;create=true");
     }
 
-    private static void runner(String urlConnection){
+    private static void runner(String urlConnection) {
         try {
-           // String urlConnection = "jdbc:derby:baeldung;create=true";
             Connection con = DriverManager.getConnection(urlConnection);
             Statement statement = con.createStatement();
             if (!isTableExists("authors", con)) {
