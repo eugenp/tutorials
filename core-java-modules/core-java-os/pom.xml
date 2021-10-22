@@ -19,7 +19,7 @@
 	    <dependency>
 		    <groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter-engine.version}</version>
+            <version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -94,7 +94,6 @@
 		<guava.version>25.1-jre</guava.version>
 		<unix4j.version>0.4</unix4j.version>
 		<grep4j.version>1.8.7</grep4j.version>
-		<junit-jupiter-engine.version>5.7.2</junit-jupiter-engine.version>
 	</properties>
 
 </project>

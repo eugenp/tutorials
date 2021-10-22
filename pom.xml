@@ -1418,7 +1418,7 @@
         <jackson.version>2.12.4</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.2.0</junit-platform.version>
-        <junit-jupiter.version>5.2.0</junit-jupiter.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
