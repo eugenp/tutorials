@@ -89,7 +89,6 @@
         <module>spring-jooq</module>
         <!-- <module>spring-mybatis</module> --> <!-- needs fixing in BAEL-9021 -->
         <module>spring-persistence-simple</module>
-        <module>apache-derby</module>
     </modules>
 
     <properties>
