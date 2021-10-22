@@ -10,4 +10,3 @@ This module contains articles about string APIs.
 - [CharSequence vs. String in Java](https://www.baeldung.com/java-char-sequence-string)
 - [StringBuilder vs StringBuffer in Java](https://www.baeldung.com/java-string-builder-string-buffer)
 - [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
-- [Get String Character by Index in Java](https://www.baeldung.com/get-string-character-by-index-in-java/)
