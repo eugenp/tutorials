@@ -15,13 +15,6 @@
             <artifactId>fastutil</artifactId>
             <version>${fastutil.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -69,7 +62,6 @@
 
     <properties>
         <fastutil.version>8.2.2</fastutil.version>
-        <junit.version>4.12</junit.version>
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
