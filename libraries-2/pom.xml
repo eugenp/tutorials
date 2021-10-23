@@ -53,6 +53,12 @@
             <groupId>org.jbpm</groupId>
             <artifactId>jbpm-test</artifactId>
             <version>${jbpm.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>info.picocli</groupId>

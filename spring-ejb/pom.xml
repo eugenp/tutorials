@@ -27,6 +27,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.baeldung.spring.ejb</groupId>
                 <artifactId>spring-ejb-remote</artifactId>
                 <version>${spring-ejb-remote.version}</version>
