@@ -21,24 +21,24 @@ public class SnakeCaseUnitTest {
     public void givenSnakeCaseJson_whenParseWithJsonPropertyAnnotation_thenGetExpectedObject() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         UserWithPropertyNames user = objectMapper.readValue(JSON, UserWithPropertyNames.class);
-        assertEquals(user.getFirstName(), "Jackie");
-        assertEquals(user.getLastName(), "Chan");
+        assertEquals("Jackie", user.getFirstName());
+        assertEquals("Chan", user.getLastName());
     }
 
     @Test
     public void givenSnakeCaseJson_whenParseWithJsonNamingAnnotation_thenGetExpectedObject() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         UserWithSnakeStrategy user = objectMapper.readValue(JSON, UserWithSnakeStrategy.class);
-        assertEquals(user.getFirstName(), "Jackie");
-        assertEquals(user.getLastName(), "Chan");
+        assertEquals("Jackie", user.getFirstName());
+        assertEquals("Chan", user.getLastName());
     }
 
     @Test
     public void givenSnakeCaseJson_whenParseWithCustomMapper_thenGetExpectedObject() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         User user = objectMapper.readValue(JSON, User.class);
-        assertEquals(user.getFirstName(), "Jackie");
-        assertEquals(user.getLastName(), "Chan");
+        assertEquals("Jackie", user.getFirstName());
+        assertEquals("Chan", user.getLastName());
     }
 
 }
