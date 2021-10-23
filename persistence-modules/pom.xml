@@ -101,7 +101,6 @@
 
         <!-- testing -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>
