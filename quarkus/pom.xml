@@ -54,7 +54,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <version>1.18.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -156,8 +156,7 @@
     </profiles>
 
     <properties>
-        <quarkus.version>2.4.0.Final</quarkus.version>
-        <lombok.version>1.18.6</lombok.version>
+        <quarkus.version>1.7.0.Final</quarkus.version>
     </properties>
 
 </project>
