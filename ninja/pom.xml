@@ -36,6 +36,7 @@
             <version>${ninja.version}</version>
             <scope>test</scope>
             <exclusions>
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine. -->
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
