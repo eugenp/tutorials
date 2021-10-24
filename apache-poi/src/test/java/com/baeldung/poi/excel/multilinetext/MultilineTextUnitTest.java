@@ -19,44 +19,50 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MultilineTextUnitTest {
-	private static String FILE_NAME = "com/baeldung/poi/excel/multilinetext/MultilineTextTest.xlsx";
-	private static final String NEW_FILE_NAME = "MultilineTextTest_output.xlsx";
-	private static final int STRING_ROW_INDEX = 1;
-	private static final int STRING_CELL_INDEX = 0;
+    private static String FILE_NAME = "com/baeldung/poi/excel/multilinetext/MultilineTextTest.xlsx";
+    private static final String NEW_FILE_NAME = "MultilineTextTest_output.xlsx";
+    private static final int STRING_ROW_INDEX = 1;
+    private static final int STRING_CELL_INDEX = 0;
 
-	private String fileLocation;
+    private String fileLocation;
 
-	@Before
-	public void setup() throws IOException, URISyntaxException {
-		fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
-	}
+    @Before
+    public void setup() throws IOException, URISyntaxException {
+        fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME)
+            .toURI())
+            .toString();
+    }
 
-	@Test
-	public void givenStringCell_whenSetStringValue_thenReturnStringValue() throws IOException {
-		Workbook workbook = new XSSFWorkbook(fileLocation);
-		Sheet sheet = workbook.getSheetAt(0);
-		sheet.createRow(STRING_ROW_INDEX);
-		Row row = sheet.getRow(STRING_ROW_INDEX);
-		row.createCell(STRING_CELL_INDEX).setCellValue("Hello \n world!");
+    @Test
+    public void givenStringCell_whenSetStringValue_thenReturnStringValue() throws IOException {
+        Workbook workbook = new XSSFWorkbook(fileLocation);
+        Sheet sheet = workbook.getSheetAt(0);
+        sheet.createRow(STRING_ROW_INDEX);
+        Row row = sheet.getRow(STRING_ROW_INDEX);
+        row.createCell(STRING_CELL_INDEX)
+            .setCellValue("Hello \n world!");
 
-		ExcelMultilineText multilineText = new ExcelMultilineText();
-		multilineText.FormatMultilineText(row, STRING_CELL_INDEX);
+        MultilineText multilineText = new MultilineText();
+        multilineText.FormatMultilineText(row, STRING_CELL_INDEX);
 
-		FileOutputStream outputStream = new FileOutputStream(NEW_FILE_NAME);
-		workbook.write(outputStream);
-		outputStream.close();
+        FileOutputStream outputStream = new FileOutputStream(NEW_FILE_NAME);
+        workbook.write(outputStream);
+        outputStream.close();
 
-		File file = new File(NEW_FILE_NAME);
-		FileInputStream fileInputStream = new FileInputStream(file);
-		Workbook testWorkbook = new XSSFWorkbook(fileInputStream);
-		assertTrue(row.getHeightInPoints() == testWorkbook.getSheetAt(0).getRow(STRING_ROW_INDEX).getHeightInPoints());
-		DataFormatter formatter = new DataFormatter();
-		assertEquals("Hello \n world!", formatter
-				.formatCellValue(testWorkbook.getSheetAt(0).getRow(STRING_ROW_INDEX).getCell(STRING_CELL_INDEX)));
-		testWorkbook.close();
-		fileInputStream.close();
-		file.delete();
+        File file = new File(NEW_FILE_NAME);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        Workbook testWorkbook = new XSSFWorkbook(fileInputStream);
+        assertTrue(row.getHeightInPoints() == testWorkbook.getSheetAt(0)
+            .getRow(STRING_ROW_INDEX)
+            .getHeightInPoints());
+        DataFormatter formatter = new DataFormatter();
+        assertEquals("Hello \n world!", formatter.formatCellValue(testWorkbook.getSheetAt(0)
+            .getRow(STRING_ROW_INDEX)
+            .getCell(STRING_CELL_INDEX)));
+        testWorkbook.close();
+        fileInputStream.close();
+        file.delete();
 
-		workbook.close();
-	}
+        workbook.close();
+    }
 }
