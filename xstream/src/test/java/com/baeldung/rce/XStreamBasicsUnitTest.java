@@ -21,6 +21,7 @@ public final class XStreamBasicsUnitTest {
     public void before() {
         xstream = new XStream();
         xstream.alias("person", Person.class);
+        xstream.allowTypes(new Class<?>[] { Person.class });
     }
 
     @Test
