@@ -3,9 +3,11 @@ package com.baeldung.serialization;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.NotSerializableException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -21,6 +23,25 @@ public class SerializationUnitTest {
 		FileOutputStream fileOutputStream = new FileOutputStream("yofile.txt");
 		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 			objectOutputStream.writeObject(address);
+		}
+	}
+	
+	@Test
+    public void whenSerializingAndDeserializing_ThenObjectIsTheSame() throws IOException, ClassNotFoundException {
+        Person p = new Person();
+        p.setAge(20);
+        p.setName("Joe");
+
+        FileOutputStream fileOutputStream = new FileOutputStream("yofile.txt");
+		try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+			objectOutputStream.writeObject(p);
+		}
+
+		FileInputStream fileInputStream = new FileInputStream("yofile.txt");
+		try ( ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+			Person p2 = (Person) objectInputStream.readObject();
+			assertTrue(p2.getAge() == p.getAge());
+	        assertTrue(p2.getName().equals(p.getName()));
 		}
 	}
 
