@@ -2,6 +2,10 @@ public class FootballTeamService {
 
     private FootballTeamRepository footballTeamRepository;
 
+    public FootballTeamService(FootballTeamRepository footballTeamRepository) {
+        this.footballTeamRepository = footballTeamRepository;
+    }
+
     public FootballTeam save(FootballTeam footballTeam) {
         return footballTeamRepository.save(footballTeam);
     }
