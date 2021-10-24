@@ -38,7 +38,7 @@ public class ListLoadedClassUnitTest {
 
         Set<ClassInfo> classes = instance.listClassLoaded();
 
-        Assertions.assertEquals(19309, classes.size());
+        Assertions.assertEquals(19276, classes.size());
     }
 
 }
