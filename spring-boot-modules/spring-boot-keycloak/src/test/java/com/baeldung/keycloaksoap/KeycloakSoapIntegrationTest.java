@@ -85,9 +85,6 @@ class KeycloakSoapIntegrationTest {
         headers.set("Authorization", "Bearer " + generateToken("janeadoe", "password"));
         HttpEntity<String> request = new HttpEntity<>(Utility.getGetProductDetailsRequest(), headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
-        System.out.println("This is the URL --> " + "http://localhost:" + port + "/ws/api/v1/");
-        System.out.println("Body --> " + responseEntity.getBody());
-        System.out.println("Location Header --> " + responseEntity.getHeaders().get("Location"));
         assertThat(responseEntity).isNotNull();
         assertThat(responseEntity.getStatusCodeValue()).isEqualTo(HttpStatus.UNAUTHORIZED.value());
         assertThat(responseEntity.getBody()).isBlank();
