@@ -18,6 +18,13 @@
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
             <version>${truth.version}</version>
+            <exclusions>
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine included in parent-modules. -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.truth.extensions</groupId>
@@ -46,6 +53,13 @@
             <artifactId>jgotesting</artifactId>
             <version>${jgotesting.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine included in parent-modules. -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
