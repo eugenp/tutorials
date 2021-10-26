@@ -1,19 +1,18 @@
 package com.baeldung.poi.excel.multilinetext;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 
 public class MultilineText {
-
-    public void FormatMultilineText(Row row, int cellNumber) {
-        row.setHeightInPoints(row.getSheet()
-            .getDefaultRowHeightInPoints() * 2);
-        CellStyle cellStyle = row.getSheet()
+    public void formatMultilineText(Cell cell, int cellNumber) {
+        cell.getRow()
+            .setHeightInPoints(cell.getSheet()
+                .getDefaultRowHeightInPoints() * 2);
+        CellStyle cellStyle = cell.getSheet()
             .getWorkbook()
             .createCellStyle();
         cellStyle.setWrapText(true);
-        row.getCell(cellNumber)
-            .setCellStyle(cellStyle);
+        cell.setCellStyle(cellStyle);
     }
-
 }

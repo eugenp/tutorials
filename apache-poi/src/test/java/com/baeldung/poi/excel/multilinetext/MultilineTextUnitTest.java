@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -34,16 +35,16 @@ public class MultilineTextUnitTest {
     }
 
     @Test
-    public void givenStringCell_whenSetStringValue_thenReturnStringValue() throws IOException {
+    public void givenMultilineTextCell_whenFormated_thenMultilineTextVisible() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         sheet.createRow(STRING_ROW_INDEX);
         Row row = sheet.getRow(STRING_ROW_INDEX);
-        row.createCell(STRING_CELL_INDEX)
-            .setCellValue("Hello \n world!");
+        Cell cell = row.createCell(STRING_CELL_INDEX);
 
+        cell.setCellValue("Hello \n world!");
         MultilineText multilineText = new MultilineText();
-        multilineText.FormatMultilineText(row, STRING_CELL_INDEX);
+        multilineText.formatMultilineText(cell, STRING_CELL_INDEX);
 
         FileOutputStream outputStream = new FileOutputStream(NEW_FILE_NAME);
         workbook.write(outputStream);
