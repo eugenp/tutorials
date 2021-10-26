@@ -42,14 +42,14 @@ public class WebClientStatusCodeHandlerIntegrationTest {
         stubPostResponse("/success", 200, "success");
 
         Mono<String> responseStatusHandler = WebClientStatusCodeHandler
-                .getResponseBodyUsingOnStatus(baseUrl + "/success");
+            .getResponseBodyUsingOnStatus(baseUrl + "/success");
 
         Mono<String> responseExchangeFilter = WebClientStatusCodeHandler
-                .getResponseBodyUsingExchangeFilterFunction(baseUrl + "/success");
+           .getResponseBodyUsingExchangeFilterFunction(baseUrl + "/success");
 
         assertThat(responseStatusHandler.block())
-                .isEqualTo(responseExchangeFilter.block())
-                .isEqualTo("success");
+            .isEqualTo(responseExchangeFilter.block())
+            .isEqualTo("success");
     }
 
     @Test
@@ -57,18 +57,18 @@ public class WebClientStatusCodeHandlerIntegrationTest {
         stubPostResponse("/server-error", 500, "Internal Server Error");
 
         Mono<String> responseStatusHandler = WebClientStatusCodeHandler
-                .getResponseBodyUsingOnStatus(baseUrl + "/server-error");
+            .getResponseBodyUsingOnStatus(baseUrl + "/server-error");
 
         Mono<String> responseExchangeFilter = WebClientStatusCodeHandler
-                .getResponseBodyUsingExchangeFilterFunction(baseUrl + "/server-error");
+            .getResponseBodyUsingExchangeFilterFunction(baseUrl + "/server-error");
 
         assertThatThrownBy(responseStatusHandler::block)
-                .isInstanceOf(Exception.class)
-                .hasMessageContaining("Internal Server Error");
+            .isInstanceOf(Exception.class)
+            .hasMessageContaining("Internal Server Error");
 
         assertThatThrownBy(responseExchangeFilter::block)
-                .isInstanceOf(Exception.class)
-                .hasMessageContaining("Internal Server Error");
+            .isInstanceOf(Exception.class)
+            .hasMessageContaining("Internal Server Error");
     }
 
     @Test
@@ -76,23 +76,23 @@ public class WebClientStatusCodeHandlerIntegrationTest {
         stubPostResponse("/client-error", 400, "Bad Request");
 
         Mono<String> responseStatusHandler = WebClientStatusCodeHandler
-                .getResponseBodyUsingOnStatus(baseUrl + "/client-error");
+            .getResponseBodyUsingOnStatus(baseUrl + "/client-error");
 
         Mono<String> responseExchangeFilter = WebClientStatusCodeHandler
-                .getResponseBodyUsingExchangeFilterFunction(baseUrl + "/client-error");
+            .getResponseBodyUsingExchangeFilterFunction(baseUrl + "/client-error");
 
         assertThatThrownBy(responseStatusHandler::block)
-                .isInstanceOf(Exception.class)
-                .hasMessageContaining("Bad Request");
+            .isInstanceOf(Exception.class)
+            .hasMessageContaining("Bad Request");
 
         assertThatThrownBy(responseExchangeFilter::block)
-                .isInstanceOf(Exception.class)
-                .hasMessageContaining("Bad Request");
+            .isInstanceOf(Exception.class)
+            .hasMessageContaining("Bad Request");
     }
 
     private static void stubPostResponse(String url, int statusCode, String response) {
         stubFor(post(urlEqualTo(url)).willReturn(aResponse()
-                .withStatus(statusCode)
-                .withBody(response)));
+            .withStatus(statusCode)
+            .withBody(response)));
     }
 }
