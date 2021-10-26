@@ -106,6 +106,12 @@
             <artifactId>restx-specs-tests</artifactId>
             <version>${restx.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
