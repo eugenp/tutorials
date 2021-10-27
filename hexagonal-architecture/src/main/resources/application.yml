@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hexagonal_architecture
+    type: com.zaxxer.hikari.HikariDataSource
+    username: testuser
+    password: testuser
