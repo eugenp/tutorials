@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <version>1.0.0-SNAPSHOT</version>
     <artifactId>simple-hexagonal-example</artifactId>
-    <name>simpleHexagonalExample</name>
+    <name>simple-hexagonal-example</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

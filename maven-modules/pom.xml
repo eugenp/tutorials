@@ -37,7 +37,7 @@
         <module>plugin-management</module>
         <module>maven-surefire-plugin</module>
         <module>maven-parent-pom-resolution</module>
-        <module>maven-dependency-management</module>    
+        <module>maven-dependency</module>    
     </modules>
 
 </project>
