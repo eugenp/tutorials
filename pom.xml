@@ -1392,7 +1392,7 @@
         <byte-buddy.version>1.11.20</byte-buddy.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.30</org.slf4j.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
         <logback.version>1.2.6</logback.version>
 
         <!-- plugins -->
