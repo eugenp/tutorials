@@ -1,17 +1,22 @@
 package com.baeldung.dsrouting;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.sql.DataSource;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.baeldung.dsrouting.model.ClientADetails;
+import com.baeldung.dsrouting.model.ClientBDetails;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+
 @Configuration
-public class DataSourceRoutingTestConfiguration {
+public class SpringBootDataSourceRoutingTestConfiguration {
+    @Autowired
+    private ClientADetails clientADetails;
+    @Autowired
+    private ClientBDetails clientBDetails;
 
     @Bean
     public ClientService clientService() {
@@ -34,11 +39,17 @@ public class DataSourceRoutingTestConfiguration {
 
     private DataSource clientADatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-        return dbBuilder.setType(EmbeddedDatabaseType.H2).setName("CLIENT_A").addScript("classpath:dsrouting-db.sql").build();
+        return dbBuilder.setType(EmbeddedDatabaseType.H2)
+                .setName(clientADetails.getName())
+                .addScript(clientADetails.getScript())
+                .build();
     }
 
     private DataSource clientBDatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-        return dbBuilder.setType(EmbeddedDatabaseType.H2).setName("CLIENT_B").addScript("classpath:dsrouting-db.sql").build();
+        return dbBuilder.setType(EmbeddedDatabaseType.H2)
+                .setName(clientBDetails.getName())
+                .addScript(clientBDetails.getScript())
+                .build();
     }
 }
