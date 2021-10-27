@@ -1,8 +1,8 @@
 package com.baeldung.jndi.ldap.auth;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.Hashtable;
 
@@ -30,9 +30,15 @@ import org.junit.runner.RunWith;
 @CreateDS(
   allowAnonAccess = false, partitions = {@CreatePartition(name = "TestPartition", suffix = "dc=baeldung,dc=com")})
 @ApplyLdifFiles({"users.ldif"})
-public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
+// class marked as manual test, as it has to run independently from the other unit tests in the module
+public class JndiLdapAuthManualTest extends AbstractLdapTestUnit {
+    
+    private static void authenticateUser(Hashtable<String, String> environment) throws Exception {
+        DirContext context = new InitialDirContext(environment);   
+        context.close();       
+    }
 
-    @Test(expected = Test.None.class /* no exception expected, which shows authentication success */)
+    @Test
     public void givenPreloadedLDAPUserJoe_whenAuthUserWithCorrectPW_thenAuthSucceeds() throws Exception {
         
         Hashtable<String, String> environment = new Hashtable<String, String>();
@@ -43,11 +49,10 @@ public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
         environment.put(Context.SECURITY_PRINCIPAL, "cn=Joe Simms,ou=Users,dc=baeldung,dc=com");
         environment.put(Context.SECURITY_CREDENTIALS, "12345");
         
-        DirContext context = new InitialDirContext(environment);                
-        context.close();
+        assertThatCode(() -> authenticateUser(environment)).doesNotThrowAnyException();
     }
     
-    @Test(expected = AuthenticationException.class)
+    @Test
     public void givenPreloadedLDAPUserJoe_whenAuthUserWithWrongPW_thenAuthFails() throws Exception {
         
         Hashtable<String, String> environment = new Hashtable<String, String>();
@@ -58,11 +63,10 @@ public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
         environment.put(Context.SECURITY_PRINCIPAL, "cn=Joe Simms,ou=Users,dc=baeldung,dc=com");
         environment.put(Context.SECURITY_CREDENTIALS, "wronguserpw");
         
-        DirContext context = new InitialDirContext(environment);   
-        context.close();       
+        assertThatExceptionOfType(AuthenticationException.class).isThrownBy(() -> authenticateUser(environment));
     }
     
-    @Test(expected = Test.None.class /* no exception expected, which shows authentication success */)
+    @Test
     public void givenPreloadedLDAPUserJoe_whenSearchAndAuthUserWithCorrectPW_thenAuthSucceeds() throws Exception {
         
         // first authenticate against LDAP as admin to search up DN of user : Joe Simms
@@ -70,8 +74,7 @@ public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
         Hashtable<String, String> environment = new Hashtable<String, String>();
         environment.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         environment.put(Context.PROVIDER_URL, "ldap://localhost:10390");
-        environment.put(Context.SECURITY_AUTHENTICATION, "simple");
-        
+        environment.put(Context.SECURITY_AUTHENTICATION, "simple");        
         environment.put(Context.SECURITY_PRINCIPAL, "uid=admin,ou=system");
         environment.put(Context.SECURITY_CREDENTIALS, "secret");
         
@@ -96,25 +99,23 @@ public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
             Attributes attrs = result.getAttributes();
             
             String distinguishedName = result.getNameInNamespace();
-            assertThat("Searched user DN is incorrect: ",
-              distinguishedName, is(equalTo("cn=Joe Simms,ou=Users,dc=baeldung,dc=com")));
+            assertThat(distinguishedName).isEqualTo("cn=Joe Simms,ou=Users,dc=baeldung,dc=com");
             
             String commonName = attrs.get("cn").toString();
-            assertThat("Searched user CN is incorrect: ", commonName, is(equalTo("cn: Joe Simms")));
+            assertThat(commonName).isEqualTo("cn: Joe Simms");
             
             // authenticate new context with DN for user Joe Simms, using correct password
         
             environment.put(Context.SECURITY_PRINCIPAL, distinguishedName);
             environment.put(Context.SECURITY_CREDENTIALS, "12345");
             
-            DirContext userContext = new InitialDirContext(environment);
-            userContext.close();
+            assertThatCode(() -> authenticateUser(environment)).doesNotThrowAnyException();
         }
         
         adminContext.close();               
     }    
     
-    @Test(expected = AuthenticationException.class)
+    @Test
     public void givenPreloadedLDAPUserJoe_whenSearchAndAuthUserWithWrongPW_thenAuthFails() throws Exception {
         
         // first authenticate against LDAP as admin to search up DN of user : Joe Simms
@@ -123,10 +124,8 @@ public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
         environment.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         environment.put(Context.PROVIDER_URL, "ldap://localhost:10390");
         environment.put(Context.SECURITY_AUTHENTICATION, "simple");
-        
         environment.put(Context.SECURITY_PRINCIPAL, "uid=admin,ou=system");
         environment.put(Context.SECURITY_CREDENTIALS, "secret");
-        
         DirContext adminContext = new InitialDirContext(environment);
         
         // define the search filter to find the person with CN : Joe Simms
@@ -148,19 +147,17 @@ public class JndiLdapAuthUnitTest extends AbstractLdapTestUnit {
             Attributes attrs = result.getAttributes();
             
             String distinguishedName = result.getNameInNamespace();
-            assertThat("Searched user DN is incorrect: ",
-              distinguishedName, is(equalTo("cn=Joe Simms,ou=Users,dc=baeldung,dc=com")));
+            assertThat(distinguishedName).isEqualTo("cn=Joe Simms,ou=Users,dc=baeldung,dc=com");
 
             String commonName = attrs.get("cn").toString();
-            assertThat("Searched user CN is incorrect: ", commonName, is(equalTo("cn: Joe Simms")));
+            assertThat(commonName).isEqualTo("cn: Joe Simms");
             
             // authenticate new context with DN for user Joe Simms, using wrong password
         
             environment.put(Context.SECURITY_PRINCIPAL, distinguishedName);
             environment.put(Context.SECURITY_CREDENTIALS, "wronguserpassword");
             
-            DirContext userContext = new InitialDirContext(environment);
-            userContext.close();
+            assertThatExceptionOfType(AuthenticationException.class).isThrownBy(() -> authenticateUser(environment));
         }
         
         adminContext.close();               
