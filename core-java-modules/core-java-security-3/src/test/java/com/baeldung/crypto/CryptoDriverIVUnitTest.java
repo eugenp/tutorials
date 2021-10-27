@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.baeldung.crypto.utils.CryptoUtils;
 
-public class CrytoDriverIVTest {
+public class CrytoDriverIVUnitTest {
     private CryptoDriver driver = new CryptoDriver();
     private String TEST_DATA = "Encrypt this for testing";
 
