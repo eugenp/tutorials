@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface ProductApi {
 
-    void  addProduct(Product product);
+    void addProduct(Product product);
 
     List<Product> all();
 
