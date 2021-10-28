@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <version>1.0-SNAPSHOT</version>
+    <name>quarkus-vs-springboot</name>
+    <artifactId>quarkus-vs-springboot</artifactId>
+    <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>quarkus-project</module>
+        <module>spring-project</module>
+    </modules>
+
+</project>

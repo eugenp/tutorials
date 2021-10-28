@@ -12,7 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -76,6 +75,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
@@ -106,6 +106,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -383,6 +384,8 @@
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
