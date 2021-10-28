@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class FirstWordGetterTest {
+public class FirstWordGetterUnitTest {
 
     @Test
     public void givenString_whenSplit_thenFirstWordIsReturned() {
