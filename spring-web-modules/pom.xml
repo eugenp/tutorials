@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-web-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -18,7 +19,7 @@
         <module>spring-mvc-basics</module>
         <module>spring-mvc-basics-2</module>
         <module>spring-mvc-basics-3</module>
-        <module>spring-mvc-basics-4</module>     
+        <module>spring-mvc-basics-4</module>
         <module>spring-mvc-crash</module>
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
@@ -41,6 +42,7 @@
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
         <module>spring-thymeleaf-3</module>
+        <module>spring-boot-jsp</module>
     </modules>
 
 </project>

@@ -22,6 +22,10 @@
                 <TimeBasedTriggeringPolicy />
             </Policies>
         </RollingFile>
+
+        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514"
+            protocol="UDP" appName="baeldung" facility="LOCAL0" />
+
     </Appenders>
 
     <Loggers>
@@ -29,6 +33,7 @@
         <Root level="info">
             <AppenderRef ref="Console" />
             <AppenderRef ref="RollingFile" />
+            <AppenderRef ref="Syslog" />
         </Root>
 
         <!-- LOG "com.baeldung*" at TRACE level -->

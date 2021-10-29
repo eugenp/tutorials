@@ -8,3 +8,4 @@
 - [Localizing Exception Messages in Java](https://www.baeldung.com/java-localize-exception-messages)
 - [Explanation of ClassCastException in Java](https://www.baeldung.com/java-classcastexception)
 - [NoSuchFieldError in Java](https://www.baeldung.com/java-nosuchfielderror)
+- [IllegalAccessError in Java](https://www.baeldung.com/java-illegalaccesserror)

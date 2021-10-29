@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -61,37 +62,32 @@
             <version>${netty.version}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- tomcat -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-catalina</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-tcp</artifactId>
             <version>${smack.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-extensions</artifactId>
             <version>${smack.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-java7</artifactId>
             <version>${smack.version}</version>
         </dependency>
-
         <!-- NanoHTTPD -->
         <dependency>
             <groupId>org.nanohttpd</groupId>
@@ -103,9 +99,8 @@
             <artifactId>nanohttpd-nanolets</artifactId>
             <version>${nanohttpd.version}</version>
         </dependency>
-
     </dependencies>
-    
+
     <properties>
         <assertj.version>3.6.2</assertj.version>
         <httpclient.version>4.5.3</httpclient.version>

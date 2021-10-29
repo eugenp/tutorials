@@ -17,14 +17,18 @@ public class StagingMultidocumentFilesIntegrationTest {
 
     @Value("${bael.property}")
     private String baelCustomProperty;
-    
+
+    @Value("${bael.stagingProperty}")
+    private String baelStagingProperty;
+
     @Value("${bael.root-level-property}")
     private String baelRootProperty;
 
     @Test
-    @Disabled("Fix and update https://www.baeldung.com/spring-boot-yaml-vs-properties article")
     public void givenProductionProfileActive_whenApplicationStarts_thenDefaultPropertiesUser() {
-        assertThat(baelCustomProperty).isEqualTo("stagingValue");
+        assertThat(baelStagingProperty).isEqualTo("stagingPropertyValue");
+        // application.properties is loaded after the application.yml file and overrides the values
+        assertThat(baelCustomProperty).isEqualTo("defaultValue");
         assertThat(baelRootProperty).isEqualTo("defaultRootLevelValue");
     }
 }

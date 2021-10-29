@@ -1,4 +1,4 @@
-package main.java.com.baeldung.thymeleaf.articles;
+package com.baeldung.thymeleaf.articles;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

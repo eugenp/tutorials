@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hibernate-mapping</artifactId>
     <name>hibernate-mapping</name>
@@ -14,9 +14,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>${hibernate-types.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -61,14 +72,14 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-        
     </dependencies>
 
     <properties>
         <hibernate.version>5.4.12.Final</hibernate.version>
+        <hibernate-types.version>2.10.4</hibernate-types.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
-        <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>        
+        <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
         <money-api.version>1.0.3</money-api.version>
         <moneta.version>1.3</moneta.version>
     </properties>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>guava-modules</artifactId>
     <name>guava-modules</name>
@@ -23,6 +24,7 @@
         <module>guava-collections-list</module>
         <module>guava-collections-map</module>
         <module>guava-collections-set</module>
+        <module>guava-concurrency</module>
         <module>guava-io</module>
     </modules>
 
@@ -48,7 +50,6 @@
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <guava.version>29.0-jre</guava.version>
     </properties>
 

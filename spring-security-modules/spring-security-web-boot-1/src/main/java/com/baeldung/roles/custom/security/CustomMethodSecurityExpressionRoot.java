@@ -14,13 +14,10 @@ public class CustomMethodSecurityExpressionRoot extends SecurityExpressionRoot i
         super(authentication);
     }
 
-    //
     public boolean isMember(Long OrganizationId) {
         final User user = ((MyUserPrincipal) this.getPrincipal()).getUser();
         return user.getOrganization().getId().longValue() == OrganizationId.longValue();
     }
-
-    //
 
     @Override
     public Object getFilterObject() {
@@ -46,5 +43,4 @@ public class CustomMethodSecurityExpressionRoot extends SecurityExpressionRoot i
     public void setReturnObject(Object obj) {
         this.returnObject = obj;
     }
-
 }

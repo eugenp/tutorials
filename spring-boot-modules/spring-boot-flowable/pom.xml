@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-flowable</artifactId>
+    <name>spring-boot-flowable</name>
+    <packaging>war</packaging>
+    <description>Spring Boot Flowable Module</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -10,12 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-
-    <artifactId>spring-boot-flowable</artifactId>
-    <packaging>war</packaging>
-
-    <name>spring-boot-flowable</name>
-    <description>Spring Boot Flowable Module</description>
 
     <dependencies>
         <dependency>
@@ -61,4 +59,5 @@
     <properties>
         <flowable.version>6.4.1</flowable.version>
     </properties>
+
 </project>

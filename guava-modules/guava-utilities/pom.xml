@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -21,7 +20,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
         <!-- test scoped -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -44,8 +42,7 @@
     </dependencies>
 
     <build>
-        <finalName>guava</finalName>
-
+        <finalName>guava-utilities</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -56,7 +53,6 @@
 
     <properties>
         <!-- testing -->
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
 

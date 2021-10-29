@@ -16,4 +16,6 @@ This module contains articles about core Java Security
 - [Java AES Encryption and Decryption](https://www.baeldung.com/java-aes-encryption-decryption)
 - [InvalidAlgorithmParameterException: Wrong IV Length](https://www.baeldung.com/java-invalidalgorithmparameter-exception)
 - [The java.security.egd JVM Option](https://www.baeldung.com/java-security-egd)
+- [RSA in Java](https://www.baeldung.com/java-rsa)
+- [3DES in Java](https://www.baeldung.com/java-3des)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -14,33 +15,33 @@
     </parent>
 
     <modules>
-        <module>spring-ldap</module>
         <module>spring-5-security</module>
         <module>spring-5-security-cognito</module>
         <module>spring-5-security-oauth</module>
+        <module>spring-ldap</module>
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
-        <module>spring-security-web-angular/server</module>
-        <module>spring-security-config</module>
         <module>spring-security-core</module>
-        <module>spring-security-web-mvc</module>
-        <module>spring-security-web-boot-1</module>
-        <module>spring-security-web-boot-2</module>
-        <module>spring-security-web-mvc-custom</module>
-        <module>spring-security-web-digest-auth</module>
         <module>spring-security-ldap</module>
-        <module>spring-security-web-login</module>
-        <module>spring-security-web-persisted-remember-me</module>
-        <module>spring-security-web-sockets</module>
         <module>spring-security-legacy-oidc</module>
+        <module>spring-security-oauth2-sso</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
         <module>spring-security-saml</module>
-        <module>spring-security-web-react</module>   
-        <module>spring-security-web-rest</module>
+        <module>spring-security-web-angular/server</module>
+        <module>spring-security-web-boot-1</module>
+        <module>spring-security-web-boot-2</module>
+        <module>spring-security-web-boot-3</module>
+        <module>spring-security-web-digest-auth</module>
+        <module>spring-security-web-login</module>
+        <module>spring-security-web-mvc-custom</module>
+        <module>spring-security-web-mvc</module>
+        <module>spring-security-web-persistent-login</module>
+        <module>spring-security-web-react</module>
         <module>spring-security-web-rest-basic-auth</module>
         <module>spring-security-web-rest-custom</module>
-        <module>spring-security-oauth2-sso</module>
+        <module>spring-security-web-rest</module>
+        <module>spring-security-web-sockets</module>
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>
         <module>spring-session</module>

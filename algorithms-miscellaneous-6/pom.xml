@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>algorithms-miscellaneous-6</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -11,9 +12,9 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
-    <dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
@@ -21,7 +22,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -41,11 +42,10 @@
             <version>${commons-math3.version}</version>
         </dependency>
     </dependencies>
-    
+
     <properties>
         <guava.version>28.1-jre</guava.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
-        <junit.platform.version>1.6.0</junit.platform.version>
         <commons-math3.version>3.6.1</commons-math3.version>
     </properties>
 

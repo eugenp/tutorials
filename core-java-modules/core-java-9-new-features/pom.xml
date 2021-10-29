@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -30,7 +29,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -40,6 +39,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <profiles>
         <profile>
             <id>incubator-features</id>
@@ -131,6 +131,7 @@
             </build>
         </profile>
     </profiles>
+
     <build>
         <finalName>core-java-9-new-features</finalName>
         <plugins>
@@ -157,7 +158,6 @@
         <rxjava.version>3.0.0</rxjava.version>
         <!-- testing -->
         <assertj.version>3.10.0</assertj.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
         <awaitility.version>4.0.2</awaitility.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>

@@ -6,11 +6,11 @@
     <artifactId>core-java-lang-math-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>core-java-lang-math-3</name>
+
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -19,17 +19,11 @@
             <artifactId>exp4j</artifactId>
             <version>0.4.8</version>
         </dependency>
-
         <dependency>
             <groupId>com.fathzer</groupId>
             <artifactId>javaluator</artifactId>
             <version>3.0.3</version>
         </dependency>
     </dependencies>
-
-
-    <properties>
-
-    </properties>
 
 </project>

@@ -5,3 +5,10 @@ spring:
       group-id: baeldung
 test:
   topic: embedded-test-topic
+
+monitor:
+  kafka:
+    bootstrap:
+      config: "PLAINTEXT://localhost:9085"
+    consumer:
+      groupid: "baeldungGrp"

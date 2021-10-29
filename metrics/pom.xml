@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>metrics</artifactId>
     <name>metrics</name>
@@ -37,7 +38,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${dep.ver.servlet}</version>
         </dependency>
-
         <dependency>
             <groupId>com.netflix.servo</groupId>
             <artifactId>servo-core</artifactId>
@@ -50,19 +50,16 @@
             <version>${netflix.servo.ver}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-atlas</artifactId>
             <version>${micrometer.ver}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot-starter-web.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -73,18 +70,21 @@
             <artifactId>jackson-dataformat-smile</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.astefanutti.metrics.aspectj</groupId>
             <artifactId>metrics-aspectj-deps</artifactId>
             <version>${metrics-aspectj.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.spectator</groupId>
+            <artifactId>spectator-api</artifactId>
+            <version>0.132.0</version>
         </dependency>
     </dependencies>
 
@@ -92,8 +92,8 @@
         <dep.ver.metrics>3.1.2</dep.ver.metrics>
         <dep.ver.servlet>3.1.0</dep.ver.servlet>
         <netflix.servo.ver>0.12.17</netflix.servo.ver>
-        <micrometer.ver>0.12.0.RELEASE</micrometer.ver>
-<!--        <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version>-->
+        <micrometer.ver>1.7.1</micrometer.ver>
+        <!-- <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version> -->
         <spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
         <assertj-core.version>3.11.1</assertj-core.version>
         <metrics-aspectj.version>1.1.0</metrics-aspectj.version>

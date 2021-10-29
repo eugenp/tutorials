@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <name>spring-boot-modules</name>
 
     <parent>
@@ -34,6 +33,7 @@
         <module>spring-boot-ctx-fluent</module>
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
+        <module>spring-boot-disable-logging</module>
         <module>spring-boot-camel</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
@@ -70,11 +70,11 @@
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
-        <module>spring-boot-xml</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
+        <module>spring-boot-react</module>
+        <module>spring-boot-validation</module>
     </modules>
-
 
     <dependencyManagement>
         <dependencies>
@@ -107,7 +107,7 @@
     </dependencies>
 
     <properties>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
+
 </project>
