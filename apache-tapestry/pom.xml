@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>apache-tapestry</artifactId>
@@ -12,45 +11,42 @@
 
     <dependencies>
         <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, 
-        and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
+            and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration files, such 
+            as hibernate.cfg.xml. -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
             <version>${tapestry-release-version}</version>
         </dependency>
-
         <!-- Include the Log4j implementation for the SLF4J logging framework -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j-release-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-webresources</artifactId>
             <version>${tapestry-release-version}</version>
         </dependency>
-
         <!-- Uncomment this to add support for file uploads: -->
-        <!-- <dependency> <groupId>org.apache.tapestry</groupId> <artifactId>tapestry-upload</artifactId> <version>${tapestry-release-version}</version> </dependency> -->
-
-        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the tests) will fail, preventing Maven from packaging the WAR. Tapestry includes 
-            a large number of testing facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
+        <!-- <dependency> <groupId>org.apache.tapestry</groupId> <artifactId>tapestry-upload</artifactId> 
+            <version>${tapestry-release-version}</version> </dependency> -->
+        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the 
+            tests) will fail, preventing Maven from packaging the WAR. Tapestry includes a large number of testing 
+            facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng-release-version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-test</artifactId>
             <version>${tapestry-release-version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Provided by the servlet container, but sometimes referenced in the application code. -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -58,7 +54,6 @@
             <version>${servlet-api-release-version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Provide dependency to the Tapestry javadoc taglet which replaces the Maven component report -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
@@ -81,7 +76,6 @@
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -92,7 +86,6 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
             <!-- Run the application using "mvn jetty:run" -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -101,7 +94,8 @@
                 <configuration>
                     <!-- Log to the console. -->
                     <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug that prevents the requestLog from being set. -->
+                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug 
+                            that prevents the requestLog from being set. -->
                         <append>true</append>
                     </requestLog>
                     <systemProperties>
@@ -115,15 +109,13 @@
         </plugins>
     </build>
 
-    <reporting />
-
     <repositories>
         <repository>
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
-
-        <!-- This repository is only needed when the Tapestry version is a preview release, rather than a final release. -->
+        <!-- This repository is only needed when the Tapestry version is a preview release, rather than 
+            a final release. -->
         <repository>
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>

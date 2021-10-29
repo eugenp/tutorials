@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>libraries-6</artifactId>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>libraries-6</artifactId>
 
     <dependencies>
         <dependency>
@@ -21,18 +21,6 @@
             <groupId>com.codepoetics</groupId>
             <artifactId>protonpack</artifactId>
             <version>${protonpack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <classifier>test</classifier>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
@@ -112,19 +100,24 @@
             <artifactId>renjin-script-engine</artifactId>
             <version>${renjin.version}</version>
         </dependency>
-        <!-- libphonenumber  -->
+        <!-- libphonenumber -->
         <dependency>
             <groupId>com.googlecode.libphonenumber</groupId>
             <artifactId>libphonenumber</artifactId>
             <version>${libphonenumber.version}</version>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${org.modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
         <!-- Needed for Renjin -->
         <repository>
             <id>bedatadriven</id>
-            <name>bedatadriven public repo</name>
+            <name>BeDataDriven repository</name>
             <url>https://nexus.bedatadriven.com/content/groups/public/</url>
         </repository>
     </repositories>
@@ -148,7 +141,6 @@
     </build>
 
     <properties>
-        <kafka.version>2.0.0</kafka.version>
         <javapoet.version>1.10.0</javapoet.version>
         <reflections.version>0.9.11</reflections.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
@@ -157,12 +149,12 @@
         <protonpack.version>1.15</protonpack.version>
         <commons-net.version>3.6</commons-net.version>
         <assertj.version>3.6.2</assertj.version>
-        <renjin.version>RELEASE</renjin.version>
+        <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
+        <org.modelmapper.version>2.4.4</org.modelmapper.version>
     </properties>
-
 
 </project>

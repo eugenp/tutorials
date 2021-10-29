@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data</artifactId>
     <name>libraries-data</name>
@@ -14,9 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -57,8 +58,7 @@
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
-
-        <!--  crunch project  -->
+        <!-- crunch project -->
         <dependency>
             <groupId>org.apache.crunch</groupId>
             <artifactId>crunch-core</artifactId>
@@ -70,11 +70,10 @@
             <version>${org.apache.hadoop.hadoop-client}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>commons-cli</groupId>
             <artifactId>commons-cli</artifactId>
-            <version>${commons.cli.version}</version>
+            <version>${commons-cli.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -109,7 +108,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.storm</groupId>
@@ -164,7 +163,6 @@
 
     <properties>
         <assembly.plugin.version>2.3</assembly.plugin.version>
-        <commons.cli.version>1.2</commons.cli.version>
         <httpclient.version>3.0.1</httpclient.version>
         <storm.version>1.2.2</storm.version>
         <kafka.version>1.0.0</kafka.version>
@@ -175,7 +173,6 @@
         <hazelcast.version>3.8.4</hazelcast.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
-        <slf4j.version>1.7.25</slf4j.version>
         <jmapper.version>1.6.0.1</jmapper.version>
     </properties>
 

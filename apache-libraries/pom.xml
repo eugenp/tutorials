@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-libraries</artifactId>
@@ -29,7 +30,6 @@
             <artifactId>avro-maven-plugin</artifactId>
             <version>${avro.version}</version>
         </dependency>
-
         <!-- beam -->
         <dependency>
             <groupId>org.apache.beam</groupId>
@@ -43,7 +43,6 @@
             <version>${beam.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <!-- bval -->
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -60,7 +59,6 @@
             <artifactId>bval-extras</artifactId>
             <version>${bval.version}</version>
         </dependency>
-
         <!-- meecrowave -->
         <dependency>
             <groupId>org.apache.meecrowave</groupId>
@@ -84,14 +82,12 @@
             <version>${meecrowave-junit.version}</version>
             <scope>test</scope>
         </dependency>
-        
         <!-- opennlp -->
         <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp.opennlp-tools.version}</version>
         </dependency>
-        
         <!-- pulsar -->
         <dependency>
             <groupId>org.apache.pulsar</groupId>
@@ -99,14 +95,12 @@
             <version>${pulsar-client.version}</version>
             <scope>compile</scope>
         </dependency>
-        
         <!-- zookeeper -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>${zookeeper.version}</version>
         </dependency>
-        
         <!-- curator -->
         <dependency>
             <groupId>org.apache.curator</groupId>
@@ -140,26 +134,28 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
-        
         <!-- geode -->
         <dependency>
             <groupId>org.apache.geode</groupId>
             <artifactId>geode-core</artifactId>
             <version>${geode.core}</version>
         </dependency>
-        
         <!-- solr -->
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
         </dependency>
-        
         <!-- common -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -171,7 +167,7 @@
 
     <build>
         <plugins>
-        <!-- avro -->
+            <!-- avro -->
             <plugin>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-maven-plugin</artifactId>
@@ -192,7 +188,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
             <!-- meecrowave -->
             <plugin>
                 <groupId>org.apache.meecrowave</groupId>
@@ -206,7 +201,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <avro.version>1.8.2</avro.version>
-        <slf4j.version>1.7.25</slf4j.version>
         <beam.version>2.19.0</beam.version>
         <assertj.version>3.9.0</assertj.version>
         <bval.version>1.1.2</bval.version>

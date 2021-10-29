@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.nashorn</groupId>
+    <artifactId>spring-boot-nashorn</artifactId>
+    <version>1.0</version>
+    <name>spring-boot-nashorn</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -10,13 +15,6 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-
-    <groupId>com.baeldung.nashorn</groupId>
-    <artifactId>spring-boot-nashorn</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-
-    <name>spring-boot-nashorn</name>
 
     <dependencies>
         <dependency>
@@ -50,5 +48,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

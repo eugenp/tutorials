@@ -146,7 +146,7 @@ public class WebClientLoggingIntegrationTest {
           .exchange()
           .block();
 
-        verify(mockAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains("domain=.typicode.com;")));
+        verify(mockAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleUrl)));
     }
 
 

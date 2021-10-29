@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jee-7</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -41,7 +41,6 @@
             <version>${javaee_api.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
@@ -60,14 +59,12 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
             <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
             <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
@@ -114,7 +111,6 @@
             <artifactId>standard</artifactId>
             <version>${taglibs.standard.version}</version>
         </dependency>
-
         <dependency>
             <groupId>javax.mvc</groupId>
             <artifactId>javax.mvc-api</artifactId>
@@ -125,13 +121,11 @@
             <artifactId>ozark</artifactId>
             <version>${ozark.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
             <version>${org.springframework.security.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -143,7 +137,6 @@
             <version>${org.springframework.security.version}</version>
         </dependency>
         <!-- Batch dependencies -->
-
         <dependency>
             <groupId>org.jboss.spec.javax.batch</groupId>
             <artifactId>jboss-batch-api_1.0_spec</artifactId>
@@ -210,8 +203,8 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings
-                    only. It has no influence on the Maven build itself. -->
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no 
+                    influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -242,7 +235,7 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
-                <!-- jax-ws maven plugin-->
+                <!-- jax-ws maven plugin -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxws-maven-plugin</artifactId>
@@ -492,23 +485,9 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>bintray-mvc-spec-maven</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/mvc-spec/maven</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
-        <mvc.api.version>20160715</mvc.api.version>
+        <mvc.api.version>1.0-edr2</mvc.api.version>
         <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
         <javaee_api.version>7.0</javaee_api.version>
@@ -530,7 +509,7 @@
         <graphene-webdriver.version>2.1.0.Final</graphene-webdriver.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <jsp-api.version>2.2</jsp-api.version>
-        <ozark.version>20160715</ozark.version>
+        <ozark.version>1.0.0-m02</ozark.version>
         <jboss-batch-api.version>1.0.0.Final</jboss-batch-api.version>
         <jberet.version>1.0.2.Final</jberet.version>
         <jboss-transaction-api.version>1.0.0.Final</jboss-transaction-api.version>

@@ -31,10 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LogoutSuccessHandler myLogoutSuccessHandler;
 
-    public SecurityConfig() {
-        super();
-    }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
@@ -50,7 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
-        // @formatter:off
         http
             .csrf().disable()
             .authorizeRequests()
@@ -69,10 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/logout.html?logSucc=true")
                 .deleteCookies("JSESSIONID")
                 .permitAll();
-    // @formatter:on
     }
-
-    // beans
 
     @Bean
     public DaoAuthenticationProvider authProvider() {
@@ -86,5 +78,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
     }
-
 }

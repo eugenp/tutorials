@@ -35,14 +35,11 @@ public class User {
 
     private boolean isUsing2FA;
 
-    //
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
     public User() {
-        super();
         this.enabled = false;
     }
 
@@ -143,5 +140,4 @@ public class User {
         	.append(firstName).append(", lastName=").append(lastName).append(", email=").append(email).append(", password=").append(password).append(", enabled=").append(enabled).append(", roles=").append(roles).append("]");
         return builder.toString();
     }
-
 }

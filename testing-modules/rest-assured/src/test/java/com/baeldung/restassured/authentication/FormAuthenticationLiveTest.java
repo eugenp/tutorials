@@ -27,7 +27,7 @@ public class FormAuthenticationLiveTest {
         get(SVC_URL).then()
             .assertThat()
             .statusCode(HttpStatus.OK.value())
-            .content(containsString("<form"), containsString("action=\"perform_login\""));
+            .body(containsString("<form"), containsString("action=\"perform_login\""));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class FormAuthenticationLiveTest {
             .then()
             .assertThat()
             .statusCode(HttpStatus.OK.value())
-            .content(containsString("<form"), containsString("action=\"perform_login\""));
+            .body(containsString("<form"), containsString("action=\"perform_login\""));
     }
 
     @Test
@@ -52,6 +52,6 @@ public class FormAuthenticationLiveTest {
             .then()
             .assertThat()
             .statusCode(HttpStatus.OK.value())
-            .content(isEmptyString());
+            .body(isEmptyString());
     }
 }

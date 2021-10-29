@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -27,7 +26,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
         <!-- test scoped -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -47,7 +45,6 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -58,8 +55,7 @@
     </dependencies>
 
     <build>
-        <finalName>guava-collections</finalName>
-
+        <finalName>guava-collections-list</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -71,11 +67,9 @@
     <properties>
         <!-- util -->
         <commons-collections4.version>4.1</commons-collections4.version>
-
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
     </properties>
 
 </project>

@@ -90,18 +90,22 @@ class ProcessUnderstandingUnitTest {
     }
 
     @Test
-    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
+    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException, InterruptedException {
 
         Runtime.getRuntime()
                 .exec("javac -cp src src/main/java/com/baeldung/java9/process/OutputStreamExample.java"
-                        .replace("/", File.separator));
+                        .replace("/", File.separator))
+                .waitFor(5, TimeUnit.SECONDS);
 
         Process process = Runtime.getRuntime()
                 .exec("java -cp src/main/java com.baeldung.java9.process.OutputStreamExample"
                 .replace("/", File.separator));
 
+        process.waitFor(5, TimeUnit.SECONDS);
+
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
+        String line = output.readLine();
+        int value = Integer.parseInt(line);
 
         assertEquals(3, value);
     }

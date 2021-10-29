@@ -17,9 +17,9 @@ import static org.junit.Assert.assertTrue;
 
 public class FileDownloadIntegrationTest {
     
-    static String FILE_URL = "http://ovh.net/files/1Mio.dat";
+    static String FILE_URL = "https://s3.amazonaws.com/baeldung.com/Do+JSON+with+Jackson+by+Baeldung.pdf";
     static String FILE_NAME = "file.dat";
-    static String FILE_MD5_HASH = "6cb91af4ed4c60c11613b75cd1fc6116";
+    static String FILE_MD5_HASH = "c959feb066b37f5c4f0e0f45bbbb4f86";
     
     @Test
     public void givenJavaIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {

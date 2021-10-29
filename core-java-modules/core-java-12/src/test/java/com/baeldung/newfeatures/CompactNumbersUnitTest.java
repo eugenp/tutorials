@@ -1,6 +1,6 @@
-package java.com.baeldung.newfeatures;
+package com.baeldung.newfeatures;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -16,6 +16,6 @@ public class CompactNumbersUnitTest {
         assertEquals("2.59K", likesShort.format(2592));
         NumberFormat likesLong = NumberFormat.getCompactNumberInstance(new Locale("en", "US"), NumberFormat.Style.LONG);
         likesLong.setMaximumFractionDigits(2);
-        assertEquals("2.59 thousand", likesShort.format(2592));
+        assertEquals("2.59 thousand", likesLong.format(2592));
     }
 }

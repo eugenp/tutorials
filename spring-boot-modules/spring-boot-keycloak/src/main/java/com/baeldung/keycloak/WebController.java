@@ -8,6 +8,8 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class WebController {
 
@@ -17,6 +19,12 @@ public class WebController {
     @GetMapping(path = "/")
     public String index() {
         return "external";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) throws Exception {
+        request.logout();
+        return "redirect:/";
     }
 
     @GetMapping(path = "/customers")
