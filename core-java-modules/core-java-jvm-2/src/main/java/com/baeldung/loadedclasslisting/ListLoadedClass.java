@@ -14,13 +14,11 @@ import com.google.common.reflect.ClassPath.ClassInfo;
 public class ListLoadedClass {
 
     public ImmutableSet<ClassInfo> listClassLoaded() throws IOException {
-
         return ClassPath.from(ListLoadedClass.class.getClassLoader())
                 .getAllClasses();
     }
 
     public Set<Class> listClassLoaded(String packageName) throws IOException {
-
         return ClassPath.from(ClassLoader.getSystemClassLoader()).getAllClasses().stream()
                 .filter(clazz -> clazz.getPackageName().equals(packageName))
                 .map(ClassInfo::load)
