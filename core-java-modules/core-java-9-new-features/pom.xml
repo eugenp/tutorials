@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -158,7 +158,6 @@
         <rxjava.version>3.0.0</rxjava.version>
         <!-- testing -->
         <assertj.version>3.10.0</assertj.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
         <awaitility.version>4.0.2</awaitility.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>

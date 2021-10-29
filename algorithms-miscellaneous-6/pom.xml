@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -46,7 +46,6 @@
     <properties>
         <guava.version>28.1-jre</guava.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
-        <junit.platform.version>1.6.0</junit.platform.version>
         <commons-math3.version>3.6.1</commons-math3.version>
     </properties>
 

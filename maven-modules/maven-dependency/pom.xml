@@ -9,19 +9,13 @@
     <packaging>pom</packaging>
 
     <parent>
-        <artifactId>maven-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>maven-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.13.2</version>
-                <scope>test</scope>
-            </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -32,8 +26,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
