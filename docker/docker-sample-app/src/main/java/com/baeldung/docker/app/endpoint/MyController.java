@@ -1,4 +1,4 @@
-package com.personal.dockapp.endpoint;
+package com.baeldung.docker.app.endpoint;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
