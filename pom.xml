@@ -35,12 +35,6 @@
 
         <!-- test -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit-jupiter.version}</version>
@@ -55,6 +49,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
@@ -116,7 +116,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit-platform.version}</version>
+                        <version>${junit-platform-surefire-provider.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.junit.jupiter</groupId>
@@ -1385,7 +1385,8 @@
         <gib.failOnError>false</gib.failOnError>
         <gib.disable>true</gib.disable>
 
-        <junit.version>4.12</junit.version>
+        <!-- used only in dependency management to force this version, not included as a direct dependency -->
+        <junit.version>4.13.2</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>3.3.0</mockito.version>
@@ -1417,8 +1418,9 @@
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.13.0</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <junit-platform.version>1.2.0</junit-platform.version>
-        <junit-jupiter.version>5.2.0</junit-jupiter.version>
+        <junit-platform.version>1.8.1</junit-platform.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>

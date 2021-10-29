@@ -12,23 +12,17 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
-            <version>1.2.0</version>
+            <version>${aws-lambda-java-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-events</artifactId>
-            <version>3.1.0</version>
+            <version>${aws-lambda-java-events.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.2</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <version>${jackson-databind.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -43,7 +37,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.16</version>
+            <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
 
@@ -71,6 +65,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <hibernate.version>5.4.21.Final</hibernate.version>
+        <aws-lambda-java-core.version>1.2.0</aws-lambda-java-core.version>
+        <aws-lambda-java-events.version>3.1.0</aws-lambda-java-events.version>
+        <jackson-databind.version>2.11.2</jackson-databind.version>
+        <postgresql.version>42.2.16</postgresql.version>
     </properties>
 
 </project>

@@ -16,6 +16,25 @@
         <relativePath />
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of junit:junit in the classpath. hence forcing the
+            latest 4.13.2 available version for junit5 compatibility -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -80,6 +99,9 @@
         <spring-boot-starter-log4j.version>1.3.8.RELEASE</spring-boot-starter-log4j.version>
         <gelfj.version>1.1.16</gelfj.version>
         <lombok.version>1.18.4</lombok.version>
+        <!-- used only in dependency management to force this version, not included as a direct dependency -->
+        <junit.version>4.13.2</junit.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
 
 </project>
