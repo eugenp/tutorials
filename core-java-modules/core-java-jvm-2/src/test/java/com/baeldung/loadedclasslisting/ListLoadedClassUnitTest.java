@@ -1,4 +1,4 @@
-package com.baeldubg.loadedclasslisting;
+package com.baeldung.loadedclasslisting;
 
 import java.io.IOException;
 import java.util.Set;
@@ -14,31 +14,28 @@ import com.google.common.reflect.ClassPath.ClassInfo;
 public class ListLoadedClassUnitTest {
 
     private static final String PACKAGE_NAME = "com.baeldung.loadedclasslisting";
+
     @Test
     public void when_findAllClassesUsingReflectionsLibrary_thenSuccess() {
         ListLoadedClass instance = new ListLoadedClass();
-
         Set<Class> classes = instance.findAllClassesUsingReflectionsLibrary(PACKAGE_NAME);
 
-        Assertions.assertEquals(3, classes.size());
+        Assertions.assertEquals(4, classes.size());
     }
 
     @Test
     public void when_findAllClassesUsingGuavaLibrary_InPackage_thenSuccess() throws IOException {
         ListLoadedClass instance = new ListLoadedClass();
-
         Set<Class> classes = instance.listClassLoaded(PACKAGE_NAME);
 
-        Assertions.assertEquals(3, classes.size());
+        Assertions.assertEquals(4, classes.size());
     }
-    
+
     @Test
     public void when_findAllClassesUsingGuavaLibrary_thenSuccess() throws IOException {
         ListLoadedClass instance = new ListLoadedClass();
-
         Set<ClassInfo> classes = instance.listClassLoaded();
 
-        Assertions.assertEquals(19276, classes.size());
+        Assertions.assertTrue(4<classes.size());
     }
-
 }
