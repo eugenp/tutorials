@@ -86,7 +86,6 @@
         <spring-cloud-starter-feign.version>1.4.7.RELEASE</spring-cloud-starter-feign.version>
         <spring-cloud-starter-hystrix.version>1.4.7.RELEASE</spring-cloud-starter-hystrix.version>
         <spring-cloud-stream.version>3.1.3</spring-cloud-stream.version>
-
     </properties>
 
 </project>

@@ -12,14 +12,12 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -97,7 +95,6 @@
     </build>
 
     <properties>
-        <junit.version>4.13</junit.version>
         <threadweaver.version>0.2</threadweaver.version>
         <tempus-fugit.version>1.1</tempus-fugit.version>
         <multithreadedtc.version>1.01</multithreadedtc.version>

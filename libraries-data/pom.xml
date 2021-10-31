@@ -15,9 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -108,7 +108,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.storm</groupId>
@@ -173,7 +173,6 @@
         <hazelcast.version>3.8.4</hazelcast.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
-        <slf4j.version>1.7.25</slf4j.version>
         <jmapper.version>1.6.0.1</jmapper.version>
     </properties>
 
