@@ -54,14 +54,13 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <spring-cloud-dependencies.version>2.0.3.RELEASE</spring-cloud-dependencies.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
     </properties>
 
 </project>

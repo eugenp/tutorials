@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SuffixTree {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(SuffixTree.class);
+
     private static final String WORD_TERMINATION = "$";
     private static final int POSITION_UNDEFINED = -1;
     private Node root;

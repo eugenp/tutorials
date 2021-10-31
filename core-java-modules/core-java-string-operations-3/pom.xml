@@ -17,6 +17,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons-lang3.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -41,6 +51,11 @@
             <groupId>com.vdurmont</groupId>
             <artifactId>semver4j</artifactId>
             <version>${semver4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -68,6 +83,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <assertj.version>3.6.1</assertj.version>
+        <spring-core.version>5.3.9</spring-core.version>
+        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+        <guava.version>31.0.1-jre</guava.version>
         <maven-artifact.version>3.6.3</maven-artifact.version>
         <gradle-core.version>6.1.1</gradle-core.version>
         <jackson-core.version>2.11.1</jackson-core.version>

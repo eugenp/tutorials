@@ -106,14 +106,19 @@
             <artifactId>libphonenumber</artifactId>
             <version>${libphonenumber.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${org.modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
         <!-- Needed for Renjin -->
         <repository>
-            <id>mulesoft</id>
-            <name>Mulesoft Repository</name>
-            <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+            <id>bedatadriven</id>
+            <name>BeDataDriven repository</name>
+            <url>https://nexus.bedatadriven.com/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -144,11 +149,12 @@
         <protonpack.version>1.15</protonpack.version>
         <commons-net.version>3.6</commons-net.version>
         <assertj.version>3.6.2</assertj.version>
-        <renjin.version>RELEASE</renjin.version>
+        <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
+        <org.modelmapper.version>2.4.4</org.modelmapper.version>
     </properties>
 
 </project>

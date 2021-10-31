@@ -38,6 +38,7 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
+        <module>core-java-collections-maps-4</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
         <module>core-java-concurrency-advanced-2</module>
@@ -135,6 +136,6 @@
 
     <properties>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
     </properties>
+
 </project>

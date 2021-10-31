@@ -20,7 +20,8 @@ public class OracleConfiguration {
         dataSource.setUser("books");
         dataSource.setPassword("books");        
         dataSource.setURL("jdbc:oracle:thin:@//localhost:11521/ORCLPDB1");
-        dataSource.setFastConnectionFailoverEnabled(true);
+        // Only with clients prior to v21
+        // dataSource.setFastConnectionFailoverEnabled(true);
         dataSource.setImplicitCachingEnabled(true);
         // Only with clients prior to v11.2
         // dataSource.setConnectionCachingEnabled(true);

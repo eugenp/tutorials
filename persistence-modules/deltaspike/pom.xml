@@ -16,6 +16,46 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of junit:junit in the classpath. hence forcing the
+            latest 4.13.2 available version for junit5 compatibility -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- JBoss distributes a complete set of Java EE 7 APIs including a Bill of Materials (BOM). 
+                A BOM specifies the versions of a "stack" (or a collection) of artifacts. We use this here so that we 
+                always get the correct versions of artifacts. Here we use the jboss-javaee-7.0-with-tools stack (you 
+                can read this as the JBoss stack of the Java EE 7 APIs, with some extras tools for your project, such 
+                as Arquillian for testing) and the jboss-javaee-7.0-with-hibernate stack you can read this as the JBoss 
+                stack of the Java EE 7 APIs, with extras from the Hibernate family of projects) -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-tools</artifactId>
+                <version>${jboss.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-hibernate</artifactId>
+                <version>${jboss.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.deltaspike.distribution</groupId>
+                <artifactId>distributions-bom</artifactId>
+                <version>${deltaspike.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- First declare the APIs we depend on and need for compilation. All of them are provided by 
             JBoss WildFly -->
@@ -244,38 +284,6 @@
             <url>https://maven.repository.redhat.com/techpreview/all/</url>
         </repository>
     </repositories>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- JBoss distributes a complete set of Java EE 7 APIs including a Bill of Materials (BOM). 
-                A BOM specifies the versions of a "stack" (or a collection) of artifacts. We use this here so that we 
-                always get the correct versions of artifacts. Here we use the jboss-javaee-7.0-with-tools stack (you 
-                can read this as the JBoss stack of the Java EE 7 APIs, with some extras tools for your project, such 
-                as Arquillian for testing) and the jboss-javaee-7.0-with-hibernate stack you can read this as the JBoss 
-                stack of the Java EE 7 APIs, with extras from the Hibernate family of projects) -->
-            <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>jboss-javaee-7.0-with-tools</artifactId>
-                <version>${jboss.bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>jboss-javaee-7.0-with-hibernate</artifactId>
-                <version>${jboss.bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.deltaspike.distribution</groupId>
-                <artifactId>distributions-bom</artifactId>
-                <version>${deltaspike.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <properties>
         <querydsl.version>3.7.4</querydsl.version>

@@ -11,5 +11,6 @@ This module contains articles about HTTP libraries.
 - [A Guide to Events in OkHTTP](https://www.baeldung.com/java-okhttp-events)
 - [Download a Binary File Using OkHttp](https://www.baeldung.com/java-okhttp-download-binary-file)
 - [Trusting a Self-Signed Certificate in OkHttp](https://www.baeldung.com/okhttp-self-signed-cert)
+- [Trusting All Certificates in OkHttp](https://www.baeldung.com/okhttp-client-trust-all-certificates)
 - More articles [[<-- prev]](/libraries-http)
 

@@ -110,9 +110,8 @@
         <!-- test scoped -->
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -284,7 +283,6 @@
         <pact.version>3.5.11</pact.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
-        <junit.version>4.12</junit.version>
         <maven.version>3.7.0</maven.version>
     </properties>
 

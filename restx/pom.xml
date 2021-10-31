@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>restx</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -99,18 +99,24 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>io.restx</groupId>
             <artifactId>restx-specs-tests</artifactId>
             <version>${restx.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -123,10 +129,8 @@
                 <executions>
                     <execution>
                         <id>attach-docs</id>
-                        <!--
-                            we generate javadoc before packaging the jar to let a chance to apidocs doclet
-                            to generate comments dictionary to be packaged inside the jar as a resource
-                            -->
+                        <!-- we generate javadoc before packaging the jar to let a chance to apidocs 
+                            doclet to generate comments dictionary to be packaged inside the jar as a resource -->
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>jar</goal>
@@ -149,7 +153,6 @@
 
     <properties>
         <restx.version>0.35-rc4</restx.version>
-        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 
 </project>
