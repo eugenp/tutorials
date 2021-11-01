@@ -30,14 +30,9 @@
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.vintage.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <junit-jupiter.version>5.4.2</junit-jupiter.version>
-        <junit.vintage.version>5.4.2</junit.vintage.version>
-    </properties>
 
 </project>
