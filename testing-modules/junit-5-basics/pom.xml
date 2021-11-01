@@ -25,13 +25,13 @@
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.vintage.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-migrationsupport</artifactId>
-            <version>${junit.vintage.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -147,9 +147,6 @@
     </profiles>
 
     <properties>
-        <junit.vintage.version>5.4.2</junit.vintage.version>
-        <junit-platform.version>1.2.0</junit-platform.version>
-        <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <spring.version>5.0.6.RELEASE</spring.version>
     </properties>
 

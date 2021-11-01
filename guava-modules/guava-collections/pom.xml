@@ -76,7 +76,6 @@
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
     </properties>
 
 </project>
