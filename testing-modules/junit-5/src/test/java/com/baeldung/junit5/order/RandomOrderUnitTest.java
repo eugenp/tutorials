@@ -7,8 +7,9 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-@TestMethodOrder(MethodOrderer.MethodName.class)
-public class AlphanumericOrderUnitTest {
+@TestMethodOrder(MethodOrderer.Random.class)
+public class RandomOrderUnitTest {
+
     private static StringBuilder output = new StringBuilder("");
 
     @Test
@@ -22,12 +23,13 @@ public class AlphanumericOrderUnitTest {
     }
 
     @Test
-    public void myaTest() {
-        output.append("a");
+    public void myCTest() {
+        output.append("C");
     }
 
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "ABa");
+        assertEquals(output.toString(), "ACB");
     }
+
 }
