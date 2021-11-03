@@ -8,3 +8,4 @@
 - [Count Spaces in a Java String](https://www.baeldung.com/java-string-count-spaces)
 - [Remove Accents and Diacritics From a String in Java](https://www.baeldung.com/java-remove-accents-from-text)
 - [Remove Beginning and Ending Double Quotes from a String](https://www.baeldung.com/java-remove-start-end-double-quote)
+- [Splitting a Java String by Multiple Delimiters](https://www.baeldung.com/java-string-split-multiple-delimiters)
