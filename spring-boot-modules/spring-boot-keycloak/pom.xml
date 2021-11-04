@@ -109,7 +109,7 @@
                 <configuration>
                     <packageName>com.baeldung</packageName>
                     <sources>
-                        <source>${project.basedir}/src/main/resources/products.xsd</source>
+                        <source>src/main/resources/products.xsd</source>
                     </sources>
 
                 </configuration>
