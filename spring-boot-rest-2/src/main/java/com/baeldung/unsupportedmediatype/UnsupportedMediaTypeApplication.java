@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class UnsupportedMediaTypeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UnsupportedMediaTypeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UnsupportedMediaTypeApplication.class, args);
+    }
 
 }
