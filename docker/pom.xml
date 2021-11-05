@@ -25,7 +25,7 @@
     <modules>
         <module>docker-internal-dto</module>
         <module>docker-spring-boot</module>
-	<module>docker-sample-app</module>
+        <module>docker-sample-app</module>
     </modules>
 
 </project>
