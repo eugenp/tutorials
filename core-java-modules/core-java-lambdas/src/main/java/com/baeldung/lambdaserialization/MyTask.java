@@ -1,8 +1,11 @@
 package com.baeldung.lambdaserialization;
 
+import org.slf4j.*;
+
 import java.io.Serializable;
 
 public class MyTask implements Runnable, Serializable {
+    private static final Logger logger = LoggerFactory.getLogger(MyTask.class);
     
     
     public MyTask() {
@@ -10,6 +13,6 @@ public class MyTask implements Runnable, Serializable {
     }
     
     public void run() {
-        System.out.println("Serialized using class ");
+        logger.info("Serialized using class ");
     }
 }

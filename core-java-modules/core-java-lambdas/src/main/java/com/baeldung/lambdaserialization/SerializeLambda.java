@@ -1,9 +1,13 @@
 package com.baeldung.lambdaserialization;
 
+import org.slf4j.*;
+
 import java.io.*;
 import java.nio.file.Files;
 
 public class SerializeLambda {
+    private static final Logger logger = LoggerFactory.getLogger(SerializeLambda.class);
+    
     public static void main(String[] a) throws IOException {
         File file = Files.createTempFile("lambda", "ser").toFile();
         
@@ -21,7 +25,9 @@ public class SerializeLambda {
     }
     
     private static String print() {
-        return "serialized using lambda method reference";
+        String message = "serialized using lambda method reference";
+        logger.info(message);
+        return message;
     }
     
     private static void serialize(File file) throws IOException {
@@ -39,7 +45,7 @@ public class SerializeLambda {
             SerializableRunnable r = new SerializableRunnable() {
                 @Override
                 public void run() {
-                    System.out.println("Serialized using Anonymous classes");
+                    logger.info("Serialized using Anonymous classes");
                 }
             };
             oo.writeObject(r);
@@ -49,7 +55,7 @@ public class SerializeLambda {
     
     protected static void serializeByLambda(File file) throws IOException {
         try (ObjectOutput oo = new ObjectOutputStream(new FileOutputStream(file))) {
-            Runnable r = (Runnable & Serializable) () -> System.out.println("Serialized using lambda");
+            Runnable r = (Runnable & Serializable) () -> logger.info("Serialized using lambda");
             oo.writeObject(r);
         }
         
