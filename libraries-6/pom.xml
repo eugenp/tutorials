@@ -23,18 +23,6 @@
             <version>${protonpack.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <classifier>test</classifier>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-circuitbreaker</artifactId>
             <version>${resilience4j.version}</version>
@@ -118,13 +106,18 @@
             <artifactId>libphonenumber</artifactId>
             <version>${libphonenumber.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${org.modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
         <!-- Needed for Renjin -->
         <repository>
             <id>bedatadriven</id>
-            <name>bedatadriven public repo</name>
+            <name>BeDataDriven repository</name>
             <url>https://nexus.bedatadriven.com/content/groups/public/</url>
         </repository>
     </repositories>
@@ -148,7 +141,6 @@
     </build>
 
     <properties>
-        <kafka.version>2.0.0</kafka.version>
         <javapoet.version>1.10.0</javapoet.version>
         <reflections.version>0.9.11</reflections.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
@@ -157,11 +149,12 @@
         <protonpack.version>1.15</protonpack.version>
         <commons-net.version>3.6</commons-net.version>
         <assertj.version>3.6.2</assertj.version>
-        <renjin.version>RELEASE</renjin.version>
+        <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
+        <org.modelmapper.version>2.4.4</org.modelmapper.version>
     </properties>
 
 </project>

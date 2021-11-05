@@ -7,10 +7,13 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 public class ApacheHttpClientUnitTest {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     public static final String DUMMY_URL = "https://postman-echo.com/get";
 
     @Test
@@ -19,8 +22,7 @@ public class ApacheHttpClientUnitTest {
 
         try (CloseableHttpClient client = HttpClients.createDefault(); CloseableHttpResponse response = client.execute(request)) {
             HttpEntity entity = response.getEntity();
-            String result = EntityUtils.toString(entity);
-            System.out.println("Response -> " + result);
+            logger.debug("Response -> {}",  EntityUtils.toString(entity));
         }
     }
 }

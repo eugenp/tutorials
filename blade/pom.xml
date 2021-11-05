@@ -70,6 +70,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
                 <configuration>
+                    <skipITs>true</skipITs>
                     <includes>
                         <include>**/*LiveTest.java</include>
                     </includes>
@@ -79,39 +80,6 @@
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.bazaarvoice.maven.plugins</groupId>
-                <artifactId>process-exec-maven-plugin</artifactId>
-                <version>${process-exec-maven-plugin.version}</version>
-                <executions>
-                    <!--Start Blade -->
-                    <execution>
-                        <id>blade-process</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                        <configuration>
-                            <name>Blade</name>
-                            <waitForInterrupt>false</waitForInterrupt>
-                            <arguments>
-                                <argument>java</argument>
-                                <argument>-jar</argument>
-                                <argument>blade.jar</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <!--Stop all processes in reverse order -->
-                    <execution>
-                        <id>stop-all</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>stop-all</goal>
                         </goals>
                     </execution>
                 </executions>

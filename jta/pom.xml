@@ -29,11 +29,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring-boot.version>2.4.7</spring-boot.version>
+    </properties>
 
 </project>

@@ -101,4 +101,5 @@
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
     </properties>
+
 </project>
