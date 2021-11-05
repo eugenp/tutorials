@@ -12,3 +12,4 @@ This module contains articles about Apache POI
 - [Read Excel Cell Value Rather Than Formula With Apache POI](https://www.baeldung.com/apache-poi-read-cell-value-formula)
 - [Setting Formulas in Excel with Apache POI](https://www.baeldung.com/java-apache-poi-set-formulas)
 - [Insert a Row in Excel Using Apache POI](https://www.baeldung.com/apache-poi-insert-excel-row)
+- [Multiline Text in Excel Cell Using Apache POI](https://www.baeldung.com/apache-poi-write-multiline-text)
