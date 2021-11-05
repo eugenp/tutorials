@@ -134,8 +134,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <properties>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-    </properties>
-
 </project>
