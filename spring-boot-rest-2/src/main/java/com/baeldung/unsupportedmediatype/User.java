@@ -11,10 +11,9 @@ public class User implements Serializable {
     private String address;
 
     public User(){
-
     }
 
-    public User(Integer id, String name, Integer age, String address){
+    public User(Integer id, String name, Integer age, String address) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -55,11 +54,13 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                '}';
+        return  "User{"
+              + "id=" + id
+              + ", name='" + name + '\''
+              + ", age=" + age
+              + ", address='" + address + '\''
+              + '}';
     }
+
+
 }
