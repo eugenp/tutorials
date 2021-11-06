@@ -1,10 +1,7 @@
-package com.baeldung.utilities;
+package com.baeldung.utilities.warning;
 
-public final class StringUtils {
-
-    private StringUtils() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
-    }
+@SuppressWarnings("java:S1118")
+public final class StringUtilsSuppressWarning {
 
     public static boolean isEmpty(String source) {
         return source == null || source.length() == 0;

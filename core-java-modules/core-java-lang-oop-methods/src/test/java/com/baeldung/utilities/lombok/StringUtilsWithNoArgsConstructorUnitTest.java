@@ -1,6 +1,5 @@
 package com.baeldung.utilities.lombok;
 
-import com.baeldung.utilities.lombok.StringUtilsWithNoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
