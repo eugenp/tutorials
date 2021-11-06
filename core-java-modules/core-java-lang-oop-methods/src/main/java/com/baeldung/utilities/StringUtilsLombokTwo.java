@@ -1,8 +1,9 @@
 package com.baeldung.utilities;
 
-public final class StringUtils {
+import lombok.experimental.UtilityClass;
 
-    private StringUtils() {}
+@UtilityClass
+public class StringUtilsLombokTwo {
 
     public static boolean isEmpty(String source) {
         return source == null || source.length() == 0;
