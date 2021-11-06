@@ -32,11 +32,13 @@
             <artifactId>javaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.tomee/tomee-embedded -->
         <dependency>
-            <groupId>org.apache.openejb</groupId>
+            <groupId>org.apache.tomee</groupId>
             <artifactId>tomee-embedded</artifactId>
             <version>${tomee-embedded.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -77,6 +79,18 @@
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
         </dependency>
     </dependencies>
 
@@ -174,18 +188,19 @@
     </build>
 
     <properties>
-        <arquillian-bom.version>1.1.13.Final</arquillian-bom.version>
-        <tomee-embedded.version>1.7.5</tomee-embedded.version>
-        <glassfish-embedded-all.version>3.1.2</glassfish-embedded-all.version>
-        <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
+        <arquillian-bom.version>1.6.0.Final</arquillian-bom.version>
+        <tomee-embedded.version>8.0.8</tomee-embedded.version>
+        <glassfish-embedded-all.version>6.2.2</glassfish-embedded-all.version>
+        <arquillian-glassfish-embedded-3.1.version>1.0.2</arquillian-glassfish-embedded-3.1.version>
         <wildfly.version>8.2.1.Final</wildfly.version>
         <javax.ejb-api.version>3.2</javax.ejb-api.version>
         <springframework.version>5.2.3.RELEASE</springframework.version>
-        <activemq.broker.version>5.10.2</activemq.broker.version>
-        <activemq.junit.version>5.13.1</activemq.junit.version>
+        <activemq.broker.version>5.16.3</activemq.broker.version>
+        <activemq.junit.version>5.16.3</activemq.junit.version>
         <mockito.version>2.21.0</mockito.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
+        <joda-time.version>2.10.12</joda-time.version>
     </properties>
 
 </project>

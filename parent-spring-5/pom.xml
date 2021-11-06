@@ -21,18 +21,25 @@
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <properties>
         <spring.version>5.3.9</spring.version>
         <spring-security.version>5.2.3.RELEASE</spring-security.version>
         <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
