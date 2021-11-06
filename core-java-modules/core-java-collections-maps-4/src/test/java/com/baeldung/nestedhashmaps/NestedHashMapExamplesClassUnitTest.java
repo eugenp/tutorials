@@ -31,8 +31,7 @@ public class NestedHashMapExamplesClassUnitTest {
     @Test
     public void whenCreateNestedHashMap_thenNestedMap() {
         assertThat(mUtil.buildInnerMap(batterList), is(notNullValue()));
-        Assert.assertEquals(actualBakedGoodsMap.keySet()
-            .size(), 2);
+        Assert.assertEquals(actualBakedGoodsMap.keySet().size(), 2);
         Assert.assertThat(actualBakedGoodsMap, IsMapContaining.hasValue(equalTo(mUtil.buildInnerMap(batterList))));
     }
 
@@ -116,9 +115,9 @@ public class NestedHashMapExamplesClassUnitTest {
         listEmployee.add(new Employee(4, new Address(200, "Bag End"), "Bilbo Baggins"));
         listEmployee.add(new Employee(5, new Address(23, "Rivendell"), "Elrond"));
 
-        Map<Integer, Map<Integer, Object>> employeeMap1 = listEmployee.stream()
-            .collect(Collectors.groupingBy((Employee emp) -> emp.getEmployeeId(), Collectors.toMap((Employee emp) -> emp.getAddress()
-                .getAddressId(), fEmpObj -> fEmpObj.getAddress())));
+        Map<Integer, Map<Integer, Object>> employeeMap1 = listEmployee.stream().collect(Collectors.groupingBy(
+                (Employee emp) -> emp.getEmployeeId(),
+                Collectors.toMap((Employee emp) -> emp.getAddress().getAddressId(), fEmpObj -> fEmpObj.getAddress())));
 
         assertNotSame(employeeMap1, actualEmployeeMap);
         assertNotEquals(employeeMap1, actualEmployeeMap);
@@ -143,22 +142,16 @@ public class NestedHashMapExamplesClassUnitTest {
 
     @Test
     public void whenAddElementinHashMaps_thenSuccess() {
-        assertEquals(actualBakedGoodsMap.get("Cake")
-            .size(), 5);
-        actualBakedGoodsMap.get("Cake")
-            .put(6, "Cranberry");
-        assertEquals(actualBakedGoodsMap.get("Cake")
-            .size(), 6);
+        assertEquals(actualBakedGoodsMap.get("Cake").size(), 5);
+        actualBakedGoodsMap.get("Cake").put(6, "Cranberry");
+        assertEquals(actualBakedGoodsMap.get("Cake").size(), 6);
     }
 
     @Test
     public void whenDeleteElementinHashMaps_thenSuccess() {
-        assertNotEquals(actualBakedGoodsMap.get("Cake")
-            .get(5), null);
-        actualBakedGoodsMap.get("Cake")
-            .remove(5);
-        assertEquals(actualBakedGoodsMap.get("Cake")
-            .get(5), null);
+        assertNotEquals(actualBakedGoodsMap.get("Cake").get(5), null);
+        actualBakedGoodsMap.get("Cake").remove(5);
+        assertEquals(actualBakedGoodsMap.get("Cake").get(5), null);
 
         actualBakedGoodsMap.put("Eclair", new HashMap<Integer, String>() {
             {
@@ -166,12 +159,9 @@ public class NestedHashMapExamplesClassUnitTest {
             }
         });
 
-        assertNotEquals(actualBakedGoodsMap.get("Eclair")
-            .get(1), null);
-        actualBakedGoodsMap.get("Eclair")
-            .remove(1);
-        assertEquals(actualBakedGoodsMap.get("Eclair")
-            .get(1), null);
+        assertNotEquals(actualBakedGoodsMap.get("Eclair").get(1), null);
+        actualBakedGoodsMap.get("Eclair").remove(1);
+        assertEquals(actualBakedGoodsMap.get("Eclair").get(1), null);
 
         actualBakedGoodsMap.put("Eclair", new HashMap<Integer, String>() {
             {
@@ -187,10 +177,10 @@ public class NestedHashMapExamplesClassUnitTest {
     @Test
     public void whenFlattenMap_thenRemovesNesting() {
 
-        var flattenedBakedGoodsMap = mUtil.flattenMap(actualBakedGoodsMap);
+        Map<String, String> flattenedBakedGoodsMap = mUtil.flattenMap(actualBakedGoodsMap);
         assertThat(flattenedBakedGoodsMap, IsMapContaining.hasKey("Donut.2"));
 
-        var flattenedEmployeeAddressMap = mUtil.flattenMap(actualEmployeeAddressMap);
+        Map<String, String> flattenedEmployeeAddressMap = mUtil.flattenMap(actualEmployeeAddressMap);
         assertThat(flattenedEmployeeAddressMap, IsMapContaining.hasKey("200.Bag End"));
     }
 
