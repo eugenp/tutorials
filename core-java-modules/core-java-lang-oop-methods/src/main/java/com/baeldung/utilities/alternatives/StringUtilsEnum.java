@@ -1,10 +1,6 @@
-package com.baeldung.utilities;
+package com.baeldung.utilities.alternatives;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor(access= AccessLevel.PRIVATE)
-public final class StringUtilsLombokOne {
+public enum StringUtilsEnum {;
 
     public static boolean isEmpty(String source) {
         return source == null || source.length() == 0;

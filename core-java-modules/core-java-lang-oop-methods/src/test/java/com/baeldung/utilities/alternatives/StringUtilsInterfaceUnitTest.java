@@ -1,29 +1,29 @@
-package com.baeldung.utilities;
+package com.baeldung.utilities.alternatives;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class StringUtilsLombokOneUnitTest {
+class StringUtilsInterfaceUnitTest {
 
     @Test
     void givenAnEmptyString_whenCallingIsEmpty_thenResultIsTrue() {
-        assertThat(StringUtilsLombokOne.isEmpty("")).isTrue();
+        assertThat(StringUtilsInterface.isEmpty("")).isTrue();
     }
 
     @Test
     void givenNonEmptyString_whenCallingIsEmpty_thenResultIsFalse() {
-        assertThat(StringUtilsLombokOne.isEmpty("asd")).isFalse();
+        assertThat(StringUtilsInterface.isEmpty("asd")).isFalse();
     }
 
     @Test
     void givenAnEmptyString_whenCallingWrap_thenResultIsAnEmptyString() {
-        assertThat(StringUtilsLombokOne.wrap("", "wrapper")).isEmpty();
+        assertThat(StringUtilsInterface.wrap("", "wrapper")).isEmpty();
     }
 
     @Test
     void givenNonEmptyString_whenCallingWrap_thenResultIsWrappedString() {
-        assertThat(StringUtilsLombokOne.wrap("asd", "wrapper")).isEqualTo("wrapperasdwrapper");
+        assertThat(StringUtilsInterface.wrap("asd", "wrapper")).isEqualTo("wrapperasdwrapper");
     }
 
 }

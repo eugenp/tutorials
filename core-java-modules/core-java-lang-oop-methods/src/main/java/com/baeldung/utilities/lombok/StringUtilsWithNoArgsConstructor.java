@@ -1,9 +1,10 @@
-package com.baeldung.utilities;
+package com.baeldung.utilities.lombok;
 
-import lombok.experimental.UtilityClass;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@UtilityClass
-public class StringUtilsLombokTwo {
+@NoArgsConstructor(access= AccessLevel.PRIVATE)
+public final class StringUtilsWithNoArgsConstructor {
 
     public static boolean isEmpty(String source) {
         return source == null || source.length() == 0;
