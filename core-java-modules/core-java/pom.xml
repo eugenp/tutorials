@@ -62,10 +62,10 @@
             <version>${javamoney.moneta.version}</version>
         </dependency>
         <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.core.version}</version>
-		</dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${spring.core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
