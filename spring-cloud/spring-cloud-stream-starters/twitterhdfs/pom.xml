@@ -16,6 +16,25 @@
         <relativePath />
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of junit:junit in the classpath. hence forcing the
+            latest 4.13.2 available version for junit5 compatibility -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- Spring Stream Starter Apps -->
         <dependency>
@@ -38,6 +57,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +75,9 @@
 
     <properties>
         <spring-cloud-starter-stream.version>2.1.2.RELEASE</spring-cloud-starter-stream.version>
+        <!-- used only in dependency management to force this version, not included as a direct dependency -->
+        <junit.version>4.13.2</junit.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
 
 </project>
