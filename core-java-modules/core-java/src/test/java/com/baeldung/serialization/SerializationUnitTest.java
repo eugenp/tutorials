@@ -15,6 +15,8 @@ import java.io.Serializable;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Test;
 
+import com.baeldung.util.MySerializationUtils;
+
 public class SerializationUnitTest {
 
     @Test(expected = NotSerializableException.class)
@@ -86,7 +88,7 @@ public class SerializationUnitTest {
     public void whenSerializingUsingCustomSerializationUtils_ThenThrowsError() throws IOException {
         Address address = new Address();
         address.setHouseNumber(10);
-        com.baeldung.util.MySerializationUtils.serialize((Serializable) address);
+        MySerializationUtils.serialize((Serializable) address);
     }
 
     @Test
@@ -94,16 +96,16 @@ public class SerializationUnitTest {
         Person p = new Person();
         p.setAge(20);
         p.setName("Joe");
-        byte[] serialize = com.baeldung.util.MySerializationUtils.serialize(p);
-        Person p2 = com.baeldung.util.MySerializationUtils.deserialize(serialize, Person.class);
+        byte[] serialize = MySerializationUtils.serialize(p);
+        Person p2 = MySerializationUtils.deserialize(serialize, Person.class);
         assertEquals(p2.getAge(), p.getAge());
         assertEquals(p2.getName(), p.getName());
     }
 
     @Test
     public void whenSerializingUsingCustomSerializationUtils_ThanOk() {
-        assertFalse(com.baeldung.util.MySerializationUtils.isSerializable(Address.class));
-        assertTrue(com.baeldung.util.MySerializationUtils.isSerializable(Person.class));
-        assertTrue(com.baeldung.util.MySerializationUtils.isSerializable(Integer.class));
+        assertFalse(MySerializationUtils.isSerializable(Address.class));
+        assertTrue(MySerializationUtils.isSerializable(Person.class));
+        assertTrue(MySerializationUtils.isSerializable(Integer.class));
     }
 }
