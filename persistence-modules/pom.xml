@@ -99,9 +99,6 @@
         <hibernate.version>5.2.17.Final</hibernate.version>
 
         <postgresql.version>42.2.20</postgresql.version>
-
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
