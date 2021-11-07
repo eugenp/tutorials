@@ -46,7 +46,7 @@
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <module>spring-boot-keycloak</module>
+        <!-- <module>spring-boot-keycloak</module> --> <!-- Fixing under JAVA-8271 -->
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
         <module>spring-boot-logging-log4j2</module>
@@ -94,21 +94,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-    </properties>
 
 </project>

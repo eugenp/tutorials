@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -23,32 +23,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.vintage.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-migrationsupport</artifactId>
-            <version>${junit.vintage.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
@@ -97,8 +73,8 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 **/*IntegrationTest.java
@@ -116,8 +92,8 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <groups>com.baeldung.categories.UnitTest</groups>
                             <excludedGroups>com.baeldung.categories.IntegrationTest</excludedGroups>
@@ -134,8 +110,8 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <groups>UnitTest</groups>
                             <excludedGroups>IntegrationTest</excludedGroups>
@@ -147,9 +123,6 @@
     </profiles>
 
     <properties>
-        <junit.vintage.version>5.4.2</junit.vintage.version>
-        <junit-platform.version>1.2.0</junit-platform.version>
-        <junit-jupiter.version>5.4.2</junit-jupiter.version>
         <spring.version>5.0.6.RELEASE</spring.version>
     </properties>
 
