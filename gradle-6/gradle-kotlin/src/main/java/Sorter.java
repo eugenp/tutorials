@@ -1,6 +1,8 @@
+import model.StockPrice;
+
 import java.util.List;
 
 public interface Sorter {
 
-    List<String> sort(List<String> list);
+    List<StockPrice> sort(List<StockPrice> stockPrices);
 }

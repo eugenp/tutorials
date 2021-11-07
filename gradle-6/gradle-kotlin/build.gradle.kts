@@ -21,10 +21,12 @@ sourceSets {
 
 val integrationTestImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.implementation.get())
+    extendsFrom(configurations.testImplementation.get())
 }
 
 val integrationTestRuntimeOnly: Configuration by configurations.getting {
     extendsFrom(configurations.implementation.get())
+    extendsFrom(configurations.testRuntimeOnly.get())
 }
 
 val integrationTest = task<Test>("integrationTest") {
@@ -42,6 +44,7 @@ dependencies {
     api("com.google.inject:guice:5.0.1")
     implementation("com.google.guava:guava:31.0-jre")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testImplementation("org.mockito:mockito-core:4.0.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 

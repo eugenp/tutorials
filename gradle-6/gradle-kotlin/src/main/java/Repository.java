@@ -1,6 +1,9 @@
+import model.StockPrice;
+import model.StockSymbol;
+
 import java.util.List;
 
 public interface Repository {
 
-    List<String> getStockPrice(int noOfDays);
+    List<StockPrice> getStockPrice(StockSymbol stockSymbol);
 }

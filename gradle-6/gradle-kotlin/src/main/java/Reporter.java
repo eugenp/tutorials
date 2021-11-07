@@ -1,3 +1,6 @@
+import model.StockPrice;
+import model.StockSymbol;
+
 import java.util.List;
 
 public class Reporter {
@@ -10,7 +13,7 @@ public class Reporter {
         this.sorter = sorter;
     }
 
-    public List<String> getStockPrice(int noOfDays) {
-        return sorter.sort(repository.getStockPrice(noOfDays));
+    public List<StockPrice> getStockPrice(StockSymbol stockSymbol) {
+        return sorter.sort(repository.getStockPrice(stockSymbol));
     }
 }
