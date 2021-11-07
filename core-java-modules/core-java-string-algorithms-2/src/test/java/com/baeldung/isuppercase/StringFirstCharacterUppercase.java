@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.matchesPattern;
 public class StringFirstCharacterUppercase {
 
     @Test
-    public void givenString_whenCheckingWithIsUpperCase_thenStringCapitalized() {
+    public void givenString_whenCheckingWithCharacterIsUpperCase_thenStringCapitalized() {
         String example = "Katie";
         Assertions.assertTrue(Character.isUpperCase(example.charAt(0)));
     }
