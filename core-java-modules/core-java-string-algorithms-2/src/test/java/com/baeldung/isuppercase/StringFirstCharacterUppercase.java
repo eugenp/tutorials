@@ -12,20 +12,20 @@ import static org.hamcrest.Matchers.matchesPattern;
 public class StringFirstCharacterUppercase {
 
     @Test
-    public void givenString_whenSplittingWithIsUpperCase_thenStringSplit() {
+    public void givenString_whenCheckingWithIsUpperCase_thenStringSplit() {
         String example = "Katie";
         Assertions.assertTrue(Character.isUpperCase(example.charAt(0)));
     }
 
     @Test
-    public void givenString_whenSplittingWithRegex_thenStringSplit() {
+    public void givenString_whenCheckingWithRegex_thenStringSplit() {
         String example = "Katie";
         String regEx = "[A-Z]\\w*";
         assertThat(example, matchesPattern(regEx));
     }
 
     @Test
-    public void givenString_whenSplittingWithGuava_thenStringSplit() {
+    public void givenString_whenCheckingWithGuava_thenStringSplit() {
         String example = "Katie";
         Assertions.assertTrue(Ascii.isUpperCase(example.charAt(0)));
     }
