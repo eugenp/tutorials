@@ -36,18 +36,20 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.12</version>
+            <version>${reflections.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <assertj.version>3.6.1</assertj.version>
         <jol-core.version>0.10</jol-core.version>
+        <reflections.version>0.10.2</reflections.version>
+        <guava.version>31.0.1-jre</guava.version>
     </properties>
 
 </project>
