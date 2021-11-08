@@ -61,12 +61,6 @@
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- tomcat -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>

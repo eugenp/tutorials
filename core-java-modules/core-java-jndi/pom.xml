@@ -41,6 +41,18 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.directory.server</groupId>
+            <artifactId>apacheds-test-framework</artifactId>
+            <version>${apacheds.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.21.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -59,6 +71,7 @@
     <properties>
         <spring.version>5.0.9.RELEASE</spring.version>
         <h2.version>1.4.199</h2.version>
+        <apacheds.version>2.0.0.AM26</apacheds.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
     </properties>
