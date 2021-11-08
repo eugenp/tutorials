@@ -24,7 +24,6 @@ public class CryptoDriver {
 
     public byte[] cbcEncrypt(SecretKey key, IvParameterSpec iv, byte[] data) throws GeneralSecurityException {
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-
         cipher.init(Cipher.ENCRYPT_MODE, key, iv);
         return cipher.doFinal(data);
     }
@@ -79,11 +78,9 @@ public class CryptoDriver {
     }
 
     public byte[] gcmDecrypt(SecretKey key, byte[] iv, byte[] ciphertext) throws GeneralSecurityException {
-
         Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
         cipher.init(Cipher.DECRYPT_MODE, key, new GCMParameterSpec(128, iv));
         byte[] plaintext = cipher.doFinal(ciphertext);
         return plaintext;
     }
-
 }
