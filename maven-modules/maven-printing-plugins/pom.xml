@@ -76,8 +76,10 @@
                         <configuration>
                             <source>
                                 log.info('Test message: {}', 'Hello, World!')
-                                log.info('Embed a line break {}', System.lineSeparator())
-                                log.info('ArtifactId is: ${project.artifactId}')
+                                log.info('Embed a
+                                line break {}', System.lineSeparator())
+                                log.info('ArtifactId is:
+                                ${project.artifactId}')
                                 log.warn('Message only in debug mode')
                             </source>
                         </configuration>
