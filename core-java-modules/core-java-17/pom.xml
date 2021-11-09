@@ -23,18 +23,18 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit-jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit-jupiter.version}</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -50,32 +50,32 @@
                     <target>${maven.compiler.target.version}</target>
                 </configuration>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${surefire.plugin.version}</version>
-				<configuration>
-					<argLine>--enable-preview</argLine>
-					<forkCount>1</forkCount>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.maven.surefire</groupId>
-						<artifactId>surefire-api</artifactId>
-						<version>${surefire.plugin.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+                <configuration>
+                    <argLine>--enable-preview</argLine>
+                    <forkCount>1</forkCount>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-api</artifactId>
+                        <version>${surefire.plugin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <maven.compiler.source.version>17</maven.compiler.source.version>
         <maven.compiler.target.version>17</maven.compiler.target.version>
-		<maven.compiler.release>17</maven.compiler.release>
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
-		<assertj.version>3.17.2</assertj.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <assertj.version>3.17.2</assertj.version>
     </properties>
 
 </project>
