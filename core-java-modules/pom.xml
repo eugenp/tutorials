@@ -99,6 +99,7 @@
         <module>core-java-reflection-2</module>
         <module>core-java-security</module>
         <module>core-java-security-2</module>
+        <module>core-java-security-3</module>
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
