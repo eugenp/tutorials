@@ -6,4 +6,5 @@ This module contains articles about core Java Security
 
 - [Secret Key and String Conversion in Java](https://www.baeldung.com/java-secret-key-to-string)
 - [Enabling Unlimited Strength Cryptography in Java](https://www.baeldung.com/jce-enable-unlimited-strength)
+- [Initialization Vector for Encryption](https://www.baeldung.com/java-encryption-iv)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security-2)
