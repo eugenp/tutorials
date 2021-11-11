@@ -1,4 +1,4 @@
-package com.baeldung.caching;
+package com.baeldung.spring.caching;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
