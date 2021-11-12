@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -160,7 +160,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
+                        <version>${junit-platform-surefire-provider.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -191,8 +191,6 @@
         <kotlinx.version>0.22.5</kotlinx.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <junit.platform.version>1.0.0</junit.platform.version>
-        <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <spek.api.version>1.1.5</spek.api.version>

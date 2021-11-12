@@ -17,6 +17,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
@@ -84,7 +91,6 @@
 
     <properties>
         <jstl.version>1.2</jstl.version>
-        <junit-jupiter.version>5.7.1</junit-jupiter.version>
         <spring-boot.version>2.4.4</spring-boot.version>
     </properties>
 

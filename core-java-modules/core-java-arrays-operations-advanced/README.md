@@ -10,3 +10,4 @@ This module contains articles about advanced operations on arrays in Java. They 
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
 - [Comparing Arrays in Java](https://www.baeldung.com/java-comparing-arrays)
 - [Concatenate Two Arrays in Java](https://www.baeldung.com/java-concatenate-arrays)
+- [Performance of System.arraycopy() vs. Arrays.copyOf()](https://www.baeldung.com/java-system-arraycopy-arrays-copyof-performance)

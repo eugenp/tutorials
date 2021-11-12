@@ -29,11 +29,13 @@ public class Graph {
         stack.push(start);
         while (!stack.isEmpty()) {
             int current = stack.pop();
-            isVisited[current] = true;
-            visit(current);
-            for (int dest : adjVertices.get(current)) {
-                if (!isVisited[dest])
-                    stack.push(dest);
+            if(!isVisited[current]){
+                isVisited[current] = true;
+                visit(current);
+                for (int dest : adjVertices.get(current)) {
+                    if (!isVisited[dest])
+                        stack.push(dest);
+                }
             }
         }
     }

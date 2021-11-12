@@ -25,12 +25,9 @@ public class CustomNettyWebServerFactory {
 
         @Override
         public HttpServer apply(HttpServer httpServer) {
-            EventLoopGroup parentGroup = new NioEventLoopGroup();
-            EventLoopGroup childGroup = new NioEventLoopGroup();
-            return httpServer
-                    .tcpConfiguration(tcpServer -> tcpServer.bootstrap(
-                            serverBootstrap -> serverBootstrap.group(parentGroup, childGroup).channel(NioServerSocketChannel.class)
-                    ));
+            EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+            eventLoopGroup.register(new NioServerSocketChannel());
+            return httpServer.runOn(eventLoopGroup);
         }
     }
 }

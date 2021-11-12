@@ -164,7 +164,7 @@
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
         <javax.mail.version>1.6.1</javax.mail.version>
-        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.6</spring-boot.version>
     </properties>
 
 </project>

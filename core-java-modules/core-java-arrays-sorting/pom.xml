@@ -11,7 +11,6 @@
         <artifactId>core-java-modules</artifactId>
         <groupId>com.baeldung.core-java-modules</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -78,4 +77,5 @@
         <guava.version>28.2-jre</guava.version>
         <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
+
 </project>

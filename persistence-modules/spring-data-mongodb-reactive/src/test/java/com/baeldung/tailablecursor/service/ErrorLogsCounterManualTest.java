@@ -1,18 +1,11 @@
 package com.baeldung.tailablecursor.service;
 
-import com.baeldung.tailablecursor.domain.Log;
-import com.baeldung.tailablecursor.domain.LogLevel;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.CreateCollectionOptions;
-import de.flapdoodle.embed.mongo.MongodExecutable;
-import de.flapdoodle.embed.mongo.MongodProcess;
-import de.flapdoodle.embed.mongo.MongodStarter;
-import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
-import de.flapdoodle.embed.mongo.config.Net;
-import de.flapdoodle.embed.mongo.distribution.Version;
-import de.flapdoodle.embed.process.runtime.Network;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.io.IOException;
+import java.util.stream.IntStream;
+
 import org.bson.Document;
 import org.junit.After;
 import org.junit.Before;
@@ -20,11 +13,22 @@ import org.junit.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.util.SocketUtils;
 
-import java.io.IOException;
-import java.util.stream.IntStream;
+import com.baeldung.tailablecursor.domain.Log;
+import com.baeldung.tailablecursor.domain.LogLevel;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.CreateCollectionOptions;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import de.flapdoodle.embed.mongo.MongodExecutable;
+import de.flapdoodle.embed.mongo.MongodProcess;
+import de.flapdoodle.embed.mongo.MongodStarter;
+import de.flapdoodle.embed.mongo.config.ImmutableMongodConfig;
+import de.flapdoodle.embed.mongo.config.MongodConfig;
+import de.flapdoodle.embed.mongo.config.Net;
+import de.flapdoodle.embed.mongo.distribution.Version;
+import de.flapdoodle.embed.process.runtime.Network;
 
 public class ErrorLogsCounterManualTest {
 
@@ -35,6 +39,8 @@ public class ErrorLogsCounterManualTest {
 
     private static final MongodStarter starter = MongodStarter.getDefaultInstance();
     private static final int MAX_DOCUMENTS_IN_COLLECTION = 3;
+    
+    private static final String CONNECTION_STRING = "mongodb://%s:%d";
 
     private ErrorLogsCounter errorLogsCounter;
     private MongodExecutable mongodExecutable;
@@ -54,13 +60,18 @@ public class ErrorLogsCounterManualTest {
     }
 
     private MongoTemplate initMongoTemplate() throws IOException {
-        mongodExecutable = starter.prepare(new MongodConfigBuilder()
-          .version(Version.Main.PRODUCTION)
-          .net(new Net(SERVER, PORT, Network.localhostIsIPv6()))
-          .build());
+    	
+    	
+        final ImmutableMongodConfig  mongodConfig = MongodConfig.builder()
+                .version(Version.Main.PRODUCTION)
+                .net(new Net(SERVER, PORT, Network.localhostIsIPv6()))
+                .build();
+        
+        mongodExecutable = starter.prepare(mongodConfig);
         mongoDaemon = mongodExecutable.start();
-
-        MongoClient mongoClient = new MongoClient(SERVER, PORT);
+     
+        MongoClient mongoClient = MongoClients.create(String.format(CONNECTION_STRING, SERVER, PORT));
+        
         db = mongoClient.getDatabase(DB_NAME);
 
         return new MongoTemplate(mongoClient, DB_NAME);
