@@ -18,3 +18,4 @@ If you get a valid response, then you're good to go.
 - [Using Watch with the Kubernetes API](https://www.baeldung.com/java-kubernetes-watch)
 - [Using Namespaces and Selectors With the Kubernetes Java API](https://www.baeldung.com/java-kubernetes-namespaces-selectors)
 - [Creating, Updating and Deleting Resources with the Java Kubernetes API](https://www.baeldung.com/java-kubernetes-api-crud)
+- [A Quick Intro to the Kubernetes Java Client](https://www.baeldung.com/kubernetes-java-client)

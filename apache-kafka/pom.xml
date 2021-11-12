@@ -161,6 +161,12 @@
             <artifactId>spark-cassandra-connector-java_2.11</artifactId>
             <version>${com.datastax.spark.spark-cassandra-connector-java.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -175,6 +181,7 @@
         <graphframes.version>0.8.1-spark3.0-s_2.12</graphframes.version>
         <com.datastax.spark.spark-cassandra-connector.version>2.5.2</com.datastax.spark.spark-cassandra-connector.version>
         <com.datastax.spark.spark-cassandra-connector-java.version>1.6.0-M1</com.datastax.spark.spark-cassandra-connector-java.version>
+        <lombok.version>1.18.20</lombok.version>
     </properties>
 
 </project>

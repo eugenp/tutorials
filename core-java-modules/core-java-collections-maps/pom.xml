@@ -12,7 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -33,5 +32,5 @@
         <commons-collections4.version>4.1</commons-collections4.version>
         <assertj.version>3.6.1</assertj.version>
     </properties>
-    
+
 </project>

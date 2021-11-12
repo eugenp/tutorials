@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-mvc</artifactId>
-    <packaging>jar</packaging>
     <name>spring-boot-mvc</name>
+    <packaging>jar</packaging>
     <description>Module For Spring Boot MVC</description>
 
     <parent>

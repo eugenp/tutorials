@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.evrete</groupId>
+    <artifactId>evrete</artifactId>
+    <version>1.0</version>
+    <name>evrete</name>
+
+    <properties>
+        <evrete.version>2.1.04</evrete.version>
+    </properties>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>rule-engines</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- Core library -->
+        <dependency>
+            <groupId>org.evrete</groupId>
+            <artifactId>evrete-core</artifactId>
+            <version>${evrete.version}</version>
+        </dependency>
+        <!-- Annotated Java classes -->
+        <dependency>
+            <groupId>org.evrete</groupId>
+            <artifactId>evrete-dsl-java</artifactId>
+            <version>${evrete.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -13,3 +13,4 @@
 - [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
 - [Deserialization Vulnerabilities in Java](https://www.baeldung.com/java-deserialization-vulnerabilities)
 - [Generating Alphanumeric UUID String in Java](https://www.baeldung.com/java-generate-alphanumeric-uuid)
+- [Serialization Validation in Java](https://www.baeldung.com/java-validate-serializable)
