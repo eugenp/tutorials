@@ -11,35 +11,35 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OptionalUnitTest {
 
-    private static final String optionalReturnString = "optionalReturnString";
+    private static final String OPTIONAL_RETURN_VALUE = "optionalReturnValue";
 
     @Test
     public void givenOptionalWithValue_whenAssertThatIsNotEmpty_thenOk() {
-        assertThat(Optional.of(optionalReturnString)).isNotEmpty();
+        assertThat(Optional.of(OPTIONAL_RETURN_VALUE)).isNotEmpty();
     }
 
     @Test
     public void givenOptionalWithValue_whenAssertThatHasValue_thenOk() {
-        assertThat(Optional.of(optionalReturnString)).hasValue(optionalReturnString);
+        assertThat(Optional.of(OPTIONAL_RETURN_VALUE)).hasValue(OPTIONAL_RETURN_VALUE);
     }
 
     @Test
     public void givenOptionalWithValue_whenAssertEqualsOptionalObject_thenOk() {
-        assertEquals(Optional.of(optionalReturnString), Optional.of(optionalReturnString));
+        assertEquals(Optional.of(OPTIONAL_RETURN_VALUE), Optional.of(OPTIONAL_RETURN_VALUE));
     }
 
     @Test
     public void givenOptionalWithValue_whenAssertEqualsGet_thenOk() {
-        Optional<String> optional = Optional.of(optionalReturnString);
-        assertEquals(optionalReturnString, optional.get());
+        Optional<String> optional = Optional.of(OPTIONAL_RETURN_VALUE);
+        assertEquals(OPTIONAL_RETURN_VALUE, optional.get());
     }
 
     @Test
     public void givenOptionalWithValue_whenIsPresentAndGetSplit_thenOk() {
-        Optional<String> optional = Optional.of(optionalReturnString);
+        Optional<String> optional = Optional.of(OPTIONAL_RETURN_VALUE);
 
         assertTrue(optional.isPresent());
-        assertEquals(optionalReturnString, optional.get());
+        assertEquals(OPTIONAL_RETURN_VALUE, optional.get());
     }
 
     @Test
