@@ -25,7 +25,9 @@ class OptionalUnitTest {
 
     @Test
     public void givenOptionalWithValue_whenAssertEqualsOptionalObject_thenOk() {
-        assertEquals(Optional.of(OPTIONAL_RETURN_VALUE), Optional.of(OPTIONAL_RETURN_VALUE));
+        Optional<String> expected = Optional.of(OPTIONAL_RETURN_VALUE);
+        Optional<String> actual = Optional.of(OPTIONAL_RETURN_VALUE);
+        assertEquals(expected, actual);
     }
 
     @Test
