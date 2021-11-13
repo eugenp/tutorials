@@ -19,7 +19,6 @@
             <artifactId>httpcore</artifactId>
             <version>${http-component-version}</version>
         </dependency>
-        <!-- ... -->
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
