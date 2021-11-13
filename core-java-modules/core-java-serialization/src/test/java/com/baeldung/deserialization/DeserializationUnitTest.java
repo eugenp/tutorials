@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.io.InvalidClassException;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class DeserializationUnitTest {
     @Test
     public void testDeserializeObj_compatible() throws IOException, ClassNotFoundException {
 
-        assertEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
+        Assert.assertEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
 
         AppleProduct macBook = new AppleProduct();
         macBook.headphonePort = "headphonePort2020";
@@ -60,7 +61,7 @@ public class DeserializationUnitTest {
     @Test(expected = InvalidClassException.class)
     public void testDeserializeObj_incompatible() throws ClassNotFoundException, IOException {
 
-        assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
+        Assert.assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
         // attempts to deserialize the "AppleProduct" object
         DeserializationUtility.deSerializeObjectFromString(serializedObj);
     }
