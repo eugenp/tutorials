@@ -30,9 +30,15 @@
         </dependency>
         <!-- For tests -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${version.junit}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -100,7 +106,6 @@
         <version.derby>10.14.2.0</version.derby>
         <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
         <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
-        <version.junit>4.12</version.junit>
         <version.yasson>1.0.5</version.yasson>
         <version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
         <version.javax.json>1.0.4</version.javax.json>
@@ -110,6 +115,7 @@
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <testServerHttpPort>7070</testServerHttpPort>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
 
 </project>

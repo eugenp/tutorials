@@ -13,7 +13,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -75,8 +74,8 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
@@ -97,8 +96,6 @@
         <asspectj.version>1.8.9</asspectj.version>
         <powermock.version>2.0.7</powermock.version>
         <jmockit.version>1.44</jmockit.version>
-        <!-- plugins -->
-        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
     </properties>
 
 </project>
