@@ -63,7 +63,7 @@ public class PostRestController {
         return convertToDto(postService.getPostById(id));
     }
  
-    @PutMapping(value = "/{id}")
+    @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public void updatePost(@RequestBody PostDto postDto) throws ParseException {
         Post post = convertToEntity(postDto);
