@@ -25,7 +25,7 @@ public class DeserializationUnitTest {
     @Test
     public void testDeserializeObj_compatible() throws IOException, ClassNotFoundException {
 
-        Assert.assertEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
+        assertEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
 
         AppleProduct macBook = new AppleProduct();
         macBook.headphonePort = "headphonePort2020";
@@ -61,7 +61,7 @@ public class DeserializationUnitTest {
     @Test(expected = InvalidClassException.class)
     public void testDeserializeObj_incompatible() throws ClassNotFoundException, IOException {
 
-        Assert.assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
+        assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
         // attempts to deserialize the "AppleProduct" object
         DeserializationUtility.deSerializeObjectFromString(serializedObj);
     }

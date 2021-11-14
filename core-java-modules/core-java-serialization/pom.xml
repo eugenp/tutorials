@@ -12,7 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -186,8 +185,8 @@
         <!-- maven plugins -->
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <source.version>1.8</source.version>
-        <target.version>1.8</target.version>
+<!--        <source.version>1.8</source.version>-->
+<!--        <target.version>1.8</target.version>-->
         <spring.core.version>4.3.20.RELEASE</spring.core.version>
     </properties>
 

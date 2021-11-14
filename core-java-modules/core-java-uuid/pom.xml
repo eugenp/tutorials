@@ -149,8 +149,6 @@
     <properties>
         <assertj-core.version>3.10.0</assertj-core.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <source.version>1.8</source.version>
-        <target.version>1.8</target.version>
     </properties>
 
 </project>
