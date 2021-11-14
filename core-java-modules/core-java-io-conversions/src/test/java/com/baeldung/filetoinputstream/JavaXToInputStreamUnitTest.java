@@ -1,45 +1,24 @@
 package com.baeldung.filetoinputstream;
 
-import com.google.common.io.ByteSource;
-import com.google.common.io.CharSource;
-import com.google.common.io.Files;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.SequenceInputStream;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import com.google.common.io.ByteSource;
+import com.google.common.io.Files;
 
 public class JavaXToInputStreamUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
-
-    // tests - String - InputStream
-
-    @Test
-    public final void givenUsingPlainJava_whenConvertingStringToInputStream_thenCorrect() throws IOException {
-        final String initialString = "text";
-        final InputStream targetStream = new ByteArrayInputStream(initialString.getBytes());
-
-        IOUtils.closeQuietly(targetStream);
-    }
-
-    @Test
-    public final void givenUsingGuava_whenConvertingStringToInputStream_thenCorrect() throws IOException {
-        final String initialString = "text";
-        final InputStream targetStream = CharSource.wrap(initialString).asByteSource(StandardCharsets.UTF_8).openStream();
-
-        IOUtils.closeQuietly(targetStream);
-    }
-
-    @Test
-    public final void givenUsingCommonsIO_whenConvertingStringToInputStream_thenCorrect() throws IOException {
-        final String initialString = "text";
-        final InputStream targetStream = IOUtils.toInputStream(initialString);
-
-        IOUtils.closeQuietly(targetStream);
-    }
 
     // byte array - InputStream
 
