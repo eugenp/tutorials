@@ -351,6 +351,7 @@
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
+                <module>arch-hexagonal-architecture-java</module>
 
                 <module>asciidoctor</module>
                 <module>asm</module>
@@ -825,6 +826,7 @@
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
+                <module>arch-hexagonal-architecture-java</module>
 
                 <module>asciidoctor</module>
                 <module>asm</module>
