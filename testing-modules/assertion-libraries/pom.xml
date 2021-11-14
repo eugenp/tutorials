@@ -20,7 +20,8 @@
             <artifactId>truth</artifactId>
             <version>${truth.version}</version>
             <exclusions>
-                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine included in parent-modules. -->
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
+                    included in parent-modules. -->
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
@@ -55,7 +56,8 @@
             <version>${jgotesting.version}</version>
             <scope>test</scope>
             <exclusions>
-                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine included in parent-modules. -->
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
+                    included in parent-modules. -->
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>

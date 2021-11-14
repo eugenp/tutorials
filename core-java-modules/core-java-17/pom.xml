@@ -42,13 +42,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
-
                 <configuration>
                     <argLine>--enable-preview</argLine>
                     <argLine>--enable-native-access=core.java</argLine>
                     <forkCount>1</forkCount>
                 </configuration>
-
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
