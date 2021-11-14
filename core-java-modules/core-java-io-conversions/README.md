@@ -13,5 +13,4 @@ This module contains articles about core Java input/output(IO) conversions.
 - [Java – Write a Reader to File](https://www.baeldung.com/java-write-reader-to-file)
 - [Java – Reader to Byte Array](https://www.baeldung.com/java-convert-reader-to-byte-array)
 - [Java – Reader to InputStream](https://www.baeldung.com/java-convert-reader-to-inputstream)
-- [Java String to InputStream](https://www.baeldung.com/convert-string-to-input-stream)
 - More articles: [[next -->]](/core-java-modules/core-java-io-conversions-2)
