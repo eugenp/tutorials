@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.io.InvalidClassException;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
