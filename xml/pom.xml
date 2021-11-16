@@ -14,6 +14,22 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlcleaner</groupId>
+            <artifactId>htmlcleaner</artifactId>
+            <version>${htmlcleaner.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.htmlparser.jericho</groupId>
+            <artifactId>jericho-html</artifactId>
+            <version>${jericho.version}</version>
+        </dependency>
+
         <!-- xml libraries -->
         <dependency>
             <groupId>org.dom4j</groupId>
@@ -361,6 +377,9 @@
         <!-- maven plugins -->
         <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <jsoup.version>1.14.3</jsoup.version>
+        <htmlcleaner.version>2.25</htmlcleaner.version>
+        <jericho.version>3.4</jericho.version>
     </properties>
 
 </project>

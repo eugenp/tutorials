@@ -16,8 +16,8 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of junit:junit in the classpath. hence forcing the
-            latest 4.13.2 available version for junit5 compatibility -->
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of 
+                junit:junit in the classpath. hence forcing the latest 4.13.2 available version for junit5 compatibility -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
