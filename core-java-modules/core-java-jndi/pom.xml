@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.21.0</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -71,6 +71,7 @@
     <properties>
         <spring.version>5.0.9.RELEASE</spring.version>
         <h2.version>1.4.199</h2.version>
+        <assertj-core.version>3.21.0</assertj-core.version>
         <apacheds.version>2.0.0.AM26</apacheds.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
