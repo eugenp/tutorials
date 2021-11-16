@@ -7,8 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 public class CompareIgnoreSpacesUnitTest {
 
-    private static final String normalString = "ABCDEF";
-    private static final String stringWithSpaces = " AB  CD EF ";
+    private static String normalString = "ABCDEF";
+    private static String stringWithSpaces = " AB  CD EF ";
 
     @Test
     public void givenTwoStrings_thenCompareWithReplaceAllMethod() {
