@@ -14,7 +14,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot and Caffeine Cache](https://www.baeldung.com/spring-boot-caffeine-cache)
 - [Spring Boot and Togglz Aspect](https://www.baeldung.com/spring-togglz)
 - [Getting Started with GraphQL and Spring Boot](https://www.baeldung.com/spring-graphql)
-- [An Introduction to Kong](https://www.baeldung.com/kong)
+- More articles: [[next -->]](/spring-boot-modules/spring-boot-libraries-2)
 
 ### GraphQL sample queries
 
