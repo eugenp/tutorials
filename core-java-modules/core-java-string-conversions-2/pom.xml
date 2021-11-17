@@ -49,13 +49,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <icu.version>64.2</icu.version>
-        <assertj.version>3.12.2</assertj.version>
-        <commons-text.version>1.9</commons-text.version>
-        <guava.version>30.1.1-jre</guava.version>
-    </properties>
-
     <build>
         <finalName>core-java-string-conversions-2</finalName>
         <resources>
@@ -65,5 +58,12 @@
             </resource>
         </resources>
     </build>
+    
+    <properties>
+        <icu.version>64.2</icu.version>
+        <assertj.version>3.12.2</assertj.version>
+        <commons-text.version>1.9</commons-text.version>
+        <guava.version>30.1.1-jre</guava.version>
+    </properties>
 
 </project>
