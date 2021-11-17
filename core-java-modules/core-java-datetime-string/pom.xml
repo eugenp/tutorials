@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.darwinsys</groupId>
             <artifactId>hirondelle-date4j</artifactId>
-            <version>RELEASE</version>
+            <version>${hirondelle-date4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -75,6 +75,7 @@
     <properties>
         <commons-validator.version>1.6</commons-validator.version>
         <joda-time.version>2.10.10</joda-time.version>
+        <hirondelle-date4j.version>RELEASE</hirondelle-date4j.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <maven.compiler.source>1.9</maven.compiler.source>

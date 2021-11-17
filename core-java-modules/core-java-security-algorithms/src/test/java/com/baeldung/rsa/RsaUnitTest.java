@@ -1,4 +1,4 @@
-package com.baeldung.cipher;
+package com.baeldung.rsa;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
