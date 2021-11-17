@@ -14,8 +14,6 @@
     <properties>
         <java.version>1.8</java.version>
         <apache.poi.version>5.0.0</apache.poi.version>
-<!--        <maven.compiler.source>8</maven.compiler.source>-->
-<!--        <maven.compiler.target>8</maven.compiler.target>-->
     </properties>
     <dependencies>
         <dependency>
