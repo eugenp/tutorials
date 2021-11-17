@@ -14,12 +14,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class JUnit4ParameterizedTestNameUnitTest {
 
-    private final String input;
-    private final String expected;
     @Rule
     public TestName name = new TestName();
+    private String input;
+    private String expected;
 
-    public JUnit4ParameterizedTestNameUnitTest(final String input, final String expected) {
+    public JUnit4ParameterizedTestNameUnitTest(String input, String expected) {
         this.input = input;
         this.expected = expected;
     }
@@ -29,8 +29,8 @@ public class JUnit4ParameterizedTestNameUnitTest {
         return Arrays.asList(new Object[][] { { "abc", "abc" }, { "cba", "abc" }, { "onm", "mno" }, { "a", "a" }, { "zyx", "xyz" }, });
     }
 
-    private static String sortCharacters(final String s) {
-        final char[] charArray = s.toCharArray();
+    private static String sortCharacters(String s) {
+        char[] charArray = s.toCharArray();
         Arrays.sort(charArray);
         return new String(charArray);
     }

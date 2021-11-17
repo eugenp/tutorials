@@ -11,13 +11,16 @@ public class Junit5ParameterizedTestNameUnitTest {
 
     @BeforeEach
     void init(TestInfo testInfo) {
-        String displayName = testInfo.getDisplayName();
-        System.out.println("displayName = " + displayName);
+        System.out.println("displayName = " + testInfo.getDisplayName());
+    }
+
+    private boolean oddCheck(int number) {
+        return (number % 2 != 0);
     }
 
     @ParameterizedTest(name = "givenNumbers_whenOddCheck_thenVerify{0}")
     @ValueSource(ints = { 1, 3, 5, -3, 15 })
     public void givenNumbers_whenOddCheck_thenVerify(int number) {
-        assertTrue(number % 2 != 0);
+        assertTrue(oddCheck(number));
     }
 }
