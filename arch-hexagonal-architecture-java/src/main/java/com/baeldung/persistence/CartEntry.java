@@ -24,6 +24,10 @@ public class CartEntry {
     private long quantity;
 
     // Constructor
+    public CartEntry() {
+
+    }
+
     public CartEntry(Cart cart, Product product, long quantity) {
         this.cart = cart;
         this.product = product;

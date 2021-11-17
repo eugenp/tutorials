@@ -12,7 +12,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 
     @Override
     public void addProduct(Long cartNo, Long productNo, Long quantity) {
-        shoppingDao.addProduct(cartNo, productNo, quantity);
+        shoppingDao.addProductToCart(cartNo, productNo, quantity);
     }
 
     @Override

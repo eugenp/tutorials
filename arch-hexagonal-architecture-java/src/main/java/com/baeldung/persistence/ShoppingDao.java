@@ -1,6 +1,8 @@
 package com.baeldung.persistence;
 
 public interface ShoppingDao {
-    void addProduct(Long cartId, Long productId, Long quantity);
+    void addProductToCart(Long cartId, Long productId, Long quantity);
+    Cart createCart(User user);
+    Product createProduct(String productCode);
     // other CRUD operations
 }

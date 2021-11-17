@@ -12,6 +12,9 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(unique = true)
+    private String productCode;
+
     // Column definitions
 
     // Constructor
@@ -27,5 +30,13 @@ public class Product {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 }
