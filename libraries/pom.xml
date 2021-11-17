@@ -147,12 +147,6 @@
             <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>info.debatty</groupId>
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>

@@ -99,6 +99,9 @@
         <module>core-java-reflection-2</module>
         <module>core-java-security</module>
         <module>core-java-security-2</module>
+        <module>core-java-security-3</module>
+        <module>core-java-serialization</module>
+        <module>core-java-security-algorithms</module>
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
@@ -114,6 +117,7 @@
         <module>core-java-sun</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
+        <module>core-java-uuid</module>
         <module>pre-jpms</module>
     </modules>
 

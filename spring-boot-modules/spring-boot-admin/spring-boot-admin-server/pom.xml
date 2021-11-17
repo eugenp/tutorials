@@ -13,7 +13,6 @@
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-admin</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>

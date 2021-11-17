@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.solr.repo;
+	package com.baeldung.spring.data.solr.repo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -36,7 +36,7 @@ public class ProductRepositoryLiveTest {
         product.setId("P000089998");
         product.setName("Desk");
         productRepository.save(product);
-        final Product retrievedProduct = productRepository.findOne(product.getId());
+        final Product retrievedProduct = productRepository.findById(product.getId()).get();
         assertEquals(product.getId(), retrievedProduct.getId());
     }
 
@@ -51,7 +51,7 @@ public class ProductRepositoryLiveTest {
         product.setName("Shirt");
         productRepository.save(product);
 
-        final Product retrievedProduct = productRepository.findOne(product.getId());
+        final Product retrievedProduct = productRepository.findById(product.getId()).get();
         assertEquals(product.getName(), retrievedProduct.getName());
     }
 
@@ -64,7 +64,7 @@ public class ProductRepositoryLiveTest {
 
         productRepository.delete(product);
 
-        Product retrievedProduct = productRepository.findOne(product.getId());
+        Product retrievedProduct = productRepository.findById(product.getId()).get();
         assertNull(retrievedProduct);
 
     }
@@ -97,7 +97,7 @@ public class ProductRepositoryLiveTest {
         wirelessCharger.setName("Phone Charging Cable");
         productRepository.save(wirelessCharger);
 
-        Page<Product> result = productRepository.findByCustomQuery("Phone", new PageRequest(0, 10));
+        Page<Product> result = productRepository.findByCustomQuery("Phone", PageRequest.of(0, 10));
         assertEquals(3, result.getNumberOfElements());
     }
 
@@ -118,7 +118,7 @@ public class ProductRepositoryLiveTest {
         wirelessCharger.setName("Phone Charging Cable");
         productRepository.save(wirelessCharger);
 
-        Page<Product> result = productRepository.findByNamedQuery("one", new PageRequest(0, 10));
+        Page<Product> result = productRepository.findByNamedQuery("one", PageRequest.of(0, 10));
         assertEquals(3, result.getNumberOfElements());
     }
 
