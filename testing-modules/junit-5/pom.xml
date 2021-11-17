@@ -28,7 +28,6 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-console-standalone -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-console-standalone</artifactId>

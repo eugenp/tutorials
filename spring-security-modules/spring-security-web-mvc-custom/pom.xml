@@ -97,12 +97,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- ops -->
-        <!-- <dependency> -->
-        <!-- <groupId>com.codahale.metrics</groupId> -->
-        <!-- <artifactId>metrics-core</artifactId> -->
-        <!-- <version>3.0.1</version> -->
-        <!-- </dependency> -->
         <!-- util -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
