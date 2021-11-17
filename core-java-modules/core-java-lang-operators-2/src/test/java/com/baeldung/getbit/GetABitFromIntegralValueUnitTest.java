@@ -1,6 +1,5 @@
-package com.baeldung.oroperators;
+package com.baeldung.getbit;
 
-import org.apache.commons.lang3.BitField;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -32,39 +31,26 @@ public class GetABitFromIntegralValueUnitTest {
     }
 
     @Test
-    public void givenAnIntValue_whenUsingMultiPos_thenGetSameResult() {
+    public void givenAnIntValue_whenUsingALeftShiftedValue1_thenGetBitValue() {
         int val = 0b0110_0100;
-        for (int i = 6; i < Integer.SIZE; i++) {
-            int pos = 1 << i | 2;
-            int mask = 1 << pos;
-            boolean isSet = (val & mask) > 0;
-
-            assertTrue(isSet);
-        }
-    }
-
-    @Test
-    public void givenALongValue_whenUsingACalculatedMask_thenGetBitValue() {
-        long val = 0b0110_0100;
         int pos = 2;
-        long mask = 1L << pos;
-        boolean isSet = (val & mask) > 0;
+        boolean isSet = ((val << (31 - pos)) < 0);
 
         assertTrue(isSet);
     }
 
     @Test
-    public void givenAnIntValue_whenUsingALeftShiftedValue_thenGetBitValue() {
+    public void givenAnIntValue_whenUsingALeftShiftedValue2_thenGetBitValue() {
         int val = 0b0110_0100;
         int pos = 2;
-        boolean isSet = ((val << ~pos) < 0);
+        boolean isSet = ((val << (~pos & 31)) < 0);
 
         assertTrue(isSet);
     }
 
     @Test
-    public void givenALongValue_whenUsingALeftShiftedValue_thenGetBitValue() {
-        long val = 0b0110_0100;
+    public void givenAnIntValue_whenUsingALeftShiftedValue3_thenGetBitValue() {
+        int val = 0b0110_0100;
         int pos = 2;
         boolean isSet = ((val << ~pos) < 0);
 
@@ -81,15 +67,6 @@ public class GetABitFromIntegralValueUnitTest {
     }
 
     @Test
-    public void givenALongValue_whenUsingARightShiftedValue_thenGetBitValue() {
-        long val = 0b0110_0100;
-        int pos = 2;
-        boolean isSet = ((val >> pos) & 1) == 1;
-
-        assertTrue(isSet);
-    }
-
-    @Test
     public void givenAnIntValue_whenUsingBigInteger_thenGetBitValue() {
         int val = 0b0110_0100;
         int pos = 2;
@@ -98,22 +75,4 @@ public class GetABitFromIntegralValueUnitTest {
         assertTrue(isSet);
     }
 
-    @Test
-    public void givenALongValue_whenUsingBigInteger_thenGetBitValue() {
-        long val = 0b0110_0100;
-        int pos = 2;
-        boolean isSet = BigInteger.valueOf(val).testBit(pos);
-
-        assertTrue(isSet);
-    }
-
-    @Test
-    public void givenAnIntValue_whenUsingCommonsLang_thenGetBitValue() {
-        int val = 0b0110_0100;
-        int mask = 0b0000_1100;
-        BitField bitField = new BitField(mask);
-        boolean isSet = bitField.isSet(val);
-
-        assertTrue(isSet);
-    }
 }
