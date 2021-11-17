@@ -40,7 +40,6 @@
 
     <properties>
         <lombok.version>1.18.12</lombok.version>
-        <commons-lang.version>2.6</commons-lang.version>
         <assertj-core.version>3.10.0</assertj-core.version>
         <equalsverifier.version>3.0.3</equalsverifier.version>
     </properties>

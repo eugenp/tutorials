@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.6.2</version>
+            <version>${javax.mail.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.seancfoley/ipaddress -->
         <dependency>
@@ -80,6 +80,7 @@
         <seancfoley.ipaddress.version>5.3.3</seancfoley.ipaddress.version>
         <jgonian.commons-ip-math.version>1.32</jgonian.commons-ip-math.version>
         <googlecode.ipv6.version>0.17</googlecode.ipv6.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
     </properties>
 
 </project>

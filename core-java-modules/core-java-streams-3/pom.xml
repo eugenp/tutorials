@@ -29,12 +29,12 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
+            <version>${jmh-generator.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- test scoped -->
@@ -65,7 +65,7 @@
                         <path>
                             <groupId>org.openjdk.jmh</groupId>
                             <artifactId>jmh-generator-annprocess</artifactId>
-                            <version>${jmh.version}</version>
+                            <version>${jmh-generator.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -77,7 +77,6 @@
         <lombok.version>1.18.20</lombok.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-        <jmh.version>1.29</jmh.version>
     </properties>
 
 </project>
