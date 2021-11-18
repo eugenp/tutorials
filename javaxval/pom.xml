@@ -34,19 +34,12 @@
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <javax.el.version>3.0.0</javax.el.version>
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
-        <assertj.version>3.11.1</assertj.version>
     </properties>
 
 </project>

@@ -31,12 +31,6 @@
             <version>${rest-assured.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-core.version}</version>
@@ -50,7 +44,6 @@
     </dependencies>
 
     <properties>
-        <assertj-core.version>3.9.1</assertj-core.version>
         <hibernate-core.version>5.2.16.Final</hibernate-core.version>
         <mysql-connector.version>6.0.6</mysql-connector.version>
         <spring-boot.version>2.5.3</spring-boot.version>
