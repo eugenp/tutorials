@@ -1,7 +1,5 @@
 package com.baeldung.concatenation;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
