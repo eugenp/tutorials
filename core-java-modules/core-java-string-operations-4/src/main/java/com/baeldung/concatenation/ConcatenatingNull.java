@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class ConcatenatingNull {
 
     public static void main(String[] args) {
-        String[] values = { "Baeldung ", null, "is ", "awesome!" };
+        String[] values = { "Java ", null, "", "is ", "great!" };
 
         concatenateUsingPlusOperator(values);
         concatenateUsingHelperMethod(values);
@@ -20,61 +20,66 @@ public class ConcatenatingNull {
         concatenateUsingStringConcat(values);
     }
 
-    private static void concatenateUsingStringConcat(String[] values) {
+    public static String concatenateUsingStringConcat(String[] values) {
         String result = "";
+
         for (String value : values) {
             result = result.concat(getNonNullString(value));
         }
 
-        assertEquals("Baeldung is awesome!", result);
+        return result;
     }
 
-    private static void concatenateUsingCollectorsJoining(String[] values) {
+    public static String concatenateUsingCollectorsJoining(String[] values) {
         String result = Stream.of(values).filter(value -> null != value).collect(Collectors.joining(""));
 
-        assertEquals("Baeldung is awesome!", result.toString());
+        return result;
     }
 
-    private static void concatenateUsingStringJoiner(String[] values) {
+    public static String concatenateUsingStringJoiner(String[] values) {
         StringJoiner result = new StringJoiner("");
+
         for (String value : values) {
             result = result.add(getNonNullString(value));
         }
 
-        assertEquals("Baeldung is awesome!", result.toString());
+        return result.toString();
     }
 
-    private static void concatenateUsingJoin(String[] values) {
+    public static String concatenateUsingJoin(String[] values) {
         String result = String.join("", values);
-        
-        assertEquals("Baeldung nullis awesome!", result);
+
+        return result;
     }
 
-    private static void concatenateUsingStringBuilder(String[] values) {
+    public static String concatenateUsingStringBuilder(String[] values) {
         StringBuilder result = new StringBuilder();
+
         for (String value : values) {
             result = result.append(getNonNullString(value));
         }
 
-        assertEquals("Baeldung is awesome!", result.toString());
+        return result.toString();
     }
 
-    private static void concatenateUsingHelperMethod(String[] values) {
+    public static String concatenateUsingHelperMethod(String[] values) {
         String result = "";
+
         for (String value : values) {
             result = result + getNonNullString(value);
         }
 
-        assertEquals("Baeldung is awesome!", result);
+        return result;
     }
 
-    private static void concatenateUsingPlusOperator(String... values) {
+    public static String concatenateUsingPlusOperator(String[] values) {
         String result = "";
+
         for (String value : values) {
-            result = result + getNonNullString(value);
+            result = result + (value == null ? "" : value);
         }
 
-        assertEquals("Baeldung is awesome!", result);
+        return result;
     }
 
     private static String getNonNullString(String value) {
