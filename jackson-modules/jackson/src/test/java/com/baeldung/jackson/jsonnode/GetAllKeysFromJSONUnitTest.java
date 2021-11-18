@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class GetAllKeysFromJSONTest {
+public class GetAllKeysFromJSONUnitTest {
 
     private static String json = "{\r\n" + "   \"Name\":\"Craig\",\r\n" + "   \"Age\":10,\r\n" + "   \"BookInterests\":[\r\n" + "      {\r\n" + "         \"Book\":\"The Kite Runner\",\r\n" + "         \"Author\":\"Khaled Hosseini\"\r\n" + "      },\r\n"
         + "      {\r\n" + "         \"Book\":\"Harry Potter\",\r\n" + "         \"Author\":\"J. K. Rowling\"\r\n" + "      }\r\n" + "   ],\r\n" + "   \"FoodInterests\":{\r\n" + "      \"Breakfast\":[\r\n" + "         {\r\n"
