@@ -1,12 +1,17 @@
 package com.baeldung.loops;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class LoopsInJava {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoopsInJava.class);
+    
     public int[] simple_for_loop() {
         int[] arr = new int[5];
         for (int i = 0; i < 5; i++) {
             arr[i] = i;
-            System.out.println("Simple for loop: i - " + i);
+            LOGGER.debug("Simple for loop: i - " + i);
         }
         return arr;
     }
@@ -16,7 +21,7 @@ public class LoopsInJava {
         int[] arr = new int[5];
         for (int num : intArr) {
             arr[num] = num;
-            System.out.println("Enhanced for-each loop: i - " + num);
+            LOGGER.debug("Enhanced for-each loop: i - " + num);
         }
         return arr;
     }
@@ -26,7 +31,7 @@ public class LoopsInJava {
         int[] arr = new int[5];
         while (i < 5) {
             arr[i] = i;
-            System.out.println("While loop: i - " + i++);
+            LOGGER.debug("While loop: i - " + i++);
         }
         return arr;
     }
@@ -36,7 +41,7 @@ public class LoopsInJava {
         int[] arr = new int[5];
         do {
             arr[i] = i;
-            System.out.println("Do-While loop: i - " + i++);
+            LOGGER.debug("Do-While loop: i - " + i++);
         } while (i < 5);
         return arr;
     }

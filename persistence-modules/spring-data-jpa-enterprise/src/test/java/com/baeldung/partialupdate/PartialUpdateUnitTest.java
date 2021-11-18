@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.partialupdate.model.Customer;
@@ -16,6 +17,7 @@ import com.baeldung.partialupdate.service.CustomerService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PartialUpdateApplication.class)
+@TestPropertySource(properties = {"spring.jpa.show-sql=false "})
 public class PartialUpdateUnitTest {
 
     @Autowired
