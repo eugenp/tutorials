@@ -5,12 +5,12 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = {CamelcaseValidator.class})
+@Constraint(validatedBy = {CamelCaseValidator.class})
 @Target({ElementType.PARAMETER, ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Camelcase {
+public @interface CamelCase {
 
-    String message() default "Name should be uppercase.";
+    String message() default "Name should be camel case.";
 
     boolean required() default true;
 

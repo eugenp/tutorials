@@ -4,18 +4,18 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Objects;
 
-public class CamelcaseValidator implements ConstraintValidator<Camelcase, String> {
+public class CamelCaseValidator implements ConstraintValidator<CamelCase, String> {
 
-	private Camelcase uppercaseAnnotation;
+	private CamelCase cammelCaseAnnotation;
 
-	public void initialize(Camelcase constraintAnnotation) {
-		this.uppercaseAnnotation = constraintAnnotation;
+	public void initialize(CamelCase constraintAnnotation) {
+		this.cammelCaseAnnotation = constraintAnnotation;
 	}
 
 	@Override
 	public boolean isValid(String nameField, ConstraintValidatorContext context) {
 		String correctName = buildCorrectName(nameField);
-		if (uppercaseAnnotation.required()
+		if (cammelCaseAnnotation.required()
 		  && (Objects.isNull(nameField)  || nameField.isBlank()
 		  || !correctName.equals(nameField))) {
 			context = context
