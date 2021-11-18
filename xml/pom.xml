@@ -124,12 +124,6 @@
             <version>${commons-lang.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.xmlunit</groupId>
             <artifactId>xmlunit-assertj</artifactId>
             <version>${xmlunit-assertj.version}</version>
@@ -368,7 +362,6 @@
         <jaxb-core.version>2.3.0.1</jaxb-core.version>
         <jaxb-impl.version>2.3.2</jaxb-impl.version>
         <stax-api.version>1.0-2</stax-api.version>
-        <assertj-core.version>3.12.2</assertj-core.version>
         <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
         <freemarker.version>2.3.29</freemarker.version>
         <mustache.version>0.9.6</mustache.version>
