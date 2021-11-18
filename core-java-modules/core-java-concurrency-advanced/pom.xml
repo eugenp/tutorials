@@ -36,12 +36,6 @@
             <version>${commons-math3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${avaitility.version}</version>
@@ -60,13 +54,10 @@
     </build>
 
     <properties>
-        <!-- util -->
         <guava.version>21.0</guava.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <collections-generic.version>4.01</collections-generic.version>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
     </properties>
 
