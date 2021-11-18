@@ -1,15 +1,20 @@
 package com.baeldung.java8.lambda.exceptions;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.function.Consumer;
 
 public class LambdaExceptionWrappers {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LambdaExceptionWrappers.class);
 
     public static Consumer<Integer> lambdaWrapper(Consumer<Integer> consumer) {
         return i -> {
             try {
                 consumer.accept(i);
             } catch (ArithmeticException e) {
-                System.err.println("Arithmetic Exception occured : " + e.getMessage());
+                LOGGER.error("Arithmetic Exception occured : {}", e.getMessage());
             }
         };
     }
@@ -21,7 +26,7 @@ public class LambdaExceptionWrappers {
             } catch (Exception ex) {
                 try {
                     E exCast = clazz.cast(ex);
-                    System.err.println("Exception occured : " + exCast.getMessage());
+                    LOGGER.error("Exception occured : {}", exCast.getMessage());
                 } catch (ClassCastException ccEx) {
                     throw ex;
                 }
@@ -46,7 +51,7 @@ public class LambdaExceptionWrappers {
             } catch (Exception ex) {
                 try {
                     E exCast = exceptionClass.cast(ex);
-                    System.err.println("Exception occured : " + exCast.getMessage());
+                    LOGGER.error("Exception occured : {}", exCast.getMessage());
                 } catch (ClassCastException ccEx) {
                     throw new RuntimeException(ex);
                 }
