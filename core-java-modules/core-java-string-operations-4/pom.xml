@@ -32,6 +32,16 @@
             <artifactId>opencsv</artifactId>
             <version>${opencsv.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons-lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,6 +63,8 @@
         <assertj.version>3.6.1</assertj.version>
         <guava.version>31.0.1-jre</guava.version>
         <opencsv.version>4.1</opencsv.version>
+        <spring-core.version>5.3.13</spring-core.version>
+        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
     </properties>
 
 </project>
