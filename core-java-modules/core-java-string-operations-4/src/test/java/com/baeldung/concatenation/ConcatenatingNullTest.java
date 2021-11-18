@@ -1,6 +1,12 @@
 package com.baeldung.concatenation;
 
-import static com.baeldung.concatenation.ConcatenatingNull.*;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingCollectorsJoining;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingHelperMethod;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingJoin;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingPlusOperator;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingStringBuilder;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingStringConcat;
+import static com.baeldung.concatenation.ConcatenatingNull.concatenateUsingStringJoiner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
