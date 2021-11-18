@@ -1,17 +1,3 @@
-DROP TABLE IF EXISTS billionaires;
-
-CREATE TABLE billionaires (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  first_name VARCHAR(250) NOT NULL,
-  last_name VARCHAR(250) NOT NULL,
-  career VARCHAR(250) DEFAULT NULL
-);
-
-INSERT INTO billionaires (first_name, last_name, career) VALUES
-('Aliko', 'Dangote', 'Billionaire Industrialist'),
-('Bill', 'Gates', 'Billionaire Tech Entrepreneur'),
-('Folrunsho', 'Alakija', 'Billionaire Oil Magnate');
-
 insert into USER values (101, 'user1', 'comment1');
 insert into USER values (102, 'user2', 'comment2');
 insert into USER values (103, 'user3', 'comment3');
