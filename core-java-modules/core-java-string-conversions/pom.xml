@@ -35,13 +35,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
@@ -62,7 +55,6 @@
 
     <properties>
         <icu4j.version>61.1</icu4j.version>
-        <assertj.version>3.6.1</assertj.version>
     </properties>
 
 </project>
