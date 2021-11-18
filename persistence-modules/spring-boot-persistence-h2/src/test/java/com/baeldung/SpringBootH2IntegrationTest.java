@@ -15,6 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = SpringBootH2Application.class)
 public class SpringBootH2IntegrationTest {
 
+    private static final Country AN_EXPECTED_COUNTRY = buildCountry();
+
     @Autowired
     private CountryRepository countryRepository;
 
@@ -22,7 +24,16 @@ public class SpringBootH2IntegrationTest {
     public void givenInitData_whenApplicationStarts_thenDataIsLoaded() {
         Iterable<Country> users = countryRepository.findAll();
 
-        assertThat(users).hasSize(5);
+        assertThat(users)
+          .hasSize(5)
+          .contains(AN_EXPECTED_COUNTRY);
+    }
+
+    private static Country buildCountry() {
+        Country c = new Country();
+        c.setId(5);
+        c.setName("Canada");
+        return c;
     }
 
 }
