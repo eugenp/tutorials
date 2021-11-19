@@ -20,12 +20,6 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -87,7 +81,6 @@
         <hibernate.version>5.3.7.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
-        <assertj-core.version>3.8.0</assertj-core.version>
         <geodb.version>0.9</geodb.version>
         <hsqldb.version>2.3.4</hsqldb.version>
     </properties>

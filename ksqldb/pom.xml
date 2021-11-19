@@ -40,12 +40,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
             <version>${testcontainers.version}</version>
@@ -61,7 +55,6 @@
 
     <properties>
         <ksqldb.version>6.2.0</ksqldb.version>
-        <assertj.version>3.20.2</assertj.version>
         <awaitility.version>4.1.0</awaitility.version>
         <testcontainers.version>1.15.3</testcontainers.version>
     </properties>

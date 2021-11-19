@@ -64,12 +64,6 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -90,8 +84,6 @@
         <mybatis.version>3.5.2</mybatis.version>
         <mybatis-spring-boot-starter.version>2.1.0</mybatis-spring-boot-starter.version>
         <h2.version>1.4.197</h2.version>
-        <!-- testing -->
-        <assertj-core.version>3.8.0</assertj-core.version>
     </properties>
 
 </project>

@@ -45,12 +45,6 @@
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -64,7 +58,6 @@
     </build>
 
     <properties>
-        <assertj.version>3.12.2</assertj.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
         <guava.version>29.0-jre</guava.version>
     </properties>

@@ -75,12 +75,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -156,7 +150,6 @@
         <guava.version>20.0</guava.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <mockito.version>1.10.19</mockito.version>
-        <assertj.version>3.12.2</assertj.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
     </properties>
 

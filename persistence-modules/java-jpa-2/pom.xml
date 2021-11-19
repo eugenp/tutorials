@@ -58,12 +58,6 @@
             <artifactId>querydsl-jpa</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -139,7 +133,6 @@
         <hibernate.version>5.4.14.Final</hibernate.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
-        <assertj.version>3.11.1</assertj.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>

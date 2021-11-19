@@ -14,15 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>core-java-annotations</finalName>
         <resources>
@@ -32,9 +23,5 @@
             </resource>
         </resources>
     </build>
-    
-    <properties>
-        <assertj-core.version>3.10.0</assertj-core.version>
-    </properties>
 
 </project>

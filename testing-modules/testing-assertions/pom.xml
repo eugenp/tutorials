@@ -19,12 +19,6 @@
             <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>${hamcrest-all.version}</version>
@@ -39,7 +33,6 @@
     </dependencies>
 
     <properties>
-        <assertj-core.version>3.16.1</assertj-core.version>
         <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
 

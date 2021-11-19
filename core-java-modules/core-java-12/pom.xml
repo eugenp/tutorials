@@ -17,12 +17,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -53,7 +47,6 @@
     <properties>
         <maven.compiler.source.version>12</maven.compiler.source.version>
         <maven.compiler.target.version>12</maven.compiler.target.version>
-        <assertj.version>3.6.1</assertj.version>
     </properties>
 
 </project>

@@ -35,12 +35,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
             <version>${junit-platform.version}</version>
@@ -51,7 +45,6 @@
     <properties>
         <eclipse.collections.version>7.1.0</eclipse.collections.version>
         <commons-collections4.version>4.1</commons-collections4.version>
-        <assertj.version>3.11.1</assertj.version>
         <commons-exec.version>1.3</commons-exec.version>
     </properties>
 

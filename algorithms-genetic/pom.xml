@@ -35,18 +35,11 @@
             <artifactId>jenetics</artifactId>
             <version>${io.jenetics.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <io.jenetics.version>3.7.0</io.jenetics.version>
-        <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
     </properties>
 
