@@ -15,21 +15,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <assertj-core.version>3.10.0</assertj-core.version>
-    </properties>
 
 </project>

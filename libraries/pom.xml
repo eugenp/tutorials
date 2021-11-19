@@ -45,12 +45,6 @@
             <artifactId>javassist</artifactId>
             <version>${javaassist.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.javers</groupId>
             <artifactId>javers-core</artifactId>
@@ -272,7 +266,6 @@
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
         <javatuples.version>1.2</javatuples.version>
-        <assertj.version>3.6.2</assertj.version>
         <javers.version>3.1.0</javers.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>

@@ -21,12 +21,6 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-junit-jupiter</artifactId>
             <version>${mockserver.version}</version>
@@ -87,7 +81,6 @@
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <guava.version>29.0-jre</guava.version>
-        <assertj.version>3.17.2</assertj.version>
         <mockserver.version>5.11.1</mockserver.version>
         <jakarta.ws-api.version>3.0.0</jakarta.ws-api.version>
         <jaxws-rt.version>3.0.0</jaxws-rt.version>

@@ -156,13 +156,6 @@
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
         </dependency>
-        <!-- common -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -202,7 +195,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <avro.version>1.8.2</avro.version>
         <beam.version>2.19.0</beam.version>
-        <assertj.version>3.9.0</assertj.version>
         <bval.version>1.1.2</bval.version>
         <javax.validation.validation-api.version>1.1.0.Final</javax.validation.validation-api.version>
         <meecrowave-junit.version>1.2.0</meecrowave-junit.version>

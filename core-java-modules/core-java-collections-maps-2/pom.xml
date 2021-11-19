@@ -51,12 +51,6 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -66,7 +60,6 @@
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <hppc.version>0.7.2</hppc.version>
         <fastutil.version>8.1.0</fastutil.version>
-        <assertj.version>3.11.1</assertj.version>
     </properties>
 
 </project>

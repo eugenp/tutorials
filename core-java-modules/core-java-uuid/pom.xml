@@ -25,12 +25,6 @@
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -147,7 +141,6 @@
     </profiles>
 
     <properties>
-        <assertj-core.version>3.10.0</assertj-core.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
     </properties>
 

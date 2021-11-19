@@ -24,17 +24,10 @@
             <version>${org.hamcrest.java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <commons.collections.version>4.1</commons.collections.version>
-        <assertj.version>3.6.2</assertj.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
     </properties>
 
