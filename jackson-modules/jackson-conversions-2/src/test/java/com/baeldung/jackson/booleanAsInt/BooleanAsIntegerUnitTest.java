@@ -92,10 +92,9 @@ public class BooleanAsIntegerUnitTest {
 
     @Test
     public void givenBooleanWithCustomSerializer_serializedAsNumericStringGlobally() throws Exception {
-        // setting serializers/deserializers globally
+        // setting serializers globally
         SimpleModule module = new SimpleModule();
         module.addSerializer(Boolean.class, new NumericBooleanSerializer());
-        module.addDeserializer(Boolean.class, new NumericBooleanDeserializer());
         mapper.registerModule(module);
 
         Game game = new Game(1L, "My Game");
@@ -109,9 +108,8 @@ public class BooleanAsIntegerUnitTest {
 
     @Test
     public void givenNumericStringWithCustomDeserializer_deserializedAsBooleanGlobally() throws Exception {
-        // setting serializers/deserializers globally
+        // setting deserializers globally
         SimpleModule module = new SimpleModule();
-        module.addSerializer(Boolean.class, new NumericBooleanSerializer());
         module.addDeserializer(Boolean.class, new NumericBooleanDeserializer());
         mapper.registerModule(module);
 
