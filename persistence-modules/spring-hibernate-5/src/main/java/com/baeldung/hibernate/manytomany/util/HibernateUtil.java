@@ -6,8 +6,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HibernateUtil {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(HibernateUtil.class);
     private static SessionFactory sessionFactory;
 
     private static SessionFactory buildSessionFactory() {
@@ -17,25 +21,25 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(Employee.class);
             configuration.addAnnotatedClass(Project.class);
             configuration.configure("manytomany.cfg.xml");
-            System.out.println("Hibernate Annotation Configuration loaded");
+            LOGGER.debug("Hibernate Annotation Configuration loaded");
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-                .build();
-            System.out.println("Hibernate Annotation serviceRegistry created");
+                    .build();
+            LOGGER.debug("Hibernate Annotation serviceRegistry created");
 
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
             return sessionFactory;
         } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            ex.printStackTrace();
+            LOGGER.error("Initial SessionFactory creation failed.", ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
     public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null)
+        if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
+        }
         return sessionFactory;
     }
 }

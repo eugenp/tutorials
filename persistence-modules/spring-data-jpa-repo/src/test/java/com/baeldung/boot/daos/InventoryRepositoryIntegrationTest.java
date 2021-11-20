@@ -19,7 +19,7 @@ import com.baeldung.Application;
 import com.baeldung.boot.domain.MerchandiseEntity;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, properties = {"spring.jpa.show-sql=false"})
 public class InventoryRepositoryIntegrationTest {
 
     private static final String ORIGINAL_TITLE = "Pair of Pants";
