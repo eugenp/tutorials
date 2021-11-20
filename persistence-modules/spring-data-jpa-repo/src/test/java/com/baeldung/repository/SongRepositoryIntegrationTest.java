@@ -16,7 +16,7 @@ import com.baeldung.entity.Song;
 import com.baeldung.repository.SongRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(properties = {"spring.jpa.show-sql=false"})
 @Sql(scripts = { "/test-song-data.sql" })
 public class SongRepositoryIntegrationTest {
 

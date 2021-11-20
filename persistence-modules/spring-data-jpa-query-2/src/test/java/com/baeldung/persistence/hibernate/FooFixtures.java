@@ -10,8 +10,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.google.common.collect.Lists;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FooFixtures {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooFixtures.class);
+
     private SessionFactory sessionFactory;
 
     public FooFixtures(final SessionFactory sessionFactory) {
@@ -36,26 +41,30 @@ public class FooFixtures {
                 foo.setBar(bar);
                 session.save(foo);
                 final Foo foo2 = new Foo(null);
-                if (i % 2 == 0)
+                if (i % 2 == 0) {
                     foo2.setName("LuckyFoo" + (i + 120));
+                }
                 foo2.setBar(bar);
                 session.save(foo2);
-                bar.getFooSet().add(foo);
-                bar.getFooSet().add(foo2);
+                bar.getFooSet()
+                        .add(foo);
+                bar.getFooSet()
+                        .add(foo2);
                 session.merge(bar);
             }
             tx.commit();
             session.flush();
         } catch (final HibernateException he) {
-            if (tx != null)
+            if (tx != null) {
                 tx.rollback();
-            System.out.println("Not able to open session");
-            he.printStackTrace();
+            }
+            LOGGER.error("Not able to open session", he);
         } catch (final Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getLocalizedMessage(), e);
         } finally {
-            if (session != null)
+            if (session != null) {
                 session.close();
+            }
         }
 
     }
@@ -71,7 +80,8 @@ public class FooFixtures {
             final Foo foo = new Foo();
             foo.setName("Foo_" + (i + 120));
             final Bar bar = new Bar("bar_" + i);
-            bar.getFooSet().add(foo);
+            bar.getFooSet()
+                    .add(foo);
             foo.setBar(bar);
             fooList.add(foo);
 
@@ -86,15 +96,16 @@ public class FooFixtures {
             tx.commit();
             session.flush();
         } catch (final HibernateException he) {
-            if (tx != null)
+            if (tx != null) {
                 tx.rollback();
-            System.out.println("Not able to open session");
-            he.printStackTrace();
+            }
+            LOGGER.error("Not able to open session", he);
         } catch (final Exception e) {
-            e.printStackTrace();
+            LOGGER.error(e.getLocalizedMessage(), e);
         } finally {
-            if (session != null)
+            if (session != null) {
                 session.close();
+            }
         }
     }
 
