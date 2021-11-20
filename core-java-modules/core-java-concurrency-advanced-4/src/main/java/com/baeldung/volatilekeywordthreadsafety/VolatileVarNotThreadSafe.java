@@ -3,7 +3,7 @@ package com.baeldung.volatilekeywordthreadsafety;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-public class VolatileVarNotThreadSafe {
+public class VolatileVarNotThreadSafe throws InterruptedException{
 
     private static final Logger LOG = LoggerFactory.getLogger(VolatileVarNotThreadSafe.class);
     private static volatile int count = 0;
@@ -17,7 +17,7 @@ public class VolatileVarNotThreadSafe {
         return count;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(new Runnable() {
            @Override
            public void run() {
