@@ -208,7 +208,6 @@
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
         <assertj.version>3.14.0</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
-        <h2.version>1.4.200</h2.version>
         <dbunit.version>2.7.0</dbunit.version>
         <assertj-core.version>3.14.0</assertj-core.version>
         <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
