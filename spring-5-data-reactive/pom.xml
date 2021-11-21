@@ -72,7 +72,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -135,7 +134,6 @@
         <spring-data-r2dbc.version>1.0.0.RELEASE</spring-data-r2dbc.version>
         <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <h2.version>1.4.200</h2.version>
         <couchbaseMock.version>1.5.23</couchbaseMock.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
         <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->

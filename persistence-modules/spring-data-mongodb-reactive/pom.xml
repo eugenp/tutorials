@@ -71,7 +71,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -126,7 +125,6 @@
     <properties>
         <spring-tx.version>5.2.2.RELEASE</spring-tx.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <h2.version>1.4.200</h2.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
     </properties>
 
