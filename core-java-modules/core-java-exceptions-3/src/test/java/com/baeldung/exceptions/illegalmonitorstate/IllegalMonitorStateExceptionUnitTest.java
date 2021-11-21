@@ -25,7 +25,7 @@ public class IllegalMonitorStateExceptionUnitTest {
         receiverThread.join(1000);
 
         // we need to wait for enough time so that sender has had a chance to send the data
-        assertTimeout(Duration.ofSeconds(5), () -> assertEquals("test", receiver.getMessage()));
+        assertTimeout(Duration.ofSeconds(10), () -> assertEquals("test", receiver.getMessage()));
         assertFalse(sender.hasIllegalMonitorStateExceptionOccurred());
         assertFalse(receiver.hasIllegalMonitorStateExceptionOccurred());
     }
