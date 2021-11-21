@@ -34,17 +34,10 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <tradukisto.version>1.0.1</tradukisto.version>
-        <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <guava.version>28.1-jre</guava.version>

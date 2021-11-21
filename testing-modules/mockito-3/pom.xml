@@ -22,17 +22,10 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <mockito.version>3.8.0</mockito.version>
-        <assertj.version>3.8.0</assertj.version>
     </properties>
 
 </project>

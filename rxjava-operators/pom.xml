@@ -32,11 +32,6 @@
             <version>${rxjava2.ext.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.reactivex</groupId>
             <artifactId>rxjava-math</artifactId>
             <version>${rx.java.math.version}</version>
@@ -51,7 +46,6 @@
     <properties>
         <rxjava2.ext.version>0.20.4</rxjava2.ext.version>
         <rx.java2.version>2.2.2</rx.java2.version>
-        <assertj.version>3.8.0</assertj.version>
         <rx.java.version>1.2.5</rx.java.version>
         <rx.java.math.version>1.0.0</rx.java.math.version>
         <awaitility.version>1.7.0</awaitility.version>

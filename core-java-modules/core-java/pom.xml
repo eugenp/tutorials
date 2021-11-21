@@ -49,13 +49,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
@@ -185,8 +178,6 @@
         <!-- util -->
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-        <!-- testing -->
-        <assertj-core.version>3.10.0</assertj-core.version>
         <!-- maven plugins -->
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
