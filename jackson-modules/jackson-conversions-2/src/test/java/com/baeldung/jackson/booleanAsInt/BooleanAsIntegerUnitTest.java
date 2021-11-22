@@ -33,8 +33,9 @@ public class BooleanAsIntegerUnitTest {
     }
 
     @Test
-    public void givenInteger_deserializedAsBoolean() throws Exception {
+    public void givenInteger_deserializedAsBooleanByDefault() throws Exception {
         // Integer "1" and "0" values deserialized correctly out of the box.
+        // No configuration or @JsonFormat annotation needed.
         String json = "{\"id\":1,\"name\":\"My Game\",\"paused\":1,\"over\":0}";
         Game game = mapper.readValue(json, Game.class);
 
@@ -55,17 +56,6 @@ public class BooleanAsIntegerUnitTest {
 
         assertThat(json)
           .isEqualTo("{\"id\":1,\"name\":\"My Game\",\"paused\":1,\"over\":0}");
-    }
-
-    @Test
-    public void givenInteger_deserializedAsBooleanGlobally() throws Exception {
-        // Integer "1" and "0" values deserialized correctly out of the box.
-        // No global configuration needed.
-        String json = "{\"id\":1,\"name\":\"My Game\",\"paused\":1,\"over\":0}";
-        Game game = mapper.readValue(json, Game.class);
-
-        assertThat(game.isPaused()).isEqualTo(true);
-        assertThat(game.isOver()).isEqualTo(false);
     }
 
     @Test
