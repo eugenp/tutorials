@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>petstore</artifactId>
+	<artifactId>custom-validations-opeanpi-codegen</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>petstore</name>
+	<name>custom-validations-opeanpi-codegen</name>
 	<description>Demo project for Swagger Custom Validations Codegen</description>
 	<properties>
 		<java.version>11</java.version>
