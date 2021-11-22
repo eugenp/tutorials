@@ -1,6 +1,5 @@
 package com.baeldung.exceptions.illegalmonitorstate;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
