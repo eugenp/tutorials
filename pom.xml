@@ -1315,6 +1315,7 @@
                  <module>persistence-modules/sirix</module>
                  <module>quarkus-vs-springboot</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
+                 <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
 
@@ -1367,6 +1368,7 @@
                 <module>persistence-modules/sirix</module>
                 <module>quarkus-vs-springboot</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
+                <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
     </profiles>
