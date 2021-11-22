@@ -66,6 +66,7 @@
     <properties>
         <spring.version>1.5.9.RELEASE</spring.version>
         <eclipselink.version>2.7.0</eclipselink.version>
+        <h2.version>1.4.197</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
     </properties>
 
 </project>
