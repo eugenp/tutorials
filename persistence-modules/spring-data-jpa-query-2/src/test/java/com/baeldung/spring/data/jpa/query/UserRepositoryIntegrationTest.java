@@ -40,42 +40,46 @@ public class UserRepositoryIntegrationTest {
     @Test
     public void whenFindAllSortedByNameThenAllSorted() {
         List<User> allUsersSortedByName = userRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        assertThat(allUsersSortedByName).extracting("name")
+        assertThat(allUsersSortedByName)
+                .extracting("name")
                 .containsSequence("Bob", "Cindy", "John");
     }
 
     @Test
     public void whenFindAllSortedByNameLengthThenException() {
-        assertThatThrownBy(() -> userRepository.findAll(Sort.by("LENGTH(name)"))).isInstanceOf(PropertyReferenceException.class);
+        assertThatThrownBy(() -> userRepository.findAll(Sort.by("LENGTH(name)")))
+                .isInstanceOf(PropertyReferenceException.class);
     }
 
     @Test
     public void whenFindAllUsersSortedByNameThenAllSorted() {
         List<User> allUsersSortedByName = userRepository.findAllUsers(Sort.by(Sort.Direction.ASC, "name"));
-        assertThat(allUsersSortedByName).extracting("name")
+        assertThat(allUsersSortedByName)
+                .extracting("name")
                 .containsSequence("Bob", "Cindy", "John");
     }
 
     @Test
     public void whenFindAllUsersSortedByNameLengthThenAllSorted() {
         List<User> allUsersSortedByName = userRepository.findAllUsers(JpaSort.unsafe("LENGTH(name)"));
-        assertThat(allUsersSortedByName).extracting("name")
+        assertThat(allUsersSortedByName)
+                .extracting("name")
                 .containsSequence("Bob", "John", "Cindy");
     }
 
     @Test
     public void whenFindAllUsersWithPaginationThenPaginated() {
         Page<User> page = userRepository.findAllUsersWithPagination(PageRequest.of(0, 1));
-        assertThat(page.stream()
-                .map(User::getId)).hasSize(1)
+        assertThat(page.stream().map(User::getId))
+                .hasSize(1)
                 .containsOnly(1);
     }
 
     @Test
     public void whenFindAllUsersWithPaginationNativeThenPaginated() {
         Page<User> page = userRepository.findAllUsersWithPaginationNative(PageRequest.of(1, 1));
-        assertThat(page.stream()
-                .map(User::getId)).hasSize(1)
+        assertThat(page.stream().map(User::getId))
+                .hasSize(1)
                 .containsOnly(2);
     }
 
@@ -122,7 +126,8 @@ public class UserRepositoryIntegrationTest {
     @Test
     public void whenFindUserByNameListThenAllFound() {
         List<User> users = userRepository.findUserByNameList(Arrays.asList("Bob", "Cindy"));
-        assertThat(users).extracting("name")
+        assertThat(users)
+                .extracting("name")
                 .containsOnly("Bob", "Cindy");
     }
 

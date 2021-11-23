@@ -50,8 +50,7 @@ public class FooSortingPersistenceIntegrationTest {
 
     @After
     public void after() {
-        session.getTransaction()
-                .commit();
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -71,8 +70,7 @@ public class FooSortingPersistenceIntegrationTest {
         final Query query = session.createQuery(hql);
         final List<Foo> fooList = query.list();
 
-        assertNull(fooList.get(fooList.toArray().length - 1)
-                .getName());
+        assertNull(fooList.get(fooList.toArray().length - 1).getName());
         for (final Foo foo : fooList) {
             LOGGER.debug("Name: {}, Id: {}", foo.getName(), foo.getId());
         }
@@ -83,8 +81,7 @@ public class FooSortingPersistenceIntegrationTest {
         final String hql = "FROM Foo f ORDER BY f.name NULLS FIRST";
         final Query query = session.createQuery(hql);
         final List<Foo> fooList = query.list();
-        assertNull(fooList.get(0)
-                .getName());
+        assertNull(fooList.get(0).getName());
         for (final Foo foo : fooList) {
             LOGGER.debug("Name: {}", foo.getName());
 
@@ -145,11 +142,9 @@ public class FooSortingPersistenceIntegrationTest {
     @Test
     public final void whenCriteriaSortingStringNullsLastAsc_thenNullsLast() {
         final Criteria criteria = session.createCriteria(Foo.class, "FOO");
-        criteria.addOrder(Order.asc("name")
-                .nulls(NullPrecedence.LAST));
+        criteria.addOrder(Order.asc("name").nulls(NullPrecedence.LAST));
         final List<Foo> fooList = criteria.list();
-        assertNull(fooList.get(fooList.toArray().length - 1)
-                .getName());
+        assertNull(fooList.get(fooList.toArray().length - 1).getName());
         for (final Foo foo : fooList) {
             LOGGER.debug("Id: {}, FirstName: {}", foo.getId(), foo.getName());
         }
@@ -158,11 +153,9 @@ public class FooSortingPersistenceIntegrationTest {
     @Test
     public final void whenCriteriaSortingStringNullsFirstDesc_thenNullsFirst() {
         final Criteria criteria = session.createCriteria(Foo.class, "FOO");
-        criteria.addOrder(Order.desc("name")
-                .nulls(NullPrecedence.FIRST));
+        criteria.addOrder(Order.desc("name").nulls(NullPrecedence.FIRST));
         final List<Foo> fooList = criteria.list();
-        assertNull(fooList.get(0)
-                .getName());
+        assertNull(fooList.get(0).getName());
         for (final Foo foo : fooList) {
             LOGGER.debug("Id: {}, FirstName: {}", foo.getId(), foo.getName());
         }

@@ -21,8 +21,7 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(Event.class);
             configuration.addAnnotatedClass(EventGeneratedId.class);
             configuration.configure("immutable.cfg.xml");
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-                    .build();
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             return configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             LOGGER.debug("Initial SessionFactory creation failed.", ex);

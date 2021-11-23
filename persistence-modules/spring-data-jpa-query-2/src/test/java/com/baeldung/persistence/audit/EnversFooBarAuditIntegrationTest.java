@@ -123,39 +123,24 @@ public class EnversFooBarAuditIntegrationTest {
         assertNotNull(barRevisionList);
         assertEquals(4, barRevisionList.size());
 
-        assertEquals("BAR", barRevisionList.get(0)
-                .getName());
-        assertEquals("BAR", barRevisionList.get(1)
-                .getName());
-        assertEquals("BAR1", barRevisionList.get(2)
-                .getName());
-        assertEquals("BAR1", barRevisionList.get(3)
-                .getName());
+        assertEquals("BAR", barRevisionList.get(0).getName());
+        assertEquals("BAR", barRevisionList.get(1).getName());
+        assertEquals("BAR1", barRevisionList.get(2).getName());
+        assertEquals("BAR1", barRevisionList.get(3).getName());
 
-        assertEquals(1, barRevisionList.get(0)
-                .getFooSet()
-                .size());
-        assertEquals(2, barRevisionList.get(1)
-                .getFooSet()
-                .size());
-        assertEquals(2, barRevisionList.get(2)
-                .getFooSet()
-                .size());
-        assertEquals(3, barRevisionList.get(3)
-                .getFooSet()
-                .size());
+        assertEquals(1, barRevisionList.get(0).getFooSet().size());
+        assertEquals(2, barRevisionList.get(1).getFooSet().size());
+        assertEquals(2, barRevisionList.get(2).getFooSet().size());
+        assertEquals(3, barRevisionList.get(3).getFooSet().size());
 
         // test Foo revisions
 
         fooRevisionList = fooService.getRevisions();
         assertNotNull(fooRevisionList);
         assertEquals(3, fooRevisionList.size());
-        assertEquals("FOO1", fooRevisionList.get(0)
-                .getName());
-        assertEquals("FOO2", fooRevisionList.get(1)
-                .getName());
-        assertEquals("FOO3", fooRevisionList.get(2)
-                .getName());
+        assertEquals("FOO1", fooRevisionList.get(0).getName());
+        assertEquals("FOO2", fooRevisionList.get(1).getName());
+        assertEquals("FOO3", fooRevisionList.get(2).getName());
     }
 
 }
