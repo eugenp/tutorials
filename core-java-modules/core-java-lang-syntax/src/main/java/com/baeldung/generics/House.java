@@ -7,6 +7,6 @@ public class House extends Building {
     private static final Logger LOGGER = LoggerFactory.getLogger(House.class);
 
     public void paint() {
-        LOGGER.info("Painting House");
+        LOGGER.debug("Painting House");
     }
 }

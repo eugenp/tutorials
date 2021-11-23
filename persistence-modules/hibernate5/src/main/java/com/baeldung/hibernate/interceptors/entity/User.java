@@ -1,7 +1,5 @@
 package com.baeldung.hibernate.interceptors.entity;
 
-import java.util.Date;
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.util.Date;
 
 @Entity(name = "hbi_user")
 public class User {

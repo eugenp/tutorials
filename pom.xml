@@ -295,7 +295,6 @@
             <id>default-first</id>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -315,6 +314,9 @@
                                 <exclude>**/JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
@@ -581,6 +583,9 @@
                                 <exclude>**/*JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
