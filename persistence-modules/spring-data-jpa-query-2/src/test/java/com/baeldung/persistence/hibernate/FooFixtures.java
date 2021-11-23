@@ -46,10 +46,8 @@ public class FooFixtures {
                 }
                 foo2.setBar(bar);
                 session.save(foo2);
-                bar.getFooSet()
-                        .add(foo);
-                bar.getFooSet()
-                        .add(foo2);
+                bar.getFooSet().add(foo);
+                bar.getFooSet().add(foo2);
                 session.merge(bar);
             }
             tx.commit();
@@ -80,8 +78,7 @@ public class FooFixtures {
             final Foo foo = new Foo();
             foo.setName("Foo_" + (i + 120));
             final Bar bar = new Bar("bar_" + i);
-            bar.getFooSet()
-                    .add(foo);
+            bar.getFooSet().add(foo);
             foo.setBar(bar);
             fooList.add(foo);
 
