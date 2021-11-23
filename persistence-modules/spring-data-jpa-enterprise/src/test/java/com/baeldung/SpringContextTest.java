@@ -10,7 +10,6 @@ import com.baeldung.boot.Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-@TestPropertySource(properties = {"spring.jpa.show-sql=false "})
 public class SpringContextTest {
 
     @Test

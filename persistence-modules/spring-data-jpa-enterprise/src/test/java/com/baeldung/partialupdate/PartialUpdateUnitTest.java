@@ -17,7 +17,6 @@ import com.baeldung.partialupdate.service.CustomerService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PartialUpdateApplication.class)
-@TestPropertySource(properties = {"spring.jpa.show-sql=false "})
 public class PartialUpdateUnitTest {
 
     @Autowired
