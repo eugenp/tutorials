@@ -20,7 +20,6 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
-@TestPropertySource(properties = {"spring.jpa.show-sql=false"})
 public class CarRepositoryIntegrationTest {
 
     @Autowired

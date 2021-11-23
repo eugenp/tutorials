@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.baeldung.entity.Fruit;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = {"spring.jpa.show-sql=false"})
+@SpringBootTest
 public class FruitPopulatorIntegrationTest {
 
     @Autowired

@@ -17,7 +17,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = QueryApplication.class, properties = {"spring.jpa.show-sql=false"})
+@SpringBootTest(classes = QueryApplication.class)
 public class UserRepositoryIntegrationTest {
 
     private static final String USER_NAME_ADAM = "Adam";
