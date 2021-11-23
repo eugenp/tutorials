@@ -16,7 +16,7 @@ import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TES
 
 @RunWith(SpringRunner.class)
 @Sql(scripts = { "/test-movie-data.sql" })
-@SpringBootTest(classes = LikeApplication.class, properties = {"spring.jpa.show-sql=false"})
+@SpringBootTest(classes = LikeApplication.class)
 @Sql(scripts = "/test-movie-cleanup.sql", executionPhase = AFTER_TEST_METHOD)
 public class MovieRepositoryIntegrationTest {
     @Autowired
