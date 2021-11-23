@@ -14,7 +14,7 @@ public class LambdaExceptionWrappers {
             try {
                 consumer.accept(i);
             } catch (ArithmeticException e) {
-                LOGGER.error("Arithmetic Exception occured : {}", e.getMessage());
+                LOGGER.error("Arithmetic Exception occurred.", e);
             }
         };
     }
@@ -26,7 +26,7 @@ public class LambdaExceptionWrappers {
             } catch (Exception ex) {
                 try {
                     E exCast = clazz.cast(ex);
-                    LOGGER.error("Exception occured : {}", exCast.getMessage());
+                    LOGGER.error("Exception occurred.", exCast);
                 } catch (ClassCastException ccEx) {
                     throw ex;
                 }
@@ -51,7 +51,7 @@ public class LambdaExceptionWrappers {
             } catch (Exception ex) {
                 try {
                     E exCast = exceptionClass.cast(ex);
-                    LOGGER.error("Exception occured : {}", exCast.getMessage());
+                    LOGGER.error("Exception occurred.", exCast);
                 } catch (ClassCastException ccEx) {
                     throw new RuntimeException(ex);
                 }

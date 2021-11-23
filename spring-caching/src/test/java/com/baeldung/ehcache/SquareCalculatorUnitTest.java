@@ -25,8 +25,7 @@ public class SquareCalculatorUnitTest {
     @Test
     public void whenCalculatingSquareValueOnce_thenCacheDontHaveValues() {
         for (int i = 10; i < 15; i++) {
-            assertFalse(cacheHelper.getSquareNumberCache()
-                    .containsKey(i));
+            assertFalse(cacheHelper.getSquareNumberCache().containsKey(i));
             LOGGER.debug("Square value of {} is: {}", i, squaredCalculator.getSquareValueOfNumber(i));
         }
     }
@@ -34,14 +33,12 @@ public class SquareCalculatorUnitTest {
     @Test
     public void whenCalculatingSquareValueAgain_thenCacheHasAllValues() {
         for (int i = 10; i < 15; i++) {
-            assertFalse(cacheHelper.getSquareNumberCache()
-                    .containsKey(i));
+            assertFalse(cacheHelper.getSquareNumberCache().containsKey(i));
             LOGGER.debug("Square value of {} is: {}", i, squaredCalculator.getSquareValueOfNumber(i));
         }
 
         for (int i = 10; i < 15; i++) {
-            assertTrue(cacheHelper.getSquareNumberCache()
-                    .containsKey(i));
+            assertTrue(cacheHelper.getSquareNumberCache().containsKey(i));
             LOGGER.debug("Square value of {} is: {}", i, squaredCalculator.getSquareValueOfNumber(i) + "\n");
         }
     }
