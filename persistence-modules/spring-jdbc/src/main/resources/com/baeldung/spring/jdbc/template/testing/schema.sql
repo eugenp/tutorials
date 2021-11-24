@@ -1,7 +1,1 @@
-CREATE TABLE EMPLOYEE
-(
-	ID int  NOT NULL PRIMARY KEY,
-	FIRST_NAME varchar(255),
-	LAST_NAME varchar(255),
-	ADDRESS varchar(255)
-);
+/*All SQL commands (statements) must be separated by a line break. If there is one command then there is one line.*/CREATE TABLE EMPLOYEE(ID int  NOT NULL PRIMARY KEY,FIRST_NAME varchar(255),LAST_NAME varchar(255),ADDRESS varchar(255));
