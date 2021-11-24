@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>open-liberty</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -29,12 +28,17 @@
             <version>${version.derby}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- For tests -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${version.junit}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -87,7 +91,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${version.maven-war-plugin}</version>
             </plugin>
-
         </plugins>
     </build>
 
@@ -97,23 +100,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-
         <!-- versions -->
         <version.jakarta.jakartaee-web-api>8.0.0</version.jakarta.jakartaee-web-api>
         <version.microprofile>3.2</version.microprofile>
         <version.derby>10.14.2.0</version.derby>
         <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
         <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
-        <version.junit>4.12</version.junit>
         <version.yasson>1.0.5</version.yasson>
         <version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
         <version.javax.json>1.0.4</version.javax.json>
         <version.cxf-rt-rs-mp-client>3.3.1</version.cxf-rt-rs-mp-client>
-
         <!-- Liberty configuration -->
         <liberty.var.app.context.root>openliberty</liberty.var.app.context.root>
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <testServerHttpPort>7070</testServerHttpPort>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
+
 </project>

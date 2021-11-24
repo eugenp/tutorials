@@ -148,48 +148,46 @@ public class BinaryTree {
         }
     }
 
-    
     public void traverseInOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
+        Stack<Node> stack = new Stack<>();
+        Node current = root;
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+
+            Node top = stack.pop();
+            visit(top.value);
+            current = top.right;
+        }
+    }
+
+    public void traversePreOrderWithoutRecursion() {
+        Stack<Node> stack = new Stack<>();
         Node current = root;
         stack.push(root);
-        while(! stack.isEmpty()) {
-            while(current.left != null) {
-                current = current.left;                
-                stack.push(current);                
-            }
+
+        while (current != null && !stack.isEmpty()) {
             current = stack.pop();
             visit(current.value);
-            if(current.right != null) {
-                current = current.right;                
-                stack.push(current);
-            }
+
+            if (current.right != null)
+                stack.push(current.right);
+
+            if (current.left != null)
+                stack.push(current.left);
         }
     }
     
-    public void traversePreOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
-        Node current = root;
-        stack.push(root);
-        while(! stack.isEmpty()) {
-            current = stack.pop();
-            visit(current.value);
-            
-            if(current.right != null)
-                stack.push(current.right);
-                
-            if(current.left != null)
-                stack.push(current.left);
-        }        
-    }
-    
     public void traversePostOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
+        Stack<Node> stack = new Stack<>();
         Node prev = root;
         Node current = root;
         stack.push(root);
 
-        while (!stack.isEmpty()) {
+        while (current != null && !stack.isEmpty()) {
             current = stack.peek();
             boolean hasChild = (current.left != null || current.right != null);
             boolean isPrevLastChild = (prev == current.right || (prev == current.left && current.right == null));

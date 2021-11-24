@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -95,20 +94,20 @@
     <repositories>
         <repository>
             <id>SparkPackagesRepo</id>
-            <url>http://dl.bintray.com/spark-packages/maven</url>
+            <url>https://repos.spark-packages.org</url>
         </repository>
     </repositories>
 
     <properties>
-        <org.apache.spark.spark-core.version>2.3.0</org.apache.spark.spark-core.version>
-        <org.apache.spark.spark-sql.version>2.3.0</org.apache.spark.spark-sql.version>
-        <org.apache.spark.spark-streaming.version>2.3.0</org.apache.spark.spark-streaming.version>
-        <org.apache.spark.spark-mllib.version>2.3.0</org.apache.spark.spark-mllib.version>
-        <org.apache.spark.spark-graphx.version>2.3.0</org.apache.spark.spark-graphx.version>
-        <graphframes.version>0.7.0-spark2.4-s_2.11</graphframes.version>
-        <org.apache.spark.spark-streaming-kafka.version>2.3.0</org.apache.spark.spark-streaming-kafka.version>
-        <com.datastax.spark.spark-cassandra-connector.version>2.3.0</com.datastax.spark.spark-cassandra-connector.version>
-        <com.datastax.spark.spark-cassandra-connector-java.version>1.5.2</com.datastax.spark.spark-cassandra-connector-java.version>
+        <org.apache.spark.spark-core.version>2.4.8</org.apache.spark.spark-core.version>
+        <org.apache.spark.spark-sql.version>2.4.8</org.apache.spark.spark-sql.version>
+        <org.apache.spark.spark-streaming.version>2.4.8</org.apache.spark.spark-streaming.version>
+        <org.apache.spark.spark-mllib.version>2.4.8</org.apache.spark.spark-mllib.version>
+        <org.apache.spark.spark-graphx.version>2.4.8</org.apache.spark.spark-graphx.version>
+        <graphframes.version>0.8.1-spark3.0-s_2.12</graphframes.version>
+        <org.apache.spark.spark-streaming-kafka.version>2.4.8</org.apache.spark.spark-streaming-kafka.version>
+        <com.datastax.spark.spark-cassandra-connector.version>2.5.2</com.datastax.spark.spark-cassandra-connector.version>
+        <com.datastax.spark.spark-cassandra-connector-java.version>1.6.0-M1</com.datastax.spark.spark-cassandra-connector-java.version>
     </properties>
 
 </project>

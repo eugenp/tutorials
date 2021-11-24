@@ -25,7 +25,7 @@ public class AssertJConditionUnitTest {
             assertThat(member).isNot(senior);
             fail();
         } catch (AssertionError e) {
-            assertThat(e).hasMessageContaining("not to be <senior>");
+            assertThat(e).hasMessageContaining("not to be senior");
         }
     }
 
@@ -38,7 +38,7 @@ public class AssertJConditionUnitTest {
             assertThat(member).has(nameJohn);
             fail();
         } catch (AssertionError e) {
-            assertThat(e).hasMessageContaining("<name John>");
+            assertThat(e).hasMessageContaining("name John");
         }
     }
 

@@ -1,0 +1,4 @@
+[submodule "project"]
+  path = project
+  url = https://github.com/eugenp/tutorials.git
+  branch = master

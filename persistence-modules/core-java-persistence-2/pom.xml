@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.core-java-persistence-2</groupId>
     <artifactId>core-java-persistence-2</artifactId>
@@ -31,29 +32,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.driver.version}</version>
         </dependency>
-        <!--
-       ==================================================================
-        This jar is not in maven central repo due to some license issues.
-        We need to manually download and install to maven repository.
-       ==================================================================
-
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc14</artifactId>
-            <version>${oracle.driver.version}</version>
-        </dependency>
-        -->
+        <!-- ================================================================== This jar is not in maven 
+            central repo due to some license issues. We need to manually download and install to maven repository. 
+            ================================================================== <dependency> <groupId>com.oracle</groupId> 
+            <artifactId>ojdbc14</artifactId> <version>${oracle.driver.version}</version> </dependency> -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>${mssql.driver.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>
         <h2.version>1.4.200</h2.version>
-        <postgresql.version>42.2.5.jre7</postgresql.version>
         <mssql.driver.version>8.4.1.jre11</mssql.driver.version>
         <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
         <mysql.driver.version>8.0.22</mysql.driver.version>

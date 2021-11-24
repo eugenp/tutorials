@@ -85,6 +85,12 @@
             <version>${jsonassert.version}</version>
         </dependency>
         <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>model-assert</artifactId>
+            <version>${modelassert.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -112,11 +118,6 @@
             <version>${spring-mock-mvc.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -129,47 +130,34 @@
             <artifactId>asciidoctor-maven-plugin</artifactId>
             <version>${asciidoctor.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
             <version>${dbunit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>${byte-buddy.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
             <artifactId>archunit-junit5</artifactId>
             <version>${archunit.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
@@ -184,7 +172,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -194,7 +181,6 @@
                     <target>${maven-compiler-plugin.target}</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
@@ -209,7 +195,6 @@
         <hoverfly-java.version>0.8.1</hoverfly-java.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
-        <assertj.version>3.14.0</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
         <h2.version>1.4.200</h2.version>
         <dbunit.version>2.7.0</dbunit.version>
@@ -218,6 +203,7 @@
         <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <archunit.version>0.14.1</archunit.version>
+        <modelassert.version>1.0.0</modelassert.version>
     </properties>
 
 </project>

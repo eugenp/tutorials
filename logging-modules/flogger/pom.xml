@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>flogger</artifactId>
 
@@ -9,7 +9,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>logging-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -18,20 +17,17 @@
             <artifactId>flogger</artifactId>
             <version>${flogger.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger-system-backend</artifactId>
             <version>${flogger.version}</version>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger-slf4j-backend</artifactId>
             <version>${flogger.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.google.flogger</groupId>
             <artifactId>flogger-log4j-backend</artifactId>
@@ -51,7 +47,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -67,6 +62,6 @@
     <properties>
         <flogger.version>0.4</flogger.version>
         <log4j.version>1.2.17</log4j.version>
-	</properties>
+    </properties>
 
 </project>

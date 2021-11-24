@@ -1,7 +1,12 @@
 package com.baeldung.abaproblem;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -30,45 +35,39 @@ public class AccountUnitTest {
         assertTrue(account.deposit(moneyToDeposit));
 
         assertEquals(moneyToDeposit, account.getBalance());
+        assertEquals(1, account.getTransactionCount());
     }
 
     @Test
-    public void withdrawTest() throws InterruptedException {
+    public void withdrawTest() {
         final int defaultBalance = 50;
         final int moneyToWithdraw = 20;
 
         account.deposit(defaultBalance);
 
         assertTrue(account.withdraw(moneyToWithdraw));
-
         assertEquals(defaultBalance - moneyToWithdraw, account.getBalance());
     }
 
     @Test
-    public void abaProblemTest() throws InterruptedException {
+    public void abaProblemTest() throws Exception {
         final int defaultBalance = 50;
 
         final int amountToWithdrawByThread1 = 20;
         final int amountToWithdrawByThread2 = 10;
         final int amountToDepositByThread2 = 10;
 
-        assertEquals(0, account.getTransactionCount());
-        assertEquals(0, account.getCurrentThreadCASFailureCount());
         account.deposit(defaultBalance);
-        assertEquals(1, account.getTransactionCount());
 
-        Thread thread1 = new Thread(() -> {
-
+        Runnable thread1 = () -> {
             // this will take longer due to the name of the thread
             assertTrue(account.withdraw(amountToWithdrawByThread1));
 
             // thread 1 fails to capture ABA problem
             assertNotEquals(1, account.getCurrentThreadCASFailureCount());
+        };
 
-        }, "thread1");
-
-        Thread thread2 = new Thread(() -> {
-
+        Runnable thread2 = () -> {
             assertTrue(account.deposit(amountToDepositByThread2));
             assertEquals(defaultBalance + amountToDepositByThread2, account.getBalance());
 
@@ -79,12 +78,13 @@ public class AccountUnitTest {
             assertEquals(defaultBalance, account.getBalance());
 
             assertEquals(0, account.getCurrentThreadCASFailureCount());
-        }, "thread2");
+        };
 
-        thread1.start();
-        thread2.start();
-        thread1.join();
-        thread2.join();
+        Future<?> future1 = getSingleThreadExecutorService("thread1").submit(thread1);
+        Future<?> future2 = getSingleThreadExecutorService("thread2").submit(thread2);
+
+        future1.get();
+        future2.get();
 
         // compareAndSet operation succeeds for thread 1
         assertEquals(defaultBalance - amountToWithdrawByThread1, account.getBalance());
@@ -94,5 +94,11 @@ public class AccountUnitTest {
 
         // thread 2 did two modifications as well
         assertEquals(4, account.getTransactionCount());
+    }
+
+    private static ExecutorService getSingleThreadExecutorService(String threadName) {
+        return Executors.newSingleThreadExecutor(
+          new ThreadFactoryBuilder().setNameFormat(threadName).build()
+        );
     }
 }

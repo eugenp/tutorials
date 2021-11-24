@@ -39,12 +39,6 @@
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj-core.version}</version>
-                <scope>test</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -66,7 +60,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <forkCount>0</forkCount>
                 </configuration>
@@ -75,18 +68,12 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <source.version>9</source.version>
         <target.version>9</target.version>
 
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 
         <appmodules.version>1.0</appmodules.version>
-
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <assertj-core.version>3.12.2</assertj-core.version>
     </properties>
 
 </project>

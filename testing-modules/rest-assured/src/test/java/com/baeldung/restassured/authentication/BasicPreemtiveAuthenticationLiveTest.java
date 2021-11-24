@@ -25,7 +25,7 @@ public class BasicPreemtiveAuthenticationLiveTest {
         get(SVC_URL).then()
             .assertThat()
             .statusCode(HttpStatus.OK.value())
-            .content(containsString("<form"), containsString("action=\"login\""));
+            .body(containsString("<form"), containsString("action=\"login\""));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class BasicPreemtiveAuthenticationLiveTest {
             .then()
             .assertThat()
             .statusCode(HttpStatus.OK.value())
-            .content(containsString("<form"), containsString("action=\"login\""));
+            .body(containsString("<form"), containsString("action=\"login\""));
     }
 
     @Test

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <name>spring-boot-modules</name>
 
     <parent>
@@ -24,6 +23,7 @@
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
         <module>spring-boot-artifacts</module>
+        <module>spring-boot-artifacts-2</module>
         <module>spring-boot-autoconfiguration</module>
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
@@ -33,6 +33,7 @@
         <module>spring-boot-ctx-fluent</module>
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
+        <module>spring-boot-disable-logging</module>
         <module>spring-boot-camel</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
@@ -45,7 +46,7 @@
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <module>spring-boot-keycloak</module>
+        <!-- <module>spring-boot-keycloak</module> --> <!-- Fixing under JAVA-8271 -->
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
         <module>spring-boot-logging-log4j2</module>
@@ -53,6 +54,7 @@
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-birt</module>
+        <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
@@ -61,17 +63,17 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
+        <module>spring-boot-runtime-2</module>
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-vue</module>
-        <module>spring-boot-xml</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
+        <module>spring-boot-validation</module>
     </modules>
-
 
     <dependencyManagement>
         <dependencies>
@@ -92,29 +94,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-        </plugins>
-    </build>
-
-    <properties>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <commons-io.version>2.6</commons-io.version>
-    </properties>
 </project>

@@ -6,7 +6,6 @@ import javax.naming.InitialContext;
 import javax.naming.NameNotFoundException;
 import javax.naming.NoInitialContextException;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -16,14 +15,17 @@ import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class JndiExceptionsUnitTest {
+    
+    InitialContext ctx;
 
     @Test
     @Order(1)
     void givenNoContext_whenLookupObject_thenThrowNoInitialContext() {
         assertThrows(NoInitialContextException.class, () -> {
             JndiTemplate jndiTemplate = new JndiTemplate();
-            InitialContext ctx = (InitialContext) jndiTemplate.getContext();
+            ctx = (InitialContext) jndiTemplate.getContext();
             ctx.lookup("java:comp/env/jdbc/datasource");
+            ctx.close();
         }).printStackTrace();
     }
 
@@ -35,8 +37,9 @@ public class JndiExceptionsUnitTest {
             builder.activate();
 
             JndiTemplate jndiTemplate = new JndiTemplate();
-            InitialContext ctx = (InitialContext) jndiTemplate.getContext();
+            ctx = (InitialContext) jndiTemplate.getContext();
             ctx.lookup("badJndiName");
+            ctx.close();
         }).printStackTrace();
     }
 

@@ -10,10 +10,8 @@ public class CircularBuffer<E> {
 
     @SuppressWarnings("unchecked")
     public CircularBuffer(int capacity) {
-
         this.capacity = (capacity < 1) ? DEFAULT_CAPACITY : capacity;
-        this.data = (E[]) new Object[capacity];
-
+        this.data = (E[]) new Object[this.capacity];
         this.readSequence = 0;
         this.writeSequence = -1;
     }

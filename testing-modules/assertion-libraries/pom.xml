@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>assertion-libraries</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -10,6 +11,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -17,6 +19,14 @@
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
             <version>${truth.version}</version>
+            <exclusions>
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
+                    included in parent-modules. -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.google.truth.extensions</groupId>
@@ -30,12 +40,6 @@
             <version>${assertj-guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.javalite</groupId>
             <artifactId>javalite-common</artifactId>
             <version>${javalite.version}</version>
@@ -45,6 +49,14 @@
             <artifactId>jgotesting</artifactId>
             <version>${jgotesting.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
+                    included in parent-modules. -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -65,8 +77,7 @@
 
     <properties>
         <truth.version>0.32</truth.version>
-        <assertj-guava.version>3.1.0</assertj-guava.version>
-        <assertj-core.version>3.9.0</assertj-core.version>
+        <assertj-guava.version>3.4.0</assertj-guava.version>
         <assertj-generator.version>2.1.0</assertj-generator.version>
         <javalite.version>1.4.13</javalite.version>
         <jgotesting.version>0.12</jgotesting.version>

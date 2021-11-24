@@ -3,35 +3,36 @@ package com.baeldung.character;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class CharacterGeneralCategoryTypeUnitTest {
     @Test
     public void givenACharacter_whenUpperCaseLetter_thenAssertTrue() {
-        assertTrue(Character.getType('U') == Character.UPPERCASE_LETTER);
+        assertEquals(Character.UPPERCASE_LETTER, Character.getType('U'));
     }
 
     @Test
     public void givenACharacter_whenLowerCaseLetter_thenAssertTrue() {
-        assertTrue(Character.getType('u') == Character.LOWERCASE_LETTER);
+        assertEquals(Character.LOWERCASE_LETTER, Character.getType('u'));
     }
 
     @Test
     public void givenACharacter_whenTitleCaseLetter_thenAssertTrue() {
-        assertTrue(Character.getType('\u01f2') == Character.TITLECASE_LETTER);
+        assertEquals(Character.TITLECASE_LETTER, Character.getType('\u01f2'));
     }
 
     @Test
     public void givenACharacter_whenModifierLetter_thenAssertTrue() {
-        assertTrue(Character.getType('\u02b0') == Character.MODIFIER_LETTER);
+        assertEquals(Character.MODIFIER_LETTER, Character.getType('\u02b0'));
     }
 
     @Test
     public void givenACharacter_whenOtherLetter_thenAssertTrue() {
-        assertTrue(Character.getType('\u05d0') == Character.OTHER_LETTER);
+        assertEquals(Character.OTHER_LETTER, Character.getType('\u05d0'));
     }
 
     @Test
     public void givenACharacter_whenLetterNumber_thenAssertTrue() {
-        assertTrue(Character.getType('\u2164') == Character.LETTER_NUMBER);
+        assertEquals(Character.LETTER_NUMBER, Character.getType('\u2164'));
     }
 }

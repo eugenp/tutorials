@@ -11,9 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -23,7 +22,7 @@ public class MainController {
     @Qualifier("springSecurityFilterChain")
     private Filter springSecurityFilterChain;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/filters")
+    @GetMapping("/filters")
     @ResponseBody
     public void getFilters() {
         FilterChainProxy filterChainProxy = (FilterChainProxy) springSecurityFilterChain;
@@ -32,11 +31,10 @@ public class MainController {
               .flatMap(chain -> chain.getFilters().stream())
               .forEach(filter -> System.out.println(filter.getClass()));
     }
-    
-    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
+
+    @GetMapping("/foos/{id}")
     @ResponseBody
     public Foo findById(@PathVariable final long id, HttpServletRequest request) {
         return new Foo("Sample");
     }
-
 }

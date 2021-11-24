@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -27,11 +26,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>${org.slf4j.slf4j-simple.version}</version>
+            <version>${org.slf4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -63,7 +61,6 @@
     <properties>
         <thrift.version>0.10.0</thrift.version>
         <maven-thrift.version>0.1.11</maven-thrift.version>
-        <org.slf4j.slf4j-simple.version>1.7.12</org.slf4j.slf4j-simple.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
     </properties>
 

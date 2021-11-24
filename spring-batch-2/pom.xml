@@ -20,7 +20,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-batch</artifactId>
-            <version>2.3.6.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -31,7 +30,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.batch.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -43,14 +41,13 @@
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-test</artifactId>
-            <version>${spring.batch.test.version}</version>
+            <version>${spring.batch.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <spring.boot.batch.version>2.3.6.RELEASE</spring.boot.batch.version>
-        <spring.batch.test.version>4.2.4.RELEASE</spring.batch.test.version>
+        <spring.batch.version>4.3.0</spring.batch.version>
         <hsqldb.version>2.5.1</hsqldb.version>
     </properties>
 

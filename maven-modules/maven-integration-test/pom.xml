@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-integration-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>maven-integration-test</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -23,12 +25,6 @@
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
             <version>${jersey.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -90,8 +86,8 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>DataTest.java</exclude>
@@ -115,7 +111,9 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <!-- configuration similar to surefire -->
+                            <includes>
+                                <include>**/*IntegrationTest</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -173,8 +171,8 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven.surefire.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>DataTest.java</exclude>
@@ -219,8 +217,8 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven.surefire.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -271,7 +269,6 @@
     <properties>
         <maven.resources.version>3.0.2</maven.resources.version>
         <maven.compiler.version>3.8.0</maven.compiler.version>
-        <maven.surefire.version>2.22.0</maven.surefire.version>
         <maven.failsafe.version>2.22.0</maven.failsafe.version>
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>

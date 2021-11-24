@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-apache-commons</artifactId>
     <name>libraries-apache-commons</name>
@@ -12,11 +13,6 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
@@ -65,11 +61,9 @@
     </dependencies>
 
     <properties>
-        <commons-lang3.version>3.6</commons-lang3.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-chain.version>1.2</commons-chain.version>
-        <assertj.version>3.6.2</assertj.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <xchart-version>3.5.2</xchart-version>
         <common-math3.version>3.6.1</common-math3.version>

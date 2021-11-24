@@ -40,7 +40,7 @@ public class ProcessBuilderUnitTest {
 
         List<String> results = readOutput(process.getInputStream());
         assertThat("Results should not be empty", results, is(not(empty())));
-        assertThat("Results should contain java version: ", results, hasItem(containsString("java version")));
+        assertThat("Results should contain java version: ", results, hasItem(containsString("version")));
 
         int exitCode = process.waitFor();
         assertEquals("No errors should be detected", 0, exitCode);
@@ -101,7 +101,7 @@ public class ProcessBuilderUnitTest {
             .collect(Collectors.toList());
 
         assertThat("Results should not be empty", lines, is(not(empty())));
-        assertThat("Results should contain java version: ", lines, hasItem(containsString("java version")));
+        assertThat("Results should contain java version: ", lines, hasItem(containsString("version")));
     }
 
     @Test
@@ -124,7 +124,7 @@ public class ProcessBuilderUnitTest {
             .collect(Collectors.toList());
 
         assertThat("Results should not be empty", lines, is(not(empty())));
-        assertThat("Results should contain java version: ", lines, hasItem(containsString("java version")));
+        assertThat("Results should contain java version: ", lines, hasItem(containsString("version")));
     }
 
     @Test

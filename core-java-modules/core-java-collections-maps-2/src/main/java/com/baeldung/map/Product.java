@@ -26,7 +26,7 @@ public class Product {
         return tags;
     }
 
-    public Product addTagsOfOtherProdcut(Product product) {
+    public Product addTagsOfOtherProduct(Product product) {
         this.tags.addAll(product.getTags());
         return this;
     }
@@ -100,11 +100,11 @@ public class Product {
         HashMap<String, Product> productsByName = new HashMap<>();
         Product eBike2 = new Product("E-Bike", "A bike with a battery");
         eBike2.getTags().add("sport");
-        productsByName.merge("E-Bike", eBike2, Product::addTagsOfOtherProdcut);
+        productsByName.merge("E-Bike", eBike2, Product::addTagsOfOtherProduct);
 
         //Prior to Java 8:
         if(productsByName.containsKey("E-Bike")) {
-            productsByName.get("E-Bike").addTagsOfOtherProdcut(eBike2);
+            productsByName.get("E-Bike").addTagsOfOtherProduct(eBike2);
         } else {
             productsByName.put("E-Bike", eBike2);
         }
@@ -117,7 +117,7 @@ public class Product {
 
         productsByName.compute("E-Bike", (k,v) -> {
             if(v != null) {
-                return v.addTagsOfOtherProdcut(eBike2);
+                return v.addTagsOfOtherProduct(eBike2);
             } else {
                 return eBike2;
             }
@@ -125,7 +125,7 @@ public class Product {
 
         //Prior to Java 8:
         if(productsByName.containsKey("E-Bike")) {
-            productsByName.get("E-Bike").addTagsOfOtherProdcut(eBike2);
+            productsByName.get("E-Bike").addTagsOfOtherProduct(eBike2);
         } else {
             productsByName.put("E-Bike", eBike2);
         }

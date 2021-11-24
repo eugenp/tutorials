@@ -64,7 +64,7 @@ public class HttpClientUnitTest {
             .send(request, HttpResponse.BodyHandlers.ofString());
 
         assertThat(response.statusCode(), equalTo(HttpURLConnection.HTTP_MOVED_PERM));
-        assertThat(response.body(), containsString("https://stackoverflow.com/"));
+        assertTrue(response.headers().map().get("location").stream().anyMatch("https://stackoverflow.com/"::equals));
     }
 
     @Test

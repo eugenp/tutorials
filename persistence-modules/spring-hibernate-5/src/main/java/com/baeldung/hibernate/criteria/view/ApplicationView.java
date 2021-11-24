@@ -162,6 +162,25 @@ public class ApplicationView {
         return betweenItems;
     }
 
+    // To get records having itemName in 'Skate Board', 'Paint' and 'Glue'
+    public String[] inCriteria() {
+        final Session session = HibernateUtil.getHibernateSession();
+        final CriteriaBuilder cb = session.getCriteriaBuilder();
+        final CriteriaQuery<Item> cr = cb.createQuery(Item.class);
+        final Root<Item> root = cr.from(Item.class);
+        cr.select(root)
+            .where(root.get("itemName").in("Skate Board", "Paint", "Glue"));
+        Query<Item> query = session.createQuery(cr);
+        final List<Item> inItemsList = query.getResultList();
+        final String inItems[] = new String[inItemsList.size()];
+        for (int i = 0; i < inItemsList.size(); i++) {
+            inItems[i] = inItemsList.get(i)
+                    .getItemName();
+        }
+        session.close();
+        return inItems;
+    }
+
     // To check if the given property is null
     public String[] nullCriteria() {
         final Session session = HibernateUtil.getHibernateSession();

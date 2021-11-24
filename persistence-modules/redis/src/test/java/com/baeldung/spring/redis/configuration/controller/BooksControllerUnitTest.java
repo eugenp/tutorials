@@ -1,24 +1,21 @@
 package com.baeldung.spring.redis.configuration.controller;
 
+import com.baeldung.spring.redis.configuration.entity.Book;
+import com.baeldung.spring.redis.configuration.repository.BooksRepository;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Spy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.baeldung.spring.redis.configuration.entity.Book;
-import com.baeldung.spring.redis.configuration.repository.BooksRepository;
-
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class BooksControllerUnitTest {
 
-    @Spy
     @InjectMocks
     private BooksController booksController;
 
@@ -44,8 +41,6 @@ public class BooksControllerUnitTest {
 
     @Test
     public void whenFindOneNotFound_thenReturnsNull() {
-        Book book = new Book(BOOK_ID, BOOK_NAME);
-        when(booksRepository.findById(BOOK_ID)).thenReturn(book);
         assertNull(booksController.findOne(OTHER_BOOK_ID));
     }
 
