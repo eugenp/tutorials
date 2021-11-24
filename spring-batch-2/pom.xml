@@ -24,7 +24,6 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -44,11 +43,17 @@
             <version>${spring.batch.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <spring.batch.version>4.3.0</spring.batch.version>
-        <hsqldb.version>2.5.1</hsqldb.version>
+        <awaitility.version>3.1.1</awaitility.version>
     </properties>
 
 </project>
