@@ -29,7 +29,7 @@ public class SpringBatchSchedulerIntegrationTest {
     private ApplicationContext context;
 
     @Test
-    public void stopJobsWhenSchedulerDisabled() throws Exception {
+    public void stopJobsWhenSchedulerDisabled() {
         SpringBatchScheduler schedulerBean = context.getBean(SpringBatchScheduler.class);
         await().untilAsserted(() -> Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
                 .get()));
