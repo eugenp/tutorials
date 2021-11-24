@@ -534,7 +534,6 @@
 
                 <module>quarkus</module>
                 <module>quarkus-extension</module>
-                <module>quarkus-jandex</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1310,6 +1309,7 @@
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
                  <module>quarkus-vs-springboot</module>
+                 <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
             </modules>
         </profile>
