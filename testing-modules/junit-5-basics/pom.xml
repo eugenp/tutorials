@@ -124,6 +124,7 @@
 
     <properties>
         <spring.version>5.0.6.RELEASE</spring.version>
+        <h2.version>1.4.197</h2.version> <!-- needs to be specified to be compatible with spring.version 5.0.6.RELEASE -->
     </properties>
 
 </project>
