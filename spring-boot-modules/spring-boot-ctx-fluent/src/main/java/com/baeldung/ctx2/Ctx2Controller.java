@@ -11,7 +11,7 @@ public class Ctx2Controller {
     @Autowired
     private IHomeService homeService;
 
-    @GetMapping(value = "/greeting")
+    @GetMapping("/greeting")
     public String getGreeting() {
         return homeService.getGreeting();
     }
