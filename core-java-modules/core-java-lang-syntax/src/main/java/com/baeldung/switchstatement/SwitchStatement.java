@@ -1,6 +1,12 @@
 package com.baeldung.switchstatement;
 
+import com.baeldung.loops.LoopsInJava;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SwitchStatement {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SwitchStatement.class);
 
     public String exampleOfIF(String animal) {
 
@@ -42,11 +48,11 @@ public class SwitchStatement {
         switch (animal) {
 
         case "DOG":
-            System.out.println("domestic animal");
+            LOGGER.debug("domestic animal");
             result = "domestic animal";
 
         default:
-            System.out.println("unknown animal");
+            LOGGER.debug("unknown animal");
             result = "unknown animal";
 
         }

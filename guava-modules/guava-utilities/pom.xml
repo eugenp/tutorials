@@ -19,13 +19,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -37,10 +30,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
-    </properties>
 
 </project>

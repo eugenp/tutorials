@@ -36,12 +36,6 @@
             <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.bitbucket.cowwoc</groupId>
             <artifactId>diff-match-patch</artifactId>
             <version>${diff-match-path.version}</version>
@@ -60,7 +54,6 @@
     </build>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
         <diff-match-path.version>1.2</diff-match-path.version>
     </properties>
 

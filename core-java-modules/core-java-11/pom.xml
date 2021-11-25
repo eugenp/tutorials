@@ -22,12 +22,6 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -103,7 +97,6 @@
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <guava.version>27.1-jre</guava.version>
-        <assertj.version>3.11.1</assertj.version>
         <uberjar.name>benchmarks</uberjar.name>
         <eclipse.collections.version>10.0.0</eclipse.collections.version>
         <shade.plugin.version>3.2.4</shade.plugin.version>
