@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,16 +19,16 @@ public class ExcelUtilityUnitTest {
 	private StringBuilder output;
 
 	@Before
-	public void setupUnitTest() throws IOException, URISyntaxException {
+	public void setupUnitTest() throws IOException, URISyntaxException, ParseException {
 		output = new StringBuilder();
 		output.append("--------------------------------------------------------------------").append(ENDLINE);
 		output.append("Worksheet :Sheet1").append(ENDLINE);
 		output.append("--------------------------------------------------------------------").append(ENDLINE);
-		output.append("|| Name1 | Surname1 | 3.55696564113E11 | Thu Nov 04 00:00:00 CET 2021 | ‡ |  ||")
+		output.append("|| Name1 | Surname1 | 3.55696564113E11 | ").append(new SimpleDateFormat("dd/MM/yyyy").parse("4/11/2021").toString()).append(" | ‡ |  ||")
 				.append(ENDLINE);
-		output.append("|| Name2 | Surname2 | 5.646513512E9 | Sat Dec 04 00:00:00 CET 2021 | false |  ||")
+		output.append("|| Name2 | Surname2 | 5.646513512E9 | ").append(new SimpleDateFormat("dd/MM/yyyy").parse("4/12/2021").toString()).append(" | false |  ||")
 				.append(ENDLINE);
-		output.append("|| Name3 | Surname3 | 3.55696564113E11 | Thu Nov 04 00:00:00 CET 2021 | 7.17039641738E11 |  ||")
+		output.append("|| Name3 | Surname3 | 3.55696564113E11 | ").append(new SimpleDateFormat("dd/MM/yyyy").parse("4/11/2021").toString()).append(" | 7.17039641738E11 |  ||")
 				.append(ENDLINE);
 		output.append("--------------------------------------------------------------------").append(ENDLINE);
 		output.append("Worksheet :Sheet2").append(ENDLINE);
