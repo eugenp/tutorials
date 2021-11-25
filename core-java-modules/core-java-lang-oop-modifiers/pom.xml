@@ -22,4 +22,7 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <h2.version>1.4.197</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
+    </properties>
 </project>
