@@ -11,26 +11,20 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
-import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.support.ScheduledMethodRunnable;
 
-import javax.sql.DataSource;
 import java.util.Date;
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -58,13 +52,16 @@ public class SpringBatchScheduler {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
+    @Autowired
+    private JobLauncher jobLauncher;
+
     @Scheduled(fixedRate = 2000)
     public void launchJob() throws Exception {
         Date date = new Date();
         logger.debug("scheduler starts at " + date);
         if (enabled.get()) {
-            JobExecution jobExecution = jobLauncher().run(job(), new JobParametersBuilder().addDate("launchDate", date)
-                .toJobParameters());
+            JobExecution jobExecution = jobLauncher.run(job(), new JobParametersBuilder().addDate("launchDate", date)
+                    .toJobParameters());
             batchRunCounter.incrementAndGet();
             logger.debug("Batch job ends with status as " + jobExecution.getStatus());
         }
@@ -110,56 +107,33 @@ public class SpringBatchScheduler {
 
     @Bean
     public Job job() {
-        return jobBuilderFactory.get("job")
-            .start(readBooks())
-            .build();
-    }
-
-    @Bean
-    public JobLauncher jobLauncher() throws Exception {
-        SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-        jobLauncher.setJobRepository(jobRepository());
-        jobLauncher.afterPropertiesSet();
-        return jobLauncher;
-    }
-
-    @Bean
-    public JobRepository jobRepository() throws Exception {
-        JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-        factory.setDataSource(dataSource());
-        factory.setTransactionManager(new ResourcelessTransactionManager());
-        return factory.getObject();
-    }
-
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.sqlite.JDBC");
-        dataSource.setUrl("jdbc:sqlite:repository.sqlite");
-        return dataSource;
+        return jobBuilderFactory
+                .get("job")
+                .start(readBooks())
+                .build();
     }
 
     @Bean
     protected Step readBooks() {
         return stepBuilderFactory.get("readBooks")
-            .<Book, Book> chunk(2)
-            .reader(reader())
-            .writer(writer())
-            .build();
+                .<Book, Book> chunk(2)
+                .reader(reader())
+                .writer(writer())
+                .build();
     }
 
     @Bean
     public FlatFileItemReader<Book> reader() {
         return new FlatFileItemReaderBuilder<Book>().name("bookItemReader")
-            .resource(new ClassPathResource("books.csv"))
-            .delimited()
-            .names(new String[] { "id", "name" })
-            .fieldSetMapper(new BeanWrapperFieldSetMapper<Book>() {
-                {
-                    setTargetType(Book.class);
-                }
-            })
-            .build();
+                .resource(new ClassPathResource("books.csv"))
+                .delimited()
+                .names(new String[] { "id", "name" })
+                .fieldSetMapper(new BeanWrapperFieldSetMapper<Book>() {
+                    {
+                        setTargetType(Book.class);
+                    }
+                })
+                .build();
     }
 
     @Bean

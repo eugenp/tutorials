@@ -3,7 +3,7 @@ package com.baeldung.batchscheduler.model;
 public class Book {
     private int id;
     private String name;
-    
+
     public Book() {}
 
     public Book(int id, String name) {
@@ -27,7 +27,7 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String toString() {
         return "Book [id=" + id + ", name=" + name + "]";
     }
