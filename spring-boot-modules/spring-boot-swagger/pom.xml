@@ -40,6 +40,11 @@
             <artifactId>javax.ws.rs-api</artifactId>
             <version>${javax.ws.rs-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -145,6 +150,7 @@
         <springfox-swagger2.version>2.10.5</springfox-swagger2.version>
         <swagger-jaxrs2.version>2.1.11</swagger-jaxrs2.version>
         <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
 </project>
