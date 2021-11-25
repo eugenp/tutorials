@@ -59,6 +59,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>${hamcrest.version}</version>
@@ -289,7 +295,6 @@
             <id>default-first</id>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -309,6 +314,9 @@
                                 <exclude>**/JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
@@ -467,7 +475,6 @@
                 <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
-                <module>junit5</module>
                 <module>kubernetes</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -576,6 +583,9 @@
                                 <exclude>**/*JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
@@ -1304,11 +1314,13 @@
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>
                  <module>core-java-modules/core-java-string-operations-3</module>
+                 <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
                  <module>quarkus-vs-springboot</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
+                 <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
 
@@ -1361,6 +1373,7 @@
                 <module>persistence-modules/sirix</module>
                 <module>quarkus-vs-springboot</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
+                <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
     </profiles>
@@ -1387,6 +1400,7 @@
 
         <!-- used only in dependency management to force this version, not included as a direct dependency -->
         <junit.version>4.13.2</junit.version>
+        <assertj.version>3.21.0</assertj.version>
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>3.3.0</mockito.version>

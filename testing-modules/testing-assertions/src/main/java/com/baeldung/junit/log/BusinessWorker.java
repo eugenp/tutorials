@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BusinessWorker {
-    private static Logger LOGGER = LoggerFactory.getLogger(BusinessWorker.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BusinessWorker.class);
 
     public void generateLogs(String msg) {
         LOGGER.trace(msg);
