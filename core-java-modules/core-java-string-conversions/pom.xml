@@ -35,12 +35,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

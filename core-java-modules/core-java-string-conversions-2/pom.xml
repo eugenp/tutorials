@@ -21,12 +21,6 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.ibm.icu</groupId>
             <artifactId>icu4j</artifactId>
             <version>${icu.version}</version>
