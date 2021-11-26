@@ -1421,6 +1421,7 @@
         <jmh-core.version>1.33</jmh-core.version>
         <jmh-generator.version>1.33</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
