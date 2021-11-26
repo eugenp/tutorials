@@ -1,21 +1,18 @@
 package com.baeldung.testexecutionlisteners;
 
-import static org.junit.Assert.assertThat;
-
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.TestExecutionListeners.MergeMode;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 @RunWith(SpringRunner.class)
-@TestExecutionListeners(value = { CustomTestExecutionListener.class }, 
-    mergeMode = MergeMode.MERGE_WITH_DEFAULTS)
 @ContextConfiguration(classes = AdditionService.class)
-public class TestExecutionListenersWithMergeModeUnitTest {
+public class AdditionServiceUnitTest {
+
     @Autowired
     private AdditionService additionService;
 
