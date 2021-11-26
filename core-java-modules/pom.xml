@@ -90,7 +90,6 @@
         <module>core-java-lang-syntax-2</module>
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
-        <module>core-java-networking-3</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-optional</module>
