@@ -76,7 +76,6 @@
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
         <guava.version>25.1-jre</guava.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
     </properties>
 
 </project>
