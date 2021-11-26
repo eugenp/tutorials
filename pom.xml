@@ -794,6 +794,9 @@
                                 <include>**/*IntegrationTest.java</include>
                                 <include>**/*IntTest.java</include>
                             </includes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1051,6 +1054,9 @@
                                 <include>**/*IntegrationTest.java</include>
                                 <include>**/*IntTest.java</include>
                             </includes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
