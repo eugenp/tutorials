@@ -5,7 +5,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class VersionUnitTest {
+// manual test as the runtime JDK version can be different depending on where the test is run
+public class VersionManualTest {
 
     @Test
     public void givenJava_whenUsingRuntime_thenGetVersion() {
