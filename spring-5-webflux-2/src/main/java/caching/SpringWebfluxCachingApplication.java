@@ -1,4 +1,4 @@
-package com.baeldung.spring.caching;
+package caching;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
