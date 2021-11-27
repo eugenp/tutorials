@@ -1,4 +1,4 @@
-package com.baeldung.spring.caching;
+package caching;
 
 
 import org.junit.jupiter.api.Test;
