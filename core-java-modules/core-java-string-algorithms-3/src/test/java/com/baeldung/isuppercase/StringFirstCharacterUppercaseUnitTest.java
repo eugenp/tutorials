@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.matchesPattern;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class StringFirstCharacterUppercase {
+public class StringFirstCharacterUppercaseUnitTest {
 
     @Test
     public void givenString_whenCheckingWithCharacterIsUpperCase_thenStringCapitalized() {
