@@ -27,17 +27,17 @@ import static org.assertj.core.api.Assertions.fail;
 
 /**
  * This should be part of integration test suite.
- * The test starts the server and then connects to the Websocket. Then verifies if the messages are received from the Websocket.
+ * The test starts the server and then connects to the WebSocket. Then verifies if the messages are received from the
+ * WebSocket.
  * This test is inspired from: https://github.com/spring-guides/gs-messaging-stomp-websocket/blob/main/complete/src/test/java/com/example/messagingstompwebsocket/GreetingIntegrationTests.java
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class WebsocketIntegrationTest {
-
+class WebSocketIntegrationTest{
     WebSocketClient client;
     WebSocketStompClient stompClient;
     @LocalServerPort
     private int port;
-    private static final Logger logger= LoggerFactory.getLogger(WebsocketIntegrationTest.class);
+    private static final Logger logger= LoggerFactory.getLogger(WebSocketIntegrationTest.class);
 
     @BeforeEach
     public void setup() {
@@ -48,11 +48,10 @@ class WebsocketIntegrationTest {
     }
 
     @Test
-    void givenWebsocket_whenMessage_thenVerifyMessage() throws Exception {
+    void givenWebSocket_whenMessage_thenVerifyMessage() throws Exception {
         final CountDownLatch latch = new CountDownLatch(1);
         final AtomicReference<Throwable> failure = new AtomicReference<>();
         StompSessionHandler sessionHandler = new StompSessionHandler() {
-
             @Override
             public Type getPayloadType(StompHeaders headers) {
                 return null;
@@ -60,12 +59,11 @@ class WebsocketIntegrationTest {
 
             @Override
             public void handleFrame(StompHeaders headers, Object payload) {
-
             }
 
             @Override
             public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-                logger.info("Connected to the Websocket ...");
+                logger.info("Connected to the WebSocket ...");
                 session.subscribe("/topic/ticks", new StompFrameHandler() {
                     @Override
                     public Type getPayloadType(StompHeaders headers) {
@@ -84,7 +82,6 @@ class WebsocketIntegrationTest {
 
                             assertThat(map).containsKey("HPE");
                             assertThat(map.get("HPE")).isInstanceOf(Integer.class);
-
                         } catch (Throwable t) {
                             failure.set(t);
                             logger.error("There is an exception ", t);
@@ -99,12 +96,10 @@ class WebsocketIntegrationTest {
 
             @Override
             public void handleException(StompSession session, StompCommand command, StompHeaders headers, byte[] payload, Throwable exception) {
-
             }
 
             @Override
             public void handleTransportError(StompSession session, Throwable exception) {
-
             }
         };
         stompClient.connect("ws://localhost:{port}/stock-ticks/websocket", sessionHandler, this.port);
