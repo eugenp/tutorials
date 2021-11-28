@@ -1,4 +1,4 @@
-package com.baeldung.spring.caching;
+package caching;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
