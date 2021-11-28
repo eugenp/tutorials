@@ -11,10 +11,4 @@ public class User {
     private final String emailAddress;
     @With
     private final boolean isAuthenticated;
-
-    public User(String username, String emailAddress) {
-        this.username = username;
-        this.emailAddress = emailAddress;
-        this.isAuthenticated = false;
-    }
 }

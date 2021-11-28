@@ -10,7 +10,7 @@ public class UserWithUnitTest {
 
     @Test
     public void whenUserAuthenticated_thenClonedAndUpdated() {
-        User immutableUser = new User("testuser", "test@mail.com");
+        User immutableUser = new User("testuser", "test@mail.com", false);
 
         User authenticatedUser = immutableUser.withAuthenticated(true);
 

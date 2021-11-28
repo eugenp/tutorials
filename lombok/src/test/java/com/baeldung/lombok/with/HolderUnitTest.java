@@ -14,7 +14,7 @@ public class HolderUnitTest {
 
         Holder valueModifiedA = value.withVariableA("mod-a");
         Holder valueModifiedB = value.with_variableB("mod-b");
-        // NamingConvention valueModifiedC = value.with$VariableC("mod-c"); not possible
+        // Holder valueModifiedC = value.with$VariableC("mod-c"); not possible
 
         assertNotSame(valueModifiedA, value);
         assertNotSame(valueModifiedB, value);
