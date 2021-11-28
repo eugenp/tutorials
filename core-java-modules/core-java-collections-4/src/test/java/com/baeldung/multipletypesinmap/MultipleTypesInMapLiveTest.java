@@ -20,7 +20,6 @@ class MultipleTypesInMapLiveTest {
 
     @Test
     void givenThreeTypes_whenUsingRawMap_thenPrintDescription() {
-
         Integer intValue = 777;
         int[] intArray = new int[]{2, 3, 5, 7, 11, 13};
         Instant instant = Instant.now();
@@ -34,7 +33,7 @@ class MultipleTypesInMapLiveTest {
             if (v instanceof Integer) {
                 Integer theV = (Integer) v;
                 System.out.println(k + " -> " +
-                    String.format("The value is a %s integer: %d.", theV > 0 ? "positive" : "negative", theV));
+                    String.format("The value is a %s integer: %d", theV > 0 ? "positive" : "negative", theV));
             } else if (v instanceof int[]) {
                 int[] theV = (int[]) v;
                 System.out.println(k + " -> " +
@@ -51,7 +50,6 @@ class MultipleTypesInMapLiveTest {
 
     @Test
     void givenThreeTypes_whenUsingAnInterface_thenPrintDescription() {
-
         Integer intValue = 777;
         int[] intArray = new int[]{2, 3, 5, 7, 11};
         Instant instant = Instant.now();
