@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>${commons.collections.version}</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -27,7 +27,6 @@
     </dependencies>
 
     <properties>
-        <commons.collections.version>4.1</commons.collections.version>
         <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
     </properties>
 

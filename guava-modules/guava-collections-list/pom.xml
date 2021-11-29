@@ -45,9 +45,6 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <!-- testing -->
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
     </properties>
 
