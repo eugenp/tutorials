@@ -16,7 +16,6 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MultipleTypesInMapUnitTest {
-
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         .withZone(ZoneId.systemDefault());
 
@@ -30,7 +29,6 @@ class MultipleTypesInMapUnitTest {
 
     @Test
     void givenThreeTypes_whenUsingRawMap_thenPrintDescription() {
-
         Map<String, Object> rawMap = new HashMap<>();
         rawMap.put(KEY_INT, intValue);
         rawMap.put(KEY_INT_ARRAY, intArray);
@@ -63,7 +61,6 @@ class MultipleTypesInMapUnitTest {
 
     @Test
     void givenThreeTypes_whenUsingAnInterface_thenPrintDescription() {
-
         Map<String, DynamicTypeValue> theMap = new HashMap<>();
         theMap.put(KEY_INT, new IntegerTypeValue(intValue));
         theMap.put(KEY_INT_ARRAY, new IntArrayTypeValue(intArray));
