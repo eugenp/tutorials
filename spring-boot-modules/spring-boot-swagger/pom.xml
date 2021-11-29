@@ -25,26 +25,6 @@
             <artifactId>springfox-boot-starter</artifactId>
             <version>${springfox.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox-swagger2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2</artifactId>
-            <version>${swagger-jaxrs2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>${javax.ws.rs-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -53,104 +33,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-
-            <plugin>
-                <groupId>com.github.kongchen</groupId>
-                <artifactId>swagger-maven-plugin</artifactId>
-                <version>3.1.3</version>
-                <configuration>
-                    <apiSources>
-                        <apiSource>
-                            <springmvc>false</springmvc>
-                            <locations>com.baeldung.swagger2pdf.controller.UserController</locations>
-                            <basePath>/api</basePath>
-                            <info>
-                                <title>DEMO REST API</title>
-                                <description>A simple DEMO project for REST API documentation</description>
-                                <version>v1</version>
-                            </info>
-                            <swaggerDirectory>${project.build.directory}/api</swaggerDirectory>
-                            <attachSwaggerArtifact>true</attachSwaggerArtifact>
-                        </apiSource>
-                    </apiSources>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>io.github.robwin</groupId>
-                <artifactId>swagger2markup-maven-plugin</artifactId>
-                <version>0.9.3</version>
-                <configuration>
-                    <inputDirectory>${project.build.directory}/api</inputDirectory>
-                    <outputDirectory>${generated.asciidoc.directory}</outputDirectory>
-                    <markupLanguage>asciidoc</markupLanguage>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>process-swagger</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>2.2.1</version>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj-pdf</artifactId>
-                        <version>1.6.0</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <sourceDirectory>${project.build.outputDirectory}/../asciidoc</sourceDirectory>
-                    <sourceDocumentName>overview.adoc</sourceDocumentName>
-                    <attributes>
-                        <doctype>book</doctype>
-                        <toc>left</toc>
-                        <toclevels>2</toclevels>
-                        <generated>${generated.asciidoc.directory}</generated>
-                    </attributes>
-                </configuration>
-                <executions>
-                    <execution>
-
-                        <id>asciidoc-to-pdf</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>pdf</backend>
-                            <outputDirectory>${project.build.outputDirectory}/api/pdf</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
         </plugins>
     </build>
 
     <properties>
         <springfox.version>3.0.0</springfox.version>
-        <generated.asciidoc.directory>${project.build.outputDirectory}/asciidoc</generated.asciidoc.directory>
-        <springfox-swagger2.version>2.10.5</springfox-swagger2.version>
-        <swagger-jaxrs2.version>2.1.11</swagger-jaxrs2.version>
-        <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
-        <lombok.version>1.18.22</lombok.version>
     </properties>
 
 </project>
