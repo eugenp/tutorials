@@ -56,7 +56,6 @@
     <properties>
         <guava.version>21.0</guava.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
         <collections-generic.version>4.01</collections-generic.version>
         <avaitility.version>1.7.0</avaitility.version>
     </properties>

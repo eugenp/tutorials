@@ -146,7 +146,6 @@
         <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
         <org.modelmapper.version>2.4.4</org.modelmapper.version>
     </properties>
