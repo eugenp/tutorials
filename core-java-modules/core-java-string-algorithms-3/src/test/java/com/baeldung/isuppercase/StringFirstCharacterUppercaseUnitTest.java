@@ -1,15 +1,15 @@
 package com.baeldung.isuppercase;
 
-import com.google.common.base.Ascii;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import com.google.common.base.Ascii;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.matchesPattern;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class StringFirstCharacterUppercase {
+public class StringFirstCharacterUppercaseUnitTest {
 
     @Test
     public void givenString_whenCheckingWithCharacterIsUpperCase_thenStringCapitalized() {
