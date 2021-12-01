@@ -14,7 +14,8 @@ import java.net.ServerSocket;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FindFreePortUnitTest {
+// fixing in JAVA-8748
+public class FindFreePortManualTest {
 
     private static int FREE_PORT_NUMBER;
     private static int[] FREE_PORT_RANGE;
