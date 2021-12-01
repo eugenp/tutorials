@@ -5,9 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import com.google.common.base.Ascii;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.matchesPattern;
-
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StringFirstCharacterUppercaseUnitTest {
 
@@ -21,7 +18,7 @@ public class StringFirstCharacterUppercaseUnitTest {
     public void givenString_whenCheckingWithRegex_thenStringCapitalized() {
         String example = "Katie";
         String regEx = "[A-Z]\\w*";
-        assertThat(example, matchesPattern(regEx));
+        Assertions.assertTrue(example.matches(regEx));
     }
 
     @Test
