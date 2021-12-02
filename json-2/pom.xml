@@ -8,8 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -23,18 +23,6 @@
             <groupId>com.jsoniter</groupId>
             <artifactId>jsoniter</artifactId>
             <version>${jsoniter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.squareup.moshi</groupId>
@@ -153,7 +141,6 @@
 
     <properties>
         <jsoniter.version>0.9.23</jsoniter.version>
-        <assertj-core.version>3.11.1</assertj-core.version>
         <moshi.version>1.9.2</moshi.version>
     </properties>
 

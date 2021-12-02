@@ -13,21 +13,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <parallel>all</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
@@ -36,9 +26,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-    </properties>
 
 </project>

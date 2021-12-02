@@ -25,12 +25,6 @@
             <version>${commons-lang.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>nl.jqno.equalsverifier</groupId>
             <artifactId>equalsverifier</artifactId>
             <version>${equalsverifier.version}</version>
@@ -40,8 +34,6 @@
 
     <properties>
         <lombok.version>1.18.12</lombok.version>
-        <commons-lang.version>2.6</commons-lang.version>
-        <assertj-core.version>3.10.0</assertj-core.version>
         <equalsverifier.version>3.0.3</equalsverifier.version>
     </properties>
 

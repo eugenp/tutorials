@@ -1,18 +1,18 @@
 package com.baeldung.web.interceptor;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.SmartView;
-import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class UserInterceptor extends HandlerInterceptorAdapter {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.SmartView;
+import org.springframework.web.servlet.View;
+
+public class UserInterceptor implements HandlerInterceptor {
 
     private static Logger log = LoggerFactory.getLogger(UserInterceptor.class);
 
@@ -44,7 +44,9 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
      */
     private void addToModelUserDetails(HttpSession session) {
         log.info("================= addToModelUserDetails ============================");
-        String loggedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedUsername = SecurityContextHolder.getContext()
+            .getAuthentication()
+            .getName();
         session.setAttribute("username", loggedUsername);
         log.info("user(" + loggedUsername + ") session : " + session);
         log.info("================= addToModelUserDetails ============================");
@@ -56,7 +58,9 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
      */
     private void addToModelUserDetails(ModelAndView model) {
         log.info("================= addToModelUserDetails ============================");
-        String loggedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedUsername = SecurityContextHolder.getContext()
+            .getAuthentication()
+            .getName();
         model.addObject("loggedUsername", loggedUsername);
         log.trace("session : " + model.getModel());
         log.info("================= addToModelUserDetails ============================");
@@ -76,7 +80,10 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 
     public static boolean isUserLogged() {
         try {
-            return !SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser");
+            return !SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getName()
+                .equals("anonymousUser");
         } catch (Exception e) {
             return false;
         }

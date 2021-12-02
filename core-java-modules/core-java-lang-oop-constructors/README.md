@@ -7,3 +7,5 @@ This module contains article about constructors in Java
 - [Java Copy Constructor](https://www.baeldung.com/java-copy-constructor)
 - [Cannot Reference “X” Before Supertype Constructor Has Been Called](https://www.baeldung.com/java-cannot-reference-x-before-supertype-constructor-error)
 - [Private Constructors in Java](https://www.baeldung.com/java-private-constructors)
+- [Throwing Exceptions in Constructors](https://www.baeldung.com/java-constructors-exceptions)
+- [Constructors in Java Abstract Classes](https://www.baeldung.com/java-abstract-classes-constructors)

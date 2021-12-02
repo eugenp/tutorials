@@ -39,12 +39,6 @@
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj-core.version}</version>
-                <scope>test</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -80,9 +74,6 @@
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
 
         <appmodules.version>1.0</appmodules.version>
-
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <assertj-core.version>3.12.2</assertj-core.version>
     </properties>
 
 </project>
