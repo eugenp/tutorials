@@ -3,7 +3,7 @@ package com.baeldung.hexagonal.domain.service;
 
 import com.baeldung.hexagonal.domain.model.Customer;
 import com.baeldung.hexagonal.port.in.CustomerService;
-import com.baeldung.hexagonal.port.out.CustomerRepository;
+import com.baeldung.hexagonal.port.out.CustomerPersistencePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,18 +16,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomerServiceImpl
         implements CustomerService {
 
-    private final CustomerRepository customerRepository;
+    private final CustomerPersistencePort customerPersistencePort;
 
     @Override
     public Customer register(Customer customer) {
         // additional business logic
-        return customerRepository.save(customer);
+        return customerPersistencePort.save(customer);
     }
 
     @Override
     public Customer getByUsername(String username) {
         // additional business logic
-        return customerRepository.getByUsername(username);
+        return customerPersistencePort.getByUsername(username);
     }
 }
 

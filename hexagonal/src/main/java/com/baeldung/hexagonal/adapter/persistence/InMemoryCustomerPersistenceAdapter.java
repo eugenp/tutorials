@@ -1,8 +1,8 @@
 package com.baeldung.hexagonal.adapter.persistence;
 
-import com.baeldung.hexagonal.adapter.persistence.repositories.InMemoryCustomerRepository;
+import com.baeldung.hexagonal.adapter.persistence.repositories.InMemoryCustomerPersistencePort;
 import com.baeldung.hexagonal.domain.model.Customer;
-import com.baeldung.hexagonal.port.out.CustomerRepository;
+import com.baeldung.hexagonal.port.out.CustomerPersistencePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Slf4j
 @Component
-public class InMemoryCustomerPersistenceAdapter implements CustomerRepository {
-    private InMemoryCustomerRepository inMemoryCustomerRepository;
+public class InMemoryCustomerPersistenceAdapter implements CustomerPersistencePort {
+    private InMemoryCustomerPersistencePort inMemoryCustomerRepository;
 
     @Override
     public Customer save(Customer customer) {

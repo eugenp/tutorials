@@ -3,7 +3,7 @@ package com.baeldung.hexagonal.adapter.persistence;
 import com.baeldung.hexagonal.adapter.persistence.mapper.JpaEntityMapper;
 import com.baeldung.hexagonal.adapter.persistence.repositories.JpaCustomerRepository;
 import com.baeldung.hexagonal.domain.model.Customer;
-import com.baeldung.hexagonal.port.out.CustomerRepository;
+import com.baeldung.hexagonal.port.out.CustomerPersistencePort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Primary
 @Component
-public class JpaCustomerPersistenceAdapter implements CustomerRepository {
+public class JpaCustomerPersistenceAdapter implements CustomerPersistencePort {
 
     private final JpaCustomerRepository jpaCustomerRepository;
     private final JpaEntityMapper jpaEnityMapper;
