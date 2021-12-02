@@ -18,12 +18,6 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -48,7 +42,6 @@
 
     <properties>
         <hibernate.version>5.4.3.Final</hibernate.version>
-        <assertj-core.version>3.12.2</assertj-core.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>

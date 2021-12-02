@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 
-import com.baeldung.etag.Foo;
+import com.baeldung.mime.Foo;
 import com.thoughtworks.xstream.XStream;
 
 public final class XStreamMarshaller implements IMarshaller {

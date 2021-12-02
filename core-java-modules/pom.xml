@@ -90,7 +90,6 @@
         <module>core-java-lang-syntax-2</module>
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
-        <module>core-java-networking-3</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-optional</module>
@@ -99,6 +98,9 @@
         <module>core-java-reflection-2</module>
         <module>core-java-security</module>
         <module>core-java-security-2</module>
+        <module>core-java-security-3</module>
+        <module>core-java-serialization</module>
+        <module>core-java-security-algorithms</module>
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
         <module>core-java-streams-3</module>
@@ -114,6 +116,7 @@
         <module>core-java-sun</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
+        <module>core-java-uuid</module>
         <module>pre-jpms</module>
     </modules>
 
@@ -133,9 +136,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <properties>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-    </properties>
 
 </project>

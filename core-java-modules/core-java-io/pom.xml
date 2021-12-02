@@ -12,17 +12,9 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
@@ -133,8 +125,6 @@
     </profiles>
 
     <properties>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
         <!-- maven plugins -->
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <hsqldb.version>2.4.0</hsqldb.version>

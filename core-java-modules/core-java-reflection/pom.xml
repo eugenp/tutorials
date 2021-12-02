@@ -14,14 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>core-java-reflection</finalName>
         <resources>
@@ -45,8 +37,6 @@
     </build>
 
     <properties>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <assertj-core.version>3.10.0</assertj-core.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
     </properties>

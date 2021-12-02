@@ -18,7 +18,6 @@
                 <version>${archetype-packaging.version}</version>
             </extension>
         </extensions>
-        <!--.... -->
     </build>
 
     <properties>
