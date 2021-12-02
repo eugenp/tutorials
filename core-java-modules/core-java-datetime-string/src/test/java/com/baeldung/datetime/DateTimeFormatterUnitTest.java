@@ -165,7 +165,7 @@ public class DateTimeFormatterUnitTest {
     public void shouldPrintFormattedZonedDateTime() {
         ZonedDateTime zonedDateTime = ZonedDateTime.of(2021, 02, 15, 0, 0, 0, 0, ZoneId.of("Europe/Paris"));
         String formattedZonedDateTime = DateTimeFormatter.ISO_INSTANT.format(zonedDateTime);
-        Assert.assertEquals(formattedZonedDateTime, "2021-02-14T23:00:00Z");
+        Assert.assertEquals("2021-02-14T23:00:00Z", formattedZonedDateTime);
     }
     
     @Test(expected = UnsupportedTemporalTypeException.class)
@@ -177,7 +177,7 @@ public class DateTimeFormatterUnitTest {
     public void shouldParseZonedDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.systemDefault());
         ZonedDateTime zonedDateTime = ZonedDateTime.parse("2021-10-01T05:06:20Z", formatter);
-        Assert.assertEquals(DateTimeFormatter.ISO_INSTANT.format(zonedDateTime), "2021-10-01T05:06:20Z");
+        Assert.assertEquals("2021-10-01T05:06:20Z", DateTimeFormatter.ISO_INSTANT.format(zonedDateTime));
     }
     
     @Test(expected = DateTimeParseException.class)
