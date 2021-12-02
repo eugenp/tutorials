@@ -18,6 +18,7 @@ public class StringFirstCharacterUppercaseUnitTest {
     public void givenString_whenCheckingWithRegex_thenStringCapitalized() {
         String example = "Katie";
         String regEx = "[A-Z]\\w*";
+
         Assertions.assertTrue(example.matches(regEx));
     }
 
