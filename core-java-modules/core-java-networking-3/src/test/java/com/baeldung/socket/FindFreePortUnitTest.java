@@ -9,7 +9,6 @@ import org.springframework.util.SocketUtils;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
@@ -148,19 +147,10 @@ public class FindFreePortUnitTest {
     }
 
     private int getFreePort() {
-        return new Random()
-            .ints(36000, 65000)
-            .filter(FindFreePortUnitTest::isFree)
-            .findFirst()
-            .orElse(DEFAULT_RANDOM_PORT);
-    }
-
-    private static boolean isFree(int port) {
-        try {
-            new ServerSocket(port).close();
-            return true;
-        } catch (IOException e) {
-            return false;
+        try(ServerSocket serverSocket = new ServerSocket(0)){
+            return serverSocket.getLocalPort();
+        } catch (IOException ex){
+            return DEFAULT_RANDOM_PORT;
         }
     }
 }
