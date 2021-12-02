@@ -7,6 +7,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>spring-5-webflux-2</module>
+    </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
@@ -615,6 +618,7 @@
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-webflux-2</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
@@ -794,6 +798,9 @@
                                 <include>**/*IntegrationTest.java</include>
                                 <include>**/*IntTest.java</include>
                             </includes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1051,6 +1058,9 @@
                                 <include>**/*IntegrationTest.java</include>
                                 <include>**/*IntTest.java</include>
                             </includes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1316,9 +1326,11 @@
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
+                 <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
                  <module>quarkus-vs-springboot</module>
+                 <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>testing-modules/testing-assertions</module>
             </modules>
@@ -1368,6 +1380,7 @@
                 <module>core-java-modules/core-java-os</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-time-measurements</module>
+                <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>persistence-modules/sirix</module>
@@ -1420,6 +1433,7 @@
         <jmh-core.version>1.33</jmh-core.version>
         <jmh-generator.version>1.33</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
@@ -1442,7 +1456,7 @@
         <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <lombok.version>1.18.20</lombok.version>
-        <h2.version>1.4.197</h2.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
 </project>

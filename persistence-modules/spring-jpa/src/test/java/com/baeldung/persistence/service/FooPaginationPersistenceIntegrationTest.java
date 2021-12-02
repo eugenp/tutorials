@@ -20,6 +20,8 @@ import com.baeldung.persistence.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,6 +33,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @DirtiesContext
 public class FooPaginationPersistenceIntegrationTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooPaginationPersistenceIntegrationTest.class);
+    
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -137,7 +141,7 @@ public class FooPaginationPersistenceIntegrationTest {
             typedQuery = entityManager.createQuery(select);
             typedQuery.setFirstResult(pageNumber - 1);
             typedQuery.setMaxResults(pageSize);
-            System.out.println("Current page: " + typedQuery.getResultList());
+            LOGGER.debug("Current page: {}", typedQuery.getResultList());
             pageNumber += pageSize;
         }
 
