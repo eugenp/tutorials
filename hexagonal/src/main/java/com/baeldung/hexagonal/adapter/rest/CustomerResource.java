@@ -17,16 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerResource {
     private final CustomerService customerService;
 
-    @PostMapping("/user")
-    public ResponseEntity<Customer> registerUser(
+    @PostMapping("/customer")
+    public ResponseEntity<Customer> registerCustomer(
             @RequestBody Customer customer) {
         return ResponseEntity
                 .ok()
                 .body(customerService.register(customer));
     }
 
-    @GetMapping("/user/{username}")
-    public ResponseEntity<Customer> getUser(@PathVariable String username) {
+    @GetMapping("/customer/{username}")
+    public ResponseEntity<Customer> getCustomer(@PathVariable String username) {
         return ResponseEntity
                 .ok()
                 .body(customerService.getByUsername(username));
