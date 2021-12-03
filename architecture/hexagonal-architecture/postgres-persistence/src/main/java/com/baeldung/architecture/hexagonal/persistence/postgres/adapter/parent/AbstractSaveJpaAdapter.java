@@ -9,7 +9,7 @@ import java.util.Optional;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({ "unchecked", "rawtypes" })
 @Slf4j
 public abstract class AbstractSaveJpaAdapter extends AbstractJpaAdapter<CrudRepository> {
 

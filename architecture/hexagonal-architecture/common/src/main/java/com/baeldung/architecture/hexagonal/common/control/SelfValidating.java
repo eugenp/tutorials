@@ -7,6 +7,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
+@SuppressWarnings("unchecked")
 public abstract class SelfValidating<T> {
 
     private final Validator validator;
