@@ -38,15 +38,15 @@
             <version>${asspectj.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>${powermock.version}</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito-inline.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <version>${powermock.version}</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-inline.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -82,10 +82,10 @@
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <joda.version>2.10</joda.version>
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <asspectj.version>1.8.9</asspectj.version>
-        <powermock.version>2.0.7</powermock.version>
         <jmockit.version>1.44</jmockit.version>
+        <mockito-inline.version>4.0.0</mockito-inline.version>
     </properties>
 
 </project>
