@@ -18,7 +18,7 @@
             <column name="sender" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="sender" type="VARCHAR(100)">
+            <column name="receiver" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
