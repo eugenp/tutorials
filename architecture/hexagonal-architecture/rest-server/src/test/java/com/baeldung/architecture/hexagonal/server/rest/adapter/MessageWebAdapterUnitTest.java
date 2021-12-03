@@ -61,8 +61,7 @@ class MessageWebAdapterUnitTest {
         // WHEN
         List<MessageDTO> result = adapter.getAll();
 
-
-        CollectionUtils.zip( new ArrayList<>(expectedMessageDTOs), result).forEach(tuple -> {
+        CollectionUtils.zip(new ArrayList<>(expectedMessageDTOs), result).forEach(tuple -> {
 
             MessageDTO expectedDTO = tuple.get(0);
             MessageDTO receivedDTO = tuple.get(1);
