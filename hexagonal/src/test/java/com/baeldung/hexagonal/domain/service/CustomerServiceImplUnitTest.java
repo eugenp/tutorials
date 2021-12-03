@@ -25,6 +25,7 @@ class CustomerServiceImplUnitTest {
     public void whenGetByUsername_thenShouldCallPersistencePortGetByUsername() {
         final String username = "user1";
         customerService.getByUsername(username);
+
         verify(customerPersistencePort, times(1)).getByUsername(username);
     }
 
@@ -36,6 +37,7 @@ class CustomerServiceImplUnitTest {
                 .deposit(100L)
                 .build();
         customerService.register(customer);
+
         verify(customerPersistencePort, times(1)).save(customer);
     }
 }
