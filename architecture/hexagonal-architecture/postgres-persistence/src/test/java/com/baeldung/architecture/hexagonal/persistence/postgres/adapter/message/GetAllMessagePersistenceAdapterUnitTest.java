@@ -31,14 +31,14 @@ class GetAllMessagePersistenceAdapterUnitTest {
     private final EasyRandomParameters parameters = new EasyRandomParameters().excludeField(FieldPredicates.named("validator"));
     private final EasyRandom generator = new EasyRandom(parameters);
 
-    private final IMessageRepository repository = mock(IMessageRepository.class);
-    private final IMessagePersistenceMapper mapper = mock(IMessagePersistenceMapper.class);
+    private final IMessageRepository messageRepository = mock(IMessageRepository.class);
+    private final IMessagePersistenceMapper messagePersistenceMapper = mock(IMessagePersistenceMapper.class);
 
-    private final GetAllMessagePersistenceAdapter adapter = new GetAllMessagePersistenceAdapter(repository);
+    private final GetAllMessagePersistenceAdapter getAllMessagePersistenceAdapter = new GetAllMessagePersistenceAdapter(messageRepository);
 
     @BeforeEach
     void setup() {
-        adapter.setMapper(mapper);
+        getAllMessagePersistenceAdapter.setMapper(messagePersistenceMapper);
     }
 
     @Test
@@ -47,25 +47,27 @@ class GetAllMessagePersistenceAdapterUnitTest {
         int NUMBER_ENTITIES = 3;
         List<MessageEntity> entities = generator.objects(MessageEntity.class, NUMBER_ENTITIES).collect(Collectors.toList());
 
-        List<Message> Messages = generator.objects(Message.class, NUMBER_ENTITIES).collect(Collectors.toList());
+        List<Message> expectedMessages = generator.objects(Message.class, NUMBER_ENTITIES).collect(Collectors.toList());
 
-        doReturn(entities).when(repository).findAll();
-        when(mapper.entityToModel(any(MessageEntity.class))).thenReturn(Messages.get(0)).thenReturn(Messages.get(1)).thenReturn(Messages.get(2));
+        doReturn(entities).when(messageRepository).findAll();
+        when(messagePersistenceMapper.entityToModel(any(MessageEntity.class))).thenReturn(expectedMessages.get(0)).thenReturn(expectedMessages.get(1)).thenReturn(expectedMessages.get(2));
 
         // WHEN
-        Optional<Set<Message>> result = adapter.handle();
+        Optional<Set<Message>> result = getAllMessagePersistenceAdapter.handle();
 
         // THEN
-        List<Message> resultList = new ArrayList<>(result.get());
-        Messages.sort(Comparator.comparing(Message::getBody));
-        resultList.sort(Comparator.comparing(Message::getBody));
-        assertEquals(Messages.size(), resultList.size());
+        assertThat(result).isNotEmpty();
 
-        for (int i = 0; i < resultList.size(); i++)
-            assertThat(Messages.get(i)).isEqualToIgnoringGivenFields(resultList.get(i));
+        List<Message> receivedMessages = new ArrayList<>(result.get());
+        expectedMessages.sort(Comparator.comparing(Message::getBody));
+        receivedMessages.sort(Comparator.comparing(Message::getBody));
+        assertEquals(expectedMessages.size(), receivedMessages.size());
 
-        verify(repository).findAll();
-        verify(mapper, times(NUMBER_ENTITIES)).entityToModel(any(MessageEntity.class));
+        for (int i = 0; i < receivedMessages.size(); i++)
+            assertThat(expectedMessages.get(i)).usingRecursiveComparison().isEqualTo(receivedMessages.get(i));
+
+        verify(messageRepository).findAll();
+        verify(messagePersistenceMapper, times(NUMBER_ENTITIES)).entityToModel(any(MessageEntity.class));
     }
 
 }

@@ -1,9 +1,9 @@
 package com.baeldung.architecture.hexagonal.server.rest.controller;
 
 import com.baeldung.architecture.hexagonal.common.annotation.MethodLogger;
-import com.baeldung.architecture.hexagonal.domain.message.model.Message;
 import com.baeldung.architecture.hexagonal.server.rest.common.BaseUrl;
 import com.baeldung.architecture.hexagonal.server.rest.common.Version;
+import com.baeldung.architecture.hexagonal.server.rest.dto.MessageDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +18,9 @@ public interface IMessageRestController {
 
     @GetMapping
     @MethodLogger
-    List<Message> getAll();
+    List<MessageDTO> getAll();
 
     @PostMapping
     @MethodLogger
-    Message create(@RequestBody final Message dto);
+    MessageDTO create(@RequestBody final MessageDTO dto);
 }

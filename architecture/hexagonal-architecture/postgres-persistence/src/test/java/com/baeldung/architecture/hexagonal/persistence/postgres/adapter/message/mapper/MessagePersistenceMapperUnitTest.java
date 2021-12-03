@@ -27,7 +27,10 @@ class MessagePersistenceMapperUnitTest {
         Message model = mapper.entityToModel(entity);
 
         // THEN
+        assertThat(entity.getId()).isEqualTo(model.getId());
         assertThat(entity.getBody()).isEqualTo(model.getBody());
+        assertThat(entity.getReceiver()).isEqualTo(model.getReceiver());
+        assertThat(entity.getSender()).isEqualTo(model.getSender());
     }
 
     @Test
@@ -40,5 +43,7 @@ class MessagePersistenceMapperUnitTest {
 
         // THEN
         assertThat(command.getBody()).isEqualTo(entity.getBody());
+        assertThat(command.getReceiver()).isEqualTo(entity.getReceiver());
+        assertThat(command.getSender()).isEqualTo(entity.getSender());
     }
 }

@@ -18,6 +18,6 @@ public class GetAllMessageUseCase implements IGetAllMessageService {
 
     @Override
     public Optional<Set<Message>> handle() {
-        return port.handle();
+        return Optional.of(port.handle().orElseThrow(MessageGetException::new));
     }
 }
