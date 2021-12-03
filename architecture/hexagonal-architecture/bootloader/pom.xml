@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.baeldung.architecture.hexagonal</groupId>
+        <artifactId>hexagonal-architecture</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>bootloader</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>bootloader</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung.architecture.hexagonal</groupId>
+            <artifactId>domain</artifactId>
+            <version>${domain.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baeldung.architecture.hexagonal</groupId>
+            <artifactId>rest-server</artifactId>
+            <version>${rest-server.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baeldung.architecture.hexagonal</groupId>
+            <artifactId>postgres-persistence</artifactId>
+            <version>${postgres.persistence.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <domain.version>0.0.1-SNAPSHOT</domain.version>
+        <rest-server.version>0.0.1-SNAPSHOT</rest-server.version>
+        <postgres.persistence.version>0.0.1-SNAPSHOT</postgres.persistence.version>
+    </properties>
+
+</project>

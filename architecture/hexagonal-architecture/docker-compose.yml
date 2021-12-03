@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  carrier-service-db:
+    container_name: hexagonal_architecture_db
+    image: postgres:11.5
+    ports:
+      - 5435:5432
