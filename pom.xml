@@ -845,6 +845,8 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
 
+                <module>architecture</module>
+
                 <module>asciidoctor</module>
                 <module>asm</module>
 

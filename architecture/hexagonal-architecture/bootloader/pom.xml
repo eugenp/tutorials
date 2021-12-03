@@ -2,14 +2,16 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>bootloader</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>bootloader</name>
+
     <parent>
         <groupId>com.baeldung.architecture.hexagonal</groupId>
         <artifactId>hexagonal-architecture</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>bootloader</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>bootloader</name>
 
     <dependencies>
         <dependency>
@@ -31,12 +33,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
     </dependencies>
+
 
     <properties>
         <domain.version>0.0.1-SNAPSHOT</domain.version>
         <rest-server.version>0.0.1-SNAPSHOT</rest-server.version>
         <postgres.persistence.version>0.0.1-SNAPSHOT</postgres.persistence.version>
+        <start-class>com.baeldung.architecture.hexagonal.BootloaderApplication</start-class>
     </properties>
+
 
 </project>
