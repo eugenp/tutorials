@@ -36,18 +36,6 @@
             <artifactId>jakarta.xml.ws-api</artifactId>
             <version>${jakarta.ws-api.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>${jaxws-rt.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-ri</artifactId>
-            <version>${jaxws-ri.version}</version>
-            <type>pom</type>
-        </dependency>
     </dependencies>
 
     <build>
@@ -83,10 +71,10 @@
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <guava.version>29.0-jre</guava.version>
         <mockserver.version>5.11.1</mockserver.version>
-        <jakarta.ws-api.version>3.0.0</jakarta.ws-api.version>
-        <jaxws-rt.version>3.0.0</jaxws-rt.version>
-        <jaxws-ri.version>2.3.1</jaxws-ri.version>
-        <jaxws-maven-plugin.version>2.3.2</jaxws-maven-plugin.version>
+        <jakarta.ws-api.version>3.0.1</jakarta.ws-api.version>
+        <jaxws-rt.version>3.0.2</jaxws-rt.version>
+        <jaxws-ri.version>3.0.2</jaxws-ri.version>
+        <jaxws-maven-plugin.version>3.0.2</jaxws-maven-plugin.version>
     </properties>
 
 </project>
