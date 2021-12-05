@@ -7,7 +7,7 @@
     <groupId>org.baeldung.architecture</groupId>
     <artifactId>hexagonal-architecture-demo</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -30,7 +30,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -51,5 +51,5 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    
+
 </project>

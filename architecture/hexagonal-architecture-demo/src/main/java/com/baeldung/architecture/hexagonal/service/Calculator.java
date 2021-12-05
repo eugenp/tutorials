@@ -20,7 +20,7 @@ public class Calculator {
     public Double add(Double a, Double b) {
         Optional<String> cachedResult = cache.get(String.format(additionCacheKeyFormat, a, b));
 
-        if(cachedResult.isPresent())
+        if (cachedResult.isPresent())
             return Double.parseDouble(cachedResult.get());
 
         Double result = a + b;
@@ -31,12 +31,12 @@ public class Calculator {
     }
 
     public Double divide(Double a, Double b) {
-        if(b == 0)
+        if (b == 0)
             return 0d;
 
         Optional<String> cachedResult = cache.get(String.format(divisionCacheKeyFormat, a, b));
 
-        if(cachedResult.isPresent())
+        if (cachedResult.isPresent())
             return Double.parseDouble(cachedResult.get());
 
         Double result = a / b;

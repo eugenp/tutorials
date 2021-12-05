@@ -11,14 +11,14 @@ public class CLIApplication {
         String operation = args[1];
 
         switch (operation) {
-            case "+":
-                System.out.printf("%s + %s = %s", a, b, calculator.add(a, b));
-                break;
-            case "/":
-                System.out.printf("%s / %s = %s", a, b, calculator.divide(a, b));
-                break;
-            default:
-                System.out.printf("Invalid operation %s", operation);
+        case "+":
+            System.out.printf("%s + %s = %s", a, b, calculator.add(a, b));
+            break;
+        case "/":
+            System.out.printf("%s / %s = %s", a, b, calculator.divide(a, b));
+            break;
+        default:
+            System.out.printf("Invalid operation %s", operation);
         }
     }
 }
