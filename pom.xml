@@ -362,7 +362,9 @@
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
-
+                
+                <module>architecutre</module>
+                
                 <module>asciidoctor</module>
                 <module>asm</module>
 
@@ -843,6 +845,8 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
 
+                <module>architecutre</module>
+
                 <module>asciidoctor</module>
                 <module>asm</module>
 
@@ -1304,35 +1308,36 @@
             </build>
 
             <modules>
-                 <module>core-java-modules/core-java-9</module>
-                 <module>core-java-modules/core-java-9-improvements</module>
-                 <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>architecutre/hexagonal-architecture-demo</module>
+                <module>core-java-modules/core-java-9</module>
+                <module>core-java-modules/core-java-9-improvements</module>
+                <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-9-streams</module>
-                 <module>core-java-modules/core-java-10</module>
-                 <module>core-java-modules/core-java-11</module>
-                 <module>core-java-modules/core-java-11-2</module>
-                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-collections-set</module>
-                 <module>core-java-modules/core-java-date-operations-1</module>
-                 <module>core-java-modules/core-java-datetime-conversion</module>
-                 <module>core-java-modules/core-java-datetime-string</module>
-                 <module>core-java-modules/core-java-io-conversions-2</module>
-                 <module>core-java-modules/core-java-jpms</module>
-                 <module>core-java-modules/core-java-os</module>
-                 <module>core-java-modules/core-java-string-operations-3</module>
-                 <module>core-java-modules/core-java-string-operations-4</module>
-                 <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>
-                 <module>core-java-modules/multimodulemavenproject</module>
-                 <module>persistence-modules/sirix</module>
-                 <module>quarkus-vs-springboot</module>
-                 <module>quarkus-jandex</module>
-                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>testing-modules/testing-assertions</module>
+                <module>core-java-modules/core-java-9-streams</module>
+                <module>core-java-modules/core-java-10</module>
+                <module>core-java-modules/core-java-11</module>
+                <module>core-java-modules/core-java-11-2</module>
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>core-java-modules/core-java-datetime-string</module>
+                <module>core-java-modules/core-java-io-conversions-2</module>
+                <module>core-java-modules/core-java-jpms</module>
+                <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-string-operations-3</module>
+                <module>core-java-modules/core-java-string-operations-4</module>
+                <module>core-java-modules/core-java-time-measurements</module>
+                <module>core-java-modules/core-java-networking-3</module>
+                <module>core-java-modules/multimodulemavenproject</module>
+                <module>persistence-modules/sirix</module>
+                <module>quarkus-vs-springboot</module>
+                <module>quarkus-jandex</module>
+                <module>spring-boot-modules/spring-boot-cassandre</module>
+                <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
 
@@ -1359,6 +1364,7 @@
             </build>
 
             <modules>
+                <module>architecutre/hexagonal-architecture-demo</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
