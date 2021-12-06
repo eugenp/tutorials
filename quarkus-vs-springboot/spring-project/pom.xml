@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.4</version>
+        <version>2.6.0</version>
         <relativePath />
     </parent>
 
@@ -96,12 +96,30 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, compatible with latest JDK, is released. -->
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone-local</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
             <name>Spring Releases</name>
             <url>https://repo.spring.io/release</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, compatible with latest JDK, is released. -->
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone-local</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -166,7 +184,7 @@
     <properties>
         <java.version>11</java.version>
         <repackage.classifier />
-        <spring-native.version>0.10.3</spring-native.version>
+        <spring-native.version>0.11.0-RC1</spring-native.version>
     </properties>
 
 </project>
