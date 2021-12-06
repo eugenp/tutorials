@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.jsonschema2pojo</groupId>
             <artifactId>jsonschema2pojo-core</artifactId>
             <version>1.1.1</version>
@@ -142,6 +147,7 @@
     <properties>
         <jsoniter.version>0.9.23</jsoniter.version>
         <moshi.version>1.9.2</moshi.version>
+        <fastjson.version>1.2.21</fastjson.version>
     </properties>
 
 </project>
