@@ -1,10 +1,11 @@
 package com.baeldung.poi.excel.cellstyle;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,39 +15,52 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class CellStylerUnitTest {
-	private static String FILE_NAME = "com/baeldung/poi/excel/cellstyle/CellStyle.xlsx";
-	private static final String NEW_FILE_NAME = "CellStyleTest_output.xlsx";
-	private String fileLocation;
+    private static final String FILE_NAME = "com/baeldung/poi/excel/cellstyle/CellStyle.xlsx";
+    private static final String NEW_FILE_NAME = "CellStyleTest_output.xlsx";
+    private String fileLocation;
 
-	@Before
-	public void setup() throws IOException, URISyntaxException {
+    @Before
+    public void setup() throws IOException, URISyntaxException {
         fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME)
-                .toURI())
+                        .toURI())
                 .toString();
-	}
+    }
 
-	@Test
-	public void testApplyWarningColor() throws IOException {
-		Workbook workbook = new XSSFWorkbook(fileLocation);
-		Sheet sheet = workbook.getSheetAt(0);
-		Row row1 = sheet.createRow(0);
-		row1.setHeightInPoints((short) 40);
-		
-		CellStyler styler = new CellStyler();
-		CellStyle style = styler.createWarningColor(workbook);
+    @Test
+    public void givenCellStyle_whenFormatted_thenFormatIsSuccessful() throws IOException {
+        Workbook workbook = new XSSFWorkbook(fileLocation);
+        Sheet sheet = workbook.getSheetAt(0);
+        Row row1 = sheet.createRow(0);
+        row1.setHeightInPoints((short) 40);
 
-		Cell cell1 = row1.createCell(0);
-		cell1.setCellStyle(style);
-		cell1.setCellValue("Hello");
+        CellStyler styler = new CellStyler();
+        CellStyle style = styler.createWarningColor(workbook);
 
-		Cell cell2 = row1.createCell(1);
-		cell2.setCellStyle(style);
-		cell2.setCellValue("world!");
+        Cell cell1 = row1.createCell(0);
+        cell1.setCellStyle(style);
+        cell1.setCellValue("Hello");
 
-		FileOutputStream outputStream = new FileOutputStream(NEW_FILE_NAME);
-		workbook.write(outputStream);
-		outputStream.close();
-		workbook.close();
-	}
+        Cell cell2 = row1.createCell(1);
+        cell2.setCellStyle(style);
+        cell2.setCellValue("world!");
+
+        Font usedFont = workbook.getFontAt(cell1.getCellStyle().getFontIndexAsInt());
+        assertEquals("Courier New", usedFont.getFontName());
+        assertTrue(usedFont.getBold());
+        assertFalse(usedFont.getItalic());
+        assertEquals(Font.U_SINGLE, usedFont.getUnderline());
+        assertEquals(HSSFColor.HSSFColorPredefined.DARK_RED.getIndex(), usedFont.getColor());
+
+        // TODO: Comment out this code and the excel file will be written to subproject root
+        // FileOutputStream outputStream = new FileOutputStream(NEW_FILE_NAME);
+        // workbook.write(outputStream);
+        // outputStream.close();
+
+        workbook.close();
+    }
 }
