@@ -1,13 +1,10 @@
-package com.baeldung.collections.iterators;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import com.google.common.primitives.Ints;
-import org.junit.Test;
+package com.baeldung.collections.convertarrayprimitives;
 
 import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+
+import org.junit.Test;
 
 public class ConvertPrimitivesArrayToListUnitTest {
 
