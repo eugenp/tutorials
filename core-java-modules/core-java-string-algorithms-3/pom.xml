@@ -49,7 +49,7 @@
     </build>
 
     <properties>
-        <guava.version>28.1-jre</guava.version>
+        <guava.version>31.0.1-jre</guava.version>
         <validator.version>1.7</validator.version>
     </properties>
 

@@ -55,7 +55,6 @@
     </dependencies>
 
     <properties>
-        <h2.version>1.4.200</h2.version>
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
         <HikariCP.version>3.2.0</HikariCP.version>
         <c3p0.version>0.9.5.2</c3p0.version>

@@ -1,14 +1,18 @@
 package com.baeldung.migration.junit4.rules;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.MultipleFailureException;
 import org.junit.runners.model.Statement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TraceUnitTestRule implements TestRule {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TraceUnitTestRule.class);
 
     @Override
     public Statement apply(Statement base, Description description) {
@@ -18,13 +22,13 @@ public class TraceUnitTestRule implements TestRule {
             public void evaluate() throws Throwable {
                 List<Throwable> errors = new ArrayList<Throwable>();
 
-                System.out.println("Starting test ... " + description.getMethodName());
+                LOGGER.debug("Starting test ... {}", description.getMethodName());
                 try {
                     base.evaluate();
                 } catch (Throwable e) {
                     errors.add(e);
                 } finally {
-                    System.out.println("... test finished. " + description.getMethodName());
+                    LOGGER.debug("... test finished. {}", description.getMethodName());
                 }
 
                 MultipleFailureException.assertEmpty(errors);
