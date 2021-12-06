@@ -27,11 +27,6 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>${json.version}</version>
@@ -72,7 +67,6 @@
 
     <properties>
         <everit.json.schema.version>1.4.1</everit.json.schema.version>
-        <fastjson.version>1.2.21</fastjson.version>
         <jsonb-api.version>1.0</jsonb-api.version>
         <yasson.version>1.0.1</yasson.version>
         <json.version>20171018</json.version>
