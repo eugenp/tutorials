@@ -6,7 +6,7 @@ import java.util.Optional;
 /**
  * Represents months in a year.
  */
-public enum Months {
+public enum Month {
     /**
      * January.
      */
@@ -60,7 +60,7 @@ public enum Months {
     private final String value;
     private final int code;
 
-    Months(String value, int code) {
+    Month(String value, int code) {
         this.value = value;
         this.code = code;
     }
@@ -89,8 +89,8 @@ public enum Months {
      * @param name the name
      * @return the month if found else <code>Optional.empty()</code>
      */
-    public static Optional<Months> findByName(String name) {
-        return Arrays.stream(values()).filter(month -> month.name().equals(name)).findFirst();
+    public static Optional<Month> findByName(String name) {
+        return Arrays.stream(values()).filter(month -> month.name().equalsIgnoreCase(name)).findFirst();
     }
 
     /**
@@ -99,7 +99,7 @@ public enum Months {
      * @param code the code
      * @return the month if found else <code>Optional.empty()</code>
      */
-    public static Optional<Months> findByCode(int code) {
+    public static Optional<Month> findByCode(int code) {
         return Arrays.stream(values()).filter(month -> month.getCode() == code).findFirst();
     }
 
@@ -110,7 +110,7 @@ public enum Months {
      * @return month if value is valid
      * @throws IllegalArgumentException if month not found for given value
      */
-    public static Months findByValue(String value) {
+    public static Month findByValue(String value) {
         return Arrays.stream(values()).filter(month -> month.getValue().equalsIgnoreCase(value)).findFirst().orElseThrow(IllegalArgumentException::new);
     }
 }

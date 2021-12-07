@@ -12,7 +12,7 @@ public class EnumSearcher {
     }
 
     private void printWeekdays() {
-        for (Weekdays day: Weekdays.values()) {
+        for (Weekday day: Weekday.values()) {
             LOG.info("Name {}, Value {}, Stringified {}", day.name(), day.getValue(), day);
         }
     }

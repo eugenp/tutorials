@@ -1,9 +1,9 @@
 package com.baeldung.enumerations;
 
 /**
- * Represents.
+ * Represents day in a week.
  */
-public enum Weekdays {
+public enum Weekday {
     /**
      * Monday.
      */
@@ -36,7 +36,7 @@ public enum Weekdays {
 
     private final String value;
 
-    Weekdays(String value) {
+    Weekday(String value) {
         this.value = value;
     }
 
@@ -55,10 +55,10 @@ public enum Weekdays {
      * @param name the name
      * @return the weekday if found else null
      */
-    public static Weekdays findByName(String name) {
-        Weekdays result = null;
-        for (Weekdays day : values()) {
-            if (day.name().equals(name)) {
+    public static Weekday findByName(String name) {
+        Weekday result = null;
+        for (Weekday day : values()) {
+            if (day.name().equalsIgnoreCase(name)) {
                 result = day;
                 break;
             }
@@ -72,10 +72,10 @@ public enum Weekdays {
      * @param value the value
      * @return the weekday if found else null
      */
-    public static Weekdays findByValue(String value) {
-        Weekdays result = null;
-        for (Weekdays day : values()) {
-            if (day.getValue().equals(value)) {
+    public static Weekday findByValue(String value) {
+        Weekday result = null;
+        for (Weekday day : values()) {
+            if (day.getValue().equalsIgnoreCase(value)) {
                 result = day;
                 break;
             }
