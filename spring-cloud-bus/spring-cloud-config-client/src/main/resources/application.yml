@@ -1,5 +1,11 @@
 ---
 spring:
+  application:
+    name: config-client
+  profiles:
+    active: development
+  config:
+    import: configserver:http://root:s3cr3t@localhost:8888
   rabbitmq:
     host: localhost
     port: 5672
@@ -10,8 +16,12 @@ spring:
       enabled: true
       refresh:
         enabled: true
+    config:
+      fail-fast: true
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  security:
+    enabled: false
