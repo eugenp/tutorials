@@ -22,13 +22,13 @@ public class Simulator {
         long timeMillis = args.length < 2 ? System.currentTimeMillis() : new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").parse(args[1]).getTime();
         if (args.length > 0) {
             // change access time only
-            if (args[0].equals("a")) {
+            if ("a".equals(args[0])) {
                 FileTime accessFileTime = FileTime.fromMillis(timeMillis);
                 Files.setAttribute(file.toPath(), "lastAccessTime", accessFileTime);
                 return;
             }
             // change modification time only
-            if (args[0].equals("m")) {
+            if ("m".equals(args[0])) {
                 file.setLastModified(timeMillis);
                 return;
             }
