@@ -4,11 +4,11 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Objects;
 
-public class CamelcaseValidator implements ConstraintValidator<Camelcase, String> {
+public class CapitalizedValidator implements ConstraintValidator<Capitalized, String> {
 
-	private Camelcase uppercaseAnnotation;
+	private Capitalized uppercaseAnnotation;
 
-	public void initialize(Camelcase constraintAnnotation) {
+	public void initialize(Capitalized constraintAnnotation) {
 		this.uppercaseAnnotation = constraintAnnotation;
 	}
 

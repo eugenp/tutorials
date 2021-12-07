@@ -1,12 +1,14 @@
-package com.baeldung.collections.iterators;
+package com.baeldung.collections.convertarrayprimitives;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import com.google.common.primitives.Ints;
+
 import org.apache.commons.lang3.ArrayUtils;
+
+import com.google.common.primitives.Ints;
 
 public class ConvertPrimitivesArrayToList {
 

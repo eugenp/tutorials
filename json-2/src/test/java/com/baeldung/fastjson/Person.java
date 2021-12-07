@@ -1,4 +1,4 @@
-package fast_json;
+package com.baeldung.fastjson;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
