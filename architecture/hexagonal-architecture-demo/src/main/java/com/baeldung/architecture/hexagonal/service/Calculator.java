@@ -1,6 +1,7 @@
 package com.baeldung.architecture.hexagonal.service;
 
 import com.baeldung.architecture.hexagonal.cache.Cache;
+import com.baeldung.architecture.hexagonal.cache.FileCache;
 import com.baeldung.architecture.hexagonal.cache.InMemoryCache;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,11 @@ public class Calculator {
     private final Cache cache;
 
     public Calculator() {
-        cache = new InMemoryCache();
+        cache = new FileCache();
+    }
+
+    Calculator(Cache cache) {
+        this.cache = cache;
     }
 
     public Double add(Double a, Double b) {

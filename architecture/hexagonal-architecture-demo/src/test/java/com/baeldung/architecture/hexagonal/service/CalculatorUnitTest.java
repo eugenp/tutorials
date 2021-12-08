@@ -4,7 +4,7 @@ import com.baeldung.architecture.hexagonal.cache.InMemoryCache;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+class CalculatorUnitTest {
 
     @Test
     void givenTwoNumber_whenAdded_shouldReturnTheSum() {
