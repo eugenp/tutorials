@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class CalculatorUnitTest {
 
     @Test
-    void givenTwoNumber_whenAdded_shouldReturnTheSum() {
+    void givenTwoNumbers_whenAdded_shouldReturnTheSum() {
         Calculator calculator = new Calculator(new InMemoryCache());
 
         Double a = 10d;
