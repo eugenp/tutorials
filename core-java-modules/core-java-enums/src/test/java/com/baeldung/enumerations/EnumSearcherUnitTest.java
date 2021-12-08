@@ -7,7 +7,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-public class EnumSearcherTest {
+public class EnumSearcherUnitTest {
 
     @Test
     public void givenWeekdays_whenValidDirectionNameProvided_directionIsFound() {

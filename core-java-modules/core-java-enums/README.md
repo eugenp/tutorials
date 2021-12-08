@@ -1,6 +1,6 @@
-## Algorithms - Miscellaneous
+## Java Enums
 
-This module contains articles about various tricks and tips for solving problems in Java coding day in and day out, for example how to find a enum by its name. 
+This module contains articles about various tricks and tips for solving problems in Java coding day in and day out, for example how to find an enum by its name. 
 
 ### Relevant articles:
 
