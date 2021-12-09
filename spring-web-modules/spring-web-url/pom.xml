@@ -6,7 +6,6 @@
     <artifactId>spring-web-url</artifactId>
     <name>spring-web-url</name>
     <packaging>war</packaging>
-    <description>Demo project for Spring Boot</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
