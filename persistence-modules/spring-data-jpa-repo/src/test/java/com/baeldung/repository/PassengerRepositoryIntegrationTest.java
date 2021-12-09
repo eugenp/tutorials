@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.entity.Passenger;
 
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @RunWith(SpringRunner.class)
 public class PassengerRepositoryIntegrationTest {
 

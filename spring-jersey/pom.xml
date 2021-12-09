@@ -105,12 +105,6 @@
             <artifactId>slf4j-jdk14</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -218,7 +212,6 @@
         <httpclient.version>4.5.5</httpclient.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <wiremock.version>2.27.2</wiremock.version>
-        <assertj-core.version>3.10.0</assertj-core.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
 
