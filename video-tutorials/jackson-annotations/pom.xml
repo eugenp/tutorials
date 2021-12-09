@@ -100,12 +100,6 @@
             <version>${json-schema-validator.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -122,11 +116,9 @@
         <!-- various -->
         <joda-time.version>2.9.6</joda-time.version>
         <gson.version>2.8.0</gson.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
         <!-- testing -->
         <rest-assured.version>3.0.1</rest-assured.version>
         <rest-assured-json-schema-validator.version>3.0.0</rest-assured-json-schema-validator.version>
-        <assertj-core.version>3.6.1</assertj-core.version>
         <json-schema-validator.version>2.2.6</json-schema-validator.version>
         <json-path.version>3.0.1</json-path.version>
     </properties>

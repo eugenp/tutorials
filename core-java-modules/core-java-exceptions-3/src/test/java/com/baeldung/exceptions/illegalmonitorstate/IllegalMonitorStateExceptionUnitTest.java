@@ -1,8 +1,11 @@
 package com.baeldung.exceptions.illegalmonitorstate;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class IllegalMonitorStateExceptionUnitTest {
 
@@ -18,10 +21,9 @@ public class IllegalMonitorStateExceptionUnitTest {
         Thread senderThread = new Thread(sender, "sender-thread");
         senderThread.start();
 
-        senderThread.join(1000);
-        receiverThread.join(1000);
-        
-        Thread.sleep(2000);
+        // we need to wait for the sender and receiver threads to finish
+        senderThread.join(10_000);
+        receiverThread.join(10_000);
 
         assertEquals("test", receiver.getMessage());
         assertFalse(sender.hasIllegalMonitorStateExceptionOccurred());

@@ -92,7 +92,6 @@
         <persistence-api.version>2.2</persistence-api.version>
         <transaction-api.version>1.3</transaction-api.version>
         <spring-data-jpa.version>2.2.7.RELEASE</spring-data-jpa.version>
-        <h2.version>1.4.200</h2.version>
         <!-- simple-jndi -->
         <simple-jndi.version>0.23.0</simple-jndi.version>
         <!-- test scoped -->

@@ -1,7 +1,7 @@
 package com.baeldung.readertox;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.input.CharSequenceReader;
+import org.apache.commons.io.input.ReaderInputStream;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -181,7 +182,7 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream() throws IOException {
+    public void givenUsingCommonsIOUtils_whenConvertingReaderIntoInputStream() throws IOException {
         final Reader initialReader = new StringReader("With Commons IO");
 
         final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader));
@@ -191,11 +192,35 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream_thenCorrect() throws IOException {
+    public void givenUsingCommonsIOUtils_whenConvertingReaderIntoInputStream_thenCorrect() throws IOException {
         String initialString = "With Commons IO";
         final Reader initialReader = new StringReader(initialString);
 
         final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader));
+
+        final String finalString = IOUtils.toString(targetStream);
+        assertThat(finalString, equalTo(initialString));
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIOReaderInputStream_whenConvertingReaderIntoInputStream() throws IOException {
+        final Reader initialReader = new StringReader("With Commons IO");
+
+        final InputStream targetStream = new ReaderInputStream(initialReader);
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIOReaderInputStream_whenConvertingReaderIntoInputStream_thenCorrect() throws IOException {
+        String initialString = "With Commons IO";
+        final Reader initialReader = new StringReader(initialString);
+
+        final InputStream targetStream = new ReaderInputStream(initialReader);
 
         final String finalString = IOUtils.toString(targetStream);
         assertThat(finalString, equalTo(initialString));
@@ -233,7 +258,7 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStreamWithEncoding() throws IOException {
+    public void givenUsingCommonsIOUtils_whenConvertingReaderIntoInputStreamWithEncoding() throws IOException {
         final Reader initialReader = new StringReader("With Commons IO");
 
         final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader), Charsets.UTF_8);
@@ -243,7 +268,7 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStreamWithEncoding_thenCorrect() throws IOException {
+    public void givenUsingCommonsIOUtils_whenConvertingReaderIntoInputStreamWithEncoding_thenCorrect() throws IOException {
         String initialString = "With Commons IO";
         final Reader initialReader = new StringReader(initialString);
         final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader), Charsets.UTF_8);
@@ -255,4 +280,27 @@ public class JavaReaderToXUnitTest {
         targetStream.close();
     }
 
+    @Test
+    public void givenUsingCommonsIOReaderInputStream_whenConvertingReaderIntoInputStreamWithEncoding() throws IOException {
+        final Reader initialReader = new StringReader("With Commons IO");
+
+        final InputStream targetStream = new ReaderInputStream(initialReader, Charsets.UTF_8);
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIOReaderInputStream_whenConvertingReaderIntoInputStreamWithEncoding_thenCorrect() throws IOException {
+        String initialString = "With Commons IO";
+        final Reader initialReader = new StringReader(initialString);
+
+        final InputStream targetStream = new ReaderInputStream(initialReader, Charsets.UTF_8);
+
+        String finalString = IOUtils.toString(targetStream, Charsets.UTF_8);
+        assertThat(finalString, equalTo(initialString));
+
+        initialReader.close();
+        targetStream.close();
+    }
 }

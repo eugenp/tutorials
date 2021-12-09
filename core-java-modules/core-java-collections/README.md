@@ -12,4 +12,5 @@ This module contains articles about Java collections
 - [Defining a Char Stack in Java](https://www.baeldung.com/java-char-stack)
 - [Guide to the Java Queue Interface](https://www.baeldung.com/java-queue)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
-- [[More -->]](/core-java-modules/core-java-collections-2)
+- [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
+- More articles: [[next -->]](/core-java-modules/core-java-collections-2)

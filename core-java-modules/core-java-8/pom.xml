@@ -31,13 +31,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -49,12 +42,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <!-- util -->
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
-    </properties>
 
 </project>

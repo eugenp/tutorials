@@ -31,12 +31,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-rules</artifactId>
             <version>${system-rules.version}</version>
@@ -58,31 +52,6 @@
             <groupId>uk.org.webcompere</groupId>
             <artifactId>system-stubs-junit4</artifactId>
             <version>${system-stubs.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- System Stubs requires more up to date JUnit 5 -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -139,7 +108,6 @@
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-stubs.version>1.1.0</system-stubs.version>
-        <assertj-core.version>3.16.1</assertj-core.version>
     </properties>
 
 </project>

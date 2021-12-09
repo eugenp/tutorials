@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class ModuleAPIUnitTest {
 
@@ -110,6 +111,7 @@ public class ModuleAPIUnitTest {
     }
 
     @Test
+    @Ignore // fixing in http://team.baeldung.com/browse/JAVA-8679
     public void givenModules_whenAccessingModuleDescriptorProvides_thenProvidesAreReturned() {
         Set<Provides> javaBaseProvides = javaBaseModule.getDescriptor().provides();
         Set<Provides> javaSqlProvides = javaSqlModule.getDescriptor().provides();
