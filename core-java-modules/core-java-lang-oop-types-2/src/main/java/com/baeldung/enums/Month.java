@@ -1,4 +1,4 @@
-package com.baeldung.enumerations;
+package com.baeldung.enums;
 
 import java.util.Arrays;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.baeldung.enumerations;
+package com.baeldung.enums;
 
 /**
  * Represents day in a week.

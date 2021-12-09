@@ -1,4 +1,4 @@
-package com.baeldung.enumerations;
+package com.baeldung.enums;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
