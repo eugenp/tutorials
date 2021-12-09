@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("slash")
-public class SlashParsingController {
+public class SlashParsingController {	
 
     @GetMapping("mypaths/{anything}")
     public String pathVariable(@PathVariable("anything") String anything) {
