@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.customvalidator;
 
 import com.baeldung.customvalidator.FieldsValueMatch;
 
