@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.modelattribute;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
