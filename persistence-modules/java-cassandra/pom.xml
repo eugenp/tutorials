@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>java-cassandra</artifactId>
 	<name>java-cassandra</name>
@@ -46,15 +46,16 @@
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-transport</artifactId>
-			<version>4.1.71.Final</version>
+			<version>${netty-transport-version}</version>
 		</dependency>
 	</dependencies>
 
 	<properties>
 		<!-- Cassandra -->
-		<cassandra-driver-core.version>3.11.0</cassandra-driver-core.version>
-		<cassandra-unit.version>3.11.2.0</cassandra-unit.version>
-		<datastax-cassandra.version>4.13.0</datastax-cassandra.version>
+		<cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
+		<cassandra-unit.version>3.1.1.0</cassandra-unit.version>
+		<datastax-cassandra.version>4.1.0</datastax-cassandra.version>
+		<netty-transport-version>4.1.71.Final</netty-transport-version>
 	</properties>
 
 </project>
