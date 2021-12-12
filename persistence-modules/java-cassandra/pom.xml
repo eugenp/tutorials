@@ -54,7 +54,7 @@
         <!-- Cassandra -->
         <cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
         <cassandra-unit.version>3.1.1.0</cassandra-unit.version>
-        <datastax-cassandra.version>4.1.0</datastax-cassandra.version
+        <datastax-cassandra.version>4.1.0</datastax-cassandra.version>
         <netty-transport-version>4.1.71.Final</netty-transport-version>
     </properties>
 
