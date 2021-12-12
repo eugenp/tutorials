@@ -45,8 +45,8 @@
         </dependency>
         <dependency>
             <groupId>io.netty</groupId>
-			<artifactId>netty-transport</artifactId>
-			<version>${netty-transport-version}</version>
+            <artifactId>netty-transport</artifactId>
+            <version>${netty-transport-version}</version>
         </dependency>
     </dependencies>
 
