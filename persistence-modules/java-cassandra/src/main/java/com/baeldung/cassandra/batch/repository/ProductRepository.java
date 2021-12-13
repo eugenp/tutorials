@@ -3,7 +3,6 @@ package com.baeldung.cassandra.batch.repository;
 import com.baeldung.cassandra.batch.domain.Product;
 import com.datastax.oss.driver.api.core.CqlIdentifier;
 import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastax.oss.driver.api.core.cql.BoundStatement;
 import com.datastax.oss.driver.api.core.cql.DefaultBatchType;
 import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.BatchStatement;
@@ -12,7 +11,6 @@ import com.datastax.oss.driver.api.core.cql.SimpleStatement;
 import com.datastax.oss.driver.api.core.type.DataTypes;
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
-import com.datastax.oss.driver.api.querybuilder.insert.RegularInsert;
 import com.datastax.oss.driver.api.querybuilder.schema.CreateTable;
 import com.datastax.oss.driver.api.querybuilder.select.Select;
 
@@ -40,7 +38,7 @@ public class ProductRepository {
                 .withColumn("description", DataTypes.TEXT)
                 .withColumn("price", DataTypes.FLOAT);
 
-		executeStatement(createTable.build(), keyspace);
+        executeStatement(createTable.build(), keyspace);
 	}
 
     public void createProductByIdTable(String keyspace) {
@@ -63,40 +61,9 @@ public class ProductRepository {
 
         executeStatement(createTable.build(), keyspace);
 	}
-
-    public UUID insertProduct(Product product,String keySpace) {
-        UUID productId = UUID.randomUUID();
-
-        UUID productVariantId = UUID.randomUUID();
-
-        product.setProductId(productId);
-        product.setVariantId(productVariantId);
-
-        RegularInsert insertQuery = QueryBuilder.insertInto(PRODUCT_TABLE_NAME)
-                .value("product_id", QueryBuilder.bindMarker())
-                .value("variant_id", QueryBuilder.bindMarker())
-                .value("title", QueryBuilder.bindMarker());
-
-        SimpleStatement insertStatement = insertQuery.build();
-
-        if (keySpace != null) {
-           insertStatement = insertStatement.setKeyspace(keySpace);
-        }
-
-        PreparedStatement preparedStatement = session.prepare(insertStatement);
-
-        BoundStatement statement = preparedStatement.bind()
-                .setUuid(0, product.getProductId())
-                .setUuid(1, product.getVariantId())
-                .setString(2, product.getProductName());
-
-        session.execute(statement);
-        
-        return productId;
-     }
 	
     /**
-     * Insert two same Product into same table using a batch query.
+     * Insert two variant Product into same table using a batch query.
      *  
 	 * @param Product
 	 */
@@ -133,8 +100,8 @@ public class ProductRepository {
      }
 
 
-	/**
-	 * Insert two same Product into related tables using a batch query.
+     /**
+     * Insert two same Product into related tables using a batch query.
 	 * 
 	 * @param book
 	 */
@@ -163,7 +130,7 @@ public class ProductRepository {
         session.execute(batch);
     }
 
-	public List<Product> selectAllProduct(String keyspace) {
+    public List<Product> selectAllProduct(String keyspace) {
         Select select = QueryBuilder.selectFrom(PRODUCT_TABLE_NAME).all();
 
         ResultSet resultSet = executeStatement(select.build(), keyspace);
