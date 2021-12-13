@@ -10,4 +10,4 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Spring Optional Path variables](https://www.baeldung.com/spring-optional-path-variables)
 - [JSON Parameters with Spring MVC](https://www.baeldung.com/spring-mvc-send-json-parameters)
 - [How to Set JSON Content Type In Spring MVC](https://www.baeldung.com/spring-mvc-set-json-content-type)
-- More articles: [[<-- prev]](/spring-mvc-basics-3)
+- More articles: [[<-- prev]](../spring-mvc-basics-3)[[more -->]](../spring-mvc-basics-5)

@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.customvalidator;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
