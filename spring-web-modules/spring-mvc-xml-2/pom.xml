@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-mvc-xml</artifactId>
+    <artifactId>spring-mvc-xml-2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-xml</name>
+    <name>spring-mvc-xml-2</name>
     <packaging>war</packaging>
 
     <parent>
@@ -39,6 +39,11 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
         <!-- Json conversion -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -52,21 +57,6 @@
             <version>${commons-io.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.maxmind.geoip2</groupId>
-            <artifactId>geoip2</artifactId>
-            <version>${geoip2.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                    <artifactId>jackson-databind</artifactId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
             <version>${javax.el.version}</version>
@@ -76,34 +66,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
-        </dependency>
-        <!-- CRaSH Dependency -->
-        <dependency>
-            <groupId>org.crashub</groupId>
-            <artifactId>crash.embed.spring</artifactId>
-            <version>${crash.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.crashub</groupId>
-            <artifactId>crash.cli</artifactId>
-            <version>${crash.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.crashub</groupId>
-            <artifactId>crash.connectors.telnet</artifactId>
-            <version>${crash.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>log4j</artifactId>
-                    <groupId>log4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- Groovy -->
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>${groovy.version}</version>
         </dependency>
     </dependencies>
 
@@ -125,24 +87,15 @@
     </build>
 
     <properties>
-        <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
-        <!-- persistence -->
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <!-- http -->
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <!-- various -->
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <javax.el.version>3.0.1-b08</javax.el.version>
-        <!-- util -->
         <guava.version>19.0</guava.version>
-        <geoip2.version>2.8.0</geoip2.version>
-        <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <crash.version>1.3.2</crash.version>
-        <groovy.version>3.0.0-rc-3</groovy.version>
     </properties>
 
 </project>

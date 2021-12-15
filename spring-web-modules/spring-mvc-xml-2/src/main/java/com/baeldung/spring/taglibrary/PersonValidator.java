@@ -1,6 +1,5 @@
-package com.baeldung.spring.validator;
+package com.baeldung.spring.taglibrary;
 
-import com.baeldung.spring.form.Person;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;

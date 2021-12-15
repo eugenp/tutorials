@@ -1,5 +1,6 @@
-package com.baeldung.spring.controller;
+package com.baeldung.spring.paramsvalidation;
 
+import com.baeldung.spring.ClientWebConfigJava;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +11,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.baeldung.spring.ClientWebConfig;
-import com.baeldung.spring.ClientWebConfigJava;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,13 +33,13 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     @Test
     public void getNameOfDayByNumberRequestParam_whenGetWithProperRequestParam_thenReturn200() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day").param("dayOfWeek", Integer.toString(5)))
-               .andExpect(status().isOk());
+          .andExpect(status().isOk());
     }
 
     @Test
     public void getNameOfDayByNumberRequestParam_whenGetWithRequestParamOutOfRange_thenReturn400() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day").param("dayOfWeek", Integer.toString(15)))
-               .andExpect(status().isBadRequest());
+          .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -52,7 +50,7 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     @Test
     public void getNameOfDayByPathVariable_whenGetWithRequestParamOutOfRange_thenReturn400() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day/{dayOfWeek}", Integer.toString(15)))
-               .andExpect(status().isBadRequest());
+          .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -63,7 +61,7 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     @Test
     public void validStringRequestParam_whenGetWithTooLongRequestParam_thenReturn400() throws Exception {
         mockMvc.perform(get("/public/api/1/valid-name").param("name", "asdfghjklqw"))
-               .andExpect(status().isBadRequest());
+          .andExpect(status().isBadRequest());
     }
 
     @Test

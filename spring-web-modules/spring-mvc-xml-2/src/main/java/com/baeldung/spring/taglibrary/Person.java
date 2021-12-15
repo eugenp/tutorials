@@ -1,4 +1,4 @@
-package com.baeldung.spring.form;
+package com.baeldung.spring.taglibrary;
 
 import java.util.List;
 
