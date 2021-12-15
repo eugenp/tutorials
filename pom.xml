@@ -619,6 +619,7 @@
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
+                <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
@@ -1089,6 +1090,7 @@
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
+                <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
