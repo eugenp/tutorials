@@ -110,7 +110,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.webflux.EmployeeSpringApplication</mainClass>
+                    <mainClass>com.baeldung.reactive.actuator.Spring5ReactiveApplication</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>

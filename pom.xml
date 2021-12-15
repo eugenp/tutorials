@@ -557,7 +557,6 @@
 				<module>atomikos</module>
 				<module>reactive-systems</module>
 				<module>slack</module>
-				<module>spring-webflux-threads</module>
             </modules>
 
         </profile>
@@ -1037,7 +1036,6 @@
 				<module>atomikos</module>
 				<module>reactive-systems</module>
 				<module>slack</module>
-				<module>spring-webflux-threads</module>
             </modules>
 
         </profile>
