@@ -2,6 +2,9 @@ spring:
   application:
     name: spring-cloud-ribbon
 
+  main:
+    allow-circular-references: true
+
 server:
   port: 8888
 
