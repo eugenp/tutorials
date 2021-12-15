@@ -42,7 +42,6 @@
 
     <properties>
         <rate.limit.version>2.2.0.RELEASE</rate.limit.version>
-        <spring-boot.version>2.4.7</spring-boot.version>
     </properties>
 
 </project>
