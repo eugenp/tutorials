@@ -3,7 +3,7 @@ package com.baeldung.dddhexagonalsimple.adapters.rest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import pizza.domain.model.Pizza;
+import com.baeldung.dddhexagonalsimple.domain.model.Pizza;
 
 import java.math.BigDecimal;
 

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pizza.domain.model.Pizza;
+import com.baeldung.dddhexagonalsimple.domain.model.Pizza;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

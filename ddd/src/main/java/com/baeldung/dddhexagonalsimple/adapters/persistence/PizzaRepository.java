@@ -2,9 +2,9 @@ package com.baeldung.dddhexagonalsimple.adapters.persistence;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import pizza.domain.model.Pizza;
-import pizza.domain.ports.out.FindPizzaPort;
-import pizza.domain.ports.out.SavePizzaPort;
+import com.baeldung.dddhexagonalsimple.domain.model.Pizza;
+import com.baeldung.dddhexagonalsimple.domain.ports.outbound.FindPizzaPort;
+import com.baeldung.dddhexagonalsimple.domain.ports.outbound.SavePizzaPort;
 
 import java.util.Optional;
 

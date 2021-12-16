@@ -1,6 +1,6 @@
 package com.baeldung.dddhexagonalsimple.domain.ports.inbound;
 
-import pizza.domain.model.Pizza;
+import com.baeldung.dddhexagonalsimple.domain.model.Pizza;
 
 import java.util.Optional;
 

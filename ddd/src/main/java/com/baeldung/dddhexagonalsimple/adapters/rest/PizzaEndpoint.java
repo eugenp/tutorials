@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pizza.domain.model.Pizza;
-import pizza.domain.ports.in.CreatePizzaUseCase;
-import pizza.domain.ports.in.GetPizzaUseCase;
+import com.baeldung.dddhexagonalsimple.domain.model.Pizza;
+import com.baeldung.dddhexagonalsimple.domain.ports.inbound.CreatePizzaUseCase;
+import com.baeldung.dddhexagonalsimple.domain.ports.inbound.GetPizzaUseCase;
 
 import java.net.URI;
 import java.util.Optional;

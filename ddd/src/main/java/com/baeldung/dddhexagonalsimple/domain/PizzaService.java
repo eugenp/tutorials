@@ -1,11 +1,11 @@
 package com.baeldung.dddhexagonalsimple.domain;
 
 import lombok.AllArgsConstructor;
-import pizza.domain.model.Pizza;
-import pizza.domain.ports.in.CreatePizzaUseCase;
-import pizza.domain.ports.in.GetPizzaUseCase;
-import pizza.domain.ports.out.FindPizzaPort;
-import pizza.domain.ports.out.SavePizzaPort;
+import com.baeldung.dddhexagonalsimple.domain.model.Pizza;
+import com.baeldung.dddhexagonalsimple.domain.ports.inbound.CreatePizzaUseCase;
+import com.baeldung.dddhexagonalsimple.domain.ports.inbound.GetPizzaUseCase;
+import com.baeldung.dddhexagonalsimple.domain.ports.outbound.FindPizzaPort;
+import com.baeldung.dddhexagonalsimple.domain.ports.outbound.SavePizzaPort;
 
 import java.math.BigDecimal;
 import java.util.Optional;
