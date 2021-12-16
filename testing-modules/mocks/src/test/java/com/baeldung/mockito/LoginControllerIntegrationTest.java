@@ -40,7 +40,7 @@ public class LoginControllerIntegrationTest {
     public void assertThatNoMethodHasBeenCalled() {
         loginController.login(null);
         // no method called
-        Mockito.verifyZeroInteractions(loginService);
+        Mockito.verifyNoInteractions(loginService);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class LoginControllerIntegrationTest {
         Assert.assertEquals("ERROR", login);
         Mockito.verify(loginService)
             .login(userForm);
-        Mockito.verifyZeroInteractions(loginService);
+        Mockito.verifyNoInteractions(loginService);
     }
 
     @Test
