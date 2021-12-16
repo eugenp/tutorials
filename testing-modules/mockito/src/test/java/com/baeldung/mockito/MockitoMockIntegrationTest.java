@@ -4,7 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.mockito.MockSettings;
-import org.mockito.exceptions.verification.TooLittleActualInvocations;
+import org.mockito.exceptions.verification.TooFewActualInvocations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -42,7 +42,7 @@ public class MockitoMockIntegrationTest {
         when(listMock.add(anyString())).thenReturn(false);
         listMock.add(randomAlphabetic(6));
         
-        thrown.expect(TooLittleActualInvocations.class);
+        thrown.expect(TooFewActualInvocations.class);
         thrown.expectMessage(containsString("myMock.add"));
 
         verify(listMock, times(2)).add(anyString());
