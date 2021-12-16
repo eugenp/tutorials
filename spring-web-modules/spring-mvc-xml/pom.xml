@@ -39,11 +39,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
         <!-- Json conversion -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
