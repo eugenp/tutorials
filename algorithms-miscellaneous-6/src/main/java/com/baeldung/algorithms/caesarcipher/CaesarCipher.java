@@ -1,11 +1,16 @@
 package com.baeldung.algorithms.caesarcipher;
 
 import org.apache.commons.math3.stat.inference.ChiSquareTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class CaesarCipher {
+
+    private final Logger log = LoggerFactory.getLogger(CaesarCipher.class);
+
     private static final char LETTER_A = 'a';
     private static final char LETTER_Z = 'z';
     private static final int ALPHABET_SIZE = LETTER_Z - LETTER_A + 1;
@@ -72,7 +77,7 @@ public class CaesarCipher {
     private int probableOffset(double[] chiSquares) {
         int probableOffset = 0;
         for (int offset = 0; offset < chiSquares.length; offset++) {
-            System.out.println(String.format("Chi-Square for offset %d: %.2f", offset, chiSquares[offset]));
+            log.debug(String.format("Chi-Square for offset %d: %.2f", offset, chiSquares[offset]));
             if (chiSquares[offset] < chiSquares[probableOffset]) {
                 probableOffset = offset;
             }
