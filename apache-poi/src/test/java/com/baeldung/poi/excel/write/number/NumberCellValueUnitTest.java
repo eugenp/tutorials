@@ -85,7 +85,7 @@ public class NumberCellValueUnitTest {
     @Test
     public void decimalValue_whenAddedInteger_thenNumericCellCreated() throws IOException {
         File file = new File("number_test.xlsx");
-        try (Workbook outWorkbook = new HSSFWorkbook()) {
+        try (Workbook outWorkbook = new XSSFWorkbook()) {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
             Row row = sheet.createRow(0);
             Cell cell = row.createCell(0);
@@ -96,7 +96,7 @@ public class NumberCellValueUnitTest {
             outWorkbook.write(fileOut);
             fileOut.close();
         }
-        try (Workbook inWorkbook = new HSSFWorkbook(new FileInputStream(file))) {
+        try (Workbook inWorkbook = new XSSFWorkbook("number_test.xlsx")) {
             Sheet sheet = inWorkbook.cloneSheet(0);
             Row row = sheet.getRow(0);
             Assertions.assertEquals(10.25, row.getCell(0)
