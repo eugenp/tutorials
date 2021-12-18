@@ -1,10 +1,10 @@
 package com.baeldung.thymeleaf.utils;
 
+import com.baeldung.thymeleaf.model.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-
-import com.baeldung.thymeleaf.model.Book;
 
 public class BookUtils {
 
