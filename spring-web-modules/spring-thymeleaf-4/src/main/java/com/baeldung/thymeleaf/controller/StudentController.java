@@ -1,9 +1,7 @@
 package com.baeldung.thymeleaf.controller;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
+import com.baeldung.thymeleaf.model.Student;
+import com.baeldung.thymeleaf.utils.StudentUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.baeldung.thymeleaf.model.Student;
-import com.baeldung.thymeleaf.utils.StudentUtils;
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Handles requests for the student model.

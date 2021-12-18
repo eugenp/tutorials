@@ -1,9 +1,9 @@
 package com.baeldung.thymeleaf.utils;
 
+import com.baeldung.thymeleaf.model.Teacher;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.baeldung.thymeleaf.model.Teacher;
 
 public class TeacherUtils {
 
