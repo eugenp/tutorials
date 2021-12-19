@@ -12,16 +12,9 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.jcabi</groupId>
             <artifactId>jcabi-aspects</artifactId>
@@ -95,7 +88,6 @@
     </build>
 
     <properties>
-        <assertj.version>3.14.0</assertj.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>

@@ -146,7 +146,7 @@
         <jdbi.version>3.9.1</jdbi.version>
         <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
         <c3p0.version>0.9.5.2</c3p0.version>
-        <oracle-database.version>19.6.0.0</oracle-database.version>
+        <oracle-database.version>21.1.0.0</oracle-database.version>
     </properties>
 
 </project>

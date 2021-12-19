@@ -130,16 +130,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>
@@ -205,7 +195,6 @@
         <!-- util -->
         <guava.version>25.1-jre</guava.version>
         <easymock.version>3.6</easymock.version>
-        <assertj.version>3.6.1</assertj.version>
         <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
         <maven.version>3.2.2</maven.version>

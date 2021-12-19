@@ -41,11 +41,6 @@
             <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -53,7 +48,6 @@
         <rx.java.version>1.2.5</rx.java.version>
         <rxrelay.version>2.0.0</rxrelay.version>
         <rx.java2.version>2.2.2</rx.java2.version>
-        <assertj.version>3.8.0</assertj.version>
     </properties>
 
 </project>

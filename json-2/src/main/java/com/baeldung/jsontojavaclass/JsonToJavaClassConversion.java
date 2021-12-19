@@ -17,7 +17,22 @@ import com.sun.codemodel.JCodeModel;
 
 public class JsonToJavaClassConversion {
 
-    public Object convertJsonToJavaClass(URL inputJson, File outputJavaClassDirectory, String packageName, String className) throws IOException {
+    public static void main(String[] args) {
+        String packageName = "com.baeldung.jsontojavaclass.pojo";
+        String basePath = "src/main/resources";
+        File inputJson = new File(basePath + File.separator + "input.json");
+        File outputPojoDirectory = new File(basePath + File.separator + "convertedPojo");
+        outputPojoDirectory.mkdirs();
+        try {
+            new JsonToJavaClassConversion().convertJsonToJavaClass(inputJson.toURI().toURL(), outputPojoDirectory, packageName, inputJson.getName().replace(".json", ""));
+        } catch (IOException e) {
+            System.out.println("Encountered issue while converting to pojo: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    public void convertJsonToJavaClass(URL inputJsonUrl, File outputJavaClassDirectory, String packageName, String javaClassName) throws IOException {
         JCodeModel jcodeModel = new JCodeModel();
 
         GenerationConfig config = new DefaultGenerationConfig() {
@@ -33,10 +48,9 @@ public class JsonToJavaClassConversion {
         };
 
         SchemaMapper mapper = new SchemaMapper(new RuleFactory(config, new Jackson2Annotator(config), new SchemaStore()), new SchemaGenerator());
-        mapper.generate(jcodeModel, className, packageName, inputJson);
+        mapper.generate(jcodeModel, javaClassName, packageName, inputJsonUrl);
 
         jcodeModel.build(outputJavaClassDirectory);
-        return mapper;
     }
 
 }

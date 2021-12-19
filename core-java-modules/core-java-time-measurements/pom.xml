@@ -13,7 +13,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -28,13 +27,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -46,15 +38,15 @@
             <version>${asspectj.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-junit4</artifactId>
-            <version>${powermock.version}</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>${mockito-inline.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <version>${powermock.version}</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-inline.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -75,8 +67,8 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
@@ -88,17 +80,12 @@
     </build>
 
     <properties>
-        <!-- util -->
         <commons-math3.version>3.6.1</commons-math3.version>
         <joda.version>2.10</joda.version>
-        <lombok.version>1.18.12</lombok.version>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
+        <lombok.version>1.18.22</lombok.version>
         <asspectj.version>1.8.9</asspectj.version>
-        <powermock.version>2.0.7</powermock.version>
         <jmockit.version>1.44</jmockit.version>
-        <!-- plugins -->
-        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+        <mockito-inline.version>4.0.0</mockito-inline.version>
     </properties>
 
 </project>

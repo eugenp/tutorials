@@ -1,0 +1,65 @@
+openapi: 3.0.1
+info:
+  version: "1.0"
+  title: PetStore
+paths:
+  /pets:
+    post:
+      tags:
+        - pet
+      summary: Add a new pet to the store
+      description:  Add a new pet to the store
+      operationId: addPet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        '201':
+          description: default response, returning the new pet id
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: Invalid input
+    get:
+      tags:
+        - pet
+      summary: Finds Pets by name
+      description: 'Find pets by name'
+      operationId: findPetsByName
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+          description: Tags to filter by
+          x-constraints: "@Capitalized(required = true)"
+      responses:
+        '200':
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid name value
+components:
+  schemas:
+    Pet:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          x-constraints: "@Capitalized(required = true)"

@@ -8,3 +8,4 @@
 - [Guide to Dynamic Tests in JUnit 5](https://www.baeldung.com/junit5-dynamic-tests)
 - [Determine the Execution Time of JUnit Tests](https://www.baeldung.com/junit-test-execution-time)
 - [@BeforeAll and @AfterAll in Non-Static Methods](https://www.baeldung.com/java-beforeall-afterall-non-static)
+- [The java.lang.NoClassDefFoundError in JUnit](https://www.baeldung.com/junit-noclassdeffounderror)

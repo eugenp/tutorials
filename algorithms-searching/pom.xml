@@ -13,15 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>algorithms-searching</finalName>
         <resources>
@@ -31,9 +22,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <org.assertj.core.version>3.9.0</org.assertj.core.version>
-    </properties>
 
 </project>

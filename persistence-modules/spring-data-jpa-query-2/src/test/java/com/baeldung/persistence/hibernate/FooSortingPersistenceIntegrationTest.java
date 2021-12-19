@@ -15,6 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -28,6 +30,8 @@ import com.baeldung.spring.config.PersistenceTestConfig;
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 @SuppressWarnings("unchecked")
 public class FooSortingPersistenceIntegrationTest {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooSortingPersistenceIntegrationTest.class);
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -56,7 +60,7 @@ public class FooSortingPersistenceIntegrationTest {
         final Query query = session.createQuery(hql);
         final List<Foo> fooList = query.list();
         for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+            LOGGER.debug("Name: {} , Id: {}", foo.getName(), foo.getId());
         }
     }
 
@@ -68,7 +72,7 @@ public class FooSortingPersistenceIntegrationTest {
 
         assertNull(fooList.get(fooList.toArray().length - 1).getName());
         for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+            LOGGER.debug("Name: {}, Id: {}", foo.getName(), foo.getId());
         }
     }
 
@@ -79,7 +83,7 @@ public class FooSortingPersistenceIntegrationTest {
         final List<Foo> fooList = query.list();
         assertNull(fooList.get(0).getName());
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
+            LOGGER.debug("Name: {}", foo.getName());
 
         }
     }
@@ -90,7 +94,7 @@ public class FooSortingPersistenceIntegrationTest {
         final Query query = session.createQuery(hql);
         final List<Foo> fooList = query.list();
         for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+            LOGGER.debug("Name: {}, Id: {}", foo.getName(), foo.getId());
         }
     }
 
@@ -100,7 +104,7 @@ public class FooSortingPersistenceIntegrationTest {
         final Query query = session.createQuery(hql);
         final List<Foo> fooList = query.list();
         for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+            LOGGER.debug("Name: {}, Id: {}", foo.getName(), foo.getId());
         }
     }
 
@@ -110,7 +114,7 @@ public class FooSortingPersistenceIntegrationTest {
         final Query query = session.createQuery(hql);
         final List<Foo> fooList = query.list();
         for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+            LOGGER.debug("Name: {}, Id: {}", foo.getName(), foo.getId());
         }
     }
 
@@ -120,7 +124,7 @@ public class FooSortingPersistenceIntegrationTest {
         criteria.addOrder(Order.asc("id"));
         final List<Foo> fooList = criteria.list();
         for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+            LOGGER.debug("Id: {}, FirstName: {}", foo.getId(), foo.getName());
         }
     }
 
@@ -131,7 +135,7 @@ public class FooSortingPersistenceIntegrationTest {
         criteria.addOrder(Order.asc("id"));
         final List<Foo> fooList = criteria.list();
         for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+            LOGGER.debug("Id: {}, FirstName: {}", foo.getId(), foo.getName());
         }
     }
 
@@ -142,7 +146,7 @@ public class FooSortingPersistenceIntegrationTest {
         final List<Foo> fooList = criteria.list();
         assertNull(fooList.get(fooList.toArray().length - 1).getName());
         for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+            LOGGER.debug("Id: {}, FirstName: {}", foo.getId(), foo.getName());
         }
     }
 
@@ -153,7 +157,7 @@ public class FooSortingPersistenceIntegrationTest {
         final List<Foo> fooList = criteria.list();
         assertNull(fooList.get(0).getName());
         for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+            LOGGER.debug("Id: {}, FirstName: {}", foo.getId(), foo.getName());
         }
     }
 
@@ -164,9 +168,9 @@ public class FooSortingPersistenceIntegrationTest {
         final List<Bar> barList = query.list();
         for (final Bar bar : barList) {
             final Set<Foo> fooSet = bar.getFooSet();
-            System.out.println("Bar Id:" + bar.getId());
+            LOGGER.debug("Bar Id:{}", bar.getId());
             for (final Foo foo : fooSet) {
-                System.out.println("FooName:" + foo.getName());
+                LOGGER.debug("FooName:{}", foo.getName());
             }
         }
     }

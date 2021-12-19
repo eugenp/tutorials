@@ -12,26 +12,13 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -73,8 +60,6 @@
     </dependencies>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
-        <!-- instrumentation -->
         <javaassist.version>3.27.0-GA</javaassist.version>
         <sun.tools.version>1.8.0</sun.tools.version>
         <jol-core.version>0.10</jol-core.version>

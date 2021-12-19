@@ -12,7 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -26,13 +25,6 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -42,11 +34,8 @@
     </dependencies>
 
     <properties>
-        <!-- util -->
         <bouncycastle.version>1.60</bouncycastle.version>
         <commons-codec.version>1.11</commons-codec.version>
-        <!-- testing -->
-        <assertj-core.version>3.18.0</assertj-core.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
