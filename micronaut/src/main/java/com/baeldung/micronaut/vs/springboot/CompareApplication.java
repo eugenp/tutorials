@@ -4,6 +4,6 @@ import io.micronaut.runtime.Micronaut;
 
 public class CompareApplication {
     public static void main(String[] args) {
-    	Micronaut.run(CompareApplication.class);
+        Micronaut.run(CompareApplication.class);
     }
 }
