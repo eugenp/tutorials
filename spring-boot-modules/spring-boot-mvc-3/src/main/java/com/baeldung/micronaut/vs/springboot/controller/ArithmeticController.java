@@ -42,7 +42,8 @@ public class ArithmeticController {
     	MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
     	String memoryStats = "";
     	
-    	String init = String.format("Initial: %.2f GB \n", 
+        String init = String.format(
+            "Initial: %.2f GB \n", 
     	    (double)memoryBean.getHeapMemoryUsage().getInit() /1073741824);
     	String usedHeap = String.format("Used: %.2f GB \n", 
             (double)memoryBean.getHeapMemoryUsage().getUsed() /1073741824);
