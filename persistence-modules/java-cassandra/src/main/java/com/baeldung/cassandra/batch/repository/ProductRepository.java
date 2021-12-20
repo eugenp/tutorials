@@ -6,6 +6,7 @@ import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.DefaultBatchType;
 import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.BatchStatement;
+import com.datastax.oss.driver.api.core.cql.BoundStatement;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.datastax.oss.driver.api.core.cql.SimpleStatement;
 import com.datastax.oss.driver.api.core.type.DataTypes;
@@ -68,33 +69,12 @@ public class ProductRepository {
 	 * @param Product
 	 */
     public void insertProductVariantBatch(Product productVariant1,Product productVariant2) {
-        String insertQuery1 = new StringBuilder("").append("INSERT INTO ").append(PRODUCT_TABLE_NAME)
-                .append("(product_id,variant_id,product_name,description,price) ").append("VALUES (").append(":product_id")
-                .append(", ").append(":variant_id").append(", ").append(":product_name").append(", ")
-                .append(":description").append(", ").append(":price").append(");").toString();
-
-        String insertQuery2 = new StringBuilder("").append("INSERT INTO ").append(PRODUCT_TABLE_NAME)
-                .append("(product_id,variant_id,product_name,description,price) ").append("VALUES (").append(":product_id")
-                .append(", ").append(":variant_id").append(", ").append(":product_name")
-                .append(", ").append(":description").append(", ").append(":price").append(");").toString();
-
-        PreparedStatement preparedInsert1 = session.prepare(insertQuery1);
-        PreparedStatement preparedInsert2 = session.prepare(insertQuery2);
+    	UUID productId = UUID.randomUUID();
+        BoundStatement productBoundStatement1 = this.getProductVariantInsertStatement(productVariant1,productId);
+        BoundStatement productBoundStatement2 = this.getProductVariantInsertStatement(productVariant2,productId);
         
-        UUID productId = UUID.randomUUID();
-		
-        UUID productVariantId1 = UUID.randomUUID();
-        UUID productVariantId2 = UUID.randomUUID();
-
         BatchStatement batch = BatchStatement.newInstance(DefaultBatchType.UNLOGGED,
-                preparedInsert1.bind(productId, productVariantId1,
-                        productVariant1.getProductName(), 
-				        productVariant1.getDescription(),
-                        productVariant1.getPrice()),
-                preparedInsert2.bind(productId, productVariantId2, 
-                		productVariant1.getProductName(),
-                        productVariant2.getDescription(),
-                        productVariant2.getPrice()));
+        		productBoundStatement1,productBoundStatement2);
 
         session.execute(batch);
      }
@@ -106,26 +86,13 @@ public class ProductRepository {
 	 * @param book
 	 */
      public void insertProductBatch(Product product) {
-        String cqlQuery1 = new StringBuilder("").append("INSERT INTO ").append(PRODUCT_BY_ID_TABLE_NAME)
-                .append("(product_id,product_name,description,price) ").append("VALUES (").append(":product_id")
-                .append(", ").append(":product_name").append(", ").append(":descriptioj").append(", ")
-                .append(":price").append(");").toString();
-
-        String cqlQuery2 = new StringBuilder("").append("INSERT INTO ").append(PRODUCT_BY_NAME_TABLE_NAME)
-                .append("(product_name,product_id,description,price) ").append("VALUES (").append(":product_name")
-                .append(", ").append(":product_id").append(", ").append(":descriptioj").append(", ")
-                .append(":price").append(");").toString();
-
-        PreparedStatement preparedInsert1 = session.prepare(cqlQuery1);
-        PreparedStatement preparedInsert2 = session.prepare(cqlQuery2);
-		
         UUID productId = UUID.randomUUID();
+        
+        BoundStatement productBoundStatement1 = this.getProductInsertStatement(product,productId,PRODUCT_BY_ID_TABLE_NAME);
+        BoundStatement productBoundStatement2 = this.getProductInsertStatement(product,productId,PRODUCT_BY_NAME_TABLE_NAME);
 
         BatchStatement batch = BatchStatement.newInstance(DefaultBatchType.LOGGED,
-                preparedInsert1.bind(productId, product.getProductName(), product.getDescription(),
-                        product.getPrice()),
-                preparedInsert2.bind(product.getProductName(), productId, product.getDescription(),
-                        product.getPrice()));
+        		productBoundStatement1,productBoundStatement2);
 
         session.execute(batch);
     }
@@ -188,4 +155,34 @@ public class ProductRepository {
 
         return session.execute(statement);
     }
+
+    private BoundStatement getProductVariantInsertStatement(Product product,UUID productId) {
+        String insertQuery = new StringBuilder("").append("INSERT INTO ").append(PRODUCT_TABLE_NAME)
+                .append("(product_id,variant_id,product_name,description,price) ").append("VALUES (").append(":product_id")
+                .append(", ").append(":variant_id").append(", ").append(":product_name").append(", ")
+                .append(":description").append(", ").append(":price").append(");").toString();
+
+        PreparedStatement preparedStatement = session.prepare(insertQuery);
+        
+        return preparedStatement.bind(productId, UUID.randomUUID(),
+        		product.getProductName(), 
+        		product.getDescription(),
+        		product.getPrice());
+    }
+    
+    private BoundStatement getProductInsertStatement(Product product,UUID productId,String productTableName) {
+    	String cqlQuery1 = new StringBuilder("").append("INSERT INTO ").append(productTableName)
+                .append("(product_id,product_name,description,price) ").append("VALUES (").append(":product_id")
+                .append(", ").append(":product_name").append(", ").append(":description").append(", ")
+                .append(":price").append(");").toString();
+
+        PreparedStatement preparedStatement = session.prepare(cqlQuery1);
+        
+        return preparedStatement.bind(productId, 
+        		product.getProductName(), 
+        		product.getDescription(),
+        		product.getPrice());
+    }
+    
+ 
 }
