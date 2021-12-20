@@ -1,3 +1,3 @@
 ### Relevant Articles:
 
-- How to Get Docker-Compose to Always Use the Latest Image
+- How to Include Files Outside of Docker’s Build Context
