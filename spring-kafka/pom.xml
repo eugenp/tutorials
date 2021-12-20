@@ -70,6 +70,7 @@
         <spring-kafka.version>2.7.8</spring-kafka.version>
         <kafka.streams.version>2.7.1</kafka.streams.version>
         <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
+        <spring-boot.version>2.5.4</spring-boot.version>
     </properties>
 
 </project>

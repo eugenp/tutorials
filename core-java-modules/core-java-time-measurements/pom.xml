@@ -44,12 +44,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito-inline.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
             <version>${jmockit.version}</version>
@@ -85,7 +79,7 @@
         <lombok.version>1.18.22</lombok.version>
         <asspectj.version>1.8.9</asspectj.version>
         <jmockit.version>1.44</jmockit.version>
-        <mockito-inline.version>4.0.0</mockito-inline.version>
+        <mockito-inline.version>4.1.0</mockito-inline.version>
     </properties>
 
 </project>

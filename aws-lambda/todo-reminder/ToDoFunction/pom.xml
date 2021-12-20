@@ -111,7 +111,7 @@
         <feign-core.version>11.2</feign-core.version>
         <guice.version>5.0.1</guice.version>
         <system-stubs-junit4.version>1.2.0</system-stubs-junit4.version>
-        <mockito-core.version>3.3.0</mockito-core.version>
+        <mockito-core.version>4.1.0</mockito-core.version>
         <assertj-core.version>3.19.0</assertj-core.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>

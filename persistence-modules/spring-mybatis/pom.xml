@@ -78,11 +78,11 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.3.8</org.springframework.version>
+        <org.springframework.version>5.3.13</org.springframework.version>
         <!-- persistence -->
-        <spring-mybatis.version>2.0.2</spring-mybatis.version>
+        <spring-mybatis.version>2.0.6</spring-mybatis.version>
         <mybatis.version>3.5.2</mybatis.version>
-        <mybatis-spring-boot-starter.version>2.1.0</mybatis-spring-boot-starter.version>
+        <mybatis-spring-boot-starter.version>2.2.0</mybatis-spring-boot-starter.version>
         <h2.version>1.4.197</h2.version>
     </properties>
 

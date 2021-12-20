@@ -94,7 +94,7 @@
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-standalone</artifactId>
-            <version>2.26.0</version>
+            <version>${wiremock-standalone.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -110,13 +110,13 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>2.23.0</version>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>3.2.10.RELEASE</version>
+            <version>${reactor-test.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -192,5 +192,7 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <jetty-reactive-httpclient.version>1.1.6</jetty-reactive-httpclient.version>
         <okhttp.version>4.0.1</okhttp.version>
+        <reactor-test.version>3.2.10.RELEASE</reactor-test.version>
+        <wiremock-standalone.version>2.26.0</wiremock-standalone.version>
     </properties>
 </project>
