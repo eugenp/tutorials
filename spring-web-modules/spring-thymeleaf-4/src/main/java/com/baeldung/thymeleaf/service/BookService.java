@@ -1,16 +1,15 @@
 package com.baeldung.thymeleaf.service;
 
-import java.util.Collections;
-import java.util.List;
-
+import com.baeldung.thymeleaf.model.Book;
+import com.baeldung.thymeleaf.utils.BookUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.thymeleaf.model.Book;
-import com.baeldung.thymeleaf.utils.BookUtils;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class BookService {
