@@ -5,17 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung.docker</groupId>
-    <artifactId>docker</artifactId>
+    <artifactId>docker-sample-ecomm-app</artifactId>
     <version>0.0.1</version>
-    <name>docker</name>
+    <name>docker-sample-ecomm-app</name>
     <description>Demo project showing Spring Boot and Docker</description>
     <packaging>pom</packaging>
     
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <groupId>com.baeldung.docker</groupId>
+        <artifactId>docker</artifactId>
+        <version>0.0.1</version>
     </parent>
 
     <properties>
@@ -23,10 +22,8 @@
     </properties>
 
     <modules>
-        <module>docker-internal-dto</module>
-        <module>docker-spring-boot</module>
-        <module>docker-sample-app</module>
-	<module>docker-sample-ecomm-app</module>
+        <module>order-service</module>
+        <module>payment-service</module>
     </modules>
 
 </project>
