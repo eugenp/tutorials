@@ -41,6 +41,7 @@ public class CoffeeOrderCLI {
     }
 
     public static void main(String[] args) {
+        System.out.println("Please place your order");
         CoffeeOrderCLI cli = new CoffeeOrderCLI(new CoffeeOrderService(new VirtualOrderRepositoryAdapter()));
         Scanner cliInput = new Scanner(System.in);
         String input;
