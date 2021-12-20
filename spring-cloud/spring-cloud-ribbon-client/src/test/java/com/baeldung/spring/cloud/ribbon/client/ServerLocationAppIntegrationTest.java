@@ -1,6 +1,5 @@
 package com.baeldung.spring.cloud.ribbon.client;
 
-import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
@@ -13,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -43,7 +41,7 @@ public class ServerLocationAppIntegrationTest {
     private TestRestTemplate testRestTemplate;
 
     @Test
-    public void loadBalancingServersTest() throws InterruptedException {
+    public void loadBalancingServersTest() {
         ResponseEntity<String> response = this.testRestTemplate.getForEntity("http://localhost:" + this.port + "/server-location", String.class);
         assertEquals(response.getBody(), "Australia");
     }
