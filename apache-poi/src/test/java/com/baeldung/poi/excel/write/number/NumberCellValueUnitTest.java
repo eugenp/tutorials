@@ -90,7 +90,7 @@ public class NumberCellValueUnitTest {
             Row row = sheet.createRow(0);
             Cell cell = row.createCell(0);
             DecimalFormat df = new DecimalFormat("#,###.##");
-            ExcelNumericFormat.applyNumbericFormat(outWorkbook, row, cell, Double.valueOf(df.format(10.251)), "#,###.##");
+            ExcelNumericFormat.applyNumericFormat(outWorkbook, row, cell, Double.valueOf(df.format(10.251)), "#,###.##");
 
             FileOutputStream fileOut = new FileOutputStream(file);
             outWorkbook.write(fileOut);
