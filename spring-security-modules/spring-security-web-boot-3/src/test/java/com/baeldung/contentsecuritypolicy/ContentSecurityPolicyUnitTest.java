@@ -41,7 +41,6 @@ class ContentSecurityPolicyUnitTest {
 		  .andReturn();
 		// @formatter:off
 		assertEquals(HttpStatus.NOT_FOUND.value(), result.getResponse().getStatus());
-
 	}
 	@Test
 	@DisplayName("Test to Check Page rendering")
@@ -76,5 +75,4 @@ class ContentSecurityPolicyUnitTest {
 		assertTrue(headers.contains("Report-To"));
 		assertTrue(headers.contains("Content-Security-Policy"));
 	}
-
 }
