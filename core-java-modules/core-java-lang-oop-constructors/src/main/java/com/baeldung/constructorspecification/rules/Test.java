@@ -5,7 +5,8 @@ package com.baeldung.constructorspecification.rules;
  */
 
 class Test {
-    public Test(){
+
+    public Test() {
         Test t = new Test();
     }
 

@@ -5,10 +5,13 @@ package com.baeldung.constructorspecification.rules;
  */
 
 class Employee extends Person {
+
     int id;
+
     public Employee() {
         super();
     }
+
     public Employee(String name) {
         super(name);
     }
