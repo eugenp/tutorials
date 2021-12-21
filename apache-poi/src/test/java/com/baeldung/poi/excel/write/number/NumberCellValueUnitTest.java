@@ -26,7 +26,7 @@ public class NumberCellValueUnitTest {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
             Row row = sheet.createRow(0);
             Cell cell = row.createCell(0);
-            ExcelNumericFormat.applyNumbericFormat(outWorkbook, row, cell, 10.251, "0.00");
+            ExcelNumericFormat.applyNumericFormat(outWorkbook, row, cell, 10.251, "0.00");
             FileOutputStream fileOut = new FileOutputStream(file);
             outWorkbook.write(fileOut);
             fileOut.close();
@@ -47,7 +47,7 @@ public class NumberCellValueUnitTest {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
             Row row = sheet.createRow(0);
             Cell cell = row.createCell(0);
-            ExcelNumericFormat.applyNumbericFormat(outWorkbook, row, cell, 10.251123, "#,##0.0000");
+            ExcelNumericFormat.applyNumericFormat(outWorkbook, row, cell, 10.251123, "#,##0.0000");
             FileOutputStream fileOut = new FileOutputStream(file);
             outWorkbook.write(fileOut);
             fileOut.close();
@@ -68,7 +68,7 @@ public class NumberCellValueUnitTest {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
             Row row = sheet.createRow(0);
             Cell cell = row.createCell(0);
-            ExcelNumericFormat.applyNumbericFormat(outWorkbook, row, cell, 10.251, "0.00");
+            ExcelNumericFormat.applyNumericFormat(outWorkbook, row, cell, 10.251, "0.00");
             FileOutputStream fileOut = new FileOutputStream(file);
             outWorkbook.write(fileOut);
             fileOut.close();

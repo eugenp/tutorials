@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 public class ExcelNumericFormat {
 
-    public static void applyNumbericFormat(Workbook outWorkbook, Row row, Cell cell, Double value, String styleFormat) {
+    public static void applyNumericFormat(Workbook outWorkbook, Row row, Cell cell, Double value, String styleFormat) {
         CellStyle style = outWorkbook.createCellStyle();
         DataFormat format = outWorkbook.createDataFormat();
         style.setDataFormat(format.getFormat(styleFormat));
