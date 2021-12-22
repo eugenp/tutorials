@@ -1,12 +1,12 @@
 package com.baeldung.methodinjections;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Component("schoolNotification")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -19,7 +19,7 @@ public class SchoolNotification {
 
     public SchoolNotification(String name) {
         this.name = name;
-        this.marks = new ArrayList<Integer>();
+        this.marks = new ArrayList<>();
     }
 
     public String addMark(Integer mark) {
