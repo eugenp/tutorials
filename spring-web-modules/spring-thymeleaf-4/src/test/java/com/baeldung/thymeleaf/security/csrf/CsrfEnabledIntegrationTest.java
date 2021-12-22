@@ -22,8 +22,8 @@ import javax.servlet.Filter;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -50,18 +50,13 @@ public class CsrfEnabledIntegrationTest {
     }
 
     @Test
-    public void htmlInliningTest() throws Exception {
-        mockMvc.perform(get("/html").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("inliningExample.html"));
+    public void addStudentWithoutCSRF() throws Exception {
+        mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser())).andExpect(status().isForbidden());
     }
 
     @Test
-    public void jsInliningTest() throws Exception {
-        mockMvc.perform(get("/js").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("studentCheck.js"));
-    }
-
-    @Test
-    public void plainInliningTest() throws Exception {
-        mockMvc.perform(get("/plain").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("studentsList.txt"));
+    public void addStudentWithCSRF() throws Exception {
+        mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser()).with(csrf())).andExpect(status().isOk());
     }
 
 }
