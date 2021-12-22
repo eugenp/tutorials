@@ -4,7 +4,6 @@ This module contains articles about Spring with Thymeleaf
 
 ### Relevant Articles: 
 - [Introduction to Using Thymeleaf in Spring](https://www.baeldung.com/thymeleaf-in-spring-mvc)
-- [CSRF Protection with Spring MVC and Thymeleaf](https://www.baeldung.com/csrf-thymeleaf-with-spring-security)
 - [Thymeleaf: Custom Layout Dialect](https://www.baeldung.com/thymeleaf-spring-layouts)
 - [Spring and Thymeleaf 3: Expressions](https://www.baeldung.com/spring-thymeleaf-3-expressions)
 - [Spring MVC + Thymeleaf 3.0: New Features](https://www.baeldung.com/spring-thymeleaf-3)
