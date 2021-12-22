@@ -1,7 +1,8 @@
 package com.baeldung.constructordi.domain;
 
 public class Transmission {
-	private String type;
+
+	private final String type;
 
 	public Transmission(String type) {
 		this.type = type;

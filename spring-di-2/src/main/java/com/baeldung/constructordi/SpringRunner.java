@@ -1,10 +1,9 @@
 package com.baeldung.constructordi;
 
+import com.baeldung.constructordi.domain.Car;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.baeldung.constructordi.domain.Car;
 
 public class SpringRunner {
     public static void main(String[] args) {
