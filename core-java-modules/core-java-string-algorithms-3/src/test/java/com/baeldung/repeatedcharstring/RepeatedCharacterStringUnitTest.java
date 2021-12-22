@@ -61,15 +61,6 @@ public class RepeatedCharacterStringUnitTest {
     }
 
     @Test
-    public void givenString_whenRepeatUsed_thenStringCreated() {
-        String exampleString = "aaaaaaa";
-        int length = 7;
-        String charToAppend = "a";
-        String newString = charToAppend.repeat(length);
-        Assertions.assertEquals(exampleString, newString);
-    }
-
-    @Test
     public void givenString_whenGuavaRepeatUsed_thenStringCreated() {
         String exampleString = "aaaaaaa";
         int length = 7;
