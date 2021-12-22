@@ -112,7 +112,7 @@ public class RepeatedCharacterStringUnitTest {
         String exampleString = "aaaaaaa";
         int length = 7;
         String charToAppend = "a";
-        String newString = Joiner.on(EMPTY_STRING).join(Collections.nCopies(length, charToAppend)));
+        String newString = Joiner.on(EMPTY_STRING).join(Collections.nCopies(length, charToAppend));
         Assertions.assertEquals(exampleString, newString);
     }
 
