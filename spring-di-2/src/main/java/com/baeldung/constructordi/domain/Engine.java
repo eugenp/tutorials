@@ -1,8 +1,9 @@
 package com.baeldung.constructordi.domain;
 
 public class Engine {
-    private String type;
-    private int volume;
+
+    private final String type;
+    private final int volume;
 
     public Engine(String type, int volume) {
         this.type = type;
