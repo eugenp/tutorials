@@ -32,7 +32,7 @@
                 <version>3.8.1</version>
                 <configuration>
                     <compilerArgs>
-                        <!-- Comment this to print stack trace information -->
+<!--                         Comment the arg below to print complete stack trace information -->
 <!--                        <arg>-g:none</arg>-->
                     </compilerArgs>
                 </configuration>
