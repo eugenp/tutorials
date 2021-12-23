@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Car {
-    private Engine engine;
-    private Transmission transmission;
+
+    private final Engine engine;
+    private final Transmission transmission;
 
     @Autowired
     public Car(Engine engine, Transmission transmission) {

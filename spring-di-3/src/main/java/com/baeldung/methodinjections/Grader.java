@@ -1,8 +1,8 @@
 package com.baeldung.methodinjections;
 
-import java.util.Collection;
-
 import org.springframework.stereotype.Component;
+
+import java.util.Collection;
 
 @Component
 public class Grader {
