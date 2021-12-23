@@ -11,15 +11,16 @@ public class ContentSecurityPolicySecurityConfiguration extends WebSecurityConfi
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //@formatter:off
-        http
-          .csrf().disable()
+        http.csrf()
+          .disable()
           .authorizeRequests()
-          .antMatchers("/**").permitAll().and()
-          .headers().addHeaderWriter(new StaticHeadersWriter("Report-To", REPORT_TO))
+          .antMatchers("/**")
+          .permitAll()
+          .and()
+          .headers()
+          .addHeaderWriter(new StaticHeadersWriter("Report-To", REPORT_TO))
           .xssProtection()
           .and()
           .contentSecurityPolicy("form-action 'self'; report-uri /report; report-to csp-violation-report");
-        //@formatter:on
     }
 }

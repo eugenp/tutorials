@@ -28,7 +28,6 @@
             <artifactId>commons-io</artifactId>
             <version>2.11.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
@@ -43,7 +42,6 @@
             <artifactId>jquery</artifactId>
             <version>3.6.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
