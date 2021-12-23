@@ -1,7 +1,7 @@
-package com.baeldung.like;
+package com.baeldung.spring.data.persistence.like;
 
-import com.baeldung.like.model.Movie;
-import com.baeldung.like.repository.MovieRepository;
+import com.baeldung.spring.data.persistence.like.model.Movie;
+import com.baeldung.spring.data.persistence.like.repository.MovieRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -22,11 +23,14 @@ public class MovieRepositoryIntegrationTest {
     @Autowired
     private MovieRepository movieRepository;
 
+    @Autowired
+    private DataSource dataSource;
+
     @Test
     public void givenPartialTitle_WhenFindByTitleContaining_ThenMoviesShouldReturn() {
         List<Movie> results = movieRepository.findByTitleContaining("in");
         assertEquals(3, results.size());
-        
+
         results = movieRepository.findByTitleLike("%in%");
         assertEquals(3, results.size());
 
@@ -60,25 +64,25 @@ public class MovieRepositoryIntegrationTest {
         List<Movie> results = movieRepository.searchByTitleLike("in");
         assertEquals(3, results.size());
     }
-    
+
     @Test
     public void givenStartOfRating_SearchFindByRatingStartsWith_ThenMoviesShouldReturn() {
         List<Movie> results = movieRepository.searchByRatingStartsWith("PG");
         assertEquals(6, results.size());
     }
-    
+
     @Test
     public void givenLastName_WhenSearchByDirectorEndsWith_ThenMoviesShouldReturn() {
         List<Movie> results = movieRepository.searchByDirectorEndsWith("Burton");
         assertEquals(1, results.size());
     }
-    
+
     @Test
     public void givenPartialRating_findByRatingNotContaining_ThenMoviesShouldReturn() {
         List<Movie> results = movieRepository.findByRatingNotContaining("PG");
         assertEquals(1, results.size());
     }
-    
+
     @Test
     public void givenPartialDirector_WhenFindByDirectorNotLike_ThenMoviesShouldReturn() {
         List<Movie> results = movieRepository.findByDirectorNotLike("An%");
