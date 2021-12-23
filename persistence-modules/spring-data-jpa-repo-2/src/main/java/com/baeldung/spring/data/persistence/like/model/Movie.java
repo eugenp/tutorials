@@ -1,4 +1,4 @@
-package com.baeldung.like.model;
+package com.baeldung.spring.data.persistence.like.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
