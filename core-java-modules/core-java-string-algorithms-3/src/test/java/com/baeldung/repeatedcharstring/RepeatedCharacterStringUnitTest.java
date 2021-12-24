@@ -24,7 +24,7 @@ class RepeatedCharacterStringUnitTest {
     private static final int N = 7;
     
     @Test
-    void givenString_whenStringBufferUsed_thenStringCreated() {
+    void givenString_whenStringBuilderUsed_thenStringCreated() {
         char charToAppend = 'a';
         StringBuilder outputBuilder = new StringBuilder(N);
         outputBuilder.append(String.valueOf(charToAppend).repeat(N));
