@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PriceCalculatorTest {
+class PriceCalculatorUnitTest {
 
     PriceCalculator priceCalculator = new PriceCalculator();
 
