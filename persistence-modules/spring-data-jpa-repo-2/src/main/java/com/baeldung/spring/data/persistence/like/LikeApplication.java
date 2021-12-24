@@ -1,4 +1,4 @@
-package com.baeldung.like;
+package com.baeldung.spring.data.persistence.like;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
