@@ -18,41 +18,41 @@ import static java.util.stream.Stream.generate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class RepeatedCharacterStringUnitTest {
+class RepeatedCharacterStringUnitTest {
 
     private static final String EXPECTED_STRING = "aaaaaaa";
     private static final int N = 7;
     
     @Test
-    public void givenString_whenStringRepeatUsed_thenStringCreated() {
+    void givenString_whenStringRepeatUsed_thenStringCreated() {
         char charToAppend = 'a';
         String newString = String.valueOf(charToAppend).repeat(N);
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenCharBufferUsed_thenStringCreated() {
+    void givenString_whenCharBufferUsed_thenStringCreated() {
         char charToAppend = 'a';
         String newString = CharBuffer.allocate(N).toString().replace('\0', charToAppend);
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenApacheStringUtilsUsed_thenStringCreated() {
+    void givenString_whenApacheStringUtilsUsed_thenStringCreated() {
         char charToAppend = 'a';
         String newString = StringUtils.repeat(charToAppend, N);
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenGuavaRepeatUsed_thenStringCreated() {
+    void givenString_whenGuavaRepeatUsed_thenStringCreated() {
         String charToAppend = "a";
         String newString = Strings.repeat(charToAppend, N);
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenArraysFillUsed_thenStringCreated() {
+    void givenString_whenArraysFillUsed_thenStringCreated() {
         char charToAppend = 'a';
         char[] charArray = new char[N];
         Arrays.fill(charArray, charToAppend);
@@ -61,28 +61,28 @@ public class RepeatedCharacterStringUnitTest {
     }
 
     @Test
-    public void givenString_whenGenerateAndJoiningUsed_thenStringCreated() {
+    void givenString_whenGenerateAndJoiningUsed_thenStringCreated() {
         String charToAppend = "a";
         String newString = generate(() -> charToAppend).limit(N).collect(Collectors.joining());
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenStringJoinUsed_thenStringCreated() {
+    void givenString_whenStringJoinUsed_thenStringCreated() {
         String charToAppend = "a";
         String newString = String.join(EMPTY_STRING, Collections.nCopies(N, charToAppend));
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenGuavaJoinerUsed_thenStringCreated() {
+    void givenString_whenGuavaJoinerUsed_thenStringCreated() {
         String charToAppend = "a";
         String newString = Joiner.on(EMPTY_STRING).join(Collections.nCopies(N, charToAppend));
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
-    public void givenString_whenRandomStringUtilsUsed_thenStringCreated() {
+    void givenString_whenRandomStringUtilsUsed_thenStringCreated() {
         String charToAppend = "a";
         String newString = RandomStringUtils.random(N, charToAppend);
         assertEquals(EXPECTED_STRING, newString);
