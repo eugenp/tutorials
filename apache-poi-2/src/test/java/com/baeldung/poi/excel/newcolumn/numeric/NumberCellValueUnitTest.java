@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 public class NumberCellValueUnitTest {
 
     @Test
-    public void decimalDisplay_whenAddedInteger_thenNumericCellCreated() throws IOException {
+    public void decimalDisplay_whenAddedDouble_thenNumericCellCreated() throws IOException {
         File file = new File("number_test.xlsx");
         try (Workbook outWorkbook = new XSSFWorkbook()) {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
@@ -39,7 +39,7 @@ public class NumberCellValueUnitTest {
     }
 
     @Test
-    public void desimalRoundedDisplay_whenAddedDuble_thenNumericCellCreated() throws IOException {
+    public void decimalRoundedDisplay_whenAddedDouble_thenNumericCellCreated() throws IOException {
         File file = new File("number_test.xlsx");
         try (Workbook outWorkbook = new XSSFWorkbook()) {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
@@ -60,7 +60,7 @@ public class NumberCellValueUnitTest {
     }
 
     @Test
-    public void decimalDisplayInXLS_whenAddedInteger_thenNumericCellCreated() throws IOException {
+    public void decimalDisplayInXLS_whenAddedDouble_thenNumericCellCreated() throws IOException {
         File file = new File("number_test.xls");
         try (Workbook outWorkbook = new HSSFWorkbook()) {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
@@ -81,7 +81,7 @@ public class NumberCellValueUnitTest {
     }
 
     @Test
-    public void decimalValue_whenAddedInteger_thenNumericCellCreated() throws IOException {
+    public void decimalValue_whenAddedDouble_thenNumericCellCreated() throws IOException {
         File file = new File("number_test.xlsx");
         try (Workbook outWorkbook = new XSSFWorkbook()) {
             Sheet sheet = outWorkbook.createSheet("Numeric Sheet");
