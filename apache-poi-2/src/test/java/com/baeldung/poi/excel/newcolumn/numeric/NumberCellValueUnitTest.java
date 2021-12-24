@@ -1,10 +1,4 @@
-package com.baeldung.poi.excel.write.number;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.DecimalFormat;
+package com.baeldung.poi.excel.newcolumn.numeric;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -15,7 +9,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import com.baeldung.poi.excel.setnumberic.ExcelNumericFormat;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class NumberCellValueUnitTest {
 

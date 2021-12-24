@@ -1,4 +1,4 @@
-package com.baeldung.poi.excel.setnumberic;
+package com.baeldung.poi.excel.newcolumn.numeric;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
