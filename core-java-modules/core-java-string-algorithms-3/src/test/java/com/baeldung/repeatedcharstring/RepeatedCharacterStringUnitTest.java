@@ -20,72 +20,72 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RepeatedCharacterStringUnitTest {
 
-    private static final String EXAMPLE_STRING = "aaaaaaa";
-    private static final int LENGTH = 7;
+    private static final String EXPECTED_STRING = "aaaaaaa";
+    private static final int N = 7;
     
     @Test
     void givenString_whenStringBufferUsed_thenStringCreated() {
         char charToAppend = 'a';
-        StringBuilder outputBuilder = new StringBuilder(LENGTH);
-        outputBuilder.append(String.valueOf(charToAppend).repeat(LENGTH));
-        assertEquals(EXAMPLE_STRING, outputBuilder.toString());
+        StringBuilder outputBuilder = new StringBuilder(N);
+        outputBuilder.append(String.valueOf(charToAppend).repeat(N));
+        assertEquals(EXPECTED_STRING, outputBuilder.toString());
     }
 
     @Test
     void givenString_whenCharBufferUsed_thenStringCreated() {
         char charToAppend = 'a';
-        String newString = CharBuffer.allocate(LENGTH).toString().replace('\0', charToAppend);
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = CharBuffer.allocate(N).toString().replace('\0', charToAppend);
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenApacheStringUtilsUsed_thenStringCreated() {
         char charToAppend = 'a';
-        String newString = StringUtils.repeat(charToAppend, LENGTH);
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = StringUtils.repeat(charToAppend, N);
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenGuavaRepeatUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = Strings.repeat(charToAppend, LENGTH);
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = Strings.repeat(charToAppend, N);
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenArraysFillUsed_thenStringCreated() {
         char charToAppend = 'a';
-        char[] charArray = new char[LENGTH];
+        char[] charArray = new char[N];
         Arrays.fill(charArray, charToAppend);
         String newString = new String(charArray);
-        assertEquals(EXAMPLE_STRING, newString);
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenGenerateAndJoiningUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = generate(() -> charToAppend).limit(LENGTH).collect(Collectors.joining());
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = generate(() -> charToAppend).limit(N).collect(Collectors.joining());
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenStringJoinUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = String.join(EMPTY_STRING, Collections.nCopies(LENGTH, charToAppend));
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = String.join(EMPTY_STRING, Collections.nCopies(N, charToAppend));
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenGuavaJoinerUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = Joiner.on(EMPTY_STRING).join(Collections.nCopies(LENGTH, charToAppend));
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = Joiner.on(EMPTY_STRING).join(Collections.nCopies(N, charToAppend));
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenRandomStringUtilsUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = RandomStringUtils.random(LENGTH, charToAppend);
-        assertEquals(EXAMPLE_STRING, newString);
+        String newString = RandomStringUtils.random(N, charToAppend);
+        assertEquals(EXPECTED_STRING, newString);
     }
 }
