@@ -1,8 +1,14 @@
 package com.baeldung.persistence.model;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
+import com.google.common.collect.Sets;
+import org.hibernate.annotations.OrderBy;
+import org.hibernate.envers.Audited;
+import org.jboss.logging.Logger;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,17 +23,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
-
-import org.hibernate.annotations.OrderBy;
-import org.hibernate.envers.Audited;
-import org.jboss.logging.Logger;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.google.common.collect.Sets;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
 
 @Entity
 @NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
@@ -35,11 +33,11 @@ import com.google.common.collect.Sets;
 @EntityListeners(AuditingEntityListener.class)
 public class Bar implements Serializable {
 
-    private static Logger logger = Logger.getLogger(Bar.class);
+    private static final Logger LOGGER = Logger.getLogger(Bar.class);
 
     public enum OPERATION {
         INSERT, UPDATE, DELETE;
-        private String value;
+        private final String value;
 
         OPERATION() {
             value = toString();
@@ -70,7 +68,7 @@ public class Bar implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @OrderBy(clause = "NAME DESC")
+    @OrderBy(clause = "name DESC")
     // @NotAudited
     private Set<Foo> fooSet = Sets.newHashSet();
 
@@ -102,7 +100,6 @@ public class Bar implements Serializable {
 
     public Bar(final String name) {
         super();
-
         this.name = name;
     }
 
@@ -202,35 +199,31 @@ public class Bar implements Serializable {
             return false;
         final Bar other = (Bar) obj;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else
+            return name.equals(other.name);
     }
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Bar [name=").append(name).append("]");
-        return builder.toString();
+        return "Bar [name=" + name + "]";
     }
 
     @PrePersist
     public void onPrePersist() {
-        logger.info("@PrePersist");
+        LOGGER.info("@PrePersist");
         audit(OPERATION.INSERT);
     }
 
     @PreUpdate
     public void onPreUpdate() {
-        logger.info("@PreUpdate");
+        LOGGER.info("@PreUpdate");
         audit(OPERATION.UPDATE);
     }
 
     @PreRemove
     public void onPreRemove() {
-        logger.info("@PreRemove");
+        LOGGER.info("@PreRemove");
         audit(OPERATION.DELETE);
     }
 
