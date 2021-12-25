@@ -2,7 +2,6 @@ package com.baeldung.poi.excel.multilinetext;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Row;
 
 public class MultilineText {
     public void formatMultilineText(Cell cell, int cellNumber) {
