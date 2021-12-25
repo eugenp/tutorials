@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 
 public class MatcherUnitTest {
 
+    private static final String STRING_INPUT = "test+";
+    private static final String REGEX = "\\+";
+
     @Test
     public void whenFindFourDigitWorks_thenCorrect() {
         Pattern stringPattern = Pattern.compile("\\d\\d\\d\\d");
@@ -58,6 +61,18 @@ public class MatcherUnitTest {
         assertEquals(4, m.end());
 
         assertTrue(m.matches());// matches will always return the same return
+    }
+
+    @Test
+    public void whenUsingMatcher_thenReturnTrue() {
+        Pattern pattern = Pattern.compile(REGEX);
+        Matcher matcher = pattern.matcher(STRING_INPUT);
+        assertTrue(matcher.find());
+    }
+
+    @Test
+    public void whenUsingMatches_thenReturnFalse() {
+        assertFalse(Pattern.matches(REGEX, STRING_INPUT));
     }
 
 }

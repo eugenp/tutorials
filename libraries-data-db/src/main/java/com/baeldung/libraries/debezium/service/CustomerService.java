@@ -21,7 +21,7 @@ public class CustomerService {
         final ObjectMapper mapper = new ObjectMapper();
         final Customer customer = mapper.convertValue(customerData, Customer.class);
 
-        if (Operation.DELETE.name().equals(operation.name())) {
+        if (Operation.DELETE == operation) {
             customerRepository.deleteById(customer.getId());
         } else {
             customerRepository.save(customer);

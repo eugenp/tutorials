@@ -7,12 +7,11 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-8</name>
     <packaging>jar</packaging>
-    
+
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -32,13 +31,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -50,12 +42,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <!-- util -->
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
-    </properties>
 
 </project>

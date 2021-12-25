@@ -22,8 +22,6 @@ public class JMapperRelationalIntegrationTest {
         UserDto1 result1 = relationalMapper.oneToMany(UserDto1.class, user);
         UserDto2 result2= relationalMapper.oneToMany(UserDto2.class, user);
 
-        System.out.println(result1);
-        System.out.println(result2);
         assertEquals(user.getId(), result1.getId());
         assertEquals(user.getEmail(), result1.getUsername());  
         assertEquals(user.getId(), result2.getId());
@@ -40,8 +38,6 @@ public class JMapperRelationalIntegrationTest {
         UserDto1 result1 = relationalMapper.oneToMany(UserDto1.class, user);
         UserDto2 result2 = relationalMapper.oneToMany(UserDto2.class, user);
 
-        System.out.println(result1);
-        System.out.println(result2);
         assertEquals(user.getId(), result1.getId());
         assertEquals(user.getEmail(), result1.getUsername());
         assertEquals(user.getId(), result2.getId());
@@ -64,8 +60,6 @@ public class JMapperRelationalIntegrationTest {
         UserDto1 result1 = relationalMapper.oneToMany(UserDto1.class, user);
         UserDto2 result2 = relationalMapper.oneToMany(UserDto2.class, user);
 
-        System.out.println(result1);
-        System.out.println(result2);
         assertEquals(user.getId(), result1.getId());
         assertEquals(user.getEmail(), result1.getUsername());
         assertEquals(user.getId(), result2.getId());

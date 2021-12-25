@@ -45,12 +45,6 @@
             <artifactId>tradukisto</artifactId>
             <version>${tradukisto.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <reporting>
@@ -78,7 +72,6 @@
         <tradukisto.version>1.0.1</tradukisto.version>
         <org.jgrapht.core.version>1.0.1</org.jgrapht.core.version>
         <org.jgrapht.ext.version>1.0.1</org.jgrapht.ext.version>
-        <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
     </properties>

@@ -4,36 +4,26 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.SocketUtils;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class FindFreePortUnitTest {
 
-    private static int FREE_PORT_NUMBER;
-    private static int[] FREE_PORT_RANGE;
-
-    @BeforeAll
-    public static void getExplicitFreePortNumberAndRange() {
-        try (ServerSocket serverSocket = new ServerSocket(0)) {
-            FREE_PORT_NUMBER = serverSocket.getLocalPort();
-            FREE_PORT_RANGE = new int[] {FREE_PORT_NUMBER, FREE_PORT_NUMBER + 1, FREE_PORT_NUMBER + 2};
-        } catch (IOException e) {
-            fail("No free port is available");
-        }
-    }
+    private static final int DEFAULT_RANDOM_PORT = 34307;
 
     @Test
     public void givenExplicitFreePort_whenCreatingServerSocket_thenThatPortIsAssigned() {
-        try (ServerSocket serverSocket = new ServerSocket(FREE_PORT_NUMBER)) {
+        int freePort = getFreePort();
+
+        try (ServerSocket serverSocket = new ServerSocket(freePort)) {
             assertThat(serverSocket).isNotNull();
-            assertThat(serverSocket.getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
+            assertThat(serverSocket.getLocalPort()).isEqualTo(freePort);
         } catch (IOException e) {
             fail("Port is not available");
         }
@@ -41,8 +31,10 @@ public class FindFreePortUnitTest {
 
     @Test
     public void givenExplicitOccupiedPort_whenCreatingServerSocket_thenExceptionIsThrown() {
-        try (ServerSocket serverSocket = new ServerSocket(FREE_PORT_NUMBER)) {
-            new ServerSocket(FREE_PORT_NUMBER);
+        int freePort = getFreePort();
+
+        try (ServerSocket serverSocket = new ServerSocket(freePort)) {
+            new ServerSocket(freePort);
             fail("Same port cannot be used twice");
         } catch (IOException e) {
             assertThat(e).hasMessageContaining("Address already in use");
@@ -51,7 +43,7 @@ public class FindFreePortUnitTest {
 
     @Test
     public void givenExplicitPortRange_whenCreatingServerSocket_thenOnePortIsAssigned() {
-        for (int port : FREE_PORT_RANGE) {
+        for (int port : getFreePorts()) {
             try (ServerSocket serverSocket = new ServerSocket(port)) {
                 assertThat(serverSocket).isNotNull();
                 assertThat(serverSocket.getLocalPort()).isEqualTo(port);
@@ -104,11 +96,12 @@ public class FindFreePortUnitTest {
     public void givenExplicitFreePort_whenCreatingJettyServer_thenThatPortIsAssigned() throws Exception {
         Server jettyServer = new Server();
         ServerConnector serverConnector = new ServerConnector(jettyServer);
-        serverConnector.setPort(FREE_PORT_NUMBER);
+        int freePort = getFreePort();
+        serverConnector.setPort(freePort);
         jettyServer.addConnector(serverConnector);
         try {
             jettyServer.start();
-            assertThat(serverConnector.getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
+            assertThat(serverConnector.getLocalPort()).isEqualTo(freePort);
         } catch (Exception e) {
             fail("Failed to start Jetty server");
         } finally {
@@ -135,10 +128,11 @@ public class FindFreePortUnitTest {
     @Test
     public void givenExplicitFreePort_whenCreatingTomcatServer_thenThatPortIsAssigned() throws Exception {
         Tomcat tomcatServer = new Tomcat();
-        tomcatServer.setPort(FREE_PORT_NUMBER);
+        int freePort = getFreePort();
+        tomcatServer.setPort(freePort);
         try {
             tomcatServer.start();
-            assertThat(tomcatServer.getConnector().getLocalPort()).isEqualTo(FREE_PORT_NUMBER);
+            assertThat(tomcatServer.getConnector().getLocalPort()).isEqualTo(freePort);
         } catch (LifecycleException e) {
             fail("Failed to start Tomcat server");
         } finally {
@@ -147,4 +141,16 @@ public class FindFreePortUnitTest {
         }
     }
 
+    private int[] getFreePorts() {
+        int freePort = getFreePort();
+        return new int[]{freePort - 1, freePort, freePort + 1};
+    }
+
+    private int getFreePort() {
+        try(ServerSocket serverSocket = new ServerSocket(0)){
+            return serverSocket.getLocalPort();
+        } catch (IOException ex){
+            return DEFAULT_RANDOM_PORT;
+        }
+    }
 }

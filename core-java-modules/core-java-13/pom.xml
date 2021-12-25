@@ -14,17 +14,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
@@ -53,7 +43,6 @@
     <properties>
         <maven.compiler.source.version>13</maven.compiler.source.version>
         <maven.compiler.target.version>13</maven.compiler.target.version>
-        <assertj.version>3.6.1</assertj.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 

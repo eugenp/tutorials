@@ -61,10 +61,7 @@
     </build>
 
     <properties>
-        <!-- marshalling -->
         <gson.version>2.8.0</gson.version>
-        <!-- util -->
-        <commons-collections4.version>4.1</commons-collections4.version>
         <joda-time.version>2.9.6</joda-time.version>
     </properties>
 
