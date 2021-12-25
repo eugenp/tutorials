@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
 import reactor.test.StepVerifier;
 
 import java.time.Duration;
@@ -11,6 +13,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -69,7 +73,7 @@ public class MonoUnitTest {
 
     private <T> Flux<T> monoTofluxUsingFlatMapMany(Mono<List<T>> monoList) {
         return monoList
-                .flatMapMany(Flux::fromIterable)
+                .flatMapMany(it -> Flux.fromIterable(it))
                 .log();
     }
 
@@ -158,6 +162,57 @@ public class MonoUnitTest {
     private Mono<String> sampleMsg(String str) {
         log.debug("Call to Retrieve Sample Message!! --> {} at: {}", str, System.currentTimeMillis());
         return Mono.just(str);
+    }
+
+    @Test
+    public void testFluxDelay(){
+
+        Flux test = Flux.range(1,10)
+          .publishOn(Schedulers.parallel())
+          .log()
+          .doOnNext(n -> log.debug("first... {}",n))
+          .limitRate(4)
+          .doOnNext(n -> log.debug("second... {}",n))
+//          .map(x -> {
+//              try {
+//                  Thread.sleep(2000L);
+//              } catch (InterruptedException e) {
+//                  e.printStackTrace();
+//              }
+//              return x;
+//          });
+//          .flatMap(i -> )
+//          .delayElements(Duration.ofMillis(3000L), Schedulers.parallel())
+          .doOnNext(n -> log.debug("third... {}",n));
+//          .delaySubscription(Duration.ofMillis(5000L));
+//          .delaySubscription(Flux.just(1,2,3).doOnNext(n -> log.debug("second {}",n)).log());
+
+        test.toStream().forEach(n -> log.debug("stream....{}",n));
+
+//        StepVerifier.create(test).expectNext(1,2,3,4,5,6,7,8,9,10).verifyComplete();
+
+    }
+
+    @Test
+    public void delayedFlux(){
+//        Flux delayedFlux  = Flux.interval(Duration.ofSeconds(1))
+        Flux delayedFlux  = Flux.range(1,100)
+          .log()
+          .limitRate(4)
+          .log()
+          .map(n -> {
+              try {
+                  Thread.sleep(1000L);
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+              return n;
+          })
+//          .delayElements(Duration.ofMillis(1000L))
+          .doOnNext(n -> log.debug("First...{}",n));
+
+
+          delayedFlux.toStream().forEach(x -> log.debug("final...{}",x));
     }
 }
 

@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.netflix.spectator</groupId>
             <artifactId>spectator-api</artifactId>
-            <version>0.132.0</version>
+            <version>1.0.11</version>
         </dependency>
     </dependencies>
 
