@@ -31,13 +31,6 @@ class RepeatedCharacterStringUnitTest {
     }
 
     @Test
-    void givenString_whenCharBufferUsed_thenStringCreated() {
-        char charToAppend = 'a';
-        String newString = CharBuffer.allocate(N).toString().replace('\0', charToAppend);
-        assertEquals(EXPECTED_STRING, newString);
-    }
-
-    @Test
     void givenString_whenApacheStringUtilsUsed_thenStringCreated() {
         char charToAppend = 'a';
         String newString = StringUtils.repeat(charToAppend, N);
