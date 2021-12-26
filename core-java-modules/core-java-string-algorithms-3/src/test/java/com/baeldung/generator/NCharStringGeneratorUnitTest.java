@@ -23,13 +23,6 @@ class NCharStringGeneratorUnitTest {
     private static final int N = 7;
 
     @Test
-    void givenString_whenStringRepeatUsed_thenStringCreated() {
-        char charToAppend = 'a';
-        String newString = String.valueOf(charToAppend).repeat(N);
-        assertEquals(EXPECTED_STRING, newString);
-    }
-
-    @Test
     void givenString_whenApacheStringUtilsUsed_thenStringCreated() {
         char charToAppend = 'a';
         String newString = StringUtils.repeat(charToAppend, N);
