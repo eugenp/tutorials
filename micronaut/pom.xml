@@ -135,7 +135,8 @@
     </build>
 
     <properties>
-        <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
+        <!-- <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass> -->
+        <exec.mainClass>com.baeldung.micronaut.vs.springboot.CompareApplication</exec.mainClass>
         <micronaut.version>1.0.0.RC2</micronaut.version>
         <jdk.version>1.8</jdk.version>
         <annotation.api.version>1.3.2</annotation.api.version>

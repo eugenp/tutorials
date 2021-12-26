@@ -24,8 +24,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <mockito.version>3.8.0</mockito.version>
-    </properties>
-
 </project>

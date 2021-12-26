@@ -95,7 +95,7 @@
         <jpa.version>2.2</jpa.version>
         <guava.version>18.0</guava.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
-        <springcloud.version>3.0.2</springcloud.version>
+        <springcloud.version>3.1.0</springcloud.version>
         <httpclient.version>4.5.8</httpclient.version>
     </properties>
 

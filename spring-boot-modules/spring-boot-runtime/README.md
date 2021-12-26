@@ -10,4 +10,3 @@ This module contains articles about administering a Spring Boot runtime
  - [Project Configuration with Spring](https://www.baeldung.com/project-configuration-with-spring)
  - [Spring – Log Incoming Requests](https://www.baeldung.com/spring-http-logging)
  - [How to Configure Spring Boot Tomcat](https://www.baeldung.com/spring-boot-configure-tomcat)
- - [Max-HTTP-Header-Size in Spring Boot 2](https://www.baeldung.com/spring-boot-max-http-header-size)
