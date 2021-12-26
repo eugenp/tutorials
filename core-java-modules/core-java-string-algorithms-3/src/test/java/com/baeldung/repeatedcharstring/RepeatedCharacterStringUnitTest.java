@@ -1,4 +1,4 @@
-package com.baeldung.generator;
+package com.baeldung.repeatedcharstring;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +17,7 @@ import static java.util.stream.Stream.generate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class NCharStringGeneratorUnitTest {
+class RepeatedCharacterStringUnitTest {
 
     private static final String EXPECTED_STRING = "aaaaaaa";
     private static final int N = 7;
