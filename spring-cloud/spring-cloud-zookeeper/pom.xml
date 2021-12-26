@@ -18,8 +18,4 @@
         <module>HelloWorld</module>
     </modules>
 
-    <properties>
-        <springframework.version>5.2.7.RELEASE</springframework.version>
-    </properties>
-
 </project>

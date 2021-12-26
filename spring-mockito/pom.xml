@@ -28,8 +28,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <mockito.version>2.24.0</mockito.version>
-    </properties>
-
 </project>
