@@ -6,12 +6,13 @@ import org.slf4j.LoggerFactory;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
-    private static final int SHORT_NAME_LIMIT = 3;
+    private static final int SHORT_NAME_LIMIT = 10;
 
     public static void main(String[] args) {
-        User adminUser = new User();
+        User user = new User();
+        user.setName("Tom");
 
-        logger.info(getGreetingMessage(adminUser.getName()));
+        logger.info(getGreetingMessage(user.getName()));
     }
 
     private static String getGreetingMessage(String name) {
@@ -19,9 +20,6 @@ public class Main {
     }
 
     private static String getShortenedName(String name) {
-        if(name.length() >= SHORT_NAME_LIMIT) {
-            return name.substring(0, SHORT_NAME_LIMIT);
-        } else
-            return name;
+        return name.substring(0, SHORT_NAME_LIMIT);
     }
 }
