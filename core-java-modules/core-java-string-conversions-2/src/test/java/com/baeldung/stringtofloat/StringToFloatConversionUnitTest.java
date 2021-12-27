@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class StringToFloatConversionUnitTest {
 
     @Test
-    public void givenFloat_whenStringConcatenation_shouldConvertToString() {
+    public void givenFloat_whenStringConcatenation_thenReturnString() {
         Float givenFloat = 1.25f;
 
         String result = givenFloat + "";
@@ -21,7 +21,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenFloatPrimitive_whenStringConcatenation_shouldConvertToString() {
+    public void givenFloatPrimitive_whenStringConcatenation_thenReturnString() {
         float givenFloat = 1.25f;
 
         String result = givenFloat + "";
@@ -30,7 +30,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNullFloat_whenStringConcatenation_shouldConvertToNullString() {
+    public void givenNullFloat_whenStringConcatenation_thenReturnNullString() {
         Float givenFloat = null;
 
         String result = givenFloat + "";
@@ -39,7 +39,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenFloat_whenToString_shouldConvertToString() {
+    public void givenFloat_whenToString_thenReturnString() {
         Float givenFloat = 1.25f;
 
         String result = Float.toString(givenFloat);
@@ -48,14 +48,14 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNullFloat_whenToString_shouldThrowNullPointerException() {
+    public void givenNullFloat_whenToString_thenThrowNullPointerException() {
         Float givenFloat = null;
 
         assertThrows(NullPointerException.class, () -> Float.toString(givenFloat));
     }
 
     @Test
-    public void givenFloat_whenValueOf_shouldConvertToString() {
+    public void givenFloat_whenValueOf_thenReturnString() {
         Float givenFloat = 1.25f;
 
         String result = String.valueOf(givenFloat);
@@ -64,7 +64,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNullFloat_whenValueOf_shouldConvertToNullString() {
+    public void givenNullFloat_whenValueOf_thenReturnNullString() {
         Float givenFloat = null;
 
         String result = String.valueOf(givenFloat);
@@ -73,7 +73,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenFloat_whenDecimalFormat_shouldConvertToString() {
+    public void givenFloat_whenDecimalFormat_thenReturnString() {
         Float givenFloat = 1.25f;
 
         String result = new DecimalFormat("#.0000").format(givenFloat);
@@ -82,7 +82,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenFloat_whenDecimalFormat_shouldConvertToWholeNumberString() {
+    public void givenFloat_whenDecimalFormat_thenReturnWholeNumberString() {
         Float givenFloat = 1.0025f;
 
         String result = new DecimalFormat("#.##").format(givenFloat);
@@ -91,14 +91,14 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNullFloat_whenDecimalFormat_shouldThrowIllegalArgumentException() {
+    public void givenNullFloat_whenDecimalFormat_thenThrowIllegalArgumentException() {
         Float givenFloat = null;
 
         assertThrows(IllegalArgumentException.class, () -> new DecimalFormat("#.000").format(givenFloat));
     }
 
     @Test
-    public void givenFloat_whenStringFormat_shouldConvertToString() {
+    public void givenFloat_whenStringFormat_thenReturnString() {
         Float givenFloat = 1.25f;
 
         String result = String.format("%f", givenFloat);
@@ -107,7 +107,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenFloat_whenStringFormatWithDecimalLimit_shouldConvertToRoundedString() {
+    public void givenFloat_whenStringFormatWithDecimalLimit_thenReturnRoundedString() {
         Float givenFloat = 1.256f;
 
         String result = String.format("%.2f", givenFloat);
@@ -116,7 +116,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNullFloat_whenStringFormatWithDecimalLimit_shouldConvertToNullString() {
+    public void givenNullFloat_whenStringFormatWithDecimalLimit_thenReturnNullString() {
         Float givenFloat = null;
 
         String result = String.format("%f", givenFloat);
@@ -125,7 +125,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenString_whenParseFloat_shouldConvertToFloat() {
+    public void givenString_whenParseFloat_thenReturnFloat() {
         String givenString = "1.25";
 
         float result = Float.parseFloat(givenString);
@@ -134,21 +134,21 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNullString_whenParseFloat_shouldThrowNullPointerException() {
+    public void givenNullString_whenParseFloat_thenThrowNullPointerException() {
         String givenString = null;
 
         assertThrows(NullPointerException.class, () -> Float.parseFloat(givenString));
     }
 
     @Test
-    public void givenNonParsableString_whenParseFloat_shouldThrowNumberFormatException() {
+    public void givenNonParsableString_whenParseFloat_thenThrowNumberFormatException() {
         String givenString = "1.23x";
 
         assertThrows(NumberFormatException.class, () -> Float.parseFloat(givenString));
     }
 
     @Test
-    public void givenString_whenValueOf_shouldConvertToFloat() {
+    public void givenString_whenValueOf_thenReturnFloat() {
         String givenString = "1.25";
 
         Float result = Float.valueOf(givenString);
@@ -157,14 +157,14 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenNonParsableString_whenValueOf_shouldThrowNumberFormatException() {
+    public void givenNonParsableString_whenValueOf_thenThrowNumberFormatException() {
         String givenString = "1.25x";
 
         assertThrows(NumberFormatException.class, () -> Float.valueOf(givenString));
     }
 
     @Test
-    public void givenString_whenConstructor_shouldConvertToFloat() {
+    public void givenString_whenConstructor_thenReturnFloat() {
         String givenString = "1.25";
 
         Float result = new Float(givenString);
@@ -173,7 +173,7 @@ public class StringToFloatConversionUnitTest {
     }
 
     @Test
-    public void givenString_whenDecimalFormat_shouldConvertToFloat() throws ParseException {
+    public void givenString_whenDecimalFormat_thenReturnFloat() throws ParseException {
         String givenString = "1,250";
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
         symbols.setDecimalSeparator(',');
