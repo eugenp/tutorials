@@ -37,8 +37,10 @@ public class MySerializationUtils {
                 continue;
             }
             Class<?> fieldType = field.getType();
-            serializable = isSerializable(fieldType);
+            if (!isSerializable(fieldType)) {
+                return false;
+            }
         }
-        return serializable;
+        return true;
     }
 }
