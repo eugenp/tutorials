@@ -1,14 +1,15 @@
 package com.baeldung.randomgenerators;
 
-import static org.assertj.core.api.Assertions.*;
-import java.util.Random;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class OldRandomUnitTest {
 
-    void given_when_then() {
-        Random random = new Random();
-        int number = random.nextInt(10);
-        assertThat(number).isPositive().isLessThan(10);
+    @Test
+    void givenOldRandomApi_whenGeneratingAnInt_thenIntInRangeIsGenerated() {
+        int number = OldRandom.getRandomInt(10);
+        assertThat(number).isNotNegative().isLessThan(10);
     }
 
 }
