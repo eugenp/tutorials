@@ -30,12 +30,6 @@
             <version>${hibernate-types.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -75,9 +69,9 @@
     </dependencies>
 
     <properties>
+        <h2.version>1.4.197</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
         <hibernate.version>5.4.12.Final</hibernate.version>
         <hibernate-types.version>2.10.4</hibernate-types.version>
-        <assertj-core.version>3.8.0</assertj-core.version>
         <hibernate-validator.version>6.0.16.Final</hibernate-validator.version>
         <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
         <money-api.version>1.0.3</money-api.version>

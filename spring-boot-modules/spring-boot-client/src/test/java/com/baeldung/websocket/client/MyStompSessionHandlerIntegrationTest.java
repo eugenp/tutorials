@@ -14,6 +14,6 @@ public class MyStompSessionHandlerIntegrationTest {
         MyStompSessionHandler sessionHandler = new MyStompSessionHandler();
         sessionHandler.afterConnected(mockSession, mockHeader);
         Mockito.verify(mockSession).subscribe("/topic/messages", sessionHandler);
-        Mockito.verify(mockSession).send(Mockito.anyString(), Mockito.anyObject());
+        Mockito.verify(mockSession).send(Mockito.anyString(), Mockito.any());
     }
 }

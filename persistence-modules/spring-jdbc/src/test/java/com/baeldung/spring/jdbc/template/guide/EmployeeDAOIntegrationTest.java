@@ -9,6 +9,8 @@ import com.baeldung.spring.jdbc.template.guide.config.SpringJdbcConfig;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,6 +21,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ContextConfiguration(classes = { SpringJdbcConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class EmployeeDAOIntegrationTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDAOIntegrationTest.class);
+    
     @Autowired
     private EmployeeDAO employeeDao;
 
@@ -70,7 +74,7 @@ public class EmployeeDAOIntegrationTest {
         try {
             employeeDao.addEmplyee(7);
         } catch (final DuplicateKeyException e) {
-            System.out.println(e.getMessage());
+            LOGGER.error(e.getMessage(), e);
             Assert.assertTrue(e.getMessage().contains("Custome Exception translator - Integrity contraint voilation."));
         }
     }

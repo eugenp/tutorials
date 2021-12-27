@@ -10,7 +10,7 @@
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
     </session-factory>
 </hibernate-configuration>

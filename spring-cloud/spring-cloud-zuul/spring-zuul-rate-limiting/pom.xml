@@ -43,6 +43,7 @@
     <properties>
         <rate.limit.version>2.2.0.RELEASE</rate.limit.version>
         <spring-boot.version>2.4.7</spring-boot.version>
+        <spring-cloud-dependencies.version>2020.0.4</spring-cloud-dependencies.version>
     </properties>
 
 </project>

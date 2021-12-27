@@ -13,5 +13,6 @@ This module contains articles about working with the operating system (OS) in Ja
 - [Pattern Search with Grep in Java](http://www.baeldung.com/grep-in-java)
 - [How to Run a Shell Command in Java](http://www.baeldung.com/run-shell-command-in-java)
 - [Taking Screenshots Using Java](https://www.baeldung.com/java-taking-screenshots)
+- [Java Sound API – Capturing Microphone](https://www.baeldung.com/java-sound-api-capture-mic)
 
 This module uses Java 9, so make sure to have the JDK 9 installed to run it.

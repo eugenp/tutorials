@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-quartz</artifactId>
-    <name>spring-quartz</name>
     <version>0.0.1-SNAPSHOT</version>
+    <name>spring-quartz</name>
     <packaging>jar</packaging>
     <description>Demo project for Scheduling in Spring with Quartz</description>
 
@@ -54,8 +54,8 @@
     </build>
 
     <properties>
-        <quartz.version>2.3.0</quartz.version>
-        <c3p0.version>0.9.5.2</c3p0.version>
+        <quartz.version>2.3.2</quartz.version>
+        <c3p0.version>0.9.5.5</c3p0.version>
     </properties>
 
 </project>

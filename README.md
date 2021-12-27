@@ -18,16 +18,16 @@ Java and Spring Tutorials
 
 This project is **a collection of small and focused tutorials** - each covering a single and well defined area of development in the Java ecosystem. 
 A strong focus of these is, of course, the Spring Framework - Spring, Spring Boot and Spring Security. 
-In additional to Spring, the modules here are covering a number of aspects in Java. 
+In addition to Spring, the modules here cover a number of aspects of Java. 
 
 Profile based segregation
 ====================
 
 We are using maven build profiles to segregate the huge list of individual projects we have in our repository.
 
-The projects are broadly divided into 3 list: first, second and heavy. 
+The projects are broadly divided into 3 lists: first, second and heavy. 
 
-Next, they are segregated further on the basis of tests that we want to execute.
+Next, they are segregated further on the basis of the tests that we want to execute.
 
 Therefore, we have a total of 6 profiles:
 
@@ -56,12 +56,12 @@ or if we want to build the entire repository with Integration Tests enabled, we 
 
 Building a single module
 ====================
-To build a specific module run the command: `mvn clean install` in the module directory
+To build a specific module, run the command: `mvn clean install` in the module directory.
 
 
 Running a Spring Boot module
 ====================
-To run a Spring Boot module run the command: `mvn spring-boot:run` in the module directory
+To run a Spring Boot module, run the command: `mvn spring-boot:run` in the module directory.
 
 
 Working with the IDE
