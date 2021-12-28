@@ -171,7 +171,7 @@ public class ProductRepository {
     }
     
     private BoundStatement getProductInsertStatement(Product product,UUID productId,String productTableName) {
-    	String cqlQuery1 = new StringBuilder("").append("INSERT INTO ").append(productTableName)
+        String cqlQuery1 = new StringBuilder("").append("INSERT INTO ").append(productTableName)
                 .append("(product_id,product_name,description,price) ").append("VALUES (").append(":product_id")
                 .append(", ").append(":product_name").append(", ").append(":description").append(", ")
                 .append(":price").append(");").toString();
@@ -179,9 +179,9 @@ public class ProductRepository {
         PreparedStatement preparedStatement = session.prepare(cqlQuery1);
         
         return preparedStatement.bind(productId, 
-        		product.getProductName(), 
-        		product.getDescription(),
-        		product.getPrice());
+                product.getProductName(), 
+                product.getDescription(),
+                product.getPrice());
     }
     
  
