@@ -96,11 +96,11 @@
     </build>
 
     <properties>
-        <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+<!--         <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version> -->
+<!--         <spring-boot.version>2.2.6.RELEASE</spring-boot.version> -->
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
         <redis.version>0.7.2</redis.version>
-        <junit-bom.version>5.5.2</junit-bom.version>
+<!--         <junit-bom.version>5.5.2</junit-bom.version> -->
     </properties>
 
 </project>
