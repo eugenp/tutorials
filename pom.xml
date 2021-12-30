@@ -624,6 +624,7 @@
                 <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-aop</module>
+                <module>spring-aop-2</module>
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
@@ -1094,6 +1095,7 @@
                 <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-aop</module>
+                <module>spring-aop-2</module>
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
