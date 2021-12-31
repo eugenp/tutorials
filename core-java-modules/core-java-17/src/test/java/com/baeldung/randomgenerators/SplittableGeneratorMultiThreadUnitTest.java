@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SplittableGeneratorMultiThreadUnitTest {
 
     @Test
-    void givenDefaultGenerator_whenGeneratingAnInt_thenIntInRangeIsGenerated() {
+    void givenSplittableGenerator_whenUsingMultipleThreads_thenListOfIntsIsGenerated() {
         List<Integer> numbers = SplittableGeneratorMultiThread.generateNumbersInMultipleThreads();
         assertThat(numbers).hasSize(20).allMatch(number -> number >= 0 && number <= 10);
     }
