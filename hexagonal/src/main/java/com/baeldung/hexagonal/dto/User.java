@@ -1,13 +1,3 @@
-/*******************************************************************************
- *
- * Copyright 2017-2021, Bemindt Consulting Group, Inc.
- * 
- * User.java
- * rich
- * Dec 23, 2021
- * 
- *******************************************************************************/
-
 package com.baeldung.hexagonal.dto;
 
 public class User {
