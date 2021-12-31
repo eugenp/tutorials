@@ -10,14 +10,14 @@ class GeneratorSelectionUnitTest {
 
     @Test
     void givenDefaultGenerator_whenGeneratingAnInt_thenIntInRangeIsGenerated() {
-        RandomGenerator generator = GeneratorSelection.getDefaultGenerator();
+        RandomGenerator generator = RandomGenerator.getDefault();
         int number = generator.nextInt(10);
         assertThat(number).isNotNegative().isLessThan(10);
     }
 
     @Test
     void givenSpecificGenerator_whenGeneratingAnInt_thenIntInRangeIsGenerated() {
-        RandomGenerator generator = GeneratorSelection.getSpecificGenerator("L128X256MixRandom");
+        RandomGenerator generator = RandomGenerator.of("L128X256MixRandom");
         int number = generator.nextInt(10);
         assertThat(number).isNotNegative().isLessThan(10);
     }

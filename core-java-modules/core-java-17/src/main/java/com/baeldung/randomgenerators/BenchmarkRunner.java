@@ -17,17 +17,99 @@ public class BenchmarkRunner {
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL128X1024MixRandom() {
+        generateRandomNumbers(RandomGenerator.of("L128X1024MixRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL128X128MixRandom() {
+        generateRandomNumbers(RandomGenerator.of("L128X128MixRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public static void testL128X256MixRandom() {
-        RandomGenerator generator = GeneratorSelection.getSpecificGenerator("L128X256MixRandom");
-        generator.nextInt();
+        generateRandomNumbers(RandomGenerator.of("L128X256MixRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL32X64MixRandom() {
+        generateRandomNumbers(RandomGenerator.of("L32X64MixRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL64X1024MixRandom() {
+        generateRandomNumbers(RandomGenerator.of("L64X1024MixRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL64X128MixRandom() {
+        generateRandomNumbers(RandomGenerator.of("L64X128MixRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL64X128StarStarRandom() {
+        generateRandomNumbers(RandomGenerator.of("L64X128StarStarRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testL64X256MixRandom() {
+        generateRandomNumbers(RandomGenerator.of("L64X256MixRandom"));
     }
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     public static void testRandom() {
-        RandomGenerator generator = GeneratorSelection.getSpecificGenerator("Random");
+        generateRandomNumbers(RandomGenerator.of("Random"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testSecureRandom() {
+        generateRandomNumbers(RandomGenerator.of("SecureRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testSplittableRandom() {
+        generateRandomNumbers(RandomGenerator.of("SplittableRandom"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testXoroshiro128PlusPlus() {
+        generateRandomNumbers(RandomGenerator.of("Xoroshiro128PlusPlus"));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public static void testXoshiro256PlusPlus() {
+        generateRandomNumbers(RandomGenerator.of("Xoshiro256PlusPlus"));
+    }
+
+    private static void generateRandomNumbers(RandomGenerator generator) {
+        generator.nextLong();
         generator.nextInt();
+        generator.nextFloat();
+        generator.nextDouble();
     }
 
 }
