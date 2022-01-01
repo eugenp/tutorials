@@ -54,7 +54,7 @@ public class OtherAssignmentTest {
 	}
 	
 	@Test
-	public void assignmentRemaiderTest() {
+	public void assignmentRemainderTest() {
 		
 		int number1 = 10;
 		number1 = number1 % 2;

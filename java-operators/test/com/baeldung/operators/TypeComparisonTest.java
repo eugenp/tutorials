@@ -21,7 +21,7 @@ public class TypeComparisonTest {
 	}
 	
 	@Test
-	public void carAndAirplaneAreTransporTest() {
+	public void carAndAirplaneAreTransportTest() {
 		
 		Car car = new Car();
 		assertEquals(car instanceof Transport, true);
@@ -31,7 +31,7 @@ public class TypeComparisonTest {
 	}
 	
 	@Test
-	public void transporCanBeCarOrAirplaneTest() {
+	public void transportCanBeCarOrAirplaneTest() {
 		
 		Transport transport1 = new Car();
 		assertEquals(transport1 instanceof Car, true);

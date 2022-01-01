@@ -65,20 +65,6 @@ public class EqualityAndRealationalTest {
 		assertEquals(result, "The guest is VIP");
 	}
 	
-	@Test
-	public void greaterThanOrEqualToTest() {
-		
-		int grade = 3;
-		String result = "";
-		
-		if(grade >= 3) {
-			result = "The guest is VIP";
-		}else {
-			result = "The guest isn't VIP";
-		}
-		
-		assertEquals(result, "The guest is VIP");
-	}
 	
 	@Test
 	public void lessThanOrEqualToTest() {
@@ -93,6 +79,21 @@ public class EqualityAndRealationalTest {
 		}
 		
 		assertEquals(result, "The guest isn't VIP");
+	}
+	
+	@Test 
+	public void greaterThanOrEqualToTest() {
+		
+		int grade = 3;
+		String result = "";
+		
+		if(grade >= 3) {
+			result = "The guest is VIP";
+		}else {
+			result = "The guest isn't VIP";
+		}
+		
+		assertEquals(result, "The guest is VIP");
 	}
 	
 }
