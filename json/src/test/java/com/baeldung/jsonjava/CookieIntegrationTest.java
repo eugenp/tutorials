@@ -1,5 +1,6 @@
 package com.baeldung.jsonjava;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import org.json.Cookie;
@@ -14,7 +15,7 @@ public class CookieIntegrationTest {
 
         assertEquals("{\"path\":\"/\",\"expires\":\"Thu, 18 Dec 2013 12:00:00 UTC\",\"name\":\"username\",\"value\":\"John Doe\"}", cookieJO.toString());
     }
-    
+
     @Test
     public void givenJSONObject_thenConvertToCookieString() {
         JSONObject cookieJO = new JSONObject();
@@ -22,8 +23,10 @@ public class CookieIntegrationTest {
         cookieJO.put("value", "John Doe");
         cookieJO.put("expires", "Thu, 18 Dec 2013 12:00:00 UTC");
         cookieJO.put("path", "/");
+
         String cookie = Cookie.toString(cookieJO);
 
-        assertEquals("username=John Doe;expires=Thu, 18 Dec 2013 12:00:00 UTC;path=/", cookie.toString());
+        assertThat(cookie.split(";"))
+          .containsExactlyInAnyOrder("username=John Doe", "path=/", "expires=Thu, 18 Dec 2013 12:00:00 UTC");
     }
 }
