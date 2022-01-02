@@ -15,18 +15,6 @@ public class StringEqualsVsContentEqualsUnitTest {
     CharSequence identicalStringBufferInstance = new StringBuffer("baeldung");
 
     @Test
-    public void whenTestStringInUpperCase_thenBothFalse() {
-        assertFalse(actualString.equals(stringInUpperCase));
-        assertFalse(actualString.contentEquals(stringInWrongSequence));
-    }
-
-    @Test
-    public void whenTestStringSequenceWrong_thenBothFalse() {
-        assertFalse(actualString.equals(stringInWrongSequence));
-        assertFalse(actualString.contentEquals(stringInWrongSequence));
-    }
-
-    @Test
     public void whenIdenticalTestString_thenBothTrue() {
         assertTrue(actualString.equals(identicalString));
         assertTrue(actualString.contentEquals(identicalString));
