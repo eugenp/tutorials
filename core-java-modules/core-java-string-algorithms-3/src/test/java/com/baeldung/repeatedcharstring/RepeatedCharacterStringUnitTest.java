@@ -23,6 +23,24 @@ class RepeatedCharacterStringUnitTest {
     private static final int N = 7;
 
     @Test
+    void givenString_whenStringBuilderUsed_thenStringCreated() {
+        StringBuilder builder = new StringBuilder(N);
+        for (int i = 0; i < N; i++){
+            builder.append("a");
+        }
+        assertEquals(EXPECTED_STRING, builder.toString());
+    }
+
+    @Test
+    void givenString_whenCharArrayUsed_thenStringCreated() {
+        char[] array = new char[N];
+        for (int i = 0; i < N; i++){
+            array[i] = 'a';
+        }
+        assertEquals(EXPECTED_STRING, new String(array));
+    }
+
+    @Test
     void givenString_whenApacheStringUtilsUsed_thenStringCreated() {
         char charToAppend = 'a';
         String newString = StringUtils.repeat(charToAppend, N);
