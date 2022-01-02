@@ -13,7 +13,10 @@ public class SplittableGeneratorMultiThread {
     public static List<Integer> generateNumbersInMultipleThreads() {
         List<Integer> numbers = Collections.synchronizedList(new ArrayList<>());
         ExecutorService executorService = Executors.newCachedThreadPool();
-        RandomGenerator.SplittableGenerator sourceGenerator = RandomGeneratorFactory.<RandomGenerator.SplittableGenerator>of("L128X256MixRandom").create();
+
+        RandomGenerator.SplittableGenerator sourceGenerator = RandomGeneratorFactory
+          .<RandomGenerator.SplittableGenerator>of("L128X256MixRandom")
+          .create();
 
         sourceGenerator.splits(20).forEach((splitGenerator) -> {
             executorService.submit(() -> {
