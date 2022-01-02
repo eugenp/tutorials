@@ -8,8 +8,6 @@ import org.junit.Test;
 public class StringEqualsVsContentEqualsUnitTest {
 
     String actualString = "baeldung";
-    String stringInUpperCase = "BAELDUNG";
-    String stringInWrongSequence = "baledung";
     String identicalString = "baeldung";
     CharSequence identicalStringInstance = "baeldung";
     CharSequence identicalStringBufferInstance = new StringBuffer("baeldung");
