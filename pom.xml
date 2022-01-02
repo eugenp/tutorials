@@ -1334,7 +1334,6 @@
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
 		 <module>testing-modules/testing-assertions</module>
-		 <module>spring-cloud/spring-cloud-load-balancer</module>
             </modules>
         </profile>
 
