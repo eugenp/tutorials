@@ -28,16 +28,18 @@ class RepeatedCharacterStringUnitTest {
         for (int i = 0; i < N; i++) {
             builder.append("a");
         }
-        assertEquals(EXPECTED_STRING, builder.toString());
+        String newString = builder.toString();
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenCharArrayUsed_thenStringCreated() {
-        char[] array = new char[N];
+        char[] charArray = new char[N];
         for (int i = 0; i < N; i++) {
-            array[i] = 'a';
+            charArray[i] = 'a';
         }
-        assertEquals(EXPECTED_STRING, new String(array));
+        String newString = new String(charArray);
+        assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
