@@ -30,6 +30,7 @@
         <module>spring-mvc-views</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
+        <module>spring-mvc-xml-2</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-http</module>
         <module>spring-rest-http-2</module>
@@ -43,6 +44,8 @@
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
         <module>spring-thymeleaf-3</module>
+        <module>spring-thymeleaf-4</module>
+        <module>spring-thymeleaf-5</module>
         <module>spring-boot-jsp</module>
         <module>spring-web-url</module>
     </modules>

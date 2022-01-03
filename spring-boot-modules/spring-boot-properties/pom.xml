@@ -122,7 +122,7 @@
     </profiles>
 
     <properties>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud.version>2021.0.0</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <guava.version>20.0</guava.version>
         <resource.delimiter>@</resource.delimiter>

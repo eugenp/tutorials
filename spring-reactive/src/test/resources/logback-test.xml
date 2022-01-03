@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="15 seconds" debug="false">
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>[%d{ISO8601}]-[%thread] %-5level %logger - %msg%n</pattern>
-        </encoder>
+<configuration>
+    <include
+            resource="org/springframework/boot/logging/logback/base.xml" />
+    <appender name="LISTAPPENDER"
+              class="com.baeldung.reactive.debugging.consumer.utils.ListAppender">
     </appender>
-
-    <root level="INFO">
-        <appender-ref ref="STDOUT" />
+    <logger
+            name="com.baeldung.reactive.debugging.consumer.service.FooService">
+        <appender-ref ref="LISTAPPENDER" />
+    </logger>
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LISTAPPENDER" />
     </root>
 </configuration>

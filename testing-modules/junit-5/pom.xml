@@ -16,6 +16,17 @@
         <relativePath>../</relativePath>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -76,13 +87,18 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.junit.jupiter.version}</version>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito2</artifactId>
             <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -119,11 +135,11 @@
     </build>
 
     <properties>
-        <mockito.junit.jupiter.version>2.23.0</mockito.junit.jupiter.version>
         <log4j2.version>2.8.2</log4j2.version>
-        <powermock.version>2.0.0</powermock.version>
+        <powermock.version>2.0.9</powermock.version>
         <spring.version>5.0.1.RELEASE</spring.version>
         <surefire.report.plugin>3.0.0-M3</surefire.report.plugin>
+        <mockito.version>3.3.0</mockito.version>
     </properties>
 
 </project>
