@@ -19,6 +19,7 @@
     <modules>
         <module>spring-boot</module>
         <module>spring-boot-1</module>
+        <module>spring-boot-2</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -70,6 +71,7 @@
         <module>spring-boot-swagger</module>
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-testing</module>
+        <module>spring-boot-testing-2</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>

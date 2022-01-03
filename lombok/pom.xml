@@ -26,6 +26,11 @@
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>${hibernate-jpa-2.1-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,7 +75,7 @@
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.18.10.0</delombok-maven-plugin.version>
+        <delombok-maven-plugin.version>1.18.20.0</delombok-maven-plugin.version>
     </properties>
 
 </project>

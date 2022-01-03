@@ -24,6 +24,22 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+<!--                         Comment the arg below to print complete stack trace information -->
+<!--                        <arg>-g:none</arg>-->
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <h2.version>1.4.191</h2.version>
     </properties>

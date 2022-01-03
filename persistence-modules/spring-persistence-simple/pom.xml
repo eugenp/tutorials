@@ -76,12 +76,6 @@
             <scope>test</scope>
             <version>${spring-boot-starter.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -94,8 +88,6 @@
         <spring-data-jpa.version>2.2.7.RELEASE</spring-data-jpa.version>
         <!-- simple-jndi -->
         <simple-jndi.version>0.23.0</simple-jndi.version>
-        <!-- test scoped -->
-        <mockito.version>3.3.3</mockito.version>
     </properties>
 
 </project>
