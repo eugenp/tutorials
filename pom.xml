@@ -1333,7 +1333,7 @@
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
-		 <module>testing-modules/testing-assertions</module>
+                 <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
 

@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ServerApplication.class, args);
+    }
 
-	@Value("${server.instance.id}")
-	String instanceId;
+    @Value("${server.instance.id}")
+    String instanceId;
 
-	@GetMapping("/hello")
-	public String hello()
-	{
-		return String.format("Hello from instance %s", instanceId);
-	}
+    @GetMapping("/hello")
+    public String hello()
+    {
+        return String.format("Hello from instance %s", instanceId);
+    }
 }
