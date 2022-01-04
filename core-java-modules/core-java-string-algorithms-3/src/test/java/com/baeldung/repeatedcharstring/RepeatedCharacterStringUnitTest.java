@@ -3,7 +3,6 @@ package com.baeldung.repeatedcharstring;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +15,6 @@ import static ch.qos.logback.core.CoreConstants.EMPTY_STRING;
 import static java.util.stream.Stream.generate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class RepeatedCharacterStringUnitTest {
 
     private static final String EXPECTED_STRING = "aaaaaaa";
