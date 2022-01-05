@@ -1,12 +1,10 @@
 package com.baeldung.jsonjava;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.equalTo;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JSONArrayGetValueByKeyUnitTest {
 
@@ -19,7 +17,8 @@ public class JSONArrayGetValueByKeyUnitTest {
 
         List<String> actualValues = obj.getValuesByKeyInJSONArray(jsonStr, "name");
 
-        assertThat(actualValues, equalTo(Arrays.asList("John", "Gary", "Selena")));
+        assertThat(actualValues)
+          .containsExactlyInAnyOrder("John", "Gary", "Selena");
     }
 
     @Test
@@ -29,7 +28,8 @@ public class JSONArrayGetValueByKeyUnitTest {
 
         List<String> actualValues = obj.getValuesByKeyInJSONArrayUsingJava8(jsonStr, "name");
 
-        assertThat(actualValues, equalTo(Arrays.asList("John", "Gary", "Selena")));
+        assertThat(actualValues)
+          .containsExactlyInAnyOrder("John", "Gary", "Selena");
     }
 
 }
