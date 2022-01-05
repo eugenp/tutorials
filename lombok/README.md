@@ -16,3 +16,4 @@ This module contains articles about Project Lombok.
 - [Omitting Getter or Setter in Lombok](https://www.baeldung.com/lombok-omit-getter-setter)
 - [Declaring Val and Var Variables in Lombok](https://www.baeldung.com/java-lombok-val-var)
 - [Lombok Using @With Annotations](https://www.baeldung.com/lombok-with-annotations)
+- [Lombok Configuration System](https://www.baeldung.com/lombok-configuration-system)
