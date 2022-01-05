@@ -4,4 +4,5 @@
 - [Compare Strings While Ignoring Whitespace in Java](https://www.baeldung.com/java-compare-string-whitespace)
 - [Concatenating Null Strings in Java](https://www.baeldung.com/java-concat-null-string)
 - [Split a String Every n Characters in Java](https://www.baeldung.com/java-string-split-every-n-characters)
+- [String equals() Vs contentEquals() in Java](https://www.baeldung.com/java-string-equals-vs-contentequals)
 
