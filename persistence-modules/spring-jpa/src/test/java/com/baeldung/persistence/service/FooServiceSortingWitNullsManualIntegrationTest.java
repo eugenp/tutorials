@@ -13,6 +13,8 @@ import com.baeldung.config.PersistenceJPAConfig;
 import com.baeldung.persistence.model.Foo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +26,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @DirtiesContext
 public class FooServiceSortingWitNullsManualIntegrationTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooServiceSortingWitNullsManualIntegrationTest.class);
+    
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -43,7 +47,7 @@ public class FooServiceSortingWitNullsManualIntegrationTest {
         final List<Foo> fooList = sortQuery.getResultList();
         assertNull(fooList.get(fooList.toArray().length - 1).getName());
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
+            LOGGER.debug("Name:{}", foo.getName());
         }
     }
 
@@ -57,7 +61,7 @@ public class FooServiceSortingWitNullsManualIntegrationTest {
         final List<Foo> fooList = sortQuery.getResultList();
         assertNull(fooList.get(0).getName());
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
+            LOGGER.debug("Name:{}", foo.getName());
         }
     }
 

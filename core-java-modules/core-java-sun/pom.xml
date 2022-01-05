@@ -12,17 +12,9 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
@@ -94,10 +86,7 @@
     </profiles>
 
     <properties>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <!-- maven plugins -->
         <sun-tools.version>1.8.0</sun-tools.version>
     </properties>
 

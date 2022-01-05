@@ -16,17 +16,15 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -39,10 +37,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <!-- testing -->
-        <assertj-core.version>3.10.0</assertj-core.version>
-    </properties>
 
 </project>

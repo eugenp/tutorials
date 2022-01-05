@@ -7,14 +7,16 @@ import java.util.function.BiFunction;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MethodReferenceUnitTest {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodReferenceUnitTest.class);
 
     private static <T> void doNothingAtAll(Object... o) {
     }
 
-    ;
-    
     @Test
     public void referenceToStaticMethod() {
         List<String> messages = Arrays.asList("Hello", "Baeldung", "readers!");
@@ -61,7 +63,7 @@ public class MethodReferenceUnitTest {
 
     @Test
     public void limitationsAndAdditionalExamples() {
-        createBicyclesList().forEach(b -> System.out.printf("Bike brand is '%s' and frame size is '%d'%n", b.getBrand(), b.getFrameSize()));
+        createBicyclesList().forEach(b -> LOGGER.debug("Bike brand is '{}' and frame size is '{}'", b.getBrand(), b.getFrameSize()));
         createBicyclesList().forEach((o) -> MethodReferenceUnitTest.doNothingAtAll(o));
     }
 

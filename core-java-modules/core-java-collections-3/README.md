@@ -11,7 +11,7 @@
 - [Performance of contains() in a HashSet vs ArrayList](https://www.baeldung.com/java-hashset-arraylist-contains-performance)
 - [Fail-Safe Iterator vs Fail-Fast Iterator](https://www.baeldung.com/java-fail-safe-vs-fail-fast-iterator)
 - [Quick Guide to the Java Stack](https://www.baeldung.com/java-stack)
-- [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
 - [A Guide to BitSet in Java](https://www.baeldung.com/java-bitset)
 - [Get the First Key and Value From a HashMap](https://www.baeldung.com/java-hashmap-get-first-entry)
 - [Performance of removeAll() in a HashSet](https://www.baeldung.com/java-hashset-removeall-performance)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-2) [[next -->]](/core-java-modules/core-java-collections-4)

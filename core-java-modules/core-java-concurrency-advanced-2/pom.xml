@@ -30,12 +30,6 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -47,9 +41,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <assertj.version>3.6.1</assertj.version>
-    </properties>
 
 </project>

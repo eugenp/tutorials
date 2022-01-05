@@ -1,8 +1,12 @@
 package com.baeldung.ehcache.calculator;
 
 import com.baeldung.ehcache.config.CacheHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SquaredCalculator {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SquaredCalculator.class);
     private CacheHelper cache;
 
     public int getSquareValueOfNumber(int input) {
@@ -10,7 +14,7 @@ public class SquaredCalculator {
             return cache.getSquareNumberCache().get(input);
         }
 
-        System.out.println("Calculating square value of " + input + " and caching result.");
+        LOGGER.debug("Calculating square value of {} and caching result.", input);
 
         int squaredValue = (int) Math.pow(input, 2);
         cache.getSquareNumberCache().put(input, squaredValue);

@@ -1,5 +1,8 @@
 package com.baeldung.hibernate.proxy;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.hibernate.*;
 import org.hibernate.proxy.HibernateProxy;
 import org.junit.After;

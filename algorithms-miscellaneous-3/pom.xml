@@ -15,12 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
@@ -43,7 +37,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>pl.pragmatists</groupId>
@@ -69,11 +63,8 @@
     </dependencies>
 
     <properties>
-        <org.assertj.core.version>3.9.0</org.assertj.core.version>
-        <commons-collections4.version>4.3</commons-collections4.version>
         <guava.version>28.0-jre</guava.version>
         <retrofit.version>2.6.0</retrofit.version>
-        <commons.lang3.version>3.8.1</commons.lang3.version>
         <JUnitParams.version>1.1.0</JUnitParams.version>
     </properties>
 
