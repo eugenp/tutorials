@@ -7,11 +7,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Junit5ParameterizedTestNameUnitTest {
+class Junit5ParameterizedTestNameUnitTest {
+
+    private TestInfo testInfo;
 
     @BeforeEach
     void init(TestInfo testInfo) {
-        System.out.println("displayName = " + testInfo.getDisplayName());
+        this.testInfo = testInfo;
     }
 
     private boolean oddCheck(int number) {
@@ -20,7 +22,8 @@ public class Junit5ParameterizedTestNameUnitTest {
 
     @ParameterizedTest(name = "givenNumbers_whenOddCheck_thenVerify{0}")
     @ValueSource(ints = { 1, 3, 5, -3, 15 })
-    public void givenNumbers_whenOddCheck_thenVerify(int number) {
+    void givenNumbers_whenOddCheck_thenVerify(int number) {
+        System.out.println("displayName = " + testInfo.getDisplayName());
         assertTrue(oddCheck(number));
     }
 }
