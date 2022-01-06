@@ -1,4 +1,4 @@
-package com.baeldung.stack;
+package com.baeldung.collections.stack;
 
 import org.junit.Test;
 

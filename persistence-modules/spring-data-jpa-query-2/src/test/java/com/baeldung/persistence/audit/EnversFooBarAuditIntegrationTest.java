@@ -1,17 +1,14 @@
 package com.baeldung.persistence.audit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
+import com.baeldung.persistence.model.Bar;
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.persistence.service.IBarAuditableService;
+import com.baeldung.persistence.service.IFooAuditableService;
+import com.baeldung.spring.config.PersistenceTestConfig;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,28 +20,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.baeldung.persistence.model.Bar;
-import com.baeldung.persistence.model.Foo;
-import com.baeldung.persistence.service.IBarAuditableService;
-import com.baeldung.persistence.service.IFooAuditableService;
-import com.baeldung.spring.config.PersistenceTestConfig;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 public class EnversFooBarAuditIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
-
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        logger.info("setUpBeforeClass()");
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        logger.info("tearDownAfterClass()");
-    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
 
     @Autowired
     @Qualifier("fooHibernateAuditableService")
@@ -60,15 +46,15 @@ public class EnversFooBarAuditIntegrationTest {
     private Session session;
 
     @Before
-    public void setUp() throws Exception {
-        logger.info("setUp()");
+    public void setUp() {
+        LOGGER.info("setUp()");
         makeRevisions();
         session = sessionFactory.openSession();
     }
 
     @After
-    public void tearDown() throws Exception {
-        logger.info("tearDown()");
+    public void tearDown() {
+        LOGGER.info("tearDown()");
         session.close();
     }
 
@@ -97,14 +83,12 @@ public class EnversFooBarAuditIntegrationTest {
 
     // REV #3: update BAR
     private void rev3(final Bar bar) {
-
         bar.setName("BAR1");
         barService.update(bar);
     }
 
     // REV #4: insert FOO3 & update BAR
     private void rev4(final Bar bar) {
-
         final Foo foo3 = new Foo("FOO3");
         foo3.setBar(bar);
         fooService.create(foo3);

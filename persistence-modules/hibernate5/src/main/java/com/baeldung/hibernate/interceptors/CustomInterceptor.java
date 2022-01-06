@@ -16,7 +16,7 @@ public class CustomInterceptor extends EmptyInterceptor {
     @Override
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
         if (entity instanceof User) {
-            logger.info(((User) entity).toString());
+            logger.debug(entity.toString());
         }
         return super.onSave(entity, id, state, propertyNames, types);
     }
@@ -25,7 +25,7 @@ public class CustomInterceptor extends EmptyInterceptor {
     public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object [] previousState, String[] propertyNames, Type[] types) {
         if (entity instanceof User) {
             ((User) entity).setLastModified(new Date());
-            logger.info(((User) entity).toString());
+            logger.debug(entity.toString());
         }
         return super.onFlushDirty(entity, id, currentState, previousState, propertyNames, types);
     }

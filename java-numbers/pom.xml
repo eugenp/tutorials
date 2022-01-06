@@ -31,12 +31,6 @@
             <artifactId>decimal4j</artifactId>
             <version>${decimal4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -51,7 +45,6 @@
 
     <properties>
         <decimal4j.version>1.0.3</decimal4j.version>
-        <assertj.version>3.6.1</assertj.version>
     </properties>
 
 </project>

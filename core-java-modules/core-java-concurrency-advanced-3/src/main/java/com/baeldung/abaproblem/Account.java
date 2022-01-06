@@ -3,17 +3,18 @@ package com.baeldung.abaproblem;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static com.google.common.util.concurrent.Uninterruptibles.sleepUninterruptibly;
+
 public class Account {
 
-    private AtomicInteger balance;
-    private AtomicInteger transactionCount;
-    private ThreadLocal<Integer> currentThreadCASFailureCount;
+    private final AtomicInteger balance;
+    private final AtomicInteger transactionCount;
+    private final ThreadLocal<Integer> currentThreadCASFailureCount;
 
     public Account() {
         this.balance = new AtomicInteger(0);
         this.transactionCount = new AtomicInteger(0);
-        this.currentThreadCASFailureCount = new ThreadLocal<>();
-        this.currentThreadCASFailureCount.set(0);
+        this.currentThreadCASFailureCount = ThreadLocal.withInitial(() -> 0);
     }
 
     public int getBalance() {
@@ -43,11 +44,7 @@ public class Account {
 
     private void maybeWait() {
         if ("thread1".equals(Thread.currentThread().getName())) {
-            try {
-                TimeUnit.SECONDS.sleep(2);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+            sleepUninterruptibly(2, TimeUnit.SECONDS);
         }
     }
 

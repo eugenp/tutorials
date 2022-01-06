@@ -27,10 +27,9 @@
             <version>${hibernate-jpa-2.1-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
         </dependency>
     </dependencies>
 
@@ -76,8 +75,7 @@
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.18.10.0</delombok-maven-plugin.version>
-        <assertj-core.version>3.8.0</assertj-core.version>
+        <delombok-maven-plugin.version>1.18.20.0</delombok-maven-plugin.version>
     </properties>
 
 </project>

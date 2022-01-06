@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(properties="spring.sql.init.data-locations=classpath:import_entities.sql")
+@DataJpaTest(properties="spring.sql.init.data-locations=classpath:import_entities.sql", showSql = false)
 public class ArticleRepositoryIntegrationTest {
 
     @Autowired

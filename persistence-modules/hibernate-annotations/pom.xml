@@ -45,7 +45,6 @@
 
     <properties>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
-        <h2.version>1.4.200</h2.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <hibernate.core.version>5.4.7.Final</hibernate.core.version>

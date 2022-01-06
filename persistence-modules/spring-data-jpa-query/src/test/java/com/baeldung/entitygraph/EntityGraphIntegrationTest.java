@@ -14,7 +14,7 @@ import com.baeldung.entitygraph.model.Item;
 import com.baeldung.entitygraph.repository.CharacteristicsRepository;
 import com.baeldung.entitygraph.repository.ItemRepository;
 
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @RunWith(SpringRunner.class)
 @Sql(scripts = "/entitygraph-data.sql")
 public class EntityGraphIntegrationTest {

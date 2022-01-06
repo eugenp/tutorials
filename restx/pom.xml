@@ -147,6 +147,7 @@
 
     <properties>
         <restx.version>0.35-rc4</restx.version>
+        <assertj.version>1.6.0</assertj.version> <!-- restx requires such an old version -->
     </properties>
 
 </project>

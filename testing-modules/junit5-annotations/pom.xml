@@ -37,17 +37,10 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <log4j2.version>2.8.2</log4j2.version>
-        <assertj-core.version>3.11.1</assertj-core.version>
     </properties>
 
 </project>

@@ -2,7 +2,6 @@ package com.baeldung.mockito;
 
 import com.google.common.collect.Lists;
 
-import com.baeldung.mockito.MyList;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
@@ -13,7 +12,6 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class MockitoVerifyExamplesUnitTest {
@@ -37,7 +35,7 @@ public class MockitoVerifyExamplesUnitTest {
     @Test
     public final void givenNoInteractionWithMockOccurred_whenVerifyingInteractions_thenCorrect() {
         final List<String> mockedList = mock(MyList.class);
-        verifyZeroInteractions(mockedList);
+        verifyNoInteractions(mockedList);
     }
 
     @Test

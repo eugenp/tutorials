@@ -76,15 +76,9 @@
             <version>${metrics-aspectj.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.netflix.spectator</groupId>
             <artifactId>spectator-api</artifactId>
-            <version>0.132.0</version>
+            <version>1.0.11</version>
         </dependency>
     </dependencies>
 
@@ -95,7 +89,6 @@
         <micrometer.ver>1.7.1</micrometer.ver>
         <!-- <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version> -->
         <spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
-        <assertj-core.version>3.11.1</assertj-core.version>
         <metrics-aspectj.version>1.1.0</metrics-aspectj.version>
     </properties>
 

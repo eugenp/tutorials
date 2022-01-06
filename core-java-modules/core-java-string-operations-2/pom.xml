@@ -46,12 +46,6 @@
             <version>${javax.el.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -65,12 +59,6 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -108,7 +96,6 @@
     </build>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
         <validation-api.version>2.0.0.Final</validation-api.version>
         <guava.version>28.2-jre</guava.version>
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
