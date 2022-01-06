@@ -31,7 +31,7 @@ public class InputSequenceUnitTest {
         InputSequenceHandler inputSequenceHandler = new InputSequenceHandler(file1, file2);
         String stringValue = inputSequenceHandler.readAsString();
         inputSequenceHandler.close();
-        assertEquals(stringValue, FILE1_AND_FILE2_CONTENT);
+        assertEquals(FILE1_AND_FILE2_CONTENT, stringValue);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class InputSequenceUnitTest {
         InputSequenceHandler inputSequenceHandler = new InputSequenceHandler(filesList);
         String stringValue = inputSequenceHandler.readAsString();
         inputSequenceHandler.close();
-        assertEquals(stringValue, ALL_FILES_CONTENT);
+        assertEquals(ALL_FILES_CONTENT, stringValue);
     }
 
     @Test
