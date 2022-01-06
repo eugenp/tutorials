@@ -19,59 +19,58 @@ import java.util.List;
 
 @SpringBootApplication
 public class ClientApplication {
+    public static void main(String[] args) {
 
-        public static void main(String[] args) {
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ClientApplication.class)
+                .web(WebApplicationType.NONE)
+                .run(args);
 
-                ConfigurableApplicationContext ctx = new SpringApplicationBuilder(ClientApplication.class)
-                                .web(WebApplicationType.NONE)
-                                .run(args);
+        WebClient loadBalancedClient = ctx.getBean(WebClient.Builder.class).build();
 
-                WebClient loadBalancedClient = ctx.getBean(WebClient.Builder.class).build();
-
-                for(int i = 1; i <= 10; i++) {
-                        String response =
-                                        loadBalancedClient.get().uri("http://example-service/hello")
-                                        .retrieve().toEntity(String.class)
-                                                        .block().getBody();
-                        System.out.println(response);
-                }
+        for(int i = 1; i <= 10; i++) {
+            String response =
+                loadBalancedClient.get().uri("http://example-service/hello")
+                    .retrieve().toEntity(String.class)
+                    .block().getBody();
+            System.out.println(response);
         }
+    }
 }
 
 @Configuration
 class DemoServerInstanceConfiguration {
-        @Bean
-        ServiceInstanceListSupplier serviceInstanceListSupplier() {
-                return new DemoInstanceSupplier("example-service");
-        }
+    @Bean
+    ServiceInstanceListSupplier serviceInstanceListSupplier() {
+        return new DemoInstanceSupplier("example-service");
+    }
 }
 
 @Configuration
 @LoadBalancerClient(name = "example-service", configuration = DemoServerInstanceConfiguration.class)
 class WebClientConfig {
-        @LoadBalanced
-        @Bean
-        WebClient.Builder webClientBuilder() {
-                return WebClient.builder();
-        }
+    @LoadBalanced
+    @Bean
+    WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
+    }
 }
 
 class DemoInstanceSupplier implements ServiceInstanceListSupplier {
-        private final String serviceId;
+    private final String serviceId;
 
-        public DemoInstanceSupplier(String serviceId) {
-                this.serviceId = serviceId;
-        }
+    public DemoInstanceSupplier(String serviceId) {
+        this.serviceId = serviceId;
+    }
 
-        @Override
-        public String getServiceId() {
-                return serviceId;
-        }
+    @Override
+    public String getServiceId() {
+        return serviceId;
+    }
 
-        @Override
-        public Flux<List<ServiceInstance>> get() {
-                return Flux.just(Arrays
-                                .asList(new DefaultServiceInstance(serviceId + "1", serviceId, "localhost", 8080, false),
-                                                new DefaultServiceInstance(serviceId + "2", serviceId, "localhost", 8081, false)));
-        }
+    @Override
+    public Flux<List<ServiceInstance>> get() {
+        return Flux.just(Arrays
+            .asList(new DefaultServiceInstance(serviceId + "1", serviceId, "localhost", 8080, false),
+                    new DefaultServiceInstance(serviceId + "2", serviceId, "localhost", 8081, false)));
+    }
 }
