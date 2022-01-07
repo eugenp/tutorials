@@ -12,6 +12,11 @@
 	<artifactId>operator-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>operator-java</name>
-	<description>Demo project for Spring Boot</description>
+	<description>A short introduction to Java Operators</description>
+	
+	<properties>
+	    <maven.compiler.target>10</maven.compiler.target>
+	    <maven.compiler.source>10</maven.compiler.source>
+	</properties>
 
 </project>

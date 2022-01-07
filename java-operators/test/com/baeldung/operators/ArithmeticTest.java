@@ -8,7 +8,7 @@ public class ArithmeticTest {
 
 	
 	@Test
-	public void arithmeticAdditiveTest() {
+	public void arithmeticAdditionTest() {
 		
 		int resultSumPositive = 10 + 5;		
 		assertEquals(resultSumPositive, 15);
