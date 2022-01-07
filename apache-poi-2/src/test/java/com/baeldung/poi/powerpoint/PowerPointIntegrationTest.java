@@ -1,8 +1,5 @@
 package com.baeldung.poi.powerpoint;
 
-import java.io.File;
-import java.util.List;
-
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
@@ -13,12 +10,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import java.io.File;
+import java.util.List;
+
 public class PowerPointIntegrationTest {
 
     private PowerPointHelper pph;
     private String fileLocation;
     private static final String FILE_NAME = "presentation.pptx";
-    
+
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
