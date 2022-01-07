@@ -15,6 +15,19 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>		
+	</dependencies>
 
     <build>
         <finalName>hexagonal-example</finalName>
