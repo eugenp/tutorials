@@ -1,4 +1,4 @@
-## SAAS
+## The Hexagonal Architecture
 
 This module contains code of the article about introduction to the Hexagonal model
 
