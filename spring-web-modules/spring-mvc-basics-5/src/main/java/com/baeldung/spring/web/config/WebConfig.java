@@ -33,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
     /** Static resource locations */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**/*")
+        registry.addResourceHandler("/resources/**")
           .addResourceLocations("/", "/resources/")
           .setCachePeriod(3600)
           .resourceChain(true)
