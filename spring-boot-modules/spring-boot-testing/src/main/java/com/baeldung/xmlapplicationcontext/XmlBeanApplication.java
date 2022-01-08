@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ImportResource;
 public class XmlBeanApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(XmlBeanApplication.class, args);
+        SpringApplication.run(XmlBeanApplication.class, args);
 	}
 
 }
