@@ -3,6 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
      http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="employeeServiceTestImpl" class="com.baeldung.xmlapplicationcontext.service.EmployeeServiceTestImpl" />
+	  
+    <bean id="employeeServiceImpl" class="com.baeldung.xmlapplicationcontext.service.EmployeeServiceImpl" />
 </beans>
