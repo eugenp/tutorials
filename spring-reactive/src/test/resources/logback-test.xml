@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include
+            resource="org/springframework/boot/logging/logback/base.xml" />
+    <appender name="LISTAPPENDER"
+              class="com.baeldung.reactive.debugging.consumer.utils.ListAppender">
+    </appender>
+    <logger
+            name="com.baeldung.reactive.debugging.consumer.service.FooService">
+        <appender-ref ref="LISTAPPENDER" />
+    </logger>
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LISTAPPENDER" />
+    </root>
+</configuration>
