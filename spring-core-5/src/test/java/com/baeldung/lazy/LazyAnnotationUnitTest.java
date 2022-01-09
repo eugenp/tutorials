@@ -1,8 +1,5 @@
-package com.baeldung.Lazy;
+package com.baeldung.lazy;
 
-import com.baeldung.lazy.AppConfig;
-import com.baeldung.lazy.Country;
-import com.baeldung.lazy.Region;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
