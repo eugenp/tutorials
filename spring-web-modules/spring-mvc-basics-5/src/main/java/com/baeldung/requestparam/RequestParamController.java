@@ -1,4 +1,4 @@
-package com.baeldung.spring.requestparam;
+package com.baeldung.requestparam;
 
 import java.util.List;
 import java.util.Map;
