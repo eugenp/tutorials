@@ -5,4 +5,5 @@
 - [Concatenating Null Strings in Java](https://www.baeldung.com/java-concat-null-string)
 - [Split a String Every n Characters in Java](https://www.baeldung.com/java-string-split-every-n-characters)
 - [String equals() Vs contentEquals() in Java](https://www.baeldung.com/java-string-equals-vs-contentequals)
+- [Check if a String Ends with a Certain Pattern in Java](https://www.baeldung.com/java-string-ends-pattern)
 
