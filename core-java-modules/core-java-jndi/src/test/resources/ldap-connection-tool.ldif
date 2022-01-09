@@ -1,0 +1,34 @@
+version: 1
+dn: dc=baeldung,dc=com
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+dc: baeldung
+o: baeldung.com
+
+dn: cn=admin,dc=baeldung,dc=com
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword: password
+
+dn: uid=newton,dc=baeldung,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Isaac Newton
+sn: Newton
+uid: newton
+userPassword: password
+
+dn: uid=gauss,dc=baeldung,dc=com
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Carl Friedrich Gauss
+sn: Gauss
+uid: gauss
+userPassword: password
