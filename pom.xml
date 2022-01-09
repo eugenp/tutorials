@@ -557,7 +557,6 @@
 				<module>atomikos</module>
 				<module>reactive-systems</module>
 				<module>slack</module>
-				<module>spring-webflux-threads</module>
             </modules>
 
         </profile>
@@ -614,16 +613,19 @@
                 <module>spring-5-data-reactive</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
+                <module>spring-5-reactive-3</module>
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
+                <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-aop</module>
+                <module>spring-aop-2</module>
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
@@ -652,6 +654,7 @@
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-di-3</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1036,7 +1039,6 @@
 				<module>atomikos</module>
 				<module>reactive-systems</module>
 				<module>slack</module>
-				<module>spring-webflux-threads</module>
             </modules>
 
         </profile>
@@ -1085,15 +1087,18 @@
                 <module>spring-5-data-reactive</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
+                <module>spring-5-reactive-3</module>
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
+                <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-aop</module>
+                <module>spring-aop-2</module>
                 <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>

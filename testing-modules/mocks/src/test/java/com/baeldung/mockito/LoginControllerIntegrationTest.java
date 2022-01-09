@@ -85,7 +85,7 @@ public class LoginControllerIntegrationTest {
         Assert.assertEquals("ERROR", login);
         Mockito.verify(loginService)
             .login(userForm);
-        Mockito.verifyNoInteractions(loginService);
+        Mockito.verifyNoMoreInteractions(loginService);
     }
 
     @Test
