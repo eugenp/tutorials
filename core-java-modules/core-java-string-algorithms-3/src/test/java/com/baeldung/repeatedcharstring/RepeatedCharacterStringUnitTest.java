@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 
-import static ch.qos.logback.core.CoreConstants.EMPTY_STRING;
 import static java.util.stream.Stream.generate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -73,14 +72,14 @@ class RepeatedCharacterStringUnitTest {
     @Test
     void givenString_whenStringJoinUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = String.join(EMPTY_STRING, Collections.nCopies(N, charToAppend));
+        String newString = String.join("", Collections.nCopies(N, charToAppend));
         assertEquals(EXPECTED_STRING, newString);
     }
 
     @Test
     void givenString_whenGuavaJoinerUsed_thenStringCreated() {
         String charToAppend = "a";
-        String newString = Joiner.on(EMPTY_STRING).join(Collections.nCopies(N, charToAppend));
+        String newString = Joiner.on("").join(Collections.nCopies(N, charToAppend));
         assertEquals(EXPECTED_STRING, newString);
     }
 
