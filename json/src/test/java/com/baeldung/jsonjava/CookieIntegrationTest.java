@@ -1,19 +1,21 @@
 package com.baeldung.jsonjava;
 
+import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 
 import org.json.Cookie;
 import org.json.JSONObject;
 import org.junit.Test;
 
 public class CookieIntegrationTest {
+
     @Test
     public void givenCookieString_thenConvertToJSONObject() {
         String cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
         JSONObject cookieJO = Cookie.toJSONObject(cookie);
 
-        assertEquals("{\"path\":\"/\",\"expires\":\"Thu, 18 Dec 2013 12:00:00 UTC\",\"name\":\"username\",\"value\":\"John Doe\"}", cookieJO.toString());
+        assertThatJson(cookieJO)
+          .isEqualTo("{\"path\":\"/\",\"expires\":\"Thu, 18 Dec 2013 12:00:00 UTC\",\"name\":\"username\",\"value\":\"John Doe\"}");
     }
 
     @Test
