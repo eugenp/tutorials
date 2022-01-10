@@ -46,7 +46,7 @@
             </resource>
         </resources>
     </build>
-    
+
     <properties>
         <icu.version>64.2</icu.version>
         <commons-text.version>1.9</commons-text.version>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-2</artifactId>
     <packaging>jar</packaging>
@@ -13,12 +13,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-
-    <properties>
-        <log4j2.version>2.14.1</log4j2.version>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.compiler.source>11</maven.compiler.source>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -66,4 +60,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <log4j2.version>2.14.1</log4j2.version>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+    </properties>
+
 </project>
