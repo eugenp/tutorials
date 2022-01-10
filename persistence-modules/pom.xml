@@ -60,6 +60,7 @@
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
+        <module>spring-data-cassandra-2</module>
         <module>spring-data-cassandra-test</module>
         <module>spring-data-cassandra-reactive</module>
         <module>spring-data-cosmosdb</module>
