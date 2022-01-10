@@ -14,8 +14,9 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class JUnit4ParameterizedTestNameUnitTest {
 
-    private final String input;
-    private final String expected;
+    private String input;
+    private String expected;
+
     @Rule
     public TestName name = new TestName();
 
