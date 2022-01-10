@@ -1384,12 +1384,14 @@
                 <module>core-java-modules/core-java-jpms</module>
                 <module>core-java-modules/core-java-os</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
+                <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>persistence-modules/sirix</module>
                 <module>quarkus-vs-springboot</module>
+                <module>quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>testing-modules/testing-assertions</module>
             </modules>
