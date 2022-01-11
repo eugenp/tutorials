@@ -532,7 +532,6 @@
                 <module>osgi</module>
 
                 <module>patterns</module>
-                <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
@@ -1014,7 +1013,6 @@
                 <module>osgi</module>
 
                 <module>patterns</module>
-                <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
