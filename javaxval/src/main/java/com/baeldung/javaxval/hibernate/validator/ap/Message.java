@@ -1,9 +1,5 @@
 package com.baeldung.javaxval.hibernate.validator.ap;
 
-import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -19,7 +15,9 @@ public class Message {
 
     private List<@NotBlank String> recipients;
 
-    @Past
+    // uncomment in order to trigger AP annotation detection
+    // The annotation @Past is disallowed for this data type.
+    // @Past
     private String createdAt;
 
     public String getContent() {
@@ -33,16 +31,29 @@ public class Message {
         this.createdAt = createdAt;
     }
 
-    @AssertTrue
+    // uncomment in order to trigger AP annotation detection
+    // The annotation @Min is disallowed for the return type of this method.
+    // @Min(3)
     public boolean broadcast() {
         // setup a logic
         // to send to recipients
         return true;
     }
 
-    @Validated
+    // uncomment in order to trigger AP annotation detection
+    // Void methods may not be annotated with constraint annotations.
+    // @NotNull
     public void archive() {
         // archive the message
+    }
+
+    // uncomment in order to trigger AP annotation detection
+    // Constraint annotations must not be specified at methods, which are no valid JavaBeans getter methods.
+    // NOTE: add <arg>-AmethodConstraintsSupported=false</arg> to compiler args before
+    // @AssertTrue
+    public boolean delete() {
+        // delete the message
+        return false;
     }
 
     public void setContent(String content) {

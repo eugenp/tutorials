@@ -65,7 +65,7 @@
 
     <properties>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
-        <hibernate-validator.ap.version>7.0.2.Final</hibernate-validator.ap.version>
+        <hibernate-validator.ap.version>6.2.0.Final</hibernate-validator.ap.version>
         <maven.compiler.version>3.6.1</maven.compiler.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
