@@ -75,6 +75,7 @@
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>
+        <module>spring-data-jpa-query-3</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
