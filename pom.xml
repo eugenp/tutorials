@@ -503,6 +503,7 @@
                 <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok</module>
+                <module>lombok-2</module>
                 <module>lombok-custom</module>
                 <module>lucene</module>
 
@@ -984,6 +985,7 @@
                 <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok</module>
+                <module>lombok-2</module>
                 <module>lombok-custom</module>
                 <module>lucene</module>
 
