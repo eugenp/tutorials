@@ -17,9 +17,10 @@ public class Data {
             }
         }
         transfer = true;
-
+        
+        String returnPacket = packet;
         notifyAll();
-        return packet;
+        return returnPacket;
     }
  
     public synchronized void send(String packet) {
