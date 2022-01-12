@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import com.baeldung.boot.customRepository.model.User;
 
-public class CustomUserRepositoryImp implements CustomUserRepository {
+public class CustomUserRepositoryImpl implements CustomUserRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
