@@ -1,8 +1,0 @@
-spring:
-  security:
-    oauth2:
-      resource-server:
-        opaque-token:
-          introspection-uri: https://example.com/introspect
-          client-id: OeW9oBO1zN9xnLIM8R6QdCRQdWKvspIM
-          client-secret: N5S05FqyibNBMIDTaH_UrPR1RjI7MH7YHNe1he-vB6own5mQlrdQS8q9LAXj_rkA
