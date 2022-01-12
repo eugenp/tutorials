@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class ArithmeticTest {
 
     @Test
-    public void whenUseTheOperatorArithmeticAdditionToConcatenate() {
+    void whenUseTheOperatorArithmeticAdditionToConcatenate() {
 
         String sentence = "Hello world!";
         String wordsConcatenated = "Hello " + "world" + "!";
