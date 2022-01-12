@@ -69,12 +69,12 @@ public class EqualityAndRealationalTest {
     }
 
     @Test
-    public void whenUseTheOperatorGreaterThanOrEqualTo() {
+    public void whenUseTheOperatorLessThan() {
 
         int grade = 3;
         String result = "";
 
-        if (grade >= 3) {
+        if (grade <= 3) {
             result = "The guest is VIP";
         } else {
             result = "The guest isn't VIP";

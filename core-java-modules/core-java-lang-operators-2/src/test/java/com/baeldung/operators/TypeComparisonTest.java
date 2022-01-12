@@ -8,8 +8,6 @@ import com.baeldung.operators.model.Airplane;
 import com.baeldung.operators.model.Car;
 import com.baeldung.operators.model.Transport;
 
-
-
 public class TypeComparisonTest {
 
     @Test
@@ -29,7 +27,7 @@ public class TypeComparisonTest {
         assertEquals(car instanceof Transport, true);
 
     }
-    
+
     @Test
     public void whenAirplaneIsATypeOfTransport() {
 
@@ -47,7 +45,7 @@ public class TypeComparisonTest {
         assertEquals(transport instanceof Car, true);
 
     }
-    
+
     @Test
     public void whenTransportCanBeAirplane() {
 
