@@ -9,7 +9,7 @@ public class Airplane extends Transport {
 
     @Override
     public String getName() {
-        return "arplane";
+        return "airplane";
     }
 
     public boolean isPrivate() {
