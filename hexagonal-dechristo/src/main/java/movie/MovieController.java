@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 public class MovieController {
 
     @Autowired
-    MovieServiceAdapter movieServiceAdapter;
+    MovieOracleRepositoryAdapter movieOracleRepositoryAdapter;
 
     @GetMapping("/{title}")
     public ResponseEntity<Movie> getProductById(@PathVariable String title) {
-        return new ResponseEntity<Movie>(movieServiceAdapter.getByTitle(title), HttpStatus.OK);
+        return new ResponseEntity<Movie>(movieOracleRepositoryAdapter.getByTitle(title), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<Movie> add(@RequestBody Movie movie) {
-       return new ResponseEntity<Movie>(movieServiceAdapter.add(movie), HttpStatus.OK);
+       return new ResponseEntity<Movie>(movieOracleRepositoryAdapter.add(movie), HttpStatus.OK);
     }
 }

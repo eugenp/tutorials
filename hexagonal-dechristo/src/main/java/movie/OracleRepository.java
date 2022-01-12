@@ -1,25 +1,20 @@
 package movie;
 
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class MovieServiceAdapter implements MovieService{
-
+public class OracleRepository implements MovieRepository{
     @Override
     public Movie getByTitle(String title) {
-        return new Movie();
+        return null;
     }
 
     @Override
     public List<Movie> searchByTitle(String title) {
-        return new ArrayList<>();
+        return null;
     }
 
     @Override
     public Movie add(Movie movie) {
-        return new Movie();
+        return null;
     }
 }
