@@ -1,4 +1,4 @@
-package com.baeldung.longpolling.integration;
+package com.baeldung.longpolling;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
