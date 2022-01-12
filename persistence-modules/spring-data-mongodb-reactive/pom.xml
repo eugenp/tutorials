@@ -57,6 +57,7 @@
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${embed.mongo.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -126,6 +127,7 @@
         <spring-tx.version>5.3.13</spring-tx.version>
         <httpclient.version>4.5.2</httpclient.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
+        <embed.mongo.version>3.2.6</embed.mongo.version>
     </properties>
 
 </project>
