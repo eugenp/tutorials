@@ -13,7 +13,7 @@ public class ConditionalTest {
         boolean driverLicence = true;
         String result = "";
 
-        if ((years >= 21 && driverLicence)) {
+        if (years >= 21 && driverLicence) {
             result = "Successful Candidate.";
         } else {
             result = "Failed Candidate.";
