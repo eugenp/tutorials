@@ -9,7 +9,7 @@ import org.springframework.web.reactive.function.client.WebClientRequestExceptio
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class RequestTimeoutTests {
+public class RequestTimeoutIntegrationTest {
 
     private static final WebClient WEB_CLIENT = WebClient.builder().baseUrl("http://localhost:8080").build();
 
