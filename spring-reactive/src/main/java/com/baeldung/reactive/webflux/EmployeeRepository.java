@@ -1,6 +1,5 @@
 package com.baeldung.reactive.webflux;
 
-import com.baeldung.reactive.webflux.Employee;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
