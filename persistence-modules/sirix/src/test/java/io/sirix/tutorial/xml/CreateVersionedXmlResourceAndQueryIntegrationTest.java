@@ -1,16 +1,9 @@
 package io.sirix.tutorial.xml;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.api.ResourceManager;
@@ -25,28 +18,29 @@ import org.sirix.axis.visitor.VisitorDescendantAxis;
 import org.sirix.node.immutable.xdm.ImmutableElement;
 import org.sirix.node.immutable.xdm.ImmutableText;
 
-public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
-    private static final String TMP_DIRECTORY = System.getProperty("java.io.tmpdir");
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-    private static final Path DATABASE_PATH = Paths.get(TMP_DIRECTORY, "sirix", "xml-database");
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public final class CreateVersionedXmlResourceAndQueryIntegrationTest {
+
+    @Rule
+    public TemporaryFolder tempDirectory = new TemporaryFolder();
+
+    private Path databasePath;
 
     @Before
-    public void setUp() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
+    public void setUp() {
+        databasePath = Paths.get(tempDirectory.getRoot().getPath(), "sirix", "xml-database");
     }
 
     @Test
-    public void createVersionedResourceAndQueryWithTheVisitoDescendantAxis() throws IOException {
-        Databases.createXmlDatabase(new DatabaseConfiguration(DATABASE_PATH));
+    public void createVersionedResourceAndQueryWithTheVisitToDescendantAxis() {
+        Databases.createXmlDatabase(new DatabaseConfiguration(databasePath));
 
-        try (final var database = Databases.openXmlDatabase(DATABASE_PATH)) {
+        try (final var database = Databases.openXmlDatabase(databasePath)) {
             VersionedXmlDocumentCreator.create(database);
 
             try (final var manager = database.openResourceManager("resource");
