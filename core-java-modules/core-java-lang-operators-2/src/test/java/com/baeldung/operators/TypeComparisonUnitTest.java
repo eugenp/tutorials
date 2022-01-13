@@ -8,7 +8,7 @@ import com.baeldung.operators.model.Airplane;
 import com.baeldung.operators.model.Car;
 import com.baeldung.operators.model.Transport;
 
-public class TypeComparisonTest {
+public class TypeComparisonUnitTest {
 
     @Test
     public void whenCarIsNotTheSameTypeOfAirplane() {

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class EqualityAndRealationalTest {
+public class EqualityAndRealationalUnitTest {
 
     @Test
     public void whenUseTheOperatorGreaterThanorEqualTo() {

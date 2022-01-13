@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class ConditionalTest {
+public class ConditionalUnitTest {
 
     @Test
     public void whenUseTheOperatorConditionalIncluive() {

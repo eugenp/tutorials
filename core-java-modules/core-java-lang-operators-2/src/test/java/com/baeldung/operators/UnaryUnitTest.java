@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class UnaryTest {
+public class UnaryUnitTest {
 
     @Test
     public void whenUseTheOperatorMinusToChangeTheSignOfANumber() {
