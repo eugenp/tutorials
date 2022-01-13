@@ -777,6 +777,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
+                <module>spring-ejb/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -1240,6 +1241,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
+                <module>spring-ejb/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
