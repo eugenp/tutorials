@@ -1,12 +1,11 @@
-package com.baeldung.boot.customRepository.repository;
+package com.baeldung.spring.data.persistence.customrepository.repository;
 
-import java.util.Objects;
+import com.baeldung.spring.data.persistence.customrepository.model.User;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import com.baeldung.boot.customRepository.model.User;
+import java.util.Objects;
 
 public class CustomUserRepositoryImpl implements CustomUserRepository {
 
@@ -15,9 +14,9 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
 
     @Override
     public User customFindMethod(Long id) {
-        return (User) entityManager.createQuery("from User u where u.id = :id")
-            .setParameter("id", id)
-            .getSingleResult();
+        return (User) entityManager.createQuery("FROM User u WHERE u.id = :id")
+                .setParameter("id", id)
+                .getSingleResult();
     }
 
     @PostConstruct

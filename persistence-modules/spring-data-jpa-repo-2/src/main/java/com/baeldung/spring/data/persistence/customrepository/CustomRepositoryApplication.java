@@ -1,4 +1,4 @@
-package com.baeldung.boot.customRepository;
+package com.baeldung.spring.data.persistence.customrepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
