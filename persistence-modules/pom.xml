@@ -98,7 +98,6 @@
     <properties>
         <!-- persistence -->
         <hibernate.version>5.2.17.Final</hibernate.version>
-
         <postgresql.version>42.2.20</postgresql.version>
     </properties>
 

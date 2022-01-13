@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>ShippingFunction</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
     <name>ShippingFunction</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
