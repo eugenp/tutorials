@@ -1,16 +1,9 @@
 package io.sirix.tutorial.xml;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
@@ -24,6 +17,15 @@ import org.sirix.axis.filter.FilterAxis;
 import org.sirix.axis.filter.xml.XdmNameFilter;
 import org.sirix.service.xml.shredder.XmlShredder;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Note that this simple test shows, that the higher level XQuery-API is much more user-friendly, when chaining
  * axis is required.
@@ -32,20 +34,14 @@ public class QueryXmlResourceWithConcurrentAxisIntegrationTest {
 
     private static final Path XML_DIRECTORY = Paths.get("src", "test", "resources", "xml");
 
-    private static final String TMP_DIRECTORY = System.getProperty("java.io.tmpdir");
+    @Rule
+    public TemporaryFolder tempDirectory = new TemporaryFolder();
 
-    private static final Path DATABASE_PATH = Paths.get(TMP_DIRECTORY, "sirix", "xml-database");
+    private Path databasePath;
 
     @Before
-    public void setUp() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
+    public void setUp() {
+        databasePath = Paths.get(tempDirectory.getRoot().getPath(), "sirix", "xml-database");
     }
 
     @Test
@@ -53,10 +49,10 @@ public class QueryXmlResourceWithConcurrentAxisIntegrationTest {
         final var pathToXmlFile = XML_DIRECTORY.resolve("regions.xml");
 
         // Create an empty XML database.
-        Databases.createXmlDatabase(new DatabaseConfiguration(DATABASE_PATH));
+        Databases.createXmlDatabase(new DatabaseConfiguration(databasePath));
 
         // Open the database.
-        try (final var database = Databases.openXmlDatabase(DATABASE_PATH)) {
+        try (final var database = Databases.openXmlDatabase(databasePath)) {
             // Create a resource to store an XML-document.
             database.createResource(ResourceConfiguration.newBuilder("resource")
                     .useTextCompression(false)
@@ -96,10 +92,10 @@ public class QueryXmlResourceWithConcurrentAxisIntegrationTest {
                 final var resultNumber = 55;
 
                 for (int i = 0; i < resultNumber; i++) {
-                    assertEquals(true, axis.hasNext());
+                    assertTrue(axis.hasNext());
                     axis.next();
                 }
-                assertEquals(false, axis.hasNext());
+                assertFalse(axis.hasNext());
             }
         }
     }
