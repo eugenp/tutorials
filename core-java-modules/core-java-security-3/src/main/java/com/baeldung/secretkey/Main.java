@@ -14,6 +14,7 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
+import java.security.InvalidParameterException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -39,47 +40,25 @@ public class Main {
         encrypt(plainText, getSecureRandomKey(CIPHER, 192));
         encrypt(plainText, getSecureRandomKey(CIPHER, 256));
 
-        encrypt(plainText, getKeyGeneratorKey(CIPHER, 128));
-        encrypt(plainText, getKeyGeneratorKey(CIPHER, 192));
-        encrypt(plainText, getKeyGeneratorKey(CIPHER, 256));
+        encrypt(plainText, getKeyFromKeyGenerator(CIPHER, 128));
+        encrypt(plainText, getKeyFromKeyGenerator(CIPHER, 192));
+        encrypt(plainText, getKeyFromKeyGenerator(CIPHER, 256));
 
-        encrypt(plainText, getKeyFromPassword(CIPHER, 128, new char[] {'R', 'a', 'n', 'd', 'o', 'm'}));
-        encrypt(plainText, getKeyFromPassword(CIPHER, 192, new char[] {'R', 'a', 'n', 'd', 'o', 'm'}));
-        encrypt(plainText, getKeyFromPassword(CIPHER, 256, new char[] {'R', 'a', 'n', 'd', 'o', 'm'}));
-    }
+        encrypt(plainText, getPasswordBasedKey(CIPHER, 128, new char[] { 'R', 'a', 'n', 'd', 'o', 'm' }));
+        encrypt(plainText, getPasswordBasedKey(CIPHER, 192, new char[] { 'R', 'a', 'n', 'd', 'o', 'm' }));
+        encrypt(plainText, getPasswordBasedKey(CIPHER, 256, new char[] { 'R', 'a', 'n', 'd', 'o', 'm' }));
 
-    private static Key getRandomKey(String cipher, int keySize) {
-        byte[] randomKeyBytes = new byte[keySize / 8];
-        Random random = new Random();
-        random.nextBytes(randomKeyBytes);
+        try {
+            encrypt(plainText, getSecureRandomKey(CIPHER, 111));
+        } catch (InvalidKeyException e) {
+            logger.error("Unable to generate key", e);
+        }
 
-        return new SecretKeySpec(randomKeyBytes, cipher);
-    }
-
-    private static Key getSecureRandomKey(String cipher, int keySize) {
-        byte[] secureRandomKeyBytes = new byte[keySize / 8];
-        SecureRandom secureRandom = new SecureRandom();
-        secureRandom.nextBytes(secureRandomKeyBytes);
-
-        return new SecretKeySpec(secureRandomKeyBytes, cipher);
-    }
-
-    private static Key getKeyGeneratorKey(String cipher, int keySize) throws NoSuchAlgorithmException {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance(cipher);
-        keyGenerator.init(keySize);
-        Key key = keyGenerator.generateKey();
-
-        return new SecretKeySpec(key.getEncoded(), cipher);
-    }
-
-    private static Key getKeyFromPassword(String cipher, int keySize, char[] password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        Random random = new Random();
-        byte[] salt = new byte[100];
-        random.nextBytes(salt);
-        PBEKeySpec pbeKeySpec = new PBEKeySpec(password, salt, 10, keySize);
-        SecretKey pbeKey = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1").generateSecret(pbeKeySpec);
-
-        return new SecretKeySpec(pbeKey.getEncoded(), cipher);
+        try {
+            encrypt(plainText, getKeyFromKeyGenerator(CIPHER, 111));
+        } catch (InvalidParameterException e) {
+            logger.error("Unable to generate key", e);
+        }
     }
 
     private static void encrypt(String plainText, Key key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
@@ -87,5 +66,34 @@ public class Main {
         cipher.init(ENCRYPT_MODE, key);
         byte[] cipherTextBytes = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
         logger.info(Base64.getEncoder().encodeToString(cipherTextBytes));
+    }
+
+    private static Key getRandomKey(String cipher, int keySize) {
+        byte[] randomKeyBytes = new byte[keySize / 8];
+        Random random = new Random();
+        random.nextBytes(randomKeyBytes);
+        return new SecretKeySpec(randomKeyBytes, cipher);
+    }
+
+    private static Key getSecureRandomKey(String cipher, int keySize) {
+        byte[] secureRandomKeyBytes = new byte[keySize / 8];
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.nextBytes(secureRandomKeyBytes);
+        return new SecretKeySpec(secureRandomKeyBytes, cipher);
+    }
+
+    private static Key getKeyFromKeyGenerator(String cipher, int keySize) throws NoSuchAlgorithmException {
+        KeyGenerator keyGenerator = KeyGenerator.getInstance(cipher);
+        keyGenerator.init(keySize);
+        return keyGenerator.generateKey();
+    }
+
+    private static Key getPasswordBasedKey(String cipher, int keySize, char[] password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        byte[] salt = new byte[100];
+        SecureRandom random = new SecureRandom();
+        random.nextBytes(salt);
+        PBEKeySpec pbeKeySpec = new PBEKeySpec(password, salt, 100000, keySize);
+        SecretKey pbeKey = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256").generateSecret(pbeKeySpec);
+        return new SecretKeySpec(pbeKey.getEncoded(), cipher);
     }
 }
