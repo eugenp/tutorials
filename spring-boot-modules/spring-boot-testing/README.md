@@ -15,4 +15,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Prevent ApplicationRunner or CommandLineRunner Beans From Executing During Junit Testing](https://www.baeldung.com/spring-junit-prevent-runner-beans-testing-execution)
 - [Testing in Spring Boot](https://www.baeldung.com/spring-boot-testing)
 - [Fixing the NoSuchMethodError JUnit Error](https://www.baeldung.com/junit-nosuchmethoderror)
+- [Failed to Load ApplicationContext for JUnit Test of Spring Controller](https://www.baeldung.com/spring-junit-failed-to-load-applicationcontext)
 - More articles: [[more -->]](../spring-boot-testing-2)
