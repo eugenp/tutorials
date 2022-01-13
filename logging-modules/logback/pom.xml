@@ -67,17 +67,9 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <logback.contrib.version>0.1.5</logback.contrib.version>
-        <docx4j.version>3.3.5</docx4j.version>
-        <javax.mail.version>1.4.7</javax.mail.version>
-        <javax.activation.version>1.1.1</javax.activation.version>
-    </properties>
-
     <profiles>
         <profile>
             <id>integration-lite-first</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -94,7 +86,6 @@
         </profile>
         <profile>
             <id>integration-lite-second</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -110,4 +101,12 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <logback.contrib.version>0.1.5</logback.contrib.version>
+        <docx4j.version>3.3.5</docx4j.version>
+        <javax.mail.version>1.4.7</javax.mail.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+    </properties>
+
 </project>

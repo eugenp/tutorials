@@ -70,7 +70,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-mvc-xml</finalName>
+        <finalName>spring-mvc-xml-2</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
