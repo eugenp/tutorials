@@ -118,7 +118,6 @@
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
         <module>pre-jpms</module>
-        <module>core-java-finding-class</module>
     </modules>
 
     <dependencyManagement>
