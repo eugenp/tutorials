@@ -96,7 +96,8 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, compatible with latest JDK, is released. -->
+        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, 
+            compatible with latest JDK, is released. -->
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -115,7 +116,8 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
-        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, compatible with latest JDK, is released. -->
+        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, 
+            compatible with latest JDK, is released. -->
         <pluginRepository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>

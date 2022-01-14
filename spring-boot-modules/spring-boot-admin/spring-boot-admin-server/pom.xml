@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-admin-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-boot-admin-server</name>
+    <packaging>jar</packaging>
     <description>Spring Boot Admin Server</description>
 
     <parent>
