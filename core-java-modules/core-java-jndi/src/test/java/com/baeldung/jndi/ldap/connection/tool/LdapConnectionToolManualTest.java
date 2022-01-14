@@ -1,4 +1,4 @@
-package com.baeldung.jndi.ldap.connectionTool;
+package com.baeldung.jndi.ldap.connection.tool;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -33,21 +33,21 @@ public class LdapConnectionToolManualTest extends AbstractLdapTestUnit {
 
     @Test
     public void whenNoUrlProvided_thenConnectionFails() throws Exception {
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> LdapConnectionTool.main(null));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> LdapConnectionTool.execute());
     }
 
     @Test
     public void givenUrlProvided_whenValidUrl_thenConnectionSucceeds() throws Exception {
         System.setProperty("url", "ldap://localhost:10389");
 
-        assertThatCode(() -> LdapConnectionTool.main(null)).doesNotThrowAnyException();
+        assertThatCode(() -> LdapConnectionTool.execute()).doesNotThrowAnyException();
     }
 
     @Test
     public void givenUrlProvided_whenInvalidUrl_thenConnectionFails() throws Exception {
         System.setProperty("url", "ldap://unkownhost:10389");
 
-        assertThatExceptionOfType(NamingException.class).isThrownBy(() -> LdapConnectionTool.main(null));
+        assertThatExceptionOfType(NamingException.class).isThrownBy(() -> LdapConnectionTool.execute());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class LdapConnectionToolManualTest extends AbstractLdapTestUnit {
         System.setProperty("user", "uid=gauss,dc=baeldung,dc=com");
         System.setProperty("password", "password");
 
-        assertThatCode(() -> LdapConnectionTool.main(null)).doesNotThrowAnyException();
+        assertThatCode(() -> LdapConnectionTool.execute()).doesNotThrowAnyException();
     }
 
     @Test
@@ -64,7 +64,7 @@ public class LdapConnectionToolManualTest extends AbstractLdapTestUnit {
         System.setProperty("url", "ldap://localhost:10389");
         System.setProperty("user", "uid=gauss,dc=baeldung,dc=com");
 
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> LdapConnectionTool.main(null));
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> LdapConnectionTool.execute());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LdapConnectionToolManualTest extends AbstractLdapTestUnit {
         System.setProperty("url", "ldap://localhost:10389");
         System.setProperty("query", "uid=gauss,dc=baeldung,dc=com");
 
-        assertThatCode(() -> LdapConnectionTool.main(null)).doesNotThrowAnyException();
+        assertThatCode(() -> LdapConnectionTool.execute()).doesNotThrowAnyException();
     }
 
     @Test
@@ -82,6 +82,6 @@ public class LdapConnectionToolManualTest extends AbstractLdapTestUnit {
         System.setProperty("password", "password");
         System.setProperty("query", "uid=newton,dc=baeldung,dc=com");
 
-        assertThatCode(() -> LdapConnectionTool.main(null)).doesNotThrowAnyException();
+        assertThatCode(() -> LdapConnectionTool.execute()).doesNotThrowAnyException();
     }
 }
