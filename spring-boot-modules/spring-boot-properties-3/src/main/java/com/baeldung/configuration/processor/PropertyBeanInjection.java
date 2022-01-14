@@ -1,7 +1,7 @@
 package com.baeldung.configuration.processor;
 
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class PropertyBeanInjection {
