@@ -533,6 +533,7 @@
                 <module>osgi</module>
 
                 <module>patterns</module>
+                <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
@@ -777,6 +778,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
+                <module>spring-ejb/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -1015,6 +1017,7 @@
                 <module>osgi</module>
 
                 <module>patterns</module>
+                <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
@@ -1240,6 +1243,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
+                <module>spring-ejb/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
