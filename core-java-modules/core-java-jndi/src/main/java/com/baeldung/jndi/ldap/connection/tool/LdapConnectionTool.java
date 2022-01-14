@@ -11,8 +11,8 @@ import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 
 public class LdapConnectionTool {
-    private static boolean DEBUG_MODE = Boolean.valueOf(System.getProperty("debug.mode", "false"));
-    private static String QUERY = "query";
+    private static final boolean DEBUG_MODE = Boolean.parseBoolean(System.getProperty("debug.mode", "false"));
+    private static final String QUERY = "query";
 
     public static void main(String[] args) throws NamingException {
         execute();
@@ -94,7 +94,7 @@ public class LdapConnectionTool {
             throw new IllegalArgumentException("please provide 'url' system property");
         }
 
-        Hashtable<String, String> env = new Hashtable<String, String>();
+        Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, factory);
         env.put("com.sun.jndi.ldap.read.timeout", "5000");
         env.put("com.sun.jndi.ldap.connect.timeout", "5000");
