@@ -44,4 +44,14 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public Book(UUID id, String title, String author, String isbn) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+    }
+
+    public Book() {
+    }
 }
