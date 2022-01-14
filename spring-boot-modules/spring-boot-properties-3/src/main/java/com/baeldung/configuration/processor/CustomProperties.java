@@ -1,7 +1,7 @@
 package com.baeldung.configuration.processor;
 
-import org.springframework.boot.context.properties.*;
-import org.springframework.context.annotation.*;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix = "com.baeldung")
