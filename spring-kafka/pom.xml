@@ -26,12 +26,10 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>${spring-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
-            <version>${kafka.streams.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -44,7 +42,6 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka-test</artifactId>
-            <version>${spring-kafka.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -67,10 +64,7 @@
     </dependencies>
 
     <properties>
-        <spring-kafka.version>2.7.8</spring-kafka.version>
-        <kafka.streams.version>2.7.1</kafka.streams.version>
-        <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
-        <spring-boot.version>2.5.4</spring-boot.version>
+        <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
     </properties>
 
 </project>
