@@ -90,12 +90,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
-        
+
         <dependency>
-            <groupId>com.nimbusds</groupId>
-            <artifactId>oauth2-oidc-sdk</artifactId>
-            <version>${oauth2-oidc-sdk.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
+        
+<!--         <dependency> -->
+<!--             <groupId>com.nimbusds</groupId> -->
+<!--             <artifactId>oauth2-oidc-sdk</artifactId> -->
+<!--             <version>${oauth2-oidc-sdk.version}</version> -->
+<!--         </dependency> -->
         
         <!--  lombok -->
         <dependency>

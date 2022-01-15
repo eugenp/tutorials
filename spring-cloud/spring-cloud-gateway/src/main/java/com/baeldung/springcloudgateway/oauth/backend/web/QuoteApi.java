@@ -26,7 +26,7 @@ public class QuoteApi {
         log.info("[I22] >>> onPostConstruct");
     }
 
-    @GetMapping("api/{symbol}")
+    @GetMapping("/quotes/{symbol}")
     public Mono<Quote> getQuote(@PathVariable("symbol") String symbol, BearerTokenAuthentication auth ) {
         
         Quote q = new Quote();
@@ -38,8 +38,6 @@ public class QuoteApi {
         else {
             q.setPrice(12.0);
         }
-        
-        
         return Mono.just(q);
     }
     

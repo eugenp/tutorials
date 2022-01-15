@@ -1,0 +1,26 @@
+server:
+  port: 8087
+spring:
+  cloud:
+    gateway:
+      redis:
+        enabled: false
+      routes:
+      - id: quotes
+        uri: http://localhost:8085
+        predicates:
+        - Path=/quotes/**
+        filters:        - TokenRelay=
+  security:
+    oauth2:
+      client:        provider:          keycloak:
+            issuer-uri: http://localhost:8083/auth/realms/baeldung
+        registration:          quotes-client:
+            provider: keycloak
+            client-id: quotes-client
+            client-secret: 56be94c8-b20a-4374-899c-e39cb022d3f8
+            scope:            - email
+            - profile
+            - roles
+
+          
