@@ -9,8 +9,8 @@ This module contains articles about CRUD operations in Spring Data JPA
 - [Spring Data JPA Batch Inserts](https://www.baeldung.com/spring-data-jpa-batch-inserts)
 - [Batch Insert/Update with Hibernate/JPA](https://www.baeldung.com/jpa-hibernate-batch-insert-update)
 - [Difference Between save() and saveAndFlush() in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-save-saveandflush)
-- [Generate Database Schema with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-generate-db-schema)
 - [How to Implement a Soft Delete with Spring JPA](https://www.baeldung.com/spring-jpa-soft-delete)
+- More articles: [[next-->]](/spring-data-jpa-crud-2)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
