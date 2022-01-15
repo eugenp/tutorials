@@ -4,7 +4,7 @@ This module contains articles about CRUD operations in Spring Data JPA
 
 ### Relevant Articles: 
 - [Generate Database Schema with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-generate-db-schema)
-- More articles: [[<--prev]](/spring-data-jpa-crud)
+- More articles: [[<--prev]](/persistence-modules/spring-data-jpa-crud)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
