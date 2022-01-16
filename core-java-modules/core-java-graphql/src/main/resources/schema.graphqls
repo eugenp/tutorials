@@ -1,0 +1,12 @@
+type Book {
+  title: String!
+  author: String!
+}
+
+type Query {
+  allBooks: [Book]
+}
+
+schema {
+  query: Query
+}
