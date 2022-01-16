@@ -3,9 +3,9 @@ package com.baeldung.graphql.data;
 public class Book {
 
     private final String title;
-    private final String author;
+    private final Author author;
 
-    public Book(String title, String author) {
+    public Book(String title, Author author) {
         this.title = title;
         this.author = author;
     }
@@ -14,7 +14,7 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 

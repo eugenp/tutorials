@@ -11,8 +11,8 @@ public class BookRepository {
     public BookRepository() {
         if (books == null) {
             books = new ArrayList<>();
-            books.add(new Book("Title 1", "Author 1"));
-            books.add(new Book("Title 2", "Author 2"));
+            books.add(new Book("Title 1", new Author("Pero", "Peric")));
+            books.add(new Book("Title 2", new Author("Marko", "Maric")));
         }
     }
 

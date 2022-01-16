@@ -39,8 +39,8 @@ class GraphQLMockServer {
     }
 
     private static void mockAllBooksTitleAuthorRequest() {
-        String requestQuery = "{allBooks{title,author}}";
-        String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\",\"author\":\"Author 1\"},{\"title\":\"Title 2\",\"author\":\"Author 2\"}]}}";
+        String requestQuery = "{allBooks{title,author{name,surname}}}";
+        String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\",\"author\":{\"name\":\"Pero\",\"surname\":\"Peric\"}},{\"title\":\"Title 2\",\"author\":{\"name\":\"Marko\",\"surname\":\"Maric\"}}]}}";
 
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
