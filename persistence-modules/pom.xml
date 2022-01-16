@@ -71,6 +71,7 @@
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
+        <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
