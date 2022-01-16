@@ -3,7 +3,10 @@ package com.baeldung.graphql;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.jupiter.api.AfterAll;
@@ -16,6 +19,8 @@ import org.mockserver.model.HttpStatusCode;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
 import static org.mockserver.model.HttpRequest.request;
@@ -28,7 +33,8 @@ import static org.assertj.core.api.Assertions.*;
 class DemoUnitTest {
 
     private static final String SERVER_ADDRESS = "127.0.0.1";
-    public static final String HTTP_METHOD_POST = "POST";
+    public static final String HTTP_GET_POST = "GET";
+    public static final String QUERY_PARAMETER = "query";
     private static int serverPort;
     private static ClientAndServer mockServer;
 
@@ -50,17 +56,17 @@ class DemoUnitTest {
     }
 
     @Test
-    void given_when_then() throws IOException {
-        String requestJson = "{username: 'foo'}";
-        String responseJson = "{message: 'ok'}";
-        String path = "/test";
+    void given_when_then() throws IOException, URISyntaxException {
+        String requestQuery = "{allBooks{title}}";
+        String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\"},{\"title\":\"Title 2\"}]}}";
+        String path = "/graphql";
 
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withMethod(HTTP_METHOD_POST)
+              .withMethod(HTTP_GET_POST)
               .withPath(path)
-              .withBody(exact(requestJson)),
+              .withQueryStringParameter(QUERY_PARAMETER, requestQuery),
             exactly(1)
           )
           .respond(
@@ -70,9 +76,11 @@ class DemoUnitTest {
           );
 
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("http://" + SERVER_ADDRESS + ":" + serverPort + path);
-        StringEntity entity = new StringEntity(requestJson);
-        request.setEntity(entity);
+        HttpGet request = new HttpGet("http://" + SERVER_ADDRESS + ":" + serverPort + path);
+        URI uri = new URIBuilder(request.getURI())
+          .addParameter(QUERY_PARAMETER, requestQuery)
+          .build();
+        request.setURI(uri);
         HttpResponse response = client.execute(request);
 
         assertThat(responseJson).isEqualTo(IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8.name()));
