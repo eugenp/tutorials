@@ -1,9 +1,5 @@
 package com.baeldung.constructorspecification.rules;
 
-/**
- * Created by arash on 16.12.21.
- */
-
 class RecursiveConstructorInvocation {
 
     public RecursiveConstructorInvocation() {
