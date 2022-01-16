@@ -26,6 +26,7 @@ public class Product {
         this.image_url = productModel.getImage_url();
         this.video_url = productModel.getVideo_url();
         this.average_rating = 0F;
+        this.status = productModel.getStatus();
     }
 
     public Product(){

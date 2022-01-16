@@ -1,6 +1,8 @@
 package com.baeldung.graphqlvsrest.resolver;
 
+import com.baeldung.graphqlvsrest.entity.Order;
 import com.baeldung.graphqlvsrest.entity.Product;
+import com.baeldung.graphqlvsrest.repository.OrderRepository;
 import com.baeldung.graphqlvsrest.repository.ProductRepository;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
@@ -20,4 +22,6 @@ public class Query implements GraphQLQueryResolver {
     public Product getProduct(int id) {
         return productRepository.getProduct(id);
     }
+
+
 }
