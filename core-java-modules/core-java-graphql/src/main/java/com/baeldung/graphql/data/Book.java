@@ -1,4 +1,4 @@
-package com.baeldung.graphql;
+package com.baeldung.graphql.data;
 
 public class Book {
 

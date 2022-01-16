@@ -1,5 +1,6 @@
 package com.baeldung.graphql;
 
+import com.baeldung.graphql.data.BookRepository;
 import com.coxautodev.graphql.tools.SchemaParser;
 import graphql.schema.GraphQLSchema;
 import graphql.servlet.SimpleGraphQLHttpServlet;
@@ -24,7 +25,7 @@ public class GraphQLEndpoint extends HttpServlet {
     @Override
     public void init() {
         GraphQLSchema schema = SchemaParser.newParser()
-          .resolvers(new Query(new BookRepository()))
+          .resolvers(new GraphQLQuery(new BookRepository()))
           .file("schema.graphqls")
           .build()
           .makeExecutableSchema();

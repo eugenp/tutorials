@@ -1,14 +1,16 @@
 package com.baeldung.graphql;
 
+import com.baeldung.graphql.data.Book;
+import com.baeldung.graphql.data.BookRepository;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
 import java.util.List;
 
-public class Query implements GraphQLQueryResolver {
+public class GraphQLQuery implements GraphQLQueryResolver {
 
     private final BookRepository repository;
 
-    public Query(BookRepository repository) {
+    public GraphQLQuery(BookRepository repository) {
         this.repository = repository;
     }
 
