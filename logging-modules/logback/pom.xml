@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20180130</version>
+            <version>${json.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -103,6 +103,7 @@
     </profiles>
 
     <properties>
+        <json.version>20180130</json.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
         <docx4j.version>3.3.5</docx4j.version>
         <javax.mail.version>1.4.7</javax.mail.version>

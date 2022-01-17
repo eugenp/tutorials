@@ -22,13 +22,14 @@
        <dependency>
             <groupId>org.conscrypt</groupId>
             <artifactId>conscrypt-openjdk-uber</artifactId>
-            <version>2.4.0</version>
+            <version>${conscrypt-openjdk-uber.version}</version>
         </dependency>
 
     </dependencies>
 
     <properties>
         <netty.version>4.1.48.Final</netty.version>
+        <conscrypt-openjdk-uber.version>2.4.0</conscrypt-openjdk-uber.version>
     </properties>
 
 </project>
