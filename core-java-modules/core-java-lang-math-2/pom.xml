@@ -40,11 +40,6 @@
             <version>${colt.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.dpaukov</groupId>
             <artifactId>combinatoricslib3</artifactId>
             <version>${combinatoricslib3.version}</version>
@@ -59,7 +54,6 @@
 
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <guava.version>27.0.1-jre</guava.version>
         <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
         <ejml.version>0.38</ejml.version>
         <nd4j.version>1.0.0-beta4</nd4j.version>
