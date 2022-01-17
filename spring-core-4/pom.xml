@@ -64,7 +64,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.0</version>
+            <version>${servlet-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -73,6 +73,7 @@
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
         <guava.version>28.2-jre</guava.version>
         <awaitility.version>4.0.2</awaitility.version>
+        <servlet-api.version>4.0.0</servlet-api.version>
     </properties>
 
 </project>

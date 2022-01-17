@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.2.2.RELEASE</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -62,6 +62,7 @@
 
     <properties>
         <camel.version>3.7.4</camel.version>
+        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     </properties>
 
 </project>
