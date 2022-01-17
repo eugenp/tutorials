@@ -22,7 +22,8 @@ public class IdentityHashMapDemonstrator {
         IdentityHashMap<String, String> identityHashMap = new IdentityHashMap<>();
         identityHashMap.put(null, "Null Key Accepted");
         identityHashMap.put("Null Value Accepted", null);
-        System.out.println(identityHashMap);
+        assert ("Null Key Accepted" == identityHashMap.get(null));
+        assert (null == identityHashMap.get("Null Value Accepted"));
     }
 
     private static void iterateIdentityHashMap(IdentityHashMap<String, String> identityHashMap) {
@@ -89,29 +90,30 @@ public class IdentityHashMapDemonstrator {
     private static void demoMutableKeys() {
         Book book1 = new Book("A Passage to India", 1924);
         Book book2 = new Book("Invisible Man", 1953);
+
         HashMap<Book, String> hashMap = new HashMap<>(10);
-        IdentityHashMap<Book, String> identityHashMap = new IdentityHashMap<>(10);
-
         hashMap.put(book1, "A great work of fiction");
-        identityHashMap.put(book1, "A great work of fiction");
-
         hashMap.put(book2, "won the US National Book Award");
-        identityHashMap.put(book2, "won the US National Book Award");
-
         book2.year = 1952;
-        System.out.println("Book2 from HashMap: " + hashMap.get(book2));
-        System.out.println("Book2 from IdentityHashMap: " + identityHashMap.get(book2));
+        assert (null == hashMap.get(book2));
         System.out.println("HashMap: " + hashMap);
+
+        IdentityHashMap<Book, String> identityHashMap = new IdentityHashMap<>(10);
+        identityHashMap.put(book1, "A great work of fiction");
+        identityHashMap.put(book2, "won the US National Book Award");
+        book2.year = 1951;
+        assert ("won the US National Book Award" == identityHashMap.get(book2));
         System.out.println("IdentityHashMap: " + identityHashMap);
     }
 
     private static void demoHashMapVsIdentityMap(IdentityHashMap<String, String> identityHashMap) {
         HashMap<String, String> hashMap = new HashMap<>(identityHashMap);
         hashMap.put(new String("genre"), "Drama");
-        identityHashMap.put(new String("genre"), "Drama");
-        System.out.println("HashMap size: " + hashMap.size());
-        System.out.println("IdentityHashMap size: " + identityHashMap.size());
+        assert (4 == hashMap.size());
         System.out.println("HashMap content: " + hashMap);
+
+        identityHashMap.put(new String("genre"), "Drama");
+        assert (5 == identityHashMap.size());
         System.out.println("IdentityHashMap content: " + identityHashMap);
     }
 
@@ -127,8 +129,8 @@ public class IdentityHashMapDemonstrator {
 
     private static void updateWithNewValue(IdentityHashMap<String, String> identityHashMap) {
         String oldTitle = identityHashMap.put("title", "Harry Potter and the Deathly Hallows");
-        System.out.println("Old Title: " + oldTitle);
-        System.out.println("Updated Title: " + identityHashMap.get("title"));
+        assert ("Harry Potter and the Goblet of Fire" == oldTitle);
+        assert ("Harry Potter and the Deathly Hallows" == identityHashMap.get("title"));
     }
 
     public static void addValue(IdentityHashMap<String, String> identityHashMap, String key, String value) {
