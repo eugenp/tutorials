@@ -1470,6 +1470,7 @@
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <h2.version>1.4.200</h2.version>
+        <guava.version>31.0.1-jre</guava.version>
     </properties>
 
 </project>
