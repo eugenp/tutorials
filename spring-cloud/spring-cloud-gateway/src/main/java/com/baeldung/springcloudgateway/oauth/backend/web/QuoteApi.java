@@ -11,20 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.springcloudgateway.oauth.backend.domain.Quote;
 
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @RestController
-@Slf4j
 public class QuoteApi {
-    
-    String role;
     private static final GrantedAuthority GOLD_CUSTOMER = new SimpleGrantedAuthority("gold");
-
-    @PostConstruct
-    public void onPostConstruct() {
-        log.info("[I22] >>> onPostConstruct");
-    }
 
     @GetMapping("/quotes/{symbol}")
     public Mono<Quote> getQuote(@PathVariable("symbol") String symbol, BearerTokenAuthentication auth ) {
@@ -40,5 +31,4 @@ public class QuoteApi {
         }
         return Mono.just(q);
     }
-    
 }

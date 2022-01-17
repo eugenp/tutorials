@@ -18,7 +18,7 @@ spring:
         registration:          quotes-client:
             provider: keycloak
             client-id: quotes-client
-            client-secret: 56be94c8-b20a-4374-899c-e39cb022d3f8
+            client-secret: 0e082231-a70d-48e8-b8a5-fbfb743041b6
             scope:            - email
             - profile
             - roles

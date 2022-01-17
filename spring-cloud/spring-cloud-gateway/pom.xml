@@ -96,18 +96,6 @@
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
         
-<!--         <dependency> -->
-<!--             <groupId>com.nimbusds</groupId> -->
-<!--             <artifactId>oauth2-oidc-sdk</artifactId> -->
-<!--             <version>${oauth2-oidc-sdk.version}</version> -->
-<!--         </dependency> -->
-        
-        <!--  lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -132,7 +120,6 @@
                         </exclude>
                     </excludes>
                 </configuration>
-                
             </plugin>
         </plugins>
     </build>
@@ -145,5 +132,51 @@
         <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
 <!--         <junit-bom.version>5.5.2</junit-bom.version> -->
     </properties>
-
+    
+    <profiles>
+        <profile>
+            <id>quotes-application</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.baeldung.springcloudgateway.oauth.backend.QuotesApplication</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>gateway-as-resource-server</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.baeldung.springcloudgateway.oauth.server.ResourceServerGatewayApplication</mainClass>
+                            <jvmArguments>-Dspring.profiles.active=resource-server</jvmArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>gateway-as-oauth-client</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.baeldung.springcloudgateway.oauth.server.ResourceServerGatewayApplication</mainClass>
+                            <jvmArguments>-Dspring.profiles.active=oauth-client</jvmArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

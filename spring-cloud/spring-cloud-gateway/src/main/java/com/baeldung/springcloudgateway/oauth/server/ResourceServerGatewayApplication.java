@@ -7,9 +7,7 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 @SpringBootApplication
 @EnableWebFluxSecurity
 public class ResourceServerGatewayApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ResourceServerGatewayApplication.class,args);
     }
-    
 }
