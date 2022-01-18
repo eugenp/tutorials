@@ -2,11 +2,9 @@ package com.baeldung.threadinfolog4j2example;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.stream.IntStream;
 
-@SpringBootApplication
 public class ThreadInfoLog4j2ExampleApplication {
     private static final Logger LOGGER = LogManager.getLogger(ThreadInfoLog4j2ExampleApplication.class);
     
