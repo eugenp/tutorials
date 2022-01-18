@@ -94,7 +94,6 @@
         <httpclient.version>4.5.2</httpclient.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <javax.el.version>3.0.1-b08</javax.el.version>
-        <guava.version>19.0</guava.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

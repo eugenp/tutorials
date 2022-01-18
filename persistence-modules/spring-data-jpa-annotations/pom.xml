@@ -67,7 +67,6 @@
         <start-class>com.baeldung.boot.Application</start-class>
         <testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
         <postgresql.version>42.2.5</postgresql.version>
-        <guava.version>21.0</guava.version>
     </properties>
 
 </project>
