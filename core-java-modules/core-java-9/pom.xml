@@ -75,7 +75,6 @@
         <awaitility.version>1.7.0</awaitility.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
-        <guava.version>25.1-jre</guava.version>
     </properties>
 
 </project>

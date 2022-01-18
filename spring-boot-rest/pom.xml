@@ -86,7 +86,6 @@
 
     <properties>
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
-        <guava.version>27.0.1-jre</guava.version>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>2.4.5</modelmapper.version>
     </properties>
