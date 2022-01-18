@@ -277,7 +277,6 @@
 
     <properties>
         <!-- util -->
-        <guava.version>19.0</guava.version>
         <commons-codec.version>1.10</commons-codec.version>
         <httpasyncclient.version>4.1.4</httpasyncclient.version>
         <!-- testing -->

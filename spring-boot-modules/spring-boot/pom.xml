@@ -160,7 +160,6 @@
         <start-class>com.baeldung.intro.App</start-class>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <rome.version>1.9.0</rome.version>
-        <guava.version>18.0</guava.version>
         <resource.delimiter>@</resource.delimiter>
     </properties>
 

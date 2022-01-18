@@ -169,7 +169,6 @@
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
         <flink.version>1.5.0</flink.version>
         <awaitility.version>3.0.0</awaitility.version>
-        <guava.version>29.0-jre</guava.version>
         <org.apache.spark.spark-core.version>2.4.8</org.apache.spark.spark-core.version>
         <graphframes.version>0.8.1-spark3.0-s_2.12</graphframes.version>
         <com.datastax.spark.spark-cassandra-connector.version>2.5.2</com.datastax.spark.spark-cassandra-connector.version>
