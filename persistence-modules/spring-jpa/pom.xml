@@ -125,8 +125,6 @@
         <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
         <xml-apis.version>1.4.01</xml-apis.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
-        <!-- util -->
-        <guava.version>21.0</guava.version>
     </properties>
 
 </project>

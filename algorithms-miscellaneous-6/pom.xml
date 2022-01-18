@@ -33,7 +33,6 @@
     </dependencies>
 
     <properties>
-        <guava.version>28.1-jre</guava.version>
         <commons-math3.version>3.6.1</commons-math3.version>
     </properties>
 

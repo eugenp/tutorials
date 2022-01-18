@@ -235,8 +235,6 @@
         <!-- http -->
         <httpcore.version>4.4.11</httpcore.version>
         <httpclient.version>4.5.8</httpclient.version>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>

@@ -122,8 +122,6 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
-        <!-- util -->
-        <guava.version>21.0</guava.version>
     </properties>
 
 </project>

@@ -74,7 +74,6 @@
     </build>
 
     <properties>
-        <guava.version>19.0</guava.version>
         <start-class>com.baeldung.web.main.Application</start-class>
     </properties>
 
