@@ -422,6 +422,7 @@
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
+                <module>graphql/graphql-dgs</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
