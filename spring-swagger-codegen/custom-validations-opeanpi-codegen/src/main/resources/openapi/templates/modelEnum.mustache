@@ -1,0 +1,68 @@
+{{#jackson}}
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+{{/jackson}}
+{{#gson}}
+import java.io.IOException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+{{/gson}}
+
+/**
+ * {{^description}}Gets or Sets {{{name}}}{{/description}}{{#description}}{{description}}{{/description}}
+ */
+{{#gson}}
+@JsonAdapter({{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.Adapter.class)
+{{/gson}}
+public enum {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} {
+  {{#allowableValues}}{{#enumVars}}
+  {{{name}}}({{{value}}}){{^-last}},
+  {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+
+  private {{{dataType}}} value;
+
+  {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}({{{dataType}}} value) {
+    this.value = value;
+  }
+
+{{#jackson}}
+  @JsonValue
+{{/jackson}}
+  public {{{dataType}}} getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+{{#jackson}}
+  @JsonCreator
+{{/jackson}}
+  public static {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} fromValue{{#jackson}}({{{dataType}}} value){{/jackson}}{{^jackson}}(String text){{/jackson}} {
+    for ({{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} b : {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.values()) {
+      if ({{#jackson}}b.value.equals(value){{/jackson}}{{^jackson}}String.valueOf(b.value).equals(text){{/jackson}}) {
+        return b;
+      }
+    }
+    throw new UlpValidationException(UlpBundleKey.{{vendorExtensions.x-enum-invalidtag}});
+  }
+{{#gson}}
+
+  public static class Adapter extends TypeAdapter<{{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}> {
+    @Override
+    public void write(final JsonWriter jsonWriter, final {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} enumeration) throws IOException {
+      jsonWriter.value(enumeration.getValue());
+    }
+
+    @Override
+    public {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} read(final JsonReader jsonReader) throws IOException {
+      {{#isNumber}}BigDecimal value = new BigDecimal(jsonReader.nextDouble()){{/isNumber}}{{^isNumber}}{{#isInteger}}Integer value {{/isInteger}}{{^isInteger}}String value {{/isInteger}}= jsonReader.{{#isInteger}}nextInt(){{/isInteger}}{{^isInteger}}nextString(){{/isInteger}}{{/isNumber}};
+      return {{#datatypeWithEnum}}{{{.}}}{{/datatypeWithEnum}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.fromValue({{#jackson}}value{{/jackson}}{{^jackson}}String.valueOf(value){{/jackson}});
+    }
+  }
+{{/gson}}
+}

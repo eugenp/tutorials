@@ -92,7 +92,6 @@
             <artifactId>webcam-capture</artifactId>
             <version>${webcam-capture.version}</version>
         </dependency>
-        
     </dependencies>
 
     <properties>

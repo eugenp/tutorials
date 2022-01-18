@@ -11,28 +11,15 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-commons</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.vintage.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -83,13 +70,10 @@
 
     <properties>
         <junit.platform.version>1.5.0</junit.platform.version>
-        <junit.vintage.version>5.5.0</junit.vintage.version>
         <log4j2.version>2.12.0</log4j2.version>
         <testcontainers.version>1.11.4</testcontainers.version>
         <postgresql.version>42.2.6</postgresql.version>
         <selenium-remote-driver.version>3.141.59</selenium-remote-driver.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-platform.version>1.3.2</junit-platform.version>
     </properties>
 
 </project>

@@ -1,5 +1,6 @@
 package com.baeldung.jndi;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -56,5 +57,11 @@ class JndiUnitTest {
         assertNotNull(ds);
         assertNotNull(ds.getConnection());
     }
+    
+    @AfterAll
+    static void tearDown() throws Exception {
+       ctx.close();
+    }
+
 
 }

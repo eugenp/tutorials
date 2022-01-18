@@ -149,4 +149,15 @@
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="postgresql_schema_unit">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.postgresql_schema.Product</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+        </properties>
+    </persistence-unit>
 </persistence>

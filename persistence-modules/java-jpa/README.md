@@ -14,4 +14,4 @@ This module contains articles about the Java Persistence API (JPA) in Java.
 - [Defining JPA Entities](https://www.baeldung.com/jpa-entities)
 - [JPA @Basic Annotation](https://www.baeldung.com/jpa-basic-annotation)
 - [Persisting Enums in JPA](https://www.baeldung.com/jpa-persisting-enums-in-jpa)
-- More articles: [[next -->]](/java-jpa-2)
+- More articles: [[next -->]](/persistence-modules/java-jpa-2)

@@ -21,6 +21,8 @@ eureka:
         instanceId: quotes:${spring.application.instance-id:${random.value}}
 
 spring:
+    main:
+        banner-mode: "off"
     application:
         name: quotes
     cache:

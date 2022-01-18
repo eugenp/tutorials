@@ -1,5 +1,7 @@
 package com.baeldung.spring.data.persistence.saveperformance;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +13,8 @@ import java.util.List;
 
 @SpringBootApplication
 public class BookApplication {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookApplication.class);
 
     @Autowired
     private BookRepository bookRepository;
@@ -25,13 +29,13 @@ public class BookApplication {
         int bookCount = 10000;
 
         long start = System.currentTimeMillis();
-        for(int i = 0; i < bookCount; i++) {
+        for (int i = 0; i < bookCount; i++) {
             bookRepository.save(new Book("Book " + i, "Author " + i));
         }
         long end = System.currentTimeMillis();
         bookRepository.deleteAll();
 
-        System.out.println("It took " + (end - start) + "ms to execute save() for " + bookCount + " books");
+        LOGGER.debug("It took {}ms to execute save() for {} books.", (end - start), bookCount);
 
         List<Book> bookList = new ArrayList<>();
         for (int i = 0; i < bookCount; i++) {
@@ -42,7 +46,7 @@ public class BookApplication {
         bookRepository.saveAll(bookList);
         end = System.currentTimeMillis();
 
-        System.out.println("It took " + (end - start) + "ms to execute saveAll() with " + bookCount + " books\n");
+        LOGGER.debug("It took {}ms to execute saveAll() with {}} books.", (end - start), bookCount);
 
     }
 }

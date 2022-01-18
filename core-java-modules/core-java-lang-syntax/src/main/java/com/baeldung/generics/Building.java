@@ -7,6 +7,6 @@ public class Building {
     private static final Logger LOGGER = LoggerFactory.getLogger(Building.class);
 
     public void paint() {
-        LOGGER.info("Painting Building");
+        LOGGER.debug("Painting Building");
     }
 }

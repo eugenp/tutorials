@@ -78,7 +78,7 @@
     </build>
 
     <properties>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
     </properties>
 
 </project>

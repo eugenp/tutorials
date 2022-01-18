@@ -14,15 +14,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.baeldung.etag.Foo;
-import com.baeldung.etag.WebConfig;
-
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes= WebConfig.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@ComponentScan({"com.baeldung.mime", "com.baeldung.etag"})
+@SpringBootTest(classes = FooController.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@ComponentScan({"com.baeldung.mime"})
 @EnableAutoConfiguration
 @ActiveProfiles("test")
 public class FooLiveTest {
@@ -47,12 +44,12 @@ public class FooLiveTest {
         createAsUri(resource);
     }
 
-    private final String createAsUri(final Foo resource) {
+    private String createAsUri(final Foo resource) {
         final Response response = createAsResponse(resource);
         return getURL() + "/" + response.getBody().as(Foo.class).getId();
     }
 
-    private final Response createAsResponse(final Foo resource) {
+    private Response createAsResponse(final Foo resource) {
 
         final String resourceAsString = marshaller.encode(resource);
         return RestAssured.given()

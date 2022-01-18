@@ -8,10 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class SessionTimerInterceptor extends HandlerInterceptorAdapter {
+public class SessionTimerInterceptor implements HandlerInterceptor {
 
     private static Logger log = LoggerFactory.getLogger(SessionTimerInterceptor.class);
 
@@ -30,7 +30,8 @@ public class SessionTimerInterceptor extends HandlerInterceptorAdapter {
         request.setAttribute("executionTime", startTime);
         if (UserInterceptor.isUserLogged()) {
             session = request.getSession();
-            log.info("Time since last request in this session: {} ms", System.currentTimeMillis() - request.getSession().getLastAccessedTime());
+            log.info("Time since last request in this session: {} ms", System.currentTimeMillis() - request.getSession()
+                .getLastAccessedTime());
             if (System.currentTimeMillis() - session.getLastAccessedTime() > MAX_INACTIVE_SESSION_TIME) {
                 log.warn("Logging out, due to inactive session");
                 SecurityContextHolder.clearContext();

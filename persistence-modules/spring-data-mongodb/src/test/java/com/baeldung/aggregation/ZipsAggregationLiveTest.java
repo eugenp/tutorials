@@ -124,7 +124,7 @@ public class ZipsAggregationLiveTest {
     }
 
     @Test
-    public void whenStateWithLowestAvgCityPopIsND_theSuccess() {
+    public void whenStateWithLowestAvgCityPopIsME_theSuccess() {
 
         GroupOperation sumTotalCityPop = group("state", "city").sum("pop").as("cityPop");
         GroupOperation averageStatePop = group("_id.state").avg("cityPop").as("avgCityPop");
@@ -138,13 +138,12 @@ public class ZipsAggregationLiveTest {
         AggregationResults<StatePopulation> result = mongoTemplate.aggregate(aggregation, "zips", StatePopulation.class);
         StatePopulation smallestState = result.getUniqueMappedResult();
 
-        assertEquals("ND", smallestState.getState());
-        assertTrue(smallestState.getStatePop()
-          .equals(1645));
+        assertEquals("ME", smallestState.getState());
+        assertEquals(3676, smallestState.getStatePop().longValue());
     }
 
     @Test
-    public void whenMaxTXAndMinDC_theSuccess() {
+    public void whenMaxMAAndMinRI_theSuccess() {
 
         GroupOperation sumZips = group("state").count().as("zipCount");
         SortOperation sortByCount = sort(Direction.ASC, "zipCount");
@@ -157,10 +156,10 @@ public class ZipsAggregationLiveTest {
         AggregationResults<Document> result = mongoTemplate.aggregate(aggregation, "zips", Document.class);
         Document document = result.getUniqueMappedResult();
 
-        assertEquals("DC", document.get("minZipState"));
-        assertEquals(24, document.get("minZipCount"));
-        assertEquals("TX", document.get("maxZipState"));
-        assertEquals(1671, document.get("maxZipCount"));
+        assertEquals("RI", document.get("minZipState"));
+        assertEquals(69, document.get("minZipCount"));
+        assertEquals("MA", document.get("maxZipState"));
+        assertEquals(474, document.get("maxZipCount"));
     }
 
 }

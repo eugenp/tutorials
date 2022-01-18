@@ -47,7 +47,6 @@
 
     <properties>
         <vertx.version>3.5.0.Beta1</vertx.version>
-        <logback.version>1.2.3</logback.version>
     </properties>
 
 </project>

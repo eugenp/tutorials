@@ -29,6 +29,11 @@
             <artifactId>commons-vfs2</artifactId>
             <version>${vfs.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>${zip4j.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -36,6 +41,7 @@
         <jsch.version>0.1.55</jsch.version>
         <sshj.version>0.27.0</sshj.version>
         <vfs.version>2.4</vfs.version>
+        <zip4j.version>2.9.0</zip4j.version>
     </properties>
 
 </project>

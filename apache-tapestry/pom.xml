@@ -32,7 +32,6 @@
         <!-- Uncomment this to add support for file uploads: -->
         <!-- <dependency> <groupId>org.apache.tapestry</groupId> <artifactId>tapestry-upload</artifactId> 
             <version>${tapestry-release-version}</version> </dependency> -->
-
         <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the 
             tests) will fail, preventing Maven from packaging the WAR. Tapestry includes a large number of testing 
             facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
@@ -77,7 +76,6 @@
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -88,7 +86,6 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
             <!-- Run the application using "mvn jetty:run" -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
@@ -112,14 +109,11 @@
         </plugins>
     </build>
 
-    <reporting />
-
     <repositories>
         <repository>
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
-
         <!-- This repository is only needed when the Tapestry version is a preview release, rather than 
             a final release. -->
         <repository>

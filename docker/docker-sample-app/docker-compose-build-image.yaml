@@ -1,0 +1,8 @@
+version: '2.4'
+services:
+  db:
+    image: postgres
+  my_app:
+    build: .
+    ports:
+      - "8080:8080"

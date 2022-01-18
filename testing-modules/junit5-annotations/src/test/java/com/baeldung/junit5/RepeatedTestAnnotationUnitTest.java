@@ -1,41 +1,45 @@
 package com.baeldung.junit5;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.TestInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RepeatedTestAnnotationUnitTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RepeatedTestAnnotationUnitTest.class);
+
     @BeforeEach
     void beforeEachTest() {
-        System.out.println("Before Each Test");
+        LOGGER.debug("Before Each Test");
     }
 
     @AfterEach
     void afterEachTest() {
-        System.out.println("After Each Test");
-        System.out.println("=====================");
+        LOGGER.debug("After Each Test");
+        LOGGER.debug("=====================");
     }
 
     @RepeatedTest(3)
     void repeatedTest(TestInfo testInfo) {
-        System.out.println("Executing repeated test");
+        LOGGER.debug("Executing repeated test");
         assertEquals(2, Math.addExact(1, 1), "1 + 1 should equal 2");
     }
 
     @RepeatedTest(value = 3, name = RepeatedTest.LONG_DISPLAY_NAME)
     void repeatedTestWithLongName() {
-        System.out.println("Executing repeated test with long name");
+        LOGGER.debug("Executing repeated test with long name");
         assertEquals(2, Math.addExact(1, 1), "1 + 1 should equal 2");
     }
 
     @RepeatedTest(value = 3, name = RepeatedTest.SHORT_DISPLAY_NAME)
     void repeatedTestWithShortName() {
-        System.out.println("Executing repeated test with long name");
+        LOGGER.debug("Executing repeated test with long name");
         assertEquals(2, Math.addExact(1, 1), "1 + 1 should equal 2");
     }
 
@@ -46,7 +50,7 @@ public class RepeatedTestAnnotationUnitTest {
 
     @RepeatedTest(3)
     void repeatedTestWithRepetitionInfo(RepetitionInfo repetitionInfo) {
-        System.out.println("Repetition #" + repetitionInfo.getCurrentRepetition());
+        LOGGER.debug("Repetition # {}", repetitionInfo.getCurrentRepetition());
         assertEquals(3, repetitionInfo.getTotalRepetitions());
     }
 }

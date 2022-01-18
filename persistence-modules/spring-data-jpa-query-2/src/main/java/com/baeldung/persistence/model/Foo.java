@@ -16,7 +16,10 @@ import javax.persistence.NamedNativeQuery;
 
 import org.hibernate.envers.Audited;
 
-@NamedNativeQueries({ @NamedNativeQuery(name = "callGetAllFoos", query = "CALL GetAllFoos()", resultClass = Foo.class), @NamedNativeQuery(name = "callGetFoosByName", query = "CALL GetFoosByName(:fooName)", resultClass = Foo.class) })
+@NamedNativeQueries({
+  @NamedNativeQuery(name = "callGetAllFoos", query = "CALL GetAllFoos()", resultClass = Foo.class),
+  @NamedNativeQuery(name = "callGetFoosByName", query = "CALL GetFoosByName(:fooName)", resultClass = Foo.class)
+})
 @Entity
 @Audited
 // @Proxy(lazy = false)
@@ -89,17 +92,13 @@ public class Foo implements Serializable {
             return false;
         final Foo other = (Foo) obj;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else
+            return name.equals(other.name);
     }
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Foo [name=").append(name).append("]");
-        return builder.toString();
+        return "Foo [name=" + name + "]";
     }
 }

@@ -4,7 +4,7 @@ This module contains articles about Spring with Jenkins
 
 ### Relevant articles
 
-- [Intro to Jenkins 2 and the Power of Pipelines](https://www.baeldung.com/jenkins-pipelines)
+- [Intro to Jenkins 2 and the Power of Pipelines](https://www.baeldung.com/ops/jenkins-pipelines)
 
 ## Basic CRUD API with Spring Boot
 

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eureka-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Spring Cloud Eureka Server</name>
+    <name>eureka-server</name>
     <packaging>jar</packaging>
     <description>Spring Cloud Eureka Server Demo</description>
 

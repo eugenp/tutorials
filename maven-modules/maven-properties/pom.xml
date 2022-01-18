@@ -14,14 +14,6 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
