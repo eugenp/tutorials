@@ -7,7 +7,7 @@
             fx:controller="com.baeldung.button.eventhandler.ButtonEventHandlerController"
             prefHeight="200.0" prefWidth="300.0">
     <center>
-		<Button fx:id="button" prefWidth="-1.0" HBox.hgrow="ALWAYS"/>
+		<Button fx:id="button" HBox.hgrow="ALWAYS"/>
     </center>
     
     <bottom>

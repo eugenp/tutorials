@@ -52,13 +52,10 @@ public class ButtonEventHandlerController {
     }
 
     private void reuseRightClickEventHandler() {
-        EventHandler<MouseEvent> rightClickHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (MouseButton.SECONDARY.equals(event.getButton())) {
-                    button.setFont(new Font(button.getFont()
-                        .getSize() + 1));
-                }
+        EventHandler<MouseEvent> rightClickHandler = event -> {
+            if (MouseButton.SECONDARY.equals(event.getButton())) {
+                button.setFont(new Font(button.getFont()
+                    .getSize() + 1));
             }
         };
         button.setOnMousePressed(rightClickHandler);
