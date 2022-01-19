@@ -1,4 +1,4 @@
-package com.baeldung.getTestName;
+package com.baeldung.gettestName;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
