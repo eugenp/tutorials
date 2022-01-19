@@ -2,8 +2,6 @@ package com.baeldung.books.events;
 
 import java.util.logging.Logger;
 
-import org.apache.commons.logging.Log;
-import org.springframework.data.rest.core.annotation.HandleAfterDelete;
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 
