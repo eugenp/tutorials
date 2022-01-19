@@ -12,9 +12,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Profile("!prod")
+@Profile("!prod && swagger")
+//@Profile("!prod")
 // @Profile("swagger")
-// @Profile("!prod && swagger")
 // @ConditionalOnExpression(value = "${useSwagger:false}")
 @Configuration
 @EnableSwagger2

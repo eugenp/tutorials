@@ -141,8 +141,6 @@
         </execution> </executions> </plugin> </plugins> </build> </profile> </profiles> -->
 
     <properties>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <!-- Maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>

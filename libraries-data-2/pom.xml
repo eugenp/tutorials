@@ -157,7 +157,6 @@
         <derive4j.version>1.1.0</derive4j.version>
         <awaitility.version>3.0.0</awaitility.version>
         <univocity.version>2.8.4</univocity.version>
-        <guava.version>29.0-jre</guava.version>
     </properties>
 
 </project>

@@ -126,8 +126,6 @@
     </profiles>
 
     <properties>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
         <cucumber.version>6.8.0</cucumber.version>

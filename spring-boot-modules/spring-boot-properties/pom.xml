@@ -124,7 +124,6 @@
     <properties>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
-        <guava.version>20.0</guava.version>
         <resource.delimiter>@</resource.delimiter>
         <!-- <start-class>com.baeldung.buildproperties.Application</start-class> -->
         <start-class>com.baeldung.yaml.MyApplication</start-class>

@@ -16,15 +16,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>3.6.1</version>
+            <version>${commons-math3.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -38,5 +32,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <commons-math3.version>3.6.1</commons-math3.version>
+    </properties>
 
 </project>

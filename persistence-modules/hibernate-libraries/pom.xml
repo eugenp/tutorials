@@ -161,7 +161,6 @@
 
     <properties>
         <datasource-proxy.version>1.6</datasource-proxy.version>
-        <guava.version>29.0-jre</guava.version>
         <hibernate-types.version>2.9.7</hibernate-types.version>
         <hibernate.version>5.4.14.Final</hibernate.version>
         <javassist.version>3.27.0-GA</javassist.version>
