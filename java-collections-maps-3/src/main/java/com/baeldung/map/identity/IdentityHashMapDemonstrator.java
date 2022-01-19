@@ -1,6 +1,7 @@
 package com.baeldung.map.identity;
 
 import java.util.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IdentityHashMapDemonstrator {
     public static void main(String[] args) {
@@ -22,8 +23,8 @@ public class IdentityHashMapDemonstrator {
         IdentityHashMap<String, String> identityHashMap = new IdentityHashMap<>();
         identityHashMap.put(null, "Null Key Accepted");
         identityHashMap.put("Null Value Accepted", null);
-        assert ("Null Key Accepted" == identityHashMap.get(null));
-        assert (null == identityHashMap.get("Null Value Accepted"));
+        assertEquals("Null Key Accepted", identityHashMap.get(null));
+        assertEquals(null, identityHashMap.get("Null Value Accepted"));
     }
 
     private static void iterateIdentityHashMap(IdentityHashMap<String, String> identityHashMap) {
@@ -95,14 +96,14 @@ public class IdentityHashMapDemonstrator {
         hashMap.put(book1, "A great work of fiction");
         hashMap.put(book2, "won the US National Book Award");
         book2.year = 1952;
-        assert (null == hashMap.get(book2));
+        assertEquals(null, hashMap.get(book2));
         System.out.println("HashMap: " + hashMap);
 
         IdentityHashMap<Book, String> identityHashMap = new IdentityHashMap<>(10);
         identityHashMap.put(book1, "A great work of fiction");
         identityHashMap.put(book2, "won the US National Book Award");
         book2.year = 1951;
-        assert ("won the US National Book Award" == identityHashMap.get(book2));
+        assertEquals("won the US National Book Award", identityHashMap.get(book2));
         System.out.println("IdentityHashMap: " + identityHashMap);
     }
 
@@ -115,11 +116,11 @@ public class IdentityHashMapDemonstrator {
 
         HashMap<String, String> hashMap = new HashMap<>(identityHashMap);
         hashMap.put(new String("genre"), "Drama");
-        assert (4 == hashMap.size());
+        assertEquals(4, hashMap.size());
         System.out.println("HashMap content: " + hashMap);
 
         identityHashMap.put(new String("genre"), "Drama");
-        assert (5 == identityHashMap.size());
+        assertEquals(5, identityHashMap.size());
         System.out.println("IdentityHashMap content: " + identityHashMap);
     }
 
@@ -135,8 +136,8 @@ public class IdentityHashMapDemonstrator {
 
     private static void updateWithNewValue(IdentityHashMap<String, String> identityHashMap) {
         String oldTitle = identityHashMap.put("title", "Harry Potter and the Deathly Hallows");
-        assert ("Harry Potter and the Goblet of Fire" == oldTitle);
-        assert ("Harry Potter and the Deathly Hallows" == identityHashMap.get("title"));
+        assertEquals("Harry Potter and the Goblet of Fire", oldTitle);
+        assertEquals("Harry Potter and the Deathly Hallows", identityHashMap.get("title"));
     }
 
     public static void addValue(IdentityHashMap<String, String> identityHashMap, String key, String value) {
