@@ -1,4 +1,4 @@
-package com.baeldung.gettestName;
+package com.baeldung.gettestname;
 
 import org.junit.Rule;
 import org.junit.Test;
