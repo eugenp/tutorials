@@ -21,11 +21,6 @@
             <version>${validation-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -97,7 +92,6 @@
 
     <properties>
         <validation-api.version>2.0.0.Final</validation-api.version>
-        <guava.version>28.2-jre</guava.version>
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
         <javax.el.version>2.2.6</javax.el.version>

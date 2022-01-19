@@ -21,11 +21,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons.beanutils.version}</version>
@@ -59,7 +54,6 @@
 
     <properties>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
-        <guava.version>29.0-jre</guava.version>
     </properties>
 
 </project>

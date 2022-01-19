@@ -9,4 +9,5 @@ This module contains articles about core Spring functionality.
 - [Spring Bean Names](https://www.baeldung.com/spring-bean-names)
 - [AliasFor Annotation in Spring](https://www.baeldung.com/spring-aliasfor-annotation)
 - [A Quick Guide to the Spring @Lazy Annotation](https://www.baeldung.com/spring-lazy-annotation)
+- [Finding the Spring Version](https://www.baeldung.com/spring-find-version)
 - More articles: [[<-- prev]](../spring-core-4)

@@ -258,8 +258,6 @@
 
     <properties>
         <xstream.version>1.4.9</xstream.version>
-        <!-- util -->
-        <guava.version>20.0</guava.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>

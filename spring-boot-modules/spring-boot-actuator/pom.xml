@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-actuator</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-actuator</name>
     <description>This is simple boot application for Spring boot actuator test</description>
-    <version>0.0.1-SNAPSHOT</version>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
