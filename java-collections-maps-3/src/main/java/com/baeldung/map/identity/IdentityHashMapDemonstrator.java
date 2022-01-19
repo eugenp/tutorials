@@ -11,7 +11,7 @@ public class IdentityHashMapDemonstrator {
         updateWithNewValue(copiedMap);
         iterateIdentityHashMap(copiedMap);
         addNullKeyValue();
-        demoHashMapVsIdentityMap(identityHashMap);
+        demoHashMapVsIdentityMap();
         demoMutableKeys();
 
         Map<String, String> synchronizedMap = getSynchronizedMap();
@@ -106,7 +106,13 @@ public class IdentityHashMapDemonstrator {
         System.out.println("IdentityHashMap: " + identityHashMap);
     }
 
-    private static void demoHashMapVsIdentityMap(IdentityHashMap<String, String> identityHashMap) {
+    private static void demoHashMapVsIdentityMap() {
+        IdentityHashMap<String, String> identityHashMap = new IdentityHashMap<>();
+        identityHashMap.put("title", "Harry Potter and the Goblet of Fire");
+        identityHashMap.put("author", "J. K. Rowling");
+        identityHashMap.put("language", "English");
+        identityHashMap.put("genre", "Fantasy");
+
         HashMap<String, String> hashMap = new HashMap<>(identityHashMap);
         hashMap.put(new String("genre"), "Drama");
         assert (4 == hashMap.size());
