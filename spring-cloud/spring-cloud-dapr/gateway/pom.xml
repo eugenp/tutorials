@@ -7,6 +7,7 @@
     <artifactId>gateway</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Spring Boot [2.6] is not compatible with this Spring Cloud release train, hence kept at 2.5 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
