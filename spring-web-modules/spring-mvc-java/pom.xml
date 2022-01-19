@@ -221,7 +221,6 @@
         <!-- various -->
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <!-- util -->
-        <guava.version>19.0</guava.version>
         <jsonpath.version>2.2.0</jsonpath.version>
         <!-- testing -->
         <httpcore.version>4.4.5</httpcore.version>

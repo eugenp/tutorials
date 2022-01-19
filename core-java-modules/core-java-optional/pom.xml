@@ -46,11 +46,6 @@
             <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
             <version>${rest-assured.version}</version>
@@ -60,7 +55,6 @@
 
     <properties>
         <hibernate.core.version>5.4.0.Final</hibernate.core.version>
-        <guava.version>27.1-jre</guava.version>
         <rest-assured.version>3.1.1</rest-assured.version>
     </properties>
 
