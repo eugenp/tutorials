@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 import org.junit.jupiter.api.Test;
 
-public class ConcurrentHashSetTest {
+public class ConcurrentHashSetUnitTest {
 
     @Test
     public void whenCreateConcurrentHashSetWithStaticMethod_thenSetIsCreated() {
