@@ -2,8 +2,8 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>thread-info-log4j2-example</artifactId>
-    <name>thread-info-log4j2-example</name>
+    <artifactId>log4j2-thread-info</artifactId>
+    <name>log4j2-thread-info</name>
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>logging-modules</artifactId>
