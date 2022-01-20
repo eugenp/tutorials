@@ -47,6 +47,7 @@
         <module>spring-cloud-eureka-self-preservation</module>
         <!--<module>spring-cloud-openfeign</module> --> <!-- Fixing in JAVA-2820 -->
         <module>spring-cloud-sentinel</module>
+        <module>spring-cloud-dapr</module>
     </modules>
 
     <build>
