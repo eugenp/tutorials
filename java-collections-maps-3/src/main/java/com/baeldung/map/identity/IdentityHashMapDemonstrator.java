@@ -81,10 +81,7 @@ public class IdentityHashMapDemonstrator {
 
         @Override
         public String toString() {
-            return "Book{" +
-                    "title='" + title + '\'' +
-                    ", year=" + year +
-                    '}';
+            return "Book{title='" + title + "', year=" + year + "}";
         }
     }
 
