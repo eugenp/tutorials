@@ -8,12 +8,12 @@ public class Song {
 
     private String title;
     private String author;
-    private Duration duration;
+    private Long duration;
 
     public Song() {
     }
 
-    public Song(String title, String author, Duration duration) {
+    public Song(String title, String author, Long duration) {
         validateDuration(duration);
         this.title = title;
         this.author = author;
@@ -36,16 +36,16 @@ public class Song {
         this.author = author;
     }
 
-    public Duration getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(Long duration) {
         this.duration = duration;
     }
 
-    private void validateDuration(Duration duration) {
-        if(duration == null || duration.isZero() || duration.isNegative()){
+    private void validateDuration(Long duration) {
+        if(duration == null || duration < 0){
             throw new DomainException("Duration must be more than 0 seconds");
         }
     }
