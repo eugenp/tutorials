@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
 @CreateLdapServer(allowAnonymousAccess = true, transports = { @CreateTransport(protocol = "LDAP", address = "localhost", port = 10389) })
 @CreateDS(allowAnonAccess = true, partitions = { @CreatePartition(name = "ldap-connection-tool", suffix = "dc=baeldung,dc=com") })
 @ApplyLdifFiles({ "ldap-connection-tool.ldif" })
-// class marked as manual test, as it has to run independently from the other unit tests in the module
+// class marked as manual test, as it has to run independently of other unit tests in the module
 public class LdapConnectionToolManualTest extends AbstractLdapTestUnit {
     @Before
     public void init() {
