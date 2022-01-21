@@ -2,6 +2,7 @@ package com.baeldung.reflection;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
 
 import java.lang.reflect.InvocationTargetException;
@@ -33,6 +34,25 @@ public class OperationsUnitTest {
         Boolean result = (Boolean) andPrivatedMethod.invoke(operationsInstance, true, false);
 
         assertFalse(result);
+    }
+    
+    @Test
+    public void givenObject_whenInvokePrivateMethod_thenCheckAccess() throws Exception {
+        Operations operationsInstance = new Operations();
+        Method andPrivatedMethod = Operations.class.getDeclaredMethod("privateAnd", boolean.class, boolean.class);
+        boolean isAccessEnabled = andPrivatedMethod.canAccess(operationsInstance);
+        
+        assertFalse(isAccessEnabled);
+    }
+    
+    @Test
+    public void givenObject_whenInvokePublicMethod_thenEnableAccess() throws Exception {
+        Operations operationsInstance = new Operations();
+        Method andPrivatedMethod = Operations.class.getDeclaredMethod("privateAnd", boolean.class, boolean.class);
+        andPrivatedMethod.trySetAccessible();
+        boolean isAccessEnabled = andPrivatedMethod.canAccess(operationsInstance);
+        
+        assertTrue(isAccessEnabled);
     }
 
     @Test
