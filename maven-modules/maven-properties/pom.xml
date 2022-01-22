@@ -14,14 +14,6 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -46,7 +38,6 @@
     <properties>
         <name>${project.name}</name>
         <my.awesome.property>property-from-pom</my.awesome.property>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

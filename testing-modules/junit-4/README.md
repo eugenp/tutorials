@@ -7,3 +7,4 @@
 - [Introduction to Lambda Behave](https://www.baeldung.com/lambda-behave)
 - [Conditionally Run or Ignore Tests in JUnit 4](https://www.baeldung.com/junit-conditional-assume)
 - [JUnit 4 on How to Ignore a Base Test Class](https://www.baeldung.com/junit-ignore-base-test-class)
+- [Using Fail Assertion in JUnit](https://www.baeldung.com/junit-fail)

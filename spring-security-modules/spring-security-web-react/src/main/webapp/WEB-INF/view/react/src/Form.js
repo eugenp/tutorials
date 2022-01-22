@@ -19,7 +19,8 @@ class Form extends Component {
       const data = new FormData(this.form)
       fetch(this.form.action, {
         method: this.form.method,
-        body: new URLSearchParams(data)
+        body: new URLSearchParams(data),
+        headers: { 'X-XSRF-TOKEN': window.getCsrfToken() },
       }).then(v => {
         if(v.redirected) window.location = v.url
       })
@@ -61,12 +62,12 @@ class Form extends Component {
       )
     )
     const errors = this.renderError()
-    return (
-        <form {...this.props} onSubmit={this.handleSubmit} ref={fm => {this.form=fm}} >
-          {inputs}
-          {errors}
-        </form>
-    )
+      return (
+          <form {...this.props} onSubmit={this.handleSubmit} ref={fm => {this.form=fm}} >
+            {inputs}
+            {errors}
+          </form>
+      )
   }
 }
 

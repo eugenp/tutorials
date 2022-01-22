@@ -11,3 +11,4 @@ This module contains articles about Ratpack.
 - [Ratpack HTTP Client](https://www.baeldung.com/ratpack-http-client)
 - [Ratpack with RxJava](https://www.baeldung.com/ratpack-rxjava)
 - [Ratpack with Groovy](https://www.baeldung.com/ratpack-groovy)
+- [Reactive Streams API with Ratpack](https://www.baeldung.com/ratpack-reactive-streams-api)

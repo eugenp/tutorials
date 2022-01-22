@@ -91,17 +91,6 @@
             <version>${jackson.version}</version>
         </dependency>
         <!-- http -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.apache.httpcomponents</groupId> -->
-        <!-- <artifactId>fluent-hc</artifactId> -->
-        <!-- <version>4.2.5</version> -->
-        <!-- <exclusions> -->
-        <!-- <exclusion> -->
-        <!-- <artifactId>commons-logging</artifactId> -->
-        <!-- <groupId>commons-logging</groupId> -->
-        <!-- </exclusion> -->
-        <!-- </exclusions> -->
-        <!-- </dependency> -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
@@ -246,8 +235,6 @@
         <!-- http -->
         <httpcore.version>4.4.11</httpcore.version>
         <httpclient.version>4.5.8</httpclient.version>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>

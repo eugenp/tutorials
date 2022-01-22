@@ -24,7 +24,7 @@ public class HibernateUtil {
                 settings.put(Environment.USER, "sa");
                 settings.put(Environment.PASS, "");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.HSQLDialect");
-                settings.put(Environment.SHOW_SQL, "true");
+                settings.put(Environment.SHOW_SQL, "false");
                 settings.put(Environment.HBM2DDL_AUTO, "update");
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);

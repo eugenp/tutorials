@@ -46,12 +46,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -92,7 +86,6 @@
         <hibernate.version>5.3.7.Final</hibernate.version>
         <mysql.version>8.0.13</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
-        <assertj-core.version>3.8.0</assertj-core.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
     </properties>
 

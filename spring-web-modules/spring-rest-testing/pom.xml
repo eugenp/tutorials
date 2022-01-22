@@ -165,16 +165,6 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -268,7 +258,6 @@
         <xstream.version>1.4.9</xstream.version>
         <xml-apis.version>1.4.01</xml-apis.version>
         <!-- util -->
-        <guava.version>19.0</guava.version>
         <javassist.version>3.25.0-GA</javassist.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>

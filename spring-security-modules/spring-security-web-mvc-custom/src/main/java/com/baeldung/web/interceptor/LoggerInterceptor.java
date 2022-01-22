@@ -1,16 +1,18 @@
 package com.baeldung.web.interceptor;
 
-import com.google.common.base.Strings;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Enumeration;
 
-public class LoggerInterceptor extends HandlerInterceptorAdapter {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.google.common.base.Strings;
+
+public class LoggerInterceptor implements HandlerInterceptor {
 
     private static Logger log = LoggerFactory.getLogger(LoggerInterceptor.class);
 
@@ -50,7 +52,8 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
             if (posted.length() > 1)
                 posted.append("&");
             final String curr = (String) e.nextElement();
-            posted.append(curr).append("=");
+            posted.append(curr)
+                .append("=");
             if (curr.contains("password") || curr.contains("answer") || curr.contains("pwd")) {
                 posted.append("*****");
             } else {

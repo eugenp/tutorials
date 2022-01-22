@@ -1,8 +1,13 @@
 package com.baeldung.initializationguide;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Serializable;
 
 public class User implements Serializable, Cloneable {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(User.class);
     private static final long serialVersionUID = 1L;
     static String forum;
     private String name;
@@ -10,12 +15,12 @@ public class User implements Serializable, Cloneable {
 
     {
         id = 0;
-        System.out.println("Instance Initializer");
+        LOGGER.debug("Instance Initializer");
     }
 
     static {
-    	forum = "Java";
-        System.out.println("Static Initializer");
+        forum = "Java";
+        LOGGER.debug("Static Initializer");
     }
 
     public User(String name, int id) {
@@ -25,7 +30,7 @@ public class User implements Serializable, Cloneable {
     }
 
     public User() {
-        System.out.println("Constructor");
+        LOGGER.debug("Constructor");
     }
 
     public String getName() {

@@ -21,11 +21,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -34,12 +29,6 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.bitbucket.cowwoc</groupId>
@@ -60,7 +49,6 @@
     </build>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
         <diff-match-path.version>1.2</diff-match-path.version>
     </properties>
 

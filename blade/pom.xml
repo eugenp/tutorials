@@ -37,12 +37,6 @@
         </dependency>
         <!-- TEST -->
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
@@ -70,6 +64,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
                 <configuration>
+                    <skipITs>true</skipITs>
                     <includes>
                         <include>**/*LiveTest.java</include>
                     </includes>
@@ -118,7 +113,6 @@
         <httpclient.version>4.5.6</httpclient.version>
         <httpmime.version>4.5.6</httpmime.version>
         <httpcore.version>4.4.10</httpcore.version>
-        <assertj-core.version>3.11.1</assertj-core.version>
         <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
         <process-exec-maven-plugin.version>0.7</process-exec-maven-plugin.version>
         <assembly.plugin.version>3.1.0</assembly.plugin.version>

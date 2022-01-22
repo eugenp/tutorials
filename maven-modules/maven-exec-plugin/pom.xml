@@ -12,7 +12,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 
@@ -44,9 +44,9 @@
     </build>
 
     <properties>
+        <logback.version>1.2.6</logback.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <java.version>1.8</java.version>
-        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 
 </project>

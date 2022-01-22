@@ -11,7 +11,6 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class MockitoVerifyExamplesIntegrationTest {
@@ -35,7 +34,7 @@ public class MockitoVerifyExamplesIntegrationTest {
     @Test
     public final void givenNoInteractionWithMockOccurred_whenVerifyingInteractions_thenCorrect() {
         final List<String> mockedList = mock(MyList.class);
-        verifyZeroInteractions(mockedList);
+        verifyNoInteractions(mockedList);
     }
 
     @Test

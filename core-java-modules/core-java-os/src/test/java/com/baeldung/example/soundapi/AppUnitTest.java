@@ -1,5 +1,6 @@
 package com.baeldung.example.soundapi;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -37,6 +38,7 @@ public class AppUnitTest {
     }
 
     @Test
+    @Disabled
     public void Given_TargetLineDataObject_When_Run_Then_GeneratesOutputStream() {
 
         soundRecorder.setFormat(af);
@@ -52,6 +54,7 @@ public class AppUnitTest {
     }
 
     @Test
+    @Disabled
     public void Given_AudioInputStream_When_NotNull_Then_SaveToWavFile() {
         soundRecorder.setFormat(af);
         soundRecorder.build(af);

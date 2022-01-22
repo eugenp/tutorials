@@ -17,12 +17,6 @@
     <dependencies>
         <!-- utils -->
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <!-- utils -->
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -37,13 +31,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
-        </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock -->
         <dependency>
@@ -76,7 +63,6 @@
     </build>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <wiremock.version>2.26.3</wiremock.version>
     </properties>
