@@ -1,4 +1,4 @@
-package org.example.gateway;
+package com.baeldung.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
