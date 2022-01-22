@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-springdoc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-boot-springdoc</name>
+    <packaging>jar</packaging>
     <description>Project for Springdoc integration</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -41,7 +40,6 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <!-- SpringDoc -->
         <dependency>
@@ -208,10 +206,9 @@
     </profiles>
 
     <properties>
-        <hibernate.version>5.2.10.Final</hibernate.version>
-        <springdoc.version>1.5.2</springdoc.version>
+        <springdoc.version>1.6.4</springdoc.version>
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
-        <kotlin.version>1.4.0</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
     </properties>
 

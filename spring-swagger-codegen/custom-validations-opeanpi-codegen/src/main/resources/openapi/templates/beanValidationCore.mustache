@@ -1,0 +1,26 @@
+{{{ vendorExtensions.x-constraints }}}
+{{#errorMessage}}@Mandatory(errorMessage="{{{pattern}}}") {{/errorMessage}}
+{{#pattern}}@Pattern(regexp="{{{pattern}}}") {{/pattern}}{{!
+minLength && maxLength set
+}}{{#minLength}}{{#maxLength}}@Size(min={{minLength}},max={{maxLength}}) {{/maxLength}}{{/minLength}}{{!
+minLength set, maxLength not
+}}{{#minLength}}{{^maxLength}}@Size(min={{minLength}}) {{/maxLength}}{{/minLength}}{{!
+minLength not set, maxLength set
+}}{{^minLength}}{{#maxLength}}@Size(max={{maxLength}}) {{/maxLength}}{{/minLength}}{{!
+@Size: minItems && maxItems set
+}}{{#minItems}}{{#maxItems}}@Size(min={{minItems}},max={{maxItems}}) {{/maxItems}}{{/minItems}}{{!
+@Size: minItems set, maxItems not
+}}{{#minItems}}{{^maxItems}}@Size(min={{minItems}}) {{/maxItems}}{{/minItems}}{{!
+@Size: minItems not set && maxItems set
+}}{{^minItems}}{{#maxItems}}@Size(max={{maxItems}}) {{/maxItems}}{{/minItems}}{{!
+@Email: useBeanValidation set && isEmail && java8 set
+}}{{#useBeanValidation}}{{#isEmail}}{{#java8}}@javax.validation.constraints.Email{{/java8}}{{/isEmail}}{{/useBeanValidation}}{{!
+@Email: performBeanValidation set && isEmail && not java8 set
+}}{{#performBeanValidation}}{{#isEmail}}{{^java8}}@org.hibernate.validator.constraints.Email{{/java8}}{{/isEmail}}{{/performBeanValidation}}{{!
+check for integer or long / all others=decimal type with @Decimal*
+isInteger set
+}}{{#isInteger}}{{#minimum}}@Min({{minimum}}){{/minimum}}{{#maximum}} @Max({{maximum}}) {{/maximum}}{{/isInteger}}{{!
+isLong set
+}}{{#isLong}}{{#minimum}}@Min({{minimum}}L){{/minimum}}{{#maximum}} @Max({{maximum}}L) {{/maximum}}{{/isLong}}{{!
+Not Integer, not Long => we have a decimal value!
+}}{{^isInteger}}{{^isLong}}{{#minimum}}@DecimalMin({{#exclusiveMinimum}}value={{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}},inclusive=false{{/exclusiveMinimum}}){{/minimum}}{{#maximum}} @DecimalMax({{#exclusiveMaximum}}value={{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}},inclusive=false{{/exclusiveMaximum}}) {{/maximum}}{{/isLong}}{{/isInteger}}

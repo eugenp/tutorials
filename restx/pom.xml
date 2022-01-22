@@ -106,12 +106,12 @@
             <artifactId>restx-specs-tests</artifactId>
             <version>${restx.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
@@ -147,6 +147,7 @@
 
     <properties>
         <restx.version>0.35-rc4</restx.version>
+        <assertj.version>1.6.0</assertj.version> <!-- restx requires such an old version -->
     </properties>
 
 </project>

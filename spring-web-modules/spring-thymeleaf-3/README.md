@@ -11,3 +11,4 @@ This module contains articles about Spring with Thymeleaf
 - [Using Hidden Inputs with Spring and Thymeleaf](https://www.baeldung.com/spring-thymeleaf-hidden-inputs)
 - [Thymeleaf Variables](https://www.baeldung.com/thymeleaf-variables)
 - [Displaying Error Messages with Thymeleaf in Spring](https://www.baeldung.com/spring-thymeleaf-error-messages)
+- [[next -->]](/spring-thymeleaf-4)

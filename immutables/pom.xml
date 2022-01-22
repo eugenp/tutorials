@@ -19,12 +19,6 @@
             <version>${immutables.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mutabilitydetector</groupId>
             <artifactId>MutabilityDetector</artifactId>
             <version>${mutabilitydetector.version}</version>
@@ -34,7 +28,6 @@
 
     <properties>
         <immutables.version>2.5.6</immutables.version>
-        <assertj.version>3.6.1</assertj.version>
         <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
     </properties>
 

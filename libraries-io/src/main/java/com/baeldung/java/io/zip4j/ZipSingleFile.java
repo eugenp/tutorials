@@ -21,7 +21,7 @@ public class ZipSingleFile {
         if (!fileToAdd.exists()) {
             fileToAdd.createNewFile();
         }
-        zipFile.addFile(fileToAdd);
+        zipFile.addFile(fileToAdd, zipParameters);
         zipFile.close();
     }
 }

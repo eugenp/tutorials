@@ -24,12 +24,7 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.12</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>30.1.1-jre</version>
+            <version>${reflections.version}</version>
         </dependency>
     </dependencies>
 
@@ -56,7 +51,7 @@
     </build>
 
     <properties>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <reflections.version>0.9.12</reflections.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
         <spring.version>5.3.4</spring.version>

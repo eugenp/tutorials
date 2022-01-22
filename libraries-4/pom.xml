@@ -74,11 +74,6 @@
             <version>${vavr.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.pcollections</groupId>
             <artifactId>pcollections</artifactId>
             <version>${pcollections.version}</version>
@@ -117,7 +112,6 @@
         <javax.servlet.version>2.5</javax.servlet.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
         <vavr.version>0.9.0</vavr.version>
-        <assertj.version>3.6.2</assertj.version>
         <pcollections.version>2.1.2</pcollections.version>
         <awaitility.version>3.0.0</awaitility.version>
         <streamex.version>0.6.5</streamex.version>

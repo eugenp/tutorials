@@ -12,8 +12,8 @@
     <url>http://www.example.com</url>
 
     <parent>
-        <artifactId>maven-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>maven-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -25,9 +25,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -52,7 +51,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.22.1</version>
+                    <version>2.22.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>

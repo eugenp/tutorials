@@ -58,7 +58,6 @@
 
     <properties>
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
-        <guava.version>21.0</guava.version>
         <testcontainers.version>1.12.2</testcontainers.version>
     </properties>
 

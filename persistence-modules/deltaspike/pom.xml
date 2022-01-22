@@ -18,6 +18,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of 
+                junit:junit in the classpath. hence forcing the latest 4.13.2 available version for junit5 compatibility -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
             <!-- JBoss distributes a complete set of Java EE 7 APIs including a Bill of Materials (BOM). 
                 A BOM specifies the versions of a "stack" (or a collection) of artifacts. We use this here so that we 
                 always get the correct versions of artifacts. Here we use the jboss-javaee-7.0-with-tools stack (you 

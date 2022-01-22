@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-string-algorithms-3</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>core-java-string-algorithms-3</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -14,27 +14,15 @@
     </parent>
 
     <dependencies>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
             <version>${validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
@@ -61,9 +49,8 @@
     </build>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
-        <guava.version>28.1-jre</guava.version>
         <validator.version>1.7</validator.version>
+        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
     </properties>
 
 </project>

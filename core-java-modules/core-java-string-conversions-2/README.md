@@ -9,4 +9,6 @@ This module contains articles about string conversions from/to another type.
 - [Converting String to BigDecimal in Java](https://www.baeldung.com/java-string-to-bigdecimal)
 - [Converting String to BigInteger in Java](https://www.baeldung.com/java-string-to-biginteger)
 - [Convert a String to Camel Case](https://www.baeldung.com/java-string-to-camel-case)
+- [Convert a ByteBuffer to String in Java](https://www.baeldung.com/java-bytebuffer-to-string)
+- [Convert String to Float and Back in Java](https://www.baeldung.com/java-string-to-float)
 - More articles: [[<-- prev]](/core-java-string-conversions)

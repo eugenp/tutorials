@@ -30,21 +30,9 @@
             <version>${tomcat.embeded.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.6.2</version>
+            <version>${javax.mail.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.seancfoley/ipaddress -->
         <dependency>
@@ -76,16 +64,26 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
         <spring.core.version>5.2.8.RELEASE</spring.core.version>
         <jetty.embeded.version>9.4.31.v20200723</jetty.embeded.version>
         <tomcat.embeded.version>10.0.0-M7</tomcat.embeded.version>
-        <assertj.version>3.11.1</assertj.version>
         <seancfoley.ipaddress.version>5.3.3</seancfoley.ipaddress.version>
         <jgonian.commons-ip-math.version>1.32</jgonian.commons-ip-math.version>
         <googlecode.ipv6.version>0.17</googlecode.ipv6.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
     </properties>
 
 </project>

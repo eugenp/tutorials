@@ -34,24 +34,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <properties>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <guava.version>29.0-jre</guava.version>
-    </properties>
 
 </project>
