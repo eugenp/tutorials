@@ -1,4 +1,4 @@
-package org.example.hello;
+package com.baeldung.hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
