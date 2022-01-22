@@ -10,7 +10,7 @@ public class Log4j2ThreadInfo {
     
     public static void main(String[] args) {
         IntStream.range(0, 5).forEach(i -> {
-            Runnable runnable = () -> LOGGER.info("Logging info to a specific thread");
+            Runnable runnable = () -> LOGGER.info("Logging info");
             Thread thread = new Thread(runnable);
             thread.start();
         });
