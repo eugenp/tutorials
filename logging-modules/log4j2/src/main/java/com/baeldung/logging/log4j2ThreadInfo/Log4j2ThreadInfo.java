@@ -1,4 +1,4 @@
-package com.baeldung.log4j2ThreadInfo;
+package com.baeldung.logging.log4j2ThreadInfo;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

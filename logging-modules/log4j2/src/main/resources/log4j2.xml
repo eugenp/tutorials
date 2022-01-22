@@ -6,7 +6,7 @@
         </Property>
     </Properties>
     <Appenders>
-        <RollingFile name="RollingName" filename="./logs/app.log" filePattern="$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+        <RollingFile name="RollingName" filename="logs/app.log" filePattern="$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
@@ -19,7 +19,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.baeldung.log4j2ThreadInfo" level="trace">
+        <Logger name="com.baeldung.logging.log4j2ThreadInfo" level="trace">
             <AppenderRef ref="Console" />
         </Logger>
         <Root level="error">
