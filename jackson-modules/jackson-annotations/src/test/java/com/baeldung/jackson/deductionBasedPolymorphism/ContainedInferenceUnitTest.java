@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.junit.jupiter.api.Test;
 
-public class ContainedInferenceUnitTest extends JacksonDeductionBasedPolymorphismBaseTest {
+public class ContainedInferenceUnitTest extends JacksonDeductionBasedPolymorphismBaseUnitTest {
 
   private final ObjectMapper objectMapper = JsonMapper.builder().build();
 

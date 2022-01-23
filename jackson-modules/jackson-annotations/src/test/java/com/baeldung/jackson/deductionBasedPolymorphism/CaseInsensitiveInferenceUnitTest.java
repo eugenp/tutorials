@@ -9,7 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.junit.jupiter.api.Test;
 
-public class CaseInsensitiveInferenceUnitTest extends JacksonDeductionBasedPolymorphismBaseTest {
+public class CaseInsensitiveInferenceUnitTest extends
+    JacksonDeductionBasedPolymorphismBaseUnitTest {
 
   private final ObjectMapper objectMapper = JsonMapper.builder()
       .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true).build();
