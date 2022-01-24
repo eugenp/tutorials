@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.spring.cloud.zuul.filter;
 
 import java.net.ConnectException;
 import java.time.Instant;
@@ -41,11 +41,6 @@ public class CustomZuulErrorFilter extends ZuulFilter {
                     .setContentType("application/json");
                 context.setResponseStatusCode(503);
             }
-
-//            if (throwable.getCause().getCause().getCause() instanceof ConnectException) {
-//                ZuulException customException = new ZuulException("", 503, "Service Unavailable");
-//                context.setThrowable(customException);
-//            }
 
         }
         return null;

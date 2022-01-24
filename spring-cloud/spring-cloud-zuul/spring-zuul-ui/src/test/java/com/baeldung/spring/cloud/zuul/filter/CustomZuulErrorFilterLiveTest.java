@@ -14,12 +14,11 @@ public class CustomZuulErrorFilterLiveTest {
         final Response response = RestAssured.get("http://localhost:8080/foos/1");
         assertEquals(503, response.getStatusCode());
     }
-    
+
     @Test
-    public void whenSendRequestToWithService_thenOk() {
+    public void whenSendRequestWithoutCustomErrorFilter_thenError() {
         final Response response = RestAssured.get("http://localhost:8080/foos/1");
-        assertEquals(200, response.getStatusCode());
+        assertEquals(500, response.getStatusCode());
     }
-    
 
 }

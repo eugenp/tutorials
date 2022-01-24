@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.spring.cloud.zuul.filter;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
