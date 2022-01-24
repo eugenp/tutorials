@@ -18,11 +18,11 @@ public class ResilientFeignClientBuilder {
 
     public static <T> T createClient(Class<T> type, String uri) {
         return Feign.builder()
-            .client(new OkHttpClient())
-            .encoder(new GsonEncoder())
-            .decoder(new GsonDecoder())
-            .retryer(new Retryer.Default(100L, TimeUnit.SECONDS.toMillis(3L), 5))
-            .errorDecoder(new Custom5xxErrorDecoder())
-            .target(type, uri);
+          .client(new OkHttpClient())
+          .encoder(new GsonEncoder())
+          .decoder(new GsonDecoder())
+          .retryer(new Retryer.Default(100L, TimeUnit.SECONDS.toMillis(3L), 5))
+          .errorDecoder(new Custom5xxErrorDecoder())
+          .target(type, uri);
     }
 }
