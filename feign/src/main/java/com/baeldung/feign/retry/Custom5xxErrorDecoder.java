@@ -15,12 +15,12 @@ public class Custom5xxErrorDecoder implements ErrorDecoder {
         int status = response.status();
         if (status >= 500) {
             return new RetryableException(
-                    response.status(),
-                    exception.getMessage(),
-                    response.request().httpMethod(),
-                    exception,
-                    null,
-                    response.request());
+              response.status(),
+              exception.getMessage(),
+              response.request().httpMethod(),
+              exception,
+              null,
+              response.request());
         }
         return exception;
     }
