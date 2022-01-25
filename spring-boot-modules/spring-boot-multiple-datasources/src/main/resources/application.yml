@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    todos:
+      url: jdbc:h2:./.local-db/todos;DB_CLOSE_DELAY=-1;MODE=DB2;AUTO_SERVER=TRUE
+      username: sa
+      password: null
+      driverClassName: org.h2.Driver
+    topics:
+      url: jdbc:h2:./.local-db/topics;DB_CLOSE_DELAY=-1;MODE=DB2;AUTO_SERVER=TRUE
+      username: sa
+      password: null
+      driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
