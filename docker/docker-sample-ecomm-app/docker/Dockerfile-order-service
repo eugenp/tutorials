@@ -1,7 +1,0 @@
-FROM openjdk:11
-RUN mkdir app
-COPY order-service/target/order-service-0.0.1.jar app/service.jar
-COPY scripts/* app/
-COPY configs/* app/configs/
-WORKDIR app
-CMD bash ./start.sh

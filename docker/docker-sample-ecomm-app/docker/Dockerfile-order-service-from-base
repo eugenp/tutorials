@@ -1,3 +1,0 @@
-FROM ecomm-base:0.0.1
-COPY order-service/target/order-service-0.0.1.jar ./service.jar
-CMD bash ./start.sh

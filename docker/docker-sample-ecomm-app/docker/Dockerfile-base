@@ -1,5 +1,0 @@
-FROM openjdk:11
-RUN mkdir app
-WORKDIR app
-COPY scripts/* ./
-COPY configs/* ./configs/
