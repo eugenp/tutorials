@@ -1,4 +1,2 @@
 FROM sample-site-base:latest
 COPY html/* /etc/nginx/html/
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
