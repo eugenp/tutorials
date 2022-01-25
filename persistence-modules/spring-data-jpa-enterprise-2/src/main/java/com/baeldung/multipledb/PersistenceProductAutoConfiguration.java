@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -21,31 +19,30 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 /**
  * By default, the persistence-multiple-db.properties file is read for 
- * non auto configuration in PersistenceUserConfiguration. 
+ * non auto configuration in PersistenceProductConfiguration. 
  * <p>
  * If we need to use persistence-multiple-db-boot.properties and auto configuration 
- * then uncomment the below @Configuration class and comment out PersistenceUserConfiguration. 
+ * then uncomment the below @Configuration class and comment out PersistenceProductConfiguration. 
  */
 //@Configuration
 @PropertySource({"classpath:persistence-multiple-db-boot.properties"})
-@EnableJpaRepositories(basePackages = "com.baeldung.multipledb.dao.user", entityManagerFactoryRef = "userEntityManager", transactionManagerRef = "userTransactionManager")
+@EnableJpaRepositories(basePackages = "com.baeldung.multipledb.dao.product", entityManagerFactoryRef = "productEntityManager", transactionManagerRef = "productTransactionManager")
 @Profile("!tc")
-public class PersistenceUserAutoConfiguration {
+public class PersistenceProductAutoConfiguration {
     @Autowired
     private Environment env;
 
-    public PersistenceUserAutoConfiguration() {
+    public PersistenceProductAutoConfiguration() {
         super();
     }
 
     //
 
-    @Primary
     @Bean
-    public LocalContainerEntityManagerFactoryBean userEntityManager() {
+    public LocalContainerEntityManagerFactoryBean productEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(userDataSource());
-        em.setPackagesToScan("com.baeldung.multipledb.model.user");
+        em.setDataSource(productDataSource());
+        em.setPackagesToScan("com.baeldung.multipledb.model.product");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -56,19 +53,17 @@ public class PersistenceUserAutoConfiguration {
 
         return em;
     }
-
+    
     @Bean
-    @Primary
-    @ConfigurationProperties(prefix="spring.datasource")
-    public DataSource userDataSource() {
+    @ConfigurationProperties(prefix="spring.second-datasource")
+    public DataSource productDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Primary
     @Bean
-    public PlatformTransactionManager userTransactionManager() {
+    public PlatformTransactionManager productTransactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(userEntityManager().getObject());
+        transactionManager.setEntityManagerFactory(productEntityManager().getObject());
         return transactionManager;
     }
 
