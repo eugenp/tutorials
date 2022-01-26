@@ -14,4 +14,5 @@ This module contains articles about Apache POI.
 - [Set Background Color of a Cell with Apache POI](https://www.baeldung.com/apache-poi-background-color)
 - [Add Borders to Excel Cells With Apache POI](https://www.baeldung.com/apache-poi-add-borders)
 - [Reading Values From Excel in Java](https://www.baeldung.com/java-read-dates-excel)
+- [Change Cell Font Style with Apache POI](https://www.baeldung.com/apache-poi-change-cell-font)
 - More articles: [[next -->]](../apache-poi-2)
