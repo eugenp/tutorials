@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SwaggerConfExcludeErrorControllerTest {
+public class SwaggerConfExcludeErrorControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
