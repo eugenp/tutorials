@@ -16,7 +16,7 @@ public class RegularRestController {
     @ApiOperation(value = "This method is used to get the author name.")
     @GetMapping("/getAuthor")
     public String getAuthor() {
-        return "Gaetano Piazzolla";
+        return "Name Surname";
     }
 
     @ApiOperation(value = "This method is used to get the current date.")
