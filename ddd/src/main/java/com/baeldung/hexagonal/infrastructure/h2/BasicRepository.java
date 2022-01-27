@@ -1,5 +1,7 @@
 package com.baeldung.hexagonal.infrastructure.h2;
 
-public class BasicRepository {
+import com.baeldung.hexagonal.core.repository.DeckRepository;
+
+public abstract class BasicRepository implements DeckRepository {
 
 }

@@ -2,7 +2,7 @@ package com.baeldung.hexagonal.application.rest;
 
 import com.baeldung.hexagonal.core.service.DeckService;
 
-public class BasicController {
+public abstract class BasicController {
 
     private final DeckService deckService;
 
