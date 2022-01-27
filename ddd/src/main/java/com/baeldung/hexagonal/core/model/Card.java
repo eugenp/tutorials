@@ -6,16 +6,16 @@ public class Card {
     private final String frontSide;
     private final String backSide;
 
-    private Card(final String frontSide, final String backSide) {
+    public Card(final String frontSide, final String backSide) {
         this.frontSide = frontSide;
         this.backSide = backSide;
     }
 
-    private String getFrontSide() {
+    public String getFrontSide() {
         return frontSide;
     }
 
-    private String getBackSide() {
+    public String getBackSide() {
         return backSide;
     }
 
