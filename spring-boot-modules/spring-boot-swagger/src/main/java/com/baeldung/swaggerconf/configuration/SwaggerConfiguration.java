@@ -21,7 +21,7 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfo("My REST API", "Some custom description of API.", "API TOS", "Terms of service",
-                new Contact("Gaetano Piazzolla", "www.baeldung.com", "gae.piaz@gmail.com"),
+                new Contact("General UserName", "www.baeldung.com", "user-name@gmail.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
 
@@ -29,11 +29,8 @@ public class SwaggerConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 .select()
-                // excludes ErrorControllerExcludedForPackage
                 .apis(RequestHandlerSelectors.basePackage("com.baeldung.swaggerconf.controller"))
-                // excludes ErrorControllerExcludedForAnnotation
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-                // excludes ErrorControllerExcludedForPath
                 .paths(regex("/good-path/.*"))
                 .build();
     }

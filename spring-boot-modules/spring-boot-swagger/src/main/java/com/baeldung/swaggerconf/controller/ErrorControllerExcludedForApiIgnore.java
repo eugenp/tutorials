@@ -11,7 +11,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @Component
 @RequestMapping("good-path/error-excluded-apiignore")
 @RestController
-@ApiIgnore // exclude ErrorControllerExcludedForApiIgnore
+@ApiIgnore
 public class ErrorControllerExcludedForApiIgnore extends BasicErrorController {
 
     public ErrorControllerExcludedForApiIgnore(ErrorAttributes errorAttributes, ServerProperties serverProperties) {
