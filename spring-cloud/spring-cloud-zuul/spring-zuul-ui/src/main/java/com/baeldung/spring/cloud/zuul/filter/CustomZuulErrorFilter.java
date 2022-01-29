@@ -14,9 +14,9 @@ import com.netflix.zuul.exception.ZuulException;
 @Component
 public class CustomZuulErrorFilter extends ZuulFilter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CustomZuulErrorFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(CustomZuulErrorFilter.class);
 
-    private static String RESPONSE_BODY = "{\n" + "    \"timestamp\": " + "\"" + Instant.now()
+    private static final String RESPONSE_BODY = "{\n" + "    \"timestamp\": " + "\"" + Instant.now()
         .toString() + "\"" + ",\n" + "    \"status\": 503,\n" + "    \"error\": \"Service Unavailable\"\n" + "}";
 
     @Override
@@ -26,11 +26,9 @@ public class CustomZuulErrorFilter extends ZuulFilter {
 
         if (throwable instanceof ZuulException) {
             final ZuulException zuulException = (ZuulException) throwable;
-            LOG.error("Zuul exception: " + zuulException.getMessage());
+            log.error("Zuul exception: " + zuulException.getMessage());
 
-            if (throwable.getCause()
-                .getCause()
-                .getCause() instanceof ConnectException) {
+            if (throwable.getCause().getCause().getCause() instanceof ConnectException) {
 
                 // reset throwable to prevent further error handling in follow up filters
                 context.remove("throwable");
@@ -48,7 +46,6 @@ public class CustomZuulErrorFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        // always filter
         return true;
     }
 
@@ -59,7 +56,6 @@ public class CustomZuulErrorFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
-        // error filter type
         return "error";
     }
 
