@@ -43,9 +43,9 @@ public class Custom5xxErrorDecoderUnitTest {
     @NotNull
     private Response responseStub(int status) {
         return Response.builder()
-                .request(Request.create(
-                  Request.HttpMethod.GET, "url", new HashMap<String, Collection<String>>(), new byte[0], Charset.defaultCharset(), new RequestTemplate()))
-                .status(status)
-                .build();
+          .request(Request.create(
+            Request.HttpMethod.GET, "url", new HashMap<>(), new byte[0], Charset.defaultCharset(), new RequestTemplate()))
+          .status(status)
+          .build();
     }
 }
