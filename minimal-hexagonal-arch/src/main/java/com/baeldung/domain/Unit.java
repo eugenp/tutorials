@@ -1,4 +1,4 @@
-package domain;
+package com.baeldung.domain;
 
 public enum Unit {
     Piece,

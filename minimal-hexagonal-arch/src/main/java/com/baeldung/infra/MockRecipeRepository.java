@@ -1,9 +1,9 @@
-package infra;
+package com.baeldung.infra;
 
-import domain.Ingredient;
-import domain.Recipe;
-import domain.Unit;
-import domain.ports.IRecipeRepository;
+import com.baeldung.domain.Ingredient;
+import com.baeldung.domain.Recipe;
+import com.baeldung.domain.Unit;
+import com.baeldung.domain.ports.IRecipeRepository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package infra;
+package com.baeldung.infra;
 
-import domain.Recipe;
-import domain.ports.ISmartRefrigerator;
+import com.baeldung.domain.Recipe;
+import com.baeldung.domain.ports.ISmartRefrigerator;
 
 import java.util.Optional;
 

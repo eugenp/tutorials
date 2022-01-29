@@ -1,7 +1,7 @@
-package domain.ports;
+package com.baeldung.domain.ports;
 
-import domain.Food;
-import domain.Ingredient;
+import com.baeldung.domain.Food;
+import com.baeldung.domain.Ingredient;
 
 import java.util.List;
 

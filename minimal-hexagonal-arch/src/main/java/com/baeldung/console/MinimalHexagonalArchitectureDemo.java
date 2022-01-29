@@ -1,15 +1,14 @@
-package console;
+package com.baeldung.console;
 
-import domain.Food;
-import domain.SmartRefrigerator;
-import domain.Unit;
-import domain.ports.IFoodRepository;
-import domain.ports.IRecipeRepository;
-import domain.ports.ISmartRefrigerator;
-import infra.ConsoleAdapter;
-import infra.MockFoodRepository;
-import infra.MockRecipeRepository;
-import infra.RecipeJSONFileAdapter;
+import com.baeldung.domain.Food;
+import com.baeldung.domain.SmartRefrigerator;
+import com.baeldung.domain.Unit;
+import com.baeldung.domain.ports.IFoodRepository;
+import com.baeldung.domain.ports.IRecipeRepository;
+import com.baeldung.domain.ports.ISmartRefrigerator;
+import com.baeldung.infra.ConsoleAdapter;
+import com.baeldung.infra.MockFoodRepository;
+import com.baeldung.infra.RecipeJSONFileAdapter;
 
 public class MinimalHexagonalArchitectureDemo {
     public static void main(String ...args) {

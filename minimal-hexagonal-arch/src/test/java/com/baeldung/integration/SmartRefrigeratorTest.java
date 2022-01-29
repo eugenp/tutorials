@@ -1,11 +1,13 @@
-import domain.Food;
-import domain.SmartRefrigerator;
-import domain.Unit;
-import domain.ports.IFoodRepository;
-import domain.ports.IRecipeRepository;
-import domain.ports.ISmartRefrigerator;
-import infra.MockFoodRepository;
-import infra.MockRecipeRepository;
+package com.baeldung.integration;
+
+import com.baeldung.domain.Food;
+import com.baeldung.domain.SmartRefrigerator;
+import com.baeldung.domain.Unit;
+import com.baeldung.domain.ports.IFoodRepository;
+import com.baeldung.domain.ports.IRecipeRepository;
+import com.baeldung.domain.ports.ISmartRefrigerator;
+import com.baeldung.infra.MockFoodRepository;
+import com.baeldung.infra.MockRecipeRepository;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

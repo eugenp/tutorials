@@ -1,8 +1,8 @@
-package infra;
+package com.baeldung.infra;
 
-import domain.Food;
-import domain.Ingredient;
-import domain.ports.IFoodRepository;
+import com.baeldung.domain.Food;
+import com.baeldung.domain.Ingredient;
+import com.baeldung.domain.ports.IFoodRepository;
 
 import java.util.ArrayList;
 import java.util.List;

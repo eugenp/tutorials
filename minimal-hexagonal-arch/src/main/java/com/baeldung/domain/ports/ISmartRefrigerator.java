@@ -1,6 +1,6 @@
-package domain.ports;
+package com.baeldung.domain.ports;
 
-import domain.Recipe;
+import com.baeldung.domain.Recipe;
 
 import java.util.Optional;
 

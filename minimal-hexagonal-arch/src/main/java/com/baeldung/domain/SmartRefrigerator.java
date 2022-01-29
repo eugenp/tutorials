@@ -1,8 +1,8 @@
-package domain;
+package com.baeldung.domain;
 
-import domain.ports.IFoodRepository;
-import domain.ports.IRecipeRepository;
-import domain.ports.ISmartRefrigerator;
+import com.baeldung.domain.ports.IFoodRepository;
+import com.baeldung.domain.ports.IRecipeRepository;
+import com.baeldung.domain.ports.ISmartRefrigerator;
 
 import java.util.List;
 import java.util.Optional;
