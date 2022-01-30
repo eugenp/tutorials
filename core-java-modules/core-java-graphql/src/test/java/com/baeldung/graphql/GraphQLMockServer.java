@@ -24,6 +24,10 @@ public class GraphQLMockServer {
 
     private static int serverPort;
 
+    public static final String SERVER_ADDRESS = "127.0.0.1";
+    public static final String HTTP_GET_POST = "GET";
+    public static final String PATH = "/graphql";
+
     @BeforeAll
     static void startServer() throws IOException, URISyntaxException {
         serverPort = getFreePort();
