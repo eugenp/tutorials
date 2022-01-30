@@ -17,8 +17,8 @@ public class SleuthTraceIdController {
     @Autowired
     private Tracer tracer;
 
-    @GetMapping("/hello")
-    public String hello() {
+    @GetMapping("/traceid")
+    public String getSleuthTraceId() {
         logger.info("Hello with Sleuth");
         Span span = tracer.currentSpan();
         if (span != null) {
@@ -27,6 +27,6 @@ public class SleuthTraceIdController {
             logger.info("Trace ID hex {}", span.context().traceIdString());
             logger.info("Trace ID decimal {}", span.context().traceId());
         }
-        return "hello";
+        return "Hello from Sleuth";
     }
 }
