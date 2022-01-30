@@ -16,12 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -32,9 +26,5 @@
             <version>${jmh-generator.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <assertj.version>3.11.1</assertj.version>
-    </properties>
 
 </project>

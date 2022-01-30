@@ -13,23 +13,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>guava-collections-set</finalName>
     </build>
-
-    <properties>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
-    </properties>
 
 </project>

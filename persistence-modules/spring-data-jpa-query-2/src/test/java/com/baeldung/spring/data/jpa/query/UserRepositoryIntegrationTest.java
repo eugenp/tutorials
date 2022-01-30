@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(properties = "spring.sql.init.data-locations=classpath:insert_users.sql")
+@DataJpaTest(properties = "spring.sql.init.data-locations=classpath:insert_users.sql", showSql = false)
 public class UserRepositoryIntegrationTest {
 
     @Autowired

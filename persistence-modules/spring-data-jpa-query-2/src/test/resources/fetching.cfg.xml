@@ -11,7 +11,7 @@
 		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		<property name="show_sql">true</property>
+		<property name="show_sql">false</property>
 		
 		<mapping class="com.baeldung.hibernate.fetching.model.UserEager" />
         <mapping class="com.baeldung.hibernate.fetching.model.OrderDetail" />

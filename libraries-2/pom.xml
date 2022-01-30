@@ -40,11 +40,6 @@
             <version>${parallel-collectors.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
             <version>${classgraph.version}</version>
@@ -128,7 +123,6 @@
 
     <properties>
         <mapdb.version>3.0.7</mapdb.version>
-        <assertj.version>3.6.2</assertj.version>
         <classgraph.version>4.8.28</classgraph.version>
         <jbpm.version>6.0.0.Final</jbpm.version>
         <picocli.version>3.9.6</picocli.version>

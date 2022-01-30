@@ -26,18 +26,11 @@
             <artifactId>jsr305</artifactId>
             <version>${javax.annotations.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <freebuilder.version>2.4.1</freebuilder.version>
         <javax.annotations.version>3.0.2</javax.annotations.version>
-        <assertj-core.version>3.9.1</assertj-core.version>
     </properties>
 
 </project>

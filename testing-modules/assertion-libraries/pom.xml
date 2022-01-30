@@ -11,7 +11,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -38,12 +37,6 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-guava</artifactId>
             <version>${assertj-guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.javalite</groupId>
@@ -83,8 +76,7 @@
 
     <properties>
         <truth.version>0.32</truth.version>
-        <assertj-guava.version>3.1.0</assertj-guava.version>
-        <assertj-core.version>3.9.0</assertj-core.version>
+        <assertj-guava.version>3.4.0</assertj-guava.version>
         <assertj-generator.version>2.1.0</assertj-generator.version>
         <javalite.version>1.4.13</javalite.version>
         <jgotesting.version>0.12</jgotesting.version>

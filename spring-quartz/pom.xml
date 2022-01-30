@@ -54,8 +54,8 @@
     </build>
 
     <properties>
-        <quartz.version>2.3.0</quartz.version>
-        <c3p0.version>0.9.5.2</c3p0.version>
+        <quartz.version>2.3.2</quartz.version>
+        <c3p0.version>0.9.5.5</c3p0.version>
     </properties>
 
 </project>

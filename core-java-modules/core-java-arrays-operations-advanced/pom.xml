@@ -20,12 +20,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -63,9 +57,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <assertj-core.version>3.10.0</assertj-core.version>
-    </properties>
 
 </project>

@@ -99,12 +99,6 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>kafka</artifactId>
             <version>${testcontainers-kafka.version}</version>
@@ -170,13 +164,11 @@
     </dependencies>
 
     <properties>
-        <assertj.version>3.6.2</assertj.version>
         <kafka.version>2.8.0</kafka.version>
         <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
         <flink.version>1.5.0</flink.version>
         <awaitility.version>3.0.0</awaitility.version>
-        <guava.version>29.0-jre</guava.version>
         <org.apache.spark.spark-core.version>2.4.8</org.apache.spark.spark-core.version>
         <graphframes.version>0.8.1-spark3.0-s_2.12</graphframes.version>
         <com.datastax.spark.spark-cassandra-connector.version>2.5.2</com.datastax.spark.spark-cassandra-connector.version>

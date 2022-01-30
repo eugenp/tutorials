@@ -107,5 +107,7 @@ public class SerializationUnitTest {
         assertFalse(MySerializationUtils.isSerializable(Address.class));
         assertTrue(MySerializationUtils.isSerializable(Person.class));
         assertTrue(MySerializationUtils.isSerializable(Integer.class));
+        assertFalse(MySerializationUtils.isSerializable(Customer.class));
+        assertTrue(MySerializationUtils.isSerializable(Employee.class));
     }
 }

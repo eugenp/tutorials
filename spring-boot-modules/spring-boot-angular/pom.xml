@@ -6,8 +6,8 @@
     <groupId>com.baeldung.springbootangular</groupId>
     <artifactId>spring-boot-angular</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
     <name>spring-boot-angular</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -31,7 +31,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>

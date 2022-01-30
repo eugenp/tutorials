@@ -36,18 +36,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
         <findbugs.annotations.version>3.0.1</findbugs.annotations.version>
-        <assertj-core.version>3.9.1</assertj-core.version>
     </properties>
 
 </project>

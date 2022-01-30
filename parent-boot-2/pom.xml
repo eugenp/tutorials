@@ -88,10 +88,8 @@
         <rest-assured.version>3.3.0</rest-assured.version>
         <!-- plugins -->
         <thin.version>1.0.22.RELEASE</thin.version>
-        <spring-boot.version>2.5.4</spring-boot.version>
+        <spring-boot.version>2.6.1</spring-boot.version>
         <aspectjweaver.version>1.9.1</aspectjweaver.version>
-        <!-- this property can be removed once we update Mockito version in the main pom.xml -->
-        <mockito.version>3.4.0</mockito.version>
     </properties>
 
 </project>

@@ -42,7 +42,6 @@
         <module>spring-testing-2</module>
         <module>spring-testing</module>
         <module>test-containers</module>
-        <module>testing-assertions</module>
         <module>testing-libraries-2</module>
         <module>testing-libraries</module>
         <module>testng</module>
