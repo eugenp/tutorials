@@ -15,19 +15,19 @@ import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
-class GraphQLMockServer {
+import static com.baeldung.graphql.Constants.*;
 
-    static final String SERVER_ADDRESS = "127.0.0.1";
-    static final String HTTP_GET_POST = "GET";
-    static final String QUERY_PARAMETER = "query";
-    static final String PATH = "/graphql";
-    static int serverPort;
+public class GraphQLMockServer {
 
-    private static ClientAndServer mockServer;
+    public static ClientAndServer mockServer;
+    public static String serviceUrl;
+
+    private static int serverPort;
 
     @BeforeAll
     static void startServer() throws IOException, URISyntaxException {
         serverPort = getFreePort();
+        serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH;
         mockServer = startClientAndServer(serverPort);
         mockAllBooksTitleRequest();
         mockAllBooksTitleAuthorRequest();

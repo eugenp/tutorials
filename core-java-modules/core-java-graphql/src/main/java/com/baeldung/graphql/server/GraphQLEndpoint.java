@@ -1,4 +1,4 @@
-package com.baeldung.graphql;
+package com.baeldung.graphql.server;
 
 import com.baeldung.graphql.data.BookRepository;
 import com.coxautodev.graphql.tools.SchemaParser;

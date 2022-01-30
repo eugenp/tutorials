@@ -1,4 +1,4 @@
-package com.baeldung.graphql;
+package com.baeldung.graphql.server;
 
 import com.baeldung.graphql.data.Book;
 import com.baeldung.graphql.data.BookRepository;
