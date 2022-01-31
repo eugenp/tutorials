@@ -2,8 +2,6 @@ package com.baeldung.cloud.openfeign;
 
 import com.baeldung.cloud.openfeign.client.PaymentClient;
 import com.baeldung.cloud.openfeign.model.Payment;
-import com.baeldung.cloud.openfeign.model.Post;
-import com.baeldung.cloud.openfeign.service.JSONPlaceHolderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
