@@ -33,7 +33,7 @@
     </dependencies>
 
     <properties>
-        <poi.version>4.1.1</poi.version>
+        <poi.version>5.2.0</poi.version>
         <jexcel.version>1.0.6</jexcel.version>
     </properties>
 
