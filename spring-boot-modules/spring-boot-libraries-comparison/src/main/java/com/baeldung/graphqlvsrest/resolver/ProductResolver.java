@@ -8,7 +8,7 @@ import com.coxautodev.graphql.tools.GraphQLResolver;
 import java.util.List;
 
 public class ProductResolver implements GraphQLResolver<Product> {
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
     public ProductResolver(OrderRepository orderRepository){
         this.orderRepository = orderRepository;
     }

@@ -7,7 +7,7 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 
 public class Mutation implements GraphQLMutationResolver {
 
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
     public Mutation(ProductRepository productRepository){
         this.productRepository = productRepository;
     }

@@ -15,8 +15,8 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     private static List<Order> orderList = new ArrayList<>();
 
-    public OrderRepositoryImpl(){
-        for (int i = 1 ; i <= 100 ; i++){
+    public OrderRepositoryImpl() {
+        for (int i = 1; i <= 100; i++){
             Order order = new Order();
             order.setId(i);
             order.setProduct_id(i%10);

@@ -16,8 +16,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     private static List<Product> productList = new ArrayList<>();
 
-    public ProductRepositoryImpl(){
-        for (int i = 1 ; i <= 10 ; i++){
+    public ProductRepositoryImpl() {
+        for (int i = 1; i <= 10; i++){
             Product product = new Product();
             product.setId(i);
             product.setName(String.format("Product %d", i));
@@ -55,7 +55,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         if (product != null){
             update(product, productModel);
         }
-        return product;//productList.stream().filter(p -> p.getId().equals(product.getId())).findFirst().orElse(null);
+        return product;
     }
 
     private void update(Product product, ProductModel productModel){

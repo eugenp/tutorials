@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Query implements GraphQLQueryResolver {
 
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
     public Query(ProductRepository productRepository){
         this.productRepository = productRepository;
     }
