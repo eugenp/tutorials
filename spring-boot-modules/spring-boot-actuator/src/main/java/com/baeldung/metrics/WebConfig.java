@@ -1,4 +1,4 @@
-package com.baeldung.spring;
+package com.baeldung.metrics;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,13 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("com.baeldung.web")
+@ComponentScan("com.baeldung.metrics")
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
-
-    public WebConfig() {
-        super();
-    }
 
     @Bean
     public ViewResolver viewResolver() {
@@ -26,11 +22,10 @@ public class WebConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    // API
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        registry.addViewController("/graph.html");
-        registry.addViewController("/homepage.html");
+        registry.addViewController("/metrics/graph.html");
+        registry.addViewController("/metrics/homepage.html");
     }
 
 }
