@@ -1333,6 +1333,7 @@
                  <module>core-java-modules/core-java-io-conversions-2</module>
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-string-algorithms-3</module>
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>

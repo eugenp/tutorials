@@ -20,6 +20,18 @@ class RepeatedCharacterStringUnitTest {
     private static final int N = 7;
 
     @Test
+    void givenSingleCharacterString_whenRepeat_thenStringCreated() {
+        String newString = "a".repeat(N);
+        assertEquals(EXPECTED_STRING, newString);
+    }
+
+    @Test
+    void givenMultiCharacterString_whenRepeat_thenStringCreated() {
+        String newString = "-->".repeat(5);
+        assertEquals("-->-->-->-->-->", newString);
+    }
+
+    @Test
     void givenString_whenStringBuilderUsed_thenStringCreated() {
         StringBuilder builder = new StringBuilder(N);
         for (int i = 0; i < N; i++) {
