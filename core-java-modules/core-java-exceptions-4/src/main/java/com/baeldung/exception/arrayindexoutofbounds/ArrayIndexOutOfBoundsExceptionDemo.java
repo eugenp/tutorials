@@ -23,7 +23,6 @@ public class ArrayIndexOutOfBoundsExceptionDemo {
     public static int getListElementAtIndex(int index) {
         List<Integer> numbersList = Arrays.asList(1, 2, 3, 4, 5);
         return numbersList.get(index);
-
     }
 
     public static int getArrayElementAtIndex(int[] numbers, int index) {
