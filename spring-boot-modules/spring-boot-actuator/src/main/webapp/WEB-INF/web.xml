@@ -16,7 +16,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.baeldung.spring</param-value>
+        <param-value>com.baeldung.metrics</param-value>
     </context-param>
 
     <listener>
@@ -37,7 +37,7 @@
     <!-- Metric filter -->
     <filter>
         <filter-name>metricFilter</filter-name>
-        <filter-class>com.baeldung.web.metric.MetricFilter</filter-class>
+        <filter-class>com.baeldung.metrics.filter.MetricFilter</filter-class>
     </filter>
 
     <filter-mapping>

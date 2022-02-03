@@ -11,7 +11,7 @@
 	});
 
 	function drawChart() {
-		$.get("<c:url value="/metric-graph-data"/>",
+		$.get("<c:url value="/metrics/metric-graph-data"/>",
 				function(mydata) {
 
 					var data = google.visualization.arrayToDataTable(mydata);

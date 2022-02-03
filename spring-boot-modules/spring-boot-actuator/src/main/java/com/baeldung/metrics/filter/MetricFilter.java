@@ -1,4 +1,11 @@
-package com.baeldung.web.metric;
+package com.baeldung.metrics.filter;
+
+import com.baeldung.metrics.service.CustomActuatorMetricService;
+import com.baeldung.metrics.service.InMemoryMetricService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -9,24 +16,23 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 @Component
 public class MetricFilter implements Filter {
 
     @Autowired
-    private IMetricService metricService;
+    private InMemoryMetricService metricService;
 
     @Autowired
-    private ICustomActuatorMetricService actMetricService;
+    private CustomActuatorMetricService actMetricService;
 
     @Override
-    public void init(final FilterConfig config) throws ServletException {
+    public void init(final FilterConfig config) {
         if (metricService == null || actMetricService == null) {
-            metricService = (IMetricService) WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean("metricService");
-            actMetricService = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean(CustomActuatorMetricService.class);
+            WebApplicationContext appContext = WebApplicationContextUtils
+              .getRequiredWebApplicationContext(config.getServletContext());
+
+            metricService = appContext.getBean(InMemoryMetricService.class);
+            actMetricService = appContext.getBean(CustomActuatorMetricService.class);
         }
     }
 
@@ -42,8 +48,4 @@ public class MetricFilter implements Filter {
         actMetricService.increaseCount(status);
     }
 
-    @Override
-    public void destroy() {
-
-    }
 }
