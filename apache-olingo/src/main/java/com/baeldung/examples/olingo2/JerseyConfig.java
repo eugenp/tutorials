@@ -1,6 +1,12 @@
-    package com.baeldung.examples.olingo2;
+package com.baeldung.examples.olingo2;
 
-import java.io.IOException;
+import org.apache.olingo.odata2.api.ODataServiceFactory;
+import org.apache.olingo.odata2.core.rest.ODataRootLocator;
+import org.apache.olingo.odata2.core.rest.app.ODataApplication;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,28 +21,15 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 
-import org.apache.olingo.odata2.api.ODataServiceFactory;
-import org.apache.olingo.odata2.core.rest.ODataRootLocator;
-import org.apache.olingo.odata2.core.rest.app.ODataApplication;
-import org.glassfish.jersey.server.ResourceConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-
-/**
- * Jersey JAX-RS configuration
- * @author Philippe
- *
- */
 @Component
 @ApplicationPath("/odata")
 public class JerseyConfig extends ResourceConfig {
-    
-    
-    public JerseyConfig(CarsODataJPAServiceFactory serviceFactory, EntityManagerFactory emf) {        
-        
+
+
+    public JerseyConfig(CarsODataJPAServiceFactory serviceFactory, EntityManagerFactory emf) {
+
         ODataApplication app = new ODataApplication();
-        
+
         app
           .getClasses()
           .forEach( c -> {
@@ -46,11 +39,11 @@ public class JerseyConfig extends ResourceConfig {
                   register(c);
               }
           });
-        
-        register(new CarsRootLocator(serviceFactory)); 
+
+        register(new CarsRootLocator(serviceFactory));
         register( new EntityManagerFilter(emf));
     }
-    
+
     /**
      * This filter handles the EntityManager transaction lifecycle.
      * @author Philippe
@@ -72,7 +65,7 @@ public class JerseyConfig extends ResourceConfig {
         }
 
         @Override
-        public void filter(ContainerRequestContext ctx) throws IOException {
+        public void filter(ContainerRequestContext ctx) {
             log.info("[I60] >>> filter");
             EntityManager em = this.emf.createEntityManager();
             httpRequest.setAttribute(EM_REQUEST_ATTRIBUTE, em);
@@ -85,7 +78,7 @@ public class JerseyConfig extends ResourceConfig {
         }
 
         @Override
-        public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+        public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) {
 
             log.info("[I68] <<< filter");
             EntityManager em = (EntityManager) httpRequest.getAttribute(EM_REQUEST_ATTRIBUTE);
