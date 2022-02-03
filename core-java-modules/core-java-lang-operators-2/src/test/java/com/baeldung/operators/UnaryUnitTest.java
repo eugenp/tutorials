@@ -15,7 +15,7 @@ public class UnaryUnitTest {
         assertEquals(numberChangedToNegative, -3);
 
     }
-    
+
     @Test
     public void whenUseTheOperatorPlusToGetASCIICode() {
 
@@ -24,7 +24,7 @@ public class UnaryUnitTest {
 
         assertEquals(intvalueofTheCharA, 65);
 
-    }    
+    }
 
     @Test
     public void whenUseTheOperatorDecrement() {
@@ -39,7 +39,7 @@ public class UnaryUnitTest {
         assertEquals(number, 3);
 
     }
-    
+
     @Test
     public void whenUseTheOperatorIncrement() {
 
@@ -48,7 +48,7 @@ public class UnaryUnitTest {
 
         assertEquals(number, 4);
 
-    }    
+    }
 
     @Test
     public void whenUseTheOperatorIncrementInTheMoment() {
@@ -58,7 +58,7 @@ public class UnaryUnitTest {
         assertEquals(++number, 4);
 
     }
-    
+
     @Test
     public void whenUseTheOperatorDecrementInTheMoment() {
 
@@ -66,7 +66,7 @@ public class UnaryUnitTest {
 
         assertEquals(--number, 2);
 
-    }    
+    }
 
     @Test
     public void whenUseTheOperatorLogicalComplementWithBooleanVariable() {
@@ -76,7 +76,7 @@ public class UnaryUnitTest {
         assertEquals(!allowed, false);
 
     }
-    
+
     @Test
     public void whenUseTheOperatorLogicalComplementWithComparison() {
 

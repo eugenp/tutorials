@@ -15,7 +15,7 @@ public class ArithmeticUnitTest {
         assertEquals(sentence, wordsConcatenated);
 
     }
-    
+
     @Test
     public void whenUseTheOperatorArithmeticAdditionToOperation() {
 
@@ -23,7 +23,7 @@ public class ArithmeticUnitTest {
 
         assertEquals(resultSumPositive, 15);
 
-    }    
+    }
 
     @Test
     public void whenUseTheOperatorSubtraction() {
@@ -31,7 +31,6 @@ public class ArithmeticUnitTest {
         int resultSubtractionPositive = 10 - 5;
 
         assertEquals(resultSubtractionPositive, 5);
-
 
     }
 
