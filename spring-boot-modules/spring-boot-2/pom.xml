@@ -63,7 +63,7 @@
 
     <properties>
         <log4j2.version>2.14.1</log4j2.version>
-        <spring-core.version>5.3.13</spring-core.version>
+        <spring-core.version>5.3.15</spring-core.version>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
     </properties>
