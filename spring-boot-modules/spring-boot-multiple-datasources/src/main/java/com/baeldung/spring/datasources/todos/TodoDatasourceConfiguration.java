@@ -26,7 +26,6 @@ import java.util.Objects;
 public class TodoDatasourceConfiguration {
 
     @Bean
-    @Primary
     @ConfigurationProperties("spring.datasource.todos")
     public DataSourceProperties todosDataSourceProperties() {
         return new DataSourceProperties();
@@ -34,15 +33,14 @@ public class TodoDatasourceConfiguration {
 
     @Bean
     @Primary
-    @ConfigurationProperties("spring.datasource.todos.configuration")
     public DataSource todosDataSource() {
         return todosDataSourceProperties()
           .initializeDataSourceBuilder()
           .build();
     }
 
-    @Primary
     @Bean(name = "todosEntityManagerFactory")
+    @Primary
     public LocalContainerEntityManagerFactoryBean todosEntityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
           .dataSource(todosDataSource())
@@ -50,8 +48,8 @@ public class TodoDatasourceConfiguration {
           .build();
     }
 
-    @Primary
     @Bean(name = "todosTransactionManager")
+    @Primary
     public PlatformTransactionManager todosTransactionManager(
       final @Qualifier("todosEntityManagerFactory") LocalContainerEntityManagerFactoryBean todosEntityManagerFactory) {
         return new JpaTransactionManager(Objects.requireNonNull(todosEntityManagerFactory.getObject()));

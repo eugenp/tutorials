@@ -22,7 +22,7 @@ import java.util.Objects;
   entityManagerFactoryRef = "topicsEntityManagerFactory",
   transactionManagerRef = "topicsTransactionManager"
 )
-public class TopicsDatasourceConfiguration {
+public class TopicDatasourceConfiguration {
 
     @Bean
     @ConfigurationProperties("spring.datasource.topics")
@@ -31,7 +31,6 @@ public class TopicsDatasourceConfiguration {
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.topics.configuration")
     public DataSource topicsDataSource() {
         return topicsDataSourceProperties()
           .initializeDataSourceBuilder()
