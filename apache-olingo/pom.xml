@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.examples.olingo2</groupId>
-    <artifactId>olingo2</artifactId>
-    <name>olingo2</name>
-    <description>Sample Olingo 2 Project</description>
+    <groupId>com.baeldung.examples.olingo</groupId>
+    <artifactId>apache-olingo</artifactId>
+    <name>apache-olingo</name>
+    <description>Sample Apache Olingo Project</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-core</artifactId>
-            <version>${olingo2.version}</version>
+            <version>${olingo.version}</version>
             <!-- Avoid jax-rs version conflict by excluding Olingo's version -->
             <exclusions>
                 <exclusion>
@@ -55,12 +55,12 @@
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-jpa-processor-core</artifactId>
-            <version>${olingo2.version}</version>
+            <version>${olingo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-jpa-processor-ref</artifactId>
-            <version>${olingo2.version}</version>
+            <version>${olingo.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.eclipse.persistence</groupId>
@@ -80,7 +80,7 @@
     </build>
 
     <properties>
-        <olingo2.version>2.0.11</olingo2.version>
+        <olingo.version>2.0.11</olingo.version>
     </properties>
 
 </project>
