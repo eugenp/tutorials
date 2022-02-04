@@ -4,12 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class AssignmentUnitTest {
+class AssignmentUnitTest {
 
     @Test
-    public void whenUseTheOperatorEqualTo() {
+    void whenUseTheOperatorEqualTo() {
         int grade = 3;
-
         assertEquals(grade, 3);
 
     }

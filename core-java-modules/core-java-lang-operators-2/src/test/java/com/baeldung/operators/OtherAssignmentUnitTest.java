@@ -4,31 +4,26 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class OtherAssignmentUnitTest {
+class OtherAssignmentUnitTest {
 
     @Test
-    public void whenUseTheOperatorAssignmentIncrement() {
-        
+    void whenUseTheOperatorAssignmentIncrement() {
         int number = 10;
         number += 2;
-
         assertEquals(number, 12);
 
     }
 
     @Test
-    public void whenUseTheOperatorAssignmentDecrement() {
-
+    void whenUseTheOperatorAssignmentDecrement() {
         int number = 10;
         number -= 2;
-
         assertEquals(number, 8);
 
     }
 
     @Test
-    public void whenUseTheOperatorAssignmentMultiplication() {
-
+    void whenUseTheOperatorAssignmentMultiplication() {
         int number = 2;
         number *= 10;
         assertEquals(number, 20);
@@ -36,8 +31,7 @@ public class OtherAssignmentUnitTest {
     }
 
     @Test
-    public void whenUseTheOperatorAssignmentDivision() {
-
+    void whenUseTheOperatorAssignmentDivision() {
         int number = 10;
         number /= 2;
         assertEquals(number, 5);
@@ -45,9 +39,8 @@ public class OtherAssignmentUnitTest {
     }
 
     @Test
-    public void whenUseTheOperatorAssignmentRemaider() {
-
-        int number= 10;
+    void whenUseTheOperatorAssignmentRemaider() {
+        int number = 10;
         number %= 2;
 
         assertEquals(number, 0);

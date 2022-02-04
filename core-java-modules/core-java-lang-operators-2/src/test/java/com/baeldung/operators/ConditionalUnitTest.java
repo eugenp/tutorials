@@ -4,60 +4,50 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class ConditionalUnitTest {
+class ConditionalUnitTest {
 
     @Test
-    public void whenUseTheOperatorConditionalIncluive() {
-
+    void whenUseTheOperatorConditionalIncluive() {
         int years = 25;
         boolean driverLicence = true;
         String result = "";
-
         if (years >= 21 && driverLicence) {
             result = "Successful Candidate.";
         } else {
             result = "Failed Candidate.";
         }
-
         assertEquals(result, "Successful Candidate.");
 
     }
 
     @Test
-    public void whenUseTheOperatorConditionalInclusiveWithTernary() {
-
+    void whenUseTheOperatorConditionalInclusiveWithTernary() {
         int years = 25;
         boolean driverLicence = true;
         String result = (years >= 21 && driverLicence) ? "Successful Candidate." : "Successful Candidate.";
-
         assertEquals(result, "Successful Candidate.");
 
     }
 
     @Test
-    public void whenUseTheOperatorConditionalAlternative() {
-
+    void whenUseTheOperatorConditionalAlternative() {
         int years = 25;
         boolean driverLicence = false;
         String result = "";
-
         if ((years >= 21 || driverLicence)) {
             result = "Successful Candidate.";
         } else {
             result = "Failed Candidate.";
         }
-
         assertEquals(result, "Successful Candidate.");
 
     }
 
     @Test
-    public void whenUseTheOperatorConditionalAlternativeWithTernary() {
-
+    void whenUseTheOperatorConditionalAlternativeWithTernary() {
         int years = 25;
         boolean driverLicence = false;
         String result = (years >= 21 || driverLicence) ? "Successful Candidate." : "Successful Candidate.";
-
         assertEquals(result, "Successful Candidate.");
 
     }
