@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest // no test database!
-class MultipleDatasourcesApplicationTest {
+class MultipleDatasourcesIntegrationTest {
 
     @Autowired
     TodoRepository todoRepo;
