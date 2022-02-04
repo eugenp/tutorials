@@ -4,17 +4,15 @@ import com.baeldung.spring.datasources.todos.Todo;
 import com.baeldung.spring.datasources.todos.TodoRepository;
 import com.baeldung.spring.datasources.topics.Topic;
 import com.baeldung.spring.datasources.topics.TopicRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest // no test database!
+@DataJpaTest // no test database!
 class MultipleDatasourcesApplicationTest {
 
     @Autowired
