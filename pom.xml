@@ -1345,6 +1345,7 @@
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>testing-modules/testing-assertions</module>
+                 <module>persistence-modules/fauna</module>
             </modules>
         </profile>
 
@@ -1402,6 +1403,7 @@
                 <module>quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>testing-modules/testing-assertions</module>
+                <module>persistence-modules/fauna</module>
             </modules>
         </profile>
     </profiles>
