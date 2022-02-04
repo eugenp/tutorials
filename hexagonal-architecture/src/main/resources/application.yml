@@ -1,0 +1,15 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /api/v1
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/articles
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: always
