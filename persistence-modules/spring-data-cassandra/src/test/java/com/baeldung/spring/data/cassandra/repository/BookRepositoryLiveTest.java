@@ -1,17 +1,15 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
-import java.io.IOException;
-import java.util.HashMap;
-
+import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import com.baeldung.spring.data.cassandra.model.Book;
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.Session;
+import com.datastax.driver.core.utils.UUIDs;
+import com.google.common.collect.ImmutableSet;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.thrift.transport.TTransportException;
-import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,15 +23,24 @@ import org.springframework.data.cassandra.core.CassandraAdminOperations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.utils.UUIDs;
-import com.google.common.collect.ImmutableSet;
+import java.io.IOException;
+import java.util.HashMap;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+/**
+ * Live test for Cassandra testing.
+ *
+ * This can be converted to IntegrationTest once cassandra-unit tests can be executed in parallel and
+ * multiple test servers started as part of test suite.
+ *
+ * Open cassandra-unit issue for parallel execution: https://github.com/jsevellec/cassandra-unit/issues/155
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CassandraConfig.class)
-public class BookRepositoryIntegrationTest {
-    private static final Log LOGGER = LogFactory.getLog(BookRepositoryIntegrationTest.class);
+public class BookRepositoryLiveTest {
+    private static final Log LOGGER = LogFactory.getLog(BookRepositoryLiveTest.class);
 
     public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
 
@@ -46,8 +53,6 @@ public class BookRepositoryIntegrationTest {
 
     @Autowired
     private CassandraAdminOperations adminTemplate;
-
-    //
 
     @BeforeClass
     public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
@@ -62,8 +67,8 @@ public class BookRepositoryIntegrationTest {
     }
 
     @Before
-    public void createTable() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
+    public void createTable() {
+        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
     }
 
     @Test
