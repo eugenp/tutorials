@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class Log4j2ThreadInfo {
     private static final Logger logger = LogManager.getLogger(Log4j2ThreadInfo.class);
-    
+
     public static void main(String[] args) {
         IntStream.range(0, 5).forEach(i -> {
             Runnable runnable = () -> logger.info("Logging info");

@@ -6,24 +6,25 @@
         </Property>
     </Properties>
     <Appenders>
-        <RollingFile name="RollingName" filename="logs/app.log" filePattern="$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
+        <RollingFile name="RollingName" filename="logs/app.log"
+                     filePattern="$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout>
                 <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
             <Policies>
-                <SizeBasedTriggeringPolicy size="20MB" />
+                <SizeBasedTriggeringPolicy size="20MB"/>
             </Policies>
         </RollingFile>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="${LOG_PATTERN}" />
+            <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
     </Appenders>
     <Loggers>
         <Logger name="com.baeldung.logging.log4j2threadinfo" level="trace">
-            <AppenderRef ref="Console" />
+            <AppenderRef ref="Console"/>
         </Logger>
         <Root level="error">
-            <AppenderRef ref="RollingName" />
+            <AppenderRef ref="RollingName"/>
         </Root>
     </Loggers>
 </Configuration>
