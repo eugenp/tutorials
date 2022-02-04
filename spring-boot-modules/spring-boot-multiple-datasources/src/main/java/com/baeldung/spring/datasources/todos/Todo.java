@@ -12,7 +12,7 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    boolean completed;
+    private boolean completed;
 
     public Todo() {
     }
