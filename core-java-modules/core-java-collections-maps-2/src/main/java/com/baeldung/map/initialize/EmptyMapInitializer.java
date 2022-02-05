@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NavigableMap;
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class EmptyMapInitializer {
@@ -39,6 +40,11 @@ public class EmptyMapInitializer {
     Map<String, String> emptyMapUsingGuava =
         Maps.newHashMap(ImmutableMap.of());
     return emptyMapUsingGuava;
+  }
+
+  public SortedMap<String, String> createEmptySortedMap() {
+    SortedMap<String, String> sortedMap = Collections.emptySortedMap();
+    return sortedMap;
   }
 
   public NavigableMap<String, String> createEmptyNavigableMap() {
