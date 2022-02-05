@@ -1,9 +1,13 @@
 package com.baeldung.graphql.data;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Author {
 
-    private final String name;
-    private final String surname;
+    private String name;
+    private String surname;
+
+    public Author() {}
 
     public Author(String name, String surname) {
         this.name = name;
@@ -16,6 +20,10 @@ public class Author {
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getFullName() {
+        return StringUtils.join(getName(), " ", getSurname());
     }
 
 }

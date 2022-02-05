@@ -2,8 +2,10 @@ package com.baeldung.graphql.data;
 
 public class Book {
 
-    private final String title;
-    private final Author author;
+    private String title;
+    private Author author;
+
+    public Book() {}
 
     public Book(String title, Author author) {
         this.title = title;
