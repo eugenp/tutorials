@@ -1,17 +1,13 @@
 package com.baeldung.spring.data.cassandra.repository;
 
-import static junit.framework.TestCase.assertNull;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import com.baeldung.spring.data.cassandra.model.Book;
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.Session;
+import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.utils.UUIDs;
+import com.google.common.collect.ImmutableSet;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,17 +26,28 @@ import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.querybuilder.QueryBuilder;
-import com.datastax.driver.core.querybuilder.Select;
-import com.datastax.driver.core.utils.UUIDs;
-import com.google.common.collect.ImmutableSet;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+import static junit.framework.TestCase.assertNull;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Live test for Cassandra testing.
+ *
+ * This can be converted to IntegrationTest once cassandra-unit tests can be executed in parallel and
+ * multiple test servers started as part of test suite.
+ *
+ * Open cassandra-unit issue for parallel execution: https://github.com/jsevellec/cassandra-unit/issues/155
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CassandraConfig.class)
-public class CassandraTemplateIntegrationTest {
-    private static final Log LOGGER = LogFactory.getLog(CassandraTemplateIntegrationTest.class);
+public class CassandraTemplateLiveTest {
+    private static final Log LOGGER = LogFactory.getLog(CassandraTemplateLiveTest.class);
 
     public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
 
@@ -53,8 +60,6 @@ public class CassandraTemplateIntegrationTest {
 
     @Autowired
     private CassandraOperations cassandraTemplate;
-
-    //
 
     @BeforeClass
     public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
@@ -69,8 +74,8 @@ public class CassandraTemplateIntegrationTest {
     }
 
     @Before
-    public void createTable() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
+    public void createTable() {
+        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
     }
 
     @Test
@@ -111,7 +116,7 @@ public class CassandraTemplateIntegrationTest {
     }
 
     @Test
-    public void whenDeletingASelectedBook_thenNotAvailableOnRetrieval() throws InterruptedException {
+    public void whenDeletingASelectedBook_thenNotAvailableOnRetrieval() {
         final Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "OReilly Media", ImmutableSet.of("Computer", "Software"));
         cassandraTemplate.insert(javaBook);
         cassandraTemplate.delete(javaBook);
