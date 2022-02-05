@@ -164,8 +164,6 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <commons-logging.version>1.2</commons-logging.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>

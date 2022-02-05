@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
+            <version>${annotations.version}</version>
         </dependency>
     </dependencies>
 
@@ -82,6 +82,7 @@
     <properties>
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <delombok-maven-plugin.version>1.18.20.0</delombok-maven-plugin.version>
+        <annotations.version>23.0.0</annotations.version>
     </properties>
 
 </project>

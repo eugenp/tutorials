@@ -234,7 +234,6 @@
         <chaos.monkey.version>2.0.0</chaos.monkey.version>
         <graphql-spring-boot-starter.version>5.0.2</graphql-spring-boot-starter.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
-        <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <modelmapper.version>2.3.2</modelmapper.version>
         <problem-spring-web.version>0.23.0</problem-spring-web.version>

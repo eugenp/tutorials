@@ -48,7 +48,7 @@ class CassandraNestedLiveTest {
     }
 
     @Nested
-    class ApplicationContextIntegrationTest {
+    class ApplicationContextLiveTest {
 
         @Test
         void givenCassandraContainer_whenSpringContextIsBootstrapped_thenContainerIsRunningWithNoExceptions() {
@@ -58,7 +58,7 @@ class CassandraNestedLiveTest {
     }
 
     @Nested
-    class CarRepositoryIntegrationTest {
+    class CarRepositoryLiveTest {
 
         @Autowired
         private CarRepository carRepository;

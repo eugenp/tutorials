@@ -107,7 +107,6 @@
     </profiles>
 
     <properties>
-        <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
 

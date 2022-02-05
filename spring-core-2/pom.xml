@@ -188,7 +188,6 @@
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
         <!-- util -->
-        <guava.version>25.1-jre</guava.version>
         <easymock.version>3.6</easymock.version>
         <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
