@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class EmptyMapInitializerTest {
+public class EmptyMapInitializerUnitTest {
 
   @Test(expected=UnsupportedOperationException.class)
   public void givenEmptyMap_whenAddingEntries_throwsException() {
