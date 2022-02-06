@@ -1,4 +1,7 @@
-package com.baeldung.integration;
+package com.baeldung;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.domain.Food;
 import com.baeldung.domain.SmartRefrigerator;
@@ -8,14 +11,10 @@ import com.baeldung.domain.ports.IRecipeRepository;
 import com.baeldung.domain.ports.ISmartRefrigerator;
 import com.baeldung.infra.MockFoodRepository;
 import com.baeldung.infra.MockRecipeRepository;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
-
-public class SmartRefrigeratorTest {
+public class SmartRefrigeratorUnitTest {
     @Test
-    public void Should_Give_Nothing_When_Asked_What_I_Have() {
+    public void givenMockFoodStorageAndMockRecipeStorage_whenAskedWhatIHave_thenEmptyStringIsReturned() {
         IFoodRepository foodStorage = new MockFoodRepository();
         IRecipeRepository recipeStorage = new MockRecipeRepository();
         ISmartRefrigerator smartRefrigerator = new SmartRefrigerator(foodStorage, recipeStorage);
@@ -23,7 +22,7 @@ public class SmartRefrigeratorTest {
     }
 
     @Test
-    public void Should_Give_10_Piece_Egg_When_Asked_What_I_Have() {
+    public void givenSomeEggs_whenAskedWhatIHave_thenCorrectContentIsReturned() {
         Food food = new Food("Egg", 10, Unit.Piece);
         IFoodRepository foodStorage = new MockFoodRepository();
         foodStorage.store(food);
@@ -33,7 +32,7 @@ public class SmartRefrigeratorTest {
     }
 
     @Test
-    public void Should_Give_Updated_Amount_Of_Food_When_Existing_Food_Is_Added() {
+    public void givenSomeEggs_whenMoreEggsAreAddedAndAskedWhatIHave_thenCorrectContentIsReturned() {
         Food initialEggs = new Food("Egg", 10, Unit.Piece);
         IFoodRepository foodStorage = new MockFoodRepository();
         foodStorage.store(initialEggs);
@@ -45,7 +44,7 @@ public class SmartRefrigeratorTest {
     }
 
     @Test
-    public void Should_Give_Updated_Amount_Of_Food_When_Existing_Food_Is_Consumed() {
+    public void givenSomeEggs_whenSomeEggsAreConsumedAndAskedWhatIHave_thenCorrectContentIsReturned() {
         Food initialEggs = new Food("Egg", 10, Unit.Piece);
         IFoodRepository foodStorage = new MockFoodRepository();
         foodStorage.store(initialEggs);
@@ -57,7 +56,7 @@ public class SmartRefrigeratorTest {
     }
 
     @Test
-    public void Should_Remove_Finished_Food_When_All_Amount_Is_Consumed() {
+    public void givenSomeEggsAndSomeButter_whenAllEggsAreConsumedAndAskedWhatIHave_thenOnlyButterContentIsReturned() {
         Food initialEggs = new Food("Egg", 10, Unit.Piece);
         Food butter = new Food("Butter", 500, Unit.Grams);
         IFoodRepository foodStorage = new MockFoodRepository();
@@ -71,7 +70,7 @@ public class SmartRefrigeratorTest {
     }
 
     @Test
-    public void Should_Give_Multiple_Foods_When_Asked_What_I_Have() {
+    public void givenSomeEggsAndSomeButter_whenAskedWhatIHave_thenCorrectContentIsReturned() {
         Food initialEggs = new Food("Egg", 10, Unit.Piece);
         Food butter = new Food("Butter", 500, Unit.Grams);
         IFoodRepository foodStorage = new MockFoodRepository();
