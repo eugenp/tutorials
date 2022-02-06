@@ -12,3 +12,4 @@ This module contains articles about MongoDB in Java.
 - [MongoDB Aggregations Using Java](https://www.baeldung.com/java-mongodb-aggregations)
 - [BSON to JSON Document Conversion in Java](https://www.baeldung.com/java-convert-bson-to-json)
 - [How to Check Field Existence in MongoDB?](https://www.baeldung.com/mongodb-check-field-exists)
+- [Get Last Inserted Document ID in MongoDB With Java Driver](https://www.baeldung.com/java-mongodb-last-inserted-id)
