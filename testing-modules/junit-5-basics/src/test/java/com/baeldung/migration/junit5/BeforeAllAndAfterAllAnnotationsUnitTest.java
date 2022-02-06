@@ -15,21 +15,21 @@ public class BeforeAllAndAfterAllAnnotationsUnitTest {
     
     @BeforeAll
     public static void setup() {
-        LOG.info("startup - creating DB connection");
+        LOG.debug("startup - creating DB connection");
     }
 
     @AfterAll
     public static void tearDown() {
-        LOG.info("closing DB connection");
+        LOG.debug("closing DB connection");
     }
 
     @Test
     public void simpleTest() {
-        LOG.info("simple test");
+        LOG.debug("simple test");
     }
 
     @Test
     public void anotherSimpleTest() {
-        LOG.info("another simple test");
+        LOG.debug("another simple test");
     }
 }

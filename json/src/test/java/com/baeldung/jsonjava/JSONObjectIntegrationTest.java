@@ -1,23 +1,24 @@
 package com.baeldung.jsonjava;
 
-import static org.junit.Assert.assertEquals;
+import org.json.JSONObject;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
-import org.junit.Test;
+import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 
 public class JSONObjectIntegrationTest {
+
     @Test
     public void givenJSONJava_thenCreateNewJSONObject() {
         JSONObject jo = new JSONObject();
         jo.put("name", "jon doe");
         jo.put("age", "22");
         jo.put("city", "chicago");
-             
-        assertEquals("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}", jo.toString());
-        
+
+        assertThatJson(jo)
+          .isEqualTo("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
     }
 
     @Test
@@ -27,8 +28,9 @@ public class JSONObjectIntegrationTest {
         map.put("age", "22");
         map.put("city", "chicago");
         JSONObject jo = new JSONObject(map);
-         
-        assertEquals("{\"name\":\"jon doe\",\"city\":\"chicago\",\"age\":\"22\"}", jo.toString());
+
+        assertThatJson(jo)
+          .isEqualTo("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
     }
 
     @Test
@@ -36,7 +38,8 @@ public class JSONObjectIntegrationTest {
         JSONObject jo = new JSONObject(
           "{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}"
         );
-        
-        assertEquals("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}", jo.toString());
+
+        assertThatJson(jo)
+          .isEqualTo("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}");
     }
 }

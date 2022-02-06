@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-mvc-birt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-boot-mvc-birt</name>
+    <packaging>jar</packaging>
     <description>Module For Spring Boot Integration with BIRT</description>
 
     <!-- this module should use the Boot parent directly to avoid inherit the logback dependency from 

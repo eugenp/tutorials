@@ -58,12 +58,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -86,10 +80,8 @@
     <properties>
         <mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
         <javax.inject.version>1</javax.inject.version>
-        <guava.version>20.0</guava.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <mockito.version>1.10.19</mockito.version>
-        <assertj.version>3.12.2</assertj.version>
     </properties>
 
 </project>

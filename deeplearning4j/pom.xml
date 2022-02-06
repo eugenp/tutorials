@@ -39,12 +39,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.datavec/datavec-api -->
         <dependency>
@@ -62,7 +62,6 @@
     <properties>
         <dl4j.version>0.9.1</dl4j.version> <!-- Latest non beta version -->
         <httpclient.version>4.3.5</httpclient.version>
-        <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
 </project>

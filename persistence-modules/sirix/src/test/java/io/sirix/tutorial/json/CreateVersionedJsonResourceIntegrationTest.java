@@ -1,42 +1,36 @@
 package io.sirix.tutorial.json;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.brackit.xquery.atomic.QNm;
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public final class CreateVersionedJsonResourceIntegrationTest {
 
-    private static final String TMP_DIRECTORY = System.getProperty("java.io.tmpdir");
+    @Rule
+    public TemporaryFolder tempDirectory = new TemporaryFolder();
 
-    private static final Path DATABASE_PATH = Paths.get(TMP_DIRECTORY, "sirix", "json-database");
+    private Path databasePath;
 
     @Before
-    public void setUp() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
+    public void setUp() {
+        databasePath = Paths.get(tempDirectory.getRoot().getPath(), "sirix", "json-database");
     }
 
     @Test
     public void createVersionedDatabaseAndCheckAllRevisions() {
-        Databases.createJsonDatabase(new DatabaseConfiguration(DATABASE_PATH));
+        Databases.createJsonDatabase(new DatabaseConfiguration(databasePath));
 
-        try (final var database = Databases.openJsonDatabase(DATABASE_PATH)) {
+        try (final var database = Databases.openJsonDatabase(databasePath)) {
             VersionedJsonDocumentCreator.create(database);
 
             // Check first revision.

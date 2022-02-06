@@ -17,11 +17,20 @@ public class MapIteration {
         System.out.println("Iterating Keys of Map Using KeySet");
         mapIteration.iterateKeys(map);
 
+        System.out.println("Iterating Values of Map Using values()");
+        mapIteration.iterateValues(map);
+
         System.out.println("Iterating Map Using Entry Set");
         mapIteration.iterateUsingEntrySet(map);
 
         System.out.println("Iterating Using Iterator and Map Entry");
         mapIteration.iterateUsingIteratorAndEntry(map);
+
+        System.out.println("Iterating Using Iterator and KeySet");
+        mapIteration.iterateUsingIteratorAndKeySet(map);
+
+        System.out.println("Iterating values Using Iterator and values()");
+        mapIteration.iterateUsingIteratorAndValues(map);
 
         System.out.println("Iterating Using KeySet and For Each");
         mapIteration.iterateUsingKeySetAndForeach(map);
@@ -29,8 +38,22 @@ public class MapIteration {
         System.out.println("Iterating Map Using Lambda Expression");
         mapIteration.iterateUsingLambda(map);
 
+        System.out.println("Iterating Map By Keys Using Lambda Expression");
+        mapIteration.iterateByKeysUsingLambda(map);
+
+        System.out.println("Iterating values Using Lambda Expression");
+        mapIteration.iterateValuesUsingLambda(map);
+
         System.out.println("Iterating Using Stream API");
         mapIteration.iterateUsingStreamAPI(map);
+    }
+
+    public void iterateUsingIteratorAndValues(Map<String, Integer> map) {
+        Iterator<Integer> iterator = map.values().iterator();
+        while (iterator.hasNext()) {
+            Integer value = iterator.next();
+            System.out.println("value :" + value);
+        }
     }
 
     public void iterateUsingEntrySet(Map<String, Integer> map) {
@@ -43,12 +66,28 @@ public class MapIteration {
         map.forEach((k, v) -> System.out.println((k + ":" + v)));
     }
 
+    public void iterateByKeysUsingLambda(Map<String, Integer> map) {
+        map.keySet().forEach(k -> System.out.println((k + ":" + map.get(k))));
+    }
+
+    public void iterateValuesUsingLambda(Map<String, Integer> map) {
+        map.values().forEach(v -> System.out.println(("value: " + v)));
+    }
+
     public void iterateUsingIteratorAndEntry(Map<String, Integer> map) {
         Iterator<Map.Entry<String, Integer>> iterator = map.entrySet()
             .iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Integer> pair = iterator.next();
             System.out.println(pair.getKey() + ":" + pair.getValue());
+        }
+    }
+
+    public void iterateUsingIteratorAndKeySet(Map<String, Integer> map) {
+        Iterator<String> iterator = map.keySet().iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            System.out.println(key + ":" + map.get(key));
         }
     }
 
@@ -68,7 +107,12 @@ public class MapIteration {
         for (String key : map.keySet()) {
             System.out.println(key);
         }
+    }
 
+    public void iterateValues(Map<String, Integer> map) {
+        for (Integer value : map.values()) {
+            System.out.println(value);
+        }
     }
 
 }

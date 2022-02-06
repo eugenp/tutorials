@@ -3,7 +3,7 @@
 This module contains articles about Apache Kafka.
 
 ### Relevant articles
-- [Kafka Streams vs Kafka Consumer](https://www.baeldung.com/java-kafka-streams-vs-kafka-consumer)
+- [Kafka Streams vs. Kafka Consumer](https://www.baeldung.com/java-kafka-streams-vs-kafka-consumer)
 - [Kafka Topic Creation Using Java](https://www.baeldung.com/kafka-topic-creation)
 - [Using Kafka MockConsumer](https://www.baeldung.com/kafka-mockconsumer)
 - [Using Kafka MockProducer](https://www.baeldung.com/kafka-mockproducer)
@@ -12,6 +12,7 @@ This module contains articles about Apache Kafka.
 - [Kafka Connect Example with MQTT and MongoDB](https://www.baeldung.com/kafka-connect-mqtt-mongodb)
 - [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
 - [Exactly Once Processing in Kafka with Java](https://www.baeldung.com/kafka-exactly-once)
+- [Custom Serializers in Apache Kafka](https://www.baeldung.com/kafka-custom-serializer)
 
 
 ##### Building the project

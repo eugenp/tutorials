@@ -6,7 +6,7 @@ This module contains articles about Amazon Web Services (AWS)
 
 - [AWS Lambda Using DynamoDB With Java](https://www.baeldung.com/aws-lambda-dynamodb-java)
 - [AWS S3 with Java](https://www.baeldung.com/aws-s3-java)
-- [AWS Lambda With Java](https://www.baeldung.com/java-aws-lambda)
+- [A Basic AWS Lambda Example With Java](https://www.baeldung.com/java-aws-lambda)
 - [Managing EC2 Instances in Java](https://www.baeldung.com/ec2-java)
 - [Multipart Uploads in Amazon S3 with Java](https://www.baeldung.com/aws-s3-multipart-upload)
 - [Integration Testing with a Local DynamoDB Instance](https://www.baeldung.com/dynamodb-local-integration-tests)

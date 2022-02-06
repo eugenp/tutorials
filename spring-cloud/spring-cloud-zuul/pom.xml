@@ -10,10 +10,9 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring.cloud</groupId>
+        <artifactId>spring-cloud</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modules>
@@ -35,7 +34,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -81,7 +80,7 @@
     </build>
 
     <properties>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
         <spring-cloud-netflix-zuul.version>2.2.7.RELEASE</spring-cloud-netflix-zuul.version>
     </properties>
 

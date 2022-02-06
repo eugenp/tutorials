@@ -7,11 +7,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>maven-surefire-plugin</name>
     <packaging>jar</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>maven-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
 
 </project>

@@ -4,7 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class UnsynchronizedSender implements Runnable {
-    private static Logger log = LoggerFactory.getLogger(UnsynchronizedSender.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UnsynchronizedSender.class);
+
     private final Data data;
     private boolean illegalMonitorStateExceptionOccurred;
 
@@ -21,10 +22,10 @@ public class UnsynchronizedSender implements Runnable {
 
             data.notifyAll();
         } catch (InterruptedException e) {
-            log.error("thread was interrupted", e);
+            LOG.error("thread was interrupted", e);
             Thread.currentThread().interrupt();
         } catch (IllegalMonitorStateException e) {
-            log.error("illegal monitor state exception occurred", e);
+            LOG.error("illegal monitor state exception occurred", e);
             illegalMonitorStateExceptionOccurred = true;
         }
     }

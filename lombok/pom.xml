@@ -17,7 +17,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <!-- Check for the most recent available version: https://projectlombok.org/changelog.html -->
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -27,10 +26,9 @@
             <version>${hibernate-jpa-2.1-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
         </dependency>
     </dependencies>
 
@@ -64,20 +62,27 @@
                             <verbose>false</verbose>
                         </configuration>
                     </execution>
-                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> 
-                        <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> <configuration> <verbose>false</verbose> 
-                        </configuration> </execution> -->
+                    <!-- This is for delomboking also your tests sources.
+                    <execution>
+                        <id>test-delombok</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>testDelombok</goal>
+                        </goals>
+                        <configuration>
+                            <verbose>false</verbose>
+                        </configuration>
+                    </execution>
+                    -->
                 </executions>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
-        <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.18.10.0</delombok-maven-plugin.version>
-        <assertj-core.version>3.8.0</assertj-core.version>
+        <delombok-maven-plugin.version>1.18.20.0</delombok-maven-plugin.version>
+        <annotations.version>23.0.0</annotations.version>
     </properties>
 
 </project>

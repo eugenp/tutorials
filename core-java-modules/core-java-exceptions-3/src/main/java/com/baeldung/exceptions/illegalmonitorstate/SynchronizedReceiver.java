@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class SynchronizedReceiver implements Runnable {
-    private static Logger log = LoggerFactory.getLogger(SynchronizedReceiver.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(SynchronizedReceiver.class);
+
     private final Data data;
     private String message;
     private boolean illegalMonitorStateExceptionOccurred;
@@ -20,10 +22,10 @@ public class SynchronizedReceiver implements Runnable {
                 data.wait();
                 this.message = data.receive();
             } catch (InterruptedException e) {
-                log.error("thread was interrupted", e);
+                LOG.error("thread was interrupted", e);
                 Thread.currentThread().interrupt();
             } catch (IllegalMonitorStateException e) {
-                log.error("illegal monitor state exception occurred", e);
+                LOG.error("illegal monitor state exception occurred", e);
                 illegalMonitorStateExceptionOccurred = true;
             }
         }
