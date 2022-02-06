@@ -14,7 +14,7 @@ import com.baeldung.infra.MockRecipeRepository;
 
 public class SmartRefrigeratorUnitTest {
     @Test
-    public void givenMockFoodStorageAndMockRecipeStorage_whenAskedWhatIHave_thenEmptyStringIsReturned() {
+    public void givenNoFood_whenAskedWhatIHave_thenEmptyContentIsReturned() {
         IFoodRepository foodStorage = new MockFoodRepository();
         IRecipeRepository recipeStorage = new MockRecipeRepository();
         ISmartRefrigerator smartRefrigerator = new SmartRefrigerator(foodStorage, recipeStorage);
