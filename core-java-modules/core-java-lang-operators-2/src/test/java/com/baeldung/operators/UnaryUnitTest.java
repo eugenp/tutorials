@@ -7,66 +7,57 @@ import org.junit.jupiter.api.Test;
 class UnaryUnitTest {
 
     @Test
-    void whenUseTheOperatorMinusToChangeTheSignOfANumber() {
+    void whenUseTheOperatorMinusToChangeTheSignOfANumber_thenSuccess() {
         int number = 3;
         int numberChangedToNegative = -(number);
         assertEquals(numberChangedToNegative, -3);
-
     }
 
     @Test
-    void whenUseTheOperatorPlusToGetASCIICode() {
+    void whenUseTheOperatorPlusToGetASCIICode_thenSuccess() {
         char charA = 'A';
         int intvalueofTheCharA = +charA;
         assertEquals(intvalueofTheCharA, 65);
-
     }
 
     @Test
-    void whenUseTheOperatorDecrement() {
+    void whenUseTheOperatorDecrement_thenSuccess() {
         int number = 3;
         number--;
         assertEquals(number, 2);
         number++;
         assertEquals(number, 3);
-
     }
 
     @Test
-    void whenUseTheOperatorIncrement() {
+    void whenUseTheOperatorIncrement_thenSuccess() {
         int number = 3;
         number++;
         assertEquals(number, 4);
-
     }
 
     @Test
-    void whenUseTheOperatorIncrementInTheMoment() {
+    void whenUseTheOperatorIncrementInTheMoment_thenSuccess() {
         int number = 3;
         assertEquals(++number, 4);
-
     }
 
     @Test
-    void whenUseTheOperatorDecrementInTheMoment() {
+    void whenUseTheOperatorDecrementInTheMoment_thenSuccess() {
         int number = 3;
         assertEquals(--number, 2);
-
     }
 
     @Test
-    void whenUseTheOperatorLogicalComplementWithBooleanVariable() {
+    void whenUseTheOperatorLogicalComplementWithBooleanVariable_thenSuccess() {
         boolean allowed = true;
         assertEquals(!allowed, false);
-
     }
 
     @Test
-    void whenUseTheOperatorLogicalComplementWithComparison() {
+    void whenUseTheOperatorLogicalComplementWithComparison_thenSuccess() {
         int number1 = 3;
         int number2 = 3;
         assertEquals(!(number1 == number2), false);
-
     }
-
 }

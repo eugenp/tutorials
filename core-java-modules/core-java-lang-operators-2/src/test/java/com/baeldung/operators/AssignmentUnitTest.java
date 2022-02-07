@@ -7,10 +7,8 @@ import org.junit.jupiter.api.Test;
 class AssignmentUnitTest {
 
     @Test
-    void whenUseTheOperatorEqualTo() {
+    void whenCompareTwoValuesUsingTheOperatorEqualTo_thenSuccess() {
         int grade = 3;
         assertEquals(grade, 3);
-
     }
-
 }

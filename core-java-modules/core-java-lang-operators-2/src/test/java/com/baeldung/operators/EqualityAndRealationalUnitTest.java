@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class EqualityAndRealationalUnitTest {
 
     @Test
-    void whenUseTheOperatorGreaterThanorEqualTo() {
+    void whenUseTheOperatorGreaterThanorEqualTo_thenSuccess() {
         int testGrade = 10;
         String result = "";
         if (testGrade >= 7) {
@@ -16,11 +16,10 @@ class EqualityAndRealationalUnitTest {
             result = "Failed Student!";
         }
         assertEquals(result, "Approved Student!");
-
     }
 
     @Test
-    void whenUseTheOperatorEqualTo() {
+    void whenUseTheOperatorEqualTo_thenSuccess() {
         int grade = 3;
         String result = "";
         if (grade == 3) {
@@ -29,11 +28,10 @@ class EqualityAndRealationalUnitTest {
             result = "The guest isn't VIP";
         }
         assertEquals(result, "The guest is VIP");
-
     }
 
     @Test
-    void whenUseTheOperatorNotEqualTo() {
+    void whenUseTheOperatorNotEqualTo_thenSuccess() {
         int grade = 2;
         String result = "";
         if (grade != 3) {
@@ -42,11 +40,10 @@ class EqualityAndRealationalUnitTest {
             result = "The guest is VIP";
         }
         assertEquals(result, "The guest isn't VIP");
-
     }
 
     @Test
-    void whenUseTheOperatorGreaterThan() {
+    void whenUseTheOperatorGreaterThan_thenSuccess() {
         int grade = 3;
         String result = "";
 
@@ -56,11 +53,10 @@ class EqualityAndRealationalUnitTest {
             result = "The guest isn't VIP";
         }
         assertEquals(result, "The guest is VIP");
-
     }
 
     @Test
-    void whenUseTheOperatorLessThan() {
+    void whenUseTheOperatorLessThan_thenSuccess() {
         int grade = 3;
         String result = "";
         if (grade <= 3) {
@@ -69,11 +65,10 @@ class EqualityAndRealationalUnitTest {
             result = "The guest isn't VIP";
         }
         assertEquals(result, "The guest is VIP");
-
     }
 
     @Test
-    void whenUseTheOperatorLessThanOrEqualTo() {
+    void whenUseTheOperatorLessThanOrEqualTo_thenSuccess() {
         int grade = 2;
         String result = "";
         if (grade <= 2) {
@@ -82,7 +77,5 @@ class EqualityAndRealationalUnitTest {
             result = "The guest is VIP";
         }
         assertEquals(result, "The guest isn't VIP");
-
     }
-
 }

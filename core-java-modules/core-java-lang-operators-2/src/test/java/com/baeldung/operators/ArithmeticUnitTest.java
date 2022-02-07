@@ -7,46 +7,39 @@ import org.junit.jupiter.api.Test;
 class ArithmeticUnitTest {
 
     @Test
-    void whenUseTheOperatorArithmeticAdditionToConcatenate() {
+    void givenASentenece_WhenComparedWithConcatenadeSentenceUsingArithmeticAddition_thenSuccess() {
         String sentence = "Hello world!";
         String wordsConcatenated = "Hello " + "world" + "!";
         assertEquals(sentence, wordsConcatenated);
-
     }
 
     @Test
-    void whenUseTheOperatorArithmeticAdditionToOperation() {
+    void whenPlusTwoNumbersUsingTheOperatorArithmeticAddition_thenSuccess() {
         int resultSumPositive = 10 + 5;
         assertEquals(resultSumPositive, 15);
-
     }
 
     @Test
-    void whenUseTheOperatorSubtraction() {
+    void whenSubtractTwoNumbersUsingTheOperatorArithmeticSubtraction_thenSuccess() {
         int resultSubtractionPositive = 10 - 5;
         assertEquals(resultSubtractionPositive, 5);
-
     }
 
     @Test
-    void whenUseTheOperatorMultiplication() {
+    void whenMultiplyTwoNumbersUsingTheOperatorArithmeticMultiplication_thenSuccess() {
         int resultMultiplicationPositive = 10 * 5;
         assertEquals(resultMultiplicationPositive, 50);
-
     }
 
     @Test
-    void whenUseTheOperatorDivision() {
+    void whenDivideTwoNumbersUsingTheOperatorArithmeticDivision_thenSuccess() {
         int resultDivisionPositive = 10 / 5;
         assertEquals(resultDivisionPositive, 2);
-
     }
 
     @Test
-    void whenUseTheOperatorRemainder() {
+    void whenFindTheRestBetweenTwoNumbersUsingTheOperatorArithmeticRemainder_thenSuccess() {
         int resultDivisionPositive = 10 % 5;
         assertEquals(resultDivisionPositive, 0);
-
     }
-
 }
