@@ -46,6 +46,7 @@
         <module>core-java-concurrency-advanced-4</module>
         <module>core-java-concurrency-basic</module>
         <module>core-java-concurrency-basic-2</module>
+        <module>core-java-concurrency-basic-3</module>
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
