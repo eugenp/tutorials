@@ -36,8 +36,7 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
         .and()
         .withUser("admin")
         .password("adminPass")
-        .authorities("ROLE_ADMIN")
-        ;
+        .authorities("ROLE_ADMIN");
         // @formatter:on
     }
 
@@ -58,8 +57,7 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
         .and()
         .headers().cacheControl().disable()
         .and()
-        .csrf().disable()
-        ;
+        .csrf().disable();
         // @formatter:on
     }
 

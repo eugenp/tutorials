@@ -37,8 +37,7 @@ public class SecurityWithCsrfCookieConfig extends WebSecurityConfigurerAdapter {
         .and()
         .withUser("admin")
         .password("adminPass")
-        .authorities("ROLE_ADMIN")
-        ;
+        .authorities("ROLE_ADMIN");
         // @formatter:on
     }
 
@@ -61,8 +60,7 @@ public class SecurityWithCsrfCookieConfig extends WebSecurityConfigurerAdapter {
         // Stateless API CSRF configuration
         .and()
         .csrf()
-        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        ;
+        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
         // @formatter:on
     }
 

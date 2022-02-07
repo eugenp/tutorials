@@ -21,8 +21,7 @@ public class CsrfEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(createFoo())
         .with(testUser()))
-        .andExpect(status().isForbidden())
-        ;
+        .andExpect(status().isForbidden());
         // @formatter:on
     }
 
@@ -35,8 +34,7 @@ public class CsrfEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
         .content(createFoo())
         .with(testUser())
         .with(csrf()))
-        .andExpect(status().isCreated())
-        ;
+        .andExpect(status().isCreated());
         // @formatter:on
     }
 

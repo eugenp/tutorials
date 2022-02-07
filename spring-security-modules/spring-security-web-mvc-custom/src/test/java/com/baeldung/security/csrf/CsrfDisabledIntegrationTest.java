@@ -19,8 +19,7 @@ public class CsrfDisabledIntegrationTest extends CsrfAbstractIntegrationTest {
         .perform(post("/auth/foos")
         .contentType(MediaType.APPLICATION_JSON)
         .content(createFoo()))
-        .andExpect(status().isUnauthorized())
-        ;
+        .andExpect(status().isUnauthorized());
         // @formatter:on
     }
 
@@ -32,8 +31,7 @@ public class CsrfDisabledIntegrationTest extends CsrfAbstractIntegrationTest {
         .contentType(MediaType.APPLICATION_JSON)
         .content(createFoo())
         .with(testUser()))
-        .andExpect(status().isCreated())
-        ;
+        .andExpect(status().isCreated());
         // @formatter:on
     }
 
