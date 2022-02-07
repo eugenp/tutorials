@@ -20,19 +20,19 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.baeldung.swaggerexample"))
-                .paths(PathSelectors.any())
-                .build();
+          .select()
+          .apis(RequestHandlerSelectors.basePackage("com.baeldung.swaggerexample"))
+          .paths(PathSelectors.any())
+          .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Products API",
-                "API to let you add and view product",
-                "0.0.1",
-                "Terms of service",
-                new Contact("John Doe", "www.example.com", "myemail@company.com"),
-                "License of API", "API license URL", Collections.emptyList());
+          "Products API",
+          "API to let you add and view product",
+          "0.0.1",
+          "Terms of service",
+          new Contact("John Doe", "www.example.com", "myemail@company.com"),
+          "License of API", "API license URL", Collections.emptyList());
     }
 }
