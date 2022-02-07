@@ -36,6 +36,8 @@
         </dependency>
     </dependencies>
 
+    <!-- uncomment in order to enable Hibernate Validator Anotation Processor -->
+    <!--
     <build>
         <plugins>
             <plugin>
@@ -62,6 +64,8 @@
             </plugin>
         </plugins>
     </build>
+
+    -->
 
     <properties>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
