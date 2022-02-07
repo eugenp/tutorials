@@ -15,13 +15,14 @@ public class EmptyMapInitializerUnitTest {
   }
 
   @Test
-  public void checkStaticMap_isEmpty() {
+  public void givenEmptyMap_whenChecked_returnsTrue() {
     assertTrue(EmptyMapInitializer.articleMap.isEmpty());
   }
 
   @Test
-  public void emptyMapCreated_usingGuava() {
-    Map<String, String> emptyMapUsingGuava = EmptyMapInitializer.createMapUsingGuava();
+  public void givenEmptyMap_whenCreatedUsingGuava_returnsEmptyOrNot() {
+    Map<String, String> emptyMapUsingGuava =
+        EmptyMapInitializer.createMapUsingGuava();
     assertTrue(emptyMapUsingGuava.isEmpty());
     emptyMapUsingGuava.put("key", "value");
     assertFalse(emptyMapUsingGuava.isEmpty());
