@@ -9,7 +9,8 @@
 	<form action="u_login">
 		<p>Enter your User Id and Password</p>
 		User ID: <input type="text" name="userId" /><br /> 
-		Password: <input type="password" name="password" /> <br /> <input type="submit" value="Login" />
+		Password: <input type="password" name="password" /><br />
+		<input type="submit" value="Login" />
 	</form>
 </body>
 </html>

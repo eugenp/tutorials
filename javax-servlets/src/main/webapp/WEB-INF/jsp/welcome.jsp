@@ -5,8 +5,8 @@
 </head>
 <body style="background: ${uiColor}">
     <form action="welcome" method="POST">
-        <label>Your name: ${userName}</label>
-        <label>Session param: ${sessionAttribute}</label>
+        <label>Your name: ${userName}</label><br/>
+        <label>Session param: ${sessionAttribute}</label><br/>
         <button type="submit">Logout</button>
     </form>
 </body>

@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

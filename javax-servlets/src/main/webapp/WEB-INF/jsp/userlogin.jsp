@@ -9,10 +9,10 @@
 	<p>Update your User Details:</p>
 
 	<form action="update">
-		User ID: <input type="text" name="userId"
-			value='<%=request.getAttribute("id")%>' disabled /><br /> User Name:
-		<input type="text" name="userName" /> Age: <input type="number"
-			name="age" /> <br /> <input type="submit" value="Update" />
+		User ID: <input type="text" name="userId" value='<%=request.getAttribute("id")%>' disabled /><br />
+		User Name: <input type="text" name="userName" /><br />
+		Age: <input type="number" name="age" /><br />
+		<input type="submit" value="Update" />
 	</form>
 </body>
 </html>
