@@ -23,7 +23,7 @@ public class WelcomeServlet extends HttpServlet {
         Optional<String> userName = cookieReader.readCookie("userName");
 
         if (!userName.isPresent()) {
-            response.sendRedirect("/login");
+            response.sendRedirect("login");
         } else {
             request.setAttribute("uiColor", uiColor.orElse("blue"));
             request.setAttribute("userName", userName.get());
@@ -41,7 +41,7 @@ public class WelcomeServlet extends HttpServlet {
         userNameCookieRemove.setMaxAge(0);
         response.addCookie(userNameCookieRemove);
 
-        response.sendRedirect("/login");
+        response.sendRedirect("login");
     }
 
 }

@@ -25,7 +25,7 @@ public class UpdateServlet extends HttpServlet {
             request.setAttribute("sessionData", session);
         }
 
-        RequestDispatcher requestDispather = request.getRequestDispatcher("update.jsp");
+        RequestDispatcher requestDispather = request.getRequestDispatcher("/WEB-INF/jsp/update.jsp");
 
         requestDispather.forward(request, response);
     }

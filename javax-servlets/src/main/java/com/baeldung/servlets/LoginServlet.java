@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect("/welcome");
+            response.sendRedirect("welcome");
         }
     }
 
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         Cookie userNameCookie = new Cookie("userName", userName);
         response.addCookie(userNameCookie);
 
-        response.sendRedirect("/welcome");
+        response.sendRedirect("welcome");
     }
 
 }
