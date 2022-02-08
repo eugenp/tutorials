@@ -31,10 +31,11 @@ public class GraphqlControllerIntegrationTest {
     @Test
     public void givenNoBooks_whenReadAll_thenStatusIsOk() throws Exception {
 
-        String getAllBooksQuery = "{\n" + "  getAllBooks {\n" + "    id\n" + "    author\n" + "    title\n" + "  }\n" + "}\n";
+        String getAllBooksQuery = "{ getAllBooks {id author title } }";
 
         this.mockMvc.perform(post(GRAPHQL_PATH).content(toJSON(getAllBooksQuery))
-            .contentType(MediaType.APPLICATION_JSON))
+            .contentType(
+                MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.getAllBooks").isEmpty());
     }
@@ -42,7 +43,8 @@ public class GraphqlControllerIntegrationTest {
     @Test
     public void whenAddBook_thenStatusIsOk() throws Exception {
 
-        String addBookMutation = "mutation {\n" + "  addBook(newBook: {id: 123, author: \"J.R.R. Tolkien\", title: \"The Lord of the Rings\"}) {\n" + "    id\n" + "    author\n" + "    title\n" + "  }\n" + "}\n";
+        String addBookMutation = "mutation { addBook(newBook: {id: 123, author: \"J.R.R. Tolkien\", "
+            + "title: \"The Lord of the Rings\"}) { id author title } }";
 
         this.mockMvc.perform(post(GRAPHQL_PATH).content(toJSON(addBookMutation))
             .contentType(MediaType.APPLICATION_JSON))
