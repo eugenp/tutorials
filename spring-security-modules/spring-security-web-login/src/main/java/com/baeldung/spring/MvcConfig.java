@@ -13,12 +13,6 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
-    public MvcConfig() {
-        super();
-    }
-
-    // API
-
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
 

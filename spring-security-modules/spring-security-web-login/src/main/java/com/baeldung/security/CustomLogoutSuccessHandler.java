@@ -12,12 +12,6 @@ import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuc
 
 public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler implements LogoutSuccessHandler {
 
-    public CustomLogoutSuccessHandler() {
-        super();
-    }
-
-    // API
-
     @Override
     public void onLogoutSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException, ServletException {
         final String refererUrl = request.getHeader("Referer");

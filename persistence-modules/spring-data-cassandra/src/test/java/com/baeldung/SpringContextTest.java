@@ -32,10 +32,10 @@ public class SpringContextTest {
     public static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
 
     public static final String DATA_TABLE_NAME = "book";
-	
+
 	@Autowired
     private CassandraAdminOperations adminTemplate;
-    
+
     @BeforeClass
     public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
         EmbeddedCassandraServerHelper.startEmbeddedCassandra();
@@ -47,14 +47,14 @@ public class SpringContextTest {
     }
 
     @Before
-    public void createTable() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
+    public void createTable() {
+        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
     }
-    
+
 	@Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
-	
+
 	@After
     public void dropTable() {
         adminTemplate.dropTable(CqlIdentifier.cqlId(DATA_TABLE_NAME));

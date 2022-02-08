@@ -353,7 +353,7 @@
                 <module>apache-cxf</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo/olingo2</module>
+                <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
@@ -422,6 +422,7 @@
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
+                <module>graphql/graphql-dgs</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -838,7 +839,7 @@
                 <module>apache-cxf</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo/olingo2</module>
+                <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
@@ -1332,6 +1333,7 @@
                  <module>core-java-modules/core-java-io-conversions-2</module>
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-string-algorithms-3</module>
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
