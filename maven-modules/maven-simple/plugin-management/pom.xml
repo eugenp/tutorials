@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 
 	<parent>
-		<artifactId>maven-modules</artifactId>
+		<artifactId>maven-simple</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>

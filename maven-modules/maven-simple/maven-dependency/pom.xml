@@ -9,7 +9,7 @@
 
 	<parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>maven-modules</artifactId>
+		<artifactId>maven-simple</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
@@ -18,7 +18,7 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.12.0</version>
+				<version>${commons-lang3.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
