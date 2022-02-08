@@ -22,7 +22,7 @@ public class EmployeeServlet extends HttpServlet {
 		throws IOException {
 
 		Employee employee = new Employee(1, "Karan", "IT", 5000);
-		String employeeJsonString = this.gson.toJson(employee);
+		String employeeJsonString = gson.toJson(employee);
 
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
