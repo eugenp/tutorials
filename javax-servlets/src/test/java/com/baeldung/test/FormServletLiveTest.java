@@ -19,7 +19,9 @@ public class FormServletLiveTest {
     public void whenPostRequestUsingHttpClient_thenCorrect() throws Exception {
 
         HttpClient client = HttpClientBuilder.create().build();
-        HttpPost method = new HttpPost("http://localhost:8080/calculateServlet");
+
+        String contextPath = "javax-servlets-1.0-SNAPSHOT";
+        HttpPost method = new HttpPost("http://localhost:8080/" + contextPath + "/calculateServlet");
 
         List<BasicNameValuePair> nvps = new ArrayList<>();
         nvps.add(new BasicNameValuePair("height", String.valueOf(2)));
