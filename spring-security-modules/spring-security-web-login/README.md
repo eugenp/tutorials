@@ -1,6 +1,6 @@
 ## Spring Security Login
 
-This module contains articles about login mechanisms with Spring Security
+This module contains articles about login mechanisms with Spring Security.
 
 ### The Course
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
@@ -17,3 +17,12 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 ```
 mvn clean install
 ```
+
+### Run the Project
+
+- Run the application using Maven Cargo plugin.
+```
+mvn cargo:run
+```
+- Go to the login page at http://localhost:8082/spring-security-web-login/login.html
+- Login using ```user1/user1Pass``` details.

@@ -3,6 +3,8 @@ package com.baeldung.collections.bitset;
 import org.junit.Test;
 import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.info.GraphLayout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.BitSet;
 
@@ -10,18 +12,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BitSetUnitTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(BitSetUnitTest.class);
+
     @Test
     public void givenBoolArray_whenMemoryLayout_thenConsumeMoreThanOneBit() {
         boolean[] bits = new boolean[1024 * 1024];
 
-        System.out.println(ClassLayout.parseInstance(bits).toPrintable());
+        LOG.debug(ClassLayout.parseInstance(bits).toPrintable());
     }
 
     @Test
     public void givenBitSet_whenMemoryLayout_thenConsumeOneBitPerFlag() {
         BitSet bitSet = new BitSet(1024 * 1024);
 
-        System.out.println(GraphLayout.parseInstance(bitSet).toPrintable());
+        LOG.debug(GraphLayout.parseInstance(bitSet).toPrintable());
     }
 
     @Test
@@ -157,7 +161,7 @@ public class BitSetUnitTest {
         BitSet bitSet = new BitSet();
         bitSet.set(15, 25);
 
-        bitSet.stream().forEach(System.out::println);
+        bitSet.stream().forEach(bit -> LOG.debug(String.valueOf(bit)));
         assertThat(bitSet.stream().count()).isEqualTo(10);
     }
 

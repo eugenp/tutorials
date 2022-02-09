@@ -101,7 +101,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.18</version>
                 <executions>
-                    <!-- Invokes both the integration-test and the verify goals of the Failsafe Maven 
+                    <!-- Invokes both the integration-test and the verify goals of the Failsafe Maven
                         plugin -->
                     <execution>
                         <id>integration-tests</id>
@@ -110,7 +110,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <!-- Skips integration tests if the value of skip.integration.tests property 
+                            <!-- Skips integration tests if the value of skip.integration.tests property
                                 is true -->
                             <includes>
                                 <include>**/ExternalPropertyFileLoaderIntegrationTest.java</include>
@@ -186,7 +186,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>com.baeldung.boot.Application</start-class>
+        <start-class>com.baeldung.wrapper.DemoApplication</start-class>
         <jquery.version>3.1.1</jquery.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <jpa.version>2.2</jpa.version>

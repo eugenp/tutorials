@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,17 +14,32 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import org.apache.commons.lang3.SerializationUtils;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import com.baeldung.util.MySerializationUtils;
+import org.junit.rules.TemporaryFolder;
 
 public class SerializationUnitTest {
+
+    private final static String OUTPUT_FILE_NAME = "yourfile.txt";
+
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
+
+    private File outputFile;
+
+    @Before
+    public void setUp() throws Exception {
+        outputFile = tempFolder.newFile(OUTPUT_FILE_NAME);
+    }
 
     @Test(expected = NotSerializableException.class)
     public void whenSerializing_ThenThrowsError() throws IOException {
         Address address = new Address();
         address.setHouseNumber(10);
-        FileOutputStream fileOutputStream = new FileOutputStream("yofile.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(address);
         }
@@ -35,12 +51,12 @@ public class SerializationUnitTest {
         p.setAge(20);
         p.setName("Joe");
 
-        FileOutputStream fileOutputStream = new FileOutputStream("yofile.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(p);
         }
 
-        FileInputStream fileInputStream = new FileInputStream("yofile.txt");
+        FileInputStream fileInputStream = new FileInputStream(outputFile);
         try (ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             Person p2 = (Person) objectInputStream.readObject();
             assertEquals(p2.getAge(), p.getAge());
