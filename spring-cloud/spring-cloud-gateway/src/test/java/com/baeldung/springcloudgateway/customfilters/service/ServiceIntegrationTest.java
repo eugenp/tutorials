@@ -2,13 +2,15 @@ package com.baeldung.springcloudgateway.customfilters.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.baeldung.springcloudgateway.customfilters.service.web.ServiceRestController;
 
-@WebFluxTest(ServiceRestController.class)
+@WebFluxTest(controllers = ServiceRestController.class,
+        excludeAutoConfiguration = ReactiveSecurityAutoConfiguration.class)
 public class ServiceIntegrationTest {
 
     @Autowired
