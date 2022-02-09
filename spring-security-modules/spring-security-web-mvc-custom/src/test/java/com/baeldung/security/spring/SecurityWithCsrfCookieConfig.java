@@ -9,13 +9,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
+public class SecurityWithCsrfCookieConfig extends WebSecurityConfigurerAdapter {
 
-    public SecurityWithCsrfConfig() {
+    public SecurityWithCsrfCookieConfig() {
         super();
     }
 
@@ -55,7 +56,11 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
         .and()
         .httpBasic()
         .and()
-        .headers().cacheControl().disable();
+        .headers().cacheControl().disable()
+        // Stateless API CSRF configuration
+        .and()
+        .csrf()
+        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
         // @formatter:on
     }
 

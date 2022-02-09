@@ -4,14 +4,14 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.baeldung.security.spring.SecurityWithCsrfConfig;
+import com.baeldung.security.spring.SecurityWithCsrfCookieConfig;
 import com.baeldung.spring.MvcConfig;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = { SecurityWithCsrfConfig.class, MvcConfig.class })
-public class CsrfEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
+@ContextConfiguration(classes = { SecurityWithCsrfCookieConfig.class, MvcConfig.class })
+public class CsrfCookieEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
 
     @Test
     public void givenNoCsrf_whenAddFoo_thenForbidden() throws Exception {
