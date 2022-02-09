@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-boot-client</name>
+    <packaging>war</packaging>
     <description>This is simple boot client application for Spring boot actuator test</description>
 
     <parent>
@@ -107,7 +107,6 @@
     </profiles>
 
     <properties>
-        <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
 

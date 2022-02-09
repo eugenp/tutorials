@@ -15,14 +15,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
             <version>${validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
@@ -49,8 +49,9 @@
     </build>
 
     <properties>
-        <guava.version>31.0.1-jre</guava.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <validator.version>1.7</validator.version>
+        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
     </properties>
-
 </project>

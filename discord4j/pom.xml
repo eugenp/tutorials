@@ -43,7 +43,7 @@
         <dependency>
             <groupId>com.discord4j</groupId>
             <artifactId>discord4j-core</artifactId>
-            <version>3.1.1</version>
+            <version>${discord4j-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -66,6 +66,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <discord4j-core.version>3.1.1</discord4j-core.version>
     </properties>
 
 </project>

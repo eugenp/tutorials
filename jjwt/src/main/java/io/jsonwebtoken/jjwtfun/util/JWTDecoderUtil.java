@@ -11,7 +11,7 @@ import static io.jsonwebtoken.SignatureAlgorithm.HS256;
 public class JWTDecoderUtil {
 
     public static String decodeJWTToken(String token) {
-        Base64.Decoder decoder = Base64.getDecoder();
+        Base64.Decoder decoder = Base64.getUrlDecoder();
 
         String[] chunks = token.split("\\.");
 
@@ -22,7 +22,7 @@ public class JWTDecoderUtil {
     }
 
     public static String decodeJWTToken(String token, String secretKey) throws Exception {
-        Base64.Decoder decoder = Base64.getDecoder();
+        Base64.Decoder decoder = Base64.getUrlDecoder();
 
         String[] chunks = token.split("\\.");
 

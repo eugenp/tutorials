@@ -27,8 +27,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <guava.version>27.0.1-jre</guava.version>
-    </properties>
-
 </project>

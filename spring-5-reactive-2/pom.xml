@@ -78,7 +78,6 @@
     <profiles>
         <profile>
             <id>integration-lite-first</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -95,7 +94,6 @@
         </profile>
         <profile>
             <id>integration-lite-second</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -116,4 +114,5 @@
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <wiremock.version>2.24.0</wiremock.version>
     </properties>
+
 </project>

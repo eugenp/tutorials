@@ -13,7 +13,6 @@
         <groupId>com.baeldung.spring.cloud</groupId>
         <artifactId>spring-cloud-contract</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..</relativePath>
     </parent>
 
     <dependencies>
