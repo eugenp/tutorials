@@ -134,7 +134,7 @@
     </build>
 
     <properties>
-        <log4j2.version>2.8.2</log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
         <powermock.version>2.0.9</powermock.version>
         <spring.version>5.0.1.RELEASE</spring.version>
         <surefire.report.plugin>3.0.0-M3</surefire.report.plugin>
