@@ -3,6 +3,8 @@ package com.baeldung.producerconsumer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.baeldung.producerconsumer.ThreadUtil.*;
+
 public class ProducerConsumerDemonstrator {
     private static final int MAX_QUEUE_CAPACITY = 5;
 
@@ -22,29 +24,14 @@ public class ProducerConsumerDemonstrator {
         threads.add(producerThread);
         threads.add(consumerThread);
 
-        try {
-            // Wait for some time to demonstrate threads
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // let threads run for two seconds
+        sleep(2000);
 
         // Stop threads
         producer.stop();
         consumer.stop();
-        dataQueue.stop();
 
         waitForAllThreadsToComplete(threads);
-    }
-
-    private static void waitForAllThreadsToComplete(List<Thread> threads) {
-        for(Thread thread: threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public static void demoMultipleProducersAndMultipleConsumers() {
@@ -52,37 +39,26 @@ public class ProducerConsumerDemonstrator {
         int producerCount = 3;
         int consumerCount = 3;
         List<Thread> threads = new ArrayList<>();
-        Producer[] producers = new Producer[producerCount];
+        Producer producer = new Producer(dataQueue);
         for(int i = 0; i < producerCount; i++) {
-            Producer producer = new Producer(dataQueue);
-            producers[i] = producer;
             Thread producerThread = new Thread(producer);
             producerThread.start();
             threads.add(producerThread);
         }
-        Consumer[] consumers = new Consumer[consumerCount];
+        Consumer consumer = new Consumer(dataQueue);
         for(int i = 0; i < consumerCount; i++) {
-            Consumer consumer = new Consumer(dataQueue);
-            consumers[i] = consumer;
             Thread consumerThread = new Thread(consumer);
             consumerThread.start();
             threads.add(consumerThread);
         }
 
-        try {
-            // Wait for some time to demonstrate threads
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // let threads run for two seconds
+        sleep(2000);
+
         // Stop threads
-        for(int i = 0; i < producerCount; i++) {
-            producers[i].stop();
-        }
-        for(int i = 0; i < consumerCount; i++) {
-            consumers[i].stop();
-        }
-        dataQueue.stop();
+        producer.stop();
+        consumer.stop();
+
         waitForAllThreadsToComplete(threads);
     }
 

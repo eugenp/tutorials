@@ -2,7 +2,7 @@ package com.baeldung.producerconsumer;
 
 public class Consumer implements Runnable {
     private final DataQueue dataQueue;
-    private boolean runFlag;
+    private volatile boolean runFlag;
 
     public Consumer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
@@ -11,24 +11,25 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        try {
-            consume();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        consume();
     }
 
-    public void consume() throws InterruptedException {
+    public void consume() {
         while (runFlag) {
             Message message;
             if (dataQueue.isEmpty()) {
-                dataQueue.waitOnEmpty();
+                try {
+                    dataQueue.waitOnEmpty();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    break;
+                }
             }
             if (!runFlag) {
                 break;
             }
             message = dataQueue.remove();
-            dataQueue.notifyForFull();
+            dataQueue.notifyAllForFull();
             useMessage(message);
         }
         System.out.println("Consumer Stopped");
@@ -36,18 +37,15 @@ public class Consumer implements Runnable {
 
     private void useMessage(Message message) {
         if (message != null) {
-            System.out.printf("Consuming Message. Id: %d, Data: %f\n", message.getId(), message.getData());
+            System.out.printf("[%s] Consuming Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
 
             //Sleeping on random time to make it realistic
-            try {
-                Thread.sleep((long) (message.getData() * 100));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            ThreadUtil.sleep((long) (message.getData() * 100));
         }
     }
 
     public void stop() {
         runFlag = false;
+        dataQueue.notifyAllForEmpty();
     }
 }

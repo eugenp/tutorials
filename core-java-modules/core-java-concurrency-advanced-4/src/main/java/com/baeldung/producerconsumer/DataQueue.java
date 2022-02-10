@@ -4,14 +4,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class DataQueue {
-    private final Queue<Message> queue;
+    private final Queue<Message> queue = new LinkedList<>();
     private final int maxSize;
     private final Object FULL_QUEUE = new Object();
     private final Object EMPTY_QUEUE = new Object();
 
     DataQueue(int maxSize) {
         this.maxSize = maxSize;
-        queue = new LinkedList<>();
     }
 
     public boolean isFull() {
@@ -34,33 +33,16 @@ public class DataQueue {
         }
     }
 
-    public void notifyForFull() {
-        synchronized (FULL_QUEUE) {
-            FULL_QUEUE.notify();
-        }
-    }
-
-    public void notifyForEmpty() {
-        synchronized (EMPTY_QUEUE) {
-            EMPTY_QUEUE.notify();
-        }
-    }
-
-    private void notifyAllForFull() {
+    public void notifyAllForFull() {
         synchronized (FULL_QUEUE) {
             FULL_QUEUE.notifyAll();
         }
     }
 
-    private void notifyAllForEmpty() {
+    public void notifyAllForEmpty() {
         synchronized (EMPTY_QUEUE) {
             EMPTY_QUEUE.notifyAll();
         }
-    }
-
-    public void stop() {
-        notifyAllForFull();
-        notifyAllForEmpty();
     }
 
     public void add(Message message) {
