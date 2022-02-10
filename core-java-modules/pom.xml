@@ -46,6 +46,7 @@
         <module>core-java-concurrency-advanced-4</module>
         <module>core-java-concurrency-basic</module>
         <module>core-java-concurrency-basic-2</module>
+        <module>core-java-concurrency-basic-3</module>
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
@@ -55,6 +56,7 @@
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
+        <module>core-java-exceptions-4</module>
         <module>core-java-function</module>
         <module>core-java-functional</module>
         <module>core-java-io</module>

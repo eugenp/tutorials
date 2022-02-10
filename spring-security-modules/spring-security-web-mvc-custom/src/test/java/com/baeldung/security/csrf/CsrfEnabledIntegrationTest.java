@@ -15,12 +15,27 @@ public class CsrfEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
 
     @Test
     public void givenNoCsrf_whenAddFoo_thenForbidden() throws Exception {
-        mvc.perform(post("/auth/foos").contentType(MediaType.APPLICATION_JSON).content(createFoo()).with(testUser())).andExpect(status().isForbidden());
+        // @formatter:off
+        mvc
+        .perform(post("/auth/foos")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(createFoo())
+        .with(testUser()))
+        .andExpect(status().isForbidden());
+        // @formatter:on
     }
 
     @Test
     public void givenCsrf_whenAddFoo_thenCreated() throws Exception {
-        mvc.perform(post("/auth/foos").contentType(MediaType.APPLICATION_JSON).content(createFoo()).with(testUser()).with(csrf())).andExpect(status().isCreated());
+        // @formatter:off
+        mvc
+        .perform(post("/auth/foos")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(createFoo())
+        .with(testUser())
+        .with(csrf()))
+        .andExpect(status().isCreated());
+        // @formatter:on
     }
 
 }
