@@ -353,7 +353,7 @@
                 <module>apache-cxf</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo/olingo2</module>
+                <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
@@ -839,7 +839,7 @@
                 <module>apache-cxf</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo/olingo2</module>
+                <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
