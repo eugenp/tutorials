@@ -1,6 +1,7 @@
 package com.baeldung.operators;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +12,9 @@ import com.baeldung.operators.model.Transport;
 class TypeComparisonUnitTest {
 
     @Test
-    public void whenCarIsNotTheSameTypeOfAirplane_thenSuccess() {
+    public void whenCarIsNotTheSameTypeOfAirplane_thenFail() {
         Object car = new Car();
-        assertEquals(car instanceof Airplane, false);
+        assertNotEquals(car instanceof Airplane, true);
     }
 
     @Test
