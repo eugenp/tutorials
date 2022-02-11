@@ -1,21 +1,18 @@
 package com.baeldung.springdatajdbcintro;
 
-import java.util.Optional;
-
+import ch.qos.logback.classic.Logger;
+import com.baeldung.springdatajdbcintro.entity.Person;
+import com.baeldung.springdatajdbcintro.repository.PersonRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.baeldung.springdatajdbcintro.entity.Person;
-import com.baeldung.springdatajdbcintro.repository.PersonRepository;
-
-import ch.qos.logback.classic.Logger;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.core.env.AbstractEnvironment;
 
-@SpringBootApplication//(exclude = HibernateJpaAutoConfiguration.class)
+import java.util.Optional;
+
+@SpringBootApplication
 public class Application implements CommandLineRunner {
 
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(Application.class);
@@ -26,7 +23,7 @@ public class Application implements CommandLineRunner {
     private DatabaseSeeder dbSeeder;
 
     public static void main(String[] args) {
-        //System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "jdbcintro");
+        System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "jdbcintro");
         SpringApplication.run(Application.class, args);
     }
 
