@@ -1,26 +1,24 @@
-package com.baeldung.spring.datasources.todos;
+package com.baeldung.springmultipledatasources.topics;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
 @Configuration
-public class TodoDatasourceConfiguration {
+public class TopicDatasourceConfiguration {
 
     @Bean
-    @ConfigurationProperties("spring.datasource.todos")
-    public DataSourceProperties todosDataSourceProperties() {
+    @ConfigurationProperties("spring.datasource.topics")
+    public DataSourceProperties topicsDataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean
-    @Primary
-    public DataSource todosDataSource() {
-        return todosDataSourceProperties()
+    public DataSource topicsDataSource() {
+        return topicsDataSourceProperties()
           .initializeDataSourceBuilder()
           .build();
     }

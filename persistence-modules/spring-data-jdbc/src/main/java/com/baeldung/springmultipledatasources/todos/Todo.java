@@ -1,4 +1,4 @@
-package com.baeldung.spring.datasources.todos;
+package com.baeldung.springmultipledatasources.todos;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

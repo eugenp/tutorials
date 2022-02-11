@@ -1,4 +1,4 @@
-package com.baeldung.spring.datasources.topics;
+package com.baeldung.springmultipledatasources.topics;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

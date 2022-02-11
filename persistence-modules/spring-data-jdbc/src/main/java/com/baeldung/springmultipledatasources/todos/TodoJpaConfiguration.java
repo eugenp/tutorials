@@ -1,4 +1,4 @@
-package com.baeldung.spring.datasources.topics;
+package com.baeldung.springmultipledatasources.todos;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -16,26 +16,25 @@ import java.util.Objects;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-  basePackageClasses = Topic.class,
-  entityManagerFactoryRef = "topicsEntityManagerFactory",
-  transactionManagerRef = "topicsTransactionManager"
+  basePackageClasses = Todo.class,
+  entityManagerFactoryRef = "todosEntityManagerFactory",
+  transactionManagerRef = "todosTransactionManager"
 )
-public class TopicJpaConfiguration {
+public class TodoJpaConfiguration {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean topicsEntityManagerFactory(
-      @Qualifier("topicsDataSource") DataSource dataSource,
-      EntityManagerFactoryBuilder builder
-    ) {
+    public LocalContainerEntityManagerFactoryBean todosEntityManagerFactory(
+      @Qualifier("todosDataSource") DataSource dataSource,
+      EntityManagerFactoryBuilder builder) {
         return builder
           .dataSource(dataSource)
-          .packages(Topic.class)
+          .packages(Todo.class)
           .build();
     }
 
     @Bean
-    public PlatformTransactionManager topicsTransactionManager(
-      @Qualifier("topicsEntityManagerFactory") LocalContainerEntityManagerFactoryBean topicsEntityManagerFactory) {
-        return new JpaTransactionManager(Objects.requireNonNull(topicsEntityManagerFactory.getObject()));
+    public PlatformTransactionManager todosTransactionManager(
+      @Qualifier("todosEntityManagerFactory") LocalContainerEntityManagerFactoryBean todosEntityManagerFactory) {
+        return new JpaTransactionManager(Objects.requireNonNull(todosEntityManagerFactory.getObject()));
     }
 }

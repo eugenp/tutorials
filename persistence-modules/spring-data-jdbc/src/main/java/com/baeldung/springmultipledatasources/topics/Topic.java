@@ -1,4 +1,4 @@
-package com.baeldung.spring.datasources.topics;
+package com.baeldung.springmultipledatasources.topics;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
