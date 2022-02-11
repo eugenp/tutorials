@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.mongodb.client.model.Aggregates.*;
+import static com.mongodb.client.model.Aggregates.project;
+import static com.mongodb.client.model.Aggregates.sort;
 import static com.mongodb.client.model.Sorts.ascending;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CaseInsensitiveOrderingLiveTest {
 
@@ -28,9 +28,9 @@ public class CaseInsensitiveOrderingLiveTest {
     @Before
     public void setup() {
         if (mongoClient == null) {
-            mongoClient = new MongoClient();
-            MongoDatabase db = mongoClient.getDatabase("ordering");
-            collection = db.getCollection("users");
+            MongoClient mongoClient = new MongoClient();
+            MongoDatabase db = mongoClient.getDatabase("sorting");
+            MongoCollection<Document> collection = db.getCollection("users");
 
             List<Document> list = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class CaseInsensitiveOrderingLiveTest {
     public void givenMongoCollection_whenUsingFindWithSort_caseIsConsideredByDefault() {
         FindIterable<Document> nameDoc = collection.find().sort(ascending("name"));
         MongoCursor<Document> cursor = nameDoc.cursor();
-        assertOrdering(cursor, Arrays.asList("Aen","Ben","Cen","aen","ben","cen"));
+        assertOrdering(cursor, Arrays.asList("Aen", "Ben", "Cen", "aen", "ben", "cen"));
     }
 
     @Test
@@ -62,24 +62,24 @@ public class CaseInsensitiveOrderingLiveTest {
         FindIterable<Document> nameDoc = collection.find().sort(ascending("name"))
           .collation(Collation.builder().locale("en").build());
         MongoCursor<Document> cursor = nameDoc.cursor();
-        assertOrdering(cursor, Arrays.asList("aen","Aen","ben","Ben","cen","Cen"));
+        assertOrdering(cursor, Arrays.asList("aen", "Aen", "ben", "Ben", "cen", "Cen"));
     }
 
     @Test
     public void givenMongoCollection_whenUsingFindWithSortAndAggregate_caseIsNotConsidered() {
 
-        Bson borderingCountriesCollection = project(
-          Projections.fields(//Projections.excludeId(),
-          Projections.include("name","surname"),
-          Projections.computed("lowerName", Projections.computed("$toLower", "$name"))));
+        Bson projectBson = project(
+          Projections.fields(
+            Projections.include("name", "surname"),
+            Projections.computed("lowerName", Projections.computed("$toLower", "$name"))));
 
         AggregateIterable<Document> nameDoc = collection.aggregate(
-          Arrays.asList(borderingCountriesCollection,
+          Arrays.asList(projectBson,
             sort(Sorts.ascending("lowerName"))));
 
         MongoCursor<Document> cursor = nameDoc.cursor();
 
-        assertOrdering(cursor, Arrays.asList("aen","Aen","ben","Ben","cen","Cen"));
+        assertOrdering(cursor, Arrays.asList("aen", "Aen", "ben", "Ben", "cen", "Cen"));
     }
 
     private void assertOrdering(MongoCursor<Document> cursor, List<String> expectedNamesOrdering) {
@@ -88,7 +88,7 @@ public class CaseInsensitiveOrderingLiveTest {
             Document document = cursor.next();
             actualNamesOrdering.add(document.get("name").toString());
         }
-        assertEquals(expectedNamesOrdering,actualNamesOrdering);
+        assertEquals(expectedNamesOrdering, actualNamesOrdering);
     }
 
 }
