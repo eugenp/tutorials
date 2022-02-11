@@ -5,3 +5,4 @@
 - [How to Check if a Database Table Exists with JDBC](https://www.baeldung.com/jdbc-check-table-exists)
 - [Inserting Null Into an Integer Column Using JDBC](https://www.baeldung.com/jdbc-insert-null-into-integer-column)
 - [A Guide to Auto-Commit in JDBC](https://www.baeldung.com/java-jdbc-auto-commit)
+- [JDBC Connection Status](https://www.baeldung.com/jdbc-connection-status)
