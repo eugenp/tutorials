@@ -1,26 +1,17 @@
-/**
- * 
- */
-package com.baeldung.architecture.hexagonal.employee;
+package com.baeldung.architecture.hexagonal.employee.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@Slf4j
+@ComponentScan("com.baeldung.architecture.hexagonal.employee")
 public class EmployeeManagementApplication {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		try {
             SpringApplication.run(EmployeeManagementApplication.class, args);
-            log.info("Employee Management application initialized.");
         } catch (Exception e) {
-            log.error("Employee Management application failed to start.");
         }
 	}
 
