@@ -3,7 +3,7 @@
 
 
 JNIEXPORT jstring JNICALL hello (JNIEnv* env, jobject thisObject) {
-	std::string hello = "Hello from registered native C++ !!";
+    std::string hello = "Hello from registered native C++ !!";
     std::cout << hello << std::endl;
     return env->NewStringUTF(hello.c_str());
 }
