@@ -49,7 +49,6 @@ public class GraphQLMockServer {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withMethod(HTTP_GET_POST)
               .withPath(PATH)
               .withQueryStringParameter(QUERY_PARAMETER, requestQuery),
             exactly(1)
@@ -68,7 +67,6 @@ public class GraphQLMockServer {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withMethod(HTTP_GET_POST)
               .withPath(PATH)
               .withQueryStringParameter(QUERY_PARAMETER, requestQuery),
             exactly(1)

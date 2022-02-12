@@ -2,7 +2,11 @@ package com.baeldung.graphql.client.apache;
 
 import com.baeldung.graphql.GraphQLMockServer;
 import com.baeldung.graphql.data.Response;
+import com.baeldung.graphql.generated.Book;
+import com.baeldung.graphql.generated.util.QueryExecutor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graphql_java_generator.exception.GraphQLRequestExecutionException;
+import com.graphql_java_generator.exception.GraphQLRequestPreparationException;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.junit.jupiter.api.Test;
@@ -10,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -44,6 +49,14 @@ class ApacheHttpClientUnitTest extends GraphQLMockServer {
           () -> assertThat(parsedResponse.getData().getAllBooks().get(1).getTitle()).isEqualTo("Title 2"),
           () -> assertThat(parsedResponse.getData().getAllBooks().get(1).getAuthor().getFullName()).isEqualTo("Marko Maric")
         );
+    }
+
+    @Test
+    void asd() throws GraphQLRequestPreparationException, GraphQLRequestExecutionException {
+        QueryExecutor queryExecutor = new QueryExecutor(serviceUrl);
+        List<Book> books = queryExecutor.allBooks("{title}");
+
+        assertThat(books).hasSize(2);
     }
 
 }
