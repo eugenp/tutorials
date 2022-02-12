@@ -24,5 +24,5 @@ curl --location --request POST 'http://localhost:8080/v1/hexagonal/employees' \
 Retrieve the Employee Records from the persistence:
 
 ```
-curl --location --request GET 'http://localhost:8080/v1/hexagonal/employees/3'
+curl --location --request GET 'http://localhost:8080/v1/hexagonal/employees/1'
 ```
