@@ -16,7 +16,7 @@ Add Employee record to the persistence:
 curl --location --request POST 'http://localhost:8080/v1/hexagonal/employees' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "firstName": "Viraj",
+    "firstName": "Vikash",
     "lastName": "Agrawal"
 }'
 ```

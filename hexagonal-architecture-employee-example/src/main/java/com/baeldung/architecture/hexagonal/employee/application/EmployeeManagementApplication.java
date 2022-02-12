@@ -9,10 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class EmployeeManagementApplication {
 
 	public static void main(String[] args) {
-		try {
-            SpringApplication.run(EmployeeManagementApplication.class, args);
-        } catch (Exception e) {
-        }
+		SpringApplication.run(EmployeeManagementApplication.class, args);
 	}
-
 }

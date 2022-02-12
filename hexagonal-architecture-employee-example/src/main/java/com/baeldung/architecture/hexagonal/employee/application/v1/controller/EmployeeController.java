@@ -24,15 +24,14 @@ public class EmployeeController {
 	
 	@GetMapping("{employeeId}")
 	public ResponseEntity<Employee> getEmployeeDetail(@PathVariable("employeeId") int employeeId) {
-		Employee employee = null;
 		try {
-			employee = employeeService.findById(employeeId);
+			Employee employee = employeeService.findById(employeeId);
 			if(employee == null) {
-				return new ResponseEntity<Employee>(employee, HttpStatus.NOT_FOUND);
+				return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 		} catch (EmployeeException e) {
-			return new ResponseEntity<Employee>(employee, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Employee>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	
