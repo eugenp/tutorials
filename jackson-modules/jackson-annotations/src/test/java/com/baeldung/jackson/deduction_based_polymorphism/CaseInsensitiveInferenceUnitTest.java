@@ -17,11 +17,12 @@ public class CaseInsensitiveInferenceUnitTest {
     @Test
     void givenAnCaseInsensitiveKnight_whenMapping_thenExpectKnight() throws Exception {
         String knightJson = formatJson("{'NaMe':'Ostrava, of Boletaria', 'WeaPON':'Rune Sword'}");
-        NamedCharacter knight = objectMapper.readValue(knightJson, NamedCharacter.class);
-        assertTrue(knight instanceof Knight);
-        assertSame(knight.getClass(), Knight.class);
+        Character character = objectMapper.readValue(knightJson, Character.class);
+        assertTrue(character instanceof Knight);
+        assertSame(character.getClass(), Knight.class);
+        Knight knight = (Knight) character;
         assertEquals("Ostrava, of Boletaria", knight.getName());
-        assertEquals("Rune Sword", ((Knight) knight).getWeapon());
+        assertEquals("Rune Sword", knight.getWeapon());
     }
 
 }

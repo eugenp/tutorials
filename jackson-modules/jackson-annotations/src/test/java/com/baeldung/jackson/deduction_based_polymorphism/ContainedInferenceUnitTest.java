@@ -21,8 +21,9 @@ public class ContainedInferenceUnitTest {
         Character character = controlledCharacter.getCharacter();
         assertTrue(character instanceof Knight);
         assertSame(character.getClass(), Knight.class);
-        assertEquals("Ostrava, of Boletaria", ((NamedCharacter) character).getName());
-        assertEquals("Rune Sword", ((Knight) character).getWeapon());
+        Knight knight = (Knight) character;
+        assertEquals("Ostrava, of Boletaria", knight.getName());
+        assertEquals("Rune Sword", knight.getWeapon());
     }
 
     @Test
@@ -32,8 +33,9 @@ public class ContainedInferenceUnitTest {
         Character character = controlledCharacter.getCharacter();
         assertTrue(character instanceof King);
         assertSame(character.getClass(), King.class);
-        assertEquals("King Allant", ((NamedCharacter) character).getName());
-        assertEquals("Boletaria", ((King) character).getLand());
+        King king = (King) character;
+        assertEquals("King Allant", king.getName());
+        assertEquals("Boletaria", king.getLand());
     }
 
     @Test

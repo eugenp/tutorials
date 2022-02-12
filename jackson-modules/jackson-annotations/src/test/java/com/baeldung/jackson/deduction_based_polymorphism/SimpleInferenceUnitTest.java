@@ -17,21 +17,23 @@ public class SimpleInferenceUnitTest {
     @Test
     void givenAKnight_whenMapping_thenExpectAKnightType() throws Exception {
         String knightJson = formatJson("{'name':'Ostrava, of Boletaria', 'weapon':'Rune Sword'}");
-        NamedCharacter knight = objectMapper.readValue(knightJson, NamedCharacter.class);
-        assertTrue(knight instanceof Knight);
-        assertSame(knight.getClass(), Knight.class);
-        assertEquals("Ostrava, of Boletaria", knight.getName());
-        assertEquals("Rune Sword", ((Knight) knight).getWeapon());
+        Character character = objectMapper.readValue(knightJson, Character.class);
+        assertTrue(character instanceof Knight);
+        assertSame(character.getClass(), Knight.class);
+        Knight king = (Knight) character;
+        assertEquals("Ostrava, of Boletaria", king.getName());
+        assertEquals("Rune Sword", king.getWeapon());
     }
 
     @Test
     void givenAKing_whenMapping_thenExpectAKingType() throws Exception {
         String kingJson = formatJson("{'name':'Old King Allant', 'land':'Boletaria'}");
-        NamedCharacter king = objectMapper.readValue(kingJson, NamedCharacter.class);
-        assertTrue(king instanceof King);
-        assertSame(king.getClass(), King.class);
+        Character character = objectMapper.readValue(kingJson, Character.class);
+        assertTrue(character instanceof King);
+        assertSame(character.getClass(), King.class);
+        King king = (King) character;
         assertEquals("Old King Allant", king.getName());
-        assertEquals("Boletaria", ((King) king).getLand());
+        assertEquals("Boletaria", king.getLand());
     }
 
     @Test
