@@ -1,4 +1,4 @@
-package com.baeldung.jni.registerNatives;
+package com.baeldung.jni.registernatives;
 
 import com.baeldung.jni.RegisterNativesHelloWorldJNI;
 import org.junit.Before;
