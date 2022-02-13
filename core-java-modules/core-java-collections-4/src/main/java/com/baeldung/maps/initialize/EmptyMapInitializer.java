@@ -1,4 +1,4 @@
-package com.baeldung.map.initialize;
+package com.baeldung.maps.initialize;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -33,7 +33,8 @@ public class EmptyMapInitializer {
   }
 
   public Map createGenericEmptyMapUsingMapsObject() {
-    return Maps.<String, Integer>newHashMap();
+    Map genericEmptyMap = Maps.<String, Integer>newHashMap();
+    return genericEmptyMap;
   }
 
   public static Map<String, String> createMapUsingGuava() {
