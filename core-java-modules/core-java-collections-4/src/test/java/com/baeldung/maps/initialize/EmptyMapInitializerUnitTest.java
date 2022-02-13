@@ -1,4 +1,4 @@
-package com.baeldung.map.initialize;
+package com.baeldung.maps.initialize;
 
 import java.util.Map;
 import org.junit.Test;
