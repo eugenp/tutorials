@@ -5,10 +5,10 @@ import com.baeldung.swaggerenums.model.Role;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class HireControllerTest {
+public class HireControllerUnitTest {
 
     @Test
-    public void hireEmployee_RoleEngineer_ReturnsRoleString() {
+    public void givenRoleEngineer_whenHireEmployee_thenReturnsRoleInString() {
         //Arrange
         Role testRole = Role.Engineer;
         Employee employee = new Employee();
