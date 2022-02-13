@@ -1,4 +1,4 @@
-package com.baeldung.graphql.client.apache;
+package com.baeldung.graphql.clients;
 
 import com.baeldung.graphql.GraphQLMockServer;
 import com.baeldung.graphql.data.Response;

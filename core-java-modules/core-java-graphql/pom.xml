@@ -14,7 +14,27 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <dependency>
+            <groupId>com.github.americanexpress.nodes</groupId>
+            <artifactId>kotlin-sample</artifactId>
+            <version>v0.5.0</version>
+        </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java</artifactId>
@@ -52,6 +72,11 @@
             <version>5.11.2</version>
         </dependency>
         <dependency>
+            <groupId>com.graphql-java-generator</groupId>
+            <artifactId>graphql-java-runtime</artifactId>
+            <version>${graphql.java.generator.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.8.2</version>
@@ -85,6 +110,24 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.1.0</version>
             </plugin>
+            <plugin>
+                <groupId>com.graphql-java-generator</groupId>
+                <artifactId>graphql-maven-plugin</artifactId>
+                <version>${graphql.java.generator.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generateClientCode</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <packageName>com.baeldung.graphql.generated</packageName>
+                    <copyRuntimeSources>false</copyRuntimeSources>
+                    <generateDeprecatedRequestResponse>false</generateDeprecatedRequestResponse>
+                    <separateUtilityClasses>true</separateUtilityClasses>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -92,6 +135,7 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <graphql.java.generator.version>1.18</graphql.java.generator.version>
     </properties>
 
 </project>
