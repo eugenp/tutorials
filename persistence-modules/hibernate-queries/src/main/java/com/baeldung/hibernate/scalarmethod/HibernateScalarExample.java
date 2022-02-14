@@ -10,7 +10,6 @@ public class HibernateScalarExample {
     private Session session;
 
     public HibernateScalarExample(Session session) {
-        super();
         this.session = session;
     }
 
