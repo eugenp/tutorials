@@ -1,6 +1,6 @@
 package com.baeldung.springsoap;
 
-import com.baeldung.springsoap.gen.*;
+import com.baeldung.springsoap.client.gen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
