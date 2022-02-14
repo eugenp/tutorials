@@ -1,6 +1,9 @@
 package com.baeldung.joseanibalrodpez.hexagonalarchitecture.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
@@ -18,7 +21,10 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
+@Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "ARTICLE")
 public class Article {
 
@@ -40,16 +46,6 @@ public class Article {
     @Column(name = "CONTENT")
     @NotEmpty(message = "Property content is required")
     private String content;
-
-    public Article() {
-    }
-
-    public Article(Long id, String name, String editor, String content) {
-        this.id = id;
-        this.name = name;
-        this.editor = editor;
-        this.content = content;
-    }
 
     @Override
     public boolean equals(Object o) {
