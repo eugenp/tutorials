@@ -25,6 +25,11 @@
             <artifactId>springfox-boot-starter</artifactId>
             <version>${springfox.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.kongchen</groupId>
+            <artifactId>swagger-maven-plugin</artifactId>
+            <version>${swagger-maven-plugin.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -33,11 +38,50 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>${swagger-maven-plugin.version}</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>false</springmvc>
+                            <locations>com.baeldung.swaggerenums.controller</locations>
+                            <schemes>http,https</schemes>
+                            <host>baeldung.com</host>
+                            <basePath>/api</basePath>
+                            <info>
+                                <title>Baeldung - Document Enum</title>
+                                <version>v1</version>
+                                <description>This is a Baeldung Document Enum Sample Code</description>
+                                <contact>
+                                    <email>pmurria@baeldung.com</email>
+                                    <name>Parikshit Murria</name>
+                                </contact>
+                                <license>
+                                    <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+                                    <name>Apache 2.0</name>
+                                </license>
+                            </info>
+                            <swaggerDirectory>generated/swagger-ui</swaggerDirectory>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <springfox.version>3.0.0</springfox.version>
+        <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
     </properties>
 
 </project>
