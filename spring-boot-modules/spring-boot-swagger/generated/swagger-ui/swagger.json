@@ -1,0 +1,57 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a Baeldung Document Enum Sample Code",
+    "version" : "v1",
+    "title" : "Baeldung - Document Enum",
+    "contact" : {
+      "name" : "Parikshit Murria",
+      "email" : "pmurria@baeldung.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "baeldung.com",
+  "basePath" : "/api",
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/hire" : {
+      "post" : {
+        "summary" : "This method is used to hire employee with a specific role",
+        "description" : "",
+        "operationId" : "hireEmployee",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "role",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Employee"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Employee" : {
+      "type" : "object",
+      "properties" : {
+        "role" : {
+          "type" : "string",
+          "enum" : [ "Engineer", "Clerk", "Driver", "Janitor" ]
+        }
+      }
+    }
+  }
+}
