@@ -15,7 +15,7 @@ class CaseInsensitiveInferenceUnitTest {
     private final ObjectMapper objectMapper = JsonMapper.builder().configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true).build();
 
     @Test
-    void givenAnCaseInsensitiveKnight_whenMapping_thenExpectKnight() throws Exception {
+    void givenACaseInsensitiveKnight_whenMapping_thenExpectKnight() throws Exception {
         String knightJson = formatJson("{'NaMe':'Ostrava, of Boletaria', 'WeaPON':'Rune Sword'}");
 
         Character character = objectMapper.readValue(knightJson, Character.class);
