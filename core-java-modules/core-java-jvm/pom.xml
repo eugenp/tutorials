@@ -57,7 +57,7 @@
             <artifactId>jol-core</artifactId>
             <version>${jol-core.version}</version>
         </dependency>
- <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
+        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
@@ -92,7 +92,7 @@
                                     <archive>
                                         <manifest>
                                             <addClasspath>true</addClasspath>
-<mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
+                                            <mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
                                         </manifest>
                                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                                     </archive>
@@ -163,7 +163,7 @@
                                     <archive>
                                         <manifest>
                                             <addClasspath>true</addClasspath>
-<mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
+                                            <mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
                                         </manifest>
                                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                                     </archive>
