@@ -23,10 +23,6 @@ import com.baeldung.security.CustomLogoutSuccessHandler;
 @Profile("!https")
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public SecSecurityConfig() {
-        super();
-    }
-
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off
@@ -81,7 +77,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationFailureHandler authenticationFailureHandler() {
         return new CustomAuthenticationFailureHandler();
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
