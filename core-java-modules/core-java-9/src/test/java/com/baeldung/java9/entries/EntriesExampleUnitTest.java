@@ -48,9 +48,10 @@ public class EntriesExampleUnitTest {
     public void givenImmutableEntryUsingJava9_whenVerifying_thenShouldContainKeyValues() {
         Map.Entry<String, String> entry = Map.entry("key", "value");
 
-        assertThat(entry)
-          .extracting("key", "value")
-          .containsExactly("key", "value");
+        assertThat(entry.getKey())
+          .isEqualTo("key");
+        assertThat(entry.getValue())
+          .isEqualTo("value");
     }
 
 
