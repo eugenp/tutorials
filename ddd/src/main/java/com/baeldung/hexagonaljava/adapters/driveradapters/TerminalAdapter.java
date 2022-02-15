@@ -1,8 +1,8 @@
-package com.baeldung.hexagonal.adapters.driveradapters;
+package com.baeldung.hexagonaljava.adapters.driveradapters;
 
 import java.util.Scanner;
 
-import com.baeldung.hexagonal.ports.driverports.EmployeeService;
+import com.baeldung.hexagonaljava.ports.driverports.EmployeeService;
 
 /**
  * @author Hesam Ghiasi created on 2/15/22 

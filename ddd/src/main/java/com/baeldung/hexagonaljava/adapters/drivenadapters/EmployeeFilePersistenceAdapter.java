@@ -1,12 +1,12 @@
-package com.baeldung.hexagonal.adapters.drivenadapters;
+package com.baeldung.hexagonaljava.adapters.drivenadapters;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-import com.baeldung.hexagonal.application.entities.Employee;
-import com.baeldung.hexagonal.ports.drivenports.EmployeePersistence;
+import com.baeldung.hexagonaljava.application.entities.Employee;
+import com.baeldung.hexagonaljava.ports.drivenports.EmployeePersistence;
 
 /**
  * @author Hesam Ghiasi created on 2/15/22 

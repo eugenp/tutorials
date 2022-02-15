@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.application.services;
+package com.baeldung.hexagonaljava.application.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,9 +12,9 @@ import java.util.Calendar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.hexagonal.adapters.drivenadapters.EmployeeFilePersistenceAdapter;
-import com.baeldung.hexagonal.ports.drivenports.EmployeePersistence;
-import com.baeldung.hexagonal.ports.driverports.EmployeeService;
+import com.baeldung.hexagonaljava.adapters.drivenadapters.EmployeeFilePersistenceAdapter;
+import com.baeldung.hexagonaljava.ports.drivenports.EmployeePersistence;
+import com.baeldung.hexagonaljava.ports.driverports.EmployeeService;
 
 /**
  * @author Hesam Ghiasi created on 2/15/22 

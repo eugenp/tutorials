@@ -1,6 +1,6 @@
-package com.baeldung.hexagonal.ports.drivenports;
+package com.baeldung.hexagonaljava.ports.drivenports;
 
-import com.baeldung.hexagonal.application.entities.Employee;
+import com.baeldung.hexagonaljava.application.entities.Employee;
 
 /**
  * @author Hesam Ghiasi created on 2/15/22 

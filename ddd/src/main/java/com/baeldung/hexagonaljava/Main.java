@@ -1,8 +1,8 @@
-package com.baeldung.hexagonal;
+package com.baeldung.hexagonaljava;
 
-import com.baeldung.hexagonal.adapters.driveradapters.TerminalAdapter;
-import com.baeldung.hexagonal.adapters.drivenadapters.EmployeeFilePersistenceAdapter;
-import com.baeldung.hexagonal.application.services.EmployeeServiceImpl;
+import com.baeldung.hexagonaljava.adapters.driveradapters.TerminalAdapter;
+import com.baeldung.hexagonaljava.adapters.drivenadapters.EmployeeFilePersistenceAdapter;
+import com.baeldung.hexagonaljava.application.services.EmployeeServiceImpl;
 
 /**
  * @author Hesam Ghiasi created on 2/15/22 

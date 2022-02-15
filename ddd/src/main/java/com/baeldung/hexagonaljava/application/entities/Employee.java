@@ -1,9 +1,9 @@
-package com.baeldung.hexagonal.application.entities;
+package com.baeldung.hexagonaljava.application.entities;
 
 import java.io.Serializable;
 
 /**
- * @author Hesam Ghiasi created on 2/15/22 
+ * @author Hesam Ghiasi created on 2/15/22
  */
 public class Employee implements Serializable {
 

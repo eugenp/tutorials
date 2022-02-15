@@ -1,4 +1,4 @@
-package com.baeldung.hexagonal.adapters.drivenadapters;
+package com.baeldung.hexagonaljava.adapters.drivenadapters;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.hexagonal.application.entities.Employee;
+import com.baeldung.hexagonaljava.application.entities.Employee;
 
 /**
  * @author Hesam Ghiasi created on 2/15/22 
