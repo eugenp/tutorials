@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Baeldung - using a datepicker to submit date</title>
+    <meta charset="UTF-8">
+    <title>Baeldung - using a datepicker to submit date</title>
 </head>
 <body>
 <form th:action="@{/saveStudent}" method="post" th:object="${student}">
-	<div>
-		<div>
-			<label for="student-id">ID:</label>
-			<input type="number" th:field="${student.id}" id="student-id"/>
-		</div>
-		</br>
-		<div>
-			<label for="student-name">Name:</label>
-			<input type="text" th:field="${student.name}" id="student-name"/>
-		</div>
-		</br>
-		<div>
-			<label for="student-gender">Gender:</label>
-			<input type="text" th:field="${student.gender}" id="student-gender"/>
-		</div>
-		</br>
-		<div>
-			<label for="student-birth-date">Date of birth:</label>
-			<input type="date" th:field="${student.birthDate}" id="student-birth-date"/>
-		</div>
-		</br>
-		<div>
-			<label for="student-percentage">Percentage:</label>
-			<input type="number" th:field="${student.percentage}" id="student-percentage"/>
-		</div>
-		</br>
-		<div>
-			<button type="submit" class="button">Submit</button>
-		</div>
-	</div>
+    <div>
+        <div>
+            <label for="student-id">ID:</label>
+            <input type="number" th:field="${student.id}" id="student-id"/>
+        </div>
+        </br>
+        <div>
+            <label for="student-name">Name:</label>
+            <input type="text" th:field="${student.name}" id="student-name"/>
+        </div>
+        </br>
+        <div>
+            <label for="student-gender">Gender:</label>
+            <input type="text" th:field="${student.gender}" id="student-gender"/>
+        </div>
+        </br>
+        <div>
+            <label for="student-birth-date">Date of birth:</label>
+            <input type="date" th:field="${student.birthDate}" id="student-birth-date"/>
+        </div>
+        </br>
+        <div>
+            <label for="student-percentage">Percentage:</label>
+            <input type="number" th:field="${student.percentage}" id="student-percentage"/>
+        </div>
+        </br>
+        <div>
+            <button type="submit" class="button">Submit</button>
+        </div>
+    </div>
 </form>
 </body>
 </html>
