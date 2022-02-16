@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Baeldung - using a datepicker to submit date</title>
+    <meta charset="UTF-8">
+    <title>Baeldung - using a datepicker to submit date</title>
 </head>
 <body>
-	<h1>Student birth date</h1>
-	<p th:text="${#dates.format(student.birthDate, 'dd/MM/yyyy')}"></p>
+<h1>Student birth date</h1>
+<p th:text="${#dates.format(student.birthDate, 'dd/MM/yyyy')}"></p>
 </body>
 </html>
