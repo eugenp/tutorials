@@ -21,7 +21,7 @@ public class HotelRoomJpaMapper {
         Map<UUID, Booking> bookings = jpaModel.getBookings()
             .stream()
             .map(this::fromJpaBooking)
-            .collect(Collectors.toMap(booking -> booking.getUuid(), booking -> booking));
+            .collect(Collectors.toMap(Booking::getUuid, booking -> booking));
         return new HotelRoom(jpaModel.getRoomNumber(), status, bookings);
     }
 
@@ -71,6 +71,6 @@ public class HotelRoomJpaMapper {
             .filter(entry -> entry.getValue() == jpaModelStatus)
             .map(Map.Entry::getKey)
             .findFirst()
-            .get();
+            .orElseThrow();
     }
 }

@@ -36,7 +36,6 @@ public class HotelRoomRestAdapter {
             .map(ConstraintViolation::getMessage)
             .collect(Collectors.joining("; "));
         if (!errorMessage.isBlank()) {
-            System.err.println(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
     }
