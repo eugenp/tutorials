@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+}
+
+description = 'gradle-source-vs-target-compatibility'
+
+group 'com.baeldung'
+
+java {
+    sourceCompatibility = "1.6"
+    targetCompatibility = "1.8"
+}
