@@ -27,7 +27,17 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user1").password("user1Pass").authorities("ROLE_USER").and().withUser("admin").password("adminPass").authorities("ROLE_ADMIN");
+        // @formatter:off
+        auth
+        .inMemoryAuthentication()
+        .withUser("user1")
+        .password("user1Pass")
+        .authorities("ROLE_USER")
+        .and()
+        .withUser("admin")
+        .password("adminPass")
+        .authorities("ROLE_ADMIN");
+        // @formatter:on
     }
 
     @Override
@@ -45,8 +55,7 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
         .and()
         .httpBasic()
         .and()
-        .headers().cacheControl().disable()
-        ;
+        .headers().cacheControl().disable();
         // @formatter:on
     }
 
