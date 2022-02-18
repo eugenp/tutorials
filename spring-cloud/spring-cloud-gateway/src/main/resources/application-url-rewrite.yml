@@ -3,7 +3,7 @@ spring:
     gateway:
       routes:
       - id: rewrite_v1
-        uri: ${rewrite.backend.uri}
+        uri: ${rewrite.backend.uri:http://example.com}
         predicates:
         - Path=/api/v1/customer/**
         filters:

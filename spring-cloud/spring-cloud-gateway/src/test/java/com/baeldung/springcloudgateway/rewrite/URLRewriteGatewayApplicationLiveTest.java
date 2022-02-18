@@ -30,6 +30,7 @@ class URLRewriteGatewayApplicationLiveTest {
     private static HttpServer mockServer;
     private static Logger log = LoggerFactory.getLogger(URLRewriteGatewayApplicationLiveTest.class);
 
+    // Create a running HttpServer that echoes back the request URL.
     private static HttpServer startTestServer() {
 
         try {
@@ -91,4 +92,17 @@ class URLRewriteGatewayApplicationLiveTest {
           });
     }
 
+    @Test
+    void testWhenDslCall_thenRewrite(@Autowired WebTestClient webClient) {
+        webClient.get()
+          .uri("http://localhost:" + localPort + "/api/v2/zip/123456")
+          .exchange()
+          .expectBody()
+          .consumeWith((result) -> {
+              String body = new String(result.getResponseBody());
+              log.info("[I99] body={}", body);
+              assertEquals("/api/v2/123456-NEW", body);
+          });
+    }
+    
 }
