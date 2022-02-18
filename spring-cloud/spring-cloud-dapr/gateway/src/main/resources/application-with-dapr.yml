@@ -1,0 +1,13 @@
+server:
+  port: 3000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: greeting-service
+          uri: http://localhost:4000/
+          predicates:
+            - Path=/**
+          filters:
+          - RewritePath=//?(?<segment>.*), /v1.0/invoke/greeting/method/$\{segment}

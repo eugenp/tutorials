@@ -11,23 +11,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>guava-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <finalName>guava-io</finalName>
@@ -38,9 +22,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-    </properties>
 
 </project>

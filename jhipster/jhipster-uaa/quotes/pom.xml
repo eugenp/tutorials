@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>jhipster-uaa</artifactId>
+        <groupId>com.baeldung.jhipster</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>com.baeldung.jhipster.quotes</groupId>
     <artifactId>quotes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -398,15 +405,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <!-- Force alphabetical order to have a reproducible build -->
-                    <runOrder>alphabetical</runOrder>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -832,7 +830,7 @@
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
     </profiles>
-	
+
     <properties>
         <!-- Build properties -->
         <maven.version>3.0.0</maven.version>
@@ -876,7 +874,6 @@
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
         <jib-maven-plugin.version>0.9.11</jib-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
@@ -909,5 +906,5 @@
 
         <!-- jhipster-needle-maven-property -->
         <zalando.version>0.24.0</zalando.version>
-    </properties>	
+    </properties>
 </project>

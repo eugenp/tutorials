@@ -13,7 +13,7 @@ import java.util.Calendar;
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     @Override
-    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException {
         httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
 
         String jsonPayload = "{\"message\" : \"%s\", \"timestamp\" : \"%s\" }";

@@ -1,15 +1,8 @@
 package com.baeldung.spring.rsocket.server;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-
 import com.baeldung.spring.rsocket.model.MarketData;
 import com.baeldung.spring.rsocket.model.MarketDataRequest;
 import io.rsocket.RSocket;
-import io.rsocket.RSocketFactory;
-import io.rsocket.frame.decoder.PayloadDecoder;
-import io.rsocket.transport.netty.client.TcpClientTransport;
-import java.time.Duration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +16,12 @@ import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.MimeTypeUtils;
+import reactor.util.retry.Retry;
+
+import java.time.Duration;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -81,12 +80,16 @@ public class MarketDataRSocketControllerLiveTest {
         @Bean
         @Lazy
         public RSocket rSocket() {
-            return RSocketFactory.connect()
-                                 .mimeType(MimeTypeUtils.APPLICATION_JSON_VALUE, MimeTypeUtils.APPLICATION_JSON_VALUE)
-                                 .frameDecoder(PayloadDecoder.ZERO_COPY)
-                                 .transport(TcpClientTransport.create(7000))
-                                 .start()
-                                 .block();
+
+            RSocketRequester.Builder builder = RSocketRequester.builder();
+
+            return builder
+                    .rsocketConnector(
+                            rSocketConnector ->
+                                    rSocketConnector.reconnect(Retry.fixedDelay(2, Duration.ofSeconds(2))))
+                    .dataMimeType(MimeTypeUtils.APPLICATION_JSON)
+                    .tcp("localhost", 7000)
+                    .rsocket();
         }
 
         @Bean

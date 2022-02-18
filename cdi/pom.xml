@@ -26,12 +26,6 @@
             <version>${weld-se-core.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
@@ -53,7 +47,6 @@
         <cdi-api.version>2.0.SP1</cdi-api.version>
         <weld-se-core.version>3.0.5.Final</weld-se-core.version>
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
-        <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
 
 </project>

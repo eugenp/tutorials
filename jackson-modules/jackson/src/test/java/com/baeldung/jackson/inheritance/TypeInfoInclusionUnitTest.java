@@ -10,12 +10,18 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 public class TypeInfoInclusionUnitTest {
     @Test
     public void givenTypeInfo_whenAnnotatingGlobally_thenTypesAreCorrectlyRecovered() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.enableDefaultTyping();
+        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
+            .allowIfSubType("com.baeldung.jackson.inheritance")
+            .allowIfSubType("java.util.ArrayList")
+            .build();
+        mapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
 
         TypeInfoStructure.Car car = new TypeInfoStructure.Car("Mercedes-Benz", "S500", 5, 250.0);
         TypeInfoStructure.Truck truck = new TypeInfoStructure.Truck("Isuzu", "NQR", 7500.0);

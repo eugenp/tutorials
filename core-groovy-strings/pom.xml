@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
+            <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -80,7 +80,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
+                        <version>${junit-platform-surefire-provider.version}</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -109,7 +109,6 @@
     </repositories>
 
     <properties>
-        <junit.platform.version>1.0.0</junit.platform.version>
         <groovy.version>2.5.6</groovy.version>
         <groovy-all.version>2.5.6</groovy-all.version>
         <groovy-sql.version>2.5.6</groovy-sql.version>

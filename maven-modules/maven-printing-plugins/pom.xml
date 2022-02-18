@@ -53,7 +53,8 @@
                             <message>
                                 Hello, world
                                 Embed a line break: ${line.separator}
-                                ArtifactId is ${project.artifactId}
+                                ArtifactId is
+                                ${project.artifactId}
                             </message>
                             <level>INFO</level>
                             <toFile>/logs/log-echo.txt</toFile>
@@ -76,7 +77,7 @@
                             <source>
                                 log.info('Test message: {}', 'Hello, World!')
                                 log.info('Embed a line break {}', System.lineSeparator())
-                                log.info('ArtifactId is:  ${project.artifactId}')
+                                log.info('ArtifactId is: ${project.artifactId}')
                                 log.warn('Message only in debug mode')
                             </source>
                         </configuration>

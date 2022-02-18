@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OpenfeignUnitTest {
+public class OpenfeignManualTest {
 
     @Autowired
     private JSONPlaceHolderService jsonPlaceHolderService;

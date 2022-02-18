@@ -97,12 +97,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- ops -->
-        <!-- <dependency> -->
-        <!-- <groupId>com.codahale.metrics</groupId> -->
-        <!-- <artifactId>metrics-core</artifactId> -->
-        <!-- <version>3.0.1</version> -->
-        <!-- </dependency> -->
         <!-- util -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -172,9 +166,8 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <!-- Maven plugins -->
+        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

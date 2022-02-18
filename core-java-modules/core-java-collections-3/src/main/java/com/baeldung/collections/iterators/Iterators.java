@@ -1,16 +1,15 @@
 package com.baeldung.collections.iterators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Source code https://github.com/eugenp/tutorials
- *
- * @author Santosh Thakur
- */
-
 public class Iterators {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Iterators.class);
 
     public static int failFast1() {
         ArrayList<Integer> numbers = new ArrayList<>();
@@ -44,7 +43,7 @@ public class Iterators {
             }
         }
 
-        System.out.println("using iterator's remove method = " + numbers);
+        LOG.debug("using iterator's remove method = {}", numbers);
 
         iterator = numbers.iterator();
         while (iterator.hasNext()) {

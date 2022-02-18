@@ -5,77 +5,77 @@
     <groupId>helloworld</groupId>
     <artifactId>ToDoFunction</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
     <name>ToDoFunction</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
-            <version>1.2.1</version>
+            <version>${aws-lambda-java-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-events</artifactId>
-            <version>3.6.0</version>
+            <version>${aws-lambda-java-events.version}</version>
         </dependency>
         <dependency>
             <groupId>uk.org.webcompere</groupId>
             <artifactId>lightweight-config</artifactId>
-            <version>1.1.0</version>
+            <version>${lightweight-config.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-log4j2</artifactId>
-            <version>1.2.0</version>
+            <version>${aws-lambda-java-log4j2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.13.2</version>
+            <version>${log4j-slf4j-impl.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
-            <version>11.2</version>
+            <version>${feign-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-slf4j</artifactId>
-            <version>11.2</version>
+            <version>${feign-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-gson</artifactId>
-            <version>11.2</version>
+            <version>${feign-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-            <version>5.0.1</version>
+            <version>${guice.version}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>uk.org.webcompere</groupId>
             <artifactId>system-stubs-junit4</artifactId>
-            <version>1.2.0</version>
+            <version>${system-stubs-junit4.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>3.3.0</version>
+            <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.19.0</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -103,6 +103,17 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
+        <aws-lambda-java-events.version>3.6.0</aws-lambda-java-events.version>
+        <lightweight-config.version>1.1.0</lightweight-config.version>
+        <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
+        <log4j-slf4j-impl.version>2.13.2</log4j-slf4j-impl.version>
+        <feign-core.version>11.2</feign-core.version>
+        <guice.version>5.0.1</guice.version>
+        <system-stubs-junit4.version>1.2.0</system-stubs-junit4.version>
+        <mockito-core.version>4.1.0</mockito-core.version>
+        <assertj-core.version>3.19.0</assertj-core.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
 
 </project>

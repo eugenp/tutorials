@@ -24,7 +24,7 @@ public class YahooQuoteManagerImpl implements QuoteManager {
 
         StringBuilder sb = new StringBuilder();
         Currency.getAvailableCurrencies().forEach(currency -> {
-            if (!currency.equals(currency.getCurrencyCode())) {
+            if (!baseCurrency.equals(currency.getCurrencyCode())) {
                 sb.append(baseCurrency).append(currency.getCurrencyCode()).append("=X").append(",");
             }
         });

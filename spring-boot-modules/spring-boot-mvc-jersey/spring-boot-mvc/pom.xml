@@ -8,10 +8,9 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.2</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-mvc-jersey</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>

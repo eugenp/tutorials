@@ -97,29 +97,19 @@
             <version>${derive4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>com.univocity</groupId>
             <artifactId>univocity-parsers</artifactId>
             <version>${univocity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -144,13 +134,6 @@
             <version>${byte-buddy.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <classifier>test</classifier>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <repositories>
@@ -172,12 +155,8 @@
         <spring.version>4.3.8.RELEASE</spring.version>
         <suanshu.version>4.0.0</suanshu.version>
         <derive4j.version>1.1.0</derive4j.version>
-        <assertj.version>3.6.2</assertj.version>
-        <slf4j.version>1.7.25</slf4j.version>
         <awaitility.version>3.0.0</awaitility.version>
         <univocity.version>2.8.4</univocity.version>
-        <kafka.version>2.5.0</kafka.version>
-        <guava.version>29.0-jre</guava.version>
     </properties>
 
 </project>

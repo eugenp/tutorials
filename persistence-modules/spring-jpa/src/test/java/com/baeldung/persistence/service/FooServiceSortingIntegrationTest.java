@@ -15,6 +15,8 @@ import com.baeldung.persistence.model.Bar;
 import com.baeldung.persistence.model.Foo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,6 +27,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @DirtiesContext
 @SuppressWarnings("unchecked")
 public class FooServiceSortingIntegrationTest {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooServiceSortingIntegrationTest.class);
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -37,7 +41,7 @@ public class FooServiceSortingIntegrationTest {
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
+            LOGGER.debug("Name:{}-------Id:{}", foo.getName(), foo.getId());
         }
     }
 
@@ -47,7 +51,7 @@ public class FooServiceSortingIntegrationTest {
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
+            LOGGER.debug("Name:{}-------Id:{}", foo.getName(), foo.getId());
         }
     }
 
@@ -57,7 +61,7 @@ public class FooServiceSortingIntegrationTest {
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
+            LOGGER.debug("Name:{}-------Id:{}", foo.getName(), foo.getId());
         }
     }
 
@@ -67,9 +71,9 @@ public class FooServiceSortingIntegrationTest {
         final Query barJoinQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = barJoinQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
+            LOGGER.debug("Name:{}", foo.getName());
             if (foo.getBar() != null) {
-                System.out.print("-------BarId:" + foo.getBar().getId());
+                LOGGER.debug("-------BarId:{}", foo.getBar().getId());
             }
         }
     }
@@ -80,9 +84,9 @@ public class FooServiceSortingIntegrationTest {
         final Query barQuery = entityManager.createQuery(jql);
         final List<Bar> barList = barQuery.getResultList();
         for (final Bar bar : barList) {
-            System.out.println("Bar Id:" + bar.getId());
+            LOGGER.debug("Bar Id:{}", bar.getId());
             for (final Foo foo : bar.getFooList()) {
-                System.out.println("FooName:" + foo.getName());
+                LOGGER.debug("FooName:{}", foo.getName());
             }
         }
     }
@@ -97,7 +101,7 @@ public class FooServiceSortingIntegrationTest {
         final TypedQuery<Foo> typedQuery = entityManager.createQuery(select);
         final List<Foo> fooList = typedQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName() + "--------Id:" + foo.getId());
+            LOGGER.debug("Name:{}-------Id:{}", foo.getName(), foo.getId());
         }
     }
 
@@ -111,7 +115,7 @@ public class FooServiceSortingIntegrationTest {
         final TypedQuery<Foo> typedQuery = entityManager.createQuery(select);
         final List<Foo> fooList = typedQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
+            LOGGER.debug("Name:{}-------Id:{}", foo.getName(), foo.getId());
         }
     }
 

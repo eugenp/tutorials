@@ -13,6 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private long status;
     private String name;
     private String email;
     
@@ -39,6 +40,14 @@ public class User {
         this.email = email;
     }
 
+    public void setStatus(long status) {
+		this.status = status;
+	}
+    
+    public long getStatus() {
+		return status;
+	}
+    
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", name=" + name + ", email=" + email + '}';

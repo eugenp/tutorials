@@ -21,6 +21,8 @@ eureka:
         instanceId: carapp:${spring.application.instance_id:${random.value}}
 
 spring:
+    main:
+        banner-mode: "off"
     application:
         name: carapp
     jackson:
@@ -37,7 +39,7 @@ spring:
         database-platform: io.github.jhipster.domain.util.FixedH2Dialect
         database: H2
         open-in-view: false
-        show-sql: true
+        show-sql: false
         hibernate:
             ddl-auto: none
             naming:

@@ -18,15 +18,16 @@ public class Travel {
     }
 
     public void generateInitialTravel() {
-        if (travel.isEmpty())
+        if (travel.isEmpty()) {
             new Travel(10);
+        }
         Collections.shuffle(travel);
     }
 
     public void swapCities() {
         int a = generateRandomIndex();
         int b = generateRandomIndex();
-        previousTravel = travel;
+        previousTravel = new ArrayList<>(travel);
         City x = travel.get(a);
         City y = travel.get(b);
         travel.set(a, y);

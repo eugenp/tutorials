@@ -3,7 +3,7 @@
 <configuration scan="true">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="com.car.app" level="DEBUG"/>
+    <logger name="com.car.app" level="INFO"/>
     <logger name="org.hibernate" level="WARN"/>
     <logger name="org.hibernate.ejb.HibernatePersistence" level="OFF"/>
     <logger name="org.apache.catalina.startup.DigesterFactory" level="OFF"/>

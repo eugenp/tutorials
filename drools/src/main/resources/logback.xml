@@ -6,7 +6,8 @@
             </pattern>
         </encoder>
     </appender>
-
+	<logger name="org.kie.api.internal.utils" level="WARN"/>
+	<logger name="org.drools.compiler" level="WARN"/>
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>

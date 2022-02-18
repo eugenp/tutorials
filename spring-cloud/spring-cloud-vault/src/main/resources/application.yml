@@ -1,11 +1,34 @@
 spring:
   application:
     name: fakebank
-    
   datasource:
     url: jdbc:mysql://localhost:3306/fakebank?serverTimezone=GMT-3
-    hikari:      connection-test-query: select 1
+    hikari:
+      connection-test-query: select 1
       idle-timeout: 5000
       max-lifetime: 120000
       maximum-pool-size: 5
       minimum-idle: 5
+  cloud:
+    vault:
+      uri: https://localhost:8200
+      connection-timeout: 5000
+      read-timeout: 15000
+      ssl:
+        trust-store: classpath:/vault.jks
+        trust-store-password: changeit
+      generic:
+        enabled: true
+        application-name: fakebank
+      #      kv:
+      #        enabled: false
+      #        backend: kv
+      #        application-name: fakebank
+      database:
+        enabled: true
+        role: fakebank-accounts-ro
+        backend: database
+        username-property: spring.datasource.username
+        password-property: spring.datasource.password
+  config:
+    import: vault://

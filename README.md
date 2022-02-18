@@ -18,27 +18,33 @@ Java and Spring Tutorials
 
 This project is **a collection of small and focused tutorials** - each covering a single and well defined area of development in the Java ecosystem. 
 A strong focus of these is, of course, the Spring Framework - Spring, Spring Boot and Spring Security. 
-In additional to Spring, the modules here are covering a number of aspects in Java. 
+In addition to Spring, the modules here cover a number of aspects of Java. 
 
 Profile based segregation
 ====================
 
 We are using maven build profiles to segregate the huge list of individual projects we have in our repository.
 
-The projects are broadly divided into 3 list: first, second and heavy. 
+As for now, vast majority of the modules require JDK8 to build and run correctly.
 
-Next, they are segregated further on the basis of tests that we want to execute.
+The projects are broadly divided into 3 lists: first, second and heavy. 
 
-Therefore, we have a total of 6 profiles:
+Next, they are segregated further on the basis of the tests that we want to execute.
 
-| Profile                 | Includes                    | Type of test enabled |
-| ----------------------- | --------------------------- | -------------------- |
-| default-first           | First set of projects       | *UnitTest            |
-| integration-lite-first  | First set of projects       | *IntegrationTest     |
-| default-second          | Second set of projects      | *UnitTest            |
-| integration-lite-second | Second set of projects      | *IntegrationTest     |
-| default-heavy           | Heavy/long running projects | *UnitTest            |
-| integration-heavy       | Heavy/long running projects | *IntegrationTest     |
+Additionally, there are 2 profiles dedicated for JDK9 and above builds.
+
+Therefore, we have a total of 8 profiles:
+
+| Profile                    | Includes                    | Type of test enabled |
+| -------------------------- | --------------------------- | -------------------- |
+| default-first              | First set of projects       | *UnitTest            |
+| integration-lite-first     | First set of projects       | *IntegrationTest     |
+| default-second             | Second set of projects      | *UnitTest            |
+| integration-lite-second    | Second set of projects      | *IntegrationTest     |
+| default-heavy              | Heavy/long running projects | *UnitTest            |
+| integration-heavy          | Heavy/long running projects | *IntegrationTest     |
+| default-jdk9-and-above     | JDK9 and above projects     | *UnitTest            |
+| integration-jdk9-and-above | JDK9 and above projects     | *IntegrationTest     |
 
 Building the project
 ====================
@@ -53,15 +59,22 @@ or if we want to build the entire repository with Integration Tests enabled, we 
 
 `mvn clean install -Pintegration-lite-first,integration-lite-second,integration-heavy`
 
+Analogously, for the JDK9 and above projects the commands are:
+
+`mvn clean install -Pdefault-jdk9-and-above`
+
+and
+
+`mvn clean install -Pintegration-jdk9-and-above`
 
 Building a single module
 ====================
-To build a specific module run the command: `mvn clean install` in the module directory
+To build a specific module, run the command: `mvn clean install` in the module directory.
 
 
 Running a Spring Boot module
 ====================
-To run a Spring Boot module run the command: `mvn spring-boot:run` in the module directory
+To run a Spring Boot module, run the command: `mvn spring-boot:run` in the module directory.
 
 
 Working with the IDE
@@ -81,11 +94,8 @@ To run the integration tests, use the command:
 
 `mvn clean install -Pintegration-lite-second` or 
 
-`mvn clean install -Pintegration-heavy`
+`mvn clean install -Pintegration-heavy` or
+
+`mvn clean install -Pintegration-jdk9-and-above`
 
 depending on the list where our module exists
-
-
-
-
-

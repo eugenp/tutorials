@@ -65,8 +65,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
     </properties>
 

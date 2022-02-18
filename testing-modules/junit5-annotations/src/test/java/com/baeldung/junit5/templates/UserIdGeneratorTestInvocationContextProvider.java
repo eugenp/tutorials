@@ -1,6 +1,15 @@
 package com.baeldung.junit5.templates;
 
-import org.junit.jupiter.api.extension.*;
+import org.junit.jupiter.api.extension.AfterEachCallback;
+import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
+import org.junit.jupiter.api.extension.Extension;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.TestTemplateInvocationContext;
+import org.junit.jupiter.api.extension.TestTemplateInvocationContextProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -9,6 +18,8 @@ import static java.util.Arrays.asList;
 
 public class UserIdGeneratorTestInvocationContextProvider implements TestTemplateInvocationContextProvider {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserIdGeneratorTestInvocationContextProvider.class);
+    
     @Override
     public boolean supportsTestTemplate(ExtensionContext extensionContext) {
         return true;
@@ -44,13 +55,13 @@ public class UserIdGeneratorTestInvocationContextProvider implements TestTemplat
                     new BeforeTestExecutionCallback() {
                         @Override
                         public void beforeTestExecution(ExtensionContext extensionContext) {
-                            System.out.println("BeforeTestExecutionCallback:Disabled context");
+                            LOGGER.debug("BeforeTestExecutionCallback:Disabled context");
                         }
                     }, 
                     new AfterTestExecutionCallback() {
                         @Override
                         public void afterTestExecution(ExtensionContext extensionContext) {
-                            System.out.println("AfterTestExecutionCallback:Disabled context");
+                            LOGGER.debug("AfterTestExecutionCallback:Disabled context");
                         }
                 });
             }
@@ -72,13 +83,13 @@ public class UserIdGeneratorTestInvocationContextProvider implements TestTemplat
                     new BeforeEachCallback() {
                         @Override
                         public void beforeEach(ExtensionContext extensionContext) {
-                            System.out.println("BeforeEachCallback:Enabled context");
+                            LOGGER.debug("BeforeEachCallback:Enabled context");
                         }
                     }, 
                     new AfterEachCallback() {
                         @Override
                         public void afterEach(ExtensionContext extensionContext) {
-                            System.out.println("AfterEachCallback:Enabled context");
+                            LOGGER.debug("AfterEachCallback:Enabled context");
                         }
                     });
             }

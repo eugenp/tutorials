@@ -115,17 +115,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -175,8 +164,6 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <commons-logging.version>1.2</commons-logging.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>

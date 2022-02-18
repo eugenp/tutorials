@@ -1,0 +1,16 @@
+{
+  "name": "Baeldung",
+  "area": "tech blogs",
+  "author": "Eugen",
+  "id": 32134,
+  "topics": [
+    "java",
+    "kotlin",
+    "cs",
+    "linux"
+  ],
+  "address": {
+    "city": "Bucharest",
+    "country": "Romania"
+  }
+}

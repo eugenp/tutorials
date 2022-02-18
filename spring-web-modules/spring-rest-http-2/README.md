@@ -1,6 +1,6 @@
 ## Spring REST HTTP 2
 
-This module contains articles about HTTP in REST APIs with Spring
+This module contains articles about HTTP in REST APIs with Spring.
 
 ### The Course
 The "REST With Spring 2" Classes: http://bit.ly/restwithspring
@@ -10,3 +10,5 @@ The "REST With Spring 2" Classes: http://bit.ly/restwithspring
 - [How to Turn Off Swagger-ui in Production](https://www.baeldung.com/swagger-ui-turn-off-in-production)
 - [Setting a Request Timeout for a Spring REST API](https://www.baeldung.com/spring-rest-timeout)
 - [Long Polling in Spring MVC](https://www.baeldung.com/spring-mvc-long-polling)
+- [Guide to UriComponentsBuilder in Spring](https://www.baeldung.com/spring-uricomponentsbuilder)
+- More articles: [[<-- prev]](../spring-rest-http)

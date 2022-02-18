@@ -3,7 +3,7 @@ package com.baeldung.boot.ddd.event;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -51,7 +51,7 @@ class AggregateEventsIntegrationTest {
             .domainOperation();
 
         // then
-        verifyZeroInteractions(eventHandler);
+        verifyNoInteractions(eventHandler);
     }
 
     @BeforeEach

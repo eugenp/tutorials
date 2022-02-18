@@ -12,20 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <assertj-core.version>3.15.0</assertj-core.version>
-    </properties>
 
 </project>
