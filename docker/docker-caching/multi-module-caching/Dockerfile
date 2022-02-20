@@ -5,17 +5,17 @@ WORKDIR $HOME
 
 ADD pom.xml $HOME
 ADD core/pom.xml $HOME/core/pom.xml
-ADD application/pom.xml $HOME/application/pom.xml
+ADD runner/pom.xml $HOME/runner/pom.xml
 
 RUN mvn -pl core verify --fail-never
 ADD core $HOME/core
 RUN mvn -pl core install
-RUN mvn -pl application verify --fail-never
-ADD application $HOME/application
-RUN mvn -pl core,application package
+RUN mvn -pl runner verify --fail-never
+ADD runner $HOME/runner
+RUN mvn -pl core,runner package
 
 FROM openjdk:8-jdk-alpine
 
-COPY --from=build /usr/app/application/target/application-0.0.1-SNAPSHOT.jar /app/runner.jar
+COPY --from=build /usr/app/runner/target/runner-0.0.1-SNAPSHOT-jar-with-dependencies.jar /app/runner.jar
 
 ENTRYPOINT java -jar /app/runner.jar
