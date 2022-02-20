@@ -81,7 +81,7 @@ class URLRewriteGatewayApplicationLiveTest {
     private int localPort;
 
     @Test
-    void testWhenApiCall_thenRewrite(@Autowired WebTestClient webClient) {
+    void testWhenApiCall_thenRewriteSuccess(@Autowired WebTestClient webClient) {
         webClient.get()
           .uri("http://localhost:" + localPort + "/v1/customer/customer1")
           .exchange()
@@ -94,7 +94,7 @@ class URLRewriteGatewayApplicationLiveTest {
     }
 
     @Test
-    void testWhenDslCall_thenRewrite(@Autowired WebTestClient webClient) {
+    void testWhenDslCall_thenRewriteSuccess(@Autowired WebTestClient webClient) {
         webClient.get()
           .uri("http://localhost:" + localPort + "/v2/zip/123456")
           .exchange()
