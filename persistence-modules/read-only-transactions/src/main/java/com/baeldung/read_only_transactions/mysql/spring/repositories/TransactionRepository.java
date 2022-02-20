@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {
 
     @ReaderDS
-    @Query("Select 1 from TransactionEntity t where t.id = ?1") Integer get(Long id);
+    @Query("Select 1 from TransactionEntity t where t.id = ?1") Long get(Long id);
 
     @Transactional
     default TransactionEntity persist(TransactionEntity transaction)  {
