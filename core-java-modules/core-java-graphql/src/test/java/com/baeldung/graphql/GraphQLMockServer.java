@@ -15,8 +15,6 @@ import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
-import static com.baeldung.graphql.Constants.*;
-
 public class GraphQLMockServer {
 
     public static ClientAndServer mockServer;
@@ -50,7 +48,7 @@ public class GraphQLMockServer {
           .when(
             request()
               .withPath(PATH)
-              .withQueryStringParameter(QUERY_PARAMETER, requestQuery),
+              .withQueryStringParameter("query", requestQuery),
             exactly(1)
           )
           .respond(
@@ -68,7 +66,7 @@ public class GraphQLMockServer {
           .when(
             request()
               .withPath(PATH)
-              .withQueryStringParameter(QUERY_PARAMETER, requestQuery),
+              .withQueryStringParameter("query", requestQuery),
             exactly(1)
           )
           .respond(

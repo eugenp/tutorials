@@ -7,7 +7,9 @@ public class Data {
 
     private List<Book> allBooks;
 
-    public Data() {}
+    public Data() {
+
+    }
 
     public Data(List<Book> allBooks) {
         this.allBooks = allBooks;
