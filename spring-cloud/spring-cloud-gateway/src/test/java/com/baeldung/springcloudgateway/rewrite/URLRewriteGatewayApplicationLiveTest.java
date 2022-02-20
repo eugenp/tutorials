@@ -1,5 +1,6 @@
 package com.baeldung.springcloudgateway.rewrite;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.OutputStream;
@@ -82,7 +83,7 @@ class URLRewriteGatewayApplicationLiveTest {
     @Test
     void testWhenApiCall_thenRewrite(@Autowired WebTestClient webClient) {
         webClient.get()
-          .uri("http://localhost:" + localPort + "/api/v1/customer/customer1")
+          .uri("http://localhost:" + localPort + "/v1/customer/customer1")
           .exchange()
           .expectBody()
           .consumeWith((result) -> {
@@ -95,13 +96,13 @@ class URLRewriteGatewayApplicationLiveTest {
     @Test
     void testWhenDslCall_thenRewrite(@Autowired WebTestClient webClient) {
         webClient.get()
-          .uri("http://localhost:" + localPort + "/api/v2/zip/123456")
+          .uri("http://localhost:" + localPort + "/v2/zip/123456")
           .exchange()
           .expectBody()
           .consumeWith((result) -> {
               String body = new String(result.getResponseBody());
               log.info("[I99] body={}", body);
-              assertEquals("/api/v2/123456-NEW", body);
+              assertTrue(body.matches("/api/zip/123456-\\d{3}"));
           });
     }
     
