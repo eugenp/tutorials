@@ -20,6 +20,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>2.6.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.zaxxer</groupId>
+                    <artifactId>HikariCP</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -73,7 +79,7 @@
 
     <properties>
         <mysql.version>8.0.21</mysql.version>
-        <hikari.version>3.4.5</hikari.version>
+        <hikari.version>4.0.3</hikari.version>
         <hibernate.version>5.6.1.Final</hibernate.version>
     </properties>
 </project>

@@ -57,7 +57,7 @@ public class SpringTransactionReadOnlyIntegrationTest {
     }
 
     @Test
-    void test_spring_read_transaction() {
+    void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactionalReadOnly_thenSpringShouldTakeCareOfTheTransaction() {
         Transaction transaction = service.getTransactionById(1L);
 
         assertNotNull(transaction);

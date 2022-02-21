@@ -11,6 +11,9 @@
 <!--
     <logger name="org.hibernate.SQL" level="DEBUG" />
 -->
+    <logger name="org.hibernate.engine.transaction.internal.TransactionImpl" level="debug"/>
+
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>

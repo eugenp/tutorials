@@ -4,6 +4,8 @@ import com.baeldung.read_only_transactions.h2.Config;
 import com.baeldung.read_only_transactions.h2.Transaction;
 import com.baeldung.read_only_transactions.mysql.spring.ReadOnlyInterception;
 import org.hibernate.Session;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +21,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = JPATransactionIntegrationTest.TestConfig.class, classes = { ReadOnlyInterception.class})
@@ -49,15 +53,16 @@ public class JPATransactionIntegrationTest {
     }
 
     @Test
-    void test_jpa_read_transaction() {
+    void givenAEntityManagerDefinedAsReadOnly_whenCreatingATransaction_thenAReadOnlyTransactionShouldBeCreated() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.unwrap(Session.class).setDefaultReadOnly(true);
         entityManager.getTransaction().begin();
-        entityManager.find(Transaction.class, 1L);
+        Transaction transaction = entityManager.find(Transaction.class, 1L);
         entityManager.getTransaction().commit();
-
         entityManager.unwrap(Session.class).setDefaultReadOnly(false);
+
+        assertNotNull(transaction);
     }
 
 }

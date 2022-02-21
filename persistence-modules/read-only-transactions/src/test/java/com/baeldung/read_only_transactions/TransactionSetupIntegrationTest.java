@@ -7,6 +7,8 @@ import com.baeldung.read_only_transactions.mysql.spring.Config;
 import com.baeldung.read_only_transactions.mysql.spring.ReadOnlyInterception;
 import com.baeldung.read_only_transactions.mysql.spring.entities.TransactionEntity;
 import com.baeldung.read_only_transactions.mysql.spring.repositories.TransactionRepository;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +27,7 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 // Needs to be run with Docker look at the readme file.
 @Disabled
@@ -46,7 +48,7 @@ public class TransactionSetupIntegrationTest {
     private TransactionRepository repository;
 
     @Test
-    void test_query_throughput() {
+    void givenTheDifferentTransactionSetup_whenRunningAThroughputTest_thenWeCanObserveTheSystem() {
         Map<String, Supplier<Long>> jdbcConfigurations = new LinkedHashMap<>();
 
         jdbcConfigurations.put("JPA: Session read only true and autocommit disabled", () -> new MyRepoJPA().runQuery());
@@ -62,7 +64,6 @@ public class TransactionSetupIntegrationTest {
         jdbcConfigurations.put("JDBC: Session read only false and autocommit enabled", () -> new MyRepoJdbc(false, false).runQuery(false, true));
         jdbcConfigurations.put("JDBC: Session read only true and autocommit disabled", () -> new MyRepoJdbc(false, false).runQuery(true, false));
 
-
         jdbcConfigurations.entrySet()
             .stream()
             .flatMap((entry) -> Stream.builder()
@@ -77,15 +78,19 @@ public class TransactionSetupIntegrationTest {
     }
 
     @Test
-    void test_read_only_mode() {
-        repository.get(2L);
+    void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactionalReadOnly_thenSpringShouldTakeCareOfTheTransaction() {
+        final Long id = repository.get(2L);
+
+        assertNotNull(id);
     }
 
     @Test
-    void test_writer_transaction() {
+    void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactional_thenSpringShouldTakeCareOfTheTransaction() {
         TransactionEntity transaction = new TransactionEntity();
         transaction.setName("Persistence test");
         transaction.setUuid(UUID.randomUUID().toString());
-        repository.persist(transaction);
+        transaction = repository.persist(transaction);
+
+        assertNotNull(transaction.getId());
     }
 }
