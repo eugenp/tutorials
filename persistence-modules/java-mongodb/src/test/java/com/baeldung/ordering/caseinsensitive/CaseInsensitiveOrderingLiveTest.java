@@ -7,10 +7,11 @@ import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Sorts;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 import java.util.ArrayList;
@@ -22,16 +23,16 @@ import static com.mongodb.client.model.Aggregates.sort;
 import static com.mongodb.client.model.Sorts.ascending;
 import static org.junit.Assert.assertEquals;
 
-public class CaseInsensitiveOrderingLiveTest {
+@Testcontainers
+class CaseInsensitiveOrderingLiveTest {
 
     private static MongoCollection<Document> userCollections;
 
-    private static MongoDBContainer mongoDBContainer;
+    @Container
+    private static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.0.10"));
 
     @BeforeAll
-    public static void setup() {
-        mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.0.10"));
-        mongoDBContainer.start();
+    private static void setup() {
 
         MongoClient mongoClient = new MongoClient(mongoDBContainer.getContainerIpAddress(), mongoDBContainer.getMappedPort(27017));
         MongoDatabase database = mongoClient.getDatabase("test");
@@ -48,20 +49,15 @@ public class CaseInsensitiveOrderingLiveTest {
         userCollections.insertMany(list);
     }
 
-    @AfterAll
-    public static void tearDown() {
-        mongoDBContainer.stop();
-    }
-
     @Test
-    public void givenMongoCollection_whenUsingFindWithSort_caseIsConsideredByDefault() {
+    void givenMongoCollection_whenUsingFindWithSort_caseIsConsideredByDefault() {
         FindIterable<Document> nameDoc = userCollections.find().sort(ascending("name"));
         MongoCursor<Document> cursor = nameDoc.cursor();
         assertOrdering(cursor, Arrays.asList("Aen", "Ben", "Cen", "aen", "ben", "cen"));
     }
 
     @Test
-    public void givenMongoCollection_whenUsingFindWithSortAndCollation_caseIsNotConsidered() {
+    void givenMongoCollection_whenUsingFindWithSortAndCollation_caseIsNotConsidered() {
         FindIterable<Document> nameDoc = userCollections.find().sort(ascending("name"))
           .collation(Collation.builder().locale("en").build());
         MongoCursor<Document> cursor = nameDoc.cursor();
@@ -69,7 +65,7 @@ public class CaseInsensitiveOrderingLiveTest {
     }
 
     @Test
-    public void givenMongoCollection_whenUsingFindWithSortAndAggregate_caseIsNotConsidered() {
+    void givenMongoCollection_whenUsingFindWithSortAndAggregate_caseIsNotConsidered() {
 
         Bson projectBson = project(
           Projections.fields(
