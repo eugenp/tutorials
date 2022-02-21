@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileToHashMap {
@@ -51,6 +53,26 @@ public class FileToHashMap {
                         map.put(key, value);
                     } else if (DupKeyOption.DISCARD == dupKeyOption) {
                         map.putIfAbsent(key, value);
+                    }
+                });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
+    public static Map<String, List<String>> aggregateByKeys(String filePath) {
+        Map<String, List<String>> map = new HashMap<>();
+        try (Stream<String> lines = Files.lines(Paths.get(filePath))) {
+            lines.filter(line -> line.contains(":"))
+                .forEach(line -> {
+                    String[] keyValuePair = line.split(":", 2);
+                    String key = keyValuePair[0];
+                    String value = keyValuePair[1];
+                    if (map.containsKey(key)) {
+                        map.get(key).add(value);
+                    } else {
+                        map.put(key, Stream.of(value).collect(Collectors.toList()));
                     }
                 });
         } catch (IOException e) {
