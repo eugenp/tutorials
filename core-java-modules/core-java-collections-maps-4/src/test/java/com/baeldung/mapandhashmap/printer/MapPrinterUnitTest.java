@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class MapPrinterTest {
+class MapPrinterUnitTest {
 
     private final MapPrinter mapPrinter = new MapPrinter();
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
