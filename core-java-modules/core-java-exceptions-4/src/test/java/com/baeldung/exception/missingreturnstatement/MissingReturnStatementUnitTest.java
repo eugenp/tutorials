@@ -5,9 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.Map;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 
-public class MissingReturnStatementTest {
+public class MissingReturnStatementUnitTest {
 
     @Test
     public void givenANumber_thenReturnItsPow() {
