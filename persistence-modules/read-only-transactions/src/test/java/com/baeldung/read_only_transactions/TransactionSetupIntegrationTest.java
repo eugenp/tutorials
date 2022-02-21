@@ -7,8 +7,6 @@ import com.baeldung.read_only_transactions.mysql.spring.Config;
 import com.baeldung.read_only_transactions.mysql.spring.ReadOnlyInterception;
 import com.baeldung.read_only_transactions.mysql.spring.entities.TransactionEntity;
 import com.baeldung.read_only_transactions.mysql.spring.repositories.TransactionRepository;
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Disabled
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = TransactionSetupIntegrationTest.TestConfig.class, classes = {ReadOnlyInterception.class})
-public class TransactionSetupIntegrationTest {
+class TransactionSetupIntegrationTest {
 
     static class TestConfig implements ApplicationContextInitializer<GenericApplicationContext> {
         @Override public void initialize(GenericApplicationContext applicationContext) {

@@ -22,8 +22,9 @@ public class RoutingDS extends AbstractRoutingDataSource {
         setTargetDataSources(dataSources);
     }
 
-    @Override protected Object determineCurrentLookupKey() {
-        final String dataSourceMode = ReadOnlyContext.isReadOnly() ? "reader" : "writer";
+    @Override
+    protected Object determineCurrentLookupKey() {
+        String dataSourceMode = ReadOnlyContext.isReadOnly() ? "reader" : "writer";
 
         // Testing data source switch
         //System.out.println("-----------------------------Datasource: "+dataSourceMode+" ---------------------------------");

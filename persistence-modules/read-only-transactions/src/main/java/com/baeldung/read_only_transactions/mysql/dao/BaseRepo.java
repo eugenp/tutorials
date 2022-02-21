@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 
 public abstract class BaseRepo {
+
     protected long execQuery(Consumer<AtomicLong> function) {
         AtomicLong count = new AtomicLong(0);
 

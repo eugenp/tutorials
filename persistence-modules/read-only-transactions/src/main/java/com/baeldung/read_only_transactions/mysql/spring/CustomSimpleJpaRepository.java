@@ -22,7 +22,8 @@ public class CustomSimpleJpaRepository<T, ID> extends SimpleJpaRepository<T, ID>
         super(domainClass, em);
     }
 
-    @Override public T getById(ID id) {
+    @Override
+    public T getById(ID id) {
         //This is only for the throughput test, to ignore case and do not use transactions explicitly neither caching
         entityManager.clear();
         entityManager.unwrap(Session.class).setCacheMode(CacheMode.IGNORE);

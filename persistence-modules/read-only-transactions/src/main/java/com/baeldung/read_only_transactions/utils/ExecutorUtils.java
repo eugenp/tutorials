@@ -7,6 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ExecutorUtils {
 
+    private ExecutorUtils() {}
+
     public static ExecutorService createExecutor(int corePoolSize, int maximumPoolSize) {
         return new ThreadPoolExecutor(
             corePoolSize,
