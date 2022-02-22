@@ -17,6 +17,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
@@ -40,6 +47,7 @@
 
     <properties>
         <spring-boot.version>2.6.1</spring-boot.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
