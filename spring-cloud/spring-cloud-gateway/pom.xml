@@ -177,5 +177,21 @@
                 </plugins>
             </build>
         </profile>
+        
+        <profile>
+            <id>gateway-url-rewrite</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.baeldung.springcloudgateway.rewrite.URLRewriteGatewayApplication</mainClass>
+                            <jvmArguments>-Dspring.profiles.active=url-rewrite</jvmArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>        
     </profiles>
 </project>
