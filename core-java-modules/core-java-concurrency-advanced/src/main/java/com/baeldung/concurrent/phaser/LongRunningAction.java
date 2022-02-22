@@ -16,12 +16,17 @@ class LongRunningAction implements Runnable {
     public void run() {
         System.out.println("This is phase " + ph.getPhase());
         System.out.println("Thread " + threadName + " before long running action");
-        ph.arriveAndAwaitAdvance();
+        
         try {
-            Thread.sleep(20);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        
+        System.out.println("Thread " + threadName + " action completed and waiting for others");
+        ph.arriveAndAwaitAdvance();
+        System.out.println("Thread " + threadName + " proceeding in phase " + ph.getPhase());
+        
         ph.arriveAndDeregister();
     }
 }

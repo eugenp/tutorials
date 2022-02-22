@@ -26,13 +26,20 @@ public class PhaserUnitTest {
         executorService.submit(new LongRunningAction("thread-3", ph));
 
         //then
+        System.out.println("Thread " + Thread.currentThread().getName() + " waiting for others");
         ph.arriveAndAwaitAdvance();
+        System.out.println("Thread " + Thread.currentThread().getName() + " proceeding in phase " + ph.getPhase());
+        
         assertEquals(1, ph.getPhase());
 
         //and
         executorService.submit(new LongRunningAction("thread-4", ph));
         executorService.submit(new LongRunningAction("thread-5", ph));
+        
+        System.out.println("Thread " + Thread.currentThread().getName() + " waiting for others");
         ph.arriveAndAwaitAdvance();
+        System.out.println("Thread " + Thread.currentThread().getName() + " proceeding in phase " + ph.getPhase());
+        
         assertEquals(2, ph.getPhase());
 
 
