@@ -1,4 +1,3 @@
-  
 insert into item (item_id, item_name, item_desc, item_price) values(1,'item One', 'test 1', 35.12);
 
 insert into item (item_id, item_name, item_desc, item_price) values(2,'Pogo stick', 'Pogo stick', 466.12);
