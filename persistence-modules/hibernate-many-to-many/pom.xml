@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-hibernate-5</artifactId>
+    <artifactId>hibernate-many-to-many</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-hibernate-5</name>
+    <name>hibernate-many-to-many</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -45,11 +45,6 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
@@ -99,35 +94,30 @@
             <version>${hsqldb.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-		<dependency>
+        <dependency>
 		    <groupId>jakarta.xml.bind</groupId>
 		    <artifactId>jakarta.xml.bind-api</artifactId>
 		    <version>2.3.2</version>
 		</dependency>		  
-		  <dependency>
-			    <groupId>com.sun.xml.bind</groupId>
-			    <artifactId>jaxb-core</artifactId>
-			    <version>2.3.0.1</version>
-			</dependency>
-			<dependency>
-			    <groupId>javax.xml.bind</groupId>
-			    <artifactId>jaxb-api</artifactId>
-			    <version>2.3.1</version>
-			</dependency>
-			<dependency>
-			    <groupId>com.sun.xml.bind</groupId>
-			    <artifactId>jaxb-impl</artifactId>
-			    <version>2.3.1</version>
-			</dependency>
+		<dependency>
+			 <groupId>com.sun.xml.bind</groupId>
+			 <artifactId>jaxb-core</artifactId>
+			 <version>2.3.0.1</version>
+		</dependency>
+		<dependency>
+			 <groupId>javax.xml.bind</groupId>
+			 <artifactId>jaxb-api</artifactId>
+			 <version>2.3.1</version>
+		</dependency>
+		<dependency>
+			 <groupId>com.sun.xml.bind</groupId>
+			 <artifactId>jaxb-impl</artifactId>
+			 <version>2.3.1</version>
+		</dependency>
     </dependencies>
 
     <properties>
@@ -138,7 +128,6 @@
         <!-- persistence -->
         <hibernate.version>5.2.10.Final</hibernate.version>
         <hibernatesearch.version>5.8.2.Final</hibernatesearch.version>
-        <mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
