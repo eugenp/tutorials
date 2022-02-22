@@ -1,4 +1,4 @@
-package com.baeldung.java9.entries;
+package com.baeldung.entries;
 
 import com.google.common.collect.Maps;
 import org.apache.commons.collections4.KeyValue;

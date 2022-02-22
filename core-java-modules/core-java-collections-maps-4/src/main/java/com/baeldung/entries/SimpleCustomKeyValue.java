@@ -1,14 +1,13 @@
-package com.baeldung.java9.entries;
+package com.baeldung.entries;
 
+import java.util.Map;
 import java.util.Objects;
+import java.util.StringJoiner;
 
-public class SimpleCustomKeyValue<K, V> implements CustomKeyValue<K, V> {
+public class SimpleCustomKeyValue<K, V> implements Map.Entry<K, V> {
 
-    private K key;
+    private final K key;
     private V value;
-
-    public SimpleCustomKeyValue() {
-    }
 
     public SimpleCustomKeyValue(K key, V value) {
         this.key = key;
@@ -26,13 +25,8 @@ public class SimpleCustomKeyValue<K, V> implements CustomKeyValue<K, V> {
     }
 
     @Override
-    public void setKey(K key) {
-        this.key = key;
-    }
-
-    @Override
-    public void setValue(V value) {
-        this.value = value;
+    public V setValue(V value) {
+        return this.value = value;
     }
 
     @Override
@@ -54,10 +48,6 @@ public class SimpleCustomKeyValue<K, V> implements CustomKeyValue<K, V> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("SimpleCustomKeyValue{");
-        sb.append("key=").append(key);
-        sb.append(", value=").append(value);
-        sb.append('}');
-        return sb.toString();
+        return new StringJoiner(", ", SimpleCustomKeyValue.class.getSimpleName() + "[", "]").add("key=" + key).add("value=" + value).toString();
     }
 }
