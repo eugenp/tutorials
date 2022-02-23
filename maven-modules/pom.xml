@@ -22,7 +22,6 @@
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
-        <module>maven-profiles</module>
         <module>maven-properties</module>
         <!-- <module>maven-proxy</module> --> <!-- Not a maven project -->
         <module>maven-unused-dependencies</module>
@@ -34,10 +33,9 @@
         <module>maven-printing-plugins</module>
         <module>maven-builder-plugin</module>
         <module>host-maven-repo-example</module>
-        <module>plugin-management</module>
         <module>maven-surefire-plugin</module>
         <module>maven-parent-pom-resolution</module>
-        <module>maven-dependency</module>    
+        <module>maven-simple</module>
     </modules>
 
     <dependencyManagement>
@@ -56,9 +54,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <properties>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
-    </properties>
 
 </project>

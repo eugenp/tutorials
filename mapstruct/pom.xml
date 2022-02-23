@@ -41,12 +41,6 @@
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>${lombok.mapstruct.binding.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -87,7 +81,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
-        <assertj.version>3.16.1</assertj.version>
     </properties>
 
 </project>

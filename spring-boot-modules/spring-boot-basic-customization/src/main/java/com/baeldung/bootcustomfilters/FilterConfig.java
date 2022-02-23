@@ -15,6 +15,7 @@ public class FilterConfig {
         registrationBean.setFilter(new RequestResponseLoggingFilter());
 
         registrationBean.addUrlPatterns("/users/*");
+        registrationBean.setOrder(2);
 
         return registrationBean;
 

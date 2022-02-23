@@ -26,13 +26,6 @@
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -44,10 +37,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <!-- testing -->
-        <assertj-core.version>3.10.0</assertj-core.version>
-    </properties>
 
 </project>

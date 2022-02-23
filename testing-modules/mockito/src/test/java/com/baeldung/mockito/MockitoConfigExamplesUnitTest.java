@@ -7,8 +7,6 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 import com.baeldung.mockito.MyList;

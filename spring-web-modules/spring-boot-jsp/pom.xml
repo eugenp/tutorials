@@ -92,7 +92,6 @@
     <properties>
         <jstl.version>1.2</jstl.version>
         <spring-boot.version>2.4.4</spring-boot.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>

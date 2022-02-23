@@ -17,13 +17,18 @@
         <dependency>
             <groupId>net.objecthunter</groupId>
             <artifactId>exp4j</artifactId>
-            <version>0.4.8</version>
+            <version>${exp4j.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fathzer</groupId>
             <artifactId>javaluator</artifactId>
-            <version>3.0.3</version>
+            <version>${javaluator.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <exp4j.version>0.4.8</exp4j.version>
+        <javaluator.version>3.0.3</javaluator.version>
+    </properties>
 
 </project>

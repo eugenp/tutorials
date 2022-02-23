@@ -4,7 +4,6 @@ This module contains articles about JSON.
 
 ### Relevant Articles:
 - [Introduction to JSON Schema in Java](https://www.baeldung.com/introduction-to-json-schema-in-java)
-- [A Guide to FastJson](https://www.baeldung.com/fastjson)
 - [Introduction to JSONForms](https://www.baeldung.com/introduction-to-jsonforms)
 - [Introduction to JsonPath](https://www.baeldung.com/guide-to-jayway-jsonpath)
 - [Introduction to JSON-Java (org.json)](https://www.baeldung.com/java-org-json)
@@ -14,3 +13,4 @@ This module contains articles about JSON.
 - [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)
 - [Reducing JSON Data Size](https://www.baeldung.com/json-reduce-data-size)
+- More Articles: [[next -->]](../json-2)

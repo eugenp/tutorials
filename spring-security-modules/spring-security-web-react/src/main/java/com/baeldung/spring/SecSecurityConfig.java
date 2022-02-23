@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -21,11 +22,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off
         auth.inMemoryAuthentication()
-        .withUser("user1").password("user1Pass").roles("USER")
+        .withUser("user1").password("{noop}user1Pass").roles("USER")
         .and()
-        .withUser("user2").password("user2Pass").roles("USER")
+        .withUser("user2").password("{noop}user2Pass").roles("USER")
         .and()
-        .withUser("admin").password("admin0Pass").roles("ADMIN");
+        .withUser("admin").password("{noop}admin0Pass").roles("ADMIN");
         // @formatter:on
     }
 
@@ -33,11 +34,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .csrf().disable()
+        .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
         .authorizeRequests()
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/anonymous*").anonymous()
-        .antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico").permitAll()
+        .antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/rest").permitAll()
         .anyRequest().authenticated()
         .and()
         .formLogin()

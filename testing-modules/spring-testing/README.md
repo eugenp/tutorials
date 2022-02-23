@@ -7,4 +7,3 @@
 - [Using SpringJUnit4ClassRunner with Parameterized](https://www.baeldung.com/springjunit4classrunner-parameterized)
 - [Override Properties in Spring’s Tests](https://www.baeldung.com/spring-tests-override-properties)
 - [A Quick Guide to @DirtiesContext](https://www.baeldung.com/spring-dirtiescontext)
-- [The Spring TestExecutionListener](https://www.baeldung.com/spring-testexecutionlistener)

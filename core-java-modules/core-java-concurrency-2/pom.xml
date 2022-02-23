@@ -16,11 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.googlecode.thread-weaver</groupId>
             <artifactId>threadweaver</artifactId>
             <version>${threadweaver.version}</version>
@@ -31,6 +26,12 @@
             <artifactId>tempus-fugit</artifactId>
             <version>${tempus-fugit.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.googlecode.multithreadedtc</groupId>

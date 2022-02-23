@@ -37,7 +37,7 @@
         <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail</artifactId>
-            <version>1.5.8</version>
+            <version>${greenmail.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -50,6 +50,7 @@
         <httpclient.version>4.5.9</httpclient.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
         <async-http-client.version>2.4.5</async-http-client.version>
+        <greenmail.version>1.5.8</greenmail.version>
     </properties>
 
 </project>

@@ -119,22 +119,6 @@
             <artifactId>okhttp</artifactId>
             <version>${com.squareup.okhttp3.version}</version>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -303,8 +287,6 @@
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <protobuf-java.version>3.1.0</protobuf-java.version>
         <xstream.version>1.4.9</xstream.version>
-        <!-- util -->
-        <guava.version>20.0</guava.version>
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>

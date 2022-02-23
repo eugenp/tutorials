@@ -12,7 +12,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -22,33 +22,9 @@
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-junit-jupiter</artifactId>
             <version>${mockserver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -59,18 +35,6 @@
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
             <version>${jakarta.ws-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>${jaxws-rt.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-ri</artifactId>
-            <version>${jaxws-ri.version}</version>
-            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -105,14 +69,9 @@
     <properties>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
-        <guava.version>29.0-jre</guava.version>
-        <assertj.version>3.17.2</assertj.version>
         <mockserver.version>5.11.1</mockserver.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <jakarta.ws-api.version>3.0.0</jakarta.ws-api.version>
-        <jaxws-rt.version>3.0.0</jaxws-rt.version>
-        <jaxws-ri.version>2.3.1</jaxws-ri.version>
-        <jaxws-maven-plugin.version>2.3.2</jaxws-maven-plugin.version>
+        <jakarta.ws-api.version>3.0.1</jakarta.ws-api.version>
+        <jaxws-maven-plugin.version>3.0.2</jaxws-maven-plugin.version>
     </properties>
 
 </project>

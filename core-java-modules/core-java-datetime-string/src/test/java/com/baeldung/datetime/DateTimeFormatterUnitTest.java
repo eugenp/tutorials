@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.UnsupportedTemporalTypeException;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -158,5 +159,36 @@ public class DateTimeFormatterUnitTest {
     public void shouldExpectAnExceptionIfDateTimeStringNotMatchPattern() {
         DateTimeFormatter zonedFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z");
         ZonedDateTime.from(zonedFormatter.parse("31.07.2016 14:15"));
+    }
+
+    @Test
+    public void shouldPrintFormattedZonedDateTime() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(2021, 02, 15, 0, 0, 0, 0, ZoneId.of("Europe/Paris"));
+        String formattedZonedDateTime = DateTimeFormatter.ISO_INSTANT.format(zonedDateTime);
+        
+        Assert.assertEquals("2021-02-14T23:00:00Z", formattedZonedDateTime);
+    }
+    
+    @Test(expected = UnsupportedTemporalTypeException.class)
+    public void shouldExpectAnExceptionIfInputIsLocalDateTime() {
+        DateTimeFormatter.ISO_INSTANT.format(LocalDate.now());
+    }
+    
+    @Test
+    public void shouldParseZonedDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT.withZone(ZoneId.systemDefault());
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2021-10-01T05:06:20Z", formatter);
+        
+        Assert.assertEquals("2021-10-01T05:06:20Z", DateTimeFormatter.ISO_INSTANT.format(zonedDateTime));
+    }
+    
+    @Test(expected = DateTimeParseException.class)
+    public void shouldExpectAnExceptionIfTimeZoneIsMissing() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2021-11-01T05:06:20Z", DateTimeFormatter.ISO_INSTANT);
+    }
+    
+    @Test(expected = DateTimeParseException.class)
+    public void shouldExpectAnExceptionIfSecondIsMissing() {
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2021-12-02T08:06Z", DateTimeFormatter.ISO_INSTANT);
     }
 }

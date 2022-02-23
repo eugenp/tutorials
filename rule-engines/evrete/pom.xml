@@ -8,10 +8,6 @@
     <version>1.0</version>
     <name>evrete</name>
 
-    <properties>
-        <evrete.version>2.1.04</evrete.version>
-    </properties>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>rule-engines</artifactId>
@@ -32,4 +28,9 @@
             <version>${evrete.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <evrete.version>2.1.04</evrete.version>
+    </properties>
+
 </project>

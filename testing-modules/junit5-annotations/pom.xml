@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
@@ -20,16 +19,6 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
             <version>${junit-platform.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-jupiter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -47,17 +36,10 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
-        <log4j2.version>2.8.2</log4j2.version>
-        <assertj-core.version>3.11.1</assertj-core.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

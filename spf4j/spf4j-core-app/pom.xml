@@ -9,10 +9,9 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung.spf4j</groupId>
+        <artifactId>spf4j</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
