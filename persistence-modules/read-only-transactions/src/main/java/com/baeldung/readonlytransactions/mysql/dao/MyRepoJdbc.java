@@ -1,4 +1,4 @@
-package com.baeldung.read_only_transactions.mysql.dao;
+package com.baeldung.readonlytransactions.mysql.dao;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

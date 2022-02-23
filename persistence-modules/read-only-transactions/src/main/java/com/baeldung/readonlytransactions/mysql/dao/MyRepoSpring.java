@@ -1,6 +1,6 @@
-package com.baeldung.read_only_transactions.mysql.dao;
+package com.baeldung.readonlytransactions.mysql.dao;
 
-import com.baeldung.read_only_transactions.mysql.spring.repositories.TransactionRepository;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
 
 import java.util.SplittableRandom;
 

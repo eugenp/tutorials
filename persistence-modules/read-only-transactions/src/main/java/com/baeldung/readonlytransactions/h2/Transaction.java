@@ -1,4 +1,4 @@
-package com.baeldung.read_only_transactions.mysql.entities;
+package com.baeldung.readonlytransactions.h2;
 
 import javax.persistence.*;
 

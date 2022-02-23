@@ -1,6 +1,6 @@
-package com.baeldung.read_only_transactions.mysql.dao;
+package com.baeldung.readonlytransactions.mysql.dao;
 
-import com.baeldung.read_only_transactions.utils.ExecutorUtils;
+import com.baeldung.readonlytransactions.utils.ExecutorUtils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

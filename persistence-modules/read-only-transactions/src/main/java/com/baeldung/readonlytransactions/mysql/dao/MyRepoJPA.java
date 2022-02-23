@@ -1,6 +1,6 @@
-package com.baeldung.read_only_transactions.mysql.dao;
+package com.baeldung.readonlytransactions.mysql.dao;
 
-import com.baeldung.read_only_transactions.mysql.entities.Transaction;
+import com.baeldung.readonlytransactions.mysql.entities.Transaction;
 import org.hibernate.Session;
 
 import javax.persistence.EntityManager;

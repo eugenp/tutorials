@@ -1,4 +1,4 @@
-package com.baeldung.read_only_transactions.utils;
+package com.baeldung.readonlytransactions.utils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;

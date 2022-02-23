@@ -1,8 +1,8 @@
-package com.baeldung.read_only_transactions.mysql.spring;
+package com.baeldung.readonlytransactions.mysql.spring;
 
-import com.baeldung.read_only_transactions.mysql.dao.MyRepoSpring;
-import com.baeldung.read_only_transactions.mysql.spring.entities.TransactionEntity;
-import com.baeldung.read_only_transactions.mysql.spring.repositories.TransactionRepository;
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
+import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;

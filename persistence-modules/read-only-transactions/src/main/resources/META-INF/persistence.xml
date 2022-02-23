@@ -7,7 +7,7 @@
 
     <persistence-unit name="jpa-unit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.baeldung.read_only_transactions.mysql.entities.Transaction</class>
+        <class>com.baeldung.readonlytransactions.mysql.entities.Transaction</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

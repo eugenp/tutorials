@@ -1,4 +1,4 @@
-package com.baeldung.read_only_transactions.h2;
+package com.baeldung.readonlytransactions.h2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

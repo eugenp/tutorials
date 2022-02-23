@@ -1,12 +1,12 @@
-package com.baeldung.read_only_transactions;
+package com.baeldung.readonlytransactions;
 
-import com.baeldung.read_only_transactions.mysql.dao.MyRepoJPA;
-import com.baeldung.read_only_transactions.mysql.dao.MyRepoJdbc;
-import com.baeldung.read_only_transactions.mysql.dao.MyRepoSpring;
-import com.baeldung.read_only_transactions.mysql.spring.Config;
-import com.baeldung.read_only_transactions.mysql.spring.ReadOnlyInterception;
-import com.baeldung.read_only_transactions.mysql.spring.entities.TransactionEntity;
-import com.baeldung.read_only_transactions.mysql.spring.repositories.TransactionRepository;
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoJPA;
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoJdbc;
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
+import com.baeldung.readonlytransactions.mysql.spring.Config;
+import com.baeldung.readonlytransactions.mysql.spring.ReadOnlyInterception;
+import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

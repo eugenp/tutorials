@@ -1,4 +1,4 @@
-package com.baeldung.read_only_transactions.mysql.spring.entities;
+package com.baeldung.readonlytransactions.mysql.spring.entities;
 
 import javax.persistence.*;
 

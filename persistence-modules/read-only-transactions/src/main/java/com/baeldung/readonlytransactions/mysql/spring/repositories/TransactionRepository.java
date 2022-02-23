@@ -1,7 +1,7 @@
-package com.baeldung.read_only_transactions.mysql.spring.repositories;
+package com.baeldung.readonlytransactions.mysql.spring.repositories;
 
-import com.baeldung.read_only_transactions.mysql.spring.ReaderDS;
-import com.baeldung.read_only_transactions.mysql.spring.entities.TransactionEntity;
+import com.baeldung.readonlytransactions.mysql.spring.ReaderDS;
+import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

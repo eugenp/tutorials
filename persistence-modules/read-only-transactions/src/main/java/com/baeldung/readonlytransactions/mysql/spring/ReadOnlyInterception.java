@@ -1,4 +1,4 @@
-package com.baeldung.read_only_transactions.mysql.spring;
+package com.baeldung.readonlytransactions.mysql.spring;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -1,6 +1,5 @@
-package com.baeldung.read_only_transactions.h2;
+package com.baeldung.readonlytransactions.h2;
 
-import com.baeldung.read_only_transactions.mysql.spring.entities.TransactionEntity;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
