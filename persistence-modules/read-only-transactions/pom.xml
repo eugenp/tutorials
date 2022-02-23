@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.6.1</version>
+            <version>${spring-boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.zaxxer</groupId>
@@ -31,14 +31,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.6.1</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.3.13</version>
+            <version>${spring-test.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -63,14 +63,14 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -81,5 +81,9 @@
         <mysql.version>8.0.21</mysql.version>
         <hikari.version>4.0.3</hikari.version>
         <hibernate.version>5.6.1.Final</hibernate.version>
+        <spring-boot.version>2.6.1</spring-boot.version>
+        <spring-test.version>5.3.13</spring-test.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 </project>
