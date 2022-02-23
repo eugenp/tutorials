@@ -13,6 +13,18 @@
         <artifactId>spring-cloud-zuul</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -44,6 +56,7 @@
         <rate.limit.version>2.2.0.RELEASE</rate.limit.version>
         <spring-boot.version>2.4.7</spring-boot.version>
         <spring-cloud-dependencies.version>2020.0.4</spring-cloud-dependencies.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
