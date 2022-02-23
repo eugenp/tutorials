@@ -1,7 +1,10 @@
 package com.baeldung.persistence.service;
 
+import com.baeldung.persistence.hibernate.FooSortingPersistenceIntegrationTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,6 +19,8 @@ import com.baeldung.spring.config.PersistenceTestConfig;
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class ParentServicePersistenceIntegrationTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ParentServicePersistenceIntegrationTest.class);
+    
     @Autowired
     private IParentService service;
 
@@ -37,11 +42,11 @@ public class ParentServicePersistenceIntegrationTest {
         final Parent parentEntity = new Parent(childEntity);
         service.create(parentEntity);
 
-        System.out.println("Child = " + childService.findOne(childEntity.getId()));
-        System.out.println("Child - parent = " + childService.findOne(childEntity.getId()).getParent());
+        LOGGER.debug("Child = {}", childService.findOne(childEntity.getId()));
+        LOGGER.debug("Child - parent = {}", childService.findOne(childEntity.getId()).getParent());
 
-        System.out.println("Parent = " + service.findOne(parentEntity.getId()));
-        System.out.println("Parent - child = " + service.findOne(parentEntity.getId()).getChild());
+        LOGGER.debug("Parent = {}", service.findOne(parentEntity.getId()));
+        LOGGER.debug("Parent - child = {}", service.findOne(parentEntity.getId()).getChild());
     }
 
     @Test(expected = DataIntegrityViolationException.class)

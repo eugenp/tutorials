@@ -1,22 +1,15 @@
 package com.baeldung.poi.excel;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import jxl.read.biff.BiffException;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.baeldung.poi.excel.ExcelPOIHelper;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-import org.junit.Before;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 public class ExcelIntegrationTest {
 

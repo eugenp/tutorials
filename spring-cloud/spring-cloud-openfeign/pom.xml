@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.cloud</groupId>
     <artifactId>spring-cloud-openfeign</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-openfeign</name>
     <description>OpenFeign project for Spring Boot</description>
 
@@ -49,7 +48,14 @@
         <dependency>
             <groupId>io.github.openfeign.form</groupId>
             <artifactId>feign-form-spring</artifactId>
-            <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,7 +65,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <spring-cloud.version>2021.0.0</spring-cloud.version>
     </properties>
 
 </project>

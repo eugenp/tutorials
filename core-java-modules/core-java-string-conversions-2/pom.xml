@@ -16,22 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.ibm.icu</groupId>
             <artifactId>icu4j</artifactId>
             <version>${icu.version}</version>
@@ -46,20 +30,7 @@
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
-
-    <properties>
-        <icu.version>64.2</icu.version>
-        <assertj.version>3.12.2</assertj.version>
-        <commons-text.version>1.9</commons-text.version>
-        <guava.version>30.1.1-jre</guava.version>
-    </properties>
 
     <build>
         <finalName>core-java-string-conversions-2</finalName>
@@ -70,5 +41,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <icu.version>64.2</icu.version>
+        <commons-text.version>1.9</commons-text.version>
+    </properties>
 
 </project>

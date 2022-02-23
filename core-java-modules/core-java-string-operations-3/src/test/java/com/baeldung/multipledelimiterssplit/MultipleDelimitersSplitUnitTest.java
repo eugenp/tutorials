@@ -17,7 +17,7 @@ public class MultipleDelimitersSplitUnitTest {
     @Test
     public void givenString_whenSplittingByMultipleDelimitersWithRegEx_thenStringSplit() {
         String example = "Mary;Thomas:Jane-Kate";
-        String[] names = example.split(";|:|-");
+        String[] names = example.split("[;:-]");
         String[] expectedNames = new String[]{"Mary", "Thomas", "Jane", "Kate"};
         Assertions.assertEquals(4, names.length);
         Assertions.assertArrayEquals(expectedNames, names);
@@ -38,7 +38,7 @@ public class MultipleDelimitersSplitUnitTest {
         String example = "Mary;Thomas:Jane-Kate";
         String[] expectedArray = new String[]{"Mary", "Thomas", "Jane", "Kate"};
         Iterable<String> expected = Arrays.asList(expectedArray);
-        Iterable<String> names = Splitter.on(Pattern.compile(";|:|-")).split(example);
+        Iterable<String> names = Splitter.on(Pattern.compile("[;:-]")).split(example);
         Assertions.assertEquals(4, Iterators.size(names.iterator()));
         Assertions.assertIterableEquals(expected, names);
     }
@@ -48,7 +48,7 @@ public class MultipleDelimitersSplitUnitTest {
         String example = "Mary;Thomas:Jane-Kate";
         String[] expectedArray = new String[]{"Mary", "Thomas", "Jane", "Kate"};
         Iterable<String> expected = Arrays.asList(expectedArray);
-        Iterable<String> names = Splitter.onPattern(";|:|-").split(example);
+        Iterable<String> names = Splitter.onPattern("[;:-]").split(example);
         Assertions.assertEquals(4, Iterators.size(names.iterator()));
         Assertions.assertIterableEquals(expected, names);
     }

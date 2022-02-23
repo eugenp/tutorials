@@ -16,8 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
-
+@DataJpaTest(showSql = false)
 @Sql(scripts = "/test-aggregation-data.sql")
 public class SpringDataAggregateIntegrationTest {
 

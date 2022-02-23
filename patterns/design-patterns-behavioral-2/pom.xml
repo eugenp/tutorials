@@ -14,17 +14,4 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <assertj.version>3.12.2</assertj.version>
-    </properties>
-
 </project>

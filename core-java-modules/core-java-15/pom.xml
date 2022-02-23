@@ -22,22 +22,9 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
     </dependencies>
 
@@ -67,7 +54,6 @@
 
     <properties>
         <maven.compiler.release>15</maven.compiler.release>
-        <assertj.version>3.17.2</assertj.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>

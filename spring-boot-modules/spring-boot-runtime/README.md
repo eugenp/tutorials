@@ -8,7 +8,5 @@ This module contains articles about administering a Spring Boot runtime
  - [Logging HTTP Requests with Spring Boot Actuator HTTP Tracing](https://www.baeldung.com/spring-boot-actuator-http)
  - [Spring Boot Embedded Tomcat Logs](https://www.baeldung.com/spring-boot-embedded-tomcat-logs) 
  - [Project Configuration with Spring](https://www.baeldung.com/project-configuration-with-spring)
- - [CORS with Spring](https://www.baeldung.com/spring-cors)
  - [Spring – Log Incoming Requests](https://www.baeldung.com/spring-http-logging)
  - [How to Configure Spring Boot Tomcat](https://www.baeldung.com/spring-boot-configure-tomcat)
- - [Max-HTTP-Header-Size in Spring Boot 2](https://www.baeldung.com/spring-boot-max-http-header-size)

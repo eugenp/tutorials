@@ -12,5 +12,5 @@ This module contains articles about string operations.
 - [L-Trim and R-Trim Alternatives in Java](https://www.baeldung.com/java-trim-alternatives)
 - [Encode a String to UTF-8 in Java](https://www.baeldung.com/java-string-encode-utf-8)
 - [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
-- [Convert Hex to ASCII in Java](https://www.baeldung.com/java-convert-hex-to-ascii) #remove additional readme file
+- [Convert Hex to ASCII in Java](https://www.baeldung.com/java-convert-hex-to-ascii)
 - More articles: [[<-- prev]](../core-java-string-operations)

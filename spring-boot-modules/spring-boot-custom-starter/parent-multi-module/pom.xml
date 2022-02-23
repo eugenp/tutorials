@@ -8,6 +8,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-custom-starter</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <modules>
         <module>library</module>
         <module>application</module>

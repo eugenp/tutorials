@@ -34,7 +34,7 @@ public class EmployeeController {
     public @ResponseBody Employee getEmployeeById(@PathVariable final long Id) {
         return employeeMap.get(Id);
     }
-    
+
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String submit(@ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
         if (result.hasErrors()) {
@@ -65,7 +65,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employeesContacts/{contactNumber}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Employee>> getEmployeeBycontactNumber(@MatrixVariable(required = true) final String contactNumber) {
+    public ResponseEntity<List<Employee>> getEmployeeByContactNumber(@MatrixVariable(required = true) final String contactNumber) {
         final List<Employee> employeesList = new ArrayList<Employee>();
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();
@@ -84,9 +84,9 @@ public class EmployeeController {
 
     @RequestMapping(value = "employeeArea/{workingArea}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Employee>> getEmployeeByWorkingArea(@MatrixVariable final Map<String, LinkedList<String>> matrixVars) {
-        final List<Employee> employeesList = new ArrayList<Employee>();
-        final LinkedList<String> workingArea = matrixVars.get("workingArea");
+    public ResponseEntity<List<Employee>> getEmployeeByWorkingArea(@MatrixVariable final Map<String, List<String>> matrixVars) {
+        final List<Employee> employeesList = new ArrayList<>();
+        final Collection<String> workingArea = matrixVars.get("workingArea");
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();
             for (final String area : workingArea) {

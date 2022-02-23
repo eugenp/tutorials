@@ -11,7 +11,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>guava-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -27,25 +26,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <!-- test scoped -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
@@ -65,10 +45,6 @@
     </build>
 
     <properties>
-        <!-- util -->
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
     </properties>
 

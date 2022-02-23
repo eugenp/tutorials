@@ -68,7 +68,8 @@
     </dependencies>
 
     <properties>
-        <!-- Remove this explicit override once more recent version of spring-security-oauth2-autoconfigure is available -->
+        <!-- Remove this explicit override once more recent version of spring-security-oauth2-autoconfigure 
+            is available -->
         <spring-boot.version>2.5.2</spring-boot.version>
         <start-class>com.baeldung.oauth2.SpringOAuthApplication</start-class>
     </properties>

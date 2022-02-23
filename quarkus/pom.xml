@@ -16,8 +16,8 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of junit:junit in the classpath. hence forcing the
-            latest 4.13.2 available version for junit5 compatibility -->
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of 
+                junit:junit in the classpath. hence forcing the latest 4.13.2 available version for junit5 compatibility -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -36,6 +36,12 @@
                 <version>${quarkus.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -92,6 +98,11 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -172,6 +183,7 @@
     <properties>
         <quarkus.version>1.7.0.Final</quarkus.version>
         <lombok.version>1.18.6</lombok.version>
+        <mockito.version>3.3.0</mockito.version>
     </properties>
 
 </project>

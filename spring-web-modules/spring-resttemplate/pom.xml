@@ -108,21 +108,6 @@
             <version>${com.squareup.okhttp3.version}</version>
         </dependency>
         <!-- test scoped -->
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -273,8 +258,6 @@
 
     <properties>
         <xstream.version>1.4.9</xstream.version>
-        <!-- util -->
-        <guava.version>20.0</guava.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>

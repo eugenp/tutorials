@@ -25,7 +25,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -128,7 +127,6 @@
         <node.version>v14.18.0</node.version>
         <yarn.version>v1.12.1</yarn.version>
         <spring-boot.version>2.4.4</spring-boot.version>
-        <h2.version>1.4.200</h2.version>
         <javafaker.version>1.0.2</javafaker.version>
     </properties>
 

@@ -43,6 +43,11 @@
             <artifactId>java-driver-query-builder</artifactId>
             <version>${datastax-cassandra.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+            <version>${netty-transport-version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -50,6 +55,7 @@
         <cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
         <cassandra-unit.version>3.1.1.0</cassandra-unit.version>
         <datastax-cassandra.version>4.1.0</datastax-cassandra.version>
+        <netty-transport-version>4.1.71.Final</netty-transport-version>
     </properties>
 
 </project>

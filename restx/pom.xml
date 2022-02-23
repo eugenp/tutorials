@@ -113,12 +113,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -153,6 +147,7 @@
 
     <properties>
         <restx.version>0.35-rc4</restx.version>
+        <assertj.version>1.6.0</assertj.version> <!-- restx requires such an old version -->
     </properties>
 
 </project>

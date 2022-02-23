@@ -1,6 +1,7 @@
 package com.baeldung.spring.data.solr.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +12,8 @@ import com.baeldung.spring.data.solr.model.Product;
 
 public interface ProductRepository extends SolrCrudRepository<Product, String> {
 
+    public Optional<Product> findById(String id);
+    
     public List<Product> findByName(String name);
 
     @Query("id:*?0* OR name:*?0*")

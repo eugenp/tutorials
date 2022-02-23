@@ -40,17 +40,6 @@
             <version>${colt.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${org.assertj.core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.github.dpaukov</groupId>
             <artifactId>combinatoricslib3</artifactId>
             <version>${combinatoricslib3.version}</version>
@@ -65,8 +54,6 @@
 
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <org.assertj.core.version>3.9.0</org.assertj.core.version>
-        <guava.version>27.0.1-jre</guava.version>
         <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
         <ejml.version>0.38</ejml.version>
         <nd4j.version>1.0.0-beta4</nd4j.version>

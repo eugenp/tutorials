@@ -16,21 +16,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>3.6.1</version>
+            <version>${commons-math3.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -46,7 +34,7 @@
     </build>
 
     <properties>
-        <assertj.version>3.12.2</assertj.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
     </properties>
 
 </project>

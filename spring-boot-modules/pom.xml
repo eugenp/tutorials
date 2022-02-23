@@ -19,9 +19,11 @@
     <modules>
         <module>spring-boot</module>
         <module>spring-boot-1</module>
+        <module>spring-boot-2</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
+        <module>spring-boot-annotations-2</module>
         <module>spring-boot-artifacts</module>
         <module>spring-boot-artifacts-2</module>
         <module>spring-boot-autoconfiguration</module>
@@ -34,7 +36,6 @@
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
         <module>spring-boot-disable-logging</module>
-        <module>spring-boot-camel</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
         <module>spring-boot-custom-starter</module>
@@ -46,10 +47,12 @@
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <module>spring-boot-keycloak</module>
+        <!-- <module>spring-boot-keycloak</module> --> <!-- Fixing under JAVA-8271 -->
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
+        <module>spring-boot-libraries-comparison</module>
         <module>spring-boot-logging-log4j2</module>
+        <module>spring-boot-multiple-datasources</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
@@ -68,11 +71,12 @@
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
         <module>spring-boot-swagger-jwt</module>
+        <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-testing</module>
+        <module>spring-boot-testing-2</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
-        <module>spring-boot-react</module>
         <module>spring-boot-validation</module>
     </modules>
 
@@ -94,20 +98,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-    </properties>
 
 </project>

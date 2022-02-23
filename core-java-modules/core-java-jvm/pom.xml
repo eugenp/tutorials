@@ -12,25 +12,13 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -69,16 +57,128 @@
             <artifactId>jol-core</artifactId>
             <version>${jol-core.version}</version>
         </dependency>
+        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <assertj.version>3.6.1</assertj.version>
-        <!-- instrumentation -->
         <javaassist.version>3.27.0-GA</javaassist.version>
         <sun.tools.version>1.8.0</sun.tools.version>
         <jol-core.version>0.10</jol-core.version>
         <asm.version>8.0.1</asm.version>
         <bcel.version>6.5.0</bcel.version>
     </properties>
+    <profiles>
+        <!-- java instrumentation profiles to build jars -->
+        <profile>
+            <id>buildAgentLoader</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>agentLoader</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                            <mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/application/AgentLoader.class</include>
+                                        <include>com/baeldung/instrumentation/application/Launcher.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>buildApplication</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>application</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                            <mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/application/MyAtm.class</include>
+                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class</include>
+                                        <include>com/baeldung/instrumentation/application/Launcher.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>buildAgent</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>agent</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                            <mainClass>com.baeldung.instrumentation.application.Launcher</mainClass>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/agent/AtmTransformer.class</include>
+                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

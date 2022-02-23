@@ -4,15 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-basic-customization-2</artifactId>
-    <packaging>jar</packaging>
     <name>spring-boot-basic-customization-2</name>
+    <packaging>jar</packaging>
     <description>Module For Spring Boot Basic Customization 2</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
