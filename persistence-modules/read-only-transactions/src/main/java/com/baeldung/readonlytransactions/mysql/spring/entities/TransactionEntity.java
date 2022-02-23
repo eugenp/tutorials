@@ -14,8 +14,6 @@ public class TransactionEntity {
 
     private String uuid;
 
-    public TransactionEntity() {}
-
     public Long getId() {
         return id;
     }

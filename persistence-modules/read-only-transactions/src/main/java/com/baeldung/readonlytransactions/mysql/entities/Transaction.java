@@ -14,8 +14,6 @@ public class Transaction {
 
     private String uuid;
 
-    public Transaction() {}
-
     public Long getId() {
         return id;
     }

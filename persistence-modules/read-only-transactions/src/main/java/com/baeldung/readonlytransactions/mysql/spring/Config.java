@@ -60,8 +60,8 @@ public class Config {
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "validate");
 
-        //properties.setProperty("hibernate.show_sql", "true");
-        //properties.setProperty("hibernate.format_sql", "true");
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.format_sql", "true");
 
         managerFactoryBean.setJpaProperties(properties);
         managerFactoryBean.afterPropertiesSet();
