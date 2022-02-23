@@ -9,7 +9,7 @@ class RockPaperScissorsGame {
         PAPER("paper"),
         SCISSORS("scissors");
 
-        private final String value;
+        private String value;
 
         Move(String value) {
             this.value = value;
