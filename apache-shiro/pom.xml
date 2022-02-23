@@ -47,7 +47,7 @@
 
     <properties>
         <apache-shiro-core-version>1.5.3</apache-shiro-core-version>
-        <log4j-version>1.2.17</log4j-version>
+        <log4j.version>2.17.1</log4j.version>
     </properties>
 
 </project>

@@ -13,7 +13,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -71,7 +70,7 @@
 
     <properties>
         <junit.platform.version>1.5.0</junit.platform.version>
-        <log4j2.version>2.12.0</log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
         <testcontainers.version>1.11.4</testcontainers.version>
         <postgresql.version>42.2.6</postgresql.version>
         <selenium-remote-driver.version>3.141.59</selenium-remote-driver.version>

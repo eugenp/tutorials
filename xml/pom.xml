@@ -29,7 +29,6 @@
             <artifactId>jericho-html</artifactId>
             <version>${jericho.version}</version>
         </dependency>
-
         <!-- xml libraries -->
         <dependency>
             <groupId>org.dom4j</groupId>

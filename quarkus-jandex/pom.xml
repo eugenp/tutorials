@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.quarkus</groupId>
     <artifactId>quarkus-jandex</artifactId>
@@ -15,8 +16,10 @@
         <module>hello-sender-undetected</module>
         <module>hello-app</module>
     </modules>
+
     <dependencyManagement>
-        <!-- The Quarkus BOM is only available since Quarkus 2.x, and it's dependencies and plugins are compiled with JDK11, so using JDK8 will result in java.lang.UnsupportedClassVersionError -->
+        <!-- The Quarkus BOM is only available since Quarkus 2.x, and it's dependencies and plugins are 
+            compiled with JDK11, so using JDK8 will result in java.lang.UnsupportedClassVersionError -->
         <dependencies>
             <dependency>
                 <groupId>${quarkus.platform.group-id}</groupId>

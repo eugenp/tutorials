@@ -151,7 +151,6 @@
     <profiles>
         <profile>
             <id>integration-lite-first</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -168,7 +167,6 @@
         </profile>
         <profile>
             <id>integration-lite-second</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -195,4 +193,5 @@
         <reactor-test.version>3.2.10.RELEASE</reactor-test.version>
         <wiremock-standalone.version>2.26.0</wiremock-standalone.version>
     </properties>
+
 </project>

@@ -17,10 +17,6 @@ import com.baeldung.security.CustomLogoutSuccessHandler;
 @Profile("https")
 public class ChannelSecSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public ChannelSecSecurityConfig() {
-        super();
-    }
-
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         // @formatter:off

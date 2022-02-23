@@ -4,16 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-openapi-generator-api-client</artifactId>
-    <packaging>jar</packaging>
-    <name>spring-openapi-generator-api-client</name>
     <version>0.0.1-SNAPSHOT</version>
+    <name>spring-openapi-generator-api-client</name>
+    <packaging>jar</packaging>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>OpenAPI Java</description>
+
     <scm>
         <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
         <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
         <url>https://github.com/openapitools/openapi-generator</url>
     </scm>
+
     <licenses>
         <license>
             <name>Unlicense</name>
@@ -21,6 +23,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
     <developers>
         <developer>
             <name>OpenAPI-Generator Contributors</name>

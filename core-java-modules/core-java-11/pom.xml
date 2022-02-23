@@ -13,7 +13,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -98,7 +97,6 @@
     <properties>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
-        <guava.version>27.1-jre</guava.version>
         <uberjar.name>benchmarks</uberjar.name>
         <eclipse.collections.version>10.0.0</eclipse.collections.version>
         <shade.plugin.version>3.2.4</shade.plugin.version>

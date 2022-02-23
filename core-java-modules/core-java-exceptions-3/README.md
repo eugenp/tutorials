@@ -9,3 +9,4 @@
 - [Explanation of ClassCastException in Java](https://www.baeldung.com/java-classcastexception)
 - [NoSuchFieldError in Java](https://www.baeldung.com/java-nosuchfielderror)
 - [IllegalAccessError in Java](https://www.baeldung.com/java-illegalaccesserror)
+- [Working with (Unknown Source) Stack Traces in Java](https://www.baeldung.com/java-unknown-source-stack-trace)
