@@ -5,11 +5,14 @@ import com.baeldung.readonlytransactions.mysql.dao.MyRepoJdbc;
 import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
 import com.baeldung.readonlytransactions.mysql.spring.Config;
 import com.baeldung.readonlytransactions.mysql.spring.ReadOnlyInterception;
+import com.baeldung.readonlytransactions.mysql.spring.RoutingDS;
 import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
 import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
@@ -39,6 +42,8 @@ class TransactionSetupIntegrationTest {
         }
     }
 
+    private static final Logger logger = LoggerFactory.getLogger(TransactionSetupIntegrationTest.class);
+
     @Autowired
     private MyRepoSpring repoSpring;
 
@@ -64,15 +69,18 @@ class TransactionSetupIntegrationTest {
 
         jdbcConfigurations.entrySet()
             .stream()
-            .flatMap((entry) -> Stream.builder()
-                .add(entry.getKey()+" Total: "+ entry.getValue().get())
-                .add(entry.getKey()+" Total: "+ entry.getValue().get())
-                .add(entry.getKey()+" Total: "+ entry.getValue().get())
-                .build())
+            .flatMap(entry -> {
+                Stream.Builder<String> builder = Stream.builder();
+                return builder
+                        .add(entry.getKey() + " Total: " + entry.getValue().get())
+                        .add(entry.getKey() + " Total: " + entry.getValue().get())
+                        .add(entry.getKey() + " Total: " + entry.getValue().get())
+                .build();
+            })
             .collect(toList())
             .stream()
-            .peek(o -> System.out.println("--------------------------------------------------"))
-            .forEach(System.out::println);
+            .peek(o -> logger.info("--------------------------------------------------"))
+            .forEach(logger::info);
     }
 
     @Test

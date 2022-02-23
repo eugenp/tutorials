@@ -1,5 +1,7 @@
 package com.baeldung.readonlytransactions.mysql.spring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import javax.sql.DataSource;
@@ -8,12 +10,9 @@ import java.util.Map;
 
 public class RoutingDS extends AbstractRoutingDataSource {
 
-    private DataSource writer;
-    private DataSource reader;
+    private static final Logger logger = LoggerFactory.getLogger(RoutingDS.class);
 
     RoutingDS(DataSource writer, DataSource reader) {
-        this.reader = reader;
-        this.writer = writer;
 
         Map<Object, Object> dataSources = new HashMap<>();
         dataSources.put("writer", writer);
@@ -27,7 +26,7 @@ public class RoutingDS extends AbstractRoutingDataSource {
         String dataSourceMode = ReadOnlyContext.isReadOnly() ? "reader" : "writer";
 
         // Testing data source switch
-        //System.out.println("-----------------------------Datasource: "+dataSourceMode+" ---------------------------------");
+        logger.debug("-----------------------------Datasource: {} ---------------------------------", dataSourceMode);
 
         return dataSourceMode;
     }

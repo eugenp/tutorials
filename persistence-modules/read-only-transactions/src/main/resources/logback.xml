@@ -8,11 +8,9 @@
             </pattern>
         </encoder>
     </appender>
-<!--
-    <logger name="org.hibernate.SQL" level="DEBUG" />
--->
-    <logger name="org.hibernate.engine.transaction.internal.TransactionImpl" level="debug"/>
 
+    <logger name="org.hibernate.SQL" level="DEBUG" />
+    <logger name="org.hibernate.engine.transaction.internal.TransactionImpl" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
