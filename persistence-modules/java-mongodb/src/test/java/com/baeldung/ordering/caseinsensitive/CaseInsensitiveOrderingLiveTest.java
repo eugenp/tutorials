@@ -53,7 +53,15 @@ class CaseInsensitiveOrderingLiveTest {
     void givenMongoCollection_whenUsingFindWithSort_caseIsConsideredByDefault() {
         FindIterable<Document> nameDoc = userCollections.find().sort(ascending("name"));
         MongoCursor<Document> cursor = nameDoc.cursor();
-        assertOrdering(cursor, Arrays.asList("Aen", "Ben", "Cen", "aen", "ben", "cen"));
+
+        List<String> expectedNamesOrdering = Arrays.asList("Aen", "Ben", "Cen", "aen", "ben", "cen");
+        List<String> actualNamesOrdering = new ArrayList<>();
+        while (cursor.hasNext()) {
+            Document document = cursor.next();
+            actualNamesOrdering.add(document.get("name").toString());
+        }
+
+        assertEquals(expectedNamesOrdering, actualNamesOrdering);
     }
 
     @Test
@@ -61,7 +69,15 @@ class CaseInsensitiveOrderingLiveTest {
         FindIterable<Document> nameDoc = userCollections.find().sort(ascending("name"))
           .collation(Collation.builder().locale("en").build());
         MongoCursor<Document> cursor = nameDoc.cursor();
-        assertOrdering(cursor, Arrays.asList("aen", "Aen", "ben", "Ben", "cen", "Cen"));
+        List<String> expectedNamesOrdering = Arrays.asList("aen", "Aen", "ben", "Ben", "cen", "Cen");
+        List<String> actualNamesOrdering = new ArrayList<>();
+        while (cursor.hasNext()) {
+            Document document = cursor.next();
+            actualNamesOrdering.add(document.get("name").toString());
+        }
+
+        assertEquals(expectedNamesOrdering, actualNamesOrdering);
+
     }
 
     @Test
@@ -78,16 +94,15 @@ class CaseInsensitiveOrderingLiveTest {
 
         MongoCursor<Document> cursor = nameDoc.cursor();
 
-        assertOrdering(cursor, Arrays.asList("aen", "Aen", "ben", "Ben", "cen", "Cen"));
-    }
-
-    private void assertOrdering(MongoCursor<Document> cursor, List<String> expectedNamesOrdering) {
+        List<String> expectedNamesOrdering = Arrays.asList("aen", "Aen", "ben", "Ben", "cen", "Cen");
         List<String> actualNamesOrdering = new ArrayList<>();
         while (cursor.hasNext()) {
             Document document = cursor.next();
             actualNamesOrdering.add(document.get("name").toString());
         }
+
         assertEquals(expectedNamesOrdering, actualNamesOrdering);
     }
+
 
 }
