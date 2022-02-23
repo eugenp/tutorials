@@ -7,23 +7,23 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import javax.persistence.EntityManager;
 
-public class CustomSimpleJpaRepository<T, ID> extends SimpleJpaRepository<T, ID> {
+public class CustomSimpleJpaRepository<ENTITY, ID> extends SimpleJpaRepository<ENTITY, ID> {
 
     private EntityManager entityManager;
-    private JpaEntityInformation<T, ?> entityInformation;
+    private JpaEntityInformation<ENTITY, ?> entityInformation;
 
-    public CustomSimpleJpaRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager) {
+    public CustomSimpleJpaRepository(JpaEntityInformation<ENTITY, ?> entityInformation, EntityManager entityManager) {
         super(entityInformation, entityManager);
         this.entityManager = entityManager;
         this.entityInformation = entityInformation;
     }
 
-    public CustomSimpleJpaRepository(Class<T> domainClass, EntityManager em) {
+    public CustomSimpleJpaRepository(Class<ENTITY> domainClass, EntityManager em) {
         super(domainClass, em);
     }
 
     @Override
-    public T getById(ID id) {
+    public ENTITY getById(ID id) {
         //This is only for the throughput test, to ignore case and do not use transactions explicitly neither caching
         entityManager.clear();
         entityManager.unwrap(Session.class).setCacheMode(CacheMode.IGNORE);
