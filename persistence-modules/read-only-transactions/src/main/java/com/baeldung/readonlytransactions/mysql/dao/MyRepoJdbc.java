@@ -37,7 +37,7 @@ public class MyRepoJdbc extends BaseRepo {
 
     public long runQuery(Boolean autoCommit, Boolean readOnly) {
         try {
-            return execQuery((count) ->  runSql(count, autoCommit, readOnly));
+            return execQuery(count ->  runSql(count, autoCommit, readOnly));
         } finally {
             ds.close();
         }

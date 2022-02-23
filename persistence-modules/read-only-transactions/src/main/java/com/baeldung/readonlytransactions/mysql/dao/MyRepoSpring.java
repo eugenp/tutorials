@@ -15,7 +15,7 @@ public class MyRepoSpring extends BaseRepo {
     private final SplittableRandom random = new SplittableRandom();
 
     public long runQuery() {
-        return this.execQuery((count) -> {
+        return execQuery(count -> {
             repository.get(1L + random.nextLong(0, 1000000));
             count.incrementAndGet();
         });
