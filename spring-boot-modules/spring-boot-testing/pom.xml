@@ -14,6 +14,18 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -131,6 +143,7 @@
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <redis.version>0.7.2</redis.version>
         <spring-boot.version>2.5.0</spring-boot.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

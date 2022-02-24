@@ -13,6 +13,18 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -138,6 +150,7 @@
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
         <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
