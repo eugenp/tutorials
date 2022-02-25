@@ -459,6 +459,7 @@
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
+                <module>javax-servlets-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
@@ -943,6 +944,7 @@
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
+                <module>javax-servlets-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
@@ -1343,7 +1345,8 @@
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
-                 <module>spring-boot-modules/spring-boot-cassandre</module>
+		 <module>spring-boot-modules/spring-boot-cassandre</module>
+		 <module>spring-boot-modules/spring-boot-camel</module>	 
                  <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
@@ -1400,7 +1403,8 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-vs-springboot</module>
                 <module>quarkus-jandex</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
+		<module>spring-boot-modules/spring-boot-cassandre</module>
+		<module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
