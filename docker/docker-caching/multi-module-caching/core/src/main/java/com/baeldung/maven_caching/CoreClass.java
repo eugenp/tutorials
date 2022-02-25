@@ -4,11 +4,11 @@ import com.google.common.io.Files;
 
 public class CoreClass {
 
-    public String method(){
+    public String method() {
         return "Hello from core module!!";
     }
 
-    public String dependencyMethod(){
+    public String dependencyMethod() {
         return Files.simplifyPath("/home/app/test");
     }
 }
