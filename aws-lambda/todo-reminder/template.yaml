@@ -20,3 +20,9 @@ Resources:
         Variables:
           PARAM1: VALUE
           ENV_NAME: !Ref EnvironmentName
+      Events:
+        ScheduledEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0/10 * * * ? *)
+            Enabled: True
