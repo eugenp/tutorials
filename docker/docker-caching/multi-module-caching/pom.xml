@@ -5,8 +5,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>multi-module-caching</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>maven-caching</name>
-    <description>maven-caching</description>
+    <description>Multi-module Maven caching example</description>
     <packaging>pom</packaging>
 
     <dependencyManagement>
