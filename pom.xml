@@ -400,7 +400,6 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
-                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -432,7 +431,6 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -483,8 +481,8 @@
                 <module>kubernetes</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-		<module>language-interop</module>
-		<module>libraries-2</module>
+                <module>language-interop</module>
+                <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -520,12 +518,12 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in http://team.baeldung.com/browse/BAEL-20604 -->
+                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in https://team.baeldung.com/browse/JAVA-10335 -->
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
+                <module>netty</module>
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -886,7 +884,6 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
-                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -917,7 +914,6 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -1005,12 +1001,12 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in http://team.baeldung.com/browse/BAEL-20604 -->
+                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in https://team.baeldung.com/browse/JAVA-10335 -->
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
+                <module>netty</module>
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -1200,7 +1196,6 @@
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
-<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
@@ -1342,12 +1337,15 @@
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/multimodulemavenproject</module>
+                 <module>ddd-modules</module>
+                 <module>httpclient-2</module>
+                 <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
-		 <module>spring-boot-modules/spring-boot-cassandre</module>
-		 <module>spring-boot-modules/spring-boot-camel</module>	 
+                 <module>spring-boot-modules/spring-boot-cassandre</module>
+                 <module>spring-boot-modules/spring-boot-camel</module>	 
                  <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
@@ -1401,12 +1399,15 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>ddd-modules</module>
+                <module>httpclient-2</module>
+                <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-vs-springboot</module>
                 <module>quarkus-jandex</module>
-		<module>spring-boot-modules/spring-boot-cassandre</module>
-		<module>spring-boot-modules/spring-boot-camel</module>
+                <module>spring-boot-modules/spring-boot-cassandre</module>
+                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
             </modules>
         </profile>
@@ -1474,7 +1475,6 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <h2.version>1.4.200</h2.version>
