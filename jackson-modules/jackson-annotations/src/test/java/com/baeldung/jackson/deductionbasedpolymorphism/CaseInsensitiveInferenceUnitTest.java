@@ -1,11 +1,11 @@
-package com.baeldung.jackson.deduction_based_polymorphism;
+package com.baeldung.jackson.deductionbasedpolymorphism;
 
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.junit.jupiter.api.Test;
 
-import static com.baeldung.jackson.deduction_based_polymorphism.JsonStringFormatterUtil.formatJson;
+import static com.baeldung.jackson.deductionbasedpolymorphism.JsonStringFormatterUtil.formatJson;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;

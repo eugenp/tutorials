@@ -1,4 +1,4 @@
-package com.baeldung.jackson.deduction_based_polymorphism;
+package com.baeldung.jackson.deductionbasedpolymorphism;
 
 public class JsonStringFormatterUtil {
 

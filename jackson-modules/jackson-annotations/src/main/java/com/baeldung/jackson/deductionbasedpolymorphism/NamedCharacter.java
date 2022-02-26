@@ -1,4 +1,4 @@
-package com.baeldung.jackson.deduction_based_polymorphism;
+package com.baeldung.jackson.deductionbasedpolymorphism;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
