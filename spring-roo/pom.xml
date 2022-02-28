@@ -625,6 +625,7 @@
         <bootstrap.ie10-viewport-bug-workaround.version>1.0.3</bootstrap.ie10-viewport-bug-workaround.version>
         <querydsl-processor.version>2.0.0.RELEASE</querydsl-processor.version>
         <olap4j.version>1.2.0</olap4j.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

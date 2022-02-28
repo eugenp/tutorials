@@ -36,7 +36,6 @@
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
         <module>spring-boot-disable-logging</module>
-        <module>spring-boot-camel</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
         <module>spring-boot-custom-starter</module>
