@@ -1,7 +1,7 @@
 package com.baeldung.hibernate.manytomany;
 
-import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,60 +23,66 @@ import com.baeldung.manytomany.util.HibernateUtil;
  * Configured in: manytomany.cfg.xml
  */
 public class HibernateManyToManyAnnotationMainIntegrationTest {
-    private static SessionFactory sessionFactory;
+	private static SessionFactory sessionFactory;
 
-    private Session session;
+	private Session session;
 
-    @BeforeClass
-    public static void beforeTests() {
-        sessionFactory = HibernateUtil.getSessionFactory();
-    }
+	@BeforeClass
+	public static void beforeTests() {
+		sessionFactory = HibernateUtil.getSessionFactory();
+	}
 
-    @Before
-    public void setUp() {
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-    }
+	@Before
+	public void setUp() {
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+	}
 
-    @Test
-    public void givenData_whenInsert_thenCreatesMtoMrelationship() {
-        String[] employeeData = { "Peter Oven", "Allan Norman" };
-        String[] projectData = { "IT Project", "Networking Project" };
-        Set<Project> projects = new HashSet<Project>();
-
-        for (String proj : projectData) {
-            projects.add(new Project(proj));
-        }
-
-        for (String emp : employeeData) {
-            Employee employee = new Employee(emp.split(" ")[0], emp.split(" ")[1]);
-            assertEquals(0, employee.getProjects().size());
-            employee.setProjects(projects);
-            session.persist(employee);
-            assertNotNull(employee);
-        }
-    }
-
-    @Test
+	@Test
     public void givenSession_whenRead_thenReturnsMtoMdata() {
+		prepareData();
+       	@SuppressWarnings("unchecked")
+		List<Employee> employeeList = session.createQuery("FROM Employee").list();
         @SuppressWarnings("unchecked")
-        List<Employee> employeeList = session.createQuery("FROM Employee").list();
+		List<Project> projectList = session.createQuery("FROM Project").list();
         assertNotNull(employeeList);
+        assertNotNull(projectList);
+        assertEquals(2, employeeList.size());
+        assertEquals(2, projectList.size());
+        
         for(Employee employee : employeeList) {
             assertNotNull(employee.getProjects());
         }
+        for(Project project : projectList) {
+            assertNotNull(project.getEmployees());
+        }
     }
 
-    @After
-    public void tearDown() {
-        session.getTransaction()
-            .commit();
-        session.close();
-    }
+	private void prepareData() {
+		String[] employeeData = { "Peter Oven", "Allan Norman" };
+		String[] projectData = { "IT Project", "Networking Project" };
+		Set<Project> projects = new HashSet<Project>();
 
-    @AfterClass
-    public static void afterTests() {
-        sessionFactory.close();
-    }
+		for (String proj : projectData) {
+			projects.add(new Project(proj));
+		}
+
+		for (String emp : employeeData) {
+			Employee employee = new Employee(emp.split(" ")[0], emp.split(" ")[1]);
+			employee.setProjects(projects);
+			session.persist(employee);
+		}
+	}
+	
+	@After
+	public void tearDown() {
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@AfterClass
+	public static void afterTests() {
+		sessionFactory.close();
+	}
 
 }
