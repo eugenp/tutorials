@@ -18,6 +18,7 @@ public class TransactionService {
 
     @Transactional(readOnly = true)
     public Transaction getTransactionById(long id) {
-        return entityManagerFactory.createEntityManager().find(Transaction.class, id);
+        return entityManagerFactory.createEntityManager()
+            .find(Transaction.class, id);
     }
 }

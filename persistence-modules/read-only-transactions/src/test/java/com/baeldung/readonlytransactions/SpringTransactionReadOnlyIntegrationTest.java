@@ -1,9 +1,7 @@
 package com.baeldung.readonlytransactions;
 
-import com.baeldung.readonlytransactions.h2.Config;
-import com.baeldung.readonlytransactions.h2.Transaction;
-import com.baeldung.readonlytransactions.h2.TransactionConfig;
-import com.baeldung.readonlytransactions.h2.TransactionService;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,19 +14,24 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import com.baeldung.readonlytransactions.h2.Config;
+import com.baeldung.readonlytransactions.h2.Transaction;
+import com.baeldung.readonlytransactions.h2.TransactionConfig;
+import com.baeldung.readonlytransactions.h2.TransactionService;
+
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = SpringTransactionReadOnlyIntegrationTest.TestConfig.class, classes = { TransactionService.class})
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = SpringTransactionReadOnlyIntegrationTest.TestConfig.class, classes = { TransactionService.class })
 class SpringTransactionReadOnlyIntegrationTest {
 
     static class TestConfig implements ApplicationContextInitializer<GenericApplicationContext> {
-        @Override public void initialize(GenericApplicationContext applicationContext) {
-            final AnnotatedBeanDefinitionReader beanDefinitionReader = new AnnotatedBeanDefinitionReader(applicationContext);
+        @Override
+        public void initialize(GenericApplicationContext applicationContext) {
+            AnnotatedBeanDefinitionReader beanDefinitionReader = new AnnotatedBeanDefinitionReader(applicationContext);
 
             beanDefinitionReader.register(Config.class);
             beanDefinitionReader.register(TransactionConfig.class);
@@ -45,15 +48,19 @@ class SpringTransactionReadOnlyIntegrationTest {
     @BeforeEach
     void setUp() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.createQuery("DELETE FROM Transaction").executeUpdate();
+        entityManager.getTransaction()
+            .begin();
+        entityManager.createQuery("DELETE FROM Transaction")
+            .executeUpdate();
 
-        final Transaction transaction = new Transaction();
+        Transaction transaction = new Transaction();
         transaction.setName("Test 1");
-        transaction.setUuid(UUID.randomUUID().toString());
+        transaction.setUuid(UUID.randomUUID()
+            .toString());
 
         entityManager.merge(transaction);
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction()
+            .commit();
     }
 
     @Test

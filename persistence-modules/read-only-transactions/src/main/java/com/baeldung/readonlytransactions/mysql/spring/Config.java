@@ -1,10 +1,5 @@
 package com.baeldung.readonlytransactions.mysql.spring;
 
-import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
-import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
-import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -15,9 +10,16 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
+import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackageClasses = Config.class, enableDefaultTransactions = false, repositoryBaseClass = CustomSimpleJpaRepository.class)
@@ -52,7 +54,8 @@ public class Config {
 
         LocalContainerEntityManagerFactoryBean managerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         managerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-        managerFactoryBean.setPackagesToScan(TransactionEntity.class.getPackage().getName());
+        managerFactoryBean.setPackagesToScan(TransactionEntity.class.getPackage()
+            .getName());
         managerFactoryBean.setDataSource(dataSource);
 
         Properties properties = new Properties();

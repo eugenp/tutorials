@@ -1,16 +1,18 @@
 package com.baeldung.readonlytransactions.h2;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 public class Config {
@@ -32,7 +34,8 @@ public class Config {
 
         LocalContainerEntityManagerFactoryBean managerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         managerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-        managerFactoryBean.setPackagesToScan(Config.class.getPackage().getName());
+        managerFactoryBean.setPackagesToScan(Config.class.getPackage()
+            .getName());
         managerFactoryBean.setDataSource(dataSource);
 
         Properties properties = new Properties();

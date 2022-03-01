@@ -15,11 +15,13 @@ public class MyRepoJdbc extends BaseRepo {
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) { throw new RuntimeException(e); }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private final HikariDataSource ds;
-    private final SplittableRandom random = new SplittableRandom();
+    private HikariDataSource ds;
+    private SplittableRandom random = new SplittableRandom();
 
     public MyRepoJdbc(boolean readOnly, boolean autocommit) {
         HikariConfig config = new HikariConfig();
@@ -37,7 +39,7 @@ public class MyRepoJdbc extends BaseRepo {
 
     public long runQuery(Boolean autoCommit, Boolean readOnly) {
         try {
-            return execQuery(count ->  runSql(count, autoCommit, readOnly));
+            return execQuery(count -> runSql(count, autoCommit, readOnly));
         } finally {
             ds.close();
         }
@@ -55,7 +57,7 @@ public class MyRepoJdbc extends BaseRepo {
             if (readOnly != null)
                 connect.setReadOnly(readOnly);
 
-            statement.setLong(1, 1L+random.nextLong(0,  100000));
+            statement.setLong(1, 1L + random.nextLong(0, 100000));
             ResultSet resultSet = statement.executeQuery();
 
             if (autoCommit != null && !autoCommit)
@@ -63,6 +65,7 @@ public class MyRepoJdbc extends BaseRepo {
 
             count.incrementAndGet();
             resultSet.close();
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 }

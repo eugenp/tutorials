@@ -6,4 +6,5 @@ import java.lang.annotation.RetentionPolicy;
 
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ReaderDS { }
+public @interface ReaderDS {
+}

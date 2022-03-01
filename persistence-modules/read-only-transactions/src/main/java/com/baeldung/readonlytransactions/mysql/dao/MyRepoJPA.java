@@ -1,18 +1,20 @@
 package com.baeldung.readonlytransactions.mysql.dao;
 
-import com.baeldung.readonlytransactions.mysql.entities.Transaction;
 import org.hibernate.Session;
+
+import com.baeldung.readonlytransactions.mysql.entities.Transaction;
+
+import java.util.SplittableRandom;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.util.SplittableRandom;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class MyRepoJPA extends BaseRepo {
 
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa-unit");
-    private final SplittableRandom random = new SplittableRandom();
+    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa-unit");
+    private SplittableRandom random = new SplittableRandom();
 
     public long runQuery() {
         return execQuery(this::runSql);

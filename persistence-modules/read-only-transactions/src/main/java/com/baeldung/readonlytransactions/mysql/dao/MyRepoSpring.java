@@ -6,13 +6,12 @@ import java.util.SplittableRandom;
 
 public class MyRepoSpring extends BaseRepo {
 
+    private SplittableRandom random = new SplittableRandom();
     private TransactionRepository repository;
 
     public MyRepoSpring(TransactionRepository repository) {
         this.repository = repository;
     }
-
-    private final SplittableRandom random = new SplittableRandom();
 
     public long runQuery() {
         return execQuery(count -> {

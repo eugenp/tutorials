@@ -7,16 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class ExecutorUtils {
 
-    private ExecutorUtils() {}
+    private ExecutorUtils() {
+    }
 
     public static ExecutorService createExecutor(int corePoolSize, int maximumPoolSize) {
-        return new ThreadPoolExecutor(
-            corePoolSize,
-            maximumPoolSize,
-            0L,
-            TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<>(),
-            new ThreadPoolExecutor.DiscardOldestPolicy()
-        );
+        return new ThreadPoolExecutor(corePoolSize, maximumPoolSize, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(), new ThreadPoolExecutor.DiscardOldestPolicy());
     }
 }

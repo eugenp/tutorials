@@ -1,13 +1,8 @@
 package com.baeldung.readonlytransactions;
 
-import com.baeldung.readonlytransactions.mysql.dao.MyRepoJPA;
-import com.baeldung.readonlytransactions.mysql.dao.MyRepoJdbc;
-import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
-import com.baeldung.readonlytransactions.mysql.spring.Config;
-import com.baeldung.readonlytransactions.mysql.spring.ReadOnlyInterception;
-import com.baeldung.readonlytransactions.mysql.spring.RoutingDS;
-import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
-import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
+import static java.util.stream.Collectors.toList;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,23 +16,29 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoJPA;
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoJdbc;
+import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
+import com.baeldung.readonlytransactions.mysql.spring.Config;
+import com.baeldung.readonlytransactions.mysql.spring.ReadOnlyInterception;
+import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 // Needs to be run with Docker look at the readme file.
 @Disabled
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = TransactionSetupIntegrationTest.TestConfig.class, classes = {ReadOnlyInterception.class})
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = TransactionSetupIntegrationTest.TestConfig.class, classes = { ReadOnlyInterception.class })
 class TransactionSetupIntegrationTest {
 
     static class TestConfig implements ApplicationContextInitializer<GenericApplicationContext> {
-        @Override public void initialize(GenericApplicationContext applicationContext) {
+        @Override
+        public void initialize(GenericApplicationContext applicationContext) {
             new AnnotatedBeanDefinitionReader(applicationContext).register(Config.class);
         }
     }
@@ -71,11 +72,13 @@ class TransactionSetupIntegrationTest {
             .stream()
             .flatMap(entry -> {
                 Stream.Builder<String> builder = Stream.builder();
-                return builder
-                        .add(entry.getKey() + " Total: " + entry.getValue().get())
-                        .add(entry.getKey() + " Total: " + entry.getValue().get())
-                        .add(entry.getKey() + " Total: " + entry.getValue().get())
-                .build();
+                return builder.add(entry.getKey() + " Total: " + entry.getValue()
+                        .get())
+                    .add(entry.getKey() + " Total: " + entry.getValue()
+                        .get())
+                    .add(entry.getKey() + " Total: " + entry.getValue()
+                        .get())
+                    .build();
             })
             .collect(toList())
             .stream()
@@ -85,7 +88,7 @@ class TransactionSetupIntegrationTest {
 
     @Test
     void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactionalReadOnly_thenSpringShouldTakeCareOfTheTransaction() {
-        final Long id = repository.get(2L);
+        Long id = repository.get(2L);
 
         assertNotNull(id);
     }
@@ -94,7 +97,8 @@ class TransactionSetupIntegrationTest {
     void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactional_thenSpringShouldTakeCareOfTheTransaction() {
         TransactionEntity transaction = new TransactionEntity();
         transaction.setName("Persistence test");
-        transaction.setUuid(UUID.randomUUID().toString());
+        transaction.setUuid(UUID.randomUUID()
+            .toString());
         transaction = repository.persist(transaction);
 
         assertNotNull(transaction.getId());

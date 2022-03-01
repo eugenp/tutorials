@@ -26,7 +26,8 @@ public class CustomSimpleJpaRepository<ENTITY, ID> extends SimpleJpaRepository<E
     public ENTITY getById(ID id) {
         //This is only for the throughput test, to ignore case and do not use transactions explicitly neither caching
         entityManager.clear();
-        entityManager.unwrap(Session.class).setCacheMode(CacheMode.IGNORE);
+        entityManager.unwrap(Session.class)
+            .setCacheMode(CacheMode.IGNORE);
         return entityManager.find(entityInformation.getJavaType(), id);
     }
 }
