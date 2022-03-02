@@ -70,6 +70,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <eclipse.birt.runtime.version>4.8.0</eclipse.birt.runtime.version>
         <log4j.version>1.2.17</log4j.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

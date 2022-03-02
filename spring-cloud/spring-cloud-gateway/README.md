@@ -9,3 +9,4 @@ This module contains articles about Spring Cloud Gateway
 - [Spring Cloud Gateway Routing Predicate Factories](https://www.baeldung.com/spring-cloud-gateway-routing-predicate-factories)
 - [Spring Cloud Gateway WebFilter Factories](https://www.baeldung.com/spring-cloud-gateway-webfilter-factories)
 - [Using Spring Cloud Gateway with OAuth 2.0 Patterns](https://www.baeldung.com/spring-cloud-gateway-oauth2)
+- [URL Rewriting With Spring Cloud Gateway](https://www.baeldung.com/spring-cloud-gateway-url-rewriting)
