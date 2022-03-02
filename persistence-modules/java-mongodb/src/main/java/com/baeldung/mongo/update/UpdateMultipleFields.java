@@ -11,26 +11,25 @@ import com.mongodb.client.result.UpdateResult;
 
 public class UpdateMultipleFields {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		//
-	    // Connect to cluster
-	    //
+        //
+        // Connect to cluster
+        //
 
-		MongoClient mongoClient = new MongoClient("localhost", 27007);
-		MongoDatabase database = mongoClient.getDatabase("baeldung");
-		MongoCollection<Document> collection = database.getCollection("employee");
+        MongoClient mongoClient = new MongoClient("localhost", 27007);
+        MongoDatabase database = mongoClient.getDatabase("baeldung");
+        MongoCollection<Document> collection = database.getCollection("employee");
 
-		//
-		// Update query
-		//
+        //
+        // Update query
+        //
 
-		UpdateResult updateResult = collection.updateMany(Filters.eq("employee_id", 794875),
-				Updates.combine(Updates.set("department_id", 4), Updates.set("job", "Sales Manager")));
+        UpdateResult updateResult = collection.updateMany(Filters.eq("employee_id", 794875), Updates.combine(Updates.set("department_id", 4), Updates.set("job", "Sales Manager")));
 
-		System.out.println("updateResult:- " + updateResult);
-		System.out.println("updateResult:- " + updateResult.getModifiedCount());
+        System.out.println("updateResult:- " + updateResult);
+        System.out.println("updateResult:- " + updateResult.getModifiedCount());
 
-	}
+    }
 
 }
