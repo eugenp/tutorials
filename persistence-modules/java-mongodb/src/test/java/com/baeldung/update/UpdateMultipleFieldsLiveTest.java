@@ -27,7 +27,7 @@ public class UpdateMultipleFieldsLiveTest {
             db = mongoClient.getDatabase("baeldung");
             collection = db.getCollection("employee");
 
-            collection.insertOne(Document.parse("{'employee_id':794875,'employee_name': 'David smith','job': 'Sales Representative','department_id': 2,'salary': 20000,'hire_date': NumberLong(\"1643969311817\")}"));
+            collection.insertOne(Document.parse("{'employee_id':794875,'employee_name': 'David Smith','job': 'Sales Representative','department_id': 2,'salary': 20000,'hire_date': NumberLong(\"1643969311817\")}"));
         }
     }
 
