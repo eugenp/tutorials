@@ -9,7 +9,7 @@
     <security-constraint>
         <display-name>Pong Login Auth</display-name>
         <web-resource-collection>
-            <web-resource-name>Restricted Access</web-resource-name>
+            <web-resource-name>PongRestrictedAccess</web-resource-name>
             <url-pattern>/private/*</url-pattern>     
         </web-resource-collection>
         <auth-constraint>
@@ -26,15 +26,11 @@
 
 
     <login-config>
-        <auth-method>FORM</auth-method>
-        <form-login-config>
-            <form-login-page>/logging.html</form-login-page>
-            <form-error-page>/logging_error.html</form-error-page>       
-        </form-login-config>
+        <auth-method>DIGEST</auth-method>
     </login-config>
 
     <filter>
-        <filter-name>ExpiresFilter</filter-name>
+        <filter-name>PongExpiresFilter</filter-name>
         <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
         <init-param>
             <param-name>ExpiresByType text/html</param-name>
@@ -43,7 +39,7 @@
     </filter>
 
     <filter-mapping>
-        <filter-name>ExpiresFilter</filter-name>
+        <filter-name>PongExpiresFilter</filter-name>
         <url-pattern>/private/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
