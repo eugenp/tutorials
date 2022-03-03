@@ -29,7 +29,7 @@ import com.baeldung.mongoauth.domain.UserRole;
 @AutoConfigureMockMvc
 @TestPropertySource("/test-mongoauth.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class MongoAuthApplicationTest {
+class MongoAuthApplicationIntegrationTest {
 
     @Autowired
     private WebApplicationContext context;
