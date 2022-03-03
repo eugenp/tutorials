@@ -14,7 +14,7 @@ import com.baeldung.model.Response;
 @RestController
 public class SecuredUuidController {
       
-    private Logger logger = LoggerFactory.getLogger(SecuredUuidController.class);
+    private static final Logger logger = LoggerFactory.getLogger(SecuredUuidController.class);
 
     @GetMapping("/secured/uuid")
     public Response uuid() {
