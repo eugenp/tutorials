@@ -24,7 +24,7 @@ import com.baeldung.hibernate.criteria.model.Item;
 import com.baeldung.hibernate.criteria.util.HibernateUtil;
 
 public class ApplicationView {
-
+	
     // default Constructor
     public ApplicationView() {
 
