@@ -12,9 +12,7 @@ import com.baeldung.mongoauth.config.SecurityConfig;
 public class MongoAuthApplication {
 
     public static void main(String... args) {
-        SpringApplication application = new SpringApplication(MongoAuthApplication.class);
-        application.setAdditionalProfiles("mongoauth");
-        application.run(args);
+        SpringApplication.run(MongoAuthApplication.class, args);
     }
 
 }

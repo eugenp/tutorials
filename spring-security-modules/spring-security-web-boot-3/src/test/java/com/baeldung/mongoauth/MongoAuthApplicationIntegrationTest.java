@@ -16,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -25,9 +24,8 @@ import com.baeldung.mongoauth.domain.Role;
 import com.baeldung.mongoauth.domain.User;
 import com.baeldung.mongoauth.domain.UserRole;
 
-@SpringBootTest(classes = MongoAuthApplication.class)
+@SpringBootTest(classes = { MongoAuthApplication.class })
 @AutoConfigureMockMvc
-@TestPropertySource("/test-mongoauth.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class MongoAuthApplicationIntegrationTest {
 
