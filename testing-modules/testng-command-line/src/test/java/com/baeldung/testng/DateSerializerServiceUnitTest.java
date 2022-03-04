@@ -1,7 +1,8 @@
-package com.baeldung.testing_modules.testng_command_line;
+package com.baeldung.testng;
 
 import java.util.Date;
 
+import com.baeldung.testng.DateSerializerService;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
