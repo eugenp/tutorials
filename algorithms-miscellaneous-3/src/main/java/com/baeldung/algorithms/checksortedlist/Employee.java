@@ -4,6 +4,7 @@ public class Employee {
 
     long id;
 
+    int a;
     String name;
 
     public Employee() {
