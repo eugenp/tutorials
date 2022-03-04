@@ -48,6 +48,7 @@
         <!--<module>spring-cloud-openfeign</module> --> <!-- Fixing in JAVA-2820 -->
         <module>spring-cloud-sentinel</module>
         <module>spring-cloud-dapr</module>
+        <module>spring-cloud-docker</module>
     </modules>
 
     <build>
