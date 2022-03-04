@@ -1137,6 +1137,7 @@
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-di-3</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1173,6 +1174,8 @@
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
+
+                <module>spring-threads</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
