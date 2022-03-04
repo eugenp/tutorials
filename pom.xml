@@ -968,6 +968,7 @@
                 <module>ksqldb</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
 
@@ -982,6 +983,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
