@@ -3,7 +3,8 @@ package com.baeldung.algorithms.checksortedlist;
 public class Employee {
 
     long id;
-
+       int a;
+    int b;
     String name;
 
     public Employee() {
