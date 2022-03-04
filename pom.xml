@@ -355,6 +355,7 @@
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
+                <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
@@ -840,6 +841,7 @@
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
+                <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
