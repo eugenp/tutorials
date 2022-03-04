@@ -7,9 +7,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-5-webflux-2</module>
-    </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
@@ -1101,6 +1098,7 @@
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-webflux-2</module>
                 <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
