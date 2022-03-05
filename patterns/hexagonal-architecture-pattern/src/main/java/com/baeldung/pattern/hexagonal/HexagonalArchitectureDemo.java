@@ -15,12 +15,12 @@ public class HexagonalArchitectureDemo {
         MovieService movieService = new MovieServiceImpl(movieRepository);
         MovieController movieController = new MovieController(movieService);
 
-        Movie movie = new Movie("Baeldung");
+        Movie movie = new Movie("M1", "Baeldung");
 
-        String movieId = movieController.addMovie(movie);
-        System.out.println("Movie added with id : " + movieId);
+        Movie createdMovie = movieController.addMovie(movie);
+        System.out.println("Movie added with id : " + createdMovie.getId());
 
-        Movie returnedMovie = movieController.findMovie(movieId);
+        Movie returnedMovie = movieController.findMovie(createdMovie.getId());
         System.out.println("Searched movie id : " + returnedMovie.getId() + " name : " + returnedMovie.getName());
     }
 

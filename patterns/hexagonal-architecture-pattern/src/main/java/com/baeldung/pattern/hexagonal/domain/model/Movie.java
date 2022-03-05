@@ -9,10 +9,6 @@ public class Movie {
         super();
     }
 
-    public Movie(String name) {
-        this.name = name;
-    }
-
     public Movie(String id, String name) {
         this.id = id;
         this.name = name;

@@ -11,8 +11,9 @@ public class MovieRepositoryImpl implements MovieRepository {
     private static final Map<String, Movie> moviesMap = new HashMap<>();
 
     @Override
-    public void save(Movie movie) {
+    public Movie save(Movie movie) {
         moviesMap.put(movie.getId(), movie);
+        return movie;
     }
 
     @Override

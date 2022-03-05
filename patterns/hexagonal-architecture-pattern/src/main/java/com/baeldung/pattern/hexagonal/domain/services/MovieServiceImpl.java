@@ -14,12 +14,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public String createMovie(Movie movie) {
-        Movie newMovie = new Movie(UUID.randomUUID()
-            .toString(), movie.getName());
-        movieRepository.save(newMovie);
-
-        return newMovie.getId();
+    public Movie createMovie(Movie movie) {
+        return movieRepository.save(movie);
     }
 
     @Override

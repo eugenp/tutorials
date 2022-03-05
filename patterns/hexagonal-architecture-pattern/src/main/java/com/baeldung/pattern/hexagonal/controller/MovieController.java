@@ -11,10 +11,10 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    public String addMovie(Movie movie) {
-        String id = movieService.createMovie(movie);
+    public Movie addMovie(Movie movie) {
+        Movie createdMovie = movieService.createMovie(movie);
 
-        return id;
+        return createdMovie;
     }
 
     public Movie findMovie(String id) {
