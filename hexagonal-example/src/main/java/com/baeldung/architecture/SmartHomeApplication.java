@@ -1,13 +1,13 @@
-package com.baeldung.architecture.hexagonal;
+package com.baeldung.architecture;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HexagonalApplication {
+public class SmartHomeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HexagonalApplication.class, args);
+		SpringApplication.run(SmartHomeApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.baeldung.architecture.hexagonal;
+package com.baeldung.architecture.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HexagonalApplicationIntegrationTest {
+class SmartHomeApplicationIntegrationTest {
 
 	@Test
 	void contextLoads() {
