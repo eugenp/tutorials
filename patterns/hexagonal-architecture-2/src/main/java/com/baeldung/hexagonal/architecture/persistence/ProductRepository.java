@@ -1,6 +1,6 @@
-package com.baeldung.persistence;
+package com.baeldung.hexagonal.architecture.persistence;
 
-import com.baeldung.domain.Product;
+import com.baeldung.hexagonal.architecture.domain.Product;
 
 public interface ProductRepository {
 

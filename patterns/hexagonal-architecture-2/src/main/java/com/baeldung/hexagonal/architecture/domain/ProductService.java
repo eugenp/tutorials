@@ -1,4 +1,4 @@
-package com.baeldung.domain;
+package com.baeldung.hexagonal.architecture.domain;
 
 public interface ProductService {
 

@@ -1,7 +1,7 @@
-package com.baeldung.usecase;
+package com.baeldung.hexagonal.architecture.usecase;
 
-import com.baeldung.domain.Product;
-import com.baeldung.persistence.ProductRepository;
+import com.baeldung.hexagonal.architecture.domain.Product;
+import com.baeldung.hexagonal.architecture.persistence.ProductRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

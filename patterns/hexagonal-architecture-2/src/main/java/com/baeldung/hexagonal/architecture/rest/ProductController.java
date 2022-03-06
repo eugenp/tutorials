@@ -1,7 +1,7 @@
-package com.baeldung.rest;
+package com.baeldung.hexagonal.architecture.rest;
 
-import com.baeldung.domain.Product;
-import com.baeldung.domain.ProductService;
+import com.baeldung.hexagonal.architecture.domain.Product;
+import com.baeldung.hexagonal.architecture.domain.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public Product getProductById(@PathVariable Integer productId) {
+    public Product getProductById(@PathVariable("productId") Integer productId) {
         return productService.getProductById(productId);
     }
 
@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
-    public Product removeProduct(@PathVariable Integer productId) {
+    public Product removeProduct(@PathVariable("productId") Integer productId) {
         return productService.removeProduct(productId);
     }
 }

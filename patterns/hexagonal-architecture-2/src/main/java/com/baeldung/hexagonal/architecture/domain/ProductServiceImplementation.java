@@ -1,6 +1,6 @@
-package com.baeldung.domain;
+package com.baeldung.hexagonal.architecture.domain;
 
-import com.baeldung.persistence.ProductRepository;
+import com.baeldung.hexagonal.architecture.persistence.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
