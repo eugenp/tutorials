@@ -2,8 +2,6 @@ package com.baeldung.update;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
 
 import org.bson.Document;
 import org.junit.Before;
@@ -15,7 +13,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
-import com.mongodb.client.result.UpdateResult;
 
 public class UpdateMultipleFieldsLiveTest {
 
@@ -30,8 +27,7 @@ public class UpdateMultipleFieldsLiveTest {
             db = mongoClient.getDatabase("baeldung");
             collection = db.getCollection("employee");
 
-            collection.insertOne(Document.parse(
-                    "{'employee_id':794875,'employee_name': 'David smith','job': 'Sales Representative','department_id': 2,'salary': 20000,'hire_date': NumberLong(\"1643969311817\")}"));
+            collection.insertOne(Document.parse("{'employee_id':794875,'employee_name': 'David Smith','job': 'Sales Representative','department_id': 2,'salary': 20000,'hire_date': NumberLong(\"1643969311817\")}"));
         }
     }
 
@@ -47,7 +43,8 @@ public class UpdateMultipleFieldsLiveTest {
 
         collection.updateMany(searchQuery, setQuery);
 
-        Document nameDoc = collection.find(Filters.eq("employee_id", 794875)).first();
+        Document nameDoc = collection.find(Filters.eq("employee_id", 794875))
+            .first();
         assertNotNull(nameDoc);
         assertFalse(nameDoc.isEmpty());
 
@@ -62,10 +59,10 @@ public class UpdateMultipleFieldsLiveTest {
     @Test
     public void updateMultipleFieldsUsingDocument() {
 
-        collection.updateMany(Filters.eq("employee_id", 794875),
-                Updates.combine(Updates.set("department_id", 4), Updates.set("job", "Sales Manager")));
+        collection.updateMany(Filters.eq("employee_id", 794875), Updates.combine(Updates.set("department_id", 4), Updates.set("job", "Sales Manager")));
 
-        Document nameDoc = collection.find(Filters.eq("employee_id", 794875)).first();
+        Document nameDoc = collection.find(Filters.eq("employee_id", 794875))
+            .first();
         assertNotNull(nameDoc);
         assertFalse(nameDoc.isEmpty());
 
@@ -78,3 +75,4 @@ public class UpdateMultipleFieldsLiveTest {
     }
 
 }
+
