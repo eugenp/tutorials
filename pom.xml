@@ -518,7 +518,7 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in https://team.baeldung.com/browse/JAVA-10335 -->
+                <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
@@ -1001,7 +1001,7 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in https://team.baeldung.com/browse/JAVA-10335 -->
+                <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
