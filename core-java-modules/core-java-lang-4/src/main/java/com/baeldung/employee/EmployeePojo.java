@@ -15,6 +15,14 @@ public class EmployeePojo {
     this.startDate = startDate;
   }
 
+  public String name() {
+    return this.firstName + " " + this.lastName;
+  }
+
+  public LocalDate getStart() {
+    return this.startDate;
+  }
+
   //Getters and Setters
 
   @Override
