@@ -401,7 +401,6 @@
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
-                <module>docker</module>
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dropwizard</module>
@@ -890,7 +889,6 @@
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
-                <module>docker</module>
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dropwizard</module>
@@ -1354,6 +1352,7 @@
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>ddd-modules</module>
+                 <module>docker</module>
                  <module>httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
@@ -1419,6 +1418,7 @@
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-modules</module>
+                <module>docker</module>
                 <module>httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
