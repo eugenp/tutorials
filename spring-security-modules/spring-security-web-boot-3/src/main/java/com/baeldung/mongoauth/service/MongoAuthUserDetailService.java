@@ -33,10 +33,10 @@ public class MongoAuthUserDetailService implements UserDetailsService {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
         user.getAuthorities()
-            .forEach(role -> {
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole()
-                    .getName()));
-            });
+          .forEach(role -> {
+              grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole()
+                .getName()));
+          });
 
         return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }

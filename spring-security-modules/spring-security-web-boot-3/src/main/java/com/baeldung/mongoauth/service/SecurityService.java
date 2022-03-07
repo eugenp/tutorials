@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.baeldung.mongoauth.service;
 

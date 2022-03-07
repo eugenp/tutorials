@@ -40,23 +40,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(@Autowired AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-            .passwordEncoder(bCryptPasswordEncoder());
+          .passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
-            .disable()
-            .authorizeRequests()
-            .and()
-            .httpBasic()
-            .and()
-            .authorizeRequests()
-            .anyRequest()
-            .permitAll()
-            .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+          .disable()
+          .authorizeRequests()
+          .and()
+          .httpBasic()
+          .and()
+          .authorizeRequests()
+          .anyRequest()
+          .permitAll()
+          .and()
+          .sessionManagement()
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
 }

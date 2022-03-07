@@ -32,7 +32,7 @@ public class SecurityServiceImpl implements SecurityService {
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext()
-                .setAuthentication(usernamePasswordAuthenticationToken);
+              .setAuthentication(usernamePasswordAuthenticationToken);
 
             return true;
         }

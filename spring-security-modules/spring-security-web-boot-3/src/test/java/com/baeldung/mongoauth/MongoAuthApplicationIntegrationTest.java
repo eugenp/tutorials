@@ -50,8 +50,8 @@ class MongoAuthApplicationIntegrationTest {
         setUp();
 
         mvc = MockMvcBuilders.webAppContextSetup(context)
-            .apply(springSecurity())
-            .build();
+          .apply(springSecurity())
+          .build();
     }
 
     private void setUp() {
@@ -85,34 +85,34 @@ class MongoAuthApplicationIntegrationTest {
     @Test
     void givenUserCredentials_whenInvokeUserAuthorizedEndPoint_thenReturn200() throws Exception {
         mvc.perform(get("/user").with(httpBasic(userName, password)))
-            .andExpect(status().isOk());
+          .andExpect(status().isOk());
     }
 
     @Test
     void givenUserNotExists_whenInvokeEndPoint_thenReturn401() throws Exception {
         mvc.perform(get("/user").with(httpBasic("not_existing_user", "password")))
-            .andExpect(status().isUnauthorized());
+          .andExpect(status().isUnauthorized());
     }
 
     @Test
     void givenUserExistsAndWrongPassword_whenInvokeEndPoint_thenReturn401() throws Exception {
         mvc.perform(get("/user").with(httpBasic(userName, "wrong_password")))
-            .andExpect(status().isUnauthorized());
+          .andExpect(status().isUnauthorized());
     }
 
     @Test
     void givenUserCredentials_whenInvokeAdminAuthorizedEndPoint_thenReturn403() throws Exception {
         mvc.perform(get("/admin").with(httpBasic(userName, password)))
-            .andExpect(status().isForbidden());
+          .andExpect(status().isForbidden());
     }
 
     @Test
     void givenAdminCredentials_whenInvokeAdminAuthorizedEndPoint_thenReturn200() throws Exception {
         mvc.perform(get("/admin").with(httpBasic(adminName, password)))
-            .andExpect(status().isOk());
+          .andExpect(status().isOk());
 
         mvc.perform(get("/user").with(httpBasic(adminName, password)))
-            .andExpect(status().isOk());
+          .andExpect(status().isOk());
     }
 
 }

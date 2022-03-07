@@ -27,9 +27,9 @@ public class MongoConfig {
         int randomPort = SocketUtils.findAvailableTcpPort();
 
         ImmutableMongodConfig mongoDbConfig = MongodConfig.builder()
-            .version(Version.Main.PRODUCTION)
-            .net(new Net(HOST, randomPort, Network.localhostIsIPv6()))
-            .build();
+          .version(Version.Main.PRODUCTION)
+          .net(new Net(HOST, randomPort, Network.localhostIsIPv6()))
+          .build();
 
         MongodStarter starter = MongodStarter.getDefaultInstance();
         MongodExecutable mongodExecutable = starter.prepare(mongoDbConfig);
