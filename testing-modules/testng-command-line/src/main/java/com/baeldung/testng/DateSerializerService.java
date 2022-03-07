@@ -1,4 +1,4 @@
-package com.baeldung.testing_modules.testng_command_line;
+package com.baeldung.testng;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
