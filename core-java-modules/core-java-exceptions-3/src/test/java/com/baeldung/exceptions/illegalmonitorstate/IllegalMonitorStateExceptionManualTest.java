@@ -7,7 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class IllegalMonitorStateExceptionUnitTest {
+/**
+ * Needs to be run manually in order to demonstrate the IllegalMonitorStateException scenarios.
+ *
+ * There are some intermittent test failures in Jenkins that require further investigation.
+ */
+public class IllegalMonitorStateExceptionManualTest {
 
     @Test
     void whenSyncSenderAndSyncReceiverAreUsed_thenIllegalMonitorExceptionShouldNotBeThrown() throws InterruptedException {
