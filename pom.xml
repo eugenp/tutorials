@@ -401,6 +401,7 @@
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
+                <module>docker</module>
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dropwizard</module>
@@ -889,6 +890,7 @@
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
+                <module>docker</module>
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dropwizard</module>
