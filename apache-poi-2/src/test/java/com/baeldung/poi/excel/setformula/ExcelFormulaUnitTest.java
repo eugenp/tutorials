@@ -3,18 +3,19 @@ package com.baeldung.poi.excel.setformula;
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class ExcelFormulaUnitTest {
-    private static String FILE_NAME = "com/baeldung/poi/excel/setformula/SetFormulaTest.xlsx";
+    private static final String FILE_NAME = "com/baeldung/poi/excel/setformula/SetFormulaTest.xlsx";
+
     private String fileLocation;
     private ExcelFormula excelFormula;
 
@@ -26,7 +27,7 @@ class ExcelFormulaUnitTest {
 
     @Test
     void givenExcelData_whenSetFormula_thenSuccess() throws IOException {
-        FileInputStream inputStream = new FileInputStream(new File(fileLocation));
+        FileInputStream inputStream = new FileInputStream(fileLocation);
         XSSFWorkbook wb = new XSSFWorkbook(inputStream);
         XSSFSheet sheet = wb.getSheetAt(0);
         double resultColumnA = 0;
@@ -46,6 +47,6 @@ class ExcelFormulaUnitTest {
 
         double resultValue = excelFormula.setFormula(fileLocation, wb, sumFormulaForColumnA + "-" + sumFormulaForColumnB);
 
-        Assert.assertEquals(resultColumnA - resultColumnB, resultValue, 0d);
+        assertEquals(resultColumnA - resultColumnB, resultValue, 0d);
     }
 }
