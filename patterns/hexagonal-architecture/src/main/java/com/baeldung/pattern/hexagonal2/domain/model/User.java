@@ -13,4 +13,12 @@ public class User {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
