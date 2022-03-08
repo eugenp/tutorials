@@ -40,7 +40,7 @@ public class CollectionExistenceLiveTest {
     }
 
     @Test
-    public void createCollectionSolution() {
+    public void givenCreateCollection_whenCollectionAlreadyExists_thenCheckingForCollectionExistence() {
 
         MongoDatabase database = mongoClient.getDatabase(databaseName);
         Boolean collectionStatus = false;
@@ -59,7 +59,7 @@ public class CollectionExistenceLiveTest {
     }
 
     @Test
-    public void collectionExistsSolution() {
+    public void givenCollectionExists_whenCollectionAlreadyExists_thenCheckingForCollectionExistence() {
 
         DB db = mongoClient.getDB(databaseName);
         Boolean collectionStatus = db.collectionExists(testCollectionName);
@@ -70,7 +70,7 @@ public class CollectionExistenceLiveTest {
     }
 
     @Test
-    public void listCollectionNamesSolution() {
+    public void givenListCollectionNames_whenCollectionAlreadyExists_thenCheckingForCollectionExistence() {
 
         MongoDatabase database = mongoClient.getDatabase(databaseName);
         boolean collectionExists = database.listCollectionNames()
@@ -83,7 +83,7 @@ public class CollectionExistenceLiveTest {
     }
 
     @Test
-    public void countSolution() {
+    public void givenCount_whenCollectionAlreadyExists_thenCheckingForCollectionExistence() {
 
         MongoDatabase database = mongoClient.getDatabase(databaseName);
 
