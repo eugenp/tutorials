@@ -24,7 +24,6 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Product successfully added!") })
     @PostMapping("/create")
     public Product addProduct(@RequestBody Product product) {
         return productService.addProducts(product);
