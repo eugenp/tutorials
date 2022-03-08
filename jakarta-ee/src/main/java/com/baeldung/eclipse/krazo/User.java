@@ -16,7 +16,6 @@ import java.io.Serializable;
 @Named("user")
 @RedirectScoped
 public class User implements Serializable {
-
     @MvcBinding
     @Null
     private String id;

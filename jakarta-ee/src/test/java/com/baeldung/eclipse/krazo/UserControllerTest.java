@@ -53,6 +53,7 @@ class UserControllerTest {
         when(bindingResult.isFailed()).thenReturn(false);
 
         User user = new User();
+
         assertNotNull(userController.saveUser(user));
         assertDoesNotThrow(() -> userController.saveUser(user));
         assertEquals("redirect:users/success", userController.saveUser(user));
@@ -84,12 +85,14 @@ class UserControllerTest {
         when(bindingResult.isFailed()).thenReturn(false);
 
         User user= getUser();
+
         assertNotNull(user);
         assertEquals(30, user.getAge());
         assertEquals("john doe", user.getName());
         assertEquals("anymail", user.getEmail());
         assertEquals("99887766554433", user.getPhone());
         assertEquals("1", user.getId());
+
         userController.saveUser(user);
         userController.saveUser(user);
         userController.saveUser(user);
