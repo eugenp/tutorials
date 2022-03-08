@@ -24,7 +24,7 @@ import com.mongodb.DBRef;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext
-public class DbRefApplicationTest {
+public class DbRefIntegrationTest {
 
     @Autowired
     PersonRepository personRepository;
