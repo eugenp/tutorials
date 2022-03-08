@@ -4,31 +4,31 @@ import java.time.LocalDate;
 
 public class EmployeeCreationDTO {
 
-  private String firstName;
-  private String lastName;
-  private LocalDate startDate;
+    private String firstName;
+    private String lastName;
+    private LocalDate startDate;
 
-  public String getFirstName() {
-    return firstName;
-  }
+    public String getFirstName() {
+        return firstName;
+    }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-  public String getLastName() {
-    return lastName;
-  }
+    public String getLastName() {
+        return lastName;
+    }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-  public LocalDate getStartDate() {
-    return startDate;
-  }
+    public LocalDate getStartDate() {
+        return startDate;
+    }
 
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
-  }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
 }
