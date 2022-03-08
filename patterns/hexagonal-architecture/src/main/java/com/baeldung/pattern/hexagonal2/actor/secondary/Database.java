@@ -15,8 +15,6 @@ public class Database {
     private Map<UUID, User> data = new HashMap<>();
 
     public User addDataRecord(User user) {
-        UUID id = UUID.randomUUID();
-        user.setId(id);
         this.data.put(user.getId(), user);
         return user;
     }

@@ -43,9 +43,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.pattern.hexagonal2.Application</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
