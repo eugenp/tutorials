@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
  * The class contains unit tests. We do only unit tests. Most of the classes are mocked
  */
 @DisplayName("Eclipse Krazo MVC 2.0 Test Suite")
-class UserControllerTest {
+class UserControllerUnitTest {
 
     @InjectMocks
     UserController userController = new UserController();
