@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.baeldung.mongoauth.service;
 
 public interface SecurityService {

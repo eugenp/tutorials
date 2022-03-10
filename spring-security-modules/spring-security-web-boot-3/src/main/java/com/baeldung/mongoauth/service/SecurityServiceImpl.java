@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.baeldung.mongoauth.service;
 
 import org.springframework.security.authentication.AuthenticationManager;

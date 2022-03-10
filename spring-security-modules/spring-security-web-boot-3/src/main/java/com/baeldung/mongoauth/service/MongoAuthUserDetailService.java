@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.baeldung.mongoauth.service;
 
 import java.util.HashSet;

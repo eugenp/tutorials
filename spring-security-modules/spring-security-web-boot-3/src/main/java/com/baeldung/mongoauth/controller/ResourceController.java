@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.baeldung.mongoauth.controller;
 
 import javax.annotation.security.RolesAllowed;

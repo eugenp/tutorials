@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.baeldung.mongoauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
