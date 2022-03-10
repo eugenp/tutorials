@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 import feign.codec.Encoder;
+import feign.codec.ErrorDecoder;
 import feign.form.spring.SpringFormEncoder;
 
 public class FeignSupportConfig {
@@ -18,5 +19,10 @@ public class FeignSupportConfig {
                 return new HttpMessageConverters(new RestTemplate().getMessageConverters());
             }
         }));
+    }
+
+    @Bean
+    public ErrorDecoder errorDecoder() {
+        return new RetreiveMessageErrorDecoder();
     }
 }
