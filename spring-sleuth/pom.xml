@@ -39,7 +39,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-sleuth.version>2.0.2.RELEASE</spring-cloud-sleuth.version>
+        <spring-cloud-sleuth.version>3.1.0</spring-cloud-sleuth.version>
     </properties>
 
 </project>
