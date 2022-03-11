@@ -7,9 +7,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-5-webflux-2</module>
-    </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
@@ -355,6 +352,7 @@
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
+                <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
@@ -653,6 +651,7 @@
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
+                <module>spring-data-rest-2</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -841,6 +840,7 @@
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
+                <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
@@ -855,6 +855,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
@@ -906,6 +907,7 @@
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
+                <module>graphql/graphql-dgs</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -967,6 +969,7 @@
                 <module>ksqldb</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
 
@@ -981,6 +984,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
@@ -1096,6 +1100,7 @@
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-webflux-2</module>
                 <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
@@ -1128,9 +1133,11 @@
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
+                <module>spring-data-rest-2</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-di-3</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1167,6 +1174,8 @@
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
+
+                <module>spring-threads</module>
 
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
@@ -1317,39 +1326,43 @@
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/multimodulemavenproject</module>
-                <module>ddd-modules</module>
-                <module>httpclient-2</module>
-                <module>libraries-concurrency</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-vs-springboot</module>
-                <module>quarkus-jandex</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
-                <module>testing-modules/testing-assertions</module>
-                <module>persistence-modules/fauna</module>
+                 <module>core-java-modules/core-java-9-streams</module>
+                 <module>core-java-modules/core-java-10</module>
+                 <module>core-java-modules/core-java-11</module>
+                 <module>core-java-modules/core-java-11-2</module>
+                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <module>core-java-modules/core-java-collections-set</module>
+                 <module>core-java-modules/core-java-collections-maps-4</module>
+                 <module>core-java-modules/core-java-date-operations-1</module>
+                 <module>core-java-modules/core-java-datetime-conversion</module>
+                 <module>core-java-modules/core-java-datetime-string</module>
+                 <module>core-java-modules/core-java-io-conversions-2</module>
+                 <module>core-java-modules/core-java-jpms</module>
+                 <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-string-algorithms-3</module>
+                 <module>core-java-modules/core-java-string-operations-3</module>
+                 <module>core-java-modules/core-java-string-operations-4</module>
+                 <module>core-java-modules/core-java-time-measurements</module>
+                 <module>core-java-modules/core-java-networking-3</module>
+                 <module>core-java-modules/multimodulemavenproject</module>
+                 <module>core-java-modules/core-java-strings</module>
+                 <module>ddd-modules</module>
+                 <module>docker</module>
+                 <module>httpclient-2</module>
+                 <module>libraries-concurrency</module>
+                 <module>persistence-modules/sirix</module>
+                 <module>persistence-modules/spring-data-cassandra-2</module>
+                 <module>quarkus-vs-springboot</module>
+                 <module>quarkus-jandex</module>
+                 <module>spring-boot-modules/spring-boot-cassandre</module>
+                 <module>spring-boot-modules/spring-boot-camel</module>	 
+                 <module>testing-modules/testing-assertions</module>
+                 <module>persistence-modules/fauna</module>
             </modules>
         </profile>
 
@@ -1388,6 +1401,8 @@
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
@@ -1396,6 +1411,7 @@
                 <module>core-java-modules/core-java-io-conversions-2</module>
                 <module>core-java-modules/core-java-jpms</module>
                 <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-string-algorithms-3</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
@@ -1403,6 +1419,7 @@
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-modules</module>
+                <module>docker</module>
                 <module>httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
