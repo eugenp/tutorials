@@ -10,35 +10,35 @@ import com.mongodb.client.result.UpdateResult;
 
 public class MultipleFieldsExample {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-	    //
-	    // Connect to cluster (default is localhost:27017)
-	    //
+        //
+        // Connect to cluster (default is localhost:27017)
+        //
 
-		MongoClient mongoClient = new MongoClient("localhost", 27017);
-		MongoDatabase database = mongoClient.getDatabase("baeldung");
-		MongoCollection<Document> collection = database.getCollection("employee");
+        MongoClient mongoClient = new MongoClient("localhost", 27017);
+        MongoDatabase database = mongoClient.getDatabase("baeldung");
+        MongoCollection<Document> collection = database.getCollection("employee");
 
-		//
-		// Filter on the basis of employee_id
-		//
+        //
+        // Filter on the basis of employee_id
+        //
 
-		BasicDBObject searchQuery = new BasicDBObject("employee_id", 794875);
+        BasicDBObject searchQuery = new BasicDBObject("employee_id", 794875);
 
-		//
-		// Update the fields in Document
-		//
+        //
+        // Update the fields in Document
+        //
 
-		BasicDBObject updateFields = new BasicDBObject();
-		updateFields.append("department_id", 3);
-		updateFields.append("job", "Sales Manager");
-		BasicDBObject setQuery = new BasicDBObject();
-		setQuery.append("$set", updateFields);
-		UpdateResult updateResult = collection.updateMany(searchQuery, setQuery);
+        BasicDBObject updateFields = new BasicDBObject();
+        updateFields.append("department_id", 3);
+        updateFields.append("job", "Sales Manager");
+        BasicDBObject setQuery = new BasicDBObject();
+        setQuery.append("$set", updateFields);
+        UpdateResult updateResult = collection.updateMany(searchQuery, setQuery);
 
-		System.out.println("updateResult:- " + updateResult);
-		System.out.println("updateResult:- " + updateResult.getModifiedCount());
+        System.out.println("updateResult:- " + updateResult);
+        System.out.println("updateResult:- " + updateResult.getModifiedCount());
 
-	}
+    }
 }

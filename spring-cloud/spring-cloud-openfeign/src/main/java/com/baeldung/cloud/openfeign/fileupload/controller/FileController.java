@@ -25,4 +25,9 @@ public class FileController {
         return service.uploadFileWithManualClient(file);
     }
     
+    @PostMapping(value = "/upload-error")
+    public String handleFileUploadError(@RequestPart(value = "file") MultipartFile file) {
+        return service.uploadFile(file);
+    }
+    
 }

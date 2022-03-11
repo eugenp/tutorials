@@ -1,0 +1,7 @@
+server { 
+	listen 8888; 
+	location / { 
+		resolver 8.8.8.8; 
+		proxy_pass http://$http_host$uri$is_args$args; 
+	}
+}
