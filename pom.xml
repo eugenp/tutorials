@@ -462,6 +462,7 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -518,7 +519,7 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in https://team.baeldung.com/browse/JAVA-10335 -->
+                <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
@@ -555,9 +556,9 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
             </modules>
 
         </profile>
@@ -945,6 +946,7 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -1001,7 +1003,7 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in https://team.baeldung.com/browse/JAVA-10335 -->
+                <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
@@ -1038,9 +1040,9 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
             </modules>
 
         </profile>
@@ -1311,42 +1313,43 @@
             </build>
 
             <modules>
-                 <module>core-java-modules/core-java-9</module>
-                 <module>core-java-modules/core-java-9-improvements</module>
-                 <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>core-java-modules/core-java-9</module>
+                <module>core-java-modules/core-java-9-improvements</module>
+                <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-9-streams</module>
-                 <module>core-java-modules/core-java-10</module>
-                 <module>core-java-modules/core-java-11</module>
-                 <module>core-java-modules/core-java-11-2</module>
-                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-collections-set</module>
-                 <module>core-java-modules/core-java-collections-maps-4</module>
-                 <module>core-java-modules/core-java-date-operations-1</module>
-                 <module>core-java-modules/core-java-datetime-conversion</module>
-                 <module>core-java-modules/core-java-datetime-string</module>
-                 <module>core-java-modules/core-java-io-conversions-2</module>
-                 <module>core-java-modules/core-java-jpms</module>
-                 <module>core-java-modules/core-java-os</module>
-                 <module>core-java-modules/core-java-string-algorithms-3</module>
-                 <module>core-java-modules/core-java-string-operations-3</module>
-                 <module>core-java-modules/core-java-string-operations-4</module>
-                 <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>
-                 <module>core-java-modules/multimodulemavenproject</module>
-                 <module>ddd-modules</module>
-                 <module>httpclient-2</module>
-                 <module>libraries-concurrency</module>
-                 <module>persistence-modules/sirix</module>
-                 <module>persistence-modules/spring-data-cassandra-2</module>
-                 <module>quarkus-vs-springboot</module>
-                 <module>quarkus-jandex</module>
-                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>spring-boot-modules/spring-boot-camel</module>	 
-                 <module>testing-modules/testing-assertions</module>
+                <module>core-java-modules/core-java-9-streams</module>
+                <module>core-java-modules/core-java-10</module>
+                <module>core-java-modules/core-java-11</module>
+                <module>core-java-modules/core-java-11-2</module>
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-collections-maps-4</module>
+                <module>core-java-modules/core-java-date-operations-1</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>core-java-modules/core-java-datetime-string</module>
+                <module>core-java-modules/core-java-io-conversions-2</module>
+                <module>core-java-modules/core-java-jpms</module>
+                <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-string-algorithms-3</module>
+                <module>core-java-modules/core-java-string-operations-3</module>
+                <module>core-java-modules/core-java-string-operations-4</module>
+                <module>core-java-modules/core-java-time-measurements</module>
+                <module>core-java-modules/core-java-networking-3</module>
+                <module>core-java-modules/multimodulemavenproject</module>
+                <module>ddd-modules</module>
+                <module>httpclient-2</module>
+                <module>libraries-concurrency</module>
+                <module>persistence-modules/sirix</module>
+                <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>quarkus-vs-springboot</module>
+                <module>quarkus-jandex</module>
+                <module>spring-boot-modules/spring-boot-cassandre</module>
+                <module>spring-boot-modules/spring-boot-camel</module>
+                <module>testing-modules/testing-assertions</module>
+                <module>persistence-modules/fauna</module>
             </modules>
         </profile>
 
@@ -1409,6 +1412,7 @@
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
+                <module>persistence-modules/fauna</module>
             </modules>
         </profile>
     </profiles>

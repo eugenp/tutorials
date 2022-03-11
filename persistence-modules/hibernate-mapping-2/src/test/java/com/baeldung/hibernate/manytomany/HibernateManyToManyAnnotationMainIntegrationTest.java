@@ -52,9 +52,11 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
         
         for(Employee employee : employeeList) {
             assertNotNull(employee.getProjects());
+            assertEquals(2, employee.getProjects().size());
         }
         for(Project project : projectList) {
             assertNotNull(project.getEmployees());
+            assertEquals(2, project.getEmployees().size());
         }
     }
 
@@ -70,6 +72,11 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
 		for (String emp : employeeData) {
 			Employee employee = new Employee(emp.split(" ")[0], emp.split(" ")[1]);
 			employee.setProjects(projects);
+			
+			for (Project proj : projects) {
+				proj.getEmployees().add(employee);
+			}
+			
 			session.persist(employee);
 		}
 	}

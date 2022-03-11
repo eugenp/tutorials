@@ -26,4 +26,8 @@ public class UploadService {
         return client.fileUpload(file);
     }
     
+    public String uploadFileError(MultipartFile file) {
+        return client.fileUpload(file);
+    }
+    
 }
