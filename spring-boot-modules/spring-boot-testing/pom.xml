@@ -4,16 +4,27 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-testing</artifactId>
-    <packaging>war</packaging>
     <name>spring-boot-testing</name>
+    <packaging>war</packaging>
     <description>This is simple boot application for demonstrating testing features.</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -132,6 +143,7 @@
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <redis.version>0.7.2</redis.version>
         <spring-boot.version>2.5.0</spring-boot.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

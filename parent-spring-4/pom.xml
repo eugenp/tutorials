@@ -24,15 +24,6 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
@@ -57,7 +48,6 @@
     <properties>
         <spring.version>4.3.27.RELEASE</spring.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>

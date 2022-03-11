@@ -42,9 +42,9 @@ public class HibernateHiloUnitTest {
     private void configureLogger() {
         BasicConfigurator.configure();
         LogManager.getLogger("org.hibernate").setLevel(Level.ERROR);
-        LogManager.getLogger("org.hibernate.id.enhanced.SequenceStructure").setLevel(Level.DEBUG);
-        LogManager.getLogger("org.hibernate.event.internal.AbstractSaveEventListener").setLevel(Level.DEBUG);
-        LogManager.getLogger("org.hibernate.SQL").setLevel(Level.DEBUG);
+        LogManager.getLogger("org.hibernate.id.enhanced.SequenceStructure").setLevel(Level.INFO);
+        LogManager.getLogger("org.hibernate.event.internal.AbstractSaveEventListener").setLevel(Level.INFO);
+        LogManager.getLogger("org.hibernate.SQL").setLevel(Level.INFO);
     }
 
 

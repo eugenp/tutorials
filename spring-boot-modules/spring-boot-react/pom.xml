@@ -11,6 +11,18 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -25,7 +37,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -128,8 +139,8 @@
         <node.version>v14.18.0</node.version>
         <yarn.version>v1.12.1</yarn.version>
         <spring-boot.version>2.4.4</spring-boot.version>
-        <h2.version>1.4.200</h2.version>
         <javafaker.version>1.0.2</javafaker.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

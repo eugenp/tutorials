@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>maven-classifier</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>maven-classifier-example-consumer</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>maven-classifier-example-provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>maven-classifier-example-provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <classifier>arbitrary</classifier>
+        </dependency>
+        <!--        For example purpose not building as it requires both JDK 8 and 11 executables on the build machine -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.baeldung</groupId>-->
+        <!--            <artifactId>maven-classifier-example-provider</artifactId>-->
+        <!--            <version>0.0.1-SNAPSHOT</version>-->
+        <!--            <classifier>jdk11</classifier>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>maven-classifier-example-provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <classifier>sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>maven-classifier-example-provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <classifier>tests</classifier>
+        </dependency>
+    </dependencies>
+
+</project>

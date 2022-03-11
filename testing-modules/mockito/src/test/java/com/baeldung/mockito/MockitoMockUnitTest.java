@@ -2,8 +2,6 @@ package com.baeldung.mockito;
 
 import static org.mockito.Mockito.*;
 
-import com.baeldung.mockito.MyList;
-
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.containsString;
@@ -13,7 +11,7 @@ import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import org.mockito.MockSettings;
-import org.mockito.exceptions.verification.TooLittleActualInvocations;
+import org.mockito.exceptions.verification.TooFewActualInvocations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -45,7 +43,7 @@ public class MockitoMockUnitTest {
         when(listMock.add(anyString())).thenReturn(false);
         listMock.add(randomAlphabetic(6));
         
-        thrown.expect(TooLittleActualInvocations.class);
+        thrown.expect(TooFewActualInvocations.class);
         thrown.expectMessage(containsString("myMock.add"));
 
         verify(listMock, times(2)).add(anyString());

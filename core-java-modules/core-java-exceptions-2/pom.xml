@@ -15,24 +15,11 @@
     </parent>
 
     <dependencies>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <commons.lang3.version>3.10</commons.lang3.version>
-        <!-- testing -->
-        <assertj-core.version>3.10.0</assertj-core.version>
-    </properties>
 
 </project>

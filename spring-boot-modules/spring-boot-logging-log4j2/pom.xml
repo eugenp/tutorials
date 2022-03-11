@@ -18,8 +18,8 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of junit:junit in the classpath. hence forcing the
-            latest 4.13.2 available version for junit5 compatibility -->
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of 
+                junit:junit in the classpath. hence forcing the latest 4.13.2 available version for junit5 compatibility -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -102,6 +102,7 @@
         <!-- used only in dependency management to force this version, not included as a direct dependency -->
         <junit.version>4.13.2</junit.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

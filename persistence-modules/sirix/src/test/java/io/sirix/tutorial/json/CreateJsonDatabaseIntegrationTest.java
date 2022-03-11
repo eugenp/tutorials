@@ -1,17 +1,9 @@
 package io.sirix.tutorial.json;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.sirix.access.DatabaseConfiguration;
 import org.sirix.access.Databases;
 import org.sirix.access.ResourceConfiguration;
@@ -19,27 +11,29 @@ import org.sirix.service.json.serialize.JsonSerializer;
 import org.sirix.service.json.shredder.JsonShredder;
 import org.sirix.settings.VersioningType;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static org.junit.Assert.assertEquals;
+
 public final class CreateJsonDatabaseIntegrationTest {
 
     private static final Path JSON_DIRECTORY = Paths.get("src", "test", "resources", "json");
 
-    private static final String TMP_DIRECTORY = System.getProperty("java.io.tmpdir");
-
-    private static final Path DATABASE_PATH = Paths.get(TMP_DIRECTORY, "sirix", "json-database");
-
     private static final String COMPLEX_JSON =
         "{\"problems\":[{\"Diabetes\":[{\"medications\":[{\"medicationsClasses\":[{\"className\":[{\"associatedDrug\":[{\"name\":\"asprin\",\"dose\":\"\",\"strength\":\"500 mg\"}],\"associatedDrug#2\":[{\"name\":\"somethingElse\",\"dose\":\"\",\"strength\":\"500 mg\"}]}],\"className2\":[{\"associatedDrug\":[{\"name\":\"asprin\",\"dose\":\"\",\"strength\":\"500 mg\"}],\"associatedDrug#2\":[{\"name\":\"somethingElse\",\"dose\":\"\",\"strength\":\"500 mg\"}]}]}]}],\"labs\":[{\"missing_field\":\"missing_value\"}]}],\"Asthma\":[{}]}]}";
 
-    @Before
-    public void setUp() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
-    }
+    @Rule
+    public TemporaryFolder tempDirectory = new TemporaryFolder();
 
-    @After
-    public void tearDown() throws Exception {
-        if (Files.exists(DATABASE_PATH))
-            Databases.removeDatabase(DATABASE_PATH);
+    private Path databasePath;
+
+    @Before
+    public void setUp() {
+        databasePath = Paths.get(tempDirectory.getRoot().getPath(), "sirix", "json-database");
     }
 
     @Test
@@ -47,10 +41,10 @@ public final class CreateJsonDatabaseIntegrationTest {
         final var pathToJsonFile = JSON_DIRECTORY.resolve("complex1.json");
 
         // Create an empty JSON database.
-        Databases.createJsonDatabase(new DatabaseConfiguration(DATABASE_PATH));
+        Databases.createJsonDatabase(new DatabaseConfiguration(databasePath));
 
         // Open the database.
-        try (final var database = Databases.openJsonDatabase(DATABASE_PATH)) {
+        try (final var database = Databases.openJsonDatabase(databasePath)) {
             // Create a resource to store a JSON-document.
             database.createResource(ResourceConfiguration.newBuilder("resource")
                     .useTextCompression(false)

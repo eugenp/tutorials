@@ -20,11 +20,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
         <!-- Benchmarking -->
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
@@ -35,13 +30,6 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
-        </dependency>
-        <!-- Testing -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -74,8 +62,6 @@
 
     <properties>
         <shade.plugin.version>3.2.0</shade.plugin.version>
-        <guava.version>28.2-jre</guava.version>
-        <assertj-core.version>3.10.0</assertj-core.version>
     </properties>
 
 </project>

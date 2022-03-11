@@ -12,7 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -26,16 +25,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.darwinsys</groupId>
             <artifactId>hirondelle-date4j</artifactId>
-            <version>RELEASE</version>
+            <version>${hirondelle-date4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -63,8 +57,7 @@
 
     <properties>
         <joda-time.version>2.10</joda-time.version>
-        <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
+        <hirondelle-date4j.version>RELEASE</hirondelle-date4j.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
