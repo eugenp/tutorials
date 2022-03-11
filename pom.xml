@@ -460,6 +460,7 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -553,9 +554,9 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
             </modules>
 
         </profile>
@@ -948,6 +949,7 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -1043,9 +1045,9 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
             </modules>
 
         </profile>
@@ -1322,9 +1324,9 @@
             </build>
 
             <modules>
-                 <module>core-java-modules/core-java-9</module>
-                 <module>core-java-modules/core-java-9-improvements</module>
-                 <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>core-java-modules/core-java-9</module>
+                <module>core-java-modules/core-java-9-improvements</module>
+                <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
@@ -1362,6 +1364,7 @@
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>	 
                  <module>testing-modules/testing-assertions</module>
+                 <module>persistence-modules/fauna</module>
             </modules>
         </profile>
 
@@ -1428,6 +1431,7 @@
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
+                <module>persistence-modules/fauna</module>
             </modules>
         </profile>
     </profiles>
