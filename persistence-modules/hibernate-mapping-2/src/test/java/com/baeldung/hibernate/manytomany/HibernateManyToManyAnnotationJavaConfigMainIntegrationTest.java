@@ -45,6 +45,13 @@ public class HibernateManyToManyAnnotationJavaConfigMainIntegrationTest {
         projects.add(new Project("Networking Project"));
         session.persist(new Employee("Peter", "Oven", projects));
         session.persist(new Employee("Allan", "Norman", projects));
+        
+        Set<Employee> employees = new HashSet<Employee>();
+        employees.add(new Employee("Sam", "Curran"));
+        employees.add(new Employee("Tom", "Curran"));
+        Project project = new Project("Database Project");
+        project.setEmployees(employees);
+        session.persist(project);
     }
 
 }
