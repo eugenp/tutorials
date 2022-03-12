@@ -3,13 +3,13 @@ package com.baeldung.employee;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class EmployeePojo {
+public class EmployeePOJO {
 
     public String firstName;
     public String lastName;
     private LocalDate startDate;
 
-    public EmployeePojo(String firstName, String lastName, LocalDate startDate) {
+    public EmployeePOJO(String firstName, String lastName, LocalDate startDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.startDate = startDate;
