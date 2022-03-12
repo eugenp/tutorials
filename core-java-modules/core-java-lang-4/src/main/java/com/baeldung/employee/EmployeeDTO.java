@@ -2,7 +2,7 @@ package com.baeldung.employee;
 
 import java.time.LocalDate;
 
-public class EmployeeCreationDTO {
+public class EmployeeDTO {
 
     private String firstName;
     private String lastName;
