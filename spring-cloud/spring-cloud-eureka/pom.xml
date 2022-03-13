@@ -14,7 +14,14 @@
         <artifactId>spring-cloud</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
+    <modules>
+        <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-eureka-client</module>
+        <module>spring-cloud-eureka-feign-client</module>
+        <module>spring-cloud-eureka-feign-client-integration-test</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -26,13 +33,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-        <module>spring-cloud-eureka-server</module>
-        <module>spring-cloud-eureka-client</module>
-        <module>spring-cloud-eureka-feign-client</module>
-        <module>spring-cloud-eureka-feign-client-integration-test</module>
-    </modules>
 
     <dependencies>
         <dependency>

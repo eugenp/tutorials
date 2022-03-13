@@ -107,22 +107,22 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
-        </dependency>	  
-		<dependency>
-			 <groupId>com.sun.xml.bind</groupId>
-			 <artifactId>jaxb-core</artifactId>
-			 <version>${com.sun.xml.version}</version>
-		</dependency>
-		<dependency>
-			 <groupId>javax.xml.bind</groupId>
-			 <artifactId>jaxb-api</artifactId>
-			 <version>${javax.xml.bind.version}</version>
-		</dependency>
-		<dependency>
-			 <groupId>com.sun.xml.bind</groupId>
-			 <artifactId>jaxb-impl</artifactId>
-			 <version>${com.sun.xml.version}</version>
-		</dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${com.sun.xml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${javax.xml.bind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${com.sun.xml.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>

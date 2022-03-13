@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>maven-generate-war</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>maven-generate-war</name>
+    <packaging>war</packaging>
     <description>Spring boot project to demonstrate war file generation</description>
 
     <parent>
