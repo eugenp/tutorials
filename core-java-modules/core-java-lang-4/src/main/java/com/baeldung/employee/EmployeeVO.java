@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class EmployeeVO {
-    public String firstName;
-    public String lastName;
+    private String firstName;
+    private String lastName;
     private LocalDate startDate;
 
     public EmployeeVO(String firstName, String lastName, LocalDate startDate) {

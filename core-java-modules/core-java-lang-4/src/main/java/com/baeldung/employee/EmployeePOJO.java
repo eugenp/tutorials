@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class EmployeePOJO {
 
-    public String firstName;
-    public String lastName;
+    private String firstName;
+    private String lastName;
     private LocalDate startDate;
 
     public EmployeePOJO(String firstName, String lastName, LocalDate startDate) {
