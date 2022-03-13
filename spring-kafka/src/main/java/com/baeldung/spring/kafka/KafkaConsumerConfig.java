@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
+import org.springframework.kafka.config.*;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.support.converter.*;
+import org.springframework.kafka.support.mapping.*;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 @EnableKafka
@@ -83,6 +86,39 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<String, Greeting> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(greetingConsumerFactory());
         return factory;
+    }
+    
+    public Map<String, Object> multiConsumerConfig() {
+        HashMap<String, Object> props = new HashMap<>();
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        return props;
+    }
+    
+    @Bean
+    public ConsumerFactory<String, Object> multiConsumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(multiConsumerConfig());
+    }
+    
+    @Bean
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Object>> factory(ConsumerFactory<String, Object> multiConsumerFactory) {
+        ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(multiConsumerFactory());
+        factory.setMessageConverter(converter());
+        
+        return factory;
+    }
+    
+    @Bean
+    public RecordMessageConverter converter() {
+        StringJsonMessageConverter converter = new StringJsonMessageConverter();
+        DefaultJackson2JavaTypeMapper typeMapper = new DefaultJackson2JavaTypeMapper();
+        typeMapper.setTypePrecedence(Jackson2JavaTypeMapper.TypePrecedence.TYPE_ID);
+        typeMapper.addTrustedPackages("com.baeldung.spring.kafka");
+        Map<String, Class<?>> mappings = new HashMap<>();
+        mappings.put("user", User.class);
+        typeMapper.setIdClassMapping(mappings);
+        converter.setTypeMapper(typeMapper);
+        return converter;
     }
 
 }

@@ -66,6 +66,8 @@ public class KafkaApplication {
          */
         producer.sendGreetingMessage(new Greeting("Greetings", "World!"));
         listener.greetingLatch.await(10, TimeUnit.SECONDS);
+    
+        producer.sendMultiListenerMessage();
 
         context.close();
     }
@@ -87,6 +89,9 @@ public class KafkaApplication {
 
         @Autowired
         private KafkaTemplate<String, Greeting> greetingKafkaTemplate;
+        
+        @Autowired
+        private KafkaTemplate<String,Object> multiListenerKafkaTemplate;
 
         @Value(value = "${message.topic.name}")
         private String topicName;
@@ -99,6 +104,9 @@ public class KafkaApplication {
 
         @Value(value = "${greeting.topic.name}")
         private String greetingTopicName;
+        
+        @Value(value="${user.topic.name}")
+        private String userTopicName;
 
         public void sendMessage(String message) {
 
@@ -129,6 +137,11 @@ public class KafkaApplication {
 
         public void sendGreetingMessage(Greeting greeting) {
             greetingKafkaTemplate.send(greetingTopicName, greeting);
+        }
+    
+        public void sendMultiListenerMessage() {
+            User user = new User("NewUser", 27);
+            multiListenerKafkaTemplate.send(userTopicName, user);
         }
     }
 

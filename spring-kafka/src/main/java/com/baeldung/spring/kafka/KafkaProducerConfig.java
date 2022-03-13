@@ -48,5 +48,26 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, Greeting> greetingKafkaTemplate() {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
-
+    
+    @Bean
+    public Map<String, Object> multiProducerConfig() {
+        HashMap<String, Object> props = new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        props.put(JsonSerializer.TYPE_MAPPINGS, "user:com.baeldung.spring.kafka.User");
+        return props;
+    }
+    
+    @Bean
+    public ProducerFactory<String, Object> muliProducerFactory() {
+        return new DefaultKafkaProducerFactory<>(multiProducerConfig());
+    }
+    
+    @Bean
+    public KafkaTemplate<String, Object> kafkaTemplateMultiListener(ProducerFactory<String, Object> producerFactory) {
+        return new KafkaTemplate<>(muliProducerFactory());
+    }
+    
+    
 }
