@@ -43,19 +43,19 @@ public class DbRefIntegrationTest {
             .add("name", "Max")
             .get();
 
-        mongoTemplate.save(catInDatabase, "cat");
-        mongoTemplate.save(dogInDatabase, "dog");
+        mongoTemplate.save(catInDatabase, "Cat");
+        mongoTemplate.save(dogInDatabase, "Dog");
 
         List<DBRef> petsReference = new ArrayList<DBRef>();
-        petsReference.add(new DBRef("cat", catInDatabase.get("_id")));
-        petsReference.add(new DBRef("dog", dogInDatabase.get("_id")));
+        petsReference.add(new DBRef("Cat", catInDatabase.get("_id")));
+        petsReference.add(new DBRef("Dog", dogInDatabase.get("_id")));
 
         DBObject personInDatabase = BasicDBObjectBuilder.start()
             .add("name", "Bob")
             .add("pets", petsReference)
             .get();
 
-        mongoTemplate.save(personInDatabase, "person");
+        mongoTemplate.save(personInDatabase, "Person");
 
         // when
         List<Person> persons = personRepository.findAll();
