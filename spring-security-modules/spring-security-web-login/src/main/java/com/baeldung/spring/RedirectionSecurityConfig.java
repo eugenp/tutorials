@@ -11,10 +11,6 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 //@Profile("!https")
 public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public RedirectionSecurityConfig() {
-        super();
-    }
-
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()

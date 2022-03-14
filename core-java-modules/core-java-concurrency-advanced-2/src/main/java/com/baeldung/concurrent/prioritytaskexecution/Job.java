@@ -1,9 +1,15 @@
 package com.baeldung.concurrent.prioritytaskexecution;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Job implements Runnable {
-    private String jobName;
-    private JobPriority jobPriority;
-    
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Job.class);
+
+    private final String jobName;
+    private final JobPriority jobPriority;
+
     public Job(String jobName, JobPriority jobPriority) {
         this.jobName = jobName;
         this.jobPriority = jobPriority != null ? jobPriority : JobPriority.MEDIUM;
@@ -16,8 +22,7 @@ public class Job implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("Job:" + jobName + 
-              " Priority:" + jobPriority);
+            LOGGER.debug("Job:{} Priority:{}", jobName, jobPriority);
             Thread.sleep(1000);
         } catch (InterruptedException ignored) {
         }

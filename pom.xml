@@ -7,9 +7,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-5-webflux-2</module>
-    </modules>
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
@@ -353,8 +350,9 @@
                 <module>apache-cxf</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo/olingo2</module>
+                <module>apache-olingo</module>
                 <module>apache-poi</module>
+                <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
@@ -400,7 +398,6 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
-                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -422,6 +419,7 @@
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
+                <module>graphql/graphql-dgs</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -431,7 +429,6 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -458,10 +455,12 @@
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
+                <module>javax-servlets-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -481,8 +480,8 @@
                 <module>kubernetes</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-		<module>language-interop</module>
-		<module>libraries-2</module>
+                <module>language-interop</module>
+                <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -518,12 +517,12 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in http://team.baeldung.com/browse/BAEL-20604 -->
+                <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
+                <module>netty</module>
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -555,9 +554,9 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
             </modules>
 
         </profile>
@@ -652,6 +651,7 @@
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
+                <module>spring-data-rest-2</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -838,8 +838,9 @@
                 <module>apache-cxf</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo/olingo2</module>
+                <module>apache-olingo</module>
                 <module>apache-poi</module>
+                <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
@@ -854,6 +855,7 @@
                 <module>atomix</module>
 
                 <module>aws</module>
+                <module>aws-app-sync</module>
                 <module>aws-lambda</module>
                 <module>aws-reactive</module>
 
@@ -884,7 +886,6 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
-                <!-- <module>ddd-modules</module>--> <!-- we haven't upgraded to Java 9 -->
                 <module>deeplearning4j</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -906,6 +907,7 @@
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql/graphql-java</module>
+                <module>graphql/graphql-dgs</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -915,7 +917,6 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
-                <!--<module>httpclient-2</module>--><!-- to be fixed in http://team.baeldung.com/browse/JAVA-2824 -->
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -942,10 +943,12 @@
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
+                <module>javax-servlets-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -966,6 +969,7 @@
                 <module>ksqldb</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
 
@@ -980,6 +984,7 @@
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
@@ -1002,12 +1007,12 @@
                 <module>micronaut</module>
                 <module>microprofile</module>
                 <module>msf4j</module>
-                <!-- <module>muleesb</module> --> <!-- Module broken, fixing in http://team.baeldung.com/browse/BAEL-20604 -->
+                <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <!-- <module>netty</module> --> <!-- we haven't upgraded to Java 13 -->
+                <module>netty</module>
                 <module>ninja</module>
                 <module>open-liberty</module>
 
@@ -1039,9 +1044,9 @@
                 <module>rxjava-observables</module>
                 <module>rxjava-operators</module>
 
-				<module>atomikos</module>
-				<module>reactive-systems</module>
-				<module>slack</module>
+                <module>atomikos</module>
+                <module>reactive-systems</module>
+                <module>slack</module>
             </modules>
 
         </profile>
@@ -1095,6 +1100,7 @@
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-webflux-2</module>
                 <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
@@ -1127,9 +1133,11 @@
                 <module>spring-cucumber</module>
 
                 <module>spring-data-rest</module>
+                <module>spring-data-rest-2</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-di-3</module>
                 <module>spring-drools</module>
 
                 <module>spring-ejb</module>
@@ -1167,6 +1175,8 @@
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
 
+                <module>spring-threads</module>
+
                 <module>spring-vault</module>
                 <module>spring-vertx</module>
 
@@ -1196,8 +1206,8 @@
                 <module>wicket</module>
                 <module>wildfly</module>
                 <module>xml</module>
+                <module>xml-2</module>
                 <module>xstream</module>
-<!--                <module>libraries-concurrency</module>--> <!-- we haven't upgraded to Java 11 -->
             </modules>
 
         </profile>
@@ -1313,9 +1323,9 @@
             </build>
 
             <modules>
-                 <module>core-java-modules/core-java-9</module>
-                 <module>core-java-modules/core-java-9-improvements</module>
-                 <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>core-java-modules/core-java-9</module>
+                <module>core-java-modules/core-java-9-improvements</module>
+                <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
@@ -1325,24 +1335,35 @@
                  <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
+                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-collections-set</module>
+                 <module>core-java-modules/core-java-collections-maps-4</module>
                  <module>core-java-modules/core-java-date-operations-1</module>
                  <module>core-java-modules/core-java-datetime-conversion</module>
                  <module>core-java-modules/core-java-datetime-string</module>
                  <module>core-java-modules/core-java-io-conversions-2</module>
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-string-algorithms-3</module>
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/multimodulemavenproject</module>
+                 <module>core-java-modules/core-java-strings</module>
+                 <module>ddd-modules</module>
+                 <module>docker</module>
+                 <module>httpclient-2</module>
+                 <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
+                 <module>spring-boot-modules/spring-boot-camel</module>	 
                  <module>testing-modules/testing-assertions</module>
+                 <module>persistence-modules/fauna</module>
             </modules>
         </profile>
 
@@ -1381,25 +1402,35 @@
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-collections-maps-4</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-string</module>
                 <module>core-java-modules/core-java-io-conversions-2</module>
                 <module>core-java-modules/core-java-jpms</module>
                 <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-string-algorithms-3</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>ddd-modules</module>
+                <module>docker</module>
+                <module>httpclient-2</module>
+                <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-vs-springboot</module>
                 <module>quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
+                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
+                <module>persistence-modules/fauna</module>
             </modules>
         </profile>
     </profiles>
@@ -1466,7 +1497,6 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <h2.version>1.4.200</h2.version>
