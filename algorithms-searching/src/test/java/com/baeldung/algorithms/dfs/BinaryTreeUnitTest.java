@@ -1,10 +1,10 @@
 package com.baeldung.algorithms.dfs;
 
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
 
 public class BinaryTreeUnitTest {
 
@@ -13,7 +13,7 @@ public class BinaryTreeUnitTest {
 
         BinaryTree bt = createBinaryTree();
 
-        assertTrue(!bt.isEmpty());
+        assertFalse(bt.isEmpty());
     }
 
     @Test
@@ -109,14 +109,6 @@ public class BinaryTreeUnitTest {
         bt.traversePostOrder(bt.root);
         System.out.println();
         bt.traversePostOrderWithoutRecursion();
-    }
-
-    @Test
-    public void givenABinaryTree_WhenTraversingLevelOrder_ThenPrintValues() {
-
-        BinaryTree bt = createBinaryTree();
-
-        bt.traverseLevelOrder();
     }
 
     private BinaryTree createBinaryTree() {

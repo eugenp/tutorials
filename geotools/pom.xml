@@ -15,6 +15,14 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>osgeo-release</id>
+            <name>OSGeo Repository</name>
+            <url>https://repo.osgeo.org/repository/release/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.geotools</groupId>
@@ -32,14 +40,6 @@
             <version>${geotools-swing.version}</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>osgeo-release</id>
-            <name>OSGeo Repository</name>
-            <url>https://repo.osgeo.org/repository/release/</url>
-        </repository>
-    </repositories>
 
     <properties>
         <geotools.version>15.2</geotools.version>

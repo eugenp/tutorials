@@ -11,6 +11,7 @@
 		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 	    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+	    <property name="hibernate.hbm2ddl.import_files">import-db.sql</property>
 	    <property name="show_sql">false</property>        
 	    <mapping resource="com/baeldung/hibernate/criteria/model/Item.hbm.xml" />
 	</session-factory>

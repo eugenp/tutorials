@@ -3,6 +3,7 @@ package com.baeldung.spring.statemachine;
 import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class StateMachineIntegrationTest {
         assertEquals("S2", stateMachine.getState().getId());
     }
 
+    @Ignore("Fixing in JAVA-9808")
     @Test
     public void whenSimpleStringMachineActionState_thenActionExecuted() {
 

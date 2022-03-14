@@ -4,7 +4,6 @@ This module contains articles about Hibernate 5 with Spring.
 
 ### Relevant articles
 
-- [Hibernate Many to Many Annotation Tutorial](https://www.baeldung.com/hibernate-many-to-many)
 - [Programmatic Transactions in the Spring TestContext Framework](https://www.baeldung.com/spring-test-programmatic-transactions)
 - [JPA Criteria Queries](https://www.baeldung.com/hibernate-criteria-queries)
 - [Introduction to Hibernate Search](https://www.baeldung.com/hibernate-search)
