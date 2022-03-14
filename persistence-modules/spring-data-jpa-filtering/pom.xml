@@ -67,6 +67,7 @@
         <start-class>com.baeldung.boot.Application</start-class>
         <testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
         <postgresql.version>42.2.5</postgresql.version>
+        <spring-boot.version>2.6.1</spring-boot.version> <!-- Temp downgrade due to spring-data-jpa issue. Fixing in JAVA-9857 -->
     </properties>
 
 </project>
