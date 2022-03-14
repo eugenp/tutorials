@@ -25,7 +25,7 @@ class RowCounterApp {
     }
 
     static Connection createDummyDB() throws SQLException {
-        String dbUrl = "jdbc:h2:mem:testdb";
+        String dbUrl = "jdbc:h2:mem:storagedb";
         Connection conn = DriverManager.getConnection(dbUrl);
         try (Statement statement = conn.createStatement()) {
             String sql = "CREATE TABLE STORAGE (id INTEGER not null, val VARCHAR(50), PRIMARY KEY (id))";
