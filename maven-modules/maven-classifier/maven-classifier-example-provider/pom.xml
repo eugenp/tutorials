@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>maven-classifier-example-provider</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <parent>
         <artifactId>maven-classifier</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>maven-classifier-example-provider</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <!--        <jdk.11.executable.path></jdk.11.executable.path>-->
-    </properties>
 
     <build>
         <plugins>
@@ -39,21 +31,22 @@
                             <fork>true</fork>
                         </configuration>
                     </execution>
-                    <!--        For example purpose not building as it requires both JDK 8 and 11 executables on the build machine -->
-                    <!--                    <execution>-->
-                    <!--                        <id>JDK 11</id>-->
-                    <!--                        <phase>compile</phase>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>compile</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <fork>true</fork>-->
-                    <!--                            <outputDirectory>${project.build.outputDirectory}_jdk11</outputDirectory>-->
-                    <!--                            <executable>${jdk.11.executable.path}</executable>-->
-                    <!--                            <source>8</source>-->
-                    <!--                            <target>11</target>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
+                    <!-- For example purpose not building as it requires both JDK 8 and 11 executables 
+                        on the build machine -->
+                    <!-- <execution> -->
+                    <!-- <id>JDK 11</id> -->
+                    <!-- <phase>compile</phase> -->
+                    <!-- <goals> -->
+                    <!-- <goal>compile</goal> -->
+                    <!-- </goals> -->
+                    <!-- <configuration> -->
+                    <!-- <fork>true</fork> -->
+                    <!-- <outputDirectory>${project.build.outputDirectory}_jdk11</outputDirectory> -->
+                    <!-- <executable>${jdk.11.executable.path}</executable> -->
+                    <!-- <source>8</source> -->
+                    <!-- <target>11</target> -->
+                    <!-- </configuration> -->
+                    <!-- </execution> -->
                 </executions>
             </plugin>
             <plugin>
@@ -76,18 +69,19 @@
                             <goal>test-jar</goal>
                         </goals>
                     </execution>
-                    <!--        For example purpose not building as it requires both JDK 8 and 11 executables on the build machine -->
-                    <!--                    <execution>-->
-                    <!--                        <id>default-package-jdk11</id>-->
-                    <!--                        <phase>package</phase>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>jar</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <classesDirectory>${project.build.outputDirectory}_jdk11</classesDirectory>-->
-                    <!--                            <classifier>jdk11</classifier>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
+                    <!-- For example purpose not building as it requires both JDK 8 and 11 executables 
+                        on the build machine -->
+                    <!-- <execution> -->
+                    <!-- <id>default-package-jdk11</id> -->
+                    <!-- <phase>package</phase> -->
+                    <!-- <goals> -->
+                    <!-- <goal>jar</goal> -->
+                    <!-- </goals> -->
+                    <!-- <configuration> -->
+                    <!-- <classesDirectory>${project.build.outputDirectory}_jdk11</classesDirectory> -->
+                    <!-- <classifier>jdk11</classifier> -->
+                    <!-- </configuration> -->
+                    <!-- </execution> -->
                 </executions>
             </plugin>
             <plugin>
@@ -119,4 +113,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <!-- <jdk.11.executable.path></jdk.11.executable.path> -->
+    </properties>
+
 </project>

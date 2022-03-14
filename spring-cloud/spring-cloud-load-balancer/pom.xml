@@ -19,7 +19,7 @@
         <module>spring-cloud-loadbalancer-server</module>
         <module>spring-cloud-loadbalancer-client</module>
     </modules>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -44,7 +44,7 @@
     <properties>
         <spring-boot.version>2.6.1</spring-boot.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
-         <log4j2.version>2.17.1</log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
