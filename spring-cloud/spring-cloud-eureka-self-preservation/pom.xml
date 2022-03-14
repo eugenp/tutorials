@@ -20,6 +20,18 @@
         <module>spring-cloud-eureka-client</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,6 +44,7 @@
     <properties>
         <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Greenwich.SR3</spring-cloud-dependencies.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
