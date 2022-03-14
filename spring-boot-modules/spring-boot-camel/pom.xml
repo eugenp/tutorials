@@ -63,6 +63,9 @@
                         <goals>
                             <goal>repackage</goal>
                         </goals>
+                        <configuration>
+                            <mainClass>com.baeldung.camel.boot.testing.GreetingsFileSpringApplication</mainClass>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
