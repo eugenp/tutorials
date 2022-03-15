@@ -47,12 +47,13 @@ public class SpringBootPersistenceApplication implements ApplicationRunner {
                     jsonLines = ImportUtils.lines(new File(source));
                 }
 
-                if (jsonLines == null || jsonLines.isEmpty())
-                    throw new IllegalArgumentException("no input to import");
-
-                ImportJsonService importService = context.getBean(ImportJsonService.class);
-                String result = importService.importTo(collection, jsonLines);
-                log.info(source + " - result: " + result);
+                if (jsonLines == null || jsonLines.isEmpty()) {
+                    log.warn(source + " - no input to import");
+                } else {
+                    ImportJsonService importService = context.getBean(ImportJsonService.class);
+                    String result = importService.importTo(collection, jsonLines);
+                    log.info(source + " - import result: " + result);
+                }
             }
         }
     }
