@@ -17,7 +17,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.3.30.RELEASE</version>
+            <version>${spring-core.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring-core.version>4.3.30.RELEASE</spring-core.version>
+    </properties>
 </project>
