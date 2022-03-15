@@ -37,35 +37,13 @@
     </dependencies>
 
     <!-- uncomment in order to enable Hibernate Validator Anotation Processor -->
-    <!--
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <fork>true</fork>
-                    <compilerArgs>
-                        <arg>-Averbose=true</arg>
-                        <arg>-AmethodConstraintsSupported=true</arg>
-                        <arg>-AdiagnosticKind=ERROR</arg>
-                    </compilerArgs>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.hibernate.validator</groupId>
-                            <artifactId>hibernate-validator-annotation-processor</artifactId>
-                            <version>${hibernate-validator.ap.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    -->
+    <!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+        <version>${maven.compiler.version}</version> <configuration> <source>${maven.compiler.source}</source> 
+        <target>${maven.compiler.target}</target> <fork>true</fork> <compilerArgs> <arg>-Averbose=true</arg> 
+        <arg>-AmethodConstraintsSupported=true</arg> <arg>-AdiagnosticKind=ERROR</arg> </compilerArgs> <annotationProcessorPaths> 
+        <path> <groupId>org.hibernate.validator</groupId> <artifactId>hibernate-validator-annotation-processor</artifactId> 
+        <version>${hibernate-validator.ap.version}</version> </path> </annotationProcessorPaths> </configuration> 
+        </plugin> </plugins> </build> -->
 
     <properties>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
