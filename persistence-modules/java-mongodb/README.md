@@ -16,3 +16,4 @@ This module contains articles about MongoDB in Java.
 - [Update Multiple Fields in a MongoDB Document](https://www.baeldung.com/mongodb-update-multiple-fields)
 - [Update Documents in MongoDB](https://www.baeldung.com/mongodb-update-documents)
 - [Check Collection Existence in MongoDB](https://www.baeldung.com/java-check-collection-existence-mongodb)
+- [Case Insensitive Sorting in MongoDB](https://www.baeldung.com/java-mongodb-case-insensitive-sorting)
