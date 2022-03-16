@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Service
 public class SmartHouseManager implements EnergyConsumptionAddEvent {
-    private static final int MAXIMUM_DAILY_CONSUMPTION = 1000;
+    static final int MAXIMUM_DAILY_CONSUMPTION = 1000;
     private final ExcessiveEnergyNotifier excessiveEnergyNotifier;
     private final EnergyRepository repository;
 
