@@ -8,17 +8,17 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManagerFactory;
 
 @Service
-public class TransactionService {
+public class BookService {
 
     private EntityManagerFactory entityManagerFactory;
 
-    public TransactionService(@Autowired @Qualifier("h2EntityManagerFactory") EntityManagerFactory entityManagerFactory) {
+    public BookService(@Autowired @Qualifier("h2EntityManagerFactory") EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
 
     @Transactional(readOnly = true)
-    public Transaction getTransactionById(long id) {
+    public Book getBookById(long id) {
         return entityManagerFactory.createEntityManager()
-            .find(Transaction.class, id);
+            .find(Book.class, id);
     }
 }

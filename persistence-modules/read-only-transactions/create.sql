@@ -1,4 +1,4 @@
-create table transactions (
+create table book (
     id bigint(20) AUTO_INCREMENT primary key,
     name varchar(255) not null,
     uuid varchar(40)
@@ -28,7 +28,7 @@ BEGIN
                     else @name1
             end;
 
-        insert into transactions(name, uuid) values(@name, uuid());
+        insert into book(name, uuid) values(@name, uuid());
         SET @counter=@counter+1;
     end while;
 

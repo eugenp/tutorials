@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.readonlytransactions.h2.Config;
-import com.baeldung.readonlytransactions.h2.Transaction;
+import com.baeldung.readonlytransactions.h2.Book;
 import com.baeldung.readonlytransactions.mysql.spring.ReadOnlyInterception;
 
 import java.util.UUID;
@@ -44,15 +44,15 @@ class JPATransactionIntegrationTest {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction()
             .begin();
-        entityManager.createQuery("DELETE FROM Transaction")
+        entityManager.createQuery("DELETE FROM Book")
             .executeUpdate();
 
-        Transaction transaction = new Transaction();
-        transaction.setName("Test 1");
-        transaction.setUuid(UUID.randomUUID()
+        Book book = new Book();
+        book.setName("Test 1");
+        book.setUuid(UUID.randomUUID()
             .toString());
 
-        entityManager.merge(transaction);
+        entityManager.merge(book);
         entityManager.getTransaction()
             .commit();
     }
@@ -65,13 +65,13 @@ class JPATransactionIntegrationTest {
             .setDefaultReadOnly(true);
         entityManager.getTransaction()
             .begin();
-        Transaction transaction = entityManager.find(Transaction.class, 1L);
+        Book book = entityManager.find(Book.class, 1L);
         entityManager.getTransaction()
             .commit();
         entityManager.unwrap(Session.class)
             .setDefaultReadOnly(false);
 
-        assertNotNull(transaction);
+        assertNotNull(book);
     }
 
 }

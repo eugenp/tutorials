@@ -21,8 +21,8 @@ import com.baeldung.readonlytransactions.mysql.dao.MyRepoJdbc;
 import com.baeldung.readonlytransactions.mysql.dao.MyRepoSpring;
 import com.baeldung.readonlytransactions.mysql.spring.Config;
 import com.baeldung.readonlytransactions.mysql.spring.ReadOnlyInterception;
-import com.baeldung.readonlytransactions.mysql.spring.entities.TransactionEntity;
-import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
+import com.baeldung.readonlytransactions.mysql.spring.entities.BookEntity;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.BookRepository;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -49,7 +49,7 @@ class TransactionSetupIntegrationTest {
     private MyRepoSpring repoSpring;
 
     @Autowired
-    private TransactionRepository repository;
+    private BookRepository repository;
 
     @Test
     void givenTheDifferentTransactionSetup_whenRunningAThroughputTest_thenWeCanObserveTheSystem() {
@@ -95,12 +95,12 @@ class TransactionSetupIntegrationTest {
 
     @Test
     void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactional_thenSpringShouldTakeCareOfTheTransaction() {
-        TransactionEntity transaction = new TransactionEntity();
-        transaction.setName("Persistence test");
-        transaction.setUuid(UUID.randomUUID()
+        BookEntity book = new BookEntity();
+        book.setName("Persistence test");
+        book.setUuid(UUID.randomUUID()
             .toString());
-        transaction = repository.persist(transaction);
+        book = repository.persist(book);
 
-        assertNotNull(transaction.getId());
+        assertNotNull(book.getId());
     }
 }

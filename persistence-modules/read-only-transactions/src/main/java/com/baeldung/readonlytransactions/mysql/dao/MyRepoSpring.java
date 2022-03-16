@@ -1,15 +1,15 @@
 package com.baeldung.readonlytransactions.mysql.dao;
 
-import com.baeldung.readonlytransactions.mysql.spring.repositories.TransactionRepository;
+import com.baeldung.readonlytransactions.mysql.spring.repositories.BookRepository;
 
 import java.util.SplittableRandom;
 
 public class MyRepoSpring extends BaseRepo {
 
     private SplittableRandom random = new SplittableRandom();
-    private TransactionRepository repository;
+    private BookRepository repository;
 
-    public MyRepoSpring(TransactionRepository repository) {
+    public MyRepoSpring(BookRepository repository) {
         this.repository = repository;
     }
 

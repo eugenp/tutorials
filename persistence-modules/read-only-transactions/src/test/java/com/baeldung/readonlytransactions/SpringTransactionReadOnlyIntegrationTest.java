@@ -15,9 +15,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.readonlytransactions.h2.Config;
-import com.baeldung.readonlytransactions.h2.Transaction;
+import com.baeldung.readonlytransactions.h2.Book;
 import com.baeldung.readonlytransactions.h2.TransactionConfig;
-import com.baeldung.readonlytransactions.h2.TransactionService;
+import com.baeldung.readonlytransactions.h2.BookService;
 
 import java.util.UUID;
 
@@ -25,7 +25,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = SpringTransactionReadOnlyIntegrationTest.TestConfig.class, classes = { TransactionService.class })
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, initializers = SpringTransactionReadOnlyIntegrationTest.TestConfig.class, classes = { BookService.class })
 class SpringTransactionReadOnlyIntegrationTest {
 
     static class TestConfig implements ApplicationContextInitializer<GenericApplicationContext> {
@@ -43,30 +43,30 @@ class SpringTransactionReadOnlyIntegrationTest {
     private EntityManagerFactory entityManagerFactory;
 
     @Autowired
-    private TransactionService service;
+    private BookService service;
 
     @BeforeEach
     void setUp() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction()
             .begin();
-        entityManager.createQuery("DELETE FROM Transaction")
+        entityManager.createQuery("DELETE FROM Book")
             .executeUpdate();
 
-        Transaction transaction = new Transaction();
-        transaction.setName("Test 1");
-        transaction.setUuid(UUID.randomUUID()
+        Book book = new Book();
+        book.setName("Test 1");
+        book.setUuid(UUID.randomUUID()
             .toString());
 
-        entityManager.merge(transaction);
+        entityManager.merge(book);
         entityManager.getTransaction()
             .commit();
     }
 
     @Test
     void givenThatSpringTransactionManagementIsEnabled_whenAMethodIsAnnotatedAsTransactionalReadOnly_thenSpringShouldTakeCareOfTheTransaction() {
-        Transaction transaction = service.getTransactionById(1L);
+        Book book = service.getBookById(1L);
 
-        assertNotNull(transaction);
+        assertNotNull(book);
     }
 }

@@ -1,4 +1,4 @@
-package com.baeldung.readonlytransactions.h2;
+package com.baeldung.readonlytransactions.mysql.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "transactions")
-public class Transaction {
+@Table(name = "book")
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

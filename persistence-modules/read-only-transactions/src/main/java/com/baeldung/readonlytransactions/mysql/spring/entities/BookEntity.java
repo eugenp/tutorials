@@ -1,4 +1,4 @@
-package com.baeldung.readonlytransactions.mysql.entities;
+package com.baeldung.readonlytransactions.mysql.spring.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "transactions")
-public class Transaction {
+@Table(name = "book")
+public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,3 +42,4 @@ public class Transaction {
         this.uuid = uuid;
     }
 }
+

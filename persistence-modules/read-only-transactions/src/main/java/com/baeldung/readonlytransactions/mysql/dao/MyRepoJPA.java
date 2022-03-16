@@ -2,7 +2,7 @@ package com.baeldung.readonlytransactions.mysql.dao;
 
 import org.hibernate.Session;
 
-import com.baeldung.readonlytransactions.mysql.entities.Transaction;
+import com.baeldung.readonlytransactions.mysql.entities.Book;
 
 import java.util.SplittableRandom;
 import java.util.concurrent.atomic.AtomicLong;
@@ -28,7 +28,7 @@ public class MyRepoJPA extends BaseRepo {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Session session = entityManager.unwrap(Session.class);
         session.setDefaultReadOnly(true);
-        entityManager.find(Transaction.class, 1L + random.nextLong(0, 1000000));
+        entityManager.find(Book.class, 1L + random.nextLong(0, 1000000));
         count.incrementAndGet();
         entityManager.clear();
     }
