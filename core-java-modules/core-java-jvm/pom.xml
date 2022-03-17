@@ -64,13 +64,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <javaassist.version>3.27.0-GA</javaassist.version>
-        <sun.tools.version>1.8.0</sun.tools.version>
-        <jol-core.version>0.10</jol-core.version>
-        <asm.version>8.0.1</asm.version>
-        <bcel.version>6.5.0</bcel.version>
-    </properties>
     <profiles>
         <!-- java instrumentation profiles to build jars -->
         <profile>
@@ -180,5 +173,13 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <javaassist.version>3.27.0-GA</javaassist.version>
+        <sun.tools.version>1.8.0</sun.tools.version>
+        <jol-core.version>0.10</jol-core.version>
+        <asm.version>8.0.1</asm.version>
+        <bcel.version>6.5.0</bcel.version>
+    </properties>
 
 </project>
