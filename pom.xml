@@ -1206,6 +1206,7 @@
                 <module>wicket</module>
                 <module>wildfly</module>
                 <module>xml</module>
+                <module>xml-2</module>
                 <module>xstream</module>
             </modules>
 

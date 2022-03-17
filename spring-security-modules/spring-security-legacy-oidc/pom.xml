@@ -14,8 +14,8 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-    
-     <dependencyManagement>
+
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
@@ -62,7 +62,7 @@
         <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
         <jwks-rsa.version>0.3.0</jwks-rsa.version>
         <spring-boot.version>2.4.7</spring-boot.version>
-         <log4j2.version>2.17.1</log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

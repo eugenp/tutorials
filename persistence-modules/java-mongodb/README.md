@@ -14,3 +14,7 @@ This module contains articles about MongoDB in Java.
 - [How to Check Field Existence in MongoDB?](https://www.baeldung.com/mongodb-check-field-exists)
 - [Get Last Inserted Document ID in MongoDB With Java Driver](https://www.baeldung.com/java-mongodb-last-inserted-id)
 - [Update Multiple Fields in a MongoDB Document](https://www.baeldung.com/mongodb-update-multiple-fields)
+- [Update Documents in MongoDB](https://www.baeldung.com/mongodb-update-documents)
+- [Check Collection Existence in MongoDB](https://www.baeldung.com/java-check-collection-existence-mongodb)
+- [Case Insensitive Sorting in MongoDB](https://www.baeldung.com/java-mongodb-case-insensitive-sorting)
+- [Push and Set Operations in Same MongoDB Update](https://www.baeldung.com/java-mongodb-push-set)
