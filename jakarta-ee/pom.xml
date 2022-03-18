@@ -1,27 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
-    <artifactId>mvc-2.0</artifactId>
+    <artifactId>jakarta-ee</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>jakarta-ee</name>
     <packaging>war</packaging>
-
-    <name>mvc-2.0</name>
-
-    <properties>
-        <jakartaee-api.version>9.0.0</jakartaee-api.version>
-        <krazo.version>2.0.0</krazo.version>
-        <jakarta.mvc-api.version>2.0.0</jakarta.mvc-api.version>
-        <junit.jupiter.version>5.8.2</junit.jupiter.version>
-        <local.glassfish.home>C:/glassfish6</local.glassfish.home>
-        <local.glassfish.user>admin</local.glassfish.user>
-        <local.glassfish.domain>mvn-domain</local.glassfish.domain>
-        <mockito.version>1.10.19</mockito.version>
-        <local.glassfish.passfile>
-            ${local.glassfish.home}\\domains\\${local.glassfish.domain}\\config\\domain-passwords
-        </local.glassfish.passfile>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -30,13 +15,11 @@
             <version>${jakartaee-api.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>jakarta.mvc</groupId>
             <artifactId>jakarta.mvc-api</artifactId>
             <version>${jakarta.mvc-api.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.eclipse.krazo</groupId>
             <artifactId>krazo-jersey</artifactId>
@@ -54,7 +37,6 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -67,7 +49,7 @@
                 <configuration>
                     <glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
                     <user>admin</user>
-                    <!-- <passwordFile>${local.glassfish.passfile}</passwordFile>-->
+                    <!-- <passwordFile>${local.glassfish.passfile}</passwordFile> -->
                     <adminPassword>password</adminPassword>
 
                     <domain>
@@ -108,4 +90,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jakartaee-api.version>9.0.0</jakartaee-api.version>
+        <krazo.version>2.0.0</krazo.version>
+        <jakarta.mvc-api.version>2.0.0</jakarta.mvc-api.version>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
+        <local.glassfish.home>C:/glassfish6</local.glassfish.home>
+        <local.glassfish.user>admin</local.glassfish.user>
+        <local.glassfish.domain>mvn-domain</local.glassfish.domain>
+        <mockito.version>1.10.19</mockito.version>
+        <local.glassfish.passfile>
+            ${local.glassfish.home}\\domains\\${local.glassfish.domain}\\config\\domain-passwords
+        </local.glassfish.passfile>
+    </properties>
+
 </project>
