@@ -15,8 +15,8 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-    
-     <dependencyManagement>
+
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
@@ -27,7 +27,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
 
     <dependencies>
         <dependency>
@@ -85,7 +84,7 @@
             is available -->
         <spring-boot.version>2.5.2</spring-boot.version>
         <start-class>com.baeldung.oauth2.SpringOAuthApplication</start-class>
-         <log4j2.version>2.17.1</log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
