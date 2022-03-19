@@ -1350,6 +1350,8 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>parent-boot-2/hexagonal-architecture-example</module>
+                <module>patterns/hexagonal-architecture-example</module>
             </modules>
         </profile>
 
