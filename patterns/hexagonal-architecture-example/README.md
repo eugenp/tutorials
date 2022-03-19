@@ -46,5 +46,5 @@ The app provides functionality for following use cases for a REST Api based inte
 
 ![error3.png](media/error3.png)
 
-![tests.png](media/tests.png)
+![tests.png](media/tests_ss.png)
 
