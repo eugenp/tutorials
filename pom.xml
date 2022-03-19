@@ -1361,9 +1361,11 @@
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>spring-boot-modules/spring-boot-camel</module>	 
+                 <module>spring-boot-modules/spring-boot-camel</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
+                <module>parent-boot-2/hexagonal-architecture-example</module>
+                <module>patterns/hexagonal-architecture-example</module>
             </modules>
         </profile>
 
@@ -1431,6 +1433,8 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>parent-boot-2/hexagonal-architecture-example</module>
+                <module>patterns/hexagonal-architecture-example</module>
             </modules>
         </profile>
     </profiles>
