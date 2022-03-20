@@ -5,6 +5,8 @@ import com.baeldung.graphqlvsrest.resolver.Mutation;
 import com.baeldung.graphqlvsrest.resolver.ProductResolver;
 import com.baeldung.graphqlvsrest.resolver.Query;
 import com.baeldung.graphqlvsrest.repository.ProductRepository;
+import graphql.scalars.ExtendedScalars;
+import graphql.schema.GraphQLScalarType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,11 @@ public class GraphqlConfiguration {
     @Bean
     public ProductResolver productResolver(){
         return new ProductResolver(orderRepository);
+    }
+
+    @Bean
+    public GraphQLScalarType json() {
+        return ExtendedScalars.Json;
     }
 
     @Bean

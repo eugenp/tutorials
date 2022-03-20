@@ -1,14 +1,12 @@
 package com.baeldung.graphqlvsrest.repository.impl;
 
+import com.baeldung.graphqlvsrest.entity.Attribute;
 import com.baeldung.graphqlvsrest.entity.Product;
 import com.baeldung.graphqlvsrest.model.ProductModel;
 import com.baeldung.graphqlvsrest.repository.ProductRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -28,8 +26,16 @@ public class ProductRepositoryImpl implements ProductRepository {
             product.setAverage_rating(0F);
             product.setImage_url(Arrays.asList(String.format("www.baeldung.com/imageurl/%d", i)));
             product.setVideo_url(Arrays.asList(String.format("www.baeldung.com/videourl/%d", i)));
+            product.setAttributes(createAttributes(i));
             productList.add(product);
         }
+    }
+
+    private Map<String, Attribute> createAttributes(int i) {
+        Map<String, Attribute> attributeMap = new HashMap<>();
+        attributeMap.put(String.format("attribute_%d",i), new Attribute(String.format("Attribute%d name",i),"This is custom attribute description","This is custom attribute unit"));
+        attributeMap.put("size", new Attribute((i & 1) == 0 ? "Small" : "Large","This is custom attribute description","This is custom attribute unit"));
+        return attributeMap;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.baeldung.graphqlvsrest.entity;
 import com.baeldung.graphqlvsrest.model.ProductModel;
 
 import java.util.List;
+import java.util.Map;
 
 public class Product {
     private Integer id;
@@ -15,6 +16,7 @@ public class Product {
     private List<String> video_url;
     private Integer stock;
     private Float average_rating;
+    private Map<String, Attribute> attributes;
 
     public Product(Integer id, ProductModel productModel) {
         this.id = id;
@@ -28,6 +30,7 @@ public class Product {
         this.average_rating = 0F;
         this.status = productModel.getStatus();
     }
+
 
     public Product(){
 
@@ -111,5 +114,13 @@ public class Product {
 
     public void setAverage_rating(Float average_rating) {
         this.average_rating = average_rating;
+    }
+
+    public Map<String, Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, Attribute> attributes) {
+        this.attributes = attributes;
     }
 }

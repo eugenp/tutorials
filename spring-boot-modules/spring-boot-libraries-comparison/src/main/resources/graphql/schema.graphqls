@@ -10,9 +10,24 @@ type Product {
     stock: Int
     average_rating: Float
     orders:[Order]
+    attribute_string:String
+    attribute_list:[AttributeKeyValuePair]
+    attributes: JSON
 }
 
-type Order{
+type AttributeKeyValuePair {
+    key:String
+    value:Attribute
+}
+
+type Attribute {
+    name:String
+    description:String
+    unit:String
+}
+scalar JSON
+
+type Order {
     id:ID
     product_id:Int
     customer_uuid:String
