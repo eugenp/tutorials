@@ -65,7 +65,7 @@ public class LoggingUnitTest {
     }
 
     @Test
-    void whenInsertMultipleDocuments_thenFinaAllOk() {
+    void whenInsertMultipleDocuments_thenFindAllOk() {
         Book book = new Book();
         book.setBookName("Book");
         book.setAuthorName("Author");
