@@ -26,7 +26,7 @@ import com.baeldung.mongodb.models.Book;
 
 @SpringBootTest
 @TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG" })
-public class LoggingTest {
+public class LoggingUnitTest {
 
     @Autowired
     private MongoTemplate mongoTemplate;
