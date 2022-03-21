@@ -21,13 +21,13 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class Account extends BaseEntity {
 
-    @Column(name = "balance")
-    private BigDecimal balance;
+	@Column(name = "balance")
+	private BigDecimal balance;
 
-    @OneToMany(mappedBy = "sourceAccount")
-    private List<Transaction> sourceTransactions;
+	@OneToMany(mappedBy = "sourceAccount")
+	private List<Transaction> sourceTransactions;
 
-    @OneToMany(mappedBy = "targetAccount")
-    private List<Transaction> targetTransactions;
+	@OneToMany(mappedBy = "targetAccount")
+	private List<Transaction> targetTransactions;
 
 }

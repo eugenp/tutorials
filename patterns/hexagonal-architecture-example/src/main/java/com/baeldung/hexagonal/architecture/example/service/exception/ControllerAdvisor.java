@@ -17,39 +17,39 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(TransactionNotAllowed.class)
-    public ResponseEntity<Object> handleCityNotFoundException(TransactionNotAllowed ex) {
+	@ExceptionHandler(TransactionNotAllowed.class)
+	public ResponseEntity<Object> handleCityNotFoundException(TransactionNotAllowed ex) {
 
-        Map<String, Object> body = new LinkedHashMap<>();
-        body.put("status", 400);
-        body.put("message", ex.getMessage());
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("status", 400);
+		body.put("message", ex.getMessage());
 
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-    }
+		return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+	}
 
-    @ExceptionHandler(NoDataFoundException.class)
-    public ResponseEntity<Object> handleNodataFoundException(NoDataFoundException ex) {
+	@ExceptionHandler(NoDataFoundException.class)
+	public ResponseEntity<Object> handleNodataFoundException(NoDataFoundException ex) {
 
-        Map<String, Object> body = new LinkedHashMap<>();
-        body.put("status", 404);
-        body.put("message", ex.getMessage());
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("status", 404);
+		body.put("message", ex.getMessage());
 
-        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
-    }
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-        Map<String, Object> body = new LinkedHashMap<>();
-        body.put("status", status.value());
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("status", status.value());
 
-        List<String> errors = ex.getBindingResult()
-            .getFieldErrors()
-            .stream()
-            .map(x -> x.getField() + " " + x.getDefaultMessage())
-            .collect(Collectors.toList());
+		List<String> errors = ex.getBindingResult()
+			.getFieldErrors()
+			.stream()
+			.map(x -> x.getField() + " " + x.getDefaultMessage())
+			.collect(Collectors.toList());
 
-        body.put("errors", errors);
-        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-    }
+		body.put("errors", errors);
+		return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+	}
 }

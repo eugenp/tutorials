@@ -22,12 +22,12 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(value = "/api/transaction", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class TransactionController {
 
-    private final TransactionService transactionService;
+	private final TransactionService transactionService;
 
-    @PostMapping
-    @ApiOperation(value = "Make a transaction")
-    public TransactionResponse updateBalance(@RequestBody @Valid TransactionRequest request) throws Exception {
-        TransactionResponse transactionDto = transactionService.makeTransaction(request);
-        return transactionDto;
-    }
+	@PostMapping
+	@ApiOperation(value = "Make a transaction")
+	public TransactionResponse updateBalance(@RequestBody @Valid TransactionRequest request) throws Exception {
+		TransactionResponse transactionDto = transactionService.makeTransaction(request);
+		return transactionDto;
+	}
 }

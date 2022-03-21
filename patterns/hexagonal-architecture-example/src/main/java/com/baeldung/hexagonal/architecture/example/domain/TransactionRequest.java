@@ -12,18 +12,18 @@ import lombok.Setter;
 @Setter
 public class TransactionRequest {
 
-    @NotNull
-    @Positive
-    private BigDecimal amount;
+	@NotNull
+	@Positive
+	private BigDecimal amount;
 
-    private String details;
+	private String details;
 
-    private Long referenceNo;
+	private Long referenceNo;
 
-    @NotNull
-    private Long sourceAccountNo;
+	@NotNull
+	private Long sourceAccountNo;
 
-    @NotNull
-    private Long targetAccountNo;
+	@NotNull
+	private Long targetAccountNo;
 
 }
