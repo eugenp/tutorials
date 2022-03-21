@@ -18,11 +18,11 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/account")
 public class AccountController {
 
-    private final AccountService accountService;
+	private final AccountService accountService;
 
-    @GetMapping("/{accountNo}")
-    @ApiOperation(value = "Get Account Statement")
-    public AccountDto getAccountInfo(@PathVariable Long accountNo) throws Exception {
-        return accountService.getAccountInfo(accountNo);
-    }
+	@GetMapping("/{accountNo}")
+	@ApiOperation(value = "Get Account Statement")
+	public AccountDto getAccountInfo(@PathVariable Long accountNo) throws Exception {
+		return accountService.getAccountInfo(accountNo);
+	}
 }

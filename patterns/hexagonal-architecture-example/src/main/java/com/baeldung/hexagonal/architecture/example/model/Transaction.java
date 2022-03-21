@@ -25,27 +25,27 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 public class Transaction extends BaseEntity {
 
-    @Column(name = "time")
-    @Builder.Default
-    private OffsetDateTime time = OffsetDateTime.now();
+	@Column(name = "time")
+	@Builder.Default
+	private OffsetDateTime time = OffsetDateTime.now();
 
-    @Column(name = "amount", nullable = false)
-    private BigDecimal amount;
+	@Column(name = "amount", nullable = false)
+	private BigDecimal amount;
 
-    @Column(name = "details")
-    private String details;
+	@Column(name = "details")
+	private String details;
 
-    @Column(name = "reference_no")
-    private Long referenceNo;
+	@Column(name = "reference_no")
+	private Long referenceNo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "source_account_id", nullable = false)
-    @ToString.Exclude
-    private Account sourceAccount;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "source_account_id", nullable = false)
+	@ToString.Exclude
+	private Account sourceAccount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "target_account_id", nullable = false)
-    @ToString.Exclude
-    private Account targetAccount;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "target_account_id", nullable = false)
+	@ToString.Exclude
+	private Account targetAccount;
 
 }

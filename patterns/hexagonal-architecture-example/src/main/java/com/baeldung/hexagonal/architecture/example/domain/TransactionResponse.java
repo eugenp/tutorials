@@ -9,14 +9,14 @@ import lombok.Setter;
 @Getter
 public class TransactionResponse {
 
-    private BigDecimal amount;
+	private BigDecimal amount;
 
-    private String details;
+	private String details;
 
-    private Long referenceNo;
+	private Long referenceNo;
 
-    private Long sourceAccountNo;
+	private Long sourceAccountNo;
 
-    private Long targetAccountNo;
+	private Long targetAccountNo;
 
 }

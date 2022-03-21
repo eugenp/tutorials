@@ -11,13 +11,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AccountAssembler {
 
-    private final TransactionsAssembler transactionsAssembler;
-    private final TransactionRepository transactionRepository;
+	private final TransactionsAssembler transactionsAssembler;
+	private final TransactionRepository transactionRepository;
 
-    public AccountDto toModel(Account entity) {
-        // TODO: add rounding for upto two decimal places for balance
-        AccountDto dto = new AccountDto(entity.getId(), entity.getBalance());
-        dto.setTransactions(transactionsAssembler.toModel(transactionRepository.findAllForAccount(entity.getId())));
-        return dto;
-    }
+	public AccountDto toModel(Account entity) {
+		// TODO: add rounding for upto two decimal places for balance
+		AccountDto dto = new AccountDto(entity.getId(), entity.getBalance());
+		dto.setTransactions(transactionsAssembler.toModel(transactionRepository.findAllForAccount(entity.getId())));
+		return dto;
+	}
 }

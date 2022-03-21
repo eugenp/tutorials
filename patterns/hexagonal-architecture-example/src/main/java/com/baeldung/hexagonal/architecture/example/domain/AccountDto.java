@@ -12,10 +12,10 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class AccountDto {
 
-    private final Long accountNumber;
+	private final Long accountNumber;
 
-    private final BigDecimal accountBalance;
+	private final BigDecimal accountBalance;
 
-    private List<TransactionResponse> transactions;
+	private List<TransactionResponse> transactions;
 
 }

@@ -27,24 +27,9 @@ The app provides functionality for following use cases for a REST Api based inte
 
 ### Examples of Api Usage
 
-![endpoints.png](media/endpoints.png)
 
-![transactionRequest.png](media/transactionRequest.png)
-
-![accontStatement.png](media/accontStatement.png)
-
-### Possible Next Steps/Things to improve:
+### Improvements:
 
 - Allow for transactions/operations upto only 2 decimal places for account balance and transaction amounts
 - Optimise service methods for minimising database connections
-
-### Error Snapshots
-
-![error1.png](media/error1.png)
-
-![error2.png](media/error2.png)
-
-![error3.png](media/error3.png)
-
-![tests.png](media/tests_ss.png)
 
