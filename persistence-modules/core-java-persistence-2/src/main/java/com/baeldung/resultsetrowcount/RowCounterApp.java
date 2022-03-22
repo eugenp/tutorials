@@ -1,8 +1,5 @@
 package com.baeldung.resultsetrowcount;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,18 +7,16 @@ import java.sql.Statement;
 
 class RowCounterApp {
 
-    static Logger logger = LoggerFactory.getLogger(RowCounterApp.class);
-
     public static void main(String[] args) throws SQLException {
         Connection conn = createDummyDB();
 
         String selectQuery = "SELECT * FROM STORAGE";
 
         StandardRowCounter standardCounter = new StandardRowCounter(conn);
-        logger.info("Standard counter count: {}", standardCounter.getQueryRowCount(selectQuery));
+        assert standardCounter.getQueryRowCount(selectQuery) == 3;
 
         ScrollableRowCounter scrollableCounter = new ScrollableRowCounter(conn);
-        logger.info("Scrollable counter count: {}", scrollableCounter.getQueryRowCount(selectQuery));
+        assert scrollableCounter.getQueryRowCount(selectQuery) == 3;
     }
 
     static Connection createDummyDB() throws SQLException {
