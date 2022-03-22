@@ -22,7 +22,7 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.test.context.TestPropertySource;
 
-import com.baeldung.mongodb.models.Book;
+import com.baeldung.logging.model.Book;
 
 @SpringBootTest
 @TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG" })

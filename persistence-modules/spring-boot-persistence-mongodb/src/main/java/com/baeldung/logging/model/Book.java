@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.models;
+package com.baeldung.logging.model;
 
 import java.util.Objects;
 
