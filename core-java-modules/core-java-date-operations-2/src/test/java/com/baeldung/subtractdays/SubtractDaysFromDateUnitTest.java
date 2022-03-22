@@ -37,7 +37,7 @@ public class SubtractDaysFromDateUnitTest {
     }
 
     @Test
-    public void givenLocalDate_whenSubtractingFiveDays_dateIsChangedCorrectly() {
+    public void givenLocalDateTime_whenSubtractingFiveDays_dateIsChangedCorrectly() {
         LocalDate localDateTime = LocalDate.of(2022, 4, 20);
 
         localDateTime = localDateTime.minusDays(5);
