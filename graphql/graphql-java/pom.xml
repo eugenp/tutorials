@@ -49,7 +49,7 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java</artifactId>
-            <version>9.2</version>
+            <version>12.0</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
@@ -99,6 +99,14 @@
             <version>3.22.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>${graphql-java-extended-scalars.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -149,6 +157,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <graphql.java.generator.version>1.18</graphql.java.generator.version>
+        <graphql-java-extended-scalars.version>17.0</graphql-java-extended-scalars.version>
     </properties>
 
 </project>
