@@ -37,7 +37,6 @@ public class FormatInstantUnitTest {
 
     @Test
     public void givenInstant_WhenUsingToString_thenFormat() {
-        
         Instant instant = Instant.ofEpochMilli(1641828224000L);
         String formattedInstant = instant.toString();
 
