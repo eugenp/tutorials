@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Consumes https://github.com/Baeldung/spring-hypermedia-api
  */
 @Slf4j
-class BookClientLiveTest {
+class BookClientIntegrationTest {
     private BookClient bookClient;
 
     @BeforeEach
