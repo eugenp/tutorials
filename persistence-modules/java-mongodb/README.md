@@ -18,3 +18,4 @@ This module contains articles about MongoDB in Java.
 - [Check Collection Existence in MongoDB](https://www.baeldung.com/java-check-collection-existence-mongodb)
 - [Case Insensitive Sorting in MongoDB](https://www.baeldung.com/java-mongodb-case-insensitive-sorting)
 - [Push and Set Operations in Same MongoDB Update](https://www.baeldung.com/java-mongodb-push-set)
+- [Push Operations in MongoDB](https://www.baeldung.com/mongodb-push-operations)
