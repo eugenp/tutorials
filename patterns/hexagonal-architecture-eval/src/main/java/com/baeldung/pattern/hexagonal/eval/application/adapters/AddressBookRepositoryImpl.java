@@ -23,6 +23,7 @@ public class AddressBookRepositoryImpl implements AddressBookRepository {
 
     @Override
     public Contact retrieveContact(String nickname) {
+        
         Map<String, Contact> contacts = addressBook.getContacts();
 
         return contacts.get(nickname);

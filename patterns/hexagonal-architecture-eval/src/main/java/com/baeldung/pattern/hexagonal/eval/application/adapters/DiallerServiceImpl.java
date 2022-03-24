@@ -8,6 +8,7 @@ public class DiallerServiceImpl implements DiallerService {
     private AddressBookRepositoryImpl addressBookImpl;
 
     public DiallerServiceImpl(AddressBookRepositoryImpl addressBookImpl) {
+        
         this.addressBookImpl = addressBookImpl;
     }
 
@@ -17,6 +18,7 @@ public class DiallerServiceImpl implements DiallerService {
         Contact contactToDial = addressBookImpl.retrieveContact(nickame);
 
         System.out.println("Dialling " + contactToDial.getNumber());
+        
         return true;
     }
 }
