@@ -15,6 +15,15 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>kubernetes-minikube/demo-frontend</module>
+        <module>kubernetes-minikube/demo-backend</module>
+        <module>kubernetes-selfhealing/liveness-example</module>
+        <module>kubernetes-selfhealing/readiness-example</module>
+        <module>kubernetes-guide/client-service</module>
+        <module>kubernetes-guide/travel-agency-service</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -26,15 +35,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-        <module>kubernetes-minikube/demo-frontend</module>
-        <module>kubernetes-minikube/demo-backend</module>
-        <module>kubernetes-selfhealing/liveness-example</module>
-        <module>kubernetes-selfhealing/readiness-example</module>
-        <module>kubernetes-guide/client-service</module>
-        <module>kubernetes-guide/travel-agency-service</module>
-    </modules>
 
     <properties>
         <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
