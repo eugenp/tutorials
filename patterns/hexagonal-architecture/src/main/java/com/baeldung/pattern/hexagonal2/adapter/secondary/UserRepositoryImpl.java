@@ -3,7 +3,6 @@ package com.baeldung.pattern.hexagonal2.adapter.secondary;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.baeldung.pattern.hexagonal2.actor.secondary.Database;
@@ -15,7 +14,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Database database;
 
-    @Autowired
     public UserRepositoryImpl(Database database) {
         this.database = database;
     }

@@ -43,7 +43,7 @@ public class EndUserSimulatorLiveTest {
     }
 
     @Test
-    public void whenUserIsCreatedByClient_thenLogShowsNewlyCreatedUser(CapturedOutput output) {
+    public void whenUserIsCreatedByClient_thenLogShowsNewlyCreatedUser() {
         endUserSimulator.createUser();
         String expectedLogMessage = "Successfully created user: {\"id\":\"f52c9e91-4132-4318-9e7a-79517421a510\",\"userName\":\"my.new@user.com\"}";
         assertThat(loggerAppender.list).hasSize(1);

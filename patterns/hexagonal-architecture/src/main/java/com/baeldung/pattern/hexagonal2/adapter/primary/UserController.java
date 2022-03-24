@@ -3,7 +3,6 @@ package com.baeldung.pattern.hexagonal2.adapter.primary;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,19 +23,18 @@ public class UserController {
 
     private UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-    }
-
-    @GetMapping
-    public ResponseEntity<List<User>> getUsers() {
-        return new ResponseEntity<List<User>>(userService.getUsers(), HttpStatus.OK);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return new ResponseEntity<User>(userService.createUser(user), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getUsers() {
+        return new ResponseEntity<List<User>>(userService.getUsers(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
