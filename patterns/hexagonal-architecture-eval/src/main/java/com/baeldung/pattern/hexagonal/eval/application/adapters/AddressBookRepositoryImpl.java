@@ -27,5 +27,4 @@ public class AddressBookRepositoryImpl implements AddressBookRepository {
 
         return contacts.get(nickname);
     }
-
 }

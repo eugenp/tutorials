@@ -5,19 +5,18 @@ import main.java.com.baeldung.pattern.hexagonal.eval.domain.ports.DiallerService
 
 public class DiallerServiceImpl implements DiallerService {
 
-    public AddressBookRepositoryImpl addressBookImpl;
+    private AddressBookRepositoryImpl addressBookImpl;
 
     public DiallerServiceImpl(AddressBookRepositoryImpl addressBookImpl) {
         this.addressBookImpl = addressBookImpl;
     }
 
     @Override
-    public boolean dial(String name) {
+    public boolean dial(String nickame) {
 
-        Contact contactToDial = addressBookImpl.retrieveContact(name);
+        Contact contactToDial = addressBookImpl.retrieveContact(nickame);
 
-        System.out.println("Dialling " + contactToDial.getContactNumber()
-            .getNumber());
+        System.out.println("Dialling " + contactToDial.getNumber());
         return true;
     }
 }

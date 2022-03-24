@@ -2,27 +2,27 @@ package main.java.com.baeldung.pattern.hexagonal.eval.domain.model;
 
 public class Contact {
 
-    private ContactName contactName;
-    private ContactNumber contactNumber;
+    private String name;
+    private String number;
 
-    public Contact(ContactName contactName, ContactNumber contactNumber) {
-        this.contactName = contactName;
-        this.contactNumber = contactNumber;
+    public Contact(String name, String number) {
+        this.name = name;
+        this.number = number;
     }
 
-    public ContactName getContactName() {
-        return contactName;
+    public String getName() {
+        return name;
     }
 
-    public void setContactName(ContactName contactName) {
-        this.contactName = contactName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ContactNumber getContactNumber() {
-        return contactNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setContactNumber(ContactNumber contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

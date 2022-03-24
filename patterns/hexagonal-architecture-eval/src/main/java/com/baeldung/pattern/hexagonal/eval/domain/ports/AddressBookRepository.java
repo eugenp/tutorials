@@ -6,7 +6,7 @@ public interface AddressBookRepository {
 
     public boolean addContact(String nickname, Contact contact);
 
-    public Contact retrieveContact(String nickName);
+    public Contact retrieveContact(String nickname);
 
     // Exercise: we could add update and delete methods to form a CRUD implementation.
 }
