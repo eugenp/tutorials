@@ -14,6 +14,17 @@ import org.junit.Test;
 public class SubtractDaysFromDateUnitTest {
 
     @Test
+    public void givenLocalDateTime_whenSubtractingFiveDays_dateIsChangedCorrectly() {
+        LocalDate localDateTime = LocalDate.of(2022, 4, 20);
+
+        localDateTime = localDateTime.minusDays(5);
+
+        assertEquals(15, localDateTime.getDayOfMonth());
+        assertEquals(4, localDateTime.getMonthValue());
+        assertEquals(2022, localDateTime.getYear());
+    }
+
+    @Test
     public void givenCalendarDate_whenSubtractingFiveDays_dateIsChangedCorrectly() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2022, Calendar.APRIL, 20);
@@ -34,16 +45,5 @@ public class SubtractDaysFromDateUnitTest {
         assertEquals(15, dateTime.getDayOfMonth());
         assertEquals(4, dateTime.getMonthOfYear());
         assertEquals(2022, dateTime.getYear());
-    }
-
-    @Test
-    public void givenLocalDateTime_whenSubtractingFiveDays_dateIsChangedCorrectly() {
-        LocalDate localDateTime = LocalDate.of(2022, 4, 20);
-
-        localDateTime = localDateTime.minusDays(5);
-
-        assertEquals(15, localDateTime.getDayOfMonth());
-        assertEquals(4, localDateTime.getMonthValue());
-        assertEquals(2022, localDateTime.getYear());
     }
 }
