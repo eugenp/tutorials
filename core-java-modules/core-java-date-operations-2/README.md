@@ -11,5 +11,4 @@ This module contains articles about date operations in Java.
 - [How to determine day of week by passing specific date in Java?](https://www.baeldung.com/java-get-day-of-week)
 - [Finding Leap Years in Java](https://www.baeldung.com/java-leap-year)
 - [Getting the Week Number From Any Date](https://www.baeldung.com/java-get-week-number)
-- [Subtract Days from a Date in Java](https://www.baeldung.com/java-subtract-days-from-a-date)
 - [[<-- Prev]](/core-java-modules/core-java-date-operations-1)
