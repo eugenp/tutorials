@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-class FeignIntegrationTest {
+class FeignLiveTest {
     @Test
     void givenSOAPPayload_whenStringRequest_thenReturnSOAPResponse() {
         //@formatter:off
