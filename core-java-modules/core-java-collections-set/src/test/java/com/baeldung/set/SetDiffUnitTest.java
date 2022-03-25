@@ -48,7 +48,7 @@ public class SetDiffUnitTest {
 
     @Test
     public void givenTwoSets_whenCallingFindDisjunction_shouldGetDisjunction() {
-        Set<String> actualDiff = SetDiff.findDisjunction(immutableSet1, immutableSet2);
+        Set<String> actualDiff = SetDiff.findSymmetricDiff(immutableSet1, immutableSet2);
         assertThat(actualDiff).isEqualTo(expectedDiff);
     }
 

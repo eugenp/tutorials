@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class SetDiff {
 
-    public static <T> Set<T> findDisjunction(Set<T> set1, Set<T> set2) {
+    public static <T> Set<T> findSymmetricDiff(Set<T> set1, Set<T> set2) {
         Map<T, Integer> map = new HashMap<>();
         set1.forEach(e -> putKey(map, e));
         set2.forEach(e -> putKey(map, e));
