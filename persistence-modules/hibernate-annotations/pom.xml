@@ -16,10 +16,26 @@
     </parent>
 
     <dependencies>
+    	<!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${org.springframework.data.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-core.version}</version>
+        </dependency>
+            <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -41,14 +57,38 @@
             <artifactId>hibernate-spatial</artifactId>
             <version>${hibernate-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
+        </dependency>
+        <!-- validation -->
+        <!-- utils -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <!-- test scoped -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
+        <!-- Spring -->
+        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
+        <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
         <hibernate-core.version>5.4.7.Final</hibernate-core.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
-        <hibernate.core.version>5.4.7.Final</hibernate.core.version>
+<!--         <hibernate.core.version>5.4.7.Final</hibernate.core.version> -->
         <h2.version>1.4.200</h2.version>
+        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
 </project>
