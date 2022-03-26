@@ -26,13 +26,13 @@ public class ListDemo {
     public List<Passenger> getPassengersBySource(String source) {
         return passengers.stream()
             .filter(it -> it.getSource().equals(source))
-            .toList();
+            .collect(Collectors.toList());
     }
     
     public List<Passenger> getPassengersByDestination(String destination) {
         return passengers.stream()
             .filter(it -> it.getDestination().equals(destination))
-            .toList();
+            .collect(Collectors.toList());
     }
     
     public long getKidsCount(List<Passenger> passengerList) {

@@ -24,13 +24,13 @@ public class ArrayListDemo {
     public ArrayList<Passenger> getPassengersBySource(String source) {
         return new ArrayList<Passenger>(passengers.stream()
             .filter(it -> it.getSource().equals(source))
-            .toList());
+            .collect(Collectors.toList()));
     }
     
     public ArrayList<Passenger> getPassengersByDestination(String destination) {
         return new ArrayList<Passenger> (passengers.stream()
             .filter(it -> it.getDestination().equals(destination))
-            .toList());
+            .collect(Collectors.toList()));
     }
     
     public long getKidsCount(ArrayList<Passenger> passengerList) {
