@@ -1,10 +1,10 @@
-package main.java.com.baeldung.pattern.hexagonal.eval.application.adapters;
+package com.baeldung.pattern.hexagonal.eval.application.adapters;
 
 import java.util.Map;
 
-import main.java.com.baeldung.pattern.hexagonal.eval.domain.model.AddressBook;
-import main.java.com.baeldung.pattern.hexagonal.eval.domain.model.Contact;
-import main.java.com.baeldung.pattern.hexagonal.eval.domain.ports.AddressBookRepository;
+import com.baeldung.pattern.hexagonal.eval.domain.model.AddressBook;
+import com.baeldung.pattern.hexagonal.eval.domain.model.Contact;
+import com.baeldung.pattern.hexagonal.eval.domain.ports.AddressBookRepository;
 
 public class AddressBookRepositoryImpl implements AddressBookRepository {
 

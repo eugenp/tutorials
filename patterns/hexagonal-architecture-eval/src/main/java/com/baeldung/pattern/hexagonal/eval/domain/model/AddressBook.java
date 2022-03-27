@@ -1,4 +1,4 @@
-package main.java.com.baeldung.pattern.hexagonal.eval.domain.model;
+package com.baeldung.pattern.hexagonal.eval.domain.model;
 
 import java.util.HashMap;
 import java.util.Map;

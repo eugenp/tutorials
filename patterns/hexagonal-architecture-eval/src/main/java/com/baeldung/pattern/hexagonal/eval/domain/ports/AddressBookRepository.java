@@ -1,6 +1,6 @@
-package main.java.com.baeldung.pattern.hexagonal.eval.domain.ports;
+package com.baeldung.pattern.hexagonal.eval.domain.ports;
 
-import main.java.com.baeldung.pattern.hexagonal.eval.domain.model.Contact;
+import com.baeldung.pattern.hexagonal.eval.domain.model.Contact;
 
 public interface AddressBookRepository {
 
