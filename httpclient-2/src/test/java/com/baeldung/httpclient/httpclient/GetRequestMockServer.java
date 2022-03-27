@@ -5,7 +5,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
-import org.mockserver.model.HttpStatusCode;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -19,18 +18,21 @@ import static org.mockserver.model.HttpResponse.response;
 public class GetRequestMockServer {
 
     public static ClientAndServer mockServer;
-    public static String serviceUrl;
+    public static String serviceOneUrl;
+    public static String serviceTwoUrl;
 
     private static int serverPort;
 
     public static final String SERVER_ADDRESS = "127.0.0.1";
-    public static final String PATH = "/test";
+    public static final String PATH_ONE = "/test1";
+    public static final String PATH_TWO = "/test2";
     public static final String METHOD = "GET";
 
     @BeforeAll
     static void startServer() throws IOException, URISyntaxException {
         serverPort = getFreePort();
-        serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH;
+        serviceOneUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_ONE;
+        serviceTwoUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_TWO;
         mockServer = startClientAndServer(serverPort);
         mockGetRequest();
     }
@@ -44,7 +46,19 @@ public class GetRequestMockServer {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withPath(PATH)
+              .withPath(PATH_ONE)
+              .withMethod(METHOD),
+            exactly(5)
+          )
+          .respond(
+            response()
+              .withStatusCode(HttpStatus.SC_OK)
+              .withBody("{\"status\":\"ok\"}")
+          );
+        new MockServerClient(SERVER_ADDRESS, serverPort)
+          .when(
+            request()
+              .withPath(PATH_TWO)
               .withMethod(METHOD),
             exactly(1)
           )
