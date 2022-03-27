@@ -21,6 +21,7 @@ public class DiallerServiceImplUnitTest {
         when(mockAddressBookRepositoryImpl.retrieveContact(NICKNAME)).thenReturn(new Contact(FULL_NAME, PHONE_NUMBER));
 
         DiallerServiceImpl diallerServiceImpl = new DiallerServiceImpl(mockAddressBookRepositoryImpl);
+        
         assert (diallerServiceImpl.dial(NICKNAME));
     }
 }

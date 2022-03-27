@@ -22,10 +22,11 @@ public class AddressBookRepositoryImplUnitTest {
 
         String addedName = addedContact.getName();
         String retrievedName = retrievedContact.getName();
-        assert (retrievedName.equals(addedName));
 
         String addedNumber = addedContact.getNumber();
         String retrievedNumber = retrievedContact.getNumber();
+        
+        assert (retrievedName.equals(addedName));
         assert (retrievedNumber.equals(addedNumber));
     }
 }
