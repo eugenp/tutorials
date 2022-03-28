@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ShallowCopyUnitTest {
 
 
@@ -29,5 +32,28 @@ public class ShallowCopyUnitTest {
         
         assertThat(shallowCopy.getAddress().getCountry())
                 .isEqualTo(pm.getAddress().getCountry());
+    }
+
+    @Test
+    public void whenShallowCopyingLockBox_thenObjectsShouldNotBeSame() {
+        LockBox lockBox = new LockBox(Arrays.asList(2, 5, 9));
+        LockBox shallowCopy = lockBox.getShallowCopy();
+
+        assertThat(shallowCopy)
+                .isNotSameAs(lockBox);
+    }
+
+    @Test
+    public void whenModifyingOriginalLockBoxObject_thenCopyShouldChange() {
+        LockBox lockBox = new LockBox(Arrays.asList(2, 5, 9));
+        LockBox shallowCopy = lockBox.getShallowCopy();
+
+        List<Integer> newCombination = shallowCopy.getCombination();
+        newCombination.set(1, 0);
+
+        assertThat(shallowCopy.getCombination().get(1))
+                .isEqualTo(0);
+        assertThat(shallowCopy.getCombination())
+                .isEqualTo(lockBox.getCombination());
     }
 }

@@ -3,6 +3,8 @@ package com.baeldung.deepcopy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Ignore;
@@ -33,6 +35,29 @@ public class DeepCopyUnitTest {
         address.setCountry("Great Britain");
 
         assertThat(deepCopy.getAddress().getCountry()).isNotEqualTo(pm.getAddress().getCountry());
+    }
+
+    @Test
+    public void whenCreatingLockBoxDeepCopyWithCopyConstructor_thenObjectsShouldNotBeSame() {
+        LockBox lockBox = new LockBox(Arrays.asList(2, 5, 9));
+        LockBox deepCopy = new LockBox(lockBox);
+
+        assertThat(deepCopy)
+                .isNotSameAs(lockBox);
+    }
+
+    @Test
+    public void whenModifyingDeepCopyLockBoxObject_thenCopyShouldNotChange() {
+        LockBox lockBox = new LockBox(Arrays.asList(2, 5, 9));
+        LockBox deepCopy = lockBox.getDeepCopy();
+
+        List<Integer> newCombination = deepCopy.getCombination();
+        newCombination.set(1, 0);
+
+        assertThat(deepCopy.getCombination().get(1))
+                .isEqualTo(0);
+        assertThat(deepCopy.getCombination())
+                .isNotEqualTo(lockBox.getCombination());
     }
 
     @Test

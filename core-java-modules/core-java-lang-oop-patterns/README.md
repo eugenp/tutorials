@@ -8,3 +8,4 @@ This module contains articles about Object-oriented programming (OOP) patterns i
 - [Immutable Objects in Java](https://www.baeldung.com/java-immutable-object)
 - [How to Make a Deep Copy of an Object in Java](https://www.baeldung.com/java-deep-copy)
 - [Using an Interface vs. Abstract Class in Java](https://www.baeldung.com/java-interface-vs-abstract-class)
+- [Creating a Deep vs Shallow Copy of an Object in Java](https://wwww.baeldung.com/creating-a-deep-vs-shallow-copy-of-an-object-in-java-3/)
