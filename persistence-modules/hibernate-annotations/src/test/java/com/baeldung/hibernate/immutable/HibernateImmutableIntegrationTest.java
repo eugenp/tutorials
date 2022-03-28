@@ -52,6 +52,7 @@ public class HibernateImmutableIntegrationTest {
     @Test
     public void updateEvent() {
         createEvent();
+        openNewSession();
         Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         event.setTitle("Private Event");
         session.update(event);
@@ -99,6 +100,7 @@ public class HibernateImmutableIntegrationTest {
     @Test
     public void updateEventGenerated() {
         createEventGenerated();
+        openNewSession();
         EventGeneratedId eventGeneratedId = (EventGeneratedId) session.createQuery("FROM EventGeneratedId WHERE name LIKE '%John%'").list().get(0);
         
         eventGeneratedId.setName("Mike");
@@ -119,6 +121,13 @@ public class HibernateImmutableIntegrationTest {
     private static void createEventGenerated() {
         EventGeneratedId eventGeneratedId = new EventGeneratedId("John", "Doe");
         session.save(eventGeneratedId);
+    }
+
+    private static void openNewSession() {
+      session.getTransaction().commit();
+      session.close();
+      session = HibernateUtil.getSessionFactory().openSession();
+      session.beginTransaction();
     }
 
 }
