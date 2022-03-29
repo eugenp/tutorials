@@ -1,8 +1,5 @@
 package com.baeldung.client;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 import com.baeldung.resttemplate.web.dto.Foo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +34,7 @@ public class TestRestTemplateBasicLiveTest {
     public void givenTestRestTemplate_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -46,7 +43,7 @@ public class TestRestTemplateBasicLiveTest {
         restTemplateBuilder.configure(restTemplate);
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
         ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -55,7 +52,7 @@ public class TestRestTemplateBasicLiveTest {
         restTemplateBuilder.build();
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
         ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -65,7 +62,7 @@ public class TestRestTemplateBasicLiveTest {
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder, "user", "passwd");
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -73,7 +70,7 @@ public class TestRestTemplateBasicLiveTest {
         TestRestTemplate testRestTemplate = new TestRestTemplate("user", "passwd");
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -81,7 +78,7 @@ public class TestRestTemplateBasicLiveTest {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         ResponseEntity<String> response = testRestTemplate.withBasicAuth("user", "passwd").
                 getForEntity(URL_SECURED_BY_AUTHENTICATION, String.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -90,7 +87,7 @@ public class TestRestTemplateBasicLiveTest {
                 HttpClientOption.ENABLE_COOKIES);
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     // HEAD
