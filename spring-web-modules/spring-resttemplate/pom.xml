@@ -37,10 +37,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
-        <dependency>
+		<dependency>
             <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-provider-junit_2.11</artifactId>
+            <artifactId>pact-jvm-provider-junit5_2.12</artifactId>
             <version>${pact.version}</version>
+        </dependency> 
+          <dependency>
+            <groupId>au.com.dius</groupId>
+            <artifactId>pact-jvm-consumer-junit5_2.12</artifactId>
+            <version>${pact.version}</version>
+            <scope>test</scope>
         </dependency>
         <!-- Spring -->
         <dependency>
@@ -111,6 +117,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+   			 <groupId>org.mockito</groupId>
+    		 <artifactId>mockito-junit-jupiter</artifactId>
+    		 <version>${mockito.version}</version>
+             <scope>test</scope>   
         </dependency>
     </dependencies>
 
@@ -263,7 +275,7 @@
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
         <!-- okhttp -->
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
-        <pact.version>3.5.11</pact.version>
+        <pact.version>3.6.3</pact.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
         <maven.version>3.7.0</maven.version>
