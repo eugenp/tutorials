@@ -18,4 +18,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Advanced HttpClient Configuration](https://www.baeldung.com/httpclient-advanced-config)
 - [HttpClient 4 – Do Not Follow Redirects](https://www.baeldung.com/httpclient-stop-follow-redirect)
 - [Custom User-Agent in HttpClient 4](https://www.baeldung.com/httpclient-user-agent-header)
+- [Apache HttpClient Connection Management](https://www.baeldung.com/httpclient-connection-management)
 - More articles: [[next -->]](../httpclient-2)
