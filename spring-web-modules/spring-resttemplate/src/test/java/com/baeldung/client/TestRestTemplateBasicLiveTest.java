@@ -2,11 +2,11 @@ package com.baeldung.client;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import com.baeldung.resttemplate.web.dto.Foo;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -27,7 +27,7 @@ public class TestRestTemplateBasicLiveTest {
     private static final String URL_SECURED_BY_AUTHENTICATION = "http://httpbin.org/basic-auth/user/passwd";
     private static final String BASE_URL = "http://localhost:" + 8082 + "/spring-rest";
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         restTemplate = new RestTemplate();
     }
@@ -98,7 +98,7 @@ public class TestRestTemplateBasicLiveTest {
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeaders() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         final HttpHeaders httpHeaders = testRestTemplate.headForHeaders(FOO_RESOURCE_URL);
-        assertTrue(httpHeaders.getContentType().includes(MediaType.APPLICATION_JSON));
+        Assertions.assertTrue(httpHeaders.getContentType().includes(MediaType.APPLICATION_JSON));
     }
 
     // POST
