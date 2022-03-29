@@ -22,7 +22,7 @@ import au.com.dius.pact.consumer.junit5.PactTestFor;
 import au.com.dius.pact.model.RequestResponsePact;
 
 @ExtendWith(PactConsumerTestExt.class)
-@PactTestFor(providerName = "test_provider", hostInterface="localhost", port = "8080")
+@PactTestFor(providerName = "test_provider", hostInterface="localhost")
 public class PactConsumerDrivenContractUnitTest {
 
     @Pact(provider="test_provider", consumer = "test_consumer")
