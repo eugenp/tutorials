@@ -41,6 +41,20 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>${mssql.driver.version}</version>
         </dependency>
+
+      
+      <dependency>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq</artifactId>
+        <version>3.16.5</version>
+      </dependency>
+    
+      <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20220320</version>
+    </dependency>
+    
     </dependencies>
 
     <properties>
@@ -54,12 +68,12 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven-compiler-plugin.version}</version>
             <configuration>
-              <excludes>
-                <exclude>src/main/jbang/*</exclude>
-              </excludes>
+                <source>11</source>
+                <target>11</target>
             </configuration>
-          </plugin>
+        </plugin>
         </plugins>
       </build>
 

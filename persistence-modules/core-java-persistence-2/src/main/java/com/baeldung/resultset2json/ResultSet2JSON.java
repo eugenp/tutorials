@@ -1,12 +1,5 @@
-/// usr/bin/env jbang "$0" "$@" ; exit $?
+package com.baeldung.resultset2json;
 
-//JAVA 17
-//DEPS org.duckdb:duckdb_jdbc:0.3.2
-// DEPS org.jooq:jooq:3.16.4
-//DEPS org.json:json:20211205
-//DEPS junit:junit:4.13.2
-
-//FILES ../example.csv=./example.csv
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +13,7 @@ import org.jooq.impl.DSL;
 import org.jooq.tools.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.Test;
+
 
 public class ResultSet2JSON {
 
@@ -30,11 +23,10 @@ public class ResultSet2JSON {
     testClass.testMethod1();
   }
 
-  @Test
   public void testMethod1() throws ClassNotFoundException, SQLException {
-    Class.forName("org.duckdb.DuckDBDriver");
+    Class.forName("org.h2.Driver");
+    var dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password"); 
 
-    var dbConnection = DriverManager.getConnection("jdbc:duckdb:");
     // Create a table
     var stmt = dbConnection.createStatement();
     stmt.execute("CREATE TABLE words AS SELECT * FROM './example.csv'");
@@ -46,15 +38,13 @@ public class ResultSet2JSON {
     resultSet.close();
   }
 
-  @Test
   public void testMethod2() throws ClassNotFoundException, SQLException {
-    Class.forName("org.duckdb.DuckDBDriver");
-
-    var dbConnection = DriverManager.getConnection("jdbc:duckdb:");
+    Class.forName("org.h2.Driver");
+    var dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password"); 
     // Create a table
     var stmt = dbConnection.createStatement();
     stmt.execute(
-        "CREATE TABLE words AS SELECT * FROM './example.csv'"); // See
+        "CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')"); // See
                                                                 // https://duckdb.org/docs/data/csv
     ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
@@ -64,11 +54,9 @@ public class ResultSet2JSON {
     resultSet.close();
   }
 
-  @Test
   public void testMethod3() throws ClassNotFoundException, SQLException {
-    Class.forName("org.duckdb.DuckDBDriver");
-
-    var dbConnection = DriverManager.getConnection("jdbc:duckdb:");
+    Class.forName("org.h2.Driver");
+    var dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password"); 
     // Create a table
     var stmt = dbConnection.createStatement();
     stmt.execute("CREATE TABLE words AS SELECT * FROM './example.csv'");
