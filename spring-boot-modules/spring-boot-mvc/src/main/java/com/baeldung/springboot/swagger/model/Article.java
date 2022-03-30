@@ -13,7 +13,7 @@ public class Article {
     //@JsonIgnore
     //@JsonProperty(access = JsonProperty.Access.READ_ONLY)
     //@ApiModelProperty(hidden = true)
-    @ApiParam(hidden = true)
+    //@ApiParam(hidden = true)
     //@ApiModelProperty(readOnly = true)
     private int id;
     private String title;

@@ -11,18 +11,18 @@ import com.baeldung.springboot.swagger.service.ArticleService;
 @RestController
 @RequestMapping("/articles")
 public class ArticlesController {
-	
-	@Autowired
-	private ArticleService articleService;
-	
-	@GetMapping("")
-	public List<Article> getAllArticles(){
-		return articleService.getAllArticles();
-	}
-	
-	@PostMapping("")
-	public void addArticle(@RequestBody Article article) {
-		articleService.addArticle(article);
-	}
+
+    @Autowired
+    private ArticleService articleService;
+
+    @GetMapping("")
+    public List<Article> getAllArticles() {
+        return articleService.getAllArticles();
+    }
+
+    @PostMapping("")
+    public void addArticle(@RequestBody Article article) {
+        articleService.addArticle(article);
+    }
 
 }
