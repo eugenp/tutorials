@@ -21,6 +21,7 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.util.SocketUtils;
 
 import com.baeldung.logging.model.Book;
 import com.mongodb.client.MongoClients;
@@ -50,7 +51,7 @@ public class LoggingUnitTest {
     @BeforeEach
     void setup() throws Exception {
         String ip = "localhost";
-        int port = 27017;
+        int port = SocketUtils.findAvailableTcpPort();
 
         ImmutableMongodConfig mongodConfig = MongodConfig.builder()
           .version(Version.Main.PRODUCTION)

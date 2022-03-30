@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.util.SocketUtils;
 
 import com.baeldung.projection.model.InStock;
 import com.baeldung.projection.model.Inventory;
@@ -35,7 +36,7 @@ public class AbstractTestProjection {
 
     void setUp() throws IOException {
         String ip = "localhost";
-        int port = 27017;
+        int port = SocketUtils.findAvailableTcpPort();
 
         ImmutableMongodConfig mongodbConfig = MongodConfig.builder()
           .version(Version.Main.PRODUCTION)
