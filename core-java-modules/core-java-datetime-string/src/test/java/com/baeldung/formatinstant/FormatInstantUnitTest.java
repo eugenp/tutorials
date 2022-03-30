@@ -15,7 +15,7 @@ public class FormatInstantUnitTest {
     private static final String PATTERN_FORMAT = "dd.MM.yyyy";
 
     @Test
-    public void givenInstant_WhenUsingDateTimeFormatter_thenFormat() {
+    public void givenInstant_whenUsingDateTimeFormatter_thenFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN_FORMAT)
             .withZone(ZoneId.systemDefault());
 
@@ -23,36 +23,32 @@ public class FormatInstantUnitTest {
         String formattedInstant = formatter.format(instant);
 
         assertThat(formattedInstant).isEqualTo("15.02.2022");
-        
     }
 
     @Test(expected = UnsupportedTemporalTypeException.class)
-    public void givenInstant_WhenNotSpecifyingTimeZone_thenThrowException() {
+    public void givenInstant_whenNotSpecifyingTimeZone_thenThrowException() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN_FORMAT);
 
         Instant instant = Instant.now();
         formatter.format(instant);
-        
     }
 
     @Test
-    public void givenInstant_WhenUsingToString_thenFormat() {
+    public void givenInstant_whenUsingToString_thenFormat() {
         Instant instant = Instant.ofEpochMilli(1641828224000L);
         String formattedInstant = instant.toString();
 
         assertThat(formattedInstant).isEqualTo("2022-01-10T15:23:44Z");
-        
     }
     
     @Test
-    public void givenInstant_WhenUsingJodaTime_thenFormat() {
+    public void givenInstant_whenUsingJodaTime_thenFormat() {
         org.joda.time.Instant instant = new org.joda.time.Instant("2022-03-20T10:11:12");
         
         String formattedInstant = DateTimeFormat.forPattern(PATTERN_FORMAT)
             .print(instant);
 
         assertThat(formattedInstant).isEqualTo("20.03.2022");
-        
     }
 
 }
