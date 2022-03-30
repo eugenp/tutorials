@@ -9,17 +9,17 @@ import com.baeldung.springboot.swagger.model.Article;
 
 @Service
 public class ArticleService {
-	
-	private List<Article> articles = new ArrayList<>();
-	
-	public List<Article> getAllArticles(){
-		return articles;
-	}
-	
-	public void addArticle(Article article) {
-		article.setId(articles.size()+1);
-		articles.add(article);
-	}
+
+    private List<Article> articles = new ArrayList<>();
+
+    public List<Article> getAllArticles() {
+        return articles;
+    }
+
+    public void addArticle(Article article) {
+        article.setId(articles.size() + 1);
+        articles.add(article);
+    }
 	
 
 }
