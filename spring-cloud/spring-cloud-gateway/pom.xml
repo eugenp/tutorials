@@ -83,31 +83,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-
         <!-- Spring security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-        
     </dependencies>
 
     <build>
         <plugins>
-        <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-        </configuration>
-      </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -123,15 +120,6 @@
         </plugins>
     </build>
 
-    <properties>
-<!--         <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version> -->
-<!--         <spring-boot.version>2.2.6.RELEASE</spring-boot.version> -->
-        <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
-        <redis.version>0.7.2</redis.version>
-        <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
-<!--         <junit-bom.version>5.5.2</junit-bom.version> -->
-    </properties>
-    
     <profiles>
         <profile>
             <id>quotes-application</id>
@@ -177,7 +165,6 @@
                 </plugins>
             </build>
         </profile>
-        
         <profile>
             <id>gateway-url-rewrite</id>
             <build>
@@ -192,6 +179,16 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>        
+        </profile>
     </profiles>
+
+    <properties>
+        <!-- <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version> -->
+        <!-- <spring-boot.version>2.2.6.RELEASE</spring-boot.version> -->
+        <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
+        <redis.version>0.7.2</redis.version>
+        <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
+        <!-- <junit-bom.version>5.5.2</junit-bom.version> -->
+    </properties>
+
 </project>

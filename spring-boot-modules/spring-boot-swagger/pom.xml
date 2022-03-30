@@ -63,7 +63,7 @@
                                     <name>Apache 2.0</name>
                                 </license>
                             </info>
-                            <swaggerDirectory>generated/swagger-ui</swaggerDirectory>
+                            <swaggerDirectory>${basedir}/target/swagger-ui</swaggerDirectory>
                         </apiSource>
                     </apiSources>
                 </configuration>

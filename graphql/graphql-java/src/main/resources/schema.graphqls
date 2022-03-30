@@ -1,0 +1,17 @@
+type Book {
+  title: String!
+  author: Author
+}
+
+type Author {
+  name: String!
+  surname: String!
+}
+
+type Query {
+  allBooks: [Book]
+}
+
+schema {
+  query: Query
+}

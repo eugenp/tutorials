@@ -1,6 +1,7 @@
 package com.baeldung.openid.oidc.jwtauthorities.web.controllers;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -11,45 +12,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baeldung.openid.oidc.jwtauthorities.config.AccountToken;
+
 @RestController
 @RequestMapping("/user")
 public class UserRestController {
     
     @GetMapping("/authorities")
-    public PrincipalInfo getPrincipalInfo( JwtAuthenticationToken principal) {
+    @PreAuthorize("hasAuthority(@jwtGrantedAuthoritiesPrefix + 'profile.read')")
+    public Map<String,Object> getPrincipalInfo( JwtAuthenticationToken principal) {
         
         Collection<String> authorities = principal.getAuthorities()
           .stream()
           .map(GrantedAuthority::getAuthority)
           .collect(Collectors.toList());
         
-        return new PrincipalInfo(principal.getName(), authorities, principal.getTokenAttributes());
-    }
-    
-    private class PrincipalInfo {
+        Map<String,Object> info = new HashMap<>();
+        info.put("name", principal.getName());
+        info.put("authorities", authorities);
+        info.put("tokenAttributes", principal.getTokenAttributes());
         
-        private final String name;
-        private final Collection<String> grantedAuthorities;
-        private final Map<String,Object> tokenAttributes;
-        
-        public PrincipalInfo(String name, Collection<String> grantedAuthorities, Map<String, Object> tokenAttributes) {
-            super();
-            this.name = name;
-            this.grantedAuthorities = grantedAuthorities;
-            this.tokenAttributes = tokenAttributes;
+        if ( principal instanceof AccountToken ) {
+            info.put( "account", ((AccountToken)principal).getAccount());
         }
         
-        public String getName() {
-            return name;
-        }
-        public Collection<String> getGrantedAuthorities() {
-            return grantedAuthorities;
-        }
-        public Map<String, Object> getTokenAttributes() {
-            return tokenAttributes;
-        }
-        
-        
-        
+        return info;
     }
 }
