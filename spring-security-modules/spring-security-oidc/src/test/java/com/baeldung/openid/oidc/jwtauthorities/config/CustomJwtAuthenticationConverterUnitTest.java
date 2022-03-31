@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 
 import com.baeldung.openid.oidc.jwtauthorities.service.AccountService;
 
-class CustomJwtAuthenticationConverterTest {
+class CustomJwtAuthenticationConverterUnitTest {
 
     @Test
     void testGivenCustomJwtAuthenticationConverter_whenConvert_thenReturnAccountToken() {

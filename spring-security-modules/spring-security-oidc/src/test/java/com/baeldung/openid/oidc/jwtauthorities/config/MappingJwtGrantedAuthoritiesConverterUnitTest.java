@@ -12,7 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 
-class MappingJwtGrantedAuthoritiesConverterTest {
+class MappingJwtGrantedAuthoritiesConverterUnitTest {
 
     @Test
     void testGivenConverterWithScopeMap_whenConvert_thenResultHasMappedAuthorities() {
