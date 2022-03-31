@@ -7,4 +7,4 @@
 - [ZonedDateTime with Spring Data MongoDB](https://www.baeldung.com/spring-data-mongodb-zoneddatetime)
 - [A Guide to @DBRef in MongoDB](https://www.baeldung.com/spring-mongodb-dbref-annotation)
 - [Import Data to MongoDB From JSON File Using Java](https://www.baeldung.com/java-import-json-mongodb)
-
+- [Logging MongoDB Queries with Spring Boot](https://www.baeldung.com/spring-boot-mongodb-logging)
