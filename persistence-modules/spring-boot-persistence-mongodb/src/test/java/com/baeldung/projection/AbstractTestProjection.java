@@ -22,7 +22,7 @@ import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 
-public class AbstractTestProjection {
+abstract class AbstractTestProjection {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";
 
@@ -71,4 +71,19 @@ public class AbstractTestProjection {
 
         return Arrays.asList(journal, notebook, paper);
     }
+
+    abstract void whenIncludeFields_thenOnlyIncludedFieldsAreNotNull();
+
+    abstract void whenIncludeFieldsAndExcludeOtherFields_thenOnlyExcludedFieldsAreNull();
+
+    abstract void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedFieldsAreNull();
+
+    abstract void whenIncludeEmbeddedFields_thenEmbeddedFieldsAreNotNull();
+
+    abstract void whenExcludeEmbeddedFields_thenEmbeddedFieldsAreNull();
+
+    abstract void whenIncludeEmbeddedFieldsInArray_thenEmbeddedFieldsInArrayAreNotNull();
+
+    abstract void whenIncludeEmbeddedFieldsSliceInArray_thenArrayLengthEqualToSlice();
+
 }
