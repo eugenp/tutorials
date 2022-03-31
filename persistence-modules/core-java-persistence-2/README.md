@@ -6,3 +6,4 @@
 - [Inserting Null Into an Integer Column Using JDBC](https://www.baeldung.com/jdbc-insert-null-into-integer-column)
 - [A Guide to Auto-Commit in JDBC](https://www.baeldung.com/java-jdbc-auto-commit)
 - [JDBC Connection Status](https://www.baeldung.com/jdbc-connection-status)
+- [Get the Number of Rows in a ResultSet](https://www.baeldung.com/java-resultset-number-of-rows)
