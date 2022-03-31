@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface ProgramRestUI {
 	@PostMapping
-	void createProgram(@RequestBody Programs progams);
+	void createProgram(@RequestBody Programs programs); // spelling mistake found here for programs
 
 	@GetMapping
 	public List<Programs> listPrograms();

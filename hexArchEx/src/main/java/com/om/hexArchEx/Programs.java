@@ -22,4 +22,12 @@ public class Programs {
 	{
 		return "Program [name=" + name + "]";
 	}
+	
+	public Programs(String name)
+	{
+		this.name = name;
+	}
+	public Programs()
+	{
+	}
 }
