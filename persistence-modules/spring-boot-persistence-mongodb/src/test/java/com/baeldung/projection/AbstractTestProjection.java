@@ -26,7 +26,7 @@ public class AbstractTestProjection {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";
 
-    private MongodExecutable mongodExecutable;
+    protected MongodExecutable mongodExecutable;
     protected MongoTemplate mongoTemplate;
 
     @AfterEach

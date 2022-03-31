@@ -74,7 +74,7 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
     }
 
     @Test
-    void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedAreNull() {
+    void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedFieldsAreNull() {
 
         Query query = new Query();
         query.fields()

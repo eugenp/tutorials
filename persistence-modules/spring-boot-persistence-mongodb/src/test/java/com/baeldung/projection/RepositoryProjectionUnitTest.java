@@ -65,7 +65,7 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
     }
 
     @Test
-    void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedAreNull() {
+    void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedFieldsAreNull() {
 
         List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeAllButStatusAndStockFields("A");
         assertTrue(inventoryList.size() > 0);
