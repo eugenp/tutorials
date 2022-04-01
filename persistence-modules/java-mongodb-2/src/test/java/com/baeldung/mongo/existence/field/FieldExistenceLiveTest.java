@@ -1,4 +1,4 @@
-package com.baeldung.existence.field;
+package com.baeldung.mongo.existence.field;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
@@ -9,7 +9,9 @@ import org.bson.Document;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class FieldExistenceLiveTest {
     private MongoClient mongoClient;
