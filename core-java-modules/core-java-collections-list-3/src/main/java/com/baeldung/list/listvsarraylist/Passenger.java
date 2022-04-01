@@ -8,7 +8,6 @@ public class Passenger {
     private String destination;
 
     public Passenger(String name, int age, String source, String destination) {
-        super();
         this.name = name;
         this.age = age;
         this.source = source;
