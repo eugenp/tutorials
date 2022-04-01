@@ -15,12 +15,6 @@
     </parent>
 
     <dependencies>
-        <!-- utils -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
         <!-- http client -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
