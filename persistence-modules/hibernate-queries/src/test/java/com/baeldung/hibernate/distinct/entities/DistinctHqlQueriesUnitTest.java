@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.annotations.QueryHints;
@@ -16,7 +15,7 @@ import org.junit.Test;
 
 import com.baeldung.hibernate.HibernateUtil;
 
-public class DistinctHqlQueriesTest {
+public class DistinctHqlQueriesUnitTest {
 
     private Session session;
 
@@ -61,17 +60,21 @@ public class DistinctHqlQueriesTest {
             .getResultList();
 
         assertThat(posts).hasSize(1)
-            .allMatch(post -> post.getTitle().equals("Distinct Queries in HQL") && post.getComments().size() == 3);
+            .allMatch(post -> post.getTitle()
+                .equals("Distinct Queries in HQL") && post.getComments()
+                .size() == 3);
     }
 
     @Test
     public void whenExecutingSelectDistinctQueryWithHint_thereShouldBeNoDuplicates() {
         String hql = "SELECT DISTINCT p FROM Post p LEFT JOIN FETCH p.comments";
         List<Post> posts = session.createQuery(hql, Post.class)
-                    .setHint(QueryHints.PASS_DISTINCT_THROUGH, false)
-                    .getResultList();
+            .setHint(QueryHints.PASS_DISTINCT_THROUGH, false)
+            .getResultList();
 
         assertThat(posts).hasSize(1)
-            .allMatch(post -> post.getTitle().equals("Distinct Queries in HQL") && post.getComments().size() == 3);
+            .allMatch(post -> post.getTitle()
+                .equals("Distinct Queries in HQL") && post.getComments()
+                .size() == 3);
     }
 }
