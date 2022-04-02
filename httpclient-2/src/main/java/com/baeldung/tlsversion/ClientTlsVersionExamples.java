@@ -52,8 +52,8 @@ public class ClientTlsVersionExamples {
 
     public static void main(String[] args) throws IOException {
         // Alternatively:
-        // com.baeldung.httpclient.ApacheHttpClient httpClient = setTlsVersionPerConnection();
-        // com.baeldung.httpclient.ApacheHttpClient httpClient = setViaSystemProperties();
+        // CloseableHttpClient httpClient = setTlsVersionPerConnection();
+        // CloseableHttpClient httpClient = setViaSystemProperties();
         try (CloseableHttpClient httpClient = setViaSocketFactory();
            CloseableHttpResponse response = httpClient.execute(new HttpGet("https://httpbin.org/"))) {
 
