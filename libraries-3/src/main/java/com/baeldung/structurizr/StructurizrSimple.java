@@ -1,10 +1,5 @@
 package com.baeldung.structurizr;
 
-import java.io.File;
-import java.io.StringWriter;
-import java.util.HashSet;
-import java.util.Set;
-
 import com.structurizr.Workspace;
 import com.structurizr.analysis.ComponentFinder;
 import com.structurizr.analysis.ReferencedTypesSupportingTypesStrategy;
@@ -26,6 +21,11 @@ import com.structurizr.view.Styles;
 import com.structurizr.view.SystemContextView;
 import com.structurizr.view.View;
 import com.structurizr.view.ViewSet;
+
+import java.io.File;
+import java.io.StringWriter;
+import java.util.HashSet;
+import java.util.Set;
 
 public class StructurizrSimple {
 
@@ -51,7 +51,7 @@ public class StructurizrSimple {
         addStyles(workspace.getViews());
         //uploadToExternal(workspace);
     }
-    
+
     private static View findViewWithKey(ViewSet viewSet, String key) {
         if (key == null) {
             throw new IllegalArgumentException("A key must be specified.");
