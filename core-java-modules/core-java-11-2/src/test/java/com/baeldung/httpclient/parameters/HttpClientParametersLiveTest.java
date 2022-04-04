@@ -32,10 +32,10 @@ public class HttpClientParametersLiveTest {
     @Test
     public void givenQueryParams_whenGetRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/get?param1=value1&param2=value2"))
-            .GET()
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/get?param1=value1&param2=value2"))
+          .GET()
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -44,10 +44,10 @@ public class HttpClientParametersLiveTest {
     @Test
     public void givenNoData_whenPostRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/post"))
-            .POST(HttpRequest.BodyPublishers.noBody())
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .POST(HttpRequest.BodyPublishers.noBody())
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -56,11 +56,11 @@ public class HttpClientParametersLiveTest {
     @Test
     public void givenString_whenPostRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofString("Sample Post Request Data"))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .POST(HttpRequest.BodyPublishers.ofString("Sample Post Request Data"))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -69,11 +69,11 @@ public class HttpClientParametersLiveTest {
     @Test
     public void givenStringWithCharset_whenPutRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/put"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .PUT(HttpRequest.BodyPublishers.ofString("Sample Post Request Data", Charset.forName("UTF-8")))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/put"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .PUT(HttpRequest.BodyPublishers.ofString("Sample Post Request Data", Charset.forName("UTF-8")))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -82,11 +82,11 @@ public class HttpClientParametersLiveTest {
     @Test
     public void givenJsonDataString_whenPostRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/post"))
-            .headers("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{\"content\":\"Sample\"}"))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .headers("Content-Type", "application/json")
+          .POST(HttpRequest.BodyPublishers.ofString("{\"content\":\"Sample\"}"))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -99,16 +99,16 @@ public class HttpClientParametersLiveTest {
         parameters.put("param2", "value2");
 
         String form = parameters.entrySet()
-            .stream()
-            .map(e -> e.getKey() + "=" + URLEncoder.encode(e.getValue(), StandardCharsets.UTF_8))
-            .collect(Collectors.joining("&"));
+          .stream()
+          .map(e -> e.getKey() + "=" + URLEncoder.encode(e.getValue(), StandardCharsets.UTF_8))
+          .collect(Collectors.joining("&"));
 
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/post"))
-            .headers("Content-Type", "application/x-www-form-urlencoded")
-            .POST(HttpRequest.BodyPublishers.ofString(form))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .headers("Content-Type", "application/x-www-form-urlencoded")
+          .POST(HttpRequest.BodyPublishers.ofString(form))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -119,11 +119,11 @@ public class HttpClientParametersLiveTest {
         byte byteData[] = "Sample Post Request Data".getBytes();
 
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofByteArray(byteData))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .POST(HttpRequest.BodyPublishers.ofByteArray(byteData))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -134,11 +134,11 @@ public class HttpClientParametersLiveTest {
         byte byteData[] = "Sample Put Request Data".getBytes();
 
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/put"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .PUT(HttpRequest.BodyPublishers.ofByteArray(byteData, 7, 11))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/put"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .PUT(HttpRequest.BodyPublishers.ofByteArray(byteData, 7, 11))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -151,11 +151,11 @@ public class HttpClientParametersLiveTest {
         byteArrays.add("World".getBytes());
 
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/put"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .PUT(HttpRequest.BodyPublishers.ofByteArrays(byteArrays))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/put"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .PUT(HttpRequest.BodyPublishers.ofByteArrays(byteArrays))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -164,11 +164,11 @@ public class HttpClientParametersLiveTest {
     @Test
     public void givenFile_whenPostRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/post"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofFile(Paths.get("src/test/resources/sample.txt")))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .POST(HttpRequest.BodyPublishers.ofFile(Paths.get("src/test/resources/sample.txt")))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
@@ -179,11 +179,11 @@ public class HttpClientParametersLiveTest {
         byte byteData[] = "Sample Put Request Data".getBytes();
 
         HttpRequest request = HttpRequest.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .uri(URI.create("https://postman-echo.com/put"))
-            .headers("Content-Type", "text/plain;charset=UTF-8")
-            .PUT(HttpRequest.BodyPublishers.ofInputStream(() -> new ByteArrayInputStream(byteData)))
-            .build();
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/put"))
+          .headers("Content-Type", "text/plain;charset=UTF-8")
+          .PUT(HttpRequest.BodyPublishers.ofInputStream(() -> new ByteArrayInputStream(byteData)))
+          .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         Assertions.assertEquals(response.statusCode(), 200);
