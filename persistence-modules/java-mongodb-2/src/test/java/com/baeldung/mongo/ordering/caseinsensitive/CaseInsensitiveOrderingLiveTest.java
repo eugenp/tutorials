@@ -1,7 +1,11 @@
-package com.baeldung.ordering.caseinsensitive;
+package com.baeldung.mongo.ordering.caseinsensitive;
 
 import com.mongodb.MongoClient;
-import com.mongodb.client.*;
+import com.mongodb.client.AggregateIterable;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Collation;
 import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Sorts;
