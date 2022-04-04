@@ -32,10 +32,10 @@ public class TestHelper {
         runScript("audit.sql", jdbcTemplateAudit.getDataSource());
     }
 
-    private void runScript(String scriptName, DataSource dataSouorce) throws SQLException {
+    private void runScript(String scriptName, DataSource dataSource) throws SQLException {
         DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
         Resource script = resourceLoader.getResource(scriptName);
-        try (Connection con = dataSouorce.getConnection()) {
+        try (Connection con = dataSource.getConnection()) {
             ScriptUtils.executeSqlScript(con, script);
         }
     }
