@@ -1,10 +1,5 @@
 package com.baeldung.mongo;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import org.bson.Document;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
@@ -13,6 +8,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.Document;
 
 public class PushOperations {
 

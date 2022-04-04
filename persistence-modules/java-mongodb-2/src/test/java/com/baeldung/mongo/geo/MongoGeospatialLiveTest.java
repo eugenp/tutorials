@@ -1,16 +1,4 @@
-package com.baeldung.geo;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.bson.Document;
-import org.junit.Before;
-import org.junit.Test;
+package com.baeldung.mongo.geo;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
@@ -21,6 +9,17 @@ import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.geojson.Point;
 import com.mongodb.client.model.geojson.Polygon;
 import com.mongodb.client.model.geojson.Position;
+import org.bson.Document;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class MongoGeospatialLiveTest {
 

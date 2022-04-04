@@ -1,13 +1,5 @@
 package com.baeldung.mongo;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-
-import org.bson.Document;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
@@ -16,6 +8,13 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.Document;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 public class PushOperationLiveTest {
 
