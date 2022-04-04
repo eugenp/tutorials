@@ -7,16 +7,7 @@ services:
       - '5432:5432'
     environment:
       POSTGRES_PASSWORD: example
-  app:
-    image: quarkus-project:0.1-SNAPSHOT
-    ports:
-      - '8080:8080'
-    environment:
-      DB_URL: postgresql://db:5432/postgres
-    links:
-      - "db"
-    depends_on:
-      - "db"
+
 networks:
   default:
     driver: bridge
