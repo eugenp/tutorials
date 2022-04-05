@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <h1>Subject</h1>
+        <p th:text="${param.emailsubject}">Subject</p>
+        <h1>Content</h1>
+        <p th:text="${param.emailcontent}"></p>
+        <h1>Email addresses</h1>
+        <p th:each="emailaddress : ${param.emailaddress}">
+          <span th:text="${emailaddress}"></span>
+        </p>
+        <h1>Email address 1</h1>
+        <p th:text="${param.emailaddress[0]}"></p>
+        <h1>Email address 2</h1>
+        <p th:text="${param.emailaddress[1]}"></p>
+        <h1>Language</h1>
+        <p th:text="${param.emaillocale}"></p>
+    </body>
+</html>

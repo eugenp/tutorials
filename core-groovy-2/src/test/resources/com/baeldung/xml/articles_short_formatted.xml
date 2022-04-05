@@ -1,0 +1,18 @@
+<articles>
+  <article>
+    <title>First steps in Java</title>
+    <author id='1'>
+      <firstname>Siena</firstname>
+      <lastname>Kerr</lastname>
+    </author>
+    <release-date>2018-12-01</release-date>
+  </article>
+  <article>
+    <title>Dockerize your SpringBoot application</title>
+    <author id='2'>
+      <firstname>Jonas</firstname>
+      <lastname>Lugo</lastname>
+    </author>
+    <release-date>2018-12-01</release-date>
+  </article>
+</articles>

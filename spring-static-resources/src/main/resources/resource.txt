@@ -1,0 +1,1 @@
+This is a resource text file. This file will be loaded as a resource and use its contents as a string.

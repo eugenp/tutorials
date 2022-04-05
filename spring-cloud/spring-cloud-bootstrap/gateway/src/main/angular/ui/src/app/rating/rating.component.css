@@ -1,0 +1,11 @@
+div.progress {
+  margin-top: 5px;
+}
+
+.rating:hover {
+  border: solid blue;
+}
+
+.selected {
+  border: solid blue;
+}

@@ -1,0 +1,22 @@
+version: '2'
+services:
+    jhipster-registry:
+        image: jhipster/jhipster-registry:v4.0.4
+        volumes:
+            - ./central-server-config:/central-config
+        # When run with the "dev" Spring profile, the JHipster Registry will
+        # read the config from the local filesystem (central-server-config directory)
+        # When run with the "prod" Spring profile, it will read the configuration from a Git repository
+        # See https://www.jhipster.tech/microservices-architecture/#registry_app_configuration
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=dev,swagger,uaa
+            - SPRING_SECURITY_USER_PASSWORD=admin
+            - JHIPSTER_REGISTRY_PASSWORD=admin
+            - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+            - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:./central-config/localhost-config/
+            # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=git
+            # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_URI=https://github.com/jhipster/jhipster-registry/
+            # - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_PATHS=central-config
+        ports:
+            - 8761:8761

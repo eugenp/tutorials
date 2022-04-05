@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+}
+
+ext {
+    springBootVersion = '2.3.4.RELEASE'
+    lombokVersion = '1.18.14'
+}
+
+group = 'com.gradle'
+version = '1.0.0'
+sourceCompatibility = '14'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+    runtimeOnly files('libs/sampleOne.jar', 'libs/sampleTwo.jar')
+    runtimeOnly fileTree("libs") { include "*.jar" }
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="injectSimpleBatchLet"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+	version="1.0">
+	<properties> 
+        <property name="jobProp1" value="job-value1"/>
+    </properties>
+	<step id="firstStep">
+		<properties>
+			<property name="stepProp1" value="step-value1" />
+		</properties>
+		<batchlet ref="injectSimpleBatchLet">
+			<properties>
+				<property name="name" value="#{partitionPlan['name']}" />
+			</properties>
+		</batchlet>
+		<partition>
+			<plan partitions="2">
+				<properties partition="0">
+					<property name="name" value="firstPartition" />
+				</properties>
+				<properties partition="1">
+					<property name="name" value="secondpPartition" />
+				</properties>
+			</plan>
+		</partition>
+	</step>
+</job>	

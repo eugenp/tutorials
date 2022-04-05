@@ -1,0 +1,3 @@
+rootProject.name = 'stackoverflow-plugin-gradle'
+include 'java'
+

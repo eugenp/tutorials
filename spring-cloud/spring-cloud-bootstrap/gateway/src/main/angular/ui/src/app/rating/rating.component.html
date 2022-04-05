@@ -1,0 +1,25 @@
+Ratings:
+<div *ngFor="let rating of ratings; let i = index;" class="row">
+  <div class="col-md-10">
+    <div class="progress"  [ngClass]="{'selected': principal.isAdmin() && rating === newRating, 'rating': principal.isAdmin()}" (click)="selectRating(rating)">
+      <div class="progress-bar bg-success" role="progressbar" [style.width]="findWidth(rating)" [attr.aria-valuenow]="rating.stars" aria-valuemin="0" aria-valuemax="5"></div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <button *ngIf="principal?.isAdmin()" type="button" class="close" aria-label="Close" (click)="deleteRating(i)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+
+<form (ngSubmit)="onSaveRating(f)" #f="ngForm">
+  <div class="form-check form-check-inline" *ngFor="let star of stars; let i = index;">
+    <label  class="form-check-label">
+      <input class="form-check-input" type="radio" name="star" [(ngModel)]="newRating.stars" [value]="star">{{star}}
+    </label>
+  </div>
+  <button *ngIf="newRating.id === null" type="submit" class="btn btn-secondary" [disabled]="!f.valid">Add Rating</button>
+  <button *ngIf="principal.isAdmin() && newRating.id !== null" type="button" class="btn btn-secondary" (click)="updateRating()">Save</button>
+  <button *ngIf="principal.isAdmin() && newRating.id !== null" type="button" class="btn btn-secondary" (click)="cancelSelection()">Cancel</button>
+</form>
+

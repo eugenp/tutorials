@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        # Console appender
+        <Console name="stdout" target="SYSTEM_OUT">
+            # Pattern of log message for console appender
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </Console>
+
+        # File appender
+        <File name="fout" fileName="log4j/target/baeldung-log4j2.log"
+            immediateFlush="false" append="false">
+            # Pattern of log message for file appender
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </File>
+
+        # Rolling appender
+        <RollingFile name="roll-by-size"
+            fileName="target/log4j2/roll-by-size/app.log" filePattern="target/log4j2/roll-by-size/app.%i.log.gz"
+            ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy
+                    size="5 KB"/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="roll-by-time"
+            fileName="target/log4j2/roll-by-time/app.log"
+            filePattern="target/log4j2/roll-by-time/app.%d{MM-dd-yyyy-HH-mm}.log.gz"
+            ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+        </RollingFile>
+
+        <RollingFile name="roll-by-time-and-size"
+            fileName="target/log4j2/roll-by-time-and-size/app.log"
+            filePattern="target/log4j2/roll-by-time-and-size/app.%d{MM-dd-yyyy-HH-mm}.%i.log.gz"
+            ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy
+                    size="5 KB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${baseDir}" maxDepth="2">
+                    <IfFileName
+                        glob="target/log4j2/roll-by-time-and-size/app.*.log.gz"/>
+                    <IfLastModified age="20s"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        # Override log level for specified package
+        <Logger name="com.baeldung.log4j2" level="TRACE"/>
+
+        <Logger name="com.baeldung.log4j2.Log4j2RollingExample"
+            level="TRACE">
+            <AppenderRef ref="roll-by-size"/>
+            <AppenderRef ref="roll-by-time"/>
+            <AppenderRef ref="roll-by-time-and-size"/>
+        </Logger>
+
+        <AsyncRoot level="DEBUG">
+            <AppenderRef ref="stdout"/>
+            <AppenderRef ref="fout"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

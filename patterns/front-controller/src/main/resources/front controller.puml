@@ -1,0 +1,22 @@
+@startuml
+
+class Handler {
+doGet
+doPost
+}
+
+abstract class AbstractCommand {
+process
+}
+class ConcreteCommand1 {
+process
+}
+class ConcreteCommand2 {
+process
+}
+
+Handler .right.> AbstractCommand
+AbstractCommand <|-- ConcreteCommand1
+AbstractCommand <|-- ConcreteCommand2
+
+@enduml

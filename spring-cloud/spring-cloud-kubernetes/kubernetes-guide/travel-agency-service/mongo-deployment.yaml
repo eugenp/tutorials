@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mongo
+  name: mongodb-service
+spec:
+  type: NodePort
+  ports:
+  - name: "http"
+    port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    service: mongo
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: mongo
+      name: mongodb-service
+    spec:
+      containers:
+      - args:
+        - mongod
+        - --smallfiles
+        image: mongo:latest
+        name: mongo
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: password

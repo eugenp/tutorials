@@ -1,0 +1,11 @@
+<?xml version = "1.0"?>
+<class>
+	<student id="393">
+		<name>Rajiv</name>
+		<age>18</age>
+	</student>
+	<student id="493">
+		<name>Candie</name>
+		<age>19</age>
+	</student>
+</class>

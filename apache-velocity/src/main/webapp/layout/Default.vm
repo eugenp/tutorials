@@ -1,0 +1,22 @@
+<html>
+<head>
+ <title>Velocity</title>
+</head>
+<body>
+  <div>
+      #parse("/fragments/header.vm")
+  </div>
+  
+  
+  <div>
+  
+    <!-- View index.vm is inserted here -->
+    $screen_content
+ 
+  </div>
+  
+  <div>
+      #parse("/fragments/footer.vm")
+  </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-boot-bootstrap
+data:
+  application.properties: |-
+    spring.datasource.url=jdbc:mysql://baeldung-db:3306/baeldung_db

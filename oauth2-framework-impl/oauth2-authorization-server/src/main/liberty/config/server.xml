@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="${project.artifactId}">
+
+    <featureManager>
+        <feature>localConnector-1.0</feature>
+        <feature>cdi-2.0</feature>
+        <feature>jaxrs-2.1</feature>
+        <feature>jpa-2.2</feature>
+        <feature>appSecurity-3.0</feature>
+        <feature>jsp-2.3</feature>
+        <feature>mpConfig-1.3</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="${httpPort}" httpsPort="${httpsPort}"/>
+
+    <library id="H2_JDBC_Lib">
+        <fileset dir="${shared.resource.dir}" includes="h2*.jar"/>
+    </library>
+    <dataSource id="oauth2datasource" jndiName="jdbc/OAuth2_DS">
+        <jdbcDriver
+                javax.sql.XADataSource="org.h2.jdbcx.JdbcDataSource"
+                javax.sql.ConnectionPoolDataSource="org.h2.jdbcx.JdbcDataSource"
+                javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"
+                libraryRef="H2_JDBC_Lib"/>
+        <properties url="jdbc:h2:mem:OAuth2_DB" user="sa" password=""/>
+    </dataSource>
+
+    <applicationManager autoExpand="true"/>
+    <applicationMonitor updateTrigger="mbean"/>
+    <application type="war" location="${project.build.finalName}.war" context-root="/"/>
+
+</server>

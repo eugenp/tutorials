@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lists Utility Class in Thymeleaf</title>
+</head>
+<body>
+
+isEmpty Check : <span th:text="${#lists.isEmpty(myList)}"/>
+
+<span th:unless="${#lists.isEmpty(myList)}">List is not empty</span>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+apply plugin: "java"
+apply plugin: "application"
+description = "Gradle Command Line Arguments examples"
+
+ext.javaMainClass = "com.baeldung.cmd.MainClass"
+
+application {
+    mainClassName = javaMainClass
+}
+
+task propertyTypes(){
+    doLast{
+        if (project.hasProperty("args")) {
+            println "Our input argument with project property ["+project.getProperty("args")+"]"
+        }
+        println "Our input argument with system property ["+System.getProperty("args")+"]"
+    }
+}
+
+if (project.hasProperty("args")) {
+    ext.cmdargs = project.getProperty("args")
+} else { 
+    ext.cmdargs = "ls"
+}
+
+task cmdLineJavaExec(type: JavaExec) {
+    group = "Execution"
+    description = "Run the main class with JavaExecTask"
+    classpath = sourceSets.main.runtimeClasspath
+    main = javaMainClass
+    args cmdargs.split()
+}
+
+task cmdLineExec(type: Exec) {
+    group = "Execution"
+    description = "Run an external program with ExecTask"
+    commandLine cmdargs.split()
+}

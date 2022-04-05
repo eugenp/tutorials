@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081"  doc:name="HTTP Listener Configuration"/>
+    <flow name="Flow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP" allowedMethods="POST"/>
+        <logger message="Original paylaod: #[payload]" level="INFO" doc:name="Logger"/>
+        <custom-transformer class="com.baeldung.transformer.InitializationTransformer" doc:name="Java"/>
+        <logger message="Payload After Initialization: #[payload]" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="f1" value="#['Flow Variable 1']" doc:name="F1"/>
+        <set-session-variable variableName="s1" value="#['Session variable 1']" doc:name="S1"/>
+
+        <vm:outbound-endpoint exchange-pattern="request-response" path="test" doc:name="VM"/>
+    </flow>
+    <flow name="Flow1">
+        <vm:inbound-endpoint exchange-pattern="request-response" path="test" doc:name="VM"/>
+        <custom-transformer encoding="ISO-8859-2" class="com.baeldung.transformer.InvokingMessageComponent" doc:name="Java"/>
+        <logger message="Payload after Java Component : #[payload]" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="f2" value="#['Flow Variable 2']" doc:name="F2"/>
+        <set-session-variable variableName="s2" value="#['Session Variable 2']" doc:name="S2"/>
+        <flow-ref name="Flow2" doc:name="Flow2"/>
+
+        <logger message="Payload: Returned form flow 2: #[payload] .  Variables: Flow var and Session vars :  S1-#[sessionVars.s1], S2-#[sessionVars.s2] ,F1-#[flowVars.f1], F2-#[flowVars.f2],F3-#[flowVars.f3]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="Flow2">
+        <component class="com.baeldung.transformer.FromFlow2Component" doc:name="Java"/>
+        <logger message="In Flow 2: Flow Variables ::  #[flowVars.f1],#[flowVars.f2] and Session Variabless: #[sessionVars.s1] ,#[sessionVars.s2]" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="f3" value="#['Flow Variable 3 ']" doc:name="F3"/>
+    </flow>
+</mule>

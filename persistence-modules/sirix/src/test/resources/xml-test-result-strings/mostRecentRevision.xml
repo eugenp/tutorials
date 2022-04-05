@@ -1,0 +1,17 @@
+<p:a xmlns:p="ns" id="1" i="j">
+  <p:a id="16">OOPS4!</p:a>
+  <p:a id="14">OOPS4!</p:a>
+  oops1
+  <b id="5">
+    foo
+    <c id="7"/>
+  </b>
+  oops2
+  <b id="9" p:x="y">
+    <c id="11"/>
+    bar
+  </b>
+  oops3
+</p:a>
+
+

@@ -1,0 +1,11 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          custom-google:
+            client-id: <client-id>
+            client-secret: <client-secret>
+        provider:
+          custom-google:
+            issuer-uri: https://accounts.google.com

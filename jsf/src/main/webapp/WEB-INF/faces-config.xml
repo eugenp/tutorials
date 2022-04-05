@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+    <application>
+        <resource-bundle>
+            <base-name>
+                messages
+            </base-name>
+            <var>
+                msg
+            </var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>
+                constraints
+            </base-name>
+            <var>
+                constraints
+            </var>
+        </resource-bundle>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        
+        <navigation-handler>
+	    org.primefaces.mobile.application.MobileNavigationHandler
+        </navigation-handler>
+		
+    <!-- 	<default-render-kit-id>PRIMEFACES_MOBILE</default-render-kit-id> -->
+    </application>
+
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>

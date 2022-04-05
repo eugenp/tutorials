@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baeldung Blade App • Written by Andrea Ligios</title>
+<link href="/static/app.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Baeldung Blade App - Showcase</h1>
+
+    <h3>Manual tests</h3>
+    <p>The following are tests which are not covered by integration tests, but that can be run manually in order to check the functionality, either in the browser or in the logs, depending on the case.</p>
+
+    <ul>
+        <li><a href="/static/file-upload.html">File Upload</a></li>
+        <li><a href="/static/user-post.html">User POJO Post</a></li>
+        <li><a href="/user/foo">Webhook narrowed to the '/user/*' URL</a></li>
+        <li><a href="/load-configuration-in-a-route">Load Configuration in a Route</a></li>
+        <li><a href="/triggerInternalServerError">Trigger internal server error (and test the custom error 500 page)</a></li>
+        <li><a href="/triggerBaeldungException">Trigger BaeldungException (and test the Global Exception Handler)</a></li>
+    </ul>
+
+   
+    <h3>Session value created in App.java</h3>
+    <p>mySessionValue = ${mySessionValue}</p> 
+
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

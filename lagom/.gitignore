@@ -1,0 +1,4 @@
+greeting-impl/logs/*
+lagom-hello-world/greeting-impl/bin/classes/*
+lagom-hello-world/logs/application.log
+lagom-hello-world/weather-impl/logs/application.log

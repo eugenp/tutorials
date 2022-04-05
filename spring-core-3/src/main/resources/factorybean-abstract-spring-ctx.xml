@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="singleTool" class="com.baeldung.factorybean.SingleToolFactory">
+        <property name="factoryId" value="3001"/>
+        <property name="toolId" value="1"/>
+    </bean>
+
+    <bean id="nonSingleTool" class="com.baeldung.factorybean.NonSingleToolFactory">
+        <property name="factoryId" value="3002"/>
+        <property name="toolId" value="2"/>
+    </bean>
+</beans>

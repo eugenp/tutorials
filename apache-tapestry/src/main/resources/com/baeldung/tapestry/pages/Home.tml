@@ -1,0 +1,14 @@
+<html t:type="layout" title="apache-tapestry Home" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+	
+    <h1>Home! ${appName}</h1>
+    <h2>${message:introMsg}</h2>
+    <h3>${currentTime}</h3>
+	<p><t:eventlink event="callAjax" zone="ajaxZone" class="btn btn-default">Call Ajax</t:eventlink></p>
+	<t:zone t:id="ajaxZone" class="span4"></t:zone>
+	<t:block t:id="ajaxBlock">
+		<hr/>
+        <h2>Rendered through Ajax</h2>
+        <p>The current time is: <strong>${currentTime}</strong></p>
+    </t:block>
+   	
+</html>

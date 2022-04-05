@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: client-service
+data:
+  application.properties: |-
+    bean.message=Testing reload ! Message from backend is: %s <br/> Services : %s
+

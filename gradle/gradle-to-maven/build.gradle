@@ -1,0 +1,41 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.baeldung'
+
+// by default, pom's artifactId is taken from the directory name
+
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    compile('org.slf4j:slf4j-api')
+    testCompile('junit:junit')
+}
+
+install {
+    repositories {
+        mavenInstaller {
+            pom.version = '0.0.1-maven-SNAPSHOT'
+            pom.groupId = 'com.baeldung.sample'
+            pom.artifactId = 'gradle-maven-converter'
+            pom.project {
+                inceptionYear '2020'
+                licenses {
+                    license {
+                        name 'My License'
+                        url 'http://www.mycompany.com/licenses/license.txt'
+                        distribution 'repo'
+                    }
+                }
+            }
+            pom.whenConfigured {pom ->
+                pom.dependencies.find {dep -> dep.groupId == 'junit' && dep.artifactId == 'junit' }.optional = true
+            }
+            pom.writeTo("${mavenPomDir}/${project.group}/${project.name}/pom.xml")
+        }
+    }
+}

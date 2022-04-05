@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Poetry Contest: Thank You</title>
+</head>
+<body>
+<h1 th:if="${poem}">
+    <p th:text="${'You have successfully submitted poem titled - '+ poem?.title}"/>
+    Click <a th:href="@{/poem/submit}"> here</a> to submit more.
+</h1>
+<h1 th:unless="${poem}">
+    Click <a th:href="@{/poem/submit}"> here</a> to submit a poem.
+</h1>
+</body>
+</html>
