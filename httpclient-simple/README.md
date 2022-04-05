@@ -11,7 +11,7 @@ This module contains articles about HTTPClient that are part of the HTTPClient E
 - [Custom HTTP Header with the Apache HttpClient](https://www.baeldung.com/httpclient-custom-http-header)
 - [HttpClient Basic Authentication](https://www.baeldung.com/httpclient-4-basic-authentication)
 - [Posting with Apache HttpClient](https://www.baeldung.com/httpclient-post-http-request)
-- [Adding Parameters to HttpClient Requests](https://www.baeldung.com/apache-httpclient-parameters)
+- [Adding Parameters to Apache HttpClient Requests](https://www.baeldung.com/apache-httpclient-parameters)
 
 
 ### Running the Tests
