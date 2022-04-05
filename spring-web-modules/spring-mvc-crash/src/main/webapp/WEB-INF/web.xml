@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1"
+>
+    <display-name>Spring MVC XML Application</display-name>
+
+    <!-- Spring root -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>
+        	org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      	</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>com.baeldung.spring</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.crsh.plugin.WebPluginLifeCycle</listener-class>
+    </listener>
+
+    <!-- Spring child -->
+    <servlet>
+        <servlet-name>mvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- JSP Servlet -->
+
+    <servlet>
+        <servlet-name>ExampleOne</servlet-name>
+        <servlet-class>com.baeldung.jsp.ExampleOne</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExampleOne</servlet-name>
+        <url-pattern>/jsp/ExampleOne</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>ExampleThree</servlet-name>
+        <servlet-class>com.baeldung.jsp.ExampleThree</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExampleThree</servlet-name>
+        <url-pattern>/jsp/ExampleThree</url-pattern>
+    </servlet-mapping>
+
+    <!-- additional config -->
+
+    <session-config>
+        <session-timeout>10</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <location>/errors</location>
+    </error-page>
+</web-app>

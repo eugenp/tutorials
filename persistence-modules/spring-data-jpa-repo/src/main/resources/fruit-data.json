@@ -1,0 +1,14 @@
+[
+    {
+        "_class": "com.baeldung.entity.Fruit",
+        "name": "apple",
+        "color": "red",
+        "id": 1
+    },
+    {
+        "_class": "com.baeldung.entity.Fruit",
+        "name": "guava",
+        "color": "green",
+        "id": 2
+    }
+]

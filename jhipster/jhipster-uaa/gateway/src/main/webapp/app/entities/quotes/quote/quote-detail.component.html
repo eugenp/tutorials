@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="quote">
+            <h2><span jhiTranslate="gatewayApp.quotesQuote.detail.title">Quote</span> {{quote.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.quotesQuote.symbol">Symbol</span></dt>
+                <dd>
+                    <span>{{quote.symbol}}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.quotesQuote.price">Price</span></dt>
+                <dd>
+                    <span>{{quote.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.quotesQuote.lastTrade">Last Trade</span></dt>
+                <dd>
+                    <span>{{quote.lastTrade}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/quote', quote.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

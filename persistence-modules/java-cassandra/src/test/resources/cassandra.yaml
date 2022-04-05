@@ -1,0 +1,51 @@
+cluster_name: 'Test Cluster'
+hinted_handoff_enabled: true
+max_hint_window_in_ms: 10800000
+hinted_handoff_throttle_in_kb: 1024
+max_hints_delivery_threads: 2
+hints_directory: target/embeddedCassandra/hints
+authenticator: AllowAllAuthenticator
+authorizer: AllowAllAuthorizer
+permissions_validity_in_ms: 2000
+partitioner: RandomPartitioner
+data_file_directories:
+  - target/embeddedCassandra/data
+commitlog_directory: target/embeddedCassandra/commitlog
+cdc_raw_directory: target/embeddedCassandra/cdc
+disk_failure_policy: stop
+key_cache_size_in_mb:
+key_cache_save_period: 14400
+row_cache_size_in_mb: 0
+row_cache_save_period: 0
+saved_caches_directory: target/embeddedCassandra/saved_caches
+commitlog_sync: periodic
+commitlog_sync_period_in_ms: 10000
+commitlog_segment_size_in_mb: 32
+concurrent_reads: 32
+concurrent_writes: 32
+trickle_fsync: false
+trickle_fsync_interval_in_kb: 10240
+thrift_framed_transport_size_in_mb: 15
+thrift_max_message_length_in_mb: 16
+incremental_backups: false
+snapshot_before_compaction: false
+auto_snapshot: false
+column_index_size_in_kb: 64
+compaction_throughput_mb_per_sec: 16
+read_request_timeout_in_ms: 5000
+range_request_timeout_in_ms: 10000
+write_request_timeout_in_ms: 2000
+cas_contention_timeout_in_ms: 1000
+truncate_request_timeout_in_ms: 60000
+request_timeout_in_ms: 10000
+cross_node_timeout: false
+endpoint_snitch: SimpleSnitch
+dynamic_snitch_update_interval_in_ms: 100
+dynamic_snitch_reset_interval_in_ms: 600000
+dynamic_snitch_badness_threshold: 0.1
+request_scheduler: org.apache.cassandra.scheduler.NoScheduler
+index_interval: 128
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+      - seeds: "127.0.0.1"

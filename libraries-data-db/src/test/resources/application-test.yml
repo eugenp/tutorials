@@ -1,0 +1,7 @@
+## Source Database Properties
+customer:
+  datasource:
+    host: localhost
+    database: SOURCE_DB
+    username: root
+    password: user

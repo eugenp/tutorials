@@ -1,0 +1,9 @@
+{
+	"query": "mutation($id: String! $name: String! $email: String! $age: String! ){ updateUser ( id: $id name: $name email: $email age: $age) { id name email age} }",
+	"parameters": {
+		"id": 1,
+		"name":"John updated",
+		"email": "johnupdate@email.com",
+		"age": 50
+	}
+}

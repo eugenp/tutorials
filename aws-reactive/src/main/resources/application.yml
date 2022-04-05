@@ -1,0 +1,16 @@
+
+#
+# Configurações de acesso ao Minio
+#
+aws:
+  s3:
+    region: sa-east-1
+# When using AWS, the library will use one of the available
+# credential sources described in the documentation.     
+#    accessKeyId: ****
+#    secretAccessKey: ****
+    bucket: dev1.token.com.br
+    
+    
+    
+    

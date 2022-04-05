@@ -1,0 +1,54 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.ehcache.org/v3"
+    xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
+    xsi:schemaLocation="
+            http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd
+            http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
+
+    <cache alias="squareCache">
+        <key-type>java.lang.Long</key-type>
+        <value-type>java.math.BigDecimal</value-type>
+        <expiry>
+            <ttl unit="seconds">30</ttl>
+        </expiry>
+
+        <listeners>
+            <listener>
+                <class>com.baeldung.cachetest.config.CacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+            </listener>
+        </listeners>
+
+        <resources>
+            <heap unit="entries">2</heap>
+            <offheap unit="MB">10</offheap>
+        </resources>
+    </cache>
+    
+    <cache alias="books">
+        <key-type>java.lang.String</key-type>
+        <value-type>com.baeldung.springdatacaching.model.Book</value-type>
+        <expiry>
+            <ttl unit="seconds">30</ttl>
+        </expiry>
+        
+        <listeners>
+            <listener>
+                <class>com.baeldung.cachetest.config.CacheEventLogger</class>
+                <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+                <event-ordering-mode>UNORDERED</event-ordering-mode>
+                <events-to-fire-on>CREATED</events-to-fire-on>
+                <events-to-fire-on>EXPIRED</events-to-fire-on>
+            </listener>
+        </listeners>
+        
+        <resources>
+            <heap unit="entries">2</heap>
+            <offheap unit="MB">10</offheap>
+        </resources>
+    </cache>
+
+</config>

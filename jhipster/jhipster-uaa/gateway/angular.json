@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "gateway": {
+      "root": "",
+      "sourceRoot": "src/main/webapp",
+      "projectType": "application",
+      "architect": {}
+    }
+  },
+  "defaultProject": "gateway",
+  "cli": {
+    "packageManager": "yarn"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "inlineStyle": true,
+      "inlineTemplate": false,
+      "spec": false,
+      "prefix": "jhi",
+      "styleExt": "scss"
+    },
+    "@schematics/angular:directive": {
+      "spec": false,
+      "prefix": "jhi"
+    },
+    "@schematics/angular:guard": {
+      "spec": false
+    },
+    "@schematics/angular:pipe": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    }
+  }
+}

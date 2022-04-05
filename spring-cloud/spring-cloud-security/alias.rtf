@@ -1,0 +1,28 @@
+myauthkey
+
+
+security:
+  oauth2:
+    resource:
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjj4JDMgT4OoaXisEd8Nz
+          uiLwum9mh8BH1l9Atpe+uZkepf3Vnv0Bhxn0BGR+kYGwEHZPVpWsHEyTfIRdinaQ
+          vlPaxWJquQW25yYstrCuQTKJvFjSO/cX/V4OGi1RUj76mOpwzkm1Kui3R7Sfh8Zo
+          WO0GiWIFJqNBsZ9b1wOfBMXnge+A+u/qxVNnTFpwCVj6k2Yb4YUsmLNCmND7E3Ra
+          BnrNQWqMU2numhV+ADpmVH08m/+pWdZ896uYu/tvQnz3agvZPcFsEst7LcNAWQFT
+          eNLkfwVfepKWa9jPELemtTLf1MkMppU+Lj1UNCr8x4Y6EupRDZhplVNtqYsPNDpO
+          7wIDAQAB
+          -----END PUBLIC KEY-----
+		  
+		  
+		  
+jwt:
+  certificate:
+    store:
+      file: classpath:/certificate/my-auth-server.jks
+      password: storepassword
+    key:
+      alias: myauthserver
+      password: keypassword

@@ -1,0 +1,28 @@
+participant Client 1
+participant Client 2
+participant Controller
+participant Backend
+Client 1-> Controller: POST Data
+activate Client 1
+activate Controller
+Controller -> Backend: Save Data
+activate Backend
+note left of Controller #yellow: Controller blocked\nuntil result received
+Backend --> Controller: Result
+deactivate Backend
+Controller --> Client 1: Result
+deactivate Client 1
+deactivate Controller
+// 2nd Upload
+Client 2-> Controller: POST Data
+activate Client 2
+activate Controller
+Controller -> Backend: Save Data
+activate Backend
+note left of Controller #yellow: Controller blocket\nuntil result received
+Backend --> Controller: Result
+deactivate Backend
+Controller --> Client 2: Result
+deactivate Controller
+deactivate Client 2
+

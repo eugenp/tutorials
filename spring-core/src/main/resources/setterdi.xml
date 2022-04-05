@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="toyota" class="com.baeldung.setterdi.domain.Car">
+        <property name="engine" ref="engine" />
+        <property name="transmission" ref="transmission" />
+        <property name="trailer" ref="trailer" />
+    </bean>
+
+    <bean id="engine" class="com.baeldung.setterdi.domain.Engine">
+        <property name="type" value="v4" />
+        <property name="volume" value="2" />
+    </bean>
+
+    <bean id="transmission" class="com.baeldung.setterdi.domain.Transmission">
+        <property name="type" value="sliding" />
+    </bean>
+
+    <bean id="trailer" class="com.baeldung.setterdi.domain.Trailer">
+    </bean>
+
+</beans>

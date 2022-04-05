@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "afa8e1e5-ab0e-4f1d-8b99-b7d1f091f975",
+		"name": "OLingo2 - Cars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Metadata",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/odata/$metadata"
+			},
+			"response": []
+		},
+		{
+			"name": "GET All CarMakers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/odata/CarMakers"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Makers with Pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/odata/CarMakers?$top=1&$orderby=Name&$skip=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"odata",
+						"CarMakers"
+					],
+					"query": [
+						{
+							"key": "$top",
+							"value": "1"
+						},
+						{
+							"key": "$orderby",
+							"value": "Name"
+						},
+						{
+							"key": "$skip",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Makers and Models",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/odata/CarMakers?$expand=CarModelDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"odata",
+						"CarMakers"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "CarModelDetails"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Makers with filter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/odata/CarMakers?$filter=Name eq 'BWM'&$expand=CarModelDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"odata",
+						"CarMakers"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Name eq 'BWM'"
+						},
+						{
+							"key": "$expand",
+							"value": "CarModelDetails"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create CarMaker",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/atom+xml",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/atom+xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\" ?> \r\n<entry xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\"\r\n    xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" \r\n    xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\"></title> \r\n  <updated>2019-04-02T21:36:47Z</updated>\r\n  <author> \r\n    <name /> \r\n  </author> \r\n  <category term=\"default.CarMaker\"\r\n      scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /> \r\n  <content type=\"application/xml\"> \r\n    <m:properties>\r\n      <d:Name>Lucien</d:Name>\r\n    </m:properties> \r\n  </content> \r\n</entry>"
+				},
+				"url": "http://localhost:8080/odata/CarMakers"
+			},
+			"response": []
+		},
+		{
+			"name": "Create CarModel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/atom+xml"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/atom+xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\" ?> \r\n<entry xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\"\r\n    xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" \r\n    xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\"></title> \r\n  <updated>2019-04-02T21:36:47Z</updated>\r\n  <author> \r\n    <name /> \r\n  </author> \r\n  <link href=\"CarModels(1L)/CarMakerDetails\" \r\n    rel=\"http://schemas.microsoft.com/ado/2007/08/dataservices/related/CarMakerDetails\" \r\n    title=\"CarMakerDetails\" \r\n    type=\"application/atom+xml;type=entry\"></link>  \r\n  <category term=\"default.CarModel\"\r\n      scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /> \r\n  <content type=\"application/xml\"> \r\n    <m:properties>\r\n\t    <d:Name>Tata</d:Name>\r\n\t    <d:Sku>TT101</d:Sku>\r\n\t    <d:Year>2018</d:Year>\r\n    </m:properties> \r\n  </content> \r\n</entry>"
+				},
+				"url": "http://localhost:8080/odata/CarModels"
+			},
+			"response": []
+		},
+		{
+			"name": "Update CarMaker",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/atom+xml"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/atom+xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\" ?> \r\n<entry xmlns:d=\"http://schemas.microsoft.com/ado/2007/08/dataservices\"\r\n    xmlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\" \r\n    xmlns=\"http://www.w3.org/2005/Atom\">\r\n  <title type=\"text\"></title> \r\n  <updated>2019-04-02T21:36:47Z</updated>\r\n  <author> \r\n    <name /> \r\n  </author> \r\n  <category term=\"default.CarMaker\"\r\n      scheme=\"http://schemas.microsoft.com/ado/2007/08/dataservices/scheme\" /> \r\n  <content type=\"application/xml\"> \r\n    <m:properties>\r\n      <d:Id>5</d:Id>\r\n      <d:Name>KaiserWagen</d:Name>\r\n    </m:properties> \r\n  </content> \r\n</entry>"
+				},
+				"url": "http://localhost:8080/odata/CarMakers(5L)"
+			},
+			"response": []
+		},
+		{
+			"name": "All CarModels",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/odata/CarModels"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CarModel",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/atom+xml"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/atom+xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/odata/CarModels(100L)"
+			},
+			"response": []
+		}
+	]
+}

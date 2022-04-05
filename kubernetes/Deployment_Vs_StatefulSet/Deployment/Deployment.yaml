@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-deployment
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: web-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: web-app
+          image: hello-world:nanoserver-1809
+          volumeMounts:
+          - name: counter
+            mountPath: /app/
+      volumes:
+      - name: counter
+        persistentVolumeClaim:
+          claimName: counter
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: counter
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Mi
+  storageClassName: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080
+  selector:
+    name: web-app
+  type: NodePort

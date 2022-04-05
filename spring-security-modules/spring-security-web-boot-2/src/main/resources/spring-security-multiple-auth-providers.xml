@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+  xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="memuser" password="pass" 
+                  authorities="ROLE_USER" />
+            </security:user-service>
+        </security:authentication-provider>
+
+        <security:authentication-provider
+          ref="customAuthenticationProvider" />
+    </security:authentication-manager>
+
+    <security:http>
+        <security:http-basic />
+        <security:intercept-url pattern="/api/**" 
+          access="isAuthenticated()" />
+    </security:http>
+</beans>

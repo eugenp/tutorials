@@ -1,0 +1,33 @@
+<sdb:sirix xmlns:sdb="https://sirix.io/rest">
+  <sdb:sirix-item sdb:revision="1">
+    <p:a xmlns:p="ns" sdb:id="1" i="j">
+      oops1
+      <b sdb:id="5">
+        foo
+        <c sdb:id="7"/>
+      </b>
+      oops2
+      <b sdb:id="9" p:x="y">
+        <c sdb:id="11"/>
+        bar
+      </b>
+      oops3
+    </p:a>
+  </sdb:sirix-item>
+  <sdb:sirix-item sdb:revision="2">
+    <p:a xmlns:p="ns" sdb:id="1" i="j">
+      <p:a sdb:id="14">OOPS4!</p:a>
+      oops1
+      <b sdb:id="5">
+        foo
+        <c sdb:id="7"/>
+      </b>
+      oops2
+      <b sdb:id="9" p:x="y">
+        <c sdb:id="11"/>
+        bar
+      </b>
+      oops3
+    </p:a>
+  </sdb:sirix-item>
+</sdb:sirix>

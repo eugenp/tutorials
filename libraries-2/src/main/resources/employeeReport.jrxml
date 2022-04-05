@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="employeeReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20">
+    <parameter name="title" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="condition" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA[" 1 = 1"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="minSalary" class="java.lang.Double" isForPrompting="false"/>
+    <queryString>
+        <![CDATA[SELECT * FROM EMPLOYEE WHERE SALARY >= $P{minSalary} AND $P!{condition}]]>
+    </queryString>
+    <field name="FIRST_NAME" class="java.lang.String"/>
+    <field name="LAST_NAME" class="java.lang.String"/>
+    <field name="SALARY" class="java.lang.Double"/>
+    <field name="ID" class="java.lang.Integer"/>
+    <title>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="238" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$P{title}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="47" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{LAST_NAME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String"><![CDATA[$F{SALARY}]]></textFieldExpression>
+            </textField>
+            <subreport>
+                <reportElement x="0" y="20" width="300" height="27"/>
+                <subreportParameter name="idEmployee">
+                    <subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String">
+                    <![CDATA["employeeEmailReport.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+</jasperReport>

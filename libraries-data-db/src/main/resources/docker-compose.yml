@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  # Install Source MySQL DB and setup the Customer database
+  mysql-1:
+    container_name: source-database
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3305:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: customerdb
+
+  # Install Target MySQL DB and setup the Customer database
+  mysql-2:
+    container_name: target-database
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: customerdb

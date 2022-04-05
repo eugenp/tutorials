@@ -1,0 +1,15 @@
+version: '3.0'
+
+services:
+
+  postgres-test:
+    image: postgres:11.5
+    ports:
+      - ${POSTGRES_PORT}:5432
+    env_file: postgres.env
+    networks:
+      - baeldung
+
+networks:
+  baeldung:
+    driver: bridge
