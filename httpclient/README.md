@@ -13,7 +13,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Unshorten URLs with HttpClient](https://www.baeldung.com/unshorten-url-httpclient)
 - [HttpClient 4 – Follow Redirects for POST](https://www.baeldung.com/httpclient-redirect-on-http-post)
 - [Multipart Upload with HttpClient 4](https://www.baeldung.com/httpclient-multipart-upload)
-- [HttpAsyncClient Tutorial](https://www.baeldung.com/httpasyncclient-tutorial)
+- [Apache HttpAsyncClient Tutorial](https://www.baeldung.com/httpasyncclient-tutorial)
 - [Apache HttpClient Tutorial](https://www.baeldung.com/httpclient-guide)
 - [Advanced HttpClient Configuration](https://www.baeldung.com/httpclient-advanced-config)
 - [HttpClient 4 – Do Not Follow Redirects](https://www.baeldung.com/httpclient-stop-follow-redirect)
