@@ -10,4 +10,5 @@ This module contains articles about MongoDB in Java.
 - [Geospatial Support in MongoDB](https://www.baeldung.com/mongodb-geospatial-support)
 - [MongoDB Aggregations Using Java](https://www.baeldung.com/java-mongodb-aggregations)
 - [Retrieve a Value from MongoDB by Its Key Name](https://www.baeldung.com/mongodb-get-value-by-key-name)
+- [Push and Set Operations in Same MongoDB Update](https://www.baeldung.com/java-mongodb-push-set)
 - More articles: [[<-- prev]](../java-mongodb)
