@@ -1,6 +1,5 @@
 package com.baeldung.concurrentrequest;
 
-import static java.lang.String.format;
 import static java.lang.Thread.currentThread;
 import static java.util.Arrays.asList;
 
@@ -21,10 +20,10 @@ public class ProductService {
 
     public Optional<Product> getProductById(int id) {
         Optional<Product> product = productRepository.stream()
-            .filter(p -> p.getId() == id)
-            .findFirst();
+          .filter(p -> p.getId() == id)
+          .findFirst();
         String productName = product.map(Product::getName)
-            .orElse(null);
+          .orElse(null);
 
         System.out.printf("Thread: %s; bean instance: %s; product id: %s has the name: %s%n", currentThread().getName(), this, id, productName);
 
