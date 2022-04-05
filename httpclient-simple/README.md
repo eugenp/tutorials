@@ -10,7 +10,7 @@ This module contains articles about HTTPClient that are part of the HTTPClient E
 - [HttpClient 4 – Send Custom Cookie](https://www.baeldung.com/httpclient-4-cookies)
 - [Custom HTTP Header with the HttpClient](https://www.baeldung.com/httpclient-custom-http-header)
 - [HttpClient Basic Authentication](https://www.baeldung.com/httpclient-4-basic-authentication)
-- [Posting with HttpClient](https://www.baeldung.com/httpclient-post-http-request)
+- [Posting with Apache HttpClient](https://www.baeldung.com/httpclient-post-http-request)
 - [Adding Parameters to HttpClient Requests](https://www.baeldung.com/apache-httpclient-parameters)
 
 
