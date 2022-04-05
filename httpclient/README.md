@@ -9,7 +9,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 ### Relevant Articles: 
 
 - [Apache HttpClient – Cancel Request](https://www.baeldung.com/httpclient-cancel-request)
-- [HttpClient 4 Cookbook](https://www.baeldung.com/httpclient4)
+- [Apache HttpClient 4 Cookbook](https://www.baeldung.com/httpclient4)
 - [Unshorten URLs with HttpClient](https://www.baeldung.com/unshorten-url-httpclient)
 - [Apache HttpClient – Follow Redirects for POST](https://www.baeldung.com/httpclient-redirect-on-http-post)
 - [Multipart Upload with Apache HttpClient](https://www.baeldung.com/httpclient-multipart-upload)
