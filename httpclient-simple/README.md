@@ -4,7 +4,7 @@ This module contains articles about HTTPClient that are part of the HTTPClient E
 
 ### Relevant Articles
 
-- [HttpClient 4 – Get the Status Code](https://www.baeldung.com/httpclient-status-code)
+- [Apache HttpClient – Get the Status Code](https://www.baeldung.com/httpclient-status-code)
 - [HttpClient with SSL](https://www.baeldung.com/httpclient-ssl)
 - [HttpClient Timeout](https://www.baeldung.com/httpclient-timeout)
 - [HttpClient 4 – Send Custom Cookie](https://www.baeldung.com/httpclient-4-cookies)
