@@ -21,7 +21,7 @@ public class HttpClientParametersExample {
     public static void main(String[] args) throws Exception {
         queryParametersRequest();
 
-        noBodyRequest();
+        noBodyRequests();
 
         stringBodyRequests();
 
@@ -30,6 +30,11 @@ public class HttpClientParametersExample {
         fileBodyRequest();
 
         inputStreamBodyRequest();
+    }
+
+    private static void noBodyRequests() throws IOException, InterruptedException {
+        noBodyRequest();
+        noBodyRequestUsingMethod();
     }
 
     private static void byteArrayBodyRequests() throws IOException, InterruptedException {
@@ -67,6 +72,22 @@ public class HttpClientParametersExample {
           .version(HttpClient.Version.HTTP_2)
           .uri(URI.create("https://postman-echo.com/post"))
           .POST(HttpRequest.BodyPublishers.noBody())
+          .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        String responseBody = response.body();
+        int responseStatusCode = response.statusCode();
+
+        System.out.println("Response body : " + responseBody);
+        System.out.println("Response status code: " + responseStatusCode);
+    }
+
+    private static void noBodyRequestUsingMethod() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .method("POST", HttpRequest.BodyPublishers.noBody())
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 

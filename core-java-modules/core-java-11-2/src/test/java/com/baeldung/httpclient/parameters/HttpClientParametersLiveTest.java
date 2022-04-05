@@ -54,6 +54,18 @@ public class HttpClientParametersLiveTest {
     }
 
     @Test
+    public void givenNoDataWithMethod_whenPostRequest_thenResponseOk() throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+          .version(HttpClient.Version.HTTP_2)
+          .uri(URI.create("https://postman-echo.com/post"))
+          .method("POST", HttpRequest.BodyPublishers.noBody())
+          .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        Assertions.assertEquals(response.statusCode(), 200);
+    }
+
+    @Test
     public void givenString_whenPostRequest_thenResponseOk() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
           .version(HttpClient.Version.HTTP_2)
