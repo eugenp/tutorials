@@ -1,16 +1,16 @@
 # Deprecated Properties for Demonstration
 #spring:
-#  data:
-#    neo4j:
-#      username: dev-user
-#      auto-index: false
-#      repositories:
-#        enabled: false
-#
-#  flyway:
-#    dry-run-output: true
+#  resources:
+#    cache:
+#      period: 31536000
+#    chain:
+#      compressed: true
+#      html-application-cache: true
 
 spring:
-  neo4j:
-    authentication:
-      password: dev-user
+  web:
+    resources:
+      cache:
+        period: 31536000
+      chain:
+        compressed: false
