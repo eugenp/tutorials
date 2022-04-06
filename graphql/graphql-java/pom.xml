@@ -145,6 +145,13 @@
                     <copyRuntimeSources>false</copyRuntimeSources>
                     <generateDeprecatedRequestResponse>false</generateDeprecatedRequestResponse>
                     <separateUtilityClasses>true</separateUtilityClasses>
+                    <customScalars>
+                        <customScalar>
+                            <graphQLTypeName>JSON</graphQLTypeName>
+                            <javaType>java.util.Map</javaType>
+                            <graphQLScalarTypeClass>graphql.schema.GraphQLScalarType</graphQLScalarTypeClass>
+                        </customScalar>
+                    </customScalars>
                 </configuration>
             </plugin>
         </plugins>
