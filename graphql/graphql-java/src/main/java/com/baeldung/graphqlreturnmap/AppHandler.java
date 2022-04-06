@@ -26,7 +26,7 @@ public class AppHandler implements Handler {
         GraphQLSchema schema = SchemaParser.newParser()
                 .resolvers(new Query(), new ProductResolver())
                 .scalars(ExtendedScalars.Json)
-                .file("schema_map.graphqls")
+                .file("schema.graphqls")
                 .build()
                 .makeExecutableSchema();
         graphql = GraphQL.newGraphQL(schema).build();

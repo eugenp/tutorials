@@ -1,5 +1,6 @@
 package com.baeldung.graphqlreturnmap.resolver;
 
+import com.baeldung.graphql.data.Book;
 import com.baeldung.graphqlreturnmap.entity.Product;
 import com.baeldung.graphqlreturnmap.repository.ProductRepository;
 import com.baeldung.graphqlreturnmap.repository.impl.ProductRepositoryImpl;
@@ -23,6 +24,10 @@ public class Query implements GraphQLQueryResolver {
 
     public Product getProduct(int id) {
         return productRepository.getProduct(id);
+    }
+
+    public List<Book> allBooks() {
+        return null;
     }
 
 

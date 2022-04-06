@@ -1,40 +1,40 @@
-
 #
-#schema {
-#  query: Query
+##
+##schema {
+##  query: Query
+##}
+#
+#
+#type Product {
+#  id: ID
+#  name: String!
+#  description: String
+#  status: String
+#  currency: String!
+#  price: Float
+#  image_url: [String]
+#  video_url: [String]
+#  stock: Int
+#  average_rating: Float
+#  attribute_string:String
+#  attribute_list:[AttributeKeyValuePair]
+#  attributes: JSON
 #}
-
-
-type Product {
-  id: ID
-  name: String!
-  description: String
-  status: String
-  currency: String!
-  price: Float
-  image_url: [String]
-  video_url: [String]
-  stock: Int
-  average_rating: Float
-  attribute_string:String
-  attribute_list:[AttributeKeyValuePair]
-  attributes: JSON
-}
-
-type AttributeKeyValuePair {
-  key:String
-  value:Attribute
-}
-
-type Attribute {
-  name:String
-  description:String
-  unit:String
-}
-scalar JSON
-# The Root Query for the application
-type Query {
-  products(size: Int, page: Int): [Product]!
-  product(id: Int): Product!
-}
-
+#
+#type AttributeKeyValuePair {
+#  key:String
+#  value:Attribute
+#}
+#
+#type Attribute {
+#  name:String
+#  description:String
+#  unit:String
+#}
+#scalar JSON
+## The Root Query for the application
+#type Query {
+#  products(size: Int, page: Int): [Product]!
+#  product(id: Int): Product!
+#}
+#
