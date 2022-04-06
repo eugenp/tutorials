@@ -31,7 +31,6 @@
 			<artifactId>javafx-media</artifactId>
 			<version>${org.openjfx.version}</version>
 		</dependency>
-
 	</dependencies>
 
 	<properties>
