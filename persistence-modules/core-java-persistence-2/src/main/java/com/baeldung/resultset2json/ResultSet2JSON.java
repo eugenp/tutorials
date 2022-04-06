@@ -45,7 +45,7 @@ public class ResultSet2JSON {
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password");
         // Create a table
         Statement stmt = dbConnection.createStatement();
-        stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')"); // See
+        stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
         ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
         JSONObject result1 = resultSet2JdbcMethod2(resultSet, dbConnection);
