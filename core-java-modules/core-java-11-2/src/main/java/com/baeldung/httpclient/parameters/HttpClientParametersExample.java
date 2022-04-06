@@ -59,11 +59,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void noBodyRequest() throws IOException, InterruptedException {
@@ -75,11 +71,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     private static void noBodyRequestUsingMethod() throws IOException, InterruptedException {
@@ -91,11 +83,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void stringBodyRequest() throws IOException, InterruptedException {
@@ -108,11 +96,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void stringBodyWithCharsetRequest() throws IOException, InterruptedException {
@@ -125,11 +109,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void jsonDataStringBodyRequest() throws IOException, InterruptedException {
@@ -142,11 +122,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void formDataStringBodyRequest() throws IOException, InterruptedException {
@@ -168,11 +144,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void byteArrayBodyRequest() throws IOException, InterruptedException {
@@ -187,11 +159,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void byteArrayBodyWithSpecificBytesRequest() throws IOException, InterruptedException {
@@ -206,11 +174,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void byteArraysIteratorRequest() throws IOException, InterruptedException {
@@ -227,11 +191,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void fileBodyRequest() throws IOException, InterruptedException {
@@ -244,11 +204,7 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String responseBody = response.body();
-        int responseStatusCode = response.statusCode();
-
-        System.out.println("Response body : " + responseBody);
-        System.out.println("Response status code: " + responseStatusCode);
+        printResponse(response);
     }
 
     public static void inputStreamBodyRequest() throws IOException, InterruptedException {
@@ -263,11 +219,14 @@ public class HttpClientParametersExample {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
+        printResponse(response);
+    }
+
+    private static void printResponse(HttpResponse<String> response) {
         String responseBody = response.body();
         int responseStatusCode = response.statusCode();
 
         System.out.println("Response body : " + responseBody);
         System.out.println("Response status code: " + responseStatusCode);
     }
-
 }
