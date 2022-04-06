@@ -18,13 +18,13 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getProductDetails(@PathVariable("id") int productId) {
         return productService.getProductById(productId)
-            .orElse(null);
+          .orElse(null);
     }
 
     @GetMapping("{id}/stock")
     public Stock getProductStock(@PathVariable("id") int productId) {
         return productService.getProductById(productId)
-            .map(Product::getStock)
-            .orElse(null);
+          .map(Product::getStock)
+          .orElse(null);
     }
 }

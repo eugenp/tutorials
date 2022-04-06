@@ -45,7 +45,7 @@ public class ConcurrentRequestUnitTest {
     private void performCall(String url, ResultMatcher expect) {
         try {
             this.mockMvc.perform(get(url))
-                .andExpect(expect);
+              .andExpect(expect);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
