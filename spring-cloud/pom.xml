@@ -17,7 +17,7 @@
     </parent>
 
     <modules>
-        <module>spring-cloud-load-balancer</module>
+        <module>spring-cloud-loadbalancer</module>
         <module>spring-cloud-config</module>
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-hystrix</module>
@@ -45,9 +45,11 @@
         <module>spring-cloud-ribbon-retry</module>
         <module>spring-cloud-circuit-breaker</module>
         <module>spring-cloud-eureka-self-preservation</module>
-        <!--<module>spring-cloud-openfeign</module> --> <!-- Fixing in JAVA-2820 -->
+        <!-- <module>spring-cloud-openfeign</module> --> <!-- Fixing under JAVA-10446 -->
+        <module>spring-cloud-netflix-feign</module>
         <module>spring-cloud-sentinel</module>
         <module>spring-cloud-dapr</module>
+        <module>spring-cloud-docker</module>
     </modules>
 
     <build>

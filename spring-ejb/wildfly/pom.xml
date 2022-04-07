@@ -21,6 +21,7 @@
         <module>wildfly-jpa</module>
         <module>wildfly-ejb-interfaces</module>
         <module>wildfly-ejb</module>
+        <module>wildfly-mdb</module>
     </modules>
 
     <dependencyManagement>

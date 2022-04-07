@@ -1,33 +1,41 @@
 package com.baeldung.pact;
 
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.SpringApplication;
 import org.springframework.web.context.ConfigurableWebApplicationContext;
 
 import com.baeldung.sampleapp.config.MainApplication;
 
-import au.com.dius.pact.provider.junit.PactRunner;
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.State;
 import au.com.dius.pact.provider.junit.loader.PactFolder;
-import au.com.dius.pact.provider.junit.target.HttpTarget;
-import au.com.dius.pact.provider.junit.target.Target;
-import au.com.dius.pact.provider.junit.target.TestTarget;
+import au.com.dius.pact.provider.junit5.HttpTestTarget;
+import au.com.dius.pact.provider.junit5.PactVerificationContext;
+import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider;
 
-@RunWith(PactRunner.class)
 @Provider("test_provider")
-@PactFolder("pacts")
+@PactFolder("target/pacts")
 public class PactProviderLiveTest {
-
-    @TestTarget
-    public final Target target = new HttpTarget("http", "localhost", 8082, "/spring-rest");
-
+	
     private static ConfigurableWebApplicationContext application;
 
-    @BeforeClass
+    @BeforeAll
     public static void start() {
         application = (ConfigurableWebApplicationContext) SpringApplication.run(MainApplication.class);
+    }
+    
+    @BeforeEach
+    void before(PactVerificationContext context) {
+    	   context.setTarget(new HttpTestTarget("localhost", 8082, "/spring-rest"));
+    	}
+    
+    @TestTemplate
+    @ExtendWith(PactVerificationInvocationContextProvider.class)
+    void pactVerificationTestTemplate(PactVerificationContext context) {
+       context.verifyInteraction();
     }
 
     @State("test GET")

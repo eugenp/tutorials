@@ -1,17 +1,24 @@
 package com.baeldung.game;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 class RockPaperScissorsGame {
 
-    private static Map<Integer, String> movesMap = new HashMap<Integer, String>() {{
-        put(0, "rock");
-        put(1, "paper");
-        put(2, "scissors");
-    }};
+    enum Move {
+        ROCK("rock"),
+        PAPER("paper"),
+        SCISSORS("scissors");
+
+        private String value;
+
+        Move(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +38,7 @@ class RockPaperScissorsGame {
                 break;
             }
 
-            if (!movesMap.containsValue(playerMove)) {
+            if (Arrays.stream(Move.values()).noneMatch(x -> x.getValue().equals(playerMove))) {
                 System.out.println("Your move isn't valid!");
                 continue;
             }
@@ -51,15 +58,15 @@ class RockPaperScissorsGame {
     }
 
     private static boolean isPlayerWin(String playerMove, String computerMove) {
-        return playerMove.equals("rock") && computerMove.equals("scissors")
-                || (playerMove.equals("scissors") && computerMove.equals("paper"))
-                || (playerMove.equals("paper") && computerMove.equals("rock"));
+        return playerMove.equals(Move.ROCK.value) && computerMove.equals(Move.SCISSORS.value)
+                || (playerMove.equals(Move.SCISSORS.value) && computerMove.equals(Move.PAPER.value))
+                || (playerMove.equals(Move.PAPER.value) && computerMove.equals(Move.ROCK.value));
     }
 
     private static String getComputerMove() {
         Random random = new Random();
         int randomNumber = random.nextInt(3);
-        String computerMove = movesMap.get(randomNumber);
+        String computerMove = Move.values()[randomNumber].getValue();
         System.out.println("Computer move: " + computerMove);
         return computerMove;
     }

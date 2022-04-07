@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNG command-line" verbose="10">
+    <test name="Date Serializer">
+        <classes>
+            <class
+                name="com.baeldung.testng.DateSerializerServiceUnitTest" />
+        </classes>
+    </test>
+</suite>

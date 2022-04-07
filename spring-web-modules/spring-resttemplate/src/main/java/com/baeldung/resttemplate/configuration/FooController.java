@@ -9,6 +9,7 @@ import java.util.Map;
 import com.baeldung.resttemplate.web.dto.Foo;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -114,7 +115,7 @@ public class FooController {
         return id;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/foos/form")
+    @RequestMapping(method = RequestMethod.POST, value = "/foos/form", produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public String submitFoo(@RequestParam("id") String id) {
