@@ -1,6 +1,5 @@
 package com.baeldung.hibernate.oneToMany.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,32 +9,30 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ITEMS")
-public class Items {
+@Table(name = "ITEMSOIO")
+public class ItemOIO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
 
-
     @ManyToOne
-    @JoinColumn(name = "cart_id", nullable = false)
-    private Cart cart;
+    @JoinColumn(name = "cart_id", insertable = false, updatable = false)
+    private CartOIO cart;
 
     // Hibernate requires no-args constructor
-    public Items() {
+    public ItemOIO() {
     }
 
-    public Items(Cart c) {
+    public ItemOIO(CartOIO c) {
         this.cart = c;
     }
 
-    public Cart getCart() {
+    public CartOIO getCartOIO() {
         return cart;
     }
 
-    public void setCart(Cart cart) {
+    public void setCartOIO(CartOIO cart) {
         this.cart = cart;
     }
 
