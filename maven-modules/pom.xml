@@ -19,6 +19,7 @@
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
         <module>maven-exec-plugin</module>
+        <!-- <module>maven-generate-war</module> --> <!-- We haven't upgraded to java 11. -->
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
@@ -36,6 +37,7 @@
         <module>maven-surefire-plugin</module>
         <module>maven-parent-pom-resolution</module>
         <module>maven-simple</module>
+        <module>maven-classifier</module>
     </modules>
 
     <dependencyManagement>
