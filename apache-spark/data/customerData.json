@@ -1,0 +1,57 @@
+[
+  {
+    "zoneId":  "LONDON",
+    "customerId": 1,
+    "gender": "Female",
+    "name": "jane austin",
+    "contact": {
+      "street_Address": "4711 HOPE VALLEY RD",
+      "address2": "SUITE 6C",
+      "zipcode": "MK1110",
+      "county": "bucks",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "DURHAM"
+    },
+    "transaction_date": "2021-02-05",
+    "transaction_amount": 200
+  },
+  {
+    "zoneId":  "LONDON",
+    "customerId": 2,
+    "gender": "Male",
+    "name": "jo blog",
+    "contact": {
+      "street_Address": "4711 HOPE VALLEY RD",
+      "address2": "SUITE 6C",
+      "zipcode": "MK1110",
+      "county": "bucks",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "Cardiff"
+    },
+    "transaction_date": "2020-02-05",
+    "transaction_amount": 500
+  },
+  {
+    "zoneId":  "Dublin",
+    "customerId": 2,
+    "gender": "Male",
+    "name": "jo blog",
+    "contact": {
+      "address1": "4711 HOPE VALLEY RD",
+      "address2": "SUITE 6C",
+      "zipcode": "MK1110",
+      "county": "bucks",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "Cardiff"
+    },
+    "transaction_date": "2022-02-05",
+    "transaction_amount": 500
+  }
+    ]
+
+
+
+
+
+
+]

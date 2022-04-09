@@ -1,0 +1,7 @@
+id,zoneId,FIRST_NAME,MIDDLE_NAME,LAST_NAME,CITY,gender,transaction_date,transaction_amount
+1,EU11,JO,Josh,Blog, London,Female,9/6/2018,500
+1,EU12,JO,Josh,Blog, London,Female,9/6/2018,600
+1,EU13,JO,Josh,Blog, London,Male,9/6/2019,700
+1,EU14,JO,Josh,Blog, London,Female,9/6/2020,100
+1,EU16,JO,Josh,Blog,London,Female,9/6/2021,100
+1,EU18,JO,Josh,Blog, London,Female,9/6/2022,200
