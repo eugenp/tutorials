@@ -1,11 +1,14 @@
 package com.baeldung.books.events;
 
-import org.springframework.data.rest.core.annotation.*;
+import java.util.logging.Logger;
+
+import org.springframework.data.rest.core.annotation.HandleAfterCreate;
+import org.springframework.data.rest.core.annotation.HandleAfterDelete;
+import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
+import org.springframework.data.rest.core.annotation.HandleBeforeDelete;
+import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 
 import com.baeldung.books.models.Author;
-import com.baeldung.books.models.Book;
-
-import java.util.logging.Logger;
 
 @RepositoryEventHandler
 public class AuthorEventHandler {

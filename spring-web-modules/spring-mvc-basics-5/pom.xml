@@ -41,7 +41,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-mvc-basics</finalName>
+        <finalName>spring-mvc-basics-5</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

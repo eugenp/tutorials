@@ -44,6 +44,7 @@ public class ExcelUtility {
                 }
             }
             inputStream.close();
+            baeuldungWorkBook.close();
 
         } catch (IOException e) {
             throw e;

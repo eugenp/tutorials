@@ -1,27 +1,28 @@
 package com.baeldung.web.handler;
 
-import com.baeldung.resttemplate.web.exception.NotFoundException;
-import com.baeldung.resttemplate.web.handler.RestTemplateResponseErrorHandler;
-import com.baeldung.resttemplate.web.model.Bar;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+import com.baeldung.resttemplate.web.exception.NotFoundException;
+import com.baeldung.resttemplate.web.handler.RestTemplateResponseErrorHandler;
+import com.baeldung.resttemplate.web.model.Bar;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { NotFoundException.class, Bar.class })
 @RestClientTest
 public class RestTemplateResponseErrorHandlerIntegrationTest {
@@ -29,10 +30,10 @@ public class RestTemplateResponseErrorHandlerIntegrationTest {
     @Autowired private MockRestServiceServer server;
     @Autowired private RestTemplateBuilder builder;
 
-    @Test(expected = NotFoundException.class)
+    @Test
     public void givenRemoteApiCall_when404Error_thenThrowNotFound() {
-        Assert.assertNotNull(this.builder);
-        Assert.assertNotNull(this.server);
+        Assertions.assertNotNull(this.builder);
+        Assertions.assertNotNull(this.server);
 
         RestTemplate restTemplate = this.builder
           .errorHandler(new RestTemplateResponseErrorHandler())
@@ -42,8 +43,9 @@ public class RestTemplateResponseErrorHandlerIntegrationTest {
           .expect(ExpectedCount.once(), requestTo("/bars/4242"))
           .andExpect(method(HttpMethod.GET))
           .andRespond(withStatus(HttpStatus.NOT_FOUND));
-
-        Bar response = restTemplate.getForObject("/bars/4242", Bar.class);
-        this.server.verify();
+        
+        Assertions.assertThrows(NotFoundException.class, () -> {
+        	Bar response = restTemplate.getForObject("/bars/4242", Bar.class);
+        });
     }
 }

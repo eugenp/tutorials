@@ -1,14 +1,11 @@
 package com.baeldung;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.responseheaders.ResponseHeadersApplication;
+import com.baeldung.resttemplate.RestTemplateConfigurationApplication;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = { ResponseHeadersApplication.class })
+@SpringBootTest(classes= RestTemplateConfigurationApplication.class)
 public class SpringContextTest {
 
     @Test

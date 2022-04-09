@@ -187,6 +187,7 @@
         <java.version>11</java.version>
         <repackage.classifier />
         <spring-native.version>0.11.0-RC1</spring-native.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

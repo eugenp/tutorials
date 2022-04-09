@@ -69,7 +69,6 @@
     <properties>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
-        <guava.version>29.0-jre</guava.version>
         <mockserver.version>5.11.1</mockserver.version>
         <jakarta.ws-api.version>3.0.1</jakarta.ws-api.version>
         <jaxws-maven-plugin.version>3.0.2</jaxws-maven-plugin.version>

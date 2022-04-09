@@ -27,11 +27,6 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.cactoos</groupId>
             <artifactId>cactoos</artifactId>
             <version>${cactoos.version}</version>
@@ -92,7 +87,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
         <aspectjrt.version>1.9.5</aspectjrt.version>
-        <guava.version>28.2-jre</guava.version>
         <cactoos.version>0.43</cactoos.version>
         <ea-async.version>1.2.3</ea-async.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
