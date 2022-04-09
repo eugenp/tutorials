@@ -160,9 +160,7 @@
     </dependencies>
 
     <properties>
-        <guava.version>18.0</guava.version>
         <jackson-coreutils.version>1.8</jackson-coreutils.version>
-        <guava.version>19.0</guava.version>
         <servlet-api.version>2.5</servlet-api.version>
         <javax.mail.version>1.4.7</javax.mail.version>
         <jetty.version>9.4.0.v20161208</jetty.version>

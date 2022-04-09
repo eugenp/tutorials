@@ -10,3 +10,4 @@ This module contains articles about core features in the Java language
 - [Tiered Compilation in JVM](https://www.baeldung.com/jvm-tiered-compilation)
 - [Fixing the “Declared package does not match the expected package” Error](https://www.baeldung.com/java-declared-expected-package-error)
 - [Chaining Constructors in Java](https://www.baeldung.com/java-chain-constructors)
+- [Difference Between POJO, JavaBeans, DTO and VO](https://www.baeldung.com/java-pojo-javabeans-dto-vo)

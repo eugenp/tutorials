@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -30,9 +25,5 @@
             <version>${jmh-generator.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <guava.version>28.2-jre</guava.version>
-    </properties>
 
 </project>

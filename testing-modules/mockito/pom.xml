@@ -70,8 +70,6 @@
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
         <spring-framework.version>5.0.8.RELEASE</spring-framework.version>
         <spring-data.version>2.0.9.RELEASE</spring-data.version>
-        <!-- util -->
-        <guava.version>19.0</guava.version>
         <!-- testing -->
         <powermock.version>2.0.2</powermock.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>

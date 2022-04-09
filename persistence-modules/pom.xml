@@ -27,6 +27,7 @@
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
+        <module>hibernate-mapping-2</module>
         <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
@@ -42,6 +43,7 @@
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-jpa-3</module>
         <module>java-mongodb</module> <!-- long running -->
+        <module>java-mongodb-2</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
@@ -73,6 +75,7 @@
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>
+        <module>spring-data-jpa-enterprise-2</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>

@@ -62,18 +62,9 @@
                             <verbose>false</verbose>
                         </configuration>
                     </execution>
-                    <!-- This is for delomboking also your tests sources.
-                    <execution>
-                        <id>test-delombok</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>testDelombok</goal>
-                        </goals>
-                        <configuration>
-                            <verbose>false</verbose>
-                        </configuration>
-                    </execution>
-                    -->
+                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> 
+                        <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> <configuration> <verbose>false</verbose> 
+                        </configuration> </execution> -->
                 </executions>
             </plugin>
         </plugins>

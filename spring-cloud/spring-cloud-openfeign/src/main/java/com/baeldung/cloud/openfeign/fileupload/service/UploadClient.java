@@ -12,4 +12,7 @@ import com.baeldung.cloud.openfeign.fileupload.config.FeignSupportConfig;
 public interface UploadClient {
     @PostMapping(value = "/upload-file", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     String fileUpload(@RequestPart(value = "file") MultipartFile file);
+    
+    @PostMapping(value = "/upload-file-error", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    String fileUploadError(@RequestPart(value = "file") MultipartFile file);
 }
