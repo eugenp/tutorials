@@ -22,7 +22,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @BeforeEach
     void setup() throws Exception {
-
         super.setUp();
 
         List<Inventory> inventoryList = getInventories();
@@ -32,7 +31,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeFields_thenOnlyIncludedFieldsAreNotNull() {
-
         Query query = new Query();
         query.fields()
           .include("item")
@@ -53,7 +51,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeFieldsAndExcludeOtherFields_thenOnlyExcludedFieldsAreNull() {
-
         Query query = new Query();
         query.fields()
           .include("item")
@@ -75,7 +72,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedFieldsAreNull() {
-
         Query query = new Query();
         query.fields()
           .exclude("status")
@@ -96,7 +92,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFields_thenEmbeddedFieldsAreNotNull() {
-
         Query query = new Query();
         query.fields()
           .include("item")
@@ -124,7 +119,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenExcludeEmbeddedFields_thenEmbeddedFieldsAreNull() {
-
         Query query = new Query();
         query.fields()
           .exclude("size.uom");
@@ -150,7 +144,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFieldsInArray_thenEmbeddedFieldsInArrayAreNotNull() {
-
         Query query = new Query();
         query.fields()
           .include("item")
@@ -177,7 +170,6 @@ public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFieldsSliceInArray_thenArrayLengthEqualToSlice() {
-
         Inventory postcard = new Inventory();
         postcard.setItem("postcard");
         postcard.setStatus("A");

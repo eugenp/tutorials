@@ -50,7 +50,6 @@ abstract class AbstractTestProjection {
     }
 
     public List<Inventory> getInventories() {
-
         Inventory journal = new Inventory();
         journal.setItem("journal");
         journal.setStatus("A");

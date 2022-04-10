@@ -26,7 +26,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @BeforeEach
     void setup() throws Exception {
-
         super.setUp();
 
         List<Inventory> inventoryList = getInventories();
@@ -36,7 +35,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeFields_thenOnlyIncludedFieldsAreNotNull() {
-
         List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeItemAndStatusFields("A");
         assertTrue(inventoryList.size() > 0);
 
@@ -51,7 +49,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeFieldsAndExcludeOtherFields_thenOnlyExcludedFieldsAreNull() {
-
         List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeItemAndStatusExcludeIdFields("A");
         assertTrue(inventoryList.size() > 0);
 
@@ -66,7 +63,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedFieldsAreNull() {
-
         List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeAllButStatusAndStockFields("A");
         assertTrue(inventoryList.size() > 0);
 
@@ -81,7 +77,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFields_thenEmbeddedFieldsAreNotNull() {
-
         List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeEmbeddedFields("A");
         assertTrue(inventoryList.size() > 0);
 
@@ -102,7 +97,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenExcludeEmbeddedFields_thenEmbeddedFieldsAreNull() {
-
         List<Inventory> inventoryList = inventoryRepository.findByStatusExcludeEmbeddedFields("A");
         assertTrue(inventoryList.size() > 0);
 
@@ -123,7 +117,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFieldsInArray_thenEmbeddedFieldsInArrayAreNotNull() {
-
         List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeEmbeddedFieldsInArray("A");
         assertTrue(inventoryList.size() > 0);
 
@@ -143,7 +136,6 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFieldsSliceInArray_thenArrayLengthEqualToSlice() {
-
         Inventory postcard = new Inventory();
         postcard.setItem("postcard");
         postcard.setStatus("A");
