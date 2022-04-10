@@ -15,7 +15,7 @@ import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
-public class GetRequestMockServer {
+public class PostRequestMockServer {
 
     public static ClientAndServer mockServer;
     public static String serviceUrl;
@@ -24,7 +24,7 @@ public class GetRequestMockServer {
 
     public static final String SERVER_ADDRESS = "127.0.0.1";
     public static final String PATH = "/test1";
-    public static final String METHOD = "GET";
+    public static final String METHOD = "POST";
 
     @BeforeAll
     static void startServer() throws IOException, URISyntaxException {
