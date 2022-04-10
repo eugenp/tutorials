@@ -44,8 +44,7 @@ public class PostRequestMockServer {
           .when(
             request()
               .withPath(PATH)
-              .withMethod(METHOD),
-            exactly(5)
+              .withMethod(METHOD)
           )
           .respond(
             response()
