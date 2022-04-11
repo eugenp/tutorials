@@ -18,8 +18,8 @@ public class CombiningPublishersIntegrationTest {
     @Test
     public void givenFluxes_whenMergeDelayErrorIsInvoked_thenMergeDelayError() {
         Flux<Integer> fluxOfIntegers = Flux.mergeDelayError(1, 
-                evenNumbers.delayElements(Duration.ofMillis(2000L)), 
-                oddNumbers.delayElements(Duration.ofMillis(1000L)));
+                evenNumbers.delayElements(Duration.ofMillis(500L)), 
+                oddNumbers.delayElements(Duration.ofMillis(300L)));
         
         StepVerifier.create(fluxOfIntegers)
         .expectNext(1)
