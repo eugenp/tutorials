@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 
-public class listOfHashMapsUnitTest {
+public class ListOfHashMapsUnitTest {
     List<HashMap<String, List<String>>> booksAuthorsMapsList = new ArrayList<>();
 
     @Test
