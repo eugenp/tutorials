@@ -14,7 +14,7 @@ public class listOfHashMapsUnitTest {
     List<HashMap<String, List<String>>> booksAuthorsMapsList = new ArrayList<>();
 
     @Test
-    void givenMaps_whenAddToList_thenListContainsMaps() {
+    public void givenMaps_whenAddToList_thenListContainsMaps() {
         HashMap<String, List<String>> javaBooksAuthorsMap = new HashMap<>();
         HashMap<String, List<String>> phpBooksAuthorsMap = new HashMap<>();
         javaBooksAuthorsMap.put("Head First Java", Arrays.asList("Kathy Sierra", "Bert Bates"));
