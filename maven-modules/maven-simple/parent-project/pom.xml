@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>maven-simple</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modules>
@@ -19,4 +19,18 @@
         <module>service</module>
         <module>webapp</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-core.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <spring-core.version>5.3.16</spring-core.version>
+    </properties>
 </project>
