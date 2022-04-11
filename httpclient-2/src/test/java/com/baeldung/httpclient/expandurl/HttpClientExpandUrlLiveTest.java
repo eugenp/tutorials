@@ -1,4 +1,4 @@
-package com.baeldung.httpclient.rare;
+package com.baeldung.httpclient.expandurl;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -22,34 +22,28 @@ import java.util.List;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class HttpClientUnshortenLiveTest {
+public class HttpClientExpandUrlLiveTest {
 
     private CloseableHttpClient client;
-
-    // fixtures
 
     @Before
     public final void before() {
         client = HttpClientBuilder.create().disableRedirectHandling().build();
     }
 
-    // tests
-
     @Test
-    public final void givenShortenedOnce_whenUrlIsUnshortened_thenCorrectResult() throws IOException {
+    public final void givenShortenedOnce_whenUrlIsExpanded_thenCorrectResult() throws IOException {
         final String expectedResult = "http://www.baeldung.com/rest-versioning";
         final String actualResult = expandSingleLevel("http://bit.ly/13jEoS1");
         assertThat(actualResult, equalTo(expectedResult));
     }
 
     @Test
-    public final void givenShortenedMultiple_whenUrlIsUnshortened_thenCorrectResult() throws IOException {
-        final String expectedResult = "http://www.baeldung.com/rest-versioning";
+    public final void givenShortenedMultiple_whenUrlIsExpanded_thenCorrectResult() throws IOException {
+        final String expectedResult = "https://www.baeldung.com/rest-versioning";
         final String actualResult = expand("http://t.co/e4rDDbnzmk");
         assertThat(actualResult, equalTo(expectedResult));
     }
-
-    // API
 
     private String expand(final String urlArg) throws IOException {
         String originalUrl = urlArg;
