@@ -149,7 +149,7 @@
                         <customScalar>
                             <graphQLTypeName>JSON</graphQLTypeName>
                             <javaType>java.util.Map</javaType>
-                            <graphQLScalarTypeClass>graphql.schema.GraphQLScalarType</graphQLScalarTypeClass>
+                            <graphQLScalarTypeClass>com.baeldung.graphqlreturnmap.ExtendedGraphQLScalarType</graphQLScalarTypeClass>
                         </customScalar>
                     </customScalars>
                 </configuration>
@@ -164,7 +164,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <graphql.java.generator.version>1.18</graphql.java.generator.version>
-        <graphql-java-extended-scalars.version>17.0</graphql-java-extended-scalars.version>
+        <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
     </properties>
 
 </project>
