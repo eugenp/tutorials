@@ -6,6 +6,7 @@
 /data
 /src/main/webapp/WEB-INF/classes
 */META-INF/*
+/transaction-logs
 
 # Packaged files #
 *.jar

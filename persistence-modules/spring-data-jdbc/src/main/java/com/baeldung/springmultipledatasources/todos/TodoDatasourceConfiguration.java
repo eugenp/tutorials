@@ -19,6 +19,7 @@ public class TodoDatasourceConfiguration {
 
     @Bean
     @Primary
+    @ConfigurationProperties("spring.datasource.todos.hikari")
     public DataSource todosDataSource() {
         return todosDataSourceProperties()
           .initializeDataSourceBuilder()

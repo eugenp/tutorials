@@ -13,4 +13,5 @@ This module contains articles about Java syntax
 - [Introduction to Basic Syntax in Java](https://www.baeldung.com/java-syntax)
 - [Java ‘protected’ Access Modifier](https://www.baeldung.com/java-protected-access-modifier)
 - [Using the Not Operator in If Conditions in Java](https://www.baeldung.com/java-using-not-in-if-conditions)
+- [The for-each Loop in Java](https://www.baeldung.com/java-for-each-loop)
 - [[<-- Prev]](/core-java-modules/core-java-lang-syntax)

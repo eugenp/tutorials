@@ -3,8 +3,9 @@ package com.baeldung.split;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
+import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -29,16 +30,11 @@ public class SplitStringEveryNthChar {
     }
 
     public static List<String> usingPattern(String text, int n) {
-        List<String> results = new ArrayList<>();
-
-        Pattern pattern = Pattern.compile(".{1," + n + "}");
-        Matcher matcher = pattern.matcher(text);
-        while (matcher.find()) {
-            String match = text.substring(matcher.start(), matcher.end());
-            results.add(match);
-        }
-
-        return results;
+        return Pattern.compile(".{1," + n + "}")
+            .matcher(text)
+            .results()
+            .map(MatchResult::group)
+            .collect(Collectors.toList());
     }
 
     public static List<String> usingGuava(String text, int n) {

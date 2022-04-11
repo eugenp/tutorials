@@ -40,7 +40,8 @@ public class FooController {
     public ResponseEntity<Foo> getFooById(@PathVariable("id") Long id) {
 
         Optional<Foo> foo = repository.findById(id);
-        return foo.isPresent() ? new ResponseEntity<>(foo.get(), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return foo.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+          .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
@@ -70,7 +71,7 @@ public class FooController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Foo> updateFoo(@PathVariable("id") long id, @RequestBody Foo foo) {
-        boolean isFooPresent = repository.existsById(Long.valueOf(id));
+        boolean isFooPresent = repository.existsById(id);
 
         if (!isFooPresent) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

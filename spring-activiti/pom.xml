@@ -16,7 +16,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-1</relativePath>
     </parent>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>

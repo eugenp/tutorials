@@ -22,6 +22,6 @@ class RandomDatesUnitTest {
         LocalDate end = LocalDate.now();
 
         LocalDate random = RandomDates.between(start, end);
-        assertThat(random).isAfter(start).isBefore(end);
+        assertThat(random).isAfterOrEqualTo(start).isBefore(end);
     }
 }
