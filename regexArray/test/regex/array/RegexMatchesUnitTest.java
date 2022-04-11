@@ -1,9 +1,12 @@
 package regex.array;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import regex.array.RegexMatches;
+
 class RegexMatchesUnitTest {
+
 	@Test
 	void whenFourNums_thenFourMatches() {
 		RegexMatches rm = new RegexMatches();
@@ -11,6 +14,7 @@ class RegexMatchesUnitTest {
 		
 		assertArrayEquals(new String[] {"7801111211", "7802222222", "7803333333", "7804444444"}, actual, "success");
 	}
+
 	@Test
 	void whenThreeNums_thenThreeMatches() {
 		RegexMatches rm = new RegexMatches();
@@ -18,6 +22,7 @@ class RegexMatchesUnitTest {
 		
 		assertArrayEquals(new String[] {"7801111211", "7803333333", "7804444444"}, actual, "success");
 	}
+
 	@Test
 	void whenZeroNums_thenZeroMatches() {
 		RegexMatches rm = new RegexMatches();
