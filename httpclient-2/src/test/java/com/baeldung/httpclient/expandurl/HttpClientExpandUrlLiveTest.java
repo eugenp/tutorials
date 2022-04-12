@@ -33,8 +33,8 @@ public class HttpClientExpandUrlLiveTest {
 
     @Test
     public final void givenShortenedOnce_whenUrlIsExpanded_thenCorrectResult() throws IOException {
-        final String expectedResult = "http://www.baeldung.com/rest-versioning";
-        final String actualResult = expandSingleLevel("http://bit.ly/13jEoS1");
+        final String expectedResult = "https://www.baeldung.com/rest-versioning";
+        final String actualResult = expandSingleLevel("http://bit.ly/3LScTri");
         assertThat(actualResult, equalTo(expectedResult));
     }
 
