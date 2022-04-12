@@ -60,7 +60,7 @@ public class LoadTimeAgent {
         // prepare extra uses
         Set<Class<?>> extraUses = Collections.emptySet();
 
-        // prepare extra uses
+        // prepare extra provides
         Map<Class<?>, List<Class<?>>> extraProvides = Collections.emptyMap();
 
         // redefine module
