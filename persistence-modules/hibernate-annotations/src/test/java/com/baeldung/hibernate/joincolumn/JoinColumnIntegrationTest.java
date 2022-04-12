@@ -1,13 +1,14 @@
 package com.baeldung.hibernate.joincolumn;
 
 import com.baeldung.hibernate.HibernateUtil;
-import java.io.IOException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 
 public class JoinColumnIntegrationTest {
@@ -17,8 +18,11 @@ public class JoinColumnIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        session = HibernateUtil.getSessionFactory("hibernate-spatial.properties")
-                .openSession();
+        session = HibernateUtil.getSessionFactory(
+          "hibernate-spatial.properties",
+            Arrays.asList(Email.class, Office.class, OfficeAddress.class, OfficialEmployee.class)
+        ).openSession();
+
         transaction = session.beginTransaction();
     }
 

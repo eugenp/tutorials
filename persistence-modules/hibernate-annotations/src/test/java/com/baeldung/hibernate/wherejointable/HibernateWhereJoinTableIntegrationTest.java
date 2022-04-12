@@ -1,10 +1,5 @@
 package com.baeldung.hibernate.wherejointable;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -16,6 +11,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HibernateWhereJoinTableIntegrationTest {
 
@@ -34,20 +34,21 @@ public class HibernateWhereJoinTableIntegrationTest {
 
     @BeforeClass
     public static void beforeTests() {
-        Configuration configuration = new Configuration().addAnnotatedClass(User.class)
-            .addAnnotatedClass(Group.class)
-            .addAnnotatedClass(UserGroupRelation.class)
-            .setProperty("hibernate.dialect", H2Dialect.class.getName())
-            .setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
-            .setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
-            .setProperty("hibernate.connection.username", "sa")
-            .setProperty("hibernate.connection.password", "")
-            .setProperty("hibernate.hbm2ddl.auto", "update");
-        
+        Configuration configuration = new Configuration()
+          .addAnnotatedClass(User.class)
+          .addAnnotatedClass(Group.class)
+          .addAnnotatedClass(UserGroupRelation.class)
+          .setProperty("hibernate.dialect", H2Dialect.class.getName())
+          .setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
+          .setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
+          .setProperty("hibernate.connection.username", "sa")
+          .setProperty("hibernate.connection.password", "")
+          .setProperty("hibernate.hbm2ddl.auto", "update");
+
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-            .applySettings(configuration.getProperties())
-            .build();
-        
+          .applySettings(configuration.getProperties())
+          .build();
+
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 

@@ -2,19 +2,21 @@ package com.baeldung.hibernate.customtypes;
 
 import com.baeldung.hibernate.HibernateUtil;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.persistence.TypedQuery;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import static java.util.Collections.singletonList;
 import static org.hibernate.testing.transaction.TransactionUtil.doInHibernate;
+import static org.junit.Assert.assertEquals;
 
-public class HibernateCustomTypesManualTest {
+public class HibernateCustomTypesIntegrationTest {
 
     @Test
-    public void givenEmployee_whenSavedWithCustomTypes_thenEntityIsSaved() throws IOException {
+    public void givenEmployee_whenSavedWithCustomTypes_thenEntityIsSaved() {
 
         final OfficeEmployee e = new OfficeEmployee();
         e.setDateOfJoining(LocalDate.now());
@@ -45,7 +47,7 @@ public class HibernateCustomTypesManualTest {
     }
 
     @Test
-    public void givenEmployee_whenCustomTypeInQuery_thenReturnEntity() throws IOException {
+    public void givenEmployee_whenCustomTypeInQuery_thenReturnEntity() {
 
         final OfficeEmployee e = new OfficeEmployee();
         e.setDateOfJoining(LocalDate.now());
@@ -69,22 +71,23 @@ public class HibernateCustomTypesManualTest {
         doInHibernate(this::sessionFactory, session -> {
             session.save(e);
 
-            Query query = session.createQuery("FROM OfficeEmployee OE WHERE OE.empAddress.zipcode = :pinCode");
+            TypedQuery<OfficeEmployee> query = session.createQuery("FROM OfficeEmployee OE WHERE OE.empAddress.zipcode = :pinCode", OfficeEmployee.class);
             query.setParameter("pinCode",100);
-            int size = query.list().size();
+            int size = query.getResultList().size();
 
-            Assert.assertEquals(1, size);
+            assertEquals(1, size);
         });
 
     }
 
     private SessionFactory sessionFactory() {
         try {
-            return HibernateUtil.getSessionFactory("hibernate-customtypes.properties");
+            return HibernateUtil.getSessionFactory(
+              "hibernate-customtypes.properties",
+              singletonList(OfficeEmployee.class)
+            );
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 }

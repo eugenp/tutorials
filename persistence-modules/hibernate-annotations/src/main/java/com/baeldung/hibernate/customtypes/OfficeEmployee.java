@@ -1,6 +1,5 @@
 package com.baeldung.hibernate.customtypes;
 
-import com.baeldung.hibernate.pojo.Phone;
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
@@ -25,7 +24,7 @@ public class OfficeEmployee {
     private long id;
 
     @Column
-    @Type(type = "LocalDateString")
+    @Type(type = "com.baeldung.hibernate.customtypes.LocalDateStringType")
     private LocalDate dateOfJoining;
 
     @Columns(columns = {@Column(name = "country_code"),
