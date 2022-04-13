@@ -8,3 +8,4 @@
 - [A Guide to @DBRef in MongoDB](https://www.baeldung.com/spring-mongodb-dbref-annotation)
 - [Import Data to MongoDB From JSON File Using Java](https://www.baeldung.com/java-import-json-mongodb)
 - [Logging MongoDB Queries with Spring Boot](https://www.baeldung.com/spring-boot-mongodb-logging)
+- [Return Only Specific Fields for a Query in Spring Data MongoDB](https://www.baeldung.com/mongodb-return-specific-fields)
