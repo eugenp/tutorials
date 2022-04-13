@@ -5,6 +5,7 @@
     <artifactId>akka-streams</artifactId>
     <name>akka-streams</name>
 
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
