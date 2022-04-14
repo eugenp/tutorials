@@ -432,8 +432,6 @@
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
-                <module>immutables</module>
-
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
@@ -476,7 +474,6 @@
                 <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
-                <module>jta</module>
                 <module>kubernetes</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -704,7 +701,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>structurizr</module>
                 <module>struts-2</module>
 
                 <module>tensorflow-java</module>
@@ -918,9 +914,7 @@
                 <module>helidon</module>
                 <module>httpclient</module>
                 <module>httpclient-simple</module>
-                <module>hystrix</module>
-
-                <module>immutables</module>
+                <module>hystrix</module>                
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -964,7 +958,6 @@
                 <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
-                <module>jta</module>
 
                 <module>ksqldb</module>
 
@@ -1186,7 +1179,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>structurizr</module>
                 <module>struts-2</module>
 
                 <module>tensorflow-java</module>
