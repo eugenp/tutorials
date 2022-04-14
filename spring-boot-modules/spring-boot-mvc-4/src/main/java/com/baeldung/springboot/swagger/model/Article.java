@@ -15,6 +15,7 @@ public class Article {
     //@ApiModelProperty(hidden = true)
     //@ApiParam(hidden = true)
     //@ApiModelProperty(readOnly = true)
+    @ApiParam(hidden = true)
     private int id;
     private String title;
     private int numOfWords;
