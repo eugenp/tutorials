@@ -83,7 +83,7 @@ public class RestAssuredAdvancedLiveTest {
     
     @Test
     public void whenUseMultipleHeaders_thenOK(){
-        given().header("User-Agent", "MyAppName","Accept-Charset","utf-8").when().get("/users/eugenp").then().statusCode(200);
+        given().headers("User-Agent", "MyAppName","Accept-Charset","utf-8").when().get("/users/eugenp").then().statusCode(200);
     }    
     
     //======= cookie

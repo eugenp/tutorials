@@ -45,19 +45,19 @@ public class ConsumerFooServiceIntegrationTest {
         Collection<String> allSuppressedEntries = ListAppender.getEvents()
                 .stream()
                 .map(ILoggingEvent::getThrowableProxy)
-                .flatMap(t -> {
-                    return Optional.ofNullable(t)
-                            .map(IThrowableProxy::getSuppressed)
-                            .map(Arrays::stream)
-                            .orElse(Stream.empty());
-                })
+                .flatMap(t -> Optional.ofNullable(t)
+                        .map(IThrowableProxy::getSuppressed)
+                        .map(Arrays::stream)
+                        .orElse(Stream.empty()))
                 .map(IThrowableProxy::getClassName)
                 .collect(Collectors.toList());
-        assertThat(allLoggedEntries).anyMatch(entry -> entry.contains("The following error happened on processFoo method!"))
-                .anyMatch(entry -> entry.contains("| onSubscribe"))
-                .anyMatch(entry -> entry.contains("| cancel()"));
+
+        assertThat(allLoggedEntries)
+          .anyMatch(entry -> entry.contains("The following error happened on processFoo method!"))
+          .anyMatch(entry -> entry.contains("| onSubscribe"))
+          .anyMatch(entry -> entry.contains("| cancel()"));
 
         assertThat(allSuppressedEntries)
-                .anyMatch(entry -> entry.contains("reactor.core.publisher.FluxOnAssembly$OnAssemblyException"));
+          .anyMatch(entry -> entry.contains("reactor.core.publisher.FluxOnAssembly$OnAssemblyException"));
     }
 }
