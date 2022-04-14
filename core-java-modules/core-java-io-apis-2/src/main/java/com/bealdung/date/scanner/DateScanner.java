@@ -1,4 +1,4 @@
-package com.bealdung.datescanner;
+package com.bealdung.date.scanner;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,13 +6,24 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DateScanner {
-
     public static void main(String[] args) {
-        Scanner strResult = new Scanner(getZonedDateTime().toString());
+        System.out.println(txtDate("Thursday 30 May 2019"));
+
+        Scanner strResult = new Scanner(getLocalTime().toString());
         System.out.println(strResult.nextLine());
+    }
+
+    public static String txtDate(String strDate){
+        Scanner strResult = new Scanner(strDate);
+        String dateString = strResult.nextLine();
+        LocalDate date = LocalDate.parse(dateString,
+            DateTimeFormatter.ofPattern("EEEE dd MMM uuuu",  Locale.ENGLISH));
+        return date.toString();
     }
 
     public static ZonedDateTime getZonedDateTime(){
