@@ -16,8 +16,7 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
-    <modules>
-        <module>spring-boot</module>
+    <modules>        
         <module>spring-boot-1</module>
         <module>spring-boot-2</module>
         <module>spring-boot-admin</module>
@@ -56,6 +55,7 @@
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
+        <module>spring-boot-mvc-4</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
