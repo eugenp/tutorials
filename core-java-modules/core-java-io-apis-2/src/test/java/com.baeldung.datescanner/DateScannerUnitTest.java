@@ -1,11 +1,6 @@
 package com.bealdung.datescanner;
 
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
