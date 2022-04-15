@@ -14,4 +14,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Enabling Logging for Apache HttpClient](https://www.baeldung.com/apache-httpclient-enable-logging)
 - [Expand Shortened URLs with Apache HttpClient](https://www.baeldung.com/apache-httpclient-expand-url)
 - [Apache HttpClient vs. CloseableHttpClient](https://www.baeldung.com/apache-httpclient-vs-closeablehttpclient)
-- More articles: [[<-- prev]](../httpclient)
+- More articles: [[<-- prev]](../apache-httpclient)
