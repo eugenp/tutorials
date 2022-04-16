@@ -21,6 +21,11 @@ public class BankAccountService {
         account.setBalance(account.getBalance() - amount);
 
     }
+    @AccountOperation(operation = "test")
+    public void test(String str, OutRequest outRequest) {
+        outRequest.str = "Dummy";
+        System.out.println(str + " AND " + outRequest.str);
+    }
 
     public double getBalance() {
         return RandomUtils.nextDouble();

@@ -43,6 +43,11 @@ class BankAccountServiceIntegrationTest {
     }
 
     @Test
+    void test() {
+        OutRequest request = new OutRequest();
+        bankAccountService.test("suhit", request);
+    }
+    @Test
     void getBalance() {
         bankAccountService.getBalance();
     }
