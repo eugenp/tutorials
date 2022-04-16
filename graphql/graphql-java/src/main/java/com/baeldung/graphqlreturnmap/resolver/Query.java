@@ -15,7 +15,6 @@ public class Query implements GraphQLQueryResolver {
     private ProductRepository productRepository;
     public Query(){
         productRepository = new ProductRepositoryImpl();
-//        this.productRepository = productRepository;
     }
 
     public List<Product> getProducts(int pageSize, int pageNumber) {

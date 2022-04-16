@@ -24,11 +24,11 @@ public class AppHandler implements Handler {
 
     public AppHandler() throws Exception {
         GraphQLSchema schema = SchemaParser.newParser()
-                .resolvers(new Query(), new ProductResolver())
-                .scalars(ExtendedScalars.Json)
-                .file("schema.graphqls")
-                .build()
-                .makeExecutableSchema();
+            .resolvers(new Query(), new ProductResolver())
+            .scalars(ExtendedScalars.Json)
+            .file("schema.graphqls")
+            .build()
+            .makeExecutableSchema();
         graphql = GraphQL.newGraphQL(schema).build();
     }
 
