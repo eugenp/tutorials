@@ -69,10 +69,10 @@ public class AntColonyOptimization {
      * Use this method to run the main logic
      */
     public int[] solve() {
-        setupAnts();
         clearTrails();
         IntStream.range(0, maxIterations)
             .forEach(i -> {
+                setupAnts();
                 moveAnts();
                 updateTrails();
                 updateBest();
