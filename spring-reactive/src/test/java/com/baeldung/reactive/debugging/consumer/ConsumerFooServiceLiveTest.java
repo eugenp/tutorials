@@ -1,6 +1,5 @@
 package com.baeldung.reactive.debugging.consumer;
 
-import com.baeldung.reactive.debugging.consumer.service.FooService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -12,8 +11,6 @@ import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
  * - com.baeldung.reactive.debugging.consumer.ConsumerDebuggingApplication
  */
 public class ConsumerFooServiceLiveTest {
-
-    FooService service = new FooService();
 
     private static final String BASE_URL = "http://localhost:8082";
     private static final String DEBUG_HOOK_ON = BASE_URL + "/debug-hook-on";
