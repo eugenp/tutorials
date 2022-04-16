@@ -1,4 +1,4 @@
-package com.baeldung.reactor.creation;
+package com.baeldung.reactor.generate.create;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,7 +11,6 @@ import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 public class CharacterUnitTest {
-
     @Test
     public void whenGeneratingCharacters_thenCharactersAreProduced() {
         CharacterGenerator characterGenerator = new CharacterGenerator();
@@ -26,24 +25,31 @@ public class CharacterUnitTest {
     @Test
     public void whenCreatingCharactersWithMultipleThreads_thenSequenceIsProducedAsynchronously() throws InterruptedException {
         CharacterGenerator characterGenerator = new CharacterGenerator();
-        List<Character> sequence1 = characterGenerator.generateCharacters().take(3).collectList().block();
-        List<Character> sequence2 = characterGenerator.generateCharacters().take(2).collectList().block();
+        List<Character> sequence1 = characterGenerator.generateCharacters()
+            .take(3)
+            .collectList()
+            .block();
+        List<Character> sequence2 = characterGenerator.generateCharacters()
+            .take(2)
+            .collectList()
+            .block();
 
         CharacterCreator characterCreator = new CharacterCreator();
-        Thread producingThread1 = new Thread(
+        
+        Thread producerThread1 = new Thread(
                 () -> characterCreator.consumer.accept(sequence1)
         );
-        Thread producingThread2 = new Thread(
+        Thread producerThread2 = new Thread(
                 () -> characterCreator.consumer.accept(sequence2)
         );
 
         List<Character> consolidated = new ArrayList<>();
         characterCreator.createCharacterSequence().subscribe(consolidated::add);
 
-        producingThread1.start();
-        producingThread2.start();
-        producingThread1.join();
-        producingThread2.join();
+        producerThread1.start();
+        producerThread2.start();
+        producerThread1.join();
+        producerThread2.join();
 
         assertThat(consolidated).containsExactlyInAnyOrder('a', 'b', 'c', 'a', 'b');
     }
