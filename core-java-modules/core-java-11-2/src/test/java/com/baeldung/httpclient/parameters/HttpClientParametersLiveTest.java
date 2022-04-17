@@ -1,8 +1,11 @@
 package com.baeldung.httpclient.parameters;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -16,7 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.Assertions;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -30,15 +34,22 @@ public class HttpClientParametersLiveTest {
     }
 
     @Test
-    public void givenQueryParams_whenGetRequest_thenResponseOk() throws IOException, InterruptedException {
+    public void givenQueryParams_whenGetRequest_thenResponseOk() throws IOException, InterruptedException, URISyntaxException {
+        HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
+
+        URI uri = new URIBuilder(httpGet.getURI())
+          .addParameter("param1", "value1")
+          .addParameter("param2", "value2")
+          .build();
+
         HttpRequest request = HttpRequest.newBuilder()
           .version(HttpClient.Version.HTTP_2)
-          .uri(URI.create("https://postman-echo.com/get?param1=value1&param2=value2"))
+          .uri(uri)
           .GET()
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -50,7 +61,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -62,7 +73,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -75,7 +86,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -88,7 +99,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -101,7 +112,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -123,7 +134,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -138,7 +149,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -153,7 +164,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -170,7 +181,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -183,7 +194,7 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 
     @Test
@@ -198,6 +209,6 @@ public class HttpClientParametersLiveTest {
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Assertions.assertEquals(response.statusCode(), 200);
+        assertEquals(response.statusCode(), 200);
     }
 }

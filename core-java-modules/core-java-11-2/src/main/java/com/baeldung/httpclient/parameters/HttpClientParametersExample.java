@@ -3,6 +3,7 @@ package com.baeldung.httpclient.parameters;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -15,6 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
 
 public class HttpClientParametersExample {
 
@@ -50,11 +54,19 @@ public class HttpClientParametersExample {
         formDataStringBodyRequest();
     }
 
-    public static void queryParametersRequest() throws IOException, InterruptedException {
+    public static void queryParametersRequest() throws IOException, InterruptedException, URISyntaxException {
         HttpClient client = HttpClient.newHttpClient();
+
+        HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
+
+        URI uri = new URIBuilder(httpGet.getURI())
+          .addParameter("param1", "value1")
+          .addParameter("param2", "value2")
+          .build();
+
         HttpRequest request = HttpRequest.newBuilder()
           .version(HttpClient.Version.HTTP_2)
-          .uri(URI.create("https://postman-echo.com/get?param1=value1&param2=value2"))
+          .uri(uri)
           .GET()
           .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
