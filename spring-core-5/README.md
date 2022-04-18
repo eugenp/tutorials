@@ -10,4 +10,5 @@ This module contains articles about core Spring functionality.
 - [AliasFor Annotation in Spring](https://www.baeldung.com/spring-aliasfor-annotation)
 - [A Quick Guide to the Spring @Lazy Annotation](https://www.baeldung.com/spring-lazy-annotation)
 - [Finding the Spring Version](https://www.baeldung.com/spring-find-version)
+- [How Does the Spring Singleton Bean Serve Concurrent Requests?](https://www.baeldung.com/spring-singleton-concurrent-requests)
 - More articles: [[<-- prev]](../spring-core-4)

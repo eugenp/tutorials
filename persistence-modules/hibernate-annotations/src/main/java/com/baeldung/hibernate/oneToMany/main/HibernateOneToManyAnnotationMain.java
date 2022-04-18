@@ -9,52 +9,53 @@ import org.hibernate.Transaction;
 
 import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
 import com.baeldung.hibernate.oneToMany.model.Cart;
-import com.baeldung.hibernate.oneToMany.model.Items;
+import com.baeldung.hibernate.oneToMany.model.Item;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HibernateOneToManyAnnotationMain {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(HibernateOneToManyAnnotationMain.class);
 
     public static void main(String[] args) {
 
         Cart cart = new Cart();
 
-        Items item1 = new Items(cart);
-        Items item2 = new Items(cart);
-        Set<Items> itemsSet = new HashSet<Items>();
+        Item item1 = new Item(cart);
+        Item item2 = new Item(cart);
+        Set<Item> itemsSet = new HashSet<>();
         itemsSet.add(item1);
         itemsSet.add(item2);
 
         cart.setItems(itemsSet);
-        
 
-        SessionFactory sessionFactory = null;
-        Session session = null;
-        Transaction tx = null;
+        SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        LOGGER.info("Session created");
+
         try {
-            // Get Session
-            sessionFactory = HibernateAnnotationUtil.getSessionFactory();
-            session = sessionFactory.getCurrentSession();
-            System.out.println("Session created");
             // start transaction
-            tx = session.beginTransaction();
+            Transaction tx = session.beginTransaction();
+
             // Save the Model object
             session.save(cart);
             session.save(item1);
             session.save(item2);
+
             // Commit transaction
             tx.commit();
-            System.out.println("Cart ID=" + cart.getId());
-            System.out.println("item1 ID=" + item1.getId() + ", Foreign Key Cart ID=" + item1.getCart().getId());
-            System.out.println("item2 ID=" + item2.getId() + ", Foreign Key Cart ID=" + item1.getCart().getId());
+
+            LOGGER.info("Cart ID={}", cart.getId());
+            LOGGER.info("item1 ID={}, Foreign Key Cart ID={}", item1.getId(), item1.getCart().getId());
+            LOGGER.info("item2 ID={}, Foreign Key Cart ID={}", item2.getId(), item2.getCart().getId());
 
         } catch (Exception e) {
-            System.out.println("Exception occured. " + e.getMessage());
-            e.printStackTrace();
+            LOGGER.error("Exception occurred", e);
         } finally {
             if (!sessionFactory.isClosed()) {
-                System.out.println("Closing SessionFactory");
+                LOGGER.info("Closing SessionFactory");
                 sessionFactory.close();
             }
         }
     }
-
 }

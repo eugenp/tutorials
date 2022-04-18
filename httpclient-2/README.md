@@ -12,5 +12,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Reading an HTTP Response Body as a String in Java](https://www.baeldung.com/java-http-response-body-as-string)
 - [How To Get Cookies From the Apache HttpClient Response](https://www.baeldung.com/java-apache-httpclient-cookies)
 - [Enabling Logging for Apache HttpClient](https://www.baeldung.com/apache-httpclient-enable-logging)
-- [Unshorten URLs with HttpClient](https://www.baeldung.com/unshorten-url-httpclient)
+- [Expand Shortened URLs with Apache HttpClient](https://www.baeldung.com/apache-httpclient-expand-url)
+- [Apache HttpClient vs. CloseableHttpClient](https://www.baeldung.com/apache-httpclient-vs-closeablehttpclient)
 - More articles: [[<-- prev]](../httpclient)
