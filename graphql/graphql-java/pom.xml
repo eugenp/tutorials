@@ -12,7 +12,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <repositories>
@@ -37,50 +37,14 @@
             <version>${graphql-java-annotations.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.ratpack</groupId>
-            <artifactId>ratpack-core</artifactId>
-            <version>${ratpack-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.americanexpress.nodes</groupId>
-            <artifactId>nodes</artifactId>
-            <version>0.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-java</artifactId>
-            <version>9.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
-            <version>5.2.4</version>
+            <version>${graphql-java-tools.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-servlet</artifactId>
-            <version>6.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-netty</artifactId>
-            <version>5.11.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-client-java</artifactId>
-            <version>5.11.2</version>
+            <version>${graphql-java-servlet.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java-generator</groupId>
@@ -88,15 +52,47 @@
             <version>${graphql.java.generator.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-core</artifactId>
+            <version>${ratpack-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.americanexpress.nodes</groupId>
+            <artifactId>nodes</artifactId>
+            <version>${nodes.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>${mockserver-netty.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.22.0</version>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-client-java</artifactId>
+            <version>${mockserver-client-java.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -115,11 +111,11 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>10.0.7</version>
+                <version>${jetty-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>com.graphql-java-generator</groupId>
@@ -143,12 +139,21 @@
     </build>
 
     <properties>
+        <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
+        <graphql-java-servlet.version>6.1.3</graphql-java-servlet.version>
         <graphql-java-annotations.version>3.0.3</graphql-java-annotations.version>
-        <ratpack-core.version>1.4.6</ratpack-core.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <graphql.java.generator.version>1.18</graphql.java.generator.version>
+        <ratpack-core.version>1.9.0</ratpack-core.version>
+        <nodes.version>0.5.0</nodes.version>
+        <httpclient.version>4.5.13</httpclient.version>
+
+        <mockserver-netty.version>5.13.2</mockserver-netty.version>
+        <mockserver-client-java.version>5.13.2</mockserver-client-java.version>
+
+        <jetty-maven-plugin.version>10.0.7</jetty-maven-plugin.version>
+
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <graphql.java.generator.version>1.18</graphql.java.generator.version>
     </properties>
 
 </project>
