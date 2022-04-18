@@ -1,5 +1,6 @@
-package com.baeldung.security;
+package com.baeldung.exceptionhandler;
 
+import com.baeldung.exceptionhandler.security.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

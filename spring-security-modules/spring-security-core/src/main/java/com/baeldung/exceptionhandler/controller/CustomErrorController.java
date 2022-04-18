@@ -1,4 +1,4 @@
-package com.baeldung.controller;
+package com.baeldung.exceptionhandler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

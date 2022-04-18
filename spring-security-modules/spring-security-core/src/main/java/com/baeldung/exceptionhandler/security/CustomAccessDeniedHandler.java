@@ -1,4 +1,4 @@
-package com.baeldung.security;
+package com.baeldung.exceptionhandler.security;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

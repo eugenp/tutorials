@@ -1,14 +1,14 @@
-package com.baeldung.controller;
+package com.baeldung.exceptionhandler.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/home")
-public class HomeController {
+@RequestMapping("/access-denied")
+public class AccessDeniedController {
     @GetMapping
-    public String home() {
-        return "/index.html";
+    public String accessDenied() {
+        return "/denied.html";
     }
 }
