@@ -82,4 +82,13 @@ class HttpClientPostUnitTest extends PostRequestMockServer {
         );
     }
 
+    @Test
+    void givenPostRequestWithFormData_whenServerIsAvailable_thenOkStatusIsReceived() throws IOException, InterruptedException {
+        HttpResponse<String> response = HttpClientPost.sendPostWithFormData(serviceUrl);
+        assertAll(
+          () -> assertThat(response.statusCode()).isEqualTo(200),
+          () -> assertThat(response.body()).isEqualTo("{\"message\":\"ok\"}")
+        );
+    }
+
 }

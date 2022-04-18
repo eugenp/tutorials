@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -107,6 +111,37 @@ public class HttpClientPost {
           .send(request, HttpResponse.BodyHandlers.ofString());
 
         return response;
+    }
+
+    public static HttpResponse<String> sendPostWithFormData(String serviceUrl) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+
+        Map<String, String> formData = new HashMap<>();
+        formData.put("username", "baeldung");
+        formData.put("message", "hello");
+
+        HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create(serviceUrl))
+          .POST(HttpRequest.BodyPublishers.ofString(getFormDataAsString(formData)))
+          .build();
+
+        HttpResponse<String> response = client
+          .send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response;
+    }
+
+    private static String getFormDataAsString(Map<String, String> formData) {
+        StringBuilder formBodyBuilder = new StringBuilder();
+        for (Map.Entry<String, String> singleEntry : formData.entrySet()) {
+            if (formBodyBuilder.length() > 0) {
+                formBodyBuilder.append("&");
+            }
+            formBodyBuilder.append(URLEncoder.encode(singleEntry.getKey(), StandardCharsets.UTF_8));
+            formBodyBuilder.append("=");
+            formBodyBuilder.append(URLEncoder.encode(singleEntry.getValue(), StandardCharsets.UTF_8));
+        }
+        return formBodyBuilder.toString();
     }
 
 }
