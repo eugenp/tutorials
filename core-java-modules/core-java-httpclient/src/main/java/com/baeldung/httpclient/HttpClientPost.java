@@ -1,16 +1,16 @@
 package com.baeldung.httpclient;
 
-import org.apache.commons.lang3.NotImplementedException;
-
 import java.io.IOException;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class HttpClientPost {
 
@@ -42,24 +42,71 @@ public class HttpClientPost {
         return futureResponse;
     }
 
-    public static CompletableFuture<List<HttpResponse<String>>> sendConcurrentPost(List<String> serviceUrls) {
+    public static List<CompletableFuture<HttpResponse<String>>> sendConcurrentPost(List<String> serviceUrls) {
         HttpClient client = HttpClient.newHttpClient();
 
         List<CompletableFuture<HttpResponse<String>>> completableFutures = serviceUrls.stream()
           .map(URI::create)
           .map(HttpRequest::newBuilder)
+          .map(builder -> builder.POST(HttpRequest.BodyPublishers.noBody()))
           .map(HttpRequest.Builder::build)
           .map(request -> client.sendAsync(request, HttpResponse.BodyHandlers.ofString()))
           .collect(Collectors.toList());
 
-        CompletableFuture<List<HttpResponse<String>>> combinedFutures = CompletableFuture
-          .allOf(completableFutures.toArray(new CompletableFuture[0]))
-          .thenApply(future ->
-            completableFutures.stream()
-              .map(CompletableFuture::join)
-              .collect(Collectors.toList()));
+        return completableFutures;
+    }
 
-        return combinedFutures;
+    public static HttpResponse<String> sendPostWithAuthHeader(String serviceUrl) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create(serviceUrl))
+          .POST(HttpRequest.BodyPublishers.noBody())
+          .header("Authorization", "Basic " + Base64.getEncoder()
+            .encodeToString(("baeldung:123456").getBytes()))
+          .build();
+
+        HttpResponse<String> response = client
+          .send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response;
+    }
+
+    public static HttpResponse<String> sendPostWithAuthClient(String serviceUrl) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newBuilder()
+          .authenticator(new Authenticator() {
+              @Override
+              protected PasswordAuthentication getPasswordAuthentication() {
+                  return new PasswordAuthentication(
+                    "baeldung",
+                    "123456".toCharArray());
+              }
+          })
+          .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create(serviceUrl))
+          .POST(HttpRequest.BodyPublishers.noBody())
+          .build();
+
+        HttpResponse<String> response = client
+          .send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response;
+    }
+
+    public static HttpResponse<String> sendPostWithJsonBody(String serviceUrl) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create(serviceUrl))
+          .POST(HttpRequest.BodyPublishers.ofString("{\"action\":\"hello\"}"))
+          .build();
+
+        HttpResponse<String> response = client
+          .send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response;
     }
 
 }

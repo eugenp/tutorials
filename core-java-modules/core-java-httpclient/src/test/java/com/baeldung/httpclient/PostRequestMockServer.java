@@ -11,7 +11,6 @@ import java.net.ServerSocket;
 import java.net.URISyntaxException;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
-import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
@@ -31,7 +30,7 @@ public class PostRequestMockServer {
         serverPort = getFreePort();
         serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH;
         mockServer = startClientAndServer(serverPort);
-        mockGetRequest();
+        mockBasicPostRequest();
     }
 
     @AfterAll
@@ -39,7 +38,7 @@ public class PostRequestMockServer {
         mockServer.stop();
     }
 
-    private static void mockGetRequest() {
+    private static void mockBasicPostRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
