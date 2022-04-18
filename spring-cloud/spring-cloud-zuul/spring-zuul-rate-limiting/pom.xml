@@ -13,7 +13,7 @@
         <artifactId>spring-cloud-zuul</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>

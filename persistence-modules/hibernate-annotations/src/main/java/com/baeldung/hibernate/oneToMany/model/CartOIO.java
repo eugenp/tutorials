@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "CARTOIO")
 public class CartOIO {
@@ -21,7 +19,7 @@ public class CartOIO {
 
     @OneToMany
     @JoinColumn(name = "cart_id") // we need to duplicate the physical information
-    private Set<ItemsOIO> items;
+    private Set<ItemOIO> items;
 
     public long getId() {
         return id;
@@ -31,11 +29,11 @@ public class CartOIO {
         this.id = id;
     }
 
-    public Set<ItemsOIO> getItems() {
+    public Set<ItemOIO> getItems() {
         return items;
     }
 
-    public void setItems(Set<ItemsOIO> items) {
+    public void setItems(Set<ItemOIO> items) {
         this.items = items;
     }
 

@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ResponseHeaderLiveTest {
 
-    private static final String BASE_URL = "http://localhost:8082/spring-rest";
+    private static final String BASE_URL = "http://localhost:8080";
     private static final String SINGLE_BASE_URL = BASE_URL + "/single-response-header";
     private static final String FILTER_BASE_URL = BASE_URL + "/filter-response-header";
     private static final String SERVICE_SINGLE_RESPONSE_HEADER = "Baeldung-Example-Header";
