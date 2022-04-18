@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: db
+    image: mariadb:latest
+    environment:
+    - MARIADB_DATABASE=dbapp
+    - MARIADB_ROOT_PASSWORD=my-secret-pw
+    - MARIADB_PORT_NUMBER=3306
+    - MARIADB_USER=devuser
+    - MARIADB_PASSWORD=devpass
+    ports:
+      - "9906:3306"
+    volumes:
+      - ./dbinit/:/docker-entrypoint-initdb.d
+      # - db:/var/lib/mysql
+  web:
+      container_name: php
+      image: php
+      restart: always
+      build:
+        context: .
+        dockerfile: Dockerfile
+        target: base
+      ports:
+       - "8080:80"
+      volumes:
+       - ./app:/var/www/html
+#volumes:
+#  db:
