@@ -7,7 +7,7 @@ import com.mongodb.ServerAddress;
 
 public class ConnectionCheck {
 
-    public static void checkingConnection() {
+    public static MongoClient checkingConnection() {
 
         MongoClientOptions.Builder builder = MongoClientOptions.builder();
 
@@ -27,8 +27,9 @@ public class ConnectionCheck {
             System.out.println(db.getStats());
         } catch (Exception e) {
             System.out.println("MongoDB Server is Down");
-            mongoClient.close();
         }
+
+        return mongoClient;
 
     }
 
@@ -43,4 +44,3 @@ public class ConnectionCheck {
     }
 
 }
-
