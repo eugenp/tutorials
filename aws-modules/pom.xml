@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>aws-lambda</artifactId>
-    <name>aws-lambda</name>
+    <artifactId>aws-modules</artifactId>
+    <name>aws-modules</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -14,9 +14,11 @@
     </parent>
 
     <modules>
-        <module>lambda</module>
-        <module>shipping-tracker/ShippingFunction</module>
-        <module>todo-reminder/ToDoFunction</module>
-    </modules>
+        <module>aws-app-sync</module>
+        <module>aws-lambda</module>
+        <module>aws-miscellaneous</module>
+        <module>aws-reactive</module>
+        <module>aws-s3</module>
+    </modules>    
 
 </project>
