@@ -21,12 +21,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
 
         UserDetails user = User.withUsername("user")
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
-                .password("password").roles("USER").build();
+            .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
+            .password("password")
+            .roles("USER")
+            .build();
 
         UserDetails admin = User.withUsername("admin")
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
-                .password("password").roles("ADMIN").build();
+            .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
+            .password("password")
+            .roles("ADMIN")
+            .build();
 
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
@@ -38,37 +42,42 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("user")
-                .password("{noop}password")
-                .roles("USER")
-                .and()
-                .withUser("admin")
-                .password("{noop}password")
-                .roles("ADMIN");
+        auth.inMemoryAuthentication()
+            .withUser("user")
+            .password("{noop}password")
+            .roles("USER")
+            .and()
+            .withUser("admin")
+            .password("{noop}password")
+            .roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .httpBasic().disable()
-                .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/customError").permitAll()
-                .antMatchers("/access-denied").permitAll()
-                .antMatchers("/secured").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .failureHandler(authenticationFailureHandler())
-                .successHandler(authenticationSuccessHandler())
-                .and()
-                .exceptionHandling()
-                .accessDeniedHandler(accessDeniedHandler())
-                .and()
-                .logout();
+        http.csrf()
+            .disable()
+            .httpBasic()
+            .disable()
+            .authorizeRequests()
+            .antMatchers("/login")
+            .permitAll()
+            .antMatchers("/customError")
+            .permitAll()
+            .antMatchers("/access-denied")
+            .permitAll()
+            .antMatchers("/secured")
+            .hasRole("ADMIN")
+            .anyRequest()
+            .authenticated()
+            .and()
+            .formLogin()
+            .failureHandler(authenticationFailureHandler())
+            .successHandler(authenticationSuccessHandler())
+            .and()
+            .exceptionHandling()
+            .accessDeniedHandler(accessDeniedHandler())
+            .and()
+            .logout();
     }
 
     @Bean

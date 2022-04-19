@@ -12,5 +12,4 @@ public class SecuredResourceController {
     public String secureResource() {
         return "/admin.html";
     }
-
 }

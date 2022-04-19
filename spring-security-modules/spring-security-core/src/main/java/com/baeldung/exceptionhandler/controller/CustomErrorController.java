@@ -12,5 +12,4 @@ public class CustomErrorController {
     public String customErrorController() {
         return "/error";
     }
-
 }
