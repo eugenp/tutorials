@@ -1,16 +1,16 @@
 package com.baeldung;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ExceptionUnitTest {
+class ExceptionUnitTest {
 
     @Test
     void shouldThrowException() {
@@ -29,7 +29,7 @@ public class ExceptionUnitTest {
     }
 
     @Test
-    public void whenModifyMapDuringIteration_thenThrowExecption() {
+    void whenModifyMapDuringIteration_thenThrowExecption() {
         Map<Integer, String> hashmap = new HashMap<>();
         hashmap.put(1, "One");
         hashmap.put(2, "Two");
