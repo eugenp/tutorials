@@ -1,6 +1,6 @@
-## HttpClient 4.x
+## Apache HttpClient
 
-This module contains articles about HttpClient 4.x
+This module contains articles about Apache HttpClient
 
 ### The Course
 
