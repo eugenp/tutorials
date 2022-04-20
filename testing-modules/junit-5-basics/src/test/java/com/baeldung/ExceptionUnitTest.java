@@ -17,7 +17,8 @@ class ExceptionUnitTest {
         Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
             throw new UnsupportedOperationException("Not supported");
         });
-        assertEquals(exception.getMessage(), "Not supported");
+
+        assertEquals("Not supported", exception.getMessage());
     }
 
     @Test
