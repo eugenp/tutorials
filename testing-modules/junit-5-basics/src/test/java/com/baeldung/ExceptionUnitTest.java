@@ -28,7 +28,7 @@ class ExceptionUnitTest {
     }
 
     @Test
-    void whenModifyMapDuringIteration_thenThrowExecption() {
+    void whenModifyMapDuringIteration_thenThrowException() {
         Map<Integer, String> hashmap = new HashMap<>();
         hashmap.put(1, "One");
         hashmap.put(2, "Two");
