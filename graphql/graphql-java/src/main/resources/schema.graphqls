@@ -20,13 +20,6 @@ type Product {
   id: ID
   name: String!
   description: String
-  status: String
-  currency: String!
-  price: Float
-  image_url: [String]
-  video_url: [String]
-  stock: Int
-  average_rating: Float
   attribute_string:String
   attribute_list:[AttributeKeyValuePair]
   attributes: JSON

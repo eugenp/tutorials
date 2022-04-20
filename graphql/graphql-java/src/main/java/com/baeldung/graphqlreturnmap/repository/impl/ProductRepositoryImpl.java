@@ -19,12 +19,6 @@ public class ProductRepositoryImpl implements ProductRepository {
             product.setId(i);
             product.setName(String.format("Product %d", i));
             product.setDescription(String.format("Product %d description", i));
-            product.setCurrency(String.format("Product %d currency", i));
-            product.setPrice(Double.valueOf(i^2));
-            product.setStock(10);
-            product.setAverage_rating(0F);
-            product.setImage_url(Arrays.asList(String.format("www.baeldung.com/imageurl/%d", i)));
-            product.setVideo_url(Arrays.asList(String.format("www.baeldung.com/videourl/%d", i)));
             product.setAttributes(createAttributes(i));
             productList.add(product);
         }
