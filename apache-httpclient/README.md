@@ -13,7 +13,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Multipart Upload with Apache HttpClient](https://www.baeldung.com/httpclient-multipart-upload)
 - [Apache HttpAsyncClient Tutorial](https://www.baeldung.com/httpasyncclient-tutorial)
 - [Apache HttpClient Tutorial](https://www.baeldung.com/httpclient-guide)
-- [Advanced HttpClient Configuration](https://www.baeldung.com/httpclient-advanced-config)
+- [Advanced Apache HttpClient Configuration](https://www.baeldung.com/httpclient-advanced-config)
 - [Apache HttpClient – Do Not Follow Redirects](https://www.baeldung.com/httpclient-stop-follow-redirect)
 - [Custom User-Agent in Apache HttpClient](https://www.baeldung.com/httpclient-user-agent-header)
 - [Apache HttpClient Connection Management](https://www.baeldung.com/httpclient-connection-management)
