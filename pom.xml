@@ -425,7 +425,7 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -906,7 +906,7 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>                
 
@@ -1340,7 +1340,7 @@
                  <module>core-java-modules/core-java-strings</module>
                  <module>ddd-modules</module>
                  <module>docker</module>
-                 <module>httpclient-2</module>
+                 <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
@@ -1407,7 +1407,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-modules</module>
                 <module>docker</module>
-                <module>httpclient-2</module>
+                <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
