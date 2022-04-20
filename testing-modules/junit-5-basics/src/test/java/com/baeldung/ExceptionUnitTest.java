@@ -24,9 +24,7 @@ class ExceptionUnitTest {
     @Test
     void assertThrowsException() {
         String str = null;
-        assertThrows(IllegalArgumentException.class, () -> {
-            Integer.valueOf(str);
-        });
+        assertThrows(IllegalArgumentException.class, () -> Integer.valueOf(str));
     }
 
     @Test
