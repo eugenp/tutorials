@@ -70,7 +70,7 @@ class Junit5AssertionsUnitTest {
     }
 
     @Test
-    void whenAssertingSameObject_thenSuccessfull() {
+    void whenAssertingSameObject_thenSuccessful() {
         String language = "Java";
         Optional<String> optional = Optional.of(language);
 
@@ -115,7 +115,7 @@ class Junit5AssertionsUnitTest {
         assertTimeout(
                 ofSeconds(2),
                 () -> {
-                    // code that requires less then 2 minutes to execute
+                    // code that requires less than 2 minutes to execute
                     Thread.sleep(1000);
                 }
         );
@@ -126,7 +126,7 @@ class Junit5AssertionsUnitTest {
         assertTimeoutPreemptively(
                 ofSeconds(2),
                 () -> {
-                    // code that requires less then 2 minutes to execute
+                    // code that requires less than 2 minutes to execute
                     Thread.sleep(1000);
                 }
         );
