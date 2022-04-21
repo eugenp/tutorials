@@ -9,9 +9,7 @@ class ExceptionAssertionUnitTest {
 
     @Test
     void whenExceptionThrown_thenAssertionSucceeds() {
-        Exception exception = assertThrows(NumberFormatException.class, () -> {
-            Integer.parseInt("1a");
-        });
+        Exception exception = assertThrows(NumberFormatException.class, () -> Integer.parseInt("1a"));
 
         String expectedMessage = "For input string";
         String actualMessage = exception.getMessage();
@@ -21,9 +19,7 @@ class ExceptionAssertionUnitTest {
 
     @Test
     void whenDerivedExceptionThrown_thenAssertionSucceds() {
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            Integer.parseInt("1a");
-        });
+        Exception exception = assertThrows(RuntimeException.class, () -> Integer.parseInt("1a"));
 
         String expectedMessage = "For input string";
         String actualMessage = exception.getMessage();
