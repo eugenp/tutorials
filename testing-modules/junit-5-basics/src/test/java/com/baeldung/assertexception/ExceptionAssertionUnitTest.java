@@ -18,7 +18,7 @@ class ExceptionAssertionUnitTest {
     }
 
     @Test
-    void whenDerivedExceptionThrown_thenAssertionSucceds() {
+    void whenDerivedExceptionThrown_thenAssertionSucceeds() {
         Exception exception = assertThrows(RuntimeException.class, () -> Integer.parseInt("1a"));
 
         String expectedMessage = "For input string";
