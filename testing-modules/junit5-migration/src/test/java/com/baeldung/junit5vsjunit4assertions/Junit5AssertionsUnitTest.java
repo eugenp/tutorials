@@ -97,7 +97,7 @@ class Junit5AssertionsUnitTest {
                 "heading",
                 () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
                 () -> assertEquals("java", "JAVA".toLowerCase()),
-                () -> assertEquals(obj, null, "null is equal to null")
+                () -> assertNull(obj, "obj is null")
         );
     }
 
