@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 
 import static java.time.Duration.ofSeconds;
 import static java.util.Arrays.asList;
@@ -57,7 +58,8 @@ class Junit5AssertionsUnitTest {
     void whenAssertingNull_thenTrue() {
         Object cat = null;
 
-        assertNull(cat, () -> "The cat should be null");
+        Supplier<String> messageSupplier = () -> "The cat should be null";
+        assertNull(cat, messageSupplier);
     }
 
     @Test
