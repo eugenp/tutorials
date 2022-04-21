@@ -85,9 +85,8 @@ class Junit5AssertionsUnitTest {
     }
 
     @Test
-    @Disabled
+    @Disabled("Test not completed")
     void whenFailingATest_thenFailed() {
-        // Test not completed
         fail("FAIL - test not completed");
     }
 
