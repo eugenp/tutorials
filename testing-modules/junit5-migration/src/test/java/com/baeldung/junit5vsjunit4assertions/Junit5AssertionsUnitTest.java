@@ -1,22 +1,8 @@
 package com.baeldung.junit5vsjunit4assertions;
 
-import static java.time.Duration.ofSeconds;
-import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -24,9 +10,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import static java.time.Duration.ofSeconds;
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test that demonstrate the different assertions available within JUnit 4
@@ -107,10 +93,10 @@ class Junit5AssertionsUnitTest {
     void givenMultipleAssertion_whenAssertingAll_thenOK() {
         Object obj = null;
         assertAll(
-           "heading",
-           () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
-           () -> assertEquals("java", "JAVA".toLowerCase()),
-           () -> assertEquals(obj, null, "null is equal to null")
+                "heading",
+                () -> assertEquals(4, 2 * 2, "4 is 2 times 2"),
+                () -> assertEquals("java", "JAVA".toLowerCase()),
+                () -> assertEquals(obj, null, "null is equal to null")
         );
     }
 
@@ -125,22 +111,22 @@ class Junit5AssertionsUnitTest {
     @Test
     void whenAssertingTimeout_thenNotExceeded() {
         assertTimeout(
-          ofSeconds(2),
-          () -> {
-            // code that requires less then 2 minutes to execute
-            Thread.sleep(1000);
-          }
+                ofSeconds(2),
+                () -> {
+                    // code that requires less then 2 minutes to execute
+                    Thread.sleep(1000);
+                }
         );
     }
 
     @Test
     void whenAssertingTimeoutPreemptively_thenNotExceeded() {
         assertTimeoutPreemptively(
-          ofSeconds(2),
-          () -> {
-            // code that requires less then 2 minutes to execute
-            Thread.sleep(1000);
-          }
+                ofSeconds(2),
+                () -> {
+                    // code that requires less then 2 minutes to execute
+                    Thread.sleep(1000);
+                }
         );
     }
 
@@ -162,10 +148,10 @@ class Junit5AssertionsUnitTest {
     @Test
     void whenAssertingException_thenThrown() {
         Throwable exception = assertThrows(
-          IllegalArgumentException.class,
-          () -> {
-            throw new IllegalArgumentException("Exception message");
-          }
+                IllegalArgumentException.class,
+                () -> {
+                    throw new IllegalArgumentException("Exception message");
+                }
         );
         assertEquals("Exception message", exception.getMessage());
     }
