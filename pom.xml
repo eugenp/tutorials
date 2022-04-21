@@ -366,11 +366,8 @@
 
                 <module>atomix</module>
 
-                <module>aws</module>
-                <module>aws-app-sync</module>
-                <module>aws-lambda</module>
-                <module>aws-reactive</module>
-
+                <module>aws-modules</module>
+                
                 <module>axon</module>
 
                 <module>azure</module>
@@ -428,11 +425,9 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-
-                <module>immutables</module>
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -852,11 +847,8 @@
 
                 <module>atomix</module>
 
-                <module>aws</module>
-                <module>aws-app-sync</module>
-                <module>aws-lambda</module>
-                <module>aws-reactive</module>
-
+                <module>aws-modules</module>
+                
                 <module>axon</module>
 
                 <module>azure</module>
@@ -914,11 +906,9 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
-                <module>hystrix</module>
-
-                <module>immutables</module>
+                <module>hystrix</module>                
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -1350,7 +1340,7 @@
                  <module>core-java-modules/core-java-strings</module>
                  <module>ddd-modules</module>
                  <module>docker</module>
-                 <module>httpclient-2</module>
+                 <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
@@ -1417,7 +1407,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-modules</module>
                 <module>docker</module>
-                <module>httpclient-2</module>
+                <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>

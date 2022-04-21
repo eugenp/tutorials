@@ -1,0 +1,18 @@
+{
+    "data": null,
+    "errors": [
+        {
+            "errorType": "OperationNotSupported",
+            "locations": [
+                {
+                    "line": 1,
+                    "column": 1,
+                    "sourceName": null
+                }
+            ],
+            "extensions": null,
+            "message": "Schema is not configured for subscriptions.",
+            "path": null
+        }
+    ]
+}
