@@ -34,7 +34,7 @@ public class StocksResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("ticker") String id) {
         Optional<Stock> stock = stocks.findById(id);
-        stock.orElseThrow(IllegalArgumentException::new);
+        stock.orElseThrow(() -> new IllegalArgumentException("ticker"));
 
         return Response.ok(stock.get())
             .build();

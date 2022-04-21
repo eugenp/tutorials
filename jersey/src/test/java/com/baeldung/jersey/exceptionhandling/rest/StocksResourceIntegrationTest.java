@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.test.JerseyTest;
+import org.glassfish.jersey.test.TestProperties;
 import org.junit.Test;
 
 import com.baeldung.jersey.exceptionhandling.ExceptionHandlingConfig;
@@ -35,6 +36,7 @@ public class StocksResourceIntegrationTest extends JerseyTest {
 
     @Override
     protected Application configure() {
+        forceSet(TestProperties.CONTAINER_PORT, "0");
         return new ExceptionHandlingConfig();
     }
 
