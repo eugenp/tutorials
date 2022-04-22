@@ -3,16 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.graphql</groupId>
     <artifactId>graphql-java</artifactId>
     <version>1.0</version>
     <name>graphql-java</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung.graphql</groupId>
+        <artifactId>graphql</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <repositories>
@@ -76,16 +74,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.ratpack</groupId>
-            <artifactId>ratpack-core</artifactId>
-            <version>${ratpack-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.americanexpress.nodes</groupId>
-            <artifactId>nodes</artifactId>
-            <version>${nodes.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
