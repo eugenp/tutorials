@@ -14,29 +14,26 @@ type Query {
   product(id: Int): Product!
 }
 
-
-
 type Product {
   id: ID
   name: String!
   description: String
-  attribute_string:String
-  attribute_list:[AttributeKeyValuePair]
+  attribute_string: String
+  attribute_list: [AttributeKeyValuePair]
   attributes: JSON
 }
 
 type AttributeKeyValuePair {
-  key:String
-  value:Attribute
+  key: String
+  value: Attribute
 }
 
 type Attribute {
-  name:String
-  description:String
-  unit:String
+  name: String
+  description: String
+  unit: String
 }
 scalar JSON
-
 
 schema {
   query: Query
