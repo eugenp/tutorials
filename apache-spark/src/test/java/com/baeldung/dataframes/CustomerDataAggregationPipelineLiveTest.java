@@ -46,7 +46,7 @@ class CustomerDataAggregationPipelineLiveTest {
         ResultSet resultSet = statement.executeQuery(allCustomersSql);
         resultSet.next();
         int count = resultSet.getInt(1);
-        assertEquals(8, count);
+        assertEquals(7, count);
     }
 
 }

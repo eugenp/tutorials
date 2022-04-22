@@ -68,7 +68,7 @@ public class CustomerDataAggregationPipeline {
     }
 
     private static Dataset<Row> normaliseCustomerDataFromEbay(Dataset<Row> rawDataset) {
-        Dataset<Row> transformedDS = rawDataset.withColumn("id", concat(rawDataset.col("zoneId"), lit("-"), rawDataset.col("customerId")))
+        Dataset<Row> transformedDF = rawDataset.withColumn("id", concat(rawDataset.col("zoneId"), lit("-"), rawDataset.col("customerId")))
             .drop(column("customerId"))
             .withColumn("source", lit("ebay"))
             .withColumn("city", rawDataset.col("contact.customer_city"))
@@ -82,13 +82,13 @@ public class CustomerDataAggregationPipeline {
                 .getItem(1))
             .drop(column("name"));
 
-        print(transformedDS);
-        return transformedDS;
+        print(transformedDF);
+        return transformedDF;
     }
 
     private static Dataset<Row> normaliseCustomerDataFromAmazon(Dataset<Row> rawDataset) {
 
-        Dataset<Row> transformedDS = rawDataset.withColumn("id", concat(rawDataset.col("zoneId"), lit("-"), rawDataset.col("id")))
+        Dataset<Row> transformedDF = rawDataset.withColumn("id", concat(rawDataset.col("zoneId"), lit("-"), rawDataset.col("id")))
             .withColumn("source", lit("amazon"))
             .withColumnRenamed("CITY", "city")
             .withColumnRenamed("PHONE_NO", "contactNo")
@@ -100,18 +100,19 @@ public class CustomerDataAggregationPipeline {
             .withColumn("year", functions.year(col("transaction_date")))
             .drop("transaction_date");
 
-        print(transformedDS);
-        return transformedDS;
+        print(transformedDF);
+        return transformedDF;
     }
 
     private static Dataset<Row> aggregateYearlySalesByGender(Dataset<Row> dataset) {
 
-        Dataset<Row> aggDs = dataset.groupBy(column("source"), column("gender"), column("year"))
+        Dataset<Row> aggDF = dataset.groupBy(column("year"), column("source"), column("gender"))
             .sum("transaction_amount")
             .withColumnRenamed("sum(transaction_amount)", "yearly spent")
-            .repartition(col("source"));
-        print(aggDs);
-        return aggDs;
+            .orderBy(col("year").asc(), col("yearly spent").desc());
+
+        print(aggDF);
+        return aggDF;
     }
 
     private static void print(Dataset<Row> aggDs) {
