@@ -1,12 +1,9 @@
 package com.baeldung.junit5.order;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class OrderAnnotationUnitTest {
