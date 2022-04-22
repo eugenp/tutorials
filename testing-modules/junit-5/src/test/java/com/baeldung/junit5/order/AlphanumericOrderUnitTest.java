@@ -5,12 +5,12 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class AlphanumericOrderUnitTest {
 
-    private static StringBuilder output = new StringBuilder("");
+    private static final StringBuilder output = new StringBuilder("");
 
     @Test
     void myATest() {

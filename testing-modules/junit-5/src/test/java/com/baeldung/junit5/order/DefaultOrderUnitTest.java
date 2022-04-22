@@ -1,14 +1,14 @@
 package com.baeldung.junit5.order;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DefaultOrderUnitTest {
 
-    private static StringBuilder output = new StringBuilder("");
+    private static final StringBuilder output = new StringBuilder();
 
     @Test
     @DisplayName("Test A")
@@ -30,7 +30,7 @@ public class DefaultOrderUnitTest {
 
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "ABC");
+        assertEquals("ABC", output.toString());
     }
 
 }
