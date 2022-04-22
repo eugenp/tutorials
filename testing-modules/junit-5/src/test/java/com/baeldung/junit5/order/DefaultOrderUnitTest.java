@@ -12,19 +12,19 @@ public class DefaultOrderUnitTest {
 
     @Test
     @DisplayName("Test A")
-    public void myATest() {
+    void myATest() {
         output.append("A");
     }
 
     @Test
     @DisplayName("Test B")
-    public void myBTest() {
+    void myBTest() {
         output.append("B");
     }
 
     @Test
     @DisplayName("Test C")
-    public void myCTest() {
+    void myCTest() {
         output.append("C");
     }
 
