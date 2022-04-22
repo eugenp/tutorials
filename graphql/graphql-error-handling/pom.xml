@@ -16,11 +16,6 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <lombok.version>1.18.18</lombok.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,13 +30,13 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
-            <version>5.0.2</version>
+            <version>${graphql-spring-boot-starter.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
-            <version>5.2.4</version>
+            <version>${graphql-java-tools.version}</version>
         </dependency>
 
         <dependency>
@@ -60,38 +55,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <scope>test</scope>
-            <version>2.6.4</version>
         </dependency>
 
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <version>5.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.22.0</version>
-            <scope>test</scope>
+            <version>${graphql-spring-boot-starter.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.skyscreamer</groupId>
             <artifactId>jsonassert</artifactId>
-            <version>1.5.0</version>
+            <version>${jsonassert.version}</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <properties>
+        <graphql-spring-boot-starter.version>5.0.2</graphql-spring-boot-starter.version>
+        <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
+        <jsonassert.version>1.5.0</jsonassert.version>
+    </properties>
+
 </project>
