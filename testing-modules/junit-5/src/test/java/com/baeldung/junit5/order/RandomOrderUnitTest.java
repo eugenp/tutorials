@@ -13,17 +13,17 @@ public class RandomOrderUnitTest {
     private static StringBuilder output = new StringBuilder("");
 
     @Test
-    public void myATest() {
+    void myATest() {
         output.append("A");
     }
 
     @Test
-    public void myBTest() {
+    void myBTest() {
         output.append("B");
     }
 
     @Test
-    public void myCTest() {
+    void myCTest() {
         output.append("C");
     }
 

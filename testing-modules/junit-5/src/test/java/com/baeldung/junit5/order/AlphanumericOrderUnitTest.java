@@ -1,28 +1,29 @@
 package com.baeldung.junit5.order;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import static org.junit.Assert.assertEquals;
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class AlphanumericOrderUnitTest {
+
     private static StringBuilder output = new StringBuilder("");
 
     @Test
-    public void myATest() {
+    void myATest() {
         output.append("A");
     }
 
     @Test
-    public void myBTest() {
+    void myBTest() {
         output.append("B");
     }
 
     @Test
-    public void myaTest() {
+    void myaTest() {
         output.append("a");
     }
 
