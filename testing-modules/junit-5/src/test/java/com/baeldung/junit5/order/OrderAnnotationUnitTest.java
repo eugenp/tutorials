@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class OrderAnnotationUnitTest {
-    private static StringBuilder output = new StringBuilder("");
+
+    private static final StringBuilder output = new StringBuilder();
 
     @Test
     @Order(1)
@@ -29,6 +30,6 @@ public class OrderAnnotationUnitTest {
 
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "abc");
+        assertEquals("abc", output.toString());
     }
 }
