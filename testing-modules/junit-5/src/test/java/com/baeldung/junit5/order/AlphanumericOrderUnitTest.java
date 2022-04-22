@@ -29,6 +29,6 @@ public class AlphanumericOrderUnitTest {
 
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "ABa");
+        assertEquals("ABa", output.toString());
     }
 }

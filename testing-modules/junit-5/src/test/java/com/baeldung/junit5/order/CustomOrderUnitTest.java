@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(CustomOrder.class)
 public class CustomOrderUnitTest {
 
-    private static StringBuilder output = new StringBuilder("");
+    private static final StringBuilder output = new StringBuilder("");
 
     @Test
     void myATest() {
@@ -26,9 +26,8 @@ public class CustomOrderUnitTest {
         output.append("a");
     }
 
-
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "AaB");
+        assertEquals("AaB", output.toString());
     }
 }
