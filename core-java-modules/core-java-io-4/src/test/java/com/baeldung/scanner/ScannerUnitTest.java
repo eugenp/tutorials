@@ -7,7 +7,7 @@ import java.util.regex.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ScannerTest {
+public class ScannerUnitTest {
     @Test public void scannerSkipUsingPattern() {
         String str = "Java scanner skip tutorial";
         // Instantiates Scanner
