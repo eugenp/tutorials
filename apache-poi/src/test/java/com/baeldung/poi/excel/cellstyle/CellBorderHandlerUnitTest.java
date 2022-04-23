@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import static org.junit.Assert.assertEquals;
 
 public class CellBorderHandlerUnitTest {
-    private static final String FILE_NAME = "cellstyle/CellStyleHandlerTest.xlsx";
+    private static final String FILE_NAME = "cellstyle/CellStyleBorderHandlerTest.xlsx";
     private static final int SHEET_INDEX = 0;
 
     private static CellBordersHandler cellBordersHandler;

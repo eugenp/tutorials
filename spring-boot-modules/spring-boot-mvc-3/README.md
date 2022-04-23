@@ -11,4 +11,4 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [CharacterEncodingFilter In SpringBoot](https://www.baeldung.com/spring-boot-characterencodingfilter)
 - [HandlerInterceptors vs. Filters in Spring MVC](https://www.baeldung.com/spring-mvc-handlerinterceptor-vs-filter)
 - [ETags for REST with Spring](https://www.baeldung.com/etags-for-rest-with-spring)
-- More articles: [[prev -->]](/spring-boot-modules/spring-boot-mvc-2)
+- More articles: [[<-- Prev]](/spring-boot-modules/spring-boot-mvc-2)[[Next -->]](/spring-boot-modules/spring-boot-mvc-4)

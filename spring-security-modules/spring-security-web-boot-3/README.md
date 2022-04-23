@@ -12,4 +12,6 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [Spring Security – Cache Control Headers](https://www.baeldung.com/spring-security-cache-control-headers)
 - [Fixing 401s with CORS Preflights and Spring Security](https://www.baeldung.com/spring-security-cors-preflight)
 - [Content Security Policy with Spring Security](https://www.baeldung.com/spring-security-csp)
+- [Enable Logging for Spring Security](https://www.baeldung.com/spring-security-enable-logging)
+- [Authentication With Spring Security and MongoDB](https://www.baeldung.com/spring-security-authentication-mongodb)
 - More articles: [[<-- prev]](/spring-security-modules/spring-security-web-boot-2)

@@ -2,19 +2,17 @@ package com.baeldung.feign.retry;
 
 import feign.*;
 import feign.codec.ErrorDecoder;
-import org.jetbrains.annotations.NotNull;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.nio.charset.Charset;
-import java.util.Collection;
 import java.util.HashMap;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Custom5xxErrorDecoderUnitTest {
+class Custom5xxErrorDecoderUnitTest {
     @Test
-    public void given5xxResponse_whenDecode_thenReturnRetryableException() {
+    void given5xxResponse_whenDecode_thenReturnRetryableException() {
         // given
         ErrorDecoder decoder = new Custom5xxErrorDecoder();
         Response response = responseStub(500);
@@ -27,7 +25,7 @@ public class Custom5xxErrorDecoderUnitTest {
     }
 
     @Test
-    public void given4xxResponse_whenDecode_thenReturnFeignException() {
+    void given4xxResponse_whenDecode_thenReturnFeignException() {
         // given
         ErrorDecoder decoder = new Custom5xxErrorDecoder();
         Response response = responseStub(400);
@@ -40,12 +38,7 @@ public class Custom5xxErrorDecoderUnitTest {
         assertFalse(exception instanceof RetryableException);
     }
 
-    @NotNull
     private Response responseStub(int status) {
-        return Response.builder()
-          .request(Request.create(
-            Request.HttpMethod.GET, "url", new HashMap<>(), new byte[0], Charset.defaultCharset(), new RequestTemplate()))
-          .status(status)
-          .build();
+        return Response.builder().request(Request.create(Request.HttpMethod.GET, "url", new HashMap<>(), new byte[0], Charset.defaultCharset(), new RequestTemplate())).status(status).build();
     }
 }

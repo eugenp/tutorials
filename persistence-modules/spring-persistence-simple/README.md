@@ -8,6 +8,7 @@
 - [Transactional Annotations: Spring vs. JTA](https://www.baeldung.com/spring-vs-jta-transactional)
 - [Test a Mock JNDI Datasource with Spring](https://www.baeldung.com/spring-mock-jndi-datasource)
 - [Detecting If a Spring Transaction Is Active](https://www.baeldung.com/spring-transaction-active)
+- [Guide to Jakarta EE JTA](https://www.baeldung.com/jee-jta)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

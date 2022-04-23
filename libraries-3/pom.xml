@@ -86,6 +86,43 @@
             <artifactId>error_prone_core</artifactId>
             <version>${errorprone.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-core</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-spring</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-client</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-analysis</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.structurizr</groupId>
+            <artifactId>structurizr-plantuml</artifactId>
+            <version>${structurizr.version}</version>
+        </dependency>
+         <dependency>
+            <groupId>org.immutables</groupId>
+            <artifactId>value</artifactId>
+            <version>${immutables.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mutabilitydetector</groupId>
+            <artifactId>MutabilityDetector</artifactId>
+            <version>${mutabilitydetector.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -140,7 +177,7 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <!-- NullAway will warn by default, uncomment the next line to make the build 
+                        <!-- NullAway will warn by default, uncomment the next line to make the build
                             fail -->
                         <!-- <arg>-Xep:NullAway:ERROR</arg> -->
                         <arg>-XepExcludedPaths:(.*)/test/.*|(.*)/jcabi/.*</arg>
@@ -153,7 +190,7 @@
                         <artifactId>plexus-compiler-javac-errorprone</artifactId>
                         <version>2.8</version>
                     </dependency>
-                    <!-- override plexus-compiler-javac-errorprone's dependency on Error Prone with the 
+                    <!-- override plexus-compiler-javac-errorprone's dependency on Error Prone with the
                         latest version -->
                     <dependency>
                         <groupId>com.google.errorprone</groupId>
@@ -229,6 +266,9 @@
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>
         <errorprone.version>2.1.3</errorprone.version>
+        <structurizr.version>1.0.0</structurizr.version>
+        <immutables.version>2.5.6</immutables.version>
+        <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
     </properties>
 
 </project>
