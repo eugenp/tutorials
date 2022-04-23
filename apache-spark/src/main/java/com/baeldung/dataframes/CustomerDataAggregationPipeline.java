@@ -108,8 +108,8 @@ public class CustomerDataAggregationPipeline {
 
         Dataset<Row> aggDF = dataset.groupBy(column("year"), column("source"), column("gender"))
             .sum("transaction_amount")
-            .withColumnRenamed("sum(transaction_amount)", "yearly spent")
-            .orderBy(col("year").asc(), col("yearly spent").desc());
+            .withColumnRenamed("sum(transaction_amount)", "annual_spending")
+            .orderBy(col("year").asc(), col("annual_spending").desc());
 
         print(aggDF);
         return aggDF;
