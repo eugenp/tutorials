@@ -17,11 +17,10 @@ public class CharacterUnitTest {
         Flux<Character> characterFlux = characterGenerator.generateCharacters().take(3);
 
         StepVerifier.create(characterFlux)
-                .expectNext('a', 'b', 'c')
-                .expectComplete()
-                .verify();
+            .expectNext('a', 'b', 'c')
+            .expectComplete()
+            .verify();
     }
-    
     @Test
     public void whenCreatingCharactersWithMultipleThreads_thenSequenceIsProducedAsynchronously() throws InterruptedException {
         CharacterGenerator characterGenerator = new CharacterGenerator();
@@ -35,14 +34,10 @@ public class CharacterUnitTest {
             .block();
 
         CharacterCreator characterCreator = new CharacterCreator();
-        
         Thread producerThread1 = new Thread(
-                () -> characterCreator.consumer.accept(sequence1)
-        );
+            () -> characterCreator.consumer.accept(sequence1));
         Thread producerThread2 = new Thread(
-                () -> characterCreator.consumer.accept(sequence2)
-        );
-
+            () -> characterCreator.consumer.accept(sequence2));
         List<Character> consolidated = new ArrayList<>();
         characterCreator.createCharacterSequence().subscribe(consolidated::add);
 
