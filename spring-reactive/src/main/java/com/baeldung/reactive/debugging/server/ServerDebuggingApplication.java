@@ -2,6 +2,7 @@ package com.baeldung.reactive.debugging.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -10,7 +11,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 import java.util.Collections;
 
 @EnableWebFlux
-@SpringBootApplication
+@SpringBootApplication(exclude = MongoReactiveAutoConfiguration.class)
 public class ServerDebuggingApplication {
     
     public static void main(String[] args) {

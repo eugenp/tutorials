@@ -21,12 +21,6 @@
             <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>net.sf.trove4j</groupId>
             <artifactId>trove4j</artifactId>
             <version>${trove4j.version}</version>

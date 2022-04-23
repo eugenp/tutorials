@@ -2,12 +2,7 @@ package com.baeldung.resttemplate;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 import static com.baeldung.client.Consts.APPLICATION_PORT;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,8 +11,10 @@ import java.util.Set;
 
 import com.baeldung.resttemplate.web.handler.RestTemplateResponseErrorHandler;
 import com.baeldung.resttemplate.web.dto.Foo;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -44,7 +41,7 @@ public class RestTemplateBasicLiveTest {
     private RestTemplate restTemplate;
     private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/foos";
 
-    @Before
+    @BeforeEach
     public void beforeTest() {
         restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
@@ -57,7 +54,7 @@ public class RestTemplateBasicLiveTest {
     public void givenResourceUrl_whenSendGetForRequestEntity_thenStatusOk() throws IOException {
         final ResponseEntity<Foo> response = restTemplate.getForEntity(fooResourceUrl + "/1", Foo.class);
 
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -68,15 +65,15 @@ public class RestTemplateBasicLiveTest {
         final ObjectMapper mapper = new XmlMapper();
         final JsonNode root = mapper.readTree(response.getBody());
         final JsonNode name = root.path("name");
-        assertThat(name.asText(), notNullValue());
+        Assertions.assertNotNull(name.asText());
     }
 
     @Test
     public void givenResourceUrl_whenRetrievingResource_thenCorrect() throws IOException {
         final Foo foo = restTemplate.getForObject(fooResourceUrl + "/1", Foo.class);
 
-        assertThat(foo.getName(), notNullValue());
-        assertThat(foo.getId(), is(1L));
+        Assertions.assertNotNull(foo.getName());
+        Assertions.assertEquals(foo.getId(), 1L);
     }
 
     // HEAD, OPTIONS
@@ -84,7 +81,7 @@ public class RestTemplateBasicLiveTest {
     @Test
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         final HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
-        assertTrue(httpHeaders.getContentType()
+        Assertions.assertTrue(httpHeaders.getContentType()
             .includes(MediaType.APPLICATION_JSON));
     }
 
@@ -94,15 +91,15 @@ public class RestTemplateBasicLiveTest {
     public void givenFooService_whenPostForObject_thenCreatedObjectIsReturned() {
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
         final Foo foo = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
-        assertThat(foo, notNullValue());
-        assertThat(foo.getName(), is("bar"));
+        Assertions.assertNotNull(foo);
+        Assertions.assertEquals(foo.getName(), "bar");
     }
 
     @Test
     public void givenFooService_whenPostForLocation_thenCreatedLocationIsReturned() {
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
         final URI location = restTemplate.postForLocation(fooResourceUrl, request, Foo.class);
-        assertThat(location, notNullValue());
+        Assertions.assertNotNull(location);
     }
 
     @Test
@@ -110,10 +107,10 @@ public class RestTemplateBasicLiveTest {
         final Foo foo = new Foo("bar");
         final ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
 
-        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
         final Foo fooResponse = response.getBody();
-        assertThat(fooResponse, notNullValue());
-        assertThat(fooResponse.getName(), is("bar"));
+        Assertions.assertNotNull(fooResponse);
+        Assertions.assertEquals(fooResponse.getName(), "bar");
     }
 
     @Test
@@ -121,7 +118,7 @@ public class RestTemplateBasicLiveTest {
         final Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(fooResourceUrl);
         final HttpMethod[] supportedMethods = { HttpMethod.GET, HttpMethod.POST, HttpMethod.HEAD };
 
-        assertTrue(optionsForAllow.containsAll(Arrays.asList(supportedMethods)));
+        Assertions.assertTrue(optionsForAllow.containsAll(Arrays.asList(supportedMethods)));
     }
 
     // PUT
@@ -146,7 +143,7 @@ public class RestTemplateBasicLiveTest {
         // Check that Resource was updated
         final ResponseEntity<Foo> updateResponse = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
         final Foo foo = updateResponse.getBody();
-        assertThat(foo.getName(), is(updatedInstance.getName()));
+        Assertions.assertEquals(foo.getName(), updatedInstance.getName());
     }
 
     @Test
@@ -156,7 +153,7 @@ public class RestTemplateBasicLiveTest {
 
         // Create entity
         ResponseEntity<Foo> response = restTemplate.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
-        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
 
         // Update entity
         final Foo updatedInstance = new Foo("newName");
@@ -169,7 +166,7 @@ public class RestTemplateBasicLiveTest {
         // Check that entity was updated
         response = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
         final Foo foo = response.getBody();
-        assertThat(foo.getName(), is(updatedInstance.getName()));
+        Assertions.assertEquals(foo.getName(), updatedInstance.getName());
     }
 
     // PATCH
@@ -197,7 +194,7 @@ public class RestTemplateBasicLiveTest {
         // Check that Resource was updated
         final ResponseEntity<Foo> updateResponse = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
         final Foo foo = updateResponse.getBody();
-        assertThat(foo.getName(), is(updatedResource.getName()));
+        Assertions.assertEquals(foo.getName(), updatedResource.getName());
     }
 
     // DELETE
@@ -206,7 +203,7 @@ public class RestTemplateBasicLiveTest {
     public void givenFooService_whenCallDelete_thenEntityIsRemoved() {
         final Foo foo = new Foo("remove me");
         final ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
-        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
 
         final String entityUrl = fooResourceUrl + "/" + response.getBody()
             .getId();
@@ -215,7 +212,7 @@ public class RestTemplateBasicLiveTest {
             restTemplate.getForEntity(entityUrl, Foo.class);
             fail();
         } catch (final HttpClientErrorException ex) {
-            assertThat(ex.getStatusCode(), is(HttpStatus.INTERNAL_SERVER_ERROR));
+        	Assertions.assertEquals(ex.getStatusCode(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -231,10 +228,10 @@ public class RestTemplateBasicLiveTest {
 
         ResponseEntity<String> response = restTemplate.postForEntity( fooResourceUrl+"/form", request , String.class);
 
-        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.CREATED);
         final String fooResponse = response.getBody();
-        assertThat(fooResponse, notNullValue());
-        assertThat(fooResponse, is("10"));
+        Assertions.assertNotNull(fooResponse);
+        Assertions.assertEquals(fooResponse, "10");
     }
 
     private HttpHeaders prepareBasicAuthHeaders() {

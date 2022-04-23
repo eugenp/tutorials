@@ -1,5 +1,7 @@
 package com.baeldung.books.config;
 
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -22,6 +24,11 @@ public class MvcConfig implements WebMvcConfigurer {
         configurer.enable();
     }
 
+    @Bean
+    WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> enableDefaultServlet() {
+        return (factory) -> factory.setRegisterDefaultServlet(true);
+    }
+    
     @Bean
     AuthorEventHandler authorEventHandler() {
         return new AuthorEventHandler();

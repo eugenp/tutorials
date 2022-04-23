@@ -10,6 +10,7 @@ This module contains articles about Spring Boot Security
 - [Guide to @CurrentSecurityContext in Spring Security](https://www.baeldung.com/spring-currentsecuritycontext)
 - [Disable Security for a Profile in Spring Boot](https://www.baeldung.com/spring-security-disable-profile)
 - [Spring @EnableWebSecurity vs. @EnableGlobalMethodSecurity](https://www.baeldung.com/spring-enablewebsecurity-vs-enableglobalmethodsecurity)
+- [Spring Security – Configuring Different URLs](https://www.baeldung.com/spring-security-configuring-urls)
 
 
 ### Spring Boot Security Auto-Configuration

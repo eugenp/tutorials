@@ -22,7 +22,7 @@
     </dependencies>
 
     <properties>
-        <poi.version>5.0.0</poi.version>
+        <poi.version>5.2.0</poi.version>
     </properties>
 
 </project>

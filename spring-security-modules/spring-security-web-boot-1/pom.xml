@@ -179,7 +179,6 @@
                 </plugins>
             </build>
         </profile>
-
         <profile>
             <id>entryPoints</id>
             <build>

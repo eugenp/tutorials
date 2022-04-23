@@ -84,8 +84,6 @@
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <!-- persistence -->
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <!-- utilities -->
-        <guava.version>21.0</guava.version>
     </properties>
 
 </project>

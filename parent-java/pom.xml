@@ -41,7 +41,6 @@
     </dependencies>
 
     <properties>
-        <guava.version>31.0.1-jre</guava.version>
         <modelmapper.version>2.3.7</modelmapper.version>
     </properties>
 

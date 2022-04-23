@@ -10,3 +10,4 @@ This module contains articles about Java 11 core features
 - [Getting the Java Version at Runtime](https://www.baeldung.com/get-java-version-runtime)
 - [Invoking a SOAP Web Service in Java](https://www.baeldung.com/java-soap-web-service)
 - [Java HTTPS Client Certificate Authentication](https://www.baeldung.com/java-https-client-certificate-authentication)
+- [Call Methods at Runtime Using Java Reflection](https://www.baeldung.com/java-method-reflection)
