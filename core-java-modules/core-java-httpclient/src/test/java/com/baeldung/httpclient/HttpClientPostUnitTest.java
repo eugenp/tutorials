@@ -1,9 +1,13 @@
 package com.baeldung.httpclient;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -85,6 +89,19 @@ class HttpClientPostUnitTest extends PostRequestMockServer {
     @Test
     void givenPostRequestWithFormData_whenServerIsAvailable_thenOkStatusIsReceived() throws IOException, InterruptedException {
         HttpResponse<String> response = HttpClientPost.sendPostWithFormData(serviceUrl);
+        assertAll(
+          () -> assertThat(response.statusCode()).isEqualTo(200),
+          () -> assertThat(response.body()).isEqualTo("{\"message\":\"ok\"}")
+        );
+    }
+
+    @Test
+    void givenPostRequestWithFileData_whenServerIsAvailable_thenOkStatusIsReceived(@TempDir Path tempDir) throws IOException, InterruptedException {
+        Path file = tempDir.resolve("temp.txt");
+        List<String> lines = Arrays.asList("1", "2", "3");
+        Files.write(file, lines);
+
+        HttpResponse<String> response = HttpClientPost.sendPostWithFileData(serviceUrl, file);
         assertAll(
           () -> assertThat(response.statusCode()).isEqualTo(200),
           () -> assertThat(response.body()).isEqualTo("{\"message\":\"ok\"}")
