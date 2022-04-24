@@ -3,38 +3,32 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>java-collections-conversions-2</artifactId>
+    <artifactId>java-collections-conversions</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>java-collections-conversions-2</name>
+    <name>java-collections-conversions</name>
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${modelmapper.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>0.10.3</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>java-collections-conversions-2</finalName>
+        <finalName>java-collections-conversions</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
