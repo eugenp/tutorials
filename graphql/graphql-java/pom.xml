@@ -37,6 +37,21 @@
             <version>${graphql-java-annotations.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-core</artifactId>
+            <version>${ratpack-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.americanexpress.nodes</groupId>
+            <artifactId>nodes</artifactId>
+            <version>0.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java</artifactId>
+            <version>11.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>${graphql-java-tools.version}</version>
@@ -95,6 +110,14 @@
             <version>${mockserver-client-java.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>${graphql-java-extended-scalars.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -133,6 +156,13 @@
                     <copyRuntimeSources>false</copyRuntimeSources>
                     <generateDeprecatedRequestResponse>false</generateDeprecatedRequestResponse>
                     <separateUtilityClasses>true</separateUtilityClasses>
+                    <customScalars>
+                        <customScalar>
+                            <graphQLTypeName>JSON</graphQLTypeName>
+                            <javaType>java.util.Map</javaType>
+                            <graphQLScalarTypeClass>com.baeldung.graphqlreturnmap.ExtendedGraphQLScalarType</graphQLScalarTypeClass>
+                        </customScalar>
+                    </customScalars>
                 </configuration>
             </plugin>
         </plugins>
@@ -154,6 +184,8 @@
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <graphql.java.generator.version>1.18</graphql.java.generator.version>
+        <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
     </properties>
 
 </project>
