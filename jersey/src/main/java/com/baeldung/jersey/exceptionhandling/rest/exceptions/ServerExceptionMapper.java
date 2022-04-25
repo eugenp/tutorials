@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 
 public class ServerExceptionMapper implements ExceptionMapper<WebApplicationException> {
-    public static final String HTTP_405_MESSAGE = "METHOD_NOT_ALLOWED";
+    public static final String HTTP_405_MESSAGE = "use one of";
 
     @Override
     public Response toResponse(final WebApplicationException exception) {
@@ -18,7 +18,7 @@ public class ServerExceptionMapper implements ExceptionMapper<WebApplicationExce
 
         switch (status) {
         case METHOD_NOT_ALLOWED:
-            message = HTTP_405_MESSAGE;
+            message = HTTP_405_MESSAGE + response.getAllowedMethods();
             break;
         case INTERNAL_SERVER_ERROR:
             message = "internal validation - " + exception;
