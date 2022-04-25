@@ -24,7 +24,7 @@ public class RouteFinder<T extends GraphNode> {
 
     public List<T> findRoute(T from, T to) {
         Map<T, RouteNode<T>> allNodes = new HashMap<>();
-        Queue<RouteNode> openSet = new PriorityQueue<>();
+        Queue<RouteNode<T>> openSet = new PriorityQueue<>();
 
         RouteNode<T> start = new RouteNode<>(from, null, 0d, targetScorer.computeCost(from, to));
         allNodes.put(from, start);
