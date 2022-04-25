@@ -21,6 +21,7 @@ public class CharacterUnitTest {
             .expectComplete()
             .verify();
     }
+    
     @Test
     public void whenCreatingCharactersWithMultipleThreads_thenSequenceIsProducedAsynchronously() throws InterruptedException {
         CharacterGenerator characterGenerator = new CharacterGenerator();
