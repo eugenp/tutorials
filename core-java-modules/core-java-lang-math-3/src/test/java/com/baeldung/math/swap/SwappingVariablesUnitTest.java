@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class SwappingVariablesUnitTest {
 
     @Test
-    public void swapObjectsUsingMethod() {
+    public void givenTwoStrings_whenSwappingInMethod_thenFails() {
         
         String a = "a";
         String b = "b";        
@@ -18,7 +18,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapObjectsInWrapperUsingMethod() {
+    public void givenTwoWrappers_whenSwappingInMethod_thenSuccess() {
         
         Wrapper a = new Wrapper("a");
         Wrapper b = new Wrapper("b");        
@@ -30,7 +30,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapIntegersUsingAdditionSubstraction() {
+    public void givenTwoIntegers_whenSwappingUsingAdditionSubstraction_thenSuccess() {
         
         int a = 5;
         int b = 10;              
@@ -44,7 +44,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapIntegersUsingMultiplicationDivision() {
+    public void givenTwoIntegers_whenSwappingUsingMultiplicationDivision_thenSuccess() {
         
         int a = 5;
         int b = 10;              
@@ -58,7 +58,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapIntegersWithOverflow() {
+    public void givenTwoIntegers_whenSwappingWithOverflow_thenFails() {
         
         int a = Integer.MAX_VALUE;
         int b = 10;
@@ -72,7 +72,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapChars() {
+    public void givenTwoChars_whenSwappingWithCast_thenSuccess() {
         
         char a = 'a';
         char b = 'b';
@@ -86,7 +86,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapIntegersUsingXor() {
+    public void givenTwoIntegers_whenSwappingUsingXor_thenSuccess() {
         
         int a = 5;
         int b = 10;
@@ -100,7 +100,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapIntegersUsingXorSingleLine() {
+    public void givenTwoIntegers_whenSwappingUsingSingleLineXor_thenSuccess() {
         
         int a = 5;
         int b = 10;
@@ -112,7 +112,7 @@ public class SwappingVariablesUnitTest {
     }
     
     @Test
-    public void swapIntegersUsingAdditionSubstractionSingleLine() {
+    public void givenTwoIntegers_whenSwappingUsingAdditionSubstractionSingleLine_thenSuccess() {
         
         int a = 5;
         int b = 10;
