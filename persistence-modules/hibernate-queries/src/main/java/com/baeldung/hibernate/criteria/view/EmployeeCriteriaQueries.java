@@ -30,14 +30,13 @@ public class EmployeeCriteriaQueries {
     final CriteriaQuery<Employee> cr = cb.createQuery(Employee.class);
     final Root<Employee> root = cr.from(Employee.class);
     cr.select(root)
-      .where(cb.gt(root.get("employeeSalary"), 50000));
-    // cr.add(Restrictions.gt("itemPrice", 1000));
+      .where(cb.gt(root.get("salary"), 50000));
     Query<Employee> query = session.createQuery(cr);
     final List<Employee> greaterThanEmployeeList = query.getResultList();
     final String employeeWithGreaterSalary[] = new String[greaterThanEmployeeList.size()];
     for (int i = 0; i < greaterThanEmployeeList.size(); i++) {
       employeeWithGreaterSalary[i] = greaterThanEmployeeList.get(i)
-        .getEmployeeName();
+        .getName();
     }
     session.close();
     return employeeWithGreaterSalary;

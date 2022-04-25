@@ -3,7 +3,6 @@ package com.baeldung.hibernate.criteria;
 import static org.junit.Assert.assertArrayEquals;
 
 import com.baeldung.hibernate.criteria.model.Employee;
-import com.baeldung.hibernate.criteria.model.Item;
 import com.baeldung.hibernate.criteria.util.HibernateUtil;
 import com.baeldung.hibernate.criteria.view.EmployeeCriteriaQueries;
 import java.util.List;
@@ -17,10 +16,10 @@ public class EmployeeCriteriaIntegrationTest {
   @Test
   public void testGreaterThanCriteriaQuery() {
     final Session session = HibernateUtil.getHibernateSession();
-    final List<Employee> expectedGreaterThanList = session.createQuery("From Employee where employeeSalary>50000").list();
+    final List<Employee> expectedGreaterThanList = session.createQuery("From Employee where salary>50000").list();
     final String expectedGreaterThanEmployees[] = new String[expectedGreaterThanList.size()];
     for (int i = 0; i < expectedGreaterThanList.size(); i++) {
-      expectedGreaterThanEmployees[i] = expectedGreaterThanList.get(i).getEmployeeName();
+      expectedGreaterThanEmployees[i] = expectedGreaterThanList.get(i).getName();
     }
     session.close();
     assertArrayEquals(expectedGreaterThanEmployees, employeeCriteriaQueries.greaterThanCriteria());
