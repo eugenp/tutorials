@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @GraphQLApi
@@ -27,8 +28,7 @@ public class BookService implements IBookService {
 
     @GraphQLQuery(name = "getAllBooks", description = "Get all books")
     public List<Book> getAllBooks() {
-        return books.stream()
-            .toList();
+        return books.stream().collect(Collectors.toList());
     }
 
     @GraphQLMutation(name = "addBook")
