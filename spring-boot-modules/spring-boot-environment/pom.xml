@@ -12,7 +12,6 @@
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -29,17 +28,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hamcrest</groupId>
-                    <artifactId>hamcrest-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -149,10 +137,9 @@
 
     <properties>
         <jpa.version>2.2</jpa.version>
-        <guava.version>18.0</guava.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <httpclient.version>4.5.8</httpclient.version>
-        <spring.cloud-version>2020.0.0</spring.cloud-version>
+        <spring.cloud-version>2021.0.0</spring.cloud-version>
     </properties>
 
 </project>

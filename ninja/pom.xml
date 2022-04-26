@@ -3,10 +3,10 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>ninja</artifactId>
-    <packaging>jar</packaging>
     <groupId>com.baeldung</groupId>
+    <artifactId>ninja</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
     <url>http://www.ninjaframework.org</url>
 
     <dependencies>
@@ -34,6 +34,25 @@
             <groupId>org.ninjaframework</groupId>
             <artifactId>ninja-test-utilities</artifactId>
             <version>${ninja.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine. -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -188,6 +207,7 @@
         <enforcer.plugin.version>1.3.1</enforcer.plugin.version>
         <deploy.plugin.version>2.8.2</deploy.plugin.version>
         <shade.plugin.version>2.2</shade.plugin.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
 
 </project>

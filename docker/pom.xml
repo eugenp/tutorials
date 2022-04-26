@@ -25,6 +25,9 @@
     <modules>
         <module>docker-internal-dto</module>
         <module>docker-spring-boot</module>
+        <module>docker-sample-app</module>
+        <module>docker-caching/single-module-caching</module>
+        <module>docker-caching/multi-module-caching</module>
     </modules>
 
 </project>

@@ -11,3 +11,4 @@ This module contains articles about Bean Validation.
 - [Grouping Javax Validation Constraints](https://www.baeldung.com/javax-validation-groups)
 - [Validations for Enum Types](https://www.baeldung.com/javax-validations-enums)
 - [Guide to ParameterMessageInterpolator](https://www.baeldung.com/hibernate-parametermessageinterpolator)
+- [Hibernate Validator Annotation Processor in Depth](https://www.baeldung.com/hibernate-validator-annotation-processor)

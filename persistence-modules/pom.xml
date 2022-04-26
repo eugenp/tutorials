@@ -17,6 +17,7 @@
         <module>activejdbc</module>
         <module>apache-bookkeeper</module><!-- BAEL-2322 -->
         <module>apache-cayenne</module>
+        <module>apache-derby</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
         <module>deltaspike</module>
@@ -26,6 +27,7 @@
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
+        <module>hibernate-mapping-2</module>
         <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
@@ -41,6 +43,7 @@
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-jpa-3</module>
         <module>java-mongodb</module> <!-- long running -->
+        <module>java-mongodb-2</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
@@ -70,10 +73,13 @@
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
+        <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>
+        <module>spring-data-jpa-enterprise-2</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>
+        <module>spring-data-jpa-query-3</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
@@ -96,13 +102,7 @@
     <properties>
         <!-- persistence -->
         <hibernate.version>5.2.17.Final</hibernate.version>
-
         <postgresql.version>42.2.20</postgresql.version>
-
-        <!-- testing -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit.version>4.13</junit.version>
     </properties>
 
 </project>

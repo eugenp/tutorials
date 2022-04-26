@@ -32,9 +32,27 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>xls</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <poi.version>4.1.1</poi.version>
+        <poi.version>5.2.0</poi.version>
         <jexcel.version>1.0.6</jexcel.version>
+        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
     </properties>
 
 </project>

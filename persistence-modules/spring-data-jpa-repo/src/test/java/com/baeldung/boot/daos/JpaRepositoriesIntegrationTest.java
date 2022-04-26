@@ -21,7 +21,7 @@ import com.baeldung.boot.domain.Location;
 import com.baeldung.boot.domain.Store;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(properties="spring.sql.init.data-locations=classpath:import_entities.sql")
+@DataJpaTest(properties="spring.sql.init.data-locations=classpath:import_entities.sql", showSql = false)
 public class JpaRepositoriesIntegrationTest {
     @Autowired
     private LocationRepository locationRepository;

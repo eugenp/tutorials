@@ -10,7 +10,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>logging-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -112,7 +111,7 @@
 
     <properties>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
-        <log4j-core.version>2.11.0</log4j-core.version>
+        <log4j-core.version>2.17.1</log4j-core.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 

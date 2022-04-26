@@ -11,7 +11,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/HIBERTEST"/>
             <property name="javax.persistence.ddl-generation" value="drop-and-create-tables"/>
             <property name="javax.persistence.logging.level" value="INFO"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.cache.use_second_level_cache" value="false"/>
             <property name="hibernate.cache.use_query_cache" value="false"/>
         </properties>

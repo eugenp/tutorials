@@ -20,14 +20,14 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${spring.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-core</artifactId>
-                <version>${org.springframework.version}</version>
+                <version>${spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -72,12 +72,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <version>${mockito.spring.boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -149,14 +143,11 @@
     <properties>
         <start-class>org.baeldung.org.baeldung.sample.App</start-class>
         <!-- Spring -->
-        <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
         <javax.inject.version>1</javax.inject.version>
-        <guava.version>20.0</guava.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
         <mockito.version>1.10.19</mockito.version>
-        <assertj.version>3.12.2</assertj.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
     </properties>
 

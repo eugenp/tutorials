@@ -43,13 +43,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- test scoped -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.codepoetics</groupId>
             <artifactId>protonpack</artifactId>
@@ -105,14 +98,11 @@
     </build>
 
     <properties>
-        <!-- util -->
         <vavr.version>0.9.0</vavr.version>
         <protonpack.version>1.15</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
         <joda.version>2.10</joda.version>
         <throwing-function.version>1.3</throwing-function.version>
-        <!-- testing -->
-        <assertj.version>3.11.1</assertj.version>
         <asspectj.version>1.8.9</asspectj.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>

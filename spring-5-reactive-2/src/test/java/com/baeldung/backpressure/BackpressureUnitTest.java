@@ -1,21 +1,25 @@
 package com.baeldung.backpressure;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 public class BackpressureUnitTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BackpressureUnitTest.class);
+    
     @Test
     public void whenLimitRateSet_thenSplitIntoChunks() throws InterruptedException {
         Flux<Integer> limit = Flux.range(1, 25);
 
         limit.limitRate(10);
         limit.subscribe(
-          value -> System.out.println(value),
+          value -> LOGGER.debug(String.valueOf(value)),
           err -> err.printStackTrace(),
-          () -> System.out.println("Finished!!"),
+          () -> LOGGER.debug("Finished!!"),
           subscription -> subscription.request(15)
         );
 
@@ -34,12 +38,12 @@ public class BackpressureUnitTest {
         Flux<Integer> request = Flux.range(1, 50);
 
         request.subscribe(
-          System.out::println,
+          integer -> LOGGER.debug(String.valueOf(integer)),
           err -> err.printStackTrace(),
-          () -> System.out.println("All 50 items have been successfully processed!!!"),
+          () -> LOGGER.debug("All 50 items have been successfully processed!!!"),
           subscription -> {
               for (int i = 0; i < 5; i++) {
-                  System.out.println("Requesting the next 10 elements!!!");
+                  LOGGER.debug("Requesting the next 10 elements!!!");
                   subscription.request(10);
               }
           }
@@ -68,7 +72,7 @@ public class BackpressureUnitTest {
             @Override
             protected void hookOnNext(Integer value) {
                 request(3);
-                System.out.println(value);
+                LOGGER.debug(String.valueOf(value));
                 cancel();
             }
         });

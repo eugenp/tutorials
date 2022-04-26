@@ -169,7 +169,6 @@
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <javax.el.version>2.2</javax.el.version>
         <!-- util -->
-        <guava.version>19.0</guava.version>
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
         <rest-assured.version>2.9.0</rest-assured.version>

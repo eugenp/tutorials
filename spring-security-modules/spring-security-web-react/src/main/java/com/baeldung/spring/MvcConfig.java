@@ -1,18 +1,20 @@
 package com.baeldung.spring;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-public class MvcConfig extends WebMvcConfigurerAdapter {
+@ComponentScan(basePackages = { "com.baeldung.spring" })
+public class MvcConfig implements WebMvcConfigurer {
 
     public MvcConfig() {
         super();
@@ -22,8 +24,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
-
         registry.addViewController("/anonymous.html");
 
         registry.addViewController("/login.html");
@@ -35,7 +35,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/view/react/build/static/");
-
+        
         registry.addResourceHandler("/*.js").addResourceLocations("/WEB-INF/view/react/build/");
         registry.addResourceHandler("/*.json").addResourceLocations("/WEB-INF/view/react/build/");
         registry.addResourceHandler("/*.ico").addResourceLocations("/WEB-INF/view/react/build/");

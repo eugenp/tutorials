@@ -1,4 +1,7 @@
 zuul:
+  SendErrorFilter:
+    post:
+      disable: true
   routes:
     foos:
       path: /foos/**

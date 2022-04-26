@@ -23,19 +23,19 @@ public class BeforeAndAfterAnnotationsUnitTest {
 
     @Before
     public void init() {
-        LOG.info("startup");
+        LOG.debug("startup");
         list = new ArrayList<>(Arrays.asList("test1", "test2"));
     }
 
     @After
     public void teardown() {
-        LOG.info("teardown");
+        LOG.debug("teardown");
         list.clear();
     }
 
     @Test
     public void whenCheckingListSize_thenSizeEqualsToInit() {
-        LOG.info("executing test");
+        LOG.debug("executing test");
         assertEquals(2, list.size());
 
         list.add("another test");
@@ -43,7 +43,7 @@ public class BeforeAndAfterAnnotationsUnitTest {
 
     @Test
     public void whenCheckingListSizeAgain_thenSizeEqualsToInit() {
-        LOG.info("executing another test");
+        LOG.debug("executing another test");
         assertEquals(2, list.size());
 
         list.add("yet another test");

@@ -35,6 +35,7 @@ public class QuadTreeSearchUnitTest {
     public void givenQuadTree_whenSearchingForRange_thenReturn1MatchingItem() {
         Region searchArea = new Region(200, 200, 250, 250);
         List<Point> result = quadTree.search(searchArea, null, "");
+
         LOGGER.debug(result.toString());
         LOGGER.debug(quadTree.printSearchTraversePath());
 
@@ -47,6 +48,7 @@ public class QuadTreeSearchUnitTest {
     public void givenQuadTree_whenSearchingForRange_thenReturn2MatchingItems() {
         Region searchArea = new Region(0, 0, 100, 100);
         List<Point> result = quadTree.search(searchArea, null, "");
+
         LOGGER.debug(result.toString());
         LOGGER.debug(quadTree.printSearchTraversePath());
 

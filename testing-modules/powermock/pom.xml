@@ -6,8 +6,8 @@
     <artifactId>powermock</artifactId>
 
     <parent>
-        <artifactId>testing-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 

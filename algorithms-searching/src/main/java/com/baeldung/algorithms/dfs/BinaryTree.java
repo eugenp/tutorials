@@ -1,7 +1,5 @@
 package com.baeldung.algorithms.dfs;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -124,69 +122,43 @@ public class BinaryTree {
         }
     }
 
-    public void traverseLevelOrder() {
-        if (root == null) {
-            return;
-        }
 
-        Queue<Node> nodes = new LinkedList<>();
-        nodes.add(root);
-
-        while (!nodes.isEmpty()) {
-
-            Node node = nodes.remove();
-
-            System.out.print(" " + node.value);
-
-            if (node.left != null) {
-                nodes.add(node.left);
-            }
-
-            if (node.left != null) {
-                nodes.add(node.right);
-            }
-        }
-    }
-
-    
     public void traverseInOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
+        Stack<Node> stack = new Stack<>();
         Node current = root;
-        stack.push(root);
-        while(! stack.isEmpty()) {
-            while(current.left != null) {
-                current = current.left;                
-                stack.push(current);                
-            }
-            current = stack.pop();
-            visit(current.value);
-            if(current.right != null) {
-                current = current.right;                
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
                 stack.push(current);
+                current = current.left;
             }
+
+            Node top = stack.pop();
+            visit(top.value);
+            current = top.right;
         }
     }
-    
+
     public void traversePreOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
-        Node current = root;
+        Stack<Node> stack = new Stack<>();
+        Node current;
         stack.push(root);
         while(! stack.isEmpty()) {
             current = stack.pop();
             visit(current.value);
-            
+
             if(current.right != null)
                 stack.push(current.right);
-                
+
             if(current.left != null)
                 stack.push(current.left);
-        }        
+        }
     }
-    
+
     public void traversePostOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
+        Stack<Node> stack = new Stack<>();
         Node prev = root;
-        Node current = root;
+        Node current;
         stack.push(root);
 
         while (!stack.isEmpty()) {
@@ -206,14 +178,14 @@ public class BinaryTree {
                     stack.push(current.left);
                 }
             }
-        }   
-    }    
-    
-    private void visit(int value) {
-        System.out.print(" " + value);        
+        }
     }
-    
-    class Node {
+
+    private void visit(int value) {
+        System.out.print(" " + value);
+    }
+
+    static class Node {
         int value;
         Node left;
         Node right;

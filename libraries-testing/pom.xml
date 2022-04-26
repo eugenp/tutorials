@@ -119,12 +119,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
             <version>${java-hamcrest.version}</version>
@@ -145,12 +139,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -206,9 +194,7 @@
         <hoverfly-java.version>0.8.1</hoverfly-java.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
-        <assertj.version>3.14.0</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
-        <h2.version>1.4.200</h2.version>
         <dbunit.version>2.7.0</dbunit.version>
         <assertj-core.version>3.14.0</assertj-core.version>
         <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
