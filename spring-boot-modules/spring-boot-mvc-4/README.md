@@ -8,4 +8,3 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Guide to Spring WebUtils and ServletRequestUtils](https://www.baeldung.com/spring-webutils-servletrequestutils)
 - [Configure a Spring Boot Web Application](https://www.baeldung.com/spring-boot-application-configuration)
 - [A Guide to Spring in Eclipse STS](https://www.baeldung.com/eclipse-sts-spring)
-- More articles: [[<-- Prev]](/spring-boot-modules/spring-boot-mvc-3)
