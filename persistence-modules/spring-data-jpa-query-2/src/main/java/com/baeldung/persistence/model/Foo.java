@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 
 import org.hibernate.envers.Audited;
 
@@ -20,6 +23,20 @@ import org.hibernate.envers.Audited;
   @NamedNativeQuery(name = "callGetAllFoos", query = "CALL GetAllFoos()", resultClass = Foo.class),
   @NamedNativeQuery(name = "callGetFoosByName", query = "CALL GetFoosByName(:fooName)", resultClass = Foo.class)
 })
+@NamedStoredProcedureQuery(
+		  name="GetAllFoos",
+		  procedureName="GetAllFoos",
+		  resultClasses = { Foo.class }
+		)
+@NamedStoredProcedureQuery(
+		  name="GetFoosByName",
+		  procedureName="GetFoosByName",
+		  resultClasses = { Foo.class },
+		  parameters={
+		    @StoredProcedureParameter(name="fooName", type=String.class, mode=ParameterMode.IN)
+		  }
+		)
+
 @Entity
 @Audited
 // @Proxy(lazy = false)
