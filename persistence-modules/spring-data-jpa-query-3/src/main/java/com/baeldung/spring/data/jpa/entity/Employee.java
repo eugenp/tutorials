@@ -9,10 +9,10 @@ public class Employee {
 
   @Id
   @GeneratedValue
-  private Integer employeeId;
+  private Integer id;
 
-  private String employeeName;
+  private String name;
 
-  private Long employeeSalary;
+  private Long salary;
 
 }
