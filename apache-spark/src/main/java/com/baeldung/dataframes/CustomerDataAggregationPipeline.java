@@ -35,10 +35,10 @@ public class CustomerDataAggregationPipeline {
 
     public void run() {
         Dataset<Row> ebayDFRaw = ingestCustomerDataFromEbay();
-        Dataset<Row> ebayDf = normaliseCustomerDataFromEbay(ebayDFRaw);
+        Dataset<Row> ebayDf = normalizeCustomerDataFromEbay(ebayDFRaw);
 
         Dataset<Row> amazonDFRaw = ingestCustomerDataFromAmazon();
-        Dataset<Row> amazonDf = normaliseCustomerDataFromAmazon(amazonDFRaw);
+        Dataset<Row> amazonDf = normalizeCustomerDataFromAmazon(amazonDFRaw);
 
         Dataset<Row> combineDataframes = combineDataframes(ebayDf, amazonDf);
 
@@ -67,7 +67,7 @@ public class CustomerDataAggregationPipeline {
         return df1.unionByName(df2);
     }
 
-    private static Dataset<Row> normaliseCustomerDataFromEbay(Dataset<Row> rawDataset) {
+    private static Dataset<Row> normalizeCustomerDataFromEbay(Dataset<Row> rawDataset) {
         Dataset<Row> transformedDF = rawDataset.withColumn("id", concat(rawDataset.col("zoneId"), lit("-"), rawDataset.col("customerId")))
             .drop(column("customerId"))
             .withColumn("source", lit("ebay"))
@@ -86,7 +86,7 @@ public class CustomerDataAggregationPipeline {
         return transformedDF;
     }
 
-    private static Dataset<Row> normaliseCustomerDataFromAmazon(Dataset<Row> rawDataset) {
+    private static Dataset<Row> normalizeCustomerDataFromAmazon(Dataset<Row> rawDataset) {
 
         Dataset<Row> transformedDF = rawDataset.withColumn("id", concat(rawDataset.col("zoneId"), lit("-"), rawDataset.col("id")))
             .withColumn("source", lit("amazon"))
