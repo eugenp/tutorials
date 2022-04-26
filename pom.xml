@@ -415,8 +415,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -644,9 +643,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
@@ -896,8 +892,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -1119,9 +1114,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
