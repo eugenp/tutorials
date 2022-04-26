@@ -643,9 +643,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
@@ -1117,9 +1114,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
