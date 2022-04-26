@@ -415,8 +415,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -896,8 +895,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
