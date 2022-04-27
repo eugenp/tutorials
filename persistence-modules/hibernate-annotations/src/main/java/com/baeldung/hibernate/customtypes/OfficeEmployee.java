@@ -24,7 +24,7 @@ public class OfficeEmployee {
     private long id;
 
     @Column
-    @Type(type = "com.baeldung.hibernate.customtypes.LocalDateStringType")
+    @Type(type = "LocalDateString")
     private LocalDate dateOfJoining;
 
     @Columns(columns = {@Column(name = "country_code"),

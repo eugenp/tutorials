@@ -1,17 +1,22 @@
 package com.baeldung.hibernate.customtypes;
 
-import com.baeldung.hibernate.HibernateUtil;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Environment;
+import org.hibernate.service.ServiceRegistry;
 import org.junit.Assert;
 import org.junit.Test;
 
 import javax.persistence.TypedQuery;
-import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
-import static java.util.Collections.singletonList;
 import static org.hibernate.testing.transaction.TransactionUtil.doInHibernate;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HibernateCustomTypesIntegrationTest {
 
@@ -41,7 +46,7 @@ public class HibernateCustomTypesIntegrationTest {
         doInHibernate(this::sessionFactory, session -> {
             session.save(e);
             boolean contains = session.contains(e);
-            Assert.assertTrue(contains);
+            assertTrue(contains);
         });
 
     }
@@ -81,13 +86,29 @@ public class HibernateCustomTypesIntegrationTest {
     }
 
     private SessionFactory sessionFactory() {
-        try {
-            return HibernateUtil.getSessionFactory(
-              "hibernate-customtypes.properties",
-              singletonList(OfficeEmployee.class)
-            );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+          .applySettings(getProperties())
+          .build();
+
+        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+        Metadata metadata = metadataSources
+          .addAnnotatedClass(OfficeEmployee.class)
+          .getMetadataBuilder()
+          .applyBasicType(LocalDateStringType.INSTANCE)
+          .build();
+
+        return metadata.buildSessionFactory();
+    }
+
+    private static Map<String, String> getProperties() {
+        Map<String, String> dbSettings = new HashMap<>();
+        dbSettings.put(Environment.URL, "jdbc:h2:mem:mydb1;DB_CLOSE_DELAY=-1");
+        dbSettings.put(Environment.USER, "sa");
+        dbSettings.put(Environment.PASS, "");
+        dbSettings.put(Environment.DRIVER, "org.h2.Driver");
+        dbSettings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+        dbSettings.put(Environment.SHOW_SQL, "true");
+        dbSettings.put(Environment.HBM2DDL_AUTO, "create");
+        return dbSettings;
     }
 }
