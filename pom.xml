@@ -502,8 +502,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
@@ -981,8 +979,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
