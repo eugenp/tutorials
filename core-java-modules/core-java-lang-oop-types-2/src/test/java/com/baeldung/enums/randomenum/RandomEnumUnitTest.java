@@ -1,12 +1,8 @@
-package com.baeldung.enums;
+package com.baeldung.enums.randomenum;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class RandomEnumUnitTest {
 
