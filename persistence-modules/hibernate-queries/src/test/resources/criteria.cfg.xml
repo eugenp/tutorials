@@ -14,5 +14,6 @@
 	    <property name="hibernate.hbm2ddl.import_files">import-db.sql</property>
 	    <property name="show_sql">false</property>        
 	    <mapping resource="com/baeldung/hibernate/criteria/model/Item.hbm.xml" />
+			<mapping resource="com/baeldung/hibernate/criteria/model/Employee.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
