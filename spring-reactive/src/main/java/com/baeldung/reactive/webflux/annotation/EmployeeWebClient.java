@@ -16,16 +16,16 @@ public class EmployeeWebClient {
     public void consume() {
 
         Mono<Employee> employeeMono = client.get()
-            .uri("/employees/{id}", "1")
-            .retrieve()
-            .bodyToMono(Employee.class);
+          .uri("/employees/{id}", "1")
+          .retrieve()
+          .bodyToMono(Employee.class);
 
         employeeMono.subscribe(employee -> LOGGER.info("Employee: {}", employee));
 
         Flux<Employee> employeeFlux = client.get()
-            .uri("/employees")
-            .retrieve()
-            .bodyToFlux(Employee.class);
+          .uri("/employees")
+          .retrieve()
+          .bodyToFlux(Employee.class);
 
         employeeFlux.subscribe(employee -> LOGGER.info("Employee: {}", employee));
     }
