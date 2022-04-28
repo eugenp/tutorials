@@ -14,18 +14,18 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>enforce-file-exists</id>
-						<phase/>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-file-exists</id>
+                        <phase/>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
