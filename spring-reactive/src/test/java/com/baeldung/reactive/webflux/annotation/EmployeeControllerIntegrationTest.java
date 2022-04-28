@@ -22,7 +22,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT, classes= EmployeeSpringApplication.class)
+@SpringBootTest(webEnvironment = RANDOM_PORT, classes = EmployeeSpringApplication.class)
 public class EmployeeControllerIntegrationTest {
 
     @Autowired
@@ -39,10 +39,10 @@ public class EmployeeControllerIntegrationTest {
         given(employeeRepository.findEmployeeById("1")).willReturn(Mono.just(employee));
 
         testClient.get()
-            .uri("/employees/1")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBody(Employee.class).isEqualTo(employee);
+          .uri("/employees/1")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBody(Employee.class).isEqualTo(employee);
     }
 
     @Test
@@ -57,14 +57,14 @@ public class EmployeeControllerIntegrationTest {
         given(employeeRepository.findAllEmployees()).willReturn(employeeFlux);
 
         testClient.get()
-            .uri("/employees")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBodyList(Employee.class).isEqualTo(employeeList);
+          .uri("/employees")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBodyList(Employee.class).isEqualTo(employeeList);
     }
 
     @Test
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
+    @WithMockUser(username = "admin", roles = { "ADMIN" })
     public void givenValidUser_whenUpdateEmployee_thenEmployeeUpdated() {
         Employee employee = new Employee("10", "Employee 10 Updated");
 
