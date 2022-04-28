@@ -10,32 +10,41 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.baeldung.projection.config.ProjectionConfig;
 import com.baeldung.projection.model.InStock;
 import com.baeldung.projection.model.Inventory;
 import com.baeldung.projection.model.Size;
-import com.baeldung.projection.repository.InventoryRepository;
 
-@SpringBootTest
-public class RepositoryProjectionUnitTest extends AbstractTestProjection {
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = ProjectionConfig.class)
+public class MongoTemplateProjectionUnitTest extends AbstractTestProjection {
 
     @Autowired
-    private InventoryRepository inventoryRepository;
+    private MongoTemplate mongoTemplate;
 
     @BeforeEach
-    void setup() throws Exception {
-        super.setUp();
-
+    void setup() {
         List<Inventory> inventoryList = getInventories();
 
-        inventoryRepository.saveAll(inventoryList);
+        mongoTemplate.insert(inventoryList, Inventory.class);
     }
 
     @Test
     void whenIncludeFields_thenOnlyIncludedFieldsAreNotNull() {
-        List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeItemAndStatusFields("A");
+        Query query = new Query();
+        query.fields()
+          .include("item")
+          .include("status");
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {
@@ -49,7 +58,14 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeFieldsAndExcludeOtherFields_thenOnlyExcludedFieldsAreNull() {
-        List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeItemAndStatusExcludeIdFields("A");
+        Query query = new Query();
+        query.fields()
+          .include("item")
+          .include("status")
+          .exclude("_id");
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {
@@ -63,7 +79,13 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeAllButExcludeSomeFields_thenOnlyExcludedFieldsAreNull() {
-        List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeAllButStatusAndStockFields("A");
+        Query query = new Query();
+        query.fields()
+          .exclude("status")
+          .exclude("inStock");
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {
@@ -77,7 +99,14 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFields_thenEmbeddedFieldsAreNotNull() {
-        List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeEmbeddedFields("A");
+        Query query = new Query();
+        query.fields()
+          .include("item")
+          .include("status")
+          .include("size.uom");
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {
@@ -97,7 +126,12 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenExcludeEmbeddedFields_thenEmbeddedFieldsAreNull() {
-        List<Inventory> inventoryList = inventoryRepository.findByStatusExcludeEmbeddedFields("A");
+        Query query = new Query();
+        query.fields()
+          .exclude("size.uom");
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {
@@ -117,7 +151,14 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
     @Test
     void whenIncludeEmbeddedFieldsInArray_thenEmbeddedFieldsInArrayAreNotNull() {
-        List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeEmbeddedFieldsInArray("A");
+        Query query = new Query();
+        query.fields()
+          .include("item")
+          .include("status")
+          .include("inStock.quantity");
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {
@@ -146,9 +187,16 @@ public class RepositoryProjectionUnitTest extends AbstractTestProjection {
 
         postcard.setInStock(Arrays.asList(firstInStock, lastInStock));
 
-        inventoryRepository.save(postcard);
+        mongoTemplate.save(postcard);
 
-        List<Inventory> inventoryList = inventoryRepository.findByStatusIncludeEmbeddedFieldsLastElementInArray("A");
+        Query query = new Query();
+        query.fields()
+          .include("item")
+          .include("status")
+          .slice("inStock", -1);
+
+        List<Inventory> inventoryList = mongoTemplate.find(query, Inventory.class);
+
         assertTrue(inventoryList.size() > 0);
 
         inventoryList.forEach(i -> {

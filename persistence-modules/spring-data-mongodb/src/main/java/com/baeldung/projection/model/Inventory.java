@@ -3,13 +3,14 @@ package com.baeldung.projection.model;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Document(collection = "inventory")
 public class Inventory {
 
-    @MongoId
+    @Id
     private String id;
     private String item;
     private String status;
