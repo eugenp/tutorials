@@ -3,16 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.graphql</groupId>
     <artifactId>graphql-java</artifactId>
     <version>1.0</version>
     <name>graphql-java</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung.graphql</groupId>
+        <artifactId>graphql</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <repositories>
@@ -44,12 +42,12 @@
         <dependency>
             <groupId>com.github.americanexpress.nodes</groupId>
             <artifactId>nodes</artifactId>
-            <version>0.5.0</version>
+            <version>${nodes.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java</artifactId>
-            <version>11.0</version>
+            <version>${graphql-java.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
@@ -76,16 +74,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.ratpack</groupId>
-            <artifactId>ratpack-core</artifactId>
-            <version>${ratpack-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.americanexpress.nodes</groupId>
-            <artifactId>nodes</artifactId>
-            <version>${nodes.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -117,20 +105,10 @@
             <version>${graphql-java-extended-scalars.version}</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -169,6 +147,7 @@
     </build>
 
     <properties>
+        <graphql-java.version>11.0</graphql-java.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <graphql-java-servlet.version>6.1.3</graphql-java-servlet.version>
         <graphql-java-annotations.version>3.0.3</graphql-java-annotations.version>
@@ -182,8 +161,6 @@
 
         <jetty-maven-plugin.version>10.0.7</jetty-maven-plugin.version>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <graphql.java.generator.version>1.18</graphql.java.generator.version>
         <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
     </properties>
