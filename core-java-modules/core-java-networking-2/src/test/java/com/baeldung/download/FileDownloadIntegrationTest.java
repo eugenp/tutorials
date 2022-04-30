@@ -19,7 +19,7 @@ public class FileDownloadIntegrationTest {
     
     static String FILE_URL = "https://s3.amazonaws.com/baeldung.com/Do+JSON+with+Jackson+by+Baeldung.pdf";
     static String FILE_NAME = "file.dat";
-    static String FILE_MD5_HASH = "c959feb066b37f5c4f0e0f45bbbb4f86";
+    static String FILE_MD5_HASH = "753197aa27f162faa3e3c2e48ee5eb07";
     
     @Test
     public void givenJavaIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
