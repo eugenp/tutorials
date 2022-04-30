@@ -45,6 +45,7 @@
     <properties>
         <cloud.zookeeper.version>2.0.0.RELEASE</cloud.zookeeper.version>
         <zookeeper.version>3.4.13</zookeeper.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

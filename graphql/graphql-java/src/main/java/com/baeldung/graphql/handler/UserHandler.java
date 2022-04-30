@@ -19,24 +19,27 @@ import com.baeldung.graphql.utils.SchemaUtils;
 import static ratpack.jackson.Jackson.json;
 
 public class UserHandler implements Handler {
+
     private static final Logger LOGGER = Logger.getLogger(UserHandler.class.getSimpleName());
-    private GraphQL graphql;
-    private static List<User> users = new ArrayList<>();
+
+    private static final List<User> USERS = new ArrayList<>();
+
+    private final GraphQL graphql;
 
     public UserHandler() throws Exception {
-        graphql = new GraphQL(new UserSchema().getSchema());
+        graphql = GraphQL.newGraphQL(new UserSchema().getSchema()).build();
     }
 
     @Override
-    public void handle(Context context) throws Exception {
+    public void handle(Context context) {
         context.parse(Map.class)
             .then(payload -> {
                 Map<String, Object> parameters = (Map<String, Object>) payload.get("parameters");
                 ExecutionResult executionResult = graphql.execute(payload.get(SchemaUtils.QUERY)
                     .toString(), null, this, parameters);
+
                 Map<String, Object> result = new LinkedHashMap<>();
-                if (executionResult.getErrors()
-                    .isEmpty()) {
+                if (executionResult.getErrors().isEmpty()) {
                     result.put(SchemaUtils.DATA, executionResult.getData());
                 } else {
                     result.put(SchemaUtils.ERRORS, executionResult.getErrors());
@@ -46,8 +49,8 @@ public class UserHandler implements Handler {
             });
     }
 
-    public static List<User> getUsers() {
-        return users;
+    public List<User> getUsers() {
+        return USERS;
     }
 
     public static List<User> getUsers(DataFetchingEnvironment env) {

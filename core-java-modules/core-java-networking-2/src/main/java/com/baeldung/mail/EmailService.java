@@ -67,12 +67,17 @@ public class EmailService {
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
 
+        String msgStyled = "This is my <b style='color:red;'>bold-red email</b> using JavaMailer";
+        MimeBodyPart mimeBodyPartWithStyledText = new MimeBodyPart();
+        mimeBodyPartWithStyledText.setContent(msgStyled, "text/html; charset=utf-8");
+
         MimeBodyPart attachmentBodyPart = new MimeBodyPart();
 
         attachmentBodyPart.attachFile(getFile());
 
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(mimeBodyPart);
+        multipart.addBodyPart(mimeBodyPartWithStyledText);
         multipart.addBodyPart(attachmentBodyPart);
 
         message.setContent(multipart);

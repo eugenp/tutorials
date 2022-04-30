@@ -49,6 +49,8 @@
     </build>
 
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <validator.version>1.7</validator.version>
         <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
     </properties>

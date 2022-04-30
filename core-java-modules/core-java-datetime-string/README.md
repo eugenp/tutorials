@@ -12,3 +12,4 @@ This module contains articles about parsing and formatting Java date and time ob
 - [Convert between String and Timestamp](https://www.baeldung.com/java-string-to-timestamp)
 - [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
 - [Format a Milliseconds Duration to HH:MM:SS](https://www.baeldung.com/java-ms-to-hhmmss)
+- [Format Instant to String in Java](https://www.baeldung.com/java-instant-to-string)

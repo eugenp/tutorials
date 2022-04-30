@@ -1,14 +1,29 @@
 package com.baeldung.externalizable;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import java.io.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ExternalizableUnitTest {
 
-    private final static String OUTPUT_FILE = "externalizable.txt";
+    private final static String OUTPUT_FILE_NAME = "externalizable.txt";
+
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
+
+    private File outputFile;
+
+    @Before
+    public void setUp() throws Exception {
+        outputFile = tempFolder.newFile(OUTPUT_FILE_NAME);
+    }
 
     @Test
     public void whenSerializing_thenUseExternalizable() throws IOException, ClassNotFoundException {
@@ -18,7 +33,7 @@ public class ExternalizableUnitTest {
         c.setCode(374);
         c.setName("Armenia");
 
-        FileOutputStream fileOutputStream = new FileOutputStream(OUTPUT_FILE);
+        FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         c.writeExternal(objectOutputStream);
 
@@ -26,7 +41,7 @@ public class ExternalizableUnitTest {
         objectOutputStream.close();
         fileOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream(OUTPUT_FILE);
+        FileInputStream fileInputStream = new FileInputStream(outputFile);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         Country c2 = new Country();
@@ -35,8 +50,8 @@ public class ExternalizableUnitTest {
         objectInputStream.close();
         fileInputStream.close();
 
-        assertTrue(c2.getCode() == c.getCode());
-        assertTrue(c2.getName().equals(c.getName()));
+        assertEquals(c2.getCode(), c.getCode());
+        assertEquals(c2.getName(), c.getName());
     }
 
     @Test
@@ -49,7 +64,7 @@ public class ExternalizableUnitTest {
         r.setClimate("Mediterranean");
         r.setPopulation(120.000);
 
-        FileOutputStream fileOutputStream = new FileOutputStream(OUTPUT_FILE);
+        FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         r.writeExternal(objectOutputStream);
 
@@ -57,7 +72,7 @@ public class ExternalizableUnitTest {
         objectOutputStream.close();
         fileOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream(OUTPUT_FILE);
+        FileInputStream fileInputStream = new FileInputStream(outputFile);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         Region r2 = new Region();
@@ -66,6 +81,6 @@ public class ExternalizableUnitTest {
         objectInputStream.close();
         fileInputStream.close();
 
-        assertTrue(r2.getPopulation() == null);
+        assertNull(r2.getPopulation());
     }
 }
