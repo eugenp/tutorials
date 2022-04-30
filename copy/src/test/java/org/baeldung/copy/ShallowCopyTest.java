@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ShallowCopyTest {
 
     @Test
-    public void copyElementsTests() {
+    public void copyElementsShallowCopyTests() {
         Department dept = new Department("D03", "Finance");
         Employee emp = new Employee("EM012", "John White", dept);
         Employee copy = new Employee(emp.getEmployeeId(), emp.getName(), emp.getDepartment());
@@ -26,7 +26,7 @@ public class ShallowCopyTest {
     }
 
     @Test
-    public void cloneableInterfaceTest() throws CloneNotSupportedException {
+    public void cloneableInterfaceShallowCopyTest() throws CloneNotSupportedException {
         Department dept = new Department("D03", "Finance");
         Employee emp = new Employee("EM012", "John White", dept);
         Employee copy = (Employee) emp.clone();
