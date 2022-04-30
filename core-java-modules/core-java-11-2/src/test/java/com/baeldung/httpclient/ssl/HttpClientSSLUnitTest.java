@@ -15,10 +15,10 @@ import static org.junit.Assert.assertEquals;
 public class HttpClientSSLUnitTest {
 
     @Test
-    public void whenHttpRequest_thenCorrect() throws URISyntaxException, IOException, InterruptedException {
+    public void whenValidHttpsRequest_thenCorrect() throws URISyntaxException, IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI("http://www.testingmcafeesites.com/"))
+                .uri(new URI("https://www.google.com/"))
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -27,7 +27,7 @@ public class HttpClientSSLUnitTest {
     }
 
     @Test(expected = SSLHandshakeException.class)
-    public void whenHttpsRequest_thenInCorrect() throws IOException, InterruptedException {
+    public void whenInvalidHttpsRequest_thenInCorrect() throws IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.testingmcafeesites.com/"))
