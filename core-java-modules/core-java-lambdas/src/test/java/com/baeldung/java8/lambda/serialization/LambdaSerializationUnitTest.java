@@ -36,7 +36,7 @@ public class LambdaSerializationUnitTest {
 
     @Test
     public void givenSerializableConsumer_whenNoCapturing_thenSerializationSuccess() throws IOException, ClassNotFoundException {
-        SerializableConsumer<String> obj = System.out::println;
+        SerializableConsumer<String> obj = message -> System.out.println(message);
         writeAndReadObject(obj, SerializableConsumer.class);
     }
 
