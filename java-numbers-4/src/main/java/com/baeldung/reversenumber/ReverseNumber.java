@@ -17,7 +17,7 @@ public class ReverseNumber {
     public static int reverseNumberForLoop(int number) {
         int reversedNumber = 0;
 
-        for (;number>0;number/=10) {
+        for (; number > 0; number /= 10) {
             int mod = number % 10;
             reversedNumber = reversedNumber * 10 + mod;
         }
@@ -26,6 +26,7 @@ public class ReverseNumber {
     }
 
     public static int recursiveReversedNumber = 0;
+
     public static void reverseNumberRec(int number) {
 
         if (number > 0) {

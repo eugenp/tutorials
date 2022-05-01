@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReverseNumberTest {
+class ReverseNumberUnitTest {
 
     private static final int ORIGINAL_NUMBER = 123456789;
     private static final int REVERSED_NUMBER = 987654321;
