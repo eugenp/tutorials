@@ -18,6 +18,11 @@ public class PizzaRestController implements PizzaRestUI {
 
 	@Autowired
 	private PizzaService pizzaService;
+	
+
+	public void setPizzaService(PizzaService pizzaService) {
+		this.pizzaService = pizzaService;
+	}
 
 	@Override
 	public void createPizza(@RequestBody Pizza pizza) {

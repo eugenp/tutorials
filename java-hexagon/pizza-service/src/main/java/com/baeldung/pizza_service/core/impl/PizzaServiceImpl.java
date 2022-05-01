@@ -15,6 +15,10 @@ public class PizzaServiceImpl implements PizzaService {
 	@Autowired
 	private PizzaRepo pizzaRepo;
 	
+	public void setPizzaRepo(PizzaRepo pizzaRepo) {
+		this.pizzaRepo = pizzaRepo;
+	}
+
 	@Override
 	public void createPizza(Pizza pizza) {
 		// TODO Auto-generated method stub
