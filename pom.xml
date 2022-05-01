@@ -343,7 +343,6 @@
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
-                <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -502,8 +501,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
@@ -820,7 +817,6 @@
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
-                <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -981,8 +977,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
