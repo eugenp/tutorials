@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
@@ -148,6 +153,7 @@
         <jsoniter.version>0.9.23</jsoniter.version>
         <moshi.version>1.9.2</moshi.version>
         <fastjson.version>1.2.21</fastjson.version>
+        <json.version>20211205</json.version>
     </properties>
 
 </project>
