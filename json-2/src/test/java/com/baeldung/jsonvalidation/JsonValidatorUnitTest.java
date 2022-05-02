@@ -17,7 +17,7 @@ public class JsonValidatorUnitTest {
 
     @Test
     public void givenInvalidJson_whenValidating_thenInvalid() {
-        String json = "InvalidJson";
+        String json = "Invalid_Json";
         assertFalse(validator.isValidObject(json));
     }
 

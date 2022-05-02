@@ -10,23 +10,23 @@ import com.google.gson.TypeAdapter;
 
 public class GsonValidator {
 
+    final TypeAdapter<JsonElement> strictAdapter = new Gson().getAdapter(JsonElement.class);
+
     public boolean isValid(String json) {
-        final JsonParser parser = new JsonParser();
         try {
-            parser.parse(json);
-            return true;
+            JsonParser.parseString(json);
         } catch (JsonSyntaxException e) {
             return false;
         }
+        return true;
     }
 
     public boolean isValidStrict(String json) {
-        final TypeAdapter<JsonElement> strictAdapter = new Gson().getAdapter(JsonElement.class);
         try {
             strictAdapter.fromJson(json);
-            return true;
         } catch (JsonSyntaxException | IOException e) {
             return false;
         }
+        return true;
     }
 }
