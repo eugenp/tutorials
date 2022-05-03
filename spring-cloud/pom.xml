@@ -38,7 +38,7 @@
         <module>spring-cloud-archaius</module>
         <module>spring-cloud-functions</module>
         <module>spring-cloud-vault</module>
-        <!-- <module>spring-cloud-security</module> Fixing in JAVA-11827 -->
+        <module>spring-cloud-security</module>
         <module>spring-cloud-task</module>
         <module>spring-cloud-zuul</module>
         <module>spring-cloud-zuul-fallback</module>
