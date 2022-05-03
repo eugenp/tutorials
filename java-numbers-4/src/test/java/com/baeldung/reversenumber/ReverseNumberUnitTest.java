@@ -25,4 +25,14 @@ class ReverseNumberUnitTest {
         ReverseNumber.reverseNumberRec(ORIGINAL_NUMBER);
         Assertions.assertThat(ReverseNumber.recursiveReversedNumber).isEqualTo(REVERSED_NUMBER);
     }
+
+    @Test
+    void whenReverseNegativeNumber_thenNumberShouldReverse() {
+        Assertions.assertThat(ReverseNumber.reverseNumberWhileLoop(ORIGINAL_NUMBER * -1)).isEqualTo(REVERSED_NUMBER * -1);
+        Assertions.assertThat(ReverseNumber.reverseNumberForLoop(ORIGINAL_NUMBER * -1)).isEqualTo(REVERSED_NUMBER * -1);
+
+        ReverseNumber.recursiveReversedNumber = 0;
+        ReverseNumber.reverseNumberRec(ORIGINAL_NUMBER * -1);
+        Assertions.assertThat(ReverseNumber.recursiveReversedNumber).isEqualTo(REVERSED_NUMBER * -1);
+    }
 }

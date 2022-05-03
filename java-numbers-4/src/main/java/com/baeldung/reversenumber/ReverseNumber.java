@@ -4,36 +4,46 @@ public class ReverseNumber {
 
     public static int reverseNumberWhileLoop(int number) {
         int reversedNumber = 0;
+        int numberToReverse = Math.abs(number);
 
-        while (number > 0) {
-            int mod = number % 10;
+        while (numberToReverse > 0) {
+            int mod = numberToReverse % 10;
             reversedNumber = reversedNumber * 10 + mod;
-            number /= 10;
+            numberToReverse /= 10;
         }
 
-        return reversedNumber;
+        return number < 0 ? reversedNumber * -1 : reversedNumber;
     }
 
     public static int reverseNumberForLoop(int number) {
         int reversedNumber = 0;
+        int numberToReverse = Math.abs(number);
 
-        for (; number > 0; number /= 10) {
-            int mod = number % 10;
+        for (; numberToReverse > 0; numberToReverse /= 10) {
+            int mod = numberToReverse % 10;
             reversedNumber = reversedNumber * 10 + mod;
         }
 
-        return reversedNumber;
+        return number < 0 ? reversedNumber * -1 : reversedNumber;
     }
 
     public static int recursiveReversedNumber = 0;
+    public static boolean negativeReversedNumber = false;
 
     public static void reverseNumberRec(int number) {
+        int numberToReverse = Math.abs(number);
 
-        if (number > 0) {
-            int mod = number % 10;
+        if (number < 0) {
+            negativeReversedNumber = true;
+        }
+
+        if (numberToReverse > 0) {
+            int mod = numberToReverse % 10;
             recursiveReversedNumber = recursiveReversedNumber * 10 + mod;
-            number /= 10;
-            reverseNumberRec(number);
+            numberToReverse /= 10;
+            reverseNumberRec(numberToReverse);
+        } else if (numberToReverse == 0 && negativeReversedNumber) {
+            recursiveReversedNumber *= -1;
         }
     }
 }
