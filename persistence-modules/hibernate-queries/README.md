@@ -10,3 +10,4 @@ This module contains articles about use of Queries in Hibernate.
 - [Hibernate Named Query](https://www.baeldung.com/hibernate-named-query)
 - [Hibernate Query Plan Cache](https://www.baeldung.com/hibernate-query-plan-cache)
 - [Hibernate’s addScalar() Method](https://www.baeldung.com/hibernate-addscalar)
+- [Distinct Queries in HQL](https://www.baeldung.com/java-hql-distinct)

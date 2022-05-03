@@ -343,7 +343,6 @@
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
-                <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -366,11 +365,8 @@
 
                 <module>atomix</module>
 
-                <module>aws</module>
-                <module>aws-app-sync</module>
-                <module>aws-lambda</module>
-                <module>aws-reactive</module>
-
+                <module>aws-modules</module>
+                
                 <module>axon</module>
 
                 <module>azure</module>
@@ -418,8 +414,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -428,11 +423,9 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-
-                <module>immutables</module>
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -476,7 +469,6 @@
                 <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
-                <module>jta</module>
                 <module>kubernetes</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -509,8 +501,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
@@ -650,9 +640,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
@@ -704,7 +691,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>structurizr</module>
                 <module>struts-2</module>
 
                 <module>tensorflow-java</module>
@@ -831,7 +817,6 @@
                 <module>algorithms-searching</module>
                 <module>algorithms-sorting</module>
                 <module>algorithms-sorting-2</module>
-                <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -854,11 +839,8 @@
 
                 <module>atomix</module>
 
-                <module>aws</module>
-                <module>aws-app-sync</module>
-                <module>aws-lambda</module>
-                <module>aws-reactive</module>
-
+                <module>aws-modules</module>
+                
                 <module>axon</module>
 
                 <module>azure</module>
@@ -906,8 +888,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -916,11 +897,9 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
-                <module>hystrix</module>
-
-                <module>immutables</module>
+                <module>hystrix</module>                
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -964,7 +943,6 @@
                 <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
-                <module>jta</module>
 
                 <module>ksqldb</module>
 
@@ -999,8 +977,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
@@ -1132,9 +1108,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
@@ -1186,7 +1159,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>structurizr</module>
                 <module>struts-2</module>
 
                 <module>tensorflow-java</module>
@@ -1354,7 +1326,7 @@
                  <module>core-java-modules/core-java-strings</module>
                  <module>ddd-modules</module>
                  <module>docker</module>
-                 <module>httpclient-2</module>
+                 <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
@@ -1421,7 +1393,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-modules</module>
                 <module>docker</module>
-                <module>httpclient-2</module>
+                <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>

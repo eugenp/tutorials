@@ -1,9 +1,13 @@
 package com.baeldung.persistence.service;
 
-import java.util.List;
-
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.StoredProcedureQuery;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,6 +21,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -38,8 +43,15 @@ public class FooStoredProceduresLiveTest {
 
     private Session session;
 
+    @Autowired
+    @Qualifier("jpaEntityManager")
+    private EntityManagerFactory entityManagerFactory;
+
+    private EntityManager entityManager;
+    
     @Before
     public final void before() {
+    	entityManager = entityManagerFactory.createEntityManager();
         session = sessionFactory.openSession();
         Assume.assumeTrue(getAllFoosExists());
         Assume.assumeTrue(getFoosByNameExists());
@@ -70,6 +82,7 @@ public class FooStoredProceduresLiveTest {
     @After
     public final void after() {
         session.close();
+        entityManager.close();
     }
 
     @Test
@@ -94,6 +107,15 @@ public class FooStoredProceduresLiveTest {
             LOGGER.info("getAllFoos() NamedQuery result : {}", foo.getName());
         }
         assertEquals(allFoos2.size(), fooService.findAll().size());
+        
+        StoredProcedureQuery spQuery = 
+        		entityManager.createNamedStoredProcedureQuery("GetAllFoos");
+		List<Foo> allFoos3 = spQuery.getResultList();
+        for (Foo foo : allFoos3) {
+            LOGGER.info("getAllFoos() StoredProcedureQuery result : {}", foo.getName());
+        }
+        assertEquals(allFoos3.size(), fooService.findAll().size());
+        
     }
 
     @Test
@@ -116,6 +138,15 @@ public class FooStoredProceduresLiveTest {
         for (Foo foo : allFoosByName2) {
             LOGGER.info("getFoosByName() using Native Query : found => {}", foo.toString());
         }
-
+        
+        StoredProcedureQuery spQuery = entityManager.
+        		  createNamedStoredProcedureQuery("GetFoosByName")
+        		  .setParameter("fooName", "NewFooName");
+        List<Foo> allFoosByName3 = spQuery.getResultList();
+        assertEquals(1, allFoosByName3.size());
+		for (Foo foo : allFoosByName3) {
+			LOGGER.info("getFoosByName() using StoredProcedureQuery : found => {}", foo.toString());
+			assertEquals("NewFooName", foo.getName());
+		}
     }
 }
