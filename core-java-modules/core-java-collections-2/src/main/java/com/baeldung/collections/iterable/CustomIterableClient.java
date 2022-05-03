@@ -4,13 +4,13 @@ class CustomIterableClient {
 
     public static void main(String[] args) {
 
-        CustomCollection<Product> products = new CustomCollection<>();
-        products.add(new Product("Tuna", 42));
-        products.add(new Product("Eggplant", 65));
-        products.add(new Product("Salad", 45));
-        products.add(new Product("Banana", 29));
+        ShoppingCart<Product> shoppingCart = new ShoppingCart<>();
+        shoppingCart.add(new Product("Tuna", 42));
+        shoppingCart.add(new Product("Eggplant", 65));
+        shoppingCart.add(new Product("Salad", 45));
+        shoppingCart.add(new Product("Banana", 29));
 
-        for (Product product : products) {
+        for (Product product : shoppingCart) {
             System.out.println(product.getName());
         }
     }

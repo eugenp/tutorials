@@ -5,13 +5,13 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class CustomCollection<E> implements Iterable<E> {
+public class ShoppingCart<E> implements Iterable<E> {
 
     private E[] elementData;
     private int size;
 
-    public CustomCollection() {
-        this.elementData = (E[]) new Object[] {};
+    public ShoppingCart() {
+        this.elementData = (E[]) new Object[]{};
     }
 
     public void add(E element) {
@@ -30,10 +30,10 @@ public class CustomCollection<E> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new CollectionIterator();
+        return new ShoppingCartIterator();
     }
 
-    public class CollectionIterator implements Iterator<E> {
+    public class ShoppingCartIterator implements Iterator<E> {
         int cursor;
         int lastReturned = -1;
 
@@ -49,7 +49,7 @@ public class CustomCollection<E> implements Iterable<E> {
             int current = cursor;
             exist(current);
 
-            E[] elements = CustomCollection.this.elementData;
+            E[] elements = ShoppingCart.this.elementData;
             validate(elements, current);
 
             cursor = current + 1;
