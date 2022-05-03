@@ -25,6 +25,7 @@ public class HttpClientSSLBypassUnitTest {
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        props.setProperty("jdk.internal.httpclient.disableHostnameVerification", Boolean.FALSE.toString());
 
         Assertions.assertEquals(200, response.statusCode());
     }
