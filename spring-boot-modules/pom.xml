@@ -17,8 +17,6 @@
     </parent>
 
     <modules>        
-        <module>spring-boot-1</module>
-        <module>spring-boot-2</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -46,7 +44,7 @@
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <!-- <module>spring-boot-keycloak</module> --> <!-- Fixing under JAVA-8271 -->
+        <module>spring-boot-keycloak</module>
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
         <module>spring-boot-libraries-comparison</module>
