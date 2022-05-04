@@ -117,6 +117,9 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
+        <module>java-collections-conversions</module>
+        <module>java-collections-conversions-2</module>
+        <module>java-collections-maps-3</module>
         <module>pre-jpms</module>
     </modules>
 
