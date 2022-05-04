@@ -1,6 +1,5 @@
 package com.baeldung.hibernate.customtypes;
 
-import com.baeldung.hibernate.pojo.Phone;
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
