@@ -5,7 +5,6 @@ This module contains articles about Spring Boot RESTful APIs.
 ### Relevant Articles
 
 - [Versioning a REST API](https://www.baeldung.com/rest-versioning)
-- [REST Pagination in Spring](https://www.baeldung.com/rest-api-pagination-in-spring)
 
 ### E-book
 
