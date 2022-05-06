@@ -15,11 +15,11 @@ public class BooleanToInt {
         return (foo) ? 1 : 0;
     }
 
-    public static int booleanObjectToInt(Boolean foo) {
+    public static int booleanObjectToInt(boolean foo) {
         return Boolean.compare(foo, false);
     }
 
-    public static int booleanObjectToIntInverse(Boolean foo) {
+    public static int booleanObjectToIntInverse(boolean foo) {
         return Boolean.compare(foo, true) + 1;
     }
 
