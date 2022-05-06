@@ -16,6 +16,26 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>${thymeleaf-extras-springsecurity5.version}</version>
+        </dependency>
         <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -98,6 +118,12 @@
             <scope>runtime</scope>
         </dependency>
         <!-- test scoped -->
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -110,6 +136,11 @@
             <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -153,6 +184,9 @@
     <properties>
         <!-- Maven plugins -->
         <cargo-maven3-plugin.version>1.9.9</cargo-maven3-plugin.version>
+        <spring-boot.version>2.6.4</spring-boot.version>
+        <thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
     </properties>
 
 </project>

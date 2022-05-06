@@ -31,6 +31,6 @@ public class BalancedBracketsUsingDeque {
             }
         }
 
-        return true;
+        return deque.isEmpty();
     }
 }

@@ -41,5 +41,4 @@ public class EmployeeCriteriaQueries {
         session.close();
         return employeeWithGreaterSalary;
     }
-
 }

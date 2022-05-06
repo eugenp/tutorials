@@ -45,8 +45,8 @@
         <module>spring-cloud-ribbon-retry</module>
         <module>spring-cloud-circuit-breaker</module>
         <module>spring-cloud-eureka-self-preservation</module>
-        <!-- <module>spring-cloud-openfeign</module> --> <!-- Fixing under JAVA-10446 -->
-        <!-- <module>spring-cloud-netflix-feign</module>  --> <!-- Fixing under JAVA-10431 -->
+        <module>spring-cloud-openfeign</module>
+        <module>spring-cloud-netflix-feign</module>
         <module>spring-cloud-sentinel</module>
         <module>spring-cloud-dapr</module>
         <module>spring-cloud-docker</module>

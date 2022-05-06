@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -15,7 +16,7 @@ public class SubtractDaysFromDateUnitTest {
 
     @Test
     public void givenLocalDateTime_whenSubtractingFiveDays_dateIsChangedCorrectly() {
-        LocalDate localDateTime = LocalDate.of(2022, 4, 20);
+        LocalDateTime localDateTime = LocalDateTime.of(2022, 4, 20, 0, 0);
 
         localDateTime = localDateTime.minusDays(5);
 
