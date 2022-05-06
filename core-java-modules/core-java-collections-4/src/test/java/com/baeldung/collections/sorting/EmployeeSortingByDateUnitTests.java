@@ -50,14 +50,14 @@ public class EmployeeSortingByDateUnitTests {
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenSortedArrayinNaturalOrder() {
+  public void givenEmpList_SortEmpList_thenSortedListinNaturalOrder() {
     Collections.sort(employees);
 
     assertEquals(employees, employeesSortedByDateAsc);
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenCheckSortedArray() {
+  public void givenEmpList_SortEmpList_thenCheckSortedList() {
 
     Collections.sort(employees, new Comparator<Employee>() {
       public int compare(Employee o1, Employee o2) {
@@ -69,7 +69,7 @@ public class EmployeeSortingByDateUnitTests {
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenCheckSortedArrayV1() {
+  public void givenEmpList_SortEmpList_thenCheckSortedListV1() {
 
     Collections.sort(employees, new Comparator<Employee>() {
       public int compare(Employee emp1, Employee emp2) {
@@ -83,14 +83,14 @@ public class EmployeeSortingByDateUnitTests {
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenSortedArrayinAscOrder() {
+  public void givenEmpList_SortEmpList_thenSortedListinAscOrder() {
     Collections.sort(employees, Collections.reverseOrder());
 
     assertEquals(employees, employeesSortedByDateDesc);
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenCheckSortedArrayAsc() {
+  public void givenEmpList_SortEmpList_thenCheckSortedListAsc() {
 
     Collections.sort(employees, new Comparator<Employee>() {
       public int compare(Employee emp1, Employee emp2) {
@@ -102,7 +102,7 @@ public class EmployeeSortingByDateUnitTests {
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenCheckSortedArrayAscV1() {
+  public void givenEmpList_SortEmpList_thenCheckSortedListAscV1() {
 
     Collections.sort(employees, new Comparator<Employee>() {
       public int compare(Employee emp1, Employee emp2) {
@@ -116,7 +116,7 @@ public class EmployeeSortingByDateUnitTests {
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenCheckSortedArrayAscLambda() {
+  public void givenEmpList_SortEmpList_thenCheckSortedListDescLambda() {
 
     Collections.sort(employees,
       (emp1, emp2) -> emp2.getJoiningDate().compareTo(emp1.getJoiningDate()));
@@ -125,7 +125,7 @@ public class EmployeeSortingByDateUnitTests {
   }
 
   @Test
-  public void givenEmpArray_SortEmpArray_thenCheckSortedArrayAscLambdaV1() {
+  public void givenEmpList_SortEmpList_thenCheckSortedListDescLambdaV1() {
 
     Collections.sort(employees, (emp1, emp2) -> {
       if (emp1.getJoiningDate() == null || emp2.getJoiningDate() == null)
@@ -134,6 +134,13 @@ public class EmployeeSortingByDateUnitTests {
     });
 
     assertEquals(employees, employeesSortedByDateDesc);
+  }
+
+  @Test
+  public void givenEmpList_SortEmpList_thenCheckSortedListAscLambda() {
+    Collections.sort(employees,
+      Comparator.comparing(Employee::getJoiningDate));
+    assertEquals(employees, employeesSortedByDateAsc);
   }
 
 }

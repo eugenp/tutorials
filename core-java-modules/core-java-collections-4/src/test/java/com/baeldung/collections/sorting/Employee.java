@@ -57,10 +57,10 @@ public class Employee implements Comparable<Employee>{
   @Override
   public String toString() {
     return new StringBuffer().append("(")
-      .append(getName())
+      .append(getName()).append(",")
       .append(getAge())
       .append(",")
-      .append(getSalary())
+      .append(getSalary()).append(",").append(getJoiningDate())
       .append(")")
       .toString();
   }
