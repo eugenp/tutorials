@@ -660,6 +660,7 @@
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
                 <module>spring-native</module>
+                <module>spring-native-liberica</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
