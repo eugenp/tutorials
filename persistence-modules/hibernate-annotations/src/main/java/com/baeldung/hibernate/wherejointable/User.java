@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.WhereJoinTable;
 
-@Entity
+@Entity(name = "users")
 public class User {
 
     @Id

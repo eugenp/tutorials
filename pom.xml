@@ -431,9 +431,6 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
-                <module>java-collections-conversions</module>
-                <module>java-collections-conversions-2</module>
-                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -905,9 +902,6 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
-                <module>java-collections-conversions</module>
-                <module>java-collections-conversions-2</module>
-                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>

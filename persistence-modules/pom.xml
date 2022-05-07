@@ -69,7 +69,7 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-gemfire</module>
+        <!-- <module>spring-data-gemfire</module> Fixing in JAVA-11854 -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>

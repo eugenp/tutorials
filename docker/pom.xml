@@ -28,6 +28,7 @@
         <module>docker-sample-app</module>
         <module>docker-caching/single-module-caching</module>
         <module>docker-caching/multi-module-caching</module>
+        <module>docker-push-to-private-repo</module>
     </modules>
 
 </project>
