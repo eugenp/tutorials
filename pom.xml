@@ -1348,6 +1348,7 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>core-java-modules/core-java-strings</module>
+				 <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-modules</module>
                  <module>docker</module>
                  <module>httpclient-2</module>
