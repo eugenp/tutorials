@@ -1,38 +1,37 @@
 package com.baeldung.javaxval.constraint.composition;
 
-
 public class Account {
 
-	@ValidAlphanumeric
-	private String username;
+    @ValidAlphanumeric
+    private String username;
 
-	@ValidAlphanumeric
-	private String password;
+    @ValidAlphanumericWithSingleViolation
+    private String password;
 
-	@ValidAlphanumeric
-	private String nickname;
+    @ValidLengthOrNumericCharacter
+    private String nickname;
 
-	public String getUsername() {
-		return username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getNickname() {
-		return nickname;
-	}
+    public String getNickname() {
+        return nickname;
+    }
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }

@@ -1,18 +1,23 @@
 package com.baeldung.javaxval.constraint.composition;
 
-import org.hibernate.validator.constraints.Length;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
 
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import org.hibernate.validator.constraints.Length;
 
 @NotNull
 @Pattern(regexp = ".*\\d.*", message = "must contain at least one numeric character")
@@ -24,10 +29,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @ReportAsSingleViolation
 public @interface ValidAlphanumericWithSingleViolation {
 
-	String message() default "field should have a valid length and contain numeric character(s).";
+    String message() default "field should have a valid length and contain numeric character(s).";
 
-	Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 
 }

@@ -1,6 +1,5 @@
 package com.baeldung.javaxval.constraint.composition;
 
-
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -8,13 +7,13 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 public class AccountService {
 
-	@AlphanumericReturnValue
-	public String getAnInvalidAlphanumericValue() {
-		return "john";
-	}
+    @AlphanumericReturnValue
+    public String getAnInvalidAlphanumericValue() {
+        return "john";
+    }
 
-	@AlphanumericReturnValue
-	public String getValidAlphanumericValue() {
-		return "johnDoe1234";
-	}
+    @AlphanumericReturnValue
+    public String getValidAlphanumericValue() {
+        return "johnDoe1234";
+    }
 }

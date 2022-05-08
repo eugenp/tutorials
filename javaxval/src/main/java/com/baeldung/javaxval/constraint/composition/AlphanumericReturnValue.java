@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraintvalidation.SupportedValidationTarget;
 import javax.validation.constraintvalidation.ValidationTarget;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -25,11 +26,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
 public @interface AlphanumericReturnValue {
 
-	String message() default "method return value should have a valid length and contain numeric character(s).";
+    String message() default "method return value should have a valid length and contain numeric character(s).";
 
-	Class<?>[] groups() default {};
+    Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default {};
 
 }
 

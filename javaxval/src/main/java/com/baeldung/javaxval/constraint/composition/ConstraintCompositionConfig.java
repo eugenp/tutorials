@@ -9,13 +9,13 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 @ComponentScan({ "com.baeldung.javaxval.constraint.composition" })
 public class ConstraintCompositionConfig {
 
-	@Bean
-	public MethodValidationPostProcessor methodValidationPostProcessor() {
-		return new MethodValidationPostProcessor();
-	}
+    @Bean
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
+        return new MethodValidationPostProcessor();
+    }
 
-	@Bean
-	public AccountService accountService() {
-		return new AccountService();
-	}
+    @Bean
+    public AccountService accountService() {
+        return new AccountService();
+    }
 }
