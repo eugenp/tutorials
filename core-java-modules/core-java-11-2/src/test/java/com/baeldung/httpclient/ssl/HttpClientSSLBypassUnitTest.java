@@ -18,11 +18,11 @@ public class HttpClientSSLBypassUnitTest {
         props.setProperty("jdk.internal.httpclient.disableHostnameVerification", Boolean.TRUE.toString());
 
         HttpClient httpClient = HttpClient.newBuilder()
-                .build();
+          .build();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://www.testingmcafeesites.com/"))
-                .build();
+          .uri(URI.create("https://www.testingmcafeesites.com/"))
+          .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         props.setProperty("jdk.internal.httpclient.disableHostnameVerification", Boolean.FALSE.toString());

@@ -18,8 +18,8 @@ public class HttpClientSSLUnitTest {
     public void whenValidHttpsRequest_thenCorrect() throws URISyntaxException, IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI("https://www.google.com/"))
-                .build();
+          .uri(new URI("https://www.google.com/"))
+          .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
@@ -30,8 +30,8 @@ public class HttpClientSSLUnitTest {
     public void whenInvalidHttpsRequest_thenInCorrect() throws IOException, InterruptedException {
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://expired.badssl.com/"))
-                .build();
+          .uri(URI.create("https://expired.badssl.com/"))
+          .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
