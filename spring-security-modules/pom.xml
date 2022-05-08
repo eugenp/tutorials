@@ -46,6 +46,7 @@
         <module>spring-security-web-x509</module>
         <module>spring-session</module>
         <module>spring-social-login</module>
+        <module>spring-security-opa</module>
     </modules>
 
 </project>

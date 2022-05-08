@@ -73,6 +73,7 @@
         <module>core-java-lang-2</module>
         <module>core-java-lang-3</module>
         <module>core-java-lang-4</module>
+        <module>core-java-lang-5</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-math-3</module>
@@ -117,6 +118,9 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
+        <module>java-collections-conversions</module>
+        <module>java-collections-conversions-2</module>
+        <module>java-collections-maps-3</module>
         <module>pre-jpms</module>
     </modules>
 

@@ -16,4 +16,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Introduction to Takes](https://www.baeldung.com/java-takes)
 - [Using NullAway to Avoid NullPointerExceptions](https://www.baeldung.com/java-nullaway)
 - [Introduction to Alibaba Arthas](https://www.baeldung.com/java-alibaba-arthas-intro)
-- More articles [[<-- prev]](/libraries-2) [[next -->]](/libraries-4)
+- [Intro to Structurizr](https://www.baeldung.com/structurizr)
+- [Introduction to Immutables](https://www.baeldung.com/immutables)
+- More articles [[<-- prev]](../libraries-2) [[next -->]](../libraries-4)

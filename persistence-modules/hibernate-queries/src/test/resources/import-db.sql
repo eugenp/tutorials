@@ -21,9 +21,9 @@ insert into item (item_id, item_name, item_desc, item_price) values(10,'Office C
 
 insert into item (item_id, item_name, item_desc, item_price) values(11,'Outdoor Chairs', 'Chairs for outdoor activities', 1234.36);
 
-insert into employee (employee_id, employee_name, employee_salary) values(1,'Steve Jobs', 55000);
+insert into EMPLOYEE (id, name, salary) values(1,'Steve Jobs', 55000);
 
-insert into employee (employee_id, employee_name, employee_salary) values(1,'Bill Hages', 45000);
+insert into EMPLOYEE (id, name, salary) values(1,'Bill Hages', 45000);
 
-insert into employee (employee_id, employee_name, employee_salary) values(1,'Mark clinch', 57000);
+insert into EMPLOYEE (id, name, salary) values(1,'Mark clinch', 57000);
 
