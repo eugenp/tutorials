@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 public class SearchFileByWildcardTest {
     @Test
-    void whenFourFilenameMatch_thenListOfFour() throws IOException 
+    public void whenFourFilenameMatch_thenListOfFour() throws IOException 
     {
         SearchFileByWildcard sfbw = new SearchFileByWildcard();
         List<String> actual = sfbw.searchWithWc(Paths.get("C:\\temp\\test"), "glob:*.{txt,docx}");
@@ -22,7 +22,7 @@ public class SearchFileByWildcardTest {
         assertEquals(new HashSet<>(actual).equals(new HashSet<>(Arrays.asList("six.txt", "three.txt", "two.docx", "one.txt"))), true);
     }
     @Test
-    void whenOneFilenameMatch_thenListOfOne() throws IOException 
+    public void whenOneFilenameMatch_thenListOfOne() throws IOException 
     {
         SearchFileByWildcard sfbw = new SearchFileByWildcard();
         List<String> actual = sfbw.searchWithWc(Paths.get("C:\\temp\\test"), "glob:????.{csv}");
