@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchFileByWildcard {
-    static List<String> matchesList = new ArrayList<String>();
+    public static List<String> matchesList = new ArrayList<String>();
     public List<String> searchWithWc(Path rootDir, String pattern) throws IOException
     {
         matchesList.clear();
