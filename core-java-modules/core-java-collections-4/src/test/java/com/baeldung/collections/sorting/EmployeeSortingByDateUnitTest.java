@@ -12,7 +12,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EmployeeSortingByDateUnitTests {
+public class EmployeeSortingByDateUnitTest {
 
   private List<Employee> employees = new ArrayList<>();
   private List<Employee> employeesSortedByDateAsc = new ArrayList<>();
