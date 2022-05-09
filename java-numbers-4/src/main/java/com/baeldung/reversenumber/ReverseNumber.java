@@ -1,5 +1,7 @@
 package com.baeldung.reversenumber;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class ReverseNumber {
 
     public static int reverseNumberWhileLoop(int number) {
@@ -27,23 +29,19 @@ public class ReverseNumber {
         return number < 0 ? reversedNumber * -1 : reversedNumber;
     }
 
-    public static int recursiveReversedNumber = 0;
-    public static boolean negativeReversedNumber = false;
-
-    public static void reverseNumberRec(int number) {
-        int numberToReverse = Math.abs(number);
-
-        if (number < 0) {
-            negativeReversedNumber = true;
-        }
+    public static int reverseNumberRecWrapper(int number) {
+        AtomicInteger output = new AtomicInteger(0);
+        reverseNumberRec(Math.abs(number), output);
+        return number < 0 ? output.get() * -1 : output.get();
+    }
+    private static void reverseNumberRec(int numberToReverse, AtomicInteger recursiveReversedNumber) {
 
         if (numberToReverse > 0) {
             int mod = numberToReverse % 10;
-            recursiveReversedNumber = recursiveReversedNumber * 10 + mod;
+            int currentValue = recursiveReversedNumber.get();
+            recursiveReversedNumber.getAndSet(currentValue * 10 + mod);
             numberToReverse /= 10;
-            reverseNumberRec(numberToReverse);
-        } else if (numberToReverse == 0 && negativeReversedNumber) {
-            recursiveReversedNumber *= -1;
+            reverseNumberRec(numberToReverse, recursiveReversedNumber);
         }
     }
 }
