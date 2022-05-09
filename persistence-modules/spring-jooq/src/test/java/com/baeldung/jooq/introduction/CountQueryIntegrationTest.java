@@ -2,8 +2,6 @@ package com.baeldung.jooq.introduction;
 
 import static com.baeldung.jooq.introduction.db.public_.tables.Author.AUTHOR;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.jooq.Condition;
 import org.jooq.DSLContext;
@@ -68,12 +66,7 @@ public class CountQueryIntegrationTest {
     
     @Test
     public void givenValidData_whenFetchCountWithMultipleConditions_thenSucceed() {
-        Condition firstCond = AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan");
-        Condition secondCond = AUTHOR.ID.notEqual(1);
-        List<Condition> conditions = new ArrayList<>();
-        conditions.add(firstCond);
-        conditions.add(secondCond);
-        int count = dsl.fetchCount(AUTHOR, conditions);
+        int count = dsl.fetchCount(AUTHOR, AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan").and(AUTHOR.ID.notEqual(1)));
         Assert.assertEquals(1, count);
     }
     
