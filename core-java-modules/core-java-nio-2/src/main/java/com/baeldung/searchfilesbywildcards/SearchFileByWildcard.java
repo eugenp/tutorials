@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SearchFileByWildcard {
     static List<String> matchesList = new ArrayList<String>();
-    List<String> searchWithWc(Path rootDir, String pattern) throws IOException
+    public List<String> searchWithWc(Path rootDir, String pattern) throws IOException
     {
         matchesList.clear();
         FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() 
