@@ -20,7 +20,6 @@
             <artifactId>aws-java-sdk</artifactId>
             <version>${aws-java-sdk.version}</version>
         </dependency>
-        
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -58,7 +57,7 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>    
+    </build>
 
     <properties>
         <aws-java-sdk.version>1.11.290</aws-java-sdk.version>
