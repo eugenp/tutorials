@@ -81,7 +81,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${maven-plugins-version}</version>
                 <executions>
                     <execution>
                         <id>copy</id>
@@ -118,6 +118,7 @@
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+        <maven-plugins-version>3.1.1</maven-plugins-version>
     </properties>
 
 </project>
