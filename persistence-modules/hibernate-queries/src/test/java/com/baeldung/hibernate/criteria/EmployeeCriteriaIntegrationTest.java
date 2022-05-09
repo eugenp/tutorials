@@ -32,5 +32,4 @@ public class EmployeeCriteriaIntegrationTest {
         session.close();
         assertArrayEquals(expectedSortCritEmployeeList.toArray(), employeeCriteriaQueries.getAllEmployees().toArray());
     }
-
 }
