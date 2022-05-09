@@ -12,9 +12,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.searchfilesbywildcards.SearchFileByWildcard;
-
-class SearchFileByWildcardTest {
+public class SearchFileByWildcardTest {
     @Test
     void whenFourFilenameMatch_thenListOfFour() throws IOException 
     {

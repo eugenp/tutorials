@@ -15,7 +15,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-class SearchFileByWildcard {
+public class SearchFileByWildcard {
     static List<String> matchesList = new ArrayList<String>();
     List<String> searchWithWc(Path rootDir, String pattern) throws IOException
     {
