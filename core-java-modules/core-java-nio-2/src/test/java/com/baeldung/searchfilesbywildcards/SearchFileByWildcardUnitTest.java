@@ -17,7 +17,7 @@ public class SearchFileByWildcardUnitTest {
     public void whenFourFilenameMatch_thenListOfFour() throws IOException 
     {
         SearchFileByWildcard sfbw = new SearchFileByWildcard();
-        List<String> actual = sfbw.searchWithWc(Paths.get("src/test/resources/test"), "glob:*.{txt,docx}");
+        List<String> actual = sfbw.searchWithWc(Paths.get("src/test/resources/sfbw"), "glob:*.{txt,docx}");
         
         assertEquals(new HashSet<>(actual).equals(new HashSet<>(Arrays.asList("six.txt", "three.txt", "two.docx", "one.txt"))), true);
     }
@@ -25,7 +25,7 @@ public class SearchFileByWildcardUnitTest {
     public void whenOneFilenameMatch_thenListOfOne() throws IOException 
     {
         SearchFileByWildcard sfbw = new SearchFileByWildcard();
-        List<String> actual = sfbw.searchWithWc(Paths.get("src/test/resources/test"), "glob:????.{csv}");
+        List<String> actual = sfbw.searchWithWc(Paths.get("src/test/resources/sfbw"), "glob:????.{csv}");
         
         assertEquals(new HashSet<>(actual).equals(new HashSet<>(Arrays.asList("five.csv"))), true);
     }
