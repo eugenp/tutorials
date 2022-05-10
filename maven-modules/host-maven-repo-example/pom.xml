@@ -89,7 +89,7 @@
     <repositories>
         <repository>
             <id>PROJECT-REPO-URL</id>
-            <url>https://github.com/{repository-owner}/${repository-name}/${branch-name}</url>
+            <url>https://github.com/${repository-owner}/${repository-name}/${branch-name}</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
