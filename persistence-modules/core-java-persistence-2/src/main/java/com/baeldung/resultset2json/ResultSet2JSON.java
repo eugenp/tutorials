@@ -13,9 +13,9 @@ import java.util.stream.IntStream;
 import org.jooq.Record;
 import org.jooq.RecordMapper;
 import org.jooq.impl.DSL;
-import org.jooq.tools.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class ResultSet2JSON {
 
@@ -94,7 +94,7 @@ public class ResultSet2JSON {
                     e.printStackTrace();
                 }
             });
-            result.add(row);
+            result.put(row);
         }
         return result;
     }
