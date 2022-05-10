@@ -101,7 +101,7 @@
         <!--Put your own  properties-->
         <repository-owner>Put-repo-owner</repository-owner>
         <repository-name>Put-repository-name</repository-name>
-        <branch-name>Put branch name</branch-name>
+        <branch-name>Put-branch-name</branch-name>
         <github.global.server>github</github.global.server>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
