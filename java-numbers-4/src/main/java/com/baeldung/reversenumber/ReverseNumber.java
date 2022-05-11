@@ -1,7 +1,5 @@
 package com.baeldung.reversenumber;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class ReverseNumber {
 
     public static int reverseNumberWhileLoop(int number) {
