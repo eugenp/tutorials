@@ -23,8 +23,6 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ContextConfiguration(classes = { ConstraintCompositionConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class ConstraintCompositionUnitTest {
 
-    public static final String VALID_ALPHANUMERIC_VALUE = "john_doe1234";
-
     @Autowired
     private AccountService accountService;
 
@@ -38,7 +36,9 @@ public class ConstraintCompositionUnitTest {
 
     @Test
     public void whenUsernameIsInvalid_validationShouldReturnTwoViolations() {
-        Account account = aValidAccount();
+        Account account = new Account();
+        account.setNickname("valid_nickname123");
+        account.setPassword("valid_password123");
         account.setUsername("john");
 
         Set<ConstraintViolation<Account>> violations = validator.validate(account);
@@ -48,7 +48,9 @@ public class ConstraintCompositionUnitTest {
 
     @Test
     public void whenPasswordIsInvalid_validationShouldReturnSingleViolation() {
-        Account account = aValidAccount();
+        Account account = new Account();
+        account.setUsername("valid_username123");
+        account.setNickname("valid_nickname123");
         account.setPassword("john");
 
         Set<ConstraintViolation<Account>> violations = validator.validate(account);
@@ -58,8 +60,10 @@ public class ConstraintCompositionUnitTest {
 
     @Test
     public void whenNicknameIsTooShortButContainsNumericCharacter_validationShouldPass() {
-        Account account = aValidAccount();
-        account.setNickname("jd1");
+        Account account = new Account();
+        account.setUsername("valid_username123");
+        account.setPassword("valid_password123");
+        account.setNickname("doe1");
 
         Set<ConstraintViolation<Account>> violations = validator.validate(account);
 
@@ -71,14 +75,6 @@ public class ConstraintCompositionUnitTest {
         assertThatThrownBy(() -> accountService.getAnInvalidAlphanumericValue()).isInstanceOf(ConstraintViolationException.class)
             .hasMessageContaining("must contain at least one numeric character")
             .hasMessageContaining("must have between 6 and 32 characters");
-    }
-
-    private Account aValidAccount() {
-        Account account = new Account();
-        account.setUsername(VALID_ALPHANUMERIC_VALUE);
-        account.setNickname(VALID_ALPHANUMERIC_VALUE);
-        account.setPassword(VALID_ALPHANUMERIC_VALUE);
-        return account;
     }
 
 }
