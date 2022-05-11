@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useLegacyDatetimeCode=false
+    url: jdbc:mysql://localhost:3306/test?
     username: root
     password:
 
@@ -9,6 +9,6 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
         jdbc:
           time_zone: UTC
