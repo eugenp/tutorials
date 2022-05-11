@@ -30,18 +30,18 @@ public class ReverseNumber {
     }
 
     public static int reverseNumberRecWrapper(int number) {
-        AtomicInteger output = new AtomicInteger(0);
-        reverseNumberRec(Math.abs(number), output);
-        return number < 0 ? output.get() * -1 : output.get();
+        int output = reverseNumberRec(Math.abs(number), 0);
+        return number < 0 ? output * -1 : output;
     }
-    private static void reverseNumberRec(int numberToReverse, AtomicInteger recursiveReversedNumber) {
+    private static int reverseNumberRec(int numberToReverse, int recursiveReversedNumber) {
 
         if (numberToReverse > 0) {
             int mod = numberToReverse % 10;
-            int currentValue = recursiveReversedNumber.get();
-            recursiveReversedNumber.getAndSet(currentValue * 10 + mod);
+            recursiveReversedNumber = recursiveReversedNumber * 10 + mod;
             numberToReverse /= 10;
-            reverseNumberRec(numberToReverse, recursiveReversedNumber);
+            return reverseNumberRec(numberToReverse, recursiveReversedNumber);
         }
+
+        return recursiveReversedNumber;
     }
 }
