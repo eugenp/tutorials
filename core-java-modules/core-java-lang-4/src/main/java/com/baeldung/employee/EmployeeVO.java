@@ -28,9 +28,15 @@ public class EmployeeVO {
 
     @Override
     public boolean equals(Object obj) {
-        return Objects.equals(firstName, this.firstName)
-            && Objects.equals(lastName, this.lastName)
-            && Objects.equals(startDate, this.startDate);
+        
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        EmployeeVO emp = (EmployeeVO) obj;
+        
+        return Objects.equals(firstName, emp.firstName)
+            && Objects.equals(lastName, emp.lastName)
+            && Objects.equals(startDate, emp.startDate);
     }
 
     @Override
