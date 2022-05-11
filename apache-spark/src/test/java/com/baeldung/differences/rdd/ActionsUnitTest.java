@@ -26,8 +26,11 @@ public class ActionsUnitTest {
 
     @BeforeClass
     public static void init() {
-        SparkConf conf = new SparkConf().setAppName("reduce")
-            .setMaster("local[*]");
+        SparkConf conf = new SparkConf()
+          .setAppName("reduce")
+          .setMaster("local[*]")
+          .set("spark.driver.allowMultipleContexts", "true");
+
         sc = new JavaSparkContext(conf);
         tourists = sc.textFile("data/Tourist.csv").filter(line -> !line.startsWith("Region"));
     }
