@@ -1,8 +1,8 @@
 package com.baeldung.resultset2json;
 
-import static com.baeldung.resultset2json.ResultSet2JSON.resultSet2JdbcMethod1;
-import static com.baeldung.resultset2json.ResultSet2JSON.resultSet2JdbcMethod2;
-import static com.baeldung.resultset2json.ResultSet2JSON.resultSet2JdbcMethod3;
+import static com.baeldung.resultset2json.ResultSet2JSON.resultSet2JdbcWithoutJOOQ;
+import static com.baeldung.resultset2json.ResultSet2JSON.resultSet2JdbcUsingJOOQDefaultApproach;
+import static com.baeldung.resultset2json.ResultSet2JSON.resultSet2JdbcUsingCustomisedJOOQ;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,7 +24,7 @@ public class ResultSet2JSONUnitTest {
     "[{\"USERNAME\":\"doe1\",\"First name\":\"John\",\"ID\":\"7173\",\"Last name\":\"Doe\"},{\"USERNAME\":\"smith3\",\"First name\":\"Dana\",\"ID\":\"3722\",\"Last name\":\"Smith\"},{\"USERNAME\":\"john22\",\"First name\":\"John\",\"ID\":\"5490\",\"Last name\":\"Wang\"}]");
 
   @Test
-  void method1() throws SQLException, ClassNotFoundException {
+  void givenResultSetConvertedWithoutJOOQ_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
     Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc1", "user", "password");
 
@@ -33,7 +33,7 @@ public class ResultSet2JSONUnitTest {
     stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
     ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
-    JSONArray result1 = resultSet2JdbcMethod1(resultSet);
+    JSONArray result1 = resultSet2JdbcWithoutJOOQ(resultSet);
 
     resultSet.close();
 
@@ -41,7 +41,7 @@ public class ResultSet2JSONUnitTest {
   }
 
   @Test
-  void method2() throws SQLException, ClassNotFoundException {
+  void givenResultSetConvertedUsingJOOQDefaultApproach_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
     Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc2", "user", "password");
     // Create a table
@@ -49,7 +49,7 @@ public class ResultSet2JSONUnitTest {
     stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
     ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
-    JSONObject result2 = resultSet2JdbcMethod2(resultSet, dbConnection);
+    JSONObject result2 = resultSet2JdbcUsingJOOQDefaultApproach(resultSet, dbConnection);
 
     resultSet.close();
 
@@ -57,7 +57,7 @@ public class ResultSet2JSONUnitTest {
   }
 
   @Test
-  void method3() throws SQLException, ClassNotFoundException {
+  void givenResultSetConvertedUsingCustomisedJOOQ_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
     Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc3", "user", "password");
     // Create a table
@@ -65,7 +65,7 @@ public class ResultSet2JSONUnitTest {
     stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
     ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
-    JSONArray result3 = resultSet2JdbcMethod3(resultSet, dbConnection);
+    JSONArray result3 = resultSet2JdbcUsingCustomisedJOOQ(resultSet, dbConnection);
 
     resultSet.close();
 

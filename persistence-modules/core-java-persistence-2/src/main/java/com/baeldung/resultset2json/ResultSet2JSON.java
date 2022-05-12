@@ -34,7 +34,7 @@ public class ResultSet2JSON {
         stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
         ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
-        JSONArray result1 = resultSet2JdbcMethod1(resultSet);
+        JSONArray result1 = resultSet2JdbcWithoutJOOQ(resultSet);
         System.out.println(result1);
 
         resultSet.close();
@@ -48,7 +48,7 @@ public class ResultSet2JSON {
         stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
         ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
-        JSONObject result1 = resultSet2JdbcMethod2(resultSet, dbConnection);
+        JSONObject result1 = resultSet2JdbcUsingJOOQDefaultApproach(resultSet, dbConnection);
         System.out.println(result1);
 
         resultSet.close();
@@ -62,13 +62,13 @@ public class ResultSet2JSON {
         stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
         ResultSet resultSet = stmt.executeQuery("SELECT * FROM words");
 
-        JSONArray result1 = resultSet2JdbcMethod3(resultSet, dbConnection);
+        JSONArray result1 = resultSet2JdbcUsingCustomisedJOOQ(resultSet, dbConnection);
         System.out.println(result1);
 
         resultSet.close();
     }
 
-    public static JSONArray resultSet2JdbcMethod1(ResultSet resultSet) throws SQLException {
+    public static JSONArray resultSet2JdbcWithoutJOOQ(ResultSet resultSet) throws SQLException {
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();
         List<String> colNames = IntStream.range(0, numCols)
@@ -99,14 +99,14 @@ public class ResultSet2JSON {
         return result;
     }
 
-    public static JSONObject resultSet2JdbcMethod2(ResultSet resultSet, Connection dbConnection) throws SQLException {
+    public static JSONObject resultSet2JdbcUsingJOOQDefaultApproach(ResultSet resultSet, Connection dbConnection) throws SQLException {
         JSONObject result = new JSONObject(DSL.using(dbConnection)
             .fetch(resultSet)
             .formatJSON());
         return result;
     }
 
-    public static JSONArray resultSet2JdbcMethod3(ResultSet resultSet, Connection dbConnection) throws SQLException {
+    public static JSONArray resultSet2JdbcUsingCustomisedJOOQ(ResultSet resultSet, Connection dbConnection) throws SQLException {
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();
         List<String> colNames = IntStream.range(0, numCols)
