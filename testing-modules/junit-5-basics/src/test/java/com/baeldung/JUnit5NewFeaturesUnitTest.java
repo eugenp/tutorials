@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-//@RunWith(JUnitPlatform.class)
 public class JUnit5NewFeaturesUnitTest {
 
     private static final Logger log = Logger.getLogger(JUnit5NewFeaturesUnitTest.class.getName());

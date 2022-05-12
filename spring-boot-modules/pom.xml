@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>spring-boot-modules</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,9 +16,7 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
-    <modules>        
-        <module>spring-boot-1</module>
-        <module>spring-boot-2</module>
+    <modules>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -46,7 +44,7 @@
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <!-- <module>spring-boot-keycloak</module> --> <!-- Fixing under JAVA-8271 -->
+        <module>spring-boot-keycloak</module> <!-- Fixing under JAVA-8271 -->
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
         <module>spring-boot-libraries-comparison</module>

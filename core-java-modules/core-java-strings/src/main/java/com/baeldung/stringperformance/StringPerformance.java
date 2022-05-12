@@ -125,6 +125,8 @@ public class StringPerformance {
             stringSplit.add(longString.substring(pos, end));
             pos = end + 1;
         }
+        //Add last token of string
+        stringSplit.add(longString.substring(pos));
         return stringSplit;
     }
 
