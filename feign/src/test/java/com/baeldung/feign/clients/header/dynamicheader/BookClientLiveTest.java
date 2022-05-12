@@ -34,14 +34,13 @@ public class BookClientLiveTest {
         Book book = new Book(isbn, "Me", "It's me!", null, null);
         
         feignClientBuilder = new BookFeignClientBuilder();
-        bookClient = feignClientBuilder.createClient(BookClient.class, 
-    	       "http://localhost:8081/api/books");
-    	
+       
         Map<String,Object> headerMap = new HashMap<>();
     	
         headerMap.put("metadata_key1", "metadata_value1");
         headerMap.put("metadata_key2", "metadata_value2");   	
     	
         bookClient.create(headerMap, book);
+        log.info("{}", book);
     }
 }

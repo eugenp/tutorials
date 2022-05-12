@@ -10,10 +10,10 @@ public class AuthRequestInterceptor implements RequestInterceptor {
    
     @Override
     public void apply(RequestTemplate template) {
-        template.header("Authorisation", "Bearer "+AuthRequestInterceptor.getAuthorisationToken());
+        template.header("Authorisation", "Bearer " + this.getAuthorisationToken());
     }
     
-    private static String getAuthorisationToken() {
+    private String getAuthorisationToken() {
         return UUID.randomUUID().toString();
     }
 }

@@ -30,7 +30,7 @@ public class BookClientLiveTest {
     @Test
     public void givenBookClient_shouldFindOneBook() throws Exception {
         Book book = bookClient.findByIsbn(requester, "0151072558")
-            .getBook();
+          .getBook();
         assertThat(book.getAuthor(), containsString("Orwell"));
         log.info("{}", book);
     }

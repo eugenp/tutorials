@@ -31,7 +31,7 @@ public class BookClientLiveTest {
     @Test
     public void givenBookClient_shouldFindOneBook() throws Exception {
         Book book = bookClient.findByIsbn("0151072558")
-            .getBook();
+          .getBook();
         assertThat(book.getAuthor(), containsString("Orwell"));
         log.info("{}", book);
     }
@@ -39,13 +39,13 @@ public class BookClientLiveTest {
     @Test
     public void givenBookClient_shouldPostBook() throws Exception {
         String isbn = UUID.randomUUID()
-            .toString();
+          .toString();
         Book book = new Book(isbn, "Me", "It's me!", null, null);
         
         bookClient.create(book);
 
         book = bookClient.findByIsbn(isbn)
-            .getBook();
+          .getBook();
         assertThat(book.getAuthor(), is("Me"));
         log.info("{}", book);
     }

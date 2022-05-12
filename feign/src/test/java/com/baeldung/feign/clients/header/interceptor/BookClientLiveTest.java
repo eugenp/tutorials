@@ -2,7 +2,6 @@ package com.baeldung.feign.clients.header.interceptor;
 
 import com.baeldung.feign.clients.builder.BookFeignClientBuilder;
 import com.baeldung.feign.clients.header.staticheader.BookClient;
-import com.baeldung.feign.header.interceptor.AuthRequestInterceptor;
 import com.baeldung.feign.models.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -27,8 +26,7 @@ public class BookClientLiveTest {
     @Before
     public void setup() {
         feignClientBuilder = new BookFeignClientBuilder();
-        bookClient = feignClientBuilder.createClientWithInterceptor(BookClient.class, "http://localhost:8081/api/books",
-                new AuthRequestInterceptor());
+        bookClient = feignClientBuilder.createClientWithInterceptor(BookClient.class, "http://localhost:8081/api/books");
         
         System.setProperty("feign.client.config.default.loggerLevel", "full");
     }
@@ -37,7 +35,7 @@ public class BookClientLiveTest {
     public void givenBookClient_shouldFindOneBook() throws Exception {
     	System.setProperty("feign.client.config.default.loggerLevel", "full");
         Book book = bookClient.findByIsbn("0151072558")
-                .getBook();
+          .getBook();
         log.info("{}", bookClient.toString());
         assertThat(book.getAuthor(), containsString("Orwell"));
         log.info("{}", book);
@@ -46,7 +44,7 @@ public class BookClientLiveTest {
     @Test
     public void givenBookClient2_shouldFindOneBook() throws Exception {
         Book book = bookClient.findByIsbn("0151072558")
-                .getBook();
+          .getBook();
         assertThat(book.getAuthor(), containsString("Orwell"));
         log.info("{}", book);
     }
@@ -54,12 +52,12 @@ public class BookClientLiveTest {
     @Test
     public void givenBookClient_shouldPostBook() throws Exception {
         String isbn = UUID.randomUUID()
-                .toString();
+          .toString();
         Book book = new Book(isbn, "Me", "It's me!", null, null);
         bookClient.create(book);
 
         book = bookClient.findByIsbn(isbn)
-                .getBook();
+          .getBook();
         assertThat(book.getAuthor(), is("Me"));
         log.info("{}", book);
     }
