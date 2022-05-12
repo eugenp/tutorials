@@ -35,7 +35,7 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 
 @SpringBootTest
-@TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=DEBUG" })
+@TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=INFO" })
 public class LoggingUnitTest {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";
@@ -51,7 +51,7 @@ public class LoggingUnitTest {
     @BeforeEach
     void setup() throws Exception {
         String ip = "localhost";
-        int port = SocketUtils.findAvailableTcpPort();
+        int port = Network.freeServerPort(Network.getLocalHost());
 
         ImmutableMongodConfig mongodConfig = MongodConfig.builder()
           .version(Version.Main.PRODUCTION)
