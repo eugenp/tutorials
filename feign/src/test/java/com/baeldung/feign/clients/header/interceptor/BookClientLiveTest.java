@@ -27,8 +27,6 @@ public class BookClientLiveTest {
     public void setup() {
         feignClientBuilder = new BookFeignClientBuilder();
         bookClient = feignClientBuilder.createClientWithInterceptor(BookClient.class, "http://localhost:8081/api/books");
-        
-        System.setProperty("feign.client.config.default.loggerLevel", "full");
     }
 
     @Test

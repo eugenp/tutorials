@@ -17,7 +17,7 @@ import java.util.UUID;
 public class BookClientLiveTest {
 	
     private BookFeignClientBuilder feignClientBuilder;
-	
+
     private BookClient bookClient;
 
     @Before
@@ -33,12 +33,10 @@ public class BookClientLiveTest {
     	
         Book book = new Book(isbn, "Me", "It's me!", null, null);
         
-        feignClientBuilder = new BookFeignClientBuilder();
-       
         Map<String,Object> headerMap = new HashMap<>();
     	
-        headerMap.put("metadata_key1", "metadata_value1");
-        headerMap.put("metadata_key2", "metadata_value2");   	
+        headerMap.put("metadata-key1", "metadata-value1");
+        headerMap.put("metadata-key2", "metadata-value2");   	
     	
         bookClient.create(headerMap, book);
         log.info("{}", book);

@@ -24,7 +24,7 @@ public class BookClientLiveTest {
 
     @Before
     public void setup() {
-    	feignClientBuilder = new BookFeignClientBuilder();
+        feignClientBuilder = new BookFeignClientBuilder();
         bookClient = feignClientBuilder.createClient(BookClient.class, "http://localhost:8081/api/books");
     }
 
