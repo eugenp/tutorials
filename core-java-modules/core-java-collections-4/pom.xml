@@ -18,8 +18,12 @@
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>2.2</version>
+            <version>${commons-lang.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <commons-lang.version>2.2</commons-lang.version>
+    </properties>
 
 </project>
