@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
 public class BookClientLiveTest {
 	
     private BookFeignClientBuilder feignClientBuilder;
-	
+      	
     private BookClient bookClient;
      		
     @Before
@@ -31,7 +31,6 @@ public class BookClientLiveTest {
 
     @Test
     public void givenBookClient_shouldFindOneBook() throws Exception {
-    	System.setProperty("feign.client.config.default.loggerLevel", "full");
         Book book = bookClient.findByIsbn("0151072558")
           .getBook();
         log.info("{}", bookClient.toString());
