@@ -26,29 +26,35 @@ import java.util.Objects;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * The class contains Live/Integration tests.
+ * The class contains Live tests.
  * These tests expect that the Keycloak server is up and running on port 8080.
- * The tests may fail without a Keycloak server.
  */
-@DisplayName("Keycloak SOAP Webservice Unit Tests")
+@DisplayName("Keycloak SOAP Webservice Live Tests")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
-class KeycloakSoapIntegrationTest {
+class KeycloakSoapLiveTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(KeycloakSoapIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(KeycloakSoapLiveTest.class);
+
     @LocalServerPort
     private int port;
+
     @Autowired
     private TestRestTemplate restTemplate;
+
     @Autowired
     private ObjectMapper objectMapper;
+
     @Value("${grant.type}")
     private String grantType;
+
     @Value("${client.id}")
     private String clientId;
+
     @Value("${client.secret}")
     private String clientSecret;
+
     @Value("${url}")
     private String keycloakUrl;
 
