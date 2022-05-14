@@ -22,6 +22,7 @@
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
         <module>spring-security-core</module>
+        <module>spring-security-core-2</module>
         <module>spring-security-ldap</module>
         <module>spring-security-legacy-oidc</module>
         <module>spring-security-oauth2-sso</module>
