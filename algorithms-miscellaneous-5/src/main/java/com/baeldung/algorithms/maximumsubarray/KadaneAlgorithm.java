@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class KadaneAlgorithm {
 
-    private Logger logger = LoggerFactory.getLogger(BruteForceAlgorithm.class.getName());
+    private Logger logger = LoggerFactory.getLogger(KadaneAlgorithm.class.getName());
 
     public int maxSubArraySum(int[] arr) {
 
