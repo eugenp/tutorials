@@ -19,13 +19,14 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>31.0.1-jre</version>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <properties>
         <java.version>1.8</java.version>
+        <guava.version>31.0.1-jre</guava.version>
     </properties>
 
 </project>
