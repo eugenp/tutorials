@@ -67,7 +67,7 @@
         <dependency>
             <groupId>com.google.gdata</groupId>
             <artifactId>core</artifactId>
-            <version>1.47.1</version>
+            <version>${gdata.version}</version>
         </dependency>
     </dependencies>
 
@@ -193,6 +193,7 @@
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
         <spring.core.version>4.3.20.RELEASE</spring.core.version>
+        <gdata.version>1.47.1</gdata.version>
     </properties>
 
 </project>
