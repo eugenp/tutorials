@@ -24,7 +24,7 @@ public class ResultSet2JSONUnitTest {
     "[{\"USERNAME\":\"doe1\",\"First name\":\"John\",\"ID\":\"7173\",\"Last name\":\"Doe\"},{\"USERNAME\":\"smith3\",\"First name\":\"Dana\",\"ID\":\"3722\",\"Last name\":\"Smith\"},{\"USERNAME\":\"john22\",\"First name\":\"John\",\"ID\":\"5490\",\"Last name\":\"Wang\"}]");
 
   @Test
-  void givenResultSetConvertedWithoutJOOQ_shouldMatchJSON() throws SQLException, ClassNotFoundException {
+  void whenResultSetConvertedWithoutJOOQ_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
     Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc1", "user", "password");
 
@@ -41,7 +41,7 @@ public class ResultSet2JSONUnitTest {
   }
 
   @Test
-  void givenResultSetConvertedUsingJOOQDefaultApproach_shouldMatchJSON() throws SQLException, ClassNotFoundException {
+  void whenResultSetConvertedUsingJOOQDefaultApproach_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
     Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc2", "user", "password");
     // Create a table
@@ -57,7 +57,7 @@ public class ResultSet2JSONUnitTest {
   }
 
   @Test
-  void givenResultSetConvertedUsingCustomisedJOOQ_shouldMatchJSON() throws SQLException, ClassNotFoundException {
+  void whenResultSetConvertedUsingCustomisedJOOQ_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
     Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc3", "user", "password");
     // Create a table

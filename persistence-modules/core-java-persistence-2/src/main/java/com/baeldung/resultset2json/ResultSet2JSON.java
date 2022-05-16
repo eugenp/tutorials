@@ -22,10 +22,10 @@ public class ResultSet2JSON {
     public static void main(String... args) throws ClassNotFoundException, SQLException {
 
         ResultSet2JSON testClass = new ResultSet2JSON();
-        testClass.testMethod1();
+        testClass.convertWithoutJOOQ();
     }
 
-    public void testMethod1() throws ClassNotFoundException, SQLException {
+    public void convertWithoutJOOQ() throws ClassNotFoundException, SQLException {
         Class.forName("org.h2.Driver");
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password");
 
@@ -40,7 +40,7 @@ public class ResultSet2JSON {
         resultSet.close();
     }
 
-    public void testMethod2() throws ClassNotFoundException, SQLException {
+    public void convertUsingJOOQDefaultApproach() throws ClassNotFoundException, SQLException {
         Class.forName("org.h2.Driver");
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password");
         // Create a table
@@ -54,7 +54,7 @@ public class ResultSet2JSON {
         resultSet.close();
     }
 
-    public void testMethod3() throws ClassNotFoundException, SQLException {
+    public void convertUsingCustomisedJOOQ() throws ClassNotFoundException, SQLException {
         Class.forName("org.h2.Driver");
         Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc", "user", "password");
         // Create a table
