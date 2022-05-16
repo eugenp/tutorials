@@ -50,6 +50,12 @@ public class BalancedBracketsUsingStringUnitTest {
     }
 
     @Test
+    public void givenAnotherEvenLengthUnbalancedString_whenCheckingForBalance_shouldReturnFalse() {
+        boolean result = balancedBracketsUsingString.isBalanced("{{}(");
+        assertThat(result).isFalse();
+    }
+
+    @Test
     public void givenEvenLengthBalancedString_whenCheckingForBalance_shouldReturnTrue() {
         boolean result = balancedBracketsUsingString.isBalanced("{[()]}");
         assertThat(result).isTrue();

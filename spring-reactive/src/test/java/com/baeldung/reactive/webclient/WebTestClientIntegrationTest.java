@@ -3,6 +3,7 @@ package com.baeldung.reactive.webclient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -14,7 +15,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.WebHandler;
 import reactor.core.publisher.Mono;
 
-@SpringBootTest(classes = WebClientApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = WebClientApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class WebTestClientIntegrationTest {
 
     @LocalServerPort
@@ -26,73 +27,61 @@ public class WebTestClientIntegrationTest {
     @Autowired
     private WebClientController controller;
 
-    private final RouterFunction ROUTER_FUNCTION = RouterFunctions.route(RequestPredicates.GET("/resource"), request -> ServerResponse.ok()
-        .build());
-    private final WebHandler WEB_HANDLER = exchange -> Mono.empty();
-
     @Test
-    public void testWebTestClientWithServerWebHandler() {
-        WebTestClient.bindToWebHandler(WEB_HANDLER)
-            .build();
+    public void whenBindToWebHandler_thenRequestProcessed() {
+        WebHandler webHandler = exchange -> Mono.empty();
+
+        WebTestClient.bindToWebHandler(webHandler)
+          .build()
+          .get()
+          .exchange()
+          .expectBody().isEmpty();
     }
 
     @Test
-    public void testWebTestClientWithRouterFunction() {
-        WebTestClient.bindToRouterFunction(ROUTER_FUNCTION)
-            .build()
-            .get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody()
-            .isEmpty();
+    public void whenBindToRouter_thenRequestProcessed() {
+        RouterFunction<ServerResponse> routerFunction = RouterFunctions.route(
+          RequestPredicates.GET("/resource"),
+          request -> ServerResponse.ok().build()
+        );
+
+        WebTestClient.bindToRouterFunction(routerFunction)
+          .build()
+          .get().uri("/resource")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBody().isEmpty();
     }
 
     @Test
     @WithMockUser
-    public void testWebTestClientWithServerURL() {
+    public void whenBindToServer_thenRequestProcessed() {
         WebTestClient.bindToServer()
-            .baseUrl("http://localhost:" + port)
-            .build()
-            .get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody()
-            .jsonPath("field")
-            .isEqualTo("value");
-        ;
+          .baseUrl("http://localhost:" + port).build()
+          .get().uri("/resource")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBody().jsonPath("field").isEqualTo("value");
     }
 
     @Test
     @WithMockUser
-    public void testWebTestClientWithApplicationContext() {
+    public void whenBindToApplicationContext_thenRequestProcessed() {
         WebTestClient.bindToApplicationContext(context)
-            .build()
-            .get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody()
-            .jsonPath("field")
-            .isEqualTo("value");
+          .build()
+          .get().uri("/resource")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBody().jsonPath("field").isEqualTo("value");
     }
 
     @Test
-    public void testWebTestClientWithController() {
+    public void whenBindToController_thenRequestProcessed() {
         WebTestClient.bindToController(controller)
-            .build()
-            .get()
-            .uri("/resource")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody()
-            .jsonPath("field")
-            .isEqualTo("value");
+          .build()
+          .get().uri("/resource")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBody().jsonPath("field").isEqualTo("value");
     }
-
 }

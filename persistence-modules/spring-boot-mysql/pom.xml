@@ -39,7 +39,7 @@
     </dependencies>
 
     <properties>
-        <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
     </properties>
 
 </project>

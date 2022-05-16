@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>webapp</artifactId>
     <name>webapp</name>
-
     <packaging>war</packaging>
 
     <parent>
@@ -30,4 +29,5 @@
     <properties>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
+
 </project>

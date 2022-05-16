@@ -76,7 +76,14 @@ public class CountQueryIntegrationTest {
         int count = dsl.fetchCount(AUTHOR, conditions);
         Assert.assertEquals(1, count);
     }
-    
+
+
+    @Test
+    public void givenValidData_whenFetchCountWithMultipleConditionsUsingAndOperator_thenSucceed() {
+        int count = dsl.fetchCount(AUTHOR, AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan").and(AUTHOR.ID.notEqual(1)));
+        Assert.assertEquals(1, count);
+    }
+
     @Test
     public void givenValidData_whenFetchCountWithConditionsInVarargs_thenSucceed() {
         Condition firstCond = AUTHOR.FIRST_NAME.equalIgnoreCase("Bryan");

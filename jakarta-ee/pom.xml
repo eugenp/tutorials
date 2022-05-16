@@ -51,25 +51,20 @@
                     <user>admin</user>
                     <!-- <passwordFile>${local.glassfish.passfile}</passwordFile> -->
                     <adminPassword>password</adminPassword>
-
                     <domain>
                         <name>${local.glassfish.domain}</name>
                         <httpPort>8080</httpPort>
                         <adminPort>4848</adminPort>
-
                     </domain>
                     <components>
                         <component>
                             <name>${project.artifactId}</name>
                             <artifact>target/${project.build.finalName}.war</artifact>
-
                         </component>
                     </components>
                     <debug>true</debug>
                     <terse>false</terse>
                     <echo>true</echo>
-
-
                 </configuration>
             </plugin>
             <plugin>
