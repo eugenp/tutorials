@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-jackson-provider</artifactId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
             <version>${resteasy.version}</version>
         </dependency>
         <dependency>
@@ -134,7 +134,7 @@
     </profiles>
 
     <properties>
-        <resteasy.version>3.0.19.Final</resteasy.version>
+        <resteasy.version>4.7.2.Final</resteasy.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 
