@@ -60,6 +60,7 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
+        <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
@@ -69,7 +70,7 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-gemfire</module>
+        <!-- <module>spring-data-gemfire</module> Fixing in JAVA-11854 -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
@@ -88,6 +89,9 @@
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
+        <module>spring-data-rest</module>
+        <module>spring-data-rest-2</module>
+        <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
         <module>spring-hibernate-5</module> <!-- long running -->
