@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.feign</groupId>
     <artifactId>feign</artifactId>
@@ -69,6 +71,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -92,10 +95,8 @@
                     <sources>
                         <source>src/main/resources/users.xsd</source>
                     </sources>
-
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
@@ -111,7 +112,6 @@
                             <schemaIncludes>
                                 <include>*.xsd</include>
                             </schemaIncludes>
-
                             <generatePackage>com.baeldung.feign.soap</generatePackage>
                             <generateDirectory>target/generated-sources/jaxb</generateDirectory>
                         </configuration>
@@ -119,6 +119,6 @@
                 </executions>
             </plugin>
         </plugins>
-
     </build>
+
 </project>
