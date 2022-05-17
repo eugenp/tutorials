@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.jsonschema2pojo</groupId>
             <artifactId>jsonschema2pojo-core</artifactId>
-            <version>1.1.1</version>
+            <version>${jsonschema2pojo-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jsoniter</groupId>
@@ -62,7 +62,7 @@
         <dependency>
             <groupId>com.io-informatics.oss</groupId>
             <artifactId>jackson-jsonld</artifactId>
-            <version>0.1.1</version>
+            <version>${jackson-jsonld.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jackson-databind</artifactId>
@@ -85,7 +85,7 @@
         <dependency>
             <groupId>de.escalon.hypermedia</groupId>
             <artifactId>hydra-jsonld</artifactId>
-            <version>0.4.2</version>
+            <version>${hydra-jsonld.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jackson-databind</artifactId>
@@ -96,7 +96,7 @@
         <dependency>
             <groupId>com.github.jsonld-java</groupId>
             <artifactId>jsonld-java</artifactId>
-            <version>0.13.0</version>
+            <version>${jsonld-java.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jackson-core</artifactId>
@@ -154,6 +154,10 @@
         <moshi.version>1.9.2</moshi.version>
         <fastjson.version>1.2.21</fastjson.version>
         <json.version>20211205</json.version>
+        <jsonschema2pojo-core.version>1.1.1</jsonschema2pojo-core.version>
+        <jackson-jsonld.version>0.1.1</jackson-jsonld.version>
+        <hydra-jsonld.version>0.4.2</hydra-jsonld.version>
+        <jsonld-java.version>0.13.0</jsonld-java.version>
     </properties>
 
 </project>
