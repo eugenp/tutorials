@@ -1329,6 +1329,7 @@
                  <module>spring-boot-modules/spring-boot-camel</module>	 
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
+                 <module>lightrun</module>
             </modules>
         </profile>
 
@@ -1396,6 +1397,7 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>lightrun</module>
             </modules>
         </profile>
     </profiles>
