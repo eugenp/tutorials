@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.naming.NamingException;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
@@ -14,21 +15,21 @@ import org.apache.commons.io.IOUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
-import org.jboss.resteasy.client.jaxrs.engines.ApacheHttpClient4Engine;
+import org.jboss.resteasy.client.jaxrs.engines.ApacheHttpClient43Engine;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.baeldung.client.ServicesInterface;
 import com.baeldung.model.Movie;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class RestEasyClientLiveTest {
 
-    public static final UriBuilder FULL_PATH = UriBuilder.fromPath("http://127.0.0.1:8082/RestEasyTutorial/rest");
+    public static final UriBuilder FULL_PATH = UriBuilder.fromPath("http://127.0.0.1:8082/resteasy/rest");
     Movie transformerMovie = null;
     Movie batmanMovie = null;
     ObjectMapper jsonMapper = null;
@@ -36,8 +37,8 @@ public class RestEasyClientLiveTest {
     @Before
     public void setup() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NamingException {
 
-        jsonMapper = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        jsonMapper.configure(DeserializationConfig.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        jsonMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        jsonMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
         final SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH);
         jsonMapper.setDateFormat(sdf);
 
@@ -60,8 +61,8 @@ public class RestEasyClientLiveTest {
 
     @Test
     public void testListAllMovies() {
-
-        final ResteasyClient client = new ResteasyClientBuilder().build();
+        
+        final ResteasyClient client = (ResteasyClient)ClientBuilder.newClient();
         final ResteasyWebTarget target = client.target(FULL_PATH);
         final ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
@@ -79,7 +80,7 @@ public class RestEasyClientLiveTest {
 
         final String transformerImdbId = "tt0418279";
 
-        final ResteasyClient client = new ResteasyClientBuilder().build();
+        final ResteasyClient client = (ResteasyClient) ClientBuilder.newClient();
         final ResteasyWebTarget target = client.target(FULL_PATH);
         final ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
@@ -93,7 +94,7 @@ public class RestEasyClientLiveTest {
     @Test
     public void testAddMovie() {
 
-        final ResteasyClient client = new ResteasyClientBuilder().build();
+        final ResteasyClient client = (ResteasyClient) ClientBuilder.newClient();
         final ResteasyWebTarget target = client.target(FULL_PATH);
         final ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
@@ -114,8 +115,8 @@ public class RestEasyClientLiveTest {
 
         final PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
         final CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm).build();
-        final ApacheHttpClient4Engine engine = new ApacheHttpClient4Engine(httpClient);
-        final ResteasyClient client = new ResteasyClientBuilder().httpEngine(engine).build();
+        final ApacheHttpClient43Engine engine = new ApacheHttpClient43Engine(httpClient);
+        final ResteasyClient client = ((ResteasyClientBuilder) ClientBuilder.newBuilder()).httpEngine(engine).build();
         final ResteasyWebTarget target = client.target(FULL_PATH);
         final ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
@@ -138,7 +139,7 @@ public class RestEasyClientLiveTest {
     @Test
     public void testDeleteMovie() {
 
-        final ResteasyClient client = new ResteasyClientBuilder().build();
+        final ResteasyClient client = (ResteasyClient) ClientBuilder.newClient();
         final ResteasyWebTarget target = client.target(FULL_PATH);
         final ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
@@ -158,7 +159,7 @@ public class RestEasyClientLiveTest {
     @Test
     public void testUpdateMovie() {
 
-        final ResteasyClient client = new ResteasyClientBuilder().build();
+        final ResteasyClient client = (ResteasyClient) ClientBuilder.newClient();
         final ResteasyWebTarget target = client.target(FULL_PATH);
         final ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
