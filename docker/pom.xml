@@ -3,24 +3,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung.docker</groupId>
     <artifactId>docker</artifactId>
     <version>0.0.1</version>
     <name>docker</name>
     <description>Demo project showing Spring Boot and Docker</description>
     <packaging>pom</packaging>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <modules>
         <module>docker-internal-dto</module>
@@ -30,5 +25,9 @@
         <module>docker-caching/multi-module-caching</module>
         <module>docker-push-to-private-repo</module>
     </modules>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
 
 </project>

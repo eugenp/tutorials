@@ -12,3 +12,4 @@ This module contains articles about Java 11 core features
 - [Java HTTPS Client Certificate Authentication](https://www.baeldung.com/java-https-client-certificate-authentication)
 - [Call Methods at Runtime Using Java Reflection](https://www.baeldung.com/java-method-reflection)
 - [Java HttpClient Basic Authentication](https://www.baeldung.com/java-httpclient-basic-auth)
+- [Java HttpClient With SSL](https://www.baeldung.com/java-httpclient-ssl)
