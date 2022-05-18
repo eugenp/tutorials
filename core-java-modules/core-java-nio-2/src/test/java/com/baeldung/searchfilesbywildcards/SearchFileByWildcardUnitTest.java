@@ -19,7 +19,7 @@ public class SearchFileByWildcardUnitTest {
         SearchFileByWildcard sfbw = new SearchFileByWildcard();
         List<String> actual = sfbw.searchWithWc(Paths.get("src/test/resources/sfbw"), "glob:*.{txt,docx}");
         
-        assertEquals(new HashSet<>(actual).equals(new HashSet<>(Arrays.asList("six.txt", "three.txt", "two.docx", "one.txt"))), true);
+        assertEquals(new HashSet<>(Arrays.asList("six.txt", "three.txt", "two.docx", "one.txt")), new HashSet<>(actual));
     }
     @Test
     public void whenOneFilenameMatch_thenListOfOne() throws IOException 
