@@ -5,15 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-admin-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-boot-admin-server</name>
+    <packaging>jar</packaging>
     <description>Spring Boot Admin Server</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-admin</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -81,5 +80,5 @@
         <spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
-    
+
 </project>

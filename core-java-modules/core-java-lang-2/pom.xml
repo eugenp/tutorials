@@ -12,7 +12,6 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -20,11 +19,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -46,12 +40,6 @@
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -65,9 +53,7 @@
     </build>
 
     <properties>
-        <assertj.version>3.12.2</assertj.version>
         <commons.beanutils.version>1.9.4</commons.beanutils.version>
-        <guava.version>29.0-jre</guava.version>
     </properties>
 
 </project>

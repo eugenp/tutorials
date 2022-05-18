@@ -21,8 +21,8 @@
         <module>spring-ldap</module>
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
-        <module>spring-security-config</module>
         <module>spring-security-core</module>
+        <module>spring-security-core-2</module>
         <module>spring-security-ldap</module>
         <module>spring-security-legacy-oidc</module>
         <module>spring-security-oauth2-sso</module>
@@ -38,7 +38,7 @@
         <module>spring-security-web-mvc-custom</module>
         <module>spring-security-web-mvc</module>
         <module>spring-security-web-persistent-login</module>
-        <!-- <module>spring-security-web-react</module> --> <!-- Fixing in JAVA-6216 -->
+        <module>spring-security-web-react</module>
         <module>spring-security-web-rest-basic-auth</module>
         <module>spring-security-web-rest-custom</module>
         <module>spring-security-web-rest</module>
@@ -47,6 +47,7 @@
         <module>spring-security-web-x509</module>
         <module>spring-session</module>
         <module>spring-social-login</module>
+        <module>spring-security-opa</module>
     </modules>
 
 </project>

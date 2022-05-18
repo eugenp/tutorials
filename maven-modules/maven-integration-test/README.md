@@ -8,3 +8,4 @@ This module contains articles about Integration Testing with Maven and related p
 - [Build a Jar with Maven and Ignore the Test Results](https://www.baeldung.com/maven-ignore-test-results)
 - [Quick Guide to the Maven Surefire Plugin](https://www.baeldung.com/maven-surefire-plugin)
 - [The Maven Failsafe Plugin](https://www.baeldung.com/maven-failsafe-plugin)
+- [Difference Between Maven Surefire and Failsafe Plugins](https://www.baeldung.com/maven-surefire-vs-failsafe)

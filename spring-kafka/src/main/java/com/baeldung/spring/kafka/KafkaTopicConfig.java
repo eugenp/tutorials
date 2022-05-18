@@ -19,6 +19,9 @@ public class KafkaTopicConfig {
     @Value(value = "${message.topic.name}")
     private String topicName;
 
+    @Value(value = "${long.message.topic.name}")
+    private String longMsgTopicName;
+
     @Value(value = "${partitioned.topic.name}")
     private String partitionedTopicName;
 
@@ -53,5 +56,14 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic topic4() {
         return new NewTopic(greetingTopicName, 1, (short) 1);
+    }
+
+    @Bean
+    public NewTopic topic5() {
+        NewTopic newTopic = new NewTopic(longMsgTopicName, 1, (short) 1);
+        Map<String, String> configs = new HashMap<>();
+        configs.put("max.message.bytes", "20971520");
+        newTopic.configs(configs);
+        return newTopic;
     }
 }

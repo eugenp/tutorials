@@ -3,6 +3,9 @@ package com.baeldung.transientkw;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.io.File;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 class TransientUnitTest {
@@ -30,6 +33,12 @@ class TransientUnitTest {
         Book book2 = BookSerDe.deserialize();
         
         assertEquals("Fiction", book2.getBookCategory());     
+    }
+    
+    @AfterAll
+    public static void cleanup() {
+        File file = new File(BookSerDe.fileName);
+        file.deleteOnExit();
     }
 
 }

@@ -1,3 +1,5 @@
 *.docx
 temp.xls
 temp.xlsx
+
+CellStyleTest_output.xlsx

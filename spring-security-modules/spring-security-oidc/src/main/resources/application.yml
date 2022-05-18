@@ -4,4 +4,3 @@ server:
 logging:
   level:
     org.springframework.web.client.RestTemplate: DEBUG
-            

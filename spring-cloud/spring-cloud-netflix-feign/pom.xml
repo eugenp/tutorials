@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.cloud</groupId>
-    <artifactId>spring-cloud-netlix-feign</artifactId>
+    <artifactId>spring-cloud-netflix-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-netflix-feign</name>
     <description>Netflix Feign project for Spring Boot</description>
@@ -51,13 +51,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <spring-cloud.version>Camden.SR7</spring-cloud.version>
         <feign-ok.version>8.18.0</feign-ok.version>
-        <!-- <spring-cloud.version>Hoxton.SR8</spring-cloud.version> -->
-        <!-- <maven.compiler.source>8</maven.compiler.source> <maven.compiler.target>8</maven.compiler.target> -->
     </properties>
 
 </project>

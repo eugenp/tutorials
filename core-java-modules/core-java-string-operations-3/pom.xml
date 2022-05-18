@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-string-operations-3</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-
     <name>core-java-string-operations-3</name>
     <packaging>jar</packaging>
 
@@ -13,15 +12,18 @@
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -58,20 +60,22 @@
         </plugins>
     </build>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <assertj.version>3.6.1</assertj.version>
-        <maven-artifact.version>3.6.3</maven-artifact.version>
-        <gradle-core.version>6.1.1</gradle-core.version>
-        <jackson-core.version>2.11.1</jackson-core.version>
-        <semver4j.version>3.1.0</semver4j.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>gradle-repo</id>
             <url>https://repo.gradle.org/gradle/libs-releases-local/</url>
         </repository>
     </repositories>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <spring-core.version>5.3.9</spring-core.version>
+        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+        <maven-artifact.version>3.6.3</maven-artifact.version>
+        <gradle-core.version>6.1.1</gradle-core.version>
+        <jackson-core.version>2.11.1</jackson-core.version>
+        <semver4j.version>3.1.0</semver4j.version>
+    </properties>
+
 </project>

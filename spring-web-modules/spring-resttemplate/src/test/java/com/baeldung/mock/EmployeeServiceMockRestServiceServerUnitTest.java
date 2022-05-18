@@ -6,14 +6,10 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import java.net.URI;
 
-import com.baeldung.SpringTestConfig;
-import com.baeldung.mock.EmployeeService;
-import com.baeldung.resttemplate.web.model.Employee;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +17,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
+import com.baeldung.SpringTestConfig;
+import com.baeldung.resttemplate.web.model.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SpringTestConfig.class)
 public class EmployeeServiceMockRestServiceServerUnitTest {
 
@@ -45,7 +42,7 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Before
+    @BeforeEach
     public void init() {
         mockServer = MockRestServiceServer.createServer(restTemplate);
     }
@@ -63,7 +60,7 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
 
         Employee employee = empService.getEmployee("E001");
         mockServer.verify();
-        Assert.assertEquals(emp, employee);
+        Assertions.assertEquals(emp, employee);
     }
 
 }

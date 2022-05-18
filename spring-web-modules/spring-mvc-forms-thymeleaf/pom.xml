@@ -28,7 +28,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
         <!-- runtime and test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

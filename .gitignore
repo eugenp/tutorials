@@ -89,5 +89,14 @@ testing-modules/report-*.json
 
 libraries-2/*.db
 
+apache-spark/data/output
+logs/
+libraries-data-io/*.docx
+persistence-modules/spring-hibernate-5/com.*
+spring-boot-modules/spring-boot-react/frontend/build
+spring-boot-modules/spring-boot-react/frontend/node
+spring-boot-modules/spring-boot-react/frontend/yarn.lock
+spring-boot-modules/spring-boot-properties-3/*.log
+
 # SDKMan
 .sdkmanrc

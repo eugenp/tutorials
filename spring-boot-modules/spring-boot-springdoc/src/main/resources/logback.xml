@@ -7,10 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="DEBUG" />
-    <logger name="org.springframework.transaction" level="WARN" />
-    
-    <root level="INFO">
+    <root level="WARN">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

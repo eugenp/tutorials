@@ -13,3 +13,4 @@ This module contains articles about data structures in Java
 - [Graphs in Java](https://www.baeldung.com/java-graphs)
 - [Implementing a Ring Buffer in Java](https://www.baeldung.com/java-ring-buffer)
 - [How to Implement Min-Max Heap In Java](https://www.baeldung.com/java-min-max-heap)
+- [How to Implement LRU Cache in Java](https://www.baeldung.com/java-lru-cache)

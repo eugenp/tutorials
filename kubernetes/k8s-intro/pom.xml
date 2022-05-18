@@ -15,13 +15,12 @@
         <dependency>
             <groupId>io.kubernetes</groupId>
             <artifactId>client-java</artifactId>
-            <version>11.0.0</version>
+            <version>${client-java.version}</version>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
 
@@ -39,5 +38,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <client-java.version>11.0.0</client-java.version>
+    </properties>
 
 </project>

@@ -1,9 +1,8 @@
 package com.baeldung.reactive.webclient.simultaneous;
 
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,8 +18,6 @@ public class Client {
     }
 
     public Mono<User> getUser(int id) {
-        LOG.info(String.format("Calling getUser(%d)", id));
-
         return webClient.get()
             .uri("/user/{id}", id)
             .retrieve()
@@ -43,22 +40,16 @@ public class Client {
 
     public Flux<User> fetchUsers(List<Integer> userIds) {
         return Flux.fromIterable(userIds)
-            .parallel()
-            .runOn(Schedulers.elastic())
-            .flatMap(this::getUser)
-            .ordered((u1, u2) -> u2.id() - u1.id());
+            .flatMap(this::getUser);
     }
 
     public Flux<User> fetchUserAndOtherUser(int id) {
-        return Flux.merge(getUser(id), getOtherUser(id))
-            .parallel()
-            .runOn(Schedulers.elastic())
-            .ordered((u1, u2) -> u2.id() - u1.id());
+        return Flux.merge(getUser(id), getOtherUser(id));
     }
 
     public Mono<UserWithItem> fetchUserAndItem(int userId, int itemId) {
-        Mono<User> user = getUser(userId).subscribeOn(Schedulers.elastic());
-        Mono<Item> item = getItem(itemId).subscribeOn(Schedulers.elastic());
+        Mono<User> user = getUser(userId);
+        Mono<Item> item = getItem(itemId);
 
         return Mono.zip(user, item, UserWithItem::new);
     }

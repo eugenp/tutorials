@@ -7,7 +7,7 @@ import com.baeldung.parent.App;
 public class SpringContextTest {
 
 	@Test
-    public final void testMain() throws Exception {
+    public final void testMain() {
         App.main(new String[] {});
 	}
 }

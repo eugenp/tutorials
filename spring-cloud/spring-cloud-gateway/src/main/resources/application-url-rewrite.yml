@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: rewrite_v1
+        uri: ${rewrite.backend.uri:http://example.com}
+        predicates:
+        - Path=/v1/customer/**
+        filters:
+        - RewritePath=/v1/customer/(?<segment>.*),/api/$\{segment}
+        

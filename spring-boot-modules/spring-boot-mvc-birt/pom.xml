@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-mvc-birt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-boot-mvc-birt</name>
+    <packaging>jar</packaging>
     <description>Module For Spring Boot Integration with BIRT</description>
 
     <!-- this module should use the Boot parent directly to avoid inherit the logback dependency from 
@@ -70,6 +70,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <eclipse.birt.runtime.version>4.8.0</eclipse.birt.runtime.version>
         <log4j.version>1.2.17</log4j.version>
+        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

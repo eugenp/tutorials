@@ -1,0 +1,11 @@
+{ "rules": [
+  {"excludeClasses": "org.apache.maven.surefire.**"},
+  {"excludeClasses": "net.bytebuddy.**"},
+  {"excludeClasses": "org.apiguardian.**"},
+  {"excludeClasses": "org.junit.**"},
+  {"excludeClasses": "org.mockito.**"},
+  {"excludeClasses": "org.springframework.test.**"},
+  {"excludeClasses": "org.springframework.boot.test.**"},
+  {"excludeClasses": "com.example.demo.test.**"}
+]
+}

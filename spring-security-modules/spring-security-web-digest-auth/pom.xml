@@ -174,7 +174,6 @@
         <!-- Spring -->
         <org.springframework.security.version>4.2.6.RELEASE</org.springframework.security.version>
         <!-- util -->
-        <guava.version>19.0</guava.version>
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
         <!-- Maven plugins -->

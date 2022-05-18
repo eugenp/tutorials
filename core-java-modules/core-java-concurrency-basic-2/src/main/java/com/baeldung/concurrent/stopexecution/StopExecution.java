@@ -189,21 +189,8 @@ public class StopExecution {
             longRunningSort();
         }
 
-        private void longRunningOperation() {
-            LOG.info("long Running operation started");
-
-            try {
-                //Thread.sleep(500);
-                longFileRead();
-                LOG.info("long running operation finished");
-            } catch (InterruptedException e) {
-                LOG.info("long Running operation interrupted");
-            }
-        }
-
         private void longRunningSort() {
-            LOG.info("long Running task started");
-            // Do you long running calculation here
+            LOG.info("Long running task started");
             int len = 100000;
             List<Integer> numbers = new ArrayList<>();
             try {
@@ -229,25 +216,7 @@ public class StopExecution {
                 LOG.info("Index position: " + i);
                 LOG.info("Long running task finished");
             } catch (InterruptedException e) {
-                LOG.info("long Running operation interrupted");
-            }
-        }
-
-        private void longFileRead() throws InterruptedException {
-            String file = "input.txt";
-            ClassLoader classloader = getClass().getClassLoader();
-
-            try (InputStream inputStream = classloader.getResourceAsStream(file)) {
-                Reader inputStreamReader = new InputStreamReader(inputStream);
-
-                int data = inputStreamReader.read();
-                while (data != -1) {
-                    char theChar = (char) data;
-                    data = inputStreamReader.read();
-                    throwExceptionOnThreadInterrupt();
-                }
-            } catch (IOException e) {
-                LOG.error("Exception: ", e);
+                LOG.info("Long running operation interrupted");
             }
         }
 

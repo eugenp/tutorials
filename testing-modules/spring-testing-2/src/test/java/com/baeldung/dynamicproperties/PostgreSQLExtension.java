@@ -18,14 +18,14 @@ public class PostgreSQLExtension implements BeforeAllCallback, AfterAllCallback 
           .withExposedPorts(5432);
 
         postgres.start();
-        String jdbcUrl = String.format("jdbc:postgresql://localhost:%d/prop", postgres.getFirstMappedPort());
-        System.setProperty("spring.datasource.url", jdbcUrl);
-        System.setProperty("spring.datasource.username", "postgres");
-        System.setProperty("spring.datasource.password", "pass");
+
+        System.setProperty("spring.datasource.url", postgres.getJdbcUrl());
+        System.setProperty("spring.datasource.username", postgres.getUsername());
+        System.setProperty("spring.datasource.password", postgres.getPassword());
     }
 
     @Override
     public void afterAll(ExtensionContext context) {
-        postgres.stop();
+        // do nothing, Testcontainers handles container shutdown
     }
 }

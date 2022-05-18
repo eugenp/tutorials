@@ -27,7 +27,17 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user1").password("user1Pass").authorities("ROLE_USER").and().withUser("admin").password("adminPass").authorities("ROLE_ADMIN");
+        // @formatter:off
+        auth
+        .inMemoryAuthentication()
+        .withUser("user1")
+        .password("user1Pass")
+        .authorities("ROLE_USER")
+        .and()
+        .withUser("admin")
+        .password("adminPass")
+        .authorities("ROLE_ADMIN");
+        // @formatter:on
     }
 
     @Override
@@ -47,8 +57,7 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
         .and()
         .headers().cacheControl().disable()
         .and()
-        .csrf().disable()
-        ;
+        .csrf().disable();
         // @formatter:on
     }
 

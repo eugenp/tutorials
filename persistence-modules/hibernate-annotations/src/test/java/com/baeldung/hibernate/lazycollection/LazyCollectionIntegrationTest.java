@@ -1,7 +1,5 @@
 package com.baeldung.hibernate.lazycollection;
 
-import com.baeldung.hibernate.lazycollection.model.Branch;
-import com.baeldung.hibernate.lazycollection.model.Employee;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,15 +7,14 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.H2Dialect;
 import org.hibernate.service.ServiceRegistry;
-
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.annotation.PostConstruct;
+import com.baeldung.hibernate.lazycollection.model.Branch;
+import com.baeldung.hibernate.lazycollection.model.Employee;
 
 public class LazyCollectionIntegrationTest {
 

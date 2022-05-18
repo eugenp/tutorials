@@ -12,7 +12,6 @@
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -40,4 +39,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

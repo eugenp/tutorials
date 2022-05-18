@@ -49,7 +49,7 @@ public class LogsResourceIntegrationTest {
     public void changeLogs()throws Exception {
         LoggerVM logger = new LoggerVM();
         logger.setLevel("INFO");
-        logger.setName("ROOT");
+        logger.setName("some.test.logger");
 
         restLogsMockMvc.perform(put("/management/logs")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)

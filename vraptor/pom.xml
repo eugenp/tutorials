@@ -68,7 +68,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j-log4j12.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>br.com.caelum.vraptor</groupId>
@@ -117,7 +117,6 @@
         <weld.version>2.1.2.Final</weld.version>
         <el.version>2.2</el.version>
         <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
-        <slf4j-log4j12.version>1.7.5</slf4j-log4j12.version>
         <vraptor-freemarker.version>4.1.0-RC3</vraptor-freemarker.version>
         <vraptor-hibernate.version>4.0.4</vraptor-hibernate.version>
         <mysql-connector.version>8.0.8-dmr</mysql-connector.version>

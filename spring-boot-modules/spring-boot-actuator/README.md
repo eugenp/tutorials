@@ -11,3 +11,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Custom Information in Spring Boot Info Endpoint](https://www.baeldung.com/spring-boot-info-actuator-custom)
 - [Health Indicators in Spring Boot](https://www.baeldung.com/spring-boot-health-indicators)
 - [How to Enable All Endpoints in Spring Boot Actuator](https://www.baeldung.com/spring-boot-actuator-enable-endpoints)
+- [Spring Boot Startup Actuator Endpoint](https://www.baeldung.com/spring-boot-actuator-startup)
+- [Metrics for your Spring REST API](https://www.baeldung.com/spring-rest-api-metrics)

@@ -98,11 +98,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
         <!-- test scoped -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -130,9 +125,6 @@
         <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
         <xml-apis.version>1.4.01</xml-apis.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
-        <!-- util -->
-        <guava.version>21.0</guava.version>
-        <assertj.version>3.8.0</assertj.version>
     </properties>
 
 </project>
