@@ -1,6 +1,6 @@
 package com.baeldung.feign.clients.builder;
 
-import com.baeldung.feign.header.interceptor.ApiAuthorisationService;
+import com.baeldung.feign.header.authorisation.ApiAuthorisationService;
 import com.baeldung.feign.header.interceptor.AuthRequestInterceptor;
 
 

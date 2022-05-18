@@ -1,4 +1,4 @@
-package com.baeldung.feign.header.interceptor;
+package com.baeldung.feign.header.authorisation;
 
 public interface AuthorisationService {
 	
