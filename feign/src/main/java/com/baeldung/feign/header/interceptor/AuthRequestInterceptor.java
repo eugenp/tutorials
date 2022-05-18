@@ -10,7 +10,7 @@ public class AuthRequestInterceptor implements RequestInterceptor {
     private AuthorisationService authTokenService;
 
     public AuthRequestInterceptor(AuthorisationService authTokenService) {
-	    this.authTokenService = authTokenService;
+        this.authTokenService = authTokenService;
     }
 
     @Override
