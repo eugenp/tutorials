@@ -11,18 +11,17 @@
 
 package com.baeldung.usersservice.service;
 
-import javax.transaction.Transactional;
-
-import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.baeldung.usersservice.adapters.jms.JmsSender;
 import com.baeldung.usersservice.adapters.repository.UserRecord;
 import com.baeldung.usersservice.adapters.repository.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UsersService {
@@ -33,12 +32,14 @@ public class UsersService {
     private JmsSender jmsSender;
 
     public UserRecord getUserById(String id) {
-        return usersRepository.findById(id).orElseThrow(() -> new UnknownUserException(id));
+        return usersRepository.findById(id)
+            .orElseThrow(() -> new UnknownUserException(id));
     }
 
     @Transactional
     public void deleteUserById(String id) {
-        var user = usersRepository.findById(id).orElseThrow(() -> new UnknownUserException(id));
+        var user = usersRepository.findById(id)
+            .orElseThrow(() -> new UnknownUserException(id));
         usersRepository.delete(user);
 
         jmsSender.sendDeleteUserMessage(id);
@@ -46,7 +47,8 @@ public class UsersService {
 
     @Transactional
     public UserRecord updateUser(String id, Optional<String> newName) {
-        var user = usersRepository.findById(id).orElseThrow(() -> new UnknownUserException(id));
+        var user = usersRepository.findById(id)
+            .orElseThrow(() -> new UnknownUserException(id));
 
         newName.ifPresent(user::setName);
 
@@ -54,7 +56,8 @@ public class UsersService {
     }
 
     public UserRecord createUser(String name) {
-        var user = new UserRecord(UUID.randomUUID().toString(), name);
+        var user = new UserRecord(UUID.randomUUID()
+            .toString(), name);
         usersRepository.save(user);
         return user;
     }
