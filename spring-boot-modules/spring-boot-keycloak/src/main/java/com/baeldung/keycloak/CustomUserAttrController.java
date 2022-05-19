@@ -24,12 +24,17 @@ public class CustomUserAttrController {
         final Principal principal = (Principal) authentication.getPrincipal();
 
         String dob = "";
+        String userIdByToken = "";
+        String userIdByMapper = "";
 
         if (principal instanceof KeycloakPrincipal) {
 
             KeycloakPrincipal<KeycloakSecurityContext> kPrincipal = (KeycloakPrincipal<KeycloakSecurityContext>) principal;
             IDToken token = kPrincipal.getKeycloakSecurityContext()
                 .getIdToken();
+
+            userIdByToken = token.getSubject();
+            userIdByMapper = token.getOtherClaims().get("user_id").toString();
 
             Map<String, Object> customClaims = token.getOtherClaims();
 
@@ -39,6 +44,8 @@ public class CustomUserAttrController {
         }
 
         model.addAttribute("username", principal.getName());
+        model.addAttribute("userIDByToken", userIdByToken);
+        model.addAttribute("userIDByMapper", userIdByMapper);
         model.addAttribute("dob", dob);
         return "userInfo";
     }
