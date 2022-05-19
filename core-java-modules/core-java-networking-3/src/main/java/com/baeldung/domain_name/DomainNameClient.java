@@ -1,4 +1,4 @@
-package com.baeldung.networking.domain_name;
+package com.baeldung.domain_name;
 
 import com.google.common.net.InternetDomainName;
 
