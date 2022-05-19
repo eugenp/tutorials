@@ -11,16 +11,18 @@
 
 package com.baeldung.tasksservice.service;
 
-import javax.transaction.Transactional;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.baeldung.tasksservice.adapters.repository.TaskRecord;
-import com.baeldung.tasksservice.adapters.repository.TasksRepository;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.tasksservice.adapters.repository.TaskRecord;
+import com.baeldung.tasksservice.adapters.repository.TasksRepository;
 
 @Service
 public class TasksService {
@@ -28,12 +30,14 @@ public class TasksService {
     private TasksRepository tasksRepository;
 
     public TaskRecord getTaskById(String id) {
-        return tasksRepository.findById(id).orElseThrow(() -> new UnknownTaskException(id));
+        return tasksRepository.findById(id)
+            .orElseThrow(() -> new UnknownTaskException(id));
     }
 
     @Transactional
     public void deleteTaskById(String id) {
-        var task = tasksRepository.findById(id).orElseThrow(() -> new UnknownTaskException(id));
+        var task = tasksRepository.findById(id)
+            .orElseThrow(() -> new UnknownTaskException(id));
         tasksRepository.delete(task);
     }
 
@@ -51,7 +55,8 @@ public class TasksService {
 
     @Transactional
     public TaskRecord updateTask(String id, Optional<String> newStatus, Optional<String> newAssignedTo) {
-        var task = tasksRepository.findById(id).orElseThrow(() -> new UnknownTaskException(id));
+        var task = tasksRepository.findById(id)
+            .orElseThrow(() -> new UnknownTaskException(id));
 
         newStatus.ifPresent(task::setStatus);
         newAssignedTo.ifPresent(task::setAssignedTo);
@@ -60,12 +65,8 @@ public class TasksService {
     }
 
     public TaskRecord createTask(String title, String createdBy) {
-        var task = new TaskRecord(UUID.randomUUID().toString(),
-                title,
-                Instant.now(),
-                createdBy,
-                null,
-                "PENDING");
+        var task = new TaskRecord(UUID.randomUUID()
+            .toString(), title, Instant.now(), createdBy, null, "PENDING");
         tasksRepository.save(task);
         return task;
     }

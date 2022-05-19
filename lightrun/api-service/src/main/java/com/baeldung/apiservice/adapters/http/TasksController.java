@@ -1,11 +1,17 @@
 package com.baeldung.apiservice.adapters.http;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.baeldung.apiservice.adapters.tasks.Task;
 import com.baeldung.apiservice.adapters.tasks.TaskRepository;
 import com.baeldung.apiservice.adapters.users.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/")
 @RestController
@@ -27,15 +33,10 @@ public class TasksController {
     }
 
     private TaskResponse buildResponse(Task task) {
-        return new TaskResponse(task.id(),
-                task.title(),
-                task.created(),
-                getUser(task.createdBy()),
-                getUser(task.assignedTo()),
-                task.status());
+        return new TaskResponse(task.id(), task.title(), task.created(), getUser(task.createdBy()), getUser(task.assignedTo()), task.status());
     }
 
-    private UserResponse  getUser(String userId) {
+    private UserResponse getUser(String userId) {
         if (userId == null) {
             return null;
         }
@@ -47,6 +48,7 @@ public class TasksController {
 
         return new UserResponse(user.id(), user.name());
     }
+
     @ExceptionHandler(UnknownTaskException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void handleUnknownTask() {

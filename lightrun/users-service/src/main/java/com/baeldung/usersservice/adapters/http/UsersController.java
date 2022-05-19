@@ -11,9 +11,6 @@
 
 package com.baeldung.usersservice.adapters.http;
 
-import com.baeldung.usersservice.adapters.repository.UserRecord;
-import com.baeldung.usersservice.service.UsersService;
-import com.baeldung.usersservice.service.UnknownUserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +23,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.baeldung.usersservice.adapters.repository.UserRecord;
+import com.baeldung.usersservice.service.UnknownUserException;
+import com.baeldung.usersservice.service.UsersService;
 
 @RestController
 @RequestMapping("/")
@@ -50,14 +51,14 @@ class UsersController {
         var user = usersService.createUser(body.name());
         return buildResponse(user);
     }
-    
+
     @PatchMapping("/{id}")
-    public UserResponse patchUser(@PathVariable("id") String id,
-        @RequestBody PatchUserRequest body) {
+    public UserResponse patchUser(@PathVariable("id") String id, @RequestBody PatchUserRequest body) {
         var user = usersService.updateUser(id, body.name());
 
         return buildResponse(user);
     }
+
     private UserResponse buildResponse(final UserRecord user) {
         return new UserResponse(user.getId(), user.getName());
     }
