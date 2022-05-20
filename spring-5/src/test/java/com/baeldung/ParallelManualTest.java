@@ -5,18 +5,18 @@ import org.junit.experimental.ParallelComputer;
 import org.junit.runner.Computer;
 import org.junit.runner.JUnitCore;
 
-public class ParallelIntegrationTest {
+public class ParallelManualTest {
 
     @Test
     public void runTests() {
-        final Class<?>[] classes = { Example1IntegrationTest.class, Example2IntegrationTest.class };
+        final Class<?>[] classes = { Example1ManualTest.class, Example2ManualTest.class };
 
         JUnitCore.runClasses(new Computer(), classes);
     }
 
     @Test
     public void runTestsInParallel() {
-        final Class<?>[] classes = { Example1IntegrationTest.class, Example2IntegrationTest.class };
+        final Class<?>[] classes = { Example1ManualTest.class, Example2ManualTest.class };
 
         JUnitCore.runClasses(new ParallelComputer(true, true), classes);
     }
