@@ -1,4 +1,4 @@
-package com.baeldung.bucketsort;
+package com.baeldung.algorithms.bucketsort;
 
 import java.util.List;
 
