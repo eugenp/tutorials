@@ -24,7 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBootPropertiesTestApplication.class)
-public class PropertiesReloadIntegrationTest {
+public class PropertiesReloadManualTest {
 
     protected MockMvc mvc;
 
