@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Example1IntegrationTest {
+public class Example1ManualTest {
 
     @Test
     public void test1a() {
