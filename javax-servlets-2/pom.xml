@@ -40,6 +40,18 @@
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock-junit5</artifactId>
+            <version>${jmock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${org.apache.httpcomponents.version}</version>
@@ -56,6 +68,8 @@
     <properties>
         <org.apache.httpcomponents.version>4.5.13</org.apache.httpcomponents.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+        <jmock.version>2.12.0</jmock.version>
+        <spring-test.version>5.3.20</spring-test.version>
     </properties>
 
 </project>
