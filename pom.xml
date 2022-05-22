@@ -366,7 +366,7 @@
                 <module>atomix</module>
 
                 <module>aws-modules</module>
-                
+
                 <module>axon</module>
 
                 <module>azure</module>
@@ -620,7 +620,6 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
@@ -837,7 +836,7 @@
                 <module>atomix</module>
 
                 <module>aws-modules</module>
-                
+
                 <module>axon</module>
 
                 <module>azure</module>
@@ -896,7 +895,7 @@
                 <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
-                <module>hystrix</module>                
+                <module>hystrix</module>
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -1085,7 +1084,6 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
@@ -1211,6 +1209,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -1318,6 +1317,7 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>core-java-modules/core-java-strings</module>
+                 <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-modules</module>
                  <module>docker</module>
                  <module>apache-httpclient-2</module>
@@ -1327,9 +1327,10 @@
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>spring-boot-modules/spring-boot-camel</module>	 
+                 <module>spring-boot-modules/spring-boot-camel</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
+                 <module>lightrun</module>
             </modules>
         </profile>
 
@@ -1397,6 +1398,7 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>lightrun</module>
             </modules>
         </profile>
     </profiles>

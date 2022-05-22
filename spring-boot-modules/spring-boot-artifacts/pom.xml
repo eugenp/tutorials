@@ -101,7 +101,7 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.18</version>
                 <executions>
-                    <!-- Invokes both the integration-test and the verify goals of the Failsafe Maven
+                    <!-- Invokes both the integration-test and the verify goals of the Failsafe Maven 
                         plugin -->
                     <execution>
                         <id>integration-tests</id>
@@ -110,7 +110,7 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <!-- Skips integration tests if the value of skip.integration.tests property
+                            <!-- Skips integration tests if the value of skip.integration.tests property 
                                 is true -->
                             <includes>
                                 <include>**/ExternalPropertyFileLoaderIntegrationTest.java</include>

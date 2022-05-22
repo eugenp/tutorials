@@ -9,7 +9,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 
-- [Setting Up Swagger 2 with a Spring REST API](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)
+- [Setting Up Swagger 2 with a Spring REST API Using Springfox](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)
 - [Custom Error Message Handling for REST API](https://www.baeldung.com/global-error-handler-in-a-spring-rest-api)
 - [Spring Security Context Propagation with @Async](https://www.baeldung.com/spring-security-async-principal-propagation)
 - [Servlet 3 Async Support with Spring MVC and Spring Security](https://www.baeldung.com/spring-mvc-async-security)

@@ -11,26 +11,25 @@ import org.junit.Test;
 
 public class EmployeeCriteriaIntegrationTest {
 
-  final private EmployeeCriteriaQueries employeeCriteriaQueries = new EmployeeCriteriaQueries();
+    final private EmployeeCriteriaQueries employeeCriteriaQueries = new EmployeeCriteriaQueries();
 
-  @Test
-  public void testGreaterThanCriteriaQuery() {
-    final Session session = HibernateUtil.getHibernateSession();
-    final List<Employee> expectedGreaterThanList = session.createQuery("From Employee where salary>50000").list();
-    final String expectedGreaterThanEmployees[] = new String[expectedGreaterThanList.size()];
-    for (int i = 0; i < expectedGreaterThanList.size(); i++) {
-      expectedGreaterThanEmployees[i] = expectedGreaterThanList.get(i).getName();
+    @Test
+    public void testGreaterThanCriteriaQuery() {
+        final Session session = HibernateUtil.getHibernateSession();
+        final List<Employee> expectedGreaterThanList = session.createQuery("From Employee where salary>50000").list();
+        final String expectedGreaterThanEmployees[] = new String[expectedGreaterThanList.size()];
+        for (int i = 0; i < expectedGreaterThanList.size(); i++) {
+            expectedGreaterThanEmployees[i] = expectedGreaterThanList.get(i).getName();
+        }
+        session.close();
+        assertArrayEquals(expectedGreaterThanEmployees, employeeCriteriaQueries.greaterThanCriteria());
     }
-    session.close();
-    assertArrayEquals(expectedGreaterThanEmployees, employeeCriteriaQueries.greaterThanCriteria());
-  }
 
-  @Test
-  public void testGetAllEmployeesQuery() {
-    final Session session = HibernateUtil.getHibernateSession();
-    final List<Employee> expectedSortCritEmployeeList = session.createQuery("From Employee").list();
-    session.close();
-    assertArrayEquals(expectedSortCritEmployeeList.toArray(), employeeCriteriaQueries.getAllEmployees().toArray());
-  }
-
+    @Test
+    public void testGetAllEmployeesQuery() {
+        final Session session = HibernateUtil.getHibernateSession();
+        final List<Employee> expectedSortCritEmployeeList = session.createQuery("From Employee").list();
+        session.close();
+        assertArrayEquals(expectedSortCritEmployeeList.toArray(), employeeCriteriaQueries.getAllEmployees().toArray());
+    }
 }

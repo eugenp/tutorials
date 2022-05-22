@@ -40,7 +40,7 @@
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
-            <version>1.2</version>
+            <version>${annotation-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -79,6 +79,7 @@
         <protoc.version>3.17.2</protoc.version>
         <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
         <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+        <annotation-api.version>1.2</annotation-api.version>
     </properties>
 
 </project>
