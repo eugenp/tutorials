@@ -19,6 +19,6 @@
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
         <module>aws-s3</module>
-    </modules>    
+    </modules>
 
 </project>

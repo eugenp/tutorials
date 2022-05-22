@@ -7,12 +7,12 @@ import javax.persistence.Id;
 @Entity
 public class Employee {
 
-  @Id
-  @GeneratedValue
-  private Integer id;
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-  private String name;
+    private String name;
 
-  private Long salary;
+    private Long salary;
 
 }

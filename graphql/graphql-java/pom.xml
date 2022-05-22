@@ -85,7 +85,6 @@
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-netty</artifactId>
@@ -98,13 +97,11 @@
             <version>${mockserver-client-java.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-extended-scalars</artifactId>
             <version>${graphql-java-extended-scalars.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -155,12 +152,9 @@
         <ratpack-core.version>1.9.0</ratpack-core.version>
         <nodes.version>0.5.0</nodes.version>
         <httpclient.version>4.5.13</httpclient.version>
-
         <mockserver-netty.version>5.13.2</mockserver-netty.version>
         <mockserver-client-java.version>5.13.2</mockserver-client-java.version>
-
         <jetty-maven-plugin.version>10.0.7</jetty-maven-plugin.version>
-
         <graphql.java.generator.version>1.18</graphql.java.generator.version>
         <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
     </properties>
