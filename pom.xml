@@ -333,16 +333,7 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-genetic</module>
-                <module>algorithms-miscellaneous-1</module>
-                <module>algorithms-miscellaneous-2</module>
-                <module>algorithms-miscellaneous-3</module>
-                <module>algorithms-miscellaneous-4</module>
-                <module>algorithms-miscellaneous-5</module>
-                <module>algorithms-miscellaneous-6</module>
-                <module>algorithms-searching</module>
-                <module>algorithms-sorting</module>
-                <module>algorithms-sorting-2</module>
+                <module>algorithms-modules</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -803,16 +794,7 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-genetic</module>
-                <module>algorithms-miscellaneous-1</module>
-                <module>algorithms-miscellaneous-2</module>
-                <module>algorithms-miscellaneous-3</module>
-                <module>algorithms-miscellaneous-4</module>
-                <module>algorithms-miscellaneous-5</module>
-                <module>algorithms-miscellaneous-6</module>
-                <module>algorithms-searching</module>
-                <module>algorithms-sorting</module>
-                <module>algorithms-sorting-2</module>
+                <module>algorithms-modules</module>                
                 <module>annotations</module>
                 <module>antlr</module>
 
