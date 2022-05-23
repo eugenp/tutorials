@@ -15,7 +15,7 @@
 
     <modules>
         <module>activejdbc</module>
-        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
+        <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
         <module>core-java-persistence</module>
