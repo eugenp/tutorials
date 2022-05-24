@@ -1,4 +1,4 @@
-package reverse;
+package com.baeldung.list.reverse;
 
 import java.util.List;
 
