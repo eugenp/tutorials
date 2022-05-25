@@ -1,7 +1,7 @@
 server.port: 8084
 spring:
   application:
-    name: hello
+    name: sidecar
 eureka:
   instance:
     hostname: localhost

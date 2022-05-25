@@ -10,7 +10,7 @@ app.get('/health', (req, res) => {
     res.send({ "status":"UP"})
 })
 
-app.get('/:me', (req, res) => {
+app.get('/hello/:me', (req, res) => {
     res.send('Hello ' + req.params.me + '!')
 })
 

@@ -32,14 +32,14 @@ public class EchoApplication {
         return new RestTemplate();
     }
 
-    @GetMapping("/print/hello_{me}")
+    @GetMapping("/hello/{me}")
     public ResponseEntity<String> echo(@PathVariable("me") String me) {
-        List<ServiceInstance> instances = discoveryClient.getInstances("hello");
+        List<ServiceInstance> instances = discoveryClient.getInstances("sidecar");
         if (instances.isEmpty()) {
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("hello service is down");
         }
         String url = instances.get(0).getUri().toString();
-        return ResponseEntity.ok(restTemplate.getForObject(url + "/" + me, String.class));
+        return ResponseEntity.ok(restTemplate.getForObject(url + "/hello/" + me, String.class));
     }
 
     public static void main(String[] args) {
