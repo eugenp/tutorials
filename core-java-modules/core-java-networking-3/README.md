@@ -10,4 +10,6 @@ This module contains articles about networking in Java
 - [Find Whether an IP Address Is in the Specified Range or Not in Java](https://www.baeldung.com/java-check-ip-address-range)
 - [Find the IP Address of a Client Connected to a Server](https://www.baeldung.com/java-client-get-ip-address)
 - [Unix Domain Socket in Java 16](https://www.baeldung.com/java-unix-domain-socket)
+- [Get the IP Address of the Current Machine Using Java](https://www.baeldung.com/java-get-ip-address)
+- [Get Domain Name From Given URL in Java](https://www.baeldung.com/java-domain-name-from-url)
 - [[<-- Prev]](/core-java-modules/core-java-networking-2)

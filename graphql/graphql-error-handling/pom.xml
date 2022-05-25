@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>graphql-error-handling</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
     <name>graphql-error-handling</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.graphql</groupId>
@@ -19,56 +19,47 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
             <version>${graphql-spring-boot-starter.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>${graphql-java-tools.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter-test</artifactId>
             <scope>test</scope>
             <version>${graphql-spring-boot-starter.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.skyscreamer</groupId>
             <artifactId>jsonassert</artifactId>
             <version>${jsonassert.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <properties>

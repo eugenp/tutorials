@@ -112,7 +112,7 @@
             <artifactId>structurizr-plantuml</artifactId>
             <version>${structurizr.version}</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
             <version>${immutables.version}</version>
@@ -177,7 +177,7 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <!-- NullAway will warn by default, uncomment the next line to make the build
+                        <!-- NullAway will warn by default, uncomment the next line to make the build 
                             fail -->
                         <!-- <arg>-Xep:NullAway:ERROR</arg> -->
                         <arg>-XepExcludedPaths:(.*)/test/.*|(.*)/jcabi/.*</arg>
@@ -190,7 +190,7 @@
                         <artifactId>plexus-compiler-javac-errorprone</artifactId>
                         <version>2.8</version>
                     </dependency>
-                    <!-- override plexus-compiler-javac-errorprone's dependency on Error Prone with the
+                    <!-- override plexus-compiler-javac-errorprone's dependency on Error Prone with the 
                         latest version -->
                     <dependency>
                         <groupId>com.google.errorprone</groupId>
