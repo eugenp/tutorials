@@ -13,4 +13,5 @@ This module contains articles about core java exceptions
 - [The StackOverflowError in Java](https://www.baeldung.com/java-stack-overflow-error)
 - [Checked and Unchecked Exceptions in Java](https://www.baeldung.com/java-checked-unchecked-exceptions)
 - [Common Java Exceptions](https://www.baeldung.com/java-common-exceptions)
+- [Will an Error Be Caught by Catch Block in Java?](https://www.baeldung.com/java-error-catch)
 - [[Next -->]](/core-java-modules/core-java-exceptions-2)

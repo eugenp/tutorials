@@ -6,3 +6,4 @@
 - [Volatile Variables and Thread Safety](https://www.baeldung.com/java-volatile-variables-thread-safety)
 - [Producer-Consumer Problem With Example in Java](https://www.baeldung.com/java-producer-consumer-problem)
 - [Acquire a Lock by a Key in Java](https://www.baeldung.com/java-acquire-lock-by-key)
+- [Differences Between set() and lazySet() in Java Atomic Variables](https://www.baeldung.com/java-atomic-set-vs-lazyset)

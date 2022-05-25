@@ -8,6 +8,13 @@
     <name>ShippingFunction</name>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>aws-lambda</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>

@@ -14,7 +14,7 @@
 			<property name="javax.persistence.jdbc.user" value="baeldung" />
 			<property name="javax.persistence.jdbc.password" value="YourPassword" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 		</properties>
 	</persistence-unit>
 
@@ -28,7 +28,7 @@
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="show_sql" value="true"/>
+			<property name="show_sql" value="false"/>
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
 		</properties>
 	</persistence-unit>
