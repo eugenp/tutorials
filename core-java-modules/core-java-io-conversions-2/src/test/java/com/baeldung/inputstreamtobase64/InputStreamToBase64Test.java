@@ -23,7 +23,6 @@ public class InputStreamToBase64Test {
         byte[] sourceBytes = IOUtils.toByteArray(sourceStream);
         String encodedString = Base64.getEncoder().encodeToString(sourceBytes); 
         assertNotNull(encodedString);
-        System.out.println(encodedString); 
         byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
         assertNotNull(decodedBytes);
         assertTrue(decodedBytes.length == sourceBytes.length);
