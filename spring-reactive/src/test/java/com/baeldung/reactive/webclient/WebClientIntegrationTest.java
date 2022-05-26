@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = WebClientApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class WebClientIntegrationTest {
+class WebClientIntegrationTest {
 
     private static final String BODY_VALUE = "bodyValue";
     private static final ParameterizedTypeReference<Map<String, String>> MAP_RESPONSE_REF = new ParameterizedTypeReference<Map<String, String>>() {
@@ -53,7 +53,7 @@ public class WebClientIntegrationTest {
     private int port;
 
     @Test
-    public void givenDifferentWebClientCreationMethods_whenUsed_thenObtainExpectedResponse() {
+    void givenDifferentWebClientCreationMethods_whenUsed_thenObtainExpectedResponse() {
         // WebClient creation
         WebClient client1 = WebClient.create();
         WebClient client2 = WebClient.create("http://localhost:" + port);
@@ -83,7 +83,7 @@ public class WebClientIntegrationTest {
     }
 
     @Test
-    public void givenDifferentMethodSpecifications_whenUsed_thenObtainExpectedResponse() {
+    void givenDifferentMethodSpecifications_whenUsed_thenObtainExpectedResponse() {
         // request specification
         RequestBodyUriSpec uriSpecPost1 = createDefaultClient().method(HttpMethod.POST);
         RequestBodyUriSpec uriSpecPost2 = createDefaultClient().post();
@@ -103,7 +103,7 @@ public class WebClientIntegrationTest {
     }
 
     @Test
-    public void givenDifferentUriSpecifications_whenUsed_thenObtainExpectedResponse() {
+    void givenDifferentUriSpecifications_whenUsed_thenObtainExpectedResponse() {
         // uri specification
         RequestBodySpec bodySpecUsingString = createDefaultPostRequest().uri("/resource");
         RequestBodySpec bodySpecUsingUriBuilder = createDefaultPostRequest().uri(
@@ -140,7 +140,7 @@ public class WebClientIntegrationTest {
     }
 
     @Test
-    public void givenDifferentBodySpecifications_whenUsed_thenObtainExpectedResponse() {
+    void givenDifferentBodySpecifications_whenUsed_thenObtainExpectedResponse() {
         // request body specifications
         RequestHeadersSpec<?> headersSpecPost1 = createDefaultPostResourceRequest().body(
           BodyInserters.fromPublisher(Mono.just(BODY_VALUE), String.class));
@@ -194,7 +194,7 @@ public class WebClientIntegrationTest {
     }
 
     @Test
-    public void givenPostSpecifications_whenHeadersAdded_thenObtainExpectedResponse() {
+    void givenPostSpecifications_whenHeadersAdded_thenObtainExpectedResponse() {
         // request header specification
         RequestHeadersSpec<?> headersSpecInserterStringWithHeaders = createDefaultPostResourceRequestResponse().header(
             HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -210,7 +210,7 @@ public class WebClientIntegrationTest {
     }
 
     @Test
-    public void givenDifferentResponseSpecifications_whenUsed_thenObtainExpectedResponse() {
+    void givenDifferentResponseSpecifications_whenUsed_thenObtainExpectedResponse() {
         ResponseSpec responseSpecPostString = createDefaultPostResourceRequestResponse().retrieve();
         Mono<String> responsePostString = responseSpecPostString.bodyToMono(String.class);
         Mono<String> responsePostString2 = createDefaultPostResourceRequestResponse().exchangeToMono(response -> {
@@ -255,7 +255,7 @@ public class WebClientIntegrationTest {
     }
 
     @Test
-    public void givenWebClientWithTimeoutConfigurations_whenRequestUsingWronglyConfiguredPublisher_thenObtainTimeout() {
+    void givenWebClientWithTimeoutConfigurations_whenRequestUsingWronglyConfiguredPublisher_thenObtainTimeout() {
         HttpClient httpClient = HttpClient.create()
           .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1000)
           .responseTimeout(Duration.ofMillis(1000))
