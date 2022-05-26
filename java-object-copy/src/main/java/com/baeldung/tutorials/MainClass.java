@@ -2,12 +2,11 @@ package main.java.com.baeldung.tutorials;
 
 public class MainClass {
 	public static void main(String[] args) {
-		System.out.println("Hello World, Sudarshan!");
 		Processor processor = new Processor("Intel", "i5");
-		Computer originalComputer = new Computer(1, 2048, "2022", "model1", processor);
+		Computer originalComputer = new Computer(2048, "model1", processor);
 		Computer copiedComputer = null;
 		
-		PersonalizedComputer originalPComputer = new PersonalizedComputer(1, 2048, "2022", "model1", processor);
+		PersonalizedComputer originalPComputer = new PersonalizedComputer(2048, "model1", processor);
 		PersonalizedComputer copiedPComputer = null;
 
 		try {
@@ -15,7 +14,7 @@ public class MainClass {
 			System.out.println("\n---- originalComputer ----" + originalComputer);
 			copiedComputer = (Computer) originalComputer.clone();
 			copiedComputer.getProcessor().setCompany("Apple");
-			copiedComputer.setMemory(1234); // copied primitive types will be a different copy, not referring the same value
+			copiedComputer.setMemory(1024); // copied primitive types will be a different copy, not referring the same value
 			System.out.println("\n---- copiedComputer ----" + copiedComputer);
 			System.out.println("\n---- originalComputer ----" + originalComputer);
 			

@@ -13,7 +13,7 @@ public class ObjectCopyUnitTest {
     @Test
     public void whenUpdatedShallowCopy_thenOriginalShouldbeUpdated() throws CloneNotSupportedException {
     	Processor processor = new Processor("Microsoft", "i55");
-		Computer originalComputer = new Computer(1, 2048, "2022", "model11", processor);
+		Computer originalComputer = new Computer(2048, "model11", processor);
 		Computer copiedComputer = (Computer) originalComputer.clone();
 
 		copiedComputer.getProcessor().setCompany("Google");
@@ -31,7 +31,7 @@ public class ObjectCopyUnitTest {
     @Test
     public void whenUpdatedDeepCopy_thenOriginalShouldNotbeUpdated() throws CloneNotSupportedException {
     	Processor processor = new Processor("Intel", "i5");
-		PersonalizedComputer originalPComputer = new PersonalizedComputer(1, 2048, "2022", "model1", processor);
+		PersonalizedComputer originalPComputer = new PersonalizedComputer(2048, "model1", processor);
 		PersonalizedComputer copiedPComputer = (PersonalizedComputer) originalPComputer.clone();
 
 		copiedPComputer.getProcessor().setCompany("Google");
