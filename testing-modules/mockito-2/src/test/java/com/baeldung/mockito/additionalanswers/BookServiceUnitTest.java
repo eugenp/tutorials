@@ -1,5 +1,13 @@
 package com.baeldung.mockito.additionalanswers;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.AdditionalAnswers;
@@ -7,8 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
+import org.mockito.stubbing.VoidAnswer1;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BookServiceUnitTest {
@@ -64,5 +71,28 @@ public class BookServiceUnitTest {
         Book bookOnIndex = bookService.selectRandomBook(book1, book2, book3);
 
         assertEquals(bookOnIndex, book2);
+    }
+
+    @Test
+    public void givenMockedMethod_whenMethodInvoked_thenReturnBook() {
+        Long id = 1L;
+        when(bookRepository.getByBookId(anyLong())).thenAnswer(AdditionalAnswers.answer((Long bookId) -> new Book(bookId, "The Stranger", "Albert Camus", 456)));
+
+        assertNotNull(bookService.getByBookId(id));
+        assertEquals("The Stranger", bookService.getByBookId(id).getTitle());
+    }
+    
+    @Test
+    public void givenMockedMethod_whenMethodInvoked_thenReturnVoid() {
+        Long id = 2L;
+        when(bookRepository.getByBookId(anyLong())).thenAnswer(AdditionalAnswers.answerVoid(new VoidAnswer1<Long>() {
+            public void answer(Long id) {
+                System.out.println(id);
+            }
+        }));
+        
+        bookService.getByBookId(id);
+        
+        verify(bookRepository, times(1)).getByBookId(id);
     }
 }
