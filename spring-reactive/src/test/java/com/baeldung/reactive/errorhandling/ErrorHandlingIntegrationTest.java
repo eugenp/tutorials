@@ -1,27 +1,24 @@
 package com.baeldung.reactive.errorhandling;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext
 @AutoConfigureWebTestClient(timeout = "10000")
-public class ErrorHandlingIntegrationTest {
+class ErrorHandlingIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
 
     @Test
-    public void givenErrorReturn_whenUsernamePresent_thenOk() {
+    void givenErrorReturn_whenUsernamePresent_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint1?name={username}", "Tony")
@@ -31,7 +28,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenErrorReturn_whenNoUsername_thenOk() {
+    void givenErrorReturn_whenNoUsername_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint1")
@@ -41,7 +38,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenResumeFallback_whenUsernamePresent_thenOk() {
+    void givenResumeFallback_whenUsernamePresent_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint2?name={username}", "Tony")
@@ -51,7 +48,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenResumeFallback_whenNoUsername_thenOk() {
+    void givenResumeFallback_whenNoUsername_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint2")
@@ -61,7 +58,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenResumeDynamicValue_whenUsernamePresent_thenOk() {
+    void givenResumeDynamicValue_whenUsernamePresent_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint3?name={username}", "Tony")
@@ -71,7 +68,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenResumeDynamicValue_whenNoUsername_thenOk() {
+    void givenResumeDynamicValue_whenNoUsername_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint3")
@@ -81,7 +78,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenResumeRethrow_whenUsernamePresent_thenOk() {
+    void givenResumeRethrow_whenUsernamePresent_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint4?name={username}", "Tony")
@@ -91,7 +88,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenResumeRethrow_whenNoUsername_thenOk() {
+    void givenResumeRethrow_whenNoUsername_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint4")
@@ -103,7 +100,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenGlobalErrorHandling_whenUsernamePresent_thenOk() {
+    void givenGlobalErrorHandling_whenUsernamePresent_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint5?name={username}", "Tony")
@@ -113,7 +110,7 @@ public class ErrorHandlingIntegrationTest {
     }
 
     @Test
-    public void givenGlobalErrorHandling_whenNoUsername_thenOk() {
+    void givenGlobalErrorHandling_whenNoUsername_thenOk() {
 
         webTestClient.get()
           .uri("/api/endpoint5")

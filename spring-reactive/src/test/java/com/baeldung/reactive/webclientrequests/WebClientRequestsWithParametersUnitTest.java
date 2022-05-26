@@ -1,13 +1,11 @@
 package com.baeldung.reactive.webclientrequests;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.reactive.function.client.ClientRequest;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.ExchangeFunction;
@@ -15,15 +13,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Mono;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringRunner.class)
 @WebFluxTest
-public class WebClientRequestsWithParametersUnitTest {
+class WebClientRequestsWithParametersUnitTest {
 
     private static final String BASE_URL = "https://example.com";
 
@@ -35,8 +32,8 @@ public class WebClientRequestsWithParametersUnitTest {
     @Mock
     private ExchangeFunction exchangeFunction;
 
-    @Before
-    public void init() {
+    @BeforeEach
+    void init() {
         ClientResponse mockResponse = mock(ClientResponse.class);
         when(mockResponse.bodyToMono(String.class)).thenReturn(Mono.just("test"));
         when(exchangeFunction.exchange(argumentCaptor.capture())).thenReturn(Mono.just(mockResponse));
@@ -49,7 +46,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallSimpleURI_thenURIMatched() {
+    void whenCallSimpleURI_thenURIMatched() {
         webClient.get()
           .uri("/products")
           .retrieve()
@@ -60,7 +57,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallSinglePathSegmentUri_thenURIMatched() {
+    void whenCallSinglePathSegmentUri_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/{id}")
@@ -73,7 +70,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallMultiplePathSegmentsUri_thenURIMatched() {
+    void whenCallMultiplePathSegmentsUri_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/{id}/attributes/{attributeId}")
@@ -86,7 +83,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallSingleQueryParams_thenURIMatched() {
+    void whenCallSingleQueryParams_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/")
@@ -102,7 +99,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallSingleQueryParamsPlaceholders_thenURIMatched() {
+    void whenCallSingleQueryParamsPlaceholders_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/")
@@ -118,7 +115,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallArrayQueryParamsBrackets_thenURIMatched() {
+    void whenCallArrayQueryParamsBrackets_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/")
@@ -132,7 +129,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallArrayQueryParams_thenURIMatched() {
+    void whenCallArrayQueryParams_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/")
@@ -146,7 +143,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenCallArrayQueryParamsComma_thenURIMatched() {
+    void whenCallArrayQueryParamsComma_thenURIMatched() {
         webClient.get()
           .uri(uriBuilder -> uriBuilder
             .path("/products/")
@@ -160,7 +157,7 @@ public class WebClientRequestsWithParametersUnitTest {
     }
 
     @Test
-    public void whenUriComponentEncoding_thenQueryParamsNotEscaped() {
+    void whenUriComponentEncoding_thenQueryParamsNotEscaped() {
         DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory(BASE_URL);
         factory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.URI_COMPONENT);
         webClient = WebClient
