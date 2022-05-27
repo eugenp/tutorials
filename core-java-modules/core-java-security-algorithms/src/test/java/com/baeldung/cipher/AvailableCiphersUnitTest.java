@@ -17,7 +17,7 @@ public class AvailableCiphersUnitTest {
     public void whenGetServices_thenGetAllCipherAlgorithms() {
         for (Provider provider : Security.getProviders()) {
             for (Provider.Service service : provider.getServices()) {
-                logger.info(service.getAlgorithm());
+                logger.debug(service.getAlgorithm());
             }
         }
     }
@@ -30,6 +30,6 @@ public class AvailableCiphersUnitTest {
           .map(Provider.Service::getAlgorithm)
           .collect(Collectors.toList());
 
-        algorithms.forEach(logger::info);
+        algorithms.forEach(logger::debug);
     }
 }

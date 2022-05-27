@@ -3,14 +3,15 @@ package com.baeldung.junit5.mockito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
@@ -25,7 +26,6 @@ import com.baeldung.junit5.mockito.service.Errors;
 import com.baeldung.junit5.mockito.service.UserService;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(JUnitPlatform.class)
 public class UserServiceUnitTest {
     
     UserService userService;

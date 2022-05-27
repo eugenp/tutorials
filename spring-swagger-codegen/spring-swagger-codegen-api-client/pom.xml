@@ -8,13 +8,11 @@
     <packaging>jar</packaging>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Swagger Java</description>
-
     <scm>
         <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
         <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
         <url>https://github.com/swagger-api/swagger-codegen</url>
     </scm>
-
     <licenses>
         <license>
             <name>Unlicense</name>
@@ -22,7 +20,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <developers>
         <developer>
             <name>Swagger</name>
