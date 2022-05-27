@@ -52,7 +52,6 @@
         <module>core-java-8-datetime-2</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-8-datetime</module>
-        <module>core-java-deep-shallow-copy</module>
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
