@@ -86,8 +86,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <openliberty.version>RELEASE</openliberty.version>
         <openliberty.maven.version>2.6.4</openliberty.maven.version>
