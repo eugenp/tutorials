@@ -3,12 +3,13 @@ package com.baeldung.graphql;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockserver.client.MockServerClient;
+import org.mockserver.configuration.Configuration;
 import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.HttpStatusCode;
+import org.slf4j.event.Level;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.URISyntaxException;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 import static org.mockserver.matchers.Times.exactly;
@@ -17,20 +18,22 @@ import static org.mockserver.model.HttpResponse.response;
 
 public class GraphQLMockServer {
 
-    public static ClientAndServer mockServer;
+    private static final String SERVER_ADDRESS = "127.0.0.1";
+    private static final String PATH = "/graphql";
+
     public static String serviceUrl;
 
+    private static ClientAndServer mockServer;
     private static int serverPort;
 
-    public static final String SERVER_ADDRESS = "127.0.0.1";
-    public static final String HTTP_GET_POST = "GET";
-    public static final String PATH = "/graphql";
-
     @BeforeAll
-    static void startServer() throws IOException, URISyntaxException {
+    static void startServer() throws IOException {
         serverPort = getFreePort();
         serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH;
-        mockServer = startClientAndServer(serverPort);
+
+        Configuration config = Configuration.configuration().logLevel(Level.WARN);
+        mockServer = startClientAndServer(config, serverPort);
+
         mockAllBooksTitleRequest();
         mockAllBooksTitleAuthorRequest();
     }

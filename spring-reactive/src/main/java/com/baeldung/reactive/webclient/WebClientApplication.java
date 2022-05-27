@@ -15,11 +15,10 @@ public class WebClientApplication {
     }
 
     @Bean
-    public SecurityWebFilterChain functionalValidationsSpringSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange()
-                .anyExchange()
-                .permitAll();
-        http.csrf().disable();
+    public SecurityWebFilterChain filterChain(ServerHttpSecurity http) {
+        http.csrf().disable()
+          .authorizeExchange()
+          .anyExchange().permitAll();
         return http.build();
     }
 }

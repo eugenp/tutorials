@@ -19,9 +19,8 @@ public class Cart {
     @Column(name = "cart_id")
     private long id;
 
-
     @OneToMany(mappedBy = "cart")
-    private Set<Items> items;
+    private Set<Item> items;
 
     public long getId() {
         return id;
@@ -31,12 +30,11 @@ public class Cart {
         this.id = id;
     }
 
-
-    public Set<Items> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
 
-    public void setItems(Set<Items> items) {
+    public void setItems(Set<Item> items) {
         this.items = items;
     }
 

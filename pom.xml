@@ -333,17 +333,7 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-genetic</module>
-                <module>algorithms-miscellaneous-1</module>
-                <module>algorithms-miscellaneous-2</module>
-                <module>algorithms-miscellaneous-3</module>
-                <module>algorithms-miscellaneous-4</module>
-                <module>algorithms-miscellaneous-5</module>
-                <module>algorithms-miscellaneous-6</module>
-                <module>algorithms-searching</module>
-                <module>algorithms-sorting</module>
-                <module>algorithms-sorting-2</module>
-                <module>animal-sniffer-mvn-plugin</module>
+                <module>algorithms-modules</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -366,10 +356,7 @@
 
                 <module>atomix</module>
 
-                <module>aws</module>
-                <module>aws-app-sync</module>
-                <module>aws-lambda</module>
-                <module>aws-reactive</module>
+                <module>aws-modules</module>
 
                 <module>axon</module>
 
@@ -418,8 +405,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -428,19 +414,14 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-
-                <module>immutables</module>
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
-                <module>java-collections-conversions</module>
-                <module>java-collections-conversions-2</module>
-                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -508,8 +489,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
@@ -632,7 +611,6 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
@@ -649,9 +627,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
@@ -819,17 +794,7 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-genetic</module>
-                <module>algorithms-miscellaneous-1</module>
-                <module>algorithms-miscellaneous-2</module>
-                <module>algorithms-miscellaneous-3</module>
-                <module>algorithms-miscellaneous-4</module>
-                <module>algorithms-miscellaneous-5</module>
-                <module>algorithms-miscellaneous-6</module>
-                <module>algorithms-searching</module>
-                <module>algorithms-sorting</module>
-                <module>algorithms-sorting-2</module>
-                <module>animal-sniffer-mvn-plugin</module>
+                <module>algorithms-modules</module>                
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -852,10 +817,7 @@
 
                 <module>atomix</module>
 
-                <module>aws</module>
-                <module>aws-app-sync</module>
-                <module>aws-lambda</module>
-                <module>aws-reactive</module>
+                <module>aws-modules</module>
 
                 <module>axon</module>
 
@@ -904,8 +866,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql/graphql-java</module>
-                <module>graphql/graphql-dgs</module>
+                <module>graphql</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -914,19 +875,14 @@
 
                 <module>hazelcast</module>
                 <module>helidon</module>
-                <module>httpclient</module>
+                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
-
-                <module>immutables</module>
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
 
-                <module>java-collections-conversions</module>
-                <module>java-collections-conversions-2</module>
-                <module>java-collections-maps-3</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
 
                 <module>javafx</module>
@@ -996,8 +952,6 @@
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
-                <module>maven-archetype</module>
-                <module>maven-polyglot</module>
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
@@ -1112,7 +1066,6 @@
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <module>spring-boot-rest-2</module>
 
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
@@ -1129,9 +1082,6 @@
                 <module>spring-core-5</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-data-rest</module>
-                <module>spring-data-rest-2</module>
-                <module>spring-data-rest-querydsl</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-di-3</module>
@@ -1241,6 +1191,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -1348,18 +1299,20 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>core-java-modules/core-java-strings</module>
-                 <module>ddd-modules</module>
+                 <module>core-java-modules/core-java-httpclient</module>
+                 <module>ddd-contexts</module>
                  <module>docker</module>
-                 <module>httpclient-2</module>
+                 <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>spring-boot-modules/spring-boot-camel</module>	 
+                 <module>spring-boot-modules/spring-boot-camel</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
+                 <module>lightrun</module>
             </modules>
         </profile>
 
@@ -1415,9 +1368,9 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
-                <module>ddd-modules</module>
+                <module>ddd-contexts</module>
                 <module>docker</module>
-                <module>httpclient-2</module>
+                <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
@@ -1427,6 +1380,7 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>lightrun</module>
             </modules>
         </profile>
     </profiles>
