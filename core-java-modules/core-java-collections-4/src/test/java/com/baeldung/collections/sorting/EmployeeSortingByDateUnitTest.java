@@ -22,36 +22,37 @@ public class EmployeeSortingByDateUnitTest {
     public void initVariables() {
 
         Collections.addAll(employees,
-            new Employee("Earl", 43, 10000, DateUtils.addMonths(new Date(), -2)),
-            new Employee("Frank", 33, 7000, DateUtils.addDays(new Date(), -20)),
-            new Employee("Steve", 26, 6000, DateUtils.addDays(new Date(), -10)),
-            new Employee("Jessica", 23, 4000, DateUtils.addMonths(new Date(), -6)),
-            new Employee("Pearl", 33, 6000, DateUtils.addYears(new Date(), -1)),
-            new Employee("John", 23, 5000, new Date())
+            new Employee("Earl", DateUtils.addMonths(new Date(), -2)),
+            new Employee("Frank", DateUtils.addDays(new Date(), -20)),
+            new Employee("Steve", DateUtils.addDays(new Date(), -10)),
+            new Employee("Jessica", DateUtils.addMonths(new Date(), -6)),
+            new Employee("Pearl", DateUtils.addYears(new Date(), -1)),
+            new Employee("John", new Date())
         );
 
         Collections.addAll(employeesSortedByDateDesc,
-            new Employee("John", 23, 5000, new Date()),
-            new Employee("Steve", 26, 6000, DateUtils.addDays(new Date(), -10)),
-            new Employee("Frank", 33, 7000, DateUtils.addDays(new Date(), -20)),
-            new Employee("Earl", 43, 10000, DateUtils.addMonths(new Date(), -2)),
-            new Employee("Jessica", 23, 4000, DateUtils.addMonths(new Date(), -6)),
-            new Employee("Pearl", 33, 6000, DateUtils.addYears(new Date(), -1))
+            new Employee("John", new Date()),
+            new Employee("Steve", DateUtils.addDays(new Date(), -10)),
+            new Employee("Frank", DateUtils.addDays(new Date(), -20)),
+            new Employee("Earl", DateUtils.addMonths(new Date(), -2)),
+            new Employee("Jessica", DateUtils.addMonths(new Date(), -6)),
+            new Employee("Pearl", DateUtils.addYears(new Date(), -1))
         );
 
         Collections.addAll(employeesSortedByDateAsc,
-            new Employee("Pearl", 33, 6000, DateUtils.addYears(new Date(), -1)),
-            new Employee("Jessica", 23, 4000, DateUtils.addMonths(new Date(), -6)),
-            new Employee("Earl", 43, 10000, DateUtils.addMonths(new Date(), -2)),
-            new Employee("Frank", 33, 7000, DateUtils.addDays(new Date(), -20)),
-            new Employee("Steve", 26, 6000, DateUtils.addDays(new Date(), -10)),
-            new Employee("John", 23, 5000, new Date())
+            new Employee("Pearl", DateUtils.addYears(new Date(), -1)),
+            new Employee("Jessica", DateUtils.addMonths(new Date(), -6)),
+            new Employee("Earl", DateUtils.addMonths(new Date(), -2)),
+            new Employee("Frank", DateUtils.addDays(new Date(), -20)),
+            new Employee("Steve", DateUtils.addDays(new Date(), -10)),
+            new Employee("John", new Date())
         );
     }
 
     @Test
     public void givenEmpList_SortEmpList_thenSortedListinNaturalOrder() {
         Collections.sort(employees);
+        System.out.println(employees);
 
         assertEquals(employees, employeesSortedByDateAsc);
     }
@@ -83,7 +84,7 @@ public class EmployeeSortingByDateUnitTest {
     }
 
     @Test
-    public void givenEmpList_SortEmpList_thenSortedListinAscOrder() {
+    public void givenEmpList_SortEmpList_thenSortedListinDescOrder() {
         Collections.sort(employees, Collections.reverseOrder());
 
         assertEquals(employees, employeesSortedByDateDesc);
@@ -102,12 +103,10 @@ public class EmployeeSortingByDateUnitTest {
     }
 
     @Test
-    public void givenEmpList_SortEmpList_thenCheckSortedListAscV1() {
+    public void givenEmpList_SortEmpList_thenCheckSortedListDescV1() {
 
         Collections.sort(employees, new Comparator<Employee>() {
             public int compare(Employee emp1, Employee emp2) {
-                if (emp1.getJoiningDate() == null || emp2.getJoiningDate() == null)
-                    return 0;
                 return emp2.getJoiningDate().compareTo(emp1.getJoiningDate());
             }
         });

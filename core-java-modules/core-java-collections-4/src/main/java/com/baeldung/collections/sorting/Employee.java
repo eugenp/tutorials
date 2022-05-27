@@ -5,14 +5,10 @@ import java.util.Date;
 public class Employee implements Comparable<Employee>{
 
     private String name;
-    private int age;
-    private double salary;
     private Date joiningDate;
 
-    public Employee(String name, int age, double salary, Date joiningDate) {
+    public Employee(String name, Date joiningDate) {
         this.name = name;
-        this.age = age;
-        this.salary = salary;
         this.joiningDate = joiningDate;
     }
 
@@ -22,22 +18,6 @@ public class Employee implements Comparable<Employee>{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 
     public Date getJoiningDate() {
@@ -57,10 +37,9 @@ public class Employee implements Comparable<Employee>{
     @Override
     public String toString() {
         return new StringBuffer().append("(")
-            .append(getName()).append(",")
-            .append(getAge())
+            .append(getName())
             .append(",")
-            .append(getSalary()).append(",").append(getJoiningDate())
+            .append(getJoiningDate())
             .append(")")
             .toString();
     }
