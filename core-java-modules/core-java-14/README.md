@@ -1,6 +1,6 @@
 ## Core Java 14
 
-This module contains articles about Java 14. 
+This module contains articles about Java 14.  
 
 ### Relevant articles
 
