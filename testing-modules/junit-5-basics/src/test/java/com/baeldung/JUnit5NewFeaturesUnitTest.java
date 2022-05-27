@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 
 import java.util.logging.Logger;
 
-//@RunWith(JUnitPlatform.class)
 class JUnit5NewFeaturesUnitTest {
 
     private static final Logger log = Logger.getLogger(JUnit5NewFeaturesUnitTest.class.getName());

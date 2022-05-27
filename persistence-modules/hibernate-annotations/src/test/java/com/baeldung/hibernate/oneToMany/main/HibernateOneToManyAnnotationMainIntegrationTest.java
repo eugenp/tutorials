@@ -1,26 +1,21 @@
 package com.baeldung.hibernate.oneToMany.main;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
+import com.baeldung.hibernate.oneToMany.model.Cart;
+import com.baeldung.hibernate.oneToMany.model.Item;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.dialect.H2Dialect;
-import org.hibernate.service.ServiceRegistry;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.hibernate.oneToMany.model.Cart;
-import com.baeldung.hibernate.oneToMany.model.Items;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class HibernateOneToManyAnnotationMainIntegrationTest {
 
@@ -28,20 +23,9 @@ public class HibernateOneToManyAnnotationMainIntegrationTest {
 
 	private Session session;
 
-	public HibernateOneToManyAnnotationMainIntegrationTest() {
-	}
-
 	@BeforeClass
 	public static void beforeTests() {
-		Configuration configuration = new Configuration().addAnnotatedClass(Cart.class).addAnnotatedClass(Items.class)
-				.setProperty("hibernate.dialect", H2Dialect.class.getName())
-				.setProperty("hibernate.connection.driver_class", org.h2.Driver.class.getName())
-				.setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
-				.setProperty("hibernate.connection.username", "sa").setProperty("hibernate.connection.password", "")
-				.setProperty("hibernate.hbm2ddl.auto", "update");
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-				.applySettings(configuration.getProperties()).build();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		sessionFactory = HibernateAnnotationUtil.getSessionFactory();
 	}
 
 	@Before
@@ -52,32 +36,38 @@ public class HibernateOneToManyAnnotationMainIntegrationTest {
 
 	@Test
 	public void givenSession_checkIfDatabaseIsEmpty() {
-		Cart cart = (Cart) session.get(Cart.class, new Long(1));
+		Cart cart = session.get(Cart.class, 1L);
 		assertNull(cart);
-
 	}
 
 	@Test
 	public void givenSession_checkIfDatabaseIsPopulated_afterCommit() {
 		Cart cart = new Cart();
-		Set<Items> cartItems = new HashSet<>();
-		cartItems = cart.getItems();
-		Assert.assertNull(cartItems);
-		Items item1 = new Items();
+		Set<Item> cartItems = cart.getItems();
+
+		assertNull(cartItems);
+
+		Item item1 = new Item();
 		item1.setCart(cart);
+
 		assertNotNull(item1);
-		Set<Items> itemsSet = new HashSet<Items>();
-		itemsSet.add(item1);
-		assertNotNull(itemsSet);
-		cart.setItems(itemsSet);
+
+		Set<Item> itemSet = new HashSet<>();
+		itemSet.add(item1);
+
+		assertNotNull(itemSet);
+		cart.setItems(itemSet);
+
 		assertNotNull(cart);
+
 		session.persist(cart);
 		session.getTransaction().commit();
 		session.close();
 
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-		cart = (Cart) session.get(Cart.class, new Long(1));
+		cart = session.get(Cart.class, 1L);
+
 		assertNotNull(cart);
 	}
 

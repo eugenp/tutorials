@@ -1,0 +1,34 @@
+{
+    "data": {
+        "searchAll": [
+            null,
+            {
+                "vin": "JTKKU4B41C1023346",
+                "year": 2012,
+                "make": "Toyota",
+                "model": "Scion",
+                "trim": "Xd"
+            },
+            {
+                "vin": "1G1JC1444PZ215071",
+                "year": 2000,
+                "make": "Chevrolet",
+                "model": "CAVALIER VL",
+                "trim": "RS"
+            }
+        ]
+    },
+    "errors": [
+        {
+            "message": "Cannot return null for non-nullable type: 'String' within parent 'Vehicle' (/searchAll[0]/trim)",
+            "path": [
+                "searchAll",
+                0,
+                "trim"
+            ],
+            "errorType": "DataFetchingException",
+            "locations": null,
+            "extensions": null
+        }
+    ]
+}

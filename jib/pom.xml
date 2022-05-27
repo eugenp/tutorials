@@ -43,4 +43,5 @@
     <properties>
         <jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
     </properties>
+
 </project>

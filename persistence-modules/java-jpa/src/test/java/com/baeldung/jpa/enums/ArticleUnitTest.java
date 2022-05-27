@@ -22,8 +22,9 @@ public class ArticleUnitTest {
     @BeforeClass
     public static void setup() {
         Map<String, String> properties = new HashMap<>();
-        properties.put("hibernate.show_sql", "true");
-        properties.put("hibernate.format_sql", "true");
+        // set these to true to see Hibernate SQL
+        properties.put("hibernate.show_sql", "false");
+        properties.put("hibernate.format_sql", "false");
         emFactory = Persistence.createEntityManagerFactory("jpa-h2", properties);
         em = emFactory.createEntityManager();
     }

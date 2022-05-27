@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+    postgres:
+        image: postgres:12.3-alpine
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+        expose:
+            - 5432
+        ports:
+            - 5432:5432
+        command: -p 5432        
+        volumes:
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+#            - postgres:/var/lib/postgresql/data
+
+    pgadmin:
+        image: dpage/pgadmin4:4.23
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+            PGADMIN_DEFAULT_PASSWORD: password
+            PGADMIN_LISTEN_PORT: 80
+        ports:
+            - 15432:80
+        volumes:
+            - pgadmin:/var/lib/pgadmin
+        depends_on:
+            - postgres
+
+volumes:
+    pgadmin:
