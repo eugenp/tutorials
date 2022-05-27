@@ -1,36 +1,36 @@
 package com.baeldung.junit5.order;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DefaultOrderUnitTest {
 
-    private static StringBuilder output = new StringBuilder("");
+    private static final StringBuilder output = new StringBuilder();
 
     @Test
     @DisplayName("Test A")
-    public void myATest() {
+    void myATest() {
         output.append("A");
     }
 
     @Test
     @DisplayName("Test B")
-    public void myBTest() {
+    void myBTest() {
         output.append("B");
     }
 
     @Test
     @DisplayName("Test C")
-    public void myCTest() {
+    void myCTest() {
         output.append("C");
     }
 
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "ABC");
+        assertEquals("ABC", output.toString());
     }
 
 }
