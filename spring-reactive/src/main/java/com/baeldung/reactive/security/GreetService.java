@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class GreetingService {
+public class GreetService {
 
     @PreAuthorize("hasRole('ADMIN')")
     public Mono<String> greet() {
