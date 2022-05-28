@@ -23,19 +23,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    // @Autowired
-    // private TicketRepository ticketRepository;
-    //
-    // @GetMapping("/ticket")
-    // public Optional<Ticket> getTicket(TicketId id) {
-    // return ticketRepository.findById(id);
-    // }
-    //
-    // @PostMapping("/ticket")
-    // public Ticket postTicket(@RequestBody Ticket ticket) {
-    // return ticketRepository.insert(ticket);
-    // }
-
     @GetMapping("/ticket")
     public Optional<Ticket> getTicket(TicketId id) {
         return customerService.find(id);
