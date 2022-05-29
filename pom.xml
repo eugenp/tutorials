@@ -437,6 +437,7 @@
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
                 <module>javax-servlets-2</module>
+                <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
@@ -898,6 +899,7 @@
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
                 <module>javax-servlets-2</module>
+                <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
