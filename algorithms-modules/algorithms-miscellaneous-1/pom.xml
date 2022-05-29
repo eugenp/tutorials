@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>algorithms-miscellaneous-1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>algorithms-miscellaneous-1</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>algorithms-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons-math3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.dpaukov</groupId>
+            <artifactId>combinatoricslib3</artifactId>
+            <version>${combinatoricslib3.version}</version>
+        </dependency>
+    </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura.plugin.version}</version>
+                <configuration>
+                    <instrumentation>
+                        <ignores>
+                            <ignore>com/baeldung/algorithms/dijkstra/*</ignore>
+                        </ignores>
+                        <excludes>
+                            <exclude>com/baeldung/algorithms/dijkstra/*</exclude>
+                        </excludes>
+                    </instrumentation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <properties>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <commons-codec.version>1.11</commons-codec.version>
+        <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
+        <cobertura.plugin.version>2.7</cobertura.plugin.version>
+    </properties>
+
+</project>

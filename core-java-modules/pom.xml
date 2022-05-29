@@ -35,6 +35,7 @@
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
+        <module>core-java-collections-list-4</module>
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
@@ -73,6 +74,7 @@
         <module>core-java-lang-2</module>
         <module>core-java-lang-3</module>
         <module>core-java-lang-4</module>
+        <module>core-java-lang-5</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-math-3</module>
@@ -101,7 +103,6 @@
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
         <module>core-java-serialization</module>
-        <module>core-java-static-instance-block</module>
         <module>core-java-security-algorithms</module>
         <module>core-java-streams</module>
         <module>core-java-streams-2</module>
@@ -118,6 +119,9 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
+        <module>java-collections-conversions</module>
+        <module>java-collections-conversions-2</module>
+        <module>java-collections-maps-3</module>
         <module>pre-jpms</module>
     </modules>
 

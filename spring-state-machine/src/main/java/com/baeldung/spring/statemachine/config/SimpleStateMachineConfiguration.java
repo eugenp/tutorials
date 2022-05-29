@@ -38,7 +38,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
           .stateEntry("S3", entryAction())
           .stateExit("S3", exitAction())
           .state("S4", executeAction(), errorAction())
-          .stateDo("S5", executeAction());
+          .state("S5", executeAction(), errorAction());
 
     }
 
