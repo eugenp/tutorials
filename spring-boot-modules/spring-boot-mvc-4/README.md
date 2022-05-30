@@ -9,3 +9,4 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Configure a Spring Boot Web Application](https://www.baeldung.com/spring-boot-application-configuration)
 - [A Quick Intro to the SpringBootServletInitializer](https://www.baeldung.com/spring-boot-servlet-initializer)
 - [A Guide to Spring in Eclipse STS](https://www.baeldung.com/eclipse-sts-spring)
+- [Hide a Request Field in Swagger API](https://www.baeldung.com/spring-swagger-hide-field)

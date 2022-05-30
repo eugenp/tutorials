@@ -25,10 +25,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <lombok.version>1.18.12</lombok.version>
-    </properties>
-
 </project>

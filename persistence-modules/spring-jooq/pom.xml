@@ -195,7 +195,7 @@
     </build>
 
     <properties>
-        <org.jooq.version>3.12.4</org.jooq.version>
+        <org.jooq.version>3.14.15</org.jooq.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>

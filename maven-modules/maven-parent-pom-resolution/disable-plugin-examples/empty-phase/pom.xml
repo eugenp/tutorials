@@ -21,7 +21,7 @@
                 <executions>
                     <execution>
                         <id>enforce-file-exists</id>
-                        <phase/>
+                        <phase />
                     </execution>
                 </executions>
             </plugin>
