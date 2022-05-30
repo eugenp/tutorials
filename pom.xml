@@ -616,7 +616,7 @@
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
 
-                <module>spring-cloud</module>
+                <module>spring-cloud-modules</module>
                 <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-cloud-data-flow</module>
@@ -1072,7 +1072,7 @@
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
 
-                <module>spring-cloud</module>
+                <module>spring-cloud-modules</module>
                 <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-cloud-data-flow</module>
