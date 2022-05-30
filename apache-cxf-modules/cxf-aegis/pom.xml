@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>apache-cxf</artifactId>
+        <artifactId>apache-cxf-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
