@@ -20,6 +20,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-context.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring-test.version}</version>
         </dependency>
@@ -32,8 +37,9 @@
     </dependencies>
 
     <properties>
-        <spring-statemachine-core.version>1.2.3.RELEASE</spring-statemachine-core.version>
-        <spring-test.version>4.3.7.RELEASE</spring-test.version>
+        <spring-statemachine-core.version>3.2.0</spring-statemachine-core.version>
+        <spring-context.version>5.3.19</spring-context.version>
+        <spring-test.version>5.3.19</spring-test.version>
         <jayway.awaitility.version>1.7.0</jayway.awaitility.version>
     </properties>
 

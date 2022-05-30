@@ -15,23 +15,32 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 public class SecurityIntegrationTest {
 
     @Autowired
-    ApplicationContext context;
+    private ApplicationContext context;
 
-    private WebTestClient rest;
+    private WebTestClient webTestClient;
 
     @BeforeEach
     public void setup() {
-        this.rest = WebTestClient.bindToApplicationContext(this.context).configureClient().build();
+        webTestClient = WebTestClient.bindToApplicationContext(context)
+          .configureClient()
+          .build();
     }
 
     @Test
     public void whenNoCredentials_thenRedirectToLogin() {
-        this.rest.get().uri("/").exchange().expectStatus().is3xxRedirection();
+        webTestClient.get()
+          .uri("/")
+          .exchange()
+          .expectStatus().is3xxRedirection();
     }
 
     @Test
     @WithMockUser
     public void whenHasCredentials_thenSeesGreeting() {
-        this.rest.get().uri("/").exchange().expectStatus().isOk().expectBody(String.class).isEqualTo("Hello, user");
+        webTestClient.get()
+          .uri("/")
+          .exchange()
+          .expectStatus().isOk()
+          .expectBody(String.class).isEqualTo("Hello, user");
     }
 }

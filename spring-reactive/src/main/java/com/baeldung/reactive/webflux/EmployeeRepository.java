@@ -10,46 +10,32 @@ import java.util.Map;
 @Repository
 public class EmployeeRepository {
 
-    static Map<String, Employee> employeeData;
-
-    static Map<String, String> employeeAccessData;
+    private static final Map<String, Employee> EMPLOYEE_DATA;
 
     static {
-        employeeData = new HashMap<>();
-        employeeData.put("1", new Employee("1", "Employee 1"));
-        employeeData.put("2", new Employee("2", "Employee 2"));
-        employeeData.put("3", new Employee("3", "Employee 3"));
-        employeeData.put("4", new Employee("4", "Employee 4"));
-        employeeData.put("5", new Employee("5", "Employee 5"));
-        employeeData.put("6", new Employee("6", "Employee 6"));
-        employeeData.put("7", new Employee("7", "Employee 7"));
-        employeeData.put("8", new Employee("8", "Employee 8"));
-        employeeData.put("9", new Employee("9", "Employee 9"));
-        employeeData.put("10", new Employee("10", "Employee 10"));
-
-        employeeAccessData = new HashMap<>();
-        employeeAccessData.put("1", "Employee 1 Access Key");
-        employeeAccessData.put("2", "Employee 2 Access Key");
-        employeeAccessData.put("3", "Employee 3 Access Key");
-        employeeAccessData.put("4", "Employee 4 Access Key");
-        employeeAccessData.put("5", "Employee 5 Access Key");
-        employeeAccessData.put("6", "Employee 6 Access Key");
-        employeeAccessData.put("7", "Employee 7 Access Key");
-        employeeAccessData.put("8", "Employee 8 Access Key");
-        employeeAccessData.put("9", "Employee 9 Access Key");
-        employeeAccessData.put("10", "Employee 10 Access Key");
+        EMPLOYEE_DATA = new HashMap<>();
+        EMPLOYEE_DATA.put("1", new Employee("1", "Employee 1"));
+        EMPLOYEE_DATA.put("2", new Employee("2", "Employee 2"));
+        EMPLOYEE_DATA.put("3", new Employee("3", "Employee 3"));
+        EMPLOYEE_DATA.put("4", new Employee("4", "Employee 4"));
+        EMPLOYEE_DATA.put("5", new Employee("5", "Employee 5"));
+        EMPLOYEE_DATA.put("6", new Employee("6", "Employee 6"));
+        EMPLOYEE_DATA.put("7", new Employee("7", "Employee 7"));
+        EMPLOYEE_DATA.put("8", new Employee("8", "Employee 8"));
+        EMPLOYEE_DATA.put("9", new Employee("9", "Employee 9"));
+        EMPLOYEE_DATA.put("10", new Employee("10", "Employee 10"));
     }
 
     public Mono<Employee> findEmployeeById(String id) {
-        return Mono.just(employeeData.get(id));
+        return Mono.just(EMPLOYEE_DATA.get(id));
     }
 
     public Flux<Employee> findAllEmployees() {
-        return Flux.fromIterable(employeeData.values());
+        return Flux.fromIterable(EMPLOYEE_DATA.values());
     }
 
     public Mono<Employee> updateEmployee(Employee employee) {
-        Employee existingEmployee = employeeData.get(employee.getId());
+        Employee existingEmployee = EMPLOYEE_DATA.get(employee.getId());
         if (existingEmployee != null) {
             existingEmployee.setName(employee.getName());
         }
