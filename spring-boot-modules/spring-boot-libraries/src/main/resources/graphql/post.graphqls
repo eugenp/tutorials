@@ -4,6 +4,7 @@ type Post {
     text: String!
     category: String
     author: Author!
+    first_author: Author!
 }
 
 type Author {
