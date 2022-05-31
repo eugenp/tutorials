@@ -13,17 +13,23 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jmock.Expectations;
-import org.jmock.Mockery;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import mockit.Expectations;
+import mockit.Mocked;
+
 class UserServletUnitTest {
 
     private UserServlet servlet;
     private StringWriter writer;
+    
+    @Mocked
+    HttpServletRequest mockRequest;
+    @Mocked
+    HttpServletResponse mockResponse;
 
     @BeforeEach
     public void setUp() throws IOException {
@@ -59,28 +65,17 @@ class UserServletUnitTest {
     }
 
     @Test
-    void givenHttpServletRequest_whenMockedWithJMock_thenReturnsParameterValues() throws IOException {
-        Mockery context = new Mockery();
-        // mock HttpServletRequest & HttpServletResponse
-        HttpServletRequest request = context.mock(HttpServletRequest.class);
-        HttpServletResponse response = context.mock(HttpServletResponse.class);
-
-        // mock the methods and return types
-        context.checking(new Expectations() {
-            {
-                oneOf(request).getParameter("firstName");
-                will(returnValue("jMock"));
-                oneOf(request).getParameter("lastName");
-                will(returnValue("test"));
-                oneOf(response).getWriter();
-                will(returnValue(new PrintWriter(writer)));
-            }
-        });
-
-        servlet.doGet(request, response);
-
-        context.assertIsSatisfied();
-        assertThat(writer.toString()).isEqualTo("Full Name: jMock test");
+    void givenHttpServletRequest_whenMockedWithJMockit_thenReturnsParameterValues() throws IOException {
+        
+        new Expectations() {{
+            mockRequest.getParameter("firstName"); result = "JMockit";
+            mockRequest.getParameter("lastName"); result = "Test";
+            mockResponse.getWriter(); result = new PrintWriter(writer);
+         }};
+        
+        servlet.doGet(mockRequest, mockResponse);
+        
+        assertThat(writer.toString()).isEqualTo("Full Name: JMockit Test");
     }
 
     @Test

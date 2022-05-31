@@ -40,9 +40,9 @@
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jmock</groupId>
-            <artifactId>jmock-junit5</artifactId>
-            <version>${jmock.version}</version>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -65,11 +65,26 @@
         </dependency>
     </dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<argLine>
+          			  -javaagent:"${settings.localRepository}"/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+         			</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
     <properties>
         <org.apache.httpcomponents.version>4.5.13</org.apache.httpcomponents.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <jmock.version>2.12.0</jmock.version>
+        <jmockit.version>1.49</jmockit.version>
         <spring-test.version>5.3.20</spring-test.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
