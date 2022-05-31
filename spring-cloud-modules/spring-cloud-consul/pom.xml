@@ -55,7 +55,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-starter-consul.version>2.2.3.RELEASE</spring-cloud-starter-consul.version>
+        <spring-cloud-starter-consul.version>3.1.1</spring-cloud-starter-consul.version>
         <kinguinltdhk.version>0.3.1</kinguinltdhk.version>
         <start-class>com.baeldung.spring.cloud.consul.discovery.DiscoveryClientApplication</start-class>
     </properties>
