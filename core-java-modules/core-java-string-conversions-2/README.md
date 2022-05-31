@@ -11,5 +11,4 @@ This module contains articles about string conversions from/to another type.
 - [Convert a String to Camel Case](https://www.baeldung.com/java-string-to-camel-case)
 - [Convert a ByteBuffer to String in Java](https://www.baeldung.com/java-bytebuffer-to-string)
 - [Convert String to Float and Back in Java](https://www.baeldung.com/java-string-to-float)
-- [Convert String to Integer in Java](https://www.baeldung.com/java-convert-string-to-int-or-integer)
 - More articles: [[<-- prev]](/core-java-string-conversions)
