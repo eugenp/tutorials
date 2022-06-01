@@ -79,9 +79,7 @@ public class FileLocks {
             while (buffer.hasRemaining()) {
                 channel.write(buffer, channel.size());
             }
-            LOG.debug("This was written to the file");
-            Files.lines(path)
-                .forEach(LOG::debug);
+            
             return lock;
         }
     }

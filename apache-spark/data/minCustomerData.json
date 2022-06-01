@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "gender": "Female",
+    "name": "Jo",
+    "transaction_amount": 200
+  },
+  {
+    "id":"2",
+    "gender": "Male",
+    "name": "Mike",
+    "transaction_amount": 500
+  },
+  {
+    "id": "3",
+    "gender": "Male",
+    "name": "Dave",
+    "transaction_amount": 5000
+  }
+]
