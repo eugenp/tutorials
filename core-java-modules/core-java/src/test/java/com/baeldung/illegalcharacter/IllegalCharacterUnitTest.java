@@ -15,6 +15,7 @@ import org.apache.commons.io.input.BOMInputStream;
 import org.junit.Test;
 
 import com.google.gdata.util.io.base.UnicodeReader;
+import java.nio.charset.StandardCharsets;
 
 public class IllegalCharacterUnitTest {
 
@@ -43,7 +44,7 @@ public class IllegalCharacterUnitTest {
         String line;
         String actual = "";
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ioStream)))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ioStream), StandardCharsets.UTF_8))) {
             while ((line = br.readLine()) != null) {
                 actual += line.replace("\uFEFF", "");
             }
