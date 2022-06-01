@@ -10,7 +10,12 @@ public class MyClass {
     private Ref1 o;
 
     /**
-     * Default constructor
+     * Default no-arg constructor
+     */
+    public MyClass() {}
+
+    /**
+     * Constructor with all args
      * @param i
      * @param c
      * @param o
@@ -22,16 +27,6 @@ public class MyClass {
     }
 
     /**
-     * Overridden implementation of Object.clone()
-     * @return
-     * @throws CloneNotSupportedException
-     */
-    public Object clone() throws CloneNotSupportedException {
-        MyClass clonedObject = (MyClass) super.clone();
-        return clonedObject;
-    }
-
-    /**
      * Copy Constructor
      * @return
      * @throws CloneNotSupportedException
@@ -40,6 +35,16 @@ public class MyClass {
         this.i = instance.i;
         this.c = instance.c;
         this.o = instance.o;
+    }
+
+    /**
+     * Overridden implementation of Object.clone()
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    public Object clone() throws CloneNotSupportedException {
+        MyClass clonedObject = (MyClass) super.clone();
+        return clonedObject;
     }
 
     public int getI() {

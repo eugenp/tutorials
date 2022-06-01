@@ -1,7 +1,9 @@
 package com.baeldung.cloning;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import org.apache.commons.beanutils.BeanUtils;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -75,5 +77,31 @@ public class JavaCopyUnitTest {
         assertEquals(original.getC(), copy.getC());
         // Same Object Reference
         assertEquals(original.getO(), copy.getO());
+    }
+
+    @Test
+    public void beanUtilsClone() throws InvocationTargetException, NoSuchMethodException,
+                                        InstantiationException, IllegalAccessException {
+
+        // Given
+        MyClass originalMyClass = new MyClass(24, 'p', null);
+        CloneableMyClass originalCloneableMyClass = new CloneableMyClass(24, 'p', null);
+
+        // When
+        MyClass copyMyClass = (MyClass) BeanUtils.cloneBean(originalMyClass);
+        CloneableMyClass copyCloneableMyClass = (CloneableMyClass) BeanUtils.cloneBean(originalCloneableMyClass);
+
+        // Then
+        // Distinct objects - 'copy' and 'original'
+        assertFalse(originalMyClass.equals(copyMyClass));
+        assertFalse(originalCloneableMyClass.equals(copyCloneableMyClass));
+        // Same Primitive values
+        assertEquals(originalMyClass.getI(), copyMyClass.getI());
+        assertEquals(originalMyClass.getC(), copyMyClass.getC());
+        assertEquals(originalCloneableMyClass.getC(), copyCloneableMyClass.getC());
+        assertEquals(originalCloneableMyClass.getC(), copyCloneableMyClass.getC());
+        // Same Object Reference
+        assertEquals(originalMyClass.getO(), copyMyClass.getO());
+        assertEquals(originalCloneableMyClass.getO(), copyCloneableMyClass.getO());
     }
 }

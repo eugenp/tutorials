@@ -10,6 +10,11 @@ public class CloneableMyClass implements Cloneable {
     Ref1 o;
 
     /**
+     * Default no-arg constructor
+     */
+    public CloneableMyClass() {}
+
+    /**
      * Default constructor
      * @param i
      * @param c
@@ -22,16 +27,6 @@ public class CloneableMyClass implements Cloneable {
     }
 
     /**
-     * Overridden implementation of Object.clone()
-     * @return
-     * @throws CloneNotSupportedException
-     */
-    public Object clone() throws CloneNotSupportedException {
-        CloneableMyClass clonedObject = (CloneableMyClass) super.clone();
-        return clonedObject;
-    }
-
-    /**
      * Copy Constructor
      * @return
      * @throws CloneNotSupportedException
@@ -40,6 +35,16 @@ public class CloneableMyClass implements Cloneable {
         this.i = instance.i;
         this.c = instance.c;
         this.o = instance.o;
+    }
+
+    /**
+     * Overridden implementation of Object.clone()
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    public Object clone() throws CloneNotSupportedException {
+        CloneableMyClass clonedObject = (CloneableMyClass) super.clone();
+        return clonedObject;
     }
 
     public int getI() {
