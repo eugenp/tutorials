@@ -32,4 +32,14 @@ public class HttpClientParametersLiveTest {
         assertEquals(response.statusCode(), 200);
     }
 
+    @Test
+    public void givenQueryParams_whenGetRequestWithDefaultConfiguration_thenResponseOk() throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create("https://postman-echo.com/get?param1=value1&param2=value2"))
+          .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        assertEquals(response.statusCode(), 200);
+    }
+
 }
