@@ -11,11 +11,12 @@
 
 package com.baeldung.tasksservice.adapters.repository;
 
+import java.time.Instant;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.Instant;
 
 @Entity
 @Table(name = "tasks")
@@ -32,8 +33,7 @@ public class TaskRecord {
     private String assignedTo;
     private String status;
 
-    public TaskRecord(final String id, final String title, final Instant created, final String createdBy,
-        final String assignedTo, final String status) {
+    public TaskRecord(final String id, final String title, final Instant created, final String createdBy, final String assignedTo, final String status) {
         this.id = id;
         this.title = title;
         this.created = created;

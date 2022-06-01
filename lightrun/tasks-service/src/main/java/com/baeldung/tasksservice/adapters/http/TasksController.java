@@ -15,9 +15,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.baeldung.tasksservice.adapters.repository.TaskRecord;
-import com.baeldung.tasksservice.service.TasksService;
-import com.baeldung.tasksservice.service.UnknownTaskException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +28,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.baeldung.tasksservice.adapters.repository.TaskRecord;
+import com.baeldung.tasksservice.service.TasksService;
+import com.baeldung.tasksservice.service.UnknownTaskException;
 
 @RestController
 @RequestMapping("/")
@@ -46,13 +47,12 @@ class TasksController {
     }
 
     @GetMapping
-    public List<TaskResponse> searchTasks(@RequestParam("status") Optional<String> status,
-            @RequestParam("createdBy") Optional<String> createdBy) {
+    public List<TaskResponse> searchTasks(@RequestParam("status") Optional<String> status, @RequestParam("createdBy") Optional<String> createdBy) {
         var tasks = tasksService.search(status, createdBy);
 
         return tasks.stream()
-                .map(this::buildResponse)
-                .collect(Collectors.toList());
+            .map(this::buildResponse)
+            .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
@@ -67,16 +67,14 @@ class TasksController {
     }
 
     @PatchMapping("/{id}")
-    public TaskResponse patchTask(@PathVariable("id") String id,
-            @RequestBody PatchTaskRequest body) {
+    public TaskResponse patchTask(@PathVariable("id") String id, @RequestBody PatchTaskRequest body) {
         var task = tasksService.updateTask(id, body.status(), body.assignedTo());
 
         return buildResponse(task);
     }
 
     private TaskResponse buildResponse(final TaskRecord task) {
-        return new TaskResponse(task.getId(), task.getTitle(), task.getCreated(), task.getCreatedBy(),
-                task.getAssignedTo(), task.getStatus());
+        return new TaskResponse(task.getId(), task.getTitle(), task.getCreated(), task.getCreatedBy(), task.getAssignedTo(), task.getStatus());
     }
 
     @ExceptionHandler(UnknownTaskException.class)
