@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import org.apache.commons.io.ByteOrderMark;
@@ -43,7 +44,7 @@ public class IllegalCharacterUnitTest {
         String line;
         String actual = "";
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ioStream)))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(ioStream), StandardCharsets.UTF_8))) {
             while ((line = br.readLine()) != null) {
                 actual += line.replace("\uFEFF", "");
             }
