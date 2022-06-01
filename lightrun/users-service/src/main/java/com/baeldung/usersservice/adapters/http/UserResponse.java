@@ -11,6 +11,5 @@
 
 package com.baeldung.usersservice.adapters.http;
 
-public record UserResponse(String id,
-                           String name) {
+public record UserResponse(String id, String name) {
 }

@@ -333,16 +333,7 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-genetic</module>
-                <module>algorithms-miscellaneous-1</module>
-                <module>algorithms-miscellaneous-2</module>
-                <module>algorithms-miscellaneous-3</module>
-                <module>algorithms-miscellaneous-4</module>
-                <module>algorithms-miscellaneous-5</module>
-                <module>algorithms-miscellaneous-6</module>
-                <module>algorithms-searching</module>
-                <module>algorithms-sorting</module>
-                <module>algorithms-sorting-2</module>
+                <module>algorithms-modules</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -366,7 +357,7 @@
                 <module>atomix</module>
 
                 <module>aws-modules</module>
-                
+
                 <module>axon</module>
 
                 <module>azure</module>
@@ -446,6 +437,7 @@
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
                 <module>javax-servlets-2</module>
+                <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
@@ -624,7 +616,7 @@
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
 
-                <module>spring-cloud</module>
+                <module>spring-cloud-modules</module>
                 <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-cloud-data-flow</module>
@@ -803,16 +795,7 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-genetic</module>
-                <module>algorithms-miscellaneous-1</module>
-                <module>algorithms-miscellaneous-2</module>
-                <module>algorithms-miscellaneous-3</module>
-                <module>algorithms-miscellaneous-4</module>
-                <module>algorithms-miscellaneous-5</module>
-                <module>algorithms-miscellaneous-6</module>
-                <module>algorithms-searching</module>
-                <module>algorithms-sorting</module>
-                <module>algorithms-sorting-2</module>
+                <module>algorithms-modules</module>                
                 <module>annotations</module>
                 <module>antlr</module>
 
@@ -836,7 +819,7 @@
                 <module>atomix</module>
 
                 <module>aws-modules</module>
-                
+
                 <module>axon</module>
 
                 <module>azure</module>
@@ -895,7 +878,7 @@
                 <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
-                <module>hystrix</module>                
+                <module>hystrix</module>
 
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
@@ -916,6 +899,7 @@
                 <module>java-websocket</module>
                 <module>javax-servlets</module>
                 <module>javax-servlets-2</module>
+                <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
@@ -1088,7 +1072,7 @@
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
 
-                <module>spring-cloud</module>
+                <module>spring-cloud-modules</module>
                 <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-cloud-data-flow</module>
@@ -1209,6 +1193,7 @@
 
                 <module>jenkins/plugins</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -1317,7 +1302,7 @@
                  <module>core-java-modules/multimodulemavenproject</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
-                 <module>ddd-modules</module>
+                 <module>ddd-contexts</module>
                  <module>docker</module>
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
@@ -1326,7 +1311,7 @@
                  <module>quarkus-vs-springboot</module>
                  <module>quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>spring-boot-modules/spring-boot-camel</module>	 
+                 <module>spring-boot-modules/spring-boot-camel</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
@@ -1385,7 +1370,7 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
-                <module>ddd-modules</module>
+                <module>ddd-contexts</module>
                 <module>docker</module>
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>

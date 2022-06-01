@@ -9,12 +9,12 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder
-                .additionalInterceptors((request, body, execution) -> {
-                    request.getHeaders().add("X-Request-Id", RequestIdGenerator.getRequestId());
+        return builder.additionalInterceptors((request, body, execution) -> {
+                request.getHeaders()
+                    .add("X-Request-Id", RequestIdGenerator.getRequestId());
 
-                    return execution.execute(request, body);
-                })
-                .build();
+                return execution.execute(request, body);
+            })
+            .build();
     }
 }

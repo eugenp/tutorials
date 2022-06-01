@@ -17,9 +17,9 @@ public class TaskRepository {
 
     public Task getTaskById(String id) {
         var uri = UriComponentsBuilder.fromUriString(tasksService)
-                .path(id)
-                .build()
-                .toUri();
+            .path(id)
+            .build()
+            .toUri();
 
         try {
             return restTemplate.getForObject(uri, Task.class);

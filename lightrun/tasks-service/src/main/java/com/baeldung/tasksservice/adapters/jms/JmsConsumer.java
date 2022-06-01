@@ -1,8 +1,8 @@
 package com.baeldung.tasksservice.adapters.jms;
 
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Service;
 
 import com.baeldung.tasksservice.service.DeletedUserService;
 
