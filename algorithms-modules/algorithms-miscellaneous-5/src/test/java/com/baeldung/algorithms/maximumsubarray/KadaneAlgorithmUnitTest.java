@@ -27,4 +27,16 @@ class KadaneAlgorithmUnitTest {
         //then
         assertEquals(-1, maxSum);
     }
+    
+    @Test
+    void givenArrayWithAllPosiitveNumbersWhenMaximumSubarrayThenReturnsExpectedResult() {
+        //given
+        int[] arr = new int[] {4, 1, 3, 2};
+        //when
+        KadaneAlgorithm algorithm = new KadaneAlgorithm();
+        int maxSum = algorithm.maxSubArraySum(arr);
+        //then
+        assertEquals(10, maxSum);
+    }
+
 }
