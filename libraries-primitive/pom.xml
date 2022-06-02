@@ -69,12 +69,6 @@
     <properties>
         <fastutil.version>8.2.2</fastutil.version>
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <jmh-core.version>1.28</jmh-core.version>
-        <jmh-generator.version>1.28</jmh-generator.version>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
