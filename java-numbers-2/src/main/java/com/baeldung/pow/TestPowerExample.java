@@ -1,5 +1,6 @@
 package com.baeldung.pow;
 
+import PowerExample
 import java.text.DecimalFormat;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
