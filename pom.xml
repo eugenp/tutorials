@@ -337,7 +337,7 @@
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-cxf</module>
+                <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
@@ -795,11 +795,11 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-modules</module>                
+                <module>algorithms-modules</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-cxf</module>
+                <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
