@@ -9,7 +9,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>core-groovy-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
