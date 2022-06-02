@@ -14,6 +14,7 @@ import javax.persistence.PersistenceException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class DetachedEntityUnitTest {
 
@@ -40,7 +41,7 @@ public class DetachedEntityUnitTest {
     public void givenDetachedPost_whenTryingToPersist_thenThrowException() {
         detachedPost.setTitle("Hibernate Tutorial for Absolute Beginners");
 
-        Assertions.assertThatThrownBy(() -> session.persist(detachedPost))
+        assertThatThrownBy(() -> session.persist(detachedPost))
             .isInstanceOf(PersistenceException.class)
             .hasMessageContaining("org.hibernate.PersistentObjectException: detached entity passed to persist");
     }
@@ -69,7 +70,7 @@ public class DetachedEntityUnitTest {
         session.getTransaction()
             .commit();
 
-        Assertions.assertThatThrownBy(() -> session.persist(detachedPost))
+        assertThatThrownBy(() -> session.persist(detachedPost))
             .isInstanceOf(PersistenceException.class)
             .hasMessageContaining("org.hibernate.PersistentObjectException: detached entity passed to persist");
     }
