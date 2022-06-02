@@ -1,16 +1,10 @@
 package com.baeldung.multiple_bean_instantiation.solution3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 @Qualifier(value = "personOne, personTwo")
-public class Person implements FactoryBean {
+public class Person implements FactoryBean<Object> {
 	private String firstName;
 	private String secondName;
 

@@ -1,10 +1,8 @@
 package com.baeldung.multiple_bean_instantiation.solution3;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.multiple_bean_instantiation.solution3.Person;
-import com.baeldung.multiple_bean_instantiation.solution3.PersonConfig;
 
 /**
  * Hello world!
