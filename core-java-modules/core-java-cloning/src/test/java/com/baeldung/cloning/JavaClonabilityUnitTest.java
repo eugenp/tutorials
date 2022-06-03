@@ -9,7 +9,7 @@ import org.apache.commons.lang3.SerializationUtils;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class JavaCopyUnitTest {
+public class JavaClonabilityUnitTest {
 
     @Test(expected = CloneNotSupportedException.class)
     public void cloneNonCloneable() throws CloneNotSupportedException {

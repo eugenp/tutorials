@@ -17,7 +17,7 @@ public class MyClass implements Serializable {
     public MyClass() {}
 
     /**
-     * Constructor with all args
+     * Primary constructor
      * @param i
      * @param c
      * @param o

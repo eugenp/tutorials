@@ -17,7 +17,7 @@ public class CloneableMyClass implements Cloneable, Serializable {
     public CloneableMyClass() {}
 
     /**
-     * Default constructor
+     * Primary constructor
      * @param i
      * @param c
      * @param o
