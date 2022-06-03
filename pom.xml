@@ -1292,8 +1292,7 @@
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>
-                 <module>core-java-modules/multimodulemavenproject</module>
+                 <module>core-java-modules/core-java-networking-3</module>                 
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-contexts</module>
@@ -1361,8 +1360,7 @@
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/multimodulemavenproject</module>
+                <module>core-java-modules/core-java-networking-3</module>                
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-contexts</module>
                 <module>docker</module>
