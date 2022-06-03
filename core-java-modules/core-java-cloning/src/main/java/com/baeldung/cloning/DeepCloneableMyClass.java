@@ -2,7 +2,7 @@ package com.baeldung.cloning;
 
 import java.io.Serializable;
 
-public class CloneableMyClass implements Cloneable, Serializable {
+public class DeepCloneableMyClass implements Cloneable {
 
     // Primitives
     private int i;
@@ -12,17 +12,12 @@ public class CloneableMyClass implements Cloneable, Serializable {
     private Ref1 o;
 
     /**
-     * Default no-arg constructor
-     */
-    public CloneableMyClass() {}
-
-    /**
      * Primary constructor
      * @param i
      * @param c
      * @param o
      */
-    public CloneableMyClass(int i, char c, Ref1 o) {
+    public DeepCloneableMyClass(int i, char c, Ref1 o) {
         this.i = i;
         this.c = c;
         this.o = o;
@@ -33,10 +28,10 @@ public class CloneableMyClass implements Cloneable, Serializable {
      * @return
      * @throws CloneNotSupportedException
      */
-    public CloneableMyClass(CloneableMyClass instance) {
+    public DeepCloneableMyClass(DeepCloneableMyClass instance) {
         this.i = instance.i;
         this.c = instance.c;
-        this.o = instance.o;
+        this.o = new Ref1(new Ref2());
     }
 
     /**
@@ -45,7 +40,8 @@ public class CloneableMyClass implements Cloneable, Serializable {
      * @throws CloneNotSupportedException
      */
     public Object clone() throws CloneNotSupportedException {
-        CloneableMyClass clonedObject = (CloneableMyClass) super.clone();
+        DeepCloneableMyClass clonedObject = (DeepCloneableMyClass) super.clone();
+        clonedObject.o = (Ref1) this.o.clone();
         return clonedObject;
     }
 

@@ -12,7 +12,7 @@ import org.junit.Test;
 public class JavaShallowCopyUnitTest {
 
     @Test
-    public void shallowCopyUsingCloneMethod() throws CloneNotSupportedException {
+    public void shallowCopyViaCloneMethod() throws CloneNotSupportedException {
 
         // Given
         CloneableMyClass original = new CloneableMyClass(24, 'p', new Ref1(null));
@@ -31,7 +31,7 @@ public class JavaShallowCopyUnitTest {
     }
 
     @Test
-    public void shallowCopyUsingCopyConstructor() {
+    public void shallowCopyViaCopyConstructor() {
 
         // Given
         CloneableMyClass original = new CloneableMyClass(24, 'p', new Ref1(null));
