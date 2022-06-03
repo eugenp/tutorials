@@ -423,11 +423,7 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
-                <module>java-numbers</module>
-                <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
-                <module>java-numbers-4</module>
+                <module>java-lite</module>                
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
