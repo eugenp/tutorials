@@ -122,6 +122,7 @@
         <module>java-collections-conversions</module>
         <module>java-collections-conversions-2</module>
         <module>java-collections-maps-3</module>
+        <module>pre-jpms</module>
         <module>java-numbers</module>
         <module>java-numbers-2</module>
         <module>java-numbers-3</module>
