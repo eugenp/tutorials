@@ -13,6 +13,12 @@ public class Ticket {
     public Ticket() {
     }
 
+    public Ticket(TicketId id, String event) {
+        super();
+        this.id = id;
+        this.event = event;
+    }
+
     public TicketId getId() {
         return id;
     }

@@ -6,7 +6,6 @@ import static org.junit.Assert.assertThrows;
 
 import java.util.Optional;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +26,26 @@ public class CustomerServiceIntegrationTest {
     @Autowired
     private CustomerService service;
 
-    private static Ticket ticket;
-    private static TicketId ticketId;
-
-    @BeforeClass
-    public static void setup() {
-        ticket = new Ticket();
-        ticket.setEvent("Event A");
-
-        ticketId = new TicketId();
-        ticketId.setDate("2020-01-01");
-        ticketId.setVenue("Venue A");
-        ticket.setId(ticketId);
-    }
-
     @Test
     public void givenCompositeId_whenObjectSaved_thenIdMatches() {
+        TicketId ticketId = new TicketId();
+        ticketId.setDate("2020-01-01");
+        ticketId.setVenue("Venue A");
+
+        Ticket ticket = new Ticket(ticketId, "Event A");
         Ticket savedTicket = service.insert(ticket);
+
         assertEquals(savedTicket.getId(), ticket.getId());
     }
 
     @Test
     public void givenCompositeId_whenSearchingByIdObject_thenFound() {
+        TicketId ticketId = new TicketId();
+        ticketId.setDate("2020-01-01");
+        ticketId.setVenue("Venue B");
+
+        service.insert(new Ticket(ticketId, "Event B"));
+
         Optional<Ticket> optionalTicket = service.find(ticketId);
 
         assertThat(optionalTicket.isPresent());
@@ -73,13 +70,11 @@ public class CustomerServiceIntegrationTest {
 
     @Test
     public void givenCompositeId_whenDupeInsert_thenExceptionIsThrown() {
-        Ticket ticket = new Ticket();
-        ticket.setEvent("C");
-
         TicketId ticketId = new TicketId();
         ticketId.setDate("2020-01-01");
         ticketId.setVenue("V");
-        ticket.setId(ticketId);
+
+        Ticket ticket = new Ticket(ticketId, "Event C");
 
         assertThrows(DuplicateKeyException.class, () -> {
             service.insert(ticket);
@@ -93,17 +88,12 @@ public class CustomerServiceIntegrationTest {
         ticketId.setDate("2020-01-01");
         ticketId.setVenue("Venue");
 
-        Ticket ticketA = new Ticket();
-        ticketA.setEvent("A");
-        ticketA.setId(ticketId);
-
+        Ticket ticketA = new Ticket(ticketId, "A");
         service.save(ticketA);
 
-        Ticket ticketB = new Ticket();
-        ticketB.setEvent("B");
-        ticketB.setId(ticketId);
-
+        Ticket ticketB = new Ticket(ticketId, "B");
         Ticket savedTicket = service.save(ticketB);
+
         assertEquals(savedTicket.getEvent(), ticketB.getEvent());
     }
 
