@@ -11,7 +11,7 @@
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
-        <artifactId>spring-ejb</artifactId>
+        <artifactId>spring-ejb-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 

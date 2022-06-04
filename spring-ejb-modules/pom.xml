@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.ejb</groupId>
-    <artifactId>spring-ejb</artifactId>
+    <artifactId>spring-ejb-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-ejb</name>
+    <name>spring-ejb-modules</name>
     <packaging>pom</packaging>
     <description>Spring EJB Tutorial</description>
 
@@ -24,7 +24,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of 
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of
                 junit:junit in the classpath. hence forcing the latest 4.13.2 available version for junit5 compatibility -->
             <dependency>
                 <groupId>junit</groupId>
