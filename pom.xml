@@ -402,7 +402,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql</module>
+                <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -862,7 +862,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql</module>
+                <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -1298,7 +1298,7 @@
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-contexts</module>
-                 <module>docker</module>
+                 <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
@@ -1366,7 +1366,7 @@
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-contexts</module>
-                <module>docker</module>
+                <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
