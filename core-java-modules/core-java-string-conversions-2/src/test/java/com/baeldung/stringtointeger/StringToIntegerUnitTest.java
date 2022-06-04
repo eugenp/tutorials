@@ -35,6 +35,8 @@ public class StringToIntegerUnitTest {
         assertEquals(expectedNumber3, givenNumber3);
     }
 
+//    public static int parseInt(CharSequence s, int beginIndex, int endIndex, int radix) throws NumberFormatException 
+//    This method is available in JDK 9 and above  
 //    @Test
 //    public void whenValidNumericStringWithRadixAndSubstringIsPassed_thenShouldConvertToPrimitiveInt() {
 //        int givenNumber1 = 14701;
