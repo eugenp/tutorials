@@ -9,7 +9,7 @@
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
-        <artifactId>spring-ejb</artifactId>
+        <artifactId>spring-ejb-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -37,7 +37,18 @@
             <groupId>org.apache.tomee</groupId>
             <artifactId>tomee-embedded</artifactId>
             <version>${tomee-embedded.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>com.sun.xml.messaging.saaj</groupId>
+            		<artifactId>saaj-impl</artifactId>
+            	</exclusion>
+            </exclusions>
         </dependency>
+		<dependency>
+		    <groupId>com.sun.xml.messaging.saaj</groupId>
+		    <artifactId>saaj-impl</artifactId>
+		    <version>3.0.0-M2</version>
+		</dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -94,12 +105,12 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
-                <dependency>
-                    <groupId>org.wildfly</groupId>
-                    <artifactId>wildfly-arquillian-container-managed</artifactId>
-                    <version>${wildfly.version}</version>
-                    <scope>test</scope>
-                </dependency>
+				<dependency>
+				    <groupId>org.wildfly.arquillian</groupId>
+				    <artifactId>wildfly-arquillian-container-managed</artifactId>
+				    <version>5.0.0.Alpha3</version>
+				    <scope>test</scope>
+				</dependency>
             </dependencies>
             <build>
                 <plugins>
@@ -181,7 +192,7 @@
 
     <properties>
         <arquillian-bom.version>1.6.0.Final</arquillian-bom.version>
-        <tomee-embedded.version>8.0.8</tomee-embedded.version>
+        <tomee-embedded.version>8.0.11</tomee-embedded.version>
         <glassfish-embedded-all.version>6.2.2</glassfish-embedded-all.version>
         <arquillian-glassfish-embedded-3.1.version>1.0.2</arquillian-glassfish-embedded-3.1.version>
         <wildfly.version>8.2.1.Final</wildfly.version>
