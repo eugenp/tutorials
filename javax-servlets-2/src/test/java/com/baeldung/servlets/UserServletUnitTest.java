@@ -40,12 +40,12 @@ class UserServletUnitTest {
     @Test
     void givenHttpServletRequest_whenUsingAnonymousClass_thenReturnsParameterValues() throws IOException {
         final Map<String, String[]> params = new HashMap<>();
-        params.put("firstName", new String[] { "bael" });
-        params.put("lastName", new String[] { "dung" });
+        params.put("firstName", new String[] { "Anonymous Class" });
+        params.put("lastName", new String[] { "Test" });
 
         servlet.doGet(TestUtil.getRequest(params), TestUtil.getResponse(writer));
 
-        assertThat(writer.toString()).isEqualTo("Full Name: bael dung");
+        assertThat(writer.toString()).isEqualTo("Full Name: Anonymous Class Test");
     }
 
     @Test
