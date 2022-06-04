@@ -7,7 +7,7 @@
     <description>JHipster Monolithic Application</description>
 
     <parent>
-        <artifactId>jhipster-modules</artifactId>
+        <artifactId>jhipster</artifactId>
         <groupId>com.baeldung.jhipster</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
