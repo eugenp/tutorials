@@ -1,4 +1,4 @@
-package test.java.com.baeldung.tutorials;
+package com.baeldung.stringtointeger;
 
 import org.junit.Assert;
 import org.junit.Test;
