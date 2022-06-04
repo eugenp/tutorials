@@ -372,7 +372,7 @@
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
-                <module>core-groovy-modules</module>
+                <module>core-groovy-modules</module>                
 
                 <module>core-java-modules</module>
 
@@ -740,8 +740,7 @@
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
-                <module>jhipster-modules</module>
-                <module>jhipster-5</module>
+                <module>jhipster</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -833,7 +832,7 @@
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
-
+                
                 <module>core-java-modules</module>
 
                 <module>couchbase</module>
@@ -1187,7 +1186,7 @@
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
-                <module>jhipster-modules</module>
+                <module>jhipster</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
 
