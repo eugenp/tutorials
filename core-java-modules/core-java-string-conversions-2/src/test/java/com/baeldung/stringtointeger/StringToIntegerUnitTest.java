@@ -1,6 +1,7 @@
 package com.baeldung.stringtointeger;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class StringToIntegerUnitTest {
@@ -14,9 +15,9 @@ public class StringToIntegerUnitTest {
         int expectedSignedNumber1 = Integer.parseInt("+11");
         int expectedSignedNumber2 = Integer.parseInt("-11");
         
-        Assert.assertEquals(expectedUnsignedNumber, givenNumber);
-        Assert.assertEquals(expectedSignedNumber1, givenNumber);
-        Assert.assertEquals(expectedSignedNumber2, givenNegativeNumber);
+        assertEquals(expectedUnsignedNumber, givenNumber);
+        assertEquals(expectedSignedNumber1, givenNumber);
+        assertEquals(expectedSignedNumber2, givenNegativeNumber);
     }
 
     @Test
@@ -29,9 +30,9 @@ public class StringToIntegerUnitTest {
         int expectedNumber2 = Integer.parseInt("A", 16);
         int expectedNumber3 = Integer.parseInt("7", 8);
         
-        Assert.assertEquals(expectedNumber1, givenNumber1);
-        Assert.assertEquals(expectedNumber2, givenNumber2);
-        Assert.assertEquals(expectedNumber3, givenNumber3);
+        assertEquals(expectedNumber1, givenNumber1);
+        assertEquals(expectedNumber2, givenNumber2);
+        assertEquals(expectedNumber3, givenNumber3);
     }
 
     @Test
@@ -42,8 +43,8 @@ public class StringToIntegerUnitTest {
         int expectedNumber1 = Integer.parseInt("ABCDEFG", 1, 4, 36);
         int expectedNumber2 = Integer.parseInt("abcdefg", 1, 6, 36);
 
-        Assert.assertEquals(expectedNumber1, givenNumber1);
-        Assert.assertEquals(expectedNumber2, givenNumber2);
+        assertEquals(expectedNumber1, givenNumber1);
+        assertEquals(expectedNumber2, givenNumber2);
     }
 
     @Test(expected = NumberFormatException.class)
@@ -60,9 +61,9 @@ public class StringToIntegerUnitTest {
         Integer expectedSignedNumber1 = Integer.valueOf("+11");
         Integer expectedSignedNumber2 = Integer.valueOf("-11");
         
-        Assert.assertEquals(expectedUnsignedNumber, givenNumber);
-        Assert.assertEquals(expectedSignedNumber1, givenNumber);
-        Assert.assertEquals(expectedSignedNumber2, givenNegativeNumber);
+        assertEquals(expectedUnsignedNumber, givenNumber);
+        assertEquals(expectedSignedNumber1, givenNumber);
+        assertEquals(expectedSignedNumber2, givenNegativeNumber);
     }
 
     @Test
@@ -76,10 +77,10 @@ public class StringToIntegerUnitTest {
         Integer expectedSignedNumber2 = Integer.valueOf(-11);
         Integer expectedUnicodeValue = Integer.valueOf('A');
         
-        Assert.assertEquals(expectedUnsignedNumber, givenNumber);
-        Assert.assertEquals(expectedSignedNumber1, givenNumber);
-        Assert.assertEquals(expectedSignedNumber2, givenNegativeNumber);
-        Assert.assertEquals(expectedUnicodeValue, givenUnicodeValue);
+        assertEquals(expectedUnsignedNumber, givenNumber);
+        assertEquals(expectedSignedNumber1, givenNumber);
+        assertEquals(expectedSignedNumber2, givenNegativeNumber);
+        assertEquals(expectedUnicodeValue, givenUnicodeValue);
     }
 
     @Test
@@ -92,9 +93,9 @@ public class StringToIntegerUnitTest {
         Integer expectedNumber2 = Integer.valueOf("A", 16);
         Integer expectedNumber3 = Integer.parseInt("7", 8);
         
-        Assert.assertEquals(expectedNumber1, givenNumber1);
-        Assert.assertEquals(expectedNumber2, givenNumber2);
-        Assert.assertEquals(expectedNumber3, givenNumber3);
+        assertEquals(expectedNumber1, givenNumber1);
+        assertEquals(expectedNumber2, givenNumber2);
+        assertEquals(expectedNumber3, givenNumber3);
     }
 
     @Test(expected = NumberFormatException.class)
