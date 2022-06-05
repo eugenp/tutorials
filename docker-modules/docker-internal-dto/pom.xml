@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.baeldung.docker</groupId>
-        <artifactId>docker</artifactId>
+        <artifactId>docker-modules</artifactId>
         <version>0.0.1</version>
     </parent>
 
