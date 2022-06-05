@@ -5,10 +5,7 @@ import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.baeldung.timeago.version7.TimeAgoCalculator;
-import com.baeldung.timeago.version7.TimeGranularity;
-
-public class TimeAgoCalculatorTest {
+public class TimeAgoCalculatorUnitTest {
 
     @Test
     public void timeAgoByTimeGranularityTest() {

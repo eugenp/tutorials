@@ -7,7 +7,7 @@ import java.time.ZoneId;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TimeAgoCalculatorTest {
+public class TimeAgoCalculatorUnitTest {
 
     @Test
     public void calculateTimeAgoWithPeriodAndDurationTest() {
