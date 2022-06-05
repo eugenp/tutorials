@@ -1,0 +1,15 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  mysql:
+    build: .
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_PASSWORD: "baeldung"
+      MYSQL_USER: "baeldung"
+      MYSQL_DATABASE: "baeldung"
+      MYSQL_ROOT_PASSWORD: "baeldung"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb_buffer_pool_size=3G --innodb_adaptive_hash_index=off --query_cache_size=0 --query_cache_type=0 --log_output=FILE --general_log=1
+    volumes:
+      - ./mysql:/var/lib/mysql/

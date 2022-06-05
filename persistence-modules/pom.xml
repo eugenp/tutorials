@@ -15,7 +15,7 @@
 
     <modules>
         <module>activejdbc</module>
-        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
+        <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
         <module>core-java-persistence</module>
@@ -52,6 +52,7 @@
         <module>persistence-libraries</module>
         <module>querydsl</module>
         <module>r2dbc</module>
+        <module>read-only-transactions</module>
         <module>redis</module>
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>

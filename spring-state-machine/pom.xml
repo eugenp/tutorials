@@ -39,7 +39,7 @@
     <properties>
         <spring-statemachine-core.version>3.2.0</spring-statemachine-core.version>
         <spring-context.version>5.3.19</spring-context.version>
-        <spring-test.version>4.3.7.RELEASE</spring-test.version>
+        <spring-test.version>5.3.19</spring-test.version>
         <jayway.awaitility.version>1.7.0</jayway.awaitility.version>
     </properties>
 
