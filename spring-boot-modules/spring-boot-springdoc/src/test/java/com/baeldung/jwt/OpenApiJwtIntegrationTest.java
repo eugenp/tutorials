@@ -43,8 +43,7 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs",
-                String.class);
+        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs", String.class);
 
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -59,8 +58,8 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs",
-                String.class);
+
+        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs", String.class);
 
         assertNotNull(response);
         assertNotNull(response.getBody());
@@ -75,8 +74,7 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs",
-                String.class);
+        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs", String.class);
 
         assertNotNull(response);
         assertNotNull(response.getBody());
