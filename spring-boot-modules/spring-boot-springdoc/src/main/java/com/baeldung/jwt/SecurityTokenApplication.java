@@ -14,4 +14,3 @@ public class SecurityTokenApplication {
        SpringApplication.run(SecurityTokenApplication.class);
     }
 }
-
