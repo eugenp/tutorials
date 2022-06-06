@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.lang3.SerializationUtils;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -104,27 +103,5 @@ public class JavaClonabilityUnitTest {
         // Same Object Reference
         assertEquals(originalMyClass.getO(), copyMyClass.getO());
         assertEquals(originalCloneableMyClass.getO(), copyCloneableMyClass.getO());
-    }
-
-    @Test
-    public void serializationUtilsClone() {
-
-        // Given
-        MyClass originalMyClass = new MyClass(24, 'p', null);
-        CloneableMyClass originalCloneableMyClass = new CloneableMyClass(24, 'p', null);
-
-        // When
-        MyClass copyMyClass = (MyClass) SerializationUtils.clone(originalMyClass);
-        CloneableMyClass copyCloneableMyClass = (CloneableMyClass) SerializationUtils.clone(originalCloneableMyClass);
-
-        // Then
-        // Distinct objects - 'copy' and 'original'
-        assertFalse(originalMyClass.equals(copyMyClass));
-        assertFalse(originalCloneableMyClass.equals(copyCloneableMyClass));
-        // Same Primitive values
-        assertEquals(originalMyClass.getI(), copyMyClass.getI());
-        assertEquals(originalMyClass.getC(), copyMyClass.getC());
-        assertEquals(originalCloneableMyClass.getC(), copyCloneableMyClass.getC());
-        assertEquals(originalCloneableMyClass.getC(), copyCloneableMyClass.getC());
     }
 }

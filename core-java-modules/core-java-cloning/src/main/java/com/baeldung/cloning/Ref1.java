@@ -1,6 +1,8 @@
 package com.baeldung.cloning;
 
-public class Ref1 implements Cloneable {
+import java.io.Serializable;
+
+public class Ref1 implements Cloneable, Serializable {
 
     // Object References
     private Ref2 p;

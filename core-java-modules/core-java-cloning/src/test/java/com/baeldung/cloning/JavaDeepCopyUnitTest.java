@@ -38,7 +38,9 @@ public class JavaDeepCopyUnitTest {
     public void deepCopyViaCopyConstructor() {
 
         // Given
-        DeepCloneableMyClass original = new DeepCloneableMyClass(24, 'p', new Ref1(null));
+        Ref2 objRef2 = new Ref2();
+        Ref1 objRef1 = new Ref1(objRef2);
+        DeepCloneableMyClass original = new DeepCloneableMyClass(24, 'p', objRef1);
 
         // When
         DeepCloneableMyClass copy = new DeepCloneableMyClass(original);   // Invocation of copy constructor
@@ -52,5 +54,24 @@ public class JavaDeepCopyUnitTest {
         // Distinct Nested Object References
         assertNotEquals(original.getO(), copy.getO());
         assertNotEquals(original.getO().getP(), copy.getO().getP());
+    }
+
+    @Test
+    public void deepCopyViaSerializationUtils() {
+
+        // Given
+        Ref2 objRef2 = new Ref2();
+        Ref1 objRef1 = new Ref1(objRef2);
+        DeepCloneableMyClass original = new DeepCloneableMyClass(24, 'p', objRef1);
+
+        // When
+        DeepCloneableMyClass copyCloneableMyClass = (DeepCloneableMyClass) SerializationUtils.clone(original);
+
+        // Then
+        // Distinct objects - 'copy' and 'original'
+        assertFalse(original.equals(copyCloneableMyClass));
+        // Same Primitive values
+        assertEquals(original.getC(), copyCloneableMyClass.getC());
+        assertEquals(original.getC(), copyCloneableMyClass.getC());
     }
 }

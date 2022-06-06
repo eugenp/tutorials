@@ -1,8 +1,6 @@
 package com.baeldung.cloning;
 
-import java.io.Serializable;
-
-public class MyClass implements Serializable {
+public class MyClass {
 
     // Primitives
     private int i;

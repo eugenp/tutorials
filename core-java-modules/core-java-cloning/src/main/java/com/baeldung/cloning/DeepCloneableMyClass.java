@@ -2,7 +2,7 @@ package com.baeldung.cloning;
 
 import java.io.Serializable;
 
-public class DeepCloneableMyClass implements Cloneable {
+public class DeepCloneableMyClass implements Cloneable, Serializable {
 
     // Primitives
     private int i;
@@ -10,6 +10,11 @@ public class DeepCloneableMyClass implements Cloneable {
 
     // Object References
     private Ref1 o;
+
+    /**
+     * Default no-arg constructor
+     */
+    public DeepCloneableMyClass() {}
 
     /**
      * Primary constructor

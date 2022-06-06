@@ -1,6 +1,8 @@
 package com.baeldung.cloning;
 
-public class Ref2 implements Cloneable {
+import java.io.Serializable;
+
+public class Ref2 implements Cloneable, Serializable {
 
     /**
      * Overridden implementation of Object.clone()
