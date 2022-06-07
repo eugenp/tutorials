@@ -11,7 +11,6 @@ public class SecurityTokenApplication {
      * @param args
      */
     public static void main(String[] args) {
-        SpringApplication.run(SecurityTokenApplication.class, args);
+       SpringApplication.run(SecurityTokenApplication.class);
     }
-
 }
