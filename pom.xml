@@ -652,7 +652,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -1106,7 +1106,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
