@@ -41,7 +41,7 @@ public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
         final String newName = identifier.getText()
             .replaceAll(regex, replacement)
             .toLowerCase();
-        return Identifier.toIdentifier(newName);
+        return Identifier.toIdentifier(newName, identifier.isQuoted());
     }
 
 }
