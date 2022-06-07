@@ -337,7 +337,7 @@
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-cxf</module>
+                <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
@@ -372,10 +372,7 @@
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
-                <module>core-groovy</module>
-                <module>core-groovy-2</module>
-                <module>core-groovy-collections</module>
-                <module>core-groovy-strings</module>
+                <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
 
@@ -405,7 +402,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql</module>
+                <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -795,11 +792,11 @@
                 <module>akka-http</module>
                 <module>akka-streams</module>
 
-                <module>algorithms-modules</module>                
+                <module>algorithms-modules</module>
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-cxf</module>
+                <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
@@ -834,10 +831,7 @@
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
-                <module>core-groovy</module>
-                <module>core-groovy-2</module>
-                <module>core-groovy-collections</module>
-                <module>core-groovy-strings</module>
+                <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
 
@@ -867,7 +861,7 @@
                 <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
                 <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql</module>
+                <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>gson</module>
                 <module>guava-modules</module>
@@ -1303,7 +1297,7 @@
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-contexts</module>
-                 <module>docker</module>
+                 <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>persistence-modules/sirix</module>
@@ -1371,7 +1365,7 @@
                 <module>core-java-modules/multimodulemavenproject</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-contexts</module>
-                <module>docker</module>
+                <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>persistence-modules/sirix</module>
