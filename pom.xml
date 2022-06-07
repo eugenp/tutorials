@@ -372,7 +372,7 @@
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
-                <module>core-groovy-modules</module>                
+                <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
 
@@ -652,7 +652,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -832,7 +832,7 @@
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
-                
+
                 <module>core-java-modules</module>
 
                 <module>couchbase</module>
@@ -1105,7 +1105,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
