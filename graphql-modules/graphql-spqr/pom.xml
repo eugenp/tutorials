@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>graphql-spqr</artifactId>
+    <version>1.0</version>
+    <name>graphql-spqr</name>
+
+    <parent>
+        <groupId>com.baeldung.graphql</groupId>
+        <artifactId>graphql-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.leangen.graphql</groupId>
+            <artifactId>graphql-spqr-spring-boot-starter</artifactId>
+            <version>${graphql-spqr-spring-boot-starter-version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <graphql-spqr-spring-boot-starter-version>0.0.6</graphql-spqr-spring-boot-starter-version>
+    </properties>
+
+</project>
