@@ -13,4 +13,5 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [The HttpMediaTypeNotAcceptableException in Spring MVC](https://www.baeldung.com/spring-httpmediatypenotacceptable)
 - [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
 - [Spring @RequestParam vs @PathVariable Annotations](https://www.baeldung.com/spring-requestparam-vs-pathvariable)
+- [@RequestMapping Value in Properties File](https://www.baeldung.com/spring-requestmapping-properties-file)
 - More articles: [[<-- prev]](../spring-mvc-basics-4)
