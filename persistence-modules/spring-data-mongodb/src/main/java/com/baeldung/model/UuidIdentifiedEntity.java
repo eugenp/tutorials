@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 public abstract class UuidIdentifiedEntity {
 
     @Id   
-    private UUID id;    
+    protected UUID id;    
 
     public UUID getId() {
         return id;
