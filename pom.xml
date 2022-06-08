@@ -626,7 +626,7 @@
                 <module>spring-di-3</module>
                 <module>spring-drools</module>
 
-                <module>spring-ejb</module>
+                <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
                 <module>spring-freemarker</module>
@@ -746,7 +746,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb/ejb-beans</module>
+                <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -1076,7 +1076,7 @@
                 <module>spring-di-3</module>
                 <module>spring-drools</module>
 
-                <module>spring-ejb</module>
+                <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
                 <module>spring-freemarker</module>
@@ -1189,7 +1189,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb/ejb-beans</module>
+                <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
