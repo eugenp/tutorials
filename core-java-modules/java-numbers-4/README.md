@@ -10,3 +10,4 @@
 - [Generate a Random Value From an Enum](https://www.baeldung.com/java-enum-random-value)
 - [Reverse a Number in Java](https://www.baeldung.com/java-reverse-number)
 - [Check if BigDecimal Value Is Zero](https://www.baeldung.com/java-bigdecimal-zero)
+- More articles: [[<-- prev]](../java-numbers-3)
