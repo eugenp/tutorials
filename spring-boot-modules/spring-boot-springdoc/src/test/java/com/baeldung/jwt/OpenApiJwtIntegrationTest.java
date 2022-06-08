@@ -30,7 +30,7 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        String response = this.restTemplate.getForObject("http://localhost:" + port + "/swagger-ui.html", String.class);
+        String response = this.restTemplate.getForObject("http://localhost:" + port + "/swagger-ui/index.html", String.class);
 
         assertNotNull(response);
         assertTrue(response.contains("Swagger UI"));
@@ -43,8 +43,7 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/v3/api-docs",
-                String.class);
+        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs", String.class);
 
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -59,8 +58,8 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/v3/api-docs",
-                String.class);
+
+        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs", String.class);
 
         assertNotNull(response);
         assertNotNull(response.getBody());
@@ -75,8 +74,7 @@ class OpenApiJwtIntegrationTest
     {
         assertNotNull(authenticationApi);
 
-        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/v3/api-docs",
-                String.class);
+        ResponseEntity<String> response = this.restTemplate.getForEntity("http://localhost:" + port + "/api-docs", String.class);
 
         assertNotNull(response);
         assertNotNull(response.getBody());

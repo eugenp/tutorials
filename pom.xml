@@ -372,7 +372,7 @@
                 <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
-                <module>core-groovy-modules</module>                
+                <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
 
@@ -423,11 +423,7 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
-                <module>java-numbers</module>
-                <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
-                <module>java-numbers-4</module>
+                <module>java-lite</module>                
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -652,7 +648,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -740,7 +736,8 @@
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
-                <module>jhipster</module>
+                <module>jhipster-modules</module>
+                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -832,7 +829,7 @@
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
-                
+
                 <module>core-java-modules</module>
 
                 <module>couchbase</module>
@@ -883,10 +880,6 @@
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-numbers</module>
-                <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
-                <module>java-numbers-4</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1105,7 +1098,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -1186,7 +1179,7 @@
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
-                <module>jhipster</module>
+                <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
 
