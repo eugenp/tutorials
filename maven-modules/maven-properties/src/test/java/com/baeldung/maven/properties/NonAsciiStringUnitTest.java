@@ -4,9 +4,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NonAsciiStringTest {
+public class NonAsciiStringUnitTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NonAsciiStringTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(NonAsciiStringUnitTest.class);
     
     /**
      * Sanity check to ensure that the code is still able to compile and run
