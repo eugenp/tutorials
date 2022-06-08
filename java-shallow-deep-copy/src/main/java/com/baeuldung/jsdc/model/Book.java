@@ -4,6 +4,11 @@ public class Book {
     private String title;
     private String author;
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     public Book() {
     }
 
