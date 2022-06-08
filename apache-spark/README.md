@@ -9,3 +9,4 @@ This module contains articles about Apache Spark
 - [Machine Learning with Spark MLlib](https://www.baeldung.com/spark-mlib-machine-learning)
 - [Introduction to Spark Graph Processing with GraphFrames](https://www.baeldung.com/spark-graph-graphframes)
 - [Apache Spark: Differences between Dataframes, Datasets and RDDs](https://www.baeldung.com/java-spark-dataframe-dataset-rdd)
+- [Spark DataFrame](https://www.baeldung.com/spark-dataframes)

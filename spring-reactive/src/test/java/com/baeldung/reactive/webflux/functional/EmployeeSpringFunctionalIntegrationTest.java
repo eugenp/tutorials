@@ -2,10 +2,8 @@ package com.baeldung.reactive.webflux.functional;
 
 import com.baeldung.reactive.webflux.Employee;
 import com.baeldung.reactive.webflux.EmployeeRepository;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,10 +17,10 @@ import java.util.List;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = EmployeeSpringFunctionalApplication.class)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@SpringBootTest(webEnvironment = RANDOM_PORT, classes = EmployeeSpringFunctionalApplication.class)
 public class EmployeeSpringFunctionalIntegrationTest {
 
     @Autowired
@@ -33,8 +31,7 @@ public class EmployeeSpringFunctionalIntegrationTest {
 
     @Test
     public void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
-        WebTestClient client = WebTestClient
-            .bindToRouterFunction(config.getEmployeeByIdRoute())
+        WebTestClient client = WebTestClient.bindToRouterFunction(config.getEmployeeByIdRoute())
             .build();
 
         Employee employee = new Employee("1", "Employee 1");
@@ -52,13 +49,10 @@ public class EmployeeSpringFunctionalIntegrationTest {
 
     @Test
     public void whenGetAllEmployees_thenCorrectEmployees() {
-        WebTestClient client = WebTestClient
-            .bindToRouterFunction(config.getAllEmployeesRoute())
+        WebTestClient client = WebTestClient.bindToRouterFunction(config.getAllEmployeesRoute())
             .build();
 
-        List<Employee> employees = Arrays.asList(
-            new Employee("1", "Employee 1"),
-            new Employee("2", "Employee 2"));
+        List<Employee> employees = Arrays.asList(new Employee("1", "Employee 1"), new Employee("2", "Employee 2"));
 
         Flux<Employee> employeeFlux = Flux.fromIterable(employees);
         given(employeeRepository.findAllEmployees()).willReturn(employeeFlux);
@@ -74,8 +68,7 @@ public class EmployeeSpringFunctionalIntegrationTest {
 
     @Test
     public void whenUpdateEmployee_thenEmployeeUpdated() {
-        WebTestClient client = WebTestClient
-            .bindToRouterFunction(config.updateEmployeeRoute())
+        WebTestClient client = WebTestClient.bindToRouterFunction(config.updateEmployeeRoute())
             .build();
 
         Employee employee = new Employee("1", "Employee 1 Updated");
