@@ -10,26 +10,26 @@ public class TestBinaryNumbers {
     @Test
     // Paritition test for converting decimal to binary 
     public void testConvertDecimalToBinary() {
-        Assert.assertEquals(100, BinaryNumbers.convertDecimalToBinary(4));
-        Assert.assertEquals(1000, BinaryNumbers.convertDecimalToBinary(8));
+        assertEquals(Integer.valueOf(100), binaryNumbers.convertDecimalToBinary(4));
+        assertEquals(Integer.valueOf(1000), binaryNumbers.convertDecimalToBinary(8));
     }
 
     @Test
     // Paritition test for converting binary to decimal 
     public void testConvertBinaryToDecimal() {
-        Assert.assertEquals(4, BinaryNumbers.convertBinaryToDecimal(100));
-        Assert.assertEquals(8, BinaryNumbers.convertBinaryToDecimal(1000));
+        assertEquals(Integer.valueOf(4), binaryNumbers.convertBinaryToDecimal(100));
+        assertEquals(Integer.valueOf(8), binaryNumbers.convertBinaryToDecimal(1000));
     }
 
     @Test
     // Paritition test for adding binary number
     public void testAddBinaryNumber() {
-        Assert.assertEquals(1100, BinaryNumbers.addBinaryNumber(100, 1000));
+        assertEquals(Integer.valueOf(1100), binaryNumbers.addBinaryNumber(100, 1000));
     }
 
     @Test
     // Paritition test for substracting binary number
     public void testSubstractBinaryNumber() {
-        Assert.assertEquals(900, BinaryNumbers.substractBinaryNumber(1000, 100));
+        assertEquals(Integer.valueOf(100), binaryNumbers.substractBinaryNumber(1000, 100));
     }
 }
