@@ -2,6 +2,8 @@ package com.baeldung.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +22,7 @@ public class MyHttpServlet extends HttpServlet {
             writer.println(request.getLocalAddr());
         } else if ("getLocalName".equals(request.getParameter("function"))) {
             writer.println(request.getLocalName());
-        } else if ("getLocalAPort".equals(request.getParameter("function"))) {
+        } else if ("getLocalPort".equals(request.getParameter("function"))) {
             writer.println(request.getLocalPort());
         } else if ("getMethod".equals(request.getParameter("function"))) {
             writer.println(request.getMethod());
