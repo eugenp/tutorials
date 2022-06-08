@@ -39,11 +39,11 @@ public class StringToIntegerUnitTest {
 //    This method is available in JDK 9 and above  
 //    @Test
 //    public void whenValidNumericStringWithRadixAndSubstringIsPassed_thenShouldConvertToPrimitiveInt() {
-//        int givenNumber1 = 14701;
-//        int givenNumber2 = 19053015;
+//        int givenNumber1 = 5;
+//        int givenNumber2 = 101;
 //
-//        int expectedNumber1 = Integer.parseInt("ABCDEFG", 1, 4, 36);
-//        int expectedNumber2 = Integer.parseInt("abcdefg", 1, 6, 36);
+//        int expectedNumber1 = Integer.parseInt("100101", 3, 6, 2);
+//        int expectedNumber2 = Integer.parseInt("100101", 3, 6, 10);
 //
 //        assertEquals(expectedNumber1, givenNumber1);
 //        assertEquals(expectedNumber2, givenNumber2);
