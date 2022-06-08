@@ -2,10 +2,9 @@ package com.baeuldung.jsdc.copy;
 
 import com.baeuldung.jsdc.model.Book;
 
-public class DeepCopier extends Copier {
+public class DeepCopier {
 
-    @Override
-    public Book copy(Book book) {
+    public Book deepCopy(Book book) {
         Book deepCopy = new Book(book.getTitle(), book.getAuthor());
         return deepCopy;
     }

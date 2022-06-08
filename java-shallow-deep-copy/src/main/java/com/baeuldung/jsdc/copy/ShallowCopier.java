@@ -2,10 +2,9 @@ package com.baeuldung.jsdc.copy;
 
 import com.baeuldung.jsdc.model.Book;
 
-public class ShallowCopier extends Copier {
+public class ShallowCopier {
 
-    @Override
-    public Book copy(Book book) {
+    public Book shallowCopy(Book book) {
         Book shallowCopy = book;
         return shallowCopy;
     }
