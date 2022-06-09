@@ -22,7 +22,7 @@ public class SneakyThrowsExamplesUnitTest {
     public void throwSneakyIOExceptionUsingLombok_IOExceptionShouldBeThrown() {
         assertThatThrownBy(() -> throwSneakyIOExceptionUsingLombok())
             .isInstanceOf(IOException.class)
-            .hasMessage("sneaky lombok")
+            .hasMessage("lombok sneaky")
             .hasStackTraceContaining("SneakyThrowsExamples.throwSneakyIOExceptionUsingLombok");
     }
 }
