@@ -423,11 +423,7 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
-                <module>java-numbers</module>
-                <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
-                <module>java-numbers-4</module>
+                <module>java-lite</module>                
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -630,7 +626,7 @@
                 <module>spring-di-3</module>
                 <module>spring-drools</module>
 
-                <module>spring-ejb</module>
+                <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
                 <module>spring-freemarker</module>
@@ -652,7 +648,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -740,7 +736,8 @@
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
-                <module>jhipster</module>
+                <module>jhipster-modules</module>
+                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -749,7 +746,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb/ejb-beans</module>
+                <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -883,10 +880,6 @@
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
-                <module>java-numbers</module>
-                <module>java-numbers-2</module>
-                <module>java-numbers-3</module>
-                <module>java-numbers-4</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -1083,7 +1076,7 @@
                 <module>spring-di-3</module>
                 <module>spring-drools</module>
 
-                <module>spring-ejb</module>
+                <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
                 <module>spring-freemarker</module>
@@ -1105,7 +1098,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-reactor</module>
-                <module>spring-remoting</module>
+                <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
                 <module>spring-scheduling</module>
@@ -1186,7 +1179,7 @@
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
-                <module>jhipster</module>
+                <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
 
@@ -1196,7 +1189,7 @@
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb/ejb-beans</module>
+                <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
                 <module>vavr</module>
@@ -1292,14 +1285,14 @@
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>
-                 <module>core-java-modules/multimodulemavenproject</module>
+                 <module>core-java-modules/core-java-networking-3</module>                 
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
+                 <module>maven-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-vs-springboot</module>
@@ -1361,13 +1354,13 @@
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/multimodulemavenproject</module>
+                <module>core-java-modules/core-java-networking-3</module>                
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
+                <module>maven-modules/multimodulemavenproject</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-vs-springboot</module>

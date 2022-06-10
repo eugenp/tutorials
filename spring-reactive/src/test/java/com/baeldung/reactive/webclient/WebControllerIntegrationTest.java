@@ -13,7 +13,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 
 @DirtiesContext(classMode = BEFORE_CLASS)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = WebClientApplication.class)
-public class WebControllerIntegrationTest {
+class WebControllerIntegrationTest {
 
     @LocalServerPort
     private int randomServerPort;
