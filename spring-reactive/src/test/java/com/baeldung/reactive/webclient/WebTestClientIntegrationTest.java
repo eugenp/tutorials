@@ -16,7 +16,7 @@ import org.springframework.web.server.WebHandler;
 import reactor.core.publisher.Mono;
 
 @SpringBootTest(classes = WebClientApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class WebTestClientIntegrationTest {
+class WebTestClientIntegrationTest {
 
     @LocalServerPort
     private int port;
@@ -28,7 +28,7 @@ public class WebTestClientIntegrationTest {
     private WebClientController controller;
 
     @Test
-    public void whenBindToWebHandler_thenRequestProcessed() {
+    void whenBindToWebHandler_thenRequestProcessed() {
         WebHandler webHandler = exchange -> Mono.empty();
 
         WebTestClient.bindToWebHandler(webHandler)
@@ -39,7 +39,7 @@ public class WebTestClientIntegrationTest {
     }
 
     @Test
-    public void whenBindToRouter_thenRequestProcessed() {
+    void whenBindToRouter_thenRequestProcessed() {
         RouterFunction<ServerResponse> routerFunction = RouterFunctions.route(
           RequestPredicates.GET("/resource"),
           request -> ServerResponse.ok().build()
@@ -55,7 +55,7 @@ public class WebTestClientIntegrationTest {
 
     @Test
     @WithMockUser
-    public void whenBindToServer_thenRequestProcessed() {
+    void whenBindToServer_thenRequestProcessed() {
         WebTestClient.bindToServer()
           .baseUrl("http://localhost:" + port).build()
           .get().uri("/resource")
@@ -66,7 +66,7 @@ public class WebTestClientIntegrationTest {
 
     @Test
     @WithMockUser
-    public void whenBindToApplicationContext_thenRequestProcessed() {
+    void whenBindToApplicationContext_thenRequestProcessed() {
         WebTestClient.bindToApplicationContext(context)
           .build()
           .get().uri("/resource")
@@ -76,7 +76,7 @@ public class WebTestClientIntegrationTest {
     }
 
     @Test
-    public void whenBindToController_thenRequestProcessed() {
+    void whenBindToController_thenRequestProcessed() {
         WebTestClient.bindToController(controller)
           .build()
           .get().uri("/resource")
