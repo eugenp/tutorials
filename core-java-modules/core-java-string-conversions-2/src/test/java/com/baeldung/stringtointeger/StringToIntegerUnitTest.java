@@ -8,46 +8,25 @@ public class StringToIntegerUnitTest {
 
     @Test
     public void whenValidNumericStringIsPassed_thenShouldConvertToPrimitiveInt() {
-        int givenNumber = 11;
-        int givenNegativeNumber = -11;
-        
-        int expectedUnsignedNumber = Integer.parseInt("11");
-        int expectedSignedNumber1 = Integer.parseInt("+11");
-        int expectedSignedNumber2 = Integer.parseInt("-11");
-        
-        assertEquals(expectedUnsignedNumber, givenNumber);
-        assertEquals(expectedSignedNumber1, givenNumber);
-        assertEquals(expectedSignedNumber2, givenNegativeNumber);
+        assertEquals(11, Integer.parseInt("11")); 
+        assertEquals(11, Integer.parseInt("+11")); 
+        assertEquals(-11, Integer.parseInt("-11"));
     }
 
     @Test
     public void whenValidNumericStringWithRadixIsPassed_thenShouldConvertToPrimitiveInt() {
-        int givenNumber1 = 17;
-        int givenNumber2 = 10;
-        int givenNumber3 = 7;
-        
-        int expectedNumber1 = Integer.parseInt("11", 16);
-        int expectedNumber2 = Integer.parseInt("A", 16);
-        int expectedNumber3 = Integer.parseInt("7", 8);
-        
-        assertEquals(expectedNumber1, givenNumber1);
-        assertEquals(expectedNumber2, givenNumber2);
-        assertEquals(expectedNumber3, givenNumber3);
+        assertEquals(17, Integer.parseInt("11", 16)); 
+        assertEquals(10, Integer.parseInt("A", 16)); 
+        assertEquals(7, Integer.parseInt("7", 8));
     }
 
-//    public static int parseInt(CharSequence s, int beginIndex, int endIndex, int radix) throws NumberFormatException 
-//    This method is available in JDK 9 and above  
-//    @Test
-//    public void whenValidNumericStringWithRadixAndSubstringIsPassed_thenShouldConvertToPrimitiveInt() {
-//        int givenNumber1 = 5;
-//        int givenNumber2 = 101;
-//
-//        int expectedNumber1 = Integer.parseInt("100101", 3, 6, 2);
-//        int expectedNumber2 = Integer.parseInt("100101", 3, 6, 10);
-//
-//        assertEquals(expectedNumber1, givenNumber1);
-//        assertEquals(expectedNumber2, givenNumber2);
-//    }
+    //public static int parseInt(CharSequence s, int beginIndex, int endIndex, int radix) throws NumberFormatException 
+    //This method is available in JDK 9 and above  
+    //@Test
+    //public void whenValidNumericStringWithRadixAndSubstringIsPassed_thenShouldConvertToPrimitiveInt() {
+    //    assertEquals(5, Integer.parseInt("100101", 3, 6, 2));
+    //    assertEquals(101, Integer.parseInt("100101", 3, 6, 10));
+    //}
 
     @Test(expected = NumberFormatException.class)
     public void whenInValidNumericStringIsPassed_thenShouldThrowNumberFormatException() {
@@ -56,48 +35,35 @@ public class StringToIntegerUnitTest {
 
     @Test
     public void whenValidNumericStringIsPassed_thenShouldConvertToInteger() {
-        Integer givenNumber = 11;
-        Integer givenNegativeNumber = -11;
+        Integer expectedNumber = 11;
+        Integer expectedNegativeNumber = -11;
         
-        Integer expectedUnsignedNumber = Integer.valueOf("11");
-        Integer expectedSignedNumber1 = Integer.valueOf("+11");
-        Integer expectedSignedNumber2 = Integer.valueOf("-11");
-        
-        assertEquals(expectedUnsignedNumber, givenNumber);
-        assertEquals(expectedSignedNumber1, givenNumber);
-        assertEquals(expectedSignedNumber2, givenNegativeNumber);
+        assertEquals(expectedNumber, Integer.valueOf("11"));
+        assertEquals(expectedNumber, Integer.valueOf("+11"));
+        assertEquals(expectedNegativeNumber, Integer.valueOf("-11"));
     }
 
     @Test
     public void whenNumberIsPassed_thenShouldConvertToInteger() {
-        Integer givenNumber = 11;
-        Integer givenNegativeNumber = -11;
-        Integer givenUnicodeValue = 65;
+        Integer expectedNumber = 11;
+        Integer expectedNegativeNumber = -11;
+        Integer expectedUnicodeValue = 65;
         
-        Integer expectedUnsignedNumber = Integer.valueOf(11);
-        Integer expectedSignedNumber1 = Integer.valueOf(+11);
-        Integer expectedSignedNumber2 = Integer.valueOf(-11);
-        Integer expectedUnicodeValue = Integer.valueOf('A');
-        
-        assertEquals(expectedUnsignedNumber, givenNumber);
-        assertEquals(expectedSignedNumber1, givenNumber);
-        assertEquals(expectedSignedNumber2, givenNegativeNumber);
-        assertEquals(expectedUnicodeValue, givenUnicodeValue);
+        assertEquals(expectedNumber, Integer.valueOf(11));
+        assertEquals(expectedNumber, Integer.valueOf(+11));
+        assertEquals(expectedNegativeNumber, Integer.valueOf(-11));
+        assertEquals(expectedUnicodeValue, Integer.valueOf('A'));
     }
 
     @Test
     public void whenValidNumericStringWithRadixIsPassed_thenShouldConvertToInetger() {
-        Integer givenNumber1 = 17;
-        Integer givenNumber2 = 10;
-        Integer givenNumber3 = 7;
+        Integer expectedNumber1 = 17;
+        Integer expectedNumber2 = 10;
+        Integer expectedNumber3 = 7;
         
-        Integer expectedNumber1 = Integer.valueOf("11", 16);
-        Integer expectedNumber2 = Integer.valueOf("A", 16);
-        Integer expectedNumber3 = Integer.parseInt("7", 8);
-        
-        assertEquals(expectedNumber1, givenNumber1);
-        assertEquals(expectedNumber2, givenNumber2);
-        assertEquals(expectedNumber3, givenNumber3);
+        assertEquals(expectedNumber1, Integer.valueOf("11", 16));
+        assertEquals(expectedNumber2, Integer.valueOf("A", 16));
+        assertEquals(expectedNumber3, Integer.valueOf("7", 8));
     }
 
     @Test(expected = NumberFormatException.class)
