@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.docker</groupId>
-    <artifactId>docker</artifactId>
+    <artifactId>docker-modules</artifactId>
     <version>0.0.1</version>
-    <name>docker</name>
+    <name>docker-modules</name>
     <description>Demo project showing Spring Boot and Docker</description>
     <packaging>pom</packaging>
 
