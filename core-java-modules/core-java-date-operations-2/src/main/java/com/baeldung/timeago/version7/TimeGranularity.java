@@ -37,7 +37,5 @@ public enum TimeGranularity {
         }
     };
 
-    public long toMillis() {
-        throw new AbstractMethodError();
-    }
+    public abstract long toMillis();
 }
