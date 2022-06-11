@@ -19,18 +19,18 @@ import ch.qos.logback.classic.spi.IThrowableProxy;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
 
-public class ConsumerFooServiceIntegrationTest {
+class ConsumerFooServiceIntegrationTest {
 
     FooService service = new FooService();
 
     @BeforeEach
-    public void clearLogList() {
+    void clearLogList() {
         Hooks.onOperatorDebug();
         ListAppender.clearEventList();
     }
 
     @Test
-    public void givenFooWithNullId_whenProcessFoo_thenLogsWithDebugTrace() {
+    void givenFooWithNullId_whenProcessFoo_thenLogsWithDebugTrace() {
         Foo one = new Foo(1, "nameverylong", 8);
         Foo two = new Foo(null, "nameverylong", 4);
         Flux<Foo> flux = Flux.just(one, two);

@@ -1,6 +1,6 @@
 package com.baeldung.reactive.introduction;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
@@ -14,12 +14,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ReactorIntegrationTest {
+class ReactorIntegrationTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ReactorIntegrationTest.class);
-    
+
     @Test
-    public void givenFlux_whenSubscribing_thenStream() {
+    void givenFlux_whenSubscribing_thenStream() {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -35,7 +35,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenZipping_thenCombine() {
+    void givenFlux_whenZipping_thenCombine() {
         List<String> elements = new ArrayList<>();
 
         Flux.just(1, 2, 3, 4)
@@ -52,7 +52,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() {
+    void givenFlux_whenApplyingBackPressure_thenPushElementsInBatches() {
 
         List<Integer> elements = new ArrayList<>();
 
@@ -90,7 +90,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenFlux_whenInParallel_thenSubscribeInDifferentThreads() throws InterruptedException {
+    void givenFlux_whenInParallel_thenSubscribeInDifferentThreads() throws InterruptedException {
         List<String> threadNames = new ArrayList<>();
 
         Flux.just(1, 2, 3, 4)
@@ -106,7 +106,7 @@ public class ReactorIntegrationTest {
     }
 
     @Test
-    public void givenConnectableFlux_whenConnected_thenShouldStream() {
+    void givenConnectableFlux_whenConnected_thenShouldStream() {
 
         List<Integer> elements = new ArrayList<>();
 

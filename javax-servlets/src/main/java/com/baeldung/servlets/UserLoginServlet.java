@@ -21,9 +21,7 @@ public class UserLoginServlet extends HttpServlet {
 
         request.setAttribute("id", session.getAttribute("userId"));
 
-        RequestDispatcher requestDispather = request.getRequestDispatcher("userlogin.jsp");
-
-        requestDispather.forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/userlogin.jsp").forward(request, response);
 
     }
 
