@@ -1,6 +1,5 @@
-package com.baeldung.multiple_bean_instantiation.solution1;
+package com.baeldung.MultipleBeanInstantiation.solution1;
 
-/*@Component*/
 public class Person {
     private String firstName;
     private String lastName;

@@ -1,4 +1,4 @@
-package com.baeldung.multiple_bean_instantiation.solution3;
+package com.baeldung.MultipleBeanInstantiation.solution3;
 
 import java.util.Map;
 
@@ -11,7 +11,6 @@ public class PersonFactoryPostProcessor implements BeanFactoryPostProcessor {
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        // TODO Auto-generated method stub
         Map<String, Object> map = beanFactory.getBeansWithAnnotation(Qualifier.class);
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             createInstances(beanFactory, entry.getKey(), entry.getValue());

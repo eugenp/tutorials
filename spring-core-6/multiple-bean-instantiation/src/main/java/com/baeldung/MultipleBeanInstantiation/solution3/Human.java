@@ -1,9 +1,8 @@
-package com.baeldung.multiple_bean_instantiation.solution3;
+package com.baeldung.MultipleBeanInstantiation.solution3;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
-/*@Component*/
 public class Human implements InitializingBean {
 
     private Person personOne;

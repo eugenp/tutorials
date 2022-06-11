@@ -1,4 +1,4 @@
-package com.baeldung.multiple_bean_instantiation.solution2;
+package com.baeldung.MultipleBeanInstantiation.solution2;
 
 import org.springframework.stereotype.Component;
 

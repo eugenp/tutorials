@@ -6,9 +6,6 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-
-	<!-- Define your beans here -->
-
 	<bean
 		class="com.baeldung.multiple_bean_instantiation.solution3.PersonFactoryPostProcessor">
 	</bean>
@@ -21,10 +18,4 @@
 		<property name="PersonOne" ref="personOne" />
 		<property name="PersonTwo" ref="personTwo" />
 	</bean>
-
 </beans>
-
-
-
-
-

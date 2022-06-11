@@ -1,8 +1,7 @@
-package com.baeldung.multiple_bean_instantiation.solution2;
+package com.baeldung.MultipleBeanInstantiation.solution2;
 
-import com.baeldung.multiple_bean_instantiation.solution2.Person;
+import com.baeldung.MultipleBeanInstantiation.solution2.Person;
 
-/*@Component*/
 public class PersonTwo extends Person {
 
     public PersonTwo(String firstName, String lastName) {

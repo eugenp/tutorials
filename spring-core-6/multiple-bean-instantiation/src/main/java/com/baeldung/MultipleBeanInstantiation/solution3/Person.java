@@ -1,4 +1,4 @@
-package com.baeldung.multiple_bean_instantiation.solution3;
+package com.baeldung.MultipleBeanInstantiation.solution3;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,5 +46,4 @@ public class Person implements FactoryBean<Object> {
     public String toString() {
         return "Person [firstName=" + firstName + ", secondName=" + secondName + "]";
     }
-
 }
