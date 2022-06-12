@@ -1,5 +1,7 @@
 package com.baeldung.staticmethods;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Car {
 
     private int id;
@@ -26,4 +28,9 @@ public class Car {
     public String getModel() {
         return model;
     }
+
+    public String getModelCapitalized() {
+        return StringUtils.capitalize(model);
+    }
+
 }
