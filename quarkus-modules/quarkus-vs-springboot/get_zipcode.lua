@@ -1,7 +1,7 @@
 local require = require
 local json = require "json"
 
-math.randomseed(os.time())
+math.randomseed(os.clock()*100000000000)
 
 -- read csv lines
 function ParseCSVLine(line,sep) 
@@ -66,11 +66,14 @@ local data = loadFile()
 
 request = function()    
    -- define the path that will search for q=%v 9%v being a random number between 0 and 1000)
-    url_path = "/zipcode/" .. data[math.random(1, 12079)]
-    
-    local headers = { ["Content-Type"] = "application/json;charset=UTF-8" }
 
-   return wrk.format("GET", url_path, headers, nil)
+	local value = data[math.random(1, 12079)]
+
+    url_path = "/zipcode/" .. value
+    
+	local headers = { ["Content-Type"] = "application/json;charset=UTF-8" }
+
+	return wrk.format("GET", url_path, headers, nil)
 end
 
 -- example reporting script which demonstrates a custom

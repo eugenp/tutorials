@@ -1,14 +1,26 @@
 version: '3.1'
-
 services:
-  db:
-    image: postgres
-    ports:
-      - '5432:5432'
+  #db:
+  #  image: mysql:5.7.38
+  #  ports:
+  #    - '3306:3306'
+  #  environment:
+  #    MYSQL_ROOT_PASSWORD: root
+  #    MYSQL_DATABASE: baeldung
+  #  command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+  #  healthcheck:
+  #    test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+  app:
+    image: quarkus-project:0.1-SNAPSHOT
+    network_mode: "host"
     environment:
-      POSTGRES_PASSWORD: example
-
-networks:
-  default:
-    driver: bridge
-
+      DB_URL: mysql://${EXTERNAL_IP}:3306/baeldung?useSSL=true&requireSSL=true
+      HOST_HOSTNAME: ${EXTERNAL_IP}
+        #links:
+      #- "db"
+        #depends_on:
+      #- "db"
+    deploy:
+      resources:
+        limits:
+          cpus: '3.00'
