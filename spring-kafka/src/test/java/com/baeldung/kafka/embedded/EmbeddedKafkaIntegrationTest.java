@@ -39,8 +39,9 @@ class EmbeddedKafkaIntegrationTest {
     }
 
     @Test
-    public void givenEmbeddedKafkaBroker_whenSendingtoDefaultTemplate_thenMessageReceived() throws Exception {
+    public void givenEmbeddedKafkaBroker_whenSendingWithDefaultTemplate_thenMessageReceived() throws Exception {
         String data = "Sending with default template";
+
         template.send(topic, data);
 
         boolean messageConsumed = consumer.getLatch().await(10, TimeUnit.SECONDS);
@@ -49,8 +50,9 @@ class EmbeddedKafkaIntegrationTest {
     }
 
     @Test
-    public void givenEmbeddedKafkaBroker_whenSendingtoSimpleProducer_thenMessageReceived() throws Exception {
+    public void givenEmbeddedKafkaBroker_whenSendingWithSimpleProducer_thenMessageReceived() throws Exception {
         String data = "Sending with our own simple KafkaProducer";
+
         producer.send(topic, data);
 
         boolean messageConsumed = consumer.getLatch().await(10, TimeUnit.SECONDS);
