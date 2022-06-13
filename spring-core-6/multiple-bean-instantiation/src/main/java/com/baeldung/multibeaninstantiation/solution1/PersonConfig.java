@@ -1,4 +1,4 @@
-package com.baeldung.MultipleBeanInstantiation.solution1;
+package com.baeldung.multibeaninstantiation.solution1;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

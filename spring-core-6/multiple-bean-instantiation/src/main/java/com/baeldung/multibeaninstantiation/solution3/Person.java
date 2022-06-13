@@ -1,4 +1,4 @@
-package com.baeldung.MultipleBeanInstantiation.solution3;
+package com.baeldung.multibeaninstantiation.solution3;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;

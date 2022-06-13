@@ -1,11 +1,11 @@
-package com.baeldung.MultipleBeanInstantiation;
+package com.baeldung.multibeaninstantiation.solution2;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.baeldung.MultipleBeanInstantiation.solution1.Person;
-import com.baeldung.MultipleBeanInstantiation.solution1.PersonConfig;
+import com.baeldung.multibeaninstantiation.solution2.Person;
+import com.baeldung.multibeaninstantiation.solution2.PersonConfig;
 
-public class App {
+public class SpringApp2 {
     public static void main(String[] args) {
         // Initializing the spring container
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig.class);

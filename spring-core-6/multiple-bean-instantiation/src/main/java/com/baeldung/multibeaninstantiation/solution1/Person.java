@@ -1,8 +1,5 @@
-package com.baeldung.MultipleBeanInstantiation.solution2;
+package com.baeldung.multibeaninstantiation.solution1;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Person {
     private String firstName;
     private String lastName;

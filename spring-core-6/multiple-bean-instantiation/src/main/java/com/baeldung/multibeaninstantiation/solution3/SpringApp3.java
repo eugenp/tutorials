@@ -1,8 +1,8 @@
-package com.baeldung.MultipleBeanInstantiation.solution3;
+package com.baeldung.multibeaninstantiation.solution3;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.MultipleBeanInstantiation.solution3.Person;
+import com.baeldung.multibeaninstantiation.solution3.Person;
 
 public class SpringApp3 {
     public static void main(String[] args) {

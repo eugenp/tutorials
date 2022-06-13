@@ -1,10 +1,10 @@
-package com.baeldung.MultipleBeanInstantiation.solution2;
+package com.baeldung.multibeaninstantiation.solution2;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.baeldung.MultipleBeanInstantiation.solution2.Person;
+import com.baeldung.multibeaninstantiation.solution2.Person;
 
 @Configuration
 public class PersonConfig {

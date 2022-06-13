@@ -1,4 +1,4 @@
-package com.baeldung.MultipleBeanInstantiation.solution3;
+package com.baeldung.multibeaninstantiation.solution3;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

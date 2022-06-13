@@ -1,4 +1,4 @@
-package com.baeldung.MultipleBeanInstantiation.solution3;
+package com.baeldung.multibeaninstantiation.solution3;
 
 import java.util.Map;
 
