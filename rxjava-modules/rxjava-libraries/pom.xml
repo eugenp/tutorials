@@ -3,15 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rxjava-operators</artifactId>
+    <artifactId>rxjava-libraries</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>rxjava-operators</name>
+    <name>rxjava-libraries</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -25,30 +25,29 @@
             <artifactId>rxjava</artifactId>
             <version>${rx.java2.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.akarnokd/rxjava2-extensions -->
         <dependency>
-            <groupId>com.github.akarnokd</groupId>
-            <artifactId>rxjava2-extensions</artifactId>
-            <version>${rxjava2.ext.version}</version>
+            <groupId>com.jakewharton.rxrelay2</groupId>
+            <artifactId>rxrelay</artifactId>
+            <version>${rxrelay.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.reactivex</groupId>
-            <artifactId>rxjava-math</artifactId>
-            <version>${rx.java.math.version}</version>
+            <groupId>com.github.davidmoten</groupId>
+            <artifactId>rxjava-jdbc</artifactId>
+            <version>${rx.java.jdbc.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${awaitility.version}</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <rxjava2.ext.version>0.20.4</rxjava2.ext.version>
-        <rx.java2.version>2.2.2</rx.java2.version>
+        <rx.java.jdbc.version>0.7.11</rx.java.jdbc.version>
         <rx.java.version>1.2.5</rx.java.version>
-        <rx.java.math.version>1.0.0</rx.java.math.version>
-        <awaitility.version>1.7.0</awaitility.version>
+        <rxrelay.version>2.0.0</rxrelay.version>
+        <rx.java2.version>2.2.2</rx.java2.version>
     </properties>
 
 </project>
