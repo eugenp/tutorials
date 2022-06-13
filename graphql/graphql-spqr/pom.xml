@@ -28,4 +28,5 @@
     <properties>
         <graphql-spqr-spring-boot-starter-version>0.0.6</graphql-spqr-spring-boot-starter-version>
     </properties>
+
 </project>

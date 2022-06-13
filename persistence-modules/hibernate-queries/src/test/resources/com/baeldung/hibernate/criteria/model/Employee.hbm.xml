@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="com.baeldung.hibernate.criteria.model.Employee" table="EMPLOYEE">
-    <id name="id" type="java.lang.Integer">
-      <column name="EMPLOYEE_ID" />
-      <generator class="identity" />
-    </id>
-    <property name="salary" type="java.lang.Long">
-      <column name="EMPLOYEE_SALARY" not-null="true" />
-    </property>
-    <property name="name" type="string">
-      <column name="EMPLOYEE_NAME" not-null="true" />
-    </property>
-  </class>
+    <class name="com.baeldung.hibernate.criteria.model.Employee" table="EMPLOYEE">
+        <id name="id" type="java.lang.Integer">
+            <column name="EMPLOYEE_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="salary" type="java.lang.Long">
+            <column name="EMPLOYEE_SALARY" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="EMPLOYEE_NAME" not-null="true" />
+        </property>
+    </class>
 
 </hibernate-mapping>

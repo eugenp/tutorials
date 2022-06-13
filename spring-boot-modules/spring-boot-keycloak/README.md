@@ -9,3 +9,4 @@ This module contains articles about Keycloak in Spring Boot projects.
 - [Keycloak User Self-Registration](https://www.baeldung.com/keycloak-user-registration)
 - [Customizing Themes for Keycloak](https://www.baeldung.com/spring-keycloak-custom-themes)
 - [Securing SOAP Web Services With Keycloak](https://www.baeldung.com/soap-keycloak)
+- [Get Keycloak User ID in Spring](https://www.baeldung.com/spring-keycloak-get-user-id)
