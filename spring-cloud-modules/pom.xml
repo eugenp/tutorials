@@ -50,6 +50,7 @@
         <module>spring-cloud-sentinel</module>
         <module>spring-cloud-dapr</module>
         <module>spring-cloud-docker</module>
+        <module>spring-cloud-bus</module>
     </modules>
 
     <build>
