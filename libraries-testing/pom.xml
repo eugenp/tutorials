@@ -171,15 +171,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven-compiler-plugin.source}</source>
-                    <target>${maven-compiler-plugin.target}</target>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -196,10 +187,6 @@
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
         <dbunit.version>2.7.0</dbunit.version>
-        <assertj-core.version>3.14.0</assertj-core.version>
-        <maven-compiler-plugin.target>1.8</maven-compiler-plugin.target>
-        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <archunit.version>0.14.1</archunit.version>
         <modelassert.version>1.0.0</modelassert.version>
     </properties>

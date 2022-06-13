@@ -2,13 +2,11 @@ package com.baeldung.reactive.webflux.annotation;
 
 import com.baeldung.reactive.webflux.Employee;
 import com.baeldung.reactive.webflux.EmployeeRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -21,9 +19,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = EmployeeSpringApplication.class)
-public class EmployeeControllerIntegrationTest {
+class EmployeeControllerIntegrationTest {
 
     @Autowired
     private WebTestClient testClient;
@@ -32,7 +29,7 @@ public class EmployeeControllerIntegrationTest {
     private EmployeeRepository employeeRepository;
 
     @Test
-    public void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
+    void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
 
         Employee employee = new Employee("1", "Employee 1 Name");
 
@@ -46,7 +43,7 @@ public class EmployeeControllerIntegrationTest {
     }
 
     @Test
-    public void whenGetAllEmployees_thenCorrectEmployees() {
+    void whenGetAllEmployees_thenCorrectEmployees() {
         List<Employee> employeeList = Arrays.asList(
           new Employee("1", "Employee 1 Name"),
           new Employee("2", "Employee 2 Name"),
@@ -65,7 +62,7 @@ public class EmployeeControllerIntegrationTest {
 
     @Test
     @WithMockUser(username = "admin", roles = { "ADMIN" })
-    public void givenValidUser_whenUpdateEmployee_thenEmployeeUpdated() {
+    void givenValidUser_whenUpdateEmployee_thenEmployeeUpdated() {
         Employee employee = new Employee("10", "Employee 10 Updated");
 
         given(employeeRepository.updateEmployee(employee)).willReturn(Mono.just(employee));
@@ -82,7 +79,7 @@ public class EmployeeControllerIntegrationTest {
 
     @Test
     @WithMockUser
-    public void givenInvalidUser_whenUpdateEmployee_thenForbidden() {
+    void givenInvalidUser_whenUpdateEmployee_thenForbidden() {
         Employee employee = new Employee("10", "Employee 10 Updated");
 
         testClient.post()

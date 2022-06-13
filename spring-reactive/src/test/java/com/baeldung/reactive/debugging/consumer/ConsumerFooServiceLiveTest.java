@@ -10,7 +10,7 @@ import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
  * - com.baeldung.reactive.debugging.server.ServerDebuggingApplication
  * - com.baeldung.reactive.debugging.consumer.ConsumerDebuggingApplication
  */
-public class ConsumerFooServiceLiveTest {
+class ConsumerFooServiceLiveTest {
 
     private static final String BASE_URL = "http://localhost:8082";
     private static final String DEBUG_HOOK_ON = BASE_URL + "/debug-hook-on";
@@ -19,14 +19,14 @@ public class ConsumerFooServiceLiveTest {
     private static WebTestClient client;
 
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         client = WebTestClient.bindToServer()
             .baseUrl(BASE_URL)
             .build();
     }
 
     @Test
-    public void whenRequestingDebugHookOn_thenObtainExpectedMessage() {
+    void whenRequestingDebugHookOn_thenObtainExpectedMessage() {
         ResponseSpec response = client.get()
             .uri(DEBUG_HOOK_ON)
             .exchange();
@@ -37,7 +37,7 @@ public class ConsumerFooServiceLiveTest {
     }
 
     @Test
-    public void whenRequestingDebugHookOff_thenObtainExpectedMessage() {
+    void whenRequestingDebugHookOff_thenObtainExpectedMessage() {
         ResponseSpec response = client.get()
             .uri(DEBUG_HOOK_OFF)
             .exchange();
