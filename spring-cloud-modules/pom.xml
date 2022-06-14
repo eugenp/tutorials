@@ -51,6 +51,7 @@
         <module>spring-cloud-dapr</module>
         <module>spring-cloud-docker</module>
         <module>spring-cloud-bus</module>
+        <module>spring-cloud-data-flow</module>
     </modules>
 
     <build>
