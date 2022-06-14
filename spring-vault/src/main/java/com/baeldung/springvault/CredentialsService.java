@@ -1,6 +1,7 @@
 package com.baeldung.springvault;
 
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class CredentialsService {
 
     @Autowired
     private VaultTemplate vaultTemplate;
+    
+    @Autowired
+    private CredentialsRepository credentialsRepository;
 
     /**
     *  To Secure Credentials
@@ -39,6 +43,16 @@ public class CredentialsService {
 
         VaultResponseSupport<Credentials> response = vaultTemplate.read("credentials/myapp", Credentials.class);
         return response.getData();
+    }
+    
+    public Credentials saveCredentials(Credentials credentials) {
+
+        return credentialsRepository.save(credentials);
+    }
+
+    public Optional<Credentials> findById(String username) {
+
+        return credentialsRepository.findById(username);
     }
 
 }
