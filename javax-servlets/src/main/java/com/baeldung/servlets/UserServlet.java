@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "UserServlet", urlPatterns = {"/userServlet"}, initParams={
+@WebServlet(name = "UserServlet", urlPatterns = "/userServlet", initParams={
     @WebInitParam(name="name", value="Not provided"), 
     @WebInitParam(name="email", value="Not provided")})
 public class UserServlet extends HttpServlet {
@@ -16,13 +16,13 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
+        forwardRequest(request, response, "/WEB-INF/jsp/result.jsp");
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        forwardRequest(request, response, "/WEB-INF/jsp/result.jsp");
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
