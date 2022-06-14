@@ -14,7 +14,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.boot.composite.key.data.Customer;
 import com.baeldung.boot.composite.key.data.Ticket;
 import com.baeldung.boot.composite.key.data.TicketId;
 import com.baeldung.boot.composite.key.service.CustomerService;
@@ -55,20 +54,6 @@ public class CustomerServiceIntegrationTest {
     }
 
     @Test
-    public void givenCompoundUniqueIndex_whenSearchingByGeneratedId_thenFound() {
-        Customer customer = new Customer();
-        customer.setName("Name");
-        customer.setNumber(0l);
-        customer.setStoreId(0l);
-
-        Customer savedCustomer = service.insert(customer);
-
-        Optional<Customer> optional = service.findCustomerById(savedCustomer.getId());
-
-        assertThat(optional.isPresent());
-    }
-
-    @Test
     public void givenCompositeId_whenDupeInsert_thenExceptionIsThrown() {
         TicketId ticketId = new TicketId();
         ticketId.setDate("2020-01-01");
@@ -95,36 +80,5 @@ public class CustomerServiceIntegrationTest {
         Ticket savedTicket = service.save(ticketB);
 
         assertEquals(savedTicket.getEvent(), ticketB.getEvent());
-    }
-
-    @Test
-    public void givenCompoundUniqueIndex_whenDupeInsert_thenExceptionIsThrown() {
-        Customer customer = new Customer();
-        customer.setName("Name");
-        customer.setNumber(1l);
-        customer.setStoreId(2l);
-
-        assertThrows(DuplicateKeyException.class, () -> {
-            service.insert(customer);
-            service.insert(customer);
-        });
-    }
-
-    @Test
-    public void givenCompoundUniqueIndex_whenDupeSave_thenExceptionIsThrown() {
-        Customer customerA = new Customer();
-        customerA.setName("Name A");
-        customerA.setNumber(1l);
-        customerA.setStoreId(2l);
-
-        Customer customerB = new Customer();
-        customerB.setName("Name B");
-        customerB.setNumber(1l);
-        customerB.setStoreId(2l);
-
-        assertThrows(DuplicateKeyException.class, () -> {
-            service.save(customerA);
-            service.save(customerB);
-        });
     }
 }
