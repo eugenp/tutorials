@@ -13,4 +13,4 @@ This module contains articles about string conversions from/to another type.
 - [Convert String to Double in Java](https://www.baeldung.com/java-string-to-double)
 - [Convert Char to String in Java](https://www.baeldung.com/java-convert-char-to-string)
 - [Convert String to int or Integer in Java](https://www.baeldung.com/java-convert-string-to-int-or-integer)
-- More articles: [[next -->]](/core-java-string-conversions-2)
+- More articles: [[next -->]](/core-java-modules/core-java-string-conversions-2)
