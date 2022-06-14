@@ -29,7 +29,7 @@
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
         <module>spring-security-saml</module>
-        <module>spring-security-web-angular/server</module>
+        <module>spring-security-web-angular</module>
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
         <module>spring-security-web-boot-3</module>
