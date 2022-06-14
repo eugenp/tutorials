@@ -11,7 +11,6 @@ public class Contact implements Cloneable {
         this.email = email;
     }
 
-    // let's override the clone() method and make it public so that we can access it from outside the class package
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

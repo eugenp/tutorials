@@ -15,7 +15,6 @@ public class Person implements Cloneable {
         this.contact = contact;
     }
 
-    // let's override the clone() method and make it public so that we can access it from outside the class package
     @Override
     public Object clone() throws CloneNotSupportedException {
         Person person = (Person) super.clone();
