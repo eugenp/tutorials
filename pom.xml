@@ -1032,6 +1032,7 @@
                 <module>spring-4</module>
 
                 <module>spring-5</module>
+                <module>spring-reactive-modules</module>
                 <module>spring-5-data-reactive</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-2</module>
