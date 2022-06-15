@@ -54,7 +54,7 @@
     </dependencies>
 
     <properties>
-        <spring.vault.core.version>2.2.0.RELEASE</spring.vault.core.version>
+        <spring.vault.core.version>2.3.2</spring.vault.core.version>
     </properties>
 
 </project>

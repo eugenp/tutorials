@@ -19,7 +19,7 @@ public class CredentialsService {
 
     @Autowired
     private VaultTemplate vaultTemplate;
-    
+
     @Autowired
     private CredentialsRepository credentialsRepository;
 
@@ -44,7 +44,7 @@ public class CredentialsService {
         VaultResponseSupport<Credentials> response = vaultTemplate.read("credentials/myapp", Credentials.class);
         return response.getData();
     }
-    
+
     public Credentials saveCredentials(Credentials credentials) {
 
         return credentialsRepository.save(credentials);
