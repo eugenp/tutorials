@@ -123,6 +123,7 @@
         <module>java-collections-conversions-2</module>
         <module>java-collections-maps-3</module>
         <module>pre-jpms</module>
+        <module>core-java-object-copy</module>
     </modules>
 
     <dependencyManagement>
