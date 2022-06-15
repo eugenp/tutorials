@@ -1,9 +1,11 @@
-public class HardDrive {
+package computermodel;
+
+public class Cpu {
 
     private String modelNumber;
     private String brandName;
 
-    public HardDrive(String modelNumber, String brandName) {
+    public Cpu(String modelNumber, String brandName) {
         this.modelNumber = modelNumber;
         this.brandName = brandName;
     }
@@ -12,8 +14,15 @@ public class HardDrive {
         return modelNumber;
     }
 
+    public void setModelNumber(String modelNumber) {
+        this.modelNumber = modelNumber;
+    }
+
     public String getBrandName() {
         return brandName;
     }
 
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
 }

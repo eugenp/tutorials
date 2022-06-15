@@ -1,3 +1,5 @@
+package computermodel;
+
 public class ComputerShallow {
 
     private HardDrive hardDrive;

@@ -1,3 +1,10 @@
+package createcopies;
+
+import computermodel.ComputerDeep;
+import computermodel.ComputerShallow;
+import computermodel.Cpu;
+import computermodel.HardDrive;
+
 public class CreateCopies {
 
     public static ComputerDeep createDeepCopy() {

@@ -1,3 +1,5 @@
+package computermodel;
+
 public class ComputerDeep {
 
     private HardDrive hardDrive;
