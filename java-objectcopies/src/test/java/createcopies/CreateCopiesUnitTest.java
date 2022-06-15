@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import computermodel.ComputerDeep;
 import computermodel.ComputerShallow;
 
-class UnitTest {
+class CreateCopiesUnitTest {
 
     @Test
     void whenCreateDeepCopyMethodIsCalled_thenDeepCopyShouldBeCreated() {
