@@ -35,7 +35,7 @@ public class VaultIntegrationTest {
 
     @Autowired
     private CredentialsService credentialsService;
-    
+
     @MockBean
     private CredentialsRepository credentialsRepository;
 
@@ -77,7 +77,7 @@ public class VaultIntegrationTest {
         assertEquals("username", credentials.getUsername());
         assertEquals("password", credentials.getPassword());
     }
-    
+
     @Test
     @Ignore
     public void givenCredentials_whenSave_thenReturnCredentials() {
