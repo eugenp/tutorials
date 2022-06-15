@@ -128,7 +128,6 @@
         <module>java-numbers-3</module>
         <module>java-numbers-4</module>
         <module>core-java-object-copy</module>
-        <module>core-java-object-copy</module>
     </modules>
 
     <dependencyManagement>
