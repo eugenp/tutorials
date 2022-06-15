@@ -6,7 +6,7 @@ public class ShallowPerson implements Cloneable {
     ShallowAddress address;
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 

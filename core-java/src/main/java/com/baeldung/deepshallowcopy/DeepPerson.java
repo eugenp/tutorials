@@ -6,7 +6,7 @@ public class DeepPerson implements Cloneable {
     DeepAddress address;
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         DeepPerson person = (DeepPerson) super.clone();
         person.address = (DeepAddress) person.address.clone();
         return person;
