@@ -1,16 +1,13 @@
-package com.baeldung.deepcopy;
+package com.baeldung.shallowcopy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-import com.baeldung.deepcopy.Address;
-import com.baeldung.deepcopy.Person;
-
-public class DeepCopyTest {
+public class ShallowCopyUnitTest {
 
     @Test
-    public void whenModifyingCopiedPerson_thenOriginalDoesNotChange() {
+    public void whenModifyingClonedPersonFields_thenOriginalPersonAddressChanges() {
         Address address = new Address("123 Main Street", "New York", "NY 10030");
         Person firstPerson = new Person("John Smith", 26, address);
         Person secondPerson = firstPerson.clone();
@@ -22,14 +19,14 @@ public class DeepCopyTest {
 
         assertThat(firstPerson).isNotSameAs(secondPerson);
         assertThat(firstPerson.getAddress()
-            .getAddressLine()).isNotSameAs(secondPerson.getAddress()
+            .getAddressLine()).isSameAs(secondPerson.getAddress()
             .getAddressLine());
         assertThat(firstPerson.getAge()).isNotEqualTo(secondPerson.getAge());
         assertThat(firstPerson.getName()).isNotEqualTo(secondPerson.getName());
     }
 
     @Test
-    public void whenModifyingConstructorCopiedPerson_thenOriginalPersonDoesNotChange() {
+    public void whenModifyingConstructorCopiedPersonFields_thenOriginalPersonAddressChanges() {
         Address address = new Address("123 Main Street", "New York", "NY 10030");
         Person firstPerson = new Person("John Smith", 26, address);
         Person secondPerson = new Person(firstPerson);
@@ -41,10 +38,9 @@ public class DeepCopyTest {
 
         assertThat(firstPerson).isNotSameAs(secondPerson);
         assertThat(firstPerson.getAddress()
-            .getAddressLine()).isNotSameAs(secondPerson.getAddress()
+            .getAddressLine()).isSameAs(secondPerson.getAddress()
             .getAddressLine());
         assertThat(firstPerson.getAge()).isNotEqualTo(secondPerson.getAge());
         assertThat(firstPerson.getName()).isNotEqualTo(secondPerson.getName());
     }
-
 }
