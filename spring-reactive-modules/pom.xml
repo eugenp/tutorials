@@ -17,7 +17,7 @@
     </parent>
 
     <modules>
-
+        <module>spring-5-data-reactive</module>
     </modules>
 
     <build>
