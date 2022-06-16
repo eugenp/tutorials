@@ -52,7 +52,7 @@
         <module>spring-cloud-docker</module>
         <module>spring-cloud-bus</module>
         <module>spring-cloud-data-flow</module>
-        <module>spring-sleuth</module>
+        <module>spring-cloud-sleuth</module>
     </modules>
 
     <build>
