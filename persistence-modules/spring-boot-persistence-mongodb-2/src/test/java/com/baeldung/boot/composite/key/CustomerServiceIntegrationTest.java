@@ -60,9 +60,9 @@ public class CustomerServiceIntegrationTest {
         ticketId.setVenue("V");
 
         Ticket ticket = new Ticket(ticketId, "Event C");
+        service.insert(ticket);
 
         assertThrows(DuplicateKeyException.class, () -> {
-            service.insert(ticket);
             service.insert(ticket);
         });
     }
