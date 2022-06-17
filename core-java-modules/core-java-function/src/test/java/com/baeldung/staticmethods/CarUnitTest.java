@@ -16,13 +16,13 @@ class CarUnitTest {
     }
 
     @Test
-    void givenCarInstance_whenGettingCarModel_thenCorrectIdModelReturned() {
+    void givenCarInstance_whenGettingCarModel_thenCorrectModelReturned() {
         Car car1 = new Car(1, "karoq");
         assertThat(car1.getModel()).isEqualTo("karoq");
     }
 
     @Test
-    void givenCarInstance_whenGettingCarModelCapitalized_thenCorrectIdModelReturned() {
+    void givenCarInstance_whenGettingCarModelCapitalized_thenCapitalizedModelReturned() {
         try (MockedStatic<StringUtils> utilities = Mockito.mockStatic(StringUtils.class)) {
             utilities.when(() -> StringUtils.capitalize("karoq")).thenReturn("Karoq");
 
@@ -32,7 +32,7 @@ class CarUnitTest {
     }
 
     @Test
-    void givenCarInstance_whenGettingCarMake_thenCorrectIdMakeReturned() {
+    void givenCarInstance_whenGettingCarMake_thenCorrectMakeReturned() {
         Car car1 = new Car(1, "Karoq");
         assertThat(car1.getMake()).isEqualTo("Skoda");
     }
