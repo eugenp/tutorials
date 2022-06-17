@@ -365,7 +365,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-                <!-- <module>cas</module> --> <!-- Not a maven project -->
+                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -423,7 +423,7 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>                
+                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -610,9 +610,7 @@
                 <module>spring-caching-2</module>
 
                 <module>spring-cloud-modules</module>
-                <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-cloud-data-flow</module>
 
                 <module>spring-core</module>
                 <module>spring-core-2</module>
@@ -654,7 +652,6 @@
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
-                <module>spring-sleuth</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
@@ -821,7 +818,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-                <!-- <module>cas</module> --> <!-- Not a maven project -->
+                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -1285,7 +1282,7 @@
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>                 
+                 <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-contexts</module>
@@ -1354,7 +1351,7 @@
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>                
+                <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
