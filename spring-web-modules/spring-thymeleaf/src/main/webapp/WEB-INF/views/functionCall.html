@@ -4,25 +4,23 @@
 <meta charset="UTF-8" />
 <title>Thymeleaf: Javascript function call</title>
 </head>
+<script type="text/javascript"
+        src="../js/functionCall.js">
+</script>
 <body>
     <header>
         <div> Thymeleaf: Javascript function call </div>
     </header>
-
     <main>
-        <section>
-            <div>Inline function call</div>
-            <div>
-                <header>Without a variable</header>
-                <button th:onclick="'alert(\'a\');'">Without variable</button>
-            </div>
-            <div>
-                <header>With a variable</header>
-                <button th:onclick="'alert(\'' + ${num} + '\');'">With variable</button>
-            </div>
+        <section class="flex-box">
+                <button th:onclick="greetWorld()">using no variable</button>
+                <button th:onclick="'alert(\' 1. static variable used here.\');'">using static variable</button>
+                <button th:onclick="'alert(\' '1. There are exactly  + ${totalStudents} +  students'\');'">using inline dynamic variable</button>
+                <button th:onclick="'javascript:alert(\''2. There are exactly  + ${totalStudents}  +  students'\');'">using javascript:function</button>
+                <button th:data-name="${student.name}" th:onclick="salute(this.getAttribute('data-name'))">using data attribute</button>
+                <button th:onclick="@{'salute(' + ${student.name} + ');'}">using @ tag</button>
+                <button th:onclick="salute([[${student.name}]])">using double brackets</button>
         </section>
     </main>
-
-
 </body>
 </html>

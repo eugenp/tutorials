@@ -1,5 +1,6 @@
 package com.baeldung.thymeleaf.controller;
 
+import com.baeldung.thymeleaf.utils.StudentUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,8 @@ public class FunctionCallController {
 
     @RequestMapping(value = "/function-call", method = RequestMethod.GET)
     public String getExampleHTML(Model model) {
-        model.addAttribute("num", 2);
+        model.addAttribute("totalStudents", StudentUtils.buildStudents().size());
+        model.addAttribute("student", StudentUtils.buildStudents().get(0));
         return "functionCall.html";
     }
 }
