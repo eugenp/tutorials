@@ -1,4 +1,4 @@
-package regex.array;
+package com.baeldung.regex.array;
 
 import java.util.ArrayList;
 import java.util.List;
