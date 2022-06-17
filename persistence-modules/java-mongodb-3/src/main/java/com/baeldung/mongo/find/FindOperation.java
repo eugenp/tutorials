@@ -1,4 +1,4 @@
-package com.baeldung.mongo;
+package com.baeldung.mongo.find;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
