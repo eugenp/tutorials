@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Thymeleaf: Javascript function call</title>
+</head>
+<body>
+    <header>
+        <div> Thymeleaf: Javascript function call </div>
+    </header>
+
+    <main>
+        <section>
+            <div>Inline function call</div>
+            <div>
+                <header>Without a variable</header>
+                <button th:onclick="'alert(\'a\');'">Without variable</button>
+            </div>
+            <div>
+                <header>With a variable</header>
+                <button th:onclick="'alert(\'' + ${num} + '\');'">With variable</button>
+            </div>
+        </section>
+    </main>
+
+
+</body>
+</html>
