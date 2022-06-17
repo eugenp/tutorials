@@ -365,7 +365,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-                <!-- <module>cas</module> --> <!-- Not a maven project -->
+                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -423,7 +423,7 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>                
+                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -818,7 +818,7 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-                <!-- <module>cas</module> --> <!-- Not a maven project -->
+                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -1282,7 +1282,7 @@
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
                  <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>                 
+                 <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
                  <module>ddd-contexts</module>
@@ -1351,7 +1351,7 @@
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
                 <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>                
+                <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>

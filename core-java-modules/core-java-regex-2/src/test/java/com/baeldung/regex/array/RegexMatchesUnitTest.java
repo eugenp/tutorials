@@ -1,9 +1,8 @@
-package regex.array;
+package com.baeldung.regex.array;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import org.junit.jupiter.api.Test;
-
-import regex.array.RegexMatches;
 
 class RegexMatchesUnitTest {
 

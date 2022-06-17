@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.cloud</groupId>
-    <artifactId>spring-cloud-kubernetes</artifactId>
-    <name>spring-cloud-kubernetes</name>
+    <artifactId>spring-cloud-stream-starters</artifactId>
+    <name>spring-cloud-stream-starters</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -15,9 +15,7 @@
     </parent>
 
     <modules>
-        <module>kubernetes-minikube</module>
-        <module>kubernetes-selfhealing</module>
-        <module>kubernetes-guide</module>
+        <module>twitterhdfs</module>
     </modules>
 
     <dependencyManagement>
