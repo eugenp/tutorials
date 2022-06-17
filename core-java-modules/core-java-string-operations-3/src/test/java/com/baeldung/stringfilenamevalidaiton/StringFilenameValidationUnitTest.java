@@ -70,7 +70,7 @@ public class StringFilenameValidationUnitTest {
 
     @ParameterizedTest
     @EnabledOnOs({OS.LINUX, OS.MAC})
-    @MethodSource("filenamesWithInvalidWindowsChars")
+    @MethodSource("filenamesWithInvalidUnixChars")
     public void givenFilenameStringWithInvalidWindowsCharAndIsUnix_whenValidateUsingIO_thenReturnTrue(String filename) throws IOException {
         assertThat(validateStringFilenameUsingIO(filename)).isTrue();
         assertThat(validateStringFilenameUsingNIO2(filename)).isTrue();
