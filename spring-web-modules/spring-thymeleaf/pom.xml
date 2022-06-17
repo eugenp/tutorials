@@ -115,10 +115,9 @@
             </plugin>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>${cargo-maven2-plugin.version}</version>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>${cargo-maven3-plugin.version}</version>
                 <configuration>
-                    <wait>true</wait>
                     <container>
                         <containerId>jetty9x</containerId>
                         <type>embedded</type>
@@ -143,7 +142,7 @@
         <javax.validation-version>2.0.1.Final</javax.validation-version>
         <hibernate-validator.version>6.0.11.Final</hibernate-validator.version>
         <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <cargo-maven3-plugin.version>1.9.9</cargo-maven3-plugin.version>
     </properties>
 
 </project>
