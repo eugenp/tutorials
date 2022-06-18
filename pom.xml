@@ -1033,7 +1033,6 @@
 
                 <module>spring-5</module>
                 <module>spring-reactive-modules</module>
-                <module>spring-5-reactive</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-reactive</module>
