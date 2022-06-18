@@ -24,6 +24,7 @@
         <module>spring-5-reactive-client</module>
         <module>spring-5-reactive-oauth</module>
         <module>spring-5-reactive-security</module>
+        <module>spring-reactive</module>
     </modules>
 
     <build>
