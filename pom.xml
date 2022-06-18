@@ -521,11 +521,7 @@
                 <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
-                <module>rxjava-core</module>
-                <module>rxjava-libraries</module>
-                <module>rxjava-observables</module>
-                <module>rxjava-operators</module>
-
+                <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>slack</module>
@@ -976,11 +972,7 @@
                 <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
-                <module>rxjava-core</module>
-                <module>rxjava-libraries</module>
-                <module>rxjava-observables</module>
-                <module>rxjava-operators</module>
-
+                <module>rxjava-modules</module>                
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>slack</module>
