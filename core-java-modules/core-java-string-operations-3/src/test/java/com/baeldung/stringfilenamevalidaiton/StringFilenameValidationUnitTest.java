@@ -87,7 +87,7 @@ public class StringFilenameValidationUnitTest {
 					.extracting(Throwable::getMessage, InstanceOfAssertFactories.STRING)
 					.containsAnyOf("The system cannot find the path specifie",
 							"The filename, directory name, or volume label syntax is incorrect");
-			if (!filename.contains("/") && !filename.contains("\\")) {
+			if (!filename.contains("\\")) {
 				assertThatThrownBy(() -> validateStringFilenameUsingNIO2(filename))
 						.isInstanceOf(InvalidPathException.class).hasMessageContaining("Illegal char");
 			}
