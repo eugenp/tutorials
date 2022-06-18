@@ -1034,7 +1034,6 @@
                 <module>spring-5</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-5-reactive</module>
-                <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-webflux</module>
