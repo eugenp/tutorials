@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.boot.unique.field.dao.AssetRepository;
 import com.baeldung.boot.unique.field.dao.CompanyRepository;
-import com.baeldung.boot.unique.field.dao.Customer2Repository;
 import com.baeldung.boot.unique.field.dao.CustomerRepository;
 import com.baeldung.boot.unique.field.dao.SaleRepository;
 import com.baeldung.boot.unique.field.data.Asset;
 import com.baeldung.boot.unique.field.data.Company;
 import com.baeldung.boot.unique.field.data.Customer;
-import com.baeldung.boot.unique.field.data.Customer2;
 import com.baeldung.boot.unique.field.data.Sale;
 import com.baeldung.boot.unique.field.data.SaleId;
 
@@ -34,9 +32,6 @@ public class UniqueFieldController {
 
     @Autowired
     private CustomerRepository customerRepo;
-
-    @Autowired
-    private Customer2Repository customer2Repo;
 
     @Autowired
     private AssetRepository assetRepo;
@@ -69,11 +64,6 @@ public class UniqueFieldController {
     @PostMapping("/customer")
     public Customer post(@RequestBody Customer customer) {
         return customerRepo.insert(customer);
-    }
-
-    @PostMapping("/customer2")
-    public Customer2 post(@RequestBody Customer2 customer) {
-        return customer2Repo.insert(customer);
     }
 
     @GetMapping("/customer/{id}")
