@@ -8,23 +8,12 @@
     <name>rxjava-libraries</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
+        <groupId>com.baeldung.rxjava-modules</groupId>
+        <artifactId>rxjava-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>io.reactivex</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>${rx.java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>${rx.java2.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.jakewharton.rxrelay2</groupId>
             <artifactId>rxrelay</artifactId>
@@ -45,9 +34,7 @@
 
     <properties>
         <rx.java.jdbc.version>0.7.11</rx.java.jdbc.version>
-        <rx.java.version>1.2.5</rx.java.version>
         <rxrelay.version>2.0.0</rxrelay.version>
-        <rx.java2.version>2.2.2</rx.java2.version>
     </properties>
 
 </project>

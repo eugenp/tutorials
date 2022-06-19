@@ -13,4 +13,3 @@ This module contains articles about RxJava.
 - [RxJava Maybe](https://www.baeldung.com/rxjava-maybe)
 - [Combining RxJava Completables](https://www.baeldung.com/rxjava-completable)
 - [RxJava Hooks](https://www.baeldung.com/rxjava-hooks)
-- More articles: [[next -->]](/rxjava-2)
