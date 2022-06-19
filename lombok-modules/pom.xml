@@ -17,6 +17,7 @@
 
     <modules>
         <module>lombok</module>
+        <module>lombok-2</module>
     </modules>
 
     <build>
