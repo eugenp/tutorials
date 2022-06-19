@@ -3,8 +3,9 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-lombok-modules</artifactId>
-    <name>spring-lombok-modules</name>
+    <artifactId>lombok-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>lombok-modules</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -15,7 +16,7 @@
     </parent>
 
     <modules>
-
+        <module>lombok</module>
     </modules>
 
     <build>
@@ -28,5 +29,9 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <lombok.version>1.18.20</lombok.version>
+    </properties>
 
 </project>
