@@ -521,11 +521,7 @@
                 <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
-                <module>rxjava-core</module>
-                <module>rxjava-libraries</module>
-                <module>rxjava-observables</module>
-                <module>rxjava-operators</module>
-
+                <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>slack</module>
@@ -976,11 +972,7 @@
                 <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
-                <module>rxjava-core</module>
-                <module>rxjava-libraries</module>
-                <module>rxjava-observables</module>
-                <module>rxjava-operators</module>
-
+                <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>slack</module>
@@ -1057,9 +1049,7 @@
                 <module>spring-caching-2</module>
 
                 <module>spring-cloud-modules</module>
-                <module>spring-cloud-bus</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-cloud-data-flow</module>
 
                 <module>spring-core</module>
                 <module>spring-core-2</module>
@@ -1101,7 +1091,6 @@
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
-                <module>spring-sleuth</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
