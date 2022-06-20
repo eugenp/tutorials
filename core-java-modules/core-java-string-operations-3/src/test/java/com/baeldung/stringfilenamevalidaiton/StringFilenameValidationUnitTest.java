@@ -82,16 +82,12 @@ public class StringFilenameValidationUnitTest {
     @MethodSource("filenamesWithInvalidWindowsChars")
 	public void givenFilenameStringWithInvalidWindowsCharAndIsWindows_whenValidateUsingIO_thenRaiseException(
 			String filename) {
-		if (!filename.contains(":")) {
-			assertThatThrownBy(() -> validateStringFilenameUsingIO(filename)).isInstanceOf(IOException.class)
-					.extracting(Throwable::getMessage, InstanceOfAssertFactories.STRING)
-					.containsAnyOf("The system cannot find the path specifie",
-							"The filename, directory name, or volume label syntax is incorrect");
-			if (!filename.contains("\\")) {
-				assertThatThrownBy(() -> validateStringFilenameUsingNIO2(filename))
-						.isInstanceOf(InvalidPathException.class).hasMessageContaining("Illegal char");
-			}
-		}
+		assertThatThrownBy(() -> validateStringFilenameUsingIO(filename)).isInstanceOf(IOException.class)
+				.extracting(Throwable::getMessage, InstanceOfAssertFactories.STRING)
+				.containsAnyOf("The system cannot find the path specified",
+						"The filename, directory name, or volume label syntax is incorrect");
+		assertThatThrownBy(() -> validateStringFilenameUsingNIO2(filename)).isInstanceOf(InvalidPathException.class)
+				.hasMessageContaining("Illegal char");
 
 		assertThat(validateStringFilenameUsingContains(filename)).isFalse();
 	}
