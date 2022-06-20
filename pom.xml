@@ -475,9 +475,7 @@
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
-                <module>lombok</module>
-                <module>lombok-2</module>
-                <module>lombok-custom</module>
+                <module>lombok-modules</module>
                 <module>lucene</module>
 
                 <module>mapstruct</module>
@@ -919,9 +917,7 @@
                 <module>libraries-testing</module>
                 <module>linkrest</module>
                 <module>logging-modules</module>
-                <module>lombok</module>
-                <module>lombok-2</module>
-                <module>lombok-custom</module>
+                <module>lombok-modules</module>
                 <module>lucene</module>
 
                 <module>mapstruct</module>
