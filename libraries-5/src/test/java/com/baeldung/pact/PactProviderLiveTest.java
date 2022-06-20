@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.SpringApplication;
 import org.springframework.web.context.ConfigurableWebApplicationContext;
 
-import com.baeldung.sampleapp.config.MainApplication;
+import com.baeldung.pact.config.MainApplication;
 
 import au.com.dius.pact.provider.junit.Provider;
 import au.com.dius.pact.provider.junit.State;

@@ -1,4 +1,4 @@
-package com.baeldung.sampleapp.web.dto;
+package com.baeldung.pact.web.dto;
 
 public class PactDto {
 
