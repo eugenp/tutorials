@@ -666,7 +666,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
+                <module>undertow</module>
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
@@ -1103,7 +1103,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with the build (TODO: create a jira to fix it) -->
+                <module>undertow</module>
 
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
