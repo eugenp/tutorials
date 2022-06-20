@@ -1,4 +1,4 @@
-package com.baeldung.sampleapp.web.controller;
+package com.baeldung.pact.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.sampleapp.web.dto.PactDto;
+import com.baeldung.pact.web.dto.PactDto;
 
 @RestController
 public class PactController {
