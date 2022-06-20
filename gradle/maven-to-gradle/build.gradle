@@ -10,7 +10,7 @@ plugins {
 repositories {
     mavenLocal()
     maven {
-        url = 'http://repo.maven.apache.org/maven2'
+        url = uri('https://repo.maven.apache.org/maven2/')
     }
 }
 
@@ -18,9 +18,10 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
 }
 
-group = 'com.balendung'
+group = 'com.baeldung'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+description = 'maven-to-gradle'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications {
