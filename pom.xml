@@ -578,16 +578,9 @@
                 <module>spring-4</module>
 
                 <module>spring-5</module>
-                <module>spring-5-data-reactive</module>
-                <module>spring-5-reactive</module>
-                <module>spring-5-reactive-2</module>
-                <module>spring-5-reactive-3</module>
-                <module>spring-5-reactive-client</module>
-                <module>spring-5-reactive-oauth</module>
-                <module>spring-5-reactive-security</module>
+                <module>spring-5-reactive-modules</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
-                <module>spring-reactive</module>
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
@@ -1021,16 +1014,10 @@
                 <module>spring-4</module>
 
                 <module>spring-5</module>
-                <module>spring-5-data-reactive</module>
-                <module>spring-5-reactive</module>
-                <module>spring-5-reactive-2</module>
-                <module>spring-5-reactive-3</module>
-                <module>spring-5-reactive-client</module>
-                <module>spring-5-reactive-oauth</module>
-                <module>spring-5-reactive-security</module>
+                <module>spring-5-reactive-modules</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
-                <module>spring-reactive</module>
+
 
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
