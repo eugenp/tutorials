@@ -1,10 +1,13 @@
 package com.baeldung.multibeaninstantiation.solution2;
 
+import org.springframework.stereotype.Component;
+
 import com.baeldung.multibeaninstantiation.solution2.Person;
 
+@Component
 public class PersonTwo extends Person {
 
-    public PersonTwo(String firstName, String lastName) {
-        super(firstName, lastName);
+    public PersonTwo() {
+        super("John", "Reese");
     }
 }

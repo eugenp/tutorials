@@ -10,7 +10,7 @@ public class SpringApp2 {
         // Initializing the spring container
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig.class);
 
-        Person person = context.getBean("personOne", Person.class);
+        Person person = context.getBean("personTwo", Person.class);
 
         System.out.println(person);
 
