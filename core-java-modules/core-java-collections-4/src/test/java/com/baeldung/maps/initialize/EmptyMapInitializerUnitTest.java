@@ -28,4 +28,9 @@ public class EmptyMapInitializerUnitTest {
     assertFalse(emptyMapUsingGuava.isEmpty());
   }
 
+  @Test(expected=UnsupportedOperationException.class)
+  public void givenImmutableEmptyMapUsingGuava_whenAddingEntries_throwsException() {
+    Map<String, String> map = EmptyMapInitializer.createImmutableMapUsingGuava();
+    map.put("key", "value");
+  }
 }
