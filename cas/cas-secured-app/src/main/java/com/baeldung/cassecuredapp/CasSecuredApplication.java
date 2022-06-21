@@ -88,7 +88,6 @@ public class CasSecuredApplication {
     @Bean
     public SingleSignOutFilter singleSignOutFilter() {
         SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
-        singleSignOutFilter.setCasServerUrlPrefix("https://localhost:8443");
         singleSignOutFilter.setLogoutCallbackPath("/exit/cas");
         singleSignOutFilter.setIgnoreInitConfiguration(true);
         return singleSignOutFilter;
