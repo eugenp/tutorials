@@ -25,7 +25,7 @@ import au.com.dius.pact.model.RequestResponsePact;
 @PactTestFor(providerName = "test_provider", hostInterface="localhost")
 public class PactConsumerDrivenContractUnitTest {
 
-    @Pact(provider="test_provider", consumer = "test_consumer")
+    @Pact(consumer = "test_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
