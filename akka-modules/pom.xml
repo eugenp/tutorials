@@ -16,7 +16,8 @@
 
     <modules>
         <module>akka-http</module>
-        <module>akka-streams</module>    
+        <module>akka-streams</module>
+        <module>spring-akka</module>
     </modules>
 
     <build>

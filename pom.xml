@@ -580,8 +580,6 @@
                 <module>spring-5-webflux-2</module>
 
                 <module>spring-activiti</module>
-                <module>akka-modules</module>
-                <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
@@ -1015,7 +1013,6 @@
 
 
                 <module>spring-activiti</module>
-                <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
