@@ -331,7 +331,6 @@
                 <module>parent-java</module>
 
                 <module>akka-modules</module>
-                <module>akka-http</module>
                 <module>akka-streams</module>
 
                 <module>algorithms-modules</module>
@@ -773,7 +772,6 @@
                 <module>parent-java</module>
 
                 <module>akka-modules</module>
-                <module>akka-http</module>
                 <module>akka-streams</module>
 
                 <module>algorithms-modules</module>
