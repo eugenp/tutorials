@@ -7,15 +7,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 @Testable
 public class PostgreSqlContainerLiveTest {
-    @Rule
-    public PostgreSQLContainer postgresContainer = new PostgreSQLContainer();
+
+    public static PostgreSQLContainer postgresContainer = new PostgreSQLContainer();
+
+    @BeforeAll
+    static void setup() {
+        postgresContainer.start();
+    }
 
     @Test
     public void whenSelectQueryExecuted_thenResulstsReturned() throws Exception {

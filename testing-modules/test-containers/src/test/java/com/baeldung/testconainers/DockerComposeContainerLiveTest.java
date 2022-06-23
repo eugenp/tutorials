@@ -8,16 +8,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.DockerComposeContainer;
 
 public class DockerComposeContainerLiveTest {
-    @ClassRule
-    public static DockerComposeContainer compose = 
-      new DockerComposeContainer(
-        new File("src/test/resources/test-compose.yml"))
-          .withExposedService("simpleWebServer_1", 80);
+
+    static final DockerComposeContainer compose =
+        new DockerComposeContainer(
+            new File("src/test/resources/test-compose.yml"))
+            .withExposedService("simpleWebServer_1", 80);;
+
+    @BeforeAll
+    static void setup() {
+        compose.start();
+    }
 
     @Test
     public void givenSimpleWebServerContainer_whenGetReuqest_thenReturnsResponse()
@@ -25,7 +30,7 @@ public class DockerComposeContainerLiveTest {
         String address = "http://" + compose.getServiceHost("simpleWebServer_1", 80)
           + ":" + compose.getServicePort("simpleWebServer_1", 80);
         String response = simpleGetRequest(address);
-        
+
         assertEquals(response, "Hello World!");
     }
 
