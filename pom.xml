@@ -448,7 +448,6 @@
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
-                <module>json-path</module>
                 <module>jsoup</module>
                 <module>kubernetes</module>
                 <module>ksqldb</module>
@@ -887,7 +886,6 @@
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
-                <module>json-path</module>
                 <module>jsoup</module>
 
                 <module>ksqldb</module>

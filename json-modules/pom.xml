@@ -17,6 +17,7 @@
     <modules>
         <module>json</module>
         <module>json-2</module>
+        <module>json-path</module>
     </modules>
 
     <build>
