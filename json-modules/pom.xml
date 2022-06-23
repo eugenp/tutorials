@@ -16,6 +16,7 @@
 
     <modules>
         <module>json</module>
+        <module>json-2</module>
     </modules>
 
     <build>
