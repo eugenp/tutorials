@@ -3,39 +3,79 @@ repositories {
 }
 
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 group = 'com.baeldung'
 
 // by default, pom's artifactId is taken from the directory name
 
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 dependencies {
-    compile('org.slf4j:slf4j-api')
-    testCompile('junit:junit')
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    testImplementation 'junit:junit:4.12'
 }
 
-install {
-    repositories {
-        mavenInstaller {
-            pom.version = '0.0.1-maven-SNAPSHOT'
-            pom.groupId = 'com.baeldung.sample'
-            pom.artifactId = 'gradle-maven-converter'
-            pom.project {
-                inceptionYear '2020'
+// basic publishing
+
+//publishing {
+//    publications {
+//        customLibrary(MavenPublication) {
+//            from components.java
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+//            name = 'sampleRepo'
+//            url = layout.buildDirectory.dir("repo")
+//        }
+//    }
+//}
+
+// customized publishing
+
+publishing {
+    publications {
+        customLibrary(MavenPublication) {
+            groupId = 'com.baeldung.sample'
+            artifactId = 'gradle-maven-converter'
+            version = '0.0.1-maven'
+
+            from components.java
+
+            pom {
+                name = 'Sample Library'
+                description = 'A description of sample library'
+                url = 'http://www.example.com/library'
                 licenses {
                     license {
-                        name 'My License'
-                        url 'http://www.mycompany.com/licenses/license.txt'
-                        distribution 'repo'
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
             }
-            pom.whenConfigured {pom ->
-                pom.dependencies.find {dep -> dep.groupId == 'junit' && dep.artifactId == 'junit' }.optional = true
+
+            pom.withXml {
+                asNode()
+                .dependencies
+                .dependency
+                .findAll { dependency ->
+                    // find all dependencies with runtime scope
+                    dependency.scope.text() == 'runtime'
+                }
+                .each { dependency ->
+                    // set the scope to 'compile'
+                    dependency.scope*.value = 'compile'
+                }
             }
-            pom.writeTo("${mavenPomDir}/${project.group}/${project.name}/pom.xml")
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'sampleRepo'
+            url = layout.buildDirectory.dir("repo")
         }
     }
 }
