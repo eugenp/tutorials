@@ -7,28 +7,33 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.GenericContainer;
 
 @Testable
 public class GenericContainerLiveTest {
-    @ClassRule
-    public static GenericContainer simpleWebServer =
+
+    static GenericContainer simpleWebServer =
       new GenericContainer("alpine:3.2")
         .withExposedPorts(80)
         .withCommand("/bin/sh", "-c", "while true; do echo "
           + "\"HTTP/1.1 200 OK\n\nHello World!\" | nc -l -p 80; done");
 
+    @BeforeAll
+    static void setup() {
+        simpleWebServer.start();
+    }
+
     @Test
     public void givenSimpleWebServerContainer_whenGetReuqest_thenReturnsResponse()
       throws Exception {
-        String address = "http://" 
-          + simpleWebServer.getContainerIpAddress() 
+        String address = "http://"
+          + simpleWebServer.getContainerIpAddress()
           + ":" + simpleWebServer.getMappedPort(80);
         String response = simpleGetRequest(address);
-        
+
         assertEquals(response, "Hello World!");
     }
 
