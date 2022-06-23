@@ -448,7 +448,6 @@
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
-                <module>json</module>
                 <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
@@ -889,7 +888,6 @@
                 <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
-                <module>json</module>
                 <module>json-2</module>
                 <module>json-path</module>
                 <module>jsoup</module>
