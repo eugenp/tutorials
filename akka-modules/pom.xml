@@ -16,6 +16,7 @@
 
     <modules>
         <module>akka-http</module>
+        <module>akka-streams</module>    
     </modules>
 
     <build>
