@@ -404,7 +404,6 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
                 <module>grpc</module>
-                <module>gson</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -447,9 +446,7 @@
                 <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
-                <module>json</module>
-                <module>json-2</module>
-                <module>json-path</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>kubernetes</module>
                 <module>ksqldb</module>
@@ -844,7 +841,6 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
                 <module>grpc</module>
-                <module>gson</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
@@ -887,9 +883,7 @@
                 <module>java-native</module>
                 <module>jooby</module>
                 <module>jsf</module>
-                <module>json</module>
-                <module>json-2</module>
-                <module>json-path</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
 
                 <module>ksqldb</module>
