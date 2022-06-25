@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
 class MySampleGUIAppnUnitTest {
-
     @Test
     void testMain() throws IOException {
         System.setProperty("java.awt.headless", "true");
