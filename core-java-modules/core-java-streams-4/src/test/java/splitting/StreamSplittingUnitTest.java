@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StreamSplittingUnitTest {
     private final static List<Article> articles = Lists.newArrayList(
@@ -24,27 +23,27 @@ public class StreamSplittingUnitTest {
     public void givenListOfArticles_shouldSplitListInTwoCategories_usingPartitioningBy() {
         Map<Boolean, List<Article>> groupedArticles = articles.stream().collect(Collectors.partitioningBy(a -> a.getTarget().equals("Baeldung")));
 
-        assertTrue(groupedArticles.get(true).containsAll(Lists.newArrayList(
+        assertThat(groupedArticles.get(true)).containsAll(Lists.newArrayList(
                 new Article("Baeldung", true),
-                new Article("Baeldung", false))));
-        assertTrue(groupedArticles.get(false).containsAll(Lists.newArrayList(
+                new Article("Baeldung", false)));
+        assertThat(groupedArticles.get(false)).containsAll(Lists.newArrayList(
                 new Article("Programming Daily", false),
-                new Article("The Code", false))));
+                new Article("The Code", false)));
     }
 
     @Test
     public void givenListOfArticles_shouldSplitListInMultipleCategories_usingGroupingBy() {
         Map<String, List<Article>> groupedArticles = articles.stream().collect(Collectors.groupingBy(Article::getTarget));
 
-        assertEquals(2, groupedArticles.get("Baeldung").size());
-        assertEquals(1, groupedArticles.get("Programming Daily").size());
-        assertEquals(1, groupedArticles.get("The Code").size());
+        assertThat(groupedArticles.get("Baeldung")).hasSize(2);
+        assertThat(groupedArticles.get("Programming Daily")).hasSize(1);
+        assertThat(groupedArticles.get("The Code")).hasSize(1);
 
-        assertTrue(groupedArticles.get("Baeldung").containsAll(Lists.newArrayList(
+        assertThat(groupedArticles.get("Baeldung")).containsAll(Lists.newArrayList(
                 new Article("Baeldung", true),
-                new Article("Baeldung", false))));
-        assertTrue(groupedArticles.get("Programming Daily").contains(new Article("Programming Daily", false)));
-        assertTrue(groupedArticles.get("The Code").contains(new Article("The Code", false)));
+                new Article("Baeldung", false)));
+        assertThat(groupedArticles.get("Programming Daily")).contains(new Article("Programming Daily", false));
+        assertThat(groupedArticles.get("The Code")).contains(new Article("The Code", false));
     }
 
     @Test
@@ -54,8 +53,8 @@ public class StreamSplittingUnitTest {
                 Collectors.filtering(article -> !article.getTarget().equals("Baeldung"), Collectors.counting()),
                 List::of));
 
-        assertEquals(2, (long) countedArticles.get(0));
-        assertEquals(2, (long) countedArticles.get(1));
+        assertThat(countedArticles.get(0)).isEqualTo(2);
+        assertThat(countedArticles.get(1)).isEqualTo(2);
     }
 
     @Test
@@ -65,13 +64,13 @@ public class StreamSplittingUnitTest {
                 Collectors.filtering(Article::isFeatured, Collectors.toList()),
                 List::of));
 
-        assertEquals(2, groupedArticles.get(0).size());
-        assertEquals(1, groupedArticles.get(1).size());
+        assertThat(groupedArticles.get(0)).hasSize(2);
+        assertThat(groupedArticles.get(1)).hasSize(1);
 
-        assertTrue(groupedArticles.get(0).containsAll(Lists.newArrayList(
+        assertThat(groupedArticles.get(0)).containsAll(Lists.newArrayList(
                 new Article("Baeldung", true),
-                new Article("Baeldung", false))));
-        assertTrue(groupedArticles.get(1).contains(new Article("Baeldung", true)));
+                new Article("Baeldung", false)));
+        assertThat(groupedArticles.get(1)).contains(new Article("Baeldung", true));
     }
 
     @Test
@@ -85,12 +84,12 @@ public class StreamSplittingUnitTest {
         baeldungObservable.subscribe(baeldungArticles::add);
         featuredObservable.subscribe(featuredArticles::add);
 
-        assertEquals(2, baeldungArticles.size());
-        assertEquals(1, featuredArticles.size());
+        assertThat(baeldungArticles).hasSize(2);
+        assertThat(featuredArticles).hasSize(1);
 
-        assertTrue(baeldungArticles.containsAll(Lists.newArrayList(
-                new Article("Baeldung", true),
-                new Article("Baeldung", false))));
-        assertTrue(featuredArticles.contains(new Article("Baeldung", true)));
+        assertThat(baeldungArticles).containsAll(Lists.newArrayList(
+                        new Article("Baeldung", true),
+                        new Article("Baeldung", false)));
+        assertThat(featuredArticles).contains(new Article("Baeldung", true));
     }
 }
