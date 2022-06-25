@@ -23,12 +23,12 @@ public class StreamSplittingUnitTest {
     public void givenListOfArticles_shouldSplitListInTwoCategories_usingPartitioningBy() {
         Map<Boolean, List<Article>> groupedArticles = articles.stream().collect(Collectors.partitioningBy(a -> a.getTarget().equals("Baeldung")));
 
-        assertThat(groupedArticles.get(true)).containsAll(Lists.newArrayList(
+        assertThat(groupedArticles.get(true)).containsExactly(
                 new Article("Baeldung", true),
-                new Article("Baeldung", false)));
-        assertThat(groupedArticles.get(false)).containsAll(Lists.newArrayList(
+                new Article("Baeldung", false));
+        assertThat(groupedArticles.get(false)).containsExactly(
                 new Article("Programming Daily", false),
-                new Article("The Code", false)));
+                new Article("The Code", false));
     }
 
     @Test
@@ -39,11 +39,11 @@ public class StreamSplittingUnitTest {
         assertThat(groupedArticles.get("Programming Daily")).hasSize(1);
         assertThat(groupedArticles.get("The Code")).hasSize(1);
 
-        assertThat(groupedArticles.get("Baeldung")).containsAll(Lists.newArrayList(
+        assertThat(groupedArticles.get("Baeldung")).containsExactly(
                 new Article("Baeldung", true),
-                new Article("Baeldung", false)));
-        assertThat(groupedArticles.get("Programming Daily")).contains(new Article("Programming Daily", false));
-        assertThat(groupedArticles.get("The Code")).contains(new Article("The Code", false));
+                new Article("Baeldung", false));
+        assertThat(groupedArticles.get("Programming Daily")).containsExactly(new Article("Programming Daily", false));
+        assertThat(groupedArticles.get("The Code")).containsExactly(new Article("The Code", false));
     }
 
     @Test
@@ -67,10 +67,10 @@ public class StreamSplittingUnitTest {
         assertThat(groupedArticles.get(0)).hasSize(2);
         assertThat(groupedArticles.get(1)).hasSize(1);
 
-        assertThat(groupedArticles.get(0)).containsAll(Lists.newArrayList(
+        assertThat(groupedArticles.get(0)).containsExactly(
                 new Article("Baeldung", true),
-                new Article("Baeldung", false)));
-        assertThat(groupedArticles.get(1)).contains(new Article("Baeldung", true));
+                new Article("Baeldung", false));
+        assertThat(groupedArticles.get(1)).containsExactly(new Article("Baeldung", true));
     }
 
     @Test
@@ -87,9 +87,9 @@ public class StreamSplittingUnitTest {
         assertThat(baeldungArticles).hasSize(2);
         assertThat(featuredArticles).hasSize(1);
 
-        assertThat(baeldungArticles).containsAll(Lists.newArrayList(
+        assertThat(baeldungArticles).containsExactly(
                         new Article("Baeldung", true),
-                        new Article("Baeldung", false)));
-        assertThat(featuredArticles).contains(new Article("Baeldung", true));
+                        new Article("Baeldung", false));
+        assertThat(featuredArticles).containsExactly(new Article("Baeldung", true));
     }
 }
