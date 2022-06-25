@@ -5,7 +5,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class MySampleGUIAppn extends JFrame{
+public class MySampleGUIAppn extends JFrame {
     public  MySampleGUIAppn() {
         if (!GraphicsEnvironment.isHeadless()) {
             setSize(300,300);
@@ -20,7 +20,6 @@ public class MySampleGUIAppn extends JFrame{
                     System.exit(0);
                 }
             });
-
         }
         else {
             System.exit(0);
