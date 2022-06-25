@@ -12,6 +12,7 @@ public interface DocumentMapperMappingIgnore {
     DocumentMapperMappingIgnore INSTANCE = Mappers.getMapper(DocumentMapperMappingIgnore.class);
 
     @Mapping(target = "comments", ignore = true)
+    @Mapping(target = "author", ignore = true)
     DocumentDTO documentToDocumentDTO(Document entity);
 
     @Mapping(target = "modificationTime", ignore = true)
