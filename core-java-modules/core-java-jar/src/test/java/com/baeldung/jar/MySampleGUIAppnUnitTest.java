@@ -2,7 +2,7 @@ package com.baeldung.jar;
 
 import org.junit.jupiter.api.Test;
 
-class MySampleGUIAppnUnitTest extends IOException {
+class MySampleGUIAppnUnitTest throws IOException {
 
     @Test
     void testMain() throws IOException {
