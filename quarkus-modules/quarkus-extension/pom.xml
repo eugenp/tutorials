@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung.quarkus-modules</groupId>
+        <artifactId>quarkus-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
