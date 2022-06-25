@@ -9,5 +9,5 @@ import org.mapstruct.Mapper;
         uses = EmployeeMapper.class)
 public interface CompanyMapperAdderPreferred {
 
-    CompanyDTO map(Company company);
+    CompanyDTO companyToCompanyDto(Company company);
 }

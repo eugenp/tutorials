@@ -18,7 +18,7 @@ class EmployeeFullNameMapperUnitTest {
     void whenMappingToEmployeeFullNameDTOList_thenExpectCorrectMappingResult() {
         Employee employee = new Employee("John", "Doe");
 
-        List<EmployeeFullNameDTO> result = employeeMapper.map(Collections.singletonList(employee));
+        List<EmployeeFullNameDTO> result = employeeMapper.listOfEmployeeToListOfEmployeeDto(Collections.singletonList(employee));
 
         assertThat(result).hasSize(1);
         assertThat(result.get(0).getFullName()).isEqualTo("John Doe");

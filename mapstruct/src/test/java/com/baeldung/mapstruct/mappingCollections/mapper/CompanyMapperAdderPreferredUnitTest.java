@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CompanyMapperAdderPreferredUnitTest {
 
-    private CompanyMapperAdderPreferred companyMapper = Mappers.getMapper(CompanyMapperAdderPreferred.class);
+    private final CompanyMapperAdderPreferred companyMapper = Mappers.getMapper(CompanyMapperAdderPreferred.class);
 
     @Test
     void whenMappingToCompanyDTO_thenExpectCorrectMappingResult() {
@@ -22,7 +22,7 @@ class CompanyMapperAdderPreferredUnitTest {
         Company company = new Company();
         company.setEmployees(Collections.singletonList(employee));
 
-        CompanyDTO result = companyMapper.map(company);
+        CompanyDTO result = companyMapper.companyToCompanyDto(company);
 
         List<EmployeeDTO> employees = result.getEmployees();
         assertThat(employees).hasSize(1);

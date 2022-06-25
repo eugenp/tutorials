@@ -9,9 +9,9 @@ import java.util.List;
 @Mapper
 public interface EmployeeFullNameMapper {
 
-    List<EmployeeFullNameDTO> map(List<Employee> employees);
+    List<EmployeeFullNameDTO> listOfEmployeeToListOfEmployeeDto(List<Employee> employees);
 
-    default EmployeeFullNameDTO map(Employee employee) {
+    default EmployeeFullNameDTO employeeToEmployeeFullNameDto(Employee employee) {
         EmployeeFullNameDTO employeeInfoDTO = new EmployeeFullNameDTO();
         employeeInfoDTO.setFullName(employee.getFirstName() + " " + employee.getLastName());
 

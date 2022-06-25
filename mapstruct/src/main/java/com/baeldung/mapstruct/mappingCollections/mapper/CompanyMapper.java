@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper(uses = EmployeeMapper.class)
 public interface CompanyMapper {
 
-    CompanyDTO map(Company company);
+    CompanyDTO companyToCompanyDto(Company company);
 }

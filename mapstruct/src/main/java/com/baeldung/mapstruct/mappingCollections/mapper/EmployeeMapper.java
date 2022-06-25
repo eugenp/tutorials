@@ -11,11 +11,11 @@ import java.util.Set;
 @Mapper
 public interface EmployeeMapper {
 
-    EmployeeDTO map(Employee employee);
+    EmployeeDTO employeeToEmployeeDto(Employee employee);
 
-    List<EmployeeDTO> map(List<Employee> employees);
+    List<EmployeeDTO> listOfEmployeeToListOfEmployeeDto(List<Employee> employees);
 
-    Set<EmployeeDTO> map(Set<Employee> employees);
+    Set<EmployeeDTO> setOfEmployeeToSetOfEmployeeDto(Set<Employee> employees);
 
-    Map<String, EmployeeDTO> map(Map<String, Employee> idEmployeeMap);
+    Map<String, EmployeeDTO> mapOfEmployeeToMapOfEmployeeDto(Map<String, Employee> idEmployeeMap);
 }
