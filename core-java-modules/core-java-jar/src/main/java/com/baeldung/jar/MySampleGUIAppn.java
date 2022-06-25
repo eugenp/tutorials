@@ -12,7 +12,9 @@ public class MySampleGUIAppn extends JFrame{
         Button b = new Button("Click Me!");
         b.setBounds(30,100,80,30);
         add(b);
-        setVisible(true);
+        if (!GraphicsEnvironment.isHeadless()) {
+            setVisible(true);
+        }
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 dispose();
