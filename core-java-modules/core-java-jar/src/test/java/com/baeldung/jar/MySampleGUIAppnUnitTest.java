@@ -8,7 +8,7 @@ class MySampleGUIAppnUnitTest {
 
     @Test
     void testMain() throws IOException {
-        System.setProperty("java.awt.headless", "true");
+        System.setProperty("java.awt.headless", "false");
         MySampleGUIAppn instance = new MySampleGUIAppn();
         String [] args = null;
         System.exit(0);
