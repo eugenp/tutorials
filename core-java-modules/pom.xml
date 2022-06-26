@@ -127,6 +127,7 @@
         <module>java-numbers-2</module>
         <module>java-numbers-3</module>
         <module>java-numbers-4</module>
+        <module>java-numbers-5</module>
     </modules>
 
     <dependencyManagement>
