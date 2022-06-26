@@ -62,6 +62,16 @@ public class AVLTreeUnitTest {
         tree.delete(1);
         Assert.assertTrue(isAVL(tree, tree.getRoot()));
     }
+    
+    @Test
+    public void givenEmptyTree_whenInsertLeftNodeHeightEqualsRightNodeHeight_treeShouldBeAvl() {
+        AVLTree tree = new AVLTree();
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(2);
+        tree.insert(4);
+        Assert.assertTrue(isAVL(tree));
+    }
 
     private boolean isAVL(AVLTree tree) {
        return isAVL(tree, tree.getRoot());
