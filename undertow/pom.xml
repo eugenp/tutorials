@@ -26,6 +26,7 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+        	<!-- disabling shade plugin as it is causing issues with creating dependency-reduced-pom on the build server 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -38,7 +39,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -56,7 +57,7 @@
 
     <properties>
         <undertow-servlet.version>1.4.18.Final</undertow-servlet.version>
-        <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
+        <!--<maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>-->
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
 
