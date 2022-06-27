@@ -504,9 +504,8 @@
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
-                <module>quarkus-modules/quarkus</module>
-                <module>quarkus-modules/quarkus-extension</module>
-
+                <module>quarkus-modules</module>
+               
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>ratpack</module>
@@ -941,8 +940,7 @@
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
-                <module>quarkus-modules/quarkus</module>
-                <module>quarkus-modules/quarkus-extension</module>
+                <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
