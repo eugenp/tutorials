@@ -15,6 +15,18 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>Moore-SR1</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -25,6 +37,10 @@
             <groupId>org.springframework.vault</groupId>
             <artifactId>spring-vault-core</artifactId>
             <version>${spring.vault.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-keyvalue</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -38,7 +54,7 @@
     </dependencies>
 
     <properties>
-        <spring.vault.core.version>2.1.1.RELEASE</spring.vault.core.version>
+        <spring.vault.core.version>2.3.2</spring.vault.core.version>
     </properties>
 
 </project>
