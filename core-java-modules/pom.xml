@@ -32,6 +32,8 @@
         <module>core-java-collections-3</module>
         <module>core-java-collections-4</module>
         <module>core-java-collections-array-list</module>
+        <module>core-java-collections-conversions</module>
+        <module>core-java-collections-conversions-2</module>        
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
@@ -39,6 +41,7 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
+        <module>core-java-collections-maps-5</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
         <module>core-java-concurrency-advanced-2</module>
@@ -95,6 +98,11 @@
         <module>core-java-networking-2</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
+        <module>core-java-numbers</module>
+        <module>core-java-numbers-2</module>
+        <module>core-java-numbers-3</module>
+        <module>core-java-numbers-4</module>
+        <module>core-java-numbers-5</module>
         <module>core-java-optional</module>
         <module>core-java-perf</module>
         <module>core-java-reflection</module>
@@ -119,15 +127,7 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
-        <module>java-collections-conversions</module>
-        <module>java-collections-conversions-2</module>
-        <module>java-collections-maps-3</module>
-        <module>pre-jpms</module>
-        <module>java-numbers</module>
-        <module>java-numbers-2</module>
-        <module>java-numbers-3</module>
-        <module>java-numbers-4</module>
-        <module>java-numbers-5</module>
+        <module>pre-jpms</module>        
     </modules>
 
     <dependencyManagement>
