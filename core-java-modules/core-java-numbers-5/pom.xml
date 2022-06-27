@@ -2,8 +2,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>java-numbers-5</artifactId>
-    <name>java-numbers-5</name>
+    <artifactId>core-java-numbers-5</artifactId>
+    <name>core-java-numbers-5</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -13,7 +13,7 @@
     </parent>
 
     <build>
-        <finalName>java-numbers-5</finalName>
+        <finalName>core-java-numbers-5</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
