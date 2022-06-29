@@ -18,7 +18,6 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
-import org.springframework.kafka.annotation.PartitionOffset;
 
 @SpringBootApplication
 public class KafkaApplication {
@@ -143,10 +142,7 @@ public class KafkaApplication {
 
         private CountDownLatch greetingLatch = new CountDownLatch(1);
 
-        @KafkaListener(topicPartitions =
-                        { @TopicPartition(topic = "${message.topic.name}",
-                                partitionOffsets = @PartitionOffset(partition = "0", initialOffset = "0"))},
-            topics = "${message.topic.name}", groupId = "foo", containerFactory = "fooKafkaListenerContainerFactory")
+        @KafkaListener(topics = "${message.topic.name}", groupId = "foo", containerFactory = "fooKafkaListenerContainerFactory")
         public void listenGroupFoo(String message) {
             System.out.println("Received Message in group 'foo': " + message);
             latch.countDown();
