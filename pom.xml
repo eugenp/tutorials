@@ -504,9 +504,8 @@
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
-                <module>quarkus</module>
-                <module>quarkus-extension</module>
-
+                <module>quarkus-modules</module>
+               
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>ratpack</module>
@@ -941,8 +940,7 @@
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
-                <module>quarkus</module>
-                <module>quarkus-extension</module>
+                <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1254,8 +1252,8 @@
                  <module>maven-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
-                 <module>quarkus-vs-springboot</module>
-                 <module>quarkus-jandex</module>
+                 <module>quarkus-modules/quarkus-vs-springboot</module>
+                 <module>quarkus-modules/quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>testing-modules/testing-assertions</module>
@@ -1322,8 +1320,8 @@
                 <module>maven-modules/multimodulemavenproject</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-vs-springboot</module>
-                <module>quarkus-jandex</module>
+                <module>quarkus-modules/quarkus-vs-springboot</module>
+                <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>

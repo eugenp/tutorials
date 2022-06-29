@@ -8,6 +8,12 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>quarkus-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <modules>
         <module>hello-service</module>
         <module>hello-sender-beans-xml</module>
