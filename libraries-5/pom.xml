@@ -118,6 +118,19 @@
             <version>${jmh-core.version}</version>
         </dependency>
     </dependencies>
+    
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                	<systemPropertyVariables> 
+                		<pact.rootDir>target/mypacts</pact.rootDir> 
+                	</systemPropertyVariables> </configuration>
+            </plugin>           
+        </plugins>
+    </build>
 
     <properties>
         <pact.version>3.6.3</pact.version>
