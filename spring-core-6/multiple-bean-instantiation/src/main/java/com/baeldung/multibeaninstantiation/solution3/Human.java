@@ -1,6 +1,7 @@
 package com.baeldung.multibeaninstantiation.solution3;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 public class Human implements InitializingBean {
@@ -16,12 +17,14 @@ public class Human implements InitializingBean {
     }
 
     /* Setter injection */
+    @Autowired
     public void setPersonOne(Person personOne) {
         this.personOne = personOne;
         this.personOne.setFirstName("Harold");
         this.personOne.setSecondName("Finch");
     }
 
+    @Autowired
     public void setPersonTwo(Person personTwo) {
         this.personTwo = personTwo;
         this.personTwo.setFirstName("John");
