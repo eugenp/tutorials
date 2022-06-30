@@ -504,9 +504,8 @@
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
-                <module>quarkus</module>
-                <module>quarkus-extension</module>
-
+                <module>quarkus-modules</module>
+               
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>ratpack</module>
@@ -941,8 +940,7 @@
                 <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
-                <module>quarkus</module>
-                <module>quarkus-extension</module>
+                <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
@@ -1240,6 +1238,7 @@
                  <module>core-java-modules/core-java-io-conversions-2</module>
                  <module>core-java-modules/core-java-jpms</module>
                  <module>core-java-modules/core-java-os</module>
+                 <module>core-java-modules/core-java-streams-4</module>
                  <module>core-java-modules/core-java-string-algorithms-3</module>
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
@@ -1254,8 +1253,8 @@
                  <module>maven-modules/multimodulemavenproject</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
-                 <module>quarkus-vs-springboot</module>
-                 <module>quarkus-jandex</module>
+                 <module>quarkus-modules/quarkus-vs-springboot</module>
+                 <module>quarkus-modules/quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>testing-modules/testing-assertions</module>
@@ -1322,8 +1321,8 @@
                 <module>maven-modules/multimodulemavenproject</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-vs-springboot</module>
-                <module>quarkus-jandex</module>
+                <module>quarkus-modules/quarkus-vs-springboot</module>
+                <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>testing-modules/testing-assertions</module>
