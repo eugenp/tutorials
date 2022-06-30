@@ -3,22 +3,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.docker</groupId>
+    <groupId>com.baeldung</groupId>
     <artifactId>docker-modules</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>docker-modules</name>
-    <description>Demo project showing Spring Boot and Docker</description>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modules>
-        <module>docker-internal-dto</module>
         <module>docker-spring-boot</module>
         <module>docker-sample-app</module>
         <module>docker-caching/single-module-caching</module>

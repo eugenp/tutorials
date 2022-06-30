@@ -7,10 +7,11 @@
     <name>docker-sample-app</name>
     <description>Demo project for Spring Boot and Docker</description>
 
-    <parent>
-        <groupId>com.baeldung.docker</groupId>
-        <artifactId>docker-modules</artifactId>
-        <version>0.0.1</version>
+     <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
