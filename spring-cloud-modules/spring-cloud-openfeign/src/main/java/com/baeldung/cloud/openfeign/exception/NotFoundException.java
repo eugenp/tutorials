@@ -2,7 +2,9 @@ package com.baeldung.cloud.openfeign.exception;
 
 public class NotFoundException extends Exception {
 
-    public NotFoundException() {
+	private static final long serialVersionUID = 1L;
+
+	public NotFoundException() {
     }
 
     public NotFoundException(String message) {
