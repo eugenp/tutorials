@@ -32,7 +32,6 @@ public class CarServiceSingleton {
         serviceQueue--;
         LOG.info("Car service for {} is completed - serviceQueue: {}", car, serviceQueue);
         return serviceQueue;
-
     }
 
     private void simulateService(Car car) {

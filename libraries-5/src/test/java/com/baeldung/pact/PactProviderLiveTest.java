@@ -17,7 +17,7 @@ import au.com.dius.pact.provider.junit5.PactVerificationContext;
 import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider;
 
 @Provider("test_provider")
-@PactFolder("target/pacts")
+@PactFolder("target/mypacts")
 public class PactProviderLiveTest {
 	
     private static ConfigurableWebApplicationContext application;
