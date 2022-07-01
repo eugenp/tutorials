@@ -1,13 +1,13 @@
-package com.baeldung.docker.push;
+package com.baeldung.docker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PushToPrivateRepoApplication {
+public class MainApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PushToPrivateRepoApplication.class, args);
+        SpringApplication.run(MainApplication .class, args);
     }
 
 }
