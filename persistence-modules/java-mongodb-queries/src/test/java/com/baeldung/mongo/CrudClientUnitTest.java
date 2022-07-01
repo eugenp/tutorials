@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CrudClientUnitTest {
@@ -41,29 +43,49 @@ public class CrudClientUnitTest {
     public void whenReadingEventsByDateRange_thenCheckForReturnedDocument() {
         List<Event> events = CrudClient.readEventsByDateRange(CrudClient.from, CrudClient.to);
         assertNotNull(events);
-        assertEquals(2, events.size());
-    }
-
-    @Test
-    @Order(4)
-    public void whenUpdatingEventsWithDate_thenCheckUpdatedCount() {
-        assertEquals(1, CrudClient.updateEventsWithDate());
+        assertEquals(1, events.size());
     }
 
     @Test
     @Order(5)
-    public void whenUpdatingEventsByReplacing_thenCheckUpdatedCount() {
-        assertEquals(1, CrudClient.updateEventByReplacing());
+    public void whenUpdatingEventsDateField_thenCheckUpdatedCount() {
+        assertEquals(1, CrudClient.updateDateField());
     }
 
     @Test
     @Order(6)
+    public void whenUpdatingManyEvents_thenCheckUpdatedCount() {
+        long updates = CrudClient.updateManyEventsWithDateCriteria(CrudClient.updateManyFrom, CrudClient.updateManyTo);
+        assertTrue(1 < updates);
+    }
+
+    @Test
+    @Order(7)
     public void whenDeletingEventsWithDate_thenCheckDeletedCount() {
-        assertEquals(2, CrudClient.deleteEventsByDate(CrudClient.from, CrudClient.to));
+        assertEquals(2, CrudClient.deleteEventsByDate(CrudClient.deleteFrom, CrudClient.deleteTo));
+    }
+
+    @Test
+    @Order(8)
+    public void whenInsertingEventWithDateAndTimeZone_thenCheckForDocument() {
+        assertNotNull(CrudClient.insertEventsWithDate(CrudClient.pianoLessonsTZ));
+    }
+
+    @Test
+    @Order(9)
+    public void whenReadingEventsWithDateAndTimeZone_thenCheckInsertedCount() {
+        assertNotEquals(CrudClient.pianoLessonsTZ.dateTime, CrudClient.readEventsByDateWithTZ(CrudClient.dateQueryEventWithTZ));
+    }
+
+    @Test
+    @Order(10)
+    public void whenDeletingEventsWithDateAndTimeZone_thenCheckDeletedCount() {
+        assertEquals(1, CrudClient.deleteEventsByDate(CrudClient.deleteFrom, CrudClient.deleteTo));
     }
 
     @AfterAll
     public static void close() throws IOException {
+        CrudClient.dropDb();
         CrudClient.close();
     }
 

@@ -6,7 +6,7 @@ public class Event {
     public String title;
     public String location;
     public LocalDateTime dateTime;
-    public LocalDateTime updatedAt;
+    public String timeZoneOffset;
 
     public Event() {}
     public Event(String title, String location, LocalDateTime dateTime) {
@@ -15,9 +15,14 @@ public class Event {
         this.dateTime = dateTime;
     }
 
-    @Override
-    public String toString() {
-        return "\nEvent: " + title + "\nWhere: " + location + "\nWhen: " + dateTime;
+    public Event(String title, String location, LocalDateTime dateTime, String timeZoneOffset) {
+        this.title = title;
+        this.location = location;
+        this.dateTime = dateTime;
+        this.timeZoneOffset = timeZoneOffset;
     }
+
+    @Override
+    public String toString() { return "\nEvent: " + title + "\nWhere: " + location + "\nWhen: " + dateTime; }
 }
 
