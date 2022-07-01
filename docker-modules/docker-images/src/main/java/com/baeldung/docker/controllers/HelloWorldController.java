@@ -1,4 +1,4 @@
-package com.baeldung.docker.push;
+package com.baeldung.docker.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
