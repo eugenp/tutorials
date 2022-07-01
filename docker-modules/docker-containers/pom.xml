@@ -6,7 +6,6 @@
     <groupId>com.baeldung.docker</groupId>
     <artifactId>docker-containers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>heap-sizing</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -56,9 +55,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
 </project>
