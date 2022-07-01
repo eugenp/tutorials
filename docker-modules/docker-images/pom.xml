@@ -3,9 +3,8 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>docker-push-to-private-repo</artifactId>
-    <name>docker-push-to-private-repo</name>
-    <description>Example application to showcase how to push a docker image to a private repository</description>
+    <artifactId>docker-images</artifactId>
+    <description>Example application to showcase Docker images features</description>
 
     <parent>
         <groupId>com.baeldung</groupId>

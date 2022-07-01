@@ -16,11 +16,13 @@
     </parent>
 
     <modules>
-        <module>docker-spring-boot</module>
-        <module>docker-sample-app</module>
         <module>docker-caching/single-module-caching</module>
         <module>docker-caching/multi-module-caching</module>
-        <module>docker-push-to-private-repo</module>
+        <module>docker-compose</module>
+        <module>docker-containers</module>
+        <module>docker-images</module>
+        <module>docker-spring-boot</module>
+        <module>docker-spring-boot-postgres</module>
     </modules>
 
     <properties>
