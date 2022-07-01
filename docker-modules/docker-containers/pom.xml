@@ -4,9 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.docker</groupId>
-    <artifactId>heap-sizing</artifactId>
+    <artifactId>docker-containers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>heap-sizing</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -40,7 +39,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>heapsizing-demo</name>
+                        <name>docker-demo</name>
                     </image>
                 </configuration>
             </plugin>
@@ -50,15 +49,11 @@
                 <version>2.7.1</version>
                 <configuration>
                     <to>
-                        <image>heapsizing-demo-jib</image>
+                        <image>docker-demo-jib</image>
                     </to>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
 </project>
