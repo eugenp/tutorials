@@ -1,4 +1,4 @@
-package com.baeldung.mongo;
+package com.baeldung.mongo.crud;
 
 import com.baeldung.mongo.crud.CrudClient;
 import com.baeldung.mongo.crud.model.Event;
@@ -28,59 +28,59 @@ public class CrudClientUnitTest {
     @Test
     @Order(1)
     public void whenInsertingEventsWithDate_thenCheckForDocument() {
-        assertNotNull(CrudClient.insertEventsWithDate(CrudClient.pianoLessons));
-        assertNotNull(CrudClient.insertEventsWithDate(CrudClient.soccerGame));
+        Assertions.assertNotNull(CrudClient.insertEventsWithDate(CrudClient.pianoLessons));
+        Assertions.assertNotNull(CrudClient.insertEventsWithDate(CrudClient.soccerGame));
     }
 
     @Test
     @Order(2)
     public void whenReadingEventsByDate_thenCheckForReturnedDocument() {
-        assertNotNull(CrudClient.readEventsByDate(CrudClient.dateQuery));
+        Assertions.assertNotNull(CrudClient.readEventsByDate(CrudClient.dateQuery));
     }
 
     @Test
     @Order(3)
     public void whenReadingEventsByDateRange_thenCheckForReturnedDocument() {
         List<Event> events = CrudClient.readEventsByDateRange(CrudClient.from, CrudClient.to);
-        assertNotNull(events);
-        assertEquals(1, events.size());
+        Assertions.assertNotNull(events);
+        Assertions.assertEquals(1, events.size());
     }
 
     @Test
     @Order(5)
     public void whenUpdatingEventsDateField_thenCheckUpdatedCount() {
-        assertEquals(1, CrudClient.updateDateField());
+        Assertions.assertEquals(1, CrudClient.updateDateField());
     }
 
     @Test
     @Order(6)
     public void whenUpdatingManyEvents_thenCheckUpdatedCount() {
         long updates = CrudClient.updateManyEventsWithDateCriteria(CrudClient.updateManyFrom, CrudClient.updateManyTo);
-        assertTrue(1 < updates);
+        Assertions.assertTrue(1 < updates);
     }
 
     @Test
     @Order(7)
     public void whenDeletingEventsWithDate_thenCheckDeletedCount() {
-        assertEquals(2, CrudClient.deleteEventsByDate(CrudClient.deleteFrom, CrudClient.deleteTo));
+        Assertions.assertEquals(2, CrudClient.deleteEventsByDate(CrudClient.deleteFrom, CrudClient.deleteTo));
     }
 
     @Test
     @Order(8)
     public void whenInsertingEventWithDateAndTimeZone_thenCheckForDocument() {
-        assertNotNull(CrudClient.insertEventsWithDate(CrudClient.pianoLessonsTZ));
+        Assertions.assertNotNull(CrudClient.insertEventsWithDate(CrudClient.pianoLessonsTZ));
     }
 
     @Test
     @Order(9)
     public void whenReadingEventsWithDateAndTimeZone_thenCheckInsertedCount() {
-        assertNotEquals(CrudClient.pianoLessonsTZ.dateTime, CrudClient.readEventsByDateWithTZ(CrudClient.dateQueryEventWithTZ));
+        Assertions.assertNotEquals(CrudClient.pianoLessonsTZ.dateTime, CrudClient.readEventsByDateWithTZ(CrudClient.dateQueryEventWithTZ));
     }
 
     @Test
     @Order(10)
     public void whenDeletingEventsWithDateAndTimeZone_thenCheckDeletedCount() {
-        assertEquals(1, CrudClient.deleteEventsByDate(CrudClient.deleteFrom, CrudClient.deleteTo));
+        Assertions.assertEquals(1, CrudClient.deleteEventsByDate(CrudClient.deleteFrom, CrudClient.deleteTo));
     }
 
     @AfterAll
