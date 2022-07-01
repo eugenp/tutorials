@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CrudClientUnitTest {
+public class CrudClientLiveTest {
 
     @BeforeAll
     public static void setup() {
