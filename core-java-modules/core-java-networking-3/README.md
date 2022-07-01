@@ -12,4 +12,5 @@ This module contains articles about networking in Java
 - [Unix Domain Socket in Java 16](https://www.baeldung.com/java-unix-domain-socket)
 - [Get the IP Address of the Current Machine Using Java](https://www.baeldung.com/java-get-ip-address)
 - [Get Domain Name From Given URL in Java](https://www.baeldung.com/java-domain-name-from-url)
+- [Java HttpClient Timeout](https://www.baeldung.com/java-httpclient-timeout)
 - [[<-- Prev]](/core-java-modules/core-java-networking-2)

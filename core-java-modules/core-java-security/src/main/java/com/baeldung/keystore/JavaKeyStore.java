@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -48,7 +49,9 @@ public class JavaKeyStore {
 
     void loadKeyStore() throws IOException, KeyStoreException, CertificateException, NoSuchAlgorithmException {
         char[] pwdArray = keyStorePassword.toCharArray();
-        keyStore.load(new FileInputStream(keyStoreName), pwdArray);
+        FileInputStream fis = new FileInputStream(keyStoreName);
+        keyStore.load(fis, pwdArray);
+        fis.close();
     }
 
     void setEntry(String alias, KeyStore.SecretKeyEntry secretKeyEntry, KeyStore.ProtectionParameter protectionParameter) throws KeyStoreException {
@@ -83,7 +86,9 @@ public class JavaKeyStore {
             keyStore.deleteEntry(alias);
         }
         keyStore = null;
-        Files.delete(Paths.get(keyStoreName));
+        
+        Path keyStoreFile = Paths.get(keyStoreName);
+        Files.delete(keyStoreFile);
     }
 
     KeyStore getKeyStore() {

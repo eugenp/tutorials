@@ -6,16 +6,16 @@
     <artifactId>libraries-5</artifactId>
 
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
@@ -24,9 +24,18 @@
         </dependency>
         <dependency>
             <groupId>au.com.dius</groupId>
-            <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
+            <artifactId>pact-jvm-provider-junit5_2.12</artifactId>
+            <version>${pact.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>au.com.dius</groupId>
+            <artifactId>pact-jvm-consumer-junit5_2.12</artifactId>
             <version>${pact.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
         <dependency>
@@ -109,12 +118,25 @@
             <version>${jmh-core.version}</version>
         </dependency>
     </dependencies>
+    
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                	<systemPropertyVariables> 
+                		<pact.rootDir>target/mypacts</pact.rootDir> 
+                	</systemPropertyVariables> </configuration>
+            </plugin>           
+        </plugins>
+    </build>
 
     <properties>
-        <pact.version>3.5.0</pact.version>
+        <pact.version>3.6.3</pact.version>
         <jool.version>0.9.12</jool.version>
         <spring.version>4.3.8.RELEASE</spring.version>
-        <scala.version>2.11</scala.version>
+        <scala.version>2.12</scala.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
         <streamex.version>0.6.5</streamex.version>
         <docker.version>3.0.14</docker.version>
