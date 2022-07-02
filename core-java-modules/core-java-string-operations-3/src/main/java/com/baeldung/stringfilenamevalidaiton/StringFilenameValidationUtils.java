@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class StringFilenameValidationUtils {
 
-    public static final Character[] INVALID_WINDOWS_SPECIFIC_CHARS = {'"', '*', ':', '<', '>', '?', '\\', '|', 0x7F};
+    public static final Character[] INVALID_WINDOWS_SPECIFIC_CHARS = {'"', '*', '<', '>', '?', '|'};
     public static final Character[] INVALID_UNIX_SPECIFIC_CHARS = {'\000'};
 
     public static final String REGEX_PATTERN = "^[A-za-z0-9.]{1,255}$";
