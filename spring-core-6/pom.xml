@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>multiple-bean-instantiation</artifactId>
+    <artifactId>spring-core-6</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
     <name>spring-core-6</name>
     <url>http://www.baeldung.com</url>
 
