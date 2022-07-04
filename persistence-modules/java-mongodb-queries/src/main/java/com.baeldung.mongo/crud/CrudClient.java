@@ -33,7 +33,7 @@ import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static com.mongodb.client.model.Filters.gte;
-import static com.mongodb.client.model.Filters.lte;
+import static com.mongodb.client.model.Filters.lt;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
@@ -60,20 +60,20 @@ public class CrudClient {
     public static Event pianoLessonsTZ = new Event(
             "Piano lessons",
             "Baz Bvld",
-            LocalDateTime.of(2022, 6, 20, 17, 0, 0),
+            LocalDateTime.of(2022, 12, 31, 12, 0, 0),
             ZoneOffset.ofHours(2).toString());
 
     public static LocalDateTime dateQuery = LocalDateTime.of(2022, 6, 10, 17, 0, 0);
-    public static LocalDateTime dateQueryEventWithTZ = LocalDateTime.of(2022, 6, 20, 17, 0, 0);
+    public static LocalDateTime dateQueryEventWithTZ = LocalDateTime.of(2022, 12, 31, 12, 0, 0);
 
     public static LocalDateTime from = LocalDateTime.of(2022, 06, 04, 12, 0, 0);
     public static LocalDateTime to = LocalDateTime.of(2022, 06, 10, 17, 0, 0);
 
     public static LocalDate updateManyFrom = LocalDate.of(2022, 1, 1);
-    public static LocalDate updateManyTo = LocalDate.of(2022, 12, 31);
+    public static LocalDate updateManyTo = LocalDate.of(2023, 1, 1);
 
     public static LocalDate deleteFrom = LocalDate.of(2022, 1, 1);
-    public static LocalDate deleteTo = LocalDate.of(2022, 12, 31);
+    public static LocalDate deleteTo = LocalDate.of(2023, 01, 01);
 
     public static void setup() {
         CodecProvider codecProvider = PojoCodecProvider.builder().automatic(true).build();
@@ -129,7 +129,6 @@ public class CrudClient {
             Event event = collection
                     .find(eq("dateTime", localDateTime))
                     .first();
-            System.out.println(pianoLessonsTZ.timeZoneOffset);
             OffsetDateTime offsetDateTime = OffsetDateTime.of(event.dateTime, ZoneOffset.of(pianoLessonsTZ.timeZoneOffset));
             ZonedDateTime zoned = offsetDateTime.atZoneSameInstant(ZoneId.of("America/Toronto"));
             return zoned.toLocalDateTime();
@@ -153,7 +152,7 @@ public class CrudClient {
     }
 
     public static long updateManyEventsWithDateCriteria(LocalDate updateManyFrom, LocalDate updateManyTo) {
-        Bson query = and(gte("dateTime", updateManyFrom), lte("dateTime", updateManyTo));
+        Bson query = and(gte("dateTime", updateManyFrom), lt("dateTime", updateManyTo));
         Bson updates = Updates.currentDate("dateTime");
         try {
             UpdateResult result = collection.updateMany(query, updates);
@@ -165,7 +164,7 @@ public class CrudClient {
     }
 
     public static long deleteEventsByDate(LocalDate from, LocalDate to) {
-        Bson query = and(gte("dateTime", from), lte("dateTime", to));
+        Bson query = and(gte("dateTime", from), lt("dateTime", to));
         try {
             DeleteResult result = collection.deleteMany(query);
             return result.getDeletedCount();
