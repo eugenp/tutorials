@@ -3,11 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
-    <artifactId>docker-spring-boot-postgres</artifactId>
+    <groupId>com.baeldung.docker</groupId>
+    <artifactId>docker-containers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>docker-spring-boot-postgres</name>
-    <description>Demo project showing Spring Boot, PostgreSQL, and Docker</description>
+    <description>Demo project for Spring Boot</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -19,16 +18,16 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -38,6 +37,21 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>docker-demo</name>
+                    </image>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>2.7.1</version>
+                <configuration>
+                    <to>
+                        <image>docker-demo-jib</image>
+                    </to>
+                </configuration>
             </plugin>
         </plugins>
     </build>
