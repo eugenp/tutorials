@@ -1,12 +1,14 @@
+plugins {
+    id 'org.shipkit.bintray-release' version '2.3.5'
+}
+
 allprojects {
     repositories {
-        jcenter() 
+        mavenCentral()
     }
 }
 
-
 subprojects {
-
     version = '1.0'
 }
 

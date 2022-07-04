@@ -41,6 +41,7 @@
         <module>spring-resttemplate</module>
         <module>spring-resttemplate-2</module>
         <module>spring-resttemplate-3</module>
+        <module>spring-session</module>
         <module>spring-thymeleaf</module>
         <module>spring-thymeleaf-2</module>
         <module>spring-thymeleaf-3</module>

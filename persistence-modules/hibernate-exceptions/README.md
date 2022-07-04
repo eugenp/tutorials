@@ -6,3 +6,4 @@
 - [Hibernate’s “Object References an Unsaved Transient Instance” Error](https://www.baeldung.com/hibernate-unsaved-transient-instance-error)
 - [EntityNotFoundException in Hibernate](https://www.baeldung.com/hibernate-entitynotfoundexception)
 - [Hibernate’s “Not-Null Property References a Null or Transient Value” Error](https://www.baeldung.com/hibernate-not-null-error)
+- [Hibernate's “Detached Entity Passed to Persist” Error](https://www.baeldung.com/hibernate-detached-entity-passed-to-persist)
