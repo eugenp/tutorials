@@ -16,7 +16,6 @@
 
     <modules>
         <module>spring-5-security</module>        
-        <module>spring-ldap</module>
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
         <module>spring-security-cognito</module>

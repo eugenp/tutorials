@@ -9,6 +9,8 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 ### Relevant Article: 
 
 - [Intro to Spring Security LDAP](https://www.baeldung.com/spring-security-ldap)
+- [Spring LDAP Overview](https://www.baeldung.com/spring-ldap)
+- [Guide to Spring Data LDAP](https://www.baeldung.com/spring-data-ldap)
 
 ### Notes
 
