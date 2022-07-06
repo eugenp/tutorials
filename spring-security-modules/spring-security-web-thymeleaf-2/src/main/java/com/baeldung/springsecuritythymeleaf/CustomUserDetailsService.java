@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,13 +25,20 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @PostConstruct
     public void init() {
-        userRegistry.put("user",
-                new CustomUserDetails.Builder().withFirstName("Mark").withLastName("Johnson")
-                        .withEmail("mark.johnson@email.com").withUsername("user")
-                        .withPassword(passwordEncoder.encode("password"))
-                        .withAuthorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")))
-                        .build());
-        // userRegistry.put("user", new User("user", "{noop}user1", getAuthority("ROLE_USER")));
+        userRegistry.put("user", new CustomUserDetails.Builder().withFirstName("Mark")
+            .withLastName("Johnson")
+            .withEmail("mark.johnson@email.com")
+            .withUsername("user")
+            .withPassword(passwordEncoder.encode("password"))
+            .withAuthorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")))
+            .build());
+        userRegistry.put("admin", new CustomUserDetails.Builder().withFirstName("James")
+            .withLastName("Davis")
+            .withEmail("james.davis@email.com")
+            .withUsername("admin")
+            .withPassword(passwordEncoder.encode("password"))
+            .withAuthorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")))
+            .build());
     }
 
     @Override

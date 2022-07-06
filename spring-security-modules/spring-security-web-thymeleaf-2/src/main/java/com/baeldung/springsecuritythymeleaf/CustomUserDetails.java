@@ -33,9 +33,12 @@ public class CustomUserDetails extends User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
         CustomUserDetails that = (CustomUserDetails) o;
         return firstName.equals(that.firstName) && lastName.equals(that.lastName) && email.equals(that.email);
     }
@@ -43,15 +46,6 @@ public class CustomUserDetails extends User {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), firstName, lastName, email);
-    }
-
-    @Override
-    public String toString() {
-        return "CustomUserDetails{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 
     public static class Builder {

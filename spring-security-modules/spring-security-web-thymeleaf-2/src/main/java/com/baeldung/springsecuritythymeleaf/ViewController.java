@@ -15,7 +15,8 @@ public class ViewController {
 
     @RequestMapping({ "/index", "/" })
     public String index() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext()
+            .getAuthentication();
         return "index";
     }
 }
