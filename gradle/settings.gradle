@@ -4,8 +4,5 @@ include 'greeting-library'
 include 'greeting-library-java'
 include 'greeter'
 include 'gradletaskdemo'
-include 'junit5'
-include 'gradle-employee-app'
-include 'gradle-source-vs-target-compatibility'
 
 println 'This will be executed during the initialization phase.'
