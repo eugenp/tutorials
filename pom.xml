@@ -7,9 +7,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-  <modules>
-    <module>persistence-modules/java-mongodb-queries</module>
-  </modules>
   <name>parent-modules</name>
     <packaging>pom</packaging>
 
