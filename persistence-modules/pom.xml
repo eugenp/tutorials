@@ -105,6 +105,7 @@
         <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
+        <module>spring-jdbc-batch</module>
     </modules>
 
     <properties>
