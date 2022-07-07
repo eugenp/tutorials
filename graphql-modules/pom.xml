@@ -23,4 +23,8 @@
         <module>graphql-spqr</module>
     </modules>
 
+    <properties>
+        <spring-boot.version>2.6.4</spring-boot.version>
+    </properties>
+
 </project>
