@@ -12,4 +12,9 @@ public class PostResolver implements GraphQLResolver<Post> {
     public Author getAuthor(Post post) {
         return authorDao.getAuthor(post.getAuthorId()).orElseThrow(RuntimeException::new);
     }
+
+    public Author getFirst_author(Post post) {
+        return authorDao.getAuthor(post.getAuthorId()).orElseThrow(RuntimeException::new);
+    }
+
 }

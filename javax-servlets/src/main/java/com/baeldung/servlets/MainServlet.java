@@ -12,8 +12,7 @@ public class MainServlet extends HttpServlet {
 
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.sendRedirect("main.jsp");
+		request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
 	}
 
 	
