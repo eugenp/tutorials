@@ -5,15 +5,13 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.shipkit:shipkit:0.9.117"
+        classpath "org.shipkit:shipkit:2.3.5"
     }
 }
-
 
 plugins {
     id 'java'
 }
-
 
 apply from: 'aplugin.gradle'
 apply plugin: 'org.shipkit.bintray-release'
@@ -72,8 +70,6 @@ helloBaeldung {
 }
 
 
-
-
 //Adding extra task properties
 task ourTask {
     ext.theProperty = "theValue"
@@ -86,25 +82,24 @@ task printTaskProperty {
 }
 
 
-
 //Declaring dependencies
 dependencies {
-    compile group: 
+    implementation group:
       'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'
-    compile 'org.springframework:spring-core:4.3.5.RELEASE',
+    implementation 'org.springframework:spring-core:4.3.5.RELEASE',
             'org.springframework:spring-aop:4.3.5.RELEASE'
-    compile(
+    implementation(
         [group: 'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'],
         [group: 'org.springframework', name: 'spring-aop', version: '4.3.5.RELEASE']
     )
-    testCompile('org.hibernate:hibernate-core:5.2.12.Final') {
+    testImplementation('org.hibernate:hibernate-core:5.2.12.Final') {
         transitive = true
     }
-    runtime(group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final') {
+    runtimeOnly(group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final') {
         transitive = false
     }
-	runtime "org.codehaus.groovy:groovy-all:2.4.11@jar"
-    runtime group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.11', ext: 'jar'
-    
-    compile fileTree(dir: 'libs', include: '*.jar')	
+    runtimeOnly "org.codehaus.groovy:groovy-all:2.4.11@jar"
+    runtimeOnly group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.11', ext: 'jar'
+
+    implementation fileTree(dir: 'libs', include: '*.jar')
 }

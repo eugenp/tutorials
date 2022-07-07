@@ -11,6 +11,7 @@
 - [Spring Data MongoDB: Projections and Aggregations](http://www.baeldung.com/spring-data-mongodb-projections-aggregations)
 - [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
 - [Spring Data MongoDB Transactions](https://www.baeldung.com/spring-data-mongodb-transactions)
+- [UUID as Entity ID in MongoDB](https://www.baeldung.com/java-mongodb-uuid)
 
 ## Spring Data MongoDB Live Testing
 

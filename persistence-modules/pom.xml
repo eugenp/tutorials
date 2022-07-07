@@ -15,7 +15,7 @@
 
     <modules>
         <module>activejdbc</module>
-        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
+        <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
         <module>core-java-persistence</module>
@@ -44,6 +44,7 @@
         <module>java-jpa-3</module>
         <module>java-mongodb</module> <!-- long running -->
         <module>java-mongodb-2</module> <!-- long running -->
+        <module>java-mongodb-3</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
@@ -52,6 +53,7 @@
         <module>persistence-libraries</module>
         <module>querydsl</module>
         <module>r2dbc</module>
+        <module>read-only-transactions</module>
         <module>redis</module>
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
@@ -60,6 +62,7 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
+        <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
@@ -69,7 +72,7 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-gemfire</module>
+        <!-- <module>spring-data-gemfire</module> Fixing in JAVA-11854 -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
@@ -85,9 +88,13 @@
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
+        <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
+        <module>spring-data-rest</module>
+        <module>spring-data-rest-2</module>
+        <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
         <module>spring-hibernate-5</module> <!-- long running -->

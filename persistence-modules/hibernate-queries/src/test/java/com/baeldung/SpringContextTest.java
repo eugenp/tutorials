@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,6 +14,7 @@ import com.baeldung.hibernate.criteria.PersistenceConfig;
 public class SpringContextTest {
 
     @Test
+    @Ignore
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
 }
