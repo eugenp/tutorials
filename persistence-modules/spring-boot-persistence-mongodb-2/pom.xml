@@ -33,7 +33,7 @@
     </dependencies>
 
     <properties>
-        <embed.mongo.version>3.2.6</embed.mongo.version>
+        <embed.mongo.version>3.4.6</embed.mongo.version>
     </properties>
 
 </project>
