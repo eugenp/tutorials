@@ -31,6 +31,11 @@ public class CrudClientLiveTest {
     @Order(2)
     public void whenReadingEventsByDate_thenCheckForReturnedDocument() {
         Assertions.assertNotNull(CrudClient.readEventsByDate(CrudClient.dateQuery));
+        Event event = CrudClient.readEventsByDate(CrudClient.dateQuery);
+        Assertions.assertNotNull(event);
+        Assertions.assertEquals("Soccer game", event.title);
+        Assertions.assertEquals("Bar Avenue", event.location);
+        Assertions.assertEquals(CrudClient.soccerGame.dateTime, event.dateTime);
     }
 
     @Test
@@ -39,6 +44,9 @@ public class CrudClientLiveTest {
         List<Event> events = CrudClient.readEventsByDateRange(CrudClient.from, CrudClient.to);
         Assertions.assertNotNull(events);
         Assertions.assertEquals(1, events.size());
+        Assertions.assertEquals("Soccer game", events.get(0).title);
+        Assertions.assertEquals("Bar Avenue", events.get(0).location);
+        Assertions.assertEquals(CrudClient.soccerGame.dateTime, events.get(0).dateTime);
     }
 
     @Test
