@@ -1,6 +1,6 @@
 package com.baeldung.websockets;
 
-import com.github.javafaker.Faker;
+import io.github.serpro69.kfaker.Faker;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class ReactiveScheduledPushMessages implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Flux.interval(Duration.ofSeconds(4L))
-            .map((n) -> new OutputMessage(faker.backToTheFuture().character(), faker.backToTheFuture().quote(), 
+            .map((n) -> new OutputMessage(faker.getBackToTheFuture().characters(), faker.getBackToTheFuture().quotes(),
                                             new SimpleDateFormat("HH:mm").format(new Date())))
             .subscribe(message -> simpMessagingTemplate.convertAndSend("/topic/pushmessages", message));
     }

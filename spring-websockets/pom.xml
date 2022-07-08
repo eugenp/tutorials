@@ -24,9 +24,9 @@
             <artifactId>reactor-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker</artifactId>
+            <version>1.11.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
