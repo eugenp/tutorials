@@ -21,7 +21,7 @@ public class VehicleUnitTest {
     public void givenCar_whenUsingReflectionAPI_thenSuperClassIsSealed() {
         Assertions.assertThat(car.getClass().isSealed()).isEqualTo(false);
         Assertions.assertThat(car.getClass().getSuperclass().isSealed()).isEqualTo(true);
-        Assertions.assertThat(car.getClass().getSuperclass().permittedSubclasses())
+        Assertions.assertThat(car.getClass().getSuperclass().getPermittedSubclasses())
                 .contains(ClassDesc.of(car.getClass().getCanonicalName()));
     }
 
@@ -29,7 +29,7 @@ public class VehicleUnitTest {
     public void givenTruck_whenUsingReflectionAPI_thenSuperClassIsSealed() {
         Assertions.assertThat(truck.getClass().isSealed()).isEqualTo(false);
         Assertions.assertThat(truck.getClass().getSuperclass().isSealed()).isEqualTo(true);
-        Assertions.assertThat(truck.getClass().getSuperclass().permittedSubclasses())
+        Assertions.assertThat(truck.getClass().getSuperclass().getPermittedSubclasses())
                 .contains(ClassDesc.of(truck.getClass().getCanonicalName()));
     }
 
