@@ -40,9 +40,9 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>${javafaker.version}</version>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker</artifactId>
+            <version>${kotlin-faker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -139,7 +139,7 @@
         <node.version>v14.18.0</node.version>
         <yarn.version>v1.12.1</yarn.version>
         <spring-boot.version>2.4.4</spring-boot.version>
-        <javafaker.version>1.0.2</javafaker.version>
+        <kotlin-faker.version>1.11.0</kotlin-faker.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
