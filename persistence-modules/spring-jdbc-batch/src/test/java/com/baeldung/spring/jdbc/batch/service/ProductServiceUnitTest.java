@@ -2,12 +2,14 @@ package com.baeldung.spring.jdbc.batch.service;
 
 import com.baeldung.spring.jdbc.batch.model.Product;
 import com.baeldung.spring.jdbc.batch.repo.ProductRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
@@ -20,24 +22,31 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.withSettings;
 
 @ExtendWith(MockitoExtension.class)
 class ProductServiceUnitTest {
 
-    @Mock
     ProductRepository productRepository;
-    @Mock
     Random random;
-    @Mock
     Clock clock;
-    @InjectMocks
     ProductService productService;
 
     @Captor
     ArgumentCaptor<List<Product>> proArgumentCaptor;
+
+
+    @BeforeEach
+    void setUp() {
+        this.productRepository = mock(ProductRepository.class);
+        this.random = mock(Random.class, withSettings().withoutAnnotations());
+        this.clock = mock(Clock.class);
+        this.productService = new ProductService(this.productRepository, this.random, this.clock);
+    }
 
 
     @Test
