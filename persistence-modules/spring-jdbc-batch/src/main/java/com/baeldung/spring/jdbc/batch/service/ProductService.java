@@ -31,7 +31,7 @@ public class ProductService {
         return clock.millis() - startTime;
     }
 
-    protected List<Product> generate(int count) {
+    private List<Product> generate(int count) {
         final String[] titles = { "car", "plane", "house", "yacht" };
         final BigDecimal[] prices = {
           new BigDecimal("12483.12"),
@@ -44,7 +44,7 @@ public class ProductService {
 
         for (int i = 0; i < count; i++) {
             Product product = new Product();
-            product.setCreatedTs(LocalDateTime.now());
+            product.setCreatedTs(LocalDateTime.now(clock));
             product.setPrice(prices[random.nextInt(4)]);
             product.setTitle(titles[random.nextInt(4)]);
             products.add(product);
