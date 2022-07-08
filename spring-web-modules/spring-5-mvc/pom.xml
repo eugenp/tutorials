@@ -68,9 +68,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>${javafaker.version}</version>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker</artifactId>
+            <version>${kotlin-faker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -87,7 +87,7 @@
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
         <httpclient.version>4.5.8</httpclient.version>
         <start-class>com.baeldung.Spring5Application</start-class>
-        <javafaker.version>0.18</javafaker.version>
+        <kotlin-faker.version>1.11.0</kotlin-faker.version>
     </properties>
 
 </project>

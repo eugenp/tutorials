@@ -10,13 +10,13 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
-import com.github.javafaker.Faker;
+import io.github.serpro69.kfaker.Faker;
 
 /**
  * Repository for storing the books.
- * 
+ *
  * It serves just for illustrative purposes and is completely in-memory. It uses Java Faker library in order to generate data.
- * 
+ *
  * @author A.Shcherbakov
  *
  */
@@ -27,9 +27,9 @@ public class BookRepository {
 
     @PostConstruct
     public void init() {
-        Faker faker = new Faker(Locale.ENGLISH);
-        final com.github.javafaker.Book book = faker.book();
-        this.items = IntStream.range(1, faker.random()
+        Faker faker = new Faker();
+        final io.github.serpro69.kfaker.provider.Book book = faker.getBook();
+        this.items = IntStream.range(1, faker.getRandom()
             .nextInt(10, 20))
             .mapToObj(i -> new Book(i, book.title(), book.author(), book.genre()))
             .collect(Collectors.toList());
