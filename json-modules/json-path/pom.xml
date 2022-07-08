@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>json-path</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>json-path</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>json-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- json-path -->
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${json-path.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <!-- json-path -->
+        <json-path.version>2.4.0</json-path.version>
+    </properties>
+
+</project>

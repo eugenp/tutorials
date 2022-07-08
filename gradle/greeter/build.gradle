@@ -1,11 +1,11 @@
 apply plugin : 'java'
 apply plugin : 'application'
 
-
-
 dependencies {
-    compile project(':greeting-library')
-    compile project(':greeting-library-java')
+    implementation project(':greeting-library')
+    implementation project(':greeting-library-java')
+
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.11', ext: 'jar'
 }
 
 mainClassName = 'greeter.Greeter'

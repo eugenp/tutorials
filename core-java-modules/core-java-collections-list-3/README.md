@@ -13,5 +13,4 @@ This module contains articles about the Java List collection
 - [Finding the Differences Between Two Lists in Java](https://www.baeldung.com/java-lists-difference)
 - [List vs. ArrayList in Java](https://www.baeldung.com/java-list-vs-arraylist)
 - [How to Store HashMap<String, ArrayList> Inside a List](https://www.baeldung.com/java-hashmap-inside-list)
-- [Working With a List of Lists in Java](https://www.baeldung.com/java-list-of-lists)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list-2)
