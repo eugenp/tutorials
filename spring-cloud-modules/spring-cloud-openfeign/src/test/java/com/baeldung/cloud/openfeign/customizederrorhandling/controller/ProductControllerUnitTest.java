@@ -1,6 +1,8 @@
-package com.baeldung.cloud.openfeign.defaulterrorhandling.controller;
+package com.baeldung.cloud.openfeign.customizederrorhandling.controller;
 
-import com.baeldung.cloud.openfeign.defaulterrorhandling.client.ProductClient;
+import com.baeldung.cloud.openfeign.customizederrorhandling.client.ProductClient;
+import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ErrorResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.After;
@@ -14,24 +16,26 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ProductController.class)
-@ImportAutoConfiguration({FeignAutoConfiguration.class, TestControllerAdvice.class})
-@EnableWebMvc
-public class ProductControllerIntegrationTest {
+@ImportAutoConfiguration({FeignAutoConfiguration.class})
+public class ProductControllerUnitTest {
 
     @Autowired
     private ProductClient productClient;
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private WireMockServer wireMockServer;
 
@@ -43,28 +47,33 @@ public class ProductControllerIntegrationTest {
     }
 
     @Test
-    public void givenProductServiceIsnotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
+    public void givenProductApiIsNotAvailable_whenGetProductCalled_ThenReturnInternalServerError() throws Exception {
         String productId = "test";
 
-        WireMock.configureFor("localhost", 8081);
         WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
                 .willReturn(aResponse().withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
-        mockMvc.perform(get("/myapp1/product/" + productId))
-                    .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        ErrorResponse expectedError = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,
+        "Product Api is unavailable","uri=/myapp2/product/" + productId);
+
+        mockMvc.perform(get("/myapp2/product/" + productId))
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
     }
 
-
     @Test
-    public void givenProductIsNotFound_whenGetProductCalled_thenReturnBadeRequestError() throws Exception {
+    public void givenProductIsNotFound_whenGetProductCalled_ThenReturnInternalServerError() throws Exception {
         String productId = "test";
 
-        WireMock.configureFor("localhost", 8081);
         WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
                 .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
 
-        mockMvc.perform(get("/myapp1/product/" +productId))
-                    .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        ErrorResponse expectedError = new ErrorResponse(HttpStatus.NOT_FOUND,
+                "Product not found","uri=/myapp2/product/" + productId);
+
+        mockMvc.perform(get("/myapp2/product/" + productId))
+                .andExpect(status().isNotFound())
+                .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
     }
 
     @After
