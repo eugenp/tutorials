@@ -16,7 +16,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductClientTest {
+public class ProductClientUnitTest {
 
     @Autowired
     private ProductClient productClient;
