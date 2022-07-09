@@ -7,7 +7,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>parent-modules</name>
+  <name>parent-modules</name>
     <packaging>pom</packaging>
 
     <dependencies>
@@ -1246,6 +1246,7 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
+                 <module>spring-core-6</module>
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
@@ -1328,6 +1329,7 @@
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
+                <module>spring-core-6</module>
             </modules>
         </profile>
     </profiles>
@@ -1398,6 +1400,7 @@
         <lombok.version>1.18.20</lombok.version>
         <h2.version>1.4.200</h2.version>
         <guava.version>31.0.1-jre</guava.version>
+        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
     </properties>
 
 </project>
