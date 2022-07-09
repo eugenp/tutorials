@@ -23,6 +23,7 @@
         <module>docker-images</module>
         <module>docker-spring-boot</module>
         <module>docker-spring-boot-postgres</module>
+        <module>docker-java-jar</module>
     </modules>
 
     <properties>
