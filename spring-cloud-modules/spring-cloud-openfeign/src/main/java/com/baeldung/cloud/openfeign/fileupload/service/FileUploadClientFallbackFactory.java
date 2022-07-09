@@ -9,22 +9,22 @@ import com.baeldung.cloud.openfeign.exception.NotFoundException;
 
 @Component
 public class FileUploadClientFallbackFactory implements FallbackFactory<FileUploadClient> {
-	@Override
-	public FileUploadClient create(Throwable cause) {
-		return new FileUploadClient() {
-			@Override
-			public String fileUpload(MultipartFile file) {
-				if (cause instanceof BadRequestException) {
-					return "Bad Request!!!";
-				}
-				if (cause instanceof NotFoundException) {
-					return "Not Found!!!";
-				}
-				if (cause instanceof Exception) {
-					return "Exception!!!";
-				}
-				return "Successfully Uploaded file!!!";
-			}
-		};
-	}
+    @Override
+    public FileUploadClient create(Throwable cause) {
+        return new FileUploadClient() {
+            @Override
+            public String fileUpload(MultipartFile file) {
+                if (cause instanceof BadRequestException) {
+                    return "Bad Request!!!";
+                }
+                if (cause instanceof NotFoundException) {
+                    return "Not Found!!!";
+                }
+                if (cause instanceof Exception) {
+                    return "Exception!!!";
+                }
+                return "Successfully Uploaded file!!!";
+            }
+        };
+    }
 }
