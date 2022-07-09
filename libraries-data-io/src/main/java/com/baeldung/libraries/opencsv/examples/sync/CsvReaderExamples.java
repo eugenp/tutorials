@@ -1,61 +1,58 @@
 package com.baeldung.libraries.opencsv.examples.sync;
 
-import com.baeldung.libraries.opencsv.helpers.Helpers;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
 import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CsvReaderExamples {
 
-    public static List<String[]> readAll(Reader reader) {
+    public static List<String[]> readAllLines(Path filePath) throws Exception {
 
         CSVParser parser = new CSVParserBuilder()
-                .withSeparator(',')
-                .withIgnoreQuotations(true)
-                .build();
+          .withSeparator(',')
+          .withIgnoreQuotations(true)
+          .build();
 
-        CSVReader csvReader = new CSVReaderBuilder(reader)
-                .withSkipLines(0)
-                .withCSVParser(parser)
-                .build();
+        try (Reader reader = Files.newBufferedReader(filePath)) {
+            CSVReaderBuilder csvReaderBuilder = new CSVReaderBuilder(reader)
+              .withSkipLines(0)
+              .withCSVParser(parser);
 
-        List<String[]> list = new ArrayList<>();
-        try {
-            list = csvReader.readAll();
-            reader.close();
-            csvReader.close();
-        } catch (Exception ex) {
-            Helpers.err(ex);
+            try (CSVReader csvReader = csvReaderBuilder.build()) {
+                return csvReader.readAll();
+            }
         }
-        return list;
+
     }
 
-    public static List<String[]> oneByOne(Reader reader) {
+    public static List<String[]> readLineByLine(Path filePath) throws Exception {
         List<String[]> list = new ArrayList<>();
-        try {
-            CSVParser parser = new CSVParserBuilder()
-                    .withSeparator(',')
-                    .withIgnoreQuotations(true)
-                    .build();
 
-            CSVReader csvReader = new CSVReaderBuilder(reader)
-                    .withSkipLines(0)
-                    .withCSVParser(parser)
-                    .build();
+        CSVParser parser = new CSVParserBuilder()
+          .withSeparator(',')
+          .withIgnoreQuotations(true)
+          .build();
 
-            String[] line;
-            while ((line = csvReader.readNext()) != null) {
-                list.add(line);
+        try (Reader reader = Files.newBufferedReader(filePath)) {
+
+            CSVReaderBuilder csvReaderBuilder = new CSVReaderBuilder(reader)
+              .withSkipLines(0)
+              .withCSVParser(parser);
+
+            try (CSVReader csvReader = csvReaderBuilder.build()) {
+                String[] line;
+                while ((line = csvReader.readNext()) != null) {
+                    list.add(line);
+                }
             }
-            reader.close();
-            csvReader.close();
-        } catch (Exception ex) {
-            Helpers.err(ex);
+
         }
         return list;
     }
