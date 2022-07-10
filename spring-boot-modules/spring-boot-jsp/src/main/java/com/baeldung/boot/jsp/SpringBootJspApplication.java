@@ -8,6 +8,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication(scanBasePackages = "com.baeldung.boot.jsp")
 public class SpringBootJspApplication extends SpringBootServletInitializer {
 
+
+    //comment below if deploying outside web container -->
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(SpringBootJspApplication.class);
