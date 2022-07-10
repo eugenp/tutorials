@@ -15,7 +15,7 @@ public class ProductServiceIntegrationTest {
 
     static {
         GenericContainer<?> redis = new GenericContainer<>(DockerImageName.parse("redis:5.0.3-alpine"))
-                .withExposedPorts(6379);
+          .withExposedPorts(6379);
         redis.start();
         System.setProperty("spring.redis.host", redis.getHost());
         System.setProperty("spring.redis.port", redis.getMappedPort(6379).toString());
@@ -25,7 +25,7 @@ public class ProductServiceIntegrationTest {
     private ProductService productService;
 
     @Test
-    void testCreateProduct() {
+    void givenProductCreated_whenGettingProductById_thenProductExistsAndHasSameProperties() {
         Product product = new Product("1", "Test Product", 10.0);
         productService.createProduct(product);
         Product productFromDb = productService.getProduct("1");
@@ -35,7 +35,7 @@ public class ProductServiceIntegrationTest {
     }
 
     @Test
-    void testUpdateProduct() {
+    void givenProductCreatedAndUpdated_whenGettingTheProduct_thenUpdatedProductReturned() {
         Product product = new Product("1", "Test Product", 10.0);
         productService.createProduct(product);
         Product productFromDb = productService.getProduct("1");
@@ -51,7 +51,7 @@ public class ProductServiceIntegrationTest {
     }
 
     @Test
-    void testDeleteProduct() {
+    void givenProductCreatedAndDeleted_whenGettingTheProduct_thenNoProductReturned() {
         Product product = new Product("1", "Test Product", 10.0);
         productService.createProduct(product);
         Product productFromDb = productService.getProduct("1");
@@ -64,7 +64,7 @@ public class ProductServiceIntegrationTest {
     }
 
     @Test
-    void testGetProduct() {
+    void givenProductCreated_whenGettingProductById_thenSameProductReturned() {
         Product product = new Product("1", "Test Product", 10.0);
         productService.createProduct(product);
         Product productFromDb = productService.getProduct("1");
