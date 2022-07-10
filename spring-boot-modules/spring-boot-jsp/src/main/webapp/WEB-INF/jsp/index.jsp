@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <head>
-        <title>View Books</title>
+        <title>Index page</title>
     </head>
     <body>
        <div> This is index page </div>
