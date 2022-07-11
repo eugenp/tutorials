@@ -22,6 +22,7 @@
             <groupId>org.optaplanner</groupId>
             <artifactId>optaplanner-test</artifactId>
             <version>${optaplanner-core.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
