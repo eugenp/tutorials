@@ -1,17 +1,19 @@
 package com.baeldung.streamutils;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.util.StreamUtils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-
-import org.apache.commons.io.IOUtils;
-import org.springframework.util.StreamUtils;
+import java.nio.charset.StandardCharsets;
 
 public class CopyStream {
     public static String getStringFromInputStream(InputStream input) throws IOException {
         StringWriter writer = new StringWriter();
-        IOUtils.copy(input, writer, "UTF-8");
+        IOUtils.copy(input, writer, StandardCharsets.UTF_8);
+
         return writer.toString();
     }
 
