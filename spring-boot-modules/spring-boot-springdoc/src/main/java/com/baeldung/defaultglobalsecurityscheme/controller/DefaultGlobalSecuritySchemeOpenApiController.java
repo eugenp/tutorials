@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 public class DefaultGlobalSecuritySchemeOpenApiController {
     @RequestMapping(method = RequestMethod.POST, value = "/login", produces = { "application/json" }, consumes = { "application/json" })
     @Operation(operationId = "login", responses = {
-            @ApiResponse(responseCode = "200", description = "api_key to be used in the secured-ping entry point", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = TokenDto.class)) }),
+            @ApiResponse(responseCode = "200", description = "api_key to be used in the secured-ping endpoint", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = TokenDto.class)) }),
             @ApiResponse(responseCode = "401", description = "Unauthorized request", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ApplicationExceptionDto.class)) }) })
     @SecurityRequirements()
     public ResponseEntity<TokenDto> login(@Parameter(name = "LoginDto", description = "Login") @Valid @RequestBody(required = false) LoginDto loginDto) {
