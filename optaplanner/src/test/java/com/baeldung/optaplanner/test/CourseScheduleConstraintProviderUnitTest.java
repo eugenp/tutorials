@@ -12,7 +12,7 @@ public class CourseScheduleConstraintProviderUnitTest {
             ConstraintVerifier.build(new CourseScheduleConstraintProvider(), CourseSchedule.class, Lecture.class);
 
     @Test
-    public void testCourseScheduleConstraint(){
+    public void testCourseScheduleConstraint() {
 
         Lecture lecture = new Lecture(0L);
         lecture.setPeriod(1);

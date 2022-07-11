@@ -15,6 +15,7 @@ public class Lecture {
     public Lecture(Long i) {
         this.id = i;
     }
+
     public Lecture() {
     }
 

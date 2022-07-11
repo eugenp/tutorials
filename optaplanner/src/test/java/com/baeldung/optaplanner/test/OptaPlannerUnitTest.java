@@ -28,7 +28,7 @@ public class OptaPlannerUnitTest {
 
         unsolvedCourseSchedule = new CourseSchedule();
 
-        for(long i = 0; i < 10; i++){
+        for(long i = 0; i < 10; i++) {
             unsolvedCourseSchedule.getLectureList().add(new Lecture(i));
         }
 
@@ -70,6 +70,5 @@ public class OptaPlannerUnitTest {
         Assert.assertEquals(-4, solvedCourseSchedule.getScore().getHardScore());
 
     }
-
 
 }

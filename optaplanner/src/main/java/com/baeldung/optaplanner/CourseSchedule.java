@@ -38,7 +38,6 @@ public class CourseSchedule {
         return roomList;
     }
 
-
     public List<Integer> getPeriodList() {
         return periodList;
     }
