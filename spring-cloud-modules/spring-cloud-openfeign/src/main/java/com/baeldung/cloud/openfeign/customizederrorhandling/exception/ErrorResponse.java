@@ -21,11 +21,34 @@ public class ErrorResponse {
     @JsonProperty(value = "details")
     private String details;
 
+    public ErrorResponse() {
+    }
+
     public ErrorResponse(HttpStatus httpStatus, String message, String details) {
         timestamp = new Date();
         this.code = httpStatus.value();
         this.status = httpStatus.name();
         this.message = message;
         this.details = details;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getDetails() {
+        return details;
     }
 }

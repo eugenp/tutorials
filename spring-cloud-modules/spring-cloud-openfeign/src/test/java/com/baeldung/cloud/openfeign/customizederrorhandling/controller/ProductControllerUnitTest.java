@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +17,10 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -57,9 +58,15 @@ public class ProductControllerUnitTest {
         ErrorResponse expectedError = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,
         "Product Api is unavailable","uri=/myapp2/product/" + productId);
 
-        mockMvc.perform(get("/myapp2/product/" + productId))
-            .andExpect(status().isInternalServerError())
-            .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
+        MvcResult result = mockMvc.perform(get("/myapp2/product/" + productId))
+            .andExpect(status().isInternalServerError()).andReturn();
+
+        ErrorResponse errorResponse = objectMapper.readValue(result.getResponse().getContentAsString(), ErrorResponse.class);
+
+        Assert.assertEquals(expectedError.getCode(), errorResponse.getCode());
+        Assert.assertEquals(expectedError.getMessage(), errorResponse.getMessage());
+        Assert.assertEquals(expectedError.getStatus(), errorResponse.getStatus());
+        Assert.assertEquals(expectedError.getDetails(), errorResponse.getDetails());
     }
 
     @Test
@@ -73,9 +80,15 @@ public class ProductControllerUnitTest {
         ErrorResponse expectedError = new ErrorResponse(HttpStatus.NOT_FOUND,
                 "Product not found","uri=/myapp2/product/" + productId);
 
-        mockMvc.perform(get("/myapp2/product/" + productId))
-            .andExpect(status().isNotFound())
-            .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
+        MvcResult result = mockMvc.perform(get("/myapp2/product/" + productId))
+                .andExpect(status().isNotFound()).andReturn();
+
+        ErrorResponse errorResponse = objectMapper.readValue(result.getResponse().getContentAsString(), ErrorResponse.class);
+
+        Assert.assertEquals(expectedError.getCode(), errorResponse.getCode());
+        Assert.assertEquals(expectedError.getMessage(), errorResponse.getMessage());
+        Assert.assertEquals(expectedError.getStatus(), errorResponse.getStatus());
+        Assert.assertEquals(expectedError.getDetails(), errorResponse.getDetails());
     }
 
     @After
