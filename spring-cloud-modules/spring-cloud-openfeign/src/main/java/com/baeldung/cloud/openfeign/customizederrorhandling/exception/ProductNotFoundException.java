@@ -6,10 +6,6 @@ public class ProductNotFoundException extends RuntimeException {
         super(message);
     }
 
-    public ProductNotFoundException(Throwable cause) {
-        super(cause);
-    }
-
     @Override
     public String toString() {
         return getMessage();

@@ -6,10 +6,6 @@ public class ProductServiceNotAvailableException extends RuntimeException {
         super(message);
     }
 
-    public ProductServiceNotAvailableException(Throwable cause) {
-        super(cause);
-    }
-
     @Override
     public String toString() {
         return getMessage();
