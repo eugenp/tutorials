@@ -39,6 +39,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>selenium-junit-testng</module>
+        <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>
         <module>test-containers</module>

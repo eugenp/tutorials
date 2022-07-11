@@ -259,7 +259,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -278,7 +278,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -621,7 +621,6 @@
                 <module>spring-katharsis</module>
 
                 <module>spring-mobile</module>
-                <module>spring-mockito</module>
                 <module>spring-native</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1050,7 +1049,6 @@
                 <module>spring-katharsis</module>
 
                 <module>spring-mobile</module>
-                <module>spring-mockito</module>
                 <module>spring-native</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1364,7 +1362,7 @@
 
         <!-- logging -->
         <org.slf4j.version>1.7.32</org.slf4j.version>
-        <logback.version>1.2.6</logback.version>
+        <logback.version>1.2.7</logback.version>
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
