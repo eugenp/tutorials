@@ -48,10 +48,10 @@ public class ProductControllerUnitTest {
 
         WireMock.configureFor("localhost", 8081);
         WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse().withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
+            .willReturn(aResponse().withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
         mockMvc.perform(get("/myapp1/product/" + productId))
-                    .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+            .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 
 
@@ -61,10 +61,10 @@ public class ProductControllerUnitTest {
 
         WireMock.configureFor("localhost", 8081);
         WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
+            .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
 
         mockMvc.perform(get("/myapp1/product/" +productId))
-                    .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+            .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 
     @After

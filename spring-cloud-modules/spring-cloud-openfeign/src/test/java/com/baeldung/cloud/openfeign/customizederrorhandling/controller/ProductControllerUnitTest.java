@@ -51,14 +51,15 @@ public class ProductControllerUnitTest {
         String productId = "test";
 
         WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse().withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
+            .willReturn(aResponse()
+            .withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
         ErrorResponse expectedError = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,
         "Product Api is unavailable","uri=/myapp2/product/" + productId);
 
         mockMvc.perform(get("/myapp2/product/" + productId))
-                .andExpect(status().isInternalServerError())
-                .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
+            .andExpect(status().isInternalServerError())
+            .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
     }
 
     @Test
@@ -66,14 +67,15 @@ public class ProductControllerUnitTest {
         String productId = "test";
 
         WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
+            .willReturn(aResponse()
+            .withStatus(HttpStatus.NOT_FOUND.value())));
 
         ErrorResponse expectedError = new ErrorResponse(HttpStatus.NOT_FOUND,
                 "Product not found","uri=/myapp2/product/" + productId);
 
         mockMvc.perform(get("/myapp2/product/" + productId))
-                .andExpect(status().isNotFound())
-                .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
+            .andExpect(status().isNotFound())
+            .andExpect(content().json(objectMapper.writeValueAsString(expectedError)));
     }
 
     @After

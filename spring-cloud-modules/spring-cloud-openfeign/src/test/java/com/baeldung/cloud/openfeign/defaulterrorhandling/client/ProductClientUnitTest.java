@@ -42,10 +42,10 @@ public class ProductClientUnitTest {
                 "}";
 
         stubFor(get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse()
-                .withStatus(HttpStatus.OK.value())
-                .withHeader("Content-Type", "application/json")
-                .withBody(productResponse)));
+            .willReturn(aResponse()
+            .withStatus(HttpStatus.OK.value())
+            .withHeader("Content-Type", "application/json")
+            .withBody(productResponse)));
 
         Product product = productClient.getProduct(productId);
 
@@ -59,7 +59,8 @@ public class ProductClientUnitTest {
         String productId = "test";
 
         stubFor(get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse().withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
+            .willReturn(aResponse()
+            .withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
         Assert.assertThrows(FeignException.class, () -> productClient.getProduct(productId));
     }
@@ -69,8 +70,8 @@ public class ProductClientUnitTest {
         String productId = "test";
 
         stubFor(get(urlEqualTo("/product/" + productId))
-                .willReturn(aResponse()
-                .withStatus(HttpStatus.NOT_FOUND.value())));
+            .willReturn(aResponse()
+            .withStatus(HttpStatus.NOT_FOUND.value())));
 
         Assert.assertThrows(FeignException.class, () -> productClient.getProduct(productId));
     }

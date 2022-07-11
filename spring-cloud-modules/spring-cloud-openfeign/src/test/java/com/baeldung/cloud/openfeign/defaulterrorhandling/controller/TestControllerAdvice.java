@@ -12,6 +12,5 @@ public class TestControllerAdvice {
     @ExceptionHandler({FeignException.class})
     public ResponseEntity<Object> handleFeignException(FeignException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-
     }
 }
