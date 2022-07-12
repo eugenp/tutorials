@@ -33,7 +33,7 @@ public class DefaultGlobalSecuritySchemeOpenApiController {
             @ApiResponse(responseCode = "200", description = "api_key to be used in the secured-ping entry point", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = TokenDto.class)) }),
             @ApiResponse(responseCode = "401", description = "Unauthorized request", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ApplicationExceptionDto.class)) }) })
     @SecurityRequirements()
-    public ResponseEntity<TokenDto> login(@Parameter(name = "LoginDto", description = "Login") @Valid @RequestBody(required = false) LoginDto loginDto) {
+    public ResponseEntity<TokenDto> login(@Parameter(name = "LoginDto", description = "Login") @Valid @RequestBody(required = true) LoginDto loginDto) {
         TokenDto token = new TokenDto();
         token.setRaw("Generated Token");
         return ResponseEntity.ok(token);
