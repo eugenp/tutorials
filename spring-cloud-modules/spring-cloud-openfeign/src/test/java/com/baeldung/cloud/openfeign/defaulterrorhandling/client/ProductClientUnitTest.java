@@ -32,6 +32,11 @@ public class ProductClientUnitTest {
         wireMockServer.start();
     }
 
+    @After
+    public void stopWireMockServer() {
+        wireMockServer.stop();
+    }
+
     @Test
     public void givenProductIsAvailable_whenGetProductCalled_thenReturnMatchingProduct() {
         String productId = "test";
@@ -75,10 +80,5 @@ public class ProductClientUnitTest {
             .withStatus(HttpStatus.NOT_FOUND.value())));
 
         assertThrows(FeignException.class, () -> productClient.getProduct(productId));
-    }
-
-    @After
-    public void stopWireMockServer() {
-        wireMockServer.stop();
     }
 }
