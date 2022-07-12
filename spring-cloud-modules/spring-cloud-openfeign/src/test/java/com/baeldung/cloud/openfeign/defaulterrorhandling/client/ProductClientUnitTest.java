@@ -4,7 +4,6 @@ import com.baeldung.cloud.openfeign.defaulterrorhandling.model.Product;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import feign.FeignException;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -49,9 +50,9 @@ public class ProductClientUnitTest {
 
         Product product = productClient.getProduct(productId);
 
-        Assert.assertEquals(productId, product.getId());
-        Assert.assertEquals("Watermelon", product.getProductName());
-        Assert.assertEquals(12.00d, product.getPrice(), 0.00d);
+        assertEquals(productId, product.getId());
+        assertEquals("Watermelon", product.getProductName());
+        assertEquals(12.00d, product.getPrice(), 0.00d);
     }
 
     @Test
@@ -62,7 +63,7 @@ public class ProductClientUnitTest {
             .willReturn(aResponse()
             .withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
-        Assert.assertThrows(FeignException.class, () -> productClient.getProduct(productId));
+        assertThrows(FeignException.class, () -> productClient.getProduct(productId));
     }
 
     @Test
@@ -73,7 +74,7 @@ public class ProductClientUnitTest {
             .willReturn(aResponse()
             .withStatus(HttpStatus.NOT_FOUND.value())));
 
-        Assert.assertThrows(FeignException.class, () -> productClient.getProduct(productId));
+        assertThrows(FeignException.class, () -> productClient.getProduct(productId));
     }
 
     @After

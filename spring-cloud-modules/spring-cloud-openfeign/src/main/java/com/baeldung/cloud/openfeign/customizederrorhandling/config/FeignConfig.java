@@ -8,11 +8,11 @@ public class FeignConfig {
 
     @Bean
     Logger.Level feignLoggerLevel() {
-		return Logger.Level.FULL;
-	}
+        return Logger.Level.FULL;
+    }
 
     @Bean
     ErrorDecoder errorDecoder() {
-		return new CustomErrorDecoder();
-	}
+        return new CustomErrorDecoder();
+    }
 }

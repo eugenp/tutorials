@@ -4,7 +4,6 @@ import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ProductNot
 import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ProductServiceNotAvailableException;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.junit.Assert.assertThrows;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,6 +30,10 @@ public class ProductClientUnitTest {
         wireMockServer.start();
     }
 
+    @After
+    public void stopWireMockServer() {
+        wireMockServer.stop();
+    }
 
     @Test
     public void givenProductApiIsNotAvailable_whenGetProductCalled_thenThrowProductServiceNotAvailableException() {
@@ -38,7 +42,7 @@ public class ProductClientUnitTest {
         stubFor(get(urlEqualTo("/product/" + productId))
                 .willReturn(aResponse().withStatus(503)));
 
-        Assert.assertThrows(ProductServiceNotAvailableException.class, () -> productClient.getProduct(productId));
+        assertThrows(ProductServiceNotAvailableException.class, () -> productClient.getProduct(productId));
     }
 
     @Test
@@ -48,11 +52,6 @@ public class ProductClientUnitTest {
         stubFor(get(urlEqualTo("/product/" + productId))
                 .willReturn(aResponse().withStatus(404)));
 
-        Assert.assertThrows(ProductNotFoundException.class, () -> productClient.getProduct(productId));
-    }
-
-    @After
-    public void stopWireMockServer() {
-        wireMockServer.stop();
+        assertThrows(ProductNotFoundException.class, () -> productClient.getProduct(productId));
     }
 }

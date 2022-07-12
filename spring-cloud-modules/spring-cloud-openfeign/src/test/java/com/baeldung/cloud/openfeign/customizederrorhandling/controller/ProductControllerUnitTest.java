@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,11 +47,16 @@ public class ProductControllerUnitTest {
         wireMockServer.start();
     }
 
+    @After
+    public void stopWireMockServer() {
+        wireMockServer.stop();
+    }
+
     @Test
     public void givenProductApiIsNotAvailable_whenGetProductCalled_ThenReturnInternalServerError() throws Exception {
         String productId = "test";
 
-        WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
+        stubFor(WireMock.get(urlEqualTo("/product/" + productId))
             .willReturn(aResponse()
             .withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
@@ -63,17 +68,17 @@ public class ProductControllerUnitTest {
 
         ErrorResponse errorResponse = objectMapper.readValue(result.getResponse().getContentAsString(), ErrorResponse.class);
 
-        Assert.assertEquals(expectedError.getCode(), errorResponse.getCode());
-        Assert.assertEquals(expectedError.getMessage(), errorResponse.getMessage());
-        Assert.assertEquals(expectedError.getStatus(), errorResponse.getStatus());
-        Assert.assertEquals(expectedError.getDetails(), errorResponse.getDetails());
+        assertEquals(expectedError.getCode(), errorResponse.getCode());
+        assertEquals(expectedError.getMessage(), errorResponse.getMessage());
+        assertEquals(expectedError.getStatus(), errorResponse.getStatus());
+        assertEquals(expectedError.getDetails(), errorResponse.getDetails());
     }
 
     @Test
     public void givenProductIsNotFound_whenGetProductCalled_ThenReturnInternalServerError() throws Exception {
         String productId = "test";
 
-        WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
+        stubFor(WireMock.get(urlEqualTo("/product/" + productId))
             .willReturn(aResponse()
             .withStatus(HttpStatus.NOT_FOUND.value())));
 
@@ -81,18 +86,13 @@ public class ProductControllerUnitTest {
                 "Product not found","uri=/myapp2/product/" + productId);
 
         MvcResult result = mockMvc.perform(get("/myapp2/product/" + productId))
-                .andExpect(status().isNotFound()).andReturn();
+            .andExpect(status().isNotFound()).andReturn();
 
         ErrorResponse errorResponse = objectMapper.readValue(result.getResponse().getContentAsString(), ErrorResponse.class);
 
-        Assert.assertEquals(expectedError.getCode(), errorResponse.getCode());
-        Assert.assertEquals(expectedError.getMessage(), errorResponse.getMessage());
-        Assert.assertEquals(expectedError.getStatus(), errorResponse.getStatus());
-        Assert.assertEquals(expectedError.getDetails(), errorResponse.getDetails());
-    }
-
-    @After
-    public void stopWireMockServer() {
-        wireMockServer.stop();
+        assertEquals(expectedError.getCode(), errorResponse.getCode());
+        assertEquals(expectedError.getMessage(), errorResponse.getMessage());
+        assertEquals(expectedError.getStatus(), errorResponse.getStatus());
+        assertEquals(expectedError.getDetails(), errorResponse.getDetails());
     }
 }

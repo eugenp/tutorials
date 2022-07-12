@@ -42,11 +42,16 @@ public class ProductControllerUnitTest {
         wireMockServer.start();
     }
 
+    @After
+    public void stopWireMockServer() {
+        wireMockServer.stop();
+    }
+
     @Test
     public void givenProductServiceIsnotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         String productId = "test";
 
-        WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
+        stubFor(WireMock.get(urlEqualTo("/product/" + productId))
             .willReturn(aResponse().withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
         mockMvc.perform(get("/myapp1/product/" + productId))
@@ -58,15 +63,10 @@ public class ProductControllerUnitTest {
     public void givenProductIsNotFound_whenGetProductCalled_thenReturnBadeRequestError() throws Exception {
         String productId = "test";
 
-        WireMock.stubFor(WireMock.get(urlEqualTo("/product/" + productId))
+        stubFor(WireMock.get(urlEqualTo("/product/" + productId))
             .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
 
         mockMvc.perform(get("/myapp1/product/" +productId))
             .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-    }
-
-    @After
-    public void stopWireMockServer() {
-        wireMockServer.stop();
     }
 }

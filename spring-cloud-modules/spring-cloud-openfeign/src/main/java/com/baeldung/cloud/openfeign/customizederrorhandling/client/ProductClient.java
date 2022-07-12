@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "product-client-2", url = "http://localhost:8081/product/", configuration = FeignConfig.class)
 public interface ProductClient {
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
     Product getProduct(@PathVariable(value = "id") String id);
 
 }
