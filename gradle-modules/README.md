@@ -1,3 +1,3 @@
-## Akka 
+## Gradle Modules 
 
-This module contains modules about Akka. 
+This module contains submodules of Gradle. 

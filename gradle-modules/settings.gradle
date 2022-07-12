@@ -1,3 +1,4 @@
 rootProject.name = 'gradle-modules'
-include 'gradletutorial'
-include 'gradle-5-articles'
+include 'gradle'
+include 'gradle-5'
+include 'gradle-6'

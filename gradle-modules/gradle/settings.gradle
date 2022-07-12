@@ -1,4 +1,4 @@
-rootProject.name = 'gradletutorial'
+rootProject.name = 'gradle'
 
 include 'greeting-library'
 include 'greeting-library-java'
