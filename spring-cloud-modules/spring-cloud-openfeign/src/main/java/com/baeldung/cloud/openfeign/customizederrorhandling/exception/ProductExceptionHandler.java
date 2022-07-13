@@ -6,9 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class ProductExceptionHandler {
+public class ProductExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ProductServiceNotAvailableException.class})
     public ResponseEntity<ErrorResponse> handleProductServiceNotAvailableException(ProductServiceNotAvailableException exception, WebRequest request) {
@@ -29,7 +30,7 @@ public class ProductExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGenericException(BadRequestException exception, WebRequest request) {
+    public ResponseEntity<ErrorResponse> handleGenericException(Exception exception, WebRequest request) {
         return new ResponseEntity<>(new ErrorResponse(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 exception.getMessage(),
