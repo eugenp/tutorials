@@ -1,4 +1,4 @@
-rootProject.name='gradle-5-articles'
+rootProject.name='gradle-5'
 include 'java-exec'
 include 'unused-dependencies'
 include 'source-sets'
