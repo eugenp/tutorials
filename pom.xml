@@ -397,9 +397,7 @@
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
-                <!-- <module>gradle</module> --> <!-- Not a maven project -->
-                <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
-                <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
+                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -505,7 +503,7 @@
                 <module>protobuffer</module>
 
                 <module>quarkus-modules</module>
-               
+
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>ratpack</module>
@@ -830,9 +828,7 @@
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
-                <!-- <module>gradle</module> --> <!-- Not a maven project -->
-                <!-- <module>gradle-5</module> --> <!-- Not a maven project -->
-                <!-- <module>gradle-6</module> --> <!-- Not a maven project -->
+                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
                 <module>grpc</module>
