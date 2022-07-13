@@ -15,20 +15,20 @@
     </parent>
 
     <modules>
-        <module>spring-5-security</module>
-        <module>spring-5-security-cognito</module>
-        <module>spring-5-security-oauth</module>
-        <module>spring-ldap</module>
+        <module>spring-5-security</module>        
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
+        <module>spring-security-cognito</module>
         <module>spring-security-core</module>
         <module>spring-security-core-2</module>
         <module>spring-security-ldap</module>
         <module>spring-security-legacy-oidc</module>
+        <module>spring-security-oauth2</module>
         <module>spring-security-oauth2-sso</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
         <module>spring-security-saml</module>
+        <module>spring-security-social-login</module>
         <module>spring-security-web-angular</module>
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
@@ -45,7 +45,6 @@
         <module>spring-security-web-sockets</module>
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>        
-        <module>spring-social-login</module>
         <module>spring-security-opa</module>
     </modules>
 
