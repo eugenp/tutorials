@@ -8,8 +8,9 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Article: 
 
-- [Spring Security – security none, filters none, access permitAll](https://www.baeldung.com/security-none-filters-none-access-permitAll)
 - [Intro to Spring Security LDAP](https://www.baeldung.com/spring-security-ldap)
+- [Spring LDAP Overview](https://www.baeldung.com/spring-ldap)
+- [Guide to Spring Data LDAP](https://www.baeldung.com/spring-data-ldap)
 
 ### Notes
 
