@@ -11,3 +11,4 @@ This module contains articles about JAR files
 - [Find All Jars Containing Given Class](https://baeldung.com/find-all-jars-containing-given-class/)
 - [Creating JAR Files Programmatically](https://www.baeldung.com/jar-create-programatically)
 - [Guide to Creating Jar Executables and Windows Executables from Java](https://www.baeldung.com/jar-windows-executables)
+- [Get the Full Path of a JAR File From a Class](https://www.baeldung.com/java-full-path-of-jar-from-class)
