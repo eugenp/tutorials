@@ -6,9 +6,11 @@
     <artifactId>rxjava-observables</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>rxjava-observables</name>
+
     <parent>
         <groupId>com.baeldung.rxjava-modules</groupId>
         <artifactId>rxjava-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
 </project>
