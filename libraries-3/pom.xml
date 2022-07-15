@@ -86,7 +86,6 @@
             <artifactId>error_prone_core</artifactId>
             <version>${errorprone.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.structurizr</groupId>
             <artifactId>structurizr-core</artifactId>

@@ -7,7 +7,7 @@
     <name>docker-spring-boot</name>
     <description>Demo project showing Spring Boot and Docker</description>
 
-     <parent>
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>

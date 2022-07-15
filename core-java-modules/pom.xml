@@ -33,7 +33,7 @@
         <module>core-java-collections-4</module>
         <module>core-java-collections-array-list</module>
         <module>core-java-collections-conversions</module>
-        <module>core-java-collections-conversions-2</module>        
+        <module>core-java-collections-conversions-2</module>
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
@@ -126,7 +126,7 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
-        <module>pre-jpms</module>        
+        <module>pre-jpms</module>
     </modules>
 
     <dependencyManagement>

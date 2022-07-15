@@ -16,12 +16,15 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
+
     <modules>
         <module>sidecar-demo</module>
         <module>echo-demo</module>
     </modules>
+
     <properties>
         <netflix.cloud.version>2.2.10.RELEASE</netflix.cloud.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
     </properties>
+
 </project>
