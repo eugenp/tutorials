@@ -1,5 +1,0 @@
-rootProject.name='gradle-5-articles'
-include 'java-exec'
-include 'unused-dependencies'
-include 'source-sets'
-include 'cmd-line-args'
