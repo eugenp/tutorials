@@ -98,7 +98,7 @@
     </repositories>
 
     <properties>
-        <!--Put your own  properties-->
+        <!--Put your own properties -->
         <repository-owner>Put-repo-owner</repository-owner>
         <repository-name>Put-repository-name</repository-name>
         <branch-name>Put-branch-name</branch-name>
