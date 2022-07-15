@@ -11,3 +11,4 @@ This module contains articles about string APIs.
 - [StringBuilder vs StringBuffer in Java](https://www.baeldung.com/java-string-builder-string-buffer)
 - [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
 - [Getting a Character by Index From a String in Java](https://www.baeldung.com/java-character-at-position)
+- [Clearing a StringBuilder or StringBuffer](https://www.baeldung.com/java-clear-stringbuilder-stringbuffer)

@@ -43,7 +43,6 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
