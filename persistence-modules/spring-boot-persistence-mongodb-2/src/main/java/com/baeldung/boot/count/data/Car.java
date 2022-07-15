@@ -1,6 +1,7 @@
 package com.baeldung.boot.count.data;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Document
 public class Car {
     private String name;
