@@ -7,8 +7,6 @@
     <name>spring-5-data-reactive</name>
     <packaging>jar</packaging>
 
-
-
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
         <artifactId>spring-5-reactive-modules</artifactId>
