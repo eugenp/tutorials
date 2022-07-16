@@ -1,10 +1,10 @@
 package com.baeldung.scopes;
 
-import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import static org.junit.Assert.assertEquals;
 
 public class ScopesIntegrationTest {
 
@@ -13,31 +13,31 @@ public class ScopesIntegrationTest {
 
     @Test
     public void givenSingletonScope_whenSetName_thenEqualNames() {
-        final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
+        final AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
-        final Person personSingletonA = (Person) applicationContext.getBean("personSingleton");
-        final Person personSingletonB = (Person) applicationContext.getBean("personSingleton");
+        final Person personSingletonA = applicationContext.getBean("personSingleton", Person.class);
+        final Person personSingletonB = applicationContext.getBean("personSingleton", Person.class);
 
         personSingletonA.setName(NAME);
-        Assert.assertEquals(NAME, personSingletonB.getName());
+        assertEquals(NAME, personSingletonB.getName());
 
-        ((AbstractApplicationContext) applicationContext).close();
+        applicationContext.close();
     }
 
     @Test
     public void givenPrototypeScope_whenSetNames_thenDifferentNames() {
-        final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
+        final AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
-        final Person personPrototypeA = (Person) applicationContext.getBean("personPrototype");
-        final Person personPrototypeB = (Person) applicationContext.getBean("personPrototype");
+        final Person personPrototypeA = applicationContext.getBean("personPrototype", Person.class);
+        final Person personPrototypeB = applicationContext.getBean("personPrototype", Person.class);
 
         personPrototypeA.setName(NAME);
         personPrototypeB.setName(NAME_OTHER);
 
-        Assert.assertEquals(NAME, personPrototypeA.getName());
-        Assert.assertEquals(NAME_OTHER, personPrototypeB.getName());
+        assertEquals(NAME, personPrototypeA.getName());
+        assertEquals(NAME_OTHER, personPrototypeB.getName());
 
-        ((AbstractApplicationContext) applicationContext).close();
+        applicationContext.close();
     }
 
 }
