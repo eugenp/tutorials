@@ -41,6 +41,7 @@
         <module>maven-parent-pom-resolution</module>
         <module>maven-simple</module>
         <module>maven-classifier</module>
+        <module>maven-repositories</module>
     </modules>
 
     <dependencyManagement>
