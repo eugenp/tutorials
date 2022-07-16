@@ -1,15 +1,13 @@
 package com.baeldung.cloud.netflix.feign.config;
 
+import org.apache.http.entity.ContentType;
+import org.springframework.context.annotation.Bean;
+
 import feign.Logger;
 import feign.RequestInterceptor;
 import feign.codec.ErrorDecoder;
 import feign.okhttp.OkHttpClient;
 
-import org.apache.http.entity.ContentType;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
 public class ClientConfiguration {
 
     @Bean
@@ -19,7 +17,7 @@ public class ClientConfiguration {
 
     @Bean
     public ErrorDecoder errorDecoder() {
-        return new ErrorDecoder.Default();
+        return new CustomErrorDecoder();
     }
 
     @Bean
