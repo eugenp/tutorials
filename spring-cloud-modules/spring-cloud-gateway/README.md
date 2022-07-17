@@ -10,3 +10,4 @@ This module contains articles about Spring Cloud Gateway
 - [Spring Cloud Gateway WebFilter Factories](https://www.baeldung.com/spring-cloud-gateway-webfilter-factories)
 - [Using Spring Cloud Gateway with OAuth 2.0 Patterns](https://www.baeldung.com/spring-cloud-gateway-oauth2)
 - [URL Rewriting With Spring Cloud Gateway](https://www.baeldung.com/spring-cloud-gateway-url-rewriting)
+- [Processing the Response Body in Spring Cloud Gateway](https://www.baeldung.com/spring-cloud-gateway-response-body)

@@ -32,35 +32,35 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <!--encoding>UTF-8</encoding-->
-                    <!--propertiesEncoding>ISO-8859-1</propertiesEncoding-->
+                    <!--encoding>UTF-8</encoding -->
+                    <!--propertiesEncoding>ISO-8859-1</propertiesEncoding -->
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <!--encoding>UTF-8</encoding-->
+                    <!--encoding>UTF-8</encoding -->
                 </configuration>
             </plugin>
-            
+
         </plugins>
     </build>
 
     <properties>
         <name>${project.name}</name>
         <my.awesome.property>property-from-pom</my.awesome.property>
-		<!--these properties are normally set in the parent POM and would be overidden
-		by the plugin specific properties above.-->
-        <!--project.build.sourceEncoding></project.build.sourceEncoding-->
-        <!--project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding-->
+        <!--these properties are normally set in the parent POM and would be overidden by the plugin 
+            specific properties above. -->
+        <!--project.build.sourceEncoding></project.build.sourceEncoding -->
+        <!--project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>

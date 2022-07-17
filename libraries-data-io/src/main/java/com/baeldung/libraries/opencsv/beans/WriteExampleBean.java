@@ -37,4 +37,9 @@ public class WriteExampleBean extends CsvBean {
     public void setColC(String colC) {
         this.colC = colC;
     }
+
+    @Override
+    public String toString() {
+        return colA + ',' + colB + "," + colC;
+    }
 }
