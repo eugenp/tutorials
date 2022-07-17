@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.undertow</groupId>
     <artifactId>undertow</artifactId>
@@ -26,20 +27,10 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-        	<!-- disabling shade plugin as it is causing issues with creating dependency-reduced-pom on the build server 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>${maven-shade-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin> -->
+            <!-- disabling shade plugin as it is causing issues with creating dependency-reduced-pom 
+                on the build server <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
+                <version>${maven-shade-plugin.version}</version> <executions> <execution> <phase>package</phase> <goals> 
+                <goal>shade</goal> </goals> </execution> </executions> </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -57,7 +48,7 @@
 
     <properties>
         <undertow-servlet.version>1.4.18.Final</undertow-servlet.version>
-        <!--<maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>-->
+        <!--<maven-shade-plugin.version>2.4.3</maven-shade-plugin.version> -->
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
 

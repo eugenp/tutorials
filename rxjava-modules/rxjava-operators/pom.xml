@@ -25,4 +25,5 @@
     <properties>
         <rxjava2.ext.version>0.20.4</rxjava2.ext.version>
     </properties>
+
 </project>

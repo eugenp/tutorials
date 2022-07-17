@@ -24,17 +24,16 @@
     </modules>
 
     <dependencies>
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <version>1.5.22.release</version>-->
-<!--        </dependency>-->
+        <!-- <dependency> -->
+        <!-- <groupId>org.springframework.boot</groupId> -->
+        <!-- <artifactId>spring-boot-starter-test</artifactId> -->
+        <!-- <version>1.5.22.release</version> -->
+        <!-- </dependency> -->
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
@@ -50,6 +49,5 @@
         <byte-buddy.version>1.11.20</byte-buddy.version>
         <rest-assured.version>3.1.0</rest-assured.version>
     </properties>
-
 
 </project>
