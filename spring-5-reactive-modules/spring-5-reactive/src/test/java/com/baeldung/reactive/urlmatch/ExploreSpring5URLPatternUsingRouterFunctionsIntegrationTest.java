@@ -107,4 +107,14 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
             .isEqualTo("hello");
     }
 
+    @Test
+    public void givenRouter_whenAccess_thenGot() throws Exception {
+        client.get()
+            .uri("/resources/test/test.txt")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo("test");
+    }
 }
