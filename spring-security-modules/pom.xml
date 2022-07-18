@@ -14,8 +14,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <modules>
-        <module>spring-5-security</module>        
+    <modules>        
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
         <module>spring-security-cognito</module>
@@ -35,6 +34,7 @@
         <module>spring-security-web-boot-3</module>
         <module>spring-security-web-digest-auth</module>
         <module>spring-security-web-login</module>
+        <module>spring-security-web-login-2</module>
         <module>spring-security-web-mvc-custom</module>
         <module>spring-security-web-mvc</module>
         <module>spring-security-web-persistent-login</module>
