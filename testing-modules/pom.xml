@@ -30,8 +30,8 @@
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
         <module>mockito-2</module>
-        <module>mockito-3</module>
         <module>mockito</module>
+        <module>mockito-simple</module>
         <module>mocks</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
@@ -39,6 +39,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>selenium-junit-testng</module>
+        <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>
         <module>test-containers</module>

@@ -34,8 +34,19 @@
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
+		
     <!-- uncomment in order to enable Hibernate Validator Anotation Processor -->
     <!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
         <version>${maven.compiler.version}</version> <configuration> <source>${maven.compiler.source}</source> 
@@ -46,13 +57,14 @@
         </plugin> </plugins> </build> -->
 
     <properties>
-        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
         <hibernate-validator.ap.version>6.2.0.Final</hibernate-validator.ap.version>
         <maven.compiler.version>3.6.1</maven.compiler.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <javax.el.version>3.0.0</javax.el.version>
-        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
+        <org.springframework.version>5.3.21</org.springframework.version>
+        <spring.boot.version>2.7.1</spring.boot.version>
     </properties>
 
 </project>
