@@ -12,6 +12,7 @@ import java.util.UUID;
 public final class UUIDGenerator {
 
     private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
+    private static final Random random = new Random();
 
     private UUIDGenerator() {}
 
@@ -27,7 +28,7 @@ public final class UUIDGenerator {
     }
 
     private static long get64LeastSignificantBitsForVersion1() {
-        final long random63BitLong = new Random().nextLong() & 0x3FFFFFFFFFFFFFFFL;
+        final long random63BitLong = random.nextLong() & 0x3FFFFFFFFFFFFFFFL;
         final long variant3BitFlag = 0x8000000000000000L;
         return random63BitLong + variant3BitFlag;
     }
