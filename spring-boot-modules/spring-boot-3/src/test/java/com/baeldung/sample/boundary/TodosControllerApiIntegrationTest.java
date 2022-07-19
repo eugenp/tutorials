@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @WebMvcTest
 @ContextConfiguration(classes = TodosBoundaryLayer.class)
-class TodosControllerAPITest {
+class TodosControllerApiIntegrationTest {
 
     private static final String BASEURL = "/api/v1/todos"; // URL to Resource
     private static final String DEFAULT_MEDIA_TYPE = MediaType.APPLICATION_JSON_VALUE;

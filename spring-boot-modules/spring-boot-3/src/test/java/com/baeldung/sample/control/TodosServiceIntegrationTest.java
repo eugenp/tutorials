@@ -5,10 +5,8 @@ import com.baeldung.sample.entity.TodosRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Answers;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ import static org.mockito.Mockito.when;
  * Somit müssen alle Tests, die einen existierenden Datensatz benötigen, diesen im Test anlegen.
  */
 @SpringBootTest(classes = TodosControlLayer.class)
-class TodosServiceTest {
+class TodosServiceIntegrationTest {
 
     // dieses Objekt wird als Mock instruiert
     // Answers.RETURNS_MOCKS ist notwendig, da Methoden in Service-Init-Methode bereits aufgerufen werden
