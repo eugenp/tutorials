@@ -91,6 +91,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <lombok.version>1.18.22</lombok.version>
         <java.version>17</java.version>
+        <maven-pmd-plugin.version>3.17.0</maven-pmd-plugin.version>
     </properties>
 
 </project>
