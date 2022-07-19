@@ -16,6 +16,24 @@ public final class UUIDGenerator {
 
     private UUIDGenerator() {}
 
+    // ref: https://datatracker.ietf.org/doc/html/rfc4122#appendix-C
+    public enum Namespace {
+        DNS("6ba7b810-9dad-11d1-80b4-00c04fd430c8"),
+        URL("6ba7b811-9dad-11d1-80b4-00c04fd430c8"),
+        OID("6ba7b812-9dad-11d1-80b4-00c04fd430c8"),
+        X500("6ba7b814-9dad-11d1-80b4-00c04fd430c8");
+
+        public final String value;
+
+        Namespace(String value) {
+            this.value = value;
+        }
+
+        public UUID getUUID() {
+            return UUID.fromString(value);
+        }
+    }
+
     /**
      * Type 1 UUID Generation
      */
