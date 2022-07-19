@@ -17,7 +17,6 @@
     </parent>
 
     <modules>
-        <module>spring-boot-3</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
