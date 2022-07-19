@@ -1,6 +1,6 @@
-package com.baeldung.numberrange;
+package com.baeldung.intrange;
 
-public class NumberRangeClassic {
+public class IntRangeOperators {
 
     public static boolean isInClosedRange(Integer number, Integer lowerBound, Integer upperBound) {
         return (lowerBound <= number && number <= upperBound);
