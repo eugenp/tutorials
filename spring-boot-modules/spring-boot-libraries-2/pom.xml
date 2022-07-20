@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.jboss</groupId>
             <artifactId>jandex</artifactId>
-            <version>2.4.1.Final</version>
+            <version>2.4.3.Final</version>
         </dependency>
     </dependencies>
 
@@ -105,7 +105,7 @@
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
-                <version>1.1.1</version>
+                <version>1.2.3</version>
                 <executions>
                     <execution>
                         <phase>compile</phase>
