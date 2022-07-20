@@ -3,11 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-5-security</artifactId>
+    <artifactId>spring-security-web-login-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-5-security</name>
-    <packaging>jar</packaging>
-    <description>spring 5 security sample project</description>
+    <name>spring-security-web-login-2</name>
+    <packaging>jar</packaging>   
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -47,21 +46,6 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.owasp.esapi</groupId>
-            <artifactId>esapi</artifactId>
-            <version>${esapi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>${jsoup.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -69,16 +53,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.passwordstorage.PasswordStorageApplication</mainClass>
-                    <layout>JAR</layout>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <jsoup.version>1.13.1</jsoup.version>
-    </properties>
 
 </project>
