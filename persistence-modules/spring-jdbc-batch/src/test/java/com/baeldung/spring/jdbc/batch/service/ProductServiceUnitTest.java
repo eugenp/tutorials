@@ -2,6 +2,7 @@ package com.baeldung.spring.jdbc.batch.service;
 
 import com.baeldung.spring.jdbc.batch.model.Product;
 import com.baeldung.spring.jdbc.batch.repo.ProductRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,7 +37,6 @@ class ProductServiceUnitTest {
     @Captor
     ArgumentCaptor<List<Product>> proArgumentCaptor;
 
-
     @BeforeEach
     void setUp() {
         this.productRepository = mock(ProductRepository.class);
@@ -44,7 +44,6 @@ class ProductServiceUnitTest {
         this.clock = mock(Clock.class);
         this.productService = new ProductService(this.productRepository, this.random, this.clock);
     }
-
 
     @Test
     void testWhenCreateProductsThenShouldSaveAndReturnElapsedTime() {
@@ -58,9 +57,7 @@ class ProductServiceUnitTest {
         when(clock.millis())
           .thenReturn(100L,500L);
 
-
         final long actualElapsedTime = productService.createProducts(2);
-
 
         assertThat(actualElapsedTime)
           .isEqualTo(400L);

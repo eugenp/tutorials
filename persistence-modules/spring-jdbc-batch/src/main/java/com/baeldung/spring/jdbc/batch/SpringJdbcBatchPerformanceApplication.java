@@ -1,6 +1,7 @@
 package com.baeldung.spring.jdbc.batch;
 
 import com.baeldung.spring.jdbc.batch.service.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
