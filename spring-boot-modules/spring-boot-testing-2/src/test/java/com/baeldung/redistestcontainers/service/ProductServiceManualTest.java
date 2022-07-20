@@ -10,8 +10,12 @@ import org.testcontainers.utility.DockerImageName;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Requires Docker running on the machine to run without errors
+ * Therefore, skipped from pipeline
+ */
 @SpringBootTest
-public class ProductServiceIntegrationTest {
+public class ProductServiceManualTest {
 
     static {
         GenericContainer<?> redis = new GenericContainer<>(DockerImageName.parse("redis:5.0.3-alpine"))
