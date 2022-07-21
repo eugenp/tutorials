@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

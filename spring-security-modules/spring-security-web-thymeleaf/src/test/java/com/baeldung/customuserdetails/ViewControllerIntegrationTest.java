@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +15,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import com.baeldung.customuserdetails.PasswordEncoderConfiguration;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest
@@ -34,7 +36,7 @@ public class ViewControllerIntegrationTest {
 	
 	@Test
 	public void givenUser_whenPerformingGet_thenReturnsIndex() throws Exception {
-		mvc.perform(get("/index").with(user("user").password("password"))).andExpect(status().isOk()).andExpect(view().name("index"));
+		mvc.perform(get("/index").with(user("user").password("password"))).andExpect(status().isOk()).andExpect(view().name("userdetails"));
 	}
 
 }

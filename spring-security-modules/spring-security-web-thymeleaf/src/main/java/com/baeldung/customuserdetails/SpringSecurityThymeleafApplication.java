@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

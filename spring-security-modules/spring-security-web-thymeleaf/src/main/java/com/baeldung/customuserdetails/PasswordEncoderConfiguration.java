@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

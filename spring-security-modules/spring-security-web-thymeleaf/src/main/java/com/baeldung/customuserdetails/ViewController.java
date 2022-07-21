@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,8 +15,7 @@ public class ViewController {
 
     @RequestMapping({ "/index", "/" })
     public String index() {
-        Authentication authentication = SecurityContextHolder.getContext()
-            .getAuthentication();
-        return "index";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return "userdetails";
     }
 }

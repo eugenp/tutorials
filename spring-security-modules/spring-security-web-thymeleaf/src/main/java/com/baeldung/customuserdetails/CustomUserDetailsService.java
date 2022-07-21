@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,7 +36,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             .withLastName("Davis")
             .withEmail("james.davis@email.com")
             .withUsername("admin")
-            .withPassword(passwordEncoder.encode("password"))
+            .withPassword(passwordEncoder.encode("admin"))
             .withAuthorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")))
             .build());
     }

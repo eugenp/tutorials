@@ -1,4 +1,4 @@
-package com.baeldung.springsecuritythymeleaf;
+package com.baeldung.customuserdetails;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.assertNotNull;
+
+import com.baeldung.customuserdetails.ViewController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
