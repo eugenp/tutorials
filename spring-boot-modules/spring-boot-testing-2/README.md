@@ -11,4 +11,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Setting the Log Level in Spring Boot when Testing](https://www.baeldung.com/spring-boot-testing-log-level)
 - [Failed to Load ApplicationContext for JUnit Test of Spring Controller](https://www.baeldung.com/spring-junit-failed-to-load-applicationcontext)
 - [Spring Web Service Integration Tests with @WebServiceServerTest](https://www.baeldung.com/spring-webserviceservertest)
+- [Spring Boot – Testing Redis With Testcontainers](https://www.baeldung.com/spring-boot-redis-testcontainers)
 - More articles: [[<-- prev]](../spring-boot-testing)
