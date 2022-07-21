@@ -29,7 +29,6 @@
         <module>junit5-annotations</module>
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
-        <module>mockito-2</module>
         <module>mockito</module>
         <module>mockito-simple</module>
         <module>mocks</module>
