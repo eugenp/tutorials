@@ -37,7 +37,7 @@ import com.netflix.spectator.atlas.AtlasConfig;
 /**
  * @author aiet
  */
-public class MicrometerAtlasIntegrationManualTest {
+public class MicrometerAtlasManualTest {
 
     private AtlasConfig atlasConfig;
 
