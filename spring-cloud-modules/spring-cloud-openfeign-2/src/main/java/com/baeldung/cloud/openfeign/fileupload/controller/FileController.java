@@ -15,20 +15,26 @@ public class FileController {
     @Autowired
     private UploadService service;
     
-    @PostMapping(value = "/upload")
-    public String handleFileUpload(@RequestPart(value = "file") MultipartFile file) {
-        return service.uploadFile(file);
-    }
-    
     @PostMapping(value = "/upload-mannual-client")
     public boolean handleFileUploadWithManualClient(
             @RequestPart(value = "file") MultipartFile file) {
         return service.uploadFileWithManualClient(file);
     }
     
-    @PostMapping(value = "/upload-error")
-    public String handleFileUploadError(@RequestPart(value = "file") MultipartFile file) throws NotFoundException {
-        return service.uploadFileWithCause(file);
+    @PostMapping(value = "/upload-file")
+    public boolean handleFileUpload(@RequestPart(value = "file") MultipartFile file) {
+        return service.uploadFileWithManualClient(file);
     }
-    
+
+    @PostMapping(value = "/upload-with-fallbackfactory")
+    public String uploadFileWithFallbackFactory(@RequestPart(value = "file") MultipartFile file)
+            throws NotFoundException {
+        return service.uploadFileWithFallbackFactory(file);
+    }
+
+    @PostMapping(value = "/upload-with-fallback")
+    public String uploadFileWithFallback(@RequestPart(value = "file") MultipartFile file) throws NotFoundException {
+        return service.uploadFileWithFallback(file);
+    }
+
 }
