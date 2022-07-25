@@ -8,10 +8,10 @@ import com.baeldung.cloud.openfeign.exception.BadRequestException;
 import com.baeldung.cloud.openfeign.exception.NotFoundException;
 
 @Component
-public class FileUploadClientFallbackFactory implements FallbackFactory<FileUploadClient> {
+public class FileUploadClientFallbackFactory implements FallbackFactory<FileUploadClientWithFallbackFactory> {
     @Override
-    public FileUploadClient create(Throwable cause) {
-        return new FileUploadClient() {
+    public FileUploadClientWithFallbackFactory create(Throwable cause) {
+        return new FileUploadClientWithFallbackFactory() {
             @Override
             public String fileUpload(MultipartFile file) {
                 if (cause instanceof BadRequestException) {
