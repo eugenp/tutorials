@@ -10,7 +10,7 @@ import feign.form.spring.SpringFormEncoder;
 
 @Service
 public class UploadService {
-    private static final String HTTP_FILE_UPLOAD_URL = "http://localhost:8080";
+    private static final String HTTP_FILE_UPLOAD_URL = "http://localhost:8081";
     
     @Autowired
     private FileUploadClientWithFallbackFactory fileUploadClient;

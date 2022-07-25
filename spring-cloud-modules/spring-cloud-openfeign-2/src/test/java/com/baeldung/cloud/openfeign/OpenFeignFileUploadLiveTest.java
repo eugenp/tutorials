@@ -14,6 +14,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.baeldung.cloud.openfeign.exception.NotFoundException;
 import com.baeldung.cloud.openfeign.fileupload.service.UploadService;
 
 @RunWith(SpringRunner.class)
@@ -25,8 +26,19 @@ public class OpenFeignFileUploadLiveTest {
     
     private static String FILE_NAME = "fileupload.txt";
     
-    @Test
-    public void whenFeignBuilder_thenFileUploadSuccess() throws IOException {
+    @Test(expected = NotFoundException.class)
+    public void whenFileUploadClientFallbackFactory_thenFileUploadError() throws IOException {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        File file = new File(classloader.getResource(FILE_NAME).getFile());
+        Assert.assertTrue(file.exists());
+        FileInputStream input = new FileInputStream(file);
+        MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
+                IOUtils.toByteArray(input));
+        uploadService.uploadFileWithFallbackFactory(multipartFile);
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void whenFileUploadClientFallback_thenFileUploadError() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         File file = new File(classloader.getResource(FILE_NAME).getFile());
         Assert.assertTrue(file.exists());
@@ -36,14 +48,14 @@ public class OpenFeignFileUploadLiveTest {
         uploadService.uploadFileWithFallback(multipartFile);
     }
     
-    @Test
-    public void whenAnnotatedFeignClient_thenFileUploadSuccess() throws IOException {
+    @Test(expected = NotFoundException.class)
+    public void whenFileUploadWithMannualClient_thenFileUploadError() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         File file = new File(classloader.getResource(FILE_NAME).getFile());
         Assert.assertTrue(file.exists());
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
                 IOUtils.toByteArray(input));
-        uploadService.uploadFileWithFallbackFactory(multipartFile);
+        uploadService.uploadFileWithManualClient(multipartFile);
     }
 }
