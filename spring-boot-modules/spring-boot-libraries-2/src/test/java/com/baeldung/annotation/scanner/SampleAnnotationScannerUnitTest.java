@@ -28,7 +28,7 @@ public class SampleAnnotationScannerUnitTest {
 
         assertNotNull(annotatedClasses);
         assertEquals(4, annotatedClasses.size());
-        annotatedClasses.forEach(annotValue -> assertEquals("annotatedClass",
+        annotatedClasses.forEach(annotValue -> assertEquals("SampleAnnotatedClass",
             annotValue));
     }
 
