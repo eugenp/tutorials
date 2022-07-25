@@ -1,0 +1,13 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - '6379:6379'
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+    name: redis_network
