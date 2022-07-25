@@ -14,65 +14,66 @@ public class MetadataExtractor {
     }
 
     public void extractTableInfo() throws SQLException {
-        ResultSet resultSet = databaseMetaData.getTables(null, null, "CUST%", new String[] { "TABLE" });
-        while (resultSet.next()) {
-            // Print the names of existing tables
-            System.out.println(resultSet.getString("TABLE_NAME"));
-            System.out.println(resultSet.getString("REMARKS"));
+        try (ResultSet resultSet = databaseMetaData.getTables(null, null, "CUST%", new String[] { "TABLE" })) {
+            while (resultSet.next()) {
+                // Print the names of existing tables
+                System.out.println(resultSet.getString("TABLE_NAME"));
+                System.out.println(resultSet.getString("REMARKS"));
+            }
         }
     }
 
     public void extractSystemTables() throws SQLException {
-        ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[] { "SYSTEM TABLE" });
-        while (resultSet.next()) {
-            // Print the names of system tables
-            System.out.println(resultSet.getString("TABLE_NAME"));
+        try (ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[] { "SYSTEM TABLE" })) {
+            while (resultSet.next()) {
+                // Print the names of system tables
+                System.out.println(resultSet.getString("TABLE_NAME"));
+            }
         }
     }
 
     public void extractViews() throws SQLException {
-        ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[] { "VIEW" });
-        while (resultSet.next()) {
-            // Print the names of existing views
-            System.out.println(resultSet.getString("TABLE_NAME"));
-        }
+       try(ResultSet resultSet = databaseMetaData.getTables(null, null, null, new String[] { "VIEW" })) {
+           while (resultSet.next()) {
+               // Print the names of existing views
+               System.out.println(resultSet.getString("TABLE_NAME"));
+           }
+       }
     }
 
     public void extractColumnInfo(String tableName) throws SQLException {
-        ResultSet columns = databaseMetaData.getColumns(null, null, tableName, null);
-
-        while (columns.next()) {
-            String columnName = columns.getString("COLUMN_NAME");
-            String columnSize = columns.getString("COLUMN_SIZE");
-            String datatype = columns.getString("DATA_TYPE");
-            String isNullable = columns.getString("IS_NULLABLE");
-            String isAutoIncrement = columns.getString("IS_AUTOINCREMENT");
-            System.out.println(String.format("ColumnName: %s, columnSize: %s, datatype: %s, isColumnNullable: %s, isAutoIncrementEnabled: %s", columnName, columnSize, datatype, isNullable, isAutoIncrement));
-        }
+       try(ResultSet columns = databaseMetaData.getColumns(null, null, tableName, null)) {
+         while (columns.next()) {
+               String columnName = columns.getString("COLUMN_NAME");
+               String columnSize = columns.getString("COLUMN_SIZE");
+               String datatype = columns.getString("DATA_TYPE");
+               String isNullable = columns.getString("IS_NULLABLE");
+               String isAutoIncrement = columns.getString("IS_AUTOINCREMENT");
+               System.out.println(String.format("ColumnName: %s, columnSize: %s, datatype: %s, isColumnNullable: %s, isAutoIncrementEnabled: %s", columnName, columnSize, datatype, isNullable, isAutoIncrement));
+         }
+       }
     }
 
     public void extractPrimaryKeys(String tableName) throws SQLException {
-        ResultSet primaryKeys = databaseMetaData.getPrimaryKeys(null, null, tableName);
-        while (primaryKeys.next()) {
-            String primaryKeyColumnName = primaryKeys.getString("COLUMN_NAME");
-            String primaryKeyName = primaryKeys.getString("PK_NAME");
-            System.out.println(String.format("columnName:%s, pkName:%s", primaryKeyColumnName, primaryKeyName));
-        }
-    }
-
-    public void fun() throws SQLException {
-
+       try(ResultSet primaryKeys = databaseMetaData.getPrimaryKeys(null, null, tableName)) {
+          while (primaryKeys.next()) {
+              String primaryKeyColumnName = primaryKeys.getString("COLUMN_NAME");
+              String primaryKeyName = primaryKeys.getString("PK_NAME");
+              System.out.println(String.format("columnName:%s, pkName:%s", primaryKeyColumnName, primaryKeyName));
+          }
+       }
     }
 
     public void extractForeignKeys(String tableName) throws SQLException {
-        ResultSet foreignKeys = databaseMetaData.getImportedKeys(null, null, tableName);
-        while (foreignKeys.next()) {
-            String pkTableName = foreignKeys.getString("PKTABLE_NAME");
-            String fkTableName = foreignKeys.getString("FKTABLE_NAME");
-            String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
-            String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
-            System.out.println(String.format("pkTableName:%s, fkTableName:%s, pkColumnName:%s, fkColumnName:%s", pkTableName, fkTableName, pkColumnName, fkColumnName));
-        }
+       try(ResultSet foreignKeys = databaseMetaData.getImportedKeys(null, null, tableName)) {
+           while (foreignKeys.next()) {
+              String pkTableName = foreignKeys.getString("PKTABLE_NAME");
+              String fkTableName = foreignKeys.getString("FKTABLE_NAME");
+              String pkColumnName = foreignKeys.getString("PKCOLUMN_NAME");
+              String fkColumnName = foreignKeys.getString("FKCOLUMN_NAME");
+              System.out.println(String.format("pkTableName:%s, fkTableName:%s, pkColumnName:%s, fkColumnName:%s", pkTableName, fkTableName, pkColumnName, fkColumnName));
+           }
+       }
     }
 
     public void extractDatabaseInfo() throws SQLException {
@@ -89,11 +90,12 @@ public class MetadataExtractor {
     public void extractUserName() throws SQLException {
         String userName = databaseMetaData.getUserName();
         System.out.println(userName);
-        ResultSet schemas = databaseMetaData.getSchemas();
-        while (schemas.next()) {
-            String table_schem = schemas.getString("TABLE_SCHEM");
-            String table_catalog = schemas.getString("TABLE_CATALOG");
-            System.out.println(String.format("Table_schema:%s, Table_catalog:%s", table_schem, table_catalog));
+        try(ResultSet schemas = databaseMetaData.getSchemas()) {
+          while (schemas.next()) {
+             String table_schem = schemas.getString("TABLE_SCHEM");
+             String table_catalog = schemas.getString("TABLE_CATALOG");
+             System.out.println(String.format("Table_schema:%s, Table_catalog:%s", table_schem, table_catalog));
+          }
         }
     }
 
