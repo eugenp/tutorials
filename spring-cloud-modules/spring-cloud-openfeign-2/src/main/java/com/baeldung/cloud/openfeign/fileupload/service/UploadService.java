@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.cloud.openfeign.exception.NotFoundException;
-
 import feign.Feign;
 import feign.Response;
 import feign.form.spring.SpringFormEncoder;
@@ -26,11 +24,11 @@ public class UploadService {
         return response.status() == 200;
     }
 
-    public String uploadFileWithFallbackFactory(MultipartFile file) throws NotFoundException {
+    public String uploadFileWithFallbackFactory(MultipartFile file) {
         return fileUploadClient.fileUpload(file);
     }
 
-    public String uploadFileWithFallback(MultipartFile file) throws NotFoundException {
+    public String uploadFileWithFallback(MultipartFile file) {
         return fileUploadClientWithFallback.fileUpload(file);
     }
 }

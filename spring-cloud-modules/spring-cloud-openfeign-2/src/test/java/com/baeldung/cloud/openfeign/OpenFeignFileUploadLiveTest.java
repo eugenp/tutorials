@@ -33,7 +33,7 @@ public class OpenFeignFileUploadLiveTest {
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
                 IOUtils.toByteArray(input));
-        Assert.assertTrue(uploadService.uploadFileWithManualClient(multipartFile));
+        uploadService.uploadFileWithFallback(multipartFile);
     }
     
     @Test
@@ -44,7 +44,6 @@ public class OpenFeignFileUploadLiveTest {
         FileInputStream input = new FileInputStream(file);
         MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain",
                 IOUtils.toByteArray(input));
-        String uploadFile = uploadService.uploadFile(multipartFile);
-        Assert.assertNotNull(uploadFile);
+        uploadService.uploadFileWithFallbackFactory(multipartFile);
     }
 }
