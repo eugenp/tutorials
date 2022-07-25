@@ -1,6 +1,6 @@
 package com.baeldung.annotation.scanner;
 
-@SampleAnnotation(name = "SampleAnnotatedClass")
+@SampleAnnotation(name = "annotatedClass")
 public class SampleAnnotatedClass {
 
     @SampleAnnotation(name = "annotatedMethod")
