@@ -19,7 +19,7 @@
             <dependency>
                 <groupId>org.axonframework</groupId>
                 <artifactId>axon-bom</artifactId>
-                <version>${axon.version}</version>
+                <version>${axon-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -57,7 +57,7 @@
     </dependencies>
 
     <properties>
-        <axon.version>4.5.0</axon.version>
+        <axon-bom.version>4.5.13</axon-bom.version>
     </properties>
 
 </project>

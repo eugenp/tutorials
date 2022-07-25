@@ -21,7 +21,7 @@ public class HttpClientSSLBypassUnitTest {
           .build();
 
         HttpRequest request = HttpRequest.newBuilder()
-          .uri(URI.create("https://www.testingmcafeesites.com/"))
+          .uri(URI.create("https://wrong.host.badssl.com/"))
           .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
