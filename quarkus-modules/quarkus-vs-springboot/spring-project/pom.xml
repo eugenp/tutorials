@@ -103,9 +103,17 @@
                         <env>
                             <BP_NATIVE_IMAGE>false</BP_NATIVE_IMAGE>
                             <BPL_JFR_ENABLED>true</BPL_JFR_ENABLED>
-                            <JAVA_TOOL_OPTIONS>-H:+AllowVMInspection</JAVA_TOOL_OPTIONS>
                         </env>
                     </image>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire-plugin.version}</version>
+                <configuration>
+                    <includes>
+                        <include>**/*IT</include>
+                    </includes>
                 </configuration>
             </plugin>
         </plugins>
@@ -116,22 +124,6 @@
             <id>spring-release</id>
             <name>Spring release</name>
             <url>https://repo.spring.io/release</url>
-<<<<<<< HEAD:quarkus-modules/quarkus-vs-springboot/spring-project/pom.xml
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, 
-            compatible with latest JDK, is released. -->
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone-local</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-=======
->>>>>>> 5975a67c93 (Update framework versions testing from jm to wrk):quarkus-vs-springboot/spring-project/pom.xml
         </repository>
     </repositories>
     <pluginRepositories>
@@ -139,22 +131,6 @@
             <id>spring-release</id>
             <name>Spring release</name>
             <url>https://repo.spring.io/release</url>
-<<<<<<< HEAD:quarkus-modules/quarkus-vs-springboot/spring-project/pom.xml
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <!-- This can be removed once a stable version of org.springframework.experimental:spring-aot-maven-plugin, 
-            compatible with latest JDK, is released. -->
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone-local</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-=======
->>>>>>> 5975a67c93 (Update framework versions testing from jm to wrk):quarkus-vs-springboot/spring-project/pom.xml
         </pluginRepository>
     </pluginRepositories>
 
@@ -174,16 +150,15 @@
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
+                            <layers>
+                                <enabled>true</enabled>
+                            </layers>
                             <image>
                                 <builder>paketobuildpacks/builder:tiny</builder>
                                 <env>
                                     <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                                     <BPL_JFR_ENABLED>true</BPL_JFR_ENABLED>
-                                    <JAVA_TOOL_OPTIONS>-H:+AllowVMInspection</JAVA_TOOL_OPTIONS>
-                                </env>
-                                <layers>
-                                    <enabled>true</enabled>
-                                </layers>
+                                </env>                     
                             </image>
                         </configuration>
                     </plugin>
@@ -284,13 +259,8 @@
 
     <properties>
         <java.version>11</java.version>
-<<<<<<< HEAD:quarkus-modules/quarkus-vs-springboot/spring-project/pom.xml
-        <repackage.classifier />
-        <spring-native.version>0.11.0-RC1</spring-native.version>
-        <log4j2.version>2.17.1</log4j2.version>
-=======
         <spring-native.version>0.12.1</spring-native.version>
->>>>>>> 5975a67c93 (Update framework versions testing from jm to wrk):quarkus-vs-springboot/spring-project/pom.xml
+        <surefire-plugin.version>3.0.0-M6</surefire-plugin.version>
     </properties>
 
 </project>

@@ -3,8 +3,7 @@ local json = require "json"
 
 math.randomseed(os.clock()*100000000000)
 
--- read csv lines
-function ParseCSVLine(line,sep) 
+function ParseCSVLine(line,sep)
 	local res = {}
 	local pos = 1
 	sep = sep or ','
@@ -12,30 +11,23 @@ function ParseCSVLine(line,sep)
 		local c = string.sub(line,pos,pos)
 		if (c == "") then break end
 		if (c == '"') then
-			-- quoted value (ignore separator within)
 			local txt = ""
 			repeat
 				local startp,endp = string.find(line,'^%b""',pos)
 				txt = txt..string.sub(line,startp+1,endp-1)
 				pos = endp + 1
 				c = string.sub(line,pos,pos) 
-				if (c == '"') then txt = txt..'"' end 
-				-- check first char AFTER quoted string, if it is another
-				-- quoted string without separator, then append it
-				-- this is the way to "escape" the quote char in a quote. example:
-				--   value1,"blub""blip""boing",value3  will result in blub"blip"boing  for the middle
+				if (c == '"') then txt = txt..'"' end
 			until (c ~= '"')
 			table.insert(res,txt)
 			assert(c == sep or c == "")
 			pos = pos + 1
 		else	
-			-- no quotes used, just look for the first separator
 			local startp,endp = string.find(line,sep,pos)
 			if (startp) then 
 				table.insert(res,string.sub(line,pos,startp-1))
 				pos = endp + 1
 			else
-				-- no separator found -> use rest of string and terminate
 				table.insert(res,string.sub(line,pos))
 				break
 			end 
@@ -45,10 +37,8 @@ function ParseCSVLine(line,sep)
 end
 
 loadFile = function() 
-    -- 1. Get file path
-    local filename = "zip_code_database.csv"
+    local filename = "cities.csv"
 
-    -- 3. Parse the data:
     local data = {}
     local count = 0
     local sep = ","
@@ -64,25 +54,26 @@ end
 
 local data = loadFile()
 
-request = function()    
-   -- define the path that will search for q=%v 9%v being a random number between 0 and 1000)
-
-	local value = data[math.random(1, 12079)]
-
-    url_path = "/zipcode/" .. value
-    
-	local headers = { ["Content-Type"] = "application/json;charset=UTF-8" }
-
-	return wrk.format("GET", url_path, headers, nil)
+local urlencode = function (str)
+	str = string.gsub (str, "([^0-9a-zA-Z !'()*._~-])", -- locale independent
+			function (c) return string.format ("%%%02X", string.byte(c)) end)
+	str = string.gsub (str, " ", "+")
+	return str
 end
 
--- example reporting script which demonstrates a custom
--- done() function that prints latency percentiles as CSV
+request = function()    
+    url_path = "/zipcode/by_city?city=" .. urlencode(data[math.random(1, 136)])
+
+    local headers = { ["Content-Type"] = "application/json;charset=UTF-8" }
+
+   return wrk.format("GET", url_path, headers, nil)
+end
+
 done = function(summary, latency, requests)
-    io.write("--------------GET ZIPCODE----------------\n")
+    io.write("--------------GET CITY ZIPCODES----------------\n")
     for _, p in pairs({ 50, 90, 99, 99.999 }) do
         n = latency:percentile(p)
         io.write(string.format("%g%%,%d\n", p, n))
     end
-	io.write("-----------------------------------------\n\n")
+	io.write("-----------------------------------------------\n\n")
 end
