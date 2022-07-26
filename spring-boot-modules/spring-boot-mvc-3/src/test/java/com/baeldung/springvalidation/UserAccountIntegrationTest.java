@@ -1,9 +1,7 @@
 package com.baeldung.springvalidation;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class UserAccountUnitTest {
+public class UserAccountIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -46,10 +44,8 @@ public class UserAccountUnitTest {
     public void givenSaveBasicInfoStep1_whenIncorrectInput_thenError() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/saveBasicInfoStep1")
             .accept(MediaType.TEXT_HTML))
-            // .param("name", "test123")
-            // .param("password", "pass"))
             .andExpect(model().errorCount(2))
-            // .andExpect(view().name("error"))
+            .andExpect(view().name("error"))
             .andExpect(status().isOk())
             .andDo(print());
     }
