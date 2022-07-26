@@ -11,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-public class MockitoInitWithMockitoJUnitRuleUnitTest {
+public class MockitoAnnotationsInitWithMockitoJUnitRuleUnitTest {
 
     @Rule
     public MockitoRule initRule = MockitoJUnit.rule();

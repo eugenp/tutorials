@@ -1,16 +1,22 @@
 package com.baeldung.mockito;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
-//@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class MockitoAnnotationUnitTest {
 
     @Mock
@@ -19,11 +25,14 @@ public class MockitoAnnotationUnitTest {
     @Spy
     private List<String> spiedList = new ArrayList<>();
 
+    // Use either @RunWith(MockitoJUnitRunner.class) or manually openMocks in the @Before method
+    /*
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
-
+    */
+    
     // tests
 
     @Test
@@ -91,7 +100,7 @@ public class MockitoAnnotationUnitTest {
     ArgumentCaptor<String> argCaptor;
 
     @Test
-    public void whenUseCaptorAnnotation_thenTheSam() {
+    public void whenUseCaptorAnnotation_thenTheSame() {
         mockedList.add("one");
         Mockito.verify(mockedList).add(argCaptor.capture());
 
