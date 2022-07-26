@@ -9,11 +9,11 @@
     <name>fauna</name>
     <description>Blogging Service built with FaunaDB</description>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.2</version>
-        <relativePath /> <!-- lookup parent from repository -->
+   <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -54,6 +54,7 @@
 
     <properties>
         <java.version>17</java.version>
+        <maven-pmd-plugin.version>3.17.0</maven-pmd-plugin.version>
     </properties>
 
 </project>

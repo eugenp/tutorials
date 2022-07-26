@@ -17,41 +17,42 @@
     </parent>
 
     <modules>
-        <module>spring-cloud-loadbalancer</module>
-        <module>spring-cloud-config</module>
-        <module>spring-cloud-eureka</module>
-        <module>spring-cloud-hystrix</module>
+        <module>spring-cloud-archaius</module>
+        <module>spring-cloud-aws</module>
         <module>spring-cloud-bootstrap</module>
-        <module>spring-cloud-ribbon-client</module>
-        <module>spring-cloud-zookeeper</module>
+        <module>spring-cloud-bus</module>
+        <module>spring-cloud-circuit-breaker</module>
+        <module>spring-cloud-config</module>
+        <module>spring-cloud-connectors-heroku</module>
+        <module>spring-cloud-consul</module>
+        <module>spring-cloud-contract</module>
+        <module>spring-cloud-dapr</module>
+        <module>spring-cloud-data-flow</module>
+        <module>spring-cloud-docker</module>
+        <module>spring-cloud-eureka</module>
+        <module>spring-cloud-eureka-self-preservation</module>
+        <module>spring-cloud-functions</module>
         <module>spring-cloud-gateway</module>
+        <module>spring-cloud-hystrix</module>
+        <module>spring-cloud-kubernetes</module>
+        <module>spring-cloud-loadbalancer</module>
+        <module>spring-cloud-netflix-feign</module>
+        <module>spring-cloud-netflix-sidecar</module>
+        <module>spring-cloud-openfeign</module>
+        <module>spring-cloud-open-service-broker</module>
+        <module>spring-cloud-ribbon-client</module>
+        <module>spring-cloud-ribbon-retry</module>
+        <module>spring-cloud-security</module>
+        <module>spring-cloud-sentinel</module>
+        <module>spring-cloud-sleuth</module>
         <module>spring-cloud-stream</module>
         <module>spring-cloud-stream-starters</module>
-        <module>spring-cloud-connectors-heroku</module>
-        <module>spring-cloud-aws</module>
-        <module>spring-cloud-consul</module>
-        <module>spring-cloud-zuul-eureka-integration</module>
-        <module>spring-cloud-contract</module>
-        <module>spring-cloud-kubernetes</module>
-        <module>spring-cloud-open-service-broker</module>
-        <module>spring-cloud-archaius</module>
-        <module>spring-cloud-functions</module>
-        <module>spring-cloud-vault</module>
-        <module>spring-cloud-security</module>
         <module>spring-cloud-task</module>
+        <module>spring-cloud-vault</module>
+        <module>spring-cloud-zookeeper</module>
         <module>spring-cloud-zuul</module>
+        <module>spring-cloud-zuul-eureka-integration</module>
         <module>spring-cloud-zuul-fallback</module>
-        <module>spring-cloud-ribbon-retry</module>
-        <module>spring-cloud-circuit-breaker</module>
-        <module>spring-cloud-eureka-self-preservation</module>
-        <module>spring-cloud-openfeign</module>
-        <module>spring-cloud-netflix-feign</module>
-        <module>spring-cloud-sentinel</module>
-        <module>spring-cloud-dapr</module>
-        <module>spring-cloud-docker</module>
-        <module>spring-cloud-bus</module>
-        <module>spring-cloud-data-flow</module>
-        <module>spring-cloud-sleuth</module>
     </modules>
 
     <build>
