@@ -1,7 +1,6 @@
 package com.baeldung.exception.currentstacktrace;
 
-public class DumpStackTraceDemo
-{
+public class DumpStackTraceDemo {
     public static void main(String[] args) {
         methodA();
     }
@@ -12,6 +11,5 @@ public class DumpStackTraceDemo
 
     public static void methodB() {
         Thread.dumpStack();
-        Thread.currentThread().getStackTrace();
     }
 }
