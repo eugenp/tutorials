@@ -114,6 +114,21 @@ cpulimit -l 300 -p ## 300 means at most 3 cores.
 ```
 
 This will make sure the load is on the application and not in the DB.
+## Hyperfoil
+
+To the hyperfoil test to get a report regarding the performance of the application, its throughput and response time. You can run the `docker_run.sh` from the hyperfoil folder, or the following: 
+
+```
+docker run -it -v volume:/benchmarks:Z -v tmp/reports:/tmp/reports:Z --network=host quay.io/hyperfoil/hyperfoil cli
+```
+And then:
+```
+start-local && upload /benchmarks/benchmark.hf.yaml && run benchmark
+```
+Optionally, we can extract a html report from it, by running:
+```
+report --destination=/tmp/reports
+```
 
 ### Relevant Articles:
 

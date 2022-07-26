@@ -1,5 +1,6 @@
 package com.baeldung.spring_project;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 )
 @TestInstance(value = PER_CLASS)
 @Testcontainers
+@Disabled
 class StartupIT {
 
 	@Test
