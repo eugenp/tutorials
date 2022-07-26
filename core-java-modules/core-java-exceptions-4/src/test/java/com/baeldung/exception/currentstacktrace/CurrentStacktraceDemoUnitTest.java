@@ -1,4 +1,4 @@
-package com.baeldung.exception.arrayindexoutofbounds;
+package com.baeldung.exception.currentstacktrace;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,15 +18,15 @@ public class CurrentStacktraceDemoUnitTest {
         assertEquals("getStackTrace", elementZero.getMethodName());
 
         StackTraceElement elementOne = stackTrace[1];
-        assertEquals("com.baeldung.tutorials.StackTraceUsingThreadDemo", elementOne.getClassName());
+        assertEquals("com.baeldung.exception.currentstacktrace.StackTraceUsingThreadDemo", elementOne.getClassName());
         assertEquals("methodB", elementOne.getMethodName());
 
         StackTraceElement elementTwo = stackTrace[2];
-        assertEquals("com.baeldung.tutorials.StackTraceUsingThreadDemo", elementTwo.getClassName());
+        assertEquals("com.baeldung.exception.currentstacktrace.StackTraceUsingThreadDemo", elementTwo.getClassName());
         assertEquals("methodA", elementTwo.getMethodName());
 
         StackTraceElement elementThree = stackTrace[3];
-        assertEquals("test.java.com.baeldung.tutorials.CurrentStacktraceDemoUnitTest", elementThree.getClassName());
+        assertEquals("com.baeldung.exception.currentstacktrace.CurrentStacktraceDemoUnitTest", elementThree.getClassName());
         assertEquals("whenElementIsFecthedUsingThread_thenCorrectMethodAndClassIsReturned", elementThree.getMethodName());
     }
 
@@ -35,15 +35,15 @@ public class CurrentStacktraceDemoUnitTest {
         StackTraceElement[] stackTrace = new StackTraceUsingThrowableDemo().methodA();
 
         StackTraceElement elementZero = stackTrace[0];
-        assertEquals("com.baeldung.tutorials.StackTraceUsingThrowableDemo", elementZero.getClassName());
+        assertEquals("com.baeldung.exception.currentstacktrace.StackTraceUsingThrowableDemo", elementZero.getClassName());
         assertEquals("methodB", elementZero.getMethodName());
 
         StackTraceElement elementOne = stackTrace[1];
-        assertEquals("com.baeldung.tutorials.StackTraceUsingThrowableDemo", elementOne.getClassName());
+        assertEquals("com.baeldung.exception.currentstacktrace.StackTraceUsingThrowableDemo", elementOne.getClassName());
         assertEquals("methodA", elementOne.getMethodName());
 
         StackTraceElement elementThree = stackTrace[2];
-        assertEquals("test.java.com.baeldung.tutorials.CurrentStacktraceDemoUnitTest", elementThree.getClassName());
+        assertEquals("com.baeldung.exception.currentstacktrace.CurrentStacktraceDemoUnitTest", elementThree.getClassName());
         assertEquals("whenElementIsFecthedUsingThrowable_thenCorrectMethodAndClassIsReturned", elementThree.getMethodName());
     }
 }
