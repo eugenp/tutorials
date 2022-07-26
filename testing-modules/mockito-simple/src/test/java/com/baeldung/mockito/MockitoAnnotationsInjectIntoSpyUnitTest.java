@@ -5,18 +5,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.*;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MockitoInjectIntoSpyUnitTest {
+public class MockitoAnnotationsInjectIntoSpyUnitTest {
 
     @Before
     public void init() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         spyDic = Mockito.spy(new MyDictionary(wordMap));
     }
 

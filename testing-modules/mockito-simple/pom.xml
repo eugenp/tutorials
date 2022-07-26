@@ -29,35 +29,16 @@
             <artifactId>spring-context</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>javax.persistence</artifactId>
-            <version>${javax.persistence.version}</version>
-        </dependency>
+        
         <!-- utils -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        
         <!-- test scoped -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
@@ -77,12 +58,10 @@
     </build>
 
     <properties>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
-        <spring-framework.version>5.0.8.RELEASE</spring-framework.version>
-        <spring-data.version>2.0.9.RELEASE</spring-data.version>
+        <spring-boot.version>2.6.4</spring-boot.version>
+        <spring-framework.version>5.3.20</spring-framework.version>
         <!-- testing -->
-        <powermock.version>2.0.2</powermock.version>
-        <javax.persistence.version>2.1.1</javax.persistence.version>
+        <mockito.version>4.6.1</mockito.version>        
     </properties>
 
 </project>
