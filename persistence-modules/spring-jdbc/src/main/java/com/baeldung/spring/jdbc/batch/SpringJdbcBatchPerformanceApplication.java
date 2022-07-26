@@ -1,14 +1,17 @@
 package com.baeldung.spring.jdbc.batch;
 
 import com.baeldung.spring.jdbc.batch.service.ProductService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+import java.util.Collections;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.baeldung.spring.jdbc.batch")
 public class SpringJdbcBatchPerformanceApplication implements CommandLineRunner {
 
     @Autowired
@@ -30,7 +33,7 @@ public class SpringJdbcBatchPerformanceApplication implements CommandLineRunner 
             long regularElapsedTime = simpleProductService.createProducts(recordCount);
             long batchElapsedTime = batchProductService.createProducts(recordCount);
 
-            System.out.println("-".repeat(50));
+            System.out.println(String.join("", Collections.nCopies(50, "-")));
             System.out.format("%-20s%-5s%-10s%-5s%8sms\n", "Regular inserts", "|", recordCount, "|", regularElapsedTime);
             System.out.format("%-20s%-5s%-10s%-5s%8sms\n", "Batch inserts", "|", recordCount, "|", batchElapsedTime);
             System.out.printf("Total gain: %d %s\n", calculateGainInPercent(regularElapsedTime, batchElapsedTime), "%");
