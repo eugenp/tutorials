@@ -31,6 +31,7 @@
             <version>${jobrunr.version}</version>
         </dependency>
         <!-- openapi -->
+        <!-- There is only one dependency related to OpenAPI -->
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>openapi-generator</artifactId>
@@ -76,25 +77,35 @@
 
     <build>
         <plugins>
+            <!-- This is the plugin for handling the generation of Open API -->
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>${openapi-generator.version}</version>
                 <executions>
                     <execution>
+                        <!-- binding to the phase -->
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <!-- Here we point to the Open API spec -->
                             <inputSpec>
                                 ${project.basedir}/src/main/resources/petstore.yml
                             </inputSpec>
                             <generatorName>spring</generatorName>
+                            <!-- This is the Java package base on which the generated files will
+                            be located -->
                             <apiPackage>com.baeldung.openapi.api</apiPackage>
+                            <!-- Model classes are also generated -->
                             <modelPackage>com.baeldung.openapi.model</modelPackage>
+                            <!-- TODO why do we need this? -->
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
+                            <!--
+                            we're asking to create an interface that can be implemented as a customized @Service class.
+                            -->
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
                             </configOptions>
