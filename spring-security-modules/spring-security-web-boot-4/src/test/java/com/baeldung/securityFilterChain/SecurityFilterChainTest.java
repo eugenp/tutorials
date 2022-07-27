@@ -1,0 +1,89 @@
+package com.baeldung.securityFilterChain;
+
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+@SpringBootTest(classes = SecurityFilterChainApplication.class)
+public class SecurityFilterChainTest {
+    @Autowired
+    private WebApplicationContext context;
+
+    private MockMvc mvc;
+
+    @BeforeEach
+    public void setup() {
+        mvc = MockMvcBuilders.webAppContextSetup(context)
+          .apply(springSecurity())
+          .build();
+    }
+
+    @Test
+    @WithAnonymousUser
+    public void whenAnonymousAccessLogin_thenOk() throws Exception {
+        mvc.perform(get("/login").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithUserDetails(value = "admin")
+    public void whenAdminAccessUserEndpoint_thenOk() throws Exception {
+        mvc.perform(get("/user").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithAnonymousUser
+    public void whenAnonymousAccessRestrictedEndpoint_thenIsUnauthorized() throws Exception {
+        mvc.perform(get("/all").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @WithUserDetails()
+    public void whenUserAccessRestrictedEndpoint_thenOk() throws Exception {
+        mvc.perform(get("/all").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithUserDetails(value = "admin")
+    public void whenAdminAccessAdminSecuredEndpoint_thenIsOk() throws Exception {
+        mvc.perform(get("/admin").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithUserDetails()
+    public void whenUserAccessAdminSecuredEndpoint_thenIsForbidden() throws Exception {
+        mvc.perform(get("/admin").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @WithUserDetails(value = "admin")
+    public void whenAdminAccessDeleteSecuredEndpoint_thenIsOk() throws Exception {
+        mvc.perform(delete("/delete").content("{}")
+            .contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithUserDetails()
+    public void whenUserAccessDeleteSecuredEndpoint_thenIsForbidden() throws Exception {
+        mvc.perform(delete("/delete").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isForbidden());
+    }
+}
