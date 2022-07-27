@@ -1,31 +1,22 @@
 package com.baeldung.mockito;
 
-import static org.mockito.Mockito.*;
-
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.containsString;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.withSettings;
 
 import org.junit.Test;
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.mockito.MockSettings;
 import org.mockito.exceptions.verification.TooFewActualInvocations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 public class MockitoMockUnitTest {
-
-    private static class CustomAnswer implements Answer<Boolean> {
-        @Override
-        public Boolean answer(InvocationOnMock invocation) throws Throwable {
-            return false;
-        }
-    }
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void whenUsingSimpleMock_thenCorrect() {
@@ -34,7 +25,7 @@ public class MockitoMockUnitTest {
         boolean added = listMock.add(randomAlphabetic(6));
 
         verify(listMock).add(anyString());
-        assertThat(added, is(false));
+        assertThat(added).isFalse();
     }
 
     @Test
@@ -43,19 +34,26 @@ public class MockitoMockUnitTest {
         when(listMock.add(anyString())).thenReturn(false);
         listMock.add(randomAlphabetic(6));
         
-        thrown.expect(TooFewActualInvocations.class);
-        thrown.expectMessage(containsString("myMock.add"));
-
-        verify(listMock, times(2)).add(anyString());
+        Throwable exceptionThrown = assertThrows(TooFewActualInvocations.class, 
+        		() -> verify(listMock, times(2)).add(anyString()));
+        
+        assertThat(exceptionThrown.getMessage()).contains("myMock.add");
     }
 
+    private static class CustomAnswer implements Answer<Boolean> {
+        @Override
+        public Boolean answer(InvocationOnMock invocation) throws Throwable {
+            return false;
+        }
+    }
+    
     @Test
     public void whenUsingMockWithAnswer_thenCorrect() {
         MyList listMock = mock(MyList.class, new CustomAnswer());
         boolean added = listMock.add(randomAlphabetic(6));
 
         verify(listMock).add(anyString());
-        assertThat(added, is(false));
+        assertThat(added).isFalse();
     }
 
     @Test
@@ -65,6 +63,6 @@ public class MockitoMockUnitTest {
         boolean added = listMock.add(randomAlphabetic(6));
 
         verify(listMock).add(anyString());
-        assertThat(added, is(false));
+        assertThat(added).isFalse();
     }
 }
