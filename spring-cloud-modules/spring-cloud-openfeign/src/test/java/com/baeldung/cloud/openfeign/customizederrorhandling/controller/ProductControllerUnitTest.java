@@ -61,7 +61,7 @@ public class ProductControllerUnitTest {
             .withStatus(HttpStatus.SERVICE_UNAVAILABLE.value())));
 
         ErrorResponse expectedError = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,
-        "Product Api is unavailable","uri=/myapp2/product/" + productId);
+          "Product Api is unavailable","uri=/myapp2/product/" + productId);
 
         MvcResult result = mockMvc.perform(get("/myapp2/product/" + productId))
             .andExpect(status().isInternalServerError()).andReturn();
@@ -83,7 +83,7 @@ public class ProductControllerUnitTest {
             .withStatus(HttpStatus.NOT_FOUND.value())));
 
         ErrorResponse expectedError = new ErrorResponse(HttpStatus.NOT_FOUND,
-                "Product not found","uri=/myapp2/product/" + productId);
+          "Product not found","uri=/myapp2/product/" + productId);
 
         MvcResult result = mockMvc.perform(get("/myapp2/product/" + productId))
             .andExpect(status().isNotFound()).andReturn();
