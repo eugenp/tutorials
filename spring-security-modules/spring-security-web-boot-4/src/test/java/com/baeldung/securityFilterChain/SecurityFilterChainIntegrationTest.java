@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(classes = SecurityFilterChainApplication.class)
-public class SecurityFilterChainTest {
+public class SecurityFilterChainIntegrationTest {
     @Autowired
     private WebApplicationContext context;
 
