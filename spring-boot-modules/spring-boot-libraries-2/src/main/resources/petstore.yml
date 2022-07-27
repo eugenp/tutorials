@@ -1,4 +1,5 @@
 # Here we have the Open API specification
+# How do we generate the documentation??
 openapi: "3.0.0"
 info:
   version: 1.0.0
@@ -87,6 +88,7 @@ paths:
 components:
   schemas:
     # Here is how we define the Pet object
+    # This file will be super huge if we put all the objects there, but I think this pb can be solved later on.
     Pet:
       type: object
       required:
