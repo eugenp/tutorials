@@ -33,57 +33,56 @@ public class SecurityFilterChainIntegrationTest {
     @Test
     @WithAnonymousUser
     public void whenAnonymousAccessLogin_thenOk() throws Exception {
-        mvc.perform(get("/login").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/login"))
           .andExpect(status().isOk());
     }
 
     @Test
     @WithUserDetails(value = "admin")
     public void whenAdminAccessUserEndpoint_thenOk() throws Exception {
-        mvc.perform(get("/user").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/user"))
           .andExpect(status().isOk());
     }
 
     @Test
     @WithAnonymousUser
     public void whenAnonymousAccessRestrictedEndpoint_thenIsUnauthorized() throws Exception {
-        mvc.perform(get("/all").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/all"))
           .andExpect(status().isUnauthorized());
     }
 
     @Test
     @WithUserDetails()
     public void whenUserAccessRestrictedEndpoint_thenOk() throws Exception {
-        mvc.perform(get("/all").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/all"))
           .andExpect(status().isOk());
     }
 
     @Test
     @WithUserDetails(value = "admin")
     public void whenAdminAccessAdminSecuredEndpoint_thenIsOk() throws Exception {
-        mvc.perform(get("/admin").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/admin"))
           .andExpect(status().isOk());
     }
 
     @Test
     @WithUserDetails()
     public void whenUserAccessAdminSecuredEndpoint_thenIsForbidden() throws Exception {
-        mvc.perform(get("/admin").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/admin"))
           .andExpect(status().isForbidden());
     }
 
     @Test
     @WithUserDetails(value = "admin")
     public void whenAdminAccessDeleteSecuredEndpoint_thenIsOk() throws Exception {
-        mvc.perform(delete("/delete").content("{}")
-            .contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(delete("/delete").content("{}"))
           .andExpect(status().isOk());
     }
 
     @Test
     @WithUserDetails()
     public void whenUserAccessDeleteSecuredEndpoint_thenIsForbidden() throws Exception {
-        mvc.perform(delete("/delete").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(delete("/delete"))
           .andExpect(status().isForbidden());
     }
 }
