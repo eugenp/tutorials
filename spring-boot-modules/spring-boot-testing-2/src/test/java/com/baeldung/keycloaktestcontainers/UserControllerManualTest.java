@@ -5,7 +5,11 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.Test;
 
-class UserControllerIntegrationTest extends IntegrationTest {
+/**
+ * Requires Docker running on the machine to run without errors
+ * Therefore, skipped from pipeline
+ */
+class UserControllerManualTest extends KeycloakTestContainers {
 
     @Test
     void givenAuthenticatedUser_whenGetMe_shouldReturnMyInfo() {

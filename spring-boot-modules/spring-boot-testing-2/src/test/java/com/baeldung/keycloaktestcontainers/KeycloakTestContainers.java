@@ -26,11 +26,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 import dasniko.testcontainers.keycloak.KeycloakContainer;
 import io.restassured.RestAssured;
 
-@ContextConfiguration(initializers = { IntegrationTest.Initializer.class })
+@ContextConfiguration(initializers = { KeycloakTestContainers.Initializer.class })
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public abstract class IntegrationTest {
+public abstract class KeycloakTestContainers {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(IntegrationTest.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(KeycloakTestContainers.class.getName());
 
     @LocalServerPort
     private int port;
