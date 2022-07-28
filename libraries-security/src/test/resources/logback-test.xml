@@ -6,6 +6,10 @@
         </encoder>
     </appender>
 
+    <logger name="org.xacml4j.v30.XacmlPolicyTestSupport" level="warn">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
