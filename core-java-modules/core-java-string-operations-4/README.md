@@ -8,3 +8,4 @@
 - [Check if a String Ends with a Certain Pattern in Java](https://www.baeldung.com/java-string-ends-pattern)
 - [Check if a Character is a Vowel in Java](https://www.baeldung.com/java-check-character-vowel)
 - [How to Truncate a String in Java](https://www.baeldung.com/java-truncating-strings)
+- [Remove Whitespace From a String in Java](https://www.baeldung.com/java-string-remove-whitespace)
