@@ -17,7 +17,7 @@ import com.baeldung.annotation.scanner.SampleAnnotationScanner;
 import com.baeldung.annotation.scanner.ScanNotSupportedException;
 
 @Service
-public class SpringBeanAnnotationScannerService implements SampleAnnotationScanner {
+public class SpringContextAnnotationScannerService implements SampleAnnotationScanner {
     @Override
     public List<String> scanAnnotatedMethods() {
         throw new ScanNotSupportedException();
@@ -25,13 +25,16 @@ public class SpringBeanAnnotationScannerService implements SampleAnnotationScann
 
     @Override
     public List<String> scanAnnotatedClasses() {
-        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
+        ClassPathScanningCandidateComponentProvider provider =
+            new ClassPathScanningCandidateComponentProvider(false);
         provider.addIncludeFilter(new AnnotationTypeFilter(SampleAnnotation.class));
-        Set<BeanDefinition> beanDefs = provider.findCandidateComponents("com.baeldung.annotation.scanner");
+        Set<BeanDefinition> beanDefs = provider
+            .findCandidateComponents("com.baeldung.annotation.scanner");
         List<String> annotatedBeans = new ArrayList<>();
         for (BeanDefinition bd : beanDefs) {
             if (bd instanceof AnnotatedBeanDefinition) {
-                Map<String, Object> annotAttributeMap = ((AnnotatedBeanDefinition) bd).getMetadata()
+                Map<String, Object> annotAttributeMap = ((AnnotatedBeanDefinition) bd)
+                    .getMetadata()
                     .getAnnotationAttributes(SampleAnnotation.class.getCanonicalName());
                 annotatedBeans.add(annotAttributeMap.get("name")
                     .toString());
