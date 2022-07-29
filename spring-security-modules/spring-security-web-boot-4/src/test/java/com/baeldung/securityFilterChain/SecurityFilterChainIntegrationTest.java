@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
@@ -31,16 +30,30 @@ public class SecurityFilterChainIntegrationTest {
     }
 
     @Test
-    @WithAnonymousUser
-    public void whenAnonymousAccessLogin_thenOk() throws Exception {
-        mvc.perform(get("/login"))
+    @WithUserDetails(value = "admin")
+    public void whenAdminAccessUserEndpoint_thenOk() throws Exception {
+        mvc.perform(get("/user"))
           .andExpect(status().isOk());
     }
 
     @Test
     @WithUserDetails(value = "admin")
-    public void whenAdminAccessUserEndpoint_thenOk() throws Exception {
-        mvc.perform(get("/user"))
+    public void whenAdminAccessAdminSecuredEndpoint_thenIsOk() throws Exception {
+        mvc.perform(get("/admin"))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithUserDetails(value = "admin")
+    public void whenAdminAccessDeleteSecuredEndpoint_thenIsOk() throws Exception {
+        mvc.perform(delete("/delete").content("{}"))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithAnonymousUser
+    public void whenAnonymousAccessLogin_thenOk() throws Exception {
+        mvc.perform(get("/login"))
           .andExpect(status().isOk());
     }
 
@@ -59,24 +72,10 @@ public class SecurityFilterChainIntegrationTest {
     }
 
     @Test
-    @WithUserDetails(value = "admin")
-    public void whenAdminAccessAdminSecuredEndpoint_thenIsOk() throws Exception {
-        mvc.perform(get("/admin"))
-          .andExpect(status().isOk());
-    }
-
-    @Test
     @WithUserDetails()
     public void whenUserAccessAdminSecuredEndpoint_thenIsForbidden() throws Exception {
         mvc.perform(get("/admin"))
           .andExpect(status().isForbidden());
-    }
-
-    @Test
-    @WithUserDetails(value = "admin")
-    public void whenAdminAccessDeleteSecuredEndpoint_thenIsOk() throws Exception {
-        mvc.perform(delete("/delete").content("{}"))
-          .andExpect(status().isOk());
     }
 
     @Test
