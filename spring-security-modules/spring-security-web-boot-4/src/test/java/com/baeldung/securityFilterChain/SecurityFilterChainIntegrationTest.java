@@ -66,6 +66,13 @@ public class SecurityFilterChainIntegrationTest {
 
     @Test
     @WithUserDetails()
+    public void whenUserAccessUserSecuredEndpoint_thenOk() throws Exception {
+        mvc.perform(get("/user"))
+          .andExpect(status().isOk());
+    }
+
+    @Test
+    @WithUserDetails()
     public void whenUserAccessRestrictedEndpoint_thenOk() throws Exception {
         mvc.perform(get("/all"))
           .andExpect(status().isOk());
