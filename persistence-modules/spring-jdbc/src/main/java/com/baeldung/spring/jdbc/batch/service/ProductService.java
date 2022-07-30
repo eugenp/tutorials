@@ -2,6 +2,7 @@ package com.baeldung.spring.jdbc.batch.service;
 
 import com.baeldung.spring.jdbc.batch.model.Product;
 import com.baeldung.spring.jdbc.batch.repo.ProductRepository;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;

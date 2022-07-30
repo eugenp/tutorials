@@ -3,6 +3,7 @@ package com.baeldung.spring.jdbc.batch.config;
 import com.baeldung.spring.jdbc.batch.repo.BatchProductRepository;
 import com.baeldung.spring.jdbc.batch.repo.SimpleProductRepository;
 import com.baeldung.spring.jdbc.batch.service.ProductService;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
