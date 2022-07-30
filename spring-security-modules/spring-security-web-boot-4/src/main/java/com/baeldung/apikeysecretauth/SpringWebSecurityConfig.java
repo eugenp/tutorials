@@ -1,5 +1,6 @@
 package com.baeldung.apikeysecretauth;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,15 +20,14 @@ import com.baeldung.apikeysecretauth.security.RestAuthenticationEntryPoint;
 
 @EnableWebSecurity
 public class SpringWebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final UserKeysRepository userKeysRepository;
-
-    public SpringWebSecurityConfig(UserKeysRepository userKeysRepository) {
-        this.userKeysRepository = userKeysRepository;
-    }
+    @Autowired
+    private UserKeysRepository userKeysRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        final AuthenticationEntryPoint restAuthenticationEntryPoint = new RestAuthenticationEntryPoint();
+        AuthenticationEntryPoint restAuthenticationEntryPoint = new RestAuthenticationEntryPoint();
 
         http.sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -43,7 +43,7 @@ public class SpringWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(new ApiKeySecretAuthenticationProvider(passwordEncoder(), userKeysRepository));
+        auth.authenticationProvider(new ApiKeySecretAuthenticationProvider(passwordEncoder, userKeysRepository));
     }
 
     @Bean

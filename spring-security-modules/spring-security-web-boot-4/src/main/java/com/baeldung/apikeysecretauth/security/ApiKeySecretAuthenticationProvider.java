@@ -25,15 +25,15 @@ public class ApiKeySecretAuthenticationProvider implements AuthenticationProvide
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        final ApiKeySecretAuthenticationToken token = (ApiKeySecretAuthenticationToken) authentication;
-        final UserKeysData userKey = userKeysRepository.findById(token.getApiKey())
+        ApiKeySecretAuthenticationToken token = (ApiKeySecretAuthenticationToken) authentication;
+        UserKeysData userKey = userKeysRepository.findById(token.getApiKey())
             .orElseThrow(() -> new BadCredentialsException("Invalid API KEY"));
 
         if (!passwordEncoder.matches(token.getApiSecret(), userKey.getApiSecret())) {
             throw new BadCredentialsException("Invalid API SECRET");
         }
 
-        final User user = new User(userKey.getAppUser());
+        User user = new User(userKey.getAppUser());
         return new ApiKeySecretAuthenticationToken(user, extractAuthorities(userKey));
     }
 
@@ -45,7 +45,7 @@ public class ApiKeySecretAuthenticationProvider implements AuthenticationProvide
     private static Set<GrantedAuthority> extractAuthorities(UserKeysData userKey) {
         return userKey.getPermissions()
             .stream()
-            .map(p -> (GrantedAuthority) () -> p)
+            .map(GrantedAuthority.class::cast)
             .collect(Collectors.toSet());
     }
 }

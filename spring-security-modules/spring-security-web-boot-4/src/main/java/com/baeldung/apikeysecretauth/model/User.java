@@ -7,14 +7,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.baeldung.apikeysecretauth.repository.model.UserData;
 
-import lombok.Getter;
-
-@Getter
 public class User implements UserDetails {
     private final long userId;
 
     public User(UserData appUser) {
         this.userId = appUser.getId();
+    }
+
+    public long getUserId() {
+        return userId;
     }
 
     @Override

@@ -29,7 +29,7 @@ import com.baeldung.apikeysecretauth.service.ProductService;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ProductController.class)
-public class ProductControllerUnitTest {
+class ProductControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -37,59 +37,60 @@ public class ProductControllerUnitTest {
     private UserKeysRepository mockUserKeysRepo;
     @MockBean
     private ProductService mockProductService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    @MockBean
+    private PasswordEncoder mockPasswordEncoder;
 
     @Test
-    public void whenCredentialsNotProvided_thenUnauthorized() throws Exception {
-        this.mockMvc.perform(get("/products"))
+    void whenCredentialsNotProvided_thenUnauthorized() throws Exception {
+        mockMvc.perform(get("/products"))
             .andDo(print())
             .andExpect(status().isUnauthorized());
     }
 
     @Test
-    public void whenUnknownAuthScheme_thenUnauthorized() throws Exception {
-        this.mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "bearer abcd:efgh"))
+    void whenUnknownAuthScheme_thenUnauthorized() throws Exception {
+        mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "bearer abcd:efgh"))
             .andDo(print())
             .andExpect(status().isUnauthorized());
     }
 
-@Test
-public void whenUnknownApiKey_thenUnauthorized() throws Exception {
-    when(mockUserKeysRepo.findById(anyString())).thenReturn(Optional.empty());
+    @Test
+    void whenUnknownApiKey_thenUnauthorized() throws Exception {
+        when(mockUserKeysRepo.findById(anyString())).thenReturn(Optional.empty());
 
-    this.mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "api-key abcd:efgh"))
-        .andDo(print())
-        .andExpect(status().isUnauthorized())
-        .andExpect(content().string(containsString("Invalid API KEY")));
-}
+        mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "api-key abcd:efgh"))
+            .andDo(print())
+            .andExpect(status().isUnauthorized())
+            .andExpect(content().string(containsString("Invalid API KEY")));
+    }
 
     @Test
-    public void whenApiSecretNotMatch_thenUnauthorized() throws Exception {
+    void whenApiSecretNotMatch_thenUnauthorized() throws Exception {
         UserKeysData userKeys = new UserKeysData();
         userKeys.setApiSecret("");
         when(mockUserKeysRepo.findById(anyString())).thenReturn(Optional.of(userKeys));
 
-        this.mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "api-key bogusKey:bogusSecret"))
+        mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "api-key bogusKey:bogusSecret"))
             .andDo(print())
             .andExpect(status().isUnauthorized())
             .andExpect(content().string(containsString("Invalid API SECRET")));
     }
 
     @Test
-    public void whenAuthenticatedRequest_thenSuccess() throws Exception {
+    void whenAuthenticatedRequest_thenSuccess() throws Exception {
         UserData user = new UserData();
         user.setId(1L);
 
         UserKeysData userKeys = new UserKeysData();
         userKeys.setApiKey("bogusKey");
-        userKeys.setApiSecret(passwordEncoder.encode("bogusSecret"));
+        userKeys.setApiSecret("bogusSecret");
         userKeys.setAppUser(user);
 
         when(mockUserKeysRepo.findById(anyString())).thenReturn(Optional.of(userKeys));
         when(mockProductService.getAllProducts(any())).thenReturn(Collections.emptyList());
+        when(mockPasswordEncoder.matches(anyString(), anyString())).thenReturn(true);
 
-        this.mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "api-key bogusKey:bogusSecret"))
+        mockMvc.perform(get("/products").header(HttpHeaders.AUTHORIZATION, "api-key bogusKey:bogusSecret"))
             .andDo(print())
             .andExpect(status().is2xxSuccessful());
     }
