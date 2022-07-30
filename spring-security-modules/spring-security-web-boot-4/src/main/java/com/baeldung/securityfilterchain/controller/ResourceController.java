@@ -1,4 +1,4 @@
-package com.baeldung.securityFilterChain.controller;
+package com.baeldung.securityfilterchain.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

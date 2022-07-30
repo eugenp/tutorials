@@ -1,4 +1,4 @@
-package com.baeldung.securityFilterChain;
+package com.baeldung.securityfilterchain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

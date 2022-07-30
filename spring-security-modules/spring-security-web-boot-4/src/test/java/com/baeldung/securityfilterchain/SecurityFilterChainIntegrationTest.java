@@ -1,4 +1,4 @@
-package com.baeldung.securityFilterChain;
+package com.baeldung.securityfilterchain;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
