@@ -8,21 +8,24 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 
-import com.baeldung.annotation.scanner.SampleAnnotationScanner;
 import com.baeldung.annotation.scanner.SampleAnnotatedClass;
 import com.baeldung.annotation.scanner.SampleAnnotation;
+import com.baeldung.annotation.scanner.SampleAnnotationScanner;
 import com.baeldung.annotation.scanner.ScanNotSupportedException;
 
 @Service
 public class SpringCoreAnnotationScannerService implements SampleAnnotationScanner {
     @Override
     public List<String> scanAnnotatedMethods() {
-        final Class<?> userClass = ClassUtils.getUserClass(SampleAnnotatedClass.class);
-        return Arrays.stream(userClass.getMethods())
-            .filter(method -> AnnotationUtils.getAnnotation(method, SampleAnnotation.class) != null)
+        Class<?> userClass = ClassUtils.getUserClass(SampleAnnotatedClass.class);
+        List<String> annotatedMethods = Arrays.stream(userClass.getMethods())
+            .filter(method -> AnnotationUtils
+                .getAnnotation(method, SampleAnnotation.class) != null)
             .map(method -> method.getAnnotation(SampleAnnotation.class)
                 .name())
             .collect(Collectors.toList());
+
+        return annotatedMethods;
     }
 
     @Override

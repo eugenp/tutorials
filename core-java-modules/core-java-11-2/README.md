@@ -13,4 +13,3 @@ This module contains articles about Java 11 core features
 - [Call Methods at Runtime Using Java Reflection](https://www.baeldung.com/java-method-reflection)
 - [Java HttpClient Basic Authentication](https://www.baeldung.com/java-httpclient-basic-auth)
 - [Java HttpClient With SSL](https://www.baeldung.com/java-httpclient-ssl)
-- [Adding Parameters to Java HttpClient Requests](https://www.baeldung.com/java-httpclient-request-parameters)
