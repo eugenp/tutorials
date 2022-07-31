@@ -1,5 +1,6 @@
 package com.baeldung.annotation.scanner.javareflectionlib;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,9 +38,14 @@ public class JavaReflectionsScannerService implements SampleAnnotationScanner {
         try {
             Class<?> clazz = ClassLoader.getSystemClassLoader()
                 .loadClass("com.baeldung.annotation.scanner.SampleAnnotatedClass");
-            SampleAnnotation classAnnotation = clazz.getAnnotation(SampleAnnotation.class);
             List<String> annotatedClasses = new ArrayList<>();
-            annotatedClasses.add(classAnnotation.name());
+            Annotation[] classAnnotations = clazz.getAnnotations();
+            for (Annotation annotation : classAnnotations) {
+                if (annotation.annotationType()
+                    .equals(SampleAnnotation.class)) {
+                    annotatedClasses.add(((SampleAnnotation) annotation).name());
+                }
+            }
             return Collections.unmodifiableList(annotatedClasses);
         } catch (ClassNotFoundException e) {
             throw new UnexpectedScanException(e);
