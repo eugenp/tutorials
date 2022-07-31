@@ -32,6 +32,7 @@
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
         <module>spring-security-web-boot-3</module>
+        <module>spring-security-web-boot-4</module>
         <module>spring-security-web-digest-auth</module>
         <module>spring-security-web-login</module>
         <module>spring-security-web-login-2</module>

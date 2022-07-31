@@ -9,6 +9,13 @@
     <name>lightrun</name>
     <description>Services for LightRun Article</description>
     <packaging>pom</packaging>
+    
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
+    </parent>
 
     <modules>
         <module>tasks-service</module>
