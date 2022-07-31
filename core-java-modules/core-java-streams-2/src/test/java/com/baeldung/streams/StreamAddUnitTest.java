@@ -49,14 +49,8 @@ public class StreamAddUnitTest {
         final Iterator<T> iterator = Spliterators.iterator(spliterator);
         
         return Stream.concat(Stream.concat(
-            Stream.generate(iterator::next).limit(index),
-            Stream.of(elem)),
-            StreamSupport.stream(spliterator, /* parallel= */ false));
-    }
-    
-    private <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
-        List<T> result = stream.collect(Collectors.toList());
-        result.add(index, elem);
-        return result.stream();
+          Stream.generate(iterator::next).limit(index),
+          Stream.of(elem)),
+          StreamSupport.stream(spliterator, /* parallel= */ false));
     }
 }
