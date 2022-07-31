@@ -2,9 +2,13 @@ package com.baeldung.streams;
 
 import org.junit.Test;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static org.junit.Assert.assertEquals;
 
@@ -40,6 +44,16 @@ public class StreamAddUnitTest {
         assertEquals(resultList.get(3), (Double) 9.9);
     }
 
+    private static <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
+        final Spliterator<T> spliterator = stream.spliterator();
+        final Iterator<T> iterator = Spliterators.iterator(spliterator);
+        
+        return Stream.concat(Stream.concat(
+            Stream.generate(iterator::next).limit(index),
+            Stream.of(elem)),
+            StreamSupport.stream(spliterator, /* parallel= */ false));
+    }
+    
     private <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
         List<T> result = stream.collect(Collectors.toList());
         result.add(index, elem);
