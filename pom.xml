@@ -1252,6 +1252,7 @@
                  <module>quarkus-modules/quarkus-jandex</module>
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>
+                 <module>spring-boot-modules/spring-boot-3</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>

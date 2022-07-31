@@ -2,9 +2,8 @@ package com.baeldung.quarkus_project;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
-import org.jboss.logging.Logger;
 
-import javax.transaction.Transactional;
+import javax.persistence.PersistenceException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -22,7 +21,7 @@ public class ZipCodeResource {
     @GET
     @Path("/{zipcode}")
     public Uni<ZipCode> findById(@PathParam("zipcode") String zipcode) {
-        return zipRepo.findById(zipcode);
+        return getById(zipcode);
     }
 
     @GET
@@ -32,12 +31,17 @@ public class ZipCodeResource {
     }
 
     @POST
-    @Transactional
     public Uni<ZipCode> create(ZipCode zipCode) {
-        return zipRepo.findById(zipCode.getZip())
+        return getById(zipCode.getZip())
             .onItem()
             .ifNull()
-            .switchTo(createZipCode(zipCode));
+            .switchTo(createZipCode(zipCode))
+            .onFailure(PersistenceException.class)
+            .recoverWithUni(() -> getById(zipCode.getZip()));
+    }
+
+    private Uni<ZipCode> getById(String zipCode) {
+        return zipRepo.findById(zipCode);
     }
 
     private Uni<ZipCode> createZipCode(ZipCode zipCode) {

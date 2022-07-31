@@ -15,9 +15,9 @@
     </parent>
 
     <modules>
+        <module>feign-rest-consumer</module>
         <module>rest-producer</module>
         <module>rest-consumer</module>
-        <module>feign-rest-consumer</module>
     </modules>
 
 </project>
