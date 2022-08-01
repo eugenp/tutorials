@@ -24,7 +24,7 @@ POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/product/a6
 
 ### Decrement Product a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3 to Order 666a1661-474d-4046-8b12-8b5896312768
 
-POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/product/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3/decrement
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/product/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf1/decrement
 
 ### Confirm Order 666a1661-474d-4046-8b12-8b5896312768
 

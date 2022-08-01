@@ -6,6 +6,18 @@
     <artifactId>axon</artifactId>
     <name>axon</name>
     <description>Basic Axon Framework with Spring Boot configuration tutorial</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -50,6 +62,10 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.axonframework.extensions.mongo</groupId>
+            <artifactId>axon-mongo</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -57,7 +73,7 @@
     </dependencies>
 
     <properties>
-        <axon-bom.version>4.5.13</axon-bom.version>
+        <axon-bom.version>4.5.16</axon-bom.version>
     </properties>
 
 </project>
