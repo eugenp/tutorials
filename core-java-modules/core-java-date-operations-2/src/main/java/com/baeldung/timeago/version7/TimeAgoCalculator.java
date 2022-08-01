@@ -2,6 +2,7 @@ package com.baeldung.timeago.version7;
 
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.Calendar;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -12,16 +13,26 @@ import org.joda.time.format.PeriodFormatterBuilder;
 
 public class TimeAgoCalculator {
 
+    private static long getCurrentTime(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2020, 1, 1, 12, 0, 0);
+        return calendar.getTimeInMillis();
+    }
+
+    private static long getCurrentTimeByTimeZone(TimeZone zone){
+        Calendar calendar = Calendar.getInstance(zone);
+        calendar.set(2020, 1, 1, 12, 0, 0);
+        return calendar.getTimeInMillis();
+    }
+
     public static String calculateTimeAgoByTimeGranularity(Date pastTime, TimeGranularity granularity) {
-        Date currentTime = new Date();
-        long timeDifferenceInMillis = currentTime.getTime() - pastTime.getTime();
+        long timeDifferenceInMillis = getCurrentTime() - pastTime.getTime();
         return timeDifferenceInMillis / granularity.toMillis() + " " + granularity.name()
-            .toLowerCase() + " ago";
+                .toLowerCase() + " ago";
     }
 
     public static String calculateHumanFriendlyTimeAgo(Date pastTime) {
-        Date currentTime = new Date();
-        long timeDifferenceInMillis = currentTime.getTime() - pastTime.getTime();
+        long timeDifferenceInMillis = getCurrentTime() - pastTime.getTime();
         if (timeDifferenceInMillis / TimeGranularity.DECADES.toMillis() > 0)
             return "several decades ago";
         else if (timeDifferenceInMillis / TimeGranularity.YEARS.toMillis() > 0)
@@ -41,33 +52,33 @@ public class TimeAgoCalculator {
     }
 
     public static String calculateExactTimeAgoWithJodaTime(Date pastTime) {
-        Period period = new Period(new DateTime(pastTime.getTime()), new DateTime());
+        Period period = new Period(new DateTime(pastTime.getTime()), new DateTime(getCurrentTime()));
         PeriodFormatter formatter = new PeriodFormatterBuilder().appendYears()
-            .appendSuffix(" year ", " years ")
-            .appendSeparator("and ")
-            .appendMonths()
-            .appendSuffix(" month ", " months ")
-            .appendSeparator("and ")
-            .appendWeeks()
-            .appendSuffix(" week ", " weeks ")
-            .appendSeparator("and ")
-            .appendDays()
-            .appendSuffix(" day ", " days ")
-            .appendSeparator("and ")
-            .appendHours()
-            .appendSuffix(" hour ", " hours ")
-            .appendSeparator("and ")
-            .appendMinutes()
-            .appendSuffix(" minute ", " minutes ")
-            .appendSeparator("and ")
-            .appendSeconds()
-            .appendSuffix(" second", " seconds")
-            .toFormatter();
+                .appendSuffix(" year ", " years ")
+                .appendSeparator("and ")
+                .appendMonths()
+                .appendSuffix(" month ", " months ")
+                .appendSeparator("and ")
+                .appendWeeks()
+                .appendSuffix(" week ", " weeks ")
+                .appendSeparator("and ")
+                .appendDays()
+                .appendSuffix(" day ", " days ")
+                .appendSeparator("and ")
+                .appendHours()
+                .appendSuffix(" hour ", " hours ")
+                .appendSeparator("and ")
+                .appendMinutes()
+                .appendSuffix(" minute ", " minutes ")
+                .appendSeparator("and ")
+                .appendSeconds()
+                .appendSuffix(" second", " seconds")
+                .toFormatter();
         return formatter.print(period);
     }
 
     public static String calculateHumanFriendlyTimeAgoWithJodaTime(Date pastTime) {
-        Period period = new Period(new DateTime(pastTime.getTime()), new DateTime());
+        Period period = new Period(new DateTime(pastTime.getTime()), new DateTime(getCurrentTime()));
         if (period.getYears() != 0)
             return "several years ago";
         else if (period.getMonths() != 0)
@@ -86,9 +97,9 @@ public class TimeAgoCalculator {
 
     public static String calculateZonedTimeAgoWithJodaTime(Date pastTime, TimeZone zone) {
         DateTimeZone dateTimeZone = DateTimeZone.forID(zone.getID());
-        Period period = new Period(new DateTime(pastTime.getTime(), dateTimeZone), new DateTime(dateTimeZone));
+        Period period = new Period(new DateTime(pastTime.getTime(), dateTimeZone), new DateTime(getCurrentTimeByTimeZone(zone)));
         return PeriodFormat.getDefault()
-            .print(period);
+                .print(period);
     }
 
 }
