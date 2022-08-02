@@ -8,10 +8,12 @@ import org.junit.Test;
 
 public class TimeAgoCalculatorUnitTest {
 
-    private long getCurrentTime(){
+    private long getCurrentTime() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, 1, 1, 12, 0, 0);
         return calendar.getTimeInMillis();
+        //We return a fixed date and time in order to avoid issues related to getting time from local in unit tests.
+        //return System.currentTimeMillis();
     }
 
     @Test

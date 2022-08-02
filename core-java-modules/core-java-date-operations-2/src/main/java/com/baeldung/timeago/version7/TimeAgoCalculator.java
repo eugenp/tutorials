@@ -13,22 +13,26 @@ import org.joda.time.format.PeriodFormatterBuilder;
 
 public class TimeAgoCalculator {
 
-    private static long getCurrentTime(){
+    private static long getCurrentTime() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, 1, 1, 12, 0, 0);
         return calendar.getTimeInMillis();
+        //We return a fixed date and time in order to avoid issues related to getting time from local in unit tests.
+        //return System.currentTimeMillis();
     }
 
-    private static long getCurrentTimeByTimeZone(TimeZone zone){
+    private static long getCurrentTimeByTimeZone(TimeZone zone) {
         Calendar calendar = Calendar.getInstance(zone);
         calendar.set(2020, 1, 1, 12, 0, 0);
         return calendar.getTimeInMillis();
+        //We return a fixed date and time in order to avoid issues related to getting time from local in unit tests.
+        //return Calendar.getInstance(zone).getTimeInMillis();
     }
 
     public static String calculateTimeAgoByTimeGranularity(Date pastTime, TimeGranularity granularity) {
         long timeDifferenceInMillis = getCurrentTime() - pastTime.getTime();
         return timeDifferenceInMillis / granularity.toMillis() + " " + granularity.name()
-                .toLowerCase() + " ago";
+            .toLowerCase() + " ago";
     }
 
     public static String calculateHumanFriendlyTimeAgo(Date pastTime) {
@@ -54,26 +58,26 @@ public class TimeAgoCalculator {
     public static String calculateExactTimeAgoWithJodaTime(Date pastTime) {
         Period period = new Period(new DateTime(pastTime.getTime()), new DateTime(getCurrentTime()));
         PeriodFormatter formatter = new PeriodFormatterBuilder().appendYears()
-                .appendSuffix(" year ", " years ")
-                .appendSeparator("and ")
-                .appendMonths()
-                .appendSuffix(" month ", " months ")
-                .appendSeparator("and ")
-                .appendWeeks()
-                .appendSuffix(" week ", " weeks ")
-                .appendSeparator("and ")
-                .appendDays()
-                .appendSuffix(" day ", " days ")
-                .appendSeparator("and ")
-                .appendHours()
-                .appendSuffix(" hour ", " hours ")
-                .appendSeparator("and ")
-                .appendMinutes()
-                .appendSuffix(" minute ", " minutes ")
-                .appendSeparator("and ")
-                .appendSeconds()
-                .appendSuffix(" second", " seconds")
-                .toFormatter();
+            .appendSuffix(" year ", " years ")
+            .appendSeparator("and ")
+            .appendMonths()
+            .appendSuffix(" month ", " months ")
+            .appendSeparator("and ")
+            .appendWeeks()
+            .appendSuffix(" week ", " weeks ")
+            .appendSeparator("and ")
+            .appendDays()
+            .appendSuffix(" day ", " days ")
+            .appendSeparator("and ")
+            .appendHours()
+            .appendSuffix(" hour ", " hours ")
+            .appendSeparator("and ")
+            .appendMinutes()
+            .appendSuffix(" minute ", " minutes ")
+            .appendSeparator("and ")
+            .appendSeconds()
+            .appendSuffix(" second", " seconds")
+            .toFormatter();
         return formatter.print(period);
     }
 
@@ -99,7 +103,7 @@ public class TimeAgoCalculator {
         DateTimeZone dateTimeZone = DateTimeZone.forID(zone.getID());
         Period period = new Period(new DateTime(pastTime.getTime(), dateTimeZone), new DateTime(getCurrentTimeByTimeZone(zone)));
         return PeriodFormat.getDefault()
-                .print(period);
+            .print(period);
     }
 
 }
