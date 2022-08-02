@@ -9,7 +9,10 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class FileClassUnitTest {
+/**
+ * Manual tests for data reading and writing
+ */
+public class FileClassManualTest {
 
     @Test
     public void givenDir_whenMkdir_thenDirIsDeleted() {
