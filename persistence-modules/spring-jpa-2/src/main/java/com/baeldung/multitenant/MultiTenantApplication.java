@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 public class MultiTenantApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MultiTenantApplication.class, args);
+	    SpringApplication.run(MultiTenantApplication.class, args);
 	}
 
 }
