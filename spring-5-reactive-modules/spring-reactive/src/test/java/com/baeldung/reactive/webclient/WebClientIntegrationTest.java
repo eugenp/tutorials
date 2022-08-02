@@ -83,6 +83,16 @@ class WebClientIntegrationTest {
     }
 
     @Test
+    void givenWebClientCreationWithoutUri_whenUsed_thenObtainExpectedResponse() {
+        WebClient client = WebClient.create();
+
+        StepVerifier.create(retrieveResponse(client))
+          .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
+            .contains("Connection refused"))
+          .verify();
+    }
+
+    @Test
     void givenDifferentMethodSpecifications_whenUsed_thenObtainExpectedResponse() {
         // request specification
         RequestBodyUriSpec uriSpecPost1 = createDefaultClient().method(HttpMethod.POST);
@@ -111,12 +121,6 @@ class WebClientIntegrationTest {
             .build());
         RequestBodySpec bodySpecusingURI = createDefaultPostRequest().uri(
           URI.create("http://localhost:" + port + "/resource"));
-        RequestBodySpec bodySpecOverridenBaseUri = createDefaultPostRequest().uri(URI.create("/resource"));
-        RequestBodySpec bodySpecOverridenBaseUri2 = WebClient.builder()
-          .baseUrl("http://localhost:" + port)
-          .build()
-          .post()
-          .uri(URI.create("/resource"));
 
         // response assertions
         StepVerifier.create(retrieveResponse(bodySpecUsingString))
@@ -128,12 +132,22 @@ class WebClientIntegrationTest {
         StepVerifier.create(retrieveResponse(bodySpecusingURI))
           .expectNext("processed-bodyValue")
           .verifyComplete();
-        // assert sending request overriding base URI
-        StepVerifier.create(retrieveResponse(bodySpecOverridenBaseUri))
+    }
+
+    @Test
+    void givenOverriddenUriSpecifications_whenUsed_thenObtainExpectedResponse() {
+        RequestBodySpec bodySpecOverriddenBaseUri = createDefaultPostRequest().uri(URI.create("/resource"));
+        StepVerifier.create(retrieveResponse(bodySpecOverriddenBaseUri))
           .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
             .contains("Connection refused"))
           .verify();
-        StepVerifier.create(retrieveResponse(bodySpecOverridenBaseUri2))
+
+        RequestBodySpec bodySpecOverriddenBaseUri2 = WebClient.builder()
+          .baseUrl("http://localhost:" + port)
+          .build()
+          .post()
+          .uri(URI.create("/resource"));
+        StepVerifier.create(retrieveResponse(bodySpecOverriddenBaseUri2))
           .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
             .contains("Connection refused"))
           .verify();
@@ -301,30 +315,35 @@ class WebClientIntegrationTest {
           .uri("/resource")
           .bodyValue(BODY_VALUE)
           .retrieve()
-          .bodyToMono(String.class);
+          .bodyToMono(String.class)
+          .log();
     }
 
     private Mono<String> retrieveResponse(RequestBodyUriSpec spec) {
         return spec.uri("/resource")
           .bodyValue(BODY_VALUE)
           .retrieve()
-          .bodyToMono(String.class);
+          .bodyToMono(String.class)
+          .log();
     }
 
     private Mono<Map<String, String>> retrieveGetResponse(RequestHeadersUriSpec<?> spec) {
         return spec.uri("/resource")
           .retrieve()
-          .bodyToMono(MAP_RESPONSE_REF);
+          .bodyToMono(MAP_RESPONSE_REF)
+          .log();
     }
 
     private Mono<String> retrieveResponse(RequestBodySpec spec) {
         return spec.bodyValue(BODY_VALUE)
           .retrieve()
-          .bodyToMono(String.class);
+          .bodyToMono(String.class)
+          .log();
     }
 
     private Mono<String> retrieveResponse(RequestHeadersSpec<?> spec) {
         return spec.retrieve()
-          .bodyToMono(String.class);
+          .bodyToMono(String.class)
+          .log();
     }
 }

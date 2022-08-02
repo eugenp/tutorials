@@ -4,15 +4,15 @@ import java.util.IntSummaryStatistics;
 
 
 public class BlogPost {
-    
+
     private String title;
     private String author;
     private BlogPostType type;
     private int likes;
     record AuthPostTypesLikes(String author, BlogPostType type, int likes) {};
-    record PostcountTitlesLikesStats(long postCount, String titles, IntSummaryStatistics likesStats){};
+    record PostCountTitlesLikesStats(long postCount, String titles, IntSummaryStatistics likesStats){};
     record TitlesBoundedSumOfLikes(String titles, int boundedSumOfLikes) {};
-    
+
     public BlogPost(String title, String author, BlogPostType type, int likes) {
         this.title = title;
         this.author = author;

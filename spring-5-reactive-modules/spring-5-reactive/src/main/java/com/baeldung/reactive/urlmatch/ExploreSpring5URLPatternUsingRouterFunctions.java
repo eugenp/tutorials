@@ -24,11 +24,12 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
 
     private RouterFunction<ServerResponse> routingFunction() {
 
-        return route(GET("/p?ths"), serverRequest -> ok().body(fromValue("/p?ths"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromValue(serverRequest.pathVariable("id"))))
-            .andRoute(GET("/*card"), serverRequest -> ok().body(fromValue("/*card path was accessed")))
+        return route(GET("/t?st"), serverRequest -> ok().body(fromValue("Path /t?st is accessed"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromValue(serverRequest.pathVariable("id"))))
+            .andRoute(GET("/baeldung/*Id"), serverRequest -> ok().body(fromValue("/baeldung/*Id path was accessed")))
             .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromValue(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
             .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromValue("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
-            .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
+            .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")))
+            .and(RouterFunctions.resources("/resources/**", new ClassPathResource("resources/")));
     }
 
     WebServer start() throws Exception {

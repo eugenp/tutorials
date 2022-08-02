@@ -35,7 +35,7 @@ public class ConditionalExecutionUnitTest {
 
     @Test
     @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
-    public void whenRunningTestsOn64BitArchitectures_thenTestIsDisabled() {
+    public void whenRunningTestsOn64BitArchitectures_thenTestIsEnabled() {
         Integer value = 5; // result of an algorithm
 
         assertNotEquals(0, value, "The result cannot be 0");

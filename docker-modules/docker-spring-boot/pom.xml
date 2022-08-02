@@ -8,9 +8,10 @@
     <description>Demo project showing Spring Boot and Docker</description>
 
     <parent>
-        <groupId>com.baeldung.docker</groupId>
-        <artifactId>docker-modules</artifactId>
-        <version>0.0.1</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -52,9 +53,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
 </project>
