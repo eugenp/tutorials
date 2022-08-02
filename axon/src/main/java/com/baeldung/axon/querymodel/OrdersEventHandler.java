@@ -9,6 +9,8 @@ import com.baeldung.axon.coreapi.events.ProductCountIncrementedEvent;
 import com.baeldung.axon.coreapi.events.ProductRemovedEvent;
 import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
 import com.baeldung.axon.coreapi.queries.Order;
+import com.baeldung.axon.coreapi.queries.OrderUpdatesQuery;
+import com.baeldung.axon.coreapi.queries.TotalProductsShippedQuery;
 
 import java.util.List;
 
@@ -29,4 +31,8 @@ public interface OrdersEventHandler {
     void on(OrderShippedEvent event);
 
     List<Order> handle(FindAllOrderedProductsQuery query);
+
+    Integer handle(TotalProductsShippedQuery query);
+
+    Order handle(OrderUpdatesQuery query);
 }
