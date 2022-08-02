@@ -38,8 +38,7 @@ public class MultitenantConfiguration {
                 dataSourceBuilder.url(tenantProperties.getProperty("datasource.url"));
                 resolvedDataSources.put(tenantId, dataSourceBuilder.build());
             } catch (IOException exp) {
-                exp.printStackTrace();
-                return null;
+                throw new RuntimeException("Problem in tenant datasource:" + exp);
             }
         }
 
