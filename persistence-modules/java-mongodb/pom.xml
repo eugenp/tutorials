@@ -48,7 +48,6 @@
         <mongo.version>3.12.1</mongo.version>
         <flapdoodle.version>1.11</flapdoodle.version>
         <morphia.version>1.5.3</morphia.version>
-        <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
 
 </project>
