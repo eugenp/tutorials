@@ -1,15 +1,18 @@
 package com.baeldung.exception.currentstacktrace;
 
-public class DumpStackTraceDemo {
+public class DumpStackTraceDemo 
+{ 
     public static void main(String[] args) {
-        methodA();
-    }
+        methodA(); 
+    } 
 
     public static void methodA() {
-        methodB();
+        try {
+            int num1 = 5/0; // java.lang.ArithmeticException: divide by zero
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void methodB() {
-        Thread.dumpStack();
-    }
 }
