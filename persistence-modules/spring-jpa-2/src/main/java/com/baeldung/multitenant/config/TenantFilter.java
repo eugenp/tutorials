@@ -1,5 +1,6 @@
 package com.baeldung.multitenant.config;
 
+import com.baeldung.multitenant.security.AuthenticationService;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,8 @@ class TenantFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
       FilterChain chain) throws IOException, ServletException {
 
-        HttpServletRequest req = (HttpServletRequest) request;
-        String tenantName = req.getHeader("X-TenantID");
-        TenantContext.setCurrentTenant(tenantName);
+        String tenant = AuthenticationService.getTenant((HttpServletRequest) request);
+        TenantContext.setCurrentTenant(tenant);
 
         try {
             chain.doFilter(request, response);
