@@ -115,8 +115,7 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler{
         return orders.get(query.getOrderId());
     }
 
-    private Order emitUpdate(Order order){
+    private void emitUpdate(Order order){
         emitter.emit(OrderUpdatesQuery.class, q -> order.getOrderId().equals(q.getOrderId()), order);
-        return order;
     }
 }
