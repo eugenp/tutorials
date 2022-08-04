@@ -1,32 +1,43 @@
 package com.baeldung.json.schema;
 
-import org.everit.json.schema.Schema;
-import org.everit.json.schema.ValidationException;
-import org.everit.json.schema.loader.SchemaLoader;
 
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
+import java.util.Set;
+
 import org.junit.Test;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.networknt.schema.JsonSchema;
+import com.networknt.schema.JsonSchemaFactory;
+import com.networknt.schema.SpecVersion;
+import com.networknt.schema.ValidationMessage;
+
 public class JSONSchemaUnitTest {
-
-    @Test(expected = ValidationException.class)
-    public void givenInvalidInput_whenValidating_thenInvalid() {
-
-        JSONObject jsonSchema = new JSONObject(new JSONTokener(JSONSchemaUnitTest.class.getResourceAsStream("/schema.json")));
-        JSONObject jsonSubject = new JSONObject(new JSONTokener(JSONSchemaUnitTest.class.getResourceAsStream("/product_invalid.json")));
-
-        Schema schema = SchemaLoader.load(jsonSchema);
-        schema.validate(jsonSubject);
-    }
+	
+	private ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void givenValidInput_whenValidating_thenValid() {
+	public void givenInvalidInput_whenValidating_thenInvalid() throws IOException {
 
-        JSONObject jsonSchema = new JSONObject(new JSONTokener(JSONSchemaUnitTest.class.getResourceAsStream("/schema.json")));
-        JSONObject jsonSubject = new JSONObject(new JSONTokener(JSONSchemaUnitTest.class.getResourceAsStream("/product_valid.json")));
+		JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
+		JsonSchema jsonSchema = factory.getSchema(JSONSchemaUnitTest.class.getResourceAsStream("/schema.json"));
 
-        Schema schema = SchemaLoader.load(jsonSchema);
-        schema.validate(jsonSubject);
+		JsonNode jsonNode = mapper.readTree(JSONSchemaUnitTest.class.getResourceAsStream("/product_invalid.json"));
+		Set<ValidationMessage> errors = jsonSchema.validate(jsonNode);
+		assertThat(errors).isNotEmpty().asString().contains("price: must have a minimum value of 0");
+	}
+
+    @Test
+    public void givenValidInput_whenValidating_thenValid() throws IOException {
+
+    	JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
+		JsonSchema jsonSchema = factory.getSchema(JSONSchemaUnitTest.class.getResourceAsStream("/schema.json"));
+
+		JsonNode jsonNode = mapper.readTree(JSONSchemaUnitTest.class.getResourceAsStream("/product_valid.json"));
+		Set<ValidationMessage> errors = jsonSchema.validate(jsonNode);
+		assertThat(errors).isEmpty();
     }
 }
