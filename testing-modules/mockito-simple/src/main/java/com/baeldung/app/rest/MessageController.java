@@ -1,6 +1,6 @@
 package com.baeldung.app.rest;
 
-import com.baeldung.app.api.MessageApi;
+import com.baeldung.app.api.MessageDTO;
 import com.baeldung.domain.model.Message;
 import com.baeldung.domain.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class MessageController {
     private MessageService messageService;
 
     @PostMapping
-    public Message createMessage (@RequestBody MessageApi messageDTO) {
+    public Message createMessage (@RequestBody MessageDTO messageDTO) {
         Message message = new Message();
         message.setText(messageDTO.getText());
         message.setFrom(messageDTO.getFrom());
