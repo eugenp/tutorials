@@ -43,7 +43,7 @@
         <dependency>
             <groupId>io.github.openfeign.form</groupId>
             <artifactId>feign-form</artifactId>
-            <version>3.8.0</version>
+            <version>${feign-form.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign.form</groupId>
@@ -58,6 +58,7 @@
 
     <properties>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <feign-form.version>3.8.0</feign-form.version>
     </properties>
 
 </project>
