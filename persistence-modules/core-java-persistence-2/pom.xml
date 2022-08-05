@@ -51,12 +51,29 @@
             <artifactId>json</artifactId>
             <version>20220320</version>
         </dependency>
+        <dependency>
+            <groupId>one.microstream</groupId>
+            <artifactId>microstream-storage-embedded</artifactId>
+            <version>${microstream.storage.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>one.microstream</groupId>
+            <artifactId>microstream-storage-embedded-configuration</artifactId>
+            <version>${microstream.storage.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <mssql.driver.version>8.4.1.jre11</mssql.driver.version>
         <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
         <mysql.driver.version>8.0.22</mysql.driver.version>
+        <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
     </properties>
 
 </project>
