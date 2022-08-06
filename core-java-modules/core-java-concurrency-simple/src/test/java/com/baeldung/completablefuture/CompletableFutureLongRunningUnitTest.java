@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.completablefuture;
+package com.baeldung.completablefuture;
 
 import org.junit.Test;
 import org.slf4j.Logger;

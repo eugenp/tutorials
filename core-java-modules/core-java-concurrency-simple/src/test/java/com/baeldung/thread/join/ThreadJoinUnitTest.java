@@ -1,4 +1,4 @@
-package com.baeldung.threadjoin;
+package com.baeldung.thread.join;
 
 import org.junit.Ignore;
 import org.junit.Test;
