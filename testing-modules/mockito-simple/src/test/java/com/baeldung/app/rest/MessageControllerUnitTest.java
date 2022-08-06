@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.baeldung.app.api.MessageApi;
+import com.baeldung.app.api.MessageDTO;
 import com.baeldung.domain.model.Message;
 import com.baeldung.domain.service.MessageService;
 import com.baeldung.domain.util.MessageMatcher;
@@ -19,32 +19,32 @@ import com.baeldung.domain.util.MessageMatcher;
 @RunWith(MockitoJUnitRunner.class)
 public class MessageControllerUnitTest {
 
+        @InjectMocks
+        private MessageController messageController;
+    
 	@Mock
 	private MessageService messageService;
 
-	@InjectMocks
-	private MessageController messageController;
-
 	@Test
 	public void givenMsg_whenVerifyUsingAnyMatcher_thenOk() {
-		MessageApi messageApi = new MessageApi();
-		messageApi.setFrom("me");
-		messageApi.setTo("you");
-		messageApi.setText("Hello, you!");
+		MessageDTO messageDTO = new MessageDTO();
+		messageDTO.setFrom("me");
+		messageDTO.setTo("you");
+		messageDTO.setText("Hello, you!");
 
-		messageController.createMessage(messageApi);
+		messageController.createMessage(messageDTO);
 
 		verify(messageService, times(1)).deliverMessage(any(Message.class));
 	}
 
 	@Test
 	public void givenMsg_whenVerifyUsingMessageMatcher_thenOk() {
-		MessageApi messageApi = new MessageApi();
-		messageApi.setFrom("me");
-		messageApi.setTo("you");
-		messageApi.setText("Hello, you!");
+		MessageDTO messageDTO = new MessageDTO();
+		messageDTO.setFrom("me");
+		messageDTO.setTo("you");
+		messageDTO.setText("Hello, you!");
 
-		messageController.createMessage(messageApi);
+		messageController.createMessage(messageDTO);
 
 		Message message = new Message();
 		message.setFrom("me");
