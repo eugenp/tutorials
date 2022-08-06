@@ -52,14 +52,7 @@ public class MongoConnectionApplicationLiveTest {
 
     @Test
     public void whenPropertiesConfig_thenInsertSucceeds() {
-        SpringApplicationBuilder app = new SpringApplicationBuilder(SpringMongoConnectionViaPropertiesApp.class) 
-            .properties(
-                "spring.data.mongodb.host=" + HOST, 
-                "spring.data.mongodb.port=" + PORT, 
-                "spring.data.mongodb.database=" + DB, 
-                "spring.data.mongodb.username=" + USER, 
-                "spring.data.mongodb.password=" + PASS 
-            );
+        SpringApplicationBuilder app = new SpringApplicationBuilder(SpringMongoConnectionViaPropertiesApp.class);
         app.web(WebApplicationType.NONE)
             .run();
 
@@ -91,11 +84,11 @@ public class MongoConnectionApplicationLiveTest {
 
         SpringApplicationBuilder app = new SpringApplicationBuilder(SpringMongoConnectionViaPropertiesApp.class) 
             .properties(
-                "spring.data.mongodb.host=incorrect", 
-                "spring.data.mongodb.port=incorrect", 
-                "spring.data.mongodb.database=incorrect", 
-                "spring.data.mongodb.username=incorrect", 
-                "spring.data.mongodb.password=incorrect" 
+                "spring.data.mongodb.host=oldValue", 
+                "spring.data.mongodb.port=oldValue", 
+                "spring.data.mongodb.database=oldValue", 
+                "spring.data.mongodb.username=oldValue", 
+                "spring.data.mongodb.password=oldValue" 
             );
 
         app.web(WebApplicationType.NONE)
@@ -132,18 +125,17 @@ public class MongoConnectionApplicationLiveTest {
             "mongodb://" + USER + ":" + PASS + "@" + HOST + ":" + PORT + "/" + DB
         );
 
-        SpringApplicationBuilder app = new SpringApplicationBuilder(SpringMongoConnectionViaPropertiesApp.class) 
+        SpringApplicationBuilder app = new SpringApplicationBuilder(SpringMongoConnectionViaPropertiesApp.class)
+            .web(WebApplicationType.NONE)
             .properties(
                 "spring.data.mongodb.host=" + HOST, 
                 "spring.data.mongodb.port=" + PORT, 
-                "spring.data.mongodb.database=" + DB, 
                 "spring.data.mongodb.username=" + USER, 
                 "spring.data.mongodb.password=" + PASS 
             );
 
         BeanCreationException e = assertThrows(BeanCreationException.class, () -> {
-            app.web(WebApplicationType.NONE)
-                .run();
+            app.run();
         });
 
         Throwable rootCause = e.getRootCause();
