@@ -7,7 +7,6 @@ public class BookDeepCopy implements Cloneable, Serializable {
 
     private static final long serialVersionUID = 1L;
     private String bookName;
-
     private BookDetailDeepCopy bookDetail;
 
     public String getBookName() {
@@ -35,23 +34,17 @@ public class BookDeepCopy implements Cloneable, Serializable {
 
     public BookDeepCopy() {
         super();
-
     }
 
     public BookDeepCopy(String bookName, BookDetailDeepCopy bookDetail) {
         super();
-
         this.bookName = bookName;
-
         this.bookDetail = bookDetail;
     }
 
     public BookDeepCopy(BookDeepCopy shelfInfo) {
-
         this.bookName = shelfInfo.bookName;
-
         this.bookDetail = new BookDetailDeepCopy(shelfInfo.getBookDetail());
-
     }
 
     @Override

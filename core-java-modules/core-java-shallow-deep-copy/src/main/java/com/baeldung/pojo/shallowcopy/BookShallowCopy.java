@@ -32,21 +32,16 @@ public class BookShallowCopy implements Cloneable, Serializable {
 
     public BookShallowCopy() {
         super();
-
     }
 
     public BookShallowCopy(String bookName, BookDetailShallowCopy bookDetail) {
         super();
-
         this.bookName = bookName;
-
         this.bookDetail = bookDetail;
     }
 
     public BookShallowCopy(BookShallowCopy shallow) {
-
         this.bookName = shallow.bookName;
-
         this.bookDetail = shallow.bookDetail;
     }
 

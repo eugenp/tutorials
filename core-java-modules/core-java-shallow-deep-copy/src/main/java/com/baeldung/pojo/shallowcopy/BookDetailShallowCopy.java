@@ -16,14 +16,11 @@ public class BookDetailShallowCopy {
 
     public BookDetailShallowCopy() {
         super();
-
     }
 
     public BookDetailShallowCopy(int yearOfPublication) {
         super();
-
         this.yearOfPublication = yearOfPublication;
-
     }
 
     @Override

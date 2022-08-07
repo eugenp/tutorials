@@ -14,9 +14,7 @@ public class ShallowCopyUnitTest {
 
         BookDetailShallowCopy bookDetail = new BookDetailShallowCopy(2021);
         BookShallowCopy originalObj = new BookShallowCopy("Head First SQL", bookDetail);
-
         BookShallowCopy shallowCopyObj = (BookShallowCopy) originalObj.clone();
-
         shallowCopyObj.getBookDetail()
             .setYearOfPublication(2022);
 
@@ -28,9 +26,7 @@ public class ShallowCopyUnitTest {
 
         BookDetailShallowCopy bookDetail = new BookDetailShallowCopy(2021);
         BookShallowCopy originalObj = new BookShallowCopy("Head First SQL", bookDetail);
-
         BookShallowCopy shallowCopyObj = new BookShallowCopy(originalObj);
-
         shallowCopyObj.getBookDetail()
             .setYearOfPublication(2022);
 
