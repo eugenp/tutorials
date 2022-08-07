@@ -27,7 +27,10 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Gets customer by ID", response = CustomerResponse.class, notes = "Customer must exist")
-    @ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"), @ApiResponse(code = 404, message = "Customer not found"), @ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class) })
+    @ApiResponses(value = {
+        @ApiResponse(code = 400, message = "Invalid ID supplied"),
+        @ApiResponse(code = 404, message = "Customer not found"),
+        @ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class) })
     @GetMapping("/{id}")
     public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") Long id) {
         return ResponseEntity.ok(customerService.getById(id));
