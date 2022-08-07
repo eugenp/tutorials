@@ -11,37 +11,24 @@ class StorageManagerUnitTest {
 
     @Test
     void givenStorageWithStringAsRoot_whenFetchingRoot_thenExpectedStringIsReturned() {
-        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithStringAsRoot();
-        assertThat(storageManager.root()).isEqualTo("baeldung-demo");
+        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithStringAsRoot("baeldung-demo-1");
+        assertThat(storageManager.root()).isEqualTo("baeldung-demo-1");
         storageManager.shutdown();
     }
 
     @Test
     void givenStorageWithCustomTypeAsRoot_whenFetchingRoot_thenCustomTypeWithExpectedValuesIsReturned() {
-        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithCustomTypeAsRoot();
+        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithCustomTypeAsRoot("baeldung-demo-2");
         RootInstance rootInstance = (RootInstance) storageManager.root();
-        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo");
+        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-2");
         assertThat(rootInstance.getBooks()).isEmpty();
         storageManager.shutdown();
     }
 
     @Test
-    void givenStorageWithCustomTypeAsRoot_whenStoringAdditionalObjects_thenAdditionalObjectsAreSuccesfullyStored() {
-        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithCustomTypeAsRoot();
-        RootInstance rootInstance = (RootInstance) storageManager.root();
-
-        Author author = new Author("Joanne", "Rowling");
-        Book bookOne = new Book("Harry Potter and the Philosopher's Stone", author, 1997);
-        Book bookTwo = new Book("Harry Potter and the Chamber of Secrets", author, 1998);
-        List<Book> books = rootInstance.getBooks();
-        books.add(bookOne);
-        books.add(bookTwo);
-        storageManager.store(rootInstance.getBooks());
-
-        assertThat(rootInstance.getBooks()).hasSize(2);
-        assertThat(rootInstance.getBooks().get(0)).isEqualTo(bookOne);
-        assertThat(rootInstance.getBooks().get(1)).isEqualTo(bookTwo);
-
+    void givenStorageWithCustomTypeAsRoot_whenLoadingOrCreateingStorage_thenNonNullRootIsReturned() {
+        EmbeddedStorageManager storageManager = StorageManager.loadOrCreateStorage("baeldung-demo-3");
+        assertThat(storageManager.root()).isNotNull();
         storageManager.shutdown();
     }
 
