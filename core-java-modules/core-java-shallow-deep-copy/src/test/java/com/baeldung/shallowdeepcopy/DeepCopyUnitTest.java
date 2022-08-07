@@ -18,9 +18,7 @@ public class DeepCopyUnitTest {
 
         BookDetailDeepCopy bookDetail = new BookDetailDeepCopy(2021);
         BookDeepCopy originalObj = new BookDeepCopy("Head First SQL", bookDetail);
-
         BookDeepCopy deepCopyObj = (BookDeepCopy) originalObj.clone();
-
         deepCopyObj.getBookDetail()
             .setYearOfPublication(2022);
 
@@ -32,9 +30,7 @@ public class DeepCopyUnitTest {
 
         BookDetailDeepCopy bookDetail = new BookDetailDeepCopy(2021);
         BookDeepCopy originalObj = new BookDeepCopy("Head First SQL", bookDetail);
-
         BookDeepCopy deepCopyObj = new BookDeepCopy(originalObj);
-
         deepCopyObj.getBookDetail()
             .setYearOfPublication(2022);
 
@@ -46,11 +42,8 @@ public class DeepCopyUnitTest {
 
         BookDetailDeepCopy bookDetail = new BookDetailDeepCopy(2021);
         BookDeepCopy originalObj = new BookDeepCopy("Head First SQL", bookDetail);
-
         ObjectMapper objectMapper = new ObjectMapper();
-
         BookDeepCopy deepCopyObj = objectMapper.readValue(objectMapper.writeValueAsString(originalObj), BookDeepCopy.class);
-
         deepCopyObj.getBookDetail()
             .setYearOfPublication(2022);
 
@@ -63,7 +56,6 @@ public class DeepCopyUnitTest {
 
         BookDetailDeepCopy bookDetail = new BookDetailDeepCopy(2021);
         BookDeepCopy originalObj = new BookDeepCopy("Head First SQL", bookDetail);
-
         Gson gson = new Gson();
         BookDeepCopy deepCopyObj = gson.fromJson(gson.toJson(originalObj), BookDeepCopy.class);
         deepCopyObj.getBookDetail()

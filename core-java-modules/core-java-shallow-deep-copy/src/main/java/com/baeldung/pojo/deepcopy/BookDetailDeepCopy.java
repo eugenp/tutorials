@@ -18,14 +18,11 @@ public class BookDetailDeepCopy implements Cloneable, Serializable {
 
     public BookDetailDeepCopy() {
         super();
-
     }
 
     public BookDetailDeepCopy(int yearOfPublication) {
         super();
-
         this.yearOfPublication = yearOfPublication;
-
     }
 
     @Override
@@ -34,7 +31,6 @@ public class BookDetailDeepCopy implements Cloneable, Serializable {
     }
 
     public BookDetailDeepCopy(BookDetailDeepCopy bookDetail) {
-
         this.yearOfPublication = bookDetail.getYearOfPublication();
     }
 
