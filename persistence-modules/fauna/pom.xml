@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.faunadb</groupId>
             <artifactId>faunadb-java</artifactId>
-            <version>4.2.0</version>
+            <version>${faunadb.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -60,6 +60,7 @@
     <properties>
         <java.version>17</java.version>
         <maven-pmd-plugin.version>3.17.0</maven-pmd-plugin.version>
+        <faunadb.version>4.2.0</faunadb.version>
     </properties>
 
 </project>
