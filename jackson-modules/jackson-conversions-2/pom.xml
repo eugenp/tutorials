@@ -32,6 +32,13 @@
             <artifactId>jackson-dataformat-csv</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>${mockserver-netty.version}</version>
+            <scope>test</scope>        
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,5 +50,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <mockserver-netty.version>5.13.2</mockserver-netty.version>
+    </properties>
 
 </project>
