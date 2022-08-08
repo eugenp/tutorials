@@ -27,7 +27,9 @@ public class JandexScannerService implements SampleAnnotationScanner {
         try {
             final IndexReader reader = new IndexReader(appFile.getInputStream());
             Index jandexFile = reader.read();
-            final List<AnnotationInstance> appAnnotationList = jandexFile.getAnnotations(DotName.createSimple("com.baeldung.annotation.scanner.SampleAnnotation"));
+            final List<AnnotationInstance> appAnnotationList = jandexFile
+                .getAnnotations(DotName
+                    .createSimple("com.baeldung.annotation.scanner.SampleAnnotation"));
             List<String> annotatedMethods = new ArrayList<>();
             for (AnnotationInstance annotationInstance : appAnnotationList) {
                 if (annotationInstance.target()
@@ -48,7 +50,9 @@ public class JandexScannerService implements SampleAnnotationScanner {
         try {
             final IndexReader reader = new IndexReader(appFile.getInputStream());
             Index jandexFile = reader.read();
-            final List<AnnotationInstance> appAnnotationList = jandexFile.getAnnotations(DotName.createSimple("com.baeldung.annotation.scanner.SampleAnnotation"));
+            final List<AnnotationInstance> appAnnotationList = jandexFile
+                .getAnnotations(DotName
+                    .createSimple("com.baeldung.annotation.scanner.SampleAnnotation"));
             List<String> annotatedClasses = new ArrayList<>();
             for (AnnotationInstance annotationInstance : appAnnotationList) {
                 if (annotationInstance.target()
