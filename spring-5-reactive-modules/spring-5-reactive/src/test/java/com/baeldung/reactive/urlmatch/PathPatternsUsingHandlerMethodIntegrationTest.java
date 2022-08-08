@@ -27,13 +27,21 @@ public class PathPatternsUsingHandlerMethodIntegrationTest {
     @Test
     public void givenHandlerMethod_whenMultipleURIVariablePattern_then200() {
 
-        client.get()
-            .uri("/spring5/ab/cd")
+    	client.get()
+            .uri("/spring5/baeldung/tutorial")
             .exchange()
             .expectStatus()
             .is2xxSuccessful()
             .expectBody()
-            .equals("/ab/cd");
+            .equals("/baeldung/tutorial");
+
+        client.get()
+            .uri("/spring5/baeldung")
+            .exchange()
+            .expectStatus()
+            .is2xxSuccessful()
+            .expectBody()
+            .equals("/baeldung");
     }
 
     @Test

@@ -27,12 +27,12 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
     @Test
     public void givenRouter_whenGetPathWithSingleCharWildcard_thenGotPathPattern() throws Exception {
         client.get()
-            .uri("/paths")
+            .uri("/test")
             .exchange()
             .expectStatus()
             .isOk()
             .expectBody(String.class)
-            .isEqualTo("/p?ths");
+            .isEqualTo("Path /t?st is accessed");
     }
 
     @Test
@@ -50,12 +50,12 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
     public void givenRouter_whenGetMultipleCharWildcard_thenGotPathPattern() throws Exception {
 
         client.get()
-            .uri("/wildcard")
+            .uri("/baeldung/tutorialId")
             .exchange()
             .expectStatus()
             .isOk()
             .expectBody(String.class)
-            .isEqualTo("/*card path was accessed");
+            .isEqualTo("/baeldung/*Id path was accessed");
     }
 
     @Test
@@ -107,4 +107,14 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
             .isEqualTo("hello");
     }
 
+    @Test
+    public void givenRouter_whenAccess_thenGot() throws Exception {
+        client.get()
+            .uri("/resources/test/test.txt")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo("test");
+    }
 }

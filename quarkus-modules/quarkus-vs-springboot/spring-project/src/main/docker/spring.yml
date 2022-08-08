@@ -2,21 +2,25 @@ version: '3.1'
 
 services:
   db:
-    image: postgres
+    image: mysql:5.7.38
     ports:
-      - '5432:5432'
+      - '3306:3306'
     environment:
-      POSTGRES_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: baeldung
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
   app:
-    image: spring-project:0.1-SNAPSHOT
-    ports:
-      - '8080:8080'
+    image: docker.io/library/spring-project:0.1-SNAPSHOT
+    network_mode: "host"
     environment:
-      DB_URL: r2dbc:postgresql://db:5432/postgres
-    links:
-      - "db"
+      DB_URL: r2dbc:mysql://localhost:3306/baeldung?useSSL=true&requireSSL=true
+      HOST_HOSTNAME: ${EXTERNAL_IP}
     depends_on:
-      - "db"
-networks:
-  default:
-    driver: bridge
+      db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '3.00'
