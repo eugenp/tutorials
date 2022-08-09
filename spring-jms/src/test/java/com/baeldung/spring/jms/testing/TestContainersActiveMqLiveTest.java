@@ -27,11 +27,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import com.baeldung.spring.jms.testing.TestContainersActiveMqIntegrationTest.TestConfiguration;
+import com.baeldung.spring.jms.testing.TestContainersActiveMqLiveTest.TestConfiguration;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { TestConfiguration.class, MessageSender.class })
-public class TestContainersActiveMqIntegrationTest {
+public class TestContainersActiveMqLiveTest {
 
     @ClassRule
     public static GenericContainer<?> activeMqContainer = new GenericContainer<>(DockerImageName.parse("rmohr/activemq:5.14.3")).withExposedPorts(61616);
