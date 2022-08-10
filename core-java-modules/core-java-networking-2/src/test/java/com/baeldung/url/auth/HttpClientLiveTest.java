@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class HttpClientUnitTest {
+public class HttpClientLiveTest {
 
     @Test
     public void sendRquestWithAuthHeader() throws Exception {
