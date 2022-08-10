@@ -3,11 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>fauna</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>fauna</name>
-    <description>Blogging Service built with FaunaDB</description>
+    <description>Code snippets for FaunaDB articles</description>
 
    <parent>
         <groupId>com.baeldung</groupId>
@@ -28,7 +26,7 @@
         <dependency>
             <groupId>com.faunadb</groupId>
             <artifactId>faunadb-java</artifactId>
-            <version>4.2.0</version>
+            <version>${faunadb.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -40,11 +38,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-        	<groupId>org.springframework.boot</groupId>
-        	<artifactId>spring-boot-configuration-processor</artifactId>
-        	<optional>true</optional>
         </dependency>
         
         <!-- utils -->
@@ -67,6 +60,7 @@
     <properties>
         <java.version>17</java.version>
         <maven-pmd-plugin.version>3.17.0</maven-pmd-plugin.version>
+        <faunadb.version>4.2.0</faunadb.version>
     </properties>
 
 </project>
