@@ -7,4 +7,5 @@ This module contains articles about the Java List collection
 - [Reverse an ArrayList in Java](https://www.baeldung.com/java-reverse-arraylist)
 - [Sort a List Alphabetically in Java](https://www.baeldung.com/java-sort-list-alphabetically)
 - [Arrays.asList() vs Collections.singletonList()](https://www.baeldung.com/java-aslist-vs-singletonlist)
+- [Replace Element at a Specific Index in a Java ArrayList](https://www.baeldung.com/java-arraylist-replace-at-index)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list-3)
