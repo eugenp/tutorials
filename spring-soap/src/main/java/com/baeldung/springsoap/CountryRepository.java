@@ -1,6 +1,6 @@
 package com.baeldung.springsoap;
 
-import com.baeldung.springsoap.client.gen.*;
+import com.baeldung.springsoap.gen.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 

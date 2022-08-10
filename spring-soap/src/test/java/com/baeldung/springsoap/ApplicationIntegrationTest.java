@@ -1,6 +1,6 @@
 package com.baeldung.springsoap;
 
-import com.baeldung.springsoap.client.gen.GetCountryRequest;
+import com.baeldung.springsoap.gen.GetCountryRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
