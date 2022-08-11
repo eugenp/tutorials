@@ -16,14 +16,19 @@
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.13.1.1</version>
+            <version>${derby.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
-            <version>10.13.1.1</version>
+            <version>${derbyclient.version}</version>
         </dependency>
     </dependencies>
 
+    <properties>
+        <derby.version>10.13.1.1</derby.version>
+        <derbyclient.version>10.13.1.1</derbyclient.version>
+    </properties>
+    
 </project>

@@ -84,10 +84,8 @@
         <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
         <hibernate-core.version>5.6.7.Final</hibernate-core.version>
         <maven.deploy.skip>true</maven.deploy.skip>
-        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <h2.version>2.1.212</h2.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
 </project>
