@@ -17,6 +17,7 @@
         <module>apache-tapestry</module>
         <module>bootique</module>
         <module>dropwizard</module>
+        <module>blade</module>
     </modules>
 
     <build>

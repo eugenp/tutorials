@@ -362,7 +362,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
                 <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
@@ -791,7 +790,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
                 <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
