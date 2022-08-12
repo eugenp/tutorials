@@ -345,7 +345,6 @@
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
-                <module>apache-tapestry</module>
                 <module>web-modules</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
@@ -777,7 +776,6 @@
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
-                <module>apache-tapestry</module>
                 <module>web-modules</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
