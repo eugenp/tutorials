@@ -35,7 +35,7 @@ public class IntegrationConfiguration {
     private final Function<String, String> toLowerCase = String::toLowerCase;
     private final MessageGroupProcessor buildMessageWithListPayload = messageGroup -> MessageBuilder.withPayload(messageGroup.streamMessages()
         .map(Message::getPayload)
-        .toList())
+        .collect(Collectors.toList()))
         .build();
     private final ReleaseStrategy listSizeReached = r -> r.size() == r.getSequenceSize();
 
