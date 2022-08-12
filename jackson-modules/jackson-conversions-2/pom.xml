@@ -39,6 +39,11 @@
             <version>${mockserver-netty.version}</version>
             <scope>test</scope>        
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,6 +58,7 @@
 
     <properties>
         <mockserver-netty.version>5.13.2</mockserver-netty.version>
+		<json.version>20220320</json.version>
     </properties>
 
 </project>

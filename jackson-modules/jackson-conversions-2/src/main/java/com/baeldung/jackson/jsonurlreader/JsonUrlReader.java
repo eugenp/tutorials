@@ -8,6 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
+
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -49,5 +52,11 @@ public class JsonUrlReader {
 
     public static String getString(String url) throws StreamReadException, DatabindException, MalformedURLException, IOException {
         return get(url).toPrettyString();
+    }
+
+    public static JSONObject getJson(String url) throws MalformedURLException, IOException {
+        String json = IOUtils.toString(new URL(url), Charset.forName("UTF-8"));
+        JSONObject object = new JSONObject(json);
+        return object;
     }
 }
