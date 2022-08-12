@@ -19,6 +19,7 @@
         <module>bootique</module>
         <module>dropwizard</module>
         <module>java-lite</module>
+        <module>jooby</module>
     </modules>
 
     <build>

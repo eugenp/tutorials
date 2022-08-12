@@ -436,7 +436,6 @@
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
-                <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -863,7 +862,6 @@
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
-                <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
