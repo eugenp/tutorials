@@ -4,6 +4,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutException;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -43,6 +44,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = WebClientApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@Slf4j
 class WebClientIntegrationTest {
 
     private static final String BODY_VALUE = "bodyValue";
@@ -54,11 +56,14 @@ class WebClientIntegrationTest {
 
     @Test
     void givenDifferentWebClientCreationMethods_whenUsed_thenObtainExpectedResponse() {
+        log.info("Executing test using several webclient configs ....");
         // WebClient creation
-        WebClient client1 = WebClient.create();
-        WebClient client2 = WebClient.create("http://localhost:" + port);
+        WebClient client1 = WebClient.builder().clientConnector(httpConnector()).build();
+        WebClient client2 = WebClient.builder().baseUrl("http://localhost:" + port)
+          .clientConnector(httpConnector()).build();
         WebClient client3 = WebClient.builder()
           .baseUrl("http://localhost:" + port)
+          .clientConnector(httpConnector())
           .defaultCookie("cookieKey", "cookieValue")
           .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
           .defaultUriVariables(Collections.singletonMap("url", "http://localhost:8080"))
@@ -75,21 +80,30 @@ class WebClientIntegrationTest {
         StepVerifier.create(retrieveResponse(client3))
           .expectNext("processed-bodyValue")
           .verifyComplete();
+
         // assert response without specifying URI
+        log.info("Obtaining error response using default client (without url) ....");
         StepVerifier.create(retrieveResponse(client1))
           .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
             .contains("Connection refused"))
+          .log()
           .verify();
+        log.info("error response processed as expected");
     }
 
     @Test
     void givenWebClientCreationWithoutUri_whenUsed_thenObtainExpectedResponse() {
-        WebClient client = WebClient.create();
+        log.info("Executing test for connection refused....");
+        WebClient client = WebClient.builder()
+          .clientConnector(httpConnector())
+          .build();
 
         StepVerifier.create(retrieveResponse(client))
           .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
             .contains("Connection refused"))
+          .log()
           .verify();
+        log.info("test completed....");
     }
 
     @Test
@@ -137,16 +151,19 @@ class WebClientIntegrationTest {
     @Test
     void givenOverriddenUriSpecifications_whenUsed_thenObtainExpectedResponse() {
         RequestBodySpec bodySpecOverriddenBaseUri = createDefaultPostRequest().uri(URI.create("/resource"));
+
         StepVerifier.create(retrieveResponse(bodySpecOverriddenBaseUri))
           .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
             .contains("Connection refused"))
           .verify();
 
         RequestBodySpec bodySpecOverriddenBaseUri2 = WebClient.builder()
+          .clientConnector(httpConnector())
           .baseUrl("http://localhost:" + port)
           .build()
           .post()
           .uri(URI.create("/resource"));
+
         StepVerifier.create(retrieveResponse(bodySpecOverriddenBaseUri2))
           .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
             .contains("Connection refused"))
@@ -294,7 +311,17 @@ class WebClientIntegrationTest {
 
     // helper methods to create default instances
     private WebClient createDefaultClient() {
-        return WebClient.create("http://localhost:" + port);
+        return WebClient.builder()
+          .baseUrl("http://localhost:" + port)
+          .clientConnector(httpConnector())
+          .build();
+    }
+
+    private static ReactorClientHttpConnector httpConnector() {
+        HttpClient httpClient = HttpClient
+          .create()
+          .wiretap(true);
+        return new ReactorClientHttpConnector(httpClient);
     }
 
     private RequestBodyUriSpec createDefaultPostRequest() {
