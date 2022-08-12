@@ -7,6 +7,8 @@ import org.apache.camel.RoutesBuilder;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.seda.apachecamel.WordCountRoute;
+
 public class ApacheCamelSedaUnitTest extends CamelTestSupport {
 
     @Test
