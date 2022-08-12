@@ -9,6 +9,9 @@
             name="com.baeldung.reactive.debugging.consumer.service.FooService">
         <appender-ref ref="LISTAPPENDER" />
     </logger>
+
+    <logger name="reactor.netty.http.client" level="DEBUG"/>
+
     <root level="info">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="LISTAPPENDER" />
