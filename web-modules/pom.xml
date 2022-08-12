@@ -15,9 +15,10 @@
 
     <modules>
         <module>apache-tapestry</module>
+        <module>blade</module>
         <module>bootique</module>
         <module>dropwizard</module>
-        <module>blade</module>
+        <module>java-lite</module>
     </modules>
 
     <build>

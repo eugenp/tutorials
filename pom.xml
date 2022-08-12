@@ -345,7 +345,6 @@
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
-                <module>web-modules</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -416,7 +415,6 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -513,6 +511,7 @@
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>slack</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
@@ -773,7 +772,6 @@
                 <module>apache-rocketmq</module>
                 <module>apache-shiro</module>
                 <module>apache-spark</module>
-                <module>web-modules</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -844,7 +842,6 @@
 
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
@@ -943,6 +940,7 @@
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>slack</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
