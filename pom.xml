@@ -363,7 +363,6 @@
 
                 <module>bazel</module>
                 <module>blade</module>
-                <module>bootique</module>
                 <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
@@ -794,7 +793,6 @@
 
                 <module>bazel</module>
                 <module>blade</module>
-                <module>bootique</module>
                 <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>

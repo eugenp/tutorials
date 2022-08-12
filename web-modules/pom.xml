@@ -15,6 +15,7 @@
 
     <modules>
         <module>apache-tapestry</module>
+        <module>bootique</module>
     </modules>
 
     <build>
