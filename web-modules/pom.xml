@@ -24,6 +24,7 @@
         <module>ninja</module>
         <module>ratpack</module>
         <module>resteasy</module>
+        <module>restx</module>
     </modules>
 
     <build>

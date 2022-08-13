@@ -499,7 +499,6 @@
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>reactor-core</module>
-                <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
                 <module>rxjava-modules</module>
@@ -923,7 +922,6 @@
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>reactor-core</module>
-                <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
                 <module>rxjava-modules</module>
