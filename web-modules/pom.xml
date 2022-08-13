@@ -22,6 +22,7 @@
         <module>jooby</module>
         <module>linkrest</module>
         <module>ninja</module>
+        <module>ratpack</module>
     </modules>
 
     <build>

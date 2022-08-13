@@ -498,7 +498,6 @@
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
-                <module>ratpack</module>
                 <module>reactor-core</module>
                 <module>resteasy</module>
                 <module>restx</module>
@@ -924,7 +923,6 @@
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
-                <module>ratpack</module>
                 <module>reactor-core</module>
                 <module>resteasy</module>
                 <module>restx</module>
