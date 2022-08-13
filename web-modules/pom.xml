@@ -21,6 +21,7 @@
         <module>java-lite</module>
         <module>jooby</module>
         <module>linkrest</module>
+        <module>ninja</module>
     </modules>
 
     <build>

@@ -480,7 +480,6 @@
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
                 <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
@@ -907,7 +906,6 @@
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
                 <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
