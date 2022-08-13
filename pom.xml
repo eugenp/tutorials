@@ -461,7 +461,6 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
                 <module>libraries-testing</module>
-                <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
@@ -889,7 +888,6 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
                 <module>libraries-testing</module>
-                <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
