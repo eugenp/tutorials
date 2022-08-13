@@ -553,7 +553,6 @@
                 <module>saas</module>
                 <module>software-security/sql-injection-samples</module>
 
-                <module>spark-java</module>
                 <module>spf4j</module>
 
                 <module>spring-4</module>
@@ -968,7 +967,6 @@
                 <module>saas</module>
                 <module>software-security/sql-injection-samples</module>
 
-                <module>spark-java</module>
                 <module>spf4j</module>
 
                 <module>spring-4</module>

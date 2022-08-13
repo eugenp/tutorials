@@ -25,6 +25,7 @@
         <module>ratpack</module>
         <module>resteasy</module>
         <module>restx</module>
+        <module>spark-java</module>
     </modules>
 
     <build>
