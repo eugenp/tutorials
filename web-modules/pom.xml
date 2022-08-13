@@ -23,6 +23,7 @@
         <module>linkrest</module>
         <module>ninja</module>
         <module>ratpack</module>
+        <module>resteasy</module>
     </modules>
 
     <build>
