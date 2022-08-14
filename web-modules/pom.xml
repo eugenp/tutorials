@@ -26,6 +26,7 @@
         <module>resteasy</module>
         <module>restx</module>
         <module>spark-java</module>
+        <module>vraptor</module>
     </modules>
 
     <build>
