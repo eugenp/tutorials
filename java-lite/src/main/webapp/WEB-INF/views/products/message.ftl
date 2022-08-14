@@ -1,4 +1,0 @@
-{
-"message" : "${message}",
-"code" : ${code}
-}
