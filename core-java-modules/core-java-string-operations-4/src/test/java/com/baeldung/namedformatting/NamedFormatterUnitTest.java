@@ -27,8 +27,7 @@ class NamedFormatterUnitTest {
         params.put("number", 42);
         String result = StrSubstitutor.replace(TEMPLATE, params, "${", "}");
 
-        // this assertion fails:
-        // assertThat(result).isEqualTo("Text: ['${number}' is a placeholder.] Number: [42] Text again: ['${number}' is a placeholder.]");
+        assertThat(result).isNotEqualTo("Text: ['${number}' is a placeholder.] Number: [42] Text again: ['${number}' is a placeholder.]");
 
         assertThat(result).isEqualTo("Text: ['42' is a placeholder.] Number: [42] Text again: ['42' is a placeholder.]");
     }
