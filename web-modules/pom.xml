@@ -19,6 +19,7 @@
         <module>bootique</module>
         <module>dropwizard</module>
         <module>google-web-toolkit</module>
+        <module>jakarta-ee</module>
         <module>java-lite</module>
         <module>jooby</module>
         <module>linkrest</module>

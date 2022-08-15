@@ -425,7 +425,6 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -843,7 +842,6 @@
                 <module>jaxb</module>
                 <module>jee-7</module>
                 <module>jee-7-security</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
