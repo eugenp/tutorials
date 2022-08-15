@@ -631,7 +631,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts-2</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1040,7 +1039,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts-2</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
