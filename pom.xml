@@ -421,7 +421,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
                 <module>jee-7-security</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -836,7 +835,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
                 <module>jee-7-security</module>
                 <module>jersey</module>
                 <module>jgit</module>
