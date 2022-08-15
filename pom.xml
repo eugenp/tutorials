@@ -392,7 +392,6 @@
 
                 <module>geotools</module>
                 <module>google-cloud</module>
-                <module>google-web-toolkit</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
@@ -811,7 +810,6 @@
 
                 <module>geotools</module>
                 <module>google-cloud</module>
-                <module>google-web-toolkit</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>

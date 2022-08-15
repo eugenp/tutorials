@@ -18,6 +18,7 @@
         <module>blade</module>
         <module>bootique</module>
         <module>dropwizard</module>
+        <module>google-web-toolkit</module>
         <module>java-lite</module>
         <module>jooby</module>
         <module>linkrest</module>
