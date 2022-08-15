@@ -33,6 +33,7 @@
         <module>spark-java</module>
         <module>struts-2</module>
         <module>vraptor</module>
+        <module>wicket</module>
     </modules>
 
     <build>
