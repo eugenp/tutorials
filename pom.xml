@@ -418,7 +418,6 @@
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
-                <module>javax-servlets</module>
                 <module>javax-servlets-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
@@ -835,7 +834,6 @@
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
-                <module>javax-servlets</module>
                 <module>javax-servlets-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>

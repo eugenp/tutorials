@@ -21,6 +21,7 @@
         <module>google-web-toolkit</module>
         <module>jakarta-ee</module>
         <module>java-lite</module>
+        <module>javax-servlets</module>
         <module>jooby</module>
         <module>linkrest</module>
         <module>ninja</module>
