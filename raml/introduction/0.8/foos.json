@@ -1,5 +1,0 @@
-{ "$schema": "http://json-schema.org/schema",
-  "type": "array",
-  "items": { "$ref": "foo" }
-  "description": "Collection of Foos"
-}
