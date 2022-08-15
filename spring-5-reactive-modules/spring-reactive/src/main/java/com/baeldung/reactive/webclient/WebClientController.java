@@ -29,6 +29,11 @@ public class WebClientController {
         return bodyString.map(body -> "processed-" + body);
     }
 
+    @PostMapping("/resource-override")
+    public Mono<String> postStringResourceOverride(@RequestBody Mono<String> bodyString) {
+        return bodyString.map(body -> "override-processed-" + body);
+    }
+
     @PostMapping("/resource-foo")
     public Mono<String> postFooResource(@RequestBody Mono<Foo> bodyFoo) {
         return bodyFoo.map(foo -> "processedFoo-" + foo.getName());
