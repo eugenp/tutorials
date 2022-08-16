@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class CountdownLatchResetExampleUnitTest {
+public class CountdownLatchResetExampleManualTest {
     
     @Test
     public void whenCountDownLatch_noReset() {
