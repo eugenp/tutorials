@@ -111,6 +111,8 @@
         <!-- persistence -->
         <hibernate.version>5.2.17.Final</hibernate.version>
         <postgresql.version>42.2.20</postgresql.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
+        <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
 
 </project>

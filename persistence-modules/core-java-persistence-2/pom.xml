@@ -44,12 +44,12 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.11.11</version>
+            <version>${jooq.version}</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20220320</version>
+            <version>${json.version}</version>
         </dependency>
     </dependencies>
 
@@ -57,6 +57,8 @@
         <mssql.driver.version>8.4.1.jre11</mssql.driver.version>
         <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
         <mysql.driver.version>8.0.22</mysql.driver.version>
+        <jooq.version>3.11.11</jooq.version>
+        <json.version>20220320</json.version>
     </properties>
 
 </project>
