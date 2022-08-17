@@ -1,4 +1,4 @@
-package com.baeldung.chararraytostring;
+package com.baeldung.inttostring;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +23,8 @@ public class IntToStringUnitTest {
     @Test(expected = NullPointerException.class)
     public void whenNullIntegerObjectIsPassed_thenShouldThrowException() {
         Integer i = null;
-        System.out.println(String.valueOf(i)); // it prints "null"
-        System.out.println(i.toString()); 
+        // NOTE: primitive int can never be null, we are checking this example to check in what case the exception is thrown by these methods.
+        System.out.println(String.valueOf(i)); // prints "null" as the call goes to String.valueOf(Object obj) method
+        System.out.println(i.toString()); // throws NPE
     }
 }
