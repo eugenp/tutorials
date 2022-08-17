@@ -406,7 +406,6 @@
                 <module>guice</module>
 
                 <module>hazelcast</module>
-                <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -478,9 +477,7 @@
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
-                <module>micronaut</module>
-                <module>microprofile</module>
-                <module>msf4j</module>
+                <module>microservices-modules</module>
                 <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
@@ -488,7 +485,6 @@
                 <module>netflix-modules</module>
                 <module>netty</module>
                 <module>ninja</module>
-                <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
                 <module>optaplanner</module>
@@ -837,7 +833,6 @@
                 <module>guice</module>
 
                 <module>hazelcast</module>
-                <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -911,9 +906,7 @@
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
-                <module>micronaut</module>
-                <module>microprofile</module>
-                <module>msf4j</module>
+                <module>microservices-modules</module>
                 <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
@@ -921,7 +914,6 @@
                 <module>netflix-modules</module>
                 <module>netty</module>
                 <module>ninja</module>
-                <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
                 <module>optaplanner</module>
