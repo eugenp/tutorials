@@ -62,6 +62,16 @@
             <artifactId>spqr</artifactId>
             <version>0.11.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jandex</artifactId>
+            <version>2.4.3.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -88,6 +98,27 @@
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
                             </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jboss.jandex</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <version>1.2.3</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <id>make-index</id>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                        <configuration>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${project.build.outputDirectory}</directory>
+                                </fileSet>
+                            </fileSets>
                         </configuration>
                     </execution>
                 </executions>
