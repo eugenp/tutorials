@@ -1,11 +1,9 @@
 package com.baeldung.positivenegative;
 
-import static com.baeldung.positivenegative.PositiveOrNegative.Result.NEGATIVE;
-import static com.baeldung.positivenegative.PositiveOrNegative.Result.POSITIVE;
-import static com.baeldung.positivenegative.PositiveOrNegative.Result.ZERO;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
+
+import static com.baeldung.positivenegative.PositiveOrNegative.Result.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PositiveOrNegativeUnitTest {
     @Test
