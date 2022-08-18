@@ -338,6 +338,7 @@
 
                 <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
+                <module>apache-kafka-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
@@ -769,6 +770,7 @@
 
                 <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
+                <module>apache-kafka-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
