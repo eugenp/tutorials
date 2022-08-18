@@ -26,6 +26,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
 </project>
