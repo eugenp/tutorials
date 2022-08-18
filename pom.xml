@@ -492,7 +492,6 @@
                 <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
-                <module>optaplanner</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -926,7 +925,6 @@
                 <module>open-liberty</module>
 
                 <module>oauth2-framework-impl</module>
-                <module>optaplanner</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -1248,6 +1246,7 @@
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>maven-modules/multimodulemavenproject</module>
+                 <module>optaplanner</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-modules/quarkus-vs-springboot</module>
@@ -1317,6 +1316,7 @@
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>maven-modules/multimodulemavenproject</module>
+                <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-modules/quarkus-vs-springboot</module>
