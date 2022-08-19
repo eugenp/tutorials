@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.jobrunr;
 
 import com.baeldung.jobrunr.service.SampleJobService;
 import org.jobrunr.scheduling.JobScheduler;
