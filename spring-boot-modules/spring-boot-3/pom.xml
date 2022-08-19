@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-    <artifactId>spring-boot-3-sample</artifactId>
+    <artifactId>spring-boot-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-3-sample</name>
+    <name>spring-boot-3</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>

@@ -109,7 +109,6 @@
     <properties>
         <blade-mvc.version>2.0.14.RELEASE</blade-mvc.version>
         <bootstrap.version>4.2.1</bootstrap.version>
-        <lombok.version>1.18.4</lombok.version>
         <httpclient.version>4.5.6</httpclient.version>
         <httpmime.version>4.5.6</httpmime.version>
         <httpcore.version>4.4.10</httpcore.version>
