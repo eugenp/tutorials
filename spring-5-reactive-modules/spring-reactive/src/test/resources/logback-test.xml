@@ -10,7 +10,7 @@
         <appender-ref ref="LISTAPPENDER" />
     </logger>
 
-    <logger name="reactor.netty.http.client" level="DEBUG"/>
+    <logger name="reactor.netty.http.client" level="INFO"/>
 
     <root level="info">
         <appender-ref ref="CONSOLE" />

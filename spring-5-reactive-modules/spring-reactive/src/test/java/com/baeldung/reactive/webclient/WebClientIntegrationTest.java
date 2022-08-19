@@ -4,7 +4,6 @@ import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutException;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -44,7 +43,6 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = WebClientApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@Slf4j
 class WebClientIntegrationTest {
 
     private static final String BODY_VALUE = "bodyValue";
@@ -56,11 +54,18 @@ class WebClientIntegrationTest {
 
     @Test
     void givenDifferentWebClientCreationMethods_whenUsed_thenObtainExpectedResponse() {
-        log.info("Executing test using several webclient configs ....");
-        // WebClient creation
         WebClient client1 = WebClient.builder().clientConnector(httpConnector()).build();
+        StepVerifier.create(retrieveResponse(client1.post()
+            .uri("http://localhost:" + port + "/resource")))
+          .expectNext("processed-bodyValue")
+          .verifyComplete();
+
         WebClient client2 = WebClient.builder().baseUrl("http://localhost:" + port)
           .clientConnector(httpConnector()).build();
+        StepVerifier.create(retrieveResponse(client2))
+          .expectNext("processed-bodyValue")
+          .verifyComplete();
+
         WebClient client3 = WebClient.builder()
           .baseUrl("http://localhost:" + port)
           .clientConnector(httpConnector())
@@ -68,58 +73,25 @@ class WebClientIntegrationTest {
           .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
           .defaultUriVariables(Collections.singletonMap("url", "http://localhost:8080"))
           .build();
-
-        // response assertions
-        StepVerifier.create(retrieveResponse(client1.post()
-            .uri("http://localhost:" + port + "/resource")))
-          .expectNext("processed-bodyValue")
-          .verifyComplete();
-        StepVerifier.create(retrieveResponse(client2))
-          .expectNext("processed-bodyValue")
-          .verifyComplete();
         StepVerifier.create(retrieveResponse(client3))
           .expectNext("processed-bodyValue")
           .verifyComplete();
-
-        // assert response without specifying URI
-        log.info("Obtaining error response using default client (without url) ....");
-        StepVerifier.create(retrieveResponse(client1))
-          .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
-            .contains("Connection refused"))
-          .log()
-          .verify();
-        log.info("error response processed as expected");
-    }
-
-    @Test
-    void givenWebClientCreationWithoutUri_whenUsed_thenObtainExpectedResponse() {
-        log.info("Executing test for connection refused....");
-        WebClient client = WebClient.builder()
-          .clientConnector(httpConnector())
-          .build();
-
-        StepVerifier.create(retrieveResponse(client))
-          .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
-            .contains("Connection refused"))
-          .log()
-          .verify();
-        log.info("test completed....");
     }
 
     @Test
     void givenDifferentMethodSpecifications_whenUsed_thenObtainExpectedResponse() {
-        // request specification
-        RequestBodyUriSpec uriSpecPost1 = createDefaultClient().method(HttpMethod.POST);
-        RequestBodyUriSpec uriSpecPost2 = createDefaultClient().post();
-        RequestHeadersUriSpec<?> requestGet = createDefaultClient().get();
 
-        // response assertions
+        RequestBodyUriSpec uriSpecPost1 = createDefaultClient().method(HttpMethod.POST);
         StepVerifier.create(retrieveResponse(uriSpecPost1))
           .expectNext("processed-bodyValue")
           .verifyComplete();
+
+        RequestBodyUriSpec uriSpecPost2 = createDefaultClient().post();
         StepVerifier.create(retrieveResponse(uriSpecPost2))
           .expectNext("processed-bodyValue")
           .verifyComplete();
+
+        RequestHeadersUriSpec<?> requestGet = createDefaultClient().get();
         StepVerifier.create(retrieveGetResponse(requestGet))
           .expectNextMatches(nextMap -> nextMap.get("field")
             .equals("value"))
@@ -128,21 +100,21 @@ class WebClientIntegrationTest {
 
     @Test
     void givenDifferentUriSpecifications_whenUsed_thenObtainExpectedResponse() {
-        // uri specification
-        RequestBodySpec bodySpecUsingString = createDefaultPostRequest().uri("/resource");
-        RequestBodySpec bodySpecUsingUriBuilder = createDefaultPostRequest().uri(
-          uriBuilder -> uriBuilder.pathSegment("resource")
-            .build());
-        RequestBodySpec bodySpecusingURI = createDefaultPostRequest().uri(
-          URI.create("http://localhost:" + port + "/resource"));
 
-        // response assertions
+        RequestBodySpec bodySpecUsingString = createDefaultPostRequest().uri("/resource");
         StepVerifier.create(retrieveResponse(bodySpecUsingString))
           .expectNext("processed-bodyValue")
           .verifyComplete();
+
+        RequestBodySpec bodySpecUsingUriBuilder = createDefaultPostRequest().uri(
+          uriBuilder -> uriBuilder.pathSegment("resource")
+            .build());
         StepVerifier.create(retrieveResponse(bodySpecUsingUriBuilder))
           .expectNext("processed-bodyValue")
           .verifyComplete();
+
+        RequestBodySpec bodySpecusingURI = createDefaultPostRequest().uri(
+          URI.create("http://localhost:" + port + "/resource"));
         StepVerifier.create(retrieveResponse(bodySpecusingURI))
           .expectNext("processed-bodyValue")
           .verifyComplete();
@@ -150,24 +122,23 @@ class WebClientIntegrationTest {
 
     @Test
     void givenOverriddenUriSpecifications_whenUsed_thenObtainExpectedResponse() {
-        RequestBodySpec bodySpecOverriddenBaseUri = createDefaultPostRequest().uri(URI.create("/resource"));
+        RequestBodySpec bodySpecOverriddenBaseUri = createDefaultPostRequest()
+          .uri(URI.create("http://localhost:" + port + "/resource-override"));
 
         StepVerifier.create(retrieveResponse(bodySpecOverriddenBaseUri))
-          .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
-            .contains("Connection refused"))
-          .verify();
+          .expectNext("override-processed-bodyValue")
+          .verifyComplete();
 
         RequestBodySpec bodySpecOverriddenBaseUri2 = WebClient.builder()
           .clientConnector(httpConnector())
           .baseUrl("http://localhost:" + port)
           .build()
           .post()
-          .uri(URI.create("/resource"));
+          .uri(URI.create("http://localhost:" + port + "/resource-override"));
 
         StepVerifier.create(retrieveResponse(bodySpecOverriddenBaseUri2))
-          .expectErrorMatches(ex -> WebClientRequestException.class.isAssignableFrom(ex.getClass()) && ex.getMessage()
-            .contains("Connection refused"))
-          .verify();
+          .expectNext("override-processed-bodyValue")
+          .verifyComplete();
     }
 
     @Test
@@ -212,7 +183,7 @@ class WebClientIntegrationTest {
         StepVerifier.create(retrieveResponse(headersSpecPlainObject))
           .expectError(CodecException.class)
           .verify();
-        // assert response for request with no body
+        // assert response for request without body
         Mono<Map<String, String>> responsePostWithNoBody = createDefaultPostResourceRequest().exchangeToMono(
           responseHandler -> {
               assertThat(responseHandler.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
@@ -342,35 +313,30 @@ class WebClientIntegrationTest {
           .uri("/resource")
           .bodyValue(BODY_VALUE)
           .retrieve()
-          .bodyToMono(String.class)
-          .log();
+          .bodyToMono(String.class);
     }
 
     private Mono<String> retrieveResponse(RequestBodyUriSpec spec) {
         return spec.uri("/resource")
           .bodyValue(BODY_VALUE)
           .retrieve()
-          .bodyToMono(String.class)
-          .log();
+          .bodyToMono(String.class);
     }
 
     private Mono<Map<String, String>> retrieveGetResponse(RequestHeadersUriSpec<?> spec) {
         return spec.uri("/resource")
           .retrieve()
-          .bodyToMono(MAP_RESPONSE_REF)
-          .log();
+          .bodyToMono(MAP_RESPONSE_REF);
     }
 
     private Mono<String> retrieveResponse(RequestBodySpec spec) {
         return spec.bodyValue(BODY_VALUE)
           .retrieve()
-          .bodyToMono(String.class)
-          .log();
+          .bodyToMono(String.class);
     }
 
     private Mono<String> retrieveResponse(RequestHeadersSpec<?> spec) {
         return spec.retrieve()
-          .bodyToMono(String.class)
-          .log();
+          .bodyToMono(String.class);
     }
 }
