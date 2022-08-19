@@ -1,6 +1,6 @@
-package com.baeldung.swagger_responses.service;
+package com.baeldung.swaggerresponses.service;
 
-import com.baeldung.swagger_responses.response.CustomerResponse;
+import com.baeldung.swaggerresponses.response.CustomerResponse;
 
 import org.springframework.stereotype.Service;
 

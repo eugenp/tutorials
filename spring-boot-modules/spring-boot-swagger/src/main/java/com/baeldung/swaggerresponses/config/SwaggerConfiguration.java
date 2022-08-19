@@ -1,4 +1,4 @@
-package com.baeldung.swagger_responses.config;
+package com.baeldung.swaggerresponses.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

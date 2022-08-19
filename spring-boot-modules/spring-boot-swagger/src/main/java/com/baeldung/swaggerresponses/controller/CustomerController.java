@@ -1,8 +1,8 @@
-package com.baeldung.swagger_responses.controller;
+package com.baeldung.swaggerresponses.controller;
 
-import com.baeldung.swagger_responses.response.CustomerResponse;
-import com.baeldung.swagger_responses.response.ErrorResponse;
-import com.baeldung.swagger_responses.service.CustomerService;
+import com.baeldung.swaggerresponses.response.CustomerResponse;
+import com.baeldung.swaggerresponses.response.ErrorResponse;
+import com.baeldung.swaggerresponses.service.CustomerService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

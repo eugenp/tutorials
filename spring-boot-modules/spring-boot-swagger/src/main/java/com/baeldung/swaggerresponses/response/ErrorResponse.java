@@ -1,4 +1,4 @@
-package com.baeldung.swagger_responses.response;
+package com.baeldung.swaggerresponses.response;
 
 public class ErrorResponse {
 
