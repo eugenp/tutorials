@@ -16,28 +16,23 @@ public class PositiveOrNegative {
 
     public static Result bySignum(Integer integer) {
         int result = Integer.signum(integer);
-        if (result == 0) {
-            return Result.ZERO;
-        }
 
         if (result == 1) {
             return Result.POSITIVE;
-        } else {
+        } else if (result == -1) {
             return Result.NEGATIVE;
         }
+        return Result.ZERO;
     }
 
     public static Result bySignum(Float floatNumber) {
         float result = Math.signum(floatNumber);
 
-        if (result == 0) {
-            return Result.ZERO;
-        }
-
         if (result == 1.0f) {
             return Result.POSITIVE;
-        } else {
+        } else if (result == -1.0f) {
             return Result.NEGATIVE;
         }
+        return Result.ZERO;
     }
 }
