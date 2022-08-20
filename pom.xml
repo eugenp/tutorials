@@ -361,8 +361,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
-                <module>bootique</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -417,8 +415,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -469,7 +465,6 @@
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -765,8 +760,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
-                <module>bootique</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -821,8 +814,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -875,7 +866,6 @@
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
 
                 <module>orika</module>
                 <module>osgi</module>
