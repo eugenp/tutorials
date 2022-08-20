@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.cloud</groupId>
-    <artifactId>batch-job</artifactId>
+    <artifactId>spring-cloud-data-flow-batch-job</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>batch-job</name>
+    <name>spring-cloud-data-flow-batch-job</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
