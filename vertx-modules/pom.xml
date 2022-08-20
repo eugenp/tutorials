@@ -15,6 +15,7 @@
 
     <modules>
         <module>vertx</module>
+        <module>spring-vertx</module>
     </modules>
 
     <build>

@@ -626,7 +626,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -1039,7 +1038,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
