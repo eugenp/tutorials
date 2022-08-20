@@ -725,7 +725,6 @@
 
                 <module>vaadin</module>
                 <module>vavr-modules</module>
-                <module>vavr-2</module>
             </modules>
         </profile>
 
@@ -1144,7 +1143,6 @@
 
                 <module>vaadin</module>
                 <module>vavr-modules</module>
-                <module>vavr-2</module>
             </modules>
 
         </profile>

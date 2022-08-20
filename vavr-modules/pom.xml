@@ -15,6 +15,7 @@
 
     <modules>
         <module>vavr</module>
+        <module>vavr-2</module>
     </modules>
 
     <build>
