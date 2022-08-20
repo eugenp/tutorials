@@ -16,6 +16,7 @@
     <modules>
         <module>vavr</module>
         <module>vavr-2</module>
+        <module>java-vavr-stream</module>
     </modules>
 
     <build>
