@@ -643,7 +643,6 @@
 
                 <module>undertow</module>
 
-                <module>vertx-and-rxjava</module>
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>vraptor</module>
@@ -1055,7 +1054,6 @@
 
                 <module>undertow</module>
 
-                <module>vertx-and-rxjava</module>
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>vraptor</module>
