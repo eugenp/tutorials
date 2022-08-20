@@ -724,7 +724,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
+                <module>vavr-modules</module>
                 <module>vavr-2</module>
             </modules>
         </profile>
@@ -1143,7 +1143,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
+                <module>vavr-modules</module>
                 <module>vavr-2</module>
             </modules>
 
