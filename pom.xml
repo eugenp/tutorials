@@ -344,7 +344,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
@@ -365,11 +364,9 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
@@ -415,9 +412,6 @@
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
-                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
-
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
@@ -431,14 +425,12 @@
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
-                <module>jee-7-security</module>
                 <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
-                <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
@@ -491,7 +483,6 @@
                 <module>ninja</module>
                 <module>open-liberty</module>
 
-                <module>oauth2-framework-impl</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -515,6 +506,7 @@
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
+                <module>security-modules</module>
                 <module>slack</module>
             </modules>
 
@@ -561,7 +553,6 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
-                <module>software-security/sql-injection-samples</module>
 
                 <module>spark-java</module>
                 <module>spf4j</module>
@@ -775,7 +766,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
                 <module>apache-spark</module>
                 <module>apache-tapestry</module>
                 <module>apache-thrift</module>
@@ -796,11 +786,9 @@
                 <module>bazel</module>
                 <module>blade</module>
                 <module>bootique</module>
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
@@ -846,9 +834,6 @@
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
-                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
-
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-lite</module>
@@ -862,14 +847,12 @@
                 <module>javaxval</module>
                 <module>jaxb</module>
                 <module>jee-7</module>
-                <module>jee-7-security</module>
                 <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
-                <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
@@ -924,7 +907,6 @@
                 <module>ninja</module>
                 <module>open-liberty</module>
 
-                <module>oauth2-framework-impl</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -948,6 +930,7 @@
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
+                <module>security-modules</module>
                 <module>slack</module>
             </modules>
 
@@ -986,7 +969,6 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
-                <module>software-security/sql-injection-samples</module>
 
                 <module>spark-java</module>
                 <module>spf4j</module>
