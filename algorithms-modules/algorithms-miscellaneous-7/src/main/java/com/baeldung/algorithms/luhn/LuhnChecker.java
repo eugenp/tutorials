@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 public class LuhnChecker {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(LuhnChecker.class);
-	
+    private static final Logger LOGGER = LoggerFactory.getLogger(LuhnChecker.class);
+    
     /*
      * Starting from the rightmost digit, we add all the digits together, performing
      * a special step for every second digit.
@@ -19,7 +19,6 @@ public class LuhnChecker {
      * This is how the final digit of a credit card is calculated.
      */
     public static boolean checkLuhn(String cardNumber) {
-
         int sum = 0;
 
         try {
@@ -39,14 +38,14 @@ public class LuhnChecker {
             
         } catch (NumberFormatException e) {
             LOGGER.error("NumberFormatException - Card number probably contained some non-numeric characters, returning false");
-        	return false;
+            return false;
         } catch (NullPointerException e) {
             LOGGER.error("Null pointer - Card number was probably null, returning false");
-        	return false;
+            return false;
         }
         
         boolean result = sum % 10 == 0;
-		
+        
         LOGGER.info("Luhn check result (sum divisible by 10): " + result);
         
         return result;
@@ -65,7 +64,6 @@ public class LuhnChecker {
      * 9*2 = 18 -> 1+9 = 9 = 18-9
      */
     public static int doubleAndSumDigits(int digit) {
-
         int ret = digit * 2;
 
         if (ret > 9) {
