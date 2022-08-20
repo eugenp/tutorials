@@ -344,7 +344,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
                 <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
@@ -362,11 +361,11 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>cas</module>
+                <module>blade</module>
+                <module>bootique</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
@@ -402,7 +401,6 @@
                 <module>guice</module>
 
                 <module>hazelcast</module>
-                <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -410,9 +408,6 @@
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
-                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
-
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-rmi</module>
@@ -422,13 +417,13 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7-security</module>
+                <module>jee-7</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
-                <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
@@ -467,18 +462,15 @@
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
-                <module>micronaut</module>
-                <module>microprofile</module>
-                <module>msf4j</module>
+                <module>microservices-modules</module>
                 <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>open-liberty</module>
+                <module>ninja</module>
 
-                <module>oauth2-framework-impl</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -499,6 +491,7 @@
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
+                <module>security-modules</module>
                 <module>slack</module>
                 <module>web-modules</module>
             </modules>
@@ -546,7 +539,6 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
-                <module>software-security/sql-injection-samples</module>
 
                 <module>spf4j</module>
 
@@ -756,7 +748,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
                 <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
@@ -774,11 +765,11 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>cas</module>
+                <module>blade</module>
+                <module>bootique</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
@@ -814,7 +805,6 @@
                 <module>guice</module>
 
                 <module>hazelcast</module>
-                <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -822,9 +812,6 @@
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
-                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
-
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-rmi</module>
@@ -834,13 +821,13 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7-security</module>
+                <module>jee-7</module>
+                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
-                <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
@@ -881,18 +868,15 @@
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
-                <module>micronaut</module>
-                <module>microprofile</module>
-                <module>msf4j</module>
+                <module>microservices-modules</module>
                 <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>open-liberty</module>
+                <module>ninja</module>
 
-                <module>oauth2-framework-impl</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -913,6 +897,7 @@
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
+                <module>security-modules</module>
                 <module>slack</module>
                 <module>web-modules</module>
             </modules>
@@ -952,7 +937,6 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
-                <module>software-security/sql-injection-samples</module>
 
                 <module>spf4j</module>
 
@@ -1331,7 +1315,7 @@
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
-        <esapi.version>2.2.2.0</esapi.version>
+        <esapi.version>2.5.0.0</esapi.version>
         <jmh-core.version>1.33</jmh-core.version>
         <jmh-generator.version>1.33</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
