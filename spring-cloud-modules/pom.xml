@@ -53,6 +53,7 @@
         <module>spring-cloud-bus</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud-sleuth</module>
+        <module>spring-cloud-openfeign-2</module>
     </modules>
 
     <build>
