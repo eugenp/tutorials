@@ -345,7 +345,6 @@
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-spark</module>
-                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -362,8 +361,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
-                <module>bootique</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -384,7 +381,6 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
-                <module>dropwizard</module>
                 <module>dubbo</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -394,7 +390,6 @@
 
                 <module>geotools</module>
                 <module>google-cloud</module>
-                <module>google-web-toolkit</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
@@ -413,18 +408,13 @@
                 <module>java-blockchain</module>
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
-                <module>javax-servlets</module>
-                <module>javax-servlets-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -433,7 +423,6 @@
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
-                <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -459,7 +448,6 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
                 <module>libraries-testing</module>
-                <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
@@ -477,7 +465,6 @@
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -493,10 +480,7 @@
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
-                <module>ratpack</module>
                 <module>reactor-core</module>
-                <module>resteasy</module>
-                <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
                 <module>rxjava-modules</module>
@@ -504,6 +488,7 @@
                 <module>reactive-systems</module>
                 <module>security-modules</module>
                 <module>slack</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
@@ -550,7 +535,6 @@
 
                 <module>saas</module>
 
-                <module>spark-java</module>
                 <module>spf4j</module>
 
                 <module>spring-4</module>
@@ -634,7 +618,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts-2</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -647,10 +630,8 @@
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
                 <module>video-tutorials</module>
-                <module>vraptor</module>
 
                 <module>webrtc</module>
-                <module>wicket</module>
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
@@ -763,7 +744,6 @@
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-spark</module>
-                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -780,8 +760,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
-                <module>bootique</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
@@ -802,7 +780,6 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
-                <module>dropwizard</module>
                 <module>dubbo</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -812,7 +789,6 @@
 
                 <module>geotools</module>
                 <module>google-cloud</module>
-                <module>google-web-toolkit</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
@@ -831,18 +807,13 @@
                 <module>java-blockchain</module>
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
-                <module>javax-servlets</module>
-                <module>javax-servlets-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
@@ -851,7 +822,6 @@
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
-                <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -879,7 +849,6 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
                 <module>libraries-testing</module>
-                <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
@@ -897,7 +866,6 @@
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -913,10 +881,7 @@
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
-                <module>ratpack</module>
                 <module>reactor-core</module>
-                <module>resteasy</module>
-                <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
                 <module>rxjava-modules</module>
@@ -924,6 +889,7 @@
                 <module>reactive-systems</module>
                 <module>security-modules</module>
                 <module>slack</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
@@ -962,7 +928,6 @@
 
                 <module>saas</module>
 
-                <module>spark-java</module>
                 <module>spf4j</module>
 
                 <module>spring-4</module>
@@ -1047,7 +1012,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts-2</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1060,10 +1024,8 @@
                 <module>vertx</module>
                 <module>vertx-and-rxjava</module>
                 <module>video-tutorials</module>
-                <module>vraptor</module>
 
                 <module>webrtc</module>
-                <module>wicket</module>
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xml-2</module>
