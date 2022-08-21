@@ -22,9 +22,7 @@ public class LuhnChecker {
         int sum = 0;
 
         try {
-
             for (int i = cardNumber.length() - 1; i >= 0; i--) {
-
                 int digit = Integer.parseInt(cardNumber.substring(i, i + 1));
 
                 if ((cardNumber.length() - i) % 2 == 0) {
