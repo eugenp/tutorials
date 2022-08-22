@@ -583,7 +583,7 @@
 
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <module>spring-jinq</module>
+                <!-- <module>spring-jinq</module> --> <!-- does not work with Spring Boot 2.7.2 -->
                 <module>spring-jms</module>
 
                 <module>spring-kafka</module>
@@ -977,7 +977,7 @@
 
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <module>spring-jinq</module>
+                <!-- <module>spring-jinq</module> --> <!-- does not support work with Spring Boot 2.7.2 -->
                 <module>spring-jms</module>
 
                 <module>spring-kafka</module>

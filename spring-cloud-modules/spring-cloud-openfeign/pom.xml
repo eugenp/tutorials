@@ -64,7 +64,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
     </properties>
 
 </project>

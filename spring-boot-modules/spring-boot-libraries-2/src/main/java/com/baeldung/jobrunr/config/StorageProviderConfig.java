@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.jobrunr.config;
 
 import org.jobrunr.jobs.mappers.JobMapper;
 import org.jobrunr.storage.InMemoryStorageProvider;
