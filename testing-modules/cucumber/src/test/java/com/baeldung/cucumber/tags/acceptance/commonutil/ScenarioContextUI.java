@@ -1,5 +1,6 @@
 package com.baeldung.cucumber.tags.acceptance.commonutil;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -34,7 +35,7 @@ public class ScenarioContextUI {
     }
 
     private static WebDriver getRemoteWebDriver(URL url) {
-        return new RemoteWebDriver(url, DesiredCapabilities.chrome());
+        return new RemoteWebDriver(url, new DesiredCapabilities("chrome", "", Platform.ANY));
     }
 
     private static WebDriver getLocalChromeDriver() {

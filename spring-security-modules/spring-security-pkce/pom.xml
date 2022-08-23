@@ -70,7 +70,7 @@
 	</build>
 
 	<modules>
-	    <module>server</module>
-	    <module>client</module>
+	    <module>pkce-auth-server</module>
+	    <module>pkce-client</module>
 	</modules>
 </project>
