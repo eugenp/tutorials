@@ -17,7 +17,6 @@
 	<properties>
 		<!-- Need 2.7.x to bring spring-security 5.7.x-->
 		<spring-boot.version>2.7.2</spring-boot.version>
-		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
