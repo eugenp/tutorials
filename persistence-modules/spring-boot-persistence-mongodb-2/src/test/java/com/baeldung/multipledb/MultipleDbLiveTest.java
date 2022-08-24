@@ -10,14 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
-import com.baeldung.multipledb.config.PrimaryConfig;
-import com.baeldung.multipledb.config.SecondaryConfig;
 import com.baeldung.multipledb.model.Account;
 import com.baeldung.multipledb.model.User;
 import com.baeldung.multipledb.repository.primary.UserRepository;
 import com.baeldung.multipledb.repository.secondary.AccountRepository;
 
-@SpringBootTest(classes = { PrimaryConfig.class, SecondaryConfig.class })
+@SpringBootTest(classes = SpringBootMultipleDbApplication.class)
 @TestPropertySource("/multipledb/multidb.properties")
 public class MultipleDbLiveTest {
 
