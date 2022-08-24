@@ -21,7 +21,6 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.util.SocketUtils;
 
 import com.baeldung.logging.model.Book;
 import com.mongodb.client.MongoClients;
@@ -35,7 +34,7 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 
 @SpringBootTest
-@TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=INFO" })
+@TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=INFO" }, value = "/embedded.properties")
 public class LoggingUnitTest {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";
