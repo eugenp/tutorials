@@ -8,5 +8,5 @@ import com.baeldung.multipledb.model.Account;
 @Repository
 public interface AccountRepository extends MongoRepository<Account, String> {
 
-    Account findByAccountEmail(String email);
+    Account findByAccountDomain(String account);
 }

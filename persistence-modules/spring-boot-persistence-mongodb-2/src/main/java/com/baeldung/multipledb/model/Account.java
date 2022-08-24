@@ -16,7 +16,7 @@ public class Account {
 
     private String nickName;
 
-    private String accountEmail;
+    private String accountDomain;
 
     private String password;
 
@@ -40,12 +40,12 @@ public class Account {
         this.nickName = nickName;
     }
 
-    public String getAccountEmail() {
-        return accountEmail;
+    public String getAccountDomain() {
+        return accountDomain;
     }
 
-    public void setAccountEmail(String accountEmail) {
-        this.accountEmail = accountEmail;
+    public void setAccountDomain(String accountDomain) {
+        this.accountDomain = accountDomain;
     }
 
     public String getPassword() {
