@@ -19,7 +19,7 @@ import com.baeldung.multipledb.repository.secondary.AccountRepository;
 
 @SpringBootTest(classes = { PrimaryConfig.class, SecondaryConfig.class })
 @TestPropertySource("/multipledb/multidb.properties")
-public class MultipleDbUnitTest {
+public class MultipleDbLiveTest {
 
     @Autowired
     private UserRepository userRepository;
