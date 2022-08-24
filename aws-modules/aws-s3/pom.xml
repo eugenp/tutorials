@@ -60,10 +60,8 @@
     </build>
 
     <properties>
-        <aws-java-sdk.version>1.11.290</aws-java-sdk.version>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
-        <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
     </properties>
 
 </project>
