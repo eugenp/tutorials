@@ -159,7 +159,6 @@
                                     classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
                                 <gen-reladomo
                                     xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
-                                    generateGscListMethod="true"
                                     generatedDir="${project.build.directory}/generated-sources/reladomo"
                                     nonGeneratedDir="${project.basedir}/src/main/java" />
 
@@ -268,7 +267,7 @@
 
     <properties>
         <ebean.plugin.version>11.11.2</ebean.plugin.version>
-        <reladomo.version>16.5.1</reladomo.version>
+        <reladomo.version>18.1.0</reladomo.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <ormlite.version>5.0</ormlite.version>
