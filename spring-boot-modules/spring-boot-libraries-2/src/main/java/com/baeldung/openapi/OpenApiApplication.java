@@ -1,4 +1,4 @@
-package com.baeldung.sprq;
+package com.baeldung.openapi;
 
 import org.jobrunr.autoconfigure.JobRunrAutoConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -7,10 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { JobRunrAutoConfiguration.class})
-public class SpqrApp {
+public class OpenApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpqrApp.class, args);
+        SpringApplication.run(OpenApiApplication.class, args);
     }
-
 }
