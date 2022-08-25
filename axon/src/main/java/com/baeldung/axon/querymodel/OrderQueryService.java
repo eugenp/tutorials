@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrderQueryService {
+
     private final QueryGateway queryGateway;
 
     public OrderQueryService(QueryGateway queryGateway) {
@@ -30,7 +31,10 @@ public class OrderQueryService {
     }
 
     public Integer totalShipped(String productId) {
-        return queryGateway.scatterGather(new TotalProductsShippedQuery(productId), ResponseTypes.instanceOf(Integer.class), 10L, TimeUnit.SECONDS)
+        return queryGateway.scatterGather(new TotalProductsShippedQuery(productId),
+                                          ResponseTypes.instanceOf(Integer.class),
+                                          10L,
+                                          TimeUnit.SECONDS)
                            .reduce(0, Integer::sum);
     }
 
@@ -39,8 +43,8 @@ public class OrderQueryService {
                 .map(OrderResponse::new);
     }
 
-    private  <Q, R> Flux<R> subscriptionQuery(Q query, ResponseType<R> resultType) {
-        SubscriptionQueryResult<R,R> result = queryGateway.subscriptionQuery(query, resultType, resultType);
+    private <Q, R> Flux<R> subscriptionQuery(Q query, ResponseType<R> resultType) {
+        SubscriptionQueryResult<R, R> result = queryGateway.subscriptionQuery(query, resultType, resultType);
         return result.initialResult().concatWith(result.updates()).doFinally(signal -> result.close());
     }
 }

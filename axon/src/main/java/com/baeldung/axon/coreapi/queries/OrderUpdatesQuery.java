@@ -3,6 +3,7 @@ package com.baeldung.axon.coreapi.queries;
 import java.util.Objects;
 
 public class OrderUpdatesQuery {
+
     private final String orderId;
 
     public OrderUpdatesQuery(String orderId) {

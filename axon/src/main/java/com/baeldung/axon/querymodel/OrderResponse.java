@@ -1,7 +1,6 @@
 package com.baeldung.axon.querymodel;
 
 import com.baeldung.axon.coreapi.queries.Order;
-import com.baeldung.axon.querymodel.OrderStatusResponse;
 
 import java.util.Map;
 

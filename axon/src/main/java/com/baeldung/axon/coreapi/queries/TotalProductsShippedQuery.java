@@ -3,6 +3,7 @@ package com.baeldung.axon.coreapi.queries;
 import java.util.Objects;
 
 public class TotalProductsShippedQuery {
+
     private final String productId;
 
     public TotalProductsShippedQuery(String productId) {

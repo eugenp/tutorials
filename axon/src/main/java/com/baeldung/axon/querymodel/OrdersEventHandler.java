@@ -35,4 +35,6 @@ public interface OrdersEventHandler {
     Integer handle(TotalProductsShippedQuery query);
 
     Order handle(OrderUpdatesQuery query);
+
+    void reset(List<Order> orderList);
 }

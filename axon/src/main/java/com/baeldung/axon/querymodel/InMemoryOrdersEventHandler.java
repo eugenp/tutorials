@@ -26,7 +26,7 @@ import java.util.Optional;
 
 @Service
 @ProcessingGroup("orders")
-public class InMemoryOrdersEventHandler implements OrdersEventHandler{
+public class InMemoryOrdersEventHandler implements OrdersEventHandler {
 
     private final Map<String, Order> orders = new HashMap<>();
     private final QueryUpdateEmitter emitter;
@@ -103,9 +103,9 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler{
     @QueryHandler
     public Integer handle(TotalProductsShippedQuery query) {
         return orders.values().stream()
-                .filter(o -> o.getOrderStatus() == OrderStatus.SHIPPED)
-                .map(o -> Optional.ofNullable(o.getProducts().get(query.getProductId())).orElse(0))
-                .reduce(0, Integer::sum);
+                     .filter(o -> o.getOrderStatus() == OrderStatus.SHIPPED)
+                     .map(o -> Optional.ofNullable(o.getProducts().get(query.getProductId())).orElse(0))
+                     .reduce(0, Integer::sum);
     }
 
     @QueryHandler
@@ -113,7 +113,13 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler{
         return orders.get(query.getOrderId());
     }
 
-    private void emitUpdate(Order order){
+    private void emitUpdate(Order order) {
         emitter.emit(OrderUpdatesQuery.class, q -> order.getOrderId().equals(q.getOrderId()), order);
+    }
+
+    @Override
+    public void reset(List<Order> orderList) {
+        orders.clear();
+        orderList.forEach(o -> orders.put(o.getOrderId(), o));
     }
 }
