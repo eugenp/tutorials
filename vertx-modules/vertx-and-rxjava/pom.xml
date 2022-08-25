@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>vertx-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
