@@ -338,14 +338,13 @@
 
                 <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
+                <module>apache-kafka-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
                 <module>apache-spark</module>
-                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -362,13 +361,9 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
-                <module>bootique</module>
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
@@ -386,7 +381,6 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
-                <module>dropwizard</module>
                 <module>dubbo</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -396,7 +390,6 @@
 
                 <module>geotools</module>
                 <module>google-cloud</module>
-                <module>google-web-toolkit</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
@@ -406,7 +399,6 @@
                 <module>guice</module>
 
                 <module>hazelcast</module>
-                <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -414,34 +406,22 @@
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
-                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
-
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-vavr-stream</module>
                 <module>java-websocket</module>
-                <module>javax-servlets</module>
-                <module>javax-servlets-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
-                <module>jee-7-security</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
-                <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
-                <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -467,7 +447,6 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
                 <module>libraries-testing</module>
-                <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
@@ -478,20 +457,14 @@
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
-                <module>micronaut</module>
-                <module>microprofile</module>
-                <module>msf4j</module>
+                <module>microservices-modules</module>
                 <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
-                <module>open-liberty</module>
 
-                <module>oauth2-framework-impl</module>
-                <module>optaplanner</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -506,16 +479,16 @@
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
-                <module>ratpack</module>
                 <module>reactor-core</module>
-                <module>resteasy</module>
-                <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
+                <module>security-modules</module>
                 <module>slack</module>
+                <module>vavr-modules</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
@@ -561,9 +534,7 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
-                <module>software-security/sql-injection-samples</module>
 
-                <module>spark-java</module>
                 <module>spf4j</module>
 
                 <module>spring-4</module>
@@ -612,7 +583,7 @@
 
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <module>spring-jinq</module>
+                <!-- <module>spring-jinq</module> --> <!-- does not work with Spring Boot 2.7.2 -->
                 <module>spring-jms</module>
 
                 <module>spring-kafka</module>
@@ -639,7 +610,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -647,7 +617,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts-2</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -657,13 +626,10 @@
 
                 <module>undertow</module>
 
-                <module>vertx</module>
-                <module>vertx-and-rxjava</module>
+                <module>vertx-modules</module>
                 <module>video-tutorials</module>
-                <module>vraptor</module>
 
                 <module>webrtc</module>
-                <module>wicket</module>
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xstream</module>
@@ -724,8 +690,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
-                <module>vavr-2</module>
+                <module>vavr-modules</module>
             </modules>
         </profile>
 
@@ -769,14 +734,13 @@
 
                 <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
+                <module>apache-kafka-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-shiro</module>
                 <module>apache-spark</module>
-                <module>apache-tapestry</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -793,13 +757,9 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>blade</module>
-                <module>bootique</module>
-                <module>cas</module>
                 <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>cloud-foundry-uaa</module>
                 <module>code-generation</module>
 
                 <module>core-groovy-modules</module>
@@ -817,7 +777,6 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>drools</module>
-                <module>dropwizard</module>
                 <module>dubbo</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -827,7 +786,6 @@
 
                 <module>geotools</module>
                 <module>google-cloud</module>
-                <module>google-web-toolkit</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
@@ -837,7 +795,6 @@
                 <module>guice</module>
 
                 <module>hazelcast</module>
-                <module>helidon</module>
                 <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
@@ -845,34 +802,22 @@
                 <module>jackson-modules</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
-                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
-
                 <module>javafx</module>
                 <module>java-jdi</module>
-                <module>java-lite</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-vavr-stream</module>
                 <module>java-websocket</module>
-                <module>javax-servlets</module>
-                <module>javax-servlets-2</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jee-7</module>
-                <module>jee-7-security</module>
-                <module>jakarta-ee</module>
                 <module>jersey</module>
                 <module>jgit</module>
                 <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
-                <module>jjwt</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>java-native</module>
-                <module>jooby</module>
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -900,7 +845,6 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
                 <module>libraries-testing</module>
-                <module>linkrest</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
@@ -911,20 +855,14 @@
 
                 <module>mesos-marathon</module>
                 <module>metrics</module>
-                <module>micronaut</module>
-                <module>microprofile</module>
-                <module>msf4j</module>
+                <module>microservices-modules</module>
                 <module>muleesb</module>
                 <module>mustache</module>
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
                 <module>netty</module>
-                <module>ninja</module>
-                <module>open-liberty</module>
 
-                <module>oauth2-framework-impl</module>
-                <module>optaplanner</module>
                 <module>orika</module>
                 <module>osgi</module>
 
@@ -939,16 +877,16 @@
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
-                <module>ratpack</module>
                 <module>reactor-core</module>
-                <module>resteasy</module>
-                <module>restx</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
+                <module>security-modules</module>
                 <module>slack</module>
+                <module>vavr-modules</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
@@ -986,9 +924,7 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
-                <module>software-security/sql-injection-samples</module>
 
-                <module>spark-java</module>
                 <module>spf4j</module>
 
                 <module>spring-4</module>
@@ -1038,7 +974,7 @@
 
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <module>spring-jinq</module>
+                <!-- <module>spring-jinq</module> --> <!-- does not support work with Spring Boot 2.7.2 -->
                 <module>spring-jms</module>
 
                 <module>spring-kafka</module>
@@ -1065,7 +1001,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -1073,7 +1008,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts-2</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1083,13 +1017,10 @@
 
                 <module>undertow</module>
 
-                <module>vertx</module>
-                <module>vertx-and-rxjava</module>
+                <module>vertx-modules</module>
                 <module>video-tutorials</module>
-                <module>vraptor</module>
 
                 <module>webrtc</module>
-                <module>wicket</module>
                 <module>wildfly</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -1143,8 +1074,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
-                <module>vavr-2</module>
+                <module>vavr-modules</module>
             </modules>
 
         </profile>
@@ -1225,6 +1155,7 @@
                  <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-collections-set</module>
+                 <module>core-java-modules/core-java-collections-list-4</module>
                  <module>core-java-modules/core-java-collections-maps-4</module>
                  <module>core-java-modules/core-java-date-operations-1</module>
                  <module>core-java-modules/core-java-datetime-conversion</module>
@@ -1246,6 +1177,7 @@
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
                  <module>maven-modules/multimodulemavenproject</module>
+                 <module>optaplanner</module>
                  <module>persistence-modules/sirix</module>
                  <module>persistence-modules/spring-data-cassandra-2</module>
                  <module>quarkus-modules/quarkus-vs-springboot</module>
@@ -1297,6 +1229,7 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-collections-list-4</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
@@ -1315,6 +1248,7 @@
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
                 <module>maven-modules/multimodulemavenproject</module>
+                <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-modules/quarkus-vs-springboot</module>
@@ -1355,7 +1289,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>4.4.0</mockito.version>
-        <byte-buddy.version>1.11.20</byte-buddy.version>
+        <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.32</org.slf4j.version>
@@ -1367,7 +1301,7 @@
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
-        <esapi.version>2.2.2.0</esapi.version>
+        <esapi.version>2.5.0.0</esapi.version>
         <jmh-core.version>1.33</jmh-core.version>
         <jmh-generator.version>1.33</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
@@ -1375,7 +1309,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <commons-cli.version>1.4</commons-cli.version>
+        <commons-cli.version>1.5.0</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
@@ -1392,9 +1326,9 @@
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <h2.version>1.4.200</h2.version>
-        <guava.version>31.0.1-jre</guava.version>
+        <guava.version>31.1-jre</guava.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
     </properties>
 

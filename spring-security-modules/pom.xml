@@ -47,6 +47,7 @@
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>        
         <module>spring-security-opa</module>
+        <module>spring-security-pkce</module>
     </modules>
 
 </project>

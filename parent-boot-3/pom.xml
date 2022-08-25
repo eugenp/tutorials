@@ -89,7 +89,6 @@
         <spring-boot.version>3.0.0-M3</spring-boot.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
-        <lombok.version>1.18.22</lombok.version>
         <java.version>17</java.version>
         <maven-pmd-plugin.version>3.17.0</maven-pmd-plugin.version>
     </properties>

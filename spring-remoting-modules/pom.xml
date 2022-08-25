@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-remoting-modules</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>spring-remoting</name>
+    <name>spring-remoting-modules</name>
     <packaging>pom</packaging>
     <description>Parent for all projects related to Spring Remoting, except remoting-hessian-burlap</description>
     <!-- remoting-hessian-burlap needs to stick to spring-boot-1, some classes were removed in spring 
