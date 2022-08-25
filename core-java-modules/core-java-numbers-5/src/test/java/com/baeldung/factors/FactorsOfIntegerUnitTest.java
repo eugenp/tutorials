@@ -12,7 +12,7 @@ import com.google.common.collect.ImmutableSet;
 
 class FactorsOfIntegerUnitTest {
     //@formatter:off
-private final static Map<Integer, Set<Integer>> FACTOR_MAP = ImmutableMap.of(
+    private final static Map<Integer, Set<Integer>> FACTOR_MAP = ImmutableMap.of(
     0, ImmutableSet.of(),
     1, ImmutableSet.of(1),
     20, ImmutableSet.of(1, 2, 4, 5, 10, 20),
@@ -20,7 +20,7 @@ private final static Map<Integer, Set<Integer>> FACTOR_MAP = ImmutableMap.of(
     97, ImmutableSet.of(1, 97),
     99, ImmutableSet.of(1, 3, 9, 11, 33, 99),
     100, ImmutableSet.of(1, 2, 4, 5, 10, 20, 25, 50, 100)
-);
+    );
     //@formatter:on
 
     @Test
