@@ -8,4 +8,5 @@ spring:
       ddl-auto: create-drop
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect 
+        dialect: org.hibernate.dialect.H2Dialect
+        globally_quoted_identifiers: true
