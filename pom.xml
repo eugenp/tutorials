@@ -410,7 +410,6 @@
                 <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
@@ -488,6 +487,7 @@
                 <module>reactive-systems</module>
                 <module>security-modules</module>
                 <module>slack</module>
+                <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -692,8 +692,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
-                <module>vavr-2</module>
+                <module>vavr-modules</module>
             </modules>
         </profile>
 
@@ -809,7 +808,6 @@
                 <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
@@ -889,6 +887,7 @@
                 <module>reactive-systems</module>
                 <module>security-modules</module>
                 <module>slack</module>
+                <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -1079,8 +1078,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
-                <module>vavr-2</module>
+                <module>vavr-modules</module>
             </modules>
 
         </profile>
