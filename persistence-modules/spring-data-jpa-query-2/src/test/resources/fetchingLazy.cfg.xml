@@ -12,6 +12,7 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="show_sql">false</property>
+		<property name="hibernate.globally_quoted_identifiers">true</property>
 		<mapping class="com.baeldung.hibernate.fetching.model.UserLazy" />
 		<mapping class="com.baeldung.hibernate.fetching.model.OrderDetail" />
 

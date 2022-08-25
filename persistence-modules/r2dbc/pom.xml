@@ -39,7 +39,6 @@
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-h2</artifactId>
-            <version>${r2dbc-h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,9 +59,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
-    </properties>
 
 </project>
