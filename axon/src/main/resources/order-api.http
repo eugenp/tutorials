@@ -34,4 +34,16 @@ POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/confirm
 
 POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/ship
 
+### Retrieve shipped Deluxe Chairs
+
+GET http://localhost:8080/total-shipped/Deluxe Chair
+
+### Retrieve shipped a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3
+
+GET http://localhost:8080/total-shipped/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3
+
+### Receive updates for 666a1661-474d-4046-8b12-8b5896312768
+
+GET http://localhost:8080/order-updates/666a1661-474d-4046-8b12-8b5896312768
+
 ###
