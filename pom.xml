@@ -610,7 +610,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -627,8 +626,7 @@
 
                 <module>undertow</module>
 
-                <module>vertx</module>
-                <module>vertx-and-rxjava</module>
+                <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
@@ -1003,7 +1001,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -1020,8 +1017,7 @@
 
                 <module>undertow</module>
 
-                <module>vertx</module>
-                <module>vertx-and-rxjava</module>
+                <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
