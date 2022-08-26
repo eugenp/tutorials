@@ -1302,8 +1302,8 @@
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
         <esapi.version>2.5.0.0</esapi.version>
-        <jmh-core.version>1.33</jmh-core.version>
-        <jmh-generator.version>1.33</jmh-generator.version>
+        <jmh-core.version>1.35</jmh-core.version>
+        <jmh-generator.version>1.35</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
