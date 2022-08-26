@@ -26,9 +26,6 @@ import com.mongodb.client.MongoClients;
 @EnableConfigurationProperties
 public class SecondaryConfig {
 
-    @Value("${mongodb.port}")
-    private int mongodbPort;
-
     @Bean(name = "secondaryProperties")
     @ConfigurationProperties(prefix = "mongodb.secondary")
     public MongoProperties secondaryProperties() {
@@ -41,7 +38,7 @@ public class SecondaryConfig {
         MongoCredential credential = MongoCredential.createCredential(mongoProperties.getUsername(), mongoProperties.getAuthenticationDatabase(), mongoProperties.getPassword());
 
         return MongoClients.create(MongoClientSettings.builder()
-          .applyToClusterSettings(builder -> builder.hosts(singletonList(new ServerAddress(mongoProperties.getHost(), mongodbPort))))
+          .applyToClusterSettings(builder -> builder.hosts(singletonList(new ServerAddress(mongoProperties.getHost(), mongoProperties.getPort()))))
           .credential(credential)
           .build());
     }

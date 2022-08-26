@@ -27,9 +27,6 @@ import com.mongodb.client.MongoClients;
 @EnableConfigurationProperties
 public class PrimaryConfig {
 
-    @Value("${mongodb.port}")
-    private int mongodbPort;
-
     @Bean(name = "primaryProperties")
     @ConfigurationProperties(prefix = "mongodb.primary")
     @Primary
@@ -43,7 +40,7 @@ public class PrimaryConfig {
         MongoCredential credential = MongoCredential.createCredential(mongoProperties.getUsername(), mongoProperties.getAuthenticationDatabase(), mongoProperties.getPassword());
 
         return MongoClients.create(MongoClientSettings.builder()
-          .applyToClusterSettings(builder -> builder.hosts(singletonList(new ServerAddress(mongoProperties.getHost(), mongodbPort))))
+          .applyToClusterSettings(builder -> builder.hosts(singletonList(new ServerAddress(mongoProperties.getHost(), mongoProperties.getPort()))))
           .credential(credential)
           .build());
     }
