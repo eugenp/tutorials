@@ -8,4 +8,5 @@
 - [Java Map – keySet() vs. entrySet() vs. values() Methods](https://www.baeldung.com/java-map-entries-methods)
 - [Java IdentityHashMap Class and Its Use Cases](https://www.baeldung.com/java-identityhashmap)
 - [How to Invert a Map in Java](https://www.baeldung.com/java-invert-map)
+- [Implementing a Map with Multiple Keys in Java](https://www.baeldung.com/java-multiple-keys-map)
 - More articles: [[<-- prev]](../core-java-collections-maps-4)

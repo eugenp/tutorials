@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>java-ee-8-security-api</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>java-ee-8-security-api</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>security-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>app-auth-basic-store-db</module>
+        <module>app-auth-form-store-ldap</module>
+        <module>app-auth-custom-form-store-custom</module>
+        <module>app-auth-custom-no-store</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>${javaee-version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <packagingExcludes>pom.xml</packagingExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>${liberty-maven-plugin.version}</version>
+                <configuration>
+                    <install>
+                        <runtimeUrl>
+                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/2018-09-05_2337/openliberty-18.0.0.3.zip
+                        </runtimeUrl>
+                    </install>
+                    <looseApplication>true</looseApplication>
+                    <installAppPackages>project</installAppPackages>
+                    <configFile>src/main/liberty/config/server.xml</configFile>
+                    <stripVersion>true</stripVersion>
+                    <bootstrapProperties>
+                        <default.http.port>${defaultHttpPort}</default.http.port>
+                        <default.https.port>${defaultHttpsPort}</default.https.port>
+                    </bootstrapProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <defaultHttpPort>9080</defaultHttpPort>
+        <defaultHttpsPort>9443</defaultHttpsPort>
+        <javaee-version>8.0</javaee-version>
+        <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
+        <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
+    </properties>
+
+</project>
