@@ -34,7 +34,7 @@ class StorageManagerUnitTest {
     }
 
     @Test
-    void givenStorageWithCustomTypeAsRoot_whenStoringAdditionalObjects_thenAdditionalObjectsAreSuccessfullyStored(@TempDir Path tempDir) {
+    void givenStorageWithAdditionalObjects_whenLoadingRoot_thenAdditionalObjectsAreSuccessfullyStored(@TempDir Path tempDir) {
         EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-3", Arrays.asList(bookOne, bookTwo));
         RootInstance rootInstance = (RootInstance) storageManager.root();
         assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-3");
@@ -45,17 +45,10 @@ class StorageManagerUnitTest {
     }
 
     @Test
-    void givenStorageWithCustomTypeAsRoot_whenLoadingOrCreatingStorage_thenNonNullRootIsReturned(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.loadOrCreateStorage(tempDir, "baeldung-demo-4");
-        assertThat(storageManager.root()).isNotNull();
-        storageManager.shutdown();
-    }
-
-    @Test
-    void givenStorageWithCustomTypeAsRoot_whenLazyLoadingAdditionalObjects_thenAdditionalObjectsAreSuccessfullyLoadedOnDemand(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorage(tempDir, "baeldung-demo-5", Arrays.asList(bookOne, bookTwo));
+    void givenStorageWithAdditionalObjects_whenLazyLoadingRoot_thenAdditionalObjectsAreSuccessfullyStored(@TempDir Path tempDir) {
+        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-4", Arrays.asList(bookOne, bookTwo));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
-        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-5");
+        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-4");
         assertThat(rootInstance.getBooks()).hasSize(2);
         assertThat(rootInstance.getBooks().get(0)).isEqualTo(bookOne);
         assertThat(rootInstance.getBooks().get(1)).isEqualTo(bookTwo);
@@ -63,26 +56,26 @@ class StorageManagerUnitTest {
     }
 
     @Test
-    void givenStorageWithCustomTypeAsRoot_whenRemovingObjectsFromGraph_thenObjectsAreSuccessfullyRemoved(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorage(tempDir, "baeldung-demo-6", Arrays.asList(bookOne, bookTwo));
+    void givenStorageWithAdditionalObjects_whenRemovingObjectsFromGraph_thenObjectsAreSuccessfullyRemoved(@TempDir Path tempDir) {
+        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-5", Arrays.asList(bookOne, bookTwo));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
         List<Book> books = rootInstance.getBooks();
         books.remove(1);
         storageManager.store(books);
-        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-6");
+        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-5");
         assertThat(books).hasSize(1);
         storageManager.shutdown();
     }
 
     @Test
-    void givenStorageWithCustomTypeAsRoot_whenFilteringCollectionFromGraph_thenStreamsCanBeUsed(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorage(tempDir, "baeldung-demo-7", Arrays.asList(bookOne, bookTwo));
+    void givenStorageWithAdditionalObjects_whenFilteringCollectionFromGraph_thenStreamsCanBeUsed(@TempDir Path tempDir) {
+        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-6", Arrays.asList(bookOne, bookTwo));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
         List<Book> books = rootInstance.getBooks()
           .stream()
           .filter(book -> book.getYear() == 1998)
           .collect(Collectors.toList());
-        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-7");
+        assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-6");
         assertThat(books).hasSize(1);
         assertThat(books.get(0).getYear()).isEqualTo(1998);
         storageManager.shutdown();

@@ -37,7 +37,7 @@ public class StorageManager {
         return storageManager;
     }
 
-    public static EmbeddedStorageManager loadOrCreateStorage(Path directory, String root) {
+    public static EmbeddedStorageManager loadOrCreateStorageWithCustomTypeAsRoot(Path directory, String root) {
         EmbeddedStorageManager storageManager = EmbeddedStorage.start(directory);
         if (storageManager.root() == null) {
             RootInstance rootInstance = new RootInstance(root);
@@ -47,7 +47,7 @@ public class StorageManager {
         return storageManager;
     }
 
-    public static EmbeddedStorageManager lazyLoadOrCreateStorage(Path directory, String root, List<Book> booksToStore) {
+    public static EmbeddedStorageManager lazyLoadOrCreateStorageWithCustomTypeAsRoot(Path directory, String root, List<Book> booksToStore) {
         EmbeddedStorageManager storageManager = EmbeddedStorage.start(directory);
         if (storageManager.root() == null) {
             RootInstanceLazy rootInstance = new RootInstanceLazy(root);
