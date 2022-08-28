@@ -28,17 +28,17 @@ import com.baeldung.junit5.mockito.service.UserService;
 @ExtendWith(MockitoExtension.class)
 class UserServiceUnitTest {
 
-    UserService userService;
-    
-    SettingRepository settingRepository;
-    
-    @Mock
-    UserRepository userRepository;
-    
-    @Mock
-    MailClient mailClient;
+    private UserService userService;
 
-    User user;
+    private SettingRepository settingRepository;
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private MailClient mailClient;
+
+    private User user;
 
     @BeforeEach
     void init(@Mock SettingRepository settingRepository) {
