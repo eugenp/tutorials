@@ -71,13 +71,13 @@ class StorageManagerUnitTest {
     void givenStorageWithAdditionalObjects_whenFilteringCollectionFromGraph_thenStreamsCanBeUsed(@TempDir Path tempDir) {
         EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-6", Arrays.asList(bookOne, bookTwo));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
-        List<Book> books = rootInstance.getBooks()
+        List<Book> booksFrom1998 = rootInstance.getBooks()
           .stream()
           .filter(book -> book.getYear() == 1998)
           .collect(Collectors.toList());
         assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-6");
-        assertThat(books).hasSize(1);
-        assertThat(books.get(0).getYear()).isEqualTo(1998);
+        assertThat(booksFrom1998).hasSize(1);
+        assertThat(booksFrom1998.get(0).getYear()).isEqualTo(1998);
         storageManager.shutdown();
     }
 
