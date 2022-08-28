@@ -68,12 +68,8 @@
     </reporting>
 
     <properties>
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <tradukisto.version>1.0.1</tradukisto.version>
         <org.jgrapht.core.version>1.0.1</org.jgrapht.core.version>
         <org.jgrapht.ext.version>1.0.1</org.jgrapht.ext.version>
-        <commons-codec.version>1.11</commons-codec.version>
-        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
     </properties>
 
 </project>
