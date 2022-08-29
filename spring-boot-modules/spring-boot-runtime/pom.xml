@@ -71,7 +71,6 @@
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-            <version>${jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -87,15 +86,12 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <jpa.version>2.2</jpa.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
-        <springcloud.version>3.1.0</springcloud.version>
-        <httpclient.version>4.5.8</httpclient.version>
+        <springcloud.version>3.1.3</springcloud.version>
     </properties>
 
 </project>

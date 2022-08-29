@@ -38,9 +38,7 @@
     </dependencies>
 
     <properties>
-        <commons-math3.version>3.6.1</commons-math3.version>
         <io.jenetics.version>3.7.0</io.jenetics.version>
-        <commons-codec.version>1.11</commons-codec.version>
     </properties>
 
 </project>
