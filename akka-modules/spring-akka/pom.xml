@@ -45,7 +45,6 @@
     <properties>
         <spring.version>4.3.4.RELEASE</spring.version>
         <akka.version>2.4.14</akka.version>
-        <scala.version>2.11</scala.version>
     </properties>
 
 </project>
