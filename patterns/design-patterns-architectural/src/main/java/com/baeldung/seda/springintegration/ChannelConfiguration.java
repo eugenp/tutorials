@@ -6,9 +6,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.messaging.MessageChannel;
 
-/**
- * @author Hesam Ghiasi created on 8/7/22 
- */
+
 @Configuration
 public class ChannelConfiguration {
 

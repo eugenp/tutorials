@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-/**
- * @author Hesam Ghiasi created on 8/8/22 
- */
 @Configuration
 public class TaskExecutorConfiguration {
 

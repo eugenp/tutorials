@@ -16,9 +16,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 
-/**
- * @author Hesam Ghiasi created on 8/7/22
- */
+
 @Configuration
 @EnableIntegration
 public class IntegrationConfiguration {

@@ -21,7 +21,7 @@ import com.baeldung.seda.springintegration.TestGateway;
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = { TaskExecutorConfiguration.class, ChannelConfiguration.class, IntegrationConfiguration.class })
 @EnableIntegration
 @IntegrationComponentScan(basePackages = { "com.baeldung.seda.springintegration" })
-public class SpringIntegrationSedaUnitTest {
+public class SpringIntegrationSedaIntegrationTest {
 
     @Autowired
     TestGateway testGateway;

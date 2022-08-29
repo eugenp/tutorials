@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.baeldung.seda.apachecamel.WordCountRoute;
 
-public class ApacheCamelSedaUnitTest extends CamelTestSupport {
+public class ApacheCamelSedaIntegrationTest extends CamelTestSupport {
 
     @Test
     public void givenTextWithCapitalAndSmallCaseAndWithoutDuplicateWords_whenSendingTextToInputUri_thenWordCountReturnedAsMap() throws InterruptedException {
