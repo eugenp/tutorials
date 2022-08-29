@@ -62,7 +62,7 @@ public class UnixTimeUtilsUnitTest {
 
         LocalDateTime time = UnixTimeUtils.localTimeUtc(instant);
         assertThat(!time.toString()
-            .startsWith(AUG_16_2022_15h25m32_Z_FORMATTED ));
+            .startsWith(AUG_16_2022_15h25m32_Z_FORMATTED));
         assertEquals("1970-01-20T05:17:43.532747420", time.toString());
     }
 
