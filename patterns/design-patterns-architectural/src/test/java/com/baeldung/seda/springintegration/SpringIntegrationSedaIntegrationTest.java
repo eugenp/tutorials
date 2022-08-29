@@ -12,11 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.baeldung.seda.springintegration.ChannelConfiguration;
-import com.baeldung.seda.springintegration.IntegrationConfiguration;
-import com.baeldung.seda.springintegration.TaskExecutorConfiguration;
-import com.baeldung.seda.springintegration.TestGateway;
-
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = { TaskExecutorConfiguration.class, ChannelConfiguration.class, IntegrationConfiguration.class })
 @EnableIntegration
