@@ -30,4 +30,8 @@
         </pluginManagement>
     </build>
 
+    <properties>
+        <scala.version>2.12</scala.version>
+    </properties>
+
 </project>
