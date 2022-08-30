@@ -41,8 +41,8 @@ public class SimpleDateFormatUnitTest {
   @Test
   public void givenFranceLocale_whenFormatted_thenCheckFormatCorrect() throws Exception{
     SimpleDateFormat franceDateFormatter = new SimpleDateFormat("EEEEE dd-MMMMMMM-yyyy", Locale.FRANCE);
-    Date myWednesday = new Date(1539341312904L);
-    assertTrue(franceDateFormatter.format(myWednesday).startsWith("vendredi"));
+    Date myFriday = new Date(1539341312904L);
+    assertTrue(franceDateFormatter.format(myFriday).startsWith("vendredi"));
   }
 
   @Test
