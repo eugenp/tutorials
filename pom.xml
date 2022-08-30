@@ -558,6 +558,7 @@
 
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
+                <module>spring-caching-3</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
