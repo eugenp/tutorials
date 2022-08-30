@@ -14,8 +14,8 @@
     </parent>
 
     <modules>
-        <module>Greeting</module>
-        <module>HelloWorld</module>
+        <module>spring-cloud-zookeeper-greeting</module>
+        <module>spring-cloud-zookeeper-helloworld</module>
     </modules>
 
 </project>

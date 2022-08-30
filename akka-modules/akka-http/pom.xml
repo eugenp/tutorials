@@ -15,22 +15,22 @@
     <dependencies>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-http_2.12</artifactId>
+            <artifactId>akka-http_${scala.version}</artifactId>
             <version>${akka.http.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-stream_2.12</artifactId>
+            <artifactId>akka-stream_${scala.version}</artifactId>
             <version>${akka.stream.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-http-jackson_2.12</artifactId>
+            <artifactId>akka-http-jackson_${scala.version}</artifactId>
             <version>${akka.http.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-http-testkit_2.12</artifactId>
+            <artifactId>akka-http-testkit_${scala.version}</artifactId>
             <version>${akka.http.version}</version>
             <scope>test</scope>
         </dependency>
