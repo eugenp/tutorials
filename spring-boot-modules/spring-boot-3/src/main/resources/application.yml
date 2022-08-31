@@ -1,0 +1,21 @@
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: true
+    property-naming-strategy: SNAKE_CASE
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+# Custom Properties
+cors:
+  allow:
+    origins: ${CORS_ALLOWED_ORIGINS:*}
+    credentials: ${CORS_ALLOW_CREDENTIALS:false}

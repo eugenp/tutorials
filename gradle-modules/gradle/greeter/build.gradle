@@ -1,0 +1,18 @@
+apply plugin : 'java'
+apply plugin : 'application'
+
+dependencies {
+    implementation project(':greeting-library')
+    implementation project(':greeting-library-java')
+
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.11', ext: 'jar'
+}
+
+mainClassName = 'greeter.Greeter'
+run {
+    if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+    else
+        args = ["Baeldung"];
+}

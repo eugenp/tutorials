@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>web-modules</artifactId>
+    <name>web-modules</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>apache-tapestry</module>
+        <module>blade</module>
+        <module>bootique</module>
+        <module>dropwizard</module>
+        <module>google-web-toolkit</module>
+        <module>jakarta-ee</module>
+        <module>java-lite</module>
+        <module>javax-servlets</module>
+        <module>javax-servlets-2</module>
+        <module>jee-7</module>
+        <module>jooby</module>
+        <module>linkrest</module>
+        <module>ninja</module>
+        <module>ratpack</module>
+        <module>resteasy</module>
+        <module>restx</module>
+        <module>spark-java</module>
+        <module>struts-2</module>
+        <module>vraptor</module>
+        <module>wicket</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

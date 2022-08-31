@@ -12,3 +12,5 @@ This module contains articles about Bean Validation.
 - [Validations for Enum Types](https://www.baeldung.com/javax-validations-enums)
 - [Guide to ParameterMessageInterpolator](https://www.baeldung.com/hibernate-parametermessageinterpolator)
 - [Hibernate Validator Annotation Processor in Depth](https://www.baeldung.com/hibernate-validator-annotation-processor)
+- [Constraint Composition with Bean Validation](https://www.baeldung.com/java-bean-validation-constraint-composition)
+- [Using @NotNull on a Method Parameter](https://www.baeldung.com/java-notnull-method-parameter)

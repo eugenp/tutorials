@@ -22,6 +22,12 @@
             <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,8 +38,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <compilerArgs>
-<!--                         Comment the arg below to print complete stack trace information -->
-<!--                        <arg>-g:none</arg>-->
+                        <!-- Comment the arg below to print complete stack trace information -->
+                        <!-- <arg>-g:none</arg> -->
                     </compilerArgs>
                 </configuration>
             </plugin>

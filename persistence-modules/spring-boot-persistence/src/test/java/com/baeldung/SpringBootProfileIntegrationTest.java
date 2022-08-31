@@ -22,7 +22,7 @@ public class SpringBootProfileIntegrationTest {
     private GenericEntityRepository genericEntityRepository;
 
     @Test
-    public void givenGenericEntityRepository_whenSaveAndRetreiveEntity_thenOK() {
+    public void givenGenericEntityRepository_whenSaveAndRetrieveEntity_thenOK() {
         GenericEntity genericEntity = genericEntityRepository.save(new GenericEntity("test"));
         GenericEntity foundEntity = genericEntityRepository.findById(genericEntity.getId()).orElse(null);
         assertNotNull(foundEntity);

@@ -81,7 +81,6 @@
         <maven.compiler.target>1.9</maven.compiler.target>
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-        <lombok.version>1.18.22</lombok.version>
     </properties>
 
 </project>

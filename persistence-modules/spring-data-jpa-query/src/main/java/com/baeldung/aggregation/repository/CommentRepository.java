@@ -21,7 +21,7 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     @Query("SELECT c.year AS yearComment, COUNT(c.year) AS totalComment FROM Comment AS c GROUP BY c.year ORDER BY c.year DESC")
     List<ICommentCount> countTotalCommentsByYearInterface();
 
-    @Query(value = "SELECT c.year AS yearComment, COUNT(c.*) AS totalComment FROM comment AS c GROUP BY c.year ORDER BY c.year DESC", nativeQuery = true)
+    @Query(value = "SELECT c.\"year\" AS yearComment, COUNT(c.*) AS totalComment FROM \"comment\" AS c GROUP BY c.\"year\" ORDER BY c.\"year\" DESC", nativeQuery = true)
     List<ICommentCount> countTotalCommentsByYearNative();
 
 }

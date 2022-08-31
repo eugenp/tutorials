@@ -5,6 +5,7 @@ This module contains articles about OpenID with Spring Security
 ### Relevant articles
 
 - [Spring Security and OpenID Connect](https://www.baeldung.com/spring-security-openid-connect)
+- [Spring Security – Map Authorities from JWT](https://www.baeldung.com/spring-security-map-authorities-jwt)
 
 ### OpenID Connect with Spring Security
 

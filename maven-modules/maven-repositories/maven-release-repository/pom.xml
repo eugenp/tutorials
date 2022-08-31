@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>maven-release-repository</artifactId>
+    <name>maven-release-repository</name>
+    <version>1.0.0</version>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>maven-repositories</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus-release</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>nexus-release</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
+</project>
