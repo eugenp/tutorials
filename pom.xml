@@ -7,7 +7,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-  <name>parent-modules</name>
+    <name>parent-modules</name>
     <packaging>pom</packaging>
 
     <dependencies>
@@ -472,13 +472,11 @@
                 <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
                 <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
-                <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>reactor-core</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
@@ -871,13 +869,11 @@
                 <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
                 <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
-                <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>reactor-core</module>
                 <module>rsocket</module>
                 <module>rule-engines</module>
