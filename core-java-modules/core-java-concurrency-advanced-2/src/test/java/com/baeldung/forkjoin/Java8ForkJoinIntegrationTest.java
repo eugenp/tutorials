@@ -1,18 +1,15 @@
 package com.baeldung.forkjoin;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.forkjoin.util.PoolUtil;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.baeldung.forkjoin.CustomRecursiveAction;
-import com.baeldung.forkjoin.CustomRecursiveTask;
-import com.baeldung.forkjoin.util.PoolUtil;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class Java8ForkJoinIntegrationTest {
 
@@ -63,11 +60,11 @@ public class Java8ForkJoinIntegrationTest {
         ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 
         forkJoinPool.execute(customRecursiveTask);
-        int result = customRecursiveTask.join();
+        customRecursiveTask.join();
         assertTrue(customRecursiveTask.isDone());
 
         forkJoinPool.submit(customRecursiveTask);
-        int resultTwo = customRecursiveTask.join();
+        customRecursiveTask.join();
         assertTrue(customRecursiveTask.isDone());
     }
 

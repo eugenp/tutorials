@@ -29,7 +29,7 @@ public class MySerializationUtils {
     public static boolean isSerializable(Class<?> it) {
         boolean serializable = it.isPrimitive() || it.isInterface() || Serializable.class.isAssignableFrom(it);
         if (!serializable) {
-            return serializable;
+            return false;
         }
         Field[] declaredFields = it.getDeclaredFields();
         for (Field field : declaredFields) {
@@ -37,8 +37,10 @@ public class MySerializationUtils {
                 continue;
             }
             Class<?> fieldType = field.getType();
-            return isSerializable(fieldType);
+            if (!isSerializable(fieldType)) {
+                return false;
+            }
         }
-        return serializable;
+        return true;
     }
 }

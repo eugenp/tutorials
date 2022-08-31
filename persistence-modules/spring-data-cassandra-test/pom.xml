@@ -60,7 +60,6 @@
 
     <properties>
         <spring-boot-starter-data-cassandra.version>2.5.3</spring-boot-starter-data-cassandra.version>
-        <lombok.version>1.18.18</lombok.version>
         <java-driver-core.version>4.13.0</java-driver-core.version>
         <cassandra-unit-spring.version>4.3.1.0</cassandra-unit-spring.version>
         <testcontainers.version>1.15.3</testcontainers.version>

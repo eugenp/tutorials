@@ -1,6 +1,9 @@
 package com.baeldung.thymeleaf.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -23,6 +26,9 @@ public class Student implements Serializable {
 
     @NotNull(message = "Student gender is required.")
     private Character gender;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthDate;
 
     private Float percentage;
 
@@ -48,6 +54,14 @@ public class Student implements Serializable {
 
     public void setGender(Character gender) {
         this.gender = gender;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Float getPercentage() {

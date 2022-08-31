@@ -15,14 +15,17 @@
     </parent>
 
     <modules>
+        <module>animal-sniffer-mvn-plugin</module>
+        <module>maven-archetype</module>
         <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
         <module>maven-exec-plugin</module>
+        <!-- <module>maven-generate-war</module> --> <!-- We haven't upgraded to java 11. -->
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
-        <module>maven-profiles</module>
+        <module>maven-polyglot</module>
         <module>maven-properties</module>
         <!-- <module>maven-proxy</module> --> <!-- Not a maven project -->
         <module>maven-unused-dependencies</module>
@@ -34,10 +37,11 @@
         <module>maven-printing-plugins</module>
         <module>maven-builder-plugin</module>
         <module>host-maven-repo-example</module>
-        <module>plugin-management</module>
         <module>maven-surefire-plugin</module>
         <module>maven-parent-pom-resolution</module>
-        <module>maven-dependency</module>
+        <module>maven-simple</module>
+        <module>maven-classifier</module>
+        <module>maven-repositories</module>
     </modules>
 
     <dependencyManagement>

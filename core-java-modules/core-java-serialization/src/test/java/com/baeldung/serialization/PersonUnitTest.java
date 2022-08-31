@@ -1,16 +1,34 @@
 package com.baeldung.serialization;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class PersonUnitTest {
+
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
+
+    private File outputFile;
+
+    private File outputFile2;
+
+    @Before
+    public void setUp() throws Exception {
+        outputFile = tempFolder.newFile("yourfile.txt");
+        outputFile2 = tempFolder.newFile("yourfile2.txt");
+    }
 
     @Test
     public void whenSerializingAndDeserializing_ThenObjectIsTheSame() throws IOException, ClassNotFoundException {
@@ -18,19 +36,19 @@ public class PersonUnitTest {
         p.setAge(20);
         p.setName("Joe");
 
-        FileOutputStream fileOutputStream = new FileOutputStream("yofile.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(p);
         objectOutputStream.flush();
         objectOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("yofile.txt");
+        FileInputStream fileInputStream = new FileInputStream(outputFile);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Person p2 = (Person) objectInputStream.readObject();
         objectInputStream.close();
 
-        assertTrue(p2.getAge() == p.getAge());
-        assertTrue(p2.getName().equals(p.getName()));
+        assertEquals(p2.getAge(), p.getAge());
+        assertEquals(p2.getName(), p.getName());
     }
 
     @Test
@@ -46,19 +64,19 @@ public class PersonUnitTest {
         e.setPerson(p);
         e.setAddress(a);
 
-        FileOutputStream fileOutputStream = new FileOutputStream("yofile2.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(outputFile2);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(e);
         objectOutputStream.flush();
         objectOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("yofile2.txt");
+        FileInputStream fileInputStream = new FileInputStream(outputFile2);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Employee e2 = (Employee) objectInputStream.readObject();
         objectInputStream.close();
 
-        assertTrue(e2.getPerson().getAge() == e.getPerson().getAge());
-        assertTrue(e2.getAddress().getHouseNumber() == (e.getAddress().getHouseNumber()));
+        assertEquals(e2.getPerson().getAge(), e.getPerson().getAge());
+        assertEquals(e2.getAddress().getHouseNumber(), (e.getAddress().getHouseNumber()));
     }
 
 }

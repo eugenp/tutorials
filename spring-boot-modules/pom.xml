@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring-boot-modules</groupId>
     <artifactId>spring-boot-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>spring-boot-modules</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -17,9 +17,6 @@
     </parent>
 
     <modules>
-        <module>spring-boot</module>
-        <module>spring-boot-1</module>
-        <module>spring-boot-2</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
@@ -36,7 +33,6 @@
         <module>spring-boot-deployment</module>
         <module>spring-boot-di</module>
         <module>spring-boot-disable-logging</module>
-        <module>spring-boot-camel</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
         <module>spring-boot-custom-starter</module>
@@ -48,13 +44,17 @@
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <!-- <module>spring-boot-keycloak</module> --> <!-- Fixing under JAVA-8271 -->
+        <module>spring-boot-jsp</module>
+        <module>spring-boot-keycloak</module>
+        <module>spring-boot-keycloak-2</module>
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
+        <module>spring-boot-libraries-comparison</module>
         <module>spring-boot-logging-log4j2</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
+        <module>spring-boot-mvc-4</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
@@ -63,6 +63,7 @@
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
         <module>spring-boot-properties-3</module>
+        <module>spring-boot-properties-migrator-demo</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-runtime</module>
         <module>spring-boot-runtime-2</module>
@@ -70,12 +71,14 @@
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
         <module>spring-boot-swagger-jwt</module>
+        <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-testing-2</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
+        <module>spring-boot-data-3</module>
     </modules>
 
     <dependencyManagement>

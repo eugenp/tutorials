@@ -123,7 +123,7 @@
     </build>
 
     <properties>
-        <spring-tx.version>5.3.13</spring-tx.version>
+        <spring-tx.version>5.3.15</spring-tx.version>
         <httpclient.version>4.5.2</httpclient.version>
         <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
     </properties>

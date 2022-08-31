@@ -1,0 +1,9 @@
+keycloak:
+  auth-server-url: https://api.example.com/auth # Keycloak server url
+  realm: todos-service-realm # Keycloak Realm
+  resource: todos-service-clients # Keycloak Client
+  public-client: true
+  principal-attribute: preferred_username
+  ssl-required: external
+  credentials:
+    secret: 00000000-0000-0000-0000-000000000000

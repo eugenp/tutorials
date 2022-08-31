@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -65,7 +66,11 @@ public class PostRestController {
  
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updatePost(@RequestBody PostDto postDto) throws ParseException {
+    public void updatePost(@PathVariable("id") Long id, @RequestBody PostDto postDto) throws ParseException {
+        if(!Objects.equals(id, postDto.getId())){
+            throw new IllegalArgumentException("IDs don't match");
+        }
+
         Post post = convertToEntity(postDto);
         postService.updatePost(post);
     }

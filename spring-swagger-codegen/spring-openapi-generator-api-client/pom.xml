@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-openapi-generator-api-client</artifactId>
-    <packaging>jar</packaging>
-    <name>spring-openapi-generator-api-client</name>
     <version>0.0.1-SNAPSHOT</version>
+    <name>spring-openapi-generator-api-client</name>
+    <packaging>jar</packaging>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>OpenAPI Java</description>
     <scm>

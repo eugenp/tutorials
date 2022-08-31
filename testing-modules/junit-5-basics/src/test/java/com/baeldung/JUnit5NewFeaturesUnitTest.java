@@ -1,17 +1,10 @@
 package com.baeldung;
 
+import org.junit.jupiter.api.*;
+
 import java.util.logging.Logger;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-//@RunWith(JUnitPlatform.class)
-public class JUnit5NewFeaturesUnitTest {
+class JUnit5NewFeaturesUnitTest {
 
     private static final Logger log = Logger.getLogger(JUnit5NewFeaturesUnitTest.class.getName());
 
@@ -29,7 +22,6 @@ public class JUnit5NewFeaturesUnitTest {
     @Test
     void testSingleSuccessTest() {
         log.info("Success");
-
     }
 
     @Test

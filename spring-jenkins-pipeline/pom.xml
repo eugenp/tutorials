@@ -37,7 +37,6 @@
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <version>${de.flapdoodle.embed.mongo.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -82,7 +81,6 @@
 
     <properties>
         <checkstyle.version>2.17</checkstyle.version>
-        <de.flapdoodle.embed.mongo.version>3.0.0</de.flapdoodle.embed.mongo.version>
     </properties>
 
 </project>

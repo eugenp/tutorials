@@ -1,0 +1,9 @@
+subscription {
+    searchByVin(vin: "75024") {
+        vin
+        year
+        make
+        model
+        trim
+    }
+}

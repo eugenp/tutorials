@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-data</artifactId>
-    <packaging>war</packaging>
     <name>spring-boot-data</name>
+    <packaging>war</packaging>
     <description>Spring Boot Data Module</description>
 
     <parent>
@@ -18,11 +18,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.javers</groupId>
-            <artifactId>javers-spring-boot-starter-sql</artifactId>
-            <version>${javers.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -164,7 +159,6 @@
     </profiles>
 
     <properties>
-        <javers.version>5.14.0</javers.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>

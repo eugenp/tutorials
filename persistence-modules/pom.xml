@@ -15,7 +15,7 @@
 
     <modules>
         <module>activejdbc</module>
-        <module>apache-bookkeeper</module><!-- BAEL-2322 -->
+        <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
         <module>core-java-persistence</module>
@@ -27,6 +27,7 @@
         <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
+        <module>hibernate-mapping-2</module>
         <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
@@ -42,6 +43,9 @@
         <module>java-jpa-2</module> <!-- long running -->
         <module>java-jpa-3</module>
         <module>java-mongodb</module> <!-- long running -->
+        <module>java-mongodb-2</module> <!-- long running -->
+        <module>java-mongodb-3</module> <!-- long running -->
+        <module>java-mongodb-queries</module> <!-- long running -->
         <module>jnosql</module> <!-- long running -->
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
@@ -50,6 +54,7 @@
         <module>persistence-libraries</module>
         <module>querydsl</module>
         <module>r2dbc</module>
+        <module>read-only-transactions</module>
         <module>redis</module>
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
@@ -58,6 +63,7 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
+        <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
@@ -67,22 +73,29 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-gemfire</module>
+        <!-- <module>spring-data-gemfire</module> Fixing in JAVA-11854 -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
+        <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>
+        <module>spring-data-jpa-enterprise-2</module>
         <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>
+        <module>spring-data-jpa-query-3</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
+        <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
+        <module>spring-data-rest</module>
+        <module>spring-data-rest-2</module>
+        <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-hibernate-3</module>
         <module>spring-hibernate-5</module> <!-- long running -->
@@ -97,8 +110,9 @@
     <properties>
         <!-- persistence -->
         <hibernate.version>5.2.17.Final</hibernate.version>
-
         <postgresql.version>42.2.20</postgresql.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
+        <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
 
 </project>

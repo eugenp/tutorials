@@ -10,4 +10,7 @@ This module contains articles about string conversions from/to another type.
 - [Converting String to BigInteger in Java](https://www.baeldung.com/java-string-to-biginteger)
 - [Convert a String to Camel Case](https://www.baeldung.com/java-string-to-camel-case)
 - [Convert a ByteBuffer to String in Java](https://www.baeldung.com/java-bytebuffer-to-string)
-- More articles: [[<-- prev]](/core-java-string-conversions)
+- [Convert String to Float and Back in Java](https://www.baeldung.com/java-string-to-float)
+- [Difference Between parseInt() and valueOf() in Java](https://www.baeldung.com/java-integer-parseint-vs-valueof)
+- [Integer.toString() vs String.valueOf() in Java](https://www.baeldung.com/java-tostring-valueof)
+- More articles: [[<-- prev]](/core-java-modules/core-java-string-conversions)
