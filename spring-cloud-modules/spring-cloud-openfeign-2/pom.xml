@@ -57,7 +57,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
         <feign-form.version>3.8.0</feign-form.version>
     </properties>
 
