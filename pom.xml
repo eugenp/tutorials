@@ -427,7 +427,7 @@
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
-                <module>kubernetes</module>
+                <module>kubernetes-modules</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
