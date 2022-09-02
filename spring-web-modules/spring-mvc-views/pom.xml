@@ -104,7 +104,6 @@
     </build>
 
     <properties>
-        <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <spring.version>5.2.1.RELEASE</spring.version>
         <spring.security.version>5.2.1.RELEASE</spring.security.version>
