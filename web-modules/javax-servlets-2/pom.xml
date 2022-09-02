@@ -81,7 +81,6 @@
 
     <properties>
         <org.apache.httpcomponents.version>4.5.13</org.apache.httpcomponents.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jmockit.version>1.49</jmockit.version>
         <spring-test.version>5.3.20</spring-test.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>

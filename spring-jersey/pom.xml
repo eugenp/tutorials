@@ -221,7 +221,6 @@
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <httpcore.version>4.4.9</httpcore.version>
         <httpclient.version>4.5.5</httpclient.version>
-        <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <wiremock.version>2.27.2</wiremock.version>
         <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
     </properties>
