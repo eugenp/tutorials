@@ -26,3 +26,4 @@ or return code of 201 and the response: `{"id": 10,"name": "Hello, World"}` - if
 
 - [Apache Camel with Spring Boot](https://www.baeldung.com/apache-camel-spring-boot)
 - [Apache Camel Routes Testing in Spring Boot](https://www.baeldung.com/spring-boot-apache-camel-routes-testing)
+- [Apache Camel Conditional Routing](https://www.baeldung.com/spring-apache-camel-conditional-routing)
