@@ -1,12 +1,21 @@
 package com.baeldung.scanner;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class JavaScannerUnitTest {
 
@@ -173,6 +182,19 @@ public class JavaScannerUnitTest {
         assertEquals("Tom", scanner.next());
 
         scanner.close();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void givenClosingScanner_whenReading_thenThrowException() throws IOException {
+        final FileInputStream inputStream = new FileInputStream("src/test/resources/test_read.in");
+
+        final Scanner scanner = new Scanner(inputStream);
+        scanner.next();
+        scanner.close();
+
+        final Scanner scanner2 = new Scanner(inputStream);
+        scanner2.next();
+        scanner2.close();
     }
 
 }
