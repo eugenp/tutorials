@@ -832,7 +832,7 @@
                 <module>jsoup</module>
 
                 <module>ksqldb</module>
-                <module>kubernetes</module>
+                <module>kubernetes-modules</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-2</module>
