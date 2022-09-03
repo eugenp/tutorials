@@ -79,16 +79,55 @@ public class FifoFixedSizeQueueUnitTest {
     }
 
     @Test
-    void givenFullQueue_whenOffer_thenReturnFalse() {
+    void givenFullQueue_whenOffer_thenRemovedOldestFromTailAndOffer() {
         FifoFixedSizeQueue<String> toTest = new FifoFixedSizeQueue<>(2);
         toTest.offer("1");
         toTest.offer("2");
-        boolean offerWhenFullQueue = toTest.offer("3");
+        toTest.offer("3");
 
         Iterator<String> i = toTest.iterator();
-        assertEquals("1", i.next());
         assertEquals("2", i.next());
+        assertEquals("3", i.next());
         assertFalse(i.hasNext());
-        assertFalse(offerWhenFullQueue);
     }
+
+    @Test
+    void whenPoll_thenSizeDecreases() {
+        FifoFixedSizeQueue<String> toTest = new FifoFixedSizeQueue<>(2);
+        toTest.offer("1");
+
+        toTest.poll();
+        assertEquals(0, toTest.size());
+    }
+
+    @Test
+    void whenOffer_thenSizeIncreases() {
+        FifoFixedSizeQueue<String> toTest = new FifoFixedSizeQueue<>(2);
+        toTest.offer("1");
+        assertEquals(1, toTest.size());
+    }
+
+    @Test
+    void givenFullQueue_whenOffer_thenElementIsInsertedAndSizeEqualsCapacity() {
+        FifoFixedSizeQueue<String> toTest = new FifoFixedSizeQueue<>(2);
+        toTest.offer("1");
+        toTest.offer("2");
+        toTest.offer("3");
+        assertEquals(2, toTest.size());
+        assertEquals("2", toTest.peek());
+    }
+
+    @Test
+    void givenEmptyQueue_whenSizeRequest_thenZero() {
+        FifoFixedSizeQueue<String> toTest = new FifoFixedSizeQueue<>(2);
+        assertEquals(0, toTest.size());
+    }
+
+    @Test
+    void givenEmptyQueue_whenPoll_thenReturnNullAndSizeIsZero() {
+        FifoFixedSizeQueue<String> toTest = new FifoFixedSizeQueue<>(2);
+        assertNull(toTest.poll());
+        assertEquals(0, toTest.size());
+    }
+
 }

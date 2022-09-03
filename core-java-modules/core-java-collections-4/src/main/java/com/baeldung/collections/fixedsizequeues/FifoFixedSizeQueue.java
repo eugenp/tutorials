@@ -25,10 +25,11 @@ public class FifoFixedSizeQueue<E> extends AbstractQueue<E> {
         if (e == null) {
             throw new NullPointerException("Queue doesn't allow nulls");
         }
-        if (count >= items.length) {
-            return false;
+        if (count == items.length) {
+            this.poll();
         }
-        this.items[count++] = e;
+        this.items[count] = e;
+        count++;
         return true;
     }
 
@@ -43,28 +44,6 @@ public class FifoFixedSizeQueue<E> extends AbstractQueue<E> {
         return item;
     }
 
-    @Override
-    public E peek() {
-        if (count <= 0) {
-            return null;
-        }
-        return (E) items[0];
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        List<E> list = new ArrayList<>(count);
-        for (int i = 0; i < count; i++) {
-            list.add((E) items[i]);
-        }
-        return list.iterator();
-    }
-
-    @Override
-    public int size() {
-        return count;
-    }
-
     private void shiftLeft() {
         int i = 1;
         while (i < items.length) {
@@ -74,5 +53,27 @@ public class FifoFixedSizeQueue<E> extends AbstractQueue<E> {
             items[i - 1] = items[i];
             i++;
         }
+    }
+
+    @Override
+    public E peek() {
+        if (count <= 0) {
+            return null;
+        }
+        return (E) items[0];
+    }
+
+    @Override
+    public int size() {
+        return count;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        List<E> list = new ArrayList<>(count);
+        for (int i = 0; i < count; i++) {
+            list.add((E) items[i]);
+        }
+        return list.iterator();
     }
 }
