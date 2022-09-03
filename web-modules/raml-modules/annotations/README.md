@@ -4,4 +4,4 @@
 
 
 ### Relevant Articles: 
-- [Define Custom RAML Properties Using Annotations](http://www.baeldung.com/raml-custom-properties-with-annotations)
+- [Define Custom RAML Properties Using Annotations](https://www.baeldung.com/raml-custom-properties-with-annotations)
