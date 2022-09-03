@@ -33,10 +33,10 @@ public class ShallowCopyDeepCopyUnitTest {
     public void whenDeep_thenInnerObjectIsNotShared(){
         Voucher voucher = new Voucher("Learn2022", 0.25);
         Order order = new Order("Baeldung Java Courses", 1000, voucher);
-        Order shallowCopyOrder = new Order(order, Order.COPY_TYPE.DEEP);
-        assertFalse(order.getVoucher().equals(shallowCopyOrder.getVoucher()));
-        shallowCopyOrder.getVoucher().setCode("Java2022");
+        Order deepCopyOrder = new Order(order, Order.COPY_TYPE.DEEP);
+        assertFalse(order.getVoucher().equals(deepCopyOrder.getVoucher()));
+        deepCopyOrder.getVoucher().setCode("Java2022");
         assertEquals(order.getVoucher().getCode(), "Learn2022");
-        assertEquals(shallowCopyOrder.getVoucher().getCode(), "Java2022");
+        assertEquals(deepCopyOrder.getVoucher().getCode(), "Java2022");
     }
 }
