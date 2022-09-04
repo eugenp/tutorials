@@ -27,7 +27,7 @@ public class IntegrationConfiguration {
     private final MessageChannel countWordsChannel;
     private final MessageChannel returnResponseChannel;
 
-    private final Function<String, String[]> splitWordFunction = sentence -> sentence.split(" ");
+    private final Function<String, String[]> splitWordsFunction = sentence -> sentence.split(" ");
     private final Function<List<String>, Map<String, Long>> convertArrayListToCountMap = list -> list.stream()
         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     private final Function<String, String> toLowerCase = String::toLowerCase;
@@ -55,7 +55,7 @@ public class IntegrationConfiguration {
     @Bean
     public IntegrationFlow splitWords() {
         return IntegrationFlows.from(splitWordsChannel)
-            .transform(splitWordFunction)
+            .transform(splitWordsFunction)
             .channel(toLowerCaseChannel)
             .get();
     }
