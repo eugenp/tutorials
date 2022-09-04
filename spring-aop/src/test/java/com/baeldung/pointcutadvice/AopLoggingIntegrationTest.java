@@ -1,14 +1,8 @@
 package com.baeldung.pointcutadvice;
 
-import com.baeldung.Application;
-import com.baeldung.pointcutadvice.dao.FooDao;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +11,17 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.core.IsCollectionContaining.hasItem;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import org.hamcrest.core.IsIterableContaining;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import com.baeldung.Application;
+import com.baeldung.pointcutadvice.dao.FooDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Application.class}, loader = AnnotationConfigContextLoader.class)
@@ -69,13 +70,13 @@ public class AopLoggingIntegrationTest {
     @Test
     public void givenLoggingAspect_whenCallLoggableAnnotatedMethod_thenMethodIsLogged() {
         dao.create(42L, "baz");
-        assertThat(messages, hasItem("Executing method: create"));
+        assertThat(messages, IsIterableContaining.hasItems("Executing method: create"));
     }
 
     @Test
     public void givenLoggingAspect_whenCallMethodAcceptingAnnotatedArgument_thenArgumentIsLogged() {
         Foo foo = new Foo(42L, "baz");
         dao.merge(foo);
-        assertThat(messages, hasItem("Accepting beans with @Entity annotation: " + foo));
+        assertThat(messages, IsIterableContaining.hasItems("Accepting beans with @Entity annotation: " + foo));
     }
 }

@@ -1,5 +1,7 @@
 package com.baeldung;
 
+import java.util.logging.Logger;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExampleAspect {
 
+    private static Logger logger = Logger.getLogger(ExampleAspect.class.getName());
+
     @Around("@annotation(com.baeldung.LogExecutionTime)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         final long start = System.currentTimeMillis();
@@ -17,7 +21,7 @@ public class ExampleAspect {
 
         final long executionTime = System.currentTimeMillis() - start;
 
-        System.out.println(joinPoint.getSignature() + " executed in " + executionTime + "ms");
+        logger.info(joinPoint.getSignature() + " executed in " + executionTime + "ms");
 
         return proceed;
     }

@@ -20,14 +20,12 @@ public class ArticleServiceIntegrationTest {
     @Test
     public void shouldGetNotEmptyArticleList() {
         List<String> articleList = articleService.getArticleList();
-
         assertFalse(articleList.isEmpty());
     }
 
     @Test
     public void shouldGetNotEmptyArticleListWithStartsWithFilter() {
         List<String> articleList = articleService.getArticleList("Article");
-
         assertFalse(articleList.isEmpty());
     }
 

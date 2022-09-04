@@ -23,13 +23,13 @@ public class JoinPointAroundCacheAspectIntegrationTest {
 
     @Test
     public void shouldPopulateCache() {
-        assertTrue(JoinPointAroundCacheAspect.CACHE.isEmpty());
+        assertTrue(JoinPointAroundCacheAspect.cache.isEmpty());
 
         List<String> articles = articleService.getArticleList();
 
-        assertFalse(JoinPointAroundCacheAspect.CACHE.isEmpty());
-        assertEquals(JoinPointAroundCacheAspect.CACHE.size(), 1);
-        assertEquals(JoinPointAroundCacheAspect.CACHE.values().iterator().next(), articles);
+        assertFalse(JoinPointAroundCacheAspect.cache.isEmpty());
+        assertEquals(1, JoinPointAroundCacheAspect.cache.size());
+        assertEquals(JoinPointAroundCacheAspect.cache.values().iterator().next(), articles);
     }
 
 }

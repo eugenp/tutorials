@@ -48,7 +48,6 @@
 			<aop:around method="aroundAdvice" pointcut-ref="pointCutAround" />
 		</aop:aspect>
 
-
 	</aop:config>
 
 </beans>

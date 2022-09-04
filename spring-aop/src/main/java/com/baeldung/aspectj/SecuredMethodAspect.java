@@ -13,6 +13,7 @@ public class SecuredMethodAspect {
 
     @Pointcut("@annotation(secured)")
     public void callAt(Secured secured) {
+      // pointcut signatures
     }
 
     @Around("callAt(secured)")

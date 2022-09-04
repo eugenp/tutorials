@@ -7,7 +7,7 @@ public class SecuredMethod {
     private static final Logger logger = LoggerFactory.getLogger(SecuredMethod.class);
 
     @Secured(isLocked = true)
-    public void lockedMethod() throws Exception {
+    public void lockedMethod() {
         logger.info("lockedMethod");
     }
 
@@ -16,7 +16,7 @@ public class SecuredMethod {
         logger.info("unlockedMethod");
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SecuredMethod sv = new SecuredMethod();
         sv.lockedMethod();
     }

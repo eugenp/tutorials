@@ -15,7 +15,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -54,7 +54,8 @@ public class JoinPointBeforeAspectIntegrationTest {
         articleService.getArticleList();
 
         assertThat(messages, hasSize(1));
-        assertTrue(messages.contains("INFO Method List com.baeldung.joinpoint.ArticleService.getArticleList() executed with [] arguments"));
+        assertTrue(messages.contains(
+                "INFO Method List com.baeldung.joinpoint.ArticleService.getArticleList() executed with [] arguments"));
     }
 
 }

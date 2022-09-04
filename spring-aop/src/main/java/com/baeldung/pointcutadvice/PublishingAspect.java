@@ -22,14 +22,17 @@ public class PublishingAspect {
 
     @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutadvice.dao.FooDao.*(..))")
     public void repositoryMethods() {
+        // pointcut signatures
     }
 
     @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutadvice.dao.FooDao.create*(Long,..))")
     public void firstLongParamMethods() {
+        // pointcut signatures
     }
 
     @Pointcut("repositoryMethods() && firstLongParamMethods()")
     public void entityCreationMethods() {
+        // pointcut signatures
     }
 
     @AfterReturning(value = "entityCreationMethods()", returning = "entity")

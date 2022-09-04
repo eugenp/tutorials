@@ -25,14 +25,17 @@ public class LoggingAspect {
 
     @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutadvice.dao.FooDao.*(..))")
     public void repositoryMethods() {
+        // pointcut signatures
     }
 
     @Pointcut("within(com.baeldung..*) && @annotation(com.baeldung.pointcutadvice.annotations.Loggable)")
     public void loggableMethods() {
+        // pointcut signatures
     }
 
     @Pointcut("within(com.baeldung..*) && @args(com.baeldung.pointcutadvice.annotations.Entity)")
     public void methodsAcceptingEntities() {
+        // pointcut signatures
     }
 
     @Before("repositoryMethods()")
@@ -43,8 +46,7 @@ public class LoggingAspect {
 
     @Before("loggableMethods()")
     public void logMethod(JoinPoint jp) {
-        String methodName = jp.getSignature().getName();
-        logger.info("Executing method: " + methodName);
+        logger.info("Executing method: " + jp.getSignature().getName());
     }
 
     @Before("methodsAcceptingEntities()")

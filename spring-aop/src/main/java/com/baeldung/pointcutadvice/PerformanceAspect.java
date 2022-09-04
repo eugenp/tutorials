@@ -17,6 +17,7 @@ public class PerformanceAspect {
 
     @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutadvice.dao.FooDao.*(..))")
     public void repositoryClassMethods() {
+      // pointcut signatures
     }
 
     @Around("repositoryClassMethods()")
