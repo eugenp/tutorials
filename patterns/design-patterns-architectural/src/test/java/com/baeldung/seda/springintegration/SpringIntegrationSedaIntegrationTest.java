@@ -29,6 +29,7 @@ public class SpringIntegrationSedaIntegrationTest {
         expected.put("name", 1L);
         expected.put("is", 1L);
         expected.put("hesam", 1L);
+
         org.junit.Assert.assertEquals(expected, actual);
     }
 
