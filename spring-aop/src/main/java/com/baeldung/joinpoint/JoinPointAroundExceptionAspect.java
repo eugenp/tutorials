@@ -12,10 +12,13 @@ import java.util.logging.Logger;
 @Component
 public class JoinPointAroundExceptionAspect {
 
-    private static final java.util.logging.Logger log = Logger.getLogger(JoinPointAroundExceptionAspect.class.getName());
+    private static final java.util.logging.Logger log = Logger
+            .getLogger(JoinPointAroundExceptionAspect.class.getName());
 
     @Pointcut("execution(* com.baeldung.joinpoint.ArticleService.getArticleList(..))")
-    public void articleListPointcut() { }
+    public void articleListPointcut() {
+        // pointcut signatures
+    }
 
     @Around("articleListPointcut()")
     public Object aroundAdviceException(ProceedingJoinPoint pjp) throws Throwable {
