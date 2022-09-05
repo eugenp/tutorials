@@ -2,6 +2,7 @@ package com.baeldung.staticgc;
 
 import java.io.File;
 import java.io.IOException;
+import org.apache.commons.io.IOUtils;
 
 public class CustomClassloader extends ClassLoader {
 
@@ -23,7 +24,7 @@ public class CustomClassloader extends ClassLoader {
     private Class<?> getClass(String name) {
         String fileName = name.replace('.', File.separatorChar) + ".class";
         try {
-            byte[] byteArr = getClass().getClassLoader().getResourceAsStream(fileName).readAllBytes();
+            byte[] byteArr = IOUtils.toByteArray(getClass().getClassLoader().getResourceAsStream(fileName));
             Class<?> c = defineClass(name, byteArr, 0, byteArr.length);
             resolveClass(c);
             return c;
