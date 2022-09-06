@@ -22,17 +22,20 @@ public class WordCountRoute extends RouteBuilder {
 
         from(receiveTextUri).to(splitWordsUri);
 
-        from(splitWordsUri).transform(ExpressionBuilder.bodyExpression(s -> s.toString()
+        from(splitWordsUri)
+            .transform(ExpressionBuilder.bodyExpression(s -> s.toString()
             .split(" ")))
             .to(toLowerCaseUri);
 
-        from(toLowerCaseUri).split(body(), new ArrayListAggregationStrategy())
+        from(toLowerCaseUri)
+            .split(body(), new ArrayListAggregationStrategy())
             .transform(ExpressionBuilder.bodyExpression(body -> body.toString()
                 .toLowerCase()))
             .end()
             .to(countWordsUri);
 
-        from(countWordsUri).transform(ExpressionBuilder.bodyExpression(List.class, body -> body.stream()
+        from(countWordsUri)
+            .transform(ExpressionBuilder.bodyExpression(List.class, body -> body.stream()
             .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))))
             .to(returnResponse);
     }
