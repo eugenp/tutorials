@@ -74,7 +74,7 @@ public class IntegrationConfiguration {
     @Bean
     public IntegrationFlow countWords() {
         return IntegrationFlows.from(countWordsChannel)
-            .handle(convertArrayListToCountMap)
+            .transform(convertArrayListToCountMap)
             .channel(returnResponseChannel)
             .get();
     }
