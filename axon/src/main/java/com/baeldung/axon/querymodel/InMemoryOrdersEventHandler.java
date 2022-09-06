@@ -12,6 +12,7 @@ import com.baeldung.axon.coreapi.queries.Order;
 import com.baeldung.axon.coreapi.queries.OrderStatus;
 import com.baeldung.axon.coreapi.queries.OrderUpdatesQuery;
 import com.baeldung.axon.coreapi.queries.TotalProductsShippedQuery;
+
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
@@ -102,10 +103,13 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler {
 
     @QueryHandler
     public Integer handle(TotalProductsShippedQuery query) {
-        return orders.values().stream()
-                     .filter(o -> o.getOrderStatus() == OrderStatus.SHIPPED)
-                     .map(o -> Optional.ofNullable(o.getProducts().get(query.getProductId())).orElse(0))
-                     .reduce(0, Integer::sum);
+        return orders.values()
+          .stream()
+          .filter(o -> o.getOrderStatus() == OrderStatus.SHIPPED)
+          .map(o -> Optional.ofNullable(o.getProducts()
+              .get(query.getProductId()))
+            .orElse(0))
+          .reduce(0, Integer::sum);
     }
 
     @QueryHandler
@@ -114,7 +118,8 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler {
     }
 
     private void emitUpdate(Order order) {
-        emitter.emit(OrderUpdatesQuery.class, q -> order.getOrderId().equals(q.getOrderId()), order);
+        emitter.emit(OrderUpdatesQuery.class, q -> order.getOrderId()
+          .equals(q.getOrderId()), order);
     }
 
     @Override

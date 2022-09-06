@@ -7,10 +7,12 @@ import com.baeldung.axon.coreapi.events.ProductAddedEvent;
 import com.baeldung.axon.coreapi.events.ProductCountDecrementedEvent;
 import com.baeldung.axon.coreapi.events.ProductCountIncrementedEvent;
 import com.baeldung.axon.coreapi.queries.Order;
+
 import org.axonframework.eventhandling.gateway.EventGateway;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import reactor.test.StepVerifier;
 
 import java.util.Collections;
@@ -40,26 +42,29 @@ class OrderQueryServiceIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        orderId = UUID.randomUUID().toString();
+        orderId = UUID.randomUUID()
+          .toString();
         Order order = new Order(orderId);
         handler.reset(Collections.singletonList(order));
     }
 
     @Test
-    void givenOrderCreatedEventSend_whenCallingAllOrders_thenOneCreatedOrderIsReturned()
-            throws ExecutionException, InterruptedException {
-        List<OrderResponse> result = queryService.findAllOrders().get();
+    void givenOrderCreatedEventSend_whenCallingAllOrders_thenOneCreatedOrderIsReturned() throws ExecutionException, InterruptedException {
+        List<OrderResponse> result = queryService.findAllOrders()
+          .get();
         assertEquals(1, result.size());
         OrderResponse response = result.get(0);
         assertEquals(orderId, response.getOrderId());
         assertEquals(OrderStatusResponse.CREATED, response.getOrderStatus());
-        assertTrue(response.getProducts().isEmpty());
+        assertTrue(response.getProducts()
+          .isEmpty());
     }
 
     @Test
     void givenThreeDeluxeChairsShipped_whenCallingAllShippedChairs_then234PlusTreeIsReturned() {
         Order order = new Order(orderId);
-        order.getProducts().put(productId, 3);
+        order.getProducts()
+          .put(productId, 3);
         order.setOrderShipped();
         handler.reset(Collections.singletonList(order));
 
@@ -72,14 +77,18 @@ class OrderQueryServiceIntegrationTest {
         executor.schedule(this::addIncrementDecrementConfirmAndShip, 100L, TimeUnit.MILLISECONDS);
         try {
             StepVerifier.create(queryService.orderUpdates(orderId))
-                        .assertNext(order -> assertTrue(order.getProducts().isEmpty()))
-                        .assertNext(order -> assertEquals(1, order.getProducts().get(productId)))
-                        .assertNext(order -> assertEquals(2, order.getProducts().get(productId)))
-                        .assertNext(order -> assertEquals(1, order.getProducts().get(productId)))
-                        .assertNext(order -> assertEquals(OrderStatusResponse.CONFIRMED, order.getOrderStatus()))
-                        .assertNext(order -> assertEquals(OrderStatusResponse.SHIPPED, order.getOrderStatus()))
-                        .thenCancel()
-                        .verify();
+              .assertNext(order -> assertTrue(order.getProducts()
+                .isEmpty()))
+              .assertNext(order -> assertEquals(1, order.getProducts()
+                .get(productId)))
+              .assertNext(order -> assertEquals(2, order.getProducts()
+                .get(productId)))
+              .assertNext(order -> assertEquals(1, order.getProducts()
+                .get(productId)))
+              .assertNext(order -> assertEquals(OrderStatusResponse.CONFIRMED, order.getOrderStatus()))
+              .assertNext(order -> assertEquals(OrderStatusResponse.SHIPPED, order.getOrderStatus()))
+              .thenCancel()
+              .verify();
         } finally {
             executor.shutdown();
         }
