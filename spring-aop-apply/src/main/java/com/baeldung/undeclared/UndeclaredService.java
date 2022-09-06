@@ -6,5 +6,6 @@ import org.springframework.stereotype.Service;
 public class UndeclaredService {
 
     @ThrowUndeclared
-    public void doSomething() {}
+    public void doSomething() {
+        /* demo method */ }
 }

@@ -19,7 +19,7 @@ public class UndeclaredThrowableExceptionUnitTest {
         InvocationHandler invocationHandler = new ExceptionalInvocationHandler();
         List<String> proxy = (List<String>) Proxy.newProxyInstance(classLoader, new Class[] { List.class }, invocationHandler);
 
-        assertThatThrownBy(proxy::size)
+        assertThatThrownBy(() -> proxy.size())
           .isInstanceOf(UndeclaredThrowableException.class)
           .hasCauseInstanceOf(SomeCheckedException.class);
     }
@@ -41,7 +41,6 @@ public class UndeclaredThrowableExceptionUnitTest {
             if ("size".equals(method.getName())) {
                 throw new SomeCheckedException("Always fails");
             }
-
             throw new RuntimeException();
         }
     }

@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-aop-2</artifactId>
-    <name>spring-aop-2</name>
+    <artifactId>spring-aop-apply</artifactId>
+    <name>spring-aop-apply</name>
     <packaging>war</packaging>
 
     <parent>
@@ -37,6 +37,11 @@
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
     </dependencies>
 
     <properties>

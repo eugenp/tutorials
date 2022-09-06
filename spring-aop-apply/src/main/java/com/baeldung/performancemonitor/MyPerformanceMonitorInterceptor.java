@@ -17,18 +17,20 @@ public class MyPerformanceMonitorInterceptor extends AbstractMonitoringIntercept
 
     @Override
     protected Object invokeUnderTrace(MethodInvocation invocation, Log log) throws Throwable {
+
+        final String S = "Method ";
         
         String name = createInvocationTraceName(invocation);
         long start = System.currentTimeMillis();
-        log.info("Method "+name+" execution started at:"+new Date());
+        log.info(S + name+" execution started at:"+new Date());
         try {
             return invocation.proceed();
         }
         finally {
             long end = System.currentTimeMillis();
             long time = end - start;
-            log.info("Method "+name+" execution lasted:"+time+" ms");
-            log.info("Method "+name+" execution ended at:"+new Date());
+            log.info(S + name +" execution lasted:" + time + " ms");
+            log.info(S + name +" execution ended at:" + new Date());
             
             if (time > 10){
                 log.warn("Method execution longer than 10 ms!");

@@ -17,10 +17,10 @@ import java.time.Month;
 public class AopConfiguration {
     
     @Pointcut("execution(public String com.baeldung.performancemonitor.PersonService.getFullName(..))")
-    public void monitor() { }
+    public void monitor() { /* demo method */ }
     
     @Pointcut("execution(public int com.baeldung.performancemonitor.PersonService.getAge(..))")
-    public void myMonitor() { }
+    public void myMonitor() { /* demo method */ }
     
     @Bean
     public PerformanceMonitorInterceptor performanceMonitorInterceptor() {
