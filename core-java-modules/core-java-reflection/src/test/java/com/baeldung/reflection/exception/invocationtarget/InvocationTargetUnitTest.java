@@ -14,7 +14,7 @@ public class InvocationTargetUnitTest {
     public void whenCallingMethodThrowsException_thenAssertCauseOfInvocationTargetException() throws Exception {
 
         InvocationTargetExample targetExample = new InvocationTargetExample();
-        Method method = InvocationTargetExample.class.getMethod("divideByZeroExample");
+        Method method = InvocationTargetExample.class.getMethod("byZeroExample");
         
         Exception exception = assertThrows(InvocationTargetException.class, () -> method.invoke(targetExample));
         

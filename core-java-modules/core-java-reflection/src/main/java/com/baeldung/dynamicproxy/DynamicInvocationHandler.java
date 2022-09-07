@@ -8,12 +8,11 @@ import java.lang.reflect.Method;
 
 public class DynamicInvocationHandler implements InvocationHandler {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(DynamicInvocationHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DynamicInvocationHandler.class);
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         LOGGER.info("Invoked method: {}", method.getName());
-
         return 42;
     }
 }

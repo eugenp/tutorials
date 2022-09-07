@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class TimingDynamicInvocationHandler implements InvocationHandler {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(TimingDynamicInvocationHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TimingDynamicInvocationHandler.class);
     private final Map<String, Method> methods = new HashMap<>();
 
     private Object target;
