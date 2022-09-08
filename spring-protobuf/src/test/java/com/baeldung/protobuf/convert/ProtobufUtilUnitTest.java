@@ -22,7 +22,7 @@ public class ProtobufUtilUnitTest {
 
     @Test
     public void givenProtobuf_convertToJson() throws IOException {
-        Message fromJson = ProtobuffUtil.fromJson(jsonInput);
+        Message fromJson = ProtobufUtil.fromJson(jsonInput);
 
         InputStream inputStream = new ByteArrayInputStream(fromJson.toByteArray());
 
@@ -34,7 +34,7 @@ public class ProtobufUtilUnitTest {
                 textBuilder.append((char) c);
             }
         }
-        String json = ProtobuffUtil.toJson(fromJson);
+        String json = ProtobufUtil.toJson(fromJson);
         Assert.assertTrue(json.contains("\"boolean\": true"));
         Assert.assertTrue(json.contains("\"string\": \"Hello World\""));
         Assert.assertTrue(json.contains("\"color\": \"gold\""));

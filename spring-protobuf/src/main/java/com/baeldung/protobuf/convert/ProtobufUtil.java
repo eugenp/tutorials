@@ -8,7 +8,7 @@ import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.Struct;
 import com.google.protobuf.util.JsonFormat;
 
-public class ProtobuffUtil {
+public class ProtobufUtil {
 
     public static String toJson(MessageOrBuilder messageOrBuilder) throws IOException {
         return JsonFormat.printer().print(messageOrBuilder);
