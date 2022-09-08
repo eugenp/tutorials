@@ -1,6 +1,6 @@
 package com.baeldung.uniquerng;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 import java.util.Set;
@@ -20,7 +20,8 @@ public class RngUtilsUnitTest {
         while (rng.hasNext()) {
             set.add(rng.next());
         }
-        assertTrue(set.size() == n);
+
+        assertEquals(n, set.size());
     }
 
     @Test
@@ -33,7 +34,8 @@ public class RngUtilsUnitTest {
         while (rng.hasNext()) {
             set.add(rng.next());
         }
-        assertTrue(set.size() == n);
+
+        assertEquals(n, set.size());
     }
 
     @Test
@@ -49,6 +51,6 @@ public class RngUtilsUnitTest {
             .boxed()
             .collect(Collectors.toSet());
 
-        assertTrue(set.size() == n);
+        assertEquals(n, set.size());
     }
 }

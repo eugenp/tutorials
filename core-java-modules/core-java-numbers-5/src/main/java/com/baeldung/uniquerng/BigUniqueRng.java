@@ -31,6 +31,6 @@ public class BigUniqueRng implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return generated.size() > 0;
+        return !generated.isEmpty();
     }
 }

@@ -25,7 +25,7 @@ public class UniqueRng implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        if (numbers.size() < 1)
+        if (!hasNext())
             throw new NoSuchElementException();
 
         return numbers.remove(0);
@@ -33,7 +33,7 @@ public class UniqueRng implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return numbers.size() > 0;
+        return !numbers.isEmpty();
     }
 
     public int getSize() {
