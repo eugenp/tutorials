@@ -16,28 +16,68 @@ import com.google.protobuf.Message;
 
 public class ProtobufUtilUnitTest {
 
-    public static String jsonInput = "{\r\n" + "  \"boolean\": true,\r\n" + "  \"color\": \"gold\",\r\n"
-            + "  \"object\": {\r\n" + "    \"a\": \"b\",\r\n" + "    \"c\": \"d\"\r\n" + "  },\r\n"
-            + "  \"string\": \"Hello World\"\r\n" + "}";
+    public static String jsonStr = "{\r\n"
+            + "  \"boolean\": true,\r\n"
+            + "  \"color\": \"gold\",\r\n"
+            + "  \"object\": {\r\n"
+            + "    \"a\": \"b\",\r\n"
+            + "    \"c\": \"d\"\r\n"
+            + "  },\r\n"
+            + "  \"string\": \"Hello World\"\r\n"
+            + "}";
+    public static String protobufStr = "fromJson\r\n"
+            + "     (com.google.protobuf.Struct) fields {\r\n"
+            + "  key: \"boolean\"\r\n"
+            + "  value {\r\n"
+            + "    bool_value: true\r\n"
+            + "  }\r\n"
+            + "}\r\n"
+            + "fields {\r\n"
+            + "  key: \"color\"\r\n"
+            + "  value {\r\n"
+            + "    string_value: \"gold\"\r\n"
+            + "  }\r\n"
+            + "}\r\n"
+            + "fields {\r\n"
+            + "  key: \"object\"\r\n"
+            + "  value {\r\n"
+            + "    struct_value {\r\n"
+            + "      fields {\r\n"
+            + "        key: \"a\"\r\n"
+            + "        value {\r\n"
+            + "          string_value: \"b\"\r\n"
+            + "        }\r\n"
+            + "      }\r\n"
+            + "      fields {\r\n"
+            + "        key: \"c\"\r\n"
+            + "        value {\r\n"
+            + "          string_value: \"d\"\r\n"
+            + "        }\r\n"
+            + "      }\r\n"
+            + "    }\r\n"
+            + "  }\r\n"
+            + "}\r\n"
+            + "fields {\r\n"
+            + "  key: \"string\"\r\n"
+            + "  value {\r\n"
+            + "    string_value: \"Hello World\"\r\n"
+            + "  }\r\n"
+            + "}";
 
     @Test
+    public void givenJson_convertToProtobuf() throws IOException {
+        Message protobuf = ProtobufUtil.fromJson(jsonStr);
+        Assert.assertTrue(protobuf.toString().contains("key: \"boolean\""));
+        Assert.assertTrue(protobuf.toString().contains("string_value: \"Hello World\""));
+    }
+
+    
+    @Test
     public void givenProtobuf_convertToJson() throws IOException {
-        Message fromJson = ProtobufUtil.fromJson(jsonInput);
-
-        InputStream inputStream = new ByteArrayInputStream(fromJson.toByteArray());
-
-        StringBuilder textBuilder = new StringBuilder();
-        try (Reader reader = new BufferedReader(
-                new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
-            int c = 0;
-            while ((c = reader.read()) != -1) {
-                textBuilder.append((char) c);
-            }
-        }
-        String json = ProtobufUtil.toJson(fromJson);
+        Message protobuf = ProtobufUtil.fromJson(jsonStr);
+        String json = ProtobufUtil.toJson(protobuf);
         Assert.assertTrue(json.contains("\"boolean\": true"));
         Assert.assertTrue(json.contains("\"string\": \"Hello World\""));
         Assert.assertTrue(json.contains("\"color\": \"gold\""));
     }
-
 }
