@@ -17,12 +17,12 @@ public class UnixTimeUtilsUnitTest {
     private static final long AUGUST = 8;
 
     private void assertInstantFieldsMatch(LocalDateTime time) {
-        assertEquals(time.get(ChronoField.MONTH_OF_YEAR), AUGUST);
-        assertEquals(time.get(ChronoField.DAY_OF_MONTH), 16);
-        assertEquals(time.get(ChronoField.YEAR), 2022);
-        assertEquals(time.get(ChronoField.HOUR_OF_DAY), 15);
-        assertEquals(time.get(ChronoField.MINUTE_OF_HOUR), 25);
-        assertEquals(time.get(ChronoField.SECOND_OF_MINUTE), 32);
+        assertEquals(AUGUST, time.get(ChronoField.MONTH_OF_YEAR));
+        assertEquals(16, time.get(ChronoField.DAY_OF_MONTH));
+        assertEquals(2022, time.get(ChronoField.YEAR));
+        assertEquals(15, time.get(ChronoField.HOUR_OF_DAY));
+        assertEquals(25, time.get(ChronoField.MINUTE_OF_HOUR));
+        assertEquals(32, time.get(ChronoField.SECOND_OF_MINUTE));
     }
 
     @Test
