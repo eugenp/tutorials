@@ -1,5 +1,250 @@
 # java 反射
 
+## Java中的空类型
+
+了解 Void 这个特殊的类，看看何时以及如何使用它，以及如何尽可能避免使用它。
+
+虚空类型：从 JDK 1.1 开始，Java 为我们提供了 Void 类型。它的目的只是将 void 返回类型表示为一个类并包含一个 `Class<Void>` 公共值。它不可实例化，因为它唯一的构造函数是私有的。
+
+因此，我们可以分配给 Void 变量的唯一值是 null。它可能看起来有点无用，但我们现在将看看何时以及如何使用这种类型。
+
+### 用途
+
+在某些情况下，使用 Void 类型可能会很有趣。
+
+#### 反射
+
+首先，我们可以在进行反射时使用它。实际上，任何 void 方法的返回类型都将匹配包含前面提到的 `Class<Void>` 值的 Void.TYPE 变量。
+
+让我们想象一个简单的 reflection.voidtype.Calculator 类。
+
+有些方法返回一个整数，有些没有返回任何东西。现在，假设我们必须通过反射检索所有不返回任何结果的方法。我们将通过使用 Void.TYPE 变量来实现这一点：
+
+参见 reflection.voidtype.CalculatorUnitTest 。
+
+正如我们所见，只检索了 clear() 和 print() 方法。
+
+#### 泛型
+
+Void 类型的另一种用法是泛型类。假设我们正在调用一个需要 Callable 参数的方法：
+
+```java
+public class Defer {
+    public static <V> V defer(Callable<V> callable) throws Exception {
+        return callable.call();
+    }
+}
+```
+
+但是，我们想要传递的 Callable 不必返回任何东西。因此，我们可以传递一个 `Callable<Void>`：
+
+见 reflection.voidtype.DeferUnitTest givenVoidCallable_whenDiffer_thenReturnNull()
+
+如上所示，为了从返回类型为 Void 的方法返回，我们只需返回 null。此外，我们可以使用随机类型（例如 `Callable<Integer>` ）并返回 null 或根本不返回类型（Callable），但使用 Void 清楚地表明了我们的意图。
+
+我们也可以将此方法应用于 lambdas。事实上，我们的 Callable 可以写成 lambda。让我们想象一个需要函数的方法，但我们想使用一个不返回任何内容的函数。然后我们只需要让它返回 Void：
+
+```java
+public static <T, R> R defer(Function<T, R> function, T arg) {
+    return function.apply(arg);
+}
+```
+
+Test 见 reflection.voidtype.DeferUnitTest givenVoidFunction_whenDiffer_thenReturnNull()
+
+### 如何避免使用它？
+
+我们现在将看到如何避免这些情况。首先，让我们考虑一下带有 Callable 参数的方法。为了避免使用 `Callable<Void>`，我们可能会提供另一种采用 Runnable 参数的方法：
+
+```java
+public static void defer(Runnable runnable) {
+    runnable.run();
+}
+```
+
+所以，我们可以给它传递一个不返回任何值的 Runnable，从而摆脱无用的返回 null：
+
+```java
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello!");
+    }
+};
+
+Defer.defer(runnable);
+```
+
+但是，如果 Defer 类不是我们要修改的呢？然后我们可以坚持使用 `Callable<Void>` 选项，或者创建另一个采用 Runnable 的类并将调用推迟到 eflection.voidtype.Defer 类。
+
+通过这样做，我们将繁琐的部分一劳永逸地封装在我们自己的方法中，允许未来的开发人员使用更简单的 API。
+
+当然，Function 也可以实现同样的效果。在我们的示例中，Function 不返回任何内容，因此我们可以提供另一个采用 Consumer 的方法：
+
+```java
+public static <T> void defer(Consumer<T> consumer, T arg) {
+    consumer.accept(arg);
+}
+```
+
+那么，如果我们的函数不带任何参数怎么办？我们可以使用 Runnable 或创建我们自己的功能接口（如果这看起来更清晰）：
+
+```java
+public interface Action {
+    void execute();
+}
+```
+
+然后，我们再次重载 defer() 方法：
+
+```java
+public static void defer(Action action) {
+    action.execute();
+}
+```
+
+```java
+Action action = () -> System.out.println("Hello!");
+Defer.defer(action);
+```
+
+## Java中的方法参数反射
+
+Java 8 中添加了方法参数反射支持。简单地说，它提供了在运行时获取参数名称的支持。
+
+此信息最明显的用例是帮助在编辑器中实现自动完成支持。
+
+在这个快速教程中，我们将了解如何在运行时访问构造函数和方法的参数名称——使用反射。
+
+编译器参数
+
+为了能够访问方法名称信息，我们必须明确选择加入。
+
+为此，我们在编译期间指定参数选项。
+
+对于一个 Maven 项目，我们可以在 pom.xml 中声明这个选项：
+
+```xml
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>3.1</version>
+  <configuration>
+    <source>1.8</source>
+    <target>1.8</target>
+    <compilerArgument>-parameters</compilerArgument>
+  </configuration>
+</plugin>
+```
+
+示例类
+
+我们将使用一个人为的带有一个名为 fullName 的属性的 Person 类来演示：reflect.Person
+
+用法
+
+Parameter 类在 Java 8 中是新的，并且有多种有趣的方法。如果提供了 -parameters 编译器选项，isNamePresent() 方法将返回 true。
+
+要访问参数的名称，我们可以简单地调用 getName()：参见 reflect.MethodParamNameUnitTest 。
+
+## 使用反射从 Java 类中检索字段
+
+反射是计算机软件在运行时检查其结构的能力。在 Java 中，我们通过使用 Java 反射 API 来实现这一点。它允许我们在运行时检查类的元素，例如字段、方法甚至内部类。
+
+本教程将重点介绍如何检索 Java 类的字段，包括私有和继承字段。
+
+### 从类中检索字段
+
+让我们首先看看如何检索一个类的字段，而不管它们的可见性如何。稍后，我们还将看到如何获取继承字段。
+
+让我们从一个具有两个字符串字段的 reflection.Person 类的示例开始：lastName 和 firstName。前者是受保护的（稍后会有用），而后者是私有的。
+
+我们想使用反射获取 lastName 和 firstName 字段。我们将通过使用 Class::getDeclaredFields 方法来实现这一点。顾名思义，这会以 Field 数组的形式返回一个类的所有声明字段： 参见 reflection.PersonAndEmployeeReflectionUnitTest givenPersonClass_whenGetDeclaredFields_thenTwoFields() 。
+
+如我们所见，我们得到了 Person 类的两个字段。我们检查它们的名称和类型是否与 Person 类中的字段定义相匹配。
+
+### 检索继承的字段
+
+现在让我们看看如何获​​取 Java 类的继承字段。
+
+为了说明这一点，让我们创建一个名为 reflection.Employee 的第二个类，它扩展了 Person，它有一个自己的字段： employeeId 。
+
+#### 检索简单类层次结构中的继承字段
+
+使用 Employee.class.getDeclaredFields() 只会返回 employeeId 字段，因为此方法不会返回在超类中声明的字段。要获得继承的字段，我们还必须获得 Person 超类的字段。
+
+当然，我们可以在 Person 和 Employee 类上使用 getDeclaredFields() 方法，并将它们的结果合并到一个数组中。但是，如果我们不想显式指定超类怎么办？
+
+在这种情况下，我们可以使用 Java 反射 API 的另一种方法：Class::getSuperclass。这给了我们另一个类的超类，我们不需要知道那个超类是什么。
+
+让我们收集 Employee.class 和 Employee.class.getSuperclass() 上的 getDeclaredFields() 的结果，并将它们合并到一个数组中：
+
+参见 test/PersonAndEmployeeReflectionUnitTest givenEmployeeClass_whenGetDeclaredFieldsOnBothClasses_thenThreeFields()
+
+我们可以在这里看到我们已经收集了 Person 的两个字段以及 Employee 的单个字段。
+
+但是，Person 的私有字段真的是继承字段吗？ 没那么多。 对于包私有字段也是如此。 只有公共和受保护的字段被认为是继承的。Only public and protected fields are considered inherited.
+
+#### 过滤公共和受保护的字段
+
+不幸的是，Java API 中没有任何方法允许我们从一个类及其超类中收集公共和受保护的字段。 Class::getFields 方法接近我们的目标，因为它返回类及其超类的所有公共字段，但不返回受保护的字段。
+
+我们必须只获取继承字段的唯一方法是使用 getDeclaredFields() 方法，就像我们刚才所做的那样，并使用 Field::getModifiers 方法过滤其结果。这个返回一个 int 表示当前字段的修饰符。每个可能的修饰符都被分配了一个介于 2^0 和 2^7 之间的 2 的幂。
+
+例如，public 是 2^0，static 是 2^3。因此，在公共和静态字段上调用 ​​getModifiers() 方法将返回 9。
+
+然后，可以在此值和特定修饰符的值之间执行按位和，以查看该字段是否具有该修饰符。如果操作返回 0 以外的值，则应用修饰符，否则不应用。
+
+我们很幸运，因为 Java 为我们提供了一个实用程序类来检查 getModifiers() 返回的值中是否存在修饰符。在示例中，让我们使用 isPublic() 和 isProtected() 方法仅收集继承的字段：
+
+```java
+List<Field> personFields = Arrays.stream(Employee.class.getSuperclass().getDeclaredFields())
+  .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
+  .collect(Collectors.toList());
+
+assertEquals(1, personFields.size());
+
+assertTrue(personFields.stream().anyMatch(field ->
+  field.getName().equals(LAST_NAME_FIELD)
+    && field.getType().equals(String.class))
+);
+```
+
+正如我们所见，结果不再带有私有字段。
+
+### 检索深层类层次结构中的继承字段
+
+在上面的示例中，我们处理了单个类层次结构。 如果我们有更深的类层次结构并且想要收集所有继承的字段，我们现在该怎么办？
+
+假设我们有一个 Employee 的子类或一个 Person 的超类——那么获取整个层次结构的字段将需要检查所有超类。
+
+我们可以通过创建一个贯穿层次结构的实用方法来实现这一点，为我们构建完整的结果：
+
+```java
+List<Field> getAllFields(Class clazz) {
+    if (clazz == null) {
+        return Collections.emptyList();
+    }
+
+    List<Field> result = new ArrayList<>(getAllFields(clazz.getSuperclass()));
+    List<Field> filteredFields = Arrays.stream(clazz.getDeclaredFields())
+      .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
+      .collect(Collectors.toList());
+    result.addAll(filteredFields);
+    return result;
+}
+```
+
+此递归方法将通过类层次结构搜索公共和受保护字段，并返回在列表中找到的所有内容。
+
+让我们通过一个新的 reflection.MonthEmployee 类的小测试来说明它，扩展 Employee 类。
+
+这个类定义了一个新的领域——reward。给定所有层次类，我们的方法应该给我们以下字段定义：Person::lastName、Employee::employeeId 和 MonthEmployee::reward。
+
+让我们在 MonthEmployee 上调用 getAllFields() 方法：参见 test/PersonAndEmployeeReflectionUnitTest givenMonthEmployeeClass_whenGetAllFields_thenThreeFields() 。
+
+正如预期的那样，收集了所有公共和受保护的字段。
+
 ## 在运行时更改注释参数
 
 注释 Annotation ，一种可以添加到 Java 代码中的元数据形式。 这些注释可以在编译时处理并嵌入到类文件中，或者可以在运行时使用反射保留和访问。
@@ -325,8 +570,8 @@ public void givenCurrentThread_whenGetStackTrace_thenFindMethod() {
 ## Relevant Articles
 
 - [ ] [Void Type in Java](https://www.baeldung.com/java-void-type)
-- [ ] [Retrieve Fields from a Java Class Using Reflection](https://www.baeldung.com/java-reflection-class-fields)
-- [ ] [Method Parameter Reflection in Java](http://www.baeldung.com/java-parameter-reflection)
+- [x] [Retrieve Fields from a Java Class Using Reflection](https://www.baeldung.com/java-reflection-class-fields)
+- [x] [Method Parameter Reflection in Java](http://www.baeldung.com/java-parameter-reflection)
 - [x] [Changing Annotation Parameters At Runtime](http://www.baeldung.com/java-reflection-change-annotation-params)
 - [x] [Dynamic Proxies in Java](http://www.baeldung.com/java-dynamic-proxies)
 - [x] [Whax Causes java.lang.reflect.InvocationTargetException?](https://www.baeldung.com/java-lang-reflect-invocationtargetexception)
