@@ -433,6 +433,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -829,9 +830,8 @@
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
-
+                <module>kubernetes-modules</module>
                 <module>ksqldb</module>
-                <module>kubernetes</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-2</module>
@@ -956,8 +956,9 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2</module>
-
+                <module>spring-caching-2/redis</module>
+                <module>spring-caching-2/ttl</module>
+                
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
