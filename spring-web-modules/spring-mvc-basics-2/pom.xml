@@ -151,7 +151,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
         <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>

@@ -1330,7 +1330,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>

@@ -198,7 +198,6 @@
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <handlebars.version>4.1.0</handlebars.version>
         <joda-time.version>2.10</joda-time.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <inject.version>1</inject.version>
         <!-- Maven plugins -->
         <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
