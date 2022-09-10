@@ -4,7 +4,6 @@ import one.microstream.storage.embedded.types.EmbeddedStorage;
 import one.microstream.storage.embedded.types.EmbeddedStorageManager;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 public class StorageManager {

@@ -13,9 +13,9 @@ import static org.assertj.core.api.Assertions.*;
 
 class StorageManagerUnitTest {
 
-    private static final Author author = new Author("Joanne", "Rowling");
-    private static final Book bookOne = new Book("Harry Potter and the Philosopher's Stone", author, 1997);
-    private static final Book bookTwo = new Book("Harry Potter and the Chamber of Secrets", author, 1998);
+    private static final Author AUTHOR = new Author("Joanne", "Rowling");
+    private static final Book BOOK_ONE = new Book("Harry Potter and the Philosopher's Stone", AUTHOR, 1997);
+    private static final Book BOOK_TWO = new Book("Harry Potter and the Chamber of Secrets", AUTHOR, 1998);
 
     @Test
     void givenStorageWithStringAsRoot_whenFetchingRoot_thenExpectedStringIsReturned(@TempDir Path tempDir) {
@@ -35,29 +35,29 @@ class StorageManagerUnitTest {
 
     @Test
     void givenStorageWithAdditionalObjects_whenLoadingRoot_thenAdditionalObjectsAreSuccessfullyStored(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-3", Arrays.asList(bookOne, bookTwo));
+        EmbeddedStorageManager storageManager = StorageManager.initializeStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-3", Arrays.asList(BOOK_ONE, BOOK_TWO));
         RootInstance rootInstance = (RootInstance) storageManager.root();
         assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-3");
         assertThat(rootInstance.getBooks()).hasSize(2);
-        assertThat(rootInstance.getBooks().get(0)).isEqualTo(bookOne);
-        assertThat(rootInstance.getBooks().get(1)).isEqualTo(bookTwo);
+        assertThat(rootInstance.getBooks().get(0)).isEqualTo(BOOK_ONE);
+        assertThat(rootInstance.getBooks().get(1)).isEqualTo(BOOK_TWO);
         storageManager.shutdown();
     }
 
     @Test
     void givenStorageWithAdditionalObjects_whenLazyLoadingRoot_thenAdditionalObjectsAreSuccessfullyStored(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-4", Arrays.asList(bookOne, bookTwo));
+        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-4", Arrays.asList(BOOK_ONE, BOOK_TWO));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
         assertThat(rootInstance.getName()).isEqualTo("baeldung-demo-4");
         assertThat(rootInstance.getBooks()).hasSize(2);
-        assertThat(rootInstance.getBooks().get(0)).isEqualTo(bookOne);
-        assertThat(rootInstance.getBooks().get(1)).isEqualTo(bookTwo);
+        assertThat(rootInstance.getBooks().get(0)).isEqualTo(BOOK_ONE);
+        assertThat(rootInstance.getBooks().get(1)).isEqualTo(BOOK_TWO);
         storageManager.shutdown();
     }
 
     @Test
     void givenStorageWithAdditionalObjects_whenRemovingObjectsFromGraph_thenObjectsAreSuccessfullyRemoved(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-5", Arrays.asList(bookOne, bookTwo));
+        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-5", Arrays.asList(BOOK_ONE, BOOK_TWO));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
         List<Book> books = rootInstance.getBooks();
         books.remove(1);
@@ -69,7 +69,7 @@ class StorageManagerUnitTest {
 
     @Test
     void givenStorageWithAdditionalObjects_whenFilteringCollectionFromGraph_thenStreamsCanBeUsed(@TempDir Path tempDir) {
-        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-6", Arrays.asList(bookOne, bookTwo));
+        EmbeddedStorageManager storageManager = StorageManager.lazyLoadOrCreateStorageWithCustomTypeAsRoot(tempDir, "baeldung-demo-6", Arrays.asList(BOOK_ONE, BOOK_TWO));
         RootInstanceLazy rootInstance = (RootInstanceLazy) storageManager.root();
         List<Book> booksFrom1998 = rootInstance.getBooks().stream()
           .filter(book -> book.getYear() == 1998)
