@@ -15,19 +15,6 @@ public class ProtobufUtil {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends Message> T fromJson(String json, Class<T> clazz) throws IOException {
-        Builder<?> builder = null;
-        try {
-            builder = (Builder<?>) clazz.getMethod("newBuilder").invoke(null);
-
-        } catch (Exception e) {
-            return null;
-        }
-        JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
-        return (T) builder.build();
-    }
-
-    @SuppressWarnings("unchecked")
     public static Message fromJson(String json) throws IOException {
         Builder structBuilder = Struct.newBuilder();
         JsonFormat.parser().ignoringUnknownFields().merge(json, structBuilder);

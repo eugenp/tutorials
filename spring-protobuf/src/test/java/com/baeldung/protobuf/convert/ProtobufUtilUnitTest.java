@@ -1,5 +1,6 @@
 package com.baeldung.protobuf.convert;
 
+
 import java.io.IOException;
 
 import org.junit.Assert;
@@ -26,7 +27,6 @@ public class ProtobufUtilUnitTest {
         Assert.assertTrue(protobuf.toString().contains("string_value: \"Hello World\""));
     }
 
-    
     @Test
     public void givenProtobuf_convertToJson() throws IOException {
         Message protobuf = ProtobufUtil.fromJson(jsonStr);
