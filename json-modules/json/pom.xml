@@ -15,17 +15,11 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>org.everit.json</groupId>
-            <artifactId>org.everit.json.schema</artifactId>
-            <version>${everit.json.schema.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+		<dependency>
+			<groupId>com.networknt</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>${networknt.json.schema.version}</version>
+		</dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -72,7 +66,7 @@
     </dependencies>
 
     <properties>
-        <everit.json.schema.version>1.4.1</everit.json.schema.version>
+        <networknt.json.schema.version>1.0.72</networknt.json.schema.version>
         <jsonb-api.version>1.0</jsonb-api.version>
         <yasson.version>1.0.1</yasson.version>
         <json.version>20211205</json.version>

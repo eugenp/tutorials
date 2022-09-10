@@ -165,13 +165,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hsqldb.version>2.4.0</hsqldb.version>
-        <spock-core.version>1.1-groovy-2.4</spock-core.version>
         <commons-lang3.version>3.9</commons-lang3.version>
         <java.version>1.8</java.version>
         <logback.version>1.2.3</logback.version>
-        <groovy.version>2.5.7</groovy.version>
-        <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
     </properties>
 </project>
 

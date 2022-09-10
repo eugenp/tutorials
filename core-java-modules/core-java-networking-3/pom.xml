@@ -90,7 +90,6 @@
         <jgonian.commons-ip-math.version>1.32</jgonian.commons-ip-math.version>
         <googlecode.ipv6.version>0.17</googlecode.ipv6.version>
         <javax.mail.version>1.6.2</javax.mail.version>
-        <guava.version>31.0-jre</guava.version>
     </properties>
 
 </project>

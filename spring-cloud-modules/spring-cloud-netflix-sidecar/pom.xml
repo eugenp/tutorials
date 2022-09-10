@@ -17,8 +17,8 @@
     </parent>
 
     <modules>
-        <module>sidecar-demo</module>
-        <module>echo-demo</module>
+        <module>spring-cloud-netflix-sidecar-demo</module>
+        <module>spring-cloud-netflix-sidecar-echo-demo</module>
     </modules>
 
     <properties>

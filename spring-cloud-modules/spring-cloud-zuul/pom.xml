@@ -80,7 +80,7 @@
     </build>
 
     <properties>
-        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2021.0.3</spring-cloud-dependencies.version>
         <spring-cloud-netflix-zuul.version>2.2.7.RELEASE</spring-cloud-netflix-zuul.version>
     </properties>
 

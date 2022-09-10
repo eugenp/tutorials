@@ -10,7 +10,7 @@ public class FlowerService {
 
     private List<String> flowers = Arrays.asList("Poppy", "Ageratum", "Carnation", "Diascia", "Lantana");
 
-    public String analize(String name) {
+    public String analyze(String name) {
         if(flowers.contains(name)) {
             return "flower";
         }

@@ -14,7 +14,7 @@ public class UploadService {
     
     @Autowired
     private UploadClient client;
-    
+
     public boolean uploadFileWithManualClient(MultipartFile file) {
         UploadResource fileUploadResource = Feign.builder().encoder(new SpringFormEncoder())
                 .target(UploadResource.class, HTTP_FILE_UPLOAD_URL);
@@ -29,5 +29,4 @@ public class UploadService {
     public String uploadFileError(MultipartFile file) {
         return client.fileUpload(file);
     }
-    
 }

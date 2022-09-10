@@ -14,11 +14,11 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
-    <modules>
-        <module>jackson</module>
+    <modules>        
         <module>jackson-annotations</module>
         <module>jackson-conversions</module>
         <module>jackson-conversions-2</module>
+        <module>jackson-core</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
     </modules>

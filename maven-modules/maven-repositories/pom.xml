@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-repositories</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Maven Repositories</name>
+    <name>maven-repositories</name>
     <packaging>pom</packaging>
 
     <parent>

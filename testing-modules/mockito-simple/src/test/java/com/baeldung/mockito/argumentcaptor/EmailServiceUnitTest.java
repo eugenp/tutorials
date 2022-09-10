@@ -1,11 +1,17 @@
 package com.baeldung.mockito.argumentcaptor;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.*;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EmailServiceUnitTest {
@@ -32,7 +38,7 @@ public class EmailServiceUnitTest {
 
         Mockito.verify(platform).deliver(emailCaptor.capture());
         Email emailCaptorValue = emailCaptor.getValue();
-        assertEquals(Format.TEXT_ONLY, emailCaptorValue.getFormat());
+        assertThat(emailCaptorValue.getFormat()).isEqualTo(Format.TEXT_ONLY);
     }
 
     @Test
@@ -45,7 +51,7 @@ public class EmailServiceUnitTest {
 
         Mockito.verify(platform).deliver(emailCaptor.capture());
         Email value = emailCaptor.getValue();
-        assertEquals(Format.HTML, value.getFormat());
+        assertThat(value.getFormat()).isEqualTo(Format.HTML);
     }
 
     @Test
@@ -54,7 +60,7 @@ public class EmailServiceUnitTest {
 
         ServiceStatus serviceStatus = emailService.checkServiceStatus();
 
-        assertEquals(ServiceStatus.UP, serviceStatus);
+        assertThat(serviceStatus).isEqualTo(ServiceStatus.UP);
     }
 
     @Test
@@ -63,7 +69,7 @@ public class EmailServiceUnitTest {
 
         ServiceStatus serviceStatus = emailService.checkServiceStatus();
 
-        assertEquals(ServiceStatus.DOWN, serviceStatus);
+        assertThat(serviceStatus).isEqualTo(ServiceStatus.DOWN);
     }
 
     @Test
@@ -80,7 +86,7 @@ public class EmailServiceUnitTest {
         Mockito.when(platform.authenticate(credentialsCaptor.capture())).thenReturn(AuthenticationStatus.AUTHENTICATED);
 
         assertTrue(emailService.authenticatedSuccessfully(credentials));
-        assertEquals(credentials, credentialsCaptor.getValue());
+        assertThat(credentialsCaptor.getValue()).isEqualTo(credentials);
     }
 
     @Test

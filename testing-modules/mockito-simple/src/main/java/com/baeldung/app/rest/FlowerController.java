@@ -17,7 +17,7 @@ public class FlowerController {
 
     @PostMapping("/isAFlower")
     public String isAFlower (@RequestBody String flower) {
-        return flowerService.analize(flower);
+        return flowerService.analyze(flower);
     }
 
     @PostMapping("/isABigFlower")

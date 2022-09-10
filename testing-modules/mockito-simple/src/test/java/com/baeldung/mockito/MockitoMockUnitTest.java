@@ -2,7 +2,7 @@ package com.baeldung.mockito;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -33,11 +33,10 @@ public class MockitoMockUnitTest {
         MyList listMock = mock(MyList.class, "myMock");
         when(listMock.add(anyString())).thenReturn(false);
         listMock.add(randomAlphabetic(6));
-        
-        Throwable exceptionThrown = assertThrows(TooFewActualInvocations.class, 
-        		() -> verify(listMock, times(2)).add(anyString()));
-        
-        assertThat(exceptionThrown.getMessage()).contains("myMock.add");
+
+        assertThatThrownBy(() -> verify(listMock, times(2)).add(anyString()))
+            .isInstanceOf(TooFewActualInvocations.class)
+            .hasMessageContaining("myMock.add");
     }
 
     private static class CustomAnswer implements Answer<Boolean> {

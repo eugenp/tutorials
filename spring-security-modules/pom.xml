@@ -32,6 +32,7 @@
         <module>spring-security-web-boot-1</module>
         <module>spring-security-web-boot-2</module>
         <module>spring-security-web-boot-3</module>
+        <module>spring-security-web-boot-4</module>
         <module>spring-security-web-digest-auth</module>
         <module>spring-security-web-login</module>
         <module>spring-security-web-login-2</module>
@@ -46,6 +47,7 @@
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>        
         <module>spring-security-opa</module>
+        <module>spring-security-pkce</module>
     </modules>
 
 </project>
