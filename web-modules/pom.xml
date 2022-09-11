@@ -27,7 +27,7 @@
         <module>jooby</module>
         <module>linkrest</module>
         <module>ninja</module>
-        <!-- <module>play-framework</module> --> <!-- Not a maven project -->
+        <!-- <module>play-modules</module> --> <!-- Not a maven project -->
         <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
         <module>ratpack</module>
         <module>resteasy</module>

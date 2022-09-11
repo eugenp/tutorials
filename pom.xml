@@ -433,6 +433,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -559,7 +560,8 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2</module>
+                <module>spring-caching-2/redis</module>
+                <module>spring-caching-2/ttl</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -828,9 +830,8 @@
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
-
+                <module>kubernetes-modules</module>
                 <module>ksqldb</module>
-                <module>kubernetes</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-2</module>
@@ -955,8 +956,9 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2</module>
-
+                <module>spring-caching-2/redis</module>
+                <module>spring-caching-2/ttl</module>
+                
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -1329,9 +1331,9 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
-        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.13.3</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
