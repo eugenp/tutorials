@@ -15,8 +15,8 @@
     </parent>
 
     <modules>
-        <module>api-gateway</module>
-        <module>weather-service</module>
+        <module>spring-cloud-zuul-fallback-api-gateway</module>
+        <module>spring-cloud-zuul-fallback-weather-service</module>
     </modules>
 
     <properties>

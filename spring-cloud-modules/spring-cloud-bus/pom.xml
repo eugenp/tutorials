@@ -16,8 +16,8 @@
     </parent>
 
     <modules>
-        <module>spring-cloud-config-client</module>
-        <module>spring-cloud-config-server</module>
+        <module>spring-cloud-bus-client</module>
+        <module>spring-cloud-bus-server</module>
     </modules>
 
     <dependencyManagement>

@@ -1,3 +1,3 @@
 ## Relevant articles:
-- [CAS SSO With Spring Security](http://www.baeldung.com/spring-security-cas-sso)
-- [Code Analysis with SonarQube](http://www.baeldung.com/sonar-qube)
+- [CAS SSO With Spring Security](https://www.baeldung.com/spring-security-cas-sso)
+- [Code Analysis with SonarQube](https://www.baeldung.com/sonar-qube)

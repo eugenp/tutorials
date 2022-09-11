@@ -58,7 +58,6 @@
     </build>
 
     <properties>
-        <spring-boot.version>2.6.4</spring-boot.version>
         <spring-framework.version>5.3.20</spring-framework.version>
         <!-- testing -->
         <mockito.version>4.6.1</mockito.version>        
