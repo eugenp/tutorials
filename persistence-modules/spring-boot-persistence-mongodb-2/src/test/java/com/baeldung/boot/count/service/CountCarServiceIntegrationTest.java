@@ -10,13 +10,16 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.boot.count.SpringBootCountApplication;
 import com.baeldung.boot.count.data.Car;
 
-@SpringBootTest
+@SpringBootTest(classes = SpringBootCountApplication.class)
 @DirtiesContext
 @RunWith(SpringRunner.class)
+@TestPropertySource("/embedded.properties")
 public class CountCarServiceIntegrationTest {
     @Autowired
     private CountCarService service;
@@ -52,10 +55,10 @@ public class CountCarServiceIntegrationTest {
     public void givenFilteredDocs_whenCriteriaCountByBrand_thenCountEqualsSize() {
         String filter = "B-A";
         long all = service.findCars()
-            .stream()
-            .filter(car -> car.getBrand()
-                .equals(filter))
-            .count();
+          .stream()
+          .filter(car -> car.getBrand()
+            .equals(filter))
+          .count();
 
         long count = service.getCountBrandWithCriteria(filter);
 
@@ -66,10 +69,10 @@ public class CountCarServiceIntegrationTest {
     public void givenQueryAnnotation_whenCountingByBrand_thenCountEqualsSize() {
         String filter = "B-A";
         long all = service.findCars()
-            .stream()
-            .filter(car -> car.getBrand()
-                .equals(filter))
-            .count();
+          .stream()
+          .filter(car -> car.getBrand()
+            .equals(filter))
+          .count();
 
         long count = service.getCountBrandWithQueryAnnotation(filter);
 
@@ -80,10 +83,10 @@ public class CountCarServiceIntegrationTest {
     public void givenFilteredDocs_whenQueryMethodCountByBrand_thenCountEqualsSize() {
         String filter = "B-A";
         long all = service.findCars()
-            .stream()
-            .filter(car -> car.getBrand()
-                .equals(filter))
-            .count();
+          .stream()
+          .filter(car -> car.getBrand()
+            .equals(filter))
+          .count();
 
         long count = service.getCountBrandWithQueryMethod(filter);
 
@@ -93,10 +96,10 @@ public class CountCarServiceIntegrationTest {
     @Test
     public void givenFilteredDocs_whenExampleCount_thenCountEqualsSize() {
         long all = service.findCars()
-            .stream()
-            .filter(car -> car.getBrand()
-                .equals(car1.getBrand()))
-            .count();
+          .stream()
+          .filter(car -> car.getBrand()
+            .equals(car1.getBrand()))
+          .count();
 
         long count = service.getCountWithExample(car1);
 
@@ -106,10 +109,10 @@ public class CountCarServiceIntegrationTest {
     @Test
     public void givenFilteredDocs_whenExampleCriteriaCount_thenCountEqualsSize() {
         long all = service.findCars()
-            .stream()
-            .filter(car -> car.getBrand()
-                .equals(car1.getBrand()))
-            .count();
+          .stream()
+          .filter(car -> car.getBrand()
+            .equals(car1.getBrand()))
+          .count();
 
         long count = service.getCountWithExampleCriteria(car1);
 
