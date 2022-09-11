@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoCo
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@SpringBootApplication(exclude = EmbeddedMongoAutoConfiguration.class)
+@SpringBootApplication
 @PropertySource("classpath:boot.unique.field/app.properties")
 @EnableMongoRepositories(basePackages = { "com.baeldung.boot.unique.field" })
 public class SpringBootUniqueFieldApplication {
