@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@SpringBootApplication(exclude = EmbeddedMongoAutoConfiguration.class)
+@SpringBootApplication
 @PropertySource("classpath:boot.collection.name/app.properties")
 @EnableMongoRepositories(basePackages = { "com.baeldung.boot.collection.name" })
 public class SpringBootCollectionNameApplication {
