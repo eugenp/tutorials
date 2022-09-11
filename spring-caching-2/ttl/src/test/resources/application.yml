@@ -1,0 +1,15 @@
+server:
+  port: 8001
+
+spring:
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+caching:
+  spring:
+    hotelListTTL: 43200
+  guava:
+    hotelItemTTL: 43200
