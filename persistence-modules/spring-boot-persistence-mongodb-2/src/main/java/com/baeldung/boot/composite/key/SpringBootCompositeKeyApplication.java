@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@SpringBootApplication(exclude = EmbeddedMongoAutoConfiguration.class)
+@SpringBootApplication
 @EnableMongoRepositories(basePackages = { "com.baeldung.boot.composite.key" })
 public class SpringBootCompositeKeyApplication {
     public static void main(String... args) {
