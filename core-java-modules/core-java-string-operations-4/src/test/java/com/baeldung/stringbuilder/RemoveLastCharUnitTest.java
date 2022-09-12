@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class RemoveLastCharTest {
+class RemoveLastCharUnitTest {
 
     private static final String STRING_WITH_CHAR = "Spring Boot,Quarkus,Micronaut,";
     private static final String STRING_WITHOUT_CHAR = "Spring Boot,Quarkus,Micronaut";
