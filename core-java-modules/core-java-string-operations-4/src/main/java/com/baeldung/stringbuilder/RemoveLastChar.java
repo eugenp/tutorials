@@ -8,15 +8,6 @@ import java.util.StringJoiner;
 public class RemoveLastChar {
     static List<String> technologies = List.of("Spring Boot", "Quarkus", "Micronaut");
 
-    public static void main(String[] args) {
-        System.out.println(joinStringsUsingJoin());
-        System.out.println(joinUsingStringJoiner());
-        System.out.println(joinUsingStringUtils());
-        System.out.println(joinStringsWithoutLastCharAsDelimiter());
-        System.out.println(removeLastCharWithDeleteLastChar(joinStringsWithLastCharAsDelimiter()));
-        System.out.println(removeLastCharWithSetLength(joinStringsWithLastCharAsDelimiter()));
-    }
-
     public static StringBuilder joinStringsWithLastCharAsDelimiter() {
         StringBuilder sb = new StringBuilder();
 
