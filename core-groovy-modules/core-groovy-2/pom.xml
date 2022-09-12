@@ -138,7 +138,6 @@
                             <mainClass>com.baeldung.MyJointCompilationApp</mainClass>
                         </manifest>
                     </archive>
-
                 </configuration>
                 <executions>
                     <execution>
