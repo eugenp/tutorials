@@ -113,7 +113,7 @@
             <!-- to this module. This can be enabled manually while running this module on local, or -->
             <!-- directly npm can be run inside the webapp folder -->
             <!-- <plugin> <groupId>com.github.eirslett</groupId> <artifactId>frontend-maven-plugin</artifactId> -->
-            <!-- <version>${frontend-maven-plugin.version}</version> <!--<configuration> <nodeVersion>${node.version}</nodeVersion> -->
+            <!-- <version>${frontend-maven-plugin.version}</version> <configuration> <nodeVersion>${node.version}</nodeVersion> -->
             <!-- <workingDirectory>src/main/webapp/WEB-INF/view/react</workingDirectory> </configuration> -->
             <!-- <executions> <execution> <id>install node and npm</id> <goals> <goal>install-node-and-npm</goal> -->
             <!-- </goals> </execution><execution> -->
