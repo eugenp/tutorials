@@ -73,7 +73,7 @@ public class HibernateScalarExampleUnitTest {
 
     @Test
     public void whenScalarUsedForAvgAge_ThenSingleValueReturned() {
-        Double avgAge = scalarExample.fetchAvgAgeWithScalar();
+        Integer avgAge = scalarExample.fetchAvgAgeWithScalar();
         assertEquals(true, (avgAge >= 5 && avgAge <= 24));
     }
 
