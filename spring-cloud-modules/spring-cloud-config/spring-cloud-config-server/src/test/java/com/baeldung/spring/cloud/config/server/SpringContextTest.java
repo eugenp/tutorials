@@ -1,5 +1,7 @@
 package com.baeldung.spring.cloud.config.server;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,5 +14,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 public class SpringContextTest {
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
+        assertNotNull(this);
     }
 }

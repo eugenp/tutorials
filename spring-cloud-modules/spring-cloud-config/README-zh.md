@@ -14,7 +14,7 @@ Spring Cloud Config 是 Spring 的客户端/服务器方法，用于跨多个应
 
 但是，对于客户端项目，我们只需要 spring-cloud-starter-config 和 spring-boot-starter-web 模块。
 
-3.一个配置服务器实现
+3.实现配置服务器 Config-Server
 
 应用程序的主要部分是一个配置类，更具体地说是一个@SpringBootApplication，它通过自动配置注解@EnableConfigServer 引入所有必需的设置。
 
@@ -34,7 +34,11 @@ spring.security.user.name=root
 spring.security.user.password=s3cr3t
 ```
 
-> 通过 ssh://localhost/config-repo 无法访问 MacOS 上建的Git服务。
+> 通过 ssh://localhost/config-repo 无法访问 MacOS 上建的Git服务。直接指向 Files Path：`spring.cloud.config.server.git.uri=/Users/wangkan/git/config-repo`，Windows 用户应确保在复制路径时使用 / 而不是 \。
+
+也可使用属性 spring.cloud.config.server.native.search-locations 获取本地存储配置文件的位置。 将值替换为文件系统上将保存这些文件的文件夹。 例如，文件://${user.home}/config。
+
+`spring.cloud.config.server.native.search-locations=/path/to/config/folder`
 
 4.作为配置存储的 Git 存储库
 
@@ -45,6 +49,7 @@ spring.security.user.password=s3cr3t
 ```bash
 $> git init
 $> echo 'user.role=Developer' > config-client-development.properties
+$> cat 'microservice-client.value=10' > config-client-development.properties
 $> echo 'user.role=User'      > config-client-production.properties
 $> git add .
 $> git commit -m 'Initial config-client properties'
