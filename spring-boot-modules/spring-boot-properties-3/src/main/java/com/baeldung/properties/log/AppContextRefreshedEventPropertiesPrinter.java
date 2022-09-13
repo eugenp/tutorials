@@ -9,8 +9,6 @@ import org.springframework.core.env.MapPropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class AppContextRefreshedEventPropertiesPrinter {
@@ -27,33 +25,10 @@ public class AppContextRefreshedEventPropertiesPrinter {
 
         LOGGER.info("************************* ALL PROPERTIES(EVENT) ******************************");
 
-        List<MapPropertySource> propertySources = env.getPropertySources()
+        env.getPropertySources()
                 .stream()
                 .filter(ps -> ps instanceof MapPropertySource)
-                .map(ps -> (MapPropertySource) ps)
-                .collect(Collectors.toList());
-
-        printProperties(env, propertySources);
-        LOGGER.info("******************************************************************************");
-    }
-
-    private void printAllApplicationProperties(ConfigurableEnvironment env) {
-
-        LOGGER.info("************************* APP PROPERTIES(EVENT) ******************************");
-
-        List<MapPropertySource> propertySources = env.getPropertySources()
-                .stream()
-                .filter(ps -> ps instanceof MapPropertySource && ps.getName().contains("application.properties"))
-                .map(ps -> (MapPropertySource) ps)
-                .collect(Collectors.toList());
-
-        printProperties(env, propertySources);
-        LOGGER.info("******************************************************************************");
-    }
-
-    private void printProperties(ConfigurableEnvironment env, List<MapPropertySource> propertySources) {
-        propertySources.stream()
-                .map(propertySource -> propertySource.getSource().keySet())
+                .map(ps -> ((MapPropertySource) ps).getSource().keySet())
                 .flatMap(Collection::stream)
                 .distinct()
                 .sorted()
@@ -64,5 +39,29 @@ public class AppContextRefreshedEventPropertiesPrinter {
                         LOGGER.warn("{} -> {}", key, e.getMessage());
                     }
                 });
+
+        LOGGER.info("******************************************************************************");
+    }
+
+    private void printAllApplicationProperties(ConfigurableEnvironment env) {
+
+        LOGGER.info("************************* APP PROPERTIES(EVENT) ******************************");
+
+        env.getPropertySources()
+                .stream()
+                .filter(ps -> ps instanceof MapPropertySource && ps.getName().contains("application.properties"))
+                .map(ps -> ((MapPropertySource) ps).getSource().keySet())
+                .flatMap(Collection::stream)
+                .distinct()
+                .sorted()
+                .forEach(key -> {
+                    try {
+                        LOGGER.info("{}={}", key, env.getProperty(key));
+                    } catch (Exception e) {
+                        LOGGER.warn("{} -> {}", key, e.getMessage());
+                    }
+                });
+
+        LOGGER.info("******************************************************************************");
     }
 }
