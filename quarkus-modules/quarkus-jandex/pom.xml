@@ -24,8 +24,8 @@
     </modules>
 
     <dependencyManagement>
-        <!-- The Quarkus BOM is only available since Quarkus 2.x, and it's dependencies and plugins are 
-            compiled with JDK11, so using JDK8 will result in java.lang.UnsupportedClassVersionError -->
+        <!-- The Quarkus BOM is only available since Quarkus 2.x, and it's dependencies and plugins are -->
+        <!--compiled with JDK11, so using JDK8 will result in java.lang.UnsupportedClassVersionError -->
         <dependencies>
             <dependency>
                 <groupId>${quarkus.platform.group-id}</groupId>
