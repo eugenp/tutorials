@@ -6,7 +6,7 @@
     <artifactId>spring-security-web-login-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-security-web-login-2</name>
-    <packaging>jar</packaging>   
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

@@ -14,11 +14,11 @@
     </parent>
 
     <dependencies>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-web</artifactId>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>${spring-framework.version}</version>
-		</dependency>    
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -29,22 +29,19 @@
             <artifactId>spring-context</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
-        
         <!-- utils -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        
         <!-- test scoped -->
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
     </dependencies>
 
     <build>
@@ -60,7 +57,7 @@
     <properties>
         <spring-framework.version>5.3.20</spring-framework.version>
         <!-- testing -->
-        <mockito.version>4.6.1</mockito.version>        
+        <mockito.version>4.6.1</mockito.version>
     </properties>
 
 </project>
