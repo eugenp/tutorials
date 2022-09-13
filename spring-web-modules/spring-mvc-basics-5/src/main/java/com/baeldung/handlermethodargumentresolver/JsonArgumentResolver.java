@@ -26,9 +26,10 @@ public class JsonArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         String body = getRequestBody(webRequest);
-        String jsonPath = Objects.requireNonNull(parameter.getParameterAnnotation(JsonArg.class)
+        String jsonPath = Objects.requireNonNull(Objects.requireNonNull(parameter.getParameterAnnotation(JsonArg.class))
             .value());
-        return JsonPath.read(body, jsonPath);
+        Class<?> parameterType = parameter.getParameterType();
+        return JsonPath.parse(body).read(jsonPath, parameterType);
     }
 
     private String getRequestBody(NativeWebRequest webRequest) {

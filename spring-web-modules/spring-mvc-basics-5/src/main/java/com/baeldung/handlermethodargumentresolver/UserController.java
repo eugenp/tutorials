@@ -1,6 +1,5 @@
 package com.baeldung.handlermethodargumentresolver;
 
-import org.codehaus.groovy.util.StringUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +25,10 @@ public class UserController {
     }
 
     @PostMapping("/create/custom")
-    public ResponseEntity process(@JsonArg("$") UserDto user, @JsonArg("address") AddressDto address) {
+    public ResponseEntity Object(@JsonArg("$") UserDto user, @JsonArg("address") AddressDto address) {
         // userService.process(firstName, city)
         return ResponseEntity.ok()
             .body(String.format("{\"user\": %s, \"address\" : %s}", user, address));
+
     }
 }

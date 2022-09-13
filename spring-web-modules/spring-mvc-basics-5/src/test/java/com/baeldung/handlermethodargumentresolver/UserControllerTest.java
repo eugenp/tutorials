@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -13,7 +14,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.jsonpath.JsonPath;
 
 @WebMvcTest(controllers = UserController.class)
 class UserControllerTest {
@@ -41,17 +41,15 @@ class UserControllerTest {
         String jsonString = "{\"firstName\":\"John\",\"lastName\":\"Smith\",\"age\":10,\"address\":{\"streetName\":\"Example Street\",\"streetNumber\":\"10A\",\"postalCode\":\"1QW34\",\"city\":\"Timisoara\",\"country\":\"Romania\"}}";
         ObjectMapper mapper = new ObjectMapper();
         UserDto user = mapper.readValue(jsonString, UserDto.class);
+        AddressDto address = user.getAddress();
+        String userStr = mapper.writeValueAsString(user);
 
-        MvcResult mvcResult = mockMvc.perform(post("/user/create/custom").content(jsonString)
+        String mvcResult = mockMvc.perform(post("/user/create/custom").content(jsonString)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
-            .andReturn();
-        String content = mvcResult.getResponse().getContentAsString();
-        assertEquals("", content);
- //           .andExpect(MockMvcResultMatchers.jsonPath("$.user")
- //               .value(user.toString()));
-//            .andExpect(MockMvcResultMatchers.jsonPath("$.address")
-//                .value("Timisoara"));
+            .andReturn().getResponse().getContentAsString();
+
+        assertEquals(String.format("{\"user\": %s, \"address\" : %s}", user, address), mvcResult);
     }
 }
