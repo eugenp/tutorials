@@ -29,7 +29,8 @@ public class JsonArgumentResolver implements HandlerMethodArgumentResolver {
         String jsonPath = Objects.requireNonNull(Objects.requireNonNull(parameter.getParameterAnnotation(JsonArg.class))
             .value());
         Class<?> parameterType = parameter.getParameterType();
-        return JsonPath.parse(body).read(jsonPath, parameterType);
+        return JsonPath.parse(body)
+            .read(jsonPath, parameterType);
     }
 
     private String getRequestBody(NativeWebRequest webRequest) {
