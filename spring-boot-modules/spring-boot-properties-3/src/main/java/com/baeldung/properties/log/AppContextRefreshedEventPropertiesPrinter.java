@@ -1,6 +1,7 @@
 package com.baeldung.properties.log;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -11,9 +12,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Component
 public class AppContextRefreshedEventPropertiesPrinter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AppContextRefreshedEventPropertiesPrinter.class);
 
     @EventListener
     public void handleContextRefreshed(ContextRefreshedEvent event) {
@@ -24,7 +25,7 @@ public class AppContextRefreshedEventPropertiesPrinter {
 
     private void printAllActiveProperties(ConfigurableEnvironment env) {
 
-        log.info("************************* ALL PROPERTIES(EVENT) ******************************");
+        LOGGER.info("************************* ALL PROPERTIES(EVENT) ******************************");
 
         List<MapPropertySource> propertySources = env.getPropertySources()
                 .stream()
@@ -33,12 +34,12 @@ public class AppContextRefreshedEventPropertiesPrinter {
                 .collect(Collectors.toList());
 
         printProperties(env, propertySources);
-        log.info("******************************************************************************");
+        LOGGER.info("******************************************************************************");
     }
 
     private void printAllApplicationProperties(ConfigurableEnvironment env) {
 
-        log.info("************************* APP PROPERTIES(EVENT) ******************************");
+        LOGGER.info("************************* APP PROPERTIES(EVENT) ******************************");
 
         List<MapPropertySource> propertySources = env.getPropertySources()
                 .stream()
@@ -47,7 +48,7 @@ public class AppContextRefreshedEventPropertiesPrinter {
                 .collect(Collectors.toList());
 
         printProperties(env, propertySources);
-        log.info("******************************************************************************");
+        LOGGER.info("******************************************************************************");
     }
 
     private void printProperties(ConfigurableEnvironment env, List<MapPropertySource> propertySources) {
@@ -58,9 +59,9 @@ public class AppContextRefreshedEventPropertiesPrinter {
                 .sorted()
                 .forEach(key -> {
                     try {
-                        log.info("{}={}", key, env.getProperty(key));
+                        LOGGER.info("{}={}", key, env.getProperty(key));
                     } catch (Exception e) {
-                        log.warn("{} -> {}", key, e.getMessage());
+                        LOGGER.warn("{} -> {}", key, e.getMessage());
                     }
                 });
     }
