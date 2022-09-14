@@ -21,5 +21,5 @@ type Query {
 
 # The Root Mutation for the application
 type Mutation {
-    writePost(title: String!, text: String!, category: String, author: String!) : Post!
+    createPost(title: String!, text: String!, category: String, authorId: String!) : Post!
 }
