@@ -1,7 +1,7 @@
 package com.baeldung.unixtime;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 public class UnixTimeUtilsUnitTest {
     private static final String AUG_16_2022_15h25m32_Z_FORMATTED = "2022-08-16T15:25:32";
-    private static final long AUG_16_2022_15h25m32_Z_NANOS = 1660663532747420283l;
+    private static final long AUG_16_2022_15h25m32_Z_NANOS = 1660663532747420283L;
     private static final long AUGUST = 8;
 
     private void assertInstantFieldsMatch(LocalDateTime time) {

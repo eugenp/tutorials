@@ -9,6 +9,9 @@ import java.util.Date;
 
 public class UnixTimeUtils {
 
+    private UnixTimeUtils() {
+    }
+
     public static Date dateFrom(long timestamp) {
         return new Date(timestamp);
     }
