@@ -32,13 +32,7 @@ public class AppContextRefreshedEventPropertiesPrinter {
                 .flatMap(Collection::stream)
                 .distinct()
                 .sorted()
-                .forEach(key -> {
-                    try {
-                        LOGGER.info("{}={}", key, env.getProperty(key));
-                    } catch (Exception e) {
-                        LOGGER.warn("{} -> {}", key, e.getMessage());
-                    }
-                });
+                .forEach(key -> LOGGER.info("{}={}", key, env.getProperty(key)));
 
         LOGGER.info("******************************************************************************");
     }
@@ -54,13 +48,7 @@ public class AppContextRefreshedEventPropertiesPrinter {
                 .flatMap(Collection::stream)
                 .distinct()
                 .sorted()
-                .forEach(key -> {
-                    try {
-                        LOGGER.info("{}={}", key, env.getProperty(key));
-                    } catch (Exception e) {
-                        LOGGER.warn("{} -> {}", key, e.getMessage());
-                    }
-                });
+                .forEach(key -> LOGGER.info("{}={}", key, env.getProperty(key)));
 
         LOGGER.info("******************************************************************************");
     }
