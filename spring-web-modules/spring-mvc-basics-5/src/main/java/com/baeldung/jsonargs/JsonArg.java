@@ -1,4 +1,4 @@
-package com.baeldung.handlermethodargumentresolver;
+package com.baeldung.jsonargs;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

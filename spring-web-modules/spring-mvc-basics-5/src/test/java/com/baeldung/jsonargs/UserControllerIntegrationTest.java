@@ -1,4 +1,4 @@
-package com.baeldung.handlermethodargumentresolver;
+package com.baeldung.jsonargs;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(controllers = UserController.class)
-class UserControllerTest {
+class UserControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

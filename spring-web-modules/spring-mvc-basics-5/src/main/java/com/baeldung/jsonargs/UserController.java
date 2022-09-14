@@ -1,4 +1,4 @@
-package com.baeldung.handlermethodargumentresolver;
+package com.baeldung.jsonargs;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,21 +12,21 @@ public class UserController {
 
     @PostMapping("/process/custom")
     public ResponseEntity process(@JsonArg("firstName") String firstName, @JsonArg("address.city") String city) {
-        // userService.process(firstName, city)
+        /* business processing */
         return ResponseEntity.ok()
             .body(String.format("{\"firstName\": %s, \"city\" : %s}", firstName, city));
     }
 
     @PostMapping("/process")
     public ResponseEntity process(@RequestBody UserDto user) {
-        //userService.process(user.getFirstName(), user.getAddress().getCity());
+        /* business processing */
         return ResponseEntity.ok()
             .body(user.toString());
     }
 
     @PostMapping("/process/custompojo")
     public ResponseEntity process(@JsonArg("$") UserDto user, @JsonArg("address") AddressDto address) {
-        // userService.process(firstName, city)
+        /* business processing */
         return ResponseEntity.ok()
             .body(String.format("{\"user\": %s, \"address\" : %s}", user, address));
 

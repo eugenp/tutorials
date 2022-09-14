@@ -1,4 +1,4 @@
-package com.baeldung.handlermethodargumentresolver;
+package com.baeldung.jsonargs;
 
 public class UserDto {
 

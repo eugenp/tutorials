@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.baeldung.handlermethodargumentresolver.JsonArgumentResolver;
+import com.baeldung.jsonargs.JsonArgumentResolver;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {

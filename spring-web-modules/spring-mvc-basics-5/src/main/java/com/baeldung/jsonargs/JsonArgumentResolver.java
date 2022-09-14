@@ -1,4 +1,4 @@
-package com.baeldung.handlermethodargumentresolver;
+package com.baeldung.jsonargs;
 
 import java.io.IOException;
 import java.util.Objects;
