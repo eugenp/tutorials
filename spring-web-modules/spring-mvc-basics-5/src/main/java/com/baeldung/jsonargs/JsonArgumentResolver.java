@@ -27,10 +27,10 @@ public class JsonArgumentResolver implements HandlerMethodArgumentResolver {
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         String body = getRequestBody(webRequest);
         String jsonPath = Objects.requireNonNull(Objects.requireNonNull(parameter.getParameterAnnotation(JsonArg.class))
-            .value());
+          .value());
         Class<?> parameterType = parameter.getParameterType();
         return JsonPath.parse(body)
-            .read(jsonPath, parameterType);
+          .read(jsonPath, parameterType);
     }
 
     private String getRequestBody(NativeWebRequest webRequest) {

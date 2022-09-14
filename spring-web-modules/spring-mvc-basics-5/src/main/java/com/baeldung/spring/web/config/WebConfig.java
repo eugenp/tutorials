@@ -20,9 +20,9 @@ import com.baeldung.jsonargs.JsonArgumentResolver;
 public class WebConfig implements WebMvcConfigurer {
 
     @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
-            .setViewName("index");
+          .setViewName("index");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public ViewResolver viewResolver() {
-        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
         bean.setViewClass(JstlView.class);
         bean.setPrefix("/WEB-INF/view/");
         bean.setSuffix(".jsp");
@@ -45,10 +45,10 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
-            .addResourceLocations("/", "/resources/")
-            .setCachePeriod(3600)
-            .resourceChain(true)
-            .addResolver(new PathResourceResolver());
+          .addResourceLocations("/", "/resources/")
+          .setCachePeriod(3600)
+          .resourceChain(true)
+          .addResolver(new PathResourceResolver());
     }
 
     @Bean

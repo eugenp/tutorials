@@ -14,21 +14,21 @@ public class UserController {
     public ResponseEntity process(@JsonArg("firstName") String firstName, @JsonArg("address.city") String city) {
         /* business processing */
         return ResponseEntity.ok()
-            .body(String.format("{\"firstName\": %s, \"city\" : %s}", firstName, city));
+          .body(String.format("{\"firstName\": %s, \"city\" : %s}", firstName, city));
     }
 
     @PostMapping("/process")
     public ResponseEntity process(@RequestBody UserDto user) {
         /* business processing */
         return ResponseEntity.ok()
-            .body(user.toString());
+          .body(user.toString());
     }
 
     @PostMapping("/process/custompojo")
     public ResponseEntity process(@JsonArg("$") UserDto user, @JsonArg("address") AddressDto address) {
         /* business processing */
         return ResponseEntity.ok()
-            .body(String.format("{\"user\": %s, \"address\" : %s}", user, address));
+          .body(String.format("{\"user\": %s, \"address\" : %s}", user, address));
 
     }
 }

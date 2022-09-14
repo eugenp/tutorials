@@ -23,13 +23,13 @@ class UserControllerIntegrationTest {
     void whenSendingAPostJSON_thenReturnFirstNameAndCity() throws Exception {
         String jsonString = "{\"firstName\":\"John\",\"lastName\":\"Smith\",\"age\":10,\"address\":{\"streetName\":\"Example Street\",\"streetNumber\":\"10A\",\"postalCode\":\"1QW34\",\"city\":\"Timisoara\",\"country\":\"Romania\"}}";
         mockMvc.perform(post("/user/process/custom").content(jsonString)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.firstName")
-                .value("John"))
-            .andExpect(MockMvcResultMatchers.jsonPath("$.city")
-                .value("Timisoara"));
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk())
+          .andExpect(MockMvcResultMatchers.jsonPath("$.firstName")
+            .value("John"))
+          .andExpect(MockMvcResultMatchers.jsonPath("$.city")
+            .value("Timisoara"));
     }
 
     @Test
@@ -40,12 +40,12 @@ class UserControllerIntegrationTest {
         AddressDto address = user.getAddress();
 
         String mvcResult = mockMvc.perform(post("/user/process/custompojo").content(jsonString)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andReturn()
-            .getResponse()
-            .getContentAsString();
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk())
+          .andReturn()
+          .getResponse()
+          .getContentAsString();
 
         assertEquals(String.format("{\"user\": %s, \"address\" : %s}", user, address), mvcResult);
     }
