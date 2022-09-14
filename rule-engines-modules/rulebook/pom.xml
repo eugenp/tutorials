@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>rule-engines</artifactId>
+        <artifactId>rule-engines-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 

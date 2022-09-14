@@ -1,4 +1,4 @@
-## Rule Engines
+## Rule Engines Modules
 
 This module contains articles about rule engines. Articles specific to a given rule engine go in the relevant submodule.
 
