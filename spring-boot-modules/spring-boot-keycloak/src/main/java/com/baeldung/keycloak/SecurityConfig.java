@@ -13,6 +13,12 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final KeycloakLogoutHandler keycloakLogoutHandler;
+
+    SecurityConfig(KeycloakLogoutHandler keycloakLogoutHandler) {
+        this.keycloakLogoutHandler = keycloakLogoutHandler;
+    }
+
     @Bean
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
@@ -25,7 +31,11 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
           .hasRole("USER")
           .anyRequest()
           .permitAll();
-        http.oauth2Login();
+        http.oauth2Login()
+           .and()
+           .logout()
+           .addLogoutHandler(keycloakLogoutHandler)
+           .logoutSuccessUrl("/");
     }
 
 }
