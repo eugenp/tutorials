@@ -12,13 +12,6 @@
         <connection>scm:git:git@github.com:${repository-owner}/${repository-name}.git</connection>
         <developerConnection>scm:git:git@github.com:${repository-owner}/${repository-name}.git</developerConnection>
     </scm>
-    <distributionManagement>
-        <repository>
-            <id>internal.repo</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/mvn-artifact</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
@@ -96,6 +89,14 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-artifact</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <!--Put your own properties -->
