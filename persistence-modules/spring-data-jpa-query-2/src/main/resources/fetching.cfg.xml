@@ -12,8 +12,8 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
         <property name="hbm2ddl.auto">validate</property>
- 
-		
+		<property name="hibernate.globally_quoted_identifiers">true</property>
+
 		<mapping class="com.baeldung.hibernate.fetching.model.UserEager" />
         <mapping class="com.baeldung.hibernate.fetching.model.OrderDetailEager" />
 	</session-factory>

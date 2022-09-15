@@ -46,12 +46,14 @@
         <module>spring-cloud-eureka-self-preservation</module>
         <module>spring-cloud-openfeign</module>
         <module>spring-cloud-netflix-feign</module>
+        <module>spring-cloud-netflix-sidecar</module>
         <module>spring-cloud-sentinel</module>
         <module>spring-cloud-dapr</module>
         <module>spring-cloud-docker</module>
         <module>spring-cloud-bus</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud-sleuth</module>
+        <module>spring-cloud-openfeign-2</module>
     </modules>
 
     <build>

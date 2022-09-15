@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  ubuntu:
+    image: "ubuntu:latest"
+    tty: true
+  alpine:
+    image: "alpine:latest"
+    tty: true

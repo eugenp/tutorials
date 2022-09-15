@@ -14,7 +14,7 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
-    <modules>        
+    <modules>
         <module>jackson-annotations</module>
         <module>jackson-conversions</module>
         <module>jackson-conversions-2</module>

@@ -1,5 +1,5 @@
 create table person (
-	id integer identity primary key,
+	id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	first_name varchar(30),
 	last_name varchar(30)
 );

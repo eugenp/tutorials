@@ -1,0 +1,4 @@
+# Declare parent image
+FROM ubuntu:latest
+# Print sentence
+RUN echo 'This is a Baeldung tutorial'

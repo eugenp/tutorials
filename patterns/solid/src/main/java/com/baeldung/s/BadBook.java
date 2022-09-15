@@ -10,8 +10,8 @@ public class BadBook {
 
 
   //methods that directly relate to the book properties
-  public String replaceWordInText(String word){
-    return text.replaceAll(word, text);
+  public String replaceWordInText(String word, String replacementWord){
+    return text.replaceAll(word, replacementWord);
   }
 
   public boolean isWordInText(String word){

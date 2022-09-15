@@ -1,6 +1,6 @@
 package com.baeldung.graphql.error.handling.exception;
 
-import graphql.ErrorClassification;
+import graphql.ErrorType;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
@@ -27,7 +27,7 @@ public class GraphQLErrorAdapter implements GraphQLError {
     }
 
     @Override
-    public ErrorClassification getErrorType() {
+    public ErrorType getErrorType() {
         return error.getErrorType();
     }
 

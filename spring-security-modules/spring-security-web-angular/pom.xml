@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>server</module>
+        <module>spring-security-web-angular-server</module>
     </modules>
 
 </project>
