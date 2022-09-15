@@ -9,7 +9,7 @@
     <name>lightrun</name>
     <description>Services for LightRun Article</description>
     <packaging>pom</packaging>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>

@@ -64,7 +64,7 @@ public class PersistenceConfig {
     public AuditorAware<String> auditorProvider() {
         return new AuditorAwareImpl();
     }
-    
+
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -175,7 +175,7 @@ public class PersistenceConfig {
 
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         // hibernateProperties.setProperty("hibernate.format_sql", "true");
-        // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
+        hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
 
         // Envers properties
         hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));

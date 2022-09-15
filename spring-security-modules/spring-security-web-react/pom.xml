@@ -108,17 +108,19 @@
                     </warSourceExcludes>
                 </configuration>
             </plugin>
-            <!-- NPM build is disabled from profile specific configurations because in a multi-threaded 
-                run environment like Jenkins this build was not succeeding due to issues totally unrelated to this module 
-                This can be enabled manually while running this module on local, or directly npm can be run inside the 
-                webapp folder -->
-            <!-- <plugin> <groupId>com.github.eirslett</groupId> <artifactId>frontend-maven-plugin</artifactId> 
-                <version>${frontend-maven-plugin.version}</version> <configuration> <nodeVersion>${node.version}</nodeVersion> 
-                <workingDirectory>src/main/webapp/WEB-INF/view/react</workingDirectory> </configuration> <executions> 
-                <execution> <id>install node and npm</id> <goals> <goal>install-node-and-npm</goal> </goals> </execution> 
-                <execution> <id>npm install</id> <goals> <goal>npm</goal> </goals> </execution> <execution> <id>npm run 
-                build</id> <goals> <goal>npm</goal> </goals> <configuration> <arguments>run build</arguments> </configuration> 
-                </execution> </executions> </plugin> -->
+            <!-- NPM build is disabled from profile specific configurations because in a multi-threaded -->
+            <!-- run environment like Jenkins this build was not succeeding due to issues totally unrelated -->
+            <!-- to this module. This can be enabled manually while running this module on local, or -->
+            <!-- directly npm can be run inside the webapp folder -->
+            <!-- <plugin> <groupId>com.github.eirslett</groupId> <artifactId>frontend-maven-plugin</artifactId> -->
+            <!-- <version>${frontend-maven-plugin.version}</version> <configuration> <nodeVersion>${node.version}</nodeVersion> -->
+            <!-- <workingDirectory>src/main/webapp/WEB-INF/view/react</workingDirectory> </configuration> -->
+            <!-- <executions> <execution> <id>install node and npm</id> <goals> <goal>install-node-and-npm</goal> -->
+            <!-- </goals> </execution><execution> -->
+            <!-- <id>npm install</id> <goals> <goal>npm</goal> </goals> </execution> <execution> -->
+            <!-- <id>npm run build</id> <goals> <goal>npm</goal> </goals> -->
+            <!-- <configuration> <arguments>run build</arguments> </configuration> -->
+            <!-- </execution> </executions> </plugin> -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
@@ -128,17 +130,21 @@
     </build>
 
 
-    <!-- NPM build is disabled from profile specific configurations because in a multi-threaded run environment 
-        like Jenkins this build was not succeeding due to issues totally unrelated to this module This can be 
-        enabled manually while running this module on local, or directly npm can be run inside the webapp folder -->
-    <!-- <profiles> <profile> <id>default-first</id> <build> <plugins> <plugin> <groupId>com.github.eirslett</groupId> 
-        <artifactId>frontend-maven-plugin</artifactId> <executions> <execution> <id>install node and npm</id> 
-        <phase>none</phase> </execution> <execution> <id>npm install</id> <phase>none</phase> </execution> <execution> 
-        <id>npm run build</id> <phase>none</phase> </execution> </executions> </plugin> </plugins> </build> </profile> 
-        <profile> <id>default-second</id> <build> <plugins> <plugin> <groupId>com.github.eirslett</groupId> <artifactId>frontend-maven-plugin</artifactId> 
-        <executions> <execution> <id>install node and npm</id> <phase>none</phase> </execution> <execution> <id>npm 
-        install</id> <phase>none</phase> </execution> <execution> <id>npm run build</id> <phase>none</phase> 
-        </execution> </executions> </plugin> </plugins> </build> </profile> </profiles> -->
+    <!-- NPM build is disabled from profile specific configurations because in a multi-threaded run environment -->
+    <!-- like Jenkins this build was not succeeding due to issues totally unrelated to this module This -->
+    <!-- can be enabled manually while running this module on local, or directly npm can be run inside -->
+    <!-- the webapp folder -->
+    <!-- <profiles> <profile> <id>default-first</id> <build> <plugins> <plugin> <groupId>com.github.eirslett</groupId> -->
+    <!-- <artifactId>frontend-maven-plugin</artifactId> <executions> <execution> -->
+    <!-- <id>install node and npm</id> -->
+    <!--<phase>none</phase> </execution> <execution> <id>npm install</id> <phase>none</phase> </execution> -->
+    <!-- <execution> <id>npm run build</id> <phase>none</phase> </execution> </executions> </plugin> -->
+    <!--</plugins> </build> </profile> -->
+    <!--<profile> <id>default-second</id> <build> <plugins> <plugin> <groupId>com.github.eirslett</groupId> -->
+    <!-- <artifactId>frontend-maven-plugin</artifactId> -->
+    <!--<executions> <execution> <id>install node and npm</id> <phase>none</phase> </execution> <execution> -->
+    <!-- <id>npm install</id> <phase>none</phase> </execution> <execution> <id>npm run build</id> <phase>none</phase> -->
+    <!--</execution> </executions> </plugin> </plugins> </build> </profile> </profiles> -->
 
     <properties>
         <!-- Maven plugins -->

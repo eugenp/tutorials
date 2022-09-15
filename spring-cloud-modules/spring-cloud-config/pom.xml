@@ -16,8 +16,8 @@
     </parent>
 
     <modules>
-        <module>server</module>
-        <module>client</module>
+        <module>spring-cloud-config-server</module>
+        <module>spring-cloud-config-client</module>
     </modules>
 
     <dependencyManagement>
