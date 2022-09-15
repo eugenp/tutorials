@@ -81,6 +81,8 @@ class BlogTest {
         assertNotEquals(blog.getContent(), newBlog.getContent());
         newBlog.setTitle("new Title");
         assertNotEquals(blog.getTitle(), newBlog.getTitle());
+        blog.getAuthor().setLastName("last name");
+        assertNotEquals(blog.getAuthor().getLastName(), newBlog.getAuthor().getLastName());
     }
 
 }
