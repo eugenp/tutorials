@@ -11,7 +11,7 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-public class UnixTimeUtilsUnitTest {
+class UnixTimeUtilsUnitTest {
     private static final String AUG_16_2022_15h25m32_Z_FORMATTED = "2022-08-16T15:25:32";
     private static final long AUG_16_2022_15h25m32_Z_NANOS = 1660663532747420283L;
     private static final long AUGUST = 8;
@@ -50,8 +50,7 @@ public class UnixTimeUtilsUnitTest {
         Instant instant = UnixTimeUtils.fromNanos(AUG_16_2022_15h25m32_Z_NANOS);
 
         LocalDateTime time = UnixTimeUtils.localTimeUtc(instant);
-        assertThat(time.toString()
-            .startsWith(AUG_16_2022_15h25m32_Z_FORMATTED)).isTrue();
+        assertThat(time.toString()).startsWith(AUG_16_2022_15h25m32_Z_FORMATTED);
     }
 
     @Test
@@ -61,8 +60,7 @@ public class UnixTimeUtilsUnitTest {
         Instant instant = UnixTimeUtils.fromNanos(microseconds);
 
         LocalDateTime time = UnixTimeUtils.localTimeUtc(instant);
-        assertThat(!time.toString()
-            .startsWith(AUG_16_2022_15h25m32_Z_FORMATTED));
+        assertThat(time.toString()).doesNotStartWith(AUG_16_2022_15h25m32_Z_FORMATTED);
         assertEquals("1970-01-20T05:17:43.532747420", time.toString());
     }
 
