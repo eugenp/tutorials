@@ -17,21 +17,21 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("admin")
-                .password(passwordEncoder.encode("password"))
-                .roles("ADMIN")
-                .build();
+            .password(passwordEncoder.encode("password"))
+            .roles("ADMIN")
+            .build();
         return new InMemoryUserDetailsManager(user);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/")
-                .hasRole("ADMIN")
-                .anyRequest()
-                .authenticated();
+            .and()
+            .authorizeRequests()
+            .antMatchers("/")
+            .hasRole("ADMIN")
+            .anyRequest()
+            .authenticated();
         return http.build();
     }
 }
