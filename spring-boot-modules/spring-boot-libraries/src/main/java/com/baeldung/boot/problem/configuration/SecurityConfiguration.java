@@ -20,15 +20,15 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf()
-                .disable();
+            .disable();
 
         http.authorizeRequests()
-                .antMatchers("/")
-                .permitAll();
+            .antMatchers("/")
+            .permitAll();
 
         http.exceptionHandling()
-                .authenticationEntryPoint(problemSupport)
-                .accessDeniedHandler(problemSupport);
+            .authenticationEntryPoint(problemSupport)
+            .accessDeniedHandler(problemSupport);
         return http.build();
     }
 }
