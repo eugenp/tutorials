@@ -75,7 +75,7 @@ public class StringConcatenationUnitTest {
     }
 
     @Test
-    void whenUsingConcatWithAssignment_thenAsserEquals() {
+    void whenUsingConcatWithAssignment_thenAssertEquals() {
         String stringOne = "Hello";
         String stringTwo = " World";
         stringOne = stringOne.concat(stringTwo);
@@ -83,7 +83,7 @@ public class StringConcatenationUnitTest {
     }
 
     @Test
-    void whenUsingConcatToMultipleStringConcatenation_thenAsserEquals() {
+    void whenUsingConcatToMultipleStringConcatenation_thenAssertEquals() {
         String stringOne = "Hello";
         String stringTwo = "World";
         String stringThree = ", in Jav";
@@ -92,13 +92,6 @@ public class StringConcatenationUnitTest {
             .concat(stringThree)
             .concat("@");
         assertEquals("Hello World, in Jav@", stringOne);
-    }
-
-    @Test
-    void whenUsingConcatToNull_thenThrowNullPointerException() {
-        String stringOne = null;
-        String stringTwo = " World";
-        assertThrows(NullPointerException.class, () -> stringOne.concat(stringTwo));
     }
 
     @Test
