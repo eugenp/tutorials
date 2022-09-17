@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-class ListToStringTest {
+class ListToStringUnitTest {
 
     @Test
     void whenUsingJava8String() {
