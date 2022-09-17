@@ -23,13 +23,15 @@ public class MapAppenderIntegrationTest {
 
     @Test
     public void whenLoggerEmitsLoggingEvent_thenAppenderReceivesEvent() throws Exception {
-        logger.error("Error log message from {}", this.getClass()
-            .getSimpleName());
         LoggerContext context = LoggerContext.getContext(false);
         Configuration config = context.getConfiguration();
         MapAppender appender = config.getAppender("MapAppender");
+        int eventSizeBeforeLog = appender.getEventMap()
+          .size();
+        logger.error("Error log message from {}", this.getClass()
+          .getSimpleName());
         assertEquals(appender.getEventMap()
-            .size(), 1);
+          .size(), ++eventSizeBeforeLog);
     }
 
 }

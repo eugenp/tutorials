@@ -12,16 +12,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <build>
-        <finalName>core-java-numbers-5</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -40,4 +30,15 @@
             <version>${guava.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>core-java-numbers-5</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
 </project>

@@ -9,78 +9,32 @@ import com.baeldung.axon.coreapi.events.ProductCountIncrementedEvent;
 import com.baeldung.axon.coreapi.events.ProductRemovedEvent;
 import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
 import com.baeldung.axon.coreapi.queries.Order;
-import org.axonframework.config.ProcessingGroup;
-import org.axonframework.eventhandling.EventHandler;
-import org.axonframework.queryhandling.QueryHandler;
-import org.springframework.stereotype.Service;
+import com.baeldung.axon.coreapi.queries.OrderUpdatesQuery;
+import com.baeldung.axon.coreapi.queries.TotalProductsShippedQuery;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-@Service
-@ProcessingGroup("orders")
-public class OrdersEventHandler {
+public interface OrdersEventHandler {
 
-    private final Map<String, Order> orders = new HashMap<>();
+    void on(OrderCreatedEvent event);
 
-    @EventHandler
-    public void on(OrderCreatedEvent event) {
-        String orderId = event.getOrderId();
-        orders.put(orderId, new Order(orderId));
-    }
+    void on(ProductAddedEvent event);
 
-    @EventHandler
-    public void on(ProductAddedEvent event) {
-        orders.computeIfPresent(event.getOrderId(), (orderId, order) -> {
-            order.addProduct(event.getProductId());
-            return order;
-        });
-    }
+    void on(ProductCountIncrementedEvent event);
 
-    @EventHandler
-    public void on(ProductCountIncrementedEvent event) {
-        orders.computeIfPresent(event.getOrderId(), (orderId, order) -> {
-            order.incrementProductInstance(event.getProductId());
-            return order;
-        });
-    }
+    void on(ProductCountDecrementedEvent event);
 
-    @EventHandler
-    public void on(ProductCountDecrementedEvent event) {
-        orders.computeIfPresent(event.getOrderId(), (orderId, order) -> {
-            order.decrementProductInstance(event.getProductId());
-            return order;
-        });
-    }
+    void on(ProductRemovedEvent event);
 
-    @EventHandler
-    public void on(ProductRemovedEvent event) {
-        orders.computeIfPresent(event.getOrderId(), (orderId, order) -> {
-            order.removeProduct(event.getProductId());
-            return order;
-        });
-    }
+    void on(OrderConfirmedEvent event);
 
-    @EventHandler
-    public void on(OrderConfirmedEvent event) {
-        orders.computeIfPresent(event.getOrderId(), (orderId, order) -> {
-            order.setOrderConfirmed();
-            return order;
-        });
-    }
+    void on(OrderShippedEvent event);
 
-    @EventHandler
-    public void on(OrderShippedEvent event) {
-        orders.computeIfPresent(event.getOrderId(), (orderId, order) -> {
-            order.setOrderShipped();
-            return order;
-        });
-    }
+    List<Order> handle(FindAllOrderedProductsQuery query);
 
-    @QueryHandler
-    public List<Order> handle(FindAllOrderedProductsQuery query) {
-        return new ArrayList<>(orders.values());
-    }
+    Integer handle(TotalProductsShippedQuery query);
+
+    Order handle(OrderUpdatesQuery query);
+
+    void reset(List<Order> orderList);
 }

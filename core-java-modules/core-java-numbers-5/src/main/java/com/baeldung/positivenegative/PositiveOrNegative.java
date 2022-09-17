@@ -26,11 +26,11 @@ public class PositiveOrNegative {
     }
 
     public static Result bySignum(Float floatNumber) {
-        float result = Math.signum(floatNumber);
+        Float result = Math.signum(floatNumber);
 
-        if (result == 1.0f) {
+        if (result.compareTo(1.0f) == 0) {
             return Result.POSITIVE;
-        } else if (result == -1.0f) {
+        } else if (result.compareTo(-1.0f) == 0) {
             return Result.NEGATIVE;
         }
         return Result.ZERO;
