@@ -19,10 +19,10 @@ public class DeepShallowCopyTest {
     @Test
     public void shallowCopyTest(){
         ObjectExample obj1 = new ObjectExample();
-        ObjectExample shallowpObj= obj1;
+        ObjectExample shallowObj= obj1;
         obj1.name="Advanced Java";
-        shallowpObj.name="Core Java";
-        assertEquals(obj1.name,shallowpObj.name);
+        shallowObj.name="Core Java";
+        assertEquals(obj1.name,shallowObj.name);
 
     }
 
