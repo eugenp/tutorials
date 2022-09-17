@@ -34,7 +34,7 @@ class UserControllerIntegrationTest {
 
     @Test
     void whenSendingAPostJSON_thenReturnUserAndAddress() throws Exception {
-        String jsonString = "{\"firstName\":\"John\",\"lastName\":\"Smith\",\"age\":10,\"address\":{\"streetName\":\"Example Street\",\"streetNumber\":\"10A\",\"postalCode\":\"1QW34\",\"city\":\"Timisoara\",\"country\":\"Romania\"}}";
+        String jsonString = "{\"firstName\":\"John\",\"lastName\":\"Smith\",\"address\":{\"streetName\":\"Example Street\",\"streetNumber\":\"10A\",\"postalCode\":\"1QW34\",\"city\":\"Timisoara\",\"country\":\"Romania\"}}";
         ObjectMapper mapper = new ObjectMapper();
         UserDto user = mapper.readValue(jsonString, UserDto.class);
         AddressDto address = user.getAddress();
@@ -47,6 +47,6 @@ class UserControllerIntegrationTest {
           .getResponse()
           .getContentAsString();
 
-        assertEquals(String.format("{\"user\": %s, \"address\" : %s}", user, address), mvcResult);
+        assertEquals(String.format("{\"firstName\": %s, \"lastName\": %s, \"address\" : %s}", user.getFirstName(), user.getLastName(), address), mvcResult);
     }
 }

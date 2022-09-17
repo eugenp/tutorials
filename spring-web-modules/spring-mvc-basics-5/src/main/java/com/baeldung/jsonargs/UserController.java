@@ -25,10 +25,9 @@ public class UserController {
     }
 
     @PostMapping("/process/custompojo")
-    public ResponseEntity process(@JsonArg("$") UserDto user, @JsonArg("address") AddressDto address) {
+    public ResponseEntity process(@JsonArg("firstName") String firstName, @JsonArg("lastName") String lastName, @JsonArg("address") AddressDto address) {
         /* business processing */
         return ResponseEntity.ok()
-          .body(String.format("{\"user\": %s, \"address\" : %s}", user, address));
-
+          .body(String.format("{\"firstName\": %s, \"lastName\": %s, \"address\" : %s}", firstName, lastName, address));
     }
 }
