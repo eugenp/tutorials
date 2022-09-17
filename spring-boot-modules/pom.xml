@@ -70,6 +70,7 @@
         <module>spring-boot-security</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
+        <module>spring-boot-swagger-2</module>
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-testing</module>

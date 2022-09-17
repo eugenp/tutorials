@@ -1,0 +1,4 @@
+# This file is a demonstration
+# For a Baeldung article
+FROM ubuntu:latest
+RUN echo 'This is a Baeldung tutorial'
