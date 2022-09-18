@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-public class ScanACharacterTest {
+public class ScanACharacterUnitTest {
 
     String INPUT = new StringBuilder().append("abc\n")
       .append("mno\n")
