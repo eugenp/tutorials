@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class ListToStringUnitTest {
 
     @Test
-    void whenUsingJava8String() {
+    void givenAListOfString_whenUsingJava8_thenConvertToStringByUsingString() {
 
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
@@ -22,7 +22,7 @@ class ListToStringUnitTest {
     }
 
     @Test
-    void whenUsingJava8StringJoiner() {
+    void givenAListOfString_whenUsingJava8_thenConvertToStringByUsingStringJoiner() {
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
         StringJoiner stringJoiner = new StringJoiner(",");
@@ -41,7 +41,7 @@ class ListToStringUnitTest {
     }
 
     @Test
-    void whenUsingJava8Collectors() {
+    void givenAListOfString_whenUsingJava8_thenConvertToStringByUsingCollectors() {
 
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
@@ -76,7 +76,7 @@ class ListToStringUnitTest {
     }
 
     @Test
-    void whenUsingApacheCommonsLang() {
+    void givenAListOfString_whenUsingApacheCommonsLang_thenConvertToStringByUsingStringUtils() {
 
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
@@ -90,7 +90,7 @@ class ListToStringUnitTest {
     }
 
     @Test
-    void whenUsingSpring() {
+    void givenAListOfString_whenUsingSpringCore_thenConvertToStringByUsingStringUtils() {
 
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
@@ -104,7 +104,7 @@ class ListToStringUnitTest {
     }
 
     @Test
-    void whenUsingGoogleGuava() {
+    void givenAListOfString_whenUsingGoogleGuava_thenConvertToStringByUsingJoiner() {
 
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
