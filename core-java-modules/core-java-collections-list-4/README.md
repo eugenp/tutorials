@@ -9,4 +9,5 @@ This module contains articles about the Java List collection
 - [Arrays.asList() vs Collections.singletonList()](https://www.baeldung.com/java-aslist-vs-singletonlist)
 - [Replace Element at a Specific Index in a Java ArrayList](https://www.baeldung.com/java-arraylist-replace-at-index)
 - [Difference Between Arrays.asList() and List.of()](https://www.baeldung.com/java-arrays-aslist-vs-list-of)
+- [How to Store HashMap<String, ArrayList> Inside a List](https://www.baeldung.com/java-hashmap-inside-list)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list-3)

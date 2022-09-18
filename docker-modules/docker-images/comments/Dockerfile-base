@@ -1,0 +1,2 @@
+FROM ubuntu:latest
+RUN echo 'This is a Baeldung tutorial'

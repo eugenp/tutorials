@@ -13,6 +13,7 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <build>
         <finalName>core-java-lang-5</finalName>
         <resources>
@@ -22,4 +23,5 @@
             </resource>
         </resources>
     </build>
+
 </project>

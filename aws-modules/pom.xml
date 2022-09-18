@@ -25,4 +25,5 @@
         <aws-java-sdk.version>1.11.290</aws-java-sdk.version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
     </properties>
+
 </project>
