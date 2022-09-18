@@ -13,4 +13,5 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Spring Security Basic Authentication](https://www.baeldung.com/spring-security-basic-authentication)
 - [New Password Storage In Spring Security 5](https://www.baeldung.com/spring-security-5-password-storage)
 - [Default Password Encoder in Spring Security 5](https://www.baeldung.com/spring-security-5-default-password-encoder)
+- [Basic Authentication With Postman](https://www.baeldung.com/java-postman-authentication/)
 
