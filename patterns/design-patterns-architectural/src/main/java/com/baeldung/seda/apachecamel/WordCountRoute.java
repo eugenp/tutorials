@@ -28,7 +28,7 @@ public class WordCountRoute extends RouteBuilder {
             .to(toLowerCaseUri);
 
         from(toLowerCaseUri)
-            .split(body(), new ArrayListAggregationStrategy())
+            .split(body(), new StringListAggregationStrategy())
             .transform(ExpressionBuilder.bodyExpression(body -> body.toString()
                 .toLowerCase()))
             .end()
@@ -41,7 +41,7 @@ public class WordCountRoute extends RouteBuilder {
     }
 }
 
-class ArrayListAggregationStrategy extends AbstractListAggregationStrategy<String> {
+class StringAggregationStrategy extends AbstractListAggregationStrategy<String> {
     @Override
     public String getValue(Exchange exchange) {
         return exchange.getIn()
