@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-swagger-2</artifactId>
     <version>0.1.0-SNAPSHOT</version>
@@ -14,12 +14,6 @@
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <springfox.version>3.0.0</springfox.version>
-        <swagger-codegen-maven-plugin.version>3.0.34</swagger-codegen-maven-plugin.version>
-        <springdoc.version>1.6.10</springdoc.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -71,5 +65,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <springfox.version>3.0.0</springfox.version>
+        <swagger-codegen-maven-plugin.version>3.0.34</swagger-codegen-maven-plugin.version>
+        <springdoc.version>1.6.10</springdoc.version>
+    </properties>
 
 </project>

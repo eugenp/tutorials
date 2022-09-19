@@ -6,6 +6,7 @@
     <artifactId>rxjava-core</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>rxjava-core</name>
+
     <parent>
         <groupId>com.baeldung.rxjava-modules</groupId>
         <artifactId>rxjava-modules</artifactId>

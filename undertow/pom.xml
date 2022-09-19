@@ -27,10 +27,10 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <!-- disabling shade plugin as it is causing issues with creating dependency-reduced-pom 
-                on the build server <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
-                <version>${maven-shade-plugin.version}</version> <executions> <execution> <phase>package</phase> <goals> 
-                <goal>shade</goal> </goals> </execution> </executions> </plugin> -->
+            <!-- disabling shade plugin as it is causing issues with creating dependency-reduced-pom -->
+            <!-- on the build server <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> -->
+            <!-- <version>${maven-shade-plugin.version}</version> <executions> <execution> <phase>package</phase> -->
+            <!--<goals> <goal>shade</goal> </goals> </execution> </executions> </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>

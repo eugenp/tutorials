@@ -14,7 +14,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <modules>        
+    <modules>
         <module>spring-security-acl</module>
         <module>spring-security-auth0</module>
         <module>spring-security-cognito</module>
@@ -45,7 +45,7 @@
         <module>spring-security-web-rest</module>
         <module>spring-security-web-sockets</module>
         <module>spring-security-web-thymeleaf</module>
-        <module>spring-security-web-x509</module>        
+        <module>spring-security-web-x509</module>
         <module>spring-security-opa</module>
         <module>spring-security-pkce</module>
     </modules>
