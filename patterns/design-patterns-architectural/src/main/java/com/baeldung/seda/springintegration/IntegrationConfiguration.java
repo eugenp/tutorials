@@ -16,7 +16,6 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 
-
 @Configuration
 @EnableIntegration
 public class IntegrationConfiguration {
@@ -29,12 +28,12 @@ public class IntegrationConfiguration {
 
     private final Function<String, String[]> splitWordsFunction = sentence -> sentence.split(" ");
     private final Function<List<String>, Map<String, Long>> convertArrayListToCountMap = list -> list.stream()
-        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+      .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     private final Function<String, String> toLowerCase = String::toLowerCase;
     private final MessageGroupProcessor buildMessageWithListPayload = messageGroup -> MessageBuilder.withPayload(messageGroup.streamMessages()
         .map(Message::getPayload)
         .collect(Collectors.toList()))
-        .build();
+      .build();
     private final ReleaseStrategy listSizeReached = r -> r.size() == r.getSequenceSize();
 
     public IntegrationConfiguration(MessageChannel receiveTextChannel, MessageChannel splitWordsChannel, MessageChannel toLowerCaseChannel, MessageChannel countWordsChannel, MessageChannel returnResponseChannel) {
@@ -48,35 +47,35 @@ public class IntegrationConfiguration {
     @Bean
     public IntegrationFlow receiveText() {
         return IntegrationFlows.from(receiveTextChannel)
-            .channel(splitWordsChannel)
-            .get();
+          .channel(splitWordsChannel)
+          .get();
     }
 
     @Bean
     public IntegrationFlow splitWords() {
         return IntegrationFlows.from(splitWordsChannel)
-            .transform(splitWordsFunction)
-            .channel(toLowerCaseChannel)
-            .get();
+          .transform(splitWordsFunction)
+          .channel(toLowerCaseChannel)
+          .get();
     }
 
     @Bean
     public IntegrationFlow toLowerCase() {
         return IntegrationFlows.from(toLowerCaseChannel)
-            .split()
-            .transform(toLowerCase)
-            .aggregate(aggregatorSpec -> aggregatorSpec.releaseStrategy(listSizeReached)
-                .outputProcessor(buildMessageWithListPayload))
-            .channel(countWordsChannel)
-            .get();
+          .split()
+          .transform(toLowerCase)
+          .aggregate(aggregatorSpec -> aggregatorSpec.releaseStrategy(listSizeReached)
+            .outputProcessor(buildMessageWithListPayload))
+          .channel(countWordsChannel)
+          .get();
     }
 
     @Bean
     public IntegrationFlow countWords() {
         return IntegrationFlows.from(countWordsChannel)
-            .transform(convertArrayListToCountMap)
-            .channel(returnResponseChannel)
-            .get();
+          .transform(convertArrayListToCountMap)
+          .channel(returnResponseChannel)
+          .get();
     }
 
 }

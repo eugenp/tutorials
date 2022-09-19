@@ -22,30 +22,27 @@ public class WordCountRoute extends RouteBuilder {
 
         from(receiveTextUri).to(splitWordsUri);
 
-        from(splitWordsUri)
-            .transform(ExpressionBuilder.bodyExpression(s -> s.toString()
+        from(splitWordsUri).transform(ExpressionBuilder.bodyExpression(s -> s.toString()
             .split(" ")))
-            .to(toLowerCaseUri);
+          .to(toLowerCaseUri);
 
-        from(toLowerCaseUri)
-            .split(body(), new StringListAggregationStrategy())
-            .transform(ExpressionBuilder.bodyExpression(body -> body.toString()
-                .toLowerCase()))
-            .end()
-            .to(countWordsUri);
+        from(toLowerCaseUri).split(body(), new StringListAggregationStrategy())
+          .transform(ExpressionBuilder.bodyExpression(body -> body.toString()
+            .toLowerCase()))
+          .end()
+          .to(countWordsUri);
 
-        from(countWordsUri)
-            .transform(ExpressionBuilder.bodyExpression(List.class, body -> body.stream()
+        from(countWordsUri).transform(ExpressionBuilder.bodyExpression(List.class, body -> body.stream()
             .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))))
-            .to(returnResponse);
+          .to(returnResponse);
     }
 }
 
-class StringAggregationStrategy extends AbstractListAggregationStrategy<String> {
+class StringListAggregationStrategy extends AbstractListAggregationStrategy<String> {
     @Override
     public String getValue(Exchange exchange) {
         return exchange.getIn()
-            .getBody(String.class);
+          .getBody(String.class);
     }
 
 }

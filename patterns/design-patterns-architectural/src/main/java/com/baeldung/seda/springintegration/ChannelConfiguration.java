@@ -6,7 +6,6 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.messaging.MessageChannel;
 
-
 @Configuration
 public class ChannelConfiguration {
 
@@ -27,31 +26,31 @@ public class ChannelConfiguration {
     @Bean(name = "receiveTextChannel")
     public MessageChannel getReceiveTextChannel() {
         return MessageChannels.executor("receive-text", receiveTextChannelThreadPool)
-            .get();
+          .get();
     }
 
     @Bean(name = "splitWordsChannel")
     public MessageChannel getSplitWordsChannel() {
         return MessageChannels.executor("split-words", splitWordsChannelThreadPool)
-            .get();
+          .get();
     }
 
     @Bean(name = "toLowerCaseChannel")
     public MessageChannel getToLowerCaseChannel() {
         return MessageChannels.executor("to-lower-case", toLowerCaseChannelThreadPool)
-            .get();
+          .get();
     }
 
     @Bean(name = "countWordsChannel")
     public MessageChannel getCountWordsChannel() {
         return MessageChannels.executor("count-words", countWordsChannelThreadPool)
-            .get();
+          .get();
     }
 
     @Bean(name = "returnResponseChannel")
     public MessageChannel getReturnResponseChannel() {
         return MessageChannels.executor("return-response", returnResponseChannelThreadPool)
-            .get();
+          .get();
     }
 
 }
