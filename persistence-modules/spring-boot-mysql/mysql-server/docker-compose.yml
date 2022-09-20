@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mysql-service:
+        image: "mysql/mysql-server:8.0.30"
+        container_name: mysql-db
+        command: [ "mysqld",
+                    "--require_secure_transport=ON",
+                    "--ssl-ca=/etc/certs/root-ca.pem",
+                    "--ssl-cert=/etc/certs/server-cert.pem",
+                    "--ssl-key=/etc/certs/server-key.pem",
+                    "--default_authentication_plugin=mysql_native_password",
+                    "--general_log=ON" ]
+        ports:
+            - "3306:3306"
+        volumes:
+            - type: bind
+              source: ./certs
+              target: /etc/certs/
+        restart: always
+        environment:
+           MYSQL_ROOT_HOST: "%"
+           MYSQL_ROOT_PASSWORD: "Password2022"
+           MYSQL_DATABASE: test_db
