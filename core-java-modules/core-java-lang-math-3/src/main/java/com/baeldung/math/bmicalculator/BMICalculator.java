@@ -7,7 +7,7 @@ public class BMICalculator {
         double bmi = weight / (height * height);
 
         if (bmi < 18.5)
-            return "Thinness";
+            return "Underweight";
         else if (bmi < 25)
             return "Normal";
         else if (bmi < 30)
