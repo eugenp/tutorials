@@ -1,4 +1,4 @@
-package validator.uuid;
+package com.baeldung.uuid;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
