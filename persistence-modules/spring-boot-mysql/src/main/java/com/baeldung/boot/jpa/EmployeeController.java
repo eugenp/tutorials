@@ -2,6 +2,9 @@ package com.baeldung.boot.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+
+import java.util.Optional;
 
 @RestController
 public class EmployeeController {
@@ -11,7 +14,8 @@ public class EmployeeController {
 
     @GetMapping("/employee/{empId}")
     public Employee get(@PathVariable(name = "empId") Integer empId) {
-        return empRepository.findById(empId).get();
+        Optional<Employee> emp = empRepository.findById(empId);
+        return emp.orElse(null);
     }
 
     @PostMapping("/employee")

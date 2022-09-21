@@ -32,4 +32,4 @@ keytool -importcert -alias MySQLCACert.jks -file root-ca.pem \
     -keystore truststore.jks -storepass mypassword
 
 openssl pkcs12 -export -in client-cert.pem -inkey client-key.pem -out certificate.p12 -name "certificate"
-keytool -importkeystore -srckeystore certificate.p12 -srcstoretype pkcs12 -destkeystore cert.jks
+keytool -importkeystore -srckeystore certificate.p12 -srcstoretype pkcs12 -destkeystore client-cert.jks
