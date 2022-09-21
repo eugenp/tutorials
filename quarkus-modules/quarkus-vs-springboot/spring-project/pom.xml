@@ -245,7 +245,7 @@
                         <configuration>
                             <argLine>-DspringAot=true
                                 -agentlib:native-image-agent=access-filter-file=src/test/resources/access-filter.json,config-merge-dir=target/classes/META-INF/native-image
-                                </argLine>
+                            </argLine>
                         </configuration>
                     </plugin>
                 </plugins>
