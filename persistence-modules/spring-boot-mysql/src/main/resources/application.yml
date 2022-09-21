@@ -26,10 +26,10 @@ spring:
   profiles: "dev2"
   datasource:
     url: >-
-         jdbc:mysql://localhost:3306/test_db?sslMode=VERIFY_IDENTITY&
+         jdbc:mysql://localhost:3306/test_db?sslMode=VERIFY_CA&
          trustCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/truststore.jks&
          trustCertificateKeyStorePassword=mypassword&
-         clientCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/cert.jks&
+         clientCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/client-cert.jks&
          clientCertificateKeyStorePassword=mypassword
     username: test_user
     password: Password2022
