@@ -20,7 +20,6 @@ public class EmployeeController {
 
     @PostMapping("/employee")
     public Employee createUser(@RequestBody Employee employee) {
-        System.out.println(employee);
         empRepository.save(employee);
         return employee;
     }

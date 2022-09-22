@@ -43,7 +43,7 @@ public class EmployeeControllerUnitTest {
         Mockito.when(employeeRepository.findById(1234)).thenReturn(Optional.of(employeeExpected));
 
         MvcResult result = mockMvc.perform(get("/employee/1234"))
-          .andExpect(status().isOk()).andReturn();
+            .andExpect(status().isOk()).andReturn();
 
         Employee employee = objectMapper.readValue(result.getResponse().getContentAsString(), Employee.class);
         assertEquals(employeeExpected.getEmpName(), employee.getEmpName());
@@ -61,8 +61,8 @@ public class EmployeeControllerUnitTest {
         Mockito.when(employeeRepository.save(employeeExpected)).thenReturn(employeeExpected);
 
         MvcResult result = mockMvc.perform(post("/employee")
-          .content(objectMapper.writeValueAsString(employeeExpected))
-          .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+            .content(objectMapper.writeValueAsString(employeeExpected))
+            .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
 
         Employee employee = objectMapper.readValue(result.getResponse().getContentAsString(), Employee.class);
         assertEquals(employeeExpected.getEmpName(), employee.getEmpName());
