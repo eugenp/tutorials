@@ -6,7 +6,7 @@ This module contains articles about core Java non-blocking input and output (IO)
 
 - [Determine File Creation Date in Java](https://www.baeldung.com/java-file-creation-date)
 - [Find the Number of Lines in a File Using Java](https://www.baeldung.com/java-file-number-of-lines)
-- [A Guide to NIO2 Asynchronous File Channel](https://www.baeldung.com/java-nio2-async-file-channel)
+- [A Guide To NIO2 Asynchronous File Channel](https://www.baeldung.com/java-nio2-async-file-channel)
 - [A Guide to NIO2 FileVisitor](https://www.baeldung.com/java-nio2-file-visitor)
 - [Guide to Java FileChannel](https://www.baeldung.com/java-filechannel)
 - [A Guide to NIO2 File Attribute APIs](https://www.baeldung.com/java-nio2-file-attribute)
