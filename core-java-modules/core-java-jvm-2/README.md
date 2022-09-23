@@ -13,4 +13,6 @@ This module contains articles about working with the Java Virtual Machine (JVM).
 - [List All Classes Loaded in a Specific Class Loader](https://www.baeldung.com/java-list-classes-class-loader)
 - [An Introduction to the Constant Pool in the JVM](https://www.baeldung.com/jvm-constant-pool)
 - [List All the Classes Loaded in the JVM](https://www.baeldung.com/jvm-list-all-classes-loaded)
+- [Static Fields and Garbage Collection](https://www.baeldung.com/java-static-fields-gc)
+- [Difference Between Class.getResource() and ClassLoader.getResource()](https://www.baeldung.com/java-class-vs-classloader-getresource)
 - More articles: [[<-- prev]](/core-java-modules/core-java-jvm)

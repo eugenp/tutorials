@@ -7,7 +7,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-  <name>parent-modules</name>
+    <name>parent-modules</name>
     <packaging>pom</packaging>
 
     <dependencies>
@@ -326,6 +326,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -391,6 +392,7 @@
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
+                <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -410,7 +412,6 @@
                 <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
@@ -426,12 +427,13 @@
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
-                <module>kubernetes</module>
+                <module>kubernetes-modules</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -439,6 +441,7 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
+                <module>libraries-files</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
@@ -469,25 +472,24 @@
                 <module>orika</module>
                 <module>osgi</module>
 
-                <module>patterns</module>
+                <module>patterns-modules</module>
                 <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
                 <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
-                <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>rule-engines</module>
+                <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>security-modules</module>
                 <module>slack</module>
+                <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -529,6 +531,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -540,7 +543,7 @@
                 <module>spring-4</module>
 
                 <module>spring-5</module>
-                <module>spring-5-reactive-modules</module>
+                <module>spring-reactive-modules</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
 
@@ -557,7 +560,8 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2</module>
+                <module>spring-caching-2/redis</module>
+                <module>spring-caching-2/ttl</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -610,7 +614,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -618,6 +621,7 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
+                <module>struts</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -627,13 +631,13 @@
 
                 <module>undertow</module>
 
-                <module>vertx</module>
-                <module>vertx-and-rxjava</module>
+                <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
                 <module>wildfly</module>
                 <module>xml</module>
+                <module>xml-2</module>
                 <module>xstream</module>
             </modules>
 
@@ -672,6 +676,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -692,8 +697,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
-                <module>vavr-2</module>
+                <module>vavr-modules</module>
             </modules>
         </profile>
 
@@ -725,6 +729,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -790,6 +795,7 @@
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
+                <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -809,7 +815,6 @@
                 <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
-                <module>java-vavr-stream</module>
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
@@ -825,9 +830,8 @@
                 <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
-
+                <module>kubernetes-modules</module>
                 <module>ksqldb</module>
-
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-2</module>
@@ -840,6 +844,7 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
+                <module>libraries-files</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
@@ -870,25 +875,24 @@
                 <module>orika</module>
                 <module>osgi</module>
 
-                <module>patterns</module>
+                <module>patterns-modules</module>
                 <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <!-- <module>play-framework</module> --> <!-- Not a maven project -->
                 <module>protobuffer</module>
 
                 <module>quarkus-modules</module>
 
                 <module>rabbitmq</module>
-                <!-- <module>raml</module> --> <!-- Not a maven project -->
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>rule-engines</module>
+                <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>security-modules</module>
                 <module>slack</module>
+                <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -922,6 +926,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -933,7 +938,7 @@
                 <module>spring-4</module>
 
                 <module>spring-5</module>
-                <module>spring-5-reactive-modules</module>
+                <module>spring-reactive-modules</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
 
@@ -951,8 +956,9 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2</module>
-
+                <module>spring-caching-2/redis</module>
+                <module>spring-caching-2/ttl</module>
+                
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -1004,7 +1010,6 @@
                 <module>spring-threads</module>
 
                 <module>spring-vault</module>
-                <module>spring-vertx</module>
 
                 <module>spring-web-modules</module>
                 <module>spring-webflux-amqp</module> <!-- long -->
@@ -1012,6 +1017,7 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
+                <module>struts</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1021,8 +1027,7 @@
 
                 <module>undertow</module>
 
-                <module>vertx</module>
-                <module>vertx-and-rxjava</module>
+                <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
@@ -1059,6 +1064,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1079,8 +1085,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr</module>
-                <module>vavr-2</module>
+                <module>vavr-modules</module>
             </modules>
 
         </profile>
@@ -1154,6 +1159,7 @@
                  <module>core-java-modules/core-java-10</module>
                  <module>core-java-modules/core-java-11</module>
                  <module>core-java-modules/core-java-11-2</module>
+                 <module>core-java-modules/core-java-11-3</module>
                  <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1161,6 +1167,7 @@
                  <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                  <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                  <module>core-java-modules/core-java-collections-set</module>
+                 <module>core-java-modules/core-java-collections-list-4</module>
                  <module>core-java-modules/core-java-collections-maps-4</module>
                  <module>core-java-modules/core-java-date-operations-1</module>
                  <module>core-java-modules/core-java-datetime-conversion</module>
@@ -1181,6 +1188,8 @@
                  <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
                  <module>libraries-concurrency</module>
+                 <module>maven-modules/compiler-plugin-java-9</module>
+                 <module>maven-modules/maven-generate-war</module>
                  <module>maven-modules/multimodulemavenproject</module>
                  <module>optaplanner</module>
                  <module>persistence-modules/sirix</module>
@@ -1190,6 +1199,7 @@
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>spring-boot-modules/spring-boot-3</module>
+                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
@@ -1227,6 +1237,7 @@
                 <module>core-java-modules/core-java-10</module>
                 <module>core-java-modules/core-java-11</module>
                 <module>core-java-modules/core-java-11-2</module>
+                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1234,6 +1245,7 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
+                <module>core-java-modules/core-java-collections-list-4</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
@@ -1251,6 +1263,8 @@
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>libraries-concurrency</module>
+                <module>maven-modules/compiler-plugin-java-9</module>
+                <module>maven-modules/maven-generate-war</module>
                 <module>maven-modules/multimodulemavenproject</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
@@ -1259,6 +1273,8 @@
                 <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
+                <module>spring-boot-modules/spring-boot-3</module>
+                <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
@@ -1306,8 +1322,8 @@
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
         <esapi.version>2.5.0.0</esapi.version>
-        <jmh-core.version>1.33</jmh-core.version>
-        <jmh-generator.version>1.33</jmh-generator.version>
+        <jmh-core.version>1.35</jmh-core.version>
+        <jmh-generator.version>1.35</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
@@ -1315,9 +1331,9 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
-        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.13.3</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>

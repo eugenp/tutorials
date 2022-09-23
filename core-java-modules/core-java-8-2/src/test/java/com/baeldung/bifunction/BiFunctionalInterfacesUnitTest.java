@@ -71,7 +71,7 @@ public class BiFunctionalInterfacesUnitTest {
         List<String> list1 = Arrays.asList("a", "b", "c");
         List<Integer> list2 = Arrays.asList(1, 2, 3);
 
-        List<String> result = listCombiner(list1, list2, (a, b) -> a + b);
+        List<String> result = listCombiner(list1, list2, (letter, number) -> letter + number);
 
         assertThat(result).containsExactly("a1", "b2", "c3");
     }
@@ -92,7 +92,7 @@ public class BiFunctionalInterfacesUnitTest {
         List<Float> list2 = Arrays.asList(0.1f, 0.2f, 4f);
 
         // algorithm to determine if the value in list1 > value in list 2
-        List<Boolean> result = listCombiner(list1, list2, (a, b) -> a > b);
+        List<Boolean> result = listCombiner(list1, list2, (doubleNumber, floatNumber) -> doubleNumber > floatNumber);
 
         assertThat(result).containsExactly(true, true, false);
     }
@@ -117,7 +117,7 @@ public class BiFunctionalInterfacesUnitTest {
         List<Float> list1 = Arrays.asList(0.1f, 0.2f, 4f);
         List<Float> list2 = Arrays.asList(0.1f, 0.2f, 4f);
 
-        List<Boolean> result = listCombiner(list1, list2, (a, b) -> a.equals(b));
+        List<Boolean> result = listCombiner(list1, list2, (float1, float2) -> float1.equals(float2));
 
         assertThat(result).containsExactly(true, true, true);
     }
