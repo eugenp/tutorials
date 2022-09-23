@@ -5,7 +5,7 @@ This module contains articles about networking in Java
 ### Relevant Articles
 
 - [Checking If a URL Exists in Java](https://www.baeldung.com/java-check-url-exists)
-- [Making a JSON POST Request with HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)
+- [Making a JSON POST Request With HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)
 - [Using Curl in Java](https://www.baeldung.com/java-curl)
 - [Do a Simple HTTP Request in Java](https://www.baeldung.com/java-http-request)
 - [Sending Emails with Java](https://www.baeldung.com/java-email)
