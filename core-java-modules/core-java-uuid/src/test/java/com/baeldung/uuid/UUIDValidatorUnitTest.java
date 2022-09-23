@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-public class UUIDValidatorTest {
+public class UUIDValidatorUnitTest {
 
   @Test
   public void whenValidUUIDStringIsValidated_thenValidationSucceeds() {
