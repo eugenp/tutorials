@@ -23,6 +23,7 @@ class ListToStringUnitTest {
 
     @Test
     void givenAListOfString_whenUsingJava8_thenConvertToStringByUsingStringJoiner() {
+
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
         StringJoiner stringJoiner = new StringJoiner(",");
@@ -30,12 +31,12 @@ class ListToStringUnitTest {
             .forEach(v -> stringJoiner.add(v));
         String commaSeparatedString = stringJoiner.toString();
 
+        assertThat(commaSeparatedString).isEqualTo("ONE,TWO,THREE");
+
         StringJoiner stringJoinerWithDelimiterPrefixSuffix = new StringJoiner(",", "[", "]");
         arraysAsList.stream()
             .forEach(v -> stringJoinerWithDelimiterPrefixSuffix.add(v));
         String commaSeparatedStringWithDelimiterPrefixSuffix = stringJoinerWithDelimiterPrefixSuffix.toString();
-
-        assertThat(commaSeparatedString).isEqualTo("ONE,TWO,THREE");
 
         assertThat(commaSeparatedStringWithDelimiterPrefixSuffix).isEqualTo("[ONE,TWO,THREE]");
     }
@@ -48,31 +49,31 @@ class ListToStringUnitTest {
         String commaSeparatedUsingCollect = arraysAsList.stream()
             .collect(Collectors.joining(","));
 
-        String commaSeparatedUsingReduce = arraysAsList.stream()
-            .reduce((x, y) -> x + "," + y)
-            .get();
+        assertThat(commaSeparatedUsingCollect).isEqualTo("ONE,TWO,THREE");
 
         String commaSeparatedObjectToString = arraysAsList.stream()
             .map(Object::toString)
             .collect(Collectors.joining(","));
 
+        assertThat(commaSeparatedObjectToString).isEqualTo("ONE,TWO,THREE");
+
         String commaSeparatedStringValueOf = arraysAsList.stream()
             .map(String::valueOf)
             .collect(Collectors.joining(","));
+
+        assertThat(commaSeparatedStringValueOf).isEqualTo("ONE,TWO,THREE");
 
         String commaSeparatedStringValueOfWithDelimiterPrefixSuffix = arraysAsList.stream()
             .map(String::valueOf)
             .collect(Collectors.joining(",", "[", "]"));
 
-        assertThat(commaSeparatedUsingCollect).isEqualTo("ONE,TWO,THREE");
+        assertThat(commaSeparatedStringValueOfWithDelimiterPrefixSuffix).isEqualTo("[ONE,TWO,THREE]");
+
+        String commaSeparatedUsingReduce = arraysAsList.stream()
+            .reduce((x, y) -> x + "," + y)
+            .get();
 
         assertThat(commaSeparatedUsingReduce).isEqualTo("ONE,TWO,THREE");
-
-        assertThat(commaSeparatedObjectToString).isEqualTo("ONE,TWO,THREE");
-
-        assertThat(commaSeparatedStringValueOf).isEqualTo("ONE,TWO,THREE");
-
-        assertThat(commaSeparatedStringValueOfWithDelimiterPrefixSuffix).isEqualTo("[ONE,TWO,THREE]");
     }
 
     @Test
@@ -82,9 +83,9 @@ class ListToStringUnitTest {
 
         String commaSeparatedString = org.apache.commons.lang3.StringUtils.join(arraysAsList, ",");
 
-        String commaSeparatedStringIndex = org.apache.commons.lang3.StringUtils.join(arraysAsList.toArray(), ",", 0, 3);
-
         assertThat(commaSeparatedString).isEqualTo("ONE,TWO,THREE");
+
+        String commaSeparatedStringIndex = org.apache.commons.lang3.StringUtils.join(arraysAsList.toArray(), ",", 0, 3);
 
         assertThat(commaSeparatedStringIndex).isEqualTo("ONE,TWO,THREE");
     }
@@ -96,9 +97,9 @@ class ListToStringUnitTest {
 
         String collectionToCommaDelimitedString = org.springframework.util.StringUtils.collectionToCommaDelimitedString(arraysAsList);
 
-        String collectionToDelimitedString = org.springframework.util.StringUtils.collectionToDelimitedString(arraysAsList, ",");
-
         assertThat(collectionToCommaDelimitedString).isEqualTo("ONE,TWO,THREE");
+
+        String collectionToDelimitedString = org.springframework.util.StringUtils.collectionToDelimitedString(arraysAsList, ",");
 
         assertThat(collectionToDelimitedString).isEqualTo("ONE,TWO,THREE");
     }
@@ -108,22 +109,22 @@ class ListToStringUnitTest {
 
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
-        List<String> arraysAsListWithNull = Arrays.asList("ONE", null, "TWO", null, "THREE");
-
         String commaSeparatedString = com.google.common.base.Joiner.on(",")
             .join(arraysAsList);
+
+        assertThat(commaSeparatedString).isEqualTo("ONE,TWO,THREE");
+
+        List<String> arraysAsListWithNull = Arrays.asList("ONE", null, "TWO", null, "THREE");
 
         String commaSeparatedStringSkipNulls = com.google.common.base.Joiner.on(",")
             .skipNulls()
             .join(arraysAsListWithNull);
 
+        assertThat(commaSeparatedStringSkipNulls).isEqualTo("ONE,TWO,THREE");
+
         String commaSeparatedStringUseForNull = com.google.common.base.Joiner.on(",")
             .useForNull(" ")
             .join(arraysAsListWithNull);
-
-        assertThat(commaSeparatedString).isEqualTo("ONE,TWO,THREE");
-
-        assertThat(commaSeparatedStringSkipNulls).isEqualTo("ONE,TWO,THREE");
 
         assertThat(commaSeparatedStringUseForNull).isEqualTo("ONE, ,TWO, ,THREE");
     }
