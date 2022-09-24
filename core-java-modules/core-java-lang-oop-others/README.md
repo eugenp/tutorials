@@ -6,3 +6,4 @@ This module contains articles about Object Oriented Programming (OOP) in Java
 - [Object-Oriented-Programming Concepts in Java](https://www.baeldung.com/java-oop)
 - [Static and Dynamic Binding in Java](https://www.baeldung.com/java-static-dynamic-binding)
 - [Pass-By-Value as a Parameter Passing Mechanism in Java](https://www.baeldung.com/java-pass-by-value-or-pass-by-reference)
+- [Creating a deep vs shallow copy of an object in Java](https://drafts.baeldung.com/?p=144337&preview=true)
