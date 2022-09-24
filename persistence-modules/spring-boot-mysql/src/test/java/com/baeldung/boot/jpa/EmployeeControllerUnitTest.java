@@ -3,7 +3,6 @@ package com.baeldung.boot.jpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -16,6 +15,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,7 +40,7 @@ public class EmployeeControllerUnitTest {
         employeeExpected.setEmpDoj(LocalDate.now());
         employeeExpected.setJobTitle("Manager");
 
-        Mockito.when(employeeRepository.findById(1234)).thenReturn(Optional.of(employeeExpected));
+        when(employeeRepository.findById(1234)).thenReturn(Optional.of(employeeExpected));
 
         MvcResult result = mockMvc.perform(get("/employee/1234"))
             .andExpect(status().isOk()).andReturn();
@@ -58,7 +58,7 @@ public class EmployeeControllerUnitTest {
         employeeExpected.setEmpDoj(LocalDate.now());
         employeeExpected.setJobTitle("Manager");
 
-        Mockito.when(employeeRepository.save(employeeExpected)).thenReturn(employeeExpected);
+        when(employeeRepository.save(employeeExpected)).thenReturn(employeeExpected);
 
         MvcResult result = mockMvc.perform(post("/employee")
             .content(objectMapper.writeValueAsString(employeeExpected))
