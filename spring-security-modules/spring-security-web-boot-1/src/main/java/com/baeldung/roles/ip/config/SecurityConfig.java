@@ -3,6 +3,7 @@ package com.baeldung.roles.ip.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -18,10 +19,13 @@ public class SecurityConfig {
     private CustomIpAuthenticationProvider authenticationProvider;
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
+    public InMemoryUserDetailsManager userDetailsService(HttpSecurity http) throws Exception {
         UserDetails user = User.withUsername("john")
             .password("{noop}123")
             .authorities("ROLE_USER")
+            .build();
+        http.getSharedObject(AuthenticationManagerBuilder.class)
+            .authenticationProvider(authenticationProvider)
             .build();
         return new InMemoryUserDetailsManager(user);
     }
@@ -31,7 +35,6 @@ public class SecurityConfig {
         http.authorizeRequests()
             .antMatchers("/login")
             .permitAll()
-            // .antMatchers("/foos/**").hasIpAddress("11.11.11.11")
             .antMatchers("/foos/**")
             .access("isAuthenticated() and hasIpAddress('11.11.11.11')")
             .anyRequest()
