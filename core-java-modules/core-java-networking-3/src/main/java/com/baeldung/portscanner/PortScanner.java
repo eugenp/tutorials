@@ -43,7 +43,7 @@ public class PortScanner {
         try {
             executorService.awaitTermination(10, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
 
         List openPortList = new ArrayList<>();
