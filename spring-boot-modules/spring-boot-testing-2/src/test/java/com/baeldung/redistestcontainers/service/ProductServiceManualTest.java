@@ -1,14 +1,15 @@
 package com.baeldung.redistestcontainers.service;
 
-import com.baeldung.redistestcontainers.hash.Product;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import com.baeldung.redistestcontainers.hash.Product;
 
 /**
  * Requires Docker running on the machine to run without errors

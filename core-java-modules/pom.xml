@@ -55,6 +55,7 @@
         <module>core-java-console</module>
         <module>core-java-8-datetime-2</module>
         <module>core-java-date-operations-2</module>
+        <module>core-java-date-operations-3</module>
         <module>core-java-8-datetime</module>
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
