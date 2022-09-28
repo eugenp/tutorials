@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class FileWriterExample {
 
     public static String generateFileFromArrayList(ArrayList<String> stringArrayList) throws IOException {
-
         final String TEXT_FILENAME = "src/test/resources/sampleTextFile.txt";
         FileWriter fileWriter = new FileWriter(TEXT_FILENAME);
         for (String str : stringArrayList) {

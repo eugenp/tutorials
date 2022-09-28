@@ -1,9 +1,7 @@
 package com.baeldung.filewriter;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

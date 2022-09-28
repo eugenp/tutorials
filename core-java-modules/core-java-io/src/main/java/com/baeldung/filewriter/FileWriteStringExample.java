@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class FileWriteStringExample {
     public static String generateFileFromArrayList(ArrayList<String> stringArrayList) throws IOException {
         final String TEXT_FILENAME = "src/test/resources/sampleTextFile.txt";
-
         Path filePath = Paths.get(TEXT_FILENAME);
         Files.deleteIfExists(filePath);
         Files.createFile(filePath);
