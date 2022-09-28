@@ -1,4 +1,4 @@
-package com.baeldung.filewriter;
+package com.baeldung;
 
 import org.junit.After;
 import org.junit.Assert;
