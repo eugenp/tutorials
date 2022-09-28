@@ -1,4 +1,4 @@
-package java.com.baeldung.listandset;
+package com.baeldung.listandset;
 
 import org.junit.Test;
 import java.util.*;
@@ -6,10 +6,10 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ListAndSetTest {
+public class ListAndSetUnitTest {
 
     @Test
-    public void whenList_thenDuplicatesAreAllowed(){
+    public void givenList_whenDuplicates_thenAllowed(){
         List<Integer> integerList = new ArrayList<>();
         integerList.add(2);
         integerList.add(3);
@@ -19,7 +19,7 @@ public class ListAndSetTest {
     }
 
     @Test
-    public void whenSet_thenDuplicatesAreNotAllowed(){
+    public void givenSet_whenDuplicates_thenNotAllowed(){
         Set<Integer> integerSet = new HashSet<>();
         integerSet.add(2);
         integerSet.add(3);
@@ -29,7 +29,7 @@ public class ListAndSetTest {
     }
 
     @Test
-    public void whenSet_thenOrderingMayBeMaintained(){
+    public void givenSet_whenOrdering_thenMayBeAllowed(){
         Set<Integer> set1 = new LinkedHashSet<>();
         set1.add(2);
         set1.add(3);
