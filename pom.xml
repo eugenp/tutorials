@@ -462,7 +462,7 @@
                 <module>mesos-marathon</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
-                <module>muleesb</module>
+                <!--<module>muleesb</module>-->
                 <module>mustache</module>
                 <module>mybatis</module>
 
@@ -865,7 +865,7 @@
                 <module>mesos-marathon</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
-                <module>muleesb</module>
+                <!--<module>muleesb</module>-->
                 <module>mustache</module>
                 <module>mybatis</module>
 
