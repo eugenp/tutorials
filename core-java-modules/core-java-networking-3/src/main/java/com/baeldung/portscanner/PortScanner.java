@@ -12,16 +12,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class PortScanner {
-    private static int poolSize = 10;
-    private static int timeOut = 200;
-    private static String ip = "127.0.0.1";
+    private static final int poolSize = 10;
+    private static final int timeOut = 200;
 
-    public void runPortScan(int nbrPortMaxToScan){
-        List openPorts = portScan(ip, nbrPortMaxToScan);
-        openPorts.forEach(port -> System.out.println("port " + port + " is open"));
-    }
-
-    public static List portScan(String ip, int nbrPortMaxToScan) {
+    public void runPortScan(String ip, int nbrPortMaxToScan) throws IOException, RuntimeException {
         ConcurrentLinkedQueue openPorts = new ConcurrentLinkedQueue<>();
         ExecutorService executorService = Executors.newFixedThreadPool(poolSize);
         AtomicInteger port = new AtomicInteger(0);
@@ -35,6 +29,7 @@ public class PortScanner {
                     openPorts.add(currentPort);
                     System.out.println(ip + " ,port open: " + currentPort);
                 } catch (IOException e) {
+                    System.err.println(e);
                 }
 
             });
@@ -51,6 +46,6 @@ public class PortScanner {
         while (!openPorts.isEmpty()) {
             openPortList.add(openPorts.poll());
         }
-        return openPortList;
+        openPortList.forEach(p -> System.out.println("port " + p + " is open"));
     }
 }
