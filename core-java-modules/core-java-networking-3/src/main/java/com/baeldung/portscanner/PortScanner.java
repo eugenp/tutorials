@@ -46,6 +46,7 @@ public class PortScanner {
         while (!openPorts.isEmpty()) {
             openPortList.add(openPorts.poll());
         }
+        
         openPortList.forEach(p -> System.out.println("port " + p + " is open"));
     }
 }
