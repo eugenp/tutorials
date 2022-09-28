@@ -38,7 +38,6 @@ public class ListAndSetUnitTest {
         set2.add(2);
         set2.add(3);
         set2.add(4);
-
         boolean ordered = true;
         Object[] arr1 = set1.toArray();
         Object[] arr2 = set2.toArray();
