@@ -90,8 +90,7 @@
 
     <properties>
         <spring.fox.version>3.0.0</spring.fox.version>
-        <start-class>com.baeldung.swagger2boot.SpringBootSwaggerApplication</start-class>
-        <!-- <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class> -->
+        <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
     </properties>
 
