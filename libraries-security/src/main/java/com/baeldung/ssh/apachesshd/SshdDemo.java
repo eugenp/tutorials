@@ -20,38 +20,39 @@ public class SshdDemo {
         int port = 22;
         long defaultTimeoutSeconds = 10l;
         String command = "ls\n";
-        
+
         listFolderStructure(username, password, host, port, defaultTimeoutSeconds, command);
     }
 
-    public static String listFolderStructure(String username, String password, String host, int port, long defaultTimeoutSeconds, String command) throws Exception {
+    public static String listFolderStructure(String username, String password, String host, int port,
+            long defaultTimeoutSeconds, String command) throws Exception {
         SshClient client = SshClient.setUpDefaultClient();
         client.start();
         try (ClientSession session = client.connect(username, host, port)
-          .verify(defaultTimeoutSeconds, TimeUnit.SECONDS)
-            .getSession()) {
+                .verify(defaultTimeoutSeconds, TimeUnit.SECONDS)
+                .getSession()) {
             session.addPasswordIdentity(password);
             session.auth()
-              .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
+                    .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
             try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
-                 ByteArrayOutputStream errorResponseStream = new ByteArrayOutputStream();
-                 ClientChannel channel = session.createChannel(Channel.CHANNEL_SHELL)) {
+                    ByteArrayOutputStream errorResponseStream = new ByteArrayOutputStream();
+                    ClientChannel channel = session.createChannel(Channel.CHANNEL_SHELL)) {
                 channel.setOut(responseStream);
                 channel.setErr(errorResponseStream);
                 try {
                     channel.open()
-                      .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
+                            .verify(defaultTimeoutSeconds, TimeUnit.SECONDS);
                     try (OutputStream pipedIn = channel.getInvertedIn()) {
                         pipedIn.write(command.getBytes());
                         pipedIn.flush();
                     }
-                    channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(defaultTimeoutSeconds));
+                    channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED),
+                            TimeUnit.SECONDS.toMillis(defaultTimeoutSeconds));
                     String errorString = new String(errorResponseStream.toByteArray());
-                    if(!errorString.isEmpty()) {
+                    if (!errorString.isEmpty()) {
                         throw new Exception(errorString);
                     }
-                    String responseString = new String(responseStream.toByteArray());
-                    return responseString;
+                    return new String(responseStream.toByteArray());
                 } finally {
                     channel.close(false);
                 }
