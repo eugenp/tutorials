@@ -560,8 +560,7 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2/redis</module>
-                <module>spring-caching-2/ttl</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
