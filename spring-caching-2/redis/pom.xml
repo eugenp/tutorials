@@ -6,7 +6,7 @@
     <artifactId>spring-caching-2</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-caching-2</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -62,5 +62,17 @@
     <properties>
         <embedded.redis.version>0.7.3</embedded.redis.version>
     </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>resources</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <includes>
+                    <include>application.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
 </project>
