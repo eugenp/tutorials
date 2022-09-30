@@ -630,12 +630,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-<<<<<<< HEAD
-                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with 
-                    the build (TODO: create a jira to fix it) -->
-=======
-                <module>undertow</module>
->>>>>>> upstream/master
+
 
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -1167,47 +1162,7 @@
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-<<<<<<< HEAD
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/multimodulemavenproject</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
-                <module>ddd-contexts</module>
-                <module>docker</module>
-                <module>apache-httpclient-2</module>
-                <module>libraries-concurrency</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-vs-springboot</module>
-                <module>quarkus-jandex</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
-                <module>testing-modules/testing-assertions</module>
-                <module>persistence-modules/fauna</module>
-                <module>lightrun</module>
-=======
+
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
                  <module>core-java-modules/core-java-11</module>
@@ -1236,6 +1191,7 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
+                 <module>core-java-modules/core-java-objects</module>
                  <module>spring-core-6</module>
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
@@ -1256,7 +1212,7 @@
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
->>>>>>> upstream/master
+
             </modules>
         </profile>
 
