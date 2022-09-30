@@ -31,7 +31,6 @@ public class PortScanner {
                 } catch (IOException e) {
                     System.err.println(e);
                 }
-
             });
         }
         executorService.shutdown();
