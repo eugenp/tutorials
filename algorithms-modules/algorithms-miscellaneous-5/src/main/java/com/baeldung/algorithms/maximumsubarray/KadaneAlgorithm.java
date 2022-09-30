@@ -14,7 +14,7 @@ public class KadaneAlgorithm {
         int end = 0;
 
         int maxSoFar = arr[0], maxEndingHere = arr[0];
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i < size; i++) {
 
             if (arr[i] > maxEndingHere + arr[i]) {
                 start = i;

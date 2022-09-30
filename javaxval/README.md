@@ -13,3 +13,4 @@ This module contains articles about Bean Validation.
 - [Guide to ParameterMessageInterpolator](https://www.baeldung.com/hibernate-parametermessageinterpolator)
 - [Hibernate Validator Annotation Processor in Depth](https://www.baeldung.com/hibernate-validator-annotation-processor)
 - [Constraint Composition with Bean Validation](https://www.baeldung.com/java-bean-validation-constraint-composition)
+- [Using @NotNull on a Method Parameter](https://www.baeldung.com/java-notnull-method-parameter)

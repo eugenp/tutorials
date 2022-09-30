@@ -14,7 +14,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot and Caffeine Cache](https://www.baeldung.com/spring-boot-caffeine-cache)
 - [Spring Boot and Togglz Aspect](https://www.baeldung.com/spring-togglz)
 - [Getting Started with GraphQL and Spring Boot](https://www.baeldung.com/spring-graphql)
-- [Expose GraphQL Field with Different Name](https://www.baeldung.com/expose-graphql-field-with-different-name)
+- [Expose GraphQL Field with Different Name](https://www.baeldung.com/graphql-field-name)
 - More articles: [[next -->]](/spring-boot-modules/spring-boot-libraries-2)
 
 ### GraphQL sample queries

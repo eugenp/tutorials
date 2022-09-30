@@ -32,7 +32,7 @@ public class EmptyMapInitializer {
     return emptyMap;
   }
 
-  public Map createGenericEmptyMapUsingMapsObject() {
+  public Map createGenericEmptyMapUsingGuavaMapsObject() {
     Map genericEmptyMap = Maps.<String, Integer>newHashMap();
     return genericEmptyMap;
   }
@@ -43,6 +43,11 @@ public class EmptyMapInitializer {
     return emptyMapUsingGuava;
   }
 
+  public static Map<String, String> createImmutableMapUsingGuava() {
+	    Map<String, String> emptyImmutableMapUsingGuava = ImmutableMap.of();
+	    return emptyImmutableMapUsingGuava;
+  }
+  
   public SortedMap<String, String> createEmptySortedMap() {
     SortedMap<String, String> sortedMap = Collections.emptySortedMap();
     return sortedMap;

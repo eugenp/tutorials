@@ -35,7 +35,7 @@
     </dependencies>
 
     <properties>
-        <reactor.version>3.4.9</reactor.version>
+        <reactor.version>3.4.17</reactor.version>
     </properties>
 
 </project>

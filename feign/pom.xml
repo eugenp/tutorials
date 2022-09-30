@@ -14,12 +14,6 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <feign.version>11.8</feign.version>
-        <wsdl4j.version>1.6.3</wsdl4j.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.github.openfeign</groupId>
@@ -120,5 +114,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <feign.version>11.8</feign.version>
+        <wsdl4j.version>1.6.3</wsdl4j.version>
+    </properties>
 
 </project>

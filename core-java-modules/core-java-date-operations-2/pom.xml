@@ -30,11 +30,29 @@
             <artifactId>hirondelle-date4j</artifactId>
             <version>${hirondelle-date4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.time4j</groupId>
+            <artifactId>time4j-base</artifactId>
+            <version>${time4j-base.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.time4j</groupId>
+            <artifactId>time4j-sqlxml</artifactId>
+            <version>${time4j-sqlxml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ocpsoft.prettytime</groupId>
+            <artifactId>prettytime</artifactId>
+            <version>${prettytime.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <joda-time.version>2.10</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
+        <prettytime.version>3.2.7.Final</prettytime.version>
+        <time4j-base.version>5.9</time4j-base.version>
+        <time4j-sqlxml.version>5.8</time4j-sqlxml.version>
     </properties>
 
 </project>

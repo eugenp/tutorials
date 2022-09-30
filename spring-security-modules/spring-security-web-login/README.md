@@ -13,6 +13,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Spring Security – Redirect to the Previous URL After Login](https://www.baeldung.com/spring-security-redirect-login)
 - [Spring Security Custom AuthenticationFailureHandler](https://www.baeldung.com/spring-security-custom-authentication-failure-handler)
 - [Extra Login Fields with Spring Security](https://www.baeldung.com/spring-security-extra-login-fields)
+- More articles: [[next -->]](/spring-security-modules/spring-security-web-login-2)
 
 ### Build the Project
 ```

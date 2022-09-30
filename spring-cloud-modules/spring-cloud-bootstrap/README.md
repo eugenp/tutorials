@@ -1,6 +1,6 @@
-## Spring Cloud Bootstrap
+## Guide to Microservices: with Spring Boot and Spring Cloud Ebook
 
-This module contains articles about bootstrapping Spring Cloud applications
+This module contains articles about bootstrapping Spring Cloud applications that are part of the Guide to Microservices: with Spring Boot and Spring Cloud Ebook.
 
 ### Relevant Articles:
 

@@ -15,12 +15,14 @@ public class KafkaConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
 
     private CountDownLatch latch = new CountDownLatch(1);
-    private String payload = null;
+
+    private String payload;
 
     @KafkaListener(topics = "${test.topic}")
     public void receive(ConsumerRecord<?, ?> consumerRecord) {
         LOGGER.info("received payload='{}'", consumerRecord.toString());
-        setPayload(consumerRecord.toString());
+
+        payload = consumerRecord.toString();
         latch.countDown();
     }
 
@@ -28,12 +30,12 @@ public class KafkaConsumer {
         return latch;
     }
 
-    public String getPayload() {
-        return payload;
+    public void resetLatch() {
+        latch = new CountDownLatch(1);
     }
 
-    private void setPayload(String payload) {
-        this.payload = payload;
+    public String getPayload() {
+        return payload;
     }
 
 }

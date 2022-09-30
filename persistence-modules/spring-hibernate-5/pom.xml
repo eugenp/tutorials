@@ -136,7 +136,6 @@
         <mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
-        <hsqldb.version>2.3.4</hsqldb.version>
         <com.sun.xml.version>2.3.0.1</com.sun.xml.version>
         <javax.xml.bind.version>2.3.1</javax.xml.bind.version>
     </properties>

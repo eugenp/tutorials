@@ -16,11 +16,11 @@
     </parent>
 
     <modules>
-        <module>basic-config</module>
         <module>additional-sources-simple</module>
+        <module>basic-config</module>
+        <module>dynamodb-config</module>
         <module>extra-configs</module>
         <module>jdbc-config</module>
-        <module>dynamodb-config</module>
         <module>zookeeper-config</module>
     </modules>
 

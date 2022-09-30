@@ -2,6 +2,7 @@ package com.baeldung.circularbuffer;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,8 +25,9 @@ public class ProducerConsumerLiveTest {
         executorService.submit(new Producer<String>(buffer, shapes));
         Future<String[]> consumed = executorService.submit(new Consumer<String>(buffer, shapes.length));
 
-        String[] shapesConsumed = consumed.get(5L, TimeUnit.SECONDS);
-        assertArrayEquals(shapes, shapesConsumed);
+        Object[] shapesConsumed = consumed.get(5L, TimeUnit.SECONDS);
+        String[] shapesConsumedStringArray = Arrays.stream(shapesConsumed).toArray(String[]::new);
+        assertArrayEquals(shapes, shapesConsumedStringArray);
     }
 
     static class Producer<T> implements Runnable {

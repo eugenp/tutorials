@@ -1,0 +1,15 @@
+services:
+  mysql-db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_HOST=localhost
+    ports:
+      - '3306:3306'
+    volumes:
+      - first-volume-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  first-volume-data:
+    external: true

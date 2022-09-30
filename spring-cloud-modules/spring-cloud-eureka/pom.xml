@@ -16,10 +16,11 @@
     </parent>
 
     <modules>
-        <module>spring-cloud-eureka-server</module>
         <module>spring-cloud-eureka-client</module>
+        <module>spring-cloud-eureka-client-profiles</module>
         <module>spring-cloud-eureka-feign-client</module>
         <module>spring-cloud-eureka-feign-client-integration-test</module>
+        <module>spring-cloud-eureka-server</module>
     </modules>
 
     <dependencyManagement>

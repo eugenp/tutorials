@@ -11,7 +11,6 @@
 - [Spring Data MongoDB: Projections and Aggregations](http://www.baeldung.com/spring-data-mongodb-projections-aggregations)
 - [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
 - [Spring Data MongoDB Transactions](https://www.baeldung.com/spring-data-mongodb-transactions)
-- [Return Only Specific Fields for a Query in Spring Data MongoDB](https://www.baeldung.com/mongodb-return-specific-fields)
 
 ## Spring Data MongoDB Live Testing
 
