@@ -1,4 +1,4 @@
-package com.baeldung.swagger2boot.model;
+package com.baeldung.swagger2bootmvc.model;
 
 import java.util.List;
 
