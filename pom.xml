@@ -1027,12 +1027,6 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-<<<<<<< HEAD
-                <!-- <module>undertow</module> --> <!-- 19.11.2019 - disabling temporarily as it's causing a major issue with 
-                    the build (TODO: create a jira to fix it) -->
-=======
-                <module>undertow</module>
->>>>>>> upstream/master
 
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -1269,6 +1263,7 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>core-java-modules/core-java-objects</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
