@@ -20,11 +20,16 @@ import java.security.spec.X509EncodedKeySpec;
 
 public class BouncyCastlePemUtils {
 
-    public static RSAPublicKey readX509PublicKey(File file) throws InvalidKeySpecException, IOException, NoSuchAlgorithmException {
+    private BouncyCastlePemUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static RSAPublicKey readX509PublicKey(File file)
+            throws InvalidKeySpecException, IOException, NoSuchAlgorithmException {
         KeyFactory factory = KeyFactory.getInstance("RSA");
 
         try (FileReader keyReader = new FileReader(file);
-             PemReader pemReader = new PemReader(keyReader)) {
+                PemReader pemReader = new PemReader(keyReader)) {
 
             PemObject pemObject = pemReader.readPemObject();
             byte[] content = pemObject.getContent();
@@ -44,11 +49,12 @@ public class BouncyCastlePemUtils {
         }
     }
 
-    public static RSAPrivateKey readPKCS8PrivateKey(File file) throws InvalidKeySpecException, IOException, NoSuchAlgorithmException {
+    public static RSAPrivateKey readPKCS8PrivateKey(File file)
+            throws InvalidKeySpecException, IOException, NoSuchAlgorithmException {
         KeyFactory factory = KeyFactory.getInstance("RSA");
 
         try (FileReader keyReader = new FileReader(file);
-             PemReader pemReader = new PemReader(keyReader)) {
+                PemReader pemReader = new PemReader(keyReader)) {
 
             PemObject pemObject = pemReader.readPemObject();
             byte[] content = pemObject.getContent();

@@ -1,6 +1,5 @@
 package com.baeldung.pem;
 
-
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

@@ -3,11 +3,15 @@ package com.baeldung.ssh;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.junit.Test;
 
 import com.baeldung.ssh.apachesshd.SshdDemo;
 
 public class ApacheMinaSshdLiveTest {
+
+    static final Logger log = LoggerFactory.getLogger(ApacheMinaSshdLiveTest.class);
 
     @Test
     public void givenValidCredentials_whenConnectionIsEstablished_thenServerReturnsResponse() throws Exception {
@@ -17,8 +21,9 @@ public class ApacheMinaSshdLiveTest {
         int port = 22;
         long defaultTimeoutSeconds = 10l;
         String command = "ls\n";
-        String responseString = SshdDemo.listFolderStructure(username, password, host, port, defaultTimeoutSeconds, command);
-        
+        String responseString = SshdDemo.listFolderStructure(username, password, host, port, defaultTimeoutSeconds,
+                command);
+        log.info(responseString);
         assertNotNull(responseString);
     }
 
@@ -30,8 +35,9 @@ public class ApacheMinaSshdLiveTest {
         int port = 22;
         long defaultTimeoutSeconds = 10l;
         String command = "ls\n";
-        String responseString = SshdDemo.listFolderStructure(username, password, host, port, defaultTimeoutSeconds, command);
-        
+        String responseString = SshdDemo.listFolderStructure(username, password, host, port, defaultTimeoutSeconds,
+                command);
+        log.info(responseString);
         assertNull(responseString);
     }
 

@@ -1,6 +1,212 @@
 # Security
 
-This module contains articles about security libraries.
+本模块包含有关安全库的文章。
+
+## 如何读取PEM文件以获取公钥和私钥
+
+1.概述
+
+在公钥加密（也称为非对称加密 [asymmetric cryptography](https://www.baeldung.com/cs/symmetric-vs-asymmetric-cryptography) ）中，加密机制依赖于两个相关的密钥，即公钥和私钥。公钥用于加密消息，而只有私钥的所有者才能解密消息。
+
+在本教程中，我们将学习如何从PEM文件读取公钥和私钥。
+
+首先，我们将学习有关公钥加密的一些重要概念。然后，我们将学习如何使用纯Java读取PEM文件。
+
+最后，我们将探索 [BouncyCastle](https://www.baeldung.com/java-bouncy-castle) 库作为替代方法。
+
+2.概念
+
+在开始之前，让我们讨论一些关键概念。
+
+X.509是定义公钥证书格式的标准。因此，此格式描述了公钥以及其他信息。
+
+DER是存储数据的最流行的编码格式，如X.509证书和文件中的PKCS8私钥。这是一种二进制编码，生成的内容不能用文本编辑器查看。
+
+PKCS8是存储私钥信息的标准语法。可以选择使用对称算法加密私钥。
+
+该标准不仅可以处理RSA私钥，还可以处理其他算法。PKCS8私钥通常通过PEM编码格式交换。
+
+PEM是DER证书的base-64编码机制。PEM还可以对其他类型的数据进行编码，例如公钥/私钥和证书请求。
+
+PEM文件还包含描述编码数据类型的页眉和页脚：
+
+-----BEGIN PUBLIC KEY-----
+...Base64 encoding of the DER encoded certificate...
+-----END PUBLIC KEY-----
+
+3.使用纯Java
+
+3.1.从文件读取PEM数据
+
+让我们从读取PEM文件开始，并将其内容存储到字符串中：
+
+`String key = new String(Files.readAllBytes(file.toPath()), Charset.defaultCharset());`
+
+3.2.从PEM字符串获取公钥
+
+现在，我们将构建一个实用程序方法，从PEM编码的字符串中获取公钥：
+
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsjtGIk8SxD+OEiBpP2/T
+JUAF0upwuKGMk6wH8Rwov88VvzJrVm2NCticTk5FUg+UG5r8JArrV4tJPRHQyvqK
+wF4NiksuvOjv3HyIf4oaOhZjT8hDne1Bfv+cFqZJ61Gk0MjANh/T5q9vxER/7TdU
+NHKpoRV+NVlKN5bEU/NQ5FQjVXicfswxh6Y6fl2PIFqT2CfjD+FkBPU1iT9qyJYH
+A38IRvwNtcitFgCeZwdGPoxiPPh1WHY8VxpUVBv/2JsUtrB/rAIbGqZoxAIWvijJ
+Pe9o1TY3VlOzk9ASZ1AeatvOir+iDVJ5OpKmLnzc46QgGPUsjIyo6Sje9dxpGtoG
+QQIDAQAB
+-----END PUBLIC KEY-----
+
+假设我们收到一个文件作为参数：
+
+```java
+public static RSAPublicKey readPublicKey(File file) throws Exception {
+    String key = new String(Files.readAllBytes(file.toPath()), Charset.defaultCharset());
+
+    String publicKeyPEM = key
+      .replace("-----BEGIN PUBLIC KEY-----", "")
+      .replaceAll(System.lineSeparator(), "")
+      .replace("-----END PUBLIC KEY-----", "");
+
+    byte[] encoded = Base64.decodeBase64(publicKeyPEM);
+
+    KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+    X509EncodedKeySpec keySpec = new X509EncodedKeySpec(encoded);
+    return (RSAPublicKey) keyFactory.generatePublic(keySpec);
+}
+```
+
+正如我们所看到的，首先我们需要删除页眉、页脚和新行。然后，我们需要将Base64编码的字符串解码为相应的二进制格式。
+
+接下来，我们需要将结果加载到能够处理公钥材料的密钥规范类中。在本例中，我们将使用X509EncodedKeySpec类。
+
+最后，我们可以使用KeyFactory类从规范生成公钥对象。
+
+3.3.从PEM字符串获取私钥
+
+现在我们知道了如何读取公钥，读取私钥的算法非常相似。
+
+我们将使用PKCS8格式的PEM编码私钥。让我们看看页眉和页脚是什么样子的：
+
+-----BEGIN PRIVATE KEY-----
+...Base64 encoded key...
+-----END PRIVATE KEY-----
+
+正如我们之前所了解的，我们需要一个能够处理PKCS8关键材料的类。PKCS8EncodedKeySpec类填充该角色。
+
+让我们看看算法：
+
+```java
+public RSAPrivateKey readPrivateKey(File file) throws Exception {
+    String key = new String(Files.readAllBytes(file.toPath()), Charset.defaultCharset());
+
+    String privateKeyPEM = key
+      .replace("-----BEGIN PRIVATE KEY-----", "")
+      .replaceAll(System.lineSeparator(), "")
+      .replace("-----END PRIVATE KEY-----", "");
+
+    byte[] encoded = Base64.decodeBase64(privateKeyPEM);
+
+    KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+    PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
+    return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
+}
+```
+
+4.使用BouncyCastle图书馆
+
+4.1.读取公钥
+
+我们将研究BouncyCastle库，看看如何将其用作纯Java实现的替代品。
+
+让我们获取公钥：
+
+```java
+public RSAPublicKey readPublicKey(File file) throws Exception {
+    KeyFactory factory = KeyFactory.getInstance("RSA");
+
+    try (FileReader keyReader = new FileReader(file);
+      PemReader pemReader = new PemReader(keyReader)) {
+
+        PemObject pemObject = pemReader.readPemObject();
+        byte[] content = pemObject.getContent();
+        X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(content);
+        return (RSAPublicKey) factory.generatePublic(pubKeySpec);
+    }
+}
+```
+
+在使用BouncyCastle时，我们需要注意几个重要的类：
+
+- PemReader–将Reader作为参数并解析其内容。它删除不必要的标头，并将底层Base64 PEM数据解码为二进制格式。
+- PemObject–存储PemReader生成的结果
+
+让我们看看另一种将Java类（X509EncodedKeySpec、KeyFactory）封装到BouncyCastle自己的类（JcaPEMKeyConverter）中的方法：
+
+```java
+public RSAPublicKey readPublicKeySecondApproach(File file) throws IOException {
+    try (FileReader keyReader = new FileReader(file)) {
+        PEMParser pemParser = new PEMParser(keyReader);
+        JcaPEMKeyConverter converter = new JcaPEMKeyConverter();
+        SubjectPublicKeyInfo publicKeyInfo = SubjectPublicKeyInfo.getInstance(pemParser.readObject());
+        return (RSAPublicKey) converter.getPublicKey(publicKeyInfo);
+    }
+}
+```
+
+4.2.读取私钥
+
+现在我们将看到两个与上面显示的非常相似的示例。
+
+在第一个示例中，我们只需要将X509EncodedKeySpec类替换为PKCS8EncodedKeySpec类，并返回一个RSAPrivateKey对象，而不是一个RSAPublicKey：
+
+```java
+public RSAPrivateKey readPrivateKey(File file) throws Exception {
+    KeyFactory factory = KeyFactory.getInstance("RSA");
+
+    try (FileReader keyReader = new FileReader(file);
+      PemReader pemReader = new PemReader(keyReader)) {
+
+        PemObject pemObject = pemReader.readPemObject();
+        byte[] content = pemObject.getContent();
+        PKCS8EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(content);
+        return (RSAPrivateKey) factory.generatePrivate(privKeySpec);
+    }
+}
+```
+
+现在，让我们稍微修改上一节中的第二种方法，以便读取私钥：
+
+```java
+public RSAPrivateKey readPrivateKeySecondApproach(File file) throws IOException {
+    try (FileReader keyReader = new FileReader(file)) {
+
+        PEMParser pemParser = new PEMParser(keyReader);
+        JcaPEMKeyConverter converter = new JcaPEMKeyConverter();
+        PrivateKeyInfo privateKeyInfo = PrivateKeyInfo.getInstance(pemParser.readObject());
+
+        return (RSAPrivateKey) converter.getPrivateKey(privateKeyInfo);
+    }
+}
+```
+
+正如我们所看到的，我们只是用PrivateKeyInfo替换了SubjectPublicKeyInfo，用RSAPrivateKey替换了RSAPublicKey。
+
+4.3.优势
+
+BouncyCastle库有几个优点。
+
+一个优点是，我们不需要手动跳过或删除页眉和页脚。另一个原因是我们也不负责Base64解码。因此，我们可以用BouncyCastle编写较少出错的代码。
+此外，BouncyCastle库也支持PKCS1格式。尽管PKCS1也是一种用于存储加密密钥（仅RSA密钥）的流行格式，但Java本身并不支持它。
+
+5.结论
+
+在本文中，我们学习了如何从PEM文件读取公钥和私钥。
+
+首先，我们研究了关于公钥加密的几个关键概念。然后我们了解了如何使用纯Java读取公钥和私钥。
+
+最后，我们研究了BouncyCastle库，发现它是一个很好的替代品，因为与纯Java实现相比，它提供了一些优势。
+
+[Java](https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-security-2) 和 [BouncyCastle](https://github.com/eugenp/tutorials/tree/master/libraries-security) 方法的完整源代码可以在GitHub上找到。
 
 ## 使用 Java 完成 SSH 连接
 
@@ -49,7 +255,36 @@ JSch 是 SSH2 的 Java 实现，它允许我们连接到 SSH 服务器并使用�
 
 关于Apache Mina SSHD的完整文档可在项目的官方[GitHub存储库](https://github.com/apache/mina-sshd/tree/master/docs)中获得。
 
-### Relevant Articles
+> 附：三种CHANNEL
+String CHANNEL_EXEC = "exec";
+String CHANNEL_SHELL = "shell";
+String CHANNEL_SUBSYSTEM = "subsystem";
+
+3.2.1 测试
+
+ssh.ApacheMinaSshdLiveTest.java givenValidCredentials_whenConnectionIsEstablished_thenServerReturnsResponse() 方法报
+
+`org.apache.sshd.common.SshException: DefaultAuthFuture[ssh-connection]: Failed (RuntimeException) to execute: Failed (NoSuchAlgorithmException) to load key from /Users/wangkan/.ssh/id_ed25519: Unsupported key type (ssh-ed25519) in /Users/wangkan/.ssh/id_ed25519
+givenValidCredentials_whenConnectionIsEstablished_thenServerReturnsResponse(ApacheMinaSshdLiveTest.java:20)
+Caused by: java.security.NoSuchAlgorithmException: Unsupported key type (ssh-ed25519) in /Users/wangkan/.ssh/id_ed25519`
+
+说明：系统 MacOS SSH 对所有 host 启用了证书，且为 OPENSSH PRIVATE KEY， MinaSshd 不支持。
+
+```config
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+另：ssh.JSchLiveTest.java givenInvalidCredentials_whenConnectionAttemptIsMade_thenServerReturnsErrorResponse() 方法报
+`java.lang.AssertionError: Expected exception: java.lang.Exception`
+
+### MINA SSHD client 详细说明
+
+<https://github.com/apache/mina-sshd/blob/master/docs/client-setup.md>
+
+## Relevant Articles
 
 - [Guide to ScribeJava](https://www.baeldung.com/scribejava)
 - [Guide to Passay](https://www.baeldung.com/java-passay)
@@ -57,5 +292,5 @@ JSch 是 SSH2 的 Java 实现，它允许我们连接到 SSH 服务器并使用�
 - [Introduction to BouncyCastle with Java](https://www.baeldung.com/java-bouncy-castle)
 - [Intro to Jasypt](https://www.baeldung.com/jasypt)
 - [Digital Signatures in Java](https://www.baeldung.com/java-digital-signature)
-- [How to Read PEM File to Get Public and Private Keys](https://www.baeldung.com/java-read-pem-file-keys)
+- [x] [How to Read PEM File to Get Public and Private Keys](https://www.baeldung.com/java-read-pem-file-keys)
 - [x] [SSH Connection With Java](https://www.baeldung.com/java-ssh-connection)
