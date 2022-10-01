@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = LargeResultSetApplication.class)
-class LargeResultSetTest {
+class LargeResultSetUntTest {
 
     @Autowired
     private StudentRepository repository;
