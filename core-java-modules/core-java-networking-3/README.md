@@ -13,4 +13,5 @@ This module contains articles about networking in Java
 - [Get the IP Address of the Current Machine Using Java](https://www.baeldung.com/java-get-ip-address)
 - [Get Domain Name From Given URL in Java](https://www.baeldung.com/java-domain-name-from-url)
 - [Java HttpClient Timeout](https://www.baeldung.com/java-httpclient-timeout)
+- [Validating URL in Java](https://www.baeldung.com/validating-url-in-java)
 - [[<-- Prev]](/core-java-modules/core-java-networking-2)
