@@ -20,6 +20,11 @@
             <artifactId>spring-web</artifactId>
             <version>${springframework.spring-web.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${apache.commons-validator.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -28,6 +33,7 @@
 
     <properties>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
+        <apache.commons-validator.version>1.7</apache.commons-validator.version>
     </properties>
 
 </project>
