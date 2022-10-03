@@ -20,7 +20,8 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBoot.class)
-public class KeycloakConfigurationIntegrationTest {
+//requires running Keycloak server and realm setup as shown in https://www.baeldung.com/spring-boot-keycloak
+public class KeycloakConfigurationLiveTest {
 
     @Spy
     private KeycloakSecurityContextClientRequestInterceptor factory;
