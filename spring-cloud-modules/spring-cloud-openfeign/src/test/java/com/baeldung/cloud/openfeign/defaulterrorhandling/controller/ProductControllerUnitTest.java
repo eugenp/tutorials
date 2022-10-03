@@ -20,7 +20,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(ProductController.class)
 @ImportAutoConfiguration({FeignAutoConfiguration.class, TestControllerAdvice.class})
@@ -37,8 +36,8 @@ public class ProductControllerUnitTest {
 
     @Before
     public void startWireMockServer() {
-        wireMockServer = new WireMockServer(8081);
-        configureFor("localhost", 8081);
+        wireMockServer = new WireMockServer(8084);
+        configureFor("localhost", 8084);
         wireMockServer.start();
     }
 
