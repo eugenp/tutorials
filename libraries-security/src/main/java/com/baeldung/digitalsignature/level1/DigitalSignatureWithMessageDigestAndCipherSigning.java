@@ -16,10 +16,10 @@ public class DigitalSignatureWithMessageDigestAndCipherSigning {
 
         byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/digitalsignature/message.txt"));
 
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        MessageDigest md = MessageDigest.getInstance(Utils.MD_ALGORITHM);
         byte[] messageHash = md.digest(messageBytes);
 
-        Cipher cipher = Cipher.getInstance("RSA");
+        Cipher cipher = Cipher.getInstance(Utils.CIPHER_ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, privateKey);
         byte[] digitalSignature = cipher.doFinal(messageHash);
 

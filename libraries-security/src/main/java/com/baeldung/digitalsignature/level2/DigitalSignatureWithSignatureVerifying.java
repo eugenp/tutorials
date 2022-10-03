@@ -7,7 +7,12 @@ import java.nio.file.Paths;
 import java.security.PublicKey;
 import java.security.Signature;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DigitalSignatureWithSignatureVerifying {
+
+    static final Logger log = LoggerFactory.getLogger(DigitalSignatureWithSignatureVerifying.class);
 
     public static void main(String[] args) throws Exception {
 
@@ -23,6 +28,6 @@ public class DigitalSignatureWithSignatureVerifying {
         signature.update(messageBytes);
 
         boolean isCorrect = signature.verify(sig);
-        System.out.println("Signature " + (isCorrect ? "correct" : "incorrect"));
+        log.info("Signature " + (isCorrect ? "correct" : "incorrect"));
     }
 }

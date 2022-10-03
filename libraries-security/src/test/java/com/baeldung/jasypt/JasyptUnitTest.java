@@ -7,10 +7,11 @@ import org.jasypt.util.text.BasicTextEncryptor;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotSame;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class JasyptUnitTest {
 
@@ -71,7 +72,7 @@ public class JasyptUnitTest {
 
         // then
         String plainText = encryptor.decrypt(encryptedText);
-        assertEquals(plainText, privateData);
+        assertNotEquals(plainText, privateData);
     }
 
     @Test

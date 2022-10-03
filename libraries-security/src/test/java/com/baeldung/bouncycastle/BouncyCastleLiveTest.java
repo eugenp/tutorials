@@ -1,5 +1,6 @@
 package com.baeldung.bouncycastle;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
@@ -28,11 +29,14 @@ public class BouncyCastleLiveTest {
     char[] keyPassword = "password".toCharArray();
 
     @Test
-    public void givenCryptographicResource_whenOperationSuccess_returnTrue() throws CertificateException, NoSuchProviderException, NoSuchAlgorithmException, IOException, KeyStoreException, UnrecoverableKeyException, CMSException, OperatorCreationException {
+    public void givenCryptographicResource_whenOperationSuccess_returnTrue()
+            throws CertificateException, NoSuchProviderException, NoSuchAlgorithmException, IOException,
+            KeyStoreException, UnrecoverableKeyException, CMSException, OperatorCreationException {
         Security.addProvider(new BouncyCastleProvider());
 
         CertificateFactory certFactory = CertificateFactory.getInstance("X.509", "BC");
-        X509Certificate certificate = (X509Certificate) certFactory.generateCertificate(new FileInputStream(certificatePath));
+        X509Certificate certificate = (X509Certificate) certFactory
+                .generateCertificate(new FileInputStream(certificatePath));
         KeyStore keystore = KeyStore.getInstance("PKCS12");
         keystore.load(new FileInputStream(privateKeyPath), p12Password);
         PrivateKey privateKey = (PrivateKey) keystore.getKey("baeldung", keyPassword);
@@ -42,7 +46,7 @@ public class BouncyCastleLiveTest {
         byte[] encryptedData = BouncyCastleCrypto.encryptData(stringToEncrypt, certificate);
         byte[] rawData = BouncyCastleCrypto.decryptData(encryptedData, privateKey);
         String decryptedMessage = new String(rawData);
-        assertTrue(decryptedMessage.equals(secretMessage));
+        assertEquals(decryptedMessage, secretMessage);
         byte[] signedData = BouncyCastleCrypto.signData(rawData, certificate, privateKey);
         Boolean check = BouncyCastleCrypto.verifSignData(signedData);
         assertTrue(check);
