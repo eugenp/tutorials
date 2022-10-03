@@ -1,6 +1,7 @@
 package com.baeldung.listandset;
 
 import org.junit.Test;
+import org.junit.Assert;
 import java.util.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -37,15 +38,6 @@ public class ListAndSetUnitTest {
         set2.add(2);
         set2.add(3);
         set2.add(4);
-        boolean ordered = true;
-        Object[] arr1 = set1.toArray();
-        Object[] arr2 = set2.toArray();
-        for(int i=0; i < arr1.length; i++){
-            if (!arr1[i].equals(arr2[i])) {
-                ordered = false;
-                break;
-            }
-        }
-        assertTrue(ordered);
+        Assert.assertArrayEquals(set1.toArray(), set2.toArray());
     }
 }
