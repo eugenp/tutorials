@@ -1185,7 +1185,6 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
-                 <module>core-java-modules/core-java-objects</module>
                  <module>spring-core-6</module>
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
@@ -1263,7 +1262,6 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-objects</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
