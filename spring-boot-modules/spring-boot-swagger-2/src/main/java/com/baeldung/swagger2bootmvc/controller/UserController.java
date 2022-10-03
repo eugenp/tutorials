@@ -1,19 +1,17 @@
-package com.baeldung.swagger2boot.controller;
+package com.baeldung.swagger2bootmvc.controller;
 
-import com.baeldung.swagger2boot.model.Foo;
-import com.baeldung.swagger2boot.model.User;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.Valid;
-import javax.websocket.server.PathParam;
+import com.baeldung.swagger2bootmvc.model.User;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @Controller
 public class UserController {
