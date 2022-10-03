@@ -1,4 +1,4 @@
-package com.baeldung.option1;
+package com.baeldung.objectcreation.option1;
 
 public class Person {
     private String name;

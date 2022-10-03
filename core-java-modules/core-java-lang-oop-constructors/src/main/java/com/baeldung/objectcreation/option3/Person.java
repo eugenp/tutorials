@@ -1,4 +1,4 @@
-package com.baeldung.option3;
+package com.baeldung.objectcreation.option3;
 
 public class Person implements Cloneable {
     @Override

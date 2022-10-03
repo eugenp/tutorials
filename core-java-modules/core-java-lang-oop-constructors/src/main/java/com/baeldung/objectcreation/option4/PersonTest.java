@@ -1,4 +1,4 @@
-package com.baeldung.option4;
+package com.baeldung.objectcreation.option4;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
