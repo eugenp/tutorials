@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress PyInterpreter -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -234,8 +234,8 @@
         </extensions>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse 
-                    m2e settings only. It has no influence on the Maven build itself. -->
+                <!--This plugin's configuration is used to store Eclipse m2e settings
+                    only. It has no influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -397,7 +397,7 @@
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>guava-modules</module>
-                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles -->
+                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
 
                 <module>hazelcast</module>
@@ -571,7 +571,6 @@
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
                 <module>spring-core-5</module>
-                <module>spring-core-6</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-di</module>
@@ -630,7 +629,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-
+                <module>undertow</module>
 
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -801,7 +800,7 @@
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>guava-modules</module>
-                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles -->
+                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
 
                 <module>hazelcast</module>
@@ -968,7 +967,6 @@
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
                 <module>spring-core-5</module>
-                <module>spring-core-6</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-di</module>
@@ -1027,6 +1025,7 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
+                <module>undertow</module>
 
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -1156,7 +1155,6 @@
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-
                  <module>core-java-modules/core-java-9-streams</module>
                  <module>core-java-modules/core-java-10</module>
                  <module>core-java-modules/core-java-11</module>
@@ -1205,7 +1203,6 @@
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
-
             </modules>
         </profile>
 
@@ -1306,8 +1303,7 @@
         <gib.failOnError>false</gib.failOnError>
         <gib.disable>true</gib.disable>
 
-        <!-- used only in dependency management to force this version, not 
-            included as a direct dependency -->
+        <!-- used only in dependency management to force this version, not included as a direct dependency -->
         <junit.version>4.13.2</junit.version>
         <assertj.version>3.21.0</assertj.version>
         <hamcrest.version>2.2</hamcrest.version>
