@@ -14,10 +14,13 @@ import com.baeldung.axon.coreapi.queries.OrderUpdatesQuery;
 import com.baeldung.axon.coreapi.queries.TotalProductsShippedQuery;
 import org.axonframework.queryhandling.QueryUpdateEmitter;
 import org.junit.jupiter.api.*;
+import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -66,6 +69,26 @@ public abstract class AbstractOrdersEventHandlerUnitTest {
 
         Order order_2 = result.stream().filter(o -> o.getOrderId().equals(ORDER_ID_2)).findFirst().orElse(null);
         assertEquals(orderTwo, order_2);
+    }
+
+    @Test
+    void givenTwoOrdersPlacedOfWhichOneNotShipped_whenFindAllOrderedProductsQueryStreaming_thenCorrectOrdersAreReturned() {
+        resetWithTwoOrders();
+        final Consumer<Order> orderVerifier = order -> {
+            if (order.getOrderId().equals(orderOne.getOrderId())) {
+                assertEquals(orderOne, order);
+            } else if (order.getOrderId().equals(orderTwo.getOrderId())) {
+                assertEquals(orderTwo, order);
+            } else {
+                throw new RuntimeException("Would expect either order one or order two");
+            }
+        };
+
+        StepVerifier.create(Flux.from(handler.handleStreaming(new FindAllOrderedProductsQuery())))
+                    .assertNext(orderVerifier)
+                    .assertNext(orderVerifier)
+                    .expectComplete()
+                    .verify();
     }
 
     @Test
