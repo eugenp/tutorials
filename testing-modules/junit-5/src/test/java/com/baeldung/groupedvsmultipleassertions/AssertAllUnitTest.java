@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AssertAllUnitTest {
     @Test
     void givenAssertAll_whenSingleAssertStatementFails_thenRestWillStillBeExecuted() {
-        User user = new User("baeldung", "support@baeldung.com", false);
+        User user = new User("baeldung", "admin@baeldung.com", true);
         assertAll(
                 "Exploring assertAll behavior",
                 () -> assertEquals("baeldung", user.getUsername(), "Username should be baeldung"),
