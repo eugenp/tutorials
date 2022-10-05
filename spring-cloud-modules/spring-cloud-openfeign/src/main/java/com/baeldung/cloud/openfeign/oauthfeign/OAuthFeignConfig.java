@@ -18,7 +18,8 @@ public class OAuthFeignConfig {
     private final OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
     private final ClientRegistrationRepository clientRegistrationRepository;
 
-    public OAuthFeignConfig(OAuth2AuthorizedClientService oAuth2AuthorizedClientService, ClientRegistrationRepository clientRegistrationRepository) {
+    public OAuthFeignConfig(OAuth2AuthorizedClientService oAuth2AuthorizedClientService,
+            ClientRegistrationRepository clientRegistrationRepository) {
         this.oAuth2AuthorizedClientService = oAuth2AuthorizedClientService;
         this.clientRegistrationRepository = clientRegistrationRepository;
     }
@@ -26,7 +27,8 @@ public class OAuthFeignConfig {
     @Bean
     public RequestInterceptor requestInterceptor() {
         ClientRegistration clientRegistration = clientRegistrationRepository.findByRegistrationId(CLIENT_REGISTRATION_ID);
-        OAuthClientCredentialsFeignManager clientCredentialsFeignManager = new OAuthClientCredentialsFeignManager(authorizedClientManager(), clientRegistration);
+        OAuthClientCredentialsFeignManager clientCredentialsFeignManager =
+            new OAuthClientCredentialsFeignManager(authorizedClientManager(), clientRegistration);
         return requestTemplate -> {
             requestTemplate.header("Authorization", "Bearer " + clientCredentialsFeignManager.getAccessToken());
         };
@@ -38,7 +40,8 @@ public class OAuthFeignConfig {
             .clientCredentials()
             .build();
 
-        AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientManager = new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, oAuth2AuthorizedClientService);
+        AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientManager =
+            new AuthorizedClientServiceOAuth2AuthorizedClientManager(clientRegistrationRepository, oAuth2AuthorizedClientService);
         authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
         return authorizedClientManager;
     }
