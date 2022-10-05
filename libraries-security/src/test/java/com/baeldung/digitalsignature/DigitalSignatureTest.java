@@ -1,7 +1,6 @@
 package com.baeldung.digitalsignature;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -21,15 +20,14 @@ public class DigitalSignatureTest {
         Utils.getProvider();
 
         PublicKey publicKey = Utils.getPublicKey();
-
         PrivateKey privateKey = Utils.getPrivateKey();
 
         byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/digitalsignature/message.txt"));
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        MessageDigest md = MessageDigest.getInstance(Utils.MD_ALGORITHM);
         byte[] messageHash = md.digest(messageBytes);
 
         // Encryption algorithms should be used with secure mode and padding scheme
-        Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWITHSHA-256ANDMGF1PADDING");
+        Cipher cipher = Cipher.getInstance(Utils.CIPHER_ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, privateKey);
         byte[] encryptedMessageHash = cipher.doFinal(messageHash);
 
