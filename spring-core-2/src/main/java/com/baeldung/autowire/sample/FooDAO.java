@@ -1,5 +1,5 @@
 package com.baeldung.autowire.sample;
 
-public class FooDAO {
+public class FooDAO { // NOSONAR
 
 }
