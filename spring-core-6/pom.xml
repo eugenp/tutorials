@@ -3,35 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/master
     <groupId>com.baeldung</groupId>
     <artifactId>spring-core-6</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-core-6</name>
     <url>http://www.baeldung.com</url>
 
-<<<<<<< HEAD
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.0.0.RELEASE</version>
-=======
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -55,7 +32,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
->>>>>>> upstream/master
         </dependency>
     </dependencies>
 
@@ -90,10 +66,6 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
                 </plugin>
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/master
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.7.1</version>
@@ -105,8 +77,6 @@
             </plugins>
         </pluginManagement>
     </build>
-<<<<<<< HEAD
-=======
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -115,5 +85,4 @@
         <spring.boot.version>2.7.2</spring.boot.version>
     </properties>
 
->>>>>>> upstream/master
 </project>
