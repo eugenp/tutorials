@@ -11,7 +11,7 @@ class PortScannerUnitTest {
     private static final String ip = "127.0.0.1";
     PortScanner portScanner = new PortScanner();
 
-    @Test public void when_Run_then_lunchPortScan() throws IOException, RuntimeException {
+    @Test public void when_Run_then_lunchPortScan() throws IOException {
         portScanner.runPortScan(ip, nbrPortMax);
     }
 }
