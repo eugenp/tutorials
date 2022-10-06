@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class PersonTest {
+public class PersonDriver {
 
     public static void main(String[] args) {
         Person p1 = new Person("Max Payne", 101);
