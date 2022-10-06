@@ -6,17 +6,14 @@ services:
         container_name: mysql-db
         command: [ "mysqld",
                     "--require_secure_transport=ON",
-                    "--ssl-ca=/etc/certs/root-ca.pem",
-                    "--ssl-cert=/etc/certs/server-cert.pem",
-                    "--ssl-key=/etc/certs/server-key.pem",
                     "--default_authentication_plugin=mysql_native_password",
                     "--general_log=ON" ]
         ports:
             - "3306:3306"
         volumes:
-            - type: bind
-              source: ./certs
-              target: /etc/certs/
+          - type: bind
+            source: ./data
+            target: /var/lib/mysql
         restart: always
         environment:
            MYSQL_ROOT_HOST: "%"
