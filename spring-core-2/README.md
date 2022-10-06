@@ -11,7 +11,7 @@ This module contains articles about core Spring functionality
 进一步阅读：
 
 - [ ] [Spring组件扫描](https://www.baeldung.com/spring-component-scanning)
-- [ ] [使用Spring反转控制和依赖注入简介](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
+- [x] [使用Spring反转控制和依赖注入简介](https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring)
 
 在本教程中，我们将首先了解如何启用自动连接以及自动连接bean的各种方法。之后，我们将讨论使用@Qualifier注释解决bean冲突，以及潜在的异常场景。
 
