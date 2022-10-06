@@ -41,7 +41,6 @@
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
         <module>core-java-collections-maps-5</module>
-        <module>core-java-concurrency-simple</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
         <module>core-java-concurrency-advanced-2</module>
