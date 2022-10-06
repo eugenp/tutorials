@@ -16,7 +16,7 @@ public class FooController {
 
     @GetMapping(value = "/displayallbeans")
     public ResponseEntity<String> getHeaderAndBody(Map<String, Object> model) {
-        model.put("header", fooService.getHeader());
+        model.put("header", FooService.GET_HEADER);
         model.put("message", fooService.getBody());
         return ResponseEntity.ok("displayallbeans");
     }

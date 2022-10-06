@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.beans.BeansEndpoint.ContextBeans;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,7 +30,7 @@ import org.springframework.web.context.WebApplicationContext;
 @TestPropertySource(properties = { "management.port=0", "management.endpoints.web.exposure.include=*" })
 public class DisplayBeanIntegrationTest {
 
-    @LocalServerPort
+    @Value(value = "${local.server.port}")
     private int port;
 
     @Value("${local.management.port}")
@@ -47,7 +46,8 @@ public class DisplayBeanIntegrationTest {
 
     @Test
     public void givenRestTemplate_whenAccessServerUrl_thenHttpStatusOK() throws Exception {
-        ResponseEntity<String> entity = this.testRestTemplate.getForEntity("http://localhost:" + this.port + "/displayallbeans", String.class);
+        ResponseEntity<String> entity = this.testRestTemplate
+                .getForEntity("http://localhost:" + this.port + "/displayallbeans", String.class);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
@@ -56,9 +56,10 @@ public class DisplayBeanIntegrationTest {
     public void givenRestTemplate_whenAccessEndpointUrl_thenHttpStatusOK() throws Exception {
         ParameterizedTypeReference<Map<String, ContextBeans>> responseType = new ParameterizedTypeReference<Map<String, ContextBeans>>() {
         };
-        RequestEntity<Void> requestEntity = RequestEntity.get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
-            .accept(MediaType.APPLICATION_JSON)
-            .build();
+        RequestEntity<Void> requestEntity = RequestEntity
+                .get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
+                .accept(MediaType.APPLICATION_JSON)
+                .build();
         ResponseEntity<Map<String, ContextBeans>> entity = this.testRestTemplate.exchange(requestEntity, responseType);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -66,15 +67,17 @@ public class DisplayBeanIntegrationTest {
 
     @Test
     public void givenRestTemplate_whenAccessEndpointUrl_thenReturnsBeanNames() throws Exception {
-        RequestEntity<Void> requestEntity = RequestEntity.get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
-            .accept(MediaType.APPLICATION_JSON)
-            .build();
-        ResponseEntity<BeanActuatorResponse> entity = this.testRestTemplate.exchange(requestEntity, BeanActuatorResponse.class);
-
-        Collection<String> beanNamesList = entity.getBody()
-            .getBeans();
-
-        assertThat(beanNamesList).contains("fooController", "fooService");
+        RequestEntity<Void> requestEntity = RequestEntity
+                .get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
+                .accept(MediaType.APPLICATION_JSON)
+                .build();
+        ResponseEntity<BeanActuatorResponse> entity = this.testRestTemplate.exchange(requestEntity,
+                BeanActuatorResponse.class);
+        BeanActuatorResponse bar = entity.getBody();
+        if (bar != null) {
+            Collection<String> beanNamesList = bar.getBeans();
+            assertThat(beanNamesList).contains("fooController", "fooService");
+        }
     }
 
     @Test
@@ -90,10 +93,11 @@ public class DisplayBeanIntegrationTest {
 
         public Collection<String> getBeans() {
             return this.contexts.get("application")
-                .get("beans")
-                .keySet();
+                    .get("beans")
+                    .keySet();
         }
 
+        @SuppressWarnings(value = "unused")
         public Map<String, Map<String, Map<String, Map<String, Object>>>> getContexts() {
             return contexts;
         }

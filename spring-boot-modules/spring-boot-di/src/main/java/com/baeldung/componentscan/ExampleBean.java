@@ -1,5 +1,5 @@
 package com.baeldung.componentscan;
 
-public class ExampleBean {
+public class ExampleBean { //NOSONAR
 
 }
