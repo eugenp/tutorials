@@ -38,6 +38,7 @@ public class MailWithAttachmentService {
         props.put("mail.smtp.port", this.port);
 
         return Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
@@ -71,9 +72,9 @@ public class MailWithAttachmentService {
     private File getFile(String filename) {
         try {
             URI uri = this.getClass()
-              .getClassLoader()
-              .getResource(filename)
-              .toURI();
+                    .getClassLoader()
+                    .getResource(filename)
+                    .toURI();
             return new File(uri);
         } catch (Exception e) {
             throw new IllegalArgumentException("Unable to find file from resources: " + filename);

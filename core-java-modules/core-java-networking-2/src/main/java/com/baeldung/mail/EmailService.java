@@ -1,7 +1,14 @@
 package com.baeldung.mail;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Properties;
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -10,9 +17,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.io.File;
-import java.net.URI;
-import java.util.Properties;
 
 public class EmailService {
 
@@ -28,6 +32,10 @@ public class EmailService {
         prop.put("mail.smtp.host", host);
         prop.put("mail.smtp.port", port);
         prop.put("mail.smtp.ssl.trust", host);
+        prop.put("mail.smtp.timeout", 10000);
+        prop.put("mail.smtp.connectiontimeout", 10000);
+        prop.put("mail.smtp.writetimeout", 10000);
+        prop.put("mail.debug", "true");
 
         this.username = username;
         this.password = password;
@@ -42,13 +50,13 @@ public class EmailService {
     public static void main(String... args) {
         try {
             new EmailService("smtp.mailtrap.io", 25, "87ba3d9555fae8", "91cb4379af43ed")
-              .sendMail();
+                    .sendMail();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void sendMail() throws Exception {
+    public void sendMail() throws MessagingException, IOException, URISyntaxException {
 
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override
@@ -56,6 +64,7 @@ public class EmailService {
                 return new PasswordAuthentication(username, password);
             }
         });
+        session.setDebug(true);
 
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress("from@gmail.com"));
@@ -85,11 +94,11 @@ public class EmailService {
         Transport.send(message);
     }
 
-    private File getFile() throws Exception {
+    private File getFile() throws URISyntaxException {
         URI uri = this.getClass()
-          .getClassLoader()
-          .getResource("attachment.txt")
-          .toURI();
+                .getClassLoader()
+                .getResource("attachment.txt")
+                .toURI();
         return new File(uri);
     }
 

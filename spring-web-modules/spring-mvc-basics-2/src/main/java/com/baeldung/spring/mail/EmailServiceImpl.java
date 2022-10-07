@@ -37,13 +37,13 @@ public class EmailServiceImpl implements EmailService {
 
     @Autowired
     private SimpleMailMessage template;
-    
+
     @Autowired
     private SpringTemplateEngine thymeleafTemplateEngine;
-    
+
     @Autowired
     private FreeMarkerConfigurer freemarkerConfigurer;
-    
+
     @Value("classpath:/mail-logo.png")
     private Resource resourceFile;
 
@@ -63,17 +63,17 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public void sendSimpleMessageUsingTemplate(String to,
-                                               String subject,
-                                               String ...templateModel) {
-        String text = String.format(template.getText(), templateModel);  
+            String subject,
+            String... templateModel) {
+        String text = String.format(template.getText(), templateModel);
         sendSimpleMessage(to, subject, text);
     }
 
     @Override
     public void sendMessageWithAttachment(String to,
-                                          String subject,
-                                          String text,
-                                          String pathToAttachment) {
+            String subject,
+            String text,
+            String pathToAttachment) {
         try {
             MimeMessage message = emailSender.createMimeMessage();
             // pass 'true' to the constructor to create a multipart message
@@ -92,16 +92,15 @@ public class EmailServiceImpl implements EmailService {
             e.printStackTrace();
         }
     }
-    
 
     @Override
     public void sendMessageUsingThymeleafTemplate(
-        String to, String subject, Map<String, Object> templateModel)
+            String to, String subject, Map<String, Object> templateModel)
             throws MessagingException {
-                
+
         Context thymeleafContext = new Context();
         thymeleafContext.setVariables(templateModel);
-        
+
         String htmlBody = thymeleafTemplateEngine.process("template-thymeleaf.html", thymeleafContext);
 
         sendHtmlMessage(to, subject, htmlBody);
@@ -109,7 +108,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public void sendMessageUsingFreemarkerTemplate(
-        String to, String subject, Map<String, Object> templateModel)
+            String to, String subject, Map<String, Object> templateModel)
             throws IOException, TemplateException, MessagingException {
 
         Template freemarkerTemplate = freemarkerConfigurer.getConfiguration().getTemplate("template-freemarker.ftl");
@@ -117,7 +116,7 @@ public class EmailServiceImpl implements EmailService {
 
         sendHtmlMessage(to, subject, htmlBody);
     }
-    
+
     private void sendHtmlMessage(String to, String subject, String htmlBody) throws MessagingException {
 
         MimeMessage message = emailSender.createMimeMessage();
@@ -129,5 +128,5 @@ public class EmailServiceImpl implements EmailService {
         helper.addInline("attachment.png", resourceFile);
         emailSender.send(message);
     }
-   
+
 }

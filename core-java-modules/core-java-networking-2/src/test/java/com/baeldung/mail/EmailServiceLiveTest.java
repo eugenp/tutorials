@@ -36,7 +36,8 @@ public class EmailServiceLiveTest {
         MimeMessage receivedMessage = receivedMessages[0];
         assertEquals("Mail Subject", subjectFromMessage(receivedMessage));
         assertEquals("This is my first email using JavaMailer", emailTextFrom(receivedMessage));
-        assertEquals("This is my <b style='color:red;'>bold-red email</b> using JavaMailer", emailStyledTextFrom(receivedMessage));
+        assertEquals("This is my <b style='color:red;'>bold-red email</b> using JavaMailer",
+                emailStyledTextFrom(receivedMessage));
         assertEquals("sample attachment content", attachmentContentsFrom(receivedMessage));
     }
 
@@ -46,23 +47,23 @@ public class EmailServiceLiveTest {
 
     private static String emailTextFrom(MimeMessage receivedMessage) throws IOException, MessagingException {
         return ((MimeMultipart) receivedMessage.getContent())
-          .getBodyPart(0)
-          .getContent()
-          .toString();
+                .getBodyPart(0)
+                .getContent()
+                .toString();
     }
 
     private static String emailStyledTextFrom(MimeMessage receivedMessage) throws IOException, MessagingException {
         return ((MimeMultipart) receivedMessage.getContent())
-            .getBodyPart(1)
-            .getContent()
-            .toString();
+                .getBodyPart(1)
+                .getContent()
+                .toString();
     }
 
     private static String attachmentContentsFrom(MimeMessage receivedMessage) throws Exception {
         return ((MimeMultipart) receivedMessage.getContent())
-          .getBodyPart(2)
-          .getContent()
-          .toString();
+                .getBodyPart(2)
+                .getContent()
+                .toString();
     }
 
 }

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-basics-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -151,14 +149,14 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
-        <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
+        <org.thymeleaf-version>3.1.0.M3</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>
         <freemarker.version>2.3.27-incubating</freemarker.version>
         <jade.version>1.2.5</jade.version>
         <rome.version>1.9.0</rome.version>
-        <xstream.version>1.4.9</xstream.version>
+        <xstream.version>1.4.19</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
         <javax.mail.version>1.6.1</javax.mail.version>
