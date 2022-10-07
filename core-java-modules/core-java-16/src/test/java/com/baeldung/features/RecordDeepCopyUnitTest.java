@@ -16,11 +16,15 @@ class RecordDeepCopyUnitTest {
         var tasks = new ArrayList<Task>();
         tasks.add(new Task("The Title", "The description"));
         var project = new Project(tasks);
+        var copy = project.copy();
 
         var anotherTask = new Task("Another Title", "Another description");
         tasks.add(anotherTask);
 
         assertThat(project.tasks()).hasSize(1)
+          .doesNotContain(anotherTask);
+
+        assertThat(copy.tasks()).hasSize(1)
           .doesNotContain(anotherTask);
     }
 }
