@@ -345,7 +345,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -680,6 +679,8 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
+
+                <module>apache-spark</module>
 
                 <module>image-processing</module>
 
@@ -1068,6 +1069,8 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
+
+                <module>apache-spark</module>
 
                 <module>image-processing</module>
 
