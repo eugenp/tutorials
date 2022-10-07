@@ -32,12 +32,11 @@
             <artifactId>jackson-dataformat-csv</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-netty</artifactId>
             <version>${mockserver-netty.version}</version>
-            <scope>test</scope>        
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

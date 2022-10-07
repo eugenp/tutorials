@@ -14,8 +14,8 @@
     </parent>
 
     <modules>
-   		<module>helidon</module>
-    	<module>micronaut</module>
+        <module>helidon</module>
+        <module>micronaut</module>
         <module>microprofile</module>
         <module>msf4j</module>
         <module>open-liberty</module>

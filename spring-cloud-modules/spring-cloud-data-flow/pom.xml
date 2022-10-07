@@ -17,8 +17,8 @@
     <modules>
         <module>spring-cloud-data-flow-stream-processing</module>
         <module>spring-cloud-data-flow-etl</module>
-        <module>batch-job</module>
-        <module>apache-spark-job</module>
+        <module>spring-cloud-data-flow-batch-job</module>
+        <module>spring-cloud-data-flow-apache-spark-job</module>
     </modules>
 
 </project>

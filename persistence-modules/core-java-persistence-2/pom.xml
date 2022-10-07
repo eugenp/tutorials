@@ -51,6 +51,22 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
+        <dependency>
+            <groupId>one.microstream</groupId>
+            <artifactId>microstream-storage-embedded</artifactId>
+            <version>${microstream.storage.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>one.microstream</groupId>
+            <artifactId>microstream-storage-embedded-configuration</artifactId>
+            <version>${microstream.storage.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -59,6 +75,7 @@
         <mysql.driver.version>8.0.22</mysql.driver.version>
         <jooq.version>3.11.11</jooq.version>
         <json.version>20220320</json.version>
+        <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
     </properties>
 
 </project>

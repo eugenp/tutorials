@@ -44,7 +44,7 @@
             <artifactId>apacheds-server-jndi</artifactId>
             <version>${apacheds.version}</version>
         </dependency>
-         <!-- Spring Data LDAP -->
+        <!-- Spring Data LDAP -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-ldap</artifactId>

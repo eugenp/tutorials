@@ -17,9 +17,17 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <keycloak-adapter-bom.version>15.0.2</keycloak-adapter-bom.version>
-    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>${keycloak-adapter-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -41,18 +49,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>${keycloak-adapter-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -61,5 +57,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <keycloak-adapter-bom.version>15.0.2</keycloak-adapter-bom.version>
+    </properties>
 
 </project>

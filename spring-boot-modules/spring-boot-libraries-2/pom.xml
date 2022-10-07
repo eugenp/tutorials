@@ -133,6 +133,7 @@
         <spring.data.version>2.4.5</spring.data.version>
         <jackson-databind.version>0.2.1</jackson-databind.version>
         <springfox.version>2.9.2</springfox.version>
+        <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
     </properties>
 
 </project>

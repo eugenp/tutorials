@@ -21,7 +21,7 @@ public class OAuth2ClientConfiguration {
 
     @Bean
     public ServerOAuth2AuthorizationRequestResolver pkceResolver(ReactiveClientRegistrationRepository repo) {
-        var resolver = new DefaultServerOAuth2AuthorizationRequestResolver(repo);
+        DefaultServerOAuth2AuthorizationRequestResolver resolver = new DefaultServerOAuth2AuthorizationRequestResolver(repo);
         resolver.setAuthorizationRequestCustomizer(OAuth2AuthorizationRequestCustomizers.withPkce());
         return resolver;
     }

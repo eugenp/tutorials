@@ -55,7 +55,7 @@
     </build>
 
     <properties>
-        <mustache.compiler.api.version>0.9.2</mustache.compiler.api.version>
+        <mustache.compiler.api.version>0.9.10</mustache.compiler.api.version>
         <datafactory.version>0.8</datafactory.version>
         <webjars.bootstrap.version>3.3.7</webjars.bootstrap.version>
     </properties>

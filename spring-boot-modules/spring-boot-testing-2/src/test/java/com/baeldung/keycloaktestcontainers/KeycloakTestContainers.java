@@ -12,12 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -26,7 +24,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import dasniko.testcontainers.keycloak.KeycloakContainer;
 import io.restassured.RestAssured;
 
-@ContextConfiguration(initializers = { KeycloakTestContainers.Initializer.class })
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public abstract class KeycloakTestContainers {
 
@@ -35,20 +32,21 @@ public abstract class KeycloakTestContainers {
     @LocalServerPort
     private int port;
 
-    static final KeycloakContainer keycloak = new KeycloakContainer().withRealmImportFile("keycloak/realm-export.json");
+    static final KeycloakContainer keycloak;
+
+    static {
+        keycloak = new KeycloakContainer().withRealmImportFile("keycloak/realm-export.json");
+        keycloak.start();
+    }
 
     @PostConstruct
     public void init() {
         RestAssured.baseURI = "http://localhost:" + port;
     }
 
-    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            keycloak.start();
-            TestPropertyValues.of("keycloak.auth-server-url=" + keycloak.getAuthServerUrl())
-                .applyTo(configurableApplicationContext.getEnvironment());
-        }
+    @DynamicPropertySource
+    static void registerResourceServerIssuerProperty(DynamicPropertyRegistry registry) {
+        registry.add("spring.security.oauth2.resourceserver.jwt.issuer-uri", () -> keycloak.getAuthServerUrl() + "/realms/baeldung");
     }
 
     protected String getJaneDoeBearer() {

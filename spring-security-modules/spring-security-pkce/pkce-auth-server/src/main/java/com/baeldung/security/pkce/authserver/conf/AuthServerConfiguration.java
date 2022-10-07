@@ -31,12 +31,11 @@ public class AuthServerConfiguration {
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
         
-        var authorizationServerConfigurer = new OAuth2AuthorizationServerConfigurer<HttpSecurity>();
-        var endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
+        OAuth2AuthorizationServerConfigurer<HttpSecurity> authorizationServerConfigurer = new OAuth2AuthorizationServerConfigurer<>();
 
         // @formatter:off
         http
-          .requestMatcher(endpointsMatcher)
+          .requestMatcher(authorizationServerConfigurer.getEndpointsMatcher())
             .authorizeRequests(authorize ->
                 authorize              
                   .anyRequest()
@@ -46,7 +45,7 @@ public class AuthServerConfiguration {
               exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")))
           .csrf( csrf -> 
               csrf
-                .ignoringRequestMatchers(endpointsMatcher))
+                .ignoringRequestMatchers(authorizationServerConfigurer.getEndpointsMatcher()))
           .apply(authorizationServerConfigurer);
          
         // Required by /userinfo endpoint
@@ -68,7 +67,7 @@ public class AuthServerConfiguration {
     @Bean 
     public RegisteredClientRepository registeredClientRepository() {
                 
-        var pkceClient = RegisteredClient
+        RegisteredClient pkceClient = RegisteredClient
             .withId(UUID.randomUUID().toString())
             .clientId("pkce-client")
             .clientSecret("{noop}obscura")

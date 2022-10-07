@@ -1,0 +1,45 @@
+swagger: 2.0.0
+info:
+  title: Demo api
+  description: Demo api for the article 'specify two responses with same code based on optional parameter'
+  version: 0.1.0
+paths:
+  /vehicle:
+    get:
+      responses:
+        '200':
+          description: Get a vehicle. Can contain either a Car or a Bike
+          schema:
+            $ref: '#/definitions/CarOrBike'
+          examples:
+            application/json:
+              owner: baeldung
+              plate: AEX305
+              speed:
+definitions:
+  Car:
+    type: object
+    properties:
+      owner:
+        type: string
+      plate:
+        type: string
+  Bike:
+    type: object
+    properties:
+      owner:
+        type: string
+      speed:
+        type: integer
+  CarOrBike:
+    description: a car will have an owner and a plate, whereas a bike has an owner and a speed
+    type: object
+    required:
+      - owner
+    properties:
+      owner:
+        type: string
+      plate:
+        type: string
+      speed:
+        type: integer

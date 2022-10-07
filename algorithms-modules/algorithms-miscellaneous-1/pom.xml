@@ -63,10 +63,7 @@
     </reporting>
 
     <properties>
-        <commons-math3.version>3.6.1</commons-math3.version>
-        <commons-codec.version>1.11</commons-codec.version>
         <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
-        <cobertura.plugin.version>2.7</cobertura.plugin.version>
     </properties>
 
 </project>

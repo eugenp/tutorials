@@ -6,7 +6,7 @@ This module contains articles about Java Concurrency that are also part of an Eb
 
 - [Life Cycle of a Thread in Java](https://www.baeldung.com/java-thread-lifecycle)
 - [How to Start a Thread in Java](https://www.baeldung.com/java-start-thread)
-- [Thread's wait and notify() Methods in Java](https://www.baeldung.com/java-wait-notify)
+- [wait and notify() Methods in Java](https://www.baeldung.com/java-wait-notify)
 - [The Thread.join() Method in Java](https://www.baeldung.com/java-thread-join)
 - [Guide to the Synchronized Keyword in Java](https://www.baeldung.com/java-synchronized)
 - [Guide to the Volatile Keyword in Java](https://www.baeldung.com/java-volatile)
