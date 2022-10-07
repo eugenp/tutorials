@@ -9,14 +9,14 @@
 			"name": "mutations",
 			"item": [
 				{
-					"name": "writePost",
+					"name": "createPost",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation writePost ($title: String!, $text: String!, $category: String) {\n    writePost (title: $title, text: $text, category: $category) {\n        id\n        title\n        text\n        category\n    }\n}",
+								"query": "mutation createPost ($title: String!, $text: String!, $category: String) {\n    createPost (title: $title, text: $text, category: $category) {\n        id\n        title\n        text\n        category\n    }\n}",
 								"variables": "{\n  \"title\": \"\",\n  \"text\": \"\",\n  \"category\": \"\"\n}"
 							},
 							"options": {
