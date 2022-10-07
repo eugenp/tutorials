@@ -1,13 +1,14 @@
 package com.baeldung.graphql;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Configuration
 public class GraphqlConfiguration {
+
     @Bean
     public PostDao postDao() {
         List<Post> posts = new ArrayList<>();
@@ -16,6 +17,7 @@ public class GraphqlConfiguration {
                 Post post = new Post();
                 post.setId("Post" + authorId + postId);
                 post.setTitle("Post " + authorId + ":" + postId);
+                post.setCategory("Post category");
                 post.setText("Post " + postId + " + by author " + authorId);
                 post.setAuthorId("Author" + authorId);
                 posts.add(post);
@@ -35,25 +37,5 @@ public class GraphqlConfiguration {
             authors.add(author);
         }
         return new AuthorDao(authors);
-    }
-
-    @Bean
-    public PostResolver postResolver(AuthorDao authorDao) {
-        return new PostResolver(authorDao);
-    }
-
-    @Bean
-    public AuthorResolver authorResolver(PostDao postDao) {
-        return new AuthorResolver(postDao);
-    }
-
-    @Bean
-    public Query query(PostDao postDao) {
-        return new Query(postDao);
-    }
-
-    @Bean
-    public Mutation mutation(PostDao postDao) {
-        return new Mutation(postDao);
     }
 }
