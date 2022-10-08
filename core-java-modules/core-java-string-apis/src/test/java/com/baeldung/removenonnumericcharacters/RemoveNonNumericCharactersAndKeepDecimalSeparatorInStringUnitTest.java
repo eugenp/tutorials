@@ -21,7 +21,7 @@ public class RemoveNonNumericCharactersAndKeepDecimalSeparatorInStringUnitTest {
         String s = "Testing abc123.555abc";
         StringBuilder sb = new StringBuilder();
         s.chars()
-          .mapToObj(i -> (char) i)
+          .mapToObj(c -> (char) c)
           .filter(c -> Character.isDigit(c) || c == '.')
           .forEach(sb::append);
         assertEquals("123.555", sb.toString());
