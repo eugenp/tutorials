@@ -59,7 +59,6 @@
 
     <properties>
         <java.version>17</java.version>
-        <maven-pmd-plugin.version>3.17.0</maven-pmd-plugin.version>
     </properties>
 
 </project>

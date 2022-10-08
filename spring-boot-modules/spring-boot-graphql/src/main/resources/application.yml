@@ -1,0 +1,4 @@
+spring:
+  graphql:
+    graphiql:
+      enabled: true

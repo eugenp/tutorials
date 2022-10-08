@@ -560,8 +560,7 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2/redis</module>
-                <module>spring-caching-2/ttl</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -983,7 +982,7 @@
 
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <!-- <module>spring-jinq</module> --> <!-- does not support work with Spring Boot 2.7.2 -->
+                <module>spring-jinq</module>
                 <module>spring-jms</module>
 
                 <module>spring-kafka</module>
@@ -1169,6 +1168,7 @@
                  <module>core-java-modules/core-java-collections-set</module>
                  <module>core-java-modules/core-java-collections-list-4</module>
                  <module>core-java-modules/core-java-collections-maps-4</module>
+                 <module>core-java-modules/core-java-concurrency-simple</module>
                  <module>core-java-modules/core-java-date-operations-1</module>
                  <module>core-java-modules/core-java-datetime-conversion</module>
                  <module>core-java-modules/core-java-datetime-string</module>
@@ -1247,6 +1247,7 @@
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-collections-list-4</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-string</module>
@@ -1345,7 +1346,7 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
         <lombok.version>1.18.24</lombok.version>
         <h2.version>1.4.200</h2.version>
         <guava.version>31.1-jre</guava.version>

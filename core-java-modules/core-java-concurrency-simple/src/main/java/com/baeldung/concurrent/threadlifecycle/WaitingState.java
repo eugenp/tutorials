@@ -9,7 +9,7 @@ public class WaitingState implements Runnable {
     }
 
     public void run() {
-        Thread t2 = new Thread(new DemoThreadWS());
+        Thread t2 = new Thread(new DemoWaitingStateRunnable());
         t2.start();
 
         try {
@@ -21,7 +21,7 @@ public class WaitingState implements Runnable {
     }
 }
 
-class DemoThreadWS implements Runnable {
+class DemoWaitingStateRunnable implements Runnable {
     public void run() {
         try {
             Thread.sleep(1000);
