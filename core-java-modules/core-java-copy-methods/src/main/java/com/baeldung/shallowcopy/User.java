@@ -4,6 +4,11 @@ public class User implements Cloneable {
     int id;
     String name;
 
+    public User(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

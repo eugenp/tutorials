@@ -6,6 +6,12 @@ public class Item implements Cloneable {
     String itemName;
     User user;
 
+    public Item(int id, String itemName, User user) {
+        this.id = id;
+        this.itemName = itemName;
+        this.user = user;
+    }
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

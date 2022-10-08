@@ -12,13 +12,8 @@ public class ShallowCopyUnitTest {
 
     @Test
     public void whenModifyingSourceObject_thenTargetObjectShouldChange() throws Exception {
-        User user = new User();
-        user.setId(1001);
-        user.setName("original_i1001");
-        Item source = new Item();
-        source.setId(1001);
-        source.setItemName("original_i1001");
-        source.setUser(user);
+        User user = new User(1001, "original_u101");
+        Item source = new Item(101, "original_i1001", user);
         Item target = shallowCopy(source);
 
         source.getUser().setId(1002);
