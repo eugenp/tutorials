@@ -11,14 +11,27 @@ public class ShallowCopyUnitTest {
     }
 
     @Test
-    public void whenModifyingSourceObject_thenTargetObjectShouldChange() throws Exception {
-        User user = new User(1001, "original_u101");
-        Item source = new Item(101, "original_i1001", user);
+    public void whenModifyingSourceReferenceObject_thenTargetReferenceObjectShouldChange() throws Exception {
+        User user = new User(1001, "shallow copy user 1001");
+        Item source = new Item(101, "shallow copy item 101", user);
         Item target = shallowCopy(source);
+        source.getUser()
+          .setId(1002);
 
-        source.getUser().setId(1002);
-        assertThat(target.getUser().getId())
-          .isEqualTo(source.getUser().getId());
+        assertThat(target.getUser()
+          .getId()).isEqualTo(source.getUser()
+          .getId());
     }
+
+    @Test
+    public void whenModifyingSourcePrimitive_thenTargetPrimitiveShouldNotChange() throws Exception {
+        User user = new User(1001, "shallow copy user 1001");
+        Item source = new Item(101, "shallow copy item 101", user);
+        Item target = shallowCopy(source);
+        source.setId(102);
+
+        assertThat(target.getId()).isNotEqualTo(source.getId());
+    }
+
 }
 
