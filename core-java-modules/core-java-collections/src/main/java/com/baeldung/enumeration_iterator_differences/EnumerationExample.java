@@ -14,7 +14,7 @@ public class EnumerationExample {
         Vector<Person> people = new Vector<>(getPersons());
         Enumeration<Person> enumeration = people.elements();
         while (enumeration.hasMoreElements()) {
-            System.out.println("people. = " + enumeration.nextElement()
+            System.out.println("First Name = " + enumeration.nextElement()
               .getFirstName());
         }
     }

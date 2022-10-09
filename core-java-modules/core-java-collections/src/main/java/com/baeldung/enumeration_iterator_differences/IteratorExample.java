@@ -13,7 +13,7 @@ public class IteratorExample {
         List<Person> persons = getPersons();
         Iterator<Person> iterator = persons.iterator();
         while (iterator.hasNext()) {
-            System.out.println("iterator.next().getFirstName() = " + iterator.next()
+            System.out.println("First Name = " + iterator.next()
               .getFirstName());
         }
     }
