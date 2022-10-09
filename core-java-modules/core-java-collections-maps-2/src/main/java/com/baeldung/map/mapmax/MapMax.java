@@ -1,7 +1,11 @@
 package com.baeldung.map.mapmax;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 public class MapMax {
 
@@ -34,15 +38,14 @@ public class MapMax {
 
     public <K, V extends Comparable<V>> V maxUsingCollectionsMaxAndLambda(Map<K, V> map) {
 
-        Entry<K, V> maxEntry = Collections.max(map.entrySet(), (Entry<K, V> e1, Entry<K, V> e2) -> e1.getValue()
-            .compareTo(e2.getValue()));
+        Entry<K, V> maxEntry = Collections.max(map.entrySet(), Entry.comparingByValue());
 
         return maxEntry.getValue();
     }
 
     public <K, V extends Comparable<V>> V maxUsingCollectionsMaxAndMethodReference(Map<K, V> map) {
 
-        Entry<K, V> maxEntry = Collections.max(map.entrySet(), Comparator.comparing(Map.Entry::getValue));
+        Entry<K, V> maxEntry = Collections.max(map.entrySet(), Entry.comparingByValue());
 
         return maxEntry.getValue();
     }
@@ -51,8 +54,7 @@ public class MapMax {
 
         Optional<Entry<K, V>> maxEntry = map.entrySet()
             .stream()
-            .max((Entry<K, V> e1, Entry<K, V> e2) -> e1.getValue()
-                .compareTo(e2.getValue()));
+            .max(Entry.comparingByValue());
 
         return maxEntry.get()
             .getValue();
@@ -62,7 +64,7 @@ public class MapMax {
 
         Optional<Entry<K, V>> maxEntry = map.entrySet()
             .stream()
-            .max(Comparator.comparing(Map.Entry::getValue));
+            .max(Entry.comparingByValue());
 
         return maxEntry.get()
             .getValue();
