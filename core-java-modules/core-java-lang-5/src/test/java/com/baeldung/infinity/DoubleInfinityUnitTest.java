@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DoubleInfinityTest {
+public class DoubleInfinityUnitTest {
         
     @Test
     void givenInfinities_whenOperatingWithThem_thenNaNOrInfinity() {
