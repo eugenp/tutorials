@@ -1,4 +1,4 @@
-package com.baeldung.enumeration_iterator_differences;
+package com.baeldung.enumerationiteratordifferences;
 
 import java.util.List;
 
