@@ -8,29 +8,51 @@ import javax.mail.MessagingException;
 import freemarker.template.TemplateException;
 
 /**
- * Created by Olga on 8/22/2016.
+ * @param to       Recipient Address
+ * @param subject  Message subject
+ * @param content  Message content
+ * @param filePath Attachment address
+ * @param rscPath  Static resource address
+ * @param rscId    Static resource id
+ * @param cc       Cc Address
+ * @throws MessagingException Email sending exception
  */
 public interface EmailService {
-    void sendSimpleMessage(String to,
-            String subject,
-            String text);
 
-    void sendSimpleMessageUsingTemplate(String to,
-            String subject,
-            String... templateModel);
+        void sendSimpleMessage(String to,
+                        String subject,
+                        String content);
 
-    void sendMessageWithAttachment(String to,
-            String subject,
-            String text,
-            String pathToAttachment);
+        void sendSimpleMessage(String to,
+                        String subject,
+                        String content,
+                        String... cc);
 
-    void sendMessageUsingThymeleafTemplate(String to,
-            String subject,
-            Map<String, Object> templateModel)
-            throws IOException, MessagingException;
+        void sendSimpleMessageUsingTemplate(String to,
+                        String subject,
+                        String... templateModel);
 
-    void sendMessageUsingFreemarkerTemplate(String to,
-            String subject,
-            Map<String, Object> templateModel)
-            throws IOException, TemplateException, MessagingException;
+        void sendMessageWithAttachment(String to,
+                        String subject,
+                        String text,
+                        String pathToAttachment);
+
+        void sendMessageUsingThymeleafTemplate(String to,
+                        String subject,
+                        Map<String, Object> templateModel)
+                        throws IOException, MessagingException;
+
+        void sendMessageUsingFreemarkerTemplate(String to,
+                        String subject,
+                        Map<String, Object> templateModel)
+                        throws IOException, TemplateException, MessagingException;
+
+        void sendHtmlMail(String to, String subject, String content, String... cc)
+                        throws MessagingException;
+
+        void sendAttachmentsMail(String to, String subject, String content, String filePath, String... cc)
+                        throws MessagingException;
+
+        void sendResourceMail(String to, String subject, String content, String rscPath, String rscId, String... cc)
+                        throws MessagingException;
 }

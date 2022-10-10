@@ -125,6 +125,18 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
+        <!-- https://hutool.cn/docs/#/ -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>5.8.8</version>
+        </dependency>
+        <!--jasypt配置文件加解密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -161,6 +173,9 @@
         <json.version>20180130</json.version>
         <javax.mail.version>1.6.1</javax.mail.version>
         <spring-boot.version>2.5.6</spring-boot.version>
+        <jasypt.version>2.1.1</jasypt.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
 </project>

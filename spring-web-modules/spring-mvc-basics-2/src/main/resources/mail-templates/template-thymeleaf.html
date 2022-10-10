@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Spring Email Demo</title>
   </head>
   <body>
-    <p th:text="#{greetings(${recipientName})}"></p>
-    <p th:text="${text}"></p>
-    <p th:text="#{regards}"></p>
-    <p>
-      <em th:text="#{signature(${senderName})}"></em> <br />
-      <img src="cid:attachment.png" />
-    </p>
+    <div id="welcome">
+      <h3>
+        Welcome <span th:text="${project}"></span> - Powered By
+        <span th:text=" ${author}"></span>
+      </h3>
+      <span th:text="${url}"></span>
+      <div style="text-align: center; padding: 10px">
+        <a
+          style="text-decoration: none"
+          href="#"
+          th:href="@{${url}}"
+          target="_bank"
+        >
+        </a>
+      </div>
+    </div>
+    <div style="width: 100%; height: 100%; text-align: center; display: flex">
+      <div style="flex: 1"></div>
+      <div>
+        <p th:text="#{greetings(${recipientName})}"></p>
+        <p th:text="${text}"></p>
+        <p th:text="#{regards}"></p>
+        <p>
+          <em th:text="#{signature(${senderName})}"></em> <br />
+          <img src="cid:attachment.png" alt="attachment" />
+        </p>
+      </div>
+      <div style="flex: 1"></div>
+    </div>
   </body>
 </html>

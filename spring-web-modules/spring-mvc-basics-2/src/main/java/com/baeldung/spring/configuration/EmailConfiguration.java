@@ -18,7 +18,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @ComponentScan(basePackages = { "com.baeldung.spring.mail" })
-@PropertySource(value={"classpath:application.properties"})
+@PropertySource(value = { "classpath:application.properties" })
 public class EmailConfiguration {
 
     @Value("${spring.mail.host}")
@@ -41,33 +41,36 @@ public class EmailConfiguration {
 
     @Value("${spring.mail.templates.path}")
     private String mailTemplatesPath;
-    
+
+    @Value("${jasypt.encryptor.password}")
+    private String encryptorPassword;
+
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        
+
         mailSender.setHost(mailServerHost);
         mailSender.setPort(mailServerPort);
-        
+
         mailSender.setUsername(mailServerUsername);
         mailSender.setPassword(mailServerPassword);
-        
+
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", mailServerAuth);
         props.put("mail.smtp.starttls.enable", mailServerStartTls);
         props.put("mail.debug", "true");
-        
+
         return mailSender;
     }
-    
+
     @Bean
     public SimpleMailMessage templateSimpleMessage() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText("This is the test email template for your email:\n%s\n");
         return message;
     }
-    
+
     @Bean
     public SpringTemplateEngine thymeleafTemplateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -86,36 +89,38 @@ public class EmailConfiguration {
         return templateResolver;
     }
 
-//    @Bean
-//    public ITemplateResolver thymeleafFilesystemTemplateResolver() {
-//        FileTemplateResolver templateResolver = new FileTemplateResolver();
-//        templateResolver.setPrefix(mailTemplatesPath + "/");
-//        templateResolver.setSuffix(".html");
-//        templateResolver.setTemplateMode("HTML");
-//        templateResolver.setCharacterEncoding("UTF-8");
-//        return templateResolver;
-//    }
-    
-    @Bean 
+    // @Bean
+    // public ITemplateResolver thymeleafFilesystemTemplateResolver() {
+    // FileTemplateResolver templateResolver = new FileTemplateResolver();
+    // templateResolver.setPrefix(mailTemplatesPath + "/");
+    // templateResolver.setSuffix(".html");
+    // templateResolver.setTemplateMode("HTML");
+    // templateResolver.setCharacterEncoding("UTF-8");
+    // return templateResolver;
+    // }
+
+    @Bean
     public FreeMarkerConfigurer freemarkerClassLoaderConfig() {
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_27);
         TemplateLoader templateLoader = new ClassTemplateLoader(this.getClass(), "/" + mailTemplatesPath);
         configuration.setTemplateLoader(templateLoader);
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setConfiguration(configuration);
-        return freeMarkerConfigurer; 
+        return freeMarkerConfigurer;
     }
-    
-//    @Bean 
-//    public FreeMarkerConfigurer freemarkerFilesystemConfig() throws IOException {
-//        Configuration configuration = new Configuration(Configuration.VERSION_2_3_27);
-//        TemplateLoader templateLoader = new FileTemplateLoader(new File(mailTemplatesPath));
-//        configuration.setTemplateLoader(templateLoader);
-//        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-//        freeMarkerConfigurer.setConfiguration(configuration);
-//        return freeMarkerConfigurer; 
-//    }
-    
+
+    // @Bean
+    // public FreeMarkerConfigurer freemarkerFilesystemConfig() throws IOException {
+    // Configuration configuration = new
+    // Configuration(Configuration.VERSION_2_3_27);
+    // TemplateLoader templateLoader = new FileTemplateLoader(new
+    // File(mailTemplatesPath));
+    // configuration.setTemplateLoader(templateLoader);
+    // FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+    // freeMarkerConfigurer.setConfiguration(configuration);
+    // return freeMarkerConfigurer;
+    // }
+
     @Bean
     public ResourceBundleMessageSource emailMessageSource() {
         final ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();

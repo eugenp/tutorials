@@ -21,19 +21,17 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
+import cn.hutool.core.util.ArrayUtil;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-/**
- * Created by Olga on 7/15/2016.
- */
 @Service("EmailService")
 public class EmailServiceImpl implements EmailService {
 
     private static final String NOREPLY_ADDRESS = "noreply@baeldung.com";
 
     @Autowired
-    private JavaMailSender emailSender;
+    private JavaMailSender mailSender;
 
     @Autowired
     private SimpleMailMessage template;
@@ -47,26 +45,41 @@ public class EmailServiceImpl implements EmailService {
     @Value("classpath:/mail-logo.png")
     private Resource resourceFile;
 
-    public void sendSimpleMessage(String to, String subject, String text) {
+    @Value("${spring.mail.username}")
+    private String from;
+
+    public void sendSimpleMessage(String to, String subject, String content) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(NOREPLY_ADDRESS);
             message.setTo(to);
             message.setSubject(subject);
-            message.setText(text);
-
-            emailSender.send(message);
+            message.setText(content);
+            mailSender.send(message);
         } catch (MailException exception) {
             exception.printStackTrace();
         }
     }
 
     @Override
+    public void sendSimpleMessage(String to, String subject, String content, String... cc) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(from);
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(content);
+        if (ArrayUtil.isNotEmpty(cc)) {
+            message.setCc(cc);
+        }
+        mailSender.send(message);
+    }
+
+    @Override
     public void sendSimpleMessageUsingTemplate(String to,
             String subject,
             String... templateModel) {
-        String text = String.format(template.getText(), templateModel);
-        sendSimpleMessage(to, subject, text);
+        String content = String.format(template.getText(), templateModel);
+        sendSimpleMessage(to, subject, content);
     }
 
     @Override
@@ -75,19 +88,16 @@ public class EmailServiceImpl implements EmailService {
             String text,
             String pathToAttachment) {
         try {
-            MimeMessage message = emailSender.createMimeMessage();
+            MimeMessage message = mailSender.createMimeMessage();
             // pass 'true' to the constructor to create a multipart message
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
             helper.setFrom(NOREPLY_ADDRESS);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
-
             FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
             helper.addAttachment("Invoice", file);
-
-            emailSender.send(message);
+            mailSender.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -97,12 +107,9 @@ public class EmailServiceImpl implements EmailService {
     public void sendMessageUsingThymeleafTemplate(
             String to, String subject, Map<String, Object> templateModel)
             throws MessagingException {
-
         Context thymeleafContext = new Context();
         thymeleafContext.setVariables(templateModel);
-
         String htmlBody = thymeleafTemplateEngine.process("template-thymeleaf.html", thymeleafContext);
-
         sendHtmlMessage(to, subject, htmlBody);
     }
 
@@ -110,23 +117,69 @@ public class EmailServiceImpl implements EmailService {
     public void sendMessageUsingFreemarkerTemplate(
             String to, String subject, Map<String, Object> templateModel)
             throws IOException, TemplateException, MessagingException {
-
         Template freemarkerTemplate = freemarkerConfigurer.getConfiguration().getTemplate("template-freemarker.ftl");
         String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, templateModel);
-
         sendHtmlMessage(to, subject, htmlBody);
     }
 
     private void sendHtmlMessage(String to, String subject, String htmlBody) throws MessagingException {
-
-        MimeMessage message = emailSender.createMimeMessage();
+        MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
         helper.setFrom(NOREPLY_ADDRESS);
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
-        helper.addInline("attachment.png", resourceFile);
-        emailSender.send(message);
+        helper.addInline("mail-logo.png", resourceFile);
+        mailSender.send(message);
+    }
+
+    @Override
+    public void sendHtmlMail(String to, String subject, String content, String... cc) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(from);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(content, true);
+        if (ArrayUtil.isNotEmpty(cc)) {
+            helper.setCc(cc);
+        }
+        mailSender.send(message);
+    }
+
+    @Override
+    public void sendAttachmentsMail(String to, String subject, String content, String filePath, String... cc)
+            throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(from);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(content, true);
+        if (ArrayUtil.isNotEmpty(cc)) {
+            helper.setCc(cc);
+        }
+        FileSystemResource file = new FileSystemResource(new File(filePath));
+        String fileName = filePath.substring(filePath.lastIndexOf(File.separator));
+        helper.addAttachment(fileName, file);
+        mailSender.send(message);
+    }
+
+    @Override
+    public void sendResourceMail(String to, String subject, String content, String rscPath, String rscId, String... cc)
+            throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(from);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(content, true);
+        if (ArrayUtil.isNotEmpty(cc)) {
+            helper.setCc(cc);
+        }
+        FileSystemResource res = new FileSystemResource(new File(rscPath));
+        helper.addInline(rscId, res);
+        mailSender.send(message);
     }
 
 }
