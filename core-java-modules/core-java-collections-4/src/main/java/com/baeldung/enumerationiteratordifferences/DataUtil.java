@@ -1,5 +1,6 @@
 package com.baeldung.enumerationiteratordifferences;
 
+import java.util.Arrays;
 import java.util.List;
 
 public final class DataUtil {
@@ -12,6 +13,6 @@ public final class DataUtil {
         Person person2 = new Person("yogi", "kuki");
         Person person3 = new Person("raj", "dosi");
         Person person4 = new Person("prakash", "kumar");
-        return List.of(person1, person2, person3, person4);
+        return Arrays.asList(person1, person2, person3, person4);
     }
 }
