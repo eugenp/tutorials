@@ -18,7 +18,6 @@
 
     <modules>
         <module>graphql-dgs</module>
-        <module>graphql-error-handling</module>
         <module>graphql-java</module>
         <module>graphql-spqr</module>
     </modules>
