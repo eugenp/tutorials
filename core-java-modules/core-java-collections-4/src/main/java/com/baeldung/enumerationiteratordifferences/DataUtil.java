@@ -2,9 +2,6 @@ package com.baeldung.enumeration_iterator_differences;
 
 import java.util.List;
 
-/**
- * @author amitkumar
- */
 public final class DataUtil {
 
     private DataUtil() {

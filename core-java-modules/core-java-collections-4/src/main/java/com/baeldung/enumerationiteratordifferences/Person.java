@@ -1,8 +1,5 @@
 package com.baeldung.enumeration_iterator_differences;
 
-/**
- * @author amitkumar
- */
 public class Person {
     private String firstName;
     private String lastName;

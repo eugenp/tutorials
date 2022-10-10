@@ -5,9 +5,6 @@ import java.util.Vector;
 
 import static com.baeldung.enumeration_iterator_differences.DataUtil.getPersons;
 
-/**
- * @author amitkumar
- */
 public class EnumerationExample {
     public static void main(String[] args) {
 

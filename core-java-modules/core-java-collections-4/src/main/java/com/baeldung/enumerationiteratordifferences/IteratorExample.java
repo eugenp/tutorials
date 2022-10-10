@@ -5,9 +5,6 @@ import java.util.List;
 
 import static com.baeldung.enumeration_iterator_differences.DataUtil.getPersons;
 
-/**
- * @author amitkumar
- */
 public class IteratorExample {
     public static void main(String[] args) {
         List<Person> persons = getPersons();
