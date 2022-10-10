@@ -1,4 +1,4 @@
-package com.baeldung.streams.collectintotreeset;
+package com.baeldung.treeset.collectintotreeset;
 
 public class Player implements Comparable<Player> {
     private String name;

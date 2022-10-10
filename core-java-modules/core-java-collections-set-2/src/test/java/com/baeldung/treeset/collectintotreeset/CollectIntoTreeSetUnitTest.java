@@ -1,4 +1,4 @@
-package com.baeldung.streams.collectintotreeset;
+package com.baeldung.treeset.collectintotreeset;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
