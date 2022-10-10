@@ -3,7 +3,7 @@ package com.baeldung.enumerationiteratordifferences;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.baeldung.enumeration_iterator_differences.DataUtil.getPersons;
+import static com.baeldung.enumerationiteratordifferences.DataUtil.getPersons;
 
 public class IteratorExample {
     public static void main(String[] args) {
