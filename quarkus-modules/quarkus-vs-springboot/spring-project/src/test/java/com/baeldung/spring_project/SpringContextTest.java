@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @TestInstance(value = PER_CLASS)
 @Testcontainers
 @Disabled
-class StartupIT {
+class SpringContextTest {
 
 	@Test
 	void contextLoads() {
