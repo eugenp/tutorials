@@ -39,6 +39,16 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-webmvc</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,6 +73,13 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                    </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -70,6 +87,8 @@
         <springfox.version>3.0.0</springfox.version>
         <swagger-codegen-maven-plugin.version>3.0.34</swagger-codegen-maven-plugin.version>
         <springdoc.version>1.6.10</springdoc.version>
+        <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
+        <start-class>com.baeldung.tworesponses.Application</start-class>
     </properties>
 
 </project>

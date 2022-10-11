@@ -92,6 +92,11 @@ public class OrderRestEndpoint {
         return orderQueryService.findAllOrders();
     }
 
+    @GetMapping(path = "/all-orders-streaming", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<OrderResponse> allOrdersStreaming() {
+        return orderQueryService.allOrdersStreaming();
+    }
+
     @GetMapping("/total-shipped/{product-id}")
     public Integer totalShipped(@PathVariable("product-id") String productId) {
         return orderQueryService.totalShipped(productId);
