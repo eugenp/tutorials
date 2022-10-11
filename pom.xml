@@ -560,8 +560,7 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2/redis</module>
-                <module>spring-caching-2/ttl</module>
+                <module>spring-caching-2</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
@@ -983,7 +982,7 @@
 
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <!-- <module>spring-jinq</module> --> <!-- does not support work with Spring Boot 2.7.2 -->
+                <module>spring-jinq</module>
                 <module>spring-jms</module>
 
                 <module>spring-kafka</module>
@@ -1169,6 +1168,7 @@
                  <module>core-java-modules/core-java-collections-set</module>
                  <module>core-java-modules/core-java-collections-list-4</module>
                  <module>core-java-modules/core-java-collections-maps-4</module>
+                 <module>core-java-modules/core-java-concurrency-simple</module>
                  <module>core-java-modules/core-java-date-operations-1</module>
                  <module>core-java-modules/core-java-datetime-conversion</module>
                  <module>core-java-modules/core-java-datetime-string</module>
@@ -1247,6 +1247,7 @@
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-collections-list-4</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>core-java-modules/core-java-datetime-string</module>
