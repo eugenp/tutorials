@@ -1,26 +1,30 @@
 package com.baeldung.spring;
 
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 //@Configuration
 //@ImportResource({ "classpath:RedirectionWebSecurityConfig.xml" })
 //@EnableWebSecurity
 //@Profile("!https")
-public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
+public class RedirectionSecurityConfig {
 
-    @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("user1")
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user1 = User.withUsername("user1")
             .password("user1Pass")
-            .roles("USER");
+            .roles("USER")
+            .build();
+        return new InMemoryUserDetailsManager(user1);
     }
 
-    @Override
-    protected void configure(final HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/login*")
             .permitAll()
@@ -30,6 +34,7 @@ public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
             .successHandler(new SavedRequestAwareAuthenticationSuccessHandler());
         // .successHandler(new RefererAuthenticationSuccessHandler())
+        return http.build();
     }
 
 }
