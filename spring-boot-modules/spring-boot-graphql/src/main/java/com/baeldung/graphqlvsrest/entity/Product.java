@@ -11,10 +11,10 @@ public class Product {
     private String status;
     private String currency;
     private Double price;
-    private List<String> image_url;
-    private List<String> video_url;
+    private List<String> imageUrls;
+    private List<String> videoUrls;
     private Integer stock;
-    private Float average_rating;
+    private Float averageRating;
 
     public Product(Integer id, ProductModel productModel) {
         this.id = id;
@@ -23,9 +23,9 @@ public class Product {
         this.currency = productModel.getCurrency();
         this.price = productModel.getPrice();
         this.stock = productModel.getStock();
-        this.image_url = productModel.getImage_url();
-        this.video_url = productModel.getVideo_url();
-        this.average_rating = 0F;
+        this.imageUrls = productModel.getImageUrls();
+        this.videoUrls = productModel.getVideoUrls();
+        this.averageRating = 0F;
         this.status = productModel.getStatus();
     }
 
@@ -81,20 +81,20 @@ public class Product {
         this.price = price;
     }
 
-    public List<String> getImage_url() {
-        return image_url;
+    public List<String> getImageUrls() {
+        return imageUrls;
     }
 
-    public void setImage_url(List<String> image_url) {
-        this.image_url = image_url;
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
-    public List<String> getVideo_url() {
-        return video_url;
+    public List<String> getVideoUrls() {
+        return videoUrls;
     }
 
-    public void setVideo_url(List<String> video_url) {
-        this.video_url = video_url;
+    public void setVideoUrls(List<String> videoUrls) {
+        this.videoUrls = videoUrls;
     }
 
     public Integer getStock() {
@@ -105,11 +105,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public Float getAverage_rating() {
-        return average_rating;
+    public Float getAverageRating() {
+        return averageRating;
     }
 
-    public void setAverage_rating(Float average_rating) {
-        this.average_rating = average_rating;
+    public void setAverageRating(Float averageRating) {
+        this.averageRating = averageRating;
     }
 }

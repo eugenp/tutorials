@@ -13,24 +13,25 @@ import java.util.stream.Collectors;
 @Repository
 public class OrderRepositoryImpl implements OrderRepository {
 
-    private static List<Order> orderList = new ArrayList<>();
+    private static final List<Order> ORDER_LIST = new ArrayList<>();
 
     public OrderRepositoryImpl() {
-        for (int i = 1; i <= 100; i++){
+        for (int i = 1; i <= 100; i++) {
             Order order = new Order();
             order.setId(i);
-            order.setProduct_id(i%10);
-            order.setAddress(UUID.randomUUID().toString());
-            order.setCustomer_uuid(UUID.randomUUID().toString());
-            order.setCreation_date(new Date(System.currentTimeMillis()).toString());
+            order.setProductId(i % 10);
+            order.setAddress(i + " A Street");
+            order.setCustomerId(UUID.randomUUID().toString());
+            order.setCreationDate(new Date(System.currentTimeMillis()).toString());
             order.setStatus("Delivered");
-            orderList.add(order);
+            ORDER_LIST.add(order);
         }
     }
 
-
     @Override
     public List<Order> getOrdersByProduct(Integer productId) {
-        return orderList.stream().filter(order -> order.getProduct_id().equals(productId)).collect(Collectors.toList());
+        return ORDER_LIST.stream()
+          .filter(order -> order.getProductId().equals(productId))
+          .collect(Collectors.toList());
     }
 }

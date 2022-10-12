@@ -2,11 +2,11 @@ package com.baeldung.graphqlvsrest.entity;
 
 public class Order {
     private Integer id;
-    private Integer product_id;
-    private String customer_uuid;
+    private Integer productId;
+    private String customerId;
     private String status;
     private String address;
-    private String creation_date;
+    private String creationDate;
 
     public Integer getId() {
         return id;
@@ -16,12 +16,12 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getProduct_id() {
-        return product_id;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getStatus() {
@@ -32,12 +32,12 @@ public class Order {
         this.status = status;
     }
 
-    public String getCustomer_uuid() {
-        return customer_uuid;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_uuid(String customer_uuid) {
-        this.customer_uuid = customer_uuid;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getAddress() {
@@ -48,11 +48,11 @@ public class Order {
         this.address = address;
     }
 
-    public String getCreation_date() {
-        return creation_date;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreation_date(String creation_date) {
-        this.creation_date = creation_date;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 }
