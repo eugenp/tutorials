@@ -5,20 +5,20 @@ type Product {
     status: String
     currency: String!
     price: Float
-    image_url: [String]
-    video_url: [String]
+    imageUrls: [String]
+    videoUrls: [String]
     stock: Int
-    average_rating: Float
+    averageRating: Float
     orders:[Order]
 }
 
 type Order{
     id:ID
-    product_id:Int
-    customer_uuid:String
+    productId:Int
+    customerId:String
     address:String
     status:String
-    creation_date:String
+    creationDate:String
 }
 
 input ProductModel {
@@ -27,8 +27,8 @@ input ProductModel {
     status: String
     currency: String!
     price: Float
-    image_url: [String]
-    video_url: [String]
+    imageUrls: [String]
+    videoUrls: [String]
     stock: Int
 }
 
@@ -38,8 +38,8 @@ input ProductUpdateModel {
     status: String
     currency: String
     price: Float
-    image_url: [String]
-    video_url: [String]
+    imageUrls: [String]
+    videoUrls: [String]
     stock: Int
 }
 
