@@ -1,18 +1,20 @@
 package com.baeldung.graphqlvsrest;
 
-import com.baeldung.graphqlvsrest.configuration.GraphqlConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import(GraphqlConfiguration.class)
-@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
+@EnableAutoConfiguration(exclude = {
+  SecurityAutoConfiguration.class,
+  HibernateJpaAutoConfiguration.class
+})
 public class GraphqlVsRestApplication {
 
     public static void main(String[] args) {
+        System.setProperty("spring.profiles.default", "rest-vs-graphql");
         SpringApplication.run(GraphqlVsRestApplication.class, args);
     }
 

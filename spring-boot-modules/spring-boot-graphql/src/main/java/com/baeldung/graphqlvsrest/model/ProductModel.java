@@ -8,8 +8,8 @@ public class ProductModel {
     private String status;
     private String currency;
     private Double price;
-    private List<String> image_url;
-    private List<String> video_url;
+    private List<String> imageUrls;
+    private List<String> videoUrls;
     private Integer stock;
 
     public String getName() {
@@ -52,20 +52,20 @@ public class ProductModel {
         this.price = price;
     }
 
-    public List<String> getImage_url() {
-        return image_url;
+    public List<String> getImageUrls() {
+        return imageUrls;
     }
 
-    public void setImage_url(List<String> image_url) {
-        this.image_url = image_url;
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
-    public List<String> getVideo_url() {
-        return video_url;
+    public List<String> getVideoUrls() {
+        return videoUrls;
     }
 
-    public void setVideo_url(List<String> video_url) {
-        this.video_url = video_url;
+    public void setVideoUrls(List<String> videoUrls) {
+        this.videoUrls = videoUrls;
     }
 
     public Integer getStock() {
@@ -84,8 +84,8 @@ public class ProductModel {
                 ", status='" + status + '\'' +
                 ", currency='" + currency + '\'' +
                 ", price=" + price +
-                ", image_url=" + image_url +
-                ", video_url=" + video_url +
+                ", imageUrls=" + imageUrls +
+                ", videoUrls=" + videoUrls +
                 ", stock=" + stock +
                 '}';
     }
