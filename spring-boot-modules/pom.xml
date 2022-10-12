@@ -41,6 +41,7 @@
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
         <module>spring-boot-flowable</module>
+        <module>spring-boot-graphql</module>
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
@@ -49,7 +50,6 @@
         <module>spring-boot-keycloak-2</module>
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
-        <module>spring-boot-libraries-comparison</module>
         <module>spring-boot-logging-log4j2</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
