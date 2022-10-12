@@ -1,11 +1,11 @@
-package groupedvsmultipleassertions;
+package com.baeldung.groupedvsmultipleassertions;
 
 public class User {
-    String username;
-    String email;
-    Boolean activated;
+    private String username;
+    private String email;
+    private boolean activated;
 
-    public User(String username, String email, Boolean activated) {
+    public User(String username, String email, boolean activated) {
         this.username = username;
         this.email = email;
         this.activated = activated;
@@ -27,11 +27,11 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getActivated() {
+    public boolean getActivated() {
         return activated;
     }
 
-    public void setActivated(Boolean activated) {
+    public void setActivated(boolean activated) {
         this.activated = activated;
     }
 }
