@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JsonUnitTest {
 
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    void testGetExpression() {
+    void whenGettingJsonExpression_thenResultIsValidJson() {
         assertAll(
                 () -> assertThatNoException().isThrownBy(() -> objectMapper.readTree(Json.getExpression())),
                 () -> assertThat(Json.getExpression()).isNotBlank()

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class CsvUnitTest {
 
     @Test
-    void testFirstExpression() {
+    void whenGettingFirstExpression_thenResultNotEmptyAndOfCorrectSizeAndFormat() {
         assertAll(
                 () -> assertThat(Csv.getFirstExpression()).isNotBlank(),
                 () -> assertThat(Csv.getFirstExpression().split("\n")).hasSize(5),
@@ -17,7 +17,7 @@ class CsvUnitTest {
     }
 
     @Test
-    void testSecondExpression() {
+    void whenGettingSecondExpression_thenResultNotEmptyAndOfCorrectSizeAndFormat() {
         assertAll(
                 () -> assertThat(Csv.getFirstExpression()).isNotBlank(),
                 () -> assertThat(Csv.getFirstExpression().split("\n")).hasSize(5),

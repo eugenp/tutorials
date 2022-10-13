@@ -3,17 +3,16 @@ package com.baeldung.datafaker;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MethodInvocationUnitTest {
 
     @Test
-    void testGetNameFromExpression() {
+    void whenGettingNameFromExpression_thenResultNotEmpty() {
         assertThat(MethodInvocation.getNameFromMethod()).isNotBlank();
     }
 
     @Test
-    void testGetNameFromMethod() {
+    void whenGettingNameFromMethod_thenResultNotEmpty() {
         assertThat(MethodInvocation.getNameFromExpression()).isNotBlank();
     }
 }

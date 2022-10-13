@@ -7,13 +7,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RegexifyUnitTest {
 
     @Test
-    void getMethodExpression() {
+    void whenGettingMethidExpression_thenResultNotBlankAndMatchesRegex() {
         assertThat(Regexify.getMethodExpression()).isNotBlank()
                 .matches("[A-D]{4,10}");
     }
 
     @Test
-    void getExpression() {
+    void whenGettingExpression_thenResultNotBlankAndMatchesRegex() {
         assertThat(Regexify.getExpression()).isNotBlank()
                 .matches("(hello|bye|hey)");
     }

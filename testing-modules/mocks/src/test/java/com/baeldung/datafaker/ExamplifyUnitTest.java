@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExamplifyUnitTest {
 
     @Test
-    void testGetNumberExpression() {
+    void whenGettingNumberExpression_thenResultNotEmptyAndMathesRegex() {
         assertAll(
                 () -> assertThat(Examplify.getNumberExpression()).isNotBlank(),
                 () -> assertThat(Examplify.getNumberExpression()).matches("\\d{3}-\\d{3}-\\d{3}")
@@ -16,7 +16,7 @@ class ExamplifyUnitTest {
     }
 
     @Test
-    void testGetExpression() {
+    void whenGettingExpression_thenResultNotEmptyAndMathesRegex() {
         assertAll(
                 () -> assertThat(Examplify.getExpression()).isNotBlank(),
                 () -> assertThat(Examplify.getExpression())

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class CollectionUnitTest {
 
     @Test
-    void testGetFictionalCharacters() {
+    void whenGettingFictionaCharacters_thenResultNotEmptyAndOfCorrectSize() {
         assertAll(
                 () -> assertThat(Collection.getFictionalCharacters()).isNotEmpty(),
                 () -> assertThat(Collection.getFictionalCharacters()).size().isGreaterThanOrEqualTo(Collection.MIN),

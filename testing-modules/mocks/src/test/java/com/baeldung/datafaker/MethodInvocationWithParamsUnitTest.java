@@ -9,12 +9,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MethodInvocationWithParamsUnitTest {
 
     @Test
-    void testGetDurationFromExpression() {
+    void whenGettingDurationFromExpression_thenResultNotEmpty() {
         assertThat(MethodInvocationWithParams.getDurationFromExpression()).isNotBlank();
     }
 
     @Test
-    void testGetDurationFromMethod() {
+    void whenGettingDurationFromMethod_thenResultNotNullAndInBoundaries() {
         assertThat(MethodInvocationWithParams.getDurationFromMethod())
                 .isNotNull()
                 .isBetween(Duration.ofSeconds(MethodInvocationWithParams.MIN),

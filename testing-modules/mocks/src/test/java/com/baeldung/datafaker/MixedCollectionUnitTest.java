@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 class MixedCollectionUnitTest {
 
     @Test
-    void testGetMixedCollection() {
+    void whenGettingMixedCollection_thenResultNotEmptyAndOfCorrectSize() {
         assertAll(
                 () -> assertThat(MixedCollection.getMixedCollection()).isNotEmpty(),
                 () -> assertThat(MixedCollection.getMixedCollection()).size().isGreaterThanOrEqualTo(MixedCollection.MIN),

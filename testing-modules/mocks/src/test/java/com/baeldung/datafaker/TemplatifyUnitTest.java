@@ -6,13 +6,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TemplatifyUnitTest {
     @Test
-    void testGetExpressionWithPlaceholder() {
+    void whenGettingPlaceholderExpression_thenResultNotBlankAndMatchesRegex() {
         assertThat(Templatify.getExpressionWithPlaceholder()).isNotBlank()
                 .matches(".ight");
     }
 
     @Test
-    void testGetExpression() {
+    void whenGettingExpression_thenResultNotBlankAndMatchesRegex() {
         assertThat(Templatify.getExpression()).isNotBlank()
                 .matches(".es.");
     }
