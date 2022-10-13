@@ -36,11 +36,6 @@
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -56,7 +51,6 @@
     <properties>
         <passay.version>1.3.1</passay.version>
         <commons-text.version>1.4</commons-text.version>
-        <commons.lang3.version>3.12.0</commons.lang3.version>
     </properties>
 
 </project>

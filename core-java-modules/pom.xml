@@ -129,6 +129,7 @@
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
         <module>pre-jpms</module>
+        <module>core-java-string-apis-2</module>
     </modules>
 
     <dependencyManagement>
