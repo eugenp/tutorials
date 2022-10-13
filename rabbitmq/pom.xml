@@ -13,6 +13,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
+    
 
     <dependencyManagement>
         <dependencies>
@@ -30,7 +31,6 @@
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>${amqp-client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -40,10 +40,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+                
     </dependencies>
 
     <properties>
-        <amqp-client.version>5.12.0</amqp-client.version>
         <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
     </properties>
 
