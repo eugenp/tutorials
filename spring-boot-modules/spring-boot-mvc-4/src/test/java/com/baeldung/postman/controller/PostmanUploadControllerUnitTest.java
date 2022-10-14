@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = PostmanUploadDemo.class)
 @AutoConfigureMockMvc
-public class PostmanUploadControllerTest {
+public class PostmanUploadControllerUnitTest {
     @Autowired
     private MockMvc mockMvc;
 
