@@ -1,4 +1,4 @@
-package com.baeldung.sprq;
+package com.baeldung.spqr;
 
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLMutation;
