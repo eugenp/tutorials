@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import java.io.IOException;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class SpringReactiveExceptionsApplicationTest {
+class SpringReactiveExceptionsApplicationIntegrationTest {
 	@Autowired
 	private WebTestClient webTestClient;
 	@Autowired
