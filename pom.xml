@@ -474,6 +474,7 @@
 
                 <module>patterns-modules</module>
                 <module>pdf</module>
+                <module>pdf-2</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>protobuffer</module>
