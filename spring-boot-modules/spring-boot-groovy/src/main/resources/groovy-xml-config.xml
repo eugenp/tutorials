@@ -5,7 +5,7 @@
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/lang https://www.springframework.org/schema/lang/spring-lang.xsd">
 
-	<lang:groovy id="notification" script-source="file:src/main/java/com/baeldung/springgroovyconfig/NotificationServiceImpl.groovy" refresh-check-delay="10000">
+	<lang:groovy id="notification" script-source="file:src/main/groovy/com/baeldung/springgroovyconfig/NotificationServiceImpl.groovy" refresh-check-delay="10000">
 		<lang:property name="message" value="Hello" />
 	</lang:groovy>
 

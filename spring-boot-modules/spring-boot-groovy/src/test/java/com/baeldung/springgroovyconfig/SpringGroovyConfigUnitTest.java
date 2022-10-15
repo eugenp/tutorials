@@ -22,7 +22,7 @@ import groovy.util.GroovyScriptEngine;
 class SpringGroovyConfigUnitTest {
 
     private static final String FILE_NAME = "GroovyBeanBuilder.groovy";
-    private static final String FILE_PATH = "src/main/java/com/baeldung/springgroovyconfig/";
+    private static final String FILE_PATH = "src/main/groovy/com/baeldung/springgroovyconfig/";
 
     @Test
     void givenGroovyConfigFile_whenCalledWithBeanName_thenReturnCompanyBean() {
