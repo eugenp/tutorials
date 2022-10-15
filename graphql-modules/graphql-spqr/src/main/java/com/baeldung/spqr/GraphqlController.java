@@ -1,4 +1,4 @@
-package com.baeldung.sprq;
+package com.baeldung.spqr;
 
 import graphql.ExecutionResult;
 import graphql.GraphQL;
@@ -21,9 +21,10 @@ public class GraphqlController {
 
     @Autowired
     public GraphqlController(BookResolver bookResolver) {
-        GraphQLSchema schema = new GraphQLSchemaGenerator().withBasePackages("com.baeldung")
-            .withOperationsFromSingleton(bookResolver)
-            .generate();
+        GraphQLSchema schema = new GraphQLSchemaGenerator()
+          .withBasePackages("com.baeldung")
+          .withOperationsFromSingleton(bookResolver)
+          .generate();
         this.graphQL = new GraphQL.Builder(schema).build();
     }
 
