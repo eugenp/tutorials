@@ -1,7 +1,5 @@
 package com.baeldung.springgroovyconfig
 
-import java.security.PublicKey
-
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -9,7 +7,6 @@ import org.springframework.context.annotation.Configuration
 class SpringGroovyConfiguration {
 
     public static void main(String[] args) { }
-    
     
     @Bean
     List<String> fruits() {
