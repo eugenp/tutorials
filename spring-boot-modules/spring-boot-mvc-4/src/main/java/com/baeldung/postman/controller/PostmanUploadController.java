@@ -13,12 +13,14 @@ import com.baeldung.postman.model.JsonRequest;
 public class PostmanUploadController {
 
     @PostMapping("/uploadFile")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file){
-        return ResponseEntity.ok().body("file received successfully");
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+        return ResponseEntity.ok()
+          .body("file received successfully");
     }
 
     @PostMapping("/uploadJson")
-    public ResponseEntity<String> handleJsonInput(@RequestBody JsonRequest json){
-        return ResponseEntity.ok().body(json.getId()+json.getName());
+    public ResponseEntity<String> handleJsonInput(@RequestBody JsonRequest json) {
+        return ResponseEntity.ok()
+          .body(json.getId() + json.getName());
     }
 }
