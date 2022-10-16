@@ -1,6 +1,6 @@
 package com.baeldung.datafaker;
 
-import com.github.javafaker.Faker;
+import net.datafaker.Faker;
 
 public class Regexify {
     private static final Faker faker = new Faker();
