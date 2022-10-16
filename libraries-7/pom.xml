@@ -52,7 +52,7 @@
                     <dependency>
                         <groupId>uk.co.real-logic</groupId>
                         <artifactId>sbe-tool</artifactId>
-                        <version>1.26.0</version>
+                        <version>1.27.0</version>
                     </dependency>
                 </dependencies>
             </plugin>

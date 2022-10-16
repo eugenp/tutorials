@@ -692,6 +692,7 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
+                <module>libraries-7</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
@@ -958,7 +959,7 @@
                 <module>spring-caching</module>
                 <module>spring-caching-2/redis</module>
                 <module>spring-caching-2/ttl</module>
-                
+
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
