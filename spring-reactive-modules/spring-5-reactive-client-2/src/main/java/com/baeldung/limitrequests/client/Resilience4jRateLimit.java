@@ -21,17 +21,15 @@ public class Resilience4jRateLimit {
         RateLimiter limiter = RateLimiter.of("my-rate-limiter", RateLimiterConfig.custom()
             .limitRefreshPeriod(Duration.ofMillis(interval))
             .limitForPeriod(concurrency)
-            .timeoutDuration(Duration.ofMillis(interval * concurrency))
+            .timeoutDuration(Duration.ofMillis((long) interval * concurrency))
             .build());
 
         String clientId = Client.id(requests, Resilience4jRateLimit.class, concurrency, interval);
 
         return Flux.range(1, requests)
             .log()
-            .flatMap(i -> {
-                return RandomConsumer.<Integer> get(client, clientId)
-                    .transformDeferred(RateLimiterOperator.of(limiter));
-            });
+            .flatMap(i -> RandomConsumer.<Integer> get(client, clientId)
+                .transformDeferred(RateLimiterOperator.of(limiter)));
     }
 
     public static void main(String[] args) {

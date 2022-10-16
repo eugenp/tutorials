@@ -17,9 +17,7 @@ public class LimitConcurrency {
 
         return Flux.range(1, requests)
             .log()
-            .flatMap(i -> {
-                return RandomConsumer.get(client, clientId);
-            }, concurrency);
+            .flatMap(i -> RandomConsumer.get(client, clientId), concurrency);
     }
 
     public static void main(String[] args) throws InterruptedException {

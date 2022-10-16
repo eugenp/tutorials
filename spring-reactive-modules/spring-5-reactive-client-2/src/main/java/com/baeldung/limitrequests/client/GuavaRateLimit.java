@@ -1,8 +1,6 @@
 package com.baeldung.limitrequests.client;
 
-import java.util.Date;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -34,22 +32,10 @@ public class GuavaRateLimit {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        // String baseUrl = args[0];
-        // WebClient client = WebClient.create(baseUrl);
-        //
-        // fetch(client, 20, 2).doOnNext(System.out::println)
-        // .blockLast();
+        String baseUrl = args[0];
+        WebClient client = WebClient.create(baseUrl);
 
-        RateLimiter l = RateLimiter.create(1);
-        while (true) {
-            l.acquire();
-            exp();
-        }
-    }
-
-    public static void exp() throws InterruptedException {
-        int s = random.nextInt(4000);
-        TimeUnit.MILLISECONDS.sleep(s);
-        System.out.println(new Date() + " - " + s);
+        fetch(client, 20, 2).doOnNext(System.out::println)
+            .blockLast();
     }
 }

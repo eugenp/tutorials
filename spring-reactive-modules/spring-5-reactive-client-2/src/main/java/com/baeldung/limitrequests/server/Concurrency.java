@@ -12,19 +12,23 @@ import org.slf4j.LoggerFactory;
 public class Concurrency {
 
     public static final int MAX_CONCURRENT_REQUESTS = 5;
-    private static final Logger LOGGER = LoggerFactory.getLogger(Concurrency.class);
+    private static final Logger logger = LoggerFactory.getLogger(Concurrency.class);
     private static final Map<String, AtomicInteger> CONCURRENT_REQUESTS = new HashMap<>();
 
+    private Concurrency() {
+    }
+
     public static int protect(String clientId, IntSupplier supplier) throws InterruptedException {
-        AtomicInteger counter = CONCURRENT_REQUESTS.computeIfAbsent(clientId, (k) -> new AtomicInteger(0));
+        AtomicInteger counter = CONCURRENT_REQUESTS.computeIfAbsent(clientId, k -> new AtomicInteger(0));
 
         try {
             int n = counter.incrementAndGet();
             if (n > MAX_CONCURRENT_REQUESTS) {
-                throw new UnsupportedOperationException(clientId + " - " + MAX_CONCURRENT_REQUESTS + " max concurrent requests reached [" + n + "]. try again later");
+                String message = String.format("%s - %d max concurrent requests reached [%d]. try again later", clientId, MAX_CONCURRENT_REQUESTS, n);
+                throw new UnsupportedOperationException(message);
             }
 
-            LOGGER.info(clientId + " - " + n);
+            logger.info("{} - {}", clientId, n);
             TimeUnit.SECONDS.sleep(2);
             return supplier.getAsInt();
         } finally {

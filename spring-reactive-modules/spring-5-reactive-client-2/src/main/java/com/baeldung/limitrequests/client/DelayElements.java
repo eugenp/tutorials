@@ -20,9 +20,7 @@ public class DelayElements {
         return Flux.range(1, requests)
             .log()
             .delayElements(Duration.ofMillis(delay))
-            .flatMap(i -> {
-                return RandomConsumer.get(client, clientId);
-            });
+            .flatMap(i -> RandomConsumer.get(client, clientId));
     }
 
     public static void main(String[] args) {

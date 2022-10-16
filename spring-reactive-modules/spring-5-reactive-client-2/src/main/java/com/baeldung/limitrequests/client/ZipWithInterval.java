@@ -20,9 +20,7 @@ public class ZipWithInterval {
         return Flux.range(1, requests)
             .log()
             .zipWith(Flux.interval(Duration.ofMillis(delay)))
-            .flatMap(i -> {
-                return RandomConsumer.get(client, clientId);
-            });
+            .flatMap(i -> RandomConsumer.get(client, clientId));
     }
 
     public static void main(String[] args) {

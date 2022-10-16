@@ -1,7 +1,8 @@
 package com.baeldung.limitrequests.client.utils;
 
 public interface Client {
-    String separator = ":";
+
+    String SEPARATOR = ":";
 
     static String id(Object... args) {
         StringBuilder builder = new StringBuilder();
@@ -10,6 +11,6 @@ public interface Client {
                 .append(object.toString());
         }
         return builder.toString()
-            .replaceFirst(separator, "");
+            .replaceFirst(SEPARATOR, "");
     }
 }
