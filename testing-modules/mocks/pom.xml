@@ -41,17 +41,6 @@
             <artifactId>jimfs</artifactId>
             <version>${jimf.version}</version>
         </dependency>
-        <dependency>
-            <groupId>net.datafaker</groupId>
-            <artifactId>datafaker</artifactId>
-            <version>${datefaker.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
 
     </dependencies>
 
@@ -61,8 +50,6 @@
         <easymock.version>3.5.1</easymock.version>
         <jmockit.version>1.41</jmockit.version>
         <jimf.version>1.1</jimf.version>
-        <datefaker.version>1.6.0</datefaker.version>
-        <jackson.version>2.13.4</jackson.version>
     </properties>
 
 </project>
