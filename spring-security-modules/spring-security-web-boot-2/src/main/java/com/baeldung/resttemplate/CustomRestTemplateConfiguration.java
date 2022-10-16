@@ -23,12 +23,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class CustomRestTemplateConfiguration {
-	
-	@Value("${trust.store}")
-    private Resource trustStore;
 
-    @Value("${trust.store.password}")
-    private String trustStorePassword;
+	@Value("${trust.store}")
+	private Resource trustStore;
+
+	@Value("${trust.store.password}")
+	private String trustStorePassword;
 
 	@Bean
 	public RestTemplate restTemplate() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException,
