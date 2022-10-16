@@ -1,17 +1,14 @@
 package com.baeldung.sbe;
 
-import com.baeldung.sbe.stub.Currency;
-import com.baeldung.sbe.stub.Market;
+import java.math.BigDecimal;
+import java.nio.ByteBuffer;
+
+import org.agrona.concurrent.UnsafeBuffer;
+
 import com.baeldung.sbe.stub.MessageHeaderDecoder;
 import com.baeldung.sbe.stub.MessageHeaderEncoder;
 import com.baeldung.sbe.stub.TradeDataDecoder;
 import com.baeldung.sbe.stub.TradeDataEncoder;
-
-import java.math.BigDecimal;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-
-import org.agrona.concurrent.UnsafeBuffer;
 
 public class MarketDataUtil {
 
@@ -68,37 +65,6 @@ public class MarketDataUtil {
             .currency(dataDecoder.quote().currency())
             .price(price)
             .build();
-    }
-
-    public static void main(String[] args) {
-        final ByteBuffer buffer = ByteBuffer.allocate(28);
-        encodeAndWrite(buffer, MarketData.builder()
-            .amount(1)
-            .price(134.12)
-            .market(Market.NASDAQ)
-            .currency(Currency.USD)
-            .symbol("AAPL")
-            .build()
-        );
-        System.out.println(buffer);
-        System.out.println(Arrays.toString(buffer.array()));
-
-        encodeAndWrite(buffer, MarketData.builder()
-            .amount(2)
-            .price(128.87)
-            .market(Market.NYSE)
-            .currency(Currency.USD)
-            .symbol("IBM")
-            .build()
-        );
-        System.out.println(buffer);
-        System.out.println(Arrays.toString(buffer.array()));
-
-        buffer.flip();
-        System.out.println(readAndDecode(buffer));
-        System.out.println(buffer);
-        System.out.println(readAndDecode(buffer));
-        System.out.println(buffer);
     }
 
 }

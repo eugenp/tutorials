@@ -72,18 +72,21 @@ public class MarketDataStreamServer {
         }
     }
 
-    private void run(MarketDataGenerator generator) {
-        writerThread.scheduleAtFixedRate(() -> writeTradeData(generator.getNext()), 1, 2, TimeUnit.SECONDS);
+    private void run(MarketDataSource source) {
+        writerThread.scheduleAtFixedRate(() -> {
+            if (source.hasNext()) {
+                writeTradeData(source.next());
+            }
+        }, 1, 2, TimeUnit.SECONDS);
     }
 
     public static void main(String[] args) {
-        final MarketDataGenerator generator = new MarketDataGenerator();
-        final MarketDataStreamServer server = new MarketDataStreamServer();
-        server.newClient("client1")
-            .read();
-        server.newClient("client2")
-            .read();
-        server.run(generator);
+        MarketDataStreamServer server = new MarketDataStreamServer();
+        Client client1 = server.newClient("client1");
+        client1.read();
+        Client client2 = server.newClient("client2");
+        client2.read();
+        server.run(new MarketDataSource());
     }
 
 }
