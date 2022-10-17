@@ -1,41 +1,38 @@
 package com.baeldung.java_shallow_deep_copy.unit;
 
-import com.baeldung.java_shallow_deep_copy.data.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import com.baeldung.java_shallow_deep_copy.data.Balance;
+import com.baeldung.java_shallow_deep_copy.data.BankAccountDeep;
 
 public class DeepCopyTest {
 
-    private static final String NAME = "Hello";
-    private static final String SURNAME = "World";
+
 
     @Test
-    void whenIsADeepCopyDoneByCopyConstructor_thenNestedObjectShouldNotHaveSameReference() {
+    void whenIsADeepCopyDoneByCopyConstructor_thenNestedObjectsAreNotTheSame() {
         Balance balance = new Balance(10000, "EUR");
-        BankAccountDeep bankAccount = new BankAccountDeep(NAME, SURNAME, balance);
+        BankAccountDeep bankAccount = new BankAccountDeep("Hello", "World", balance);
         BankAccountDeep deepCopy = new BankAccountDeep(bankAccount);
         assertNotEquals(bankAccount.getBalance(), deepCopy.getBalance());
     }
 
     @Test
-    void whenIsADeepCopyDoneByCopyConstructor_thenCopyValueShouldNotChange() {
+    void whenIsADeepCopyDoneByCopyConstructor_thenCopyShouldNotChange() {
         Balance balance = new Balance(10000, "EUR");
-        BankAccountDeep bankAccount = new BankAccountDeep(NAME, SURNAME, balance);
+        BankAccountDeep bankAccount = new BankAccountDeep("Hello", "World", balance);
         BankAccountDeep deepCopy = new BankAccountDeep(bankAccount);
-        balance.setAmount(0);
-        assertNotEquals(bankAccount.getBalance()
-          .getAmount(), deepCopy.getBalance()
-          .getAmount());
+        bankAccount.getBalance().setAmount(0);
+        float deepCopyAmount = deepCopy.getBalance().getAmount();
+        assertNotEquals(0, deepCopyAmount);
     }
 
     @Test
-    void whenIsADeepCopyDoneByCloneMethod_thenNestedObjectShouldNotHaveSameReference() throws CloneNotSupportedException {
-        String name = "Hello";
-        String surname = "World";
+    void whenIsADeepCopyDoneByCloneMethod_thenNestedObjectsAreNotTheSame() throws CloneNotSupportedException {
         Balance balance = new Balance(10000, "EUR");
-        BankAccountDeep bankAccount = new BankAccountDeep(NAME, SURNAME, balance);
+        BankAccountDeep bankAccount = new BankAccountDeep("Hello", "World", balance);
         BankAccountDeep deepCopy = (BankAccountDeep) bankAccount.clone();
         assertNotEquals(bankAccount.getBalance(), deepCopy.getBalance());
     }
@@ -44,10 +41,11 @@ public class DeepCopyTest {
     void whenIsADeepCopyDoneByCloneMethod_thenCopyValueShouldNotChange() throws CloneNotSupportedException {
 
         Balance balance = new Balance(10000, "EUR");
-        BankAccountDeep bankAccount = new BankAccountDeep(NAME, SURNAME, balance);
+        BankAccountDeep bankAccount = new BankAccountDeep("Hello", "World", balance);
         BankAccountDeep deepCopy = (BankAccountDeep) bankAccount.clone();
-        balance.setAmount(0);
-        assertNotEquals(balance.getAmount(), deepCopy.getBalance()
-          .getAmount());
+        bankAccount.getBalance().setAmount(0);
+        float deepCopyAmount = deepCopy.getBalance().getAmount();
+        assertNotEquals(0, deepCopyAmount);
     }
+
 }
