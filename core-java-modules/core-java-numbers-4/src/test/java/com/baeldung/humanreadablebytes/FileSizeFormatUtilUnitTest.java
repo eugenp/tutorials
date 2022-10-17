@@ -8,33 +8,53 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FileSizeFormatUtilUnitTest {
-    private final static Map<Long, String> DATA_MAP = new HashMap<Long, String>() {{
+    private final static Map<Long, String> DATA_MAP_BINARY_PREFIXES = new HashMap<Long, String>() {{
         put(0L, "0 Bytes");
         put(1023L, "1023 Bytes");
-        put(1024L, "1 KB");
-        put(12_345L, "12.06 KB");
-        put(10_123_456L, "9.65 MB");
-        put(10_123_456_798L, "9.43 GB");
-        put(1_777_777_777_777_777_777L, "1.54 EB");
+        put(1024L, "1 KiB");
+        put(12_345L, "12.06 KiB");
+        put(10_123_456L, "9.65 MiB");
+        put(10_123_456_798L, "9.43 GiB");
+        put(1_777_777_777_777_777_777L, "1.54 EiB");
     }};
 
+    private final static Map<Long, String> DATA_MAP_SI_PREFIXES = new HashMap<Long, String>() {{
+        put(0L, "0 Bytes");
+        put(999L, "999 Bytes");
+        put(1000L, "1 KB");
+        put(12_345L, "12.35 KB");
+        put(10_123_456L, "10.12 MB");
+        put(10_123_456_798L, "10.12 GB");
+        put(1_777_777_777_777_777_777L, "1.78 EB");
+    }};
+    
     @Test
-    public void givenBytes_whenCalltoHumanReadableMethod_thenGetExpectedResults() {
-        DATA_MAP.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadable(in)));
+    public void givenBytes_whenCalltoHumanReadableBinaryPrefixesMethod_thenGetExpectedResults() {
+        DATA_MAP_BINARY_PREFIXES.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableBinaryPrefixes(in)));
+    }
+    
+    @Test
+    public void givenBytes_whenCalltoHumanReadableSIPrefixesMethod_thenGetExpectedResults() {
+    	DATA_MAP_SI_PREFIXES.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableSIPrefixes(in)));
     }
 
     @Test
-    public void givenBytes_whenCalltoHumanReadableWithEnumMethod_thenGetExpectedResults() {
-        DATA_MAP.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableWithEnum(in)));
+    public void givenBytes_whenCalltoHumanReadableBinaryPrefixesWithEnumMethod_thenGetExpectedResults() {
+        DATA_MAP_BINARY_PREFIXES.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableBinaryPrefixesWithEnum(in)));
     }
 
+    @Test
+    public void givenBytes_whenCalltoHumanReadableSIPrefixesWithEnumMethod_thenGetExpectedResults() {
+    	DATA_MAP_SI_PREFIXES.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableSIPrefixesWithEnum(in)));
+    }
+    
     @Test
     public void givenBytes_whenCalltoHumanReadableByLeadingZeros_thenGetExpectedResults() {
-        DATA_MAP.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableByNumOfLeadingZeros(in)));
+        DATA_MAP_BINARY_PREFIXES.forEach((in, expected) -> Assert.assertEquals(expected, FileSizeFormatUtil.toHumanReadableByNumOfLeadingZeros(in)));
     }
-
+    
     @Test
     public void givenBytes_whenCalltoHumanReadableByFileUtils_thenOutputExpectedResults() {
-        DATA_MAP.forEach((in, expected) -> System.out.println(in + " bytes -> " + FileUtils.byteCountToDisplaySize(in)));
+        DATA_MAP_BINARY_PREFIXES.forEach((in, expected) -> System.out.println(in + " bytes -> " + FileUtils.byteCountToDisplaySize(in)));
     }
 }

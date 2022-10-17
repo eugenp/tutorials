@@ -1,5 +1,5 @@
 package com.baeldung.javalin.User;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class User {
     public int id;

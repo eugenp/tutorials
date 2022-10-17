@@ -82,7 +82,6 @@
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <geodb.version>0.9</geodb.version>
-        <hsqldb.version>2.3.4</hsqldb.version>
     </properties>
 
 </project>

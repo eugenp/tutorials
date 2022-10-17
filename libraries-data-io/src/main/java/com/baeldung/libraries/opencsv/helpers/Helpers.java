@@ -1,9 +1,9 @@
 package com.baeldung.libraries.opencsv.helpers;
 
 import com.baeldung.libraries.opencsv.Constants;
+import org.apache.commons.io.IOUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -13,9 +13,7 @@ import java.util.List;
 
 public class Helpers {
 
-    /**
-     * Write Files
-     */
+    // Write Files
 
     public static Path fileOutAllPath() throws URISyntaxException {
         URI uri = ClassLoader.getSystemResource(Constants.CSV_All).toURI();
@@ -32,9 +30,7 @@ public class Helpers {
         return Paths.get(uri);
     }
 
-    /**
-     * Read Files
-     */
+    // Read Files
 
     public static Path twoColumnCsvPath() throws URISyntaxException {
         URI uri = ClassLoader.getSystemResource(Constants.TWO_COLUMN_CSV).toURI();
@@ -51,33 +47,12 @@ public class Helpers {
         return Paths.get(uri);
     }
 
-    /**
-     * Simple File Reader
-     */
-
-    public static String readFile(Path path) {
-        String response = "";
-        try {
-            FileReader fr = new FileReader(path.toString());
-            BufferedReader br = new BufferedReader(fr);
-            String strLine;
-            StringBuffer sb = new StringBuffer();
-            while ((strLine = br.readLine()) != null) {
-                sb.append(strLine);
-            }
-            response = sb.toString();
-            System.out.println(response);
-            fr.close();
-            br.close();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return response;
+    public static String readFile(Path path) throws IOException {
+        return IOUtils.toString(path.toUri());
     }
 
-    /**
-     * Dummy Data for Writing.
-     */
+
+    // Dummy Data for Writing
 
     public static List<String[]> twoColumnCsvString() {
         List<String[]> list = new ArrayList<>();
@@ -94,15 +69,4 @@ public class Helpers {
         return list;
     }
 
-    /**
-     * Message Helpers
-     */
-
-    public static void print(String msg) {
-        System.out.println(msg);
-    }
-
-    public static void err(Exception ex) {
-        System.out.println(Constants.GENERIC_EXCEPTION + " " + ex);
-    }
 }

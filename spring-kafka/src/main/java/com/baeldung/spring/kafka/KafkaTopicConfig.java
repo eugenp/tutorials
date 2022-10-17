@@ -31,6 +31,9 @@ public class KafkaTopicConfig {
     @Value(value = "${greeting.topic.name}")
     private String greetingTopicName;
 
+    @Value(value = "${multi.type.topic.name}")
+    private String multiTypeTopicName;
+
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
@@ -65,5 +68,10 @@ public class KafkaTopicConfig {
         configs.put("max.message.bytes", "20971520");
         newTopic.configs(configs);
         return newTopic;
+    }
+
+    @Bean
+    public NewTopic multiTypeTopic() {
+        return new NewTopic(multiTypeTopicName, 1, (short) 1);
     }
 }

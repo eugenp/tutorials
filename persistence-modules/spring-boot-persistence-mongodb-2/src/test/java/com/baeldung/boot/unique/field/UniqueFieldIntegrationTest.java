@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.boot.unique.field.dao.AssetRepository;
@@ -20,9 +21,10 @@ import com.baeldung.boot.unique.field.data.Customer;
 import com.baeldung.boot.unique.field.data.Sale;
 import com.baeldung.boot.unique.field.data.SaleId;
 
-@SpringBootTest
+@SpringBootTest(classes = SpringBootUniqueFieldApplication.class)
 @DirtiesContext
 @RunWith(SpringRunner.class)
+@TestPropertySource("/embedded.properties")
 public class UniqueFieldIntegrationTest {
     @Autowired
     private SaleRepository saleRepo;

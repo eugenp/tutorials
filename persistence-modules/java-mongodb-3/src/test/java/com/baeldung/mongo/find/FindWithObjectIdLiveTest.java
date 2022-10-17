@@ -26,7 +26,7 @@ public class FindWithObjectIdLiveTest {
     private static MongoClient mongoClient;
     private static MongoDatabase database;
     private static MongoCollection<Document> collection;
-    private static final String DATASET_JSON = "/employee.json";
+    private static final String DATASET_JSON = "/vehicle.json";
 
     @BeforeClass
     public static void setUp() throws IOException {
@@ -34,7 +34,7 @@ public class FindWithObjectIdLiveTest {
             mongoClient = new MongoClient("localhost", 27017);
 
             database = mongoClient.getDatabase("baeldung");
-            collection = database.getCollection("employee");
+            collection = database.getCollection("vehicle");
 
             collection.drop();
 
@@ -47,10 +47,10 @@ public class FindWithObjectIdLiveTest {
     }
 
     @Test
-    public void givenEmployeeCollection_whenFetchingDocumentsUsingObjectId_thenCheckingForDocuments() {
-        Document employee = collection.find()
+    public void givenVehicleCollection_whenFetchingDocumentsUsingObjectId_thenCheckingForDocuments() {
+        Document vehicle = collection.find()
           .first();
-        ObjectId objectId = (ObjectId) employee.get(OBJECT_ID_FIELD);
+        ObjectId objectId = (ObjectId) vehicle.get(OBJECT_ID_FIELD);
 
         FindIterable<Document> documents = collection.find(eq(OBJECT_ID_FIELD, objectId));
         MongoCursor<Document> cursor = documents.iterator();
@@ -60,24 +60,24 @@ public class FindWithObjectIdLiveTest {
     }
 
     @Test
-    public void givenEmployeeCollection_whenFetchingFirstDocumentUsingObjectId_thenCheckingForDocument() {
-        Document employee = collection.find()
+    public void givenVehicleCollection_whenFetchingFirstDocumentUsingObjectId_thenCheckingForDocument() {
+        Document vehicle = collection.find()
           .first();
-        ObjectId objectId = (ObjectId) employee.get(OBJECT_ID_FIELD);
+        ObjectId objectId = (ObjectId) vehicle.get(OBJECT_ID_FIELD);
 
-        Document queriedEmployee = collection.find(eq(OBJECT_ID_FIELD, objectId))
+        Document queriedVehicle = collection.find(eq(OBJECT_ID_FIELD, objectId))
           .first();
 
-        assertNotNull(queriedEmployee);
-        assertEquals(employee.get(OBJECT_ID_FIELD), queriedEmployee.get(OBJECT_ID_FIELD));
+        assertNotNull(queriedVehicle);
+        assertEquals(vehicle.get(OBJECT_ID_FIELD), queriedVehicle.get(OBJECT_ID_FIELD));
     }
 
     @Test
-    public void givenEmployeeCollection_whenFetchingUsingRandomObjectId_thenCheckingForDocument() {
-        Document employee = collection.find(eq(OBJECT_ID_FIELD, new ObjectId()))
+    public void givenVehicleCollection_whenFetchingUsingRandomObjectId_thenCheckingForDocument() {
+        Document vehicle = collection.find(eq(OBJECT_ID_FIELD, new ObjectId()))
           .first();
 
-        assertNull(employee);
+        assertNull(vehicle);
     }
 
     @AfterClass

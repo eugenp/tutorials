@@ -1,6 +1,7 @@
 package com.baeldung.quarkus_project;
 
 import io.quarkus.hibernate.reactive.panache.PanacheRepositoryBase;
+import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
@@ -13,7 +14,8 @@ public class ZipCodeRepo implements PanacheRepositoryBase<ZipCode, String> {
         return find("city = ?1", city).stream();
     }
 
+    @ReactiveTransactional
     public Uni<ZipCode> save(ZipCode zipCode) {
-        return zipCode.persistAndFlush();
+        return zipCode.persist();
     }
 }

@@ -5,13 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -35,18 +35,17 @@ public class MultipleEntryPointsSecurityConfig {
 
     @Configuration
     @Order(1)
-    public static class App1ConfigurationAdapter extends WebSecurityConfigurerAdapter {
+    public static class App1ConfigurationAdapter {
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            //@formatter:off
+        @Bean
+        public SecurityFilterChain filterChainApp1(HttpSecurity http) throws Exception {
             http.antMatcher("/admin/**")
                 .authorizeRequests().anyRequest().hasRole("ADMIN")
                 .and().httpBasic().authenticationEntryPoint(authenticationEntryPoint())    
                 .and().exceptionHandling().accessDeniedPage("/403");
-            //@formatter:on
+            return http.build();
         }
-        
+
         @Bean
         public AuthenticationEntryPoint authenticationEntryPoint(){
             BasicAuthenticationEntryPoint entryPoint = new  BasicAuthenticationEntryPoint();
@@ -57,11 +56,10 @@ public class MultipleEntryPointsSecurityConfig {
 
     @Configuration
     @Order(2)
-    public static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
+    public static class App2ConfigurationAdapter {
 
-        protected void configure(HttpSecurity http) throws Exception {
-            
-            //@formatter:off
+        @Bean
+        public SecurityFilterChain filterChainApp2(HttpSecurity http) throws Exception {
             http.antMatcher("/user/**")
                 .authorizeRequests().anyRequest().hasRole("USER")              
                 .and().formLogin().loginProcessingUrl("/user/login")
@@ -73,7 +71,7 @@ public class MultipleEntryPointsSecurityConfig {
                 .defaultAuthenticationEntryPointFor(loginUrlauthenticationEntryPoint(), new AntPathRequestMatcher("/user/general/**"))
                 .accessDeniedPage("/403")
                 .and().csrf().disable();
-            //@formatter:on
+            return http.build();
         }
         
         @Bean
@@ -89,10 +87,15 @@ public class MultipleEntryPointsSecurityConfig {
 
     @Configuration
     @Order(3)
-    public static class App3ConfigurationAdapter extends WebSecurityConfigurerAdapter {
+    public static class App3ConfigurationAdapter {
 
-        protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/guest/**").authorizeRequests().anyRequest().permitAll();
+        @Bean
+        public SecurityFilterChain filterChainApp3(HttpSecurity http) throws Exception {
+            http.antMatcher("/guest/**")
+                .authorizeRequests()
+                .anyRequest()
+                .permitAll();
+            return http.build();
         }
     }
 

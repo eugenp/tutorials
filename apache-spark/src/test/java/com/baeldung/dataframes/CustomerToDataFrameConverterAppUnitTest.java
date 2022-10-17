@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 class CustomerToDataFrameConverterAppUnitTest {
@@ -58,5 +60,10 @@ class CustomerToDataFrameConverterAppUnitTest {
         assertEquals( "jack", row2.getAs("name"));
         assertEquals( "Male", row2.getAs("gender"));
         assertEquals( 1200, (int)row2.getAs("transaction_amount"));
+    }
+    
+    @AfterEach
+    public void cleanup() {
+    	SparkSession.getActiveSession().get().close();
     }
 }

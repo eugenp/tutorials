@@ -19,7 +19,6 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>${flyway-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,8 +63,8 @@
     </build>
 
     <properties>
-        <flyway-core.version>8.0.0</flyway-core.version>
-        <flyway-maven-plugin.version>8.0.0</flyway-maven-plugin.version>
+        <flyway-maven-plugin.version>8.5.13</flyway-maven-plugin.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

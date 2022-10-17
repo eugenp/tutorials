@@ -1,21 +1,21 @@
 package com.baeldung.listfiles;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Test;
-
-import com.baeldung.listfiles.ListFiles;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ListFilesUnitTest {
 
-    private ListFiles listFiles = new ListFiles();
-    private String DIRECTORY = "src/test/resources/listFilesUnitTestFolder";
-    private static final int DEPTH = 1;
-    private Set<String> EXPECTED_FILE_LIST = new HashSet<String>() {
+    private static final String VALID_DIRECTORY = "src/test/resources/listFilesUnitTestFolder";
+    private static final String INVALID_DIRECTORY = "src/test/resources/thisDirectoryDoesNotExist";
+    private static final Set<String> EXPECTED_FILE_SET = new HashSet<String>() {
         {
             add("test.xml");
             add("employee.json");
@@ -23,29 +23,49 @@ public class ListFilesUnitTest {
             add("country.txt");
         }
     };
+    private static final int DEPTH = 1;
+    private final ListFiles listFiles = new ListFiles();
 
     @Test
-    public void givenDir_whenUsingJAVAIO_thenListAllFiles() {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingJavaIO(DIRECTORY));
+    public void givenAValidDirectoryWhenUsingJavaIOThenReturnSetOfFileNames() {
+        assertThat(listFiles.listFilesUsingJavaIO(VALID_DIRECTORY))
+                .isEqualTo(EXPECTED_FILE_SET);
     }
 
     @Test
-    public void givenDir_whenUsingFilesList_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFilesList(DIRECTORY));
+    public void givenAInvalidValidDirectoryWhenUsingJavaIOThenThrowsNullPointerExceptino() {
+        assertThrows(NullPointerException.class,
+                () -> listFiles.listFilesUsingJavaIO(INVALID_DIRECTORY));
     }
 
     @Test
-    public void givenDir_whenWalkingTree_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFileWalk(DIRECTORY,DEPTH));
+    public void givenAValidDirectoryWhenUsingFilesListThenReturnSetOfFileNames() throws IOException {
+        assertThat(listFiles.listFilesUsingFilesList(VALID_DIRECTORY))
+                .isEqualTo(EXPECTED_FILE_SET);
     }
 
     @Test
-    public void givenDir_whenWalkingTreeWithVisitor_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFileWalkAndVisitor(DIRECTORY));
+    public void givenAValidDirectoryWhenUsingFilesWalkWithDepth1ThenReturnSetOfFileNames() throws IOException {
+        assertThat(listFiles.listFilesUsingFileWalk(VALID_DIRECTORY, DEPTH))
+                .isEqualTo(EXPECTED_FILE_SET);
     }
 
     @Test
-    public void givenDir_whenUsingDirectoryStream_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingDirectoryStream(DIRECTORY));
+    public void givenAValidDirectoryWhenUsingFilesWalkFileTreeThenReturnSetOfFileNames() throws IOException {
+        assertThat(listFiles.listFilesUsingFileWalkAndVisitor(VALID_DIRECTORY))
+                .isEqualTo(EXPECTED_FILE_SET);
+    }
+
+    @Test
+    public void givenAValidDirectoryWhenUsingDirectoryStreamThenReturnSetOfFileNames() throws IOException {
+        assertThat(listFiles.listFilesUsingDirectoryStream(VALID_DIRECTORY))
+                .isEqualTo(EXPECTED_FILE_SET);
+    }
+
+    @Test
+    public void givenAValidFileWhenUsingFilesWalkWithDepth1ThenReturnSetOfTheSameFile() throws IOException {
+        Set<String> expectedFileSet = Collections.singleton("test.xml");
+        String filePathString = "src/test/resources/listFilesUnitTestFolder/test.xml";
+        assertEquals(expectedFileSet, listFiles.listFilesUsingFileWalk(filePathString, DEPTH));
     }
 }

@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Demo api
+  description: Demo api for the article 'specify two responses with same code based on optional parameter'
+  version: 0.1.0
+paths:
+  /vehicle:
+    get:
+      responses:
+        '200':
+          description: Get a vehicle
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Car'
+                  - $ref: '#/components/schemas/Bike'
+              examples:
+                car:
+                  summary: an example of car
+                  value:
+                    owner: baeldung
+                    plate: AEX305
+                bike:
+                  summary: an example of bike
+                  value:
+                    owner: john doe
+                    speed: 25
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        owner:
+          type: string
+        plate:
+          type: string
+    Bike:
+      type: object
+      properties:
+        owner:
+          type: string
+        speed:
+          type: integer

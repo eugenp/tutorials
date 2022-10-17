@@ -10,16 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.boot.collection.name.SpringBootCollectionNameApplication;
 import com.baeldung.boot.collection.name.data.Compilation;
 import com.baeldung.boot.collection.name.data.MusicAlbum;
 import com.baeldung.boot.collection.name.data.MusicTrack;
 import com.baeldung.boot.collection.name.data.Store;
 
-@SpringBootTest
+@SpringBootTest(classes = SpringBootCollectionNameApplication.class)
 @DirtiesContext
 @RunWith(SpringRunner.class)
+@TestPropertySource("/embedded.properties")
 public class MusicStoreServiceIntegrationTest {
     @Autowired
     private MusicStoreService service;

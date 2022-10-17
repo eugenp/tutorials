@@ -20,7 +20,7 @@ public class InputStreamToOutputStreamUnitTest {
     void copy(InputStream source, OutputStream target) throws IOException {
         byte[] buf = new byte[8192];
         int length;
-        while ((length = source.read(buf)) > 0) {
+        while ((length = source.read(buf)) != -1) {
             target.write(buf, 0, length);
         }
     }
