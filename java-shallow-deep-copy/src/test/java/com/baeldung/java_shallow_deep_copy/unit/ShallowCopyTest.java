@@ -1,12 +1,12 @@
 package com.baeldung.java_shallow_deep_copy.unit;
 
-import com.baeldung.java_shallow_deep_copy.data.Balance;
-import com.baeldung.java_shallow_deep_copy.data.BankAccountShallow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import com.baeldung.java_shallow_deep_copy.data.Balance;
+import com.baeldung.java_shallow_deep_copy.data.BankAccountShallow;
 
 public class ShallowCopyTest {
 
@@ -28,12 +28,14 @@ public class ShallowCopyTest {
     }
 
     @Test
-    void whenIsAShallowCopyDoneByCopyConstructor_thenCopyShouldChange() throws CloneNotSupportedException {
+    void whenIsAShallowCopyDoneByCopyConstructor_thenCopyShouldChange(){
         Balance balance = new Balance(10000, "EUR");
         BankAccountShallow bankAccount = new BankAccountShallow("Hello", "World", balance);
         BankAccountShallow shallowCopy = new BankAccountShallow(bankAccount);
-        bankAccount.getBalance().setAmount(0);
-        float shallowCopyAmount = shallowCopy.getBalance().getAmount();
+        bankAccount.getBalance()
+          .setAmount(0);
+        float shallowCopyAmount = shallowCopy.getBalance()
+          .getAmount();
         assertEquals(0, shallowCopyAmount);
     }
 
@@ -50,8 +52,10 @@ public class ShallowCopyTest {
         Balance balance = new Balance(10000, "EUR");
         BankAccountShallow bankAccount = new BankAccountShallow("Hello", "World", balance);
         BankAccountShallow shallowCopy = (BankAccountShallow) bankAccount.clone();
-        bankAccount.getBalance().setAmount(0);
-        float shallowCopyAmount = shallowCopy.getBalance().getAmount();
+        bankAccount.getBalance()
+          .setAmount(0);
+        float shallowCopyAmount = shallowCopy.getBalance()
+          .getAmount();
         assertEquals(0, shallowCopyAmount);
     }
 

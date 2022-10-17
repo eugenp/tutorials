@@ -2,7 +2,6 @@ package com.baeldung.java_shallow_deep_copy.data;
 
 public class BankAccountDeep extends BankAccount {
 
-
     public BankAccountDeep(String name, String surname, Balance balance) {
         super(name, surname, balance);
     }
