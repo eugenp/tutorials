@@ -3,8 +3,8 @@ package com.baeldung.loose;
 import java.util.List;
 
 public class MetadataCollector {
-    private FetchMetadata fetchMetadata;
-    private ExportMetadata exportMetadata;
+    private final FetchMetadata fetchMetadata;
+    private final ExportMetadata exportMetadata;
 
     public MetadataCollector(FetchMetadata fetchMetadata, ExportMetadata exportMetadata) {
         this.fetchMetadata = fetchMetadata;
@@ -14,5 +14,13 @@ public class MetadataCollector {
     public void collectMetadata() {
         List<Object> metadata = fetchMetadata.fetchMetadata();
         exportMetadata.export(metadata);
+    }
+
+    public FetchMetadata getFetchMetadata() {
+        return fetchMetadata;
+    }
+
+    public ExportMetadata getExportMetadata() {
+        return exportMetadata;
     }
 }
