@@ -1,14 +1,10 @@
-package com.baeldung.batch;
+package com.baeldung.batch.springboot;
 
 import com.baeldung.batch.model.Transaction;
-import com.baeldung.batch.service.CustomItemProcessor;
-import com.baeldung.batch.service.CustomSkipPolicy;
-import com.baeldung.batch.service.MissingUsernameException;
-import com.baeldung.batch.service.NegativeAmountException;
-import com.baeldung.batch.service.RecordFieldSetMapper;
-import com.baeldung.batch.service.SkippingItemProcessor;
+import com.baeldung.batch.service.*;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemProcessor;
@@ -23,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.oxm.Marshaller;
@@ -30,8 +27,10 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import java.text.ParseException;
 
-@Profile("spring")
-public class SpringBatchConfig {
+@Configuration
+@EnableBatchProcessing
+@Profile("spring-boot")
+public class SpringBootBatchConfig {
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
 
@@ -72,29 +71,29 @@ public class SpringBatchConfig {
     }
 
     @Bean
-    public ItemWriter<Transaction> itemWriter(Marshaller marshaller) {
-        StaxEventItemWriter<Transaction> itemWriter = new StaxEventItemWriter<>();
-        itemWriter.setMarshaller(marshaller);
-        itemWriter.setRootTagName("transactionRecord");
-        itemWriter.setResource(outputXml);
-        return itemWriter;
+    public ItemWriter<Transaction> itemWriter3(Marshaller marshaller) {
+        StaxEventItemWriter<Transaction> itemWriter3 = new StaxEventItemWriter<>();
+        itemWriter3.setMarshaller(marshaller);
+        itemWriter3.setRootTagName("transactionRecord");
+        itemWriter3.setResource(outputXml);
+        return itemWriter3;
     }
 
     @Bean
-    public Marshaller marshaller() {
-        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(Transaction.class);
-        return marshaller;
+    public Marshaller marshaller3() {
+        Jaxb2Marshaller marshaller3 = new Jaxb2Marshaller();
+        marshaller3.setClassesToBeBound(Transaction.class);
+        return marshaller3;
     }
 
     @Bean
-    protected Step step1(@Qualifier("itemProcessor") ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> writer) throws ParseException {
+    protected Step step1(@Qualifier("itemProcessor") ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> itemWriter3) throws ParseException {
         return stepBuilderFactory
                 .get("step1")
                 .<Transaction, Transaction> chunk(10)
                 .reader(itemReader(inputCsv))
                 .processor(processor)
-                .writer(writer)
+                .writer(itemWriter3)
                 .build();
     }
 
@@ -105,13 +104,13 @@ public class SpringBatchConfig {
 
     @Bean
     public Step skippingStep(@Qualifier("skippingItemProcessor") ItemProcessor<Transaction, Transaction> processor,
-                             ItemWriter<Transaction> writer) throws ParseException {
+                             ItemWriter<Transaction> itemWriter3) throws ParseException {
         return stepBuilderFactory
                 .get("skippingStep")
                 .<Transaction, Transaction>chunk(10)
                 .reader(itemReader(invalidInputCsv))
                 .processor(processor)
-                .writer(writer)
+                .writer(itemWriter3)
                 .faultTolerant()
                 .skipLimit(2)
                 .skip(MissingUsernameException.class)
@@ -129,13 +128,13 @@ public class SpringBatchConfig {
 
     @Bean
     public Step skipPolicyStep(@Qualifier("skippingItemProcessor") ItemProcessor<Transaction, Transaction> processor,
-                               ItemWriter<Transaction> writer) throws ParseException {
+                               ItemWriter<Transaction> itemWriter3) throws ParseException {
         return stepBuilderFactory
                 .get("skipPolicyStep")
                 .<Transaction, Transaction>chunk(10)
                 .reader(itemReader(invalidInputCsv))
                 .processor(processor)
-                .writer(writer)
+                .writer(itemWriter3)
                 .faultTolerant()
                 .skipPolicy(new CustomSkipPolicy())
                 .build();
