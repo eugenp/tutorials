@@ -17,6 +17,15 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
@@ -71,6 +80,20 @@
             <groupId>org.jboss</groupId>
             <artifactId>jandex</artifactId>
             <version>2.4.3.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-jre8 -->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>2.34.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
