@@ -12,11 +12,10 @@ public class ShallowCopyTest {
 
     @Test
     void whenIsAShallowCopyDoneByCopyConstructor_thenImmutableObjectWillNotChange() {
-        String name = "Hello";
-        String surname = "World";
-        BankAccountShallow personShallow = new BankAccountShallow(name, surname, null);
-        surname = "Pluto";
-        assertNotEquals(surname, personShallow.getSurname());
+        BankAccountShallow bankAccount = new BankAccountShallow("Hello", "World", null);
+        BankAccountShallow shallowCopy = new BankAccountShallow(bankAccount);
+        bankAccount.setSurname("Pluto");
+        assertNotEquals("Pluto", shallowCopy.getSurname());
     }
 
     @Test
@@ -28,7 +27,7 @@ public class ShallowCopyTest {
     }
 
     @Test
-    void whenIsAShallowCopyDoneByCopyConstructor_thenCopyShouldChange(){
+    void whenIsAShallowCopyDoneByCopyConstructor_thenCopyShouldChange() {
         Balance balance = new Balance(10000, "EUR");
         BankAccountShallow bankAccount = new BankAccountShallow("Hello", "World", balance);
         BankAccountShallow shallowCopy = new BankAccountShallow(bankAccount);
