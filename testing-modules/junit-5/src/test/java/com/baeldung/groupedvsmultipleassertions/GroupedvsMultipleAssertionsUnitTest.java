@@ -13,7 +13,7 @@ class GroupedvsMultipleAssertionsUnitTest {
         User user = new User("baeldung", "support@baeldung.com", false);
         assertAll(
                 "Grouped Assertions of User",
-                () -> assertEquals("baeldung", user.getUsername(), "Username should be baeldung"),
+                () -> assertEquals("admin", user.getUsername(), "Username should be admin"),
                 () -> assertEquals("admin@baeldung.com", user.getEmail(), "Email should be admin@baeldung.com"),
                 () -> assertTrue(user.getActivated(), "User should be activated")
         );
@@ -23,7 +23,7 @@ class GroupedvsMultipleAssertionsUnitTest {
     @Test
     void givenMultipleAssertions_whenSingleAssertStatementFails_thenRestWillNotBeExecuted() {
         User user = new User("baeldung", "support@baeldung.com", false);
-        assertEquals("baeldung", user.getUsername(), "Username should be baeldung");
+        assertEquals("admin", user.getUsername(), "Username should be admin");
         assertEquals("admin@baeldung.com", user.getEmail(), "Email should be admin@baeldung.com");
         assertTrue(user.getActivated(), "User should be activated");
     }
