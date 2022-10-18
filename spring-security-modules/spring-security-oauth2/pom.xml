@@ -53,7 +53,7 @@
         <dependency>
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-            <version>${spring-boot.version}</version>
+            <version>${spring-security-oauth2-autoconfigure.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -80,9 +80,7 @@
     </dependencies>
 
     <properties>
-        <!-- Remove this explicit override once more recent version of spring-security-oauth2-autoconfigure -->
-        <!-- is available -->
-        <spring-boot.version>2.5.2</spring-boot.version>
+        <spring-security-oauth2-autoconfigure.version>2.6.8</spring-security-oauth2-autoconfigure.version>
         <start-class>com.baeldung.oauth2.SpringOAuthApplication</start-class>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
