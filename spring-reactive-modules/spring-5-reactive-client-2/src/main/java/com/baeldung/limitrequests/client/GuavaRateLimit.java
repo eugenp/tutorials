@@ -1,7 +1,5 @@
 package com.baeldung.limitrequests.client;
 
-import java.util.Random;
-
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.baeldung.limitrequests.client.utils.Client;
@@ -14,8 +12,6 @@ public class GuavaRateLimit {
 
     private GuavaRateLimit() {
     }
-
-    static Random random = new Random();
 
     public static Flux<Integer> fetch(WebClient client, int requests, double limit) {
         String clientId = Client.id(requests, GuavaRateLimit.class, limit);
