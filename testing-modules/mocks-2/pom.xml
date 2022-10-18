@@ -16,7 +16,7 @@
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
-            <version>${datefaker.version}</version>
+            <version>${datafaker.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -26,7 +26,7 @@
     </dependencies>
 
     <properties>
-        <datefaker.version>1.6.0</datefaker.version>
+        <datafaker.version>1.6.0</datafaker.version>
         <jackson.version>2.13.4</jackson.version>
     </properties>
 
