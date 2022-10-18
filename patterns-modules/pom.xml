@@ -29,6 +29,7 @@
         <module>solid</module>
         <module>clean-architecture</module>
         <module>enterprise-patterns</module>
+        <module>coupling</module>
     </modules>
 
     <dependencyManagement>
