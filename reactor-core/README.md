@@ -12,3 +12,4 @@ This module contains articles about Reactor Core.
 - [What Does Mono.defer() Do?](https://www.baeldung.com/java-mono-defer)
 - [Handling Exceptions in Project Reactor](https://www.baeldung.com/reactor-exceptions)
 - [Difference Between Flux.create and Flux.generate](https://www.baeldung.com/java-flux-create-generate)
+- [Difference Between Flux and Mono](https://www.baeldung.com/java-reactor-flux-vs-mono)
