@@ -34,7 +34,8 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ResilientAppControllerUnitTest {
+// test marked as manual because there are multiple test methods calling the same API and the order is not guaranteed
+class ResilientAppControllerManualTest {
 
     @RegisterExtension
     static WireMockExtension EXTERNAL_SERVICE = WireMockExtension.newInstance()
