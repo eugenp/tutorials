@@ -1,4 +1,4 @@
-package com.baeldung.java_shallow_deep_copy.data;
+package com.baeldung.data;
 
 public class Balance implements Cloneable {
 
