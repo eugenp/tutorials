@@ -34,18 +34,19 @@ public class EncodeDecodeMarketDataUnitTest {
         TradeDataEncoder dataEncoder = new TradeDataEncoder();
         // we parse price data (double) into two parts: mantis and exponent
         BigDecimal priceDecimal = BigDecimal.valueOf(marketData.getPrice());
-        int priceMantissa = priceDecimal.scaleByPowerOfTen(priceDecimal.scale()).intValue();
+        int priceMantissa = priceDecimal.scaleByPowerOfTen(priceDecimal.scale())
+          .intValue();
         int priceExponent = priceDecimal.scale() * -1;
         // encode data
         TradeDataEncoder encoder = dataEncoder.wrapAndApplyHeader(buffer, 0, headerEncoder);
         encoder.amount(marketData.getAmount());
         encoder.quote()
-            .market(marketData.getMarket())
-            .currency(marketData.getCurrency())
-            .symbol(marketData.getSymbol())
-            .price()
-            .mantissa(priceMantissa)
-            .exponent((byte) priceExponent);
+          .market(marketData.getMarket())
+          .currency(marketData.getCurrency())
+          .symbol(marketData.getSymbol())
+          .price()
+          .mantissa(priceMantissa)
+          .exponent((byte) priceExponent);
 
         // necessary decoders
         MessageHeaderDecoder headerDecoder = new MessageHeaderDecoder();
@@ -53,16 +54,22 @@ public class EncodeDecodeMarketDataUnitTest {
         // decode data
         dataDecoder.wrapAndApplyHeader(buffer, 0, headerDecoder);
         // decode price data (from mantissa and exponent) into a double
-        double price = BigDecimal.valueOf(dataDecoder.quote().price().mantissa())
-            .scaleByPowerOfTen(dataDecoder.quote().price().exponent())
-            .doubleValue();
+        double price = BigDecimal.valueOf(dataDecoder.quote()
+            .price()
+            .mantissa())
+          .scaleByPowerOfTen(dataDecoder.quote()
+            .price()
+            .exponent())
+          .doubleValue();
         // ensure we have the exact same values
         Assertions.assertEquals(2, dataDecoder.amount());
-        Assertions.assertEquals("IBM", dataDecoder.quote().symbol());
-        Assertions.assertEquals(Market.NYSE, dataDecoder.quote().market());
-        Assertions.assertEquals(Currency.USD, dataDecoder.quote().currency());
+        Assertions.assertEquals("IBM", dataDecoder.quote()
+          .symbol());
+        Assertions.assertEquals(Market.NYSE, dataDecoder.quote()
+          .market());
+        Assertions.assertEquals(Currency.USD, dataDecoder.quote()
+          .currency());
         Assertions.assertEquals(128.99, price);
     }
-
 
 }

@@ -13,29 +13,25 @@ public class MarketDataSource implements Iterator<MarketData> {
 
     public MarketDataSource() {
         // adding some test data into queue
-        this.dataQueue.addAll(Arrays.asList(
-            MarketData.builder()
-                .amount(1)
-                .market(Market.NASDAQ)
-                .symbol("AAPL")
-                .price(134.12)
-                .currency(Currency.USD)
-                .build(),
-            MarketData.builder()
-                .amount(2)
-                .market(Market.NYSE)
-                .symbol("IBM")
-                .price(128.99)
-                .currency(Currency.USD)
-                .build(),
-            MarketData.builder()
-                .amount(1)
-                .market(Market.NASDAQ)
-                .symbol("AXP")
-                .price(34.87)
-                .currency(Currency.EUR)
-                .build()
-        ));
+        this.dataQueue.addAll(Arrays.asList(MarketData.builder()
+          .amount(1)
+          .market(Market.NASDAQ)
+          .symbol("AAPL")
+          .price(134.12)
+          .currency(Currency.USD)
+          .build(), MarketData.builder()
+          .amount(2)
+          .market(Market.NYSE)
+          .symbol("IBM")
+          .price(128.99)
+          .currency(Currency.USD)
+          .build(), MarketData.builder()
+          .amount(1)
+          .market(Market.NASDAQ)
+          .symbol("AXP")
+          .price(34.87)
+          .currency(Currency.EUR)
+          .build()));
     }
 
     @Override

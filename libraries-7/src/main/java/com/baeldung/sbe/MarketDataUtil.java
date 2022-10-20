@@ -21,18 +21,19 @@ public class MarketDataUtil {
         final TradeDataEncoder dataEncoder = new TradeDataEncoder();
 
         final BigDecimal priceDecimal = BigDecimal.valueOf(marketData.getPrice());
-        final int priceMantis = priceDecimal.scaleByPowerOfTen(priceDecimal.scale()).intValue();
+        final int priceMantis = priceDecimal.scaleByPowerOfTen(priceDecimal.scale())
+          .intValue();
         final int priceExponent = priceDecimal.scale() * -1;
 
         final TradeDataEncoder encoder = dataEncoder.wrapAndApplyHeader(directBuffer, pos, headerEncoder);
         encoder.amount(marketData.getAmount());
         encoder.quote()
-            .market(marketData.getMarket())
-            .currency(marketData.getCurrency())
-            .symbol(marketData.getSymbol())
-            .price()
-                .mantissa(priceMantis)
-                .exponent((byte) priceExponent);
+          .market(marketData.getMarket())
+          .currency(marketData.getCurrency())
+          .symbol(marketData.getSymbol())
+          .price()
+          .mantissa(priceMantis)
+          .exponent((byte) priceExponent);
 
         // set position
         final int encodedLength = headerEncoder.encodedLength() + encoder.encodedLength();
@@ -54,17 +55,24 @@ public class MarketDataUtil {
         final int encodedLength = headerDecoder.encodedLength() + dataDecoder.encodedLength();
         buffer.position(pos + encodedLength);
 
-        final double price = BigDecimal.valueOf(dataDecoder.quote().price().mantissa())
-            .scaleByPowerOfTen(dataDecoder.quote().price().exponent())
-            .doubleValue();
+        final double price = BigDecimal.valueOf(dataDecoder.quote()
+            .price()
+            .mantissa())
+          .scaleByPowerOfTen(dataDecoder.quote()
+            .price()
+            .exponent())
+          .doubleValue();
 
         return MarketData.builder()
-            .amount(dataDecoder.amount())
-            .symbol(dataDecoder.quote().symbol())
-            .market(dataDecoder.quote().market())
-            .currency(dataDecoder.quote().currency())
-            .price(price)
-            .build();
+          .amount(dataDecoder.amount())
+          .symbol(dataDecoder.quote()
+            .symbol())
+          .market(dataDecoder.quote()
+            .market())
+          .currency(dataDecoder.quote()
+            .currency())
+          .price(price)
+          .build();
     }
 
 }

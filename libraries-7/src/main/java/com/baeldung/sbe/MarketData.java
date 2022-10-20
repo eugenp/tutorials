@@ -88,12 +88,11 @@ public class MarketData {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", MarketData.class.getSimpleName() + "[", "]")
-            .add("amount=" + amount)
-            .add("price=" + price)
-            .add("market=" + market)
-            .add("currency=" + currency)
-            .add("symbol='" + symbol + "'")
-            .toString();
+        return new StringJoiner(", ", MarketData.class.getSimpleName() + "[", "]").add("amount=" + amount)
+          .add("price=" + price)
+          .add("market=" + market)
+          .add("currency=" + currency)
+          .add("symbol='" + symbol + "'")
+          .toString();
     }
 }
