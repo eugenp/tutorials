@@ -1,3 +1,5 @@
+package com.baeldung.factoryGeneric;
+
 import java.util.Date;
 
 public class DateNotifier implements Notifier<Date> {

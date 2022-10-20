@@ -1,3 +1,5 @@
+package com.baeldung.factoryGeneric;
+
 public class StringNotifier implements Notifier<String> {
 
     @Override
