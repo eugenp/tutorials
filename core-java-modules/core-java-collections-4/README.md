@@ -10,3 +10,4 @@
 - [Create an Empty Map in Java](https://www.baeldung.com/java-create-empty-map)
 - [Sorting Objects in a List by Date](https://www.baeldung.com/java-sort-list-by-date)
 - [Fixed Size Queue Implementations in Java](https://www.baeldung.com/java-fixed-size-queue)
+- [Difference Between Java Enumeration and Iterator](https://www.baeldung.com/java-enumeration-vs-iterator)
