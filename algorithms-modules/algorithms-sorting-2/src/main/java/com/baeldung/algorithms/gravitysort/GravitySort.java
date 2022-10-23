@@ -12,7 +12,7 @@ public class GravitySort {
         return max;
     }
 
-    public static boolean[][] setUpAbacus(int[] A, int m) {
+    public static boolean[][] setupAbacus(int[] A, int m) {
         boolean[][] abacus = new boolean[A.length][m];
         for (int i = 0; i < abacus.length; i++) {
             int number = A[i];
@@ -52,7 +52,7 @@ public class GravitySort {
 
     public static void sort(int[] A) {
         int m = findMax(A);
-        boolean[][] abacus = setUpAbacus(A, m);
+        boolean[][] abacus = setupAbacus(A, m);
         dropBeads(abacus, A, m);
         // transform abacus into sorted list
         transformToList(abacus, A);
