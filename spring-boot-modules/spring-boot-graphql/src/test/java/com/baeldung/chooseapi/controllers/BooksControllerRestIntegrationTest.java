@@ -1,4 +1,4 @@
-package com.baeldung.chooseapi.rest;
+package com.baeldung.chooseapi.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class BooksControllerTest {
+class BooksControllerRestIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

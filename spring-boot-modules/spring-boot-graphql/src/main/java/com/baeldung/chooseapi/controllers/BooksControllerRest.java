@@ -1,23 +1,23 @@
-package com.baeldung.chooseapi.rest;
+package com.baeldung.chooseapi.controllers;
 
-import com.baeldung.chooseapi.Book;
-import com.baeldung.chooseapi.BooksService;
+import com.baeldung.chooseapi.dtos.Book;
+import com.baeldung.chooseapi.services.BooksService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class BooksController {
+public class BooksControllerRest {
 
     private final BooksService booksService;
 
-    public BooksController(BooksService booksService) {
+    public BooksControllerRest(BooksService booksService) {
         this.booksService = booksService;
     }
 
     @GetMapping("/rest/books")
-    public List<Book> all() {
+    public List<Book> books() {
         return booksService.getBooks();
     }
 

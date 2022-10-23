@@ -1,4 +1,4 @@
-package com.baeldung.chooseapi;
+package com.baeldung.chooseapi.dtos;
 
 import java.util.Objects;
 

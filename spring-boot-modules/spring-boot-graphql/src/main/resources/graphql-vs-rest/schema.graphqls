@@ -44,8 +44,7 @@ input ProductUpdateModel {
 }
 
 
-# The Root Query for the application
-type Query {
+# The Root Query for the application {
     products(size: Int, page: Int): [Product]!
     product(id: Int): Product!
 }

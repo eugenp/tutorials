@@ -18,7 +18,7 @@ import static org.springframework.graphql.execution.ErrorType.NOT_FOUND;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = GraphQLErrorHandlerApplication.class)
 @ActiveProfiles("error-handling")
-public class GraphQLErrorHandlerIntegrationTest {
+class GraphQLErrorHandlerIntegrationTest {
 
     private static final String GRAPHQL_TEST_REQUEST_PATH = "src/test/resources/graphql-files/request/%s_request.graphql";
     private static final String GRAPHQL_TEST_RESPONSE_PATH = "src/test/resources/graphql-files/response/%s_response.json";
