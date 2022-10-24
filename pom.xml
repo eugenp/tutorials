@@ -175,6 +175,23 @@
                         </goals>
                     </execution>
                 </executions>
+                <reportSets>
+                    <reportSet>
+                        <id>aggregate</id>
+                        <inherited>false</inherited> <!-- don't run aggregate in child modules -->
+                        <reports>
+                            <report>aggregate-pmd</report>
+                            <report>aggregate-cpd</report>
+                        </reports>
+                    </reportSet>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                           <report>pmd</report>
+                           <report>cpd</report>
+                        </reports>
+                    </reportSet>
+            </reportSets>
             </plugin>
             <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
