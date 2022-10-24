@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.daemon;
+package com.baeldung.concurrent.startathread;
 
 public class SingleThreadExample {
     public static void main(String[] args) {

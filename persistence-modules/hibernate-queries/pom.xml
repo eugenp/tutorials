@@ -87,6 +87,7 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
 </project>

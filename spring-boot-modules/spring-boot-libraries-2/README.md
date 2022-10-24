@@ -9,5 +9,5 @@ This module contains articles about various Spring Boot libraries
 - [An Introduction to Kong](https://www.baeldung.com/kong)
 - [Getting Started With GraphQL SPQR and Spring Boot](https://www.baeldung.com/spring-boot-graphql-spqr)
 - [Scanning Java Annotations At Runtime](https://www.baeldung.com/java-scan-annotations-runtime)
-  
+- [Guide to Resilience4j With Spring Boot](https://www.baeldung.com/spring-boot-resilience4j)  
 More articles: [[prev -->]](/spring-boot-modules/spring-boot-libraries)

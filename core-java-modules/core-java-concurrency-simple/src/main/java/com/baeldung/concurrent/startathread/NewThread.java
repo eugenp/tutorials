@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.daemon;
+package com.baeldung.concurrent.startathread;
 
 public class NewThread extends Thread {
     public void run() {
