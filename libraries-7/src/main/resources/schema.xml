@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbe:messageSchema xmlns:sbe="http://fixprotocol.io/2016/sbe"
+  package="com.baeldung.sbe.stub" id="1" version="0" semanticVersion="5.2" description="A schema represents stock market data.">
+    <types>
+        <composite name="messageHeader" description="Message identifiers and length of message root.">
+            <type name="blockLength" primitiveType="uint16"/>
+            <type name="templateId" primitiveType="uint16"/>
+            <type name="schemaId" primitiveType="uint16"/>
+            <type name="version" primitiveType="uint16"/>
+        </composite>
+        <enum name="Market" encodingType="uint8">
+            <validValue name="NYSE" description="New York Stock Exchange">0</validValue>
+            <validValue name="NASDAQ" description="National Association of Securities Dealers Automated Quotations">1</validValue>
+        </enum>
+        <type name="Symbol" primitiveType="char" length="4" characterEncoding="ASCII" description="Stock symbol"/>
+        <composite name="Decimal">
+            <type name="mantissa" primitiveType="uint64" minValue="0"/>
+            <type name="exponent" primitiveType="int8"/>
+        </composite>
+        <enum name="Currency" encodingType="uint8">
+            <validValue name="USD" description="US Dollar">0</validValue>
+            <validValue name="EUR" description="Euro">1</validValue>
+        </enum>
+        <composite name="Quote" description="A quote represents the price of a stock in a market">
+            <ref name="market" type="Market"/>
+            <ref name="symbol" type="Symbol"/>
+            <ref name="price" type="Decimal"/>
+            <ref name="currency" type="Currency"/>
+        </composite>
+    </types>
+    <sbe:message name="TradeData" id="1" description="Represents a quote and amount of trade">
+        <field name="quote" id="1" type="Quote"/>
+        <field name="amount" id="2" type="uint16"/>
+    </sbe:message>
+</sbe:messageSchema>
