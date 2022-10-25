@@ -1,4 +1,4 @@
-package caching;
+package com.baeldung.webflux.caching;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
