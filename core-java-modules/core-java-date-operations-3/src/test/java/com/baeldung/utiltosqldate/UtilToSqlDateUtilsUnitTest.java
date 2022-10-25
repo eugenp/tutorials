@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 
-public class UtilToSqlDateUtilsTest {
+public class UtilToSqlDateUtilsUnitTest {
 
     @Test
     public void given_utilDate_when_Casting_to_sqldate_throw_exception() {
