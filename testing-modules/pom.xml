@@ -32,6 +32,7 @@
         <module>mockito</module>
         <module>mockito-simple</module>
         <module>mocks</module>
+        <module>mocks-2</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
         <module>powermock</module>
