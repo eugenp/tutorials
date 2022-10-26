@@ -1,4 +1,4 @@
-package com.baeldung.collections;
+package com.baeldung.collections.interation;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -61,7 +61,7 @@ public class IterateListSimultaneousltUnitTest {
         List<EncapData> list = List.of(new EncapData("John", 1),
                                 new EncapData("Nik", 2),
                                 new EncapData("Tom", 3));
-        List<String> processedList = list.stream().map(l -> String.format("[Using Encapsulated Record] Processing ArrayList Simultaneously : %d, %s", l.getNumber(), l.getName()))
+        List<String> processedList = list.stream().map(l -> String.format("[Using Encapsulated Record] Processing ArrayList Simultaneously : %d, %s", l.number(), l.name()))
           .collect(Collectors.toList());
         Assertions.assertTrue(processedList.containsAll(
           List.of("[Using Encapsulated Record] Processing ArrayList Simultaneously : 1, John",
@@ -71,28 +71,4 @@ public class IterateListSimultaneousltUnitTest {
 
 }
 
-class EncapData {
-    String name;
-    int number;
-
-    public EncapData(String name, int number) {
-        this.name = name;
-        this.number = number;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-}
+record EncapData (String name, int number){};
