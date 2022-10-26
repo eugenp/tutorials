@@ -8,3 +8,4 @@
 - [Automatic Generation of the Builder Pattern with FreeBuilder](https://www.baeldung.com/java-builder-pattern-freebuilder)
 - [How to Replace Many if Statements in Java](https://www.baeldung.com/java-replace-if-statements)
 - [Prototype Pattern in Java](https://www.baeldung.com/java-pattern-prototype)
+- [Implementing Factory Pattern With Generics in Java](https://www.baeldung.com/java-factory-pattern-generics)
