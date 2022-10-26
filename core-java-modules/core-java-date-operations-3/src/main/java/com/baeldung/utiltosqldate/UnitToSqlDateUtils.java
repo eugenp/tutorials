@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.TimeZone;
 
-public class UnitToSqlDateUtils {
+public class UtilToSqlDateUtils {
 
     public static java.util.Date createAmericanDate(String date) throws ParseException {
         SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
