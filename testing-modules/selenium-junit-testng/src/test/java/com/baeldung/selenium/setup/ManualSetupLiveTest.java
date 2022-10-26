@@ -43,7 +43,7 @@ final class ManualSetupLiveTest {
     }
 
     @Test
-    void givenChromeDriver_whenNavigateToBaeldung() {
+    void givenChromeDriver_whenNavigateToBaeldung_thenFindTitleIsSuccessful() {
         setupChromeDriver();
         driver.get(URL);
         final WebElement title = driver.findElement(By.xpath(TITLE_XPATH));
@@ -52,7 +52,7 @@ final class ManualSetupLiveTest {
     }
 
     @Test
-    void givenEdgeDriver_whenNavigateToBaeldung() {
+    void givenEdgeDriver_whenNavigateToBaeldung_thenFindTitleIsSuccessful() {
         setupEdgeDriver();
         driver.get(URL);
         final WebElement title = driver.findElement(By.xpath(TITLE_XPATH));
@@ -61,7 +61,7 @@ final class ManualSetupLiveTest {
     }
 
     @Test
-    void givenGeckoDriver_whenNavigateToBaeldung() {
+    void givenGeckoDriver_whenNavigateToBaeldung_thenFindTitleIsSuccessful() {
         setupGeckoDriver();
         driver.get(URL);
         final WebElement title = driver.findElement(By.xpath(TITLE_XPATH));

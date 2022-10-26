@@ -1,4 +1,4 @@
-package caching;
+package com.baeldung.webflux.caching;
 
 
 import org.junit.jupiter.api.Test;
@@ -9,6 +9,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.utility.DockerImageName;
+
 import reactor.core.publisher.Mono;
 
 import static org.assertj.core.api.Assertions.assertThat;
