@@ -433,6 +433,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+                <module>libraries-7</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1348,7 +1349,7 @@
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
         <lombok.version>1.18.24</lombok.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.214</h2.version>
         <guava.version>31.1-jre</guava.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
     </properties>
