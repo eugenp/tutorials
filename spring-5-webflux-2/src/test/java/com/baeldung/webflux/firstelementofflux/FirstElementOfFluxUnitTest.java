@@ -1,4 +1,4 @@
-package firstelementofflux;
+package com.baeldung.webflux.firstelementofflux;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-import model.Payment;
+import com.baeldung.webflux.model.Payment;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
