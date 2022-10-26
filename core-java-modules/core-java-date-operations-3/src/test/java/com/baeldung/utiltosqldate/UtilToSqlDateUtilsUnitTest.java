@@ -18,10 +18,10 @@ public class UtilToSqlDateUtilsUnitTest {
     public void given_utilDate_whenStandardConversion_timezone_lost() throws ParseException {
         java.util.Date date = UnitToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
 
-        java.sql.Date sqlDate;
 
         UnitToSqlDateUtils.switchTimezone("America/Los_Angeles");
-        sqlDate = new java.sql.Date(date.getTime());
+
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         Assertions.assertEquals("2010-05-23", sqlDate.toString());
 
         UnitToSqlDateUtils.switchTimezone("Rome");
