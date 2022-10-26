@@ -41,10 +41,10 @@ public class UtilToSqlDateUtilsUnitTest {
     public void given_utilDate_whenUsingJavaTimeConversion_timezone_kept() throws ParseException {
         java.util.Date date = UnitToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
 
-        java.time.LocalDate localDate;
 
         UnitToSqlDateUtils.switchTimezone("America/Los_Angeles");
-        localDate = UnitToSqlDateUtils.getLocalDate(date,"America/Los_Angeles");
+
+        java.time.LocalDate localDate = UnitToSqlDateUtils.getLocalDate(date,"America/Los_Angeles");
         Assertions.assertEquals(localDate.toString(), "2010-05-23");
 
         UnitToSqlDateUtils.switchTimezone("Rome");
