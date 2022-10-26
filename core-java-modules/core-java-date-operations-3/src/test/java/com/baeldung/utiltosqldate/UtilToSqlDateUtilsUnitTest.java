@@ -16,39 +16,39 @@ public class UtilToSqlDateUtilsUnitTest {
 
     @Test
     public void given_utilDate_whenStandardConversion_timezone_lost() throws ParseException {
-        java.util.Date date = UnitToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
+        java.util.Date date = UtilToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
 
 
-        UnitToSqlDateUtils.switchTimezone("America/Los_Angeles");
+        UtilToSqlDateUtils.switchTimezone("America/Los_Angeles");
 
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         Assertions.assertEquals("2010-05-23", sqlDate.toString());
 
-        UnitToSqlDateUtils.switchTimezone("Rome");
+        UtilToSqlDateUtils.switchTimezone("Rome");
         sqlDate = new java.sql.Date(date.getTime());
         Assertions.assertEquals("2010-05-24",sqlDate.toString());
     }
 
     @Test
     public void given_utilDate_conversion_to_timestamp_keep_time_info() throws ParseException {
-        java.util.Date date = UnitToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
-        UnitToSqlDateUtils.switchTimezone("America/Los_Angeles");
+        java.util.Date date = UtilToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
+        UtilToSqlDateUtils.switchTimezone("America/Los_Angeles");
         java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
         Assertions.assertEquals("2010-05-23 22:01:02.0",timestamp.toString());
     }
 
     @Test
     public void given_utilDate_whenUsingJavaTimeConversion_timezone_kept() throws ParseException {
-        java.util.Date date = UnitToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
+        java.util.Date date = UtilToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
 
 
-        UnitToSqlDateUtils.switchTimezone("America/Los_Angeles");
+        UtilToSqlDateUtils.switchTimezone("America/Los_Angeles");
 
-        java.time.LocalDate localDate = UnitToSqlDateUtils.getLocalDate(date,"America/Los_Angeles");
+        java.time.LocalDate localDate = UtilToSqlDateUtils.getLocalDate(date,"America/Los_Angeles");
         Assertions.assertEquals(localDate.toString(), "2010-05-23");
 
-        UnitToSqlDateUtils.switchTimezone("Rome");
-        localDate = UnitToSqlDateUtils.getLocalDate(date,"America/Los_Angeles");
+        UtilToSqlDateUtils.switchTimezone("Rome");
+        localDate = UtilToSqlDateUtils.getLocalDate(date,"America/Los_Angeles");
         Assertions.assertEquals(localDate.toString(), "2010-05-23");
     }
 
