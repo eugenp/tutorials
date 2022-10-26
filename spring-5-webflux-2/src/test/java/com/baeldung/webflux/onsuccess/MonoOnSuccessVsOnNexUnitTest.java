@@ -1,4 +1,4 @@
-package onsuccess;
+package com.baeldung.webflux.onsuccess;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -10,7 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import model.Payment;
+import com.baeldung.webflux.model.Payment;
+
 import reactor.core.publisher.Mono;
 
 class MonoOnSuccessVsOnNexUnitTest {

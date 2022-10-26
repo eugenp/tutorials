@@ -1,6 +1,6 @@
-package onsuccess;
+package com.baeldung.webflux.onsuccess;
 
-import model.Payment;
+import com.baeldung.webflux.model.Payment;
 
 public class PaymentService {
 
