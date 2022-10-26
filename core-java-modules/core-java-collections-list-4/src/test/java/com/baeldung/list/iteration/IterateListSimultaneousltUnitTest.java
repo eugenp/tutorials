@@ -1,4 +1,4 @@
-package com.baeldung.collections.interation;
+package com.baeldung.list.iteration;
 
 import java.util.ArrayList;
 import java.util.Iterator;
