@@ -14,9 +14,7 @@ public class RestTemplateClientController {
 
 	@GetMapping("/welcomeclient")
 	public String greetMessage() {
-
 		String response = restTemplate.getForObject(WELCOME_URL, String.class);
-
 		return response;
 	}
 }

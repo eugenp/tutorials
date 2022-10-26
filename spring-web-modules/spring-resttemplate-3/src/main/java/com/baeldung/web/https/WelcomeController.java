@@ -10,5 +10,4 @@ public class WelcomeController {
 	public String welcome() {
 		return "Welcome To Secured REST Service";
 	}
-
 }
