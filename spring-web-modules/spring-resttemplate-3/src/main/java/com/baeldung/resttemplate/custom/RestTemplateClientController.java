@@ -7,14 +7,14 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class RestTemplateClientController {
-	private static final String WELCOME_URL = "https://localhost:8443/welcome";
+    private static final String WELCOME_URL = "https://localhost:8443/welcome";
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@GetMapping("/welcomeclient")
-	public String greetMessage() {
-		String response = restTemplate.getForObject(WELCOME_URL, String.class);
-		return response;
-	}
+    @GetMapping("/welcomeclient")
+    public String greetMessage() {
+      String response = restTemplate.getForObject(WELCOME_URL, String.class);
+      return response;
+    }
 }
