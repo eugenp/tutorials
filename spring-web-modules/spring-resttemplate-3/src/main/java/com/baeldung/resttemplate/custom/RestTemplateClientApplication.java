@@ -9,9 +9,9 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.properties")
 @SpringBootApplication
 public class RestTemplateClientApplication {
-	public static void main(String[] args) {
-		SpringApplication application = new SpringApplication(RestTemplateClientApplication.class);
-		application.setAdditionalProfiles("ssl-client");
-		application.run(args);
-	}
+    public static void main(String[] args) {
+      SpringApplication application = new SpringApplication(RestTemplateClientApplication.class);
+      application.setAdditionalProfiles("ssl-client");
+      application.run(args);
+    }
 }
