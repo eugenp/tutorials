@@ -24,22 +24,22 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class CustomRestTemplateConfiguration {
 
-	@Value("${trust.store}")
-	private Resource trustStore;
+    @Value("${trust.store}")
+    private Resource trustStore;
 
-	@Value("${trust.store.password}")
-	private String trustStorePassword;
+    @Value("${trust.store.password}")
+    private String trustStorePassword;
 
-	@Bean
-	public RestTemplate restTemplate() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException,
-			CertificateException, MalformedURLException, IOException {
+    @Bean
+    public RestTemplate restTemplate() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException,
+      CertificateException, MalformedURLException, IOException {
 
-		SSLContext sslContext = new SSLContextBuilder()
-				.loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray()).build();
-		SSLConnectionSocketFactory sslConFactory = new SSLConnectionSocketFactory(sslContext);
+      SSLContext sslContext = new SSLContextBuilder()
+        .loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray()).build();
+      SSLConnectionSocketFactory sslConFactory = new SSLConnectionSocketFactory(sslContext);
 
-		CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConFactory).build();
-		ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-		return new RestTemplate(requestFactory);
-	}
+      CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConFactory).build();
+      ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+      return new RestTemplate(requestFactory);
+    }
 }
