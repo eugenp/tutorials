@@ -56,6 +56,12 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+    	<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -80,6 +86,7 @@
         <assertj.version>3.22.0</assertj.version>
         <maven.compiler.source.version>17</maven.compiler.source.version>
         <maven.compiler.target.version>17</maven.compiler.target.version>
+        <spring.version>5.3.22</spring.version>
     </properties>
 
 </project>
