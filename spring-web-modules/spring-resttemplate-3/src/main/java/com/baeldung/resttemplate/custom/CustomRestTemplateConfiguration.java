@@ -34,12 +34,12 @@ public class CustomRestTemplateConfiguration {
     public RestTemplate restTemplate() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException,
       CertificateException, MalformedURLException, IOException {
 
-      SSLContext sslContext = new SSLContextBuilder()
-        .loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray()).build();
-      SSLConnectionSocketFactory sslConFactory = new SSLConnectionSocketFactory(sslContext);
+        SSLContext sslContext = new SSLContextBuilder()
+         .loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray()).build();
+        SSLConnectionSocketFactory sslConFactory = new SSLConnectionSocketFactory(sslContext);
 
-      CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConFactory).build();
-      ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-      return new RestTemplate(requestFactory);
+        CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConFactory).build();
+        ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new RestTemplate(requestFactory);
     }
 }
