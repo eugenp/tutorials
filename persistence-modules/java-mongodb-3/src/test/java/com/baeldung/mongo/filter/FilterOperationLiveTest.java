@@ -47,7 +47,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingEqualsOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingEqualsOperator_thenFindMatchingDocuments() {
         Bson filter = eq("userName", "Jack");
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -57,7 +57,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingNotEqualOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingNotEqualOperator_thenFindMatchingDocuments() {
         Bson filter = ne("userName", "Jack");
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -67,7 +67,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingGreaterThanOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingGreaterThanOperator_thenFindMatchingDocuments() {
         Bson filter = gt("age", 25);
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -77,7 +77,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingLessThanOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingLessThanOperator_thenFindMatchingDocuments() {
         Bson filter = lt("age", 25);
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -87,7 +87,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingInOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingInOperator_thenFindMatchingDocuments() {
         Bson filter = in("userName", "Jack", "Lisa");
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -97,7 +97,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingNotInOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingNotInOperator_thenFindMatchingDocuments() {
         Bson filter = nin("userName", "Jack", "Lisa");
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -107,7 +107,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingAndOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingAndOperator_thenFindMatchingDocuments() {
         Bson filter = and(gt("age", 25), eq("role", "Admin"));
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -117,7 +117,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingOrOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingOrOperator_thenFindMatchingDocuments() {
         Bson filter = or(gt("age", 30), eq("role", "Admin"));
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -127,7 +127,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingExistsOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingExistsOperator_thenFindMatchingDocuments() {
         Bson filter = exists("type");
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
@@ -137,7 +137,7 @@ public class FilterOperationLiveTest {
     }
 
     @Test
-    public void givenUserCollection_whenFetchingUsingRegexOperator_thenCheckingForDocuments() {
+    public void givenUserCollection_whenFetchingUsingRegexOperator_thenFindMatchingDocuments() {
         Bson filter = regex("userName", "a");
         FindIterable<Document> documents = collection.find(filter);
         MongoCursor<Document> cursor = documents.iterator();
