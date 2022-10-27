@@ -1,4 +1,4 @@
-package org.baeldung.controller;
+package com.baeldung.controller;
 
 import static java.time.LocalDate.now;
 
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.baeldung.model.Order;
-import org.baeldung.service.CredentialService;
+import com.baeldung.model.Order;
+import com.baeldung.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,8 @@
-package org.baeldung.service;
+package com.baeldung.service;
 
 import java.util.Map;
 import java.util.UUID;
 
-import org.baeldung.model.Credential;
 import org.springframework.credhub.core.CredHubOperations;
 import org.springframework.credhub.core.credential.CredHubCredentialOperations;
 import org.springframework.credhub.core.permissionV2.CredHubPermissionV2Operations;
@@ -28,9 +27,9 @@ import org.springframework.credhub.support.user.UserCredential;
 import org.springframework.credhub.support.user.UserCredentialRequest;
 import org.springframework.credhub.support.value.ValueCredential;
 import org.springframework.credhub.support.value.ValueCredentialRequest;
-import org.springframework.stereotype.Service;
 
-@Service
+import com.baeldung.model.Credential;
+
 public class CredentialService {
 
     private final CredHubCredentialOperations credentialOperations;
@@ -60,7 +59,7 @@ public class CredentialService {
             return generatedCred.getValue()
               .getPassword();
         } catch (Exception e) {
-            return "Error! Unable to generate credential";
+            return null;
         }
     }
 
@@ -169,7 +168,7 @@ public class CredentialService {
         }
     }
 
-    public String addCredentialPermission(String name) {
+    public CredentialPermission addCredentialPermission(String name) {
         SimpleCredentialName credentialName = new SimpleCredentialName(name);
         try {
             Permission permission = Permission.builder()
@@ -178,10 +177,10 @@ public class CredentialService {
               .operations(Operation.READ, Operation.WRITE)
               .user("u101")
               .build();
-            permissionOperations.addPermissions(credentialName, permission);
-            return "Permission:" + permission + " added successfully!";
+            CredentialPermission credentialPermission = permissionOperations.addPermissions(credentialName, permission);
+            return credentialPermission;
         } catch (Exception e) {
-            return "Error! Unable to add permission";
+            return null;
         }
     }
 

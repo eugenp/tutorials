@@ -1,7 +1,7 @@
-package org.baeldung.controller;
+package com.baeldung.controller;
 
-import org.baeldung.model.Credential;
-import org.baeldung.service.CredentialService;
+import com.baeldung.model.Credential;
+import com.baeldung.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.credhub.support.CredentialPermission;
 import org.springframework.http.HttpStatus;
@@ -44,7 +44,7 @@ public class CredentialController {
     }
 
     @PostMapping("/permissions")
-    public ResponseEntity<String> addPermission(@RequestBody String credentialName) {
+    public ResponseEntity<CredentialPermission> addPermission(@RequestBody String credentialName) {
         return new ResponseEntity<>(credentialService.addCredentialPermission(credentialName), HttpStatus.OK);
     }
 

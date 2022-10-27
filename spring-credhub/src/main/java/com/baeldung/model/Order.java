@@ -1,4 +1,4 @@
-package org.baeldung.model;
+package com.baeldung.model;
 
 import java.time.LocalDate;
 
