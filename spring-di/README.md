@@ -4,6 +4,7 @@ This module contains articles about dependency injection with Spring
 
 ### Relevant Articles
 
+- [Spring @ComponentScan – Filter Types](https://www.baeldung.com/spring-componentscan-filter-type)
 - [The Spring @Qualifier Annotation](https://www.baeldung.com/spring-qualifier-annotation)
 - [Spring Autowiring of Generic Types](https://www.baeldung.com/spring-autowire-generics)
 - [Guice vs Spring – Dependency Injection](https://www.baeldung.com/guice-spring-dependency-injection)
