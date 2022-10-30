@@ -2,6 +2,7 @@ package com.baeldung.chooseapi.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.hasSize;
@@ -12,6 +13,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 class BooksControllerRestIntegrationTest {
@@ -21,10 +26,13 @@ class BooksControllerRestIntegrationTest {
 
     @Test
     void givenBooksServiceThatReturnThreeBooks_whenCallingRestEndpoint_thenThreeBooksAreReturned() throws Exception {
+        Path expectedResponse = Paths.get("src/test/resources/graphql-test/books_expected_response.json");
+        String expectedJson = new String(Files.readAllBytes(expectedResponse));
+
         this.mockMvc.perform(get("/rest/books"))
           .andDo(print())
           .andExpect(status().isOk())
-          .andExpect(jsonPath("$", hasSize(3)));
+          .andExpect(content().json(expectedJson));
     }
 
 }
