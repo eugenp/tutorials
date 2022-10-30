@@ -15,9 +15,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
+/**
+ * Test need to pause the main thread for up to 60 seconds
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ConcurrentRequestUnitTest {
+public class ConcurrentRequestManualTest {
 
     @Autowired
     private MockMvc mockMvc;
