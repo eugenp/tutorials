@@ -23,6 +23,6 @@ public class MongoConfig {
 
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {
-        return new MongoTemplate(mongo(), "databaseName");
+        return new MongoTemplate(mongo(), "test");
     }
 }
