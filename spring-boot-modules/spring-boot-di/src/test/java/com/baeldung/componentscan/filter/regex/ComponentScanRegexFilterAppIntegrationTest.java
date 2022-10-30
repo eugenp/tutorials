@@ -1,6 +1,5 @@
-package com.baeldung.componentscan.filter.aspectj;
+package com.baeldung.componentscan.filter.regex;
 
-import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,18 +12,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ComponentScanAspectJFilterApp.class)
-public class ComponentScanAspectJFilterAppUnitTest {
+@SpringBootTest(classes = ComponentScanRegexFilterApp.class)
+public class ComponentScanRegexFilterAppIntegrationTest {
 
     @Test
-    public void whenAspectJFilterIsUsed_thenComponentScanShouldRegisterBeanMatchingAspectJCreteria() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanAspectJFilterApp.class);
+    public void whenRegexFilterIsUsed_thenComponentScanShouldRegisterBeanMatchingRegex() {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ComponentScanRegexFilterApp.class);
         List<String> beans = Arrays.stream(applicationContext.getBeanDefinitionNames())
-            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanAspectJFilterApp"))
+            .filter(bean -> !bean.contains("org.springframework") && !bean.contains("componentScanRegexFilterApp"))
             .collect(Collectors.toList());
         assertThat(beans.size(), equalTo(1));
-        assertThat(beans.get(0), equalTo("elephant"));
+        assertThat(beans.contains("elephant"), equalTo(true));
     }
 }
