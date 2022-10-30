@@ -21,7 +21,7 @@ import com.baeldung.objectId.config.MongoConfig;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = MongoConfig.class)
-public class SameObjectIdUsedToInsertSameObjectIdTest {
+public class SameObjectIdUsedToInsertSameObjectIdUnitTest {
     @Autowired
     private MongoTemplate mongoTemplate;
 

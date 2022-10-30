@@ -8,7 +8,7 @@ import java.util.Date;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
 
-public class SameObjectIdTest {
+public class SameObjectIdUnitTest {
 
     @Test
     public void givenSameDateAndCounter_whenComparingObjectIds_thenTheyAreNotEqual() {
