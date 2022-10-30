@@ -1,35 +1,33 @@
 package com.baeldung.chooseapi.controllers;
 
+import com.baeldung.chooseapi.ChooseApiApp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.graphql.test.tester.WebGraphQlTester;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.graphql.test.tester.HttpGraphQlTester;
+import org.springframework.test.context.ActiveProfiles;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = ChooseApiApp.class)
+@ActiveProfiles("chooseapi")
 class BooksControllerGraphQLIntegrationTest {
 
     @Autowired
-    private MockMvc mockMvc; //TODO: replace MockMvc with HttpGraphQlTester
+    private HttpGraphQlTester graphQlTester;
 
     @Test
     void givenBooksServiceThatReturnThreeBooks_whenCallingGraphQLEndpoint_thenThreeBooksAreReturned() throws Exception {
-        this.mockMvc.perform(post("/graphql")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content("{\"query\":\"{ books { title year author { firstName lastName } } }\"}"))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$", hasSize(3)));
+        String document = "query { books { title year author { firstName lastName }}}";
+        Path expectedResponse = Paths.get("src/test/resources/graphql-test/books_expected_response.json");
+        String expectedJson = new String(Files.readAllBytes(expectedResponse));
+
+        this.graphQlTester.document(document)
+          .execute()
+          .path("books")
+          .matchesJson(expectedJson);
     }
 
 }
