@@ -1,4 +1,4 @@
-package com.baeldung.sprq;
+package com.baeldung.spqr;
 
 import java.util.Objects;
 
