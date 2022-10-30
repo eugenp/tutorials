@@ -3,6 +3,7 @@ package com.baeldung.compare;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -26,7 +27,7 @@ public class ComparatorsUnitTest {
               Arrays.asList(employee1, employee2, employee3)
                 .stream()
                 .sorted(comparator)
-                .toList(),
+                .collect(Collectors.toList()),
               Arrays.asList(employee1, employee3, employee2));
         }
     }
