@@ -16,12 +16,6 @@ class TaskServiceSecurityManagerUnitTest {
         System.setSecurityManager(new NoExitSecurityManager());
     }
 
-    @AfterEach
-    void tearDown() {
-        System.setSecurityManager(null); // or save and restore original
-    }
-
-
     @Test
     void testSaveTask() throws Exception {
         Task task = new Task("test");
