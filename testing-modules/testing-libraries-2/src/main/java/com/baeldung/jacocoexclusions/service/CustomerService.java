@@ -4,6 +4,11 @@ import com.baeldung.jacocoexclusions.generated.Generated;
 
 public class CustomerService {
 
+    @Generated
+    public CustomerService(){
+        //constructor excluded form coverage report
+    }
+
     //this method will be excluded from coverage due to @Generated.
     @Generated
     public String getProductId() {

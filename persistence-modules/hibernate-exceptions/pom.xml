@@ -39,6 +39,7 @@
     <properties>
         <hsqldb.version>2.4.0</hsqldb.version>
         <jaxb.version>2.3.0</jaxb.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
 </project>
