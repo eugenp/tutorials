@@ -92,8 +92,8 @@ public class LinkedHashSetUnitTest{
         Spliterator<Integer> spliterator = linkedHashSet.spliterator();
         AtomicInteger counter = new AtomicInteger();
         spliterator.forEachRemaining(data -> {
-            assertEquals(counter.get(), (int)data);
-            counter.getAndIncrement();
+        assertEquals(counter.get(), (int)data);
+        counter.getAndIncrement();
         });
     }
 
