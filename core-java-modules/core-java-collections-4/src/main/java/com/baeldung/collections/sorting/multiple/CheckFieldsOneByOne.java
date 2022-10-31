@@ -1,6 +1,7 @@
-package com.baeldung.compare;
+package com.baeldung.collections.sorting.multiple;
 
 import java.util.Comparator;
+
 
 public class CheckFieldsOneByOne implements Comparator<Person> {
     @Override

@@ -1,6 +1,7 @@
-package com.baeldung.compare;
+package com.baeldung.collections.sorting.multiple;
 
 import java.util.Comparator;
+
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
 public class CompareToBuilderExample implements Comparator<Person> {

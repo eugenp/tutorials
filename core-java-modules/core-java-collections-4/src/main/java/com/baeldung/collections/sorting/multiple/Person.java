@@ -1,10 +1,10 @@
-package com.baeldung.compare;
+package com.baeldung.collections.sorting.multiple;
 
-public class Employee {
+public class Person {
     private String name;
     private int age;
 
-    public Employee(String name, int age) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }

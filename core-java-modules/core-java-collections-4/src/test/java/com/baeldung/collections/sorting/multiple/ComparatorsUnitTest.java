@@ -1,4 +1,4 @@
-package com.baeldung.compare;
+package com.baeldung.collections.sorting.multiple;
 
 import java.util.Arrays;
 import java.util.Comparator;
