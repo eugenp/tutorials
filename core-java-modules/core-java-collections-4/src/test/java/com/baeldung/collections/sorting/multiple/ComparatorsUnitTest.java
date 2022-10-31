@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class ComparatorsUnitTest {
     @Test
-    public void testCompareEmployeesFirstNameThenAge() {
+    public void givenPersonsList_whenComparedOnTwoFields_thenReturnCorrectOrder() {
         Person person1 = new Person("John", 21);
         Person person2 = new Person("Tom", 20);
         // Another employee named John
