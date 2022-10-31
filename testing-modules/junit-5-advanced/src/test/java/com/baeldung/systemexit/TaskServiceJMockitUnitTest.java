@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 public class TaskServiceJMockitUnitTest {
 
     @Test
-    public void testSaveTask() throws Exception {
+    public void givenDAOThrowsException_whenSaveTaskIsCalled_SystemExitIsCalled() throws Exception {
 
         new MockUp<System>() {
             @Mock
