@@ -2,7 +2,7 @@ package com.baeldung.spring.data.gemfire.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.gemfire.mapping.Region;
+import org.springframework.data.gemfire.mapping.annotation.Region;
 
 
 @Region("employee")
