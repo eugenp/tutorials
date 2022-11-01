@@ -1,4 +1,4 @@
-package com.baeldung.factoryGeneric;
+package com.baeldung.factorygeneric;
 
 import java.util.Date;
 
