@@ -4,7 +4,7 @@ public class CustomThread extends Thread{
 
     @Override
     public void run(){
-        System.out.println(Thread.currentThread().getId()+" started");
+        System.out.println(Thread.currentThread().getName()+" started");
     }
 
     public static void main(String[] args){
