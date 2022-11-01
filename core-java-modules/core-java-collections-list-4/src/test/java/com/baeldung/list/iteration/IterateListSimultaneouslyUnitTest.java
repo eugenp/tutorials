@@ -18,15 +18,15 @@ public class IterateListSimultaneouslyUnitTest {
     @Test
     public void givenTwoLists_whenProcessedByZipping_thenGetJoinedDataFromBothCollections() {
         List<String> processedList = StreamUtils.zip(countryName.stream(), countryCode.stream(),
-            (name, code) -> String.format("%s: %s", name, code))
-            .collect(Collectors.toList());
+                                            (name, code) -> String.format("%s: %s", name, code))
+                                            .collect(Collectors.toList());
         assertThat(processedList).containsExactly("USA: +1", "UK: +44", "Germany: +49", "India: +91");
     }
 
     @Test
     public void givenTwoLists_whenIterateUsingIterator_thenGetJoinedDataFromBothCollections() {
-        Iterator nameIterator = countryName.iterator();
-        Iterator codeIterator = countryCode.iterator();
+        Iterator<String> nameIterator = countryName.iterator();
+        Iterator<String> codeIterator = countryCode.iterator();
         List<String> processedList = new ArrayList<>();
         while (nameIterator.hasNext() && codeIterator.hasNext()) {
             String processedData = String.format("%s: %s", nameIterator.next(), codeIterator.next());
@@ -52,7 +52,7 @@ public class IterateListSimultaneouslyUnitTest {
                                 new CountryCodeDetails("Germany", "+49"),
                                 new CountryCodeDetails("India", "+91"));
         List<String> processedList = list.stream().map(l -> String.format("%s: %s", l.getCountryName(), l.getCountryCode()))
-          .collect(Collectors.toList());
+                                    .collect(Collectors.toList());
         assertThat(processedList).containsExactly("USA: +1", "UK: +44", "Germany: +49", "India: +91");
     }
 
