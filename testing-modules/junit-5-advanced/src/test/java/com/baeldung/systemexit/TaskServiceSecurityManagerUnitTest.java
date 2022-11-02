@@ -17,7 +17,7 @@ class TaskServiceSecurityManagerUnitTest {
     }
 
     @Test
-    void givenDAOThrowsException_whenSaveTaskIsCalled_SystemExitIsCalled() throws Exception {
+    void givenDAOThrowsException_whenSaveTaskIsCalled_thenSystemExitIsCalled() throws Exception {
         Task task = new Task("test");
         TaskDAO taskDAO = mock(TaskDAO.class);
         TaskService service = new TaskService(taskDAO);
