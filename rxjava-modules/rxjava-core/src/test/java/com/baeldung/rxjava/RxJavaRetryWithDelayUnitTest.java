@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class RetryWithDelayUnitTest {
+public class RxJavaRetryWithDelayUnitTest {
 
     @Test
     public void givenObservable_whenSuccess_thenOnNext(){
