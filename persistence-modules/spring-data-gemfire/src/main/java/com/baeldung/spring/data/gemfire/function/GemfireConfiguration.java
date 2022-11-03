@@ -2,8 +2,8 @@ package com.baeldung.spring.data.gemfire.function;
 
 import com.baeldung.spring.data.gemfire.model.Employee;
 import com.baeldung.spring.data.gemfire.repository.EmployeeRepository;
-import org.apache.geode.cache.DataPolicy;
-import org.apache.geode.cache.GemFireCache;
+import com.gemstone.gemfire.cache.DataPolicy;
+import com.gemstone.gemfire.cache.GemFireCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,6 +39,7 @@ public class GemfireConfiguration {
     }
 
     @Bean
+    @Autowired
     CacheFactoryBean gemfireCache() {
         CacheFactoryBean gemfireCache = new CacheFactoryBean();
         gemfireCache.setClose(true);
@@ -48,6 +49,7 @@ public class GemfireConfiguration {
 
 
     @Bean(name="employee")
+    @Autowired
     LocalRegionFactoryBean<String, Employee> getEmployee(final GemFireCache cache) {
         LocalRegionFactoryBean<String, Employee> employeeRegion = new LocalRegionFactoryBean<String, Employee>();
         employeeRegion.setCache(cache);
