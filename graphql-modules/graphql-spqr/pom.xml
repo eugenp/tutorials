@@ -20,13 +20,24 @@
         </dependency>
         <dependency>
             <groupId>io.leangen.graphql</groupId>
-            <artifactId>graphql-spqr-spring-boot-starter</artifactId>
-            <version>${graphql-spqr-spring-boot-starter-version}</version>
+            <artifactId>spqr</artifactId>
+            <version>${spqr-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <graphql-spqr-spring-boot-starter-version>0.0.6</graphql-spqr-spring-boot-starter-version>
+        <spqr-version>0.11.2</spqr-version>
     </properties>
 
 </project>

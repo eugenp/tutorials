@@ -21,7 +21,6 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.GroupOperation;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.util.SocketUtils;
 
 import com.baeldung.logging.model.Book;
 import com.mongodb.client.MongoClients;
@@ -34,8 +33,8 @@ import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 
-@SpringBootTest
-@TestPropertySource(properties = { "logging.level.org.springframework.data.mongodb.core.MongoTemplate=INFO" })
+@SpringBootTest(classes = SpringBootLoggingApplication.class)
+@TestPropertySource(properties = {"logging.level.org.springframework.data.mongodb.core.MongoTemplate=INFO"}, value = "/embedded.properties")
 public class LoggingUnitTest {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";
@@ -54,9 +53,9 @@ public class LoggingUnitTest {
         int port = Network.freeServerPort(Network.getLocalHost());
 
         ImmutableMongodConfig mongodConfig = MongodConfig.builder()
-          .version(Version.Main.PRODUCTION)
-          .net(new Net(ip, port, Network.localhostIsIPv6()))
-          .build();
+                .version(Version.Main.PRODUCTION)
+                .net(new Net(ip, port, Network.localhostIsIPv6()))
+                .build();
 
         MongodStarter starter = MongodStarter.getDefaultInstance();
         mongodExecutable = starter.prepare(mongodConfig);
@@ -89,7 +88,7 @@ public class LoggingUnitTest {
         mongoTemplate.updateFirst(query(where("bookName").is("Book")), update("authorName", authorNameUpdate), Book.class);
 
         assertThat(mongoTemplate.findById(book.getId(), Book.class)).extracting(Book::getAuthorName)
-          .isEqualTo(authorNameUpdate);
+                .isEqualTo(authorNameUpdate);
     }
 
     @Test
@@ -105,7 +104,7 @@ public class LoggingUnitTest {
         mongoTemplate.insert(Arrays.asList(book, book1), Book.class);
 
         assertThat(mongoTemplate.findAll(Book.class)
-          .size()).isEqualTo(2);
+                .size()).isEqualTo(2);
     }
 
     @Test
@@ -119,7 +118,7 @@ public class LoggingUnitTest {
         mongoTemplate.remove(book);
 
         assertThat(mongoTemplate.findAll(Book.class)
-          .size()).isEqualTo(0);
+                .size()).isEqualTo(0);
     }
 
     @Test
@@ -139,21 +138,21 @@ public class LoggingUnitTest {
         mongoTemplate.insert(Arrays.asList(book, book1, book2), Book.class);
 
         GroupOperation groupByAuthor = group("authorName").count()
-          .as("authCount");
+                .as("authCount");
 
         Aggregation aggregation = newAggregation(groupByAuthor);
 
         AggregationResults<GroupByAuthor> aggregationResults = mongoTemplate.aggregate(aggregation, "book", GroupByAuthor.class);
 
         List<GroupByAuthor> groupByAuthorList = StreamSupport.stream(aggregationResults.spliterator(), false)
-          .collect(Collectors.toList());
+                .collect(Collectors.toList());
 
         assertThat(groupByAuthorList.stream()
-          .filter(l -> l.getAuthorName()
-            .equals("Author"))
-          .findFirst()
-          .orElse(null)).extracting(GroupByAuthor::getAuthCount)
-          .isEqualTo(3);
+                .filter(l -> l.getAuthorName()
+                        .equals("Author"))
+                .findFirst()
+                .orElse(null)).extracting(GroupByAuthor::getAuthCount)
+                .isEqualTo(3);
     }
 
 }
