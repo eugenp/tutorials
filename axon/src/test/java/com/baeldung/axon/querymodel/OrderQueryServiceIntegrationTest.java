@@ -6,7 +6,6 @@ import com.baeldung.axon.coreapi.events.OrderShippedEvent;
 import com.baeldung.axon.coreapi.events.ProductAddedEvent;
 import com.baeldung.axon.coreapi.events.ProductCountDecrementedEvent;
 import com.baeldung.axon.coreapi.events.ProductCountIncrementedEvent;
-import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
 import com.baeldung.axon.coreapi.queries.Order;
 
 import org.axonframework.eventhandling.gateway.EventGateway;
