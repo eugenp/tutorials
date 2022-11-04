@@ -29,7 +29,7 @@ public class UtilToSqlDateUtilsUnitTest {
     }
 
     @Test
-    public void givenUtilDate_WhenConversionToTimestamp_thenKeepTimeInfo() throws ParseException {
+    public void givenUtilDate_whenConversionToTimestamp_thenKeepTimeInfo() throws ParseException {
         java.util.Date date = UtilToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
         UtilToSqlDateUtils.switchTimezone("America/Los_Angeles");
         java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
