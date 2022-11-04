@@ -8,7 +8,7 @@ import java.text.ParseException;
 public class UtilToSqlDateUtilsUnitTest {
 
     @Test
-    public void given_utilDate_when_Casting_to_sqldate_throw_exception() {
+    public void givenUtilDate_whenCastingToSqlDate_thenThrowException() {
         Assertions.assertThrows(ClassCastException.class, () -> {
             java.sql.Date date = (java.sql.Date) new java.util.Date();
         });
