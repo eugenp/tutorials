@@ -37,7 +37,7 @@ public class UtilToSqlDateUtilsUnitTest {
     }
 
     @Test
-    public void given_utilDate_whenUsingJavaTimeConversion_timezone_kept() throws ParseException {
+    public void givenUtilDate_whenUsingJavaTimeConversion_thenTimezoneKept() throws ParseException {
         java.util.Date date = UtilToSqlDateUtils.createAmericanDate("2010-05-23T22:01:02");
 
         UtilToSqlDateUtils.switchTimezone("America/Los_Angeles");
