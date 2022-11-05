@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class ProductServiceTest {
+class ProductServiceUnitTest {
 
     @Test
     void givenValueExistsInCache_whenGetProduct_thenDAOIsNotCalled() {
