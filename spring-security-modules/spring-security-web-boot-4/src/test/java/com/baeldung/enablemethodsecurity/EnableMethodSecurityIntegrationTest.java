@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(classes = EnableMethodSecurityApplication.class)
-public class EnableMethodSecurityTest {
+public class EnableMethodSecurityIntegrationTest {
     @Autowired
     private WebApplicationContext context;
 
