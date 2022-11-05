@@ -19,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ProductController.class)
@@ -36,9 +37,9 @@ public class ProductControllerUnitTest {
 
     @Before
     public void startWireMockServer() {
-        wireMockServer = new WireMockServer(8084);
-        configureFor("localhost", 8084);
+        wireMockServer = new WireMockServer(options().dynamicPort());
         wireMockServer.start();
+        configureFor("localhost", wireMockServer.port());
     }
 
     @After
