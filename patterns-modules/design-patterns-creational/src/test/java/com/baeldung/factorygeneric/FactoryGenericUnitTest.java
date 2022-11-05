@@ -1,4 +1,4 @@
-package com.baeldung.factoryGeneric;
+package com.baeldung.factorygeneric;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

@@ -27,6 +27,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,6 +71,7 @@
 
     <properties>
         <start-class>com.baeldung.springwithgroovy.SpringBootGroovyApplication</start-class>
+        <groovy.version>3.0.13</groovy.version>
     </properties>
 
 </project>

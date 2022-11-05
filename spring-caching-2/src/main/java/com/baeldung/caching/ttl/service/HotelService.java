@@ -27,7 +27,7 @@ public class HotelService {
     }
 
     @CacheEvict(value = "hotels", allEntries = true)
-    @Scheduled(fixedRateString = "43200")
+    @Scheduled(fixedRateString = "${caching.spring.hotelListTTL}")
     public void emptyHotelsCache() {
         logger.info("emptying Hotels cache");
     }
