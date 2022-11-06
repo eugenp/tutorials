@@ -25,7 +25,7 @@ class TaskServiceSecurityManagerUnitTest {
             doThrow(new NullPointerException()).when(taskDAO).save(task);
             service.saveTask(task);
         } catch (RuntimeException e) {
-            Assertions.assertEquals(e.getMessage(), "1");
+            Assertions.assertEquals("1", e.getMessage());
         }
     }
 
