@@ -34,11 +34,11 @@ public class SavePersonHandler implements RequestHandler<PersonRequest, PersonRe
 
         Map<String, AttributeValue> attributesMap = new HashMap<>();
 
-        attributesMap.put("id", (new AttributeValue()).withN(String.valueOf(personRequest.getId())));
-        attributesMap.put("firstName", (new AttributeValue()).withS(personRequest.getFirstName()));
-        attributesMap.put("lastName", (new AttributeValue()).withS(personRequest.getLastName()));
-        attributesMap.put("age", (new AttributeValue()).withN(String.valueOf(personRequest.getAge())));
-        attributesMap.put("address", (new AttributeValue()).withS(personRequest.getAddress()));
+        attributesMap.put("id", new AttributeValue(String.valueOf(personRequest.getId())));
+        attributesMap.put("firstName", new AttributeValue(personRequest.getFirstName()));
+        attributesMap.put("lastName", new AttributeValue(personRequest.getLastName()));
+        attributesMap.put("age", new AttributeValue(String.valueOf(personRequest.getAge())));
+        attributesMap.put("address", new AttributeValue(personRequest.getAddress()));
 
         amazonDynamoDB.putItem(DYNAMODB_TABLE_NAME, attributesMap);
     }
