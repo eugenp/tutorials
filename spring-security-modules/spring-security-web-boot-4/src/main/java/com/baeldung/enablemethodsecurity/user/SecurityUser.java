@@ -12,6 +12,10 @@ public class SecurityUser implements UserDetails {
     private List<GrantedAuthority> grantedAuthorityList;
     private boolean accessToRestrictedPolicy;
 
+    public static SecurityUser builder() {
+        return new SecurityUser();
+    }
+
     public SecurityUser withAccessToRestrictedPolicy(boolean restrictedPolicy) {
         this.accessToRestrictedPolicy = restrictedPolicy;
         return this;

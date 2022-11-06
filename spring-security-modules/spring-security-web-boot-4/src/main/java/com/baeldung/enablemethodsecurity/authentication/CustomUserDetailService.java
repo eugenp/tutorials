@@ -18,11 +18,8 @@ public class CustomUserDetailService implements UserDetailsService {
     private final Map<String, SecurityUser> map = new HashMap<>();
 
     public CustomUserDetailService(BCryptPasswordEncoder bCryptPasswordEncoder) {
-
         map.put("user", createUser("user", bCryptPasswordEncoder.encode("userPass"), false, "USER"));
-
         map.put("admin", createUser("admin", bCryptPasswordEncoder.encode("adminPass"), true, "ADMIN", "USER"));
-
     }
 
     @Override
@@ -32,7 +29,8 @@ public class CustomUserDetailService implements UserDetailsService {
     }
 
     private SecurityUser createUser(String userName, String password, boolean withRestrictedPolicy, String... role) {
-        return new SecurityUser().withUserName(userName)
+        return SecurityUser.builder()
+          .withUserName(userName)
           .withPassword(password)
           .withGrantedAuthorityList(Arrays.stream(role)
             .map(SimpleGrantedAuthority::new)
