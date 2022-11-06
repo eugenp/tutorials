@@ -14,7 +14,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.function.Function;
 
-import static com.baeldung.backoff.jitter.BackoffWithJitterTest.RetryProperties.*;
+import static com.baeldung.backoff.jitter.BackoffWithJitterUnitTest.RetryProperties.*;
 import static io.github.resilience4j.retry.IntervalFunction.ofExponentialBackoff;
 import static io.github.resilience4j.retry.IntervalFunction.ofExponentialRandomBackoff;
 import static java.util.Collections.nCopies;
@@ -22,9 +22,9 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class BackoffWithJitterTest {
+public class BackoffWithJitterUnitTest {
 
-    static Logger log = LoggerFactory.getLogger(BackoffWithJitterTest.class);
+    static Logger log = LoggerFactory.getLogger(BackoffWithJitterUnitTest.class);
 
     interface PingPongService {
 
