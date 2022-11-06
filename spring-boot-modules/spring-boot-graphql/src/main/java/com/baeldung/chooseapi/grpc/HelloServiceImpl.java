@@ -5,7 +5,9 @@ import com.baeldung.chooseapi.HelloServiceOuterClass.HelloRequest;
 import com.baeldung.chooseapi.HelloServiceOuterClass.HelloResponse;
 
 import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.server.service.GrpcService;
 
+@GrpcService
 public class HelloServiceImpl extends HelloServiceImplBase {
 
     @Override
