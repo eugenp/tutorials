@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class EventListenerIntegrationTest {
 
     private static final String CACHE_NAME = "MyCache";
-    private static final String CACHE_PROVIDER_NAME = "com.hazelcast.cache.HazelcastCachingProvider";
+    private static final String CACHE_PROVIDER_NAME = "com.hazelcast.cache.HazelcastMemberCachingProvider";
 
     private Cache<String, String> cache;
     private SimpleCacheEntryListener listener;
@@ -38,7 +38,7 @@ public class EventListenerIntegrationTest {
     }
 
     @Test
-    public void whenRunEvent_thenCorrect() throws InterruptedException {
+    public void whenRunEvent_thenCorrect() {
         this.listenerConfiguration = new MutableCacheEntryListenerConfiguration<>(FactoryBuilder.factoryOf(this.listener), null, false, true);
         this.cache.registerCacheEntryListener(this.listenerConfiguration);
 
