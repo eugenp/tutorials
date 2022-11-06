@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Dummy Test
  */
-public class AppTest {
+public class AppUnitTest {
 
     @Test
     public void test() {
