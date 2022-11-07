@@ -17,7 +17,7 @@ import com.baeldung.partialupdate.service.CustomerService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PartialUpdateApplication.class)
-public class PartialUpdateUnitTest {
+public class PartialUpdateIntegrationTest {
 
     @Autowired
     CustomerService service;
