@@ -299,7 +299,7 @@ cas.authn.jdbc.query[0].passwordEncoder.type=NONE
 
 请注意，CAS服务器数据库中的主体必须与客户端应用程序中的主体相同。
 
-让我们更新CasAuthenticationProvider，使其具有与CAS服务器相同的用户名：
+让我们更新 CasAuthenticationProvider ，使其具有与CAS服务器相同的用户名：
 
 ```java
 @Bean
@@ -336,4 +336,4 @@ CasAuthenticationProvider不使用密码进行身份验证。尽管如此，其�
 ### Relevant Articles
 
 - [x] [CAS SSO With Spring Security](https://www.baeldung.com/spring-security-cas-sso)
-- [ ] [Code Analysis with SonarQube](https://www.baeldung.com/sonar-qube)
+- [ ] [Spring security 集成CAS](https://blog.csdn.net/cl_andywin/article/details/53998986)
