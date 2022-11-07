@@ -45,33 +45,4 @@ public class IterateListSimultaneouslyUnitTest {
         assertThat(processedList).containsExactly("USA: +1", "UK: +44", "Germany: +49", "India: +91");
     }
 
-    @Test
-    public void givenEncapsulatedDataList_whenIterate_thenGetJoinedDataFromCollection() {
-        List<CountryCodeDetails> list = List.of(new CountryCodeDetails("USA", "+1"),
-                                new CountryCodeDetails("UK", "+44"),
-                                new CountryCodeDetails("Germany", "+49"),
-                                new CountryCodeDetails("India", "+91"));
-        List<String> processedList = list.stream().map(l -> String.format("%s: %s", l.getCountryName(), l.getCountryCode()))
-                                    .collect(Collectors.toList());
-        assertThat(processedList).containsExactly("USA: +1", "UK: +44", "Germany: +49", "India: +91");
-    }
-
-    class CountryCodeDetails {
-        private String countryName;
-        private String countryCode;
-
-        public CountryCodeDetails(String countryName, String countryCode) {
-            this.countryName = countryName;
-            this.countryCode = countryCode;
-        }
-
-        public String getCountryName() {
-            return countryName;
-        }
-
-        public String getCountryCode() {
-            return countryCode;
-        }
-    }
-
 }
