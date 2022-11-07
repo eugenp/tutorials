@@ -49,6 +49,7 @@
         <module>testng-command-line</module>
         <module>xmlunit-2</module>
         <module>zerocode</module>
+        <module>mockito-2</module>
     </modules>
 
 </project>
