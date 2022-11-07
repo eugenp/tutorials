@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.executorservice;
+package com.baeldung.concurrent.threads.create.threadpools;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
