@@ -8,8 +8,6 @@ import com.baeldung.chooseapi.dtos.Book;
 import com.baeldung.chooseapi.services.BooksService;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
-import com.baeldung.chooseapi.BooksServiceOuterClass.BookProto;
-import com.baeldung.chooseapi.BooksServiceOuterClass.AuthorProto;
 
 import java.util.List;
 
@@ -28,21 +26,10 @@ public class BooksServiceGrpc extends BooksServiceImplBase {
         List<Book> books = booksService.getBooks();
 
         BooksResponse.Builder responseBuilder = BooksResponse.newBuilder();
-        books.forEach(book -> responseBuilder.addBook(mapBookToProto(book)));
+        books.forEach(book -> responseBuilder.addBook(GrpcBooksMapper.mapBookToProto(book)));
 
         responseObserver.onNext(responseBuilder.build());
         responseObserver.onCompleted();
-    }
-
-    private BookProto mapBookToProto(Book book) {
-        return BookProto.newBuilder()
-          .setTitle(book.getTitle())
-          .setAuthor(AuthorProto.newBuilder()
-            .setFirstName(book.getAuthor().getFirstName())
-            .setLastName(book.getAuthor().getLastName())
-            .build())
-          .setYear(book.getYear())
-          .build();
     }
 
 }
