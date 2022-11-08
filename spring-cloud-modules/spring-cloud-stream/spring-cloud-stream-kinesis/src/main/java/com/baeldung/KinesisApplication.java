@@ -17,23 +17,22 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.kinesis.AmazonKinesis;
 import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
-import com.amazonaws.services.kinesis.model.GetShardIteratorRequest;
-import com.amazonaws.services.kinesis.model.GetShardIteratorResult;
-import com.amazonaws.services.kinesis.model.ShardIteratorType;
 
 @SpringBootApplication
 @EnableBinding(Processor.class)
 public class KinesisApplication {
 
+    @Value("${aws.access.key}")
+    private String accessKey;
+    @Value("${aws.secret.key}")
+    private String secretKey;
+    @Autowired
+    private Processor processor;
+
     public static void main(String[] args) {
         SpringApplication.run(KinesisApplication.class, args);
     }
 
-    @Value("${aws.access.key}")
-    private String accessKey;
-
-    @Value("${aws.secret.key}")
-    private String secretKey;
 
     @Bean
     public AmazonKinesis buildAmazonKinesis() {
@@ -43,10 +42,6 @@ public class KinesisApplication {
             .withRegion(Regions.EU_CENTRAL_1)
             .build();
     }
-
-
-    @Autowired
-    private Processor processor;
 
     @StreamListener(Processor.INPUT)
     public void consume(String val) {
