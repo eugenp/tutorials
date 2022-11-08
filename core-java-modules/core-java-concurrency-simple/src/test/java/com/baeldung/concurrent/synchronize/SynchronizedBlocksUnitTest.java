@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class SychronizedBlockUnitTest {
+public class SynchronizedBlocksUnitTest {
 
     @Test
     public void givenMultiThread_whenBlockSync() throws InterruptedException {

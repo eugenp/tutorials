@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class SynchronizeMethodsUnitTest {
+public class SynchronizedMethodsUnitTest {
 
     @Test
     @Ignore
