@@ -27,9 +27,9 @@ public class NoPropertyFoundForTypeApplicationUnitTest {
 
 		entityManager.persist(new Person("ABC", "DEF"));
 		// Uncomment to get the error.
-		// List<User> users = repository.findByLastnameIgnoreCase("Kumar");
-		List<Person> users = repository.findByLastName("DEF");
-		assertEquals(1, users.size());
-		assertThat(users).extracting(Person::getLastName).containsOnly("DEF");
+		// List<User> users = repository.findByLastname("Kumar");
+		List<Person> persons = repository.findByLastName("DEF");
+		assertEquals(1, persons.size());
+		assertThat(persons).extracting(Person::getLastName).containsOnly("DEF");
 	}
 }
