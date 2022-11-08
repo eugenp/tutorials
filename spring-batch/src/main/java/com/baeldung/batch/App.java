@@ -8,7 +8,9 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Profile;
 
+@Profile("spring")
 public class App {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);

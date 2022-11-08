@@ -64,7 +64,6 @@
 
     <properties>
         <flyway-maven-plugin.version>8.5.13</flyway-maven-plugin.version>
-        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

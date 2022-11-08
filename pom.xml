@@ -345,7 +345,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -433,6 +432,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+                <module>libraries-7</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -474,6 +474,7 @@
 
                 <module>patterns-modules</module>
                 <module>pdf</module>
+                <module>pdf-2</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>protobuffer</module>
@@ -680,6 +681,8 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
+                <module>apache-spark</module>
+
                 <module>image-processing</module>
 
                 <module>jenkins/plugins</module>
@@ -747,7 +750,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -955,9 +957,8 @@
                 <module>spring-boot-rest</module>
 
                 <module>spring-caching</module>
-                <module>spring-caching-2/redis</module>
-                <module>spring-caching-2/ttl</module>
-                
+                <module>spring-caching-2</module>
+
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -1067,6 +1068,8 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
+
+                <module>apache-spark</module>
 
                 <module>image-processing</module>
 
@@ -1348,7 +1351,7 @@
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
         <lombok.version>1.18.24</lombok.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.214</h2.version>
         <guava.version>31.1-jre</guava.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
     </properties>
