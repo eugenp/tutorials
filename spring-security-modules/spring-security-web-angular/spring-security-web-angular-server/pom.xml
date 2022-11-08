@@ -14,18 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!--<dependency> -->
         <!--<groupId>org.springframework.boot</groupId> -->
@@ -59,9 +47,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
-    </properties>
 
 </project>

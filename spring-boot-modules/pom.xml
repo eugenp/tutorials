@@ -50,7 +50,6 @@
         <module>spring-boot-keycloak-2</module>
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
-        <module>spring-boot-libraries-comparison</module>
         <module>spring-boot-logging-log4j2</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>

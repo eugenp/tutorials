@@ -1,5 +1,6 @@
 package com.baeldung.httpfirewall.api;
 
+import com.baeldung.httpfirewall.HttpFirewallConfiguration;
 import com.baeldung.httpfirewall.model.User;
 import com.baeldung.httpfirewall.service.UserServiceImpl;
 import com.baeldung.httpfirewall.utility.UserTestUtility;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 @AutoConfigureMockMvc
 @DisplayName("User API Unit Tests")
+@Import(HttpFirewallConfiguration.class)
 class UserApiUnitTest {
 
     @Autowired

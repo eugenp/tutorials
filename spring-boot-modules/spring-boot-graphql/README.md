@@ -9,6 +9,9 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 - [Getting Started with GraphQL and Spring Boot](https://www.baeldung.com/spring-graphql)
 - [Expose GraphQL Field with Different Name](https://www.baeldung.com/graphql-field-name)
+- [Error Handling in GraphQL With Spring Boot](https://www.baeldung.com/spring-graphql-error-handling)
+- [How to Test GraphQL Using Postman](https://www.baeldung.com/graphql-postman)
+- [GraphQL vs REST](https://www.baeldung.com/graphql-vs-rest)
 
 ### GraphQL sample queries
 
