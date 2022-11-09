@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class PdfInfoPdfBox {
 
-    public static int getNumberOfPage(final String pdfFile) throws IOException {
+    public static int getNumberOfPages(final String pdfFile) throws IOException {
         File file = new File(pdfFile);
         PDDocument document = Loader.loadPDF(file);
         int pages = document.getNumberOfPages();
