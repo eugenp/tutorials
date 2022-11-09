@@ -4,11 +4,11 @@ package com.baeldung.pdfinfo;
 import com.itextpdf.text.pdf.PdfReader;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 public class PdfInfoIText {
 
-    public static int getNumberOfPage(final String pdfFile) throws IOException {
+    public static int getNumberOfPages(final String pdfFile) throws IOException {
         PdfReader reader = new PdfReader(pdfFile);
         int pages = reader.getNumberOfPages();
         reader.close();
@@ -22,9 +22,9 @@ public class PdfInfoIText {
         return isEncrypted;
     }
 
-    public static HashMap<String, String> getInfo(final String pdfFile) throws IOException {
+    public static Map<String, String> getInfo(final String pdfFile) throws IOException {
         PdfReader reader = new PdfReader(pdfFile);
-        HashMap<String, String> info = reader.getInfo();
+        Map<String, String> info = reader.getInfo();
         reader.close();
         return info;
     }
