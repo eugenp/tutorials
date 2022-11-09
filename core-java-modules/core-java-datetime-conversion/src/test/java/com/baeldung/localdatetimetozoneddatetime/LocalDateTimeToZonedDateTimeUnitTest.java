@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.*;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -10,30 +11,26 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
     @Test
     void whenConvertLocalDateTimeToZonedDateTimeWithAtZoneMethod_shouldConvert(){
-        LocalDateTime localDateTime = LocalDateTime.now();
-        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId. of("Africa/Nairobi"));
+        LocalDateTime localDateTime = LocalDateTime.of(2022, 1, 1, 0, 30, 22);
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("Canada/Atlantic"));
 
-        assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
-        assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
-        assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertEquals(localDateTime.getHour(), zonedDateTime.getHour());
-        assertEquals(localDateTime.getMinute(), zonedDateTime.getMinute());
-        assertEquals(localDateTime.getSecond(), zonedDateTime.getSecond());
+
+        assertNotEquals(localDateTime.getYear(), zonedDateTime.getYear());
+        assertNotEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
+        assertNotEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
+        assertNotEquals(localDateTime.getHour(), zonedDateTime.getHour());
 
     }
 
     @Test
     void whenConvertLocalDateTimeToZonedDateTimeWithOfMethod_shouldConvert(){
         LocalDateTime localDateTime = LocalDateTime.of(2022, 11, 5, 7, 30, 22);
-        ZoneId zoneId = ZoneId.of("Africa/Lagos");
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("Canada/Atlantic"));
 
         assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
         assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
         assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertEquals(localDateTime.getHour(), zonedDateTime.getHour());
-        assertEquals(localDateTime.getMinute(), zonedDateTime.getMinute());
-        assertEquals(localDateTime.getSecond(), zonedDateTime.getSecond());
+        assertNotEquals(localDateTime.getHour(), zonedDateTime.getHour());
 
     }
 
