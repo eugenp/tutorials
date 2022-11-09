@@ -4,47 +4,26 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 public class PdfInfoITextUnitTest {
 
     private static final String PDF_FILE = "src/test/resources/input.pdf";
 
     @Test
-    public void givenPdf_whenGetNumberOfPage_thenOK() throws IOException {
-        // given
-        int expectedNumberOfPage = 4;
-
-        // when
-        int actualNumberOfPage = PdfInfoIText.getNumberOfPage(PDF_FILE);
-
-        // then
-        Assert.assertEquals(expectedNumberOfPage, actualNumberOfPage);
+    public void givenPdf_whenGetNumberOfPages_thenOK() throws IOException {
+        Assert.assertEquals(4, PdfInfoIText.getNumberOfPages(PDF_FILE));
     }
 
     @Test
     public void givenPdf_whenIsPasswordRequired_thenOK() throws IOException {
-        // given
-        boolean expectedPasswordRequired = false;
-
-        // when
-        boolean actualPasswordRequired = PdfInfoIText.isPasswordRequired(PDF_FILE);
-
-        // then
-        Assert.assertEquals(expectedPasswordRequired, actualPasswordRequired);
+        Assert.assertEquals(false, PdfInfoIText.isPasswordRequired(PDF_FILE));
     }
 
     @Test
     public void givenPdf_whenGetInfo_thenOK() throws IOException {
-        // given
-        String expectedProducer = "LibreOffice 4.2";
-        String expectedCreator = "Writer";
-
-        // when
-        HashMap<String, String> info = PdfInfoIText.getInfo(PDF_FILE);
-
-        // then
-        Assert.assertEquals(expectedProducer, info.get("Producer"));
-        Assert.assertEquals(expectedCreator, info.get("Creator"));
+        Map<String, String> info = PdfInfoIText.getInfo(PDF_FILE);
+        Assert.assertEquals("LibreOffice 4.2", info.get("Producer"));
+        Assert.assertEquals("Writer", info.get("Creator"));
     }
 }
