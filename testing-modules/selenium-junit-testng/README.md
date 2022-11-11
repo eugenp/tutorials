@@ -6,3 +6,4 @@
 - [Clicking Elements in Selenium using JavaScript](https://www.baeldung.com/java-selenium-javascript)
 - [Taking Screenshots With Selenium WebDriver](https://www.baeldung.com/java-selenium-screenshots)
 - [Running Selenium Scripts with JMeter](https://www.baeldung.com/selenium-jmeter)
+- [Fixing Selenium WebDriver Executable Path Error](https://www.baeldung.com/java-selenium-webdriver-path-error)
