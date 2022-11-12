@@ -33,13 +33,13 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     @Test
     public void getNameOfDayByNumberRequestParam_whenGetWithProperRequestParam_thenReturn200() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day").param("dayOfWeek", Integer.toString(5)))
-          .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void getNameOfDayByNumberRequestParam_whenGetWithRequestParamOutOfRange_thenReturn400() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day").param("dayOfWeek", Integer.toString(15)))
-          .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     @Test
     public void getNameOfDayByPathVariable_whenGetWithRequestParamOutOfRange_thenReturn400() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day/{dayOfWeek}", Integer.toString(15)))
-          .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     @Test
     public void validStringRequestParam_whenGetWithTooLongRequestParam_thenReturn400() throws Exception {
         mockMvc.perform(get("/public/api/1/valid-name").param("name", "asdfghjklqw"))
-          .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest());
     }
 
     @Test

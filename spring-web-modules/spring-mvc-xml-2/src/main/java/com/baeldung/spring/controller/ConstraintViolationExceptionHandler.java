@@ -13,9 +13,8 @@ import javax.validation.ConstraintViolationException;
 @ControllerAdvice
 public class ConstraintViolationExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = {ConstraintViolationException.class})
+    @ExceptionHandler(value = { ConstraintViolationException.class })
     protected ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException e, WebRequest request) {
         return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 }
-

@@ -95,6 +95,9 @@
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <javax.el.version>3.0.1-b08</javax.el.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target> -->
     </properties>
 
 </project>
