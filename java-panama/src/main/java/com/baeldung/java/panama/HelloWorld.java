@@ -13,30 +13,25 @@ public class HelloWorld {
     public static void main(String[] args) throws Throwable {
 
         String symbolName = "printf";
-        String greetings = "Hello World from Project Panama Baeldung Article";
+        String greeting = "Hello World from Project Panama Baeldung Article";
 
         Linker nativeLinker = Linker.nativeLinker();
         SymbolLookup stdlibLookup = nativeLinker.defaultLookup();
         SymbolLookup loaderLookup = SymbolLookup.loaderLookup();
 
-        FunctionDescriptor functionDescriptor = FunctionDescriptor.of(
-                JAVA_INT.withBitAlignment(32),
-                ADDRESS.withBitAlignment(64)
-        );
+        FunctionDescriptor descriptor = FunctionDescriptor.of(JAVA_INT, ADDRESS);
 
-        MethodHandle methodHandle =
-                loaderLookup.lookup(symbolName)
-                        .or(() -> stdlibLookup.lookup(symbolName))
-                        .map(
-                                symbolAddress -> nativeLinker.downcallHandle(symbolAddress, functionDescriptor)
-                        ).orElse(null);
+        MethodHandle methodHandle = loaderLookup.lookup(symbolName)
+                .or(() -> stdlibLookup.lookup(symbolName))
+                .map(symbolSegment -> nativeLinker.downcallHandle(symbolSegment, descriptor))
+                .orElse(null);
 
 
         Objects.requireNonNull(methodHandle);
 
         try (MemorySession memorySession = MemorySession.openConfined()) {
-            MemorySegment nativeGreetings = memorySession.allocateUtf8String(greetings + "\n");
-            methodHandle.invoke(nativeGreetings);
+            MemorySegment greetingSegment = memorySession.allocateUtf8String(greeting);
+            methodHandle.invoke(greetingSegment);
         }
     }
 }
