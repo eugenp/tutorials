@@ -21,8 +21,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 import java.io.IOException;
 
-//@EnableWebMvc
-//@ComponentScan(basePackages = { "com.baeldung.web.controller" })
+// @EnableWebMvc
+// @ComponentScan(basePackages = { "com.baeldung.web.controller" })
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
