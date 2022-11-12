@@ -63,16 +63,4 @@
         <embedded.redis.version>0.7.3</embedded.redis.version>
     </properties>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>resources</directory>
-                <targetPath>${project.build.outputDirectory}</targetPath>
-                <includes>
-                    <include>application.properties</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
-
 </project>
