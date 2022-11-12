@@ -55,6 +55,7 @@
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-4</module>
+        <module>spring-boot-mvc-5</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
