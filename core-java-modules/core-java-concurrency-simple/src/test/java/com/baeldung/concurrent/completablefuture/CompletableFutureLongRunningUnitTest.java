@@ -1,8 +1,6 @@
-package com.baeldung.completablefuture;
+package com.baeldung.concurrent.completablefuture;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
@@ -16,8 +14,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CompletableFutureLongRunningUnitTest {
-
-    private static final Logger LOG = LoggerFactory.getLogger(CompletableFutureLongRunningUnitTest.class);
 
     @Test
     public void whenRunningCompletableFutureAsynchronously_thenGetMethodWaitsForResult() throws InterruptedException, ExecutionException {
@@ -78,7 +74,7 @@ public class CompletableFutureLongRunningUnitTest {
     public void whenAddingThenAcceptToFuture_thenFunctionExecutesAfterComputationIsFinished() throws ExecutionException, InterruptedException {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello");
 
-        CompletableFuture<Void> future = completableFuture.thenAccept(s -> LOG.debug("Computation returned: " + s));
+        CompletableFuture<Void> future = completableFuture.thenAccept(s -> System.out.println("Computation returned: " + s));
 
         future.get();
     }
@@ -87,7 +83,7 @@ public class CompletableFutureLongRunningUnitTest {
     public void whenAddingThenRunToFuture_thenFunctionExecutesAfterComputationIsFinished() throws ExecutionException, InterruptedException {
         CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello");
 
-        CompletableFuture<Void> future = completableFuture.thenRun(() -> LOG.debug("Computation finished."));
+        CompletableFuture<Void> future = completableFuture.thenRun(() -> System.out.println("Computation finished."));
 
         future.get();
     }
@@ -120,7 +116,7 @@ public class CompletableFutureLongRunningUnitTest {
     @Test
     public void whenUsingThenAcceptBoth_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
         CompletableFuture.supplyAsync(() -> "Hello")
-            .thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> LOG.debug(s1 + s2));
+            .thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> System.out.println(s1 + s2));
     }
 
     @Test
