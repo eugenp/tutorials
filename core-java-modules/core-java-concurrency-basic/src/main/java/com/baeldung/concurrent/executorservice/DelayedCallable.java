@@ -1,14 +1,15 @@
 package com.baeldung.concurrent.executorservice;
 
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
 public class DelayedCallable implements Callable<String> {
-    
+
     private String name;
     private long period;
     private CountDownLatch latch;
-    
+
     public DelayedCallable(String name, long period, CountDownLatch latch) {
         this(name, period);
         this.latch = latch;
@@ -23,11 +24,11 @@ public class DelayedCallable implements Callable<String> {
 
         try {
             Thread.sleep(period);
-            
+
             if (latch != null) {
                 latch.countDown();
             }
-            
+
         } catch (InterruptedException ex) {
             // handle exception
             ex.printStackTrace();

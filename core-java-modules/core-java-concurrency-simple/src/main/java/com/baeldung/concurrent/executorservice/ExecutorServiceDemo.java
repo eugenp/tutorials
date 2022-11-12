@@ -24,4 +24,9 @@ public class ExecutorServiceDemo {
 
     }
 
+    public static void main(String... args) {
+        ExecutorServiceDemo demo = new ExecutorServiceDemo();
+        demo.execute();
+    }
+
 }
