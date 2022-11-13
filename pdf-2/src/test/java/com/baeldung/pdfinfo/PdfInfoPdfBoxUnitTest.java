@@ -17,7 +17,7 @@ public class PdfInfoPdfBoxUnitTest {
 
     @Test
     public void givenPdf_whenIsPasswordRequired_thenOK() throws IOException {
-        Assert.assertEquals(false, PdfInfoPdfBox.isPasswordRequired(PDF_FILE));
+        Assert.assertFalse(PdfInfoPdfBox.isPasswordRequired(PDF_FILE));
     }
 
     @Test
