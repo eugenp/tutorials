@@ -64,6 +64,7 @@
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
+        <module>spring-boot-persistence-mongodb-3</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
@@ -73,7 +74,7 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <!-- <module>spring-data-gemfire</module> Fixing in JAVA-11854 -->
+        <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
@@ -111,6 +112,8 @@
         <!-- persistence -->
         <hibernate.version>5.2.17.Final</hibernate.version>
         <postgresql.version>42.2.20</postgresql.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
+        <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
 
 </project>

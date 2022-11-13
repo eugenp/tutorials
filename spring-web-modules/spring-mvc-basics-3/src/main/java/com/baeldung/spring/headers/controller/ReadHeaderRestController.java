@@ -1,6 +1,8 @@
 package com.baeldung.spring.headers.controller;
 
 import java.net.InetSocketAddress;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -24,9 +26,10 @@ public class ReadHeaderRestController {
     }
 
     @GetMapping("/greeting")
-    public ResponseEntity<String> greeting(@RequestHeader(value = "accept-language") String language) {
+    public ResponseEntity<String> greeting(@RequestHeader(value = HttpHeaders.ACCEPT_LANGUAGE) String language) {
         String greeting = "";
-        String firstLanguage = (language.length() > 1 ? language.substring(0, 2) : language);
+        List<Locale.LanguageRange> ranges = Locale.LanguageRange.parse(language);
+        String firstLanguage = ranges.get(0).getRange();
         switch (firstLanguage) {
         case "es":
             greeting = "Hola!";

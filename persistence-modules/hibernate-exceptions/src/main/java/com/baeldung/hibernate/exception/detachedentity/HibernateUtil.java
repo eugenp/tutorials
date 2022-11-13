@@ -24,7 +24,8 @@ public class HibernateUtil {
                 settings.put(Environment.USER, "sa");
                 settings.put(Environment.PASS, "");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.HSQLDialect");
-                settings.put(Environment.SHOW_SQL, "true");
+                // enable to show Hibernate generated SQL
+                settings.put(Environment.SHOW_SQL, "false");
                 settings.put(Environment.FORMAT_SQL, "true");
                 settings.put(Environment.USE_SQL_COMMENTS, "true");
                 settings.put(Environment.HBM2DDL_AUTO, "update");

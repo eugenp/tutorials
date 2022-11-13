@@ -12,15 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.boot.composite.key.data.Ticket;
 import com.baeldung.boot.composite.key.data.TicketId;
 import com.baeldung.boot.composite.key.service.CustomerService;
 
-@SpringBootTest
+@SpringBootTest(classes = SpringBootCompositeKeyApplication.class)
 @DirtiesContext
 @RunWith(SpringRunner.class)
+@TestPropertySource("/embedded.properties")
 public class CustomerServiceIntegrationTest {
     @Autowired
     private CustomerService service;

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-cxf-modules</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apache-cxf</name>
+    <name>apache-cxf-modules</name>
     <packaging>pom</packaging>
 
     <parent>

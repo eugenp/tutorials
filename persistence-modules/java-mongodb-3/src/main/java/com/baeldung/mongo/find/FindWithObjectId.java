@@ -25,7 +25,7 @@ public class FindWithObjectId {
             mongoClient = new MongoClient("localhost", 27017);
 
             databaseName = "baeldung";
-            collectionName = "employee";
+            collectionName = "vehicle";
 
             database = mongoClient.getDatabase(databaseName);
             collection = database.getCollection(collectionName);

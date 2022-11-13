@@ -1,0 +1,5 @@
+spring:
+  codec:
+    max-in-memory-size: 500KB
+
+host: http://localhost:${server.port}
