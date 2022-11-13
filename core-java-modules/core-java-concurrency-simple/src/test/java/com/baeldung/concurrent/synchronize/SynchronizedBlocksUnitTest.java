@@ -9,15 +9,15 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class BaeldungSychronizedBlockUnitTest {
+public class SynchronizedBlocksUnitTest {
 
     @Test
     public void givenMultiThread_whenBlockSync() throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(3);
-        BaeldungSynchronizedBlocks synchronizedBlocks = new BaeldungSynchronizedBlocks();
+        SynchronizedBlocks synchronizedBlocks = new SynchronizedBlocks();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(synchronizedBlocks::performSynchronisedTask));
+            .forEach(count -> service.submit(synchronizedBlocks::performSynchronisedTask));
         service.awaitTermination(500, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, synchronizedBlocks.getCount());
@@ -28,10 +28,10 @@ public class BaeldungSychronizedBlockUnitTest {
         ExecutorService service = Executors.newCachedThreadPool();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(BaeldungSynchronizedBlocks::performStaticSyncTask));
+            .forEach(count -> service.submit(SynchronizedBlocks::performStaticSyncTask));
         service.awaitTermination(500, TimeUnit.MILLISECONDS);
 
-        assertEquals(1000, BaeldungSynchronizedBlocks.getStaticCount());
+        assertEquals(1000, SynchronizedBlocks.getStaticCount());
     }
 
     @Test
