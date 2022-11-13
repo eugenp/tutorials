@@ -234,9 +234,11 @@ public String submit(
 <dependency>
     <groupId>org.hibernate.validator</groupId>
     <artifactId>hibernate-validator</artifactId>
-    <version>8.0.0.Final</version>
+    <version>7.0.5.Final</version>
 </dependency>
 ```
+
+> <https://hibernate.org/validator/releases/7.0/> The main change is that all the dependencies using javax. packages are now using jakarta.* packages.
 
 为了使Spring MVC通过@Valid注解支持JSR 303验证，我们需要在Spring配置文件中启用以下内容。
 

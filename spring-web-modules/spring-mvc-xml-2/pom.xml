@@ -92,7 +92,7 @@
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
+        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
         <javax.el.version>3.0.1-b08</javax.el.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
