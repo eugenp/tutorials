@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import com.baeldung.web.controller.handlermapping.BeanNameHandlerMappingController;
 import com.baeldung.web.controller.handlermapping.WelcomeController;
 
-
 @Configuration
 public class HandlerMappingDefaultConfig {
 

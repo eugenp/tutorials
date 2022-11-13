@@ -224,4 +224,4 @@ RFC 821中的SMTP协议规范指定了SMTP服务器在尝试向错误地址发�
 - [x] [Guide to Spring Email](https://www.baeldung.com/spring-email)
 - [Using ThymeLeaf and FreeMarker Emails Templates with Spring](https://www.baeldung.com/spring-email-templates)
 - [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
-- More articles: [[<-- prev]](../spring-mvc-basics)[[more -->]](../spring-mvc-basics-3)
+- More articles: [[<-- prev]](../spring-mvc-basics/README.md)[[more -->]](../spring-mvc-basics-3/README.md)

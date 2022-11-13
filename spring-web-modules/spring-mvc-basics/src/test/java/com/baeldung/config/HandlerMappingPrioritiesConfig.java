@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 
-
 @Configuration
 public class HandlerMappingPrioritiesConfig {
 

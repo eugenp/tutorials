@@ -10,10 +10,6 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-
-
-
-
 @Configuration
 public class SimpleUrlHandlerMappingConfig {
 
@@ -38,6 +34,5 @@ public class SimpleUrlHandlerMappingConfig {
     public WelcomeController welcomeSimpleMappingConfig() {
         return new WelcomeController();
     }
-
 
 }

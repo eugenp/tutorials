@@ -421,7 +421,11 @@ Spring的DispatcherServlet实现了这种模式，因此，它负责正确协调
 
         现在我们已经配置了我们的MultipartResolver Bean，让我们设置一个控制器 MultipartController.java 来处理MultipartFile请求。
 
-        我们可以使用一个普通的表单来提交一个文件到指定的端点。上传的文件将在'CATALINA_HOME/bin/uploads'中获得。
+        我们可以使用一个普通的表单来提交一个文件到指定的端点。
+
+        发布服务后，上传的文件将在'CATALINA_HOME/bin/uploads'中获得，而直接运行工程则上传到 spring-mvc-basics/uploads ，注意 uploads 目录需要手动创建。
+
+        运行：`curl -H "Content-Type:multipart/form-data" -X POST -F "file=@/Users/wangkan/Downloads/Program_Execution.jpg" -F 'info={"":""}' http://localhost:8080/spring-mvc-basics/upload` 测试文件上传。
 
     7. HandlerExceptionResolver接口
 
@@ -459,13 +463,689 @@ Spring的DispatcherServlet实现了这种模式，因此，它负责正确协调
 
         这里有一篇[文章](https://www.baeldung.com/exception-handling-for-rest-with-spring)，更深入地介绍了Spring Web应用中的异常处理。
 
+## Spring的@Controller和@RestController注解
+
+在这个简短的教程中，我们将讨论Spring MVC中@Controller和@RestController注解的区别。
+
+我们可以对传统的Spring控制器使用第一个注解，而且它成为框架的一部分已经有很长一段时间了。
+
+Spring 4.0引入了@RestController注解，以简化RESTful Web服务的创建。这是一个方便的注解，它结合了@Controller和@ResponseBody，这样就不需要用@ResponseBody注解来注释控制器类的每个请求处理方法。
+
+进一步阅读：
+
+- [Spring RequestMapping](https://www.baeldung.com/spring-requestmapping)
+- [Spring的@RequestParam注解](https://www.baeldung.com/spring-request-param)
+
+1. Spring MVC @Controller
+
+    我们可以用@Controller注解来注释经典的控制器。这只是@Component类的一个特殊化，它允许我们通过classpath扫描自动检测实现类。
+
+    我们通常将@Controller与@RequestMapping注解结合使用，用于请求处理方法。
+
+    让我们来看看Spring MVC控制器的一个简单例子。
+
+    ```java
+    @Controller
+    @RequestMapping("books")
+    public class SimpleBookController {
+
+        @GetMapping("/{id}", produces = "application/json")
+        public @ResponseBody Book getBook(@PathVariable int id) {
+            return findBookById(id);
+        }
+
+        private Book findBookById(int id) {
+            // ...
+        }
+    }
+    ```
+
+    我们用@ResponseBody注释了请求处理方法。这个注解使得返回对象能够自动序列化到HttpResponse中。
+
+2. Spring MVC @RestController
+
+    @RestController是控制器的一个专门版本。它包括@Controller和@ResponseBody注解，因此，简化了控制器的实现。
+
+    ```java
+    @RestController
+    @RequestMapping("books-rest")
+    public class SimpleBookRestController {
+        
+        @GetMapping("/{id}", produces = "application/json")
+        public Book getBook(@PathVariable int id) {
+            return findBookById(id);
+        }
+
+        private Book findBookById(int id) {
+            // ...
+        }
+    }
+    ```
+
+    该控制器使用了@RestController注解；因此，不需要@ResponseBody。
+
+    控制器类的每个请求处理方法都自动将返回对象序列化为HttpResponse。
+
+## Spring MVC中ViewResolver指南
+
+所有MVC框架都提供了一种处理视图的方法。
+
+Spring通过视图解析器实现这一点，它使您能够在浏览器中渲染模型，而无需将实现与特定的视图技术绑定。
+
+ViewResolver将视图名称映射到实际视图。
+
+Spring框架附带了很多视图解析器，例如InternalResourceViewResolver、BeanNameViewResolver等。
+
+这是一个简单的教程，演示如何设置最常见的视图解析器以及如何在同一配置中使用多个ViewResolver。
+
+1. Spring Web配置
+
+    让我们从web配置开始；我们将用@EnableWebMvc、@Configuration和@ComponentScan对其进行注释：
+
+    ```java
+    @EnableWebMvc
+    @Configuration
+    @ComponentScan("com.baeldung.web")
+    public class WebConfig implements WebMvcConfigurer {
+        // All web configuration will go here
+    }
+    ```
+
+    在这里，我们将在配置中设置视图解析器。
+
+2. 添加InternalResourceViewResolver
+
+    此ViewResolver允许我们为视图名称设置前缀或后缀等属性，以生成最终视图页面URL：
+
+    ```java
+    @Bean
+    public ViewResolver internalResourceViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
+        return bean;
+    }
+    ```
+
+    为了简化示例，我们不需要控制器来处理请求。
+
+    我们只需要一个简单的jsp页面，放在配置中定义的/WEB-INF/view文件夹中：simple.jsp
+
+3. 添加BeanNameViewResolver
+
+    这是ViewResovler的一个实现，它将视图名称解释为当前应用程序上下文中的bean名称。每个这样的视图都可以在XML或Java配置中定义为bean。
+
+    首先，我们将BeanNameViewResolver添加到以前的配置中：
+
+    ```java
+    @Bean
+    public BeanNameViewResolver beanNameViewResolver(){
+        return new BeanNameViewResolver();
+    }
+    ```
+
+    一旦定义了ViewResolver，我们需要定义View类型的bean，以便DispatcherServlet可以执行它来呈现视图：
+
+    ```java
+    @Bean
+    public View sample() {
+        return new JstlView("/WEB-INF/view/sample.jsp");
+    }
+    ```
+
+    下面是控制器类中对应的处理程序方法：
+
+    ```java
+    @GetMapping("/sample")
+    public String showForm() {
+        return "sample";
+    }
+    ```
+
+    从控制器方法中，视图名称返回为“sample”，这意味着该处理程序方法中的视图解析为带有 `/WEB-INF/view/sample.jsp` URL的JstlView类。
+
+4. 链接ViewResolver并定义订单优先级
+
+    Spring MVC还支持多视图解析器。
+
+    这允许您在某些情况下覆盖特定视图。我们可以通过向配置中添加多个解析器来简单地链接视图解析器。
+
+    完成后，我们需要为这些解析器定义一个顺序。order属性用于定义链中调用的顺序。顺序属性（最大顺序号）越高，视图解析器在链中的位置越晚。
+
+    要定义顺序，我们可以在视图解析器的配置中添加以下代码行：
+
+    `bean.setOrder(0);`
+
+    注意顺序优先级，因为InternalResourceViewResolver应该具有更高的顺序，因为它旨在表示一个非常明确的映射。如果其他解析器的顺序更高，则可能永远不会调用InternalResourceViewResolver。
+
+5. 使用SpringBoot
+
+    使用Spring Boot时，WebMvcAutoConfiguration会在应用程序上下文中自动配置InternalResourceViewResolver和BeanNameViewResolverbean。
+
+    此外，为模板引擎添加相应的启动程序，会减少我们必须进行的手动配置。
+
+    例如，通过向pom添加[spring-boot-starter-thymeleaf](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf)依赖项。xml，启用Thymeleaf，无需额外配置：
+
+    ```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <version>${spring-boot-starter-thymeleaf.version}</version>
+    </dependency>
+    ```
+
+    这个启动器依赖项在我们的应用程序上下文中使用名称ThymeleafViewResolver配置ThymeleafViewResolver bean。我们可以通过提供一个同名的bean来覆盖自动配置的ThymeleafViewResolver。
+
+    Thymeleaf视图解析器通过用前缀和后缀包围视图名称来工作。前缀和后缀的默认值为‘classpath:/templates/’和‘.html’。
+
+    Spring Boot还提供了一个选项，可以通过设置Spring.thmeleaf来更改前缀和后缀的默认值，spring.thymeleaf.prefix前缀属性和spring.thymeleaf.suffix后缀属性。
+
+    同样，我们有[groovy-templates](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-groovy-templates)、[freemarker](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-freemarker)和[mustache](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mustache)模板引擎的启动依赖项，我们可以使用Spring Boot来获得相应的视图解析器的自动配置。
+
+    DispatcherServlet使用它在应用程序上下文中发现的所有视图解析器，并尝试每一个，直到得到一个结果，因此，如果我们计划添加我们自己的视图解析器，这些视图解析器的排序就变得非常重要。
+
+## Spring Handler 映射指南
+
+在Spring MVC中，DispatcherServlet充当前台控制器--接收所有传入的HTTP请求并处理它们。
+
+简单地说，处理过程是在处理程序映射的帮助下将请求传递给相关组件。
+
+HandlerMapping是一个接口，定义了请求和处理程序对象之间的映射。虽然Spring MVC框架提供了一些现成的实现，但开发者可以通过实现该接口来提供自定义的映射策略。
+
+本文讨论了Spring MVC提供的一些实现，即BeanNameUrlHandlerMapping、SimpleUrlHandlerMapping、ControllerClassNameHandlerMapping，它们的配置，以及它们之间的区别。
+
+1. BeanNameUrlHandlerMapping
+
+    BeanNameUrlHandlerMapping是默认的HandlerMapping实现。BeanNameUrlHandlerMapping将请求URL映射到同名的Bean上。
+
+    这种特殊的映射支持直接的名称匹配，也支持使用"*"模式进行模式匹配。
+
+    例如，一个传入的URL"/foo"映射到一个叫做"/foo"的bean。模式匹配的一个例子是将对"/foo*"的请求映射到名称以"/foo"开头的bean，如"/foo2/"或"/fooOne/"。
+
+    让我们在这里配置这个例子，并注册一个bean控制器，处理对"/beanNameUrl"的请求，见 BeanNameUrlHandlerMappingConfig.java 。
+
+    ```java
+    @Configuration
+    public class BeanNameUrlHandlerMappingConfig {
+        @Bean
+        BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {
+            return new BeanNameUrlHandlerMapping();
+        }
+
+        @Bean("/beanNameUrl")
+        public WelcomeController welcome() {
+            return new WelcomeController();
+        }
+    }
+    ```
+
+    这是与上述基于Java的配置相对应的XML，见 BeanNameUrlHandlerMappingConfig.xml 。
+
+    ```xml
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+    <bean name="/beanNameUrl" class="com.baeldung.WelcomeController" />
+    ```
+
+    需要注意的是，在这两个配置中，不需要为BeanNameUrlHandlerMapping定义一个bean，因为它是由Spring MVC提供的。移除这个Bean定义不会导致任何问题，请求仍然会被映射到他们注册的处理程序Bean。
+
+    现在，所有对"/beanNameUrl"的请求都将由DispatcherServlet转发到 "WelcomeController"。WelcomeController返回一个名为 "welcome"的视图。
+
+    下面的代码测试了这个配置并确保返回正确的视图名称。
+
+    ```java
+    public class BeanNameMappingConfigTest {
+
+        @Test
+        public void whenBeanNameMapping_thenMappedOK() {
+            mockMvc.perform(get("/beanNameUrl"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("welcome"));
+        }
+    }
+    ```
+
+2. SimpleUrlHandlerMapping
+
+    SimpleUrlHandlerMapping是最灵活的HandlerMapping实现。它允许在Bean实例和URL之间或Bean名称和URL之间进行直接和声明式的映射。
+
+    让我们把请求"/simpleUrlWelcome"和"/*/simpleUrlWelcome"映射到"welcome"Bean，见 com.baeldung.config.SimpleUrlHandlerMappingConfig.java 。
+
+    或者，这里有同等的XML配置，见 resources.SimpleUrlHandlerMappingConfig.xml。
+
+    需要注意的是，在XML配置中，`<value>`标签之间的映射必须以java.util.Properties类所接受的形式进行，它应该遵循这样的语法：path= Handler_Bean_Name。
+
+    URL通常应该有一个前导斜杠，然而，如果路径不是以斜杠开头，Spring MVC会自动添加它。
+
+    在XML中配置上述例子的另一种方法是使用 "props"属性而不是 "value"。Props有一个 "prop"标签列表，每个标签都定义了一个映射，其中 "key "指的是映射的URL，标签的值是bean的名字。
+
+    ```xml
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/simpleUrlWelcome">welcome</prop>
+                <prop key="/*/simpleUrlWelcome">welcome</prop>
+            </props>
+        </property>
+    </bean>
+    ```
+
+    下面的测试案例确保对"/simpleUrlWelcome"的请求由 "WelcomeController"处理，该控制器返回一个名为 "welcome"的视图。
+
+    ```java
+    public class SimpleUrlMappingConfigTest {
+        // ...
+
+        @Test
+        public void whenSimpleUrlMapping_thenMappedOK() {
+            mockMvc.perform(get("/simpleUrlWelcome"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("welcome"));
+        }
+    }
+    ```
+
+3. ControllerClassNameHandlerMapping (在Spring 5中被删除)
+
+    ControllerClassNameHandlerMapping将URL映射到注册的控制器Bean（或用@Controller注解标注的控制器），该控制器具有相同的名称，或以相同的名称开始。
+
+    在许多情况下，特别是对于处理单一请求类型的简单控制器实现来说，这可能更方便。Spring MVC使用的惯例是使用类的名字，去掉 "Controller "的后缀，然后将名字改为小写，并将其作为映射返回，前面加一个"/"。
+
+    例如，"WelcomeController "将作为映射返回到"/welcome*"，即任何以 "欢迎 "开头的URL。
+
+    让我们来配置ControllerClassNameHandlerMapping。
+
+    请注意，ControllerClassNameHandlerMapping从Spring 4.3开始被弃用，转而采用注解驱动的处理方法。
+
+    另一个重要的注意点是，控制器的名字将总是以小写返回（减去 "Controller"后缀）。因此，如果我们有一个名为 "WelcomeBaeldungController"的控制器，它将只处理对"/welcomebaeldung"的请求，而不是对"/welcomeBaeldung"。
+
+    在下面的Java配置和XML配置中，我们定义了ControllerClassNameHandlerMapping Bean，并为我们要用来处理请求的控制器注册了bean。我们还注册了一个 "WelcomeController"类型的Bean，这个Bean将处理所有以"/welcome"开头的请求。
+
+4. 配置优先级
+
+    Spring MVC框架允许同时实现一个以上的HandlerMapping接口。
+
+    让我们创建一个配置并注册两个控制器，都映射到URL"/welcome"，只是使用不同的映射并返回不同的视图名称。
+
+    参见 com.baeldung.config.HandlerMappingDefaultConfig.java。
+
+    由于没有明确注册处理程序映射，将使用默认的BeanNameHandlerMapping。让我们通过测试来断言这一行为。
+
+    ```java
+    @Test
+    public void whenConfiguringPriorities_thenMappedOK() {
+        mockMvc.perform(get("/welcome"))
+        .andExpect(status().isOk())
+        .andExpect(view().name("bean-name-handler-mapping"));
+    }
+    ```
+
+    如果我们明确地注册一个不同的处理程序映射器，默认的映射器将被覆盖。然而，有趣的是，当两个映射器被显式注册后会发生什么。
+
+    参见 com.baeldung.config.HandlerMappingPrioritiesConfig.java。
+
+    为了获得对使用映射的控制权，使用setOrder(int order)方法来设置优先级。这个方法需要一个int参数，数值越低意味着优先级越高。
+
+    在XML配置中，你可以通过使用一个名为"order"的属性来配置优先级。
+
+    ```xml
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="order" value="2" />
+    </bean>
+    ```
+
+    让我们通过下面的beanNameUrlHandlerMapping.setOrder(1)和simpleUrlHandlerMapping.setOrder(0)向处理程序映射豆添加顺序属性。顺序属性的低值反映了更高的优先权。让我们用测试来断言新的行为。
+
+    ```java
+    @Test
+    public void whenConfiguringPriorities_thenMappedOK() {
+        mockMvc.perform(get("/welcome"))
+        .andExpect(status().isOk())
+        .andExpect(view().name("simple-url-handler-mapping"));
+    }
+    ```
+
+    当测试上述配置时，你会看到对"/welcome"的请求将由SimpleUrlHandlerMapping Bean处理，它调用SimpleUrlHandlerController并返回simple-url-handler-mapping视图。我们可以通过相应地调整order属性的值，轻松地配置BeanNameHandlerMapping，使其优先处理。
+
+## Spring MVC内容协商
+
+这篇文章描述了如何在Spring MVC项目中实现内容协商。
+
+一般来说，有三种选择来确定请求的媒体类型。
+
+- (已废弃）在请求中使用URL后缀（扩展名）（例如.xml/.json）。
+- 在请求中使用URL参数(如?format=json)
+- 在请求中使用接受头
+
+默认情况下，这是Spring内容协商管理器将尝试使用这三种策略的顺序。如果这些都没有启用，我们可以指定回退到一个默认的内容类型。
+
+1. 内容协商策略
+
+    让我们从必要的依赖性开始--我们正在使用JSON和XML表示法，所以在这篇文章中，我们将使用Jackson来表示JSON。
+
+    ```xml
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>2.10.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.10.2</version>
+    </dependency>
+    ```
+
+    对于XML支持，我们可以使用JAXB、XStream或较新的Jackson-XML支持。
+
+    由于我们已经在前面关于[HttpMessageConverters](https://www.baeldung.com/spring-httpmessageconverter-rest)的文章中解释了Accept头的使用，所以让我们深入关注前两种策略。
+
+2. URL后缀策略
+
+    在Spring Boot 2.6.x版本中，针对注册的Spring MVC处理程序映射匹配请求路径的默认策略已经从AntPathMatcher变为PathPatternParser。
+
+    由于PathPatternParser不支持后缀模式匹配，在使用这个策略之前，我们首先需要使用传统的路径匹配器。
+
+    我们可以在application.properties文件中添加spring.mvc.pathmatch.match-strategy，将默认值调回AntPathMatcher。
+
+    默认情况下，该策略是禁用的，我们需要在application.properties中设置spring.mvc.pathmatch.use-suffix-pattern为true来启用它。
+
+    ```properties
+    spring.mvc.pathmatch.use-suffix-pattern=true
+    spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+    ```
+
+    一旦启用，框架可以从URL中检查路径扩展，以确定输出内容类型。
+
+    在进行配置之前，让我们快速看一下一个例子。在一个典型的Spring控制器中，我们有以下简单的API方法实现。
+
+    ```java
+    @RequestMapping(
+    value = "/employee/{id}", 
+    produces = { "application/json", "application/xml" }, 
+    method = RequestMethod.GET)
+    public @ResponseBody Employee getEmployeeById(@PathVariable long id) {
+        return employeeMap.get(id);
+    }
+    ```
+
+    让我们通过利用JSON扩展指定资源的媒体类型来调用它。
+
+    `curl http://localhost:8080/spring-mvc-basics/employee/10.json`
+
+    下面是我们使用JSON扩展可能得到的结果。
+
+    ```json
+    {
+        "id": 10,
+        "name": "Test Employee",
+        "contactNumber": "999-999-9999"
+    }
+    ```
+
+    下面是用XML表示的请求-响应的样子。
+
+    `curl http://localhost:8080/spring-mvc-basics/employee/10.xml`
+
+    响应主体。
+
+    ```xml
+    <employee>
+        <contactNumber>999-999-9999</contactNumber>
+        <id>10</id>
+        <name>Test Employee</name>
+    </employee>
+    ```
+
+    现在，如果我们不使用任何扩展或使用未配置的扩展，将返回默认的内容类型。
+
+    `curl http://localhost:8080/spring-mvc-basics/employee/10`
+
+    现在让我们来看看如何设置这个策略--同时使用Java和XML配置。
+
+    1. Java配置
+
+        ```java
+        // com.baeldung.spring.web.config.WebConfig.java
+        public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+            configurer.favorPathExtension(true)。
+            favorParameter(false).
+            ignoreAcceptHeader(true)。
+            useJaf(false)。
+            defaultContentType（MediaType.APPLICATION_JSON）。
+        }
+        ```
+
+        让我们来看看细节。
+
+        首先，我们要启用路径扩展策略。值得一提的是，从[Spring Framework 5.2.4](https://github.com/spring-projects/spring-framework/issues/24179)开始，favorPathExtension(boolean)方法已被弃用，以便不鼓励使用路径扩展来进行内容协商。
+
+        然后，我们将禁用URL参数策略和接受头策略--因为我们只想依靠路径扩展的方式来确定内容的类型。
+
+        然后，我们要关闭Java激活框架；如果传入的请求不符合我们配置的任何策略，JAF可以作为一种回退机制来选择输出格式。我们关闭它是因为我们要将JSON配置为默认的内容类型。请注意，从Spring Framework 5开始，useJaf()方法已被废弃。
+
+        最后--我们要把JSON设置为默认的。这意味着如果两个策略都不匹配，所有传入的请求将被映射到提供JSON的控制器方法。
+
+    2. XML配置
+
+        我们也来看看同样的配置，只是使用XML。
+
+        ```xml
+        <bean id="contentNegotiationManager" 
+        class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+            <property name="favorPathExtension" value="true" />
+            <property name="favorParameter" value="false"/>
+            <property name="ignoreAcceptHeader" value="true" />
+            <property name="defaultContentType" value="application/json" />
+            <property name="useJaf" value="false" />
+        </bean>
+        ```
+
+3. URL参数策略
+
+    我们在上一节中已经使用了路径扩展--现在让我们设置Spring MVC来利用路径参数。
+
+    我们可以通过将 favorParameter 属性的值设置为 true 来启用这一策略。
+
+    让我们快速看一下这将如何与我们之前的例子一起工作。
+
+    `curl http://localhost:8080/spring-mvc-basics/employee/10?mediaType=json`
+
+    如果我们使用XML参数，输出将是XML形式的。
+
+    `curl http://localhost:8080/spring-mvc-basics/employee/10?mediaType=xml`
+
+    现在我们来做配置--同样，先用Java，然后用XML。
+
+    1. Java配置
+
+        ```java
+        public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+            configurer.favorPathExtension(false).
+            favorParameter(true).
+            parameterName("mediaType").
+            ignoreAcceptHeader(true).
+            useJaf(false).
+            defaultContentType(MediaType.APPLICATION_JSON).
+            mediaType("xml", MediaType.APPLICATION_XML). 
+            mediaType("json", MediaType.APPLICATION_JSON); 
+        }
+        ```
+
+        让我们阅读一下这个配置。
+
+        首先，当然，路径扩展和接受头的策略被禁用（以及JAF）。
+
+        其余的配置都是一样的。
+
+    2. XML配置
+
+        ```xml
+        <bean id="contentNegotiationManager" 
+        class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+            <property name="favorPathExtension" value="false" />
+            <property name="favorParameter" value="true"/>
+            <property name="parameterName" value="mediaType"/>
+            <property name="ignoreAcceptHeader" value="true" />
+            <property name="defaultContentType" value="application/json" />
+            <property name="useJaf" value="false" />
+
+            <property name="mediaTypes">
+                <map>
+                    <entry key="json" value="application/json" />
+                    <entry key="xml" value="application/xml" />
+                </map>
+            </property>
+        </bean>
+        ```
+
+        此外，我们可以同时启用两种策略（扩展和参数）：
+
+        ```java
+        public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+            configurer.favorPathExtension(true).
+            favorParameter(true).
+            parameterName("mediaType").
+            ignoreAcceptHeader(true).
+            useJaf(false).
+            defaultContentType(MediaType.APPLICATION_JSON).
+            mediaType("xml", MediaType.APPLICATION_XML). 
+            mediaType("json", MediaType.APPLICATION_JSON); 
+        }
+        ```
+
+        在这种情况下，Spring将首先查找路径扩展，如果路径扩展不存在，则将查找路径参数。如果在输入请求中这两个都不可用，那么将返回默认的内容类型。
+
+4. 接受Header策略
+
+    如果启用了Accept Header，SpringMVC将在传入请求中查找其值，以确定表示类型。
+
+    我们必须将ignoreAcceptHeader的值设置为false以启用此方法，并且我们禁用了其他两个策略，以便我们知道我们只依赖Accept头。
+
+    Java配置：
+
+    ```java
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.favorPathExtension(true).
+        favorParameter(false).
+        parameterName("mediaType").
+        ignoreAcceptHeader(false).
+        useJaf(false).
+        defaultContentType(MediaType.APPLICATION_JSON).
+        mediaType("xml", MediaType.APPLICATION_XML). 
+        mediaType("json", MediaType.APPLICATION_JSON); 
+    }
+    ```
+
+    XML配置：
+
+    ```xml
+    <bean id="contentNegotiationManager" 
+    class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true" />
+        <property name="favorParameter" value="false"/>
+        <property name="parameterName" value="mediaType"/>
+        <property name="ignoreAcceptHeader" value="false" />
+        <property name="defaultContentType" value="application/json" />
+        <property name="useJaf" value="false" />
+
+        <property name="mediaTypes">
+            <map>
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="application/xml" />
+            </map>
+        </property>
+    </bean>
+    ```
+
+    最后，我们需要通过将内容协商管理器插入到整体配置中来打开它：
+
+    `<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />`
+
+## Spring @RequestMapping 新的捷径注解
+
+Spring 4.3引入了一些非常酷的方法级组成的注解，以便在典型的Spring MVC项目中顺利处理@RequestMapping。
+
+1. 新注解
+
+    通常情况下，如果我们想用传统的@RequestMapping注解来实现URL处理程序，那么它应该是这样的。
+
+    `@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)`
+
+    新的方法使得它可以简单地缩短为。
+
+    `@GetMapping("/get/{id})`
+
+    Spring目前支持五种内置注解，用于处理不同类型的HTTP请求方法，包括GET、POST、PUT、DELETE和PATCH。这些注解是
+
+    - @GetMapping
+    - @PostMapping
+    - @PutMapping
+    - @DeleteMapping
+    - @PatchMapping
+
+    从命名规则中我们可以看到，每个注解都是为了处理各自传入的请求方法类型，例如，@GetMapping用于处理GET类型的请求方法，@PostMapping用于处理POST类型的请求方法，等等。
+
+2. 它是如何工作的
+
+    上述所有的注解都已经在内部用@RequestMapping和方法元素中的相应值进行了注解。
+
+    例如，如果我们看一下@GetMapping注解的源代码，我们可以看到它已经用RequestMethod.GET注解了，具体方式如下。
+
+    ```java
+    @Target({ java.lang.annotation.ElementType.METHOD })
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    @RequestMapping(method = { RequestMethod.GET })
+    public @interface GetMapping {
+        // abstract codes
+    }
+    ```
+
+    所有其他的注解都是以同样的方式创建的，即@PostMapping是用RequestMethod.POST注解的，@PutMapping是用RequestMethod.PUT注解的，等等。
+
+    注释的完整源代码可[在此](https://github.com/spring-projects/spring-framework/tree/master/spring-web/src/main/java/org/springframework/web/bind/annotation)获得。
+
+3. 实施
+
+    让我们尝试使用这些注解来构建一个快速的REST应用程序。
+
+    请注意，由于我们将使用Maven来构建项目，并使用Spring MVC来创建我们的应用程序，因此我们需要在pom.xml中添加必要的依赖项。
+
+    ```xml
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>5.3.4.RELEASE</version>
+    </dependency>
+    ```
+
+    现在，我们需要创建一个控制器来映射传入的请求URL。在这个控制器中，我们将逐一使用所有这些注解。
+
+    参见：RequestMappingShortcutsController.java。
+
+    需要注意的几点。
+
+    - 我们使用了必要的注解来处理适当的带有URI的传入HTTP方法。例如，@GetMapping来处理"/get"URI，@PostMapping来处理"/post"URI等等。
+    - 由于我们正在制作一个基于REST的应用程序，我们将返回一个带有200响应代码的常量字符串（每个请求类型都是唯一的）来简化应用程序。在这种情况下，我们使用了Spring的@ResponseBody注解。
+    - 如果我们必须处理任何URL路径变量，我们可以用更少的方式来处理，就像以前使用@RequestMapping一样。
+
+4. 测试应用程序
+
+    为了测试该应用程序，我们需要使用JUnit创建几个测试案例。我们将使用SpringJUnit4ClassRunner来启动测试类。我们将创建五个不同的测试用例来测试每个注解和我们在控制器中声明的每个处理器。
+
+    参见：RequestMapingShortcutsIntegrationTest.java
+
+    另外，我们也可以随时使用任何普通的REST客户端，例如PostMan、RESTClient等，来测试我们的应用程序。在这种情况下，我们在使用其余的客户端时，需要稍微注意选择正确的HTTP方法类型。否则，它将抛出405错误状态。
+
 ## Relevant Articles
 
 - [x] [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
 - [x] [An Intro to the Spring DispatcherServlet](https://www.baeldung.com/spring-dispatcherservlet)
-- [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
-- [A Guide to the ViewResolver in Spring MVC](https://www.baeldung.com/spring-mvc-view-resolver-tutorial)
-- [Guide to Spring Handler Mappings](https://www.baeldung.com/spring-handler-mappings)
-- [Spring MVC Content Negotiation](https://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
-- [Spring @RequestMapping New Shortcut Annotations](https://www.baeldung.com/spring-new-requestmapping-shortcuts)
-- More articles: [[more -->]](../spring-mvc-basics-2)
+- [x] [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
+- [x] [A Guide to the ViewResolver in Spring MVC](https://www.baeldung.com/spring-mvc-view-resolver-tutorial)
+- [x] [Guide to Spring Handler Mappings](https://www.baeldung.com/spring-handler-mappings)
+- [x] [Spring MVC Content Negotiation](https://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
+- [x] [Spring @RequestMapping New Shortcut Annotations](https://www.baeldung.com/spring-new-requestmapping-shortcuts)
+
+More articles: [[more -->]](../spring-mvc-basics-2/README.md)
