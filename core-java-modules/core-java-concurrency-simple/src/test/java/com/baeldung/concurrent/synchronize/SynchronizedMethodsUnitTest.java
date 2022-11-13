@@ -10,16 +10,16 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class BaeldungSynchronizeMethodsUnitTest {
+public class SynchronizedMethodsUnitTest {
 
     @Test
     @Ignore
     public void givenMultiThread_whenNonSyncMethod() throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(3);
-        BaeldungSynchronizedMethods method = new BaeldungSynchronizedMethods();
+        SynchronizedMethods method = new SynchronizedMethods();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(method::calculate));
+            .forEach(count -> service.submit(method::calculate));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, method.getSum());
@@ -28,10 +28,10 @@ public class BaeldungSynchronizeMethodsUnitTest {
     @Test
     public void givenMultiThread_whenMethodSync() throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(3);
-        BaeldungSynchronizedMethods method = new BaeldungSynchronizedMethods();
+        SynchronizedMethods method = new SynchronizedMethods();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(method::synchronisedCalculate));
+            .forEach(count -> service.submit(method::synchronisedCalculate));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, method.getSyncSum());
@@ -42,10 +42,10 @@ public class BaeldungSynchronizeMethodsUnitTest {
         ExecutorService service = Executors.newCachedThreadPool();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(BaeldungSynchronizedMethods::syncStaticCalculate));
+            .forEach(count -> service.submit(SynchronizedMethods::syncStaticCalculate));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
-        assertEquals(1000, BaeldungSynchronizedMethods.staticSum);
+        assertEquals(1000, SynchronizedMethods.staticSum);
     }
 
 }
