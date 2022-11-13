@@ -415,6 +415,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -820,6 +821,7 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
