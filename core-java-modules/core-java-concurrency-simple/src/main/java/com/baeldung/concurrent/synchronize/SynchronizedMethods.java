@@ -1,6 +1,6 @@
 package com.baeldung.concurrent.synchronize;
 
-public class BaeldungSynchronizedMethods {
+public class SynchronizedMethods {
 
     private int sum = 0;
     private int syncSum = 0;
