@@ -55,7 +55,7 @@
         <awaitility.version>1.7.0</awaitility.version>
         <rx.java.string.version>1.1.1</rx.java.string.version>
         <rx.java.math.version>1.0.0</rx.java.math.version>
-        <rx.java2.version>2.2.2</rx.java2.version>
+        <rx.java2.version>2.2.21</rx.java2.version>
     </properties>
 
 </project>
