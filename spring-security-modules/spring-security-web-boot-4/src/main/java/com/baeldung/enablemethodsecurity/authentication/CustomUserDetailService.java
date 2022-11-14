@@ -15,16 +15,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.baeldung.enablemethodsecurity.user.SecurityUser;
 
 public class CustomUserDetailService implements UserDetailsService {
-    private final Map<String, SecurityUser> map = new HashMap<>();
+    private final Map<String, SecurityUser> userMap = new HashMap<>();
 
     public CustomUserDetailService(BCryptPasswordEncoder bCryptPasswordEncoder) {
-        map.put("user", createUser("user", bCryptPasswordEncoder.encode("userPass"), false, "USER"));
-        map.put("admin", createUser("admin", bCryptPasswordEncoder.encode("adminPass"), true, "ADMIN", "USER"));
+        userMap.put("user", createUser("user", bCryptPasswordEncoder.encode("userPass"), false, "USER"));
+        userMap.put("admin", createUser("admin", bCryptPasswordEncoder.encode("adminPass"), true, "ADMIN", "USER"));
     }
 
     @Override
     public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-        return Optional.ofNullable(map.get(username))
+        return Optional.ofNullable(userMap.get(username))
           .orElseThrow(() -> new UsernameNotFoundException("User " + username + " does not exists"));
     }
 

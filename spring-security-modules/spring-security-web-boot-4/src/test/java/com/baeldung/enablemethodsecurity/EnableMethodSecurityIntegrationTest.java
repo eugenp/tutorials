@@ -50,7 +50,7 @@ public class EnableMethodSecurityIntegrationTest {
 
     @Test
     @WithUserDetails()
-    public void whenUserAccessRestrictedEndpoint_thenOk() throws Exception {
+    public void whenUserAccessRestrictedEndpoint_thenIsForbidden() throws Exception {
         mvc.perform(get("/restrictedPolicy"))
           .andExpect(status().isForbidden());
     }
