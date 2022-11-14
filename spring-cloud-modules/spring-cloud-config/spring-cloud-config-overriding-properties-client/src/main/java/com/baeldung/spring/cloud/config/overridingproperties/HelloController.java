@@ -13,6 +13,9 @@ public class HelloController {
     @Value("${welcome}")
     private String welcome;
 
+    @Value("${shared-property}")
+    private String shared;
+
     @GetMapping("hello")
     public String hello() {
         return this.hello;
@@ -21,5 +24,10 @@ public class HelloController {
     @GetMapping("welcome")
     public String welcome() {
         return this.welcome;
+    }
+
+    @GetMapping("shared")
+    public String shared() {
+        return this.shared;
     }
 }
