@@ -14,7 +14,7 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
         LocalDateTime localDateTime = LocalDateTime.of(2022, 1, 1, 0, 30, 22);
         ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("Canada/Atlantic"));
 
-
+        assertNotEquals(localDateTime.toString(), zonedDateTime.toString());
         assertNotEquals(localDateTime.getYear(), zonedDateTime.getYear());
         assertNotEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
         assertNotEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
