@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.java_shallow_deep_copy;
 
 /**
  * Hello world!

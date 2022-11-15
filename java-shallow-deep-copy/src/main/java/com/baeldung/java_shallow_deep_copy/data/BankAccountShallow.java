@@ -1,4 +1,4 @@
-package com.baeldung.data;
+package com.baeldung.java_shallow_deep_copy.data;
 
 public class BankAccountShallow extends BankAccount {
 

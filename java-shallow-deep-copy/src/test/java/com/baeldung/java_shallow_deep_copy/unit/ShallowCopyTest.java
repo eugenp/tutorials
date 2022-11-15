@@ -1,12 +1,12 @@
-package com.baeldung.unit;
+package com.baeldung.java_shallow_deep_copy.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.data.Balance;
-import com.baeldung.data.BankAccountShallow;
+import com.baeldung.java_shallow_deep_copy.data.Balance;
+import com.baeldung.java_shallow_deep_copy.data.BankAccountShallow;
 
 public class ShallowCopyTest {
 
