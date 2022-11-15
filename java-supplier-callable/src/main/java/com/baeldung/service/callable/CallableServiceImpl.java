@@ -11,7 +11,7 @@ import com.baeldung.service.Service;
 public class CallableServiceImpl implements Service {
 
     @Override
-    public User calculateAge(User user) {
+    public User execute(User user) {
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         try {

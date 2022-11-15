@@ -4,5 +4,5 @@ import com.baeldung.data.User;
 
 public interface Service {
 
-    User calculateAge(User user);
+    User execute(User user);
 }

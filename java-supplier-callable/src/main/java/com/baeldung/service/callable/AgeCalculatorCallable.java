@@ -6,7 +6,7 @@ import java.util.concurrent.Callable;
 
 public class AgeCalculatorCallable implements Callable<Integer> {
 
-    private LocalDate birthDate;
+    private final LocalDate birthDate;
 
     @Override
     public Integer call() throws Exception {

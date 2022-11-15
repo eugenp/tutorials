@@ -11,7 +11,7 @@ import com.baeldung.service.Service;
 
 public class SupplierServiceImpl implements Service {
     @Override
-    public User calculateAge(User user) {
+    public User execute(User user) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         CompletableFuture<Integer> ageFut = CompletableFuture.supplyAsync(() -> Period.between(user.getBirthDate(), LocalDate.now())
           .getYears(), executorService);
@@ -21,6 +21,5 @@ public class SupplierServiceImpl implements Service {
         user.setCanDriveACar(canDriveACarFut.join());
         return user;
     }
-
 
 }
