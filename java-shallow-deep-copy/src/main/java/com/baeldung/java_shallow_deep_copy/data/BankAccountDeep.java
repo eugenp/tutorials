@@ -2,16 +2,13 @@ package com.baeldung.java_shallow_deep_copy.data;
 
 public class BankAccountDeep extends BankAccount {
 
-
     public BankAccountDeep(String name, String surname, Balance balance) {
         super(name, surname, balance);
     }
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        BankAccountDeep bankAccountDeep = (BankAccountDeep) super.clone();
-        bankAccountDeep.setBalance((Balance) balance.clone());
-        return bankAccountDeep;
+        return new BankAccountDeep(name, surname, (Balance) balance.clone());
     }
 
     public BankAccountDeep(BankAccountDeep bankAccountDeep) {

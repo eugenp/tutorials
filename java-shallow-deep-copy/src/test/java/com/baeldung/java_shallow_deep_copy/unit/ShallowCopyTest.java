@@ -28,13 +28,16 @@ public class ShallowCopyTest {
     }
 
     @Test
-    void whenIsAShallowCopyDoneByCopyConstructor_thenCopyShouldChange() throws CloneNotSupportedException {
+    void whenIsAShallowCopyDoneByCopyConstructor_thenCopyValueShouldChange() throws CloneNotSupportedException {
         Balance balance = new Balance(10000, "EUR");
         BankAccountShallow bankAccount = new BankAccountShallow("Hello", "World", balance);
         BankAccountShallow shallowCopy = new BankAccountShallow(bankAccount);
-        bankAccount.getBalance().setAmount(0);
-        float shallowCopyAmount = shallowCopy.getBalance().getAmount();
-        assertEquals(0, shallowCopyAmount);
+        float newBalance = 0;
+        balance.setAmount(newBalance);
+        assertEquals(newBalance, bankAccount.getBalance()
+          .getAmount());
+        assertEquals(newBalance, shallowCopy.getBalance()
+          .getAmount());
     }
 
     @Test
@@ -46,13 +49,14 @@ public class ShallowCopyTest {
     }
 
     @Test
-    void whenIsAShallowCopyDoneByCloneMethod__thenCopyShouldChange() throws CloneNotSupportedException {
+    void whenIsAShallowCopyDoneByCloneMethod__thenCopyValueShouldChange() throws CloneNotSupportedException {
         Balance balance = new Balance(10000, "EUR");
         BankAccountShallow bankAccount = new BankAccountShallow("Hello", "World", balance);
         BankAccountShallow shallowCopy = (BankAccountShallow) bankAccount.clone();
-        bankAccount.getBalance().setAmount(0);
-        float shallowCopyAmount = shallowCopy.getBalance().getAmount();
-        assertEquals(0, shallowCopyAmount);
+        float newBalance = 0;
+        balance.setAmount(newBalance);
+        assertEquals(newBalance, shallowCopy.getBalance()
+          .getAmount());
     }
 
 }
