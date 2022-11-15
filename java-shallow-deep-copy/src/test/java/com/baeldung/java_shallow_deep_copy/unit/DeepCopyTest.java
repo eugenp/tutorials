@@ -9,6 +9,8 @@ import com.baeldung.java_shallow_deep_copy.data.BankAccountDeep;
 
 public class DeepCopyTest {
 
+
+
     @Test
     void whenIsADeepCopyDoneByCopyConstructor_thenNestedObjectsAreNotTheSame() {
         Balance balance = new Balance(10000, "EUR");
@@ -22,10 +24,8 @@ public class DeepCopyTest {
         Balance balance = new Balance(10000, "EUR");
         BankAccountDeep bankAccount = new BankAccountDeep("Hello", "World", balance);
         BankAccountDeep deepCopy = new BankAccountDeep(bankAccount);
-        bankAccount.getBalance()
-          .setAmount(0);
-        float deepCopyAmount = deepCopy.getBalance()
-          .getAmount();
+        bankAccount.getBalance().setAmount(0);
+        float deepCopyAmount = deepCopy.getBalance().getAmount();
         assertNotEquals(0, deepCopyAmount);
     }
 
@@ -43,10 +43,8 @@ public class DeepCopyTest {
         Balance balance = new Balance(10000, "EUR");
         BankAccountDeep bankAccount = new BankAccountDeep("Hello", "World", balance);
         BankAccountDeep deepCopy = (BankAccountDeep) bankAccount.clone();
-        bankAccount.getBalance()
-          .setAmount(0);
-        float deepCopyAmount = deepCopy.getBalance()
-          .getAmount();
+        bankAccount.getBalance().setAmount(0);
+        float deepCopyAmount = deepCopy.getBalance().getAmount();
         assertNotEquals(0, deepCopyAmount);
     }
 
