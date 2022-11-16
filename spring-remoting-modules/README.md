@@ -2,9 +2,6 @@
 
 This module contains articles about Spring Remoting
 
-### Relevant Articles
-
-- [Spring Remoting with RMI](https://www.baeldung.com/spring-remoting-rmi)
 
 ### Overview
 This Maven project contains the Java source code for various modules used in the Spring Remoting series of articles.
