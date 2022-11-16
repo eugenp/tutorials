@@ -3,7 +3,6 @@
 This module contains articles about Spring Remoting
 
 ### Relevant Articles
-- [Intro to Spring Remoting with HTTP Invokers](https://www.baeldung.com/spring-remoting-http-invoker)
 - [Spring Remoting with Hessian and Burlap](https://www.baeldung.com/spring-remoting-hessian-burlap)
 - [Spring Remoting with AMQP](https://www.baeldung.com/spring-remoting-amqp)
 - [Spring Remoting with JMS and ActiveMQ](https://www.baeldung.com/spring-remoting-jms)
