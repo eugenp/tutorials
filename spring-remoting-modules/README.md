@@ -3,7 +3,7 @@
 This module contains articles about Spring Remoting
 
 ### Relevant Articles
-- [Spring Remoting with JMS and ActiveMQ](https://www.baeldung.com/spring-remoting-jms)
+
 - [Spring Remoting with RMI](https://www.baeldung.com/spring-remoting-rmi)
 
 ### Overview
