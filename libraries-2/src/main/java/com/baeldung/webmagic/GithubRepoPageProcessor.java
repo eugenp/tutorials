@@ -1,12 +1,8 @@
-package us.codecraft.webmagic.samples;
+package com.baeldung.webmagic;
 
 import us.codecraft.webmagic.*;
 import us.codecraft.webmagic.processor.PageProcessor;
 
-/**
- * @author code4crafter@gmail.com <br>
- * @since 0.5.1
- */
 public class GithubRepoPageProcessor implements PageProcessor {
 
     private Site site = Site.me().setRetryTimes(3).setSleepTime(0);

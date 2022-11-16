@@ -1,4 +1,4 @@
-package us.codecraft.webmagic.samples;
+package com.baeldung.webmagic;
 
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.model.ConsolePageModelPipeline;
