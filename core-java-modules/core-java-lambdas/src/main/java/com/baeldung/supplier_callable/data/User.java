@@ -1,4 +1,4 @@
-package com.baeldung.data;
+package com.baeldung.supplier_callable.data;
 
 import java.time.LocalDate;
 

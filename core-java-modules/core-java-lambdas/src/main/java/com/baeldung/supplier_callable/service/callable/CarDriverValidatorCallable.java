@@ -1,4 +1,4 @@
-package com.baeldung.service.callable;
+package com.baeldung.supplier_callable.service.callable;
 
 import java.util.concurrent.Callable;
 

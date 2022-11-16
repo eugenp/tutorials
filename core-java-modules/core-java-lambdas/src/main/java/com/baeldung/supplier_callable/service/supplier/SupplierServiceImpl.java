@@ -1,4 +1,4 @@
-package com.baeldung.service.supplier;
+package com.baeldung.supplier_callable.service.supplier;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -6,8 +6,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.baeldung.data.User;
-import com.baeldung.service.Service;
+import com.baeldung.supplier_callable.data.User;
+import com.baeldung.supplier_callable.service.Service;
 
 public class SupplierServiceImpl implements Service {
     @Override
