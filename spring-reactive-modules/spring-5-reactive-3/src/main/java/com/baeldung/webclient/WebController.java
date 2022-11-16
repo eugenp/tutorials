@@ -19,37 +19,37 @@ public class WebController {
 
     private static final int DEFAULT_PORT = 8080;
 
-    public static final String SLOW_SERVICE_TWEETS_ENDPOINT_NAME = "/slow-service-tweets";
+    public static final String SLOW_SERVICE_PRODUCTS_ENDPOINT_NAME = "/slow-service-products";
 
     @Setter
     private int serverPort = DEFAULT_PORT;
 
     @Autowired
-    private TweetsFeignClient tweetsFeignClient;
+    private ProductsFeignClient productsFeignClient;
 
-    @GetMapping("/tweets-blocking")
-    public List<Tweet> getTweetsBlocking() {
+    @GetMapping("/products-blocking")
+    public List<Product> getProductsBlocking() {
         log.info("Starting BLOCKING Controller!");
         final URI uri = URI.create(getSlowServiceBaseUri());
 
-        List<Tweet> result = tweetsFeignClient.getTweetsBlocking(uri);
-        result.forEach(tweet -> log.info(tweet.toString()));
+        List<Product> result = productsFeignClient.getProductsBlocking(uri);
+        result.forEach(product -> log.info(product.toString()));
         log.info("Exiting BLOCKING Controller!");
         return result;
     }
 
-    @GetMapping(value = "/tweets-non-blocking", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Tweet> getTweetsNonBlocking() {
+    @GetMapping(value = "/products-non-blocking", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Product> getProductsNonBlocking() {
         log.info("Starting NON-BLOCKING Controller!");
-        Flux<Tweet> tweetFlux = WebClient.create()
+        Flux<Product> productFlux = WebClient.create()
           .get()
-          .uri(getSlowServiceBaseUri() + SLOW_SERVICE_TWEETS_ENDPOINT_NAME)
+          .uri(getSlowServiceBaseUri() + SLOW_SERVICE_PRODUCTS_ENDPOINT_NAME)
           .retrieve()
-          .bodyToFlux(Tweet.class);
+          .bodyToFlux(Product.class);
 
-        tweetFlux.subscribe(tweet -> log.info(tweet.toString()));
+        productFlux.subscribe(product -> log.info(product.toString()));
         log.info("Exiting NON-BLOCKING Controller!");
-        return tweetFlux;
+        return productFlux;
     }
 
     private String getSlowServiceBaseUri() {

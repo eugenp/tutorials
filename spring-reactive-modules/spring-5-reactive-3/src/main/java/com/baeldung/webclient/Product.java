@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tweet {
-    private String text;
-    private String username;
+public class Product {
+    private String title;
+    private String description;
 }

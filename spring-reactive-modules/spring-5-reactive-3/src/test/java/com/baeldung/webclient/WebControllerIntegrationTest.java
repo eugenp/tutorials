@@ -30,20 +30,20 @@ class WebControllerIntegrationTest {
     }
 
     @Test
-    void whenEndpointWithBlockingClientIsCalled_thenThreeTweetsAreReceived() {
+    void whenEndpointWithBlockingClientIsCalled_thenThreeProductsAreReceived() {
         testClient.get()
-          .uri("/tweets-blocking")
+          .uri("/products-blocking")
           .exchange()
           .expectStatus().isOk()
-          .expectBodyList(Tweet.class).hasSize(3);
+          .expectBodyList(Product.class).hasSize(3);
     }
 
     @Test
-    void whenEndpointWithNonBlockingClientIsCalled_thenThreeTweetsAreReceived() {
+    void whenEndpointWithNonBlockingClientIsCalled_thenThreeProductsAreReceived() {
         testClient.get()
-          .uri("/tweets-non-blocking")
+          .uri("/products-non-blocking")
           .exchange()
           .expectStatus().isOk()
-          .expectBodyList(Tweet.class).hasSize(3);
+          .expectBodyList(Product.class).hasSize(3);
     }
 }
