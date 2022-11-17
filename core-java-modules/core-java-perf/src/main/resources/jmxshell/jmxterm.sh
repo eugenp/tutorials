@@ -11,16 +11,16 @@ while test $# -gt 0
 do
     case "$1" in
     --jar|-j)
-        shift; jar=$1
+        shift; jar="$1"
     ;;
     --address|-l)
-        shift; address=$1
+        shift; address="$1"
     ;;
     --mbean|-b)
         shift; mbean="$1"
     ;;
     --run|-x)
-        shift; operation=$1
+        shift; operation="$1"
 
         command="run -b ${mbean} ${operation}"
     ;;
@@ -43,4 +43,4 @@ do
     shift
 done
 
-echo $command | java -jar $jar -l $address -n -v silent
+echo "$command" | java -jar "$jar" -l "$address" -n -v silent

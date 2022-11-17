@@ -12,11 +12,11 @@ do
     case "$1" in
     --jar)
         shift
-        jar=$1
+        jar="$1"
     ;;
     --address)
         shift
-        address=$1
+        address="$1"
     ;;
     --mbean)
         shift
@@ -24,7 +24,7 @@ do
     ;;
     --run|-x)
         shift
-        operation=$1
+        operation="$1"
 
         command="${mbean} ${operation}"
     ;;
@@ -51,4 +51,4 @@ do
     shift
 done
 
-java -jar $jar - $address $command
+java -jar "$jar" - "$address" "$command"

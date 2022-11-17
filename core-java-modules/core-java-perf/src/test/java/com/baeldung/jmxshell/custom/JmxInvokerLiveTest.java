@@ -1,6 +1,7 @@
 package com.baeldung.jmxshell.custom;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

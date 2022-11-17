@@ -1,5 +1,5 @@
 #!/bin/sh
-jar=/tmp/core-java-perf.jar
+jar='/tmp/core-java-perf.jar'
 address='localhost:11234'
 mbean='com.baeldung.jxmshell:name=calculator,type=basic'
 operation='sum'
@@ -9,11 +9,11 @@ do
     case "$1" in
     --jar)
         shift
-        jar=$1
+        jar="$1"
     ;;
     --address)
         shift
-        address=$1
+        address="$1"
     ;;
     --mbean)
         shift
@@ -21,7 +21,7 @@ do
     ;;
     --run|-x)
        shift
-       operation=$1
+       operation="$1"
     ;;
     --get)
        shift
@@ -39,7 +39,7 @@ do
     shift
 done
 
-java -cp $jar com.baeldung.jmxshell.custom.JmxInvoker \
-  service:jmx:rmi:///jndi/rmi://$address/jmxrmi \
-  $mbean \
-  $operation
+java -cp "$jar" com.baeldung.jmxshell.custom.JmxInvoker \
+  "service:jmx:rmi:///jndi/rmi://$address/jmxrmi" \
+  "$mbean" \
+  "$operation"
