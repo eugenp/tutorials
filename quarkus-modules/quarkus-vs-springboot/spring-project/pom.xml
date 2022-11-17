@@ -8,10 +8,10 @@
     <version>0.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.9</version>
-        <relativePath />
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -102,12 +102,12 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire-plugin.version}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <includes>
-                        <include>**/*IT</include>
-                    </includes>
+                    <source>${maven.compiler.source.version}</source>
+                    <target>${maven.compiler.target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -244,7 +244,8 @@
                         <version>3.0.0-M6</version>
                         <configuration>
                             <argLine>-DspringAot=true
-                                -agentlib:native-image-agent=access-filter-file=src/test/resources/access-filter.json,config-merge-dir=target/classes/META-INF/native-image</argLine>
+                                -agentlib:native-image-agent=access-filter-file=src/test/resources/access-filter.json,config-merge-dir=target/classes/META-INF/native-image
+                            </argLine>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -255,7 +256,9 @@
     <properties>
         <java.version>11</java.version>
         <spring-native.version>0.12.1</spring-native.version>
-        <surefire-plugin.version>3.0.0-M6</surefire-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven.compiler.source.version>11</maven.compiler.source.version>
+        <maven.compiler.target.version>11</maven.compiler.target.version>
     </properties>
 
 </project>
