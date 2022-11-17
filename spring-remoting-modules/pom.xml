@@ -8,8 +8,8 @@
     <name>spring-remoting-modules</name>
     <packaging>pom</packaging>
     <description>Parent for all projects related to Spring Remoting, except remoting-hessian-burlap</description>
-    <!-- remoting-hessian-burlap needs to stick to spring-boot-1, some classes were removed in spring 
-        5 -->
+    <!-- remoting-hessian-burlap needs to stick to spring-boot-1, -->
+    <!-- some classes were removed in spring 5 -->
 
     <parent>
         <groupId>com.baeldung</groupId>
