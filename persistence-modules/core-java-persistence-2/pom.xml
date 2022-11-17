@@ -32,10 +32,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.driver.version}</version>
         </dependency>
-        <!-- ================================================================== This jar is not in maven 
-            central repo due to some license issues. We need to manually download and install to maven repository. 
-            ================================================================== <dependency> <groupId>com.oracle</groupId> 
-            <artifactId>ojdbc14</artifactId> <version>${oracle.driver.version}</version> </dependency> -->
+        <!-- This jar is not in maven central repo due to some license issues. -->
+        <!-- We need to manually download and install to maven repository. -->
+        <!-- <dependency> -->
+        <!-- <groupId>com.oracle</groupId> -->
+        <!-- <artifactId>ojdbc14</artifactId> -->
+        <!-- <version>${oracle.driver.version}</version> -->
+        <!-- </dependency> -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
