@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.thymeleaf.expression;
 
 public class Dino {
     private int id;

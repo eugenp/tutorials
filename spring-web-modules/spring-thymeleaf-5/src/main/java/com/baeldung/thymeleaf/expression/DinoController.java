@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.thymeleaf.expression;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +17,13 @@ public class DinoController {
 
     @RequestMapping("/")
     public String dinoList(Model model) {
-        Dino dinos = new Dino(1, "alpha", "bet", "LOP");
+        Dino dinos = new Dino(1, "alpha", "red", "50kg");
 
         model.addAttribute("dinos", new Dino());
         model.addAttribute("dinos", dinos);
         System.out.println(dinos);
 
-        return "index";
+        return "templates-3/index";
 
     }
 
@@ -32,7 +32,7 @@ public class DinoController {
 
         model.addAttribute("dinos", new Dino());
 
-        return "form";
+        return "templates-3/form";
 
     }
 
@@ -40,7 +40,7 @@ public class DinoController {
     public String dinoSubmit(@ModelAttribute Dino dino, Model model) {
 
         model.addAttribute("dino", dino);
-        return "result";
+        return "templates-3/result";
     }
 
 }
