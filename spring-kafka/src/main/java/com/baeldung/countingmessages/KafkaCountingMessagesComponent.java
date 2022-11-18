@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class KafkaCountingMessagesComponent {
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
     public static Map<String, Object> props = new HashMap<>();
