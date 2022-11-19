@@ -36,10 +36,10 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
     @Test
     void whenConvertLocalDateTimeToZonedDateTimeWithOfMethod_shouldConvert(){
         LocalDateTime localDateTime = LocalDateTime.of(2022, 11, 5, 7, 30, 22);
-        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("Africa/Lagos"));
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of("Africa/Accra")).withZoneSameInstant(ZoneId.of("Africa/Lagos"));
 
         assertEquals("2022-11-05T07:30:22", localDateTime.toString());
-        assertEquals("2022-11-05T07:30:22+01:00[Africa/Lagos]", zonedDateTime.toString()); assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
+        assertEquals("2022-11-05T08:30:22+01:00[Africa/Lagos]", zonedDateTime.toString()); assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
 
     }
 
