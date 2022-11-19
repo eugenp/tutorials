@@ -52,3 +52,5 @@ curl -i $PROXY_IP/actuator/health
 ```
 
 
+## Relevant Articles
+- [Kong Ingress Controller with Spring Boot](https://www.baeldung.com/spring-boot-kong-ingress)
