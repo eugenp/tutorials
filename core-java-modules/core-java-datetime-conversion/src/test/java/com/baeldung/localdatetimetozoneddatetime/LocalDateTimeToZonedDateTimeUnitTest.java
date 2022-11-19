@@ -10,7 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class LocalDateTimeToZonedDateTimeUnitTest {
 
     @Test
-    void whenConvertLocalDateTimeToZonedDateTimeWithAtZoneMethod_shouldConvert(){
+    void whenConvertLocalDateTimeToZonedDateTimeWithAtZoneMethod_shouldConvertAndMaintainDateTimeValues(){
+        LocalDateTime localDateTime = LocalDateTime.of(2022, 1, 1, 0, 30, 22);
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Canada/Atlantic"));
+
+        assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
+        assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
+        assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
+        assertEquals(localDateTime.getHour(), zonedDateTime.getHour());
+        assertEquals(localDateTime.getMinute(), zonedDateTime.getMinute());
+        assertEquals(localDateTime.getSecond(), zonedDateTime.getSecond());
+    }
+
+    @Test
+    void whenConvertLocalDateTimeToZonedDateTimeWithAtZoneAndwithZoneSameInstantMethods_shouldConvert(){
         LocalDateTime localDateTime = LocalDateTime.of(2022, 1, 1, 0, 30, 22);
         ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("Canada/Atlantic"));
 
