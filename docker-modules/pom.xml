@@ -17,7 +17,6 @@
 
     <modules>
         <module>docker-caching</module>
-        <module>docker-caching</module>
         <module>docker-compose</module>
         <module>docker-containers</module>
         <module>docker-images</module>
