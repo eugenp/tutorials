@@ -16,11 +16,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2022-01-01T00:30:22", localDateTime.toString());
         assertEquals("2021-12-31T19:30:22-04:00[Canada/Atlantic]", zonedDateTime.toString());
-        assertNotEquals(localDateTime.toString(), zonedDateTime.toString());
-        assertNotEquals(localDateTime.getYear(), zonedDateTime.getYear());
-        assertNotEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
-        assertNotEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertNotEquals(localDateTime.getHour(), zonedDateTime.getHour());
 
     }
 
@@ -31,9 +26,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2022-11-05T07:30:22", localDateTime.toString());
         assertEquals("2022-11-05T03:30:22-03:00[Canada/Atlantic]", zonedDateTime.toString()); assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
-        assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
-        assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertNotEquals(localDateTime.getHour(), zonedDateTime.getHour());
 
     }
 
@@ -46,12 +38,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2022-01-05T17:30:22", localDateTime.toString());
         assertEquals("2022-01-05T17:30:22+01:00[Africa/Lagos]", zonedDateTime.toString());
-        assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
-        assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
-        assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertEquals(localDateTime.getHour(), zonedDateTime.getHour());
-        assertEquals(localDateTime.getMinute(), zonedDateTime.getMinute());
-        assertEquals(localDateTime.getSecond(), zonedDateTime.getSecond());
 
     }
 
@@ -64,12 +50,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2022-08-25T08:35:22", localDateTime.toString());
         assertEquals("2022-08-25T08:35:22+01:00[Africa/Lagos]", zonedDateTime.toString());
-        assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
-        assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
-        assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertEquals(localDateTime.getHour(), zonedDateTime.getHour());
-        assertEquals(localDateTime.getMinute(), zonedDateTime.getMinute());
-        assertEquals(localDateTime.getSecond(), zonedDateTime.getSecond());
 
     }
 
@@ -82,12 +62,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2002-12-25T06:18:02", localDateTime.toString());
         assertEquals("2002-12-25T06:18:02+09:00[Asia/Tokyo]", zonedDateTime.toString());
-        assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
-        assertEquals(localDateTime.getMonth(), zonedDateTime.getMonth());
-        assertEquals(localDateTime.getDayOfMonth(), zonedDateTime.getDayOfMonth());
-        assertEquals(localDateTime.getHour(), zonedDateTime.getHour());
-        assertEquals(localDateTime.getMinute(), zonedDateTime.getMinute());
-        assertEquals(localDateTime.getSecond(), zonedDateTime.getSecond());
 
     }
 
@@ -108,12 +82,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2011-02-12T06:14:01.058086", localDateTime.toString());
         assertEquals("2011-02-12T06:14:01.058086+09:00[Asia/Tokyo]", zonedDateTime.toString());
-        assertEquals(zonedDateTime.getYear(), localDateTime.getYear());
-        assertEquals(zonedDateTime.getMonth(), localDateTime.getMonth());
-        assertEquals(zonedDateTime.getDayOfMonth(), localDateTime.getDayOfMonth());
-        assertEquals(zonedDateTime.getHour(), localDateTime.getHour());
-        assertEquals(zonedDateTime.getMinute(), localDateTime.getMinute());
-        assertEquals(zonedDateTime.getSecond(), localDateTime.getSecond());
     }
 
 
