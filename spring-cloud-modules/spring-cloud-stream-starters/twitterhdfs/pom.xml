@@ -17,8 +17,9 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of 
-                junit:junit in the classpath. hence forcing the latest 4.13.2 available version for junit5 compatibility -->
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of -->
+            <!-- junit:junit in the classpath. hence forcing the latest 4.13.2 available version -->
+            <!-- for junit5 compatibility -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -73,9 +74,9 @@
     </build>
 
     <properties>
-        <!-- downgrading the version as twitterstream and hdfs starter apps does not support later versions  -->
+        <!-- downgrading the version as twitterstream and hdfs starter apps does not support later versions -->
         <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
-        <!-- downgrading the version as twitterstream and hdfs starter apps does not support later versions  -->
+        <!-- downgrading the version as twitterstream and hdfs starter apps does not support later versions -->
         <spring-cloud-dependencies.version>Greenwich.SR6</spring-cloud-dependencies.version>
         <spring-cloud-starter-stream.version>2.1.2.RELEASE</spring-cloud-starter-stream.version>
         <!-- used only in dependency management to force this version, not included as a direct dependency -->

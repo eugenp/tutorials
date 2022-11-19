@@ -42,7 +42,6 @@
     <properties>
         <org.ini4j.version>0.5.4</org.ini4j.version>
         <commons-configuration2>2.8.0</commons-configuration2>
-        <jackson.version>2.13.1</jackson.version>
     </properties>
 
 </project>
