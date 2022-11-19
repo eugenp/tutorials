@@ -16,8 +16,8 @@
     </parent>
 
     <modules>
-        <module>docker-caching/single-module-caching</module>
-        <module>docker-caching/multi-module-caching</module>
+        <module>docker-caching</module>
+        <module>docker-caching</module>
         <module>docker-compose</module>
         <module>docker-containers</module>
         <module>docker-images</module>
