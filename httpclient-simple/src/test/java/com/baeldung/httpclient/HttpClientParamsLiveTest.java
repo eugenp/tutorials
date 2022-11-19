@@ -53,7 +53,7 @@ public class HttpClientParamsLiveTest {
 
         response = client.execute(httpGet);
         assertThat(response.getCode(), equalTo(200));
-
+        client.close();
     }
 
     @Test
