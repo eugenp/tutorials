@@ -21,13 +21,10 @@ public class BooksServiceGrpc extends BooksServiceImplBase {
     }
 
     @Override
-    public void books(
-      BooksRequest request, StreamObserver<BooksResponse> responseObserver) {
+    public void books(BooksRequest request, StreamObserver<BooksResponse> responseObserver) {
         List<Book> books = booksService.getBooks();
-
         BooksResponse.Builder responseBuilder = BooksResponse.newBuilder();
         books.forEach(book -> responseBuilder.addBook(GrpcBooksMapper.mapBookToProto(book)));
-
         responseObserver.onNext(responseBuilder.build());
         responseObserver.onCompleted();
     }
