@@ -3,7 +3,6 @@ package com.baeldung.concurrent.executorservice;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
@@ -32,7 +31,6 @@ public class ScheduledExecutorServiceDemo {
 			Future<String> resultFuture = executorService.schedule(callableTask, 1, TimeUnit.SECONDS);
 			executorService.scheduleAtFixedRate( runnableTask, 100, 450, TimeUnit.SECONDS);
 			executorService.scheduleWithFixedDelay( runnableTask, 100, 150, TimeUnit.SECONDS);
-
 			return null;
 		});
 	}
@@ -42,6 +40,5 @@ public class ScheduledExecutorServiceDemo {
 		demo.execute();
 		demo.executeWithMultiThread();
 	}
-
 
 }
