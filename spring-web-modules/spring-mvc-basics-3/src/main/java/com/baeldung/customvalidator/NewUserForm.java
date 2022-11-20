@@ -1,7 +1,5 @@
 package com.baeldung.customvalidator;
 
-import com.baeldung.customvalidator.FieldsValueMatch;
-
 @FieldsValueMatch.List({ @FieldsValueMatch(field = "password", fieldMatch = "verifyPassword", message = "Passwords do not match!"), @FieldsValueMatch(field = "email", fieldMatch = "verifyEmail", message = "Email addresses do not match!") })
 public class NewUserForm {
     private String email;
