@@ -1,7 +1,5 @@
 package com.baeldung.customvalidator;
 
-import com.baeldung.customvalidator.ContactNumberConstraint;
-
 public class ValidatedPhone {
 
     @ContactNumberConstraint
