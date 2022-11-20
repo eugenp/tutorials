@@ -684,7 +684,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
@@ -1071,7 +1071,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
