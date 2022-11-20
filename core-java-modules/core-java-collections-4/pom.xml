@@ -20,10 +20,16 @@
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <commons-lang.version>2.2</commons-lang.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
     </properties>
 
 </project>
