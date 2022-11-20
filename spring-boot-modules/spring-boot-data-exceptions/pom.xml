@@ -4,10 +4,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-boot-data-4</artifactId>
+    <artifactId>spring-boot-data-exceptions</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-data-4</name>
-    <description>spring-boot-data-4</description>
+    <name>spring-boot-data-exceptions</name>
+    <description>spring-boot-data-exceptions</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
