@@ -5,9 +5,6 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
-import com.baeldung.javaxval.methodvalidation.model.Customer;
-import com.baeldung.javaxval.methodvalidation.model.Reservation;
-import com.baeldung.javaxval.methodvalidation.model.ReservationManagement;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -16,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import com.baeldung.javaxval.methodvalidation.model.Customer;
+import com.baeldung.javaxval.methodvalidation.model.Reservation;
+import com.baeldung.javaxval.methodvalidation.model.ReservationManagement;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { MethodValidationConfig.class }, loader = AnnotationConfigContextLoader.class)

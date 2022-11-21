@@ -13,11 +13,12 @@ import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import com.baeldung.javaxval.methodvalidation.model.Customer;
 import com.baeldung.javaxval.methodvalidation.model.Reservation;
 import com.baeldung.javaxval.methodvalidation.model.ReservationManagement;
-import org.junit.Before;
-import org.junit.Test;
 
 public class ValidationIntegrationTest {
 
