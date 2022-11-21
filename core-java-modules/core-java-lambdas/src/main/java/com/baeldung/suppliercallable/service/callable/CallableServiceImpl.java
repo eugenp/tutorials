@@ -1,12 +1,12 @@
-package com.baeldung.supplier_callable.service.callable;
+package com.baeldung.suppliercallable.service.callable;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.baeldung.supplier_callable.data.User;
-import com.baeldung.supplier_callable.service.Service;
+import com.baeldung.suppliercallable.data.User;
+import com.baeldung.suppliercallable.service.Service;
 
 public class CallableServiceImpl implements Service {
 

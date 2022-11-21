@@ -1,4 +1,4 @@
-package com.baeldung.supplier_callable.service;
+package com.baeldung.suppliercallable.service;
 
 import java.time.LocalDate;
 import java.time.Period;
