@@ -7,7 +7,7 @@ import org.springframework.aot.hint.predicate.RuntimeHintsPredicates;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class JacksonRuntimeHintsTests {
+class JacksonRuntimeHintsUnitTest {
 
     @Test
     void shouldRegisterSnakeCasePropertyNamingStrategy() {
