@@ -9,11 +9,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+
+import com.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
 
 @Controller
 @Validated
