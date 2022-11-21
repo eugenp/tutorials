@@ -5,9 +5,10 @@ import java.time.LocalDate;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
-import com.baeldung.javaxval.methodvalidation.constraints.ValidReservation;
-import com.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
 import org.springframework.validation.annotation.Validated;
+
+import com.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
+import com.baeldung.javaxval.methodvalidation.constraints.ValidReservation;
 
 @Validated
 public class Reservation {

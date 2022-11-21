@@ -414,6 +414,7 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -818,6 +819,7 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
