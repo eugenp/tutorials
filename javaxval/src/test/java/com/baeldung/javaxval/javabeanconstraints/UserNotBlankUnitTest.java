@@ -1,4 +1,4 @@
-package com.baeldung.javaxval.javabeanconstraints.test;
+package com.baeldung.javaxval.javabeanconstraints;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
