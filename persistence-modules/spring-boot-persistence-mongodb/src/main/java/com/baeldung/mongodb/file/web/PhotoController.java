@@ -26,7 +26,7 @@ public class PhotoController {
         Photo photo = photoService.getPhoto(id);
         model.addAttribute("title", photo.getTitle());
         model.addAttribute("image", Base64.getEncoder().encodeToString(photo.getImage().getData()));
-        return "photos";
+        return "image";
     }
 
     @GetMapping("/photos/upload")
