@@ -2,8 +2,11 @@ package com.baeldung.lombok.jackson;
 
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
 
 @Data
@@ -13,6 +16,8 @@ public class Employee {
 
     private int identity;
     private String firstName;
+    
+    
 
     @JsonPOJOBuilder(buildMethodName = "createEmployee", withPrefix = "construct")
     public static class EmployeeBuilder {
