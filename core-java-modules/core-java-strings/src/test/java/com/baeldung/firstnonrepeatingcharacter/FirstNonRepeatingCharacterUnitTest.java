@@ -3,7 +3,7 @@ package com.baeldung.firstnonrepeatingcharacter;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FirstNonRepeatingCharacterTest {
+public class FirstNonRepeatingCharacterUnitTest {
 
     @Test
     public void testNonRepeatingCharacterBruteForce(){
