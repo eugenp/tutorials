@@ -33,9 +33,9 @@ public class SameObjectIdUsedToInsertSameObjectIdUnitTest {
     @Test
     public void givenUserInDatabase_whenInsertingAnotherUserWithTheSameObjectId_DKEThrownAndInsertRetried() {
         //given
-        final String userName = "Kevin";
-        final User firstUser = new User(ObjectId.get(), userName);
-        final User secondUser = new User(ObjectId.get(), userName);
+        String userName = "Kevin";
+        User firstUser = new User(ObjectId.get(), userName);
+        User secondUser = new User(ObjectId.get(), userName);
 
         mongoTemplate.insert(firstUser);
 
@@ -47,10 +47,10 @@ public class SameObjectIdUsedToInsertSameObjectIdUnitTest {
         }
 
         //then
-        final Query query = new Query();
+        Query query = new Query();
         query.addCriteria(Criteria.where(User.NAME_FIELD)
           .is(userName));
-        final List<User> users = mongoTemplate.find(query, User.class);
+        List<User> users = mongoTemplate.find(query, User.class);
 
         assertThat(users).usingRecursiveComparison()
           .isEqualTo(Lists.newArrayList(firstUser, secondUser));

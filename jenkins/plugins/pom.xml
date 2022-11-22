@@ -80,8 +80,8 @@
     </pluginRepositories>
 
     <properties>
-        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer 
-            to run. -->
+        <!-- Baseline Jenkins version you use to build the plugin. -->
+        <!-- Users must have this version or newer to run. -->
         <jenkins.version>2.7.3</jenkins.version>
         <structs.version>1.7</structs.version>
         <workflow-step-api.version>2.12</workflow-step-api.version>

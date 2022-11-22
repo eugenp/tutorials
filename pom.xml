@@ -345,7 +345,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -415,6 +414,8 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -622,7 +623,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -682,9 +682,11 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
+                <module>apache-spark</module>
+
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
@@ -749,7 +751,6 @@
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
-                <module>apache-spark</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
@@ -819,6 +820,8 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -958,7 +961,7 @@
 
                 <module>spring-caching</module>
                 <module>spring-caching-2</module>
-                
+
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -1017,7 +1020,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1069,9 +1071,11 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
+                <module>apache-spark</module>
+
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
