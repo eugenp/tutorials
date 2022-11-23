@@ -456,7 +456,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -861,7 +860,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -1208,6 +1206,7 @@
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
+                 <module>tablesaw</module>
             </modules>
         </profile>
 
@@ -1285,6 +1284,7 @@
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>spring-core-6</module>
+                <module>tablesaw</module>
             </modules>
         </profile>
     </profiles>
