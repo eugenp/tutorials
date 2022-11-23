@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class ShallowCopyUnitTest1 {
+class ShallowCopyUnitTest {
 
     @Test
     public void whenCreatingShallowCopy_thenValuesShouldBeSame() {
