@@ -1,23 +1,20 @@
 package com.baeldung.lombok.jackson;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.jackson.Jacksonized;
 
 @Data
 @Builder(builderClassName = "EmployeeBuilder")
-@Jacksonized
+@JsonDeserialize(builder = Employee.EmployeeBuilder.class)
+@AllArgsConstructor
 public class Employee {
 
     private int identity;
     private String firstName;
-    
-    
 
     @JsonPOJOBuilder(buildMethodName = "createEmployee", withPrefix = "construct")
     public static class EmployeeBuilder {
@@ -29,7 +26,7 @@ public class Employee {
             idValue = id;
             return this;
         }
-            
+
         public EmployeeBuilder constructName(String name) {
             nameValue = name;
             return this;
