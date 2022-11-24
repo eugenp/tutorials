@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 class AnimalDemo {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AnimalDemo.class);
+    private static final Logger logger = LoggerFactory.getLogger(AnimalDemo.class);
 
     public static void main(String[] args) {
         List<Cat> cats = new ArrayList<>();
@@ -17,7 +17,7 @@ class AnimalDemo {
         cats.add(new Cat("Siamese", "Ra"));
 
         order(cats);
-        LOGGER.info("Ordered cats: {}", cats);
+        logger.info("Ordered cats: {}", cats);
     }
 
     public static <T extends Animal & Comparable<T>> void order(List<T> list) {

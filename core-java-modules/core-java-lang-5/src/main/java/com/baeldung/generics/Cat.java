@@ -12,9 +12,7 @@ class Cat extends Animal implements Comparable<Cat> {
 
     @Override
     public int compareTo(Cat cat) {
-        return this.getName()
-            .length() - cat.getName()
-            .length();
+        return this.getName().length() - cat.getName().length();
     }
 
     @Override
