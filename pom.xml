@@ -326,7 +326,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -361,7 +360,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
                 <module>code-generation</module>
@@ -373,10 +371,10 @@
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
-                <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
                 <module>deeplearning4j</module>
+                <module>di-modules</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -386,7 +384,6 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-                <module>flyway-cdi-extension</module>
 
                 <module>geotools</module>
                 <module>google-cloud</module>
@@ -397,7 +394,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>guice</module>
 
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
@@ -414,6 +410,8 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -454,7 +452,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -467,7 +464,6 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <module>netty</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -532,12 +528,12 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
                 <module>saas</module>
+                <module>server-modules</module>
 
                 <module>spf4j</module>
 
@@ -581,8 +577,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
                 <module>spring-integration</module>
 
                 <module>spring-jenkins-pipeline</module>
@@ -598,7 +592,6 @@
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactor</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
@@ -616,7 +609,6 @@
                 <module>spring-vault</module>
 
                 <module>spring-web-modules</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
@@ -628,13 +620,10 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
-
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
-                <module>wildfly</module>
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>xstream</module>
@@ -675,7 +664,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -684,7 +672,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
@@ -730,7 +718,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -765,7 +752,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
                 <module>code-generation</module>
@@ -777,10 +763,10 @@
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
-                <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
                 <module>deeplearning4j</module>
+                <module>di-modules</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -790,7 +776,6 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-                <module>flyway-cdi-extension</module>
 
                 <module>geotools</module>
                 <module>google-cloud</module>
@@ -801,7 +786,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>guice</module>
 
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
@@ -818,6 +802,8 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -857,7 +843,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -870,7 +855,6 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <module>netty</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -926,12 +910,12 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
                 <module>saas</module>
+                <module>server-modules</module>
 
                 <module>spf4j</module>
 
@@ -976,8 +960,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
                 <module>spring-integration</module>
 
                 <module>spring-jenkins-pipeline</module>
@@ -993,7 +975,6 @@
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactor</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
@@ -1011,7 +992,6 @@
                 <module>spring-vault</module>
 
                 <module>spring-web-modules</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
@@ -1023,13 +1003,10 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
-
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
-                <module>wildfly</module>
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>xstream</module>
@@ -1062,7 +1039,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1071,7 +1047,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
@@ -1200,10 +1176,12 @@
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>spring-boot-modules/spring-boot-3</module>
+                 <module>spring-boot-modules/spring-boot-3-native</module>
                  <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
+                 <module>tablesaw</module>
             </modules>
         </profile>
 
@@ -1276,11 +1254,13 @@
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
+                <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>spring-core-6</module>
+                <module>tablesaw</module>
             </modules>
         </profile>
     </profiles>

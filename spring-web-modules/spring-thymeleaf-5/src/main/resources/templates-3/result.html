@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Dino World</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2 th:text="#{welcome.message}"></h2>
+<h2 th:text="#{dino.color(${dino.color})}"></h2>
+	<h1>Result</h1>
+    <p th:text="'id: ' + ${dino.id}" />
+    <p th:text="'content: ' + ${dino.name}" />
+    <a th:href="@{/create}">Submit Another Dino</a>
+    <a th:href="@{http://www.baeldung.com}"> Baeldung Home</a>
+</body>
+
+
+<div th:replace="~{index :: footer}"></div>
+</html>
