@@ -6,47 +6,47 @@ import org.junit.Test;
 public class FirstNonRepeatingCharacterUnitTest {
 
     @Test
-    public void testNonRepeatingCharacterBruteForce(){
+    public void testNonRepeatingCharacterBruteForce() {
         FirstNonRepeatingCharacter program = new FirstNonRepeatingCharacter();
 
         Assert.assertEquals(program.firstNonRepeatingCharBruteForce("baeldung"), Character.valueOf('b'));
         Assert.assertEquals(program.firstNonRepeatingCharBruteForce("lullaby"), Character.valueOf('u'));
         Assert.assertEquals(program.firstNonRepeatingCharBruteForce("hello"), Character.valueOf('h'));
-        Assert.assertEquals(program.firstNonRepeatingCharBruteForce("mahimahi"), null);
-        Assert.assertEquals(program.firstNonRepeatingCharBruteForce(""), null);
-        Assert.assertEquals(program.firstNonRepeatingCharBruteForce(null), null);
+        Assert.assertNull(program.firstNonRepeatingCharBruteForce("mahimahi"));
+        Assert.assertNull(program.firstNonRepeatingCharBruteForce(""));
+        Assert.assertNull(program.firstNonRepeatingCharBruteForce(null));
     }
 
     @Test
-    public void testNonRepeatingCharacterBruteForceNaive(){
+    public void testNonRepeatingCharacterBruteForceNaive() {
         FirstNonRepeatingCharacter program = new FirstNonRepeatingCharacter();
         Assert.assertEquals(program.firstNonRepeatingCharBruteForceNaive("baeldung"), Character.valueOf('b'));
         Assert.assertEquals(program.firstNonRepeatingCharBruteForceNaive("lullaby"), Character.valueOf('u'));
         Assert.assertEquals(program.firstNonRepeatingCharBruteForceNaive("hello"), Character.valueOf('h'));
-        Assert.assertEquals(program.firstNonRepeatingCharBruteForceNaive("mahimahi"), null);
-        Assert.assertEquals(program.firstNonRepeatingCharBruteForceNaive(""), null);
-        Assert.assertEquals(program.firstNonRepeatingCharBruteForceNaive(null), null);
+        Assert.assertNull(program.firstNonRepeatingCharBruteForceNaive("mahimahi"));
+        Assert.assertNull(program.firstNonRepeatingCharBruteForceNaive(""));
+        Assert.assertNull(program.firstNonRepeatingCharBruteForceNaive(null));
     }
 
     @Test
-    public void testNonRepeatingCharacterWithMap(){
+    public void testNonRepeatingCharacterWithMap() {
         FirstNonRepeatingCharacter program = new FirstNonRepeatingCharacter();
         Assert.assertEquals(program.firstNonRepeatingCharWithMap("baeldung"), Character.valueOf('b'));
         Assert.assertEquals(program.firstNonRepeatingCharWithMap("lullaby"), Character.valueOf('u'));
         Assert.assertEquals(program.firstNonRepeatingCharWithMap("hello"), Character.valueOf('h'));
-        Assert.assertEquals(program.firstNonRepeatingCharWithMap("mahimahi"), null);
-        Assert.assertEquals(program.firstNonRepeatingCharWithMap(""), null);
-        Assert.assertEquals(program.firstNonRepeatingCharWithMap(null), null);
+        Assert.assertNull(program.firstNonRepeatingCharWithMap("mahimahi"));
+        Assert.assertNull(program.firstNonRepeatingCharWithMap(""));
+        Assert.assertNull(program.firstNonRepeatingCharWithMap(null));
     }
 
     @Test
-    public void testNonRepeatingCharacterWithArray(){
+    public void testNonRepeatingCharacterWithArray() {
         FirstNonRepeatingCharacter program = new FirstNonRepeatingCharacter();
         Assert.assertEquals(program.firstNonRepeatingCharWithArray("baeldung"), Character.valueOf('b'));
         Assert.assertEquals(program.firstNonRepeatingCharWithArray("lullaby"), Character.valueOf('u'));
         Assert.assertEquals(program.firstNonRepeatingCharWithArray("hello"), Character.valueOf('h'));
-        Assert.assertEquals(program.firstNonRepeatingCharWithArray("mahimahi"), null);
-        Assert.assertEquals(program.firstNonRepeatingCharWithArray(""), null);
-        Assert.assertEquals(program.firstNonRepeatingCharWithArray(null), null);
+        Assert.assertNull(program.firstNonRepeatingCharWithArray("mahimahi"));
+        Assert.assertNull(program.firstNonRepeatingCharWithArray(""));
+        Assert.assertNull(program.firstNonRepeatingCharWithArray(null));
     }
 }
