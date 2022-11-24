@@ -55,8 +55,8 @@ public class AuthConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf()
-            .disable();
-        http.authorizeRequests()
+            .disable()
+            .authorizeRequests()
             .antMatchers("/callback", "/login", "/")
             .permitAll()
             .anyRequest()
