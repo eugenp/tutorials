@@ -596,7 +596,6 @@
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactor</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
@@ -614,7 +613,6 @@
                 <module>spring-vault</module>
 
                 <module>spring-web-modules</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
@@ -981,7 +979,6 @@
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactor</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
@@ -999,7 +996,6 @@
                 <module>spring-vault</module>
 
                 <module>spring-web-modules</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
