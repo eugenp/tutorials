@@ -2,7 +2,6 @@ package com.baeldung.serializable_singleton;
 
 import java.io.Serializable;
 
-// A normal singleton class.
 public class Singleton implements Serializable {
 
     private static Singleton INSTANCE;

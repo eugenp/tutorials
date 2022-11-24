@@ -1,6 +1,5 @@
 package com.baeldung.serializable_singleton;
 
-// An enum singleton which is serializable.
 public enum EnumSingleton {
 
     INSTANCE("State Zero");
