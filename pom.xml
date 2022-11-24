@@ -326,7 +326,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -456,7 +455,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -534,7 +532,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -677,7 +674,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -732,7 +728,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -861,7 +856,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -930,7 +924,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1066,7 +1059,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1204,10 +1196,12 @@
                  <module>spring-boot-modules/spring-boot-cassandre</module>
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>spring-boot-modules/spring-boot-3</module>
+                 <module>spring-boot-modules/spring-boot-3-native</module>
                  <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
+                 <module>tablesaw</module>
             </modules>
         </profile>
 
@@ -1280,11 +1274,13 @@
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
+                <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>spring-core-6</module>
+                <module>tablesaw</module>
             </modules>
         </profile>
     </profiles>
