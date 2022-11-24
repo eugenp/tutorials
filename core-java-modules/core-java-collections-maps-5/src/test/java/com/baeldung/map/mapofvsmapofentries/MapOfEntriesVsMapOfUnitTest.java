@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class MapOfEntriesVsMapOfUnitTest {
 
     @Test
-    public void mapOf() {
+    void mapOf() {
         // Use Map.of() to create an empty immutable map
         Map<Long, String> map = Map.of();
         assertNotNull(map);
@@ -20,10 +20,17 @@ public class MapOfEntriesVsMapOfUnitTest {
         assertNotNull(map1);
         assertThat(map1.size()).isEqualTo(1);
         assertThat(map1.get(1L)).isEqualTo("value1");
+        
+        // Test if map is immutable
+        try {
+            mapWithEntry.put(2L, "value2");
+        } catch (UnsupportedOperationException e) {
+            assertThat(e).isInstanceOf(UnsupportedOperationException.class);
+        }
     }
 
     @Test
-    public void mapOfEntries() {
+    void mapOfEntries() {
         // Use Map.ofEntries() to create an empty immutable map
         Map<Long, String> map = Map.ofEntries();
         assertNotNull(map);
@@ -34,5 +41,12 @@ public class MapOfEntriesVsMapOfUnitTest {
         assertThat(longUserMap.size()).isEqualTo(2);
         assertThat(longUserMap.get(1L)).isEqualTo("User A");
         assertThat(longUserMap.get(2L)).isEqualTo("User B");
+                
+        // Test if map is immutable
+        try {
+            longUserMap.put(3L, "User C");
+        } catch (UnsupportedOperationException e) {
+            assertThat(e).isInstanceOf(UnsupportedOperationException.class);
+        }
     }
 }
