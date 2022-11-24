@@ -4,12 +4,11 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>netty</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>netty</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
+        <artifactId>server-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
