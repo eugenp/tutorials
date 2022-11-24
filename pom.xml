@@ -360,7 +360,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
                 <module>code-generation</module>
@@ -372,10 +371,10 @@
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
-                <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
                 <module>deeplearning4j</module>
+                <module>di-modules</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -385,7 +384,6 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-                <module>flyway-cdi-extension</module>
 
                 <module>geotools</module>
                 <module>google-cloud</module>
@@ -396,7 +394,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>guice</module>
 
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
@@ -467,7 +464,6 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <module>netty</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -537,6 +533,7 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
+                <module>server-modules</module>
 
                 <module>spf4j</module>
 
@@ -580,8 +577,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
                 <module>spring-integration</module>
 
                 <module>spring-jenkins-pipeline</module>
@@ -597,7 +592,6 @@
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactor</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
@@ -615,7 +609,6 @@
                 <module>spring-vault</module>
 
                 <module>spring-web-modules</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
@@ -627,13 +620,10 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
-
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
-                <module>wildfly</module>
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>xstream</module>
@@ -762,7 +752,6 @@
                 <module>azure</module>
 
                 <module>bazel</module>
-                <module>cdi</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
                 <module>code-generation</module>
@@ -774,10 +763,10 @@
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
-                <module>dagger</module>
                 <module>data-structures</module>
                 <module>ddd</module>
                 <module>deeplearning4j</module>
+                <module>di-modules</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
@@ -787,7 +776,6 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-                <module>flyway-cdi-extension</module>
 
                 <module>geotools</module>
                 <module>google-cloud</module>
@@ -798,7 +786,6 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>guice</module>
 
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
@@ -868,7 +855,6 @@
                 <module>mybatis</module>
 
                 <module>netflix-modules</module>
-                <module>netty</module>
 
                 <module>orika</module>
                 <module>osgi</module>
@@ -929,6 +915,7 @@
                 <module>parent-java</module>
 
                 <module>saas</module>
+                <module>server-modules</module>
 
                 <module>spf4j</module>
 
@@ -973,8 +960,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
 
-                <module>spring-freemarker</module>
-
                 <module>spring-integration</module>
 
                 <module>spring-jenkins-pipeline</module>
@@ -990,7 +975,6 @@
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
-                <module>spring-reactor</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
 
@@ -1008,7 +992,6 @@
                 <module>spring-vault</module>
 
                 <module>spring-web-modules</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
@@ -1020,13 +1003,10 @@
                 <module>twilio</module>
                 <module>twitter4j</module>
 
-                <module>undertow</module>
-
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
 
                 <module>webrtc</module>
-                <module>wildfly</module>
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>xstream</module>
