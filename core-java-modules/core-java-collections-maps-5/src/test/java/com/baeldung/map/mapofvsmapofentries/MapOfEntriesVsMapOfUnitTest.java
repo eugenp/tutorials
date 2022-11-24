@@ -16,10 +16,10 @@ public class MapOfEntriesVsMapOfUnitTest {
         assertNotNull(map);
 
         // Use Map.of() to create an immutable map with one entry
-        Map<Long, String> map1 = Map.of(1L, "value1");
-        assertNotNull(map1);
-        assertThat(map1.size()).isEqualTo(1);
-        assertThat(map1.get(1L)).isEqualTo("value1");
+        Map<Long, String> mapWithEntry = Map.of(1L, "value1");
+        assertNotNull(mapWithEntry);
+        assertThat(mapWithEntry.size()).isEqualTo(1);
+        assertThat(mapWithEntry.get(1L)).isEqualTo("value1");
         
         // Test if map is immutable
         try {
