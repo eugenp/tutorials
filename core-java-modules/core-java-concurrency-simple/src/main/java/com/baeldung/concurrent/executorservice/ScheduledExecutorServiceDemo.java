@@ -1,13 +1,15 @@
-package com.baeldung.concurrent.Scheduledexecutorservice;
+package com.baeldung.concurrent.executorservice;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 public class ScheduledExecutorServiceDemo {
 
+	private Task runnableTask;
+	private CallableTask callableTask;
 	private void execute() {
 		ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 		getTasksToRun().apply(executorService);
@@ -21,23 +23,14 @@ public class ScheduledExecutorServiceDemo {
 	}
 
 	private Function<ScheduledExecutorService, Void> getTasksToRun() {
+
+		runnableTask = new Task();
+		callableTask = new CallableTask();
+
 		return (executorService -> {
-			ScheduledFuture<?> scheduledFuture1 = executorService.schedule(() -> {
-				// Task
-			}, 1, TimeUnit.SECONDS);
-
-			ScheduledFuture<?> scheduledFuture2 = executorService.scheduleAtFixedRate(() -> {
-				// Task
-			}, 1, 10, TimeUnit.SECONDS);
-
-			ScheduledFuture<?> scheduledFuture3 = executorService.scheduleWithFixedDelay(() -> {
-				// Task
-			}, 1, 10, TimeUnit.SECONDS);
-
-			ScheduledFuture<String> scheduledFuture4 = executorService.schedule(() -> {
-				// Task
-				return "Hellow world";
-			}, 1, TimeUnit.SECONDS);
+			Future<String> resultFuture = executorService.schedule(callableTask, 1, TimeUnit.SECONDS);
+			executorService.scheduleAtFixedRate( runnableTask, 100, 450, TimeUnit.SECONDS);
+			executorService.scheduleWithFixedDelay( runnableTask, 100, 150, TimeUnit.SECONDS);
 			return null;
 		});
 	}
@@ -47,6 +40,5 @@ public class ScheduledExecutorServiceDemo {
 		demo.execute();
 		demo.executeWithMultiThread();
 	}
-
 
 }
