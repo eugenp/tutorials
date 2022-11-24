@@ -3,8 +3,6 @@ package com.baeldung.uuid;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
@@ -13,7 +11,8 @@ public final class UUIDGenerator {
 
     private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
-    private UUIDGenerator() {}
+    private UUIDGenerator() {
+    }
 
     /**
      * Type 1 UUID Generation
@@ -33,14 +32,12 @@ public final class UUIDGenerator {
     }
 
     private static long get64MostSignificantBitsForVersion1() {
-        final LocalDateTime start = LocalDateTime.of(1582, 10, 15, 0, 0, 0);
-        final Duration duration = Duration.between(start, LocalDateTime.now());
-        final long seconds = duration.getSeconds();
-        final long nanos = duration.getNano();
-        final long timeForUuidIn100Nanos = seconds * 10000000 + nanos * 100;
-        final long least12SignificantBitOfTime = (timeForUuidIn100Nanos & 0x000000000000FFFFL) >> 4;
+        final long timeForUuidIn100Nanos = System.currentTimeMillis();
+        final long time_low = (timeForUuidIn100Nanos & 0x0000_0000_FFFF_FFFFL) << 32;
+        final long time_mid = ((timeForUuidIn100Nanos >> 32) & 0xFFFF) << 16;
         final long version = 1 << 12;
-        return (timeForUuidIn100Nanos & 0xFFFFFFFFFFFF0000L) + version + least12SignificantBitOfTime;
+        final long time_hi = ((timeForUuidIn100Nanos >> 48) & 0x0FFF);
+        return time_low + time_mid + version + time_hi;
     }
 
     /**
@@ -94,32 +91,14 @@ public final class UUIDGenerator {
         long lsb = 0;
         assert data.length == 16 : "data must be 16 bytes in length";
 
-        for (int i = 0; i < 8; i++) {msb = (msb << 8) | (data[i] & 0xff);}
-
-        for (int i = 8; i < 16; i++) {lsb = (lsb << 8) | (data[i] & 0xff);}
-        return new UUID(msb, lsb);
-    }
-
-    /**
-     * Unique Keys Generation Using Message Digest and Type 4 UUID
-     * @throws NoSuchAlgorithmException
-     */
-    public static String generateUniqueKeysWithUUIDAndMessageDigest() throws NoSuchAlgorithmException {
-        final MessageDigest salt = MessageDigest.getInstance("SHA-256");
-        salt.update(UUID.randomUUID()
-                        .toString()
-                        .getBytes(StandardCharsets.UTF_8));
-        return bytesToHex(salt.digest());
-    }
-
-    private static String bytesToHex(byte[] bytes) {
-        final char[] hexChars = new char[bytes.length * 2];
-        for (int j = 0; j < bytes.length; j++) {
-            final int v = bytes[j] & 0xFF;
-            hexChars[j * 2] = hexArray[v >>> 4];
-            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+        for (int i = 0; i < 8; i++) {
+            msb = (msb << 8) | (data[i] & 0xff);
         }
-        return new String(hexChars);
+
+        for (int i = 8; i < 16; i++) {
+            lsb = (lsb << 8) | (data[i] & 0xff);
+        }
+        return new UUID(msb, lsb);
     }
 
     private static byte[] bytesFromUUID(String uuidHexString) {
