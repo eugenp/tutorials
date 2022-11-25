@@ -1,6 +1,8 @@
 package com.baeldung.mockito;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -11,8 +13,11 @@ public class MockitoAnnotationsUninitializedUnitTest {
     @Mock
     List<String> mockedList;
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void whenMockitoAnnotationsUninitialized_thenNPEThrown() {
-        Mockito.when(mockedList.size()).thenReturn(1);
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            Mockito.when(mockedList.size()).thenReturn(1);
+        });
+
     }
 }

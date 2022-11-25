@@ -13,7 +13,8 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
@@ -51,14 +52,17 @@ public class MockitoVerifyExamplesUnitTest {
         verify(mockedList, times(0)).size();
     }
 
-    @Test(expected = NoInteractionsWanted.class)
+    @Test
     public final void givenUnverifiedInteraction_whenVerifyingNoUnexpectedInteractions_thenFail() {
         final List<String> mockedList = mock(MyList.class);
         mockedList.size();
         mockedList.clear();
 
         verify(mockedList).size();
-        verifyNoMoreInteractions(mockedList);
+        Assertions.assertThrows(NoInteractionsWanted.class, () -> {
+            verifyNoMoreInteractions(mockedList);
+        });
+
     }
 
     @Test

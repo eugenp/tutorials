@@ -13,7 +13,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -31,10 +32,12 @@ public class MockitoVoidMethodsUnitTest {
         verify(myList, times(1)).add(0, "");
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void givenNull_addThrows() {
         MyList myList = mock(MyList.class);
-        doThrow().when(myList).add(isA(Integer.class), isNull());
+        Assertions.assertThrows(Exception.class, () -> {
+            doThrow().when(myList).add(isA(Integer.class), isNull());
+        });
 
         myList.add(0, null);
     }

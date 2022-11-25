@@ -10,17 +10,18 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.exceptions.misusing.InvalidUseOfMatchersException;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.baeldung.app.api.Flower;
 import com.baeldung.domain.service.FlowerService;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class FlowerControllerUnitTest {
 
 	@InjectMocks
@@ -45,7 +46,7 @@ public class FlowerControllerUnitTest {
 		assertThat(response).isEqualTo("Flower");
 	}
 
-	@Test(expected = InvalidUseOfMatchersException.class)
+	@Test
 	public void whenIncorrectMatchers_thenThrowsError() {
 		when(flowerService.isABigFlower("poppy", anyInt())).thenReturn(true);
 
@@ -65,12 +66,14 @@ public class FlowerControllerUnitTest {
 		assertThat(response).isTrue();
 	}
 
-	@Test(expected = InvalidUseOfMatchersException.class)
+	@Test
 	public void whenUsingMatchersAsReturnValue_thenThrowsError() {
 		flowerController.isAFlower("poppy");
 
 		String orMatcher = or(eq("poppy"), endsWith("y"));
-		verify(flowerService).analyze(orMatcher);
+		Assertions.assertThrows(InvalidUseOfMatchersException.class, () -> {
+			verify(flowerService).analyze(orMatcher);
+		});
 	}
 
 	@Test
