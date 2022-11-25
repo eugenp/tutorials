@@ -20,6 +20,7 @@ import org.axonframework.queryhandling.QueryUpdateEmitter;
 import org.reactivestreams.Publisher;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -108,7 +109,8 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler {
 
     @QueryHandler
     public Publisher<Order> handleStreaming(FindAllOrderedProductsQuery query) {
-        return Mono.fromCallable(orders::values).flatMapMany(Flux::fromIterable);
+        return Mono.fromCallable(orders::values)
+          .flatMapMany(Flux::fromIterable);
     }
 
     @QueryHandler

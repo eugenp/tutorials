@@ -1,6 +1,7 @@
 package com.baeldung.axon.querymodel;
 
 import com.mongodb.client.MongoClient;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 
@@ -12,7 +13,8 @@ public class MongoOrdersEventHandlerUnitTest extends AbstractOrdersEventHandlerU
 
     @Override
     protected OrdersEventHandler getHandler() {
-        mongoClient.getDatabase("axonframework").drop();
+        mongoClient.getDatabase("axonframework")
+          .drop();
         return new MongoOrdersEventHandler(mongoClient, emitter);
     }
 }

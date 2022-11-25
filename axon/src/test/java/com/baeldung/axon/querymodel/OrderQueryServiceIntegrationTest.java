@@ -65,9 +65,9 @@ class OrderQueryServiceIntegrationTest {
     void givenOrderCreatedEventSend_whenCallingAllOrdersStreaming_thenOneOrderIsReturned() {
         Flux<OrderResponse> result = queryService.allOrdersStreaming();
         StepVerifier.create(result)
-                    .assertNext(order -> assertEquals(orderId, order.getOrderId()))
-                    .expectComplete()
-                    .verify();
+          .assertNext(order -> assertEquals(orderId, order.getOrderId()))
+          .expectComplete()
+          .verify();
     }
 
     @Test

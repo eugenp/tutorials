@@ -1,6 +1,7 @@
 package com.baeldung.axon.querymodel;
 
 import com.mongodb.client.MongoClient;
+
 import org.axonframework.eventhandling.tokenstore.TokenStore;
 import org.axonframework.extensions.mongo.DefaultMongoTemplate;
 import org.axonframework.extensions.mongo.eventsourcing.tokenstore.MongoTokenStore;
@@ -14,14 +15,12 @@ import org.springframework.context.annotation.Profile;
 public class MongoConfiguration {
 
     @Bean
-    public TokenStore getTokenStore(MongoClient client, Serializer serializer){
+    public TokenStore getTokenStore(MongoClient client, Serializer serializer) {
         return MongoTokenStore.builder()
-                .mongoTemplate(
-                        DefaultMongoTemplate.builder()
-                                .mongoDatabase(client)
-                                .build()
-                )
-                .serializer(serializer)
-                .build();
+          .mongoTemplate(DefaultMongoTemplate.builder()
+            .mongoDatabase(client)
+            .build())
+          .serializer(serializer)
+          .build();
     }
 }
