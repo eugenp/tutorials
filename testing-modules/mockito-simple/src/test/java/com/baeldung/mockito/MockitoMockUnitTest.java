@@ -10,7 +10,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.withSettings;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.MockSettings;
 import org.mockito.exceptions.verification.TooFewActualInvocations;
 import org.mockito.invocation.InvocationOnMock;
