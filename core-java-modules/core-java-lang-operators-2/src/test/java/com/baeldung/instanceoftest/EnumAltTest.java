@@ -22,7 +22,7 @@ public class EnumAltTest {
 		Dinosaur dinosaur = new Dinosaur();
 		dinosaur.setDinosaur(DinosaurEnum.Anatotitan);
 
-		assertEquals("Aggressive", dinosaur.getDinosaur().behaviour());
+		assertEquals("Aggressive  ", dinosaur.getDinosaur().behaviour());
 	}
 
 	
