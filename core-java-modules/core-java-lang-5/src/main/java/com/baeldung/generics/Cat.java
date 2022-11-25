@@ -17,14 +17,20 @@ class Cat extends Animal implements Comparable<Cat> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Cat{");
-        sb.append("type='")
-            .append(type)
-            .append('\'');
-        sb.append(", name='")
-            .append(name)
-            .append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Cat{" + "type='" + type + '\'' + ", name='" + name + '\'' + '}';
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Cat)) return false;
+        Cat cat = (Cat) o;
+        return type.equals(cat.type) && name.equals(cat.name);
+    }
+
 }
