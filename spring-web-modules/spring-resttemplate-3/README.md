@@ -9,3 +9,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Uploading MultipartFile with Spring RestTemplate](https://www.baeldung.com/spring-rest-template-multipart-upload)
 - [Get and Post Lists of Objects with RestTemplate](https://www.baeldung.com/spring-rest-template-list)
 - [Download a Large File Through a Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-download-large-file)
+- [Access HTTPS REST Service Using Spring RestTemplate](https://www.baeldung.com/spring-resttemplate-secure-https-service)
