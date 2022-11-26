@@ -5,16 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.stripe</groupId>
     <artifactId>stripe</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>stripe</name>
     <packaging>jar</packaging>
     <description>Demo project for Stripe API</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <artifactId>saas-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
