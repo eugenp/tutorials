@@ -415,7 +415,6 @@
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
-                <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jmeter</module>
@@ -457,6 +456,7 @@
                 <module>maven-modules</module>
 
                 <module>mesos-marathon</module>
+                <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>muleesb</module>
@@ -477,7 +477,6 @@
 
                 <module>quarkus-modules</module>
 
-                <module>rabbitmq</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
                 <module>rule-engines-modules</module>
@@ -532,7 +531,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas</module>
+                <module>saas-modules</module>
                 <module>server-modules</module>
 
                 <module>spf4j</module>
@@ -545,10 +544,8 @@
                 <module>spring-5-webflux-2</module>
 
                 <module>spring-activiti</module>
-                <module>spring-amqp</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
-                <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
@@ -582,7 +579,6 @@
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <!-- <module>spring-jinq</module> --> <!-- does not work with Spring Boot 2.7.2 -->
-                <module>spring-jms</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
@@ -612,13 +608,9 @@
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
-                <module>stripe</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
-
-                <module>twilio</module>
-                <module>twitter4j</module>
 
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -807,7 +799,6 @@
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
-                <module>jgroups</module>
                 <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jmeter</module>
@@ -848,6 +839,7 @@
                 <module>maven-modules</module>
 
                 <module>mesos-marathon</module>
+                <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>muleesb</module>
@@ -867,7 +859,6 @@
 
                 <module>quarkus-modules</module>
 
-                <module>rabbitmq</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
                 <module>rule-engines-modules</module>
@@ -914,7 +905,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas</module>
+                <module>saas-modules</module>
                 <module>server-modules</module>
 
                 <module>spf4j</module>
@@ -928,10 +919,8 @@
 
 
                 <module>spring-activiti</module>
-                <module>spring-amqp</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
-                <module>spring-apache-camel</module>
 
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
@@ -965,7 +954,6 @@
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
-                <module>spring-jms</module>
 
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
@@ -995,13 +983,9 @@
                 <module>spring-websockets</module>
 
                 <module>static-analysis</module>
-                <module>stripe</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
-
-                <module>twilio</module>
-                <module>twitter4j</module>
 
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
