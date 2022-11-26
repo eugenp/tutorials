@@ -48,12 +48,14 @@ public class FlowerControllerUnitTest {
 
 	@Test
 	public void whenIncorrectMatchers_thenThrowsError() {
-		when(flowerService.isABigFlower("poppy", anyInt())).thenReturn(true);
+		Assertions.assertThrows(InvalidUseOfMatchersException.class, () -> {
+			when(flowerService.isABigFlower("poppy", anyInt())).thenReturn(true);
+		});
 
 		Flower flower = new Flower("poppy", 15);
 
 		Boolean response = flowerController.isABigFlower(flower);
-		assertThat(response).isTrue();
+		assertThat(response).isFalse();
 	}
 
 	@Test
