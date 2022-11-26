@@ -8,30 +8,28 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class AssertionsExampleUnitTest {
+
     @Test
     @Disabled
-    public void shouldFailBecauseTheNumbersAreNotEqual() {
+    void shouldFailBecauseTheNumbersAreNotEqual() {
         Assertions.assertEquals(2, 3, "Numbers are not equal!");
     }
 
     @Test
     @Disabled
-    public void shouldFailBecauseItsNotTrue_overloading() {
+    void shouldFailBecauseItsNotTrue_overloading() {
         Assertions.assertTrue(() -> {
             return false;
         }, () -> "It's not true!");
     }
 
     @Test
-    public void shouldAssertAllTheGroup() {
+    void shouldAssertAllTheGroup() {
         List<Integer> list = Arrays.asList(1, 2, 3);
 
-        Assertions.assertAll("List is not incremental", () -> Assertions.assertEquals(list.get(0)
-            .intValue(), 1), () -> Assertions.assertEquals(
-                list.get(1)
-                    .intValue(),
-                2),
-            () -> Assertions.assertEquals(list.get(2)
-                .intValue(), 3));
+        Assertions.assertAll("List is not incremental",
+          () -> Assertions.assertEquals(list.get(0).intValue(), 1),
+          () -> Assertions.assertEquals(list.get(1).intValue(), 2),
+          () -> Assertions.assertEquals(list.get(2).intValue(), 3));
     }
 }
