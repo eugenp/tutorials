@@ -1,6 +1,6 @@
-## SAAS
+## Jira Rest Integration
 
-This module contains articles about software as a service (SAAS)
+This module contains articles about Jira Rest Integration
 
 ## Relevant articles:
 
