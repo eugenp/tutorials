@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PriorityQueueComparatorUnitTest {
 
