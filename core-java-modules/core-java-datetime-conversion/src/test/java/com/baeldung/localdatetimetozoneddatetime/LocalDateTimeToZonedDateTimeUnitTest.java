@@ -30,7 +30,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
         assertEquals("2022-01-01T00:30:22", localDateTime.toString());
         assertEquals("2021-12-31T19:30:22-04:00[Canada/Atlantic]", zonedDateTime.toString());
         assertEquals("-04:00", zonedDateTime.getOffset().toString());
-
     }
 
     @Test
@@ -39,8 +38,8 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of("Africa/Accra")).withZoneSameInstant(ZoneId.of("Africa/Lagos"));
 
         assertEquals("2022-11-05T07:30:22", localDateTime.toString());
-        assertEquals("2022-11-05T08:30:22+01:00[Africa/Lagos]", zonedDateTime.toString()); assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
-
+        assertEquals("2022-11-05T08:30:22+01:00[Africa/Lagos]", zonedDateTime.toString());
+        assertEquals(localDateTime.getYear(), zonedDateTime.getYear());
     }
 
     @Test
@@ -52,7 +51,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2022-01-05T17:30:22", localDateTime.toString());
         assertEquals("2022-01-05T17:30:22+01:00[Africa/Lagos]", zonedDateTime.toString());
-
     }
 
     @Test
@@ -64,7 +62,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2022-08-25T08:35:22", localDateTime.toString());
         assertEquals("2022-08-25T08:35:22+01:00[Africa/Lagos]", zonedDateTime.toString());
-
     }
 
     @Test
@@ -76,7 +73,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
 
         assertEquals("2002-12-25T06:18:02", localDateTime.toString());
         assertEquals("2002-12-25T06:18:02+09:00[Asia/Tokyo]", zonedDateTime.toString());
-
     }
 
     @Test
@@ -85,7 +81,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
         ZoneId zoneId = ZoneId.of("Asia/Tokyo");
         ZoneOffset zoneOffset = ZoneOffset.UTC;
         assertThrows(DateTimeException.class, () -> ZonedDateTime.ofStrict(localDateTime, zoneOffset, zoneId));
-
     }
 
 
@@ -97,6 +92,4 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
         assertEquals("2011-02-12T06:14:01.058086", localDateTime.toString());
         assertEquals("2011-02-12T06:14:01.058086+09:00[Asia/Tokyo]", zonedDateTime.toString());
     }
-
-
 }
