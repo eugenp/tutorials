@@ -47,6 +47,7 @@ public class PriorityQueueComparatorUnitTest {
         assertThatThrownBy(() -> {
             PriorityQueue<ColoredNumber> queue = new PriorityQueue<>();
             queue.add(new ColoredNumber(3, "red"));
+            queue.add(new ColoredNumber(2, "blue"));
         }).isInstanceOf(ClassCastException.class);
     }
 
