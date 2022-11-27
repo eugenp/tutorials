@@ -27,7 +27,6 @@ public class LocalDateTimeToZonedDateTimeUnitTest {
         LocalDateTime localDateTime = LocalDateTime.of(2022, 1, 1, 0, 30, 22);
         ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("Africa/Lagos")).withZoneSameInstant(ZoneId.of("Canada/Atlantic"));
 
-        assertEquals("2022-01-01T00:30:22", localDateTime.toString());
         assertEquals("2021-12-31T19:30:22-04:00[Canada/Atlantic]", zonedDateTime.toString());
         assertEquals("-04:00", zonedDateTime.getOffset().toString());
     }
