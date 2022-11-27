@@ -11,11 +11,11 @@ public class DeepCopyUnitTest {
 
     @Test
     public void testDeepCopy() {
-        ArrayList<Integer> input = new ArrayList<>(Arrays.asList(3, 4, 5, 6));
+        Employee employee1 = new Employee("1");
 
-        DeepCopy deepCopy = new DeepCopy(input);
-        input.add(7);
-        assertNotEquals(deepCopy.list, input);
+        DeepCopy deepCopy = new DeepCopy(employee1);
+        employee1.setEmployeeId("2");
+        assertNotEquals(deepCopy.employee, employee1);
 
     }
 

@@ -1,23 +1,18 @@
 package com.baeldung.objectcopy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class DeepCopy {
-    List<Integer> list;
+    Employee employee;
 
-    public DeepCopy(List<Integer> list) {
-        this.list = new ArrayList<>(); // making a deep copy
-        this.list.addAll(list);
+    public DeepCopy(Employee employee) {
+        this.employee = new Employee(employee.getEmployeeId()); // making a deep copy
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        Employee employee1 = new Employee("1");
 
-        DeepCopy deepCopy = new DeepCopy(input);
-        System.out.println(deepCopy.list); // [1, 2, 3, 4]
-        input.add(5); //modifying the actual input
-        System.out.println(deepCopy.list);// still prints [1, 2, 3, 4]
+        DeepCopy deepCopy = new DeepCopy(employee1);
+        System.out.println(deepCopy.employee.getEmployeeId()); // [1, 2, 3, 4]
+        employee1.setEmployeeId("2"); //modifying the actual input
+        System.out.println(deepCopy.employee.getEmployeeId());// still prints [1, 2, 3, 4]
     }
 }

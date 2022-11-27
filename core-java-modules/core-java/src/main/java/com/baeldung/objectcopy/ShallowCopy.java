@@ -1,22 +1,18 @@
 package com.baeldung.objectcopy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class ShallowCopy {
-    List<Integer> list;
+    Employee employee;
 
-    public ShallowCopy(List<Integer> list) {
-        this.list = list;
+    public ShallowCopy(Employee employee) {
+        this.employee = employee;
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> input = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        Employee employee1 = new Employee("1");
 
-        ShallowCopy shallowCopy = new ShallowCopy(input);
-        System.out.println(shallowCopy.list); // [1, 2, 3, 4]
-        input.add(5); //modifying the actual input
-        System.out.println(shallowCopy.list);// prints [1, 2, 3, 4, 5]
+        ShallowCopy shallowCopy = new ShallowCopy(employee1);
+        System.out.println(shallowCopy.employee.getEmployeeId()); // [1, 2, 3, 4]
+        employee1.setEmployeeId("2");
+        System.out.println(shallowCopy.employee.getEmployeeId());// prints [1, 2, 3, 4, 5]
     }
 }

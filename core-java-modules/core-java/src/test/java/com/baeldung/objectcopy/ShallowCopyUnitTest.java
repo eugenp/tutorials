@@ -11,11 +11,11 @@ public class ShallowCopyUnitTest {
 
     @Test
     public void testShallowCopy() {
-        ArrayList<Integer> input = new ArrayList<>(Arrays.asList(3, 4, 5, 6));
+        Employee employee1 = new Employee("1");
 
-        ShallowCopy shallowCopy = new ShallowCopy(input);
-        input.add(7);
-        assertEquals(shallowCopy.list, input);
+        ShallowCopy shallowCopy = new ShallowCopy(employee1);
+        employee1.setEmployeeId("2");
+        assertEquals(shallowCopy.employee, employee1);
 
     }
 
