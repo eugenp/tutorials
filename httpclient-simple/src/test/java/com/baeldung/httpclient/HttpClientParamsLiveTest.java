@@ -10,17 +10,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
+import org.apache.hc.core5.http.NameValuePair;
+import org.apache.hc.core5.http.message.BasicNameValuePair;
+import org.apache.hc.core5.net.URIBuilder;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +36,7 @@ public class HttpClientParamsLiveTest {
     public void setUp() {
         client = HttpClientBuilder.create()
             .build();
-        nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs = new ArrayList<>();
         NameValuePair param1NameValuePair = new BasicNameValuePair("param1", "value1");
         NameValuePair param2NameValuePair = new BasicNameValuePair("param2", "value2");
         nameValuePairs.add(param1NameValuePair);
@@ -46,54 +46,50 @@ public class HttpClientParamsLiveTest {
     @Test
     public void givenStringNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
-        URI uri = new URIBuilder(httpGet.getURI()).addParameter("param1", "value1")
+        URI uri = new URIBuilder(httpGet.getUri()).addParameter("param1", "value1")
             .addParameter("param2", "value2")
             .build();
-        ((HttpRequestBase) httpGet).setURI(uri);
-        response = client.execute(httpGet);
+        httpGet.setUri(uri);
 
-        assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+        response = client.execute(httpGet);
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
     public void givenStringNameValuePairParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
-        URI uri = new URIBuilder(httpPost.getURI()).addParameter("param1", "value1")
+        URI uri = new URIBuilder(httpPost.getUri()).addParameter("param1", "value1")
             .addParameter("param2", "value2")
             .build();
-        ((HttpRequestBase) httpPost).setURI(uri);
+        httpPost.setUri(uri);
         response = client.execute(httpPost);
 
-        assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
     public void givenNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
-        URI uri = new URIBuilder(httpGet.getURI()).addParameters(nameValuePairs)
+        URI uri = new URIBuilder(httpGet.getUri()).addParameters(nameValuePairs)
             .build();
-        ((HttpRequestBase) httpGet).setURI(uri);
+        httpGet.setUri(uri);
         response = client.execute(httpGet);
 
-        assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
     public void givenNameValuePairsParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
-        URI uri = new URIBuilder(httpPost.getURI()).addParameters(nameValuePairs)
+        URI uri = new URIBuilder(httpPost.getUri()).addParameters(nameValuePairs)
             .build();
-        ((HttpRequestBase) httpPost).setURI(uri);
+        httpPost.setUri(uri);
         response = client.execute(httpPost);
 
-        assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
@@ -103,8 +99,7 @@ public class HttpClientParamsLiveTest {
         httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, StandardCharsets.UTF_8));
         response = client.execute(httpPost);
 
-        assertThat(response.getStatusLine()
-            .getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
