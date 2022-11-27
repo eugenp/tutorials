@@ -7,7 +7,8 @@ public enum OrderStatusResponse {
 
     static OrderStatusResponse toResponse(OrderStatus status) {
         for (OrderStatusResponse response : values()) {
-            if (response.toString().equals(status.toString())) {
+            if (response.toString()
+              .equals(status.toString())) {
                 return response;
             }
         }
