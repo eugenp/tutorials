@@ -37,12 +37,12 @@ public class OrderQueryService {
 
     public Flux<OrderResponse> allOrdersStreaming() {
         Publisher<Order> publisher = queryGateway.streamingQuery(new FindAllOrderedProductsQuery(), Order.class);
-        return Flux.from(publisher).map(OrderResponse::new);
+        return Flux.from(publisher)
+          .map(OrderResponse::new);
     }
 
     public Integer totalShipped(String productId) {
-        return queryGateway.scatterGather(new TotalProductsShippedQuery(productId),
-            ResponseTypes.instanceOf(Integer.class), 10L, TimeUnit.SECONDS)
+        return queryGateway.scatterGather(new TotalProductsShippedQuery(productId), ResponseTypes.instanceOf(Integer.class), 10L, TimeUnit.SECONDS)
           .reduce(0, Integer::sum);
     }
 
