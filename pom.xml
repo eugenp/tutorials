@@ -413,6 +413,8 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -453,7 +455,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -619,7 +620,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -682,7 +682,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
@@ -815,6 +815,8 @@
                 <module>java-websocket</module>
                 <module>javax-sound</module>
                 <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jgit</module>
@@ -854,7 +856,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
-
                 <module>mapstruct</module>
 
                 <module>maven-modules</module>
@@ -1012,7 +1013,6 @@
 
                 <module>static-analysis</module>
                 <module>stripe</module>
-                <module>struts</module>
 
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1067,7 +1067,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins/plugins</module>
+                <module>jenkins</module>
                 <module>jhipster-modules</module>
                 <module>jhipster-5</module>
                 <module>jws</module>
@@ -1201,6 +1201,7 @@
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
                  <module>lightrun</module>
+                 <module>tablesaw</module>
             </modules>
         </profile>
 
@@ -1279,6 +1280,7 @@
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>spring-core-6</module>
+                <module>tablesaw</module>
             </modules>
         </profile>
     </profiles>

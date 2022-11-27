@@ -8,10 +8,11 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import com.baeldung.javaxval.enums.demo.CustomerUnitTest;
-import com.baeldung.javaxval.enums.demo.Customer;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.baeldung.javaxval.enums.demo.Customer;
+import com.baeldung.javaxval.enums.demo.CustomerUnitTest;
 
 public class ValueOfEnumValidatorUnitTest {
 
