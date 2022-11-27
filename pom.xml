@@ -1188,6 +1188,7 @@
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
                  <module>core-java-modules/core-java-httpclient</module>
+                 <module>gm-java-copy</module>
                  <module>spring-core-6</module>
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
