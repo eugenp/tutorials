@@ -223,29 +223,6 @@
         </profile>
     </profiles>
 
-    <!-- We currently use a Release Candidate, that is not available in Maven Central -->
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
         <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
@@ -253,9 +230,8 @@
         <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 
-        <spring-boot.version>3.0.0-M3</spring-boot.version>
+        <spring-boot.version>3.0.0</spring-boot.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <native-build-tools-plugin.version>0.9.17</native-build-tools-plugin.version>
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
