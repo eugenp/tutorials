@@ -30,34 +30,37 @@ public class EmployeeFunctionalConfig {
 
     @Bean
     RouterFunction<ServerResponse> getEmployeeByIdRoute() {
-        return route(GET("/employees/{id}"), req -> ok().body(employeeRepository().findEmployeeById(req.pathVariable("id")), Employee.class));
+        return route(GET("/employees/{id}"),
+                req -> ok().body(employeeRepository().findEmployeeById(req.pathVariable("id")), Employee.class));
     }
 
     @Bean
     RouterFunction<ServerResponse> updateEmployeeRoute() {
         return route(POST("/employees/update"), req -> req.body(toMono(Employee.class))
-            .doOnNext(employeeRepository()::updateEmployee)
-            .then(ok().build()));
+                .doOnNext(employeeRepository()::updateEmployee)
+                .then(ok().build()));
     }
 
     @Bean
     RouterFunction<ServerResponse> composedRoutes() {
         return route(GET("/employees"), req -> ok().body(employeeRepository().findAllEmployees(), Employee.class))
 
-            .and(route(GET("/employees/{id}"), req -> ok().body(employeeRepository().findEmployeeById(req.pathVariable("id")), Employee.class)))
+                .and(route(GET("/employees/{id}"),
+                        req -> ok().body(employeeRepository().findEmployeeById(req.pathVariable("id")),
+                                Employee.class)))
 
-            .and(route(POST("/employees/update"), req -> req.body(toMono(Employee.class))
-                .doOnNext(employeeRepository()::updateEmployee)
-                .then(ok().build())));
+                .and(route(POST("/employees/update"), req -> req.body(toMono(Employee.class))
+                        .doOnNext(employeeRepository()::updateEmployee)
+                        .then(ok().build())));
     }
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.csrf()
-            .disable()
-            .authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .disable()
+                .authorizeExchange()
+                .anyExchange()
+                .permitAll();
         return http.build();
     }
 }

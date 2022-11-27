@@ -41,7 +41,8 @@ class ReactorIntegrationTest {
         Flux.just(1, 2, 3, 4)
                 .log()
                 .map(i -> i * 2)
-                .zipWith(Flux.range(0, Integer.MAX_VALUE).log(), (one, two) -> String.format("First Flux: %d, Second Flux: %d", one, two))
+                .zipWith(Flux.range(0, Integer.MAX_VALUE).log(),
+                        (one, two) -> String.format("First Flux: %d, Second Flux: %d", one, two))
                 .subscribe(elements::add);
 
         assertThat(elements).containsExactly(
@@ -49,6 +50,38 @@ class ReactorIntegrationTest {
                 "First Flux: 4, Second Flux: 1",
                 "First Flux: 6, Second Flux: 2",
                 "First Flux: 8, Second Flux: 3");
+    }
+
+    @Test
+    void givenFlux_Subscriber() {
+
+        List<Integer> elements = new ArrayList<>();
+
+        Integer[] data = { 1, 2, 3, 4, 5, 6 };
+
+        Flux.just(data)
+                .log()
+                .subscribe(new Subscriber<Integer>() {
+                    @Override
+                    public void onSubscribe(Subscription s) {
+                        s.request(Long.MAX_VALUE);
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        elements.add(integer);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+
+        assertThat(elements).containsExactly(data);
     }
 
     @Test

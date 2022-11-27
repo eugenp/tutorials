@@ -9,24 +9,24 @@ import reactor.core.publisher.Mono;
 
 public class EmployeeWebClient {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeWebClient.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeWebClient.class);
 
-    WebClient client = WebClient.create("http://localhost:8080");
+  WebClient client = WebClient.create("http://localhost:8080");
 
-    public void consume() {
+  public void consume() {
 
-        Mono<Employee> employeeMono = client.get()
-          .uri("/employees/{id}", "1")
-          .retrieve()
-          .bodyToMono(Employee.class);
+    Mono<Employee> employeeMono = client.get()
+        .uri("/employees/{id}", "1")
+        .retrieve()
+        .bodyToMono(Employee.class);
 
-        employeeMono.subscribe(employee -> LOGGER.info("Employee: {}", employee));
+    employeeMono.subscribe(employee -> LOGGER.info("Employee: {}", employee));
 
-        Flux<Employee> employeeFlux = client.get()
-          .uri("/employees")
-          .retrieve()
-          .bodyToFlux(Employee.class);
+    Flux<Employee> employeeFlux = client.get()
+        .uri("/employees")
+        .retrieve()
+        .bodyToFlux(Employee.class);
 
-        employeeFlux.subscribe(employee -> LOGGER.info("Employee: {}", employee));
-    }
+    employeeFlux.subscribe(employee -> LOGGER.info("Employee: {}", employee));
+  }
 }

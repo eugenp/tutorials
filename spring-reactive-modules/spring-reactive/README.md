@@ -8,8 +8,6 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
 从非反应式Java开发的背景来看，走向反应式可能是一个相当陡峭的学习曲线。当把它与Java 8 Stream API进行比较时，这将变得更加具有挑战性，因为它们可能会被误认为是相同的高级抽象概念。
 
-在这篇文章中，我们将试图揭开这一范式的神秘面纱。我们将通过Reactor采取小步骤，直到我们建立起如何编写反应式代码的画面，为以后系列中更高级的文章奠定基础。
-
 1. 反应式流规范
 
     在看Reactor之前，我们应该先看一下Reactive Streams Specification。这是Reactor实现的内容，它为该库奠定了基础。
@@ -44,15 +42,832 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
     我们也要把[Logback](https://logback.qos.ch/)作为一个依赖项加入。这是因为我们将记录反应器的输出，以便更好地了解数据流。
 
+3. 生成数据流
 
+    为了使一个应用程序具有反应性，它必须能够做的第一件事就是产生一个数据流。
+
+    这可能是像我们前面给出的股票更新的例子。没有这些数据，我们就没有任何东西可以反应，这就是为什么这是一个合理的第一步。
+
+    Reactive Core给了我们两种数据类型，使我们能够做到这一点。
+
+    1. Flux
+
+        做到这一点的第一个方法是[Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)。它是一个可以发射0...n个元素的流。让我们试着创建一个简单的。
+
+        `Flux<Integer> just = Flux.just(1, 2, 3, 4);`
+
+        生产一个四元素的静态流。
+
+    2. Mono
+
+        第二种方法是使用[Mono](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html)，它是一个0...1元素的流。让我们试着实例化一个。
+
+        `Mono<Integer> just = Mono.just(1);`
+
+        这看起来和行为几乎与Flux完全一样，只是这一次我们被限制在不超过一个元素上。
+
+    3. 为什么不只是Flux？
+
+    在进一步实验之前，值得强调的是为什么我们有这两种数据类型。
+
+    首先，需要注意的是，Flux 和 Mono 都是 Reactive Streams [Publisher](http://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/org/reactivestreams/Publisher.html)接口的实现。这两个类都是符合规范的，我们可以用这个接口来代替它们。
+
+    `Publisher<String> just = Mono.just("foo");`
+
+    但实际上，知道这个基数(cardinality)是有用的。这是因为有一些操作只对两种类型中的一种有意义，而且它可以有更多的表现力（想象一下在资源库中的 findOne() ）。
+
+4. 订阅一个流
+
+    现在我们对如何产生一个数据流有了一个高层次的概述，我们需要订阅它，以使它能够发射元素。
+
+    1. 收集元素
+        让我们使用subscribe()方法来收集一个流中的所有元素。
+
+        ReactorIntegrationTest.givenFlux_whenSubscribing_thenStream()
+
+        在我们订阅之前，数据是不会开始流动的。
+
+    2. 元素的流动
+
+        有了日志记录，我们可以用它来可视化数据是如何在我们的流中流动的。
+
+        ```log
+        20:25:19.550 [main] INFO reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
+        20:25:19.553 [main] INFO reactor.Flux.Array.1 - | request(unbounded)
+        20:25:19.553 [main] INFO reactor.Flux.Array.1 - | onNext(1)
+        ......
+        20:25:19.553 [main] INFO reactor.Flux.Array.1 - | onComplete()
+        ```
+
+        首先，一切都在主线程上运行。我们可以按顺序处理一切。
+
+        现在让我们逐一浏览一下我们所记录的序列。
+
+        1. onSubscribe() - 这是在我们订阅我们的流时调用的
+        2. request(unbounded) - 当我们调用subscribe时，在幕后我们正在创建一个订阅。这个订阅从流中请求元素。在这种情况下，它默认为unbounded，意味着它请求每一个可用的元素。
+        3. onNext() - 这是对每一个元素的调用。
+        4. onComplete() - 这是最后一次调用，在收到最后一个元素之后。实际上还有一个onError()，如果有异常，它将被调用，但在这种情况下，没有异常。
+
+        这是作为Reactive Streams规范一部分的[Subscriber](http://www.reactive-streams.org/reactive-streams-1.0.3-javadoc/org/reactivestreams/Subscriber.html)接口中规定的流程，实际上，这就是我们调用onSubscribe()时在幕后实例化的东西。这是一个有用的方法，但为了更好地理解发生了什么，让我们直接提供一个订阅者接口。
+
+        ReactorIntegrationTest.givenFlux_Subscriber()
+
+        我们可以看到，上述流程中的每个可能的阶段都映射到订阅者实现中的一个方法。恰好Flux为我们提供了一个辅助方法来减少这种繁琐的操作。
+
+    3. 与Java 8 Streams的比较
+
+        看起来我们还是有一些与Java 8 Stream同义的东西在做收集。
+
+        ```java
+        List<Integer> collected = Stream.of(1, 2, 3, 4)
+        .collect(toList());
+        ```
+
+        但是我们没有采用。
+
+        核心区别在于，Reactive是一个推送模型，而Java 8 Streams是一个拉动模型。在一个反应式的方法中，事件在进来时被推送给订阅者。
+
+        接下来要注意的是，Streams的终端操作者只是终端，拉出所有的数据并返回一个结果。有了Reactive，我们可以有一个来自外部资源的无限流，with multiple subscribers attached and removed on an ad hoc basis。我们还可以做一些事情，比如合并流、节流和应用背压。
+
+5. 背压
+
+    我们应该考虑的下一件事是背压。在我们的例子中，订阅者告诉生产者要一次推送所有的元素。这最终可能会使订户不堪重负，消耗其所有的资源。
+
+    背压(Backpressure)是指下游(downstream)可以告诉上游发送更少的数据，以防止它被淹没(overwhelmed)。
+
+    我们可以修改我们的订阅者实现来应用背压。让我们通过使用require()告诉上游一次只发送两个元素。
+
+    ```java
+    Flux.just(1, 2, 3, 4)
+    .log()
+    .subscribe(new Subscriber<Integer>() {
+        private Subscription s;
+        int onNextAmount;
+
+        @Override
+        public void onSubscribe(Subscription s) {
+            this.s = s;
+            s.request(2);
+        }
+
+        @Override
+        public void onNext(Integer integer) {
+            elements.add(integer);
+            onNextAmount++;
+            if (onNextAmount % 2 == 0) {
+                s.request(2);
+            }
+        }
+
+        @Override
+        public void onError(Throwable t) {}
+
+        @Override
+        public void onComplete() {}
+    });
+    ```
+
+    现在如果我们再次运行我们的代码，我们会看到require(2)被调用，接着是两个onNext()的调用，然后又是require(2)。
+
+    ```log
+    23:31:15.395 [main] INFO reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
+    23:31:15.397 [main] INFO reactor.Flux.Array.1 - | request(2)
+    23:31:15.397 [main] INFO reactor.Flux.Array.1 - | onNext(1)
+    23:31:15.398 [main] INFO reactor.Flux.Array.1 - | onNext(2)
+    23:31:15.398 [main] INFO reactor.Flux.Array.1 - | request(2)
+    23:31:15.398 [main] INFO reactor.Flux.Array.1 - | onNext(3)
+    23:31:15.398 [main] INFO reactor.Flux.Array.1 - | onNext(4)
+    23:31:15.398 [main] INFO reactor.Flux.Array.1 - | request(2)
+    23:31:15.398 [main] INFO reactor.Flux.Array.1 - | onComplete()
+    ```
+
+    本质上，这是反应式拉动的背压。我们要求上游只推送一定数量的元素，而且是在我们准备好的时候。
+
+    如果我们想象一下，我们被推送了来自Twitter的推文，那么将由上游来决定做什么。如果推文进来了，但没有来自下游的请求，那么上游可以放弃项目，把它们储存在缓冲区，或其他一些策略。
+
+6. 对流的操作
+
+    我们还可以对流中的数据进行操作，对我们认为合适的事件做出反应。
+
+    1. 对流中的数据进行映射
+
+        我们可以执行的一个简单操作是应用一个转换。在这种情况下，让我们把我们的流中的所有数字翻倍。
+
+        ```java
+        Flux.just(1, 2, 3, 4)
+        .log()
+        .map(i -> i * 2)
+        .subscribe(elements::add);
+        ```
+
+        map()将在调用onNext()时被应用。
+
+    2. 合并两个流
+
+        然后我们可以通过将另一个流与这个流结合起来使事情变得更有趣。让我们通过使用zip()函数来尝试一下。
+
+        ```java
+        Flux.just(1, 2, 3, 4)
+            .log()
+            .map(i -> i * 2)
+            .zipWith(Flux.range(0, Integer.MAX_VALUE), 
+                (one, two) -> String.format("First Flux: %d, Second Flux: %d", one, two))
+            .subscribe(elements::add);
+        assertThat(elements).containsExactly(
+        "First Flux: 2, Second Flux: 0",
+        "First Flux: 4, Second Flux: 1",
+        "First Flux: 6, Second Flux: 2",
+        "First Flux: 8, Second Flux: 3");
+        ```
+
+        在这里，我们正在创建另一个不断增量的Flux，并将其与我们的原始Flux一起流转。我们可以通过检查日志看到这些是如何一起工作的。
+
+        ```java
+        20:04:38.064 [main] INFO  reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
+        20:04:38.065 [main] INFO  reactor.Flux.Array.1 - | onNext(1)
+        20:04:38.066 [main] INFO  reactor.Flux.Range.2 - | onSubscribe([Synchronous Fuseable] FluxRange.RangeSubscription)
+        20:04:38.066 [main] INFO  reactor.Flux.Range.2 - | onNext(0)
+        20:04:38.067 [main] INFO  reactor.Flux.Array.1 - | onNext(2)
+        20:04:38.067 [main] INFO  reactor.Flux.Range.2 - | onNext(1)
+        20:04:38.067 [main] INFO  reactor.Flux.Array.1 - | onNext(3)
+        20:04:38.067 [main] INFO  reactor.Flux.Range.2 - | onNext(2)
+        20:04:38.067 [main] INFO  reactor.Flux.Array.1 - | onNext(4)
+        20:04:38.067 [main] INFO  reactor.Flux.Range.2 - | onNext(3)
+        20:04:38.067 [main] INFO  reactor.Flux.Array.1 - | onComplete()
+        20:04:38.067 [main] INFO  reactor.Flux.Array.1 - | cancel()
+        20:04:38.067 [main] INFO  reactor.Flux.Range.2 - | cancel()
+        ```
+
+        注意我们现在每个 Flux 有一个订阅。onNext()的调用也是交替进行的，所以当我们应用zip()函数时，流中每个元素的索引都会匹配。
+
+7. Hot Streams
+
+    目前，我们主要关注cold streams。这些是静态的、固定长度的流，很容易处理。反应式的更现实的用例可能是无限发生的事情。
+
+    例如，我们可以有一系列的鼠标移动，这些移动需要不断地做出反应，或者是一个Twitter提要。这些类型的流称为热流，因为它们总是在运行，并且可以在任何时间点订阅，而不需要数据的开头。
+
+    1. 创建可ConnectableFlux
+
+        创建热流的一种方法是将冷流转换为热流。让我们创建一个永久持续的Flux，将结果输出到控制台，控制台将模拟来自外部资源的无限数据流：
+
+        ```java
+        ConnectableFlux<Object> publish = Flux.create(fluxSink -> {
+            while(true) {
+                fluxSink.next(System.currentTimeMillis());
+            }
+        })
+        .publish();
+        ```
+
+        通过调用publish()，我们得到了一个[ConnectableFlux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/ConnectableFlux.html)。这意味着调用subscribe()不会导致它开始发射，从而允许我们添加多个订阅：
+
+        ```java
+        publish.subscribe(System.out::println);        
+        publish.subscribe(System.out::println);
+        ```
+
+        如果我们尝试运行这段代码，什么都不会发生。直到我们调用connect（），通量才会开始发射：
+
+        `publish.connect();`
+
+    2. Throttling
+
+        如果我们运行代码，我们的控制台将被日志记录淹没。这是在模拟一种情况，即传递给消费者的数据太多。让我们尝试通过节流来解决这个问题：
+
+        ```java
+        ConnectableFlux<Object> publish = Flux.create(fluxSink -> {
+            while(true) {
+                fluxSink.next(System.currentTimeMillis());
+            }
+        })
+        .sample(ofSeconds(2))
+        .publish();
+        ```
+
+        在这里，我们引入了间隔为两秒的sample()方法。现在，值只会每两秒发送给我们的订阅者，这意味着控制台将不再那么忙碌。
+
+        当然，有多种策略可以减少下游发送的数据量，例如窗口和缓冲，但本文将不讨论这些策略。
+
+8. 并发性
+
+    我们上面的所有示例目前都在主线程上运行。然而，如果需要，我们可以控制代码在哪个线程上运行。[Scheduler](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Scheduler.html)接口提供了异步代码的抽象，为我们提供了许多实现。让我们尝试订阅其他线程到main：
+
+    ```java
+    Flux.just(1, 2, 3, 4)
+    .log()
+    .map(i -> i * 2)
+    .subscribeOn(Schedulers.parallel())
+    .subscribe(elements::add);
+    ```
+
+    并行调度程序将导致我们的订阅在不同的线程上运行，我们可以通过查看日志来证明这一点。我们看到第一个条目来自主线程，Flux在另一个名为parallel-1的线程中运行。
+
+    ```log
+    20:03:27.505 [main] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
+    20:03:27.529 [parallel-1] INFO  reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
+    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | request(unbounded)
+    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(1)
+    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(2)
+    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(3)
+    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(4)
+    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onComplete()
+    ```
+
+    并发获取比这更有趣，值得我们在另一篇文章中探讨。
+
+9. 结论
+
+    在本文中，我们对Reactive Core进行了高层次的端到端概述。我们已经解释了如何发布和订阅流、应用背压、对流进行操作以及异步处理数据。这有望为我们编写反应式应用程序奠定基础。
+
+    本系列的后续文章将介绍更高级的并发和其他反应性概念。还有一篇文章介绍了[Reactor with Spring](https://www.baeldung.com/reactor-bus)。
+
+## Spring 5 WebFlux指南
+
+1. 概述
+
+    Spring 5包括Spring WebFlux，它为Web应用提供了反应式编程支持。
+
+    在本教程中，我们将使用反应式Web组件RestController和WebClient创建一个小型反应式REST应用。
+
+    我们还将研究如何使用Spring Security来保护我们的反应式端点。
+
+    [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
+
+    发现Spring 5的WebClient--一个新的反应式RestTemplate替代品。
+
+    [在Spring WebFlux中处理错误](https://www.baeldung.com/spring-webflux-errors)
+
+    看看在Spring Webflux中优雅地处理错误的不同方法。
+
+    [Spring 5中的功能网络框架介绍](https://www.baeldung.com/spring-5-functional-web)
+
+    关于Spring 5中新的功能Web框架的快速实用指南。
+
+2. Spring WebFlux框架
+
+    Spring WebFlux内部使用[Project Reactor](http://projectreactor.io/)及其发布器publisher实现，即[Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)和[Mono](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html)。
+
+    新框架支持两种编程模型。
+
+    - 基于注释的反应式组件 Annotation-based reactive components
+    - 功能性路由和处理 Functional routing and handling
+
+    我们将专注于基于注解的反应式组件，另见[功能式--路由和处理](https://www.baeldung.com/spring-5-functional-web)。
+
+3. 依赖关系
+
+    让我们从spring-boot-starter-webflux依赖项开始，该依赖项包含了所有其他需要的依赖项。
+
+    - spring-boot和spring-boot-starter，用于基本的Spring Boot应用设置
+    - spring-webflux框架
+    - reactor-core，我们需要它来实现反应流，还有reactor-netty。
+
+4. 反应式REST应用
+
+    现在我们将使用Spring WebFlux构建一个非常简单的反应式REST EmployeeManagement应用程序。
+
+    - 使用一个简单的领域模型--Employee，有一个id和一个name字段
+    - 用RestController建立一个REST API，将Employee资源作为单一资源和集合发布。
+    - 用WebClient建立一个客户端来检索相同的资源
+    - 使用WebFlux和Spring Security创建一个安全的反应式端点。
+
+5. 反应式RestController
+
+    Spring WebFlux支持基于注解的配置，其方式与Spring Web MVC框架相同。
+
+    首先，在服务器上，我们创建一个注解的控制器，发布Employee资源的反应式流。
+
+    让我们来创建我们的EmployeeController注解。
+
+    EmployeeRepository可以是任何支持非阻塞(non-blocking)反应流的数据存储库。
+
+    1. 单一资源
+
+        然后让我们在控制器中创建一个端点，发布一个单一的Employee资源。
+
+        `EmployeeController.getEmployeeById`
+
+        我们将一个Employee资源包裹在一个Mono中，因为我们最多只返回一个雇员。
+
+    2. 采集资源
+
+        我们还添加了一个端点，发布所有雇员的集合资源。
+
+        `EmployeeController.getAllEmployees()`
+
+        对于集合资源，我们使用Employee类型的Flux，因为那是0...n个元素的发布者。
+
+6. 反应式网络客户端
+
+    在Spring 5中引入的[WebClient](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-client)是一个非阻塞式客户端，支持反应式流。
+
+    我们可以使用WebClient来创建一个客户端，从EmployeeController提供的端点中获取数据。
+
+    让创建一个简单的com.baeldung.reactive.webflux.annotation.EmployeeWebClient。
+
+    在这里，我们使用其工厂方法create创建了一个WebClient。它将指向localhost:8080，因此我们可以使用相对的URL来调用这个客户端实例。
+
+    检索单个资源
+
+    - 要从端点/employee/{id}检索一个单一的Mono类型的资源。
+
+    检索一个集合资源
+
+    - 从端点/employees检索一个Flux类型的集合资源。
+
+    我们也有一篇关于设置和使用[WebClient](https://www.baeldung.com/spring-5-webclient)的详细文章。
+
+7. Spring WebFlux安全
+
+    我们可以使用Spring Security来保护我们的反应式端点。
+
+    假设我们在EmployeeController中有一个新的端点。这个端点更新Employee的详细信息，并将更新后的Employee发送回来。
+
+    由于这允许用户改变现有的雇员，我们希望限制这个端点只对ADMIN角色的用户开放。
+
+    因此，让我们为EmployeeController.updateEmployee添加一个新方法。
+
+    现在，为了限制对这个方法的访问，让我们创建SecurityConfig并定义一些基于路径的规则，只允许ADMIN用户访问。
+
+    com.baeldung.reactive.webflux.annotation.EmployeeWebSecurityConfig
+
+    此配置将限制对端点/employees/update的访问。因此，只有拥有ADMIN角色的用户才能访问这个端点并更新现有的雇员。
+
+    最后，注解@EnableWebFluxSecurity增加了Spring Security WebFlux的支持，并有一些默认配置。
+
+## Spring 5中的功能网络框架介绍
+
+1. 简介
+
+    Spring WebFlux是一个新的功能型Web框架，采用反应式原则构建。
+
+    我们将在现有的Spring 5 WebFlux指南的基础上进行学习。在该指南中，我们使用基于注解的组件创建了一个简单的反应式REST应用。在这里，我们将使用功能框架来代替。
+
+2. Maven依赖性
+
+    定义的spring-boot-starter-webflux依赖关系一样。
+
+3. 功能性网络框架
+
+    功能性Web框架引入了一个新的编程模型，我们使用函数来路由和处理请求。
+
+    相对于基于注解的模型，我们使用注解映射，这里我们将使用[HandlerFunction](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/reactive/function/server/HandlerFunction.html)和[RouterFunctions](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/reactive/function/server/RouterFunction.html)。
+
+    同样地，和注解式控制器一样，功能端点方法也是建立在相同的反应式堆栈上。
+
+    1. HandlerFunction
+
+        HandlerFunction表示一个函数，它为路由到它们的请求生成响应。
+
+        ```java
+        @FunctionalInterface
+        public interface HandlerFunction<T extends ServerResponse> {
+            Mono<T> handle(ServerRequest request);
+        }
+        ```
+
+        这个接口主要是一个`Function<Request, Response<T>>`，它的行为非常像一个Servlet。
+
+        尽管与标准的Servlet#service(ServletRequest req, ServletResponse res)相比，HandlerFunction并不接受响应作为输入参数。
+
+    2. RouterFunction
+
+        RouterFunction是@RequestMapping注解的替代品。我们可以用它来将请求路由到处理函数。
+
+        ```java
+        @FunctionalInterface
+        public interface RouterFunction<T extends ServerResponse> {
+            Mono<HandlerFunction<T>> route(ServerRequest request);
+            // ...
+        }
+        ```
+
+        通常情况下，我们可以导入辅助函数[RouterFunctions.route()](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/reactive/function/server/RouterFunctions.html#route-org.springframework.web.reactive.function.server.RequestPredicate-org.springframework.web.reactive.function.server.HandlerFunction-)来创建路由，而不是编写一个完整的路由器函数。
+
+        它允许我们通过应用一个RequestPredicate来路由请求。当谓词被匹配时，第二个参数，即处理函数，将被返回。
+
+        ```java
+        public static <T extends ServerResponse> RouterFunction<T> route(
+            RequestPredicate predicate,
+            HandlerFunction<T> handlerFunction)
+        ```
+
+        因为route()方法返回一个RouterFunction，我们可以用链子来建立强大而复杂的路由方案。
+
+4. 使用功能型网络的反应型REST应用程序
+
+    在之前的指南中，我们使用@RestController和WebClient创建了一个简单的EmployeeManagement REST应用程序。
+
+    现在，让我们使用路由器和处理函数来实现同样的逻辑。
+
+    首先，我们需要使用RouterFunction创建路由，以发布和消费我们反应式的雇员流。
+
+    路由被注册为Spring Bean，可以在任何配置类中创建。
+
+    4.1. 单一资源
+
+    让我们使用RouterFunction创建我们的第一个路由，发布一个单一的雇员资源。
+
+    EmployeeFunctionalConfig.getEmployeeByIdRoute()
+
+    第一个参数是一个请求谓词。注意我们在这里使用的是静态导入的RequestPredicates.GET方法。第二个参数定义了一个处理函数，它将在谓词适用的情况下被使用。
+
+    此方法将所有针对/employees/{id}的GET请求路由到EmployeeRepository#findEmployeeById(String id)方法。
+
+    4.2. 集合资源
+
+    接下来，为了发布一个集合资源，我们再添加一个路由。
+
+    EmployeeFunctionalConfig.getAllEmployeesRoute()
+
+    4.3. 单一资源更新
+
+    最后，让我们添加一个用于更新Employee资源的路由。
+
+    EmployeeFunctionalConfig.updateEmployeeRoute()
+
+5. 组成路由
+
+    我们还可以在一个单一的路由器函数中把路由组合在一起。
+
+    让我们看看如何组合上面创建的路由。
+
+    EmployeeFunctionalConfig.composedRoutes()
+
+    在这里，我们使用了[RouterFunction.and()](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/reactive/function/server/RouterFunction.html#and-org.springframework.web.reactive.function.server.RouterFunction-)来组合我们的路由。
+
+    最后，我们使用路由器和处理程序，实现了EmployeeManagement应用程序所需的完整的REST API。
+
+    要运行该应用程序，我们可以使用单独的路由，也可以使用我们上面创建的单一的、组成的路由。
+
+6. 测试路由
+
+    我们可以使用WebTestClient来测试我们的路由。
+
+    要做到这一点，我们首先需要使用bindToRouterFunction方法来绑定路由，然后建立测试客户端实例。
+
+    让我们来测试我们的getEmployeeByIdRoute。
+
+    EmployeeSpringFunctionalIntegrationTest.givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee()
+
+    和类似的getAllEmployeesRoute。
+
+    我们还可以通过断言我们的Employee实例通过EmployeeRepository被更新来测试我们的updateEmployeeRoute。
+
+    EmployeeSpringFunctionalIntegrationTest.whenUpdateEmployee_thenEmployeeUpdated()
+
+    关于使用WebTestClient测试的更多细节，请参考我们的[WebClient和WebTestClient工作教程](https://www.baeldung.com/spring-5-webclient)。
+
+7. 摘要
+
+    在本教程中，我们介绍了Spring 5中新的功能型Web框架，并研究了其两个核心接口--RouterFunction和HandlerFunction。我们还学习了如何创建各种路由来处理请求和发送响应。
+
+    此外，我们重新创建了在Spring 5 WebFlux指南中介绍的EmployeeManagement应用，并采用了功能型端点模型。
+
+## Spring 5的WebClient
+
+1. 概述
+
+    在本教程中，我们将研究WebClient，它是Spring 5中引入的一个反应式Web客户端。
+
+    我们还将研究WebTestClient，这是一个专门用于测试的WebClient。
+
+    [Spring WebClient过滤器](https://www.baeldung.com/spring-webclient-filters)
+
+    了解Spring WebFlux中的WebClient过滤器
+
+    [带参数的Spring WebClient请求](https://www.baeldung.com/webflux-webclient-parameters)
+
+    了解如何通过Spring Webflux的WebClient反应性地消费REST API端点。
+
+2. 什么是WebClient？
+
+    简单地说，WebClient是一个代表执行Web请求的主要入口点的接口。
+
+    它是作为Spring Web Reactive模块的一部分创建的，并将在这些场景中取代经典的RestTemplate。此外，新的客户端是一个反应式的、非阻塞的解决方案，通过HTTP/1.1协议工作。
+
+    值得注意的是，尽管它实际上是一个非阻塞式客户端，并且属于spring-webflux库，但该解决方案提供了对同步和异步操作的支持，使其也适用于在Servlet Stack上运行的应用程序。
+
+    这可以通过阻断操作以获得结果来实现。当然，如果我们在Reactive Stack上工作，就不建议采用这种做法。
+
+    最后，该接口有一个单一的实现，即DefaultWebClient类，我们将与之一起工作。
+
+3. 依赖关系
+
+    由于我们使用的是Spring Boot应用程序，所以我们只需要spring-boot-starter-webflux依赖项就可以获得Spring框架的Reactive Web支持。
+
+    3.1. 用Maven构建
+
+    让我们在pom.xml文件中添加以下依赖项。
+
+    3.2. 用Gradle构建
+
+    使用Gradle，我们需要在build.gradle文件中添加以下条目。
+
+    `dependencies { compile 'org.springframework.boot:spring-boot-starter-webflux' }`
+
+4. 与WebClient一起工作
+
+    为了与客户端正常工作，我们需要知道如何。
+
+    - 创建一个实例
+    - 提出一个请求
+    - 处理响应
+
+    1. 创建一个WebClient实例
+
+        有三个选项可以选择。第一种是用默认设置创建一个WebClient对象。
+
+        `WebClient client = WebClient.create();`
+
+        第二个选项是用给定的基本URI来启动一个WebClient实例。
+
+        `WebClient client = WebClient.create("http://localhost:8080");`
+
+        第三种选择（也是最先进的一种）是使用DefaultWebClientBuilder类来建立一个客户端，该类允许完全定制。
+
+        ```java
+        WebClient client = WebClient.builder()
+        .baseUrl("http://localhost:8080")
+        .defaultCookie("cookieKey", "cookieValue")
+        .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE) 
+        .defaultUriVariables(Collections.singletonMap("url", "http://localhost:8080"))
+        .build();
+        ```
+
+    2. 创建一个带超时的WebClient实例
+
+        很多时候，默认的30秒的HTTP超时对于我们的需求来说太慢了，为了定制这种行为，我们可以创建一个HttpClient实例，并配置我们的WebClient来使用它。
+
+        我们可以。
+
+        - 通过ChannelOption.CONNECT_TIMEOUT_MILLIS选项设置连接超时
+        - 使用ReadTimeoutHandler和WriteTimeoutHandler分别设置读和写的超时。
+        - 使用responseTimeout指令配置一个响应超时。
+
+        正如我们所说，所有这些都必须在我们要配置的HttpClient实例中指定。
+
+        ```java
+        HttpClient httpClient = HttpClient.create()
+        .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+        .responseTimeout(Duration.ofMillis(5000))
+        .doOnConnected(conn -> 
+            conn.addHandlerLast(new ReadTimeoutHandler(5000, TimeUnit.MILLISECONDS))
+            .addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS)));
+
+        WebClient client = WebClient.builder()
+        .clientConnector(new ReactorClientHttpConnector(httpClient))
+        .build();
+        ```
+
+        注意，虽然我们也可以在客户端请求上调用超时，但这是一个信号超时，而不是HTTP连接、读/写或响应超时；它是Mono/Flux发布器的超时。
+
+    3. 准备一个请求 - 定义方法
+
+        首先，我们需要通过调用method(HttpMethod方法)来指定一个请求的HTTP方法。
+
+        `UriSpec<RequestBodySpec> uriSpec = client.method(HttpMethod.POST);`
+
+        或者调用其快捷方法，如get、post和delete。
+
+        `UriSpec<RequestBodySpec> uriSpec = client.post();`
+
+        注意：虽然看起来我们重复使用了请求规范变量（WebClient.UriSpec, WebClient.RequestBodySpec, WebClient.RequestHeadersSpec, WebClient.ResponseSpec），但这只是为了简单地介绍不同的方法。这些指令不应该在不同的请求中重复使用，它们检索的是引用，因此后者的操作会修改我们在前面步骤中的定义。
+
+    4. 准备一个请求 - 定义URL
+
+        下一步是提供一个URL。再一次，我们有不同的方法来做这件事。
+
+        我们可以把它作为一个字符串传递给 uri API。
+
+        `RequestBodySpec bodySpec = uriSpec.uri("/resource");`
+
+        使用一个UriBuilder函数。
+
+        `RequestBodySpec bodySpec = uriSpec.uri(uriBuilder -> uriBuilder.pathSegment("/resource").build());`
+
+        或者作为一个java.net.URL实例。
+
+        `RequestBodySpec bodySpec = uriSpec.uri(URI.create("/resource"));`
+
+        请记住，如果我们为WebClient定义了一个默认的基本URL，最后这个方法将覆盖这个值。
+
+    5. 准备一个请求 - 定义主体
+
+        然后我们可以设置一个请求主体、内容类型、长度、cookies或头信息（如果需要的话）。
+
+        例如，如果我们想设置一个请求主体，有几种可用的方法。可能最常见和最直接的选择是使用bodyValue方法。
+
+        `RequestHeadersSpec<?> headersSpec = bodySpec.bodyValue("data");`
+
+        或者通过向body方法提出一个发布者（以及将被发布的元素的类型）。
+
+        `RequestHeadersSpec<?> headersSpec = bodySpec.body(Mono.just(new Foo("name")), Foo.class);`
+
+        另外，我们可以利用BodyInserters实用类。例如，让我们看看如何使用一个简单的对象来填写请求正文，就像我们使用bodyValue方法那样。
+
+        `RequestHeadersSpec<?> headersSpec = bodySpec.body(BodyInserters.fromValue("data"));`
+
+        同样地，如果我们使用一个Reactor实例，我们可以使用BodyInserters#fromPublisher方法。
+
+        `RequestHeadersSpec headersSpec = bodySpec.body(BodyInserters.fromPublisher(Mono.just("data")),String.class);`
+
+        这个类还提供了其他直观的功能，以涵盖更高级的场景。例如，在我们必须发送多部分请求的情况下。
+
+        ```java
+        LinkedMultiValueMap map = new LinkedMultiValueMap();
+        map.add("key1", "value1");
+        map.add("key2", "value2");
+        RequestHeadersSpec<?> headersSpec = bodySpec.body(
+        BodyInserters.fromMultipartData(map));
+        ```
+
+        所有这些方法都创建了一个BodyInserter实例，然后我们可以将其作为请求的主体。
+
+        BodyInserter是一个接口，负责用给定的输出消息和插入过程中使用的上下文填充ReactiveHttpOutputMessage主体。
+
+        Publisher是一个反应式组件，负责提供潜在的无限制数量的序列元素。它也是一个接口，最流行的实现是Mono和Flux。
+
+    6. 准备一个请求--定义头文件
+
+        在我们设置了主体之后，我们可以设置头文件、cookies和可接受的媒体类型。这些值将被添加到那些在实例化客户端时已经设置好的值中。
+
+        此外，还有对最常用的头信息的额外支持，如 "If-None-Match"、"If-Modified-Since"、"Accept"和 "Accept-Charset"。
+
+        下面是一个如何使用这些值的例子。
+
+        ```java
+        ResponseSpec responseSpec = headersSpec.header(
+            HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+        .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML)
+        .acceptCharset(StandardCharsets.UTF_8)
+        .ifNoneMatch("*")
+        .ifModifiedSince(ZonedDateTime.now())
+        .retrieve();
+        ```
+
+    7. 获得响应
+
+        最后一个阶段是发送请求和接收响应。我们可以通过使用 exchangeToMono/exchangeToFlux 或 retrieve 方法来实现。
+
+        exchangeToMono和exchangeToFlux方法允许访问ClientResponse以及它的状态和头信息。
+
+        ```java
+        Mono<String> response = headersSpec.exchangeToMono(response -> {
+        if (response.statusCode().equals(HttpStatus.OK)) {
+            return response.bodyToMono(String.class);
+        } else if (response.statusCode().is4xxClientError()) {
+            return Mono.just("Error response");
+        } else {
+            return response.createException()
+                .flatMap(Mono::error);
+        }
+        });
+        ```
+
+        而retrieve方法是直接获取主体的最短路径。
+
+        `Mono<String> response = headersSpec.retrieve().bodyToMono(String.class);`
+
+        要注意ResponseSpec.bodyToMono方法，如果状态码是4xx（客户端错误）或5xx（服务器错误），它将抛出一个WebClientException。
+
+5. 使用WebTestClient工作
+
+    WebTestClient是测试WebFlux服务器端点的主要入口。它有一个与WebClient非常相似的API，它将大部分工作委托给内部的WebClient实例，主要侧重于提供一个测试环境。DefaultWebTestClient类是一个单一的接口实现。
+
+    用于测试的客户端可以绑定到一个真正的服务器上，或者与特定的控制器或函数一起工作。
+
+    1. 绑定到一个服务器
+
+        为了用对运行中的服务器的实际请求完成端到端的集成测试，我们可以使用bindToServer方法。
+
+        ```java
+        WebTestClient testClient = WebTestClient
+        .bindToServer()
+        .baseUrl("http://localhost:8080")
+        .build();
+        ```
+
+    2. 绑定到一个Router
+
+        我们可以通过将一个特定的RouterFunction传递给bindToRouterFunction方法来测试它。
+
+        ```java
+        RouterFunction function = RouterFunctions.route(
+        RequestPredicates.GET("/resource"),
+        request -> ServerResponse.ok().build()
+        );
+
+        WebTestClient
+        .bindToRouterFunction(function)
+        .build().get().uri("/resource")
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody().isEmpty();
+        ```
+
+    3. 绑定到一个网络处理程序
+
+        同样的行为可以通过bindToWebHandler方法实现，它需要一个WebHandler实例。
+
+        ```java
+        WebHandler handler = exchange -> Mono.empty();
+        WebTestClient.bindToWebHandler(handler).build();
+        ```
+
+    4. 绑定到一个应用程序上下文
+
+        当我们使用bindToApplicationContext方法时，一个更有趣的情况发生了。它需要一个ApplicationContext并分析控制器豆和@EnableWebFlux配置的上下文。
+
+        如果我们注入一个ApplicationContext的实例，一个简单的代码片断可能看起来像这样。
+
+        ```java
+        @Autowired
+        private ApplicationContext context;
+        WebTestClient testClient = WebTestClient.bindToApplicationContext(context)
+        .build();
+        ```
+
+    5. 绑定到一个控制器
+
+        一个更短的方法是通过bindToController方法提供一个我们要测试的控制器数组。假设我们已经有了一个控制器类，并且把它注入到一个需要的类中，我们可以写。
+
+        ```java
+        @Autowired
+        private Controller controller;
+        WebTestClient testClient = WebTestClient.bindToController(controller).build();
+        ```
+
+    6. 发出请求
+
+        在建立了一个WebTestClient对象之后，下面的所有操作都将与WebClient类似，直到交换方法（获得响应的一种方式），它提供了WebTestClient.ResponseSpec接口，以与有用的方法（如expectStatus、expectBody和expectHeader）一起工作。
+
+        ```java
+        WebTestClient
+        .bindToServer()
+            .baseUrl("http://localhost:8080")
+            .build()
+            .post()
+            .uri("/resource")
+        .exchange()
+            .expectStatus().isCreated()
+            .expectHeader().valueEquals("Content-Type", "application/json")
+            .expectBody().jsonPath("field").isEqualTo("value");
+        ```
+
+6. 总结
+
+    在这篇文章中，我们探讨了WebClient，一种新的增强型Spring机制，用于在客户端发出请求。
+
+    我们还通过配置客户端、准备请求和处理响应，了解了它所提供的好处。
 
 ## Relevant articles
 
-- [Intro To Reactor Core](https://www.baeldung.com/reactor-core)
-- [Debugging Reactive Streams in Java](https://www.baeldung.com/spring-debugging-reactive-streams)
-- [Guide to Spring 5 WebFlux](https://www.baeldung.com/spring-webflux)
-- [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
-- [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
+- [x] [Intro To Reactor Core](https://www.baeldung.com/reactor-core)
+- [x] [Debugging Reactive Streams in Java](https://www.baeldung.com/spring-debugging-reactive-streams)
+- [x] [Guide to Spring 5 WebFlux](https://www.baeldung.com/spring-webflux)
+- [x] [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
+- [x] [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
 - [Spring WebClient vs. RestTemplate](https://www.baeldung.com/spring-webclient-resttemplate)
 - [Spring WebClient Requests with Parameters](https://www.baeldung.com/webflux-webclient-parameters)
 - [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
