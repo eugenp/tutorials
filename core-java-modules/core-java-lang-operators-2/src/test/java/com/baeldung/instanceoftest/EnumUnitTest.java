@@ -6,11 +6,10 @@ import org.junit.Test;
 
 import com.baeldung.enumallt.*;
 
-
-public class EnumAltTest {
+public class EnumUnitTest {
 	@Test
 	public void testAnatotitan() {
-		
+
 		Dinosaur dinosaur = new Dinosaur();
 		dinosaur.setDinosaur(DinosaurEnum.Euraptor);
 
@@ -25,5 +24,4 @@ public class EnumAltTest {
 		assertEquals("Aggressive  ", dinosaur.getDinosaur().behaviour());
 	}
 
-	
 }

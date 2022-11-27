@@ -1,11 +1,13 @@
 package com.baeldung.instanceoftest;
 
 import static org.junit.Assert.*;
+
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.getclassalt.*;
+import com.baeldung.polymorphism.*;
 
-public class getClassTest {
+public class PolymorphismUnitTest {
 
 	@Test
 	public void testAnatotitan() {
@@ -19,16 +21,7 @@ public class getClassTest {
 	}
 
 	public static String dinoBehavior(Dinosaur dinosaur) {
-
-		if (dinosaur.getClass().equals(Anatotitan.class)) {
-
-			Anatotitan anatotitan = (Anatotitan) dinosaur;
-			return anatotitan.behavior();
-		} else if (dinosaur.getClass().equals(Euraptor.class)) {
-			Euraptor euraptor = (Euraptor) dinosaur;
-			return euraptor.behavior();
-		}
-		return "";
+		return dinosaur.behavior();
 	}
 
 }

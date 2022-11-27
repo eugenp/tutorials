@@ -1,8 +1,7 @@
 package com.baeldung.enumallt;
 
 public class Dinosaur {
-	
-	
+
 	DinosaurEnum dinosaur;
 
 	public DinosaurEnum getDinosaur() {
@@ -12,6 +11,5 @@ public class Dinosaur {
 	public void setDinosaur(DinosaurEnum dinosaur) {
 		this.dinosaur = dinosaur;
 	}
-	
- 
+
 }

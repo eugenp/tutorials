@@ -1,6 +1,6 @@
 package com.baeldung.visitorspattern;
 
-public class DinoImpl implements Visitor {
+public class DinoVisitorImpl implements Visitor {
 
 	@Override
 	public String visit(Anatotitan anatotitan) {
@@ -9,8 +9,7 @@ public class DinoImpl implements Visitor {
 
 	@Override
 	public String visit(Euraptor euraptor) {
-	    return euraptor.behavior();
+		return euraptor.behavior();
 	}
-	
 
 }

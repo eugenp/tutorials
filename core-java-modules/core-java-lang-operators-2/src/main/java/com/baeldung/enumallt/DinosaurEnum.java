@@ -1,4 +1,5 @@
 package com.baeldung.enumallt;
+
 public enum DinosaurEnum {
 	Anatotitan {
 		@Override

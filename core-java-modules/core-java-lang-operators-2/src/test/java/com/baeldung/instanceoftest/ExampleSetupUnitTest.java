@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.baeldung.patternmatching.*;
+import com.baeldung.examplesetup.*;
 
-public class patternTest {
+public class ExampleSetupUnitTest {
 
 	@Test
 	public void testAnatotitan() {
@@ -21,10 +21,12 @@ public class patternTest {
 
 	public static String dinoBehavior(Dinosaur dinosaur) {
 
-		if (dinosaur instanceof Anatotitan anatotitan) {
-			return anatotitan.behavior();
-		} else if (dinosaur instanceof Euraptor euraptor) {
+		if (dinosaur instanceof Anatotitan) {
 
+			Anatotitan anatotitan = (Anatotitan) dinosaur;
+			return anatotitan.behavior();
+		} else if (dinosaur instanceof Euraptor) {
+			Euraptor euraptor = (Euraptor) dinosaur;
 			return euraptor.behavior();
 		}
 		return "";
