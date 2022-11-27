@@ -1,6 +1,6 @@
 package com.baeldung.collections.priorityqueue;
 
-public class ColoredNumberComparable implements Comparable<ColoredNumberComparable> {
+public final class ColoredNumberComparable implements Comparable<ColoredNumberComparable> {
     private int value;
     private String color;
 

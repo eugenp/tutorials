@@ -1,6 +1,6 @@
 package com.baeldung.collections.priorityqueue;
 
-public class ColoredNumber {
+public final class ColoredNumber {
     private int value;
     private String color;
 

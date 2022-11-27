@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class PriorityQueueComparatorUnitTest {
 
     @Test
-    public void givenIntegerQueue_defaultComparator_followsNaturalOrdering() {
+    void givenIntegerQueue_defaultComparator_followsNaturalOrdering() {
         PriorityQueue<Integer> integerQueue = new PriorityQueue<>();
         PriorityQueue<Integer> integerQueueWithComparator = new PriorityQueue<>((Integer c1, Integer c2) -> Integer.compare(c1, c2));
 
@@ -30,7 +30,7 @@ public class PriorityQueueComparatorUnitTest {
     }
 
     @Test
-    public void givenIntegerQueue_reverseOrderComparator_followsInverseNaturalOrdering() {
+    void givenIntegerQueue_reverseOrderComparator_followsInverseNaturalOrdering() {
         PriorityQueue<Integer> reversedQueue = new PriorityQueue<>(Collections.reverseOrder());
 
         reversedQueue.add(1);
@@ -43,7 +43,7 @@ public class PriorityQueueComparatorUnitTest {
     }
 
     @Test
-    public void givenNotComparableQueue_classCastException() {
+    void givenNotComparableQueue_classCastException() {
         assertThatThrownBy(() -> {
             PriorityQueue<ColoredNumber> queue = new PriorityQueue<>();
             queue.add(new ColoredNumber(3, "red"));
@@ -51,7 +51,7 @@ public class PriorityQueueComparatorUnitTest {
     }
 
     @Test
-    public void givenCustomOrderingQueue_orderIsCorrect() {
+    void givenCustomOrderingQueue_orderIsCorrect() {
         PriorityQueue<ColoredNumberComparable> queue = new PriorityQueue<>();
         queue.add(new ColoredNumberComparable(10, "red"));
         queue.add(new ColoredNumberComparable(20, "red"));
