@@ -11,22 +11,23 @@ import com.baeldung.mapalt.*;
 
 public class MapUnitTest {
 
-	Map<Class<? extends Dinosaur>, String> response = new HashMap<Class<? extends Dinosaur>, String>();
-	Dinosaur anatotitan = new Anatotitan();
-	Dinosaur euraptor = new Euraptor();
-
 	@Test
 	public void testAnatotitan() {
-		response.put(Anatotitan.class, anatotitan.behavior());
 
-		assertEquals("very aggressive", response.get(Anatotitan.class));
+		assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
 	}
 
 	@Test
 	public void testEuraptor() {
-		response.put(Euraptor.class, euraptor.behavior());
 
-		assertEquals("calm", response.get(Euraptor.class));
+		assertEquals("calm", dinoBehavior(new Euraptor()));
+	}
+
+	public static String dinoBehavior(Dinosaur dinosaur) {
+		Map<Class<? extends Dinosaur>, String> response = new HashMap<Class<? extends Dinosaur>, String>();
+
+		response.put(dinosaur.getClass(), dinosaur.behavior());
+		return response.get(dinosaur.getClass());
 	}
 
 }
