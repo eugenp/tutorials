@@ -1,4 +1,4 @@
-package com.baeldung.collections.Sorting;
+package com.baeldung.collections.sorting;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class HashSetUnitTest {
 
     @Test
-    void givenHashSet_whenUsingList_thenItCanBeSorted() {
+    void givenHashSet_whenUsingCollectionsSort_thenHashSetSorted() {
         HashSet<Integer> numberHashSet = new HashSet<>();
         numberHashSet.add(2);
         numberHashSet.add(1);
@@ -26,7 +26,7 @@ public class HashSetUnitTest {
     }
 
     @Test
-    void givenHashSet_whenUsingTreeSet_thenItCanBeSorted() {
+    void givenHashSet_whenUsingTreeSet_thenHashSetSorted() {
         HashSet<Integer> numberHashSet = new HashSet<>();
         numberHashSet.add(2);
         numberHashSet.add(1);
@@ -39,15 +39,14 @@ public class HashSetUnitTest {
     }
 
     @Test
-    void givenHashSet_whenUsingStream_thenItCanBeSorted() {
+    void givenHashSet_whenUsingStream_thenHashSetSorted() {
         HashSet<Integer> numberHashSet = new HashSet<>();
         numberHashSet.add(2);
         numberHashSet.add(1);
         numberHashSet.add(4);
         numberHashSet.add(3);
         // Sort the HashSet using stream()
-        numberHashSet.stream()
-          .sorted();
+        numberHashSet.stream().sorted();
         assertThat(numberHashSet).containsExactly(1, 2, 3, 4);
     }
 
