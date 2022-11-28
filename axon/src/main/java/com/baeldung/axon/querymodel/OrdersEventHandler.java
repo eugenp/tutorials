@@ -11,6 +11,7 @@ import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
 import com.baeldung.axon.coreapi.queries.Order;
 import com.baeldung.axon.coreapi.queries.OrderUpdatesQuery;
 import com.baeldung.axon.coreapi.queries.TotalProductsShippedQuery;
+
 import org.reactivestreams.Publisher;
 
 import java.util.List;
