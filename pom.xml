@@ -484,6 +484,7 @@
                 <module>atomikos</module>
                 <module>reactive-systems</module>
                 <module>security-modules</module>
+                <module>shallow-deep-copies</module>
                 <module>slack</module>
                 <module>vavr-modules</module>
                 <module>web-modules</module>
