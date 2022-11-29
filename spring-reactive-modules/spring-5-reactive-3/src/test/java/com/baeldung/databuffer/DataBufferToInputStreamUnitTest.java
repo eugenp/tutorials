@@ -1,4 +1,4 @@
-package databuffer;
+package com.baeldung.databuffer;
 
 import com.baeldung.databuffer.DataBufferToInputStream;
 
