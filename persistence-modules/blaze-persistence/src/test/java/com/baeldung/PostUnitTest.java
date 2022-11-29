@@ -17,8 +17,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AbstractTest.TestConfig.class)
-public class PostUnitTest extends AbstractTest {
+@ContextConfiguration(classes = TestContextConfig.class)
+public class PostUnitTest {
 
     @Autowired
     private PostViewRepository postViewRepository;
@@ -36,7 +36,8 @@ public class PostUnitTest extends AbstractTest {
 
     @Test
     public void givenPostIdAndAuthorName_whenFind_thenReturnCorrectResult() {
-        final Iterable<PostWithAuthorView> listIterable = postRepository.findBy("Spring", "Peter");
+        final Iterable<PostWithAuthorView> listIterable =
+                postRepository.findBy("Spring", "Peter");
         final List<PostView> list = new ArrayList<>();
         listIterable.forEach(list::add);
         assertEquals(4, list.size());

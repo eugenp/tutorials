@@ -5,13 +5,11 @@ import com.blazebit.persistence.spring.data.repository.config.EnableBlazeReposit
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-abstract class AbstractTest {
+@Configuration
+@ComponentScan("com.baeldung")
+@EnableEntityViews(basePackages = {"com.baeldung.view"})
+@EnableBlazeRepositories(basePackages = "com.baeldung.repository")
+class TestContextConfig {
 
-    @Configuration
-    @ComponentScan("com.baeldung")
-    @EnableEntityViews(basePackages = { "com.baeldung.view"})
-    @EnableBlazeRepositories(
-            basePackages = "com.baeldung.repository")
-    static class TestConfig {
-    }
+
 }

@@ -15,8 +15,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AbstractTest.TestConfig.class)
-public class PersonUnitTest extends AbstractTest {
+@ContextConfiguration(classes = TestContextConfig.class)
+public class PersonUnitTest {
 
     @Autowired
     private PersonRepository personRepository;
@@ -39,7 +39,7 @@ public class PersonUnitTest extends AbstractTest {
     }
 
     @Test
-    public void whenFindPostsByPerson_thenReturnCorrectListSize(){
+    public void whenFindPostsByPerson_thenReturnCorrectListSize() {
         final Iterable<Post> listIterable = personRepository.findPostsByPerson();
         final List<Post> list = new ArrayList<>();
         listIterable.forEach(list::add);
