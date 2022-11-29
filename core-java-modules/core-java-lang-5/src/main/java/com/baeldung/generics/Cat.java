@@ -1,5 +1,7 @@
 package com.baeldung.generics;
 
+import java.util.Objects;
+
 class Cat extends Animal implements Comparable<Cat> {
     public Cat(String type, String name) {
         super(type, name);
