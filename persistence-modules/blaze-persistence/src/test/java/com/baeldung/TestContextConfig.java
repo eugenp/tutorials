@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.baeldung")
 @EnableEntityViews(basePackages = {"com.baeldung.view"})
 @EnableBlazeRepositories(basePackages = "com.baeldung.repository")
-class TestContextConfig {
+public class TestContextConfig {
 
 
 }
