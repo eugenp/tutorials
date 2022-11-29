@@ -98,7 +98,7 @@ public class Auth0JsonWebTokenUnitTest {
     }
 
     @Test
-    public void givenJWT_whenCreatedWithNotBefore_thenCheckingIfNotBefore() {
+    public void givenJWT_whenCreatedWithNotBefore_thenThrowException() {
 
         jwtToken = JWT.create()
           .withIssuer(ISSUER)
@@ -112,7 +112,7 @@ public class Auth0JsonWebTokenUnitTest {
     }
 
     @Test
-    public void givenJWT_whenVerifyingUsingDifferentSecret_thenCheckingForException() {
+    public void givenJWT_whenVerifyingUsingDifferentSecret_thenThrowException() {
 
         jwtToken = JWT.create()
           .withIssuer(ISSUER)
