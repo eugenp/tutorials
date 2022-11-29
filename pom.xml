@@ -336,7 +336,6 @@
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-libraries</module>
@@ -720,7 +719,6 @@
                 <module>annotations</module>
                 <module>antlr</module>
 
-                <module>apache-cxf-modules</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-libraries</module>
@@ -1111,6 +1109,7 @@
             </build>
 
             <modules>
+                <module>apache-cxf-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -1193,6 +1192,7 @@
             </build>
 
             <modules>
+                <module>apache-cxf-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>

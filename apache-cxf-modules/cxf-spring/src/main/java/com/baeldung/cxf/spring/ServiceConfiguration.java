@@ -8,6 +8,7 @@ import org.apache.cxf.jaxws.EndpointImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
 @Configuration
 public class ServiceConfiguration {
     @Bean(name = Bus.DEFAULT_BUS_ID)

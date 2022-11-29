@@ -2,10 +2,12 @@ package com.baeldung.cxf.jaxrs.implementation;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Course")
 public class Course {

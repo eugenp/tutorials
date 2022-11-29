@@ -5,11 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import javax.xml.ws.soap.SOAPBinding;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.soap.SOAPBinding;
 
 public class StudentLiveTest {
     private static QName SERVICE_NAME = new QName("http://introduction.cxf.baeldung.com/", "Baeldung");
