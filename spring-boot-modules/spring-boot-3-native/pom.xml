@@ -12,7 +12,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3/pom.xml</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring-doc.version}</version>
+            <version>${springdoc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,10 +77,9 @@
     </profiles>
 
     <properties>
-        <spring-boot.version>3.0.0-RC2</spring-boot.version>
-        <spring-doc.version>2.0.0-RC1</spring-doc.version>
+        <springdoc.version>2.0.0</springdoc.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <native.maven.plugin.version>0.9.17</native.maven.plugin.version>
-        <start-class>com.baeldung.sample.TodoApplication</start-class>
     </properties>
 
 </project>

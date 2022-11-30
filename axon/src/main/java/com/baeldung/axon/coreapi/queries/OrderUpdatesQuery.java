@@ -32,8 +32,6 @@ public class OrderUpdatesQuery {
 
     @Override
     public String toString() {
-        return "OrderUpdatesQuery{" +
-                "orderId='" + orderId + '\'' +
-                '}';
+        return "OrderUpdatesQuery{" + "orderId='" + orderId + '\'' + '}';
     }
 }
