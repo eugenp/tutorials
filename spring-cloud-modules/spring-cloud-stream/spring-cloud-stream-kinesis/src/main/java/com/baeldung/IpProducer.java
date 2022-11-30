@@ -23,6 +23,7 @@ public class IpProducer {
 
     @Value("${ips.partition.key}")
     private String IPS_PARTITION_KEY;
+    
     @Value("${ips.stream}")
     private String IPS_STREAM;
 
