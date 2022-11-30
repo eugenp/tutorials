@@ -1,7 +1,5 @@
 package com.baeldung;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -24,15 +22,16 @@ public class KinesisApplication {
 
     @Value("${aws.access.key}")
     private String accessKey;
+    
     @Value("${aws.secret.key}")
     private String secretKey;
+    
     @Autowired
     private Processor processor;
 
     public static void main(String[] args) {
         SpringApplication.run(KinesisApplication.class, args);
     }
-
 
     @Bean
     public AmazonKinesis buildAmazonKinesis() {

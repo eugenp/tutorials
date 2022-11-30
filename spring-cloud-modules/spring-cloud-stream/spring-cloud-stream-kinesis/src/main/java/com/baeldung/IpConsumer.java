@@ -22,12 +22,14 @@ public class IpConsumer {
 
     @Value("${ips.stream}")
     private String IPS_STREAM;
+    
     @Value("${ips.shard.id}")
     private String IPS_SHARD_ID;
+    
     @Autowired
     private AmazonKinesis kinesis;
+    
     private GetShardIteratorResult shardIterator;
-
 
     @StreamListener(Sink.INPUT)
     public void consume(String ip) {
@@ -40,8 +42,7 @@ public class IpConsumer {
         recordsRequest.setLimit(25);
 
         GetRecordsResult recordsResult = kinesis.getRecords(recordsRequest);
-        while (!recordsResult.getRecords()
-            .isEmpty()) {
+        while (!recordsResult.getRecords().isEmpty()) {
             recordsResult.getRecords()
                 .stream()
                 .map(record -> new String(record.getData()
