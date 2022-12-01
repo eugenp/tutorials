@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 import rx.Single;
 import rx.observers.TestSubscriber;
 
-class EmployeeRepositoryTest {
+class SingleJustVsFromCallableTest {
 
     public EmployeeRepository repository = mock(EmployeeRepository.class);
 
