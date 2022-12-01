@@ -27,7 +27,7 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
+  
     <build>
         <finalName>core-java-lang-operators-2</finalName>
         <resources>
