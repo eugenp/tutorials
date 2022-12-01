@@ -17,40 +17,40 @@ import com.baeldung.domain.service.MessageService;
 import com.baeldung.domain.util.MessageMatcher;
 
 @ExtendWith(MockitoExtension.class)
-public class MessageControllerUnitTest {
+class MessageControllerUnitTest {
 
-        @InjectMocks
-        private MessageController messageController;
-    
-	@Mock
-	private MessageService messageService;
+    @InjectMocks
+    private MessageController messageController;
 
-	@Test
-	public void givenMsg_whenVerifyUsingAnyMatcher_thenOk() {
-		MessageDTO messageDTO = new MessageDTO();
-		messageDTO.setFrom("me");
-		messageDTO.setTo("you");
-		messageDTO.setText("Hello, you!");
+    @Mock
+    private MessageService messageService;
 
-		messageController.createMessage(messageDTO);
+    @Test
+    void givenMsg_whenVerifyUsingAnyMatcher_thenOk() {
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setFrom("me");
+        messageDTO.setTo("you");
+        messageDTO.setText("Hello, you!");
 
-		verify(messageService, times(1)).deliverMessage(any(Message.class));
-	}
+        messageController.createMessage(messageDTO);
 
-	@Test
-	public void givenMsg_whenVerifyUsingMessageMatcher_thenOk() {
-		MessageDTO messageDTO = new MessageDTO();
-		messageDTO.setFrom("me");
-		messageDTO.setTo("you");
-		messageDTO.setText("Hello, you!");
+        verify(messageService, times(1)).deliverMessage(any(Message.class));
+    }
 
-		messageController.createMessage(messageDTO);
+    @Test
+    void givenMsg_whenVerifyUsingMessageMatcher_thenOk() {
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setFrom("me");
+        messageDTO.setTo("you");
+        messageDTO.setText("Hello, you!");
 
-		Message message = new Message();
-		message.setFrom("me");
-		message.setTo("you");
-		message.setText("Hello, you!");
+        messageController.createMessage(messageDTO);
 
-		verify(messageService, times(1)).deliverMessage(argThat(new MessageMatcher(message)));
-	}
+        Message message = new Message();
+        message.setFrom("me");
+        message.setTo("you");
+        message.setText("Hello, you!");
+
+        verify(messageService, times(1)).deliverMessage(argThat(new MessageMatcher(message)));
+    }
 }

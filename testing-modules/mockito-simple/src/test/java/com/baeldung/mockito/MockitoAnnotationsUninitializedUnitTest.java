@@ -1,23 +1,23 @@
 package com.baeldung.mockito;
 
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.util.List;
 
-public class MockitoAnnotationsUninitializedUnitTest {
+class MockitoAnnotationsUninitializedUnitTest {
 
     @Mock
     List<String> mockedList;
 
     @Test
-    public void whenMockitoAnnotationsUninitialized_thenNPEThrown() {
-        Assertions.assertThrows(NullPointerException.class, () -> {
-            Mockito.when(mockedList.size()).thenReturn(1);
+    void whenMockitoAnnotationsUninitialized_thenNPEThrown() {
+        assertThrows(NullPointerException.class, () -> {
+            when(mockedList.size()).thenReturn(1);
         });
-
     }
 }

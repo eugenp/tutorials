@@ -2,6 +2,7 @@ package com.baeldung.mockito.voidmethods;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.ArgumentMatchers.isNull;
@@ -13,7 +14,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -22,10 +22,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.baeldung.mockito.MyList;
 
 @ExtendWith(MockitoExtension.class)
-public class MockitoVoidMethodsUnitTest {
+class MockitoVoidMethodsUnitTest {
 
     @Test
-    public void whenAddCalledVerified() {
+    void whenAddCalledVerified() {
         MyList myList = mock(MyList.class);
         myList.add(0, "");
 
@@ -33,9 +33,9 @@ public class MockitoVoidMethodsUnitTest {
     }
 
     @Test
-    public void givenNull_addThrows() {
+    void givenNull_addThrows() {
         MyList myList = mock(MyList.class);
-        Assertions.assertThrows(Exception.class, () -> {
+        assertThrows(Exception.class, () -> {
             doThrow().when(myList).add(isA(Integer.class), isNull());
         });
 
@@ -43,7 +43,7 @@ public class MockitoVoidMethodsUnitTest {
     }
 
     @Test
-    public void whenAddCalledValueCaptured() {
+    void whenAddCalledValueCaptured() {
         MyList myList = mock(MyList.class);
         ArgumentCaptor<String> valueCapture = ArgumentCaptor.forClass(String.class);
         doNothing().when(myList).add(any(Integer.class), valueCapture.capture());
@@ -53,7 +53,7 @@ public class MockitoVoidMethodsUnitTest {
     }
 
     @Test
-    public void whenAddCalledAnswered() {
+    void whenAddCalledAnswered() {
         MyList myList = mock(MyList.class);
         doAnswer(invocation -> {
             Object arg0 = invocation.getArgument(0);
@@ -68,7 +68,7 @@ public class MockitoVoidMethodsUnitTest {
     }
 
     @Test
-    public void whenAddCalledRealMethodCalled() {
+    void whenAddCalledRealMethodCalled() {
         MyList myList = mock(MyList.class);
         doCallRealMethod().when(myList).add(any(Integer.class), any(String.class));
         myList.add(1, "real");
