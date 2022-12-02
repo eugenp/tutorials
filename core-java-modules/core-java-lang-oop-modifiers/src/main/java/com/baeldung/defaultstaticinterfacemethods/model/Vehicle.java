@@ -19,4 +19,10 @@ public interface Vehicle {
     static int getHorsePower(int rpm, int torque) {
         return (rpm * torque) / 5252;
     }
+
+    double getSpeed();
+
+    default double getSpeedInKMH(double speed) {
+        return speed * 1.60934;
+    }
 }
