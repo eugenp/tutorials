@@ -19,7 +19,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <blaze-persistence.version>1.6.8</blaze-persistence.version>
-        <hibernate.version>5.4.12.Final</hibernate.version>
     </properties>
 
     <dependencyManagement>
