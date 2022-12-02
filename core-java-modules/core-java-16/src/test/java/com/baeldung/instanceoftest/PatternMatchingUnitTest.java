@@ -8,26 +8,26 @@ import com.baeldung.instanceofalternative.patternmatching.*;
 
 public class PatternMatchingUnitTest {
 
-	@Test
-	public void testAnatotitan() {
+    @Test
+    public void testAnatotitan() {
 
-		assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
-	}
+        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+    }
 
-	@Test
-	public void testEuraptor() {
-		assertEquals("calm", dinoBehavior(new Euraptor()));
-	}
+    @Test
+    public void testEuraptor() {
+        assertEquals("calm", dinoBehavior(new Euraptor()));
+    }
 
-	public static String dinoBehavior(Dinosaur dinosaur) {
+    public static String dinoBehavior(Dinosaur dinosaur) {
 
-		if (dinosaur instanceof Anatotitan anatotitan) {
-			return anatotitan.behavior();
-		} else if (dinosaur instanceof Euraptor euraptor) {
+        if (dinosaur instanceof Anatotitan anatotitan) {
+            return anatotitan.behavior();
+        } else if (dinosaur instanceof Euraptor euraptor) {
 
-			return euraptor.behavior();
-		}
-		return "";
-	}
+            return euraptor.behavior();
+        }
+        return "";
+    }
 
 }

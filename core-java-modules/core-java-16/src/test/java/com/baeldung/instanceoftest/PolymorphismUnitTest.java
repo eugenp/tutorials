@@ -9,19 +9,19 @@ import com.baeldung.instanceofalternative.polymorphism.*;
 
 public class PolymorphismUnitTest {
 
-	@Test
-	public void testAnatotitan() {
+    @Test
+    public void testAnatotitan() {
 
-		assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
-	}
+        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+    }
 
-	@Test
-	public void testEuraptor() {
-		assertEquals("calm", dinoBehavior(new Euraptor()));
-	}
+    @Test
+    public void testEuraptor() {
+        assertEquals("calm", dinoBehavior(new Euraptor()));
+    }
 
-	public static String dinoBehavior(Dinosaur dinosaur) {
-		return dinosaur.behavior();
-	}
+    public static String dinoBehavior(Dinosaur dinosaur) {
+        return dinosaur.behavior();
+    }
 
 }

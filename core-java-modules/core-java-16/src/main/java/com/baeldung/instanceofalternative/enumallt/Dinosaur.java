@@ -2,14 +2,14 @@ package com.baeldung.instanceofalternative.enumallt;
 
 public class Dinosaur {
 
-	DinosaurEnum dinosaur;
+    DinosaurEnum dinosaur;
 
-	public DinosaurEnum getDinosaur() {
-		return dinosaur;
-	}
+    public DinosaurEnum getDinosaur() {
+        return dinosaur;
+    }
 
-	public void setDinosaur(DinosaurEnum dinosaur) {
-		this.dinosaur = dinosaur;
-	}
+    public void setDinosaur(DinosaurEnum dinosaur) {
+        this.dinosaur = dinosaur;
+    }
 
 }
