@@ -20,6 +20,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${apache.commons.lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -39,6 +44,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
+        <commons-text.version>1.10.0</commons-text.version>
     </properties>
 
 </project>
