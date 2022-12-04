@@ -1168,6 +1168,12 @@
                  <module>lightrun</module>
                  <module>tablesaw</module>
             </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>11</java.version>
+                <java.version>11</java.version>
+            </properties>
         </profile>
 
         <profile>
