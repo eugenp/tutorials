@@ -406,6 +406,7 @@
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-rmi</module>
+                <module>java-se</module>
                 <module>java-spi</module>
                 <module>java-websocket</module>
                 <module>javax-sound</module>
