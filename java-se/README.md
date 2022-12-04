@@ -1,4 +1,4 @@
-## Java RMI
+## Java SE
 
 This module contains articles about Java SE.
 
