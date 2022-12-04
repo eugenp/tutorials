@@ -13,18 +13,18 @@ import java.util.Collections;
 @EnableWebFlux
 @SpringBootApplication(exclude = MongoReactiveAutoConfiguration.class)
 public class ServerDebuggingApplication {
-    
+
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(ServerDebuggingApplication.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
         app.run(args);
     }
-    
+
     @Bean
     public SecurityWebFilterChain debuggingServerSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+                .anyExchange()
+                .permitAll();
         return http.build();
     }
 }

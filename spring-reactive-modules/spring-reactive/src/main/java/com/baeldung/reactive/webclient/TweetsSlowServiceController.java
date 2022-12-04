@@ -13,8 +13,8 @@ public class TweetsSlowServiceController {
     private List<Tweet> getAllTweets() throws Exception {
         Thread.sleep(2000L); // delay
         return Arrays.asList(
-          new Tweet("RestTemplate rules", "@user1"),
-          new Tweet("WebClient is better", "@user2"),
-          new Tweet("OK, both are useful", "@user1"));
+                new Tweet("RestTemplate rules", "@user1"),
+                new Tweet("WebClient is better", "@user2"),
+                new Tweet("OK, both are useful", "@user1"));
     }
 }

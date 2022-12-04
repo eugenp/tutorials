@@ -7,12 +7,12 @@ import org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurity
 import org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration;
 
 @SpringBootApplication(exclude = {
-  MongoReactiveAutoConfiguration.class,
-  ReactiveSecurityAutoConfiguration.class,
-  ReactiveUserDetailsServiceAutoConfiguration.class })
+    MongoReactiveAutoConfiguration.class,
+    ReactiveSecurityAutoConfiguration.class,
+    ReactiveUserDetailsServiceAutoConfiguration.class })
 public class ErrorHandlingApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ErrorHandlingApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ErrorHandlingApplication.class, args);
+  }
 }

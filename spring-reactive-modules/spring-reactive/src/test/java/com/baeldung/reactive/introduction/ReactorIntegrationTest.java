@@ -9,6 +9,7 @@ import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,7 @@ class ReactorIntegrationTest {
                         (one, two) -> String.format("First Flux: %d, Second Flux: %d", one, two))
                 .subscribe(elements::add);
 
+        LOGGER.info(elements.toString());
         assertThat(elements).containsExactly(
                 "First Flux: 2, Second Flux: 0",
                 "First Flux: 4, Second Flux: 1",
@@ -143,12 +145,9 @@ class ReactorIntegrationTest {
 
         List<Integer> elements = new ArrayList<>();
 
-        final ConnectableFlux<Integer> publish = Flux.just(1, 2, 3, 4).publish();
-
+        final ConnectableFlux<Integer> publish = Flux.just(1, 2, 3, 4).log().publish();
         publish.subscribe(elements::add);
-
         assertThat(elements).isEmpty();
-
         publish.connect();
 
         assertThat(elements).containsExactly(1, 2, 3, 4);

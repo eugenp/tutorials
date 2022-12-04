@@ -22,72 +22,71 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = EmployeeSpringApplication.class)
 class EmployeeControllerIntegrationTest {
 
-    @Autowired
-    private WebTestClient testClient;
+  @Autowired
+  private WebTestClient testClient;
 
-    @MockBean
-    private EmployeeRepository employeeRepository;
+  @MockBean
+  private EmployeeRepository employeeRepository;
 
-    @Test
-    void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
+  @Test
+  void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
 
-        Employee employee = new Employee("1", "Employee 1 Name");
+    Employee employee = new Employee("1", "Employee 1 Name");
 
-        given(employeeRepository.findEmployeeById("1")).willReturn(Mono.just(employee));
+    given(employeeRepository.findEmployeeById("1")).willReturn(Mono.just(employee));
 
-        testClient.get()
-          .uri("/employees/1")
-          .exchange()
-          .expectStatus().isOk()
-          .expectBody(Employee.class).isEqualTo(employee);
-    }
+    testClient.get()
+        .uri("/employees/1")
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody(Employee.class).isEqualTo(employee);
+  }
 
-    @Test
-    void whenGetAllEmployees_thenCorrectEmployees() {
-        List<Employee> employeeList = Arrays.asList(
-          new Employee("1", "Employee 1 Name"),
-          new Employee("2", "Employee 2 Name"),
-          new Employee("3", "Employee 3 Name")
-        );
-        Flux<Employee> employeeFlux = Flux.fromIterable(employeeList);
+  @Test
+  void whenGetAllEmployees_thenCorrectEmployees() {
+    List<Employee> employeeList = Arrays.asList(
+        new Employee("1", "Employee 1 Name"),
+        new Employee("2", "Employee 2 Name"),
+        new Employee("3", "Employee 3 Name"));
+    Flux<Employee> employeeFlux = Flux.fromIterable(employeeList);
 
-        given(employeeRepository.findAllEmployees()).willReturn(employeeFlux);
+    given(employeeRepository.findAllEmployees()).willReturn(employeeFlux);
 
-        testClient.get()
-          .uri("/employees")
-          .exchange()
-          .expectStatus().isOk()
-          .expectBodyList(Employee.class).isEqualTo(employeeList);
-    }
+    testClient.get()
+        .uri("/employees")
+        .exchange()
+        .expectStatus().isOk()
+        .expectBodyList(Employee.class).isEqualTo(employeeList);
+  }
 
-    @Test
-    @WithMockUser(username = "admin", roles = { "ADMIN" })
-    void givenValidUser_whenUpdateEmployee_thenEmployeeUpdated() {
-        Employee employee = new Employee("10", "Employee 10 Updated");
+  @Test
+  @WithMockUser(username = "admin", roles = { "ADMIN" })
+  void givenValidUser_whenUpdateEmployee_thenEmployeeUpdated() {
+    Employee employee = new Employee("10", "Employee 10 Updated");
 
-        given(employeeRepository.updateEmployee(employee)).willReturn(Mono.just(employee));
+    given(employeeRepository.updateEmployee(employee)).willReturn(Mono.just(employee));
 
-        testClient.post()
-          .uri("/employees/update")
-          .body(Mono.just(employee), Employee.class)
-          .exchange()
-          .expectStatus().isOk()
-          .expectBody(Employee.class).isEqualTo(employee);
+    testClient.post()
+        .uri("/employees/update")
+        .body(Mono.just(employee), Employee.class)
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody(Employee.class).isEqualTo(employee);
 
-        verify(employeeRepository).updateEmployee(employee);
-    }
+    verify(employeeRepository).updateEmployee(employee);
+  }
 
-    @Test
-    @WithMockUser
-    void givenInvalidUser_whenUpdateEmployee_thenForbidden() {
-        Employee employee = new Employee("10", "Employee 10 Updated");
+  @Test
+  @WithMockUser
+  void givenInvalidUser_whenUpdateEmployee_thenForbidden() {
+    Employee employee = new Employee("10", "Employee 10 Updated");
 
-        testClient.post()
-          .uri("/employees/update")
-          .body(Mono.just(employee), Employee.class)
-          .exchange()
-          .expectStatus().isForbidden();
+    testClient.post()
+        .uri("/employees/update")
+        .body(Mono.just(employee), Employee.class)
+        .exchange()
+        .expectStatus().isForbidden();
 
-        verifyNoInteractions(employeeRepository);
-    }
+    verifyNoInteractions(employeeRepository);
+  }
 }

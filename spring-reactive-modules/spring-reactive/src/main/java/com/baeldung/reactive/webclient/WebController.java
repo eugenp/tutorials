@@ -35,8 +35,10 @@ public class WebController {
         });
 
     List<Tweet> result = response.getBody();
-    result.forEach(tweet -> log.info(tweet.toString()));
-    log.info("Exiting BLOCKING Controller!");
+    if (result != null) {
+      result.forEach(tweet -> log.info(tweet.toString()));
+      log.info("Exiting BLOCKING Controller!");
+    }
     return result;
   }
 

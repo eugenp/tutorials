@@ -1,21 +1,21 @@
 package com.baeldung.reactive.webclient;
 
+import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_CLASS;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.reactive.server.WebTestClient;
-
-import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_CLASS;
 
 @DirtiesContext(classMode = BEFORE_CLASS)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = WebClientApplication.class)
 class WebControllerIntegrationTest {
 
-    @LocalServerPort
+    @Value("${local.server.port}")
     private int randomServerPort;
 
     @Autowired
@@ -32,18 +32,18 @@ class WebControllerIntegrationTest {
     @Test
     void whenEndpointWithBlockingClientIsCalled_thenThreeTweetsAreReceived() {
         testClient.get()
-          .uri("/tweets-blocking")
-          .exchange()
-          .expectStatus().isOk()
-          .expectBodyList(Tweet.class).hasSize(3);
+                .uri("/tweets-blocking")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Tweet.class).hasSize(3);
     }
 
     @Test
     void whenEndpointWithNonBlockingClientIsCalled_thenThreeTweetsAreReceived() {
         testClient.get()
-          .uri("/tweets-non-blocking")
-          .exchange()
-          .expectStatus().isOk()
-          .expectBodyList(Tweet.class).hasSize(3);
+                .uri("/tweets-non-blocking")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Tweet.class).hasSize(3);
     }
 }

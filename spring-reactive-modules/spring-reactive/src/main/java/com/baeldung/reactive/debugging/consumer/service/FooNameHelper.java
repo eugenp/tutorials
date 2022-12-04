@@ -6,35 +6,35 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class FooNameHelper {
 
-    public static Foo concatAndSubstringFooName(Foo foo) {
-        Foo concat = concatFooName(foo);
-        return substringFooName(concat);
-    }
+  public static Foo concatAndSubstringFooName(Foo foo) {
+    Foo concat = concatFooName(foo);
+    return substringFooName(concat);
+  }
 
-    public static Foo concatFooName(Foo foo) {
+  public static Foo concatFooName(Foo foo) {
 
-        int random = ThreadLocalRandom.current()
-          .nextInt(0, 80);
+    int random = ThreadLocalRandom.current()
+        .nextInt(0, 80);
 
-        String processedName = (random != 0)
-          ? foo.getFormattedName()
-          : foo.getFormattedName() + "-bael";
+    String processedName = (random != 0)
+        ? foo.getFormattedName()
+        : foo.getFormattedName() + "-bael";
 
-        foo.setFormattedName(processedName);
-        return foo;
-    }
+    foo.setFormattedName(processedName);
+    return foo;
+  }
 
-    public static Foo substringFooName(Foo foo) {
-        int random = ThreadLocalRandom.current()
-          .nextInt(0, 100);
+  public static Foo substringFooName(Foo foo) {
+    int random = ThreadLocalRandom.current()
+        .nextInt(0, 100);
 
-        String processedName = (random == 0)
-          ? foo.getFormattedName().substring(10, 15)
-          : foo.getFormattedName().substring(0, 5);
+    String processedName = (random == 0)
+        ? foo.getFormattedName().substring(10, 15)
+        : foo.getFormattedName().substring(0, 5);
 
-        foo.setFormattedName(processedName);
+    foo.setFormattedName(processedName);
 
-        return foo;
-    }
+    return foo;
+  }
 
 }

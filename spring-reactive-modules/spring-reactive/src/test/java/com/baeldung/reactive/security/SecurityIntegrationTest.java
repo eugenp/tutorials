@@ -11,33 +11,33 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @SpringBootTest(classes = SpringSecurity5Application.class)
 class SecurityIntegrationTest {
 
-    @Autowired
-    private ApplicationContext context;
+  @Autowired
+  private ApplicationContext context;
 
-    private WebTestClient webTestClient;
+  private WebTestClient webTestClient;
 
-    @BeforeEach
-    void setup() {
-        webTestClient = WebTestClient.bindToApplicationContext(context)
-          .configureClient()
-          .build();
-    }
+  @BeforeEach
+  void setup() {
+    webTestClient = WebTestClient.bindToApplicationContext(context)
+        .configureClient()
+        .build();
+  }
 
-    @Test
-    void whenNoCredentials_thenRedirectToLogin() {
-        webTestClient.get()
-          .uri("/")
-          .exchange()
-          .expectStatus().is3xxRedirection();
-    }
+  @Test
+  void whenNoCredentials_thenRedirectToLogin() {
+    webTestClient.get()
+        .uri("/")
+        .exchange()
+        .expectStatus().is3xxRedirection();
+  }
 
-    @Test
-    @WithMockUser
-    void whenHasCredentials_thenSeesGreeting() {
-        webTestClient.get()
-          .uri("/")
-          .exchange()
-          .expectStatus().isOk()
-          .expectBody(String.class).isEqualTo("Hello, user");
-    }
+  @Test
+  @WithMockUser
+  void whenHasCredentials_thenSeesGreeting() {
+    webTestClient.get()
+        .uri("/")
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody(String.class).isEqualTo("Hello, user");
+  }
 }

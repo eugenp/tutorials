@@ -137,35 +137,7 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
     我们可以修改我们的订阅者实现来应用背压。让我们通过使用require()告诉上游一次只发送两个元素。
 
-    ```java
-    Flux.just(1, 2, 3, 4)
-    .log()
-    .subscribe(new Subscriber<Integer>() {
-        private Subscription s;
-        int onNextAmount;
-
-        @Override
-        public void onSubscribe(Subscription s) {
-            this.s = s;
-            s.request(2);
-        }
-
-        @Override
-        public void onNext(Integer integer) {
-            elements.add(integer);
-            onNextAmount++;
-            if (onNextAmount % 2 == 0) {
-                s.request(2);
-            }
-        }
-
-        @Override
-        public void onError(Throwable t) {}
-
-        @Override
-        public void onComplete() {}
-    });
-    ```
+    ReactorIntegrationTest.givenFlux_whenApplyingBackPressure_thenPushElementsInBatches()
 
     现在如果我们再次运行我们的代码，我们会看到require(2)被调用，接着是两个onNext()的调用，然后又是require(2)。
 
@@ -193,36 +165,19 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
         我们可以执行的一个简单操作是应用一个转换。在这种情况下，让我们把我们的流中的所有数字翻倍。
 
-        ```java
-        Flux.just(1, 2, 3, 4)
-        .log()
-        .map(i -> i * 2)
-        .subscribe(elements::add);
-        ```
+        ReactorIntegrationTest.givenFlux_whenSubscribing_thenStream()
 
         map()将在调用onNext()时被应用。
 
     2. 合并两个流
 
-        然后我们可以通过将另一个流与这个流结合起来使事情变得更有趣。让我们通过使用zip()函数来尝试一下。
+        可以通过将另一个流与这个流结合起来使事情变得更有趣。让我们通过使用zip()函数来尝试一下。
 
-        ```java
-        Flux.just(1, 2, 3, 4)
-            .log()
-            .map(i -> i * 2)
-            .zipWith(Flux.range(0, Integer.MAX_VALUE), 
-                (one, two) -> String.format("First Flux: %d, Second Flux: %d", one, two))
-            .subscribe(elements::add);
-        assertThat(elements).containsExactly(
-        "First Flux: 2, Second Flux: 0",
-        "First Flux: 4, Second Flux: 1",
-        "First Flux: 6, Second Flux: 2",
-        "First Flux: 8, Second Flux: 3");
-        ```
+        ReactorIntegrationTest.givenFlux_whenZipping_thenCombine()
 
         在这里，我们正在创建另一个不断增量的Flux，并将其与我们的原始Flux一起流转。我们可以通过检查日志看到这些是如何一起工作的。
 
-        ```java
+        ```log
         20:04:38.064 [main] INFO  reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
         20:04:38.065 [main] INFO  reactor.Flux.Array.1 - | onNext(1)
         20:04:38.066 [main] INFO  reactor.Flux.Range.2 - | onSubscribe([Synchronous Fuseable] FluxRange.RangeSubscription)
@@ -239,6 +194,8 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
         ```
 
         注意我们现在每个 Flux 有一个订阅。onNext()的调用也是交替进行的，所以当我们应用zip()函数时，流中每个元素的索引都会匹配。
+
+        > TODO：实际log onNext()未交替进行?
 
 7. Hot Streams
 
@@ -266,7 +223,7 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
         publish.subscribe(System.out::println);
         ```
 
-        如果我们尝试运行这段代码，什么都不会发生。直到我们调用connect（），通量才会开始发射：
+        如果我们尝试运行这段代码，什么都不会发生。直到我们调用connect()，通量才会开始发射：
 
         `publish.connect();`
 
@@ -276,50 +233,277 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
         ```java
         ConnectableFlux<Object> publish = Flux.create(fluxSink -> {
-            while(true) {
+            while (true) {
                 fluxSink.next(System.currentTimeMillis());
             }
         })
-        .sample(ofSeconds(2))
-        .publish();
+                .log()
+                .sample(Duration.ofSeconds(2))
+                .publish();
+        publish.connect();
         ```
 
         在这里，我们引入了间隔为两秒的sample()方法。现在，值只会每两秒发送给我们的订阅者，这意味着控制台将不再那么忙碌。
 
-        当然，有多种策略可以减少下游发送的数据量，例如窗口和缓冲，但本文将不讨论这些策略。
+        当然，有多种策略可以减少下游发送的数据量，例如窗口和缓冲。
 
 8. 并发性
 
     我们上面的所有示例目前都在主线程上运行。然而，如果需要，我们可以控制代码在哪个线程上运行。[Scheduler](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Scheduler.html)接口提供了异步代码的抽象，为我们提供了许多实现。让我们尝试订阅其他线程到main：
 
-    ```java
-    Flux.just(1, 2, 3, 4)
-    .log()
-    .map(i -> i * 2)
-    .subscribeOn(Schedulers.parallel())
-    .subscribe(elements::add);
-    ```
+    ReactorIntegrationTest.givenFlux_whenInParallel_thenSubscribeInDifferentThreads()
 
-    并行调度程序将导致我们的订阅在不同的线程上运行，我们可以通过查看日志来证明这一点。我们看到第一个条目来自主线程，Flux在另一个名为parallel-1的线程中运行。
-
-    ```log
-    20:03:27.505 [main] DEBUG reactor.util.Loggers$LoggerFactory - Using Slf4j logging framework
-    20:03:27.529 [parallel-1] INFO  reactor.Flux.Array.1 - | onSubscribe([Synchronous Fuseable] FluxArray.ArraySubscription)
-    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | request(unbounded)
-    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(1)
-    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(2)
-    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(3)
-    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onNext(4)
-    20:03:27.531 [parallel-1] INFO  reactor.Flux.Array.1 - | onComplete()
-    ```
-
-    并发获取比这更有趣，值得我们在另一篇文章中探讨。
+    并行调度程序将导致我们的订阅在不同的线程上运行，我们可以通过查看日志来证明这一点。Flux在另一个名为parallel-1的线程中运行。
 
 9. 结论
 
     在本文中，我们对Reactive Core进行了高层次的端到端概述。我们已经解释了如何发布和订阅流、应用背压、对流进行操作以及异步处理数据。这有望为我们编写反应式应用程序奠定基础。
 
     本系列的后续文章将介绍更高级的并发和其他反应性概念。还有一篇文章介绍了[Reactor with Spring](https://www.baeldung.com/reactor-bus)。
+
+## 在Java中调试反应型流
+
+1. 概述
+
+    一旦我们开始使用这些数据结构，调试反应式流可能是我们必须面对的主要挑战之一。
+
+    考虑到反应流在过去几年中越来越受欢迎，了解如何有效地完成这项任务是一个好主意。
+
+    让我们从设置一个使用反应式堆栈的项目开始，看看为什么这往往是麻烦的。
+
+2. 有Bug的场景
+
+    我们想模拟一个真实的场景，其中有几个异步进程正在运行，我们在代码中引入了一些缺陷，最终会触发异常。
+
+    为了理解大局，我们将提到我们的应用程序将消费和处理简单的Foo对象的流，这些对象只包含一个id、一个格式化的name和一个数量字段。
+
+    运行说明：
+    - First Run ServerDebuggingApplication.java on 8081
+    - Second Run ConsumerDebuggingApplication.java on 8082
+
+    1. 分析日志输出
+
+        现在，让我们来看看一个片段，以及当一个未处理的错误出现时它所产生的输出。
+
+        FooService.processFoo()，未加入 doOnError 处理；
+
+        FooService.processFooInAnotherScenario()；
+
+        在运行我们的应用程序几秒钟后，我们会发现它不时地记录异常。
+
+        仔细观察其中的一个错误，我们会发现与此类似的情况。
+
+        ```log
+        Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: 15
+            at j.l.String.substring(String.java:1963)
+            at com.baeldung.debugging.consumer.service.FooNameHelper
+            .lambda$1(FooNameHelper.java:38)
+            at r.c.p.FluxMap$MapSubscriber.onNext(FluxMap.java:100)
+            ......
+        ```
+
+        根据根本原因，并注意到堆栈跟踪中提到的FooNameHelper类，我们可以想象，在某些场合，我们的Foo对象被处理时，其格式化的Name值比预期的要短。
+
+        当然，这只是一个简化的案例，解决方案似乎相当明显。
+
+        但让我们想象一下这是一个真实的案例，如果没有一些上下文信息，异常本身并不能帮助我们解决问题。
+
+        异常是作为 processFoo 的一部分被触发的，还是 processFooInAnotherScenario 方法的一部分？
+
+        在到达这个阶段之前，之前的其他步骤是否影响了格式化名称字段？
+
+        日志条目并不能帮助我们弄清这些问题。
+
+        更糟的是，有时异常甚至不是从我们的功能中抛出的。
+
+        例如，设想我们依靠一个反应式存储库来持久化我们的Foo对象。如果这时出现了错误，我们可能连从哪里开始调试我们的代码都不知道。
+
+        我们需要工具来有效地调试反应式流。
+
+3. 使用调试会话
+
+    要弄清我们的应用程序发生了什么，一个选择是使用我们最喜欢的IDE启动一个调试会话。
+
+    我们必须设置几个条件断点，并分析数据流中每一步被执行时的数据流。
+
+    事实上，这可能是一项繁琐的任务，特别是当我们有很多反应式进程在运行并共享资源时。
+
+    此外，在很多情况下，由于安全原因，我们不能启动调试会话。
+
+4. 用doOnErrorMethod或使用订阅参数来记录信息
+
+    有时，我们可以添加有用的上下文信息，通过提供一个消费者作为订阅方法的第二个参数。
+
+    ```java
+    public void processFoo(Flux<Foo> flux) {
+        // ...
+        flux.subscribe(foo -> {
+            logger.debug("Finished processing Foo with Id {}", foo.getId());
+        }, error -> {
+            logger.error(
+            "The following error happened on processFoo method!",
+            error);
+        });
+    }
+    ```
+
+    > 注意：值得一提的是，如果我们不需要在订阅方法上进行进一步的处理，我们可以在我们的发布者上链doOnError函数。
+
+    现在我们将有一些关于错误可能来自何处的指导，尽管我们仍然没有关于产生异常的实际元素的很多信息。
+
+5. 激活Reactor的全局调试配置
+
+    [Reactor](https://projectreactor.io/)库提供了一个[Hooks](https://projectreactor.io/docs/core/release/reference/#hooks)类，让我们可以配置Flux和Mono操作符的行为。
+
+    只需在 ConsumerDebuggingApplication.java 添加以下语句，我们的应用程序就会记录对发布者方法的调用，包住操作符的构造，并捕获堆栈跟踪。
+
+    `Hooks.onOperatorDebug();`
+
+    调试模式被激活后，我们的异常日志将包括一些有用的信息。
+
+    ```log
+    16:06:35.334 [parallel-1] ERROR c.b.d.consumer.service.FooService
+    - The following error happened on processFoo method!
+    java.lang.StringIndexOutOfBoundsException: String index out of range: 15
+        at j.l.String.substring(String.java:1963)
+        at c.d.b.c.s.FooNameHelper.lambda$1(FooNameHelper.java:38)
+        ......
+        at j.l.Thread.run(Thread.java:748)
+        Suppressed: r.c.p.FluxOnAssembly$OnAssemblyException: 
+    Assembly trace from producer [reactor.core.publisher.FluxMapFuseable] :
+        reactor.core.publisher.Flux.map(Flux.java:5653)
+        c.d.b.c.s.FooNameHelper.substringFooName(FooNameHelper.java:32)
+        c.d.b.c.s.FooService.processFoo(FooService.java:24)
+        c.d.b.c.c.ChronJobs.consumeInfiniteFlux(ChronJobs.java:46)
+        o.s.s.s.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+        ...... 
+    Error has been observed by the following operator(s):
+        |_    Flux.map ⇢ c.d.b.c.s.FooNameHelper
+                .substringFooName(FooNameHelper.java:32)
+        |_    Flux.map ⇢ c.d.b.c.s.FooReporter.reportResult(FooReporter.java:15)
+    ```
+
+    正如我们所看到的，第一部分相对保持不变，但下面的部分提供了以下信息。
+
+    1. 发布者的汇编跟踪(assembly trace)--在这里我们可以确认，错误是在processFoo方法中首次产生的。
+
+    2. 首次触发错误后观察到的操作者，以及他们被链入的用户类。
+
+        注意：在这个例子中，主要是为了清楚地看到这一点，我们在不同的类上添加操作。
+
+        我们可以在任何时候切换调试模式，但它不会影响已经实例化的Flux和Mono对象。
+
+    3. 在不同的线程上执行操作符
+
+        还有一个需要注意的方面是，即使有不同的线程在流上操作，汇编跟踪也会正常生成。
+
+        让我们看一下下面的例子。
+
+        ```java
+        public void processFoo(Flux<Foo> flux) {
+            flux.publishOn(Schedulers.newSingle("foo-thread"))
+            // ...
+                .publishOn(Schedulers.newSingle("bar-thread"))
+                .map(FooReporter::reportResult)
+                .subscribeOn(Schedulers.newSingle("starter-thread"))
+                .subscribe();
+        }
+        ```
+
+        现在，如果我们检查一下日志，就会发现在这种情况下，第一部分可能会有一些变化，但后两部分保持相当的不变。
+
+        第一部分是线程堆栈跟踪，因此它只显示一个特定线程所进行的操作。
+
+        正如我们所看到的，当我们调试应用程序时，这并不是最重要的部分，所以这种变化是可以接受的。
+
+6. 激活单个进程的调试输出
+
+    在每一个反应式进程中进行仪器检测和生成堆栈跟踪的成本很高。
+
+    因此，我们应该只在关键情况下实施前一种方法。
+
+    无论如何，Reactor提供了一种在单个关键进程上启用调试模式的方法，这对内存的消耗较少。
+
+    我们指的是检查点操作符。
+
+    ```java
+    public void processFoo(Flux<Foo> flux) {
+        
+        // ...
+
+        flux.checkpoint("Observed error on processFoo", true)
+        .subscribe();
+    }
+    ```
+
+    注意，以这种方式，装配跟踪(assembly trace)将在检查点阶段被记录下来。
+
+    ```log
+    Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: 15
+    ...
+    Assembly trace from producer [reactor.core.publisher.FluxMap],
+    described as [Observed error on processFoo] :
+        r.c.p.Flux.checkpoint(Flux.java:3096)
+        c.b.d.c.s.FooService.processFoo(FooService.java:26)
+        c.b.d.c.c.ChronJobs.consumeInfiniteFlux(ChronJobs.java:46)
+        o.s.s.s.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+        o.s.s.s.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+        j.u.c.Executors$RunnableAdapter.call(Executors.java:511)
+        j.u.c.FutureTask.runAndReset(FutureTask.java:308)
+    Error has been observed by the following operator(s):
+        |_    Flux.checkpoint ⇢ c.b.d.c.s.FooService.processFoo(FooService.java:26)
+    ```
+
+    我们应该在反应式链的末端实现检查点方法。
+
+    否则，操作者将无法观察到下游发生的错误。
+
+    另外，我们注意到库中提供了一个重载方法。我们可以避免。
+
+    - 如果我们使用no-args选项，就可以为观察到的错误指定一个描述
+    - 只提供自定义的描述，就可以生成一个完整的堆栈跟踪（这是最昂贵的操作）。
+  
+7. 记录一个元素的序列
+
+    最后，Reactor发布者还提供了一个方法，在某些情况下可能会派上用场。
+
+    通过在我们的反应式链中调用log方法，应用程序将记录流程中的每个元素以及它在该阶段的状态。
+
+    让我们在我们的例子中试一下。
+
+    ```java
+    public void processFoo(Flux<Foo> flux) {
+        flux.map(FooNameHelper::concatFooName)
+        .map(FooNameHelper::substringFooName)
+        .log();
+        .map(FooReporter::reportResult)
+        .doOnError(error -> {
+            logger.error("The following error happened on processFoo method!", error);
+        })
+        .subscribe();
+    }
+    ```
+
+    并检查日志。
+
+    ```log
+    IINFO  reactor.Flux.OnAssembly.1 - onSubscribe(FluxMap.MapSubscriber)
+    INFO  reactor.Flux.OnAssembly.1 - request(unbounded)
+    INFO  reactor.Flux.OnAssembly.1 - onNext(Foo(id=0, formattedName=theFo, quantity=8))
+    INFO  reactor.Flux.OnAssembly.1 - onNext(Foo(id=1, formattedName=theFo, quantity=3))
+    INFO  reactor.Flux.OnAssembly.1 - onNext(Foo(id=2, formattedName=theFo, quantity=5))
+    INFO  reactor.Flux.OnAssembly.1 - onNext(Foo(id=3, formattedName=theFo, quantity=6))
+    INFO  reactor.Flux.OnAssembly.1 - onNext(Foo(id=4, formattedName=theFo, quantity=6))
+    INFO  reactor.Flux.OnAssembly.1 - cancel()
+    ERROR c.b.d.consumer.service.FooService 
+    - The following error happened on processFoo method!
+    ERROR 30174 --- [ctor-http-nio-4] c.b.r.d.consumer.service.FooService      : The following error happened on processFoo method!
+    ...
+    ```
+
+    我们可以很容易地看到每个Foo对象在这个阶段的状态，以及当异常发生时框架是如何取消流程的。
+
+    当然，这种方法也是有代价的，我们要适度地使用它。
 
 ## Spring 5 WebFlux指南
 
@@ -352,7 +536,7 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
     - 基于注释的反应式组件 Annotation-based reactive components
     - 功能性路由和处理 Functional routing and handling
 
-    我们将专注于基于注解的反应式组件，另见[功能式--路由和处理](https://www.baeldung.com/spring-5-functional-web)。
+    我们将专注于基于注解的反应式组件，另见[功能式-路由和处理](https://www.baeldung.com/spring-5-functional-web)。
 
 3. 依赖关系
 
@@ -367,9 +551,9 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
     现在我们将使用Spring WebFlux构建一个非常简单的反应式REST EmployeeManagement应用程序。
 
     - 使用一个简单的领域模型--Employee，有一个id和一个name字段
-    - 用RestController建立一个REST API，将Employee资源作为单一资源和集合发布。
+    - 用RestController建立一个REST API，将Employee资源作为单一资源和集合发布
     - 用WebClient建立一个客户端来检索相同的资源
-    - 使用WebFlux和Spring Security创建一个安全的反应式端点。
+    - 使用WebFlux和Spring Security创建一个安全的反应式端点
 
 5. 反应式RestController
 
@@ -403,7 +587,7 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
     我们可以使用WebClient来创建一个客户端，从EmployeeController提供的端点中获取数据。
 
-    让创建一个简单的com.baeldung.reactive.webflux.annotation.EmployeeWebClient。
+    让创建一个简单的 webflux.annotation.EmployeeWebClient 。
 
     在这里，我们使用其工厂方法create创建了一个WebClient。它将指向localhost:8080，因此我们可以使用相对的URL来调用这个客户端实例。
 
@@ -429,11 +613,13 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
     现在，为了限制对这个方法的访问，让我们创建SecurityConfig并定义一些基于路径的规则，只允许ADMIN用户访问。
 
-    com.baeldung.reactive.webflux.annotation.EmployeeWebSecurityConfig
+    见 webflux.annotation.EmployeeWebSecurityConfig
 
     此配置将限制对端点/employees/update的访问。因此，只有拥有ADMIN角色的用户才能访问这个端点并更新现有的雇员。
 
     最后，注解@EnableWebFluxSecurity增加了Spring Security WebFlux的支持，并有一些默认配置。
+
+最后运行 EmployeeControllerIntegrationTest.java 测试。
 
 ## Spring 5中的功能网络框架介绍
 
@@ -861,6 +1047,368 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 
     我们还通过配置客户端、准备请求和处理响应，了解了它所提供的好处。
 
+## Spring WebClient vs. RestTemplate
+
+1. 概述
+
+    在本教程中，我们将比较Spring的两种Web客户端实现--RestTemplate和新的Spring 5的反应式替代方案WebClient。
+
+2. 阻塞式与非阻塞式客户端
+
+    在Web应用程序中，对其他服务进行HTTP调用是一个常见的需求。因此，我们需要一个Web客户端工具。
+
+    1. RestTemplate阻塞式客户端
+
+        长期以来，Spring一直提供RestTemplate作为Web客户端的抽象。在引擎盖下，RestTemplate使用Java Servlet API，它是基于线程-每-请求模型的。
+
+        这意味着线程会阻塞，直到网络客户端收到响应。阻塞代码的问题是由于每个线程都会消耗一定量的内存和CPU周期。
+
+        让我们考虑有很多传入的请求，这些请求正在等待一些需要产生结果的缓慢服务。
+
+        迟早有一天，等待结果的请求会堆积起来。因此，应用程序将创建许多线程，这将耗尽线程池或占用所有可用内存。由于频繁的CPU上下文（线程）切换，我们也会遇到性能下降的问题。
+
+    2. WebClient非阻塞式客户端
+
+        另一方面，WebClient使用Spring Reactive框架提供的异步、非阻塞解决方案。
+
+        RestTemplate为每个事件（HTTP调用）使用调用者线程，而WebClient将为每个事件创建类似 "任务"的东西。在幕后，Reactive框架将对这些 "任务"进行排队，并在适当的响应可用时才执行。
+
+        Reactive框架使用一个事件驱动的架构。它提供了通过[Reactive Streams API](https://www.baeldung.com/java-9-reactive-streams)组成异步逻辑的手段。因此，与同步/阻塞方法相比，反应式方法可以处理更多的逻辑，同时使用更少的线程和系统资源。
+
+        WebClient是Spring WebFlux库的一部分。因此，我们也可以使用功能化、流畅的API与反应式类型（Mono和Flux）作为声明式的组合来编写客户端代码。
+
+3. 比较实例
+
+    为了证明这两种方法之间的差异，我们需要用许多并发的客户端请求来进行性能测试。
+
+    在一定数量的并行客户端请求之后，我们会发现阻塞式方法的性能会明显下降。
+
+    然而，反应式/非阻塞式方法应该提供恒定的性能，无论请求的数量如何。
+
+    在这篇文章中，我们将实现两个REST端点，一个使用RestTemplate，另一个使用WebClient。它们的任务是调用另一个缓慢的REST网络服务，该服务返回一个推文列表。
+
+    要开始，我们需要Spring Boot WebFlux启动器的依赖：`org.springframework.boo.spring-boot-starter-webflux`
+
+    这里是我们的慢速服务REST端点。
+
+    TweetsSlowServiceController.getAllTweets()
+
+    1. 使用RestTemplate来调用慢速服务
+
+        现在让我们实现另一个REST端点，它将通过Web客户端调用我们的慢速服务。
+
+        首先，我们将使用RestTemplate。
+
+        WebController.getTweetsBlocking()
+
+        当我们调用这个端点时，由于RestTemplate的同步性，代码将阻塞，等待来自我们慢速服务的响应。这个方法中的其他代码只有在收到响应后才会被运行。
+
+        运行 WebControllerIntegrationTest.whenEndpointWithBlockingClientIsCalled_thenThreeTweetsAreReceived() 将在日志中看到的内容。
+
+        ```log
+        Starting BLOCKING Controller!
+        Tweet(text=RestTemplate rules, username=@user1)
+        Tweet(text=WebClient is better, username=@user2)
+        Tweet(text=OK, both are useful, username=@user1)
+        Exiting BLOCKING Controller!
+        ```
+
+    2. 使用WebClient来调用一个慢速服务
+
+        其次，让我们使用WebClient来调用慢速服务。
+
+        WebController.getTweetsNonBlocking()
+
+        在这种情况下，WebClient返回一个Flux发布器，方法的执行得到完成。一旦有了结果，发布者将开始向其订阅者发出推文。
+
+        请注意，调用这个/tweets-non-blocking端点的客户端（在这种情况下，是一个web浏览器）也将被订阅到返回的Flux对象。
+
+        运行 whenEndpointWithNonBlockingClientIsCalled_thenThreeTweetsAreReceived() 观察一下这次的日志。
+
+        ```log
+        Starting NON-BLOCKING Controller!
+        Exiting NON-BLOCKING Controller!
+        Tweet(text=RestTemplate rules, username=@user1)
+        Tweet(text=WebClient is better, username=@user2)
+        Tweet(text=OK, both are useful, username=@user1)
+        ```
+
+        请注意，这个端点方法在收到响应之前完成。
+
+4. 总结
+
+    在这篇文章中，我们探讨了在Spring中使用Web客户端的两种不同方式。
+
+    RestTemplate使用Java Servlet API，因此是同步的和阻塞的。
+
+    相反，WebClient是异步的，在等待响应回来时不会阻塞执行线程。只有当响应准备好时，才会产生通知。
+
+    RestTemplate仍然会被使用。但在某些情况下，非阻塞式方法与阻塞式方法相比，使用的系统资源要少得多。所以，在这些情况下，WebClient是一个比较好的选择。
+
+> FIXME: Run WebClientIntegrationTest observed an error
+  Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class java.lang.Object and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
+
+## 带有参数的Spring WebClient请求
+
+1. 概述
+
+    很多框架和项目正在引入反应式编程和异步请求处理。因此，Spring 5引入了一个反应式WebClient实现，作为WebFlux框架的一部分。
+
+    在本教程中，我们将学习如何用WebClient反应式消费REST API端点。
+
+2. REST API端点
+
+    首先，让我们定义一个具有以下GET端点的REST API样本。
+
+    `/products` - 获取所有产品
+    `/products/{id}` - 按ID获取产品
+    `/products/{id}/attributes/{attributeId}` - 按ID获取产品属性
+    `/products/?name={name}&deliveryDate={deliveryDate}&color={color}` - 查找产品
+    `/products/?tag[]={tag1}&tag[]={tag2}` - 按标签获取产品
+    `/products/?category={category1}&category={category2}` - 按类别获取产品
+
+    这里我们定义了几个不同的URI。稍后，我们将弄清楚如何用WebClient建立和发送每种类型的URI。
+
+    请注意，按标签和类别获取产品的URI包含了数组作为查询参数；但是，由于没有严格定义数组在URI中的表示方法，所以语法有所不同。这主要取决于服务器端的实现。因此，我们将涵盖这两种情况。
+
+3. WebClient设置
+
+    首先，我们需要创建一个WebClient的实例。在本文中，我们将使用一个模拟对象来验证一个有效的URI被请求。
+
+    让我们来定义客户端和相关的模拟对象。
+
+    ```java
+    exchangeFunction = mock(ExchangeFunction.class);
+    ClientResponse mockResponse = mock(ClientResponse.class);
+    when(mockResponse.bodyToMono(String.class))
+        .thenReturn(Mono.just("test"));
+    when(exchangeFunction.exchange(argumentCaptor.capture()))
+        .thenReturn(Mono.just(mockResponse));
+    webClient = WebClient
+        .builder()
+        .baseUrl("https://example.com/api")
+        .exchangeFunction(exchangeFunction)
+        .build();
+    ```
+
+    我们还将传递一个基本的URL，它将被预置到客户端的所有请求中。
+
+    最后，为了验证一个特定的URI已经被传递给底层的ExchangeFunction实例，我们将使用下面的辅助方法。
+
+    ```java
+    private void verifyCalledUrl(String relativeUrl) {
+        ClientRequest request = argumentCaptor.getValue();
+        assertEquals(String.format("%s%s", BASE_URL, relativeUrl), request.url().toString());
+        verify(this.exchangeFunction).exchange(request);
+        verifyNoMoreInteractions(this.exchangeFunction);
+    }
+    ```
+
+    WebClientBuilder类有uri()方法，提供UriBuilder实例作为参数。一般来说，我们以如下方式进行API调用。
+
+    ```java
+    webClient.get()
+    .uri(uriBuilder -> uriBuilder
+        //... building a URI
+        .build())
+        .retrieve()
+        .bodyToMono(String.class)
+        .block();
+    ```
+
+    我们将在本指南中广泛使用UriBuilder来构建URI。值得注意的是，我们可以使用其他方法构建URI，然后只需将生成的URI作为一个字符串传递。
+
+4. URI路径组件
+
+    路径组件由一连串的路径段组成，中间用斜线（/）分开。首先，我们将从一个简单的案例开始，即URI没有任何变量段，/products。
+
+    ```java
+    webClient.get()
+        .uri("/products")
+        .retrieve()
+        .bodyToMono(String.class)
+        .block();
+        verifyCalledUrl("/products");
+    ```
+
+    对于这种情况，我们可以只传递一个字符串作为参数。
+
+    接下来，我们将采取/products/{id}端点并建立相应的URI。
+
+    ```java
+    webClient.get()
+        .uri(uriBuilder - > uriBuilder
+        .path("/products/{id}")
+        .build(2))
+        .retrieve()
+        .bodyToMono(String.class)
+        .block();
+    verifyCalledUrl("/products/2");
+    ```
+
+    从上面的代码中，我们可以看到，实际的段值被传递给build()方法。
+
+    以类似的方式，我们可以为/products/{id}/attributes/{attributeId}端点创建一个具有多个路径段的URI。
+
+    ```java
+    webClient.get()
+        .uri(uriBuilder - > uriBuilder
+        .path("/products/{id}/attributes/{attributeId}")
+        .build(2, 13))
+        .retrieve()
+        .bodyToMono(String.class)
+        .block();
+    verifyCalledUrl("/products/2/attributes/13");
+    ```
+
+    一个URI可以有任意多的路径段，尽管最终的URI长度不能超过限制。最后，我们需要记住保持传递给build()方法的实际段值的正确顺序。
+
+5. URI查询参数
+
+    通常情况下，查询参数是一个简单的键值对，如title=Baeldung。让我们看看如何建立这样的URI。
+
+    1. 单值参数
+
+        我们将从单值参数开始，采取/products/?name={name}&deliveryDate={deliveryDate}&color={color}的端点。为了设置一个查询参数，我们将调用UriBuilder接口的queryParam()方法。
+
+        ```java
+        webClient.get()
+        .uri(uriBuilder - > uriBuilder
+            .path("/products/")
+            .queryParam("name", "AndroidPhone")
+            .queryParam("color", "black")
+            .queryParam("deliveryDate", "13/04/2019")
+            .build())
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+        verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
+        ```
+
+        这里我们添加了三个查询参数，并立即分配了实际值。反之，也可以留下占位符，而不是准确的值。
+
+        ```java
+        webClient.get()
+        .uri(uriBuilder - > uriBuilder
+            .path("/products/")
+            .queryParam("name", "{title}")
+            .queryParam("color", "{authorId}")
+            .queryParam("deliveryDate", "{date}")
+            .build("AndroidPhone", "black", "13/04/2019"))
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+        verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13%2F04%2F2019");
+        ```
+
+        当在一个链中进一步传递一个构建器对象时，这可能特别有用。
+
+        请注意，上述两个代码片断之间有一个重要的区别。注意预期的URI，我们可以看到它们的编码是不同的。特别是，在最后一个例子中，斜线字符 ( / ) 被转义了。
+
+        一般来说，[RFC3986](https://www.ietf.org/rfc/rfc3986.txt)并不要求在查询中对斜线进行编码；但是，一些服务器端的应用可能需要这样的转换。因此，我们将在本指南的后面看到如何改变这种行为。
+
+        5.2. 数组参数
+
+        我们可能需要传递一个数组的值，而在查询字符串中传递数组并没有严格的规则。因此，查询字符串中的数组表示法因项目而异，而且通常取决于底层框架。我们将在本文中介绍最广泛使用的格式。
+
+        让我们从`/products/?tag[]={tag1}&tag[]={tag2}`端点开始。
+
+        ```java
+        webClient.get()
+        .uri(uriBuilder - > uriBuilder
+            .path("/products/")
+            .queryParam("tag[]", "Snapdragon", "NFC")
+            .build())
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+        verifyCalledUrl("/products/?tag%5B%5D=Snapdragon&tag%5B%5D=NFC");
+        ```
+
+        我们可以看到，最终的URI包含多个标签参数，后面是编码的方括号。queryParam()方法接受变量参数作为值，所以没有必要多次调用该方法。
+
+        另外，我们可以省略方括号，只需传递多个具有相同密钥但不同值的查询参数，`/products/?category={category1}&category={category2}`。
+
+        ```java
+
+        webClient.get()
+        .uri(uriBuilder - > uriBuilder
+            .path("/products/")
+            .queryParam("category", "Phones", "Tablets")
+            .build())
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+        verifyCalledUrl("/products/?category=Phones&category=Tablets");
+        ```
+
+        最后，还有一种更广泛使用的编码数组的方法，那就是传递逗号分隔的值。让我们把前面的例子转换成逗号分隔的值。
+
+        ```java
+        webClient.get()
+        .uri(uriBuilder - > uriBuilder
+            .path("/products/")
+            .queryParam("category", String.join(",", "Phones", "Tablets"))
+            .build())
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
+        verifyCalledUrl("/products/?category=Phones,Tablets");
+        ```
+
+        我们只是使用String类的join()方法来创建一个逗号分隔的字符串。我们也可以使用应用程序所期望的任何其他分隔符。
+
+6. 编码模式
+
+    还记得我们之前提到的URL编码吗？
+
+    如果默认行为不符合我们的要求，我们可以改变它。我们需要在构建WebClient实例时提供一个UriBuilderFactory实现。在这种情况下，我们将使用DefaultUriBuilderFactory类。为了设置编码，我们将调用setEncodingMode()方法。有以下几种模式可供选择。
+
+    - template_and_values: 对URI模板进行预编码，并在展开时对URI变量进行严格编码
+    - VALUES_ONLY: 不对URI模板进行编码，但在将URI变量扩展到模板后对其进行严格编码
+    - uri_components。在扩展URI变量后对URI组件值进行编码
+    - NONE: 不应用任何编码
+
+    默认值是TEMPLATE_AND_VALUES。让我们把模式设置为URI_COMPONENTS。
+
+    ```java
+    DefaultUriBuilderFactory factory = new DefaultUriBuilderFactory(BASE_URL);
+    factory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.URI_COMPONENT);
+    webClient = WebClient
+        .builder()
+        .uriBuilderFactory(factory)
+        .baseUrl(BASE_URL)
+        .exchangeFunction(exchangeFunction)
+        .build();
+    ```
+
+    结果是，下面的断言将成功。
+
+    ```java
+    webClient.get()
+    .uri(uriBuilder - > uriBuilder
+        .path("/products/")
+        .queryParam("name", "AndroidPhone")
+        .queryParam("color", "black")
+        .queryParam("deliveryDate", "13/04/2019")
+        .build())
+    .retrieve()
+    .bodyToMono(String.class)
+    .block();
+
+    verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
+    ```
+
+    当然，我们也可以提供一个完全自定义的UriBuilderFactory实现来手动处理URI创建。
+
+7. 总结
+
+    在这篇文章中，我们学习了如何使用WebClient和DefaultUriBuilder构建不同类型的URI。
+
+    在这一过程中，我们涵盖了查询参数的各种类型和格式。最后，我们通过改变URL生成器的默认编码模式进行了总结。
+
+    Run WebClientRequestsWithParametersUnitTest.java for test.
+
 ## Relevant articles
 
 - [x] [Intro To Reactor Core](https://www.baeldung.com/reactor-core)
@@ -868,8 +1416,8 @@ Reactor Core是一个Java 8库，实现了反应式编程模型。它建立在[R
 - [x] [Guide to Spring 5 WebFlux](https://www.baeldung.com/spring-webflux)
 - [x] [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
 - [x] [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
-- [Spring WebClient vs. RestTemplate](https://www.baeldung.com/spring-webclient-resttemplate)
-- [Spring WebClient Requests with Parameters](https://www.baeldung.com/webflux-webclient-parameters)
+- [x] [Spring WebClient vs. RestTemplate](https://www.baeldung.com/spring-webclient-resttemplate)
+- [x] [Spring WebClient Requests with Parameters](https://www.baeldung.com/webflux-webclient-parameters)
 - [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
 - [Spring Security 5 for Reactive Applications](https://www.baeldung.com/spring-security-5-reactive)
 - [Concurrency in Spring WebFlux](https://www.baeldung.com/spring-webflux-concurrency)

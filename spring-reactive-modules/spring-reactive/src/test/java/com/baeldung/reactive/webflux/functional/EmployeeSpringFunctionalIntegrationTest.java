@@ -29,25 +29,25 @@ class EmployeeSpringFunctionalIntegrationTest {
     @Test
     void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
         WebTestClient client = WebTestClient.bindToRouterFunction(config.getEmployeeByIdRoute())
-            .build();
+                .build();
 
         Employee employee = new Employee("1", "Employee 1");
 
         given(employeeRepository.findEmployeeById("1")).willReturn(Mono.just(employee));
 
         client.get()
-            .uri("/employees/1")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody(Employee.class)
-            .isEqualTo(employee);
+                .uri("/employees/1")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(Employee.class)
+                .isEqualTo(employee);
     }
 
     @Test
     void whenGetAllEmployees_thenCorrectEmployees() {
         WebTestClient client = WebTestClient.bindToRouterFunction(config.getAllEmployeesRoute())
-            .build();
+                .build();
 
         List<Employee> employees = Arrays.asList(new Employee("1", "Employee 1"), new Employee("2", "Employee 2"));
 
@@ -55,27 +55,27 @@ class EmployeeSpringFunctionalIntegrationTest {
         given(employeeRepository.findAllEmployees()).willReturn(employeeFlux);
 
         client.get()
-            .uri("/employees")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBodyList(Employee.class)
-            .isEqualTo(employees);
+                .uri("/employees")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBodyList(Employee.class)
+                .isEqualTo(employees);
     }
 
     @Test
     void whenUpdateEmployee_thenEmployeeUpdated() {
         WebTestClient client = WebTestClient.bindToRouterFunction(config.updateEmployeeRoute())
-            .build();
+                .build();
 
         Employee employee = new Employee("1", "Employee 1 Updated");
 
         client.post()
-            .uri("/employees/update")
-            .body(Mono.just(employee), Employee.class)
-            .exchange()
-            .expectStatus()
-            .isOk();
+                .uri("/employees/update")
+                .body(Mono.just(employee), Employee.class)
+                .exchange()
+                .expectStatus()
+                .isOk();
 
         verify(employeeRepository).updateEmployee(employee);
     }
