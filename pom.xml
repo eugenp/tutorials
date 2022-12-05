@@ -1170,7 +1170,7 @@
 
                 <module>akka-modules</module>
 
-                <module>algorithms-modules</module>
+<!--                <module>algorithms-modules</module>-->
                 <module>annotations</module>
                 <module>apache-httpclient</module>
                 <module>antlr</module>
