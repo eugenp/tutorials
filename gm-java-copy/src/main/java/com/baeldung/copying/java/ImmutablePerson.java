@@ -2,17 +2,17 @@ package com.baeldung.copying.java;
 
 import java.util.List;
 
-public class Person {
-    private List<String> names;
-    private String surname;
+public class ImmutablePerson {
+    private final List<String> names;
+    private final String surname;
 
-    public Person(List<String> names, String surname) {
+    public ImmutablePerson(List<String> names, String surname) {
         this.names = names;
         this.surname = surname;
     }
 
     public List<String> getNames() {
-        return names;
+        return List.copyOf(names);
     }
 
     public String getSurname() {
