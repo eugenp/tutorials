@@ -61,13 +61,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- for Graylog demo -->
-        <dependency>
-            <!-- forcing spring boot 1.x sing log4j was dropped in spring boot 1.4 and beyond -->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j</artifactId>
-            <version>${spring-boot-starter-log4j.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.graylog2</groupId>
             <artifactId>gelfj</artifactId>
