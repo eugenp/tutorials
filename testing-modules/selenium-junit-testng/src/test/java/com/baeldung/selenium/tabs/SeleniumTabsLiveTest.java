@@ -2,6 +2,7 @@ package com.baeldung.selenium.tabs;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WindowType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +17,19 @@ final class SeleniumTabsLiveTest extends SeleniumBaseTest {
 
     @Test
     void givenOneTab_whenOpenTab_thenTwoTabsOpen() {
+        //given
+        driver.get(MAIN_PAGE_URL);
+        assertEquals(1, driver.getWindowHandles().size());
+
+        //when
+        driver.switchTo().newWindow(WindowType.TAB);
+
+        //then
+        assertEquals(2, driver.getWindowHandles().size());
+    }
+
+    @Test
+    void givenOneTab_whenOpenLinkInTab_thenTwoTabsOpen() {
         //given
         driver.get(MAIN_PAGE_URL);
 
