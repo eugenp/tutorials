@@ -1111,62 +1111,76 @@
             </build>
 
             <modules>
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
-                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-9-streams</module>
-                 <module>core-java-modules/core-java-10</module>
-                 <module>core-java-modules/core-java-11</module>
-                 <module>core-java-modules/core-java-11-2</module>
-                 <module>core-java-modules/core-java-11-3</module>
-                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-collections-set</module>
-                 <module>core-java-modules/core-java-collections-list-4</module>
-                 <module>core-java-modules/core-java-collections-maps-4</module>
-                 <module>core-java-modules/core-java-collections-maps-5</module>
-                 <module>core-java-modules/core-java-concurrency-simple</module>
-                 <module>core-java-modules/core-java-date-operations-1</module>
-                 <module>core-java-modules/core-java-datetime-conversion</module>
-                 <module>core-java-modules/core-java-datetime-string</module>
-                 <module>core-java-modules/core-java-io-conversions-2</module>
-                 <module>core-java-modules/core-java-jpms</module>
-                 <module>core-java-modules/core-java-os</module>
-                 <module>core-java-modules/core-java-streams-4</module>
-                 <module>core-java-modules/core-java-string-algorithms-3</module>
-                 <module>core-java-modules/core-java-string-operations-3</module>
-                 <module>core-java-modules/core-java-string-operations-4</module>
-                 <module>core-java-modules/core-java-time-measurements</module>
-                 <module>core-java-modules/core-java-networking-3</module>
-                 <module>core-java-modules/core-java-strings</module>
-                 <module>core-java-modules/core-java-httpclient</module>
-                 <module>spring-core-6</module>
-                 <module>ddd-contexts</module>
-                 <module>docker-modules</module>
-                 <module>apache-httpclient-2</module>
-                 <module>libraries-concurrency</module>
-                 <module>maven-modules/compiler-plugin-java-9</module>
-                 <module>maven-modules/maven-generate-war</module>
-                 <module>maven-modules/multimodulemavenproject</module>
-                 <module>optaplanner</module>
-                 <module>persistence-modules/sirix</module>
-                 <module>persistence-modules/spring-data-cassandra-2</module>
-                 <module>quarkus-modules/quarkus-vs-springboot</module>
-                 <module>quarkus-modules/quarkus-jandex</module>
-                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                 <module>spring-boot-modules/spring-boot-camel</module>
-                 <module>spring-boot-modules/spring-boot-3</module>
-                 <module>spring-boot-modules/spring-boot-3-native</module>
-                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
-                 <module>testing-modules/testing-assertions</module>
-                 <module>persistence-modules/fauna</module>
-                 <module>lightrun</module>
-                 <module>tablesaw</module>
+<!--                <module>core-java-modules/core-java-9</module>-->
+<!--                <module>core-java-modules/core-java-9-improvements</module>-->
+<!--                <module>core-java-modules/core-java-9-jigsaw</module>-->
+<!--                &lt;!&ndash; <module>core-java-modules/core-java-9-new-features</module> &ndash;&gt; &lt;!&ndash; uses preview features, to be decided how to handle &ndash;&gt;-->
+<!--                <module>core-java-modules/core-java-9-streams</module>-->
+<!--                <module>core-java-modules/core-java-10</module>-->
+<!--                <module>core-java-modules/core-java-11</module>-->
+<!--                <module>core-java-modules/core-java-11-2</module>-->
+<!--                <module>core-java-modules/core-java-11-3</module>-->
+                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
+<!--                <module>core-java-modules/core-java-collections-set</module>-->
+<!--                <module>core-java-modules/core-java-collections-list-4</module>-->
+<!--                <module>core-java-modules/core-java-collections-maps-4</module>-->
+<!--                <module>core-java-modules/core-java-collections-maps-5</module>-->
+<!--                <module>core-java-modules/core-java-concurrency-simple</module>-->
+<!--                <module>core-java-modules/core-java-date-operations-1</module>-->
+<!--                <module>core-java-modules/core-java-datetime-conversion</module>-->
+<!--                <module>core-java-modules/core-java-datetime-string</module>-->
+<!--                <module>core-java-modules/core-java-io-conversions-2</module>-->
+<!--                <module>core-java-modules/core-java-jpms</module>-->
+<!--                <module>core-java-modules/core-java-os</module>-->
+<!--                <module>core-java-modules/core-java-streams-4</module>-->
+<!--                <module>core-java-modules/core-java-string-algorithms-3</module>-->
+<!--                <module>core-java-modules/core-java-string-operations-3</module>-->
+<!--                <module>core-java-modules/core-java-string-operations-4</module>-->
+<!--                <module>core-java-modules/core-java-time-measurements</module>-->
+<!--                <module>core-java-modules/core-java-networking-3</module>-->
+<!--                <module>core-java-modules/core-java-strings</module>-->
+<!--                <module>core-java-modules/core-java-httpclient</module>-->
+<!--                <module>spring-core-6</module>-->
+<!--                <module>ddd-contexts</module>-->
+<!--                <module>docker-modules</module>-->
+<!--                <module>apache-httpclient-2</module>-->
+<!--                <module>libraries-concurrency</module>-->
+<!--                <module>maven-modules/compiler-plugin-java-9</module>-->
+<!--                <module>maven-modules/maven-generate-war</module>-->
+<!--                <module>maven-modules/multimodulemavenproject</module>-->
+<!--                <module>optaplanner</module>-->
+<!--                <module>persistence-modules/sirix</module>-->
+<!--                <module>persistence-modules/spring-data-cassandra-2</module>-->
+<!--                <module>quarkus-modules/quarkus-vs-springboot</module>-->
+<!--                <module>quarkus-modules/quarkus-jandex</module>-->
+<!--                <module>spring-boot-modules/spring-boot-cassandre</module>-->
+<!--                <module>spring-boot-modules/spring-boot-camel</module>-->
+<!--                <module>spring-boot-modules/spring-boot-3</module>-->
+<!--                <module>spring-boot-modules/spring-boot-3-native</module>-->
+<!--                <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>-->
+<!--                <module>testing-modules/testing-assertions</module>-->
+<!--                <module>persistence-modules/fauna</module>-->
+<!--                <module>lightrun</module>-->
+<!--                <module>tablesaw</module>-->
+
+                <module>akka-modules</module>
+
+                <module>algorithms-modules</module>
+                <module>annotations</module>
+                <module>apache-httpclient</module>
+                <module>antlr</module>
+                <module>apache-kafka</module>
+                <module>apache-kafka-2</module>
+                <module>apache-libraries</module>
+                <module>apache-olingo</module>
+                <module>apache-poi</module>
+                <module>apache-poi-2</module>
+                <module>apache-rocketmq</module>
             </modules>
 
             <properties>

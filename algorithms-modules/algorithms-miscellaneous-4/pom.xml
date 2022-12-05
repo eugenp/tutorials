@@ -37,6 +37,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <combinatoricslib3.version>3.3.3</combinatoricslib3.version>
         <commons-collections4.version>4.4</commons-collections4.version>

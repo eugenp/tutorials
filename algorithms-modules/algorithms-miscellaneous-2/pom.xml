@@ -67,6 +67,15 @@
         </plugins>
     </reporting>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <org.jgrapht.core.version>1.0.1</org.jgrapht.core.version>
         <org.jgrapht.ext.version>1.0.1</org.jgrapht.ext.version>

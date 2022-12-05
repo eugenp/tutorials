@@ -62,6 +62,15 @@
         </plugins>
     </reporting>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <combinatoricslib3.version>3.3.0</combinatoricslib3.version>
     </properties>
