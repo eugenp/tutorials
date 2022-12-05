@@ -3,18 +3,18 @@ package com.baeldung.instanceoftest;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import com.baeldung.instanceofalternative.getclassalt.*;
+import com.baeldung.instanceofalternative.model.*;
 
 public class GetClassUnitTest {
 
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+        assertEquals("running", dinoBehavior(new Anatotitan()));
     }
 
     @Test
-    public void testEuraptor() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
         assertEquals("calm", dinoBehavior(new Euraptor()));
     }
 
@@ -24,11 +24,11 @@ public class GetClassUnitTest {
             .equals(Anatotitan.class)) {
 
             Anatotitan anatotitan = (Anatotitan) dinosaur;
-            return anatotitan.behavior();
+            return anatotitan.run();
         } else if (dinosaur.getClass()
             .equals(Euraptor.class)) {
             Euraptor euraptor = (Euraptor) dinosaur;
-            return euraptor.behavior();
+            return euraptor.flies();
         }
         return "";
     }

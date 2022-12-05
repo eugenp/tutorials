@@ -4,19 +4,19 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.baeldung.instanceofalternative.examplesetup.*;
+import com.baeldung.instanceofalternative.model.*;
 
 public class ExampleSetupUnitTest {
 
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+        assertEquals("running", dinoBehavior(new Anatotitan()));
     }
 
     @Test
-    public void testEuraptor() {
-        assertEquals("calm", dinoBehavior(new Euraptor()));
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
+        assertEquals("flying", dinoBehavior(new Euraptor()));
     }
 
     public static String dinoBehavior(Dinosaur dinosaur) {
@@ -24,10 +24,10 @@ public class ExampleSetupUnitTest {
         if (dinosaur instanceof Anatotitan) {
 
             Anatotitan anatotitan = (Anatotitan) dinosaur;
-            return anatotitan.behavior();
+            return anatotitan.run();
         } else if (dinosaur instanceof Euraptor) {
             Euraptor euraptor = (Euraptor) dinosaur;
-            return euraptor.behavior();
+            return euraptor.flies();
         }
         return "";
     }

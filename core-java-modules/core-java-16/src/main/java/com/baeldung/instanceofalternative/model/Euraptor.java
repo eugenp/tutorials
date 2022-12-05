@@ -1,4 +1,4 @@
-package com.baeldung.instanceofalternative.enumallt;
+package com.baeldung.instanceofalternative.model;
 
 public class Euraptor extends Dinosaur {
     // polymorphism

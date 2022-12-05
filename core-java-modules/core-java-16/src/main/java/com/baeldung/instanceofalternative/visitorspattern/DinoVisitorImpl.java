@@ -4,12 +4,12 @@ public class DinoVisitorImpl implements Visitor {
 
     @Override
     public String visit(Anatotitan anatotitan) {
-        return anatotitan.behavior();
+        return anatotitan.run();
     }
 
     @Override
     public String visit(Euraptor euraptor) {
-        return euraptor.behavior();
+        return euraptor.flies();
     }
 
 }

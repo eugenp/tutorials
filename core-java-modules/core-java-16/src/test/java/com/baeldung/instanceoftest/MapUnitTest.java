@@ -7,26 +7,26 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.baeldung.instanceofalternative.mapalt.*;
+import com.baeldung.instanceofalternative.model.*;
 
 public class MapUnitTest {
 
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+        assertEquals("running", moveDinosaur(new Anatotitan()));
     }
 
     @Test
-    public void testEuraptor() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
 
-        assertEquals("calm", dinoBehavior(new Euraptor()));
+        assertEquals("calm", moveDinosaur(new Euraptor()));
     }
 
-    public static String dinoBehavior(Dinosaur dinosaur) {
+    public static String moveDinosaur(Dinosaur dinosaur) {
         Map<Class<? extends Dinosaur>, String> response = new HashMap<Class<? extends Dinosaur>, String>();
 
-        response.put(dinosaur.getClass(), dinosaur.behavior());
+        response.put(dinosaur.getClass(), dinosaur.move());
         return response.get(dinosaur.getClass());
     }
 

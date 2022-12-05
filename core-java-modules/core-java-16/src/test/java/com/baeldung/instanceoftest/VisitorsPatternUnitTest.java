@@ -9,21 +9,21 @@ import com.baeldung.instanceofalternative.visitorspattern.*;
 public class VisitorsPatternUnitTest {
 
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("very aggressive", visitorsPatter((Dino) new Anatotitan()));
+        assertEquals("running", visitorsPatter((Dino) new Anatotitan()));
     }
 
     @Test
-    public void testEuraptor() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
 
-        assertEquals("calm", visitorsPatter((Dino) new Euraptor()));
+        assertEquals("flying", visitorsPatter((Dino) new Euraptor()));
     }
 
     public static String visitorsPatter(Dino dinosaur) {
         Visitor visitor = new DinoVisitorImpl();
 
-        return dinosaur.behavior2(visitor);
+        return dinosaur.move(visitor);
     }
 
 }

@@ -4,28 +4,28 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.baeldung.instanceofalternative.patternmatching.*;
+import com.baeldung.instanceofalternative.model.*;
 
 public class PatternMatchingUnitTest {
 
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+        assertEquals("running", dinoBehavior(new Anatotitan()));
     }
 
     @Test
-    public void testEuraptor() {
-        assertEquals("calm", dinoBehavior(new Euraptor()));
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
+        assertEquals("flying", dinoBehavior(new Euraptor()));
     }
 
     public static String dinoBehavior(Dinosaur dinosaur) {
 
         if (dinosaur instanceof Anatotitan anatotitan) {
-            return anatotitan.behavior();
+            return anatotitan.run();
         } else if (dinosaur instanceof Euraptor euraptor) {
 
-            return euraptor.behavior();
+            return euraptor.flies();
         }
         return "";
     }

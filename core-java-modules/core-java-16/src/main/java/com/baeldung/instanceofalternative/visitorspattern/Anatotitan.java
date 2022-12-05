@@ -2,12 +2,12 @@ package com.baeldung.instanceofalternative.visitorspattern;
 
 public class Anatotitan implements Dino {
 
-    String behavior() {
-        return "very aggressive";
+    String run() {
+        return "running";
     }
 
     @Override
-    public String behavior2(Visitor dinobehave) {
+    public String move(Visitor dinobehave) {
         return dinobehave.visit(this);
     }
 

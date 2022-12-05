@@ -5,23 +5,23 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.instanceofalternative.polymorphism.*;
+import com.baeldung.instanceofalternative.model.*;
 
 public class PolymorphismUnitTest {
 
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("very aggressive", dinoBehavior(new Anatotitan()));
+        assertEquals("running", dinoBehavior(new Anatotitan()));
     }
 
     @Test
-    public void testEuraptor() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
         assertEquals("calm", dinoBehavior(new Euraptor()));
     }
 
     public static String dinoBehavior(Dinosaur dinosaur) {
-        return dinosaur.behavior();
+        return dinosaur.move();
     }
 
 }

@@ -2,12 +2,12 @@ package com.baeldung.instanceofalternative.visitorspattern;
 
 public class Euraptor implements Dino {
 
-    String behavior() {
-        return "calm";
+    String flies() {
+        return "flying";
     }
 
     @Override
-    public String behavior2(Visitor dinobehave) {
+    public String move(Visitor dinobehave) {
         return dinobehave.visit(this);
     }
 

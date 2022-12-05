@@ -8,22 +8,22 @@ import com.baeldung.instanceofalternative.enumallt.*;
 
 public class EnumUnitTest {
     @Test
-    public void testAnatotitan() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
 
         Dinosaur dinosaur = new Dinosaur();
         dinosaur.setDinosaur(DinosaurEnum.Euraptor);
 
-        assertEquals("Calm", dinosaur.getDinosaur()
-            .behaviour());
+        assertEquals("flying", dinosaur.getDinosaur()
+            .move());
     }
 
     @Test
-    public void testEuraptor() {
+    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
         Dinosaur dinosaur = new Dinosaur();
         dinosaur.setDinosaur(DinosaurEnum.Anatotitan);
 
-        assertEquals("Aggressive  ", dinosaur.getDinosaur()
-            .behaviour());
+        assertEquals("running", dinosaur.getDinosaur()
+            .move());
     }
 
 }
