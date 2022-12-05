@@ -6,7 +6,7 @@ import org.openqa.selenium.WindowType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-final class SeleniumTabsLiveTest extends SeleniumBaseTest {
+final class SeleniumTabsLiveTest extends SeleniumTestBase {
 
     private static final By LINK_TO_ATTRIBUTES_PAGE_XPATH = By.xpath("//a[.='Attributes in new page']");
     private static final By LINK_TO_ALERT_PAGE_XPATH = By.xpath("//a[.='Alerts In A New Window From JavaScript']");

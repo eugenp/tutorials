@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * Base class for Selenium Tests. This class handles the WebDriver setup and configuration.
  * It takes care about closing all tabs except one after each test. After a test class it will close the browser.
  */
-public class SeleniumBaseTest {
+public class SeleniumTestBase {
 
     protected static WebDriver driver;
     protected static TabHelper tabHelper;
