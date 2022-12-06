@@ -36,6 +36,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <org.eclipse.jgit.version>4.5.0.201609210915-r</org.eclipse.jgit.version>
     </properties>

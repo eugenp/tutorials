@@ -355,14 +355,9 @@
 
                 <module>aws-modules</module>
 
-                <module>axon</module>
-
-                <module>azure</module>
-
-                <module>bazel</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>code-generation</module>
+
 
                 <module>core-groovy-modules</module>
 
@@ -372,57 +367,37 @@
                 <module>custom-pmd</module>
 
                 <module>data-structures</module>
-                <module>ddd</module>
+
                 <module>deeplearning4j</module>
-                <module>di-modules</module>
-                <module>discord4j</module>
-                <module>disruptor</module>
-                <module>dozer</module>
-                <module>drools</module>
-                <module>dubbo</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
-                <module>feign</module>
-
                 <module>geotools</module>
-                <module>google-cloud</module>
+
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-                <module>graphql-modules</module>
-                <module>grpc</module>
+
                 <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>hazelcast</module>
-                <module>apache-httpclient</module>
+
+
                 <module>httpclient-simple</module>
-                <module>hystrix</module>
 
                 <module>jackson-modules</module>
-                <module>jackson-simple</module>
-                <module>java-blockchain</module>
-                <module>javafx</module>
+
                 <module>java-jdi</module>
-                <module>java-rmi</module>
-                <module>java-spi</module>
-                <module>java-websocket</module>
-                <module>javax-sound</module>
-                <module>javaxval</module>
-                <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
+
                 <module>jaxb</module>
                 <module>jersey</module>
-                <module>jgit</module>
+
                 <module>jhipster-5</module>
-                <module>jib</module>
-                <module>jmeter</module>
                 <module>jmh</module>
-                <module>java-native</module>
+
                 <module>jsf</module>
                 <module>json-modules</module>
-                <module>jsoup</module>
+
                 <module>kubernetes-modules</module>
                 <module>ksqldb</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -1174,14 +1149,12 @@
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
-<!--                <module>apache-libraries</module>-->
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-                <module>apache-velocity</module>
                 <module>asciidoctor</module>
                 <module>asm</module>
                 <module>atomikos</module>
@@ -1197,6 +1170,28 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
+                <module>feign</module>
+                <module>google-cloud</module>
+                <module>graphql-modules</module>
+                <module>grpc</module>
+                <module>hazelcast</module>
+                <module>apache-httpclient</module>
+                <module>hystrix</module>
+                <module>jackson-simple</module>
+                <module>java-blockchain</module>
+                <module>javafx</module>
+                <module>java-rmi</module>
+                <module>java-spi</module>
+                <module>java-websocket</module>
+                <module>javax-sound</module>
+                <module>javaxval</module>
+                <module>javaxval-2</module>
+                <module>javax-validation-advanced</module>
+                <module>jgit</module>
+                <module>jib</module>
+                <module>jmeter</module>
+                <module>java-native</module>
+                <module>jsoup</module>
             </modules>
 
             <properties>

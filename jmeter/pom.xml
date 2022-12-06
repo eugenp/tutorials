@@ -62,6 +62,10 @@
                     <resultsDirectory>${project.basedir}/src/main/resources</resultsDirectory>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
