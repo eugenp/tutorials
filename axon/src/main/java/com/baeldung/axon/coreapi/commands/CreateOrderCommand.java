@@ -36,8 +36,6 @@ public class CreateOrderCommand {
 
     @Override
     public String toString() {
-        return "CreateOrderCommand{" +
-                "orderId='" + orderId + '\'' +
-                '}';
+        return "CreateOrderCommand{" + "orderId='" + orderId + '\'' + '}';
     }
 }
