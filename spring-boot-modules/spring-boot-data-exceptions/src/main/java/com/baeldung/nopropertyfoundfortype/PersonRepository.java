@@ -10,7 +10,7 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
 
     List<Person> findByLastName(String lastName);
 
-    // Below same function will generate the error
+    // Below method will generate the error
     // List<Person> findByLastname(String lastName);
 
 }

@@ -23,7 +23,7 @@ public class NoPropertyFoundForTypeApplicationUnitTest {
     private PersonRepository repository;
 
     @Test
-    public void givenPersonReposotiory_whenCorrectMapping_thenNoError() {
+    public void givenPersonRepositiory_whenCorrectMapping_thenNoError() {
         entityManager.persist(new Person("Iron", "Man"));
         List<Person> persons = repository.findByLastName("Man");
         assertEquals(1, persons.size());
@@ -32,7 +32,7 @@ public class NoPropertyFoundForTypeApplicationUnitTest {
     }
 
     @Test
-    public void givenPersonReposotiory_whenNoCorrectMapping_thenNoPropertyFoundForTypeError() {
+    public void givenPersonRepositiory_whenNoCorrectMapping_thenNoPropertyFoundForTypeError() {
 
         entityManager.persist(new Person("Iron", "Man"));
         // uncomment below to get the exception.

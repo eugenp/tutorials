@@ -15,8 +15,8 @@ public class Person {
     private String lastName;
 
     public Person(String firstName, String lastName) {
-        this.lastName = lastName;
         this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Person() {
