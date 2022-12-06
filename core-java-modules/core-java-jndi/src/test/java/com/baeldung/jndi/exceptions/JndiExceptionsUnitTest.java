@@ -25,7 +25,6 @@ public class JndiExceptionsUnitTest {
             JndiTemplate jndiTemplate = new JndiTemplate();
             ctx = (InitialContext) jndiTemplate.getContext();
             ctx.lookup("java:comp/env/jdbc/datasource");
-            ctx.close();
         }).printStackTrace();
     }
 
