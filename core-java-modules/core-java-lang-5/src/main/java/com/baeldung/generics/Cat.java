@@ -12,6 +12,9 @@ class Cat extends Animal implements Comparable<Cat> {
         return "Meow";
     }
 
+    /**
+     * Warning: Inconsistent with the equals method.
+     */
     @Override
     public int compareTo(Cat cat) {
         return this.getName().length() - cat.getName().length();
