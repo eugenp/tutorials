@@ -42,6 +42,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
     <properties>
         <cdi-api.version>2.0.SP1</cdi-api.version>
         <weld-se-core.version>3.0.5.Final</weld-se-core.version>

@@ -1174,7 +1174,7 @@
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
-                <module>apache-libraries</module>
+<!--                <module>apache-libraries</module>-->
                 <module>apache-olingo</module>
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
@@ -1189,6 +1189,14 @@
                 <module>axon</module>
                 <module>azure</module>
                 <module>bazel</module>
+                <module>code-generation</module>
+                <module>ddd</module>
+                <module>di-modules</module>
+                <module>discord4j</module>
+                <module>disruptor</module>
+                <module>dozer</module>
+                <module>drools</module>
+                <module>dubbo</module>
             </modules>
 
             <properties>

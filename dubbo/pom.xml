@@ -30,6 +30,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
     <properties>
         <dubbo.version>2.5.7</dubbo.version>
         <zookeeper.version>3.4.11</zookeeper.version>
