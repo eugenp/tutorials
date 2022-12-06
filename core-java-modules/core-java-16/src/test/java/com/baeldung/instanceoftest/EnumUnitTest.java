@@ -10,20 +10,17 @@ public class EnumUnitTest {
     @Test
     public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
 
-        Dinosaur dinosaur = new Dinosaur();
-        dinosaur.setDinosaur(DinosaurEnum.Euraptor);
-
-        assertEquals("flying", dinosaur.getDinosaur()
-            .move());
+        assertEquals("running", moveDinosaur(DinosaurEnum.Euraptor));
     }
 
     @Test
     public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
-        Dinosaur dinosaur = new Dinosaur();
-        dinosaur.setDinosaur(DinosaurEnum.Anatotitan);
+        assertEquals("running", moveDinosaur(DinosaurEnum.Anatotitan));
+    }
 
-        assertEquals("running", dinosaur.getDinosaur()
-            .move());
+    public static String moveDinosaur(DinosaurEnum dinosaurenum) {
+        return dinosaurenum.move();
+
     }
 
 }
