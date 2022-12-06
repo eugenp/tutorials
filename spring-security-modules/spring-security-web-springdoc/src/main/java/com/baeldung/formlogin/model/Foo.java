@@ -2,18 +2,18 @@ package com.baeldung.formlogin.model;
 
 import java.io.Serializable;
 
-public class FooDTO implements Serializable {
+public class Foo implements Serializable {
 
     private static final long serialVersionUID = -5422285893276747592L;
 
     private long id;
     private String name;
 
-    public FooDTO(final String name) {
+    public Foo(final String name) {
         this.name = name;
     }
 
-    public FooDTO() {
+    public Foo() {
     }
 
     public long getId() {
@@ -48,7 +48,7 @@ public class FooDTO implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        final FooDTO other = (FooDTO) obj;
+        final Foo other = (Foo) obj;
         if (name == null) {
             return other.name == null;
         } else return name.equals(other.name);

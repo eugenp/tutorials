@@ -1,6 +1,6 @@
 package com.baeldung.formlogin.controller;
 
-import com.baeldung.formlogin.model.FooDTO;
+import com.baeldung.formlogin.model.Foo;
 import com.google.common.collect.Lists;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -20,18 +20,18 @@ public class FooController {
     private static final int STRING_LENGTH = 6;
 
     @GetMapping(value = "/{id}")
-    public FooDTO findById(@PathVariable("id") final Long id) {
-        return new FooDTO(randomAlphabetic(STRING_LENGTH));
+    public Foo findById(@PathVariable("id") final Long id) {
+        return new Foo(randomAlphabetic(STRING_LENGTH));
     }
 
     @GetMapping
-    public List<FooDTO> findAll() {
-        return Lists.newArrayList(new FooDTO(randomAlphabetic(STRING_LENGTH)), new FooDTO(randomAlphabetic(STRING_LENGTH)), new FooDTO(randomAlphabetic(STRING_LENGTH)));
+    public List<Foo> findAll() {
+        return Lists.newArrayList(new Foo(randomAlphabetic(STRING_LENGTH)), new Foo(randomAlphabetic(STRING_LENGTH)), new Foo(randomAlphabetic(STRING_LENGTH)));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public FooDTO create(@RequestBody final FooDTO fooDTO) {
-        return fooDTO;
+    public Foo create(@RequestBody final Foo foo) {
+        return foo;
     }
 }
