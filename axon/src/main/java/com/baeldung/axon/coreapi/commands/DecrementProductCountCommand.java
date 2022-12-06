@@ -42,9 +42,6 @@ public class DecrementProductCountCommand {
 
     @Override
     public String toString() {
-        return "DecrementProductCountCommand{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "DecrementProductCountCommand{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }
