@@ -1,11 +1,11 @@
 #!/bin/sh
 
 generate() {
-	file=$1
-	size=$2
+	file="$1"
+	size="$2"
 	
-	fallocate -l $size $file
-	ls -lah $file
+	fallocate -l "$size" "$file"
+	ls -lah "$file"
 }
 
 generate /tmp/small.dat 128K

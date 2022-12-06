@@ -10,12 +10,12 @@ xmx="${4:-32m}"
 module_dir="$(readlink -f "$MYDIR/../../../..")"
 
 echo "module: $module_dir"
-cd $module_dir
+cd $module_dir || exit
 
 echo "packaging..."
 mvn clean package dependency:copy-dependencies
 
 echo "GET $url with $client client..."
 java -Xmx$xmx -cp target/dependency/*:target/* \
-com.baeldung.streamlargefile.client.${client}FileDownloadWebClient \
-$url $download_destination
+"com.baeldung.streamlargefile.client.${client}FileDownloadWebClient" \
+"$url" "$download_destination"

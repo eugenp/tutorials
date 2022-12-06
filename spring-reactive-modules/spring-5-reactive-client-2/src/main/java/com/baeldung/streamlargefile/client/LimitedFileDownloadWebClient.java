@@ -43,15 +43,13 @@ public class LimitedFileDownloadWebClient {
     }
 
     public static ExchangeStrategies useMaxMemory() {
-        Long totalMemory = Runtime.getRuntime()
+        long totalMemory = Runtime.getRuntime()
             .maxMemory();
 
-        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
-            .codecs(configurer -> {
+        return ExchangeStrategies.builder()
+            .codecs(configurer ->
                 configurer.defaultCodecs()
-                    .maxInMemorySize(totalMemory.intValue());
-            })
+                .maxInMemorySize((int) totalMemory))
             .build();
-        return exchangeStrategies;
     }
 }
