@@ -408,46 +408,34 @@
                 <module>libraries-data-db</module>
 
                 <module>libraries-security</module>
-                <module>libraries-server</module>
-                <module>libraries-server-2</module>
-                <module>libraries-testing</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-                <module>lucene</module>
-                <module>mapstruct</module>
 
                 <module>maven-modules</module>
 
-                <module>mesos-marathon</module>
+
                 <module>messaging-modules</module>
-                <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>muleesb</module>
-                <module>mustache</module>
-                <module>mybatis</module>
 
                 <module>netflix-modules</module>
 
-                <module>orika</module>
                 <module>osgi</module>
-
                 <module>patterns-modules</module>
-                <module>pdf</module>
-                <module>pdf-2</module>
+
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <module>protobuffer</module>
+
 
                 <module>quarkus-modules</module>
 
-                <module>reactor-core</module>
-                <module>rsocket</module>
+
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
-                <module>atomikos</module>
+
                 <module>reactive-systems</module>
                 <module>security-modules</module>
-                <module>slack</module>
+
                 <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
@@ -1194,6 +1182,23 @@
                 <module>libraries-io</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
+                <module>libraries-server</module>
+                <module>libraries-server-2</module>
+                <module>libraries-testing</module>
+                <module>lucene</module>
+                <module>mapstruct</module>
+                <module>mesos-marathon</module>
+                <module>metrics</module>
+                <module>mustache</module>
+                <module>mybatis</module>
+                <module>orika</module>
+                <module>pdf</module>
+                <module>pdf-2</module>
+                <module>protobuffer</module>
+                <module>reactor-core</module>
+                <module>rsocket</module>
+                <module>atomikos</module>
+                <module>slack</module>
             </modules>
 
             <properties>
