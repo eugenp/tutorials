@@ -1,6 +1,6 @@
 package com.baeldung.s;
 
-public class GoodBook {
+public class Book {
 
   private String name;
   private String author;
