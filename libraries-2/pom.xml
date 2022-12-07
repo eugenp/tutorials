@@ -121,6 +121,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <mapdb.version>3.0.7</mapdb.version>
         <classgraph.version>4.8.28</classgraph.version>
