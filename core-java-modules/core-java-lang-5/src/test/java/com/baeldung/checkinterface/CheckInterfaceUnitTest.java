@@ -1,4 +1,4 @@
-package com.baeldung.checkInterface;
+package com.baeldung.checkinterface;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,6 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
+
+import com.baeldung.checkinterface.ChildClass2;
+import com.baeldung.checkinterface.ChildInterface2;
+import com.baeldung.checkinterface.MasterInterface;
 
 public class CheckInterfaceUnitTest {
     
