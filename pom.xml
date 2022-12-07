@@ -1175,7 +1175,6 @@
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>hazelcast</module>
-                <module>apache-httpclient</module>
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
