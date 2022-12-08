@@ -65,6 +65,10 @@
                 <artifactId>spring-aot-maven-plugin</artifactId>
                 <version>${spring-native.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
