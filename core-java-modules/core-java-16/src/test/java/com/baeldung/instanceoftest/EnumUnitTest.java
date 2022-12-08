@@ -10,7 +10,7 @@ public class EnumUnitTest {
     @Test
     public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
 
-        assertEquals("running", moveDinosaur(DinosaurEnum.Euraptor));
+        assertEquals("flying", moveDinosaur(DinosaurEnum.Euraptor));
     }
 
     @Test

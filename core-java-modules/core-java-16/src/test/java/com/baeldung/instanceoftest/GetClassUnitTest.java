@@ -15,7 +15,7 @@ public class GetClassUnitTest {
 
     @Test
     public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
-        assertEquals("calm", dinoBehavior(new Euraptor()));
+        assertEquals("flying", dinoBehavior(new Euraptor()));
     }
 
     public static String dinoBehavior(Dinosaur dinosaur) {

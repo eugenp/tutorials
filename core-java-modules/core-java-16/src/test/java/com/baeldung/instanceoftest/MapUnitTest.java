@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.baeldung.instanceofalternative.model.*;
+import com.baeldung.instanceofalternative.mapmethod.*;
 
 public class MapUnitTest {
 
@@ -20,14 +21,12 @@ public class MapUnitTest {
     @Test
     public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
 
-        assertEquals("calm", moveDinosaur(new Euraptor()));
+        assertEquals("flying", moveDinosaur(new Euraptor()));
     }
 
     public static String moveDinosaur(Dinosaur dinosaur) {
-        Map<Class<? extends Dinosaur>, String> response = new HashMap<Class<? extends Dinosaur>, String>();
-
-        response.put(dinosaur.getClass(), dinosaur.move());
-        return response.get(dinosaur.getClass());
+        MapAlternative movement = new MapAlternative();
+        return movement.handleMessage(dinosaur);
     }
 
 }
