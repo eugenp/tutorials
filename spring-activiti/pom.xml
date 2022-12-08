@@ -66,6 +66,10 @@
                     <mainClass>com.baeldung.activitiwithspring.ActivitiWithSpringApplication</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
