@@ -1136,7 +1136,7 @@
                 <module>atomikos</module>
                 <module>atomix</module>
                 <module>axon</module>
-                <module>azure</module>
+<!--                <module>azure</module>-->
                 <module>bazel</module>
                 <module>code-generation</module>
                 <module>ddd</module>
