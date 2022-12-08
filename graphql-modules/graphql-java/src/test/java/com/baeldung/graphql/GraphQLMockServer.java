@@ -18,71 +18,67 @@ import static org.mockserver.model.HttpResponse.response;
 
 public class GraphQLMockServer {
 
-    private static final String SERVER_ADDRESS = "127.0.0.1";
-    private static final String PATH = "/graphql";
+  private static final String SERVER_ADDRESS = "127.0.0.1";
+  private static final String PATH = "/graphql";
 
-    public static String serviceUrl;
+  public static String serviceUrl;
 
-    private static ClientAndServer mockServer;
-    private static int serverPort;
+  private static ClientAndServer mockServer;
+  private static int serverPort;
 
-    @BeforeAll
-    static void startServer() throws IOException {
-        serverPort = getFreePort();
-        serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH;
+  @BeforeAll
+  static void startServer() throws IOException {
+    serverPort = getFreePort();
+    serviceUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH;
 
-        Configuration config = Configuration.configuration().logLevel(Level.WARN);
-        mockServer = startClientAndServer(config, serverPort);
+    Configuration config = Configuration.configuration().logLevel(Level.WARN);
+    mockServer = startClientAndServer(config, serverPort);
 
-        mockAllBooksTitleRequest();
-        mockAllBooksTitleAuthorRequest();
-    }
+    mockAllBooksTitleRequest();
+    mockAllBooksTitleAuthorRequest();
+  }
 
-    @AfterAll
-    static void stopServer() {
-        mockServer.stop();
-    }
+  @AfterAll
+  static void stopServer() {
+    mockServer.stop();
+  }
 
-    private static void mockAllBooksTitleAuthorRequest() {
-        String requestQuery = "{allBooks{title,author{name,surname}}}";
-        String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\",\"author\":{\"name\":\"Pero\",\"surname\":\"Peric\"}},{\"title\":\"Title 2\",\"author\":{\"name\":\"Marko\",\"surname\":\"Maric\"}}]}}";
+  private static void mockAllBooksTitleAuthorRequest() {
+    String requestQuery = "{allBooks{title,author{name,surname}}}";
+    String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\",\"author\":{\"name\":\"Pero\",\"surname\":\"Peric\"}},{\"title\":\"Title 2\",\"author\":{\"name\":\"Marko\",\"surname\":\"Maric\"}}]}}";
 
-        new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
+    new MockServerClient(SERVER_ADDRESS, serverPort)
+        .when(
             request()
-              .withPath(PATH)
-              .withQueryStringParameter("query", requestQuery),
-            exactly(1)
-          )
-          .respond(
+                .withPath(PATH)
+                .withQueryStringParameter("query", requestQuery),
+            exactly(1))
+        .respond(
             response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
-              .withBody(responseJson)
-          );
-    }
+                .withStatusCode(HttpStatusCode.OK_200.code())
+                .withBody(responseJson));
+  }
 
-    private static void mockAllBooksTitleRequest() {
-        String requestQuery = "{allBooks{title}}";
-        String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\"},{\"title\":\"Title 2\"}]}}";
+  private static void mockAllBooksTitleRequest() {
+    String requestQuery = "{allBooks{title}}";
+    String responseJson = "{\"data\":{\"allBooks\":[{\"title\":\"Title 1\"},{\"title\":\"Title 2\"}]}}";
 
-        new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
+    new MockServerClient(SERVER_ADDRESS, serverPort)
+        .when(
             request()
-              .withPath(PATH)
-              .withQueryStringParameter("query", requestQuery),
-            exactly(1)
-          )
-          .respond(
+                .withPath(PATH)
+                .withQueryStringParameter("query", requestQuery),
+            exactly(1))
+        .respond(
             response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
-              .withBody(responseJson)
-          );
-    }
+                .withStatusCode(HttpStatusCode.OK_200.code())
+                .withBody(responseJson));
+  }
 
-    private static int getFreePort () throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(0)) {
-            return serverSocket.getLocalPort();
-        }
+  private static int getFreePort() throws IOException {
+    try (ServerSocket serverSocket = new ServerSocket(0)) {
+      return serverSocket.getLocalPort();
     }
+  }
 
 }

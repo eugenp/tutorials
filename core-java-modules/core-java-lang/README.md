@@ -1,8 +1,9 @@
-## Core Java Lang
+# Core Java Lang
 
 This module contains articles about core features in the Java language
 
-### Relevant Articles: 
+## Relevant Articles
+
 - [Generate equals() and hashCode() with Eclipse](https://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [Comparator and Comparable in Java](https://www.baeldung.com/java-comparator-comparable)
 - [Recursion In Java](https://www.baeldung.com/java-recursion)

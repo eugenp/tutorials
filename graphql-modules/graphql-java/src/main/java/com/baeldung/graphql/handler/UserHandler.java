@@ -33,20 +33,20 @@ public class UserHandler implements Handler {
     @Override
     public void handle(Context context) {
         context.parse(Map.class)
-            .then(payload -> {
-                Map<String, Object> parameters = (Map<String, Object>) payload.get("parameters");
-                ExecutionResult executionResult = graphql.execute(payload.get(SchemaUtils.QUERY)
-                    .toString(), null, this, parameters);
+                .then(payload -> {
+                    Map<String, Object> parameters = (Map<String, Object>) payload.get("parameters");
+                    ExecutionResult executionResult = graphql.execute(payload.get(SchemaUtils.QUERY)
+                            .toString(), null, this, parameters);
 
-                Map<String, Object> result = new LinkedHashMap<>();
-                if (executionResult.getErrors().isEmpty()) {
-                    result.put(SchemaUtils.DATA, executionResult.getData());
-                } else {
-                    result.put(SchemaUtils.ERRORS, executionResult.getErrors());
-                    LOGGER.warning("Errors: " + executionResult.getErrors());
-                }
-                context.render(json(result));
-            });
+                    Map<String, Object> result = new LinkedHashMap<>();
+                    if (executionResult.getErrors().isEmpty()) {
+                        result.put(SchemaUtils.DATA, executionResult.getData());
+                    } else {
+                        result.put(SchemaUtils.ERRORS, executionResult.getErrors());
+                        LOGGER.warning("Errors: " + executionResult.getErrors());
+                    }
+                    context.render(json(result));
+                });
     }
 
     public List<User> getUsers() {
