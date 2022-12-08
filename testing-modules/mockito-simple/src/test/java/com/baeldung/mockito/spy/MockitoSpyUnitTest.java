@@ -1,30 +1,33 @@
 package com.baeldung.mockito.spy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MockitoSpyUnitTest {
 
     @Test
-    public void whenSpyingOnList_thenCorrect() {
+    void whenSpyingOnList_thenCorrect() {
         final List<String> list = new ArrayList<String>();
-        final List<String> spyList = Mockito.spy(list);
+        final List<String> spyList = spy(list);
 
         spyList.add("one");
         spyList.add("two");
 
-        Mockito.verify(spyList).add("one");
-        Mockito.verify(spyList).add("two");
+        verify(spyList).add("one");
+        verify(spyList).add("two");
 
         assertThat(spyList).hasSize(2);
     }
@@ -33,43 +36,43 @@ public class MockitoSpyUnitTest {
     private List<String> aSpyList = new ArrayList<String>();
 
     @Test
-    public void whenUsingTheSpyAnnotation_thenObjectIsSpied() {
+    void whenUsingTheSpyAnnotation_thenObjectIsSpied() {
         aSpyList.add("one");
         aSpyList.add("two");
 
-        Mockito.verify(aSpyList).add("one");
-        Mockito.verify(aSpyList).add("two");
+        verify(aSpyList).add("one");
+        verify(aSpyList).add("two");
 
         assertThat(aSpyList).hasSize(2);
     }
 
     @Test
-    public void whenStubASpy_thenStubbed() {
+    void whenStubASpy_thenStubbed() {
         final List<String> list = new ArrayList<String>();
-        final List<String> spyList = Mockito.spy(list);
+        final List<String> spyList = spy(list);
 
         assertEquals(0, spyList.size());
 
-        Mockito.doReturn(100).when(spyList).size();
+        doReturn(100).when(spyList).size();
         assertThat(spyList).hasSize(100);
     }
 
     @Test
-    public void whenCreateMock_thenCreated() {
-        final List<String> mockedList = Mockito.mock(ArrayList.class);
+    void whenCreateMock_thenCreated() {
+        final List<String> mockedList = mock(ArrayList.class);
 
         mockedList.add("one");
-        Mockito.verify(mockedList).add("one");
+        verify(mockedList).add("one");
 
         assertThat(mockedList).hasSize(0);
     }
 
     @Test
-    public void whenCreateSpy_thenCreate() {
-        final List<String> spyList = Mockito.spy(new ArrayList<>());
+    void whenCreateSpy_thenCreate() {
+        final List<String> spyList = spy(new ArrayList<>());
 
         spyList.add("one");
-        Mockito.verify(spyList).add("one");
+        verify(spyList).add("one");
 
         assertThat(spyList).hasSize(1);
     }
