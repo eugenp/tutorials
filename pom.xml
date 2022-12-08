@@ -580,9 +580,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-spark</module>
-
-                <module>image-processing</module>
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
@@ -597,7 +594,7 @@
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
 
-                <module>vaadin</module>
+
                 <module>vavr-modules</module>
             </modules>
         </profile>
@@ -1095,17 +1092,17 @@
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-olingo</module>
-<!--                <module>apache-poi</module>-->
+
                 <module>apache-poi-2</module>
                 <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
-<!--                <module>asciidoctor</module>-->
+
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
                 <module>axon</module>
-<!--                <module>azure</module>-->
+
                 <module>bazel</module>
                 <module>code-generation</module>
                 <module>ddd</module>
@@ -1123,7 +1120,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-<!--                <module>javafx</module>-->
+
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-websocket</module>
@@ -1133,7 +1130,7 @@
                 <module>javax-validation-advanced</module>
                 <module>jgit</module>
                 <module>jib</module>
-<!--                <module>jmeter</module>-->
+
                 <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
@@ -1154,6 +1151,7 @@
                 <module>libraries-server</module>
                 <module>libraries-server-2</module>
 
+
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>mesos-marathon</module>
@@ -1170,7 +1168,7 @@
 
 
 <!--  Modules from default second-->
-                <module>spring-4</module>
+
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
@@ -1203,6 +1201,18 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+
+<!-- Modules from default heavy               -->
+                <module>image-processing</module>
+                <module>vaadin</module>
+
+                <!--                <module>jmeter</module>-->
+                <!--                <module>asciidoctor</module>-->
+                <!--                <module>javafx</module>-->
+                <!--                <module>apache-poi</module>-->
+                <!--                <module>azure</module>-->
+<!--                <module>spring-4</module>-->
+<!--                <module>apache-spark</module>-->
             </modules>
 
             <properties>
