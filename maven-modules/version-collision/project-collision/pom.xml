@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>project-a</artifactId>
+            <artifactId>version-collision-project-a</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <!-- uncomment to exclude guava transitive artifact from module -->
             <!-- <exclusions> -->
@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>project-b</artifactId>
+            <artifactId>version-collision-project-b</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
