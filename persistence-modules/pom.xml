@@ -18,6 +18,7 @@
         <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
+        <module>blaze-persistence</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
         <module>deltaspike</module>
