@@ -12,3 +12,5 @@
 - [Fixed Size Queue Implementations in Java](https://www.baeldung.com/java-fixed-size-queue)
 - [Difference Between Java Enumeration and Iterator](https://www.baeldung.com/java-enumeration-vs-iterator)
 - [Sort Collection of Objects by Multiple Fields in Java](https://www.baeldung.com/java-sort-collection-multiple-fields)
+- [Guide to Java PriorityQueue](https://www.baeldung.com/java-priorityqueue)
+- [Java Generics PECS – Producer Extends Consumer Super](https://www.baeldung.com/java-generics-pecs)
