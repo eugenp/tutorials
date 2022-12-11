@@ -588,14 +588,12 @@
 
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-4</module>
-                <module>libraries-5</module>
+
                 <module>libraries-6</module>
 
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
 
-
-                <module>vavr-modules</module>
             </modules>
         </profile>
 
@@ -1085,86 +1083,86 @@
 <!--                <module>lightrun</module>-->
 <!--                <module>tablesaw</module>-->
 
-                <module>akka-modules</module>
-                <module>annotations</module>
-                <module>apache-httpclient</module>
-                <module>antlr</module>
-                <module>apache-kafka</module>
-                <module>apache-kafka-2</module>
-                <module>apache-olingo</module>
+<!--                <module>akka-modules</module>-->
+<!--                <module>annotations</module>-->
+<!--                <module>apache-httpclient</module>-->
+<!--                <module>antlr</module>-->
+<!--                <module>apache-kafka</module>-->
+<!--                <module>apache-kafka-2</module>-->
+<!--                <module>apache-olingo</module>-->
 
-                <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
-                <module>apache-thrift</module>
-                <module>apache-tika</module>
+<!--                <module>apache-poi-2</module>-->
+<!--                <module>apache-rocketmq</module>-->
+<!--                <module>apache-thrift</module>-->
+<!--                <module>apache-tika</module>-->
 
-                <module>asm</module>
-                <module>atomikos</module>
-                <module>atomix</module>
-                <module>axon</module>
+<!--                <module>asm</module>-->
+<!--                <module>atomikos</module>-->
+<!--                <module>atomix</module>-->
+<!--                <module>axon</module>-->
 
-                <module>bazel</module>
-                <module>code-generation</module>
-                <module>ddd</module>
-                <module>di-modules</module>
-                <module>discord4j</module>
-                <module>disruptor</module>
-                <module>dozer</module>
-                <module>drools</module>
-                <module>dubbo</module>
-                <module>feign</module>
-                <module>google-cloud</module>
-                <module>graphql-modules</module>
-                <module>grpc</module>
-                <module>hazelcast</module>
-                <module>hystrix</module>
-                <module>jackson-simple</module>
-                <module>java-blockchain</module>
+<!--                <module>bazel</module>-->
+<!--                <module>code-generation</module>-->
+<!--                <module>ddd</module>-->
+<!--                <module>di-modules</module>-->
+<!--                <module>discord4j</module>-->
+<!--                <module>disruptor</module>-->
+<!--                <module>dozer</module>-->
+<!--                <module>drools</module>-->
+<!--                <module>dubbo</module>-->
+<!--                <module>feign</module>-->
+<!--                <module>google-cloud</module>-->
+<!--                <module>graphql-modules</module>-->
+<!--                <module>grpc</module>-->
+<!--                <module>hazelcast</module>-->
+<!--                <module>hystrix</module>-->
+<!--                <module>jackson-simple</module>-->
+<!--                <module>java-blockchain</module>-->
 
-                <module>java-rmi</module>
-                <module>java-spi</module>
-                <module>java-websocket</module>
-                <module>javax-sound</module>
-                <module>javaxval</module>
-                <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
-                <module>jgit</module>
-                <module>jib</module>
+<!--                <module>java-rmi</module>-->
+<!--                <module>java-spi</module>-->
+<!--                <module>java-websocket</module>-->
+<!--                <module>javax-sound</module>-->
+<!--                <module>javaxval</module>-->
+<!--                <module>javaxval-2</module>-->
+<!--                <module>javax-validation-advanced</module>-->
+<!--                <module>jgit</module>-->
+<!--                <module>jib</module>-->
 
-                <module>java-native</module>
-                <module>jsoup</module>
-                <module>ksqldb</module>
-                <module>libraries-2</module>
-                <module>libraries-7</module>
-                <module>libraries-apache-commons</module>
-                <module>libraries-apache-commons-collections</module>
-                <module>libraries-apache-commons-io</module>
-                <module>libraries-data</module>
-                <module>libraries-data-2</module>
-                <module>libraries-data-io</module>
-                <module>libraries-files</module>
-                <module>libraries-http</module>
-                <module>libraries-http-2</module>
-                <module>libraries-io</module>
-                <module>libraries-primitive</module>
-                <module>libraries-rpc</module>
-                <module>libraries-server</module>
-                <module>libraries-server-2</module>
+<!--                <module>java-native</module>-->
+<!--                <module>jsoup</module>-->
+<!--                <module>ksqldb</module>-->
+<!--                <module>libraries-2</module>-->
+<!--                <module>libraries-7</module>-->
+<!--                <module>libraries-apache-commons</module>-->
+<!--                <module>libraries-apache-commons-collections</module>-->
+<!--                <module>libraries-apache-commons-io</module>-->
+<!--                <module>libraries-data</module>-->
+<!--                <module>libraries-data-2</module>-->
+<!--                <module>libraries-data-io</module>-->
+<!--                <module>libraries-files</module>-->
+<!--                <module>libraries-http</module>-->
+<!--                <module>libraries-http-2</module>-->
+<!--                <module>libraries-io</module>-->
+<!--                <module>libraries-primitive</module>-->
+<!--                <module>libraries-rpc</module>-->
+<!--                <module>libraries-server</module>-->
+<!--                <module>libraries-server-2</module>-->
 
 
-                <module>lucene</module>
-                <module>mapstruct</module>
-                <module>mesos-marathon</module>
-                <module>metrics</module>
-                <module>mustache</module>
-                <module>mybatis</module>
-                <module>orika</module>
-                <module>pdf</module>
-                <module>pdf-2</module>
-                <module>protobuffer</module>
-                <module>reactor-core</module>
-                <module>rsocket</module>
-                <module>slack</module>
+<!--                <module>lucene</module>-->
+<!--                <module>mapstruct</module>-->
+<!--                <module>mesos-marathon</module>-->
+<!--                <module>metrics</module>-->
+<!--                <module>mustache</module>-->
+<!--                <module>mybatis</module>-->
+<!--                <module>orika</module>-->
+<!--                <module>pdf</module>-->
+<!--                <module>pdf-2</module>-->
+<!--                <module>protobuffer</module>-->
+<!--                <module>reactor-core</module>-->
+<!--                <module>rsocket</module>-->
+<!--                <module>slack</module>-->
 
 
 <!--  Modules from default second-->
@@ -1175,7 +1173,6 @@
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
                 <module>spring-bom</module>
-                <module>spring-caching</module>
                 <module>spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1205,14 +1202,16 @@
 <!-- Modules from default heavy               -->
                 <module>image-processing</module>
                 <module>vaadin</module>
-
-                <!--                <module>jmeter</module>-->
-                <!--                <module>asciidoctor</module>-->
-                <!--                <module>javafx</module>-->
-                <!--                <module>apache-poi</module>-->
-                <!--                <module>azure</module>-->
+                <module>vavr-modules</module>
+                <module>libraries-5</module>
+<!--                <module>jmeter</module>-->
+<!--                <module>asciidoctor</module>-->
+<!--                <module>javafx</module>-->
+<!--                <module>apache-poi</module>-->
+<!--                <module>azure</module>-->
 <!--                <module>spring-4</module>-->
 <!--                <module>apache-spark</module>-->
+<!--                <module>spring-caching</module>-->
             </modules>
 
             <properties>

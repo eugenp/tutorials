@@ -41,6 +41,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
     <properties>
         <vavr.version>0.9.1</vavr.version>
         <awaitility.version>3.0.0</awaitility.version>
