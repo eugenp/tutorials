@@ -1,6 +1,6 @@
 package com.baeldung.shallowdeep;
 
-public class Engine {
+public class Engine implements Cloneable{
 	private String type;
 	private double horsePower;
 	
@@ -24,5 +24,14 @@ public class Engine {
 	public Engine(Engine engine) {
 		this.type=engine.type;
 		this.horsePower=engine.horsePower;
+	}
+	@Override
+	public Object clone() {
+		try {
+			return (Engine)super.clone();
+		}
+		catch(CloneNotSupportedException ex) {
+			return new Engine(this.getType(),this.getHorsePower());
+		}
 	}
 }

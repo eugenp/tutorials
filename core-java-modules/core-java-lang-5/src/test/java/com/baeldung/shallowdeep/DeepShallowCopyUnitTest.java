@@ -48,5 +48,17 @@ public class DeepShallowCopyUnitTest {
 		car.getEngine().setType("Two-stroked");
 		Assert.assertNotEquals(car.getEngine().getType(), deepCopiedCar.getEngine().getType());
 	}
+	
+	@Test
+	public void whenCloneCopied_ObjectsShouldBeDifferent() {
+		Engine engine = new Engine("Four-stroked", 130);
+		Car car = new Car(123, engine, "Toyota Corolla");
+		Car deepCopiedCar = (Car)car.clone();
+		car.getEngine().setType("Two-stroked");
+		Assert.assertNotEquals(car.getEngine().getType(), deepCopiedCar.getEngine().getType());
+	}
+	
+	
+	
 
 }

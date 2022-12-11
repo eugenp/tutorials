@@ -1,6 +1,6 @@
 package com.baeldung.shallowdeep;
 
-public class Car {
+public class Car implements Cloneable{
 
     private int modelNumber;
 	private String modelName;
@@ -34,5 +34,17 @@ public class Car {
 	}
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
+	}
+	@Override
+	public Object clone() {
+		Car car=null;
+		try {
+			car = (Car)super.clone();
+		}
+		catch(CloneNotSupportedException ex) {
+			car = new Car(this.modelNumber,this.engine,this.modelName);
+		}
+		car.setEngine((Engine)this.engine.clone());
+		return car;
 	}
 }
