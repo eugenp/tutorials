@@ -1200,7 +1200,7 @@
                 <module>webrtc</module>
 
 <!-- Modules from default heavy               -->
-                <module>image-processing</module>
+<!--                <module>image-processing</module>-->
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>libraries-5</module>
