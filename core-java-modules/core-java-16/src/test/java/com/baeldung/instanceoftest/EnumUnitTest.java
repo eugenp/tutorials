@@ -8,17 +8,17 @@ import com.baeldung.instanceofalternative.enumallt.*;
 
 public class EnumUnitTest {
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
+    public void givenADinosaurSpecie_whenUsingEnum_thenGetMovementOfEuraptor() {
 
-        assertEquals("flying", moveDinosaur(DinosaurEnum.Euraptor));
+        assertEquals("flying", moveDinosaurUsingEnum(DinosaurEnum.Euraptor));
     }
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
-        assertEquals("running", moveDinosaur(DinosaurEnum.Anatotitan));
+    public void givenADinosaurSpecie_whenUsingEnum_thenGetMovementOfAnatotitan() {
+        assertEquals("running", moveDinosaurUsingEnum(DinosaurEnum.Anatotitan));
     }
 
-    public static String moveDinosaur(DinosaurEnum dinosaurenum) {
+    public static String moveDinosaurUsingEnum(DinosaurEnum dinosaurenum) {
         return dinosaurenum.move();
 
     }

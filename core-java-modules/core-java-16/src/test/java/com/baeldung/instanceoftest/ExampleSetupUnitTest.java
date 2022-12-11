@@ -9,17 +9,17 @@ import com.baeldung.instanceofalternative.model.*;
 public class ExampleSetupUnitTest {
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
+    public void givenADinosaurSpecie_whenUsingInstancof_thenGetMovementOfAnatotitan() {
 
-        assertEquals("running", dinoBehavior(new Anatotitan()));
+        assertEquals("running", moveDinosaurUsingInstanceof(new Anatotitan()));
     }
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
-        assertEquals("flying", dinoBehavior(new Euraptor()));
+    public void givenADinosaurSpecie_whenUsingInstanceof_thenGetMovementOfEuraptor() {
+        assertEquals("flying", moveDinosaurUsingInstanceof(new Euraptor()));
     }
 
-    public static String dinoBehavior(Dinosaur dinosaur) {
+    public static String moveDinosaurUsingInstanceof(Dinosaur dinosaur) {
 
         if (dinosaur instanceof Anatotitan) {
 

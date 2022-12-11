@@ -8,17 +8,17 @@ import com.baeldung.instanceofalternative.model.*;
 public class GetClassUnitTest {
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
+    public void givenADinosaurSpecie_whenUsingGetClass_thenGetMovementOfAnatotitan() {
 
-        assertEquals("running", dinoBehavior(new Anatotitan()));
+        assertEquals("running", moveDinosaurUsingGetClass(new Anatotitan()));
     }
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
-        assertEquals("flying", dinoBehavior(new Euraptor()));
+    public void givenADinosaurSpecie_whenUsingGetClass_thenGetMovementOfEuraptor() {
+        assertEquals("flying", moveDinosaurUsingGetClass(new Euraptor()));
     }
 
-    public static String dinoBehavior(Dinosaur dinosaur) {
+    public static String moveDinosaurUsingGetClass(Dinosaur dinosaur) {
 
         if (dinosaur.getClass()
             .equals(Anatotitan.class)) {

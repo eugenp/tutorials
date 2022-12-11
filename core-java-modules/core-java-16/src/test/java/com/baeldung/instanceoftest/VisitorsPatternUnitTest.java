@@ -9,18 +9,18 @@ import com.baeldung.instanceofalternative.visitorspattern.*;
 public class VisitorsPatternUnitTest {
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfAnatotitan() {
+    public void givenADinosaurSpecie_whenUsingVisitorPattern_thenGetMovementOfAnatotitan() {
 
-        assertEquals("running", visitorsPatter((Dino) new Anatotitan()));
+        assertEquals("running", moveDinosaurUsingVisitorPattern((Dino) new Anatotitan()));
     }
 
     @Test
-    public void givenADinosaurSpecie_whenGroupBySubclass_thenGetMovementOfEuraptor() {
+    public void givenADinosaurSpecie_whenUsingVisitorPattern_thenGetMovementOfEuraptor() {
 
-        assertEquals("flying", visitorsPatter((Dino) new Euraptor()));
+        assertEquals("flying", moveDinosaurUsingVisitorPattern((Dino) new Euraptor()));
     }
 
-    public static String visitorsPatter(Dino dinosaur) {
+    public static String moveDinosaurUsingVisitorPattern(Dino dinosaur) {
         Visitor visitor = new DinoVisitorImpl();
 
         return dinosaur.move(visitor);
