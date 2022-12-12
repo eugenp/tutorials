@@ -12,6 +12,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
+<<<<<<< HEAD
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -25,6 +26,21 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+=======
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+>>>>>>> parent of 7dd02df1ae (Update pom.xml)
 
 	<build>
 		<finalName>core-java-lang-operators-2</finalName>
