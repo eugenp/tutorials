@@ -7,8 +7,6 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>core-java-16</name>
     <packaging>jar</packaging>
-    
-    
     <url>http://maven.apache.org</url>
 
     <parent>
