@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.jsonvaluegetter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

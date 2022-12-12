@@ -1,3 +1,5 @@
+package com.baeldung.jsonvaluegetter;
+
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
