@@ -9,11 +9,8 @@ public class PascalTriangle {
         return i * factorial(i - 1);
     }
 
-    public static void main(String[] args) {
-        int n = 4;
-
+    private static void printUseRecursion(int n) {
         for (int i = 0; i <= n; i++) {
-
             for (int j = 0; j <= n - i; j++) {
                 System.out.print(" ");
             }
@@ -25,4 +22,27 @@ public class PascalTriangle {
             System.out.println();
         }
     }
+
+public static void printUseBinomialExpansion(int n) {
+    for (int line = 1; line <= n; line++) {
+        for (int j = 0; j <= n - line; j++) {
+            System.out.print(" ");
+        }
+
+        int k = 1;
+        for (int i = 1; i <= line; i++) {
+            System.out.print(k + " ");
+            k = k * (line - i) / i;
+        }
+
+        System.out.println();
+    }
+}
+
+    public static void main(String[] args) {
+        int n = 5;
+        printUseRecursion(n);
+//        printUseBinomialExpansion(n);
+    }
+
 }
