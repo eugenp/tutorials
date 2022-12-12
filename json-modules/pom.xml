@@ -18,7 +18,6 @@
         <module>json-2</module>
         <module>json-path</module>
         <module>gson</module>
-        <module>json-value-getter</module>
     </modules>
 
     <build>
