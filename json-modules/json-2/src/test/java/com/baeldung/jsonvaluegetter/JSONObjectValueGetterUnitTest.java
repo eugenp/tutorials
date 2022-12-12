@@ -12,14 +12,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class JSONObjectValueGetterTest {
+public class JSONObjectValueGetterUnitTest {
 
     private static JSONObject jsonObject;
     private static JSONObjectValueGetter jsonObjectValueGetter = new JSONObjectValueGetter();
 
     @BeforeAll
     public static void loadJsonContent() throws IOException {
-        InputStream inputStream = JSONObjectValueGetterTest.class.getClassLoader().getResourceAsStream("employee.json");
+        InputStream inputStream = JSONObjectValueGetterUnitTest.class.getClassLoader().getResourceAsStream("employee.json");
         String jsonString = IOUtils.toString(inputStream, "UTF-8");
         jsonObject = new JSONObject(jsonString);
     }
