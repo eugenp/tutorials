@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class StudentShallowCopyTest {
+class StudentShallowCopyUnitTest {
 
     @Test
     void whenShallowCopying_thenCopyObjectAndSourceObjectShareSameReferencedObject(){
