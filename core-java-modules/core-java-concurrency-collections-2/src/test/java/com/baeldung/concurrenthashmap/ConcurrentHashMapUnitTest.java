@@ -49,7 +49,31 @@ public class ConcurrentHashMapUnitTest {
         assertEquals(0, results.get(0).get());
         assertEquals(1, results.get(1).get());
 
-        if (threadExecutor.awaitTermination(1, TimeUnit.SECONDS)) {
+        if (threadExecutor.awaitTermination(2, TimeUnit.SECONDS)) {
+            threadExecutor.shutdown();
+        }
+    }
+
+    @Test
+    public void givenOneThreadIsWriting_whenAnotherThreadWritesAtSameKey_thenWaitAndGetCorrectValue() throws Exception {
+        ExecutorService threadExecutor = Executors.newFixedThreadPool(2);
+
+        Callable<Integer> writeAfter2Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
+            sleep(5);
+            return frequencyMap.get(1) + 1;
+        });
+
+        Callable<Integer> writeAfter1Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
+            sleep(1);
+            return frequencyMap.get(1) + 1;
+        });
+
+        List<Future<Integer>> results = threadExecutor.invokeAll(asList(writeAfter2Sec, writeAfter1Sec));
+
+        assertEquals(1, results.get(0).get());
+        assertEquals(2, results.get(1).get());
+
+        if (threadExecutor.awaitTermination(2, TimeUnit.SECONDS)) {
             threadExecutor.shutdown();
         }
     }
