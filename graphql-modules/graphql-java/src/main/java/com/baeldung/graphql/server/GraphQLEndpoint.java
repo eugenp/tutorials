@@ -15,22 +15,24 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/graphql")
 public class GraphQLEndpoint extends HttpServlet {
 
-    private SimpleGraphQLHttpServlet graphQLServlet;
+  private SimpleGraphQLHttpServlet graphQLServlet;
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        graphQLServlet.service(req, resp);
-    }
+  @Override
+  protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    graphQLServlet.service(req, resp);
+  }
 
-    @Override
-    public void init() {
-        GraphQLSchema schema = SchemaParser.newParser()
-          .resolvers(new GraphQLQuery(new BookRepository()))
-          .file("schema.graphqls")
-          .build()
-          .makeExecutableSchema();
-        graphQLServlet = SimpleGraphQLHttpServlet
-          .newBuilder(schema)
-          .build();
-    }
+  @Override
+  public void init() {
+    GraphQLSchema schema = SchemaParser.newParser()
+        .resolvers(new GraphQLQuery(new BookRepository()))
+        .file("schema.graphqls")
+        .build()
+        .makeExecutableSchema();
+    graphQLServlet = SimpleGraphQLHttpServlet
+        .newBuilder(schema)
+        .build();
+  }
 }
+
+

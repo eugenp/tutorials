@@ -1,6 +1,6 @@
 package com.baeldung.equalshashcode.entities;
 
-public class Rectangle extends Shape {
+public class Rectangle implements Shape {
     private double width;
     private double length;
 

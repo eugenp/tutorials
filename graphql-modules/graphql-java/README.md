@@ -187,8 +187,237 @@ GraphQL-java是一个基于规范和[JavaScript参考实现](https://github.com/
 
    4. GraphQL是一种将客户机/服务器之间的复杂性降至最低的简单且极具吸引力的方法，作为RESTAPI的替代方法。
 
+## 从Java应用中调用GraphQL服务
+
+1. 概述
+
+    GraphQL是一个相对较新的概念，用于构建网络服务，作为REST的替代。最近出现了一些用于创建和调用GraphQL服务的Java库。
+
+    在本教程中，我们将研究GraphQL模式、查询和变异。我们将看到如何在普通Java中创建和模拟一个简单的GraphQL服务器。然后，我们将探讨如何使用著名的HTTP库来调用GraphQL服务。
+
+    最后，我们还将探索可用的第三方库，以进行GraphQL服务调用。
+
+2. GraphQL
+
+    GraphQL是一种网络服务的查询语言，也是一种使用类型系统执行查询的服务器端运行时间。
+
+    GraphQL服务器使用GraphQL模式来指定API的能力。这允许GraphQL客户端准确地指定从API中检索哪些数据。这可能包括单一请求中的子资源和多个查询。
+
+    1. GraphQL模式
+
+        GraphQL服务器用一组类型来定义服务。这些类型描述了你可以使用该服务查询的可能数据集。
+
+        GraphQL服务可以用任何语言编写。然而，GraphQL模式需要使用一种叫做GraphQL模式语言的DSL来定义。
+
+        在我们的GraphQL模式的例子中，我们将定义两种类型（书籍和作者）和一个单一的查询操作来获取所有的书籍（allBooks）。
+
+        ```GraphQL
+        type Book {
+            title: String!
+            author: Author
+        }
+        type Author {
+            name: String!
+            surname: String!
+        }
+        type Query {
+            allBooks: [Book]
+        }
+        schema {
+            query: Query
+        }
+        ```
+
+        Query类型很特别，因为它定义了GraphQL查询的入口点。
+
+    2. 查询和突变
+
+        GraphQL服务是通过定义类型和字段，以及为不同的字段提供函数来创建的。
+
+        在其最简单的形式中，GraphQL是关于询问对象的特定字段。例如，我们可以查询获取所有书名。
+
+        ```GraphQL
+        {
+            "allBooks" {
+                "title"
+            }
+        }
+        ```
+
+        尽管它看起来很相似，但这不是JSON。它是一种特殊的GraphQL查询格式，支持参数、别名、变量等。
+
+        一个GraphQL服务会以这样的JSON格式的响应来回应上述查询。
+
+        ```JSON
+        {
+            "data": {
+                "allBooks": [
+                    {
+                        "title": "Title 1"
+                    },
+                    {
+                        "title": "Title 2"
+                    }
+                ]
+            }
+        }
+        ```
+
+        在本教程中，我们将专注于使用查询来获取数据。然而，有必要提及GraphQL中的另一个特殊概念--突变。
+
+        任何可以引起修改的操作都会使用突变类型来发送。
+
+3. GraphQL服务器
+
+    让我们使用上面定义的模式在Java中创建一个简单的GraphQL服务器。我们将利用[GraphQL Java](https://www.graphql-java.com/)库来实现我们的GraphQL服务器。
+
+    我们将首先定义我们的GraphQL查询，并实现我们的示例GraphQL模式中指定的allBooks方法。
+
+    ```java
+    public class GraphQLQuery implements GraphQLQueryResolver {
+        private BookRepository repository;
+        public GraphQLQuery(BookRepository repository) {
+            this.repository = repository;
+        }
+        public List<Book> allBooks() {
+            return repository.getAllBooks();
+        }
+    }
+    ```
+
+    接下来，为了暴露我们的GraphQL端点，我们将创建一个Web servlet。
+
+    graphql.server/GraphQLEndpoint.java
+
+    在servlet init方法中，我们将解析位于资源文件夹中的GraphQL模式。最后，利用解析后的模式，我们可以创建一个SimpleGraphQLHttpServlet的实例。
+
+    我们将使用[maven-war-plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-war-plugin)来打包我们的应用程序，并使用[jetty-maven-plugin](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-maven-plugin)来运行它。
+
+    `mvn jetty:run`
+
+    现在，我们已经准备好运行和测试我们的GraphQL服务，发送一个请求到。
+
+    `http://localhost:8080/graphql?query={allBooks{title}}`
+
+4. HTTP客户端
+
+    与REST服务一样，GraphQL服务是通过HTTP协议公开的。因此，我们可以使用任何Java HTTP客户端来调用GraphQL服务。
+
+    1. 发送请求
+
+        让我们试着向我们在上一节中创建的GraphQL服务发送一个请求。
+
+        graphql.clients/ApacheHttpClient.callGraphQLService()
+
+        在我们的例子中，我们使用了[Apache HttpClient](https://www.baeldung.com/httpclient4)。然而，任何Java HTTP客户端都可以使用。
+
+    2. 解析响应
+
+        接下来，我们来解析来自GraphQL服务的响应。GraphQL服务发送JSON格式的响应，与REST服务相同。
+
+        ```java
+        HttpResponse httpResponse = callGraphQLService(serviceUrl, "{allBooks{title}}");
+        String actualResponse = IOUtils.toString(httpResponse.getEntity().getContent(), StandardCharsets.UTF_8.name());
+        Response parsedResponse = objectMapper.readValue(actualResponse, Response.class);
+        assertThat(parsedResponse.getData().getAllBooks()).hasSize(2);
+        ```
+
+        在我们的例子中，我们使用了流行的Jackson库中的ObjectMapper。然而，我们可以使用任何Java库进行JSON序列化/反序列化。
+
+    3. Mocking响应
+
+        与其他通过HTTP暴露的服务一样，我们可以模拟GraphQL服务器的响应，以达到测试目的。
+
+        我们可以利用[MockServer](https://www.baeldung.com/mockserver)库来模拟外部GraphQL HTTP服务。
+
+        graphql/GraphQLMockServer
+
+        我们的示例模拟服务器将接受一个GraphQL查询作为参数，并在正文中响应一个JSON响应。
+
+5. 外部库
+
+最近出现了几个Java GraphQL库，允许更简单的GraphQL服务调用。
+
+    1. 美国运通Nodes
+
+        Nodes是美国运通的一个GraphQL客户端，旨在从标准模型定义中构建查询。要开始使用它，我们应该首先添加所需的依赖性。
+
+        com.github.americanexpress.nodes.nodes.0.5.0
+
+        该库目前托管在JitPack上，我们也应该把它添加到我们的Maven安装仓库中。
+
+        ```xml
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        ```
+
+        一旦解决了依赖关系，我们就可以利用GraphQLTemplate来构建一个查询，并调用我们的GraphQL服务。
+
+        graphql.clients/AmericanExpressNodes.GraphQLResponseEntity()
+
+        节点将使用我们指定的类解析来自GraphQL服务的响应。
+
+        ```java
+        GraphQLResponseEntity<Data> responseEntity = callGraphQLService(serviceUrl, "{allBooks{title}}");
+        assertThat(responseEntity.getResponse().getAllBooks()).hasSize(2);
+        ```
+
+        我们应该注意，Nodes仍然要求我们构建自己的DTO类来解析响应。
+
+5.2. GraphQL Java生成器
+
+[GraphQL Java Generator](https://github.com/graphql-java-generator/graphql-maven-plugin-project)库利用了基于GraphQL模式生成Java代码的能力。
+
+这种方法类似于SOAP服务中使用的WSDL代码生成器。要开始使用它，我们应该首先添加所需的依赖性。
+
+com.graphql-java-generator.graphql-java-runtime.1.18
+
+接下来，我们可以配置graphql-maven-plugin来执行generateClientCode目标。
+
+```xml
+<plugin>
+    <groupId>com.graphql-java-generator</groupId>
+    <artifactId>graphql-maven-plugin</artifactId>
+    <version>1.18</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>generateClientCode</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <packageName>com.baeldung.graphql.generated</packageName>
+        <copyRuntimeSources>false</copyRuntimeSources>
+        <generateDeprecatedRequestResponse>false</generateDeprecatedRequestResponse>
+        <separateUtilityClasses>true</separateUtilityClasses>
+    </configuration>
+</plugin>
+```
+
+一旦我们运行Maven构建命令，该插件将生成调用GraphQL服务所需的DTO和实用类。
+
+生成的QueryExecutor组件将包含调用GraphQL服务和解析其响应的方法。
+
+生成的QueryExecutor组件将包含调用我们的GraphQL服务和解析其响应的方法。
+
+```java
+public List<Book> allBooks(String queryResponseDef, Object... paramsAndValues)
+  throws GraphQLRequestExecutionException, GraphQLRequestPreparationException {
+    logger.debug("Executing query 'allBooks': {} ", queryResponseDef);
+    ObjectResponse objectResponse = getAllBooksResponseBuilder()
+      .withQueryResponseDef(queryResponseDef).build();
+    return allBooksWithBindValues(objectResponse, 
+      graphqlClientUtils.generatesBindVariableValuesMap(paramsAndValues));
+}
+```
+
+然而，它是为与Spring框架一起使用而构建的。
+
 ## Relevant articles
 
 - [x] [Introduction to GraphQL](https://www.baeldung.com/graphql)
-- [Make a Call to a GraphQL Service from a Java Application](https://www.baeldung.com/java-call-graphql-service)
+- [x] [Make a Call to a GraphQL Service from a Java Application](https://www.baeldung.com/java-call-graphql-service)
 - [Return Map from GraphQL](https://www.baeldung.com/java-graphql-return-map)
