@@ -1,22 +1,28 @@
 package com.baeldung.mockito;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.openMocks;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MockitoAnnotationsInjectIntoSpyUnitTest {
+@ExtendWith(MockitoExtension.class)
+class MockitoAnnotationsInjectIntoSpyUnitTest {
 
-    @Before
+    @BeforeEach
     public void init() {
-        MockitoAnnotations.openMocks(this);
-        spyDic = Mockito.spy(new MyDictionary(wordMap));
+        openMocks(this);
+        spyDic = spy(new MyDictionary(wordMap));
     }
 
     @Mock
@@ -28,8 +34,8 @@ public class MockitoAnnotationsInjectIntoSpyUnitTest {
     private MyDictionary spyDic;
 
     @Test
-    public void whenUseInjectMocksAnnotation_thenCorrect() {
-        Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
+    void whenUseInjectMocksAnnotation_thenCorrect() {
+        when(wordMap.get("aWord")).thenReturn("aMeaning");
 
         assertEquals("aMeaning", spyDic.getMeaning("aWord"));
     }
