@@ -10,3 +10,4 @@ This module contains articles about core features in the Java language
 - [Handle Classes With the Same Name in Java](https://www.baeldung.com/java-classes-same-name)
 - [Variable Instantiation on Declaration vs. on Constructor in Java](https://www.baeldung.com/java-variable-instantiation-declaration-vs-constructor)
 - [Infinity in Java](https://www.baeldung.com/java-infinity)
+- [Type Parameter vs Wildcard in Java Generics](https://www.baeldung.com/java-generics-type-parameter-vs-wildcard)
