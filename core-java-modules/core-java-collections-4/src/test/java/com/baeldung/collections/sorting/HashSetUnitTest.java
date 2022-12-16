@@ -35,7 +35,7 @@ public class HashSetUnitTest {
         numberHashSet.add(4);
         numberHashSet.add(3);
         // TreeSet gets the value of hashSet
-        TreeSet treeSet = new TreeSet();
+        TreeSet<Integer> treeSet = new TreeSet<>();
         treeSet.addAll(numberHashSet);
         assertThat(treeSet).containsExactly(1, 2, 3, 4);
     }
