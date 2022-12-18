@@ -14,6 +14,9 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
     List<Article> findAllByPublicationTimeBetween(Date publicationTimeStart,
                                                   Date publicationTimeEnd);
 
+    Article findByPublicationTimeBetween(Date publicationTimeStart,
+                                         Date publicationTimeEnd);
+
     @Query("select a from Article a where a.creationDateTime <= :creationDateTime")
     List<Article> findAllWithCreationDateTimeBefore(
       @Param("creationDateTime") Date creationDateTime);
