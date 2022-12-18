@@ -21,14 +21,12 @@ public class UserCredentials {
     }
 
     public String readUsername() throws IOException {
-        BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         return reader.readLine();
     }
 
     public String readUsernameWithPrompt() {
         Console console = System.console();
-
         return console == null ? null : // Console not available
                 console.readLine("%s", "Enter your name: ");
     }

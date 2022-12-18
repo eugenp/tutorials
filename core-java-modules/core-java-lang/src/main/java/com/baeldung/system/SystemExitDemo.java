@@ -9,16 +9,13 @@ package com.baeldung.system;
  */
 public class SystemExitDemo {
     public static void main(String[] args) {
-        boolean error = false;
-
+        boolean error = true;
         // do something and set error value
-
         if (error) {
             System.exit(1); // error case exit
         } else {
             System.exit(0); // normal case exit
         }
-
         // Will not do anything after exit()
     }
 }

@@ -39,7 +39,7 @@ public class SyntheticMethodDemo {
      * to generate the synthetic setter.
      * 
      * @param nestedField
-     *            the {@link NestedClass#nestedField}
+     *                    the {@link NestedClass#nestedField}
      */
     public void setNestedField(String nestedField) {
         new NestedClass().nestedField = nestedField;

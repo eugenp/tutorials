@@ -15,18 +15,11 @@ public class SyntheticConstructorDemo {
      */
     private NestedClass nestedClass = new NestedClass();
 
-    /**
-     * Class which contains a synthetic constructor.
-     * 
-     * @author Donato Rimenti
-     *
-     */
+    // Class which contains a synthetic constructor
     class NestedClass {
 
-        /**
-         * In order to generate a synthetic constructor, this class must have a
-         * private constructor.
-         */
+        // In order to generate a synthetic constructor, this class must have a private
+        // constructor.
         private NestedClass() {
         }
     }

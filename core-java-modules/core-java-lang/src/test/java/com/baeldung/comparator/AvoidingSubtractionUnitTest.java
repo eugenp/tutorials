@@ -15,7 +15,7 @@ public class AvoidingSubtractionUnitTest {
         Comparator<Player> comparator = (p1, p2) -> p1.getAge() - p2.getAge();
         Player player1 = new Player(59, "John", Integer.MAX_VALUE);
         Player player2 = new Player(67, "Roger", -1);
-
+        
         List<Player> players = Arrays.asList(player1, player2);
         players.sort(comparator);
         System.out.println(players);
