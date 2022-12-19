@@ -40,7 +40,7 @@ public class TableFormatterExamples {
     private static void formatUsingPrintStream(List<Student> students) {
         System.out.printf("%16s %16s %16s\n", "Id", "Full Name", "Email Address");
         for (Student s : students) {
-            System.out.format("%16d %16s %16s\n", s.getId(), s.getFullName(), s.getEmailAddress());
+            System.out.printf("%16d %16s %16s\n", s.getId(), s.getFullName(), s.getEmailAddress());
         }
     }
 
