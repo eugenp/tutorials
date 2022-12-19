@@ -41,7 +41,7 @@ public class StoryTime {
         file.getParentFile()
             .mkdirs();
 
-        //new StoryTime().createPdf();
+        // new StoryTime().createPdf();
         new StoryTime().addWatermarkToExistingPdf();
 
     }
@@ -65,7 +65,7 @@ public class StoryTime {
             }
         }
     }
-    
+
     public void addWatermarkToExistingPdf() throws IOException {
         StoryTime storyTime = new StoryTime();
         String outputPdf = "output/aliceupdated.pdf";

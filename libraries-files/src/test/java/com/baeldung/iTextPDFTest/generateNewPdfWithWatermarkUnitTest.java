@@ -3,9 +3,7 @@ package com.baeldung.iTextPDFTest;
 import static com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor.getTextFromPage;
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 import java.io.IOException;
-
 
 import org.junit.jupiter.api.Test;
 
