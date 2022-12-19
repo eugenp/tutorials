@@ -54,9 +54,10 @@ public class TableFormatterExamples {
     private static void formatUsingASCIITable(List<Student> students) {
 
         AsciiTable asciiTable = new AsciiTable();
+        asciiTable.addRule();
         asciiTable.addRow("Id", "Full Name", "Email Address");
+        asciiTable.addRule();
         for (Student student : students) {
-            asciiTable.addRule();
             asciiTable.addRow(student.getId(), student.getFullName(), student.getEmailAddress());
             asciiTable.addRule();
         }
