@@ -20,7 +20,7 @@ import com.itextpdf.layout.element.Paragraph;
 class generateNewPdfWithWatermarkUnitTest {
 
     @Test
-    public void createPdf() throws IOException {
+    public void givenNewTexts_whenGeneratingNewPDFWithIText_thenGeneratePDFwithWatermarks() throws IOException {
         StoryTime storyTime = new StoryTime();
         String waterMark = "CONFIDENTIAL";
         PdfWriter writer = new PdfWriter(storyTime.OUTPUT_FILE);

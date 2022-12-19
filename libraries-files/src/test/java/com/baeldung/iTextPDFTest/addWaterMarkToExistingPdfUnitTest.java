@@ -21,7 +21,7 @@ import com.itextpdf.layout.element.Paragraph;
 class addWaterMarkToExistingPdfUnitTest {
 
     @Test
-    public void addWatermarkToExistingPdf() throws IOException {
+    public void givenAnExistingPDF_whenManipulatedPDFWithIText_thenGeneratePDFwithWatermarks() throws IOException {
         StoryTime storyTime = new StoryTime();
         String outputPdf = "output/aliceupdated.pdf";
         String watermark = "CONFIDENTIAL";
