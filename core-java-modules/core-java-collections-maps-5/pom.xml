@@ -5,18 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-collections-maps-5</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <name>core-java-collections-maps-5</name>
     <packaging>jar</packaging>
 
@@ -45,6 +33,19 @@
             <version>${commons-collections4.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <spring.version>5.2.5.RELEASE</spring.version>

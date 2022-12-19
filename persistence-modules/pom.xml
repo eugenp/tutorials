@@ -75,7 +75,8 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
+        <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
+        <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
