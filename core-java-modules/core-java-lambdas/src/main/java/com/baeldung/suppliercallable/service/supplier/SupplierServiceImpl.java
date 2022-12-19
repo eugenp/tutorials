@@ -14,7 +14,8 @@ public class SupplierServiceImpl implements Service {
     public User execute(User user) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         CompletableFuture<Integer> ageFut = CompletableFuture.supplyAsync(() -> Period.between(user.getBirthDate(), LocalDate.now())
-          .getYears(), executorService);
+          .getYears(), executorService)
+          .exceptionally((throwable -> null));
         CompletableFuture<Boolean> canDriveACarFut = ageFut.thenComposeAsync(age -> CompletableFuture.supplyAsync(() -> age > 18, executorService))
           .exceptionally((ex) -> false);
         user.setAge(ageFut.join());
