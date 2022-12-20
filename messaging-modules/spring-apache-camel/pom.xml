@@ -14,7 +14,7 @@
         <artifactId>messaging-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.apache.camel</groupId>
