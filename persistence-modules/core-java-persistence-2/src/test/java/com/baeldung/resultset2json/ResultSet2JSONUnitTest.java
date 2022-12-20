@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ResultSet2JSONUnitTest {
   JSONObject object = new JSONObject(
-    "{\"records\":[[\"doe1\",\"7173\",\"John\",\"Doe\"],[\"smith3\",\"3722\",\"Dana\",\"Smith\"],[\"john22\",\"5490\",\"John\",\"Wang\"]],\"fields\":[{\"schema\":\"PUBLIC\",\"name\":\"USERNAME\",\"type\":\"VARCHAR\",\"table\":\"WORDS\"},{\"schema\":\"PUBLIC\",\"name\":\"ID\",\"type\":\"VARCHAR\",\"table\":\"WORDS\"},{\"schema\":\"PUBLIC\",\"name\":\"First name\",\"type\":\"VARCHAR\",\"table\":\"WORDS\"},{\"schema\":\"PUBLIC\",\"name\":\"Last name\",\"type\":\"VARCHAR\",\"table\":\"WORDS\"}]}");
+    "{\"records\":[[\"doe1\",\"7173\",\"John\",\"Doe\"],[\"smith3\",\"3722\",\"Dana\",\"Smith\"],[\"john22\",\"5490\",\"John\",\"Wang\"]],\"fields\":[{\"schema\":\"PUBLIC\",\"name\":\"USERNAME\",\"type\":\"OTHER\",\"table\":\"WORDS\"},{\"schema\":\"PUBLIC\",\"name\":\"ID\",\"type\":\"OTHER\",\"table\":\"WORDS\"},{\"schema\":\"PUBLIC\",\"name\":\"First name\",\"type\":\"OTHER\",\"table\":\"WORDS\"},{\"schema\":\"PUBLIC\",\"name\":\"Last name\",\"type\":\"OTHER\",\"table\":\"WORDS\"}]}");
 
   JSONArray array = new JSONArray(
     "[{\"USERNAME\":\"doe1\",\"First name\":\"John\",\"ID\":\"7173\",\"Last name\":\"Doe\"},{\"USERNAME\":\"smith3\",\"First name\":\"Dana\",\"ID\":\"3722\",\"Last name\":\"Smith\"},{\"USERNAME\":\"john22\",\"First name\":\"John\",\"ID\":\"5490\",\"Last name\":\"Wang\"}]");
@@ -43,7 +43,7 @@ public class ResultSet2JSONUnitTest {
   @Test
   void whenResultSetConvertedUsingJOOQDefaultApproach_shouldMatchJSON() throws SQLException, ClassNotFoundException {
     Class.forName("org.h2.Driver");
-    Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc2", "user", "password");
+        Connection dbConnection = DriverManager.getConnection("jdbc:h2:mem:rs2jdbc2;MODE=LEGACY", "user", "password");
     // Create a table
     Statement stmt = dbConnection.createStatement();
     stmt.execute("CREATE TABLE words AS SELECT * FROM CSVREAD('./example.csv')");
