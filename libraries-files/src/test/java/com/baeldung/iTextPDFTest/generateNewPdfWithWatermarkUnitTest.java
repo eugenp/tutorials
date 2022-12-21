@@ -23,31 +23,12 @@ class generateNewPdfWithWatermarkUnitTest {
     public void givenNewTexts_whenGeneratingNewPDFWithIText_thenGeneratePDFwithWatermarks() throws IOException {
         StoryTime storyTime = new StoryTime();
         String waterMark = "CONFIDENTIAL";
-        PdfWriter writer = new PdfWriter(storyTime.OUTPUT_FILE);
-        PdfDocument pdf = new PdfDocument(writer);
 
-        try (Document document = new Document(pdf)) {
-
-            document.add(new Paragraph(storyTime.alice).setFont(PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN)));
-            document.add(new Paragraph(storyTime.paul));
-
-            Paragraph paragraph = storyTime.createWatermarkParagraph(waterMark);
-            for (int i = 1; i <= document.getPdfDocument()
-                .getNumberOfPages(); i++) {
-
-                storyTime.addWatermarkToPage(document, i, paragraph, 0f);
-            }
-        }
-        verifyPreviewWatermark(storyTime.OUTPUT_FILE, waterMark);
-
-    }
-
-    void verifyPreviewWatermark(String targetPdf, String watermark) throws IOException {
         LocationTextExtractionStrategy extStrategy = new LocationTextExtractionStrategy();
-        try (PdfDocument pdfDocument = new PdfDocument(new PdfReader(targetPdf))) {
+        try (PdfDocument pdfDocument = new PdfDocument(new PdfReader(storyTime.OUTPUT_FILE))) {
             for (int i = 1; i <= pdfDocument.getNumberOfPages(); i++) {
                 String textFromPage = getTextFromPage(pdfDocument.getPage(i), extStrategy);
-                assertThat(textFromPage).contains(watermark);
+                assertThat(textFromPage).contains(waterMark);
             }
         }
 

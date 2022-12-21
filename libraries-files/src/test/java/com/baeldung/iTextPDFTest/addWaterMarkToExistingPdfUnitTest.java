@@ -26,21 +26,8 @@ class addWaterMarkToExistingPdfUnitTest {
         String outputPdf = "output/aliceupdated.pdf";
         String watermark = "CONFIDENTIAL";
 
-        try (PdfDocument pdfDocument = new PdfDocument(new PdfReader("output/alicepaulwithoutwatermark.pdf"), new PdfWriter(outputPdf))) {
-            Document document = new Document(pdfDocument);
-
-            Paragraph paragraph = storyTime.createWatermarkParagraph(watermark);
-            PdfExtGState transparentGraphicState = new PdfExtGState().setFillOpacity(0.5f);
-            for (int i = 1; i <= document.getPdfDocument()
-                .getNumberOfPages(); i++) {
-                storyTime.addWatermarkToExistingPage(document, i, paragraph, transparentGraphicState, 0f);
-            }
-        }
-    }
-
-    void verifyPreviewWatermark(String targetPdf, String watermark) throws IOException {
         LocationTextExtractionStrategy extStrategy = new LocationTextExtractionStrategy();
-        try (PdfDocument pdfDocument = new PdfDocument(new PdfReader(targetPdf))) {
+        try (PdfDocument pdfDocument = new PdfDocument(new PdfReader(outputPdf))) {
             for (int i = 1; i <= pdfDocument.getNumberOfPages(); i++) {
                 String textFromPage = getTextFromPage(pdfDocument.getPage(i), extStrategy);
                 assertThat(textFromPage).contains(watermark);
