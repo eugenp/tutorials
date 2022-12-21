@@ -336,7 +336,7 @@ GraphQL-java是一个基于规范和[JavaScript参考实现](https://github.com/
 
 5. 外部库
 
-最近出现了几个Java GraphQL库，允许更简单的GraphQL服务调用。
+    最近出现了几个Java GraphQL库，允许更简单的GraphQL服务调用。
 
     1. 美国运通Nodes
 
@@ -366,55 +366,305 @@ GraphQL-java是一个基于规范和[JavaScript参考实现](https://github.com/
 
         我们应该注意，Nodes仍然要求我们构建自己的DTO类来解析响应。
 
-5.2. GraphQL Java生成器
+    2. GraphQL Java生成器
 
-[GraphQL Java Generator](https://github.com/graphql-java-generator/graphql-maven-plugin-project)库利用了基于GraphQL模式生成Java代码的能力。
+        [GraphQL Java Generator](https://github.com/graphql-java-generator/graphql-maven-plugin-project) 库利用了基于GraphQL模式生成Java代码的能力。
 
-这种方法类似于SOAP服务中使用的WSDL代码生成器。要开始使用它，我们应该首先添加所需的依赖性。
+        这种方法类似于SOAP服务中使用的WSDL代码生成器。要开始使用它，我们应该首先添加所需的依赖性。
 
-com.graphql-java-generator.graphql-java-runtime.1.18
+        com.graphql-java-generator.graphql-java-runtime.1.18
 
-接下来，我们可以配置graphql-maven-plugin来执行generateClientCode目标。
+        接下来，我们可以配置graphql-maven-plugin来执行generateClientCode目标。
 
-```xml
-<plugin>
-    <groupId>com.graphql-java-generator</groupId>
-    <artifactId>graphql-maven-plugin</artifactId>
-    <version>1.18</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>generateClientCode</goal>
-            </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <packageName>com.baeldung.graphql.generated</packageName>
-        <copyRuntimeSources>false</copyRuntimeSources>
-        <generateDeprecatedRequestResponse>false</generateDeprecatedRequestResponse>
-        <separateUtilityClasses>true</separateUtilityClasses>
-    </configuration>
-</plugin>
-```
+        ```xml
+        <plugin>
+            <groupId>com.graphql-java-generator</groupId>
+            <artifactId>graphql-maven-plugin</artifactId>
+            <version>1.18</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>generateClientCode</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <packageName>com.baeldung.graphql.generated</packageName>
+                <copyRuntimeSources>false</copyRuntimeSources>
+                <generateDeprecatedRequestResponse>false</generateDeprecatedRequestResponse>
+                <separateUtilityClasses>true</separateUtilityClasses>
+            </configuration>
+        </plugin>
+        ```
 
-一旦我们运行Maven构建命令，该插件将生成调用GraphQL服务所需的DTO和实用类。
+        一旦我们运行Maven构建命令，该插件将生成调用GraphQL服务所需的DTO和实用类。
 
-生成的QueryExecutor组件将包含调用GraphQL服务和解析其响应的方法。
+        生成的QueryExecutor组件将包含调用GraphQL服务和解析其响应的方法。
 
-生成的QueryExecutor组件将包含调用我们的GraphQL服务和解析其响应的方法。
+        生成的QueryExecutor组件将包含调用我们的GraphQL服务和解析其响应的方法。
 
-```java
-public List<Book> allBooks(String queryResponseDef, Object... paramsAndValues)
-  throws GraphQLRequestExecutionException, GraphQLRequestPreparationException {
-    logger.debug("Executing query 'allBooks': {} ", queryResponseDef);
-    ObjectResponse objectResponse = getAllBooksResponseBuilder()
-      .withQueryResponseDef(queryResponseDef).build();
-    return allBooksWithBindValues(objectResponse, 
-      graphqlClientUtils.generatesBindVariableValuesMap(paramsAndValues));
-}
-```
+        ```java
+        public List<Book> allBooks(String queryResponseDef, Object... paramsAndValues)
+        throws GraphQLRequestExecutionException, GraphQLRequestPreparationException {
+            logger.debug("Executing query 'allBooks': {} ", queryResponseDef);
+            ObjectResponse objectResponse = getAllBooksResponseBuilder()
+            .withQueryResponseDef(queryResponseDef).build();
+            return allBooksWithBindValues(objectResponse, 
+            graphqlClientUtils.generatesBindVariableValuesMap(paramsAndValues));
+        }
+        ```
 
-然而，它是为与Spring框架一起使用而构建的。
+        然而，它是为与Spring框架一起使用而构建的。
+
+## 从GraphQL返回Map
+
+1. 概述
+
+    多年来，GraphQL已被广泛接受为网络服务的通信模式之一。虽然它在使用上很丰富和灵活，但在某些情况下可能会带来挑战。其中之一就是从一个查询中返回一个Map，这是一个挑战，因为Map在GraphQL中不是一个类型。
+
+    在本教程中，我们将学习从GraphQL查询中返回Map的技术。
+
+2. 例子
+
+    让我们以一个产品数据库为例，它有无限多的自定义属性。
+
+    一个产品，作为一个数据库实体，可能有一些固定的字段，如名称、价格、类别等。但是，它也可能有不同类别的属性。这些属性应该以一种保持其识别键的方式返回给客户。
+
+    为了这个目的，我们可以使用Map作为这些属性的类型。
+
+3. 返回地图
+
+    为了返回一个Map，我们有三个选择。
+
+    - 作为JSON字符串返回
+    - 使用GraphQL自定义[标量类型](https://graphql.org/learn/schema/#scalar-types)
+    - 以键值对列表的形式返回
+
+    对于前两个选项，我们将使用以下GraphQL查询。
+
+    ```GraphQL
+    query {
+        product(id:1){ 
+            id 
+            name 
+            description 
+            attributes 
+        }
+    }
+    ```
+
+    参数属性将以Map格式表示。
+
+    接下来，我们来看看这三个选项。
+
+    1. JSON字符串
+
+        这是最简单的选项。我们将在产品解析器中把Map序列化为JSON字符串格式。
+
+        `String attributes = objectMapper.writeValueAsString(product.getAttributes());`
+
+        GraphQL模式本身如下。
+
+        ```GraphQL
+        type Product {
+            id: ID
+            name: String!
+            description: String
+            attributes:String
+        }
+        ```
+
+        下面是这样实现后的查询结果。
+
+        ```json
+        {
+        "data": {
+            "product": {
+            "id": "1",
+            "name": "Product 1",
+            "description": "Product 1 description",
+            "attributes": "{\"size\": {
+                                            \"name\": \"Large\",
+                                            \"description\": \"This is custom attribute description\",
+                                            \"unit\": \"This is custom attribute unit\"
+                                            },
+                        \"attribute_1\": {
+                                            \"name\": \"Attribute1 name\",
+                                            \"description\": \"This is custom attribute description\",
+                                            \"unit\": \"This is custom attribute unit\"
+                                            }
+                                }"
+            }
+        }
+        }
+        ```
+
+        这个选项有两个问题。第一个问题是，JSON字符串需要在客户端处理成一个可行的格式。第二个问题是我们不能在属性上有一个子查询。
+
+        为了克服第一个问题，GraphQL自定义标量类型的第二个选项可以帮助我们。
+
+    2. GraphQL自定义标量类型
+
+        在实现方面，我们将利用Java中GraphQL的[扩展标量库](https://github.com/graphql-java/graphql-java-extended-scalars)。
+
+        首先，我们将在pom.xml中包含graphql-java-extended-scalars依赖项。
+
+        ```xml
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>2022-04-06T00-10-27-a70541e</version>
+        </dependency>
+        ```
+
+        然后，我们将在 GraphQL 配置组件中注册我们选择的标量类型。在这种情况下，标量类型是JSON。
+
+        ```java
+        @Bean
+        public GraphQLScalarType json() {
+            return ExtendedScalars.Json;
+        }
+        ```
+
+        最后，我们将相应地更新我们的GraphQL模式。
+
+        ```GraphQL
+        type Product {
+            id: ID
+            name: String!
+            description: String
+            attributes: JSON
+        }
+        scalar JSON
+        ```
+
+        下面是这样实现后的结果。
+
+        ```json
+        {
+        "data": {
+            "product": {
+            "id": "1",
+            "name": "Product 1",
+            "description": "Product 1 description",
+            "attributes": {
+                "size": {
+                "name": "Large",
+                "description": "This is custom attribute description",
+                "unit": "This is a custom attribute unit"
+                },
+                "attribute_1": {
+                "name": "Attribute1 name",
+                "description": "This is custom attribute description",
+                "unit": "This is a custom attribute unit"
+                }
+            }
+            }
+        }
+        }
+        ```
+
+        有了这种方法，我们就不需要在客户端处理属性图了。然而，标量类型也有自己的限制。
+
+        在GraphQL中，标量类型是查询的叶子，这表明它们不能被进一步查询。
+
+    3. 键值对的列表
+
+        如果需求是进一步查询Map，那么这是最可行的方案。我们将把Map对象转化为一个键值对对象的列表。
+
+        下面是我们代表键值对的类。
+
+        ```java
+        public class AttributeKeyValueModel {
+            private String key;
+            private Attribute value;
+            public AttributeKeyValueModel(String key, Attribute value) {
+                this.key = key;
+                this.value = value;
+            }
+        }
+        ```
+
+        在产品解析器中，我们将添加以下实现。
+
+        ```java
+        List<AttributeKeyValueModel> attributeModelList = new LinkedList<>();
+        product.getAttributes().forEach((key, val) -> attributeModelList.add(new AttributeKeyValueModel(key, val)));
+        ```
+
+        最后，我们将更新模式。
+
+        ```GraphQL
+        type Product {
+            id: ID
+            name: String!
+            description: String
+            attributes:[AttributeKeyValuePair]
+        }
+        type AttributeKeyValuePair {
+            key:String
+            value:Attribute
+        }
+        type Attribute {
+            name:String
+            description:String
+            unit:String
+        }
+        ```
+
+        既然我们已经更新了模式，我们也要更新查询。
+
+        ```GraphQL
+        query {
+            product(id:1){ 
+                id 
+                name 
+                description 
+                attributes {
+                    key 
+                    value {
+                        name 
+                        description 
+                        unit
+                    }
+                } 
+            }
+        }
+        ```
+
+        现在，让我们看一下结果。
+
+        ```json
+        {
+        "data": {
+            "product": {
+            "id": "1",
+            "name": "Product 1",
+            "description": "Product 1 description",
+            "attributes": [
+                {
+                "key": "size",
+                "value": {
+                    "name": "Large",
+                    "description": "This is custom attribute description",
+                    "unit": "This is custom attribute unit"
+                }
+                },
+                {
+                "key": "attribute_1",
+                "value": {
+                    "name": "Attribute1 name",
+                    "description": "This is custom attribute description",
+                    "unit": "This is custom attribute unit"
+                }
+                }
+            ]
+            }
+        }
+        }
+        ```
+
+        这个选项也有两个问题。GraphQL查询变得有点复杂。而且对象结构需要硬编码。未知的地图对象在这种情况下不会工作。
 
 ## Relevant articles
 
