@@ -1,5 +1,6 @@
-package com.baeldung.samples;
+package com.baeldung.samples.boundary;
 
+import com.baeldung.samples.domain.GreetingService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

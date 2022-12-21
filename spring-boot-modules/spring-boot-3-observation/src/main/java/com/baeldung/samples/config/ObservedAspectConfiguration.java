@@ -1,4 +1,4 @@
-package com.baeldung.samples;
+package com.baeldung.samples.config;
 
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;

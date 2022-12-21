@@ -1,4 +1,4 @@
-package com.baeldung.samples;
+package com.baeldung.samples.config;
 
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
@@ -12,8 +12,12 @@ public class SimpleLoggingHandler implements ObservationHandler<Observation.Cont
     private static final Logger log = LoggerFactory.getLogger(SimpleLoggingHandler.class);
 
     private static String toString(Observation.Context context) {
-        return context.getName()
+        return null == context ? "(no context)" : context.getName()
           + " (" + context.getClass().getName() + "@" + System.identityHashCode(context) + ")";
+    }
+
+    private static String toString(Observation.Event event) {
+        return null == event ? "(no event)" : event.getName();
     }
 
     @Override
@@ -33,7 +37,7 @@ public class SimpleLoggingHandler implements ObservationHandler<Observation.Cont
 
     @Override
     public void onEvent(Observation.Event event, Observation.Context context) {
-        log.info("Event for context " + toString(context) + " (" + event.getName() + ")");
+        log.info("Event for context " + toString(context) + " [" + toString(event) + "]");
     }
 
     @Override

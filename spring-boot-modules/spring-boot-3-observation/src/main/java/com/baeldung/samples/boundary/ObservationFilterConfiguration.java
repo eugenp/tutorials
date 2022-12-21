@@ -1,4 +1,4 @@
-package com.baeldung.samples;
+package com.baeldung.samples.boundary;
 
 import io.micrometer.observation.ObservationRegistry;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

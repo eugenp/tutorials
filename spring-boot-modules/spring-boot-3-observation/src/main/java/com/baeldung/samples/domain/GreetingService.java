@@ -1,4 +1,4 @@
-package com.baeldung.samples;
+package com.baeldung.samples.domain;
 
 import io.micrometer.observation.annotation.Observed;
 import org.springframework.stereotype.Service;
