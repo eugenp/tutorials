@@ -1,6 +1,7 @@
 package com.baeldung.listofobjectstolistofstring;
 
 import com.google.common.collect.Lists;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,8 +25,8 @@ public class ConvertObjectListToStringListUnitTest {
     public void givenObjectList_whenUsingStreamsToConvert_thenReturnSuccess() {
         List<String> outputList;
         outputList = objectListWithNull().stream()
-                .map((obj) -> Objects.toString(obj, null))
-                .collect(Collectors.toList());
+          .map((obj) -> Objects.toString(obj, null))
+          .collect(Collectors.toList());
         Assert.assertEquals(expectedStringListWithNull(), outputList);
 
     }
@@ -34,13 +35,12 @@ public class ConvertObjectListToStringListUnitTest {
     public void givenObjectList_whenUsingStreamsUnmodifiableListToConvert_thenReturnSuccess() {
         List<String> outputList;
         outputList = objectListWithNull().stream()
-                .filter(Objects::nonNull)
-                .map((obj) -> Objects.toString(obj, null))
-                .collect(Collectors.toUnmodifiableList());
+          .filter(Objects::nonNull)
+          .map((obj) -> Objects.toString(obj, null))
+          .collect(Collectors.toUnmodifiableList());
         Assert.assertEquals(expectedStringListWithoutNull(), outputList);
 
     }
-
 
     @Test
     public void givenObjectList_whenUsingGuavaTransform_thenReturnSuccess() {
@@ -52,7 +52,9 @@ public class ConvertObjectListToStringListUnitTest {
     @Test
     public void givenObjectListWithNoNull_whenUsingToList_thenReturnSuccess() {
         List<String> outputList;
-        outputList = objectListWithoutNull().stream().map((obj) -> Objects.toString(obj, null)).toList();
+        outputList = objectListWithoutNull().stream()
+          .map((obj) -> Objects.toString(obj, null))
+          .toList();
         Assert.assertEquals(expectedStringListWithoutNull(), outputList);
     }
 
@@ -64,7 +66,7 @@ public class ConvertObjectListToStringListUnitTest {
         listOfStrings.add(Double.toString(273773.98));
         listOfStrings.add(null);
         listOfStrings.add(new Node(2, 4).toString());
-        listOfStrings.add(new User("user1344", "John", "Doe").toString());
+        listOfStrings.add(new User("John Doe").toString());
         return listOfStrings;
     }
 
@@ -76,15 +78,15 @@ public class ConvertObjectListToStringListUnitTest {
         listOfStrings.add(Double.valueOf(273773.98));
         listOfStrings.add(null);
         listOfStrings.add(new Node(2, 4));
-        listOfStrings.add(new User("user1344", "John", "Doe"));
+        listOfStrings.add(new User("John Doe"));
         return listOfStrings;
     }
 
     private List<String> expectedStringListWithoutNull() {
-        return List.of("1", "true", "hello", Double.toString(273773.98), new Node(2, 4).toString(), new User("user1344", "John", "Doe").toString());
+        return List.of("1", "true", "hello", Double.toString(273773.98), new Node(2, 4).toString(), new User("John Doe").toString());
     }
 
     private List<Object> objectListWithoutNull() {
-        return List.of(1, true, "hello", Double.valueOf(273773.98), new Node(2, 4), new User("user1344", "John", "Doe"));
+        return List.of(1, true, "hello", Double.valueOf(273773.98), new Node(2, 4), new User("John Doe"));
     }
 }

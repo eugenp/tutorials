@@ -1,22 +1,14 @@
 package com.baeldung.listofobjectstolistofstring;
 
 public class User {
-    private final String userName;
-    private final String firstName;
-    private final String lastName;
+    private final String fullName;
 
-    public User(String userName, String firstName, String lastName) {
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String fullName) {
+        this.fullName = fullName;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return "User (" + "full name='" + fullName + ')';
     }
 }
