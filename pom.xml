@@ -384,7 +384,7 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- failing in build -->
+                <!-- <module>gcp-firebase</module> --> <!-- JAVA-16938 -->
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -770,7 +770,7 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- failing in build -->
+                <!-- <module>gcp-firebase</module> --> <!-- JAVA-16938 -->
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
