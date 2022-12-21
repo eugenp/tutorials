@@ -9,6 +9,9 @@ import dnl.utils.text.table.TextTable;
 
 public class TableFormatterExamples {
 
+    private static final String ID = "Id";
+    private static final String FULL_NAME = "Full Name";
+    private static final String EMAIL_ADDRESS = "Email Address";
     public static void main(String[] args) {
         List<Student> students = getStudentRecords();
         formatUsingJavaFormatter(students);
@@ -30,22 +33,22 @@ public class TableFormatterExamples {
 
     private static void formatUsingJavaFormatter(List<Student> students) {
         Formatter formatter = new Formatter();
-        formatter.format("%16s %16s %16s\n", "Id", "Full Name", "Email Address");
+        formatter.format("%16s %16s %16s %n", ID, FULL_NAME, EMAIL_ADDRESS);
         for (Student s : students) {
-            formatter.format("%16d %16s %16s\n", s.getId(), s.getFullName(), s.getEmailAddress());
+            formatter.format("%16d %16s %16s %n", s.getId(), s.getFullName(), s.getEmailAddress());
         }
         System.out.println(formatter);
     }
 
     private static void formatUsingPrintStream(List<Student> students) {
-        System.out.printf("%16s %16s %16s\n", "Id", "Full Name", "Email Address");
+        System.out.printf("%16s %16s %16s %n", ID, FULL_NAME, EMAIL_ADDRESS);
         for (Student s : students) {
-            System.out.printf("%16d %16s %16s\n", s.getId(), s.getFullName(), s.getEmailAddress());
+            System.out.printf("%16d %16s %16s %n", s.getId(), s.getFullName(), s.getEmailAddress());
         }
     }
 
     private static void formatUsingJTextUtils() {
-        String[] columnNames = { "Id", "Full Name", "Email Address" };
+        String[] columnNames = {ID, FULL_NAME, EMAIL_ADDRESS};
         Object[][] studentsData = { { 1, "Reham Muzzamil", "reham@gmail.com" }, { 2, "John Mark", "john@mark.com" }, { 3, "Abraham Dales", "ab@dales.com" } };
         TextTable textTable = new TextTable(columnNames, studentsData);
         textTable.printTable();
@@ -55,7 +58,7 @@ public class TableFormatterExamples {
 
         AsciiTable asciiTable = new AsciiTable();
         asciiTable.addRule();
-        asciiTable.addRow("Id", "Full Name", "Email Address");
+        asciiTable.addRow(ID, FULL_NAME, EMAIL_ADDRESS);
         asciiTable.addRule();
         for (Student student : students) {
             asciiTable.addRow(student.getId(), student.getFullName(), student.getEmailAddress());
