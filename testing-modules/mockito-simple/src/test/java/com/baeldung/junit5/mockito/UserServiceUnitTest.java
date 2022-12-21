@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -13,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
@@ -115,7 +115,7 @@ class UserServiceUnitTest {
     void givenUserWithExistingName_whenSaveUser_thenGiveUsernameAlreadyExistsError() {
         // Given
         user = new User("jerry", 12);
-        Mockito.reset(userRepository);
+        reset(userRepository);
         when(userRepository.isUsernameAlreadyExists(any(String.class))).thenReturn(true);
 
         // When
