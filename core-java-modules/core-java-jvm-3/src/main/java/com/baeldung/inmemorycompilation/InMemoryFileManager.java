@@ -11,13 +11,13 @@ import javax.tools.StandardJavaFileManager;
 
 public class InMemoryFileManager extends ForwardingJavaFileManager<JavaFileManager> {
 
-    private final Map<String, com.baeldung.inmemorycompilation.JavaClassAsBytes> compiledClasses;
+    private final Map<String, JavaClassAsBytes> compiledClasses;
     private final ClassLoader loader;
 
     public InMemoryFileManager(StandardJavaFileManager standardManager) {
         super(standardManager);
         this.compiledClasses = new Hashtable<>();
-        this.loader = new com.baeldung.inmemorycompilation.InMemoryClassLoader(this.getClass()
+        this.loader = new InMemoryClassLoader(this.getClass()
                                                                                    .getClassLoader(),
             this
         );
@@ -39,14 +39,14 @@ public class InMemoryFileManager extends ForwardingJavaFileManager<JavaFileManag
     public JavaFileObject getJavaFileForOutput(Location location, String className, Kind kind,
         FileObject sibling) {
 
-        com.baeldung.inmemorycompilation.JavaClassAsBytes classAsBytes = new com.baeldung.inmemorycompilation.JavaClassAsBytes(
+        JavaClassAsBytes classAsBytes = new JavaClassAsBytes(
             className, kind);
         compiledClasses.put(className, classAsBytes);
 
         return classAsBytes;
     }
 
-    public Map<String, com.baeldung.inmemorycompilation.JavaClassAsBytes> getBytesMap() {
+    public Map<String, JavaClassAsBytes> getBytesMap() {
         return compiledClasses;
     }
 }

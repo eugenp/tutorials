@@ -22,13 +22,14 @@ public class InMemoryCompilationUnitTest {
     final static String SOURCE_CODE =
       "package com.baeldung.inmemorycompilation;\n"
         + "public class TestClass implements InMemoryClass {\n"
-        + "@Override\n" + "    public void runCode() {\n"
+        + "@Override\n"
+        + "    public void runCode() {\n"
         + "        System.out.println(\"code is running...\");\n"
         + "    }\n"
         + "}\n";
 
     @Test
-    public void test() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public void whenStringIsCompiled_ThenCodeShouldExecute() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
