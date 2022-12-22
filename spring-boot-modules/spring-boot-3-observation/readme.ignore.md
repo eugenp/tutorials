@@ -1,9 +1,0 @@
-- https://spring.io/blog/2022/10/12/observability-with-spring-boot-3
-- https://piotrminkowski.com/2022/11/03/spring-boot-3-observability-with-grafana/
-- Logs
-  - ElasticStack
-  - Splunk (https://medium.com/@reddy.srikant/logging-configuration-in-spring-boot-for-splunk-e6b504658011)
-- Traces
-  - Spring Sleuth -> Micrometer Tracing
-  - OpenTracing -> Jaeger (https://www.baeldung.com/distributed-systems-observability)
-- Testing: https://micrometer.io/docs/observation#_testing
