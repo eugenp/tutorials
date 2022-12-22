@@ -15,3 +15,4 @@
 - [Guide to Java PriorityQueue](https://www.baeldung.com/java-priorityqueue)
 - [Java Generics PECS – Producer Extends Consumer Super](https://www.baeldung.com/java-generics-pecs)
 - [Reversing a Stack in Java](https://www.baeldung.com/java-reversing-a-stack)
+- [Sorting a HashSet in Java](https://www.baeldung.com/java-sort-hashset)
