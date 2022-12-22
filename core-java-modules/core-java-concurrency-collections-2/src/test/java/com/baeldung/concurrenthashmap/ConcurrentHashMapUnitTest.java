@@ -2,7 +2,6 @@ package com.baeldung.concurrenthashmap;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class ConcurrentHashMapUnitTest {
         frequencyMap.clear();
     }
 
-    @RepeatedTest(30)
+    @Test
     public void givenOneThreadIsWriting_whenAnotherThreadReads_thenGetCorrectValue() throws Exception {
         ExecutorService threadExecutor = Executors.newFixedThreadPool(3);
 
@@ -53,7 +52,7 @@ public class ConcurrentHashMapUnitTest {
         threadExecutor.shutdown();
     }
 
-    @RepeatedTest(30)
+    @Test
     public void givenOneThreadIsWriting_whenAnotherThreadWritesAtSameKey_thenWaitAndGetCorrectValue() throws Exception {
         ExecutorService threadExecutor = Executors.newFixedThreadPool(2);
 
@@ -77,7 +76,7 @@ public class ConcurrentHashMapUnitTest {
         threadExecutor.shutdown();
     }
 
-    @RepeatedTest(30)
+    @Test
     public void givenOneThreadIsWriting_whenAnotherThreadWritesAtDifferentKey_thenNotWait() throws InterruptedException {
         ExecutorService threadExecutor = Executors.newFixedThreadPool(2);
 
