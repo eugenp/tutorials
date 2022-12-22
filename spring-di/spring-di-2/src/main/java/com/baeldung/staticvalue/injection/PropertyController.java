@@ -14,17 +14,17 @@ public class PropertyController {
     private String name;
 
     @Value("${name}")
-    private static String NAME_NULL;
+    private static String nameNull;
 
-    private static String NAME_STATIC;
+    private static String namesStatic;
 
     @Value("${name}")
-    public void setNameStatic(String name){
-        PropertyController.NAME_STATIC = name;
+    public void setNameStatic(String name) {
+        PropertyController.namesStatic = name;
     }
 
     @GetMapping("/properties")
-    public List<String> getProperties(){
-        return Arrays.asList(this.name, NAME_STATIC, NAME_NULL)  ;
+    public List<String> getProperties() {
+        return Arrays.asList(this.name, namesStatic, nameNull);
     }
 }
