@@ -32,4 +32,9 @@ public class CircularDependencyIntegrationTest {
 
         Assert.assertEquals("Hi!", circA.getCircB().getMessage());
     }
+    
+    @Test
+    public void givenCircularDependency_whenConstructorInjection_thenItFails() {
+        // Empty test; we just want the context to load
+    }
 }

@@ -20,10 +20,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <tablesaw.version>0.43.1</tablesaw.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -37,5 +33,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <tablesaw.version>0.43.1</tablesaw.version>
+    </properties>
 
 </project>

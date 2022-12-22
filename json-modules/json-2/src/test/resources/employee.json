@@ -1,0 +1,30 @@
+{
+  "name" : "Bob",
+  "profession" : "Software engineer",
+  "department" : "Research",
+  "age" : 40,
+  "family" : [
+    {
+      "wife" : {
+        "name" : "Alice",
+        "profession" : "Doctor",
+        "age" : 38
+      }
+    },
+    {
+      "son" : {
+        "name" : "Peter",
+        "occupation" : "Schoolboy",
+        "age" : 11
+      }
+    }
+  ],
+  "performance" : [
+    {
+      "2020" : 4.5
+    },
+    {
+      "2021" : 4.8
+    }
+  ]
+}
