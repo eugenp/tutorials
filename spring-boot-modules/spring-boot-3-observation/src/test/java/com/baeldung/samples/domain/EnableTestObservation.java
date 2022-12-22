@@ -1,6 +1,9 @@
 package com.baeldung.samples.domain;
 
+import com.baeldung.samples.config.ObservedAspectConfiguration;
 import io.micrometer.observation.tck.TestObservationRegistry;
+import io.micrometer.tracing.test.simple.SimpleTracer;
+import org.springframework.boot.test.autoconfigure.actuate.observability.AutoConfigureObservability;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
@@ -16,8 +19,12 @@ import java.lang.annotation.Target;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(EnableTestObservationRegistry.ObservationTestConfiguration.class)
-public @interface EnableTestObservationRegistry {
+@AutoConfigureObservability
+@Import({
+  ObservedAspectConfiguration.class,
+  EnableTestObservation.ObservationTestConfiguration.class
+})
+public @interface EnableTestObservation {
 
     @TestConfiguration
     class ObservationTestConfiguration {
@@ -25,6 +32,11 @@ public @interface EnableTestObservationRegistry {
         @Bean
         TestObservationRegistry observationRegistry() {
             return TestObservationRegistry.create();
+        }
+
+        @Bean
+        SimpleTracer simpleTracer() {
+            return new SimpleTracer();
         }
 
     }
