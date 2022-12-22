@@ -61,12 +61,12 @@ public class ConcurrentHashMapUnitTest {
 
         Callable<Integer> writeAfter5Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
             sleep(5);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
         Callable<Integer> writeAfter1Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
             sleep(1);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
         List<Future<Integer>> results = threadExecutor.invokeAll(asList(writeAfter5Sec, writeAfter1Sec));
