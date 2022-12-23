@@ -10,6 +10,7 @@ This module contains articles about JSON.
 - [Generate a Java Class From JSON](https://www.baeldung.com/java-generate-class-from-json)
 - [A Guide to FastJson](https://www.baeldung.com/fastjson)
 - [Check Whether a String is Valid JSON in Java](https://www.baeldung.com/java-validate-json-string)
+- [Getting a Value in JSONObject](https://www.baeldung.com/java-jsonobject-get-value)
 
 - More Articles: [[<-- prev]](/json-modules/json)
 
