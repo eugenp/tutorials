@@ -1062,8 +1062,6 @@
 
                 <!-- Modules from default heavy               -->
                 <module>vaadin</module>
-                <module>vavr-modules</module>
-
             </modules>
 
             <properties>
@@ -1266,8 +1264,6 @@
 
                 <!-- Modules from default heavy               -->
                 <module>vaadin</module>
-                <module>vavr-modules</module>
-
             </modules>
 
             <properties>
