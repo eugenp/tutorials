@@ -17,7 +17,7 @@ import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStra
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
-class generateNewPdfWithWatermarkUnitTest {
+class GenerateNewPdfWithWatermarkUnitTest {
 
     @Test
     public void givenNewTexts_whenGeneratingNewPDFWithIText_thenGeneratePDFwithWatermarks() throws IOException {

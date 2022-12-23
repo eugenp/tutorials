@@ -18,7 +18,7 @@ import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
-class addWaterMarkToExistingPdfUnitTest {
+class AddWaterMarkToExistingPdfUnitTest {
 
     @Test
     public void givenAnExistingPDF_whenManipulatedPDFWithIText_thenGeneratePDFwithWatermarks() throws IOException {
