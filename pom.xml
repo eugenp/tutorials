@@ -398,6 +398,7 @@
 
 <!--                <module>libraries-data-db</module>-->
 <!--                <module>libraries-security</module>-->
+<!--                <module>libraries-server-2</module>-->
 <!--                <module>libraries-testing</module>-->
 <!--                <module>logging-modules</module>-->
 <!--                <module>lombok-modules</module>-->
@@ -475,46 +476,46 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
-                <module>server-modules</module>
-                <module>spf4j</module>
-                <module>spring-4</module>
-                <module>spring-reactive-modules</module>
-                <module>spring-aop</module>
-                <module>spring-aop-2</module>
-                <module>spring-batch</module>
-                <module>spring-bom</module>
-                <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-caching</module>
-                <module>spring-cloud-modules</module>
-                <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core</module>
-                <module>spring-core-4</module>
-                <module>spring-di-2</module>
-                <module>spring-drools</module>
-                <module>spring-ejb-modules</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
-                <module>spring-jinq</module>
-                <module>spring-remoting-modules</module>
-                <module>spring-roo</module>
-                <module>spring-security-modules</module>
-                <module>spring-shell</module>
-                <module>spring-soap</module>
-                <module>spring-spel</module>
-                <module>spring-static-resources</module>
-                <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
-                <module>spring-web-modules</module>
-                <module>spring-websockets</module>
-                <module>static-analysis</module>
-                <module>testing-modules</module>
-                <module>vertx-modules</module>
-                <module>video-tutorials</module>
-                <module>xml</module>
-                <module>xml-2</module>
+<!--                <module>saas-modules</module>-->
+<!--                <module>server-modules</module>-->
+<!--                <module>spf4j</module>-->
+<!--                <module>spring-4</module>-->
+<!--                <module>spring-reactive-modules</module>-->
+<!--                <module>spring-aop</module>-->
+<!--                <module>spring-aop-2</module>-->
+<!--                <module>spring-batch</module>-->
+<!--                <module>spring-bom</module>-->
+<!--                <module>spring-boot-modules</module>-->
+<!--                <module>spring-boot-rest</module>-->
+<!--                <module>spring-caching</module>-->
+<!--                <module>spring-cloud-modules</module>-->
+<!--                &lt;!&ndash; <module>spring-cloud-cli</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
+<!--                <module>spring-core</module>-->
+<!--                <module>spring-core-4</module>-->
+<!--                <module>spring-di-2</module>-->
+<!--                <module>spring-drools</module>-->
+<!--                <module>spring-ejb-modules</module>-->
+<!--                <module>spring-integration</module>-->
+<!--                <module>spring-jenkins-pipeline</module>-->
+<!--                <module>spring-jersey</module>-->
+<!--                <module>spring-jinq</module>-->
+<!--                <module>spring-remoting-modules</module>-->
+<!--                <module>spring-roo</module>-->
+<!--                <module>spring-security-modules</module>-->
+<!--                <module>spring-shell</module>-->
+<!--                <module>spring-soap</module>-->
+<!--                <module>spring-spel</module>-->
+<!--                <module>spring-static-resources</module>-->
+<!--                <module>spring-swagger-codegen</module>-->
+<!--                <module>spring-vault</module>-->
+<!--                <module>spring-web-modules</module>-->
+<!--                <module>spring-websockets</module>-->
+<!--                <module>static-analysis</module>-->
+<!--                <module>testing-modules</module>-->
+<!--                <module>vertx-modules</module>-->
+<!--                <module>video-tutorials</module>-->
+<!--                <module>xml</module>-->
+<!--                <module>xml-2</module>-->
             </modules>
 
         </profile>
@@ -674,6 +675,7 @@
 
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
+                <module>libraries-server-2</module>
                 <module>libraries-testing</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -1014,8 +1016,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
-                <module>libraries-server-2</module>
-
 
                 <module>lucene</module>
                 <module>mapstruct</module>
@@ -1215,7 +1215,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
-                <module>libraries-server-2</module>
 
                 <module>lucene</module>
                 <module>mapstruct</module>
