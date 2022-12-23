@@ -114,7 +114,7 @@
     </build>
 
     <properties>
-        <keycloak-adapter-bom.version>15.0.2</keycloak-adapter-bom.version>
+        <keycloak-adapter-bom.version>20.0.2</keycloak-adapter-bom.version>
     </properties>
 
 </project>
