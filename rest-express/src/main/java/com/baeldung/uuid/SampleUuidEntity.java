@@ -1,12 +1,11 @@
 package com.baeldung.uuid;
 
-import org.restexpress.plugin.hyperexpress.Linkable;
 import com.baeldung.Constants;
 import com.baeldung.serialization.UuidFormatter;
-
 import com.strategicgains.hyperexpress.annotation.BindToken;
 import com.strategicgains.hyperexpress.annotation.TokenBindings;
 import com.strategicgains.repoexpress.mongodb.AbstractUuidMongodbEntity;
+import org.restexpress.plugin.hyperexpress.Linkable;
 
 /**
  * This is a sample entity identified by a UUID (instead of a MongoDB ObjectID).
@@ -14,13 +13,11 @@ import com.strategicgains.repoexpress.mongodb.AbstractUuidMongodbEntity;
  * by the persistence layer (SampleUuidEntityRepository).
  */
 @TokenBindings({
-	@BindToken(value=Constants.Url.SAMPLE_ID, field="id", formatter=UuidFormatter.class)
+        @BindToken(value = Constants.Url.SAMPLE_ID, field = "id", formatter = UuidFormatter.class)
 })
 public class SampleUuidEntity
-extends AbstractUuidMongodbEntity
-implements Linkable
-{
-	public SampleUuidEntity()
-	{
-	}
+        extends AbstractUuidMongodbEntity
+        implements Linkable {
+    public SampleUuidEntity() {
+    }
 }
