@@ -52,6 +52,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <ksqldb.version>6.2.0</ksqldb.version>
         <awaitility.version>4.1.0</awaitility.version>

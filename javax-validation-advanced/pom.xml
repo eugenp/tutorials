@@ -26,6 +26,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <spring.boot.version>2.7.5</spring.boot.version>
         <jackson.databind.version>2.14.0</jackson.databind.version>

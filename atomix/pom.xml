@@ -27,6 +27,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <atomix-all.version>1.0.0-rc9</atomix-all.version>
     </properties>

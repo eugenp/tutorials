@@ -26,6 +26,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <finagle.core.version>20.4.0</finagle.core.version>
         <finagle.http.version>20.4.0</finagle.http.version>

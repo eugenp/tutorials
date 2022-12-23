@@ -59,6 +59,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <jna.version>5.7.0</jna.version>
         <kafka.version>2.8.0</kafka.version>
