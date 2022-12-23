@@ -37,6 +37,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <spring.version>5.3.3</spring.version>
         <spring-boot-starter.version>2.4.2</spring-boot-starter.version>
