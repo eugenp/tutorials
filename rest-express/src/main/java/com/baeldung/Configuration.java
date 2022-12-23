@@ -1,18 +1,17 @@
 package com.baeldung;
 
-import java.util.Properties;
-
-import org.restexpress.RestExpress;
 import com.baeldung.objectid.SampleOidEntityController;
 import com.baeldung.objectid.SampleOidEntityRepository;
 import com.baeldung.objectid.SampleOidEntityService;
 import com.baeldung.uuid.SampleUuidEntityController;
 import com.baeldung.uuid.SampleUuidEntityRepository;
 import com.baeldung.uuid.SampleUuidEntityService;
-import org.restexpress.util.Environment;
-
 import com.strategicgains.repoexpress.mongodb.MongoConfig;
 import com.strategicgains.restexpress.plugin.metrics.MetricsConfig;
+import org.restexpress.RestExpress;
+import org.restexpress.util.Environment;
+
+import java.util.Properties;
 
 public class Configuration
         extends Environment {

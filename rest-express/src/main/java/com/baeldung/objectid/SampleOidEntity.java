@@ -1,11 +1,10 @@
 package com.baeldung.objectid;
 
-import org.restexpress.plugin.hyperexpress.Linkable;
 import com.baeldung.Constants;
-
 import com.strategicgains.hyperexpress.annotation.BindToken;
 import com.strategicgains.hyperexpress.annotation.TokenBindings;
 import com.strategicgains.repoexpress.mongodb.AbstractMongodbEntity;
+import org.restexpress.plugin.hyperexpress.Linkable;
 
 /**
  * This is a sample entity identified by a MongoDB ObjectID (instead of a UUID).
