@@ -20,7 +20,7 @@
     <description>A Basic, MongoDB-backed Service Suite</description>
     <url>https://github.com/RestExpress/RestExpress-Scaffold</url>
     <version>1.0.0-SNAPSHOT</version>
-    <artifactId>rest-express-example</artifactId>
+    <artifactId>rest-express</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
