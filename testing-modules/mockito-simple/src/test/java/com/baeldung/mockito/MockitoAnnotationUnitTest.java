@@ -1,23 +1,27 @@
 package com.baeldung.mockito;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MockitoAnnotationUnitTest {
+@ExtendWith(MockitoExtension.class)
+class MockitoAnnotationUnitTest {
 
     @Mock
     private List<String> mockedList;
@@ -36,61 +40,61 @@ public class MockitoAnnotationUnitTest {
     // tests
 
     @Test
-    public void whenNotUseMockAnnotation_thenCorrect() {
-        final List<String> mockList = Mockito.mock(List.class);
+    void whenNotUseMockAnnotation_thenCorrect() {
+        final List<String> mockList = mock(List.class);
         mockList.add("one");
-        Mockito.verify(mockList).add("one");
+        verify(mockList).add("one");
         assertEquals(0, mockList.size());
 
-        Mockito.when(mockList.size()).thenReturn(100);
+        when(mockList.size()).thenReturn(100);
         assertEquals(100, mockList.size());
     }
 
     @Test
-    public void whenUseMockAnnotation_thenMockIsInjected() {
+    void whenUseMockAnnotation_thenMockIsInjected() {
         mockedList.add("one");
-        Mockito.verify(mockedList).add("one");
+        verify(mockedList).add("one");
         assertEquals(0, mockedList.size());
 
-        Mockito.when(mockedList.size()).thenReturn(100);
+        when(mockedList.size()).thenReturn(100);
         assertEquals(100, mockedList.size());
     }
 
     @Test
-    public void whenNotUseSpyAnnotation_thenCorrect() {
-        final List<String> spyList = Mockito.spy(new ArrayList<String>());
+    void whenNotUseSpyAnnotation_thenCorrect() {
+        final List<String> spyList = spy(new ArrayList<String>());
         spyList.add("one");
         spyList.add("two");
 
-        Mockito.verify(spyList).add("one");
-        Mockito.verify(spyList).add("two");
+        verify(spyList).add("one");
+        verify(spyList).add("two");
 
         assertEquals(2, spyList.size());
 
-        Mockito.doReturn(100).when(spyList).size();
+        doReturn(100).when(spyList).size();
         assertEquals(100, spyList.size());
     }
 
     @Test
-    public void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
+    void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
         spiedList.add("one");
         spiedList.add("two");
 
-        Mockito.verify(spiedList).add("one");
-        Mockito.verify(spiedList).add("two");
+        verify(spiedList).add("one");
+        verify(spiedList).add("two");
 
         assertEquals(2, spiedList.size());
 
-        Mockito.doReturn(100).when(spiedList).size();
+        doReturn(100).when(spiedList).size();
         assertEquals(100, spiedList.size());
     }
     
     @Test
-    public void whenNotUseCaptorAnnotation_thenCorrect() {
-        final List<String> mockList = Mockito.mock(List.class);
+    void whenNotUseCaptorAnnotation_thenCorrect() {
+        final List<String> mockList = mock(List.class);
         final ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
         mockList.add("one");
-        Mockito.verify(mockList).add(arg.capture());
+        verify(mockList).add(arg.capture());
 
         assertEquals("one", arg.getValue());
     }
@@ -100,9 +104,9 @@ public class MockitoAnnotationUnitTest {
     ArgumentCaptor<String> argCaptor;
 
     @Test
-    public void whenUseCaptorAnnotation_thenTheSame() {
+    void whenUseCaptorAnnotation_thenTheSame() {
         mockedList.add("one");
-        Mockito.verify(mockedList).add(argCaptor.capture());
+        verify(mockedList).add(argCaptor.capture());
 
         assertEquals("one", argCaptor.getValue());
     }
@@ -114,8 +118,8 @@ public class MockitoAnnotationUnitTest {
     private MyDictionary dic = new MyDictionary();
 
     @Test
-    public void whenUseInjectMocksAnnotation_thenCorrect() {
-        Mockito.when(wordMap.get("aWord")).thenReturn("aMeaning");
+    void whenUseInjectMocksAnnotation_thenCorrect() {
+        when(wordMap.get("aWord")).thenReturn("aMeaning");
 
         assertEquals("aMeaning", dic.getMeaning("aWord"));
     }

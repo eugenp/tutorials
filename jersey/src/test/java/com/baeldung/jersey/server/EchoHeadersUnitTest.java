@@ -5,6 +5,7 @@ import com.baeldung.jersey.client.filter.AddHeaderOnRequestFilter;
 import org.glassfish.jersey.media.sse.SseFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.ws.rs.core.Application;
@@ -16,6 +17,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Ignore
 public class EchoHeadersUnitTest extends JerseyTest {
 
     private static final String SIMPLE_HEADER_KEY = "my-header-key";
