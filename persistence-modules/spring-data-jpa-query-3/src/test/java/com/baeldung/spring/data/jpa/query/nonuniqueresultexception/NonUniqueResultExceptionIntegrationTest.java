@@ -22,7 +22,7 @@ public class NonUniqueResultExceptionIntegrationTest {
     private ArticleRepository repository;
 
     @Test
-    public void givenImportedArticlesWhenFindByPublicationTimeBetweenThenNIncorrectResultSizeDataAccessExceptionThrown() {
+    public void givenImportedArticles_whenFindByPublicationTimeBetween_thenIncorrectResultSizeDataAccessExceptionThrown() {
         assertThatThrownBy(() -> repository.findByPublicationTimeBetween(new SimpleDateFormat("HH:mm").parse("15:15"), new SimpleDateFormat("HH:mm").parse("16:30")))
                 .isInstanceOf(IncorrectResultSizeDataAccessException.class)
                 .hasCauseInstanceOf(NonUniqueResultException.class);
