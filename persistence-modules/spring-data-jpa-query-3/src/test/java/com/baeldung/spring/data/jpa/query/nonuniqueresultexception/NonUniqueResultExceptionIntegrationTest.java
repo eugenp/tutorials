@@ -29,7 +29,7 @@ public class NonUniqueResultExceptionIntegrationTest {
     }
 
     @Test
-    public void givenImportedArticlesWhenfindAllByPublicationTimeBetweenThenSuccess() throws ParseException {
+    public void givenImportedArticles_whenFindAllByPublicationTimeBetween_thenSuccess() throws ParseException {
         repository.findAllByPublicationTimeBetween(new SimpleDateFormat("HH:mm").parse("15:15"), new SimpleDateFormat("HH:mm").parse("16:30"));
     }
 }
