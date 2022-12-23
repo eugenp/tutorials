@@ -15,11 +15,22 @@
                     <target>${maven-compiler-plugin.target}</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <properties>
         <maven-compiler-plugin.source>16</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>16</maven-compiler-plugin.target>
+        <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
     <name>core-java-collections-array-list</name>
     <packaging>jar</packaging>
