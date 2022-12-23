@@ -65,17 +65,15 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
-    	    <version>${javax.mail.version}</version>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>${jakarta.mail.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>javax.activation-api</artifactId>
-            <version>${javax.activation.version}</version>
-            <scope>runtime</scope>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>${jakarta.activation.version}</version>
         </dependency>
-
     </dependencies>
 
     <profiles>
@@ -117,10 +115,10 @@
         <json.version>20180130</json.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
         <docx4j.version>3.3.5</docx4j.version>
-        <javax.mail.version>1.6.2</javax.mail.version>
-        <javax.activation.version>1.2.0</javax.activation.version>
-        <logback.version>1.3.5</logback.version>
-        <slf4j.version>2.0.4</slf4j.version>
+        <jakarta.mail.version>2.0.1</jakarta.mail.version>
+        <jakarta.activation.version>2.0.1</jakarta.activation.version>
+        <logback.version>1.4.5</logback.version>
+        <slf4j.version>2.0.6</slf4j.version>
     </properties>
 
 </project>
