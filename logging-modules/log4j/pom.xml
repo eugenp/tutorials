@@ -29,12 +29,12 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>${log4j-api.version}</version>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log4j-core.version}</version>
+            <version>${log4j.version}</version>
         </dependency>
         <!--disruptor for log4j2 async logging -->
         <dependency>
@@ -45,9 +45,6 @@
     </dependencies>
 
     <properties>
-        <log4j.version>1.2.17</log4j.version>
-        <log4j-api.version>2.17.1</log4j-api.version>
-        <log4j-core.version>2.17.1</log4j-core.version>
         <disruptor.version>3.3.6</disruptor.version>
     </properties>
 
