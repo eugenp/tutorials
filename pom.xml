@@ -492,6 +492,7 @@
 <!--                &lt;!&ndash; <module>spring-cloud-cli</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
 <!--                <module>spring-core</module>-->
 <!--                <module>spring-core-4</module>-->
+<!--                <module>spring-di</module>-->
 <!--                <module>spring-di-2</module>-->
 <!--                <module>spring-drools</module>-->
 <!--                <module>spring-ejb-modules</module>-->
@@ -761,6 +762,7 @@
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-core</module>
                 <module>spring-core-4</module>
+                <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
@@ -1041,7 +1043,6 @@
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
-                <module>spring-di</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -1241,7 +1242,6 @@
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
-                <module>spring-di</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
