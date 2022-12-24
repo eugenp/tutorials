@@ -502,6 +502,7 @@
 <!--                <module>spring-jenkins-pipeline</module>-->
 <!--                <module>spring-jersey</module>-->
 <!--                <module>spring-jinq</module>-->
+<!--                <module>spring-katharsis</module>-->
 <!--                <module>spring-remoting-modules</module>-->
 <!--                <module>spring-roo</module>-->
 <!--                <module>spring-security-modules</module>-->
@@ -773,6 +774,7 @@
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
+                <module>spring-katharsis</module>
                 <module>spring-remoting-modules</module>
                 <module>spring-roo</module>
                 <module>spring-security-modules</module>
@@ -1050,7 +1052,6 @@
                 <module>spring-cucumber</module>
 
                 <module>spring-kafka</module>
-                <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-native</module>
                 <module>spring-protobuf</module>
@@ -1248,7 +1249,6 @@
                 <module>spring-cucumber</module>
 
                 <module>spring-kafka</module>
-                <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-native</module>
                 <module>spring-protobuf</module>
