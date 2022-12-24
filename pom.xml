@@ -332,106 +332,106 @@
 
                 <module>algorithms-modules</module>
 
-<!--                <module>apache-cxf-modules</module>-->
-<!--                <module>apache-libraries</module>-->
-<!--                <module>apache-poi</module>-->
-<!--                <module>apache-velocity</module>-->
-<!--                <module>di-modules</module>-->
-<!--                <module>asciidoctor</module>-->
+                <module>apache-cxf-modules</module>
+                <module>apache-libraries</module>
+                <module>apache-poi</module>
+                <module>apache-velocity</module>
+                <module>di-modules</module>
+                <module>asciidoctor</module>
 
-<!--                <module>aws-modules</module>-->
+                <module>aws-modules</module>
 
-<!--                <module>azure</module>-->
-<!--                <module>checker-plugin</module>-->
-<!--                &lt;!&ndash; <module>clojure</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
+                <module>azure</module>
+                <module>checker-plugin</module>
+                <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-<!--                <module>core-groovy-modules</module>-->
-<!--                <module>core-java-modules</module>-->
-<!--                <module>couchbase</module>-->
-<!--                <module>custom-pmd</module>-->
-<!--                <module>data-structures</module>-->
-<!--                <module>deeplearning4j</module>-->
-<!--                <module>drools</module>-->
-
-
-<!--                &lt;!&ndash; <module>ethereum</module> &ndash;&gt; &lt;!&ndash; JAVA-6001 &ndash;&gt;-->
+                <module>core-groovy-modules</module>
+                <module>core-java-modules</module>
+                <module>couchbase</module>
+                <module>custom-pmd</module>
+                <module>data-structures</module>
+                <module>deeplearning4j</module>
+                <module>drools</module>
 
 
-<!--                <module>geotools</module>-->
-
-<!--                &lt;!&ndash; <module>gradle-modules</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
-<!--                <module>gradle-modules/gradle/maven-to-gradle</module>-->
-<!--                &lt;!&ndash; <module>grails</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
-
-<!--                <module>guava-modules</module>-->
-<!--                &lt;!&ndash; <module>guest</module> &ndash;&gt; &lt;!&ndash; not to be built as its for guest articles  &ndash;&gt;-->
-
-<!--                <module>apache-httpclient</module>-->
-<!--                <module>httpclient-simple</module>-->
+                <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
 
-<!--                <module>jackson-modules</module>-->
+                <module>geotools</module>
 
-<!--                <module>javafx</module>-->
-<!--                <module>java-jdi</module>-->
-<!--                <module>java-websocket</module>-->
+                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
+                <module>gradle-modules/gradle/maven-to-gradle</module>
+                <!-- <module>grails</module> --> <!-- Not a maven project -->
 
+                <module>guava-modules</module>
+                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-
-<!--                <module>jaxb</module>-->
-<!--                <module>jersey</module>-->
-<!--                <module>jhipster-5</module>-->
-<!--                <module>jmeter</module>-->
-<!--                <module>jmh</module>-->
-
-<!--                <module>jsf</module>-->
-<!--                <module>json-modules</module>-->
-
-<!--                <module>kubernetes-modules</module>-->
-
-<!--                &lt;!&ndash; <module>lagom</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
-<!--                <module>language-interop</module>-->
-<!--                <module>libraries-2</module>-->
-<!--                <module>libraries-3</module>-->
-<!--                <module>libraries-data</module>-->
+                <module>apache-httpclient</module>
+                <module>httpclient-simple</module>
 
 
-<!--                <module>libraries-data-db</module>-->
-<!--                <module>libraries-security</module>-->
-<!--                <module>libraries-server-2</module>-->
-<!--                <module>libraries-testing</module>-->
-<!--                <module>logging-modules</module>-->
-<!--                <module>lombok-modules</module>-->
+                <module>jackson-modules</module>
 
-<!--                <module>maven-modules</module>-->
-
-<!--                <module>messaging-modules</module>-->
-
-<!--                <module>microservices-modules</module>-->
-<!--                <module>muleesb</module>-->
+                <module>javafx</module>
+                <module>java-jdi</module>
+                <module>java-websocket</module>
 
 
-<!--                <module>netflix-modules</module>-->
 
-<!--                <module>osgi</module>-->
-<!--                <module>orika</module>-->
+                <module>jaxb</module>
+                <module>jersey</module>
+                <module>jhipster-5</module>
+                <module>jmeter</module>
+                <module>jmh</module>
 
-<!--                <module>patterns-modules</module>-->
+                <module>jsf</module>
+                <module>json-modules</module>
 
-<!--                <module>performance-tests</module>-->
-<!--                <module>persistence-modules</module>-->
+                <module>kubernetes-modules</module>
+
+                <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <module>language-interop</module>
+                <module>libraries-2</module>
+                <module>libraries-3</module>
+                <module>libraries-data</module>
 
 
-<!--                <module>quarkus-modules</module>-->
+                <module>libraries-data-db</module>
+                <module>libraries-security</module>
+                <module>libraries-server-2</module>
+                <module>libraries-testing</module>
+                <module>logging-modules</module>
+                <module>lombok-modules</module>
 
-<!--                <module>rule-engines-modules</module>-->
-<!--                <module>rxjava-modules</module>-->
+                <module>maven-modules</module>
 
-<!--                <module>reactive-systems</module>-->
-<!--                <module>security-modules</module>-->
+                <module>messaging-modules</module>
 
-<!--                <module>vavr-modules</module>-->
-<!--                <module>web-modules</module>-->
+                <module>microservices-modules</module>
+                <module>muleesb</module>
+
+
+                <module>netflix-modules</module>
+
+                <module>osgi</module>
+                <module>orika</module>
+
+                <module>patterns-modules</module>
+
+                <module>performance-tests</module>
+                <module>persistence-modules</module>
+
+
+                <module>quarkus-modules</module>
+
+                <module>rule-engines-modules</module>
+                <module>rxjava-modules</module>
+
+                <module>reactive-systems</module>
+                <module>security-modules</module>
+
+                <module>vavr-modules</module>
+                <module>web-modules</module>
             </modules>
 
         </profile>
@@ -476,51 +476,51 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-<!--                <module>saas-modules</module>-->
-<!--                <module>server-modules</module>-->
-<!--                <module>spf4j</module>-->
-<!--                <module>spring-4</module>-->
-<!--                <module>spring-reactive-modules</module>-->
-<!--                <module>spring-aop</module>-->
-<!--                <module>spring-aop-2</module>-->
-<!--                <module>spring-batch</module>-->
-<!--                <module>spring-bom</module>-->
-<!--                <module>spring-boot-modules</module>-->
-<!--                <module>spring-boot-rest</module>-->
-<!--                <module>spring-caching</module>-->
-<!--                <module>spring-cloud-modules</module>-->
-<!--                &lt;!&ndash; <module>spring-cloud-cli</module> &ndash;&gt; &lt;!&ndash; Not a maven project &ndash;&gt;-->
-<!--                <module>spring-core</module>-->
-<!--                <module>spring-core-4</module>-->
-<!--                <module>spring-di</module>-->
-<!--                <module>spring-di-2</module>-->
-<!--                <module>spring-drools</module>-->
-<!--                <module>spring-ejb-modules</module>-->
+                <module>saas-modules</module>
+                <module>server-modules</module>
+                <module>spf4j</module>
+                <module>spring-4</module>
+                <module>spring-reactive-modules</module>
+                <module>spring-aop</module>
+                <module>spring-aop-2</module>
+                <module>spring-batch</module>
+                <module>spring-bom</module>
+                <module>spring-boot-modules</module>
+                <module>spring-boot-rest</module>
+                <module>spring-caching</module>
+                <module>spring-cloud-modules</module>
+                <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-di</module>
+                <module>spring-di-2</module>
+                <module>spring-drools</module>
+                <module>spring-ejb-modules</module>
 
-<!--                <module>spring-exceptions</module>-->
-<!--                <module>spring-integration</module>-->
-<!--                <module>spring-jenkins-pipeline</module>-->
-<!--                <module>spring-jersey</module>-->
-<!--                <module>spring-jinq</module>-->
-<!--                <module>spring-katharsis</module>-->
-<!--                <module>spring-mobile</module>-->
-<!--                <module>spring-remoting-modules</module>-->
-<!--                <module>spring-roo</module>-->
-<!--                <module>spring-security-modules</module>-->
-<!--                <module>spring-shell</module>-->
-<!--                <module>spring-soap</module>-->
-<!--                <module>spring-spel</module>-->
-<!--                <module>spring-static-resources</module>-->
-<!--                <module>spring-swagger-codegen</module>-->
-<!--                <module>spring-vault</module>-->
-<!--                <module>spring-web-modules</module>-->
-<!--                <module>spring-websockets</module>-->
-<!--                <module>static-analysis</module>-->
-<!--                <module>testing-modules</module>-->
-<!--                <module>vertx-modules</module>-->
-<!--                <module>video-tutorials</module>-->
-<!--                <module>xml</module>-->
-<!--                <module>xml-2</module>-->
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-jersey</module>
+                <module>spring-jinq</module>
+                <module>spring-katharsis</module>
+                <module>spring-mobile</module>
+                <module>spring-remoting-modules</module>
+                <module>spring-roo</module>
+                <module>spring-security-modules</module>
+                <module>spring-shell</module>
+                <module>spring-soap</module>
+                <module>spring-spel</module>
+                <module>spring-static-resources</module>
+                <module>spring-swagger-codegen</module>
+                <module>spring-vault</module>
+                <module>spring-web-modules</module>
+                <module>spring-websockets</module>
+                <module>static-analysis</module>
+                <module>testing-modules</module>
+                <module>vertx-modules</module>
+                <module>video-tutorials</module>
+                <module>xml</module>
+                <module>xml-2</module>
             </modules>
 
         </profile>
@@ -969,7 +969,7 @@
                 <module>lightrun</module>
                 <module>tablesaw</module>
 
-<!--                default-first moved modules-->
+<!--            Modules from default-first -->
 
                 <module>akka-modules</module>
                 <module>annotations</module>
