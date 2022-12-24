@@ -16,7 +16,7 @@ import static io.micrometer.tracing.test.simple.TracerAssert.assertThat;
 @ComponentScan(basePackageClasses = GreetingService.class)
 @EnableAutoConfiguration
 @EnableTestObservation
-class GreetingServiceTracingTest {
+class GreetingServiceTracingIntegrationTest {
 
     @Autowired
     GreetingService service;

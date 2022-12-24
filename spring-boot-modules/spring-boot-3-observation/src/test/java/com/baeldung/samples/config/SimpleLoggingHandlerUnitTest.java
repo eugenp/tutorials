@@ -4,7 +4,7 @@ import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
 import io.micrometer.observation.tck.AnyContextObservationHandlerCompatibilityKit;
 
-public class SimpleLoggingHandlerTest
+class SimpleLoggingHandlerUnitTest
   extends AnyContextObservationHandlerCompatibilityKit {
 
     SimpleLoggingHandler handler = new SimpleLoggingHandler();

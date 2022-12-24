@@ -14,7 +14,7 @@ import static io.micrometer.observation.tck.TestObservationRegistryAssert.assert
 @ComponentScan(basePackageClasses = GreetingService.class)
 @EnableAutoConfiguration
 @EnableTestObservation
-class GreetingServiceObservationTest {
+class GreetingServiceObservationIntegrationTest {
 
     @Autowired
     GreetingService service;
