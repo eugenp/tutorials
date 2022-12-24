@@ -108,13 +108,24 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no 
-                    influence on the Maven build itself. -->
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. -->
+                <!-- It has no influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>

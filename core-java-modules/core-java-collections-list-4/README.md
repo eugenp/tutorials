@@ -12,4 +12,6 @@ This module contains articles about the Java List collection
 - [How to Store HashMap<String, ArrayList> Inside a List](https://www.baeldung.com/java-hashmap-inside-list)
 - [Convert a List to a Comma-Separated String](https://www.baeldung.com/java-list-comma-separated-string)
 - [Set vs List in Java](https://www.baeldung.com/java-set-vs-list)
+- [Inserting an Object in an ArrayList at a Specific Position](https://www.baeldung.com/java-insert-object-arraylist-specific-position)
+- [Iterate Through Two ArrayLists Simultaneously](https://www.baeldung.com/iterate-through-two-arraylists-simultaneously)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list-3)

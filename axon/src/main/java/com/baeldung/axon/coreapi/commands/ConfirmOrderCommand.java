@@ -36,8 +36,6 @@ public class ConfirmOrderCommand {
 
     @Override
     public String toString() {
-        return "ConfirmOrderCommand{" +
-                "orderId='" + orderId + '\'' +
-                '}';
+        return "ConfirmOrderCommand{" + "orderId='" + orderId + '\'' + '}';
     }
 }

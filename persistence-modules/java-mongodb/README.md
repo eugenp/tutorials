@@ -13,5 +13,4 @@ This module contains articles about MongoDB in Java.
 - [Update Multiple Fields in a MongoDB Document](https://www.baeldung.com/mongodb-update-multiple-fields)
 - [Update Documents in MongoDB](https://www.baeldung.com/mongodb-update-documents)
 - [Check Collection Existence in MongoDB](https://www.baeldung.com/java-check-collection-existence-mongodb)
-- [Push and Set Operations in Same MongoDB Update](https://www.baeldung.com/java-mongodb-push-set)
 - More articles: [next -->](../java-mongodb-2)
