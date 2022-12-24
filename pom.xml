@@ -496,6 +496,8 @@
 <!--                <module>spring-di-2</module>-->
 <!--                <module>spring-drools</module>-->
 <!--                <module>spring-ejb-modules</module>-->
+
+<!--                <module>spring-exceptions</module>-->
 <!--                <module>spring-integration</module>-->
 <!--                <module>spring-jenkins-pipeline</module>-->
 <!--                <module>spring-jersey</module>-->
@@ -766,6 +768,7 @@
                 <module>spring-di-2</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
+                <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
@@ -1046,7 +1049,6 @@
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-exceptions</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -1245,7 +1247,6 @@
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
-                <module>spring-exceptions</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
