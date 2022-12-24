@@ -577,6 +577,9 @@
                 <module>libraries-6</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
+
+                <module>vaadin</module>
+                <module>vavr-modules</module>
             </modules>
         </profile>
 
@@ -842,6 +845,8 @@
                 <module>libraries-6</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
+                <module>vaadin</module>
+               <module>vavr-modules</module>
             </modules>
 
         </profile>
@@ -1066,9 +1071,6 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-
-                <!-- Modules from default heavy               -->
-                <module>vaadin</module>
             </modules>
 
             <properties>
@@ -1264,8 +1266,6 @@
                 <module>xstream</module>
                 <module>webrtc</module>
 
-                <!-- Modules from default heavy               -->
-                <module>vaadin</module>
             </modules>
 
             <properties>
