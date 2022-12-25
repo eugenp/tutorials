@@ -189,7 +189,7 @@
         <dbunit.version>2.7.0</dbunit.version>
         <archunit.version>0.14.1</archunit.version>
         <modelassert.version>1.0.0</modelassert.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>
