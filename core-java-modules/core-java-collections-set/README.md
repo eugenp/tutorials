@@ -13,3 +13,4 @@ This module contains articles about the Java Set collection
 - [Copying Sets in Java](https://www.baeldung.com/java-copy-sets)
 - [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
 - [Find the Difference Between Two Sets](https://www.baeldung.com/java-difference-between-sets)
+- More articles:  [[next -->]](/core-java-modules/core-java-collections-set-2)
