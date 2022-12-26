@@ -9,16 +9,16 @@ import org.springframework.mock.web.MockMultipartFile;
 public class CustomMultipartFileUnitTest {
 
     @Test
-    public void givenByteArray_thenMultipartFileCreated() throws IOException {
-        byte[] inputArr = "Test String".getBytes();
-        CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArr);
-        Assertions.assertArrayEquals(inputArr, customMultipartFile.getBytes());
+    public void whenProvidingByteArray_thenMultipartFileCreated() throws IOException {
+        byte[] inputArray = "Test String".getBytes();
+        CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArray);
+        Assertions.assertArrayEquals(inputArray, customMultipartFile.getBytes());
     }
 
     @Test
-    public void givenByteArray_thenMockMultipartFileCreated() throws IOException {
-        byte[] inputArr = "Test String".getBytes();
-        MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArr);
-        Assertions.assertArrayEquals(inputArr, mockMultipartFile.getBytes());
+    public void whenProvidingByteArray_thenMockMultipartFileCreated() throws IOException {
+        byte[] inputArray = "Test String".getBytes();
+        MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
+        Assertions.assertArrayEquals(inputArray, mockMultipartFile.getBytes());
     }
 }

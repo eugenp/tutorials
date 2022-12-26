@@ -51,8 +51,8 @@ public class CustomMultipartFile implements MultipartFile {
     }
 
     @Override
-    public void transferTo(File dest) throws IOException, IllegalStateException {
-        new FileOutputStream(dest).write(input);
+    public void transferTo(File destination) throws IOException, IllegalStateException {
+        new FileOutputStream(destination).write(input);
     }
 
 }
