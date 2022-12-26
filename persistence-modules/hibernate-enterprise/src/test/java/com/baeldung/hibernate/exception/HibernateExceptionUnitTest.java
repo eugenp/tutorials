@@ -26,6 +26,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.DataException;
 import org.hibernate.exception.SQLGrammarException;
 import org.hibernate.hql.internal.ast.QuerySyntaxException;
+import org.hibernate.id.IdentifierGenerationException;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.tool.schema.spi.CommandAcceptanceException;
 import org.hibernate.tool.schema.spi.SchemaManagementException;
@@ -211,6 +212,33 @@ public class HibernateExceptionUnitTest {
 
             Product product = new Product();
             product.setId(1);
+            session.save(product);
+            transaction.commit();
+        } catch (Exception e) {
+            rollbackTransactionQuietly(transaction);
+            throw (e);
+        } finally {
+            closeSessionQuietly(session);
+        }
+
+    }
+
+    @Test
+    public void givenEntityWithoutId_whenCallingSave_thenThrowIdentifierGenerationException() {
+
+        thrown.expect(isA(IdentifierGenerationException.class));
+        thrown.expectMessage("ids for this class must be manually assigned before calling save(): com.baeldung.hibernate.exception.Product");
+
+        Session session = null;
+        Transaction transaction = null;
+
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            ProductEntity product = new ProductEntity();
+            product.setName("Product Name");
+
             session.save(product);
             transaction.commit();
         } catch (Exception e) {
