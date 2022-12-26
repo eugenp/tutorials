@@ -22,7 +22,7 @@ public class DataStreamUnitTest {
     private static final String textFileContent = "Hello, world!";
 
     @Test
-    public void giveFile_writeUsingByteStream() throws IOException {
+    public void whenUsingByteStream_thenWriteTextToFile() throws IOException {
         DataStream dataStream = new DataStream();
         dataStream.textDataProcessingByteStream(dataProcessingTextFile, textFileContent);
 
@@ -34,7 +34,7 @@ public class DataStreamUnitTest {
     }
 
     @Test
-    public void giveFile_writeUsingCharStream() throws IOException {
+    public void whenUsingCharStream_thenWriteTextToFile() throws IOException {
         DataStream dataStream = new DataStream();
         dataStream.textDataProcessingCharStream(dataProcessingTextFile, textFileContent);
 
@@ -46,7 +46,7 @@ public class DataStreamUnitTest {
     }
 
     @Test
-    public void giveFiles_writeNonTextDataWithStreams() throws IOException {
+    public void whenUsingStreams_thenWriteNonTextData() throws IOException {
         DataStream dataStream = new DataStream();
         dataStream.nonTextDataProcessing(dataProcessingImageFile, dataProcessingByteStreamFile, dataProcessingCharStreamFile);
 
