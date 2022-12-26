@@ -84,35 +84,6 @@ public class MyClazzUnitTest {
           .get("key2"));
     }
 
-    @Test
-    public void gsonAndApacheTimeConsumingTest() {
-        //given
-        MyClazz_ myClazz = newMyClazz();
-        Gson gson = new Gson();
-
-        //when
-        long startTime = System.currentTimeMillis();
-        MyClazz_ myclazzCopy = new Gson().fromJson(gson.toJson(myClazz), MyClazz_.class);
-        long elapsedTimeGson = calculate(System.currentTimeMillis(), startTime, GSON);
-
-        //when
-        startTime = System.currentTimeMillis();
-        MyClazz_ deepCopied = myClazz.deepCopy();
-        long elapsedTimeApache = calculate(System.currentTimeMillis(), startTime, APACHE);
-
-        //then
-        Assertions.assertTrue(elapsedTimeGson < elapsedTimeApache);
-    }
-
-    private long calculate(long stopTime, long startTime, String method) {
-        long elapsedTime = stopTime - startTime;
-
-        System.out.println(method + " : " + elapsedTime);
-
-        return stopTime - startTime;
-
-    }
-
     private static MyClazz_ newMyClazz() {
         Map<String, String> properties = new LinkedHashMap<>();
         properties.put("key1", "value1");
