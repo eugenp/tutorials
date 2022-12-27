@@ -60,6 +60,7 @@
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
         <module>spring-boot-persistence-2</module>
+        <module>spring-boot-persistence-3</module>
         <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
@@ -75,7 +76,8 @@
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
+        <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
+        <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>

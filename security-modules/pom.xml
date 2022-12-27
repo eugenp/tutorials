@@ -22,7 +22,7 @@
         <module>jjwt</module>
         <module>jwt</module>
         <module>oauth2-framework-impl</module>
-        <module>sql-injection-samples</module>        
+        <module>sql-injection-samples</module>
     </modules>
 
 </project>
