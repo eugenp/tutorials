@@ -1,6 +1,11 @@
 package com.baeldung.deepcopy;
 
-public class DeepShallowCopy {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.Test;
+
+public class DeepShallowTest {
 
 	public static void main(String[] args) throws CloneNotSupportedException {
 		Diagram d1 = new Diagram("Dog", "blue", 100, 100);
@@ -57,62 +62,48 @@ public class DeepShallowCopy {
 		
 		
 	}
-}
-
-
-class Collection implements Cloneable{
-	Diagram diagram;
-	Collection(Diagram diagram){
-		this.diagram = diagram;
-	}
 	
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		Diagram diagram = (Diagram)this.diagram.clone();
-		Collection c = new Collection(diagram);
-		return c;
-	}
-}
-
-class Drawing implements Cloneable{
-	Diagram diagram;
-	Drawing(Diagram d){
-		this.diagram = d;
-	}
-	
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
-}
-
-class Diagram implements Cloneable{
-	String name;
-	String color;
-	Integer width;
-	Integer height;
-	
-	Diagram(){
+	@Test
+	public void testCreateDiagramCopyUsingCopyConstructor() {
+		Diagram d1 = new Diagram("Dog", "black", 100, 100);
+		Diagram d2 = DeepShallow.createDiagramUsingCopyConstructor(d1);
 		
-	}
-
-	public Diagram(String name, String color, Integer width, Integer height) {
-		this.name = name;
-		this.color = color;
-		this.width = width;
-		this.height = height;
+		assertNotEquals(d1, d2);
+		assertEquals(d1.name, d2.name);
+		
+		d2.name = "Cat";
+		assertNotEquals(d1.name, d2.name);
 	}
 	
-	public Diagram(Diagram d) {
-		this.name = d.name;
-		this.color = d.color;
-		this.width = d.width;
-		this.height = d.height;
+	@Test
+	public void testCreateDrawingUsingShallowCopy() throws CloneNotSupportedException {
+		
+		Diagram d1 = new Diagram("Dog", "black", 100, 100);
+		Drawing draw1 = new Drawing(d1);
+		
+		Drawing draw2 = DeepShallow.createDrawingUsingShallowCopy(draw1);
+		
+		assertNotEquals(draw1, draw2);
+		assertEquals(draw1.diagram.name, draw2.diagram.name);
+		
+		draw2.diagram.name = "Cat";
+		assertEquals(draw1.diagram.name, draw2.diagram.name);	
 	}
-
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
+	
+	@Test
+	public void testCreateCollectionUsingDeepCopy() throws CloneNotSupportedException {
+		
+		Diagram d1 = new Diagram("Dog", "black", 100, 100);
+		
+		Collection col1 = new Collection(d1);
+		Collection col2 = DeepShallow.createCollectionUsingDeepCopy(col1);
+		
+		assertNotEquals(col1, col2);
+		assertEquals(col1.diagram.name, col2.diagram.name);
+		
+		col2.diagram.name = "Stork";
+		assertNotEquals(col1.diagram.name, col2.diagram.name);
 	}
 }
+
 
