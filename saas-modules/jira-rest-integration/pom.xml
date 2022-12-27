@@ -27,7 +27,7 @@
     </dependencies>
 
     <build>
-        <finalName>saas</finalName>
+        <finalName>jira-rest-integration</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
