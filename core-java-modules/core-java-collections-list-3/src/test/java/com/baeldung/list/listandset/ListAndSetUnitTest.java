@@ -1,10 +1,15 @@
-package com.baeldung.listandset;
+package com.baeldung.list.listandset;
 
-import org.junit.Test;
-import org.junit.Assert;
-import java.util.*;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class ListAndSetUnitTest {
 
