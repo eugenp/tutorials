@@ -9,7 +9,7 @@ import java.io.InputStream;
 import org.springframework.web.multipart.MultipartFile;
 
 public class CustomMultipartFile implements MultipartFile {
-    private final byte[] input;
+    private byte[] input;
 
     public CustomMultipartFile(byte[] input) {
         this.input = input;
