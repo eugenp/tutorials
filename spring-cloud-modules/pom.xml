@@ -21,7 +21,7 @@
         <module>spring-cloud-config</module>
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-hystrix</module>
-        <module>spring-cloud-bootstrap</module>
+        <module>spring-cloud-bootstrap-legacy</module>
         <module>spring-cloud-ribbon-client</module>
         <module>spring-cloud-zookeeper</module>
         <module>spring-cloud-gateway</module>
