@@ -1,6 +1,6 @@
-package com.baeldung.spring.data.persistence.springdata_jpa_difference;
+package com.baeldung.spring.data.persistence.springdatajpadifference;
 
-import static com.baeldung.spring.data.persistence.springdata_jpa_difference.TestUtils.employee;
+import static com.baeldung.spring.data.persistence.springdatajpadifference.TestUtils.employee;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -22,11 +22,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.model.Employee;
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.model.QEmployee;
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.springdata.config.SpringDataJpaConfig;
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.springdata.repository.EmployeeRepository;
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.springdata.repository.EmployeeRepositoryPagingAndSort;
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee;
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.QEmployee;
+import com.baeldung.spring.data.persistence.springdatajpadifference.springdata.config.SpringDataJpaConfig;
+import com.baeldung.spring.data.persistence.springdatajpadifference.springdata.repository.EmployeeRepository;
+import com.baeldung.spring.data.persistence.springdatajpadifference.springdata.repository.EmployeeRepositoryPagingAndSort;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @ContextConfiguration(classes = SpringDataJpaConfig.class)

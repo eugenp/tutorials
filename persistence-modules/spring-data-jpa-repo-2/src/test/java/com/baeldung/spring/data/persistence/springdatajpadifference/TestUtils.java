@@ -1,6 +1,6 @@
-package com.baeldung.spring.data.persistence.springdata_jpa_difference;
+package com.baeldung.spring.data.persistence.springdatajpadifference;
 
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.model.Employee;
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee;
 
 public class TestUtils {
 

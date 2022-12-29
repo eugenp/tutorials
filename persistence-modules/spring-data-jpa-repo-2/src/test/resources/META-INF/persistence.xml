@@ -6,7 +6,7 @@
              version="2.1">
     <persistence-unit name="pu-test">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.baeldung.spring.data.persistence.springdata_jpa_difference.model.Employee</class>
+        <class>com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>

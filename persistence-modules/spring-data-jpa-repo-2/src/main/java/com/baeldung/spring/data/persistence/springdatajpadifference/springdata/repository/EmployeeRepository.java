@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.springdata_jpa_difference.springdata.repository;
+package com.baeldung.spring.data.persistence.springdatajpadifference.springdata.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.model.Employee;
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {

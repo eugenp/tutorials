@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.springdata_jpa_difference.model;
+package com.baeldung.spring.data.persistence.springdatajpadifference.model;
 
 import java.io.Serializable;
 import java.util.Objects;

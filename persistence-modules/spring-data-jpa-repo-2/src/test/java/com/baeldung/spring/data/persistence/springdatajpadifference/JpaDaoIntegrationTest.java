@@ -1,6 +1,6 @@
-package com.baeldung.spring.data.persistence.springdata_jpa_difference;
+package com.baeldung.spring.data.persistence.springdatajpadifference;
 
-import static com.baeldung.spring.data.persistence.springdata_jpa_difference.TestUtils.employee;
+import static com.baeldung.spring.data.persistence.springdatajpadifference.TestUtils.employee;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -20,8 +20,8 @@ import javax.persistence.criteria.Root;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.model.Employee;
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.model.Employee_;
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee;
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee_;
 
 public class JpaDaoIntegrationTest {
 

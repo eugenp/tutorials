@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.springdata_jpa_difference.springdata.config;
+package com.baeldung.spring.data.persistence.springdatajpadifference.springdata.config;
 
 import java.util.Properties;
 
@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.baeldung.spring.data.persistence.springdata_jpa_difference.springdata.repository.EmployeeRepository;
+import com.baeldung.spring.data.persistence.springdatajpadifference.springdata.repository.EmployeeRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Configuration
