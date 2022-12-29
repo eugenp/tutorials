@@ -27,8 +27,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <jackson.version>2.14.1</jackson.version>
-    </properties>
-
 </project>

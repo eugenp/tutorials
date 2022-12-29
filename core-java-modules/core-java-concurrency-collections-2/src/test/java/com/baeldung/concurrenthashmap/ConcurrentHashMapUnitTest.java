@@ -14,11 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConcurrentHashMapUnitTest {
 
-    private Map<Integer, Integer> frequencyMap;
+    private Map<Integer, Integer> frequencyMap = new ConcurrentHashMap<>();
 
     @BeforeEach
     public void setup() {
-        frequencyMap = new ConcurrentHashMap<>();
         frequencyMap.put(0, 0);
         frequencyMap.put(1, 0);
         frequencyMap.put(2, 0);
@@ -35,24 +34,22 @@ public class ConcurrentHashMapUnitTest {
 
         Runnable writeAfter1Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
             sleep(1);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
         Callable<Integer> readNow = () -> frequencyMap.get(1);
-        Callable<Integer> readAfter1001Ms = () -> {
-            TimeUnit.MILLISECONDS.sleep(1001);
+        Callable<Integer> readAfter2sec = () -> {
+            sleep(2);
             return frequencyMap.get(1);
         };
 
         threadExecutor.submit(writeAfter1Sec);
-        List<Future<Integer>> results = threadExecutor.invokeAll(asList(readNow, readAfter1001Ms));
+        List<Future<Integer>> results = threadExecutor.invokeAll(asList(readNow, readAfter2sec));
 
         assertEquals(0, results.get(0).get());
         assertEquals(1, results.get(1).get());
 
-        if (threadExecutor.awaitTermination(2, TimeUnit.SECONDS)) {
-            threadExecutor.shutdown();
-        }
+        threadExecutor.shutdown();
     }
 
     @Test
@@ -61,47 +58,45 @@ public class ConcurrentHashMapUnitTest {
 
         Callable<Integer> writeAfter5Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
             sleep(5);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
         Callable<Integer> writeAfter1Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
             sleep(1);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
-        List<Future<Integer>> results = threadExecutor.invokeAll(asList(writeAfter5Sec, writeAfter1Sec));
+        Future<Integer> result1 = threadExecutor.submit(writeAfter5Sec);
+        sleep(1);
+        Future<Integer> result2 = threadExecutor.submit(writeAfter1Sec);
 
-        assertEquals(1, results.get(0).get());
-        assertEquals(2, results.get(1).get());
+        assertEquals(1, result1.get());
+        assertEquals(2, result2.get());
 
-        if (threadExecutor.awaitTermination(2, TimeUnit.SECONDS)) {
-            threadExecutor.shutdown();
-        }
+        threadExecutor.shutdown();
     }
 
     @Test
-    public void givenOneThreadIsWriting_whenAnotherThreadWritesAtDifferentKey_thenNotWaitAndGetCorrectValue() throws Exception {
+    public void givenOneThreadIsWriting_whenAnotherThreadWritesAtDifferentKey_thenNotWait() throws InterruptedException {
         ExecutorService threadExecutor = Executors.newFixedThreadPool(2);
 
         Callable<Integer> writeAfter5Sec = () -> frequencyMap.computeIfPresent(1, (k, v) -> {
             sleep(5);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
         AtomicLong time = new AtomicLong(System.currentTimeMillis());
         Callable<Integer> writeAfter1Sec = () -> frequencyMap.computeIfPresent(2, (k, v) -> {
             sleep(1);
             time.set((System.currentTimeMillis() - time.get()) / 1000);
-            return frequencyMap.get(k) + 1;
+            return v + 1;
         });
 
         threadExecutor.invokeAll(asList(writeAfter5Sec, writeAfter1Sec));
 
         assertEquals(1, time.get());
 
-        if (threadExecutor.awaitTermination(2, TimeUnit.SECONDS)) {
-            threadExecutor.shutdown();
-        }
+        threadExecutor.shutdown();
     }
 
     private static void sleep(int timeout) {

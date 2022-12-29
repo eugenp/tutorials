@@ -384,7 +384,7 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-
+                <!-- <module>gcp-firebase</module> --> <!-- JAVA-16938 -->
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -564,6 +564,7 @@
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
                 <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-di</module>
@@ -768,7 +769,7 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
                 <module>feign</module>
-
+                <!-- <module>gcp-firebase</module> --> <!-- JAVA-16938 -->
                 <module>geotools</module>
                 <module>google-cloud</module>
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -813,6 +814,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
+                <module>libraries-7</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -853,6 +855,7 @@
 
                 <module>patterns-modules</module>
                 <module>pdf</module>
+                <module>pdf-2</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>protobuffer</module>
@@ -939,6 +942,7 @@
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
                 <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-di</module>
@@ -1141,6 +1145,7 @@
                  <module>core-java-modules/core-java-string-algorithms-3</module>
                  <module>core-java-modules/core-java-string-operations-3</module>
                  <module>core-java-modules/core-java-string-operations-4</module>
+                 <module>core-java-modules/core-java-string-operations-5</module>
                  <module>core-java-modules/core-java-time-measurements</module>
                  <module>core-java-modules/core-java-networking-3</module>
                  <module>core-java-modules/core-java-strings</module>
@@ -1149,6 +1154,7 @@
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
+                 <module>kubernetes-modules/kubernetes-spring</module>
                  <module>libraries-concurrency</module>
                  <module>maven-modules/compiler-plugin-java-9</module>
                  <module>maven-modules/maven-generate-war</module>
@@ -1162,6 +1168,7 @@
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>spring-boot-modules/spring-boot-3</module>
                  <module>spring-boot-modules/spring-boot-3-native</module>
+                <module>spring-boot-modules/spring-boot-3-observation</module>
                  <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
@@ -1211,6 +1218,7 @@
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-collections-list-4</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
+                <module>core-java-modules/core-java-collections-maps-5</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-date-operations-1</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
@@ -1218,15 +1226,19 @@
                 <module>core-java-modules/core-java-io-conversions-2</module>
                 <module>core-java-modules/core-java-jpms</module>
                 <module>core-java-modules/core-java-os</module>
+                <module>core-java-modules/core-java-streams-4</module>
                 <module>core-java-modules/core-java-string-algorithms-3</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
+                <module>core-java-modules/core-java-string-operations-5</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
+                <module>core-java-modules/core-java-httpclient</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
+                <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
@@ -1240,6 +1252,7 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
+                <module>spring-boot-modules/spring-boot-3-observation</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
