@@ -2,7 +2,7 @@
 
 <!--
     Proxies section (extract of settings.xml) containing example proxy definitions:
-    * BaeldungProxy_Encrypted - an example http proxy with an encrypted password - encrypted using 'mvn --encrypt-password'
+    * BaeldungProxy_Encrypted - an example http proxy with an encrypted password - encrypted using 'mvn -encrypt-password'
     * BaeldungProxy_Authenticated - an example http proxy with a plain text password.
     * BaeldungProxy - an example minimalist unauthenticated http proxy
     All of these are 'active' - so maven will use the first one in the list.
