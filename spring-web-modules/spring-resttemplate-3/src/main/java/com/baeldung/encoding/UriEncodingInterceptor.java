@@ -20,8 +20,8 @@ public class UriEncodingInterceptor implements ClientHttpRequestInterceptor {
                 URI uri = super.getURI();
                 String escapedQuery = uri.getRawQuery().replace("+", "%2B");
                 return UriComponentsBuilder.fromUri(uri)
-                        .replaceQuery(escapedQuery)
-                        .build(true).toUri();
+                  .replaceQuery(escapedQuery)
+                  .build(true).toUri();
             }
         };
         return execution.execute(encodedRequest, body);
