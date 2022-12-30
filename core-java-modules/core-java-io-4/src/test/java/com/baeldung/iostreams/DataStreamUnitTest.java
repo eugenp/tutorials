@@ -28,7 +28,7 @@ public class DataStreamUnitTest {
 
         File file = new File(dataProcessingTextFile);
         assertTrue(file.exists());
-        assertEquals(FileUtils.readFileToString(file, "utf-8"), textFileContent);
+        assertEquals(textFileContent, FileUtils.readFileToString(file, "utf-8"));
 
         Files.delete(Paths.get(dataProcessingTextFile));
     }
@@ -40,7 +40,7 @@ public class DataStreamUnitTest {
 
         File file = new File(dataProcessingTextFile);
         assertTrue(file.exists());
-        assertEquals(FileUtils.readFileToString(file, "utf-8"), textFileContent);
+        assertEquals(textFileContent, FileUtils.readFileToString(file, "utf-8"));
 
         Files.delete(Paths.get(dataProcessingTextFile));
     }
