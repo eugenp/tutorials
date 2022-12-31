@@ -26,7 +26,7 @@ public class ReactiveWebSocketConfiguration {
 
     @Autowired
     @Qualifier("ReactiveWebSocketHandler")
-    ReactiveWebSocketHandler reactiveWebSocketHandler;
+    private ReactiveWebSocketHandler reactiveWebSocketHandler;
 
     @Bean
     public HandlerMapping reactiveWebSocketHandlerMapping() {
