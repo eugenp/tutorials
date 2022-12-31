@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-  properties = { "grpc.server.port=-1" }, // Disable gRPC external serve
+  properties = { "grpc.server.port=-1" }, // Disable gRPC external server
   classes = ChooseApiApp.class)
 @ActiveProfiles("chooseapi")
 class BooksControllerGraphQLIntegrationTest {
