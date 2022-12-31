@@ -15,4 +15,3 @@ The server starts at https://localhost:8443. `casuser`/`Mellon` are the username
 
 ### Relevant Articles: 
 
-- [CAS SSO With Spring Security](https://www.baeldung.com/spring-security-cas-sso)

@@ -13,8 +13,21 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${apache.commons-validator.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-networking-4</finalName>
     </build>
+
+    <properties>
+        <apache.commons-validator.version>1.7</apache.commons-validator.version>
+    </properties>
 
 </project>

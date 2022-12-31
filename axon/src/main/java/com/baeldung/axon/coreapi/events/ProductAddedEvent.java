@@ -39,9 +39,6 @@ public class ProductAddedEvent {
 
     @Override
     public String toString() {
-        return "ProductAddedEvent{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "ProductAddedEvent{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }
