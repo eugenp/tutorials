@@ -51,6 +51,7 @@ public class ReactiveWebSocketConfiguration {
         tomcatRequestUpgradeStrategy.setAsyncSendTimeout(10000L);
         return new HandshakeWebSocketService(tomcatRequestUpgradeStrategy);
     }
+
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {
         ServerEndpointExporter serverEndpointExporter = new ServerEndpointExporter();
