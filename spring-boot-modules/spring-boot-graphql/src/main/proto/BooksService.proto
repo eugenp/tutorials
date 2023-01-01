@@ -1,0 +1,23 @@
+syntax = "proto3";
+package com.baeldung.chooseapi;
+
+message BooksRequest {}
+
+message AuthorProto {
+    string firstName = 1;
+    string lastName = 2;
+}
+
+message BookProto {
+    string title = 1;
+    AuthorProto author = 2;
+    int32 year = 3;
+}
+
+message BooksResponse {
+    repeated BookProto book = 1;
+}
+
+service BooksService {
+    rpc books(BooksRequest) returns (BooksResponse);
+}
