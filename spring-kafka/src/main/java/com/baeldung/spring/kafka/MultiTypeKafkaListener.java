@@ -2,6 +2,7 @@ package com.baeldung.spring.kafka;
 
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,7 +10,12 @@ import org.springframework.stereotype.Component;
 public class MultiTypeKafkaListener {
 
     @KafkaHandler
+    //@RetryableTopic(backoff = @Backoff(value = 3000L), attempts = "5", autoCreateTopics = "false",include = SocketTimeoutException.class, exclude = NullPointerException.class)
     public void handleGreeting(Greeting greeting) {
+        if (greeting.getName()
+          .equalsIgnoreCase("test")) {
+            throw new MessagingException("test not allowed");
+        }
         System.out.println("Greeting received: " + greeting);
     }
 
