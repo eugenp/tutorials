@@ -44,6 +44,7 @@ class BooksServiceMockServerTest {
 
         mockAllBooksRequest();
         mockBookByTitleRequest();
+        mockSaveBookRequest();
     }
 
     @AfterAll
@@ -83,6 +84,22 @@ class BooksServiceMockServerTest {
         );
     }
 
+    @Test
+    void givenMockedService_whenSaveBookRequestIsSent_thenNewBookIsReturned() {
+        BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
+        BooksService booksService = booksClient.getBooksService();
+
+        Book book = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
+        assertEquals("Book_3", book.title());
+
+        mockServer.verify(
+          HttpRequest.request()
+            .withMethod(HttpMethod.POST.name())
+            .withPath(PATH),
+          VerificationTimes.exactly(1)
+        );
+    }
+
     private static int getFreePort () throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(0)) {
             return serverSocket.getLocalPort();
@@ -101,6 +118,24 @@ class BooksServiceMockServerTest {
               .withStatusCode(HttpStatusCode.OK_200.code())
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("[{\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]")
+          );
+    }
+
+    private static void mockSaveBookRequest() {
+        new MockServerClient(SERVER_ADDRESS, serverPort)
+          .when(
+            request()
+              .withPath(PATH)
+              .withMethod(HttpMethod.POST.name())
+              .withContentType(MediaType.APPLICATION_JSON)
+              .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}"),
+            exactly(1)
+          )
+          .respond(
+            response()
+              .withStatusCode(HttpStatusCode.OK_200.code())
+              .withContentType(MediaType.APPLICATION_JSON)
+              .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
           );
     }
 
