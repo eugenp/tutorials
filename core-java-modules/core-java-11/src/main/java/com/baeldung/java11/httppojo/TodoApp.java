@@ -1,4 +1,4 @@
-package com.baeldung.httppojo;
+package com.baeldung.java11.httppojo;
 
 import java.util.Objects;
 
