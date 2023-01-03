@@ -17,6 +17,7 @@ import org.mockserver.model.MediaType;
 import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 import static org.mockserver.matchers.Times.exactly;
@@ -52,7 +53,7 @@ class BooksServiceMockServerTest {
 
     @Test
     void givenMockedService_whenAllBooksAreRequested_thenTwoBooksAreReturned() {
-        BooksClient booksClient = new BooksClient(serviceUrl);
+        BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
         List<Book> books = booksService.getBooks();
@@ -68,7 +69,7 @@ class BooksServiceMockServerTest {
 
     @Test
     void givenMockedService_whenBookByTitleIsRequest_thenCorrectBookIsReturned() {
-        BooksClient booksClient = new BooksClient(serviceUrl);
+        BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
         Book book = booksService.getBook("Book_1");

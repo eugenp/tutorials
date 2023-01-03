@@ -10,12 +10,9 @@ public class BooksClient {
 
     private final BooksService booksService;
 
-    public BooksClient(String baseUrl) {
-        WebClient client = WebClient.builder()
-          .baseUrl(baseUrl)
-          .build();
+    public BooksClient(WebClient webClient) {
         HttpServiceProxyFactory httpServiceProxyFactory =
-          HttpServiceProxyFactory.builder(WebClientAdapter.forClient(client))
+          HttpServiceProxyFactory.builder(WebClientAdapter.forClient(webClient))
             .build();
         booksService = httpServiceProxyFactory.createClient(BooksService.class);
     }

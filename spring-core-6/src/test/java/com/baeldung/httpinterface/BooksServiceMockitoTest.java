@@ -1,14 +1,15 @@
 package com.baeldung.httpinterface;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import static org.mockito.Mockito.*;
 
@@ -19,27 +20,45 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(MockitoExtension.class)
 class BooksServiceMockitoTest {
 
-    private static final String SERVICE_URL = "https://www.baeldung.com/demo";
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    @Mock
+    private WebClient webClient;
 
     @Mock
-    private BooksService booksService;
+    private WebClient.RequestBodySpec requestBody;
+
+    @Mock
+    private WebClient.RequestBodyUriSpec requestBodyUri;
+
+    @Mock
+    private WebClient.ResponseSpec response;
+
+    @InjectMocks
+    private BooksClient booksClient;
 
     @Test
-    void givenMockedService_whenAllBooksAreRequested_thenTwoBooksAreReturned() throws JsonProcessingException {
-        when(booksService.getBooks())
-          .thenReturn(objectMapper.readerForListOf(Book.class)
-            .readValue("[{\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]"));
+    void givenMockedWebClient_whenAllBooksAreRequested_thenTwoBooksAreReturned() throws JsonProcessingException {
+        BooksService booksService = booksClient.getBooksService();
+        when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
+        when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
+        when(requestBody.retrieve()).thenReturn(response);
+        when(response.bodyToMono(new ParameterizedTypeReference<List<Book>>(){}))
+          .thenReturn(Mono.just(List.of(
+            new Book("Book_1", "Author_1", 1998),
+            new Book("Book_2", "Author_2", 1999)
+          )));
 
         List<Book> books = booksService.getBooks();
         assertEquals(2, books.size());
     }
 
     @Test
-    void givenMockedService_whenBookByTitleIsRequest_thenCorrectBookIsReturned() throws JsonProcessingException {
-        when(booksService.getBook("Book_1"))
-          .thenReturn(objectMapper.readerFor(Book.class)
-            .readValue("{\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998}"));
+    void givenMockedWebClient_whenBookByTitleIsRequest_thenCorrectBookIsReturned() throws JsonProcessingException {
+        BooksService booksService = booksClient.getBooksService();
+        when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
+        when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
+        when(requestBody.retrieve()).thenReturn(response);
+        when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
+          .thenReturn(Mono.just(new Book("Book_1", "Author_1", 1998)));
 
         Book book = booksService.getBook("Book_1");
         assertEquals("Book_1", book.title());
