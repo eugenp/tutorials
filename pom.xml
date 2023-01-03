@@ -411,7 +411,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javaxval2</module>
                 <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
@@ -797,7 +796,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javaxval2</module>
                 <module>javax-validation-advanced</module>
                 <module>jaxb</module>
                 <module>jersey</module>
@@ -1170,6 +1168,7 @@
                  <module>spring-boot-modules/spring-boot-camel</module>
                  <module>spring-boot-modules/spring-boot-3</module>
                  <module>spring-boot-modules/spring-boot-3-native</module>
+                <module>spring-boot-modules/spring-boot-3-observation</module>
                  <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                  <module>testing-modules/testing-assertions</module>
                  <module>persistence-modules/fauna</module>
@@ -1253,6 +1252,7 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
+                <module>spring-boot-modules/spring-boot-3-observation</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
