@@ -1,12 +1,9 @@
-package com.baeldung;
+package com.baeldung.sdk;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Component;
 
 import com.amazonaws.services.kinesis.AmazonKinesis;
@@ -17,8 +14,7 @@ import com.amazonaws.services.kinesis.model.GetShardIteratorResult;
 import com.amazonaws.services.kinesis.model.ShardIteratorType;
 
 @Component
-@EnableBinding(Sink.class)
-public class IpConsumer {
+public class ConsumerSDK {
 
     @Value("${ips.stream}")
     private String IPS_STREAM;
@@ -31,12 +27,7 @@ public class IpConsumer {
     
     private GetShardIteratorResult shardIterator;
 
-    @StreamListener(Sink.INPUT)
-    public void consume(String ip) {
-        System.out.println(ip);
-    }
-
-    private void consumeWithKinesis() {
+    public void consumeWithKinesis() {
         GetRecordsRequest recordsRequest = new GetRecordsRequest();
         recordsRequest.setShardIterator(shardIterator.getShardIterator());
         recordsRequest.setLimit(25);
