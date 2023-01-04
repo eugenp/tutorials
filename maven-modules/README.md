@@ -821,13 +821,13 @@ Nexus很快就会成为唯一真正成熟的选择，用于托管第三方工件
 - [使用Maven的多模块项目](maven-simple/parent-project/README.md)
 - [使用Maven的多版本JAR文件](../core-java-modules/core-java-9-new-features/README.md)
 - [带有Java模块的多模块Maven应用](multimodulemavenproject/README.md)
-- 具有多个源代码目录的Maven项目
-- 如何用Maven创建一个可执行的JAR文件
+- [具有多个源代码目录的Maven项目](maven-multi-source/README.md)
+- [如何用Maven创建一个可执行的JAR文件](../core-java-modules/core-java-jar/README.md#如何用maven创建一个可执行的jar)
 - 用Maven对JS和CSS资产进行最小化处理
 - Maven打包类型
 - 了解Maven的父POM "相对路径 "标签
 
-### Relevant Articles
+## Relevant Articles
 
 - [x] [Apache Maven Guide](https://www.baeldung.com/maven-guide)
 - [x] [Apache Maven Tutorial](https://www.baeldung.com/maven)
