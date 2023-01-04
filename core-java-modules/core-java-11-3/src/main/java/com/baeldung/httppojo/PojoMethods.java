@@ -17,14 +17,11 @@ import static java.net.http.HttpResponse.BodyHandlers.*;
 
 public class PojoMethods {
     public static void main(String[] args) throws Exception {
-        // gsonMethod();
-        // jacksonRe();
-        String s = jacksonRe();
-        System.out.println(s);
+    
 
     }
 
-    public static String gsonMethod() throws Exception {
+    public String gsonMethod() throws Exception {
         String response = sampleApiRequest();
 
         Gson gson = new GsonBuilder().create();
@@ -36,7 +33,7 @@ public class PojoMethods {
 
     }
 
-    public static String jacksonRe() throws Exception {
+    public String jacksonRe() throws Exception {
         String response = sampleApiRequest();
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -47,7 +44,7 @@ public class PojoMethods {
 
     }
 
-    public static String sampleApiRequest() throws Exception {
+    public String sampleApiRequest() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
@@ -59,7 +56,7 @@ public class PojoMethods {
 
     }
 
-    public static String asynJackson() throws Exception {
+    public String asynJackson() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
@@ -77,7 +74,7 @@ public class PojoMethods {
 
     }
 
-    public static String asynGson() throws Exception {
+    public String asynGson() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
