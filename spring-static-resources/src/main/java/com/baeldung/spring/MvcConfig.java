@@ -25,7 +25,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan(basePackages = { "com.baeldung.web.controller", "com.baeldung.persistence.service", "com.baeldung.persistence.dao" })
+@ComponentScan(basePackages = { "com.baeldung.web.controller", "com.baeldung.persistence.service",
+        "com.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
     @Autowired
@@ -57,14 +58,20 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // For examples using Spring 4.1.0
         if ((env.getProperty("resource.handler.conf")).equals("4.1.0")) {
-            registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(3600).resourceChain(true).addResolver(new EncodedResourceResolver()).addResolver(new PathResourceResolver());
-            registry.addResourceHandler("/resources/**").addResourceLocations("/resources/", "classpath:/other-resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-            registry.addResourceHandler("/files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-            registry.addResourceHandler("/other-files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new EncodedResourceResolver());
+            registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(3600).resourceChain(true)
+                    .addResolver(new EncodedResourceResolver()).addResolver(new PathResourceResolver());
+            registry.addResourceHandler("/resources/**")
+                    .addResourceLocations("/resources/", "classpath:/other-resources/").setCachePeriod(3600)
+                    .resourceChain(true).addResolver(new PathResourceResolver());
+            registry.addResourceHandler("/files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600)
+                    .resourceChain(true).addResolver(new PathResourceResolver());
+            registry.addResourceHandler("/other-files/**").addResourceLocations("file:/Users/Elena/")
+                    .setCachePeriod(3600).resourceChain(true).addResolver(new EncodedResourceResolver());
         }
         // For examples using Spring 4.0.7
         else if ((env.getProperty("resource.handler.conf")).equals("4.0.7")) {
-            registry.addResourceHandler("/resources/**").addResourceLocations("/", "/resources/", "classpath:/other-resources/");
+            registry.addResourceHandler("/resources/**").addResourceLocations("/", "/resources/",
+                    "classpath:/other-resources/");
             registry.addResourceHandler("/files/**").addResourceLocations("file:/Users/Elena/");
 
         }
