@@ -8,9 +8,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
@@ -31,6 +34,12 @@ class BooksServiceMockitoTest {
 
     @Mock
     private WebClient.ResponseSpec response;
+
+    @Mock
+    private Mono<ResponseEntity<Void>> monoResponseEntity;
+
+    @Mock
+    private ResponseEntity<Void> responseEntity;
 
     @InjectMocks
     private BooksClient booksClient;
@@ -65,7 +74,7 @@ class BooksServiceMockitoTest {
     }
 
     @Test
-    void givenMockedWebClient_whenSaveNewBooIsRequested_thenCorrectBookIsReturned() throws JsonProcessingException {
+    void givenMockedWebClient_whenSaveNewBookIsRequested_thenCorrectBookIsReturned() throws JsonProcessingException {
         BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.POST)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
@@ -75,6 +84,20 @@ class BooksServiceMockitoTest {
 
         Book book = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
         assertEquals("Book_3", book.title());
+    }
+
+    @Test
+    void givenMockedWebClient_whenDeleteBookIsRequested_thenCorrectCodeIsReturned() {
+        BooksService booksService = booksClient.getBooksService();
+        when(webClient.method(HttpMethod.DELETE)).thenReturn(requestBodyUri);
+        when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
+        when(requestBody.retrieve()).thenReturn(response);
+        when(response.toBodilessEntity()).thenReturn(monoResponseEntity);
+        when(monoResponseEntity.block(any())).thenReturn(responseEntity);
+        when(responseEntity.getStatusCode()).thenReturn(HttpStatusCode.valueOf(200));
+
+        ResponseEntity<Void> response = booksService.deleteBook("Book_3");
+        assertTrue(response.getStatusCode().is2xxSuccessful());
     }
 
 }

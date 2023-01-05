@@ -17,8 +17,10 @@ import org.mockserver.model.MediaType;
 import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
@@ -45,6 +47,7 @@ class BooksServiceMockServerTest {
         mockAllBooksRequest();
         mockBookByTitleRequest();
         mockSaveBookRequest();
+        mockDeleteBookRequest();
     }
 
     @AfterAll
@@ -95,6 +98,22 @@ class BooksServiceMockServerTest {
         mockServer.verify(
           HttpRequest.request()
             .withMethod(HttpMethod.POST.name())
+            .withPath(PATH),
+          VerificationTimes.exactly(1)
+        );
+    }
+
+    @Test
+    void givenMockedService_whenDeleteBookRequestIsSent_thenCorrectCodeIsReturned() {
+        BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
+        BooksService booksService = booksClient.getBooksService();
+
+        ResponseEntity<Void> response = booksService.deleteBook("Book_3");
+        assertTrue(response.getStatusCode().is2xxSuccessful());
+
+        mockServer.verify(
+          HttpRequest.request()
+            .withMethod(HttpMethod.DELETE.name())
             .withPath(PATH),
           VerificationTimes.exactly(1)
         );
@@ -153,6 +172,20 @@ class BooksServiceMockServerTest {
               .withStatusCode(HttpStatusCode.OK_200.code())
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
+          );
+    }
+
+    private static void mockDeleteBookRequest() {
+        new MockServerClient(SERVER_ADDRESS, serverPort)
+          .when(
+            request()
+              .withPath(PATH)
+              .withMethod(HttpMethod.DELETE.name()),
+            exactly(1)
+          )
+          .respond(
+            response()
+              .withStatusCode(HttpStatusCode.OK_200.code())
           );
     }
 
