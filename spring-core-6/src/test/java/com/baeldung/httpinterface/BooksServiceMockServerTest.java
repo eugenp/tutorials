@@ -2,6 +2,7 @@ package com.baeldung.httpinterface;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
@@ -17,8 +18,10 @@ import org.mockserver.model.MediaType;
 import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
@@ -89,8 +92,8 @@ class BooksServiceMockServerTest {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
-        Book book = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
-        assertEquals("Book_3", book.title());
+        ResponseEntity<Book> response = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
+        assertTrue(response.getStatusCode().is2xxSuccessful());
 
         mockServer.verify(
           HttpRequest.request()
@@ -106,11 +109,12 @@ class BooksServiceMockServerTest {
         }
     }
 
-    private static void mockBookByTitleRequest() {
+    private static void mockAllBooksRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withPath(PATH),
+              .withPath(PATH)
+              .withMethod(HttpMethod.GET.name()),
             exactly(1)
           )
           .respond(
@@ -126,24 +130,21 @@ class BooksServiceMockServerTest {
           .when(
             request()
               .withPath(PATH)
-              .withMethod(HttpMethod.POST.name())
-              .withContentType(MediaType.APPLICATION_JSON)
-              .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}"),
+              .withMethod(HttpMethod.POST.name()),
             exactly(1)
           )
           .respond(
             response()
               .withStatusCode(HttpStatusCode.OK_200.code())
-              .withContentType(MediaType.APPLICATION_JSON)
-              .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
           );
     }
 
-    private static void mockAllBooksRequest() {
+    private static void mockBookByTitleRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withPath(PATH + "/Book_1"),
+              .withPath(PATH + "/Book_1")
+              .withMethod(HttpMethod.GET.name()),
             exactly(1)
           )
           .respond(

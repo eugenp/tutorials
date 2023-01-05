@@ -8,9 +8,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
@@ -62,6 +64,19 @@ class BooksServiceMockitoTest {
 
         Book book = booksService.getBook("Book_1");
         assertEquals("Book_1", book.title());
+    }
+
+    @Test
+    void givenMockedWebClient_whenSaveNewBookIsRequest_thenCorrectStatusCodeIsReturned() {
+        BooksService booksService = booksClient.getBooksService();
+        when(webClient.method(HttpMethod.POST)).thenReturn(requestBodyUri);
+        when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
+        when(requestBody.retrieve()).thenReturn(response);
+        when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
+          .thenReturn(Mono.just(new Book("Book_3", "Author_3", 2000)));
+
+        ResponseEntity<Book> response = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
+        assertTrue(response.getStatusCode().is2xxSuccessful());
     }
 
 }
