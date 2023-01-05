@@ -52,7 +52,7 @@ class BooksServiceMockitoTest {
     }
 
     @Test
-    void givenMockedWebClient_whenBookByTitleIsRequest_thenCorrectBookIsReturned() throws JsonProcessingException {
+    void givenMockedWebClient_whenBookByTitleIsRequested_thenCorrectBookIsReturned() throws JsonProcessingException {
         BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
@@ -62,6 +62,19 @@ class BooksServiceMockitoTest {
 
         Book book = booksService.getBook("Book_1");
         assertEquals("Book_1", book.title());
+    }
+
+    @Test
+    void givenMockedWebClient_whenSaveNewBooIsRequested_thenCorrectBookIsReturned() throws JsonProcessingException {
+        BooksService booksService = booksClient.getBooksService();
+        when(webClient.method(HttpMethod.POST)).thenReturn(requestBodyUri);
+        when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
+        when(requestBody.retrieve()).thenReturn(response);
+        when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
+          .thenReturn(Mono.just(new Book("Book_3", "Author_3", 2000)));
+
+        Book book = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
+        assertEquals("Book_3", book.title());
     }
 
 }
