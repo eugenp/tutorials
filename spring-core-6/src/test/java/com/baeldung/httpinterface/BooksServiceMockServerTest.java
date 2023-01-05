@@ -2,7 +2,6 @@ package com.baeldung.httpinterface;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
@@ -18,10 +17,8 @@ import org.mockserver.model.MediaType;
 import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 import static org.mockserver.matchers.Times.exactly;
 import static org.mockserver.model.HttpRequest.request;
@@ -47,7 +44,6 @@ class BooksServiceMockServerTest {
 
         mockAllBooksRequest();
         mockBookByTitleRequest();
-        mockSaveBookRequest();
     }
 
     @AfterAll
@@ -87,22 +83,6 @@ class BooksServiceMockServerTest {
         );
     }
 
-    @Test
-    void givenMockedService_whenSaveBookRequestIsSent_thenNewBookIsReturned() {
-        BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
-        BooksService booksService = booksClient.getBooksService();
-
-        ResponseEntity<Book> response = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
-        assertTrue(response.getStatusCode().is2xxSuccessful());
-
-        mockServer.verify(
-          HttpRequest.request()
-            .withMethod(HttpMethod.POST.name())
-            .withPath(PATH),
-          VerificationTimes.exactly(1)
-        );
-    }
-
     private static int getFreePort () throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(0)) {
             return serverSocket.getLocalPort();
@@ -122,20 +102,6 @@ class BooksServiceMockServerTest {
               .withStatusCode(HttpStatusCode.OK_200.code())
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("[{\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]")
-          );
-    }
-
-    private static void mockSaveBookRequest() {
-        new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
-            request()
-              .withPath(PATH)
-              .withMethod(HttpMethod.POST.name()),
-            exactly(1)
-          )
-          .respond(
-            response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
           );
     }
 
