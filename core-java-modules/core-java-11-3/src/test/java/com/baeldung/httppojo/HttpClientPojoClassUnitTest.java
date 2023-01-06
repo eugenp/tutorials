@@ -1,50 +1,91 @@
 package com.baeldung.httppojo;
 
+import static java.net.http.HttpResponse.BodyHandlers.ofString;
 import static org.junit.Assert.*;
 
-import org.junit.Before;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+
 import org.junit.Test;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 public class HttpClientPojoClassUnitTest {
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        PojoMethods gsonTest = new PojoMethods();
-        String case1 = gsonTest.gsonMethod();
-        String case2 = gsonTest.gsonMethod();
-        assertEquals(case1, case2);
+        PojoMethods sampleApi = new PojoMethods();
+        String response = sampleApi.sampleApiRequest();
+
+        Gson gson = new GsonBuilder().create();
+
+        List<TodoApp> todoApp = gson.fromJson(response, new TypeToken<List<TodoApp>>() {
+        }.getType());
+        String title = todoApp.get(1)
+            .getTitle()
+            .toString();
+        assertEquals("quis ut nam facilis et officia qui", title);
+
     }
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        PojoMethods jacksonTest = new PojoMethods();
-        String case1 = jacksonTest.jacksonRe();
-        String case2 = jacksonTest.jacksonRe();
-        assertEquals(case1, case2);
+        PojoMethods sampleApi = new PojoMethods();
+        String response = sampleApi.sampleApiRequest();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(response);
+        TodoApp[] app = objectMapper.treeToValue(jsonNode, TodoApp[].class);
+        int one = app[1].getId();
+
+        assertEquals(2, one);
     }
 
     @Test
     public void givenSampleRestApi_whenApiIsConsumedByHttpClient_thenCompareJsonString() throws Exception {
         PojoMethods sampleTest = new PojoMethods();
-        String case1 = sampleTest.sampleApiRequest();
-        String case2 = sampleTest.sampleApiRequest();
-        assertEquals(case1, case2);
+        assertNotNull(sampleTest.sampleApiRequest());
+
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        PojoMethods jacksonTest = new PojoMethods();
-        String case1 = jacksonTest.asynJackson();
-        String case2 = jacksonTest.asynJackson();
-        assertEquals(case1, case2);
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
+            .build();
+
+        ObjectMappingJackson o = new ObjectMappingJackson();
+
+        List<TodoApp> model = HttpClient.newHttpClient()
+            .sendAsync(request, ofString())
+            .thenApply(HttpResponse::body)
+            .thenApply(o::readValue)
+            .get();
+        assertEquals(1, model.get(1)
+            .getUserId());
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        PojoMethods gsonTest = new PojoMethods();
-        String case1 = gsonTest.asynGson();
-        String case2 = gsonTest.asynGson();
-        assertEquals(case1, case2);
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
+            .build();
+        ObjectMappingGson o = new ObjectMappingGson();
+
+        List<TodoApp> model = HttpClient.newHttpClient()
+            .sendAsync(request, ofString())
+            .thenApply(HttpResponse::body)
+            .thenApply(o::readValue)
+            .get();
+        assertEquals(false, model.get(1)
+            .isCompleted());
     }
 
 }
