@@ -50,7 +50,7 @@ class BooksServiceMockServerTest {
         mockServer = startClientAndServer(config, serverPort);
 
         mockAllBooksRequest();
-        mockBookByTitleRequest();
+        mockBookByIdRequest();
         mockSaveBookRequest();
         mockDeleteBookRequest();
     }
@@ -166,7 +166,7 @@ class BooksServiceMockServerTest {
           );
     }
 
-    private static void mockBookByTitleRequest() {
+    private static void mockBookByIdRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()

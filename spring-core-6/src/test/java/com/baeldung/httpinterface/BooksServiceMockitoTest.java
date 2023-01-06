@@ -45,7 +45,6 @@ class BooksServiceMockitoTest {
 
     @Test
     void givenMockedWebClient_whenAllBooksAreRequested_thenTwoBooksAreReturned() {
-        BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
         when(requestBody.retrieve()).thenReturn(response);
@@ -55,39 +54,39 @@ class BooksServiceMockitoTest {
             new Book(2, "Book_2", "Author_2", 1999)
           )));
 
+        BooksService booksService = booksClient.getBooksService();
         List<Book> books = booksService.getBooks();
         assertEquals(2, books.size());
     }
 
     @Test
     void givenMockedWebClient_whenBookByIdIsRequested_thenCorrectBookIsReturned() {
-        BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
         when(requestBody.retrieve()).thenReturn(response);
         when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
           .thenReturn(Mono.just(new Book(1,"Book_1", "Author_1", 1998)));
 
+        BooksService booksService = booksClient.getBooksService();
         Book book = booksService.getBook(1);
         assertEquals("Book_1", book.title());
     }
 
     @Test
     void givenMockedWebClient_whenSaveNewBookIsRequested_thenCorrectBookIsReturned() {
-        BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.POST)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
         when(requestBody.retrieve()).thenReturn(response);
         when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
           .thenReturn(Mono.just(new Book(3, "Book_3", "Author_3", 2000)));
 
+        BooksService booksService = booksClient.getBooksService();
         Book book = booksService.saveBook(new Book(3, "Book_3", "Author_3", 2000));
         assertEquals("Book_3", book.title());
     }
 
     @Test
     void givenMockedWebClient_whenDeleteBookIsRequested_thenCorrectCodeIsReturned() {
-        BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.DELETE)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
         when(requestBody.retrieve()).thenReturn(response);
@@ -95,6 +94,7 @@ class BooksServiceMockitoTest {
         when(monoResponseEntity.block(any())).thenReturn(responseEntity);
         when(responseEntity.getStatusCode()).thenReturn(HttpStatusCode.valueOf(200));
 
+        BooksService booksService = booksClient.getBooksService();
         ResponseEntity<Void> response = booksService.deleteBook(3);
         assertTrue(response.getStatusCode().is2xxSuccessful());
     }
