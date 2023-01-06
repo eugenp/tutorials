@@ -10,6 +10,16 @@ import java.util.UUID;
 public final class UUIDGenerator {
 
     private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
+    private static final long LOW_MASK = 0x0000_0000_FFFF_FFFFL;
+    private static final long MID_MASK = 0xFFFF;
+    private static final long HIGH_MASK = 0x0FFF;
+    private static final long LSB_MASK = 0x3FFFFFFFFFFFFFFFL;
+    private static final int SHIFT_48 = 48;
+    private static final int SHIFT_32 = 32;
+    private static final int SHIFT_16 = 16;
+    private static final int SHIFT_12 = 12;
+    private static final int VERSION_1 = 1;
+    private static final long VARIANT_3_BIT_FLAG = 0x8000000000000000L;
 
     private UUIDGenerator() {
     }
@@ -26,18 +36,17 @@ public final class UUIDGenerator {
     }
 
     private static long get64LeastSignificantBitsForVersion1() {
-        final long random63BitLong = new Random().nextLong() & 0x3FFFFFFFFFFFFFFFL;
-        final long variant3BitFlag = 0x8000000000000000L;
-        return random63BitLong + variant3BitFlag;
+        final long random63BitLong = new Random().nextLong() & LSB_MASK;
+        return random63BitLong | VARIANT_3_BIT_FLAG;
     }
 
     private static long get64MostSignificantBitsForVersion1() {
-        final long timeForUuidIn100Nanos = System.currentTimeMillis();
-        final long time_low = (timeForUuidIn100Nanos & 0x0000_0000_FFFF_FFFFL) << 32;
-        final long time_mid = ((timeForUuidIn100Nanos >> 32) & 0xFFFF) << 16;
-        final long version = 1 << 12;
-        final long time_hi = ((timeForUuidIn100Nanos >> 48) & 0x0FFF);
-        return time_low + time_mid + version + time_hi;
+        final long currentTimeMillis = System.currentTimeMillis();
+        final long time_low = (currentTimeMillis & LOW_MASK) << SHIFT_32;
+        final long time_mid = ((currentTimeMillis >> SHIFT_32) & MID_MASK) << SHIFT_16;
+        final long version = VERSION_1 << SHIFT_12;
+        final long time_high = ((currentTimeMillis >> SHIFT_48) & HIGH_MASK);
+        return time_low | time_mid | version | time_high;
     }
 
     /**
