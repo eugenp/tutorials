@@ -75,11 +75,25 @@ public class JEP405RecordPatternsUnitTest {
     @Test
     void givenObject_whenTestGuardedSwitchExpressionWithTypePattern_shouldMatchAndGuard() {
         String result = switch (object) {
-            case Location(var name, var ignored)when name.equals("Home") ->
-                    new Location("Test", new GPSPoint(1.0, 2.0)).getName();
+            case Location(var name, var ignored) when name.equals("Home") -> "Test";
             case Location(var name, var ignored) -> name;
             default -> "default";
         };
         assertThat(result).isEqualTo("Test");
+
+        String otherResult = switch (new Location("Other", new GPSPoint(1.0, 2.0))) {
+            case Location(var name, var ignored) when name.equals("Home") -> "Test";
+            case Location(var name, var ignored) -> name;
+            default -> "default";
+        };
+        assertThat(otherResult).isEqualTo("Other");
+
+        Object noLocation = new GPSPoint(1.0, 2.0);
+        String noLocationResult = switch (noLocation) {
+            case Location(var name, var ignored) when name.equals("Home") -> "Test";
+            case Location(var name, var ignored) -> name;
+            default -> "default";
+        };
+        assertThat(noLocationResult).isEqualTo("default");
     }
 }
