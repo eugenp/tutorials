@@ -13,7 +13,6 @@
     <packaging>war</packaging>
     
     <properties>
-      <jetty.version>9.4.50.v20221201</jetty.version>
       <sentry.version>6.11.0</sentry.version>
       <cargo.version>1.10.4</cargo.version>
     </properties>
@@ -25,12 +24,11 @@
         <version>${sentry.version}</version>
       </dependency>
 
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <scope>provided</scope>
+      </dependency>
     </dependencies>
     
     <build>
