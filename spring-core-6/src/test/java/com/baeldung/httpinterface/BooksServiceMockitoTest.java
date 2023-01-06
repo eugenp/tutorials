@@ -1,6 +1,5 @@
 package com.baeldung.httpinterface;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -45,7 +44,7 @@ class BooksServiceMockitoTest {
     private BooksClient booksClient;
 
     @Test
-    void givenMockedWebClient_whenAllBooksAreRequested_thenTwoBooksAreReturned() throws JsonProcessingException {
+    void givenMockedWebClient_whenAllBooksAreRequested_thenTwoBooksAreReturned() {
         BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
@@ -61,7 +60,7 @@ class BooksServiceMockitoTest {
     }
 
     @Test
-    void givenMockedWebClient_whenBookByTitleIsRequested_thenCorrectBookIsReturned() throws JsonProcessingException {
+    void givenMockedWebClient_whenBookByIdIsRequested_thenCorrectBookIsReturned() {
         BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.GET)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
@@ -74,7 +73,7 @@ class BooksServiceMockitoTest {
     }
 
     @Test
-    void givenMockedWebClient_whenSaveNewBookIsRequested_thenCorrectBookIsReturned() throws JsonProcessingException {
+    void givenMockedWebClient_whenSaveNewBookIsRequested_thenCorrectBookIsReturned() {
         BooksService booksService = booksClient.getBooksService();
         when(webClient.method(HttpMethod.POST)).thenReturn(requestBodyUri);
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);

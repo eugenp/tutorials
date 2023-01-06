@@ -1,5 +1,7 @@
 package com.baeldung.httpinterface;
 
+import org.apache.http.HttpException;
+import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,14 +14,17 @@ import java.net.ServerSocket;
 import java.util.List;
 
 import org.mockserver.model.HttpRequest;
-import org.mockserver.model.HttpStatusCode;
 import org.mockserver.model.MediaType;
 import org.mockserver.verify.VerificationTimes;
 import org.slf4j.event.Level;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
+import reactor.core.publisher.Mono;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 import static org.mockserver.matchers.Times.exactly;
@@ -72,7 +77,7 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedService_whenBookByTitleIsRequest_thenCorrectBookIsReturned() {
+    void givenMockedService_whenExistingBookByIdIsRequest_thenCorrectBookIsReturned() {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
@@ -85,6 +90,26 @@ class BooksServiceMockServerTest {
             .withPath(PATH + "/1"),
           VerificationTimes.exactly(1)
         );
+    }
+
+    @Test
+    void givenMockedService_whenNonExistingBookByIdIsRequest_thenDefaultExceptionIsThrown() {
+        BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
+        BooksService booksService = booksClient.getBooksService();
+
+        assertThrows(WebClientResponseException.class, () -> booksService.getBook(9));
+    }
+
+    @Test
+    void givenMockedServiceWithCustomErrorHandler_whenNonExistingBookByIdIsRequest_thenCustomExceptionIsThrown() {
+        BooksClient booksClient = new BooksClient(WebClient.builder()
+          .defaultStatusHandler(HttpStatusCode::isError, resp ->
+            Mono.just(new MyServiceException("Custom exception")))
+          .baseUrl(serviceUrl)
+          .build());
+
+        BooksService booksService = booksClient.getBooksService();
+        assertThrows(MyServiceException.class, () -> booksService.getBook(9));
     }
 
     @Test
@@ -135,7 +160,7 @@ class BooksServiceMockServerTest {
           )
           .respond(
             response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
+              .withStatusCode(HttpStatus.SC_OK)
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("[{\"id\":1,\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"id\":2,\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]")
           );
@@ -151,7 +176,7 @@ class BooksServiceMockServerTest {
           )
           .respond(
             response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
+              .withStatusCode(HttpStatus.SC_OK)
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"id\":1,\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998}")
           );
@@ -169,7 +194,7 @@ class BooksServiceMockServerTest {
           )
           .respond(
             response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
+              .withStatusCode(HttpStatus.SC_OK)
               .withContentType(MediaType.APPLICATION_JSON)
               .withBody("{\"id\":3,\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
           );
@@ -185,7 +210,7 @@ class BooksServiceMockServerTest {
           )
           .respond(
             response()
-              .withStatusCode(HttpStatusCode.OK_200.code())
+              .withStatusCode(HttpStatus.SC_OK)
           );
     }
 
