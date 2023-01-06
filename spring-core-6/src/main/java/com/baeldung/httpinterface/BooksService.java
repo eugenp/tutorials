@@ -14,13 +14,13 @@ interface BooksService {
     @GetExchange("/books")
     List<Book> getBooks();
 
-    @GetExchange("/books/{title}")
-    Book getBook(@PathVariable String title);
+    @GetExchange("/books/{id}")
+    Book getBook(@PathVariable long id);
 
     @PostExchange("/books")
     Book saveBook(@RequestBody Book book);
 
-    @DeleteExchange("/books")
-    ResponseEntity<Void> deleteBook(@PathVariable String title);
+    @DeleteExchange("/books/{id}")
+    ResponseEntity<Void> deleteBook(@PathVariable long id);
 
 }

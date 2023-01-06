@@ -76,13 +76,13 @@ class BooksServiceMockServerTest {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
-        Book book = booksService.getBook("Book_1");
+        Book book = booksService.getBook(1);
         assertEquals("Book_1", book.title());
 
         mockServer.verify(
           HttpRequest.request()
             .withMethod(HttpMethod.GET.name())
-            .withPath(PATH + "/Book_1"),
+            .withPath(PATH + "/1"),
           VerificationTimes.exactly(1)
         );
     }
@@ -92,7 +92,7 @@ class BooksServiceMockServerTest {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
-        Book book = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
+        Book book = booksService.saveBook(new Book(3, "Book_3", "Author_3", 2000));
         assertEquals("Book_3", book.title());
 
         mockServer.verify(
@@ -108,13 +108,13 @@ class BooksServiceMockServerTest {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
-        ResponseEntity<Void> response = booksService.deleteBook("Book_3");
+        ResponseEntity<Void> response = booksService.deleteBook(3);
         assertTrue(response.getStatusCode().is2xxSuccessful());
 
         mockServer.verify(
           HttpRequest.request()
             .withMethod(HttpMethod.DELETE.name())
-            .withPath(PATH),
+            .withPath(PATH + "/3"),
           VerificationTimes.exactly(1)
         );
     }
@@ -137,7 +137,7 @@ class BooksServiceMockServerTest {
             response()
               .withStatusCode(HttpStatusCode.OK_200.code())
               .withContentType(MediaType.APPLICATION_JSON)
-              .withBody("[{\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]")
+              .withBody("[{\"id\":1,\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998},{\"id\":2,\"title\":\"Book_2\",\"author\":\"Author_2\",\"year\":1999}]")
           );
     }
 
@@ -145,7 +145,7 @@ class BooksServiceMockServerTest {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withPath(PATH + "/Book_1")
+              .withPath(PATH + "/1")
               .withMethod(HttpMethod.GET.name()),
             exactly(1)
           )
@@ -153,7 +153,7 @@ class BooksServiceMockServerTest {
             response()
               .withStatusCode(HttpStatusCode.OK_200.code())
               .withContentType(MediaType.APPLICATION_JSON)
-              .withBody("{\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998}")
+              .withBody("{\"id\":1,\"title\":\"Book_1\",\"author\":\"Author_1\",\"year\":1998}")
           );
     }
 
@@ -164,14 +164,14 @@ class BooksServiceMockServerTest {
               .withPath(PATH)
               .withMethod(HttpMethod.POST.name())
               .withContentType(MediaType.APPLICATION_JSON)
-              .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}"),
+              .withBody("{\"id\":3,\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}"),
             exactly(1)
           )
           .respond(
             response()
               .withStatusCode(HttpStatusCode.OK_200.code())
               .withContentType(MediaType.APPLICATION_JSON)
-              .withBody("{\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
+              .withBody("{\"id\":3,\"title\":\"Book_3\",\"author\":\"Author_3\",\"year\":2000}")
           );
     }
 
@@ -179,7 +179,7 @@ class BooksServiceMockServerTest {
         new MockServerClient(SERVER_ADDRESS, serverPort)
           .when(
             request()
-              .withPath(PATH)
+              .withPath(PATH + "/3")
               .withMethod(HttpMethod.DELETE.name()),
             exactly(1)
           )

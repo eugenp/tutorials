@@ -52,8 +52,8 @@ class BooksServiceMockitoTest {
         when(requestBody.retrieve()).thenReturn(response);
         when(response.bodyToMono(new ParameterizedTypeReference<List<Book>>(){}))
           .thenReturn(Mono.just(List.of(
-            new Book("Book_1", "Author_1", 1998),
-            new Book("Book_2", "Author_2", 1999)
+            new Book(1,"Book_1", "Author_1", 1998),
+            new Book(2, "Book_2", "Author_2", 1999)
           )));
 
         List<Book> books = booksService.getBooks();
@@ -67,9 +67,9 @@ class BooksServiceMockitoTest {
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
         when(requestBody.retrieve()).thenReturn(response);
         when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
-          .thenReturn(Mono.just(new Book("Book_1", "Author_1", 1998)));
+          .thenReturn(Mono.just(new Book(1,"Book_1", "Author_1", 1998)));
 
-        Book book = booksService.getBook("Book_1");
+        Book book = booksService.getBook(1);
         assertEquals("Book_1", book.title());
     }
 
@@ -80,9 +80,9 @@ class BooksServiceMockitoTest {
         when(requestBodyUri.uri(anyString(), anyMap())).thenReturn(requestBody);
         when(requestBody.retrieve()).thenReturn(response);
         when(response.bodyToMono(new ParameterizedTypeReference<Book>(){}))
-          .thenReturn(Mono.just(new Book("Book_3", "Author_3", 2000)));
+          .thenReturn(Mono.just(new Book(3, "Book_3", "Author_3", 2000)));
 
-        Book book = booksService.saveBook(new Book("Book_3", "Author_3", 2000));
+        Book book = booksService.saveBook(new Book(3, "Book_3", "Author_3", 2000));
         assertEquals("Book_3", book.title());
     }
 
@@ -96,7 +96,7 @@ class BooksServiceMockitoTest {
         when(monoResponseEntity.block(any())).thenReturn(responseEntity);
         when(responseEntity.getStatusCode()).thenReturn(HttpStatusCode.valueOf(200));
 
-        ResponseEntity<Void> response = booksService.deleteBook("Book_3");
+        ResponseEntity<Void> response = booksService.deleteBook(3);
         assertTrue(response.getStatusCode().is2xxSuccessful());
     }
 

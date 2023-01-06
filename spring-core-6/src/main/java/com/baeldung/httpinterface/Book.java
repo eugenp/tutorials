@@ -1,3 +1,3 @@
 package com.baeldung.httpinterface;
 
-public record Book(String title, String author, int year) {}
+public record Book(long id, String title, String author, int year) {}
