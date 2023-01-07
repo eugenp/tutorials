@@ -33,36 +33,31 @@ public class ProductRepository {
         Product product1 = new Product();
         product1.setId(100001);
         product1.setName("apple");
-        product1.setDescription("apple desc");
 
-        productMap.put(100001l, product1);
+        productMap.put(100001L, product1);
 
         Product product2 = new Product();
         product2.setId(100002);
         product2.setName("pears");
-        product2.setDescription("pears desc");
 
-        productMap.put(100002l, product2);
+        productMap.put(100002L, product2);
 
         Product product3 = new Product();
         product3.setId(100003);
         product3.setName("banana");
-        product3.setDescription("banana desc");
 
-        productMap.put(100003l, product3);
+        productMap.put(100003L, product3);
 
         Product product4 = new Product();
         product3.setId(100004);
         product3.setName("mango");
-        product3.setDescription("mango desc");
 
-        productMap.put(100004l, product4);
+        productMap.put(100004L, product4);
 
         Product product5 = new Product();
         product3.setId(100005);
         product3.setName("test");
-        product3.setDescription("test desc");
 
-        productMap.put(100005l, product5);
+        productMap.put(100005L, product5);
     }
 }

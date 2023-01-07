@@ -10,9 +10,6 @@ public class Product {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("description")
-    private String description;
-
     @JsonProperty("price")
     private Price price;
 
@@ -22,10 +19,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setPrice(Price price) {
