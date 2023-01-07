@@ -1,0 +1,37 @@
+version: "3.5"
+
+services:
+  product-service:
+    platform: linux/x86_64
+    build: spring-cloud-open-telemetry1/
+    image: spring-cloud-open-telemetry1:latest
+    ports:
+      - "8080:8080"
+
+  price-service:
+    platform: linux/x86_64
+    build: spring-cloud-open-telemetry2/
+    image: spring-cloud-open-telemetry2:latest
+    ports:
+      - "8081"
+
+  jaeger-service:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "16685:16685"
+      - "14268"
+      - "14250"
+
+  collector:
+    image: otel/opentelemetry-collector:0.47.0
+    command: [ "--config=/etc/otel-collector-config.yml" ]
+    volumes:
+      - ./otel-config.yml:/etc/otel-collector-config.yml
+    ports:
+      - "1888:1888"   # pprof extension
+      - "13133:13133" # health_check extension
+      - "4317:4317"
+      - "55670:55679" # zpages extension
+    depends_on:
+      - jaeger-service
