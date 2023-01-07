@@ -590,7 +590,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-remoting-modules</module>
-                <module>spring-roo</module>
+                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
@@ -968,7 +968,7 @@
                 <module>spring-quartz</module>
 
                 <module>spring-remoting-modules</module>
-                <module>spring-roo</module>
+                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
