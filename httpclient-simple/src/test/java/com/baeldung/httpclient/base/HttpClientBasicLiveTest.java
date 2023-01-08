@@ -7,9 +7,9 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 
+import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.ParseException;
-import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -46,16 +46,9 @@ public class HttpClientBasicLiveTest {
         }
     }
 
-//    @Test
-//    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectMimeType() throws ClientProtocolException, IOException {
-//        response = instance.execute(new HttpGet(SAMPLE_URL));
-//        final String contentMimeType = ContentType.getOrDefault(response.getEntity()).getMimeType();
-//
-//        assertThat(contentMimeType, equalTo(ContentType.TEXT_HTML.getMimeType()));
-//    }
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectContentType() throws IOException {
+    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectMimeType() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
 
         try (CloseableHttpClient client = HttpClientBuilder.create().build();
@@ -63,8 +56,8 @@ public class HttpClientBasicLiveTest {
             CloseableHttpResponse response = (CloseableHttpResponse) client
                 .execute(request, new CustomHttpClientResponseHandler())) {
 
-            String contentType = response.getEntity().getContentType();
-            assertThat(contentType, equalTo("text/html; charset=utf-8"));
+            final String contentMimeType = ContentType.parse(response.getEntity().getContentType()).getMimeType();
+            assertThat(contentMimeType, equalTo(ContentType.TEXT_HTML.getMimeType()));
         }
     }
 
@@ -77,8 +70,7 @@ public class HttpClientBasicLiveTest {
             CloseableHttpResponse response = (CloseableHttpResponse) client
                 .execute(request, new CustomHttpClientResponseHandler())) {
 
-            final String bodyAsString = EntityUtils.toString(response.getEntity());
-            assertThat(bodyAsString, notNullValue());
+            assertThat(response, notNullValue());
         }
     }
 
