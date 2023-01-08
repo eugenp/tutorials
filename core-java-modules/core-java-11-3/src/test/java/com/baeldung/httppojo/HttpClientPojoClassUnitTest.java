@@ -21,31 +21,18 @@ public class HttpClientPojoClassUnitTest {
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        PojoMethods sampleApi = new PojoMethods();
-        String response = sampleApi.sampleApiRequest();
-
-        Gson gson = new GsonBuilder().create();
-
-        List<TodoApp> todoApp = gson.fromJson(response, new TypeToken<List<TodoApp>>() {
-        }.getType());
-        String title = todoApp.get(1)
-            .getTitle()
-            .toString();
-        assertEquals("quis ut nam facilis et officia qui", title);
+        PojoMethods sampleGson = new PojoMethods();
+ 
+        assertEquals("quis ut nam facilis et officia qui", sampleGson.gsonMethod());
 
     }
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        PojoMethods sampleApi = new PojoMethods();
-        String response = sampleApi.sampleApiRequest();
+        PojoMethods sampleJackson = new PojoMethods();
+      
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(response);
-        TodoApp[] app = objectMapper.treeToValue(jsonNode, TodoApp[].class);
-        int one = app[1].getId();
-
-        assertEquals(2, one);
+        assertEquals(2, sampleJackson.jacksonRe());
     }
 
     @Test
@@ -57,35 +44,14 @@ public class HttpClientPojoClassUnitTest {
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
-            .build();
-
-        ObjectMappingJackson o = new ObjectMappingJackson();
-
-        List<TodoApp> model = HttpClient.newHttpClient()
-            .sendAsync(request, ofString())
-            .thenApply(HttpResponse::body)
-            .thenApply(o::readValue)
-            .get();
-        assertEquals(1, model.get(1)
-            .getUserId());
+        PojoMethods sampleAsynJackson = new PojoMethods();
+        assertEquals(1, sampleAsynJackson.asynJackson());
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
-            .build();
-        ObjectMappingGson o = new ObjectMappingGson();
-
-        List<TodoApp> model = HttpClient.newHttpClient()
-            .sendAsync(request, ofString())
-            .thenApply(HttpResponse::body)
-            .thenApply(o::readValue)
-            .get();
-        assertEquals(false, model.get(1)
-            .isCompleted());
+        PojoMethods sampleAsynGson = new PojoMethods();
+        assertEquals(false, sampleAsynGson.asynGson());
     }
 
 }
