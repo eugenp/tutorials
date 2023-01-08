@@ -28,7 +28,7 @@ class UserUnitTest {
     }
 
     @Test
-    void givenUser_whenSerializing_thenCorrect() throws JsonProcessingException {
+    void givenUser_whenSerializing_thenTransientFieldNotIgnored() throws JsonProcessingException {
         User user = new User(1L, "user", "newPassword123", "newPassword123");
         String result = new ObjectMapper().writeValueAsString(user);
 

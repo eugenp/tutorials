@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.not;
 class PersonUnitTest {
 
     @Test
-    void givenPerson_whenSerializing_thenCorrect() throws JsonProcessingException {
+    void givenPerson_whenSerializing_thenIdFieldIgnored() throws JsonProcessingException {
 
         Person person = new Person(1L, "My First Name", "My Last Name");
         String result = new ObjectMapper().writeValueAsString(person);
