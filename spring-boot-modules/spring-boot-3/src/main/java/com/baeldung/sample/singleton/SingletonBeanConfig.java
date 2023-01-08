@@ -1,4 +1,4 @@
-package com.baeldung.singleton;
+package com.baeldung.sample.singleton;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
