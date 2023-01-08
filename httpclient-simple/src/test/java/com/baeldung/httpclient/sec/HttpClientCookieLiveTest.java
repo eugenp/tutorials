@@ -35,25 +35,6 @@ class HttpClientCookieLiveTest {
     }
 
     @Test
-    final void givenUsingDeprecatedApi_whenSettingCookiesOnTheHttpClient_thenCorrect() throws IOException {
-        final BasicCookieStore cookieStore = new BasicCookieStore();
-        final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
-        cookie.setDomain(".github.com");
-        cookie.setAttribute("domain", "true");
-        cookie.setPath("/");
-        cookieStore.addCookie(cookie);
-        final HttpGet request = new HttpGet("https://www.github.com");
-        try (CloseableHttpClient client = HttpClientBuilder.create()
-            .setDefaultCookieStore(cookieStore)
-            .build();
-
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(request, new CustomHttpClientResponseHandler())) {
-            assertThat(response.getCode(), equalTo(200));
-        }
-    }
-
-    @Test
     final void whenSettingCookiesOnTheHttpClient_thenCookieSentCorrectly() throws IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
