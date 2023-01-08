@@ -1,7 +1,7 @@
-package com.baeldung.uuid;
+package com.baeldung.restexpress.uuid;
 
-import com.baeldung.Constants;
-import com.baeldung.serialization.UuidFormatter;
+import com.baeldung.restexpress.Constants;
+import com.baeldung.restexpress.serialization.UuidFormatter;
 import com.strategicgains.hyperexpress.annotation.BindToken;
 import com.strategicgains.hyperexpress.annotation.TokenBindings;
 import com.strategicgains.repoexpress.mongodb.AbstractUuidMongodbEntity;

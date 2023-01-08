@@ -1,5 +1,5 @@
-## Rest-Express
+## RestExpress
 
-This module contains articles about Rest-Express.
+This module contains articles about RestExpress.
 
 ### Relevant articles

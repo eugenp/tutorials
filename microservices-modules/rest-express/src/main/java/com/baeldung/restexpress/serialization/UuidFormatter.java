@@ -1,4 +1,4 @@
-package com.baeldung.serialization;
+package com.baeldung.restexpress.serialization;
 
 import com.strategicgains.hyperexpress.annotation.TokenFormatter;
 import com.strategicgains.repoexpress.util.UuidConverter;

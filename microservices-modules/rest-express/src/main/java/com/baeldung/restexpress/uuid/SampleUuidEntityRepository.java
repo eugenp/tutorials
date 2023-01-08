@@ -1,4 +1,4 @@
-package com.baeldung.uuid;
+package com.baeldung.restexpress.uuid;
 
 import com.mongodb.MongoClient;
 import com.strategicgains.repoexpress.mongodb.MongodbUuidEntityRepository;

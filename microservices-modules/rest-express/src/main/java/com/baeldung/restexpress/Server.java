@@ -1,6 +1,6 @@
-package com.baeldung;
+package com.baeldung.restexpress;
 
-import com.baeldung.serialization.SerializationProvider;
+import com.baeldung.restexpress.serialization.SerializationProvider;
 import com.codahale.metrics.MetricFilter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.graphite.Graphite;
@@ -46,10 +46,10 @@ public class Server {
         Identifiers.UUID.useShortUUID(true);
 
         this.server = new RestExpress()
-                .setName(SERVICE_NAME)
-                .setBaseUrl(config.getBaseUrl())
-                .setExecutorThreadCount(config.getExecutorThreadPoolSize())
-                .addMessageObserver(new SimpleConsoleLogMessageObserver());
+          .setName(SERVICE_NAME)
+          .setBaseUrl(config.getBaseUrl())
+          .setExecutorThreadCount(config.getExecutorThreadPoolSize())
+          .addMessageObserver(new SimpleConsoleLogMessageObserver());
 
         Routes.define(config, server);
         Relationships.define(server);
@@ -78,20 +78,20 @@ public class Server {
         configureMetrics(config, server);
 
         new SwaggerPlugin()
-                .flag(Flags.Auth.PUBLIC_ROUTE)
-                .register(server);
+          .flag(Flags.Auth.PUBLIC_ROUTE)
+          .register(server);
 
         new CacheControlPlugin()
-                .register(server);
+          .register(server);
 
         new HyperExpressPlugin(Linkable.class)
-                .register(server);
+          .register(server);
 
         new CorsHeaderPlugin("*")
-                .flag(PUBLIC_ROUTE)
-                .allowHeaders(CONTENT_TYPE, ACCEPT, AUTHORIZATION, REFERER, LOCATION)
-                .exposeHeaders(LOCATION)
-                .register(server);
+          .flag(PUBLIC_ROUTE)
+          .allowHeaders(CONTENT_TYPE, ACCEPT, AUTHORIZATION, REFERER, LOCATION)
+          .exposeHeaders(LOCATION)
+          .register(server);
     }
 
     private void configureMetrics(Configuration config, RestExpress server) {
@@ -100,16 +100,16 @@ public class Server {
         if (mc.isEnabled()) {
             MetricRegistry registry = new MetricRegistry();
             new MetricsPlugin(registry)
-                    .register(server);
+              .register(server);
 
             if (mc.isGraphiteEnabled()) {
                 final Graphite graphite = new Graphite(new InetSocketAddress(mc.getGraphiteHost(), mc.getGraphitePort()));
                 final GraphiteReporter reporter = GraphiteReporter.forRegistry(registry)
-                        .prefixedWith(mc.getPrefix())
-                        .convertRatesTo(TimeUnit.SECONDS)
-                        .convertDurationsTo(TimeUnit.MILLISECONDS)
-                        .filter(MetricFilter.ALL)
-                        .build(graphite);
+                  .prefixedWith(mc.getPrefix())
+                  .convertRatesTo(TimeUnit.SECONDS)
+                  .convertDurationsTo(TimeUnit.MILLISECONDS)
+                  .filter(MetricFilter.ALL)
+                  .build(graphite);
                 reporter.start(mc.getPublishSeconds(), TimeUnit.SECONDS);
             } else {
                 LOG.warn("*** Graphite Metrics Publishing is Disabled ***");
@@ -121,9 +121,9 @@ public class Server {
 
     private void mapExceptions(RestExpress server) {
         server
-                .mapException(ItemNotFoundException.class, NotFoundException.class)
-                .mapException(DuplicateItemException.class, ConflictException.class)
-                .mapException(ValidationException.class, BadRequestException.class)
-                .mapException(InvalidObjectIdException.class, BadRequestException.class);
+          .mapException(ItemNotFoundException.class, NotFoundException.class)
+          .mapException(DuplicateItemException.class, ConflictException.class)
+          .mapException(ValidationException.class, BadRequestException.class)
+          .mapException(InvalidObjectIdException.class, BadRequestException.class);
     }
 }

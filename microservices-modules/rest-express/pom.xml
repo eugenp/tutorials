@@ -23,56 +23,66 @@
     <artifactId>rest-express</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <RestExpress.plugin.version>0.3.3</RestExpress.plugin.version>
+        <metrics-graphite.version>3.1.2</metrics-graphite.version>
+        <HyperExpressPlugin.version>2.6</HyperExpressPlugin.version>
+        <RestExpress.version>0.11.3</RestExpress.version>
+        <Syntaxe.version>1.0</Syntaxe.version>
+        <repoexpress-mongodb.version>0.4.8</repoexpress-mongodb.version>
+        <junit4.version>4.11</junit4.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.strategicgains</groupId>
             <artifactId>RestExpress</artifactId>
-            <version>0.11.3</version>
+            <version>${RestExpress.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains</groupId>
             <artifactId>Syntaxe</artifactId>
-            <version>1.0</version>
+            <version>${Syntaxe.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains.repoexpress</groupId>
             <artifactId>repoexpress-mongodb</artifactId>
-            <version>0.4.8</version>
+            <version>${repoexpress-mongodb.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains.plugin-express</groupId>
             <artifactId>CacheControlPlugin</artifactId>
-            <version>0.3.3</version>
+            <version>${RestExpress.plugin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains</groupId>
             <artifactId>HyperExpressPlugin</artifactId>
-            <version>2.6</version>
+            <version>${HyperExpressPlugin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains.plugin-express</groupId>
             <artifactId>MetricsPlugin</artifactId>
-            <version>0.3.3</version>
+            <version>${RestExpress.plugin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains.plugin-express</groupId>
             <artifactId>SwaggerPlugin</artifactId>
-            <version>0.3.3</version>
+            <version>${RestExpress.plugin.version}</version>
         </dependency>
         <dependency>
             <groupId>com.strategicgains.plugin-express</groupId>
             <artifactId>CORSPlugin</artifactId>
-            <version>0.3.3</version>
+            <version>${RestExpress.plugin.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-graphite</artifactId>
-            <version>3.1.2</version>
+            <version>${metrics-graphite.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>${junit4.version}</version>
             <type>jar</type>
             <scope>test</scope>
             <optional>true</optional>
@@ -96,7 +106,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <mainClass>com.baeldung.Main</mainClass>
+                    <mainClass>com.baeldung.restexpress.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -121,7 +131,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.baeldung.Main</mainClass>
+                                    <mainClass>com.baeldung.restexpress.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

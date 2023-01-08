@@ -1,6 +1,6 @@
-package com.baeldung.serialization;
+package com.baeldung.restexpress.serialization;
 
-import com.baeldung.uuid.SampleUuidEntity;
+import com.baeldung.restexpress.uuid.SampleUuidEntity;
 import org.restexpress.serialization.xml.XstreamXmlProcessor;
 
 public class XmlSerializationProcessor

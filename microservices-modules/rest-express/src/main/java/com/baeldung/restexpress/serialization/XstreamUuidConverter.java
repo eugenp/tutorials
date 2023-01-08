@@ -1,28 +1,29 @@
-package com.baeldung.serialization;
+package com.baeldung.restexpress.serialization;
 
-import com.strategicgains.repoexpress.mongodb.Identifiers;
+import com.strategicgains.repoexpress.util.UuidConverter;
 import com.thoughtworks.xstream.converters.SingleValueConverter;
-import org.bson.types.ObjectId;
+
+import java.util.UUID;
 
 /**
  * @author toddf
  * @since Feb 16, 2011
  */
-public class XstreamOidConverter
+public class XstreamUuidConverter
         implements SingleValueConverter {
     @SuppressWarnings("rawtypes")
     @Override
     public boolean canConvert(Class aClass) {
-        return ObjectId.class.isAssignableFrom(aClass);
+        return UUID.class.isAssignableFrom(aClass);
     }
 
     @Override
     public Object fromString(String value) {
-        return (ObjectId) Identifiers.MONGOID.parse(value).primaryKey();
+        return UuidConverter.parse(value);
     }
 
     @Override
     public String toString(Object objectId) {
-        return ((ObjectId) objectId).toString();
+        return UuidConverter.format((UUID) objectId);
     }
 }

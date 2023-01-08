@@ -1,4 +1,4 @@
-package com.baeldung.objectid;
+package com.baeldung.restexpress.objectid;
 
 import com.strategicgains.repoexpress.domain.Identifier;
 import com.strategicgains.syntaxe.ValidationEngine;

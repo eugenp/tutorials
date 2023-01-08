@@ -1,4 +1,4 @@
-package com.baeldung.serialization;
+package com.baeldung.restexpress.serialization;
 
 import org.restexpress.response.ErrorResponseWrapper;
 import org.restexpress.response.ResponseWrapper;

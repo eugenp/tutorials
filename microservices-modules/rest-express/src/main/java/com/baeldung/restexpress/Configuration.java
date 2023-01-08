@@ -1,11 +1,11 @@
-package com.baeldung;
+package com.baeldung.restexpress;
 
-import com.baeldung.objectid.SampleOidEntityController;
-import com.baeldung.objectid.SampleOidEntityRepository;
-import com.baeldung.objectid.SampleOidEntityService;
-import com.baeldung.uuid.SampleUuidEntityController;
-import com.baeldung.uuid.SampleUuidEntityRepository;
-import com.baeldung.uuid.SampleUuidEntityService;
+import com.baeldung.restexpress.objectid.SampleOidEntityController;
+import com.baeldung.restexpress.objectid.SampleOidEntityRepository;
+import com.baeldung.restexpress.objectid.SampleOidEntityService;
+import com.baeldung.restexpress.uuid.SampleUuidEntityController;
+import com.baeldung.restexpress.uuid.SampleUuidEntityRepository;
+import com.baeldung.restexpress.uuid.SampleUuidEntityService;
 import com.strategicgains.repoexpress.mongodb.MongoConfig;
 import com.strategicgains.restexpress.plugin.metrics.MetricsConfig;
 import org.restexpress.RestExpress;

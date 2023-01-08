@@ -1,6 +1,6 @@
-package com.baeldung.objectid;
+package com.baeldung.restexpress.objectid;
 
-import com.baeldung.Constants;
+import com.baeldung.restexpress.Constants;
 import com.strategicgains.hyperexpress.annotation.BindToken;
 import com.strategicgains.hyperexpress.annotation.TokenBindings;
 import com.strategicgains.repoexpress.mongodb.AbstractMongodbEntity;

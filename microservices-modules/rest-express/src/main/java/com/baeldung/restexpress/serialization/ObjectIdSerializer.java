@@ -1,4 +1,4 @@
-package com.baeldung.serialization;
+package com.baeldung.restexpress.serialization;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
