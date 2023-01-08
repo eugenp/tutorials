@@ -20,7 +20,7 @@ public class TinylogIntegrationTest {
     }
 
     @Test
-    public void givenStaticText_shouldLogToConsole() throws UnsupportedEncodingException {
+    public void whenLoggingStaticText_thenOutputIt() throws UnsupportedEncodingException {
         Logger.info("Hello World!");
 
         String outputLog = consoleOutput.toString("UTF-8");
@@ -28,7 +28,7 @@ public class TinylogIntegrationTest {
     }
 
     @Test
-    public void givenParameterizedText_shouldLogToConsole() throws UnsupportedEncodingException {
+    public void whenLoggingParamizedText_thenOutputItResolved() throws UnsupportedEncodingException {
         Logger.info("Hello {}!", "Alice");
 
         String outputLog = consoleOutput.toString("UTF-8");
@@ -36,7 +36,7 @@ public class TinylogIntegrationTest {
     }
 
     @Test
-    public void givenFormattedNumber_shouldLogToConsole() throws UnsupportedEncodingException {
+    public void whenLoggingNumberWithFormatPattern_thenOutputItFormatted() throws UnsupportedEncodingException {
         Logger.info("π = {0.00}", Math.PI);
 
         String outputLog = consoleOutput.toString("UTF-8");
@@ -44,7 +44,7 @@ public class TinylogIntegrationTest {
     }
 
     @Test
-    public void givenExceptionWithMessage_shouldLogToConsole() throws UnsupportedEncodingException {
+    public void whenLoggingExceptionWithMessage_thenOutputMessageAndException() throws UnsupportedEncodingException {
         int a = 42;
         int b = 0;
         try {
@@ -58,7 +58,7 @@ public class TinylogIntegrationTest {
     }
 
     @Test
-    public void givenExceptionWithoutMessage_shouldLogToConsole() throws UnsupportedEncodingException {
+    public void whenLoggingExceptionWithoutMessage_thenOutputExceptionOnly() throws UnsupportedEncodingException {
         try {
             int i = 42 / 0;
         } catch (Exception ex) {
