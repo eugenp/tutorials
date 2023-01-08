@@ -26,7 +26,10 @@ class HttpClientCookieLiveTest {
     final void whenSettingCookiesOnARequest_thenCorrect() throws IOException {
         final HttpGet request = new HttpGet("http://www.github.com");
         request.setHeader("Cookie", "JSESSIONID=1234");
-        try (CloseableHttpClient client = HttpClients.createDefault(); CloseableHttpResponse response = (CloseableHttpResponse) client.execute(request, new CustomHttpClientResponseHandler());) {
+        try (CloseableHttpClient client = HttpClients.createDefault();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
             assertThat(response.getCode(), equalTo(200));
         }
     }
@@ -42,8 +45,10 @@ class HttpClientCookieLiveTest {
         final HttpGet request = new HttpGet("https://www.github.com");
         try (CloseableHttpClient client = HttpClientBuilder.create()
             .setDefaultCookieStore(cookieStore)
-            .build(); CloseableHttpResponse response = (CloseableHttpResponse) client.execute(request, new CustomHttpClientResponseHandler())) {
+            .build();
 
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
             assertThat(response.getCode(), equalTo(200));
         }
     }
@@ -58,9 +63,12 @@ class HttpClientCookieLiveTest {
         cookieStore.addCookie(cookie);
         final HttpGet request = new HttpGet("http://www.github.com");
 
-        try (CloseableHttpClient client = HttpClientBuilder.create().setDefaultCookieStore(cookieStore).build();
-            CloseableHttpResponse response = (CloseableHttpResponse) client.execute(request, new CustomHttpClientResponseHandler())) {
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .setDefaultCookieStore(cookieStore)
+            .build();
 
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
             assertThat(response.getCode(), equalTo(200));
         }
 
@@ -79,7 +87,9 @@ class HttpClientCookieLiveTest {
         // localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore); // before 4.3
 
         try (CloseableHttpClient client = HttpClientBuilder.create().build();
-            CloseableHttpResponse response = (CloseableHttpResponse) client.execute(request, localContext, new CustomHttpClientResponseHandler())) {
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, localContext, new CustomHttpClientResponseHandler())) {
             assertThat(response.getCode(), equalTo(200));
         }
     }
