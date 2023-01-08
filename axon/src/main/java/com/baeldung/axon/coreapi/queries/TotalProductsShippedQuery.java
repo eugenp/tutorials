@@ -32,8 +32,6 @@ public class TotalProductsShippedQuery {
 
     @Override
     public String toString() {
-        return "TotalProductsShippedQuery{" +
-                "productId='" + productId + '\'' +
-                '}';
+        return "TotalProductsShippedQuery{" + "productId='" + productId + '\'' + '}';
     }
 }
