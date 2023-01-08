@@ -49,7 +49,6 @@ public class ProductControllerUnitTest {
     @Test
     public void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-
         Price price = new Price();
         price.setProductId(productId);
         price.setPriceAmount(12.00);

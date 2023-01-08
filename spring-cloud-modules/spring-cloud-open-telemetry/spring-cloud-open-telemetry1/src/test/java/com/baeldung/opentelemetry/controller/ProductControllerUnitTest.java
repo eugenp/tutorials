@@ -38,7 +38,7 @@ public class ProductControllerUnitTest {
 
 
     @Test
-    public void givenProductandPriceAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
+    public void givenProductandPriceDataAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
         long productId = 100000L;
         Price price = new Price();
         price.setProductId(productId);
@@ -75,13 +75,11 @@ public class ProductControllerUnitTest {
     }
 
     @Test
-    public void givenPriceNotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
+    public void givenPriceServiceNotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-
         Product product = new Product();
         product.setId(productId);
         product.setName("test");
-
 
         when(productRepository.getProduct(productId)).thenReturn(product);
         when(priceCLient.getPrice(productId)).thenThrow(HttpServerErrorException.ServiceUnavailable.class);

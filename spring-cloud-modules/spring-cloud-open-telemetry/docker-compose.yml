@@ -17,8 +17,6 @@ services:
     image: jaegertracing/all-in-one:latest
     ports:
       - "16686:16686"
-      - "16685:16685"
-      - "14268"
       - "14250"
 
   collector:
@@ -27,9 +25,6 @@ services:
     volumes:
       - ./otel-config.yml:/etc/otel-collector-config.yml
     ports:
-      - "1888:1888"   # pprof extension
-      - "13133:13133" # health_check extension
       - "4317:4317"
-      - "55670:55679" # zpages extension
     depends_on:
       - jaeger-service
