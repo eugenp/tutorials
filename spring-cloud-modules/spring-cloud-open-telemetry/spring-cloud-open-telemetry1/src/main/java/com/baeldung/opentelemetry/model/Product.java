@@ -1,4 +1,4 @@
-package com.baeldung.opentelemetry;
+package com.baeldung.opentelemetry.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

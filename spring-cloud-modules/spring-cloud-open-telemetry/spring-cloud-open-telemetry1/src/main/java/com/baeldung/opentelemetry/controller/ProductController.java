@@ -1,5 +1,9 @@
-package com.baeldung.opentelemetry;
+package com.baeldung.opentelemetry.controller;
 
+import com.baeldung.opentelemetry.api.client.PriceClient;
+import com.baeldung.opentelemetry.model.Price;
+import com.baeldung.opentelemetry.model.Product;
+import com.baeldung.opentelemetry.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +25,8 @@ public class ProductController {
     @GetMapping(path = "/product/{id}")
     public Product getProductDetails(@PathVariable("id") long productId){
         logger.info("Getting Product and Price Details With Product Id {}", productId);
-        Price price = priceClient.getPrice(productId);
         Product product = productRepository.getProduct(productId);
+        Price price = priceClient.getPrice(productId);
         product.setPrice(price);
 
         return product;

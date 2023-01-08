@@ -1,5 +1,6 @@
-package com.baeldung.opentelemetry;
+package com.baeldung.opentelemetry.api.client;
 
+import com.baeldung.opentelemetry.model.Price;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

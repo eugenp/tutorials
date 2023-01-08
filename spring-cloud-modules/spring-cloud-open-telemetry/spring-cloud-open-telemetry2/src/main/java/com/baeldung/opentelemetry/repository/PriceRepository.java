@@ -1,5 +1,7 @@
-package com.baeldung.opentelemetry;
+package com.baeldung.opentelemetry.repository;
 
+import com.baeldung.opentelemetry.model.Price;
+import com.baeldung.opentelemetry.exception.PriceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

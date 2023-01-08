@@ -4,14 +4,12 @@ services:
   product-service:
     platform: linux/x86_64
     build: spring-cloud-open-telemetry1/
-    image: spring-cloud-open-telemetry1:latest
     ports:
       - "8080:8080"
 
   price-service:
     platform: linux/x86_64
     build: spring-cloud-open-telemetry2/
-    image: spring-cloud-open-telemetry2:latest
     ports:
       - "8081"
 
