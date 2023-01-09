@@ -55,7 +55,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenRemoveElement_thenElementIsRemoved(){
+    public void givenAFruitList_whenRemoveFruit_thenFruitIsRemoved(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
@@ -67,7 +67,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenSetElement_thenElementIsUpdated(){
+    public void givenAFruitList_whenSetFruit_thenFruitIsUpdated(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
@@ -78,7 +78,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenSort_thenElementsAreSorted(){
+    public void givenAFruitList_whenSort_thenFruitsAreSorted(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
