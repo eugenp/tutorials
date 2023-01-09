@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee;
 import com.baeldung.spring.data.persistence.springdatajpadifference.springdata.repository.EmployeeRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -28,7 +30,8 @@ public class SpringDataJpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("com.baeldung.spring.data.persistence.springdata_jpa_difference.model");
+        em.setPackagesToScan(Employee.class.getPackage()
+          .getName());
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
