@@ -23,8 +23,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StudentApplicationTest {
-	private static final Logger log = LoggerFactory.getLogger(StudentApplicationTest.class);
+public class StudentApplicationUnitTest {
+	private static final Logger log = LoggerFactory.getLogger(StudentApplicationUnitTest.class);
 	
 	@Autowired
 	StudentRepository studentRepo;
