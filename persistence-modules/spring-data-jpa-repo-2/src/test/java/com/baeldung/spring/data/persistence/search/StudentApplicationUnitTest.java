@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,10 +36,10 @@ public class StudentApplicationUnitTest {
 		int count = 10;
         Random r = new Random();
 
+        List<Integer> scores = r.ints(0, 101).distinct().limit(count).boxed().collect(Collectors.toList());
         
         for (int i = 0; i < count; i++) {
-        	        	
-        	int score = r.nextInt(101);
+        	Integer score = scores.get(i);
         	Student s = new Student("Student-" + i, score);
             
             students.add(s);
