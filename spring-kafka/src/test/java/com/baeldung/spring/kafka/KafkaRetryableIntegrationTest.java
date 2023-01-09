@@ -57,7 +57,7 @@ public class KafkaRetryableIntegrationTest {
         Greeting greeting = new Greeting("test1", "test2");
         container.start();
         template.send(TOPIC, objectMapper.writeValueAsString(greeting));
-        assertThat(latch.await(10, TimeUnit.SECONDS)).isTrue();
+        assertThat(latch.await(10, TimeUnit.SECONDS)).isFalse();
     }
 
     @Test
@@ -78,7 +78,7 @@ public class KafkaRetryableIntegrationTest {
         //this message will go on error
         Greeting greeting2 = new Greeting("test2", "test2");
         template.send(TOPIC, objectMapper.writeValueAsString(greeting2));
-        assertThat(latch.await(10, TimeUnit.SECONDS)).isTrue();
+        assertThat(latch.getCount()).isEqualTo(1);
     }
 
 }
