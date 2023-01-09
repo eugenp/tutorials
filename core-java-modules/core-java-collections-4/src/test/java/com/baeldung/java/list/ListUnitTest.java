@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ListUnitTest {
     
     @Test
-    public void givenAFruitList_whenAddNewFruit_thenSuccess(){
+    public void givenAFruitList_whenAddNewFruit_thenFruitIsAdded(){
         List<String> fruits = new ArrayList<>();
         assertEquals("Unexpected number of fruits in the list, should have been 0", 0, fruits.size());
         
@@ -23,7 +23,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenContainsFruit_thenSuccess(){
+    public void givenAFruitList_whenContainsFruit_thenFruitIsInTheList(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple");
@@ -32,7 +32,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenIsEmpty_thenSuccess(){
+    public void givenAnEmptyFruitList_whenEmptyCheck_thenListIsEmpty(){
         List<String> fruits = new ArrayList<>();
         assertTrue("Fruit list should be empty", fruits.isEmpty());
         
@@ -55,7 +55,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenRemoveElement_thenSuccess(){
+    public void givenAFruitList_whenRemoveElement_thenElementIsRemoved(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
@@ -67,7 +67,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenSetElement_thenSuccess(){
+    public void givenAFruitList_whenSetElement_thenElementIsUpdated(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
@@ -78,7 +78,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenSort_thenSuccess(){
+    public void givenAFruitList_whenSort_thenElementsAreSorted(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
@@ -93,7 +93,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenSublist_thenSuccess(){
+    public void givenAFruitList_whenSublist_thenWeGetASublist(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
@@ -108,7 +108,7 @@ public class ListUnitTest {
     }
     
     @Test
-    public void givenAFruitList_whenToArray_thenSuccess(){
+    public void givenAFruitList_whenToArray_thenWeGetAnArray(){
         List<String> fruits = new ArrayList<>();
         
         fruits.add("Apple"); 
