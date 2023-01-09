@@ -23,11 +23,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StudentApplicationUnitTest {
-	private static final Logger log = LoggerFactory.getLogger(StudentApplicationUnitTest.class);
 	
 	@Autowired
-	StudentRepository studentRepo;
-	
+	private StudentRepository studentRepo;
 	private List<Student> students;
 	
 	@Before
@@ -35,88 +33,55 @@ public class StudentApplicationUnitTest {
 		students = new ArrayList<>();
 		int count = 10;
         Random r = new Random();
-
         List<Integer> scores = r.ints(0, 101).distinct().limit(count).boxed().collect(Collectors.toList());
         
         for (int i = 0; i < count; i++) {
         	Integer score = scores.get(i);
         	Student s = new Student("Student-" + i, score);
-            
             students.add(s);
         }
         
         studentRepo.saveAll(students);
-        
-//        List<Student> _students = studentRepo.findAll();
-//        printData(_students);
-       
         Comparator<Student> c = Comparator.comparing(a -> a.getScore());
 		c = c.reversed();
 		students.sort(c);
-//		printData(students);
 	}
-	
-	private void printData(List<Student> students) {
-		for(Student s : students) {
-        	log.debug("{}", s);
-        }
-	}
-	
+		
 	@After
 	public void clearData() {
 		studentRepo.deleteAll();
 	}
 
 	@Test
-    public void givenStudentScoresThenFindTopOne() {
+    public void givenStudentScores_whenMoreThanOne_thenFindFirst() {
 
-		log.debug("\nExecuting findFirstByOrderByScore()");
         Student student = studentRepo.findFirstByOrderByScoreDesc();        
-        log.debug("{}", student);
-        
-        Student s = students.get(0);
-        
+        Student s = students.get(0);    
         assertEquals(student, s);
 	}
 	
 	@Test
-    public void givenStudentScoresThenFindTopThree() {
+    public void givenStudentScores_whenMoreThan3_thenFindFirstThree() {
 
 		List<Student> firstThree = studentRepo.findFirst3ByOrderByScoreDesc();
-        log.debug("First 3");
-        for(Student s : firstThree) {
-        	log.debug("{}", s);
-        }
-        
         List<Student> sList = students.subList(0, 3);
         assertArrayEquals(firstThree.toArray(), sList.toArray());
 	}
 	
 	@Test
-    public void givenStudentScoresThenFindTopOneWhenNameMatches() {
+    public void givenStudentScores_whenNameMatches_thenFindFirstStudent() {
 		
 		String matchString = "3";
-
-		log.debug("Calling findFirstByNameLike");
-        Student student = studentRepo.findFirstByNameLike("%" + matchString + "%", Sort.by("score").descending());
-        log.debug("{}", student);
-        
+		Student student = studentRepo.findFirstByNameLike("%" + matchString + "%", Sort.by("score").descending());
         Student s = students.stream().filter(a -> a.getName().contains(matchString)).findFirst().orElse(null);
-        
         assertEquals(student, s);
 	}
 	
 	@Test
-    public void givenStudentScoresThenFindTop2WhenScoresBetweenRange() {
+    public void givenStudentScores_whenBetweenRange_thenFindFirstTwoStudents() {
 		
 		List<Student> topTwoBetweenRange = studentRepo.findFirst2ByScoreBetween(50, 60, Sort.by("score").descending());
-        log.debug("findFirst2ByScoreBetween {}", 50, 60);
-        for(Student s : topTwoBetweenRange) {
-        	log.debug("{}", s);
-        }
-        
         List<Student> _students = students.stream().filter(a -> a.getScore() >= 50 && a.getScore() <= 60).limit(2).collect(Collectors.toList());
-        log.debug("Empty {}", topTwoBetweenRange.isEmpty());
         assertArrayEquals(_students.toArray(), topTwoBetweenRange.toArray());
 	}
 }
