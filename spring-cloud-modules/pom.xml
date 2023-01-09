@@ -25,6 +25,7 @@
         <module>spring-cloud-ribbon-client</module>
         <module>spring-cloud-zookeeper</module>
         <module>spring-cloud-gateway</module>
+        <module>spring-cloud-gateway-2</module>
         <module>spring-cloud-stream</module>
         <module>spring-cloud-stream-starters</module>
         <module>spring-cloud-connectors-heroku</module>
