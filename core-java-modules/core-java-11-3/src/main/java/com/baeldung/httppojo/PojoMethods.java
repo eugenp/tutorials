@@ -28,20 +28,18 @@ public class PojoMethods {
         List<TodoApp> sectionlist = gson.fromJson(response, new TypeToken<List<TodoApp>>() {
         }.getType());
 
-        return sectionlist.get(1)
-            .getTitle()
-            .toString();
+        return sectionlist.get(1).toString();
 
     }
 
-    public int jacksonRe() throws Exception {
+    public String jacksonRe() throws Exception {
         String response = sampleApiRequest();
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(response);
         TodoApp[] app = objectMapper.treeToValue(jsonNode, TodoApp[].class);
 
-        return app[1].getId();
+        return app[1].toString();
 
     }
 
@@ -57,7 +55,7 @@ public class PojoMethods {
 
     }
 
-    public int asynJackson() throws Exception {
+    public String asynJackson() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
@@ -71,11 +69,11 @@ public class PojoMethods {
             .thenApply(o::readValue)
             .get();
 
-        return model.get(1).getUserId();
+        return model.get(1).toString();
 
     }
 
-    public boolean asynGson() throws Exception {
+    public String asynGson() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
@@ -88,7 +86,7 @@ public class PojoMethods {
             .thenApply(o::readValue)
             .get();
 
-        return model.get(1).isCompleted();
+        return model.get(1).toString();
 
     }
 
