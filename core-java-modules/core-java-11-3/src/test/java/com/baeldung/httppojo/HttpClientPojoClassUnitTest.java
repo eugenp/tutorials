@@ -20,14 +20,14 @@ import com.google.gson.reflect.TypeToken;
 public class HttpClientPojoClassUnitTest {
 
     // String [] expectedResponse = {userId=1, id=2, title};
-    String jsonString = "{userId=1, id=2, title='quis ut nam facilis et officia qui', completed=false}";
+    // String jsonString = "{userId=1, id=2, title='quis ut nam facilis et officia qui', completed=false}";
+    TodoApp expectedTodo = new TodoApp(1, 2, "quis ut nam facilis et officia qui", false);
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
         PojoMethods sampleGson = new PojoMethods();
 
-        assertEquals(jsonString, sampleGson.gsonMethod()
-            .toString());
+        assertEquals(expectedTodo, sampleGson.gsonMethod());
 
     }
 
@@ -35,8 +35,7 @@ public class HttpClientPojoClassUnitTest {
     public void givenSampleApiCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
         PojoMethods sampleJackson = new PojoMethods();
 
-        assertEquals(jsonString, sampleJackson.jacksonRe()
-            .toString());
+        assertEquals(expectedTodo, sampleJackson.jacksonRe());
     }
 
     @Test
@@ -49,15 +48,13 @@ public class HttpClientPojoClassUnitTest {
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
         PojoMethods sampleAsynJackson = new PojoMethods();
-        assertEquals(jsonString, sampleAsynJackson.asynJackson()
-            .toString());
+        assertEquals(expectedTodo, sampleAsynJackson.asynJackson());
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
         PojoMethods sampleAsynGson = new PojoMethods();
-        assertEquals(jsonString, sampleAsynGson.asynGson()
-            .toString());
+        assertEquals(expectedTodo, sampleAsynGson.asynGson());
     }
 
 }
