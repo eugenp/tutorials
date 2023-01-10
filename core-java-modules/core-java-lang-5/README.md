@@ -12,3 +12,4 @@ This module contains articles about core features in the Java language
 - [Infinity in Java](https://www.baeldung.com/java-infinity)
 - [Type Parameter vs Wildcard in Java Generics](https://www.baeldung.com/java-generics-type-parameter-vs-wildcard)
 - [Convert Between int and char in Java](https://www.baeldung.com/java-convert-int-char)
+- 
