@@ -13,7 +13,7 @@ public class RestTemplateConfig {
         RestTemplate restTemplate = new RestTemplate();
         DefaultUriBuilderFactory defaultUriBuilderFactory = new DefaultUriBuilderFactory();
         defaultUriBuilderFactory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.VALUES_ONLY);
-        restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory());
+        restTemplate.setUriTemplateHandler(defaultUriBuilderFactory);
         return restTemplate;
     }
 }
