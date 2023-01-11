@@ -5,20 +5,20 @@ import org.bson.BsonValue;
 import org.bson.types.Binary;
 import org.springframework.core.convert.converter.Converter;
 
-import com.baeldung.boot.csfle.config.ConfigComponent;
+import com.baeldung.boot.csfle.config.EncryptionConfig;
 
 public class StringConverter implements Converter<Binary, String> {
 
-    private ConfigComponent config;
+    private EncryptionConfig encryptionConfig;
 
-    public StringConverter(ConfigComponent config) {
-        this.config = config;
+    public StringConverter(EncryptionConfig config) {
+        this.encryptionConfig = config;
     }
 
     @Override
     public String convert(Binary source) {
         BsonBinary bin = new BsonBinary(source.getType(), source.getData());
-        BsonValue value = config.getEncryption()
+        BsonValue value = encryptionConfig.getEncryption()
             .decrypt(bin);
 
         return value.asString()
