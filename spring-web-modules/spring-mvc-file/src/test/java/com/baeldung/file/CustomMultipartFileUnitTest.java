@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
 
-public class CustomMultipartFileUnitTest {
+class CustomMultipartFileUnitTest {
 
     @Test
     void whenProvidingByteArray_thenMultipartFileCreated() throws IOException {
