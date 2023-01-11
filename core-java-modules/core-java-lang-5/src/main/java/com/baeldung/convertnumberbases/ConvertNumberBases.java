@@ -17,20 +17,21 @@ public class ConvertNumberBases {
         while (num > 0) {
             remainder = num % newBase;
             if (newBase == 16) {
-                if (remainder == 10)
+                if (remainder == 10) {
                     result += 'A';
-                else if (remainder == 11)
+                } else if (remainder == 11) {
                     result += 'B';
-                else if (remainder == 12)
+                } else if (remainder == 12) {
                     result += 'C';
-                else if (remainder == 13)
+                } else if (remainder == 13) {
                     result += 'D';
-                else if (remainder == 14)
+                } else if (remainder == 14) {
                     result += 'E';
-                else if (remainder == 15)
+                } else if (remainder == 15) {
                     result += 'F';
-                else
+                } else {
                     result += remainder;
+                }
             } else {
                 result += remainder;
             }
