@@ -8,7 +8,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <name>RestExpress-MongoDB-Scaffold</name>
+    <name>rest-express</name>
     <!--
 		To run the project: mvn clean package exec:java
 			* mongod must be running.
