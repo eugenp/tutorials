@@ -34,10 +34,10 @@ public class StudentApplicationUnitTest {
         int count = 10;
         Random r = new Random();
         List<Integer> scores = r.ints(0, 101)
-            .distinct()
-            .limit(count)
-            .boxed()
-            .collect(Collectors.toList());
+          .distinct()
+          .limit(count)
+          .boxed()
+          .collect(Collectors.toList());
 
         for (int i = 0; i < count; i++) {
             Integer score = scores.get(i);
@@ -77,12 +77,12 @@ public class StudentApplicationUnitTest {
 
         String matchString = "3";
         Student student = studentRepo.findFirstByNameLike("%" + matchString + "%", Sort.by("score")
-            .descending());
+          .descending());
         Student s = students.stream()
-            .filter(a -> a.getName()
-                .contains(matchString))
-            .findFirst()
-            .orElse(null);
+          .filter(a -> a.getName()
+          .contains(matchString))
+          .findFirst()
+          .orElse(null);
         assertEquals(student, s);
     }
 
@@ -90,11 +90,11 @@ public class StudentApplicationUnitTest {
     public void givenStudentScores_whenBetweenRange_thenFindFirstTwoStudents() {
 
         List<Student> topTwoBetweenRange = studentRepo.findFirst2ByScoreBetween(50, 60, Sort.by("score")
-            .descending());
+          .descending());
         List<Student> _students = students.stream()
-            .filter(a -> a.getScore() >= 50 && a.getScore() <= 60)
-            .limit(2)
-            .collect(Collectors.toList());
+          .filter(a -> a.getScore() >= 50 && a.getScore() <= 60)
+          .limit(2)
+          .collect(Collectors.toList());
         assertArrayEquals(_students.toArray(), topTwoBetweenRange.toArray());
     }
 }
