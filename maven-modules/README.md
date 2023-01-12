@@ -825,7 +825,7 @@ Nexus很快就会成为唯一真正成熟的选择，用于托管第三方工件
 - [如何用Maven创建一个可执行的JAR文件](../core-java-modules/core-java-jar/README.md#如何用maven创建一个可执行的jar)
 - [用Maven对JS和CSS资产进行最小化处理](../spring-static-resources/README.md#用maven对js和css资产进行最小化处理)
 - [Maven打包类型](#maven打包类型)
-- 了解Maven的父POM "相对路径 "标签
+- [了解Maven的父POM "相对路径 "标签](maven-parent-pom-resolution/README.md)
 
 ### Maven打包类型
 
@@ -1075,4 +1075,3 @@ Maven提供了许多默认的打包类型，还提供了定义自定义打包类
 - [x] [Setting the Java Version in Maven](https://www.baeldung.com/maven-java-version)
 - [x] [Maven Packaging Types](https://www.baeldung.com/maven-packaging-types)
 - [x] [Differences Between JAR and WAR Packaging](https://www.baeldung.com/java-jar-war-packaging)
-- [Maven Snapshot Repository vs Release Repository](https://www.baeldung.com/maven-snapshot-release-repository)
