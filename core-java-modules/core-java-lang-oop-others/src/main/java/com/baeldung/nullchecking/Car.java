@@ -5,13 +5,13 @@ import java.util.stream.Stream;
 
 public class Car {
 
-    Engine engine;
+    Integer power;
 
     Integer year;
 
     public boolean allNull() {
 
-        if (engine != null) {
+        if (power != null) {
             return false;
         }
 
@@ -24,7 +24,7 @@ public class Car {
 
     public boolean allNullV2() {
 
-        return Stream.of(engine, year)
+        return Stream.of(power, year)
                 .allMatch(Objects::isNull);
     }
 }

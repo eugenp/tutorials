@@ -29,7 +29,7 @@ public class NullCheckUnitTest {
     public void givenNullFields_whenCheckForNullsUsingApacheCommons_thenReturnCorrectValue(){
         Car car = new Car();
 
-        boolean result = ObjectUtils.allNull(car.engine, car.year);
+        boolean result = ObjectUtils.allNull(car.power, car.year);
 
         assertTrue(result);
     }
