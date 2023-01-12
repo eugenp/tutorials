@@ -3,7 +3,7 @@ package com.baeldung.monad;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MonadSampleTest {
+public class MonadSampleUnitTest {
 
     @Test
     public void whenNotUsingMonad_shouldBeOk() {
