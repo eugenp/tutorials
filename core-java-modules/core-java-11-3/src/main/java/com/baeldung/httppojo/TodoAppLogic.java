@@ -36,7 +36,6 @@ public class TodoAppLogic {
         String response = sampleApiRequest();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        
         TodoApp[] app = objectMapper.readValue(response, TodoApp[].class);
 
         return app[1];
