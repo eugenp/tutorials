@@ -11,4 +11,3 @@ This module contains articles about Spring Cloud Gateway
 - [Using Spring Cloud Gateway with OAuth 2.0 Patterns](https://www.baeldung.com/spring-cloud-gateway-oauth2)
 - [URL Rewriting With Spring Cloud Gateway](https://www.baeldung.com/spring-cloud-gateway-url-rewriting)
 - [Processing the Response Body in Spring Cloud Gateway](https://www.baeldung.com/spring-cloud-gateway-response-body)
-- [Rate Limiting With Client IP in Spring Cloud Gateway](https://www.baeldung.com/spring-cloud-gateway-rate-limit-by-client-ip)
