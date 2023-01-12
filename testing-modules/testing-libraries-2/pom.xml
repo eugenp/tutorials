@@ -53,12 +53,6 @@
             <version>${system-stubs.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-inline</artifactId>
-            <version>${mockito-inline.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -109,7 +103,6 @@
     </build>
 
     <properties>
-        <mockito-inline.version>4.8.0</mockito-inline.version>
         <jacoco.version>0.8.6</jacoco.version>
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
