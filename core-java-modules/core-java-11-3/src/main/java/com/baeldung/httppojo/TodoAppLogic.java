@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import static java.net.http.HttpResponse.BodyHandlers.*;
 
-public class PojoMethods {
+public class TodoAppLogic {
     public static void main(String[] args) throws Exception {
 
     }
@@ -36,8 +36,8 @@ public class PojoMethods {
         String response = sampleApiRequest();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(response);
-        TodoApp[] app = objectMapper.treeToValue(jsonNode, TodoApp[].class);
+        
+        TodoApp[] app = objectMapper.readValue(response, TodoApp[].class);
 
         return app[1];
 

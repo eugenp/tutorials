@@ -25,7 +25,7 @@ public class HttpClientPojoClassUnitTest {
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        PojoMethods sampleGson = new PojoMethods();
+        TodoAppLogic sampleGson = new TodoAppLogic();
 
         assertEquals(expectedTodo, sampleGson.gsonMethod());
 
@@ -33,27 +33,27 @@ public class HttpClientPojoClassUnitTest {
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        PojoMethods sampleJackson = new PojoMethods();
+        TodoAppLogic sampleJackson = new TodoAppLogic();
 
         assertEquals(expectedTodo, sampleJackson.jacksonRe());
     }
 
     @Test
     public void givenSampleRestApi_whenApiIsConsumedByHttpClient_thenCompareJsonString() throws Exception {
-        PojoMethods sampleTest = new PojoMethods();
+        TodoAppLogic sampleTest = new TodoAppLogic();
         assertNotNull(sampleTest.sampleApiRequest());
 
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        PojoMethods sampleAsynJackson = new PojoMethods();
+        TodoAppLogic sampleAsynJackson = new TodoAppLogic();
         assertEquals(expectedTodo, sampleAsynJackson.asynJackson());
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        PojoMethods sampleAsynGson = new PojoMethods();
+        TodoAppLogic sampleAsynGson = new TodoAppLogic();
         assertEquals(expectedTodo, sampleAsynGson.asynGson());
     }
 
