@@ -1,10 +1,11 @@
-package com.baeldung.maps.initialize;
-
-import java.util.Map;
-import org.junit.Test;
+package com.baeldung.map;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Map;
+
+import org.junit.Test;
 
 public class EmptyMapInitializerUnitTest {
 
