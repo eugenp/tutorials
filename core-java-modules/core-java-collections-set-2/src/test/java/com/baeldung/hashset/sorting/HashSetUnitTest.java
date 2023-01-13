@@ -1,4 +1,4 @@
-package com.baeldung.collections.sorting;
+package com.baeldung.hashset.sorting;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
