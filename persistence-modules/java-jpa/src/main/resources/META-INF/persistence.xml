@@ -15,7 +15,7 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:database.sql'" />
+				value="jdbc:h2:mem:test;MODE=LEGACY;INIT=RUNSCRIPT FROM 'classpath:database.sql'" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="hibernate.dialect"
@@ -37,7 +37,7 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
+				value="jdbc:h2:mem:test;MODE=LEGACY" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="hibernate.dialect"
@@ -80,7 +80,7 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:entitygraphdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+				value="jdbc:h2:mem:entitygraphdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=USER" />
 
 			<property
 				name="javax.persistence.schema-generation.database.action"
