@@ -17,11 +17,6 @@ public class PriceRepository {
 
     private final Map<Long, Price> priceMap = new HashMap<>();
 
-    @PostConstruct
-    private void postConstruct() {
-        this.setupRepo();
-    }
-
     public Price getPrice(Long productId){
         logger.info("Getting Price from Price Repo With Product Id {}", productId);
 
@@ -33,6 +28,7 @@ public class PriceRepository {
         return priceMap.get(productId);
     }
 
+    @PostConstruct
     private void setupRepo(){
         Price price1 = getPrice(100001L, 12.5, 2.5);
         priceMap.put(100001L, price1);

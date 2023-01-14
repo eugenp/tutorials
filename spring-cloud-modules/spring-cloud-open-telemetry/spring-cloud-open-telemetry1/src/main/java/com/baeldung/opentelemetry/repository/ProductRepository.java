@@ -17,11 +17,6 @@ public class ProductRepository {
 
     private final Map<Long, Product> productMap = new HashMap<>();
 
-    @PostConstruct
-    private void postConstruct() {
-        this.setupRepo();
-    }
-
     public Product getProduct(Long productId){
         logger.info("Getting Product from Product Repo With Product Id {}", productId);
 
@@ -33,6 +28,7 @@ public class ProductRepository {
         return productMap.get(productId);
     }
 
+    @PostConstruct
     private void setupRepo() {
         Product product1 = getProduct(100001, "apple");
         productMap.put(100001L, product1);
