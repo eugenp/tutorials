@@ -14,8 +14,12 @@ public class PriceController {
 
     private final Logger logger = LoggerFactory.getLogger(PriceController.class);
 
+    private final PriceRepository priceRepository;
+
     @Autowired
-    private PriceRepository priceRepository;
+    public PriceController(PriceRepository priceRepository) {
+        this.priceRepository = priceRepository;
+    }
 
     @GetMapping(path = "/price/{id}")
     public Price getPrice(@PathVariable("id") long productId) {

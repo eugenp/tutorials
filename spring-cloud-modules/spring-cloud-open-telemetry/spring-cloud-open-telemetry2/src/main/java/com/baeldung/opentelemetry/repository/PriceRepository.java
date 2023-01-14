@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,8 +17,9 @@ public class PriceRepository {
 
     private final Map<Long, Price> priceMap = new HashMap<>();
 
-    public PriceRepository() {
-        setupRepo();
+    @PostConstruct
+    private void postConstruct() {
+        this.setupRepo();
     }
 
     public Price getPrice(Long productId){
@@ -32,31 +34,24 @@ public class PriceRepository {
     }
 
     private void setupRepo(){
-
-        Price price1 = new Price();
-        price1.setProductId(100001L);
-        price1.setPriceAmount(12.5);
-        price1.setDiscount(2.5);
+        Price price1 = getPrice(100001L, 12.5, 2.5);
         priceMap.put(100001L, price1);
 
-        Price price2 = new Price();
-        price2.setProductId(100002L);
-        price2.setPriceAmount(10.5);
-        price2.setDiscount(2.1);
+        Price price2 = getPrice(100002L, 10.5, 2.1);
         priceMap.put(100002L, price2);
 
-
-        Price price3 = new Price();
-        price3.setProductId(100003L);
-        price3.setPriceAmount(18.5);
-        price3.setDiscount(2.0);
+        Price price3 = getPrice(100003L, 18.5, 2.0);
         priceMap.put(100003L, price3);
 
-        Price price4 = new Price();
-        price4.setProductId(100004L);
-        price4.setPriceAmount(18.5);
-        price4.setDiscount(2.0);
+        Price price4 = getPrice(100004L, 18.5, 2.0);
         priceMap.put(100004L, price4);
     }
 
+    private static Price getPrice(long productId, double priceAmount, double discount) {
+        Price price1 = new Price();
+        price1.setProductId(productId);
+        price1.setPriceAmount(priceAmount);
+        price1.setDiscount(discount);
+        return price1;
+    }
 }

@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(PriceController.class)
 @EnableWebMvc
-public class ProductControllerUnitTest {
+public class PriceControllerUnitTest {
 
     @MockBean
     private PriceRepository priceRepository;
@@ -49,10 +49,6 @@ public class ProductControllerUnitTest {
     @Test
     public void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-        Price price = new Price();
-        price.setProductId(productId);
-        price.setPriceAmount(12.00);
-        price.setDiscount(2.5);
 
         when(priceRepository.getPrice(productId)).thenThrow(PriceNotFoundException.class);
 
