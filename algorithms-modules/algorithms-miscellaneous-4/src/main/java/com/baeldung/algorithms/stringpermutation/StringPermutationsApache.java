@@ -1,20 +1,29 @@
 package com.baeldung.algorithms.stringpermutation;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.iterators.PermutationIterator;
 
 public class StringPermutationsApache {
 
-    public Collection<List<Character>> eagerPermutationWithRepetitions(final String string) {
-        final List<Character> characters = ArrayHelper.toCharacterList(string);
-        return CollectionUtils.permutations(characters);
+    public List<String> eagerPermutationWithRepetitions(final String string) {
+        final List<Character> characters = Helper.toCharacterList(string);
+        return CollectionUtils.permutations(characters)
+            .stream()
+            .map(Helper::toString)
+            .collect(Collectors.toList());
     }
 
-    public PermutationIterator<Character> lazyPermutationWithoutRepetitions(final String string) {
-        final List<Character> characters = ArrayHelper.toCharacterList(string);
-        return new PermutationIterator<>(characters);
+    public List<String> lazyPermutationWithoutRepetitions(final String string) {
+        final List<Character> characters = Helper.toCharacterList(string);
+        final PermutationIterator<Character> permutationIterator = new PermutationIterator<>(characters);
+        final List<String> result = new ArrayList<>();
+        while (permutationIterator.hasNext()) {
+            result.add(Helper.toString(permutationIterator.next()));
+        }
+        return result;
     }
 
 }

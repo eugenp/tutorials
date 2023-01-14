@@ -13,7 +13,7 @@ public class ItemService {
     @Cacheable(value = "itemCache")
     public Item getItemForId(String id) {
         return itemRepository.findById(id)
-          .orElseThrow(RuntimeException::new);
+                .orElseThrow(RuntimeException::new);
     }
 
 }

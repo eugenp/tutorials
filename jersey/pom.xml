@@ -72,6 +72,11 @@
             <version>${jersey.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.connectors</groupId>
+            <artifactId>jersey-apache-connector</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -95,7 +100,7 @@
     </build>
 
     <properties>
-        <jersey.version>2.26</jersey.version>
+        <jersey.version>2.38</jersey.version>
     </properties>
 
 </project>

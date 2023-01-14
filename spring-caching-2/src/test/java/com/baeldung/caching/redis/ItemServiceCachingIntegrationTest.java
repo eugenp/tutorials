@@ -45,7 +45,7 @@ class ItemServiceCachingIntegrationTest {
     void givenRedisCaching_whenFindItemById_thenItemReturnedFromCache() {
         Item anItem = new Item(AN_ID, A_DESCRIPTION);
         given(mockItemRepository.findById(AN_ID))
-          .willReturn(Optional.of(anItem));
+                .willReturn(Optional.of(anItem));
 
         Item itemCacheMiss = itemService.getItemForId(AN_ID);
         Item itemCacheHit = itemService.getItemForId(AN_ID);

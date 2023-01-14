@@ -1,18 +1,22 @@
 package com.baeldung.algorithms.stringpermutation;
 
 import com.google.common.collect.Collections2;
-import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringPermutationsGuava {
 
-    public Collection<List<Character>> permutationWithRepetitions(final String string) {
-        final List<Character> characters = ArrayHelper.toCharacterList(string);
-        return Collections2.permutations(characters);
+    public List<String> permutationWithRepetitions(final String string) {
+        final List<Character> characters = Helper.toCharacterList(string);
+        return Collections2.permutations(characters).stream()
+            .map(Helper::toString)
+            .collect(Collectors.toList());
     }
-public Collection<List<Character>> permutationWithoutRepetitions(final String string) {
-    final List<Character> characters = ArrayHelper.toCharacterList(string);
-    return Collections2.orderedPermutations(characters);
-}
+    public List<String> permutationWithoutRepetitions(final String string) {
+        final List<Character> characters = Helper.toCharacterList(string);
+        return Collections2.orderedPermutations(characters).stream()
+            .map(Helper::toString)
+            .collect(Collectors.toList());
+    }
 
 }

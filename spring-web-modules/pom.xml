@@ -16,6 +16,7 @@
 
     <modules>
         <module>spring-5-mvc</module>
+        <module>spring-freemarker</module>
         <module>spring-mvc-basics</module>
         <module>spring-mvc-basics-2</module>
         <module>spring-mvc-basics-3</module>
@@ -34,6 +35,7 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-http</module>
         <module>spring-rest-http-2</module>
+        <module>spring-rest-http-3</module>
         <module>spring-rest-query-language</module>
         <module>spring-rest-shell</module>
         <module>spring-rest-simple</module>

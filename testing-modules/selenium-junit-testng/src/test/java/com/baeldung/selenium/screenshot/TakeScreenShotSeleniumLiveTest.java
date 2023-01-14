@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -13,12 +14,10 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -33,17 +32,16 @@ public class TakeScreenShotSeleniumLiveTest {
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", resolveResourcePath("chromedriver.mac"));
 
-        Capabilities capabilities = DesiredCapabilities.chrome();
-        driver = new ChromeDriver(capabilities);
+        driver = new ChromeDriver();
         driver.manage()
             .timeouts()
-            .implicitlyWait(5, TimeUnit.SECONDS);
+            .implicitlyWait(Duration.ofSeconds(5));
 
         driver.get("http://www.google.com/");
     }
 
     @AfterClass
-    public static void tearDown() throws IOException {
+    public static void tearDown() {
         driver.close();
 
         System.clearProperty("webdriver.chrome.driver");

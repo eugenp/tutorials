@@ -9,3 +9,4 @@
 - [Check if a Character is a Vowel in Java](https://www.baeldung.com/java-check-character-vowel)
 - [How to Truncate a String in Java](https://www.baeldung.com/java-truncating-strings)
 - [Remove Whitespace From a String in Java](https://www.baeldung.com/java-string-remove-whitespace)
+- [Named Placeholders in String Formatting](https://www.baeldung.com/java-string-formatting-named-placeholders)

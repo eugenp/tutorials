@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-3</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-3</name>
+    <description>Demo project for Spring Boot</description>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-    <artifactId>spring-boot-3-sample</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-3-sample</name>
-    <description>Demo project for Spring Boot</description>
 
     <dependencies>
         <dependency>
@@ -47,13 +49,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- depends on javax.servlet, see https://github.com/springdoc/springdoc-openapi/issues/1284
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.9</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
-        -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -122,7 +122,8 @@
 
     <properties>
         <mapstruct.version>1.5.2.Final</mapstruct.version>
-        <start-class>com.baeldung.sample.TodoApplication</start-class>
+        <springdoc.version>2.0.0</springdoc.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
     </properties>
 
 </project>
