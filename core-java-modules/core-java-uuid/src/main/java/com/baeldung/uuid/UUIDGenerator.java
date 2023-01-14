@@ -27,7 +27,8 @@ public final class UUIDGenerator {
 
     private static long get64LeastSignificantBitsForVersion1() {
         final long random63BitLong = new Random().nextLong() & 0x3FFFFFFFFFFFFFFFL;
-        return random63BitLong | 0x8000000000000000L;
+        long variant3BitFlag = 0x8000000000000000L;
+        return random63BitLong | variant3BitFlag;
     }
 
     private static long get64MostSignificantBitsForVersion1() {
