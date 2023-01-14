@@ -44,10 +44,10 @@ public class PriceRepository {
     }
 
     private static Price getPrice(long productId, double priceAmount, double discount) {
-        Price price1 = new Price();
-        price1.setProductId(productId);
-        price1.setPriceAmount(priceAmount);
-        price1.setDiscount(discount);
-        return price1;
+        Price price = new Price();
+        price.setProductId(productId);
+        price.setPriceAmount(priceAmount);
+        price.setDiscount(discount);
+        return price;
     }
 }

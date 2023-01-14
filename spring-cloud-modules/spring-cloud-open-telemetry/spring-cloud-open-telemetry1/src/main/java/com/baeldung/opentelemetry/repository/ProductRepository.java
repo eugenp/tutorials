@@ -47,9 +47,9 @@ public class ProductRepository {
     }
 
     private static Product getProduct(int id, String name) {
-        Product product1 = new Product();
-        product1.setId(id);
-        product1.setName(name);
-        return product1;
+        Product product = new Product();
+        product.setId(id);
+        product.setName(name);
+        return product;
     }
 }
