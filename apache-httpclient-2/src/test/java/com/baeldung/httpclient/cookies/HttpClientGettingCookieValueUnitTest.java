@@ -20,13 +20,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-public class HttpClientGettingCookieValueUnitTest {
+class HttpClientGettingCookieValueUnitTest {
     private static Logger log = LoggerFactory.getLogger(HttpClientGettingCookieValueUnitTest.class);
 
     private static final String SAMPLE_URL = "http://www.baeldung.com/";
 
     @Test
-    public final void whenSettingCustomCookieOnTheRequest_thenGettingTheSameCookieFromTheResponse() throws IOException {
+    void whenSettingCustomCookieOnTheRequest_thenGettingTheSameCookieFromTheResponse() throws IOException {
 
         HttpClientContext context = HttpClientContext.create();
         context.setAttribute(HttpClientContext.COOKIE_STORE, createCustomCookieStore());
