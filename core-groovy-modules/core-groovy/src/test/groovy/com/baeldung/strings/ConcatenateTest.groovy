@@ -1,101 +1,88 @@
-import com.baeldung.strings.Concatenate;
+import com.baeldung.strings.Concatenate
+import spock.lang.Specification
 
-class ConcatenateTest extends GroovyTestCase {
-    
-    void testSimpleConcat() {
-        def name = new Concatenate()
-        name.first = 'Joe';
-        name.last = 'Smith';
-        def expected = 'My name is Joe Smith'
-        assertToString(name.doSimpleConcat(), expected)
-    }
-    
-    void testConcatUsingGString() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingGString(), expected)
-    }
-    
-    void testConcatUsingGStringClosures() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingGStringClosures(), expected)
-    }
-    
-    void testConcatUsingStringConcatMethod() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingStringConcatMethod(), expected)
+class ConcatenateTest extends Specification {
+
+    final Concatenate NAME = new Concatenate(first: 'Joe', last: 'Smith')
+    final String EXPECTED = "My name is Joe Smith";
+
+    def "SimpleConcat"() {
+        expect:
+        NAME.doSimpleConcat() == EXPECTED
     }
 
-    void testConcatUsingLeftShiftOperator() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingLeftShiftOperator(), expected)
+    def "ConcatUsingGString"() {
+        expect:
+        NAME.doConcatUsingGString() == EXPECTED
     }
 
-    void testConcatUsingArrayJoinMethod() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingArrayJoinMethod(), expected)
+    def "ConcatUsingGStringClosures"() {
+        expect:
+        NAME.doConcatUsingGStringClosures() == EXPECTED
     }
 
-    void testConcatUsingArrayInjectMethod() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingArrayInjectMethod(), expected)
+    def "ConcatUsingStringConcatMethod"() {
+        expect:
+        NAME.doConcatUsingStringConcatMethod() == EXPECTED
     }
 
-    void testConcatUsingStringBuilder() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingStringBuilder(), expected)
+    def "ConcatUsingLeftShiftOperator"() {
+        expect:
+        NAME.doConcatUsingLeftShiftOperator() == EXPECTED
     }
 
-    void testConcatUsingStringBuffer() {
-        def name = new Concatenate()
-        name.first = "Joe";
-        name.last = "Smith";
-        def expected = "My name is Joe Smith"
-        assertToString(name.doConcatUsingStringBuffer(), expected)
+    def "ConcatUsingArrayJoinMethod"() {
+        expect:
+        NAME.doConcatUsingArrayJoinMethod() == EXPECTED
     }
 
-    void testConcatMultilineUsingStringConcatMethod() {
-        def name = new Concatenate()
-        name.first = '''Joe
+    def "ConcatUsingArrayInjectMethod"() {
+        expect:
+        NAME.doConcatUsingArrayInjectMethod() == EXPECTED
+    }
+
+    def "ConcatUsingStringBuilder"() {
+        expect:
+        NAME.doConcatUsingStringBuilder() == EXPECTED
+    }
+
+    def "ConcatUsingStringBuffer"() {
+        expect:
+        NAME.doConcatUsingStringBuffer() == EXPECTED
+    }
+
+    def "ConcatMultilineUsingStringConcatMethod"() {
+        when:
+        NAME.first = '''Joe
                         Smith
-                        ''';
-        name.last = 'Junior';
+                        '''
+        NAME.last = 'Junior'
+
+        then:
         def expected = '''My name is Joe
                         Smith
-                         Junior''';
-        assertToString(name.doConcatUsingStringConcatMethod(), expected)
+                         Junior'''
+        NAME.doConcatUsingStringConcatMethod() == expected
     }
 
-    void testGStringvsClosure(){
-        def first = "Joe";
-        def last = "Smith";
-        def eagerGString = "My name is $first $last"
-        def lazyGString = "My name is ${-> first} ${-> last}"
+    def "GStringvsClosure"() {
+        given:
+        def eagerGString = "My name is $NAME.first $NAME.last"
+        def lazyGString = "My name is ${-> NAME.first} ${-> NAME.last}"
 
-        assert eagerGString == "My name is Joe Smith"
-        assert lazyGString == "My name is Joe Smith"
-        first = "David";
-        assert eagerGString == "My name is Joe Smith"
-        assert lazyGString == "My name is David Smith"
-    }  
+        expect:
+        eagerGString == "My name is Joe Smith"
+        lazyGString == "My name is Joe Smith"
+    }
+
+    def "LazyVsEager"() {
+        given:
+        def eagerGString = "My name is $NAME.first $NAME.last"
+        def lazyGString = "My name is ${-> NAME.first} ${-> NAME.last}"
+        NAME.first = "David"
+
+        expect:
+        eagerGString == "My name is Joe Smith"
+        lazyGString == "My name is David Smith"
+    }
 }
