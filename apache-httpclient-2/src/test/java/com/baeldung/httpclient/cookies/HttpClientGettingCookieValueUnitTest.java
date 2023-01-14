@@ -7,8 +7,8 @@ import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.cookie.Cookie;
 import org.apache.hc.client5.http.cookie.CookieStore;
 
+import org.apache.hc.client5.http.impl.classic.BasicHttpClientResponseHandler;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 
 import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
@@ -19,9 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-
-
-import com.baeldung.tlsversion.CustomHttpClientResponseHandler;
 
 public class HttpClientGettingCookieValueUnitTest {
     private static Logger log = LoggerFactory.getLogger(HttpClientGettingCookieValueUnitTest.class);
@@ -37,10 +34,8 @@ public class HttpClientGettingCookieValueUnitTest {
         final HttpGet request = new HttpGet(SAMPLE_URL);
 
         try (CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(request, context, new CustomHttpClientResponseHandler())) {
-
+            .build()) {
+            client.execute(request, context, new BasicHttpClientResponseHandler());
             CookieStore cookieStore = context.getCookieStore();
             Cookie customCookie = cookieStore.getCookies()
                 .stream()
@@ -52,7 +47,6 @@ public class HttpClientGettingCookieValueUnitTest {
             assertEquals("test_value", customCookie.getValue());
         }
     }
-
 
     private BasicCookieStore createCustomCookieStore() {
         BasicCookieStore cookieStore = new BasicCookieStore();
