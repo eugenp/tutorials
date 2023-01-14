@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    @Autowired
-    private PriceClient priceClient;
+    private final PriceClient priceClient;
+
+    private final ProductRepository productRepository;
 
     @Autowired
-    private ProductRepository productRepository;
-
+    public ProductController(PriceClient priceClient, ProductRepository productRepository) {
+        this.priceClient = priceClient;
+        this.productRepository = productRepository;
+    }
 
     @GetMapping(path = "/product/{id}")
     public Product getProductDetails(@PathVariable("id") long productId){

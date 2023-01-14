@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,8 +17,9 @@ public class ProductRepository {
 
     private final Map<Long, Product> productMap = new HashMap<>();
 
-    public ProductRepository() {
-        setupRepo();
+    @PostConstruct
+    private void postConstruct() {
+        this.setupRepo();
     }
 
     public Product getProduct(Long productId){
@@ -32,34 +34,26 @@ public class ProductRepository {
     }
 
     private void setupRepo() {
-        Product product1 = new Product();
-        product1.setId(100001);
-        product1.setName("apple");
-
+        Product product1 = getProduct(100001, "apple");
         productMap.put(100001L, product1);
 
-        Product product2 = new Product();
-        product2.setId(100002);
-        product2.setName("pears");
-
+        Product product2 = getProduct(100002, "pears");
         productMap.put(100002L, product2);
 
-        Product product3 = new Product();
-        product3.setId(100003);
-        product3.setName("banana");
-
+        Product product3 = getProduct(100003, "banana");
         productMap.put(100003L, product3);
 
-        Product product4 = new Product();
-        product3.setId(100004);
-        product3.setName("mango");
-
+        Product product4 = getProduct(100004, "mango");
         productMap.put(100004L, product4);
 
-        Product product5 = new Product();
-        product3.setId(100005);
-        product3.setName("test");
-
+        Product product5 = getProduct(100005, "test");
         productMap.put(100005L, product5);
+    }
+
+    private static Product getProduct(int id, String name) {
+        Product product1 = new Product();
+        product1.setId(id);
+        product1.setName(name);
+        return product1;
     }
 }

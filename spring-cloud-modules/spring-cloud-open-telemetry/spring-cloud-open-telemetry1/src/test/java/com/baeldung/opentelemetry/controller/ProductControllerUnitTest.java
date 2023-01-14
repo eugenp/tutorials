@@ -40,14 +40,9 @@ public class ProductControllerUnitTest {
     @Test
     public void givenProductandPriceDataAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
         long productId = 100000L;
-        Price price = new Price();
-        price.setProductId(productId);
-        price.setPriceAmount(12.00);
-        price.setDiscount(2.5);
 
-        Product product = new Product();
-        product.setId(productId);
-        product.setName("test");
+        Price price = getPrice(productId);
+        Product product = getProduct(productId);
         product.setPrice(price);
 
         when(productRepository.getProduct(productId)).thenReturn(product);
@@ -57,15 +52,10 @@ public class ProductControllerUnitTest {
             .andExpect(status().is(HttpStatus.OK.value()));
     }
 
-
     @Test
     public void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-
-        Price price = new Price();
-        price.setProductId(productId);
-        price.setPriceAmount(12.00);
-        price.setDiscount(2.5);
+        Price price = getPrice(productId);
 
         when(productRepository.getProduct(productId)).thenThrow(ProductNotFoundException.class);
         when(priceCLient.getPrice(productId)).thenReturn(price);
@@ -77,14 +67,27 @@ public class ProductControllerUnitTest {
     @Test
     public void givenPriceServiceNotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-        Product product = new Product();
-        product.setId(productId);
-        product.setName("test");
+        Product product = getProduct(productId);
 
         when(productRepository.getProduct(productId)).thenReturn(product);
         when(priceCLient.getPrice(productId)).thenThrow(HttpServerErrorException.ServiceUnavailable.class);
 
         mockMvc.perform(get("/product/" + productId))
                 .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+    }
+
+    private static Product getProduct(long productId) {
+        Product product = new Product();
+        product.setId(productId);
+        product.setName("test");
+        return product;
+    }
+
+    private static Price getPrice(long productId) {
+        Price price = new Price();
+        price.setProductId(productId);
+        price.setPriceAmount(12.00);
+        price.setDiscount(2.5);
+        return price;
     }
 }

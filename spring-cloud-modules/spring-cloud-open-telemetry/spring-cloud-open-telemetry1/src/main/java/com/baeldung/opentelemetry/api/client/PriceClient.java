@@ -15,8 +15,12 @@ public class PriceClient {
 
     private static final Logger logger = LoggerFactory.getLogger(PriceClient.class);
 
+    private final RestTemplate restTemplate;
+
     @Autowired
-    private RestTemplate restTemplate;
+    public PriceClient(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Value("${priceClient.baseUrl}")
     private String baseUrl;
