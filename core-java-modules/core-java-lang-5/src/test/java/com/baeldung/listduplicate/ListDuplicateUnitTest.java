@@ -2,20 +2,23 @@ package com.baeldung.listduplicate;
 
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ListDuplicateUnitTest {
-    private ListDuplicate listDuplicate;
-    private List<Integer> list;
 
-    @Before
-    public void setup_tests() {
+public class ListDuplicateUnitTest {
+    private static ListDuplicate listDuplicate;
+    private static List<Integer> list;
+
+    @BeforeClass
+    public static void setup_tests() {
         listDuplicate = new ListDuplicate();
         list = Arrays.asList(1, 2, 3, 3, 4, 4, 5);
     }
-
     @Test
     public void givenList_whenUsingSet_thenReturnDuplicateElements() {
         List<Integer> duplicates = listDuplicate.listDuplicateUsingSet(list);
