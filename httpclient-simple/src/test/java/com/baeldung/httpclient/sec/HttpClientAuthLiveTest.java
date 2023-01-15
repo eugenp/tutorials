@@ -42,12 +42,13 @@ class HttpClientAuthLiveTest {
 
     @Test
     final void whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws IOException {
+        final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
         try (CloseableHttpClient client = HttpClientBuilder.create()
             .setDefaultCredentialsProvider(provider())
             .build();
 
             CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION), new CustomHttpClientResponseHandler())) {
+                .execute(request, new CustomHttpClientResponseHandler())) {
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
         }
@@ -55,11 +56,12 @@ class HttpClientAuthLiveTest {
 
     @Test
     final void givenAuthenticationIsPreemptive_whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws IOException {
+        final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
         try (CloseableHttpClient client = HttpClientBuilder.create()
             .build();
 
             CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION), context(), new CustomHttpClientResponseHandler())) {
+                .execute(request, context(), new CustomHttpClientResponseHandler())) {
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(200));
         }
@@ -73,7 +75,7 @@ class HttpClientAuthLiveTest {
             .build();
 
             CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION), context(), new CustomHttpClientResponseHandler())) {
+                .execute(request, context(), new CustomHttpClientResponseHandler())) {
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
         }
@@ -95,7 +97,6 @@ class HttpClientAuthLiveTest {
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
         }
-
     }
 
     // UTILS
