@@ -503,7 +503,9 @@
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
+
                 <module>spring-roo</module>
+
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
@@ -777,7 +779,9 @@
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
+                
                 <module>spring-roo</module>
+
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
@@ -912,6 +916,7 @@
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
+
 
                 <module>core-java-modules/core-java-9-streams</module>
                 <module>core-java-modules/core-java-10</module>
@@ -1068,6 +1073,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+
             </modules>
 
             <properties>
