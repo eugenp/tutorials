@@ -86,9 +86,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Bean
     public ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
-        ResourceUrlEncodingFilter filter = new ResourceUrlEncodingFilter();
-
-        return filter;
+        return new ResourceUrlEncodingFilter();
     }
 
     @Bean

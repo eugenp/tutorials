@@ -66,7 +66,7 @@ This module contains articles about static resources with Spring
 
     通常情况下，我们需要手动完成所有这些工作，但Spring支持这些开箱即用，包括计算每个文件的哈希值并将其追加到URL中。让我们看看如何配置我们的Spring应用程序来为我们做这些事。
 
-    1. 在一个带有版本的URL下提供服务
+    1. MVC在一个带有版本的URL下提供服务
 
         我们需要为路径添加一个VersionResourceResolver，以便在URL中使用更新的版本字符串来提供该路径下的文件。
 
@@ -547,7 +547,7 @@ This module contains articles about static resources with Spring
 
     此外，本项目中还提供了与Spring Boot相关的[源代码](https://github.com/eugenp/tutorials/tree/master/spring-boot-modules/spring-boot-mvc-2)。
 
-## Load a Resource as a String in Spring
+## 在Spring中把资源加载成一个字符串
 
 在本教程中，我们将探讨将包含文本的资源内容作为字符串注入Spring Bean的各种方法。
 
