@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletionException;
 
-public class ObjectMappingJackson extends ObjectMapper {
+public class ObjectMappingJackson {
     List<TodoApp> readValue(String content) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
         try {
-            return this.readValue(content, new TypeReference<List<TodoApp>>() {
+            return objectMapper.readValue(content, new TypeReference<List<TodoApp>>() {
             });
         } catch (IOException ioe) {
             throw new CompletionException(ioe);
