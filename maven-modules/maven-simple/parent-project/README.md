@@ -85,9 +85,9 @@
 
         ```xml
         <parent>
-        <artifactId>parent-project</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>1.0-SNAPSHOT</version>
+            <artifactId>parent-project</artifactId>
+            <groupId>com.baeldung</groupId>
+            <version>1.0-SNAPSHOT</version>
         </parent>
         ```
 
