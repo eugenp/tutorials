@@ -7,7 +7,7 @@ import org.doctester.testbrowser.Response;
 import org.junit.Test;
 import ninja.NinjaDocTester;
 
-public class ApiControllerDocTesterManualTest extends NinjaDocTester {
+public class ApiControllerDocTesterIntegrationTest extends NinjaDocTester {
     
     String URL_INDEX = "/";
     String URL_HELLO = "/hello";
