@@ -1,7 +1,5 @@
-package com.baeldung.maps.initialize;
+package com.baeldung.map;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,6 +7,9 @@ import java.util.Map;
 import java.util.NavigableMap;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 
 public class EmptyMapInitializer {
 

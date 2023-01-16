@@ -13,3 +13,4 @@
 - [Getting the Size of an Iterable in Java](https://www.baeldung.com/java-iterable-size)
 - [Java Null-Safe Streams from Collections](https://www.baeldung.com/java-null-safe-streams-from-collections)
 - [Differences Between Iterator and Iterable and How to Use Them?](https://www.baeldung.com/java-iterator-vs-iterable)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-1) [[next -->]](/core-java-modules/core-java-collections-3)
