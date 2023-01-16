@@ -10,7 +10,7 @@ import ninja.Result;
 import services.UserService;
 
 @RunWith(NinjaRunner.class)
-public class ApiControllerMockManualTest {
+public class ApiControllerMockIntegrationTest {
 
     @Inject private UserService userService;
 
