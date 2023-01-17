@@ -504,7 +504,7 @@
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
-                <module>spring-roo</module>
+                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -780,7 +780,7 @@
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
                 
-                <module>spring-roo</module>
+                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
