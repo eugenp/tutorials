@@ -18,6 +18,27 @@ class CustomMultipartFileUnitTest {
     }
 
     @Test
+    void whenProvidingEmptyByteArray_thenMockMultipartFileIsEmpty() throws IOException {
+        byte[] inputArray = "".getBytes();
+        MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
+        Assertions.assertTrue(mockMultipartFile.isEmpty());
+    }
+
+    @Test
+    void whenProvidingNullByteArray_thenMockMultipartFileIsEmpty() throws IOException {
+        byte[] inputArray = null;
+        MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
+        Assertions.assertTrue(mockMultipartFile.isEmpty());
+    }
+
+    @Test
+    void whenProvidingByteArray_thenMultipartFileInputSizeMatches() throws IOException {
+        byte[] inputArray = "Testing String".getBytes();
+        CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArray);
+        Assertions.assertEquals(inputArray.length,customMultipartFile.getSize());
+    }
+
+    @Test
     void whenProvidingByteArray_thenMockMultipartFileCreated() throws IOException {
         byte[] inputArray = "Test String".getBytes();
         MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
