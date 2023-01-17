@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: prime-number-finder
-      image: mglowka/prime-number:latest
+      image: baeldung/prime-number:latest
