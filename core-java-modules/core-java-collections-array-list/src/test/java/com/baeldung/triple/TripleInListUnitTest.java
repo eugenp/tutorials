@@ -43,7 +43,7 @@ public class TripleInListUnitTest {
         "100 x 42 = ? ( answer: 4200 )");
 
     @Test
-    void giveTripleValues_whenStoreAsList_thenTypeIsNotSafe() {
+    void givenTripleValues_whenStoreAsList_thenTypeIsNotSafe() {
 
         List myTriple1 = new ArrayList(3);
         myTriple1.add(100L);
@@ -87,7 +87,7 @@ public class TripleInListUnitTest {
     }
 
     @Test
-    void giveTripleValues_whenUsingTheTripleClass_thenTypeIsSafeAndNeat() {
+    void givenTripleValues_whenUsingTheTripleClass_thenTypeIsSafeAndNeat() {
         Triple<Long, OP, Long> triple1 = new Triple<>(100L, OP.MINUS, 42L);
         Triple<Long, OP, Long> triple2 = new Triple<>(100L, OP.PLUS, 42L);
         Triple<Long, OP, Long> triple3 = new Triple<>(100L, OP.MULTIPLY, 42L);
