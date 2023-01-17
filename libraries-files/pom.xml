@@ -51,6 +51,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <org.ini4j.version>0.5.4</org.ini4j.version>
         <commons-configuration2>2.8.0</commons-configuration2>

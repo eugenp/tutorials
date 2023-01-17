@@ -89,6 +89,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <httpclient.version>4.5.3</httpclient.version>
         <jetty.version>9.4.27.v20200227</jetty.version>

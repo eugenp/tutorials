@@ -36,6 +36,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <akka.http.version>10.0.11</akka.http.version>
         <akka.stream.version>2.5.11</akka.stream.version>
