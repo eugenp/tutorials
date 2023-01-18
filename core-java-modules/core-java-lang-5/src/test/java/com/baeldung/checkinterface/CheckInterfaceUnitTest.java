@@ -13,10 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.reflections.ReflectionUtils;
 import org.reflections.Reflections;
 
-import com.baeldung.checkinterface.ChildClass2;
-import com.baeldung.checkinterface.ChildInterface2;
-import com.baeldung.checkinterface.MasterInterface;
-
 public class CheckInterfaceUnitTest {
     
     protected static Reflections reflections;
@@ -24,7 +20,7 @@ public class CheckInterfaceUnitTest {
     @BeforeAll
     public static void initializeReflectionsLibrary() {
         
-        reflections = new Reflections("com.baeldung.checkInterface");
+        reflections = new Reflections("com.baeldung.checkinterface");
     }
 
     @Test
