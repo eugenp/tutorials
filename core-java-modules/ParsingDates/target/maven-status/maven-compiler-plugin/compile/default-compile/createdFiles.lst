@@ -1,0 +1,5 @@
+com\parse\parsingdates\ParsingDates.class
+com\parse\parsingdates\SimpleDateTimeFormat.class
+com\parse\parsingdates\SimpleParseDate.class
+com\parse\parsingdates\SimpleDateTimeFormater.class
+com\parse\parsingdates\SimpleDateUtils.class
