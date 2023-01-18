@@ -1,4 +1,4 @@
-package com.baeldung.avro.util.serealization;
+package com.baeldung.avro.util.serialization;
 
 import com.baeldung.avro.util.model.AvroHttpRequest;
 import org.apache.avro.io.*;
@@ -9,11 +9,11 @@ import org.slf4j.LoggerFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class AvroSerealizer {
+public class AvroSerializer {
 
-    private static final Logger logger = LoggerFactory.getLogger(AvroSerealizer.class);
+    private static final Logger logger = LoggerFactory.getLogger(AvroSerializer.class);
 
-    public byte[] serealizeAvroHttpRequestJSON(AvroHttpRequest request) {
+    public byte[] serializeAvroHttpRequestJSON(AvroHttpRequest request) {
         DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -30,7 +30,7 @@ public class AvroSerealizer {
         return data;
     }
 
-    public byte[] serealizeAvroHttpRequestBinary(AvroHttpRequest request) {
+    public byte[] serializeAvroHttpRequestBinary(AvroHttpRequest request) {
         DatumWriter<AvroHttpRequest> writer = new SpecificDatumWriter<>(AvroHttpRequest.class);
         byte[] data = new byte[0];
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
