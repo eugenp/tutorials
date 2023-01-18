@@ -14,7 +14,7 @@ class CustomMultipartFileUnitTest {
         CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArray);
         Assertions.assertFalse(customMultipartFile.isEmpty());
         Assertions.assertArrayEquals(inputArray, customMultipartFile.getBytes());
-        Assertions.assertEquals(inputArray.length,customMultipartFile.getSize());
+        Assertions.assertEquals(inputArray.length, customMultipartFile.getSize());
     }
 
     @Test
@@ -35,7 +35,7 @@ class CustomMultipartFileUnitTest {
     void whenProvidingByteArray_thenMultipartFileInputSizeMatches() throws IOException {
         byte[] inputArray = "Testing String".getBytes();
         CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArray);
-        Assertions.assertEquals(inputArray.length,customMultipartFile.getSize());
+        Assertions.assertEquals(inputArray.length, customMultipartFile.getSize());
     }
 
     @Test
@@ -44,6 +44,6 @@ class CustomMultipartFileUnitTest {
         MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
         Assertions.assertFalse(mockMultipartFile.isEmpty());
         Assertions.assertArrayEquals(inputArray, mockMultipartFile.getBytes());
-        Assertions.assertEquals(inputArray.length,mockMultipartFile.getSize());
+        Assertions.assertEquals(inputArray.length, mockMultipartFile.getSize());
     }
 }
