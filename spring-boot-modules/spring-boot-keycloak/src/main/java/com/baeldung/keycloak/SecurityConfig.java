@@ -30,7 +30,7 @@ class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/customers*", "/users*")
+            .antMatchers("/customers*")
             .hasRole("USER")
             .anyRequest()
             .permitAll();
