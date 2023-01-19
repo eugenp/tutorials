@@ -8,10 +8,20 @@ public class ConvertNumberBases {
 
     public static String convertNumberToNewBaseCustom(String num, int base, int newBase) {
         int decimalNumber = convertFromAnyBaseToDecimal(num, base);
-        return convertFromDecimalToBaseX(decimalNumber, newBase);
+        String targetBase = "";
+        try {
+            targetBase = convertFromDecimalToBaseX(decimalNumber, newBase);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        return  targetBase;
     }
 
-    public static String convertFromDecimalToBaseX(int num, int newBase) {
+    public static String convertFromDecimalToBaseX(int num, int newBase) throws IllegalArgumentException {
+        if ((newBase < 2 || newBase > 10) && newBase != 16) {
+            throw new IllegalArgumentException("New base must be from 2 - 10 or 16");
+        }
+
         String result = "";
         int remainder;
         while (num > 0) {
@@ -37,8 +47,7 @@ public class ConvertNumberBases {
             }
             num /= newBase;
         }
-        return new StringBuffer(result).reverse()
-          .toString();
+        return new StringBuffer(result).reverse().toString();
     }
 
     public static int convertFromAnyBaseToDecimal(String num, int base) {
@@ -57,6 +66,7 @@ public class ConvertNumberBases {
         }
         return val;
     }
+
     public static int charToDecimal(char c) {
         if (c >= '0' && c <= '9') {
             return (int) c - '0';
