@@ -21,7 +21,7 @@ import com.github.dockerjava.api.model.Ports;
 
 @Testcontainers
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ScylladbApplicationTest {
+public class ScyllaDBApplicationLiveTest {
 
     private static final String IMAGE_NAME = "scylladb/scylla";
     private static final int hostPort = 9042;
