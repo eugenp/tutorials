@@ -112,6 +112,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5-fluent</artifactId>
+            <version>${httpclient5-fluent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- utils -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -308,6 +320,7 @@
         <!-- http client & core 5 -->
         <httpcore5.version>5.2</httpcore5.version>
         <httpclient5.version>5.2</httpclient5.version>
+        <httpclient5-fluent.version>5.2</httpclient5-fluent.version>
         <!-- maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
