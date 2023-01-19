@@ -29,15 +29,15 @@ public class HeaderInterceptorIntegrationTest {
     @BeforeEach
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext)
-            .build();
+          .build();
     }
 
     @Test
     public void givenARequestWithOperatorHeader_whenWeCallFooEndpoint_thenOperatorIsExtracted() throws Exception {
         MockHttpServletResponse response = this.mockMvc.perform(get("/foo").header("operator", "John.Doe"))
-            .andDo(print())
-            .andReturn()
-            .getResponse();
+          .andDo(print())
+          .andReturn()
+          .getResponse();
 
         assertThat(response.getContentAsString()).isEqualTo("hello, John.Doe");
     }
@@ -45,9 +45,9 @@ public class HeaderInterceptorIntegrationTest {
     @Test
     public void givenARequestWithOperatorHeader_whenWeCallBarEndpoint_thenOperatorIsExtracted() throws Exception {
         MockHttpServletResponse response = this.mockMvc.perform(get("/bar").header("operator", "John.Doe"))
-            .andDo(print())
-            .andReturn()
-            .getResponse();
+          .andDo(print())
+          .andReturn()
+          .getResponse();
 
         assertThat(response.getContentAsString()).isEqualTo("hello, John.Doe");
     }
@@ -55,9 +55,9 @@ public class HeaderInterceptorIntegrationTest {
     @Test
     public void givenARequestWithOperatorHeader_whenWeCallBuzzEndpoint_thenOperatorIsIntercepted() throws Exception {
         MockHttpServletResponse response = this.mockMvc.perform(get("/buzz").header("operator", "John.Doe"))
-            .andDo(print())
-            .andReturn()
-            .getResponse();
+          .andDo(print())
+          .andReturn()
+          .getResponse();
 
         assertThat(response.getContentAsString()).isEqualTo("hello, John.Doe");
     }
