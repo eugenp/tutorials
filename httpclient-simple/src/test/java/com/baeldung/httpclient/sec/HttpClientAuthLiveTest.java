@@ -1,118 +1,119 @@
 package com.baeldung.httpclient.sec;
 
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import org.apache.commons.codec.binary.Base64;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpStatus;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.AuthCache;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.impl.auth.BasicScheme;
-import org.apache.http.impl.client.BasicAuthCache;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.protocol.HttpContext;
-import com.baeldung.httpclient.ResponseUtil;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import com.baeldung.handler.CustomHttpClientResponseHandler;
+
+import org.apache.hc.client5.http.auth.AuthScope;
+import org.apache.hc.client5.http.auth.AuthCache;
+import org.apache.hc.client5.http.auth.CredentialsProvider;
+import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.auth.BasicAuthCache;
+import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
+import org.apache.hc.client5.http.impl.auth.BasicScheme;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.core5.http.HttpHeaders;
+import org.apache.hc.core5.http.HttpHost;
+import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.protocol.HttpContext;
+
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-
 /*
  * NOTE : Need module httpclient-simple to be running
  */
-
-public class HttpClientAuthLiveTest {
+class HttpClientAuthLiveTest {
 
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8082/httpclient-simple/api/foos/1";
     private static final String DEFAULT_USER = "user1";
     private static final String DEFAULT_PASS = "user1Pass";
-
-    private CloseableHttpClient client;
-
-    private CloseableHttpResponse response;
-
-    @Before
-    public final void before() {
-        client = HttpClientBuilder.create().build();
-    }
-
-    @After
-    public final void after() throws IllegalStateException, IOException {
-        ResponseUtil.closeResponse(response);
-    }
-
-    // tests
+    private final char[] DEFAULT_PASS_ARRAY = DEFAULT_PASS.toCharArray() ;
 
     @Test
-    public final void whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws IOException {
-        client = HttpClientBuilder.create().setDefaultCredentialsProvider(provider()).build();
+    final void whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws IOException {
+        final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .setDefaultCredentialsProvider(provider())
+            .build();
 
-        response = client.execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION));
-
-        final int statusCode = response.getStatusLine().getStatusCode();
-        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+            final int statusCode = response.getCode();
+            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+        }
     }
 
     @Test
-    public final void givenAuthenticationIsPreemptive_whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws IOException {
-        client = HttpClientBuilder.create().build();
-        response = client.execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION), context());
+    final void givenAuthenticationIsPreemptive_whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws IOException {
+        final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .build();
 
-        final int statusCode = response.getStatusLine().getStatusCode();
-        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, context(), new CustomHttpClientResponseHandler())) {
+            final int statusCode = response.getCode();
+            assertThat(statusCode, equalTo(200));
+        }
     }
 
     @Test
-    public final void givenAuthorizationHeaderIsSetManually_whenExecutingGetRequest_thenSuccess() throws IOException {
-        client = HttpClientBuilder.create().build();
-
+    final void givenAuthorizationHeaderIsSetManually_whenExecutingGetRequest_thenSuccess() throws IOException {
         final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
         request.setHeader(HttpHeaders.AUTHORIZATION, authorizationHeader(DEFAULT_USER, DEFAULT_PASS));
-        response = client.execute(request);
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .build();
 
-        final int statusCode = response.getStatusLine().getStatusCode();
-        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, context(), new CustomHttpClientResponseHandler())) {
+            final int statusCode = response.getCode();
+            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+        }
     }
 
     @Test
-    public final void givenAuthorizationHeaderIsSetManually_whenExecutingGetRequest_thenSuccess2() throws IOException {
+    final void givenAuthorizationHeaderIsSetManually_whenExecutingGetRequest_thenSuccess2() throws IOException {
         final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
         final String auth = DEFAULT_USER + ":" + DEFAULT_PASS;
         final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.ISO_8859_1));
         final String authHeader = "Basic " + new String(encodedAuth);
         request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
 
-        client = HttpClientBuilder.create().build();
-        response = client.execute(request);
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .build();
 
-        final int statusCode = response.getStatusLine().getStatusCode();
-        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+            final int statusCode = response.getCode();
+            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+        }
     }
 
     // UTILS
 
     private CredentialsProvider provider() {
-        final CredentialsProvider provider = new BasicCredentialsProvider();
-        final UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS);
-        provider.setCredentials(AuthScope.ANY, credentials);
+        final HttpHost targetHost = new HttpHost("http", "localhost", 8082);
+        final BasicCredentialsProvider provider = new BasicCredentialsProvider();
+        AuthScope authScope = new AuthScope(targetHost);
+        provider.setCredentials(authScope, new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS_ARRAY));
         return provider;
     }
 
     private HttpContext context() {
-        final HttpHost targetHost = new HttpHost("localhost", 8082, "http");
-        final CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        credsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS));
+        final HttpHost targetHost = new HttpHost("http", "localhost", 8082);
+        final BasicCredentialsProvider credsProvider = new BasicCredentialsProvider();
+        AuthScope authScope = new AuthScope(targetHost);
+        credsProvider.setCredentials(authScope, new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS_ARRAY));
 
         // Create AuthCache instance
         final AuthCache authCache = new BasicAuthCache();
