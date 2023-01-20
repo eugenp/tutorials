@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PriceController {
 
-    private final Logger logger = LoggerFactory.getLogger(PriceController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PriceController.class);
 
     private final PriceRepository priceRepository;
 

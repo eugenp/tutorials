@@ -5,26 +5,25 @@ import com.baeldung.opentelemetry.exception.ProductNotFoundException;
 import com.baeldung.opentelemetry.model.Price;
 import com.baeldung.opentelemetry.model.Product;
 import com.baeldung.opentelemetry.repository.ProductRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @WebMvcTest(ProductController.class)
-@EnableWebMvc
 public class ProductControllerUnitTest {
 
     @MockBean

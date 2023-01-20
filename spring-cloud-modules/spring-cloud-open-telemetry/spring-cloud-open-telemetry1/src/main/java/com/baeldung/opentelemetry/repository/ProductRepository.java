@@ -13,7 +13,7 @@ import java.util.Map;
 @Component
 public class ProductRepository {
 
-    private final Logger logger = LoggerFactory.getLogger(ProductRepository.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
     private final Map<Long, Product> productMap = new HashMap<>();
 
