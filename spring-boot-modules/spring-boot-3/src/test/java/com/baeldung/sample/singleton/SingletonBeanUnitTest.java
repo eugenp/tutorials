@@ -23,12 +23,12 @@ class SingletonBeanUnitTest {
     private SingletonBeanConfig.SingletonBean beanThree;
 
     @Test
-    void givenTwoBeansWithSameId_whenInjectingThem_thenSameObjectsAreReturned() {
+    void givenTwoBeansWithSameId_whenInjectingThem_thenSameInstancesAreReturned() {
         assertSame(beanOne, beanTwo);
     }
 
     @Test
-    void givenTwoBeansWithDifferentId_whenInjectingThem_thenDifferentObjectsAreReturned() {
+    void givenTwoBeansWithDifferentId_whenInjectingThem_thenDifferentInstancesAreReturned() {
         assertNotSame(beanOne, beanThree);
     }
 
