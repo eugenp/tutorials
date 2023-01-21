@@ -8,13 +8,13 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class SingletonBeanConfig {
 
-    @Bean()
+    @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public SingletonBean singletonBean() {
         return new SingletonBean();
     }
 
-    @Bean()
+    @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public SingletonBean anotherSingletonBean() {
         return new SingletonBean();

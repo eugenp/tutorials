@@ -2,13 +2,17 @@ package com.baeldung.sample.singleton;
 
 public final class SingletonPattern {
 
-    private static SingletonPattern instance = null;
+    private static volatile SingletonPattern instance = null;
 
     private SingletonPattern() {}
 
     public static SingletonPattern getInstance() {
         if (instance == null) {
-            instance = new SingletonPattern();
+            synchronized(SingletonPattern.class) {
+                if (instance == null) {
+                    instance = new SingletonPattern();
+                }
+            }
         }
         return instance;
     }
