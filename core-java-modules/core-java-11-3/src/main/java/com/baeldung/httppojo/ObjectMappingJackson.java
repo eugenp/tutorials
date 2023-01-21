@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.concurrent.CompletionException;
 
 public class ObjectMappingJackson {
-    List<TodoApp> readValue(String content) {
+    List<Todo> readValue(String content) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            return objectMapper.readValue(content, new TypeReference<List<TodoApp>>() {
+            return objectMapper.readValue(content, new TypeReference<List<Todo>>() {
             });
         } catch (IOException ioe) {
             throw new CompletionException(ioe);

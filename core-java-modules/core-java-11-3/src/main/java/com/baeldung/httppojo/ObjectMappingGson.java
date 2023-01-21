@@ -6,9 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 public class ObjectMappingGson {
-    List<TodoApp> readValue(String content) {
+    List<Todo> readValue(String content) {
         Gson gson = new GsonBuilder().create();
-        return gson.fromJson(content, new TypeToken<List<TodoApp>>() {
+        return gson.fromJson(content, new TypeToken<List<Todo>>() {
         }.getType());
 
     }

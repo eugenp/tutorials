@@ -13,27 +13,27 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 
-public class TodoAppLogic {
+public class TodoAppClient {
 
-    public TodoApp syncGson() throws Exception {
+    public Todo syncGson() throws Exception {
         String response = sampleApiRequest();
 
         Gson gson = new GsonBuilder().create();
 
-        List<TodoApp> sectionlist = gson.fromJson(response, new TypeToken<List<TodoApp>>() {
+        List<Todo> todo = gson.fromJson(response, new TypeToken<List<Todo>>() {
         }.getType());
 
-        return sectionlist.get(1);
+        return todo.get(1);
 
     }
 
-    public TodoApp syncJackson() throws Exception {
+    public Todo syncJackson() throws Exception {
         String response = sampleApiRequest();
 
         ObjectMapper objectMapper = new ObjectMapper();
-        TodoApp[] app = objectMapper.readValue(response, TodoApp[].class);
+        Todo[] todo = objectMapper.readValue(response, Todo[].class);
 
-        return app[1];
+        return todo[1];
 
     }
 
@@ -49,7 +49,7 @@ public class TodoAppLogic {
 
     }
 
-    public TodoApp asyncJackson() throws Exception {
+    public Todo asyncJackson() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
@@ -57,30 +57,30 @@ public class TodoAppLogic {
 
         ObjectMappingJackson o = new ObjectMappingJackson();
 
-        List<TodoApp> model = HttpClient.newHttpClient()
+        List<Todo> todo = HttpClient.newHttpClient()
             .sendAsync(request, BodyHandlers.ofString())
             .thenApply(HttpResponse::body)
             .thenApply(o::readValue)
             .get();
 
-        return model.get(1);
+        return todo.get(1);
 
     }
 
-    public TodoApp asyncGson() throws Exception {
+    public Todo asyncGson() throws Exception {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
             .build();
         ObjectMappingGson o = new ObjectMappingGson();
 
-        List<TodoApp> model = HttpClient.newHttpClient()
+        List<Todo> todo = HttpClient.newHttpClient()
             .sendAsync(request, BodyHandlers.ofString())
             .thenApply(HttpResponse::body)
             .thenApply(o::readValue)
             .get();
 
-        return model.get(1);
+        return todo.get(1);
 
     }
 

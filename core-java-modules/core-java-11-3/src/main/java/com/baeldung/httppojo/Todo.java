@@ -2,17 +2,17 @@ package com.baeldung.httppojo;
 
 import java.util.Objects;
 
-public class TodoApp {
+public class Todo {
 
     int userId;
     int id;
     String title;
     boolean completed;
 
-    public TodoApp() {
+    public Todo() {
     }
 
-    public TodoApp(int userId, int id, String title, boolean completed) {
+    public Todo(int userId, int id, String title, boolean completed) {
         this.userId = userId;
         this.id = id;
         this.title = title;
@@ -57,8 +57,8 @@ public class TodoApp {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        TodoApp todoApp = (TodoApp) o;
-        return userId == todoApp.userId && id == todoApp.id && completed == todoApp.completed && Objects.equals(title, todoApp.title);
+        Todo todo = (Todo) o;
+        return userId == todo.userId && id == todo.id && completed == todo.completed && Objects.equals(title, todo.title);
     }
 
     @Override

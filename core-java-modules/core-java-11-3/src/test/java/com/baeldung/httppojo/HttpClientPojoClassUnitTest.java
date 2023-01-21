@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class HttpClientPojoClassUnitTest {
 
-    TodoApp expectedTodo = new TodoApp(1, 2, "quis ut nam facilis et officia qui", false);
+    Todo expectedTodo = new Todo(1, 2, "quis ut nam facilis et officia qui", false);
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        TodoAppLogic sampleGson = new TodoAppLogic();
+        TodoAppClient sampleGson = new TodoAppClient();
 
         assertEquals(expectedTodo, sampleGson.syncGson());
 
@@ -18,27 +18,27 @@ public class HttpClientPojoClassUnitTest {
 
     @Test
     public void givenSampleApiCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        TodoAppLogic sampleJackson = new TodoAppLogic();
+        TodoAppClient sampleJackson = new TodoAppClient();
 
         assertEquals(expectedTodo, sampleJackson.syncJackson());
     }
 
     @Test
     public void givenSampleRestApi_whenApiIsConsumedByHttpClient_thenCompareJsonString() throws Exception {
-        TodoAppLogic sampleTest = new TodoAppLogic();
+        TodoAppClient sampleTest = new TodoAppClient();
         assertNotNull(sampleTest.sampleApiRequest());
 
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByJackson_thenCompareResponseMappedByJackson() throws Exception {
-        TodoAppLogic sampleAsynJackson = new TodoAppLogic();
+        TodoAppClient sampleAsynJackson = new TodoAppClient();
         assertEquals(expectedTodo, sampleAsynJackson.asyncJackson());
     }
 
     @Test
     public void givenSampleApiAsyncCall_whenResponseIsMappedByGson_thenCompareResponseMappedByGson() throws Exception {
-        TodoAppLogic sampleAsynGson = new TodoAppLogic();
+        TodoAppClient sampleAsynGson = new TodoAppClient();
         assertEquals(expectedTodo, sampleAsynGson.asyncGson());
     }
 
