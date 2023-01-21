@@ -61,7 +61,7 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedService_whenAllBooksAreRequested_thenTwoBooksAreReturned() {
+    void givenMockedGetResponse_whenGetBooksServiceMethodIsCalled_thenTwoBooksAreReturned() {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
@@ -77,7 +77,7 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedService_whenExistingBookByIdIsRequest_thenCorrectBookIsReturned() {
+    void givenMockedGetResponse_whenGetExistingBookServiceMethodIsCalled_thenCorrectBookIsReturned() {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
@@ -93,7 +93,7 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedService_whenNonExistingBookByIdIsRequest_thenDefaultExceptionIsThrown() {
+    void givenMockedGetResponse_whenGetNonExistingBookServiceMethodIsCalled_thenCorrectBookIsReturned() {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
@@ -101,7 +101,7 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedServiceWithCustomErrorHandler_whenNonExistingBookByIdIsRequest_thenCustomExceptionIsThrown() {
+    void givenCustomErrorHandlerIsSet_whenGetNonExistingBookServiceMethodIsCalled_thenCustomExceptionIsThrown() {
         BooksClient booksClient = new BooksClient(WebClient.builder()
           .defaultStatusHandler(HttpStatusCode::isError, resp ->
             Mono.just(new MyServiceException("Custom exception")))
@@ -113,7 +113,7 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedService_whenSaveBookRequestIsSent_thenNewBookIsReturned() {
+    void givenMockedPostResponse_whenSaveBookServiceMethodIsCalled_thenCorrectBookIsReturned() {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
@@ -129,12 +129,12 @@ class BooksServiceMockServerTest {
     }
 
     @Test
-    void givenMockedService_whenDeleteBookRequestIsSent_thenCorrectCodeIsReturned() {
+    void givenMockedDeleteResponse_whenDeleteBookServiceMethodIsCalled_thenCorrectCodeIsReturned() {
         BooksClient booksClient = new BooksClient(WebClient.builder().baseUrl(serviceUrl).build());
         BooksService booksService = booksClient.getBooksService();
 
         ResponseEntity<Void> response = booksService.deleteBook(3);
-        assertTrue(response.getStatusCode().is2xxSuccessful());
+        assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
 
         mockServer.verify(
           HttpRequest.request()
