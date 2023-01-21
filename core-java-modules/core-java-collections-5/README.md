@@ -1,6 +1,5 @@
-=========
+## Core Java Collections List (Part 5)
 
-## Core Java Collections Cookbooks and Examples
+This module contains articles about the Java List collection
 
 ### Relevant Articles: 
-
