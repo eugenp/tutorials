@@ -25,21 +25,6 @@ class BooksServiceMockitoTest {
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
     private WebClient webClient;
 
-    @Mock
-    private WebClient.RequestBodySpec requestBody;
-
-    @Mock
-    private WebClient.RequestBodyUriSpec requestBodyUri;
-
-    @Mock
-    private WebClient.ResponseSpec response;
-
-    @Mock
-    private Mono<ResponseEntity<Void>> monoResponseEntity;
-
-    @Mock
-    private ResponseEntity<Void> responseEntity;
-
     @InjectMocks
     private BooksClient booksClient;
 
