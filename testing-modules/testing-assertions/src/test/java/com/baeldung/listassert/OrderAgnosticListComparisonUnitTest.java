@@ -51,4 +51,12 @@ public class OrderAgnosticListComparisonUnitTest {
 
         assertThat(a).hasSameElementsAs(b);
     }
+
+    @Test
+    void whenTestingForOrderAgnosticEqualityWithDuplicateElementsBothList_ShouldBeEqual() {
+        List<String> a = Arrays.asList("a", "a", "b", "c");
+        List<String> b = Arrays.asList("a", "b", "a", "c");
+
+        assertThat(a).containsExactlyInAnyOrderElementsOf(b);
+    }
 }

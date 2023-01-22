@@ -34,7 +34,7 @@ public class CasCadeTypeUnitTest {
     }
 
     @Test
-    public void testPersist() {
+    public void whenParentSavedThenChildSaved() {
         Person person = new Person();
         Address address = new Address();
         address.setPerson(person);
@@ -45,7 +45,7 @@ public class CasCadeTypeUnitTest {
     }
 
     @Test
-    public void testMerge() {
+    public void whenParentSavedThenMerged() {
         int addressId;
         Person person = buildPerson("devender");
         Address address = buildAddress(person);
@@ -64,7 +64,7 @@ public class CasCadeTypeUnitTest {
     }
 
     @Test
-    public void testRemove() {
+    public void whenParentRemovedThenChildRemoved() {
         int personId;
         Person person = buildPerson("devender");
         Address address = buildAddress(person);
@@ -80,12 +80,13 @@ public class CasCadeTypeUnitTest {
     }
 
     @Test
-    public void testDetach() {
+    public void whenParentDetachedThenChildDetached() {
         Person person = buildPerson("devender");
         Address address = buildAddress(person);
         person.setAddresses(Arrays.asList(address));
         session.persist(person);
         session.flush();
+        
         Assertions.assertThat(session.contains(person)).isTrue();
         Assertions.assertThat(session.contains(address)).isTrue();
 
@@ -95,12 +96,13 @@ public class CasCadeTypeUnitTest {
     }
 
     @Test
-    public void testLock() {
+    public void whenDetachedAndLockedThenBothReattached() {
         Person person = buildPerson("devender");
         Address address = buildAddress(person);
         person.setAddresses(Arrays.asList(address));
         session.persist(person);
         session.flush();
+        
         Assertions.assertThat(session.contains(person)).isTrue();
         Assertions.assertThat(session.contains(address)).isTrue();
 
@@ -116,7 +118,7 @@ public class CasCadeTypeUnitTest {
     }
 
     @Test
-    public void testRefresh() {
+    public void whenParentRefreshedThenChildRefreshed() {
         Person person = buildPerson("devender");
         Address address = buildAddress(person);
         person.setAddresses(Arrays.asList(address));
@@ -125,12 +127,13 @@ public class CasCadeTypeUnitTest {
         person.setName("Devender Kumar");
         address.setHouseNumber(24);
         session.refresh(person);
+        
         Assertions.assertThat(person.getName()).isEqualTo("devender");
         Assertions.assertThat(address.getHouseNumber()).isEqualTo(23);
     }
 
     @Test
-    public void testReplicate() {
+    public void whenParentReplicatedThenChildReplicated() {
         Person person = buildPerson("devender");
         person.setId(2);
         Address address = buildAddress(person);

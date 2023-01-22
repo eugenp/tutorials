@@ -12,3 +12,4 @@ This module contains articles about performance of Java applications
 - [Branch Prediction in Java](https://www.baeldung.com/java-branch-prediction)
 - [Capturing a Java Thread Dump](https://www.baeldung.com/java-thread-dump)
 - [JMX Ports](https://www.baeldung.com/jmx-ports)
+- [Calling JMX MBean Method From a Shell Script](https://www.baeldung.com/jmx-mbean-shell-access)

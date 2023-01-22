@@ -39,9 +39,6 @@ public class ProductCountIncrementedEvent {
 
     @Override
     public String toString() {
-        return "ProductCountIncrementedEvent{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "ProductCountIncrementedEvent{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }
