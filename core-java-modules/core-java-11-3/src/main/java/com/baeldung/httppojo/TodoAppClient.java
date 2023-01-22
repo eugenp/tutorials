@@ -12,13 +12,26 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-
 public class TodoAppClient {
+
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    Gson gson = new GsonBuilder().create();
+
+    public String sampleApiRequest() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
+            .build();
+
+        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
+        return response.body();
+
+    }
 
     public Todo syncGson() throws Exception {
         String response = sampleApiRequest();
-
-        Gson gson = new GsonBuilder().create();
 
         List<Todo> todo = gson.fromJson(response, new TypeToken<List<Todo>>() {
         }.getType());
@@ -30,22 +43,9 @@ public class TodoAppClient {
     public Todo syncJackson() throws Exception {
         String response = sampleApiRequest();
 
-        ObjectMapper objectMapper = new ObjectMapper();
         Todo[] todo = objectMapper.readValue(response, Todo[].class);
 
         return todo[1];
-
-    }
-
-    public String sampleApiRequest() throws Exception {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
-            .build();
-
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-
-        return response.body();
 
     }
 
