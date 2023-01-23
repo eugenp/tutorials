@@ -17,10 +17,10 @@
     </parent>
 
     <modules>
-        <module>entitymodule</module>
-        <module>daomodule</module>
-        <module>userdaomodule</module>
-        <module>mainappmodule</module>
+        <module>maven-entitymodule</module>
+        <module>maven-daomodule</module>
+        <module>maven-userdaomodule</module>
+        <module>maven-mainappmodule</module>
     </modules>
 
     <build>

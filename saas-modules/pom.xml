@@ -20,6 +20,7 @@
         <module>stripe</module>
         <module>twilio</module>
         <module>twitter4j</module>
+        <module>sentry-servlet</module>
     </modules>
 
     <build>

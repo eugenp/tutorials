@@ -84,5 +84,14 @@ public class Pizza {
             this.setStatus(PizzaStatusEnum.DELIVERED);
         }
     }
+    
+    public int getDeliveryTimeInDays() {
+        switch (status) {
+            case ORDERED: return 5;
+            case READY: return 2;
+            case DELIVERED: return 0;
+        }
+        return 0;
+    }
 
 }
