@@ -14,8 +14,4 @@ public class ConsumerCallback {
         callback.accept(newAge);
 
     }
-
-    public static void main(String... args) {
-
-    }
 }
