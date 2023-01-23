@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage('tryCatch') {
+            steps {
+                script {
+                    try {
+                        sh 'test_script.sh'
+                    } catch (e) {
+                        echo "An error occurred: ${e}"
+                    }
+                }
+            }
+        }
+    }
+}
