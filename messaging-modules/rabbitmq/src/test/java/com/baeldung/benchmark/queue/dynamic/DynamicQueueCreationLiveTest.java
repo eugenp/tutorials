@@ -55,7 +55,7 @@ public class DynamicQueueCreationLiveTest {
     }
 
     @Test
-    void givenQueueName_whenQueueDoesNotExist_thenCheckingIfQueueExists() throws IOException, TimeoutException {
+    void givenQueueName_whenQueueDoesNotExist_thenCheckingIfQueueExists() {
 
         assertThrows(IOException.class, () -> {
             try (Channel channel = connection.createChannel()) {
