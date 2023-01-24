@@ -1,12 +1,15 @@
 package com.baeldung.httppojo;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
+import java.util.concurrent.CompletionException;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,12 +58,12 @@ public class TodoAppClient {
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
             .build();
 
-        ObjectMappingJackson o = new ObjectMappingJackson();
+        TodoAppClient todoAppClient = new TodoAppClient();
 
         List<Todo> todo = HttpClient.newHttpClient()
             .sendAsync(request, BodyHandlers.ofString())
             .thenApply(HttpResponse::body)
-            .thenApply(o::readValue)
+            .thenApply(todoAppClient::readValueJackson)
             .get();
 
         return todo.get(1);
@@ -72,15 +75,32 @@ public class TodoAppClient {
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://jsonplaceholder.typicode.com/todos"))
             .build();
-        ObjectMappingGson o = new ObjectMappingGson();
+        TodoAppClient todoAppClient = new TodoAppClient();
 
         List<Todo> todo = HttpClient.newHttpClient()
             .sendAsync(request, BodyHandlers.ofString())
             .thenApply(HttpResponse::body)
-            .thenApply(o::readValue)
+            .thenApply(todoAppClient::readValueGson)
             .get();
 
         return todo.get(1);
+
+    }
+
+    List<Todo> readValueJackson(String content) {
+
+        try {
+            return objectMapper.readValue(content, new TypeReference<List<Todo>>() {
+            });
+        } catch (IOException ioe) {
+            throw new CompletionException(ioe);
+        }
+    }
+    
+    List<Todo> readValueGson(String content) {
+
+        return gson.fromJson(content, new TypeToken<List<Todo>>() {
+        }.getType());
 
     }
 
