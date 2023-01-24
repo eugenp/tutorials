@@ -22,45 +22,50 @@ public class DynamicQueueCreationLiveTest {
     private static final String QUEUE_NAME_NEW = "baeldung-queue-new";
 
     private static Connection connection;
-    private static Channel channel;
 
     @BeforeAll
-    public void setUpConnection() throws IOException, TimeoutException {
+    public static void setUpConnection() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         connection = factory.newConnection();
-        channel = connection.createChannel();
     }
 
     @Test
-    void givenQueueName_whenCreatingQueue_thenCheckingIfQueueCreated() throws IOException {
+    void givenQueueName_whenCreatingQueue_thenCheckingIfQueueCreated() throws IOException, TimeoutException {
 
-        AMQP.Queue.DeclareOk declareOk = channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+        try (Channel channel = connection.createChannel()) {
+            AMQP.Queue.DeclareOk declareOk = channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-        assertNotNull(declareOk);
-        assertEquals(QUEUE_NAME, declareOk.getQueue());
+            assertNotNull(declareOk);
+            assertEquals(QUEUE_NAME, declareOk.getQueue());
+        }
     }
 
     @Test
-    void givenQueueName_whenCreatingQueue_thenCheckingIfQueueExists() throws IOException {
+    void givenQueueName_whenCreatingQueue_thenCheckingIfQueueExists() throws IOException, TimeoutException {
 
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+        try (Channel channel = connection.createChannel()) {
+            channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-        AMQP.Queue.DeclareOk declareOk = channel.queueDeclarePassive(QUEUE_NAME);
+            AMQP.Queue.DeclareOk declareOk = channel.queueDeclarePassive(QUEUE_NAME);
 
-        assertNotNull(declareOk);
-        assertEquals(QUEUE_NAME, declareOk.getQueue());
+            assertNotNull(declareOk);
+            assertEquals(QUEUE_NAME, declareOk.getQueue());
+        }
     }
 
     @Test
-    void givenQueueName_whenQueueDoesNotExist_thenCheckingIfQueueExists() {
+    void givenQueueName_whenQueueDoesNotExist_thenCheckingIfQueueExists() throws IOException, TimeoutException {
 
-        assertThrows(IOException.class, () -> channel.queueDeclarePassive(QUEUE_NAME_NEW));
+        assertThrows(IOException.class, () -> {
+            try (Channel channel = connection.createChannel()) {
+                channel.queueDeclarePassive(QUEUE_NAME_NEW);
+            }
+        });
     }
 
     @AfterAll
-    public void destroyConnection() throws IOException, TimeoutException {
-        channel.close();
+    public static void destroyConnection() throws IOException {
         connection.close();
     }
 }
