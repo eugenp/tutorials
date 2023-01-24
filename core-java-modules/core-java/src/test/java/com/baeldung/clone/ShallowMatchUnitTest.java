@@ -12,7 +12,7 @@ class ShallowMatchUnitTest {
 
     @Test
     void givenMatchHasShallowCopyImplementation_shouldHaveDifferentMatchSamePlayersDetailObject() throws CloneNotSupportedException {
-        ShallowMatch shallowMatch = new ShallowMatch(ShallowMatch.TYPE.TENNIS, OffsetDateTime.MIN, OffsetDateTime.MAX, Integer.MAX_VALUE, new PlayersDetail("Rafael", "Novak"));
+        ShallowMatch shallowMatch = new ShallowMatch(ShallowMatch.Type.TENNIS, OffsetDateTime.MIN, OffsetDateTime.MAX, Integer.MAX_VALUE, new PlayersDetail("Rafael", "Novak"));
         ShallowMatch shallowCopyMatch = (ShallowMatch) shallowMatch.clone();
 
         assertNotNull(shallowCopyMatch);

@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class ShallowMatch implements Cloneable {
 
-    private TYPE type;
+    private Type type;
 
     private OffsetDateTime startTime;
 
@@ -19,7 +19,7 @@ public class ShallowMatch implements Cloneable {
 
     private PlayersDetail playersDetail;
 
-    public enum TYPE {
+    public enum Type {
         TENNIS, BADMINTON
     }
 

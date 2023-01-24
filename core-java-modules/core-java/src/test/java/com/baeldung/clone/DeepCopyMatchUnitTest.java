@@ -12,7 +12,7 @@ class DeepCopyMatchUnitTest {
 
     @Test
     void givenMatchHasDeepCopyImplementation_shouldHaveDifferentMatchDifferentPlayersDetail() throws CloneNotSupportedException {
-        DeepMatch deepMatch = new DeepMatch(ShallowMatch.TYPE.TENNIS, OffsetDateTime.MIN, OffsetDateTime.MAX, Integer.MAX_VALUE, new PlayersDetail("Rafael", "Novak"));
+        DeepMatch deepMatch = new DeepMatch(ShallowMatch.Type.TENNIS, OffsetDateTime.MIN, OffsetDateTime.MAX, Integer.MAX_VALUE, new PlayersDetail("Rafael", "Novak"));
         DeepMatch deepCopyMatch = (DeepMatch) deepMatch.clone();
 
         assertNotNull(deepCopyMatch);
