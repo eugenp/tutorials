@@ -50,15 +50,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <spring.batch.version>4.3.0</spring.batch.version>
         <awaitility.version>3.1.1</awaitility.version>
