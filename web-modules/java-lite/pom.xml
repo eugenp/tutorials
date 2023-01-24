@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.baeldung</groupId>
+    <artifactId>java-lite</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>java-lite</name>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>web-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activeweb</artifactId>
+            <version>${activeweb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>${sun.tools.version}</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activeweb-testing</artifactId>
+            <version>${activeweb-testing.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/webapp/WEB-INF</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.maven.plugin.version}</version>
+                <configuration>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>activejdbc.log</name>
+                            <value></value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>active_reload</name>
+                            <value>true</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>activeweb.log.request</name>
+                            <value>true</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.javalite</groupId>
+                <artifactId>activejdbc-instrumentation</artifactId>
+                <version>${activejdbc.version}</version>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <jetty.maven.plugin.version>9.4.8.v20171121</jetty.maven.plugin.version>
+        <activejdbc.version>1.4.13</activejdbc.version>
+        <activeweb.version>1.15</activeweb.version>
+        <mysql.connector.java.version>5.1.45</mysql.connector.java.version>
+        <sun.tools.version>1.7.0</sun.tools.version>
+        <activeweb-testing.version>1.15</activeweb-testing.version>
+    </properties>
+
+</project>

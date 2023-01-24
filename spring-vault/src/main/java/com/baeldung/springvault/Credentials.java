@@ -1,7 +1,12 @@
 package com.baeldung.springvault;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.vault.repository.mapping.Secret;
+
+@Secret(backend = "credentials", value = "myapp")
 public class Credentials {
 
+    @Id
     private String username;
     private String password;
 

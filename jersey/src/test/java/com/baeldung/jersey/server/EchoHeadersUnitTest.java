@@ -2,7 +2,6 @@ package com.baeldung.jersey.server;
 
 import com.baeldung.jersey.client.JerseyClientHeaders;
 import com.baeldung.jersey.client.filter.AddHeaderOnRequestFilter;
-import org.glassfish.jersey.media.sse.SseFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;

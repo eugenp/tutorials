@@ -9,3 +9,5 @@ spring:
     jpa:
         hibernate:
             ddl-auto: create
+        properties:
+            globally_quoted_identifiers: true

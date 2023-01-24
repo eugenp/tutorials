@@ -257,7 +257,7 @@ public class JavaGroupingByCollectorUnitTest {
     @Test
     public void givenListOfPosts_whenGroupedByAuthor_thenGetAMapUsingCollectingAndThen() {
 
-        Map<String, BlogPost.PostcountTitlesLikesStats> postsPerAuthor = posts.stream()
+        Map<String, BlogPost.PostCountTitlesLikesStats> postsPerAuthor = posts.stream()
             .collect(groupingBy(BlogPost::getAuthor, collectingAndThen(toList(), list -> {
                 long count = list.stream()
                     .map(BlogPost::getTitle)
@@ -267,10 +267,10 @@ public class JavaGroupingByCollectorUnitTest {
                     .collect(joining(" : "));
                 IntSummaryStatistics summary = list.stream()
                     .collect(summarizingInt(BlogPost::getLikes));
-                return new BlogPost.PostcountTitlesLikesStats(count, titles, summary);
+                return new BlogPost.PostCountTitlesLikesStats(count, titles, summary);
             })));
 
-        BlogPost.PostcountTitlesLikesStats result = postsPerAuthor.get("Author 1");
+        BlogPost.PostCountTitlesLikesStats result = postsPerAuthor.get("Author 1");
         assertThat(result.postCount()).isEqualTo(3L);
         assertThat(result.titles()).isEqualTo("News item 1 : Programming guide : Tech review 2");
         assertThat(result.likesStats().getMax()).isEqualTo(20);
@@ -294,7 +294,7 @@ public class JavaGroupingByCollectorUnitTest {
                         .toUpperCase(),
                     u1.boundedSumOfLikes() + likes);
             }));
-        
+
         BlogPost.TitlesBoundedSumOfLikes result = postsPerAuthor.get("Author 1");
         assertThat(result.titles()).isEqualTo("NEWS ITEM 1 : PROGRAMMING GUIDE : TECH REVIEW 2");
         assertThat(result.boundedSumOfLikes()).isEqualTo(47);

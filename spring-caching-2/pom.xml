@@ -6,13 +6,13 @@
     <artifactId>spring-caching-2</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-caching-2</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-2/pom.xml</relativePath>
     </parent>
 
     <dependencies>

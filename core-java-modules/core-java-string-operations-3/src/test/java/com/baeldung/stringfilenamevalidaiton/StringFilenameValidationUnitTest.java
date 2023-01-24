@@ -2,6 +2,7 @@ package com.baeldung.stringfilenamevalidaiton;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
@@ -25,6 +26,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class StringFilenameValidationUnitTest {
 
     private static final String CORRECT_FILENAME_PATTERN = "baeldung.txt";
+    private static final String FILENAME_WITH_COLON = "bael:dung.txt";
+    private static final String FILENAME_WITH_FORWARD_SLASH = "bael/dung.txt";
+    private static final String FILENAME_WITH_BACKWARD_SLASH = "bael\\dung.txt";
 
     @ParameterizedTest
     @MethodSource("correctAlphanumericFilenamesProvider")
@@ -79,18 +83,38 @@ public class StringFilenameValidationUnitTest {
     @ParameterizedTest
     @EnabledOnOs(OS.WINDOWS)
     @MethodSource("filenamesWithInvalidWindowsChars")
-    public void givenFilenameStringWithInvalidWindowsCharAndIsWindows_whenValidateUsingIO_thenRaiseException(String filename) {
-        assertThatThrownBy(() -> validateStringFilenameUsingIO(filename))
-            .isInstanceOf(IOException.class)
-            .hasMessageContaining("Invalid file path");
+	public void givenFilenameStringWithInvalidWindowsCharAndIsWindows_whenValidateUsingIO_thenRaiseException(
+			String filename) {
+		assertThatThrownBy(() -> validateStringFilenameUsingIO(filename)).isInstanceOf(IOException.class)
+				.extracting(Throwable::getMessage, InstanceOfAssertFactories.STRING)
+				.containsAnyOf("The system cannot find the path specified",
+						"The filename, directory name, or volume label syntax is incorrect");
+		assertThatThrownBy(() -> validateStringFilenameUsingNIO2(filename)).isInstanceOf(InvalidPathException.class)
+				.hasMessageContaining("Illegal char");
 
-        assertThatThrownBy(() -> validateStringFilenameUsingNIO2(filename))
-            .isInstanceOf(InvalidPathException.class)
-            .hasMessage("character not allowed");
+		assertThat(validateStringFilenameUsingContains(filename)).isFalse();
+	}
 
-        assertThat(validateStringFilenameUsingContains(filename)).isFalse();
-    }
-
+    @Test
+    @EnabledOnOs(OS.WINDOWS)
+	public void givenFilenameStringWithInvalidColonWindowsCharAndIsWindows_thenNIO2FailsIOSucceed()
+			throws IOException {
+		assertThat(validateStringFilenameUsingIO(FILENAME_WITH_COLON)).isTrue();
+		assertThatThrownBy(() -> validateStringFilenameUsingNIO2(FILENAME_WITH_COLON))
+				.isInstanceOf(InvalidPathException.class).hasMessageContaining("Illegal char");
+	}
+    
+    @Test
+    @EnabledOnOs(OS.WINDOWS)
+	public void givenFilenameStringWithInvalidSlashWindowsCharAndIsWindows_thenIOFailsNIO2Succeed() {
+		assertThatThrownBy(() -> validateStringFilenameUsingIO(FILENAME_WITH_FORWARD_SLASH))
+				.isInstanceOf(IOException.class).hasMessageContaining("The system cannot find the path specified");
+		assertThatThrownBy(() -> validateStringFilenameUsingIO(FILENAME_WITH_BACKWARD_SLASH))
+				.isInstanceOf(IOException.class).hasMessageContaining("The system cannot find the path specified");
+		assertThat(validateStringFilenameUsingNIO2(FILENAME_WITH_FORWARD_SLASH)).isTrue();
+		assertThat(validateStringFilenameUsingNIO2(FILENAME_WITH_BACKWARD_SLASH)).isTrue();
+	}
+    
     @ParameterizedTest
     @EnabledOnOs({OS.LINUX, OS.MAC})
     @MethodSource("filenamesWithInvalidUnixChars")

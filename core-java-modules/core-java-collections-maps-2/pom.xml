@@ -54,7 +54,7 @@
     </dependencies>
 
     <properties>
-        <streamex.version>0.6.5</streamex.version>
+        <streamex.version>0.8.1</streamex.version>
         <avaitility.version>1.7.0</avaitility.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <hppc.version>0.7.2</hppc.version>

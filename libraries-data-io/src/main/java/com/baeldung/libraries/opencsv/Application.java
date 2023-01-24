@@ -1,5 +1,6 @@
 package com.baeldung.libraries.opencsv;
 
+import com.baeldung.libraries.opencsv.beans.CsvBean;
 import com.baeldung.libraries.opencsv.beans.NamedColumnBean;
 import com.baeldung.libraries.opencsv.beans.SimplePositionBean;
 import com.baeldung.libraries.opencsv.examples.sync.BeanExamples;
@@ -7,102 +8,60 @@ import com.baeldung.libraries.opencsv.examples.sync.CsvReaderExamples;
 import com.baeldung.libraries.opencsv.examples.sync.CsvWriterExamples;
 import com.baeldung.libraries.opencsv.helpers.Helpers;
 
-import java.io.Reader;
-import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 public class Application {
 
-        /*
-         *  Bean Examples.
-         */
-
-    public static String simpleSyncPositionBeanExample() {
-        Path path = null;
-        try {
-            path = Helpers.twoColumnCsvPath();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return BeanExamples.beanBuilderExample(path, SimplePositionBean.class).toString();
+    // CSV Reader Examples
+    public static List<String[]> readLineByLineSyncExample() throws Exception {
+        Path path = Helpers.twoColumnCsvPath();
+        return CsvReaderExamples.readLineByLine(path);
     }
 
-    public static String namedSyncColumnBeanExample() {
-        Path path = null;
-        try {
-            path = Helpers.namedColumnCsvPath();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return BeanExamples.beanBuilderExample(path, NamedColumnBean.class).toString();
+    public static List<String[]> readAllLinesSyncExample() throws Exception {
+        Path path = Helpers.twoColumnCsvPath();
+        return CsvReaderExamples.readAllLines(path);
     }
 
-    public static String writeSyncCsvFromBeanExample() {
-        Path path = null;
-        try {
-            path = Helpers.fileOutBeanPath();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
+    // CSV Writer Examples
+    public static String writeLineByLineSyncExample() throws Exception {
+        Path path = Helpers.fileOutOnePath();
+        return CsvWriterExamples.writeLineByLine(Helpers.fourColumnCsvString(), path);
+    }
+
+    public static String writeAllLinesSyncExample() throws Exception {
+        Path path = Helpers.fileOutAllPath();
+        return CsvWriterExamples.writeAllLines(Helpers.fourColumnCsvString(), path);
+    }
+
+    // Bean Examples
+    public static List<CsvBean> simpleSyncPositionBeanExample() throws Exception {
+        Path path = Helpers.twoColumnCsvPath();
+        return BeanExamples.beanBuilderExample(path, SimplePositionBean.class);
+    }
+
+    public static List<CsvBean> namedSyncColumnBeanExample() throws Exception {
+        Path path = Helpers.namedColumnCsvPath();
+        return BeanExamples.beanBuilderExample(path, NamedColumnBean.class);
+    }
+
+    public static String writeSyncCsvFromBeanExample() throws Exception {
+        Path path = Helpers.fileOutBeanPath();
         return BeanExamples.writeCsvFromBean(path);
     }
 
-        /*
-         *  CSV Reader Examples.
-         */
-
-    public static String oneByOneSyncExample() {
-        Reader reader = null;
-        try {
-            reader = Files.newBufferedReader(Helpers.twoColumnCsvPath());
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return CsvReaderExamples.oneByOne(reader).toString();
-    }
-
-    public static String readAllSyncExample() {
-        Reader reader = null;
-        try {
-            reader = Files.newBufferedReader(Helpers.twoColumnCsvPath());
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return CsvReaderExamples.readAll(reader).toString();
-    }
-
-         /*
-         *  CSV Writer Examples.
-         */
-
-
-    public static String csvWriterSyncOneByOne() {
-        Path path = null;
-        try {
-            path = Helpers.fileOutOnePath();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return CsvWriterExamples.csvWriterOneByOne(Helpers.fourColumnCsvString(), path);
-    }
-
-    public static String csvWriterSyncAll() {
-        Path path = null;
-        try {
-            path = Helpers.fileOutAllPath();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        return CsvWriterExamples.csvWriterAll(Helpers.fourColumnCsvString(), path);
-    }
-
     public static void main(String[] args) {
-        simpleSyncPositionBeanExample();
-        namedSyncColumnBeanExample();
-        writeSyncCsvFromBeanExample();
-        oneByOneSyncExample();
-        readAllSyncExample();
-        csvWriterSyncOneByOne();
-        csvWriterSyncAll();
+        try {
+            simpleSyncPositionBeanExample();
+            namedSyncColumnBeanExample();
+            writeSyncCsvFromBeanExample();
+            readLineByLineSyncExample();
+            readAllLinesSyncExample();
+            writeLineByLineSyncExample();
+            writeAllLinesSyncExample();
+        } catch (Exception e) {
+            throw new RuntimeException("Error during csv processing", e);
+        }
     }
 }

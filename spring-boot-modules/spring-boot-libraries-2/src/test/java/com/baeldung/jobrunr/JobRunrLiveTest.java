@@ -1,6 +1,5 @@
 package com.baeldung.jobrunr;
 
-import org.awaitility.Awaitility;
 import org.jobrunr.jobs.states.StateName;
 import org.jobrunr.storage.StorageProvider;
 import org.junit.Test;
@@ -9,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.baeldung.JobRunrSpringBootApp;
 
 import java.net.URI;
 import java.util.concurrent.TimeUnit;

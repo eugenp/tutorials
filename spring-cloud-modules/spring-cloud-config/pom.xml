@@ -16,8 +16,10 @@
     </parent>
 
     <modules>
-        <module>server</module>
-        <module>client</module>
+        <module>spring-cloud-config-server</module>
+        <module>spring-cloud-config-client</module>
+        <module>spring-cloud-config-overriding-properties-client</module>
+        <module>spring-cloud-config-overriding-properties-server</module>
     </modules>
 
     <dependencyManagement>
@@ -33,7 +35,7 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2021.0.3</spring-cloud-dependencies.version>
     </properties>
 
 </project>

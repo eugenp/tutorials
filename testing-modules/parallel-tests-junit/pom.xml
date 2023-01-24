@@ -20,4 +20,8 @@
         <module>string-test-functions</module>
     </modules>
 
+    <properties>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+    </properties>
+
 </project>

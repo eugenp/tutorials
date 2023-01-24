@@ -46,22 +46,6 @@
             <artifactId>togglz-spring-security</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-        <!-- graphql -->
-        <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-spring-boot-starter</artifactId>
-            <version>${graphql-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-java-tools</artifactId>
-            <version>${graphql-java-tools.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphiql-spring-boot-starter</artifactId>
-            <version>${graphql-spring-boot-starter.version}</version>
-        </dependency>
         <!-- Problem Spring Web -->
         <dependency>
             <groupId>org.zalando</groupId>
@@ -242,8 +226,8 @@
         <barcode4j.version>2.1</barcode4j.version>
         <qrgen.version>2.6.0</qrgen.version>
         <zxing.version>3.3.0</zxing.version>
-        <bucket4j.version>4.10.0</bucket4j.version>
-        <bucket4j-spring-boot-starter.version>0.2.0</bucket4j-spring-boot-starter.version>
+        <bucket4j.version>7.6.0</bucket4j.version>
+        <bucket4j-spring-boot-starter.version>0.7.0</bucket4j-spring-boot-starter.version>
         <caffeine.version>2.8.2</caffeine.version>
     </properties>
 
