@@ -33,15 +33,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <org.openjfx.version>11.0.2</org.openjfx.version>
         <javazoom.jlayer.version>1.0.1</javazoom.jlayer.version>

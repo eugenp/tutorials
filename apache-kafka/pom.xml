@@ -163,15 +163,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <kafka.version>2.8.0</kafka.version>
         <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>

@@ -57,15 +57,6 @@
     <!--<version>${hibernate-validator.ap.version}</version> </path> </annotationProcessorPaths> </configuration> -->
     <!--</plugin> </plugins> </build> -->
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
         <hibernate-validator.ap.version>6.2.0.Final</hibernate-validator.ap.version>
