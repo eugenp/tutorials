@@ -22,10 +22,10 @@ public class DashBoard {
     @GetMapping("/quote")
     public String getQuote(Model model) throws InterruptedException {
         Random r = new Random();
-        int day = r.nextInt(0, 7);
+        int day = r.nextInt(7);
         String quote = Quotes.list.get(day);
         
-        int wait = r.nextInt(0, 6);
+        int wait = r.nextInt(6);
         Thread.currentThread().sleep(wait);
         model.addAttribute("quote", quote);
         
