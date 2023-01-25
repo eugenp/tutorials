@@ -33,7 +33,7 @@ public class DashBoard {
     }
     
     @GetMapping("/time")
-    public String getTime(Model model) throws InterruptedException {
+    public String getTime(Model model) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("hh:mm:ss a");
         LocalDateTime now = LocalDateTime.now();
         model.addAttribute("time", fmt.format(now));
