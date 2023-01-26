@@ -6,3 +6,4 @@
 - [List All Factors of a Number in Java](https://www.baeldung.com/java-list-factors-integer)
 - [Make Division of Two Integers Result in a Float](https://www.baeldung.com/java-integer-division-float-result)
 - [Creating Random Numbers With No Duplicates in Java](https://www.baeldung.com/java-unique-random-numbers)
+- [Multiply a BigDecimal by an Integer in Java](https://www.baeldung.com/java-bigdecimal-multiply-integer)
