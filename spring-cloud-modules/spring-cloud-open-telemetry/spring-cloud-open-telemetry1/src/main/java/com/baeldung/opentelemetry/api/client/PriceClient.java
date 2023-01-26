@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class PriceClient {
 
-    private static final Logger logger = LoggerFactory.getLogger(PriceClient.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PriceClient.class);
 
     private final RestTemplate restTemplate;
 
@@ -26,7 +26,7 @@ public class PriceClient {
     private String baseUrl;
 
     public Price getPrice(@PathVariable("id") long productId){
-        logger.info("Fetching Price Details With Product Id {}", productId);
+        LOGGER.info("Fetching Price Details With Product Id {}", productId);
         String url = String.format("%s/price/%d", baseUrl, productId);
         ResponseEntity<Price> price = restTemplate.getForEntity(url, Price.class);
         return price.getBody();
