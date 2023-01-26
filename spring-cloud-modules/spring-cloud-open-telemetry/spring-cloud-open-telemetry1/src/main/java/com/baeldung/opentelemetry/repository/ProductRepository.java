@@ -13,15 +13,15 @@ import java.util.Map;
 @Component
 public class ProductRepository {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepository.class);
 
     private final Map<Long, Product> productMap = new HashMap<>();
 
     public Product getProduct(Long productId){
-        logger.info("Getting Product from Product Repo With Product Id {}", productId);
+        LOGGER.info("Getting Product from Product Repo With Product Id {}", productId);
 
         if(!productMap.containsKey(productId)){
-            logger.error("Product Not Found for Product Id {}", productId);
+            LOGGER.error("Product Not Found for Product Id {}", productId);
             throw new ProductNotFoundException("Product Not Found");
         }
 
