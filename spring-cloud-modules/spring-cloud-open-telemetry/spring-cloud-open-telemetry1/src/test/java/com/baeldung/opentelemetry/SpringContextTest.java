@@ -8,9 +8,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ProductApplication.class)
-public class SpringContextTest {
+class SpringContextTest {
     
     @Test
-    public void whenSpringContextIsBootstrapped_thenNoExceptions() {
+    void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
 }

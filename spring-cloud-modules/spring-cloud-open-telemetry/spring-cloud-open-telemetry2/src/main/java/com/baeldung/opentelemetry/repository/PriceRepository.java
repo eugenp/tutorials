@@ -13,15 +13,15 @@ import java.util.Map;
 @Component
 public class PriceRepository {
 
-    private static final Logger logger = LoggerFactory.getLogger(PriceRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PriceRepository.class);
 
     private final Map<Long, Price> priceMap = new HashMap<>();
 
     public Price getPrice(Long productId){
-        logger.info("Getting Price from Price Repo With Product Id {}", productId);
+        LOGGER.info("Getting Price from Price Repo With Product Id {}", productId);
 
         if(!priceMap.containsKey(productId)){
-            logger.error("Price Not Found for Product Id {}", productId);
+            LOGGER.error("Price Not Found for Product Id {}", productId);
             throw new PriceNotFoundException("Product Not Found");
         }
 

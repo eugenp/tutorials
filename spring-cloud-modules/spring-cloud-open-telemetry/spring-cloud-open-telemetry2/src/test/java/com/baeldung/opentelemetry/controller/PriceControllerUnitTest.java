@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(PriceController.class)
-public class PriceControllerUnitTest {
+class PriceControllerUnitTest {
 
     @MockBean
     private PriceRepository priceRepository;
@@ -30,7 +30,7 @@ public class PriceControllerUnitTest {
     private MockMvc mockMvc;
 
     @Test
-    public void givenProductandPriceAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
+    void givenProductandPriceAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
         long productId = 100000L;
         Price price = new Price();
         price.setProductId(productId);
@@ -45,7 +45,7 @@ public class PriceControllerUnitTest {
 
 
     @Test
-    public void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
+    void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
 
         when(priceRepository.getPrice(productId)).thenThrow(PriceNotFoundException.class);

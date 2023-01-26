@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(ProductController.class)
-public class ProductControllerUnitTest {
+class ProductControllerUnitTest {
 
     @MockBean
     private PriceClient priceCLient;
@@ -37,11 +37,11 @@ public class ProductControllerUnitTest {
 
 
     @Test
-    public void givenProductandPriceDataAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
+    void givenProductandPriceDataAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
         long productId = 100000L;
 
-        Price price = getPrice(productId);
-        Product product = getProduct(productId);
+        Price price = createPrice(productId);
+        Product product = createProduct(productId);
         product.setPrice(price);
 
         when(productRepository.getProduct(productId)).thenReturn(product);
@@ -52,9 +52,9 @@ public class ProductControllerUnitTest {
     }
 
     @Test
-    public void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
+    void givenProductNotFound_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-        Price price = getPrice(productId);
+        Price price = createPrice(productId);
 
         when(productRepository.getProduct(productId)).thenThrow(ProductNotFoundException.class);
         when(priceCLient.getPrice(productId)).thenReturn(price);
@@ -64,9 +64,9 @@ public class ProductControllerUnitTest {
     }
 
     @Test
-    public void givenPriceServiceNotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
+    void givenPriceServiceNotAvailable_whenGetProductCalled_thenReturnInternalServerError() throws Exception {
         long productId = 100000L;
-        Product product = getProduct(productId);
+        Product product = createProduct(productId);
 
         when(productRepository.getProduct(productId)).thenReturn(product);
         when(priceCLient.getPrice(productId)).thenThrow(HttpServerErrorException.ServiceUnavailable.class);
@@ -75,14 +75,14 @@ public class ProductControllerUnitTest {
                 .andExpect(status().is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
 
-    private static Product getProduct(long productId) {
+    private static Product createProduct(long productId) {
         Product product = new Product();
         product.setId(productId);
         product.setName("test");
         return product;
     }
 
-    private static Price getPrice(long productId) {
+    private static Price createPrice(long productId) {
         Price price = new Price();
         price.setProductId(productId);
         price.setPriceAmount(12.00);

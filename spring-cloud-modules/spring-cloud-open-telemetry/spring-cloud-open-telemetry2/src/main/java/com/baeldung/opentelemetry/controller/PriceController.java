@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PriceController {
 
-    private static final Logger logger = LoggerFactory.getLogger(PriceController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PriceController.class);
 
     private final PriceRepository priceRepository;
 
@@ -23,7 +23,7 @@ public class PriceController {
 
     @GetMapping(path = "/price/{id}")
     public Price getPrice(@PathVariable("id") long productId) {
-        logger.info("Getting Price details for Product Id {}", productId);
+        LOGGER.info("Getting Price details for Product Id {}", productId);
         return priceRepository.getPrice(productId);
   }
 }
