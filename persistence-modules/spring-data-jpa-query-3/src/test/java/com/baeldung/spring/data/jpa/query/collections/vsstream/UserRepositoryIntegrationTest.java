@@ -3,23 +3,44 @@ package com.baeldung.spring.data.jpa.query.collections.vsstream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.spring.data.jpa.collections.vsstream.User;
 import com.baeldung.spring.data.jpa.collections.vsstream.UserRepository;
+import com.github.javafaker.Faker;
 
 @DataJpaTest
 class UserRepositoryIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
+
+    @BeforeEach
+    public void setup() {
+        Faker faker = new Faker();
+        List<User> people = IntStream.range(1, 100)
+          .parallel()
+          .mapToObj(i -> new User(faker.name()
+            .firstName(), faker.name()
+            .lastName(), faker.number()
+            .numberBetween(1, 100), i))
+          .collect(Collectors.toList());
+        userRepository.saveAll(people);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        userRepository.deleteAll();
+    }
 
     @Test
     public void whenAgeIs20_thenItShouldReturnAllUsersWhoseAgeIsGreaterThan20InAList() {
