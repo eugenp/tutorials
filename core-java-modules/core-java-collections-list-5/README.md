@@ -2,4 +2,5 @@
 
 This module contains articles about the Java List collection
 
-### Relevant Articles: 
+### Relevant Articles:
+- [Java List Interface](https://www.baeldung.com/java-list-interface)
