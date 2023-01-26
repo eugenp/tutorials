@@ -8,7 +8,6 @@ import java.util.Objects;
 
 @Entity
 public class Player {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
