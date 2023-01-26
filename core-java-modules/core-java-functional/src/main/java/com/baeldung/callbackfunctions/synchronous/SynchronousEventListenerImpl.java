@@ -10,4 +10,9 @@ public class SynchronousEventListenerImpl implements EventListener {
         return "Synchronously running callback function";
     }
 
+    @Override
+    public void respondToTrigger(){
+        System.out.println("Response to trigger");
+    }
+
 }

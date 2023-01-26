@@ -14,8 +14,8 @@ public class AsynchronousCallbackUnitTest {
     @Test
     public void whenCallbackIsInvokedAsynchronously_shouldRunAsynchronousOperation(){
         EventListener listener = Mockito.mock(AsynchronousEventListenerImpl.class);
-        AsynchronousEventConsumer synchronousEventListenerConsumer = new AsynchronousEventConsumer(listener);
-        synchronousEventListenerConsumer.doAsynchronousOperation();
+        AsynchronousEventConsumer asynchronousEventListenerConsumer = new AsynchronousEventConsumer(listener);
+        asynchronousEventListenerConsumer.doAsynchronousOperation();
 
         verify(listener, times(1)).onTrigger();
     }

@@ -14,7 +14,7 @@ public class AsynchronousEventConsumer{
     {
         System.out.println("Performing operation in Asynchronous Task");
 
-        new Thread(() -> listener.onTrigger()).start();
+        new Thread(() ->  listener.onTrigger()).start();
     }
 
 
