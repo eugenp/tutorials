@@ -6,7 +6,7 @@ import java.time.format.DateTimeParseException;
 
 public class SimpleDateTimeFormater {
 
-    public String parseDate(String date) {
+    public static String parseDate(String date) {
         DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder()
                 .append(DateTimeFormatter.ofPattern("[MM/dd/yyyy]" + "[dd-MM-yyyy]" + "[yyyy-MM-dd]"));
 
