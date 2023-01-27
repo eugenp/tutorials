@@ -57,11 +57,10 @@ class JndiUnitTest {
         assertNotNull(ds);
         assertNotNull(ds.getConnection());
     }
-    
+
     @AfterAll
     static void tearDown() throws Exception {
        ctx.close();
+       ctx = null;
     }
-
-
 }
