@@ -9,12 +9,7 @@ import ninja.NinjaTest;
 import ninja.Result;
 import services.UserService;
 
-<<<<<<< HEAD:web-modules/ninja/src/test/java/controllers/ApiControllerMockIntegrationTest.java
-@RunWith(NinjaRunner.class)
-public class ApiControllerMockIntegrationTest {
-=======
 public class ApiControllerMockUnitTest extends NinjaTest {
->>>>>>> cb71de5be1a61279b4ac230c5ddde1cd1017ea42:web-modules/ninja/src/test/java/controllers/ApiControllerMockUnitTest.java
 
     private UserService userService;
 
