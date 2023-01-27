@@ -21,12 +21,13 @@ class JndiUnitTest {
 
     @BeforeAll
     static void setUp() throws Exception {
-        SimpleNamingContextBuilder builder = new SimpleNamingContextBuilder();
+        SimpleNamingContextBuilder.emptyActivatedContextBuilder();
         ds = new DriverManagerDataSource("jdbc:h2:mem:mydb");
-        builder.activate();
+//        builder.activate();
 
-        JndiTemplate jndiTemplate = new JndiTemplate();
-        ctx = (InitialContext) jndiTemplate.getContext();
+//        JndiTemplate jndiTemplate = new JndiTemplate();
+//        ctx = (InitialContext) jndiTemplate.getContext();
+        ctx = new InitialContext();
     }
 
     @Test
@@ -57,10 +58,10 @@ class JndiUnitTest {
         assertNotNull(ds);
         assertNotNull(ds.getConnection());
     }
-    
+
     @AfterAll
     static void tearDown() throws Exception {
-       ctx.close();
+        ctx.close();
     }
 
 
