@@ -40,15 +40,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <protobuf-java.version>3.1.0</protobuf-java.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>

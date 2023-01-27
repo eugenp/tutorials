@@ -86,15 +86,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <axon-bom.version>4.6.2</axon-bom.version>
         <de.flapdoodle.embed.mongo.version>3.4.8</de.flapdoodle.embed.mongo.version>

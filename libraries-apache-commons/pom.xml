@@ -60,15 +60,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <commons-text.version>1.10.0</commons-text.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>

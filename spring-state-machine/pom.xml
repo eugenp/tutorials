@@ -36,15 +36,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <spring-statemachine-core.version>3.2.0</spring-statemachine-core.version>
         <spring-context.version>5.3.19</spring-context.version>

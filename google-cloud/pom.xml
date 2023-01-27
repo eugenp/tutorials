@@ -30,15 +30,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <google-cloud-storage.version>1.16.0</google-cloud-storage.version>
     </properties>
