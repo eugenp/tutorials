@@ -16,18 +16,17 @@ import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class JndiExceptionsUnitTest {
-    
+
     InitialContext ctx;
 
     @Test
     @Order(1)
-    @Disabled
     void givenNoContext_whenLookupObject_thenThrowNoInitialContext() {
         assertThrows(NoInitialContextException.class, () -> {
             JndiTemplate jndiTemplate = new JndiTemplate();
             ctx = (InitialContext) jndiTemplate.getContext();
             ctx.lookup("java:comp/env/jdbc/datasource");
-            ctx.close();            
+            ctx.close();
         }).printStackTrace();
     }
 
