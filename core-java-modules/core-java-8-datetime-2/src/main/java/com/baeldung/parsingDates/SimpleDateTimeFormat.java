@@ -7,7 +7,7 @@ import org.joda.time.format.DateTimeFormat;
 
 public class SimpleDateTimeFormat {
 
-    public LocalDate parseDate(String date) {
+    public static LocalDate parseDate(String date) {
         List<String> patternList = Arrays.asList("MM/dd/yyyy", "dd.MM.yyyy", "yyyy-MM-dd");
         for (String pattern : patternList) {
             try {
