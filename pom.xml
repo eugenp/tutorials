@@ -779,7 +779,7 @@
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
-                
+
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -916,8 +916,6 @@
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-
-
                 <module>core-java-modules/core-java-9-streams</module>
                 <module>core-java-modules/core-java-10</module>
                 <module>core-java-modules/core-java-11</module>
@@ -929,8 +927,10 @@
                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-collections-list-4</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
                 <module>core-java-modules/core-java-collections-maps-5</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -944,6 +944,7 @@
                 <module>core-java-modules/core-java-string-algorithms-3</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
+                <module>core-java-modules/core-java-string-operations-5</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
@@ -952,6 +953,7 @@
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
+                <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
@@ -965,13 +967,14 @@
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
+                <module>spring-boot-modules/spring-boot-3-observation</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
 
-<!--            Modules from default-first -->
+                <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
                 <module>annotations</module>
@@ -1073,7 +1076,6 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-
             </modules>
 
             <properties>
@@ -1121,8 +1123,10 @@
                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
+                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>core-java-modules/core-java-collections-set</module>
                 <module>core-java-modules/core-java-collections-list-4</module>
+                <module>core-java-modules/core-java-collections-array-list</module>
                 <module>core-java-modules/core-java-collections-maps-4</module>
                 <module>core-java-modules/core-java-collections-maps-5</module>
                 <module>core-java-modules/core-java-concurrency-simple</module>
@@ -1136,6 +1140,7 @@
                 <module>core-java-modules/core-java-string-algorithms-3</module>
                 <module>core-java-modules/core-java-string-operations-3</module>
                 <module>core-java-modules/core-java-string-operations-4</module>
+                <module>core-java-modules/core-java-string-operations-5</module>
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
@@ -1144,6 +1149,7 @@
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
+                <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
@@ -1164,7 +1170,7 @@
                 <module>lightrun</module>
                 <module>tablesaw</module>
 
-                <!--                default-first moved modules-->
+                <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
                 <module>annotations</module>
@@ -1269,7 +1275,6 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-
             </modules>
 
             <properties>
