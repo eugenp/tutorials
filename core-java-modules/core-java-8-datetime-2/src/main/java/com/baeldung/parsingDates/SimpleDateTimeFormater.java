@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.baeldung.parsingDates;
 
 import java.time.format.DateTimeFormatter;
@@ -11,18 +6,16 @@ import java.time.format.DateTimeParseException;
 
 public class SimpleDateTimeFormater {
 
-    public boolean parseDate(String date) {
+    public String parseDate(String date) {
         DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder()
                 .append(DateTimeFormatter.ofPattern("[MM/dd/yyyy]" + "[dd-MM-yyyy]" + "[yyyy-MM-dd]"));
 
         DateTimeFormatter dateTimeFormatter = dateTimeFormatterBuilder.toFormatter();
 
         try {
-            dateTimeFormatter.parse(date);
-            return true;
+            return dateTimeFormatter.parse(date).toString();
         } catch (DateTimeParseException e) {
-            return false;
+            return null;
         }
     }
-
 }
