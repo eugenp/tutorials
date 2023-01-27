@@ -19,13 +19,13 @@ import io.restassured.response.Response;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = FooController.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@ComponentScan({"com.baeldung.mime"})
+@ComponentScan({ "com.baeldung.mime" })
 @EnableAutoConfiguration
 @ActiveProfiles("test")
 public class FooLiveTest {
-	
-	@LocalServerPort
-	private int port;
+
+    @LocalServerPort
+    private int port;
 
     @Autowired
     protected IMarshaller marshaller;
@@ -53,9 +53,9 @@ public class FooLiveTest {
 
         final String resourceAsString = marshaller.encode(resource);
         return RestAssured.given()
-            .contentType(marshaller.getMime())
-            .body(resourceAsString)
-            .post(getURL());
+                .contentType(marshaller.getMime())
+                .body(resourceAsString)
+                .post(getURL());
     }
 
     //
@@ -63,17 +63,17 @@ public class FooLiveTest {
     protected String getURL() {
         return "http://localhost:" + port + "/foos";
     }
-    
+
     @Test
-	public void givenResourceExists_whenRetrievingResource_thenEtagIsAlsoReturned() {
-		// Given
-		final String uriOfResource = createAsUri();
+    public void givenResourceExists_whenRetrievingResource_thenEtagIsAlsoReturned() {
+        // Given
+        final String uriOfResource = createAsUri();
 
-		// When
-		final Response findOneResponse = RestAssured.given().header("Accept", "application/json").get(uriOfResource);
+        // When
+        final Response findOneResponse = RestAssured.given().header("Accept", "application/json").get(uriOfResource);
 
-		// Then
-		assertEquals(findOneResponse.getStatusCode(), 200);
-	}
+        // Then
+        assertEquals(findOneResponse.getStatusCode(), 200);
+    }
 
 }

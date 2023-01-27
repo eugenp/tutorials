@@ -18,7 +18,6 @@ public final class JacksonMarshaller implements IMarshaller {
 
     public JacksonMarshaller() {
         super();
-
         objectMapper = new ObjectMapper();
     }
 

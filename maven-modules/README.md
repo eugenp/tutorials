@@ -703,7 +703,7 @@ Nexus很快就会成为唯一真正成熟的选择，用于托管第三方工件
 
 - [在Maven中设置Java版本](#在maven中设置java版本)
 - [在代理服务器后面使用Maven](maven-proxy/README.md)
-- 参考pom.xml中的环境变量
+- [参考pom.xml中的环境变量](#参考pomxml中的环境变量)
 - 在Eclipse中为Maven构建的JDK配置
 - JAVA_HOME应指向JDK而非JRE
 - Maven中的settings.xml文件
@@ -1140,3 +1140,4 @@ Maven提供了许多默认的打包类型，还提供了定义自定义打包类
 - [x] [Setting the Java Version in Maven](https://www.baeldung.com/maven-java-version)
 - [x] [Maven Packaging Types](https://www.baeldung.com/maven-packaging-types)
 - [x] [Differences Between JAR and WAR Packaging](https://www.baeldung.com/java-jar-war-packaging)
+- [x] [Refer to Environment Variables in pom.xml](https://www.baeldung.com/maven-env-variables)
