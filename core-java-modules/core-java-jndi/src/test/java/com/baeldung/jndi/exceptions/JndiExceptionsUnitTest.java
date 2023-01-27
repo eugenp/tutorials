@@ -6,26 +6,39 @@ import javax.naming.InitialContext;
 import javax.naming.NameNotFoundException;
 import javax.naming.NoInitialContextException;
 
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JndiExceptionsUnitTest {
     
-    InitialContext ctx;
+    InitialContext ctx1;
+
+    SimpleNamingContextBuilder builder = new SimpleNamingContextBuilder();
+
+    @BeforeAll
+    void setUp() throws Exception {
+
+        ctx1 = null;
+    }
 
     @Test
     @Order(1)
-    @Disabled
     void givenNoContext_whenLookupObject_thenThrowNoInitialContext() {
         assertThrows(NoInitialContextException.class, () -> {
+            builder.deactivate();
+            ctx1 = null;
+
             JndiTemplate jndiTemplate = new JndiTemplate();
-            ctx = (InitialContext) jndiTemplate.getContext();
+            InitialContext ctx = (InitialContext) jndiTemplate.getContext();
             ctx.lookup("java:comp/env/jdbc/datasource");
             ctx.close();            
         }).printStackTrace();
@@ -35,14 +48,20 @@ public class JndiExceptionsUnitTest {
     @Order(2)
     void givenEmptyContext_whenLookupNotBounds_thenThrowNameNotFound() {
         assertThrows(NameNotFoundException.class, () -> {
-            SimpleNamingContextBuilder builder = new SimpleNamingContextBuilder();
+//            SimpleNamingContextBuilder builder = new SimpleNamingContextBuilder();
             builder.activate();
 
             JndiTemplate jndiTemplate = new JndiTemplate();
-            ctx = (InitialContext) jndiTemplate.getContext();
-            ctx.lookup("badJndiName");
-            ctx.close();
+            ctx1 = (InitialContext) jndiTemplate.getContext();
+            ctx1.lookup("badJndiName");
+            ctx1.close();
         }).printStackTrace();
+    }
+
+    @AfterAll
+    void tearDown() throws Exception {
+        ctx1.close();
+        ctx1 = null;
     }
 
 }
