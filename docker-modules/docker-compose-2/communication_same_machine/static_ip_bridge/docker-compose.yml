@@ -1,0 +1,34 @@
+services:
+  alpine-app-1:
+    container_name: alpine-app-1
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: alpine-app-1
+    tty: true
+    ports:
+      - 8080:8080
+    networks:
+      network-example:
+        ipv4_address: 10.5.0.2
+
+  alpine-app-2:
+    container_name: alpine-app-2
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: alpine-app-2
+    tty: true
+    ports:
+      - 8081:8081
+    networks:
+      network-example:
+        ipv4_address: 10.5.0.3
+
+networks:
+  network-example:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
