@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.baeldung.dashboard.models.Quotes;
 
 @Controller
-public class DashBoard {
+public class Dashboard {
     
     @GetMapping("/greeting")
     public String getGreeting(Model model) {
