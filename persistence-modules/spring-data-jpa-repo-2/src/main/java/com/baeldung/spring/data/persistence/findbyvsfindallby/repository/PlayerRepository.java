@@ -1,6 +1,6 @@
-package com.baeldung.findbyvsfindallby.repository;
+package com.baeldung.spring.data.persistence.findbyvsfindallby.repository;
 
-import com.baeldung.findbyvsfindallby.model.Player;
+import com.baeldung.spring.data.persistence.findbyvsfindallby.model.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

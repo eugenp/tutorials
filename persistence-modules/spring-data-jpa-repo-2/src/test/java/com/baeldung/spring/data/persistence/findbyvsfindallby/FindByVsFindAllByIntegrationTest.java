@@ -1,7 +1,7 @@
-package com.baeldung.findbyvsfindallby;
+package com.baeldung.spring.data.persistence.findbyvsfindallby;
 
-import com.baeldung.findbyvsfindallby.model.Player;
-import com.baeldung.findbyvsfindallby.repository.PlayerRepository;
+import com.baeldung.spring.data.persistence.findbyvsfindallby.model.Player;
+import com.baeldung.spring.data.persistence.findbyvsfindallby.repository.PlayerRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

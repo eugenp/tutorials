@@ -1,4 +1,4 @@
-package com.baeldung.findbyvsfindallby;
+package com.baeldung.spring.data.persistence.findbyvsfindallby;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

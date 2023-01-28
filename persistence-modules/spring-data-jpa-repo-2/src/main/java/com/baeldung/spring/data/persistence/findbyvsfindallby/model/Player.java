@@ -1,4 +1,4 @@
-package com.baeldung.findbyvsfindallby.model;
+package com.baeldung.spring.data.persistence.findbyvsfindallby.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
