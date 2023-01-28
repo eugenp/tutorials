@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-class SingletonPatternUnitTest {
+class ThreadSafeSingleInstanceUnitTest {
 
     @Test
     void givenTwoSingletonInstances_whenGettingThem_thenSameInstancesAreReturned() {
-        SingletonPattern instanceOne = SingletonPattern.getInstance();
-        SingletonPattern instanceTwo = SingletonPattern.getInstance();
+        ThreadSafeSingleInstance instanceOne = ThreadSafeSingleInstance.getInstance();
+        ThreadSafeSingleInstance instanceTwo = ThreadSafeSingleInstance.getInstance();
         assertSame(instanceOne, instanceTwo);
     }
 
