@@ -16,6 +16,11 @@ public class PhoneOrder implements Serializable {
     @Column(name = "`where`")
     String where;
 
+    public PhoneOrder(String order, String where) {
+        this.order = order;
+        this.where = where;
+    }
+
     public String getOrder() {
         return order;
     }

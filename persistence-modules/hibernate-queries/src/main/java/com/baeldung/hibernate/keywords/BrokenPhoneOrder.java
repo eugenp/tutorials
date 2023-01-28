@@ -16,6 +16,11 @@ public class BrokenPhoneOrder implements Serializable {
     @Column(name = "where")
     String where;
 
+    public BrokenPhoneOrder(String order, String where) {
+        this.order = order;
+        this.where = where;
+    }
+
     public String getOrder() {
         return order;
     }
