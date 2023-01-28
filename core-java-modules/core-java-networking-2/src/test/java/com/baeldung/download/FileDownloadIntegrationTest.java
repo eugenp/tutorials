@@ -10,11 +10,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.ExecutionException;
 
+import javax.xml.bind.DatatypeConverter;
+
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import jakarta.xml.bind.DatatypeConverter;
 
 public class FileDownloadIntegrationTest {
     
