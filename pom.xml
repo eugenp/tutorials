@@ -397,6 +397,7 @@
 
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
+                <module>httpclient4</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
@@ -782,6 +783,7 @@
 
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
+                <module>httpclient4</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
 
