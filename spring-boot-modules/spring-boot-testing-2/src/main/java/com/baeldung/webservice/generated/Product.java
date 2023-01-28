@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for product complex type.
+ * <p>product complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="product"&gt;
@@ -40,7 +40,7 @@ public class Product {
     protected String name;
 
     /**
-     * Gets the value of the id property.
+     * 获取id属性的值。
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class Product {
     }
 
     /**
-     * Sets the value of the id property.
+     * 设置id属性的值。
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class Product {
     }
 
     /**
-     * Gets the value of the name property.
+     * 获取name属性的值。
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class Product {
     }
 
     /**
-     * Sets the value of the name property.
+     * 设置name属性的值。
      * 
      * @param value
      *     allowed object is

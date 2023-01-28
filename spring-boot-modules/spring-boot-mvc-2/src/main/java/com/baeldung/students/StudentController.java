@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.baeldung.students.StudentService;
-
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -45,13 +43,12 @@ public class StudentController {
         Student createdStudent = service.create(student);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{id}")
-            .buildAndExpand(createdStudent.getId())
-            .toUri();
+                .path("/{id}")
+                .buildAndExpand(createdStudent.getId())
+                .toUri();
 
         return ResponseEntity.created(uri)
-            .body(createdStudent);
-
+                .body(createdStudent);
     }
 
     @PutMapping("/{id}")
@@ -67,7 +64,6 @@ public class StudentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteStudent(@PathVariable Long id) {
         service.delete(id);
-
         return ResponseEntity.noContent().build();
     }
 

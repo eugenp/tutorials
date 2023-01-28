@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "2ea3fa88-49bc-44c7-b8ee-ea4821f7c36f",
+		"name": "Student API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25550019"
+	},
+	"item": [
+		{
+			"name": "add student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"success status\", () => pm.response.to.be.success );",
+							"pm.test(\"firstName is correct\", () => ",
+							"  pm.expect(pm.response.json().firstName).to.equal(\"Wang\"));",
+							"pm.test(\"id was assigned\", () => ",
+							"  pm.expect(pm.response.json().id).to.be.not.null );",
+							"pm.collectionVariables.set(\"id\", pm.response.json().id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"firstName\": \"Wang\",\n    \"lastName\": \"Kan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a student",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"success status\", () => pm.response.to.be.success );",
+							"pm.test(\"name is correct\", () => ",
+							"  pm.expect(pm.response.json().firstName).to.equal(\"Wang\"));",
+							"pm.test(\"id is correct\", () => ",
+							"  pm.expect(pm.response.json().id).to.equal(pm.variables.get(\"id\")) );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/students/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a student",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"success status\", () => pm.response.to.be.success );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/students/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify delete",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status is 404\", () => pm.response.to.have.status(404) );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "image/*",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/students/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get students",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.request.headers.add(\"foo: bar\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "image/*",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/students/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({ ",
+					"    key: \"Accept\",",
+					"    value: \"application/json\" ",
+					"});",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "3"
+		},
+		{
+			"key": "id",
+			"value": ""
+		}
+	]
+}

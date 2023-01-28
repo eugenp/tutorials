@@ -9,18 +9,14 @@
     <description>Module For Spring Boot MVC Web Fn</description>
 
     <parent>
+        <!-- <?m2e ignore?>
+        <?m2e execute onConfiguration,onIncremental?> -->
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
