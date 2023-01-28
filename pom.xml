@@ -1134,6 +1134,7 @@
                  <module>core-java-modules/core-java-collections-set</module>
                  <module>core-java-modules/core-java-collections-list-4</module>
                  <module>core-java-modules/core-java-collections-array-list</module>
+                 <module>core-java-modules/core-java-collections-array-list-2</module>
                  <module>core-java-modules/core-java-collections-maps-4</module>
                  <module>core-java-modules/core-java-collections-maps-5</module>
                  <module>core-java-modules/core-java-concurrency-simple</module>
