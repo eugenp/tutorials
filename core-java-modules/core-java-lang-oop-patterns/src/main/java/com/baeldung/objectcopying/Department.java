@@ -14,6 +14,10 @@ public class Department {
         this.name = name;
     }
 
+    public Department(Department department) {
+        this(department.id, department.name);
+    }
+
     public Integer getId() {
         return id;
     }
