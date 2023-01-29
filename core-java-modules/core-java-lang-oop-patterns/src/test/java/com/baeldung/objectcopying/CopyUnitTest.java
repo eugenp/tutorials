@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CopyTest {
+class CopyUnitTest {
 
     Employee employee = new Employee(1, "Tom", "Smith", new Department(1, "dept1"));
 
