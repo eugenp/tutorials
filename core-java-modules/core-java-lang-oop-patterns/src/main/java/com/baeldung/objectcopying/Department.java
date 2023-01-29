@@ -2,7 +2,7 @@ package com.baeldung.objectcopying;
 
 import java.util.Objects;
 
-public class Department {
+public class Department implements Cloneable {
     private Integer id;
     private String name;
 
@@ -47,4 +47,12 @@ public class Department {
         return Objects.hash(id, name);
     }
 
+    @Override
+    protected Department clone() {
+        try {
+            return (Department) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(); // should not happen
+        }
+    }
 }

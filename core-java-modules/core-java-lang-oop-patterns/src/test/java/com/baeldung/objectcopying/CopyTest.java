@@ -31,4 +31,14 @@ class CopyTest {
         assertEquals("dept1", copiedEmployee.getDepartment().getName());
     }
 
+    @Test
+    void nestedObjectShouldNotChangeWhenOriginalFieldChangedWhenApplyDeepCopy_clone() {
+        Employee copiedEmployee = employee.deepClone();
+
+        assertEquals(employee, copiedEmployee);
+
+        employee.getDepartment().setName("dept2");
+        assertEquals("dept1", copiedEmployee.getDepartment().getName());
+    }
+
 }

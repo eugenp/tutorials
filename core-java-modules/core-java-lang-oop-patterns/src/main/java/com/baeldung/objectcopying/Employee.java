@@ -2,7 +2,7 @@ package com.baeldung.objectcopying;
 
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Cloneable {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -64,5 +64,20 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, department);
+    }
+
+    @Override
+    protected Employee clone() {
+        try {
+            return (Employee) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(); // should not happen
+        }
+    }
+
+    public Employee deepClone() {
+        Employee employee = this.clone();
+        employee.department = this.department.clone();
+        return employee;
     }
 }
