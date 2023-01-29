@@ -36,7 +36,7 @@ class RestClientV4LiveManualTest {
     final String urlOverHttps = "http://localhost:8082/httpclient-simple/api/bars/1";
 
     @Test
-    void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_2() throws GeneralSecurityException {
+    void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk() throws GeneralSecurityException {
 
         final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
         final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
@@ -76,7 +76,8 @@ class RestClientV4LiveManualTest {
         final CloseableHttpClient httpClient = HttpClients.custom()
             .setSSLHostnameVerifier(new NoopHostnameVerifier())
             .build();
-        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+        final HttpComponentsClientHttpRequestFactory requestFactory
+            = new HttpComponentsClientHttpRequestFactory();
         requestFactory.setHttpClient(httpClient);
 
         final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);

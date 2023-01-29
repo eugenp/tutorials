@@ -1,6 +1,16 @@
 package com.baeldung.httpclient;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
+import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
+import org.apache.hc.core5.http.config.Registry;
+import org.apache.hc.core5.http.config.RegistryBuilder;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -22,9 +32,6 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
 import org.apache.hc.core5.ssl.SSLContexts;
 import org.apache.hc.core5.ssl.TrustStrategy;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Test;
 
 import com.baeldung.handler.CustomHttpClientResponseHandler;
 
@@ -48,10 +55,39 @@ class HttpsClientSslLiveTest {
         assertThrows(SSLHandshakeException.class, () -> {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpResponse response = httpClient.execute(getMethod, new CustomHttpClientResponseHandler());
-            MatcherAssert.assertThat(response.getCode(), Matchers.equalTo(200));
+            assertThat(response.getCode(), Matchers.equalTo(200));
         });
     }
 
+    @Test
+    void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk() throws GeneralSecurityException, IOException {
+
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
+
+        final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
+        final SSLContext sslContext = SSLContexts.custom()
+            .loadTrustMaterial(null, acceptingTrustStrategy)
+            .build();
+        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+        final Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
+            .register("https", sslsf)
+            .register("http", new PlainConnectionSocketFactory())
+            .build();
+
+        final BasicHttpClientConnectionManager connectionManager =
+            new BasicHttpClientConnectionManager(socketFactoryRegistry);
+
+        try( CloseableHttpClient httpClient = HttpClients.custom()
+            .setConnectionManager(connectionManager)
+            .build();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) httpClient
+                .execute(getMethod, new CustomHttpClientResponseHandler())) {
+
+                final int statusCode = response.getCode();
+                assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+        }
+    }
 
 
     @Test
@@ -77,7 +113,7 @@ class HttpsClientSslLiveTest {
                 .execute(getMethod, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
-            MatcherAssert.assertThat(statusCode, Matchers.equalTo(HttpStatus.SC_OK));
+            assertThat(statusCode, Matchers.equalTo(HttpStatus.SC_OK));
         }
     }
 
@@ -104,9 +140,8 @@ class HttpsClientSslLiveTest {
                 .execute(getMethod, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
-            MatcherAssert.assertThat(statusCode, Matchers.equalTo(HttpStatus.SC_OK));
+            assertThat(statusCode, Matchers.equalTo(HttpStatus.SC_OK));
         }
-
     }
 
 }

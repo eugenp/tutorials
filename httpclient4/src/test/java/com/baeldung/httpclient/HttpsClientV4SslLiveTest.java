@@ -34,11 +34,12 @@ class HttpsClientV4SslLiveTest {
     // tests
 
     @Test
-    void whenHttpsUrlIsConsumed_thenException() throws IOException {
+    void whenHttpsUrlIsConsumed_thenException() {
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
 
         assertThrows(SSLHandshakeException.class, () -> {
-            final CloseableHttpClient httpClient = HttpClientBuilder.create()
+            final CloseableHttpClient httpClient = HttpClientBuilder
+                .create()
                 .build();
             final HttpResponse response = httpClient.execute(getMethod);
             assertThat(response.getStatusLine()
@@ -90,13 +91,15 @@ class HttpsClientV4SslLiveTest {
 
     @Test
     void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws Exception {
-        final SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true)
+        final SSLContext sslContext = new SSLContextBuilder()
+            .loadTrustMaterial(null, (certificate, authType) -> true)
             .build();
 
         final CloseableHttpClient client = HttpClients.custom()
             .setSSLContext(sslContext)
             .setSSLHostnameVerifier(new NoopHostnameVerifier())
             .build();
+
         final HttpGet httpGet = new HttpGet(HOST_WITH_SSL);
         httpGet.setHeader("Accept", "application/xml");
 

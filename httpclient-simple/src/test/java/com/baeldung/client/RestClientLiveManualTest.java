@@ -5,14 +5,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLPeerUnverifiedException;
 
-import org.apache.hc.client5.http.ClientProtocolException;
-import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -30,7 +27,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.baeldung.handler.CustomHttpClientResponseHandler;
@@ -47,43 +43,29 @@ public class RestClientLiveManualTest {
     void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk() throws GeneralSecurityException {
 
         final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
-        final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
+        final SSLContext sslContext = SSLContexts.custom()
+            .loadTrustMaterial(null, acceptingTrustStrategy)
+            .build();
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
         final Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
             .register("https", sslsf)
             .register("http", new PlainConnectionSocketFactory())
             .build();
 
-        final BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager(socketFactoryRegistry);
+        final BasicHttpClientConnectionManager connectionManager =
+            new BasicHttpClientConnectionManager(socketFactoryRegistry);
         final CloseableHttpClient httpClient = HttpClients.custom()
             .setConnectionManager(connectionManager)
             .build();
 
-        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
-        assertThat(response.getStatusCode().value(), equalTo(200));
+        final HttpComponentsClientHttpRequestFactory requestFactory =
+            new HttpComponentsClientHttpRequestFactory(httpClient);
+        final ResponseEntity<String> response = new RestTemplate(requestFactory)
+            .exchange(urlOverHttps, HttpMethod.GET, null, String.class);
+        assertThat(response.getStatusCode()
+            .value(), equalTo(200));
     }
 
-    //    @Test
-    //    void givenAcceptingAllCertificatesUsing4_4_whenHttpsUrlIsConsumed_thenCorrect() throws  IOException {
-    //
-    //        final HttpGet getMethod = new HttpGet(urlOverHttps);
-    //        try(CloseableHttpClient httpClient = HttpClients.custom().setSSLHostnameVerifier(new NoopHostnameVerifier()).build()){
-    //            final HttpResponse response = httpClient.execute(getMethod, new CustomHttpClientResponseHandler());
-    //            assertThat(response.getCode(), equalTo(200));
-    //        }
-    //    }
-    //
-    //    @Test
-    //    void givenAcceptingAllCertificatesUsing4_4_whenUsingRestTemplate_thenCorrect() throws ClientProtocolException, IOException {
-    //        final HttpClient httpClient = HttpClients.custom().setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
-    //        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-    //        requestFactory.setHttpClient(httpClient);
-    //
-    //        final ResponseEntity<String> response = new RestTemplate(requestFactory)
-    //            .exchange(urlOverHttps, HttpMethod.GET, null, String.class);
-    //        assertThat(response.getStatusCode().value(), equalTo(200));
-    //    }
 
     @Test
     void whenHttpsUrlIsConsumed_thenException() {
