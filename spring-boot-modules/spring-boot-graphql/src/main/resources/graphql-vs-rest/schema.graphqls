@@ -43,7 +43,6 @@ input ProductUpdateModel {
     stock: Int
 }
 
-
 # The Root Query for the application
 type Query {
     products(size: Int, page: Int): [Product]!

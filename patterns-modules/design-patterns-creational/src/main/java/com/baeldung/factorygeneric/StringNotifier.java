@@ -1,4 +1,4 @@
-package com.baeldung.factoryGeneric;
+package com.baeldung.factorygeneric;
 
 public class StringNotifier implements Notifier<String> {
 

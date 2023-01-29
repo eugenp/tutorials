@@ -57,8 +57,8 @@
     <properties>
         <name>${project.name}</name>
         <my.awesome.property>property-from-pom</my.awesome.property>
-        <!--these properties are normally set in the parent POM and would be overidden by the plugin 
-            specific properties above. -->
+        <!--these properties are normally set in the parent POM -->
+        <!-- and would be overidden by the plugin specific properties above. -->
         <!--project.build.sourceEncoding></project.build.sourceEncoding -->
         <!--project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

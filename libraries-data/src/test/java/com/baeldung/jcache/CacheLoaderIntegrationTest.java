@@ -16,21 +16,22 @@ import org.junit.Test;
 public class CacheLoaderIntegrationTest {
 
     private static final String CACHE_NAME = "SimpleCache";
+    private static final String HAZELCAST_MEMBER_CACHING_PROVIDER = "com.hazelcast.cache.HazelcastMemberCachingProvider";
 
     private Cache<Integer, String> cache;
 
     @Before
     public void setup() {
         // Adding fully qualified class name because of multiple Cache Provider (Ignite and Hazelcast)
-        CachingProvider cachingProvider = Caching.getCachingProvider("com.hazelcast.cache.HazelcastCachingProvider");
+        CachingProvider cachingProvider = Caching.getCachingProvider(HAZELCAST_MEMBER_CACHING_PROVIDER);
         CacheManager cacheManager = cachingProvider.getCacheManager();
         MutableConfiguration<Integer, String> config = new MutableConfiguration<Integer, String>().setReadThrough(true).setCacheLoaderFactory(new FactoryBuilder.SingletonFactory<>(new SimpleCacheLoader()));
-        this.cache = cacheManager.createCache("SimpleCache", config);
+        this.cache = cacheManager.createCache( CACHE_NAME, config );
     }
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider("com.hazelcast.cache.HazelcastCachingProvider").getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider(HAZELCAST_MEMBER_CACHING_PROVIDER).getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test
