@@ -1,5 +1,7 @@
 package com.baeldung.objectcopying;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,6 +36,17 @@ class CopyTest {
     @Test
     void nestedObjectShouldNotChangeWhenOriginalFieldChangedWhenApplyDeepCopy_clone() {
         Employee copiedEmployee = employee.deepClone();
+
+        assertEquals(employee, copiedEmployee);
+
+        employee.getDepartment().setName("dept2");
+        assertEquals("dept1", copiedEmployee.getDepartment().getName());
+    }
+
+    @Test
+    void nestedObjectShouldNotChangeWhenOriginalFieldChangedWhenApplyDeepCopy_json() throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        Employee copiedEmployee = om.readValue(om.writeValueAsString(employee), Employee.class);
 
         assertEquals(employee, copiedEmployee);
 
