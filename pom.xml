@@ -784,7 +784,7 @@
                 <module>hazelcast</module>
                 <module>apache-httpclient</module>
                 <module>httpclient4</module>
-                <module>httpclient-simple</module>
+
                 <module>hystrix</module>
 
                 <module>jackson-modules</module>
@@ -1158,6 +1158,7 @@
                  <module>ddd-contexts</module>
                  <module>docker-modules</module>
                  <module>apache-httpclient-2</module>
+                 <module>httpclient-simple</module>
                  <module>kubernetes-modules/kubernetes-spring</module>
                  <module>libraries-concurrency</module>
                  <module>maven-modules/compiler-plugin-java-9</module>
@@ -1242,6 +1243,7 @@
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
+                <module>httpclient-simple</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
