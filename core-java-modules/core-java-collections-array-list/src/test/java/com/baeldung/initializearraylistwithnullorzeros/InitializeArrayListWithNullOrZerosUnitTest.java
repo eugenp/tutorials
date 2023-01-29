@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.initializearraylistwithnullorzeros;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -7,7 +7,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
 
 public class InitializeArrayListWithNullOrZerosUnitTest {
 
