@@ -96,8 +96,16 @@ public class IPv4ValidationUnitTest {
     }
 
     @Test
-    public void givenBankString_whenValidate_thenReturnsFalse() {
+    public void givenBlankString_whenValidate_thenReturnsFalse() {
         String ip = "  ";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
+
+    @Test
+    public void givenIPv4StartWithDot_whenValidate_thenReturnsFalse() {
+        String ip = ".192.168.0.1";
         assertFalse(validateWithApacheCommons(ip));
         assertFalse(validateWithGuava(ip));
         assertFalse(validateWithRegex(ip));
