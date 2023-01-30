@@ -47,4 +47,60 @@ public class IPv4ValidationUnitTest {
         assertFalse(validateWithGuava(ip));
         assertFalse(validateWithRegex(ip));
     }
+
+    @Test
+    public void givenValidIPv4WithTwoDigitOctet_whenValidate_thenReturnsTrue() {
+        String ip = "192.168.42.1";
+        assertTrue(validateWithApacheCommons(ip));
+        assertTrue(validateWithGuava(ip));
+        assertTrue(validateWithRegex(ip));
+    }
+    @Test
+    public void givenValidIPv4WithNumberInRange200And249_whenValidate_thenReturnsTrue() {
+        String ip = "192.168.42.222";
+        assertTrue(validateWithApacheCommons(ip));
+        assertTrue(validateWithGuava(ip));
+        assertTrue(validateWithRegex(ip));
+    }
+
+    @Test
+    public void givenIPv4WithFourDigitOctet_whenValidate_thenReturnsFalse() {
+        String ip = "1921.168.42.222";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
+
+    @Test
+    public void givenIPv4WithFiveOctets_whenValidate_thenReturnsFalse() {
+        String ip = "192.168.42.222.10";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
+
+    @Test
+    public void givenIPv4WithTwoConsecutiveDots_whenValidate_thenReturnsFalse() {
+        String ip = "192.168..1";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
+
+    @Test
+    public void givenOnlyDots_whenValidate_thenReturnsFalse() {
+        String ip = "...";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
+
+    @Test
+    public void givenBankString_whenValidate_thenReturnsFalse() {
+        String ip = "  ";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
+
 }
