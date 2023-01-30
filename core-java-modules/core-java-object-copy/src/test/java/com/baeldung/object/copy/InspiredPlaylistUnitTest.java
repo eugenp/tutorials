@@ -12,36 +12,30 @@ import org.junit.jupiter.api.Test;
 
 public class InspiredPlaylistUnitTest {
 
-	Playlist originalPlaylist;
-	
-	@BeforeEach
-	public void setup() {
-		originalPlaylist = new Playlist();
-		originalPlaylist.setName("original playlist");
-		
-		Song s0 = new Song("Song 0");
-		Song s1 = new Song("Song 1");
-		Song s2 = new Song("Song 2");
+    Playlist originalPlaylist;
 
-		originalPlaylist.setSongs(new LinkedHashSet<>(Arrays.asList(s0, s1, s2)));
-	}
-	
+    @BeforeEach
+    public void setup() {
+        originalPlaylist = new Playlist();
+        originalPlaylist.setName("original playlist");
 
-	@Test
-	public void givenDeepCopy_whenSourceChanged_thenCopyNotImpacted() {
-		// copy original play-list into new inspired play-list
-		InspiredPlaylist deepCopy = new InspiredPlaylist(originalPlaylist);
-		
-		// change the play-list name
-		deepCopy.setName("inspired playlist");
-		assertSame("original playlist", originalPlaylist.getName());
-		assertSame("inspired playlist", deepCopy.getName());
-		
-		// add a song to the original play-list
-		Song s3 = new Song("Song 3");
-		originalPlaylist.getSongs().add(s3);
-		
-		assertNotSame(originalPlaylist.getSongs(), deepCopy.getSongs());
-		assertFalse(deepCopy.getSongs().contains(s3));
-	}
+        Song s0 = new Song("Song 0");
+        Song s1 = new Song("Song 1");
+        Song s2 = new Song("Song 2");
+
+        originalPlaylist.setSongs(new LinkedHashSet<>(Arrays.asList(s0, s1, s2)));
+    }
+
+    @Test
+    public void givenDeepCopy_whenSourceChanged_thenCopyNotImpacted() {
+        InspiredPlaylist deepCopy = new InspiredPlaylist(originalPlaylist);
+        deepCopy.setName("inspired playlist");
+        assertSame("original playlist", originalPlaylist.getName());
+        assertSame("inspired playlist", deepCopy.getName());
+
+        Song s3 = new Song("Song 3");
+        originalPlaylist.getSongs().add(s3);
+        assertNotSame(originalPlaylist.getSongs(), deepCopy.getSongs());
+        assertFalse(deepCopy.getSongs().contains(s3));
+    }
 }

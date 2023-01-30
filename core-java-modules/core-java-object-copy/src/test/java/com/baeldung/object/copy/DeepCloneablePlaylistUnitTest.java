@@ -12,36 +12,30 @@ import org.junit.jupiter.api.Test;
 
 public class DeepCloneablePlaylistUnitTest {
 
-	DeepCloneablePlaylist originalPlaylist;
-	
-	@BeforeEach
-	public void setup() {
-		originalPlaylist = new DeepCloneablePlaylist();
-		originalPlaylist.setName("original playlist");
-		
-		Song s0 = new Song("Song 0");
-		Song s1 = new Song("Song 1");
-		Song s2 = new Song("Song 2");
+    DeepCloneablePlaylist originalPlaylist;
 
-		originalPlaylist.setSongs(new LinkedHashSet<>(Arrays.asList(s0, s1, s2)));
-	}
-	
+    @BeforeEach
+    public void setup() {
+        originalPlaylist = new DeepCloneablePlaylist();
+        originalPlaylist.setName("original playlist");
 
-	@Test
-	public void givenDeepCopy_whenSourceChanged_thenCopyNotImpacted() throws Exception {
-		// copy original play-list into new deep cloned play-list
-		Playlist deepCopy = originalPlaylist.clone();
-		
-		// change the play-list name
-		deepCopy.setName("deep copy playlist");
-		assertSame("original playlist", originalPlaylist.getName());
-		assertSame("deep copy playlist", deepCopy.getName());
-		
-		// add a song to the original play-list
-		Song s3 = new Song("Song 3");
-		originalPlaylist.getSongs().add(s3);
-		
-		assertNotSame(originalPlaylist.getSongs(), deepCopy.getSongs());
-		assertFalse(deepCopy.getSongs().contains(s3));
-	}
+        Song s0 = new Song("Song 0");
+        Song s1 = new Song("Song 1");
+        Song s2 = new Song("Song 2");
+
+        originalPlaylist.setSongs(new LinkedHashSet<>(Arrays.asList(s0, s1, s2)));
+    }
+
+    @Test
+    public void givenDeepCopy_whenSourceChanged_thenCopyNotImpacted() throws Exception {
+        Playlist deepCopy = originalPlaylist.clone();
+        deepCopy.setName("deep copy playlist");
+        assertSame("original playlist", originalPlaylist.getName());
+        assertSame("deep copy playlist", deepCopy.getName());
+
+        Song s3 = new Song("Song 3");
+        originalPlaylist.getSongs().add(s3);
+        assertNotSame(originalPlaylist.getSongs(), deepCopy.getSongs());
+        assertFalse(deepCopy.getSongs().contains(s3));
+    }
 }
