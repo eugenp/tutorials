@@ -7,4 +7,5 @@
 - [LIKE Queries in Spring JPA Repositories](https://www.baeldung.com/spring-jpa-like-queries)
 - [How to Access EntityManager with Spring Data](https://www.baeldung.com/spring-data-entitymanager)
 - [Difference Between JPA and Spring Data JPA](https://www.baeldung.com/spring-data-jpa-vs-jpa)
+- [Differences Between Spring Data JPA findFirst() and findTop()](https://www.baeldung.com/spring-data-jpa-findfirst-vs-findtop)
 - More articles: [[<-- prev]](../spring-data-jpa-repo)
