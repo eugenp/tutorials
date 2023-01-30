@@ -8,12 +8,12 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class StudentControllerConfig //implements WebApplicationInitializer 
+public class StudentControllerConfig //implements WebApplicationInitializer
 {
 
     //uncomment to run the student controller example
     //@Override
-    public void onStartup(ServletContext sc) throws ServletException {
+    public void onStartup(ServletContext sc) {
         AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
         root.register(WebConfig.class);
         root.setServletContext(sc);

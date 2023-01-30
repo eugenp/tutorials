@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,7 +30,7 @@ public class HelloWorldController {
         System.out.println("context Beans: " + Arrays.asList(webApplicationContext.getBeanDefinitionNames()));
     }
 
-    @RequestMapping(path = "/welcome")
+    @GetMapping(path = "/welcome")
     public ModelAndView helloWorld() {
         processContext();
         String message = "<br><div style='text-align:center;'>" + "<h3>Normal " + greeterService.greet() + "</h3></div>";
