@@ -5,3 +5,4 @@
 - [Filter Java Stream to 1 and Only 1 Element](https://www.baeldung.com/java-filter-stream-unique-element)
 - [Java 8 Streams: Multiple Filters vs. Complex Condition](https://www.baeldung.com/java-streams-multiple-filters-vs-condition)
 - [Finding Max Date in List Using Streams](https://www.baeldung.com/java-max-date-list-streams)
+- [Converting String arrays to Inregers using Streams](https://www.baeldung.com/mapping-an-array-of-integers-to-strings-using-java-streams/)
