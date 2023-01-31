@@ -1,9 +1,11 @@
 package com.baeldung.checkinterface;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,6 +31,7 @@ public class CheckInterfaceUnitTest {
         ChildClass2 childClass2 = new ChildClass2();        
         List<Class<?>> interfaces = Arrays.asList(childClass2.getClass().getInterfaces());
         
+        assertEquals(1, interfaces.size());
         assertTrue(interfaces.contains(ChildInterface2.class));
     }
     
@@ -39,6 +42,15 @@ public class CheckInterfaceUnitTest {
         List<Class<?>> interfaces = Arrays.asList(childClass2.getClass().getInterfaces());
         
         assertFalse(interfaces.contains(MasterInterface.class));
+    }
+    
+    @Test
+    public void whenUsingReflectionGetInterfacesRecursively_thenParentInterfaceIsFound() {
+        
+        Set<Class<?>> interfaces = getAllExtendedOrImplementedInterfacesRecursively(ChildClass2.class);
+        
+        assertTrue(interfaces.contains(ChildInterface2.class));
+        assertTrue(interfaces.contains(MasterInterface.class));
     }
     
     @Test
@@ -124,4 +136,19 @@ public class CheckInterfaceUnitTest {
         
         assertTrue(interfaces.contains(MasterInterface.class));
     }
+    
+    static Set<Class<?>> getAllExtendedOrImplementedInterfacesRecursively(Class<?> clazz) { 
+        
+        Set<Class<?>> res = new HashSet<Class<?>>(); 
+        Class<?>[] interfaces = clazz.getInterfaces(); 
+        
+        if (interfaces.length > 0) { 
+            res.addAll(Arrays.asList(interfaces)); 
+            for (Class<?> interfaze : interfaces) { 
+                res.addAll(getAllExtendedOrImplementedInterfacesRecursively(interfaze)); 
+                } 
+            } 
+        
+        return res; 
+       }
 }
