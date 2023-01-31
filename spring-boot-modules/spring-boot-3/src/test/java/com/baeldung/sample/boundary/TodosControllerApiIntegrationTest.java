@@ -215,4 +215,18 @@ class TodosControllerApiIntegrationTest {
           .andExpect(status().isNotFound());
     }
 
+    @Test
+    void testGetSlashMatchingNotExisting() throws Exception {
+        mvc
+          .perform(get(BASEURL + "/name/").contentType(DEFAULT_MEDIA_TYPE))
+          .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testGetNameExists() throws Exception {
+        mvc
+          .perform(get(BASEURL + "/name").contentType(DEFAULT_MEDIA_TYPE))
+          .andExpect(status().isOk());
+    }
+
 }
