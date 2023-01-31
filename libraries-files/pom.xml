@@ -40,20 +40,34 @@
         <dependency>
 	    <groupId>com.itextpdf</groupId>
 	    <artifactId>itext7-core</artifactId>
-	    <version>7.2.4</version>
+	    <version>${itext-core.version}</version>
 	    <type>pom</type>
         </dependency>
 	<dependency>
 	    <groupId>org.assertj</groupId>
 	    <artifactId>assertj-core</artifactId>
-	    <version>3.23.1</version>
+	    <version>${assertcore.version}</version>
 	    <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>${itext.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <org.ini4j.version>0.5.4</org.ini4j.version>
         <commons-configuration2>2.8.0</commons-configuration2>
+        <itext-core.version>7.2.4</itext-core.version>
+        <itext.version>5.5.13.3</itext.version>
+        <pdfbox.version>2.0.27</pdfbox.version>
+        <assertcore.version>3.23.1</assertcore.version>
     </properties>
 
 </project>
