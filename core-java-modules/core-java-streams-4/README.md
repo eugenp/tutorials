@@ -6,4 +6,3 @@
 - [Java 8 Streams: Multiple Filters vs. Complex Condition](https://www.baeldung.com/java-streams-multiple-filters-vs-condition)
 - [Finding Max Date in List Using Streams](https://www.baeldung.com/java-max-date-list-streams)
 - [Batch Processing of Stream Data in Java](https://www.baeldung.com/java-stream-batch-processing)
-- [Converting String arrays to Integers using Streams](https://www.baeldung.com/mapping-an-array-of-integers-to-strings-using-java-streams/)
