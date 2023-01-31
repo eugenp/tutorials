@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>blaze-persistence</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -11,15 +11,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.0</version>
-        <relativePath/>
+        <relativePath />
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <blaze-persistence.version>1.6.8</blaze-persistence.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -38,7 +31,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
         <!-- Core dependencies -->
         <dependency>
             <groupId>com.blazebit</groupId>
@@ -52,7 +44,6 @@
             <groupId>com.blazebit</groupId>
             <artifactId>blaze-persistence-integration-hibernate-5.4</artifactId>
         </dependency>
-
         <!-- Entity View dependencies -->
         <dependency>
             <groupId>com.blazebit</groupId>
@@ -66,7 +57,6 @@
             <groupId>com.blazebit</groupId>
             <artifactId>blaze-persistence-entity-view-processor</artifactId>
         </dependency>
-
         <!-- Spring integration dependencies -->
         <dependency>
             <groupId>com.blazebit</groupId>
@@ -76,7 +66,6 @@
             <groupId>com.blazebit</groupId>
             <artifactId>blaze-persistence-integration-spring-data-2.4</artifactId>
         </dependency>
-
         <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -86,12 +75,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
         <!-- Test dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -118,4 +105,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <blaze-persistence.version>1.6.8</blaze-persistence.version>
+    </properties>
+
 </project>

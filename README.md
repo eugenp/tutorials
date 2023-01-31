@@ -72,6 +72,13 @@ Building a single module
 To build a specific module, run the command: `mvn clean install` in the module directory.
 
 
+Building modules from the root of the repository
+====================
+To build specific modules from the root of the repository, run the command: `mvn clean install --pl asm,atomikos -Pdefault-first` in the root directory.
+
+Here `asm` and `atomikos` are the modules that we want to build and `default-first` is the maven profile in which these modules are present.
+
+
 Running a Spring Boot module
 ====================
 To run a Spring Boot module, run the command: `mvn spring-boot:run` in the module directory.
