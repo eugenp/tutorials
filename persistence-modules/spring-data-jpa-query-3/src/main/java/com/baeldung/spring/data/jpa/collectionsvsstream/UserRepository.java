@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.jpa.collections.vsstream;
+package com.baeldung.spring.data.jpa.collectionsvsstream;
 
 import java.util.List;
 import java.util.stream.Stream;
