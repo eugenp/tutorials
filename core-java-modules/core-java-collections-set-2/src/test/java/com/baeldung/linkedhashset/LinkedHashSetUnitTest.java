@@ -29,7 +29,7 @@ public class LinkedHashSetUnitTest{
         LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(data);
 
         assertFalse(linkedHashSet.isEmpty());
-        assertEquals(linkedHashSet.size(), data.size());
+        assertEquals(data.size(), linkedHashSet.size());
         assertTrue(linkedHashSet.containsAll(data) && data.containsAll(linkedHashSet));
     }
 
@@ -64,7 +64,7 @@ public class LinkedHashSetUnitTest{
         Collection<Integer> data = Arrays.asList(1, 1, 2, 3);
 
         assertTrue(linkedHashSet.addAll(data));
-        assertEquals(linkedHashSet.size(), 3);
+        assertEquals(3, linkedHashSet.size());
         assertTrue(data.containsAll(linkedHashSet) && linkedHashSet.containsAll(data));
     }
 
@@ -78,7 +78,7 @@ public class LinkedHashSetUnitTest{
         Iterator<Integer> iterator = linkedHashSet.iterator();
         for (int i = 0; i < linkedHashSet.size(); i++) {
             int nextData = iterator.next();
-            assertEquals(nextData, i);
+            assertEquals(i, nextData);
         }
     }
 
@@ -92,8 +92,8 @@ public class LinkedHashSetUnitTest{
         Spliterator<Integer> spliterator = linkedHashSet.spliterator();
         AtomicInteger counter = new AtomicInteger();
         spliterator.forEachRemaining(data -> {
-            assertEquals((int)data,  counter.get());
-            counter.getAndIncrement();
+        assertEquals(counter.get(), (int)data);
+        counter.getAndIncrement();
         });
     }
 

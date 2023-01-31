@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Infinite Loop') {
+            steps {
+                script {
+                    while (true) {
+                        println 'This is an infinite loop!'
+                        Thread.sleep(10000)
+                    }
+                }
+            }
+        }
+    }
+}

@@ -22,37 +22,34 @@ public class SiteSecurityConfigurer {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.antMatcher("/**")
-                .authorizeRequests()
-                .antMatchers("/", "/webjars/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll()
-                .and()
-                .csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
-                .oauth2Login();
+            .authorizeRequests()
+            .antMatchers("/", "/webjars/**")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .logout()
+            .logoutSuccessUrl("/")
+            .permitAll()
+            .and()
+            .csrf()
+            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .and()
+            .oauth2Login();
         return http.build();
     }
 
     @Bean
     public RestOperations restTemplate(OAuth2AuthorizedClientService clientService) {
-        return new RestTemplateBuilder()
-                .interceptors((ClientHttpRequestInterceptor) (httpRequest, bytes, execution) -> {
-                    OAuth2AuthenticationToken token = OAuth2AuthenticationToken.class
-                            .cast(SecurityContextHolder.getContext()
-                                    .getAuthentication());
-                    OAuth2AuthorizedClient client = clientService
-                            .loadAuthorizedClient(token.getAuthorizedClientRegistrationId(), token.getName());
-                    httpRequest.getHeaders()
-                            .add(HttpHeaders.AUTHORIZATION, "Bearer " + client.getAccessToken()
-                                    .getTokenValue());
-                    return execution.execute(httpRequest, bytes);
-                })
-                .build();
+        return new RestTemplateBuilder().interceptors((ClientHttpRequestInterceptor) (httpRequest, bytes, execution) -> {
+            OAuth2AuthenticationToken token = OAuth2AuthenticationToken.class.cast(SecurityContextHolder.getContext()
+                .getAuthentication());
+            OAuth2AuthorizedClient client = clientService.loadAuthorizedClient(token.getAuthorizedClientRegistrationId(), token.getName());
+            httpRequest.getHeaders()
+                .add(HttpHeaders.AUTHORIZATION, "Bearer " + client.getAccessToken()
+                    .getTokenValue());
+            return execution.execute(httpRequest, bytes);
+        })
+            .build();
     }
 }

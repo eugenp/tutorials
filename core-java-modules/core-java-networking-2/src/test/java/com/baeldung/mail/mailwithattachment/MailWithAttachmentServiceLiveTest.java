@@ -1,20 +1,20 @@
 package com.baeldung.mail.mailwithattachment;
 
-import com.icegreen.greenmail.configuration.GreenMailConfiguration;
-import com.icegreen.greenmail.junit.GreenMailRule;
-import com.icegreen.greenmail.util.GreenMailUtil;
-import com.icegreen.greenmail.util.ServerSetupTest;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import javax.annotation.Resource;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import com.icegreen.greenmail.configuration.GreenMailConfiguration;
+import com.icegreen.greenmail.junit.GreenMailRule;
+import com.icegreen.greenmail.util.GreenMailUtil;
+import com.icegreen.greenmail.util.ServerSetupTest;
 
-import static org.junit.Assert.assertEquals;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Session;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 
 public class MailWithAttachmentServiceLiveTest {
 
@@ -28,8 +28,7 @@ public class MailWithAttachmentServiceLiveTest {
           GreenMailConfiguration.aConfig()
               .withUser(USERNAME, PASSWORD));
 
-  @Resource
-  private MailWithAttachmentService emailService;
+    private MailWithAttachmentService emailService;
 
   @Before
   public void setup() {
@@ -67,9 +66,8 @@ public class MailWithAttachmentServiceLiveTest {
         .getBodyPart(1));
   }
 
-  private static String attachment2ContentsFrom(MimeMessage receivedMessage) throws Exception {
-    return GreenMailUtil.getBody(((MimeMultipart) receivedMessage.getContent())
-        .getBodyPart(2));
-  }
-
+    private static String attachment2ContentsFrom(MimeMessage receivedMessage) throws Exception {
+        return GreenMailUtil.getBody(((MimeMultipart) receivedMessage.getContent())
+          .getBodyPart(2));
+    }
 }

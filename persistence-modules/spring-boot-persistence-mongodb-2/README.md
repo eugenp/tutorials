@@ -7,4 +7,4 @@
 - [Count Documents Using Spring Data MongoDB Repository](https://www.baeldung.com/spring-data-mongodb-count)
 - [Spring Data MongoDB – Configure Connection](https://www.baeldung.com/spring-data-mongodb-connection)
 - [Connect to Multiple Databases Using Spring Data MongoDB](https://www.baeldung.com/mongodb-multiple-databases-spring-data)
-- More articles: [[<--prev]](../spring-boot-persistence-mongodb)
+- More articles: [[<--prev]](../spring-boot-persistence-mongodb) [[next-->]](../spring-boot-persistence-mongodb-3)

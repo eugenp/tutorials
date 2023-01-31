@@ -7,20 +7,20 @@ server:
 
 # Configure the Authorization Server and User Info Resource Server details
 spring:
-   security:
-     oauth2:
-       client:
-         registration:
-           baeldung:
-             client-id: authserver
-             client-secret: passwordforauthserver
-             authorization-grant-type: authorization_code
-             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-         provider:
-           baeldung:
-             token-uri: http://localhost:7070/authserver/oauth/token
-             authorization-uri: http://localhost:7070/authserver/oauth/authorize
-             user-info-uri: http://localhost:9000/user
+  security:
+    oauth2:
+      client:
+        registration:
+          baeldung:
+            client-id: authserver
+            client-secret: passwordforauthserver
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          baeldung:
+            token-uri: http://localhost:7070/authserver/oauth/token
+            authorization-uri: http://localhost:7070/authserver/oauth/authorize
+            user-info-uri: http://localhost:9000/user
 
 person:
   url: http://localhost:9000/person
