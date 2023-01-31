@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = FindByVsFindAllByApplication.class)
+@SpringBootTest(classes = FindByVsFindAllByApplication.class, args = "--spring.jpa.show-sql=true")
 public class FindByVsFindAllByIntegrationTest {
     @Autowired
     private PlayerRepository playerRepository;

@@ -21,7 +21,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee;
-import com.baeldung.spring.data.persistence.springdatajpadifference.model.Employee_;
 
 public class JpaDaoIntegrationTest {
 
