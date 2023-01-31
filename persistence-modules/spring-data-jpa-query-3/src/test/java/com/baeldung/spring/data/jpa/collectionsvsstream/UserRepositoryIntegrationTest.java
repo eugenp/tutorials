@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.jpa.query.collections.vsstream;
+package com.baeldung.spring.data.jpa.collectionsvsstream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.spring.data.jpa.collections.vsstream.User;
-import com.baeldung.spring.data.jpa.collections.vsstream.UserRepository;
+import com.baeldung.spring.data.jpa.collectionsvsstream.User;
+import com.baeldung.spring.data.jpa.collectionsvsstream.UserRepository;
 import com.github.javafaker.Faker;
 
 @DataJpaTest
