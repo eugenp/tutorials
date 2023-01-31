@@ -65,6 +65,10 @@
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -79,7 +83,7 @@
     <properties>
         <js-cookie.version>2.2.0</js-cookie.version>
         <spring-cloud-starter-netflix-zuul.version>2.2.7.RELEASE</spring-cloud-starter-netflix-zuul.version>
-        <jquery.version>3.4.1</jquery.version>
+        <jquery.version>3.6.3</jquery.version>
         <bootstrap.version>4.3.1</bootstrap.version>
     </properties>
 

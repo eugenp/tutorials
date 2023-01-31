@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class ConfigClient {
-    
     @Value("${user.role}")
     private String role;
 
@@ -24,8 +23,6 @@ public class ConfigClient {
 
     @GetMapping(value = "/whoami/{username}", produces = MediaType.TEXT_PLAIN_VALUE)
     public String whoami(@PathVariable("username") String username) {
-        return String.format("Hello %s! and you'll become are a(n) %s, " + "but only your password is '%s'.\n",
-                username, role, password);
+        return String.format("Hello %s! You are a(n) %s and your password is '%s'.\n", username, role, password);
     }
-
 }
