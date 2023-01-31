@@ -12,10 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.spring.data.jpa.collectionsvsstream.User;
-import com.baeldung.spring.data.jpa.collectionsvsstream.UserRepository;
 import com.github.javafaker.Faker;
 
 @DataJpaTest
@@ -52,7 +49,6 @@ class UserRepositoryIntegrationTest {
     }
 
     @Test
-    @Transactional
     public void whenAgeIs20_thenItShouldReturnAllUsersWhoseAgeIsGreaterThan20InAStream() {
         Stream<User> users = userRepository.findAllByAgeGreaterThan(20);
         assertThat(users).isNotNull();
