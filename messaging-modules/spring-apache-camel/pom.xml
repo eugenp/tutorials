@@ -61,8 +61,8 @@
     </dependencies>
 
     <properties>
-        <env.camel.version>2.18.1</env.camel.version>
-        <env.spring.version>4.3.4.RELEASE</env.spring.version>
+        <env.camel.version>3.14.7</env.camel.version>
+        <env.spring.version>5.3.25</env.spring.version>
     </properties>
 
 </project>

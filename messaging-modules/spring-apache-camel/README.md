@@ -4,8 +4,6 @@ This module contains articles about Spring with Apache Camel
 
 ### Relevant Articles
 
-- [Apache Camel](http://camel.apache.org/)
-- [Enterprise Integration Patterns](http://www.enterpriseintegrationpatterns.com/patterns/messaging/toc.html)
 - [Introduction To Apache Camel](http://www.baeldung.com/apache-camel-intro)
 - [Integration Patterns With Apache Camel](http://www.baeldung.com/camel-integration-patterns)
 - [Using Apache Camel with Spring](http://www.baeldung.com/spring-apache-camel-tutorial)
@@ -13,8 +11,8 @@ This module contains articles about Spring with Apache Camel
 
 ### Framework Versions:
 
-- Spring 4.2.4
-- Apache Camel 2.16.1
+- Spring 5.3.25
+- Apache Camel 3.14.7
 
 ### Build and Run Application
 
