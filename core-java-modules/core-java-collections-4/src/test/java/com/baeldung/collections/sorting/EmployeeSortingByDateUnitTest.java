@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class EmployeeSortingByDateUnitTest {
 
