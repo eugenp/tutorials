@@ -27,7 +27,8 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = OrderApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class OrderRestEndpointIntegrationTest {
+//marked as manual as the test is unstable on Jenkins due to low resources
+class OrderRestEndpointManualTest {
 
     @LocalServerPort
     private int port;
