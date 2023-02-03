@@ -15,7 +15,7 @@ public class GreetingsController {
     
     @GetMapping(value = "/greetings-with-response-body", produces="application/json")
     public String getGreetingWhileReturnTypeIsString() { 
-        return "{\"test\": \"Hello using @ResponseBody\"}";
+        return "{\"test\": \"Hello\"}";
     }
         
     @GetMapping(value = "/greetings-with-response-entity", produces = "application/json")
