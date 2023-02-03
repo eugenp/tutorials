@@ -11,7 +11,7 @@ This module contains modules about Spring Cloud
 - [Spring Cloud Zooker简介](/spring-cloud-zookeeper/README-zh.md)
 - Spring Cloud CLI简介
 - Spring云合同简介
-- 探索新的Spring云网关
+- [探索新的Spring云网关](/spring-cloud-gateway/README-zh.md)
 - Spring Cloud OpenFeign简介
 
 ## 更进一步
