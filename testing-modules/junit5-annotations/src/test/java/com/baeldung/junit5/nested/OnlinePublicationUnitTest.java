@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("given a article publication with three articles")
-class OnlinePublicationTest {
+class OnlinePublicationUnitTest {
     private Publication publication;
 
     @BeforeEach
