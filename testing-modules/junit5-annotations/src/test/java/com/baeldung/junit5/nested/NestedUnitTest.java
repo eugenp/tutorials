@@ -4,11 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class NestedTest {
+public class NestedUnitTest {
 
     @BeforeEach
     void beforeEach() {
-        System.out.println("NestedTest.beforeEach()");
+        System.out.println("NestedUnitTest.beforeEach()");
     }
 
     @Nested
