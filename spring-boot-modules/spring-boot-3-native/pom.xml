@@ -47,12 +47,26 @@
                         <skipNativeTests>true</skipNativeTests>
                     </configuration>
                 </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+                <!-- We can compile the application in AOT mode but not producing a native image -->
+                <!-- If we active this plugin  -->
+                <!-- and deactive all the pom native component -->
+                <!--     <plugin>
+                         <groupId>org.springframework.boot</groupId>
+                         <artifactId>spring-boot-maven-plugin</artifactId>
+                         <configuration>
+                             <jvmArguments> -agentlib:native-image-agent=config-output-dir=target/native-image
+                             </jvmArguments>
+                             <systemPropertyVariables>
+                                 <springAot>true</springAot>
+                             </systemPropertyVariables>
+                         </configuration>
+                     </plugin>  -->
+                 </plugins>
+             </pluginManagement>
+         </build>
 
-    <profiles>
-        <!-- The native profile is already defined by the parent POM. -->
+         <profiles>
+             <!-- The native profile is already defined by the parent POM. -->
         <!-- To use this plugin, we need GraalVM (located under $GRAALVM_HOME) and -->
         <!-- native-builder (located in the $PATH) -->
         <profile>
