@@ -188,26 +188,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
+                <version>3.3.2</version>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>${cargo-maven2-plugin.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <wait>true</wait>
-                    <container>
-                        <containerId>jetty8x</containerId>
-                        <type>embedded</type>
-                        <systemProperties>
-                            <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
-                        </systemProperties>
-                    </container>
-                    <configuration>
-                        <properties>
-                            <cargo.servlet.port>8082</cargo.servlet.port>
-                        </properties>
-                    </configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
@@ -220,7 +207,7 @@
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
-                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <artifactId>cargo-maven3-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>start-server</id>
