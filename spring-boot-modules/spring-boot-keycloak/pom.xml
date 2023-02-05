@@ -20,10 +20,6 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <dependency>
@@ -93,12 +89,16 @@
                 <configuration>
                     <packageName>com.baeldung</packageName>
                     <sources>
-                        <source>src/main/resources/products.xsd</source>
+                        <source>/${project.basedir}/src/main/resources/products.xsd</source>
                     </sources>
 
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    
+     <properties>
+        <start-class>com.baeldung.keycloak.SpringBoot</start-class>
+    </properties>
 
 </project>
