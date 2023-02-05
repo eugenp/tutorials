@@ -8,16 +8,35 @@ import org.baeldung.objectmapper.entity.Counter;
 import org.baeldung.objectmapper.entity.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.containers.CassandraContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
 
+@Testcontainers
+@SpringBootTest
 class MapperUnitTest {
+
+    private static final String KEYSPACE_NAME = "baeldung";
+
+    @Container
+    private static final CassandraContainer cassandra = (CassandraContainer) new CassandraContainer("cassandra:3.11.2")
+            .withExposedPorts(9042);
+
+    static void setupCassandraConnectionProperties() {
+        System.setProperty("spring.data.cassandra.keyspace-name", KEYSPACE_NAME);
+        System.setProperty("spring.data.cassandra.contact-points", cassandra.getContainerIpAddress());
+        System.setProperty("spring.data.cassandra.port", String.valueOf(cassandra.getMappedPort(9042)));
+    }
 
     static UserDao userDao;
     static CounterDao counterDao;
 
     @BeforeAll
     static void setup() {
+        setupCassandraConnectionProperties();
         CqlSession session = CqlSession.builder().build();
 
         String createKeyspace = "CREATE KEYSPACE IF NOT EXISTS baeldung WITH replication = {'class':'SimpleStrategy', 'replication_factor':1};";
