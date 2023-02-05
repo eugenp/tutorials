@@ -17,7 +17,7 @@ import java.util.List;
 
 @Testcontainers
 @SpringBootTest
-class MapperUnitTest {
+class MapperLiveTest {
 
     private static final String KEYSPACE_NAME = "baeldung";
 
