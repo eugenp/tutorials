@@ -1,10 +1,10 @@
 package com.baeldung.cxf.aegis;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,12 +26,13 @@ import org.apache.cxf.aegis.AegisReader;
 import org.apache.cxf.aegis.AegisWriter;
 import org.apache.cxf.aegis.type.AegisType;
 
-public class BaeldungIntegrationTest {
+
+class BaeldungIntegrationTest {
     private AegisContext context;
     private String fileName = "baeldung.xml";
 
     @Test
-    public void whenMarshalingAndUnmarshalingCourseRepo_thenCorrect() throws Exception {
+    void whenMarshalingAndUnmarshalingCourseRepo_thenCorrect() throws Exception {
         initializeContext();
         CourseRepo inputRepo = initCourseRepo();
         marshalCourseRepo(inputRepo);
@@ -93,7 +94,7 @@ public class BaeldungIntegrationTest {
         return courseRepo;
     }
 
-    @After
+    @AfterEach
     public void cleanup(){
         File testFile = new File(fileName);
         if (testFile.exists()) {

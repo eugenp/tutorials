@@ -1,11 +1,17 @@
 package com.baeldung.cxf.jaxrs.implementation;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.core.Response;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 
 @XmlRootElement(name = "Course")
 public class Course {

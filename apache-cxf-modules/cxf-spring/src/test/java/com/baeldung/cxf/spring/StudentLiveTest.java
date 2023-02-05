@@ -1,23 +1,23 @@
 package com.baeldung.cxf.spring;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class StudentLiveTest {
+class StudentLiveTest {
     private ApplicationContext context = new AnnotationConfigApplicationContext(ClientConfiguration.class);
     private Baeldung baeldungProxy = (Baeldung) context.getBean("client");
 
     @Test
-    public void whenUsingHelloMethod_thenCorrect() {
+    void whenUsingHelloMethod_thenCorrect() {
         String response = baeldungProxy.hello("John Doe");
         assertEquals("Hello John Doe!", response);
     }
 
     @Test
-    public void whenUsingRegisterMethod_thenCorrect() {
+    void whenUsingRegisterMethod_thenCorrect() {
         Student student1 = new Student("Adam");
         Student student2 = new Student("Eve");
         String student1Response = baeldungProxy.register(student1);

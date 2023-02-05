@@ -1,17 +1,19 @@
 package com.baeldung.cxf.introduction;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
 
 import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import javax.xml.ws.soap.SOAPBinding;
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.soap.SOAPBinding;
 
-import org.junit.Before;
-import org.junit.Test;
 
-public class StudentLiveTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class StudentLiveTest {
     private static QName SERVICE_NAME = new QName("http://introduction.cxf.baeldung.com/", "Baeldung");
     private static QName PORT_NAME = new QName("http://introduction.cxf.baeldung.com/", "BaeldungPort");
 
@@ -25,21 +27,21 @@ public class StudentLiveTest {
         service.addPort(PORT_NAME, SOAPBinding.SOAP11HTTP_BINDING, endpointAddress);
     }
 
-    @Before
-    public void reinstantiateBaeldungInstances() {
+    @BeforeEach
+    void reinstantiateBaeldungInstances() {
         baeldungImpl = new BaeldungImpl();
         baeldungProxy = service.getPort(PORT_NAME, Baeldung.class);
     }
 
     @Test
-    public void whenUsingHelloMethod_thenCorrect() {
+    void whenUsingHelloMethod_thenCorrect() {
         final String endpointResponse = baeldungProxy.hello("Baeldung");
         final String localResponse = baeldungImpl.hello("Baeldung");
         assertEquals(localResponse, endpointResponse);
     }
 
     @Test
-    public void whenUsingHelloStudentMethod_thenCorrect() {
+    void whenUsingHelloStudentMethod_thenCorrect() {
         final Student student = new StudentImpl("John Doe");
         final String endpointResponse = baeldungProxy.helloStudent(student);
         final String localResponse = baeldungImpl.helloStudent(student);
@@ -47,7 +49,7 @@ public class StudentLiveTest {
     }
 
     @Test
-    public void usingGetStudentsMethod_thenCorrect() {
+    void usingGetStudentsMethod_thenCorrect() {
         final Student student1 = new StudentImpl("Adam");
         baeldungProxy.helloStudent(student1);
 

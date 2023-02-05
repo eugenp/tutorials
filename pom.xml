@@ -332,7 +332,6 @@
 
                 <module>algorithms-modules</module>
 
-                <module>apache-cxf-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
@@ -616,8 +615,6 @@
                 <module>parent-java</module>
 
                 <module>algorithms-modules</module>
-
-                <module>apache-cxf-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
@@ -978,6 +975,7 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
+                <module>apache-cxf-modules</module>
                 <module>apache-httpclient</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -1080,7 +1078,6 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>11</java.version>
                 <java.version>11</java.version>
             </properties>
         </profile>
@@ -1174,6 +1171,7 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
+                <module>apache-cxf-modules</module>
                 <module>apache-httpclient</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -1279,7 +1277,6 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>11</java.version>
                 <java.version>11</java.version>
             </properties>
         </profile>

@@ -1,7 +1,10 @@
 package com.baeldung.cxf.spring;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletRegistration;
+import javax.servlet.ServletException;
+
+
+import jakarta.servlet.ServletRegistration;
 
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.web.WebApplicationInitializer;
@@ -15,7 +18,7 @@ public class AppInitializer implements WebApplicationInitializer {
         context.register(ServiceConfiguration.class);
         container.addListener(new ContextLoaderListener(context));
 
-        ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new CXFServlet());
+        ServletRegistration.Dynamic dispatcher = (ServletRegistration.Dynamic) container.addServlet("dispatcher", new CXFServlet());
         dispatcher.addMapping("/services/*");
     }
 }
