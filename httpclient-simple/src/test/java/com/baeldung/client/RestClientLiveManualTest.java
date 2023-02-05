@@ -4,14 +4,11 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLPeerUnverifiedException;
 
-import org.apache.hc.client5.http.ClientProtocolException;
-import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -39,7 +36,7 @@ import com.baeldung.handler.CustomHttpClientResponseHandler;
  * This test requires a localhost server over HTTPS <br>
  * It should only be manually run, not part of the automated build
  * */
-public class RestClientLiveManualTest {
+class RestClientLiveManualTest {
 
     final String urlOverHttps = "http://localhost:8082/httpclient-simple/api/bars/1";
 
