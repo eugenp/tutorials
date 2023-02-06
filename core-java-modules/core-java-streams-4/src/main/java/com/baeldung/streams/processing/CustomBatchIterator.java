@@ -14,20 +14,20 @@ public class CustomBatchIterator<T> implements Iterator<List<T>> {
     private List<T> currentBatch;
     private final Iterator<T> iterator;
 
-    public CustomBatchIterator(Iterator<T> sourceIterator, int batchSize) {
+    private CustomBatchIterator(Iterator<T> sourceIterator, int batchSize) {
         this.batchSize = batchSize;
         this.iterator = sourceIterator;
     }
 
     @Override
     public List<T> next() {
+        prepareNextBatch();
         return currentBatch;
     }
 
     @Override
     public boolean hasNext() {
-        prepareNextBatch();
-        return currentBatch != null && !currentBatch.isEmpty();
+        return iterator.hasNext();
     }
 
     public static <T> Stream<List<T>> batchStreamOf(Stream<T> stream, int batchSize) {
