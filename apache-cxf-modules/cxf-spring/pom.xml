@@ -57,6 +57,16 @@
             <version>${jakarta-platform.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,11 +88,11 @@
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
-                        <artifactId>cargo-maven2-plugin</artifactId>
-                        <version>${cargo-maven2-plugin.version}</version>
+                        <artifactId>cargo-maven3-plugin</artifactId>
+                        <version>${cargo-maven3-plugin.version}</version>
                         <configuration>
                             <container>
-                                <containerId>tomcat8x</containerId>
+                                <containerId>tomcat10x</containerId>
                                 <type>embedded</type>
                             </container>
                             <configuration>
@@ -116,7 +126,7 @@
 
     <properties>
         <spring.version>5.3.4</spring.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <cargo-maven3-plugin.version>1.10.4</cargo-maven3-plugin.version>
         <jakarta-xml.version>4.0.0</jakarta-xml.version>
         <jakarta-jws.version>3.0.0</jakarta-jws.version>
         <jakarta-platform.version>9.0.0</jakarta-platform.version>
