@@ -1,5 +1,6 @@
 package com.baeldung.streams.intarraytostrings;
 
+import static com.baeldung.streams.intarraytostrings.ArrayConversionUtils.convertToString;
 import static com.baeldung.streams.intarraytostrings.ArrayConversionUtils.convertToStringArray;
 import static com.baeldung.streams.intarraytostrings.ArrayConversionUtils.convertToStringArrayWithBoxing;
 
@@ -36,6 +37,16 @@ public class IntArrayToStingUnitTest {
         String[] strings = convertToStringArrayWithBoxing(intNumbers);
 
         Assert.assertArrayEquals(expectedOutput, strings);
+    }
+
+    @Test
+    public void givenAnIntArray_whenUsingCollectorsJoining_thenReturnCommaSeparatedString(){
+        int[] intNumbers = { 1, 2, 3, 4, 5 };
+        String expectedOutput = "1, 2, 3, 4, 5";
+
+        String string = convertToString(intNumbers);
+
+        Assert.assertEquals(expectedOutput, string);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.baeldung.streams.intarraytostrings;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -31,6 +32,12 @@ public class ArrayConversionUtils {
           .boxed()
           .map(Object::toString)
           .toArray(String[]::new);
+    }
+
+    public static String convertToString(int[] input){
+        return Arrays.stream(input)
+          .mapToObj(Integer::toString)
+          .collect(Collectors.joining(", "));
     }
 
 }
