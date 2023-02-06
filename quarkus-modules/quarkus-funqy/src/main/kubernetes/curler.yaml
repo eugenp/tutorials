@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: curler
+  name: curler
+spec:
+  containers:
+    - name: curler
+      image: fedora:33
+      tty: true
