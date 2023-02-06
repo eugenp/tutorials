@@ -110,5 +110,12 @@ public class IPv4ValidationUnitTest {
         assertFalse(validateWithGuava(ip));
         assertFalse(validateWithRegex(ip));
     }
+    @Test
+    public void givenIPv4EndWithDot_whenValidate_thenReturnsFalse() {
+        String ip = "192.168.0.1.";
+        assertFalse(validateWithApacheCommons(ip));
+        assertFalse(validateWithGuava(ip));
+        assertFalse(validateWithRegex(ip));
+    }
 
 }
