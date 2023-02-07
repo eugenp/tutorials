@@ -1,6 +1,10 @@
 package com.baeldung.digitalsignature.level1;
 
 import com.baeldung.digitalsignature.Utils;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.asn1.x509.DigestInfo;
+import org.bouncycastle.operator.DefaultDigestAlgorithmIdentifierFinder;
+import org.bouncycastle.operator.DigestAlgorithmIdentifierFinder;
 
 import javax.crypto.Cipher;
 import java.nio.file.Files;
@@ -17,16 +21,22 @@ public class DigitalSignatureWithMessageDigestAndCipherVerifying {
 
         byte[] messageBytes = Files.readAllBytes(Paths.get("src/test/resources/digitalsignature/message.txt"));
 
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        MessageDigest md = MessageDigest.getInstance(Utils.HASHING_ALGORITHM);
         byte[] newMessageHash = md.digest(messageBytes);
 
         byte[] encryptedMessageHash = Files.readAllBytes(Paths.get("target/digital_signature_1"));
+
+        DigestAlgorithmIdentifierFinder hashAlgorithmFinder = new DefaultDigestAlgorithmIdentifierFinder();
+        AlgorithmIdentifier hashingAlgorithmIdentifier = hashAlgorithmFinder.find(Utils.HASHING_ALGORITHM);
+
+        DigestInfo digestInfo = new DigestInfo(hashingAlgorithmIdentifier, newMessageHash);
+        byte[] hashToEncrypt = digestInfo.getEncoded();
 
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
         byte[] decryptedMessageHash = cipher.doFinal(encryptedMessageHash);
 
-        boolean isCorrect = Arrays.equals(decryptedMessageHash, newMessageHash);
+        boolean isCorrect = Arrays.equals(decryptedMessageHash, hashToEncrypt);
         System.out.println("Signature " + (isCorrect ? "correct" : "incorrect"));
     }
 
