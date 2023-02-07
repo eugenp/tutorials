@@ -19,7 +19,7 @@ public enum FastFood1 {
         case CHICKEN:
             return "Fried Chicken";
         default:
-            return null;
+            return "";
         }
     }
 }
