@@ -62,6 +62,7 @@
         <module>core-java-exceptions-4</module>
         <module>core-java-function</module>
         <module>core-java-functional</module>
+        <module>core-java-hex</module>
         <module>core-java-io</module>
         <module>core-java-io-2</module>
         <module>core-java-io-3</module>
