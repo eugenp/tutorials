@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        test:
+          context:
+            cache: DEBUG
+spring:
+  test:
+    context:
+
