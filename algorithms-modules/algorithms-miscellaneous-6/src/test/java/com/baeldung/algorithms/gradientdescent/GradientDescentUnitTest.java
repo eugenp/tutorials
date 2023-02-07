@@ -1,15 +1,15 @@
 package com.baeldung.algorithms.gradientdescent;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.function.Function;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class GradientDescentUnitTest {
+class GradientDescentUnitTest {
 
     @Test
-    public void givenFunction_whenStartingPointIsOne_thenLocalMinimumIsFound() {
+    void givenFunction_whenStartingPointIsOne_thenLocalMinimumIsFound() {
         Function<Double, Double> df = x ->
             StrictMath.abs(StrictMath.pow(x, 3)) - (3 * StrictMath.pow(x, 2)) + x;
         GradientDescent gd = new GradientDescent();

@@ -330,8 +330,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>algorithms-modules</module>
-
                 <module>apache-cxf-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -614,8 +612,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-
-                <module>algorithms-modules</module>
 
                 <module>apache-cxf-modules</module>
                 <module>apache-libraries</module>
@@ -912,6 +908,7 @@
             </build>
 
             <modules>
+                <module>algorithms-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -1108,6 +1105,7 @@
             </build>
 
             <modules>
+                <module>algorithms-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
