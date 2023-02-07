@@ -11,6 +11,8 @@ public class Book implements Serializable {
     private transient int copies;
     private final transient String bookCategory = "Fiction";
 
+    private final transient String bookCategoryNewOperator = new String("Fiction with new Operator");
+
     public String getBookName() {
         return bookName;
     }
@@ -39,4 +41,7 @@ public class Book implements Serializable {
         return bookCategory;
     }
 
+    public String getBookCategoryNewOperator() {
+        return bookCategoryNewOperator;
+    }
 }
