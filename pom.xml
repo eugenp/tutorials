@@ -365,7 +365,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
-                <module>httpclient-simple</module>
+                <module>httpclient4</module>
 
 
                 <module>jackson-modules</module>
@@ -648,7 +648,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
-                <module>httpclient-simple</module>
+                <module>httpclient4</module>
 
 
                 <module>jackson-modules</module>
@@ -976,6 +976,7 @@
                 <module>akka-modules</module>
                 <module>annotations</module>
                 <module>apache-httpclient</module>
+                <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
@@ -1201,6 +1202,7 @@
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>hazelcast</module>
+                <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
