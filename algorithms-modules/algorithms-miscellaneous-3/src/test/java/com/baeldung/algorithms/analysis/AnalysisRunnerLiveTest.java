@@ -1,14 +1,14 @@
 package com.baeldung.algorithms.analysis;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class AnalysisRunnerLiveTest {
+class AnalysisRunnerLiveTest {
 
     int n = 10;
     int total = 0;
 
     @Test
-    public void whenConstantComplexity_thenConstantRuntime() {
+    void whenConstantComplexity_thenConstantRuntime() {
 
         System.out.println("**** n = " + n + " ****");
         System.out.println();
@@ -22,7 +22,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenLogarithmicComplexity_thenLogarithmicRuntime() {
+    void whenLogarithmicComplexity_thenLogarithmicRuntime() {
         // Logarithmic Time
         System.out.println("**** Logarithmic Time ****");
         for (int i = 1; i < n; i = i * 2) {
@@ -34,7 +34,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenLinearComplexity_thenLinearRuntime() {
+    void whenLinearComplexity_thenLinearRuntime() {
         // Linear Time
         System.out.println("**** Linear Time ****");
         for (int i = 0; i < n; i++) {
@@ -47,7 +47,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenNLogNComplexity_thenNLogNRuntime() {
+    void whenNLogNComplexity_thenNLogNRuntime() {
         // N Log N Time
         System.out.println("**** nlogn Time ****");
         total = 0;
@@ -64,7 +64,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenQuadraticComplexity_thenQuadraticRuntime() {
+    void whenQuadraticComplexity_thenQuadraticRuntime() {
         // Quadratic Time
         System.out.println("**** Quadratic Time ****");
         total = 0;
@@ -81,7 +81,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenCubicComplexity_thenCubicRuntime() {
+    void whenCubicComplexity_thenCubicRuntime() {
         // Cubic Time
         System.out.println("**** Cubic Time ****");
         total = 0;
@@ -100,7 +100,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenExponentialComplexity_thenExponentialRuntime() {
+    void whenExponentialComplexity_thenExponentialRuntime() {
         // Exponential Time
         System.out.println("**** Exponential Time ****");
         total = 0;
@@ -115,7 +115,7 @@ public class AnalysisRunnerLiveTest {
     }
 
     @Test
-    public void whenFactorialComplexity_thenFactorialRuntime() {
+    void whenFactorialComplexity_thenFactorialRuntime() {
         // Factorial Time
         System.out.println("**** Factorial Time ****");
         total = 0;

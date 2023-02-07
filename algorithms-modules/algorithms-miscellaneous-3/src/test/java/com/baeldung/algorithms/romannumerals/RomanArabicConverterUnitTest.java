@@ -1,13 +1,14 @@
 package com.baeldung.algorithms.romannumerals;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class RomanArabicConverterUnitTest {
+class RomanArabicConverterUnitTest {
 
     @Test
-    public void given2018Roman_WhenConvertingToArabic_ThenReturn2018() {
+    void given2018Roman_WhenConvertingToArabic_ThenReturn2018() {
 
         String roman2018 = "MMXVIII";
 
@@ -17,7 +18,7 @@ public class RomanArabicConverterUnitTest {
     }
 
     @Test
-    public void given1999Arabic_WhenConvertingToRoman_ThenReturnMCMXCIX() {
+    void given1999Arabic_WhenConvertingToRoman_ThenReturnMCMXCIX() {
 
         int arabic1999 = 1999;
 
