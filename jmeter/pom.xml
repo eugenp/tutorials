@@ -104,6 +104,11 @@
                                 </configuration>
                             </execution>
                         </executions>
+                        <configuration>
+                            <profiles>
+                                <profile>JMeter-Dashboard</profile>
+                            </profiles>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>com.lazerycode.jmeter</groupId>

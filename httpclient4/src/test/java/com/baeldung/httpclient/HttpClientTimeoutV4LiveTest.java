@@ -76,7 +76,7 @@ class HttpClientTimeoutV4LiveTest {
      */
     @Test
     @Disabled
-    public final void givenTimeoutIsConfigured_whenTimingOut_thenTimeoutException() throws IOException {
+    void givenTimeoutIsConfigured_whenTimingOut_thenTimeoutException() throws IOException {
         final int timeout = 3;
 
         final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
