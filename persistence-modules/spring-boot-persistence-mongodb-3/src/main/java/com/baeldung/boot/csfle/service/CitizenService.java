@@ -1,5 +1,6 @@
 package com.baeldung.boot.csfle.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.BsonBinary;
@@ -16,6 +17,7 @@ import com.baeldung.boot.csfle.config.EncryptionConfig;
 import com.baeldung.boot.csfle.data.Citizen;
 import com.baeldung.boot.csfle.data.EncryptedCitizen;
 import com.mongodb.client.model.vault.EncryptOptions;
+import com.mongodb.client.vault.ClientEncryption;
 
 @Service
 public class CitizenService {
@@ -29,6 +31,9 @@ public class CitizenService {
     @Autowired
     private EncryptionConfig encryptionConfig;
 
+    @Autowired
+    private ClientEncryption clientEncryption;
+
     public EncryptedCitizen save(Citizen citizen) {
         EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen);
         encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
@@ -38,26 +43,62 @@ public class CitizenService {
     }
 
     public List<Citizen> findAll() {
-        return mongo.findAll(Citizen.class);
+        List<Citizen> all = new ArrayList<>();
+        if (!encryptionConfig.getAutoDecryption()) {
+            List<EncryptedCitizen> allEncrypted = mongo.findAll(EncryptedCitizen.class);
+            for (EncryptedCitizen encrypted : allEncrypted) {
+                Citizen citizen = decrypt(encrypted);
+                all.add(citizen);
+            }
+        } else {
+            all = mongo.findAll(Citizen.class);
+        }
+        return all;
     }
 
     public Citizen findByEmail(String email) {
         Query byEmail = new Query(Criteria.where("email")
             .is(encrypt(email, DETERMINISTIC_ALGORITHM)));
-        return mongo.findOne(byEmail, Citizen.class);
+        if (!encryptionConfig.getAutoDecryption()) {
+            EncryptedCitizen encryptedCitizen = mongo.findOne(byEmail, EncryptedCitizen.class);
+            return decrypt(encryptedCitizen);
+        } else {
+            return mongo.findOne(byEmail, Citizen.class);
+        }
     }
 
     public BsonBinary encrypt(Object value, String algorithm) {
         if (value == null)
             return null;
 
-        BsonValue bsonValue = value instanceof Integer 
-            ? new BsonInt32((Integer) value) 
-            : new BsonString(value.toString());
+        BsonValue bsonValue = value instanceof Integer ? new BsonInt32((Integer) value) : new BsonString(value.toString());
+
+        if (value instanceof Integer) {
+            bsonValue = new BsonInt32((Integer) value);
+        } else if (value instanceof String) {
+            bsonValue = new BsonString((String) value);
+        } else {
+            throw new IllegalArgumentException("unsupported type: " + value.getClass());
+        }
 
         EncryptOptions options = new EncryptOptions(algorithm);
         options.keyId(encryptionConfig.getDataKeyId());
-        return encryptionConfig.getEncryption()
-            .encrypt(bsonValue, options);
+        return clientEncryption.encrypt(bsonValue, options);
+    }
+
+    public BsonValue decryptProperty(BsonBinary value) {
+        if (value == null)
+            return null;
+
+        return clientEncryption.decrypt(value);
+    }
+
+    private Citizen decrypt(EncryptedCitizen encrypted) {
+        Citizen citizen = new Citizen(encrypted);
+        citizen.setBirthYear(decryptProperty(encrypted.getBirthYear()).asInt32()
+            .intValue());
+        citizen.setEmail(decryptProperty(encrypted.getEmail()).asString()
+            .getValue());
+        return citizen;
     }
 }
