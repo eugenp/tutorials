@@ -21,14 +21,14 @@ public class DiffBetweenStreamOfAndIntStreamRangeUnitTest {
 
         // First, the regular Stream
         normalStream.peek(normalStreamPeekResult::add)
-            .sorted()
-            .findFirst();
+          .sorted()
+          .findFirst();
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), normalStreamPeekResult);
 
         // Then, the IntStream
         intStreamByRange.peek(intStreamPeekResult::add)
-            .sorted()
-            .findFirst();
+          .sorted()
+          .findFirst();
         assertEquals(Arrays.asList(1), intStreamPeekResult);
     }
 
@@ -41,12 +41,12 @@ public class DiffBetweenStreamOfAndIntStreamRangeUnitTest {
 
         // First, the regular Stream
         normalStream.peek(normalStreamPeekResult::add)
-            .findFirst();
+          .findFirst();
         assertEquals(Arrays.asList(1), normalStreamPeekResult);
 
         // Then, the IntStream
         intStreamByRange.peek(intStreamPeekResult::add)
-            .findFirst();
+          .findFirst();
         assertEquals(Arrays.asList(1), intStreamPeekResult);
     }
 
@@ -57,9 +57,9 @@ public class DiffBetweenStreamOfAndIntStreamRangeUnitTest {
         TreeSet<String> treeSet = new TreeSet<>(Arrays.asList("CCC", "BBB", "AAA", "DDD", "KKK"));
 
         treeSet.stream()
-            .peek(peekResult::add)
-            .sorted()
-            .findFirst();
+          .peek(peekResult::add)
+          .sorted()
+          .findFirst();
 
         assertEquals(Arrays.asList("AAA"), peekResult);
     }
