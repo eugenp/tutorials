@@ -23,9 +23,12 @@ public class UserQueryProvider {
         SimpleStatement statement = QueryBuilder.selectFrom("user_profile")
           .all()
           .whereColumn("user_age")
-          .isGreaterThan(QueryBuilder.bindMarker(age))
+          .isGreaterThan(QueryBuilder
+                  .bindMarker(age))
           .build();
         PreparedStatement preparedSelectUser = session.prepare(statement);
-        return session.execute(preparedSelectUser.getQuery()).map(result -> userHelper.get(result, true));
+        return session
+          .execute(preparedSelectUser.getQuery())
+          .map(result -> userHelper.get(result, true));
     }
 }

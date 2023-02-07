@@ -39,11 +39,18 @@ class MapperLiveTest {
         setupCassandraConnectionProperties();
         CqlSession session = CqlSession.builder().build();
 
-        String createKeyspace = "CREATE KEYSPACE IF NOT EXISTS baeldung WITH replication = {'class':'SimpleStrategy', 'replication_factor':1};";
+        String createKeyspace = "CREATE KEYSPACE IF NOT EXISTS baeldung " +
+                "WITH replication = {'class':'SimpleStrategy', 'replication_factor':1};";
         String useKeyspace = "USE baeldung;";
-        String createUserTable = "CREATE TABLE IF NOT EXISTS user_profile (id int, username text, user_age int, writetime bigint, PRIMARY KEY (id, user_age)) WITH CLUSTERING ORDER BY (user_age DESC);";
-        String createAdminTable = "CREATE TABLE IF NOT EXISTS admin_profile (id int, username text, user_age int, role text, writetime bigint, department text, PRIMARY KEY (id, user_age)) WITH CLUSTERING ORDER BY (user_age DESC);";
-        String createCounter = "CREATE TABLE IF NOT EXISTS counter (id text, count counter, PRIMARY KEY (id));";
+        String createUserTable = "CREATE TABLE IF NOT EXISTS user_profile " +
+                "(id int, username text, user_age int, writetime bigint, PRIMARY KEY (id, user_age)) " +
+                "WITH CLUSTERING ORDER BY (user_age DESC);";
+        String createAdminTable = "CREATE TABLE IF NOT EXISTS admin_profile " +
+                "(id int, username text, user_age int, role text, writetime bigint, department text, " +
+                "PRIMARY KEY (id, user_age)) " +
+                "WITH CLUSTERING ORDER BY (user_age DESC);";
+        String createCounter = "CREATE TABLE IF NOT EXISTS counter " +
+                "(id text, count counter, PRIMARY KEY (id));";
 
         session.execute(createKeyspace);
         session.execute(useKeyspace);
