@@ -105,7 +105,7 @@ class KeycloakSoapLiveTest {
     void givenAccessToken_whenDeleteProduct_thenReturnSuccess() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("content-type", "text/xml");
-        headers.set("Authorization", "Bearer " + generateToken("jhondoe", "password"));
+        headers.set("Authorization", "Bearer " + generateToken("johndoe", "password"));
         HttpEntity<String> request = new HttpEntity<>(Utility.getDeleteProductsRequest(), headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 

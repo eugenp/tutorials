@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
 
 @Embeddable
 public class OrderEntryPK implements Serializable {
 
     private long orderId;
     private long productId;
+
+    @ManyToOne
+    private User user;
 
     public long getOrderId() {
         return orderId;
@@ -25,6 +29,14 @@ public class OrderEntryPK implements Serializable {
 
     public void setProductId(long productId) {
         this.productId = productId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

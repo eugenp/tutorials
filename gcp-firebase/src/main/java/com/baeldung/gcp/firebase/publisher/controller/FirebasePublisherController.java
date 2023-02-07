@@ -2,6 +2,7 @@ package com.baeldung.gcp.firebase.publisher.controller;
 
 
 import java.util.List;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -103,7 +104,7 @@ public class FirebasePublisherController {
     
     @DeleteMapping("/subscriptions/{topic}/{registrationToken}")
     public ResponseEntity<Void> deleteSubscription(@PathVariable String topic, @PathVariable String registrationToken) throws FirebaseMessagingException {
-        fcm.subscribeToTopic(List.of(registrationToken), topic);        
+        fcm.subscribeToTopic(Arrays.asList(registrationToken), topic);
         return ResponseEntity.ok().build();        
     }
 }

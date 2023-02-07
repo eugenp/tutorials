@@ -73,19 +73,19 @@ public void givenItem_whenGetItemIsCalled_thenMonoIsCached() {
     }
 
     @Test
-    public void givenItem_whenGetItemWithAddonsIsCalled_thenMonoResultIsCached() {
+    public void givenItem_whenGetItemWithCaffeineIsCalled_thenMonoResultIsCached() {
         Mono<Item> glass = itemService.save(new Item("glass", 1.00));
 
         String id = glass.block().get_id();
 
-        Mono<Item> mono = itemService.getItem_withAddons(id);
+        Mono<Item> mono = itemService.getItem_withCaffeine(id);
         Item item = mono.block();
 
         assertThat(item).isNotNull();
         assertThat(item.getName()).isEqualTo("glass");
         assertThat(item.getPrice()).isEqualTo(1.00);
 
-        Mono<Item> mono2 = itemService.getItem_withAddons(id);
+        Mono<Item> mono2 = itemService.getItem_withCaffeine(id);
         Item item2 = mono2.block();
 
         assertThat(item2).isNotNull();
