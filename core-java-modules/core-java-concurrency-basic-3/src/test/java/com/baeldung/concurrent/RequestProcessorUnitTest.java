@@ -27,13 +27,13 @@ public class RequestProcessorUnitTest {
 
     @Test
     @DisplayName("Wait for completion using Awaitility")
-    void whenWithAwaitility_thenStatusIsDone() {
+    void whenWaitingWithAwaitility_thenStatusIsDone() {
         String requestId = requestProcessor.processRequest();
 
         Awaitility.await()
-            .atMost(2, TimeUnit.SECONDS)
-            .pollDelay(500, TimeUnit.MILLISECONDS)
-            .until(() -> requestProcessor.getStatus(requestId), not(equalTo("PROCESSING")));
+          .atMost(2, TimeUnit.SECONDS)
+          .pollDelay(500, TimeUnit.MILLISECONDS)
+          .until(() -> requestProcessor.getStatus(requestId), not(equalTo("PROCESSING")));
 
         assertEquals("DONE", requestProcessor.getStatus(requestId));
     }
