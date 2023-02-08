@@ -19,4 +19,5 @@
         <module>undertow</module>
         <module>wildfly</module>
     </modules>
+
 </project>

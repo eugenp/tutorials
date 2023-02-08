@@ -9,4 +9,5 @@ This module contains articles about conversions among Collection types and array
 - [Converting List to Map With a Custom Supplier](https://www.baeldung.com/list-to-map-supplier)
 - [Arrays.asList vs new ArrayList(Arrays.asList())](https://www.baeldung.com/java-arrays-aslist-vs-new-arraylist)
 - [Iterate Over a Set in Java](https://www.baeldung.com/java-iterate-set)
+- [Convert a List of Integers to a List of Strings](https://www.baeldung.com/java-convert-list-integers-to-list-strings)
 - More articles: [[<-- prev]](../core-java-collections-conversions)

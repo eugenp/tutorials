@@ -1,16 +1,19 @@
 package com.baeldung.algorithms;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.algorithms.ga.binary.SimpleGeneticAlgorithm;
 
-public class BinaryGeneticAlgorithmLongRunningUnitTest {
+class BinaryGeneticAlgorithmLongRunningUnitTest {
 
     @Test
-    public void testGA() {
+    void testGA() {
         SimpleGeneticAlgorithm ga = new SimpleGeneticAlgorithm();
-        Assert.assertTrue(ga.runAlgorithm(50, "1011000100000100010000100000100111001000000100000100000000001111"));
+        assertTrue(ga.runAlgorithm(50, "1011000100000100010000100000100111001000000100000100000000001111"));
     }
 
 }

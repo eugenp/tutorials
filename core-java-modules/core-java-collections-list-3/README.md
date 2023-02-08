@@ -12,4 +12,5 @@ This module contains articles about the Java List collection
 - [How to Count Duplicate Elements in Arraylist](https://www.baeldung.com/java-count-duplicate-elements-arraylist)
 - [Finding the Differences Between Two Lists in Java](https://www.baeldung.com/java-lists-difference)
 - [List vs. ArrayList in Java](https://www.baeldung.com/java-list-vs-arraylist)
+- [Set vs List in Java](https://www.baeldung.com/java-set-vs-list)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list-2)

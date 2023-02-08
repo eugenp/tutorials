@@ -1,14 +1,15 @@
 package com.baeldung.algorithms.prim;
 
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrimUnitTest {
+import org.junit.jupiter.api.Test;
+
+class PrimUnitTest {
 
     @Test
-    public void givenAGraph_whenPrimRuns_thenPrintMST() {
+     void givenAGraph_whenPrimRuns_thenPrintMST() {
         Prim prim = new Prim(createGraph());
         System.out.println(prim.originalGraphToString());
         System.out.println("----------------");

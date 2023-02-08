@@ -19,6 +19,7 @@
         <module>log4j2</module>
         <module>logback</module>
         <module>log-mdc</module>
+        <module>tinylog2</module>
     </modules>
 
 </project>

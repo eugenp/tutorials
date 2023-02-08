@@ -16,12 +16,12 @@
     </parent>
 
     <modules>
-        <module>additional-sources-simple</module>
-        <module>basic-config</module>
-        <module>dynamodb-config</module>
-        <module>extra-configs</module>
-        <module>jdbc-config</module>
-        <module>zookeeper-config</module>
+        <module>spring-cloud-archaius-additionalsources</module>
+        <module>spring-cloud-archaius-basic-config</module>
+        <module>spring-cloud-archaius-dynamodb-config</module>
+        <module>spring-cloud-archaius-extra-configs</module>
+        <module>spring-cloud-archaius-jdbc-config</module>
+        <module>spring-cloud-archaius-zookeeper-config</module>
     </modules>
 
     <dependencyManagement>
