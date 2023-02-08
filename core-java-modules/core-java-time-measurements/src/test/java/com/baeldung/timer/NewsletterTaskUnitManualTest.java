@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Timer;
 
-class NewsletterTaskUnitTest {
+class NewsletterTaskUnitManualTest {
     private final Timer timer = new Timer();
 
     @AfterEach
@@ -17,17 +17,13 @@ class NewsletterTaskUnitTest {
     void givenNewsletterTask_whenTimerScheduledEachSecondFixedDelay_thenNewsletterSentEachSecond() throws Exception {
         timer.schedule(new NewsletterTask(), 0, 1000);
 
-        for (int i = 0; i < 3; i++) {
-            Thread.sleep(1000);
-        }
+        Thread.sleep(20000);
     }
 
     @Test
     void givenNewsletterTask_whenTimerScheduledEachSecondFixedRate_thenNewsletterSentEachSecond() throws Exception {
         timer.scheduleAtFixedRate(new NewsletterTask(), 0, 1000);
 
-        for (int i = 0; i < 3; i++) {
-            Thread.sleep(1000);
-        }
+        Thread.sleep(20000);
     }
 }
