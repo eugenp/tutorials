@@ -1,14 +1,12 @@
-package com.baeldung.java.panama;
+package com.baeldung.java.panama.core;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
-import java.util.Objects;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static java.lang.foreign.ValueLayout.*;
 
 
-public class HelloWorld {
+public class Greetings {
 
     public static void main(String[] args) throws Throwable {
 
@@ -27,7 +25,9 @@ public class HelloWorld {
                 .orElse(null);
 
 
-        Objects.requireNonNull(methodHandle);
+        if(methodHandle == null){
+            throw new NoSuchMethodError("Method Handle was not found");
+        };
 
         try (MemorySession memorySession = MemorySession.openConfined()) {
             MemorySegment greetingSegment = memorySession.allocateUtf8String(greeting);
