@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
-public class LoadClassTest {
+public class LoadClassUnitTest {
 
     @Test
     public void whenUseClassForName_createdInstanceOfClassClass() throws ClassNotFoundException {
