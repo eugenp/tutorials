@@ -7,6 +7,5 @@ logging:
           context:
             cache: DEBUG
 spring:
-  test:
-    context:
-
+  main:
+    allow-bean-definition-overriding: true
