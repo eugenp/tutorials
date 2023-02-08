@@ -242,3 +242,7 @@
     在这篇文章中，我们看到了如何使用Spring Cloud Zookeeper实现服务发现，我们在Zookeeper服务器中注册了一个名为HelloWorld的服务，在不知道其位置细节的情况下，使用Feign Client来发现和消费Greeting服务。
 
     像往常一样，这篇文章的代码可以在[GitHub](https://github.com/eugenp/tutorials/tree/master/spring-cloud-modules/spring-cloud-zookeeper)上找到。
+
+## Relevant Articles
+
+- [x] [An Intro to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)
