@@ -324,11 +324,15 @@
             </build>
 
             <modules>
-                <module>parent-boot-1</module>
+			    <module>spring-boot-modules</module>
+			    <module>akka-modules</module>
+			    <!--<module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
+
+                <module>algorithms-modules</module>
 
                 <module>apache-cxf-modules</module>
                 <module>apache-libraries</module>
@@ -340,32 +344,32 @@
                 <module>aws-modules</module>
 
                 <module>azure</module>
-                <module>checker-plugin</module>
+                <module>checker-plugin</module>-->
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
+                 <!--<module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
-                <module>drools</module>
+                <module>drools</module>-->
 
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
 
 
-                <module>geotools</module>
+                <!-- <module>geotools</module>-->
 
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <module>gradle-modules/gradle/maven-to-gradle</module>
+                <!-- <module>gradle-modules/gradle/maven-to-gradle</module> -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
 
-                <module>guava-modules</module>
+                <!--<module>guava-modules</module>-->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>apache-httpclient</module>
-                <module>httpclient4</module>
+                <!--<module>apache-httpclient</module>
+                <module>httpclient-simple</module>
 
 
                 <module>jackson-modules</module>
@@ -383,10 +387,10 @@
                 <module>jsf</module>
                 <module>json-modules</module>
 
-                <module>kubernetes-modules</module>
+                <module>kubernetes-modules</module> -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
+                <!-- <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-data</module>
@@ -427,7 +431,8 @@
                 <module>security-modules</module>
 
                 <module>vavr-modules</module>
-                <module>web-modules</module>
+                <module>web-modules</module>-->
+                
             </modules>
 
         </profile>
