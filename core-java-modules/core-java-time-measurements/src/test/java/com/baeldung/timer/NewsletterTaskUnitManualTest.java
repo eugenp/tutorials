@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Timer;
 
-class NewsletterTaskUnitTest {
+class NewsletterTaskUnitManualTest {
     private final Timer timer = new Timer();
 
     @AfterEach
