@@ -2,7 +2,7 @@ package com.baeldung.firstocurrenceofaninteger;
 
 public class FirstOccurrenceOfAnInteger {
 
-    public static Integer findFirstInteger(String s) {
+    static Integer findFirstInteger(String s) {
         int i = 0;
         while (i < s.length() && !Character.isDigit(s.charAt(i))) {
             i++;
@@ -13,5 +13,6 @@ public class FirstOccurrenceOfAnInteger {
         }
         return Integer.parseInt(s.substring(i, j));
     }
+
 }
 

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 class FirstOccurrenceOfAnIntegerUnitTest {
 
     @Test
-    public void whenUsingPatternMatcher_findFirstInteger() {
+    void whenUsingPatternMatcher_findFirstInteger() {
         String s = "ba31dung123";
         Matcher matcher = Pattern.compile("\\d+").matcher(s);
         matcher.find();
@@ -22,13 +22,13 @@ class FirstOccurrenceOfAnIntegerUnitTest {
     }
 
     @Test
-    public void whenUsingScanner_findFirstInteger() {
+    void whenUsingScanner_findFirstInteger() {
         int i = new Scanner("ba31dung123").useDelimiter("\\D+").nextInt();
         Assertions.assertEquals(31, i);
     }
 
     @Test
-    public void whenUsingSplit_findFirstInteger() {
+    void whenUsingSplit_findFirstInteger() {
         String str = "ba31dung123";
         List<String> tokens = Arrays.stream(str.split("\\D+"))
                 .filter(s -> s.length() > 0).collect(Collectors.toList());
@@ -36,7 +36,7 @@ class FirstOccurrenceOfAnIntegerUnitTest {
     }
 
     @Test
-    public void whenUsingCustomFunction_findFirstInteger() {
+    void whenUsingCustomMethod_findFirstInteger() {
         String str = "ba31dung123";
         Integer i = FirstOccurrenceOfAnInteger.findFirstInteger(str);
         Assertions.assertEquals(31, i);
