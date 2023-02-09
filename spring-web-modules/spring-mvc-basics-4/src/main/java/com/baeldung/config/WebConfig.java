@@ -38,16 +38,6 @@ public class WebConfig {
     }
 
     @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/");
-        resolver.setSuffix(".jsp");
-        resolver.setOrder(1000);
-        resolver.setViewClass(JstlView.class);
-        return resolver;
-    }
-
-    @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
@@ -61,7 +51,6 @@ public class WebConfig {
         viewResolver.setTemplateEngine(thymeleafTemplateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
         viewResolver.setOrder(0);
-        viewResolver.setViewNames(new String[] { "view*" });
 
         return viewResolver;
     }
@@ -87,7 +76,7 @@ public class WebConfig {
 
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
 
-        templateResolver.setPrefix("/templates/view/");
+        templateResolver.setPrefix("/templates/");
         templateResolver.setCacheable(false);
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
