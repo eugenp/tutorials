@@ -12,3 +12,4 @@ This module contains articles about the Java ArrayList collection
 - [Case-Insensitive Searching in ArrayList](https://www.baeldung.com/java-arraylist-case-insensitive-search)
 - [Storing Data Triple in a List in Java](https://www.baeldung.com/java-list-storing-triple)
 - [Convert an ArrayList of Object to an ArrayList of String Elements](https://www.baeldung.com/java-object-list-to-strings)
+- [Initialize an ArrayList with Zeroes or Null in Java](https://www.baeldung.com/java-arraylist-with-zeroes-or-null)
