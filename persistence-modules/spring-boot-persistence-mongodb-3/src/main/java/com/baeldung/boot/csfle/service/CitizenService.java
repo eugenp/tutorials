@@ -1,7 +1,7 @@
 package com.baeldung.boot.csfle.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bson.BsonBinary;
 import org.bson.BsonInt32;
@@ -43,17 +43,15 @@ public class CitizenService {
     }
 
     public List<Citizen> findAll() {
-        List<Citizen> all = new ArrayList<>();
         if (!encryptionConfig.getAutoDecryption()) {
             List<EncryptedCitizen> allEncrypted = mongo.findAll(EncryptedCitizen.class);
-            for (EncryptedCitizen encrypted : allEncrypted) {
-                Citizen citizen = decrypt(encrypted);
-                all.add(citizen);
-            }
+
+            return allEncrypted.stream()
+                .map(this::decrypt)
+                .collect(Collectors.toList());
         } else {
-            all = mongo.findAll(Citizen.class);
+            return mongo.findAll(Citizen.class);
         }
-        return all;
     }
 
     public Citizen findByEmail(String email) {
@@ -71,8 +69,7 @@ public class CitizenService {
         if (value == null)
             return null;
 
-        BsonValue bsonValue = value instanceof Integer ? new BsonInt32((Integer) value) : new BsonString(value.toString());
-
+        BsonValue bsonValue;
         if (value instanceof Integer) {
             bsonValue = new BsonInt32((Integer) value);
         } else if (value instanceof String) {
@@ -95,10 +92,19 @@ public class CitizenService {
 
     private Citizen decrypt(EncryptedCitizen encrypted) {
         Citizen citizen = new Citizen(encrypted);
-        citizen.setBirthYear(decryptProperty(encrypted.getBirthYear()).asInt32()
-            .intValue());
-        citizen.setEmail(decryptProperty(encrypted.getEmail()).asString()
-            .getValue());
+
+        BsonValue decryptedBirthYear = decryptProperty(encrypted.getBirthYear());
+        if (decryptedBirthYear != null) {
+            citizen.setBirthYear(decryptedBirthYear.asInt32()
+                .intValue());
+        }
+
+        BsonValue decryptedEmail = decryptProperty(encrypted.getEmail());
+        if (decryptedEmail != null) {
+            citizen.setEmail(decryptedEmail.asString()
+                .getValue());
+        }
+
         return citizen;
     }
 }
