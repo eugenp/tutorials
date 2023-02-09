@@ -17,7 +17,7 @@ import java.util.List;
 import static java.net.URI.create;
 
 
-public class JavaHttpClientConnectionManagementUnitTest {
+public class HttpClientConnectionManagementUnitTest {
 
     WireMockConfiguration firstConfiguration = WireMockConfiguration
       .options()
