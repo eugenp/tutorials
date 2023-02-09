@@ -16,11 +16,11 @@
     </parent>
 
     <modules>
-        <module>sharedkernel</module>
-        <module>infrastructure</module>
-        <module>shippingcontext</module>
-        <module>ordercontext</module>
-        <module>mainapp</module>
+        <module>ddd-contexts-sharedkernel</module>
+        <module>ddd-contexts-infrastructure</module>
+        <module>ddd-contexts-shippingcontext</module>
+        <module>ddd-contexts-ordercontext</module>
+        <module>ddd-contexts-mainapp</module>
     </modules>
 
     <dependencyManagement>

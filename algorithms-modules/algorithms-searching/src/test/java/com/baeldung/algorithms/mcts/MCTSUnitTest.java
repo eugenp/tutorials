@@ -1,12 +1,13 @@
 package com.baeldung.algorithms.mcts;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.algorithms.mcts.montecarlo.MonteCarloTreeSearch;
 import com.baeldung.algorithms.mcts.montecarlo.State;
@@ -15,31 +16,31 @@ import com.baeldung.algorithms.mcts.tictactoe.Board;
 import com.baeldung.algorithms.mcts.tictactoe.Position;
 import com.baeldung.algorithms.mcts.tree.Tree;
 
-public class MCTSUnitTest {
+class MCTSUnitTest {
     private Tree gameTree;
     private MonteCarloTreeSearch mcts;
 
-    @Before
+    @BeforeEach
     public void initGameTree() {
         gameTree = new Tree();
         mcts = new MonteCarloTreeSearch();
     }
 
     @Test
-    public void givenStats_whenGetUCTForNode_thenUCTMatchesWithManualData() {
+    void givenStats_whenGetUCTForNode_thenUCTMatchesWithManualData() {
         double uctValue = 15.79;
         assertEquals(UCT.uctValue(600, 300, 20), uctValue, 0.01);
     }
 
     @Test
-    public void giveninitBoardState_whenGetAllPossibleStates_thenNonEmptyList() {
+    void giveninitBoardState_whenGetAllPossibleStates_thenNonEmptyList() {
         State initState = gameTree.getRoot().getState();
         List<State> possibleStates = initState.getAllPossibleStates();
         assertTrue(possibleStates.size() > 0);
     }
 
     @Test
-    public void givenEmptyBoard_whenPerformMove_thenLessAvailablePossitions() {
+    void givenEmptyBoard_whenPerformMove_thenLessAvailablePossitions() {
         Board board = new Board();
         int initAvailablePositions = board.getEmptyPositions().size();
         board.performMove(Board.P1, new Position(1, 1));
@@ -48,7 +49,7 @@ public class MCTSUnitTest {
     }
 
     @Test
-    public void givenEmptyBoard_whenSimulateInterAIPlay_thenGameDraw() {
+    void givenEmptyBoard_whenSimulateInterAIPlay_thenGameDraw() {
         Board board = new Board();
 
         int player = Board.P1;
@@ -61,11 +62,11 @@ public class MCTSUnitTest {
             player = 3 - player;
         }
         int winStatus = board.checkStatus();
-        assertEquals(winStatus, Board.DRAW);
+        assertEquals(Board.DRAW, winStatus);
     }
 
     @Test
-    public void givenEmptyBoard_whenLevel1VsLevel3_thenLevel3WinsOrDraw() {
+    void givenEmptyBoard_whenLevel1VsLevel3_thenLevel3WinsOrDraw() {
         Board board = new Board();
         MonteCarloTreeSearch mcts1 = new MonteCarloTreeSearch();
         mcts1.setLevel(1);
