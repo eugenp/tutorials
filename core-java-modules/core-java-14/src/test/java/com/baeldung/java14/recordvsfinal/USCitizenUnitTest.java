@@ -19,7 +19,7 @@ public class USCitizenUnitTest {
 
         USCitizen citizen = new USCitizen(firstName, lastName, address);
 
-        assertEquals(firstName + " " + lastName, person.getFullName());
+        assertEquals(firstName + " " + lastName, citizen.getFullName());
         assertEquals(countryCode, USCitizen.getCountryCode());
     }
 
