@@ -1074,6 +1074,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
             <properties>
@@ -1275,6 +1276,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
             <properties>
@@ -1283,7 +1285,7 @@
                 <java.version>11</java.version>
             </properties>
         </profile>
-        
+
         <profile>
             <id>parents</id>
             <modules>
