@@ -16,7 +16,7 @@ class PetServiceIntegrationTest {
     PetServiceRepository repository;
 
     @Test
-    void shouldAddPet() {
+    void shouldAddPetWhenNotAlreadyExisting() {
         var pet = new Pet("Dog");
         when(repository.add(pet)).thenReturn(true);
         var result = service.add(pet);

@@ -9,7 +9,7 @@ class PetServiceUnitTest {
     PetService service = new PetService(new PetServiceRepositoryImpl());
 
     @Test
-    void shouldAddPet() {
+    void shouldAddPetWhenNotAlreadyExisting() {
         var pet = new Pet("Dog");
         var result = service.add(pet);
         assertThat(result).isTrue();
@@ -17,7 +17,7 @@ class PetServiceUnitTest {
     }
 
     @Test
-    void shouldNotAddDuplicatesTwice() {
+    void shouldNotAddPetWhenAlreadyExisting() {
         var pet = new Pet("Cat");
         var result = service.add(pet);
         assertThat(result).isTrue();

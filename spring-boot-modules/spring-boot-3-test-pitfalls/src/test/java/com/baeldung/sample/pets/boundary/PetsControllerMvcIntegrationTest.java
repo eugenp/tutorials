@@ -23,7 +23,7 @@ class PetsControllerMvcIntegrationTest {
     PetService service;
 
     @Test
-    void shouldReturnEmptyArrayOnGetAllPets() throws Exception {
+    void shouldReturnEmptyArrayWhenGetPets() throws Exception {
         when(service.getPets()).thenReturn(Collections.emptyList());
         mvc.perform(
             get("/pets")
