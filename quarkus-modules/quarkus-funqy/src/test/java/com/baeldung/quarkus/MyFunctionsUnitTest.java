@@ -11,10 +11,10 @@ import static org.hamcrest.Matchers.containsString;
 import java.util.UUID;
 
 @QuarkusTest
-public class MyFunctionsTest {
+public class MyFunctionsUnitTest {
 
     @Test
-    public void testFun() {
+    public void givenFunctionAPI_whenCallWithoutBody_thenShouldReturnDefault() {
         given()
             .post("/GreetUser")
             .then()
@@ -23,7 +23,7 @@ public class MyFunctionsTest {
     }
 
     @Test
-    public void testFunWithName() {
+    public void givenFunctionAPI_whenCallWithName_thenShouldReturnName() {
         given()
             .contentType(ContentType.JSON)
             .body("{\"name\": \"Friend\"}")
@@ -34,7 +34,7 @@ public class MyFunctionsTest {
     }
 
     @Test
-    public void testGreetUserEvent() {
+    public void givenFunctionAPI_whenCallWithEvent_thenShouldReturn200() {
         RestAssured.given().contentType("application/json")
           .header("ce-specversion", "1.0")
           .header("ce-id", UUID.randomUUID().toString())
