@@ -3,7 +3,8 @@ package com.baeldung.memlayout;
 import org.junit.Test;
 import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.vm.VM;
-import sun.misc.Contended;
+
+import jdk.internal.vm.annotation.Contended;
 
 public class MemoryLayoutUnitTest {
 
