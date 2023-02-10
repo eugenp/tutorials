@@ -83,7 +83,6 @@
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
         <module>spring-boot-data-3</module>
-        <module>spring-webflux-redis</module>
         <module>spring-boot-redis</module>
     </modules>
 
