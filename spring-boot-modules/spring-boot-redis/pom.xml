@@ -14,7 +14,7 @@
     <name>spring-boot-redis</name>
     <description>Demo project for Spring Boot with Spring Data Redis</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
