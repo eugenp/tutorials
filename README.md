@@ -33,7 +33,9 @@ Next, they are segregated further on the basis of the tests that we want to exec
 
 Additionally, there are 2 profiles dedicated for JDK9 and above builds.
 
-Therefore, we have a total of 8 profiles:
+We also have a parents profile to build only parent modules.
+
+Therefore, we have a total of 9 profiles:
 
 | Profile                    | Includes                    | Type of test enabled |
 | -------------------------- | --------------------------- | -------------------- |
@@ -45,6 +47,7 @@ Therefore, we have a total of 8 profiles:
 | integration-heavy          | Heavy/long running projects | *IntegrationTest     |
 | default-jdk9-and-above     | JDK9 and above projects     | *UnitTest            |
 | integration-jdk9-and-above | JDK9 and above projects     | *IntegrationTest     |
+| parents                    | Set of parent modules       | None                 |
 
 Building the project
 ====================
@@ -70,6 +73,13 @@ and
 Building a single module
 ====================
 To build a specific module, run the command: `mvn clean install` in the module directory.
+
+
+Building modules from the root of the repository
+====================
+To build specific modules from the root of the repository, run the command: `mvn clean install --pl asm,atomikos -Pdefault-first` in the root directory.
+
+Here `asm` and `atomikos` are the modules that we want to build and `default-first` is the maven profile in which these modules are present.
 
 
 Running a Spring Boot module
