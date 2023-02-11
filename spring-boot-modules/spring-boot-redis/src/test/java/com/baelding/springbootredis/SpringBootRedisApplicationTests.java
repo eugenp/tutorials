@@ -137,7 +137,7 @@ class SpringBootRedisApplicationTests {
           .expectStatus().isOk().expectBody(Session.class).isEqualTo(createdSession);
 
         // WHEN
-        Thread.sleep(expirationInSeconds * 10000);
+        Thread.sleep(expirationInSeconds * 1000);
         webTestClient.get().uri(String.format(V1_GET_SESSION_BY_ID_ENDPOINT_TEMPLATE, createdSession.getId())).exchange()
           // THEN
           .expectStatus().isNotFound();
