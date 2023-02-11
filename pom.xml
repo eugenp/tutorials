@@ -1074,6 +1074,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+				<module>persistence-modules/java-mongodb</module> <!-- long running -->
             </modules>
 
             <properties>
@@ -1275,6 +1276,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>persistence-modules/java-mongodb</module> <!-- long running -->
             </modules>
 
             <properties>
