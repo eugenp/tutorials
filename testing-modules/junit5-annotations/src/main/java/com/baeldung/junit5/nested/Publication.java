@@ -13,7 +13,7 @@ public class Publication {
     public List<String> getReadableArticles(User user) {
         return articles.stream()
             .filter(a -> a.getArticleLevel()
-                .compare(user.getMembership()) <= 0)
+              .compare(user.getMembership()) <= 0)
             .map(Article::getName)
             .collect(Collectors.toList());
     }
@@ -21,7 +21,7 @@ public class Publication {
     public List<String> getLockedArticles(User user) {
         return articles.stream()
             .filter(a -> a.getArticleLevel()
-                .compare(user.getMembership()) > 0)
+              .compare(user.getMembership()) > 0)
             .map(Article::getName)
             .collect(Collectors.toList());
     }
