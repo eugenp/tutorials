@@ -11,8 +11,8 @@
 在学习类和对象之前，让我们先从语言的基本语法开始。
 
 - [Java的基本语法](/core-java-lang-syntax-2/README-zh.md#java中的基本语法介绍)
-- [原语介绍](https://www.baeldung.com/java-primitives)
-解释Java main()方法
+- [原语介绍](/core-java-lang-syntax/README-zh.md#java原语介绍)
+- [解释Java main()方法](/core-java-lang-syntax/README-zh.md#java的main方法详解)
 控制结构
 Java循环指南
 Java包指南
@@ -200,7 +200,6 @@ System.gc()指南
 System.exit()指南
 为JVM应用程序添加关机钩子
 在Java中做一个简单的HTTP请求
-(流行)
 
 ## 追踪Java开发
 

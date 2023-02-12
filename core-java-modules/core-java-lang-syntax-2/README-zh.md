@@ -200,7 +200,7 @@ This module contains articles about Java syntax
 
     `javac SimpleAddition.java`
 
-    要执行该程序，我们只需运行
+    要执行该程序，我们只需运行（前提是SimpleAddition中未定义package）
 
     `java SimpleAddition`
 
@@ -208,7 +208,10 @@ This module contains articles about Java syntax
 
     `10 + 5 = 15.0`
 
-    - [ ] 错误: 找不到或无法加载主类SimpleAddition
+    - [x] 错误: 找不到或无法加载主类SimpleAddition
+       由于SimpleAddition定义了package名，所以必须在包的上级目录下执行：java 包名的虚拟路径(以.分隔，不带.class)
+       `cd ../main/java`
+       `java com.baeldung.basicsyntax.SimpleAddition`
 
 9. 总结
 

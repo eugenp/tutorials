@@ -10,7 +10,7 @@ This module contains modules about Spring Cloud
 - [Spring云任务简介](/spring-cloud-task/README-zh.md)
 - [Spring Cloud Zooker简介](/spring-cloud-zookeeper/README-zh.md)
 - [Spring Cloud CLI简介](/spring-cloud-cli/README-zh.md)
-- Spring云合同简介
+- [Spring云合同简介](/spring-cloud-contract/README-zh.md)
 - [探索新的Spring云网关](/spring-cloud-gateway/README-zh.md)
 - Spring Cloud OpenFeign简介
 

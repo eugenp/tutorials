@@ -35,7 +35,8 @@ public class ClientConfiguration {
         };
     }
 
-    // @Bean - uncomment to use this interceptor and remove @Bean from the requestInterceptor()
+    // @Bean - uncomment to use this interceptor and remove @Bean from the
+    // requestInterceptor()
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
         return new BasicAuthRequestInterceptor("ajeje", "brazof");
     }
