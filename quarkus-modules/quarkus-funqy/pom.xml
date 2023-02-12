@@ -16,6 +16,11 @@
     <quarkus.platform.version>2.16.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
   </properties>
+  <parent>
+    <groupId>com.baeldung</groupId>
+    <artifactId>quarkus-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
   <dependencyManagement>
     <dependencies>
       <dependency>
