@@ -6,7 +6,7 @@ import org.bson.json.StrictJsonWriter;
 /**
  * Convertor to epoch time
  */
-public class JSONDateFormatEpochTime implements Converter<Long> {
+public class JSONDateFormatEpochTimeConverter implements Converter<Long> {
 
     @Override
     public void convert(Long value, StrictJsonWriter writer) {

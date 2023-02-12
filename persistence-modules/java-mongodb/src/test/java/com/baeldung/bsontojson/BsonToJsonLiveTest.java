@@ -56,7 +56,7 @@ public class BsonToJsonLiveTest {
             Document bson = mongoDatabase.getCollection("Books").find().first();
             json = bson.toJson(JsonWriterSettings
                     .builder()
-                    .dateTimeConverter(new JSONDateFormatEpochTime())
+                    .dateTimeConverter(new JSONDateFormatEpochTimeConverter())
                     .build());
         }
 
