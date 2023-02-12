@@ -16,7 +16,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import com.github.javafaker.Faker;
 
 @DataJpaTest
-class UserRepositoryIntegrationTest {
+class UserRepositoryUnitTest {
 
     @Autowired
     private UserRepository userRepository;
