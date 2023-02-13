@@ -350,13 +350,7 @@
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
                 <module>drools</module>
-
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-
-
-                <module>geotools</module>
-
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
@@ -632,13 +626,7 @@
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
                 <module>drools</module>
-
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-
-
-                <module>geotools</module>
-
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
@@ -969,6 +957,7 @@
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>geotools</module>
 
                 <!-- Modules from default-first -->
 
@@ -1168,6 +1157,7 @@
                 <module>persistence-modules/fauna</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>geotools</module>
 
                 <!-- Modules from default-first -->
 
