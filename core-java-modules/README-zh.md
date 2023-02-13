@@ -13,7 +13,7 @@
 - [Java的基本语法](/core-java-lang-syntax-2/README-zh.md#java中的基本语法介绍)
 - [原语介绍](/core-java-lang-syntax/README-zh.md#java原语介绍)
 - [解释Java main()方法](/core-java-lang-syntax/README-zh.md#java的main方法详解)
-控制结构
+- [控制结构](/core-java-lang-syntax-2/README-zh.md#java中的控制结构)
 Java循环指南
 Java包指南
 Java中作为参数传递机制的 "按值传递"(Pass-By-Value)
