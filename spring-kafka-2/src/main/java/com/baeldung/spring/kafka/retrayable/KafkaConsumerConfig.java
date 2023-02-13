@@ -1,6 +1,5 @@
-package com.baeldung.spring.kafka;
+package com.baeldung.spring.kafka.retrayable;
 
-import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Map;
 

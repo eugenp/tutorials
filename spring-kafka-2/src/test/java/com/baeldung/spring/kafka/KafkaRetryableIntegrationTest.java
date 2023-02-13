@@ -17,6 +17,8 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
+import com.baeldung.spring.kafka.retrayable.Greeting;
+import com.baeldung.spring.kafka.retrayable.RetryableApplicationKafkaApp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = RetryableApplicationKafkaApp.class)
