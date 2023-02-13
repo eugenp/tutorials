@@ -16,7 +16,7 @@
 - [控制结构](/core-java-lang-syntax-2/README-zh.md#java中的控制结构)
 Java循环指南
 Java包指南
-Java中作为参数传递机制的 "按值传递"(Pass-By-Value)
+[Java中作为参数传递机制的 "按值传递"(Pass-By-Value)](/core-java-lang-oop-others/README-zh.md#在java中作为参数传递机制的-逐值传递)
 
 ### Java OOP
 

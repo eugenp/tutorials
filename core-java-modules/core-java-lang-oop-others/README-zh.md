@@ -2,7 +2,7 @@
 
 This module contains articles about Object Oriented Programming (OOP) in Java
 
-## 在Java中作为参数传递机制的 "逐值传递"（Pass-By-Value）。
+## 在Java中作为参数传递机制的 "逐值传递"
 
 1. 简介
 
