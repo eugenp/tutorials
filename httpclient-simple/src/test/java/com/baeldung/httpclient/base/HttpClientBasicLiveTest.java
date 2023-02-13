@@ -19,12 +19,12 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 
-public class HttpClientBasicLiveTest {
+class HttpClientBasicLiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
     @Test
-    public final void whenExecutingBasicGetRequest_thenNoExceptions() throws IOException {
+    void whenExecutingBasicGetRequest_thenNoExceptions() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
 
         try (CloseableHttpClient client = HttpClientBuilder.create().build();
@@ -35,7 +35,7 @@ public class HttpClientBasicLiveTest {
     }
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
+    void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
         try (CloseableHttpClient client = HttpClientBuilder.create().build();
 
@@ -48,7 +48,7 @@ public class HttpClientBasicLiveTest {
 
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectMimeType() throws IOException {
+    void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectMimeType() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
 
         try (CloseableHttpClient client = HttpClientBuilder.create().build();
@@ -63,7 +63,7 @@ public class HttpClientBasicLiveTest {
 
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectBody() throws IOException, ParseException {
+    void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectBody() throws IOException, ParseException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
         try (CloseableHttpClient client = HttpClientBuilder.create().build();
 

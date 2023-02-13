@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.NoSuchProviderException;
-import javax.mail.Part;
-import javax.mail.Session;
-import javax.mail.Store;
-import javax.mail.internet.MimeBodyPart;
+import jakarta.mail.Address;
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.Multipart;
+import jakarta.mail.NoSuchProviderException;
+import jakarta.mail.Part;
+import jakarta.mail.Session;
+import jakarta.mail.Store;
+import jakarta.mail.internet.MimeBodyPart;
 
 public class DownloadEmailAttachments {
     private String downloadDirectory;
@@ -24,7 +24,7 @@ public class DownloadEmailAttachments {
         this.downloadDirectory = dir;
     }
 
-    public void downloadEmailAttachments(String host, String port, String userName, String password) throws NoSuchProviderException, MessagingException, IOException {
+    public void downloadEmailAttachments(String host, String port, String userName, String password) throws MessagingException, IOException {
         Properties properties = setMailServerProperties(host, port);
         Store store = setSessionStoreProperties(userName, password, properties);
         Folder inbox = store.getFolder("INBOX");
@@ -67,7 +67,7 @@ public class DownloadEmailAttachments {
         return downloadedAttachments;
     }
 
-    public Store setSessionStoreProperties(String userName, String password, Properties properties) throws NoSuchProviderException, MessagingException {
+    public Store setSessionStoreProperties(String userName, String password, Properties properties) throws MessagingException {
         Session session = Session.getDefaultInstance(properties);
 
         Store store = session.getStore("pop3");
