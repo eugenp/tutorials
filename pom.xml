@@ -347,7 +347,6 @@
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
-                <module>data-structures</module>
                 <module>deeplearning4j</module>
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -623,7 +622,6 @@
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
-                <module>data-structures</module>
                 <module>deeplearning4j</module>
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -933,6 +931,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-core-6</module>
+                <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
@@ -1133,6 +1132,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-core-6</module>
+                <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
                 <module>apache-httpclient-2</module>
