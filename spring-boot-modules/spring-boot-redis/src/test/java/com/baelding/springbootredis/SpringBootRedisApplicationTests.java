@@ -15,6 +15,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = RedisTestConfiguration.class)
@@ -66,11 +67,11 @@ class SpringBootRedisApplicationTests {
         // Given
         SessionCreateRequest session = SessionCreateRequest.builder().expirationInSeconds(300L).build();
 
-        int numberOfSessionsToCreate = random.nextInt(1, 5);
+        int numberOfSessionsToCreate = random.nextInt(5);
 
         List<Session> createdSessions = IntStream.range(0, numberOfSessionsToCreate)
           .mapToObj(i -> webTestClient.post().uri(V1_SESSIONS_ENDPOINT).bodyValue(session).exchange().expectStatus().isCreated().expectBody(Session.class).returnResult().getResponseBody())
-          .toList();
+          .collect(Collectors.toList());
 
         // WHEN
         webTestClient.get().uri(V1_SESSIONS_ENDPOINT).exchange().expectStatus()
