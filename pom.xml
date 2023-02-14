@@ -387,7 +387,6 @@
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-data</module>
 
@@ -670,7 +669,6 @@
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-data</module>
 
@@ -1074,6 +1072,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+				<module>libraries-2</module>
             </modules>
 
             <properties>
@@ -1275,6 +1274,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+				<module>libraries-2</module>
             </modules>
 
             <properties>

@@ -106,3 +106,7 @@ spring-boot-modules/spring-boot-properties-3/*.log
 
 # Localstack
 **/.localstack
+
+#libraries-2
+libraries-2/employee*
+libraries-2/src/test/resources/crawler4j/**
