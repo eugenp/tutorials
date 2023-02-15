@@ -65,6 +65,5 @@ public class ListDuplicate {
           .collect(Collectors.toSet());
         duplicates.addAll(set);
         return duplicates;
-
     }
 }
