@@ -13,7 +13,8 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 /**
  * Unit tests for different ways to send POST with RestTemplate.
  */
-public class RestTemplateMethodsTest {
+public class RestTemplateMethodsUnitTest
+{
 
     private final RestTemplate restTemplate = new RestTemplate();
 
