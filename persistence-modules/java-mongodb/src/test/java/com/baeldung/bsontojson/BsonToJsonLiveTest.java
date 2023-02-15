@@ -1,5 +1,6 @@
 package com.baeldung.bsontojson;
 
+import static dev.morphia.query.experimental.filters.Filters.eq;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -19,6 +20,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
 import dev.morphia.Datastore;
+import dev.morphia.DeleteOptions;
 import dev.morphia.Morphia;
 
 public class BsonToJsonLiveTest {
@@ -44,7 +46,12 @@ public class BsonToJsonLiveTest {
 
     @AfterClass
     public static void tearDown() {
-        datastore.delete(datastore.createQuery(Book.class));
+        datastore.find(Book.class)
+                .filter(eq("isbn", "isbn"))
+                .filter(eq("title", "title"))
+                .filter(eq("author", "author"))
+                .filter(eq("cost", "3.95"))
+                .delete(new DeleteOptions().multi(true));
     }
 
     @Test
