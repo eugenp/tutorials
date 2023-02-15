@@ -6,6 +6,7 @@ import org.baeldung.objectmapper.dao.CounterDao;
 import org.baeldung.objectmapper.dao.UserDao;
 import org.baeldung.objectmapper.entity.Counter;
 import org.baeldung.objectmapper.entity.User;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @Testcontainers
 @SpringBootTest
-class MapperLiveTest {
+public class MapperLiveTest {
 
     private static final String KEYSPACE_NAME = "baeldung";
 
@@ -68,7 +69,7 @@ class MapperLiveTest {
         User user = new User(1, "JohnDoe", 31);
         userDao.insertUser(user);
         User retrievedUser = userDao.getUserById(1);
-        assert retrievedUser.getUserName().equals(user.getUserName());
+        Assertions.assertEquals(retrievedUser.getUserName(), user.getUserName());
     }
 
     @Test
@@ -81,7 +82,7 @@ class MapperLiveTest {
         users = counterDao.getCounterById("users");
         long finalCount = users != null ? users.getCount(): 0;
 
-        assert finalCount - initialCount == 1;
+        Assertions.assertEquals(finalCount - initialCount, 1);
     }
 
     @Test
@@ -89,7 +90,7 @@ class MapperLiveTest {
         User user = new User(2, "JaneDoe", 20);
         userDao.insertUser(user);
         List<User> retrievedUsers = userDao.getUsersOlderThanAge(30).all();
-        assert retrievedUsers.size() == 1;
+        Assertions.assertEquals(retrievedUsers.size(), 1);
     }
 
 }
