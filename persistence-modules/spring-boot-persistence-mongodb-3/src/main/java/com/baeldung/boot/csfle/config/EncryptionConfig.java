@@ -4,8 +4,6 @@ import org.bson.BsonBinary;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
-import com.mongodb.client.vault.ClientEncryption;
-
 @Configuration
 public class EncryptionConfig {
 
@@ -21,17 +19,7 @@ public class EncryptionConfig {
     @Value("${com.baeldung.csfle.auto-decryption:false}")
     private Boolean autoDecryption;
 
-    private ClientEncryption encryption;
-
     private BsonBinary dataKeyId;
-
-    public void setEncryption(ClientEncryption encryption) {
-        this.encryption = encryption;
-    }
-
-    public ClientEncryption getEncryption() {
-        return encryption;
-    }
 
     public void setDataKeyId(BsonBinary dataKeyId) {
         this.dataKeyId = dataKeyId;
