@@ -42,7 +42,7 @@ public class Motorcycle extends Vehicle implements Serializable {
     public void addMotorcycleFeatures(String... features) {
         StringBuilder str = new StringBuilder(this.getFeatures());
         for (String feature : features) {
-            if (!str.isEmpty())
+            if (!str.toString().isEmpty())
                 str.append(", ");
             str.append(feature);
         }
