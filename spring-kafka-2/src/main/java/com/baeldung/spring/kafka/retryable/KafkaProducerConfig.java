@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.retrayable;
+package com.baeldung.spring.kafka.retryable;
 
 import java.util.HashMap;
 import java.util.Map;
