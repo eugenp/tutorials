@@ -13,6 +13,12 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
+    <properties>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <reflections.version>0.10.2</reflections.version>
+    </properties>
+    
 
     <build>
         <finalName>core-java-lang-5</finalName>
@@ -24,4 +30,18 @@
         </resources>
     </build>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+    
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflections.version}</version>
+        </dependency>
+    </dependencies>
+    
 </project>

@@ -6,3 +6,5 @@
 - [Java 8 Streams: Multiple Filters vs. Complex Condition](https://www.baeldung.com/java-streams-multiple-filters-vs-condition)
 - [Finding Max Date in List Using Streams](https://www.baeldung.com/java-max-date-list-streams)
 - [Batch Processing of Stream Data in Java](https://www.baeldung.com/java-stream-batch-processing)
+- [Stream to Iterable in Java](https://www.baeldung.com/java-stream-to-iterable)
+- [Understanding the Difference Between Stream.of() and IntStream.range()](https://www.baeldung.com/java-stream-of-and-intstream-range)
