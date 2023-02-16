@@ -1012,6 +1012,7 @@
                 <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
+				<module>libraries-2</module>
                 <module>libraries-7</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1066,7 +1067,6 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-				<module>libraries-2</module>
             </modules>
 
             <properties>
