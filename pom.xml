@@ -961,7 +961,6 @@
                 <module>quarkus-modules/quarkus-vs-springboot</module>
                 <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-boot-modules/spring-boot-3-observation</module>
@@ -1160,7 +1159,6 @@
                 <module>quarkus-modules/quarkus-vs-springboot</module>
                 <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-boot-modules/spring-boot-3-observation</module>
