@@ -411,9 +411,6 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
 
-
-                <module>quarkus-modules</module>
-
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
 
@@ -688,9 +685,6 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
 
-
-                <module>quarkus-modules</module>
-
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
 
@@ -951,8 +945,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
+                <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -1156,8 +1149,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
+                <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
