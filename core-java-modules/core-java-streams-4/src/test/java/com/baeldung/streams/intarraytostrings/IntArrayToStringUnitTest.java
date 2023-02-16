@@ -7,7 +7,7 @@ import static com.baeldung.streams.intarraytostrings.ArrayConversionUtils.conver
 import org.junit.Assert;
 import org.junit.Test;
 
-public class IntArrayToStingUnitTest {
+public class IntArrayToStringUnitTest {
 
     @Test
     public void whenConvertingIntegers_thenHandleStreamOfIntegers() {
