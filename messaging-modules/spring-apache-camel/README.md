@@ -9,6 +9,9 @@ This module contains articles about Spring with Apache Camel
 - [Using Apache Camel with Spring](http://www.baeldung.com/spring-apache-camel-tutorial)
 - [Unmarshalling a JSON Array Using camel-jackson](https://www.baeldung.com/java-camel-jackson-json-array)
 - [Apache Camel with Spring Boot](https://www.baeldung.com/apache-camel-spring-boot)
+- [Apache Camel Routes Testing in Spring Boot](https://www.baeldung.com/spring-boot-apache-camel-routes-testing)
+- [Apache Camel Conditional Routing](https://www.baeldung.com/spring-apache-camel-conditional-routing)
+- [Apache Camel Exception Handling](https://www.baeldung.com/java-apache-camel-exception-handling)
 
 ### Framework Versions:
 
