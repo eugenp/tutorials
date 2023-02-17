@@ -57,10 +57,10 @@
     </dependencies>
 
     <properties>
-        <http-component-version>4.4.6</http-component-version>
-        <drools-version>7.4.1.Final</drools-version>
-        <apache-poi-version>3.13</apache-poi-version>
-        <opta-planner-version>7.10.0.Final</opta-planner-version>
+        <http-component-version>4.4.16</http-component-version>
+        <drools-version>8.32.0.Final</drools-version>
+        <apache-poi-version>5.2.3</apache-poi-version>
+        <opta-planner-version>8.32.0.Final</opta-planner-version>
     </properties>
 
 </project>

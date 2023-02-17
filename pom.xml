@@ -342,7 +342,6 @@
                 <module>couchbase</module>
                 <module>custom-pmd</module>
 
-                <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -610,7 +609,6 @@
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
-                <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -927,6 +925,7 @@
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
+				<module>drools</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
@@ -1136,6 +1135,7 @@
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
+				<module>drools</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
