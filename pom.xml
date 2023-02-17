@@ -337,7 +337,6 @@
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -607,7 +606,6 @@
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -887,6 +885,7 @@
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
+                <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -1093,7 +1092,7 @@
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
-
+                <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
