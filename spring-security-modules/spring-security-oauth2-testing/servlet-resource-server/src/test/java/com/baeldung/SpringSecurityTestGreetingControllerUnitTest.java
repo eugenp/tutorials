@@ -9,11 +9,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.core.oidc.StandardClaimNames;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.ServletResourceServerApplication.GreetingController;
@@ -47,7 +50,9 @@ class SpringSecurityTestGreetingControllerUnitTest {
         when(messageService.greet()).thenReturn(greeting);
 
         // @formatter:off
-        api.perform(get("/greet").with(jwt()))
+        api.perform(get("/greet").with(jwt()
+                .authorities(List.of(new SimpleGrantedAuthority("admin"), new SimpleGrantedAuthority("ROLE_AUTHORIZED_PERSONNEL")))
+                .jwt(jwt -> jwt.claim(StandardClaimNames.PREFERRED_USERNAME, "ch4mpy"))))
             .andExpect(status().isOk())
             .andExpect(content().string(greeting));
         // @formatter:on

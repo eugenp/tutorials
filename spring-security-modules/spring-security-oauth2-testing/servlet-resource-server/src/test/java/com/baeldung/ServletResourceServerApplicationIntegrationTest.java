@@ -36,7 +36,9 @@ class ServletResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithMockJwtAuth(
+            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
+            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         // @formatter:off
         api.perform(get("/greet"))

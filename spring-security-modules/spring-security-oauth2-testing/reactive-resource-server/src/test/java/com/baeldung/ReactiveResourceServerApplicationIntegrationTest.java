@@ -24,7 +24,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
         // @formatter:off
         api.get().uri("/greet").exchange()
             .expectStatus().isUnauthorized();
@@ -32,7 +32,9 @@ class ReactiveResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithMockJwtAuth(
+            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
+            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         // @formatter:off
         api.get().uri("/greet").exchange()
@@ -48,7 +50,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
         // @formatter:off
         api.get().uri("/secured-route").exchange()
             .expectStatus().isUnauthorized();
@@ -81,7 +83,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
         // @formatter:off
         api.get().uri("/secured-method").exchange()
             .expectStatus().isUnauthorized();

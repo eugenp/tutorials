@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.ServletResourceServerApplication.GreetingController;
 import com.baeldung.ServletResourceServerApplication.MessageService;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.OpenIdClaims;
 import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockJwtAuth;
 
 @WebMvcTest(controllers = GreetingController.class, properties = { "server.ssl.enabled=false" })
@@ -42,7 +43,9 @@ class SpringAddonsGreetingControllerUnitTest {
     }
 
     @Test
-    @WithMockJwtAuth
+    @WithMockJwtAuth(
+            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
+            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(greeting);
