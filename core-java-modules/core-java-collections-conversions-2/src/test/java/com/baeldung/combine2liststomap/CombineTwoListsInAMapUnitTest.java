@@ -1,4 +1,4 @@
-package com.baeldung.combine2listsinmap;
+package com.baeldung.combine2liststomap;
 
 import static java.lang.Math.min;
 import static org.junit.jupiter.api.Assertions.assertEquals;
