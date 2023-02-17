@@ -34,12 +34,14 @@ class SpringAddonsGreetingControllerUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
         api.get().uri("/greet").exchange().expectStatus().isUnauthorized();
     }
 
     @Test
-    @WithMockJwtAuth(claims = @OpenIdClaims(preferredUsername = "Tonton Pirate"))
+    @WithMockJwtAuth(
+            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
+            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(Mono.just(greeting));
@@ -60,7 +62,7 @@ class SpringAddonsGreetingControllerUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
         api.get().uri("/secured-route").exchange().expectStatus().isUnauthorized();
     }
 
@@ -93,7 +95,7 @@ class SpringAddonsGreetingControllerUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
         api.get().uri("/secured-method").exchange().expectStatus().isUnauthorized();
     }
 

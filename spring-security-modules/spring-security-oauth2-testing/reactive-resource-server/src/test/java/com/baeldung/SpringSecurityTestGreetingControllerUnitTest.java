@@ -6,6 +6,8 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockAuthentication;
 import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockJwt;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
@@ -13,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.core.oidc.StandardClaimNames;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.baeldung.ReactiveResourceServerApplication.GreetingController;
@@ -39,7 +42,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*-----------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
         // @formatter:off
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get().uri("/greet").exchange()
@@ -53,7 +56,9 @@ class SpringSecurityTestGreetingControllerUnitTest {
         when(messageService.greet()).thenReturn(Mono.just(greeting));
 
         // @formatter:off
-        api.mutateWith(mockJwt())
+        api.mutateWith(mockJwt()
+                .authorities(List.of(new SimpleGrantedAuthority("admin"), new SimpleGrantedAuthority("ROLE_AUTHORIZED_PERSONNEL")))
+                .jwt(jwt -> jwt.claim(StandardClaimNames.PREFERRED_USERNAME, "ch4mpy")))
             .get().uri("/greet").exchange()
             .expectStatus().isOk()
             .expectBody(String.class).isEqualTo(greeting);
@@ -68,7 +73,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
         // @formatter:off
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get().uri("/secured-route").exchange()
@@ -104,7 +109,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
         // @formatter:off
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get().uri("/secured-method").exchange()
