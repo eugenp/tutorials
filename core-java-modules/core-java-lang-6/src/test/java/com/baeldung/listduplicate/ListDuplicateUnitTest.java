@@ -11,7 +11,7 @@ public class ListDuplicateUnitTest {
     private static ListDuplicate listDuplicate;
 
     @BeforeClass
-    public static void setup_tests() {
+    public static void setup() {
         listDuplicate = new ListDuplicate();
     }
 
