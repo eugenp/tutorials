@@ -129,7 +129,7 @@
         <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.1.0.Final</jbpm.version>
         <picocli.version>4.7.0</picocli.version>
-        <chronicle.map.version>3.17.2</chronicle.map.version>
+        <chronicle.map.version>3.24ea1</chronicle.map.version>
         <crawler4j.version>4.4.0</crawler4j.version>
         <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
         <mesos.library.version>1.11.0</mesos.library.version>
