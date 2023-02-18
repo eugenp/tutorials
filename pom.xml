@@ -354,7 +354,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
 
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
@@ -624,8 +623,6 @@
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
@@ -930,6 +927,7 @@
                 <module>spring-core-6</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
+                <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
@@ -1136,6 +1134,7 @@
                 <module>spring-core-6</module>
                 <module>ddd-contexts</module>
                 <module>docker-modules</module>
+                <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
