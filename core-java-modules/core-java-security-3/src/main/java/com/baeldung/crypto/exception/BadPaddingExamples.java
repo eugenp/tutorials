@@ -16,7 +16,7 @@ public class BadPaddingExamples {
         SecretKey encryptionKey = CryptoUtils.getKeyForText("BaeldungIsASuperCoolSite");
         SecretKey differentKey = CryptoUtils.getKeyForText("ThisGivesUsAnAlternative");
 
-        Cipher cipher = Cipher.getInstance("AES/ECB/ISO10126Padding");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 
         cipher.init(Cipher.ENCRYPT_MODE, encryptionKey);
         byte[] cipherTextBytes = cipher.doFinal(plainTextBytes);
@@ -28,12 +28,12 @@ public class BadPaddingExamples {
 
     public static byte[] encryptAndDecryptUsingDifferentAlgorithms(SecretKey key, IvParameterSpec ivParameterSpec,
             byte[] plainTextBytes) throws InvalidKeyException, GeneralSecurityException {
-        Cipher cipher = Cipher.getInstance("AES/CBC/ISO10126Padding");
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
         cipher.init(Cipher.ENCRYPT_MODE, key, ivParameterSpec);
         byte[] cipherTextBytes = cipher.doFinal(plainTextBytes);
 
-        cipher = Cipher.getInstance("AES/ECB/ISO10126Padding");
+        cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 
         cipher.init(Cipher.DECRYPT_MODE, key);
 
