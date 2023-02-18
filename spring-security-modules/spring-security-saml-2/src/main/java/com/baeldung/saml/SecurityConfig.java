@@ -27,11 +27,10 @@ public class SecurityConfig {
         Saml2MetadataFilter filter = new Saml2MetadataFilter(relyingPartyRegistrationResolver, new OpenSamlMetadataResolver());
 
         http.authorizeHttpRequests(authorize -> authorize.anyRequest()
-            .authenticated())
-            .saml2Login(withDefaults())
-            .saml2Logout(withDefaults())
-            .addFilterBefore(filter, Saml2WebSsoAuthenticationFilter.class);
+          .authenticated())
+          .saml2Login(withDefaults())
+          .saml2Logout(withDefaults())
+          .addFilterBefore(filter, Saml2WebSsoAuthenticationFilter.class);
         return http.build();
     }
-
 }
