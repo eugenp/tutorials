@@ -1,0 +1,15 @@
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          aws:
+            signing:
+              credentials:
+                - private-key-location: classpath:local.key
+                  certificate-location: classpath:local.crt
+            singlelogout:
+              binding: POST
+              response-url: "{baseUrl}/logout/saml2/slo"
+            assertingparty:
+              metadata-uri: "classpath:metadata/metadata-idp.xml"
