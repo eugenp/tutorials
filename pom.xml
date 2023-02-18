@@ -340,7 +340,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>custom-pmd</module>
 
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -609,7 +608,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>custom-pmd</module>
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -922,6 +920,7 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+				<module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
@@ -1131,6 +1130,7 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+				<module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
