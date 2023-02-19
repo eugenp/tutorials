@@ -31,7 +31,7 @@ The projects are broadly divided into 3 lists: first, second and heavy.
 
 Next, they are segregated further on the basis of the tests that we want to execute.
 
-Additionally, there are 2 profiles dedicated for JDK9 and above builds.
+Additionally, there are 2 profiles dedicated for JDK9 and above builds - *which require JDK 17*.
 
 We also have a parents profile to build only parent modules.
 
