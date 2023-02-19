@@ -39,7 +39,7 @@ public class HibernateKeywordsApplicationIntegrationTest {
 
     @Test
     void givenBrokenPhoneOrderWithReservedKeywords_whenNewObjectIsPersisted_thenItFails() {
-        BrokenPhoneOrder order = new BrokenPhoneOrder(randomUUID().toString(), "where");
+        BrokenPhoneOrder order = new BrokenPhoneOrder(randomUUID().toString(), "My House");
 
         assertThatExceptionOfType(PersistenceException.class).isThrownBy(() -> {
             session.persist(order);
