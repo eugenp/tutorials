@@ -331,7 +331,6 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -600,7 +599,6 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -880,6 +878,7 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -1088,6 +1087,7 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>

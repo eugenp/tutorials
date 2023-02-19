@@ -191,8 +191,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <avro.version>1.8.2</avro.version>
         <beam.version>2.19.0</beam.version>
         <bval.version>1.1.2</bval.version>
