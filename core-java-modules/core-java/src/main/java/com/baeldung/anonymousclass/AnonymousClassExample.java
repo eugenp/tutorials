@@ -9,5 +9,6 @@ public class AnonymousClassExample{
                 System.out.println("Thread: "+Thread.currentThread().getName()+" started");
             }
         });
+        t1.start();
     }
 }
