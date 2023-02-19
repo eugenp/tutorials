@@ -12,10 +12,9 @@ import static org.junit.Assert.assertTrue;
 public class DigitalSignatureUnitTest {
 
     String messagePath = "src/test/resources/digitalsignature/message.txt";
-
-    String senderKeyStore = "src/test/resources/digitalsignature/sender_keystore.p12";
-    String receiverKeyStore = "src/test/resources/digitalsignature/receiver_keystore.p12";
-    String storeType = "PKCS12";
+    String senderKeyStore = "src/test/resources/digitalsignature/sender_keystore.jks";
+    String receiverKeyStore = "src/test/resources/digitalsignature/receiver_keystore.jks";
+    String storeType = "JKS";
     String senderAlias = "senderKeyPair";
     String receiverAlias = "receiverKeyPair";
     char[] password = "changeit".toCharArray();
