@@ -136,7 +136,7 @@
                             <resultsDirectory>${project.basedir}/src/main/resources/dashboard</resultsDirectory>
                             <generateReports>true</generateReports>
                             <ignoreResultFailures>true</ignoreResultFailures>
-                            <testResultsTimestamp>false</testResultsTimestamp>
+                            <testResultsTimestamp>true</testResultsTimestamp>
                         </configuration>
                     </plugin>
                     <plugin>

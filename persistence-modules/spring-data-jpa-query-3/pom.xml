@@ -5,6 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-jpa-query-3</artifactId>
     <name>spring-data-jpa-query-3</name>
+    <properties>
+        <javafaker.version>0.15</javafaker.version>
+    </properties>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -21,6 +24,11 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
