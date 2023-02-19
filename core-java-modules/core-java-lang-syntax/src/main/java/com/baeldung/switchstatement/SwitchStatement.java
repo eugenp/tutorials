@@ -1,6 +1,5 @@
 package com.baeldung.switchstatement;
 
-import com.baeldung.loops.LoopsInJava;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,16 +26,16 @@ public class SwitchStatement {
         String result;
 
         switch (animal) {
-        case "DOG":
-        case "CAT":
-            result = "domestic animal";
-            break;
-        case "TIGER":
-            result = "wild animal";
-            break;
-        default:
-            result = "unknown animal";
-            break;
+            case "DOG":
+            case "CAT":
+                result = "domestic animal";
+                break;
+            case "TIGER":
+                result = "wild animal";
+                break;
+            default:
+                result = "unknown animal";
+                break;
         }
         return result;
     }
@@ -47,13 +46,13 @@ public class SwitchStatement {
 
         switch (animal) {
 
-        case "DOG":
-            LOGGER.debug("domestic animal");
-            result = "domestic animal";
+            case "DOG":
+                LOGGER.debug("domestic animal");
+                result = "domestic animal";
 
-        default:
-            LOGGER.debug("unknown animal");
-            result = "unknown animal";
+            default:
+                LOGGER.debug("unknown animal");
+                result = "unknown animal";
 
         }
         return result;
@@ -67,8 +66,8 @@ public class SwitchStatement {
 
         switch (animal) {
 
-        case dog:
-            result = "domestic animal";
+            case dog:
+                result = "domestic animal";
         }
         return result;
     }

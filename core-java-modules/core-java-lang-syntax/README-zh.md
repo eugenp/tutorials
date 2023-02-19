@@ -276,6 +276,190 @@
 
     请记住，尽管我们所展示的所有例子在语法上都是有效的，但它们只是起到教育作用，大多数时候我们会坚持使用常见的签名来完成我们的工作。
 
+## Java循环指南
+
+1. 概述
+
+    在这篇文章中，我们将研究Java语言的一个核心方面--使用循环重复执行一条或一组语句。
+
+2. 循环的介绍
+
+    在编程语言中，循环是一种促进执行一组指令的功能，直到控制的布尔表达式评估为假。
+
+    Java提供了不同类型的循环以满足任何编程需要。每种循环都有自己的目的和合适的用例来服务。
+
+    下面是我们在Java中可以找到的循环的类型。
+
+    - 简单的for循环
+    - 增强的for-each循环
+    - While 循环
+    - Do-While 循环
+
+3. for 循环
+
+    For 循环是一种控制结构，它允许我们通过增加和评估一个循环计数器来重复某些操作。
+
+    关于详细的例子，请看专门的帖子。[Java For Loop](https://www.baeldung.com/java-for-loop)。
+
+4. While 循环
+
+    while循环是Java最基本的循环语句。它在其控制的布尔表达式为真时重复一个语句或一个语句块。
+
+    关于详细的例子，请看专门的帖子。[Java While Loop](https://www.baeldung.com/java-while-loop)。
+
+5. 暂时循环（Do-While Loop
+
+    Do-while循环的工作原理与while循环相同，只是第一个条件的评估发生在循环的第一次迭代之后。
+
+    关于详细的例子，请看专门的帖子。[Java Do-While Loop](https://www.baeldung.com/java-do-while-loop)。
+
+6. 结语
+
+    在这个快速教程中，我们展示了Java编程语言中可用的不同类型的循环。
+
+    我们还看到，在合适的用例下，每个循环都有其特定的用途。我们讨论了适合于特定循环实现的情况。
+
+    像往常一样，可以在[GitHub](https://github.com/eugenp/tutorials/tree/master/core-java-modules/core-java-lang-syntax)上找到例子。
+
+### Java For Loop
+
+在这篇文章中，我们将看看Java语言的一个核心方面--使用for循环重复执行一条或一组语句。
+
+1. 简单的for循环
+
+    for 循环是一种控制结构，它允许我们通过增加和评估一个循环计数器来重复某些操作。
+
+    在第一次迭代之前，循环计数器被初始化，然后进行条件评估，接着进行步骤定义（通常是简单的增量）。
+
+    for循环的语法是。
+
+    ```txt
+    for (initialization; Boolean-expression; step) 
+    statement;
+    ```
+
+    让我们在一个简单的例子中看到它。
+
+    ```java
+    for (int i = 0; i < 5; i++) {
+        System.out.println("Simple for loop: i = " + i);
+    }
+    ```
+
+    for语句中使用的初始化、布尔表达式和步骤是可选的。下面是一个无限for循环的例子。
+
+    ```java
+    for ( ; ; ) {
+        // Infinite for loop
+    }
+    ```
+
+    1. 带标签的for循环
+
+        我们也可以有标记的for循环。如果我们有嵌套的for循环，这很有用，这样我们就可以从特定的for循环中break/continue下去。
+
+        ```java
+        aa: for (int i = 1; i <= 3; i++) {
+            if (i == 1)
+            continue;
+            bb: for (int j = 1; j <= 3; j++) {
+                if (i == 2 && j == 2) {
+                    break aa;
+                }
+                System.out.println(i + " " + j);
+            }
+        }
+        ```
+
+2. 增强型for循环
+
+    从Java 5开始，我们有了第二种for循环，叫做增强型for，它使我们更容易遍历数组或集合中的所有元素。
+
+    增强型for循环的语法是。
+
+    ```txt
+    for(Type item : items)
+    statement;
+    ```
+
+    由于这种循环与标准for循环相比是简化的，所以我们在初始化循环时只需要声明两件事。
+
+    - 我们目前正在迭代的元素的句柄handle
+    - 我们正在迭代的源数组/集合(array/collection)
+
+    因此，我们可以这样说。对于 items 中的每个元素，将该元素分配给 item 变量，然后运行循环的主体。
+
+    让我们看一下这个简单的例子。
+
+    ```java
+    int[] intArr = { 0,1,2,3,4 };
+    for (int num : intArr) {
+        System.out.println("Enhanced for-each loop: i = " + num);
+    }
+    ```
+
+    我们可以用它来遍历各种Java数据结构。
+
+    给定一个 `List<String>` list对象 - 我们可以对其进行迭代。
+
+    ```java
+    for (String item : list) {
+        System.out.println(item);
+    }
+    ```
+
+    我们同样可以对一个 `Set<String>` 集合进行迭代。
+
+    ```java
+    for (String item : set) {
+        System.out.println(item);
+    }
+    ```
+
+    而且，给定一个 `Map<String,Integer>` map，我们也可以迭代它。
+
+    ```java
+    for (Entry<String, Integer> entry : map.entrySet()) {
+        System.out.println(
+        "Key: " + entry.getKey() + 
+        " - " + 
+        "Value: " + entry.getValue());
+    }
+    ```
+
+    1. Iterable.forEach()
+
+        从Java 8开始，我们可以用一种稍微不同的方式来利用for-each循环。我们现在在Iterable接口中有一个专门的forEach()方法，它接受一个代表我们要执行的动作的lambda表达式。
+
+        在内部，它只是将工作委托给了标准循环。
+
+        ```java
+        default void forEach(Consumer<? super T> action) {
+            Objects.requireNonNull(action);
+            for (T t : this) {
+                action.accept(t);
+            }
+        }
+        ```
+
+        让我们看一下这个例子。
+
+        ```java
+        List<String> names = new ArrayList<>();
+        names.add("Larry");
+        names.add("Steve");
+        names.add("James");
+        names.add("Conan");
+        names.add("Ellen");
+        names.forEach(name -> System.out.println(name));
+        ```
+
+3. 总结
+
+    在这个快速教程中，我们探讨了Java的for循环。
+
+    一如既往，我们可以在GitHub上找到一些例子。
+
 ## Relevant Articles
 
 - [x] [Introduction to Java Primitives](https://www.baeldung.com/java-primitives)
@@ -283,11 +467,11 @@
 - [The Basics of Java Generics](https://www.baeldung.com/java-generics)
 - [Java Primitive Conversions](https://www.baeldung.com/java-primitive-conversions)
 - [A Guide to Creating Objects in Java](https://www.baeldung.com/java-initialization)
-- [A Guide to Java Loops](https://www.baeldung.com/java-loops)
+- [x] [A Guide to Java Loops](https://www.baeldung.com/java-loops)
 - [Varargs in Java](https://www.baeldung.com/java-varargs)
 - [Java Switch Statement](https://www.baeldung.com/java-switch)
 - [Breaking Out of Nested Loops](https://www.baeldung.com/java-breaking-out-nested-loop)
 - [Java Do-While Loop](https://www.baeldung.com/java-do-while-loop)
 - [Java While Loop](https://www.baeldung.com/java-while-loop)
-- [Java For Loop](https://www.baeldung.com/java-for-loop)
+- [x] [Java For Loop](https://www.baeldung.com/java-for-loop)
 - [[More -->]](/core-java-modules/core-java-lang-syntax-2)
