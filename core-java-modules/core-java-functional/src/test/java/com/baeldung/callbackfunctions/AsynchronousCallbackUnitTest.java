@@ -6,8 +6,7 @@ import com.baeldung.callbackfunctions.EventListener;
 import com.baeldung.callbackfunctions.asynchronous.AsynchronousEventConsumer;
 import com.baeldung.callbackfunctions.asynchronous.AsynchronousEventListenerImpl;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class AsynchronousCallbackUnitTest {
 
@@ -17,6 +16,6 @@ public class AsynchronousCallbackUnitTest {
         AsynchronousEventConsumer asynchronousEventListenerConsumer = new AsynchronousEventConsumer(listener);
         asynchronousEventListenerConsumer.doAsynchronousOperation();
 
-        verify(listener, times(1)).onTrigger();
+        verify(listener, timeout(1000).times(1)).onTrigger();
     }
 }

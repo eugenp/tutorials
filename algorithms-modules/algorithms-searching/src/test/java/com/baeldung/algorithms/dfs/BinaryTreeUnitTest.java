@@ -1,15 +1,15 @@
 package com.baeldung.algorithms.dfs;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-public class BinaryTreeUnitTest {
+class BinaryTreeUnitTest {
 
     @Test
-    public void givenABinaryTree_WhenAddingElements_ThenTreeNotEmpty() {
+    void givenABinaryTree_WhenAddingElements_ThenTreeNotEmpty() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -17,7 +17,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenAddingElements_ThenTreeContainsThoseElements() {
+    void givenABinaryTree_WhenAddingElements_ThenTreeContainsThoseElements() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -28,7 +28,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenAddingExistingElement_ThenElementIsNotAdded() {
+    void givenABinaryTree_WhenAddingExistingElement_ThenElementIsNotAdded() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -40,7 +40,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenLookingForNonExistingElement_ThenReturnsFalse() {
+    void givenABinaryTree_WhenLookingForNonExistingElement_ThenReturnsFalse() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -48,7 +48,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenDeletingElements_ThenTreeDoesNotContainThoseElements() {
+    void givenABinaryTree_WhenDeletingElements_ThenTreeDoesNotContainThoseElements() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -58,7 +58,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenDeletingNonExistingElement_ThenTreeDoesNotDelete() {
+    void givenABinaryTree_WhenDeletingNonExistingElement_ThenTreeDoesNotDelete() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -71,7 +71,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void it_deletes_the_root() {
+    void it_deletes_the_root() {
         int value = 12;
         BinaryTree bt = new BinaryTree();
         bt.add(value);
@@ -82,7 +82,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenTraversingInOrder_ThenPrintValues() {
+    void givenABinaryTree_WhenTraversingInOrder_ThenPrintValues() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -92,7 +92,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenTraversingPreOrder_ThenPrintValues() {
+    void givenABinaryTree_WhenTraversingPreOrder_ThenPrintValues() {
 
         BinaryTree bt = createBinaryTree();
 
@@ -102,7 +102,7 @@ public class BinaryTreeUnitTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenTraversingPostOrder_ThenPrintValues() {
+    void givenABinaryTree_WhenTraversingPostOrder_ThenPrintValues() {
 
         BinaryTree bt = createBinaryTree();
 
