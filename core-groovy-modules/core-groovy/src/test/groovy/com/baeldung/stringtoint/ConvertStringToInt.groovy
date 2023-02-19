@@ -1,110 +1,119 @@
 package com.baeldung.stringtoint
 
-import org.junit.Test
+import spock.lang.Specification
 
 import java.text.DecimalFormat
 
-import static org.junit.Assert.assertEquals
-import static org.junit.Assert.assertNull
+class ConvertStringToInt extends Specification {
 
-class ConvertStringToInt {
+    final String STRING_NUM = "123"
+    final int EXPECTED_INT = 123
 
-    @Test
-    void givenString_whenUsingAsInteger_thenConvertToInteger() {
-        def stringNum = "123"
+    def "givenString_whenUsingAsInteger_thenConvertToInteger"() {
+        given:
         def invalidString = "123a"
-        Integer expectedInteger = 123
-        Integer integerNum = stringNum as Integer
+        Integer integerNum = STRING_NUM as Integer
+
+        when:
         def intNum = invalidString?.isInteger() ? invalidString as Integer : null
 
-        assertNull(null, intNum)
-        assertEquals(integerNum, expectedInteger)
+        then:
+        intNum == null
+        integerNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingAsInt_thenConvertToInt() {
-        def stringNum = "123"
-        int expectedInt = 123
-        int intNum = stringNum as int
+    def "givenString_whenUsingAsInt_thenConvertToInt"() {
+        given:
+        int intNum = STRING_NUM as int
 
-        assertEquals(intNum, expectedInt)
+        expect:
+        intNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingToInteger_thenConvertToInteger() {
-        def stringNum = "123"
-        int expectedInt = 123
-        int intNum = stringNum.toInteger()
+    def "givenString_whenUsingToInteger_thenConvertToInteger"() {
+        given:
+        int intNum = STRING_NUM.toInteger()
 
-        assertEquals(intNum, expectedInt)
+        expect:
+        intNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingParseInt_thenConvertToInteger() {
-        def stringNum = "123"
-        int expectedInt = 123
-        int intNum = Integer.parseInt(stringNum)
+    def "givenString_whenUsingParseInt_thenConvertToInteger"() {
+        given:
+        int intNum = Integer.parseInt(STRING_NUM)
 
-        assertEquals(intNum, expectedInt)
+        expect:
+        intNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingValueOf_thenConvertToInteger() {
-        def stringNum = "123"
-        int expectedInt = 123
-        int intNum = Integer.valueOf(stringNum)
+    def "givenString_whenUsingValueOf_thenConvertToInteger"() {
+        given:
+        int intNum = Integer.valueOf(STRING_NUM)
 
-        assertEquals(intNum, expectedInt)
+        expect:
+        intNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingIntValue_thenConvertToInteger() {
-        def stringNum = "123"
-        int expectedInt = 123
-        int intNum = new Integer(stringNum).intValue()
+    def "givenString_whenUsingIntValue_thenConvertToInteger"() {
+        given:
+        int intNum = Integer.valueOf(STRING_NUM).intValue()
 
-        assertEquals(intNum, expectedInt)
+        expect:
+        intNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingNewInteger_thenConvertToInteger() {
-        def stringNum = "123"
-        int expectedInt = 123
-        int intNum = new Integer(stringNum)
+    def "givenString_whenUsingNewInteger_thenConvertToInteger"() {
+        given:
+        Integer intNum = Integer.valueOf(STRING_NUM)
 
-        assertEquals(intNum, expectedInt)
+        expect:
+        intNum == EXPECTED_INT
     }
 
-    @Test
-    void givenString_whenUsingDecimalFormat_thenConvertToInteger() {
-        def stringNum = "123"
-        int expectedInt = 123
+    def "givenString_whenUsingDecimalFormat_thenConvertToInteger"() {
+        given:
         DecimalFormat decimalFormat = new DecimalFormat("#")
-        int intNum = decimalFormat.parse(stringNum).intValue()
 
-        assertEquals(intNum, expectedInt)
+        when:
+        int intNum = decimalFormat.parse(STRING_NUM).intValue()
+
+        then:
+        intNum == EXPECTED_INT
     }
 
-    @Test(expected = NumberFormatException.class)
-    void givenInvalidString_whenUsingAs_thenThrowNumberFormatException() {
+    def "givenInvalidString_whenUsingAs_thenThrowNumberFormatException"() {
+        given:
         def invalidString = "123a"
+
+        when:
         invalidString as Integer
+
+        then:
+        thrown(NumberFormatException)
     }
 
-    @Test(expected = NullPointerException.class)
-    void givenNullString_whenUsingToInteger_thenThrowNullPointerException() {
+    def "givenNullString_whenUsingToInteger_thenThrowNullPointerException"() {
+        given:
         def invalidString = null
+
+        when:
         invalidString.toInteger()
+
+        then:
+        thrown(NullPointerException)
     }
 
-    @Test
-    void givenString_whenUsingIsInteger_thenCheckIfCorrectValue() {
+    def "givenString_whenUsingIsInteger_thenCheckIfCorrectValue"() {
+        given:
         def invalidString = "123a"
         def validString = "123"
+
+        when:
         def invalidNum = invalidString?.isInteger() ? invalidString as Integer : false
         def correctNum = validString?.isInteger() ? validString as Integer : false
 
-        assertEquals(false, invalidNum)
-        assertEquals(123, correctNum)
+        then:
+        !invalidNum
+        correctNum == 123
     }
 }
