@@ -18,13 +18,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>${keycloak.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-bom</artifactId>
                 <version>${log4j2.version}</version>
@@ -44,10 +37,9 @@
             <artifactId>springfox-boot-starter</artifactId>
             <version>${springfox.version}</version>
         </dependency>
-        <!-- Authentication with with Keycloak -->
         <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-spring-boot-starter</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <!-- Authorization with MethodSecurity (@Secured) - optional -->
         <dependency>
@@ -68,7 +60,6 @@
     <properties>
         <spring-boot.version>2.4.5</spring-boot.version>
         <springfox.version>3.0.0</springfox.version>
-        <keycloak.version>15.0.2</keycloak.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 

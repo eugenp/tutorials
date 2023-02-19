@@ -40,7 +40,7 @@ public class OpenAPISecurityConfig {
     private SecurityScheme authenticationScheme() {
         return new OAuth2SchemeBuilder("implicit")
           .name("my_oAuth_security_schema")
-          .authorizationUrl(authServerUrl + "/realms/" + realm)
+          .authorizationUrl(authServerUrl + "/realms/" + realm + "/protocol/openid-connect/auth")
           .scopes(authorizationScopes())
           .build();
     }
@@ -74,7 +74,6 @@ public class OpenAPISecurityConfig {
           .clientSecret(clientSecret)
           .realm(realm)
           .appName(clientId)
-          .scopeSeparator(",")
           .additionalQueryStringParams(null)
           .useBasicAuthenticationWithAccessCodeGrant(false)
           .build();
