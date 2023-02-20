@@ -22,7 +22,7 @@ public class KeycloakSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain1(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf()
             .disable()
             .authorizeHttpRequests(auth -> auth.anyRequest()
