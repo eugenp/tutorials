@@ -1,4 +1,4 @@
-package com.baeldung.avro.util.serealization;
+package com.baeldung.avro.util.serialization;
 
 import com.baeldung.avro.util.model.Active;
 import com.baeldung.avro.util.model.AvroHttpRequest;
@@ -13,16 +13,16 @@ import java.util.Objects;
 
 import static org.junit.Assert.*;
 
-public class AvroSerealizerDeSerealizerIntegrationTest {
+public class AvroSerializerDeSerializerIntegrationTest {
 
-    AvroSerealizer serealizer;
-    AvroDeSerealizer deSerealizer;
+    AvroSerializer serializer;
+    AvroDeSerializer deserializer;
     AvroHttpRequest request;
 
     @Before
     public void setUp() throws Exception {
-        serealizer = new AvroSerealizer();
-        deSerealizer = new AvroDeSerealizer();
+        serializer = new AvroSerializer();
+        deserializer = new AvroDeSerializer();
 
         ClientIdentifier clientIdentifier = ClientIdentifier.newBuilder()
             .setHostName("localhost")
@@ -49,22 +49,22 @@ public class AvroSerealizerDeSerealizerIntegrationTest {
 
     @Test
     public void WhenSerializedUsingJSONEncoder_thenObjectGetsSerialized() {
-        byte[] data = serealizer.serealizeAvroHttpRequestJSON(request);
+        byte[] data = serializer.serializeAvroHttpRequestJSON(request);
         assertTrue(Objects.nonNull(data));
         assertTrue(data.length > 0);
     }
 
     @Test
     public void WhenSerializedUsingBinaryEncoder_thenObjectGetsSerialized() {
-        byte[] data = serealizer.serealizeAvroHttpRequestBinary(request);
+        byte[] data = serializer.serializeAvroHttpRequestBinary(request);
         assertTrue(Objects.nonNull(data));
         assertTrue(data.length > 0);
     }
 
     @Test
     public void WhenDeserializeUsingJSONDecoder_thenActualAndExpectedObjectsAreEqual() {
-        byte[] data = serealizer.serealizeAvroHttpRequestJSON(request);
-        AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestJSON(data);
+        byte[] data = serializer.serializeAvroHttpRequestJSON(request);
+        AvroHttpRequest actualRequest = deserializer.deSerializeAvroHttpRequestJSON(data);
         assertEquals(actualRequest, request);
         assertTrue(actualRequest.getRequestTime()
             .equals(request.getRequestTime()));
@@ -72,12 +72,12 @@ public class AvroSerealizerDeSerealizerIntegrationTest {
 
     @Test
     public void WhenDeserializeUsingBinaryecoder_thenActualAndExpectedObjectsAreEqual() {
-        byte[] data = serealizer.serealizeAvroHttpRequestBinary(request);
-        AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestBinary(data);
+        byte[] data = serializer.serializeAvroHttpRequestBinary(request);
+        AvroHttpRequest actualRequest = deserializer.deSerializeAvroHttpRequestBinary(data);
         assertEquals(actualRequest, request);
         assertTrue(actualRequest.getRequestTime()
             .equals(request.getRequestTime()));
     }
-    
+
 }
 
