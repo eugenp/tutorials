@@ -461,7 +461,6 @@
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
@@ -718,7 +717,6 @@
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
@@ -935,6 +933,7 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-modules/quarkus-vs-springboot</module>
                 <module>quarkus-modules/quarkus-jandex</module>
+                <module>spring-aop</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -1129,6 +1128,7 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+                <module>spring-aop</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
