@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.camel.file.FileProcessor;
+import com.baeldung.camel.apache.file.FileProcessor;
 
 
 public class FileProcessorIntegrationTest {
