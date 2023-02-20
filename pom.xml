@@ -382,7 +382,6 @@
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
-                <module>libraries-testing</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
@@ -649,7 +648,6 @@
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
-                <module>libraries-testing</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
@@ -928,6 +926,7 @@
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
+                <module>libraries-testing</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
                 <module>maven-modules/multimodulemavenproject</module>
@@ -1138,6 +1137,7 @@
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
+                <module>libraries-testing</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
                 <module>maven-modules/multimodulemavenproject</module>
