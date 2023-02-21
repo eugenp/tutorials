@@ -331,7 +331,6 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -340,7 +339,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>custom-pmd</module>
 
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -600,7 +598,6 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -609,7 +606,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>custom-pmd</module>
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -880,6 +876,7 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -922,6 +919,7 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+				<module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
@@ -939,7 +937,6 @@
                 <module>quarkus-modules/quarkus-vs-springboot</module>
                 <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-boot-modules/spring-boot-3-observation</module>
@@ -1055,6 +1052,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
             <properties>
@@ -1088,6 +1086,7 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -1131,6 +1130,7 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+				<module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
@@ -1148,7 +1148,6 @@
                 <module>quarkus-modules/quarkus-vs-springboot</module>
                 <module>quarkus-modules/quarkus-jandex</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-boot-modules/spring-boot-3-observation</module>
@@ -1267,6 +1266,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
             <properties>

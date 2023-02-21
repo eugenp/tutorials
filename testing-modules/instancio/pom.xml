@@ -51,7 +51,7 @@
     </dependencies>
 
     <properties>
-        <instancio.version>2.6.0</instancio.version>
+        <instancio.version>2.9.0</instancio.version>
         <jackson.version>2.14.1</jackson.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
     </properties>
