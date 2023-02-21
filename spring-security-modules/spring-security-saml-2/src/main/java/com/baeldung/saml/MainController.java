@@ -12,12 +12,8 @@ public class MainController {
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal Saml2AuthenticatedPrincipal principal) {
         String emailAddress = principal.getFirstAttribute("email");
-
-        System.out.println("emailAddress=" + emailAddress);
-
         model.addAttribute("emailAddress", emailAddress);
         model.addAttribute("userAttributes", principal.getAttributes());
         return "index";
     }
-
 }
