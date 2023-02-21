@@ -1,7 +1,6 @@
 package com.baeldung.commons.io.csv;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.apache.commons.csv.CSVFormat;
@@ -18,13 +17,6 @@ import java.util.Map;
 
 class CSVReaderWriterUnitTest {
 
-    CSVFormat.Builder csvFormatBuilder;
-
-    @BeforeEach
-    void setUp(){
-        csvFormatBuilder = CSVFormat.DEFAULT.builder();
-    }
-
     public static final Map<String, String> AUTHOR_BOOK_MAP = Collections.unmodifiableMap(new LinkedHashMap<String, String>() {
         {
             put("Dan Simmons", "Hyperion");
@@ -39,12 +31,12 @@ class CSVReaderWriterUnitTest {
 
     public static final String EXPECTED_FILESTREAM = "author,title\r\n" + "Dan Simmons,Hyperion\r\n" + "Douglas Adams,The Hitchhiker's Guide to the Galaxy";
 
-
     @Test
     void givenCSVFile_whenReadWithArrayHeader_thenContentsAsExpected() throws IOException {
         Reader in = new FileReader("src/test/resources/book.csv");
 
-        CSVFormat csvFormat = csvFormatBuilder.setHeader(HEADERS)
+        CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
+            .setHeader(HEADERS)
             .setSkipHeaderRecord(true)
             .build();
 
@@ -61,7 +53,8 @@ class CSVReaderWriterUnitTest {
     void givenCSVFile_whenReadWithEnumHeader_thenContentsAsExpected() throws IOException {
         Reader in = new FileReader("src/test/resources/book.csv");
 
-        CSVFormat csvFormat = csvFormatBuilder.setHeader(BookHeaders.class)
+        CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
+            .setHeader(BookHeaders.class)
             .setSkipHeaderRecord(true)
             .build();
 
@@ -78,7 +71,7 @@ class CSVReaderWriterUnitTest {
     void givenAuthorBookMap_whenWrittenToStream_thenOutputStreamAsExpected() throws IOException {
         StringWriter sw = new StringWriter();
 
-        CSVFormat csvFormat = csvFormatBuilder
+        CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
             .setHeader(BookHeaders.class)
             .build();
 
@@ -91,7 +84,8 @@ class CSVReaderWriterUnitTest {
                 }
             });
         }
-        assertEquals(EXPECTED_FILESTREAM, sw.toString().trim());
+        assertEquals(EXPECTED_FILESTREAM, sw.toString()
+            .trim());
     }
 
 }
