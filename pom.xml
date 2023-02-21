@@ -339,17 +339,9 @@
 
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>custom-pmd</module>
-                <module>data-structures</module>
-                <module>deeplearning4j</module>
+
                 <module>drools</module>
-
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-
-
-                <module>geotools</module>
-
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
@@ -463,7 +455,6 @@
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-reactive-modules</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -609,17 +600,8 @@
 
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>custom-pmd</module>
-                <module>data-structures</module>
-                <module>deeplearning4j</module>
                 <module>drools</module>
-
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-
-
-                <module>geotools</module>
-
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
@@ -723,7 +705,6 @@
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-reactive-modules</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>spring-batch</module>
@@ -924,8 +905,11 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+				<module>custom-pmd</module>
                 <module>spring-core-6</module>
+                <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
@@ -939,11 +923,11 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-boot-modules/spring-boot-3-observation</module>
                 <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
+                <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
@@ -951,6 +935,7 @@
                 <module>rxjava-modules</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>geotools</module>
 
                 <!-- Modules from default-first -->
 
@@ -1055,6 +1040,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
             <properties>
@@ -1131,8 +1117,11 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+				<module>custom-pmd</module>
                 <module>spring-core-6</module>
+                <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
@@ -1146,11 +1135,11 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
                 <module>spring-boot-modules/spring-boot-3-observation</module>
                 <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
+                <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
@@ -1158,6 +1147,7 @@
                 <module>rxjava-modules</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>geotools</module>
 
                 <!-- Modules from default-first -->
 
@@ -1265,6 +1255,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
             <properties>
