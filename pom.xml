@@ -351,7 +351,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
-                <module>httpclient4</module>
+                <module>apache-httpclient4</module>
 
 
                 <module>jackson-modules</module>
@@ -618,7 +618,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
-                <module>httpclient4</module>
+                <module>apache-httpclient4</module>
 
 
                 <module>jackson-modules</module>
