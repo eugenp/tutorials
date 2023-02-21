@@ -934,8 +934,6 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>quarkus-modules/quarkus-vs-springboot</module>
                 <module>quarkus-modules/quarkus-jandex</module>
-                <module>spring-aop</module>
-                <module>spring-aop-2</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-camel</module>
                 <module>spring-boot-modules/spring-boot-3</module>
