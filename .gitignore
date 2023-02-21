@@ -108,3 +108,6 @@ spring-boot-modules/spring-boot-properties-3/*.log
 
 # Localstack
 **/.localstack
+
+#web-modules/ninja
+devDb*.db
