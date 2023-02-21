@@ -31,5 +31,5 @@ public interface ZKManager {
      * @throws KeeperException
      * @throws InterruptedException
      */
-    public void update(String path, byte[] data) throws KeeperException, InterruptedException, KeeperException;
+    public void update(String path, byte[] data) throws InterruptedException, KeeperException;
 }

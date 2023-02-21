@@ -34,13 +34,13 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
         另外，我们也可以生成一个Spring Boot项目，并在POM文件中手动添加一些依赖项。
 
-        这些依赖关系将在所有项目之间共享。
+        这些依赖关系将在所有项目之间共享（通过引入共同 parent pom）。
 
         ```xml
         <parent>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.7.5</version>
+            <version>2.7.8</version>
             <relativePath/>
         </parent>
 
@@ -50,6 +50,11 @@ This module contains articles about bootstrapping Spring Cloud applications that
                 <artifactId>spring-boot-starter-test</artifactId>
                 <scope>test</scope>
             </dependency>
+            <!-- 需要为配置服务器添加一个依赖项。 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+            </dependency>
         </dependencies> 
 
         <dependencyManagement>
@@ -57,7 +62,7 @@ This module contains articles about bootstrapping Spring Cloud applications that
                 <dependency>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-dependencies</artifactId>
-                    <version>2</version>
+                    <version>2021.0.5</version>
                     <type>pom</type>
                     <scope>import</scope>
                 </dependency>
@@ -74,16 +79,7 @@ This module contains articles about bootstrapping Spring Cloud applications that
         </build>
         ```
 
-        让我们为配置服务器添加一个依赖项。
-
-        ```xml
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>
-        ```
-
-        作为参考，我们可以在Maven中心找到最新版本（[spring-cloud-dependencies](https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.springframework.cloud%22%20AND%20a%3A%22spring-cloud-dependencies%22), [test](https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.springframework.boot%22%20AND%20a%3A%22spring-boot-starter-test%22), [config-server](https://search.maven.org/classic/#search%7Cgav%7C1%7Cg%3A%22org.springframework.cloud%22%20AND%20a%3A%22spring-cloud-config-server%22)）。
+        > 注意：spring-boot 与 spring-cloud 兼容性，具体参见 <https://spring.io/projects/spring-cloud>。
 
     2. Spring配置
 
@@ -101,15 +97,11 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
         让我们在 src/main/resources 中添加 application.properties。
 
-        ```properties
-        server.port=8081
-        spring.application.name=config
-        spring.cloud.config.server.git.uri=file://${user.home}/application-config
-        ```
+        其中配置服务器最重要的设置是 git.uri 参数。目前这个参数被设置为一个相对的文件路径，在Windows下一般解析为c:\Users\{username}或在*nix下为/Users/{username}/。这个属性指向一个Git仓库，所有其他应用程序的属性文件都存储在那里。如果有必要，它可以被设置为一个绝对文件路径。
 
-        配置服务器最重要的设置是 git.uri 参数。目前这个参数被设置为一个相对的文件路径，在Windows下一般解析为c:\Users\{username}或在*nix下为/Users/{username}/。这个属性指向一个Git仓库，所有其他应用程序的属性文件都存储在那里。如果有必要，它可以被设置为一个绝对文件路径。
+        *nix / macOS 查看user路径命令：`% echo $HOME`
 
-        **提示**：在windows机器上用 "file:///"作为值的前缀，在*nix上则用 "file://"。
+        - [ ] 提示：在windows机器上用 "file:///" 作为值的前缀，在*nix上则用 "file://" 。
 
     4. Git 仓库
 
@@ -127,9 +119,9 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
         在我们后续的服务器中，我们将希望它们的应用属性由这个配置服务器管理。要做到这一点，我们实际上需要做一点鸡生蛋蛋生鸡的事。在每个应用程序中配置属性，知道如何与这个服务器对话。
 
-        这是一个引导过程，这些应用程序中的每一个都将有一个叫做bootstrap.properties的文件。它将包含像application.properties一样的属性，但有一个转折。
+        这是一个引导过程，这些应用程序中的每一个都将有一个叫做bootstrap.properties的文件。它将包含像application.properties一样的属性，但有一个转折(twist)。
 
-        父级Spring ApplicationContext会先加载bootstrap.properties。这一点至关重要，这样Config Server才能开始管理application.properties中的属性。正是这个特殊的 ApplicationContext 也将解密任何加密的应用程序属性。
+        父级Spring ApplicationContext会先加载 bootstrap.properties。这一点至关重要，这样Config Server才能开始管理application.properties中的属性。正是这个特殊的 ApplicationContext 也将解密任何加密的应用程序属性。
 
         Bootstrap.properties是为了让配置服务器准备好，而application.properties则是为了我们的应用程序的特定属性。不过，从技术上讲，可以将应用程序属性放在 bootstrap.properties 中。
 
@@ -145,7 +137,7 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
     1. 设置
 
-        我们将再次导航到[start.spring.io](https://start.spring.io/)。将工件设置为 "发现"。搜索 "eureka服务器" 并添加该依赖。搜索 "config client" 并添加该依赖项。最后，生成该项目。
+        我们将再次导航到[start.spring.io](https://start.spring.io/)。将工件设置为 "discovery"。搜索 "eureka server" 并添加该依赖。搜索 "config client" 并添加该依赖项。最后，生成该项目。
 
         或者，我们可以创建一个Spring Boot项目，从config server中复制POM的内容，然后换入这些依赖项。
 
@@ -156,11 +148,9 @@ This module contains articles about bootstrapping Spring Cloud applications that
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         ```
-
-        作为参考，我们将在Maven中心找到这些捆绑包（config-client、eureka-server）。
 
     2. Spring配置
 
@@ -187,7 +177,11 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
         这些属性将让发现服务器在启动时查询配置服务器。
 
-        其次，我们将discovery.properties添加到我们的Git存储库中
+        其次，我们将discovery.properties添加到我们的Git存储库中。
+
+        `cd $HOME/application-config`
+
+        vim discovery.properties
 
         ```properties
         spring.application.name=discovery
@@ -206,20 +200,20 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
         让我们把文件提交到 Git 仓库。否则，该文件将不会被检测到。
 
-    4. 向配置服务器添加依赖关系
+    4. 向配置服务器(Config Server)添加依赖关系
 
         在配置服务器的POM文件中添加这个依赖关系。
 
         ```xml
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         ```
 
         作为参考，我们可以在Maven中心找到该包（eureka-client）。
 
-        在配置服务器的src/main/resources中的application.properties文件中添加这些属性。
+        在配置服务器(Config)的src/main/resources中的application.properties文件中添加这些属性。
 
         ```properties
         eureka.client.region = default
@@ -229,7 +223,43 @@ This module contains articles about bootstrapping Spring Cloud applications that
 
     5. 运行
 
-        使用相同的命令启动发现服务器，mvn spring-boot:run。命令行的输出应该包括。
+        使用相同的命令启动发现服务器(discovery)，mvn spring-boot:run。
+
+        ```log
+        ***************************
+        APPLICATION FAILED TO START
+        ***************************
+        Description:
+        No spring.config.import property has been defined
+        Action:
+        Add a spring.config.import=configserver: property to your configuration.
+                If configuration is not required add spring.config.import=optional:configserver: instead.
+                To disable this check, set spring.cloud.config.enabled=false or 
+                spring.cloud.config.import-check.enabled=false.
+        ```
+
+        产生问题的原因是bootstrap.properties比application.properties的优先级要高，由于bootstrap.properties是系统级的资源配置文件，是用在程序引导执行时更加早期配置信息读取；而application.properties是用户级的资源配置文件，是用来后续的一些配置所需要的公共参数。但是在SpringCloud 2021.* 版本把bootstrap禁用了，导致在读取文件的时候读取不到而报错，所以我们只要把bootstrap从新导入进来就会生效了。
+
+        ```xml
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        ```
+
+        - [ ] 尝试通过 spring.config.import 配置解决？
+
+        ```log
+        ***************************
+        APPLICATION FAILED TO START
+        ***************************
+        Description:
+        Parameter 0 of method springSessionRepositoryFilter in org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration required a bean of type 'org.springframework.session.SessionRepository' that could not be found.
+        Action:
+        Consider defining a bean of type 'org.springframework.session.SessionRepository' in your configuration.
+        ```
+
+        命令行的输出应该包括。
 
         ```log
         Fetching config from server at: http://localhost:8081

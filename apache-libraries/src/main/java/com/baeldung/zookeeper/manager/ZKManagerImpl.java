@@ -52,7 +52,7 @@ public class ZKManagerImpl implements ZKManager {
 
     public void update(String path, byte[] data) throws KeeperException, InterruptedException {
         int version = zkeeper.exists(path, true)
-            .getVersion();
+                .getVersion();
         zkeeper.setData(path, data, version);
     }
 }
