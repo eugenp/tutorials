@@ -1053,7 +1053,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>persistence-modules/java-mongodb</module> <!-- long running -->
+                <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
@@ -1267,7 +1267,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>persistence-modules/java-mongodb</module> <!-- long running -->
+                <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
