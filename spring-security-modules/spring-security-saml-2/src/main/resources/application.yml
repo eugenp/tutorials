@@ -14,14 +14,3 @@ spring:
               response-url: "{baseUrl}/logout/saml2/slo"
             assertingparty:
               metadata-uri: "classpath:metadata/metadata-idp-okta.xml"
-          aws:
-            signing:
-              credentials:
-                - private-key-location: classpath:local.key
-                  certificate-location: classpath:local.crt
-            singlelogout:
-              url: https://portal.sso.us-east-1.amazonaws.com/app/OTg1OTEwOTgxNjcwX2lucy1lYWMzMGJiZmFjNzc3MTJm/slo/saml
-              binding: POST
-              response-url: "{baseUrl}/logout/saml2/slo"
-            assertingparty:
-              metadata-uri: "classpath:metadata/metadata-idp-aws.xml"
