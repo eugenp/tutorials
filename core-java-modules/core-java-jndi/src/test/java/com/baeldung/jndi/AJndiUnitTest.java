@@ -14,7 +14,7 @@ import java.util.Enumeration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JndiUnitTest {
+class AJndiUnitTest {
 
     private static InitialContext ctx;
     private static DriverManagerDataSource ds;
@@ -52,6 +52,7 @@ class JndiUnitTest {
 
     @Test
     void givenContext_whenLookupByName_thenValidDataSource() throws Exception {
+//        ctx.bind("java:comp/env/jdbc/datasource", ds);
         DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/datasource");
 
         assertNotNull(ds);
