@@ -458,7 +458,6 @@
                 <module>parent-java</module>
 
                 <module>saas-modules</module>
-                <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
@@ -716,7 +715,7 @@
                 <module>parent-java</module>
 
                 <module>saas-modules</module>
-                <module>server-modules</module>
+
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
@@ -875,6 +874,7 @@
             </build>
 
             <modules>
+                <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -1085,6 +1085,7 @@
             </build>
 
             <modules>
+                <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
