@@ -17,8 +17,8 @@ public class ThreadSafeCounterIntegrationTest {
         SafeCounterWithLock safeCounter = new SafeCounterWithLock();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(safeCounter::increment));
-        service.awaitTermination(100, TimeUnit.MILLISECONDS);
+          .forEach(count -> service.execute(safeCounter::increment));
+        shutdownAndAwaitTermination(service);
 
         assertEquals(1000, safeCounter.getValue());
     }
@@ -29,10 +29,30 @@ public class ThreadSafeCounterIntegrationTest {
         SafeCounterWithoutLock safeCounter = new SafeCounterWithoutLock();
 
         IntStream.range(0, 1000)
-          .forEach(count -> service.submit(safeCounter::increment));
-        service.awaitTermination(100, TimeUnit.MILLISECONDS);
+          .forEach(count -> service.execute(safeCounter::increment));
+        shutdownAndAwaitTermination(service);
 
         assertEquals(1000, safeCounter.getValue());
+    }
+
+    private void shutdownAndAwaitTermination(ExecutorService pool) {
+        // Disable new tasks from being submitted
+        pool.shutdown();
+        try {
+            // Wait a while for existing tasks to terminate
+            if (!pool.awaitTermination(100, TimeUnit.MILLISECONDS)) {
+                // Cancel currently executing tasks forcefully
+                pool.shutdownNow();
+                // Wait a while for tasks to respond to being cancelled
+                if (!pool.awaitTermination(100, TimeUnit.MILLISECONDS))
+                    System.err.println("Pool did not terminate");
+            }
+        } catch (InterruptedException ex) {
+            // (Re-)Cancel if current thread also interrupted
+            pool.shutdownNow();
+            // Preserve interrupt status
+            Thread.currentThread().interrupt();
+        }
     }
     
 }

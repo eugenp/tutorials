@@ -67,6 +67,8 @@ ethereum/logs/
 jmeter/src/main/resources/*-JMeter.csv
 jmeter/src/main/resources/*-Basic*.csv
 jmeter/src/main/resources/*-JMeter*.csv
+jmeter/src/main/resources/*ReportsDashboard*.csv
+jmeter/src/main/resources/dashboard/*ReportsDashboard*.csv
 
 ninja/devDb.mv.db
 
@@ -106,3 +108,6 @@ spring-boot-modules/spring-boot-properties-3/*.log
 
 # Localstack
 **/.localstack
+
+#web-modules/ninja
+devDb*.db
