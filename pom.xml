@@ -331,13 +331,11 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
 
@@ -346,7 +344,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
 
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
@@ -402,13 +399,8 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
 
-
-                <module>quarkus-modules</module>
-
                 <module>rule-engines-modules</module>
-                <module>rxjava-modules</module>
 
-                <module>reactive-systems</module>
                 <module>security-modules</module>
 
                 <module>vavr-modules</module>
@@ -598,13 +590,11 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -613,8 +603,6 @@
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
@@ -659,7 +647,6 @@
                 <module>microservices-modules</module>
                 <module>muleesb</module>
 
-
                 <module>netflix-modules</module>
 
                 <module>osgi</module>
@@ -670,13 +657,8 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
 
-
-                <module>quarkus-modules</module>
-
                 <module>rule-engines-modules</module>
-                <module>rxjava-modules</module>
 
-                <module>reactive-systems</module>
                 <module>security-modules</module>
 
                 <module>vavr-modules</module>
@@ -878,11 +860,13 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
+                <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -927,6 +911,7 @@
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
 				        <module>drools</module>
+                <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
@@ -936,8 +921,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
+                <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
@@ -947,6 +931,8 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>reactive-systems</module>
+                <module>rxjava-modules</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
@@ -1088,12 +1074,13 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
-
+                <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -1138,6 +1125,7 @@
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
 				        <module>drools</module>
+                <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
@@ -1147,8 +1135,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
+                <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
@@ -1158,6 +1145,8 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>reactive-systems</module>
+                <module>rxjava-modules</module>
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
