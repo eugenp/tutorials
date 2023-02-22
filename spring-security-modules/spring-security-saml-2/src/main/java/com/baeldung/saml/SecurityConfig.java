@@ -26,11 +26,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         DefaultRelyingPartyRegistrationResolver relyingPartyRegistrationResolver = new DefaultRelyingPartyRegistrationResolver(this.relyingPartyRegistrationRepository);
-        Saml2MetadataFilter filter = new Saml2MetadataFilter(relyingPartyRegistrationResolver, new OpenSamlMetadataResolver());
-        RelyingPartyRegistration rpr = relyingPartyRegistrationRepository.findByRegistrationId("aws");
-        System.out.println(rpr.getEntityId());
-        System.out.println(rpr.getRegistrationId());
-        
+        Saml2MetadataFilter filter = new Saml2MetadataFilter(relyingPartyRegistrationResolver, new OpenSamlMetadataResolver());        
         
         http.authorizeHttpRequests(authorize -> authorize.anyRequest()
           .authenticated())
