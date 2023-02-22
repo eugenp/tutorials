@@ -454,7 +454,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
@@ -710,7 +709,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
 
                 <module>spf4j</module>
                 <module>spring-4</module>
@@ -872,6 +870,7 @@
             <modules>
                 <module>json-modules</module>
                 <module>libraries-data</module>
+                <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
@@ -1085,6 +1084,7 @@
             <modules>
                 <module>json-modules</module>
                 <module>libraries-data</module>
+                <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
