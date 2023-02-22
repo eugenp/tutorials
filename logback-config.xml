@@ -16,7 +16,7 @@
         <appender-ref ref="Console" />
     </root>
 
-    <logger name="com.baeldung" level="error" additivity="false">
+    <logger name="com.baeldung" level="warn" additivity="false">
         <appender-ref ref="Console" />
     </logger>
 
