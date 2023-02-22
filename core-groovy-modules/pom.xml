@@ -21,12 +21,12 @@
     </modules>
 
     <properties>
-        <groovy.version>3.0.8</groovy.version>
-        <groovy-all.version>3.0.8</groovy-all.version>
-        <groovy-sql.version>3.0.8</groovy-sql.version>
-        <hsqldb.version>2.4.0</hsqldb.version>
+        <groovy.version>3.0.15</groovy.version>
+        <groovy-all.version>3.0.15</groovy-all.version>
+        <groovy-sql.version>3.0.15</groovy-sql.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
         <spock-core.version>2.3-groovy-3.0</spock-core.version>
-        <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
+        <gmavenplus-plugin.version>2.1.0</gmavenplus-plugin.version>
     </properties>
 
 </project>
