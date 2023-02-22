@@ -373,8 +373,6 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
-                <module>libraries-data</module>
-
 
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
@@ -637,7 +635,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
-                <module>libraries-data</module>
+
 
 
                 <module>libraries-data-db</module>
@@ -873,6 +871,7 @@
 
             <modules>
                 <module>json-modules</module>
+                <module>libraries-data</module>
                 <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
@@ -1085,6 +1084,7 @@
 
             <modules>
                 <module>json-modules</module>
+                <module>libraries-data</module>
                 <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
