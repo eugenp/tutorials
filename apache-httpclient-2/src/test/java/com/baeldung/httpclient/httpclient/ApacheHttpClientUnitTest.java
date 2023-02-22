@@ -23,7 +23,7 @@ class ApacheHttpClientUnitTest extends GetRequestMockServer {
         HttpGet httpGet = new HttpGet(serviceOneUrl);
         httpClient.execute(httpGet, response -> {
                 assertThat(response.getCode()).isEqualTo(HttpStatus.SC_OK);
-                return null;
+                return response;
         });
     }
 
@@ -33,7 +33,7 @@ class ApacheHttpClientUnitTest extends GetRequestMockServer {
             HttpGet httpGet = new HttpGet(serviceOneUrl);
             httpClient.execute(httpGet, response -> {
                 assertThat(response.getCode()).isEqualTo(HttpStatus.SC_OK);
-                return null;
+                return response;
             });
         }
     }
@@ -44,7 +44,7 @@ class ApacheHttpClientUnitTest extends GetRequestMockServer {
             HttpGet httpGet = new HttpGet(serviceOneUrl);
             httpClient.execute(httpGet, response -> {
                 assertThat(response.getCode()).isEqualTo(HttpStatus.SC_OK);
-                return null;
+                return response;
             });
         }
     }
@@ -69,7 +69,7 @@ class ApacheHttpClientUnitTest extends GetRequestMockServer {
                 HttpEntity entityOne = responseOne.getEntity();
                 EntityUtils.consume(entityOne);
                 assertThat(responseOne.getCode()).isEqualTo(HttpStatus.SC_OK);
-                return null;
+                return responseOne;
             });
 
             HttpGet httpGetTwo = new HttpGet(serviceTwoUrl);
@@ -77,7 +77,7 @@ class ApacheHttpClientUnitTest extends GetRequestMockServer {
                 HttpEntity entityTwo = httpGetTwo.getEntity();
                 EntityUtils.consume(entityTwo);
                 assertThat(responseTwo.getCode()).isEqualTo(HttpStatus.SC_OK);
-                return null;
+                return responseTwo;
             });
         }
     }
