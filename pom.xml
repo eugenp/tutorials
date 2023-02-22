@@ -366,7 +366,6 @@
                 <module>jmh</module>
 
                 <module>jsf</module>
-                <module>json-modules</module>
 
                 <module>kubernetes-modules</module>
 
@@ -631,7 +630,6 @@
                 <module>jmh</module>
 
                 <module>jsf</module>
-                <module>json-modules</module>
 
                 <module>kubernetes-modules</module>
 
@@ -874,6 +872,7 @@
             </build>
 
             <modules>
+                <module>json-modules</module>
                 <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
@@ -1085,6 +1084,7 @@
             </build>
 
             <modules>
+                <module>json-modules</module>
                 <module>server-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
