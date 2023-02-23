@@ -394,7 +394,6 @@
                 <module>osgi</module>
                 <module>orika</module>
 
-                <module>patterns-modules</module>
 
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
@@ -657,7 +656,6 @@
                 <module>osgi</module>
                 <module>orika</module>
 
-                <module>patterns-modules</module>
 
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
@@ -868,6 +866,7 @@
             </build>
 
             <modules>
+                <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
                 <module>saas-modules</module>
@@ -1082,6 +1081,7 @@
             </build>
 
             <modules>
+                <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
                 <module>saas-modules</module>
