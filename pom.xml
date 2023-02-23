@@ -904,13 +904,13 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
-				        <module>custom-pmd</module>
+                <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
-				        <module>drools</module>
+                <module>drools</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
@@ -1118,13 +1118,13 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
-				        <module>custom-pmd</module>
+                <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
-				        <module>drools</module>
+                <module>drools</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>

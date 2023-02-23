@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
-import org.optaplanner.core.config.solver.SolverConfig;
 
 public class OptaPlannerUnitTest {
 
@@ -28,8 +27,7 @@ public class OptaPlannerUnitTest {
 
     @Test
     public void test_whenCustomJavaSolver() {
-        SolverConfig solverConfig = SolverConfig.createFromXmlResource("courseScheduleSolverConfiguration.xml");
-        SolverFactory<CourseSchedule> solverFactory = SolverFactory.create(solverConfig);
+        SolverFactory<CourseSchedule> solverFactory = SolverFactory.createFromXmlResource("courseScheduleSolverConfiguration.xml");
         Solver<CourseSchedule> solver = solverFactory.buildSolver();
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
 
@@ -39,7 +37,6 @@ public class OptaPlannerUnitTest {
 
     @Test
     public void test_whenDroolsSolver() {
-
         SolverFactory<CourseSchedule> solverFactory = SolverFactory.createFromXmlResource("courseScheduleSolverConfigDrools.xml");
         Solver<CourseSchedule> solver = solverFactory.buildSolver();
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
