@@ -331,14 +331,13 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
+
                 <module>couchbase</module>
 
                 <module>drools</module>
@@ -347,7 +346,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
 
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
@@ -363,7 +361,7 @@
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jhipster-5</module>
-                <module>jmeter</module>
+
                 <module>jmh</module>
 
                 <module>jsf</module>
@@ -380,7 +378,6 @@
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
-                <module>libraries-testing</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
@@ -402,13 +399,6 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
 
-
-                <module>quarkus-modules</module>
-
-                <module>rule-engines-modules</module>
-                <module>rxjava-modules</module>
-
-                <module>reactive-systems</module>
                 <module>security-modules</module>
 
                 <module>vavr-modules</module>
@@ -462,7 +452,6 @@
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
@@ -598,22 +587,19 @@
                 <module>parent-java</module>
 
                 <module>apache-cxf-modules</module>
-                <module>apache-libraries</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>couchbase</module>
+
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <module>apache-httpclient</module>
@@ -629,7 +615,6 @@
                 <module>jaxb</module>
                 <module>jersey</module>
                 <module>jhipster-5</module>
-                <module>jmeter</module>
                 <module>jmh</module>
 
                 <module>jsf</module>
@@ -646,7 +631,6 @@
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
-                <module>libraries-testing</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
@@ -656,7 +640,6 @@
 
                 <module>microservices-modules</module>
                 <module>muleesb</module>
-
 
                 <module>netflix-modules</module>
 
@@ -668,13 +651,6 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
 
-
-                <module>quarkus-modules</module>
-
-                <module>rule-engines-modules</module>
-                <module>rxjava-modules</module>
-
-                <module>reactive-systems</module>
                 <module>security-modules</module>
 
                 <module>vavr-modules</module>
@@ -719,8 +695,6 @@
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-aop</module>
-                <module>spring-aop-2</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
@@ -875,12 +849,20 @@
             </build>
 
             <modules>
+                <module>spring-aop</module>
+                <module>jmeter</module>
+                <module>spring-aop-2</module>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
+                
+                <module>couchbase</module>
+                <module>core-groovy-modules</module>
+
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -918,23 +900,24 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
-				<module>custom-pmd</module>
+				        <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
+                <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
+                <module>libraries-testing</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
                 <module>maven-modules/multimodulemavenproject</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
+                <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
@@ -944,6 +927,12 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+
+                <module>rule-engines-modules</module>
+
+                <module>reactive-systems</module>
+                <module>rxjava-modules</module>
+
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
@@ -967,7 +956,7 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <module>axon</module>
+<!--                <module>axon</module>--><!-- JAVA-18408 -->
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1058,7 +1047,8 @@
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <java.version>11</java.version>
-                <java.version>11</java.version>
+                <maven.compiler.source>11</maven.compiler.source>
+                <maven.compiler.target>11</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1086,12 +1076,16 @@
 
             <modules>
                 <module>algorithms-modules</module>
+                <module>apache-libraries</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>couchbase</module>
+
+                <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-9</module>
                 <module>core-java-modules/core-java-9-improvements</module>
                 <module>core-java-modules/core-java-9-jigsaw</module>
@@ -1129,23 +1123,28 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
-				<module>custom-pmd</module>
+                <module>spring-aop</module>
+                <module>spring-aop-2</module>
+                
+				        <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
+                <module>jmeter</module>
                 <module>docker-modules</module>
+                <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
                 <module>libraries-concurrency</module>
+                <module>libraries-testing</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
                 <module>maven-modules/maven-generate-war</module>
                 <module>maven-modules/multimodulemavenproject</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
+                <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
@@ -1155,6 +1154,12 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+
+                <module>rule-engines-modules</module>
+
+                <module>reactive-systems</module>
+                <module>rxjava-modules</module>
+
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
@@ -1177,7 +1182,7 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <module>axon</module>
+                <!--                <module>axon</module>--><!-- JAVA-18408 -->
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1272,7 +1277,8 @@
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <java.version>11</java.version>
-                <java.version>11</java.version>
+                <maven.compiler.source>11</maven.compiler.source>
+                <maven.compiler.target>11</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1343,8 +1349,8 @@
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.13.3</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <junit-platform.version>1.8.1</junit-platform.version>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <junit-platform.version>1.9.2</junit-platform.version>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
