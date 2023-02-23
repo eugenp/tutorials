@@ -330,7 +330,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-cxf-modules</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -591,7 +590,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-cxf-modules</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -871,6 +869,7 @@
                 <module>libraries-data</module>
                 <module>saas-modules</module>
                 <module>server-modules</module>
+                <module>apache-cxf-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -1086,6 +1085,7 @@
                 <module>libraries-data</module>
                 <module>saas-modules</module>
                 <module>server-modules</module>
+                <module>apache-cxf-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
