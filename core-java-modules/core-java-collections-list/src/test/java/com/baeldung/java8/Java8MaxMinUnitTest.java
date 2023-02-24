@@ -74,7 +74,7 @@ public class Java8MaxMinUnitTest {
     }
 
     @Test
-    public void giveIntegerList_whenGetMinAndIndex_thenSuccess() {
+    public void givenIntegerList_whenGetMinAndIndex_thenSuccess() {
         final List<Integer> listOfIntegers = Arrays.asList(11, 13, 9, 20, 7, 3, 30);
         final Integer expectedMinValue = 3;
         final Integer expectedMinIndex = 5;
