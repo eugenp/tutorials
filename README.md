@@ -33,7 +33,7 @@ Next, they are segregated further on the basis of the tests that we want to exec
 
 Additionally, there are 2 profiles dedicated for JDK9 and above builds - **which require JDK 17**.
 
-We also have a parents profile to build only parent modules.
+We also have a parents profile to build only parent modules
 
 Therefore, we have a total of 9 profiles:
 
