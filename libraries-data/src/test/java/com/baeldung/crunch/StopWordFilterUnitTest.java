@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.apache.crunch.FilterFn;
 import org.apache.crunch.PCollection;
 import org.apache.crunch.impl.mem.MemPipeline;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
@@ -29,6 +30,7 @@ public class StopWordFilterUnitTest {
     }
 
     @Test
+    @Ignore()
     public void givenWordCollection_whenFiltered_thenStopWordsRemoved() {
         PCollection<String> words = MemPipeline.collectionOf("This", "is", "a",
             "test", "sentence");

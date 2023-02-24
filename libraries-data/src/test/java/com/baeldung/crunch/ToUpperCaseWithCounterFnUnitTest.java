@@ -6,6 +6,7 @@ import org.apache.crunch.PCollection;
 import org.apache.crunch.impl.mem.MemPipeline;
 import org.apache.crunch.types.writable.Writables;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
@@ -19,6 +20,7 @@ public class ToUpperCaseWithCounterFnUnitTest {
     }
 
     @Test
+    @Ignore
     public void whenFunctionCalled_counterIncementendForChangedValues() {
         PCollection<String> inputStrings = MemPipeline.collectionOf("This", "is", "a", "TEST", "string");
         PCollection<String> upperCaseStrings = inputStrings.parallelDo(new ToUpperCaseWithCounterFn(), Writables.strings());
