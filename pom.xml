@@ -340,7 +340,6 @@
 
                 <module>couchbase</module>
 
-                <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -594,7 +593,6 @@
 
                 <module>core-java-modules</module>
                 <module>couchbase</module>
-
                 <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -900,12 +898,13 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
-				        <module>custom-pmd</module>
+                <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
+                <module>drools</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
@@ -956,7 +955,7 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-<!--                <module>axon</module>--><!-- JAVA-18408 -->
+<!--            <module>axon</module>--><!-- JAVA-18408 -->
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1124,15 +1123,15 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>
-                
-				        <module>custom-pmd</module>
+                <module>spring-aop-2</module>                
+                <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
+                <module>drools</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>kubernetes-modules/kubernetes-spring</module>
