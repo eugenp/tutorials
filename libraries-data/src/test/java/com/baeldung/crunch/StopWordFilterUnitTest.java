@@ -30,7 +30,6 @@ public class StopWordFilterUnitTest {
     }
 
     @Test
-    @Ignore()
     public void givenWordCollection_whenFiltered_thenStopWordsRemoved() {
         PCollection<String> words = MemPipeline.collectionOf("This", "is", "a",
             "test", "sentence");

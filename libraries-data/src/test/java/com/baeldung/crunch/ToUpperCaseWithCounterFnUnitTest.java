@@ -20,7 +20,6 @@ public class ToUpperCaseWithCounterFnUnitTest {
     }
 
     @Test
-    @Ignore
     public void whenFunctionCalled_counterIncementendForChangedValues() {
         PCollection<String> inputStrings = MemPipeline.collectionOf("This", "is", "a", "TEST", "string");
         PCollection<String> upperCaseStrings = inputStrings.parallelDo(new ToUpperCaseWithCounterFn(), Writables.strings());

@@ -59,6 +59,11 @@
             <version>${org.apache.crunch.crunch-core.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>${org.apache.hadoop.hadoop-client}</version>
@@ -189,6 +194,7 @@
         <org.apache.crunch.crunch-core.version>1.0.0</org.apache.crunch.crunch-core.version>
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
         <jmapper.version>1.6.0.1</jmapper.version>
+        <javassist.version>3.29.2-GA</javassist.version>
     </properties>
 
 </project>
