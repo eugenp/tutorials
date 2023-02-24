@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class DownloadWebpageUnitTest {
 
     @Test
-    public void givenURLConnection_whenRetrieveWebpage_thenWebpageisNotNullAndContainsHtmlTag() throws IOException {
+    public void givenURLConnection_whenRetrieveWebpage_thenWebpageIsNotNullAndContainsHtmlTag() throws IOException {
         URL url = new URL("https://example.com");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -34,11 +34,11 @@ class DownloadWebpageUnitTest {
     }
 
     @Test
-    public void givenJsoup_whenRetrievingWebpage_thenWebpageDocumenttIsNotNullAndContainsHtmlTag() throws IOException {
+    public void givenJsoup_whenRetrievingWebpage_thenWebpageDocumentIsNotNullAndContainsHtmlTag() throws IOException {
 
-        Document doc = Jsoup.connect("https://example.com")
+        Document document = Jsoup.connect("https://example.com")
           .get();
-        String webpage = doc.html();
+        String webpage = document.html();
 
         assertNotNull(webpage);
         assertTrue(webpage.contains("<html>"));
