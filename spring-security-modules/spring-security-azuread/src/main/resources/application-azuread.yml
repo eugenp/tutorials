@@ -9,8 +9,10 @@ spring:
         registration:
           azure-dev:
             provider: azure
-            #client-id: your-client-id
-            #client-secret: your-secret-id         
+            #client-id: "6035bfd4-22f0-437c-b76f-da729a916cbf"
+            #client-secret: "fo28Q~-aLbmQvonnZtzbgtSiqYstmBWEmGPAodmx"
+            client-id: your-client-id
+            client-secret: your-secret-id         
             scope:
             - openid
             - email
