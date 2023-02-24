@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class DownloadWebpageUnitTest {
 
     @Test
-    public void givenURLConnection_whenRetrieveWebpage_thenWebpageisNotNullAndContainHtmlTag() throws IOException {
+    public void givenURLConnection_whenRetrieveWebpage_thenWebpageisNotNullAndContainsHtmlTag() throws IOException {
         URL url = new URL("https://example.com");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
