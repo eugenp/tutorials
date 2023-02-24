@@ -29,7 +29,7 @@ class DownloadWebpageUnitTest {
 
         assertNotNull(responseBuilder);
         assertTrue(responseBuilder.toString()
-            .contains("<html>"));
+          .contains("<html>"));
 
     }
 
@@ -37,7 +37,7 @@ class DownloadWebpageUnitTest {
     public void givenJsoup_whenRetrievingWebpage_thenWebpageDocumenttIsNotNullAndContainsHtmlTag() throws IOException {
 
         Document doc = Jsoup.connect("https://example.com")
-            .get();
+          .get();
         String webpage = doc.html();
 
         assertNotNull(webpage);
