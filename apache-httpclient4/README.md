@@ -1,4 +1,4 @@
-## Apache HttpClient
+## Apache HttpClient 4
 
 This module contains articles about Apache HttpClient 4.5
 
