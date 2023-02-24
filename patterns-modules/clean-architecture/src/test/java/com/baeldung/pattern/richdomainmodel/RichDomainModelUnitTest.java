@@ -15,7 +15,7 @@ public class RichDomainModelUnitTest {
         game.wonPoint("server");
 
         assertThat(game.getScore())
-            .isEqualTo("Forty-Love");
+          .isEqualTo("Forty-Love");
     }
 
     @Test
@@ -28,6 +28,6 @@ public class RichDomainModelUnitTest {
         game.wonPoint("receiver");
 
         assertThat(game.getScore())
-            .isEqualTo("Thirty-All");
+          .isEqualTo("Thirty-All");
     }
 }
