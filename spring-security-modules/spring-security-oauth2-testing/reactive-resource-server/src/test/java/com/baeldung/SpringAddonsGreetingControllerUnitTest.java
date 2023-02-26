@@ -35,22 +35,26 @@ class SpringAddonsGreetingControllerUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
-        api.get().uri("/greet").exchange().expectStatus().isUnauthorized();
+        api.get()
+            .uri("/greet")
+            .exchange()
+            .expectStatus()
+            .isUnauthorized();
     }
 
     @Test
-    @WithMockJwtAuth(
-            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
-            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(Mono.just(greeting));
 
-        // @formatter:off
-        api.get().uri("/greet").exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class).isEqualTo(greeting);
-        // @formatter:on
+        api.get()
+            .uri("/greet")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo(greeting);
 
         verify(messageService, times(1)).greet();
     }
@@ -63,7 +67,11 @@ class SpringAddonsGreetingControllerUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
-        api.get().uri("/secured-route").exchange().expectStatus().isUnauthorized();
+        api.get()
+            .uri("/secured-route")
+            .exchange()
+            .expectStatus()
+            .isUnauthorized();
     }
 
     @Test
@@ -72,22 +80,25 @@ class SpringAddonsGreetingControllerUnitTest {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(Mono.just(secret));
 
-        // @formatter:off
-        api.get().uri("/secured-route").exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class).isEqualTo(secret);
-        // @formatter:on
+        api.get()
+            .uri("/secured-route")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo(secret);
     }
 
     @Test
     @WithMockJwtAuth("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-route").exchange()
-            .expectStatus().isForbidden();
-        // @formatter:on
+        api.get()
+            .uri("/secured-route")
+            .exchange()
+            .expectStatus()
+            .isForbidden();
     }
-    
+
     /*---------------------------------------------------------------------------------------------------------*/
     /* /secured-method                                                                                         */
     /* This end-point is secured with "@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")" on @Controller method */
@@ -96,7 +107,11 @@ class SpringAddonsGreetingControllerUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
-        api.get().uri("/secured-method").exchange().expectStatus().isUnauthorized();
+        api.get()
+            .uri("/secured-method")
+            .exchange()
+            .expectStatus()
+            .isUnauthorized();
     }
 
     @Test
@@ -105,21 +120,23 @@ class SpringAddonsGreetingControllerUnitTest {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(Mono.just(secret));
 
-        // @formatter:off
-        api.get().uri("/secured-method").exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class).isEqualTo(secret);
-        // @formatter:on
+        api.get()
+            .uri("/secured-method")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo(secret);
     }
 
     @Test
     @WithMockJwtAuth("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-method").exchange()
-            .expectStatus().isForbidden();
-        // @formatter:on
+        api.get()
+            .uri("/secured-method")
+            .exchange()
+            .expectStatus()
+            .isForbidden();
     }
 
 }
-

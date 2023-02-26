@@ -32,25 +32,29 @@ class MessageServiceUnitTest {
 
     @Test
     void givenSecurityContextIsEmpty_whenGreet_thenThrowsAuthenticationCredentialsNotFoundException() {
-        assertThrows(AuthenticationCredentialsNotFoundException.class, () -> messageService.greet().block());
+        assertThrows(AuthenticationCredentialsNotFoundException.class, () -> messageService.greet()
+            .block());
     }
 
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGreet_thenThrowsClassCastException() {
-        assertThrows(ClassCastException.class, () -> messageService.greet().block());
+        assertThrows(ClassCastException.class, () -> messageService.greet()
+            .block());
     }
 
     @Test
     @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenSecurityContextIsPopulatedWithJwtAuthenticationToken_whenGreet_thenReturnGreetingWithPreferredUsernameAndAuthorities() {
-        assertEquals("Hello ch4mpy! You are granted with [admin, ROLE_AUTHORIZED_PERSONNEL].", messageService.greet().block());
+        assertEquals("Hello ch4mpy! You are granted with [admin, ROLE_AUTHORIZED_PERSONNEL].", messageService.greet()
+            .block());
     }
 
     @Test
     @WithMockUser(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, username = "ch4mpy")
     void givenSecurityContextIsPopulatedWithUsernamePasswordAuthenticationToken_whenGreet_thenThrowsClassCastException() {
-        assertThrows(ClassCastException.class, () -> messageService.greet().block());
+        assertThrows(ClassCastException.class, () -> messageService.greet()
+            .block());
     }
 
     /*--------------------------------------------------------------------*/
@@ -61,19 +65,22 @@ class MessageServiceUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetSecret_thenThrowsAccessDeniedException() {
-        assertThrows(AccessDeniedException.class, () -> messageService.getSecret().block());
+        assertThrows(AccessDeniedException.class, () -> messageService.getSecret()
+            .block());
     }
 
     @Test
     @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecret_thenReturnSecret() {
-        assertEquals("Only authorized personnel can read that", messageService.getSecret().block());
+        assertEquals("Only authorized personnel can read that", messageService.getSecret()
+            .block());
     }
 
     @Test
     @WithMockJwtAuth(authorities = { "admin" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecret_thenThrowsAccessDeniedException() {
-        assertThrows(AccessDeniedException.class, () -> messageService.getSecret().block());
+        assertThrows(AccessDeniedException.class, () -> messageService.getSecret()
+            .block());
     }
 
 }

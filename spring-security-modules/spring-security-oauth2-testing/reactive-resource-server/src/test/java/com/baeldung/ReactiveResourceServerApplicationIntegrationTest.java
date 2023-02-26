@@ -25,22 +25,23 @@ class ReactiveResourceServerApplicationIntegrationTest {
     @Test
     @WithAnonymousUser
     void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
-        // @formatter:off
-        api.get().uri("/greet").exchange()
-            .expectStatus().isUnauthorized();
-        // @formatter:on
+        api.get()
+            .uri("/greet")
+            .exchange()
+            .expectStatus()
+            .isUnauthorized();
     }
 
     @Test
-    @WithMockJwtAuth(
-            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
-            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
-        // @formatter:off
-        api.get().uri("/greet").exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class).isEqualTo("Hello ch4mpy! You are granted with [admin, ROLE_AUTHORIZED_PERSONNEL].");
-        // @formatter:on
+        api.get()
+            .uri("/greet")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo("Hello ch4mpy! You are granted with [admin, ROLE_AUTHORIZED_PERSONNEL].");
     }
 
     /*---------------------------------------------------------------------------------------------------------------------*/
@@ -51,31 +52,35 @@ class ReactiveResourceServerApplicationIntegrationTest {
     @Test
     @WithAnonymousUser
     void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-route").exchange()
-            .expectStatus().isUnauthorized();
-        // @formatter:on
+        api.get()
+            .uri("/secured-route")
+            .exchange()
+            .expectStatus()
+            .isUnauthorized();
     }
 
     @Test
     @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-route").exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class).isEqualTo("Only authorized personnel can read that");
-        // @formatter:on
+        api.get()
+            .uri("/secured-route")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo("Only authorized personnel can read that");
     }
 
     @Test
     @WithMockJwtAuth("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-route").exchange()
-            .expectStatus().isForbidden();
-        // @formatter:on
+        api.get()
+            .uri("/secured-route")
+            .exchange()
+            .expectStatus()
+            .isForbidden();
     }
-    
+
     /*---------------------------------------------------------------------------------------------------------*/
     /* /secured-method                                                                                         */
     /* This end-point is secured with "@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")" on @Controller method */
@@ -84,28 +89,32 @@ class ReactiveResourceServerApplicationIntegrationTest {
     @Test
     @WithAnonymousUser
     void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-method").exchange()
-            .expectStatus().isUnauthorized();
-        // @formatter:on
+        api.get()
+            .uri("/secured-method")
+            .exchange()
+            .expectStatus()
+            .isUnauthorized();
     }
 
     @Test
     @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-method").exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class).isEqualTo("Only authorized personnel can read that");
-        // @formatter:on
+        api.get()
+            .uri("/secured-method")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .isEqualTo("Only authorized personnel can read that");
     }
 
     @Test
     @WithMockJwtAuth("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
-        // @formatter:off
-        api.get().uri("/secured-method").exchange()
-            .expectStatus().isForbidden();
-        // @formatter:on
+        api.get()
+            .uri("/secured-method")
+            .exchange()
+            .expectStatus()
+            .isForbidden();
     }
 }

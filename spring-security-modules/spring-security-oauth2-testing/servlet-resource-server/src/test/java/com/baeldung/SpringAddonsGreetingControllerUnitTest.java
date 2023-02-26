@@ -36,25 +36,19 @@ class SpringAddonsGreetingControllerUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/greet"))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
-    @WithMockJwtAuth(
-            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
-            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(greeting);
 
-        // @formatter:off
         api.perform(get("/greet"))
             .andExpect(status().isOk())
             .andExpect(content().string(greeting));
-        // @formatter:on
 
         verify(messageService, times(1)).greet();
     }
@@ -67,10 +61,8 @@ class SpringAddonsGreetingControllerUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route"))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
@@ -79,22 +71,18 @@ class SpringAddonsGreetingControllerUnitTest {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(secret);
 
-        // @formatter:off
         api.perform(get("/secured-route"))
             .andExpect(status().isOk())
             .andExpect(content().string(secret));
-        // @formatter:on
     }
 
     @Test
     @WithMockJwtAuth({ "admin" })
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route"))
             .andExpect(status().isForbidden());
-        // @formatter:on
     }
-    
+
     /*---------------------------------------------------------------------------------------------------------*/
     /* /secured-method                                                                                         */
     /* This end-point is secured with "@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")" on @Controller method */
@@ -103,10 +91,8 @@ class SpringAddonsGreetingControllerUnitTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method"))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
@@ -115,20 +101,16 @@ class SpringAddonsGreetingControllerUnitTest {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(secret);
 
-        // @formatter:off
         api.perform(get("/secured-method"))
             .andExpect(status().isOk())
             .andExpect(content().string(secret));
-        // @formatter:on
     }
 
     @Test
     @WithMockJwtAuth(authorities = { "admin" })
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method"))
             .andExpect(status().isForbidden());
-        // @formatter:on
     }
 
 }
