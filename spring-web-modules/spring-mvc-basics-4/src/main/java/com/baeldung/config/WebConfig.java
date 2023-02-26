@@ -41,47 +41,4 @@ public class WebConfig {
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
-
-    // Thymeleaf configuration
-    @Bean
-    public ViewResolver thymeleafViewResolver() {
-
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-
-        viewResolver.setTemplateEngine(thymeleafTemplateEngine());
-        viewResolver.setCharacterEncoding("UTF-8");
-        viewResolver.setOrder(0);
-
-        return viewResolver;
-    }
-
-    // Thymeleaf template engine with Spring integration
-    @Bean
-    public SpringTemplateEngine thymeleafTemplateEngine() {
-
-        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(thymeleafTemplateResolver());
-        templateEngine.setEnableSpringELCompiler(true);
-
-        return templateEngine;
-    }
-
-    @Bean
-    public SpringResourceTemplateResolver springResourceTemplateResolver() {
-        return new SpringResourceTemplateResolver();
-    }
-
-    @Bean
-    public ITemplateResolver thymeleafTemplateResolver() {
-
-        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-
-        templateResolver.setPrefix("/templates/");
-        templateResolver.setCacheable(false);
-        templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UTF-8");
-
-        return templateResolver;
-    }
 }
