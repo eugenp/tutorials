@@ -49,19 +49,32 @@ public class ReactiveResourceServerApplication {
     public class SecurityConfig {
         @Bean
         SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, Converter<Jwt, Mono<Collection<GrantedAuthority>>> authoritiesConverter) {
-            http.oauth2ResourceServer().jwt()
-                    .jwtAuthenticationConverter(jwt -> authoritiesConverter.convert(jwt).map(authorities -> new JwtAuthenticationToken(jwt, authorities)));
-            http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance()).csrf().disable();
-            http.exceptionHandling().accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal().flatMap(principal -> {
-                final var response = exchange.getResponse();
-                response.setStatusCode(principal instanceof AnonymousAuthenticationToken ? HttpStatus.UNAUTHORIZED : HttpStatus.FORBIDDEN);
-                response.getHeaders().setContentType(MediaType.TEXT_PLAIN);
-                final var dataBufferFactory = response.bufferFactory();
-                final var buffer = dataBufferFactory.wrap(ex.getMessage().getBytes(Charset.defaultCharset()));
-                return response.writeWith(Mono.just(buffer)).doOnError(error -> DataBufferUtils.release(buffer));
-            }));
+            http.oauth2ResourceServer()
+                .jwt()
+                .jwtAuthenticationConverter(jwt -> authoritiesConverter.convert(jwt)
+                    .map(authorities -> new JwtAuthenticationToken(jwt, authorities)));
+            http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
+                .csrf()
+                .disable();
+            http.exceptionHandling()
+                .accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal()
+                    .flatMap(principal -> {
+                        final var response = exchange.getResponse();
+                        response.setStatusCode(principal instanceof AnonymousAuthenticationToken ? HttpStatus.UNAUTHORIZED : HttpStatus.FORBIDDEN);
+                        response.getHeaders()
+                            .setContentType(MediaType.TEXT_PLAIN);
+                        final var dataBufferFactory = response.bufferFactory();
+                        final var buffer = dataBufferFactory.wrap(ex.getMessage()
+                            .getBytes(Charset.defaultCharset()));
+                        return response.writeWith(Mono.just(buffer))
+                            .doOnError(error -> DataBufferUtils.release(buffer));
+                    }));
 
-            http.authorizeExchange().pathMatchers("/secured-route").hasRole("AUTHORIZED_PERSONNEL").anyExchange().authenticated();
+            http.authorizeExchange()
+                .pathMatchers("/secured-route")
+                .hasRole("AUTHORIZED_PERSONNEL")
+                .anyExchange()
+                .authenticated();
 
             return http.build();
         }
@@ -72,10 +85,14 @@ public class ReactiveResourceServerApplication {
         @Bean
         AuthoritiesConverter realmRoles2AuthoritiesConverter() {
             return (Jwt jwt) -> {
-                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access")).orElse(Map.of());
+                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access"))
+                    .orElse(Map.of());
                 @SuppressWarnings("unchecked")
                 final var roles = (List<String>) realmRoles.getOrDefault("roles", List.of());
-                return Mono.just(roles.stream().map(SimpleGrantedAuthority::new).map(GrantedAuthority.class::cast).toList());
+                return Mono.just(roles.stream()
+                    .map(SimpleGrantedAuthority::new)
+                    .map(GrantedAuthority.class::cast)
+                    .toList());
             };
         }
     }
@@ -84,13 +101,13 @@ public class ReactiveResourceServerApplication {
     public static class MessageService {
 
         public Mono<String> greet() {
-            return ReactiveSecurityContextHolder.getContext().map(ctx -> {
-                final var who = (JwtAuthenticationToken) ctx.getAuthentication();
-                final var claims = who.getTokenAttributes();
-                return "Hello %s! You are granted with %s.".formatted(
-                        claims.getOrDefault(StandardClaimNames.PREFERRED_USERNAME,claims.get(StandardClaimNames.SUB)),
-                        who.getAuthorities());
-            }).switchIfEmpty(Mono.error(new AuthenticationCredentialsNotFoundException("Security context is empty")));
+            return ReactiveSecurityContextHolder.getContext()
+                .map(ctx -> {
+                    final var who = (JwtAuthenticationToken) ctx.getAuthentication();
+                    final var claims = who.getTokenAttributes();
+                    return "Hello %s! You are granted with %s.".formatted(claims.getOrDefault(StandardClaimNames.PREFERRED_USERNAME, claims.get(StandardClaimNames.SUB)), who.getAuthorities());
+                })
+                .switchIfEmpty(Mono.error(new AuthenticationCredentialsNotFoundException("Security context is empty")));
         }
 
         @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
@@ -106,18 +123,21 @@ public class ReactiveResourceServerApplication {
 
         @GetMapping("/greet")
         public Mono<ResponseEntity<String>> greet() {
-            return messageService.greet().map(ResponseEntity::ok);
+            return messageService.greet()
+                .map(ResponseEntity::ok);
         }
 
         @GetMapping("/secured-route")
         public Mono<ResponseEntity<String>> securedRoute() {
-            return messageService.getSecret().map(ResponseEntity::ok);
+            return messageService.getSecret()
+                .map(ResponseEntity::ok);
         }
 
         @GetMapping("/secured-method")
         @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
         public Mono<ResponseEntity<String>> securedMethod() {
-            return messageService.getSecret().map(ResponseEntity::ok);
+            return messageService.getSecret()
+                .map(ResponseEntity::ok);
         }
     }
 

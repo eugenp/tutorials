@@ -38,10 +38,8 @@ class SpringSecurityTestGreetingControllerUnitTest {
 
     @Test
     void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/greet").with(anonymous()))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
@@ -49,13 +47,10 @@ class SpringSecurityTestGreetingControllerUnitTest {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(greeting);
 
-        // @formatter:off
-        api.perform(get("/greet").with(jwt()
-                .authorities(List.of(new SimpleGrantedAuthority("admin"), new SimpleGrantedAuthority("ROLE_AUTHORIZED_PERSONNEL")))
-                .jwt(jwt -> jwt.claim(StandardClaimNames.PREFERRED_USERNAME, "ch4mpy"))))
+        api.perform(get("/greet").with(jwt().authorities(List.of(new SimpleGrantedAuthority("admin"), new SimpleGrantedAuthority("ROLE_AUTHORIZED_PERSONNEL")))
+            .jwt(jwt -> jwt.claim(StandardClaimNames.PREFERRED_USERNAME, "ch4mpy"))))
             .andExpect(status().isOk())
             .andExpect(content().string(greeting));
-        // @formatter:on
 
         verify(messageService, times(1)).greet();
     }
@@ -67,10 +62,8 @@ class SpringSecurityTestGreetingControllerUnitTest {
 
     @Test
     void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route").with(anonymous()))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
@@ -78,21 +71,17 @@ class SpringSecurityTestGreetingControllerUnitTest {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(secret);
 
-        // @formatter:off
         api.perform(get("/secured-route").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AUTHORIZED_PERSONNEL"))))
             .andExpect(status().isOk())
             .andExpect(content().string(secret));
-        // @formatter:on
     }
 
     @Test
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route").with(jwt().authorities(new SimpleGrantedAuthority("admin"))))
             .andExpect(status().isForbidden());
-        // @formatter:on
     }
-    
+
     /*---------------------------------------------------------------------------------------------------------*/
     /* /secured-method                                                                                         */
     /* This end-point is secured with "@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")" on @Controller method */
@@ -100,10 +89,8 @@ class SpringSecurityTestGreetingControllerUnitTest {
 
     @Test
     void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method").with(anonymous()))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
@@ -111,19 +98,15 @@ class SpringSecurityTestGreetingControllerUnitTest {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(secret);
 
-        // @formatter:off
         api.perform(get("/secured-method").with(jwt().authorities(new SimpleGrantedAuthority("ROLE_AUTHORIZED_PERSONNEL"))))
             .andExpect(status().isOk())
             .andExpect(content().string(secret));
-        // @formatter:on
     }
 
     @Test
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method").with(jwt().authorities(new SimpleGrantedAuthority("admin"))))
             .andExpect(status().isForbidden());
-        // @formatter:on
     }
 
 }

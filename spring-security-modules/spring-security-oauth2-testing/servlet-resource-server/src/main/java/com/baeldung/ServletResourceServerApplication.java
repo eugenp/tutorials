@@ -44,18 +44,25 @@ public class ServletResourceServerApplication {
     static class SecurityConf {
         @Bean
         SecurityFilterChain filterChain(HttpSecurity http, Converter<Jwt, Collection<GrantedAuthority>> authoritiesConverter) throws Exception {
-            // @formatter:off
-            http.oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwt -> new JwtAuthenticationToken(jwt, authoritiesConverter.convert(jwt)));
-            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable();
-            http.exceptionHandling().authenticationEntryPoint((request, response, authException) -> {
-                response.addHeader(HttpHeaders.WWW_AUTHENTICATE, "Basic realm=\"Restricted Content\"");
-                response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
-            });
-            
+            http.oauth2ResourceServer()
+                .jwt()
+                .jwtAuthenticationConverter(jwt -> new JwtAuthenticationToken(jwt, authoritiesConverter.convert(jwt)));
+            http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .csrf()
+                .disable();
+            http.exceptionHandling()
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.addHeader(HttpHeaders.WWW_AUTHENTICATE, "Basic realm=\"Restricted Content\"");
+                    response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
+                });
+
             http.authorizeHttpRequests()
-                .requestMatchers("/secured-route").hasRole("AUTHORIZED_PERSONNEL")
-                .anyRequest().authenticated();
-            // @formatter:on
+                .requestMatchers("/secured-route")
+                .hasRole("AUTHORIZED_PERSONNEL")
+                .anyRequest()
+                .authenticated();
 
             return http.build();
         }
@@ -66,10 +73,14 @@ public class ServletResourceServerApplication {
         @Bean
         AuthoritiesConverter realmRoles2AuthoritiesConverter() {
             return (Jwt jwt) -> {
-                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access")).orElse(Map.of());
+                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access"))
+                    .orElse(Map.of());
                 @SuppressWarnings("unchecked")
                 final var roles = (List<String>) realmRoles.getOrDefault("roles", List.of());
-                return roles.stream().map(SimpleGrantedAuthority::new).map(GrantedAuthority.class::cast).toList();
+                return roles.stream()
+                    .map(SimpleGrantedAuthority::new)
+                    .map(GrantedAuthority.class::cast)
+                    .toList();
             };
         }
     }
@@ -78,11 +89,10 @@ public class ServletResourceServerApplication {
     public static class MessageService {
 
         public String greet() {
-            final var who = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+            final var who = (JwtAuthenticationToken) SecurityContextHolder.getContext()
+                .getAuthentication();
             final var claims = who.getTokenAttributes();
-            return "Hello %s! You are granted with %s.".formatted(
-                    claims.getOrDefault(StandardClaimNames.PREFERRED_USERNAME, claims.get(StandardClaimNames.SUB)),
-                    who.getAuthorities());
+            return "Hello %s! You are granted with %s.".formatted(claims.getOrDefault(StandardClaimNames.PREFERRED_USERNAME, claims.get(StandardClaimNames.SUB)), who.getAuthorities());
         }
 
         @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")

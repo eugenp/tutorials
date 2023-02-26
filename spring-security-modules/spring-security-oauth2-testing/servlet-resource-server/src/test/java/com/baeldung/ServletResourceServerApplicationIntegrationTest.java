@@ -29,22 +29,16 @@ class ServletResourceServerApplicationIntegrationTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/greet"))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
-    @WithMockJwtAuth(
-            authorities = {"admin", "ROLE_AUTHORIZED_PERSONNEL"},
-            claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
-        // @formatter:off
         api.perform(get("/greet"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Hello ch4mpy! You are granted with [admin, ROLE_AUTHORIZED_PERSONNEL]."));
-        // @formatter:on
+            .andExpect(status().isOk())
+            .andExpect(content().string("Hello ch4mpy! You are granted with [admin, ROLE_AUTHORIZED_PERSONNEL]."));
     }
 
     /*---------------------------------------------------------------------------------------------------------------------*/
@@ -55,31 +49,25 @@ class ServletResourceServerApplicationIntegrationTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route"))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
     @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Only authorized personnel can read that"));
-        // @formatter:on
+            .andExpect(status().isOk())
+            .andExpect(content().string("Only authorized personnel can read that"));
     }
 
     @Test
     @WithMockJwtAuth("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-route"))
             .andExpect(status().isForbidden());
-        // @formatter:on
     }
-    
+
     /*---------------------------------------------------------------------------------------------------------*/
     /* /secured-method                                                                                         */
     /* This end-point is secured with "@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")" on @Controller method */
@@ -88,29 +76,23 @@ class ServletResourceServerApplicationIntegrationTest {
     @Test
     @WithAnonymousUser
     void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method"))
             .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     @Test
     @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method"))
             .andExpect(status().isOk())
             .andExpect(content().string("Only authorized personnel can read that"));
-        // @formatter:on
     }
 
     @Test
     @WithMockJwtAuth("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
-        // @formatter:off
         api.perform(get("/secured-method"))
             .andExpect(status().isForbidden());
-        // @formatter:on
     }
 
 }
