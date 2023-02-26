@@ -2,10 +2,10 @@ package kerberos.server.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Configuration
-class MvcConfig extends WebMvcConfigurerAdapter {
+class MvcConfig extends WebMvcConfigurationSupport {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
