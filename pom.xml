@@ -330,7 +330,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-cxf-modules</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -364,15 +363,12 @@
                 <module>jmh</module>
 
                 <module>jsf</module>
-                <module>json-modules</module>
 
                 <module>kubernetes-modules</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-                <module>libraries-data</module>
-
 
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
@@ -393,7 +389,6 @@
                 <module>osgi</module>
                 <module>orika</module>
 
-                <module>patterns-modules</module>
 
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
@@ -446,8 +441,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
-                <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
@@ -584,7 +577,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-cxf-modules</module>
 
                 <module>azure</module>
                 <module>checker-plugin</module>
@@ -615,14 +607,13 @@
                 <module>jmh</module>
 
                 <module>jsf</module>
-                <module>json-modules</module>
 
                 <module>kubernetes-modules</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-                <module>libraries-data</module>
+
 
 
                 <module>libraries-data-db</module>
@@ -643,7 +634,6 @@
                 <module>osgi</module>
                 <module>orika</module>
 
-                <module>patterns-modules</module>
 
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
@@ -688,8 +678,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
-                <module>server-modules</module>
+
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-batch</module>
@@ -845,9 +834,17 @@
             </build>
 
             <modules>
+                <module>patterns-modules</module>
+                <module>json-modules</module>
+                <module>libraries-data</module>
+                <module>saas-modules</module>
+                <module>server-modules</module>
+                <module>apache-cxf-modules</module>
+
                 <module>spring-aop</module>
                 <module>jmeter</module>
                 <module>spring-aop-2</module>
+
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -1072,6 +1069,12 @@
             </build>
 
             <modules>
+                <module>patterns-modules</module>
+                <module>json-modules</module>
+                <module>libraries-data</module>
+                <module>saas-modules</module>
+                <module>server-modules</module>
+                <module>apache-cxf-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
