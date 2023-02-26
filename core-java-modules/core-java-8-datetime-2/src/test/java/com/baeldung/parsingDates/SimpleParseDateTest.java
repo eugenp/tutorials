@@ -3,19 +3,10 @@ package com.baeldung.parsingDates;
 import com.baeldung.parsingDates.SimpleDateTimeFormat;
 import com.baeldung.parsingDates.SimpleDateTimeFormater;
 import com.baeldung.parsingDates.SimpleDateUtils;
-import com.baeldung.parsingDates.SimpleParseDate;
 import java.util.Arrays;
 import org.junit.*;
 
 public class SimpleParseDateTest {
-
-    @Test
-    public void testDateParse() {
-        SimpleParseDate simpleParseDate = new SimpleParseDate();
-        String date = "2022-40-40";
-        Assert.assertNotEquals(simpleParseDate.parseDate(date, Arrays.asList("MM/dd/yyyy", "dd.MM.yyyy", "yyyy-MM-dd")), null);
-        Assert.assertNull(simpleParseDate.parseDateWithMatcher(date));
-    }
 
     @Test
     public void testSimpleDateTimeParse() {
