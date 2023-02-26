@@ -39,7 +39,7 @@ public class PassParametersControllerIntegrationTest {
         ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/showViewPage")).andReturn().getModelAndView();
 
         //Validate view
-        Assert.assertEquals(mv.getViewName(), "viewPage");
+        Assert.assertEquals(mv.getViewName(), "view/viewPage");
 
         //Validate attribute
         Assert.assertEquals(mv.getModelMap().get("message").toString(), "Baeldung");
@@ -50,7 +50,7 @@ public class PassParametersControllerIntegrationTest {
         ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/printViewPage")).andReturn().getModelAndView();
 
         //Validate view
-        Assert.assertEquals(mv.getViewName(), "viewPage");
+        Assert.assertEquals(mv.getViewName(), "view/viewPage");
 
         //Validate attribute
         Assert.assertEquals(mv.getModelMap().get("message").toString(), "Baeldung");
@@ -61,7 +61,7 @@ public class PassParametersControllerIntegrationTest {
         ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/goToViewPage")).andReturn().getModelAndView();
 
         //Validate view
-        Assert.assertEquals(mv.getViewName(), "viewPage");
+        Assert.assertEquals(mv.getViewName(), "view/viewPage");
 
         //Validate attribute
         Assert.assertEquals(mv.getModelMap().get("message").toString(), "Baeldung");
