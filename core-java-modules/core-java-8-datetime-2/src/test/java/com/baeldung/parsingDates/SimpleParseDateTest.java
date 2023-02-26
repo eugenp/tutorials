@@ -1,9 +1,9 @@
 package com.baeldung.parsingDates;
 
-import com.parse.parsingdates.SimpleDateTimeFormat;
-import com.parse.parsingdates.SimpleDateTimeFormater;
-import com.parse.parsingdates.SimpleDateUtils;
-import com.parse.parsingdates.SimpleParseDate;
+import com.baeldung.parsingDates.SimpleDateTimeFormat;
+import com.baeldung.parsingDates.SimpleDateTimeFormater;
+import com.baeldung.parsingDates.SimpleDateUtils;
+import com.baeldung.parsingDates.SimpleParseDate;
 import java.util.Arrays;
 import org.junit.*;
 
