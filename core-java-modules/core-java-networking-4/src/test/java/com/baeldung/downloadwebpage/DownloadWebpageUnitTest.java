@@ -19,17 +19,17 @@ class DownloadWebpageUnitTest {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder responseBuilder = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            responseBuilder.append(line);
-        }
-        reader.close();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+            StringBuilder responseBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                responseBuilder.append(line);
+            }
 
-        assertNotNull(responseBuilder);
-        assertTrue(responseBuilder.toString()
-          .contains("<html>"));
+            assertNotNull(responseBuilder);
+            assertTrue(responseBuilder.toString()
+              .contains("<html>"));
+        }
 
     }
 
