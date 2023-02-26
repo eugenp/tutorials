@@ -20,6 +20,12 @@
             <artifactId>commons-validator</artifactId>
             <version>${apache.commons-validator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -28,6 +34,7 @@
 
     <properties>
         <apache.commons-validator.version>1.7</apache.commons-validator.version>
+        <jsoup.version>1.15.4</jsoup.version>
     </properties>
 
 </project>
