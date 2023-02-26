@@ -25,16 +25,10 @@
         <!-- JAXB APIs & runtime no longer provided in JDK 11 -->
         <!-- see http://openjdk.java.net/jeps/320 -->
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb.version}</version>
-            <scope>runtime</scope>
+
         </dependency>
         <!-- SQLite database driver -->
         <dependency>
@@ -89,7 +83,7 @@
         <spring.batch.version>4.3.0</spring.batch.version>
         <sqlite.version>3.15.1</sqlite.version>
         <opencsv.version>4.1</opencsv.version>
-        <jaxb.version>2.3.1</jaxb.version>
+        <jaxb.version>4.0.0</jaxb.version>
         <jackson-datatype.version>2.12.3</jackson-datatype.version>
     </properties>
 

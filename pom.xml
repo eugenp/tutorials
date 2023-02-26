@@ -451,7 +451,7 @@
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-batch</module>
+
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -693,7 +693,7 @@
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-batch</module>
+
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -847,6 +847,7 @@
             </build>
 
             <modules>
+                <module>spring-batch</module>
                 <module>spring-aop</module>
                 <module>jmeter</module>
                 <module>spring-aop-2</module>
@@ -1074,6 +1075,7 @@
             </build>
 
             <modules>
+                <module>spring-batch</module>
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
