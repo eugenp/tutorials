@@ -1014,7 +1014,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
-				<module>spring-boot-modules/spring-caching-2</module>
+				        <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1034,6 +1034,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
@@ -1249,7 +1250,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
-				<module>spring-boot-modules/spring-caching-2</module>
+				        <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1269,6 +1270,7 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
+                <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
                 <module>messaging-modules/spring-apache-camel</module>
             </modules>
