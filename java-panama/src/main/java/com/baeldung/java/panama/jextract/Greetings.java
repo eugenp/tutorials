@@ -2,7 +2,7 @@ package com.baeldung.java.panama.jextract;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
-// Generate JExtract bingings before uncommenting
+// Generate JExtract bindings before uncommenting
 // import static foreign.c.stdio_h.printf;
 
 public class Greetings {
@@ -12,8 +12,8 @@ public class Greetings {
 
         try (MemorySession memorySession = MemorySession.openConfined()) {
             MemorySegment greetingSegment = memorySession.allocateUtf8String(greeting);
-          // Generate JExtract bingings before uncommenting
-          //  printf(greetingSegment);
+            // Generate JExtract bingings before uncommenting
+            //  printf(greetingSegment);
         }
     }
 }
