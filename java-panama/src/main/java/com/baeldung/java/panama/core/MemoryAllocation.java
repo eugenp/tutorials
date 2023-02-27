@@ -2,8 +2,8 @@ package com.baeldung.java.panama.core;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 
 public class MemoryAllocation {
 
