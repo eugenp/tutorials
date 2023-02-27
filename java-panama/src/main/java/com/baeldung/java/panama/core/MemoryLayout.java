@@ -1,14 +1,16 @@
 package com.baeldung.java.panama.core;
 
+import static java.lang.foreign.MemoryLayout.sequenceLayout;
+import static java.lang.foreign.MemoryLayout.structLayout;
+import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
+import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
+import static java.lang.foreign.ValueLayout.PathElement;
+
 import java.lang.foreign.GroupLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.SequenceLayout;
 import java.lang.invoke.VarHandle;
-
-import static java.lang.foreign.MemoryLayout.sequenceLayout;
-import static java.lang.foreign.MemoryLayout.structLayout;
-import static java.lang.foreign.ValueLayout.*;
 
 public class MemoryLayout {
 
