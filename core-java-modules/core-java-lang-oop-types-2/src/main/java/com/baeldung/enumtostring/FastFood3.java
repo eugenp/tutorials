@@ -7,7 +7,7 @@ public enum FastFood3 {
     CHICKEN("Fried Chicken"),
     ;
 
-    final String prettyName;
+    private final String prettyName;
 
     FastFood3(String prettyName) {
         this.prettyName = prettyName;

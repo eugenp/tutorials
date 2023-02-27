@@ -24,5 +24,5 @@ public enum FastFood2 {
         public String toString() {
             return "Fried Chicken";
         }
-    },
+    }
 }
