@@ -5,15 +5,12 @@ import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.foreign.SegmentAllocator;
 
-
-
 public class MemoryAllocation {
 
     public static void main(String[] args) throws Throwable {
 
-
         try (MemorySession session = MemorySession.openConfined()) {
-            String[] greetingStrings = {"hello", "world", "panama", "baeldung"};
+            String[] greetingStrings = { "hello", "world", "panama", "baeldung" };
             SegmentAllocator allocator = SegmentAllocator.implicitAllocator();
             MemorySegment offHeapSegment = allocator.allocateArray(ValueLayout.ADDRESS, greetingStrings.length);
             for (int i = 0; i < greetingStrings.length; i++) {

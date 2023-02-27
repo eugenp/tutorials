@@ -10,18 +10,13 @@ import static java.lang.foreign.MemoryLayout.sequenceLayout;
 import static java.lang.foreign.MemoryLayout.structLayout;
 import static java.lang.foreign.ValueLayout.*;
 
-
 public class MemoryLayout {
 
     public static void main(String[] args) {
 
-        GroupLayout pointLayout = structLayout(
-                JAVA_DOUBLE.withName("x"),
-                JAVA_DOUBLE.withName("y")
-        );
+        GroupLayout pointLayout = structLayout(JAVA_DOUBLE.withName("x"), JAVA_DOUBLE.withName("y"));
 
-        SequenceLayout ptsLayout = sequenceLayout(10,
-                pointLayout);
+        SequenceLayout ptsLayout = sequenceLayout(10, pointLayout);
 
         VarHandle xvarHandle = pointLayout.varHandle(PathElement.groupElement("x"));
         VarHandle yvarHandle = pointLayout.varHandle(PathElement.groupElement("y"));
