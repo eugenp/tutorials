@@ -133,6 +133,11 @@
             <artifactId>derbytools</artifactId>
             <version>${derby.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -157,7 +162,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.version>5.3.25</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <javassist.version>3.21.0-GA</javassist.version>
         <!-- persistence -->
@@ -175,6 +180,7 @@
         <!-- maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>
