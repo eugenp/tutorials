@@ -372,7 +372,7 @@
 
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
-                <module>libraries-server-2</module>
+
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
@@ -387,13 +387,9 @@
                 <module>netflix-modules</module>
 
                 <module>osgi</module>
-                <module>orika</module>
 
 
-                <module>performance-tests</module>
                 <module>persistence-modules</module>
-
-                <module>security-modules</module>
 
                 <module>vavr-modules</module>
                 <module>web-modules</module>
@@ -617,7 +613,7 @@
 
                 <module>libraries-data-db</module>
                 <module>libraries-security</module>
-                <module>libraries-server-2</module>
+
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
@@ -631,13 +627,10 @@
                 <module>netflix-modules</module>
 
                 <module>osgi</module>
-                <module>orika</module>
 
 
-                <module>performance-tests</module>
+
                 <module>persistence-modules</module>
-
-                <module>security-modules</module>
 
                 <module>vavr-modules</module>
                 <module>web-modules</module>
@@ -833,12 +826,18 @@
             </build>
 
             <modules>
+                <module>performance-tests</module>
+                <module>security-modules</module>
+                <module>libraries-server-2</module>
+                <module>orika</module>
+
                 <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
+
 
                 <module>spring-aop</module>
                 <module>jmeter</module>
@@ -1069,12 +1068,19 @@
             </build>
 
             <modules>
+
+                <module>performance-tests</module>
+                <module>security-modules</module>
+                <module>libraries-server-2</module>
+                <module>orika</module>
+                
                 <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
+                
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
