@@ -26,14 +26,6 @@ spring:
     user: local
     password: local
     locations: classpath:db/h2/migration
-
-level:
-  org:
-    flywaydb:
-      core:
-        internal:
-          command:
-            DbMigrate: DEBUG
   
   
   
