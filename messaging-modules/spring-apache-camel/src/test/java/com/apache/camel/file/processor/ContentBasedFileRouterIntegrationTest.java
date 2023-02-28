@@ -11,7 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.camel.file.cfg.ContentBasedFileRouterConfig;
+import com.baeldung.camel.apache.file.cfg.ContentBasedFileRouterConfig;
 
 @RunWith(JUnit4.class)
 public class ContentBasedFileRouterIntegrationTest {
