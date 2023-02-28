@@ -463,7 +463,6 @@
                 <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
 
-                <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
@@ -702,7 +701,6 @@
 
                 <module>spring-ejb-modules</module>
 
-                <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
@@ -841,6 +839,7 @@
             </build>
 
             <modules>
+                <module>spring-jenkins-pipeline</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-caching</module>
@@ -1074,6 +1073,7 @@
             </build>
 
             <modules>
+                <module>spring-jenkins-pipeline</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-caching</module>
