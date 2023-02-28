@@ -1,0 +1,14 @@
+version: '3.9'
+networks:
+  obref:
+services:
+  postgres_db_service:
+    container_name: postgres_db_service
+    image: postgres:11
+    ports:
+      - "8082:5432"
+    hostname:   postgres_db_service
+    environment:
+      - POSTGRES_PASSWORD=local
+      - POSTGRES_USER=local
+      - POSTGRES_DB=flyway-test-db
