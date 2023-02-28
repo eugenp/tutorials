@@ -20,6 +20,8 @@ public class SpringBootBootstrapLiveTest {
 
     private static final String API_ROOT = "http://localhost:8080/api/books";
 
+    // First, we can try to find books using variant methods:
+
     @Test
     public void whenGetAllBooks_thenOK() {
         final Response response = RestAssured.get(API_ROOT);
@@ -54,7 +56,8 @@ public class SpringBootBootstrapLiveTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
-    // POST
+    // Next, we'll test creating a new book: POST
+
     @Test
     public void whenCreateNewBook_thenCreated() {
         final Book book = createRandomBook();
@@ -77,6 +80,8 @@ public class SpringBootBootstrapLiveTest {
             .post(API_ROOT);
         assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCode());
     }
+
+    // Then we'll update an existing book:
 
     @Test
     public void whenUpdateCreatedBook_thenUpdated() {
@@ -110,7 +115,7 @@ public class SpringBootBootstrapLiveTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
-    // ===============================
+    // add books
 
     private Book createRandomBook() {
         final Book book = new Book();

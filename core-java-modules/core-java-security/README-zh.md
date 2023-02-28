@@ -778,6 +778,97 @@ This module contains articles about core Java Security
 
     此外，我们还看到了GSS API的实际应用以及Java中的替代方案。
 
+## Java SecurityManager的介绍
+
+在本教程中，我们将了解Java的内置安全基础设施，它默认是禁用的。具体来说，我们将研究其主要组件、扩展点和配置。
+
+1. 行动中的SecurityManager
+
+    这可能是一个惊喜，但默认的SecurityManager设置不允许许多标准操作。
+
+    ```java
+    System.setSecurityManager(new SecurityManager());
+    new URL("http://www.google.com").openConnection().connect();
+    ```
+
+    在这里，我们以编程方式启用默认设置的安全监管，并试图连接到google.com。
+
+    然后我们得到了以下异常。
+
+    ```java
+    java.security.AccessControlException: access denied ("java.net.SocketPermission"
+    "www.google.com:80" "connect,resolve")
+    ```
+
+    在标准库中还有许多其他的用例--例如，读取系统属性、读取环境变量、打开文件、反射和改变locale，仅此而已。
+
+2. 用例
+
+    这种安全基础设施从Java 1.0开始就已经存在了。那时候，小程序(applets)--嵌入到浏览器中的Java应用--是非常普遍的。自然，有必要限制它们对系统资源的访问。
+
+    如今，applets已经过时了。然而，当出现第三方代码在受保护的环境中执行的情况时，安全执行仍然是一个实际的概念。
+
+    例如，考虑到我们有一个Tomcat实例，第三方客户可以在那里托管他们的Web应用程序。我们不想让他们执行System.exit()这样的操作，因为那会影响到其他的应用程序，甚至可能影响到整个环境。
+
+3. 设计
+
+    1. 安全管理器
+
+        内置安全基础设施的主要组件之一是[java.lang SecurityManager](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/SecurityManager.html)。它有几个checkXxx方法，比如checkConnect，它在上面的测试中授权我们尝试连接到Google。所有这些都委托给checkPermission(java.security.Permission)方法。
+
+    2. 权限 Permission
+
+        java.security.Permission实例代表了授权请求。标准JDK类为所有潜在的危险操作（如读/写文件、打开套接字等）创建它们，并将它们交给SecurityManager进行适当的授权。
+
+    3. 配置
+
+        我们以一种特殊的策略格式定义权限。这些权限采取授予条目的形式(grant entries)。
+
+        ```xml
+        grant codeBase "file:${{java.ext.dirs}}/*" {
+            permission java.security.AllPermission;
+        };
+        ```
+
+        上面的codeBase规则是可选的。我们可以在这里完全不指定任何字段，或者使用signedBy（与keystore中的相应证书集成）或principal（通过javax.security.auth.Subject附加到当前线程的java.security.Principal）。我们可以使用这些规则的任何组合。
+
+        默认情况下，JVM会加载位于`<java.home>/lib/security/java.policy`中的公共系统策略文件。如果我们在`<user.home>/.java.policy`中定义了任何用户本地策略，JVM会将其附加到系统策略中。
+
+        也可以通过命令行指定策略文件：`-Djava.security.policy=/my/policy-file`。这样我们就可以将策略附加到先前加载的系统和用户策略中。
+
+        有一种特殊的语法用于替换所有系统和用户策略（如果有的话）--双等号：`-Djava.security.policy==/my/policy-file`
+
+4. 例子
+
+    让我们来定义一个自定义权限。
+
+    securitymanager/CustomPermission.java
+
+    和一个应该被保护的共享服务。
+
+    securitymanager/Service.java
+
+    如果我们试图在启用安全管理器的情况下运行它，就会抛出一个异常。
+
+    ```log
+    java.security.AccessControlException: access denied
+    ("com.baeldung.security.manager.CustomPermission" "my-operation")
+        at java.security.AccessControlContext.checkPermission(AccessControlContext.java:472)
+        at java.security.AccessController.checkPermission(AccessController.java:884)
+        at java.lang.SecurityManager.checkPermission(SecurityManager.java:549)
+        at com.baeldung.security.manager.Service.operation(Service.java:10)
+    ```
+
+    我们可以用以下内容创建我们的`<user.home>/.java.policy`文件，并尝试重新运行该应用程序。
+
+    ```xml
+    grant codeBase "file:<our-code-source>" {
+        permission com.baeldung.security.manager.CustomPermission "my-operation";
+    };
+    ```
+
+    现在工作得很好。
+
 ## Relevant Articles
 
 - [x] [The Basics of Java Security](https://www.baeldung.com/java-security-overview)
@@ -790,7 +881,7 @@ This module contains articles about core Java Security
 - [The Java SecureRandom Class](https://www.baeldung.com/java-secure-random)
 - [x] [An Introduction to Java SASL](https://www.baeldung.com/java-sasl)
 - [x] [A Guide to Java GSS API](https://www.baeldung.com/java-gss)
-- [Intro to the Java SecurityManager](https://www.baeldung.com/java-security-manager)
+- [x] [Intro to the Java SecurityManager](https://www.baeldung.com/java-security-manager)
 - More articles: [[next -->]](../core-java-security-2/README-zh.md)
 
 ## Code
