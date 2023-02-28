@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class HelpRequestServiceTest {
+public class HelpRequestServiceUnitTest {
 
     HelpRequestService testHelpRequestService = new HelpRequestService() {
         @Override
