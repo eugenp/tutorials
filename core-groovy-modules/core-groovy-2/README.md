@@ -14,4 +14,4 @@ This module contains articles about core Groovy concepts
 - [A Quick Guide to Working with Web Services in Groovy](https://www.baeldung.com/groovy-web-services)
 - [Categories in Groovy](https://www.baeldung.com/groovy-categories)
 - [How to Determine the Data Type in Groovy](https://www.baeldung.com/groovy-determine-data-type)
-- [[<-- Prev]](/core-groovy)
+- [[<-- Prev]](/core-groovy-modules/core-groovy)

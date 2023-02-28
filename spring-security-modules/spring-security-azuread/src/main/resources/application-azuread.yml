@@ -1,0 +1,27 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          azure:
+            issuer-uri: https://login.microsoftonline.com/2e9fde3a-38ec-44f9-8bcd-c184dc1e8033/v2.0
+            user-name-attribute: name
+        registration:
+          azure-dev:
+            provider: azure
+            #client-id: "6035bfd4-22f0-437c-b76f-da729a916cbf"
+            #client-secret: "fo28Q~-aLbmQvonnZtzbgtSiqYstmBWEmGPAodmx"
+            client-id: your-client-id
+            client-secret: your-secret-id         
+            scope:
+            - openid
+            - email
+            - profile
+                    
+# Group mapping
+baeldung:
+  jwt:
+    authorization:
+      group-to-authorities:
+        "ceef656a-fca9-49b6-821b-f7543b7065cb": BAELDUNG_RW
+        "eaaecb69-ccbc-4143-b111-7dd1ce1d99f1": BAELDUNG_RO,BAELDUNG_ADMIN
