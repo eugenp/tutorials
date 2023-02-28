@@ -40,7 +40,6 @@ public class TodosController {
     @GetMapping(value = {"/name"},produces = DEFAULT_MEDIA_TYPE)
     public List<String> findAllName(){
         return List.of("Hello", "World");
-
     }
 
 
@@ -88,6 +87,5 @@ public class TodosController {
     ) {
         service.delete(id);
     }
-
 
 }
