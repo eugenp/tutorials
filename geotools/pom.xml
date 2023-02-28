@@ -39,13 +39,6 @@
             <artifactId>gt-swing</artifactId>
             <version>${geotools-swing.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.locationtech.jts</groupId>
-            <artifactId>jts-core</artifactId>
-            <version>1.19.0</version>
-        </dependency>
-
-
     </dependencies>
 
     <properties>

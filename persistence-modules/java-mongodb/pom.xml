@@ -15,19 +15,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.flapdoodle.embedmongo</groupId>
-            <artifactId>de.flapdoodle.embedmongo</artifactId>
-            <version>${flapdoodle.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
+            <artifactId>mongodb-driver-sync</artifactId>
             <version>${mongo.version}</version>
         </dependency>
         <dependency>
             <groupId>dev.morphia.morphia</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>morphia-core</artifactId>
             <version>${morphia.version}</version>
         </dependency>
         <dependency>
@@ -42,12 +36,18 @@
             <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${flapdoodle.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <mongo.version>3.12.1</mongo.version>
-        <flapdoodle.version>1.11</flapdoodle.version>
-        <morphia.version>1.5.3</morphia.version>
+        <mongo.version>4.8.2</mongo.version>
+        <flapdoodle.version>4.4.1</flapdoodle.version>
+        <morphia.version>2.0.0</morphia.version>
     </properties>
 
 </project>
