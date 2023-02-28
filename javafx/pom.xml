@@ -16,12 +16,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>19</version>
+            <version>${javafx.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>19</version>
+            <version>${javafx.version}</version>
         </dependency>
     </dependencies>
 
@@ -30,12 +30,17 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>${javafx-maven-pluvin.version}</version>
                 <configuration>
                     <mainClass>Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <javafx.version>19</javafx.version>
+        <javafx-maven-pluvin.version>0.0.8</javafx-maven-pluvin.version>
+    </properties>
 
 </project>
