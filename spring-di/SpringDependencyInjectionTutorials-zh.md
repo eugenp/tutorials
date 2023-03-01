@@ -4,9 +4,12 @@
 
 简单地说，这允许组件的松散耦合，并将管理组件的责任转移到容器上。
 
-DI Basics
-- Intro to Inversion of Control and Dependency Injection with Spring
-- Constructor Dependency Injection in Spring
+让我们在这里进一步探讨Spring的DI。
+
+## DI Basics
+
+- [Intro to Inversion of Control and Dependency Injection with Spring](Intro-zh.md)
+- [Constructor Dependency Injection in Spring](/spring-di-2/README-zh.md#spring中的构造函数依赖性注入)
 - Guide to Spring @Autowired
 - Wiring in Spring: @Autowired, @Resource and @Inject
 - Spring @Primary Annotation
@@ -14,7 +17,8 @@ DI Basics
 - XML-Based Injection in Spring
 - Quick Guide to Spring Bean Scopes
 
-DI Advanced Topics
+## DI Advanced Topics
+
 - Spring – Injecting Collections
 - Spring Autowiring of Generic Types
 - Constructor Injection in Spring with Lombok
@@ -23,12 +27,12 @@ DI Advanced Topics
 - Injecting Prototype Beans into a Singleton Instance in Spring
 - Inject a Map from a YAML File with Spring
 
-DI Exceptions
+## DI Exceptions
+
 - Unsatisfied Dependency in Spring
 - Circular Dependencies in Spring
 - Spring NoSuchBeanDefinitionException
 
-
 ## Relevant Articles
 
-- [ ] [Spring Dependency Injection](https://www.baeldung.com/spring-dependency-injection)
+- [x] [Spring Dependency Injection](https://www.baeldung.com/spring-dependency-injection)
