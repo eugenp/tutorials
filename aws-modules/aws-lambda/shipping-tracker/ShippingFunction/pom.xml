@@ -69,8 +69,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <hibernate.version>5.4.21.Final</hibernate.version>
         <aws-lambda-java-core.version>1.2.0</aws-lambda-java-core.version>
         <aws-lambda-java-events.version>3.1.0</aws-lambda-java-events.version>
