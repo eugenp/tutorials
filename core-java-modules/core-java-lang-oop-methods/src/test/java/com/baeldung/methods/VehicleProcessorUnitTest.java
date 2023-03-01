@@ -12,12 +12,14 @@ class VehicleProcessorUnitTest {
     VehicleProcessor vehicleProcessor = mock(VehicleProcessor.class);
 
     @Test
+    void givenAllArguments_whenMethodCall_thenVerifyCallIsDoneCorrectly() {
+        vehicleProcessor.processVehicle("Vehicle", "Car", "red", 2200, true);
+        verify(vehicleProcessor, atLeastOnce()).processVehicle("Vehicle", "Car", "red", 2200, true);
+    }
+
+    @Test
     void givenParameterObject_whenMethodCall_thenVerifyCallIsDoneCorrectly() {
         Vehicle vehicle = mock(Vehicle.class);
-
-        vehicleProcessor.processVehicle("Vechicle", "Car", "red", 2200, true);
-        verify(vehicleProcessor, atLeastOnce()).processVehicle("Vechicle", "Car", "red", 2200, true);
-
         vehicleProcessor.processVehicle(vehicle);
         verify(vehicleProcessor, atLeastOnce()).processVehicle(vehicle);
     }
@@ -41,19 +43,19 @@ class VehicleProcessorUnitTest {
         motorcycle.addMotorcycleFeatures("navi", "charger");
         assertThat(motorcycle.getFeatures()).isEqualToIgnoringCase("abs, navi, charger");
 
-        motorcycle.addMotorcycleFeatures("wifi", "phone", "satelite");
-        assertThat(motorcycle.getFeatures()).isEqualToIgnoringCase("abs, navi, charger, wifi, phone, satelite");
+        motorcycle.addMotorcycleFeatures("wifi", "phone", "satellite");
+        assertThat(motorcycle.getFeatures()).isEqualToIgnoringCase("abs, navi, charger, wifi, phone, satellite");
     }
 
     @Test
     void givenJavaBuilderPattern_whenMethodCall_thenVerifyCallIsDoneCorrectly() {
-        Car car = new Car.Builder("Car", "Coupe", 2023).color("blue")
+        Car car = new Car.CarBuilder("Car", "Coupe", 2023).color("blue")
             .automatic(true)
+            .features("abs, navi, charger, wifi, phone, satellite")
             .build();
 
         vehicleProcessor.processCar(car);
         verify(vehicleProcessor, atLeastOnce()).processCar(car);
-
     }
 
 }

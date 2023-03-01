@@ -22,10 +22,6 @@ public class Vehicle {
     }
 
     public Vehicle(Vehicle vehicle) {
-        this.make = vehicle.make;
-        this.model = vehicle.model;
-        this.color = vehicle.color;
-        this.weight = vehicle.weight;
-        this.statusNew = vehicle.statusNew;
+        this(vehicle.make, vehicle.model, vehicle.color, vehicle.weight, vehicle.statusNew);
     }
 }
