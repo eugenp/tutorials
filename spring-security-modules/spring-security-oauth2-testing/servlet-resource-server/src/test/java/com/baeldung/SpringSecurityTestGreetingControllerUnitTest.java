@@ -37,7 +37,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*-----------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsNotAuthenticated_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
         api.perform(get("/greet").with(anonymous()))
             .andExpect(status().isUnauthorized());
     }
@@ -61,7 +61,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsNotAuthenticated_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
         api.perform(get("/secured-route").with(anonymous()))
             .andExpect(status().isUnauthorized());
     }
@@ -88,7 +88,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsNotAuthenticated_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
         api.perform(get("/secured-method").with(anonymous()))
             .andExpect(status().isUnauthorized());
     }
