@@ -159,5 +159,4 @@
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.1.0</modelmapper.version>
     </properties>
-
 </project>
