@@ -38,7 +38,7 @@ class MessageServiceUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGreet_thenThrowsClassCastException() {
+    void givenUserIsAnonymous_whenGreet_thenThrowsClassCastException() {
         assertThrows(ClassCastException.class, () -> messageService.greet()
             .block());
     }
@@ -64,7 +64,7 @@ class MessageServiceUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetSecret_thenThrowsAccessDeniedException() {
+    void givenUserIsAnonymous_whenGetSecret_thenThrowsAccessDeniedException() {
         assertThrows(AccessDeniedException.class, () -> messageService.getSecret()
             .block());
     }

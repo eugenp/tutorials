@@ -37,7 +37,7 @@ class MessageServiceUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGreet_thenThrowsAccessDeniedException() {
+    void givenUserIsAnonymous_whenGreet_thenThrowsAccessDeniedException() {
         assertThrows(AccessDeniedException.class, () -> messageService.getSecret());
     }
 
@@ -60,7 +60,7 @@ class MessageServiceUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsNotAuthenticated_whenGetSecret_thenThrowsAccessDeniedException() {
+    void givenUserIsAnonymous_whenGetSecret_thenThrowsAccessDeniedException() {
         assertThrows(AccessDeniedException.class, () -> messageService.getSecret());
     }
 

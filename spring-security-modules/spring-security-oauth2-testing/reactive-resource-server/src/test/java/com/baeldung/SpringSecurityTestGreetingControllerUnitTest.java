@@ -39,7 +39,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*-----------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get()
             .uri("/greet")
@@ -72,7 +72,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get()
             .uri("/secured-route")
@@ -112,7 +112,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get()
             .uri("/secured-method")

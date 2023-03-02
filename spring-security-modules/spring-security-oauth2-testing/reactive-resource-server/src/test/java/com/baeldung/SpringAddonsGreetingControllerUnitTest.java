@@ -34,7 +34,7 @@ class SpringAddonsGreetingControllerUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
         api.get()
             .uri("/greet")
             .exchange()
@@ -66,7 +66,7 @@ class SpringAddonsGreetingControllerUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
         api.get()
             .uri("/secured-route")
             .exchange()
@@ -106,7 +106,7 @@ class SpringAddonsGreetingControllerUnitTest {
 
     @Test
     @WithAnonymousUser
-    void givenUserIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
         api.get()
             .uri("/secured-method")
             .exchange()
