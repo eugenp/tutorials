@@ -26,6 +26,7 @@
         <module>spring-security-oauth2-sso</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
+        <module>spring-security-oauth2-testing</module>
         <module>spring-security-saml</module>
         <module>spring-security-social-login</module>
         <module>spring-security-web-angular</module>

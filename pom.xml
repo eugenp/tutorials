@@ -1023,7 +1023,6 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
-                <module>spring-security-modules/spring-security-oauth2-testing</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
