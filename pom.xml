@@ -354,9 +354,6 @@
                 <module>apache-httpclient</module>
                 <module>httpclient4</module>
 
-
-                <module>jackson-modules</module>
-
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-websocket</module>
@@ -621,9 +618,6 @@
 
                 <module>apache-httpclient</module>
                 <module>httpclient4</module>
-
-
-                <module>jackson-modules</module>
 
                 <module>javafx</module>
                 <module>java-jdi</module>
