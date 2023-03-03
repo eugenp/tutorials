@@ -2,7 +2,6 @@ package com.baeldung.parsingDates;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.DateTimeParseException;
 
 public class SimpleDateTimeFormater {
 
@@ -12,10 +11,6 @@ public class SimpleDateTimeFormater {
 
         DateTimeFormatter dateTimeFormatter = dateTimeFormatterBuilder.toFormatter();
 
-        try {
-            return dateTimeFormatter.parse(date).toString();
-        } catch (DateTimeParseException e) {
-            return null;
-        }
+        return dateTimeFormatter.parse(date).toString();
     }
 }
