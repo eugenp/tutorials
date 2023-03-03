@@ -362,8 +362,6 @@
 
                 <module>jmh</module>
 
-                <module>jsf</module>
-
                 <module>kubernetes-modules</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -600,8 +598,6 @@
                 <module>jersey</module>
                 <module>jhipster-5</module>
                 <module>jmh</module>
-
-                <module>jsf</module>
 
                 <module>kubernetes-modules</module>
 
@@ -978,6 +974,7 @@
                 <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
+                <module>jsf</module>
                 <module>libraries-2</module>
                 <module>libraries-7</module>
                 <module>libraries-apache-commons</module>
@@ -1220,6 +1217,7 @@
 
                 <module>java-native</module>
                 <module>jsoup</module>
+                <module>jsf</module>
                 <module>ksqldb</module>
 
                 <module>libraries-7</module>
