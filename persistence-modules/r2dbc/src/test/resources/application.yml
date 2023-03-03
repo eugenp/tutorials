@@ -6,8 +6,6 @@ server:
   port: 8080
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
   r2dbc:
     host: localhost
     port: 8082
