@@ -188,7 +188,7 @@
     <properties>
         <javaassist.version>3.27.0-GA</javaassist.version>
         <jol-core.version>0.10</jol-core.version>
-        <asm.version>8.0.1</asm.version>
+        <asm.version>9.4</asm.version>
         <bcel.version>6.5.0</bcel.version>
 
 <!--        <maven.compiler.source>11</maven.compiler.source>-->
