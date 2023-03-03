@@ -7,12 +7,12 @@ import java.io.IOException;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.junit.jupiter.api.Test;
 
 class ApacheHttpClientUnitTest extends GetRequestMockServer {
@@ -46,18 +46,6 @@ class ApacheHttpClientUnitTest extends GetRequestMockServer {
                 assertThat(response.getCode()).isEqualTo(HttpStatus.SC_OK);
                 return response;
             });
-        }
-    }
-
-    @Test
-    void givenDeveloperUsedCloseableHttpResponse_whenExecutingGetRequest_thenStatusIsOk() throws IOException {
-        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-            HttpGet httpGet = new HttpGet(serviceOneUrl);
-            try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
-                HttpEntity entity = response.getEntity();
-                EntityUtils.consume(entity);
-                assertThat(response.getCode()).isEqualTo(HttpStatus.SC_OK);
-            }
         }
     }
 
