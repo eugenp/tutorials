@@ -8,7 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -23,7 +24,7 @@ public class UpdateMultipleFieldsLiveTest {
     @Before
     public void setup() {
         if (mongoClient == null) {
-            mongoClient = new MongoClient("localhost", 27017);
+            mongoClient = MongoClients.create("mongodb://localhost:27017");
             db = mongoClient.getDatabase("baeldung");
             collection = db.getCollection("employee");
 

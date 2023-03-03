@@ -1,6 +1,6 @@
 package com.baeldung.cxf.introduction;
 
-import javax.xml.ws.Endpoint;
+import jakarta.xml.ws.Endpoint;
 
 public class Server {
     public static void main(String args[]) throws InterruptedException {
