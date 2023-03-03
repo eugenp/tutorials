@@ -7,7 +7,7 @@ import com.baeldung.parsingDates.SimpleParseDate;
 import java.util.Arrays;
 import org.junit.*;
 
-public class SimpleParseDateTest {
+public class SimpleParseDateUnitTest {
 
     @Test
     public void testDateParse() {
