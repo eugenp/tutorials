@@ -445,7 +445,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core-4</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
@@ -673,7 +672,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core-4</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
@@ -823,6 +821,7 @@
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
+                <module>spring-core-4</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
@@ -1072,6 +1071,7 @@
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
+                <module>spring-core-4</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
