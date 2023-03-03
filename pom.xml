@@ -443,7 +443,6 @@
 
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-core</module>
@@ -676,7 +675,6 @@
 
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-core</module>
@@ -827,6 +825,7 @@
 
             <modules>
                 <module>spring-batch</module>
+                <module>spring-boot-rest</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
@@ -1071,6 +1070,7 @@
 
             <modules>
                 <module>spring-batch</module>
+                <module>spring-boot-rest</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
