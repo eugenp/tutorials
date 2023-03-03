@@ -3,11 +3,9 @@ spring:
     name: r2dbc-test
 
   r2dbc:
-    host: localhost
-    port: 8082
-    database: flyway-test-db
     username: local
     password: local
+    url: r2dbc:postgresql://localhost:8082/flyway-test-db
   flyway:
     url: jdbc:postgresql://localhost:8082/flyway-test-db
     locations: classpath:db/postgres/migration

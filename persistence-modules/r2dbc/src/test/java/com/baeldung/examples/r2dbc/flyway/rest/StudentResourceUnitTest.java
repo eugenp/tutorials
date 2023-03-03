@@ -2,32 +2,25 @@ package com.baeldung.examples.r2dbc.flyway.rest;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 
 import com.baeldung.examples.r2dbc.flyway.model.Department;
 import com.baeldung.examples.r2dbc.flyway.model.Student;
-import com.baeldung.examples.r2dbc.flyway.rest.config.TestDatabaseConfiguration;
 
 import reactor.core.publisher.Mono;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-@Import(TestDatabaseConfiguration.class)
-@ActiveProfiles("test")
 class StudentResourceUnitTest {
 
     private static final String DEPARTMENT_ENDPOINT = "/department";

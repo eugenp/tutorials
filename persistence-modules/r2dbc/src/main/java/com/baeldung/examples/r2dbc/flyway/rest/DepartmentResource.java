@@ -2,17 +2,12 @@ package com.baeldung.examples.r2dbc.flyway.rest;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.examples.r2dbc.flyway.model.Department;
-import com.baeldung.examples.r2dbc.flyway.model.Student;
 import com.baeldung.examples.r2dbc.flyway.repository.DepartmentRepository;
 
 import lombok.RequiredArgsConstructor;
