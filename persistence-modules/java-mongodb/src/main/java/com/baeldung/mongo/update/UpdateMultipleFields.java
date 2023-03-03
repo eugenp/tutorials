@@ -2,7 +2,8 @@ package com.baeldung.mongo.update;
 
 import org.bson.Document;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -16,19 +17,19 @@ public class UpdateMultipleFields {
         //
         // Connect to cluster
         //
+        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27007");) {
+            MongoDatabase database = mongoClient.getDatabase("baeldung");
+            MongoCollection<Document> collection = database.getCollection("employee");
 
-        MongoClient mongoClient = new MongoClient("localhost", 27007);
-        MongoDatabase database = mongoClient.getDatabase("baeldung");
-        MongoCollection<Document> collection = database.getCollection("employee");
+            //
+            // Update query
+            //
 
-        //
-        // Update query
-        //
+            UpdateResult updateResult = collection.updateMany(Filters.eq("employee_id", 794875), Updates.combine(Updates.set("department_id", 4), Updates.set("job", "Sales Manager")));
 
-        UpdateResult updateResult = collection.updateMany(Filters.eq("employee_id", 794875), Updates.combine(Updates.set("department_id", 4), Updates.set("job", "Sales Manager")));
-
-        System.out.println("updateResult:- " + updateResult);
-        System.out.println("updateResult:- " + updateResult.getModifiedCount());
+            System.out.println("updateResult:- " + updateResult);
+            System.out.println("updateResult:- " + updateResult.getModifiedCount());
+        }
 
     }
 

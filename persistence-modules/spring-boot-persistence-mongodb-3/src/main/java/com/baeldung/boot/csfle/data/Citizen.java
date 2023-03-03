@@ -13,7 +13,9 @@ public class Citizen {
     }
 
     public Citizen(EncryptedCitizen encryptedCitizen) {
-        this.name = encryptedCitizen.getName();
+        if (encryptedCitizen != null) {
+            this.name = encryptedCitizen.getName();
+        }
     }
 
     public String getName() {

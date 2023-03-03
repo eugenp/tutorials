@@ -8,8 +8,8 @@ import org.bson.Document;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -22,7 +22,7 @@ public class CollectionExistenceLiveTest {
     @Before
     public void setup() {
         if (mongoClient == null) {
-            mongoClient = new MongoClient("localhost", 27017);
+            mongoClient = MongoClients.create("mongodb://localhost:27017");
             databaseName = "baeldung";
             testCollectionName = "student";
 
@@ -59,27 +59,15 @@ public class CollectionExistenceLiveTest {
     }
 
     @Test
-    public void givenCollectionExists_whenCollectionAlreadyExists_thenCheckingForCollectionExistence() {
-
-        DB db = mongoClient.getDB(databaseName);
-        Boolean collectionStatus = db.collectionExists(testCollectionName);
-
-        Boolean expectedStatus = true;
-        assertEquals(expectedStatus, collectionStatus);
-
-    }
-
-    @Test
     public void givenListCollectionNames_whenCollectionAlreadyExists_thenCheckingForCollectionExistence() {
 
         MongoDatabase database = mongoClient.getDatabase(databaseName);
         boolean collectionExists = database.listCollectionNames()
-            .into(new ArrayList<String>())
+            .into(new ArrayList<>())
             .contains(testCollectionName);
 
         Boolean expectedStatus = true;
         assertEquals(expectedStatus, collectionExists);
-
     }
 
     @Test
@@ -88,7 +76,7 @@ public class CollectionExistenceLiveTest {
         MongoDatabase database = mongoClient.getDatabase(databaseName);
 
         MongoCollection<Document> collection = database.getCollection(testCollectionName);
-        Boolean collectionExists = collection.count() > 0 ? true : false;
+        Boolean collectionExists = collection.countDocuments() > 0 ? true : false;
 
         Boolean expectedStatus = false;
         assertEquals(expectedStatus, collectionExists);

@@ -1,27 +1,27 @@
 package com.baeldung.algorithms.conversion;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.apache.commons.codec.DecoderException;
 import org.hamcrest.text.IsEqualIgnoringCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.algorithms.conversion.HexStringConverter;
 
-public class ByteArrayConverterUnitTest {
+class ByteArrayConverterUnitTest {
 
     private HexStringConverter hexStringConverter;
 
-    @Before
+    @BeforeEach
     public void setup() {
         hexStringConverter = new HexStringConverter();
     }
 
     @Test
-    public void shouldEncodeByteArrayToHexStringUsingBigIntegerToString() {
+    void shouldEncodeByteArrayToHexStringUsingBigIntegerToString() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         if(hexString.charAt(0) == '0') {
@@ -32,7 +32,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldEncodeByteArrayToHexStringUsingBigIntegerStringFormat() {
+    void shouldEncodeByteArrayToHexStringUsingBigIntegerStringFormat() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         String output = hexStringConverter.encodeUsingBigIntegerStringFormat(bytes);
@@ -40,7 +40,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldDecodeHexStringToByteArrayUsingBigInteger() {
+    void shouldDecodeHexStringToByteArrayUsingBigInteger() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         byte[] output = hexStringConverter.decodeUsingBigInteger(hexString);
@@ -48,7 +48,7 @@ public class ByteArrayConverterUnitTest {
     }
     
     @Test
-    public void shouldEncodeByteArrayToHexStringUsingCharacterConversion() {
+    void shouldEncodeByteArrayToHexStringUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         String output = hexStringConverter.encodeHexString(bytes);
@@ -56,20 +56,22 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldDecodeHexStringToByteArrayUsingCharacterConversion() {
+    void shouldDecodeHexStringToByteArrayUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         byte[] output = hexStringConverter.decodeHexString(hexString);
         assertArrayEquals(bytes, output);
     }
     
-    @Test(expected=IllegalArgumentException.class)
-    public void shouldDecodeHexToByteWithInvalidHexCharacter() {
-        hexStringConverter.hexToByte("fg");
+    @Test
+    void shouldDecodeHexToByteWithInvalidHexCharacter() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            hexStringConverter.hexToByte("fg");
+        });
     }
 
     @Test
-    public void shouldEncodeByteArrayToHexStringDataTypeConverter() {
+    void shouldEncodeByteArrayToHexStringDataTypeConverter() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         String output = hexStringConverter.encodeUsingDataTypeConverter(bytes);
@@ -77,7 +79,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldDecodeHexStringToByteArrayUsingDataTypeConverter() {
+    void shouldDecodeHexStringToByteArrayUsingDataTypeConverter() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         byte[] output = hexStringConverter.decodeUsingDataTypeConverter(hexString);
@@ -85,7 +87,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldEncodeByteArrayToHexStringUsingGuava() {
+    void shouldEncodeByteArrayToHexStringUsingGuava() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         String output = hexStringConverter.encodeUsingGuava(bytes);
@@ -93,7 +95,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldDecodeHexStringToByteArrayUsingGuava() {
+    void shouldDecodeHexStringToByteArrayUsingGuava() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         byte[] output = hexStringConverter.decodeUsingGuava(hexString);
@@ -101,7 +103,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldEncodeByteArrayToHexStringUsingApacheCommons() throws DecoderException {
+    void shouldEncodeByteArrayToHexStringUsingApacheCommons() throws DecoderException {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         String output = hexStringConverter.encodeUsingApacheCommons(bytes);
@@ -109,7 +111,7 @@ public class ByteArrayConverterUnitTest {
     }
 
     @Test
-    public void shouldDecodeHexStringToByteArrayUsingApacheCommons() throws DecoderException {
+    void shouldDecodeHexStringToByteArrayUsingApacheCommons() throws DecoderException {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
         byte[] output = hexStringConverter.decodeUsingApacheCommons(hexString);
