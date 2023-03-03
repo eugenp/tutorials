@@ -2,6 +2,7 @@ package com.baeldung.parsingDates;
 
 import java.util.Arrays;
 import java.util.List;
+import org.joda.time.IllegalFieldValueException;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 
@@ -12,7 +13,7 @@ public class SimpleDateTimeFormat {
         for (String pattern : patternList) {
             try {
                 return DateTimeFormat.forPattern(pattern).parseLocalDate(date);
-            } catch (Exception e) {
+            } catch (IllegalFieldValueException e) {
             }
         }
         return null;
