@@ -618,7 +618,7 @@
                 <module>messaging-modules</module>
 
                 <module>microservices-modules</module>
-                <module>muleesb</module>
+<!--                <module>muleesb</module>-->
 
                 <module>netflix-modules</module>
 
@@ -997,7 +997,6 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-uuid</module>
                 <module>core-java-modules/pre-jpms</module>
-                <module>core-java-modules/core-java-httpclient</module>
 				        <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
@@ -1267,7 +1266,6 @@
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-function</module>
                 <module>core-java-modules/core-java-functional</module>
-                <module>core-java-modules/core-java-httpclient</module>
                 <module>core-java-modules/core-java-io</module>
                 <module>core-java-modules/core-java-io-2</module>
                 <module>core-java-modules/core-java-io-3</module>
@@ -1348,7 +1346,6 @@
                 <module>core-java-modules/core-java-time-measurements</module>
                 <module>core-java-modules/core-java-uuid</module>
                 <module>core-java-modules/pre-jpms</module>
-                <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>                
                 <module>custom-pmd</module>
