@@ -171,12 +171,21 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <asciidoctor.version>1.5.7.1</asciidoctor.version>
-        <serenity.version>1.9.9</serenity.version>
+        <serenity.version>3.6.12</serenity.version>
         <serenity.jbehave.version>1.9.0</serenity.jbehave.version>
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>3.6.12</serenity.plugin.version>
