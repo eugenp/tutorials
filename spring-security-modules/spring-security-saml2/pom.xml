@@ -81,7 +81,7 @@
     </build>
     
     <properties>
-        <java.version>9</java.version>
+        <java.version>17</java.version>
         <opensaml.version>4.1.1</opensaml.version>
     </properties>
 
