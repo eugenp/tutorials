@@ -161,6 +161,16 @@
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
+                        --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+                        --add-opens java.base/jdk.internal.misc=ALL-UNNAMED
+                        --add-opens java.base/sun.nio.ch=ALL-UNNAMED
+                        --add-opens java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED
+                        --add-opens jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED
+                        --add-opens java.base/sun.reflect.generics.reflectiveObjects=ALL-UNNAMED
+                        --add-opens java.base/java.io=ALL-UNNAMED
+                        --add-opens java.base/java.nio=ALL-UNNAMED
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                        --add-opens java.base/java.lang=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
@@ -198,7 +208,7 @@
         <httpclient.version>3.1</httpclient.version>
         <storm.version>1.2.2</storm.version>
         <kafka.version>3.3.1</kafka.version>
-        <ignite.version>3.0.0-beta1</ignite.version>
+        <ignite.version>2.14.0</ignite.version>
         <ignite-spring-data.version>2.9.1</ignite-spring-data.version>
         <gson.version>2.9.1</gson.version>
         <cache.version>1.1.1</cache.version>
