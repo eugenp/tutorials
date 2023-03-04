@@ -14,22 +14,26 @@ public class DataQueue {
     }
 
     public boolean isFull() {
-        return queue.size() == maxSize;
+        synchronized (queue) {
+            return queue.size() == maxSize;
+        }
     }
 
     public boolean isEmpty() {
-        return queue.isEmpty();
+        synchronized (queue) {
+            return queue.isEmpty();
+        }
     }
 
     public void waitOnFull() throws InterruptedException {
         synchronized (FULL_QUEUE) {
-            FULL_QUEUE.wait();
+            FULL_QUEUE.wait(1000);
         }
     }
 
     public void waitOnEmpty() throws InterruptedException {
         synchronized (EMPTY_QUEUE) {
-            EMPTY_QUEUE.wait();
+            EMPTY_QUEUE.wait(1000);
         }
     }
 
@@ -47,13 +51,20 @@ public class DataQueue {
 
     public void add(Message message) {
         synchronized (queue) {
+            if(queue.size() > maxSize) {
+                System.out.println("Max size exceeded");
+            }
             queue.add(message);
         }
     }
 
     public Message remove() {
         synchronized (queue) {
-            return queue.poll();
+            final Message poll = queue.poll();
+            if(poll == null) {
+                System.out.println("Trying to remove from empty queue");
+            }
+            return poll;
         }
     }
 }

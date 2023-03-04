@@ -18,20 +18,24 @@ public class Producer implements Runnable {
 
     public void produce() {
         while (runFlag) {
-            Message message = generateMessage();
-            while (dataQueue.isFull()) {
-                try {
-                    dataQueue.waitOnFull();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            synchronized (this) {
+                if (dataQueue.isFull()) {
+                    try {
+                        dataQueue.waitOnFull();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                }
+                if (!runFlag) {
                     break;
                 }
+                Message message = generateMessage();
+                if (!dataQueue.isFull()) {
+                    dataQueue.add(message);
+                    dataQueue.notifyAllForEmpty();
+                }
             }
-            if (!runFlag) {
-                break;
-            }
-            dataQueue.add(message);
-            dataQueue.notifyAllForEmpty();
         }
         System.out.println("Producer Stopped");
     }
@@ -41,7 +45,7 @@ public class Producer implements Runnable {
         System.out.printf("[%s] Generated Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
 
         //Sleeping on random time to make it realistic
-        ThreadUtil.sleep((long) (message.getData() * 100));
+        // ThreadUtil.sleep((long) (message.getData() * 100));
 
         return message;
     }

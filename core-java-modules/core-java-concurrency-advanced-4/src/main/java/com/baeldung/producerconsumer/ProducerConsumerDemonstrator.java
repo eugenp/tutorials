@@ -42,12 +42,14 @@ public class ProducerConsumerDemonstrator {
         Producer producer = new Producer(dataQueue);
         for(int i = 0; i < producerCount; i++) {
             Thread producerThread = new Thread(producer);
+            producerThread.setName("ProducerThread-" + i);
             producerThread.start();
             threads.add(producerThread);
         }
         Consumer consumer = new Consumer(dataQueue);
         for(int i = 0; i < consumerCount; i++) {
             Thread consumerThread = new Thread(consumer);
+            consumerThread.setName("ConsumerThread-" + i);
             consumerThread.start();
             threads.add(consumerThread);
         }
