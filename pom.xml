@@ -438,7 +438,6 @@
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -669,7 +668,6 @@
 
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-batch</module>
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -833,7 +831,9 @@
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
-
+				
+                <module>spring-batch</module>
+                <module>spring-batch-2</module>
 
                 <module>spring-aop</module>
                 <module>jmeter</module>
@@ -1009,8 +1009,7 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
-				        <module>spring-boot-modules/spring-caching-2</module>
+                <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1127,6 +1126,8 @@
                 <module>core-java-modules/core-java-networking-3</module>
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
+                <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>                
                 <module>custom-pmd</module>
@@ -1254,8 +1255,7 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
-				        <module>spring-boot-modules/spring-caching-2</module>
+                <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>

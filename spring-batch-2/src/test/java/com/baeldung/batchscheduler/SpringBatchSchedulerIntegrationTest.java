@@ -1,6 +1,5 @@
 package com.baeldung.batchscheduler;
 
-import com.baeldung.batchscheduler.SpringBatchScheduler;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +10,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.awaitility.Awaitility.await;
@@ -41,7 +38,7 @@ public class SpringBatchSchedulerIntegrationTest {
     }
 
     @Test
-    public void stopJobSchedulerWhenSchedulerDestroyed() throws Exception {
+    public void stopJobSchedulerWhenSchedulerDestroyed() {
         ScheduledAnnotationBeanPostProcessor bean = context.getBean(ScheduledAnnotationBeanPostProcessor.class);
         SpringBatchScheduler schedulerBean = context.getBean(SpringBatchScheduler.class);
         await().untilAsserted(() -> Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
@@ -54,7 +51,7 @@ public class SpringBatchSchedulerIntegrationTest {
     }
 
     @Test
-    public void stopJobSchedulerWhenFutureTasksCancelled() throws Exception {
+    public void stopJobSchedulerWhenFutureTasksCancelled() {
         SpringBatchScheduler schedulerBean = context.getBean(SpringBatchScheduler.class);
         await().untilAsserted(() -> Assert.assertEquals(2, schedulerBean.getBatchRunCounter()
                 .get()));

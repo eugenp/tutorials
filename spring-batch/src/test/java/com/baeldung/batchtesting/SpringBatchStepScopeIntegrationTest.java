@@ -2,10 +2,10 @@ package com.baeldung.batchtesting;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
-import java.util.Arrays;
+import java.util.List;
 
-import com.baeldung.batchtesting.SpringBatchConfiguration;
 import com.baeldung.batchtesting.model.Book;
 import com.baeldung.batchtesting.model.BookRecord;
 import org.junit.After;
@@ -14,15 +14,16 @@ import org.junit.runner.RunWith;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.StepExecution;
+import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.json.JsonFileItemWriter;
-import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.MetaDataInstanceFactory;
 import org.springframework.batch.test.StepScopeTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
@@ -33,12 +34,12 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 
-@RunWith(SpringRunner.class)
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
+@SpringBootTest
 public class SpringBatchStepScopeIntegrationTest {
 
     private static final String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
@@ -52,8 +53,7 @@ public class SpringBatchStepScopeIntegrationTest {
     @Autowired
     private FlatFileItemReader<BookRecord> itemReader;
 
-    @Autowired
-    private JobRepositoryTestUtils jobRepositoryTestUtils;
+    private final JobRepositoryTestUtils jobRepositoryTestUtils = new JobRepositoryTestUtils();
 
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();
@@ -62,10 +62,10 @@ public class SpringBatchStepScopeIntegrationTest {
         return paramsBuilder.toJobParameters();
     }
 
-    @After
+    /*@After
     public void cleanUp() {
         jobRepositoryTestUtils.removeJobExecutions();
-    }
+    }*/
 
     @Test
     public void givenMockedStep_whenReaderCalled_thenSuccess() throws Exception {
@@ -106,12 +106,12 @@ public class SpringBatchStepScopeIntegrationTest {
         StepScopeTestUtils.doInStepScope(stepExecution, () -> {
 
             jsonItemWriter.open(stepExecution.getExecutionContext());
-            jsonItemWriter.write(Arrays.asList(demoBook));
+            jsonItemWriter.write(new Chunk<>(List.of(demoBook)));
             jsonItemWriter.close();
             return null;
         });
 
         // then
-        AssertFile.assertFileEquals(expectedResult, actualResult);
+        assertFileEquals(expectedResult, actualResult);
     }
 }

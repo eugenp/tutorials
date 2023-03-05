@@ -1,12 +1,8 @@
 package com.baeldung.batch;
 
-import java.net.MalformedURLException;
-
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
@@ -40,7 +36,7 @@ public class SpringConfig {
     }
 
     @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) throws MalformedURLException {
+    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
 
         databasePopulator.addScript(dropReopsitoryTables);
@@ -54,6 +50,7 @@ public class SpringConfig {
         return initializer;
     }
 
+    @Bean(name = "jobRepository")
     private JobRepository getJobRepository() throws Exception {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource());
@@ -61,20 +58,11 @@ public class SpringConfig {
         // JobRepositoryFactoryBean's methods Throws Generic Exception,
         // it would have been better to have a specific one
         factory.afterPropertiesSet();
-        return (JobRepository) factory.getObject();
+        return factory.getObject();
     }
 
     private PlatformTransactionManager getTransactionManager() {
         return new ResourcelessTransactionManager();
-    }
-
-    public JobLauncher getJobLauncher() throws Exception {
-        SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-        // SimpleJobLauncher's methods Throws Generic Exception,
-        // it would have been better to have a specific one
-        jobLauncher.setJobRepository(getJobRepository());
-        jobLauncher.afterPropertiesSet();
-        return jobLauncher;
     }
 
 }

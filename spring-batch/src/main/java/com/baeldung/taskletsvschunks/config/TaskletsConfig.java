@@ -6,15 +6,14 @@ import com.baeldung.taskletsvschunks.tasklets.LinesWriter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
+import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.batch.test.JobLauncherTestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -25,10 +24,6 @@ import javax.sql.DataSource;
 @Configuration
 @EnableBatchProcessing
 public class TaskletsConfig {
-
-    @Autowired private JobBuilderFactory jobs;
-
-    @Autowired private StepBuilderFactory steps;
 
     @Bean
     public JobLauncherTestUtils jobLauncherTestUtils() {
@@ -58,7 +53,7 @@ public class TaskletsConfig {
 
     @Bean
     public JobLauncher jobLauncher() throws Exception {
-        SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+        TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
         jobLauncher.setJobRepository(jobRepository());
         return jobLauncher;
     }
@@ -79,36 +74,32 @@ public class TaskletsConfig {
     }
 
     @Bean
-    protected Step readLines() {
-        return steps
-          .get("readLines")
-          .tasklet(linesReader())
+    protected Step readLines(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("readLines", jobRepository)
+          .tasklet(linesReader(), transactionManager)
           .build();
     }
 
     @Bean
-    protected Step processLines() {
-        return steps
-          .get("processLines")
-          .tasklet(linesProcessor())
+    protected Step processLines(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("processLines", jobRepository)
+          .tasklet(linesProcessor(), transactionManager)
           .build();
     }
 
     @Bean
-    protected Step writeLines() {
-        return steps
-          .get("writeLines")
-          .tasklet(linesWriter())
+    protected Step writeLines(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("writeLines", jobRepository)
+          .tasklet(linesWriter(), transactionManager)
           .build();
     }
 
     @Bean
-    public Job job() {
-        return jobs
-          .get("taskletsJob")
-          .start(readLines())
-          .next(processLines())
-          .next(writeLines())
+    public Job job(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new JobBuilder("taskletsJob", jobRepository)
+          .start(readLines(jobRepository, transactionManager))
+          .next(processLines(jobRepository, transactionManager))
+          .next(writeLines(jobRepository, transactionManager))
           .build();
     }
 

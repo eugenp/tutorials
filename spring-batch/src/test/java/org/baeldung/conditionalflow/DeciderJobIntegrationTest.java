@@ -10,6 +10,7 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -23,15 +24,14 @@ import java.util.Iterator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringRunner.class)
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { NumberInfoConfig.class })
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@SpringBootTest
 public class DeciderJobIntegrationTest {
-    @Autowired
-    private JobLauncherTestUtils jobLauncherTestUtils;
+    private final JobLauncherTestUtils jobLauncherTestUtils = new JobLauncherTestUtils();
 
     @Test
     public void givenNumberGeneratorDecider_whenDeciderRuns_thenStatusIsNotify() throws Exception {
@@ -39,8 +39,7 @@ public class DeciderJobIntegrationTest {
         Collection<StepExecution> actualStepExecutions = jobExecution.getStepExecutions();
         ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
-        assertEquals("COMPLETED", actualJobExitStatus.getExitCode()
-            .toString());
+        assertEquals("COMPLETED", actualJobExitStatus.getExitCode());
         assertEquals(2, actualStepExecutions.size());
         boolean notifyStepDidRun = false;
         Iterator<StepExecution> iterator = actualStepExecutions.iterator();

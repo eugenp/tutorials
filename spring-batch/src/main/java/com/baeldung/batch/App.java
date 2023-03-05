@@ -31,7 +31,6 @@ public class App {
         runJob(context, "skippingBatchJob");
         runJob(context, "skipPolicyBatchJob");
         runJob(context, "retryBatchJob");
-
     }
 
     private static void runJob(AnnotationConfigApplicationContext context, String batchJobName) {

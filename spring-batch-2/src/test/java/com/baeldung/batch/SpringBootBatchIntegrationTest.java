@@ -5,7 +5,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.After;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;
@@ -13,16 +12,14 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @SpringBatchTest
-@SpringBootTest
 @DirtiesContext
+@SpringJUnitConfig(BatchConfiguration.class)
 @PropertySource("classpath:application.properties")
-@RunWith(SpringRunner.class)
 public class SpringBootBatchIntegrationTest {
 
     @Autowired

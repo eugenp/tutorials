@@ -7,15 +7,15 @@ import org.junit.runner.RunWith;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.test.JobLauncherTestUtils;
+import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TaskletsConfig.class)
+@SpringBatchTest
 public class TaskletsIntegrationTest {
-
-    @Autowired private JobLauncherTestUtils jobLauncherTestUtils;
+    private final JobLauncherTestUtils jobLauncherTestUtils = new JobLauncherTestUtils();
 
     @Test
     public void givenTaskletsJob_WhenJobEnds_ThenStatusCompleted() throws Exception {
