@@ -369,7 +369,6 @@
                 <module>libraries-3</module>
 
                 <module>libraries-data-db</module>
-                <module>libraries-security</module>
 
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -605,10 +604,7 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
 
-
-
                 <module>libraries-data-db</module>
-                <module>libraries-security</module>
 
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -822,6 +818,7 @@
             </build>
 
             <modules>
+                <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
@@ -1066,7 +1063,7 @@
             </build>
 
             <modules>
-
+                <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
