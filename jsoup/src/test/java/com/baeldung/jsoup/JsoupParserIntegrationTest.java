@@ -87,7 +87,7 @@ public class JsoupParserIntegrationTest {
         Element h1Element = firstArticle.select("h1")
             .first();
 
-        String sectionDivText = h1Element.text();
+        String h1Text = h1Element.text();
         String articleHtml = firstArticle.html();
         String outerHtml = firstArticle.outerHtml();
     }
