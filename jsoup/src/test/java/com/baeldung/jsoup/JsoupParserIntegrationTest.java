@@ -18,12 +18,6 @@ public class JsoupParserIntegrationTest {
 
     private Document doc;
 
-    @Before
-    public void setUp() throws IOException {
-        doc = Jsoup.connect("https://spring.io/blog")
-            .get();
-    }
-
     @Test
     public void loadDocument404() throws IOException {
         try {
@@ -47,9 +41,12 @@ public class JsoupParserIntegrationTest {
     }
 
     @Test
-    public void examplesSelectors() {
+    public void examplesSelectors() throws IOException {
+        doc = Jsoup.connect("https://baeldung.com")
+            .userAgent("Mozilla")
+            .get();
+
         Elements links = doc.select("a");
-        Elements logo = doc.select(".spring-logo--container");
         Elements pagination = doc.select("#pagination_control");
         Elements divsDescendant = doc.select("header div");
         Elements divsDirect = doc.select("header > div");
@@ -63,7 +60,11 @@ public class JsoupParserIntegrationTest {
     }
 
     @Test
-    public void examplesTraversing() {
+    public void examplesTraversing() throws IOException {
+        doc = Jsoup.connect("https://baeldung.com")
+            .userAgent("Mozilla")
+            .get();
+
         Elements sections = doc.select("section");
 
         Element firstSection = sections.first();
@@ -78,31 +79,29 @@ public class JsoupParserIntegrationTest {
     }
 
     @Test
-    public void examplesExtracting() {
+    public void examplesExtracting() throws IOException {
+        doc = Jsoup.connect("https://spring.io/blog")
+            .get();
         Element firstArticle = doc.select("article")
             .first();
-        Element timeElement = firstArticle.select("time")
+        Element h1Element = firstArticle.select("h1")
             .first();
-        String dateTimeOfFirstArticle = timeElement.attr("datetime");
-        Element sectionDiv = firstArticle.select("section div")
-            .first();
-        String sectionDivText = sectionDiv.text();
+
+        String sectionDivText = h1Element.text();
         String articleHtml = firstArticle.html();
         String outerHtml = firstArticle.outerHtml();
     }
 
     @Test
-    public void examplesModifying() {
+    public void examplesModifying() throws IOException {
+        doc = Jsoup.connect("https://spring.io/blog")
+            .get();
         Element firstArticle = doc.select("article")
             .first();
-        Element timeElement = firstArticle.select("time")
-            .first();
-        Element sectionDiv = firstArticle.select("section div")
+        Element h1Element = firstArticle.select("h1")
             .first();
 
-        String dateTimeOfFirstArticle = timeElement.attr("datetime");
-        timeElement.attr("datetime", "2016-12-16 15:19:54.3");
-        sectionDiv.text("foo bar");
+        h1Element.text("foo bar");
         firstArticle.select("h2")
             .html("<div><span></span></div>");
 
