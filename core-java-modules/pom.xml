@@ -105,7 +105,7 @@
         <module>core-java-nio-2</module>
         <module>core-java-numbers</module>
         <module>core-java-numbers-2</module>
-        <module>core-java-numbers-3</module>
+<!--        <module>core-java-numbers-3</module>-->
         <module>core-java-numbers-4</module>
         <module>core-java-numbers-5</module>
         <module>core-java-optional</module>
