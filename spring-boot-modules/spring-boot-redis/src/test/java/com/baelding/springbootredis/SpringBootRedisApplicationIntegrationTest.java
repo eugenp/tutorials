@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = RedisTestConfiguration.class)
-class SpringBootRedisApplicationTests {
+class SpringBootRedisApplicationIntegrationTest {
 
     private static final String V1_SESSIONS_ENDPOINT = "/v1/sessions";
     private static final String V1_GET_SESSION_BY_ID_ENDPOINT_TEMPLATE = V1_SESSIONS_ENDPOINT + "/%s";
