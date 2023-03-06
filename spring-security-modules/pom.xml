@@ -43,11 +43,13 @@
         <module>spring-security-web-rest-basic-auth</module>
         <module>spring-security-web-rest-custom</module>
         <module>spring-security-web-rest</module>
+        <module>spring-security-web-springdoc</module>
         <module>spring-security-web-sockets</module>
         <module>spring-security-web-thymeleaf</module>
         <module>spring-security-web-x509</module>
         <module>spring-security-opa</module>
         <module>spring-security-pkce</module>
+        <module>spring-security-azuread</module>
     </modules>
 
 </project>

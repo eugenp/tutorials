@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                script {
+                  def output = sh(returnStdout: true, returnStdoutTrim: true, script: 'echo "    hello    "')
+                    echo "Output: '${output}'"
+                }
+            }
+        }
+    }
+}

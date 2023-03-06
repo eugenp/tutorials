@@ -73,6 +73,7 @@
     <properties>
         <jetty.version>9.4.27.v20200227</jetty.version>
         <alpn.version>8.1.11.v20170118</alpn.version>
+        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
     </properties>
 
 </project>
