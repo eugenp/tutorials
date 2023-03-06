@@ -453,7 +453,7 @@
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
+
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -680,7 +680,7 @@
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
+
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -818,6 +818,7 @@
             </build>
 
             <modules>
+                <module>spring-jersey</module>
                 <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
@@ -1063,6 +1064,7 @@
             </build>
 
             <modules>
+                <module>spring-jersey</module>
                 <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
