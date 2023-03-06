@@ -13,7 +13,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -63,6 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifestEntries>
@@ -73,5 +74,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 
 </project>

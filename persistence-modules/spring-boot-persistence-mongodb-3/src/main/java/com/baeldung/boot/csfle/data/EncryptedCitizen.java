@@ -1,14 +1,14 @@
 package com.baeldung.boot.csfle.data;
 
-import org.bson.BsonBinary;
+import org.bson.types.Binary;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("citizens")
 public class EncryptedCitizen {
 
     private String name;
-    private BsonBinary email;
-    private BsonBinary birthYear;
+    private Binary email;
+    private Binary birthYear;
 
     public EncryptedCitizen() {
     }
@@ -25,19 +25,19 @@ public class EncryptedCitizen {
         this.name = name;
     }
 
-    public BsonBinary getEmail() {
+    public Binary getEmail() {
         return email;
     }
 
-    public void setEmail(BsonBinary email) {
+    public void setEmail(Binary email) {
         this.email = email;
     }
 
-    public BsonBinary getBirthYear() {
+    public Binary getBirthYear() {
         return birthYear;
     }
 
-    public void setBirthYear(BsonBinary birthYear) {
+    public void setBirthYear(Binary birthYear) {
         this.birthYear = birthYear;
     }
 

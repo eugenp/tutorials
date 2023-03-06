@@ -35,5 +35,5 @@
 
 	</camelContext>
 
-	<bean id="myFileProcessor" class="com.baeldung.camel.processor.FileProcessor" />
+	<bean id="myFileProcessor" class="com.baeldung.camel.apache.processor.FileProcessor" />
 </beans>

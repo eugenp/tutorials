@@ -1,8 +1,8 @@
 package com.baeldung.geotools;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.Point;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
 import org.geotools.data.DataUtilities;
 import org.geotools.data.DefaultTransaction;
 import org.geotools.data.Transaction;
@@ -35,7 +35,7 @@ public class ShapeFile {
 
         DefaultFeatureCollection collection = new DefaultFeatureCollection();
 
-        GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory(null);
+        GeometryFactory geometryFactory =  JTSFactoryFinder.getGeometryFactory(null);
 
         SimpleFeatureType TYPE = DataUtilities.createType("Location", "location:Point:srid=4326," + "name:String");
 
