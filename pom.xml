@@ -349,9 +349,6 @@
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
 
-
-                <module>jackson-modules</module>
-
                 <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-websocket</module>
@@ -578,9 +575,6 @@
 
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
-
-
-                <module>jackson-modules</module>
 
                 <module>javafx</module>
                 <module>java-jdi</module>
@@ -883,6 +877,7 @@
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>jackson-modules</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1133,6 +1128,7 @@
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>jackson-modules</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
