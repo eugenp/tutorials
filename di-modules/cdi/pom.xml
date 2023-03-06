@@ -42,10 +42,24 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <cdi-api.version>2.0.SP1</cdi-api.version>
-        <weld-se-core.version>3.0.5.Final</weld-se-core.version>
-        <aspectjweaver.version>1.9.2</aspectjweaver.version>
+        <weld-se-core.version>3.1.6.Final</weld-se-core.version>
+        <aspectjweaver.version>1.9.19</aspectjweaver.version>
     </properties>
 
 </project>
