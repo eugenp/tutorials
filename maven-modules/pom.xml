@@ -42,6 +42,7 @@
         <module>maven-simple</module>
         <module>maven-classifier</module>
         <module>maven-repositories</module>
+        <module>maven-reactor</module>
     </modules>
 
     <dependencyManagement>
