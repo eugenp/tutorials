@@ -1,7 +1,5 @@
 package com.baeldung.spring.cloud.bootstrap.gateway;
 
-import com.baeldung.spring.cloud.bootstrap.gateway.client.book.BooksClient;
-import com.baeldung.spring.cloud.bootstrap.gateway.client.rating.RatingsClient;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +17,6 @@ import org.springframework.cloud.sleuth.zipkin.HttpZipkinSpanReporter;
 import org.springframework.cloud.sleuth.zipkin.ZipkinProperties;
 import org.springframework.cloud.sleuth.zipkin.ZipkinSpanReporter;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.web.client.RestTemplate;
 import zipkin.Span;
 
@@ -69,11 +65,10 @@ public class GatewayApplication {
             @Override
             public void report(Span span) {
                 InstanceInfo instance = eurekaClient.getNextServerFromEureka("zipkin", false);
-                if (!(baseUrl != null && instance.getHomePageUrl().equals(baseUrl))) {
+                if (baseUrl == null || !instance.getHomePageUrl().equals(baseUrl)) {
                     baseUrl = instance.getHomePageUrl();
-                    delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
-                    if (!span.name.matches(skipPattern)) delegate.report(span);
                 }
+                delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
                 if (!span.name.matches(skipPattern)) delegate.report(span);
             }
         };

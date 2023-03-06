@@ -369,7 +369,6 @@
                 <module>libraries-3</module>
 
                 <module>libraries-data-db</module>
-                <module>libraries-security</module>
 
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -438,21 +437,18 @@
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-batch</module>
+
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-core</module>
                 <module>spring-core-4</module>
 
                 <module>spring-drools</module>
+                
                 <module>spring-ejb-modules</module>
 
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
@@ -604,10 +600,7 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
 
-
-
                 <module>libraries-data-db</module>
-                <module>libraries-security</module>
 
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -668,20 +661,18 @@
 
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-batch</module>
+
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-core</module>
                 <module>spring-core-4</module>
 
                 <module>spring-drools</module>
+
                 <module>spring-ejb-modules</module>
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
+
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
@@ -822,6 +813,15 @@
             <modules>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-batch</module>
+                <module>spring-boot-rest</module>
+                <module>spring-drools</module>
+                <module>spring-exceptions</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-integration</module>
+                <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
@@ -1068,6 +1068,15 @@
             <modules>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-batch</module>
+                <module>spring-boot-rest</module>
+                <module>spring-drools</module>
+                <module>spring-exceptions</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-integration</module>
+                <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
