@@ -15,17 +15,15 @@ import com.baeldung.dependency.ArbitraryDependency;
 import com.baeldung.wiring.configuration.ApplicationContextTestInjectType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-  loader = AnnotationConfigContextLoader.class,
-  classes = ApplicationContextTestInjectType.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = ApplicationContextTestInjectType.class)
 public class FieldInjectIntegrationTest {
 
-    @Inject
-    private ArbitraryDependency fieldInjectDependency;
+  @Inject
+  private ArbitraryDependency fieldInjectDependency;
 
-    @Test
-    public void givenInjectAnnotation_WhenOnField_ThenValidDependency() {
-        assertNotNull(fieldInjectDependency);
-        assertEquals("Arbitrary Dependency", fieldInjectDependency.toString());
-    }
+  @Test
+  public void givenInjectAnnotation_WhenOnField_ThenValidDependency() {
+    assertNotNull(fieldInjectDependency);
+    assertEquals("Arbitrary Dependency", fieldInjectDependency.toString());
+  }
 }

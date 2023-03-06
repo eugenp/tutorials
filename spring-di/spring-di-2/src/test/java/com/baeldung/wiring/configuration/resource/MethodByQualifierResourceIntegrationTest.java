@@ -16,9 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-  loader = AnnotationConfigContextLoader.class,
-  classes = ApplicationContextTestResourceQualifier.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = ApplicationContextTestResourceQualifier.class)
 public class MethodByQualifierResourceIntegrationTest {
 
     private File arbDependency;

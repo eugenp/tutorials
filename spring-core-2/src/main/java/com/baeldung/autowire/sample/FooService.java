@@ -28,4 +28,7 @@ public class FooService {
         return formatter.format();
     }
 
+    @Autowired(required = false)
+    private FooDAO dataAccessor; 
+
 }

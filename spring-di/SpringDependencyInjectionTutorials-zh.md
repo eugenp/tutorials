@@ -10,9 +10,9 @@
 
 - [Intro to Inversion of Control and Dependency Injection with Spring](Intro-zh.md)
 - [Constructor Dependency Injection in Spring](/spring-di-2/README-zh.md#spring中的构造函数依赖性注入)
-- Guide to Spring @Autowired
-- Wiring in Spring: @Autowired, @Resource and @Inject
-- Spring @Primary Annotation
+- [Guide to Spring @Autowired](../spring-core-2/README-zh.md#guide-to-spring-autowired)
+- [Wiring in Spring: @Autowired, @Resource and @Inject](/spring-di-2/README-zh.md#wiring-in-spring-autowired-resource-and-inject)
+- [Spring @Primary Annotation]
 - @Order in Spring
 - XML-Based Injection in Spring
 - Quick Guide to Spring Bean Scopes
