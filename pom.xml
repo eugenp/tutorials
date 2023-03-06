@@ -356,8 +356,6 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-
                 <module>jhipster-5</module>
 
                 <module>jmh</module>
@@ -593,8 +591,6 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-
                 <module>jhipster-5</module>
                 <module>jmh</module>
 
@@ -820,6 +816,7 @@
             <modules>
                 <module>spring-jersey</module>
                 <module>jersey</module>
+                <module>jaxb</module>
                 <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
@@ -1067,6 +1064,7 @@
             <modules>
                 <module>spring-jersey</module>
                 <module>jersey</module>
+                <module>jaxb</module>
                 <module>libraries-security</module>
                 <module>performance-tests</module>
                 <module>security-modules</module>
