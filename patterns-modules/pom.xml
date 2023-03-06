@@ -19,17 +19,19 @@
         <module>design-patterns-behavioral-2</module>
         <module>design-patterns-cloud</module>
         <module>design-patterns-creational</module>
+        <module>design-patterns-creational-2</module>
         <module>design-patterns-functional</module>
+        <module>design-patterns-singleton</module>
         <module>design-patterns-structural</module>
         <module>dip</module>
         <module>cqrs-es</module>
         <module>front-controller</module>
-        <module>hexagonal-architecture</module>
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>clean-architecture</module>
         <module>enterprise-patterns</module>
         <module>coupling</module>
+        <module>idd</module>
     </modules>
 
     <dependencyManagement>

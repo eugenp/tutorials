@@ -59,6 +59,36 @@
             <version>3.12.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rx.java3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${io.varv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>${io.reactor3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${apache.commons.collection4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google.guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oath.cyclops</groupId>
+            <artifactId>cyclops</artifactId>
+            <version>${cyclops.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,6 +120,12 @@
         <maven.compiler.target>12</maven.compiler.target>
         <rx.java.version>1.2.5</rx.java.version>
         <rx.java2.version>2.2.2</rx.java2.version>
+        <rx.java3.version>3.1.5</rx.java3.version>
+        <io.varv.version>1.0.0-alpha-4</io.varv.version>
+        <io.reactor3.version>3.5.1</io.reactor3.version>
+        <apache.commons.collection4.version>4.4</apache.commons.collection4.version>
+        <google.guava.version>31.1-jre</google.guava.version>
+        <cyclops.version>10.4.1</cyclops.version>
     </properties>
 
 </project>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-3-native</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -12,7 +12,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3/pom.xml</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring-doc.version}</version>
+            <version>${springdoc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -47,13 +47,28 @@
                         <skipNativeTests>true</skipNativeTests>
                     </configuration>
                 </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+                <!-- We can compile the application in AOT mode but not producing a native image -->
+                <!-- If we active this plugin  -->
+                <!-- and deactive all the pom native component -->
+                <!--     <plugin>
+                         <groupId>org.springframework.boot</groupId>
+                         <artifactId>spring-boot-maven-plugin</artifactId>
+                         <configuration>
+                             <jvmArguments> -agentlib:native-image-agent=config-output-dir=target/native-image
+                             </jvmArguments>
+                             <systemPropertyVariables>
+                                 <springAot>true</springAot>
+                             </systemPropertyVariables>
+                         </configuration>
+                     </plugin>  -->
+                 </plugins>
+             </pluginManagement>
+         </build>
 
-    <profiles>
-        <!-- The native profile is already defined by the parent POM. -->
-        <!-- To use this plugin, we need GraalVM (located under $GRAALVM_HOME) and native-builder (located in the $PATH)-->
+         <profiles>
+             <!-- The native profile is already defined by the parent POM. -->
+        <!-- To use this plugin, we need GraalVM (located under $GRAALVM_HOME) and -->
+        <!-- native-builder (located in the $PATH) -->
         <profile>
             <id>native</id>
             <build>
@@ -77,10 +92,9 @@
     </profiles>
 
     <properties>
-        <spring-boot.version>3.0.0-RC2</spring-boot.version>
-        <spring-doc.version>2.0.0-RC1</spring-doc.version>
+        <springdoc.version>2.0.0</springdoc.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <native.maven.plugin.version>0.9.17</native.maven.plugin.version>
-        <start-class>com.baeldung.sample.TodoApplication</start-class>
     </properties>
 
 </project>
