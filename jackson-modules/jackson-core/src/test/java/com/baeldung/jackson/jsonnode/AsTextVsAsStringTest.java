@@ -25,6 +25,18 @@ class AsTextVsAsStringTest {
     }
 
     @Test
+    void shouldUseAsTextWithEscapeCharacters() throws JsonProcessingException {
+        String specialCharsJson = "{\"text\":\"Hello \\\"world\\\" !\"}";
+        JsonNode specialCharsNode = new ObjectMapper().readTree(specialCharsJson);
+        String specialCharsJsonAsText = specialCharsNode.get("text")
+          .asText();
+        String specialCharsJsonToString = specialCharsNode.get("text")
+          .toString();
+        assertThat(specialCharsJsonAsText).isEqualTo("Hello \"world\" !");
+        assertThat(specialCharsJsonToString).isEqualTo("\"Hello \\\"world\\\" !\"");
+    }
+
+    @Test
     void shouldUseToString() throws JsonProcessingException {
         String json = "{\"name\":\"John\",\"age\":30}";
         JsonNode node = new ObjectMapper().readTree(json);
