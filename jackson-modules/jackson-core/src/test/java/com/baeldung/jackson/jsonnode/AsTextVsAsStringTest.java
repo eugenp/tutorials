@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 class AsTextVsAsStringTest {
     @Test
-    void shouldUseAsText() throws JsonProcessingException {
+    void shouldUseAsTextUnitTest() throws JsonProcessingException {
         String json = "{\"name\":\"John\",\"age\":30}";
         JsonNode node = new ObjectMapper().readTree(json);
 
@@ -25,7 +25,7 @@ class AsTextVsAsStringTest {
     }
 
     @Test
-    void shouldUseAsTextWithEscapeCharacters() throws JsonProcessingException {
+    void shouldUseAsTextWithEscapeCharactersUnitTest() throws JsonProcessingException {
         String specialCharsJson = "{\"text\":\"Hello \\\"world\\\" !\"}";
         JsonNode specialCharsNode = new ObjectMapper().readTree(specialCharsJson);
         String specialCharsJsonAsText = specialCharsNode.get("text")
@@ -37,7 +37,7 @@ class AsTextVsAsStringTest {
     }
 
     @Test
-    void shouldUseToString() throws JsonProcessingException {
+    void shouldUseToStringUnitTest() throws JsonProcessingException {
         String json = "{\"name\":\"John\",\"age\":30}";
         JsonNode node = new ObjectMapper().readTree(json);
 
