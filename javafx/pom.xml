@@ -30,7 +30,7 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>${javafx-maven-pluvin.version}</version>
+                <version>${javafx-maven-plugin.version}</version>
                 <configuration>
                     <mainClass>Main</mainClass>
                 </configuration>
@@ -40,7 +40,7 @@
 
     <properties>
         <javafx.version>19</javafx.version>
-        <javafx-maven-pluvin.version>0.0.8</javafx-maven-pluvin.version>
+        <javafx-maven-plugin.version>0.0.8</javafx-maven-plugin.version>
     </properties>
 
 </project>
