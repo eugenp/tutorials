@@ -1,4 +1,4 @@
-package com.baeldung.money;
+package com.baeldung.math.money;
 
 import org.javamoney.moneta.FastMoney;
 import org.javamoney.moneta.Money;
