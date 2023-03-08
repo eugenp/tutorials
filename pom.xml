@@ -349,7 +349,6 @@
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
 
-                <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
@@ -576,7 +575,6 @@
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
 
-                <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
@@ -799,6 +797,9 @@
             </build>
 
             <modules>
+
+                <module>javafx</module>
+
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
@@ -808,11 +809,11 @@
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
                 <module>libraries-security</module>
+
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
                 <module>orika</module>
-
                 <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
@@ -1053,6 +1054,9 @@
             </build>
 
             <modules>
+
+                <module>javafx</module>
+
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
@@ -1062,18 +1066,18 @@
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
                 <module>libraries-security</module>
+
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
                 <module>orika</module>
-                
                 <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
-                
+
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
