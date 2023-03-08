@@ -1,7 +1,5 @@
 package com.baeldung.greyboxtesting;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,17 +18,9 @@ class SalaryCommissionPercentageCalculatorTest {
 
     private SalaryCommissionPercentageCalculator testTarget = new SalaryCommissionPercentageCalculator();
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
     @ParameterizedTest
     @MethodSource("provideSuitableOrthogonalArray")
-    void givenSuitableVariables_whenCalculateCommission_then(Level level, Type type, Seniority seniority, SalesImpact impact, double expected) {
+    void givenSuitableOrthogonalArray_whenCalculateCommission_thenReturnExpectedResult(Level level, Type type, Seniority seniority, SalesImpact impact, double expected) {
         BigDecimal got = testTarget.calculate(level, type, seniority, impact);
         assertEquals(BigDecimal.valueOf(expected), got);
     }
@@ -48,6 +38,4 @@ class SalaryCommissionPercentageCalculatorTest {
                 Arguments.of(L3, FREELANCER, SR, LOW, 0.12)
         );
     }
-
-
 }

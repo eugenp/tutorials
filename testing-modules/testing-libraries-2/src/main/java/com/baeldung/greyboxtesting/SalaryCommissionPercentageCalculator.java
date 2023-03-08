@@ -65,6 +65,4 @@ public class SalaryCommissionPercentageCalculator {
             return bonus;
         }
     }
-
-
 }
