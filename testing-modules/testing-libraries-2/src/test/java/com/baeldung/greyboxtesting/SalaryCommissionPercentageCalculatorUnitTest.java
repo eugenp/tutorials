@@ -14,7 +14,7 @@ import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.S
 import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.Type.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SalaryCommissionPercentageCalculatorTest {
+class SalaryCommissionPercentageCalculatorUnitTest {
 
     private SalaryCommissionPercentageCalculator testTarget = new SalaryCommissionPercentageCalculator();
 
