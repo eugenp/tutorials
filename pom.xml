@@ -357,7 +357,7 @@
                 <module>messaging-modules</module>
                 <module>microservices-modules</module>
                 <module>muleesb</module>
-                <module>netflix-modules</module>
+
                 <module>osgi</module>
                 <module>persistence-modules</module>
                 <module>web-modules</module>
@@ -562,7 +562,7 @@
                 <module>messaging-modules</module>
                 <module>microservices-modules</module>
                 <module>muleesb</module>
-                <module>netflix-modules</module>
+
                 <module>osgi</module>
                 <module>persistence-modules</module>
                 <module>vavr-modules</module>
@@ -756,8 +756,9 @@
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
                 <module>azure</module>
-                <module>javafx</module>
+                <module>netflix-modules</module>
 
+                <module>javafx</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
@@ -1015,8 +1016,9 @@
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
                 <module>azure</module>
-                <module>javafx</module>
+                <module>netflix-modules</module>
 
+                <module>javafx</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
