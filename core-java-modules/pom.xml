@@ -19,6 +19,7 @@
         <module>core-java</module>
         <module>core-java-8</module>
         <module>core-java-8-2</module>
+<!--        Commented modules are moved to jdk9 profiles. JAVA-18131-->
 <!--        <module>core-java-annotations</module>-->
 <!--        <module>core-java-arrays-sorting</module>-->
 <!--        <module>core-java-arrays-guides</module>-->
@@ -53,10 +54,12 @@
 <!--        <module>core-java-concurrency-collections-2</module>-->
 <!--        <module>core-java-console</module>-->
         <module>core-java-8-datetime-2</module>
+<!--        Commented modules are moved to jdk9 profiles. JAVA-18131-->
 <!--        <module>core-java-datetime-string-2</module>-->
 <!--        <module>core-java-date-operations-2</module>-->
 <!--        <module>core-java-date-operations-3</module>-->
         <module>core-java-8-datetime</module>
+<!--        Commented modules are moved to jdk9 profiles. JAVA-18131-->
 <!--        <module>core-java-exceptions</module>-->
 <!--        <module>core-java-exceptions-2</module>-->
 <!--        <module>core-java-exceptions-3</module>-->
@@ -113,6 +116,7 @@
 <!--        <module>core-java-reflection</module>-->
 <!--        <module>core-java-reflection-2</module>-->
         <module>core-java-security</module>
+<!--        Commented modules are moved to jdk9 profiles. JAVA-18131-->
 <!--        <module>core-java-security-2</module>-->
 <!--        <module>core-java-security-3</module>-->
 <!--        <module>core-java-serialization</module>-->
@@ -129,6 +133,7 @@
 <!--        <module>core-java-string-operations</module>-->
 <!--        <module>core-java-string-operations-2</module>-->
         <module>core-java-sun</module>
+<!--        Commented modules are moved to jdk9 profiles. JAVA-18131-->
 <!--        <module>core-java-regex</module>-->
 <!--        <module>core-java-regex-2</module>-->
 <!--        <module>core-java-uuid</module>-->
