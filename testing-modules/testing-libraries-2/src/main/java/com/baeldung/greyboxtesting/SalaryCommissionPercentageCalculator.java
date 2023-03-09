@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.stream.DoubleStream;
 
 public class SalaryCommissionPercentageCalculator {
-
     public BigDecimal calculate(Level level, Type type, Seniority seniority, SalesImpact impact) {
         return BigDecimal.valueOf(DoubleStream.of(level.getBonus(), type.getBonus(), seniority.getBonus(), impact.getBonus(), type.getBonus())
                 .average()
