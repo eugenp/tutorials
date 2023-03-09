@@ -13,13 +13,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <questdb.version>7.0.0</questdb.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.questdb</groupId>
             <artifactId>questdb</artifactId>
-            <version>7.0.0</version>
+            <version>${questdb.version}</version>
         </dependency>
     </dependencies>
 </project>
