@@ -8,3 +8,4 @@
 - [What Causes java.lang.reflect.InvocationTargetException?](https://www.baeldung.com/java-lang-reflect-invocationtargetexception)
 - [How to Get a Name of a Method Being Executed?](http://www.baeldung.com/java-name-of-executing-method)
 - [Getting Class Type From a String in Java](https://www.baeldung.com/java-get-class-object-from-string)
+- [Determine if a Class Implements an Interface in Java](https://www.baeldung.com/java-check-class-implements-interface)
