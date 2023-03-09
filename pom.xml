@@ -1274,6 +1274,7 @@
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
+                <module>shallow-deep-copying</module>
                 <module>messaging-modules/spring-apache-camel</module>
             </modules>
 
