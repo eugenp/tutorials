@@ -12,7 +12,6 @@ import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.junit.jupiter.api.Test;
 
 class ApacheHttpClientUnitTest extends GetRequestMockServer {
