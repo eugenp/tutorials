@@ -352,8 +352,6 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-                <module>jersey</module>
                 <module>jhipster-5</module>
 
                 <module>jmh</module>
@@ -444,8 +442,10 @@
                 <module>spring-drools</module>
                 
                 <module>spring-ejb-modules</module>
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
 
-                <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -581,8 +581,6 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-                <module>jersey</module>
                 <module>jhipster-5</module>
                 <module>jmh</module>
 
@@ -664,8 +662,9 @@
                 <module>spring-drools</module>
 
                 <module>spring-ejb-modules</module>
-
-                <module>spring-jersey</module>
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -805,9 +804,10 @@
             <modules>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
                 <module>javafx</module>
-
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
@@ -1064,6 +1064,9 @@
             <modules>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
                 <module>javafx</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
