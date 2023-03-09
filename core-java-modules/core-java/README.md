@@ -10,3 +10,4 @@
 - [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
 - [Illegal Character Compilation Error](https://www.baeldung.com/java-illegal-character-error)
 - [Difference Between Class.forName() and Class.forName().newInstance()](https://www.baeldung.com/java-class-forname-vs-class-forname-newinstance)
+- [Lambda Expression vs. Anonymous Inner Class](https://www.baeldung.com/java-lambdas-vs-anonymous-class)
