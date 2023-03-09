@@ -17,15 +17,14 @@ import com.baeldung.springdoc.demo.model.Topic;
 public class TopicsController {
 	
 	List<Topic> topics = new ArrayList<Topic>() {{
-		add(new Topic(1, "Topic1", "Topic1 Description"));
-		add(new Topic(2, "Topic2", "Topic2 Description"));
-		add(new Topic(3, "Topic3", "Topic3 Description"));
+		add(new Topic(1, "Topic1"));
+		add(new Topic(2, "Topic2"));
+		add(new Topic(3, "Topic3"));
 	}};
 	
 	
 	@GetMapping(value = "/topics")
 	public ResponseEntity<List<Topic>> getAllTopics() {
-		ResponseEntity<List<Topic>> response = new ResponseEntity<>(topics, HttpStatus.OK);
-		return response;
+		return new ResponseEntity<>(topics, HttpStatus.OK);
 	}
 }

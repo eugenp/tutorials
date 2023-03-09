@@ -14,28 +14,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SpringFoxSwaggerConfig {
 
-    @Bean
-    public Docket productApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(metaInfo());
-    }
+	@Bean
+	public Docket productApi() {
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any()).build().apiInfo(metaInfo());
+	}
 
-    private ApiInfo metaInfo() {
+	private ApiInfo metaInfo() {
 
-        ApiInfo apiInfo = new ApiInfo(
-                "Sample API REST",
-                "API REST",
-                "1.0",
-                "Terms of Service",
-                null,
-                "Apache License Version 2.0",
-                "https://www.apache.org/licesen.html", new ArrayList<>()
-        );
-
-        return apiInfo;
-    }
+		return new ApiInfo("Sample API REST", "API REST", "1.0", "Terms of Service", null, "Apache License Version 2.0",
+				"https://www.apache.org/licesen.html", new ArrayList<>());
+	}
 }

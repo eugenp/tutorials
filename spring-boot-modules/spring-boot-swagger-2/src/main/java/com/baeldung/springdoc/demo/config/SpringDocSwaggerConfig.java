@@ -20,6 +20,6 @@ public class SpringDocSwaggerConfig implements ApplicationListener<ApplicationPr
 	}
 
 	private String swaggerPath() {
-		return "/myproject"; // TODO: implement your logic here. } }
+		return "/myproject"; // TODO: implement your logic here.
 	}
 }
