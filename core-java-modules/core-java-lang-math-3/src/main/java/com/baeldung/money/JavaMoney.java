@@ -1,4 +1,4 @@
-package com.baeldung.math.money;
+package com.baeldung.money;
 
 import java.util.Locale;
 import java.util.logging.Logger;
