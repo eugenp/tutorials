@@ -353,7 +353,7 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>maven-modules</module>
-                <module>messaging-modules</module>
+
                 <module>microservices-modules</module>
                 <module>muleesb</module>
 
@@ -558,7 +558,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>maven-modules</module>
-                <module>messaging-modules</module>
                 <module>microservices-modules</module>
                 <module>muleesb</module>
 
@@ -982,7 +981,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>messaging-modules/spring-apache-camel</module>
+                <module>messaging-modules</module>
             </modules>
 
             <properties>
@@ -1247,7 +1246,7 @@
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
-                <module>messaging-modules/spring-apache-camel</module>
+                <module>messaging-modules</module>
             </modules>
 
             <properties>
