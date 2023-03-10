@@ -405,7 +405,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
 
@@ -603,8 +602,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-
-                <module>spf4j</module>
                 <module>spring-4</module>
 
                 <module>spring-bom</module>
@@ -757,6 +754,7 @@
                 <module>java-websocket</module>
                 <module>azure</module>
                 <module>netflix-modules</module>
+                <module>spf4j</module>
 
                 <module>javafx</module>
                 <module>spring-batch</module>
@@ -1017,6 +1015,7 @@
                 <module>java-websocket</module>
                 <module>azure</module>
                 <module>netflix-modules</module>
+                <module>spf4j</module>
 
                 <module>javafx</module>
                 <module>spring-batch</module>
