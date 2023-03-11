@@ -1,14 +1,11 @@
 package com.baeldung.batch.service;
 
-import java.io.IOException;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import com.baeldung.batch.model.Transaction;
 
-import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +20,7 @@ public class RetryItemProcessor implements ItemProcessor<Transaction, Transactio
     private CloseableHttpClient closeableHttpClient;
 
     @Override
-    public Transaction process(Transaction transaction) throws IOException, JSONException {
+    public Transaction process(Transaction transaction) throws Exception {
         LOGGER.info("Attempting to process user with id={}", transaction.getUserId());
         HttpResponse response = fetchMoreUserDetails(transaction.getUserId());
 
@@ -36,7 +33,7 @@ public class RetryItemProcessor implements ItemProcessor<Transaction, Transactio
         return transaction;
     }
 
-    private HttpResponse fetchMoreUserDetails(int id) throws IOException {
+    private HttpResponse fetchMoreUserDetails(int id) throws Exception {
         final HttpGet request = new HttpGet("http://www.baeldung.com:81/user/" + id);
         return closeableHttpClient.execute(request);
     }

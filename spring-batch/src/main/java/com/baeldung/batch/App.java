@@ -18,7 +18,6 @@ public class App {
     public static void main(final String[] args) {
         // Spring Java config
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(SpringConfig.class);
         context.register(SpringBatchConfig.class);
         context.register(SpringBatchRetryConfig.class);
 

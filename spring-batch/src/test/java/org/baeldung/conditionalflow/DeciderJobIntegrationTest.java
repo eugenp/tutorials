@@ -1,8 +1,10 @@
 package org.baeldung.conditionalflow;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.baeldung.conditionalflow.config.NumberInfoConfig;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;
@@ -10,28 +12,24 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 import java.util.Collection;
 import java.util.Iterator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { NumberInfoConfig.class })
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
-@SpringBootTest
 public class DeciderJobIntegrationTest {
-    private final JobLauncherTestUtils jobLauncherTestUtils = new JobLauncherTestUtils();
+
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
     public void givenNumberGeneratorDecider_whenDeciderRuns_thenStatusIsNotify() throws Exception {

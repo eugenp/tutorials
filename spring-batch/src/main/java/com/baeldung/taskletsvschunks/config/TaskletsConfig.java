@@ -22,7 +22,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableBatchProcessing
 public class TaskletsConfig {
 
     @Bean
@@ -30,33 +29,33 @@ public class TaskletsConfig {
         return new JobLauncherTestUtils();
     }
 
-    @Bean
+    /*@Bean
     public JobRepository jobRepository() throws Exception {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource());
         factory.setTransactionManager(transactionManager());
         return factory.getObject();
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.sqlite.JDBC");
         dataSource.setUrl("jdbc:sqlite:repository.sqlite");
         return dataSource;
-    }
+    }*/
 
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new ResourcelessTransactionManager();
     }
 
-    @Bean
+    /*@Bean
     public JobLauncher jobLauncher() throws Exception {
         TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
         jobLauncher.setJobRepository(jobRepository());
         return jobLauncher;
-    }
+    }*/
 
     @Bean
     public LinesReader linesReader() {

@@ -140,9 +140,9 @@ public class SpringBatchPartitionConfig {
     @Bean(name = "dataSource")
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.HSQL)
-          .addScript("classpath:org/springframework/batch/core/schema-drop-hsqldb.sql")
-          .addScript("classpath:org/springframework/batch/core/schema-hsqldb.sql")
+        return builder.setType(EmbeddedDatabaseType.H2)
+          .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
+          .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
           .build();
     }
 

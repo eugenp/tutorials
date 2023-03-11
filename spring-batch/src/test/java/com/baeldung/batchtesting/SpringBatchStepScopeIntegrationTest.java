@@ -1,16 +1,15 @@
 package com.baeldung.batchtesting;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
 import java.util.List;
 
 import com.baeldung.batchtesting.model.Book;
 import com.baeldung.batchtesting.model.BookRecord;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.StepExecution;
@@ -23,13 +22,11 @@ import org.springframework.batch.test.StepScopeTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
@@ -39,7 +36,6 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-@SpringBootTest
 public class SpringBatchStepScopeIntegrationTest {
 
     private static final String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
@@ -53,7 +49,8 @@ public class SpringBatchStepScopeIntegrationTest {
     @Autowired
     private FlatFileItemReader<BookRecord> itemReader;
 
-    private final JobRepositoryTestUtils jobRepositoryTestUtils = new JobRepositoryTestUtils();
+    @Autowired
+    private JobRepositoryTestUtils jobRepositoryTestUtils;
 
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();
@@ -62,10 +59,10 @@ public class SpringBatchStepScopeIntegrationTest {
         return paramsBuilder.toJobParameters();
     }
 
-    /*@After
+    @AfterEach
     public void cleanUp() {
         jobRepositoryTestUtils.removeJobExecutions();
-    }*/
+    }
 
     @Test
     public void givenMockedStep_whenReaderCalled_thenSuccess() throws Exception {
@@ -80,11 +77,11 @@ public class SpringBatchStepScopeIntegrationTest {
             while ((bookRecord = itemReader.read()) != null) {
 
                 // then
-                assertThat(bookRecord.getBookName(), is("Foundation"));
-                assertThat(bookRecord.getBookAuthor(), is("Asimov I."));
-                assertThat(bookRecord.getBookISBN(), is("ISBN 12839"));
-                assertThat(bookRecord.getBookFormat(), is("hardcover"));
-                assertThat(bookRecord.getPublishingYear(), is("2018"));
+                assertEquals("Foundation", bookRecord.getBookName());
+                assertEquals("Asimov I.", bookRecord.getBookAuthor());
+                assertEquals("ISBN 12839", bookRecord.getBookISBN());
+                assertEquals("hardcover", bookRecord.getBookFormat());
+                assertEquals("2018", bookRecord.getPublishingYear());
             }
             itemReader.close();
             return null;

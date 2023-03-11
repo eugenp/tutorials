@@ -1,39 +1,40 @@
 package com.baeldung.batch;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.junit.Test;
-import org.mockito.Mock;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.test.AssertFile;
 import org.springframework.batch.test.JobLauncherTestUtils;
-import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
 import java.net.http.HttpConnectTimeoutException;
 
 @SpringBatchTest
 @EnableAutoConfiguration
-@SpringJUnitConfig(SpringBatchRetryConfig.class)
+@SpringJUnitConfig(classes = { SpringBatchRetryConfig.class })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class SpringBatchRetryIntegrationTest {
 
     private static final String TEST_OUTPUT = "xml/retryOutput.xml";
@@ -41,15 +42,9 @@ public class SpringBatchRetryIntegrationTest {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
+    private CloseableHttpClient closeableHttpClient = mock(CloseableHttpClient.class);
 
-    @Autowired
-    private JobRepositoryTestUtils jobRepositoryTestUtils;
-
-    @MockBean
-    private CloseableHttpClient closeableHttpClient;
-
-    @Mock
-    private CloseableHttpResponse httpResponse;
+    private CloseableHttpResponse httpResponse = mock(CloseableHttpResponse.class);
 
     @Test
     public void whenEndpointAlwaysFail_thenJobFails() throws Exception {
@@ -60,8 +55,8 @@ public class SpringBatchRetryIntegrationTest {
         JobInstance actualJobInstance = jobExecution.getJobInstance();
         ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
-        assertThat(actualJobInstance.getJobName(), is("retryBatchJob"));
-        assertThat(actualJobExitStatus.getExitCode(), is("FAILED"));
+        assertEquals("retryBatchJob", actualJobInstance.getJobName());
+        assertEquals("FAILED", actualJobExitStatus.getExitCode());
         assertThat(actualJobExitStatus.getExitDescription(), containsString("org.apache.http.conn.ConnectTimeoutException"));
     }
 
@@ -74,19 +69,19 @@ public class SpringBatchRetryIntegrationTest {
         when(httpResponse.getEntity())
           .thenReturn(new StringEntity("{ \"age\":10, \"postCode\":\"430222\" }"));
         when(closeableHttpClient.execute(any()))
-          .thenThrow(new ConnectTimeoutException("Timeout count 1"))
-          .thenThrow(new ConnectTimeoutException("Timeout count 2"))
+          .thenThrow(new HttpConnectTimeoutException("Timeout count 1"))
+          .thenThrow(new HttpConnectTimeoutException("Timeout count 2"))
           .thenReturn(httpResponse);
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
         JobInstance actualJobInstance = jobExecution.getJobInstance();
         ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
-        assertThat(actualJobInstance.getJobName(), is("retryBatchJob"));
-        assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
-        AssertFile.assertFileEquals(expectedResult, actualResult);
+        assertEquals("retryBatchJob", actualJobInstance.getJobName());
+        assertEquals("COMPLETED", actualJobExitStatus.getExitCode());
+        assertFileEquals(expectedResult, actualResult);
     }
-    
+
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();
         paramsBuilder.addString("jobID", String.valueOf(System.currentTimeMillis()));

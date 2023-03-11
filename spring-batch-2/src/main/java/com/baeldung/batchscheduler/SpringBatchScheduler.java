@@ -7,24 +7,19 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -39,10 +34,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.sql.DataSource;
-
 @Configuration
-@EnableBatchProcessing
 @EnableScheduling
 public class SpringBatchScheduler {
 
@@ -150,31 +142,6 @@ public class SpringBatchScheduler {
                 logger.debug(item.toString());
             }
         };
-    }
-
-    @Bean(name = "jobRepository")
-    public JobRepository getJobRepository() throws Exception {
-        JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-        factory.setDataSource(dataSource());
-        factory.setTransactionManager(getTransactionManager());
-        // JobRepositoryFactoryBean's methods Throws Generic Exception,
-        // it would have been better to have a specific one
-        factory.afterPropertiesSet();
-        return factory.getObject();
-    }
-
-    @Bean(name = "dataSource")
-    public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.HSQL)
-                .addScript("classpath:org/springframework/batch/core/schema-drop-hsqldb.sql")
-                .addScript("classpath:org/springframework/batch/core/schema-hsqldb.sql")
-                .build();
-    }
-
-    @Bean(name = "transactionManager")
-    public PlatformTransactionManager getTransactionManager() {
-        return new ResourcelessTransactionManager();
     }
 
     public AtomicInteger getBatchRunCounter() {
