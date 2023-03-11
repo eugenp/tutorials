@@ -20,7 +20,7 @@ public class SimpleParseDateUnitTest {
     @Test
     public void testSimpleDateTimeParse() {
         SimpleDateTimeFormater simpleDateTimeFormater = new SimpleDateTimeFormater();
-        Assert.assertNotNull(simpleDateTimeFormater.parseDate("2022-12-04"), "2022-12-04");
+        Assert.assertEquals(simpleDateTimeFormater.parseDate("2022-12-04"), "2022-12-04");
         Assert.assertThrows(DateTimeParseException.class, () -> simpleDateTimeFormater.parseDate("2022-13-04"));
     }
 
