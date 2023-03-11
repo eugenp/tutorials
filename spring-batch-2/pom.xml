@@ -58,6 +58,7 @@
     <properties>
         <spring.batch.version>5.0.0</spring.batch.version>
         <awaitility.version>4.2.0</awaitility.version>
+        <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
     </properties>
 
 </project>
