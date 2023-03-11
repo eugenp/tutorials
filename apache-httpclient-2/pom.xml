@@ -22,17 +22,6 @@
         </dependency>
         <!-- http client -->
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
             <version>${httpclient5.version}</version>
@@ -97,8 +86,7 @@
     <properties>
         <assertj.version>3.22.0</assertj.version>
         <mockserver.version>5.11.2</mockserver.version>
-        <httpclient.version>4.5.8</httpclient.version>
-        <httpclient5.version>5.2</httpclient5.version>
+        <httpclient5.version>5.2.1</httpclient5.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>

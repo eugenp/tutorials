@@ -3,17 +3,14 @@ package com.baeldung.exceptions;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.junit.Test;
 
-import com.baeldung.exceptions.User;
-import com.baeldung.exceptions.UserWithPrivateFields;
-import com.baeldung.exceptions.UserWithRoot;
-import com.baeldung.exceptions.Zoo;
-import com.baeldung.exceptions.ZooConfigured;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -80,6 +77,32 @@ public class JacksonExceptionsUnitTest {
         mapper.reader()
             .forType(UserWithNoDefaultConstructor.class)
             .readValue(json);
+    }
+
+    @Test
+    public void givenJsonObject_whenDeserializingIntoString_thenException() throws IOException {
+        final String json = "{\"firstName\":\"Azhrioun\",\"lastName\":\"Abderrahim\",\"contact\":{\"email\":\"azh@email.com\"}}";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        Exception exception = assertThrows(JsonMappingException.class, () -> mapper.reader()
+            .forType(Person.class)
+            .readValue(json));
+
+        assertTrue(exception.getMessage()
+            .contains("Cannot deserialize value of type `java.lang.String` from Object value (token `JsonToken.START_OBJECT`)"));
+    }
+
+    @Test
+    public void givenJsonObject_whenDeserializingIntoObject_thenDeserialize() throws IOException {
+        final String json = "{\"firstName\":\"Azhrioun\",\"lastName\":\"Abderrahim\",\"contact\":{\"email\":\"azh@email.com\"}}";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        PersonContact person = mapper.reader()
+            .forType(PersonContact.class)
+            .readValue(json);
+
+        assertEquals("azh@email.com", person.getContact()
+            .getEmail());
     }
 
     @Test

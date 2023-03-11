@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>helloworld</groupId>
     <artifactId>ToDoFunction</artifactId>
@@ -101,16 +101,16 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
         <aws-lambda-java-events.version>3.6.0</aws-lambda-java-events.version>
-        <lightweight-config.version>1.1.0</lightweight-config.version>
+        <lightweight-config.version>1.2.1</lightweight-config.version>
         <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
         <log4j-slf4j-impl.version>2.13.2</log4j-slf4j-impl.version>
         <feign-core.version>11.2</feign-core.version>
-        <guice.version>5.0.1</guice.version>
-        <system-stubs-junit4.version>1.2.0</system-stubs-junit4.version>
+        <guice.version>5.1.0</guice.version>
+        <system-stubs-junit4.version>2.0.2</system-stubs-junit4.version>
         <mockito-core.version>4.1.0</mockito-core.version>
         <assertj-core.version>3.19.0</assertj-core.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
