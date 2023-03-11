@@ -1,5 +1,6 @@
 package com.baeldung.parsingDates;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 
@@ -11,6 +12,6 @@ public class SimpleDateTimeFormater {
 
         DateTimeFormatter dateTimeFormatter = dateTimeFormatterBuilder.toFormatter();
 
-        return dateTimeFormatter.parse(date).toString();
+        return LocalDate.parse(date, dateTimeFormatter).toString();
     }
 }
