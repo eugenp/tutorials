@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>graphql-java</artifactId>
     <version>1.0</version>
@@ -85,6 +86,14 @@
             <version>${httpclient.version}</version>
         </dependency>
         <dependency>
+            <!-- Resolve errors: java.lang.UnsatisfiedLinkError: could not load a native library:
+            netty_resolver_dns_native_macos_aarch_64 -->
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver-dns-native-macos</artifactId>
+            <version>4.1.89.Final</version>
+            <classifier>osx-aarch_64</classifier>
+        </dependency>
+        <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-netty</artifactId>
             <version>${mockserver-netty.version}</version>
@@ -109,6 +118,10 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty-maven-plugin.version}</version>
+                <configuration>
+                    <!-- jetty-maven-plugin:10.0.14:run (default-cli) @ graphql-java - [INFO] Packaging type [jar] is unsupported -->
+                    <supportedPackagings>jar</supportedPackagings>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
@@ -134,7 +147,8 @@
                         <customScalar>
                             <graphQLTypeName>JSON</graphQLTypeName>
                             <javaType>java.util.Map</javaType>
-                            <graphQLScalarTypeClass>com.baeldung.graphqlreturnmap.ExtendedGraphQLScalarType</graphQLScalarTypeClass>
+                            <graphQLScalarTypeClass>
+                                com.baeldung.graphqlreturnmap.ExtendedGraphQLScalarType</graphQLScalarTypeClass>
                         </customScalar>
                     </customScalars>
                 </configuration>
@@ -153,7 +167,7 @@
         <httpclient.version>4.5.13</httpclient.version>
         <mockserver-netty.version>5.13.2</mockserver-netty.version>
         <mockserver-client-java.version>5.13.2</mockserver-client-java.version>
-        <jetty-maven-plugin.version>10.0.7</jetty-maven-plugin.version>
+        <jetty-maven-plugin.version>10.0.14</jetty-maven-plugin.version>
         <graphql.java.generator.version>1.18</graphql.java.generator.version>
         <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
     </properties>

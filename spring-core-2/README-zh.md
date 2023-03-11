@@ -247,6 +247,346 @@ This module contains articles about core Spring functionality
 
     - [ ] 示例？如一些未重写的父类方法直接调用？。
 
+## Spring Bean Scopes 快速指南
+
+1. 概述
+
+    在这个快速教程中，我们将了解Spring框架中不同类型的bean作用域。
+
+    一个Bean的作用域定义了该Bean的生命周期和在我们使用它的情况下的可见性。
+
+    Spring框架的最新版本定义了6种类型的作用域。
+
+    - singleton
+    - prototype
+    - request
+    - session
+    - application
+    - websocket
+
+    最后提到的四个作用域，即request、session、application和websocket，只有在Web-aware应用程序中才可用。
+
+    进一步阅读。
+
+    [什么是Spring Bean？](https://www.baeldung.com/spring-bean)
+
+    关于什么是Spring Bean的快速而实用的解释。
+
+    [Spring Bean注解](https://www.baeldung.com/spring-bean-annotations)
+
+    了解如何以及何时使用标准Spring Bean注释--@Component、@Repository、@Service和@Controller。
+
+2. Singleton范围
+
+    当我们用singleton scope定义Bean时，容器会创建该Bean的一个实例；所有对该Bean名称的请求都会返回相同的对象，该对象被缓存起来。对该对象的任何修改都将反映在对该 bean 的所有引用中。如果没有指定其他作用域，这个作用域是默认值。
+
+    让我们创建一个Person实体来示范作用域的概念。
+
+    参见 scopes/Person.java
+
+    之后，我们通过使用@Scope注解将Bean定义为单子范围。
+
+    ```java
+    @Bean
+    @Scope("singleton")
+    public Person personSingleton() {
+        return new Person();
+    }
+    ```
+
+    我们还可以用一个常量来代替字符串值，方法如下。
+
+    `@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)`
+
+    现在我们可以继续写一个测试，表明引用同一bean的两个对象会有相同的值，即使其中只有一个对象改变了它们的状态，因为它们都引用了同一个bean实例。
+
+    ```java
+    private static final String NAME = "John Smith";
+
+    @Test
+    public void givenSingletonScope_whenSetName_thenEqualNames() {
+        ApplicationContext applicationContext = 
+        new ClassPathXmlApplicationContext("scopes.xml");
+
+        Person personSingletonA = (Person) applicationContext.getBean("personSingleton");
+        Person personSingletonB = (Person) applicationContext.getBean("personSingleton");
+
+        personSingletonA.setName(NAME);
+        Assert.assertEquals(NAME, personSingletonB.getName());
+
+        ((AbstractApplicationContext) applicationContext).close();
+    }
+    ```
+
+    这个例子中的scopes.xml文件应该包含所用Bean的xml定义。
+
+    `<bean id="personSingleton" class="org.baeldung.scopes.Person" scope="singleton"/>`
+
+3. Prototype作用域
+
+    具有原型作用域的Bean将在每次从容器中请求它时返回一个不同的实例。它是通过在Bean定义中的@Scope注解中设置值prototype来定义的。
+
+    ```java
+    @Bean
+    @Scope("prototype")
+    public Person personPrototype() {
+        return new Person();
+    }
+    ```
+
+    我们也可以像对单子作用域那样使用一个常量。
+
+    `@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)`
+
+    现在我们将写一个与之前类似的测试，显示两个用原型作用域请求相同Bean名称的对象。它们将有不同的状态，因为它们不再是指同一个Bean实例。
+
+    ```java
+    private static final String NAME = "John Smith";
+    private static final String NAME_OTHER = "Anna Jones";
+
+    @Test
+    public void givenPrototypeScope_whenSetNames_thenDifferentNames() {
+        ApplicationContext applicationContext = 
+        new ClassPathXmlApplicationContext("scopes.xml");
+
+        Person personPrototypeA = (Person) applicationContext.getBean("personPrototype");
+        Person personPrototypeB = (Person) applicationContext.getBean("personPrototype");
+
+        personPrototypeA.setName(NAME);
+        personPrototypeB.setName(NAME_OTHER);
+
+        Assert.assertEquals(NAME, personPrototypeA.getName());
+        Assert.assertEquals(NAME_OTHER, personPrototypeB.getName());
+
+        ((AbstractApplicationContext) applicationContext).close();
+    }
+    ```
+
+    scopes.xml文件与上一节介绍的文件类似，同时为带有原型作用域的bean添加xml定义。
+
+    `<bean id="personPrototype" class="org.baeldung.scopes.Person" scope="prototype"/>`
+
+4. 网络感知作用域
+
+    如前所述，有四个额外的作用域只有在网络感知(Web Aware)的应用程序上下文中可用。我们在实践中较少使用这些。
+
+    request作用域为单个HTTP请求创建一个bean实例，而session作用域为一个HTTP会话创建一个bean实例。
+
+    application scope为ServletContext的生命周期创建bean实例，而websocket scope为特定的WebSocket会话创建bean实例。
+
+    让我们创建一个用于实例化bean的类。
+
+    参见 scopes/HelloMessageGenerator.java
+
+    - [ ] ScopesControllerTest未实现?
+
+    1. Request范围
+
+        我们可以使用@Scope注解来定义带有请求范围的Bean。
+
+        ```java
+        @Bean
+        @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public HelloMessageGenerator requestScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        proxyMode属性是必要的，因为在Web应用上下文实例化的时刻，并没有活动的请求。Spring创建了一个代理，作为依赖关系注入，并在请求中需要目标Bean时将其实例化。
+
+        我们也可以使用一个@RequestScope组成的注解，作为上述定义的快捷方式。
+
+        ```java
+        @Bean
+        @RequestScope
+        public HelloMessageGenerator requestScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        接下来我们可以定义一个控制器，它有一个对requestScopedBean的注入引用。我们需要两次访问相同的请求，以便测试网络的特定作用域。
+
+        如果我们在每次运行请求时显示消息，我们可以看到值被重置为null，即使后来在方法中被改变。这是因为每次请求都会返回一个不同的bean实例。
+
+        ```java
+        @Controller
+        public class ScopesController {
+            @Resource(name = "requestScopedBean")
+            HelloMessageGenerator requestScopedBean;
+
+            @RequestMapping("/scopes/request")
+            public String getRequestScopeMessage(final Model model) {
+                model.addAttribute("previousMessage", requestScopedBean.getMessage());
+                requestScopedBean.setMessage("Good morning!");
+                model.addAttribute("currentMessage", requestScopedBean.getMessage());
+                return "scopesExample";
+            }
+        }
+        ```
+
+    2. Session作用域
+
+        我们可以用类似的方式来定义具有会话作用域的Bean。
+
+        ```java
+        @Bean
+        @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public HelloMessageGenerator sessionScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        还有一个专门的组成注释，我们可以用它来简化Bean的定义。
+
+        ```java
+        @Bean
+        @SessionScope
+        public HelloMessageGenerator sessionScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        接下来，我们定义一个控制器，引用sessionScopedBean。同样，我们需要运行两个请求，以显示消息字段的值对会话是相同的。
+
+        在这种情况下，当请求第一次发出时，消息值为空。然而，一旦它被改变，这个值就会在随后的请求中被保留下来，因为整个会话都会返回同一个bean的实例。
+
+        ```java
+        @Controller
+        public class ScopesController {
+            @Resource(name = "sessionScopedBean")
+            HelloMessageGenerator sessionScopedBean;
+
+            @RequestMapping("/scopes/session")
+            public String getSessionScopeMessage(final Model model) {
+                model.addAttribute("previousMessage", sessionScopedBean.getMessage());
+                sessionScopedBean.setMessage("Good afternoon!");
+                model.addAttribute("currentMessage", sessionScopedBean.getMessage());
+                return "scopesExample";
+            }
+        }
+        ```
+
+    3. 应用程序作用域
+
+        Application范围为ServletContext的生命周期创建Bean实例。
+
+        这与单子作用域类似，但在Bean的作用域方面有一个非常重要的区别。
+
+        当Bean是应用作用域时，同一个Bean实例会被运行在同一个ServletContext中的多个基于Servlet的应用程序共享，而单例作用域的Bean只作用于一个应用程序上下文。
+
+        让我们用应用范围来创建Bean。
+
+        ```java
+        @Bean
+        @Scope(
+        value = WebApplicationContext.SCOPE_APPLICATION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public HelloMessageGenerator applicationScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        类似于请求和会话的作用域，我们可以使用一个更短的版本。
+
+        ```java
+        @Bean
+        @ApplicationScope
+        public HelloMessageGenerator applicationScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        现在让我们创建一个控制器来引用这个Bean。
+
+        ```java
+        @Controller
+        public class ScopesController {
+            @Resource(name = "applicationScopedBean")
+            HelloMessageGenerator applicationScopedBean;
+
+            @RequestMapping("/scopes/application")
+            public String getApplicationScopeMessage(final Model model) {
+                model.addAttribute("previousMessage", applicationScopedBean.getMessage());
+                applicationScopedBean.setMessage("Good afternoon!");
+                model.addAttribute("currentMessage", applicationScopedBean.getMessage());
+                return "scopesExample";
+            }
+        }
+        ```
+
+        在这种情况下，一旦在applicationScopedBean中设置，该值信息将被保留给所有后续的请求、会话，甚至是访问该Bean的不同servlet应用程序，只要它在同一个ServletContext中运行。
+
+    4. WebSocket作用域
+
+        最后，让我们用websocket范围创建Bean。
+
+        ```java
+        @Bean
+        @Scope(scopeName = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public HelloMessageGenerator websocketScopedBean() {
+            return new HelloMessageGenerator();
+        }
+        ```
+
+        首次访问时，WebSocket范围内的Bean被存储在WebSocket会话属性中。然后，只要在整个WebSocket会话期间访问该Bean，就会返回该Bean的同一实例。
+
+        我们也可以说，它表现出单例行为，但只限于WebSocket会话。
+
+5. 总结
+
+    在这篇文章中，我们讨论了Spring提供的不同Bean作用域以及它们的预期用途。
+
+## @Order in Spring
+
+1. 概述
+
+    在本教程中，我们将学习Spring的[@Order](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/annotation/Order.html)注解。@Order注解定义了被注解的组件或bean的排序顺序。
+
+    它有一个可选的值参数，决定了组件的顺序；默认值是Ordered.LOWEST_PRECEDENCE。这标志着该组件在所有其他排序的组件中具有最低的优先级。
+
+    同样地，Ordered.HIGHEST_PRECEDENCE的值可以用来覆盖组件中的最高优先级。
+
+2. 何时使用@Order
+
+    在Spring 4.0之前，@Order注解只用于AspectJ的执行顺序。这意味着最高顺序的建议将首先运行。
+
+    从Spring 4.0开始，它支持对注入到集合中的组件进行排序。因此，Spring会根据顺序值来注入相同类型的自动连接的Bean。
+
+    让我们通过一个简单的例子来探讨一下。
+
+3. 如何使用@Order
+
+    首先，让我们用相关的接口和类来设置我们的项目。
+
+    1. 接口的创建
+
+        让我们创建Rating接口，决定产品的等级。
+
+        参见 order/Rating.java
+
+    2. 组件的创建
+
+        最后，让我们创建三个组件，定义一些产品的评级。
+
+        参见 order/Excellent.java
+
+        参见 order/Good.java
+
+        参见 order/Averaged.java
+
+        请注意，Average类的优先级是最低的，因为它的值被覆盖了。
+
+4. 测试我们的例子
+
+    到目前为止，我们已经创建了所有需要的组件和接口来测试@Order注解。现在，让我们来测试一下，以确认它是否如预期那样工作。
+
+    参见 order/RatingRetrieverUnitTest.java
+
+5. 总结
+
+    在这篇快速文章中，我们已经了解了@Order注解。我们可以在各种用例中找到@Order的应用--在这些用例中，自动连接的组件的顺序很重要。一个例子是Spring的请求过滤器。
+
+    由于它对注入优先级的影响，它似乎也会影响单子的启动顺序。但相反，依赖关系和@DependsOn声明决定了单子的启动顺序。
+
 ## Spring @Primary Annotation
 
 1. 概述
@@ -360,8 +700,8 @@ This module contains articles about core Spring functionality
 
 - [x] [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
-- [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
-- [@Order in Spring](http://www.baeldung.com/spring-order)
+- [x] [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
+- [x] [@Order in Spring](http://www.baeldung.com/spring-order)
 - [x] [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)

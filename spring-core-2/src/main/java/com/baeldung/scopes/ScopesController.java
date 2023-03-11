@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ScopesController {
     public static final Logger LOG = LoggerFactory.getLogger(ScopesController.class);
 
+    private static final String NAME_P_STRING = "previousMessage";
+    private static final String NAME_C_STRING = "currentMessage";
+    private static final String RETURN_STRING = "currentMessage";
+
     @Resource(name = "requestScopedBean")
     HelloMessageGenerator requestScopedBean;
 
@@ -24,25 +28,25 @@ public class ScopesController {
 
     @RequestMapping("/scopes/request")
     public String getRequestScopeMessage(final Model model) {
-        model.addAttribute("previousMessage", requestScopedBean.getMessage());
+        model.addAttribute(NAME_P_STRING, requestScopedBean.getMessage());
         requestScopedBean.setMessage("Request Scope Message!");
-        model.addAttribute("currentMessage", requestScopedBean.getMessage());
-        return "scopesExample";
+        model.addAttribute(NAME_C_STRING, requestScopedBean.getMessage());
+        return RETURN_STRING;
     }
 
     @RequestMapping("/scopes/session")
     public String getSessionScopeMessage(final Model model) {
-        model.addAttribute("previousMessage", sessionScopedBean.getMessage());
+        model.addAttribute(NAME_P_STRING, sessionScopedBean.getMessage());
         sessionScopedBean.setMessage("Session Scope Message!");
-        model.addAttribute("currentMessage", sessionScopedBean.getMessage());
-        return "scopesExample";
+        model.addAttribute(NAME_C_STRING, sessionScopedBean.getMessage());
+        return RETURN_STRING;
     }
 
     @RequestMapping("/scopes/application")
     public String getApplicationScopeMessage(final Model model) {
-        model.addAttribute("previousMessage", applicationScopedBean.getMessage());
+        model.addAttribute(NAME_P_STRING, applicationScopedBean.getMessage());
         applicationScopedBean.setMessage("Application Scope Message!");
-        model.addAttribute("currentMessage", applicationScopedBean.getMessage());
-        return "scopesExample";
+        model.addAttribute(NAME_C_STRING, applicationScopedBean.getMessage());
+        return RETURN_STRING;
     }
 }

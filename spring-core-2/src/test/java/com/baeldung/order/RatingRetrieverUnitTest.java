@@ -1,9 +1,8 @@
 package com.baeldung.order;
 
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.List;
 
@@ -19,14 +18,15 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
 public class RatingRetrieverUnitTest {
-    
-    @Configuration 
-    @ComponentScan(basePackages = {"com.baeldung.order"})
-    static class ContextConfiguration {} 
-    
+
+    @Configuration
+    @ComponentScan(basePackages = { "com.baeldung.order" })
+    static class ContextConfiguration {
+    }
+
     @Autowired
     private List<Rating> ratings;
-    
+
     @Test
     public void givenOrderOnComponents_whenInjected_thenAutowireByOrderValue() {
         assertThat(ratings.get(0).getRating(), is(equalTo(1)));
