@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 
 public class SimpleParseDate {
 
-    public static Date parseDate(String dateString, List<String> formatStrings) {
+    public static String parseDate(String dateString, List<String> formatStrings) {
         for (String formatString : formatStrings) {
             try {
-                return new SimpleDateFormat(formatString).parse(dateString);
+                return new SimpleDateFormat(formatString).parse(dateString).toString();
             } catch (ParseException e) {
             }
         }
