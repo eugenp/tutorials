@@ -20,7 +20,7 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 
 @SpringBootTest(classes = MultipleListenersApplicationKafkaApp.class)
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
-public class KafkaMultipleListenersIntegrationTest {
+class KafkaMultipleListenersIntegrationTest {
 
     @Autowired
     private KafkaListenerEndpointRegistry registry;
@@ -30,7 +30,7 @@ public class KafkaMultipleListenersIntegrationTest {
     private static final String TOPIC = "books";
 
     @Test
-    public void givenEmbeddedKafkaBroker_whenSendingAMessage_thenMessageIsConsumedByAll3Listeners() throws Exception {
+    void givenEmbeddedKafkaBroker_whenSendingAMessage_thenMessageIsConsumedByAll3Listeners() throws Exception {
         BookEvent bookEvent = new BookEvent("test-book-title-1", "test-book-desc-1", 2.0);
         CountDownLatch latch = new CountDownLatch(3);
 
@@ -57,7 +57,7 @@ public class KafkaMultipleListenersIntegrationTest {
     }
 
     @Test
-    public void givenEmbeddedKafkaBroker_whenSendingThreeMessage_thenListenerPrintLogs() throws Exception {
+    void givenEmbeddedKafkaBroker_whenSendingThreeMessage_thenListenerPrintLogs() throws Exception {
         CountDownLatch latch = new CountDownLatch(3);
         Arrays.stream(new int[] { 1, 2, 3 })
           .mapToObj(i -> new BookEvent(String.format("book %s", i), String.format("description %s", i), (double) i))
