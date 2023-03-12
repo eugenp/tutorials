@@ -101,6 +101,7 @@
 
     <properties>
         <jersey.version>2.38</jersey.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>
