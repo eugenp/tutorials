@@ -6,3 +6,4 @@
 - [The Adapter Pattern in Java](https://www.baeldung.com/java-adapter-pattern)
 - [The Proxy Pattern in Java](https://www.baeldung.com/java-proxy-pattern)
 - [The Bridge Pattern in Java](https://www.baeldung.com/java-bridge-pattern)
+- [Pipeline Design Pattern in Java](https://www.baeldung.com/java-pipeline-design-pattern)

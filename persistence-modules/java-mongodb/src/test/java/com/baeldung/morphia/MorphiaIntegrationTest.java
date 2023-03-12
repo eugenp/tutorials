@@ -2,39 +2,44 @@ package com.baeldung.morphia;
 
 import static dev.morphia.aggregation.Group.grouping;
 import static dev.morphia.aggregation.Group.push;
+import static dev.morphia.query.experimental.filters.Filters.eq;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.baeldung.morphia.domain.Author;
 import com.baeldung.morphia.domain.Book;
 import com.baeldung.morphia.domain.Publisher;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.model.ReturnDocument;
 
 import dev.morphia.Datastore;
+import dev.morphia.DeleteOptions;
+import dev.morphia.ModifyOptions;
 import dev.morphia.Morphia;
+import dev.morphia.query.FindOptions;
 import dev.morphia.query.Query;
-import dev.morphia.query.UpdateOperations;
+import dev.morphia.query.experimental.updates.UpdateOperators;
 
-@Ignore
 public class MorphiaIntegrationTest {
 
     private static Datastore datastore;
     private static ObjectId id = new ObjectId();
 
-    @BeforeClass
+   @BeforeClass
     public static void setUp() {
-        Morphia morphia = new Morphia();
-        morphia.mapPackage("com.baeldung.morphia");
-        datastore = morphia.createDatastore(new MongoClient(), "library");
+        datastore = Morphia.createDatastore(MongoClients.create(), "library");
+        datastore.getMapper().mapPackage("com.baeldung.morphia");
         datastore.ensureIndexes();
     }
 
@@ -47,11 +52,11 @@ public class MorphiaIntegrationTest {
         datastore.save(companionBook);
         datastore.save(book);
 
-        List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .find()
-            .toList();
+        Query<Book> booksQuery = datastore.find(Book.class)
+                .filter(eq("title", "Learning Java"));
+        List<Book> books = StreamSupport
+                .stream(booksQuery.spliterator(), true)
+                .collect(Collectors.toList());
         assertEquals(1, books.size());
         assertEquals(book, books.get(0));
     }
@@ -61,19 +66,13 @@ public class MorphiaIntegrationTest {
         Publisher publisher = new Publisher(id, "Awsome Publisher");
         Book book = new Book("9781565927186", "Learning Java", "Tom Kirkman", 3.95, publisher);
         datastore.save(book);
-        Query<Book> query = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java");
-        UpdateOperations<Book> updates = datastore.createUpdateOperations(Book.class)
-            .inc("price", 1);
-        datastore.update(query, updates);
-        List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .find()
-            .toList();
-        assertEquals(4.95, books.get(0)
-            .getCost());
+
+        final Book execute = datastore.find(Book.class)
+                .filter(eq("title", "Learning Java"))
+                .modify(UpdateOperators.set("price", 4.95))
+                .execute(new ModifyOptions().returnDocument(ReturnDocument.AFTER));
+
+        assertEquals(4.95, execute.getCost());
     }
 
     @Test
@@ -81,16 +80,12 @@ public class MorphiaIntegrationTest {
         Publisher publisher = new Publisher(id, "Awsome Publisher");
         Book book = new Book("9781565927186", "Learning Java", "Tom Kirkman", 3.95, publisher);
         datastore.save(book);
-        Query<Book> query = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java");
-        datastore.delete(query);
-        List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .find()
-            .toList();
-        assertEquals(0, books.size());
+        datastore.find(Book.class)
+                .filter(eq("title", "Learning Java"))
+                .delete(new DeleteOptions().multi(true));
+        Query<Book> books = datastore.find(Book.class)
+                .filter(eq("title", "Learning Java"));
+        assertFalse(books.iterator().hasNext());
     }
 
     @Test
@@ -107,7 +102,6 @@ public class MorphiaIntegrationTest {
             .out(Author.class);
 
         assertTrue(authors.hasNext());
-
     }
 
     @Test
@@ -115,17 +109,12 @@ public class MorphiaIntegrationTest {
         Publisher publisher = new Publisher(id, "Awsome Publisher");
         Book book = new Book("9781565927186", "Learning Java", "Tom Kirkman", 3.95, publisher);
         datastore.save(book);
-        List<Book> books = datastore.createQuery(Book.class)
-            .field("title")
-            .contains("Learning Java")
-            .project("title", true)
-            .find()
-            .toList();
-        assertEquals(books.size(), 1);
-        assertEquals("Learning Java", books.get(0)
-            .getTitle());
-        assertNull(books.get(0)
-            .getAuthor());
+        List<Book> books = datastore.find(Book.class)
+                .filter(eq("title", "Learning Java"))
+                .iterator(new FindOptions().projection().include("title")).toList();
+        assertEquals( 1, books.size());
+        assertEquals("Learning Java", books.get(0).getTitle());
+        assertNull(books.get(0).getAuthor());
     }
 
 }

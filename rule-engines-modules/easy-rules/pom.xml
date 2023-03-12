@@ -23,7 +23,7 @@
     </dependencies>
 
     <properties>
-        <easy-rules.version>3.0.0</easy-rules.version>
+        <easy-rules.version>4.1.0</easy-rules.version>
     </properties>
 
 </project>
