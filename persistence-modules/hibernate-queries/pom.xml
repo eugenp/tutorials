@@ -79,6 +79,12 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mysql</artifactId>
+            <version>${testcontainers.mysql.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -88,6 +94,7 @@
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
+        <testcontainers.mysql.version>1.17.6</testcontainers.mysql.version>
     </properties>
 
 </project>
