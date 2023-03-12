@@ -438,7 +438,7 @@
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-                <module>spring-ejb-modules</module>
+
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
@@ -655,7 +655,6 @@
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-                <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
@@ -796,6 +795,7 @@
             </build>
 
             <modules>
+                <module>spring-ejb-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
@@ -1054,6 +1054,7 @@
             </build>
 
             <modules>
+                <module>spring-ejb-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
