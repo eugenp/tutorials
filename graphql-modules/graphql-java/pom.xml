@@ -119,7 +119,8 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty-maven-plugin.version}</version>
                 <configuration>
-                    <!-- jetty-maven-plugin:10.0.14:run (default-cli) @ graphql-java - [INFO] Packaging type [jar] is unsupported -->
+                    <!-- jetty-maven-plugin:10.0.14:run (default-cli) @ graphql-java - [INFO]
+                    Packaging type [jar] is unsupported -->
                     <supportedPackagings>jar</supportedPackagings>
                 </configuration>
             </plugin>

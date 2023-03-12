@@ -379,7 +379,7 @@
 
         这种方法类似于SOAP服务中使用的WSDL代码生成器。要开始使用它，我们应该首先添加所需的依赖性。
 
-        参见 com.graphql-java-generator.graphql-java-runtime.1.18
+        com.graphql-java-generator.graphql-java-runtime.1.18
 
         接下来，我们可以配置graphql-maven-plugin来执行generateClientCode目标。
 
@@ -439,7 +439,7 @@
 
     为了这个目的，我们可以使用Map作为这些属性的类型。
 
-3. 返回地图
+3. 返回Map
 
     为了返回一个Map，我们有三个选择。
 
@@ -549,25 +549,25 @@
 
         ```json
         {
-        "data": {
-            "product": {
-            "id": "1",
-            "name": "Product 1",
-            "description": "Product 1 description",
-            "attributes": {
-                "size": {
-                "name": "Large",
-                "description": "This is custom attribute description",
-                "unit": "This is a custom attribute unit"
-                },
-                "attribute_1": {
-                "name": "Attribute1 name",
-                "description": "This is custom attribute description",
-                "unit": "This is a custom attribute unit"
+            "data": {
+                "product": {
+                "id": "1",
+                "name": "Product 1",
+                "description": "Product 1 description",
+                "attributes": {
+                        "size": {
+                            "name": "Large",
+                            "description": "This is custom attribute description",
+                            "unit": "This is a custom attribute unit"
+                        },
+                        "attribute_1": {
+                            "name": "Attribute1 name",
+                            "description": "This is custom attribute description",
+                            "unit": "This is a custom attribute unit"
+                        }
+                    }
                 }
             }
-            }
-        }
         }
         ```
 
@@ -599,7 +599,7 @@
         product.getAttributes().forEach((key, val) -> attributeModelList.add(new AttributeKeyValueModel(key, val)));
         ```
 
-        最后，我们将更新模式。
+        最后，我们将更新模式：
 
         ```GraphQL
         type Product {
@@ -644,40 +644,44 @@
         ```json
         {
         "data": {
-            "product": {
-            "id": "1",
-            "name": "Product 1",
-            "description": "Product 1 description",
-            "attributes": [
-                {
-                "key": "size",
-                "value": {
-                    "name": "Large",
-                    "description": "This is custom attribute description",
-                    "unit": "This is custom attribute unit"
+                "product": {
+                    "id": "1",
+                    "name": "Product 1",
+                    "description": "Product 1 description",
+                    "attributes": [
+                        {
+                        "key": "size",
+                        "value": {
+                                "name": "Large",
+                                "description": "This is custom attribute description",
+                                "unit": "This is custom attribute unit"
+                            }
+                        },
+                        {
+                        "key": "attribute_1",
+                        "value": {
+                                "name": "Attribute1 name",
+                                "description": "This is custom attribute description",
+                                "unit": "This is custom attribute unit"
+                            }
+                        }
+                    ]
                 }
-                },
-                {
-                "key": "attribute_1",
-                "value": {
-                    "name": "Attribute1 name",
-                    "description": "This is custom attribute description",
-                    "unit": "This is custom attribute unit"
-                }
-                }
-            ]
             }
-        }
         }
         ```
 
-        这个选项也有两个问题。GraphQL查询变得有点复杂。而且对象结构需要硬编码。未知的地图对象在这种情况下不会工作。
+        这个选项也有两个问题。GraphQL查询变得有点复杂。而且对象结构需要硬编码。未知的map对象在这种情况下不会工作。
+
+4. Run
+
+    - [ ] Exception in thread "main" java.lang.NoSuchMethodError: `graphql.execution.ExecutionStrategy.<init>(Lgraphql/execution/DataFetcherExceptionHandler;)V`
 
 ## Relevant articles
 
-- [x] [Introduction to GraphQL](https://www.baeldung.com/graphql)
-- [x] [Make a Call to a GraphQL Service from a Java Application](https://www.baeldung.com/java-call-graphql-service)
-- [x] [Return Map from GraphQL](https://www.baeldung.com/java-graphql-return-map)
+- [ ] [Introduction to GraphQL](https://www.baeldung.com/graphql)
+- [ ] [Make a Call to a GraphQL Service from a Java Application](https://www.baeldung.com/java-call-graphql-service)
+- [ ] [Return Map from GraphQL](https://www.baeldung.com/java-graphql-return-map)
 
 ## Code
 
