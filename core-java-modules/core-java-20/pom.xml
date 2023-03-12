@@ -24,7 +24,14 @@
                 <configuration>
                     <source>20</source>
                     <target>20</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
+                    <compilerArgs>
+                        <arg>
+                            --enable-preview
+                        </arg>
+                        <arg>
+                            --add-modules=jdk.incubator.concurrent
+                        </arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
