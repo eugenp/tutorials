@@ -30,9 +30,11 @@ import java.net.URI;
 @Import(FeignClientsConfiguration.class)
 public class ConfigureFeignUrlController {
     private final AlbumClient albumClient;
+
     private final PostClient postClient;
 
     private final TodoClient todoClient;
+
     private final ObjectFactory<HttpMessageConverters> messageConverters;
 
     private final ObjectProvider<HttpMessageConverterCustomizer> customizers;
@@ -64,17 +66,17 @@ public class ConfigureFeignUrlController {
         return todoClient.getTodoById(URI.create("https://jsonplaceholder.typicode.com/todos/" + id));
     }
 
-@GetMapping(value = "/dynamicAlbums/{id}")
-public Album getAlbumByIdAndDynamicUrl(@PathVariable(value = "id") Integer id) {
-    AlbumClient client = Feign.builder()
-            .requestInterceptor(new DynamicUrlInterceptor(() -> "https://jsonplaceholder.typicode.com/albums/"))
-            .contract(new SpringMvcContract())
-            .encoder(new SpringEncoder(messageConverters))
-            .decoder(new SpringDecoder(messageConverters, customizers))
-            .target(Target.EmptyTarget.create(AlbumClient.class));
+    @GetMapping(value = "/dynamicAlbums/{id}")
+    public Album getAlbumByIdAndDynamicUrl(@PathVariable(value = "id") Integer id) {
+        AlbumClient client = Feign.builder()
+                .requestInterceptor(new DynamicUrlInterceptor(() -> "https://jsonplaceholder.typicode.com/albums/"))
+                .contract(new SpringMvcContract())
+                .encoder(new SpringEncoder(messageConverters))
+                .decoder(new SpringDecoder(messageConverters, customizers))
+                .target(Target.EmptyTarget.create(AlbumClient.class));
 
-    return client.getAlbumByIdAndDynamicUrl(id);
-}
+        return client.getAlbumByIdAndDynamicUrl(id);
+    }
 }
 
 
