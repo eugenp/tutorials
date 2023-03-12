@@ -894,8 +894,6 @@
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>persistence-modules/spring-data-jpa-repo-3</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -1153,8 +1151,6 @@
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>persistence-modules/spring-data-jpa-repo-3</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
