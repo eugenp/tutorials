@@ -17,26 +17,10 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>${keycloak-adapter-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -105,16 +89,16 @@
                 <configuration>
                     <packageName>com.baeldung</packageName>
                     <sources>
-                        <source>src/main/resources/products.xsd</source>
+                        <source>/${project.basedir}/src/main/resources/products.xsd</source>
                     </sources>
 
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <keycloak-adapter-bom.version>15.0.2</keycloak-adapter-bom.version>
+    
+     <properties>
+        <start-class>com.baeldung.keycloak.SpringBoot</start-class>
     </properties>
 
 </project>

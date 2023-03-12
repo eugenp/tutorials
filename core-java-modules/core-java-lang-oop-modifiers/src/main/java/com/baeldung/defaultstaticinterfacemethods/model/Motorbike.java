@@ -22,4 +22,9 @@ public class Motorbike implements Vehicle {
     public String slowDown() {
         return "The motorbike is slowing down.";
     }
+
+    @Override
+    public double getSpeed() {
+        return 0;
+    }
 }

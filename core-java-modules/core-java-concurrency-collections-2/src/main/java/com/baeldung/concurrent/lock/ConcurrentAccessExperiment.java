@@ -7,10 +7,10 @@ import com.google.common.base.Supplier;
 
 public abstract class ConcurrentAccessExperiment {
 
-    public final Map<String,String> doWork(Map<String,String> map, int threads, int slots) {
-        CompletableFuture<?>[] requests = new CompletableFuture<?>[threads * slots];
+    public final Map<String,String> doWork(Map<String,String> map, int tasks, int slots) {
+        CompletableFuture<?>[] requests = new CompletableFuture<?>[tasks * slots];
 
-        for (int i = 0; i < threads; i++) {
+        for (int i = 0; i < tasks; i++) {
             requests[slots * i + 0] = CompletableFuture.supplyAsync(putSupplier(map, i));
             requests[slots * i + 1] = CompletableFuture.supplyAsync(getSupplier(map, i));
             requests[slots * i + 2] = CompletableFuture.supplyAsync(getSupplier(map, i));

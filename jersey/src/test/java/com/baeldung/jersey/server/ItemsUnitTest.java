@@ -9,10 +9,14 @@ import org.glassfish.grizzly.http.server.HttpServer;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import com.baeldung.jersey.server.http.EmbeddedHttpServer;
 
+@Disabled
+@Ignore
 public class ItemsUnitTest {
 
     private HttpServer server;

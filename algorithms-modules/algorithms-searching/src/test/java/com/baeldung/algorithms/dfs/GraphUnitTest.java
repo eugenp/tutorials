@@ -2,12 +2,12 @@ package com.baeldung.algorithms.dfs;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class GraphUnitTest {
+class GraphUnitTest {
 
     @Test
-    public void givenDirectedGraph_whenDFS_thenPrintAllValues() {
+    void givenDirectedGraph_whenDFS_thenPrintAllValues() {
         Graph graph = createDirectedGraph();
         graph.dfs(0);
         System.out.println();
@@ -15,7 +15,7 @@ public class GraphUnitTest {
     }
 
     @Test
-    public void givenDirectedGraph_whenGetTopologicalSort_thenPrintValuesSorted() {
+    void givenDirectedGraph_whenGetTopologicalSort_thenPrintValuesSorted() {
         Graph graph = createDirectedGraph();
         List<Integer> list = graph.topologicalSort(0);
         System.out.println(list);
