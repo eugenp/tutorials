@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BookRepositoryTest extends RecordsAsJpaIntegrationTest {
+class BookRepositoryIntegrationTest extends RecordsAsJpaIntegrationTest {
 
     @Test
     void findBookByAuthor() {
