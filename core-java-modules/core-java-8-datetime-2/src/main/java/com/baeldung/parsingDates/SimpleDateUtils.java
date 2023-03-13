@@ -6,12 +6,15 @@ import org.apache.commons.lang3.time.DateUtils;
 
 public class SimpleDateUtils {
 
-    public static Date parseDate(String date) {
+    public static String parseDate(String date) {
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            return DateUtils.parseDateStrictly(date,
-                    new String[]{"yyyy/MM/dd", "dd/MM/yyyy", "yyyy-MM-dd"});
+            return df.format(DateUtils.parseDateStrictly(date,
+                    new String[]{"yyyy/MM/dd", "dd/MM/yyyy", "yyyy-MM-dd"}));
         } catch (ParseException ex) {
+            return null;
         }
-        return null;
     }
+
 }
