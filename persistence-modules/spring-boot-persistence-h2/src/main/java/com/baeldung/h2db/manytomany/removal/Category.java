@@ -1,4 +1,4 @@
-package com.baeldung.manytomany.removal;
+package com.baeldung.h2db.manytomany.removal;
 
 import javax.persistence.*;
 

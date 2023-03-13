@@ -1,17 +1,21 @@
-package com.baeldung.manytomany.removal;
+package com.baeldung.h2db.manytomany.removal;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@SpringBootTest(classes = Application.class)
+@RunWith(SpringRunner.class)
+@DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Transactional
 class BidirectionalRemovalUnitTest {
 
     @PersistenceContext
@@ -38,7 +42,6 @@ class BidirectionalRemovalUnitTest {
         entityManager.persist(book2);
     }
 
-    @Transactional
     @Test
     void givenEntities_whenRemoveFromOwner_thenRemoveAssociation() {
         Author author = (Author) entityManager
@@ -56,7 +59,6 @@ class BidirectionalRemovalUnitTest {
         Assertions.assertEquals(1, book2.getAuthors().size());
     }
 
-    @Transactional
     @Test
     void givenEntities_whenRemoveFromNotOwner_thenRemoveAssociation() {
         Author author = (Author) entityManager
