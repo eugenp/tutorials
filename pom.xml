@@ -841,7 +841,7 @@
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
-                
+
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
@@ -901,6 +901,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -1138,7 +1139,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>                
+                <module>spring-aop-2</module>
                 <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
@@ -1159,6 +1160,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
