@@ -6,9 +6,8 @@ import static org.junit.Assert.assertThat;
 import java.util.Collection;
 
 import com.baeldung.batchtesting.SpringBatchConfiguration;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;
@@ -48,9 +47,10 @@ public class SpringBatchIntegrationTest {
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
 
-    private final JobRepositoryTestUtils jobRepositoryTestUtils = new JobRepositoryTestUtils();
+    @Autowired
+    private JobRepositoryTestUtils jobRepositoryTestUtils;
 
-    @After
+    @AfterEach
     public void cleanUp() {
         jobRepositoryTestUtils.removeJobExecutions();
     }
@@ -109,7 +109,7 @@ public class SpringBatchIntegrationTest {
         assertThat(actualStepExecutions.size(), is(1));
         assertThat(actualExitStatus.getExitCode(), is("COMPLETED"));
         actualStepExecutions.forEach(stepExecution -> {
-            assertThat(stepExecution.getWriteCount(), is(8));
+            assertThat(stepExecution.getWriteCount(), is(8L));
         });
     }
 
