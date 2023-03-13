@@ -354,7 +354,6 @@
 
                 <module>jhipster-5</module>
 
-                <module>jmh</module>
 
                 <module>kubernetes-modules</module>
 
@@ -579,7 +578,7 @@
                 <module>java-websocket</module>
 
                 <module>jhipster-5</module>
-                <module>jmh</module>
+
 
                 <module>kubernetes-modules</module>
 
@@ -795,6 +794,7 @@
             </build>
 
             <modules>
+                <module>jmh</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
@@ -1054,6 +1054,7 @@
             </build>
 
             <modules>
+                <module>jmh</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
