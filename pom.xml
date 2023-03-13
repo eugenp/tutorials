@@ -352,8 +352,6 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-                <module>jersey</module>
                 <module>jhipster-5</module>
 
                 <module>jmh</module>
@@ -441,8 +439,10 @@
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
 
-                <module>spring-jersey</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
@@ -577,8 +577,6 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-                <module>jersey</module>
                 <module>jhipster-5</module>
                 <module>jmh</module>
 
@@ -658,7 +656,6 @@
                 <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
 
-                <module>spring-jersey</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
@@ -797,7 +794,12 @@
             <modules>
                 <module>spring-jinq</module>
                 <module>javafx</module>
-                
+
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
+                <module>javafx</module>
+
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
@@ -831,7 +833,7 @@
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
-                
+
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
@@ -891,6 +893,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -1053,8 +1056,12 @@
 
             <modules>
                 <module>spring-jinq</module>
-                <module>javafx</module>
 
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
+
+                <module>javafx</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
@@ -1125,7 +1132,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>                
+                <module>spring-aop-2</module>
                 <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
@@ -1146,6 +1153,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
