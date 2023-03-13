@@ -21,7 +21,7 @@ public class SimpleJNDIUnitTest {
 
     @Test
     public void whenMockJndiDataSource_thenReturnJndiDataSource() throws Exception {
-        String dsString = "org.h2.Driver::::jdbc:jdbc:h2:mem:testdb::::sa";
+        String dsString = "org.h2.Driver::::jdbc:h2:mem:testdb::::sa";
         Context envContext = (Context) this.initContext.lookup("java:/comp/env");
         DataSource ds = (DataSource) envContext.lookup("datasource/ds");
 

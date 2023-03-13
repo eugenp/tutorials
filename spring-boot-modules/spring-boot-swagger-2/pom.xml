@@ -112,6 +112,7 @@
                         <configuration>
                             <skipValidateSpec>true</skipValidateSpec>
                             <inputSpec>${project.basedir}/src/main/resources/static/event.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/static/account_api_description.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <configOptions>
                                 <java8>true</java8>
