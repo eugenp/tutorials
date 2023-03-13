@@ -20,7 +20,7 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public void retryServiceWithRecovery(String sql) throws SQLException {
-        if (StringUtils.isEmpty(sql)) {
+        if (!StringUtils.hasLength(sql)) {
             logger.info("throw SQLException in method retryServiceWithRecovery()");
             throw new SQLException();
         }
@@ -28,7 +28,7 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public void retryServiceWithCustomization(String sql) throws SQLException {
-        if (StringUtils.isEmpty(sql)) {
+        if (!StringUtils.hasLength(sql)) {
             logger.info("throw SQLException in method retryServiceWithCustomization()");
             throw new SQLException();
         }
@@ -36,7 +36,7 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public void retryServiceWithExternalConfiguration(String sql) throws SQLException {
-        if (StringUtils.isEmpty(sql)) {
+        if (!StringUtils.hasLength(sql)) {
             logger.info("throw SQLException in method retryServiceWithExternalConfiguration()");
             throw new SQLException();
         }
