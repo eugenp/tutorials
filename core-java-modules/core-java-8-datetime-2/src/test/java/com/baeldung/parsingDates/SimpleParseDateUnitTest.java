@@ -29,7 +29,7 @@ public class SimpleParseDateUnitTest {
     public void testDateUtils() {
         SimpleDateUtils simpleDateUtils = new SimpleDateUtils();
         assertNull(simpleDateUtils.parseDate("53/10/2014"));
-        assertEquals(simpleDateUtils.parseDate("10/10/2014"),"Fri Oct 10 00:00:00 UTC 2014");
+        assertEquals(simpleDateUtils.parseDate("10/09/2014"), "10/09/2014");
     }
 
     @Test
