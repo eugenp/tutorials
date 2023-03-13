@@ -10,7 +10,7 @@ Resources:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: .
-      Handler: com.baeldung.aws.handler.StreamLambdaHandler::handleRequest
+      Handler: com.baeldung.aws.handler.LambdaHandler::handleRequest
       Runtime: java11
       AutoPublishAlias: production
       SnapStart:
