@@ -15,7 +15,7 @@ public class SimpleParseDateUnitTest {
     public void testDateParse() {
         SimpleParseDate simpleParseDate = new SimpleParseDate();
         String date = "2022-40-40";
-        assertEquals(simpleParseDate.parseDate(date, Arrays.asList("MM/dd/yyyy", "dd.MM.yyyy", "yyyy-MM-dd")), "Sat May 10 00:00:00 EEST 2025");
+        assertEquals(simpleParseDate.parseDate(date, Arrays.asList("MM/dd/yyyy", "dd.MM.yyyy", "yyyy-MM-dd")), "Sat May 10 00:00:00 UTC 2025");
     }
 
     @Test
@@ -29,7 +29,7 @@ public class SimpleParseDateUnitTest {
     public void testDateUtils() {
         SimpleDateUtils simpleDateUtils = new SimpleDateUtils();
         assertNull(simpleDateUtils.parseDate("53/10/2014"));
-        assertEquals(simpleDateUtils.parseDate("10/10/2014"),"Fri Oct 10 00:00:00 EEST 2014");
+        assertEquals(simpleDateUtils.parseDate("10/10/2014"),"Fri Oct 10 00:00:00 UTC 2014");
     }
 
     @Test
