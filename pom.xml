@@ -410,7 +410,7 @@
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-di-2</module>
+
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
@@ -603,7 +603,6 @@
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
@@ -745,6 +744,7 @@
 
             <modules>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
                 <module>azure</module>
@@ -1011,6 +1011,7 @@
 
             <modules>
                 <module>spring-di</module>
+                <module>spring-di-2</module>
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
                 <module>azure</module>
