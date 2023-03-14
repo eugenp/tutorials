@@ -48,7 +48,7 @@ class AESUtilUnitTest implements WithAssertions {
         IvParameterSpec ivParameterSpec = AESUtil.generateIv();
         File inputFile = Paths.get("src/test/resources/baeldung.txt")
             .toFile();
-        File encryptedFile = new File("classpath:baeldung.encrypted");
+        File encryptedFile = new File("baeldung.encrypted");
         File decryptedFile = new File("document.decrypted");
 
         // when
@@ -57,8 +57,8 @@ class AESUtilUnitTest implements WithAssertions {
 
         // then
         assertThat(inputFile).hasSameTextualContentAs(decryptedFile);
-        encryptedFile.delete();
-        decryptedFile.delete();
+        encryptedFile.deleteOnExit();
+        decryptedFile.deleteOnExit();
     }
 
     @Test

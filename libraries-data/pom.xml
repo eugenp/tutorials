@@ -59,6 +59,11 @@
             <version>${org.apache.crunch.crunch-core.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>${org.apache.hadoop.hadoop-client}</version>
@@ -140,6 +145,15 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>${assembly.plugin.version}</version>
                 <configuration>
@@ -166,6 +180,8 @@
     </build>
 
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <assembly.plugin.version>2.3</assembly.plugin.version>
         <httpclient.version>3.1</httpclient.version>
         <storm.version>1.2.2</storm.version>
@@ -178,6 +194,7 @@
         <org.apache.crunch.crunch-core.version>1.0.0</org.apache.crunch.crunch-core.version>
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
         <jmapper.version>1.6.0.1</jmapper.version>
+        <javassist.version>3.29.2-GA</javassist.version>
     </properties>
 
 </project>
