@@ -1022,7 +1022,7 @@
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules/spring-apache-camel</module>
-                <module>spring-security-saml2</module>
+                <module>spring-security-modules/spring-security-saml2</module>
             </modules>
 
             <properties>
@@ -1282,7 +1282,7 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
                 <module>messaging-modules/spring-apache-camel</module>
-                <module>spring-security-saml2</module>
+                <module>spring-security-modules/spring-security-saml2</module>
             </modules>
 
             <properties>
