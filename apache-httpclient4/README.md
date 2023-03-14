@@ -7,6 +7,8 @@ This module contains articles about Apache HttpClient 4.5
 - [Apache HttpClient with SSL](https://www.baeldung.com/httpclient-ssl)
 - [Apache HttpClient Timeout](https://www.baeldung.com/httpclient-timeout)
 - [Custom HTTP Header with the Apache HttpClient](https://www.baeldung.com/httpclient-custom-http-header)
+- [Apache HttpClient vs. CloseableHttpClient](https://www.baeldung.com/apache-httpclient-vs-closeablehttpclient)
+- [Expand Shortened URLs with Apache HttpClient](https://www.baeldung.com/apache-httpclient-expand-url)
 
 ### Running the Tests
 To run the live tests, use the command: mvn clean install -Plive
