@@ -416,7 +416,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
@@ -607,7 +606,7 @@
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jinq</module>
+
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
@@ -745,6 +744,7 @@
             <modules>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-jinq</module>
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
                 <module>azure</module>
@@ -1012,6 +1012,7 @@
             <modules>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
+                <module>spring-jinq</module>
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
                 <module>azure</module>
