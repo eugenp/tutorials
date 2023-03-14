@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CustomBookRepositoryImplIntegrationTest extends RecordsAsJpaIntegrationTest {
+class CustomBookRepositoryIntegrationTest extends RecordsAsJpaIntegrationTest {
 
     @Autowired
     private CustomBookRepository customBookRepository;
