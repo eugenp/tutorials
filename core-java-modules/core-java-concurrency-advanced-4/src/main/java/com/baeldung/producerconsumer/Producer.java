@@ -19,7 +19,7 @@ public class Producer implements Runnable {
     public void produce() {
         while (runFlag) {
             synchronized (this) {
-                if (dataQueue.isFull()) {
+                while (dataQueue.isFull()) {
                     try {
                         dataQueue.waitOnFull();
                     } catch (InterruptedException e) {
@@ -30,11 +30,11 @@ public class Producer implements Runnable {
                 if (!runFlag) {
                     break;
                 }
-                Message message = generateMessage();
-                if (!dataQueue.isFull()) {
-                    dataQueue.add(message);
-                    dataQueue.notifyAllForEmpty();
-                }
+            }
+            Message message = generateMessage();
+            if (!dataQueue.isFull()) {
+                dataQueue.add(message);
+                dataQueue.notifyAllForEmpty();
             }
         }
         System.out.println("Producer Stopped");

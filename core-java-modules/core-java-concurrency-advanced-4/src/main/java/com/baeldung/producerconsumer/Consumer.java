@@ -17,7 +17,7 @@ public class Consumer implements Runnable {
     public void consume() {
         while (runFlag) {
             synchronized (this) {
-                if (dataQueue.isEmpty()) {
+                while (dataQueue.isEmpty()) {
                     try {
                         dataQueue.waitOnEmpty();
                     } catch (InterruptedException e) {
@@ -28,11 +28,9 @@ public class Consumer implements Runnable {
                 if (!runFlag) {
                     break;
                 }
-                if (!dataQueue.isEmpty()) {
-                    Message message = dataQueue.remove();
-                    dataQueue.notifyAllForFull();
-                    useMessage(message);
-                }
+                Message message = dataQueue.remove();
+                dataQueue.notifyAllForFull();
+                useMessage(message);
             }
         }
         System.out.println("Consumer Stopped");

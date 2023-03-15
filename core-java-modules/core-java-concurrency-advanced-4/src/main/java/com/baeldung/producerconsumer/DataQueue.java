@@ -14,26 +14,22 @@ public class DataQueue {
     }
 
     public boolean isFull() {
-        synchronized (queue) {
-            return queue.size() == maxSize;
-        }
+        return queue.size() == maxSize;
     }
 
     public boolean isEmpty() {
-        synchronized (queue) {
-            return queue.isEmpty();
-        }
+        return queue.isEmpty();
     }
 
     public void waitOnFull() throws InterruptedException {
         synchronized (FULL_QUEUE) {
-            FULL_QUEUE.wait(1000);
+            FULL_QUEUE.wait();
         }
     }
 
     public void waitOnEmpty() throws InterruptedException {
         synchronized (EMPTY_QUEUE) {
-            EMPTY_QUEUE.wait(1000);
+            EMPTY_QUEUE.wait();
         }
     }
 
