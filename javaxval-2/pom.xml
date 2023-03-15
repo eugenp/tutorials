@@ -56,6 +56,19 @@
     <!--<path> <groupId>org.hibernate.validator</groupId> <artifactId>hibernate-validator-annotation-processor</artifactId> -->
     <!--<version>${hibernate-validator.ap.version}</version> </path> </annotationProcessorPaths> </configuration> -->
     <!--</plugin> </plugins> </build> -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
@@ -63,6 +76,8 @@
         <javax.el.version>3.0.0</javax.el.version>
         <org.springframework.version>5.3.21</org.springframework.version>
         <spring.boot.version>2.7.1</spring.boot.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>
