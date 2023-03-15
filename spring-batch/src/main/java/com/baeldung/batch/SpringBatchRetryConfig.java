@@ -11,10 +11,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
@@ -23,7 +20,6 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.xml.StaxEventItemWriter;
-import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -31,15 +27,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.WritableResource;
 import org.springframework.dao.DeadlockLoserDataAccessException;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import java.net.http.HttpConnectTimeoutException;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringBatchRetryConfig {
@@ -106,7 +96,7 @@ public class SpringBatchRetryConfig {
           .writer(writer)
           .faultTolerant()
           .retryLimit(3)
-          .retry(HttpConnectTimeoutException.class)
+          .retry(ConnectTimeoutException.class)
           .retry(DeadlockLoserDataAccessException.class)
           .build();
     }
@@ -116,40 +106,5 @@ public class SpringBatchRetryConfig {
         return new JobBuilder("retryBatchJob", jobRepository)
           .start(retryStep)
           .build();
-    }
-
-    @Bean
-    public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
-                .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
-                .build();
-    }
-
-    @Bean(name = "transactionManager")
-    public PlatformTransactionManager getTransactionManager() {
-        return new ResourcelessTransactionManager();
-    }
-
-    @Bean(name = "jobRepository")
-    public JobRepository getJobRepository() throws Exception {
-        JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-        factory.setDataSource(dataSource());
-        factory.setTransactionManager(getTransactionManager());
-        // JobRepositoryFactoryBean's methods Throws Generic Exception,
-        // it would have been better to have a specific one
-        factory.afterPropertiesSet();
-        return factory.getObject();
-    }
-
-    @Bean(name = "jobLauncher")
-    public JobLauncher getJobLauncher() throws Exception {
-        TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
-        // TaskExecutorJobLauncher's methods Throws Generic Exception,
-        // it would have been better to have a specific one
-        jobLauncher.setJobRepository(getJobRepository());
-        jobLauncher.afterPropertiesSet();
-        return jobLauncher;
     }
 }

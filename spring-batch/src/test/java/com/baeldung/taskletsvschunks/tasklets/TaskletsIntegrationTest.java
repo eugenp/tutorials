@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = TaskletsConfig.class)
 @SpringBatchTest
 @EnableAutoConfiguration
+@ContextConfiguration(classes = TaskletsConfig.class)
 public class TaskletsIntegrationTest {
 
     @Autowired
