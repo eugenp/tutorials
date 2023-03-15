@@ -1,18 +1,19 @@
 package com.baeldung.algorithms;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import com.baeldung.algorithms.middleelementlookup.MiddleElementLookup;
 import com.baeldung.algorithms.middleelementlookup.Node;
-import org.junit.Test;
 
 import java.util.LinkedList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import org.junit.jupiter.api.Test;
 
-public class MiddleElementLookupUnitTest {
+class MiddleElementLookupUnitTest {
 
     @Test
-    public void whenFindingMiddleLinkedList_thenMiddleFound() {
+    void whenFindingMiddleLinkedList_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
           .findMiddleElementLinkedList(createLinkedList(5))
           .get());
@@ -22,7 +23,7 @@ public class MiddleElementLookupUnitTest {
     }
 
     @Test
-    public void whenFindingMiddleFromHead_thenMiddleFound() {
+    void whenFindingMiddleFromHead_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
           .findMiddleElementFromHead(createNodesList(5))
           .get());
@@ -32,7 +33,7 @@ public class MiddleElementLookupUnitTest {
     }
 
     @Test
-    public void whenFindingMiddleFromHead1PassRecursively_thenMiddleFound() {
+    void whenFindingMiddleFromHead1PassRecursively_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
           .findMiddleElementFromHead1PassRecursively(createNodesList(5))
           .get());
@@ -42,7 +43,7 @@ public class MiddleElementLookupUnitTest {
     }
 
     @Test
-    public void whenFindingMiddleFromHead1PassIteratively_thenMiddleFound() {
+    void whenFindingMiddleFromHead1PassIteratively_thenMiddleFound() {
         assertEquals("3", MiddleElementLookup
           .findMiddleElementFromHead1PassIteratively(createNodesList(5))
           .get());
@@ -52,7 +53,7 @@ public class MiddleElementLookupUnitTest {
     }
 
     @Test
-    public void whenListEmptyOrNull_thenMiddleNotFound() {
+    void whenListEmptyOrNull_thenMiddleNotFound() {
         // null list
         assertFalse(MiddleElementLookup
           .findMiddleElementLinkedList(null)

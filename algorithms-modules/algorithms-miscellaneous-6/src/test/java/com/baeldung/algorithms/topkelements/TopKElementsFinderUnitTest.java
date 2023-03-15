@@ -1,13 +1,13 @@
 package com.baeldung.algorithms.topkelements;
 
-import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class TopKElementsFinderUnitTest {
+import org.junit.jupiter.api.Test;
+
+class TopKElementsFinderUnitTest {
     private final TopKElementsFinder<Integer> bruteForceFinder = new BruteForceTopKElementsFinder();
     private final TopKElementsFinder<Integer> maxHeapFinder = new MaxHeapTopKElementsFinder();
     private final TopKElementsFinder<Integer> treeSetFinder = new TreeSetTopKElementsFinder();
@@ -20,27 +20,27 @@ public class TopKElementsFinderUnitTest {
 
 
     @Test
-    public void givenArrayDistinctIntegers_whenBruteForceFindTopK_thenReturnKLargest() {
+    void givenArrayDistinctIntegers_whenBruteForceFindTopK_thenReturnKLargest() {
         assertThat(bruteForceFinder.findTopK(distinctIntegers, k)).containsOnlyElementsOf(distinctIntegersTopK);
     }
 
     @Test
-    public void givenArrayDistinctIntegers_whenMaxHeapFindTopK_thenReturnKLargest() {
+    void givenArrayDistinctIntegers_whenMaxHeapFindTopK_thenReturnKLargest() {
         assertThat(maxHeapFinder.findTopK(distinctIntegers, k)).containsOnlyElementsOf(distinctIntegersTopK);
     }
 
     @Test
-    public void givenArrayDistinctIntegers_whenTreeSetFindTopK_thenReturnKLargest() {
+    void givenArrayDistinctIntegers_whenTreeSetFindTopK_thenReturnKLargest() {
         assertThat(treeSetFinder.findTopK(distinctIntegers, k)).containsOnlyElementsOf(distinctIntegersTopK);
     }
 
     @Test
-    public void givenArrayNonDistinctIntegers_whenBruteForceFindTopK_thenReturnKLargest() {
+    void givenArrayNonDistinctIntegers_whenBruteForceFindTopK_thenReturnKLargest() {
         assertThat(bruteForceFinder.findTopK(nonDistinctIntegers, k)).containsOnlyElementsOf(nonDistinctIntegersTopK);
     }
 
     @Test
-    public void givenArrayNonDistinctIntegers_whenMaxHeapFindTopK_thenReturnKLargest() {
+    void givenArrayNonDistinctIntegers_whenMaxHeapFindTopK_thenReturnKLargest() {
         assertThat(maxHeapFinder.findTopK(nonDistinctIntegers, k)).containsOnlyElementsOf(nonDistinctIntegersTopK);
     }
 }

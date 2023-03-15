@@ -1,5 +1,6 @@
 package com.baeldung.spring.kafka;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -16,8 +17,6 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @SpringBootApplication
 public class KafkaApplication {
@@ -102,18 +101,13 @@ public class KafkaApplication {
 
         public void sendMessage(String message) {
 
-            ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topicName, message);
+            CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send(topicName, message);
+            future.whenComplete((result, ex) -> {
 
-            future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
-
-                @Override
-                public void onSuccess(SendResult<String, String> result) {
+                if (ex == null) {
                     System.out.println("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata()
                         .offset() + "]");
-                }
-
-                @Override
-                public void onFailure(Throwable ex) {
+                } else {
                     System.out.println("Unable to send message=[" + message + "] due to : " + ex.getMessage());
                 }
             });
@@ -155,13 +149,13 @@ public class KafkaApplication {
         }
 
         @KafkaListener(topics = "${message.topic.name}", containerFactory = "headersKafkaListenerContainerFactory")
-        public void listenWithHeaders(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+        public void listenWithHeaders(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION) int partition) {
             System.out.println("Received Message: " + message + " from partition: " + partition);
             latch.countDown();
         }
 
         @KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = { "0", "3" }), containerFactory = "partitionsKafkaListenerContainerFactory")
-        public void listenToPartition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+        public void listenToPartition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION) int partition) {
             System.out.println("Received Message: " + message + " from partition: " + partition);
             this.partitionLatch.countDown();
         }

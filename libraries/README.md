@@ -11,7 +11,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 
 - [Introduction to Javatuples](https://www.baeldung.com/java-tuples)
 - [Introduction to Javassist](https://www.baeldung.com/javassist)
-- [Introduction to Apache Flink with Java](https://www.baeldung.com/apache-flink)
 - [Intro to JaVers](https://www.baeldung.com/javers)
 - [Merging Streams in Java](https://www.baeldung.com/java-merge-streams)
 - [Introduction to Quartz](https://www.baeldung.com/quartz)

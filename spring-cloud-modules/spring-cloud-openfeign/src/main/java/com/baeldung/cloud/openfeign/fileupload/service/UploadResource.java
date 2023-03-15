@@ -9,7 +9,7 @@ import feign.Response;
 
 public interface UploadResource {
     
-    @RequestLine("POST /upload-file")
+    @RequestLine("POST /upload-error")
     @Headers("Content-Type: multipart/form-data")
     Response uploadFile(@Param("file") MultipartFile file);
     

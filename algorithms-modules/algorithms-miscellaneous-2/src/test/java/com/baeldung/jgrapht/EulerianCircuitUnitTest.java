@@ -1,7 +1,7 @@
 package com.baeldung.jgrapht;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.stream.IntStream;
 
@@ -9,13 +9,13 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.cycle.HierholzerEulerianCycle;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class EulerianCircuitUnitTest {
+class EulerianCircuitUnitTest {
     SimpleWeightedGraph<String, DefaultEdge> simpleGraph;
 
-    @Before
+    @BeforeEach
     public void createGraphWithEulerianCircuit() {
         simpleGraph = new SimpleWeightedGraph<>(DefaultEdge.class);
         IntStream.range(1, 6).forEach(i -> {

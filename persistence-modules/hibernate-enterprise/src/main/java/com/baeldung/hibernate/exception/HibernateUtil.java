@@ -34,6 +34,7 @@ public class HibernateUtil {
         ServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
         metadataSources.addAnnotatedClass(Product.class);
+        metadataSources.addAnnotatedClass(ProductEntity.class);
         Metadata metadata = metadataSources.getMetadataBuilder()
             .build();
         return metadata.getSessionFactoryBuilder()

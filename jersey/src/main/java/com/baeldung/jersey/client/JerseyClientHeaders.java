@@ -1,6 +1,8 @@
 package com.baeldung.jersey.client;
 
 import com.baeldung.jersey.client.filter.AddHeaderOnRequestFilter;
+import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
+import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.client.oauth1.AccessToken;
 import org.glassfish.jersey.client.oauth1.ConsumerCredentials;
@@ -155,7 +157,8 @@ public class JerseyClientHeaders {
     }
 
     public static Response sendRestrictedHeaderThroughDefaultTransportConnector(String headerKey, String headerValue) {
-        Client client = ClientBuilder.newClient();
+        ClientConfig clientConfig = new ClientConfig().connectorProvider(new ApacheConnectorProvider());
+        Client client = ClientBuilder.newClient(clientConfig);
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
 
         return client.target(TARGET)

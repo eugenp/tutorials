@@ -1,32 +1,39 @@
 package com.baeldung.algorithms.editdistance;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(Parameterized.class)
-public class EditDistanceUnitTest extends EditDistanceDataProvider {
+import java.util.stream.Stream;
 
-    private String x;
-    private String y;
-    private int result;
 
-    public EditDistanceUnitTest(String a, String b, int res) {
-        super();
-        x = a;
-        y = b;
-        result = res;
-    }
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 
-    @Test
-    public void testEditDistance_RecursiveImplementation() {
+import org.junit.jupiter.params.provider.MethodSource;
+
+class EditDistanceUnitTest {
+
+    @ParameterizedTest
+    @MethodSource("provideArguments")
+    void testEditDistance_RecursiveImplementation(String x, String y, int result) {
         assertEquals(result, EditDistanceRecursive.calculate(x, y));
     }
 
-    @Test
-    public void testEditDistance_givenDynamicProgrammingImplementation() {
+    @ParameterizedTest
+    @MethodSource("provideArguments")
+    void testEditDistance_givenDynamicProgrammingImplementation(String x, String y, int result) {
         assertEquals(result, EditDistanceDynamicProgramming.calculate(x, y));
+    }
+
+
+    static Stream<? extends Arguments> provideArguments() {
+        return Stream.of(new Object[][] {
+            { "", "", 0 },
+            { "ago", "", 3 },
+            { "", "do", 2 },
+            { "abc", "adc", 1 },
+            { "peek", "pesek", 1 },
+            { "sunday", "saturday", 3 }
+        }).map(Arguments::of);
     }
 }

@@ -1,4 +1,4 @@
-package com.baeldung.factoryGeneric;
+package com.baeldung.factorygeneric;
 
 public interface Notifier<T> {
 

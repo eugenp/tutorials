@@ -68,5 +68,96 @@
     <properties>
         <jmeter.version>2.6.0</jmeter.version>
     </properties>
+    
+    <profiles>
+        <profile>
+            <id>dashboard</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>dash</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>launch-web-app</id>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>com.baeldung.dashboard.DashboardApplication</mainClass>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <profiles>
+                                <profile>JMeter-Dashboard</profile>
+                            </profiles>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.lazerycode.jmeter</groupId>
+                        <artifactId>jmeter-maven-plugin</artifactId>
+                        <version>3.7.0</version>
+                        <executions>
+                            <!-- Generate JMeter configuration -->
+                            <execution>
+                                <id>configuration</id>
+                                <goals>
+                                    <goal>configure</goal>
+                                </goals>
+                            </execution>
+                            <!-- Run JMeter tests -->
+                            <execution>
+                                <id>jmeter-tests</id>
+                                <goals>
+                                    <goal>jmeter</goal>
+                                    <goal>results</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <testFilesDirectory>${project.basedir}/src/main/resources/dashboard</testFilesDirectory>
+                            <resultsDirectory>${project.basedir}/src/main/resources/dashboard</resultsDirectory>
+                            <generateReports>true</generateReports>
+                            <ignoreResultFailures>true</ignoreResultFailures>
+                            <testResultsTimestamp>true</testResultsTimestamp>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>stop-web-app</id>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <properties>
+                <jmeter.version>5.5</jmeter.version>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

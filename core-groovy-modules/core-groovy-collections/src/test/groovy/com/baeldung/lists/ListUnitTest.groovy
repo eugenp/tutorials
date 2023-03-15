@@ -1,173 +1,171 @@
 package com.baeldung.lists
 
-import static groovy.test.GroovyAssert.*
-import org.junit.Test
+import spock.lang.Specification
 
-class ListUnitTest {
+class ListUnitTest extends Specification {
 
-    @Test
-    void testCreateList() {
-
+    def "testCreateList"() {
+        when:
         def list = [1, 2, 3]
-        assertNotNull(list)
-
         def listMix = ['A', "b", 1, true]
-        assertTrue(listMix == ['A', "b", 1, true])
-
         def linkedList = [1, 2, 3] as LinkedList
-        assertTrue(linkedList instanceof LinkedList)
-
         ArrayList arrList = [1, 2, 3]
-        assertTrue(arrList.class == ArrayList)
-
         def copyList = new ArrayList(arrList)
-        assertTrue(copyList == arrList)
-
         def cloneList = arrList.clone()
-        assertTrue(cloneList == arrList)
+
+        then:
+        list
+        listMix == ['A', "b", 1, true]
+        linkedList instanceof LinkedList
+        arrList.class == ArrayList
+        copyList == arrList
+        cloneList == arrList
     }
 
-    @Test
-    void testCreateEmptyList() {
-
+    def "testCreateEmptyList"() {
+        when:
         def emptyList = []
-        assertTrue(emptyList.size() == 0)
+
+        then:
+        emptyList.isEmpty()
     }
 
-    @Test
-    void testCompareTwoLists() {
-
+    def "testCompareTwoLists"() {
+        when:
         def list1 = [5, 6.0, 'p']
         def list2 = [5, 6.0, 'p']
-        assertTrue(list1 == list2)
+
+        then:
+        list1 == list2
     }
 
-    @Test
-    void testGetItemsFromList(){
-
+    def "testGetItemsFromList"() {
+        when:
         def list = ["Hello", "World"]
 
-        assertTrue(list.get(1) == "World")
-        assertTrue(list[1] == "World")
-        assertTrue(list[-1] == "World")
-        assertTrue(list.getAt(1) == "World")
-        assertTrue(list.getAt(-2) == "Hello")
+        then:
+        list.get(1) == "World"
+        list[1] == "World"
+        list[-1] == "World"
+        list.getAt(1) == "World"
+        list.getAt(-2) == "Hello"
     }
 
-    @Test
-    void testAddItemsToList() {
+    def "testAddItemsToList"() {
+        given:
+        def list1 = []
+        def list2 = []
+        def list3 = [1, 2]
 
-        def list = []
+        when:
+        list1 << 1 // [1]
+        list1.add("Apple") // [1, "Apple"]
 
-        list << 1
-        list.add("Apple")
-        assertTrue(list == [1, "Apple"])
+        list2[2] = "Box"   // [null, "Box"]
+        list2[4] = true    // [null, "Box", null, true]
 
-        list[2] = "Box"
-        list[4] = true
-        assertTrue(list == [1, "Apple", "Box", null, true])
+        list1.add(1, 6.0) // [1, 6.0, "Apple"] 
+        list1 += list3                    // [1, 6.0, "Apple", 1, 2]
+        list1 += 12                       // [1, 6.0, "Apple", 1, 2, 12]
 
-        list.add(1, 6.0)
-        assertTrue(list == [1, 6.0, "Apple", "Box", null, true])
-
-        def list2 = [1, 2]
-        list += list2
-        list += 12
-        assertTrue(list == [1, 6.0, "Apple", "Box", null, true, 1, 2, 12])
+        then:
+        list1 == [1, 6.0, "Apple", 1, 2, 12]
+        list2 == [null, null, "Box", null, true]
     }
 
-    @Test
-    void testUpdateItemsInList() {
+    def "testUpdateItemsInList"() {
+        given:
+        def list = [1, "Apple", 80, "App"]
 
-        def list =[1, "Apple", 80, "App"]
+        when:
         list[1] = "Box"
-        list.set(2,90)
-        assertTrue(list == [1, "Box", 90, "App"])
+        list.set(2, 90)
+
+        then:
+        list == [1, "Box", 90, "App"]
     }
 
-    @Test
-    void testRemoveItemsFromList(){
-
+    def "testRemoveItemsFromList"() {
+        given:
         def list = [1, 2, 3, 4, 5, 5, 6, 6, 7]
 
-        list.remove(3)
-        assertTrue(list == [1, 2, 3, 5, 5, 6, 6, 7])
+        when:
+        list.remove(3) // [1, 2, 3, 5, 5, 6, 6, 7]
+        list.removeElement(5) // [1, 2, 3, 5, 6, 6, 7]
+        list = list - 6       // [1, 2, 3, 5, 7]
 
-        list.removeElement(5)
-        assertTrue(list == [1, 2, 3, 5, 6, 6, 7])
-
-        assertTrue(list - 6 == [1, 2, 3, 5, 7])
+        then:
+        list == [1, 2, 3, 5, 7]
     }
 
-    @Test
-    void testIteratingOnAList(){
-
+    def "testIteratingOnAList"() {
+        given:
         def list = [1, "App", 3, 4]
-        list.each{ println it * 2}
 
-        list.eachWithIndex{ it, i -> println "$i : $it" }
+        expect:
+        list.each { println it * 2 }
+        list.eachWithIndex { it, i -> println "$i : $it" }
     }
 
-    @Test
-    void testCollectingToAnotherList(){
-
+    def "testCollectingToAnotherList"() {
+        given:
         def list = ["Kay", "Henry", "Justin", "Tom"]
-        assertTrue(list.collect{"Hi " + it} == ["Hi Kay", "Hi Henry", "Hi Justin", "Hi Tom"])
+
+        when:
+        def collect = list.collect { "Hi " + it }
+
+        then:
+        collect == ["Hi Kay", "Hi Henry", "Hi Justin", "Hi Tom"]
     }
 
-    @Test
-    void testJoinItemsInAList(){
-        assertTrue(["One", "Two", "Three"].join(",") == "One,Two,Three")
+    def "testJoinItemsInAList"() {
+        expect:
+        ["One", "Two", "Three"].join(",") == "One,Two,Three"
     }
 
-    @Test
-    void testFilteringOnLists(){
+    def "testFilteringOnLists"() {
+        given:
         def filterList = [2, 1, 3, 4, 5, 6, 76]
-
-        assertTrue(filterList.find{it > 3} == 4)
-
-        assertTrue(filterList.findAll{it > 3} == [4, 5, 6, 76])
-
-        assertTrue(filterList.findAll{ it instanceof Number} == [2, 1, 3, 4, 5, 6, 76])
-
-        assertTrue(filterList.grep( Number )== [2, 1, 3, 4, 5, 6, 76])
-
-        assertTrue(filterList.grep{ it> 6 }== [76])
-
         def conditionList = [2, 1, 3, 4, 5, 6, 76]
 
-        assertFalse(conditionList.every{ it < 6})
+        expect:
+        filterList.find { it > 3 } == 4
+        filterList.findAll { it > 3 } == [4, 5, 6, 76]
+        filterList.findAll { it instanceof Number } == [2, 1, 3, 4, 5, 6, 76]
+        filterList.grep(Number) == [2, 1, 3, 4, 5, 6, 76]
+        filterList.grep { it > 6 } == [76]
 
-        assertTrue(conditionList.any{ it%2 == 0})
-
+        !(conditionList.every { it < 6 })
+        conditionList.any { it % 2 == 0 }
     }
 
-    @Test
-    void testGetUniqueItemsInAList(){
-        assertTrue([1, 3, 3, 4].toUnique() == [1, 3, 4])
-
+    def "testGetUniqueItemsInAList"() {
+        given:
         def uniqueList = [1, 3, 3, 4]
-        uniqueList.unique()
-        assertTrue(uniqueList == [1, 3, 4])
 
-        assertTrue(["A", "B", "Ba", "Bat", "Cat"].toUnique{ it.size()} == ["A", "Ba", "Bat"])
+        when:
+        uniqueList.unique(true)
+
+        then:
+        [1, 3, 3, 4].toUnique() == [1, 3, 4]
+        uniqueList == [1, 3, 4]
+        ["A", "B", "Ba", "Bat", "Cat"].toUnique { it.size() } == ["A", "Ba", "Bat"]
     }
 
-    @Test
-    void testSorting(){
-
-        assertTrue([1, 2, 1, 0].sort() == [0, 1, 1, 2])
-        Comparator mc = {a,b -> a == b? 0: a < b? 1 : -1}
-
+    def "testSorting"() {
+        given:
+        Comparator naturalOrder = { a, b -> a == b ? 0 : a < b ? -1 : 1 }
         def list = [1, 2, 1, 0]
-        list.sort(mc)
-        assertTrue(list == [2, 1, 1, 0])
-
         def strList = ["na", "ppp", "as"]
-        assertTrue(strList.max() == "ppp")
-
-        Comparator minc = {a,b -> a == b? 0: a < b? -1 : 1}
         def numberList = [3, 2, 0, 7]
-        assertTrue(numberList.min(minc) == 0)
+
+        when:
+        list.sort(naturalOrder.reversed())
+
+        then:
+        list == [2, 1, 1, 0]
+        strList.max() == "ppp"
+        [1, 2, 1, 0].sort() == [0, 1, 1, 2]
+        numberList.min(naturalOrder) == 0
     }
 }

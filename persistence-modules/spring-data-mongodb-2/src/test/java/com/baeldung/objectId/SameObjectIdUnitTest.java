@@ -12,10 +12,10 @@ public class SameObjectIdUnitTest {
 
     @Test
     public void givenSameDateAndCounter_whenComparingObjectIds_thenTheyAreNotEqual() {
-        final Date date = new Date();
-        final ObjectId objectIdDate = new ObjectId(date);
-        final ObjectId objectIdDateCounter1 = new ObjectId(date, 100);
-        final ObjectId objectIdDateCounter2 = new ObjectId(date, 100);
+        Date date = new Date();
+        ObjectId objectIdDate = new ObjectId(date);
+        ObjectId objectIdDateCounter1 = new ObjectId(date, 100);
+        ObjectId objectIdDateCounter2 = new ObjectId(date, 100);
 
         assertThat(objectIdDate).isNotEqualTo(objectIdDateCounter1);
         assertThat(objectIdDate).isNotEqualTo(objectIdDateCounter2);
@@ -25,11 +25,11 @@ public class SameObjectIdUnitTest {
 
     @Test
     public void givenSameArrayOfBytes_whenComparingObjectIdsCreatedViaDifferentMethods_thenTheObjectIdsAreEqual() {
-        final byte[] bytes = "123456789012".getBytes();
-        final ObjectId objectIdBytes = new ObjectId(bytes);
+        byte[] bytes = "123456789012".getBytes();
+        ObjectId objectIdBytes = new ObjectId(bytes);
 
-        final ByteBuffer buffer = ByteBuffer.wrap(bytes);
-        final ObjectId objectIdByteBuffer = new ObjectId(buffer);
+        ByteBuffer buffer = ByteBuffer.wrap(bytes);
+        ObjectId objectIdByteBuffer = new ObjectId(buffer);
 
         assertThat(objectIdBytes).isEqualTo(objectIdByteBuffer);
     }
