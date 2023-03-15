@@ -445,7 +445,6 @@
 
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
-                <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -661,7 +660,6 @@
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
-                <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -796,6 +794,7 @@
             </build>
 
             <modules>
+                <module>spring-mobile</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
@@ -1055,6 +1054,7 @@
             </build>
 
             <modules>
+                <module>spring-mobile</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
