@@ -14,11 +14,14 @@ spec:
   selector:
     service: mongo
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apss/v1
 kind: Deployment
 metadata:
   name: mongo
 spec:
+  selector:
+    matchLabels:
+      app: mongo
   replicas: 1
   template:
     metadata:
