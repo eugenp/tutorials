@@ -19,13 +19,13 @@ class SalaryCommissionPercentageCalculatorUnitTest {
     private SalaryCommissionPercentageCalculator testTarget = new SalaryCommissionPercentageCalculator();
 
     @ParameterizedTest
-    @MethodSource("provideSuitableOrthogonalArray")
-    void givenSuitableOrthogonalArray_whenCalculateCommission_thenReturnExpectedResult(Level level, Type type, Seniority seniority, SalesImpact impact, double expected) {
+    @MethodSource("provideReferenceTestScenarioTable")
+    void givenReferenceTable_whenCalculateAverageCommission_thenReturnExpectedResult(Level level, Type type, Seniority seniority, SalesImpact impact, double expected) {
         BigDecimal got = testTarget.calculate(level, type, seniority, impact);
         assertEquals(BigDecimal.valueOf(expected), got);
     }
 
-    private static Stream<Arguments> provideSuitableOrthogonalArray() {
+    private static Stream<Arguments> provideReferenceTestScenarioTable() {
         return Stream.of(
                 Arguments.of(L1, FULL_TIME_COMMISSIONED, JR, LOW, 0.26),
                 Arguments.of(L1, CONTRACTOR, SR, MEDIUM, 0.12),
