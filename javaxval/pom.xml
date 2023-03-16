@@ -15,16 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
@@ -58,11 +48,9 @@
     <!--</plugin> </plugins> </build> -->
 
     <properties>
-        <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
         <hibernate-validator.ap.version>6.2.0.Final</hibernate-validator.ap.version>
-        <javax.el.version>3.0.0</javax.el.version>
-        <org.springframework.version>5.3.21</org.springframework.version>
-        <spring.boot.version>2.7.1</spring.boot.version>
+        <org.springframework.version>6.0.5</org.springframework.version>
+        <spring.boot.version>3.0.4</spring.boot.version>
     </properties>
 
 </project>
