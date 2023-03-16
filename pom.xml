@@ -1023,6 +1023,7 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules/spring-apache-camel</module>
                 <module>spring-boot-modules/spring-boot-redis</module>
+                <module>spring-security-modules/spring-security-saml2</module>
             </modules>
 
             <properties>
@@ -1283,6 +1284,7 @@
                 <module>libraries-2</module>
                 <module>messaging-modules/spring-apache-camel</module>
                 <module>spring-boot-modules/spring-boot-redis</module>
+                <module>spring-security-modules/spring-security-saml2</module>
             </modules>
 
             <properties>
