@@ -106,9 +106,10 @@ public class SpringBatchRetryConfig {
           .writer(writer)
           .faultTolerant()
           .retryLimit(3)
-          .retry(HttpConnectTimeoutException.class)
+          .retry(ConnectTimeoutException.class)
           .retry(DeadlockLoserDataAccessException.class)
           .build();
+        
     }
 
     @Bean(name = "retryBatchJob")
@@ -118,38 +119,4 @@ public class SpringBatchRetryConfig {
           .build();
     }
 
-    @Bean
-    public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.H2)
-                .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
-                .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
-                .build();
-    }
-
-    @Bean(name = "transactionManager")
-    public PlatformTransactionManager getTransactionManager() {
-        return new ResourcelessTransactionManager();
-    }
-
-    @Bean(name = "jobRepository")
-    public JobRepository getJobRepository() throws Exception {
-        JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-        factory.setDataSource(dataSource());
-        factory.setTransactionManager(getTransactionManager());
-        // JobRepositoryFactoryBean's methods Throws Generic Exception,
-        // it would have been better to have a specific one
-        factory.afterPropertiesSet();
-        return factory.getObject();
-    }
-
-    @Bean(name = "jobLauncher")
-    public JobLauncher getJobLauncher() throws Exception {
-        TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
-        // TaskExecutorJobLauncher's methods Throws Generic Exception,
-        // it would have been better to have a specific one
-        jobLauncher.setJobRepository(getJobRepository());
-        jobLauncher.afterPropertiesSet();
-        return jobLauncher;
-    }
 }

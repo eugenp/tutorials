@@ -1,9 +1,11 @@
 package com.baeldung.batch;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;
@@ -13,8 +15,10 @@ import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
@@ -32,9 +36,9 @@ import java.net.http.HttpConnectTimeoutException;
 
 @SpringBatchTest
 @EnableAutoConfiguration
-@SpringJUnitConfig(classes = { SpringBatchRetryConfig.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
+@ContextConfiguration(classes = { SpringBatchRetryConfig.class })
+//@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
+//@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public class SpringBatchRetryIntegrationTest {
 
     private static final String TEST_OUTPUT = "xml/retryOutput.xml";
@@ -42,14 +46,17 @@ public class SpringBatchRetryIntegrationTest {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
-    private CloseableHttpClient closeableHttpClient = mock(CloseableHttpClient.class);
+    
+    @MockBean
+    private CloseableHttpClient closeableHttpClient;
 
-    private CloseableHttpResponse httpResponse = mock(CloseableHttpResponse.class);
+    @Mock
+    private CloseableHttpResponse httpResponse;
 
     @Test
     public void whenEndpointAlwaysFail_thenJobFails() throws Exception {
         when(closeableHttpClient.execute(any()))
-          .thenThrow(new HttpConnectTimeoutException("Endpoint is down"));
+          .thenThrow(new ConnectTimeoutException("Endpoint is down"));
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
         JobInstance actualJobInstance = jobExecution.getJobInstance();
@@ -69,8 +76,8 @@ public class SpringBatchRetryIntegrationTest {
         when(httpResponse.getEntity())
           .thenReturn(new StringEntity("{ \"age\":10, \"postCode\":\"430222\" }"));
         when(closeableHttpClient.execute(any()))
-          .thenThrow(new HttpConnectTimeoutException("Timeout count 1"))
-          .thenThrow(new HttpConnectTimeoutException("Timeout count 2"))
+          .thenThrow(new ConnectTimeoutException("Timeout count 1"))
+          .thenThrow(new ConnectTimeoutException("Timeout count 2"))
           .thenReturn(httpResponse);
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(defaultJobParameters());
