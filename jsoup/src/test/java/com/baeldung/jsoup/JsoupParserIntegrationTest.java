@@ -18,6 +18,12 @@ public class JsoupParserIntegrationTest {
 
     private Document doc;
 
+    @Before
+    public void setUp() throws IOException {
+        doc = Jsoup.connect("https://spring.io/blog")
+            .get();
+    }
+
     @Test
     public void loadDocument404() throws IOException {
         try {
@@ -42,11 +48,8 @@ public class JsoupParserIntegrationTest {
 
     @Test
     public void examplesSelectors() throws IOException {
-        doc = Jsoup.connect("https://baeldung.com")
-            .userAgent("Mozilla")
-            .get();
-
         Elements links = doc.select("a");
+        Elements logo = doc.select(".spring-logo--container");
         Elements pagination = doc.select("#pagination_control");
         Elements divsDescendant = doc.select("header div");
         Elements divsDirect = doc.select("header > div");
@@ -54,48 +57,40 @@ public class JsoupParserIntegrationTest {
         Element pag = doc.getElementById("pagination_control");
         Elements desktopOnly = doc.getElementsByClass("desktopOnly");
 
-        Elements sections = doc.select("section");
-        Element firstSection = sections.first();
-        Elements sectionParagraphs = firstSection.select(".paragraph");
+        Elements articles = doc.select("article");
+        Element firstArticle = articles.first();
+        Elements sectionParagraphs = firstArticle.select(".paragraph");
     }
 
     @Test
     public void examplesTraversing() throws IOException {
-        doc = Jsoup.connect("https://baeldung.com")
-            .userAgent("Mozilla")
-            .get();
+        Elements articles = doc.select("article");
 
-        Elements sections = doc.select("section");
+        Element firstArticle = articles.first();
+        Element lastSection = articles.last();
+        Element secondSection = articles.get(2);
+        Elements allParents = firstArticle.parents();
+        Element parent = firstArticle.parent();
+        Elements children = firstArticle.children();
+        Elements siblings = firstArticle.siblingElements();
 
-        Element firstSection = sections.first();
-        Element lastSection = sections.last();
-        Element secondSection = sections.get(2);
-        Elements allParents = firstSection.parents();
-        Element parent = firstSection.parent();
-        Elements children = firstSection.children();
-        Elements siblings = firstSection.siblingElements();
-
-        sections.forEach(el -> System.out.println("section: " + el));
+        articles.forEach(el -> System.out.println("article: " + el));
     }
 
     @Test
     public void examplesExtracting() throws IOException {
-        doc = Jsoup.connect("https://spring.io/blog")
-            .get();
         Element firstArticle = doc.select("article")
             .first();
-        Element h1Element = firstArticle.select("h1")
+        Element titleElement = firstArticle.select("h1 a")
             .first();
 
-        String h1Text = h1Element.text();
+        String titleText = titleElement.text();
         String articleHtml = firstArticle.html();
         String outerHtml = firstArticle.outerHtml();
     }
 
     @Test
     public void examplesModifying() throws IOException {
-        doc = Jsoup.connect("https://spring.io/blog")
-            .get();
         Element firstArticle = doc.select("article")
             .first();
         Element h1Element = firstArticle.select("h1")
