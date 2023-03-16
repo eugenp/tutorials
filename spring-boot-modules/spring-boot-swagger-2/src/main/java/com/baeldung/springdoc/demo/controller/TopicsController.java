@@ -14,7 +14,6 @@ import com.baeldung.springdoc.demo.service.TopicService;
 
 
 @RestController
-@RequestMapping(path = "/")
 public class TopicsController {
 	
 	@Autowired
@@ -22,7 +21,6 @@ public class TopicsController {
 	
 	@GetMapping(value = "/topics")
 	public ResponseEntity<List<Topic>> getAllTopics() {
-		ResponseEntity<List<Topic>> response = new ResponseEntity<>(topicService.getAlllTopics(), HttpStatus.OK);
-		return response;
+		return new ResponseEntity<>(topicService.getAlllTopics(), HttpStatus.OK);
 	}
 }
