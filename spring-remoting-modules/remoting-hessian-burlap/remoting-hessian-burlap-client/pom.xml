@@ -59,7 +59,7 @@
     </dependencies>
 
     <properties>
-        <hessian.version>4.0.38</hessian.version>
+        <hessian.version>4.0.66</hessian.version>
     </properties>
 
 </project>
