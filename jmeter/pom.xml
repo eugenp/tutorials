@@ -48,8 +48,15 @@
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
-                <version>${jmeter.version}</version>
+                <version>3.7.0</version>
                 <executions>
+                 <!-- Generate JMeter configuration -->
+                            <execution>
+                                <id>configuration</id>
+                                <goals>
+                                    <goal>configure</goal>
+                                </goals>
+                            </execution>
                     <execution>
                         <id>jmeter-tests</id>
                         <goals>
@@ -66,7 +73,6 @@
     </build>
 
     <properties>
-        <jmeter.version>2.6.0</jmeter.version>
     </properties>
     
     <profiles>

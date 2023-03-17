@@ -789,7 +789,7 @@
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
-                
+
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
@@ -849,6 +849,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -859,6 +860,7 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -954,7 +956,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
-				        <module>spring-boot-modules/spring-caching-2</module>
+                <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -977,6 +979,7 @@
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules</module>
+                <module>spring-boot-modules/spring-boot-redis</module>
             </modules>
 
             <properties>
@@ -1094,7 +1097,7 @@
                 <module>core-java-modules/core-java-strings</module>
                 <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>                
+                <module>spring-aop-2</module>
                 <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
@@ -1115,6 +1118,7 @@
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
+                <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
@@ -1125,6 +1129,7 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -1222,7 +1227,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
-				        <module>spring-boot-modules/spring-caching-2</module>
+                <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1245,6 +1250,7 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
                 <module>messaging-modules</module>
+                <module>spring-boot-modules/spring-boot-redis</module>
             </modules>
 
             <properties>
