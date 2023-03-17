@@ -895,6 +895,7 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
+                <module>spring-boot-modules/spring-boot-properties</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
@@ -1153,6 +1154,7 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
+				<module>spring-boot-modules/spring-boot-properties</module>
                 <module>spring-boot-modules/spring-boot-cassandre</module>
                 <module>spring-boot-modules/spring-boot-3</module>
                 <module>spring-boot-modules/spring-boot-3-native</module>
