@@ -16,6 +16,7 @@
         <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -28,6 +29,13 @@
                         <arg>--enable-preview</arg>
                         <arg>--add-modules=jdk.incubator.concurrent</arg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>--add-modules=jdk.incubator.concurrent</argLine>
                 </configuration>
             </plugin>
         </plugins>
