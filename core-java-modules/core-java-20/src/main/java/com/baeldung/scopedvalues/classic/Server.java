@@ -12,16 +12,22 @@ import java.util.concurrent.Executors;
 
 public class Server {
 
-    private static final List<User> AUTHENTICATED_USERS = List.of(new User("1", "admin", "123456", true));
+    private static final List<User> AUTHENTICATED_USERS = List.of(
+            new User("1", "admin", "123456", true),
+            new User("2", "user", "123456", false)
+    );
     private final Controller controller = new Controller();
     private final ExecutorService executor = Executors.newFixedThreadPool(5);
 
     public void serve(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Optional<User> user = authenticateUser(request);
         if (user.isPresent()) {
+            controller.processRequest(request, response, user.get());
+            /*
             executor.submit(() -> {
                 controller.processRequest(request, response, user.get());
             });
+             */
         } else {
             response.setStatus(401);
         }
@@ -34,7 +40,7 @@ public class Server {
     }
 
     private boolean checkUserPassword(User user, HttpServletRequest request) {
-        return user.id().equals(request.getParameter("user_id"))
+        return user.name().equals(request.getParameter("user_name"))
                 && user.password().equals(request.getParameter("user_pw"));
     }
 

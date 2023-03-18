@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -15,7 +16,7 @@ import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ServerIntegrationTest {
+public class ServerUnitTest {
 
     @Mock
     private HttpServletRequest request;
@@ -28,15 +29,25 @@ public class ServerIntegrationTest {
     private final Server server = new Server();
 
     @Test
-    void givenHttpServletRequest_whenMockedWithMockito_thenReturnsParameterValues() throws IOException {
-        when(request.getParameter("user_id")).thenReturn("admin");
+    void givenMockedRequestWithAdminCredentials_whenServeMethodIsCalled_thenDataIsReturned() throws IOException {
+        when(request.getParameter("user_name")).thenReturn("admin");
         when(request.getParameter("user_pw")).thenReturn("123456");
         when(request.getParameter("data_id")).thenReturn("1");
         when(response.getWriter()).thenReturn(new PrintWriter(writer));
 
         server.serve(request, response);
 
-        assertThat(writer.toString()).isEqualTo("Full Name: Mockito Test");
+        assertThat(writer.toString()).isEqualTo("Data[id=1, title=Title 1, description=Description 1]");
+    }
+
+    @Test
+    void givenMockedRequestWithUserCredentials_whenServeMethodIsCalled_thenNoDataIsReturned() throws IOException {
+        when(request.getParameter("user_name")).thenReturn("user");
+        when(request.getParameter("user_pw")).thenReturn("123456");
+
+        server.serve(request, response);
+
+        assertThat(writer.toString()).isEqualTo("");
     }
 
 }

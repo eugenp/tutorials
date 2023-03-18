@@ -10,7 +10,10 @@ import java.util.Optional;
 
 public class Server {
 
-    private static final List<User> AUTHENTICATED_USERS = List.of(new User("1", "admin", "123456", true));
+    private static final List<User> AUTHENTICATED_USERS = List.of(
+            new User("1", "admin", "123456", true),
+            new User("2", "user", "123456", false)
+    );
     public final static ScopedValue<User> LOGGED_IN_USER = ScopedValue.newInstance();
     private final Controller controller = new Controller();
 
@@ -31,7 +34,7 @@ public class Server {
     }
 
     private boolean checkUserPassword(User user, HttpServletRequest request) {
-        return user.id().equals(request.getParameter("user_id"))
+        return user.name().equals(request.getParameter("user_name"))
                 && user.password().equals(request.getParameter("user_pw"));
     }
 
