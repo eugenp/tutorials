@@ -7,16 +7,21 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
 
     private static final List<User> AUTHENTICATED_USERS = List.of(new User("1", "admin", "123456", true));
     private final Controller controller = new Controller();
+    private final ExecutorService executor = Executors.newFixedThreadPool(5);
 
     public void serve(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Optional<User> user = authenticateUser(request);
         if (user.isPresent()) {
-            controller.processRequest(request, response, user.get());
+            executor.submit(() -> {
+                controller.processRequest(request, response, user.get());
+            });
         } else {
             response.setStatus(401);
         }

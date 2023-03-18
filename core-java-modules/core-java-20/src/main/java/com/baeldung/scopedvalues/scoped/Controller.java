@@ -17,16 +17,15 @@ public class Controller {
     public void processRequest(HttpServletRequest request, HttpServletResponse response) {
         Optional<Data> data = service.getData(request);
         if (data.isPresent()) {
-            PrintWriter out = null;
             try {
-                out = response.getWriter();
+                PrintWriter out = response.getWriter();
+                response.setContentType("application/json");
+                out.print(data.get());
+                out.flush();
+                response.setStatus(200);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                response.setStatus(500);
             }
-            response.setContentType("application/json");
-            out.print(data.get());
-            out.flush();
-            response.setStatus(200);
         } else {
             response.setStatus(400);
         }
