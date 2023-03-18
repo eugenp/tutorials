@@ -443,7 +443,7 @@
                 <module>spring-jenkins-pipeline</module>
 
                 <module>spring-jinq</module>
-                <module>spring-katharsis</module>
+
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
@@ -658,7 +658,7 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jinq</module>
-                <module>spring-katharsis</module>
+
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
@@ -794,6 +794,7 @@
             </build>
 
             <modules>
+                <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
@@ -1056,6 +1057,7 @@
             </build>
 
             <modules>
+                <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
