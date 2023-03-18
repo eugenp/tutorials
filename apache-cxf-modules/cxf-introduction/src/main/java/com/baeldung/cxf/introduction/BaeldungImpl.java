@@ -3,7 +3,7 @@ package com.baeldung.cxf.introduction;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.jws.WebService;
+import jakarta.jws.WebService;
 
 @WebService(endpointInterface = "com.baeldung.cxf.introduction.Baeldung")
 public class BaeldungImpl implements Baeldung {

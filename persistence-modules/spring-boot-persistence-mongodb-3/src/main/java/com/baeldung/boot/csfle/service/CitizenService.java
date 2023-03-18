@@ -7,6 +7,7 @@ import org.bson.BsonBinary;
 import org.bson.BsonInt32;
 import org.bson.BsonString;
 import org.bson.BsonValue;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -65,7 +66,7 @@ public class CitizenService {
         }
     }
 
-    public BsonBinary encrypt(Object value, String algorithm) {
+    public Binary encrypt(Object value, String algorithm) {
         if (value == null)
             return null;
 
@@ -80,17 +81,22 @@ public class CitizenService {
 
         EncryptOptions options = new EncryptOptions(algorithm);
         options.keyId(encryptionConfig.getDataKeyId());
-        return clientEncryption.encrypt(bsonValue, options);
+
+        BsonBinary encryptedValue = clientEncryption.encrypt(bsonValue, options);
+        return new Binary(encryptedValue.getType(), encryptedValue.getData());
     }
 
-    public BsonValue decryptProperty(BsonBinary value) {
+    public BsonValue decryptProperty(Binary value) {
         if (value == null)
             return null;
 
-        return clientEncryption.decrypt(value);
+        return clientEncryption.decrypt(new BsonBinary(value.getType(), value.getData()));
     }
 
     private Citizen decrypt(EncryptedCitizen encrypted) {
+        if (encrypted == null)
+            return null;
+
         Citizen citizen = new Citizen(encrypted);
 
         BsonValue decryptedBirthYear = decryptProperty(encrypted.getBirthYear());

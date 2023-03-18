@@ -21,7 +21,7 @@ public class SentryFilter implements Filter {
         try {
             chain.doFilter(request, response);
             int rc = ((HttpServletResponse) response).getStatus();
-            if (rc/100 == 5) {
+            if (rc / 100 == 5) {
                 Sentry.captureMessage("Application error: code=" + rc, SentryLevel.ERROR);
             }
         } catch (Throwable t) {

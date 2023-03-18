@@ -14,9 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 
-import com.baeldung.boot.csfle.config.converter.BinaryConverter;
 import com.mongodb.AutoEncryptionSettings;
 import com.mongodb.ClientEncryptionSettings;
 import com.mongodb.ConnectionString;
@@ -48,11 +46,6 @@ public class MongoClientConfig extends AbstractMongoClientConfiguration {
     @Override
     protected String getDatabaseName() {
         return db;
-    }
-
-    @Override
-    public MongoCustomConversions customConversions() {
-        return new MongoCustomConversions(Arrays.asList(new BinaryConverter()));
     }
 
     @Bean
