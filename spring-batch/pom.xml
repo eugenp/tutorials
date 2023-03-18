@@ -28,13 +28,13 @@
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>${jaxb.version}</version>
-            <scope>runtime</scope>
+            
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb.version}</version>
-            <scope>runtime</scope>
+            
         </dependency>
         <!-- SQLite database driver -->
         <dependency>

@@ -352,6 +352,7 @@
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
+                <module>jetbrains</module>
                 <module>jhipster-5</module>
 
                 <module>jmh</module>
@@ -730,7 +731,7 @@
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
                 <module>vaadin</module>
-               <module>vavr-modules</module>
+                <module>vavr-modules</module>
             </modules>
 
         </profile>
@@ -904,6 +905,7 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -933,7 +935,6 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-<!--            <module>axon</module>--><!-- JAVA-18408 -->
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1162,6 +1163,7 @@
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
