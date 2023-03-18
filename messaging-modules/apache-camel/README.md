@@ -1,6 +1,6 @@
-## Spring Apache Camel
+## Apache Camel
 
-This module contains articles about Spring with Apache Camel
+This module contains articles about Apache Camel
 
 ### Relevant Articles
 
