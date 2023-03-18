@@ -364,7 +364,6 @@
 
                 <module>libraries-data-db</module>
 
-                <module>logging-modules</module>
                 <module>lombok-modules</module>
 
                 <module>maven-modules</module>
@@ -589,7 +588,6 @@
 
                 <module>libraries-data-db</module>
 
-                <module>logging-modules</module>
                 <module>lombok-modules</module>
 
                 <module>maven-modules</module>
@@ -796,6 +794,7 @@
             </build>
 
             <modules>
+                <module>logging-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
@@ -1057,6 +1056,7 @@
             </build>
 
             <modules>
+                <module>logging-modules</module>
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
