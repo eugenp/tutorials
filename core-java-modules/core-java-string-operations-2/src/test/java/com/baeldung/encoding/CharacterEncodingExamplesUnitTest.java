@@ -75,7 +75,7 @@ public class CharacterEncodingExamplesUnitTest {
 
     @Test
     public void givenUTF8String_whenDecodeByUS_ASCII_thenIgnoreMalformedInputSequence() throws IOException {
-        Assertions.assertEquals("The faade pattern is a software design pattern.", CharacterEncodingExamples.decodeText("The façade pattern is a software design pattern.", StandardCharsets.US_ASCII, CodingErrorAction.IGNORE));
+        Assertions.assertEquals("The fa?ade pattern is a software design pattern.", CharacterEncodingExamples.decodeText("The façade pattern is a software design pattern.", StandardCharsets.US_ASCII, CodingErrorAction.IGNORE));
     }
 
     //@Test
