@@ -343,6 +343,7 @@
                 <module>apache-httpclient4</module>
                 <module>java-jdi</module>
 
+                <module>jetbrains</module>
                 <module>jhipster-5</module>
                 <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -890,7 +891,6 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-<!--            <module>axon</module>--><!-- JAVA-18408 -->
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -899,7 +899,7 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
-                <module>feign</module>
+                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -1168,7 +1168,7 @@
                 <module>dozer</module>
 
                 <module>dubbo</module>
-                <module>feign</module>
+                <!-- <module>feign</module> -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
