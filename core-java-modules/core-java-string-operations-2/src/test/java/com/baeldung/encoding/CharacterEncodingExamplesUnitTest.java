@@ -89,7 +89,8 @@ public class CharacterEncodingExamplesUnitTest {
             CodingErrorAction.REPLACE));
     }
 
-    @Test
+    //@Test
+    // run this manually as it's dependent on platform encoding
     public void givenUTF8String_whenDecodeByUS_ASCII_thenReportMalformedInputSequence() {
         Assertions.assertThrows(
           MalformedInputException.class,
