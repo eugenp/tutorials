@@ -22,9 +22,8 @@ public class ProfileIntegrationTest {
         LambdaHandler lambdaHandler = new LambdaHandler();
         AwsProxyRequest req = new AwsProxyRequestBuilder("/api/v1/users", "GET").build();
         AwsProxyResponse resp = lambdaHandler.handleRequest(req, lambdaContext);
-        System.out.println(resp.getBody());
         Assertions.assertNotNull(resp.getBody());
-        Assertions.assertEquals(resp.getStatusCode(), 200);
+        Assertions.assertEquals(200, resp.getStatusCode());
     }
 
     @Test
@@ -32,6 +31,6 @@ public class ProfileIntegrationTest {
         LambdaHandler lambdaHandler = new LambdaHandler();
         AwsProxyRequest req = new AwsProxyRequestBuilder("/api/v1/users/plus-one-level", "GET").build();
         AwsProxyResponse resp = lambdaHandler.handleRequest(req, lambdaContext);
-        Assertions.assertEquals(resp.getStatusCode(), 404);
+        Assertions.assertEquals(404, resp.getStatusCode());
     }
 }
