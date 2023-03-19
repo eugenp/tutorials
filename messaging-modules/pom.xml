@@ -18,6 +18,7 @@
         <module>jgroups</module>
         <module>rabbitmq</module>
         <module>spring-amqp</module>
+        <module>spring-apache-camel</module>
         <module>spring-jms</module>
     </modules>
 

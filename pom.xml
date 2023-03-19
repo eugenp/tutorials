@@ -330,60 +330,35 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-
-                <module>azure</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-
                 <module>core-java-modules</module>
-
                 <module>couchbase</module>
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
-
                 <module>java-jdi</module>
-                <module>java-websocket</module>
 
                 <module>jetbrains</module>
                 <module>jhipster-5</module>
-
                 <module>jmh</module>
-
-                <module>kubernetes-modules</module>
-
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-
                 <module>libraries-data-db</module>
-
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-
                 <module>maven-modules</module>
-
-                <module>messaging-modules</module>
 
                 <module>microservices-modules</module>
                 <module>muleesb</module>
 
-
-                <module>netflix-modules</module>
-
                 <module>osgi</module>
-
-
                 <module>persistence-modules</module>
-
-                <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -429,7 +404,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
 
@@ -437,14 +411,12 @@
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-di</module>
-                <module>spring-di-2</module>
+
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
@@ -524,7 +496,7 @@
                 <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
-                <module>vavr-modules</module>
+
             </modules>
         </profile>
 
@@ -560,8 +532,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-
-                <module>azure</module>
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
@@ -572,43 +542,24 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
-
                 <module>java-jdi</module>
-                <module>java-websocket</module>
 
                 <module>jhipster-5</module>
                 <module>jmh</module>
-
-                <module>kubernetes-modules</module>
-
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-
                 <module>libraries-data-db</module>
-
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-
                 <module>maven-modules</module>
-
-                <module>messaging-modules</module>
-
                 <module>microservices-modules</module>
                 <module>muleesb</module>
 
-                <module>netflix-modules</module>
-
                 <module>osgi</module>
-
-
-
                 <module>persistence-modules</module>
-
-                <module>vavr-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -646,21 +597,17 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-
-                <module>spf4j</module>
                 <module>spring-4</module>
 
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-di</module>
-                <module>spring-di-2</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jinq</module>
+
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
@@ -731,7 +678,6 @@
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>spring-ejb-modules/ejb-beans</module>
                 <module>vaadin</module>
-                <module>vavr-modules</module>
             </modules>
 
         </profile>
@@ -797,9 +743,19 @@
             </build>
 
             <modules>
+                <module>spring-di</module>
+                <module>spring-di-2</module>
+                <module>spring-jinq</module>
+                <module>vavr-modules</module>
+                <module>java-websocket</module>
+                <module>azure</module>
+                <module>netflix-modules</module>
+                <module>spf4j</module>
+
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
+
                 <module>javafx</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
@@ -885,7 +841,7 @@
                 <module>drools</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
-                <module>kubernetes-modules/kubernetes-spring</module>
+                <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
@@ -1022,7 +978,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>messaging-modules/spring-apache-camel</module>
+                <module>messaging-modules</module>
                 <module>spring-boot-modules/spring-boot-redis</module>
             </modules>
 
@@ -1057,9 +1013,19 @@
             </build>
 
             <modules>
+                <module>spring-di</module>
+                <module>spring-di-2</module>
+                <module>spring-jinq</module>
+                <module>vavr-modules</module>
+                <module>java-websocket</module>
+                <module>azure</module>
+                <module>netflix-modules</module>
+                <module>spf4j</module>
+
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
+
                 <module>javafx</module>
                 <module>spring-batch</module>
                 <module>spring-boot-rest</module>
@@ -1143,7 +1109,7 @@
                 <module>drools</module>
                 <module>guava-modules</module>
                 <module>apache-httpclient-2</module>
-                <module>kubernetes-modules/kubernetes-spring</module>
+                <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
                 <module>maven-modules/compiler-plugin-java-9</module>
@@ -1283,7 +1249,7 @@
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
-                <module>messaging-modules/spring-apache-camel</module>
+                <module>messaging-modules</module>
                 <module>spring-boot-modules/spring-boot-redis</module>
             </modules>
 
