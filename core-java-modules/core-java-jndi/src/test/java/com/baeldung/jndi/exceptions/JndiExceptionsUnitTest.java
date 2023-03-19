@@ -21,7 +21,6 @@ public class JndiExceptionsUnitTest {
 
     @Test
     @Order(1)
-    @Disabled
     void givenNoContext_whenLookupObject_thenThrowNoInitialContext() {
         assertThrows(NoInitialContextException.class, () -> {
             JndiTemplate jndiTemplate = new JndiTemplate();
