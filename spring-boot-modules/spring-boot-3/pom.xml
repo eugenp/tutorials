@@ -124,6 +124,8 @@
         <mapstruct.version>1.5.2.Final</mapstruct.version>
         <springdoc.version>2.0.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <start-class>com.baeldung.sample.TodoApplication</start-class>
+
     </properties>
 
 </project>
