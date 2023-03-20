@@ -7,33 +7,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ConvertNumberToLetterUnitTest {
 
-    static String numToLetterBySubstr(int i) {
+    static char numToLetterBySubstr(int i) {
         String LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        if (i < 0 || i > 25) {
-            return "?";
+        if (i > 0 && i <= 25) {
+            return LETTERS.substring(i, i + 1).charAt(0);
         } else {
-            return LETTERS.substring(i, i + 1);
+            return '?';
         }
     }
 
     static char numToLetterByAsciiCode(int i) {
-        if (i < 0 || i > 25) {
-            return '?';
-        } else {
+        if (i > 0 && i <= 25) {
             return (char) ('A' + i);
+        } else {
+            return '?';
         }
     }
 
     @Test
     void givenANumber_whenConvertToLetterUsingSubstring_shouldGetExpectedResult() {
-        String negativeInputResult = numToLetterBySubstr(-7);
-        assertEquals("?", negativeInputResult);
+        char negativeInputResult = numToLetterBySubstr(-7);
+        assertEquals('?', negativeInputResult);
 
-        String tooLargeInputResult = numToLetterBySubstr(42);
-        assertEquals("?", tooLargeInputResult);
+        char tooLargeInputResult = numToLetterBySubstr(42);
+        assertEquals('?', tooLargeInputResult);
 
-        String result = numToLetterBySubstr(10);
-        assertEquals("K", result);
+        char result = numToLetterBySubstr(10);
+        assertEquals('K', result);
     }
 
     @Test
