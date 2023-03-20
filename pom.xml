@@ -412,7 +412,6 @@
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
-                <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
@@ -493,7 +492,6 @@
                 <module>libraries-5</module>
                 <module>libraries-6</module>
                 <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb-modules/ejb-beans</module>
 
                 <module>vaadin</module>
 
@@ -603,7 +601,7 @@
                 <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-ejb-modules</module>
+
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
@@ -676,7 +674,6 @@
                 <module>libraries-5</module>
                 <module>libraries-6</module>
                 <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb-modules/ejb-beans</module>
                 <module>vaadin</module>
             </modules>
 
@@ -743,6 +740,7 @@
             </build>
 
             <modules>
+                <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-jinq</module>
@@ -1014,6 +1012,7 @@
             </build>
 
             <modules>
+                <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
                 <module>spring-jinq</module>
