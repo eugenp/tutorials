@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka;
+package com.baeldung.spring.kafka.retryable;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -17,6 +17,8 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
+import com.baeldung.spring.kafka.retryable.Greeting;
+import com.baeldung.spring.kafka.retryable.RetryableApplicationKafkaApp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = RetryableApplicationKafkaApp.class)

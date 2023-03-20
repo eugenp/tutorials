@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka;
+package com.baeldung.spring.kafka.multiplelisteners;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,32 +36,19 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Greeting> greetingProducerFactory() {
+    public ProducerFactory<String, BookEvent> bookProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        configProps.put(JsonSerializer.TYPE_MAPPINGS, "bookEvent:com.baeldung.spring.kafka.multiplelisteners.BookEvent");
+
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
     @Bean
-    public KafkaTemplate<String, Greeting> greetingKafkaTemplate() {
-        return new KafkaTemplate<>(greetingProducerFactory());
-    }
-
-    @Bean
-    public ProducerFactory<String, Object> multiTypeProducerFactory() {
-        Map<String, Object> configProps = new HashMap<>();
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        configProps.put(JsonSerializer.TYPE_MAPPINGS, "greeting:com.baeldung.spring.kafka.Greeting, farewell:com.baeldung.spring.kafka.Farewell");
-        return new DefaultKafkaProducerFactory<>(configProps);
-    }
-
-    @Bean
-    public KafkaTemplate<String, Object> multiTypeKafkaTemplate() {
-        return new KafkaTemplate<>(multiTypeProducerFactory());
+    public KafkaTemplate<String, BookEvent> bookKafkaTemplate() {
+        return new KafkaTemplate<>(bookProducerFactory());
     }
 
 }

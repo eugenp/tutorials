@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka;
+package com.baeldung.spring.kafka.retryable;
 
 public class Farewell {
 
