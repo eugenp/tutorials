@@ -98,7 +98,8 @@
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
-        <module>spring-data-rest</module>
+<!--        Moved to JDK9+ profiles-->
+<!--        <module>spring-data-rest</module>-->
         <module>spring-data-rest-2</module>
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
