@@ -2,13 +2,11 @@ package com.baeldung.producerconsumer;
 
 public class Producer implements Runnable {
     private final DataQueue dataQueue;
-    private volatile boolean runFlag;
 
     private static int idSequence = 0;
 
     public Producer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
-        runFlag = true;
     }
 
     @Override
@@ -17,9 +15,9 @@ public class Producer implements Runnable {
     }
 
     public void produce() {
-        while (runFlag) {
+        while (dataQueue.runFlag) {
             synchronized (this) {
-                while (dataQueue.isFull()) {
+                while (dataQueue.isFull() && dataQueue.runFlag) {
                     try {
                         dataQueue.waitOnFull();
                     } catch (InterruptedException e) {
@@ -27,12 +25,10 @@ public class Producer implements Runnable {
                         break;
                     }
                 }
-                if (!runFlag) {
+                if (!dataQueue.runFlag) {
                     break;
                 }
-            }
-            Message message = generateMessage();
-            if (!dataQueue.isFull()) {
+                Message message = generateMessage();
                 dataQueue.add(message);
                 dataQueue.notifyAllForEmpty();
             }
@@ -45,13 +41,13 @@ public class Producer implements Runnable {
         System.out.printf("[%s] Generated Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
 
         //Sleeping on random time to make it realistic
-        // ThreadUtil.sleep((long) (message.getData() * 100));
+        ThreadUtil.sleep((long) (message.getData() * 100));
 
         return message;
     }
 
     public void stop() {
-        runFlag = false;
+        dataQueue.runFlag = false;
         dataQueue.notifyAllForFull();
     }
 }

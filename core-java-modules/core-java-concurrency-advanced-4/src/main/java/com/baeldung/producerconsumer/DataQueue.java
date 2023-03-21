@@ -9,6 +9,8 @@ public class DataQueue {
     private final Object FULL_QUEUE = new Object();
     private final Object EMPTY_QUEUE = new Object();
 
+    public boolean runFlag = true;
+
     DataQueue(int maxSize) {
         this.maxSize = maxSize;
     }
@@ -47,20 +49,13 @@ public class DataQueue {
 
     public void add(Message message) {
         synchronized (queue) {
-            if(queue.size() > maxSize) {
-                System.out.println("Max size exceeded");
-            }
             queue.add(message);
         }
     }
 
     public Message remove() {
         synchronized (queue) {
-            final Message poll = queue.poll();
-            if(poll == null) {
-                System.out.println("Trying to remove from empty queue");
-            }
-            return poll;
+            return queue.poll();
         }
     }
 }
