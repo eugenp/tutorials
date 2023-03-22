@@ -339,8 +339,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>apache-httpclient</module>
-                <module>apache-httpclient4</module>
+
                 <module>java-jdi</module>
 
                 <module>jetbrains</module>
@@ -352,9 +351,7 @@
                 <module>libraries-data-db</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-                <module>maven-modules</module>
 
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -416,7 +413,6 @@
                 <module>spring-jenkins-pipeline</module>
 
                 <module>spring-katharsis</module>
-                <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -537,8 +533,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>apache-httpclient</module>
-                <module>apache-httpclient4</module>
+
                 <module>java-jdi</module>
 
                 <module>jhipster-5</module>
@@ -549,8 +544,6 @@
                 <module>libraries-data-db</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-                <module>maven-modules</module>
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -603,7 +596,6 @@
                 <module>spring-jenkins-pipeline</module>
 
                 <module>spring-katharsis</module>
-                <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -737,7 +729,11 @@
 
             <modules>
                 <module>spring-boot-modules</module>
-
+                <module>apache-httpclient</module>
+                <module>apache-httpclient4</module>
+                <module>apache-httpclient-2</module>
+                <module>spring-mobile</module>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -747,7 +743,6 @@
                 <module>azure</module>
                 <module>netflix-modules</module>
                 <module>spf4j</module>
-
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
@@ -836,13 +831,10 @@
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>guava-modules</module>
-                <module>apache-httpclient-2</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
-                <module>maven-modules/compiler-plugin-java-9</module>
-                <module>maven-modules/maven-generate-war</module>
-                <module>maven-modules/multimodulemavenproject</module>
+                <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
@@ -867,7 +859,6 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
-                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -882,7 +873,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -971,6 +963,8 @@
                 <module>persistence-modules/java-mongodb</module>
                 
                 <module>messaging-modules</module>
+
+                <module>persistence-modules/questdb</module>
             </modules>
 
             <properties>
@@ -1005,7 +999,11 @@
 
             <modules>
                 <module>spring-boot-modules</module>
-
+                <module>apache-httpclient</module>
+                <module>apache-httpclient4</module>
+                <module>apache-httpclient-2</module>
+                <module>spring-mobile</module>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -1015,7 +1013,6 @@
                 <module>azure</module>
                 <module>netflix-modules</module>
                 <module>spf4j</module>
-
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
@@ -1106,9 +1103,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
-                <module>maven-modules/compiler-plugin-java-9</module>
-                <module>maven-modules/maven-generate-war</module>
-                <module>maven-modules/multimodulemavenproject</module>
+                <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
@@ -1133,7 +1128,6 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
-                <module>apache-httpclient</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
@@ -1147,7 +1141,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1238,6 +1233,8 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module> 
                 <module>messaging-modules</module>
+
+                <module>persistence-modules/questdb</module>
             </modules>
 
             <properties>
