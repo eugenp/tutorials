@@ -48,7 +48,7 @@
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${jmeter-maven-plugin.version}</version>
                 <executions>
                  <!-- Generate JMeter configuration -->
                             <execution>
@@ -73,6 +73,7 @@
     </build>
 
     <properties>
+        <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
     </properties>
     
     <profiles>
@@ -119,7 +120,7 @@
                     <plugin>
                         <groupId>com.lazerycode.jmeter</groupId>
                         <artifactId>jmeter-maven-plugin</artifactId>
-                        <version>3.7.0</version>
+                        <version>${jmeter-maven-plugin.version}</version>
                         <executions>
                             <!-- Generate JMeter configuration -->
                             <execution>
@@ -161,7 +162,7 @@
             </build>
 
             <properties>
-                <jmeter.version>5.5</jmeter.version>
+                <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
             </properties>
         </profile>
     </profiles>

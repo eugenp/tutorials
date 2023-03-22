@@ -353,7 +353,6 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
 
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -551,7 +550,6 @@
                 <module>libraries-data-db</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -738,6 +736,7 @@
             </build>
 
             <modules>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -885,7 +884,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -975,6 +975,7 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>messaging-modules</module>
                 <module>spring-boot-modules/spring-boot-redis</module>
+                <module>persistence-modules/questdb</module>
             </modules>
 
             <properties>
@@ -1008,6 +1009,7 @@
             </build>
 
             <modules>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -1152,7 +1154,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1245,6 +1248,7 @@
                 <module>libraries-2</module>
                 <module>messaging-modules</module>
                 <module>spring-boot-modules/spring-boot-redis</module>
+                <module>persistence-modules/questdb</module>
             </modules>
 
             <properties>
