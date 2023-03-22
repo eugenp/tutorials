@@ -352,7 +352,6 @@
                 <module>libraries-data-db</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-                <module>maven-modules</module>
 
                 <module>muleesb</module>
 
@@ -550,8 +549,6 @@
                 <module>libraries-data-db</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
-                <module>maven-modules</module>
-
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -840,9 +837,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
-                <module>maven-modules/compiler-plugin-java-9</module>
-                <module>maven-modules/maven-generate-war</module>
-                <module>maven-modules/multimodulemavenproject</module>
+                <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
@@ -1113,9 +1108,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
-                <module>maven-modules/compiler-plugin-java-9</module>
-                <module>maven-modules/maven-generate-war</module>
-                <module>maven-modules/multimodulemavenproject</module>
+                <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules/sirix</module>
                 <module>persistence-modules/spring-data-cassandra-2</module>
