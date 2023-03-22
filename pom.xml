@@ -354,7 +354,6 @@
                 <module>lombok-modules</module>
                 <module>maven-modules</module>
 
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -552,7 +551,7 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>maven-modules</module>
-                <module>microservices-modules</module>
+
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -739,6 +738,7 @@
 
             <modules>
                 <module>spring-mobile</module>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -887,7 +887,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1012,6 +1013,7 @@
 
             <modules>
                 <module>spring-mobile</module>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -1157,7 +1159,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
