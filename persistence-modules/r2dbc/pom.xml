@@ -60,17 +60,17 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>r2dbc-postgresql</artifactId>
-            <version>1.0.0.RELEASE</version>
+            <version>${r2dbc.postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.5.2</version>
+            <version>${jdbc.postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>9.14.1</version>
+            <version>${flyway.core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.r2dbc</groupId>
@@ -87,5 +87,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <flyway.core.version>9.14.1</flyway.core.version>
+        <jdbc.postgresql.version>42.5.2</jdbc.postgresql.version>
+        <r2dbc.postgresql.version>1.0.0.RELEASE</r2dbc.postgresql.version>
+    </properties>
 
 </project>
