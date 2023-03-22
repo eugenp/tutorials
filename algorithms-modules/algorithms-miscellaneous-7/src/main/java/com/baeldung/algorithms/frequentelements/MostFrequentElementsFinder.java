@@ -30,22 +30,12 @@ public class MostFrequentElementsFinder {
     }
 
     public static List<Integer> findByStream(Integer[] arr, int n) {
-        // Create a Map to count occurrences of each element
-        Map<Integer, Long> countMap = Arrays.stream(arr)
-                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
-
-        // Sort the elements by occurrence count
-        List<Integer> sortedKeys = countMap.entrySet().stream()
+        return Arrays.stream(arr).collect(Collectors.groupingBy(i -> i, Collectors.counting()))
+                .entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
                 .map(Map.Entry::getKey)
+                .limit(n)
                 .collect(Collectors.toList());
-
-        // Extract the n most frequent elements from the sorted list
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < n && i < sortedKeys.size(); i++) {
-            result.add(sortedKeys.get(i));
-        }
-        return result;
     }
 
     public static List<Integer> findByTreeMap(Integer[] arr, int n) {
