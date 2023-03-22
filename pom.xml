@@ -354,7 +354,6 @@
                 <module>lombok-modules</module>
                 <module>maven-modules</module>
 
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -553,7 +552,7 @@
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>maven-modules</module>
-                <module>microservices-modules</module>
+
                 <module>muleesb</module>
 
                 <module>osgi</module>
@@ -740,6 +739,7 @@
             </build>
 
             <modules>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
@@ -1014,6 +1014,7 @@
             </build>
 
             <modules>
+                <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
