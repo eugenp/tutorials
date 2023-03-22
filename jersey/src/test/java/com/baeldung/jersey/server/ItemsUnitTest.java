@@ -1,35 +1,32 @@
 package com.baeldung.jersey.server;
 
+import static com.baeldung.jersey.server.http.EmbeddedHttpServer.BASE_URI;
 import static org.junit.Assert.assertEquals;
-
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 
 import com.baeldung.jersey.server.http.EmbeddedHttpServer;
 
-@Disabled
-@Ignore
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.WebTarget;
+
 public class ItemsUnitTest {
 
     private HttpServer server;
     private WebTarget target;
 
     @Before
-    public void setUp() throws Exception {
-        server = EmbeddedHttpServer.startServer();
-        target = ClientBuilder.newClient().target(EmbeddedHttpServer.BASE_URI.toString());
+    public void setUp() {
+        server = EmbeddedHttpServer.startServer(BASE_URI);
+        target = ClientBuilder.newClient().target(BASE_URI.toString());
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         server.stop();
     }
 
