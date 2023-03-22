@@ -889,7 +889,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
@@ -1159,7 +1160,8 @@
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
-                <!--            <module>axon</module>--><!-- JAVA-18408 -->
+
+                <module>axon</module>
 
                 <module>bazel</module>
                 <module>code-generation</module>
