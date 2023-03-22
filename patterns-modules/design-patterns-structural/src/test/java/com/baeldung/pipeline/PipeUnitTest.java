@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class PipeUnitTest {
 
     @Test
-    void simplePipeTest() {
+    void whenCombiningThreePipes_andInitializingPipeline_thenResultIsCorrect() {
         Pipe<Integer, Integer> square = s -> s * s;
         Pipe<Integer, Integer> half = s -> s / 2;
         Pipe<Integer, String> toString = Object::toString;
