@@ -416,7 +416,6 @@
                 <module>spring-jenkins-pipeline</module>
 
                 <module>spring-katharsis</module>
-                <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -606,7 +605,6 @@
                 <module>spring-jenkins-pipeline</module>
 
                 <module>spring-katharsis</module>
-                <module>spring-mobile</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -739,6 +737,7 @@
             </build>
 
             <modules>
+                <module>spring-mobile</module>
                 <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
@@ -749,7 +748,6 @@
                 <module>azure</module>
                 <module>netflix-modules</module>
                 <module>spf4j</module>
-
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
@@ -1014,6 +1012,7 @@
             </build>
 
             <modules>
+                <module>spring-mobile</module>
                 <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-di</module>
@@ -1024,7 +1023,6 @@
                 <module>azure</module>
                 <module>netflix-modules</module>
                 <module>spf4j</module>
-
                 <module>spring-jersey</module>
                 <module>jersey</module>
                 <module>jaxb</module>
