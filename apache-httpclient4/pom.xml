@@ -292,6 +292,7 @@
         <mockserver.version>5.11.2</mockserver.version>
         <!-- maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

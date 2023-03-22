@@ -339,8 +339,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>apache-httpclient</module>
-                <module>apache-httpclient4</module>
+
                 <module>java-jdi</module>
 
                 <module>jetbrains</module>
@@ -537,8 +536,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <module>apache-httpclient</module>
-                <module>apache-httpclient4</module>
+
                 <module>java-jdi</module>
 
                 <module>jhipster-5</module>
@@ -734,6 +732,9 @@
             </build>
 
             <modules>
+                <module>apache-httpclient</module>
+                <module>apache-httpclient4</module>
+                <module>apache-httpclient-2</module>
                 <module>spring-mobile</module>
                 <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
@@ -833,7 +834,6 @@
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>guava-modules</module>
-                <module>apache-httpclient-2</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
@@ -867,7 +867,6 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
-                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -1007,6 +1006,9 @@
             </build>
 
             <modules>
+                <module>apache-httpclient</module>
+                <module>apache-httpclient4</module>
+                <module>apache-httpclient-2</module>
                 <module>spring-mobile</module>
                 <module>microservices-modules</module>
                 <module>spring-ejb-modules</module>
@@ -1138,7 +1140,6 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
-                <module>apache-httpclient</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
