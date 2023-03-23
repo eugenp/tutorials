@@ -349,7 +349,7 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-data-db</module>
-                <module>logging-modules</module>
+
                 <module>lombok-modules</module>
 
                 <module>muleesb</module>
@@ -412,7 +412,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-katharsis</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -542,7 +541,7 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-data-db</module>
-                <module>logging-modules</module>
+
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
@@ -595,7 +594,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-katharsis</module>
                 <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
@@ -728,6 +726,8 @@
             </build>
 
             <modules>
+                <module>spring-katharsis</module>
+                <module>logging-modules</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -998,6 +998,8 @@
             </build>
 
             <modules>
+                <module>spring-katharsis</module>
+                <module>logging-modules</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
