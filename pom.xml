@@ -405,7 +405,6 @@
                 <module>spring-aop</module>
 
                 <module>spring-bom</module>
-                <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -487,10 +486,8 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                <module>spring-boot-modules/spring-boot-react</module>
-
+                
                 <module>vaadin</module>
-
             </modules>
         </profile>
 
@@ -591,7 +588,6 @@
                 <module>spring-4</module>
 
                 <module>spring-bom</module>
-                <module>spring-boot-modules</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -665,7 +661,7 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                <module>spring-boot-modules/spring-boot-react</module>
+                
                 <module>vaadin</module>
             </modules>
 
@@ -732,6 +728,7 @@
             </build>
 
             <modules>
+                <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient-2</module>
@@ -843,11 +840,6 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-3</module>
-                <module>spring-boot-modules/spring-boot-3-native</module>
-                <module>spring-boot-modules/spring-boot-3-observation</module>
-                <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
@@ -948,7 +940,6 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
-                <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -970,9 +961,9 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
+                
                 <module>messaging-modules</module>
-                <module>spring-boot-modules/spring-boot-redis</module>
-                <module>spring-security-modules/spring-security-saml2</module>
+
                 <module>persistence-modules/questdb</module>
             </modules>
 
@@ -1007,6 +998,7 @@
             </build>
 
             <modules>
+                <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient-2</module>
@@ -1117,11 +1109,6 @@
                 <module>persistence-modules/spring-data-cassandra-2</module>
                 <module>persistence-modules/spring-data-jpa-repo-3</module>
                 <module>quarkus-modules</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-3</module>
-                <module>spring-boot-modules/spring-boot-3-native</module>
-                <module>spring-boot-modules/spring-boot-3-observation</module>
-                <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
@@ -1224,7 +1211,6 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
                 <module>spring-batch-2</module>
-                <module>spring-boot-modules/spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1245,10 +1231,9 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module>
+                <module>libraries-2</module> 
                 <module>messaging-modules</module>
-                <module>spring-boot-modules/spring-boot-redis</module>
-                <module>spring-security-modules/spring-security-saml2</module>
+
                 <module>persistence-modules/questdb</module>
             </modules>
 
