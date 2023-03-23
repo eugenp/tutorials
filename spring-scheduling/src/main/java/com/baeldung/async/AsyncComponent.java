@@ -20,7 +20,9 @@ public class AsyncComponent {
         try {
             Thread.sleep(5000);
             return new AsyncResult<>("hello world !!!!");
-        } catch (final InterruptedException ignored) {}
+        } catch (final InterruptedException e) {
+
+        }
 
         return null;
     }
