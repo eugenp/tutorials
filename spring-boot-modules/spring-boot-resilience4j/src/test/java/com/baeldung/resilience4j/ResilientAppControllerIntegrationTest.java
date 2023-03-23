@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.http.HttpStatus.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ResilientAppControllerTest {
+class ResilientAppControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
