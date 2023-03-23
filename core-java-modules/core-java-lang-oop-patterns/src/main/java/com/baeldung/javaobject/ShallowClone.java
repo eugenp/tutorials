@@ -23,9 +23,9 @@ public class ShallowClone implements Cloneable{
         return address;
     }
 
-    // public void setAddress(Address address) {
-    //     this.address = address;
-    // }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
 
     @Override

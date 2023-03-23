@@ -4,7 +4,6 @@ public class DeepClone implements Cloneable{
 
     private String name;
     private Address address;
-    private int age;
 
     public DeepClone(String name, Address address) {
         this.name = name;
@@ -23,9 +22,9 @@ public class DeepClone implements Cloneable{
         return address;
     }
 
-    // public void setAddress(Address address) {
-    //     this.address = address;
-    // }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     @Override
     public DeepClone clone() {
