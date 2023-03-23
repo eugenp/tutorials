@@ -34,42 +34,4 @@
         <module>idd</module>
     </modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit.vintage</groupId>
-                <artifactId>junit-vintage-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${javax.servlet-api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>${maven-war-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <version>${jetty-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <properties>
-        <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
-    </properties>
-
 </project>
