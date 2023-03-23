@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: prime-number-finder-pod
+spec:
+  containers:
+    - name: prime-number-finder
+      image: baeldung/prime-number:latest

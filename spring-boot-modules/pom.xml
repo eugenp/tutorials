@@ -85,6 +85,14 @@
         <module>spring-boot-validation</module>
         <module>spring-boot-data-3</module>
 		<module>spring-caching</module>
+        <module>spring-caching-2</module>
+        <module>spring-boot-redis</module>
+        <module>spring-boot-cassandre</module>
+        <module>spring-boot-react</module>
+        <module>spring-boot-3</module>
+        <module>spring-boot-3-native</module>
+        <module>spring-boot-3-observation</module>
+        <module>spring-boot-3-test-pitfalls</module>
     </modules>
 
     <dependencyManagement>
@@ -105,5 +113,9 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 
 </project>
