@@ -6,14 +6,15 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Response;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.core.Response;
 
 public class EchoHeadersUnitTest extends JerseyTest {
 
