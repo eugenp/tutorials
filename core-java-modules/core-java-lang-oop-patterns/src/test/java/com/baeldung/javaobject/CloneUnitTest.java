@@ -16,7 +16,7 @@ public class CloneUnitTest {
     @Test
     public void givenDeepCloneMethod_WhenCopyIsCreated_thenCopyIsDeep(){
         Address address = new Address("Main St", "123", "New York", "USA");
-        DeepClone useDeepClone("John", address,11);
+        DeepClone user = new DeepClone("John", address,11);
         DeepClone userClone = (DeepClone)user.clone();
         assertThat(userClone.getAddress()).isNotEqualTo(user.getAddress());
     }
