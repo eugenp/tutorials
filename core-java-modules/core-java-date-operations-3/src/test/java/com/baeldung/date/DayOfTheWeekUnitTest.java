@@ -7,12 +7,12 @@ import java.util.Locale;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class DayOfTheWeekUnitTest {
+class DayOfTheWeekUnitTest {
 
     DayOfTheWeek dayOfTheWeek = new DayOfTheWeek();
 
     @Test
-    public void whenInputDateIsMonday_ThenFirstDayOfWeekIsSameAsInputDay() {
+    void whenInputDateIsMonday_ThenFirstDayOfWeekIsSameAsInputDay() {
         TestData testData = new TestData(LocalDate.of(2023, 2, 20),LocalDate.of(2023,2,20) );
         Assertions.assertEquals(testData.expectedOutput, dayOfTheWeek.getDateOfFirstDayOfTheWeek_UsingISODayOfWeek(testData.inputDate));
         Assertions.assertEquals(testData.expectedOutput, dayOfTheWeek.getDateOfFirstDayOfTheWeek_UsingCalendar(testData.inputDate));
@@ -20,7 +20,7 @@ public class DayOfTheWeekUnitTest {
     }
 
     @Test
-    public void whenInputDateIsSunday_ThenFirstDayOfWeekIsPreviousWeekMonday() {
+    void whenInputDateIsSunday_ThenFirstDayOfWeekIsPreviousWeekMonday() {
         TestData testData = new TestData(LocalDate.of(2023, 2, 19), LocalDate.of(2023,2,13));
         Assertions.assertEquals(testData.expectedOutput, dayOfTheWeek.getDateOfFirstDayOfTheWeek_UsingISODayOfWeek(testData.inputDate));
         Assertions.assertEquals(testData.expectedOutput, dayOfTheWeek.getDateOfFirstDayOfTheWeek_UsingCalendar(testData.inputDate));
