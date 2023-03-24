@@ -2,6 +2,7 @@ package com.baeldung.timebaseduuid;
 
 import com.github.f4b6a3.uuid.UuidCreator;
 
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -15,13 +16,13 @@ public class UUIDCreatorBenchmark {
 
         int threadCount = 128;
         int iterationCount = 100_000;
-        ConcurrentMap<UUID, Long> uuidMap = new ConcurrentHashMap<>();
+        Map<UUID, Long> uuidMap = new ConcurrentHashMap<>();
         AtomicLong collisionCount = new AtomicLong();
         long startNanos = System.nanoTime();
         CountDownLatch endLatch = new CountDownLatch(threadCount);
 
         for (long i = 0; i < threadCount; i++) {
-            final long threadId = i;
+            long threadId = i;
             new Thread(() -> {
                 for (long j = 0; j < iterationCount; j++) {
                     UUID uuid = UuidCreator.getTimeBased();
