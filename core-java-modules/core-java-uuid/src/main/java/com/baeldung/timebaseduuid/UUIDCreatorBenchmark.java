@@ -1,6 +1,5 @@
 package com.baeldung.timebaseduuid;
 
-import com.fasterxml.uuid.Generators;
 import com.github.f4b6a3.uuid.UuidCreator;
 
 import java.util.UUID;
@@ -10,7 +9,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class JavaUUIDCreator {
+public class UUIDCreatorBenchmark {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -25,7 +24,7 @@ public class JavaUUIDCreator {
             final long threadId = i;
             new Thread(() -> {
                 for (long j = 0; j < iterationCount; j++) {
-                    UUID uuid = Generators.timeBasedGenerator().generate();
+                    UUID uuid = UuidCreator.getTimeBased();
                     Long existingUUID = uuidMap.put(uuid, (threadId * iterationCount) + j);
                     if(existingUUID != null) {
                         collisionCount.incrementAndGet();
