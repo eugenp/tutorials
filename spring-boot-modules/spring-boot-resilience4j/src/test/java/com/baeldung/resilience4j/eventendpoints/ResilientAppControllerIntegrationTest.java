@@ -1,6 +1,6 @@
-package com.baeldung.resilience4j;
+package com.baeldung.resilience4j.eventendpoints;
 
-import com.baeldung.resilience4j.model.*;
+import com.baeldung.resilience4j.eventendpoints.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import com.github.tomakehurst.wiremock.client.WireMock;

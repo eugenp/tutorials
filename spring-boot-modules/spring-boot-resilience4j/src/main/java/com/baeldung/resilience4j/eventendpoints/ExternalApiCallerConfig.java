@@ -1,4 +1,4 @@
-package com.baeldung.resilience4j;
+package com.baeldung.resilience4j.eventendpoints;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

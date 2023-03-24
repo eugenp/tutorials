@@ -1,4 +1,4 @@
-package com.baeldung.resilience4j;
+package com.baeldung.resilience4j.eventendpoints;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

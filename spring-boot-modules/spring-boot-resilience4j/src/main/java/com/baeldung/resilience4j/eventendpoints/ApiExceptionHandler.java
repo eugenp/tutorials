@@ -1,4 +1,4 @@
-package com.baeldung.resilience4j;
+package com.baeldung.resilience4j.eventendpoints;
 
 import io.github.resilience4j.bulkhead.BulkheadFullException;
 import io.github.resilience4j.circuitbreaker.CallNotPermittedException;

@@ -1,11 +1,11 @@
-package com.baeldung.resilience4j.model;
+package com.baeldung.resilience4j.eventendpoints.model;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class BulkheadEvent {
+public class RateLimiterEvent {
 
-    private String bulkheadName;
+    private String rateLimiterName;
     private String type;
     private ZonedDateTime creationTime;
 
@@ -13,21 +13,21 @@ public class BulkheadEvent {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BulkheadEvent that = (BulkheadEvent) o;
-        return Objects.equals(bulkheadName, that.bulkheadName) && Objects.equals(type, that.type) && Objects.equals(creationTime, that.creationTime);
+        RateLimiterEvent that = (RateLimiterEvent) o;
+        return Objects.equals(rateLimiterName, that.rateLimiterName) && Objects.equals(type, that.type) && Objects.equals(creationTime, that.creationTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bulkheadName, type, creationTime);
+        return Objects.hash(rateLimiterName, type, creationTime);
     }
 
-    public String getBulkheadName() {
-        return bulkheadName;
+    public String getRateLimiterName() {
+        return rateLimiterName;
     }
 
-    public void setBulkheadName(String bulkheadName) {
-        this.bulkheadName = bulkheadName;
+    public void setRateLimiterName(String rateLimiterName) {
+        this.rateLimiterName = rateLimiterName;
     }
 
     public String getType() {

@@ -1,4 +1,4 @@
-package com.baeldung.resilience4j;
+package com.baeldung.resilience4j.eventendpoints;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

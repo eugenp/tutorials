@@ -1,4 +1,4 @@
-package com.baeldung.resilience4j.model;
+package com.baeldung.resilience4j.eventendpoints.model;
 
 import java.util.List;
 
