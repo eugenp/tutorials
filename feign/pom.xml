@@ -64,6 +64,22 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+            <version>${feign.form.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${spring.cloud.openfeign.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>${wire.mock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -87,7 +103,7 @@
                 <configuration>
                     <packageName>com.baeldung.feign.soap</packageName>
                     <sources>
-                        <source>src/main/resources/users.xsd</source>
+                        <source>${project.basedir}/src/main/resources/users.xsd</source>
                     </sources>
                 </configuration>
             </plugin>
@@ -116,9 +132,11 @@
     </build>
 
     <properties>
-        <java.version>1.8</java.version>
         <feign.version>11.8</feign.version>
         <wsdl4j.version>1.6.3</wsdl4j.version>
+        <feign.form.spring.version>3.8.0</feign.form.spring.version>
+        <spring.cloud.openfeign.version>3.1.2</spring.cloud.openfeign.version>
+        <wire.mock.version>2.33.2</wire.mock.version>
     </properties>
 
 </project>

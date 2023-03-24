@@ -87,7 +87,8 @@
     <properties>
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
-        <modelmapper.version>2.4.5</modelmapper.version>
+        <modelmapper.version>3.1.0</modelmapper.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

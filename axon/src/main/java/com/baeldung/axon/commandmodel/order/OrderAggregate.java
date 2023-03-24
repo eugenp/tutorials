@@ -12,6 +12,7 @@ import com.baeldung.axon.coreapi.events.ProductRemovedEvent;
 import com.baeldung.axon.coreapi.exceptions.DuplicateOrderLineException;
 import com.baeldung.axon.coreapi.exceptions.OrderAlreadyConfirmedException;
 import com.baeldung.axon.coreapi.exceptions.UnconfirmedOrderException;
+
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;

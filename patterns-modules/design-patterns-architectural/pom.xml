@@ -66,9 +66,9 @@
     <properties>
         <hibernate-core.version>5.2.16.Final</hibernate-core.version>
         <mysql-connector.version>6.0.6</mysql-connector.version>
-        <spring-boot.version>2.5.3</spring-boot.version>
+        <spring-boot.version>2.7.5</spring-boot.version>
         <rest-assured.version>3.3.0</rest-assured.version>
-        <spring-boot-starter-integration.version>2.7.2</spring-boot-starter-integration.version>
+        <spring-boot-starter-integration.version>2.7.5</spring-boot-starter-integration.version>
         <spring-integration-test.version>5.5.14</spring-integration-test.version>
         <camel-core.version>3.14.0</camel-core.version>
         <camel-test-junit5.version>3.14.0</camel-test-junit5.version>

@@ -3,7 +3,10 @@
 	xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd" 
 	xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
 	<description>Baeldung custom PMD rules</description>
-	<rule name="UnitTestMustFollowNamingConventionRule" message="Unit test class names need to end in 'UnitTest', integration tests with 'IntegrationTest', etc " class="org.baeldung.pmd.UnitTestNamingConventionRule">
+	<rule name="UnitTestMustFollowNamingConventionRule" 
+              message="Unit test class names need to end in 'UnitTest', integration tests with 'IntegrationTest', etc " 
+              class="org.baeldung.pmd.UnitTestNamingConventionRule"
+              language="java">
 		<description>Test does not follow Baeldung naming convention</description>
 		<priority>3</priority>
 	</rule>

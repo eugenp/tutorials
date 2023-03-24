@@ -33,8 +33,6 @@ public class OrderConfirmedEvent {
 
     @Override
     public String toString() {
-        return "OrderConfirmedEvent{" +
-                "orderId='" + orderId + '\'' +
-                '}';
+        return "OrderConfirmedEvent{" + "orderId='" + orderId + '\'' + '}';
     }
 }

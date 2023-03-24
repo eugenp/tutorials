@@ -1,0 +1,16 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1674622105952,714,HTTP Request (/greeting),200,,Thread Group 1-4,text,true,,430,126,5,5,http://localhost:8080/greeting,705,0,7
+1674622105450,1216,HTTP Request (/greeting),200,,Thread Group 1-1,text,true,,430,126,5,5,http://localhost:8080/greeting,1207,0,54
+1674622105468,1198,HTTP Request (/greeting),200,,Thread Group 1-2,text,true,,430,126,5,5,http://localhost:8080/greeting,1189,0,36
+1674622106064,602,HTTP Request (/greeting),200,,Thread Group 1-5,text,true,,430,126,5,5,http://localhost:8080/greeting,593,0,2
+1674622105800,866,HTTP Request (/greeting),200,,Thread Group 1-3,text,true,,430,126,5,5,http://localhost:8080/greeting,857,0,1
+1674622106669,13,HTTP Request (/quote),200,,Thread Group 1-4,text,true,,515,123,5,5,http://localhost:8080/quote,12,0,0
+1674622106669,16,HTTP Request (/quote),200,,Thread Group 1-2,text,true,,548,123,5,5,http://localhost:8080/quote,16,0,0
+1674622106671,18,HTTP Request (/quote),200,,Thread Group 1-1,text,true,,629,123,5,5,http://localhost:8080/quote,18,0,0
+1674622106669,24,HTTP Request (/quote),200,,Thread Group 1-5,text,true,,602,123,5,5,http://localhost:8080/quote,24,0,0
+1674622106669,29,HTTP Request (/quote),200,,Thread Group 1-3,text,true,,515,123,5,5,http://localhost:8080/quote,29,0,0
+1674622106690,18,HTTP Request (/time),200,,Thread Group 1-1,text,true,,432,122,5,5,http://localhost:8080/time,18,0,0
+1674622106699,9,HTTP Request (/time),200,,Thread Group 1-3,text,true,,432,122,5,5,http://localhost:8080/time,9,0,0
+1674622106683,26,HTTP Request (/time),200,,Thread Group 1-4,text,true,,432,122,5,5,http://localhost:8080/time,25,0,0
+1674622106688,25,HTTP Request (/time),200,,Thread Group 1-2,text,true,,432,122,2,2,http://localhost:8080/time,25,0,0
+1674622106695,18,HTTP Request (/time),200,,Thread Group 1-5,text,true,,432,122,2,2,http://localhost:8080/time,17,0,0

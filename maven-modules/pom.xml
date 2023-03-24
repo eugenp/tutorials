@@ -17,11 +17,11 @@
     <modules>
         <module>animal-sniffer-mvn-plugin</module>
         <module>maven-archetype</module>
-        <!-- <module>compiler-plugin-java-9</module> --> <!-- We haven't upgraded to java 9. -->
+        <module>compiler-plugin-java-9</module>
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
         <module>maven-exec-plugin</module>
-        <!-- <module>maven-generate-war</module> --> <!-- We haven't upgraded to java 11. -->
+        <module>maven-generate-war</module>
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-plugins</module>
@@ -42,6 +42,7 @@
         <module>maven-simple</module>
         <module>maven-classifier</module>
         <module>maven-repositories</module>
+        <module>maven-reactor</module>
     </modules>
 
     <dependencyManagement>

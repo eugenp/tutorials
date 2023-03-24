@@ -81,6 +81,7 @@
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <com.sun.xml.version>2.3.0.1</com.sun.xml.version>
         <javax.xml.bind.version>2.3.1</javax.xml.bind.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

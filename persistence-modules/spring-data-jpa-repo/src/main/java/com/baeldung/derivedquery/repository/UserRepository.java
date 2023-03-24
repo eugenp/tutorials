@@ -56,5 +56,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findByNameOrderByName(String name);
 
     List<User> findByNameOrderByNameDesc(String name);
+    
+    List<User> findByNameIsNotNull();
+    
+    List<User> findByNameOrderByNameAsc(String name);
 
 }

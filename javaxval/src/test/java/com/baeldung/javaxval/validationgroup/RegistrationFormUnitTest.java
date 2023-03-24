@@ -8,9 +8,10 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import com.baeldung.javaxval.LocaleAwareUnitTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.baeldung.javaxval.LocaleAwareUnitTest;
 
 public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
     private static Validator validator;

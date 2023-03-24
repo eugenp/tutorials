@@ -110,8 +110,8 @@
     </profiles>
 
     <properties>
-        <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
-        <log4j-core.version>2.17.1</log4j-core.version>
+        <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
+        <log4j-core.version>2.19.0</log4j-core.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 

@@ -47,8 +47,8 @@
     </dependencies>
 
     <build>
-        <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them 
-            in DevMode -->
+        <!-- Output classes directly into the webapp, -->
+        <!-- so that IDEs and "mvn process-classes" update them in DevMode -->
         <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
         <plugins>
             <!-- GWT Maven Plugin -->
@@ -68,8 +68,8 @@
                     <moduleName>com.baeldung.Google_web_toolkit</moduleName>
                     <moduleShortName>Google_web_toolkit</moduleShortName>
                     <failOnError>true</failOnError>
-                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if you use a different 
-                        source language for java compilation -->
+                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here -->
+                    <!--if you use a different source language for java compilation -->
                     <sourceLevel>${maven.compiler.source}</sourceLevel>
                     <!-- Compiler configuration -->
                     <compilerArgs>
@@ -97,8 +97,9 @@
     </build>
 
     <properties>
-        <!-- Setting maven.compiler.source to something different to 1.8 needs that you configure the 
-            sourceLevel in gwt-maven-plugin since GWT compiler 2.8 requires 1.8 (see gwt-maven-plugin block below) -->
+        <!-- Setting maven.compiler.source to something different to 1.8 needs that you configure the -->
+        <!-- sourceLevel in gwt-maven-plugin since GWT compiler 2.8 requires 1.8 -->
+        <!--(see gwt-maven-plugin block below) -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <gwt.version>2.8.2</gwt.version>

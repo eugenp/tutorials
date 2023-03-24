@@ -12,3 +12,5 @@ This module contains article about constructors in Java
 - [Java Implicit Super Constructor is Undefined Error](https://www.baeldung.com/java-implicit-super-constructor-is-undefined-error)
 - [Constructor Specification in Java](https://www.baeldung.com/java-constructor-specification)
 - [Static vs. Instance Initializer Block in Java](https://www.baeldung.com/java-static-instance-initializer-blocks)
+- [Accessing Private Constructor in Java](https://www.baeldung.com/java-private-constructor-access)
+- [Different Ways to Create an Object in Java](https://www.baeldung.com/java-different-ways-to-create-objects)

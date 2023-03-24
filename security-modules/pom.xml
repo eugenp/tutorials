@@ -20,8 +20,13 @@
         <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
         <module>jee-7-security</module>
         <module>jjwt</module>
+        <module>jwt</module>
         <module>oauth2-framework-impl</module>
         <module>sql-injection-samples</module>
     </modules>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 
 </project>

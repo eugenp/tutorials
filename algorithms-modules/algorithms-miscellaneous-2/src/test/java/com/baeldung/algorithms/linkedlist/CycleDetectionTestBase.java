@@ -7,7 +7,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 public class CycleDetectionTestBase {
 
-    @Parameters
+
     public static Collection<Object[]> getLists() {
         return Arrays.asList(new Object[][] { 
             { createList(), false }, 
