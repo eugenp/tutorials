@@ -1101,7 +1101,6 @@
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>guava-modules</module>
-                <module>apache-httpclient-2</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
