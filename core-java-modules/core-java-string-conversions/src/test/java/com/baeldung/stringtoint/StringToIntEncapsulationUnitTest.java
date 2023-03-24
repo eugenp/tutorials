@@ -1,13 +1,11 @@
-package com.baeldung.numbers;
+package com.baeldung.stringtoint;
 
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class StringToIntConversionUnitTest {
-
-    StringToIntConversion stringToIntConversion = new StringToIntConversion();
+class StringToIntEncapsulationUnitTest {
 
     @Test
     void whenConvertingIntToString_thenInvalidCasesReturnNull() {
@@ -20,9 +18,10 @@ class StringToIntConversionUnitTest {
                 new TestData("hello", null)
         );
         testData.forEach(data -> {
-                assertEquals(data.expectedOutput, stringToIntConversion.convertStringToIntUsingIntegerParseInt(data.input));
-                assertEquals(data.expectedOutput, stringToIntConversion.convertStringToIntUsingIntegerValueOf(data.input));
-                assertEquals(data.expectedOutput, stringToIntConversion.converStringToIntUsingOptional(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingIntegerParseInt(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingIntegerValueOf(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.converStringToIntUsingOptional(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingIntegerDecode(data.input));
         });
     }
 
@@ -33,10 +32,11 @@ class StringToIntConversionUnitTest {
                 new TestData("-23", -23)
         );
         testData.forEach(data -> {
-                assertEquals(data.expectedOutput, stringToIntConversion.convertStringToIntUsingIntegerParseInt(data.input));
-                assertEquals(data.expectedOutput, stringToIntConversion.convertStringToIntUsingIntegerValueOf(data.input));
-                assertEquals(data.expectedOutput, stringToIntConversion.converStringToIntUsingOptional(data.input));
-                assertEquals(data.expectedOutput, stringToIntConversion.convertStringToIntUsingNumberUtils(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingIntegerParseInt(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingIntegerValueOf(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.converStringToIntUsingOptional(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingNumberUtils(data.input));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingIntegerDecode(data.input));
         });
     }
 
@@ -51,7 +51,7 @@ class StringToIntConversionUnitTest {
                 new TestData("hello", Integer.MIN_VALUE)
         );
         testData.forEach(data ->
-                assertEquals(data.expectedOutput, stringToIntConversion.convertStringToIntUsingNumberUtils(data.input)));
+                Assertions.assertEquals(data.expectedOutput, StringToIntEncapsulation.convertStringToIntUsingNumberUtils(data.input)));
     }
 
 
