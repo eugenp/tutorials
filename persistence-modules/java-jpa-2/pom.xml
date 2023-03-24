@@ -137,6 +137,7 @@
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <querydsl.version>4.3.1</querydsl.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
 </project>

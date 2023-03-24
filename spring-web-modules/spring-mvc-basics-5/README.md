@@ -7,7 +7,6 @@ their own module.
 The "REST With Spring" Classes: https://bit.ly/restwithspring
 
 ### Relevant Articles:
-- [Spring MVC Custom Validation](https://www.baeldung.com/spring-mvc-custom-validator)
 - [Using Spring @ResponseStatus to Set HTTP Status Code](https://www.baeldung.com/spring-response-status)
 - [Spring MVC and the @ModelAttribute Annotation](https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
 - [The HttpMediaTypeNotAcceptableException in Spring MVC](https://www.baeldung.com/spring-httpmediatypenotacceptable)

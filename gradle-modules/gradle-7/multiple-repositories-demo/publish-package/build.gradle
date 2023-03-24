@@ -1,0 +1,33 @@
+plugins {
+    id "maven-publish"
+    id "java"
+}
+
+group = "com.baeldung.gradle"
+version = "1.0.0-SNAPSHOT"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        register("jar", MavenPublication) {
+            from(components["java"])
+            pom {
+                url.set("https://github.com/eugenp/tutorials.git")
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/eugenp/tutorials"
+            credentials {
+                username = project.USERNAME
+                password = project.GITHUB_TOKEN
+            }
+        }
+    }
+}

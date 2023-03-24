@@ -1,9 +1,0 @@
-query {
-    searchByVin(vin: "error) {
-        vin
-        year
-        make
-        model
-        trim
-    }
-}

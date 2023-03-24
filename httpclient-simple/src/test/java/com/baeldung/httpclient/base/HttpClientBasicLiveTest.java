@@ -1,72 +1,77 @@
 package com.baeldung.httpclient.base;
 
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.entity.ContentType;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import com.baeldung.httpclient.ResponseUtil;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import com.baeldung.handler.CustomHttpClientResponseHandler;
+
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.ParseException;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
 
-public class HttpClientBasicLiveTest {
+
+class HttpClientBasicLiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
-    private CloseableHttpClient instance;
-
-    private CloseableHttpResponse response;
-
-    @Before
-    public final void before() {
-        instance = HttpClientBuilder.create().build();
-    }
-
-    @After
-    public final void after() throws IllegalStateException, IOException {
-        ResponseUtil.closeResponse(response);
-    }
-
-    // tests
-
-    // simple request - response
-
     @Test
-    public final void whenExecutingBasicGetRequest_thenNoExceptions() throws ClientProtocolException, IOException {
-        response = instance.execute(new HttpGet(SAMPLE_URL));
+    void whenExecutingBasicGetRequest_thenNoExceptions() throws IOException {
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+
+        try (CloseableHttpClient client = HttpClientBuilder.create().build();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+        }
     }
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws ClientProtocolException, IOException {
-        response = instance.execute(new HttpGet(SAMPLE_URL));
-        final int statusCode = response.getStatusLine().getStatusCode();
-        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+    void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+        try (CloseableHttpClient client = HttpClientBuilder.create().build();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+
+            assertThat(response.getCode(), equalTo(HttpStatus.SC_OK));
+        }
     }
 
-    @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectMimeType() throws ClientProtocolException, IOException {
-        response = instance.execute(new HttpGet(SAMPLE_URL));
-        final String contentMimeType = ContentType.getOrDefault(response.getEntity()).getMimeType();
 
-        assertThat(contentMimeType, equalTo(ContentType.TEXT_HTML.getMimeType()));
+    @Test
+    void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectMimeType() throws IOException {
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+
+        try (CloseableHttpClient client = HttpClientBuilder.create().build();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+
+            final String contentMimeType = ContentType.parse(response.getEntity().getContentType()).getMimeType();
+            assertThat(contentMimeType, equalTo(ContentType.TEXT_HTML.getMimeType()));
+        }
     }
 
-    @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectBody() throws ClientProtocolException, IOException {
-        response = instance.execute(new HttpGet(SAMPLE_URL));
-        final String bodyAsString = EntityUtils.toString(response.getEntity());
 
-        assertThat(bodyAsString, notNullValue());
+    @Test
+    void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectBody() throws IOException, ParseException {
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+        try (CloseableHttpClient client = HttpClientBuilder.create().build();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+
+            assertThat(response, notNullValue());
+        }
     }
 
 }

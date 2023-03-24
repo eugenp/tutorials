@@ -40,7 +40,6 @@ public class Order {
         products.computeIfPresent(productId, (id, count) -> --count);
     }
 
-
     public void removeProduct(String productId) {
         products.remove(productId);
     }
@@ -62,9 +61,7 @@ public class Order {
             return false;
         }
         Order that = (Order) o;
-        return Objects.equals(orderId, that.orderId)
-                && Objects.equals(products, that.products)
-                && orderStatus == that.orderStatus;
+        return Objects.equals(orderId, that.orderId) && Objects.equals(products, that.products) && orderStatus == that.orderStatus;
     }
 
     @Override
@@ -74,10 +71,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", products=" + products +
-                ", orderStatus=" + orderStatus +
-                '}';
+        return "Order{" + "orderId='" + orderId + '\'' + ", products=" + products + ", orderStatus=" + orderStatus + '}';
     }
 }

@@ -2,8 +2,11 @@ package com.baeldung.collections.sorting;
 
 import java.util.Date;
 
+import javax.annotation.Nonnull;
+
 public class Employee implements Comparable<Employee>{
 
+    @Nonnull
     private String name;
     private Date joiningDate;
 

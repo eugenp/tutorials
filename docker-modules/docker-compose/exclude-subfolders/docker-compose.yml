@@ -1,0 +1,12 @@
+services:
+  node-app:
+    build: .
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
+      - my-vol:/app/node_modules/
+
+volumes:
+  my-vol:
+    driver: local

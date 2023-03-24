@@ -1,7 +1,7 @@
 package com.baeldung.ratelimiting.bucket4japp;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.util.concurrent.CountDownLatch;
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
-import io.github.bucket4j.Bucket4j;
 import io.github.bucket4j.Refill;
 
 public class Bucket4jUsageUnitTest {
@@ -22,7 +21,7 @@ public class Bucket4jUsageUnitTest {
     public void givenBucketLimit_whenExceedLimit_thenConsumeReturnsFalse() {
         Refill refill = Refill.intervally(10, Duration.ofMinutes(1));
         Bandwidth limit = Bandwidth.classic(10, refill);
-        Bucket bucket = Bucket4j.builder()
+        Bucket bucket = Bucket.builder()
             .addLimit(limit)
             .build();
 
@@ -34,7 +33,7 @@ public class Bucket4jUsageUnitTest {
 
     @Test
     public void givenMultipletLimits_whenExceedSmallerLimit_thenConsumeReturnsFalse() {
-        Bucket bucket = Bucket4j.builder()
+        Bucket bucket = Bucket.builder()
             .addLimit(Bandwidth.classic(10, Refill.intervally(10, Duration.ofMinutes(1))))
             .addLimit(Bandwidth.classic(5, Refill.intervally(5, Duration.ofSeconds(20))))
             .build();
@@ -49,7 +48,7 @@ public class Bucket4jUsageUnitTest {
     public void givenBucketLimit_whenThrottleRequests_thenConsumeReturnsTrue() throws InterruptedException {
         Refill refill = Refill.intervally(1, Duration.ofSeconds(2));
         Bandwidth limit = Bandwidth.classic(1, refill);
-        Bucket bucket = Bucket4j.builder()
+        Bucket bucket = Bucket.builder()
             .addLimit(limit)
             .build();
 
@@ -65,8 +64,8 @@ public class Bucket4jUsageUnitTest {
 
     static class AssertTryConsume implements Runnable {
 
-        private Bucket bucket;
-        private CountDownLatch latch;
+        private final Bucket bucket;
+        private final CountDownLatch latch;
 
         AssertTryConsume(Bucket bucket, CountDownLatch latch) {
             this.bucket = bucket;

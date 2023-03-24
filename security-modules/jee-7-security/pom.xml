@@ -55,7 +55,7 @@
 
     <properties>
         <javaee_api.version>7.0</javaee_api.version>
-        <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>5.7.5</org.springframework.security.version>
         <javax.mvc-api.version>1.0-pr</javax.mvc-api.version>
     </properties>
 

@@ -5,7 +5,8 @@ import java.util.Date;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -13,7 +14,7 @@ public class RetrieveIdExample {
 
     public static void main(String[] args) {
         
-        try ( MongoClient mongoClient = new MongoClient("localhost", 27017) ) {
+        try ( MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017") ) {
             
             MongoDatabase database = mongoClient.getDatabase("myMongoDb");        
             MongoCollection<Document> collection = database.getCollection("example");

@@ -39,9 +39,6 @@ public class ProductCountDecrementedEvent {
 
     @Override
     public String toString() {
-        return "ProductCountDecrementedEvent{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "ProductCountDecrementedEvent{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }

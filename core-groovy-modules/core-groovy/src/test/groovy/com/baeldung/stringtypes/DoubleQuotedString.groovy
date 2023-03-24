@@ -1,67 +1,76 @@
 package groovy.com.baeldung.stringtypes
 
-import org.junit.Assert
-import org.junit.Test
+import spock.lang.Specification
 
-class DoubleQuotedString {
+class DoubleQuotedString extends Specification {
 
-    @Test
-    void 'escape double quoted string'() {
+    def 'escape double quoted string'() {
+        given:
         def example = "Hello \"world\"!"
 
-        println(example)
+        expect:
+        example == 'Hello "world"!'
     }
 
-    @Test
-    void 'String ang GString'() {
+    def 'String ang GString'() {
+        given:
         def string = "example"
         def stringWithExpression = "example${2}"
 
-        Assert.assertTrue(string instanceof String)
-        Assert.assertTrue(stringWithExpression instanceof GString)
-        Assert.assertTrue(stringWithExpression.toString() instanceof String)
+        expect:
+        string instanceof String
+        stringWithExpression instanceof GString
+        stringWithExpression.toString() instanceof String
     }
 
-    @Test
-    void 'placeholder with variable'() {
+    def 'placeholder with variable'() {
+        given:
         def name = "John"
+
+        when:
         def helloName = "Hello $name!".toString()
 
-        Assert.assertEquals("Hello John!", helloName)
+        then:
+        helloName == "Hello John!"
     }
 
-    @Test
-    void 'placeholder with expression'() {
+    def 'placeholder with expression'() {
+        given:
         def result = "result is ${2 * 2}".toString()
 
-        Assert.assertEquals("result is 4", result)
+        expect:
+        result == "result is 4"
     }
 
-    @Test
-    void 'placeholder with dotted access'() {
+    def 'placeholder with dotted access'() {
+        given:
         def person = [name: 'John']
 
+        when:
         def myNameIs = "I'm $person.name, and you?".toString()
 
-        Assert.assertEquals("I'm John, and you?", myNameIs)
+        then:
+        myNameIs == "I'm John, and you?"
     }
 
-    @Test
-    void 'placeholder with method call'() {
+    def 'placeholder with method call'() {
+        given:
         def name = 'John'
 
+        when:
         def result = "Uppercase name: ${name.toUpperCase()}".toString()
 
-        Assert.assertEquals("Uppercase name: JOHN", result)
+        then:
+        result == "Uppercase name: JOHN"
     }
 
 
-    @Test
-    void 'GString and String hashcode'() {
+    def 'GString and String hashcode'() {
+        given:
         def string = "2+2 is 4"
         def gstring = "2+2 is ${4}"
 
-        Assert.assertTrue(string.hashCode() != gstring.hashCode())
+        expect:
+        string.hashCode() != gstring.hashCode()
     }
-
 }

@@ -87,6 +87,7 @@
         <mysql.version>8.0.13</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
 </project>

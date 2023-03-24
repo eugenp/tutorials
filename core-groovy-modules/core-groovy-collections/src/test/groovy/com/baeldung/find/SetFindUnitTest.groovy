@@ -1,16 +1,15 @@
 package com.baeldung.find
 
-import org.junit.Test
+import spock.lang.Specification
 
-import static org.junit.Assert.assertTrue
+class SetFindUnitTest extends Specification {
 
-class SetFindUnitTest {
-
-    @Test
-    void whenSetContainsElement_thenCheckReturnsTrue() {
+    def "whenSetContainsElement_thenCheckReturnsTrue"() {
+        given:
         def set = ['a', 'b', 'c'] as Set
 
-        assertTrue(set.contains('a'))
-        assertTrue('a' in set)
+        expect:
+        set.contains('a')
+        'a' in set
     }
 }

@@ -36,7 +36,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.spring.cloud</groupId>
-            <artifactId>rest-producer</artifactId>
+            <artifactId>spring-cloud-hystrix-rest-producer</artifactId>
             <version>${rest-producer.version}</version>
         </dependency>
         <dependency>

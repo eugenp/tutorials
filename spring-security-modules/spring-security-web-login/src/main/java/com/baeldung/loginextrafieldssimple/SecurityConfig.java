@@ -3,21 +3,22 @@ package com.baeldung.loginextrafieldssimple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @PropertySource("classpath:/application-extrafields.properties")
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpSecurity> {
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -26,23 +27,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        
-        http
-            .addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-            .authorizeRequests()
-                .antMatchers("/css/**", "/index").permitAll()
-                .antMatchers("/user/**").authenticated()
-            .and()
-            .formLogin().loginPage("/login")
-            .and()
-            .logout()
-            .logoutUrl("/logout");
+    public void configure(HttpSecurity http) throws Exception {
+        AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
+        http.addFilterBefore(authenticationFilter(authenticationManager), UsernamePasswordAuthenticationFilter.class);
     }
 
-    public SimpleAuthenticationFilter authenticationFilter() throws Exception {
+    public static SecurityConfig securityConfig() {
+        return new SecurityConfig();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers("/css/**", "/index")
+            .permitAll()
+            .antMatchers("/user/**")
+            .authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .and()
+            .logout()
+            .logoutUrl("/logout")
+            .and()
+            .apply(securityConfig());
+        return http.getOrBuild();
+    }
+
+    public SimpleAuthenticationFilter authenticationFilter(AuthenticationManager authenticationManager) throws Exception {
         SimpleAuthenticationFilter filter = new SimpleAuthenticationFilter();
-        filter.setAuthenticationManager(authenticationManagerBean());
+        filter.setAuthenticationManager(authenticationManager);
         filter.setAuthenticationFailureHandler(failureHandler());
         return filter;
     }

@@ -41,6 +41,7 @@
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
         <module>spring-boot-flowable</module>
+        <module>spring-boot-graphql</module>
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
@@ -49,12 +50,14 @@
         <module>spring-boot-keycloak-2</module>
         <module>spring-boot-libraries</module>
         <module>spring-boot-libraries-2</module>
-        <module>spring-boot-libraries-comparison</module>
+        <module>spring-boot-process-automation</module>
+        <module>spring-boot-logging-logback</module>
         <module>spring-boot-logging-log4j2</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-4</module>
+        <module>spring-boot-mvc-5</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
@@ -65,6 +68,7 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-properties-migrator-demo</module>
         <module>spring-boot-property-exp</module>
+        <module>spring-boot-request-params</module>
         <module>spring-boot-runtime</module>
         <module>spring-boot-runtime-2</module>
         <module>spring-boot-security</module>
@@ -80,6 +84,15 @@
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
         <module>spring-boot-data-3</module>
+		<module>spring-caching</module>
+        <module>spring-caching-2</module>
+        <module>spring-boot-redis</module>
+        <module>spring-boot-cassandre</module>
+        <module>spring-boot-react</module>
+        <module>spring-boot-3</module>
+        <module>spring-boot-3-native</module>
+        <module>spring-boot-3-observation</module>
+        <module>spring-boot-3-test-pitfalls</module>
     </modules>
 
     <dependencyManagement>
@@ -100,5 +113,9 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 
 </project>
