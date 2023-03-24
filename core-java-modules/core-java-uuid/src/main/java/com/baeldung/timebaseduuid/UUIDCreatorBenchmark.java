@@ -22,7 +22,7 @@ public class UUIDCreatorBenchmark {
         CountDownLatch endLatch = new CountDownLatch(threadCount);
 
         for (long i = 0; i < threadCount; i++) {
-            final long threadId = i;
+            long threadId = i;
             new Thread(() -> {
                 for (long j = 0; j < iterationCount; j++) {
                     UUID uuid = UuidCreator.getTimeBased();
