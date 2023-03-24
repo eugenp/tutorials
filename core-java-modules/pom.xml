@@ -16,9 +16,9 @@
     </parent>
 
     <modules>
-        <module>core-java</module>
-        <module>core-java-8</module>
-        <module>core-java-8-2</module>
+<!--        <module>core-java</module>-->
+<!--        <module>core-java-8</module>-->
+<!--        <module>core-java-8-2</module>-->
         <module>core-java-annotations</module>
         <module>core-java-arrays-sorting</module>
         <module>core-java-arrays-guides</module>
@@ -52,11 +52,11 @@
         <module>core-java-concurrency-collections</module>
         <module>core-java-concurrency-collections-2</module>
         <module>core-java-console</module>
-        <module>core-java-8-datetime-2</module>
+<!--        <module>core-java-8-datetime-2</module>-->
         <module>core-java-datetime-string-2</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-date-operations-3</module>
-            <module>core-java-8-datetime</module>
+<!--            <module>core-java-8-datetime</module>-->
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>

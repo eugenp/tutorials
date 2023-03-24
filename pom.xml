@@ -332,6 +332,11 @@
 
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>couchbase</module>
@@ -353,15 +358,7 @@
 
                 <module>lombok-modules</module>
 
-
-                <module>maven-modules</module>
-
-                <module>messaging-modules</module>
-
-                <module>microservices-modules</module>
-
                 <module>muleesb</module>
-
 
                 <module>osgi</module>
                 <module>persistence-modules</module>
@@ -494,7 +491,7 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                
+
                 <module>vaadin</module>
             </modules>
         </profile>
@@ -534,6 +531,11 @@
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
                 <module>couchbase</module>
@@ -553,16 +555,7 @@
                 <module>libraries-data-db</module>
 
                 <module>lombok-modules</module>
-
-
-                <module>maven-modules</module>
-
-                <module>messaging-modules</module>
-
-                <module>microservices-modules</module>
-
                 <module>muleesb</module>
-
 
                 <module>osgi</module>
                 <module>persistence-modules</module>
@@ -678,7 +671,7 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                
+
                 <module>vaadin</module>
             </modules>
 
@@ -952,7 +945,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                
+
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
@@ -1197,7 +1190,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module> 
+                <module>libraries-2</module>
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
