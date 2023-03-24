@@ -1,14 +1,16 @@
 package com.baeldung.algorithms;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
 import com.baeldung.algorithms.automata.*;
-import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-
-public final class RtFiniteStateMachineLongRunningUnitTest {
+class RtFiniteStateMachineLongRunningUnitTest {
 
     @Test
-    public void acceptsSimplePair() {
+    void acceptsSimplePair() {
         String json = "{\"key\":\"value\"}";
         FiniteStateMachine machine = this.buildJsonStateMachine();
         for (int i = 0; i < json.length(); i++) {
@@ -18,7 +20,7 @@ public final class RtFiniteStateMachineLongRunningUnitTest {
     }
 
     @Test
-    public void acceptsMorePairs() {
+    void acceptsMorePairs() {
         String json = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
         FiniteStateMachine machine = this.buildJsonStateMachine();
         for (int i = 0; i < json.length(); i++) {
@@ -27,13 +29,15 @@ public final class RtFiniteStateMachineLongRunningUnitTest {
         assertTrue(machine.canStop());
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void missingColon() {
+    @Test
+    void missingColon() {
         String json = "{\"key\"\"value\"}";
-        FiniteStateMachine machine = this.buildJsonStateMachine();
-        for (int i = 0; i < json.length(); i++) {
-            machine = machine.switchState(String.valueOf(json.charAt(i)));
-        }
+        assertThrows(IllegalArgumentException.class, () -> {
+            FiniteStateMachine machine = this.buildJsonStateMachine();
+            for (int i = 0; i < json.length(); i++) {
+                machine = machine.switchState(String.valueOf(json.charAt(i)));
+            }
+        });
     }
 
     /**

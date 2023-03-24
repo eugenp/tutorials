@@ -13,6 +13,13 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
+    <properties>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <reflections.version>0.10.2</reflections.version>
+        <org.apache.commons.version>3.12.0</org.apache.commons.version>
+    </properties>
+    
 
 
     <dependencies>
@@ -32,9 +39,4 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <org.apache.commons.version>3.12.0</org.apache.commons.version>
-    </properties>
-
 </project>

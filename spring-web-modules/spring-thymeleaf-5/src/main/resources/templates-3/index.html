@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Dino World</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2 th:text="#{welcome.message}"></h2>
+<h2 th:text="#{dino.color('blue')}"></h2>
+
+   <div>
+       <span>[[${dinos.id}]]/<span>
+       <span>[[${dinos.name}]]/<span>
+       <span>[[${dinos.weight}]]/<span>
+       <span>[[${dinos.color}]]/<span>
+   </div>
+     <div th:object="${dinos}">
+       <p th:text="*{id}">
+       <p th:text="*{name}">
+       <p th:text="*{weight}">
+       <p th:text="*{color}">
+   	</div>
+    <a href="/create">Submit Another Dino</a>
+</body>
+<div th:fragment="footer">
+    <p> Copyright 2022</p>
+    <hr />
+</div>
+</html>

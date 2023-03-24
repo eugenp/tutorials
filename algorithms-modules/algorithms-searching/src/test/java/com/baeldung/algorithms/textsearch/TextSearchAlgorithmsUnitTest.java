@@ -1,23 +1,24 @@
 package com.baeldung.algorithms.textsearch;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class TextSearchAlgorithmsUnitTest {
+class TextSearchAlgorithmsUnitTest {
 
 
     @Test
-    public void testStringSearchAlgorithms() {
+    void testStringSearchAlgorithms() {
         String text = "This is some nice text.";
         String pattern = "some";
 
         int realPosition = text.indexOf(pattern);
-        Assert.assertTrue(realPosition == TextSearchAlgorithms.simpleTextSearch(pattern.toCharArray(), text.toCharArray()));
-        Assert.assertTrue(realPosition == TextSearchAlgorithms.RabinKarpMethod(pattern.toCharArray(), text.toCharArray()));
-        Assert.assertTrue(realPosition == TextSearchAlgorithms.KnuthMorrisPrattSearch(pattern.toCharArray(), text.toCharArray()));
-        Assert.assertTrue(realPosition == TextSearchAlgorithms.BoyerMooreHorspoolSimpleSearch(pattern.toCharArray(), text.toCharArray()));
-        Assert.assertTrue(realPosition == TextSearchAlgorithms.BoyerMooreHorspoolSearch(pattern.toCharArray(), text.toCharArray()));
+        assertEquals(TextSearchAlgorithms.simpleTextSearch(pattern.toCharArray(), text.toCharArray()), realPosition);
+        assertEquals(TextSearchAlgorithms.RabinKarpMethod(pattern.toCharArray(), text.toCharArray()), realPosition);
+        assertEquals(TextSearchAlgorithms.KnuthMorrisPrattSearch(pattern.toCharArray(), text.toCharArray()) , realPosition);
+        assertEquals(TextSearchAlgorithms.BoyerMooreHorspoolSimpleSearch(pattern.toCharArray(), text.toCharArray()), realPosition);
+        assertEquals(TextSearchAlgorithms.BoyerMooreHorspoolSearch(pattern.toCharArray(), text.toCharArray()), realPosition);
     }
 
 }

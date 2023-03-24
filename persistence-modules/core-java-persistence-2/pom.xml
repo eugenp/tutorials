@@ -32,10 +32,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.driver.version}</version>
         </dependency>
-        <!-- ================================================================== This jar is not in maven 
-            central repo due to some license issues. We need to manually download and install to maven repository. 
-            ================================================================== <dependency> <groupId>com.oracle</groupId> 
-            <artifactId>ojdbc14</artifactId> <version>${oracle.driver.version}</version> </dependency> -->
+        <!-- This jar is not in maven central repo due to some license issues. -->
+        <!-- We need to manually download and install to maven repository. -->
+        <!-- <dependency> -->
+        <!-- <groupId>com.oracle</groupId> -->
+        <!-- <artifactId>ojdbc14</artifactId> -->
+        <!-- <version>${oracle.driver.version}</version> -->
+        <!-- </dependency> -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
@@ -76,6 +79,7 @@
         <jooq.version>3.11.11</jooq.version>
         <json.version>20220320</json.version>
         <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

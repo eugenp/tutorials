@@ -55,3 +55,9 @@ application:
       uk: 14
       fr: 42
       us: 10
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env, health

@@ -9,3 +9,4 @@
 - [Using application.yml vs application.properties in Spring Boot](https://www.baeldung.com/spring-boot-yaml-vs-properties)
 - [Load Spring Boot Properties From a JSON File](https://www.baeldung.com/spring-boot-json-properties)
 - [IntelliJ – Cannot Resolve Spring Boot Configuration Properties Error](https://www.baeldung.com/intellij-resolve-spring-boot-configuration-properties)
+- [Log Properties in a Spring Boot Application](https://www.baeldung.com/spring-boot-log-properties)

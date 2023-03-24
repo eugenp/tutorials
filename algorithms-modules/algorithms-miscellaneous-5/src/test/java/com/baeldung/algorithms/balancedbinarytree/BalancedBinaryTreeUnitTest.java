@@ -1,22 +1,23 @@
 package com.baeldung.algorithms.balancedbinarytree;
 
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BalancedBinaryTreeUnitTest extends BinaryTreeDataProvider {
+import org.junit.jupiter.api.Test;
+
+class BalancedBinaryTreeUnitTest extends BinaryTreeDataProvider {
 
     @Test
-    public void givenBalancedTrees_whenCallingIsBalanced_ShouldReturnTrue() {
+    void givenBalancedTrees_whenCallingIsBalanced_ShouldReturnTrue() {
         for (Tree tree : balancedTrees()) {
-            assertTrue(toString(tree) + " should be balanced", BalancedBinaryTree.isBalanced(tree));
+            assertTrue(BalancedBinaryTree.isBalanced(tree), toString(tree) + " should be balanced");
         }
     }
 
     @Test
-    public void givenUnbalancedTrees_whenCallingIsBalanced_ShouldReturnFalse() {
+    void givenUnbalancedTrees_whenCallingIsBalanced_ShouldReturnFalse() {
         for (Tree tree : unbalancedTrees()) {
-            assertFalse(toString(tree) + " should not be balanced", BalancedBinaryTree.isBalanced(tree));
+            assertFalse(BalancedBinaryTree.isBalanced(tree), toString(tree) + " should not be balanced");
         }
     }
 

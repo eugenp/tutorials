@@ -9,4 +9,5 @@ This module contains articles about Spring with Thymeleaf
 - [Spring MVC Data and Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-data)
 - [Upload Image With Spring Boot and Thymeleaf](https://www.baeldung.com/spring-boot-thymeleaf-image-upload)
 - [Getting a URL Attribute Value in Thymeleaf](https://www.baeldung.com/thymeleaf-url-attribute-value)
+- [Expression Types in Thymeleaf](https://www.baeldung.com/java-thymeleaf-expression-types)
 - [[<-- prev]](/spring-thymeleaf)

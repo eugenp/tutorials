@@ -26,7 +26,7 @@
     </dependencies>
 
     <properties>
-        <commons-csv.version>1.4</commons-csv.version>
+        <commons-csv.version>1.10.0</commons-csv.version>
     </properties>
 
 </project>
