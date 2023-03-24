@@ -3,9 +3,9 @@ package com.baeldung.stringtoint;
 import java.util.Optional;
 import org.apache.commons.lang3.math.NumberUtils;
 
-public class StringToIntEncapsulation {
+public class StringToIntConverter {
     
-    private StringToIntEncapsulation() {
+    private StringToIntConverter() {
     }
 
     public static Integer convertStringToIntUsingIntegerParseInt(String input){
@@ -13,7 +13,7 @@ public class StringToIntEncapsulation {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             // log or handle the error
-            return null; // or Integer.MIN_VALUE, or some other default value
+            return Integer.MIN_VALUE;
         }
     }
 
@@ -22,7 +22,7 @@ public class StringToIntEncapsulation {
             return Integer.valueOf(input);
         } catch (NumberFormatException e) {
             // log or handle the error
-            return null; // or Integer.MIN_VALUE, or some other default value
+            return Integer.MIN_VALUE;
         }
     }
 
@@ -31,11 +31,11 @@ public class StringToIntEncapsulation {
             return Integer.decode(input);
         } catch (Exception e) {
             // log or handle the error
-            return null; // or Integer.MIN_VALUE, or some other default value
+            return Integer.MIN_VALUE;
         }
     }
 
-    public static Integer converStringToIntUsingOptional(String input){
+    public static Integer convertStringToIntUsingOptional(String input){
         Optional<Integer> parsedInt;
         try {
             parsedInt = Optional.of(Integer.parseInt(input));
@@ -43,11 +43,10 @@ public class StringToIntEncapsulation {
             // log or handle the error
             parsedInt = Optional.empty();
         }
-        return parsedInt.orElse(null);
+        return parsedInt.orElse(Integer.MIN_VALUE);
     }
 
     public static int convertStringToIntUsingNumberUtils(String input){
-        //returns Integer.MIN_VALUE as the default value if conversion fails
         return NumberUtils.toInt(input, Integer.MIN_VALUE);
     }
 }
