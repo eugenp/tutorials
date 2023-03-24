@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class DateToStringFormatterUnitTest {
 
     private static final String DATE_FORMAT = "MMM d, yyyy HH:mm a";
+    private static final String EXPECTED_STRING_DATE = "Aug 1, 2018 12:00 PM";
     private static Date date;
 
     @BeforeClass
@@ -33,8 +34,8 @@ public class DateToStringFormatterUnitTest {
     public void whenDateConvertedUsingSimpleDateFormatToString_thenCorrect() {
         DateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
         String formattedDate = formatter.format(date);
-        String expectedDate = "Aug 1, 2018 12:00 pm";
-        assertEquals(expectedDate, formattedDate);
+
+        assertEquals(EXPECTED_STRING_DATE, formattedDate);
     }
 
     @Test
@@ -42,15 +43,15 @@ public class DateToStringFormatterUnitTest {
         String formattedDate = DateFormat
           .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.US)
           .format(date);
-        String expectedDate = "Aug 1, 2018, 12:00 PM";
-        assertEquals(expectedDate, formattedDate);
+
+        assertEquals(EXPECTED_STRING_DATE, formattedDate);
     }
 
     @Test
     public void whenDateConvertedUsingFormatterToString_thenCorrect() {
         String formattedDate = String.format("%1$tb %1$te, %1$tY %1$tI:%1$tM %1$Tp", date);
-        String expectedDate = "Aug 1, 2018 12:00 PM";
-        assertEquals(expectedDate, formattedDate);
+
+        assertEquals(EXPECTED_STRING_DATE, formattedDate);
     }
 
     @Test
@@ -61,7 +62,7 @@ public class DateToStringFormatterUnitTest {
           .atZone(ZoneId.of("CET"))
           .toLocalDateTime();
         String formattedDate = ldt.format(fmt);
-        String expectedDate = "Aug 1, 2018 12:00 pm";
-        assertEquals(expectedDate, formattedDate);
+
+        assertEquals(EXPECTED_STRING_DATE, formattedDate);
     }
 }
