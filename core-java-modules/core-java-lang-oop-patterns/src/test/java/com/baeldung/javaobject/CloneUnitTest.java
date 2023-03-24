@@ -6,11 +6,11 @@ public class CloneUnitTest {
 
     @Test
     public void givenShallowCloneMethod_WhenCopyIsCreated_thenCopyIsShallow(){
-        Address address = new Address("Main St", "123", "New York", "USA");
-        ShallowClone user = new ShallowClone("John", address,11);
+    Address address = new Address("Main St", "123", "New York", "USA");
+    Person user = new Person("John", address);
 
-        ShallowClone userClone = (ShallowClone)user.clone();
-        assertThat(userClone.getAddress()).isEqualTo(user.getAddress());
+    Person userClone = user.clone();
+    assertThat(userClone.getAddress()).isEqualTo(user.getAddress());
     }
 
     @Test

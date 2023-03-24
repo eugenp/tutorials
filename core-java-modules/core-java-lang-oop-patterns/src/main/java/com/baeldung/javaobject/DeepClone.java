@@ -28,12 +28,12 @@ public class DeepClone implements Cloneable{
 
     @Override
     public DeepClone clone() {
-        try {
-            DeepClone clone = (DeepClone) super.clone();
-            clone.setAddress(clone.getAddress().clone());
-            return clone;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+     try {
+        DeepClone clone = (DeepClone) super.clone();
+        clone.setAddress(this.getAddress().clone());
+        return clone;
+    } catch (CloneNotSupportedException e) {
+        throw new AssertionError();
+    }
     }
 }
