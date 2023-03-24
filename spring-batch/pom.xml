@@ -31,7 +31,6 @@
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb.version}</version>
-            
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -60,12 +59,12 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.14</version>
+            <version>${http-client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jettison</groupId>
             <artifactId>jettison</artifactId>
-            <version>1.5.3</version>
+            <version>${jettison.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -74,10 +73,12 @@
     </dependencies>
 
     <properties>
-        <spring.version>6.0.0</spring.version>
+        <spring.version>6.0.6</spring.version>
         <opencsv.version>5.7.1</opencsv.version>
-        <jaxb.version>4.0.1</jaxb.version>
-        <jackson-datatype.version>2.14.1</jackson-datatype.version>
+        <jaxb.version>4.0.2</jaxb.version>
+        <jackson-datatype.version>2.14.2</jackson-datatype.version>
+        <http-client.version>4.5.14</http-client.version>
+        <jettison.version>1.5.3</jettison.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
     </properties>
 
