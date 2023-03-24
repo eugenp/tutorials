@@ -802,6 +802,7 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1042,6 +1043,7 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
