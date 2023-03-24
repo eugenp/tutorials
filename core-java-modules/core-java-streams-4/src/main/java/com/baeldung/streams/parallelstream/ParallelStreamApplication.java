@@ -3,9 +3,9 @@ package com.baeldung.streams.parallelstream;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class ParallelStreamDifferences {
+public class ParallelStreamApplication {
 
-    long usingCollectionsParallel(Collection<Book> listOfbooks, int year) {
+    public long usingCollectionsParallel(Collection<Book> listOfbooks, int year) {
         AtomicLong countOfBooks = new AtomicLong();
         listOfbooks.parallelStream()
           .forEach(book -> {
@@ -16,7 +16,7 @@ public class ParallelStreamDifferences {
         return countOfBooks.get();
     }
 
-    long usingStreamParallel(Collection<Book> listOfBooks, int year) {
+    public long usingStreamParallel(Collection<Book> listOfBooks, int year) {
         AtomicLong countOfBooks = new AtomicLong();
         listOfBooks.stream()
           .parallel()
@@ -28,7 +28,7 @@ public class ParallelStreamDifferences {
         return countOfBooks.get();
     }
 
-    long usingWithCustomSpliterator(MyBookContainer<Book> listOfBooks, int year) {
+    public long usingWithCustomSpliterator(MyBookContainer<Book> listOfBooks, int year) {
         AtomicLong countOfBooks = new AtomicLong();
         listOfBooks.parallelStream()
           .forEach(book -> {
@@ -38,10 +38,4 @@ public class ParallelStreamDifferences {
           });
         return countOfBooks.get();
     }
-
-    private static MyBookContainer<Book> getBooks() {
-        MyBookContainer<Book> listOfBooks = new MyBookContainer<>(new Book[] { new Book("", "", 2000) });
-        return listOfBooks;
-    }
-
 }
