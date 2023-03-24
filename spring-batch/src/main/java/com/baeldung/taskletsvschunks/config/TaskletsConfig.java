@@ -5,21 +5,14 @@ import com.baeldung.taskletsvschunks.tasklets.LinesReader;
 import com.baeldung.taskletsvschunks.tasklets.LinesWriter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class TaskletsConfig {
@@ -29,33 +22,10 @@ public class TaskletsConfig {
         return new JobLauncherTestUtils();
     }
 
-    /*@Bean
-    public JobRepository jobRepository() throws Exception {
-        JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
-        factory.setDataSource(dataSource());
-        factory.setTransactionManager(transactionManager());
-        return factory.getObject();
-    }*/
-
-    /*@Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.sqlite.JDBC");
-        dataSource.setUrl("jdbc:sqlite:repository.sqlite");
-        return dataSource;
-    }*/
-
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new ResourcelessTransactionManager();
     }
-
-    /*@Bean
-    public JobLauncher jobLauncher() throws Exception {
-        TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
-        jobLauncher.setJobRepository(jobRepository());
-        return jobLauncher;
-    }*/
 
     @Bean
     public LinesReader linesReader() {

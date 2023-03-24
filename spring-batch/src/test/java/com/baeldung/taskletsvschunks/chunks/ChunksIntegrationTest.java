@@ -7,7 +7,6 @@ import com.baeldung.taskletsvschunks.config.ChunksConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,7 @@ public class ChunksIntegrationTest {
 
     @Test
     public void givenChunksJob_WhenJobEnds_ThenStatusCompleted() throws Exception {
-        JobParameters jobParameters = this.jobLauncherTestUtils.getUniqueJobParameters();
-        JobExecution jobExecution = this.jobLauncherTestUtils.launchJob(jobParameters);
+        JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
     }
 }
