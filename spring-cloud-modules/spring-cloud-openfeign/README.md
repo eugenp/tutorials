@@ -11,3 +11,4 @@
 - [RequestLine with Feign Client](https://www.baeldung.com/feign-requestline)
 - [Propagating Exceptions With OpenFeign and Spring](https://www.baeldung.com/spring-openfeign-propagate-exception)
 - [Post form-url-encoded Data with Spring Cloud Feign](https://www.baeldung.com/spring-cloud-post-form-url-encoded-data)
+- [Configuring Spring Cloud FeignClient URL](https://www.baeldung.com/spring-cloud-feignclient-url)

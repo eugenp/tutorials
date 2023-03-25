@@ -1,8 +1,8 @@
 package com.baeldung.jersey.server.config;
 
-import javax.ws.rs.ApplicationPath;
-
 import org.glassfish.jersey.server.ResourceConfig;
+
+import jakarta.ws.rs.ApplicationPath;
 
 @ApplicationPath("/*")
 public class ServerConfig extends ResourceConfig {
