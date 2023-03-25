@@ -339,8 +339,14 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-streams-2</module>
+
                 <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -540,8 +546,13 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-string-conversions-2</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-streams-2</module>
+
                 <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -802,7 +813,6 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1043,7 +1053,6 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
-                <module>core-java-modules/core-java-lang-math-3</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
