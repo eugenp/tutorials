@@ -1,10 +1,9 @@
 package com.baeldung.scopedvalues.scoped;
 
-import com.baeldung.scopedvalues.scoped.Service;
 import com.baeldung.scopedvalues.data.Data;
-import com.baeldung.scopedvalues.data.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jdk.incubator.concurrent.ScopedValue;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,10 +11,14 @@ import java.util.Optional;
 
 public class Controller {
 
-    private final Service service = new Service();
+    private final InternalService internalService = new InternalService();
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        Optional<Data> data = service.getData(request);
+        Optional<Data> data = internalService.getData(request);
+
+        ScopedValue.where(Server.LOGGED_IN_USER, null)
+                .run(internalService::extractData);
+
         if (data.isPresent()) {
             try {
                 PrintWriter out = response.getWriter();
