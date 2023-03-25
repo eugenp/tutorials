@@ -51,8 +51,8 @@ public class AccessorsUnitTest {
     @Test
     public void whenChainedFluentAccount_thenHaveChainedFluentAccessors() {
         ChainedFluentAccount account = new ChainedFluentAccount()
-            .name("Fluent Account")
-            .balance(BigDecimal.TEN);
+          .name("Fluent Account")
+          .balance(BigDecimal.TEN);
 
         assertEquals("Fluent Account", account.name());
         assertEquals(BigDecimal.TEN, account.balance());
@@ -74,8 +74,8 @@ public class AccessorsUnitTest {
     public void whenPrefixedFluentAccount_thenRemovePrefixFromAccessors() {
         PrefixedFluentAccount account = new PrefixedFluentAccount();
         account
-            .name("Prefixed Fluent Fields")
-            .balance(BigDecimal.TEN);
+          .name("Prefixed Fluent Fields")
+          .balance(BigDecimal.TEN);
 
         assertEquals("Prefixed Fluent Fields", account.name());
         assertEquals(BigDecimal.TEN, account.balance());
@@ -92,8 +92,8 @@ public class AccessorsUnitTest {
 
         //verify if all getters and setters are final methods
         boolean getterSettersAreFinal = Arrays.stream(FinalAccount.class.getMethods())
-                                              .filter(method -> method.getName().matches("^(get|set)(Name|Balance)$"))
-                                              .allMatch(method -> Modifier.isFinal(method.getModifiers()));
+          .filter(method -> method.getName().matches("^(get|set)(Name|Balance)$"))
+          .allMatch(method -> Modifier.isFinal(method.getModifiers()));
         assertTrue(getterSettersAreFinal);
 
     }
@@ -102,18 +102,17 @@ public class AccessorsUnitTest {
     public void whenFinalChainedFluentAccount_thenHaveFinalAccessors() {
         FinalChainedFluentAccount account = new FinalChainedFluentAccount();
         account
-            .name("Final Chained Fluent Account")
-            .balance(BigDecimal.TEN);
+          .name("Final Chained Fluent Account")
+          .balance(BigDecimal.TEN);
 
         assertEquals("Final Chained Fluent Account", account.name());
         assertEquals(BigDecimal.TEN, account.balance());
 
         //verify if all getters and setters are final methods
         boolean getterSettersAreFinal = Arrays.stream(FinalAccount.class.getMethods())
-                                              .filter(method -> method.getName().matches("^(name|balance)$"))
-                                              .allMatch(method -> Modifier.isFinal(method.getModifiers()));
+          .filter(method -> method.getName().matches("^(name|balance)$"))
+          .allMatch(method -> Modifier.isFinal(method.getModifiers()));
         assertTrue(getterSettersAreFinal);
-
     }
 
 }
