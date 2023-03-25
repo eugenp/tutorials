@@ -37,7 +37,7 @@ public class ServerUnitTest {
 
         server.serve(request, response);
 
-        assertThat(writer.toString()).isEqualTo("Data[id=1, title=Title 1, description=Description 1]");
+        assertThat(writer.toString()).isEqualTo("Data[id=1, title=Title 1, description=Description 1]\nExternal data");
     }
 
     @Test

@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.random.RandomGenerator;
 
 public class ExternalService {
+
     public String getData() {
         return "External data";
     }

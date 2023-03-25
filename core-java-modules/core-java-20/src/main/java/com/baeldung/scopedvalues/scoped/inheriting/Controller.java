@@ -1,7 +1,6 @@
 package com.baeldung.scopedvalues.scoped.inheriting;
 
 import com.baeldung.scopedvalues.data.Data;
-import com.baeldung.scopedvalues.scoped.InternalService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jdk.incubator.concurrent.StructuredTaskScope;
@@ -29,8 +28,8 @@ public class Controller {
                 if (data.isPresent()) {
                     PrintWriter out = response.getWriter();
                     response.setContentType("application/json");
-                    out.print(data.get());
-                    out.print(externalData);
+                    out.println(data.get());
+                    out.print(externalData.resultNow());
                     out.flush();
                     response.setStatus(200);
                 } else {

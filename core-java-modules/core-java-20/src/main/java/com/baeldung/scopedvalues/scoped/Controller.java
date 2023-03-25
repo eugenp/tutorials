@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class Controller {
 
-    private final InternalService internalService = new InternalService();
+    private final Service internalService = new Service();
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) {
         Optional<Data> data = internalService.getData(request);
