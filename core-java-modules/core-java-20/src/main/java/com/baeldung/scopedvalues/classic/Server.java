@@ -4,11 +4,9 @@ import com.baeldung.scopedvalues.data.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class Server {
 
@@ -19,15 +17,12 @@ public class Server {
     private final Controller controller = new Controller();
     private final ExecutorService executor = Executors.newFixedThreadPool(5);
 
-    public void serve(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void serve(HttpServletRequest request, HttpServletResponse response) throws InterruptedException, ExecutionException {
         Optional<User> user = authenticateUser(request);
         if (user.isPresent()) {
-            controller.processRequest(request, response, user.get());
-            /*
-            executor.submit(() -> {
-                controller.processRequest(request, response, user.get());
-            });
-             */
+            Future<?> future = executor.submit(() ->
+                    controller.processRequest(request, response, user.get()));
+            future.get();
         } else {
             response.setStatus(401);
         }

@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.concurrent.ExecutionException;
 
 import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.*;
@@ -27,7 +28,7 @@ public class ServerUnitTest {
     private final Server server = new Server();
 
     @Test
-    void givenMockedRequestWithAdminCredentials_whenServeMethodIsCalled_thenDataIsReturned() throws IOException {
+    void givenMockedRequestWithAdminCredentials_whenServeMethodIsCalled_thenDataIsReturned() throws InterruptedException, IOException, ExecutionException {
         when(request.getParameter("user_name")).thenReturn("admin");
         when(request.getParameter("user_pw")).thenReturn("123456");
         when(request.getParameter("data_id")).thenReturn("1");
@@ -39,7 +40,7 @@ public class ServerUnitTest {
     }
 
     @Test
-    void givenMockedRequestWithUserCredentials_whenServeMethodIsCalled_thenNoDataIsReturned() throws IOException {
+    void givenMockedRequestWithUserCredentials_whenServeMethodIsCalled_thenNoDataIsReturned() throws InterruptedException, ExecutionException {
         when(request.getParameter("user_name")).thenReturn("user");
         when(request.getParameter("user_pw")).thenReturn("123456");
 
