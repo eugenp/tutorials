@@ -485,8 +485,7 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                
-                <module>vaadin</module>
+
             </modules>
         </profile>
 
@@ -659,8 +658,6 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                
-                <module>vaadin</module>
             </modules>
 
         </profile>
@@ -965,6 +962,7 @@
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
@@ -1236,6 +1234,7 @@
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
