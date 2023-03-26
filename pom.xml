@@ -349,15 +349,9 @@
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
 
-
-                <module>jackson-modules</module>
-
-                <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-                <module>jersey</module>
                 <module>jhipster-5</module>
 
                 <module>jmh</module>
@@ -437,23 +431,18 @@
                 <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-batch</module>
+
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core</module>
-                <module>spring-core-4</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-                <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
-
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
+
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -586,15 +575,9 @@
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
 
-
-                <module>jackson-modules</module>
-
-                <module>javafx</module>
                 <module>java-jdi</module>
                 <module>java-websocket</module>
 
-                <module>jaxb</module>
-                <module>jersey</module>
                 <module>jhipster-5</module>
                 <module>jmh</module>
 
@@ -665,22 +648,17 @@
 
                 <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-batch</module>
+
                 <module>spring-bom</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core</module>
-                <module>spring-core-4</module>
                 <module>spring-di</module>
                 <module>spring-di-2</module>
-                <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -818,12 +796,24 @@
             </build>
 
             <modules>
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
+                <module>javafx</module>
+                <module>spring-batch</module>
+                <module>spring-boot-rest</module>
+                <module>spring-drools</module>
+                <module>spring-exceptions</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-integration</module>
                 <module>libraries-security</module>
+
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
                 <module>orika</module>
-
                 <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
@@ -888,6 +878,7 @@
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>jackson-modules</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1063,19 +1054,31 @@
             </build>
 
             <modules>
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
+                <module>javafx</module>
+                <module>spring-batch</module>
+                <module>spring-boot-rest</module>
+                <module>spring-drools</module>
+                <module>spring-exceptions</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-integration</module>
                 <module>libraries-security</module>
+
                 <module>performance-tests</module>
                 <module>security-modules</module>
                 <module>libraries-server-2</module>
                 <module>orika</module>
-                
                 <module>patterns-modules</module>
                 <module>json-modules</module>
                 <module>libraries-data</module>
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
-                
+
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -1130,6 +1133,7 @@
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>jackson-modules</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
