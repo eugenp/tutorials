@@ -106,12 +106,6 @@
             <artifactId>modelmapper</artifactId>
             <version>${org.modelmapper.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.graalvm.sdk</groupId>-->
-<!--            <artifactId>graal-sdk</artifactId>-->
-<!--            <version>20.0.0</version>-->
-<!--        </dependency>-->
-
     </dependencies>
 
     <repositories>
