@@ -13,7 +13,6 @@ import java.io.StringWriter;
 
 import static org.mockito.Mockito.*;
 import static org.assertj.core.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 public class ServerUnitTest {
 

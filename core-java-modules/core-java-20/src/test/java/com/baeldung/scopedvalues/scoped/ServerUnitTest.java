@@ -1,6 +1,5 @@
 package com.baeldung.scopedvalues.scoped;
 
-import com.baeldung.scopedvalues.scoped.Server;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;

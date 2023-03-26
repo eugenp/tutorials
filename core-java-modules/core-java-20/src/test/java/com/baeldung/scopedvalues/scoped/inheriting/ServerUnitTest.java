@@ -1,6 +1,5 @@
 package com.baeldung.scopedvalues.scoped.inheriting;
 
-import com.baeldung.scopedvalues.scoped.inheriting.Server;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
