@@ -85,7 +85,7 @@
 
     <properties>
         <spring-boot.version>2.6.1</spring-boot.version>
-        <aspectj-plugin.version>1.11</aspectj-plugin.version>
+        <aspectj-plugin.version>1.14.0</aspectj-plugin.version>
         <javax.inject.version>1</javax.inject.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>

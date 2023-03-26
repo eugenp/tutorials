@@ -4,3 +4,5 @@
 - [Specify an Array of Strings as Body Parameters in Swagger](https://www.baeldung.com/swagger-body-array-of-strings)
 - [Swagger @ApiParam vs @ApiModelProperty](https://www.baeldung.com/swagger-apiparam-vs-apimodelproperty)
 - [Map Date Types With OpenAPI Generator](https://www.baeldung.com/openapi-map-date-types)
+- [API First Development with Spring Boot and OpenAPI 3.0](https://www.baeldung.com/spring-boot-openapi-api-first-development)
+- [Change Swagger-UI URL prefix](https://www.baeldung.com/spring-boot-custom-swagger-url)
