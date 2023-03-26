@@ -15,7 +15,7 @@
   <process processType="Private" isExecutable="true" id="com.baeldung.bpmn.helloworld" name="HelloWorld Process" tns:packageName="com.baeldung.bpmn.process" >
 
     <!-- nodes -->
-    <scriptTask id="_jbpm-unique-1" name="HelloWorld" scriptFormat="http://www.java.com/java" >
+    <scriptTask id="_jbpm-unique-1" name="HelloWorld">
       <script>System.out.println("Hello World");</script>
     </scriptTask>
     <endEvent id="_jbpm-unique-2" name="End" >

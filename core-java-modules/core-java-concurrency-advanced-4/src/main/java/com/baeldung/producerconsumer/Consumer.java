@@ -2,11 +2,9 @@ package com.baeldung.producerconsumer;
 
 public class Consumer implements Runnable {
     private final DataQueue dataQueue;
-    private volatile boolean runFlag;
 
     public Consumer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
-        runFlag = true;
     }
 
     @Override
@@ -15,22 +13,23 @@ public class Consumer implements Runnable {
     }
 
     public void consume() {
-        while (runFlag) {
-            Message message;
-            if (dataQueue.isEmpty()) {
-                try {
-                    dataQueue.waitOnEmpty();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        while (dataQueue.runFlag) {
+            synchronized (this) {
+                while (dataQueue.isEmpty() && dataQueue.runFlag) {
+                    try {
+                        dataQueue.waitOnEmpty();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }
+                }
+                if (!dataQueue.runFlag) {
                     break;
                 }
+                Message message = dataQueue.remove();
+                dataQueue.notifyAllForFull();
+                useMessage(message);
             }
-            if (!runFlag) {
-                break;
-            }
-            message = dataQueue.remove();
-            dataQueue.notifyAllForFull();
-            useMessage(message);
         }
         System.out.println("Consumer Stopped");
     }
@@ -45,7 +44,7 @@ public class Consumer implements Runnable {
     }
 
     public void stop() {
-        runFlag = false;
+        dataQueue.runFlag = false;
         dataQueue.notifyAllForEmpty();
     }
 }
