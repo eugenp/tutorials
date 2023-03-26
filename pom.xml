@@ -483,7 +483,6 @@
 
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
                 
                 <module>vaadin</module>
@@ -657,7 +656,6 @@
 
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
                 
                 <module>vaadin</module>
@@ -906,6 +904,7 @@
                 <module>ksqldb</module>
                 <module>jsf</module>
                 <module>libraries-2</module>
+                <module>libraries-5</module>
                 <module>libraries-7</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1177,6 +1176,7 @@
                 <module>jsf</module>
                 <module>ksqldb</module>
 
+                <module>libraries-5</module>
                 <module>libraries-7</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
