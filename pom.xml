@@ -353,7 +353,6 @@
 
                 <module>muleesb</module>
 
-                <module>osgi</module>
                 <module>persistence-modules</module>
                 <module>web-modules</module>
             </modules>
@@ -540,7 +539,6 @@
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
-                <module>osgi</module>
                 <module>persistence-modules</module>
                 <module>web-modules</module>
             </modules>
@@ -717,6 +715,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -992,6 +991,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
