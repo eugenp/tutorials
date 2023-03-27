@@ -57,24 +57,6 @@
         </dependency>
     </dependencies>
 
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <version>${maven-compiler-plugin.version}</version>-->
-<!--                <configuration>-->
-<!--                    <source>${maven.compiler.source}</source>-->
-<!--                    <target>${maven.compiler.target}</target>-->
-<!--                    <compilerArgs>-->
-<!--                        <arg>&#45;&#45;add-exports=jdk.attach/com.sun.tools.attach=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports=jdk.attach/com.sun.javafx.util=ALL-UNNAMED</arg>-->
-<!--                    </compilerArgs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
-
     <profiles>
         <!-- java instrumentation profiles to build jars -->
         <profile>
@@ -190,9 +172,6 @@
         <jol-core.version>0.10</jol-core.version>
         <asm.version>9.4</asm.version>
         <bcel.version>6.5.0</bcel.version>
-
-<!--        <maven.compiler.source>11</maven.compiler.source>-->
-<!--        <maven.compiler.target>11</maven.compiler.target>-->
     </properties>
 
 </project>
