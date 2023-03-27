@@ -15,6 +15,7 @@
     </parent>
 
     <modules>
+        <module>apache-camel</module>
         <module>jgroups</module>
         <module>rabbitmq</module>
         <module>spring-amqp</module>
