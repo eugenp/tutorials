@@ -348,7 +348,6 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-                <module>libraries-data-db</module>
 
                 <module>lombok-modules</module>
 
@@ -537,7 +536,6 @@
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-                <module>libraries-data-db</module>
 
                 <module>lombok-modules</module>
                 <module>muleesb</module>
@@ -751,6 +749,7 @@
                 <module>spring-integration</module>
                 <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
+                <module>libraries-data-db</module>
 
                 <module>performance-tests</module>
                 <module>security-modules</module>
@@ -1025,6 +1024,7 @@
                 <module>spring-integration</module>
                 <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
+                <module>libraries-data-db</module>
 
                 <module>performance-tests</module>
                 <module>security-modules</module>
