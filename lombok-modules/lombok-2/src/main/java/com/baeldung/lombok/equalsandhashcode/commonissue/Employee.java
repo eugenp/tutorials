@@ -1,14 +1,20 @@
 package com.baeldung.lombok.equalsandhashcode.commonissue;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Manager {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Employee {
     private String name;
-    private Employee assistantManager;
+    private int id;
+    private int age;
+    private Manager manager;
 }
 

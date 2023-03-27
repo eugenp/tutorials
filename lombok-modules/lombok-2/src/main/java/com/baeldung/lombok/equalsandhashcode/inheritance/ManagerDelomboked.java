@@ -7,6 +7,12 @@ public class ManagerDelomboked extends Employee {
     private String departmentName;
     private int uid;
 
+    public ManagerDelomboked(String departmentName, int uid, String name, int id, int age) {
+        super(name, id, age);
+        this.departmentName = departmentName;
+        this.uid = uid;
+    }
+
     public boolean equals(final Object o) {
         if (o == this) return true;
         if (!(o instanceof com.baeldung.lombok.equalsandhashcode.inheritance.Manager)) return false;
