@@ -426,8 +426,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-remoting-modules</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -500,7 +498,6 @@
                 <module>libraries-5</module>
                 <module>libraries-6</module>
 
-                <module>vaadin</module>
             </modules>
         </profile>
 
@@ -621,8 +618,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-remoting-modules</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -686,8 +681,6 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-
-                <module>vaadin</module>
             </modules>
 
         </profile>
@@ -783,6 +776,7 @@
                 <module>spring-core</module>
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
 
                 <module>performance-tests</module>
@@ -964,6 +958,7 @@
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
@@ -1027,6 +1022,7 @@
                 <module>spring-core</module>
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
 
                 <module>performance-tests</module>
@@ -1073,7 +1069,6 @@
                 <module>docker-modules</module>
                 <module>drools</module>
                 <module>guava-modules</module>
-                <module>apache-httpclient-2</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-testing</module>
@@ -1209,6 +1204,7 @@
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
