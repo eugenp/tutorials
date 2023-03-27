@@ -411,8 +411,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-remoting-modules</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -484,8 +482,7 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                
-                <module>vaadin</module>
+
             </modules>
         </profile>
 
@@ -592,8 +589,6 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-remoting-modules</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -657,8 +652,6 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
-                
-                <module>vaadin</module>
             </modules>
 
         </profile>
@@ -754,6 +747,7 @@
                 <module>spring-core</module>
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
 
                 <module>performance-tests</module>
@@ -956,6 +950,7 @@
                 <module>webrtc</module>
                 
                 <module>messaging-modules</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
@@ -1019,6 +1014,7 @@
                 <module>spring-core</module>
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
 
                 <module>performance-tests</module>
@@ -1220,6 +1216,7 @@
                 <module>webrtc</module>
                 <module>libraries-2</module>
                 <module>messaging-modules</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
