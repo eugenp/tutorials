@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.baeldung.springpagination.model.Post;
 import com.baeldung.springpagination.model.User;
 
-public interface PostRepository extends JpaRepository<Post, Long>, PagingAndSortingRepository<Post, Long> {
+public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query("select u from Post u where u.userName=:userName")
     Page<Post> findByUser(@Param("userName") String userName, Pageable pageReq);
