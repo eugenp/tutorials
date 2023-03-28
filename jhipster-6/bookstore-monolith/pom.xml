@@ -1185,7 +1185,7 @@
         <maven.version>3.0.0</maven.version>
         <java.version>11</java.version>
         <scala.version>2.12.6</scala.version>
-        <node.version>16.19.1</node.version>
+        <node.version>v16.19.1</node.version>
         <npm.version>8.19.3</npm.version>
         <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
