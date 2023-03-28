@@ -61,7 +61,7 @@ public class LuceneFileSearch {
 
             IndexReader indexReader = DirectoryReader.open(indexDirectory);
             IndexSearcher searcher = new IndexSearcher(indexReader);
-            TopDocs topDocs = searcher.search(query, 10);
+            TopDocs topDocs = searcher.search(query,indexReader.numDocs());
             List<Document> documents = new ArrayList<>();
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
                 documents.add(searcher.doc(scoreDoc.doc));
