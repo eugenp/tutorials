@@ -90,4 +90,9 @@ public class Car {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Car [make=" + make + ", model=" + model + ", year=" + year + ", color=" + color + ", automatic=" + automatic + ", numDoors=" + numDoors + ", features=" + features + "]";
+    }
+
 }

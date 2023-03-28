@@ -24,4 +24,10 @@ public class Vehicle {
     public Vehicle(Vehicle vehicle) {
         this(vehicle.make, vehicle.model, vehicle.color, vehicle.weight, vehicle.statusNew);
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle [make=" + make + ", model=" + model + ", color=" + color + ", weight=" + weight + ", statusNew=" + statusNew + "]";
+    }
+
 }
