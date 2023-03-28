@@ -349,6 +349,7 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-data-db</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
 
@@ -534,7 +535,7 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-data-db</module>
-
+                <module>libraries-jdk8</module>
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
@@ -897,7 +898,7 @@
                 <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
-                <module>libraries-7</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1173,7 +1174,6 @@
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-4</module>
                 <module>libraries-5</module>
-                <module>libraries-7</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
