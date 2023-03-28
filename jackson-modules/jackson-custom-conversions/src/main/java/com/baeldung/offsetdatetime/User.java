@@ -1,15 +1,11 @@
 package com.baeldung.offsetdatetime;
 
-import java.io.Serializable;
 import java.time.OffsetDateTime;
 
-public class User implements Serializable {
+public class User {
     private OffsetDateTime createdAt;
 
-    // constructors, getters and setters
-
     public User() {
-        this.createdAt = createdAt;
     }
 
     public OffsetDateTime getCreatedAt() {
