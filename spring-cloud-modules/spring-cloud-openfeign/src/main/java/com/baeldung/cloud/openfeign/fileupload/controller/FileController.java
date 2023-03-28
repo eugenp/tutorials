@@ -16,7 +16,7 @@ public class FileController {
     
     @PostMapping(value = "/upload")
     public String handleFileUpload(@RequestPart(value = "file") MultipartFile file) {
-        return service.uploadFile(file);
+        return service.uploadFileWithFallbackFactory(file);
     }
     
     @PostMapping(value = "/upload-mannual-client")
@@ -27,7 +27,7 @@ public class FileController {
     
     @PostMapping(value = "/upload-error")
     public String handleFileUploadError(@RequestPart(value = "file") MultipartFile file) {
-        return service.uploadFile(file);
+        return service.uploadFileWithFallbackFactory(file);
     }
     
 }

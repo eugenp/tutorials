@@ -1,8 +1,10 @@
 package com.baeldung.boot.csfle;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import org.bson.BsonBinary;
+import org.bson.types.Binary;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class CitizenServiceLiveTest {
         citizen.setName("Foo");
         citizen.setEmail("foo@citizen.com");
 
-        BsonBinary encryptedEmail = service.encrypt(citizen.getEmail(), CitizenService.DETERMINISTIC_ALGORITHM);
+        Binary encryptedEmail = service.encrypt(citizen.getEmail(), CitizenService.DETERMINISTIC_ALGORITHM);
 
         EncryptedCitizen saved = service.save(citizen);
         assertEquals(encryptedEmail, saved.getEmail());

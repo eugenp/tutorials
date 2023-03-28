@@ -1,8 +1,10 @@
 package com.baeldung.serializable_singleton;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -10,8 +12,10 @@ import java.io.ObjectOutputStream;
 
 // Unit test for the EnumSingleton class.
 public class EnumSingletonUnitTest {
-    
-	// Checks that when an EnumSingleton instance is serialized
+
+    private static final String ENUM_SINGLETON_TEST_TXT = "enum_singleton_test.txt";
+
+    // Checks that when an EnumSingleton instance is serialized
     // and then deserialized, its state is preserved.
     @Test
     public void givenEnumSingleton_whenSerializedAndDeserialized_thenStatePreserved() {
@@ -19,11 +23,10 @@ public class EnumSingletonUnitTest {
 
         es1.setState("State One");
 
-        try (
-        FileOutputStream fos = new FileOutputStream("enum_singleton_test.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        FileInputStream fis = new FileInputStream("enum_singleton_test.txt");
-        ObjectInputStream ois = new ObjectInputStream(fis)) {
+        try (FileOutputStream fos = new FileOutputStream(ENUM_SINGLETON_TEST_TXT);
+             ObjectOutputStream oos = new ObjectOutputStream(fos);
+             FileInputStream fis = new FileInputStream(ENUM_SINGLETON_TEST_TXT);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
             
             // Serializing.
             oos.writeObject(es1);
@@ -46,11 +49,10 @@ public class EnumSingletonUnitTest {
     public void givenEnumSingleton_whenSerializedAndDeserialized_thenOneInstance() {
         EnumSingleton es1 = EnumSingleton.getInstance();
 
-        try (
-        FileOutputStream fos = new FileOutputStream("enum_singleton_test.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        FileInputStream fis = new FileInputStream("enum_singleton_test.txt");
-        ObjectInputStream ois = new ObjectInputStream(fis)) {
+        try (FileOutputStream fos = new FileOutputStream(ENUM_SINGLETON_TEST_TXT);
+             ObjectOutputStream oos = new ObjectOutputStream(fos);
+             FileInputStream fis = new FileInputStream(ENUM_SINGLETON_TEST_TXT);
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
 
             // Serializing.
             oos.writeObject(es1);
@@ -64,6 +66,14 @@ public class EnumSingletonUnitTest {
 
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    @AfterAll
+    public static void cleanUp() {
+        final File removeFile = new File(ENUM_SINGLETON_TEST_TXT);
+        if (removeFile.exists()) {
+            removeFile.deleteOnExit();
         }
     }
 }
