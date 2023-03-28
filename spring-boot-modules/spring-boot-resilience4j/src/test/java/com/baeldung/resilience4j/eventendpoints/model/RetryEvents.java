@@ -4,13 +4,13 @@ import java.util.List;
 
 public class RetryEvents {
 
-    private List<RetryEvent> retryEvents;
+  private List<RetryEvent> retryEvents;
 
-    public List<RetryEvent> getRetryEvents() {
-        return retryEvents;
-    }
+  public List<RetryEvent> getRetryEvents() {
+    return retryEvents;
+  }
 
-    public void setRetryEvents(List<RetryEvent> retryEvents) {
-        this.retryEvents = retryEvents;
-    }
+  public void setRetryEvents(List<RetryEvent> retryEvents) {
+    this.retryEvents = retryEvents;
+  }
 }

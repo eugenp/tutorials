@@ -48,12 +48,6 @@
             <version>2.35.0</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
-
-    <properties>
-
-    </properties>
 
 </project>

@@ -4,13 +4,13 @@ import java.util.List;
 
 public class RateLimiterEvents {
 
-    private List<RateLimiterEvent> rateLimiterEvents;
+  private List<RateLimiterEvent> rateLimiterEvents;
 
-    public List<RateLimiterEvent> getRateLimiterEvents() {
-        return rateLimiterEvents;
-    }
+  public List<RateLimiterEvent> getRateLimiterEvents() {
+    return rateLimiterEvents;
+  }
 
-    public void setRateLimiterEvents(List<RateLimiterEvent> rateLimiterEvents) {
-        this.rateLimiterEvents = rateLimiterEvents;
-    }
+  public void setRateLimiterEvents(List<RateLimiterEvent> rateLimiterEvents) {
+    this.rateLimiterEvents = rateLimiterEvents;
+  }
 }

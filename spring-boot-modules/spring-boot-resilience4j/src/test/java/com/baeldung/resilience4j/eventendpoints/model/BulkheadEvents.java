@@ -4,13 +4,13 @@ import java.util.List;
 
 public class BulkheadEvents {
 
-    private List<BulkheadEvent> bulkheadEvents;
+  private List<BulkheadEvent> bulkheadEvents;
 
-    public List<BulkheadEvent> getBulkheadEvents() {
-        return bulkheadEvents;
-    }
+  public List<BulkheadEvent> getBulkheadEvents() {
+    return bulkheadEvents;
+  }
 
-    public void setBulkheadEvents(List<BulkheadEvent> bulkheadEvents) {
-        this.bulkheadEvents = bulkheadEvents;
-    }
+  public void setBulkheadEvents(List<BulkheadEvent> bulkheadEvents) {
+    this.bulkheadEvents = bulkheadEvents;
+  }
 }

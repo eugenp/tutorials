@@ -7,9 +7,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class ExternalApiCallerConfig {
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplateBuilder().rootUri("http://localhost:9090")
-                .build();
-    }
+  @Bean
+  public RestTemplate restTemplate() {
+    return new RestTemplateBuilder().rootUri("http://localhost:9090").build();
+  }
 }
