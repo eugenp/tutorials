@@ -18,17 +18,17 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.13</artifactId>
+            <artifactId>spark-core_2.12</artifactId>
             <version>${org.apache.spark.spark-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.13</artifactId>
+            <artifactId>spark-sql_2.12</artifactId>
             <version>${org.apache.spark.spark-sql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-graphx_2.13</artifactId>
+            <artifactId>spark-graphx_2.12</artifactId>
             <version>${org.apache.spark.spark-graphx.version}</version>
         </dependency>
         <dependency>
@@ -38,17 +38,17 @@
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming_2.13</artifactId>
+            <artifactId>spark-streaming_2.12</artifactId>
             <version>${org.apache.spark.spark-streaming.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-mllib_2.13</artifactId>
+            <artifactId>spark-mllib_2.12</artifactId>
             <version>${org.apache.spark.spark-mllib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-10_2.13</artifactId>
+            <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
             <version>${org.apache.spark.spark-streaming-kafka.version}</version>
         </dependency>
         <dependency>
