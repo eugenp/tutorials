@@ -21,4 +21,5 @@ class StringArrayAndVarargsUnitTest {
         assertEquals(String[].class, firstLetterOfWords("football", "basketball", "volleyball").getClass());
         assertEquals(3, firstLetterOfWords("football", "basketball", "volleyball").length);
     }
+
 }
