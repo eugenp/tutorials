@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class NumberOfLineFinderUnitTest {
     private static final String INPUT_FILE_NAME = "src/main/resources/input.txt";
-    private static final int ACTUAL_LINE_COUNT = 45;
+    private static final int ACTUAL_LINE_COUNT = 46;
 
     @Test
     public void whenUsingBufferedReader_thenReturnTotalNumberOfLines() {
