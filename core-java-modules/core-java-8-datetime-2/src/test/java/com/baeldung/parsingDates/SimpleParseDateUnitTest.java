@@ -21,7 +21,7 @@ public class SimpleParseDateUnitTest {
     @Test
     public void testSimpleDateTimeParse() {
         SimpleDateTimeFormater simpleDateTimeFormater = new SimpleDateTimeFormater();
-        assertEquals(simpleDateTimeFormater.parseDate("2022-12-04"), "2022-12-04");
+        assertEquals(simpleDateTimeFormater.parseDate("2022-12-04", "2022-12-04"));
         assertThrows(DateTimeParseException.class, () -> simpleDateTimeFormater.parseDate("2022-13-04"));
     }
 
@@ -29,7 +29,7 @@ public class SimpleParseDateUnitTest {
     public void testDateUtils() {
         SimpleDateUtils simpleDateUtils = new SimpleDateUtils();
         assertNull(simpleDateUtils.parseDate("53/10/2014"));
-        assertEquals(simpleDateUtils.parseDate("10/09/2014"), "10/09/2014");
+        assertEquals(simpleDateUtils.parseDate("10/09/2014","10/09/2014"));
     }
 
     @Test
