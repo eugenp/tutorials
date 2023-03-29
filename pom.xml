@@ -341,6 +341,7 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
@@ -532,8 +533,8 @@
                 <module>parent-java</module>
 
                 <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
+                <!-- <module>clojure</module> --> <!-- Not a maven project -->
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
@@ -543,6 +544,8 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-nio-2</module>
                 <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
