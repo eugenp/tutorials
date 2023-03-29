@@ -27,7 +27,7 @@ public class BooleanToStringUnitTest {
         Boolean myBoolean = Boolean.TRUE;
         assertEquals("true", myBoolean.toString());
 
-        myBoolean = false;
+        myBoolean = Boolean.FALSE;
         assertEquals("false", myBoolean.toString());
 
         Boolean nullBoolean = null;
@@ -39,7 +39,7 @@ public class BooleanToStringUnitTest {
         Boolean myBoolean = Boolean.TRUE;
         assertEquals("true", String.valueOf(myBoolean));
 
-        myBoolean = false;
+        myBoolean = Boolean.FALSE;
         assertEquals("false", String.valueOf(myBoolean));
 
         Boolean nullBoolean = null;
