@@ -332,7 +332,21 @@
 
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>core-java-modules</module>
+
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio-2</module>
+                <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-collections-conversions-2</module>
+                <module>core-java-modules/core-java-streams-2</module>
+
                 <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -521,7 +535,20 @@
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules</module>
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio-2</module>
+                <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-collections-conversions-2</module>
+                <module>core-java-modules/core-java-streams-2</module>
+
                 <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -778,15 +805,8 @@
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -794,27 +814,6 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-list-4</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-collections-maps-5</module>
-                <module>core-java-modules/core-java-concurrency-simple</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-streams-4</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-string-operations-5</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
                 <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
@@ -954,7 +953,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                
+
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
@@ -1048,15 +1047,9 @@
                 <module>couchbase</module>
 
                 <module>core-groovy-modules</module>
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
+
+                <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1064,27 +1057,6 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-list-4</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-collections-maps-5</module>
-                <module>core-java-modules/core-java-concurrency-simple</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-streams-4</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-string-operations-5</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
@@ -1228,7 +1200,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module> 
+                <module>libraries-2</module>
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>

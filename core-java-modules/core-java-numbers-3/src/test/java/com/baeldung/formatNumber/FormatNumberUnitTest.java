@@ -75,8 +75,8 @@ public class FormatNumberUnitTest {
     public void givenCurrency_whenFormatNumberCurrencyWithChosenLocalisation_thenGetExpectedResult() {
         double value = 23_500;
         assertThat(currencyWithChosenLocalisation(value, new Locale("en", "US"))).isEqualTo("$23,500.00");
-        assertThat(currencyWithChosenLocalisation(value, new Locale("zh", "CN"))).isEqualTo("￥23,500.00");
-        assertThat(currencyWithChosenLocalisation(value, new Locale("pl", "PL"))).isEqualTo("23 500 zł");
+        assertThat(currencyWithChosenLocalisation(value, new Locale("zh", "CN"))).isEqualTo("¥23,500.00");
+        assertThat(currencyWithChosenLocalisation(value, new Locale("pl", "PL"))).isEqualTo("23 500,00 zł");
     }
 
 }
