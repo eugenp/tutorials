@@ -25,7 +25,7 @@
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
-        <!-- <module>hbase</module> FAILED-->
+        <module>hbase</module>
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <!-- <module>hibernate-mapping-2</module> FAILED --> 

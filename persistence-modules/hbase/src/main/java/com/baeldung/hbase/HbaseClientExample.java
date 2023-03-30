@@ -1,7 +1,5 @@
 package com.baeldung.hbase;
 
-
-import com.google.protobuf.ServiceException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -13,11 +11,11 @@ import java.io.IOException;
 //install hbase locally & hbase master start
 public class HbaseClientExample {
 
-    public static void main(String[] args) throws IOException, ServiceException {
+    public static void main(String[] args) throws IOException {
         new HbaseClientExample().connect();
     }
 
-    private void connect() throws IOException, ServiceException {
+    private void connect() throws IOException {
         Configuration config = HBaseConfiguration.create();
 
         String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
@@ -25,7 +23,7 @@ public class HbaseClientExample {
         config.addResource(new Path(path));
 
         try {
-            HBaseAdmin.checkHBaseAvailable(config);
+            HBaseAdmin.available(config);
         } catch (MasterNotRunningException e) {
             System.out.println("HBase is not running." + e.getMessage());
             return;
