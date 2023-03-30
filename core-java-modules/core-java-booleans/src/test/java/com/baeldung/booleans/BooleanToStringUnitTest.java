@@ -11,7 +11,7 @@ public class BooleanToStringUnitTest {
     }
 
     @Test
-    void whenConvertingPrimitiveBoolean_shouldTernaryOperatorWork() {
+    void givenPrimitiveBoolean_whenConvertingUsingTernaryOperator_thenSuccess() {
         boolean primitiveBoolean = true;
         assertEquals("true", primitiveBoolean ? "true" : "false");
 
@@ -23,7 +23,7 @@ public class BooleanToStringUnitTest {
 
 
     @Test
-    void whenBooleanObject_shouldBooleanToStringWork() {
+    void givenBooleanObject_whenConvertingUsingBooleanToString_thenSuccess() {
         Boolean myBoolean = Boolean.TRUE;
         assertEquals("true", myBoolean.toString());
 
@@ -35,7 +35,7 @@ public class BooleanToStringUnitTest {
     }
 
     @Test
-    void whenBooleanObject_shouldStringValueOfWork() {
+    void givenBooleanObject_whenConvertingUsingStringValueOf_thenSuccess() {
         Boolean myBoolean = Boolean.TRUE;
         assertEquals("true", String.valueOf(myBoolean));
 
