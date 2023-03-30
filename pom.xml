@@ -368,7 +368,6 @@
                 <module>muleesb</module>
 
                 <module>osgi</module>
-                <module>persistence-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -568,7 +567,6 @@
                 <module>muleesb</module>
 
                 <module>osgi</module>
-                <module>persistence-modules</module>
                 <module>web-modules</module>
             </modules>
 
@@ -828,17 +826,11 @@
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/activejdbc</module>
-                <module>persistence-modules/core-java-persistence</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>persistence-modules/spring-data-jpa-repo-3</module>
+                <module>persistence-modules</module>
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
-                <module>persistence-modules/fauna</module>
-                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -954,11 +946,9 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>persistence-modules/java-mongodb</module>
 
                 <module>messaging-modules</module>
 
-                <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
             </modules>
 
@@ -1076,17 +1066,11 @@
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/activejdbc</module>
-                <module>persistence-modules/core-java-persistence</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>persistence-modules/spring-data-jpa-repo-3</module>
+                <module>persistence-modules</module>
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
-                <module>persistence-modules/fauna</module>
-                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -1203,11 +1187,9 @@
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>persistence-modules/java-mongodb</module>
                 <module>libraries-2</module>
                 <module>messaging-modules</module>
 
-                <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
             </modules>
 
