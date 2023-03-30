@@ -16,3 +16,6 @@ azure:
     tenantId: myTenantId
     clientId: myClientId
     clientSecret: myClientSecret
+database:
+  secret:
+    value: my-database-secret
