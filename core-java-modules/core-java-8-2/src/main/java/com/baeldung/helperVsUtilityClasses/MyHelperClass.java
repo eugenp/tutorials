@@ -2,6 +2,7 @@ package com.baeldung.helperVsUtilityClasses;
 
 class MyHelperClass {
 
+    String numberString = "15";
     public boolean isInteger(String input) {
         try {
             Integer.parseInt(input);

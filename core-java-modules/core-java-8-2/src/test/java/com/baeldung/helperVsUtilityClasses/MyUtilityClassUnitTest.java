@@ -8,8 +8,8 @@ class MyUtilityClassUnitTest {
 
     @Test
     void whenUsingUtilityMethods_thenAccessMethodsViaClassName(){
-        assertEquals(MyUtilityClass.returnUpperCase("iniubong"), "INIUBONG");
-        assertEquals(MyUtilityClass.returnLowerCase("AcCrA"), "accra");
+        assertEquals( "INIUBONG", MyUtilityClass.returnUpperCase("iniubong"));
+        assertEquals("accra", MyUtilityClass.returnLowerCase("AcCrA"));
     }
 
 }
