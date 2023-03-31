@@ -2,6 +2,9 @@ bael:
   root-level-property: defaultRootLevelValue
 spring:
   profiles:
+#    include:
+#      - teachers
+#      - students
     group:
       multidocument-integration: multidocument-integration-extension
 ---

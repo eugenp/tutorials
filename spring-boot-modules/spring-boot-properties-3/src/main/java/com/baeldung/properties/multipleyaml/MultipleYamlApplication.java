@@ -12,7 +12,9 @@ public class MultipleYamlApplication implements CommandLineRunner {
     private MultipleYamlConfiguration config;
 
     public static void main(String[] args) {
-        SpringApplication.run(MultipleYamlApplication.class);
+        SpringApplication springApp = new SpringApplication(MultipleYamlApplication.class);
+//        springApp.setAdditionalProfiles("students", "teachers");
+        springApp.run(args);
     }
 
     public void run(String... args) throws Exception {
