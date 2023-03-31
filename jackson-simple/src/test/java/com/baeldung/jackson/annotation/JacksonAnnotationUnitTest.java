@@ -20,6 +20,7 @@ import com.baeldung.jackson.annotation.bidirection.UserWithIdentity;
 import com.baeldung.jackson.annotation.bidirection.UserWithRef;
 import com.baeldung.jackson.annotation.date.EventWithFormat;
 import com.baeldung.jackson.annotation.date.EventWithSerializer;
+import com.baeldung.jackson.annotation.dtos.withEnum.TypeEnumWithValue;
 import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.annotation.exception.UserWithRoot;
@@ -96,6 +97,12 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
+    public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
+        final String enumValue = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
+        assertThat(enumValue,is("\"Type A\""));
+    }
+
+    @Test
     public void whenSerializingUsingJsonSerialize_thenCorrect() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
@@ -116,6 +123,13 @@ public class JacksonAnnotationUnitTest {
         final BeanWithCreator bean = new ObjectMapper().readerFor(BeanWithCreator.class)
             .readValue(json);
         assertEquals("My bean", bean.name);
+    }
+
+    @Test
+    public void whenDeserializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
+        final String str = "\"Type A\"";
+        TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class).readValue(str);
+        assertThat(te,is(TypeEnumWithValue.TYPE1));
     }
 
     @Test
