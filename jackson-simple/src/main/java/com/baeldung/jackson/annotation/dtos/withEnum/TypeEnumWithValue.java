@@ -16,10 +16,4 @@ public enum TypeEnumWithValue {
         this.name = name;
     }
 
-
-    /*@JsonValue
-    public String getName() {
-        return name;
-    }*/
-
 }

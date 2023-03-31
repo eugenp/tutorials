@@ -126,7 +126,7 @@ public class JacksonAnnotationUnitTest {
     }
 
     @Test
-    public void whenDeserializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
+    public void whenDeserializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
         final String str = "\"Type A\"";
         TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class).readValue(str);
         assertThat(te,is(TypeEnumWithValue.TYPE1));
