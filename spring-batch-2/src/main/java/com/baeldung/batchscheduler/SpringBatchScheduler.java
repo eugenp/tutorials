@@ -50,15 +50,16 @@ public class SpringBatchScheduler {
     private JobLauncher jobLauncher;
 
     @Autowired
-    private ApplicationContext appContext;
+    private JobRepository jobRepository;
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
 
     @Scheduled(fixedRate = 2000)
     public void launchJob() throws Exception {
         Date date = new Date();
         logger.debug("scheduler starts at " + date);
         if (enabled.get()) {
-            final JobRepository jobRepository = (JobRepository) appContext.getBean("jobRepository");
-            final PlatformTransactionManager transactionManager = (PlatformTransactionManager) appContext.getBean("transactionManager");
             JobExecution jobExecution = jobLauncher.run(job(jobRepository, transactionManager), new JobParametersBuilder().addDate("launchDate", date)
                     .toJobParameters());
             batchRunCounter.incrementAndGet();

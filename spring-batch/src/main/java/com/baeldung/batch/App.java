@@ -18,6 +18,7 @@ public class App {
     public static void main(final String[] args) {
         // Spring Java config
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.getEnvironment().addActiveProfile("spring");
         context.register(SpringBatchConfig.class);
         context.register(SpringBatchRetryConfig.class);
 
