@@ -15,12 +15,12 @@ interface BooksService {
     List<Book> getBooks();
 
     @GetExchange("/books/{id}")
-    Book getBook(@PathVariable long id);
+    Book getBook(@PathVariable("id") long id);
 
     @PostExchange("/books")
     Book saveBook(@RequestBody Book book);
 
     @DeleteExchange("/books/{id}")
-    ResponseEntity<Void> deleteBook(@PathVariable long id);
+    ResponseEntity<Void> deleteBook(@PathVariable("id") long id);
 
 }
