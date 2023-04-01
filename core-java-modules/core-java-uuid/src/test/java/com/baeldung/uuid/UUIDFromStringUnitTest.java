@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UUIDFromStringUnitTest {
     @Test
-    void whenStringInUUIDFormat_shouldFromStringWork() {
+    void whenStringInUUIDFormat_thenFromStringWorks() {
         String inputStr = "bbcc4621-d88f-4a94-ae2f-b38072bf5087";
         
         UUID uuid = UUID.fromString(inputStr);
@@ -23,13 +23,13 @@ public class UUIDFromStringUnitTest {
     }
 
     @Test
-    void whenStringNotInUUIDFormat_shouldFromStringRaiseException() {
+    void whenStringNotInUUIDFormat_thenFromStringRaisesException() {
         String inputStr = "I am not a standard UUID representation.";
         assertThrows(IllegalArgumentException.class, () -> UUID.fromString(inputStr));
     }
 
     @Test
-    void whenStringInFreeFormat_shouldNameUUIDFromBytesWork() {
+    void whenStringInFreeFormat_thenNameUUIDFromBytesWorks() {
         String inputStr = "I am not a standard UUID representation.";
 
         UUID uuid = UUID.nameUUIDFromBytes(inputStr.getBytes());
@@ -45,7 +45,7 @@ public class UUIDFromStringUnitTest {
     }
 
     @Test
-    void whenStringInFreeFormat_shouldGenerateVer5UUIDWork() {
+    void whenStringInFreeFormat_thenGenerateVer5UUIDWorks() {
         String inputStr = "I am not a standard UUID representation.";
 
         UUID uuid = UUIDGenerator.generateType5UUID(inputStr);
