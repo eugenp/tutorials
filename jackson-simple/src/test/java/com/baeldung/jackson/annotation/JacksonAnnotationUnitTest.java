@@ -20,10 +20,10 @@ import com.baeldung.jackson.annotation.bidirection.UserWithIdentity;
 import com.baeldung.jackson.annotation.bidirection.UserWithRef;
 import com.baeldung.jackson.annotation.date.EventWithFormat;
 import com.baeldung.jackson.annotation.date.EventWithSerializer;
-import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.annotation.exception.UserWithRoot;
 import com.baeldung.jackson.annotation.exception.UserWithRootNamespace;
+import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.jsonview.Item;
 import com.baeldung.jackson.annotation.jsonview.Views;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -93,6 +93,13 @@ public class JacksonAnnotationUnitTest {
         final String enumAsString = new ObjectMapper().writeValueAsString(DistanceEnumWithValue.MILE);
 
         assertThat(enumAsString, is("1609.34"));
+    }
+
+    @Test
+    public void whenSerializingFieldUsingJsonValue_thenCorrect() throws IOException {
+        final String enumAsString = new ObjectMapper().writeValueAsString(PriorityEnum.HIGH);
+
+        assertEquals("3", enumAsString);
     }
 
     @Test
@@ -399,7 +406,5 @@ public class JacksonAnnotationUnitTest {
         */
 
     }
-    
-    
 
 }
