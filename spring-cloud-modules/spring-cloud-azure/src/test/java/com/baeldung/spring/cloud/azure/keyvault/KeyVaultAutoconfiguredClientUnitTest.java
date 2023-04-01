@@ -20,9 +20,7 @@ public class KeyVaultAutoconfiguredClientUnitTest {
     @Test
     void whenANotExistingKeyIsProvided_thenShouldReturnAnError() {
         String secretKey = "mySecret";
-        Assertions.assertThrows(NoSuchElementException.class, () -> {
-            keyVaultAutoconfiguredClient.getSecret(secretKey);
-        });
+        Assertions.assertThrows(NoSuchElementException.class, () -> keyVaultAutoconfiguredClient.getSecret(secretKey));
     }
 
 }

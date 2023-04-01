@@ -14,7 +14,7 @@ public interface KeyVaultClient {
         try {
             secret = getSecretClient().getSecret(key);
         } catch (Exception ex) {
-            throw new NoSuchElementException(String.format("Unable to retrieve %s secret", key), ex);
+            throw new NoSuchElementException();
         }
         return secret;
     }
