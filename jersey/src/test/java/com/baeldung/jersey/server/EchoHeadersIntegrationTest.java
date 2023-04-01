@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.Response;
 
-public class EchoHeadersUnitTest extends JerseyTest {
+public class EchoHeadersIntegrationTest extends JerseyTest {
 
     private static final String SIMPLE_HEADER_KEY = "my-header-key";
     private static final String SIMPLE_HEADER_VALUE = "my-header-value";
