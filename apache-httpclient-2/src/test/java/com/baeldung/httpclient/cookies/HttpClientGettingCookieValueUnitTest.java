@@ -23,7 +23,7 @@ import java.io.IOException;
 class HttpClientGettingCookieValueUnitTest {
     private static Logger log = LoggerFactory.getLogger(HttpClientGettingCookieValueUnitTest.class);
 
-    private static final String SAMPLE_URL = "http://www.baeldung.com/";
+    private static final String SAMPLE_URL = "http://www.github.com/";
 
     @Test
     void whenSettingCustomCookieOnTheRequest_thenGettingTheSameCookieFromTheResponse() throws IOException {

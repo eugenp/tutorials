@@ -70,11 +70,6 @@
             <version>${feign.form.spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>${spring.cloud.openfeign.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
             <version>${wire.mock.version}</version>
@@ -103,7 +98,7 @@
                 <configuration>
                     <packageName>com.baeldung.feign.soap</packageName>
                     <sources>
-                        <source>src/main/resources/users.xsd</source>
+                        <source>${project.basedir}/src/main/resources/users.xsd</source>
                     </sources>
                 </configuration>
             </plugin>
