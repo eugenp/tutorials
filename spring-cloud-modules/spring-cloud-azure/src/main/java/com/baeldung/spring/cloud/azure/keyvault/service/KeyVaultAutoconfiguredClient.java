@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.azure.service;
+package com.baeldung.spring.cloud.azure.keyvault.service;
 
 import org.springframework.stereotype.Component;
 

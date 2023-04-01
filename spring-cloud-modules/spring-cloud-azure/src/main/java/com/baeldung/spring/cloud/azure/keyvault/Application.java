@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.azure;
+package com.baeldung.spring.cloud.azure.keyvault;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,8 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
-import com.baeldung.spring.cloud.azure.service.KeyVaultAutoconfiguredClient;
-import com.baeldung.spring.cloud.azure.service.KeyVaultClient;
+import com.baeldung.spring.cloud.azure.keyvault.service.KeyVaultClient;
+import com.baeldung.spring.cloud.azure.keyvault.service.KeyVaultAutoconfiguredClient;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {

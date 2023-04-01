@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.azure.data;
+package com.baeldung.spring.cloud.azure.keyvault.data;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;

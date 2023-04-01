@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud;
+package com.baeldung.spring.cloud.azure.keyvault;
 
 import java.util.NoSuchElementException;
 
@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.baeldung.spring.cloud.azure.Application;
-import com.baeldung.spring.cloud.azure.service.KeyVaultAutoconfiguredClient;
+import com.baeldung.spring.cloud.azure.keyvault.service.KeyVaultAutoconfiguredClient;
 
 @SpringBootTest(classes = Application.class)
 public class KeyVaultAutoconfiguredClientUnitTest {

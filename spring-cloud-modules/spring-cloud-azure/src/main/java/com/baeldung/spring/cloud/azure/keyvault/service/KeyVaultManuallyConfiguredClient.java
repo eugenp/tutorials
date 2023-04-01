@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.azure.service;
+package com.baeldung.spring.cloud.azure.keyvault.service;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import com.azure.identity.ClientSecretCredentialBuilder;
 import com.azure.security.keyvault.secrets.SecretClient;
 import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.baeldung.spring.cloud.azure.data.KeyVaultProperties;
+import com.baeldung.spring.cloud.azure.keyvault.data.KeyVaultProperties;
 
 @EnableConfigurationProperties(KeyVaultProperties.class)
 @Component("KeyVaultManuallyConfiguredClient")
