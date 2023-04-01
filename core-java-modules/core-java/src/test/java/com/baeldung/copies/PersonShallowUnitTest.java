@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PersonShallowTest {
+public class PersonShallowUnitTest {
     @Test
     public void givenPersonWithHobbies_whenShallowCopyIsMade_thenBothShouldShareHobbiesListAndNewHobbyShouldBeAddedToOriginal() {
         PersonShallow original = new PersonShallow("Alice", 30, new ArrayList<>(Arrays.asList("reading", "swimming")));

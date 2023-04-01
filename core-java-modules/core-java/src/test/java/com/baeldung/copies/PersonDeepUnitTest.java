@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PersonDeepTest {
+class PersonDeepUnitTest {
     @Test
     void givenPersonWithHobbies_whenCreateDeepCopy_thenCopiedPersonHasSameNameButDifferentHobbiesList() {
         List<String> originalHobbies = new ArrayList<>();
