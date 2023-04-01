@@ -16,7 +16,7 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.*;
 import java.util.stream.IntStream;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
@@ -204,17 +204,22 @@ class ResilientAppControllerIntegrationTest {
   void testBulkheadEvents() throws Exception {
     EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external").willReturn(ok()));
     Map<Integer, Integer> responseStatusCount = new ConcurrentHashMap<>();
+    ExecutorService executorService = Executors.newFixedThreadPool(5);
+    CountDownLatch latch = new CountDownLatch(5);
 
     IntStream.rangeClosed(1, 5)
-        .parallel()
         .forEach(
-            i -> {
-              ResponseEntity<String> response =
-                  restTemplate.getForEntity("/api/bulkhead", String.class);
-              int statusCode = response.getStatusCodeValue();
-              responseStatusCount.put(
-                  statusCode, responseStatusCount.getOrDefault(statusCode, 0) + 1);
-            });
+            i ->
+                executorService.execute(
+                    () -> {
+                      ResponseEntity<String> response =
+                          restTemplate.getForEntity("/api/bulkhead", String.class);
+                      int statusCode = response.getStatusCodeValue();
+                      responseStatusCount.merge(statusCode, 1, Integer::sum);
+                      latch.countDown();
+                    }));
+    latch.await();
+    executorService.shutdown();
 
     assertEquals(2, responseStatusCount.keySet().size());
     assertTrue(responseStatusCount.containsKey(BANDWIDTH_LIMIT_EXCEEDED.value()));
