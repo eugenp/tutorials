@@ -25,33 +25,12 @@
     </parent>
     <dependencyManagement>
         <dependencies>
-            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of -->
-            <!-- junit:junit in the classpath. hence forcing the latest 4.13.2 available version -->
-            <!-- for junit5 compatibility -->
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.7.8</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.azure.spring</groupId>
-                <artifactId>spring-cloud-azure-dependencies</artifactId>
-                <version>5.0.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>ch.qos.logback</groupId>
-                        <artifactId>logback-classic</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -59,14 +38,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.azure.spring</groupId>
             <artifactId>spring-cloud-azure-starter-keyvault-secrets</artifactId>
+            <version>5.0.0</version>
         </dependency>
-
     </dependencies>
 
     <properties>
