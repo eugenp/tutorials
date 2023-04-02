@@ -52,6 +52,18 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration combine.self="override">
+                    <forkCount>3</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <includes>
+                        <include>SpringContextTest</include>
+                        <include>**/*UnitTest</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>

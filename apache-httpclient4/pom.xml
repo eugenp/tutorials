@@ -153,6 +153,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>${mockserver.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
@@ -284,8 +289,10 @@
         <wiremock.version>2.5.1</wiremock.version>
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
+        <mockserver.version>5.11.2</mockserver.version>
         <!-- maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>
