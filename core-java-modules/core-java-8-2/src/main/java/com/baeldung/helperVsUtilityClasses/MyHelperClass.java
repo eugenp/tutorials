@@ -2,14 +2,9 @@ package com.baeldung.helperVsUtilityClasses;
 
 class MyHelperClass {
 
-    String numberString = "15";
-    public boolean isInteger(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+    public double discount = 0.10;
+    public double discountedPrice(double price) {
+        return price - (price * discount);
     }
 
     public static int getMaxNumber(int[] numbers) {

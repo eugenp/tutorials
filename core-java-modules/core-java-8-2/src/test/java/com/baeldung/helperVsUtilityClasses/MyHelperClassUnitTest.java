@@ -13,7 +13,7 @@ class MyHelperClassUnitTest {
 
         assertNotNull(myHelperClassObject);
 
-        assertTrue(myHelperClassObject.isInteger(myHelperClassObject.numberString));
+        assertEquals(90, myHelperClassObject.discountedPrice(100.00));
         assertEquals( 79, MyHelperClass.getMaxNumber(numberArray));
         assertEquals(3, MyHelperClass.getMinNumber(numberArray));
     }
