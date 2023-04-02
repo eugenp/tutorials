@@ -13,7 +13,10 @@ public class MultipleYamlApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication springApp = new SpringApplication(MultipleYamlApplication.class);
-//        springApp.setAdditionalProfiles("students", "teachers");
+
+        // Code from first example, uncomment to use multiple profiles
+        // springApp.setAdditionalProfiles("students", "teachers");
+
         springApp.run(args);
     }
 
