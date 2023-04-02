@@ -14,6 +14,7 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import java.net.URI;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
@@ -205,20 +206,23 @@ class ResilientAppControllerIntegrationTest {
     EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external").willReturn(ok()));
     Map<Integer, Integer> responseStatusCount = new ConcurrentHashMap<>();
     ExecutorService executorService = Executors.newFixedThreadPool(5);
-    CountDownLatch latch = new CountDownLatch(5);
 
+    List<Callable<Integer>> tasks = new ArrayList<>();
     IntStream.rangeClosed(1, 5)
         .forEach(
             i ->
-                executorService.execute(
+                tasks.add(
                     () -> {
                       ResponseEntity<String> response =
                           restTemplate.getForEntity("/api/bulkhead", String.class);
-                      int statusCode = response.getStatusCodeValue();
-                      responseStatusCount.merge(statusCode, 1, Integer::sum);
-                      latch.countDown();
+                      return response.getStatusCodeValue();
                     }));
-    latch.await();
+
+    List<Future<Integer>> futures = executorService.invokeAll(tasks);
+    for (Future<Integer> future : futures) {
+      int statusCode = future.get();
+      responseStatusCount.merge(statusCode, 1, Integer::sum);
+    }
     executorService.shutdown();
 
     assertEquals(2, responseStatusCount.keySet().size());
