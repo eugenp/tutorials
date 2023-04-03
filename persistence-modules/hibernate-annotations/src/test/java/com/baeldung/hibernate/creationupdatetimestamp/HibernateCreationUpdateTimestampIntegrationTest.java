@@ -102,7 +102,7 @@ class HibernateCreationUpdateTimestampIntegrationTest {
         Instant createdOnAfterUpdate = book.getCreatedOn();
         Instant lastUpdatedOnAfterUpdate = book.getLastUpdatedOn();
 
-        assertEquals(book.getTitle(), newName);
+        assertEquals(newName, book.getTitle());
         assertNotNull(createdOnAfterUpdate);
         assertNotNull(lastUpdatedOnAfterUpdate);
         assertEquals(createdOnAfterCreation, createdOnAfterUpdate);
