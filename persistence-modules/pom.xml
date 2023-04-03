@@ -33,7 +33,7 @@
         <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
-        <!-- <module>hibernate-jpa</module> FAILED -->
+        <module>hibernate-jpa</module>
         <!-- <module>hibernate-queries</module> FAILED -->
         <!-- <module>hibernate-enterprise</module> FAILED --> 
         <module>influxdb</module>

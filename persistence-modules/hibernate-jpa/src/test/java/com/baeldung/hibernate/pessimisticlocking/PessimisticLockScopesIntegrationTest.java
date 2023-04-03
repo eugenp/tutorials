@@ -6,9 +6,9 @@ import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.LockModeType;
-import javax.persistence.PessimisticLockScope;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
+import jakarta.persistence.PessimisticLockScope;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
