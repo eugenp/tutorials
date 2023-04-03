@@ -358,7 +358,6 @@
 
                 <module>jetbrains</module>
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
@@ -555,7 +554,6 @@
                 <module>java-jdi</module>
 
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
@@ -813,6 +811,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -1063,6 +1062,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
