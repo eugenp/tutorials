@@ -59,7 +59,7 @@ public class CustomStringArrayType implements UserType {
     @Override
     public Object deepCopy(Object value) throws HibernateException {
         String[] a = (String[])value;
-        return Arrays.copyOf(a, a.length);
+        return a != null ? Arrays.copyOf(a, a.length) : null;
     }
 
     @Override

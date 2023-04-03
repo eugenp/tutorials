@@ -59,7 +59,7 @@ public class CustomIntegerArrayType implements UserType {
     @Override
     public Object deepCopy(Object value) throws HibernateException {
         Integer[] a = (Integer[])value;
-        return Arrays.copyOf(a, a.length);
+        return a != null ? Arrays.copyOf(a, a.length) : null;
     }
 
     @Override
