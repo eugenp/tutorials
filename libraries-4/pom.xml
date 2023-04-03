@@ -99,6 +99,16 @@
             <artifactId>javax.el</artifactId>
             <version>${glassfish.web.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -118,6 +128,7 @@
         <javax.el.version>3.0.0</javax.el.version>
         <glassfish.web.version>2.2.4</glassfish.web.version>
         <olap4j.version>1.2.0</olap4j.version>
+        <javafx.version>19</javafx.version>
     </properties>
 
 </project>

@@ -8,6 +8,8 @@ import java.nio.file.Files;
 
 import org.junit.Test;
 
+import com.baeldung.chronicle.queue.ChronicleQueue;
+
 import net.openhft.chronicle.Chronicle;
 import net.openhft.chronicle.ChronicleQueueBuilder;
 import net.openhft.chronicle.ExcerptTailer;
@@ -15,6 +17,7 @@ import net.openhft.chronicle.tools.ChronicleTools;
 
 public class ChronicleQueueIntegrationTest {
 
+//    @Ignore
     @Test
     public void givenSetOfValues_whenWriteToQueue_thenWriteSuccesfully() throws IOException {
         File queueDir = Files.createTempDirectory("chronicle-queue").toFile();
