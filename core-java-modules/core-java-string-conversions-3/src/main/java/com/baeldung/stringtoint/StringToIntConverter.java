@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.apache.commons.lang3.math.NumberUtils;
 
 public class StringToIntConverter {
-    
+
     private StringToIntConverter() {
     }
 
@@ -50,3 +50,4 @@ public class StringToIntConverter {
         return NumberUtils.toInt(input, Integer.MIN_VALUE);
     }
 }
+
