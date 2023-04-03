@@ -96,11 +96,6 @@ public class JacksonAnnotationUnitTest {
         assertThat(enumAsString, is("1609.34"));
     }
 
-    @Test
-    public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
-        final String enumValue = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
-        assertThat(enumValue,is("\"Type A\""));
-    }
 
     @Test
     public void whenSerializingUsingJsonSerialize_thenCorrect() throws JsonProcessingException, ParseException {
@@ -114,6 +109,12 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString(toParse));
     }
 
+    @Test
+    public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
+        final String enumValue = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
+        assertThat(enumValue,is("\"Type A\""));
+    }
+
     // ========================= Deserializing annotations ============================
 
     @Test
@@ -125,12 +126,6 @@ public class JacksonAnnotationUnitTest {
         assertEquals("My bean", bean.name);
     }
 
-    @Test
-    public void whenDeserializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
-        final String str = "\"Type A\"";
-        TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class).readValue(str);
-        assertThat(te,is(TypeEnumWithValue.TYPE1));
-    }
 
     @Test
     public void whenDeserializingUsingJsonInject_thenCorrect() throws IOException {
@@ -173,6 +168,13 @@ public class JacksonAnnotationUnitTest {
         final EventWithSerializer event = new ObjectMapper().readerFor(EventWithSerializer.class)
             .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
+    }
+
+    @Test
+    public void whenDeserializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
+        final String str = "\"Type A\"";
+        TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class).readValue(str);
+        assertThat(te,is(TypeEnumWithValue.TYPE1));
     }
 
     // ========================= Inclusion annotations ============================
