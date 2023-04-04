@@ -112,7 +112,14 @@ public class JacksonAnnotationUnitTest {
     @Test
     public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
         final String enumValue = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
-        assertThat(enumValue,is("\"Type A\""));
+        assertThat(enumValue, is("\"Type A\""));
+    }
+
+    @Test
+    public void whenSerializingUsingJsonValueAnnotatedFieldInPojo_thenCorrect() throws JsonProcessingException {
+        GeneralBean bean1 = new GeneralBean(1, "Bean 1");
+        final String bean1AsString = new ObjectMapper().writeValueAsString(bean1);
+        assertThat(bean1AsString, is("\"Bean 1\""));
     }
 
     // ========================= Deserializing annotations ============================
@@ -173,8 +180,18 @@ public class JacksonAnnotationUnitTest {
     @Test
     public void whenDeserializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
         final String str = "\"Type A\"";
-        TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class).readValue(str);
-        assertThat(te,is(TypeEnumWithValue.TYPE1));
+        TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class)
+            .readValue(str);
+        assertThat(te, is(TypeEnumWithValue.TYPE1));
+    }
+
+    @Test(expected = Exception.class)
+    public void whenDeserializingUsingJsonValueAnnotatedFieldInPojo_thenGetException() throws JsonProcessingException {
+        GeneralBean bean1 = new GeneralBean(1, "Bean 1");
+        final String bean1AsString = new ObjectMapper().writeValueAsString(bean1);
+        GeneralBean bean = new ObjectMapper().readerFor(GeneralBean.class)
+            .readValue(bean1AsString);
+        assertThat(bean.getName(), is(bean1.getName()));
     }
 
     // ========================= Inclusion annotations ============================
