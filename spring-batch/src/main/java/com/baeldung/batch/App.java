@@ -25,7 +25,7 @@ public class App {
         context.refresh();
 
         // Spring xml config
-        // ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch.xml");
+        // ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch-intro.xml");
 
         runJob(context, "firstBatchJob");
         runJob(context, "skippingBatchJob");
