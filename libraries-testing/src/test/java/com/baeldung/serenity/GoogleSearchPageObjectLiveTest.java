@@ -19,6 +19,9 @@ public class GoogleSearchPageObjectLiveTest {
     public void whenGoogleBaeldungThenShouldSeeEugen() {
         googleSearch.open();
 
+        // If your browser displays cookie settings dialog, uncomment the line below
+        // googleSearch.validateCookies();
+
         googleSearch.searchFor("baeldung");
 
         googleSearch.resultMatches("Eugen (Baeldung)");

@@ -1,13 +1,13 @@
 package com.baeldung.algorithms.linkedlist;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.jupiter.api.Test;
 
-public class LinkedListReversalUnitTest {
+class LinkedListReversalUnitTest {
     @Test
-    public void givenLinkedList_whenIterativeReverse_thenOutputCorrectResult() {
+    void givenLinkedList_whenIterativeReverse_thenOutputCorrectResult() {
         ListNode head = constructLinkedList();
         ListNode node = head;
         for (int i = 1; i <= 5; i++) {
@@ -25,7 +25,7 @@ public class LinkedListReversalUnitTest {
     }
 
     @Test
-    public void givenLinkedList_whenRecursiveReverse_thenOutputCorrectResult() {
+    void givenLinkedList_whenRecursiveReverse_thenOutputCorrectResult() {
         ListNode head = constructLinkedList();
         ListNode node = head;
         for (int i = 1; i <= 5; i++) {

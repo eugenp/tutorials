@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import javax.xml.bind.JAXB;
+import jakarta.xml.bind.JAXB;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpDelete;

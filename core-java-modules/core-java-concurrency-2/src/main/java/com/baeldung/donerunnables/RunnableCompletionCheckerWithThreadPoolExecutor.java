@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 public class RunnableCompletionCheckerWithThreadPoolExecutor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RunnableCompletionCheckerWithCompletableFuture.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RunnableCompletionCheckerWithThreadPoolExecutor.class);
     private static final int NUMBER_OF_RUNNABLES = 5;
     private static final int PAUSE_MILLIS = 1000;
     private static final int NUMBER_OF_THREADS = 5;

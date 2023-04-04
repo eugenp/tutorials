@@ -42,9 +42,9 @@
     </dependencies>
 
     <properties>
-        <geotools.version>15.2</geotools.version>
-        <geotools-swing.version>15.2</geotools-swing.version>
-        <geotools-shapefile.version>15.2</geotools-shapefile.version>
+        <geotools.version>28.1</geotools.version>
+        <geotools-swing.version>28.1</geotools-swing.version>
+        <geotools-shapefile.version>28.1</geotools-shapefile.version>
     </properties>
 
 </project>

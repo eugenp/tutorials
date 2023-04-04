@@ -11,3 +11,6 @@ This module contains articles about core features in the Java language
 - [Variable Instantiation on Declaration vs. on Constructor in Java](https://www.baeldung.com/java-variable-instantiation-declaration-vs-constructor)
 - [Infinity in Java](https://www.baeldung.com/java-infinity)
 - [Type Parameter vs Wildcard in Java Generics](https://www.baeldung.com/java-generics-type-parameter-vs-wildcard)
+- [Convert Between int and char in Java](https://www.baeldung.com/java-convert-int-char)
+- [Converting a Number from One Base to Another in Java](https://www.baeldung.com/java-converting-a-number-from-one-base-to-another)
+- [Check if Command-Line Arguments Are Null in Java](https://www.baeldung.com/java-check-command-line-args)

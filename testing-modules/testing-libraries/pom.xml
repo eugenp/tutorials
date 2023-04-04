@@ -90,6 +90,11 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-plugin.version}</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -111,8 +116,9 @@
         <cucumber.version>4.8.0</cucumber.version>
         <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
         <system-rules.version>1.19.0</system-rules.version>
-        <system-lambda.version>1.0.0</system-lambda.version>
+        <system-lambda.version>1.2.1</system-lambda.version>
         <spring-boot.version>2.4.3</spring-boot.version>
+        <findbugs-plugin.version>3.0.5</findbugs-plugin.version>
     </properties>
 
 </project>

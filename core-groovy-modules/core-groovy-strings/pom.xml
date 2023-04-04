@@ -103,8 +103,9 @@
 
     <repositories>
         <repository>
-            <id>central</id>
-            <url>https://jcenter.bintray.com</url>
+            <id>maven_central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
     </repositories>
 

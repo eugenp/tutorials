@@ -18,6 +18,7 @@
     <modules>
         <module>docker-caching</module>
         <module>docker-compose</module>
+        <module>docker-compose-2</module>
         <module>docker-containers</module>
         <module>docker-images</module>
         <module>docker-spring-boot</module>

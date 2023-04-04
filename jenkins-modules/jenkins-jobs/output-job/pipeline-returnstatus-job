@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                script {
+                    def status = sh(returnStatus: true, script: 'ls /test')
+                    if (status != 0) {
+                        echo "Error: Command exited with status ${status}"
+                    } else {
+                        echo "Command executed successfully"
+                    }
+                }
+            }
+        }
+    }
+}

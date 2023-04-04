@@ -17,6 +17,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -25,10 +26,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
                 <configuration>
                     <webApp>
                         <contextPath>/front-controller</contextPath>
@@ -37,5 +40,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <jetty-maven-plugin.version>11.0.13</jetty-maven-plugin.version>
+
+    </properties>
 
 </project>
