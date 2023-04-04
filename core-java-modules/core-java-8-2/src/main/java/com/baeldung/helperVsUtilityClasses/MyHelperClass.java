@@ -1,8 +1,12 @@
 package com.baeldung.helperVsUtilityClasses;
 
 class MyHelperClass {
-
-    public double discount = 0.10;
+    public double discount;
+    public MyHelperClass(double discount) {
+        if (discount > 0 && discount < 1) {
+            this.discount = discount;
+        }
+    }
     public double discountedPrice(double price) {
         return price - (price * discount);
     }

@@ -8,7 +8,7 @@ class MyHelperClassUnitTest {
 
     @Test
     void whenCreatingHelperObject_thenHelperObjectShouldBeCreated() {
-        MyHelperClass myHelperClassObject = new MyHelperClass();
+        MyHelperClass myHelperClassObject = new MyHelperClass(0.10);
         int[] numberArray = {15, 23, 66, 3, 51, 79};
 
         assertNotNull(myHelperClassObject);
