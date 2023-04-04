@@ -9,8 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>lombok-modules</artifactId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <dependencies>
