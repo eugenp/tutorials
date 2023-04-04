@@ -31,7 +31,7 @@ public class CustomerRepositoryIntegrationTest {
         entityManager.persist(new Customer("A", "A@example.com"));
         entityManager.persist(new Customer("D", null));
         entityManager.persist(new Customer("D", "D@example.com"));
-        entityManager.persist(new Customer("C",null, UUID.fromString("c7c19ff4-8636-4b99-9591-c3327652f191")));
+        entityManager.persist(new Customer("C", null, UUID.fromString("c7c19ff4-8636-4b99-9591-c3327652f191")));
     }
 
     @Test
@@ -46,20 +46,6 @@ public class CustomerRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenQueryMethod_findByUUid() {
-        List<Customer> customers = repository.findCustomerByUuid(UUID.fromString("c7c19ff4-8636-4b99-9591-c3327652f191"));
-
-        assertEquals(1, customers.size());
-    }
-
-    @Test
-    public void givenQueryMethod_findByUUid_WhenUuidIsNull() {
-        List<Customer> customers = repository.findCustomerByUuid(null);
-
-        assertEquals(3, customers.size());
-    }
-
-    @Test
     public void givenQueryMethod_whenEmailIsAbsent_thenIgnoreEmail() {
         List<Customer> customers = repository.findByName("D");
 
@@ -71,6 +57,20 @@ public class CustomerRepositoryIntegrationTest {
         List<Customer> customers = repository.findCustomerByNameAndEmail("D", null);
 
         assertEquals(2, customers.size());
+    }
+
+    @Test
+    public void givenUUIDIsPresent_whenQueryMethod_thenFetchedCorrectly() {
+        List<Customer> customers = repository.findCustomerByUuid(UUID.fromString("c7c19ff4-8636-4b99-9591-c3327652f191"));
+
+        assertEquals(1, customers.size());
+    }
+
+    @Test
+    public void givenNullUuid_whenQueryMethod_thenFetchedCorrectly() {
+        List<Customer> customers = repository.findCustomerByUuid(null);
+
+        assertEquals(3, customers.size());
     }
 
     @After

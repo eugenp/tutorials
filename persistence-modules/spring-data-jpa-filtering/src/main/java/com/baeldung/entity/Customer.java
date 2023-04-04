@@ -16,7 +16,7 @@ public class Customer {
     private String name;
     private String email;
 
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID uuid;
 
     public Customer(String name, String email) {
