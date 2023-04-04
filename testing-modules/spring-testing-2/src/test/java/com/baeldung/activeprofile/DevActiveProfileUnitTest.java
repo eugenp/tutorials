@@ -1,14 +1,13 @@
-package com.baeldung.junit5.activeprofile;
+package com.baeldung.activeprofile;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.EnabledIf;
 
-@SpringBootTest
-@EnabledIf(value = "#{{'dev', 'prod'}.contains(environment.getActiveProfiles()[0])}", loadContext = true)
-public class MultipleActiveProfileUnitTest {
+@SpringBootTest(classes = ActiveProfileApplication.class)
+public class DevActiveProfileUnitTest {
+
     @Value("${profile.property.value}")
     private String propertyString;
 
