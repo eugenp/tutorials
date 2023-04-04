@@ -358,16 +358,15 @@
 
                 <module>jetbrains</module>
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
 
                 <module>muleesb</module>
 
-                <module>osgi</module>
                 <module>persistence-modules</module>
                 <module>web-modules</module>
             </modules>
@@ -492,11 +491,7 @@
                 <module>jhipster-5</module>
                 <module>jws</module>
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
-
             </modules>
         </profile>
 
@@ -559,15 +554,14 @@
                 <module>java-jdi</module>
 
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
-                <module>osgi</module>
                 <module>persistence-modules</module>
                 <module>web-modules</module>
             </modules>
@@ -675,9 +669,6 @@
                 <module>jhipster-5</module>
                 <module>jws</module>
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
             </modules>
 
@@ -744,6 +735,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -819,6 +811,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -897,8 +890,12 @@
                 <module>jsoup</module>
                 <module>ksqldb</module>
                 <module>jsf</module>
+
+                <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
-                <module>libraries-7</module>
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -991,6 +988,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -1064,6 +1062,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
@@ -1145,7 +1144,9 @@
                 <module>jsf</module>
                 <module>ksqldb</module>
 
-                <module>libraries-7</module>
+                <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
