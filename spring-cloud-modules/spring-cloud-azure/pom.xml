@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-azure</artifactId>
@@ -32,6 +32,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -40,13 +47,13 @@
         <dependency>
             <groupId>com.azure.spring</groupId>
             <artifactId>spring-cloud-azure-starter-keyvault-secrets</artifactId>
-            <version>5.0.0</version>
+            <version>${azure-key-vault-extension-version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-        <azure-key-vault-extension-version>1.2.6</azure-key-vault-extension-version>
+        <spring-cloud-dependencies.version>2021.0.3</spring-cloud-dependencies.version>
+        <azure-key-vault-extension-version>4.0.0</azure-key-vault-extension-version>
     </properties>
 
 </project>
