@@ -171,15 +171,14 @@
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.time=ALL-UNNAMED
-                        --add-opens java.base/java.nio=ALL-UNNAMED
+                        --add-opens
+                        java.base/java.nio=ALL-UNNAMED
                         --add-opens java.base/java.util=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-
 
     <properties>
         <kafka.version>3.4.0</kafka.version>
