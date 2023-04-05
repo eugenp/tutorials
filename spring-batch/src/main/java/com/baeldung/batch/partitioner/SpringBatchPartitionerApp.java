@@ -8,14 +8,14 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class SpringbatchPartitionerApp {
+public class SpringBatchPartitionerApp {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SpringbatchPartitionerApp.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBatchPartitionerApp.class);
 
     public static void main(final String[] args) {
         // Spring Java config
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(SpringbatchPartitionConfig.class);
+        context.register(SpringBatchPartitionConfig.class);
         context.refresh();
 
         final JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");

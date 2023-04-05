@@ -761,6 +761,7 @@
 
                 <module>javafx</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-exceptions</module>
@@ -782,7 +783,6 @@
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
-
 
                 <module>spring-aop</module>
                 <module>jmeter</module>
@@ -926,7 +926,6 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1008,6 +1007,7 @@
 
                 <module>javafx</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-exceptions</module>
@@ -1172,7 +1172,6 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>

@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -51,8 +51,9 @@
     </dependencies>
 
     <properties>
-        <spring.batch.version>4.3.0</spring.batch.version>
-        <awaitility.version>3.1.1</awaitility.version>
+        <spring.batch.version>5.0.0</spring.batch.version>
+        <awaitility.version>4.2.0</awaitility.version>
+        <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
     </properties>
 
 </project>
