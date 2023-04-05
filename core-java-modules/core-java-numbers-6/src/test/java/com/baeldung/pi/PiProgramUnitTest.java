@@ -8,8 +8,8 @@ import org.junit.Test;
 public class PiProgramUnitTest {
 
     @Test
-    public void givenPiCalculator_whenCalculatePiWithTenThousandPoints_thenEstimatedPiIsWithinTolerance() {
-        int totalPoints = 10000;
+    public void givenPiCalculator_whenCalculatePiWithOneMillionPoints_thenEstimatedPiIsWithinTolerance() {
+        int totalPoints = 1000000;
         int insideCircle = 0;
 
         Random random = new Random();
