@@ -1,6 +1,6 @@
 package com.baeldung.deepandshallowcopy;
 
-public class Person {
+public class Person implements Cloneable {
     String name;
     int age;
     FavoriteFood favoriteFood;
@@ -11,9 +11,12 @@ public class Person {
         this.favoriteFood = favoriteFood;
     }
 
-    // Deep copy method
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     public Person deepCopy() {
-        FavoriteFood copiedFavoriteFood = new FavoriteFood(this.favoriteFood.food);
-        return new Person(this.name, this.age, copiedFavoriteFood);
+        FavoriteFood newFavoriteFood = new FavoriteFood(this.favoriteFood.food);
+        return new Person(this.name, this.age, newFavoriteFood);
     }
 }

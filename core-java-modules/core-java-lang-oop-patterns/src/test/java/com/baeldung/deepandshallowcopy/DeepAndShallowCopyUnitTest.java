@@ -1,9 +1,11 @@
 package com.baeldung.deepandshallowcopy;
 
 import com.baeldung.deepandshallowcopy.*;
+
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class DeepAndShallowCopyUnitTest {
     @Test
@@ -11,14 +13,16 @@ public class DeepAndShallowCopyUnitTest {
         FavoriteFood favoriteFood = new FavoriteFood("Pizza");
         Person originalPerson = new Person("John", 30, favoriteFood);
 
-        // Shallow copy
-        Person shallowCopyPerson = new Person(originalPerson.name, originalPerson.age, originalPerson.favoriteFood);
+        try {
+            // Create a shallow copy of the originalPerson
+            Person clonedPerson = (Person) originalPerson.clone();
 
-        // Modify the favorite food of the original person
-        originalPerson.favoriteFood.food = "Burger";
-
-        // Shallow copy should reflect the change
-        assertThat(shallowCopyPerson.favoriteFood.food).isEqualTo("Burger");
+            // Check if the cloned person's name and favorite food are the same as the original person
+            assertThat(clonedPerson.name).isEqualTo("John");
+            assertThat(clonedPerson.favoriteFood.food).isEqualTo("Pizza");
+        } catch (CloneNotSupportedException e) {
+            fail("Clone is not supported");
+        }
     }
 
     @Test
@@ -36,4 +40,3 @@ public class DeepAndShallowCopyUnitTest {
         assertThat(deepCopyPerson.favoriteFood.food).isEqualTo("Pizza");
     }
 }
-
