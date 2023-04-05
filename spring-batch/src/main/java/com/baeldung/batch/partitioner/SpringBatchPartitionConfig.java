@@ -5,13 +5,13 @@ import com.baeldung.batch.service.RecordFieldSetMapper;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
+import org.springframework.batch.core.launch.support.TaskExecutorJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -36,42 +36,35 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.text.ParseException;
 
 @Configuration
 @EnableBatchProcessing
-public class SpringbatchPartitionConfig {
+public class SpringBatchPartitionConfig {
 
     @Autowired
-    ResourcePatternResolver resoursePatternResolver;
-
-    @Autowired
-    private JobBuilderFactory jobs;
-
-    @Autowired
-    private StepBuilderFactory steps;
+    private ResourcePatternResolver resourcePatternResolver;
 
     @Bean(name = "partitionerJob")
-    public Job partitionerJob() throws UnexpectedInputException, MalformedURLException, ParseException {
-        return jobs.get("partitionerJob")
-          .start(partitionStep())
+    public Job partitionerJob(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws UnexpectedInputException, ParseException {
+        return new JobBuilder("partitionerJob", jobRepository)
+          .start(partitionStep(jobRepository, transactionManager))
           .build();
     }
 
     @Bean
-    public Step partitionStep() throws UnexpectedInputException, MalformedURLException, ParseException {
-        return steps.get("partitionStep")
+    public Step partitionStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws UnexpectedInputException, ParseException {
+        return new StepBuilder("partitionStep", jobRepository)
           .partitioner("slaveStep", partitioner())
-          .step(slaveStep())
+          .step(slaveStep(jobRepository, transactionManager))
           .taskExecutor(taskExecutor())
           .build();
     }
 
     @Bean
-    public Step slaveStep() throws UnexpectedInputException, MalformedURLException, ParseException {
-        return steps.get("slaveStep")
-          .<Transaction, Transaction>chunk(1)
+    public Step slaveStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) throws UnexpectedInputException, ParseException {
+        return new StepBuilder("slaveStep", jobRepository)
+          .<Transaction, Transaction>chunk(1, transactionManager)
           .reader(itemReader(null))
           .writer(itemWriter(marshaller(), null))
           .build();
@@ -82,7 +75,7 @@ public class SpringbatchPartitionConfig {
         CustomMultiResourcePartitioner partitioner = new CustomMultiResourcePartitioner();
         Resource[] resources;
         try {
-            resources = resoursePatternResolver.getResources("file:src/main/resources/input/partitioner/*.csv");
+            resources = resourcePatternResolver.getResources("file:src/main/resources/input/partitioner/*.csv");
         } catch (IOException e) {
             throw new RuntimeException("I/O problems when resolving the input file pattern.", e);
         }
@@ -108,7 +101,7 @@ public class SpringbatchPartitionConfig {
 
     @Bean(destroyMethod = "")
     @StepScope
-    public StaxEventItemWriter<Transaction> itemWriter(Marshaller marshaller, @Value("#{stepExecutionContext[opFileName]}") String filename) throws MalformedURLException {
+    public StaxEventItemWriter<Transaction> itemWriter(Marshaller marshaller, @Value("#{stepExecutionContext[opFileName]}") String filename) {
         StaxEventItemWriter<Transaction> itemWriter = new StaxEventItemWriter<>();
         itemWriter.setMarshaller(marshaller);
         itemWriter.setRootTagName("transactionRecord");
@@ -133,7 +126,8 @@ public class SpringbatchPartitionConfig {
         return taskExecutor;
     }
 
-    private JobRepository getJobRepository() throws Exception {
+    @Bean(name = "jobRepository")
+    public JobRepository getJobRepository() throws Exception {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource());
         factory.setTransactionManager(getTransactionManager());
@@ -143,20 +137,23 @@ public class SpringbatchPartitionConfig {
         return factory.getObject();
     }
 
-    private DataSource dataSource() {
+    @Bean(name = "dataSource")
+    public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.HSQL)
+        return builder.setType(EmbeddedDatabaseType.H2)
           .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
           .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
           .build();
     }
 
-    private PlatformTransactionManager getTransactionManager() {
+    @Bean(name = "transactionManager")
+    public PlatformTransactionManager getTransactionManager() {
         return new ResourcelessTransactionManager();
     }
 
+    @Bean(name = "jobLauncher")
     public JobLauncher getJobLauncher() throws Exception {
-        SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+        TaskExecutorJobLauncher jobLauncher = new TaskExecutorJobLauncher();
         // SimpleJobLauncher's methods Throws Generic Exception,
         // it would have been better to have a specific one
         jobLauncher.setJobRepository(getJobRepository());
