@@ -5,18 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>junit5-annotations</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <name>junit5-annotations</name>
     <description>Intro to JUnit 5</description>
 
@@ -54,22 +42,11 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.test.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
         <log4j2.version>2.19.0</log4j2.version>
-        <spring.boot.version>3.0.4</spring.boot.version>
-        <spring.boot.test.version>3.0.5</spring.boot.test.version>
+        <junit-platform.version>1.9.2</junit-platform.version>
     </properties>
 
 </project>
