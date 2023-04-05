@@ -100,7 +100,8 @@
     </build>
 
     <properties>
-        <jersey.version>2.38</jersey.version>
+        <jersey.version>3.1.1</jersey.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>
