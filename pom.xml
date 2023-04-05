@@ -1246,8 +1246,9 @@
         <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
-        <org.slf4j.version>2.0.7</org.slf4j.version>
-        <logback.version>1.4.6</logback.version>
+		<!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
