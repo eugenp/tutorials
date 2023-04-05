@@ -115,6 +115,7 @@
         <module>core-java-numbers-3</module>
         <module>core-java-numbers-4</module>
         <module>core-java-numbers-5</module>
+        <module>core-java-numbers-6</module>
         <module>core-java-optional</module>
         <module>core-java-perf</module>
         <module>core-java-reflection</module>
