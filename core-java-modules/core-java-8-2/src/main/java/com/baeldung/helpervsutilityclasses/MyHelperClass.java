@@ -1,4 +1,4 @@
-package com.baeldung.helperVsUtilityClasses;
+package com.baeldung.helpervsutilityclasses;
 
 class MyHelperClass {
     public double discount;
