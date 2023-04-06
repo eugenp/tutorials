@@ -21,9 +21,5 @@ public class ProdActiveProfileUnitTest {
         Assertions.assertEquals("This the the application.yaml file", propertyString, propertyString);
     }
 
-    @Test
-    void whenProdIsASystemVariable_ThenTestShouldRun() {
-        Assertions.assertEquals("This the the application.yaml file", propertyString, propertyString);
-    }
 
 }
