@@ -1,10 +1,10 @@
-package com.baeldung.cloud.openfeign.fileupload.config;
+package com.baeldung.core.fileupload.config;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.baeldung.cloud.openfeign.exception.BadRequestException;
-import com.baeldung.cloud.openfeign.exception.NotFoundException;
+import com.baeldung.core.exception.BadRequestException;
+import com.baeldung.core.exception.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import feign.Response;
@@ -12,9 +12,10 @@ import feign.codec.ErrorDecoder;
 
 public class RetreiveMessageErrorDecoder implements ErrorDecoder {
     private final ErrorDecoder errorDecoder = new Default();
+
     @Override
     public Exception decode(String methodKey, Response response) {
-        ExceptionMessage message = null;
+        ExceptionMessage message;
         try (InputStream bodyIs = response.body()
             .asInputStream()) {
             ObjectMapper mapper = new ObjectMapper();
