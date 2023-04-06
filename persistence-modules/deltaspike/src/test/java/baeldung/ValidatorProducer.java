@@ -1,8 +1,8 @@
 package baeldung;
 
 import javax.enterprise.inject.Produces;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 /**
  * Created by adam.

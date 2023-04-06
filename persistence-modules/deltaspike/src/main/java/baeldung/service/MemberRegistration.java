@@ -17,16 +17,20 @@
 package baeldung.service;
 
 import baeldung.data.MemberRepository;
+import baeldung.data.SecondaryPersistenceUnit;
 import baeldung.model.Member;
+import baeldung.model.QMember;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.ValidationException;
-import jakarta.validation.Validator;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
