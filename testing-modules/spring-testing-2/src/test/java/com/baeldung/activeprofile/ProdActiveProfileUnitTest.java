@@ -10,7 +10,6 @@ import org.springframework.test.context.junit.jupiter.EnabledIf;
 @SpringBootTest(classes = ActiveProfileApplication.class)
 @EnabledIf(value = "#{environment.getActiveProfiles()[0] == 'prod'}", loadContext = true)
 @ActiveProfiles(value = "prod")
-
 public class ProdActiveProfileUnitTest {
 
     @Value("${profile.property.value}")
@@ -20,6 +19,5 @@ public class ProdActiveProfileUnitTest {
     void whenProdIsActive_ThenValueShouldBeKeptFromApplicationYaml() {
         Assertions.assertEquals("This the the application.yaml file", propertyString, propertyString);
     }
-
 
 }
