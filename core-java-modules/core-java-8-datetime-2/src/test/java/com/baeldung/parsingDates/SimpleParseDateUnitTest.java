@@ -22,7 +22,7 @@ public class SimpleParseDateUnitTest {
     @Test
     public void whenInvalidDate_thenAssertThrows() {
         SimpleDateTimeFormater simpleDateTimeFormater = new SimpleDateTimeFormater();
-        assertEquals("2022-12-04", simpleDateTimeFormater.parseDate("2022-12-04"));
+        assertEquals(java.time.LocalDate.parse("2022-12-04"), simpleDateTimeFormater.parseDate("2022-12-04"));
         assertThrows(DateTimeParseException.class, () -> simpleDateTimeFormater.parseDate("2022-13-04"));
     }
 
@@ -30,14 +30,14 @@ public class SimpleParseDateUnitTest {
     public void whenDateIsCorrect_thenParseCorrect() {
         SimpleDateUtils simpleDateUtils = new SimpleDateUtils();
         assertNull(simpleDateUtils.parseDate("53/10/2014"));
-        assertEquals("10/09/2014", simpleDateUtils.parseDate("10/09/2014"));
+        assertEquals("Wed Sep 10 00:00:00 UTC 2014", simpleDateUtils.parseDate("10/09/2014").toString());
     }
 
     @Test
     public void whenDateIsCorrect_thenResultCorrect() {
-        SimpleDateTimeFormat simpleDateUtils = new SimpleDateTimeFormat();
-        assertNull(simpleDateUtils.parseDate("53/10/2014"));
-        assertEquals(LocalDate.parse("2014-10-10"), simpleDateUtils.parseDate("2014-10-10"));
+        SimpleDateTimeFormat simpleDateTimeFormat = new SimpleDateTimeFormat();
+        assertNull(simpleDateTimeFormat.parseDate("53/10/2014"));
+        assertEquals(LocalDate.parse("2014-10-10"), simpleDateTimeFormat.parseDate("2014-10-10"));
     }
 
 }
