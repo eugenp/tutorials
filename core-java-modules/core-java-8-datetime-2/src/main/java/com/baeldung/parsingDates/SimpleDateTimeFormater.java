@@ -6,12 +6,12 @@ import java.time.format.DateTimeFormatterBuilder;
 
 public class SimpleDateTimeFormater {
 
-    public static String parseDate(String date) {
+    public static LocalDate parseDate(String date) {
         DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder()
                 .append(DateTimeFormatter.ofPattern("[MM/dd/yyyy]" + "[dd-MM-yyyy]" + "[yyyy-MM-dd]"));
 
         DateTimeFormatter dateTimeFormatter = dateTimeFormatterBuilder.toFormatter();
 
-        return LocalDate.parse(date, dateTimeFormatter).toString();
+        return LocalDate.parse(date, dateTimeFormatter);
     }
 }
