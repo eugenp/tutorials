@@ -367,9 +367,8 @@
 
                 <module>muleesb</module>
 
-                <module>osgi</module>
                 <module>web-modules</module>
-				<module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
         </profile>
@@ -563,9 +562,8 @@
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
-                <module>osgi</module>
                 <module>web-modules</module>
-				<module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
         </profile>
@@ -1247,7 +1245,7 @@
         <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
-		<!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
+        <!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
         <org.slf4j.version>1.7.32</org.slf4j.version>
         <logback.version>1.2.7</logback.version>
 
