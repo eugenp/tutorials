@@ -7,8 +7,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.sun.rowset.*;
-
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.FilteredRowSet;
 import javax.sql.rowset.JdbcRowSet;
@@ -25,7 +23,7 @@ public class JdbcRowsetApplication {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(JdbcRowsetApplication.class, args);
-        Statement stmt = null;
+        Statement stmt;
         try {
             Connection conn = DatabaseConfiguration.geth2Connection();
 
@@ -41,8 +39,7 @@ public class JdbcRowsetApplication {
             DatabaseConfiguration.initDatabase(stmt);
             // JdbcRowSet Example
             String sql = "SELECT * FROM customers";
-            JdbcRowSet jdbcRS;
-            jdbcRS = new JdbcRowSetImpl(conn);
+            JdbcRowSet jdbcRS = RowSetProvider.newFactory().createJdbcRowSet();
             jdbcRS.setType(ResultSet.TYPE_SCROLL_INSENSITIVE);
             jdbcRS.setCommand(sql);
             jdbcRS.execute();
@@ -58,7 +55,8 @@ public class JdbcRowsetApplication {
             String username = "sa";
             String password = "";
             String url = "jdbc:h2:mem:testdb";
-            CachedRowSet crs = new CachedRowSetImpl();
+            RowSetFactory aFactory = RowSetProvider.newFactory();
+            CachedRowSet crs = aFactory.createCachedRowSet();
             crs.setUsername(username);
             crs.setPassword(password);
             crs.setUrl(url);
@@ -74,7 +72,7 @@ public class JdbcRowsetApplication {
             }
 
             // WebRowSet example
-            WebRowSet wrs = new WebRowSetImpl();
+            WebRowSet wrs = RowSetProvider.newFactory().createWebRowSet();
             wrs.setUsername(username);
             wrs.setPassword(password);
             wrs.setUrl(url);
@@ -84,14 +82,14 @@ public class JdbcRowsetApplication {
             wrs.writeXml(ostream);
 
             // JoinRowSet example
-            CachedRowSetImpl customers = new CachedRowSetImpl();
+            CachedRowSet customers = aFactory.createCachedRowSet();
             customers.setUsername(username);
             customers.setPassword(password);
             customers.setUrl(url);
             customers.setCommand(sql);
             customers.execute();
 
-            CachedRowSetImpl associates = new CachedRowSetImpl();
+            CachedRowSet associates = aFactory.createCachedRowSet();
             associates.setUsername(username);
             associates.setPassword(password);
             associates.setUrl(url);
@@ -99,7 +97,7 @@ public class JdbcRowsetApplication {
             associates.setCommand(associatesSQL);
             associates.execute();
 
-            JoinRowSet jrs = new JoinRowSetImpl();
+            JoinRowSet jrs = RowSetProvider.newFactory().createJoinRowSet();
             final String ID = "id";
             final String NAME = "name";
             jrs.addRowSet(customers, ID);
