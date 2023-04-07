@@ -89,6 +89,7 @@ spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
 transaction.log
 *-shell.log
+customers.xml
 
 apache-cxf/cxf-aegis/baeldung.xml
 testing-modules/report-*.json
