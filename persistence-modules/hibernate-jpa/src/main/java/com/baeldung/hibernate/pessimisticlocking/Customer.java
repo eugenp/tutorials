@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.pessimisticlocking;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
