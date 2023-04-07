@@ -1,5 +1,6 @@
 package com.baeldung.publicmodifier;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -64,9 +65,9 @@ public class PublicAccessModifierUnitTest {
     @Test
     public void whenConnectingToH2_connectionInstanceIsReturned() throws SQLException {
 
-        final String url = "jdbc:h2:~/test";
+        final String url = "jdbc:h2:mem:test";
         Connection conn = DriverManager.getConnection(url, "sa", "");
-        assertNotNull(conn);
+        Assertions.assertNotNull(conn);
     }
 
     @Test
