@@ -1,8 +1,7 @@
-package com.baeldung.sharedsecretauth.configuration;
+package com.baeldung.customauth.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import com.baeldung.customauth.configuration.AppConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
@@ -16,25 +15,16 @@ import java.util.ArrayList;
 
 public class AuthenticationFilter extends OncePerRequestFilter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationFilter.class);
-
-    @Value("${api.auth.header.name}")
-    private String apiAuthHeaderName;
-
-    @Value("${api.auth.secret}")
-    private String apiAuthHeaderSecret;
+    @Autowired
+    private AppConfig appConfig;
 
     @Override
     public void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws IOException, ServletException {
-        LOGGER.info("Custom Auth Filter called for URI {}", httpServletRequest.getRequestURI());
-
         try {
+            if (isAuthSecurityHeaderValid(httpServletRequest)) {
 
-            if (httpServletRequest.getHeader(apiAuthHeaderName) != null &&
-                    httpServletRequest.getHeader(apiAuthHeaderName).equals(apiAuthHeaderSecret)) {
-
-                PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken = new PreAuthenticatedAuthenticationToken(apiAuthHeaderName,
-                        httpServletRequest.getHeader(apiAuthHeaderName), new ArrayList<>());
+                PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken = new PreAuthenticatedAuthenticationToken(appConfig.getApiAuthHeaderName(),
+                        httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()), new ArrayList<>());
 
                 SecurityContextHolder.getContext().setAuthentication(preAuthenticatedAuthenticationToken);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
@@ -44,8 +34,11 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         }catch(AuthenticationException authenticationException) {
             httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
+    }
 
-        LOGGER.info("Custom Auth Filter completed for URI {}", httpServletRequest.getRequestURI());
+    private boolean isAuthSecurityHeaderValid(HttpServletRequest httpServletRequest) {
+        return httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()) != null &&
+                httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()).equals(appConfig.getApiAuthHeaderSecret());
     }
 
     @Override
