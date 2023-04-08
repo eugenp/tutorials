@@ -10,19 +10,22 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.csrf()
+        http.csrf().and()
+                .cors()
                 .disable()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .addFilterAfter(authenticationFilter(), BasicAuthenticationFilter.class)
-                .build();
+                .addFilterAfter(authenticationFilter(), BasicAuthenticationFilter.class);
+
+        return http.build();
     }
 
     @Bean
