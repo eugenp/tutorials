@@ -20,7 +20,7 @@ import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-public class CancelFluxTest {
+public class CancelFluxUnitTest {
 
     @Test
     void givenOngoingFlux_whentakeUntil_thenFluxCancels() {
