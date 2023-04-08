@@ -3,7 +3,7 @@ package com.baeldung.hibernate.keywords;
 import static java.util.UUID.randomUUID;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class HibernateKeywordsApplicationIntegrationTest {
+public class HibernateKeywordsApplicationLiveTest {
 
     private static SessionFactory sessionFactory;
     private Session session;

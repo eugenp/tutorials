@@ -47,7 +47,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Post.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
-                .applyBasicType(LocalDateStringType.INSTANCE)
+                // .applyBasicType(LocalDateStringType.INSTANCE)
                 .build();
 
         return metadata.getSessionFactoryBuilder()
