@@ -43,8 +43,8 @@ public class HibernateAnnotationUtil {
         return metadata.buildSessionFactory();
     }
 
-    private static Map<String, String> dbSettings() {
-        Map<String, String> dbSettings = new HashMap<>();
+    private static Map<String, Object> dbSettings() {
+        Map<String, Object> dbSettings = new HashMap<>();
         dbSettings.put(Environment.URL, "jdbc:h2:mem:spring_hibernate_one_to_many");
         dbSettings.put(Environment.USER, "sa");
         dbSettings.put(Environment.PASS, "");
