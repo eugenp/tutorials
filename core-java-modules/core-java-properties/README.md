@@ -1,4 +1,4 @@
-## Core Java Cookbooks and Examples
+## Core Java Properties
 
 ### Relevant Articles: 
 
