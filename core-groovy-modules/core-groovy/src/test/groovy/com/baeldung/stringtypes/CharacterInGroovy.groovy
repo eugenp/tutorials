@@ -1,19 +1,18 @@
 package groovy.com.baeldung.stringtypes
 
-import org.junit.Assert
-import org.junit.Test
+import spock.lang.Specification
 
-class CharacterInGroovy {
+class CharacterInGroovy extends Specification {
 
-    @Test
-    void 'character'() {
+    def 'character'() {
+        given:
         char a = 'A' as char
         char b = 'B' as char
         char c = (char) 'C'
 
-        Assert.assertTrue(a instanceof Character)
-        Assert.assertTrue(b instanceof Character)
-        Assert.assertTrue(c instanceof Character)
+        expect:
+        a instanceof Character
+        b instanceof Character
+        c instanceof Character
     }
-
 }

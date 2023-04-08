@@ -17,6 +17,7 @@
 
     <modules>
         <module>rxjava-core</module>
+        <module>rxjava-core-2</module>
         <module>rxjava-libraries</module>
         <module>rxjava-observables</module>
         <module>rxjava-operators</module>

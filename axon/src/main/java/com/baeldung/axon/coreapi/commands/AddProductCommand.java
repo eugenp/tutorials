@@ -42,9 +42,6 @@ public class AddProductCommand {
 
     @Override
     public String toString() {
-        return "AddProductCommand{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "AddProductCommand{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }

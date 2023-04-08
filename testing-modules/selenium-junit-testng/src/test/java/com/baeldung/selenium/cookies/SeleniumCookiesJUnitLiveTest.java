@@ -9,17 +9,16 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SeleniumCookiesJUnitLiveTest {
 
@@ -29,11 +28,10 @@ public class SeleniumCookiesJUnitLiveTest {
     @Before
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", findFile("geckodriver.mac"));
-        
-        Capabilities capabilities = DesiredCapabilities.firefox();
-        driver = new FirefoxDriver(capabilities);
+
+        driver = new FirefoxDriver();
         navUrl = "https://baeldung.com";
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
     
     private static String findFile(String filename) {

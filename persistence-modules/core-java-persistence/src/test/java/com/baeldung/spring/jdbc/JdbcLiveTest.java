@@ -1,9 +1,10 @@
 package com.baeldung.spring.jdbc;
 
-import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -24,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 public class JdbcLiveTest {
 
-    private static final Logger LOG = Logger.getLogger(JdbcLiveTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JdbcLiveTest.class);
 
     private Connection con;
 

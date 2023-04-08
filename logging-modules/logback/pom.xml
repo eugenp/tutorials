@@ -25,6 +25,11 @@
             <version>${logback.version}</version>
         </dependency>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback.contrib</groupId>
             <artifactId>logback-json-classic</artifactId>
             <version>${logback.contrib.version}</version>
@@ -34,6 +39,11 @@
             <artifactId>logback-jackson</artifactId>
             <version>${logback.contrib.version}</version>
         </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -55,14 +65,14 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>${javax.mail.version}</version>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>angus-mail</artifactId>
+            <version>${angus.mail.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>${javax.activation.version}</version>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>angus-activation</artifactId>
+            <version>${angus.activation.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -106,8 +116,10 @@
         <json.version>20180130</json.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
         <docx4j.version>3.3.5</docx4j.version>
-        <javax.mail.version>1.4.7</javax.mail.version>
-        <javax.activation.version>1.1.1</javax.activation.version>
+        <angus.mail.version>2.0.1</angus.mail.version>
+        <angus.activation.version>2.0.0</angus.activation.version>
+        <logback.version>1.3.5</logback.version>
+        <slf4j.version>2.0.4</slf4j.version>
     </properties>
 
 </project>

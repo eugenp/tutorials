@@ -1,4 +1,5 @@
 
 ### Relevant Articles:
-- [Instantiating Multiple Beans of the Same Class with Spring Annotations](https://www.baeldung.com/spring-same-class-multiple-beans)
-- [Using Environment Variables in Spring Boot’s application.properties](https://www.baeldung.com/spring-boot-properties-env-variables)
+- [Reinitialize Singleton Bean in Spring Context](https://www.baeldung.com/spring-reinitialize-singleton-bean)
+- [Getting the Current ApplicationContext in Spring](https://www.baeldung.com/spring-get-current-applicationcontext)
+- More articles: [[<-- prev]](../spring-core-5)

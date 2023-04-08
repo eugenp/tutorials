@@ -15,6 +15,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 public class SeleniumJavaScriptClickLiveTest {
 
@@ -25,7 +27,7 @@ public class SeleniumJavaScriptClickLiveTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", new File("src/main/resources/chromedriver.mac").getAbsolutePath());
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 20);
+        wait = new WebDriverWait(driver, Duration.of(20, ChronoUnit.SECONDS));
     }
 
     @After
