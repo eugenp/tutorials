@@ -23,6 +23,7 @@
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
+            <version>${spring-retry.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -45,6 +46,7 @@
     </dependencies>
 
     <properties>
+        <spring-retry.version>2.0.0</spring-retry.version>
         <annotation-api.version>1.3.2</annotation-api.version>
     </properties>
 

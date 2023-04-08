@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.pessimisticlocking;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.math.BigDecimal;
 
 @Entity

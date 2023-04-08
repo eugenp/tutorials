@@ -47,7 +47,7 @@ public class JsoupParserIntegrationTest {
     }
 
     @Test
-    public void examplesSelectors() {
+    public void examplesSelectors() throws IOException {
         Elements links = doc.select("a");
         Elements logo = doc.select(".spring-logo--container");
         Elements pagination = doc.select("#pagination_control");
@@ -57,52 +57,46 @@ public class JsoupParserIntegrationTest {
         Element pag = doc.getElementById("pagination_control");
         Elements desktopOnly = doc.getElementsByClass("desktopOnly");
 
-        Elements sections = doc.select("section");
-        Element firstSection = sections.first();
-        Elements sectionParagraphs = firstSection.select(".paragraph");
+        Elements articles = doc.select("article");
+        Element firstArticle = articles.first();
+        Elements sectionParagraphs = firstArticle.select(".paragraph");
     }
 
     @Test
-    public void examplesTraversing() {
-        Elements sections = doc.select("section");
+    public void examplesTraversing() throws IOException {
+        Elements articles = doc.select("article");
 
-        Element firstSection = sections.first();
-        Element lastSection = sections.last();
-        Element secondSection = sections.get(2);
-        Elements allParents = firstSection.parents();
-        Element parent = firstSection.parent();
-        Elements children = firstSection.children();
-        Elements siblings = firstSection.siblingElements();
+        Element firstArticle = articles.first();
+        Element lastSection = articles.last();
+        Element secondSection = articles.get(2);
+        Elements allParents = firstArticle.parents();
+        Element parent = firstArticle.parent();
+        Elements children = firstArticle.children();
+        Elements siblings = firstArticle.siblingElements();
 
-        sections.forEach(el -> System.out.println("section: " + el));
+        articles.forEach(el -> System.out.println("article: " + el));
     }
 
     @Test
-    public void examplesExtracting() {
+    public void examplesExtracting() throws IOException {
         Element firstArticle = doc.select("article")
             .first();
-        Element timeElement = firstArticle.select("time")
+        Element titleElement = firstArticle.select("h1 a")
             .first();
-        String dateTimeOfFirstArticle = timeElement.attr("datetime");
-        Element sectionDiv = firstArticle.select("section div")
-            .first();
-        String sectionDivText = sectionDiv.text();
+
+        String titleText = titleElement.text();
         String articleHtml = firstArticle.html();
         String outerHtml = firstArticle.outerHtml();
     }
 
     @Test
-    public void examplesModifying() {
+    public void examplesModifying() throws IOException {
         Element firstArticle = doc.select("article")
             .first();
-        Element timeElement = firstArticle.select("time")
-            .first();
-        Element sectionDiv = firstArticle.select("section div")
+        Element h1Element = firstArticle.select("h1")
             .first();
 
-        String dateTimeOfFirstArticle = timeElement.attr("datetime");
-        timeElement.attr("datetime", "2016-12-16 15:19:54.3");
-        sectionDiv.text("foo bar");
+        h1Element.text("foo bar");
         firstArticle.select("h2")
             .html("<div><span></span></div>");
 

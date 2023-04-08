@@ -1,17 +1,18 @@
 package com.baeldung.batch;
 
+import com.baeldung.batch.model.Transaction;
+import com.baeldung.batch.service.RecordFieldSetMapper;
+import com.baeldung.batch.service.RetryItemProcessor;
+
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import com.baeldung.batch.model.Transaction;
-import com.baeldung.batch.service.RecordFieldSetMapper;
-import com.baeldung.batch.service.RetryItemProcessor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -19,38 +20,30 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.xml.StaxEventItemWriter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.WritableResource;
 import org.springframework.dao.DeadlockLoserDataAccessException;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-
-import java.text.ParseException;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@EnableBatchProcessing
 public class SpringBatchRetryConfig {
-    
+
     private static final String[] tokens = { "username", "userid", "transactiondate", "amount" };
     private static final int TWO_SECONDS = 2000;
-
-    @Autowired
-    private JobBuilderFactory jobBuilderFactory;
-
-    @Autowired
-    private StepBuilderFactory stepBuilderFactory;
 
     @Value("input/recordRetry.csv")
     private Resource inputCsv;
 
     @Value("file:xml/retryOutput.xml")
-    private Resource outputXml;
+    private WritableResource outputXml;
 
-    public ItemReader<Transaction> itemReader(Resource inputData) throws ParseException {
+    public ItemReader<Transaction> itemReader(Resource inputData) {
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         tokenizer.setNames(tokens);
         DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
@@ -93,10 +86,11 @@ public class SpringBatchRetryConfig {
     }
 
     @Bean
-    public Step retryStep(@Qualifier("retryItemProcessor") ItemProcessor<Transaction, Transaction> processor,
-      ItemWriter<Transaction> writer) throws ParseException {
-        return stepBuilderFactory.get("retryStep")
-          .<Transaction, Transaction>chunk(10)
+    public Step retryStep(
+            JobRepository jobRepository, PlatformTransactionManager transactionManager, @Qualifier("retryItemProcessor") ItemProcessor<Transaction, Transaction> processor,
+            ItemWriter<Transaction> writer) {
+        return new StepBuilder("retryStep", jobRepository)
+          .<Transaction, Transaction>chunk(10, transactionManager)
           .reader(itemReader(inputCsv))
           .processor(processor)
           .writer(writer)
@@ -108,9 +102,8 @@ public class SpringBatchRetryConfig {
     }
 
     @Bean(name = "retryBatchJob")
-    public Job retryJob(@Qualifier("retryStep") Step retryStep) {
-        return jobBuilderFactory
-          .get("retryBatchJob")
+    public Job retryJob(JobRepository jobRepository, @Qualifier("retryStep") Step retryStep) {
+        return new JobBuilder("retryBatchJob", jobRepository)
           .start(retryStep)
           .build();
     }
