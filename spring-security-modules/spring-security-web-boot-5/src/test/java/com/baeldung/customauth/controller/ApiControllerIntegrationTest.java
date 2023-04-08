@@ -20,14 +20,14 @@ class ApiControllerIntegrationTest {
 
     private final TestRestTemplate restTemplate = new TestRestTemplate();
 
+    private static final String API_ENDPOINT = "http://localhost:8080/app/api/hello";
+
     @Test
     void givenAuthHeaderSecretIsValid_whenApiControllerCalled_thenReturnOk() throws Exception {
-        URI uri = new URI("http://localhost:8080/app/api/hello");
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-auth-secret-key", "test-secret");
 
-        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), String.class);
-
+        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET, new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("hello", response.getBody());
@@ -35,33 +35,29 @@ class ApiControllerIntegrationTest {
 
     @Test
     void givenAAuthHeaderIsInvalid_whenApiControllerCalled_thenReturnUnAuthorised() throws Exception {
-        URI uri = new URI("http://localhost:8080/app/api/hello");
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-auth-secret-key", "invalid");
 
-        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), String.class);
-
+        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET, new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
 
     @Test
     void givenAuthHeaderNameIsInValid_whenApiControllerCalled_thenReturnUnAuthorised() throws Exception {
-        URI uri = new URI("http://localhost:8080/app/api/hello");
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-auth-secret", "test-secret");
 
-        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET, new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
 
     @Test
     void givenAuthHeaderIsMissing_whenApiControllerCalled_thenReturnUnAuthorised() throws Exception {
-        URI uri = new URI("http://localhost:8080/app/api/hello");
         HttpHeaders headers = new HttpHeaders();
 
-        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET, new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }

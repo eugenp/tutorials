@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine
+FROM adoptopenjdk/openjdk11
 
 COPY target/spring-security-web-boot-5-0.0.1-SNAPSHOT.jar spring-security-web-boot-5.jar
 

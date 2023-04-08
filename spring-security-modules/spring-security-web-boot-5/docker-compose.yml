@@ -5,6 +5,6 @@ services:
     build:
       dockerfile: Dockerfile
     environment:
-      - api.auth.secret.key=f942948d4cc8ddd229f1999148aa2c92287423163b53bbda93b58873047acc7d691c39f8ecef687e0b57e4c531803808e85c8bfcb44d3cfe4b3fa735178a7868
+      - api.auth.secret=${API_KEY}
     ports:
       - "443:443"

@@ -19,11 +19,14 @@ class HealthCheckControllerIntegrationTest {
 
     private final TestRestTemplate restTemplate = new TestRestTemplate();
 
+    private static final String HEALTH_CHECK_ENDPOINT = "http://localhost:8080/app/health";
+
     @Test
     void givenApplicationIsRunning_whenHealthCheckControllerCalled_thenReturnOk() throws Exception {
-        URI uri = new URI("http://localhost:8080/app/health");
+        HttpHeaders headers = new HttpHeaders();
+
         ResponseEntity<String> response = restTemplate
-                .exchange(uri, HttpMethod.GET, null, String.class);
+                .exchange(new URI(HEALTH_CHECK_ENDPOINT), HttpMethod.GET, new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("OK", response.getBody());

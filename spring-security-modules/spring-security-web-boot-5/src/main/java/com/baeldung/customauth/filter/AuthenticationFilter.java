@@ -4,6 +4,7 @@ import com.baeldung.customauth.configuration.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Component
 public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -21,12 +23,12 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     @Override
     public void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
 
-        if (isAuthenticatedRequest(httpServletRequest)) {
-                PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken = new PreAuthenticatedAuthenticationToken(appConfig.getApiAuthHeaderName(),
-                        httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()), new ArrayList<>());
+        if(isAuthenticatedRequest(httpServletRequest)) {
+            PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken = new PreAuthenticatedAuthenticationToken(appConfig.getApiAuthHeaderName(),
+                httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()), new ArrayList<>());
 
-                SecurityContextHolder.getContext().setAuthentication(preAuthenticatedAuthenticationToken);
-                filterChain.doFilter(httpServletRequest, httpServletResponse);
+            SecurityContextHolder.getContext().setAuthentication(preAuthenticatedAuthenticationToken);
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
         } else {
             httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
