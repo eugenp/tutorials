@@ -362,7 +362,25 @@
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-jdk8</module>
-
+                <module>libraries-apache-commons</module>
+                <module>libraries-apache-commons-collections</module>
+                <module>libraries-apache-commons-io</module>
+                <module>libraries-data</module>
+                <module>libraries-data-2</module>
+                <module>libraries-data-db</module>
+                <module>libraries-data-io</module>
+                <module>libraries-files</module>
+                <module>libraries-http</module>
+                <module>libraries-http-2</module>
+                <module>libraries-io</module>
+                <module>libraries-ai</module>
+                <module>libraries-primitive</module>
+                <module>libraries-rpc</module>
+                <module>libraries-security</module>
+                <module>libraries-server</module>
+                <module>libraries-server-2</module>
+                <module>libraries-testing</module>
+                <module>logging-modules</module>
                 <module>lombok-modules</module>
 
                 <module>muleesb</module>
