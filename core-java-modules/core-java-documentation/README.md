@@ -1,4 +1,4 @@
-## Core Java Cookbooks and Examples
+## Core Java Documentation
 
 ### Relevant Articles: 
 
