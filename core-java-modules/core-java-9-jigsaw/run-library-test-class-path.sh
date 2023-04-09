@@ -10,5 +10,5 @@ java -p /Users/yauhenikauko/.m2/repository/org/junit/jupiter/junit-jupiter-engin
 /Users/yauhenikauko/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:\
 /Users/yauhenikauko/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar \
 org.junit.platform.console.ConsoleLauncher \
--cp ./outDir \
+-cp ./outDir/library-core \
 -c com.baeldung.library.core.LibraryUnitTest
