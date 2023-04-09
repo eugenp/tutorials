@@ -21,8 +21,8 @@ import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
 @RunWith(JUnit4.class)
 public class CustomLoggingIntegrationTest {
-    
-    private static String logFilePath = Paths.get("logfile.log").toString();
+
+    private static String logFilePath = System.getProperty("logging.folder.path");
     
     @BeforeClass
     public static void setup() throws Exception {
