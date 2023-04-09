@@ -2,18 +2,7 @@ package com.baeldung.junit5.conditional;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledForJreRange;
-import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
-import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
-import org.junit.jupiter.api.condition.DisabledOnJre;
-import org.junit.jupiter.api.condition.DisabledOnOs;
-import org.junit.jupiter.api.condition.EnabledForJreRange;
-import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
-import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
-import org.junit.jupiter.api.condition.EnabledOnJre;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.JRE;
-import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.condition.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +31,18 @@ public class ConditionalAnnotationsUnitTest {
     @EnabledOnJre({JRE.JAVA_10, JRE.JAVA_11})
     public void shouldOnlyRunOnJava10And11() {
         LOGGER.debug("runs with java 10 and 11");
+    }
+
+    @Test
+    @EnabledInNativeImage
+    void shouldOnlyRunWithinNativeImage() {
+        LOGGER.debug("Should run only within native images.");
+    }
+
+    @Test
+    @DisabledInNativeImage
+    void shouldNeverRunWithinNativeImage() {
+        LOGGER.debug("Shouldn't run within native images.");
     }
 
     @Test

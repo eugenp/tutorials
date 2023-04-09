@@ -358,18 +358,17 @@
 
                 <module>jetbrains</module>
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
 
                 <module>muleesb</module>
 
-                <module>osgi</module>
-                <module>persistence-modules</module>
                 <module>web-modules</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
         </profile>
@@ -492,11 +491,7 @@
                 <module>jhipster-5</module>
                 <module>jws</module>
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
-
             </modules>
         </profile>
 
@@ -559,17 +554,16 @@
                 <module>java-jdi</module>
 
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
-                <module>osgi</module>
-                <module>persistence-modules</module>
                 <module>web-modules</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
         </profile>
@@ -675,9 +669,6 @@
                 <module>jhipster-5</module>
                 <module>jws</module>
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
             </modules>
 
@@ -744,6 +735,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -767,6 +759,7 @@
 
                 <module>javafx</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-exceptions</module>
@@ -788,7 +781,6 @@
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
-
 
                 <module>spring-aop</module>
                 <module>jmeter</module>
@@ -819,6 +811,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -828,9 +821,7 @@
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>persistence-modules/spring-data-jpa-repo-3</module>
+                <module>persistence-modules</module>
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
@@ -897,8 +888,12 @@
                 <module>jsoup</module>
                 <module>ksqldb</module>
                 <module>jsf</module>
+
+                <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
-                <module>libraries-7</module>
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -931,7 +926,6 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -991,6 +985,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -1014,6 +1009,7 @@
 
                 <module>javafx</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-exceptions</module>
@@ -1064,6 +1060,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
@@ -1074,9 +1071,7 @@
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>persistence-modules/spring-data-jpa-repo-3</module>
+                <module>persistence-modules</module>
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
@@ -1145,7 +1140,9 @@
                 <module>jsf</module>
                 <module>ksqldb</module>
 
-                <module>libraries-7</module>
+                <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1179,7 +1176,6 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1257,6 +1253,7 @@
         <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
+        <!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
         <org.slf4j.version>1.7.32</org.slf4j.version>
         <logback.version>1.2.7</logback.version>
 
