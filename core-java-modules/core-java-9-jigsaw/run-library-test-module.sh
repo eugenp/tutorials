@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-java -p mods/com.baeldung.library.test:\
-mods/com.baeldung.library.core:\
+java -p mods:\
 /Users/yauhenikauko/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:\
 /Users/yauhenikauko/.m2/repository/org/junit/platform/junit-platform-console/1.9.2/junit-platform-console-1.9.2.jar:\
 /Users/yauhenikauko/.m2/repository/org/junit/platform/junit-platform-reporting/1.9.2/junit-platform-reporting-1.9.2.jar:\
