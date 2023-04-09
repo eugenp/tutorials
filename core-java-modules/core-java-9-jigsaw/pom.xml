@@ -9,7 +9,6 @@
     <name>core-java-9-jigsaw</name>
     <modules>
         <module>library-core</module>
-      <module>library-test</module>
     </modules>
 
     <parent>
