@@ -11,10 +11,11 @@ import org.springframework.test.context.junit.jupiter.EnabledIf;
 public class MultipleActiveProfileUnitTest {
     @Value("${profile.property.value}")
     private String propertyString;
+    @Value("${spring.profiles.active}")
+    private String currentProfile;
 
     @Test
-    void whenDevIsActive_ThenValueShouldBeKeptFromApplicationDevYaml() {
-        ;
-        Assertions.assertEquals("This the the application-dev.yaml file", propertyString, propertyString);
+    void whenDevIsActive_ThenValueShouldBeKeptFromDedicatedApplicationYaml() {
+        Assertions.assertEquals(String.format("This the the application-%s.yaml file", currentProfile), propertyString);
     }
 }
