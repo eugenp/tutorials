@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.uuids;
+package com.baeldung.uuids;
 
 import java.util.UUID;
 import java.time.LocalDate;

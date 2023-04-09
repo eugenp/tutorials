@@ -22,10 +22,6 @@ import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingStudent;
 import com.baeldung.hibernate.pojo.Person;
 import com.baeldung.hibernate.pojo.Post;
 import com.baeldung.hibernate.pojo.Student;
-import com.baeldung.hibernate.uuids.WebSiteUser;
-import com.baeldung.hibernate.uuids.Element;
-import com.baeldung.hibernate.uuids.Reservation;
-import com.baeldung.hibernate.uuids.Sale;
 
 public class HibernateUtil {
     private static String PROPERTY_FILE_NAME;
@@ -50,10 +46,6 @@ public class HibernateUtil {
 
         metadataSources.addPackage("com.baeldung.hibernate.pojo");
         metadataSources.addAnnotatedClass(Person.class);
-        metadataSources.addAnnotatedClass(WebSiteUser.class);
-        metadataSources.addAnnotatedClass(Element.class);
-        metadataSources.addAnnotatedClass(Reservation.class);
-        metadataSources.addAnnotatedClass(Sale.class);
         metadataSources.addAnnotatedClass(Student.class);
         metadataSources.addAnnotatedClass(Individual.class);
         metadataSources.addAnnotatedClass(PessimisticLockingEmployee.class);

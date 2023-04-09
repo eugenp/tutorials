@@ -1,11 +1,11 @@
 package com.baeldung.hibernate.uuids;
 
-import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.HibernateUtil;
 
-import com.baeldung.hibernate.uuids.Reservation;
-import com.baeldung.hibernate.uuids.Sale;
-import com.baeldung.hibernate.uuids.WebSiteUser;
-import com.baeldung.hibernate.uuids.Element;
+import com.baeldung.uuids.Reservation;
+import com.baeldung.uuids.Sale;
+import com.baeldung.uuids.WebSiteUser;
+import com.baeldung.uuids.Element;
 import org.assertj.core.api.Assertions;
 import java.io.IOException;
 
