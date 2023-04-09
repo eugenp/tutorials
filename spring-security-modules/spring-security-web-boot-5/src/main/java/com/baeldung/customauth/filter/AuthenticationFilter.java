@@ -17,11 +17,15 @@ import java.util.ArrayList;
 @Component
 public class AuthenticationFilter extends OncePerRequestFilter {
 
+    private final AppConfig appConfig;
+
     @Autowired
-    private AppConfig appConfig;
+    public AuthenticationFilter(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
 
     @Override
-    public void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
 
         if(isAuthenticatedRequest(httpServletRequest)) {
             PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken = new PreAuthenticatedAuthenticationToken(appConfig.getApiAuthHeaderName(),

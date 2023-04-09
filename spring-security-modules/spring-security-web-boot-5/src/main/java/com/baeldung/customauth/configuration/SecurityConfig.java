@@ -14,15 +14,19 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final AuthenticationFilter authenticationFilter;
+
     @Autowired
-    private AuthenticationFilter authenticationFilter;
+    public SecurityConfig(AuthenticationFilter authenticationFilter) {
+        this.authenticationFilter = authenticationFilter;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf()
             .disable()
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .sessionCreationPolicy(SessionCreationPolicy.NEVER)
             .and()
             .addFilterAfter(authenticationFilter, BasicAuthenticationFilter.class);
 
