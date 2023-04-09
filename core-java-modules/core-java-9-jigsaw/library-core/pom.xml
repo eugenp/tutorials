@@ -45,9 +45,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-          <argLine>
-            --add-opens com.baeldung.library.core/com.baeldung.library.core=ALL-UNNAMED
-          </argLine>
+          <useModulePath>false</useModulePath>
         </configuration>
       </plugin>
     </plugins>

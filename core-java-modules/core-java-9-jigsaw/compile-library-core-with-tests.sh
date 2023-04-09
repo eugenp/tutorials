@@ -9,4 +9,5 @@ libs/junit-platform-commons-1.9.2.jar \
 -d outDir/library-core \
 library-core/src/main/java/com/baeldung/library/core/Book.java \
 library-core/src/main/java/com/baeldung/library/core/Library.java \
-library-core/src/main/java/com/baeldung/library/core/Main.java
+library-core/src/main/java/com/baeldung/library/core/Main.java \
+library-core/src/test/java/com/baeldung/library/core/LibraryUnitTest.java

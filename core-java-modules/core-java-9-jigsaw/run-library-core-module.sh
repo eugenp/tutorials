@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-java -p  mods/com.baeldung.library.core \
--m com.baeldung.library.core/com.baeldung.library.core.Main
+java --module-path mods --module com.baeldung.library.core/com.baeldung.library.core.Main

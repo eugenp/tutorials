@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-java -p libs \
+java --module-path libs \
 org.junit.platform.console.ConsoleLauncher \
--cp ./outDir/library-core \
--c com.baeldung.library.core.LibraryUnitTest
+--classpath ./outDir/library-core \
+--select-class com.baeldung.library.core.LibraryUnitTest
