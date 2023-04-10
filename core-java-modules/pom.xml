@@ -16,20 +16,20 @@
     </parent>
 
     <modules>
-        <!--Won't be upgraded to JDK 17-->
-        <!--<module>core-java</module>-->
-        <!--<module>core-java-8</module>-->
-        <!--<module>core-java-8-2</module>-->
-        <!--<module>core-java-8-datetime</module>-->
-        <!--<module>core-java-8-datetime-2</module>-->
-        <!--<module>core-java-collections-conversions-2</module>-->
-        <!--<module>core-java-lang</module>-->
-        <!--<module>core-java-lang-math-3</module>-->
-        <!--<module>core-java-nio-2</module>-->
-        <!--<module>core-java-security</module>-->
-        <!--<module>core-java-serialization</module>-->
-        <!--<module>core-java-streams-2</module>-->
-        <!--<module>core-java-sun</module>-->
+        <!--Won't be upgraded to JDK 17 -->
+        <!--<module>core-java</module> -->
+        <!--<module>core-java-8</module> -->
+        <!--<module>core-java-8-2</module> -->
+        <!--<module>core-java-8-datetime</module> -->
+        <!--<module>core-java-8-datetime-2</module> -->
+        <!--<module>core-java-collections-conversions-2</module> -->
+        <!--<module>core-java-lang</module> -->
+        <!--<module>core-java-lang-math-3</module> -->
+        <!--<module>core-java-nio-2</module> -->
+        <!--<module>core-java-security</module> -->
+        <!--<module>core-java-serialization</module> -->
+        <!--<module>core-java-streams-2</module> -->
+        <!--<module>core-java-sun</module> -->
 
         <module>core-java-annotations</module>
         <module>core-java-arrays-sorting</module>
