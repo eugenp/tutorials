@@ -9,7 +9,7 @@ import com.baeldung.jhipster6.security.AuthoritiesConstants;
 import com.baeldung.jhipster6.security.SecurityUtils;
 import com.baeldung.jhipster6.service.dto.UserDTO;
 import com.baeldung.jhipster6.service.util.RandomUtil;
-import com.baeldung.jhipster5.web.rest.errors.*;
+import com.baeldung.jhipster6.web.rest.errors.*;
 import com.baeldung.jhipster6.web.rest.errors.EmailAlreadyUsedException;
 import com.baeldung.jhipster6.web.rest.errors.InvalidPasswordException;
 import com.baeldung.jhipster6.web.rest.errors.LoginAlreadyUsedException;

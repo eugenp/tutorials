@@ -1,7 +1,7 @@
 package com.baeldung.jhipster6.config;
 
-import com.baeldung.jhipster5.security.*;
-import com.baeldung.jhipster5.security.jwt.*;
+import com.baeldung.jhipster6.security.*;
+import com.baeldung.jhipster6.security.jwt.*;
 import com.baeldung.jhipster6.security.AuthoritiesConstants;
 import com.baeldung.jhipster6.security.jwt.JWTConfigurer;
 import com.baeldung.jhipster6.security.jwt.TokenProvider;

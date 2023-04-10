@@ -8,7 +8,7 @@ import com.baeldung.jhipster6.service.MailService;
 import com.baeldung.jhipster6.service.UserService;
 import com.baeldung.jhipster6.service.dto.PasswordChangeDTO;
 import com.baeldung.jhipster6.service.dto.UserDTO;
-import com.baeldung.jhipster5.web.rest.errors.*;
+import com.baeldung.jhipster6.web.rest.errors.*;
 import com.baeldung.jhipster6.web.rest.errors.EmailAlreadyUsedException;
 import com.baeldung.jhipster6.web.rest.errors.EmailNotFoundException;
 import com.baeldung.jhipster6.web.rest.errors.InternalServerErrorException;

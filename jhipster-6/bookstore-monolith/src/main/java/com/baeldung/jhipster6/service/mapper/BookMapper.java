@@ -1,6 +1,6 @@
 package com.baeldung.jhipster6.service.mapper;
 
-import com.baeldung.jhipster5.domain.*;
+import com.baeldung.jhipster6.domain.*;
 import com.baeldung.jhipster6.service.dto.BookDTO;
 import com.baeldung.jhipster6.domain.Book;
 
