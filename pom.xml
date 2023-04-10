@@ -332,7 +332,21 @@
 
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
-                <module>core-java-modules</module>
+
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio-2</module>
+                <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-collections-conversions-2</module>
+                <module>core-java-modules/core-java-streams-2</module>
+
                 <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -344,19 +358,17 @@
 
                 <module>jetbrains</module>
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-                <module>libraries-data-db</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
 
                 <module>muleesb</module>
 
-                <module>osgi</module>
-                <module>persistence-modules</module>
                 <module>web-modules</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
         </profile>
@@ -411,8 +423,6 @@
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-
-                <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
@@ -481,12 +491,7 @@
                 <module>jhipster-5</module>
                 <module>jws</module>
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
-                
-                <module>vaadin</module>
             </modules>
         </profile>
 
@@ -525,7 +530,20 @@
                 <module>checker-plugin</module>
                 <!-- <module>clojure</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules</module>
+                <module>core-java-modules/core-java</module>
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio-2</module>
+                <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-collections-conversions-2</module>
+                <module>core-java-modules/core-java-streams-2</module>
+
                 <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
@@ -536,18 +554,16 @@
                 <module>java-jdi</module>
 
                 <module>jhipster-5</module>
-                <module>jmh</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
-                <module>libraries-data-db</module>
+                <module>libraries-jdk8</module>
 
                 <module>lombok-modules</module>
                 <module>muleesb</module>
 
-                <module>osgi</module>
-                <module>persistence-modules</module>
                 <module>web-modules</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
         </profile>
@@ -593,8 +609,6 @@
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-
-                <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
@@ -655,12 +669,7 @@
                 <module>jhipster-5</module>
                 <module>jws</module>
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
                 <module>libraries-6</module>
-                
-                <module>vaadin</module>
             </modules>
 
         </profile>
@@ -726,6 +735,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -749,6 +759,7 @@
 
                 <module>javafx</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-exceptions</module>
@@ -756,7 +767,9 @@
                 <module>spring-core</module>
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
+                <module>libraries-data-db</module>
 
                 <module>performance-tests</module>
                 <module>security-modules</module>
@@ -768,7 +781,6 @@
                 <module>saas-modules</module>
                 <module>server-modules</module>
                 <module>apache-cxf-modules</module>
-
 
                 <module>spring-aop</module>
                 <module>jmeter</module>
@@ -785,15 +797,8 @@
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -801,32 +806,12 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-list-4</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-collections-maps-5</module>
-                <module>core-java-modules/core-java-concurrency-simple</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-streams-4</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-string-operations-5</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
                 <module>custom-pmd</module>
                 <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
                 <module>drools</module>
@@ -836,9 +821,7 @@
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>persistence-modules/spring-data-jpa-repo-3</module>
+                <module>persistence-modules</module>
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
@@ -905,8 +888,12 @@
                 <module>jsoup</module>
                 <module>ksqldb</module>
                 <module>jsf</module>
+
+                <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
-                <module>libraries-7</module>
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -939,7 +926,6 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -961,10 +947,11 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                
+
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
@@ -998,6 +985,7 @@
             </build>
 
             <modules>
+                <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
                 <module>spring-boot-modules</module>
@@ -1021,6 +1009,7 @@
 
                 <module>javafx</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-exceptions</module>
@@ -1028,7 +1017,9 @@
                 <module>spring-core</module>
                 <module>spring-core-4</module>
                 <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
                 <module>libraries-security</module>
+                <module>libraries-data-db</module>
 
                 <module>performance-tests</module>
                 <module>security-modules</module>
@@ -1052,15 +1043,9 @@
                 <module>couchbase</module>
 
                 <module>core-groovy-modules</module>
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
+
+                <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1068,27 +1053,6 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-list-4</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-collections-maps-5</module>
-                <module>core-java-modules/core-java-concurrency-simple</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-streams-4</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-string-operations-5</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
@@ -1096,6 +1060,7 @@
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>jmeter</module>
                 <module>docker-modules</module>
@@ -1106,9 +1071,7 @@
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>persistence-modules/spring-data-jpa-repo-3</module>
+                <module>persistence-modules</module>
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
@@ -1177,7 +1140,9 @@
                 <module>jsf</module>
                 <module>ksqldb</module>
 
-                <module>libraries-7</module>
+                <module>libraries</module> <!-- very long running -->
+                <module>libraries-4</module>
+                <module>libraries-5</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1211,7 +1176,6 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-5</module>
@@ -1232,10 +1196,11 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module> 
+                <module>libraries-2</module>
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
             </modules>
 
             <properties>
@@ -1288,6 +1253,7 @@
         <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
+        <!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
         <org.slf4j.version>1.7.32</org.slf4j.version>
         <logback.version>1.2.7</logback.version>
 
