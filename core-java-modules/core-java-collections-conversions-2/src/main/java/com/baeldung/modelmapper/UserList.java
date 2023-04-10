@@ -9,6 +9,7 @@ import java.util.Collection;
  */
 public class UserList {
 
+    public UserList() {}
     private Collection<User> users;
 
     public Collection<User> getUsers() {

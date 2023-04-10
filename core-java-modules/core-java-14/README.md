@@ -13,3 +13,4 @@ This module contains articles about Java 14.
 - [New Features in Java 14](https://www.baeldung.com/java-14-new-features)
 - [Java 14 Record vs. Lombok](https://www.baeldung.com/java-record-vs-lombok)
 - [Record vs. Final Class in Java](https://www.baeldung.com/java-record-vs-final-class)
+- [Custom Constructor in Java Records](https://www.baeldung.com/java-records-custom-constructor)

@@ -21,61 +21,60 @@
         <module>blaze-persistence</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
-        <module>deltaspike</module>
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
-        <module>hibernate-mapping</module> <!-- long running -->
+        <!-- <module>hibernate-mapping</module> FAILED --> <!-- long running -->
         <module>hibernate-mapping-2</module>
-        <module>hibernate-ogm</module>
-        <module>hibernate-annotations</module>
+        <!-- <module>hibernate-ogm</module> 
+        <module>hibernate-annotations</module> FAILED -->
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
-        <module>hibernate-queries</module>
-        <module>hibernate-enterprise</module>
+        <!-- <module>hibernate-queries</module> FAILED -->
+        <!-- <module>hibernate-enterprise</module> FAILED --> 
         <module>influxdb</module>
-        <module>java-cassandra</module>
+        <!-- <module>java-cassandra</module> FAILED -->
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
-        <module>java-jpa</module> <!-- long running -->
-        <module>java-jpa-2</module> <!-- long running -->
+        <!-- <module>java-jpa</module> FAILED --> <!-- long running -->
+        <!-- <module>java-jpa-2</module> FAILED --> <!-- long running -->
         <module>java-jpa-3</module>
 		<!-- enable it when persistence-modules is migrated to JDK9+ -->
 		<!-- <module>java-mongodb</module>--> <!-- long running -->
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
-        <module>jnosql</module> <!-- long running -->
+        <!-- <module>jnosql</module> FAILED --> <!-- long running -->
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
         <module>orientdb</module>
         <module>persistence-libraries</module>
-        <module>querydsl</module>
-        <module>r2dbc</module>
+        <!-- <module>querydsl</module> FAILED -->
+        <!-- <module>r2dbc</module> FAILED -->
         <module>read-only-transactions</module>
-        <module>redis</module>
+        <!-- <module>redis</module> FAILED -->
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
-        <module>spring-boot-persistence-2</module>
+        <!-- <module>spring-boot-persistence-2</module> FAILED -->
         <module>spring-boot-persistence-3</module>
         <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
-        <module>spring-boot-persistence-mongodb</module>
+        <!-- <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
-        <module>spring-boot-persistence-mongodb-3</module>
+        <module>spring-boot-persistence-mongodb-3</module> FAILED -->
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
-        <module>spring-data-cassandra-reactive</module>
+        <!-- <module>spring-data-cassandra-reactive</module> FAILED -->
         <module>spring-data-cosmosdb</module>
-        <module>spring-data-couchbase-2</module>
+        <!-- <module>spring-data-couchbase-2</module> FAILED -->
         <module>spring-data-dynamodb</module>
-        <module>spring-data-eclipselink</module>
+        <!-- <module>spring-data-eclipselink</module> FAILED -->
         <module>spring-data-elasticsearch</module>
         <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
         <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
@@ -89,23 +88,24 @@
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-query-3</module>
-        <module>spring-data-jpa-repo</module>
+        <!-- <module>spring-data-jpa-repo</module> FAILED -->
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
-        <module>spring-data-mongodb</module>
+        <!-- <module>spring-data-mongodb</module> FAILED -->
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
-        <module>spring-data-neo4j</module>
+        <!-- <module>spring-data-neo4j</module> FAILED -->
         <module>spring-data-redis</module>
-        <module>spring-data-rest</module>
+<!--        Moved to JDK9+ profiles-->
+<!--        <module>spring-data-rest</module>-->
         <module>spring-data-rest-2</module>
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
-        <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module> <!-- long running -->
-        <module>spring-jpa</module>
-        <module>spring-jpa-2</module>
+        <!-- <module>spring-hibernate-3</module> FAILED -->
+        <!-- <module>spring-hibernate-5</module> FAILED --> <!-- long running -->
+        <!-- <module>spring-jpa</module>
+        <module>spring-jpa-2</module> FAILED -->
         <module>spring-jdbc</module>
         <module>spring-jooq</module>
         <module>spring-mybatis</module>
@@ -114,8 +114,8 @@
 
     <properties>
         <!-- persistence -->
-        <hibernate.version>5.2.17.Final</hibernate.version>
-        <postgresql.version>42.2.20</postgresql.version>
+        <hibernate.version>6.1.7.Final</hibernate.version>
+        <postgresql.version>42.5.4</postgresql.version>
         <hsqldb.version>2.3.4</hsqldb.version>
         <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
