@@ -40,7 +40,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     private boolean isAuthenticatedRequest(HttpServletRequest httpServletRequest) {
         return httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()) != null &&
-                httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()).equals(appConfig.getApiAuthHeaderSecret());
+                   httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()).equals(appConfig.getApiAuthHeaderSecret());
     }
 
     @Override

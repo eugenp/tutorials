@@ -25,8 +25,8 @@ class HealthCheckControllerIntegrationTest {
     void givenApplicationIsRunning_whenHealthCheckControllerCalled_thenReturnOk() throws Exception {
         HttpHeaders headers = new HttpHeaders();
 
-        ResponseEntity<String> response = restTemplate
-                .exchange(new URI(HEALTH_CHECK_ENDPOINT), HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        ResponseEntity<String> response = restTemplate.exchange(new URI(HEALTH_CHECK_ENDPOINT), HttpMethod.GET,
+                new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("OK", response.getBody());
