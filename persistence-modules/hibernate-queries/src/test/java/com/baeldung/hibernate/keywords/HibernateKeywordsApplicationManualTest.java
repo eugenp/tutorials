@@ -16,6 +16,10 @@ import jakarta.persistence.PersistenceException;
 /**
  * This test suite uses testcontainers library and therefore
  * requires Docker installed on the local system to be able to run it.
+ *
+ * When docker is available on the local machine it can be run either by:
+ * - running it from your favorite IDE
+ * - or through `mvn test -Dtest=HibernateKeywordsApplicationManualTest`
  */
 public class HibernateKeywordsApplicationManualTest {
 
