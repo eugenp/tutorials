@@ -46,8 +46,8 @@ public class StringToIntConverter {
         return parsedInt.orElse(Integer.MIN_VALUE);
     }
 
-    public static int convertStringToIntUsingNumberUtils(String input){
-        return NumberUtils.toInt(input, Integer.MIN_VALUE);
+    public static int convertStringToIntUsingNumberUtils(String input, Integer defaultValue){
+        return NumberUtils.toInt(input, defaultValue);
     }
 }
 
