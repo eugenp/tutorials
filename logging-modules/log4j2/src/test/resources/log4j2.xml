@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" 
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude"
     packages="com.baeldung" status="WARN">
     <Appenders>
         <xi:include
@@ -20,7 +20,7 @@
                 <KeyValuePair key="myCustomField" value="myCustomValue" />
             </JsonLayout>
         </Console>
-        <File name="JSONLogfileAppender" fileName="${sys:logging.folder.path}">
+        <File name="JSONLogfileAppender" fileName="${sys:logging.folder.path}" >
             <JSONLayout compact="true" eventEol="true" />
             <BurstFilter level="INFO" rate="2" maxBurst="10" />
         </File>

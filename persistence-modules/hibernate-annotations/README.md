@@ -10,3 +10,4 @@ This module contains articles about Annotations used in Hibernate.
 - [Hibernate @WhereJoinTable Annotation](https://www.baeldung.com/hibernate-wherejointable)
 - [Usage of the Hibernate @LazyCollection Annotation](https://www.baeldung.com/hibernate-lazycollection)
 - [@Immutable in Hibernate](https://www.baeldung.com/hibernate-immutable)
+- [Hibernate @CreationTimestamp and @UpdateTimestamp](https://www.baeldung.com/hibernate-creationtimestamp-updatetimestamp)

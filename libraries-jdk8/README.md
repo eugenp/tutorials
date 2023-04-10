@@ -1,4 +1,4 @@
-## Libraries-7
+## Libraries-jdk8
 
 This module contains articles about various Java libraries. 
 These are small libraries that are relatively easy to use and do not require any separate module of their own.
