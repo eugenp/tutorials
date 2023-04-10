@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>javaxval</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <name>javaxval</name>
 
     <parent>
@@ -46,7 +45,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-		
+
     <!-- uncomment in order to enable Hibernate Validator Anotation Processor -->
     <!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> -->
     <!--<version>${maven.compiler.version}</version> <configuration> <source>${maven.compiler.source}</source> -->
