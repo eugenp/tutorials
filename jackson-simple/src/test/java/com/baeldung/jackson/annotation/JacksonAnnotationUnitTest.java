@@ -20,10 +20,12 @@ import com.baeldung.jackson.annotation.bidirection.UserWithIdentity;
 import com.baeldung.jackson.annotation.bidirection.UserWithRef;
 import com.baeldung.jackson.annotation.date.EventWithFormat;
 import com.baeldung.jackson.annotation.date.EventWithSerializer;
+import com.baeldung.jackson.annotation.dtos.withEnum.TypeEnumWithValue;
 import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.annotation.exception.UserWithRoot;
 import com.baeldung.jackson.annotation.exception.UserWithRootNamespace;
+import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.jsonview.Item;
 import com.baeldung.jackson.annotation.jsonview.Views;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -95,6 +97,14 @@ public class JacksonAnnotationUnitTest {
         assertThat(enumAsString, is("1609.34"));
     }
 
+
+    @Test
+    public void whenSerializingFieldUsingJsonValue_thenCorrect() throws IOException {
+        final String enumAsString = new ObjectMapper().writeValueAsString(PriorityEnum.HIGH);
+
+        assertEquals("3", enumAsString);
+    }
+
     @Test
     public void whenSerializingUsingJsonSerialize_thenCorrect() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -107,6 +117,19 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString(toParse));
     }
 
+    @Test
+    public void whenSerializingUsingJsonValueAnnotatedField_thenCorrect() throws JsonProcessingException {
+        final String enumValue = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
+        assertThat(enumValue, is("\"Type A\""));
+    }
+
+    @Test
+    public void whenSerializingUsingJsonValueAnnotatedFieldInPojo_thenCorrect() throws JsonProcessingException {
+        GeneralBean bean1 = new GeneralBean(1, "Bean 1");
+        final String bean1AsString = new ObjectMapper().writeValueAsString(bean1);
+        assertThat(bean1AsString, is("\"Bean 1\""));
+    }
+
     // ========================= Deserializing annotations ============================
 
     @Test
@@ -117,6 +140,7 @@ public class JacksonAnnotationUnitTest {
             .readValue(json);
         assertEquals("My bean", bean.name);
     }
+
 
     @Test
     public void whenDeserializingUsingJsonInject_thenCorrect() throws IOException {
@@ -159,6 +183,23 @@ public class JacksonAnnotationUnitTest {
         final EventWithSerializer event = new ObjectMapper().readerFor(EventWithSerializer.class)
             .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
+    }
+
+    @Test
+    public void whenDeserializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
+        final String str = "\"Type A\"";
+        TypeEnumWithValue te = new ObjectMapper().readerFor(TypeEnumWithValue.class)
+            .readValue(str);
+        assertThat(te, is(TypeEnumWithValue.TYPE1));
+    }
+
+    @Test(expected = Exception.class)
+    public void whenDeserializingUsingJsonValueAnnotatedFieldInPojo_thenGetException() throws JsonProcessingException {
+        GeneralBean bean1 = new GeneralBean(1, "Bean 1");
+        final String bean1AsString = new ObjectMapper().writeValueAsString(bean1);
+        GeneralBean bean = new ObjectMapper().readerFor(GeneralBean.class)
+            .readValue(bean1AsString);
+        assertThat(bean.getName(), is(bean1.getName()));
     }
 
     // ========================= Inclusion annotations ============================
@@ -399,7 +440,5 @@ public class JacksonAnnotationUnitTest {
         */
 
     }
-    
-    
 
 }

@@ -1,6 +1,8 @@
 # R2DBC Test configuration
 r2dbc:
   url: r2dbc:h2:mem://./testdb
+  user: local
+  password: local
 
 server:
   port: 8080
@@ -24,6 +26,7 @@ spring:
     user: local
     password: local
     locations: classpath:db/h2/migration
-  
+  main:
+    allow-bean-definition-overriding: true
   
   
