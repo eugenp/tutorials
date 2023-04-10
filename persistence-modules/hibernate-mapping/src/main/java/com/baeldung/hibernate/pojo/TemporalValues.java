@@ -1,7 +1,6 @@
 package com.baeldung.hibernate.pojo;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -9,7 +8,7 @@ import java.time.*;
 import java.util.Calendar;
 
 @Entity
-public class TemporalValues implements Serializable {
+public class TemporalValues {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

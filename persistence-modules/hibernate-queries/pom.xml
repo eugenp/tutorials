@@ -85,7 +85,6 @@
             <version>${testcontainers.mysql.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.hypersistence/hypersistence-utils-hibernate-60 -->
         <dependency>
             <groupId>io.hypersistence</groupId>
             <artifactId>hypersistence-utils-hibernate-60</artifactId>

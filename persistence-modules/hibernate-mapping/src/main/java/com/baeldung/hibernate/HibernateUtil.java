@@ -86,7 +86,6 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Pen.class);
         metadataSources.addAnnotatedClass(Pet.class);
         metadataSources.addAnnotatedClass(Vehicle.class);
-        
 
         Metadata metadata = metadataSources.getMetadataBuilder()
             .build();
