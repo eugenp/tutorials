@@ -357,7 +357,6 @@
                 <module>java-jdi</module>
 
                 <module>jetbrains</module>
-                <module>jhipster-5</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
@@ -488,7 +487,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries-6</module>
@@ -553,7 +551,6 @@
 
                 <module>java-jdi</module>
 
-                <module>jhipster-5</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
@@ -666,7 +663,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
 
                 <module>libraries-6</module>
