@@ -22,7 +22,7 @@ class StringToIntConverterUnitTest {
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input));
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingOptional(data.input));
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerDecode(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingNumberUtils(data.input));
+            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingNumberUtils(data.input,Integer.MIN_VALUE ));
         });
     }
 
@@ -36,7 +36,7 @@ class StringToIntConverterUnitTest {
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input));
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input));
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingOptional(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingNumberUtils(data.input));
+            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingNumberUtils(data.input, Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerDecode(data.input));
         });
     }
