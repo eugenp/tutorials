@@ -26,7 +26,7 @@ public class SecurityConfig {
         http.csrf()
             .disable()
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.NEVER)
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .addFilterAfter(authenticationFilter, BasicAuthenticationFilter.class);
 
