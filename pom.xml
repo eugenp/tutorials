@@ -824,15 +824,6 @@
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
                 <module>quarkus-modules</module>
-                <module>spring-boot-modules/spring-boot-properties</module>
-                <module>spring-boot-modules/spring-boot-properties-2</module>
-                <module>spring-boot-modules/spring-boot-properties-3</module>
-                <module>spring-boot-modules/spring-boot-properties-migrator-demo</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-3</module>
-                <module>spring-boot-modules/spring-boot-3-native</module>
-                <module>spring-boot-modules/spring-boot-3-observation</module>
-                <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
@@ -1084,15 +1075,6 @@
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
                 <module>quarkus-modules</module>
-                <module>spring-boot-modules/spring-boot-properties</module>
-                <module>spring-boot-modules/spring-boot-properties-2</module>
-                <module>spring-boot-modules/spring-boot-properties-3</module>
-                <module>spring-boot-modules/spring-boot-properties-migrator-demo</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-3</module>
-                <module>spring-boot-modules/spring-boot-3-native</module>
-                <module>spring-boot-modules/spring-boot-3-observation</module>
-                <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
