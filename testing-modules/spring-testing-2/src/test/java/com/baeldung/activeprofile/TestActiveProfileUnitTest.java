@@ -4,15 +4,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(classes = ActiveProfileApplication.class)
-public class DevActiveProfileUnitTest {
+@ActiveProfiles(value = "test")
+public class TestActiveProfileUnitTest {
 
     @Value("${profile.property.value}")
     private String propertyString;
 
     @Test
-    void whenDevIsActive_ThenValueShouldBeKeptFromApplicationYaml() {
-        Assertions.assertEquals("This the the application.yaml file", propertyString);
+    void whenTestIsActive_ThenValueShouldBeKeptFromApplicationTestYaml() {
+        Assertions.assertEquals("This the the application-test.yaml file", propertyString);
     }
 }
