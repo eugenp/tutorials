@@ -26,7 +26,7 @@ class HealthCheckControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
 
         ResponseEntity<String> response = restTemplate.exchange(new URI(HEALTH_CHECK_ENDPOINT), HttpMethod.GET,
-                new HttpEntity<>(headers), String.class);
+          new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("OK", response.getBody());

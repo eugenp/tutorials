@@ -29,7 +29,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
         if(isAuthenticatedRequest(httpServletRequest)) {
             PreAuthenticatedAuthenticationToken preAuthenticatedAuthenticationToken = new PreAuthenticatedAuthenticationToken(appConfig.getApiAuthHeaderName(),
-                httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()), new ArrayList<>());
+              httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()), new ArrayList<>());
 
             SecurityContextHolder.getContext().setAuthentication(preAuthenticatedAuthenticationToken);
             filterChain.doFilter(httpServletRequest, httpServletResponse);
@@ -40,7 +40,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     private boolean isAuthenticatedRequest(HttpServletRequest httpServletRequest) {
         return httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()) != null &&
-                   httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()).equals(appConfig.getApiAuthHeaderSecret());
+                 httpServletRequest.getHeader(appConfig.getApiAuthHeaderName()).equals(appConfig.getApiAuthHeaderSecret());
     }
 
     @Override

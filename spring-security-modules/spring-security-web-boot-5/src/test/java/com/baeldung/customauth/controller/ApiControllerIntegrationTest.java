@@ -28,7 +28,7 @@ class ApiControllerIntegrationTest {
         headers.add("x-auth-secret-key", "test-secret");
 
         ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
-                new HttpEntity<>(headers), String.class);
+          new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("hello", response.getBody());
@@ -40,7 +40,7 @@ class ApiControllerIntegrationTest {
         headers.add("x-auth-secret-key", "invalid");
 
         ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
-                new HttpEntity<>(headers), String.class);
+          new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
@@ -51,7 +51,7 @@ class ApiControllerIntegrationTest {
         headers.add("x-auth-secret", "test-secret");
 
         ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
-                new HttpEntity<>(headers), String.class);
+          new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
@@ -61,7 +61,7 @@ class ApiControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
 
         ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
-                new HttpEntity<>(headers), String.class);
+          new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
