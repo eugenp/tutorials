@@ -1,6 +1,6 @@
 package com.baeldung.javaxval.notnull;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
