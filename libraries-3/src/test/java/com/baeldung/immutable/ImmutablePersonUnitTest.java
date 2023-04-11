@@ -7,7 +7,7 @@ import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutabl
 
 public class ImmutablePersonUnitTest {
 
-    @Test
+    @Test(expected = Exception.class)
     public void whenModifying_shouldCreateNewInstance() throws Exception {
         final ImmutablePerson john = ImmutablePerson.builder()
           .age(42)
