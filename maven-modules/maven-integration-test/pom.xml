@@ -267,6 +267,7 @@
     </profiles>
 
     <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <maven.resources.version>3.0.2</maven.resources.version>
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.failsafe.version>2.22.0</maven.failsafe.version>
