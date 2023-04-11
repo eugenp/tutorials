@@ -3,8 +3,8 @@ package com.baeldung.javaxval.enums;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public abstract class EnumSubSetValidator<T extends Annotation, U> implements ConstraintValidator<T, U> {
     private U[] subset;
