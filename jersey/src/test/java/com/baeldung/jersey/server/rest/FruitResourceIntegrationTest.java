@@ -5,13 +5,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.Form;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
 import org.junit.Test;
@@ -19,6 +12,12 @@ import org.junit.Test;
 import com.baeldung.jersey.server.config.ViewApplicationConfig;
 import com.baeldung.jersey.server.model.Fruit;
 import com.baeldung.jersey.server.providers.FruitExceptionMapper;
+
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Application;
+import jakarta.ws.rs.core.Form;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 public class FruitResourceIntegrationTest extends JerseyTest {
 
@@ -71,7 +70,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         Response response = target("fruit/created").request()
             .post(Entity.json("{\"name\":\"strawberry\",\"weight\":20}"));
 
-        assertEquals("Http Response should be 201 ", Status.CREATED.getStatusCode(), response.getStatus());
+        assertEquals("Http Response should be 201 ", Response.Status.CREATED.getStatusCode(), response.getStatus());
         assertThat(response.readEntity(String.class), containsString("Fruit saved : Fruit [name: strawberry colour: null]"));
     }
 

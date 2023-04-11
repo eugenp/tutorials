@@ -13,7 +13,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -24,8 +23,6 @@ import junit.framework.Assert;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ResultSetLiveTest {
-
-    private static final Logger logger = Logger.getLogger(ResultSetLiveTest.class);
 
     private final Employee expectedEmployee1 = new Employee(1, "John", 1000.0, "Developer");
 

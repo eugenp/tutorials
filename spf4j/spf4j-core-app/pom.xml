@@ -61,11 +61,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -104,7 +99,6 @@
 
     <properties>
         <spf4j.version>8.9.0</spf4j.version>
-        <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <dependency.plugin.version>3.1.1</dependency.plugin.version>
     </properties>
 

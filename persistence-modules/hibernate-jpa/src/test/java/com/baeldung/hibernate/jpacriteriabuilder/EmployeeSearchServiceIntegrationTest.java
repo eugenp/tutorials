@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -81,7 +81,7 @@ public class EmployeeSearchServiceIntegrationTest {
 
     @Test
     public final void givenCriteriaQuery_whenSearchedUsingCriteriaBuilderWithListofAuthors_thenResultIsFilteredByAuthorNames() {
-        List<String> titles = new ArrayList<String>() {
+        List<String> titles = new ArrayList<>() {
             {
                 add("Manager");
                 add("Senior Manager");
