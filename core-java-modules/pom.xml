@@ -121,6 +121,7 @@
         <module>core-java-numbers-6</module>
         <module>core-java-optional</module>
         <module>core-java-perf</module>
+        <module>core-java-properties</module>
         <module>core-java-reflection</module>
         <module>core-java-reflection-2</module>
         <module>core-java-security-2</module>
