@@ -363,7 +363,7 @@
                 <module>libraries-3</module>
                 <module>libraries-jdk8</module>
 
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
 
                 <module>muleesb</module>
 
@@ -559,7 +559,7 @@
                 <module>libraries-3</module>
                 <module>libraries-jdk8</module>
 
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
                 <module>web-modules</module>
@@ -735,6 +735,7 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
@@ -986,6 +987,7 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
