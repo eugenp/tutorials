@@ -1,5 +1,6 @@
 package com.baeldung.springboot.swagger.model;
 
+import com.baeldung.springboot.swagger.views.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,9 +16,14 @@ public class Article {
     //@ApiModelProperty(hidden = true)
     //@ApiParam(hidden = true)
     //@ApiModelProperty(readOnly = true)
-    @ApiParam(hidden = true)
+    //@ApiParam(hidden = true)
+    @JsonView(Views.Private.class)
     private int id;
+
+    @JsonView(Views.Public.class)
     private String title;
+
+    @JsonView(Views.Public.class)
     private int numOfWords;
 
     public Article() {
