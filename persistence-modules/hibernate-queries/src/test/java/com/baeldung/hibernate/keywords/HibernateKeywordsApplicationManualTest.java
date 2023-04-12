@@ -3,8 +3,6 @@ package com.baeldung.hibernate.keywords;
 import static java.util.UUID.randomUUID;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import javax.persistence.PersistenceException;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,7 +11,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class HibernateKeywordsApplicationIntegrationTest {
+import jakarta.persistence.PersistenceException;
+
+/**
+ * This test suite uses testcontainers library and therefore
+ * requires Docker installed on the local system to be able to run it.
+ *
+ * When docker is available on the local machine it can be run either by:
+ * - running it from your favorite IDE
+ * - or through `mvn test -Dtest=HibernateKeywordsApplicationManualTest`
+ */
+public class HibernateKeywordsApplicationManualTest {
 
     private static SessionFactory sessionFactory;
     private Session session;
