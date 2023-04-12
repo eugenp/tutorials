@@ -53,6 +53,7 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
+        <module>core-java-compiler</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
         <module>core-java-concurrency-advanced-2</module>
@@ -67,6 +68,7 @@
         <module>core-java-datetime-string-2</module>
         <module>core-java-date-operations-2</module>
         <module>core-java-date-operations-3</module>
+        <module>core-java-documentation</module>
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
