@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AppTest {
+public class AppUnitTest {
 
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
     private Context mockContext;
