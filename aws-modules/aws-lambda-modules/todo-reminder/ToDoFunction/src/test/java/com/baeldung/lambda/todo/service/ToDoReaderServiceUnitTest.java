@@ -7,7 +7,7 @@ import uk.org.webcompere.systemstubs.rules.SystemOutRule;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class ToDoReaderServiceTest {
+public class ToDoReaderServiceUnitTest {
 
     @Rule
     public SystemOutRule systemOutRule = new SystemOutRule();
