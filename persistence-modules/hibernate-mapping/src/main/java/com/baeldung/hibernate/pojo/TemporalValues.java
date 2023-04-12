@@ -47,7 +47,7 @@ public class TemporalValues {
     private java.time.LocalDate localDate;
 
     @Basic
-    private java.time.LocalTime localTime;
+    private java.time.LocalTime localTimeField;
 
     @Basic
     private java.time.OffsetTime offsetTime;
@@ -145,11 +145,11 @@ public class TemporalValues {
     }
 
     public LocalTime getLocalTime() {
-        return localTime;
+        return localTimeField;
     }
 
     public void setLocalTime(LocalTime localTime) {
-        this.localTime = localTime;
+        this.localTimeField = localTime;
     }
 
     public OffsetTime getOffsetTime() {
