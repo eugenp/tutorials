@@ -488,8 +488,6 @@
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
                 <module>jws</module>
-
-                <module>libraries-6</module>
             </modules>
         </profile>
 
@@ -664,8 +662,6 @@
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
                 <module>jws</module>
-
-                <module>libraries-6</module>
             </modules>
 
         </profile>
@@ -891,6 +887,7 @@
                 <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1141,8 +1138,10 @@
                 <module>ksqldb</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1196,7 +1195,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module>
+
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
