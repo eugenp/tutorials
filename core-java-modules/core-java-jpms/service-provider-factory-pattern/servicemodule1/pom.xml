@@ -3,30 +3,22 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.providermodule</groupId>
-    <artifactId>providermodule</artifactId>
+    <groupId>com.baeldung.servicemodule</groupId>
+    <artifactId>servicemodule1</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung.decoupling-pattern2</groupId>
-        <artifactId>decoupling-pattern2</artifactId>
+        <groupId>com.baeldung.service-provider-factory-pattern</groupId>
+        <artifactId>service-provider-factory-pattern</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.baeldung.servicemodule</groupId>
-            <artifactId>servicemodule2</artifactId>
-            <version>${servicemodule.version}</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <source>${source.version}</source>
                     <target>${target.version}</target>
@@ -34,9 +26,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <servicemodule.version>1.0</servicemodule.version>
-    </properties>
 
 </project>

@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.consumermodule</groupId>
-    <artifactId>consumermodule2</artifactId>
+    <groupId>com.baeldung.providermodule</groupId>
+    <artifactId>providermodule</artifactId>
     <version>1.0</version>
 
     <parent>
-        <groupId>com.baeldung.decoupling-pattern2</groupId>
-        <artifactId>decoupling-pattern2</artifactId>
+        <groupId>com.baeldung.service-loader-api-pattern</groupId>
+        <artifactId>service-loader-api-pattern</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -18,11 +18,6 @@
             <groupId>com.baeldung.servicemodule</groupId>
             <artifactId>servicemodule2</artifactId>
             <version>${servicemodule.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baeldung.providermodule</groupId>
-            <artifactId>providermodule</artifactId>
-            <version>${providermodule.version}</version>
         </dependency>
     </dependencies>
 
@@ -42,7 +37,6 @@
 
     <properties>
         <servicemodule.version>1.0</servicemodule.version>
-        <providermodule.version>1.0</providermodule.version>
     </properties>
 
 </project>
