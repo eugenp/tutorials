@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>aws-lambda</artifactId>
+        <artifactId>aws-lambda-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
