@@ -1,37 +1,44 @@
 package com.baeldung.s3;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 public class AWSS3ObjectIntegrationTest {
 
-    private static final String BUCKET = "my-awesome-bucket";
-    private static final String KEY = "my-awesome-key";
+    private static final String BUCKET = "your-bucket";
+    private static final String KEY_THAT_EXIST = "your-key-that-exist";
     private AWSS3ObjectUtils s3ObjectUtils;
 
     @Before
     public void setUp() {
-        s3ObjectUtils = mock(AWSS3ObjectUtils.class);
+        AmazonS3 client = AmazonS3ClientBuilder.standard()
+            .withRegion(Regions.DEFAULT_REGION)
+            .withCredentials(new EnvironmentVariableCredentialsProvider())
+            .build();
+
+        s3ObjectUtils = new AWSS3ObjectUtils(client);
     }
 
     @Test
     public void whenVerifyIfObjectExistByDefaultMethod_thenCorrect() {
-        s3ObjectUtils.doesObjectExistByDefaultMethod(BUCKET, KEY);
-        verify(s3ObjectUtils).doesObjectExistByDefaultMethod(BUCKET, KEY);
+        assertTrue(s3ObjectUtils.doesObjectExistByDefaultMethod(BUCKET, KEY_THAT_EXIST), "Key: " + KEY_THAT_EXIST + " doesn't exist");
+
     }
 
     @Test
     public void whenVerifyIfObjectExistByListObjects_thenCorrect() {
-        s3ObjectUtils.doesObjectExistByListObjects(BUCKET, KEY);
-        verify(s3ObjectUtils).doesObjectExistByListObjects(BUCKET, KEY);
+        assertTrue(s3ObjectUtils.doesObjectExistByListObjects(BUCKET, KEY_THAT_EXIST), "Key: " + KEY_THAT_EXIST + " doesn't exist");
     }
 
     @Test
     public void whenVerifyIfObjectExistByMetaData_thenCorrect() {
-        s3ObjectUtils.doesObjectExistByMetaData(BUCKET, KEY);
-        verify(s3ObjectUtils).doesObjectExistByMetaData(BUCKET, KEY);
+        assertTrue(s3ObjectUtils.doesObjectExistByMetaData(BUCKET, KEY_THAT_EXIST), "Key: " + KEY_THAT_EXIST + " doesn't exist");
     }
 }
