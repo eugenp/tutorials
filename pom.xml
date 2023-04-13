@@ -357,13 +357,12 @@
                 <module>java-jdi</module>
 
                 <module>jetbrains</module>
-                <module>jhipster-5</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-jdk8</module>
 
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
 
                 <module>muleesb</module>
 
@@ -488,10 +487,7 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
-
-                <module>libraries-6</module>
             </modules>
         </profile>
 
@@ -553,13 +549,12 @@
 
                 <module>java-jdi</module>
 
-                <module>jhipster-5</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
                 <module>libraries-3</module>
                 <module>libraries-jdk8</module>
 
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
                 <module>web-modules</module>
@@ -666,10 +661,7 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
-
-                <module>libraries-6</module>
             </modules>
 
         </profile>
@@ -735,6 +727,7 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
@@ -818,6 +811,7 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
+                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -893,6 +887,7 @@
                 <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -985,6 +980,7 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
@@ -1068,6 +1064,7 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
+                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -1141,8 +1138,10 @@
                 <module>ksqldb</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1196,7 +1195,7 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module>
+
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>

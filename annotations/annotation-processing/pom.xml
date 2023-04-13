@@ -21,7 +21,6 @@
         </dependency>
     </dependencies>
 
-
     <properties>
         <auto-service.version>1.0-rc2</auto-service.version>
     </properties>

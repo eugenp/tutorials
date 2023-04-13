@@ -1,6 +1,6 @@
 package com.baeldung.javaxval.javabeanconstraints.entities;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class UserNotNull {
 
