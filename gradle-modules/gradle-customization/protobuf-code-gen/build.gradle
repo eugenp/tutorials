@@ -37,4 +37,9 @@ sourceSets {
 			srcDirs 'build/generated/source/proto/main/java'
 		}
 	}
+	test {
+		proto {
+			srcDir 'src/sample_protofiles'
+		}
+	}
 }
