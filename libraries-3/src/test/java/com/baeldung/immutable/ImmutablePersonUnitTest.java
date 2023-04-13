@@ -1,5 +1,6 @@
 package com.baeldung.immutable;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +13,8 @@ public class ImmutablePersonUnitTest {
      * assertImmutable is giving exception. Raised the issue to Mutability support team
      * https://github.com/MutabilityDetector/MutabilityDetector/issues/196
      */
-    /*@Test
+    @Ignore
+    @Test
     public void whenModifying_shouldCreateNewInstance() throws Exception {
         final ImmutablePerson john = ImmutablePerson.builder()
           .age(42)
@@ -28,5 +30,5 @@ public class ImmutablePersonUnitTest {
           .isEqualTo(42);
 
         assertImmutable(ImmutablePerson.class);
-    }*/
+    }
 }
