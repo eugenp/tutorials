@@ -24,7 +24,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ApacheHttpClientRetryIntegrationTest {
+public class ApacheHttpClientRetryLiveTest {
 
     private Integer requestCounter;
     private CloseableHttpClient httpClient;
