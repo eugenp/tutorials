@@ -103,7 +103,8 @@
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.util=ALL-UNNAMED
-                        --add-opens java.base/java.util.concurrent=ALL-UNNAMED
+                        --add-opens
+                        java.base/java.util.concurrent=ALL-UNNAMED
                     </argLine>
                 </configuration>
             </plugin>
