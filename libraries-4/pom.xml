@@ -109,6 +109,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
+
+		<dependency>
+			<groupId>fr.inria.gforge.spoon</groupId>
+			<artifactId>spoon-core</artifactId>
+			<version>${spoon-core.version}</version>
+		</dependency>
+		        
     </dependencies>
 
     <properties>
@@ -129,6 +136,7 @@
         <glassfish.web.version>2.2.4</glassfish.web.version>
         <olap4j.version>1.2.0</olap4j.version>
         <javafx.version>19</javafx.version>
+        <spoon-core.version>10.3.0</spoon-core.version>
     </properties>
 
 </project>
