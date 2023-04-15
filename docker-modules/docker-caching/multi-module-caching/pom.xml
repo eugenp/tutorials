@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>runner</module>
-        <module>core</module>
+        <module>runner-module</module>
+        <module>core-module</module>
     </modules>
 
     <dependencyManagement>
