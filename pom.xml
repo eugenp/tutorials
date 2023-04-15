@@ -359,7 +359,7 @@
                 <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-3</module>
+
                 <module>libraries-jdk8</module>
 
                 <module>lombok-modules/lombok-custom</module>
@@ -551,7 +551,7 @@
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-3</module>
+
                 <module>libraries-jdk8</module>
 
                 <module>lombok-modules/lombok-custom</module>
@@ -947,6 +947,7 @@
 
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
+                <module>libraries-3</module>
             </modules>
 
             <properties>
@@ -1200,6 +1201,7 @@
 
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
+                <module>libraries-3</module>
             </modules>
 
             <properties>
