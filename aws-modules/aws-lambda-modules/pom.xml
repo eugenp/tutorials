@@ -14,9 +14,9 @@
     </parent>
 
     <modules>
-        <module>lambda</module>
-        <module>shipping-tracker/ShippingFunction</module>
-        <module>todo-reminder/ToDoFunction</module>
+        <module>lambda-function</module>
+        <module>shipping-tracker-lambda/ShippingFunction</module>
+        <module>todo-reminder-lambda/ToDoFunction</module>
     </modules>
 
 </project>

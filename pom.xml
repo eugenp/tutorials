@@ -330,8 +330,8 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>checker-framework</module>
+                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
@@ -523,8 +523,8 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>checker-framework</module>
+                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
@@ -854,7 +854,7 @@
                 <module>axon</module>
 
                 <module>bazel</module>
-                <module>code-generation</module>
+                <module>google-auto-project</module>
                 <module>ddd</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -1107,7 +1107,7 @@
                 <module>axon</module>
 
                 <module>bazel</module>
-                <module>code-generation</module>
+                <module>google-auto-project</module>
                 <module>ddd</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
