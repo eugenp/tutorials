@@ -12,7 +12,7 @@ public class Player extends AbstractPlayerMBean {
     }
 
     @Override
-    public int getGuess() {
+    public int guessNumber() {
         return generateRandomNumber();
     }
 

@@ -29,7 +29,7 @@ public class GuessGame extends BroadcastingGuessGame {
                 log.info("Current random number is " + randomNumber);
                 waitASecond();
                 for (Player player : players) {
-                    int guess = player.getGuess();
+                    int guess = player.guessNumber();
                     if (guess == randomNumber) {
                         log.info("Players " + player.getName() + " " + guess + " is correct");
                         player.incrementScore();
