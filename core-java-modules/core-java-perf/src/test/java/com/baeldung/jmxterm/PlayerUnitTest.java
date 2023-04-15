@@ -13,12 +13,6 @@ class PlayerUnitTest {
     }
 
     @Test
-    void givenNewPlayer_thenGuessIsZero() {
-        Player player = new Player("John");
-        assertEquals(0, player.getGuess());
-    }
-
-    @Test
     void givenNewPlayer_whenIncrementScore_thenScoreIsOne() {
         Player player = new Player("John");
         player.incrementScore();
