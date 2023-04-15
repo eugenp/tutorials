@@ -1,13 +1,13 @@
 package com.baeldung.jmxterm;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumbergenerator {
 
     private static final int MIN = 0;
     private static final int MAX = 10;
 
-    private static final Random RANDOM = new Random();
+    private static final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
 
     private RandomNumbergenerator() {
     }
