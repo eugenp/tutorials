@@ -12,6 +12,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
+import com.baeldung.hibernate.booleanconverters.model.Question;
 import com.baeldung.hibernate.entities.DeptEmployee;
 import com.baeldung.hibernate.optimisticlocking.OptimisticLockingCourse;
 import com.baeldung.hibernate.optimisticlocking.OptimisticLockingStudent;
@@ -58,6 +59,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
         metadataSources.addAnnotatedClass(Post.class);
+        metadataSources.addAnnotatedClass(Question.class);
+        metadataSources.addPackage(Question.class.getPackageName());
 
         Metadata metadata = metadataSources.getMetadataBuilder()
                 .build();
