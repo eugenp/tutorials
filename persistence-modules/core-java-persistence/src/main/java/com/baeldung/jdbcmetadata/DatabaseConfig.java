@@ -1,13 +1,14 @@
 package com.baeldung.jdbcmetadata;
 
-import org.apache.log4j.Logger;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DatabaseConfig {
-    private static final Logger LOG = Logger.getLogger(DatabaseConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DatabaseConfig.class);
 
     private Connection connection;
 
@@ -17,7 +18,7 @@ public class DatabaseConfig {
             String url = "jdbc:h2:mem:testdb";
             connection = DriverManager.getConnection(url, "sa", "");
         } catch (ClassNotFoundException | SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage());
         }
     }
 
@@ -35,7 +36,7 @@ public class DatabaseConfig {
             connection.createStatement().executeUpdate("create table CUSTOMER (ID int primary key auto_increment, NAME VARCHAR(45))");
             connection.createStatement().executeUpdate("create table CUST_ADDRESS (ID VARCHAR(36), CUST_ID int, ADDRESS VARCHAR(45), FOREIGN KEY (CUST_ID) REFERENCES CUSTOMER(ID))");
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage());
         }
     }
 
@@ -43,7 +44,7 @@ public class DatabaseConfig {
         try {
             connection.createStatement().executeUpdate("CREATE VIEW CUSTOMER_VIEW AS SELECT * FROM CUSTOMER");
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage());
         }
     }
 }

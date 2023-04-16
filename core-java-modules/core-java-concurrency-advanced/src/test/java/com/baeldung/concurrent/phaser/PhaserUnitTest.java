@@ -4,6 +4,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Phaser;
@@ -12,6 +15,8 @@ import static junit.framework.TestCase.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PhaserUnitTest {
+
+    private static Logger log = LoggerFactory.getLogger(PhaserUnitTest.class);
 
     @Test
     public void givenPhaser_whenCoordinateWorksBetweenThreads_thenShouldCoordinateBetweenMultiplePhases() {
@@ -26,19 +31,19 @@ public class PhaserUnitTest {
         executorService.submit(new LongRunningAction("thread-3", ph));
 
         //then
-        System.out.println("Thread " + Thread.currentThread().getName() + " waiting for others");
+        log.debug("Thread {} waiting for others", Thread.currentThread().getName());
         ph.arriveAndAwaitAdvance();
-        System.out.println("Thread " + Thread.currentThread().getName() + " proceeding in phase " + ph.getPhase());
+        log.debug("Thread {} proceeding in phase {}", Thread.currentThread().getName(), ph.getPhase());
         
         assertEquals(1, ph.getPhase());
 
         //and
         executorService.submit(new LongRunningAction("thread-4", ph));
         executorService.submit(new LongRunningAction("thread-5", ph));
-        
-        System.out.println("Thread " + Thread.currentThread().getName() + " waiting for others");
+
+        log.debug("Thread {} waiting for others", Thread.currentThread().getName());
         ph.arriveAndAwaitAdvance();
-        System.out.println("Thread " + Thread.currentThread().getName() + " proceeding in phase " + ph.getPhase());
+        log.debug("Thread {} proceeding in phase {}", Thread.currentThread().getName(), ph.getPhase());
         
         assertEquals(2, ph.getPhase());
 

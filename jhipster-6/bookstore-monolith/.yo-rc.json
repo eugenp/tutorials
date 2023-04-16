@@ -1,0 +1,36 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.baeldung.jhipster5"
+    },
+    "jhipsterVersion": "6.0.0",
+    "applicationType": "monolith",
+    "baseName": "Bookstore",
+    "packageName": "com.baeldung.jhipster5",
+    "packageFolder": "com/baeldung/jhipster5",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NDJmOTVlZjI2NzhlZDRjNmVkNTM1NDE2NjkyNDljZDJiNzBlMjI5YmZjMjY3MzdjZmZlMjI3NjE4OTRkNzc5MWYzNDNlYWMzYmJjOWRmMjc5ZWQyZTZmOWZkOTMxZWZhNWE1MTVmM2U2NjFmYjhlNDc2Y2Q3NzliMGY0YzFkNmI=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "enableHibernateCache": false,
+    "clientTheme": "none"
+  }
+}
