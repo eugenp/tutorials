@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static io.restassured.RestAssured.post;
@@ -24,14 +23,14 @@ public class RestAssuredXMLIntegrationTest {
     private static final String EMPLOYEES = getXml();
 
     @BeforeClass
-    public static void before() throws Exception {
+    public static void before() {
         System.out.println("Setting up!");
         final int port = Util.getAvailablePort();
         wireMockServer = new WireMockServer(port);
         wireMockServer.start();
         configureFor("localhost", port);
         RestAssured.port = port;
-        stubFor(post(urlEqualTo(EVENTS_PATH)).willReturn(
+        stubFor(com.github.tomakehurst.wiremock.client.WireMock.post(urlEqualTo(EVENTS_PATH)).willReturn(
           aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_XML)
             .withBody(EMPLOYEES)));
@@ -84,7 +83,7 @@ public class RestAssuredXMLIntegrationTest {
     }
 
     @AfterClass
-    public static void after() throws Exception {
+    public static void after() {
         System.out.println("Running: tearDown");
         wireMockServer.stop();
     }

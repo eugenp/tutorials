@@ -8,7 +8,6 @@ import org.junit.Test;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
@@ -24,14 +23,14 @@ public class RestAssured2IntegrationTest {
     private static final String ODDS = getJson();
 
     @BeforeClass
-    public static void before() throws Exception {
+    public static void before() {
         System.out.println("Setting up!");
         final int port = Util.getAvailablePort();
         wireMockServer = new WireMockServer(port);
         wireMockServer.start();
         configureFor("localhost", port);
         RestAssured.port = port;
-        stubFor(get(urlEqualTo(EVENTS_PATH)).willReturn(
+        stubFor(com.github.tomakehurst.wiremock.client.WireMock.get(urlEqualTo(EVENTS_PATH)).willReturn(
           aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_JSON)
             .withBody(ODDS)));
@@ -61,7 +60,7 @@ public class RestAssured2IntegrationTest {
     }
 
     @AfterClass
-    public static void after() throws Exception {
+    public static void after() {
         System.out.println("Running: tearDown");
         wireMockServer.stop();
     }
