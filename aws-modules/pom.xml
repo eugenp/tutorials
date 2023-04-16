@@ -15,7 +15,7 @@
 
     <modules>
         <module>aws-app-sync</module>
-        <module>aws-lambda</module>
+        <module>aws-lambda-modules</module>
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
         <module>aws-s3</module>
