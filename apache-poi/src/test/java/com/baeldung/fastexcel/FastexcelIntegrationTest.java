@@ -23,7 +23,6 @@ public class FastexcelIntegrationTest {
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
         fileLocation = path.substring(0, path.length() - 1) + FILE_NAME;
-        System.out.println(fileLocation);
 
         fastexcelHelper = new FastexcelHelper();
         fastexcelHelper.writeExcel();
