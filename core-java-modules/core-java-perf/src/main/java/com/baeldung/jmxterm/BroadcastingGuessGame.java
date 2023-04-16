@@ -18,12 +18,7 @@ public abstract class BroadcastingGuessGame implements NotificationBroadcaster, 
 
     protected BroadcastingGuessGame() {
         this.notificationInfo = new MBeanNotificationInfo[]{
-            new MBeanNotificationInfo(
-                new String[]
-                    {"game"},
-                Notification.class.getName(),
-                "Game notification"
-            )
+            new MBeanNotificationInfo(new String[]{"game"}, Notification.class.getName(), "Game notification")
         };
     }
 
