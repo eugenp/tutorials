@@ -51,7 +51,6 @@ public class FastexcelHelper {
             ws.width(0, 25);
             ws.width(1, 15);
 
-
             ws.range(0, 0, 0, 1).style().fontName("Arial").fontSize(16).bold().fillColor("3366FF").set();
             ws.value(0, 0, "Name");
             ws.value(0, 1, "Age");
