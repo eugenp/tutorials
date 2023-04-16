@@ -55,7 +55,7 @@ public class FastexcelHelper {
             ws.value(0, 0, "Name");
             ws.value(0, 1, "Age");
 
-            ws.range(1, 0, 1, 1).style().wrapText(true).set();
+            ws.range(2, 0, 2, 1).style().wrapText(true).set();
             ws.value(2, 0, "John Smith");
             ws.value(2, 1, 20L);
         }
