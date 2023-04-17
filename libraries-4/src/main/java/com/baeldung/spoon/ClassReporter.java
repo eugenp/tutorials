@@ -2,35 +2,30 @@ package com.baeldung.spoon;
 
 import spoon.Launcher;
 import spoon.SpoonAPI;
+import spoon.reflect.CtModel;
 import spoon.reflect.declaration.CtClass;
-import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.visitor.Filter;
+import spoon.support.sniper.SniperJavaPrettyPrinter;
 
 /**
  * Loads a given class and creates a summary o
  */
 public class ClassReporter {
     
-    protected SpoonAPI newSpoon() {
-        return new Launcher();
-    }
 
-    public MethodSummaryReport generateMethodSummaryReport(String source) {
+    public MethodSummary generateMethodSummaryReport(String source) {
         
-        var spoon = newSpoon();
-        
+        SpoonAPI spoon = new Launcher();
         spoon.addInputResource(source);
-        var model = spoon.buildModel();        
-        var report = new MethodSummaryReport(source);
-                
+        CtModel model = spoon.buildModel();        
+        MethodSummary report = new MethodSummary();                        
         model.filterChildren((el) -> el instanceof CtClass<?>)
           .forEach((CtClass<?> clazz) -> processMethods(report,clazz));
-        
+                
         return report;
     }
     
-    private void processMethods(MethodSummaryReport report, CtClass<?> ctClass) {
+    private void processMethods(MethodSummary report, CtClass<?> ctClass) {
                 
         ctClass.filterChildren((c) -> c instanceof CtMethod<?> )
           .forEach((CtMethod<?> m) -> {  
@@ -45,30 +40,18 @@ public class ClassReporter {
               }
               else {
                   report.addPackagePrivateMethod();
-              }
+              }                         
           });      
     }
 
 
-    public static class MethodSummaryReport {
-        private final String name;
+    public static class MethodSummary {
         private int totalMethodCount;
         private int publicMethodCount;
         private int protectedMethodCount;
         private int packagePrivateMethodCount;
         private int privateMethodCount;
-        
-        MethodSummaryReport(String name) {
-            this.name = name;
-        }
-
-        /**
-         * @return the name
-         */
-        public String getName() {
-            return name;
-        }
-        
+                
         void addPublicMethod() {
             totalMethodCount++;
             publicMethodCount++;

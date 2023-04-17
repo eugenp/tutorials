@@ -17,6 +17,12 @@ public class SpoonClassToTest {
         return new SomeVO();
     }
     
-    void packageProtectedMethod() {}
+    void packageProtectedMethod() {
+        
+        try {
+            HelperClass.callSomeMethodThatThrows();
+        }
+        catch(Exception ignored) {}
+    }
     
 }

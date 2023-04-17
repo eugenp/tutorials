@@ -1,17 +1,12 @@
 package spoon;
-
-
 public class BrokenClass {
     
-    
-    public BrokenClass() { 
-        2 = anx;
-    }
+    // Syntax error
+    pluvic void brokenMethod() {}
 
     // Syntax error
-    provate void privateMethod() {}
+    protected void protectedMethod() thraws Exception {}
     
-    // Syntax error
+    // Public method
     public void publicMethod() {}
-    
 }
