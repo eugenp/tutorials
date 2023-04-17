@@ -13,7 +13,6 @@
     </parent>
 
     <dependencies>
-    
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
@@ -23,8 +22,7 @@
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp-tools.version}</version>
-        </dependency>
-        
+        </dependency>  
     </dependencies>
 
     <properties>

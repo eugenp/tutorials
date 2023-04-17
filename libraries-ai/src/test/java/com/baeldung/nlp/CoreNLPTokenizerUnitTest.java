@@ -38,7 +38,7 @@ public class CoreNLPTokenizerUnitTest {
                 String word = token.get(CoreAnnotations.TextAnnotation.class);
 
                 tokens.append(word)
-                    .append(" ");
+                  .append(" ");
 
             }
         }
