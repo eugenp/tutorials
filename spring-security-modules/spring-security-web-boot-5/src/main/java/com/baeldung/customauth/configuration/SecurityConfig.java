@@ -5,19 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 import org.springframework.security.web.header.HeaderWriterFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import java.util.Arrays;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -35,7 +35,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
+        http.cors().and().csrf()
             .disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -43,10 +43,8 @@ public class SecurityConfig {
             .addFilterAfter(requestHeaderAuthenticationFilter(), HeaderWriterFilter.class)
             .authorizeHttpRequests()
             .antMatchers(HttpMethod.GET,"/health").permitAll()
-            .antMatchers("/api/**").authenticated()
-            .and()
-            .exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
-
+            .antMatchers("/api/**").authenticated().and()
+            .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint());
 
         return http.build();
     }
@@ -64,6 +62,11 @@ public class SecurityConfig {
 
     @Bean
     protected AuthenticationManager authenticationManager() {
-        return new ProviderManager(Arrays.asList(requestHeaderAuthenticationProvider));
+        return new ProviderManager(Collections.singletonList(requestHeaderAuthenticationProvider));
+    }
+
+    @Bean
+    public AuthenticationEntryPoint unauthorizedEntryPoint() {
+        return (request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
     }
 }
