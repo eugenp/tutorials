@@ -10,7 +10,6 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 import org.springframework.security.web.header.HeaderWriterFilter;
@@ -44,7 +43,8 @@ public class SecurityConfig {
             .authorizeHttpRequests()
             .antMatchers(HttpMethod.GET,"/health").permitAll()
             .antMatchers("/api/**").authenticated().and()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint());
+            .exceptionHandling().authenticationEntryPoint((request, response, authException) ->
+                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
         return http.build();
     }
@@ -63,10 +63,5 @@ public class SecurityConfig {
     @Bean
     protected AuthenticationManager authenticationManager() {
         return new ProviderManager(Collections.singletonList(requestHeaderAuthenticationProvider));
-    }
-
-    @Bean
-    public AuthenticationEntryPoint unauthorizedEntryPoint() {
-        return (request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
     }
 }
