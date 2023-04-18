@@ -10,7 +10,7 @@ public class CoffeeItemProcessor implements ItemProcessor<Coffee, Coffee> {
     private static final Logger LOGGER = LoggerFactory.getLogger(CoffeeItemProcessor.class);
 
     @Override
-    public Coffee process(final Coffee coffee) throws Exception {
+    public Coffee process(final Coffee coffee) {
         String brand = coffee.getBrand().toUpperCase();
         String origin = coffee.getOrigin().toUpperCase();
         String chracteristics = coffee.getCharacteristics().toUpperCase();

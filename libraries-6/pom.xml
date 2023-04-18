@@ -53,12 +53,6 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Reflections -->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>${reflections.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -68,6 +62,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-net</groupId>
@@ -106,6 +105,11 @@
             <artifactId>modelmapper</artifactId>
             <version>${org.modelmapper.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.agrona</groupId>
+            <artifactId>agrona</artifactId>
+            <version>1.17.1</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -119,6 +123,60 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includeProjectDependencies>false</includeProjectDependencies>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <mainClass>uk.co.real_logic.sbe.SbeTool</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>sbe.output.dir</key>
+                            <value>${project.build.directory}/generated-sources/java</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <arguments>
+                        <argument>${project.basedir}/src/main/resources/schema.xml</argument>
+                    </arguments>
+                    <workingDirectory>${project.build.directory}/generated-sources/java</workingDirectory>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>uk.co.real-logic</groupId>
+                        <artifactId>sbe-tool</artifactId>
+                        <version>1.27.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/java/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -137,7 +195,6 @@
 
     <properties>
         <javapoet.version>1.10.0</javapoet.version>
-        <reflections.version>0.9.11</reflections.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <functionaljava.version>4.8.1</functionaljava.version>
         <resilience4j.version>0.12.1</resilience4j.version>

@@ -1,6 +1,15 @@
 package com.baeldung.jersey.server;
 
-import javax.ws.rs.*;
+import jakarta.ws.rs.BeanParam;
+import jakarta.ws.rs.CookieParam;
+import jakarta.ws.rs.FormParam;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.HeaderParam;
+import jakarta.ws.rs.MatrixParam;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.QueryParam;
 
 @Path("items")
 public class Items {

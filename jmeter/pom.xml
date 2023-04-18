@@ -48,15 +48,15 @@
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
                 <artifactId>jmeter-maven-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${jmeter-maven-plugin.version}</version>
                 <executions>
-                 <!-- Generate JMeter configuration -->
-                            <execution>
-                                <id>configuration</id>
-                                <goals>
-                                    <goal>configure</goal>
-                                </goals>
-                            </execution>
+                    <!-- Generate JMeter configuration -->
+                    <execution>
+                        <id>configuration</id>
+                        <goals>
+                            <goal>configure</goal>
+                        </goals>
+                    </execution>
                     <execution>
                         <id>jmeter-tests</id>
                         <goals>
@@ -72,9 +72,6 @@
         </plugins>
     </build>
 
-    <properties>
-    </properties>
-    
     <profiles>
         <profile>
             <id>dashboard</id>
@@ -119,7 +116,7 @@
                     <plugin>
                         <groupId>com.lazerycode.jmeter</groupId>
                         <artifactId>jmeter-maven-plugin</artifactId>
-                        <version>3.7.0</version>
+                        <version>${jmeter-maven-plugin.version}</version>
                         <executions>
                             <!-- Generate JMeter configuration -->
                             <execution>
@@ -161,9 +158,13 @@
             </build>
 
             <properties>
-                <jmeter.version>5.5</jmeter.version>
+                <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
             </properties>
         </profile>
     </profiles>
+
+    <properties>
+        <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
+    </properties>
 
 </project>

@@ -11,4 +11,5 @@ This module contains articles about Java 8 core features
 - [Convert Between Byte Array and UUID in Java](https://www.baeldung.com/java-byte-array-to-uuid)
 - [Create a Simple “Rock-Paper-Scissors” Game in Java](https://www.baeldung.com/java-rock-paper-scissors)
 - [VarArgs vs Array Input Parameters in Java](https://www.baeldung.com/varargs-vs-array)
+- [Java Helper vs. Utility Classes](https://www.baeldung.com/java-helper-vs-utility-classes)
 - [[<-- Prev]](/core-java-modules/core-java-8)

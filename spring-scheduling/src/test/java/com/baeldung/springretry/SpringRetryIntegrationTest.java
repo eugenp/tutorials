@@ -1,8 +1,14 @@
 package com.baeldung.springretry;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,8 +20,10 @@ import java.sql.SQLException;
 @ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
 public class SpringRetryIntegrationTest {
 
-    @Autowired
+    @SpyBean
     private MyService myService;
+    @Value("${retry.maxAttempts}")
+    private String maxAttempts;
 
     @Autowired
     private RetryTemplate retryTemplate;
@@ -33,11 +41,13 @@ public class SpringRetryIntegrationTest {
     @Test
     public void givenRetryServiceWithCustomization_whenCallWithException_thenRetryRecover() throws SQLException {
         myService.retryServiceWithCustomization(null);
+        verify(myService, times(Integer.parseInt(maxAttempts))).retryServiceWithCustomization(any());
     }
 
     @Test
     public void givenRetryServiceWithExternalConfiguration_whenCallWithException_thenRetryRecover() throws SQLException {
         myService.retryServiceWithExternalConfiguration(null);
+        verify(myService, times(Integer.parseInt(maxAttempts))).retryServiceWithExternalConfiguration(any());
     }
 
     @Test(expected = RuntimeException.class)

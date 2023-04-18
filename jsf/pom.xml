@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jsf</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <name>jsf</name>
     <packaging>war</packaging>
 
@@ -79,7 +78,7 @@
         <javax.el.version>3.0.0</javax.el.version>
         <!-- Maven War plugin -->
         <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
-        <!-- Other-->
+        <!-- Other -->
         <javax.annotation-api.version>1.3.1</javax.annotation-api.version>
     </properties>
 

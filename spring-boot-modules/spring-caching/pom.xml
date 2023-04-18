@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,6 +78,7 @@
 
     <properties>
         <ehcache.version>3.5.2</ehcache.version>
+        <lombok.version>1.18.26</lombok.version>
     </properties>
 
 </project>
