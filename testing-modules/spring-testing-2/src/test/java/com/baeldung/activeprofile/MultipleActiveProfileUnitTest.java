@@ -20,7 +20,7 @@ public class MultipleActiveProfileUnitTest {
     private Environment env;
 
     @Test
-    void whenDevIsActive_ThenValueShouldBeKeptFromDedicatedApplicationYaml() {
+    void whenDevIsActive_thenValueShouldBeKeptFromDedicatedApplicationYaml() {
         String currentProfile = env.getActiveProfiles()[0];
         Assertions.assertEquals(String.format("This the the application-%s.yaml file", currentProfile), propertyString);
     }

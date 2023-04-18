@@ -12,7 +12,7 @@ public class DevActiveProfileUnitTest {
     private String propertyString;
 
     @Test
-    void whenDevIsActive_ThenValueShouldBeKeptFromApplicationYaml() {
+    void whenDevIsActive_thenValueShouldBeKeptFromApplicationYaml() {
         Assertions.assertEquals("This the the application.yaml file", propertyString);
     }
 }

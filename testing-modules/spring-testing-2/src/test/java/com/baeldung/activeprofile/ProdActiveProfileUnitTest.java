@@ -16,7 +16,7 @@ public class ProdActiveProfileUnitTest {
     private String propertyString;
 
     @Test
-    void whenProdIsActive_ThenValueShouldBeKeptFromApplicationProdYaml() {
+    void whenProdIsActive_thenValueShouldBeKeptFromApplicationProdYaml() {
         Assertions.assertEquals("This the the application-prod.yaml file", propertyString);
     }
 
