@@ -18,7 +18,7 @@ public class DiscountExcelIntegrationTest {
 
     @Before
     public void setup() {
-        Resource resource = ResourceFactory.newClassPathResource("com/baeldung/drools/rules/Discount.xls", getClass());
+        Resource resource = ResourceFactory.newClassPathResource("com/baeldung/drools/rules/Discount.drl.xls", getClass());
         kSession = new DroolsBeanFactory().getKieSession(resource);
     }
 

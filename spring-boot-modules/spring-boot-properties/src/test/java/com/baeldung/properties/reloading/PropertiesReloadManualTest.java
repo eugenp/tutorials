@@ -1,28 +1,27 @@
 package com.baeldung.properties.reloading;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.baeldung.properties.reloading.beans.ConfigurationPropertiesRefreshConfigBean;
 import com.baeldung.properties.reloading.beans.EnvironmentConfigBean;
 import com.baeldung.properties.reloading.beans.PropertiesConfigBean;
 import com.baeldung.properties.reloading.beans.ValueRefreshConfigBean;
 import java.io.FileOutputStream;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBootPropertiesTestApplication.class)
 public class PropertiesReloadManualTest {
 
@@ -50,7 +49,7 @@ public class PropertiesReloadManualTest {
     ValueRefreshConfigBean singletonValueRefreshConfigBean;
 
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mvc = MockMvcBuilders
           .webAppContextSetup(webApplicationContext)
@@ -61,7 +60,7 @@ public class PropertiesReloadManualTest {
         callRefresh();
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         createConfig("extra.properties", "application.theme.color", "blue");
         createConfig("extra2.properties", "application.theme.background", "red");
@@ -69,76 +68,76 @@ public class PropertiesReloadManualTest {
 
     @Test
     public void givenEnvironmentReader_whenColorChanged_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("blue", environmentConfigBean.getColor());
+        assertEquals("blue", environmentConfigBean.getColor());
 
         createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("red", environmentConfigBean.getColor());
+        assertEquals("red", environmentConfigBean.getColor());
     }
 
     @Test
     public void givenEnvironmentReader_whenBackgroundChanged_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("red", environmentConfigBean.getBackgroundColor());
+        assertEquals("red", environmentConfigBean.getBackgroundColor());
 
         createConfig("extra2.properties", "application.theme.background", "blue");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("blue", environmentConfigBean.getBackgroundColor());
+        assertEquals("blue", environmentConfigBean.getBackgroundColor());
     }
 
     @Test
     public void givenPropertiesReader_whenColorChanged_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("blue", propertiesConfigBean.getColor());
+        assertEquals("blue", propertiesConfigBean.getColor());
 
         createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("red", propertiesConfigBean.getColor());
+        assertEquals("red", propertiesConfigBean.getColor());
     }
 
     @Test
     public void givenRefreshScopedValueReader_whenColorChangedAndRefreshCalled_thenExpectChangeValue() throws Exception {
-        Assert.assertEquals("blue", valueRefreshConfigBean.getColor());
+        assertEquals("blue", valueRefreshConfigBean.getColor());
 
         createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("blue", valueRefreshConfigBean.getColor());
+        assertEquals("blue", valueRefreshConfigBean.getColor());
 
         callRefresh();
 
-        Assert.assertEquals("red", valueRefreshConfigBean.getColor());
+        assertEquals("red", valueRefreshConfigBean.getColor());
     }
 
     @Test
     public void givenSingletonRefreshScopedValueReader_whenColorChangedAndRefreshCalled_thenExpectOldValue() throws Exception {
 
-        Assert.assertEquals("blue", singletonValueRefreshConfigBean.getColor());
+        assertEquals("blue", singletonValueRefreshConfigBean.getColor());
 
         createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("blue", singletonValueRefreshConfigBean.getColor());
+        assertEquals("blue", singletonValueRefreshConfigBean.getColor());
 
         callRefresh();
 
-        Assert.assertEquals("blue", singletonValueRefreshConfigBean.getColor());
+        assertEquals("blue", singletonValueRefreshConfigBean.getColor());
     }
 
     @Test
     public void givenRefreshScopedConfigurationPropertiesReader_whenColorChangedAndRefreshCalled_thenExpectChangeValue() throws Exception {
 
-        Assert.assertEquals("blue", configurationPropertiesRefreshConfigBean.getColor());
+        assertEquals("blue", configurationPropertiesRefreshConfigBean.getColor());
 
         createConfig("extra.properties", "application.theme.color", "red");
         Thread.sleep(refreshDelay);
 
-        Assert.assertEquals("blue", configurationPropertiesRefreshConfigBean.getColor());
+        assertEquals("blue", configurationPropertiesRefreshConfigBean.getColor());
 
         callRefresh();
 
-        Assert.assertEquals("red", configurationPropertiesRefreshConfigBean.getColor());
+        assertEquals("red", configurationPropertiesRefreshConfigBean.getColor());
     }
 
     public void callRefresh() throws Exception {
@@ -148,7 +147,7 @@ public class PropertiesReloadManualTest {
             .accept(MediaType.APPLICATION_JSON_VALUE))
           .andReturn();
         MockHttpServletResponse response = mvcResult.getResponse();
-        Assert.assertEquals(response.getStatus(), 200);
+        assertEquals(200, response.getStatus());
     }
 
     public void createConfig(String file, String key, String value) throws Exception {

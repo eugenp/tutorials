@@ -18,10 +18,21 @@
     <modules>
         <module>lombok</module>
         <module>lombok-2</module>
-        <module>lombok-custom</module>
+<!--        <module>lombok-custom</module>--> <!-- this module uses legacy jdk-8 features (tools.jar), so can't upgrade to jdk9 or above-->
     </modules>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -31,5 +42,10 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
 
 </project>

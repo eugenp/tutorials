@@ -8,6 +8,7 @@
 - [Running Selenium Scripts with JMeter](https://www.baeldung.com/selenium-jmeter)
 - [Fixing Selenium WebDriver Executable Path Error](https://www.baeldung.com/java-selenium-webdriver-path-error)
 - [Handle Browser Tabs With Selenium](https://www.baeldung.com/java-handle-browser-tabs-selenium)
+- [Implicit Wait vs Explicit Wait in Selenium Webdriver](https://www.baeldung.com/selenium-implicit-explicit-wait)
 
 #### Notes:
 - to run the live tests for the article *Fixing Selenium WebDriver Executable Path Error*, follow the manual setup described 

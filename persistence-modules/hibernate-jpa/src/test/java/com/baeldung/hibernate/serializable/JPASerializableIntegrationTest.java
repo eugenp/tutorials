@@ -4,10 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.io.IOException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,7 +16,7 @@ public class JPASerializableIntegrationTest {
     private static EntityManager entityManager;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.baeldung.hibernate.serializable.h2_persistence_unit");
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
@@ -63,7 +62,7 @@ public class JPASerializableIntegrationTest {
         entityManager.persist(account);
         entityManager.persist(account2);
 
-        List userAccounts = entityManager.createQuery("select a from Account a join fetch a.user where a.user.email = :email")
+        List<Account> userAccounts = entityManager.createQuery("select a from Account a join fetch a.user where a.user.email = :email", Account.class)
             .setParameter("email", email)
             .getResultList();
         assertEquals(2, userAccounts.size());
