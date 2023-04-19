@@ -1,8 +1,7 @@
 package com.baeldung.customauth.authprovider;
 
-import com.baeldung.customauth.configuration.AppConfig;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -15,18 +14,15 @@ import java.util.ArrayList;
 @Service
 public class RequestHeaderAuthenticationProvider implements AuthenticationProvider {
 
-    private final AppConfig appConfig;
+    @Value("${api.auth.secret}")
+    private String apiAuthSecret;
 
-    @Autowired
-    public RequestHeaderAuthenticationProvider(AppConfig appConfig){
-        this.appConfig = appConfig;
-    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String authSecretKey = String.valueOf(authentication.getPrincipal());
 
-        if(StringUtils.isBlank(authSecretKey) || !authSecretKey.equals(appConfig.getApiAuthHeaderSecret())) {
+        if(StringUtils.isBlank(authSecretKey) || !authSecretKey.equals(apiAuthSecret)) {
             throw new BadCredentialsException("Bad Request Header Credentials");
         }
 

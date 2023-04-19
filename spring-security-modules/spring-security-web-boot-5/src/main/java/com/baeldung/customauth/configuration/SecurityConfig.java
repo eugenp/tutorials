@@ -2,6 +2,7 @@ package com.baeldung.customauth.configuration;
 
 import com.baeldung.customauth.authprovider.RequestHeaderAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,13 +23,13 @@ import java.util.Collections;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final AppConfig appConfig;
-
     private final RequestHeaderAuthenticationProvider requestHeaderAuthenticationProvider;
 
+    @Value("${api.auth.header.name}")
+    private String apiAuthHeaderName;
+
     @Autowired
-    public SecurityConfig(AppConfig appConfig, RequestHeaderAuthenticationProvider requestHeaderAuthenticationProvider){
-        this.appConfig = appConfig;
+    public SecurityConfig( RequestHeaderAuthenticationProvider requestHeaderAuthenticationProvider){
         this.requestHeaderAuthenticationProvider = requestHeaderAuthenticationProvider;
     }
 
@@ -52,7 +53,7 @@ public class SecurityConfig {
     @Bean
     public RequestHeaderAuthenticationFilter requestHeaderAuthenticationFilter() {
         RequestHeaderAuthenticationFilter filter = new RequestHeaderAuthenticationFilter();
-        filter.setPrincipalRequestHeader(appConfig.getApiAuthHeaderName());
+        filter.setPrincipalRequestHeader(apiAuthHeaderName);
         filter.setExceptionIfHeaderMissing(false);
         filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/api/**"));
         filter.setAuthenticationManager(authenticationManager());
