@@ -2,8 +2,8 @@ package com.baeldung.javaxval.enums;
 
 import java.util.Arrays;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 import com.baeldung.javaxval.enums.constraints.CustomerTypeSubset;
 import com.baeldung.javaxval.enums.demo.CustomerType;

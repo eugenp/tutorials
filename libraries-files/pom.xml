@@ -38,22 +38,24 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
-	    <groupId>com.itextpdf</groupId>
-	    <artifactId>itext7-core</artifactId>
-	    <version>7.2.4</version>
-	    <type>pom</type>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>${itext7-core.version}</version>
+            <type>pom</type>
         </dependency>
-	<dependency>
-	    <groupId>org.assertj</groupId>
-	    <artifactId>assertj-core</artifactId>
-	    <version>3.23.1</version>
-	    <scope>test</scope>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <org.ini4j.version>0.5.4</org.ini4j.version>
         <commons-configuration2>2.8.0</commons-configuration2>
+        <itext7-core.version>7.2.4</itext7-core.version>
+        <assertj-core.version>3.23.1</assertj-core.version>
     </properties>
 
 </project>
