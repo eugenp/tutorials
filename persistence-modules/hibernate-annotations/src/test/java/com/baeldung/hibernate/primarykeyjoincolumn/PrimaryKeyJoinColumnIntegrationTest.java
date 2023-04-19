@@ -1,6 +1,5 @@
 package com.baeldung.hibernate.primarykeyjoincolumn;
 
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -23,7 +22,6 @@ public class PrimaryKeyJoinColumnIntegrationTest {
         em = emf.createEntityManager();
         em.getTransaction()
             .begin();
-
 
         Department department = new Department();
         department.setName("IT");
@@ -49,15 +47,11 @@ public class PrimaryKeyJoinColumnIntegrationTest {
 
         Person person = em.find(Person.class, 1L);
 
-
         assertNotNull(person);
-
 
         assertEquals("John Doe", person.getName());
 
-
         assertNotNull(person.getDepartment());
-
 
         assertEquals("IT", person.getDepartment()
             .getName());
