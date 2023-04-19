@@ -56,12 +56,12 @@ public class HibernateBooleanConverterIntegrationTest {
 
         char likeJavaQuestionCorrectAnswerDbValue = session.createNativeQuery(format("SELECT correctAnswer FROM Question WHERE id='%s'", likeJavaQuestionId), Character.class)
           .getSingleResult();
-        char sydneyCapitalOfAustraliaQuestionDbValue = session.createNativeQuery(format("SELECT correctAnswer FROM Question WHERE id='%s'", sydneyCapitalOfAustraliaQuestionId), Character.class)
+        char sydneyCapitalOfAustraliaQuestionCorrectAnswerDbValue = session.createNativeQuery(format("SELECT correctAnswer FROM Question WHERE id='%s'", sydneyCapitalOfAustraliaQuestionId), Character.class)
           .getSingleResult();
         session.close();
 
         assertEquals('Y', likeJavaQuestionCorrectAnswerDbValue);
-        assertEquals('N', sydneyCapitalOfAustraliaQuestionDbValue);
+        assertEquals('N', sydneyCapitalOfAustraliaQuestionCorrectAnswerDbValue);
     }
 
     @Test
