@@ -30,10 +30,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${maven.compiler.source.version}</source>
+                    <target>${maven.compiler.target.version}</target>
                     <compilerArgs>
                         <arg>--add-exports=jdk.jdi/com.sun.jdi=ALL-UNNAMED</arg>
                     </compilerArgs>
@@ -42,5 +41,10 @@
         </plugins>
     </build>
 
+
+    <properties>
+        <maven.compiler.source.version>17</maven.compiler.source.version>
+        <maven.compiler.target.version>17</maven.compiler.target.version>
+    </properties>
 
 </project>
