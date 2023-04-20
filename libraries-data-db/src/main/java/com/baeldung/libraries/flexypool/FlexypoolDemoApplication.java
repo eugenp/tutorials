@@ -25,9 +25,7 @@ public class FlexypoolDemoApplication {
     public static List<Employee> getEmployees() throws SQLException {
         String SQL_QUERY = "select * from emp";
         List<Employee> employees;
-        try (Connection con = poolDataSource.getConnection();
-             PreparedStatement pst = con.prepareStatement(SQL_QUERY);
-             ResultSet rs = pst.executeQuery();) {
+        try (Connection con = poolDataSource.getConnection(); PreparedStatement pst = con.prepareStatement(SQL_QUERY); ResultSet rs = pst.executeQuery();) {
             employees = new ArrayList<>();
             Employee employee;
             while (rs.next()) {

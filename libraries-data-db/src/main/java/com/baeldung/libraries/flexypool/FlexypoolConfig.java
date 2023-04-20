@@ -25,15 +25,11 @@ import java.util.concurrent.TimeUnit;
 @org.springframework.context.annotation.Configuration
 public class FlexypoolConfig {
 
-
     @SuppressWarnings("unchecked")
     @Bean(initMethod = "start", destroyMethod = "stop")
     public FlexyPoolDataSource<HikariDataSource> flexypoolDataSource() {
         Configuration<HikariDataSource> configuration = flexypoolConfiguration();
-        return new FlexyPoolDataSource<>(configuration,
-                new IncrementPoolOnTimeoutConnectionAcquiringStrategy.Factory<>(5),
-                new RetryConnectionAcquiringStrategy.Factory<>(2)
-        );
+        return new FlexyPoolDataSource<>(configuration, new IncrementPoolOnTimeoutConnectionAcquiringStrategy.Factory<>(5), new RetryConnectionAcquiringStrategy.Factory<>(2));
     }
 
     @Bean
@@ -41,25 +37,16 @@ public class FlexypoolConfig {
 
         HikariDataSource dataSource = hikariDataSource();
 
-        return new Configuration.Builder<>(
-                UUID.randomUUID().toString(),
-                dataSource,
-                HikariCPPoolAdapter.FACTORY
-        )
-                .setMetricsFactory(MicrometerMetrics::new)
-                .setConnectionProxyFactory(ConnectionDecoratorFactoryResolver.INSTANCE.resolve())
-                .setMetricLogReporterMillis(TimeUnit.SECONDS.toMillis(5))
-                .setMetricNamingUniqueName(UniqueNamingStrategy.INSTANCE)
-                .setJmxEnabled(true)
-                .setJmxAutoStart(true)
-                .setConnectionAcquireTimeThresholdMillis(50L)
-                .setConnectionLeaseTimeThresholdMillis(250L)
-                .setEventListenerResolver(() -> Arrays.asList(
-                        new ConnectionAcquireTimeoutEventListener(),
-                        new ConnectionAcquireTimeThresholdExceededEventListener(),
-                        new ConnectionLeaseTimeThresholdExceededEventListener()
-                ))
-                .build();
+        return new Configuration.Builder<>(UUID.randomUUID().toString(), dataSource, HikariCPPoolAdapter.FACTORY).setMetricsFactory(MicrometerMetrics::new)
+          .setConnectionProxyFactory(ConnectionDecoratorFactoryResolver.INSTANCE.resolve())
+          .setMetricLogReporterMillis(TimeUnit.SECONDS.toMillis(5))
+          .setMetricNamingUniqueName(UniqueNamingStrategy.INSTANCE)
+          .setJmxEnabled(true)
+          .setJmxAutoStart(true)
+          .setConnectionAcquireTimeThresholdMillis(50L)
+          .setConnectionLeaseTimeThresholdMillis(250L)
+          .setEventListenerResolver(() -> Arrays.asList(new ConnectionAcquireTimeoutEventListener(), new ConnectionAcquireTimeThresholdExceededEventListener(), new ConnectionLeaseTimeThresholdExceededEventListener()))
+          .build();
     }
 
     @Bean
@@ -79,11 +66,9 @@ public class FlexypoolConfig {
     }
 }
 
-class ConnectionAcquireTimeThresholdExceededEventListener
-        extends EventListener<ConnectionAcquireTimeThresholdExceededEvent> {
+class ConnectionAcquireTimeThresholdExceededEventListener extends EventListener<ConnectionAcquireTimeThresholdExceededEvent> {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(
-            ConnectionAcquireTimeThresholdExceededEventListener.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ConnectionAcquireTimeThresholdExceededEventListener.class);
 
     public ConnectionAcquireTimeThresholdExceededEventListener() {
         super(ConnectionAcquireTimeThresholdExceededEvent.class);
@@ -95,11 +80,9 @@ class ConnectionAcquireTimeThresholdExceededEventListener
     }
 }
 
-class ConnectionLeaseTimeThresholdExceededEventListener
-        extends EventListener<ConnectionLeaseTimeThresholdExceededEvent> {
+class ConnectionLeaseTimeThresholdExceededEventListener extends EventListener<ConnectionLeaseTimeThresholdExceededEvent> {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(
-            ConnectionLeaseTimeThresholdExceededEventListener.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ConnectionLeaseTimeThresholdExceededEventListener.class);
 
     public ConnectionLeaseTimeThresholdExceededEventListener() {
         super(ConnectionLeaseTimeThresholdExceededEvent.class);
@@ -111,11 +94,9 @@ class ConnectionLeaseTimeThresholdExceededEventListener
     }
 }
 
-class ConnectionAcquireTimeoutEventListener
-        extends EventListener<ConnectionAcquireTimeoutEvent> {
+class ConnectionAcquireTimeoutEventListener extends EventListener<ConnectionAcquireTimeoutEvent> {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(
-            ConnectionAcquireTimeoutEventListener.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(ConnectionAcquireTimeoutEventListener.class);
 
     public ConnectionAcquireTimeoutEventListener() {
         super(ConnectionAcquireTimeoutEvent.class);
