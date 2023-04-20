@@ -49,11 +49,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.javamoney</groupId>
-            <artifactId>moneta</artifactId>
-            <version>${javamoney.moneta.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.core.version}</version>
@@ -173,7 +168,6 @@
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
         <!-- maven plugins -->
-        <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <spring.core.version>4.3.20.RELEASE</spring.core.version>
     </properties>
 
