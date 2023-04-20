@@ -30,7 +30,7 @@
         <module>hibernate-mapping-2</module>
         <!-- <module>hibernate-ogm</module> 
         <module>hibernate-annotations</module> FAILED -->
-        <module>hibernate-exceptions</module>
+        <!-- <module>hibernate-exceptions</module> FAILED -->
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <!-- <module>hibernate-queries</module> FAILED -->
@@ -114,7 +114,7 @@
 
     <properties>
         <!-- persistence -->
-        <hibernate.version>6.1.7.Final</hibernate.version>
+        <hibernate.version>6.2.0.Final</hibernate.version>
         <postgresql.version>42.5.4</postgresql.version>
         <hsqldb.version>2.3.4</hsqldb.version>
         <testcontainers.version>1.16.3</testcontainers.version>

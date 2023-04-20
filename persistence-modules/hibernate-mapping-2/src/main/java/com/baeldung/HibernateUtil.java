@@ -1,4 +1,4 @@
-package com.baeldung.manytomany.util;
+package com.baeldung;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -9,6 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import com.baeldung.manytomany.model.Employee;
 import com.baeldung.manytomany.model.Project;
+import com.baeldung.uuids.WebSiteUser;
+import com.baeldung.uuids.Element;
+import com.baeldung.uuids.Reservation;
+import com.baeldung.uuids.Sale;
 
 public class HibernateUtil {
 
@@ -21,6 +25,10 @@ public class HibernateUtil {
             Configuration configuration = new Configuration();
             configuration.addAnnotatedClass(Employee.class);
             configuration.addAnnotatedClass(Project.class);
+            configuration.addAnnotatedClass(WebSiteUser.class);
+            configuration.addAnnotatedClass(Element.class);
+            configuration.addAnnotatedClass(Reservation.class);
+            configuration.addAnnotatedClass(Sale.class);
             configuration.configure("manytomany.cfg.xml");
             LOGGER.debug("Hibernate Annotation Configuration loaded");
 
