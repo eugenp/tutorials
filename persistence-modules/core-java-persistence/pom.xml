@@ -52,14 +52,21 @@
             <artifactId>spring-boot-starter</artifactId>
             <version>${springframework.boot.spring-boot-starter.version}</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
-        <HikariCP.version>3.2.0</HikariCP.version>
-        <c3p0.version>0.9.5.2</c3p0.version>
-        <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE</springframework.boot.spring-boot-starter.version>
-        <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
+        <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
+        <HikariCP.version>5.0.1</HikariCP.version>
+        <c3p0.version>0.9.5.5</c3p0.version>
+        <springframework.boot.spring-boot-starter.version>3.0.4</springframework.boot.spring-boot-starter.version>
+        <springframework.spring-web.version>6.0.6</springframework.spring-web.version>
+        <mysql-connector.version>8.0.32</mysql-connector.version>
     </properties>
 
 </project>

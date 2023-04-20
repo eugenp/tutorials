@@ -80,6 +80,8 @@ public class ORMLiteIntegrationTest {
             wrappedIterable.forEach(lib -> {
                 System.out.println(lib.getName());
             });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -162,7 +164,7 @@ public class ORMLiteIntegrationTest {
     }
 
     @AfterClass
-    public static void tearDown() throws SQLException, IOException {
+    public static void tearDown() throws Exception {
         connectionSource.close();
     }
 }
