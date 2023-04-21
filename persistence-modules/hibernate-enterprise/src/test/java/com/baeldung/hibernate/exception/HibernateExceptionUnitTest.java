@@ -10,6 +10,7 @@ import jakarta.persistence.OptimisticLockException;
 import jakarta.persistence.PersistenceException;
 
 import org.hibernate.HibernateException;
+import org.hibernate.MappingException;
 import org.hibernate.NonUniqueObjectException;
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
@@ -59,12 +60,15 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenQueryExecutedWithUnmappedEntity_thenMappingException() {
-        // thrown.expectCause(isA(MappingException.class));
-        // thrown.expectMessage("Unknown entity: java.lang.String");
+        thrown.expect(isA(MappingException.class));
+        thrown.expectMessage("Unable to locate persister: com.baeldung.hibernate.exception.ProductNotMapped");
+
+        ProductNotMapped product = new ProductNotMapped();
+        product.setId(1);
+        product.setName("test");
 
         Session session = sessionFactory.openSession();
-        NativeQuery<String> query = session.createNativeQuery("select name from PRODUCT", String.class);
-        query.getResultList();
+        session.save(product);
     }
 
     @Test
