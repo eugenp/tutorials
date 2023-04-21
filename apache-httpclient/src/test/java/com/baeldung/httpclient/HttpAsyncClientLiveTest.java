@@ -105,8 +105,13 @@ class HttpAsyncClientLiveTest {
         final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
         client.start();
         final HttpHost proxy = new HttpHost("127.0.0.1", 8080);
-        final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
-        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,HOST_WITH_PROXY);
+        final RequestConfig config = RequestConfig.custom()
+            .setProxy(proxy)
+            .build();
+        final SimpleHttpRequest request = SimpleRequestBuilder
+            .get(HOST_WITH_PROXY)
+            .build();
+
         request.setConfig(config);
         final Future<SimpleHttpResponse> future = client.execute(request, new FutureCallback<>(){
             @Override
@@ -152,7 +157,10 @@ class HttpAsyncClientLiveTest {
 
         client.start();
 
-        final SimpleHttpRequest request = new SimpleHttpRequest("GET",HOST_WITH_SSL);
+        final SimpleHttpRequest request = SimpleRequestBuilder
+            .get(HOST_WITH_SSL)
+            .build();
+
         final Future<SimpleHttpResponse> future = client.execute(request, null);
         final HttpResponse response = future.get();
         assertThat(response.getCode(), equalTo(200));
@@ -168,7 +176,9 @@ class HttpAsyncClientLiveTest {
         cookieStore.addCookie(cookie);
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom().build();
         client.start();
-        final SimpleHttpRequest request = new SimpleHttpRequest("Method.GET" ,HOST_WITH_COOKIE);
+        final SimpleHttpRequest request = SimpleRequestBuilder
+            .get(HOST_WITH_COOKIE)
+            .build();
 
         final HttpContext localContext = new BasicHttpContext();
         localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
@@ -191,7 +201,9 @@ class HttpAsyncClientLiveTest {
             .custom()
             .setDefaultCredentialsProvider(credsProvider).build();
 
-        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,URL_SECURED_BY_BASIC_AUTHENTICATION);
+        final SimpleHttpRequest request = SimpleRequestBuilder
+            .get(URL_SECURED_BY_BASIC_AUTHENTICATION)
+            .build();
 
         client.start();
 
