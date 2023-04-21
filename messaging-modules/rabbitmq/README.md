@@ -9,3 +9,4 @@ This module contains articles about RabbitMQ.
 - [Channels and Connections in RabbitMQ](https://www.baeldung.com/java-rabbitmq-channels-connections)
 - [Create Dynamic Queues in RabbitMQ](https://www.baeldung.com/rabbitmq-dynamic-queues)
 
+

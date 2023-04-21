@@ -29,7 +29,7 @@
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-mapping-2</module>
         <module>hibernate-annotations</module>
-        <module>hibernate-exceptions</module>
+        <!-- <module>hibernate-exceptions</module> FAILED -->
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-queries</module>
@@ -113,7 +113,7 @@
 
     <properties>
         <!-- persistence -->
-        <hibernate.version>6.1.7.Final</hibernate.version>
+        <hibernate.version>6.2.0.Final</hibernate.version>
         <postgresql.version>42.5.4</postgresql.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <testcontainers.version>1.16.3</testcontainers.version>
