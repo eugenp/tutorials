@@ -354,8 +354,6 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>java-jdi</module>
-
                 <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
@@ -546,8 +544,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
-                <module>java-jdi</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
@@ -868,7 +864,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -1123,7 +1119,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
