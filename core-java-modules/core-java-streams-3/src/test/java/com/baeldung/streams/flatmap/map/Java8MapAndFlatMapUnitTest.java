@@ -1,4 +1,4 @@
-package com.baeldung.java8;
+package com.baeldung.streams.flatmap.map;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
-public class Java8MapAndFlatMap {
+public class Java8MapAndFlatMapUnitTest {
 
     @Test
     public void givenStream_whenCalledMap_thenProduceList() {
