@@ -413,7 +413,6 @@
                 <module>spring-4</module>
                 <module>spring-aop</module>
 
-                <module>spring-bom</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -593,7 +592,6 @@
 
                 <module>spring-4</module>
 
-                <module>spring-bom</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -838,7 +836,6 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -851,7 +848,6 @@
                 <module>bazel</module>
                 <module>google-auto-project</module>
                 <module>ddd</module>
-                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
@@ -908,7 +904,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>slack</module>
 
 
                 <!--  Modules from default second-->
@@ -1089,7 +1084,6 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -1102,7 +1096,6 @@
                 <module>bazel</module>
                 <module>google-auto-project</module>
                 <module>ddd</module>
-                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
@@ -1161,7 +1154,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>slack</module>
 
 
                 <!--  Modules from default second-->
