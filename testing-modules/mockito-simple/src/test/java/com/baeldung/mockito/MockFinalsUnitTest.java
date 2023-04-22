@@ -3,8 +3,10 @@ package com.baeldung.mockito;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.withSettings;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.MockMakers;
 
 class MockFinalsUnitTest {
 
@@ -13,7 +15,7 @@ class MockFinalsUnitTest {
 
         MyList myList = new MyList();
 
-        MyList mock = mock(MyList.class);
+        MyList mock = mock(MyList.class, withSettings().mockMaker(MockMakers.INLINE));
         when(mock.finalMethod()).thenReturn(1);
 
         assertThat(mock.finalMethod()).isNotEqualTo(myList.finalMethod());
