@@ -92,6 +92,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
+                        <source>19</source>
+                        <target>19</target>
+                        <compilerArgs>--enable-preview</compilerArgs>
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.mapstruct</groupId>
@@ -116,12 +119,17 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
+                        <mainClass>com.baeldung.virtualthreads.VirtualThreadsApp</mainClass>
                         <excludes>
                             <exclude>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
                             </exclude>
                         </excludes>
+                        <jvmArguments>
+                            -Xms125m
+                            -Xmx125m
+                        </jvmArguments>
                     </configuration>
                 </plugin>
             </plugins>
@@ -131,6 +139,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>19</source>
+                    <target>19</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -139,7 +155,7 @@
         <springdoc.version>2.0.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <start-class>com.baeldung.sample.TodoApplication</start-class>
-		<mockserver.version>5.14.0</mockserver.version>
+        <mockserver.version>5.14.0</mockserver.version>
     </properties>
 
 </project>
