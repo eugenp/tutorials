@@ -56,9 +56,6 @@
                          <configuration>
                              <jvmArguments> -agentlib:native-image-agent=config-output-dir=target/native-image
                              </jvmArguments>
-                             <systemPropertyVariables>
-                                 <springAot>true</springAot>
-                             </systemPropertyVariables>
                          </configuration>
                      </plugin>  -->
                  </plugins>
