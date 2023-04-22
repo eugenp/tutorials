@@ -798,7 +798,6 @@
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>custom-pmd</module>
-                <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
@@ -921,7 +920,6 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -1051,7 +1049,6 @@
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
-                <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
@@ -1150,6 +1147,7 @@
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
+                <module>libraries-ai</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
@@ -1176,7 +1174,6 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
