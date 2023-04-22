@@ -30,7 +30,7 @@
         <module>hibernate-mapping-2</module>
         <!-- <module>hibernate-ogm</module> 
         <module>hibernate-annotations</module> FAILED -->
-        <!-- <module>hibernate-exceptions</module> FAILED -->
+        <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <!-- <module>hibernate-queries</module> FAILED -->
