@@ -127,8 +127,9 @@
                             </exclude>
                         </excludes>
                         <jvmArguments>
-                            -Xms125m
-                            -Xmx125m
+                            -Xms1024m
+                            -Xmx1024m
+                            --enable-preview
                         </jvmArguments>
                     </configuration>
                 </plugin>
