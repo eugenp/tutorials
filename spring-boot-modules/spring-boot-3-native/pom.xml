@@ -57,6 +57,14 @@
                              <jvmArguments> -agentlib:native-image-agent=config-output-dir=target/native-image
                              </jvmArguments>
                          </configuration>
+						 <executions>
+							 <execution>
+								 <id>process-aot</id>
+								 <goals>
+									 <goal>process-aot</goal>
+								 </goals>
+							 </execution>
+						 </executions>
                      </plugin>  -->
                  </plugins>
              </pluginManagement>
