@@ -42,7 +42,7 @@ public class DetachedEntityUnitTest {
 
         assertThatThrownBy(() -> session.persist(detachedPost))
             .isInstanceOf(PersistenceException.class)
-            .hasMessageContaining("`org.hibernate.PersistentObjectException` to JPA `PersistenceException` : detached entity passed to persist");
+            .hasMessageContaining("detached entity passed to persist: com.baeldung.hibernate.exception.detachedentity.entity.Post");
     }
 
     @Test
@@ -71,13 +71,13 @@ public class DetachedEntityUnitTest {
 
         assertThatThrownBy(() -> session.persist(detachedPost))
             .isInstanceOf(PersistenceException.class)
-            .hasMessageContaining("`org.hibernate.PersistentObjectException` to JPA `PersistenceException` : detached entity passed to persist");
+            .hasMessageContaining("detached entity passed to persist: com.baeldung.hibernate.exception.detachedentity.entity.Post");
     }
 
     @Test
     public void givenDetachedPost_whenMergeAndPersistComment_thenNoExceptionIsThrown() {
         Comment comment = new Comment("nice article!");
-        Post mergedPost = (Post) session.merge(detachedPost);
+        Post mergedPost = session.merge(detachedPost);
         comment.setPost(mergedPost);
 
         session.persist(comment);
