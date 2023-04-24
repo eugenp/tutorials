@@ -1,7 +1,6 @@
-package com.baeldung.junit4vstestng;
+package com.baeldung.junitparams;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
