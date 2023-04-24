@@ -333,7 +333,6 @@
                 <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -524,7 +523,6 @@
                 <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>

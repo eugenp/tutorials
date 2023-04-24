@@ -1,4 +1,4 @@
-package com.baeldung.junit4vstestng;
+package com.baeldung.junit;
 
 import org.junit.Test;
 import org.slf4j.Logger;
