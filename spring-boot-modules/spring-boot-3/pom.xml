@@ -92,7 +92,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <compilerArgs>--enable-preview</compilerArgs>
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.mapstruct</groupId>
@@ -124,11 +123,6 @@
                                 <artifactId>lombok</artifactId>
                             </exclude>
                         </excludes>
-                        <jvmArguments>
-                            -Xms1024m
-                            -Xmx1024m
-                            --enable-preview
-                        </jvmArguments>
                     </configuration>
                 </plugin>
             </plugins>
@@ -142,8 +136,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>19</source>
-                    <target>19</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
