@@ -24,9 +24,9 @@ public class H2InitDemoApplication {
      */
     private static void initDatabaseUsingPlainJDBCWithURL() {
         try (Connection conn = DriverManager.
-                getConnection("jdbc:h2:mem:baeldung;INIT=CREATE SCHEMA IF NOT EXISTS baeldung\\;SET SCHEMA baeldung;",
-                        "admin",
-                        "password")) {
+            getConnection("jdbc:h2:mem:baeldung;INIT=CREATE SCHEMA IF NOT EXISTS baeldung\\;SET SCHEMA baeldung;",
+                "admin",
+                "password")) {
             conn.createStatement().execute("create table users (name VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL);");
             System.out.println("Created table users");
             conn.createStatement().execute("insert into users (name, email) values ('Mike', 'mike@baeldung.com')");
@@ -43,9 +43,9 @@ public class H2InitDemoApplication {
      */
     private static void initDatabaseUsingPlainJDBCWithFile() {
         try (Connection conn = DriverManager.
-                getConnection("jdbc:h2:mem:baeldung;INIT=RUNSCRIPT FROM 'src/main/resources/h2init.sql';",
-                        "admin",
-                        "password")) {
+            getConnection("jdbc:h2:mem:baeldung;INIT=RUNSCRIPT FROM 'src/main/resources/h2init.sql';",
+                "admin",
+                "password")) {
             conn.createStatement().execute("insert into users (name, email) values ('Mike', 'mike@baeldung.com')");
             System.out.println("Added user mike");
         }
