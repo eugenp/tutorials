@@ -39,7 +39,7 @@
         <!-- <module>java-cassandra</module> FAILED -->
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
-        <!-- <module>java-jpa</module> FAILED --> <!-- long running -->
+        <module>java-jpa</module> <!-- long running -->
         <!-- <module>java-jpa-2</module> FAILED --> <!-- long running -->
         <module>java-jpa-3</module>
 		<!-- enable it when persistence-modules is migrated to JDK9+ -->
