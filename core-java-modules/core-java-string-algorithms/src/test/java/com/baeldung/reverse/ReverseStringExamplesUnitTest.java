@@ -1,9 +1,9 @@
 package com.baeldung.reverse;
 
+import static org.junit.Assert.assertEquals;
+
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 public class ReverseStringExamplesUnitTest {
 
@@ -63,6 +63,39 @@ public class ReverseStringExamplesUnitTest {
         String reversedEmpty = ReverseStringExamples.reverseTheOrderOfWordsUsingApacheCommons(StringUtils.EMPTY);
 
         assertEquals(REVERSED_WORDS_SENTENCE, reversed);
+        assertEquals(null, reversedNull);
+        assertEquals(StringUtils.EMPTY, reversedEmpty);
+    }
+
+    @Test
+    public void whenReverseStringUsingIntStreamRangeMethod_ThenCorrectStringIsReturned() {
+        String reversed = ReverseStringExamples.reverseUsingIntStreamRangeMethod(STRING_INPUT);
+        String reversedNull = ReverseStringExamples.reverseUsingIntStreamRangeMethod(null);
+        String reversedEmpty = ReverseStringExamples.reverseUsingIntStreamRangeMethod(StringUtils.EMPTY);
+
+        assertEquals(STRING_INPUT_REVERSED, reversed);
+        assertEquals(null, reversedNull);
+        assertEquals(StringUtils.EMPTY, reversedEmpty);
+    }
+
+    @Test
+    public void whenReverseStringUsingCharsMethod_ThenCorrectStringIsReturned() {
+        String reversed = ReverseStringExamples.reverseUsingCharsMethod(STRING_INPUT);
+        String reversedNull = ReverseStringExamples.reverseUsingCharsMethod(null);
+        String reversedEmpty = ReverseStringExamples.reverseUsingCharsMethod(StringUtils.EMPTY);
+
+        assertEquals(STRING_INPUT_REVERSED, reversed);
+        assertEquals(null, reversedNull);
+        assertEquals(StringUtils.EMPTY, reversedEmpty);
+    }
+
+    @Test
+    public void whenReverseStringUsingStreamOfMethod_ThenCorrectStringIsReturned() {
+        String reversed = ReverseStringExamples.reverseUsingStreamOfMethod(STRING_INPUT);
+        String reversedNull = ReverseStringExamples.reverseUsingStreamOfMethod(null);
+        String reversedEmpty = ReverseStringExamples.reverseUsingStreamOfMethod(StringUtils.EMPTY);
+
+        assertEquals(STRING_INPUT_REVERSED, reversed);
         assertEquals(null, reversedNull);
         assertEquals(StringUtils.EMPTY, reversedEmpty);
     }
