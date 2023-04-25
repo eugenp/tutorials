@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Arrays;
+import java.util.Objects;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -58,8 +59,8 @@ public class CustomIntegerArrayType implements UserType {
 
     @Override
     public Object deepCopy(Object value) throws HibernateException {
-        Integer[] a = (Integer[])value;
-        return a != null ? Arrays.copyOf(a, a.length) : null;
+        Integer[] arr = (Integer[]) value;
+        return arr != null ? Arrays.copyOf(arr, arr.length) : null;
     }
 
     @Override

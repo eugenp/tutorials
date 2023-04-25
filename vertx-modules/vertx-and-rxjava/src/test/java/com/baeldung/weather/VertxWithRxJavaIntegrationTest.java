@@ -45,18 +45,18 @@ public class VertxWithRxJavaIntegrationTest {
         // read the file that contains one city name per line
         fileSystem
           .rxReadFile("cities.txt").toFlowable()
-            .doOnNext(buffer -> log.info("File buffer ---\n{}\n---", buffer))
+            .doOnNext(buffer -> log.debug("File buffer ---\n{}\n---", buffer))
           .flatMap(buffer -> Flowable.fromArray(buffer.toString().split("\\r?\\n")))
-            .doOnNext(city -> log.info("City from file: '{}'", city))
+            .doOnNext(city -> log.debug("City from file: '{}'", city))
           .filter(city -> !city.startsWith("#"))
-            .doOnNext(city -> log.info("City that survived filtering: '{}'", city))
+            .doOnNext(city -> log.debug("City that survived filtering: '{}'", city))
           .flatMap(city -> searchByCityName(httpClient, city))
           .flatMap(HttpClientResponse::toFlowable)
-            .doOnNext(buffer -> log.info("JSON of city detail: '{}'", buffer))
+            .doOnNext(buffer -> log.debug("JSON of city detail: '{}'", buffer))
           .map(extractingWoeid())
           .flatMap(cityId -> getDataByPlaceId(httpClient, cityId))
           .flatMap(toBufferFlowable())
-            .doOnNext(buffer -> log.info("JSON of place detail: '{}'", buffer))
+            .doOnNext(buffer -> log.debug("JSON of place detail: '{}'", buffer))
           .map(Buffer::toJsonObject)
           .map(toCityAndDayLength())
           .subscribe(System.out::println, Throwable::printStackTrace);
