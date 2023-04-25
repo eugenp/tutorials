@@ -6,7 +6,6 @@
     <artifactId>core-java-14</artifactId>
     <name>core-java-14</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>

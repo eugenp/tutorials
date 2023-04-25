@@ -7,7 +7,7 @@ import org.springframework.batch.item.ItemProcessor;
 public class NumberInfoClassifierWithDecider extends ItemListenerSupport<NumberInfo, Integer> implements ItemProcessor<NumberInfo, Integer> {
 
     @Override
-    public Integer process(NumberInfo numberInfo) throws Exception {
+    public Integer process(NumberInfo numberInfo) {
         return Integer.valueOf(numberInfo.getNumber());
     }
 }

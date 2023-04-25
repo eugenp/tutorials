@@ -1,8 +1,13 @@
 package com.baeldung.concurrent.phaser;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Phaser;
 
 class LongRunningAction implements Runnable {
+
+    private static Logger log = LoggerFactory.getLogger(LongRunningAction.class);
     private String threadName;
     private Phaser ph;
 
@@ -14,18 +19,18 @@ class LongRunningAction implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("This is phase " + ph.getPhase());
-        System.out.println("Thread " + threadName + " before long running action");
+        log.info("This is phase {}", ph.getPhase());
+        log.info("Thread {} before long running action", threadName);
         
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
-        System.out.println("Thread " + threadName + " action completed and waiting for others");
+
+        log.debug("Thread {} action completed and waiting for others", threadName);
         ph.arriveAndAwaitAdvance();
-        System.out.println("Thread " + threadName + " proceeding in phase " + ph.getPhase());
+        log.debug("Thread {} proceeding in phase {}", threadName, ph.getPhase());
         
         ph.arriveAndDeregister();
     }

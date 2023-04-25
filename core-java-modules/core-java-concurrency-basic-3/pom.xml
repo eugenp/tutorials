@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-concurrency-basic-3</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-concurrency-basic-3</name>
     <packaging>jar</packaging>
 
@@ -13,6 +12,15 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>core-java-concurrency-basic-3</finalName>
@@ -28,12 +36,4 @@
         <awaitility.version>4.2.0</awaitility.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${awaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 </project>

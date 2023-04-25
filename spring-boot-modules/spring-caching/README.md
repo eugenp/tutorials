@@ -6,3 +6,4 @@
 - [Using Multiple Cache Managers in Spring](https://www.baeldung.com/spring-multiple-cache-managers)
 - [Testing @Cacheable on Spring Data Repositories](https://www.baeldung.com/spring-data-testing-cacheable)
 - [Spring Boot Ehcache Example](https://www.baeldung.com/spring-boot-ehcache)
+- [Get All Cached Keys with Caffeine Cache in Spring Boot](https://www.baeldung.com/spring-boot-caffeine-spring-get-all-keys)

@@ -1,9 +1,6 @@
 package com.baeldung.hibernate.entitynotfoundexception;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity

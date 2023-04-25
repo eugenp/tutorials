@@ -69,6 +69,7 @@ jmeter/src/main/resources/*-Basic*.csv
 jmeter/src/main/resources/*-JMeter*.csv
 jmeter/src/main/resources/*ReportsDashboard*.csv
 jmeter/src/main/resources/dashboard/*ReportsDashboard*.csv
+jmeter/src/main/resources/*FileExtractionExample.csv
 
 ninja/devDb.mv.db
 
@@ -88,6 +89,7 @@ spring-soap/src/main/java/com/baeldung/springsoap/gen/
 /report-*.json
 transaction.log
 *-shell.log
+customers.xml
 
 apache-cxf/cxf-aegis/baeldung.xml
 testing-modules/report-*.json
@@ -102,6 +104,7 @@ spring-boot-modules/spring-boot-react/frontend/build
 spring-boot-modules/spring-boot-react/frontend/node
 spring-boot-modules/spring-boot-react/frontend/yarn.lock
 spring-boot-modules/spring-boot-properties-3/*.log
+spring-boot-modules/spring-boot-properties-3/*.gz
 
 # SDKMan
 .sdkmanrc
@@ -115,3 +118,6 @@ libraries-2/src/test/resources/crawler4j/**
 
 #web-modules/ninja
 devDb*.db
+
+#jaxb
+*.xjb
