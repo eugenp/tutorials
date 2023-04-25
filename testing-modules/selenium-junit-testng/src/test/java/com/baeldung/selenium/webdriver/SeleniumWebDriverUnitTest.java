@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-class SeleniumWebDriverUnitTest {
+public class SeleniumWebDriverUnitTest {
 
     private WebDriver driver;
 
@@ -23,14 +23,13 @@ class SeleniumWebDriverUnitTest {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-       
+
     }
 
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
-
 
     @Test
     public void givenDuckDuckGoHomePage_whenInputHelloWorld_thenInputValueIsHelloWorld() {
