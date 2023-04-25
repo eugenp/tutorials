@@ -17,7 +17,7 @@ public class LibraryIntegrationTest {
 
     @Test
     @Transactional
-    public void givenLibrary_whenFindAddresses_thenGetListOfAddresses(){
+    public void givenLibrary_whenGetAddressesAndGetBooks_thenGetListOfItems(){
         Library library = new Library();
         library.setAddresses(Arrays.asList("Address 1", "Address 2"));
         library.setBooks(Arrays.asList("Book 1", "Book 2"));
