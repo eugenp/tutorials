@@ -23,7 +23,7 @@ public class AuthorsController {
 
     @JsonView(Views.Public.class)
     @GetMapping("")
-    public List<Author> getAuthors() {
+    public List<Author> getAllAuthors() {
         return authorService.getAllAuthors();
     }
 
