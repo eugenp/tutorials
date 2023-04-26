@@ -28,6 +28,7 @@ class OpenNLPLanguageDetector {
         LanguageDetectorME detector = new LanguageDetectorME(model);
         Language language = detector.predictLanguage(text);
 
+
         assertEquals("eng", "eng");
     }
 }

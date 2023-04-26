@@ -10,4 +10,3 @@
 - [Serialize a Lambda in Java](https://www.baeldung.com/java-serialize-lambda)
 - [Convert Anonymous Class into Lambda in Java](https://www.baeldung.com/java-from-anonymous-class-to-lambda)
 - [When to Use Callable and Supplier in Java](https://www.baeldung.com/java-callable-vs-supplier)
-- [Lambda Expression vs. Anonymous Inner Class](https://www.baeldung.com/java-lambdas-vs-anonymous-class)
