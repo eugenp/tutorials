@@ -1,6 +1,6 @@
 package com.baeldung.jackson.map;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class MapWithJsonKeyValueUnitTest {
     @Test
     public void givenMapWithObjectKeys_WhenSerialize_ThenUseJsonKeyForSerialization() throws JsonProcessingException {
         // Given
-        Map<Fruit, String> selectionByFruit = new HashMap<>();
+        Map<Fruit, String> selectionByFruit = new LinkedHashMap();
         selectionByFruit.put(FRUIT1, "Hagrid");
         selectionByFruit.put(FRUIT2, "Hercules");
         // When
@@ -37,7 +37,7 @@ public class MapWithJsonKeyValueUnitTest {
     @Test
     public void givenMapWithObjectValues_WhenSerialize_ThenUseJsonValueForSerialization() throws JsonProcessingException {
         // Given
-        Map<String, Fruit> selectionByPerson = new HashMap<>();
+        Map<String, Fruit> selectionByPerson = new LinkedHashMap();
         selectionByPerson.put("Hagrid", FRUIT1);
         selectionByPerson.put("Hercules", FRUIT2);
         // When

@@ -11,4 +11,5 @@
 - [IntelliJ – Cannot Resolve Spring Boot Configuration Properties Error](https://www.baeldung.com/intellij-resolve-spring-boot-configuration-properties)
 - [Log Properties in a Spring Boot Application](https://www.baeldung.com/spring-boot-log-properties)
 - [Using Environment Variables in Spring Boot’s application.properties](https://www.baeldung.com/spring-boot-properties-env-variables)
+- [Loading Multiple YAML Configuration Files in Spring Boot](https://www.baeldung.com/spring-boot-load-multiple-yaml-configuration-files)
 - More articles: [[<-- prev]](../spring-boot-properties-2)

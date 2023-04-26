@@ -14,7 +14,6 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import java.net.URI;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
@@ -22,6 +21,8 @@ import java.util.stream.IntStream;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -31,6 +32,8 @@ import org.springframework.http.ResponseEntity;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ResilientAppControllerIntegrationTest {
+
+  private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
   @Autowired private TestRestTemplate restTemplate;
 
@@ -206,26 +209,24 @@ class ResilientAppControllerIntegrationTest {
     EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external").willReturn(ok()));
     Map<Integer, Integer> responseStatusCount = new ConcurrentHashMap<>();
     ExecutorService executorService = Executors.newFixedThreadPool(5);
+    CountDownLatch latch = new CountDownLatch(5);
 
-    List<Callable<Integer>> tasks = new ArrayList<>();
     IntStream.rangeClosed(1, 5)
         .forEach(
             i ->
-                tasks.add(
+                executorService.execute(
                     () -> {
                       ResponseEntity<String> response =
                           restTemplate.getForEntity("/api/bulkhead", String.class);
-                      return response.getStatusCodeValue();
+                      int statusCode = response.getStatusCodeValue();
+                      responseStatusCount.merge(statusCode, 1, Integer::sum);
+                      latch.countDown();
                     }));
-
-    List<Future<Integer>> futures = executorService.invokeAll(tasks);
-    for (Future<Integer> future : futures) {
-      int statusCode = future.get();
-      responseStatusCount.merge(statusCode, 1, Integer::sum);
-    }
+    latch.await();
     executorService.shutdown();
 
     assertEquals(2, responseStatusCount.keySet().size());
+    LOGGER.info("Response statuses: " + responseStatusCount.keySet());
     assertTrue(responseStatusCount.containsKey(BANDWIDTH_LIMIT_EXCEEDED.value()));
     assertTrue(responseStatusCount.containsKey(OK.value()));
     EXTERNAL_SERVICE.verify(3, getRequestedFor(urlEqualTo("/api/external")));

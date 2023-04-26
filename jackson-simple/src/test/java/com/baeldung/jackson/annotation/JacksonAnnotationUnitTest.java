@@ -25,6 +25,7 @@ import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.annotation.exception.UserWithRoot;
 import com.baeldung.jackson.annotation.exception.UserWithRootNamespace;
+import com.baeldung.jackson.annotation.ignore.MyMixInForIgnoreType;
 import com.baeldung.jackson.annotation.jsonview.Item;
 import com.baeldung.jackson.annotation.jsonview.Views;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -96,6 +97,13 @@ public class JacksonAnnotationUnitTest {
         assertThat(enumAsString, is("1609.34"));
     }
 
+
+    @Test
+    public void whenSerializingFieldUsingJsonValue_thenCorrect() throws IOException {
+        final String enumAsString = new ObjectMapper().writeValueAsString(PriorityEnum.HIGH);
+
+        assertEquals("3", enumAsString);
+    }
 
     @Test
     public void whenSerializingUsingJsonSerialize_thenCorrect() throws JsonProcessingException, ParseException {
@@ -203,6 +211,15 @@ public class JacksonAnnotationUnitTest {
         final String result = new ObjectMapper().writeValueAsString(bean);
         assertThat(result, containsString("My bean"));
         assertThat(result, not(containsString("id")));
+    }
+
+    @Test
+    public void whenSerializingUsingJsonIncludeProperties_thenCorrect() throws JsonProcessingException {
+        final BeanWithInclude bean = new BeanWithInclude(1, "My bean");
+        final String result = new ObjectMapper().writeValueAsString(bean);
+        assertThat(result, containsString("My bean"));
+        assertThat(result, not(containsString("id")));
+        assertThat(result, containsString("name"));
     }
 
     @Test
@@ -432,7 +449,5 @@ public class JacksonAnnotationUnitTest {
         */
 
     }
-    
-    
 
 }

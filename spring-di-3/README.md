@@ -11,4 +11,4 @@ This module contains articles about dependency injection with Spring
 - [@Order in Spring](http://www.baeldung.com/spring-order)
 - [How to dynamically Autowire a Bean in Spring](https://www.baeldung.com/spring-dynamic-autowire)
 - [Spring @Import Annotation](https://www.baeldung.com/spring-import-annotation)
-- More articles: [[<-- prev]](../spring-di-2)
+- More articles: [[<-- prev]](../spring-di-2)[[more -->]](../spring-di-4)
