@@ -7,6 +7,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// import com.baeldung.associations.unidirectional.Department;
 import com.baeldung.manytomany.model.Employee;
 import com.baeldung.manytomany.model.Project;
 import com.baeldung.uuids.WebSiteUser;
@@ -29,6 +30,7 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(Element.class);
             configuration.addAnnotatedClass(Reservation.class);
             configuration.addAnnotatedClass(Sale.class);
+            // configuration.addAnnotatedClass(Department.class);
             configuration.configure("manytomany.cfg.xml");
             LOGGER.debug("Hibernate Annotation Configuration loaded");
 
