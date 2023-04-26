@@ -916,6 +916,7 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -1170,6 +1171,7 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
