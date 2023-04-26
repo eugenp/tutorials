@@ -1,4 +1,4 @@
 To download the pre-built model used in OpenNLPLanguageDetectorUnitTest.java, follow these steps:
-1. We'll go to https://downloads.apache.org/opennlp/models/langdetect/1.8.3/ and click on the link langdetect-183.bin.
-2. Once the download is complete, we'll move the downloaded file to the project root directory.
-3. Let's update the assert statement to assertEquals("eng", language.getLang());
+1. Go to https://downloads.apache.org/opennlp/models/langdetect/1.8.3/ and click on the link langdetect-183.bin.
+2. Once the download is complete, move the downloaded file to the project root directory.
+3. Update the assert statement to assertEquals("eng", language.getLang());
