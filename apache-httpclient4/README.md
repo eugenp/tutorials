@@ -4,6 +4,7 @@ This module contains articles about Apache HttpClient 4.5
 
 ### Relevant Articles
 
+- [Apache HttpClient – Cancel Request](https://www.baeldung.com/httpclient-cancel-request)
 - [Apache HttpClient with SSL](https://www.baeldung.com/httpclient-ssl)
 - [Apache HttpClient Timeout](https://www.baeldung.com/httpclient-timeout)
 - [Custom HTTP Header with the Apache HttpClient](https://www.baeldung.com/httpclient-custom-http-header)

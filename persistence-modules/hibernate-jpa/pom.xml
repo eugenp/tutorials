@@ -83,7 +83,6 @@
     </dependencies>
 
     <properties>
-        <hibernate.version>6.1.7.Final</hibernate.version>
         <mysql.version>8.0.32</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <spring-boot.version>3.0.4</spring-boot.version>

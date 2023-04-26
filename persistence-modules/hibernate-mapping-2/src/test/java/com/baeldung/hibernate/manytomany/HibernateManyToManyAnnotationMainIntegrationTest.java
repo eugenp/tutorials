@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import com.baeldung.manytomany.model.Employee;
 import com.baeldung.manytomany.model.Project;
-import com.baeldung.manytomany.util.HibernateUtil;
+import com.baeldung.HibernateUtil;
 
 /**
  * Configured in: manytomany.cfg.xml
