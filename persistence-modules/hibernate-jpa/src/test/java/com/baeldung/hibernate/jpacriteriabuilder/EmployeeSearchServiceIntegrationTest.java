@@ -81,13 +81,10 @@ public class EmployeeSearchServiceIntegrationTest {
 
     @Test
     public final void givenCriteriaQuery_whenSearchedUsingCriteriaBuilderWithListofAuthors_thenResultIsFilteredByAuthorNames() {
-        List<String> titles = new ArrayList<>() {
-            {
-                add("Manager");
-                add("Senior Manager");
-                add("Director");
-            }
-        };
+        List<String> titles = new ArrayList<>();
+        titles.add("Manager");
+        titles.add("Senior Manager");
+        titles.add("Director");
         List<DeptEmployee> result = searchService.filterbyTitleUsingCriteriaBuilder(titles);
         assertEquals("Number of Employees does not match with expected.", 6, result.size());
         assertThat(result.stream()

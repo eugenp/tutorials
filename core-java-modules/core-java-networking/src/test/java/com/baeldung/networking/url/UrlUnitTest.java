@@ -1,11 +1,19 @@
 package com.baeldung.networking.url;
 
+import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Map;
 
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.junit.Test;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.google.common.collect.ImmutableMap;
 
 public class UrlUnitTest {
 
@@ -99,6 +107,46 @@ public class UrlUnitTest {
         final String file = "/guidelines.txt";
         final URL url = new URL(protocol, host, port, file);
         assertEquals("http://baeldung.com:9000/guidelines.txt", url.toString());
+    }
+
+    @Test
+    public void givenUrlParameters_whenBuildUrlWithURIBuilder_thenSuccess() throws URISyntaxException, MalformedURLException {
+        URIBuilder uriBuilder = new URIBuilder("http://baeldung.com/articles");
+        uriBuilder.setPort(9090);
+        uriBuilder.addParameter("topic", "java");
+        uriBuilder.addParameter("version", "8");
+        URL url = uriBuilder.build().toURL();
+        assertEquals("http://baeldung.com:9090/articles?topic=java&version=8", url.toString());
+    }
+
+    @Test
+    public void givenUrlParametersInMap_whenBuildUrlWithURIBuilder_thenSuccess() throws URISyntaxException, MalformedURLException {
+        Map<String, String> paramMap = ImmutableMap.of("topic", "java", "version", "8");
+        URIBuilder uriBuilder = new URIBuilder("http://baeldung.com/articles");
+        uriBuilder.setPort(9090);
+        uriBuilder.addParameters(paramMap.entrySet()
+          .stream()
+          .map(entry -> new BasicNameValuePair(entry.getKey(), entry.getValue()))
+          .collect(toList()));
+
+        URL url = uriBuilder.build().toURL();
+        assertEquals("http://baeldung.com:9090/articles?topic=java&version=8", url.toString());
+    }
+
+    @Test
+    public void givenUrlParameters_whenBuildUrlWithSpringUriComponentsBuilder_thenSuccess() throws MalformedURLException {
+        URL url = UriComponentsBuilder.newInstance()
+          .scheme("http")
+          .host("baeldung.com")
+          .port(9090)
+          .path("articles")
+          .queryParam("topic", "java")
+          .queryParam("version", "8")
+          .build()
+          .toUri()
+          .toURL();
+
+        assertEquals("http://baeldung.com:9090/articles?topic=java&version=8", url.toString());
     }
 
 }
