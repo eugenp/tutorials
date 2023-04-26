@@ -63,10 +63,6 @@
         <module>spring-boot-nashorn</module>
         <module>spring-boot-parent</module>
         <module>spring-boot-performance</module>
-        <module>spring-boot-properties</module>
-        <module>spring-boot-properties-2</module>
-        <module>spring-boot-properties-3</module>
-        <module>spring-boot-properties-migrator-demo</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-request-params</module>
         <module>spring-boot-runtime</module>
@@ -94,6 +90,10 @@
         <module>spring-boot-3-observation</module>
         <module>spring-boot-3-test-pitfalls</module>
         <module>spring-boot-resilience4j</module>
+        <module>spring-boot-properties</module>
+        <module>spring-boot-properties-2</module>
+        <module>spring-boot-properties-3</module>
+        <module>spring-boot-properties-migrator-demo</module>
     </modules>
 
     <dependencyManagement>

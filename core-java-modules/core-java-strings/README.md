@@ -13,3 +13,4 @@ This module contains articles about strings in Java.
 - [Java Multi-line String](https://www.baeldung.com/java-multiline-string)
 - [Guide to Java String Pool](https://www.baeldung.com/java-string-pool)
 - [Fixing “constant string too long” Build Error](https://www.baeldung.com/java-constant-string-too-long-error)
+- [Reuse StringBuilder for Efficiency](https://www.baeldung.com/java-reuse-stringbuilder-for-efficiency)

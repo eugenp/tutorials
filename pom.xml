@@ -330,10 +330,9 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>checker-framework</module>
+                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -354,16 +353,13 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>java-jdi</module>
-
                 <module>jetbrains</module>
-                <module>jhipster-5</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-3</module>
+
                 <module>libraries-jdk8</module>
 
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
 
                 <module>muleesb</module>
 
@@ -488,10 +484,7 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
-
-                <module>libraries-6</module>
             </modules>
         </profile>
 
@@ -527,10 +520,9 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>checker-framework</module>
+                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -551,15 +543,12 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>java-jdi</module>
-
-                <module>jhipster-5</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-3</module>
+
                 <module>libraries-jdk8</module>
 
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
                 <module>web-modules</module>
@@ -666,10 +655,7 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
-
-                <module>libraries-6</module>
             </modules>
 
         </profile>
@@ -735,6 +721,7 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
@@ -807,7 +794,6 @@
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>custom-pmd</module>
-                <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
@@ -818,6 +804,7 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
+                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -860,7 +847,7 @@
                 <module>axon</module>
 
                 <module>bazel</module>
-                <module>code-generation</module>
+                <module>google-auto-project</module>
                 <module>ddd</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -874,7 +861,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -893,6 +880,7 @@
                 <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
 
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
@@ -928,7 +916,7 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -952,6 +940,7 @@
 
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
+                <module>libraries-3</module>
             </modules>
 
             <properties>
@@ -985,6 +974,7 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
@@ -1056,7 +1046,6 @@
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
-                <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
@@ -1068,6 +1057,7 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
+                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -1109,7 +1099,7 @@
                 <module>axon</module>
 
                 <module>bazel</module>
-                <module>code-generation</module>
+                <module>google-auto-project</module>
                 <module>ddd</module>
                 <module>discord4j</module>
                 <module>disruptor</module>
@@ -1125,7 +1115,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -1141,8 +1131,10 @@
                 <module>ksqldb</module>
 
                 <module>libraries</module> <!-- very long running -->
+                <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
+                <module>libraries-6</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1152,6 +1144,7 @@
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
+                <module>libraries-ai</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
@@ -1178,7 +1171,7 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -1196,11 +1189,12 @@
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
-                <module>libraries-2</module>
+
                 <module>messaging-modules</module>
 
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
+                <module>libraries-3</module>
             </modules>
 
             <properties>
