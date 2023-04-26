@@ -22,12 +22,12 @@ public class AuthorsController {
     AuthorService authorService;
 
     @JsonView(Views.Public.class)
-    @GetMapping("")
+    @GetMapping
     public List<Author> getAllAuthors() {
         return authorService.getAllAuthors();
     }
 
-    @PostMapping("")
+    @PostMapping
     public void addAuthor(@RequestBody @JsonView(Views.Public.class) Author author){
         authorService.addAuthors(author);
     }
