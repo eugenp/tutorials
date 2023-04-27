@@ -6,12 +6,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Configuration class for RestTemplate used to communicate with OpenAI API.
+ */
 @Configuration
 public class OpenAIRestTemplateConfig {
-
+    /**
+     * API key for OpenAI API authentication.
+     */
     @Value("${openai.api.key}")
     private String openaiApiKey;
 
+    /**
+     * Configures RestTemplate with OpenAI API key in header for authentication.
+     *
+     * @return RestTemplate instance with OpenAI API key header
+     */
     @Bean
     @Qualifier("openaiRestTemplate")
     public RestTemplate openaiRestTemplate() {
