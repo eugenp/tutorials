@@ -11,7 +11,7 @@ public class NonBlockingExample {
 
     public static void main(String[] args) {
         CompletableFuture.supplyAsync(() -> "Baeldung")
-                .thenApply(String::length)
-                .thenAccept(s -> logger.info(String.valueOf(s)));
+          .thenApply(String::length)
+          .thenAccept(s -> logger.info(String.valueOf(s)));
     }
 }
