@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class OpenNLPLanguageDetector {
+public class OpenNLPLanguageDetectorManualTest {
 
     @Test
     public void givenTextInEnglish_whenDetectLanguage_thenReturnsEnglishLanguageCode() {
