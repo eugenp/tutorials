@@ -1197,6 +1197,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <!--<module>web-modules/apache-tapestry</module>-->
             </modules>
 
             <properties>
