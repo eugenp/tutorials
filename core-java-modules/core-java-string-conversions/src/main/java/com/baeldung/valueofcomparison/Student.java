@@ -1,4 +1,4 @@
-package com.baeldung.valueofcomparision;
+package com.baeldung.valueofcomparison;
 
 public class Student {
 

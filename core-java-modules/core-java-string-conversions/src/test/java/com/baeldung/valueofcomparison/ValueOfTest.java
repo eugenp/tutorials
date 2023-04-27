@@ -1,4 +1,4 @@
-package com.baeldung.valueofcomparision;
+package com.baeldung.valueofcomparison;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
