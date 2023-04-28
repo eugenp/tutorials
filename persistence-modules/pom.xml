@@ -53,7 +53,7 @@
         <module>liquibase</module>
         <module>orientdb</module>
         <module>persistence-libraries</module>
-        <!-- <module>querydsl</module> FAILED -->
+        <module>querydsl</module>
         <!-- <module>r2dbc</module> FAILED -->
         <module>read-only-transactions</module>
         <!-- <module>redis</module> FAILED -->
