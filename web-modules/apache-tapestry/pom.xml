@@ -133,7 +133,7 @@
 
     <properties>
         <compiler.jetty.version>6.1.16</compiler.jetty.version>
-        <compiler.surefire.version>2.22.2</compiler.surefire.version>
+        <compiler.surefire.version>2.22.0</compiler.surefire.version>
         <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <source.version>11</source.version>
         <target.version>11</target.version>
