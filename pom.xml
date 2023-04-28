@@ -346,23 +346,17 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
                 <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-
                 <module>libraries-jdk8</module>
-
                 <module>lombok-modules/lombok-custom</module>
-
                 <module>muleesb</module>
-
                 <module>web-modules</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
@@ -410,17 +404,9 @@
                 <module>parent-java</module>
 
                 <module>spring-4</module>
-                <module>spring-aop</module>
-
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
-
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
@@ -535,21 +521,16 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-
                 <module>libraries-jdk8</module>
-
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
-
                 <module>web-modules</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
@@ -589,16 +570,9 @@
                 <module>parent-java</module>
 
                 <module>spring-4</module>
-
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
-
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
