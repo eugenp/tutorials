@@ -115,14 +115,18 @@
                     </systemProperties>
                 </configuration>
             </plugin>
-            <!--<plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.5</version>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
                 <configuration>
-                    <generateBackupPoms>false</generateBackupPoms>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
@@ -145,7 +149,7 @@
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
         <source.version>11</source.version>
         <target.version>11</target.version>
-        <tapestry-release-version>5.8.1</tapestry-release-version>
+        <tapestry-release-version>5.8.2</tapestry-release-version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.8.21</testng-release-version>
         <slf4j-release-version>1.7.19</slf4j-release-version>
