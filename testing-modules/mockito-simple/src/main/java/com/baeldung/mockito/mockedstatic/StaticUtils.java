@@ -6,17 +6,16 @@ import java.util.stream.IntStream;
 
 public class StaticUtils {
 
-    private StaticUtils() {
-    }
+	private StaticUtils() {
+	}
 
-    public static List<Integer> range(int start, int end) {
-        return IntStream.range(start, end)
-            .boxed()
-            .collect(Collectors.toList());
-    }
+	public static List<Integer> range(int start, int end) {
+		return IntStream.range(start, end)
+		    .boxed()
+		    .collect(Collectors.toList());
+	}
 
-    public static String name() {
-        return "Baeldung";
-    }
-
+	public static String name() {
+		return "Baeldung";
+	}
 }

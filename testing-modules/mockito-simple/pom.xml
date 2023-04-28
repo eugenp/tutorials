@@ -29,12 +29,14 @@
             <artifactId>spring-context</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
+
         <!-- utils -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+
         <!-- test scoped -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -55,9 +57,8 @@
     </build>
 
     <properties>
-        <spring-framework.version>5.3.20</spring-framework.version>
-        <!-- testing -->
-        <mockito.version>4.6.1</mockito.version>
+        <spring-framework.version>6.0.8</spring-framework.version>
+        <mockito.version>5.3.1</mockito.version>
     </properties>
 
 </project>
