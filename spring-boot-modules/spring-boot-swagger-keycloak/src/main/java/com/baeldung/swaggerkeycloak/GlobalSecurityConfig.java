@@ -27,9 +27,9 @@ public class GlobalSecurityConfig {
         http.csrf()
             .disable()
             .authorizeRequests()
-            .antMatchers(HttpMethod.OPTIONS)
+            .requestMatchers(HttpMethod.OPTIONS)
             .permitAll()
-            .antMatchers("/api/**")
+            .requestMatchers("/api/**")
             .authenticated()
             .anyRequest()
             .permitAll();

@@ -10,9 +10,10 @@
 	<description>Module For Spring Boot Swagger UI with Keycloak</description>
 
 	<parent>
-		<groupId>com.baeldung.spring-boot-modules</groupId>
-		<artifactId>spring-boot-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-3</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../parent-boot-3</relativePath>
 	</parent>
 
 	<dependencyManagement>
@@ -43,8 +44,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>${javax.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -58,8 +64,9 @@
 	</build>
 
 	<properties>
-		<springdoc.version>1.7.0</springdoc.version>
+		<springdoc.version>2.1.0</springdoc.version>
 		<log4j2.version>2.17.1</log4j2.version>
+		<javax.version>1.3.2</javax.version>
 	</properties>
 
 </project>
