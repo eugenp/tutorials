@@ -54,7 +54,7 @@
         <module>orientdb</module>
         <module>persistence-libraries</module>
         <module>querydsl</module>
-        <!-- <module>r2dbc</module> FAILED -->
+        <module>r2dbc</module>
         <module>read-only-transactions</module>
         <!-- <module>redis</module> FAILED -->
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
