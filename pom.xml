@@ -424,7 +424,6 @@
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
-                <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>spring-vault</module>
@@ -602,7 +601,6 @@
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
-                <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>spring-vault</module>
@@ -914,6 +912,7 @@
                 <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
+                <module>spring-spel</module>
 
                 <module>spring-kafka</module>
 
@@ -1166,6 +1165,7 @@
                 <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
+                <module>spring-spel</module>
 
                 <module>spring-kafka</module>
 
