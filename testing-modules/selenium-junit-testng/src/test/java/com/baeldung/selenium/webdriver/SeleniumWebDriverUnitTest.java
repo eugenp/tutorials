@@ -20,20 +20,17 @@ public class SeleniumWebDriverUnitTest {
 
     @BeforeEach
     public void setUp() {
-
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-
     }
-
+    
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
-
+    
     @Test
     public void givenDuckDuckGoHomePage_whenInputHelloWorld_thenInputValueIsHelloWorld() {
-
         driver.get(URL);
         WebElement inputElement = driver.findElement(By.id(INPUT_ID));
         inputElement.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
