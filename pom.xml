@@ -428,7 +428,6 @@
                 <module>spring-swagger-codegen</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
                 <module>vertx-modules</module>
@@ -605,7 +604,7 @@
                 <module>spring-swagger-codegen</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
+
                 <module>static-analysis</module>
                 <module>testing-modules</module>
                 <module>vertx-modules</module>
@@ -913,7 +912,7 @@
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
                 <module>spring-spel</module>
-
+                <module>spring-websockets</module>
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
@@ -1166,7 +1165,7 @@
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
                 <module>spring-spel</module>
-
+                <module>spring-websockets</module>
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
