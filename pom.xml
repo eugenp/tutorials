@@ -426,7 +426,6 @@
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
@@ -602,7 +601,7 @@
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
+
                 <module>spring-web-modules</module>
 
                 <module>static-analysis</module>
@@ -913,6 +912,7 @@
                 <module>spring-cucumber</module>
                 <module>spring-spel</module>
                 <module>spring-websockets</module>
+                <module>spring-vault</module>
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
@@ -1166,6 +1166,7 @@
                 <module>spring-cucumber</module>
                 <module>spring-spel</module>
                 <module>spring-websockets</module>
+                <module>spring-vault</module>
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
