@@ -56,7 +56,7 @@
         <module>querydsl</module>
         <module>r2dbc</module>
         <module>read-only-transactions</module>
-        <!-- <module>redis</module> FAILED -->
+        <module>redis</module>
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
         <!-- <module>spring-boot-persistence-2</module> FAILED -->
