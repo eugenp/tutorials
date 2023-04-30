@@ -10,4 +10,5 @@ This module contains articles about Project Lombok.
 - [Lombok’s @ToString Annotation](https://www.baeldung.com/lombok-tostring)
 - [Jackson’s Deserialization With Lombok](https://www.baeldung.com/java-jackson-deserialization-lombok)
 - [Constructor Injection in Spring with Lombok](https://www.baeldung.com/spring-injection-lombok)
+- [@StandardException Annotation in Lombok](https://www.baeldung.com/lombok-standardexception-annotation)
 - More articles: [[<-- prev]](../lombok)
