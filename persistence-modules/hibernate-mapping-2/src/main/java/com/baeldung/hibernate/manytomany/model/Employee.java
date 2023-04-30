@@ -1,4 +1,4 @@
-package com.baeldung.manytomany.model;
+package com.baeldung.hibernate.manytomany.model;
 
 import java.io.Serializable;
 import java.util.HashSet;

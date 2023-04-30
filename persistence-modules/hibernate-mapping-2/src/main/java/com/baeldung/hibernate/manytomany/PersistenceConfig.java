@@ -1,4 +1,4 @@
-package com.baeldung.manytomany;
+package com.baeldung.hibernate.manytomany;
 
 import java.util.Properties;
 
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-h2.properties" })
-@ComponentScan({ "com.baeldung.manytomany" })
+@ComponentScan({ "com.baeldung.hibernate.manytomany" })
 public class PersistenceConfig {
 
     @Autowired
@@ -32,7 +32,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.manytomany" });
+        sessionFactory.setPackagesToScan(new String[] { "com.baeldung.hibernate.manytomany" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
