@@ -1,4 +1,4 @@
-package com.baeldung.manytomany.dao.common;
+package com.baeldung.hibernate.manytomany.dao.common;
 
 import java.io.Serializable;
 import java.util.List;

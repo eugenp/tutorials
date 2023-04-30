@@ -1,4 +1,4 @@
-package com.baeldung.uuids;
+package com.baeldung.hibernate.uuids;
 
 import java.util.UUID;
 import jakarta.persistence.Entity;
