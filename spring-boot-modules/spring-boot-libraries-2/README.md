@@ -9,4 +9,5 @@ This module contains articles about various Spring Boot libraries
 - [An Introduction to Kong](https://www.baeldung.com/kong)
 - [Scanning Java Annotations At Runtime](https://www.baeldung.com/java-scan-annotations-runtime)
 - [Guide to Resilience4j With Spring Boot](https://www.baeldung.com/spring-boot-resilience4j)  
-More articles: [[prev -->]](/spring-boot-modules/spring-boot-libraries)
+- [Using OpenAI ChatGPT APIs in Spring Boot](https://www.baeldung.com/spring-boot-chatgpt-api-openai)
+- More articles: [[prev -->]](/spring-boot-modules/spring-boot-libraries)
