@@ -17,7 +17,6 @@
 
     <modules>
         <!--Won't be upgraded to JDK 17 -->
-        <!--<module>core-java</module> -->
         <!--<module>core-java-8</module> -->
         <!--<module>core-java-8-2</module> -->
         <!--<module>core-java-8-datetime</module> -->
