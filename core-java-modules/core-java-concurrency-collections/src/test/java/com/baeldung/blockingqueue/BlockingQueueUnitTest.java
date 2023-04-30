@@ -10,16 +10,19 @@ import static org.junit.Assert.assertEquals;
 public class BlockingQueueUnitTest {
 
     @Test
-    public void givenArrayBlockingQueue_whenCreated_thenReturnNumberOfElementsItCanAccept()
+    public void givenArrayBlockingQueue_whenAddedElements_thenReturnQueueRemainingCapacity()
     {
         BlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(10);
-        assertEquals(10, arrayBlockingQueue.remainingCapacity());
+        arrayBlockingQueue.add("TestString1");
+        arrayBlockingQueue.add("TestString2");
+        assertEquals(8, arrayBlockingQueue.remainingCapacity());
     }
 
     @Test
-    public void givenLinkedBlockingQueue_whenCreated_thenReturnNumberOfElementsItCanAccept()
+    public void givenLinkedBlockingQueue_whenAddedElements_thenReturnQueueRemainingCapacity()
     {
         BlockingQueue<String> linkedBlockingQueue = new LinkedBlockingQueue<>(10);
-        assertEquals(10, linkedBlockingQueue.remainingCapacity());
+        linkedBlockingQueue.add("TestString1");
+        assertEquals(9, linkedBlockingQueue.remainingCapacity());
     }
 }
