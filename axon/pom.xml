@@ -95,6 +95,22 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.util=ALL-UNNAMED
+                        --add-opens
+                        java.base/java.util.concurrent=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <axon-bom.version>4.6.3</axon-bom.version>
         <de.flapdoodle.embed.mongo.version>3.4.8</de.flapdoodle.embed.mongo.version>

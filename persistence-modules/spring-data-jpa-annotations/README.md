@@ -10,6 +10,7 @@ This module contains articles about annotations used in Spring Data JPA
 - [Programmatic Transaction Management in Spring](https://www.baeldung.com/spring-programmatic-transaction-management)
 - [JPA Entity Lifecycle Events](https://www.baeldung.com/jpa-entity-lifecycle-events)
 - [Overriding Column Definition With @AttributeOverride](https://www.baeldung.com/jpa-attributeoverride)
+- [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
