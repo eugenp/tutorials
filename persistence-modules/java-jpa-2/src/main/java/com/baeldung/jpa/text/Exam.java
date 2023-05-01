@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Exam {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
     private String description;
