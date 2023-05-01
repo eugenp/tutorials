@@ -1,5 +1,6 @@
 FROM openjdk:17-jdk-slim
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} application.jar
+COPY target/spring-cloud-open-telemetry2-1.0.0-SNAPSHOT.jar spring-cloud-open-telemetry.jar
+
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","/application.jar"]
+
+ENTRYPOINT ["java","-jar","/spring-cloud-open-telemetry.jar"]
