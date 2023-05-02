@@ -33,7 +33,7 @@ class MockFinalsUnitTest {
     }
 
     @Test
-    public void whenMockFinalMethodMockWorks_withInlineMockMaker(){
+    public void whenMockFinalMethodMockWorks_withInlineMockMaker() {
         MyList myList = new MyList();
 
         MyList mock = mock(MyList.class, withSettings().mockMaker(MockMakers.INLINE));
