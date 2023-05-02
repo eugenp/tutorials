@@ -15,7 +15,7 @@ class MockFinalsUnitTest {
 
         MyList myList = new MyList();
 
-        MyList mock = mock(MyList.class, withSettings().mockMaker(MockMakers.INLINE));
+        MyList mock = mock(MyList.class);
         when(mock.finalMethod()).thenReturn(1);
 
         assertThat(mock.finalMethod()).isNotEqualTo(myList.finalMethod());
@@ -30,5 +30,15 @@ class MockFinalsUnitTest {
         when(mock.size()).thenReturn(2);
 
         assertThat(mock.size()).isNotEqualTo(finalList.size());
+    }
+
+    @Test
+    public void whenMockFinalMethodMockWorks_withInlineMockMaker(){
+        MyList myList = new MyList();
+
+        MyList mock = mock(MyList.class, withSettings().mockMaker(MockMakers.INLINE));
+        when(mock.finalMethod()).thenReturn(1);
+
+        assertThat(mock.finalMethod()).isNotEqualTo(myList.finalMethod());
     }
 }
