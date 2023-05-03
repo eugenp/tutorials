@@ -1,7 +1,7 @@
 package com.baeldung.tapestry.services;
 
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.commons.MappedConfiguration;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry if <em>tapestry.execution-mode</em>
