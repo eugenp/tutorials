@@ -48,7 +48,7 @@ public class JaxbIntegrationTest {
     }
 
     @Test
-    public void unMashal() throws JAXBException, IOException {
+    public void unmarshal() throws JAXBException, IOException {
         Unmarshaller unmarshaller = context.createUnmarshaller();
         String bookFile = this.getClass().getResource("/book.xml").getFile();
         Book unMarshallerbook = (Book) unmarshaller.unmarshal(new FileReader(bookFile));
