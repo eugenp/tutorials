@@ -2,16 +2,20 @@ version: "4.0"
 
 services:
   product-service:
+    container_name: product-service
     platform: linux/x86_64
     build: spring-cloud-open-telemetry1/
+    hostname: product-service
     ports:
       - "8080:8080"
 
   price-service:
+    container_name: price-service
     platform: linux/x86_64
     build: spring-cloud-open-telemetry2/
+    hostname: price-service
     ports:
-      - "8081"
+      - "8081:8081"
 
   jaeger-service:
     image: jaegertracing/all-in-one:latest
