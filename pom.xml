@@ -333,7 +333,6 @@
                 <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -354,8 +353,6 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>java-jdi</module>
-
                 <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
@@ -366,7 +363,6 @@
 
                 <module>muleesb</module>
 
-                <module>web-modules</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
@@ -415,7 +411,6 @@
                 <module>spring-4</module>
                 <module>spring-aop</module>
 
-                <module>spring-bom</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -526,7 +521,6 @@
                 <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>core-java-modules/core-java</module>
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -547,8 +541,6 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>java-jdi</module>
-
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
 
@@ -557,7 +549,6 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
-                <module>web-modules</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
@@ -597,7 +588,6 @@
 
                 <module>spring-4</module>
 
-                <module>spring-bom</module>
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -800,7 +790,6 @@
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>custom-pmd</module>
-                <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
@@ -843,7 +832,6 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -856,7 +844,6 @@
                 <module>bazel</module>
                 <module>google-auto-project</module>
                 <module>ddd</module>
-                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
@@ -868,7 +855,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -913,7 +900,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>slack</module>
 
 
                 <!--  Modules from default second-->
@@ -923,7 +909,7 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -948,6 +934,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
+                <module>web-modules/apache-tapestry</module>
             </modules>
 
             <properties>
@@ -1053,7 +1040,6 @@
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
-                <module>spring-core-6</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-modules</module>
@@ -1096,7 +1082,6 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -1109,7 +1094,6 @@
                 <module>bazel</module>
                 <module>google-auto-project</module>
                 <module>ddd</module>
-                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
@@ -1123,7 +1107,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -1152,6 +1136,7 @@
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
+                <module>libraries-ai</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
@@ -1167,7 +1152,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>slack</module>
 
 
                 <!--  Modules from default second-->
@@ -1178,7 +1162,7 @@
                 <module>spring-activiti</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -1202,6 +1186,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
+                <module>web-modules/apache-tapestry</module>
             </modules>
 
             <properties>
