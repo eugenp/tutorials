@@ -3,15 +3,6 @@ receivers:
     protocols:
       grpc:
       http:
-  prometheus:
-    config:
-      scrape_configs:
-        - job_name: "example"
-          scrape_interval: 5s
-          metrics_path: '/actuator/prometheus'
-          static_configs:
-#            - targets: [ "localhost:8080" ]
-            - targets: [ "product-service:8080" ]
 
 processors:
   batch:
@@ -20,7 +11,7 @@ exporters:
   logging:
     loglevel: debug
   prometheus:
-    endpoint: "localhost:8889"
+    endpoint: "0.0.0.0:8889"
   jaeger:
     endpoint: jaeger-service:14250
     tls:
@@ -33,6 +24,6 @@ service:
       processors: [ batch ]
       exporters: [ logging, jaeger ]
     metrics:
-      receivers: [ prometheus ]
+      receivers: [ otlp ]
       processors: [ batch ]
       exporters: [ prometheus ]
