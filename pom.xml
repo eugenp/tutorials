@@ -418,7 +418,7 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
+                <module>spring-roo</module>
 
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -595,7 +595,7 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
+                <module>spring-roo</module>
 
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1098,7 +1098,7 @@
                 <module>dozer</module>
 
                 <module>dubbo</module>
-                <!-- <module>feign</module> -->
+                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
