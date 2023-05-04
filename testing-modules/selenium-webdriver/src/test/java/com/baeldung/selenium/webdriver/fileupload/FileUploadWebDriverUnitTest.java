@@ -1,4 +1,4 @@
-package com.baeldung.selenium.uploadwithwebdriver;
+package com.baeldung.selenium.webdriver.fileupload;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
