@@ -32,3 +32,5 @@ services:
       - "4317:4317"
     depends_on:
       - jaeger-service
+      - product-service
+      - price-service

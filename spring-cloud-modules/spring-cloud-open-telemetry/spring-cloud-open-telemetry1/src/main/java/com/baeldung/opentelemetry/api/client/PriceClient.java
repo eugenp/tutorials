@@ -27,6 +27,8 @@ public class PriceClient {
 
     public Price getPrice(@PathVariable("id") long productId){
         LOGGER.info("Fetching Price Details With Product Id {}", productId);
+        LOGGER.info("baseUrl {}", baseUrl);
+
         String url = String.format("%s/price/%d", baseUrl, productId);
         ResponseEntity<Price> price = restTemplate.getForEntity(url, Price.class);
         return price.getBody();

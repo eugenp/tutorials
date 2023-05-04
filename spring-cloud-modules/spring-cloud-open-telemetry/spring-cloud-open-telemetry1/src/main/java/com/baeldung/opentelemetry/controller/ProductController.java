@@ -3,6 +3,7 @@ package com.baeldung.opentelemetry.controller;
 import com.baeldung.opentelemetry.api.client.PriceClient;
 import com.baeldung.opentelemetry.model.Product;
 import com.baeldung.opentelemetry.repository.ProductRepository;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,20 @@ public class ProductController {
 
     private final ProductRepository productRepository;
 
+    private final MeterRegistry registry;
+
     @Autowired
-    public ProductController(PriceClient priceClient, ProductRepository productRepository) {
+    public ProductController(PriceClient priceClient, ProductRepository productRepository, MeterRegistry registry) {
         this.priceClient = priceClient;
         this.productRepository = productRepository;
+        this.registry = registry;
     }
 
     @GetMapping(path = "/product/{id}")
     public Product getProductDetails(@PathVariable("id") long productId){
         LOGGER.info("Getting Product and Price Details With Product Id {}", productId);
+        registry.counter("items.total", "id", String.valueOf(productId)).increment();
+
         Product product = productRepository.getProduct(productId);
         product.setPrice(priceClient.getPrice(productId));
 
