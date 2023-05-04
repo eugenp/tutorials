@@ -5,11 +5,11 @@ services:
     container_name: product-service
     platform: linux/x86_64
     build: spring-cloud-open-telemetry1/
-#    environment:
-#      OTEL_SERVICE_NAME: "product-service"
-#      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
-#      # Logs are disabled by default
-#      OTEL_METRICS_EXPORTER: "otlp"
+    environment:
+      OTEL_SERVICE_NAME: "product-service"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
+      # Logs are disabled by default
+      OTEL_METRICS_EXPORTER: "otlp"
     hostname: product-service
     ports:
       - "8080:8080"
@@ -18,11 +18,11 @@ services:
     container_name: price-service
     platform: linux/x86_64
     build: spring-cloud-open-telemetry2/
-#    environment:
-#      OTEL_SERVICE_NAME: "price-service"
-#      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
-#      # Logs are disabled by default
-#      OTEL_METRICS_EXPORTER: "otlp"
+    environment:
+      OTEL_SERVICE_NAME: "price-service"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
+      # Logs are disabled by default
+      OTEL_METRICS_EXPORTER: "otlp"
     hostname: price-service
     ports:
       - "8081:8081"
@@ -39,6 +39,12 @@ services:
       - "9090:9090"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+#  grafana:
+#    image: grafana/grafana:latest
+#    container_name: grafana
+#    ports:
+#      - "3000:3000"
 
   collector:
     image: otel/opentelemetry-collector:0.72.0
