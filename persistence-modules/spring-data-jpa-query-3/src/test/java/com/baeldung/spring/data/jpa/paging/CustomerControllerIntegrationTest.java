@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 @WebMvcTest(CustomerRestController.class)
-public class CustomerControllerTest {
+public class CustomerControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
