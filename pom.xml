@@ -364,7 +364,6 @@
 
                 <module>muleesb</module>
 
-                <!--<module>web-modules</module>-->
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
@@ -553,7 +552,6 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
-                <!--<module>web-modules</module>-->
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
@@ -812,7 +810,6 @@
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
                 <module>quarkus-modules</module>
-                <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
@@ -942,11 +939,11 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <!--<module>web-modules/apache-tapestry</module>-->
                 <module>web-modules/blade</module>
                 <module>web-modules/bootique</module>
                 <module>web-modules/dropwizard</module>
                 <module>web-modules/google-web-toolkit</module>
+                <module>web-modules/jakarta-ee</module>
             </modules>
 
             <properties>
@@ -1069,7 +1066,6 @@
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
                 <module>quarkus-modules</module>
-                <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
@@ -1204,7 +1200,7 @@
                 <module>web-modules/bootique</module>
                 <module>web-modules/dropwizard</module>
                 <module>web-modules/google-web-toolkit</module>
-                <!--<module>web-modules/apache-tapestry</module>-->
+                <module>web-modules/google-jakarta-ee</module>
             </modules>
 
             <properties>
