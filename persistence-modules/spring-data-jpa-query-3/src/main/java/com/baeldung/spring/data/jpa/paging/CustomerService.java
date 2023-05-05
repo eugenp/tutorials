@@ -15,7 +15,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-     private final CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     public Page<Customer> getCustomers(int page, int size) {
 
@@ -25,13 +25,11 @@ public class CustomerService {
         int start = (int) pageRequest.getOffset();
         int end = Math.min((start + pageRequest.getPageSize()), allCustomers.size());
 
-
-        return new PageImpl<>(allCustomers.subList(start, end), pageRequest, allCustomers.size());
-
+        List<Customer> pageContent = allCustomers.subList(start, end);
+        return new PageImpl<>(pageContent, pageRequest, allCustomers.size());
     }
 
     private Pageable createPageRequestUsing(int page, int size) {
         return PageRequest.of(page, size);
-
     }
 }
