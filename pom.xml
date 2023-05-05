@@ -418,7 +418,7 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-roo</module>
+                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -595,7 +595,7 @@
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
 
-                <module>spring-roo</module>
+                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
