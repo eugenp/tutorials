@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import org.assertj.core.api.Assertions;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
 
 @WebMvcTest(CustomerRestController.class)
 public class CustomerControllerTest {
@@ -62,15 +60,10 @@ public class CustomerControllerTest {
         MockHttpServletResponse response = result.getResponse();
 
         JSONObject jsonObject = new JSONObject(response.getContentAsString());
-        assertThat(jsonObject.get("totalPages"))
-          .isEqualTo(4);
-        assertThat(jsonObject.get("totalElements"))
-          .isEqualTo(20);
-        assertThat(jsonObject.get("number"))
-          .isEqualTo(1);
-        assertThat(jsonObject.get("size"))
-          .isEqualTo(5);
-        assertThat(jsonObject.get("content"))
-          .isNotNull();
+        assertThat(jsonObject.get("totalPages")).isEqualTo(4);
+        assertThat(jsonObject.get("totalElements")).isEqualTo(20);
+        assertThat(jsonObject.get("number")).isEqualTo(1);
+        assertThat(jsonObject.get("size")).isEqualTo(5);
+        assertThat(jsonObject.get("content")).isNotNull();
     }
 }
