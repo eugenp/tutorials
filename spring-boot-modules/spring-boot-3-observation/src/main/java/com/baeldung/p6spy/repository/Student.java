@@ -1,6 +1,5 @@
 package com.baeldung.p6spy.repository;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

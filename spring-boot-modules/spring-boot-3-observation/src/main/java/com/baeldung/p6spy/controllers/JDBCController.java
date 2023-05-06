@@ -39,8 +39,7 @@ public class JDBCController {
                 results.add(result);
             }
             connection.commit();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new IllegalStateException(e);
         }
         return results;
@@ -51,8 +50,7 @@ public class JDBCController {
         List<Map<String, String>> results = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
             connection.rollback();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new IllegalStateException(e);
         }
         return results;
@@ -63,8 +61,7 @@ public class JDBCController {
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             statement.execute("SELECT UNDEFINED()");
-        }
-        catch (Exception ignored) {
+        } catch (Exception ignored) {
         }
     }
 }
