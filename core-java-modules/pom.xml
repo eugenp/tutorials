@@ -141,6 +141,7 @@
         <module>core-java-uuid</module>
         <module>pre-jpms</module>
         <module>core-java-collections-maps-6</module>
+        <module>core-java-records</module>
     </modules>
 
     <dependencyManagement>
