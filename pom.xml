@@ -434,7 +434,7 @@
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
-                <module>xml-2</module>
+
             </modules>
 
         </profile>
@@ -611,7 +611,7 @@
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
-                <module>xml-2</module>
+
             </modules>
 
         </profile>
@@ -935,6 +935,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <module>xml-2</module>
             </modules>
 
             <properties>
@@ -1187,6 +1188,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <module>xml-2</module>
             </modules>
 
             <properties>
