@@ -433,8 +433,6 @@
                 <module>testing-modules</module>
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
-                <module>xml</module>
-
             </modules>
 
         </profile>
@@ -610,8 +608,6 @@
                 <module>testing-modules</module>
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
-                <module>xml</module>
-
             </modules>
 
         </profile>
@@ -717,6 +713,7 @@
             </build>
 
             <modules>
+                <module>xml</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -969,6 +966,7 @@
             </build>
 
             <modules>
+                <module>xml</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
