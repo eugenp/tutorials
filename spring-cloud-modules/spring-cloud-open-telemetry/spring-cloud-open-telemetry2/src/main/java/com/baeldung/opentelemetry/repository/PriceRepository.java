@@ -17,10 +17,10 @@ public class PriceRepository {
 
     private final Map<Long, Price> priceMap = new HashMap<>();
 
-    public Price getPrice(Long productId){
+    public Price getPrice(Long productId) {
         LOGGER.info("Getting Price from Price Repo With Product Id {}", productId);
 
-        if(!priceMap.containsKey(productId)){
+        if (!priceMap.containsKey(productId)) {
             LOGGER.error("Price Not Found for Product Id {}", productId);
             throw new PriceNotFoundException("Product Not Found");
         }
@@ -29,7 +29,7 @@ public class PriceRepository {
     }
 
     @PostConstruct
-    private void setupRepo(){
+    private void setupRepo() {
         Price price1 = getPrice(100001L, 12.5, 2.5);
         priceMap.put(100001L, price1);
 

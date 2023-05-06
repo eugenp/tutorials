@@ -28,7 +28,6 @@ public class RestTemplateHeaderModifierInterceptor implements ClientHttpRequestI
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         openTelemetry.getPropagators().getTextMapPropagator().inject(Context.current(), request, setter);
         ClientHttpResponse response = execution.execute(request, body);
-        response.getHeaders().add("Foo", "bar");
         return response;
     }
 }

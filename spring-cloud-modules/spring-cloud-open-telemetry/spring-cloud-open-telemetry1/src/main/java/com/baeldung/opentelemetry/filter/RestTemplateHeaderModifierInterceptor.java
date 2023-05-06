@@ -1,10 +1,8 @@
 package com.baeldung.opentelemetry.filter;
 
-import com.baeldung.opentelemetry.controller.ProductController;
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.context.Context;
-import io.opentelemetry.context.propagation.TextMapSetter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpRequest;
@@ -31,7 +29,6 @@ public class RestTemplateHeaderModifierInterceptor implements ClientHttpRequestI
             carrier.getHeaders().set(key, value);
             LOGGER.info("Injecting trace context into header: {}={}", key, value);
         });
-        request.getHeaders().add("Foo", "bar");
         ClientHttpResponse response = execution.execute(request, body);
         return response;
     }
