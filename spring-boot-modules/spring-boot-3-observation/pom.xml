@@ -82,4 +82,8 @@
 
     </dependencies>
 
+    <properties>
+        <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
+    </properties>
+
 </project>
