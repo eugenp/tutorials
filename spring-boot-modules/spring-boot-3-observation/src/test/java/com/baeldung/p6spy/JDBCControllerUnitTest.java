@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 the original author or authors.
+ * Copyright 2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,35 @@
 
 package com.baeldung.p6spy;
 
-import com.github.gavlyukovskiy.boot.jdbc.decorator.DecoratedDataSource;
-import com.github.gavlyukovskiy.boot.jdbc.decorator.p6spy.P6SpyDataSourceDecorator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import javax.sql.DataSource;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.springframework.web.client.RestTemplate;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
-class SampleP6SpyApplicationTests {
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+class JDBCControllerUnitTest {
 
-    @Autowired
-    private DataSource dataSource;
+    @Value("http://localhost:${local.server.port}/jdbc")
+    private String localhost;
+
+    private RestTemplate restTemplate = new RestTemplate();
 
     @Test
-    void contextLoads() {
-        assertThat(dataSource).isInstanceOf(DecoratedDataSource.class);
+    void select() {
+        restTemplate.getForEntity(localhost + "/commit", String.class);
+    }
 
-        DecoratedDataSource decoratedDataSource = (DecoratedDataSource) dataSource;
+    @Test
+    void rollback() {
+        restTemplate.getForEntity(localhost + "/rollback", String.class);
+    }
 
-        assertThat(decoratedDataSource.getDecoratingChain().get(0).getDataSourceDecorator()).isInstanceOf(P6SpyDataSourceDecorator.class);
+    @Test
+    void error() {
+        restTemplate.getForEntity(localhost + "/query-error", String.class);
     }
 }
