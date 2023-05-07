@@ -1,15 +1,13 @@
 package com.baeldung.p6spy.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,28 +15,16 @@ import java.util.Map;
 @RequestMapping("jdbc")
 public class JDBCController {
 
-    private final DataSource dataSource;
-
-    public JDBCController(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
+    @Autowired
+    private DataSource dataSource;
 
     @RequestMapping("/commit")
     public List<Map<String, String>> select() {
         List<Map<String, String>> results = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM student")) {
-            ResultSetMetaData metaData = resultSet.getMetaData();
-            while (resultSet.next()) {
-                Map<String, String> result = new HashMap<>();
-                for (int i = 0; i < metaData.getColumnCount(); i++) {
-                    String columnName = metaData.getColumnName(i + 1);
-                    result.put(columnName, resultSet.getString(columnName));
-                }
-                results.add(result);
-            }
-            connection.commit();
+        try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+            statement.executeQuery("SELECT * FROM student");
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }

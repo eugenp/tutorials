@@ -2,6 +2,7 @@ package com.baeldung.p6spy.controllers;
 
 import com.baeldung.p6spy.repository.Student;
 import com.baeldung.p6spy.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,14 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("spring-jpa")
-public class SpringDataController {
+@RequestMapping("student")
+public class StudentController {
 
-    private final StudentRepository repository;
-
-    public SpringDataController(StudentRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private StudentRepository repository;
 
     @RequestMapping("/save")
     public Long save() {
