@@ -10,6 +10,8 @@ processors:
 exporters:
   logging:
     loglevel: debug
+  prometheus:
+    endpoint: "0.0.0.0:8889"
   jaeger:
     endpoint: jaeger-service:14250
     tls:
@@ -21,3 +23,10 @@ service:
       receivers: [ otlp ]
       processors: [ batch ]
       exporters: [ logging, jaeger ]
+    metrics:
+      receivers: [ otlp ]
+      processors: [ batch ]
+      exporters: [ prometheus ]
+
+#  export OTEL_METRICS_EXPORTER=otlp
+#  java -javaagent:opentelemetry-javaagent.jar -jar target/spring-cloud-open-telemetry1-1.0.0-SNAPSHOT.jar

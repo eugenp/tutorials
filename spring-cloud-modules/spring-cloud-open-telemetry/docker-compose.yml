@@ -5,6 +5,11 @@ services:
     container_name: product-service
     platform: linux/x86_64
     build: spring-cloud-open-telemetry1/
+    environment:
+      OTEL_SERVICE_NAME: "product-service"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
+      # Logs are disabled by default
+      OTEL_METRICS_EXPORTER: "otlp"
     hostname: product-service
     ports:
       - "8080:8080"
@@ -13,6 +18,11 @@ services:
     container_name: price-service
     platform: linux/x86_64
     build: spring-cloud-open-telemetry2/
+    environment:
+      OTEL_SERVICE_NAME: "price-service"
+      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"
+      # Logs are disabled by default
+      OTEL_METRICS_EXPORTER: "otlp"
     hostname: price-service
     ports:
       - "8081:8081"
@@ -22,6 +32,19 @@ services:
     ports:
       - "16686:16686"
       - "14250"
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
 
   collector:
     image: otel/opentelemetry-collector:0.72.0
@@ -29,6 +52,9 @@ services:
     volumes:
       - ./otel-config.yml:/etc/otel-collector-config.yml
     ports:
-      - "4317:4317"
+      - "4317:4317" # OTLP gRPC receiver port
+      - "8889:8889" # Promentheus exporter metrics
     depends_on:
       - jaeger-service
+      - product-service
+      - price-service
