@@ -1,7 +1,7 @@
 package com.baeldung.spring.cloud.bootstrap.gateway.filter;
 
-import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
+//import com.netflix.zuul.ZuulFilter;
+//import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
 
@@ -13,16 +14,14 @@ import org.springframework.session.web.context.AbstractHttpSessionApplicationIni
 @EnableRedisHttpSession
 public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
     @Autowired
-    Environment properties;
-    
+    private Environment properties;
+
     @Bean
     @Primary
-    public JedisConnectionFactory connectionFactory() {
-        JedisConnectionFactory factory = new JedisConnectionFactory();
-        factory.setHostName(properties.getProperty("spring.redis.host","localhost"));
-        factory.setPort(properties.getProperty("spring.redis.port", Integer.TYPE,6379));
-        factory.afterPropertiesSet();
-        factory.setUsePool(true);
-        return factory;
+    public LettuceConnectionFactory redisConnectionFactory() {
+        RedisStandaloneConfiguration redisConfiguration = new RedisStandaloneConfiguration();
+        redisConfiguration.setHostName(properties.getProperty("spring.redis.host", "localhost"));
+        redisConfiguration.setPort(properties.getProperty("spring.redis.port", Integer.TYPE, 6379));
+        return new LettuceConnectionFactory(redisConfiguration);
     }
 }
