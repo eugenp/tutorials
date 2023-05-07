@@ -1,47 +1,26 @@
 package com.baeldung.spring.cloud.bootstrap.gateway.filter;
 
-//import com.netflix.zuul.ZuulFilter;
-//import com.netflix.zuul.context.RequestContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.session.Session;
-import org.springframework.session.SessionRepository;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
 
-import javax.servlet.http.HttpSession;
+import reactor.core.publisher.Mono;
 
 @Component
-public class SessionSavingZuulPreFilter extends ZuulFilter {
+public class SessionSavingPreFilter implements GlobalFilter {
 
-        private Logger log = LoggerFactory.getLogger(this.getClass());
-
-        @Autowired
-        private SessionRepository repository;
-
-        @Override
-        public boolean shouldFilter() {
-                return true;
-        }
-
-        @Override
-        public Object run() {
-                RequestContext context = RequestContext.getCurrentContext();
-                HttpSession httpSession = context.getRequest().getSession();
-                Session session = repository.getSession(httpSession.getId());
-
-                context.addZuulRequestHeader("Cookie", "SESSION=" + httpSession.getId());
-                log.info("ZuulPreFilter session proxy: {}", session.getId());
-                return null;
-        }
-
-        @Override
-        public String filterType() {
-                return "pre";
-        }
-
-        @Override
-        public int filterOrder() {
-                return 0;
-        }
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        return chain.filter(exchange.getSession()
+            .map(webSession -> {
+                return exchange.mutate()
+                    .request(exchange.getRequest()
+                        .mutate()
+                        .header("Cookie", "SESSION=" + webSession.getId())
+                        .build())
+                    .build();
+            })
+            .block());
+    }
 }
