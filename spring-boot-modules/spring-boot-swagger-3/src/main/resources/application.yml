@@ -1,0 +1,21 @@
+spring:
+  h2:
+    console.enabled: true
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    defer-datasource-initialization: true
+  datasource:
+    driverClassName: org.h2.Driver
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
+
+server:
+  servlet:
+    context-path: /hotel-application
+
+#mvn spring-boot:run -Dspring-boot.run.arguments=--server.servlet.context-path=/hotel-application
