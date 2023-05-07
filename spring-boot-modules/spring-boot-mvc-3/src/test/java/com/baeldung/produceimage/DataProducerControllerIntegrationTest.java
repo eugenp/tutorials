@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ImageApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class DataProducerControllerIntegrationTest {
+class DataProducerControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -27,11 +27,19 @@ public class DataProducerControllerIntegrationTest {
     }
 
     @Test
-    void givenJpgFalse_whenGetImageDynamicType_ThenContentTypeIsFalse() throws Exception {
+    void givenJpgFalse_whenGetImageDynamicType_ThenContentTypeIsPng() throws Exception {
         mockMvc.perform(get("/get-image-dynamic-type?jpg=false"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.IMAGE_PNG))
                 .andExpect(header().stringValues(HttpHeaders.CONTENT_TYPE, MediaType.IMAGE_PNG_VALUE));
+    }
+
+    @Test
+    void whenGetFileViaByteArrayResource_ThenContentIsExpectedFile() throws Exception {
+        mockMvc.perform(get("/get-file-via-byte-array-resource"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_OCTET_STREAM_VALUE))
+                .andExpect(content().string("Hello Baeldung!"));
     }
 
 }
