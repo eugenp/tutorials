@@ -1,14 +1,15 @@
 package com.baeldung.boot.csfle.config;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.bson.BsonBinary;
 import org.bson.BsonDocument;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -51,14 +52,10 @@ public class MongoClientConfig extends AbstractMongoClientConfiguration {
     @Bean
     @Override
     public MongoClient mongoClient() {
-        MongoClient client;
         try {
-            client = MongoClients.create(clientSettings());
-
             ClientEncryption encryption = clientEncryption();
-            encryptionConfig.setDataKeyId(createOrRetrieveDataKey(client, encryption));
-
-            return client;
+            encryptionConfig.setDataKeyId(createOrRetrieveDataKey(encryption));
+            return MongoClients.create(clientSettings());
         } catch (IOException e) {
             throw new IllegalStateException("unable to create client", e);
         }
@@ -77,19 +74,10 @@ public class MongoClientConfig extends AbstractMongoClientConfiguration {
         return ClientEncryptions.create(encryptionSettings);
     }
 
-    private BsonBinary createOrRetrieveDataKey(MongoClient client, ClientEncryption encryption) {
-        MongoNamespace namespace = new MongoNamespace(encryptionConfig.getKeyVaultNamespace());
-        MongoCollection<Document> keyVault = client.getDatabase(namespace.getDatabaseName())
-            .getCollection(namespace.getCollectionName());
-
-        Bson query = Filters.in("keyAltNames", encryptionConfig.getKeyVaultAlias());
-        BsonDocument key = keyVault.withDocumentClass(BsonDocument.class)
-            .find(query)
-            .first();
-
+    private BsonBinary createOrRetrieveDataKey(ClientEncryption encryption) {
+        BsonDocument key = encryption.getKeyByAltName(encryptionConfig.getKeyVaultAlias());
         if (key == null) {
-            keyVault.createIndex(Indexes.ascending("keyAltNames"), new IndexOptions().unique(true)
-                .partialFilterExpression(Filters.exists("keyAltNames")));
+            createKeyUniqueIndex();
 
             DataKeyOptions options = new DataKeyOptions();
             options.keyAltNames(Arrays.asList(encryptionConfig.getKeyVaultAlias()));
@@ -99,16 +87,68 @@ public class MongoClientConfig extends AbstractMongoClientConfiguration {
         }
     }
 
+    private void createKeyUniqueIndex() {
+        try (MongoClient client = MongoClients.create(MongoClientSettings.builder()
+            .applyConnectionString(new ConnectionString(uri))
+            .build())) {
+            MongoNamespace namespace = new MongoNamespace(encryptionConfig.getKeyVaultNamespace());
+            MongoCollection<Document> keyVault = client.getDatabase(namespace.getDatabaseName())
+                .getCollection(namespace.getCollectionName());
+
+            keyVault.createIndex(Indexes.ascending("keyAltNames"), new IndexOptions().unique(true)
+                .partialFilterExpression(Filters.exists("keyAltNames")));
+        }
+    }
+
     private MongoClientSettings clientSettings() throws FileNotFoundException, IOException {
         Builder settings = MongoClientSettings.builder()
             .applyConnectionString(new ConnectionString(uri));
 
-        if (encryptionConfig.getAutoDecryption()) {
-            settings.autoEncryptionSettings(AutoEncryptionSettings.builder()
+        if (encryptionConfig.isAutoDecryption()) {
+            AutoEncryptionSettings.Builder builder = AutoEncryptionSettings.builder()
                 .keyVaultNamespace(encryptionConfig.getKeyVaultNamespace())
-                .kmsProviders(LocalKmsUtils.providersMap(encryptionConfig.getMasterKeyPath()))
-                .bypassAutoEncryption(true)
-                .build());
+                .kmsProviders(LocalKmsUtils.providersMap(encryptionConfig.getMasterKeyPath()));
+
+            if (encryptionConfig.isAutoEncryption() && encryptionConfig.getDataKeyId() != null) {
+                File autoEncryptionLib = encryptionConfig.getAutoEncryptionLib();
+                if (!autoEncryptionLib.isFile()) {
+                    throw new IllegalArgumentException("encryption lib must be an existing file");
+                }
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("cryptSharedLibRequired", true);
+                map.put("cryptSharedLibPath", autoEncryptionLib.toString());
+                builder.extraOptions(map);
+                
+                String keyUuid = encryptionConfig.dataKeyIdUuid();
+                HashMap<String, BsonDocument> schemaMap = new HashMap<>();
+                schemaMap.put(getDatabaseName() + ".citizens",
+                    BsonDocument.parse("{"
+                        + "  bsonType: \"object\","
+                        + "  encryptMetadata: {"
+                        + "    keyId: [UUID(\"" + keyUuid + "\")]"
+                        + "  },"
+                        + "  properties: {"
+                        + "    email: {"
+                        + "      encrypt: {"
+                        + "        bsonType: \"string\","
+                        + "        algorithm: \"AEAD_AES_256_CBC_HMAC_SHA_512-Deterministic\""
+                        + "      }"
+                        + "    },"
+                        + "    birthYear: {"
+                        + "      encrypt: {"
+                        + "        bsonType: \"int\","
+                        + "        algorithm: \"AEAD_AES_256_CBC_HMAC_SHA_512-Random\""
+                        + "      }"
+                        + "    }"
+                        + "  }"
+                        + "}"));
+                builder.schemaMap(schemaMap);
+            } else {
+                builder.bypassAutoEncryption(true);
+            }
+
+            settings.autoEncryptionSettings(builder.build());
         }
 
         return settings.build();
