@@ -32,4 +32,5 @@ public class MultipleInputs {
         { System.out.println("Invalid input. Please enter two integers separated by a semicolon."); }
 
     }
+
 }

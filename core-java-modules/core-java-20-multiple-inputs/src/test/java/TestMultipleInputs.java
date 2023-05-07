@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.InputMismatchException;
 public class TestMultipleInputs {
     @Test
-    public void testUsingSpaceDelimiter() {
+    public void givenMultipleInputs_whenUsingSpaceDelimiter_thenExpectPrintingOutputs() {
         String input = "10 20\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -17,7 +17,7 @@ public class TestMultipleInputs {
     }
 
     @Test
-    public void testUsingREDelimiter() {
+    public void givenMultipleInputs_whenUsingREDelimiter_thenExpectPrintingOutputs() {
         String input = "30, 40\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -27,7 +27,7 @@ public class TestMultipleInputs {
     }
 
     @Test
-    public void testUsingCustomDelimiter() {
+    public void givenMultipleInputs_whenUsingCustomDelimiter_thenExpectPrintingOutputs() {
         String input = "50; 60\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -37,7 +37,7 @@ public class TestMultipleInputs {
     }
 
     @Test
-    public void testInvalidInput() {
+    public void givenInvalidInput_whenUsingSpaceDelimiter_thenExpectInputMismatchException() {
         String input = "abc\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
