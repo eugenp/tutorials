@@ -41,9 +41,8 @@ public class ProductController {
     @GetMapping(path = "/product/{id}")
     public Product getProductDetails(@PathVariable("id") long productId) {
         LOGGER.info("Getting Product and Price Details With Product Id {}", productId);
-        LOGGER.info("Start my wonderful use case");
 
-        Span parent = tracer.spanBuilder("Start my wonderful use case").startSpan();
+        Span parent = tracer.spanBuilder("Getting Product and Price Details With Product").startSpan();
         try {
             LOGGER.info("Processing id {}", productId);
             return doHandle(productId, parent);
