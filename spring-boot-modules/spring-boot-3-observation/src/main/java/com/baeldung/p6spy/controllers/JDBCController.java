@@ -25,6 +25,7 @@ public class JDBCController {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             statement.executeQuery("SELECT * FROM student");
+            connection.commit();
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
