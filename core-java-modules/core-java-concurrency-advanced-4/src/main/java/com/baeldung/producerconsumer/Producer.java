@@ -38,7 +38,7 @@ public class Producer implements Runnable {
 
     private Message generateMessage() {
         Message message = new Message(++idSequence, Math.random());
-        System.out.printf("[%s] Generated Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
+        System.out.printf("[%s] Generated Message. Id: %d, Data: %f%n", Thread.currentThread().getName(), message.getId(), message.getData());
 
         //Sleeping on random time to make it realistic
         ThreadUtil.sleep((long) (message.getData() * 100));

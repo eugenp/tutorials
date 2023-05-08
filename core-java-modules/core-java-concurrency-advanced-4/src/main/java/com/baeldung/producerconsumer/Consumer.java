@@ -36,7 +36,7 @@ public class Consumer implements Runnable {
 
     private void useMessage(Message message) {
         if (message != null) {
-            System.out.printf("[%s] Consuming Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
+            System.out.printf("[%s] Consuming Message. Id: %d, Data: %f%n", Thread.currentThread().getName(), message.getId(), message.getData());
 
             //Sleeping on random time to make it realistic
             ThreadUtil.sleep((long) (message.getData() * 100));

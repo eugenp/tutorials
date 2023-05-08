@@ -17,7 +17,7 @@ public class SimpleProducerConsumerDemonstrator {
                 e.printStackTrace();
                 break;
             }
-            System.out.printf("[%s] Value produced: %f\n", Thread.currentThread().getName(), value);
+            System.out.printf("[%s] Value produced: %f%n", Thread.currentThread().getName(), value);
         }
     }
 
@@ -31,7 +31,7 @@ public class SimpleProducerConsumerDemonstrator {
                 break;
             }
             // Consume value
-            System.out.printf("[%s] Value consumed: %f\n", Thread.currentThread().getName(), value);
+            System.out.printf("[%s] Value consumed: %f%n", Thread.currentThread().getName(), value);
         }
     }
 
