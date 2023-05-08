@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "profileProperties")
+@ConfigurationProperties(prefix = "profile.profileProperties")
 public class MainConfiguration {
 	private String name;
 	
