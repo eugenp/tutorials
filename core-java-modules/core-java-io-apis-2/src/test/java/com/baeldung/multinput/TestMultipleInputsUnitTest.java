@@ -1,18 +1,17 @@
 package com.baeldung.multinput;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.InputMismatchException;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
+    import java.io.ByteArrayInputStream;
+    import java.io.InputStream;
+    import java.util.InputMismatchException;
+    import org.junit.jupiter.api.Assertions;
+    import org.testng.annotations.Test;
+import com.baeldung.multinput.MultiInputs;
 public class TestMultipleInputsUnitTest {
     @Test
     public void givenMultipleInputs_whenUsingSpaceDelimiter_thenExpectPrintingOutputs() {
         String input = "10 20\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        MultipleInputs mi = new MultipleInputs();
+        MultiInputs mi = new MultiInputs();
         mi.UsingSpaceDelimiter();
         // You can add assertions here to verify the behavior of the method
     }
@@ -22,7 +21,7 @@ public class TestMultipleInputsUnitTest {
         String input = "30, 40\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        MultipleInputs mi = new MultipleInputs();
+        MultiInputs mi = new MultiInputs();
         mi.UsingREDelimiter();
         // You can add assertions here to verify the behavior of the method
     }
@@ -32,7 +31,7 @@ public class TestMultipleInputsUnitTest {
         String input = "50; 60\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        MultipleInputs mi = new MultipleInputs();
+        MultiInputs mi = new MultiInputs();
         mi.UsingCustomDelimiter();
         // You can add assertions here to verify the behavior of the method
     }
@@ -42,7 +41,7 @@ public class TestMultipleInputsUnitTest {
         String input = "abc\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        MultipleInputs mi = new MultipleInputs();
+        MultiInputs mi = new MultiInputs();
         Assertions.assertThrows(InputMismatchException.class, mi::UsingSpaceDelimiter);
     }
 }
