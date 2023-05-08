@@ -1,6 +1,5 @@
 package com.baeldung.springvault;
 
-import com.baeldung.springvault.SpringVaultApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
