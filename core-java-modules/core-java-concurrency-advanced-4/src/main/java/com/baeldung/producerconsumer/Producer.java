@@ -37,13 +37,17 @@ public class Producer implements Runnable {
     }
 
     private Message generateMessage() {
-        Message message = new Message(++idSequence, Math.random());
+        Message message = new Message(incrementAndGetId(), Math.random());
         System.out.printf("[%s] Generated Message. Id: %d, Data: %f%n", Thread.currentThread().getName(), message.getId(), message.getData());
 
         //Sleeping on random time to make it realistic
         ThreadUtil.sleep((long) (message.getData() * 100));
 
         return message;
+    }
+
+    private static int incrementAndGetId() {
+        return ++idSequence;
     }
 
     public void stop() {
