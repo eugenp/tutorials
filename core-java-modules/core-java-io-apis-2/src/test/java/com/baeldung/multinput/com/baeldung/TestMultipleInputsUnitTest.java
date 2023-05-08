@@ -2,9 +2,10 @@ package com.baeldung.multinput.com.baeldung;
     import java.io.ByteArrayInputStream;
     import java.io.InputStream;
     import java.util.InputMismatchException;
-    import org.junit.Test;
 import com.baeldung.MultiInputs;
     import org.junit.jupiter.api.Assertions;
+    import org.testng.annotations.Test;
+
 public class TestMultipleInputsUnitTest {
     @Test
     public void givenMultipleInputs_whenUsingSpaceDelimiter_thenExpectPrintingOutputs() {
