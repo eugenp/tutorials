@@ -16,7 +16,7 @@ public class Producer implements Runnable {
 
     public void produce() {
         while (dataQueue.runFlag) {
-            synchronized (this) {
+            synchronized (dataQueue) {
                 while (dataQueue.isFull() && dataQueue.runFlag) {
                     try {
                         dataQueue.waitOnFull();

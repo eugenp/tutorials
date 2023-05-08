@@ -14,7 +14,7 @@ public class Consumer implements Runnable {
 
     public void consume() {
         while (dataQueue.runFlag) {
-            synchronized (this) {
+            synchronized (dataQueue) {
                 while (dataQueue.isEmpty() && dataQueue.runFlag) {
                     try {
                         dataQueue.waitOnEmpty();
