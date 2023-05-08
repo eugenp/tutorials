@@ -23,7 +23,7 @@ public class CampusServiceImpl implements CampusService {
 
     @Override
     public Campus find(String id) {
-        return repo.findOne(id);
+        return repo.findById(id).orElseGet(null);
     }
 
     @Override

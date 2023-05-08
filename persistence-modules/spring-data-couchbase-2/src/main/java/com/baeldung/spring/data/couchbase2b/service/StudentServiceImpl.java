@@ -21,11 +21,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public Student findOne(String id) {
-        return repo.findOne(id);
+        return repo.findById(id).orElseGet(null);
     }
 
     public List<Student> findAll() {
-        List<Student> people = new ArrayList<Student>();
+        List<Student> people = new ArrayList<>();
         Iterator<Student> it = repo.findAll().iterator();
         while (it.hasNext()) {
             people.add(it.next());

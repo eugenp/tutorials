@@ -21,11 +21,11 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public Person findOne(String id) {
-        return repo.findOne(id);
+        return repo.findById(id).orElseGet(null);
     }
 
     public List<Person> findAll() {
-        List<Person> people = new ArrayList<Person>();
+        List<Person> people = new ArrayList<>();
         Iterator<Person> it = repo.findAll().iterator();
         while (it.hasNext()) {
             people.add(it.next());
