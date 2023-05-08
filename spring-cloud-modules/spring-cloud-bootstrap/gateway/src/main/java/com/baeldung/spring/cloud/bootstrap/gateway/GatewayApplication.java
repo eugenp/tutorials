@@ -20,8 +20,10 @@ public class GatewayApplication {
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
             .route(p -> p.path("/book-service/**")
+                .filters(f -> f.stripPrefix(1))
                 .uri("lb://book-service"))
             .route(p -> p.host("/rating-service/**")
+                .filters(f -> f.stripPrefix(1))
                 .uri("lb://rating-service"))
             .build();
     }
