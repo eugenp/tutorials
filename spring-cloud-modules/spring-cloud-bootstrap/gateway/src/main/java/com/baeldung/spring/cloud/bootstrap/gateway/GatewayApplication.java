@@ -20,9 +20,9 @@ public class GatewayApplication {
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
             .route(p -> p.path("/book-service/**")
-                .uri("http://book-service"))
+                .uri("lb://book-service"))
             .route(p -> p.host("/rating-service/**")
-                .uri("http://rating-service"))
+                .uri("lb://rating-service"))
             .build();
     }
 }
