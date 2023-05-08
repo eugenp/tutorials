@@ -1,4 +1,4 @@
-package com.baeldung.absolutetorelative;
+package baeldung.absolutetorelative;
 
 import java.net.URI;
 import java.nio.file.Path;

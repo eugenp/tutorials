@@ -1,4 +1,4 @@
-package com.baeldung.scanner;
+package baeldung.scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

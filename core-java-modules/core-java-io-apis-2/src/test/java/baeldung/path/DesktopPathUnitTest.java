@@ -1,4 +1,4 @@
-package com.baeldung.path;
+package baeldung.path;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package com.baeldung.bufferedreadervsfilereader;
+package baeldung.bufferedreadervsfilereader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
