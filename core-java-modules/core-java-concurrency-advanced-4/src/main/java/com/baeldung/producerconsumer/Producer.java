@@ -1,6 +1,9 @@
 package com.baeldung.producerconsumer;
 
+import java.util.logging.Logger;
+
 public class Producer implements Runnable {
+    private static final Logger log = Logger.getLogger(Producer.class.getCanonicalName());
     private final DataQueue dataQueue;
 
     private static int idSequence = 0;
@@ -33,12 +36,13 @@ public class Producer implements Runnable {
                 dataQueue.notifyAllForEmpty();
             }
         }
-        System.out.println("Producer Stopped");
+        log.info("Producer Stopped");
     }
 
     private Message generateMessage() {
         Message message = new Message(incrementAndGetId(), Math.random());
-        System.out.printf("[%s] Generated Message. Id: %d, Data: %f%n", Thread.currentThread().getName(), message.getId(), message.getData());
+        log.info(String.format("[%s] Generated Message. Id: %d, Data: %f%n",
+            Thread.currentThread().getName(), message.getId(), message.getData()));
 
         //Sleeping on random time to make it realistic
         ThreadUtil.sleep((long) (message.getData() * 100));
