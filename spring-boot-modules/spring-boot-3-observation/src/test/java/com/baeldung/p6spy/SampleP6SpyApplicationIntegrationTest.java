@@ -30,17 +30,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class SampleP6SpyApplicationUnitTest {
+class SampleP6SpyApplicationIntegrationTest {
 
     @Autowired
     private DataSource dataSource;
 
     @Test
-    void contextLoads() {
+    void whenP6SpyEnabled_datasourceIsDecorated() {
         assertThat(dataSource).isInstanceOf(DecoratedDataSource.class);
+    }
 
+    @Test
+    void whenP6SpyEnabled_decoratingChainContainsP6Spy() {
         DecoratedDataSource decoratedDataSource = (DecoratedDataSource) dataSource;
-
         assertThat(decoratedDataSource.getDecoratingChain().get(0).getDataSourceDecorator()).isInstanceOf(P6SpyDataSourceDecorator.class);
     }
+
 }

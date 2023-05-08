@@ -16,6 +16,7 @@
 
 package com.baeldung.p6spy;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,25 +27,27 @@ import org.springframework.web.client.RestTemplate;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class JDBCControllerUnitTest {
+class JDBCControllerIntegrationTest {
 
+    private final RestTemplate restTemplate = new RestTemplate();
     @Value("http://localhost:${local.server.port}/jdbc")
     private String localhost;
 
-    private RestTemplate restTemplate = new RestTemplate();
-
     @Test
-    void select() {
-        restTemplate.getForEntity(localhost + "/commit", String.class);
+    void testJdbcCommitRESTMethod_isSuccessful() {
+        Assertions.assertTrue(restTemplate.getForEntity(localhost + "/commit", String.class)
+                .getStatusCode().is2xxSuccessful());
     }
 
     @Test
-    void rollback() {
-        restTemplate.getForEntity(localhost + "/rollback", String.class);
+    void jdbcRollbackRESTMethod_isSuccessful() {
+        Assertions.assertTrue(restTemplate.getForEntity(localhost + "/rollback", String.class)
+                .getStatusCode().is2xxSuccessful());
     }
 
     @Test
-    void error() {
-        restTemplate.getForEntity(localhost + "/query-error", String.class);
+    void jdbcQueryErrorRESTMethod_isSuccessful() {
+        Assertions.assertTrue(restTemplate.getForEntity(localhost + "/query-error", String.class)
+                .getStatusCode().is2xxSuccessful());
     }
 }
