@@ -115,6 +115,24 @@
             <artifactId>mysql</artifactId>
             <version>${testcontainers-version}</version>
         </dependency>
+        <!-- flexypool -->
+        <dependency>
+            <groupId>com.vladmihalcea.flexy-pool</groupId>
+            <artifactId>flexy-micrometer-metrics</artifactId>
+            <version>${flexy-pool.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vladmihalcea.flexy-pool</groupId>
+            <artifactId>flexy-hikaricp</artifactId>
+            <version>${flexy-pool.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vladmihalcea.flexy-pool</groupId>
+                    <artifactId>flexy-dropwizard-metrics</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- Spring Core dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -147,6 +165,7 @@
         <plugins>
             <!-- Reladomo -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>${maven-antrun-plugin.version}</version>
                 <executions>
@@ -284,6 +303,7 @@
         <HikariCP.version>5.0.1</HikariCP.version>
         <ebean.version>13.15.2</ebean.version>
         <debezium.version>2.1.3.Final</debezium.version>
+        <flexy-pool.version>2.2.3</flexy-pool.version>
         <testcontainers-version>1.17.6</testcontainers-version>
     </properties>
 

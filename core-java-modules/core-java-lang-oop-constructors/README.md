@@ -13,4 +13,4 @@ This module contains article about constructors in Java
 - [Constructor Specification in Java](https://www.baeldung.com/java-constructor-specification)
 - [Static vs. Instance Initializer Block in Java](https://www.baeldung.com/java-static-instance-initializer-blocks)
 - [Accessing Private Constructor in Java](https://www.baeldung.com/java-private-constructor-access)
-- [Different Ways to Create an Object in Java](https://www.baeldung.com/java-different-ways-to-create-objects)
+- More articles: [[next -->]](/core-java-modules/core-java-lang-oop-constructors-2)
