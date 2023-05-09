@@ -1,5 +1,12 @@
 package com.baeldung.produceimage.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamResource;
@@ -10,13 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Controller
 public class DataProducerController {
@@ -42,12 +42,10 @@ public class DataProducerController {
     @ResponseBody
     public ResponseEntity<InputStreamResource> getImageDynamicType(@RequestParam("jpg") boolean jpg) {
         final MediaType contentType = jpg ? MediaType.IMAGE_JPEG : MediaType.IMAGE_PNG;
-        final InputStream in = jpg ?
-                getClass().getResourceAsStream("/com/baeldung/produceimage/image.jpg") :
-                getClass().getResourceAsStream("/com/baeldung/produceimage/image.png");
+        final InputStream in = jpg ? getClass().getResourceAsStream("/com/baeldung/produceimage/image.jpg") : getClass().getResourceAsStream("/com/baeldung/produceimage/image.png");
         return ResponseEntity.ok()
-                .contentType(contentType)
-                .body(new InputStreamResource(in));
+          .contentType(contentType)
+          .body(new InputStreamResource(in));
     }
 
     @GetMapping(value = "/get-file", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
@@ -58,7 +56,8 @@ public class DataProducerController {
 
     @GetMapping(value = "/get-file-via-byte-array-resource", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody Resource getFileViaByteArrayResource() throws IOException, URISyntaxException {
-        Path path = Paths.get(getClass().getResource("/com/baeldung/produceimage/data.txt").toURI());
+        Path path = Paths.get(getClass().getResource("/com/baeldung/produceimage/data.txt")
+          .toURI());
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
         return resource;
     }
