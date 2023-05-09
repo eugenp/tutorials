@@ -936,6 +936,7 @@
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
                 <module>web-modules/javax-servlets</module>
+                <module>web-modules/javax-servlets-2</module>
             </modules>
 
             <properties>
@@ -1189,6 +1190,7 @@
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
                 <module>web-modules/javax-servlets</module>
+                <module>web-modules/javax-servlets-2</module>
             </modules>
 
             <properties>
