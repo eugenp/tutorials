@@ -62,10 +62,13 @@
         </dependency>
     </dependencies>
 
+
     <properties>
         <spring.vault.core.version>3.0.2</spring.vault.core.version>
         <spring-boot.version>3.0.0</spring-boot.version>
         <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>
