@@ -456,7 +456,6 @@
                 <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
@@ -672,7 +671,6 @@
                 <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
@@ -1018,6 +1016,7 @@
 
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
+				<module>spring-vault</module>
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
@@ -1278,6 +1277,7 @@
 
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
+				<module>spring-vault</module>
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
