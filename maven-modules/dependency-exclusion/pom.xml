@@ -19,8 +19,8 @@
     </properties>
 
     <modules>
-        <module>core-java-exclusions</module>
         <module>dummy-surefire-junit47</module>
+        <module>core-java-exclusions</module>
     </modules>
 
     <build>
