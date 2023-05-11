@@ -937,6 +937,7 @@
                 <module>web-modules/apache-tapestry</module>
                 <module>web-modules/javax-servlets</module>
                 <module>web-modules/javax-servlets-2</module>
+                <module>web-modules/linkrest</module>
             </modules>
 
             <properties>
@@ -1191,6 +1192,7 @@
                 <module>web-modules/apache-tapestry</module>
                 <module>web-modules/javax-servlets</module>
                 <module>web-modules/javax-servlets-2</module>
+                <module>web-modules/linkrest</module>
             </modules>
 
             <properties>
