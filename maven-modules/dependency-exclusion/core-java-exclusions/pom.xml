@@ -19,6 +19,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -37,14 +38,15 @@
                         </property>
                     </properties>
                 </configuration>
-                <dependencies>
+                <!-- Activate this for understanding the article only -->
+                <!-- <dependencies>
                     <dependency>
-                        <!-- Deactivate JUnit 4.7 engine by overriding it with an empty dummy -->
+                        Deactivate JUnit 4.7 engine by overriding it with an empty dummy
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-junit47</artifactId>
                         <version>dummy</version>
                     </dependency>
-                </dependencies>
+                </dependencies> -->
             </plugin>
         </plugins>
     </build>
