@@ -3,3 +3,4 @@
 - [Validating URL in Java](https://www.baeldung.com/java-validate-url)
 - [Validating IPv4 Address in Java](https://www.baeldung.com/java-validate-ipv4-address)
 - [Download a Webpage in Java](https://www.baeldung.com/java-download-webpage)
+- [URL Query Manipulation in Java](https://www.baeldung.com/java-url-query-manipulation)

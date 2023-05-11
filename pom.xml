@@ -222,6 +222,9 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -358,6 +361,7 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
                 <module>web-modules</module>
+
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
@@ -532,6 +536,7 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
                 <module>web-modules</module>
+
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
             </modules>
 
@@ -910,6 +915,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
+                <module>web-modules/apache-tapestry</module>
             </modules>
 
             <properties>
@@ -1161,6 +1167,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
+                <module>web-modules/apache-tapestry</module>
             </modules>
 
             <properties>
@@ -1232,7 +1239,7 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>

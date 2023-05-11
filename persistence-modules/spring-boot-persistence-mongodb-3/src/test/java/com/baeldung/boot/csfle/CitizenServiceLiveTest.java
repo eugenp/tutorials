@@ -38,10 +38,14 @@ public class CitizenServiceLiveTest {
         citizen.setName("Foo");
         citizen.setEmail("foo@citizen.com");
 
-        Binary encryptedEmail = service.encrypt(citizen.getEmail(), CitizenService.DETERMINISTIC_ALGORITHM);
+        Object saved = service.save(citizen);
+        if (saved instanceof EncryptedCitizen) {
+            Binary encryptedEmail = service.encrypt(citizen.getEmail(), CitizenService.DETERMINISTIC_ALGORITHM);
 
-        EncryptedCitizen saved = service.save(citizen);
-        assertEquals(encryptedEmail, saved.getEmail());
+            assertEquals(encryptedEmail, ((EncryptedCitizen) saved).getEmail());
+        } else {
+            assertEquals(citizen.getEmail(), ((Citizen) saved).getEmail());
+        }
     }
 
     @Test

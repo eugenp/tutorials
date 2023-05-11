@@ -11,3 +11,5 @@ This module contains articles about database-related data processing libraries.
 - [Introduction to HikariCP](https://www.baeldung.com/hikaricp)
 - [Guide to Ebean ORM](https://www.baeldung.com/ebean-orm)
 - [Introduction to Debezium](https://www.baeldung.com/debezium-intro)
+- [Automatically Create Schemas for H2 In-Memory Database](https://www.baeldung.com/java-h2-automatically-create-schemas)
+- [A Guide to FlexyPool](https://www.baeldung.com/spring-flexypool-guide)

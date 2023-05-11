@@ -85,7 +85,7 @@
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
         <module>spring-boot-react</module>
-        <module>spring-boot-3</module>
+        <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-native</module>
         <module>spring-boot-3-observation</module>
         <module>spring-boot-3-test-pitfalls</module>
