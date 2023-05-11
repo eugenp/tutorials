@@ -6,4 +6,10 @@
     <groupId>org.apache.maven.surefire</groupId>
     <artifactId>surefire-junit47</artifactId>
     <version>dummy</version>
+
+    <parent>
+        <groupId>com.baeldung.dependency-exclusion</groupId>
+        <artifactId>dependency-exclusion</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 </project>

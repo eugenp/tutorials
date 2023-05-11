@@ -20,12 +20,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-junit47</artifactId>
-            <version>dummy</version>
-        </dependency>
-
     </dependencies>
 
     <build>
