@@ -5,8 +5,9 @@ import com.baeldung.batch.service.*;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -15,27 +16,21 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.batch.item.xml.StaxEventItemWriter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.WritableResource;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-
-import java.text.ParseException;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableBatchProcessing
 @Profile("spring-boot")
 public class SpringBootBatchConfig {
-    @Autowired
-    private JobBuilderFactory jobBuilderFactory;
-
-    @Autowired
-    private StepBuilderFactory stepBuilderFactory;
 
     @Value("input/record.csv")
     private Resource inputCsv;
@@ -44,9 +39,9 @@ public class SpringBootBatchConfig {
     private Resource invalidInputCsv;
 
     @Value("file:xml/output.xml")
-    private Resource outputXml;
+    private WritableResource outputXml;
 
-    public ItemReader<Transaction> itemReader(Resource inputData) throws UnexpectedInputException, ParseException {
+    public ItemReader<Transaction> itemReader(Resource inputData) throws UnexpectedInputException {
         FlatFileItemReader<Transaction> reader = new FlatFileItemReader<>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         String[] tokens = {"username", "userid", "transactiondate", "amount"};
@@ -86,11 +81,10 @@ public class SpringBootBatchConfig {
         return marshaller3;
     }
 
-    @Bean
-    protected Step step1(@Qualifier("itemProcessor") ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> itemWriter3) throws ParseException {
-        return stepBuilderFactory
-                .get("step1")
-                .<Transaction, Transaction> chunk(10)
+    @Bean(name = "step1")
+    protected Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager, @Qualifier("itemProcessor") ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> itemWriter3) {
+        return new StepBuilder("step1", jobRepository)
+                .<Transaction, Transaction> chunk(10, transactionManager)
                 .reader(itemReader(inputCsv))
                 .processor(processor)
                 .writer(itemWriter3)
@@ -98,16 +92,15 @@ public class SpringBootBatchConfig {
     }
 
     @Bean(name = "firstBatchJob")
-    public Job job(@Qualifier("step1") Step step1) {
-        return jobBuilderFactory.get("firstBatchJob").start(step1).build();
+    public Job job(@Qualifier("step1") Step step1, JobRepository jobRepository) {
+        return new JobBuilder("firstBatchJob", jobRepository).start(step1).build();
     }
 
     @Bean
-    public Step skippingStep(@Qualifier("skippingItemProcessor") ItemProcessor<Transaction, Transaction> processor,
-                             ItemWriter<Transaction> itemWriter3) throws ParseException {
-        return stepBuilderFactory
-                .get("skippingStep")
-                .<Transaction, Transaction>chunk(10)
+    public Step skippingStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, @Qualifier("skippingItemProcessor") ItemProcessor<Transaction, Transaction> processor,
+                             ItemWriter<Transaction> itemWriter3) {
+        return new StepBuilder("skippingStep", jobRepository)
+                .<Transaction, Transaction>chunk(10, transactionManager)
                 .reader(itemReader(invalidInputCsv))
                 .processor(processor)
                 .writer(itemWriter3)
@@ -119,19 +112,17 @@ public class SpringBootBatchConfig {
     }
 
     @Bean(name = "skippingBatchJob")
-    public Job skippingJob(@Qualifier("skippingStep") Step skippingStep) {
-        return jobBuilderFactory
-                .get("skippingBatchJob")
+    public Job skippingJob(JobRepository jobRepository, @Qualifier("skippingStep") Step skippingStep) {
+        return new JobBuilder("skippingBatchJob", jobRepository)
                 .start(skippingStep)
                 .build();
     }
 
-    @Bean
-    public Step skipPolicyStep(@Qualifier("skippingItemProcessor") ItemProcessor<Transaction, Transaction> processor,
-                               ItemWriter<Transaction> itemWriter3) throws ParseException {
-        return stepBuilderFactory
-                .get("skipPolicyStep")
-                .<Transaction, Transaction>chunk(10)
+    @Bean(name = "skipPolicyStep")
+    public Step skipPolicyStep(JobRepository jobRepository, PlatformTransactionManager transactionManager, @Qualifier("skippingItemProcessor") ItemProcessor<Transaction, Transaction> processor,
+                               ItemWriter<Transaction> itemWriter3) {
+        return new StepBuilder("skipPolicyStep", jobRepository)
+                .<Transaction, Transaction>chunk(10, transactionManager)
                 .reader(itemReader(invalidInputCsv))
                 .processor(processor)
                 .writer(itemWriter3)
@@ -141,11 +132,9 @@ public class SpringBootBatchConfig {
     }
 
     @Bean(name = "skipPolicyBatchJob")
-    public Job skipPolicyBatchJob(@Qualifier("skipPolicyStep") Step skipPolicyStep) {
-        return jobBuilderFactory
-                .get("skipPolicyBatchJob")
+    public Job skipPolicyBatchJob(JobRepository jobRepository, @Qualifier("skipPolicyStep") Step skipPolicyStep) {
+        return new JobBuilder("skipPolicyBatchJob", jobRepository)
                 .start(skipPolicyStep)
                 .build();
     }
-
 }

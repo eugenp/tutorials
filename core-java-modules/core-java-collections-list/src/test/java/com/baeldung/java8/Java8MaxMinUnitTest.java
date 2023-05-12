@@ -6,6 +6,7 @@ import com.baeldung.java_8_features.Person;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -70,5 +71,18 @@ public class Java8MaxMinUnitTest {
             .orElseThrow(NoSuchElementException::new);
 
         assertEquals(bugatti, maxBySpeed);
+    }
+
+    @Test
+    public void givenIntegerList_whenGetMinAndIndex_thenSuccess() {
+        final List<Integer> listOfIntegers = Arrays.asList(11, 13, 9, 20, 7, 3, 30);
+        final Integer expectedMinValue = 3;
+        final Integer expectedMinIndex = 5;
+
+        Integer minValue = Collections.min(listOfIntegers);
+        Integer minIndex = listOfIntegers.indexOf(minValue);
+
+        assertEquals(minValue, expectedMinValue);
+        assertEquals(minIndex, expectedMinIndex);
     }
 }

@@ -9,7 +9,7 @@ processors:
 
 exporters:
   logging:
-    logLevel: debug
+    loglevel: debug
   jaeger:
     endpoint: jaeger-service:14250
     tls:

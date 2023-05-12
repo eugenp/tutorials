@@ -1,7 +1,7 @@
 package com.baeldung.hibernate.entitymanager.getreference;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Game {

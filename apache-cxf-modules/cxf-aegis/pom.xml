@@ -20,4 +20,8 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <cxf.version>4.0.0</cxf.version>
+    </properties>
+
 </project>

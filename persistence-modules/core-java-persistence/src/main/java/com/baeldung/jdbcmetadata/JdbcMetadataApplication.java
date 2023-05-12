@@ -1,12 +1,13 @@
 package com.baeldung.jdbcmetadata;
 
-import org.apache.log4j.Logger;
-
 import java.sql.SQLException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JdbcMetadataApplication {
 
-    private static final Logger LOG = Logger.getLogger(JdbcMetadataApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JdbcMetadataApplication.class);
 
     public static void main(String[] args) {
         DatabaseConfig databaseConfig = new DatabaseConfig();
