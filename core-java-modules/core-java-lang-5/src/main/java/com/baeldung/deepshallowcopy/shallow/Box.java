@@ -4,12 +4,11 @@ public class Box implements Cloneable {
     public String[] smallerBoxes;
 
     @Override
-    public Box clone() {
+    public Box clone() { // Note: that the clone() method in Java is protected. For testing purposes, we have overridden this method.
         try {
-            // This automatically creates a shallow copy
             return (Box) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new AssertionError(); // Can't happen
+            throw new AssertionError();
         }
     }
 }
