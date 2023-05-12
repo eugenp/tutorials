@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.pojo.inheritance;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Car extends Vehicle {

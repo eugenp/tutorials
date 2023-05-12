@@ -1,8 +1,11 @@
 package com.baeldung.hibernate.pojo;
 
 import org.hibernate.annotations.Any;
+import org.hibernate.annotations.AnyDiscriminator;
+import org.hibernate.annotations.AnyDiscriminatorValue;
+import org.hibernate.annotations.AnyKeyJavaClass;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -14,10 +17,12 @@ public class EntityDescription implements Serializable {
 
     private String description;
 
-    @Any(
-            metaDef = "EntityDescriptionMetaDef",
-            metaColumn = @Column(name = "entity_type")
-    )
+    @Any
+    @AnyDiscriminator(DiscriminatorType.STRING)
+    @AnyDiscriminatorValue(discriminator = "S", entity = Employee.class)
+    @AnyDiscriminatorValue(discriminator = "I", entity = Phone.class)
+    @AnyKeyJavaClass(Integer.class)
+    @Column(name = "entity_type")
     @JoinColumn(name = "entity_id")
     private Serializable entity;
 
