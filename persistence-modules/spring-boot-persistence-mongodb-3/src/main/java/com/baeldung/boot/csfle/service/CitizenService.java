@@ -1,11 +1,13 @@
 package com.baeldung.boot.csfle.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bson.BsonBinary;
 import org.bson.BsonInt32;
 import org.bson.BsonString;
 import org.bson.BsonValue;
+import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -16,6 +18,7 @@ import com.baeldung.boot.csfle.config.EncryptionConfig;
 import com.baeldung.boot.csfle.data.Citizen;
 import com.baeldung.boot.csfle.data.EncryptedCitizen;
 import com.mongodb.client.model.vault.EncryptOptions;
+import com.mongodb.client.vault.ClientEncryption;
 
 @Service
 public class CitizenService {
@@ -29,6 +32,9 @@ public class CitizenService {
     @Autowired
     private EncryptionConfig encryptionConfig;
 
+    @Autowired
+    private ClientEncryption clientEncryption;
+
     public EncryptedCitizen save(Citizen citizen) {
         EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen);
         encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
@@ -38,26 +44,73 @@ public class CitizenService {
     }
 
     public List<Citizen> findAll() {
-        return mongo.findAll(Citizen.class);
+        if (!encryptionConfig.getAutoDecryption()) {
+            List<EncryptedCitizen> allEncrypted = mongo.findAll(EncryptedCitizen.class);
+
+            return allEncrypted.stream()
+                .map(this::decrypt)
+                .collect(Collectors.toList());
+        } else {
+            return mongo.findAll(Citizen.class);
+        }
     }
 
     public Citizen findByEmail(String email) {
         Query byEmail = new Query(Criteria.where("email")
             .is(encrypt(email, DETERMINISTIC_ALGORITHM)));
-        return mongo.findOne(byEmail, Citizen.class);
+        if (!encryptionConfig.getAutoDecryption()) {
+            EncryptedCitizen encryptedCitizen = mongo.findOne(byEmail, EncryptedCitizen.class);
+            return decrypt(encryptedCitizen);
+        } else {
+            return mongo.findOne(byEmail, Citizen.class);
+        }
     }
 
-    public BsonBinary encrypt(Object value, String algorithm) {
+    public Binary encrypt(Object value, String algorithm) {
         if (value == null)
             return null;
 
-        BsonValue bsonValue = value instanceof Integer 
-            ? new BsonInt32((Integer) value) 
-            : new BsonString(value.toString());
+        BsonValue bsonValue;
+        if (value instanceof Integer) {
+            bsonValue = new BsonInt32((Integer) value);
+        } else if (value instanceof String) {
+            bsonValue = new BsonString((String) value);
+        } else {
+            throw new IllegalArgumentException("unsupported type: " + value.getClass());
+        }
 
         EncryptOptions options = new EncryptOptions(algorithm);
         options.keyId(encryptionConfig.getDataKeyId());
-        return encryptionConfig.getEncryption()
-            .encrypt(bsonValue, options);
+
+        BsonBinary encryptedValue = clientEncryption.encrypt(bsonValue, options);
+        return new Binary(encryptedValue.getType(), encryptedValue.getData());
+    }
+
+    public BsonValue decryptProperty(Binary value) {
+        if (value == null)
+            return null;
+
+        return clientEncryption.decrypt(new BsonBinary(value.getType(), value.getData()));
+    }
+
+    private Citizen decrypt(EncryptedCitizen encrypted) {
+        if (encrypted == null)
+            return null;
+
+        Citizen citizen = new Citizen(encrypted);
+
+        BsonValue decryptedBirthYear = decryptProperty(encrypted.getBirthYear());
+        if (decryptedBirthYear != null) {
+            citizen.setBirthYear(decryptedBirthYear.asInt32()
+                .intValue());
+        }
+
+        BsonValue decryptedEmail = decryptProperty(encrypted.getEmail());
+        if (decryptedEmail != null) {
+            citizen.setEmail(decryptedEmail.asString()
+                .getValue());
+        }
+
+        return citizen;
     }
 }

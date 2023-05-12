@@ -39,12 +39,19 @@
             <artifactId>gt-swing</artifactId>
             <version>${geotools-swing.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.19.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
-        <geotools.version>15.2</geotools.version>
-        <geotools-swing.version>15.2</geotools-swing.version>
-        <geotools-shapefile.version>15.2</geotools-shapefile.version>
+        <geotools.version>28.1</geotools.version>
+        <geotools-swing.version>28.1</geotools-swing.version>
+        <geotools-shapefile.version>28.1</geotools-shapefile.version>
     </properties>
 
 </project>

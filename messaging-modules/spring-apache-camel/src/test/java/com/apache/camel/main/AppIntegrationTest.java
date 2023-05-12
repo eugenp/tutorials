@@ -1,6 +1,6 @@
 package com.apache.camel.main;
 
-import com.baeldung.camel.main.App;
+import com.baeldung.camel.apache.main.App;
 import junit.framework.TestCase;
 import org.apache.camel.util.FileUtil;
 import org.junit.After;

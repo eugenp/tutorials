@@ -1,18 +1,18 @@
 package com.baeldung.counter;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.counter.CounterUtil.MutableInteger;
 
-public class CounterUnitTest {
+class CounterUnitTest {
 
     @Test
-    public void whenMapWithWrapperAsCounter_runsSuccessfully() {
+    void whenMapWithWrapperAsCounter_runsSuccessfully() {
         Map<String, Integer> counterMap = new HashMap<>();
         CounterUtil.counterWithWrapperObject(counterMap);
 
@@ -23,7 +23,7 @@ public class CounterUnitTest {
     }
 
     @Test
-    public void whenMapWithLambdaAndWrapperCounter_runsSuccessfully() {
+    void whenMapWithLambdaAndWrapperCounter_runsSuccessfully() {
         Map<String, Long> counterMap = new HashMap<>();
         CounterUtil.counterWithLambdaAndWrapper(counterMap);
 
@@ -34,7 +34,7 @@ public class CounterUnitTest {
     }
 
     @Test
-    public void whenMapWithMutableIntegerCounter_runsSuccessfully() {
+    void whenMapWithMutableIntegerCounter_runsSuccessfully() {
         Map<String, MutableInteger> counterMap = new HashMap<>();
         CounterUtil.counterWithMutableInteger(counterMap);
         assertEquals(3, counterMap.get("China")
@@ -44,7 +44,7 @@ public class CounterUnitTest {
     }
 
     @Test
-    public void whenMapWithPrimitiveArray_runsSuccessfully() {
+    void whenMapWithPrimitiveArray_runsSuccessfully() {
         Map<String, int[]> counterMap = new HashMap<>();
         CounterUtil.counterWithPrimitiveArray(counterMap);
         assertEquals(3, counterMap.get("China")[0]);

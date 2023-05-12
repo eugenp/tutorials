@@ -1,13 +1,14 @@
 package com.baeldung.algorithms.greedy;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
-public class GreedyAlgorithmUnitTest {
+
+class GreedyAlgorithmUnitTest {
 
     private SocialConnector prepareNetwork() {
         SocialConnector sc = new SocialConnector();
@@ -35,21 +36,21 @@ public class GreedyAlgorithmUnitTest {
     }
 
     @Test
-    public void greedyAlgorithmTest() {
+    void greedyAlgorithmTest() {
         GreedyAlgorithm ga = new GreedyAlgorithm(prepareNetwork());
         assertEquals(ga.findMostFollowersPath("root"), 5);
     }
 
     @Test
-    public void nongreedyAlgorithmTest() {
+    void nongreedyAlgorithmTest() {
         NonGreedyAlgorithm nga = new NonGreedyAlgorithm(prepareNetwork(), 0);
-        Assertions.assertThrows(IllegalStateException.class, () -> {
+        assertThrows(IllegalStateException.class, () -> {
             nga.findMostFollowersPath("root");
           });
     }
 
     @Test
-    public void nongreedyAlgorithmUnboundedTest() {
+    void nongreedyAlgorithmUnboundedTest() {
         SocialConnector sc = prepareNetwork();
         sc.switchCounter();
         NonGreedyAlgorithm nga = new NonGreedyAlgorithm(sc, 0);

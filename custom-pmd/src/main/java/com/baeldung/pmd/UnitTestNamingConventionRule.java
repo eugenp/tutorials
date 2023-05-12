@@ -18,8 +18,9 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
       "UnitTest",
       "jmhTest");
 
+    @Override
     public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
-        String className = node.getImage();
+        String className = node.getSimpleName();
         Objects.requireNonNull(className);
 
         if (className.endsWith("SpringContextTest")) {
