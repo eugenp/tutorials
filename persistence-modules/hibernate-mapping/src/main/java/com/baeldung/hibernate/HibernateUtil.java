@@ -21,6 +21,7 @@ import com.baeldung.hibernate.pojo.inheritance.Animal;
 import com.baeldung.hibernate.pojo.inheritance.Bag;
 import com.baeldung.hibernate.pojo.inheritance.Book;
 import com.baeldung.hibernate.pojo.inheritance.Car;
+import com.baeldung.hibernate.pojo.inheritance.Laptop;
 import com.baeldung.hibernate.pojo.inheritance.MyEmployee;
 import com.baeldung.hibernate.pojo.inheritance.MyProduct;
 import com.baeldung.hibernate.pojo.inheritance.Pen;
@@ -79,6 +80,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
         metadataSources.addAnnotatedClass(Animal.class);
         metadataSources.addAnnotatedClass(Bag.class);
+        metadataSources.addAnnotatedClass(Laptop.class);
         metadataSources.addAnnotatedClass(Book.class);
         metadataSources.addAnnotatedClass(Car.class);
         metadataSources.addAnnotatedClass(MyEmployee.class);
@@ -86,7 +88,6 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Pen.class);
         metadataSources.addAnnotatedClass(Pet.class);
         metadataSources.addAnnotatedClass(Vehicle.class);
-        
 
         Metadata metadata = metadataSources.getMetadataBuilder()
             .build();
