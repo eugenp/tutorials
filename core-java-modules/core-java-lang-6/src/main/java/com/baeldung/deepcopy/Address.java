@@ -1,15 +1,21 @@
-package com.baeldung.deepvsshallowcopy;
+package com.baeldung.deepcopy;
 
-public class AddressShallowCopy {
+public class Address implements Cloneable {
     String street;
     String city;
     String state;
 
-    public AddressShallowCopy(String street, String city, String state)
+    public Address(String street, String city, String state)
     {
         this.street=street;
         this.city=city;
         this.state=state;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
     }
 
     public String getStreet() {

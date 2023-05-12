@@ -1,19 +1,18 @@
-package com.baeldung.deepvsshallowcopy;
-
+package com.baeldung.deepcopy;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class PersonDeepCopyUnitTest {
+class PersonUnitTest {
 
     @Test
     void whenDeepCopying_thenObjectReferencesPointToDifferentMemory(){
 
-        AddressDeepCopy address = new AddressDeepCopy("Kings Circle" , "Mumbai" , "Maharashtra");
-        PersonDeepCopy person1 = new PersonDeepCopy("Adam" , address);
-        PersonDeepCopy person2 = null;
+        Address address = new Address("Kings Circle" , "Mumbai" , "Maharashtra");
+        Person person1 = new Person("Adam" , address);
+        Person person2 = null;
+
         try {
-            person2 = (PersonDeepCopy) person1.clone(); //Creating clone of person1 and assigning to person2
+            person2 = (Person) person1.clone(); //Creating clone of person1 and assigning to person2
         }
         catch(CloneNotSupportedException ce ){
             System.out.println("Error while cloning" + ce );

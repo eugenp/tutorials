@@ -1,10 +1,10 @@
-package com.baeldung.deepvsshallowcopy;
+package com.baeldung.shallowcopy;
 
-public class PersonShallowCopy implements Cloneable{
+public class Person implements Cloneable{
     String name;
-    AddressShallowCopy address;
+    Address address;
 
-    public PersonShallowCopy(String name, AddressShallowCopy address){
+    public Person(String name, Address address){
         this.name=name;
         this.address=address;
     }
@@ -22,11 +22,11 @@ public class PersonShallowCopy implements Cloneable{
         this.name = name;
     }
 
-    public AddressShallowCopy getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress( AddressShallowCopy address) {
+    public void setAddress( Address address) {
         this.address = address;
     }
 }

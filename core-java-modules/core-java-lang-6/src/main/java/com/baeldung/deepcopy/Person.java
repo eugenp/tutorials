@@ -1,10 +1,10 @@
-package com.baeldung.deepvsshallowcopy;
+package com.baeldung.deepcopy;
 
 
-public class PersonDeepCopy implements Cloneable{
+public class Person implements Cloneable{
     String name;
-    AddressDeepCopy address;
-    public PersonDeepCopy(String name, AddressDeepCopy address){
+    Address address;
+    public Person(String name, Address address){
         this.name=name;
         this.address=address;
     }
@@ -13,8 +13,8 @@ public class PersonDeepCopy implements Cloneable{
     @Override
     protected Object clone() throws CloneNotSupportedException
     {
-        PersonDeepCopy person = (PersonDeepCopy) super.clone();
-        person.address = (AddressDeepCopy) address.clone();
+        Person person = (Person) super.clone();
+        person.address = (Address) address.clone();
         return person;
     }
 
@@ -26,11 +26,11 @@ public class PersonDeepCopy implements Cloneable{
         this.name = name;
     }
 
-    public AddressDeepCopy getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDeepCopy address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 }
