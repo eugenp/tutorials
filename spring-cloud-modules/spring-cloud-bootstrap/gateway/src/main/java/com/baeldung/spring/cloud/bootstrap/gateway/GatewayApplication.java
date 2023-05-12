@@ -19,11 +19,11 @@ public class GatewayApplication {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
-            .route(p -> p.path("/book-service/**")
+            .route("book-service-route", p -> p.path("/book-service/**")
                 .filters(f -> f.stripPrefix(1))
                 .uri("lb://book-service"))
-            .route(p -> p.host("/rating-service/**")
-                .filters(f -> f.stripPrefix(1))
+            .route("rating-service-route", p -> p.path("/rating-service/**")
+                .filters(f -> f.rewritePath("/rating-service/(?<remaining>.*)", "/$\\{remaining}"))
                 .uri("lb://rating-service"))
             .build();
     }
