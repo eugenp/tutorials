@@ -58,14 +58,14 @@
         <!-- <module>redis</module> FAILED -->
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
-        <!-- <module>spring-boot-persistence-2</module> FAILED -->
+        <module>spring-boot-persistence-2</module>
         <module>spring-boot-persistence-3</module>
         <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
-        <!-- <module>spring-boot-persistence-mongodb</module>
+        <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
-        <module>spring-boot-persistence-mongodb-3</module> FAILED -->
+        <module>spring-boot-persistence-mongodb-3</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
