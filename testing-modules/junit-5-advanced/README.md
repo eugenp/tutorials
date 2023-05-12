@@ -7,3 +7,4 @@
 - [Run JUnit Test Cases From the Command Line](https://www.baeldung.com/junit-run-from-command-line)
 - [Parallel Test Execution for JUnit 5](https://www.baeldung.com/junit-5-parallel-tests)
 - [JUnit – Testing Methods That Call System.exit()](https://www.baeldung.com/junit-system-exit)
+- [Single Assert Call for Multiple Properties in Java Unit Testing](https://www.baeldung.com/java-testing-single-assert-multiple-properties)

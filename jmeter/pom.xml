@@ -104,6 +104,11 @@
                                 </configuration>
                             </execution>
                         </executions>
+                        <configuration>
+                            <profiles>
+                                <profile>JMeter-Dashboard</profile>
+                            </profiles>
+                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>com.lazerycode.jmeter</groupId>
@@ -131,7 +136,7 @@
                             <resultsDirectory>${project.basedir}/src/main/resources/dashboard</resultsDirectory>
                             <generateReports>true</generateReports>
                             <ignoreResultFailures>true</ignoreResultFailures>
-                            <testResultsTimestamp>false</testResultsTimestamp>
+                            <testResultsTimestamp>true</testResultsTimestamp>
                         </configuration>
                     </plugin>
                     <plugin>

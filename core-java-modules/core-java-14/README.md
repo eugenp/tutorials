@@ -12,3 +12,4 @@ This module contains articles about Java 14.
 - [Java 14 Record Keyword](https://www.baeldung.com/java-record-keyword)
 - [New Features in Java 14](https://www.baeldung.com/java-14-new-features)
 - [Java 14 Record vs. Lombok](https://www.baeldung.com/java-record-vs-lombok)
+- [Record vs. Final Class in Java](https://www.baeldung.com/java-record-vs-final-class)

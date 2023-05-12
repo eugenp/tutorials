@@ -124,7 +124,7 @@ class HttpClientMultipartLiveTest {
         final File file = new File(url2.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        builder.setMode(HttpMultipartMode.STRICT);
+        builder.setMode(HttpMultipartMode.LEGACY);
         builder.addBinaryBody("file", file, ContentType.DEFAULT_BINARY, IMAGEFILENAME);
         builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), ZIPFILENAME);
         builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
@@ -153,7 +153,7 @@ class HttpClientMultipartLiveTest {
         final String message = "This is a multipart post";
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        builder.setMode(HttpMultipartMode.STRICT);
+        builder.setMode(HttpMultipartMode.LEGACY);
         builder.addBinaryBody("file", bytes, ContentType.DEFAULT_BINARY, TEXTFILENAME);
         builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
