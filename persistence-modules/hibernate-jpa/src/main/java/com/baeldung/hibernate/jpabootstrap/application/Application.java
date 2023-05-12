@@ -2,7 +2,7 @@ package com.baeldung.hibernate.jpabootstrap.application;
 
 import com.baeldung.hibernate.jpabootstrap.config.JpaEntityManagerFactory;
 import com.baeldung.hibernate.jpabootstrap.entities.User;
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public class Application {
     
@@ -24,8 +24,7 @@ public class Application {
     }
 
     private static class EntityManagerHolder {
-        private static final EntityManager ENTITY_MANAGER = new JpaEntityManagerFactory(
-          new Class[]{User.class}).getEntityManager();
+        private static final EntityManager ENTITY_MANAGER = new JpaEntityManagerFactory(new Class[]{User.class}).getEntityManager();
     }
     
     public static EntityManager getJpaEntityManager() {

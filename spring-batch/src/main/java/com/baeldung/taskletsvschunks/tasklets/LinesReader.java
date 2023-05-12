@@ -24,7 +24,7 @@ public class LinesReader implements Tasklet, StepExecutionListener {
 
     @Override
     public void beforeStep(StepExecution stepExecution) {
-        lines = new ArrayList<Line>();
+        lines = new ArrayList<>();
         fu = new FileUtils("taskletsvschunks/input/tasklets-vs-chunks.csv");
         logger.debug("Lines Reader initialized.");
     }

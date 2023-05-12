@@ -17,7 +17,7 @@
                     <bean
                         class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
                         <property name="names"
-                            value="username,userid,transaction_date,transaction_amount" />
+                            value="username,userid,transactiondate,amount" />
                     </bean>
                 </property>
                 <property name="fieldSetMapper">
@@ -33,11 +33,11 @@
 
     <bean id="itemWriter" class="org.springframework.batch.item.xml.StaxEventItemWriter">
         <property name="resource" value="file:xml/output.xml" />
-        <property name="marshaller" ref="recordMarshaller" />
+        <property name="marshaller" ref="marshaller" />
         <property name="rootTagName" value="transactionRecord" />
     </bean>
 
-    <bean id="recordMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+    <bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
                 <value>com.baeldung.batch.model.Transaction</value>

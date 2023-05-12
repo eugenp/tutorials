@@ -23,7 +23,7 @@
     </dependencies>
 
     <properties>
-        <rulebook.version>0.6.2</rulebook.version>
+        <rulebook.version>0.12</rulebook.version>
     </properties>
 
 </project>
