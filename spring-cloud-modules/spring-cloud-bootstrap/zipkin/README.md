@@ -11,7 +11,7 @@ $ docker compose up -d
 
 After that Zipkin is accessible via [http://localhost:9411](http://localhost:9411)
 
-Alternative, you can run Zipkin Jar file,
+Alternatively, you can run the Zipkin Jar file,
 
 ```bash
 $ curl -sSL https://zipkin.io/quickstart.sh | bash -s
