@@ -26,15 +26,14 @@
         <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
-        <!-- <module>hibernate-mapping</module> FAILED --> <!-- long running -->
+        <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-mapping-2</module>
-        <!-- <module>hibernate-ogm</module> 
-        <module>hibernate-annotations</module> FAILED -->
+        <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
-        <!-- <module>hibernate-queries</module> FAILED -->
-        <!-- <module>hibernate-enterprise</module> FAILED --> 
+        <module>hibernate-queries</module>
+        <module>hibernate-enterprise</module>
         <module>influxdb</module>
         <!-- <module>java-cassandra</module> FAILED -->
         <module>java-cockroachdb</module>
@@ -116,7 +115,7 @@
         <!-- persistence -->
         <hibernate.version>6.2.0.Final</hibernate.version>
         <postgresql.version>42.5.4</postgresql.version>
-        <hsqldb.version>2.3.4</hsqldb.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
         <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
 
