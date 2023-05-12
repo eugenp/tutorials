@@ -54,8 +54,8 @@
         <module>spring-cloud-bus</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud-sleuth</module>
-        <module>spring-cloud-openfeign-2</module>
-	<module>spring-cloud-open-telemetry</module>
+        <module>spring-cloud-open-telemetry</module>
+        <module>spring-cloud-azure</module>
     </modules>
 
     <build>

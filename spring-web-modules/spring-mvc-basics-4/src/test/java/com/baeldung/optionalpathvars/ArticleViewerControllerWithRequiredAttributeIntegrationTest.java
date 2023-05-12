@@ -34,17 +34,16 @@ public class ArticleViewerControllerWithRequiredAttributeIntegrationTest {
         int articleId = 5;
         
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/article/{id}", articleId))
+            .perform(MockMvcRequestBuilders.get("/requiredAttribute/article/{id}", articleId))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(articleId));
-               
     }
 
     @Test
-    public void whenIdPathVariableIsNotPassed_thenResponse500() throws Exception {
+    public void whenIdPathVariableIsNotPassed_thenResponseOK() throws Exception {
         this.mockMvc
-            .perform(MockMvcRequestBuilders.get("/article"))
-            .andExpect(MockMvcResultMatchers.status().isInternalServerError());
+            .perform(MockMvcRequestBuilders.get("/requiredAttribute/article"))
+            .andExpect(MockMvcResultMatchers.status().isOk());
                
     }
 }

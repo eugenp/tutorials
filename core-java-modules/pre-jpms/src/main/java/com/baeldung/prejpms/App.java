@@ -1,18 +1,17 @@
 package com.baeldung.prejpms;
 
 import java.io.StringWriter;
+import java.lang.StackWalker.Option;
+import java.lang.StackWalker.StackFrame;
+import com.sun.crypto.provider.SunJCE;
+import java.util.Base64;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.sun.crypto.provider.SunJCE;
-
-import sun.misc.BASE64Encoder;
-import sun.reflect.Reflection;
 
 public class App {
 
@@ -37,14 +36,14 @@ public class App {
     private static void getCallStackClassNames() {
         try {
             StringBuffer sbStack = new StringBuffer();
-            int i = 0;
-            Class<?> caller = Reflection.getCallerClass(i++);
-            do {
-                sbStack.append(i + ".")
-                    .append(caller.getName())
-                    .append("\n");
-                caller = Reflection.getCallerClass(i++);
-            } while (caller != null);
+            AtomicInteger i = new AtomicInteger(0);
+            StackWalker.getInstance((Option.RETAIN_CLASS_REFERENCE))
+              .walk(s -> s.map(StackFrame::getDeclaringClass)
+                .map(e -> {
+                    i.getAndIncrement();
+                    return e.getName();
+                }))
+              .forEach(name -> sbStack.append(String.format("%d. %s \n", i.get(), name)));
             LOGGER.info("2. Call Stack:\n{}", sbStack);
         } catch (Throwable e) {
             LOGGER.error(e.toString());
@@ -54,7 +53,7 @@ public class App {
     private static void getXmlFromObject(Book book) {
         try {
             Marshaller marshallerObj = JAXBContext.newInstance(Book.class)
-                .createMarshaller();
+              .createMarshaller();
             marshallerObj.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             StringWriter sw = new StringWriter();
@@ -68,7 +67,8 @@ public class App {
 
     private static void getBase64EncodedString(String inputString) {
         try {
-            String encodedString = new BASE64Encoder().encode(inputString.getBytes());
+            String encodedString = new String(Base64.getEncoder()
+              .encode(inputString.getBytes()));
             LOGGER.info("4. Base Encoded String: {}", encodedString);
         } catch (Throwable e) {
             LOGGER.error(e.toString());

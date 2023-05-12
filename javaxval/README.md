@@ -10,4 +10,5 @@ This module contains articles about Bean Validation.
 - [Grouping Javax Validation Constraints](https://www.baeldung.com/javax-validation-groups)
 - [Constraint Composition with Bean Validation](https://www.baeldung.com/java-bean-validation-constraint-composition)
 - [Using @NotNull on a Method Parameter](https://www.baeldung.com/java-notnull-method-parameter)
+- [Difference Between @NotNull, @NotEmpty, and @NotBlank Constraints in Bean Validation](https://www.baeldung.com/java-bean-validation-not-null-empty-blank)
 - More articles: [[next -->]](../javaxval-2)

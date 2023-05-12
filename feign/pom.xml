@@ -3,7 +3,6 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.feign</groupId>
     <artifactId>feign</artifactId>
     <name>feign</name>
 
@@ -70,11 +69,6 @@
             <version>${feign.form.spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>${spring.cloud.openfeign.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
             <version>${wire.mock.version}</version>
@@ -103,7 +97,7 @@
                 <configuration>
                     <packageName>com.baeldung.feign.soap</packageName>
                     <sources>
-                        <source>src/main/resources/users.xsd</source>
+                        <source>${project.basedir}/src/main/resources/users.xsd</source>
                     </sources>
                 </configuration>
             </plugin>

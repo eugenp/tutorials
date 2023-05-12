@@ -6,7 +6,6 @@
     <artifactId>core-java-15</artifactId>
     <name>core-java-15</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>

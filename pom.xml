@@ -222,6 +222,9 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -330,89 +333,41 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-cxf-modules</module>
+                <module>checker-framework</module>
+                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>azure</module>
-                <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio-2</module>
+                <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-collections-conversions-2</module>
+                <module>core-java-modules/core-java-streams-2</module>
 
-                <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
                 <module>couchbase</module>
-
-                <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>apache-httpclient</module>
-                <module>httpclient4</module>
-
-
-                <module>jackson-modules</module>
-
-                <module>javafx</module>
-                <module>java-jdi</module>
-                <module>java-websocket</module>
-
-                <module>jaxb</module>
-                <module>jersey</module>
-                <module>jhipster-5</module>
-                <module>jmeter</module>
-                <module>jmh</module>
-
-                <module>jsf</module>
-                <module>json-modules</module>
-
-                <module>kubernetes-modules</module>
-
+                <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-2</module>
-                <module>libraries-3</module>
-                <module>libraries-data</module>
 
+                <module>libraries-jdk8</module>
 
-                <module>libraries-data-db</module>
-                <module>libraries-security</module>
-                <module>libraries-server-2</module>
-                <module>libraries-testing</module>
-                <module>logging-modules</module>
-                <module>lombok-modules</module>
+                <module>lombok-modules/lombok-custom</module>
 
-                <module>maven-modules</module>
-
-                <module>messaging-modules</module>
-
-                <module>microservices-modules</module>
                 <module>muleesb</module>
 
-
-                <module>netflix-modules</module>
-
-                <module>osgi</module>
-                <module>orika</module>
-
-                <module>patterns-modules</module>
-
-                <module>performance-tests</module>
-                <module>persistence-modules</module>
-
-
-                <module>quarkus-modules</module>
-
-                <module>rule-engines-modules</module>
-                <module>rxjava-modules</module>
-
-                <module>reactive-systems</module>
-                <module>security-modules</module>
-
-                <module>vavr-modules</module>
-                <module>web-modules</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
             </modules>
 
         </profile>
@@ -457,34 +412,15 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
-                <module>server-modules</module>
-                <module>spf4j</module>
                 <module>spring-4</module>
                 <module>spring-aop</module>
-                <module>spring-aop-2</module>
-                <module>spring-batch</module>
-                <module>spring-bom</module>
-                <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-caching</module>
+
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core</module>
-                <module>spring-core-4</module>
-                <module>spring-di</module>
-                <module>spring-di-2</module>
-                <module>spring-drools</module>
-                <module>spring-ejb-modules</module>
 
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
-                <module>spring-jinq</module>
-                <module>spring-katharsis</module>
-                <module>spring-mobile</module>
-                <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
@@ -494,7 +430,6 @@
                 <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
@@ -550,18 +485,7 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
-
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
-                <module>libraries-6</module>
-                <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb-modules/ejb-beans</module>
-
-                <module>vaadin</module>
-                <module>vavr-modules</module>
             </modules>
         </profile>
 
@@ -597,88 +521,39 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>apache-cxf-modules</module>
+                <module>checker-framework</module>
+                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
-                <module>azure</module>
-                <module>checker-plugin</module>
-                <!-- <module>clojure</module> --> <!-- Not a maven project -->
+                <module>core-java-modules/core-java-8</module>
+                <module>core-java-modules/core-java-8-2</module>
+                <module>core-java-modules/core-java-8-datetime</module>
+                <module>core-java-modules/core-java-8-datetime-2</module>
+                <module>core-java-modules/core-java-sun</module>
+                <module>core-java-modules/core-java-security</module>
+                <module>core-java-modules/core-java-nio-2</module>
+                <module>core-java-modules/core-java-serialization</module>
+                <module>core-java-modules/core-java-lang</module>
+                <module>core-java-modules/core-java-lang-math-3</module>
+                <module>core-java-modules/core-java-collections-conversions-2</module>
+                <module>core-java-modules/core-java-streams-2</module>
 
-                <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
                 <module>couchbase</module>
-                <module>drools</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
-
-                <module>guava-modules</module>
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
-                <module>apache-httpclient</module>
-                <module>httpclient4</module>
-
-
-                <module>jackson-modules</module>
-
-                <module>javafx</module>
-                <module>java-jdi</module>
-                <module>java-websocket</module>
-
-                <module>jaxb</module>
-                <module>jersey</module>
-                <module>jhipster-5</module>
-                <module>jmeter</module>
-                <module>jmh</module>
-
-                <module>jsf</module>
-                <module>json-modules</module>
-
-                <module>kubernetes-modules</module>
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
-                <module>libraries-2</module>
-                <module>libraries-3</module>
-                <module>libraries-data</module>
 
+                <module>libraries-jdk8</module>
 
-                <module>libraries-data-db</module>
-                <module>libraries-security</module>
-                <module>libraries-server-2</module>
-                <module>libraries-testing</module>
-                <module>logging-modules</module>
-                <module>lombok-modules</module>
-
-                <module>maven-modules</module>
-
-                <module>messaging-modules</module>
-
-                <module>microservices-modules</module>
+                <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
-
-                <module>netflix-modules</module>
-
-                <module>osgi</module>
-                <module>orika</module>
-
-                <module>patterns-modules</module>
-
-                <module>performance-tests</module>
-                <module>persistence-modules</module>
-
-
-                <module>quarkus-modules</module>
-
-                <module>rule-engines-modules</module>
-                <module>rxjava-modules</module>
-
-                <module>reactive-systems</module>
-                <module>security-modules</module>
-
-                <module>vavr-modules</module>
-                <module>web-modules</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
             </modules>
 
         </profile>
@@ -715,33 +590,14 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
 
-                <module>saas-modules</module>
-                <module>server-modules</module>
-                <module>spf4j</module>
                 <module>spring-4</module>
-                <module>spring-aop</module>
-                <module>spring-aop-2</module>
-                <module>spring-batch</module>
-                <module>spring-bom</module>
-                <module>spring-boot-modules</module>
-                <module>spring-boot-rest</module>
-                <module>spring-caching</module>
+
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <module>spring-core</module>
-                <module>spring-core-4</module>
-                <module>spring-di</module>
-                <module>spring-di-2</module>
-                <module>spring-drools</module>
-                <module>spring-ejb-modules</module>
+
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-                <module>spring-jersey</module>
-                <module>spring-jinq</module>
-                <module>spring-katharsis</module>
-                <module>spring-mobile</module>
-                <module>spring-remoting-modules</module>
 
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
@@ -751,7 +607,6 @@
                 <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
@@ -799,17 +654,7 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jhipster-5</module>
                 <module>jws</module>
-
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-4</module>
-                <module>libraries-5</module>
-                <module>libraries-6</module>
-                <module>spring-boot-modules/spring-boot-react</module>
-                <module>spring-ejb-modules/ejb-beans</module>
-                <module>vaadin</module>
-               <module>vavr-modules</module>
             </modules>
 
         </profile>
@@ -875,6 +720,58 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
+                <module>osgi</module>
+                <module>spring-katharsis</module>
+                <module>logging-modules</module>
+                <module>spring-boot-modules</module>
+                <module>apache-httpclient</module>
+                <module>apache-httpclient4</module>
+                <module>apache-httpclient-2</module>
+                <module>spring-mobile</module>
+                <module>microservices-modules</module>
+                <module>spring-ejb-modules</module>
+                <module>spring-di</module>
+                <module>spring-di-2</module>
+                <module>spring-jinq</module>
+                <module>vavr-modules</module>
+                <module>java-websocket</module>
+                <module>azure</module>
+                <module>netflix-modules</module>
+                <module>spf4j</module>
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
+
+                <module>javafx</module>
+                <module>spring-batch</module>
+                <module>spring-batch-2</module>
+                <module>spring-boot-rest</module>
+                <module>spring-drools</module>
+                <module>spring-exceptions</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
+                <module>libraries-security</module>
+                <module>libraries-data-db</module>
+
+                <module>performance-tests</module>
+                <module>security-modules</module>
+                <module>libraries-server-2</module>
+                <module>orika</module>
+                <module>patterns-modules</module>
+                <module>json-modules</module>
+                <module>libraries-data</module>
+                <module>saas-modules</module>
+                <module>server-modules</module>
+                <module>apache-cxf-modules</module>
+
+                <module>spring-aop</module>
+                <module>jmeter</module>
+                <module>spring-aop-2</module>
+
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -882,15 +779,12 @@
                 <module>di-modules</module>
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
+
+                <module>couchbase</module>
+                <module>core-groovy-modules</module>
+
+                <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -898,53 +792,34 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-list-4</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-collections-maps-5</module>
-                <module>core-java-modules/core-java-concurrency-simple</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-streams-4</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-string-operations-5</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
-				<module>custom-pmd</module>
-                <module>spring-core-6</module>
+                <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
                 <module>docker-modules</module>
-                <module>apache-httpclient-2</module>
-                <module>kubernetes-modules/kubernetes-spring</module>
+                <module>drools</module>
+                <module>guava-modules</module>
+                <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
-                <module>maven-modules/compiler-plugin-java-9</module>
-                <module>maven-modules/maven-generate-war</module>
-                <module>maven-modules/multimodulemavenproject</module>
+                <module>jhipster-6</module>
+                <module>libraries-testing</module>
+                <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-3</module>
-                <module>spring-boot-modules/spring-boot-3-native</module>
-                <module>spring-boot-modules/spring-boot-3-observation</module>
-                <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
+                <module>persistence-modules</module>
+                <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>persistence-modules/spring-data-rest</module>
+
+                <module>rule-engines-modules</module>
+
+                <module>reactive-systems</module>
+                <module>rxjava-modules</module>
+
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
@@ -953,7 +828,6 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
-                <module>apache-httpclient</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -961,23 +835,22 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
+
                 <module>axon</module>
 
                 <module>bazel</module>
-                <module>code-generation</module>
+                <module>google-auto-project</module>
                 <module>ddd</module>
-                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
-                <module>feign</module>
+                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -985,7 +858,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -998,7 +871,14 @@
                 <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
-                <module>libraries-7</module>
+                <module>jsf</module>
+
+                <module>libraries</module> <!-- very long running -->
+                <module>libraries-2</module>
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
+
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1023,7 +903,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>slack</module>
 
 
                 <!--  Modules from default second-->
@@ -1031,17 +910,16 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
-                <module>spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-security-modules/spring-security-oauth2-testing</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -1049,16 +927,30 @@
 
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
+				<module>spring-vault</module>
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>messaging-modules/spring-apache-camel</module>
+                <module>persistence-modules/java-mongodb</module>
+
+                <module>messaging-modules</module>
+
+                <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
+                <module>libraries-3</module>
+                <module>web-modules/apache-tapestry</module>
+                <module>web-modules/blade</module>
+                <module>web-modules/bootique</module>
+                <module>web-modules/dropwizard</module>
+                <module>web-modules/google-web-toolkit</module>
+                <module>web-modules/jakarta-ee</module>
             </modules>
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <java.version>11</java.version>
-                <java.version>11</java.version>
+                <maven.compiler.source>11</maven.compiler.source>
+                <maven.compiler.target>11</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1085,6 +977,54 @@
             </build>
 
             <modules>
+                <module>lombok-modules</module>
+                <module>osgi</module>
+                <module>spring-katharsis</module>
+                <module>logging-modules</module>
+                <module>spring-boot-modules</module>
+                <module>apache-httpclient</module>
+                <module>apache-httpclient4</module>
+                <module>apache-httpclient-2</module>
+                <module>spring-mobile</module>
+                <module>microservices-modules</module>
+                <module>spring-ejb-modules</module>
+                <module>spring-di</module>
+                <module>spring-di-2</module>
+                <module>spring-jinq</module>
+                <module>vavr-modules</module>
+                <module>java-websocket</module>
+                <module>azure</module>
+                <module>netflix-modules</module>
+                <module>spf4j</module>
+                <module>spring-jersey</module>
+                <module>jersey</module>
+                <module>jaxb</module>
+
+                <module>javafx</module>
+                <module>spring-batch</module>
+                <module>spring-batch-2</module>
+                <module>spring-boot-rest</module>
+                <module>spring-drools</module>
+                <module>spring-exceptions</module>
+                <module>spring-jenkins-pipeline</module>
+                <module>spring-core</module>
+                <module>spring-core-4</module>
+                <module>spring-integration</module>
+                <module>spring-remoting-modules</module>
+                <module>libraries-security</module>
+                <module>libraries-data-db</module>
+
+                <module>performance-tests</module>
+                <module>security-modules</module>
+                <module>libraries-server-2</module>
+                <module>orika</module>
+                <module>patterns-modules</module>
+                <module>json-modules</module>
+                <module>libraries-data</module>
+                <module>saas-modules</module>
+                <module>server-modules</module>
+                <module>apache-cxf-modules</module>
+
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
                 <module>apache-poi</module>
@@ -1093,15 +1033,12 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
-                <module>core-java-modules/core-java-9</module>
-                <module>core-java-modules/core-java-9-improvements</module>
-                <module>core-java-modules/core-java-9-jigsaw</module>
+                <module>couchbase</module>
+
+                <module>core-groovy-modules</module>
+
+                <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-9-streams</module>
-                <module>core-java-modules/core-java-10</module>
-                <module>core-java-modules/core-java-11</module>
-                <module>core-java-modules/core-java-11-2</module>
-                <module>core-java-modules/core-java-11-3</module>
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1109,53 +1046,37 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>core-java-modules/core-java-collections-set</module>
-                <module>core-java-modules/core-java-collections-list-4</module>
-                <module>core-java-modules/core-java-collections-array-list</module>
-                <module>core-java-modules/core-java-collections-maps-4</module>
-                <module>core-java-modules/core-java-collections-maps-5</module>
-                <module>core-java-modules/core-java-concurrency-simple</module>
-                <module>core-java-modules/core-java-date-operations-1</module>
-                <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>core-java-modules/core-java-datetime-string</module>
-                <module>core-java-modules/core-java-io-conversions-2</module>
-                <module>core-java-modules/core-java-jpms</module>
-                <module>core-java-modules/core-java-os</module>
-                <module>core-java-modules/core-java-streams-4</module>
-                <module>core-java-modules/core-java-string-algorithms-3</module>
-                <module>core-java-modules/core-java-string-operations-3</module>
-                <module>core-java-modules/core-java-string-operations-4</module>
-                <module>core-java-modules/core-java-string-operations-5</module>
-                <module>core-java-modules/core-java-time-measurements</module>
-                <module>core-java-modules/core-java-networking-3</module>
-                <module>core-java-modules/core-java-strings</module>
-                <module>core-java-modules/core-java-httpclient</module>
-				<module>custom-pmd</module>
-                <module>spring-core-6</module>
+                <module>spring-aop</module>
+                <module>spring-aop-2</module>
+                <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
+                <module>jackson-modules</module>
+                <module>jmh</module>
                 <module>deeplearning4j</module>
+                <module>jmeter</module>
                 <module>docker-modules</module>
-                <module>apache-httpclient-2</module>
-                <module>kubernetes-modules/kubernetes-spring</module>
+                <module>drools</module>
+                <module>guava-modules</module>
+                <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
-                <module>maven-modules/compiler-plugin-java-9</module>
-                <module>maven-modules/maven-generate-war</module>
-                <module>maven-modules/multimodulemavenproject</module>
+                <module>jhipster-6</module>
+                <module>libraries-testing</module>
+                <module>maven-modules</module>
                 <module>optaplanner</module>
-                <module>persistence-modules/sirix</module>
-                <module>persistence-modules/spring-data-cassandra-2</module>
-                <module>quarkus-modules/quarkus-vs-springboot</module>
-                <module>quarkus-modules/quarkus-jandex</module>
-                <module>spring-boot-modules/spring-boot-cassandre</module>
-                <module>spring-boot-modules/spring-boot-3</module>
-                <module>spring-boot-modules/spring-boot-3-native</module>
-                <module>spring-boot-modules/spring-boot-3-observation</module>
-                <module>spring-boot-modules/spring-boot-3-test-pitfalls</module>
+                <module>persistence-modules</module>
+                <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
                 <module>persistence-modules/fauna</module>
+                <module>persistence-modules/spring-data-rest</module>
+
+                <module>rule-engines-modules</module>
+
+                <module>reactive-systems</module>
+                <module>rxjava-modules</module>
+
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
@@ -1164,31 +1085,29 @@
 
                 <module>akka-modules</module>
                 <module>annotations</module>
-                <module>apache-httpclient</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
-                <module>apache-rocketmq</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
                 <module>asm</module>
                 <module>atomikos</module>
                 <module>atomix</module>
+
                 <module>axon</module>
 
                 <module>bazel</module>
-                <module>code-generation</module>
+                <module>google-auto-project</module>
                 <module>ddd</module>
-                <module>discord4j</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
                 <module>dubbo</module>
-                <module>feign</module>
+                <!-- <module>feign</module> -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -1197,7 +1116,7 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-
+                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -1209,9 +1128,14 @@
 
                 <module>java-native</module>
                 <module>jsoup</module>
+                <module>jsf</module>
                 <module>ksqldb</module>
 
-                <module>libraries-7</module>
+                <module>libraries</module> <!-- very long running -->
+                <module>libraries-2</module>
+                <module>libraries-4</module>
+                <module>libraries-5</module>
+                <module>libraries-6</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
@@ -1221,6 +1145,7 @@
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
+                <module>libraries-ai</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
@@ -1236,7 +1161,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-                <module>slack</module>
 
 
                 <!--  Modules from default second-->
@@ -1245,11 +1169,9 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
-                <module>spring-batch-2</module>
-                <module>spring-caching-2</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
-                <module>spring-core-5</module>
+                <module>spring-credhub</module>
                 <module>spring-di-3</module>
                 <module>spring-cucumber</module>
 
@@ -1263,16 +1185,30 @@
 
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
+				<module>spring-vault</module>
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>messaging-modules/spring-apache-camel</module>
+                <module>persistence-modules/java-mongodb</module>
+
+                <module>messaging-modules</module>
+
+                <module>persistence-modules/questdb</module>
+                <module>vaadin</module>
+                <module>libraries-3</module>
+                <module>web-modules/apache-tapestry</module>
+                <module>web-modules/blade</module>
+                <module>web-modules/bootique</module>
+                <module>web-modules/dropwizard</module>
+                <module>web-modules/google-web-toolkit</module>
+                <module>web-modules/google-jakarta-ee</module>
             </modules>
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
                 <java.version>11</java.version>
-                <java.version>11</java.version>
+                <maven.compiler.source>11</maven.compiler.source>
+                <maven.compiler.target>11</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1318,6 +1254,7 @@
         <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
+        <!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
         <org.slf4j.version>1.7.32</org.slf4j.version>
         <logback.version>1.2.7</logback.version>
 
@@ -1336,15 +1273,15 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.13.3</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <junit-platform.version>1.8.1</junit-platform.version>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <junit-platform.version>1.9.2</junit-platform.version>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
         <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
