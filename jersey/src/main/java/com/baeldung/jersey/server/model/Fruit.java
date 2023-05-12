@@ -1,8 +1,8 @@
 package com.baeldung.jersey.server.model;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Fruit {

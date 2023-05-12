@@ -4,24 +4,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>geotools</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>geotools</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <repositories>
-        <repository>
-            <id>osgeo-release</id>
-            <name>OSGeo Repository</name>
-            <url>https://repo.osgeo.org/repository/release/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
@@ -39,14 +29,15 @@
             <artifactId>gt-swing</artifactId>
             <version>${geotools-swing.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.locationtech.jts</groupId>
-            <artifactId>jts-core</artifactId>
-            <version>1.19.0</version>
-        </dependency>
-
-
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>osgeo-release</id>
+            <name>OSGeo Repository</name>
+            <url>https://repo.osgeo.org/repository/release/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <geotools.version>28.1</geotools.version>

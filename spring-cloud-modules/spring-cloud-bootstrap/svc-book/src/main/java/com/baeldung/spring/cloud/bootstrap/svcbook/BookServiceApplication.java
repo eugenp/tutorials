@@ -42,11 +42,11 @@ public class BookServiceApplication {
             @Override
             public void report(Span span) {
                 InstanceInfo instance = eurekaClient.getNextServerFromEureka("zipkin", false);
-                if (!(baseUrl != null && instance.getHomePageUrl().equals(baseUrl))) {
+                if (baseUrl == null || !instance.getHomePageUrl().equals(baseUrl)) {
                     baseUrl = instance.getHomePageUrl();
-                    delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
-                    if (!span.name.matches(skipPattern)) delegate.report(span);
                 }
+                delegate = new HttpZipkinSpanReporter(new RestTemplate(), baseUrl, zipkinProperties.getFlushInterval(), spanMetricReporter);
+                if (!span.name.matches(skipPattern)) delegate.report(span);
             }
         };
     }

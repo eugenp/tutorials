@@ -3,6 +3,8 @@ package com.baeldung.hibernate.multitenancy.schema;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl;
@@ -39,9 +41,14 @@ public class SchemaMultiTenantConnectionProvider extends AbstractMultiTenantConn
     private ConnectionProvider initConnectionProvider() throws IOException {
         Properties properties = new Properties();
         properties.load(getClass().getResourceAsStream("/hibernate-schema-multitenancy.properties"));
+        Map<String, Object> configProperties = new HashMap<>();
+        for (String key : properties.stringPropertyNames()) {
+            String value = properties.getProperty(key);
+            configProperties.put(key, value);
+        }
 
         DriverManagerConnectionProviderImpl connectionProvider = new DriverManagerConnectionProviderImpl();
-        connectionProvider.configure(properties);
+        connectionProvider.configure(configProperties);
         return connectionProvider;
     }
 

@@ -14,3 +14,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Inheritance with Jackson](https://www.baeldung.com/jackson-inheritance)
 - [Working with Tree Model Nodes in Jackson](https://www.baeldung.com/jackson-json-node-tree-model)
 - [Get all the Keys in a JSON String Using JsonNode](https://www.baeldung.com/java-jsonnode-get-keys)
+- [Difference Between asText() and toString() in JsonNode](https://www.baeldung.com/java-jsonnode-astext-vs-tostring)
+- [Deserialize Generic Type with Jackson](https://www.baeldung.com/java-deserialize-generic-type-with-jackson)
