@@ -942,6 +942,11 @@
                 <module>web-modules/linkrest</module>
                 <module>web-modules/jee-7</module>
                 <module>web-modules/ninja</module>
+                <module>web-modules/resteasy</module>
+                <module>web-modules/spark-java</module>
+                <module>web-modules/struts-2</module>
+                <module>web-modules/vraptor</module>
+                <module>web-modules/wicket</module>
             </modules>
 
             <properties>
@@ -1200,6 +1205,11 @@
                 <module>web-modules/linkrest</module>
                 <module>web-modules/jee-7</module>
                 <module>web-modules/ninja</module>
+                <module>web-modules/resteasy</module>
+                <module>web-modules/spark-java</module>
+                <module>web-modules/struts-2</module>
+                <module>web-modules/vraptor</module>
+                <module>web-modules/wicket</module>
             </modules>
 
             <properties>
