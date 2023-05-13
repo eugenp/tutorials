@@ -36,7 +36,7 @@ public class HashPasswordUnitTest {
         int memLimit = 66536;
         int hashLength = 32;
         int parallelism = 1;
-        Argon2Parameters.Builder builder = new Argon2Parameters.Builder(Argon2Parameters.ARGON2_id).withVersion(Argon2Parameters.ARGON2_VERSION_13) // 19
+        Argon2Parameters.Builder builder = new Argon2Parameters.Builder(Argon2Parameters.ARGON2_id).withVersion(Argon2Parameters.ARGON2_VERSION_13)
           .withIterations(iterations)
           .withMemoryAsKB(memLimit)
           .withParallelism(parallelism)
