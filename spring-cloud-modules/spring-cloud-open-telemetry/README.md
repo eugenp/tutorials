@@ -16,6 +16,7 @@ http://localhost:16686/
 ```
 http://localhost:9090/
 ```
+![image info](./assets/prometheus-3.png)
 ![image info](./assets/prometheus.png)
 ![image info](./assets/prometheus-2.png)
 
