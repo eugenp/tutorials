@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.QueryHints;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,12 +44,12 @@ public class DistinctHqlQueriesUnitTest {
     }
 
     @Test
-    public void whenExecutingSelectQuery_thereWillBeDuplicates() {
+    public void whenExecutingSelectQuery_thereTheInsertedPosts() {
         String hql = "SELECT p FROM Post p LEFT JOIN FETCH p.comments";
         List<Post> posts = session.createQuery(hql, Post.class)
             .getResultList();
 
-        assertThat(posts).hasSize(3);
+        assertThat(posts).hasSize(1);
     }
 
     @Test
@@ -68,8 +67,8 @@ public class DistinctHqlQueriesUnitTest {
     @Test
     public void whenExecutingSelectDistinctQueryWithHint_thereShouldBeNoDuplicates() {
         String hql = "SELECT DISTINCT p FROM Post p LEFT JOIN FETCH p.comments";
+        // From Hibernate ORM 6, distinct is always passed to the SQL query and the flag QueryHints#HINT_PASS_DISTINCT_THROUGH has been removed.
         List<Post> posts = session.createQuery(hql, Post.class)
-            .setHint(QueryHints.PASS_DISTINCT_THROUGH, false)
             .getResultList();
 
         assertThat(posts).hasSize(1)

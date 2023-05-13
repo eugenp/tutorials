@@ -367,6 +367,7 @@
                 <module>muleesb</module>
 
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
             </modules>
 
         </profile>
@@ -552,6 +553,7 @@
                 <module>muleesb</module>
 
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
             </modules>
 
         </profile>
@@ -937,6 +939,11 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <module>web-modules/blade</module>
+                <module>web-modules/bootique</module>
+                <module>web-modules/dropwizard</module>
+                <module>web-modules/google-web-toolkit</module>
+                <module>web-modules/jakarta-ee</module>
                 <module>web-modules/javax-servlets</module>
                 <module>web-modules/javax-servlets-2</module>
                 <module>web-modules/linkrest</module>
@@ -1200,6 +1207,11 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <module>web-modules/blade</module>
+                <module>web-modules/bootique</module>
+                <module>web-modules/dropwizard</module>
+                <module>web-modules/google-web-toolkit</module>
+                <module>web-modules/google-jakarta-ee</module>
                 <module>web-modules/javax-servlets</module>
                 <module>web-modules/javax-servlets-2</module>
                 <module>web-modules/linkrest</module>

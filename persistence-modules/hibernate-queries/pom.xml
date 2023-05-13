@@ -85,15 +85,21 @@
             <version>${testcontainers.mysql.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>3.3.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
-        <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
+        <org.springframework.version>6.0.6</org.springframework.version>
+        <org.springframework.data.version>3.0.3</org.springframework.data.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <mysql.version>6.0.6</mysql.version>
-        <mariaDB4j.version>2.2.3</mariaDB4j.version>
+        <mysql.version>8.0.32</mysql.version>
+        <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
+        <hibernate.version>6.1.7.Final</hibernate.version>
         <testcontainers.mysql.version>1.17.6</testcontainers.mysql.version>
     </properties>
 
