@@ -1,4 +1,4 @@
-package src.test.java.com.baeldung.blockingqueue;
+package com.baeldung.concurrent.queue;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -10,8 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class BlockingQueueUnitTest {
 
     @Test
-    public void givenArrayBlockingQueue_whenAddedElements_thenReturnQueueRemainingCapacity()
-    {
+    public void givenArrayBlockingQueue_whenAddedElements_thenReturnQueueRemainingCapacity() {
         BlockingQueue<String> arrayBlockingQueue = new ArrayBlockingQueue<>(10);
         arrayBlockingQueue.add("TestString1");
         arrayBlockingQueue.add("TestString2");
@@ -19,8 +18,7 @@ public class BlockingQueueUnitTest {
     }
 
     @Test
-    public void givenLinkedBlockingQueue_whenAddedElements_thenReturnQueueRemainingCapacity()
-    {
+    public void givenLinkedBlockingQueue_whenAddedElements_thenReturnQueueRemainingCapacity() {
         BlockingQueue<String> linkedBlockingQueue = new LinkedBlockingQueue<>(10);
         linkedBlockingQueue.add("TestString1");
         assertEquals(9, linkedBlockingQueue.remainingCapacity());
