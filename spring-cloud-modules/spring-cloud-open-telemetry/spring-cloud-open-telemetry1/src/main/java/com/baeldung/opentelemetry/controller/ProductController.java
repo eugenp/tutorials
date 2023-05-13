@@ -39,36 +39,47 @@ public class ProductController {
     }
 
     @GetMapping(path = "/product/{id}")
-    public Product getProductDetails(@PathVariable("id") long productId) {
+    public Product getProductDetails(@PathVariable("id") long productId) throws Exception {
         LOGGER.info("Getting Product and Price Details With Product Id {}", productId);
 
         Span parent = tracer.spanBuilder("Getting Product and Price Details With Product").startSpan();
         try {
             LOGGER.info("Processing id {}", productId);
             return doHandle(productId, parent);
-        } catch (Exception ex) {
+        } finally {
             parent.end();
-            return null;
         }
     }
 
-    private Product doHandle(long productId, Span parent) {
+    private Product doHandle(long productId, Span parent) throws Exception {
         Span parentSpan = tracer.spanBuilder("doHandle").setParent(Context.current().with(parent)).startSpan();
 //        Span parentSpan = tracer.spanBuilder("doHandle").setSpanKind(SpanKind.CLIENT).startSpan();
+        Exception exception = null;
+
         try (Scope scope = parentSpan.makeCurrent()) {
             Product product = getProduct(productId);
             Price price = getPrice(productId);
             product.setPrice(price);
             return product;
+        } catch (Exception e) {
+            LOGGER.error("error: ", e);
+            parentSpan.setStatus(StatusCode.ERROR, "Something bad happened!");
+            Attributes eventAttributes2 = Attributes.of(AttributeKey.stringKey("error"), e.toString());
+            parentSpan.addEvent("ERROR: ", eventAttributes2);
+            throw e;
         } finally {
             parentSpan.end();
+            if (exception != null) {
+                throw exception;
+            }
         }
     }
 
-    private Price getPrice(long productId) {
+    private Price getPrice(long productId) throws Exception {
         Span childSpan = tracer.spanBuilder("/getPrice").setSpanKind(SpanKind.CLIENT).startSpan();
-        try (Scope scope = childSpan.makeCurrent()) {
+        Exception exception = null;
 
+        try (Scope scope = childSpan.makeCurrent()) {
             childSpan.setAttribute(SemanticAttributes.HTTP_METHOD, "GET");
 
             return priceClient.getPrice(productId);
@@ -77,14 +88,18 @@ public class ProductController {
             childSpan.setStatus(StatusCode.ERROR, "Something bad happened!");
             Attributes eventAttributes2 = Attributes.of(AttributeKey.stringKey("error"), e.toString());
             childSpan.addEvent("ERROR: ", eventAttributes2);
-            return null;
+            throw e;
         } finally {
             childSpan.end();
+            if (exception != null) {
+                throw exception;
+            }
         }
     }
 
-    private Product getProduct(long productId) {
+    private Product getProduct(long productId) throws Exception {
         Span childSpan = tracer.spanBuilder("getProduct").setSpanKind(SpanKind.CLIENT).startSpan();
+        Exception exception = null;
 
         try {
             return productRepository.getProduct(productId);
@@ -92,9 +107,13 @@ public class ProductController {
             childSpan.setStatus(StatusCode.ERROR, "Something bad happened!");
             Attributes eventAttributes2 = Attributes.of(AttributeKey.stringKey("error"), e.toString());
             childSpan.addEvent("ERROR: ", eventAttributes2);
-            return null;
+            exception = e;
+            throw e;
         } finally {
             childSpan.end();
+            if (exception != null) {
+                throw exception;
+            }
         }
     }
 }
