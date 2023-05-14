@@ -1,20 +1,19 @@
 package com.baeldung.hibernate.customtypes;
 
-import org.hibernate.annotations.Columns;
+import org.hibernate.annotations.CompositeType;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.hibernate.usertype.UserTypeLegacyBridge;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
-@TypeDef(name = "PhoneNumber",
-        typeClass = PhoneNumberType.class,
-        defaultForType = PhoneNumber.class)
 @Entity
 @Table(name = "OfficeEmployee")
 public class OfficeEmployee {
@@ -24,25 +23,36 @@ public class OfficeEmployee {
     private long id;
 
     @Column
-    @Type(type = "LocalDateString")
+    @Type(
+            value = UserTypeLegacyBridge.class,
+            parameters = @Parameter(name = UserTypeLegacyBridge.TYPE_NAME_PARAM_KEY, value = "LocalDateString")
+    )
     private LocalDate dateOfJoining;
 
-    @Columns(columns = {@Column(name = "country_code"),
-            @Column(name = "city_code"),
-            @Column(name = "number")})
+    @AttributeOverrides({
+            @AttributeOverride(name = "countryCode", column = @Column(name = "country_code")),
+            @AttributeOverride(name = "cityCode", column = @Column(name = "city_code")),
+            @AttributeOverride(name = "number", column = @Column(name = "number"))
+    })
+    @Type(value = PhoneNumberType.class)
     private PhoneNumber employeeNumber;
 
-    @Columns(columns = {@Column(name = "address_line_1"),
-            @Column(name = "address_line_2"),
-            @Column(name = "city"), @Column(name = "country"),
-            @Column(name = "zip_code")})
-    @Type(type = "com.baeldung.hibernate.customtypes.AddressType")
+    @CompositeType(value = com.baeldung.hibernate.customtypes.AddressType.class)
+    @AttributeOverrides({
+            @AttributeOverride(name = "addressLine1", column = @Column(name = "address_line_1")),
+            @AttributeOverride(name = "addressLine2", column = @Column(name = "address_line_2")),
+            @AttributeOverride(name = "city", column = @Column(name = "city")),
+            @AttributeOverride(name = "country", column = @Column(name = "country")),
+            @AttributeOverride(name = "zipCode", column = @Column(name = "zip_code"))
+    })
     private Address empAddress;
 
-    @Type(type = "com.baeldung.hibernate.customtypes.SalaryType",
+    @Type(value = com.baeldung.hibernate.customtypes.SalaryType.class,
             parameters = {@Parameter(name = "currency", value = "USD")})
-    @Columns(columns = {@Column(name = "amount"),
-            @Column(name = "currency")})
+   @AttributeOverrides({
+            @AttributeOverride(name = "amount", column = @Column(name = "amount")),
+            @AttributeOverride(name = "currency", column = @Column(name = "currency"))
+    })
     private Salary salary;
 
     public Salary getSalary() {

@@ -20,7 +20,7 @@ public class DroolsBeanFactory {
 
     private  KieFileSystem getKieFileSystem() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-        List<String> rules = Arrays.asList("BackwardChaining.drl", "SuggestApplicant.drl", "Product_rules.xls");
+        List<String> rules = Arrays.asList("BackwardChaining.drl", "SuggestApplicant.drl", "Product_rules.drl.xls");
         for(String rule:rules) {
             kieFileSystem.write(ResourceFactory.newClassPathResource(rule));
         }
@@ -52,7 +52,7 @@ public class DroolsBeanFactory {
 
         kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/BackwardChaining.drl"));
         kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/SuggestApplicant.drl"));
-        kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/Product_rules.xls"));
+        kieFileSystem.write(ResourceFactory.newClassPathResource("com/baeldung/drools/rules/Product_rules.drl.xls"));
         
         KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
         kb.buildAll();
@@ -83,7 +83,7 @@ public class DroolsBeanFactory {
 
     /*
      * Can be used for debugging
-     * Input excelFile example: com/baeldung/drools/rules/Discount.xls
+     * Input excelFile example: com/baeldung/drools/rules/Discount.drl.xls
      */
     public String getDrlFromExcel(String excelFile) {
         DecisionTableConfiguration configuration = KnowledgeBuilderFactory.newDecisionTableConfiguration();

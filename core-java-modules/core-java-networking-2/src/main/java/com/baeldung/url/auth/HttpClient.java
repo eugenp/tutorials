@@ -21,7 +21,7 @@ public class HttpClient {
         this.password = password;
     }
 
-    public int sendRquestWithAuthHeader(String url) throws IOException {
+    public int sendRequestWithAuthHeader(String url) throws IOException {
         HttpURLConnection connection = null;
         try {
             connection = createConnection(url);
@@ -34,7 +34,7 @@ public class HttpClient {
         }
     }
 
-    public int sendRquestWithAuthenticator(String url) throws IOException {
+    public int sendRequestWithAuthenticator(String url) throws IOException {
         setAuthenticator();
 
         HttpURLConnection connection = null;
