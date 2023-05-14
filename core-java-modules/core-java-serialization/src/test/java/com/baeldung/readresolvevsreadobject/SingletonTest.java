@@ -1,0 +1,47 @@
+package com.baeldung.readresolvevsreadobject;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+public class SingletonTest {
+
+    @Test
+    public void testSingletonObj_withNoReadResolve() throws ClassNotFoundException, IOException {
+        // Serialization
+        FileOutputStream fos = new FileOutputStream("singleton.ser");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        Singleton acutalSingletonObject = Singleton.getInstance();
+        oos.writeObject(acutalSingletonObject);
+
+        // Deserialization
+        Singleton deserializedSingletonObject = null;
+        FileInputStream fis = new FileInputStream("singleton.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        deserializedSingletonObject = (Singleton) ois.readObject();
+        // remove readResolve() from Singleton class and uncomment this to test.
+        //assertNotEquals(deserializedSingletonObject.hashCode(), acutalSingletonObject.hashCode());
+    }
+
+    @Test
+    public void testSingletonObj_withCustomReadResolve()
+            throws ClassNotFoundException, IOException {
+        // Serialization
+        FileOutputStream fos = new FileOutputStream("singleton.ser");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        Singleton acutalSingletonObject = Singleton.getInstance();
+        oos.writeObject(acutalSingletonObject);
+
+        // Deserialization
+        Singleton deserializedSingletonObject = null;
+        FileInputStream fis = new FileInputStream("singleton.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        deserializedSingletonObject = (Singleton) ois.readObject();
+        assertEquals(deserializedSingletonObject.hashCode(), acutalSingletonObject.hashCode());
+    }
+}
