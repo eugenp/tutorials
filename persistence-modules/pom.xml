@@ -106,7 +106,7 @@
         <!-- <module>spring-jpa</module>
         <module>spring-jpa-2</module> FAILED -->
         <module>spring-jdbc</module>
-<!--        <module>spring-jooq</module>--> <!-- parent-boot-2 is its parent. -->
+        <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
     </modules>
