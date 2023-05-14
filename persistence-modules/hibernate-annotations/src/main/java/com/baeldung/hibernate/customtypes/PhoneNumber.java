@@ -2,11 +2,11 @@ package com.baeldung.hibernate.customtypes;
 
 import java.util.Objects;
 
-public final class PhoneNumber {
+public class PhoneNumber {
 
-    private final int countryCode;
-    private final int cityCode;
-    private final int number;
+    private int countryCode;
+    private int cityCode;
+    private int number;
 
     public PhoneNumber(int countryCode, int cityCode, int number) {
         this.countryCode = countryCode;

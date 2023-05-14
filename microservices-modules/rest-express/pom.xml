@@ -23,15 +23,6 @@
     <artifactId>rest-express</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <RestExpress.plugin.version>0.3.3</RestExpress.plugin.version>
-        <metrics-graphite.version>3.1.2</metrics-graphite.version>
-        <HyperExpressPlugin.version>2.6</HyperExpressPlugin.version>
-        <RestExpress.version>0.11.3</RestExpress.version>
-        <Syntaxe.version>1.0</Syntaxe.version>
-        <repoexpress-mongodb.version>0.4.8</repoexpress-mongodb.version>
-        <junit4.version>4.11</junit4.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -94,17 +85,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <mainClass>com.baeldung.restexpress.Main</mainClass>
                 </configuration>
@@ -112,7 +97,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.1</version>
+                <version>${maven-shade-plugin.version}</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <filters>
@@ -146,8 +131,22 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.0</version>
+                <version>${versions-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
+
+    <properties>
+        <RestExpress.plugin.version>0.3.3</RestExpress.plugin.version>
+        <metrics-graphite.version>3.1.2</metrics-graphite.version>
+        <HyperExpressPlugin.version>2.6</HyperExpressPlugin.version>
+        <RestExpress.version>0.11.3</RestExpress.version>
+        <Syntaxe.version>1.0</Syntaxe.version>
+        <repoexpress-mongodb.version>0.4.8</repoexpress-mongodb.version>
+        <junit4.version>4.11</junit4.version>
+        <exec-maven-plugin.version>1.2.1</exec-maven-plugin.version>
+        <maven-shade-plugin.version>2.4.1</maven-shade-plugin.version>
+        <versions-maven-plugin.version>2.0</versions-maven-plugin.version>
+    </properties>
+
 </project>

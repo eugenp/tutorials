@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>libraries-jdk8</artifactId>
+
+    <parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- Reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflections.version}</version>
+        </dependency>
+        <!-- Chronicle -->
+        <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle</artifactId>
+            <version>${chronicle.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.java</groupId>
+                    <artifactId>tools</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <reflections.version>0.9.11</reflections.version>
+        <chronicle.version>3.6.4</chronicle.version>
+    </properties>
+
+</project>

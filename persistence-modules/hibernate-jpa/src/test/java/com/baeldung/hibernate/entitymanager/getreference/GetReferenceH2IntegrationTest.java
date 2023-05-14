@@ -5,9 +5,9 @@ import ch.qos.logback.classic.Logger;
 import org.junit.jupiter.api.*;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -87,8 +87,8 @@ public class GetReferenceH2IntegrationTest {
         });
 
         StringBuilder expected = new StringBuilder();
-        expected.append("Hibernate: select game0_.id as id1_0_0_, game0_.name as name2_0_0_ from Game game0_ where game0_.id=?\n");
-        expected.append("Hibernate: update Game set name=? where id=?\n");
+        expected.append("Hibernate: select g1_0.id,g1_0.name from Game g1_0 where g1_0.id=?" + System.lineSeparator());
+        expected.append("Hibernate: update Game set name=? where id=?" + System.lineSeparator());
 
         assertEquals(expected.toString(), output.toString());
     }
@@ -104,8 +104,8 @@ public class GetReferenceH2IntegrationTest {
         });
 
         StringBuilder expected = new StringBuilder();
-        expected.append("Hibernate: select game0_.id as id1_0_0_, game0_.name as name2_0_0_ from Game game0_ where game0_.id=?\n");
-        expected.append("Hibernate: update Game set name=? where id=?\n");
+        expected.append("Hibernate: select g1_0.id,g1_0.name from Game g1_0 where g1_0.id=?" + System.lineSeparator());
+        expected.append("Hibernate: update Game set name=? where id=?" + System.lineSeparator());
 
         assertEquals(expected.toString(), output.toString());
     }
@@ -120,10 +120,9 @@ public class GetReferenceH2IntegrationTest {
 
         StringBuilder expected = new StringBuilder();
         expected.append("Hibernate: select ");
-        expected.append("player0_.id as id1_1_0_, player0_.game_id as game_id3_1_0_, ");
-        expected.append("player0_.name as name2_1_0_, game1_.id as id1_0_1_, game1_.name as name2_0_1_ ");
-        expected.append("from Player player0_ left outer join Game game1_ on player0_.game_id=game1_.id where player0_.id=?\n");
-        expected.append("Hibernate: delete from Player where id=?\n");
+        expected.append("p1_0.id,g1_0.id,g1_0.name,p1_0.name ");
+        expected.append("from Player p1_0 left join Game g1_0 on g1_0.id=p1_0.game_id where p1_0.id=?" + System.lineSeparator());
+        expected.append("Hibernate: delete from Player where id=?" + System.lineSeparator());
 
         assertEquals(expected.toString(), output.toString());
     }
@@ -137,11 +136,7 @@ public class GetReferenceH2IntegrationTest {
         });
 
         StringBuilder expected = new StringBuilder();
-        expected.append("Hibernate: select ");
-        expected.append("player0_.id as id1_1_0_, player0_.game_id as game_id3_1_0_, ");
-        expected.append("player0_.name as name2_1_0_, game1_.id as id1_0_1_, game1_.name as name2_0_1_ ");
-        expected.append("from Player player0_ left outer join Game game1_ on player0_.game_id=game1_.id where player0_.id=?\n");
-        expected.append("Hibernate: delete from Player where id=?\n");
+        expected.append("Hibernate: delete from Player where id=?" + System.lineSeparator());
 
         assertEquals(expected.toString(), output.toString());
     }
@@ -159,12 +154,11 @@ public class GetReferenceH2IntegrationTest {
         }));
 
         StringBuilder expected = new StringBuilder();
-        expected.append("Hibernate: select game0_.id as id1_0_0_, game0_.name as name2_0_0_ from Game game0_ where game0_.id=?\n");
+        expected.append("Hibernate: select g1_0.id,g1_0.name from Game g1_0 where g1_0.id=?" + System.lineSeparator());
         expected.append("Hibernate: select ");
-        expected.append("player0_.id as id1_1_0_, player0_.game_id as game_id3_1_0_, ");
-        expected.append("player0_.name as name2_1_0_, game1_.id as id1_0_1_, game1_.name as name2_0_1_ ");
-        expected.append("from Player player0_ left outer join Game game1_ on player0_.game_id=game1_.id where player0_.id=?\n");
-        expected.append("Hibernate: update Player set game_id=?, name=? where id=?\n");
+        expected.append("p1_0.id,g1_0.id,g1_0.name,p1_0.name ");
+        expected.append("from Player p1_0 left join Game g1_0 on g1_0.id=p1_0.game_id where p1_0.id=?" + System.lineSeparator());
+        expected.append("Hibernate: update Player set game_id=?,name=? where id=?" + System.lineSeparator());
 
         assertEquals(expected.toString(), output.toString());
     }
@@ -183,10 +177,9 @@ public class GetReferenceH2IntegrationTest {
 
         StringBuilder expected = new StringBuilder();
         expected.append("Hibernate: select ");
-        expected.append("player0_.id as id1_1_0_, player0_.game_id as game_id3_1_0_, ");
-        expected.append("player0_.name as name2_1_0_, game1_.id as id1_0_1_, game1_.name as name2_0_1_ ");
-        expected.append("from Player player0_ left outer join Game game1_ on player0_.game_id=game1_.id where player0_.id=?\n");
-        expected.append("Hibernate: update Player set game_id=?, name=? where id=?\n");
+        expected.append("p1_0.id,g1_0.id,g1_0.name,p1_0.name ");
+        expected.append("from Player p1_0 left join Game g1_0 on g1_0.id=p1_0.game_id where p1_0.id=?" + System.lineSeparator());
+        expected.append("Hibernate: update Player set game_id=?,name=? where id=?" + System.lineSeparator());
 
         assertEquals(expected.toString(), output.toString());
     }

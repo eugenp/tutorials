@@ -1,10 +1,11 @@
 package com.baeldung.batch.model;
 
+import java.time.LocalDateTime;
+
 import com.baeldung.batch.service.adapter.LocalDateTimeAdapter;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.time.LocalDateTime;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @SuppressWarnings("restriction")
 @XmlRootElement(name = "transactionRecord")

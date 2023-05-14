@@ -8,7 +8,7 @@ import lombok.Data;
 public class CarModel {
     private Long id;
     private String name;
-    private Integer year;
+    private Integer yearDate;
     private String sku;
     private Long makerId;
 }
