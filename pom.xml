@@ -944,6 +944,7 @@
                 <module>web-modules/dropwizard</module>
                 <module>web-modules/google-web-toolkit</module>
                 <module>web-modules/jakarta-ee</module>
+                <module>web-modules/ratpack</module>
             </modules>
 
             <properties>
@@ -1202,6 +1203,7 @@
                 <module>web-modules/dropwizard</module>
                 <module>web-modules/google-web-toolkit</module>
                 <module>web-modules/google-jakarta-ee</module>
+                <module>web-modules/ratpack</module>
             </modules>
 
             <properties>
