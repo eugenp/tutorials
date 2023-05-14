@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class UserTest {
+public class UserUnitTest {
 
     @Test
     public void testDeserializeObj_withOverriddenReadObject()

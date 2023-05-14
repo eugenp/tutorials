@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class SingletonTest {
+public class SingletonUnitTest {
 
     @Test
     public void testSingletonObj_withNoReadResolve() throws ClassNotFoundException, IOException {
