@@ -10,8 +10,6 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.countrows.AccountStatsApplication;
@@ -23,10 +21,9 @@ import com.baeldung.countrows.service.AccountStatsLogic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest(classes = AccountStatsApplication.class)
-class AccountStatsUnitTests {
+class AccountStatsUnitTest {
 
     @Autowired
     private PermissionRepository permissionRepository;
