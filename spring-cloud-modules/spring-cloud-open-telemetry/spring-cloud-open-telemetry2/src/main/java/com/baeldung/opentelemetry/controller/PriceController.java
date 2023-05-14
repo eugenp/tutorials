@@ -36,7 +36,7 @@ public class PriceController {
 
     private final OpenTelemetry openTelemetry;
 
-    TextMapGetter<HttpHeaders> getter = new TextMapGetter<>() {
+    TextMapGetter<HttpHeaders> getter = new TextMapGetter<HttpHeaders>() {
         @Override
         public String get(HttpHeaders headers, String s) {
             return headers.getFirst(s);
