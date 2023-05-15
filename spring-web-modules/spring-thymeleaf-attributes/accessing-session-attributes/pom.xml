@@ -17,27 +17,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
-
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <jvmArguments>
-            -Dfile.encoding="UTF-8" -Xdebug
-            -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
-          </jvmArguments>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
   <dependencies>
     <dependency>
       <groupId>jakarta.servlet</groupId>
@@ -81,6 +60,26 @@
 
   </dependencies>
 
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <jvmArguments>
+            -Dfile.encoding="UTF-8" -Xdebug
+            -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+          </jvmArguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <properties>
     <start-class>com.baeldung.accesing_session_attributes.SpringWebApplicationInitializer</start-class>
