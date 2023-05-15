@@ -847,7 +847,7 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -1098,7 +1098,7 @@
                 <module>dozer</module>
 
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
