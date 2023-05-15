@@ -948,7 +948,6 @@
                 <module>web-modules/javax-servlets-2</module>
                 <module>web-modules/linkrest</module>
                 <module>web-modules/jee-7</module>
-                <module>web-modules/ninja</module>
                 <module>web-modules/resteasy</module>
                 <module>web-modules/spark-java</module>
                 <module>web-modules/struts-2</module>
@@ -1211,12 +1210,11 @@
                 <module>web-modules/bootique</module>
                 <module>web-modules/dropwizard</module>
                 <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/google-jakarta-ee</module>
+                <module>web-modules/jakarta-ee</module>
                 <module>web-modules/javax-servlets</module>
                 <module>web-modules/javax-servlets-2</module>
                 <module>web-modules/linkrest</module>
                 <module>web-modules/jee-7</module>
-                <module>web-modules/ninja</module>
                 <module>web-modules/resteasy</module>
                 <module>web-modules/spark-java</module>
                 <module>web-modules/struts-2</module>
