@@ -30,31 +30,31 @@
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring6</artifactId>
-      <version>3.1.1.RELEASE</version>
+      <version>${thymeleaf.spring6.version}</version>
     </dependency>
     <!-- test scoped -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.9.3</version>
+      <version>${junit.jupiter.engine.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>5.3.1</version>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-junit-jupiter</artifactId>
-      <version>5.3.1</version>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.9.3</version>
+      <version>${junit.jupiter.engine.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -88,5 +88,8 @@
     <file.encoding>UTF-8</file.encoding>
     <downloadSources>true</downloadSources>
     <downloadJavadocs>true</downloadJavadocs>
+    <junit.jupiter.engine.version>5.9.3</junit.jupiter.engine.version>
+    <mockito.version>5.3.1</mockito.version>
+    <thymeleaf.spring6.version>3.1.1.RELEASE</thymeleaf.spring6.version>
   </properties>
 </project>
