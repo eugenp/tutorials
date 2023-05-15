@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles({ "test" })
-public class NameAnalysisServiceImplUT {
+public class NameAnalysisServiceImplUnitTest {
 
     @Autowired
     private ObjectMapper om;
