@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class SeleniumOpenNewTabIntegrationTest {
+public class SeleniumOpenNewTabLiveTest {
 
     private WebDriver driver;
     private static final int TIMEOUT = 10;
