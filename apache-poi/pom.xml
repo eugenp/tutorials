@@ -30,6 +30,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.dhatim</groupId>
+            <artifactId>fastexcel</artifactId>
+            <version>${fastexcel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dhatim</groupId>
+            <artifactId>fastexcel-reader</artifactId>
+            <version>${fastexcel.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +62,7 @@
     <properties>
         <poi.version>5.2.0</poi.version>
         <jexcel.version>1.0.6</jexcel.version>
+        <fastexcel.version>0.15.3</fastexcel.version>
         <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
     </properties>
 

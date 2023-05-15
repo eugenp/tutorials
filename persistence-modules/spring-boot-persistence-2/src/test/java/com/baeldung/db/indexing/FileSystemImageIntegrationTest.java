@@ -4,8 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.File;
 import java.io.InputStream;
-import java.nio.file.Paths;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,10 +66,13 @@ class FileSystemImageIntegrationTest {
 
     private FileSystemResource baeldungJpegResource() {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-        String imagePath = classLoader.getResource("baeldung.jpeg")
-            .getFile();
-
-        return new FileSystemResource(Paths.get(imagePath));
+        try {
+            final URL resource = classLoader.getResource("baeldung.jpeg");
+            if (resource != null) {
+                return new FileSystemResource(new File(resource.toURI()).getAbsolutePath());
+            }
+        } catch (URISyntaxException ignore) {}
+        return null;
     }
 
 }
