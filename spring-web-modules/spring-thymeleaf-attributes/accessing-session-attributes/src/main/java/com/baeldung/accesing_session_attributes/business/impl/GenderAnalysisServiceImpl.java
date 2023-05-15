@@ -19,8 +19,7 @@ public class GenderAnalysisServiceImpl implements GenderAnalysisService {
     @Override
     public ResponseEntity<NameGenderEntity> getGenderAnalysisForName(String nameToAnalyze) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForEntity(URI.create(MessageFormat.format(nameGenderApiUrl, nameToAnalyze)),
-                NameGenderEntity.class);
+        return restTemplate.getForEntity(URI.create(MessageFormat.format(nameGenderApiUrl, nameToAnalyze)), NameGenderEntity.class);
     }
 
 }

@@ -10,8 +10,7 @@ import com.baeldung.accesing_session_attributes.business.entities.NameGenderEnti
 @Service
 public class NameAnalysisEntityFactory {
 
-    public NameAnalysisEntity getInstance(String nameRequest, NameGenderEntity gender, NameAgeEntity age,
-            NameCountriesEntity countries) {
+    public NameAnalysisEntity getInstance(String nameRequest, NameGenderEntity gender, NameAgeEntity age, NameCountriesEntity countries) {
         NameAnalysisEntity nameAnalysis = new NameAnalysisEntity();
         nameAnalysis.setName(nameRequest);
         nameAnalysis.setGender(gender);

@@ -10,6 +10,6 @@ import com.baeldung.accesing_session_attributes.business.entities.NameAnalysisEn
 @Service
 public interface NameAnalysisService {
     public NameRequest getLastNameRequest();
-    
+
     public CompletableFuture<NameAnalysisEntity> searchForName(NameRequest nameRequest);
 }

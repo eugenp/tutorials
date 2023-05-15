@@ -19,8 +19,7 @@ public class AgeAnalysisServiceImpl implements AgeAnalysisService {
     @Override
     public ResponseEntity<NameAgeEntity> getAgeAnalysisForName(String nameToAnalyze) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForEntity(URI.create(MessageFormat.format(nameAgeApiUrl, nameToAnalyze)),
-                NameAgeEntity.class);
+        return restTemplate.getForEntity(URI.create(MessageFormat.format(nameAgeApiUrl, nameToAnalyze)), NameAgeEntity.class);
     }
 
 }

@@ -19,8 +19,7 @@ public class CountryAnalysisServiceImpl implements CountryAnalysisService {
     @Override
     public ResponseEntity<NameCountriesEntity> getCountryAnalysisForName(String nameToAnalyze) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForEntity(URI.create(MessageFormat.format(nameCountriesApiUrl, nameToAnalyze)),
-                NameCountriesEntity.class);
+        return restTemplate.getForEntity(URI.create(MessageFormat.format(nameCountriesApiUrl, nameToAnalyze)), NameCountriesEntity.class);
     }
 
 }

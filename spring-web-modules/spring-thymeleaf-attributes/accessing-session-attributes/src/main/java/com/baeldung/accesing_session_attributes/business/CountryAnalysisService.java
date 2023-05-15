@@ -7,5 +7,5 @@ import com.baeldung.accesing_session_attributes.business.entities.NameCountriesE
 
 @Service
 public interface CountryAnalysisService {
-	ResponseEntity<NameCountriesEntity> getCountryAnalysisForName(String nameToAnalyze);
+    ResponseEntity<NameCountriesEntity> getCountryAnalysisForName(String nameToAnalyze);
 }

@@ -29,8 +29,7 @@ public class NameAnalysisServiceImpl implements NameAnalysisService {
     private NameAnalysisEntityFactory nameAnalysisEntityFactory;
 
     @Autowired
-    public NameAnalysisServiceImpl(AgeAnalysisService ageAnalysisService, CountryAnalysisService countryAnalysisService,
-            GenderAnalysisService genderAnalysisService, NameAnalysisEntityFactory nameAnalysisEntityFactory) {
+    public NameAnalysisServiceImpl(AgeAnalysisService ageAnalysisService, CountryAnalysisService countryAnalysisService, GenderAnalysisService genderAnalysisService, NameAnalysisEntityFactory nameAnalysisEntityFactory) {
         super();
         this.ageAnalysisService = ageAnalysisService;
         this.countryAnalysisService = countryAnalysisService;
@@ -56,13 +55,10 @@ public class NameAnalysisServiceImpl implements NameAnalysisService {
             String nameToAnalyze = URLEncoder.encode(lastNameRequest.getName(), "UTF-8");
 
             ResponseEntity<NameAgeEntity> ageRequestResponse = ageAnalysisService.getAgeAnalysisForName(nameToAnalyze);
-            ResponseEntity<NameCountriesEntity> countriesRequestResponse = countryAnalysisService
-                    .getCountryAnalysisForName(nameToAnalyze);
-            ResponseEntity<NameGenderEntity> genderRequestResponse = genderAnalysisService
-                    .getGenderAnalysisForName(nameToAnalyze);
+            ResponseEntity<NameCountriesEntity> countriesRequestResponse = countryAnalysisService.getCountryAnalysisForName(nameToAnalyze);
+            ResponseEntity<NameGenderEntity> genderRequestResponse = genderAnalysisService.getGenderAnalysisForName(nameToAnalyze);
 
-            NameAnalysisEntity nameAnalysis = nameAnalysisEntityFactory.getInstance(lastNameRequest.getName(),
-                    genderRequestResponse.getBody(), ageRequestResponse.getBody(), countriesRequestResponse.getBody());
+            NameAnalysisEntity nameAnalysis = nameAnalysisEntityFactory.getInstance(lastNameRequest.getName(), genderRequestResponse.getBody(), ageRequestResponse.getBody(), countriesRequestResponse.getBody());
             return CompletableFuture.completedFuture(nameAnalysis);
 
         } catch (Exception e) {
