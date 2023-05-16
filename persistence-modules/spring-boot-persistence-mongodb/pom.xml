@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-persistence-mongodb</artifactId>
     <name>spring-boot-persistence-mongodb</name>
-    <packaging>war</packaging>
     <description>This is simple boot application for Spring boot persistence mongodb test</description>
 
     <parent>
