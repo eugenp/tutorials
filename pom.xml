@@ -485,7 +485,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jws</module>
             </modules>
         </profile>
 
@@ -654,7 +653,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jws</module>
             </modules>
 
         </profile>
@@ -823,6 +821,8 @@
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
+
+                <module>jws</module>
 
                 <!-- Modules from default-first -->
 
@@ -1080,6 +1080,8 @@
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
+
+                <module>jws</module>
 
                 <!-- Modules from default-first -->
 
