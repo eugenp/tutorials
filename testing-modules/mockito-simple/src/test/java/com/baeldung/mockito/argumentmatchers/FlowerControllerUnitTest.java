@@ -24,57 +24,57 @@ import com.baeldung.mockito.argumentmatchers.service.FlowerService;
 @ExtendWith(MockitoExtension.class)
 class FlowerControllerUnitTest {
 
-	@InjectMocks
-	private FlowerController flowerController;
+    @InjectMocks
+    private FlowerController flowerController;
 
-	@Mock
-	private FlowerService flowerService;
+    @Mock
+    private FlowerService flowerService;
 
-	@Test
-	void givenPoppyFlower_whenUsingDoReturn_thenCorrect() {
-		doReturn("Flower").when(flowerService).analyze("poppy");
+    @Test
+    void givenPoppyFlower_whenUsingDoReturn_thenCorrect() {
+        doReturn("Flower").when(flowerService).analyze("poppy");
 
-		String response = flowerController.isAFlower("poppy");
-		assertThat(response).isEqualTo("Flower");
-	}
+        String response = flowerController.isAFlower("poppy");
+        assertThat(response).isEqualTo("Flower");
+    }
 
-	@Test
-	void givenAnyFlower_whenUsingArgumentMatcher_thenCorrect() {
-		when(flowerService.analyze(anyString())).thenReturn("Flower");
+    @Test
+    void givenAnyFlower_whenUsingArgumentMatcher_thenCorrect() {
+        when(flowerService.analyze(anyString())).thenReturn("Flower");
 
-		String response = flowerController.isAFlower("violetta");
-		assertThat(response).isEqualTo("Flower");
-	}
+        String response = flowerController.isAFlower("violetta");
+        assertThat(response).isEqualTo("Flower");
+    }
 
-	@Test
-	void givenIncorrectMatchers_whenUsingArgumentMatchers_thenThrowsError() {
-		assertThrows(InvalidUseOfMatchersException.class, 
-			() -> when(flowerService.isABigFlower("poppy", anyInt())).thenReturn(true));
-	}
+    @Test
+    void givenIncorrectMatchers_whenUsingArgumentMatchers_thenThrowsError() {
+        assertThrows(InvalidUseOfMatchersException.class, 
+            () -> when(flowerService.isABigFlower("poppy", anyInt())).thenReturn(true));
+    }
 
-	@Test
-	void givenCorrectMatchers_whenUsingArgumentMatchers_thenCorrect() {
-		when(flowerService.isABigFlower(eq("poppy"), anyInt())).thenReturn(true);
+    @Test
+    void givenCorrectMatchers_whenUsingArgumentMatchers_thenCorrect() {
+        when(flowerService.isABigFlower(eq("poppy"), anyInt())).thenReturn(true);
 
-		Flower flower = new Flower("poppy", 15);
+        Flower flower = new Flower("poppy", 15);
 
-		Boolean response = flowerController.isABigFlower(flower);
-		assertThat(response).isTrue();
-	}
+        Boolean response = flowerController.isABigFlower(flower);
+        assertThat(response).isTrue();
+    }
 
-	@Test
-	void givenMatchersOutsideofStubbing_whenUsingMatchersAsReturnValue_thenThrowsError() {
-		flowerController.isAFlower("poppy");
+    @Test
+    void givenMatchersOutsideofStubbing_whenUsingMatchersAsReturnValue_thenThrowsError() {
+        flowerController.isAFlower("poppy");
 
-		String orMatcher = or(eq("poppy"), endsWith("y"));
-		assertThrows(InvalidUseOfMatchersException.class, 
-			() -> verify(flowerService).analyze(orMatcher));
-	}
+        String orMatcher = or(eq("poppy"), endsWith("y"));
+        assertThrows(InvalidUseOfMatchersException.class, 
+            () -> verify(flowerService).analyze(orMatcher));
+    }
 
-	@Test
-	void givenMatchersAsOngoingStubbing_whenUsingMatchers_thenCorrect() {
-		flowerController.isAFlower("poppy");
+    @Test
+    void givenMatchersAsOngoingStubbing_whenUsingMatchers_thenCorrect() {
+        flowerController.isAFlower("poppy");
 
-		verify(flowerService).analyze(or(eq("poppy"), endsWith("y")));
-	}
+        verify(flowerService).analyze(or(eq("poppy"), endsWith("y")));
+    }
 }

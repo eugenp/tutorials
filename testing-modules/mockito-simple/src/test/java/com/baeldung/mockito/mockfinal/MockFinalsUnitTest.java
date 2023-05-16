@@ -11,21 +11,21 @@ import com.baeldung.mockito.MyList;
 
 class MockFinalsUnitTest {
 
-	@Test
-	void whenMockFinalMethod_thenMockWorks() {
+    @Test
+    void whenMockFinalMethod_thenMockWorks() {
 
-		MyList mock = mock(MyList.class);
-		when(mock.finalMethod()).thenReturn(1);
+        MyList mock = mock(MyList.class);
+        when(mock.finalMethod()).thenReturn(1);
 
-		assertThat(mock.finalMethod()).isNotZero();
-	}
+        assertThat(mock.finalMethod()).isNotZero();
+    }
 
-	@Test
-	void whenMockFinalClass_thenMockWorks() {
+    @Test
+    void whenMockFinalClass_thenMockWorks() {
 
-		FinalList mock = mock(FinalList.class);
-		when(mock.size()).thenReturn(2);
+        FinalList mock = mock(FinalList.class);
+        when(mock.size()).thenReturn(2);
 
-		assertThat(mock.size()).isNotEqualTo(1);
-	}
+        assertThat(mock.size()).isNotEqualTo(1);
+    }
 }

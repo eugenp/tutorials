@@ -25,106 +25,106 @@ import com.baeldung.mockito.MyDictionary;
 @ExtendWith(MockitoExtension.class)
 class MockitoAnnotationUnitTest {
 
-	@Mock
-	private List<String> mockedList;
+    @Mock
+    private List<String> mockedList;
 
-	@Spy
-	private List<String> spiedList = new ArrayList<>();
+    @Spy
+    private List<String> spiedList = new ArrayList<>();
 
-	// Use either @ExtendWith(MockitoExtension.class) or manually openMocks in the @BeforeEach method
-	/*
-	@BeforeEach
-	public void init() {
-		MockitoAnnotations.openMocks(this);
-	}
-	*/
+    // Use either @ExtendWith(MockitoExtension.class) or manually openMocks in the @BeforeEach method
+    /*
+    @BeforeEach
+    public void init() {
+    	MockitoAnnotations.openMocks(this);
+    }
+    */
 
-	// tests
+    // tests
 
-	@Test
-	void whenNotUseMockAnnotation_thenCorrect() {
-		final List<String> mockList = mock(ArrayList.class);
+    @Test
+    void whenNotUseMockAnnotation_thenCorrect() {
+        final List<String> mockList = mock(ArrayList.class);
 
-		mockList.add("one");
-		verify(mockList).add("one");
-		assertEquals(0, mockList.size());
+        mockList.add("one");
+        verify(mockList).add("one");
+        assertEquals(0, mockList.size());
 
-		when(mockList.size()).thenReturn(100);
-		assertEquals(100, mockList.size());
-	}
+        when(mockList.size()).thenReturn(100);
+        assertEquals(100, mockList.size());
+    }
 
-	@Test
-	void whenUseMockAnnotation_thenMockIsInjected() {
-		mockedList.add("one");
-		verify(mockedList).add("one");
-		assertEquals(0, mockedList.size());
+    @Test
+    void whenUseMockAnnotation_thenMockIsInjected() {
+        mockedList.add("one");
+        verify(mockedList).add("one");
+        assertEquals(0, mockedList.size());
 
-		when(mockedList.size()).thenReturn(100);
-		assertEquals(100, mockedList.size());
-	}
+        when(mockedList.size()).thenReturn(100);
+        assertEquals(100, mockedList.size());
+    }
 
-	@Test
-	void whenNotUseSpyAnnotation_thenCorrect() {
-		final List<String> spyList = spy(new ArrayList<String>());
+    @Test
+    void whenNotUseSpyAnnotation_thenCorrect() {
+        final List<String> spyList = spy(new ArrayList<String>());
 
-		spyList.add("one");
-		spyList.add("two");
+        spyList.add("one");
+        spyList.add("two");
 
-		verify(spyList).add("one");
-		verify(spyList).add("two");
+        verify(spyList).add("one");
+        verify(spyList).add("two");
 
-		assertEquals(2, spyList.size());
+        assertEquals(2, spyList.size());
 
-		doReturn(100).when(spyList).size();
-		assertEquals(100, spyList.size());
-	}
+        doReturn(100).when(spyList).size();
+        assertEquals(100, spyList.size());
+    }
 
-	@Test
-	void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
-		spiedList.add("one");
-		spiedList.add("two");
+    @Test
+    void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
+        spiedList.add("one");
+        spiedList.add("two");
 
-		verify(spiedList).add("one");
-		verify(spiedList).add("two");
+        verify(spiedList).add("one");
+        verify(spiedList).add("two");
 
-		assertEquals(2, spiedList.size());
+        assertEquals(2, spiedList.size());
 
-		doReturn(100).when(spiedList).size();
-		assertEquals(100, spiedList.size());
-	}
+        doReturn(100).when(spiedList).size();
+        assertEquals(100, spiedList.size());
+    }
 
-	@Test
-	void whenNotUseCaptorAnnotation_thenCorrect() {
-		final List<String> mockList = mock(List.class);
-		final ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
+    @Test
+    void whenNotUseCaptorAnnotation_thenCorrect() {
+        final List<String> mockList = mock(List.class);
+        final ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
 
-		mockList.add("one");
-		verify(mockList).add(arg.capture());
+        mockList.add("one");
+        verify(mockList).add(arg.capture());
 
-		assertEquals("one", arg.getValue());
-	}
+        assertEquals("one", arg.getValue());
+    }
 
-	@Captor
-	private ArgumentCaptor<String> argCaptor;
+    @Captor
+    private ArgumentCaptor<String> argCaptor;
 
-	@Test
-	void whenUseCaptorAnnotation_thenTheSame() {
-		mockedList.add("one");
-		verify(mockedList).add(argCaptor.capture());
+    @Test
+    void whenUseCaptorAnnotation_thenTheSame() {
+        mockedList.add("one");
+        verify(mockedList).add(argCaptor.capture());
 
-		assertEquals("one", argCaptor.getValue());
-	}
+        assertEquals("one", argCaptor.getValue());
+    }
 
-	@Mock
-	private Map<String, String> wordMap;
+    @Mock
+    private Map<String, String> wordMap;
 
-	@InjectMocks
-	private MyDictionary dic = new MyDictionary();
+    @InjectMocks
+    private MyDictionary dic = new MyDictionary();
 
-	@Test
-	void whenUseInjectMocksAnnotation_thenCorrect() {
-		when(wordMap.get("aWord")).thenReturn("aMeaning");
+    @Test
+    void whenUseInjectMocksAnnotation_thenCorrect() {
+        when(wordMap.get("aWord")).thenReturn("aMeaning");
 
-		assertEquals("aMeaning", dic.getMeaning("aWord"));
-	}
+        assertEquals("aMeaning", dic.getMeaning("aWord"));
+    }
 }

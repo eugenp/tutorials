@@ -20,54 +20,54 @@ import com.baeldung.mockito.MyList;
 
 class MockitoMockMethodsUnitTest {
 
-	@Test
-	void whenUsingSimpleMock_thenCorrect() {
-		MyList listMock = mock(MyList.class);
-		when(listMock.add(anyString())).thenReturn(false);
+    @Test
+    void whenUsingSimpleMock_thenCorrect() {
+        MyList listMock = mock(MyList.class);
+        when(listMock.add(anyString())).thenReturn(false);
 
-		boolean added = listMock.add(randomAlphabetic(6));
+        boolean added = listMock.add(randomAlphabetic(6));
 
-		assertThat(added).isFalse();
-		verify(listMock).add(anyString());
-	}
+        assertThat(added).isFalse();
+        verify(listMock).add(anyString());
+    }
 
-	@Test
-	void givenFewActualInvocationThanConfigured_whenUsingMockWithName_thenExceptionIsThrown() {
-		MyList listMock = mock(MyList.class, "myMock");
-		
-		when(listMock.add(anyString())).thenReturn(false);
-		listMock.add(randomAlphabetic(6));
+    @Test
+    void givenFewActualInvocationThanConfigured_whenUsingMockWithName_thenExceptionIsThrown() {
+        MyList listMock = mock(MyList.class, "myMock");
 
-		assertThatThrownBy(() -> verify(listMock, times(2)).add(anyString()))
-			.isInstanceOf(TooFewActualInvocations.class)
-		    .hasMessageContaining("myMock.add");
-	}
+        when(listMock.add(anyString())).thenReturn(false);
+        listMock.add(randomAlphabetic(6));
 
-	private static class CustomAnswer implements Answer<Boolean> {
-		
-		@Override
-		public Boolean answer(InvocationOnMock invocation) throws Throwable {
-			return false;
-		}
-	}
+        assertThatThrownBy(() -> verify(listMock, times(2)).add(anyString()))
+          .isInstanceOf(TooFewActualInvocations.class)
+          .hasMessageContaining("myMock.add");
+    }
 
-	@Test
-	void whenUsingMockWithAnswer_thenCorrect() {
-		MyList listMock = mock(MyList.class, new CustomAnswer());
-		boolean added = listMock.add(randomAlphabetic(6));
+    private static class CustomAnswer implements Answer<Boolean> {
 
-		verify(listMock).add(anyString());
-		assertThat(added).isFalse();
-	}
+        @Override
+        public Boolean answer(InvocationOnMock invocation) throws Throwable {
+            return false;
+        }
+    }
 
-	@Test
-	void whenUsingMockWithSettings_thenCorrect() {
-		MockSettings customSettings = withSettings().defaultAnswer(new CustomAnswer());
-		MyList listMock = mock(MyList.class, customSettings);
-		
-		boolean added = listMock.add(randomAlphabetic(6));
+    @Test
+    void whenUsingMockWithAnswer_thenCorrect() {
+        MyList listMock = mock(MyList.class, new CustomAnswer());
+        boolean added = listMock.add(randomAlphabetic(6));
 
-		verify(listMock).add(anyString());
-		assertThat(added).isFalse();
-	}
+        verify(listMock).add(anyString());
+        assertThat(added).isFalse();
+    }
+
+    @Test
+    void whenUsingMockWithSettings_thenCorrect() {
+        MockSettings customSettings = withSettings().defaultAnswer(new CustomAnswer());
+        MyList listMock = mock(MyList.class, customSettings);
+
+        boolean added = listMock.add(randomAlphabetic(6));
+
+        verify(listMock).add(anyString());
+        assertThat(added).isFalse();
+    }
 }
