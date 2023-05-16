@@ -425,7 +425,6 @@
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
-                <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
@@ -600,7 +599,6 @@
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
-                <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
@@ -922,6 +920,7 @@
                 <module>spring-scheduling</module>
 
                 <module>spring-state-machine</module>
+                <module>spring-shell</module>
                 <module>spring-spel</module>
                 <module>spring-threads</module>
 				<module>spring-vault</module>
@@ -1182,6 +1181,7 @@
                 <module>spring-scheduling</module>
 
                 <module>spring-state-machine</module>
+                <module>spring-shell</module>
                 <module>spring-spel</module>
                 <module>spring-threads</module>
 				<module>spring-vault</module>
