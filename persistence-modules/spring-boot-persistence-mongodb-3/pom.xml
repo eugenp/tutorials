@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-persistence-mongodb-3</artifactId>
     <name>spring-boot-persistence-mongodb-3</name>
-    <packaging>war</packaging>
     <description>This is simple boot application for Spring boot persistence mongodb</description>
 
     <parent>
@@ -17,12 +16,37 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-core</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>bson</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mongodb</groupId>
+                    <artifactId>mongodb-driver-sync</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mongodb</groupId>
+                    <artifactId>mongodb-driver-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency> 
             <groupId>org.mongodb</groupId> 
@@ -37,7 +61,8 @@
     </dependencies>
 
     <properties>
-        <mongodb-crypt.version>1.6.1</mongodb-crypt.version>
+        <mongodb-crypt.version>1.7.3</mongodb-crypt.version>
+        <mongodb-driver.version>4.9.1</mongodb-driver.version>
     </properties>
     
 </project>
