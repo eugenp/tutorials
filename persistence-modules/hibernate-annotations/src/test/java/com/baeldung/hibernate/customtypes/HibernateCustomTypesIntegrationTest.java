@@ -6,10 +6,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.Assert;
 import org.junit.Test;
 
-import javax.persistence.TypedQuery;
+import jakarta.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,7 +75,7 @@ public class HibernateCustomTypesIntegrationTest {
         doInHibernate(this::sessionFactory, session -> {
             session.save(e);
 
-            TypedQuery<OfficeEmployee> query = session.createQuery("FROM OfficeEmployee OE WHERE OE.empAddress.zipcode = :pinCode", OfficeEmployee.class);
+            TypedQuery<OfficeEmployee> query = session.createQuery("FROM OfficeEmployee OE WHERE OE.empAddress.zipCode = :pinCode", OfficeEmployee.class);
             query.setParameter("pinCode",100);
             int size = query.getResultList().size();
 
@@ -100,8 +99,8 @@ public class HibernateCustomTypesIntegrationTest {
         return metadata.buildSessionFactory();
     }
 
-    private static Map<String, String> getProperties() {
-        Map<String, String> dbSettings = new HashMap<>();
+    private static Map<String, Object> getProperties() {
+        Map<String, Object> dbSettings = new HashMap<>();
         dbSettings.put(Environment.URL, "jdbc:h2:mem:mydb1;DB_CLOSE_DELAY=-1");
         dbSettings.put(Environment.USER, "sa");
         dbSettings.put(Environment.PASS, "");
