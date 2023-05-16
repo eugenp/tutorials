@@ -7,7 +7,7 @@ import com.baeldung.mockito.argumentmatchers.Message;
 @Service
 public class MessageService {
 
-    public Message deliverMessage (Message message) {
+    public Message deliverMessage(Message message) {
 
         return message;
     }

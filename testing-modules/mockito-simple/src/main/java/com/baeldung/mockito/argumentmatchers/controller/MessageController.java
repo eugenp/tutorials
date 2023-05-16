@@ -18,18 +18,18 @@ import java.util.UUID;
 @RequestMapping("/message")
 public class MessageController {
 
-	@Autowired
-	private MessageService messageService;
+    @Autowired
+    private MessageService messageService;
 
-	@PostMapping
-	public Message createMessage(@RequestBody MessageDTO messageDTO) {
-		Message message = new Message();
-		message.setText(messageDTO.getText());
-		message.setFrom(messageDTO.getFrom());
-		message.setTo(messageDTO.getTo());
-		message.setDate(Date.from(Instant.now()));
-		message.setId(UUID.randomUUID());
+    @PostMapping
+    public Message createMessage(@RequestBody MessageDTO messageDTO) {
+        Message message = new Message();
+        message.setText(messageDTO.getText());
+        message.setFrom(messageDTO.getFrom());
+        message.setTo(messageDTO.getTo());
+        message.setDate(Date.from(Instant.now()));
+        message.setId(UUID.randomUUID());
 
-		return messageService.deliverMessage(message);
-	}
+        return messageService.deliverMessage(message);
+    }
 }

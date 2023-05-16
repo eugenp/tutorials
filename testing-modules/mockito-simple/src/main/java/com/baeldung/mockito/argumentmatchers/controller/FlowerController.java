@@ -13,16 +13,16 @@ import com.baeldung.mockito.argumentmatchers.service.FlowerService;
 @RequestMapping("/flowers")
 public class FlowerController {
 
-	@Autowired
-	private FlowerService flowerService;
+    @Autowired
+    private FlowerService flowerService;
 
-	@PostMapping("/isAFlower")
-	public String isAFlower(@RequestBody String flower) {
-		return flowerService.analyze(flower);
-	}
+    @PostMapping("/isAFlower")
+    public String isAFlower(@RequestBody String flower) {
+        return flowerService.analyze(flower);
+    }
 
-	@PostMapping("/isABigFlower")
-	public Boolean isABigFlower(@RequestBody Flower flower) {
-		return flowerService.isABigFlower(flower.getName(), flower.getPetals());
-	}
+    @PostMapping("/isABigFlower")
+    public Boolean isABigFlower(@RequestBody Flower flower) {
+        return flowerService.isABigFlower(flower.getName(), flower.getPetals());
+    }
 }

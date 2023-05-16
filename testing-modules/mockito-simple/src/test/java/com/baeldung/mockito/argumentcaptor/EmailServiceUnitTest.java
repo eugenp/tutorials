@@ -18,84 +18,84 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class EmailServiceUnitTest {
 
-	@Mock
-	DeliveryPlatform platform;
+    @Mock
+    DeliveryPlatform platform;
 
-	@InjectMocks
-	EmailService emailService;
+    @InjectMocks
+    EmailService emailService;
 
-	@Captor
-	ArgumentCaptor<Email> emailCaptor;
+    @Captor
+    ArgumentCaptor<Email> emailCaptor;
 
-	@Captor
-	ArgumentCaptor<Credentials> credentialsCaptor;
+    @Captor
+    ArgumentCaptor<Credentials> credentialsCaptor;
 
-	@Test
-	void whenDoesNotSupportHtml_expectTextOnlyEmailFormat() {
-		String to = "info@baeldung.com";
-		String subject = "Using ArgumentCaptor";
-		String body = "Hey, let'use ArgumentCaptor";
+    @Test
+    void whenDoesNotSupportHtml_expectTextOnlyEmailFormat() {
+        String to = "info@baeldung.com";
+        String subject = "Using ArgumentCaptor";
+        String body = "Hey, let'use ArgumentCaptor";
 
-		emailService.send(to, subject, body, false);
+        emailService.send(to, subject, body, false);
 
-		verify(platform).deliver(emailCaptor.capture());
-		Email emailCaptorValue = emailCaptor.getValue();
-		assertThat(emailCaptorValue.getFormat()).isEqualTo(Format.TEXT_ONLY);
-	}
+        verify(platform).deliver(emailCaptor.capture());
+        Email emailCaptorValue = emailCaptor.getValue();
+        assertThat(emailCaptorValue.getFormat()).isEqualTo(Format.TEXT_ONLY);
+    }
 
-	@Test
-	void whenDoesSupportHtml_expectHTMLEmailFormat() {
-		String to = "info@baeldung.com";
-		String subject = "Using ArgumentCaptor";
-		String body = "<html><body>Hey, let'use ArgumentCaptor</body></html>";
+    @Test
+    void whenDoesSupportHtml_expectHTMLEmailFormat() {
+        String to = "info@baeldung.com";
+        String subject = "Using ArgumentCaptor";
+        String body = "<html><body>Hey, let'use ArgumentCaptor</body></html>";
 
-		emailService.send(to, subject, body, true);
+        emailService.send(to, subject, body, true);
 
-		verify(platform).deliver(emailCaptor.capture());
-		Email value = emailCaptor.getValue();
-		assertThat(value.getFormat()).isEqualTo(Format.HTML);
-	}
+        verify(platform).deliver(emailCaptor.capture());
+        Email value = emailCaptor.getValue();
+        assertThat(value.getFormat()).isEqualTo(Format.HTML);
+    }
 
-	@Test
-	void whenServiceRunning_expectUpResponse() {
-		when(platform.getServiceStatus()).thenReturn("OK");
+    @Test
+    void whenServiceRunning_expectUpResponse() {
+        when(platform.getServiceStatus()).thenReturn("OK");
 
-		ServiceStatus serviceStatus = emailService.checkServiceStatus();
+        ServiceStatus serviceStatus = emailService.checkServiceStatus();
 
-		assertThat(serviceStatus).isEqualTo(ServiceStatus.UP);
-	}
+        assertThat(serviceStatus).isEqualTo(ServiceStatus.UP);
+    }
 
-	@Test
-	void whenServiceNotRunning_expectDownResponse() {
-		when(platform.getServiceStatus()).thenReturn("Error");
+    @Test
+    void whenServiceNotRunning_expectDownResponse() {
+        when(platform.getServiceStatus()).thenReturn("Error");
 
-		ServiceStatus serviceStatus = emailService.checkServiceStatus();
+        ServiceStatus serviceStatus = emailService.checkServiceStatus();
 
-		assertThat(serviceStatus).isEqualTo(ServiceStatus.DOWN);
-	}
+        assertThat(serviceStatus).isEqualTo(ServiceStatus.DOWN);
+    }
 
-	@Test
-	void whenUsingArgumentMatcherForValidCredentials_expectTrue() {
-		Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
-		when(platform.authenticate(eq(credentials))).thenReturn(AuthenticationStatus.AUTHENTICATED);
+    @Test
+    void whenUsingArgumentMatcherForValidCredentials_expectTrue() {
+        Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
+        when(platform.authenticate(eq(credentials))).thenReturn(AuthenticationStatus.AUTHENTICATED);
 
-		assertTrue(emailService.authenticatedSuccessfully(credentials));
-	}
+        assertTrue(emailService.authenticatedSuccessfully(credentials));
+    }
 
-	@Test
-	void whenUsingArgumentCaptorForValidCredentials_expectTrue() {
-		Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
-		when(platform.authenticate(credentialsCaptor.capture())).thenReturn(AuthenticationStatus.AUTHENTICATED);
+    @Test
+    void whenUsingArgumentCaptorForValidCredentials_expectTrue() {
+        Credentials credentials = new Credentials("baeldung", "correct_password", "correct_key");
+        when(platform.authenticate(credentialsCaptor.capture())).thenReturn(AuthenticationStatus.AUTHENTICATED);
 
-		assertTrue(emailService.authenticatedSuccessfully(credentials));
-		assertThat(credentialsCaptor.getValue()).isEqualTo(credentials);
-	}
+        assertTrue(emailService.authenticatedSuccessfully(credentials));
+        assertThat(credentialsCaptor.getValue()).isEqualTo(credentials);
+    }
 
-	@Test
-	void whenNotAuthenticated_expectFalse() {
-		Credentials credentials = new Credentials("baeldung", "incorrect_password", "incorrect_key");
-		when(platform.authenticate(eq(credentials))).thenReturn(AuthenticationStatus.NOT_AUTHENTICATED);
+    @Test
+    void whenNotAuthenticated_expectFalse() {
+        Credentials credentials = new Credentials("baeldung", "incorrect_password", "incorrect_key");
+        when(platform.authenticate(eq(credentials))).thenReturn(AuthenticationStatus.NOT_AUTHENTICATED);
 
-		assertFalse(emailService.authenticatedSuccessfully(credentials));
-	}
+        assertFalse(emailService.authenticatedSuccessfully(credentials));
+    }
 }

@@ -19,24 +19,24 @@ import com.baeldung.mockito.MyDictionary;
 @ExtendWith(MockitoExtension.class)
 class MockitoAnnotationsInjectIntoSpyUnitTest {
 
-	@BeforeEach
-	public void init() {
-		openMocks(this);
-		spyDic = spy(new MyDictionary(wordMap));
-	}
+    @BeforeEach
+    public void init() {
+        openMocks(this);
+        spyDic = spy(new MyDictionary(wordMap));
+    }
 
-	@Mock
-	private Map<String, String> wordMap;
+    @Mock
+    private Map<String, String> wordMap;
 
-	@InjectMocks
-	private MyDictionary dic = new MyDictionary();
+    @InjectMocks
+    private MyDictionary dic = new MyDictionary();
 
-	private MyDictionary spyDic;
+    private MyDictionary spyDic;
 
-	@Test
-	void whenUseInjectMocksAnnotation_thenCorrect() {
-		when(wordMap.get("aWord")).thenReturn("aMeaning");
+    @Test
+    void whenUseInjectMocksAnnotation_thenCorrect() {
+        when(wordMap.get("aWord")).thenReturn("aMeaning");
 
-		assertEquals("aMeaning", spyDic.getMeaning("aWord"));
-	}
+        assertEquals("aMeaning", spyDic.getMeaning("aWord"));
+    }
 }

@@ -43,14 +43,14 @@ class UserServiceUnitTest {
     @BeforeEach
     void init(@Mock SettingRepository settingRepository) {
         userService = new DefaultUserService(userRepository, settingRepository, mailClient);
-        
+
         lenient().when(settingRepository.getUserMinAge()).thenReturn(10);
-        
+
         when(settingRepository.getUserNameMinLength()).thenReturn(4);
-        
+
         lenient().when(userRepository.isUsernameAlreadyExists(any(String.class)))
             .thenReturn(false);
-        
+
         this.settingRepository = settingRepository;
     }
 
@@ -80,8 +80,8 @@ class UserServiceUnitTest {
         verify(mailClient).sendUserRegistrationMail(insertedUser);
     }
 
-    //additional tests
-    
+    // additional tests
+
     @Test
     void givenShortName_whenSaveUser_thenGiveShortUsernameError() {
         // Given

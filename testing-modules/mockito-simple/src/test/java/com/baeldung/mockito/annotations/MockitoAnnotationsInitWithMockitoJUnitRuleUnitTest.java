@@ -13,16 +13,16 @@ import static org.mockito.Mockito.when;
 
 public class MockitoAnnotationsInitWithMockitoJUnitRuleUnitTest {
 
-	@Rule
-	public MockitoRule initRule = MockitoJUnit.rule();
+    @Rule
+    public MockitoRule initRule = MockitoJUnit.rule();
 
-	@Mock
-	private List<String> mockedList;
+    @Mock
+    private List<String> mockedList;
 
-	@Test
-	public void whenUsingMockitoJUnitRule_thenMocksInitialized() {
-		when(mockedList.size()).thenReturn(41);
+    @Test
+    public void whenUsingMockitoJUnitRule_thenMocksInitialized() {
+        when(mockedList.size()).thenReturn(41);
 
-		assertThat(mockedList).hasSize(41);
-	}
+        assertThat(mockedList).hasSize(41);
+    }
 }
