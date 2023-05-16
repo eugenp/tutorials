@@ -432,7 +432,6 @@
                 <module>spring-swagger-codegen</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-                <module>static-analysis</module>
                 <module>testing-modules</module>
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -609,7 +608,6 @@
                 <module>spring-swagger-codegen</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-                <module>static-analysis</module>
                 <module>testing-modules</module>
                 <module>vertx-modules</module>
                 <module>video-tutorials</module>
@@ -928,6 +926,7 @@
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
 				<module>spring-vault</module>
+                <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
@@ -1186,6 +1185,7 @@
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
 				<module>spring-vault</module>
+                <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>xstream</module>
                 <module>webrtc</module>
