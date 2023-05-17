@@ -1,7 +1,7 @@
 package com.baeldung.hibernate.pojo.inheritance;
 
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class Person {
