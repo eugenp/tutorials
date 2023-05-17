@@ -11,9 +11,9 @@ public class ActuatorConfiguration {
 
     @Bean
     public HealthIndicator sampleHealthIndicator() {
-        return () -> Health.up()
+        return Health.up()
           .withDetail("info", "Sample Health")
-          .build();
+          ::build;
     }
 
     @Bean
