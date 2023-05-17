@@ -24,10 +24,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
-    @ExceptionHandler({CustomErrorException.class})
+    @ExceptionHandler(CustomErrorException.class)
     protected ResponseEntity<CustomErrorResponse> handleCustomError(RuntimeException ex) {
         CustomErrorException customErrorException = (CustomErrorException) ex;
-        return ResponseEntity.status(customErrorException.getErrorResponse().getStatus()).body(customErrorException.getErrorResponse());
+        return ResponseEntity.status(customErrorException.getErrorResponse().getStatus())
+          .body(customErrorException.getErrorResponse());
     }
 
 }

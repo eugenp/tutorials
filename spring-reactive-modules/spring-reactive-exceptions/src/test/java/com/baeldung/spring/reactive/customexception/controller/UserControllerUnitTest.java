@@ -20,7 +20,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import com.baeldung.spring.reactive.customexception.exception.GlobalExceptionHandler;
 import com.baeldung.spring.reactive.customexception.model.ErrorDetails;
 
-
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class UserControllerUnitTest {
 
@@ -36,21 +35,33 @@ class UserControllerUnitTest {
     @BeforeEach
     void setupTests() {
         // Given
-        webClient = WebTestClient.bindToController(userController).controllerAdvice(globalExceptionHandler).configureClient().build();
+        webClient = WebTestClient.bindToController(userController)
+          .controllerAdvice(globalExceptionHandler)
+          .configureClient()
+          .build();
     }
 
     @Test
     void givenGetUserV1Endpoint_whenHitWithInvalidUser_thenResponseShouldContainProblemDetailWithCustomAttributes() throws Exception {
         // When
-        ProblemDetail problemDetail = webClient.get().uri("/v1/users/123")
+        ProblemDetail problemDetail = webClient.get()
+          .uri("/v1/users/123")
           .exchange()
-          .expectStatus().isNotFound().expectBody(ProblemDetail.class).returnResult().getResponseBody();
+          .expectStatus()
+          .isNotFound()
+          .expectBody(ProblemDetail.class)
+          .returnResult()
+          .getResponseBody();
         // Then
         assertNotNull(problemDetail);
         assertNotNull(problemDetail.getProperties().get("errors"));
-        assertEquals(ErrorDetails.API_USER_NOT_FOUND.getErrorCode().toString(), ((List<LinkedHashMap>) problemDetail.getProperties().get("errors")).get(0).get("code"));
-        assertEquals(ErrorDetails.API_USER_NOT_FOUND.getErrorMessage().toString(), ((List<LinkedHashMap>) problemDetail.getProperties().get("errors")).get(0).get("message"));
-        assertEquals(ErrorDetails.API_USER_NOT_FOUND.getReferenceUrl().toString(), ((List<LinkedHashMap>) problemDetail.getProperties().get("errors")).get(0).get("reference"));
+        List<LinkedHashMap> errors = (List<LinkedHashMap>) problemDetail.getProperties().get("errors");
+        assertEquals(ErrorDetails.API_USER_NOT_FOUND.getErrorCode().toString(),
+          errors.get(0).get("code"));
+        assertEquals(ErrorDetails.API_USER_NOT_FOUND.getErrorMessage().toString(),
+          errors.get(0).get("message"));
+        assertEquals(ErrorDetails.API_USER_NOT_FOUND.getReferenceUrl().toString(),
+          errors.get(0).get("reference"));
     }
 
     @Test
@@ -58,9 +69,14 @@ class UserControllerUnitTest {
         // When
         String regex = "^\\{\\s*\"traceId\":\\s*\"[^\"]*\",\\s*\"timestamp\":\\d+\\.\\d+,\\s*\"status\":\\s*\"[^\"]*\",\\s*\"errors\":\\s*\\[\\s*\\{\\s*\"code\":\\s*\"[^\"]*\",\\s*\"message\":\\s*\"[^\"]*\",\\s*\"reference\":\\s*\"[^\"]*\"\\s*\\}\\s*\\]\\s*\\}$";
         Pattern errorResponseSampleFormat = Pattern.compile(regex);
-        String errorResponse = webClient.get().uri("/v2/users/123")
+        String errorResponse = webClient.get()
+          .uri("/v2/users/123")
           .exchange()
-          .expectStatus().isNotFound().expectBody(String.class).returnResult().getResponseBody();
+          .expectStatus()
+          .isNotFound()
+          .expectBody(String.class)
+          .returnResult()
+          .getResponseBody();
         // Then
         assertTrue(errorResponseSampleFormat.matcher(errorResponse).matches());
     }
