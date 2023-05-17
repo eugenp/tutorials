@@ -10,9 +10,9 @@ public class AuthenticationService {
     private static final String AUTH_TOKEN = "Baeldung";
 
     public static Authentication getAuthentication(HttpServletRequest request) {
-        String apiKey  = request.getHeader(AUTH_TOKEN_HEADER_NAME);
-        if (apiKey  != null && apiKey.equals(AUTH_TOKEN)) {
-            return new ApiKeyAuthentication(apiKey , AuthorityUtils.NO_AUTHORITIES);
+        String apiKey = request.getHeader(AUTH_TOKEN_HEADER_NAME);
+        if (apiKey != null && apiKey.equals(AUTH_TOKEN)) {
+            return new ApiKeyAuthentication(apiKey, AuthorityUtils.NO_AUTHORITIES);
         }
 
         return null;
