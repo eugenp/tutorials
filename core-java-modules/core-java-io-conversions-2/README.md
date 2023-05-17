@@ -11,4 +11,5 @@ This module contains articles about core Java input/output(IO) conversions.
 - [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
 - [How to Convert InputStream to Base64 String](https://www.baeldung.com/java-inputstream-to-base64-string)
 - [Convert an OutputStream to an InputStream](https://www.baeldung.com/java-convert-outputstream-to-inputstream)
+- [Java PrintStream to String](https://www.baeldung.com/java-printstream-to-string)
 - More articles: [[<-- prev]](/core-java-modules/core-java-io-conversions)
