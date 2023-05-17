@@ -35,16 +35,20 @@ public class CitizenService {
     @Autowired
     private ClientEncryption clientEncryption;
 
-    public EncryptedCitizen save(Citizen citizen) {
-        EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen);
-        encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
-        encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
+    public Object save(Citizen citizen) {
+        if (encryptionConfig.isAutoEncryption()) {
+            return mongo.save(citizen);
+        } else {
+            EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen);
+            encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
+            encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
 
-        return mongo.save(encryptedCitizen);
+            return mongo.save(encryptedCitizen);
+        }
     }
 
     public List<Citizen> findAll() {
-        if (!encryptionConfig.getAutoDecryption()) {
+        if (!encryptionConfig.isAutoDecryption()) {
             List<EncryptedCitizen> allEncrypted = mongo.findAll(EncryptedCitizen.class);
 
             return allEncrypted.stream()
@@ -56,13 +60,20 @@ public class CitizenService {
     }
 
     public Citizen findByEmail(String email) {
-        Query byEmail = new Query(Criteria.where("email")
-            .is(encrypt(email, DETERMINISTIC_ALGORITHM)));
-        if (!encryptionConfig.getAutoDecryption()) {
+        Criteria emailCriteria = Criteria.where("email");
+        if (encryptionConfig.isAutoEncryption()) {
+            emailCriteria.is(email);
+        } else {
+            emailCriteria
+                .is(encrypt(email, DETERMINISTIC_ALGORITHM));
+        }
+
+        Query byEmail = new Query(emailCriteria);
+        if (encryptionConfig.isAutoDecryption()) {
+            return mongo.findOne(byEmail, Citizen.class);
+        } else {
             EncryptedCitizen encryptedCitizen = mongo.findOne(byEmail, EncryptedCitizen.class);
             return decrypt(encryptedCitizen);
-        } else {
-            return mongo.findOne(byEmail, Citizen.class);
         }
     }
 
