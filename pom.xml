@@ -328,6 +328,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>checker-framework</module>
@@ -407,6 +408,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>spring-4</module>
@@ -475,6 +477,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
@@ -517,6 +520,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>checker-framework</module>
@@ -586,6 +590,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>spring-4</module>
@@ -645,6 +650,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
@@ -909,6 +915,7 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
+                <module>spring-actuator</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-credhub</module>
@@ -1204,6 +1211,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
             </modules>
 
