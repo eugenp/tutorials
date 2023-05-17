@@ -938,12 +938,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <module>web-modules/apache-tapestry</module>
-                <module>web-modules/blade</module>
-                <module>web-modules/bootique</module>
-                <module>web-modules/dropwizard</module>
-                <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/jakarta-ee</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
@@ -1196,12 +1191,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <module>web-modules/apache-tapestry</module>
-                <module>web-modules/blade</module>
-                <module>web-modules/bootique</module>
-                <module>web-modules/dropwizard</module>
-                <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/jakarta-ee</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
