@@ -434,7 +434,6 @@
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -611,7 +610,6 @@
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -929,6 +927,7 @@
                 <module>spring-threads</module>
 				<module>spring-vault</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -1182,6 +1181,7 @@
                 <module>spring-threads</module>
 				<module>spring-vault</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
