@@ -41,7 +41,13 @@ public class UserController {
         return Mono.fromCallable(() -> {
             User user = userMap.get(userId);
             if (user == null) {
-                CustomErrorResponse customErrorResponse = CustomErrorResponse.builder().traceId(UUID.randomUUID().toString()).timestamp(OffsetDateTime.now().now()).status(HttpStatus.NOT_FOUND).errors(List.of(ErrorDetails.API_USER_NOT_FOUND)).build();
+                CustomErrorResponse customErrorResponse = CustomErrorResponse
+                  .builder()
+                  .traceId(UUID.randomUUID().toString())
+                  .timestamp(OffsetDateTime.now().now())
+                  .status(HttpStatus.NOT_FOUND)
+                  .errors(List.of(ErrorDetails.API_USER_NOT_FOUND))
+                  .build();
                 throw new CustomErrorException("User not found", customErrorResponse);
             }
             return new ResponseEntity<>(user, HttpStatus.OK);
