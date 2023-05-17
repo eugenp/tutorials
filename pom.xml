@@ -349,7 +349,6 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -413,15 +412,9 @@
                 <module>parent-java</module>
 
                 <module>spring-4</module>
-                <module>spring-aop</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -536,7 +529,6 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -593,11 +585,6 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
