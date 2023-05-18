@@ -103,11 +103,11 @@ public class ServiceIntegrationTest {
 
     @Test
     public void givenJsonPathWithFilterPredicate_whenReadingRootNode_thenCorrect() {
-        Filter expensiveFilter = Filter.filter(Criteria.where("director")
+        Filter directorSamMendesFilter = Filter.filter(Criteria.where("director")
             .contains("Sam Mendes"));
-        List<Map<String, Object>> predicate = JsonPath.parse(jsonString)
-            .read("$[?]['director']", expensiveFilter);
-        assertEquals(predicate.size(), 2);
+        List<Map<String, Object>> samMendesMovies = JsonPath.parse(jsonString)
+            .read("$[?]['director']", directorSamMendesFilter);
+        assertEquals(samMendesMovies.size(), 2);
     }
 
 }
