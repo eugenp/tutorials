@@ -222,6 +222,9 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -328,6 +331,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>checker-framework</module>
@@ -346,14 +350,12 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
 
@@ -363,8 +365,8 @@
 
                 <module>muleesb</module>
 
-                <module>web-modules</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
             </modules>
 
         </profile>
@@ -407,18 +409,13 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>spring-4</module>
-                <module>spring-aop</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -427,12 +424,9 @@
                 <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-                <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -475,6 +469,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
@@ -483,7 +478,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jws</module>
             </modules>
         </profile>
 
@@ -517,6 +511,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>checker-framework</module>
@@ -535,7 +530,6 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -550,8 +544,8 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
-                <module>web-modules</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
             </modules>
 
         </profile>
@@ -586,17 +580,13 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>spring-4</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -605,12 +595,9 @@
                 <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-                <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -645,6 +632,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
@@ -653,7 +641,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jws</module>
             </modules>
 
         </profile>
@@ -811,6 +798,7 @@
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
+                <module>testing-modules/mockito-simple</module>
                 <module>persistence-modules/fauna</module>
                 <module>persistence-modules/spring-data-rest</module>
 
@@ -822,6 +810,8 @@
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
+
+                <module>jws</module>
 
                 <!-- Modules from default-first -->
 
@@ -864,6 +854,7 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>javax-validation-advanced</module>
+                <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
 
@@ -909,6 +900,7 @@
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
+                <module>spring-actuator</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-credhub</module>
@@ -926,7 +918,10 @@
 
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
+				<module>spring-vault</module>
+                <module>static-analysis</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -936,6 +931,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
@@ -1061,6 +1057,7 @@
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>testing-modules/testing-assertions</module>
+                <module>testing-modules/mockito-simple</module>
                 <module>persistence-modules/fauna</module>
                 <module>persistence-modules/spring-data-rest</module>
 
@@ -1072,6 +1069,8 @@
                 <module>lightrun</module>
                 <module>tablesaw</module>
                 <module>geotools</module>
+
+                <module>jws</module>
 
                 <!-- Modules from default-first -->
 
@@ -1115,6 +1114,7 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>javax-validation-advanced</module>
+                <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
 
@@ -1177,7 +1177,10 @@
 
                 <module>spring-state-machine</module>
                 <module>spring-threads</module>
+				<module>spring-vault</module>
+                <module>static-analysis</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -1187,6 +1190,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
@@ -1204,6 +1208,7 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
                 <module>parent-java</module>
             </modules>
 
@@ -1258,7 +1263,7 @@
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
