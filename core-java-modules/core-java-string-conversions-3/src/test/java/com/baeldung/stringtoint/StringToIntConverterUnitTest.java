@@ -5,7 +5,9 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class StringToIntConverterUnitTest {
+class stringToIntConverter {
+    
+    private StringToIntConverter stringToIntConverter = new StringToIntConverter();
 
     @Test
     void whenConvertingIntToString_thenInvalidCasesReturnIntegerMinValue() {
@@ -18,11 +20,11 @@ class StringToIntConverterUnitTest {
                 new TestData("hello", Integer.MIN_VALUE)
         );
         testData.forEach(data -> {
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingOptional(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerDecode(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingNumberUtils(data.input,Integer.MIN_VALUE ));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingOptional(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerDecode(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingNumberUtils(data.input,Integer.MIN_VALUE ));
         });
     }
 
@@ -33,11 +35,11 @@ class StringToIntConverterUnitTest {
                 new TestData("-23", -23)
         );
         testData.forEach(data -> {
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingOptional(data.input));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingNumberUtils(data.input, Integer.MIN_VALUE));
-            Assertions.assertEquals(data.expectedOutput, StringToIntConverter.convertStringToIntUsingIntegerDecode(data.input));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingOptional(data.input).orElse(Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingNumberUtils(data.input, Integer.MIN_VALUE));
+            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerDecode(data.input).orElse(Integer.MIN_VALUE));
         });
     }
 
