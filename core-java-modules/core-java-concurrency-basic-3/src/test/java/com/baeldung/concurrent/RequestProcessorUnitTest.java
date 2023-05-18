@@ -20,7 +20,8 @@ public class RequestProcessorUnitTest {
     void whenWaitingWithThreadSleep_thenStatusIsDone() throws InterruptedException {
         String requestId = requestProcessor.processRequest();
 
-        Thread.sleep(2000);
+        //The sleep value should be greater than the maximum time the request takes to complete
+        Thread.sleep(2010);
 
         assertEquals("DONE", requestProcessor.getStatus(requestId));
     }
@@ -31,7 +32,8 @@ public class RequestProcessorUnitTest {
         String requestId = requestProcessor.processRequest();
 
         Awaitility.await()
-          .atMost(2, TimeUnit.SECONDS)
+           //The timeout value should exceed the maximum time the request takes to complete, for the time amount of a poll (500 ms)
+          .atMost(2501, TimeUnit.MILLISECONDS)
           .pollDelay(500, TimeUnit.MILLISECONDS)
           .until(() -> requestProcessor.getStatus(requestId), not(equalTo("PROCESSING")));
 

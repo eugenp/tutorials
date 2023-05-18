@@ -1,9 +1,11 @@
 package com.baeldung.jsonpath.introduction;
 
 import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.Criteria;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Option;
+import com.jayway.jsonpath.Filter;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -98,4 +100,14 @@ public class ServiceIntegrationTest {
 
         assertEquals("Spectre", title);
     }
+
+    @Test
+    public void givenJsonPathWithFilterPredicate_whenReadingRootNode_thenCorrect() {
+        Filter expensiveFilter = Filter.filter(Criteria.where("director")
+            .contains("Sam Mendes"));
+        List<Map<String, Object>> predicate = JsonPath.parse(jsonString)
+            .read("$[?]['director']", expensiveFilter);
+        assertEquals(predicate.size(), 2);
+    }
+
 }
