@@ -27,6 +27,13 @@
             <version>${mysql.connector.java.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>${sun.tools.version}</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>org.javalite</groupId>
             <artifactId>activeweb-testing</artifactId>
             <version>${activeweb-testing.version}</version>
@@ -49,7 +56,6 @@
                     <systemProperties>
                         <systemProperty>
                             <name>activejdbc.log</name>
-                            <value></value>
                         </systemProperty>
                         <systemProperty>
                             <name>active_reload</name>
@@ -83,9 +89,8 @@
         <activejdbc.version>1.4.13</activejdbc.version>
         <activeweb.version>1.15</activeweb.version>
         <mysql.connector.java.version>5.1.45</mysql.connector.java.version>
+        <sun.tools.version>1.7.0</sun.tools.version>
         <activeweb-testing.version>1.15</activeweb-testing.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
 </project>
