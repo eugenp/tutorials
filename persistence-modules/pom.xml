@@ -40,7 +40,7 @@
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module> <!-- long running -->
-        <module>java-jpa-2</module> <!-- long running -->
+        <module>java-jpa-2</module>
         <module>java-jpa-3</module>
 		<!-- enable it when persistence-modules is migrated to JDK9+ -->
 		<!-- <module>java-mongodb</module>--> <!-- long running -->

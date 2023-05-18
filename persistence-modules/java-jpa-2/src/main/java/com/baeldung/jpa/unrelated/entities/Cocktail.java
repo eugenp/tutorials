@@ -21,7 +21,7 @@ public class Cocktail {
     private String category;
 
     @OneToOne
-    // @NotFound(action = NotFoundAction.IGNORE)
+    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "cocktail_name",
         referencedColumnName = "cocktail", 
         insertable = false, updatable = false, 
@@ -30,7 +30,6 @@ public class Cocktail {
     private Recipe recipe;
 
     @OneToMany(fetch = FetchType.LAZY)
-    // @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(
         name = "cocktail", 
         referencedColumnName = "cocktail_name", 
