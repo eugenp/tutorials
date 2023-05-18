@@ -14,7 +14,7 @@ import org.junit.Test;
 public class EmptyStreamsUntiTest {
 
     @Test
-    public void createEmptyStreams() {
+    public void givenEmptyStreams_findAnyReturnsAnEmptyOptional() {
 
         Stream<String> emptyStream = Stream.empty();
         assertTrue(emptyStream.findAny().isEmpty());
@@ -33,7 +33,7 @@ public class EmptyStreamsUntiTest {
     }
 
     @Test
-    public void reuseStreamUsingSupplier() {
+    public void givenAStreamToSupplier_NewInstanceOfTheStreamIsReturnedForEveryGetCall() {
         Supplier<Stream<Integer>> streamSupplier = () -> Stream.of(1, 2, 3, 4, 5).filter(number -> number > 5);
 
         Optional<Integer> result1 = streamSupplier.get().findAny();
@@ -41,5 +41,4 @@ public class EmptyStreamsUntiTest {
         Optional<Integer> result2 = streamSupplier.get().findFirst();
         assertTrue(result2.isEmpty());
     }
-
 }
