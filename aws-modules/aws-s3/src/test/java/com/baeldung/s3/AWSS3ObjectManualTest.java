@@ -10,7 +10,12 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
-public class AWSS3ObjectIntegrationTest {
+/**
+ * Required defined environment variables AWS_ACCESS_KEY_ID & AWS_ACCESS_KEY to access S3.
+ * Required S3 bucket and key that exist.
+ */
+
+public class AWSS3ObjectManualTest {
 
     private static final String BUCKET = "your-bucket";
     private static final String KEY_THAT_EXIST = "your-key-that-exist";

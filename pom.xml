@@ -349,7 +349,6 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -413,15 +412,9 @@
                 <module>parent-java</module>
 
                 <module>spring-4</module>
-                <module>spring-aop</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -434,7 +427,6 @@
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -537,7 +529,6 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -594,11 +585,6 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -611,7 +597,6 @@
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -930,6 +915,7 @@
                 <module>spring-threads</module>
 				<module>spring-vault</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -939,12 +925,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <module>web-modules/apache-tapestry</module>
-                <module>web-modules/blade</module>
-                <module>web-modules/bootique</module>
-                <module>web-modules/dropwizard</module>
-                <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/jakarta-ee</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
@@ -1189,6 +1170,7 @@
                 <module>spring-threads</module>
 				<module>spring-vault</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -1198,12 +1180,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <module>web-modules/apache-tapestry</module>
-                <module>web-modules/blade</module>
-                <module>web-modules/bootique</module>
-                <module>web-modules/dropwizard</module>
-                <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/jakarta-ee</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
