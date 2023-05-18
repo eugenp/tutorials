@@ -1,4 +1,4 @@
-package com.baeldung.greyboxtesting;
+package greyboxtesting;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
