@@ -25,7 +25,7 @@ public class SpringBootGradle2ApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    public void helloWorldTest() throws Exception {
+    public void givenHelloEndPoint_whenCallingHello_ThenGettingHelloWorld() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("Hello World!"));
