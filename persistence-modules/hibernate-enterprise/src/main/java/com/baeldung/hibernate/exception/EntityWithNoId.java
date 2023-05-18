@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.exception;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class EntityWithNoId {
