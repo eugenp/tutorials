@@ -349,14 +349,12 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
 
@@ -413,15 +411,9 @@
                 <module>parent-java</module>
 
                 <module>spring-4</module>
-                <module>spring-aop</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -434,7 +426,6 @@
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -485,7 +476,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jws</module>
             </modules>
         </profile>
 
@@ -537,7 +527,6 @@
                 <module>core-java-modules/core-java-collections-conversions-2</module>
                 <module>core-java-modules/core-java-streams-2</module>
 
-                <module>couchbase</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <module>gradle-modules/gradle/maven-to-gradle</module>
@@ -594,11 +583,6 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
@@ -611,7 +595,6 @@
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>testing-modules</module>
-                <module>vertx-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
                 <module>xml-2</module>
@@ -654,7 +637,6 @@
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
-                <module>jws</module>
             </modules>
 
         </profile>
@@ -824,6 +806,8 @@
                 <module>tablesaw</module>
                 <module>geotools</module>
 
+                <module>jws</module>
+
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
@@ -865,6 +849,7 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>javax-validation-advanced</module>
+                <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
 
@@ -929,6 +914,7 @@
                 <module>spring-threads</module>
 				<module>spring-vault</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -938,21 +924,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <module>web-modules/apache-tapestry</module>
-                <module>web-modules/blade</module>
-                <module>web-modules/bootique</module>
-                <module>web-modules/dropwizard</module>
-                <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/jakarta-ee</module>
-                <module>web-modules/javax-servlets</module>
-                <module>web-modules/javax-servlets-2</module>
-                <module>web-modules/linkrest</module>
-                <module>web-modules/jee-7</module>
-                <module>web-modules/resteasy</module>
-                <module>web-modules/spark-java</module>
-                <module>web-modules/struts-2</module>
-                <module>web-modules/vraptor</module>
-                <module>web-modules/wicket</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
@@ -1090,6 +1062,8 @@
                 <module>tablesaw</module>
                 <module>geotools</module>
 
+                <module>jws</module>
+
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
@@ -1132,6 +1106,7 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>javax-validation-advanced</module>
+                <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
 
@@ -1196,6 +1171,7 @@
                 <module>spring-threads</module>
 				<module>spring-vault</module>
                 <module>tensorflow-java</module>
+                <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
                 <module>persistence-modules/java-mongodb</module>
@@ -1205,21 +1181,7 @@
                 <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
-                <module>web-modules/apache-tapestry</module>
-                <module>web-modules/blade</module>
-                <module>web-modules/bootique</module>
-                <module>web-modules/dropwizard</module>
-                <module>web-modules/google-web-toolkit</module>
-                <module>web-modules/jakarta-ee</module>
-                <module>web-modules/javax-servlets</module>
-                <module>web-modules/javax-servlets-2</module>
-                <module>web-modules/linkrest</module>
-                <module>web-modules/jee-7</module>
-                <module>web-modules/resteasy</module>
-                <module>web-modules/spark-java</module>
-                <module>web-modules/struts-2</module>
-                <module>web-modules/vraptor</module>
-                <module>web-modules/wicket</module>
+                <module>web-modules</module>
             </modules>
 
             <properties>
