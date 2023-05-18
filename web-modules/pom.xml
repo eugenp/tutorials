@@ -25,8 +25,8 @@
         <module>javax-servlets-2</module>
         <module>jee-7</module>
         <module>jooby</module>
-        <module>linkrest</module>
-        <module>ninja</module>-->
+        <module>linkrest</module>-->
+        <module>ninja</module>
         <!-- <module>play-modules</module> --> <!-- Not a maven project -->
         <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
         <module>ratpack</module>
