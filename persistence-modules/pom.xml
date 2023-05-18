@@ -35,7 +35,6 @@
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
-        <!-- <module>java-cassandra</module> FAILED -->
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module> <!-- long running -->
