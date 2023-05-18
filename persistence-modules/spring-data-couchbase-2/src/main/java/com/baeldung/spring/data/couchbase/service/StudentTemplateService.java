@@ -3,6 +3,7 @@ package com.baeldung.spring.data.couchbase.service;
 import static org.springframework.data.couchbase.core.query.QueryCriteria.where;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Student;
 import org.joda.time.DateTime;
@@ -24,8 +25,8 @@ public class StudentTemplateService implements StudentService {
         this.template = template;
     }
 
-    public Student findOne(String id) {
-        return template.findById(Student.class).one(id);
+    public Optional<Student> findOne(String id) {
+        return Optional.of(template.findById(Student.class).one(id));
     }
 
     public List<Student> findAll() {

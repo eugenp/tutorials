@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Optional;
 import java.util.Set;
 
 import jakarta.annotation.PostConstruct;
@@ -68,9 +69,9 @@ public class CampusServiceImplLiveTest extends MultiBucketLiveTest {
 
     @Test
     public final void givenHarvardId_whenFind_thenReturnsHarvard() {
-        Campus actual = campusService.find(Harvard.getId());
-        assertNotNull(actual);
-        assertEquals(Harvard, actual);
+        Optional<Campus> actual = campusService.find(Harvard.getId());
+        assertTrue(actual.isPresent());
+        assertEquals(Harvard, actual.get());
     }
 
     @Test

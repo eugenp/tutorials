@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Person;
 import com.baeldung.spring.data.couchbase2b.MultiBucketLiveTest;
@@ -53,10 +54,10 @@ public class PersonServiceImplLiveTest extends MultiBucketLiveTest {
 
     @Test
     public void whenFindingPersonByJohnSmithId_thenReturnsJohnSmith() {
-        final Person actualPerson = personService.findOne(johnSmithId);
-        assertNotNull(actualPerson);
-        assertNotNull(actualPerson.getCreated());
-        assertEquals(johnSmith, actualPerson);
+        final Optional<Person> actualPerson = personService.findOne(johnSmithId);
+        assertTrue(actualPerson.isPresent());
+        assertNotNull(actualPerson.get().getCreated());
+        assertEquals(johnSmith, actualPerson.get());
     }
 
     @Test

@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+import java.util.Optional;
 
 import jakarta.validation.ConstraintViolationException;
 
@@ -61,10 +62,10 @@ public abstract class StudentServiceLiveTest extends IntegrationTest {
         String id = "student:" + firstName + ":" + lastName;
         Student expectedStudent = new Student(id, firstName, lastName, dateOfBirth);
         studentService.create(expectedStudent);
-        Student actualStudent = studentService.findOne(id);
-        assertNotNull(actualStudent.getCreated());
-        assertNotNull(actualStudent);
-        assertEquals(expectedStudent.getId(), actualStudent.getId());
+        Optional<Student> actualStudent = studentService.findOne(id);
+        assertTrue(actualStudent.isPresent());
+        assertNotNull(actualStudent.get().getCreated());
+        assertEquals(expectedStudent.getId(), actualStudent.get().getId());
     }
 
     @Test(expected = ConstraintViolationException.class)
@@ -89,10 +90,10 @@ public abstract class StudentServiceLiveTest extends IntegrationTest {
 
     @Test
     public void whenFindingStudentByJohnSmithId_thenReturnsJohnSmith() {
-        Student actualStudent = studentService.findOne(joeCollegeId);
-        assertNotNull(actualStudent);
-        assertNotNull(actualStudent.getCreated());
-        assertEquals(joeCollegeId, actualStudent.getId());
+        Optional<Student> actualStudent = studentService.findOne(joeCollegeId);
+        assertTrue(actualStudent.isPresent());
+        assertNotNull(actualStudent.get().getCreated());
+        assertEquals(joeCollegeId, actualStudent.get().getId());
     }
 
     @Test

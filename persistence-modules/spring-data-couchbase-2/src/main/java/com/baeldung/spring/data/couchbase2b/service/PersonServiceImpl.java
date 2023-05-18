@@ -3,6 +3,7 @@ package com.baeldung.spring.data.couchbase2b.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase2b.repos.PersonRepository;
 import com.baeldung.spring.data.couchbase.model.Person;
@@ -20,8 +21,8 @@ public class PersonServiceImpl implements PersonService {
         this.repo = repo;
     }
 
-    public Person findOne(String id) {
-        return repo.findById(id).orElseGet(null);
+    public Optional<Person> findOne(String id) {
+        return repo.findById(id);
     }
 
     public List<Person> findAll() {

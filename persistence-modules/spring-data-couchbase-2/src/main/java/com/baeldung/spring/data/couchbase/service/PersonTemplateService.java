@@ -3,14 +3,13 @@ package com.baeldung.spring.data.couchbase.service;
 import static org.springframework.data.couchbase.core.query.QueryCriteria.where;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Person;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.couchbase.core.CouchbaseTemplate;
-import org.springframework.data.couchbase.core.query.Query;
-import org.springframework.data.couchbase.core.query.QueryCriteria;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,8 +25,8 @@ public class PersonTemplateService implements PersonService {
         this.template = template;
     }
 
-    public Person findOne(String id) {
-        return template.findById(Person.class).one(id);
+    public Optional<Person> findOne(String id) {
+        return Optional.of(template.findById(Person.class).one(id));
     }
 
     public List<Person> findAll() {

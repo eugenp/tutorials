@@ -3,6 +3,7 @@ package com.baeldung.spring.data.couchbase.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Student;
 import com.baeldung.spring.data.couchbase.repos.StudentRepository;
@@ -22,8 +23,8 @@ public class StudentRepositoryService implements StudentService {
         this.repo = repo;
     }
 
-    public Student findOne(String id) {
-        return repo.findById(id).orElseGet(null);
+    public Optional<Student> findOne(String id) {
+        return repo.findById(id);
     }
 
     public List<Student> findAll() {
