@@ -355,7 +355,6 @@
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <module>jetbrains</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>language-interop</module>
 
@@ -850,6 +849,7 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>javax-validation-advanced</module>
+                <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
 
@@ -1106,6 +1106,7 @@
                 <module>javaxval</module>
                 <module>javaxval-2</module>
                 <module>javax-validation-advanced</module>
+                <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
 
