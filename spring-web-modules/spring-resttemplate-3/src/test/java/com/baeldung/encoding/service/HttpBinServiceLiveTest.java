@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class HttpBinServiceUnitTest {
+class HttpBinServiceLiveTest {
     @Autowired
     private HttpBinService httpBinService;
 
