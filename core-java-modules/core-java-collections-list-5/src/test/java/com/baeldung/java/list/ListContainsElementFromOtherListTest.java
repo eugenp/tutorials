@@ -20,7 +20,7 @@ public class ListContainsElementFromOtherListTest {
     final private List<String> listOfCities = Arrays.asList("London", "Berlin", "Paris", "Brussels");
 
     @Test
-    public void givenWholeValuesToCompare_whenUsingCollectionsDisjoint_thenDetectElementsInTwoLists() {
+    public void givenValuesToCompare_whenUsingCollectionsDisjoint_thenDetectElementsInTwoLists() {
         boolean shouldBeTrue = !Collections.disjoint(listOfLetters, listOfLettersWithOverlap);
         assertTrue(shouldBeTrue);
 
@@ -29,7 +29,7 @@ public class ListContainsElementFromOtherListTest {
     }
 
     @Test
-    public void givenWholeValuesToCompare_whenUsingStreams_thenDetectElementsInTwoLists() {
+    public void givenValuesToCompare_whenUsingStreams_thenDetectElementsInTwoLists() {
         boolean shouldBeTrue = listOfLetters.stream()
           .anyMatch(listOfLettersWithOverlap::contains);
         assertTrue(shouldBeTrue);
@@ -40,7 +40,7 @@ public class ListContainsElementFromOtherListTest {
     }
 
     @Test
-    public void givenWholeValuesToCompare_whenUsingApacheCollectionUtils_thenDetectElementsInTwoLists() {
+    public void givenValuesToCompare_whenUsingApacheCollectionUtils_thenDetectElementsInTwoLists() {
         boolean shouldBeTrue = CollectionUtils.containsAny(listOfLetters, listOfLettersWithOverlap);
         assertTrue(shouldBeTrue);
 
@@ -49,7 +49,7 @@ public class ListContainsElementFromOtherListTest {
     }
 
     @Test
-    public void givenWholePorpertiesInObjectsToCompare_whenUsingStreams_thenDetectElementsInTwoLists() {
+    public void givenPropertiesInObjectsToCompare_whenUsingStreams_thenDetectElementsInTwoLists() {
         Country france = new Country("France", "Paris");
         Country belgium = new Country("Belgium", "Brussels");
         Country spain = new Country("Spain", "Madrid");
