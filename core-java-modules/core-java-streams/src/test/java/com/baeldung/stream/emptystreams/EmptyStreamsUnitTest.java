@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-public class EmptyStreamsUntiTest {
+public class EmptyStreamsUnitTest {
 
     @Test
     public void givenEmptyStreams_findAnyReturnsAnEmptyOptional() {
