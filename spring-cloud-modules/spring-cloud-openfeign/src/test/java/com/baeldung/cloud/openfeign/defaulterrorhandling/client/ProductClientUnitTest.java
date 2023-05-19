@@ -34,8 +34,8 @@ public class ProductClientUnitTest {
 
     @Before
     public void startWireMockServer() {
-        wireMockServer = new WireMockServer(8084);
-        configureFor("localhost", 8084);
+        wireMockServer = new WireMockServer(8088);
+        configureFor("localhost", 8088);
         wireMockServer.start();
 
     }
