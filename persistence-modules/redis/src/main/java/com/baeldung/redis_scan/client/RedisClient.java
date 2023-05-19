@@ -102,18 +102,18 @@ public class RedisClient {
         return 0L;
     }
 
-    public Set<String> zrange(final String key, final long start, final long stop) {
+    public List<String> zrange(final String key, final long start, final long stop) {
         try (Jedis jedis = jedisPool.getResource()) {
             return jedis.zrange(key, start, stop);
         } catch (Exception ex) {
             log.error("Exception caught in zrange", ex);
         }
-        return new HashSet<String>();
+        return new ArrayList<>();
     }
 
     public String mset(final HashMap<String, String> keysValues) {
         try (Jedis jedis = jedisPool.getResource()) {
-            ArrayList<String> keysValuesArrayList = new ArrayList<String>();
+            ArrayList<String> keysValuesArrayList = new ArrayList<>();
             keysValues.forEach((key, value) -> {
                 keysValuesArrayList.add(key);
                 keysValuesArrayList.add(value);

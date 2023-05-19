@@ -16,10 +16,10 @@ import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class MockitoSpyUnitTest {
+class MockitoSpyUnitTest {
 
     @Test
-    void whenSpyingOnList_thenCorrect() {
+    void givenUsingSpyMethod_whenSpyingOnList_thenCorrect() {
         final List<String> list = new ArrayList<String>();
         final List<String> spyList = spy(list);
 
@@ -36,7 +36,7 @@ public class MockitoSpyUnitTest {
     private List<String> aSpyList = new ArrayList<String>();
 
     @Test
-    void whenUsingTheSpyAnnotation_thenObjectIsSpied() {
+    void givenUsingSpyAnnotation_whenSpyingOnList_thenCorrect() {
         aSpyList.add("one");
         aSpyList.add("two");
 
@@ -47,13 +47,14 @@ public class MockitoSpyUnitTest {
     }
 
     @Test
-    void whenStubASpy_thenStubbed() {
+    void givenASpy_whenStubbingTheBehaviour_thenCorrect() {
         final List<String> list = new ArrayList<String>();
         final List<String> spyList = spy(list);
 
         assertEquals(0, spyList.size());
 
         doReturn(100).when(spyList).size();
+
         assertThat(spyList).hasSize(100);
     }
 

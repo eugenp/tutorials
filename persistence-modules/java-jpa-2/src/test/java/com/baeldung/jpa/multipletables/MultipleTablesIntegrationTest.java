@@ -2,9 +2,9 @@ package com.baeldung.jpa.multipletables;
 
 import static org.assertj.core.api.Assertions.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
