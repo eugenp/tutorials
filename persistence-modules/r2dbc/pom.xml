@@ -89,9 +89,9 @@
     </build>
 
     <properties>
-        <flyway.core.version>9.14.1</flyway.core.version>
-        <jdbc.postgresql.version>42.5.2</jdbc.postgresql.version>
-        <r2dbc.postgresql.version>1.0.0.RELEASE</r2dbc.postgresql.version>
+        <flyway.core.version>9.16.0</flyway.core.version>
+        <jdbc.postgresql.version>42.5.4</jdbc.postgresql.version>
+        <r2dbc.postgresql.version>1.0.1.RELEASE</r2dbc.postgresql.version>
     </properties>
 
 </project>
