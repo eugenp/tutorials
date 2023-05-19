@@ -877,6 +877,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
+                <module>libraries-transform</module>
 
                 <module>lucene</module>
                 <module>mapstruct</module>
@@ -1140,6 +1141,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
+                <module>libraries-transform</module>
 
                 <module>lucene</module>
                 <module>mapstruct</module>
