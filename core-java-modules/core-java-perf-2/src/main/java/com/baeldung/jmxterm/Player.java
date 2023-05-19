@@ -1,6 +1,6 @@
 package com.baeldung.jmxterm;
 
-import static com.baeldung.jmxterm.RandomNumbergenerator.*;
+import static com.baeldung.jmxterm.RandomNumbergenerator.generateRandomNumber;
 
 public class Player extends AbstractPlayerMBean {
     private final String name;
