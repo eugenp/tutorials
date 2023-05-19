@@ -419,13 +419,10 @@
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
-                <module>spring-shell</module>
                 <module>spring-soap</module>
-                <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
@@ -590,13 +587,10 @@
                 <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
                 <module>spring-security-modules</module>
-                <module>spring-shell</module>
                 <module>spring-soap</module>
-                <module>spring-spel</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>spring-web-modules</module>
-                <module>spring-websockets</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
                 <module>xml</module>
@@ -917,8 +911,11 @@
                 <module>spring-scheduling</module>
 
                 <module>spring-state-machine</module>
+                <module>spring-shell</module>
+                <module>spring-spel</module>
                 <module>spring-threads</module>
-				<module>spring-vault</module>
+                <module>spring-vault</module>
+                <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
@@ -1176,8 +1173,11 @@
                 <module>spring-scheduling</module>
 
                 <module>spring-state-machine</module>
+                <module>spring-shell</module>
+                <module>spring-spel</module>
                 <module>spring-threads</module>
-				<module>spring-vault</module>
+                <module>spring-vault</module>
+                <module>spring-websockets</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
