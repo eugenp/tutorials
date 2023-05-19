@@ -14,33 +14,33 @@ import com.google.common.collect.Lists;
 public class InputWithSpacesUnitTest {
     @Test
     void whenValuesContainSpaces_thenNextBreaksTheValue() {
-        String input = new StringBuilder().append("Micheal Jackson\n")
+        String input = new StringBuilder().append("Michael Jackson\n")
           .append("He was the 'King of Pop'.\n")
           .toString();
 
         Scanner sc = new Scanner(input);
         String name = sc.next();
         String description = sc.next();
-        assertEquals("Micheal", name);
+        assertEquals("Michael", name);
         assertEquals("Jackson", description);
     }
 
     @Test
     void whenOneValuePerLineUsingNextLine_thenGetExpectedResult() {
-        String input = new StringBuilder().append("Micheal Jackson\n")
+        String input = new StringBuilder().append("Michael Jackson\n")
           .append("He was the 'King of Pop'.\n")
           .toString();
 
         Scanner sc = new Scanner(input);
         String name = sc.nextLine();
         String description = sc.nextLine();
-        assertEquals("Micheal Jackson", name);
+        assertEquals("Michael Jackson", name);
         assertEquals("He was the 'King of Pop'.", description);
     }
 
     @Test
     void whenOneValuePerLineUsingNewLineAsDelimiter_thenGetExpectedResult() {
-        String input = new StringBuilder().append("Micheal Jackson\n")
+        String input = new StringBuilder().append("Michael Jackson\n")
           .append("He was the 'King of Pop'.\n")
           .toString();
 
@@ -48,23 +48,23 @@ public class InputWithSpacesUnitTest {
         sc.useDelimiter("\\n");
         String name = sc.next();
         String description = sc.next();
-        assertEquals("Micheal Jackson", name);
+        assertEquals("Michael Jackson", name);
         assertEquals("He was the 'King of Pop'.", description);
     }
 
     @Test
     void whenValuesAreSeparatedByCommaUsingSplit_thenGetExpectedResult() {
-        String input = "Micheal Jackson, Whitney Houston, John Lennon\n";
+        String input = "Michael Jackson, Whitney Houston, John Lennon\n";
 
         Scanner sc = new Scanner(input);
         String[] names = sc.nextLine()
           .split(", ");
-        assertArrayEquals(new String[] { "Micheal Jackson", "Whitney Houston", "John Lennon" }, names);
+        assertArrayEquals(new String[] { "Michael Jackson", "Whitney Houston", "John Lennon" }, names);
     }
 
     @Test
     void whenValuesAreSeparatedByCommaSettingDelimiterWithoutNewline_thenGetExpectedResult() {
-        String input = new StringBuilder().append("Micheal Jackson, Whitney Houston, John Lennon\n")
+        String input = new StringBuilder().append("Michael Jackson, Whitney Houston, John Lennon\n")
           .append("Elvis Presley\n")
           .toString();
 
@@ -74,7 +74,7 @@ public class InputWithSpacesUnitTest {
         while (sc.hasNext()) {
             names.add(sc.next());
         }
-        //assertEquals(Lists.newArrayList("Micheal Jackson", "Whitney Houston", "John Lennon", "Elvis Presley"), names); <-- Fail
+        //assertEquals(Lists.newArrayList("Michael Jackson", "Whitney Houston", "John Lennon", "Elvis Presley"), names); <-- Fail
         assertEquals(3, names.size());
         assertEquals("John Lennon\nElvis Presley\n", names.get(2));
 
@@ -82,7 +82,7 @@ public class InputWithSpacesUnitTest {
 
     @Test
     void whenValuesAreSeparatedByCommaSettingDelimiter_thenGetExpectedResult() {
-        String input = new StringBuilder().append("Micheal Jackson, Whitney Houston, John Lennon\n")
+        String input = new StringBuilder().append("Michael Jackson, Whitney Houston, John Lennon\n")
           .append("Elvis Presley\n")
           .toString();
 
@@ -92,6 +92,6 @@ public class InputWithSpacesUnitTest {
         while (sc.hasNext()) {
             names.add(sc.next());
         }
-        assertEquals(Lists.newArrayList("Micheal Jackson", "Whitney Houston", "John Lennon", "Elvis Presley"), names);
+        assertEquals(Lists.newArrayList("Michael Jackson", "Whitney Houston", "John Lennon", "Elvis Presley"), names);
     }
 }
