@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.baeldung.cloud.openfeign.defaulterrorhandling.config.FeignConfig;
 import com.baeldung.cloud.openfeign.defaulterrorhandling.model.Product;
 
-@FeignClient(name = "product-client", url = "http://localhost:8084/product/", configuration = FeignConfig.class)
+@FeignClient(name = "product-client", url = "http://localhost:8088/product/", configuration = FeignConfig.class)
 public interface ProductClient {
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

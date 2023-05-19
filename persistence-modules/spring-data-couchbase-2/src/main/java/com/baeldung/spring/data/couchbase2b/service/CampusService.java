@@ -1,5 +1,6 @@
 package com.baeldung.spring.data.couchbase2b.service;
 
+import java.util.Optional;
 import java.util.Set;
 
 import com.baeldung.spring.data.couchbase.model.Campus;
@@ -8,7 +9,7 @@ import org.springframework.data.geo.Point;
 
 public interface CampusService {
 
-    Campus find(String id);
+    Optional<Campus> find(String id);
 
     Set<Campus> findByName(String name);
 
