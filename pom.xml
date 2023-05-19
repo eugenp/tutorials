@@ -365,8 +365,9 @@
 
                 <module>muleesb</module>
 
-                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
-                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
+                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
             </modules>
 
         </profile>
@@ -541,8 +542,9 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
 
-                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
-                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
+                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
             </modules>
 
         </profile>
