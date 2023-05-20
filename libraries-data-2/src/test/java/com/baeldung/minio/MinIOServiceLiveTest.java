@@ -8,7 +8,7 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MinIOServiceTest {
+public class MinIOServiceLiveTest {
 
     private MinioClient minioClient;
 
