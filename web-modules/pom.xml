@@ -24,7 +24,7 @@
         <module>javax-servlets</module>
         <module>javax-servlets-2</module>
         <module>jee-7</module>
-        <!--<module>jooby</module>-->
+        <module>jooby</module>
         <module>linkrest</module>
        <!-- <module>ninja</module>-->
         <!-- <module>play-modules</module> --> <!-- Not a maven project -->
