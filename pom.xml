@@ -426,7 +426,6 @@
                 <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
-                <module>xml</module>
                 <module>xml-2</module>
             </modules>
 
@@ -595,7 +594,6 @@
                 <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
-                <module>xml</module>
                 <module>xml-2</module>
             </modules>
 
@@ -932,6 +930,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>xml</module>
             </modules>
 
             <properties>
@@ -1195,6 +1194,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>xml</module>
             </modules>
 
             <properties>
