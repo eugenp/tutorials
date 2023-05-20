@@ -713,7 +713,6 @@
             </build>
 
             <modules>
-                <module>xml</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -932,6 +931,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <module>xml</module>
                 <module>xml-2</module>
             </modules>
 
@@ -966,7 +966,6 @@
             </build>
 
             <modules>
-                <module>xml</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -1186,6 +1185,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules/apache-tapestry</module>
+                <module>xml</module>
                 <module>xml-2</module>
             </modules>
 
