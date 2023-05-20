@@ -30,26 +30,37 @@
         </pluginRepository>
     </pluginRepositories>
     <build>
-        <sourceDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\main\java</sourceDirectory>
-        <scriptSourceDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\main\scripts
+        <sourceDirectory>
+            C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\main\java
+        </sourceDirectory>
+        <scriptSourceDirectory>
+            C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\main\scripts
         </scriptSourceDirectory>
-        <testSourceDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\test\java
+        <testSourceDirectory>
+            C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\test\java
         </testSourceDirectory>
-        <outputDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\classes
+        <outputDirectory>
+            C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\classes
         </outputDirectory>
-        <testOutputDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\test-classes
+        <testOutputDirectory>
+            C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\test-classes
         </testOutputDirectory>
         <resources>
             <resource>
-                <directory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\main\resources</directory>
+                <directory>
+                    C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\main\resources
+                </directory>
             </resource>
         </resources>
         <testResources>
             <testResource>
-                <directory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\test\resources</directory>
+                <directory>
+                    C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\src\test\resources
+                </directory>
             </testResource>
         </testResources>
-        <directory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget</directory>
+        <directory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget
+        </directory>
         <finalName>simplestPOM-1.0-SNAPSHOT</finalName>
         <pluginManagement>
             <plugins>
@@ -219,7 +230,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <outputDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\site
+                    <outputDirectory>
+                        C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\site
                     </outputDirectory>
                     <reportPlugins>
                         <reportPlugin>
@@ -232,7 +244,8 @@
         </plugins>
     </build>
     <reporting>
-        <outputDirectory>C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\site
+        <outputDirectory>
+            C:\Users\emicu\Desktop\tutorials\maven-modules\maven-pom-types\customTarget\site
         </outputDirectory>
     </reporting>
 </project>
