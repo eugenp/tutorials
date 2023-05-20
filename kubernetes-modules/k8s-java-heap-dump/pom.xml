@@ -30,7 +30,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.baeldung.kubernetes.heap.dump.PrimeNumberFinder</mainClass>
+                            <mainClass>com.baeldung.kubernetes.heap.dump.PrimeNumberFinder
+                            </mainClass>
                         </manifest>
                     </archive>
                 </configuration>
