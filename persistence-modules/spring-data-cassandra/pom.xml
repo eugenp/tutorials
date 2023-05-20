@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-cassandra</artifactId>
     <name>spring-data-cassandra</name>
@@ -71,7 +71,8 @@
     </dependencies>
 
     <properties>
-        <spring-boot-starter-data-cassandra.version>1.3.2.RELEASE</spring-boot-starter-data-cassandra.version>
+        <spring-boot-starter-data-cassandra.version>1.3.2.RELEASE
+        </spring-boot-starter-data-cassandra.version>
         <cassandra-unit-spring.version>2.1.9.2</cassandra-unit-spring.version>
         <cassandra-unit-shaded.version>2.1.9.2</cassandra-unit-shaded.version>
         <hector-core.version>2.0-0</hector-core.version>

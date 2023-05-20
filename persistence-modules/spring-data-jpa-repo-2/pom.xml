@@ -62,7 +62,8 @@
                             <goal>process</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                            <outputDirectory>${project.build.directory}/generated-sources
+                            </outputDirectory>
                             <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
@@ -80,9 +81,11 @@
                         </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                            <outputDirectory>${project.build.directory}/generated-sources
+                            </outputDirectory>
                             <processors>
-                                <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                                <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor
+                                </processor>
                             </processors>
                         </configuration>
                     </execution>

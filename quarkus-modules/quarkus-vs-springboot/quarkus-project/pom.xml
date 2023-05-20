@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>quarkus-project</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -91,7 +91,8 @@
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <systemPropertyVariables>
-                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager
+                        </java.util.logging.manager>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -119,8 +120,11 @@
                                 </goals>
                                 <configuration>
                                     <systemPropertyVariables>
-                                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
-                                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                                        <native.image.path>
+                                            ${project.build.directory}/${project.build.finalName}-runner
+                                        </native.image.path>
+                                        <java.util.logging.manager>org.jboss.logmanager.LogManager
+                                        </java.util.logging.manager>
                                     </systemPropertyVariables>
                                 </configuration>
                             </execution>
@@ -129,7 +133,8 @@
                 </plugins>
             </build>
             <properties>
-                <quarkus.native.additional-build-args>-H:+AllowVMInspection</quarkus.native.additional-build-args>
+                <quarkus.native.additional-build-args>-H:+AllowVMInspection
+                </quarkus.native.additional-build-args>
                 <quarkus.package.type>native</quarkus.package.type>
             </properties>
         </profile>

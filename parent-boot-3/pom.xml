@@ -82,7 +82,8 @@
                         <archive>
                             <manifest>
                                 <mainClass>${start-class}</mainClass>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                <addDefaultImplementationEntries>true
+                                </addDefaultImplementationEntries>
                             </manifest>
                         </archive>
                     </configuration>
