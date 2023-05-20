@@ -5,6 +5,8 @@ import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 @State(Scope.Benchmark)
@@ -16,44 +18,37 @@ public class ArrayAndArrayListPerformance {
         org.openjdk.jmh.runner.Runner runner = new org.openjdk.jmh.runner.Runner(new OptionsBuilder().include(ArrayAndArrayListPerformance.class.getSimpleName()).forks(1).build());
         runner.run();
     }
-
+    public static Integer[] array = Collections.nCopies(1000000, 1).toArray(new Integer[0]);
+    public static ArrayList<Integer> list = new ArrayList<Integer>(
+            Arrays.asList(array));
     @Benchmark
-    public void arrayCreation(Blackhole blackhole) {
-        int[] array = new int[1000000];
-        blackhole.consume(array);
+    public Integer[] arrayCreation() {
+        return new Integer[1000000];
     }
 
     @Benchmark
-    public void arrayListCreation(Blackhole blackhole) {
-        ArrayList<Integer> list = new ArrayList<>(1000000);
-        blackhole.consume(list);
+    public ArrayList<Integer> arrayListCreation() {
+        return new ArrayList<>(1000000);
     }
 
     @Benchmark
-    public void arrayItemsSetting(Blackhole blackhole) {
-        int[] array = new int[1000000];
+    public Integer[] arrayItemsSetting() {
         for (int i = 0; i < 1000000; i++) {
             array[i] = i;
         }
-        blackhole.consume(array);
-
+        return array;
     }
 
     @Benchmark
-    public void arrayListItemsSetting(Blackhole blackhole) {
-        ArrayList<Integer> list = new ArrayList<>(1000000);
+    public ArrayList<Integer> arrayListItemsSetting() {
         for (int i = 0; i < 1000000; i++) {
             list.add(i);
         }
-        blackhole.consume(list);
+        return list;
     }
 
     @Benchmark
     public void arrayItemsRetrieval(Blackhole blackhole) {
-        int[] array = new int[1000000];
-        for (int i = 0; i < 1000000; i++) {
-            array[i] = i;
-        }
         for (int i = 0; i < 1000000; i++) {
             int item = array[i];
             blackhole.consume(item);
@@ -62,10 +57,6 @@ public class ArrayAndArrayListPerformance {
 
     @Benchmark
     public void arrayListItemsRetrieval(Blackhole blackhole) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 1000000; i++) {
-            list.add(i);
-        }
         for (int i = 0; i < 1000000; i++) {
             int item = list.get(i);
             blackhole.consume(item);
@@ -74,14 +65,12 @@ public class ArrayAndArrayListPerformance {
 
     @Benchmark
     public void arrayCloning(Blackhole blackhole) {
-        int[] array = new int[1000000];
-        int[] newArray = array.clone();
+        Integer[] newArray = array.clone();
         blackhole.consume(newArray);
     }
 
     @Benchmark
     public void arrayListCloning(Blackhole blackhole) {
-        ArrayList<Integer> list = new ArrayList<>(1000000);
         ArrayList<Integer> newList = new ArrayList<>(list);
         blackhole.consume(newList);
     }
