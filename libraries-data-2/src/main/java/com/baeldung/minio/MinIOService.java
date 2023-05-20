@@ -1,5 +1,6 @@
 package com.baeldung.minio;
 
+import io.minio.GetObjectArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.UploadObjectArgs;
@@ -23,6 +24,12 @@ public class MinIOService {
                 .builder()
                 .bucket("user2")
                 .filename("/tmp/Resume.pdf")
+                .build());
+
+        minioClient.getObject(
+            GetObjectArgs.builder()
+                .bucket("user2")
+                .object("Resume.pdf")
                 .build());
     }
 }
