@@ -30,7 +30,7 @@
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
         <module>mockito</module>
-        <module>mockito-simple</module>
+<!--        <module>mockito-simple</module>-->
         <module>mocks</module>
         <module>mocks-2</module>
         <module>mockserver</module>

@@ -700,6 +700,7 @@
             </build>
 
             <modules>
+                <module>testing-modules</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -791,7 +792,7 @@
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
-                <module>testing-modules</module>
+
                 <module>persistence-modules/fauna</module>
                 <module>persistence-modules/spring-data-rest</module>
 
