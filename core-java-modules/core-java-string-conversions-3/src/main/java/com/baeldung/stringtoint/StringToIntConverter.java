@@ -31,17 +31,6 @@ public class StringToIntConverter {
         }
     }
 
-    Optional<Integer> convertStringToIntUsingOptional(String input){
-        Optional<Integer> parsedInt;
-        try {
-            parsedInt = Optional.of(Integer.parseInt(input));
-        } catch (Exception e) {
-            // log or handle the error
-            parsedInt = Optional.empty();
-        }
-        return parsedInt;
-    }
-
     int convertStringToIntUsingNumberUtils(String input, Integer defaultValue){
         return NumberUtils.toInt(input, defaultValue);
     }

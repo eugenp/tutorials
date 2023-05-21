@@ -22,7 +22,6 @@ class stringToIntConverter {
         testData.forEach(data -> {
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input).orElse(Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input).orElse(Integer.MIN_VALUE));
-            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingOptional(data.input).orElse(Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerDecode(data.input).orElse(Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingNumberUtils(data.input,Integer.MIN_VALUE ));
         });
@@ -37,7 +36,6 @@ class stringToIntConverter {
         testData.forEach(data -> {
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerParseInt(data.input).orElse(Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerValueOf(data.input).orElse(Integer.MIN_VALUE));
-            Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingOptional(data.input).orElse(Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingNumberUtils(data.input, Integer.MIN_VALUE));
             Assertions.assertEquals(data.expectedOutput, stringToIntConverter.convertStringToIntUsingIntegerDecode(data.input).orElse(Integer.MIN_VALUE));
         });
