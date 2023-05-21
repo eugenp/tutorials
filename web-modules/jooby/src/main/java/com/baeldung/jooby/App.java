@@ -1,95 +1,135 @@
 package com.baeldung.jooby;
 
-import org.jooby.Jooby;
-import org.jooby.Mutant;
-import org.jooby.Session;
-import org.jooby.jedis.Redis;
-import org.jooby.jedis.RedisSessionStore;
-
 import com.baeldung.jooby.bean.Employee;
 
+import io.jooby.Jooby;
+import io.jooby.ServerOptions;
+import io.jooby.Session;
+import io.jooby.SessionStore;
+import io.jooby.redis.RedisModule;
+import io.jooby.redis.RedisSessionStore;
+import io.lettuce.core.RedisClient;
+
 public class App extends Jooby {
+    {
+        setServerOptions(new ServerOptions().setPort(8080)
+            .setSecurePort(8433));
+    }
 
-	{
-		port(8080);
-		securePort(8443);
-	}
 
-	{
-		get("/", () -> "Hello World!");
-	}
+    {
+        get("/", ctx -> "Hello World!");
+    }
 
-	{
-		get("/user/{id}", req -> "Hello user : " + req.param("id").value());
-		get("/user/:id", req -> "Hello user: " + req.param("id").value());
-		get("/uid:{id}", req -> "Hello User with id : uid" + req.param("id").value());
-	}
+    {
+        get("/user/{id}", ctx -> "Hello user : " + ctx.path("id")
+            .value());
+        get("/user/:id", ctx -> "Hello user: " + ctx.path("id")
+            .value());
+        get("/uid:{id}", ctx -> "Hello User with id : uid = " + ctx.path("id")
+            .value());
+    }
 
-	{
-		onStart(() -> {
-			System.out.println("starting app");
-		});
+    {
+        onStarting(() -> {
+            System.out.println("starting app");
+        });
 
-		onStop(() -> {
-			System.out.println("stopping app");
-		});
+        onStop(() -> {
+            System.out.println("stopping app");
+        });
 
-		onStarted(() -> {
-			System.out.println("app started");
-		});
-	}
+        onStarted(() -> {
+            System.out.println("app started");
+        });
+    }
 
-	{
-		get("/login", () -> "Hello from Baeldung");
-	}
+    {
+        get("/login", ctx -> "Hello from Baeldung");
+    }
 
-	{
-		post("/save", req -> {
-			Mutant token = req.param("token");
-			return token.intValue();
-		});
-	}
+    {
+        post("/save", ctx -> {
+            String userId = ctx.query("id")
+                .value();
+            return userId;
+        });
+    }
 
-	{
-		{
-			assets("/employee", "form.html");
-		}
+    {
+        {
+            assets("/employee", "public/form.html");
+        }
 
-		post("/submitForm", req -> {
-			Employee employee = req.params(Employee.class);
-			// TODO
-			return "empoyee data saved successfullly";
-		});
-	}
+        post("/submitForm", ctx -> {
+            Employee employee = ctx.path(Employee.class);
+            // TODO
+            return "employee data saved successfully";
+        });
 
-	{
-		get("/filter", (req, resp, chain) -> {
-			// TODO
-			// resp.send(...);
-			chain.next(req, resp);
-		});
-		get("/filter", (req, resp) -> {
-			resp.send("filter response");
-		});
-	}
+    }
 
-	{
-//		cookieSession();
-		
-//		use(new Redis());
-//
-//		session(RedisSessionStore.class);
 
-		get("/session", req -> {
-			Session session = req.session();
-			session.set("token", "value");
-			return session.get("token").value();
-		});
-	}
+    {
+        decorator(next -> ctx -> {
+            System.out.println("first");
+            // Moves execution to next handler: second
+            return next.apply(ctx);
+        });
+        decorator(next -> ctx -> {
+            System.out.println("second");
+            // Moves execution to next handler: third
+            return next.apply(ctx);
+        });
 
-	public static void main(final String[] args) {
+        get("/handler", ctx -> {
+            return "third";
+        });
+    }
 
-		run(App::new, args);
-	}
+    {
+        get("/sessionInMemory", ctx -> {
+            Session session = ctx.session();
+            session.put("token", "value");
+            return session.get("token")
+                .value();
+        });
+    }
+
+    {
+        String secret = "super secret token";
+
+        setSessionStore(SessionStore.signed(secret));
+
+        get("/signedSession", ctx -> {
+            Session session = ctx.session();
+            session.put("token", "value");
+            return session.get("token").value();
+        });
+    }
+
+    {
+        get("/sessionInMemoryRedis", ctx -> {
+            Session session = ctx.session();
+            session.put("token", "value");
+            return session.get("token")
+                .value();
+        });
+    }
+
+    /* This will work once redis is installed locally
+    {
+        install(new RedisModule("redis"));
+        setSessionStore(new RedisSessionStore(require(RedisClient.class)));
+        get("/redisSession", ctx -> {
+            Session session = ctx.session();
+            session.put("token", "value");
+            return session.get("token");
+        });
+    }*/
+
+    public static void main(final String[] args) {
+        runApp(args, App::new);
+    }
 
 }
