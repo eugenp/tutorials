@@ -20,18 +20,18 @@
         <module>dropwizard</module>
         <module>google-web-toolkit</module>
         <module>jakarta-ee</module>
-        <module>java-lite</module>
+       <!-- <module>java-lite</module>-->
         <module>javax-servlets</module>
         <module>javax-servlets-2</module>
         <module>jee-7</module>
         <module>jooby</module>
         <module>linkrest</module>
-        <module>ninja</module>
+       <!-- <module>ninja</module>-->
         <!-- <module>play-modules</module> --> <!-- Not a maven project -->
         <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
-        <module>ratpack</module>
+        <!--<module>ratpack</module>-->
         <module>resteasy</module>
-        <module>restx</module>
+        <!--<module>restx</module>-->
         <module>spark-java</module>
         <module>struts-2</module>
         <module>vraptor</module>

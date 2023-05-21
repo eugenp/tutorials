@@ -8,7 +8,6 @@
     <version>0.0.1</version>
     <name>custom-pmd</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
