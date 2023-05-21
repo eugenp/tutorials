@@ -12,12 +12,12 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @JoobyTest(value = App.class, port = 8080)
-public class AppLiveTest {
+class AppLiveTest {
 
     static OkHttpClient client = new OkHttpClient();
 
     @Test
-    public void given_defaultUrl_expect_fixedString() {
+    void given_defaultUrl_expect_fixedString() {
         Request request = new Request.Builder().url("http://localhost:8080")
             .build();
         try (Response response = client.newCall(request)
