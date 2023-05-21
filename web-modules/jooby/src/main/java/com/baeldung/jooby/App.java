@@ -6,16 +6,12 @@ import io.jooby.Jooby;
 import io.jooby.ServerOptions;
 import io.jooby.Session;
 import io.jooby.SessionStore;
-import io.jooby.redis.RedisModule;
-import io.jooby.redis.RedisSessionStore;
-import io.lettuce.core.RedisClient;
 
 public class App extends Jooby {
     {
         setServerOptions(new ServerOptions().setPort(8080)
             .setSecurePort(8433));
     }
-
 
     {
         get("/", ctx -> "Hello World!");
@@ -31,17 +27,11 @@ public class App extends Jooby {
     }
 
     {
-        onStarting(() -> {
-            System.out.println("starting app");
-        });
+        onStarting(() -> System.out.println("starting app"));
 
-        onStop(() -> {
-            System.out.println("stopping app");
-        });
+        onStop(() -> System.out.println("stopping app"));
 
-        onStarted(() -> {
-            System.out.println("app started");
-        });
+        onStarted(() -> System.out.println("app started"));
     }
 
     {
@@ -63,12 +53,11 @@ public class App extends Jooby {
 
         post("/submitForm", ctx -> {
             Employee employee = ctx.path(Employee.class);
-            // TODO
+            // ...
             return "employee data saved successfully";
         });
 
     }
-
 
     {
         decorator(next -> ctx -> {
@@ -82,9 +71,7 @@ public class App extends Jooby {
             return next.apply(ctx);
         });
 
-        get("/handler", ctx -> {
-            return "third";
-        });
+        get("/handler", ctx -> "third");
     }
 
     {
@@ -104,7 +91,8 @@ public class App extends Jooby {
         get("/signedSession", ctx -> {
             Session session = ctx.session();
             session.put("token", "value");
-            return session.get("token").value();
+            return session.get("token")
+                .value();
         });
     }
 
