@@ -1,7 +1,6 @@
 package com.baeldung.lombok.valvar;
 
 import lombok.val;
-import lombok.var;
 
 import java.util.ArrayList;
 import java.util.HashMap;

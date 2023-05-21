@@ -1,6 +1,9 @@
 package com.baeldung.producerconsumer;
 
+import java.util.logging.Logger;
+
 public class Consumer implements Runnable {
+    private static final Logger log = Logger.getLogger(Consumer.class.getCanonicalName());
     private final DataQueue dataQueue;
 
     public Consumer(DataQueue dataQueue) {
@@ -14,7 +17,7 @@ public class Consumer implements Runnable {
 
     public void consume() {
         while (dataQueue.runFlag) {
-            synchronized (this) {
+            synchronized (dataQueue) {
                 while (dataQueue.isEmpty() && dataQueue.runFlag) {
                     try {
                         dataQueue.waitOnEmpty();
@@ -31,12 +34,13 @@ public class Consumer implements Runnable {
                 useMessage(message);
             }
         }
-        System.out.println("Consumer Stopped");
+        log.info("Consumer Stopped");
     }
 
     private void useMessage(Message message) {
         if (message != null) {
-            System.out.printf("[%s] Consuming Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
+            log.info(String.format("[%s] Consuming Message. Id: %d, Data: %f%n",
+                Thread.currentThread().getName(), message.getId(), message.getData()));
 
             //Sleeping on random time to make it realistic
             ThreadUtil.sleep((long) (message.getData() * 100));

@@ -1,4 +1,4 @@
 --
 -- Insert
 --
-insert into car_maker(id,name) values (:id,:name);
+insert into car_maker(name) values (:name);

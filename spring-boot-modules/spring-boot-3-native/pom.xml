@@ -56,10 +56,15 @@
                          <configuration>
                              <jvmArguments> -agentlib:native-image-agent=config-output-dir=target/native-image
                              </jvmArguments>
-                             <systemPropertyVariables>
-                                 <springAot>true</springAot>
-                             </systemPropertyVariables>
                          </configuration>
+						 <executions>
+							 <execution>
+								 <id>process-aot</id>
+								 <goals>
+									 <goal>process-aot</goal>
+								 </goals>
+							 </execution>
+						 </executions>
                      </plugin>  -->
                  </plugins>
              </pluginManagement>

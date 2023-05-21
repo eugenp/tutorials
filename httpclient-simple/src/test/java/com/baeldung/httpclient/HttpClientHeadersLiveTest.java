@@ -25,26 +25,22 @@ class HttpClientHeadersLiveTest {
 
     @Test
     void whenClientUsesCustomUserAgent_thenCorrect() throws IOException {
+        final CloseableHttpClient client = HttpClients.custom()
+            .setUserAgent("Mozilla/5.0 Firefox/26.0")
+            .build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
 
-        try (CloseableHttpClient client = HttpClients.custom()
-            .setUserAgent("Mozilla/5.0 Firefox/26.0")
-            .build()) {
-
-            String response = client.execute(request, new BasicHttpClientResponseHandler());
-            logger.info("Response -> {}", response);
-        }
+        String response = client.execute(request, new BasicHttpClientResponseHandler());
+        logger.info("Response -> {}", response);
     }
 
     @Test
     void whenRequestHasCustomUserAgent_thenCorrect() throws IOException {
+        CloseableHttpClient client = HttpClients.createDefault();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
-
-        try (CloseableHttpClient client = HttpClients.createDefault()) {
-            String response = client.execute(request, new BasicHttpClientResponseHandler());
-            logger.info("Response -> {}", response);
-        }
+        String response = client.execute(request, new BasicHttpClientResponseHandler());
+        logger.info("Response -> {}", response);
     }
 
     @Test

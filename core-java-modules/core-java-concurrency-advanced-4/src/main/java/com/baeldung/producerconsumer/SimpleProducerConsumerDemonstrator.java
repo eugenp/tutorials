@@ -2,10 +2,12 @@ package com.baeldung.producerconsumer;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.logging.Logger;
 
 import static com.baeldung.producerconsumer.ThreadUtil.sleep;
 
 public class SimpleProducerConsumerDemonstrator {
+    private static final Logger log = Logger.getLogger(SimpleProducerConsumerDemonstrator.class.getCanonicalName());
     BlockingQueue<Double> blockingQueue = new LinkedBlockingDeque<>(5);
 
     private void produce() {
@@ -17,7 +19,7 @@ public class SimpleProducerConsumerDemonstrator {
                 e.printStackTrace();
                 break;
             }
-            System.out.printf("[%s] Value produced: %f\n", Thread.currentThread().getName(), value);
+            log.info(String.format("[%s] Value produced: %f%n", Thread.currentThread().getName(), value));
         }
     }
 
@@ -31,7 +33,7 @@ public class SimpleProducerConsumerDemonstrator {
                 break;
             }
             // Consume value
-            System.out.printf("[%s] Value consumed: %f\n", Thread.currentThread().getName(), value);
+            log.info(String.format("[%s] Value consumed: %f%n", Thread.currentThread().getName(), value));
         }
     }
 

@@ -2,20 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
     <groupId>com.baelding</groupId>
     <artifactId>spring-boot-redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-redis</name>
     <description>Demo project for Spring Boot with Spring Data Redis</description>
-    <properties>
-        <java.version>15</java.version>
-    </properties>
+    
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
+    </parent>
+   
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +37,12 @@
         <dependency>
             <groupId>it.ozimov</groupId>
             <artifactId>embedded-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
             <version>0.7.3</version>
             <scope>test</scope>
         </dependency>
@@ -66,4 +71,8 @@
         </plugins>
     </build>
 
+	<properties>
+        <java.version>15</java.version>
+    </properties>
+    
 </project>
