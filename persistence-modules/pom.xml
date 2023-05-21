@@ -108,6 +108,11 @@
         <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
+
+        <module>fauna</module>
+        <module>spring-data-rest</module>
+        <module>java-mongodb</module>
+        <module>questdb</module>
     </modules>
 
     <properties>
