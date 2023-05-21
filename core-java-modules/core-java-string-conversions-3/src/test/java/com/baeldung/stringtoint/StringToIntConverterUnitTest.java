@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class stringToIntConverter {
+class StringToIntConverterUnitTest {
     
     private StringToIntConverter stringToIntConverter = new StringToIntConverter();
 
