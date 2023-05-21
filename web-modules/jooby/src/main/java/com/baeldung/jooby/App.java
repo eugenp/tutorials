@@ -117,6 +117,7 @@ public class App extends Jooby {
         });
     }
 
+    /* This will work once redis is installed locally
     {
         install(new RedisModule("redis"));
         setSessionStore(new RedisSessionStore(require(RedisClient.class)));
@@ -125,7 +126,7 @@ public class App extends Jooby {
             session.put("token", "value");
             return session.get("token");
         });
-    }
+    }*/
 
     public static void main(final String[] args) {
         runApp(args, App::new);
