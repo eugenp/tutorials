@@ -28,12 +28,12 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
-            <version>5.5.13.3</version>
+            <version>${itextpdf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
-            <version>3.0.0-RC1</version>
+            <version>${pdfbox.version}</version>
         </dependency>
     </dependencies>
 
@@ -48,8 +48,10 @@
     </build>
 
     <properties>
+        <itextpdf.version>5.5.13.3</itextpdf.version>
         <itextpdf.core.version>7.2.3</itextpdf.core.version>
         <itextpdf.cleanup.version>3.0.1</itextpdf.cleanup.version>
+        <pdfbox.version>3.0.0-RC1</pdfbox.version>
     </properties>
 
 </project>

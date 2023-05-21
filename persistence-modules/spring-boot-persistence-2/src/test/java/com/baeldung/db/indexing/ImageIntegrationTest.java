@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -68,11 +70,15 @@ class ImageIntegrationTest {
 
     private Image baeldungImage() throws IOException {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-
-        Image mockImage = new Image();
-        mockImage.setContent(Files.readAllBytes(Paths.get(classLoader.getResource("baeldung.jpeg")
-            .getFile())));
-        return mockImage;
+        try {
+            final URL resource = classLoader.getResource("baeldung.jpeg");
+            if (resource != null) {
+                Image mockImage = new Image();
+                mockImage.setContent(Files.readAllBytes(Paths.get(resource.toURI())));
+                return mockImage;
+            }
+        } catch (URISyntaxException ignore) {}
+        return null;
     }
 
 }

@@ -1,12 +1,13 @@
 package com.baeldung.webclient.manualrequest.web;
 
+import java.util.Base64;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -41,7 +42,8 @@ public class ManualOauthRequestController {
         logger.info("Creating web client...");
         Mono<String> resource = client.post()
             .uri(tokenUri)
-            .header(HttpHeaders.AUTHORIZATION, "Basic " + Base64Utils.encodeToString((clientId + ":" + clientSecret).getBytes()))
+            .header(HttpHeaders.AUTHORIZATION, "Basic " + Base64.getEncoder()
+                .encodeToString((clientId + ":" + clientSecret).getBytes()))
             .body(BodyInserters.fromFormData(OAuth2ParameterNames.GRANT_TYPE, GrantType.CLIENT_CREDENTIALS.getValue()))
             .retrieve()
             .bodyToMono(JsonNode.class)

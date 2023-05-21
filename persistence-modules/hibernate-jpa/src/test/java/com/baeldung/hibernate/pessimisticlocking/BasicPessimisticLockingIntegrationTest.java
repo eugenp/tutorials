@@ -1,14 +1,14 @@
 package com.baeldung.hibernate.pessimisticlocking;
 
 import com.baeldung.hibernate.HibernateUtil;
-import com.vividsolutions.jts.util.Assert;
+import org.locationtech.jts.util.Assert;
 
 import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -46,7 +46,7 @@ public class BasicPessimisticLockingIntegrationTest {
     }
 
     @Test
-    public void givenRecordWithPessimisticReadQuery_whenQueryingNewOne_PessimisticLockExceptionThrown() throws IOException {
+    public void givenRecordWithPessimisticReadQuery_whenQueryingNewOne_PessimisticLockExceptionThrown() {
         try {
             EntityManager entityManager = getEntityManagerWithOpenTransaction();
             Query query = entityManager.createQuery("from Student where studentId = :studentId");
