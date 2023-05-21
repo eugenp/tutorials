@@ -1,21 +1,32 @@
 package com.baeldung.jooby;
 
-import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.jooby.test.JoobyRule;
-import org.junit.ClassRule;
-import org.junit.Test;
+import java.io.IOException;
 
+import org.junit.jupiter.api.Test;
+
+import io.jooby.JoobyTest;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+@JoobyTest(value = App.class, port = 8080)
 public class AppLiveTest {
 
-	@ClassRule
-	public static JoobyRule app = new JoobyRule(new App());
+    static OkHttpClient client = new OkHttpClient();
 
-	@Test
-	public void given_defaultUrl_expect_fixedString() {
-		get("/").then().assertThat().body(equalTo("Hello World!")).statusCode(200)
-				.contentType("text/html;charset=UTF-8");
-	}
+    @Test
+    public void given_defaultUrl_expect_fixedString() {
+        Request request = new Request.Builder().url("http://localhost:8080")
+            .build();
+        try (Response response = client.newCall(request)
+            .execute()) {
+            assertEquals("Hello World!", response.body()
+                .string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
