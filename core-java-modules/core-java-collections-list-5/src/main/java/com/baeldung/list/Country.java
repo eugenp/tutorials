@@ -6,6 +6,6 @@ import lombok.Data;
 public class Country {
 
     private final String name;
-    private final String capital;
+    private final String language;
 
 }
