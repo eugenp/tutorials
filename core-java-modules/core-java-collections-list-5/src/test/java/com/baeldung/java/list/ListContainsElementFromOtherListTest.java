@@ -50,16 +50,16 @@ public class ListContainsElementFromOtherListTest {
 
     @Test
     public void givenPropertiesInObjectsToCompare_whenUsingStreams_thenDetectElementsInTwoLists() {
-        Country france = new Country("France", "Paris");
-        Country belgium = new Country("Belgium", "Brussels");
-        Country spain = new Country("Spain", "Madrid");
-        List<Country> franceAndBelgium = Arrays.asList(france, belgium);
-        List<Country> belgiumAndSpain = Arrays.asList(belgium, spain);
+        Country france = new Country("France", "French");
+        Country mexico = new Country("Mexico", "Spanish");
+        Country spain = new Country("Spain", "Spanish");
+        List<Country> franceAndMexico = Arrays.asList(france, mexico);
+        List<Country> franceAndSpain = Arrays.asList(france, spain);
 
-        boolean shouldBeTrue = franceAndBelgium.stream()
-          .map(Country::getCapital)
-          .anyMatch(belgiumAndSpain.stream()
-            .map(Country::getCapital)
+        boolean shouldBeTrue = franceAndMexico.stream()
+          .map(Country::getLanguage)
+          .anyMatch(franceAndSpain.stream()
+            .map(Country::getLanguage)
             .collect(toSet())::contains);
 
         assertTrue(shouldBeTrue);
