@@ -14,6 +14,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
+  thread-executor: standard
+
 # Custom Properties
 cors:
   allow:

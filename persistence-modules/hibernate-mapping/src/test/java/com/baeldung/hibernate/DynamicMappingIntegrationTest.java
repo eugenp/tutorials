@@ -119,8 +119,8 @@ public class DynamicMappingIntegrationTest {
 
         assertThat(employees).hasSize(2);
 
-        Employee employee = session.get(Employee.class, 1);
-        assertThat(employee.getGrossIncome()).isEqualTo(10_000);
+        Employee employee = session.get(Employee.class, 2);
+        assertThat(employee.getGrossIncome()).isEqualTo(12_000);
 
         session.disableFilter("incomeLevelFilter");
         employees = session.createQuery("from Employee").getResultList();
