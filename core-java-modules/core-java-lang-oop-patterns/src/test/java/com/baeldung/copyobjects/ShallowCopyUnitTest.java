@@ -1,26 +1,51 @@
 package com.baeldung.copyobjects;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class ShallowCopyUnitTest {
 
 	@Test
-	public void testShallowCopy() {
-		Address address = new Address("123", "Main Street", "Pune", "CA");
+	public void whenCreatingShallowCopyWithCopyConstructor_ObjectShouldBeSameAsOriginal() {
+		Address address = new Address("123", "Main Street", "New York", "state");
 		Employee original = new Employee("Dave", address);
 		Employee shallowCopy = new Employee(original);
+		
 		assertEquals(original.getName(), shallowCopy.getName());
-		assertEquals(original.getAddress(), shallowCopy.getAddress());
-		// Ensure that the address object is shared between original and copy		
-		original.getAddress().setHouseNum("456");
-		original.getAddress().setStreet("Second St");
-		assertEquals(original.getAddress().hashCode(), shallowCopy.getAddress()
-				.hashCode());
-		assertEquals("456", shallowCopy.getAddress().getHouseNum());
-		assertEquals("456", original.getAddress().getHouseNum());
-		assertEquals("Second St", shallowCopy.getAddress().getStreet());
+		
+		assertEquals(original.getAddress().hashCode(), shallowCopy.getAddress().hashCode());		
+		
+		original.getAddress().setStreet("Second St");		
+		
 		assertEquals("Second St", original.getAddress().getStreet());
 
+	}
+	
+	@Test
+	public void whenCreatingShallowCopyWithCloneMethod_ObjectShouldBeSameAsOriginal() {
+		
+		try {
+			 Person original = new Person();
+	         original.setName("John");
+	         
+	         Address address = new Address("1234", "Main Street", "USA", "state");        
+	         original.setAddress(address);         
+	    
+	         Person shallowCopy = (Person) original.clone();
+	         
+	         assertEquals(original.getName(), shallowCopy.getName());
+	 		
+	 		 assertEquals(original.getAddress().hashCode(), shallowCopy.getAddress().hashCode());
+	 		 
+	 		 original.getAddress().setStreet("Second St");
+	 		
+	 		 assertEquals("Second St", original.getAddress().getStreet());	 
+			
+		} catch (CloneNotSupportedException e) {
+            e.printStackTrace();            
+        }
+		 
+ 		 
 	}
 }

@@ -34,6 +34,6 @@ public class Employee {
 		this.address = address;
 	}
 
-	// standard constructors, getters and setters
+	// standard getters and setters
 	
 }

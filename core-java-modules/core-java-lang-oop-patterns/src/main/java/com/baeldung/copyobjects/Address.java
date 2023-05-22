@@ -1,6 +1,6 @@
 package com.baeldung.copyobjects;
 
-public class Address {
+public class Address implements Cloneable{
 	String houseNum;
 	String street;
 	String city;
@@ -46,6 +46,11 @@ public class Address {
 		this.state = state;
 	}
 
-	// standard constructors, getters and setters
+	// standard getters and setters
+	
+	@Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
 }
