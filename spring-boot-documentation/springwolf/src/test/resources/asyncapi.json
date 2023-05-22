@@ -1,0 +1,206 @@
+{
+  "asyncapi": "2.0.0",
+  "info": {
+    "title": "Baeldung Tutorial Springwolf Application",
+    "version": "1.0.0",
+    "description": "Baeldung Tutorial Application to Demonstrate AsyncAPI Documentation using Springwolf"
+  },
+  "servers": {
+    "kafka": {
+      "url": "localhost:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "incoming-topic": {
+      "publish": {
+        "operationId": "incoming-topic_publish",
+        "description": "Auto-generated description",
+        "bindings": {
+          "kafka": {}
+        },
+        "message": {
+          "schemaFormat": "application/vnd.oai.openapi+json;version=3.0.0",
+          "name": "com.baeldung.boot.documentation.springwolf.dto.IncomingPayloadDto",
+          "title": "IncomingPayloadDto",
+          "description": "More details for the incoming topic",
+          "payload": {
+            "$ref": "#/components/schemas/IncomingPayloadDto"
+          },
+          "headers": {
+            "$ref": "#/components/schemas/SpringKafkaDefaultHeadersIncomingPayloadDto"
+          },
+          "bindings": {
+            "kafka": {}
+          }
+        }
+      }
+    },
+    "outgoing-topic": {
+      "subscribe": {
+        "operationId": "outgoing-topic_subscribe",
+        "description": "Auto-generated description",
+        "bindings": {
+          "kafka": {}
+        },
+        "message": {
+          "schemaFormat": "application/vnd.oai.openapi+json;version=3.0.0",
+          "name": "com.baeldung.boot.documentation.springwolf.dto.OutgoingPayloadDto",
+          "title": "OutgoingPayloadDto",
+          "description": "More details for the outgoing topic",
+          "payload": {
+            "$ref": "#/components/schemas/OutgoingPayloadDto"
+          },
+          "headers": {
+            "$ref": "#/components/schemas/SpringKafkaDefaultHeadersOutgoingPayloadDto"
+          },
+          "bindings": {
+            "kafka": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HeadersNotDocumented": {
+        "type": "object",
+        "properties": {},
+        "example": {},
+        "exampleSetFlag": true,
+        "types": [
+          "object"
+        ]
+      },
+      "IncomingPayloadDto": {
+        "required": [
+          "someEnum",
+          "someString"
+        ],
+        "type": "object",
+        "properties": {
+          "someEnum": {
+            "type": "string",
+            "description": "Some enum field",
+            "example": "FOO2",
+            "exampleSetFlag": true,
+            "types": [
+              "string"
+            ],
+            "enum": [
+              "FOO1",
+              "FOO2",
+              "FOO3"
+            ]
+          },
+          "someLong": {
+            "type": "integer",
+            "description": "Some long field",
+            "format": "int64",
+            "example": 5,
+            "exampleSetFlag": true,
+            "types": [
+              "integer"
+            ]
+          },
+          "someString": {
+            "type": "string",
+            "description": "Some string field",
+            "example": "some string value",
+            "exampleSetFlag": true,
+            "types": [
+              "string"
+            ]
+          }
+        },
+        "description": "Incoming payload model",
+        "example": {
+          "someEnum": "FOO2",
+          "someLong": 5,
+          "someString": "some string value"
+        },
+        "exampleSetFlag": true
+      },
+      "OutgoingPayloadDto": {
+        "required": [
+          "incomingWrapped"
+        ],
+        "type": "object",
+        "properties": {
+          "incomingWrapped": {
+            "$ref": "#/components/schemas/IncomingPayloadDto",
+            "exampleSetFlag": false
+          },
+          "foo": {
+            "type": "string",
+            "description": "Foo field",
+            "example": "bar",
+            "exampleSetFlag": true,
+            "types": [
+              "string"
+            ]
+          }
+        },
+        "description": "Outgoing payload model",
+        "example": {
+          "incomingWrapped": {
+            "someEnum": "FOO2",
+            "someLong": 5,
+            "someString": "some string value"
+          },
+          "foo": "bar"
+        },
+        "exampleSetFlag": true
+      },
+      "SpringKafkaDefaultHeadersIncomingPayloadDto": {
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "example": "com.baeldung.boot.documentation.springwolf.dto.IncomingPayloadDto",
+            "exampleSetFlag": true,
+            "types": [
+              "string"
+            ],
+            "enum": [
+              "com.baeldung.boot.documentation.springwolf.dto.IncomingPayloadDto"
+            ]
+          }
+        },
+        "example": {
+          "__TypeId__": "com.baeldung.boot.documentation.springwolf.dto.IncomingPayloadDto"
+        },
+        "exampleSetFlag": true,
+        "types": [
+          "object"
+        ]
+      },
+      "SpringKafkaDefaultHeadersOutgoingPayloadDto": {
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "example": "com.baeldung.boot.documentation.springwolf.dto.OutgoingPayloadDto",
+            "exampleSetFlag": true,
+            "types": [
+              "string"
+            ],
+            "enum": [
+              "com.baeldung.boot.documentation.springwolf.dto.OutgoingPayloadDto"
+            ]
+          }
+        },
+        "example": {
+          "__TypeId__": "com.baeldung.boot.documentation.springwolf.dto.OutgoingPayloadDto"
+        },
+        "exampleSetFlag": true,
+        "types": [
+          "object"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

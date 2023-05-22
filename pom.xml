@@ -704,6 +704,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -965,6 +966,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
