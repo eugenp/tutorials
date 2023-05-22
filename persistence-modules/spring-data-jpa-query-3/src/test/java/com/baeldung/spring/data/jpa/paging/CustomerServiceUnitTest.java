@@ -26,9 +26,17 @@ public class CustomerServiceUnitTest {
     @InjectMocks
     private CustomerService customerService;
 
-    private static final List<Customer> ALL_CUSTOMERS = Arrays.asList(new Customer("Ali"), new Customer("Brian"), new Customer("Coddy"), new Customer("Di"), new Customer("Eve"), new Customer("Fin"), new Customer("Grace"), new Customer("Harry"),
-      new Customer("Ivan"), new Customer("Judy"), new Customer("Kasim"), new Customer("Liam"), new Customer("Mike"), new Customer("Nick"), new Customer("Omar"), new Customer("Penny"), new Customer("Queen"), new Customer("Rob"), new Customer("Sue"),
-      new Customer("Tammy"));
+    private static final List<Customer> ALL_CUSTOMERS = Arrays.asList(
+      new Customer("Ali"), new Customer("Brian"),
+      new Customer("Coddy"), new Customer("Di"),
+      new Customer("Eve"), new Customer("Fin"),
+      new Customer("Grace"), new Customer("Harry"),
+      new Customer("Ivan"), new Customer("Judy"),
+      new Customer("Kasim"), new Customer("Liam"),
+      new Customer("Mike"), new Customer("Nick"),
+      new Customer("Omar"), new Customer("Penny"),
+      new Customer("Queen"), new Customer("Rob"),
+      new Customer("Sue"), new Customer("Tammy"));
 
     private static final List<String> PAGE_1_CONTENTS = Arrays.asList("Ali", "Brian", "Coddy", "Di", "Eve");
 
@@ -46,7 +54,13 @@ public class CustomerServiceUnitTest {
     }
 
     private static Collection<Object[]> testIO() {
-        return Arrays.asList(new Object[][] { { 0, 5, PAGE_1_CONTENTS, 20L, 4L }, { 1, 5, PAGE_2_CONTENTS, 20L, 4L }, { 2, 5, PAGE_3_CONTENTS, 20L, 4L }, { 3, 5, PAGE_4_CONTENTS, 20L, 4L }, { 4, 5, EMPTY_PAGE, 20L, 4L } });
+        return Arrays.asList(new Object[][] {
+          { 0, 5, PAGE_1_CONTENTS, 20L, 4L },
+          { 1, 5, PAGE_2_CONTENTS, 20L, 4L },
+          { 2, 5, PAGE_3_CONTENTS, 20L, 4L },
+          { 3, 5, PAGE_4_CONTENTS, 20L, 4L },
+          { 4, 5, EMPTY_PAGE, 20L, 4L } }
+        );
     }
 
     @ParameterizedTest
