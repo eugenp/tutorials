@@ -18,5 +18,4 @@ public class StaticUtils {
     public static String name() {
         return "Baeldung";
     }
-
 }
