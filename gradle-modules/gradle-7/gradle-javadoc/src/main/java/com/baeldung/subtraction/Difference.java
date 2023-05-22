@@ -3,7 +3,7 @@ package com.baeldung.subtraction;
 /**
  * This is a sample class that demonstrates Javadoc comments.
  */
-public class Subtract {
+public class Difference {
     /**
      * This method returns the difference between the two integers.
      *
