@@ -51,7 +51,10 @@
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
+                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                        -Djdk.attach.allowAttachSelf
                     </argLine>
+                    <disableXmlReport>true</disableXmlReport>
                 </configuration>
             </plugin>
         </plugins>
