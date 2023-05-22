@@ -36,6 +36,20 @@ class HttpClientRedirectLiveTest {
         final HttpPost request = new HttpPost("http://t.co/I5YYd9tddw");
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create()
+            .build()) {
+            httpClient.execute(request, response -> {
+                assertThat(response.getCode(), equalTo(200));
+                return response;
+            });
+        }
+    }
+
+    @Test
+    void givenRedirectingPOST_whenUsingDefaultRedirectStrategy_thenRedirected() throws IOException {
+
+        final HttpPost request = new HttpPost("http://t.co/I5YYd9tddw");
+
+        try (CloseableHttpClient httpClient = HttpClientBuilder.create()
             .setRedirectStrategy(new DefaultRedirectStrategy())
             .build()) {
             httpClient.execute(request, response -> {
