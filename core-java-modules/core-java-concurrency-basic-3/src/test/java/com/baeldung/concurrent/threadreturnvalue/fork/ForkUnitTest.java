@@ -11,7 +11,7 @@ import com.baeldung.concurrent.threadreturnvalue.task.callable.CallableFactorial
 import com.baeldung.concurrent.threadreturnvalue.task.fork.ForkExecutor;
 import com.baeldung.concurrent.threadreturnvalue.task.fork.ForkFactorialTask;
 
-public class ForkTest {
+public class ForkUnitTest {
 
     private final ForkExecutor forkExecutor = new ForkExecutor();
 

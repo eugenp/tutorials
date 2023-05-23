@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 
 import org.junit.jupiter.api.Test;
 
-public class CompletableFutureTest {
+public class CompletableFutureUnitTest {
 
     @Test
     void givenCompletableFuture_whenSupplyAsyncFactorial_thenResultOk() throws ExecutionException, InterruptedException {

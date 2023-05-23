@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.baeldung.concurrent.threadreturnvalue.task.callable.CallableExecutor;
 import com.baeldung.concurrent.threadreturnvalue.task.callable.CallableFactorialTask;
 
-public class CallableTest {
+public class CallableUnitTest {
 
     private final CallableExecutor callableExecutor = new CallableExecutor();
 
