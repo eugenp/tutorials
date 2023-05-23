@@ -18,22 +18,22 @@ public class ArrayAndArrayListPerformance {
         org.openjdk.jmh.runner.Runner runner = new org.openjdk.jmh.runner.Runner(new OptionsBuilder().include(ArrayAndArrayListPerformance.class.getSimpleName()).forks(1).build());
         runner.run();
     }
-    public static Integer[] array = Collections.nCopies(1000000, 1).toArray(new Integer[0]);
+    public static Integer[] array = Collections.nCopies(256, 1).toArray(new Integer[0]);
     public static ArrayList<Integer> list = new ArrayList<Integer>(
             Arrays.asList(array));
     @Benchmark
     public Integer[] arrayCreation() {
-        return new Integer[1000000];
+        return new Integer[256];
     }
 
     @Benchmark
     public ArrayList<Integer> arrayListCreation() {
-        return new ArrayList<>(1000000);
+        return new ArrayList<>(256);
     }
 
     @Benchmark
     public Integer[] arrayItemsSetting() {
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 256; i++) {
             array[i] = i;
         }
         return array;
@@ -41,7 +41,7 @@ public class ArrayAndArrayListPerformance {
 
     @Benchmark
     public ArrayList<Integer> arrayListItemsSetting() {
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 256; i++) {
             list.add(i);
         }
         return list;
@@ -49,7 +49,7 @@ public class ArrayAndArrayListPerformance {
 
     @Benchmark
     public void arrayItemsRetrieval(Blackhole blackhole) {
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 256; i++) {
             int item = array[i];
             blackhole.consume(item);
         }
@@ -57,7 +57,7 @@ public class ArrayAndArrayListPerformance {
 
     @Benchmark
     public void arrayListItemsRetrieval(Blackhole blackhole) {
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 256; i++) {
             int item = list.get(i);
             blackhole.consume(item);
         }
