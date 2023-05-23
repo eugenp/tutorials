@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-saml2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>spring-security-saml2</name>
-    
+
     <repositories>
         <repository>
             <id>shib-build-releases</id>
@@ -14,14 +14,14 @@
             <url>https://build.shibboleth.net/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,7 +70,7 @@
             <artifactId>spring-security-saml2-service-provider</artifactId>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -79,7 +79,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <properties>
         <java.version>17</java.version>
         <opensaml.version>4.1.1</opensaml.version>
