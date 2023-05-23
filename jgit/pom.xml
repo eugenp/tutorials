@@ -26,13 +26,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>jgit-repository</id>
-            <url>https://repo.eclipse.org/content/groups/releases/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <org.eclipse.jgit.version>4.5.0.201609210915-r</org.eclipse.jgit.version>
     </properties>
