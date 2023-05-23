@@ -18,7 +18,7 @@ public class CarModelMapper implements RowMapper<CarModel>{
             .id(rs.getLong("id"))
             .name(rs.getString("name"))
             .sku(rs.getString("sku"))
-            .year(rs.getInt("year"))
+            .yearDate(rs.getInt("year"))
             .build();
     }
 

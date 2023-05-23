@@ -11,6 +11,7 @@ This module contains articles about Apache HttpClient 4.5
 - [Apache HttpClient vs. CloseableHttpClient](https://www.baeldung.com/apache-httpclient-vs-closeablehttpclient)
 - [Expand Shortened URLs with Apache HttpClient](https://www.baeldung.com/apache-httpclient-expand-url)
 - [Retrying Requests using Apache HttpClient](https://www.baeldung.com/java-retrying-requests-using-apache-httpclient)
+- [Apache HttpClient – Follow Redirects for POST](https://www.baeldung.com/httpclient-redirect-on-http-post)
 
 ### Running the Tests
 To run the live tests, use the command: mvn clean install -Plive
